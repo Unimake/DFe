@@ -218,29 +218,59 @@ namespace Unimake.DFe.Test.ESocial
                                                 CodCateg = CodCateg.EmpregadoAprendiz,
                                                 InfoPerApur = new InfoPerApur
                                                 {
-                                                    IdeEstabLot = new IdeEstabLot
+                                                    IdeEstabLot = new List<IdeEstabLot>
                                                     {
-                                                        TpInsc = TpInsc.CNPJ,
-                                                        NrInsc = "12345678901234",
-                                                        Codlotacao = "148",
-                                                        QtdDiasAv = "1",
-                                                        RemunPerApur = new List<RemunPerApur1200>
+                                                        new IdeEstabLot()
                                                         {
-                                                            new()
+                                                            TpInsc = TpInsc.CNPJ,
+                                                            NrInsc = "12345678901234",
+                                                            Codlotacao = "148",
+                                                            QtdDiasAv = "1",
+                                                            RemunPerApur = new List<RemunPerApur1200>
                                                             {
-                                                                Matricula = "teste1",
-                                                                ItensRemun = new List<ItensRemun1200>
+                                                                new()
                                                                 {
-                                                                    new()
+                                                                    Matricula = "teste1",
+                                                                    ItensRemun = new List<ItensRemun1200>
                                                                     {
-                                                                        CodRubr = "123",
-                                                                        IdeTabRubr = "teste1",
-                                                                        VrRubr = 123.45
+                                                                        new()
+                                                                        {
+                                                                            CodRubr = "123",
+                                                                            IdeTabRubr = "teste1",
+                                                                            VrRubr = 123.45
+                                                                        }
+                                                                    },
+                                                                    InfoAgNocivo = new InfoAgNocivo1200
+                                                                    {
+                                                                        GrauExp = "123"
                                                                     }
-                                                                },
-                                                                InfoAgNocivo = new InfoAgNocivo1200
+                                                                }
+                                                            }
+                                                        },
+                                                        new IdeEstabLot()
+                                                        {
+                                                            TpInsc = TpInsc.CNPJ,
+                                                            NrInsc = "12345678901234",
+                                                            Codlotacao = "205",
+                                                            QtdDiasAv = "1",
+                                                            RemunPerApur = new List<RemunPerApur1200>
+                                                            {
+                                                                new()
                                                                 {
-                                                                    GrauExp = "123"
+                                                                    Matricula = "teste1",
+                                                                    ItensRemun = new List<ItensRemun1200>
+                                                                    {
+                                                                        new()
+                                                                        {
+                                                                            CodRubr = "123",
+                                                                            IdeTabRubr = "teste1",
+                                                                            VrRubr = 123.45
+                                                                        }
+                                                                    },
+                                                                    InfoAgNocivo = new InfoAgNocivo1200
+                                                                    {
+                                                                        GrauExp = "123"
+                                                                    }
                                                                 }
                                                             }
                                                         }
