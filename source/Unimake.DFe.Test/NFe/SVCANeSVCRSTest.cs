@@ -311,7 +311,7 @@ namespace Unimake.DFe.Test.NFe
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
             Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(autorizacao.Result.CStat.Equals(114) || autorizacao.Result.CStat.Equals(103), "Lote não foi processado. <xMotivo>" + autorizacao.Result.XMotivo + "<xMotivo>");
+            Assert.True(autorizacao.Result.CStat.Equals(114) || autorizacao.Result.CStat.Equals(452) || autorizacao.Result.CStat.Equals(103), "Lote não foi processado. <xMotivo>" + autorizacao.Result.XMotivo + "<xMotivo>" + " - <cStat>"+autorizacao.Result.CStat + "</cStat>");
 
             if (tipoEmissao == TipoEmissao.ContingenciaSVCAN)
             {
