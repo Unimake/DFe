@@ -12,6 +12,9 @@ using Unimake.Business.DFe.Xml.NF3e;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Collections.Concurrent;
+using System.Xml.Schema;
+using System.Xml;
 
 namespace Unimake.Business.DFe.Xml.NFCom
 {
@@ -321,6 +324,9 @@ namespace Unimake.Business.DFe.Xml.NFCom
         [XmlElement("xJust")]
         public string XJust { get; set; }
 
+        [XmlElement("gCompraGov")]
+        public GCompraGov GCompraGov { get; set; }
+
         #region ShouldSerialize
 
 #if INTEROP
@@ -347,6 +353,27 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         #endregion ShouldSerialize
     }
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GCompraGov")]
+    [ComVisible(true)]
+#endif
+    public class GCompraGov
+    {
+        [XmlElement("tpEnteGov")]
+        public TipoEnteGovernamental TpEnteGov { get; set; }
+
+        [XmlIgnore]
+        public double PRedutor { get; set; }
+
+        [XmlElement("pRedutor")]
+        public string PRedutorField
+        {
+            get => PRedutor.ToString("F4", CultureInfo.InvariantCulture);
+            set => PRedutor = Converter.ToDouble(value);
+        }
+    }
+
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -594,7 +621,6 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public UFBrasil CUFPrinc { get; set; } = (UFBrasil)(-1);
 #else
         public UFBrasil? CUFPrinc { get; set; }
-
 #endif
 
         [XmlElement("cUFPrinc")]
@@ -604,102 +630,94 @@ namespace Unimake.Business.DFe.Xml.NFCom
             set => CUFPrinc = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
+        // Lista de objetos combinados
+        [XmlIgnore]
+        public List<TerminalAdicional> TerminaisAdicionais { get; set; } = new List<TerminalAdicional>();
 
-        [XmlElement("NroTermAdic")]
-        public List<string> NroTermAdic { get; set; }
+        // Serializa "na unha" os terminais, intercalando tags
+        [XmlAnyElement]
+        public XmlElement[] TerminaisAdicionaisRaw
+        {
+            get
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml("<root xmlns='http://www.portalfiscal.inf.br/nfcom' />");
+                var ns = doc.DocumentElement.NamespaceURI;
+                var elements = new List<XmlElement>();
+
+                foreach (var t in TerminaisAdicionais)
+                {
+                    var nroTerm = doc.CreateElement("NroTermAdic", ns);
+                    nroTerm.InnerText = t.NroTermAdic;
+                    elements.Add(nroTerm);
+
+                    var cufTerm = doc.CreateElement("cUFAdic", ns);
+                    cufTerm.InnerText = t.CUFAdicField.ToString();
+                    elements.Add(cufTerm);
+                }
+
+                return elements.ToArray();
+            }
+            set
+            {
+                TerminaisAdicionais.Clear();
+                if (value == null || value.Length == 0) return;
+
+                for (int i = 0; i < value.Length - 1; i++)
+                {
+                    if (value[i].Name == "NroTermAdic" && value[i + 1].Name == "cUFAdic")
+                    {
+                        TerminaisAdicionais.Add(new TerminalAdicional
+                        {
+                            NroTermAdic = value[i].InnerText,
+                            CUFAdic = (UFBrasil)int.Parse(value[i + 1].InnerText)
+                        });
+                        i++;
+                    }
+                }
+            }
+        }
 
 #if INTEROP
+        public void AddNroTermAdic(string item) => TerminaisAdicionais.Add(new TerminalAdicional { NroTermAdic = item });
+        public string GetNroTermAdic(int index) => (index >= 0 && index < TerminaisAdicionais.Count) ? TerminaisAdicionais[index].NroTermAdic : default;
+        public int GetNroTermAdicCount => TerminaisAdicionais.Count;
 
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="item">Elemento</param>
-        public void AddNroTermAdic(string item)
-        {
-            if (NroTermAdic == null)
-            {
-                NroTermAdic = new List<string>();
-            }
-
-            NroTermAdic.Add(item);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista NroTermAdic (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da NroTermAdic</returns>
-        public string GetNroTermAdic(int index)
-        {
-            if ((NroTermAdic?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return NroTermAdic[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista NroTermAdic
-        /// </summary>
-        public int GetNroTermAdicCount => (NroTermAdic != null ? NroTermAdic.Count : 0);
-#endif
-
-        [XmlElement("cUFAdic")]
-        public List<string> CUFAdic { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="item">Elemento</param>
-        public void AddCUFAdic(string item)
-        {
-            if (CUFAdic == null)
-            {
-                CUFAdic = new List<string>();
-            }
-
-            CUFAdic.Add(item);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista CUFAdic (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da CUFAdic</returns>
-        public string GetCUFAdic(int index)
-        {
-            if ((CUFAdic?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return CUFAdic[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista CUFAdic
-        /// </summary>
-        public int GetCUFAdicCount => (CUFAdic != null ? CUFAdic.Count : 0);
+        public void AddCUFAdic(UFBrasil item) => TerminaisAdicionais.Add(new TerminalAdicional { CUFAdic = item });
+        public int GetCUFAdic(int index) => (index >= 0 && index < TerminaisAdicionais.Count) ? (int)TerminaisAdicionais[index].CUFAdic : default;
+        public int GetCUFAdicCount => TerminaisAdicionais.Count;
 #endif
 
         #region ShouldSerialize
-
         public bool ShouldSerializeNContrato() => !string.IsNullOrEmpty(NContrato);
-
-        public bool ShouldSerializeDContratoIniField() => DContratoIni > DateTime.MinValue;
-
-        public bool ShouldSerializeDContratoFimField() => DContratoFim > DateTime.MinValue;
-
+        public bool ShouldSerializeDContratoIniField() => DContratoIni != default;
+        public bool ShouldSerializeDContratoFimField() => DContratoFim != default;
         public bool ShouldSerializeNroTermPrinc() => !string.IsNullOrEmpty(NroTermPrinc);
+        public bool ShouldSerializeTerminaisAdicionaisRaw() => TerminaisAdicionais?.Count > 0;
+        #endregion
+    }
 
-        public bool ShouldSerializeNroTermAdic() => NroTermAdic != null && NroTermAdic.Count > 0;
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.TerminalAdicional")]
+    [ComVisible(true)]
+#endif
+    public class TerminalAdicional
+    {
+        public string NroTermAdic { get; set; }
 
-        public bool ShouldSerializeCUFAdic() => CUFAdic != null && CUFAdic.Count > 0;
-
-        #endregion ShouldSerialize
+        [XmlIgnore]
+#if INTEROP
+        public UFBrasil CUFAdic { get; set; } = (UFBrasil)(-1);
+#else
+        public UFBrasil? CUFAdic { get; set; }
+#endif
+        [XmlElement("cUFAdic")]
+        public int CUFAdicField
+        {
+            get => (int)CUFAdic;
+            set => CUFAdic = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
+        }
     }
 
 #if INTEROP
@@ -1005,6 +1023,9 @@ namespace Unimake.Business.DFe.Xml.NFCom
         [XmlElement("retTrib")]
         public RetTribNFCom RetTribNFCom { get; set; }
 
+        [XmlElement("IBSCBS")]
+        public IBSCBS IBSCBS { get; set; }
+
         #region ShouldSerialize
 
 #if INTEROP
@@ -1249,6 +1270,453 @@ namespace Unimake.Business.DFe.Xml.NFCom
     [ComVisible(true)]
 #endif
     public class RetTribNFCom : RetTribNF3e { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.IBSCBS")]
+    [ComVisible(true)]
+#endif
+    public class IBSCBS
+    {
+        [XmlElement("CST")]
+        public string CST { get; set; }
+
+        [XmlElement("cClassTrib")]
+        public string CClassTrib { get; set; }
+
+        [XmlElement("gIBSCBS")]
+        public GIBSCBS GIBSCBS { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GIBSCBS")]
+    [ComVisible(true)]
+#endif
+    public class GIBSCBS
+    {
+        [XmlIgnore]
+        public double VBC { get; set; }
+
+        [XmlElement("vBC")]
+        public string VBCField
+        {
+            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBC = Converter.ToDouble(value);
+        }
+
+        [XmlElement("gIBSUF")]
+        public GIBSUF GIBSUF { get; set; }
+
+        [XmlElement("gIBSMun")]
+        public GIBSMun GIBSMun { get; set; }
+
+        [XmlElement("gCBS")]
+        public GCBS GCBS { get; set; }
+
+        [XmlElement("gTribRegular")]
+        public GTribRegular GTribRegular { get; set; }
+
+        [XmlElement("gIBSCredPres")]
+        public GIBSCredPres GIBSCredPres { get; set; }
+
+        [XmlElement("gCBSCredPres")]
+        public GCBSCredPres GCBSCredPres { get; set; }
+
+        [XmlElement("gTribCompraGov")]
+        public GTribCompraGov GTribCompraGov { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GIBSUF")]
+    [ComVisible(true)]
+#endif
+    public class GIBSUF
+    {
+        [XmlIgnore]
+        public double PIBSUF { get; set; }
+
+        [XmlElement("pIBSUF")]
+        public string PIBSUFField
+        {
+            get => PIBSUF.ToString("F4", CultureInfo.InvariantCulture);
+            set => PIBSUF = Converter.ToDouble(value);
+        }
+
+        [XmlElement("gDif")]
+        public GDif GDif { get; set;}
+
+        [XmlElement("gDevTrib")]
+        public GDevTrib GDevTrib { get; set; }
+
+        [XmlElement("gRed")]
+        public GRed GRed { get; set; }
+
+        [XmlIgnore]
+        public double VIBSUF { get; set; }
+
+        [XmlElement("vIBSUF")]
+        public string VIBSUFField
+        {
+            get => VIBSUF.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSUF = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GDif")]
+    [ComVisible(true)]
+#endif
+    public class GDif
+    {
+        [XmlIgnore]
+        public double PDif { get; set; }
+
+        [XmlElement("pDif")]
+        public string PDifField
+        {
+            get => PDif.ToString("F4", CultureInfo.InvariantCulture);
+            set => PDif = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VDif { get; set; }
+
+        [XmlElement("vDif")]
+        public string VDifField
+        {
+            get => VDif.ToString("F2", CultureInfo.InvariantCulture);
+            set => VDif = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GDevTrib")]
+    [ComVisible(true)]
+#endif
+    public class GDevTrib
+    {
+        [XmlIgnore]
+        public double VDevTrib { get; set; }
+
+        [XmlElement("vDevTrib")]
+        public string VDevTribField
+        {
+            get => VDevTrib.ToString("F2", CultureInfo.InvariantCulture);
+            set => VDevTrib = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GRed")]
+    [ComVisible(true)]
+#endif
+    public class GRed
+    {
+        [XmlIgnore]
+        public double PRedAliq { get; set; }
+
+        [XmlElement("pRedAliq")]
+        public string PRedAliqField
+        {
+            get => PRedAliq.ToString("F4", CultureInfo.InvariantCulture);
+            set => PRedAliq = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PAliqEfet { get; set; }
+
+        [XmlElement("pAliqEfet")]
+        public string PAliqEfetField
+        {
+            get => PAliqEfet.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqEfet = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GIBSMun")]
+    [ComVisible(true)]
+#endif
+    public class GIBSMun
+    {
+        [XmlIgnore]
+        public double PIBSMun { get; set; }
+
+        [XmlElement("pIBSMun")]
+        public string PIBSMunField
+        {
+            get => PIBSMun.ToString("F2", CultureInfo.InvariantCulture);
+            set => PIBSMun = Converter.ToDouble(value);
+        }
+
+        [XmlElement("gDif")]
+        public GDif GDif { get; set; }
+
+        [XmlElement("gDevTrib")]
+        public GDevTrib GDevTrib { get; set; }
+
+        [XmlElement("gRed")]
+        public GRed GRed { get; set; }
+
+        [XmlIgnore]
+        public double VIBSMun { get; set; }
+
+        [XmlElement("vIBSMun")]
+        public string VIBSMunField
+        {
+            get => VIBSMun.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSMun = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GCBS")]
+    [ComVisible(true)]
+#endif
+    public class GCBS
+    {
+        [XmlIgnore]
+        public double PCBS { get; set; }
+
+        [XmlElement("pCBS")]
+        public string PCBSField
+        {
+            get => PCBS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PCBS = Converter.ToDouble(value);
+        }
+
+        [XmlElement("gDif")]
+        public GDif GDif { get; set; }
+
+        [XmlElement("gDevTrib")]
+        public GDevTrib GDevTrib { get; set; }
+
+        [XmlElement("gRed")]
+        public GRed GRed { get; set; }
+
+        [XmlIgnore]
+        public double VCBS { get; set; }
+
+        [XmlElement("vCBS")]
+        public string VCBSField
+        {
+            get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBS = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GTribRegular")]
+    [ComVisible(true)]
+#endif
+    public class GTribRegular
+    {
+        [XmlElement("CSTReg")]
+        public string CSTReg { get; set; }
+
+        [XmlElement("cClassTribReg")]
+        public string CClassTribReg { get; set; }
+
+        [XmlIgnore]
+        public double PAliqEfetRegIBSUF { get; set; }
+
+        [XmlElement("pAliqEfetRegIBSUF")]
+        public string PAliqEfetRegIBSUFField
+        {
+            get => PAliqEfetRegIBSUF.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqEfetRegIBSUF = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VtribRegIBSUF { get; set; }
+
+        [XmlElement("vTribRegIBSUF")]
+        public string VtribRegIBSUFField
+        {
+            get => VtribRegIBSUF.ToString("F2", CultureInfo.InvariantCulture);
+            set => VtribRegIBSUF = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PAliqEfetRegIBSMun { get; set; }
+
+        [XmlElement("pAliqEfetRegIBSMun")]
+        public string PAliqEfetRegIBSMunField
+        {
+            get => PAliqEfetRegIBSMun.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqEfetRegIBSMun = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VtribRegIBSMun { get; set; }
+
+        [XmlElement("vTribRegIBSMun")]
+        public string VtribRegIBSMunField
+        {
+            get => VtribRegIBSMun.ToString("F2", CultureInfo.InvariantCulture);
+            set => VtribRegIBSMun = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PAliqEfetRegCBS { get; set; }
+
+        [XmlElement("pAliqEfetRegCBS")]
+        public string PAliqEfetRegCBSField
+        {
+            get => PAliqEfetRegCBS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqEfetRegCBS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VTribRegCBS { get; set; }
+
+        [XmlElement("vTribRegCBS")]
+        public string VTribRegCBSField
+        {
+            get => VTribRegCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribRegCBS = Converter.ToDouble(value);
+        }
+
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GIBSCredPres")]
+    [ComVisible(true)]
+#endif
+    public class GIBSCredPres
+    {
+        [XmlElement("cCredPres")]
+        public string CCredPres { get; set; }
+
+        [XmlIgnore]
+        public double PCredPres { get; set; }
+
+        [XmlElement("pCredPres")]
+        public string PCredPresField
+        {
+            get => PCredPres.ToString("F4", CultureInfo.InvariantCulture);
+            set => PCredPres = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VCredPres { get; set; }
+
+        [XmlElement("vCredPres")]
+        public string VCredPresField
+        {
+            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPres = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GCBSCredPres")]
+    [ComVisible(true)]
+#endif
+    public class GCBSCredPres
+    {
+        [XmlElement("cCredPres")]
+        public string CCredPres { get; set; }
+
+        [XmlIgnore]
+        public double PCredPres { get; set; }
+
+        [XmlElement("pCredPres")]
+        public string PCredPresField
+        {
+            get => PCredPres.ToString("F4", CultureInfo.InvariantCulture);
+            set => PCredPres = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VCredPres { get; set; }
+
+        [XmlElement("vCredPres")]
+        public string VCredPresField
+        {
+            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPres = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GTribCompraGov")]
+    [ComVisible(true)]
+#endif
+    public class GTribCompraGov
+    {
+        [XmlIgnore]
+        public double PAliqIBSUF { get; set; }
+
+        [XmlElement("pAliqIBSUF")]
+        public string PAliqIBSUFField
+        {
+            get => PAliqIBSUF.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqIBSUF = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VTribIBSUF { get; set; }
+
+        [XmlElement("vTribIBSUF")]
+        public string VTribIBSUFField
+        {
+            get => VTribIBSUF.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribIBSUF = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PAliqIBSMun { get; set; }
+
+        [XmlElement("pAliqIBSMun")]
+        public string PAliqIBSMunField
+        {
+            get => PAliqIBSMun.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqIBSMun = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VTribIBSMun { get; set; }
+
+        [XmlElement("vTribIBSMun")]
+        public string VTribIBSMunField
+        {
+            get => VTribIBSMun.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribIBSMun = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PAliqCBS { get; set; }
+
+        [XmlElement("pAliqCBS")]
+        public string PAliqCBSField
+        {
+            get => PAliqCBS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqCBS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VTribCBS { get; set; }
+
+        [XmlElement("vTribCBS")]
+        public string VTribCBSField
+        {
+            get => VTribCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribCBS = Converter.ToDouble(value);
+        }
+
+    }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1583,6 +2051,19 @@ namespace Unimake.Business.DFe.Xml.NFCom
             get => VNF.ToString("F2", CultureInfo.InvariantCulture);
             set => VNF = Converter.ToDouble(value);
         }
+
+        [XmlElement("IBSCBSTot")]
+        public IBSCBSTot IBSCBSTot { get; set; }
+
+        [XmlIgnore]
+        public double VTotDFe { get; set; }
+
+        [XmlElement("vTotDFe")]
+        public string VTotDFeField
+        {
+            get => VTotDFe.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTotDFe = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -1639,6 +2120,209 @@ namespace Unimake.Business.DFe.Xml.NFCom
     [ComVisible(true)]
 #endif
     public class VRetTribTotNFCom : VRetTribTot { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.IBSCBSTot")]
+    [ComVisible(true)]
+#endif
+
+    public class IBSCBSTot
+    {
+        [XmlIgnore]
+        public double VBCIBSCBS { get; set; }
+
+        [XmlElement("vBCIBSCBS")]
+        public string VBCIBSCBSField
+        {
+            get => VBCIBSCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCIBSCBS = Converter.ToDouble(value);
+        }
+
+        [XmlElement("gIBS")]
+        public GIBSTot GIBSTot { get; set; }
+
+        [XmlElement("gCBS")]
+        public GCBSTot GCBSTot { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GIBSTot")]
+    [ComVisible(true)]
+#endif
+    public class GIBSTot
+    {
+        [XmlElement("gIBSUF")]
+        public GIBSUFTot GIBSUFTot { get; set; }
+
+        [XmlElement("gIBSMun")]
+        public GIBSMunTot GIBSMunTot { get; set; }
+
+        [XmlIgnore]
+        public double VIBS { get; set; }
+
+        [XmlElement("vIBS")]
+        public string VIBSField
+        {
+            get => VIBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VCredPres { get; set; }
+
+        [XmlElement("vCredPres")]
+        public string VCredPresField
+        {
+            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPres = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VCredPresCondSus { get; set; }
+
+        [XmlElement("vCredPresCondSus")]
+        public string VCredPresCondSusField
+        {
+            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPresCondSus = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GIBSUFTot")]
+    [ComVisible(true)]
+#endif
+    public class GIBSUFTot
+    {
+        [XmlIgnore]
+        public double VDif { get; set; }
+
+        [XmlElement("vDif")]
+        public string VDifField
+        {
+            get => VDif.ToString("F2", CultureInfo.InvariantCulture);
+            set => VDif = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VDevTrib { get; set; }
+
+        [XmlElement("vDevTrib")]
+        public string VDevTribField
+        {
+            get => VDevTrib.ToString("F2", CultureInfo.InvariantCulture);
+            set => VDevTrib = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VIBSUF { get; set; }
+
+        [XmlElement("vIBSUF")]
+        public string VIBSUFField
+        {
+            get => VIBSUF.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSUF = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GIBSMunTot")]
+    [ComVisible(true)]
+#endif
+    public class GIBSMunTot
+    {
+        [XmlIgnore]
+        public double VDif { get; set; }
+
+        [XmlElement("vDif")]
+        public string VDifField
+        {
+            get => VDif.ToString("F2", CultureInfo.InvariantCulture);
+            set => VDif = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VDevTrib { get; set; }
+
+        [XmlElement("vDevTrib")]
+        public string VDevTribField
+        {
+            get => VDevTrib.ToString("F2", CultureInfo.InvariantCulture);
+            set => VDevTrib = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VIBSMun { get; set; }
+
+        [XmlElement("vIBSMun")]
+        public string VIBSMunField
+        {
+            get => VIBSMun.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSMun = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GCBSTot")]
+    [ComVisible(true)]
+#endif
+    public class  GCBSTot
+    {
+        [XmlIgnore]
+        public double VDif { get; set; }
+
+        [XmlElement("vDif")]
+        public string VDifField
+        {
+            get => VDif.ToString("F2", CultureInfo.InvariantCulture);
+            set => VDif = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VDevTrib { get; set; }
+
+        [XmlElement("vDevTrib")]
+        public string VDevTribField
+        {
+            get => VDevTrib.ToString("F2", CultureInfo.InvariantCulture);
+            set => VDevTrib = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VCBS { get; set; }
+
+        [XmlElement("vCBS")]
+        public string VCBSField
+        {
+            get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VCredPres { get; set; }
+
+        [XmlElement("vCredPres")]
+        public string VCredPresField
+        {
+            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPres = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VCredPresCondSus { get; set; }
+
+        [XmlElement("vCredPresCondSus")]
+        public string VCredPresCondSusField
+        {
+            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPresCondSus = Converter.ToDouble(value);
+        }
+    }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
