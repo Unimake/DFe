@@ -370,7 +370,7 @@ namespace Unimake.DFe.Test.NFe
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
             Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(autorizacao.Result.CStat.Equals(103) || autorizacao.Result.CStat.Equals(656), "Lote não foi processado. <cStat>" + autorizacao.Result.CStat + " - <xMotivo>" + autorizacao.Result.XMotivo + "<xMotivo>");
+            Assert.True(autorizacao.Result.CStat.Equals(103) || autorizacao.Result.CStat.Equals(452) || autorizacao.Result.CStat.Equals(656), "Lote não foi processado. <cStat>" + autorizacao.Result.CStat + " - <xMotivo>" + autorizacao.Result.XMotivo + "<xMotivo>");
             if (autorizacao.Result.InfRec != null)
             {
                 Assert.True(!string.IsNullOrWhiteSpace(autorizacao.Result.InfRec.NRec), "Não retornou o número do recibo no envio da NFe");

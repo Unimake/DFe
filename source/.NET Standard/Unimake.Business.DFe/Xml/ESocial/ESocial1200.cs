@@ -748,7 +748,43 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação do estabelecimento e lotação
         /// </summary>
         [XmlElement("ideEstabLot")]
-        public IdeEstabLot IdeEstabLot { get; set; }
+        public List<IdeEstabLot> IdeEstabLot { get; set; }
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddIdeEstabLot(IdeEstabLot item)
+        {
+            if (IdeEstabLot == null)
+            {
+                IdeEstabLot = new List<IdeEstabLot>();
+            }
+
+            IdeEstabLot.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista IdeEstabLot (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da IdeEstabLot</returns>
+        public IdeEstabLot GetIdeEstabLot(int index)
+        {
+            if ((IdeEstabLot?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return IdeEstabLot[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista IdeEstabLot
+        /// </summary>
+        public int GetIdeEstabLotCount => (IdeEstabLot != null ? IdeEstabLot.Count : 0);
+#endif
     }
 
     /// <summary>
