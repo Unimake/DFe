@@ -429,7 +429,6 @@
 		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItamogiMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItapemaSC.xml" />
-		<None Remove="Servicos\Config\NFSe\ItapetingaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaporangaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaquaquecetubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItatingaSP.xml" />
@@ -1304,7 +1303,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItajaiSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItamogiMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItapetingaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ItapetiningaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItatingaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuquiaSP.xml" />

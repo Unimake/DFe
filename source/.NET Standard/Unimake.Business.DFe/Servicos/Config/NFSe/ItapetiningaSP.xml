@@ -8,10 +8,10 @@
 			<WebActionHomologacao>Abrasf2action/AHRECEPCIONARLOTERPSSINCRONO.Execute</WebActionHomologacao>
 			<WebActionProducao>Abrasf2action/ARECEPCIONARLOTERPSSINCRONO.Execute</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>EnviarLoteRpsSincronoEnvio</TagAssinatura>
-			<TagAtributoID>LoteRps</TagAtributoID>
-			<TagLoteAssinatura>Rps</TagLoteAssinatura>
-			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:abr="Abrasf2"><soapenv:Header/><soapenv:Body><abr:RecepcionarLoteRpsSincrono.Execute><abr:Entrada>{xmlBodyScape}</abr:Entrada></abr:RecepcionarLoteRpsSincrono.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:abr="Abrasf2"><soapenv:Header/><soapenv:Body><abr:hRecepcionarLoteRpsSincrono.Execute><abr:Entrada>{xmlBodyScape}</abr:Entrada></abr:hRecepcionarLoteRpsSincrono.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
@@ -20,7 +20,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
-			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</RecepcionarLoteRpsSincrono>
 		<CancelarNfse versao="2.01">
@@ -30,8 +29,8 @@
 			<WebActionHomologacao>Abrasf2action/AHCANCELARNFSE.Execute</WebActionHomologacao>
 			<WebActionProducao>Abrasf2action/ACANCELARNFSE.Execute</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
@@ -42,7 +41,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
-			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</CancelarNfse>
 		<ConsultarNfsePorRps versao="2.01">

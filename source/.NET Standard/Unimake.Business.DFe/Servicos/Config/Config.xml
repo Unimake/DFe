@@ -1964,7 +1964,7 @@
 	<Arquivo ID="3522307">
 		<Nome>Itapetininga - SP</Nome>
 		<UF>SP</UF>
-		<ArqConfig>ItapetingaSP.xml</ArqConfig>
+		<ArqConfig>ItapetiningaSP.xml</ArqConfig>
 		<PadraoNFSe>JLSOFT</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
