@@ -8,10 +8,10 @@
 			<WebActionHomologacao>Abrasf2action/AHRECEPCIONARLOTERPSSINCRONO.Execute</WebActionHomologacao>
 			<WebActionProducao>Abrasf2action/ARECEPCIONARLOTERPSSINCRONO.Execute</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagAssinatura>EnviarLoteRpsSincronoEnvio</TagAssinatura>
+			<TagAtributoID>LoteRps</TagAtributoID>
+			<TagLoteAssinatura>Rps</TagLoteAssinatura>
+			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:abr="Abrasf2"><soapenv:Header/><soapenv:Body><abr:RecepcionarLoteRpsSincrono.Execute><abr:Entrada>{xmlBodyScape}</abr:Entrada></abr:RecepcionarLoteRpsSincrono.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:abr="Abrasf2"><soapenv:Header/><soapenv:Body><abr:hRecepcionarLoteRpsSincrono.Execute><abr:Entrada>{xmlBodyScape}</abr:Entrada></abr:hRecepcionarLoteRpsSincrono.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
@@ -21,6 +21,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</RecepcionarLoteRpsSincrono>
 		<CancelarNfse versao="2.01">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
@@ -42,6 +43,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</CancelarNfse>
 		<ConsultarNfsePorRps versao="2.01">
 			<Descricao>Consulta NFSe por RPS</Descricao>
@@ -63,6 +65,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>
