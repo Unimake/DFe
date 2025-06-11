@@ -247,7 +247,7 @@ namespace Unimake.DFe.Test.NFCom
                             },
                             Imposto = new Imposto
                             {
-                                ICMS00 = new ICMS00NFCom
+                                ICMS00 = new ICMS00
                                 {
                                     CST = "00",
                                     VBC = 1.11,
@@ -270,14 +270,14 @@ namespace Unimake.DFe.Test.NFCom
                                         CBenefUFDest = "11"
                                     }
                                 },
-                                PIS = new PISNFCom
+                                PIS = new PIS
                                 {
                                     CST = CSTPisCofins.OperacaoComSuspensao,
                                     VBC = 1587.45,
                                     PPIS = 123.4500,
                                     VPIS = 1587.45
                                 },
-                                COFINS = new COFINSNFCom
+                                COFINS = new COFINS
                                 {
                                     CST = CSTPisCofins.AliquotaBasica,
                                     VBC = 11.98,
@@ -296,7 +296,7 @@ namespace Unimake.DFe.Test.NFCom
                                     PFUNTTEL = 1.4700,
                                     VFUNTTEL = 1.47
                                 },
-                                RetTribNFCom = new RetTribNFCom
+                                RetTrib = new RetTrib
                                 {
                                     VRetPIS = 1444.85M,
                                     VRetCofins = 1444.85M,
@@ -449,7 +449,7 @@ namespace Unimake.DFe.Test.NFCom
                         VPIS = 1.54,
                         VFUNTTEL = 1.54,
                         VFUST = 1.54,
-                        VRetTribTot = new VRetTribTotNFCom
+                        VRetTribTot = new VRetTribTot
                         {
                             VRetPIS = 1.54,
                             VRetCofins = 1.54,
@@ -491,14 +491,14 @@ namespace Unimake.DFe.Test.NFCom
                         },
                         VTotDFe = 1.54
                     },
-                    AutXML = new System.Collections.Generic.List<AutXMLNFCom>
+                    AutXML = new System.Collections.Generic.List<AutXML>
                     {
-                        new AutXMLNFCom
+                        new AutXML
                         {
                             CNPJ = "06117473000150"
                         }
                     },
-                    InfAdic = new InfAdicNFCom
+                    InfAdic = new InfAdic
                     {
                         InfAdFisco = "teste total da NFCom",
                         InfCpl = new System.Collections.Generic.List<string>
@@ -507,7 +507,7 @@ namespace Unimake.DFe.Test.NFCom
                             "Informacao 2"
                         }
                     },
-                    GRespTec = new GRespTecNFCom
+                    GRespTec = new GRespTec
                     {
                         CNPJ = "06117473000150",
                         XContato = "Fulano de tal",
