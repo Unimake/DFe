@@ -8,12 +8,8 @@ using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.NF3e;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Collections.Concurrent;
-using System.Xml.Schema;
 using System.Xml;
 
 namespace Unimake.Business.DFe.Xml.NFCom
@@ -1040,7 +1036,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.ICMS00NFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.ICMS00")]
     [ComVisible(true)]
 #endif
     public class ICMS00 
@@ -1108,7 +1104,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.ICMS20NFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.ICMS20")]
     [ComVisible(true)]
 #endif
     public class ICMS20
@@ -1203,7 +1199,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.ICMS40NFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.ICMS40")]
     [ComVisible(true)]
 #endif
     public class ICMS40
@@ -1235,14 +1231,14 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.ICMS51NFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.ICMS51")]
     [ComVisible(true)]
 #endif
     public class ICMS51 : ICMS40 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.ICMS90NFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.ICMS90")]
     [ComVisible(true)]
 #endif
     public class ICMS90
@@ -1435,7 +1431,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.PISNFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.PIS")]
     [ComVisible(true)]
 #endif
     public class PIS
@@ -1476,7 +1472,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.COFINSNFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.COFINS")]
     [ComVisible(true)]
 #endif
     public class COFINS
@@ -1593,7 +1589,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.RetTribNFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.RetTrib")]
     [ComVisible(true)]
 #endif
     public class RetTrib
@@ -2459,7 +2455,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.VRetTribTotNFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.VRetTribTot")]
     [ComVisible(true)]
 #endif
     public class VRetTribTot
@@ -2865,7 +2861,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.GPixNFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GPix")]
     [ComVisible(true)]
 #endif
     public class GPix
@@ -2897,7 +2893,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.AutXMLNFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.AutXML")]
     [ComVisible(true)]
 #endif
     public class AutXML
@@ -2911,7 +2907,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.InfAdicNFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.InfAdic")]
     [ComVisible(true)]
 #endif
     public class InfAdic
@@ -2968,7 +2964,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.GRespTecNFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GRespTec")]
     [ComVisible(true)]
 #endif
     public class GRespTec
