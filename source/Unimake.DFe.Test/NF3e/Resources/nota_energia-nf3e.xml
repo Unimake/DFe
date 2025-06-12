@@ -86,12 +86,8 @@
 				<tpFonteEnergia>1</tpFonteEnergia>
 				<enerAloc>14.190</enerAloc>
 				<tpPosTar>0</tpPosTar>
-				<enerAloc>15.202</enerAloc>
-				<tpPosTar>0</tpPosTar>
 				<enerInjet>1155.501</enerInjet>
 				<tpPosTarInjet>0</tpPosTarInjet>
-				<enerInjet>2.669</enerInjet>
-				<tpPosTarInjet>1</tpPosTarInjet>
 			</gConsumidor>
 			<gConsumidor>
 				<idAcessGer>FVD9785</idAcessGer>
@@ -285,6 +281,14 @@
 									<vCredPres>30.00</vCredPres>
 									<vCredPresCondSus>5.00</vCredPresCondSus>
 								</gCBSCredPres>
+								<gTribCompraGov>
+									<pAliqIBSUF>1.0000</pAliqIBSUF>
+									<vTribIBSUF>1.11</vTribIBSUF>
+									<pAliqIBSMun>2.0000</pAliqIBSMun>
+									<vTribIBSMun>2.22</vTribIBSMun>
+									<pAliqCBS>3.0000</pAliqCBS>
+									<vTribCBS>3.33</vTribCBS>
+								</gTribCompraGov>
 							</gIBSCBS>
 						</IBSCBS>
 					</imposto>
@@ -339,7 +343,7 @@
 			<vPISEfet>14.11</vPISEfet>
 			<vNF>111111.45</vNF>
 			<IBSCBSTot>
-				<vBCIBSCBS>vBCIBSCBS1</vBCIBSCBS>
+				<vBCIBSCBS>1.00</vBCIBSCBS>
 				<gIBS>
 					<gIBSUF>
 						<vDif>1.22</vDif>
