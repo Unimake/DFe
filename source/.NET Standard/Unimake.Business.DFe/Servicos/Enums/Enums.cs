@@ -13826,6 +13826,12 @@ namespace Unimake.Business.DFe.Servicos
         FgtsPeriodoAnteriorDecimoTerceiroSalarioAprendizContratoVerdeAmarelo = 18,
 
         /// <summary>
+        /// 19 - FGTS - Avulsos não portuários
+        /// </summary>
+        [XmlEnum("19")]
+        FgtsAvulsosNaoPortuarios = 19,
+
+        /// <summary>
         /// 21 - FGTS mês da rescisão
         /// </summary>
         [XmlEnum("21")]
