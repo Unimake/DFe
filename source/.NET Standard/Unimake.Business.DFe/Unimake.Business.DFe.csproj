@@ -3149,7 +3149,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.5" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.6" />
 		<PackageReference Include="Unimake.Cryptography" Version="20250609.1933.44" />
 		<PackageReference Include="Unimake.Extensions" Version="20250609.1933.44" />
 		<PackageReference Include="Unimake.Utils" Version="20250609.1933.44" />
