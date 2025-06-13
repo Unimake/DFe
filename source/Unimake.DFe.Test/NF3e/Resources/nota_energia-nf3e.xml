@@ -210,8 +210,8 @@
 							<vIRRF>234.55</vIRRF>
 						</retTrib>
 						<IBSCBS>
-							<CST>01</CST>
-							<cClassTrib>12345678</cClassTrib>
+							<CST>013</CST>
+							<cClassTrib>123456</cClassTrib>
 							<gIBSCBS>
 								<vBC>1000.00</vBC>
 								<gIBSUF>
@@ -260,8 +260,8 @@
 									<vCBS>25.00</vCBS>
 								</gCBS>
 								<gTribRegular>
-									<CSTReg>04</CSTReg>
-									<cClassTribReg>87654321</cClassTribReg>
+									<CSTReg>041</CSTReg>
+									<cClassTribReg>876543</cClassTribReg>
 									<pAliqEfetRegIBSUF>1.6000</pAliqEfetRegIBSUF>
 									<vTribRegIBSUF>16.00</vTribRegIBSUF>
 									<pAliqEfetRegIBSMun>0.8000</pAliqEfetRegIBSMun>
@@ -272,14 +272,12 @@
 								<gIBSCredPres>
 									<cCredPres>1111</cCredPres>
 									<pCredPres>5.0000</pCredPres>
-									<vCredPres>50.00</vCredPres>
 									<vCredPresCondSus>10.00</vCredPresCondSus>
 								</gIBSCredPres>
 								<gCBSCredPres>
 									<cCredPres>2222</cCredPres>
 									<pCredPres>3.0000</pCredPres>
 									<vCredPres>30.00</vCredPres>
-									<vCredPresCondSus>5.00</vCredPresCondSus>
 								</gCBSCredPres>
 								<gTribCompraGov>
 									<pAliqIBSUF>1.0000</pAliqIBSUF>

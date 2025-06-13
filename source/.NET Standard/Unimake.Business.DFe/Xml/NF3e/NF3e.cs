@@ -3076,6 +3076,14 @@ namespace Unimake.Business.DFe.Xml.NF3e
             get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
             set => VCredPresCondSus = Converter.ToDouble(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVCredPresField() => VCredPresCondSus <= 0;
+
+        public bool ShouldSerializeVCredPresCondSusField() => VCredPres <= 0;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -3142,6 +3150,14 @@ namespace Unimake.Business.DFe.Xml.NF3e
             get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
             set => VCredPresCondSus = Converter.ToDouble(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVCredPresField() => VCredPresCondSus <= 0;
+
+        public bool ShouldSerializeVCredPresCondSusField() => VCredPres <= 0;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -3527,7 +3543,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Totalização do IBS de competência Municipal
         /// </summary>
         [XmlElement("gIBSMun")]
-        public GIBSMunTot GCBS { get; set; }
+        public GIBSMunTot GIBSMun { get; set; }
 
         /// <summary>
         /// Total do IBS (IBS UF + IBS Mun)

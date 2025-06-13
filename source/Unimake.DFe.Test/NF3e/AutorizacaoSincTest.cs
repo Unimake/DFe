@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NF3e;
 using Unimake.Business.DFe.Xml.NF3e;
@@ -77,7 +79,7 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void EnviarNF3eSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            var conteudoXML = MontarXMLNF3e(ufBrasil, tipoAmbiente);
+            var nf3eObjeto = MontarXMLNF3e(ufBrasil, tipoAmbiente);
 
             var configuracao = new Configuracao
             {
@@ -86,7 +88,7 @@ namespace Unimake.DFe.Test.NF3e
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var autorizacaoSincNF3e = new AutorizacaoSinc(conteudoXML, configuracao);
+            var autorizacaoSincNF3e = new AutorizacaoSinc(nf3eObjeto, configuracao);
             autorizacaoSincNF3e.Executar();
         }
 
@@ -116,7 +118,12 @@ namespace Unimake.DFe.Test.NF3e
                         NSiteAutoriz = "0",
                         CMunFG = "1234567",
                         FinNF3e = FinalidadeNF3e.Normal,
-                        VerProc = "verProc1"
+                        VerProc = "verProc1",
+                        GCompraGov = new GCompraGov
+                        {
+                            TpEnteGov = TipoEnteGovernamental.Uniao,
+                            PRedutor = 1.00
+                        }
                     },
                     Emit = new Emit
                     {
@@ -200,7 +207,9 @@ namespace Unimake.DFe.Test.NF3e
                                 VPotInst = 12789.014,
                                 TpFonteEnergia = TipoFonteEnergia.Hidraulica,
                                 EnerAloc = 14.19,
-                                TpPosTar = TipoPostoTarifario.Unico
+                                TpPosTar = TipoPostoTarifario.Unico,
+                                EnerInjet = 117.45,
+                                TpPosTarInjet = TipoPostoTarifario.Intermediario
                             },
                             new GConsumidor
                             {
@@ -349,6 +358,104 @@ namespace Unimake.DFe.Test.NF3e
                                                 VRetCSLL = 33,
                                                 VBCIRRF = 25,
                                                 VIRRF = 234.55M
+                                            },
+                                            IBSCBS = new IBSCBS
+                                            {
+                                                CST = "123",
+                                                CClassTrib = "123456",
+                                                GIBSCBS = new GIBSCBS
+                                                {
+                                                    VBC = 11.11,
+                                                    GIBSUF = new GIBSUF
+                                                    {
+                                                        PIBSUF = 1.113,
+                                                        GDif = new GDif
+                                                        {
+                                                            PDif = 1.1154,
+                                                            VDif = 11.11
+                                                        },
+                                                        GDevTrib = new GDevTrib
+                                                        {
+                                                            VDevTrib = 115.80
+                                                        },
+                                                        GRed = new GRed
+                                                        {
+                                                            PRedAliq = 1.1154,
+                                                            PAliqEfet = 1.448
+                                                        },
+                                                        VIBSUF = 111.58
+                                                    },
+                                                    GIBSMun = new GIBSMun
+                                                    {
+                                                        PIBSMun = 11.4844,
+                                                        GDif = new GDif
+                                                        {
+                                                            PDif = 1.1154,
+                                                            VDif = 11.11
+                                                        },
+                                                        GDevTrib = new GDevTrib
+                                                        {
+                                                            VDevTrib = 115.80
+                                                        },
+                                                        GRed = new GRed
+                                                        {
+                                                            PRedAliq = 1.1154,
+                                                            PAliqEfet = 1.448
+                                                        },
+                                                        VIBSMun = 169.89
+                                                    },
+                                                    GCBS = new GCBS
+                                                    {
+                                                        PCBS = 11.454,
+                                                        GDif = new GDif
+                                                        {
+                                                            PDif = 1.1154,
+                                                            VDif = 11.11
+                                                        },
+                                                        GDevTrib = new GDevTrib
+                                                        {
+                                                            VDevTrib = 115.80
+                                                        },
+                                                        GRed = new GRed
+                                                        {
+                                                            PRedAliq = 1.1154,
+                                                            PAliqEfet = 1.448
+                                                        },
+                                                        VCBS = 1587.56
+                                                    },
+                                                    GTribRegular = new GTribRegular
+                                                    {
+                                                        CSTReg = "041",
+                                                        CClassTribReg = "876543",
+                                                        PAliqEfetRegIBSUF = 1.6000,
+                                                        VTribRegIBSUF = 16.00,
+                                                        PAliqEfetRegIBSMun = 0.8000,
+                                                        VTribRegIBSMun = 8.00,
+                                                        PAliqEfetRegCBS = 2.7000,
+                                                        VTribRegCBS = 27.00
+                                                    },
+                                                    GIBSCredPres = new GIBSCredPres
+                                                    {
+                                                        CCredPres = "1111",
+                                                        PCredPres = 5.0000,
+                                                        VCredPresCondSus = 50.00,
+                                                    },
+                                                    GCBSCredPres = new GCBSCredPres
+                                                    {
+                                                        CCredPres = "2222",
+                                                        PCredPres = 3.0000,
+                                                        VCredPres = 30.00,
+                                                    },
+                                                    GTribCompraGov = new GTribCompraGov
+                                                    {
+                                                        PAliqIBSUF = 1.0000,
+                                                        VTribIBSUF = 1.11,
+                                                        PAliqIBSMun = 2.0000,
+                                                        VTribIBSMun = 2.22,
+                                                        PAliqCBS = 3.0000,
+                                                        VTribCBS = 3.33
+                                                    }
+                                                }
                                             }
                                         },
                                         GProcRef = new GProcRef
@@ -410,7 +517,38 @@ namespace Unimake.DFe.Test.NF3e
                         VCOFINSEfet = 11.1,
                         VPIS = 14.11,
                         VPISEfet = 14.11,
-                        VNF = 111111.45
+                        VNF = 111111.45,
+                        IBSCBSTot = new IBSCBSTot
+                        {
+                            VBCIBSCBS = 1.00,
+                            GIBS = new GIBS
+                            {
+                                GIBSUF = new GIBSUFTot
+                                {
+                                    VDif = 1.22,
+                                    VDevTrib = 1.29,
+                                    VIBSUF = 11.58
+                                },
+                                GIBSMun = new GIBSMunTot
+                                {
+                                    VDif = 1.77,
+                                    VDevTrib = 1.99,
+                                    VIBSMun = 155.89
+                                },
+                                VIBS = 1.17,
+                                VCredPres = 117.40,
+                                VCredPresCondSus = 1.59
+                            },
+                            GCBS = new GCBSTot
+                            {
+                                VDif = 22.22,
+                                VDevTrib = 23.33,
+                                VCBS = 44.44,
+                                VCredPres = 55.55,
+                                VCredPresCondSus = 66.66
+                            }
+                        },
+                        VTotDFe = 1000.55
                     },
                     GFat = new GFat
                     {
@@ -568,6 +706,32 @@ namespace Unimake.DFe.Test.NF3e
             };
 
             return xml;
+        }
+
+        [Theory]
+        [Trait("DFe", "NF3e")]
+        [InlineData(TipoAmbiente.Homologacao, @"..\..\..\NF3e\Resources\nota_energia-nf3e.xml")]
+        [InlineData(TipoAmbiente.Producao, @"..\..\..\NF3e\Resources\nota_energia-nf3e.xml")]
+        public void EnviarNF3eSincronoXml(TipoAmbiente tipoAmbiente, string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NF3e,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+            };
+
+            var nf3eSincrono = new Business.DFe.Xml.NF3e.NF3e();
+            var nf3eSincronoObjeto = nf3eSincrono.LerXML<Business.DFe.Xml.NF3e.NF3e>(doc);
+
+            var autorizarNf3eSincrono = new AutorizacaoSinc(nf3eSincronoObjeto, configuracao);
+            autorizarNf3eSincrono.Executar();
         }
     }
 }
