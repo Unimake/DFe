@@ -86,12 +86,8 @@
 				<tpFonteEnergia>1</tpFonteEnergia>
 				<enerAloc>14.190</enerAloc>
 				<tpPosTar>0</tpPosTar>
-				<enerAloc>15.202</enerAloc>
-				<tpPosTar>0</tpPosTar>
 				<enerInjet>1155.501</enerInjet>
 				<tpPosTarInjet>0</tpPosTarInjet>
-				<enerInjet>2.669</enerInjet>
-				<tpPosTarInjet>1</tpPosTarInjet>
 			</gConsumidor>
 			<gConsumidor>
 				<idAcessGer>FVD9785</idAcessGer>
@@ -214,8 +210,8 @@
 							<vIRRF>234.55</vIRRF>
 						</retTrib>
 						<IBSCBS>
-							<CST>01</CST>
-							<cClassTrib>12345678</cClassTrib>
+							<CST>013</CST>
+							<cClassTrib>123456</cClassTrib>
 							<gIBSCBS>
 								<vBC>1000.00</vBC>
 								<gIBSUF>
@@ -264,8 +260,8 @@
 									<vCBS>25.00</vCBS>
 								</gCBS>
 								<gTribRegular>
-									<CSTReg>04</CSTReg>
-									<cClassTribReg>87654321</cClassTribReg>
+									<CSTReg>041</CSTReg>
+									<cClassTribReg>876543</cClassTribReg>
 									<pAliqEfetRegIBSUF>1.6000</pAliqEfetRegIBSUF>
 									<vTribRegIBSUF>16.00</vTribRegIBSUF>
 									<pAliqEfetRegIBSMun>0.8000</pAliqEfetRegIBSMun>
@@ -276,15 +272,21 @@
 								<gIBSCredPres>
 									<cCredPres>1111</cCredPres>
 									<pCredPres>5.0000</pCredPres>
-									<vCredPres>50.00</vCredPres>
 									<vCredPresCondSus>10.00</vCredPresCondSus>
 								</gIBSCredPres>
 								<gCBSCredPres>
 									<cCredPres>2222</cCredPres>
 									<pCredPres>3.0000</pCredPres>
 									<vCredPres>30.00</vCredPres>
-									<vCredPresCondSus>5.00</vCredPresCondSus>
 								</gCBSCredPres>
+								<gTribCompraGov>
+									<pAliqIBSUF>1.0000</pAliqIBSUF>
+									<vTribIBSUF>1.11</vTribIBSUF>
+									<pAliqIBSMun>2.0000</pAliqIBSMun>
+									<vTribIBSMun>2.22</vTribIBSMun>
+									<pAliqCBS>3.0000</pAliqCBS>
+									<vTribCBS>3.33</vTribCBS>
+								</gTribCompraGov>
 							</gIBSCBS>
 						</IBSCBS>
 					</imposto>
@@ -339,7 +341,7 @@
 			<vPISEfet>14.11</vPISEfet>
 			<vNF>111111.45</vNF>
 			<IBSCBSTot>
-				<vBCIBSCBS>vBCIBSCBS1</vBCIBSCBS>
+				<vBCIBSCBS>1.00</vBCIBSCBS>
 				<gIBS>
 					<gIBSUF>
 						<vDif>1.22</vDif>

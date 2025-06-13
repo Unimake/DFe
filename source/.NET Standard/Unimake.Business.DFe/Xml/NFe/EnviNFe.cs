@@ -13549,6 +13549,14 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
             set => VCredPresCondSus = Converter.ToDouble(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVCredPresField() => VCredPresCondSus <= 0;
+
+        public bool ShouldSerializeVCredPresCondSusField() => VCredPres <= 0;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -13616,6 +13624,14 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
             set => VCredPresCondSus = Converter.ToDouble(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVCredPresField() => VCredPresCondSus <= 0;
+
+        public bool ShouldSerializeVCredPresCondSusField() => VCredPres <= 0;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -14294,38 +14310,6 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class GCBSTot
     {
         /// <summary>
-        /// Valor total do crédito presumido
-        /// </summary>
-        [XmlIgnore]
-        public double VCredPres { get; set; }
-
-        /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vCredPres para atribuir ou resgatar o valor)
-        /// </summary>
-        [XmlElement("vCredPres")]
-        public string VCredPresField
-        {
-            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPres = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Valor total do crédito presumido em condição suspensiva
-        /// </summary>
-        [XmlIgnore]
-        public double VCredPresCondSus { get; set; }
-
-        /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vCredPresCondSus para atribuir ou resgatar o valor)
-        /// </summary>
-        [XmlElement("vCredPresCondSus")]
-        public string VCredPresCondSusField
-        {
-            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPresCondSus = Converter.ToDouble(value);
-        }
-
-        /// <summary>
         /// Valor total do diferimento
         /// </summary>
         [XmlIgnore]
@@ -14372,7 +14356,40 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VCBS = Converter.ToDouble(value);
         }
+
+        /// <summary>
+        /// Valor total do crédito presumido
+        /// </summary>
+        [XmlIgnore]
+        public double VCredPres { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vCredPres para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCredPres")]
+        public string VCredPresField
+        {
+            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPres = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor total do crédito presumido em condição suspensiva
+        /// </summary>
+        [XmlIgnore]
+        public double VCredPresCondSus { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vCredPresCondSus para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCredPresCondSus")]
+        public string VCredPresCondSusField
+        {
+            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPresCondSus = Converter.ToDouble(value);
+        }
     }
+
     /// <summary>
     /// Grupo total da Monofasia
     /// </summary>

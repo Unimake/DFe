@@ -459,6 +459,11 @@
 								<xs:documentation>Total do Crédito Presumido</xs:documentation>
 							</xs:annotation>
 						</xs:element>
+						<xs:element name="vCredPresCondSus" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Crédito Presumido Condição Suspensiva</xs:documentation>
+							</xs:annotation>
+						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -486,6 +491,11 @@
 						<xs:element name="vCredPres" type="nf3e:TDec1302">
 							<xs:annotation>
 								<xs:documentation>Total do Crédito Presumido</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCredPresCondSus" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Crédito Presumido Condição Suspensiva</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -544,17 +554,17 @@
 			<xs:sequence minOccurs="0">
 				<xs:element name="qBCMono" type="nf3e:TDec_1104Op">
 				<xs:annotation>
-					<xs:documentation>Quantidade tributada.</xs:documentation>
+						<xs:documentation>Quantidade tributada na monofasia</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="adRemIBS" type="nf3e:TDec_0302_04">
 				<xs:annotation>
-					<xs:documentation>Alíquota específica do IBS.</xs:documentation>
+						<xs:documentation>Alíquota ad rem do IBS</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="adRemCBS" type="nf3e:TDec_0302_04">
 				<xs:annotation>
-					<xs:documentation>Alíquota específiac da CBS.</xs:documentation>
+						<xs:documentation>Alíquota ad rem da CBS</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="vIBSMono" type="nf3e:TDec1302">
@@ -680,7 +690,7 @@
 								<xs:documentation>Aliquota do IBS de competência das UF</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="gDif" type="nf3e:TDifIBS" minOccurs="0">
+						<xs:element name="gDif" type="nf3e:TDif" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Grupo de campos do Diferimento</xs:documentation>
 							</xs:annotation>
@@ -714,7 +724,7 @@
 								<xs:documentation>Aliquota do IBS Municipal</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="gDif" type="nf3e:TDifIBS" minOccurs="0">
+						<xs:element name="gDif" type="nf3e:TDif" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Grupo de campos do Diferimento</xs:documentation>
 							</xs:annotation>
@@ -748,7 +758,7 @@
 								<xs:documentation>Aliquota da CBS</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="gDif" type="nf3e:TDifCBS" minOccurs="0">
+						<xs:element name="gDif" type="nf3e:TDif" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Grupo de campos do Diferimento</xs:documentation>
 							</xs:annotation>
@@ -839,24 +849,7 @@
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="TDifIBS">
-		<xs:annotation>
-			<xs:documentation>Tipo Diferimento</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="pDif" type="nf3e:TDec_0302_04">
-				<xs:annotation>
-					<xs:documentation>Percentual do diferimento</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="vDif" type="nf3e:TDec1302">
-				<xs:annotation>
-					<xs:documentation>Valor do diferimento</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TDifCBS">
+	<xs:complexType name="TDif">
 		<xs:annotation>
 			<xs:documentation>Tipo Diferimento</xs:documentation>
 		</xs:annotation>

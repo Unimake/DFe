@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFCe;
 using Unimake.Business.DFe.Xml.NFe;
@@ -122,17 +121,17 @@ namespace Unimake.DFe.Test.NFCe
             Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
         }
 
-        private EnviNFe MontaXmlEnviNFe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        private EnviNFe MontaXmlEnviNFe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, TipoEmissao tipoEmissao = TipoEmissao.Normal)
         {
             var xml = new EnviNFe
             {
                 Versao = "4.00",
                 IdLote = "000000000000001",
                 IndSinc = SimNao.Sim,
-                NFe = new List<Business.DFe.Xml.NFe.NFe> {
+                NFe = [
                         new Business.DFe.Xml.NFe.NFe
                         {
-                            InfNFe = new List<InfNFe> {
+                            InfNFe = [
                                 new InfNFe
                                 {
                                     Versao = "4.00",
@@ -150,7 +149,7 @@ namespace Unimake.DFe.Test.NFCe
                                         IdDest = DestinoOperacao.OperacaoInterna,
                                         CMunFG = 4118402,
                                         TpImp = FormatoImpressaoDANFE.NFCe,
-                                        TpEmis = TipoEmissao.Normal,
+                                        TpEmis = tipoEmissao,
                                         TpAmb = tipoAmbiente,
                                         FinNFe = FinalidadeNFe.Normal,
                                         IndFinal = SimNao.Sim,
@@ -199,7 +198,7 @@ namespace Unimake.DFe.Test.NFCe
                                         IndIEDest = IndicadorIEDestinatario.NaoContribuinte,
                                         Email = "testenfe@hotmail.com"
                                     },
-                                    Det = new List<Det> {
+                                    Det = [
                                         new Det
                                         {
                                             NItem = 1,
@@ -255,7 +254,7 @@ namespace Unimake.DFe.Test.NFCe
                                                 }
                                             }
                                         }
-                                    },
+                                    ],
                                     Total = new Total
                                     {
                                         ICMSTot = new ICMSTot
@@ -288,15 +287,15 @@ namespace Unimake.DFe.Test.NFCe
                                     },
                                     Pag = new Pag
                                     {
-                                        DetPag = new List<DetPag>
-                                        {
+                                        DetPag =
+                                        [
                                              new DetPag
                                              {
                                                  IndPag = IndicadorPagamento.PagamentoVista,
                                                  TPag = MeioPagamento.Dinheiro,
                                                  VPag = 84.90
                                              }
-                                        }
+                                        ]
                                     },
                                     InfAdic = new InfAdic
                                     {
@@ -310,12 +309,50 @@ namespace Unimake.DFe.Test.NFCe
                                         Fone = "04431414900"
                                     }
                                 }
-                            }
+                            ]
                         }
-                    }
+                    ]
             };
 
             return xml;
+        }
+
+        /// <summary>
+        /// Testar o QRCode versão 2 e 3 da NFCe.
+        /// </summary>
+        /// <param name="ufBrasil"></param>
+        /// <param name="tipoAmbiente"></param>
+        /// <param name="versaoQRCodeNFCe"></param>
+        /// <param name="tipoEmissao"></param>
+        [Theory]
+        [Trait("DFe", "NFCe")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao, 2, TipoEmissao.Normal)]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao, 3, TipoEmissao.Normal)]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao, 2, TipoEmissao.ContingenciaOffLine)]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao, 3, TipoEmissao.ContingenciaOffLine)]
+        public void ValidarSchemaQRCode(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, int versaoQRCodeNFCe, TipoEmissao tipoEmissao)
+        {
+            var xml = MontaXmlEnviNFe(ufBrasil, tipoAmbiente, tipoEmissao);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCe,
+                TipoEmissao = tipoEmissao,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+            };
+
+            if (versaoQRCodeNFCe <= 2)
+            {
+                configuracao.CSC = "HCJBIRTWGCQ3HVQN7DCA0ZY0P2NYT6FVLPJG";
+                configuracao.CSCIDToken = 2;
+                //Para versão 2 não vou definir a propriedade VersaoQRCodeNFCe, pois ela já tem como padrão 2 e quero testar isso.
+            }
+            else
+            {
+                configuracao.VersaoQRCodeNFCe = versaoQRCodeNFCe;
+            }
+
+            var autorizacao = new Autorizacao(xml, configuracao);
         }
     }
 }

@@ -1410,6 +1410,13 @@ namespace Unimake.Business.DFe.Servicos
         public string VersaoConfiguracao { get; set; }
 
         /// <summary>
+        /// Versão do QRCode da NFCe utilizado para gerar o QRCode da NFCe
+        /// 2 = Versão 2 do QRCode NFCe (Padrão Nacional)
+        /// 3 = Versão 3 do QRCode NFCe (Padrão Nacional)
+        /// </summary>
+        public int VersaoQRCodeNFCe { get; set; } = 2;
+
+        /// <summary>
         /// Cookie (caso exista)
         /// IPM v2.8: Após efetuar a primeira requisição na aplicação (seja de emissão ou de cancelamento),
         /// poderá ser obtida a informação referente à sessão.Em seguida, para as próximas requisições,
