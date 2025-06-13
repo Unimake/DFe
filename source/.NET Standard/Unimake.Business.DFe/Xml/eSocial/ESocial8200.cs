@@ -155,17 +155,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoAnotJud
     {
         /// <summary>
-        /// Versão do schema XML - Utilizado somente em tempo de serialização/desserialização, mas não é gerado no XML. Somente de uso interno da DLL para fazer tratamentos entre versões de schemas.
-        /// </summary>
-        [XmlIgnore]
-        public string VersaoSchema { get; set; } = "S_01_02_00";
-
-        /// <summary>
-        /// Retorna somente o valor inteiro da versão para facilitar comparações
-        /// </summary>
-        private int VersaoSchemaInt => Convert.ToInt32(VersaoSchema.Replace("S_", "").Replace("_", ""));
-
-        /// <summary>
         /// Preencher com o número do CPF do trabalhador
         /// </summary>
         [XmlElement("cpfTrab")]
@@ -442,9 +431,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeLocalTrabalho() => !string.IsNullOrEmpty(LocalTrabalho);
 
-        public bool ShouldSerializeTpRegTrab() => VersaoSchemaInt >= 10300;
-        public bool ShouldSerializeTpRegPrev() => VersaoSchemaInt >= 10300;
-
         #endregion
     }
 
@@ -564,12 +550,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class Incorporacao
     {
         /// <summary>
-        /// Versão do schema XML - Utilizado somente em tempo de serialização/desserialização, mas não é gerado no XML. Somente de uso interno da DLL para fazer tratamentos entre versões de schemas.
-        /// </summary>
-        [XmlIgnore]
-        public string VersaoSchema { get; set; } = "S_01_02_00";
-
-        /// <summary>
         /// Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05
         /// </summary>
         [XmlElement("tpInsc")]
@@ -593,12 +573,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("matIncorp")]
         public string MatIncorp { get; set; }
 
-        /// <summary>
-        /// Informações de sucessão do vínculo
-        /// </summary>
-        [XmlElement("sucessaoVinc")]
-        public SucessaoVinc8200 SucessaoVinc { get; set; }
-
         #region ShouldSerialize
 
 #if INTEROP
@@ -609,41 +583,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
 
-        public bool ShouldSerializeSucessaoVinc() => VersaoSchema == "S_01_02_00" && SucessaoVinc != null;
-
         #endregion
-    }
-
-    /// <summary>
-    /// Informações de sucessão do vínculo
-    /// </summary>
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVinc8200")]
-    [ComVisible(true)]
-#endif
-    public class SucessaoVinc8200
-    {
-        /// <summary>
-        /// Preencher com a data da transferência do empregado para o empregador declarante
-        /// </summary>
-        [XmlIgnore]
-#if INTEROP
-        public DateTime DtTransf { get; set; }
-#else
-        public DateTimeOffset DtTransf { get; set; }
-#endif
-
-        [XmlElement("dtTransf")]
-        public string DtTransfField
-        {
-            get => DtTransf.ToString("yyyy-MM-dd");
-#if INTEROP
-            set => DtTransf = DateTime.Parse(value);
-#else
-            set => DtTransf = DateTimeOffset.Parse(value);
-#endif
-        }
     }
 
     /// <summary>

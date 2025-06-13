@@ -804,7 +804,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public double VrPrevOficial13 { get; set; }
 
         [XmlAttribute("vrPrevOficial13")]
-        public string VrPrevOficia13lField
+        public string VrPrevOficial13lField
         {
             get => VrPrevOficial13.ToString("F2", CultureInfo.InvariantCulture);
             set => VrPrevOficial13 = Converter.ToDouble(value);
@@ -1206,7 +1206,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VlrCmpAnoCalField
         {
             get => VlrCmpAnoCal.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrCmpAnoAnt = Converter.ToDouble(value);
+            set => VlrCmpAnoCal = Converter.ToDouble(value);
         }
 
         /// <summary>

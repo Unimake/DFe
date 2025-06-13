@@ -145,7 +145,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dtVenc")]
         public string DtVencField
         {
-            get => DtVenc.ToString("yyyy-MM");
+            get => DtVenc.ToString("yyyy-MM-dd");
 #if INTEROP
             set => DtVenc = DateTime.Parse(value);
 #else

@@ -286,7 +286,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public double VrCRDia { get; set; }
 
         [XmlElement("vrCRDia")]
-        public string CRDiaField
+        public string VrCRDiaField
         {
             get => VrCRDia.ToString("F2", CultureInfo.InvariantCulture);
             set => VrCRDia = Converter.ToDouble(value);

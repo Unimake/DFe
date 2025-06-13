@@ -44,21 +44,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtBasesTrab
     {
-        /// <summary>
-        /// Versão do schema XML - Utilizado somente em tempo de serialização/desserialização, mas não é gerado no XML. Somente de uso interno da DLL para fazer tratamentos entre versões de schemas.
-        /// </summary>
-        [XmlIgnore]
-        public string VersaoSchema { get; set; } = "S_01_02_00";
-
-        /// <summary>
-        /// Retorna somente o valor inteiro da versão para facilitar comparações
-        /// </summary>
-        private int VersaoSchemaInt => Convert.ToInt32(VersaoSchema.Replace("S_", "").Replace("_", ""));
 
         /// <summary>
         /// ID
         /// </summary>
-        [XmlAttribute(AttributeName = "Id")]
+        [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string Id { get; set; }
 
         /// <summary>
@@ -138,7 +128,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeInfoPisPasep() => VersaoSchemaInt >= 10300;
+        public bool ShouldSerializeInfoPisPasep() => InfoPisPasep != null;
 
         #endregion
     }
@@ -359,31 +349,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoInterm5001")]
     [ComVisible(true)]
 #endif
-    public class InfoInterm5001 : InfoInterm1200
-    {
-        /// <summary>
-        /// Versão do schema XML - Utilizado somente em tempo de serialização/desserialização, mas não é gerado no XML. Somente de uso interno da DLL para fazer tratamentos entre versões de schemas.
-        /// </summary>
-        [XmlIgnore]
-        public string VersaoSchema { get; set; } = "S_01_02_00";
-
-        /// <summary>
-        /// Retorna somente o valor inteiro da versão para facilitar comparações
-        /// </summary>
-        private int VersaoSchemaInt => Convert.ToInt32(VersaoSchema.Replace("S_", "").Replace("_", ""));
-
-        /// <summary>
-        /// Horas trabalhadas no dia pelo empregado com contrato de trabalho intermitente, no formato HHMM.
-        /// </summary>
-        [XmlElement("hrsTrab")]
-        public string HrsTrab { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(HrsTrab) && VersaoSchemaInt >= 10300;
-
-        #endregion
-    }
+    public class InfoInterm5001 : InfoInterm1200 { }
 
     /// <summary>
     /// Grupo de informações da sucessão de vínculo trabalhista.

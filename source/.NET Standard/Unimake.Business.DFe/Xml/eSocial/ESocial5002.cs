@@ -782,16 +782,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class TotApurDia5002
     {
-        /// <summary>
-        /// Versão do schema XML - Utilizado somente em tempo de serialização/desserialização, mas não é gerado no XML. Somente de uso interno da DLL para fazer tratamentos entre versões de schemas.
-        /// </summary>
-        [XmlIgnore]
-        public string VersaoSchema { get; set; } = "S_01_02_00";
-
-        /// <summary>
-        /// Retorna somente o valor inteiro da versão para facilitar comparações
-        /// </summary>
-        private int VersaoSchemaInt => Convert.ToInt32(VersaoSchema.Replace("S_", "").Replace("_", ""));
 
         /// <summary>
         /// Período de apuração diário do Código de Receita - CR
@@ -845,15 +835,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => VlrCRDia = Converter.ToDouble(value);
         }
 
-        #region ShouldSerialize
-
-        public bool ShouldSerializeFrmTribut() => VersaoSchemaInt >= 10300;
-        
-        public bool ShouldSerializePaisResidExt() => VersaoSchemaInt >= 10300;
-
-        public bool ShouldSerializeVlrPagoDiaField() => VersaoSchemaInt >= 10300;
-
-        #endregion ShouldSerialize
     }
 
     /// <summary>

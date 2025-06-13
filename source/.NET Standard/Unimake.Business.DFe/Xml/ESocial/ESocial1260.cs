@@ -206,7 +206,43 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação dos adquirentes da produção.
         /// </summary>
         [XmlElement("ideAdquir")]
-        public IdeAdquir IdeAdquir { get; set; }
+        public List<IdeAdquir> IdeAdquir { get; set; }
+
+#if INTEROP
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddIdeAdquir(IdeAdquir item)
+        {
+            if (IdeAdquir == null)
+            {
+                IdeAdquir = new List<IdeAdquir>();
+            }
+            IdeAdquir.Add(item);
+        }
+
+        ///<summary>
+        /// Retorna o elemento da lista IdeAdquir (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado</param>
+        /// <returns>Conteúdo do index passado por parâmetro da IdeAdiquir</returns>
+        public IdeAdquir GetIdeAdquir(int index)
+        {
+            if ((IdeAdquir?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+            ;
+            return IdeAdquir[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista 
+        /// </summary>
+        public int GetIdeAdquirCount => (IdeAdquir != null ? IdeAdquir.Count : 0);
+#endif
+
 
         /// <summary>
         /// Informações de processos judiciais com decisão/sentença
@@ -214,7 +250,42 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// incidente sobre a comercialização.
         /// </summary>
         [XmlElement("infoProcJud")]
-        public InfoProcJud1260 InfoProcJud { get; set; }
+        public List<InfoProcJud1260> InfoProcJud { get; set; }
+
+#if INTEROP
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoProcJud(InfoProcJud1260 item)
+        {
+            if (InfoProcJud == null)
+            {
+                InfoProcJud = new List<InfoProcJud1260>();
+            }
+            InfoProcJud.Add(item);
+        }
+
+        ///<summary>
+        /// Retorna o elemento da lista InfoProcJud (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoProcJud</returns>
+        public InfoProcJud1260 GetInfoProcJud(int index)
+        {
+            if ((InfoProcJud?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+            ;
+            return InfoProcJud[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista 
+        /// </summary>
+        public int GetInfoProcJudCount => (InfoProcJud != null ? InfoProcJud.Count : 0);
+#endif
 
     }
 
@@ -264,7 +335,42 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// de produção com o adquirente identificado no grupo superior
         /// </summary>
         [XmlElement("nfs")]
-        public Nfs Nfs { get; set; }
+        public List<Nfs> Nfs { get; set; }
+
+#if INTEROP
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddNfs(Nfs item)
+        {
+            if (Nfs == null)
+            {
+                Nfs = new List<Nfs>();
+            }
+            Nfs.Add(item);
+        }
+
+        ///<summary>
+        /// Retorna o elemento da lista IdeAdquir (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Nfs</returns>
+        public Nfs GetNfs(int index)
+        {
+            if ((Nfs?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+            ;
+            return Nfs[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista 
+        /// </summary>
+        public int GetNfsCount => (Nfs != null ? Nfs.Count : 0);
+#endif
 
     }
 

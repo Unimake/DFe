@@ -230,7 +230,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("fatorMes")]
         public string FatorMesField
         {
-            get => FatorMes.ToString("F4", CultureInfo.InvariantCulture);
+            get => FatorMes.ToString("F2", CultureInfo.InvariantCulture);
             set => FatorMes = Converter.ToDouble(value);
         }
 
@@ -247,7 +247,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("fator13")]
         public string Fator13Field
         {
-            get => Fator13.ToString("F4", CultureInfo.InvariantCulture);
+            get => Fator13.ToString("F2", CultureInfo.InvariantCulture);
             set => Fator13 = Converter.ToDouble(value);
         }
     }
@@ -270,7 +270,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 4 - 0,8000
         /// 5 - 1,0000
         /// </summary>
-        [XmlElement("percTranf")]
-        public PercTranf PercTranf { get; set; }
+        [XmlElement("percTransf")]
+        public PercentualTransformacao PercTransf { get; set; }
     }
 }
