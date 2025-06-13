@@ -11306,7 +11306,7 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion IndGuia
 
-    #region PercTranf
+    #region PercentualTransformacao
 
     /// <summary>
     /// Informe o percentual de contribuição social devida em
@@ -11318,30 +11318,39 @@ namespace Unimake.Business.DFe.Servicos
     /// [4] - 0,8000
     /// [5] - 1,0000
     /// </summary>
-    public enum PercTranf
+    public enum PercentualTransformacao
     {
         /// <summary>
         /// [1] - 0,2000
         /// </summary>
+        [XmlEnum("1")]
         UM = 1,
+
         /// <summary>
         /// [2] - 0,4000
         /// </summary>
+        [XmlEnum("2")]
         DOIS = 2,
+
         /// <summary>
         /// [3] - 0,6000
         /// </summary>
+        [XmlEnum("3")]
         TRES = 3,
+
         /// <summary>
         /// [4] - 0,8000
         /// </summary>
+        [XmlEnum("4")]
         QUATRO = 4,
+
         /// <summary>
         /// [5] - 1,0000
         /// </summary>
+        [XmlEnum("5")]
         CINCO = 5,
     }
-    #endregion PercTranf
+    #endregion PercentualTransformacao
 
     #region undSalFixo - Unidade de pagamento da parte fixa da remuneração. - eSocial.
 
