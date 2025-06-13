@@ -23,8 +23,8 @@
 			<codLotacao>01</codLotacao>
 		</infoSubstPatrOpPort>
 		<infoAtivConcom>
-			<fatorMes>0.5000</fatorMes>
-			<fator13>0.5000</fator13>
+			<fatorMes>0.50</fatorMes>
+			<fator13>0.50</fator13>
 		</infoAtivConcom>
 	</evtInfoComplPer>
 </eSocial>

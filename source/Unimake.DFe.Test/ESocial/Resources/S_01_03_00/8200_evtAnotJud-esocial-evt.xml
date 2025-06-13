@@ -29,6 +29,8 @@
 			<natAtividade>1</natAtividade>
 			<tpContr>1</tpContr>
 			<dtTerm>2002-01-01</dtTerm>
+			<tpRegTrab>1</tpRegTrab>
+			<tpRegPrev>3</tpRegPrev>
 			<cargo>
 				<dtCargo>2002-01-01</dtCargo>
 				<CBOCargo>104104</CBOCargo>

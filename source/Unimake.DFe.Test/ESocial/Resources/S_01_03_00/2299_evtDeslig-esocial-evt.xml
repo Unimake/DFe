@@ -26,12 +26,15 @@
 			<nrProcTrab>00000000000000000000</nrProcTrab>
 			<infoInterm>
 				<dia>1</dia>
+				<hrsTrab>05:00</hrsTrab>
 			</infoInterm>
 			<infoInterm>
 				<dia>31</dia>
+				<hrsTrab>08:00</hrsTrab>
 			</infoInterm>
 			<infoInterm>
 				<dia>2</dia>
+				<hrsTrab>04:30</hrsTrab>
 			</infoInterm>
 			<observacoes>
 				<observacao>str1234</observacao>

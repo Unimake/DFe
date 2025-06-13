@@ -21,12 +21,15 @@
 				</sucessaoVinc>
 				<infoInterm>
 					<dia>1</dia>
+					<hrsTrab>15:00</hrsTrab>
 				</infoInterm>
 				<infoInterm>
 					<dia>31</dia>
+					<hrsTrab>02:40</hrsTrab>
 				</infoInterm>
 				<infoInterm>
 					<dia>2</dia>
+					<hrsTrab>06:29</hrsTrab>
 				</infoInterm>
 				<infoComplCont>
 					<codCBO>000000</codCBO>

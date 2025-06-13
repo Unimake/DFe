@@ -26,5 +26,17 @@
 			<vrBcFgts>123.45</vrBcFgts>
 			<vrDescCP>123.45</vrDescCP>
 		</remunAvNP>
+		<remunAvNP>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+			<codLotacao>str1234</codLotacao>
+			<vrBcCp00>123.45</vrBcCp00>
+			<vrBcCp15>123.45</vrBcCp15>
+			<vrBcCp20>123.45</vrBcCp20>
+			<vrBcCp25>123.45</vrBcCp25>
+			<vrBcCp13>123.45</vrBcCp13>
+			<vrBcFgts>123.45</vrBcFgts>
+			<vrDescCP>123.45</vrDescCP>
+		</remunAvNP>
 	</evtContratAvNP>
 </eSocial>

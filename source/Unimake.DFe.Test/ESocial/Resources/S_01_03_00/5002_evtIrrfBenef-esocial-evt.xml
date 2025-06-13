@@ -73,6 +73,8 @@
 				<totApurDia>
 					<perApurDia>15</perApurDia>
 					<CRDia>15</CRDia>
+					<frmTribut>10</frmTribut>
+					<vlrPagoDia>0.00</vlrPagoDia>
 					<vlrCRDia>1.15</vlrCRDia>
 				</totApurDia>
 			</dmDev>
