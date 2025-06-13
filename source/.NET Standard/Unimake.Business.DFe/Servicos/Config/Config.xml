@@ -1967,4 +1967,10 @@
 		<ArqConfig>ItapetiningaSP.xml</ArqConfig>
 		<PadraoNFSe>JLSOFT</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4320206">
+		<Nome>Seberi - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SeberiRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
