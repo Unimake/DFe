@@ -44,14 +44,17 @@ namespace Unimake.Business.DFe.Servicos.NFCe
 
                 if (elementNFe.GetElementsByTagName("infNFeSupl").Count <= 0)
                 {
-                    if (string.IsNullOrWhiteSpace(Configuracoes.CSC))
+                    if (Configuracoes.VersaoQRCodeNFCe <= 2)
                     {
-                        throw new Exception("Para montagem do QRCode é necessário informar o conteúdo da propriedade \"Configuracao.CSC\"");
-                    }
+                        if (string.IsNullOrWhiteSpace(Configuracoes.CSC))
+                        {
+                            throw new Exception("Para montagem do QRCode é necessário informar o conteúdo da propriedade \"Configuracao.CSC\"");
+                        }
 
-                    if (Configuracoes.CSCIDToken <= 0)
-                    {
-                        throw new Exception("Para montagem do QRCode é necessário informar o conteúdo da propriedade \"Configuracao.CSCIDToken\"");
+                        if (Configuracoes.CSCIDToken <= 0)
+                        {
+                            throw new Exception("Para montagem do QRCode é necessário informar o conteúdo da propriedade \"Configuracao.CSCIDToken\"");
+                        }
                     }
 
                     if (elementNFe.GetElementsByTagName("infNFe").Count <= 0)
@@ -132,6 +135,33 @@ namespace Unimake.Business.DFe.Servicos.NFCe
                         CNPJEmit = elementEmit.GetElementsByTagName("CNPJ")[0].InnerText;
                     }
 
+                    var tpDest = string.Empty;
+                    var ifDest = string.Empty; //CNPJ, CPF ou idEstrangeiro
+                    if (elementInfNFe.GetElementsByTagName("dest").Count > 0)
+                    {
+                        var elementDest = (XmlElement)elementInfNFe.GetElementsByTagName("dest")[0];
+
+                        if (elementDest.GetElementsByTagName("CNPJ").Count > 0)
+                        {
+                            tpDest = "1"; //CNPJ
+                            ifDest = elementDest.GetElementsByTagName("CNPJ")[0].InnerText;
+                        }
+                        else if (elementDest.GetElementsByTagName("CPF").Count > 0)
+                        {
+                            tpDest = "2"; //CPF
+                            ifDest = elementDest.GetElementsByTagName("CPF")[0].InnerText;
+                        }
+                        else if (elementDest.GetElementsByTagName("idEstrangeiro").Count > 0)
+                        {
+                            tpDest = "3"; //Estrangeiro
+                            //Quando estrangeiro, não é informado o idEstrangeiro no QrCode
+                        }
+                        else
+                        {
+                            throw new Exception("A tag obrigatória <CNPJ>, <CPF> ou <idEstrangeiro>, do grupo de tag <enviNFe><NFe><infNFe><dest>, não foi localizada no XML.");
+                        }
+                    }
+
                     var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
                     {
                         UFEmissor = (UFBrasil)Convert.ToInt32(cUF),
@@ -148,7 +178,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
 
                     var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
                     var urlChave = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlChaveHomologacao : Configuracoes.UrlChaveProducao);
-                    string paramLinkQRCode;
+                    var paramLinkQRCode = chave + "|" + Configuracoes.VersaoQRCodeNFCe.ToString() + "|" + ((int)tpAmb).ToString();
 
                     if (tpEmis == TipoEmissao.ContingenciaOffLine)
                     {
@@ -170,48 +200,60 @@ namespace Unimake.Business.DFe.Servicos.NFCe
                         }
                         var vNF = elementICMSTot.GetElementsByTagName("vNF")[0].InnerText;
 
-                        if (elementNFe.GetElementsByTagName("Signature").Count <= 0)
-                        {
-                            throw new Exception("A tag obrigatória <Signature>, do grupo de tag <enviNFe><NFe>, não foi localizada no XML.");
-                        }
-                        var elementSignature = (XmlElement)elementNFe.GetElementsByTagName("Signature")[0];
+                        paramLinkQRCode += "|" + dhEmi.ToString("dd") + "|" + vNF.Trim();
 
-                        if (elementSignature.GetElementsByTagName("SignedInfo").Count <= 0)
+                        if (Configuracoes.VersaoQRCodeNFCe == 3)
                         {
-                            throw new Exception("A tag obrigatória <SignedInfo>, do grupo de tag <enviNFe><NFe><Signature>, não foi localizada no XML.");
+                            paramLinkQRCode += "|" + tpDest + "|" + ifDest;
+                            paramLinkQRCode += "|" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, paramLinkQRCode); //Assinatura dos parâmetro de 1 a 7 do QRCode
                         }
-                        var elementSignedInfo = (XmlElement)elementSignature.GetElementsByTagName("SignedInfo")[0];
-
-                        if (elementSignedInfo.GetElementsByTagName("Reference").Count <= 0)
+                        else
                         {
-                            throw new Exception("A tag obrigatória <Reference>, do grupo de tag <enviNFe><NFe><Signature><SignedInfo>, não foi localizada no XML.");
-                        }
-                        var elementReference = (XmlElement)elementSignedInfo.GetElementsByTagName("Reference")[0];
+                            if (elementNFe.GetElementsByTagName("Signature").Count <= 0)
+                            {
+                                throw new Exception("A tag obrigatória <Signature>, do grupo de tag <enviNFe><NFe>, não foi localizada no XML.");
+                            }
+                            var elementSignature = (XmlElement)elementNFe.GetElementsByTagName("Signature")[0];
 
-                        if (elementReference.GetElementsByTagName("DigestValue").Count <= 0)
-                        {
-                            throw new Exception("A tag obrigatória <Reference>, do grupo de tag <enviNFe><NFe><Signature><SignedInfo><Reference>, não foi localizada no XML.");
-                        }
-                        var digestValue = elementReference.GetElementsByTagName("DigestValue")[0].InnerText;
+                            if (elementSignature.GetElementsByTagName("SignedInfo").Count <= 0)
+                            {
+                                throw new Exception("A tag obrigatória <SignedInfo>, do grupo de tag <enviNFe><NFe><Signature>, não foi localizada no XML.");
+                            }
+                            var elementSignedInfo = (XmlElement)elementSignature.GetElementsByTagName("SignedInfo")[0];
 
-                        paramLinkQRCode = chave + "|" +
-                            "2" + "|" +
-                            ((int)tpAmb).ToString() + "|" +
-                            dhEmi.ToString("dd") + "|" +
-                            vNF.Trim() + "|" +
-                            Converter.ToHexadecimal(digestValue.ToString()) + "|" +
-                            Configuracoes.CSCIDToken.ToString();
+                            if (elementSignedInfo.GetElementsByTagName("Reference").Count <= 0)
+                            {
+                                throw new Exception("A tag obrigatória <Reference>, do grupo de tag <enviNFe><NFe><Signature><SignedInfo>, não foi localizada no XML.");
+                            }
+                            var elementReference = (XmlElement)elementSignedInfo.GetElementsByTagName("Reference")[0];
+
+                            if (elementReference.GetElementsByTagName("DigestValue").Count <= 0)
+                            {
+                                throw new Exception("A tag obrigatória <Reference>, do grupo de tag <enviNFe><NFe><Signature><SignedInfo><Reference>, não foi localizada no XML.");
+                            }
+                            var digestValue = elementReference.GetElementsByTagName("DigestValue")[0].InnerText;
+
+                            paramLinkQRCode += "|" + Converter.ToHexadecimal(digestValue.ToString()) + "|" + Configuracoes.CSCIDToken.ToString();
+                        }
                     }
                     else
                     {
-                        paramLinkQRCode = chave + "|" +
-                            "2" + "|" +
-                            ((int)tpAmb).ToString() + "|" +
-                            Configuracoes.CSCIDToken.ToString();
+                        if (Configuracoes.VersaoQRCodeNFCe <= 2)
+                        {
+                            paramLinkQRCode += "|" + Configuracoes.CSCIDToken.ToString();
+                        }
                     }
 
-                    var hashQRCode = Converter.ToSHA1HashData(paramLinkQRCode.Trim() + Configuracoes.CSC, true);
-                    var qrCode = urlQrCode + "?p=" + paramLinkQRCode.Trim() + "|" + hashQRCode.Trim();
+                    var qrCode = string.Empty;
+                    if (Configuracoes.VersaoQRCodeNFCe == 3)
+                    {
+                        qrCode = urlQrCode + "?p=" + paramLinkQRCode.Trim();
+                    }
+                    else
+                    {
+                        var hashQRCode = Converter.ToSHA1HashData(paramLinkQRCode.Trim() + Configuracoes.CSC, true);
+                        qrCode = urlQrCode + "?p=" + paramLinkQRCode.Trim() + "|" + hashQRCode.Trim();
+                    }
 
                     var namespaceURI = nodeNFe.GetNamespaceOfPrefix("");
                     XmlNode infNFeSuplNode = ConteudoXML.CreateElement("infNFeSupl", namespaceURI);
