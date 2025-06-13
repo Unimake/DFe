@@ -530,14 +530,12 @@
 							<gIBSCredPres>
 								<cCredPres>1111</cCredPres>
 								<pCredPres>5.0000</pCredPres>
-								<vCredPres>50.00</vCredPres>
 								<vCredPresCondSus>10.00</vCredPresCondSus>
 							</gIBSCredPres>
 							<GCBSCredPres>
 								<cCredPres>2222</cCredPres>
 								<pCredPres>3.0000</pCredPres>
 								<vCredPres>30.00</vCredPres>
-								<vCredPresCondSus>5.00</vCredPresCondSus>
 							</GCBSCredPres>
 						</gIBSCBS>
 						<gIBSCBSMono>
@@ -1268,11 +1266,11 @@
 						<vCredPresCondSus>5.00</vCredPresCondSus>
 					</gIBS>
 					<gCBS>
-						<vCredPres>40.00</vCredPres>
-						<vCredPresCondSus>8.00</vCredPresCondSus>
 						<vDif>15.00</vDif>
 						<vDevTrib>7.00</vDevTrib>
 						<vCBS>600.00</vCBS>
+						<vCredPres>40.00</vCredPres>
+						<vCredPresCondSus>8.00</vCredPresCondSus>
 					</gCBS>
 					<gMono>
 						<vIBSMono>200.00</vIBSMono>
