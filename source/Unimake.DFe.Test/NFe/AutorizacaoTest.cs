@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFe;
@@ -1254,5 +1255,34 @@ namespace Unimake.DFe.Test.NFe
             }
         }
 
+
+        /// <summary>
+        /// Testar o envio de um XML com as tags da reforma tributária
+        /// </summary>
+        /// <param name="tipoAmbiente"></param>
+        /// <param name="arqXML"></param>
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(TipoAmbiente.Homologacao, @"..\..\..\NFe\Resources\envNFeReformaTributaria.xml")]
+        public void ValidarNFeComReformaTributaria(TipoAmbiente tipoAmbiente, string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFe,
+                TipoAmbiente = tipoAmbiente,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var enviNFe = new EnviNFe();
+            enviNFe = enviNFe.LerXML<EnviNFe>(doc);
+
+            var autorizacaoNFe = new Autorizacao(enviNFe, configuracao);
+            
+        }
     }
 }
