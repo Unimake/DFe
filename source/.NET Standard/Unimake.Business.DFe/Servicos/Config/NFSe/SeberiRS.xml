@@ -52,5 +52,22 @@
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>true</LoginConexao>
 		</ConsultarNfse>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por Rps</Descricao>
+			<RequestURIProducao>http://sync-rs.nfs-e.net/datacenter/include/nfw/importa_nfw/nfw_import_upload.php</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>multipart/form-data</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<ResponseMediaType>text/xml</ResponseMediaType>
+			<CodigoTom>8905</CodigoTom>
+			<SchemaVersao>1.00</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>
