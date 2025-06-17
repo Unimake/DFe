@@ -262,15 +262,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2405.Dependente2405")]
     [ComVisible(true)]
 #endif
-    public class Dependente2405 : Dependente2400 
-    {
-
-#if INTEROP
-        [XmlElement("sexoDep")]
-        public override TipoSexo SexoDep { get; set; } = (TipoSexo)(-1);
-#else
-        public virtual TipoSexo? SexoDep { get; set; }
-#endif   
-    }
+    public class Dependente2405 : Dependente2400 { }
 
 }

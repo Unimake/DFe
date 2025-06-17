@@ -1985,4 +1985,10 @@
 		<ArqConfig>AssuRN.xml</ArqConfig>
 		<PadraoNFSe>PUBLICA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2612505">
+		<Nome>Santa Cruz do Capibaribe - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>SantaCruzDoCapibaribe.xml</ArqConfig>
+		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
