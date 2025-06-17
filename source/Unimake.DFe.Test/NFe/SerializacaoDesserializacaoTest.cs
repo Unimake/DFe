@@ -59,10 +59,10 @@ namespace Unimake.DFe.Test.NFe
             {
                 IdLote = "000000000000001",
                 Versao = "4.00",
-                NFe = new System.Collections.Generic.List<Business.DFe.Xml.NFe.NFe>
-            {
-                XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(doc.OuterXml)
-            }
+                NFe =
+                [
+                    XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(doc.OuterXml)
+                ]
             };
 
             var configuracao = new Configuracao

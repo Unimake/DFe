@@ -1679,7 +1679,19 @@ namespace Unimake.Business.DFe.Servicos
         /// 05 - Transferência de crédito de sucessão
         /// </summary>
         [XmlEnum("05")]
-        TransferenciaCreditoSucessao = 5
+        TransferenciaCreditoSucessao = 5,
+
+        /// <summary>
+        /// 06 - Pagamento antecipado
+        /// </summary>
+        [XmlEnum("06")]
+        PagamentoAntecipado = 6,
+
+        /// <summary>
+        /// 07 - Perda em estoque
+        /// </summary>
+        [XmlEnum("07")]
+        PerdaEmEstoque = 7
     }
 
     #endregion
@@ -1695,7 +1707,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 01 - A Definir (SEFAZ ainda não definiu esta tabela)
         /// </summary>
         [XmlEnum("01")]
-        ADefinir = 1
+        MultaJuros = 1,
+
+        /// <summary>
+        /// 02 - Apropriação de crédito presumido de IBS sobre o saldo devedor na ZFM (art. 450, § 1º, LC 214/25)
+        /// </summary>
+        [XmlEnum("02")]
+        ApropriacaoCreditoPresumidoIBSZFM = 2
     }
 
     #endregion
@@ -1730,6 +1748,68 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("4")]
         Municipio = 4
+    }
+
+    #endregion
+
+    #region TipoCreditoPresumidoIBSZFM
+
+    /// <summary>
+    /// Tipo de classificação de acordo para o cálculo do crédito presumido na ZFM
+    /// </summary>
+    public enum TipoCreditoPresumidoIBSZFM
+    {
+        /// <summary>
+        /// 0 - Sem Crédito Presumido
+        /// </summary>
+        [XmlEnum("0")]
+        SemCreditoPresumido = 0,
+
+        /// <summary>
+        /// 1 - Bens de consumo final (55%)
+        /// </summary>
+        [XmlEnum("1")]
+        BensConsumoFinal = 1,
+
+        /// <summary>
+        /// 2 - Bens de capital (75%)
+        /// </summary>
+        [XmlEnum("2")]
+        BensCapital = 2,
+
+        /// <summary>
+        /// 3 - Bens intermediários (90,25%)
+        /// </summary>
+        [XmlEnum("3")]
+        BensIntermediarios = 3,
+
+        /// <summary>
+        /// 4 - Bens de informática e outros definidos em legislação (100%)
+        /// </summary>
+        [XmlEnum("4")]
+        BensInformaticaEOutros = 4
+    }
+
+    #endregion
+
+    #region TipoOperacaoEnteGovernamental
+
+    /// <summary>
+    /// Tipo de operação com o ente governamental
+    /// </summary>
+    public enum TipoOperacaoEnteGovernamental
+    {
+        /// <summary>
+        /// 1 - Fornecimento
+        /// </summary>
+        [XmlEnum("1")]
+        Fornecimento = 1,
+
+        /// <summary>
+        /// 2 - Recebimento do pagamento, conforme fato gerador do IBS/CBS definido no Art. 10 § 2º
+        /// </summary>
+        [XmlEnum("2")]
+        RecebimentoPagamento = 2,
     }
 
     #endregion
@@ -4594,7 +4674,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 3 - Mineroduto
         /// </summary>
-        [XmlEnum("3")] 
+        [XmlEnum("3")]
         Oleoduto = 3
     }
 
