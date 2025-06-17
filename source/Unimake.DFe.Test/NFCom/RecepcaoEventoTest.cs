@@ -86,7 +86,7 @@ namespace Unimake.DFe.Test.NFCom
                     COrgao = ufBrasil,
                     TpAmb = tipoAmbiente,
                     CNPJ = "06117473000150",
-                    ChNFCom = "12345678901234567890123456789012345678901234",
+                    ChNFCom = (int)ufBrasil + "250306117473000150620010000001231012345675",
                     DhEvento = System.DateTime.Now,
                     TpEvento = TipoEventoNFCom.Cancelamento,
                     NSeqEvento = 1
