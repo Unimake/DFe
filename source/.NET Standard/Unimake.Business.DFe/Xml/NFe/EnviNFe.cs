@@ -13051,7 +13051,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Grupo de Informações do Crédito Presumido referente ao CBS
         /// </summary>
-        [XmlElement("GCBSCredPres")]
+        [XmlElement("gCBSCredPres")]
         public GCBSCredPres GCBSCredPres { get; set; }
     }
 
