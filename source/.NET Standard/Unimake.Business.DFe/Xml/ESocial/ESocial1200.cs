@@ -648,31 +648,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Se preenchida, deve estar no intervalo entre [0000] e [2359], criticando inclusive a segunda parte 
         /// do número, que indica os minutos, que deve ser menor ou igual a 59.
         /// </summary>
-        [XmlIgnore]
-#if INTEROP
-        public virtual DateTime HrsTrab { get; set; }
-#else
-        public DateTimeOffset HrsTrab { get; set; }
-#endif
-
         [XmlElement("hrsTrab")]
-        public virtual string HrsTrabField
-        {
-            get => HrsTrab.ToString("HH:mm");
-#if INTEROP
-            set => HrsTrab = DateTime.Parse(value);
-#else
-            set => HrsTrab = DateTimeOffset.Parse(value);
-#endif
-        }
+        public virtual string HrsTrab { get; set; }
+
 
         #region ShouldSreializa
 
-#if INTEROP
-        public bool ShouldSerializeHrsTrab() => HrsTrab != default(DateTime);
-#else
-        public bool ShouldSerializeHrsTrab() => HrsTrab != default(DateTimeOffset);
-#endif
+        public bool ShouldSerializeHrsTrab() => !string.IsNullOrEmpty(HrsTrab);
 
         #endregion
 

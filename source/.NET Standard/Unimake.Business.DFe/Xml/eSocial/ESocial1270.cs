@@ -98,7 +98,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista 
         /// </summary>
-        public int GetIdeRemunAvNP => (RemunAvNP != null ? RemunAvNP.Count : 0);
+        public int GetRemunAvNPCount => (RemunAvNP != null ? RemunAvNP.Count : 0);
 #endif
     }
 
