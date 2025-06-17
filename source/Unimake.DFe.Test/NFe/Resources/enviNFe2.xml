@@ -42,7 +42,12 @@
 				<gCompraGov>
 					<tpEnteGov>1</tpEnteGov>
 					<pRedutor>1.0000</pRedutor>
+					<tpOperGov>1</tpOperGov>
 				</gCompraGov>
+				<gPagAntecipado>
+					<refNFe>11170706117473000150550010000000011123456783</refNFe>
+					<refNFe>11170706117473000150550010000000011123456783</refNFe>
+				</gPagAntecipado>
 			</ide>
 			<emit>
 				<CNPJ>06117473000150</CNPJ>
@@ -195,6 +200,7 @@
 					<vDesc>1.00</vDesc>
 					<vOutro>1.00</vOutro>
 					<indTot>0</indTot>
+					<indBemMovelUsado>1</indBemMovelUsado>
 					<DI>
 						<nDI>1</nDI>
 						<dDI>2021-11-11</dDI>
@@ -537,6 +543,14 @@
 								<pCredPres>3.0000</pCredPres>
 								<vCredPres>30.00</vCredPres>
 							</gCBSCredPres>
+							<gTribCompraGov>
+								<pIBSUF>1.0000</pIBSUF>
+								<vIBSUF>2.00</vIBSUF>
+								<pIBSMun>3.0000</pIBSMun>
+								<vIBSMun>4.00</vIBSMun>
+								<pCBS>5.0000</pCBS>
+								<vCBS>6.00</vCBS>
+							</gTribCompraGov>
 						</gIBSCBS>
 						<gIBSCBSMono>
 							<qBCMono>100.00</qBCMono>
@@ -561,6 +575,14 @@
 							<vTotIBSMonoItem>125.00</vTotIBSMonoItem>
 							<vTotCBSMonoItem>180.00</vTotCBSMonoItem>
 						</gIBSCBSMono>
+						<gTransfCred>
+							<vIBS>1.00</vIBS>
+							<vCBS>2.00</vCBS>
+						</gTransfCred>
+						<gCredPresIBSZFM>
+							<tpCredPresIBSZFM>1</tpCredPresIBSZFM>
+							<vCredPresIBSZFM>1.00</vCredPresIBSZFM>
+						</gCredPresIBSZFM>
 					</IBSCBS>
 				</imposto>
 				<impostoDevol>
