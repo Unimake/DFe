@@ -310,6 +310,7 @@
 		<None Remove="Servicos\Config\NFSe\AriquemesRO.xml" />
 		<None Remove="Servicos\Config\NFSe\ArujaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AssisSP.xml" />
+		<None Remove="Servicos\Config\NFSe\AssuRN.xml" />
 		<None Remove="Servicos\Config\NFSe\BalnearioCamboriuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BaririSP.xml" />
@@ -421,6 +422,7 @@
 		<None Remove="Servicos\Config\NFSe\ImperatrizMA.xml" />
 		<None Remove="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabaianaSE.xml" />
+		<None Remove="Servicos\Config\NFSe\ItaberabaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabiraMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabunaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaitubaPA.xml" />
@@ -1292,6 +1294,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmargosaBA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AssuRN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BalnearioCamboriuSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraVelhaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BelemPA.xml" />
@@ -1301,6 +1304,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColiderMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CuritibaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImperatrizMA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaberabaBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItajaiSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItamogiMG.xml" />

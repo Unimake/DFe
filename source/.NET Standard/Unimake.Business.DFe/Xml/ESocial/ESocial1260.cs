@@ -226,7 +226,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Retorna o elemento da lista IdeAdquir (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado</param>
-        /// <returns>Conteúdo do index passado por parâmetro da IdeAdiquir</returns>
+        /// <returns>Conteúdo do index passado por parâmetro da IdeAdquir</returns>
         public IdeAdquir GetIdeAdquir(int index)
         {
             if ((IdeAdquir?.Count ?? 0) == 0)
