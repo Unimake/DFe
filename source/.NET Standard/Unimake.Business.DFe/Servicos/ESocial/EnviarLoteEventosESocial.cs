@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
@@ -18,17 +19,26 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 #endif
     public class EnviarLoteEventosESocial : ServicoBase, IInteropService<ESocialEnvioLoteEventos>
     {
+        #region Private Fields
 
-        private ESocialEnvioLoteEventos _ESocialEnvioLoteEventos;
+        private ESocialEnvioLoteEventos _eSocialEnvioLoteEventos;
+
+        #endregion Private Fields
+
+        #region Public Properties
 
         /// <summary>
         /// Objeto do XML do lote eventos eSocial
         /// </summary>
         public ESocialEnvioLoteEventos ESocialEnvioLoteEventos
         {
-            get => _ESocialEnvioLoteEventos ?? (_ESocialEnvioLoteEventos = new ESocialEnvioLoteEventos().LerXML<ESocialEnvioLoteEventos>(ConteudoXML));
-            protected set => _ESocialEnvioLoteEventos = value;
+            get => _eSocialEnvioLoteEventos ?? (_eSocialEnvioLoteEventos = new ESocialEnvioLoteEventos().LerXML<ESocialEnvioLoteEventos>(ConteudoXML));
+            protected set => _eSocialEnvioLoteEventos = value;
         }
+
+        #endregion Public Properties
+
+        #region Private Methods
 
         private void ValidarXMLEvento(XmlDocument xml, string schemaArquivo, string targetNS)
         {
@@ -40,6 +50,46 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
         }
+
+        /// <summary>
+        /// Remove a assinatura do objeto para ser assinado novamente evitando problemas
+        /// </summary>
+        private void RemoverAssinaturaDoERP()
+        {
+            #region Autor: Wesley - Data: 03/04/25 - Ticket: #172039 - Atualizado: #173848
+
+            ESocialEnvioLoteEventos = ESocialEnvioLoteEventos.LerXML<ESocialEnvioLoteEventos>(ConteudoXML);
+
+            foreach (var evento in ESocialEnvioLoteEventos.EnvioLoteEventos.Eventos.Evento)
+            {
+                var propriedades = evento.GetType().GetProperties();
+
+                foreach (var propriedade in propriedades)
+                {
+                    var valorEvento = propriedade.GetValue(evento);
+
+                    if (valorEvento != null)
+                    {
+                        var propriedadeAssinatura = valorEvento.GetType().GetProperty("Signature");
+
+                        propriedadeAssinatura?.SetValue(valorEvento, null);
+                    }
+                }
+            }
+
+            // Atualiza o ConteudoXML sem as assinaturas que vieram no XML
+            ConteudoXML = ESocialEnvioLoteEventos.GerarXML();
+
+            // Força a assinatura agora da DLL
+            _ = ConteudoXMLAssinado;
+
+            // Atualiza o objeto ESocialEnvioLoteEventos com o novo ConteudoXML
+            ESocialEnvioLoteEventos = ESocialEnvioLoteEventos.LerXML<ESocialEnvioLoteEventos>(ConteudoXML);
+
+            #endregion Autor: Wesley - Data: 03/04/25 - Ticket: #172039 - Atualizado: #173848
+        }
+
+        #endregion Private Methods
 
         #region Protected Methods
 
@@ -116,35 +166,27 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
             Inicializar(eSocialEnviarLoteEventos?.GerarXML() ?? throw new ArgumentNullException(nameof(eSocialEnviarLoteEventos)), configuracao);
 
-            #region Limpar a assinatura do objeto para assinarmos novamente evitando problemas - Autor: Wesley Data: 03/04/25 Ticket: #172039
+            RemoverAssinaturaDoERP();
+        }
 
-            foreach (var evento in ESocialEnvioLoteEventos.EnvioLoteEventos.Eventos.Evento)
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="conteudoXML">String do XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public EnviarLoteEventosESocial(string conteudoXML, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
             {
-                var propriedades = evento.GetType().GetProperties();
-
-                foreach (var propriedade in propriedades)
-                {
-                    var valorEvento = propriedade.GetValue(evento);
-
-                    if (valorEvento != null)
-                    {
-                        var propriedadeAssinatura = valorEvento.GetType().GetProperty("Signature");
-
-                        propriedadeAssinatura?.SetValue(valorEvento, null);
-                    }
-                }
+                throw new ArgumentNullException(nameof(configuracao));
             }
 
-            // Atualiza o ConteudoXML sem as assinaturas que vieram no XML
-            ConteudoXML = ESocialEnvioLoteEventos.GerarXML();
+            var doc = new XmlDocument();
+            doc.LoadXml(conteudoXML);
 
-            // Força a assinatura agora da DLL
-            _ = ConteudoXMLAssinado;
+            Inicializar(doc, configuracao);
 
-            // Atualiza o objeto ESocialEnvioLoteEventos com o novo ConteudoXML
-            ESocialEnvioLoteEventos = ESocialEnvioLoteEventos.LerXML<ESocialEnvioLoteEventos>(ConteudoXML);
-
-            #endregion Limpar a assinatura do objeto para assinarmos novamente evitando problemas - Autor: Wesley Data: 03/04/25 Ticket: #172039
+            RemoverAssinaturaDoERP();
         }
 
         #endregion Public Constructors
@@ -185,8 +227,6 @@ namespace Unimake.Business.DFe.Servicos.ESocial
             }
         }
 
-
-
         /// <summary>
         /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
         /// </summary>
@@ -214,14 +254,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         /// <inheritdoc />
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
         {
-            //try
-            //{
-            //    throw new Exception("Não existe XML de distribuição para consulta status do serviço.");
-            //}
-            //catch (Exception ex)
-            //{
-            //    ThrowHelper.Instance.Throw(ex);
-            //}
+            throw new Exception("Utilize o serviço ConsultaLoteAssincrono para obter o XML de distribuição.");
         }
 
         #endregion Public Methods
@@ -254,7 +287,8 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                 };
             }
         }
-        #endregion
+
+        #endregion Result
 
     }
 }
