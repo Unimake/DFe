@@ -30,6 +30,7 @@
 									<infoPgto>
 										<dtFG>2024-04-04</dtFG>
 										<vlrBruto>1520,70</vlrBruto>
+										<percSCP>0,0</percSCP>
 										<indJud>N</indJud>
 										<retencoes>
 											<vlrBaseIR>1520,70</vlrBaseIR>

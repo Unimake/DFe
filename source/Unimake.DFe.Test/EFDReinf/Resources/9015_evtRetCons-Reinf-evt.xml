@@ -39,8 +39,8 @@
 			<dhProcess>1900-01-01T01:01:01-02:00</dhProcess>
 			<tpEv>R-0001</tpEv>
 			<idEv>idEv1</idEv>
-			<fechRet>1</fechRet>
 			<hash>hash1</hash>
+			<fechRet>1</fechRet>
 		</infoRecEv>
 		<infoCR_CNR>
 			<indExistInfo>1</indExistInfo>
