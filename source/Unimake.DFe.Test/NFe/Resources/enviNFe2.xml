@@ -532,11 +532,11 @@
 								<pCredPres>5.0000</pCredPres>
 								<vCredPresCondSus>10.00</vCredPresCondSus>
 							</gIBSCredPres>
-							<GCBSCredPres>
+							<gCBSCredPres>
 								<cCredPres>2222</cCredPres>
 								<pCredPres>3.0000</pCredPres>
 								<vCredPres>30.00</vCredPres>
-							</GCBSCredPres>
+							</gCBSCredPres>
 						</gIBSCBS>
 						<gIBSCBSMono>
 							<qBCMono>100.00</qBCMono>
