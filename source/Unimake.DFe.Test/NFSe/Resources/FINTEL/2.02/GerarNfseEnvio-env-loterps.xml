@@ -51,6 +51,7 @@
 			</Tomador>
 			<OptanteSimplesNacional>1</OptanteSimplesNacional>
 			<IncentivoFiscal>2</IncentivoFiscal>
+			<DataPagamento>2025-05-10</DataPagamento>
 		</InfDeclaracaoPrestacaoServico>
 	</Rps>
 </GerarNfseEnvio>
