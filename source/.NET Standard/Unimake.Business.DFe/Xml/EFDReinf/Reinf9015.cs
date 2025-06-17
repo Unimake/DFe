@@ -148,11 +148,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("idEv")]
         public string IdEv { get; set; }
 
-        [XmlElement("fechRet")]
-        public IndicativoFinalidadeEvento FechRet { get; set; }
-
         [XmlElement("hash")]
         public string Hash { get; set; }
+
+        [XmlElement("fechRet")]
+        public IndicativoFinalidadeEvento FechRet { get; set; }
 
         #region ShouldSerialize
         public bool ShouldSerializeNrProtLote() => !string.IsNullOrEmpty(NrProtLote);

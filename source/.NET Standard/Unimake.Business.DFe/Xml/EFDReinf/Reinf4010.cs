@@ -405,8 +405,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("nrInscFciScp")]
         public string NrInscFciScp { get; set; }
 
+        [XmlIgnore]
+        public double PercSCP { get; set; }
+
         [XmlElement("percSCP")]
-        public string PercSCP { get; set; }
+        public string PercSCPField
+        {
+            get => PercSCP.ToString("F1", CultureInfoReinf.Info);
+            set => PercSCP = double.Parse(value.ToString(), CultureInfoReinf.Info);
+        }
 
         [XmlElement("indJud")]
 #if INTEROP
@@ -594,7 +601,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeNrInscFciScp() => !string.IsNullOrEmpty(NrInscFciScp);
 
-        public bool ShouldSerializePercSCP() => !string.IsNullOrEmpty(PercSCP);
+        public bool ShouldSerializePercSCP() => PercSCP > 0;
 
 #if INTEROP
         public bool ShouldSerializeIndJud() => IndJud != (SimNaoLetra)(-1);
