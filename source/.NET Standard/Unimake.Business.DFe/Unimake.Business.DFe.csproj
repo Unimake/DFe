@@ -421,6 +421,7 @@
 		<None Remove="Servicos\Config\NFSe\ImperatrizMA.xml" />
 		<None Remove="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabaianaSE.xml" />
+		<None Remove="Servicos\Config\NFSe\ItaberabaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabiraMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabunaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaitubaPA.xml" />
@@ -1301,6 +1302,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColiderMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CuritibaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImperatrizMA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaberabaBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItajaiSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItamogiMG.xml" />

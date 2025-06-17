@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.03">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://homologa-itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/RecepcionarLoteRps</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/RecepcionarLoteRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:RecepcionarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA{xmlBodyScape}{cCDATA}</nfseDadosMsg></nfse:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="2.03">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://homologa-itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/RecepcionarLoteRpsSincrono</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/RecepcionarLoteRpsSincrono</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:RecepcionarLoteRpsSincronoRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA{xmlBodyScape}{cCDATA}</nfseDadosMsg></nfse:RecepcionarLoteRpsSincronoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</RecepcionarLoteRpsSincrono>
+		<GerarNfse versao="2.03">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://homologa-itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/GerarNfse</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/GerarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:GerarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA{xmlBodyScape}{cCDATA}</nfseDadosMsg></nfse:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</GerarNfse>
+		<CancelarNfse versao="2.03">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://homologa-itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/CancelarNfse</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/CancelarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:CancelarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA{xmlBodyScape}{cCDATA}</nfseDadosMsg></nfse:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</CancelarNfse>
+		<SubstituirNfse versao="2.03">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://homologa-itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/SubstituirNfse</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/SubstituirNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
+			<TagExtraAssinatura>Pedido</TagExtraAssinatura>
+			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:SubstituirNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA{xmlBodyScape}{cCDATA}</nfseDadosMsg></nfse:SubstituirNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.03">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://homologa-itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/ConsultarLoteRps</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/ConsultarLoteRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:ConsultarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA{xmlBodyScape}{cCDATA}</nfseDadosMsg></nfse:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.03">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://homologa-itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:ConsultarNfsePorRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA{xmlBodyScape}{cCDATA}</nfseDadosMsg></nfse:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="2.03">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<WebEnderecoHomologacao>https://homologa-itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/ConsultarNfseServicoPrestado</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/ConsultarNfseServicoPrestado</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:ConsultarNfseServicoPrestadoRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA{xmlBodyScape}{cCDATA}</nfseDadosMsg></nfse:ConsultarNfseServicoPrestadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="2.03">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>https://homologa-itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/ConsultarNfseServicoTomado</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/ConsultarNfseServicoTomado</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:ConsultarNfseServicoTomadoRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA{xmlBodyScape}{cCDATA}</nfseDadosMsg></nfse:ConsultarNfseServicoTomadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</ConsultarNfseServicoTomado>
+		<ConsultarNfseFaixa versao="2.03">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>https://homologa-itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itaberaba.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/ConsultarNfsePorFaixa</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/ConsultarNfsePorFaixa</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:ConsultarNfsePorFaixaRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA{xmlBodyScape}{cCDATA}</nfseDadosMsg></nfse:ConsultarNfsePorFaixaRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</ConsultarNfseFaixa>
+	</Servicos>
+</Configuracoes>

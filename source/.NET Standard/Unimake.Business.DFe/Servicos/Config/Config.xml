@@ -1973,4 +1973,10 @@
 		<ArqConfig>SeberiRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2914703">
+		<Nome>Itaberaba - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>ItaberabaBA.xml</ArqConfig>
+		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
