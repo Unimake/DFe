@@ -2808,7 +2808,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeVTotTribField() => VTotTrib > 0;
         public bool ShouldSerializeInfAdFisco() => !string.IsNullOrWhiteSpace(InfAdFisco);
-        public bool ShouldSerializeVTotDFeField() => VTotDFe > 0;        
+        public bool ShouldSerializeVTotDFeField() => VTotDFe > 0;
 
         #endregion
     }
@@ -7779,6 +7779,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// </summary>
         [XmlElement("GCBSCredPres")]
         public GCBSCredPres GCBSCredPres { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da composição do valor do IBS e da CBS em compras governamental
+        /// </summary>
+        [XmlElement("gTribCompraGov")]
+        public GTribCompraGov GTribCompraGov { get; set; }
     }
 
     /// <summary>
@@ -8341,6 +8347,115 @@ namespace Unimake.Business.DFe.Xml.CTe
         {
             get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
             set => VCredPresCondSus = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>
+    /// Grupo de informações da composição do valor do IBS e da CBS em compras governamental
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.GTribCompraGov")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GTribCompraGov
+    {
+        /// <summary>
+        /// Alíquota IBS da UF utilizada
+        /// </summary>
+        [XmlIgnore]
+        public double PAliqIBSUF { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqIBSUF para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pAliqIBSUF")]
+        public string PAliqIBSUFField
+        {
+            get => PAliqIBSUF.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqIBSUF = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do Tributo do IBS da UF. Valor que seria devido a UF, sem aplicação do Art. 473. da LC 214/20025 
+        /// </summary>
+        [XmlIgnore]
+        public double VTribBSUF { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribBSUF para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTribBSUF")]
+        public string VTribBSUFField
+        {
+            get => VTribBSUF.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribBSUF = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Alíquota IBS do Município utilizada 
+        /// </summary>
+        [XmlIgnore]
+        public double PAliqIBSMun { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqIBSMun para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pAliqIBSMun")]
+        public string PAliqIBSMunField
+        {
+            get => PAliqIBSMun.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqIBSMun = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do Tributo do Município da UF. Valor que seria devido ao Município, sem aplicação do Art. 473. da LC 214/20025 
+        /// </summary>
+        [XmlIgnore]
+        public double VTribIBSMun { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribIBSMun para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTribIBSMun")]
+        public string VTribIBSMunField
+        {
+            get => VTribIBSMun.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribIBSMun = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Alíquota IBS do CBS utilizada
+        /// </summary>
+        [XmlIgnore]
+        public double PAliqCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pAliqCBS")]
+        public string PAliqCBSField
+        {
+            get => PAliqCBS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqCBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do Tributo da CBS. Valor que seria devido a CBS, sem aplicação do Art. 473. da LC 214/20025 
+        /// </summary>
+        [XmlIgnore]
+        public double VTribCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTribCBS")]
+        public string VTribCBSField
+        {
+            get => VTribCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribCBS = Converter.ToDouble(value);
         }
     }
 }

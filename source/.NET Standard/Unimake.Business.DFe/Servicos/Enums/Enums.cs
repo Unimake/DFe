@@ -4257,16 +4257,16 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoCTeSimp
     {
         /// <summary>
-        /// 4 - CTe Simplificado
-        /// </summary>
-        [XmlEnum("4")]
-        CTeSimplificado = 4,
-
-        /// <summary>
-        /// 5 - Substituição CTe Simplificado
+        /// 5 - CTe Simplificado
         /// </summary>
         [XmlEnum("5")]
-        SubstituicaoCTeSimplificado = 5
+        CTeSimplificado = 5,
+
+        /// <summary>
+        /// 6 - Substituição CTe Simplificado
+        /// </summary>
+        [XmlEnum("6")]
+        SubstituicaoCTeSimplificado = 6
     }
 
     #endregion
