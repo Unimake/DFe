@@ -4,7 +4,7 @@
 		<RecepcionarLoteRps versao="1.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.RecepcionarLoteRps.CLS?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.RecepcionarLoteRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -23,7 +23,7 @@
 		<ConsultarSituacaoLoteRps versao="1.00">
 			<Descricao>Consultar Situação Lote Rps</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.ConsultarSituacaoLoteRps.CLS?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.ConsultarSituacaoLoteRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -42,7 +42,7 @@
 		<ConsultarLoteRps versao="1.00">
 			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.ConsultarLoteRps.CLS?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.ConsultarLoteRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -59,7 +59,7 @@
 		<ConsultarNfsePorRps versao="1.00">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.ConsultarNfsePorRps.CLS?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.ConsultarNfsePorRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -78,7 +78,7 @@
 		<ConsultarNfse versao="1.00">
 			<Descricao>Consultar NFSe</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.ConsultarNfse.CLS?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.ConsultarNfse.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -97,7 +97,7 @@
 		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.CancelarNfse.CLS?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/SANTACRUZDOCAPIBARIBE/WSNFSE.CancelarNfse.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://www.tinus.com.br/WSNFSE.CancelarNfse.CancelarNfse</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>

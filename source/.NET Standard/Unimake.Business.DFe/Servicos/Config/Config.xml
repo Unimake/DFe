@@ -1988,7 +1988,7 @@
 	<Arquivo ID="2612505">
 		<Nome>Santa Cruz do Capibaribe - PE</Nome>
 		<UF>PE</UF>
-		<ArqConfig>SantaCruzDoCapibaribe.xml</ArqConfig>
+		<ArqConfig>SantaCruzDoCapibaribePE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
