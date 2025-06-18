@@ -330,9 +330,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("sexoDep")]
 #if INTEROP
-        public virtual TipoSexo SexoDep { get; set; } = (TipoSexo)(-1);
+        public TipoSexo SexoDep { get; set; } = (TipoSexo)(-1);
 #else
-        public virtual TipoSexo? SexoDep { get; set; }
+        public TipoSexo? SexoDep { get; set; }
 #endif
 
         /// <summary>
