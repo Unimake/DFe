@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
@@ -353,5 +354,420 @@ namespace Unimake.DFe.Test.ESocial
 
             var xmlAssinado = enviarLoteEventosESocial.ConteudoXMLAssinado;
         }
+
+        /// <summary>
+        /// Testar o envio do lote de eventos S2400
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "ESocial")]
+        [InlineData(TipoAmbiente.Producao)]
+        [InlineData(TipoAmbiente.Homologacao)]
+        public void ESocialEnvioLoteEventosS2400(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.ESocial,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.ESocialEnviarLoteEventos,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+            };
+
+            var conteudoLoteEvento2400 = new ESocialEnvioLoteEventos
+            {
+                Versao = "1.1.0",
+                EnvioLoteEventos = new EnvioLoteEventosESocial
+                {
+                    Grupo = "2",
+                    IdeEmpregador = new IdeEmpregador
+                    {
+                        TpInsc = TiposInscricao.CNPJ,
+                        NrInsc = "06117473000150"
+                    },
+                    IdeTransmissor = new IdeTransmissor
+                    {
+                        TpInsc = TiposInscricao.CNPJ,
+                        NrInsc = "06117473000150"
+                    },
+                    Eventos = new EventosESocial
+                    {
+                        Evento = new List<EventoESocial>
+                        {
+                            new()
+                            {
+                                ID = "ID1000000000000002017102608080800001",
+                                ESocial2400 = new ESocial2400
+                                {
+                                    EvtCdBenefIn = new EvtCdBenefIn
+                                    {
+                                        ID = "ID1000000000000002017102608080800001",
+                                        IdeEvento = new IdeEvento2400
+                                        {
+                                            IndRetif = IndicativoRetificacao.ArquivoOriginal,
+                                            NrRecibo = "1.1.11111111111111",
+                                            TpAmb = tipoAmbiente,
+                                            ProcEmi = ProcEmiESocial.AppDoEmpregador,
+                                            VerProc = "Versao Teste"
+                                        },
+                                        IdeEmpregador = new IdeEmpregador
+                                        {
+                                            TpInsc = TiposInscricao.CNPJ,
+                                            NrInsc = "06117473000150"
+                                        },
+                                        Beneficiario = new Beneficiario
+                                        {
+                                            CpfBenef = "12345678901",
+                                            NmBenefic = "Joao da Silva",
+                                            DtNascto = DateTime.ParseExact("1990-02-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                            DtInicio = DateTime.ParseExact("2025-01-01", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                            Sexo = TipoSexo.Masculino,
+                                            RacaCor = RacaCor.Branca,
+                                            EstCiv = EstadoCivil.Viuvo,
+                                            IncFisMen = SimNaoLetra.Nao,
+                                            DtIncFisMen = DateTime.Now,
+                                            Endereco = new Endereco2400
+                                            {
+                                                Brasil = new Brasil
+                                                {
+                                                    TpLograd = "Rua",
+                                                    DscLograd = "De terra",
+                                                    NrLograd = "1",
+                                                    Complemento = "Fundo",
+                                                    Bairro = "Graao",
+                                                    Cep = "12345678",
+                                                    CodMunic = "1234567",
+                                                    Uf = "PR"
+                                                }
+                                            },
+                                            Dependente = new List<Dependente2400>
+                                            {
+                                                new Dependente2400
+                                                {
+                                                    TpDep = TiposDeDependente.FilhoOuEnteado,
+                                                    NmDep = "Jose dos Santos",
+                                                    DtNascto = DateTime.ParseExact("2024-05-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                                    CpfDep = "987654321098",
+                                                    DepIRRF = SimNaoLetra.Sim,
+                                                    IncFisMen = SimNaoLetra.Sim
+                                                },
+                                                new Dependente2400
+                                                {
+                                                    TpDep = TiposDeDependente.FilhoOuEnteado,
+                                                    NmDep = "Maria dos Santos",
+                                                    DtNascto = DateTime.ParseExact("2024-05-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                                    CpfDep = "987654321098",
+                                                    SexoDep = TipoSexo.Feminino,
+                                                    DepIRRF = SimNaoLetra.Sim,
+                                                    IncFisMen = SimNaoLetra.Sim
+                                                },
+                                                new Dependente2400
+                                                {
+                                                    TpDep = TiposDeDependente.FilhoOuEnteado,
+                                                    NmDep = "Jorge dos Santos",
+                                                    DtNascto = DateTime.ParseExact("2024-05-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                                    CpfDep = "987654321098",
+                                                    DepIRRF = SimNaoLetra.Sim,
+                                                    IncFisMen = SimNaoLetra.Sim
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            new()
+                            {
+                                ID = "ID1000000000000002017102608080800002",
+                                ESocial2400 = new ESocial2400
+                                {
+                                    EvtCdBenefIn = new EvtCdBenefIn
+                                    {
+                                        ID = "ID1000000000000002017102608080800002",
+                                        IdeEvento = new IdeEvento2400
+                                        {
+                                            IndRetif = IndicativoRetificacao.ArquivoOriginal,
+                                            NrRecibo = "1.1.11111111111111",
+                                            TpAmb = tipoAmbiente,
+                                            ProcEmi = ProcEmiESocial.AppDoEmpregador,
+                                            VerProc = "Versao Teste"
+                                        },
+                                        IdeEmpregador = new IdeEmpregador
+                                        {
+                                            TpInsc = TiposInscricao.CNPJ,
+                                            NrInsc = "06117473000150"
+                                        },
+                                        Beneficiario = new Beneficiario
+                                        {
+                                            CpfBenef = "12345678901",
+                                            NmBenefic = "Joao da Silva",
+                                            DtNascto = DateTime.ParseExact("1990-02-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                            DtInicio = DateTime.ParseExact("2025-01-01", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                            Sexo = TipoSexo.Masculino,
+                                            RacaCor = RacaCor.Branca,
+                                            EstCiv = EstadoCivil.Viuvo,
+                                            IncFisMen = SimNaoLetra.Nao,
+                                            DtIncFisMen = DateTime.Now,
+                                            Endereco = new Endereco2400
+                                            {
+                                                Brasil = new Brasil
+                                                {
+                                                    TpLograd = "Rua",
+                                                    DscLograd = "De terra",
+                                                    NrLograd = "1",
+                                                    Complemento = "Fundo",
+                                                    Bairro = "Graao",
+                                                    Cep = "12345678",
+                                                    CodMunic = "1234567",
+                                                    Uf = "PR"
+                                                }
+                                            },
+                                            Dependente = new List<Dependente2400>
+                                            {
+                                                new Dependente2400
+                                                {
+                                                    TpDep = TiposDeDependente.FilhoOuEnteado,
+                                                    NmDep = "Jose dos Santos",
+                                                    DtNascto = DateTime.ParseExact("2024-05-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                                    CpfDep = "987654321098",
+                                                    DepIRRF = SimNaoLetra.Sim,
+                                                    IncFisMen = SimNaoLetra.Sim
+                                                },
+                                                new Dependente2400
+                                                {
+                                                    TpDep = TiposDeDependente.FilhoOuEnteado,
+                                                    NmDep = "Maria dos Santos",
+                                                    DtNascto = DateTime.ParseExact("2024-05-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                                    CpfDep = "987654321098",
+                                                    SexoDep = TipoSexo.Feminino,
+                                                    DepIRRF = SimNaoLetra.Sim,
+                                                    IncFisMen = SimNaoLetra.Sim
+                                                },
+                                                new Dependente2400
+                                                {
+                                                    TpDep = TiposDeDependente.FilhoOuEnteado,
+                                                    NmDep = "Jorge dos Santos",
+                                                    DtNascto = DateTime.ParseExact("2024-05-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                                    CpfDep = "987654321098",
+                                                    DepIRRF = SimNaoLetra.Sim,
+                                                    IncFisMen = SimNaoLetra.Sim
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            var enviarLoteEventosESocial = new EnviarLoteEventosESocial(conteudoLoteEvento2400, configuracao);
+            enviarLoteEventosESocial.Executar();
+        }
+
+        /// <summary>
+        /// Testar o envio do lote de eventos S2405
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "ESocial")]
+        [InlineData(TipoAmbiente.Producao)]
+        [InlineData(TipoAmbiente.Homologacao)]
+        public void ESocialEnvioLoteEventosS2405(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.ESocial,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.ESocialEnviarLoteEventos,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+            };
+
+            var conteudoLoteEvento2405 = new ESocialEnvioLoteEventos
+            {
+                Versao = "1.1.0",
+                EnvioLoteEventos = new EnvioLoteEventosESocial
+                {
+                    Grupo = "2",
+                    IdeEmpregador = new IdeEmpregador
+                    {
+                        TpInsc = TiposInscricao.CNPJ,
+                        NrInsc = "06117473000150"
+                    },
+                    IdeTransmissor = new IdeTransmissor
+                    {
+                        TpInsc = TiposInscricao.CNPJ,
+                        NrInsc = "06117473000150"
+                    },
+                    Eventos = new EventosESocial
+                    {
+                        Evento = new List<EventoESocial>
+                        {
+                            new()
+                            {
+                                ID = "ID1000000000000002017102608080800001",
+                                ESocial2405 = new ESocial2405
+                                {
+                                    EvtCdBenefAlt = new EvtCdBenefAlt
+                                    {
+                                        ID = "ID1000000000000002017102608080800001",
+                                        IdeEvento = new IdeEvento2405
+                                        {
+                                            IndRetif = IndicativoRetificacao.ArquivoOriginal,
+                                            NrRecibo = "1.1.11111111111111",
+                                            TpAmb = tipoAmbiente,
+                                            ProcEmi = ProcEmiESocial.AppDoEmpregador,
+                                            VerProc = "Versao Teste"
+                                        },
+                                        IdeEmpregador = new IdeEmpregador
+                                        {
+                                            TpInsc = TiposInscricao.CNPJ,
+                                            NrInsc = "06117473000150"
+                                        },
+                                        IdeBenef = new IdeBenef2405
+                                        {
+                                            CpfBenef = "12345678901"
+                                        },
+                                        Alteracao = new Alteracao2405
+                                        {
+                                            DtAlteracao = DateTime.Now,
+                                            DadosBenef = new DadosBenef
+                                            {
+                                                NmBenefic = "Maria de Souza",
+                                                Sexo = TipoSexo.Feminino,
+                                                RacaCor = RacaCor.Branca,
+                                                EstCiv = EstadoCivil.Viuvo,
+                                                IncFisMen = SimNaoLetra.Nao,
+                                                Endereco = new Endereco2405
+                                                {
+                                                    Brasil = new Brasil
+                                                    {
+                                                        TpLograd = "Rua",
+                                                        DscLograd = "De terra",
+                                                        NrLograd = "1",
+                                                        Complemento = "Fundo",
+                                                        Bairro = "Graao",
+                                                        Cep = "12345678",
+                                                        CodMunic = "1234567",
+                                                        Uf = "PR"
+                                                    }
+                                                },
+                                                Dependente = new List<Dependente>
+                                                {
+                                                    new Dependente
+                                                    {
+                                                        TpDep = TiposDeDependente.MenorPobreGuardaJudicial,
+                                                        NmDep = "Mario Joao",
+                                                        DtNascto = DateTime.ParseExact("2024-05-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                                        CpfDep = "11111111151",
+                                                        SexoDep = TipoSexo.Feminino,
+                                                        DepIRRF = SimNaoLetra.Nao,
+                                                        IncFisMen = SimNaoLetra.Nao,
+                                                        DescrDep = "Teste"
+                                                    },
+                                                    new Dependente
+                                                    {
+                                                        TpDep = TiposDeDependente.MenorPobreGuardaJudicial,
+                                                        NmDep = "Mario Jorge",
+                                                        DtNascto = DateTime.ParseExact("2024-05-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                                        CpfDep = "11111111155",
+                                                        SexoDep = TipoSexo.Masculino,
+                                                        DepIRRF = SimNaoLetra.Nao,
+                                                        IncFisMen = SimNaoLetra.Nao,
+                                                        DescrDep = "Teste"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            new()
+                            {
+                                ID = "ID1000000000000002017102608080800002",
+                                ESocial2405 = new ESocial2405
+                                {
+                                    EvtCdBenefAlt = new EvtCdBenefAlt
+                                    {
+                                        ID = "ID1000000000000002017102608080800002",
+                                        IdeEvento = new IdeEvento2405
+                                        {
+                                            IndRetif = IndicativoRetificacao.ArquivoOriginal,
+                                            NrRecibo = "1.1.11111111111111",
+                                            TpAmb = tipoAmbiente,
+                                            ProcEmi = ProcEmiESocial.AppDoEmpregador,
+                                            VerProc = "Versao Teste"
+                                        },
+                                        IdeEmpregador = new IdeEmpregador
+                                        {
+                                            TpInsc = TiposInscricao.CNPJ,
+                                            NrInsc = "06117473000150"
+                                        },
+                                        IdeBenef = new IdeBenef2405
+                                        {
+                                            CpfBenef = "12345678901"
+                                        },
+                                        Alteracao = new Alteracao2405
+                                        {
+                                            DtAlteracao = DateTime.Now,
+                                            DadosBenef = new DadosBenef
+                                            {
+                                                NmBenefic = "Maria de Souza",
+                                                Sexo = TipoSexo.Feminino,
+                                                RacaCor = RacaCor.Branca,
+                                                EstCiv = EstadoCivil.Viuvo,
+                                                IncFisMen = SimNaoLetra.Nao,
+                                                Endereco = new Endereco2405
+                                                {
+                                                    Brasil = new Brasil
+                                                    {
+                                                        TpLograd = "Rua",
+                                                        DscLograd = "De terra",
+                                                        NrLograd = "1",
+                                                        Complemento = "Fundo",
+                                                        Bairro = "Graao",
+                                                        Cep = "12345678",
+                                                        CodMunic = "1234567",
+                                                        Uf = "PR"
+                                                    }
+                                                },
+                                                Dependente = new List<Dependente>
+                                                {
+                                                    new Dependente
+                                                    {
+                                                        TpDep = TiposDeDependente.MenorPobreGuardaJudicial,
+                                                        NmDep = "Mario Joao",
+                                                        DtNascto = DateTime.ParseExact("2024-05-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                                        CpfDep = "11111111151",
+                                                        SexoDep = TipoSexo.Masculino,
+                                                        DepIRRF = SimNaoLetra.Nao,
+                                                        IncFisMen = SimNaoLetra.Nao,
+                                                        DescrDep = "Teste"
+                                                    },
+                                                    new Dependente
+                                                    {
+                                                        TpDep = TiposDeDependente.MenorPobreGuardaJudicial,
+                                                        NmDep = "Mario Jorge",
+                                                        DtNascto = DateTime.ParseExact("2024-05-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                                                        CpfDep = "11111111155",
+                                                        SexoDep = TipoSexo.Masculino,
+                                                        DepIRRF = SimNaoLetra.Nao,
+                                                        IncFisMen = SimNaoLetra.Nao,
+                                                        DescrDep = "Teste"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            var enviarLoteEventosESocial = new EnviarLoteEventosESocial(conteudoLoteEvento2405, configuracao);
+            enviarLoteEventosESocial.Executar();
+        }
+
     }
 }
