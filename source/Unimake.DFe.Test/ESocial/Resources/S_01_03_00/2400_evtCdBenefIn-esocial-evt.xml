@@ -39,7 +39,6 @@
 				<nmDep>nmDep1</nmDep>
 				<dtNascto>1890-01-01</dtNascto>
 				<cpfDep>00000000000</cpfDep>
-				<sexoDep>M</sexoDep>
 				<depIRRF>S</depIRRF>
 				<incFisMen>S</incFisMen>
 			</dependente>
