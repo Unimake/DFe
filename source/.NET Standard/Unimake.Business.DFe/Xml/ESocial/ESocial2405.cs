@@ -146,7 +146,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2405.DadosBenef")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosBenef")]
     [ComVisible(true)]
 #endif
     public class DadosBenef
@@ -175,10 +175,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("estCiv")]
 #if INTEROP
-        public EstadoCivil EstadoCivil { get; set; } = (EstadoCivil)(-1);
+        public EstadoCivil EstCiv { get; set; } = (EstadoCivil)(-1);
 #else 
-        public EstadoCivil? EstadoCivil { get; set; }
+        public EstadoCivil? EstCiv { get; set; }
 #endif
+
         /// <summary>
         /// Informar se o beneficiário é pessoa com doença
         /// incapacitante que isenta da contribuição previdenciária,
@@ -198,18 +199,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações dos dependentes
         /// </summary>
         [XmlElement("dependente")]
-        public List<Dependente2405> Dependente { get; set; }
+        public List<Dependente> Dependente { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddDependente(Dependente2405 item)
+        public void AddDependente(Dependente item)
         {
             if (Dependente == null)
             {
-                Dependente = new List<Dependente2405>();
+                Dependente = new List<Dependente>();
             }
 
             Dependente.Add(item);
@@ -220,7 +221,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Dependente</returns>
-        public Dependente2405 GetDependente(int index)
+        public Dependente GetDependente(int index)
         {
             if ((Dependente?.Count ?? 0) == 0)
             {
@@ -236,11 +237,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetDependenteCount => (Dependente != null ? Dependente.Count : 0);
 #endif
         #region ShouldSerialize
+
 #if INTEROP
-        public bool ShouldSerializeEstadoCivilField() => EstadoCivil != (EstadoCivil)(-1);
+        public bool ShouldSerializeEstCiv() => EstCiv != (EstadoCivil)(-1);
 #else
-        public bool ShouldSerializeEstadoCivil() => EstadoCivil != null;
+        public bool ShouldSerializeEstCiv() => EstCiv != null;
 #endif
+
         #endregion ShouldSerialize
     }
 
@@ -249,7 +252,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2405.Endereco2405")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Endereco2405")]
     [ComVisible(true)]
 #endif
     public class Endereco2405 : Endereco2205 { }
@@ -259,9 +262,92 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2405.Dependente2405")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Dependente")]
     [ComVisible(true)]
 #endif
-    public class Dependente2405 : Dependente2400 { }
+    public class Dependente
+    {
+        /// <summary>
+        /// Tipo de dependente
+        /// </summary>
+        [XmlElement("tpDep")]
+#if INTEROP
+        public TiposDeDependente TpDep { get; set; } = (TiposDeDependente)(-1);
+#else
+        public TiposDeDependente? TpDep { get; set; }
+#endif
+
+        /// <summary>
+        /// Nome do dependente
+        /// </summary>
+        [XmlElement("nmDep")]
+        public string NmDep { get; set; }
+
+        /// <summary>
+        /// Preencher com a data de nascimento
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtNascto { get; set; }
+#else
+        public DateTimeOffset DtNascto { get; set; }
+#endif
+
+        [XmlElement("dtNascto")]
+        public string DtNasctoField
+        {
+            get => DtNascto.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DtNascto = DateTime.Parse(value);
+#else
+            set => DtNascto = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        /// <summary>
+        /// Número de inscrição no CPF
+        /// </summary>
+        [XmlElement("cpfDep")]
+        public string CpfDep { get; set; }
+
+        /// <summary>
+        /// Sexo do dependente
+        /// </summary>
+        [XmlElement("sexoDep")]
+        public TipoSexo SexoDep { get; set; }
+
+        /// <summary>
+        /// Informar se é dependente do beneficiário para fins de dedução de seu rendimento tributável pelo Imposto de Renda
+        /// </summary>
+        [XmlElement("depIRRF")]
+        public SimNaoLetra DepIRRF { get; set; }
+
+        /// <summary>
+        /// Informar se o dependente é pessoa com doença incapacitante, na forma da lei
+        /// </summary>
+        [XmlElement("incFisMen")]
+        public SimNaoLetra IncFisMen { get; set; }
+
+        /// <summary>
+        /// Informar a descrição da dependência
+        /// </summary>
+        [XmlElement("descrDep")]
+        public string DescrDep { get; set; }
+
+        #region ShouldSerialize
+
+#if INTEROP
+        public bool ShouldSerializeTpDep() => TpDep != (TiposDeDependente)(-1);
+#else
+        public bool ShouldSerializeTpDep() => TpDep != null;
+#endif
+
+        public bool ShouldSerializeCpfDep() => !string.IsNullOrEmpty(CpfDep);
+
+        public bool ShouldSerializeDescrDep() => !string.IsNullOrEmpty(DescrDep);
+
+        #endregion ShouldSerialize
+
+    }
 
 }
