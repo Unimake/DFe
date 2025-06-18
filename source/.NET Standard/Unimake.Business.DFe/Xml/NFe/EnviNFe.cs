@@ -14653,6 +14653,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         /// <summary>
         /// Tipo de classificação de acordo para calculo do crédito presumido do ZFM
+        /// </summary>
         [XmlElement("tpCredPresIBSZFM")]
         public TipoCreditoPresumidoIBSZFM TpCredPresIBSZFM { get; set; }
 
