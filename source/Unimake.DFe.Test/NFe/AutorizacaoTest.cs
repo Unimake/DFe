@@ -1245,7 +1245,7 @@ namespace Unimake.DFe.Test.NFe
                 var autorizacao = new Autorizacao(xml, configuracao);
                 Assert.True(false);
             }
-            catch (ValidatorDFeException ex)
+            catch (ValidatorDFeException)
             {
                 Assert.True(true);
             }
