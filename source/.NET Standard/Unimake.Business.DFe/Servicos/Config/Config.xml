@@ -190,6 +190,12 @@
 		<ArqConfig>Equiplano.xml</ArqConfig>
 		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="9999906">
+		<Nome>FISCO</Nome>
+		<UF>BR</UF>
+		<ArqConfig>FISCO.xml</ArqConfig>
+		<PadraoNFSe>FISCO</PadraoNFSe>
+	</Arquivo>
 	<!-- **** Fim dos padrões com apenas um XML de configuração **** -->
 	<Arquivo ID="3303203">
 		<Nome>Nilópolis - RJ</Nome>
@@ -1390,12 +1396,6 @@
 		<UF>BA</UF>
 		<ArqConfig>SalvadorBA.xml</ArqConfig>
 		<PadraoNFSe>SALVADOR_BA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2909802">
-		<Nome>Cruz das Almas - BA</Nome>
-		<UF>BA</UF>
-		<ArqConfig>FISCO.xml</ArqConfig>
-		<PadraoNFSe>FISCO</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2917508">
 		<Nome>Jacobina - BA</Nome>
