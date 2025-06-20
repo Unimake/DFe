@@ -83,7 +83,7 @@
 				</InfDeclaracaoPrestacaoServico>
 			</Rps>
 			<Rps>
-				<InfDeclaracaoPrestacaoServico Id="Declaracao_07568886000113">
+				<InfDeclaracaoPrestacaoServico Id="Declaracao_07568886000114">
 					<Rps Id="RPS6000861">
 						<IdentificacaoRps>
 							<Numero>6000</Numero>
@@ -158,7 +158,7 @@
 				</InfDeclaracaoPrestacaoServico>
 			</Rps>
 			<Rps>
-				<InfDeclaracaoPrestacaoServico Id="Declaracao_07568886000113">
+				<InfDeclaracaoPrestacaoServico Id="Declaracao_07568886000115">
 					<Rps Id="RPS6000871">
 						<IdentificacaoRps>
 							<Numero>6000</Numero>
