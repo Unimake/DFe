@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComObj,
   ConsultarStatusNFe, EnviarNFeSincrono, EnviarNFeSincronoDuplicidade,
   EnviarNFeSincronoDesserializacao, ConsultarSituacaoNFe, EventoCancelamentoNFe,
-  ImprimirDANFEcomUniDANFE;
+  ImprimirDANFEcomUniDANFE, ConsultarDistribuicaoDFe;
 
 type
 
@@ -23,6 +23,8 @@ type
     btnEventoCancelamentoNFe: TButton;
     btnImprimirDANFEcomUniDANFE: TButton;
     GroupBox1: TGroupBox;
+    btnConsultarDistribuicaoDFe: TToggleBox;
+    procedure btnConsultarDistribuicaoDFeChange(Sender: TObject);
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
     procedure btnConsultaStatusNFeClick(Sender: TObject);
     procedure btnEnviarNFeSincronoClick(Sender: TObject);
@@ -60,6 +62,16 @@ end;
 procedure TfrmPrincipal.btnConsultarSituacaoNFeClick(Sender: TObject);
 var
   oServico: TConsultarSituacaoNFe;
+begin
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.btnConsultarDistribuicaoDFeChange(Sender: TObject);
+var
+  oServico: TConsultarDistribuicaoDFe;
 begin
   try
     oServico.Executar();
