@@ -14,17 +14,17 @@ Function EnviarNfeSincrono()
    Local oTotal, oICMSTot, oImpostoDevol
    Local oTransp, oVol
    Local oCobr, oFat, oDup
-   Local oPag, oDetPag
+   Local oPag, oDetPag, oEntrega, oAutXML
    Local oInfAdic, oInfRespTec
    Local oAutorizacao, oRetAutorizacao, oXmlRec, oConfigRec
    Local I, oErro, notaAssinada
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
 
-   * Criar configuração básica para consumir o serviço
+   * Criar configuraï¿½ï¿½o bï¿½sica para consumir o serviï¿½o
    oInicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
 
    oInicializarConfiguracao:TipoDfe = 0 // 0=nfe
-   oInicializarConfiguracao:Servico = 6 // 6=Autorização Nfe
+   oInicializarConfiguracao:Servico = 6 // 6=Autorizaï¿½ï¿½o Nfe
    oInicializarConfiguracao:TipoEmissao = 1 // 1=Normal
    oInicializarConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oInicializarConfiguracao:CertificadoSenha = "12345678"
@@ -114,6 +114,38 @@ Function EnviarNfeSincrono()
 
    // adicionar a tag Emit dentro da tag InfNfe
    oInfNfe:Dest = oDest
+
+   // adicionar a tag Entrega dentro da tag InfNFe
+   oEntrega = CreateObject("Unimake.Business.DFe.Xml.NFe.Entrega")
+   oEntrega:CNPJ = "11111111111111" // Informa CNPJ
+   oEntrega:CPF = "12345678909" // Informa CPF
+   oEntrega:XNome = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
+   oEntrega:xLgr = "AVENIDA DA SAUDADE"
+   oEntrega:Nro = "1555"
+   oEntrega:xCpl = "ENTREGA DE MERCADORIA"
+   oEntrega:xBairro = "CAMPOS ELISEOS"
+   oEntrega:CMun = 3543402
+   oEntrega:XMun = "RIBEIRAO PRETO"
+   oEntrega:UF = 35 // UFBrasil.SP
+   oEntrega:CEP = "14080000"
+   oEntrega:CPais = "1058" // Pais.Brasil
+   oEntrega:XPais = "Brasil"
+   oEntrega:Fone = "01111111111"
+   oEntrega:IE = "1111111111"
+   oInfNFe:Entrega = oEntrega
+
+   // adicionar a tag AutXML dentro da tag InfNfe
+   oAutXML = CreateObject("Unimake.Business.DFe.Xml.NFe.AutXML")
+   oAutXML:CNPJ = "11111111111111" //Informa CNPJ 
+   oInfNFe:AddAutXML(oAutXML)
+
+   oAutXML = CreateObject("Unimake.Business.DFe.Xml.NFe.AutXML")
+   oAutXML:CNPJ = "22222222222222" //Informa CNPJ 
+   oInfNFe:AddAutXML(oAutXML)
+
+   oAutXML = CreateObject("Unimake.Business.DFe.Xml.NFe.AutXML")
+   oAutXML:CPF = "33333333333" //Informa CPF 
+   oInfNFe:AddAutXML(oAutXML)
 
    For I = 1 To 3 // 3 produtos para teste    
       // criar tag Det

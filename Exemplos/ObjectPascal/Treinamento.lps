@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="16" Y="9"/>
-        <UsageCount Value="70"/>
+        <UsageCount Value="72"/>
       </Unit>
       <Unit>
         <Filename Value="main.pas"/>
@@ -19,8 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <CursorPos X="27" Y="11"/>
-        <UsageCount Value="70"/>
+        <TopLine Value="76"/>
+        <CursorPos X="40" Y="98"/>
+        <UsageCount Value="72"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -31,7 +32,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="26597"/>
         <CursorPos X="37" Y="26598"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="63"/>
       </Unit>
       <Unit>
         <Filename Value="consultarstatusnfe.pas"/>
@@ -40,15 +41,26 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="5"/>
         <CursorPos X="70" Y="47"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="61"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfesincrono.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFeSincrono"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="326"/>
+        <CursorPos X="35" Y="351"/>
+        <UsageCount Value="60"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="imprimirdanfecomunidanfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ImprimirDANFEcomUniDANFE"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="34" Y="17"/>
-        <UsageCount Value="58"/>
+        <TopLine Value="57"/>
+        <CursorPos X="7" Y="90"/>
+        <UsageCount Value="23"/>
       </Unit>
       <Unit>
         <Filename Value="main.lfm"/>
@@ -69,9 +81,9 @@
       <Unit>
         <Filename Value="D:\lazarus\lcl\include\application.inc"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="1028"/>
-        <CursorPos Y="1072"/>
-        <UsageCount Value="11"/>
+        <TopLine Value="571"/>
+        <CursorPos X="29" Y="597"/>
+        <UsageCount Value="12"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -91,18 +103,16 @@
       <Unit>
         <Filename Value="enviarnfesincronoduplicidade.pas"/>
         <UnitName Value="EnviarNFeSincronoDuplicidade"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <UsageCount Value="14"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="consultarsituacaonfe.pas"/>
         <UnitName Value="ConsultarSituacaoNFe"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="13"/>
-        <CursorPos X="13" Y="32"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="59"/>
+        <CursorPos X="39" Y="71"/>
         <UsageCount Value="13"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="D:\lazarus\lcl\interfaces\win32\win32callback.inc"/>
@@ -114,21 +124,9 @@
       <Unit>
         <Filename Value="eventocancelamentonfe.pas"/>
         <UnitName Value="EventoCancelamentoNFe"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="5" Y="134"/>
         <UsageCount Value="13"/>
-        <Loaded Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="ImprimirDANFEcomUniDANFE"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="57"/>
-        <CursorPos X="7" Y="90"/>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="main.lrs"/>
@@ -142,125 +140,144 @@
         <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="XML"/>
       </Unit>
+      <Unit>
+        <Filename Value="consultardfe.pas"/>
+        <UnitName Value="ConsultarDistribuicaoDFe"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="28" Y="14"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <UnitName Value="ConsultarDistribuicaoDFe"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="94"/>
+        <CursorPos Y="31"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="112" Column="8" TopLine="59"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="37" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="15" Column="60" TopLine="9"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="39" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="42" TopLine="14"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="22" Column="29"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="43" TopLine="15"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="13" Column="37"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="44" TopLine="16"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="45" TopLine="17"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="22" Column="29"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="46" TopLine="18"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="30" Column="39"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="48" TopLine="20"/>
       </Position>
       <Position>
-        <Filename Value="eventocancelamentonfe.pas"/>
-        <Caret Line="8" Column="26"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="49" TopLine="21"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="33"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="51" TopLine="24"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="25" Column="36"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="52" Column="79" TopLine="33"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="11" Column="39"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="31" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="11" Column="27"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="32" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="106" Column="13" TopLine="54"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="33" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="33" TopLine="19"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="35" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="34" TopLine="19"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="37" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="35" TopLine="19"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="39" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="36" TopLine="19"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="42" TopLine="14"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="37" TopLine="19"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="43" TopLine="15"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="38" TopLine="19"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="44" TopLine="16"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="40" TopLine="19"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="45" TopLine="17"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="41" TopLine="19"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="46" TopLine="18"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="43" Column="36" TopLine="19"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="31" Column="15" TopLine="20"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="87" TopLine="54"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="49" TopLine="21"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="33" TopLine="2"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="51" TopLine="30"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="87" TopLine="53"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="52" TopLine="30"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="40" TopLine="8"/>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Caret Line="54" TopLine="30"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="87" Column="9" TopLine="53"/>
+        <Filename Value="D:\lazarus\lcl\include\application.inc"/>
+        <Caret Line="1072" TopLine="1056"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="113" Column="3" TopLine="56"/>
+        <Filename Value="D:\lazarus\lcl\include\application.inc"/>
+        <Caret Line="439" TopLine="421"/>
       </Position>
       <Position>
-        <Filename Value="imprimirdanfecomunidanfe.pas"/>
-        <Caret Line="33" Column="16" TopLine="2"/>
+        <Filename Value="D:\lazarus\lcl\include\application.inc"/>
+        <Caret Line="597" Column="29" TopLine="571"/>
       </Position>
     </JumpHistory>
     <RunParams>
