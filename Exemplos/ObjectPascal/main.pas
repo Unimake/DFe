@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComObj,
   ConsultarStatusNFe, EnviarNFeSincrono, EnviarNFeSincronoDuplicidade,
   EnviarNFeSincronoDesserializacao, ConsultarSituacaoNFe, EventoCancelamentoNFe,
-  ImprimirDANFEcomUniDANFE, ConsultarDistribuicaoDFe;
+  ImprimirDANFEcomUniDANFE, ConsultarDistribuicaoDFe, EnviarEventoManifestacaoNFe;
 
 type
 
@@ -24,9 +24,11 @@ type
     btnImprimirDANFEcomUniDANFE: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
+    btnEnviarEventoManifestacaoNFe: TToggleBox;
     procedure btnConsultarDistribuicaoDFeChange(Sender: TObject);
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
     procedure btnConsultaStatusNFeClick(Sender: TObject);
+    procedure btnEnviarEventoManifestacaoNFeChange(Sender: TObject);
     procedure btnEnviarNFeSincronoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoDesserializacaoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoDuplicidadeClick(Sender: TObject);
@@ -52,6 +54,16 @@ implementation
 procedure TfrmPrincipal.btnConsultaStatusNFeClick(Sender: TObject);
 var
   oServico: TConsultarStatusNFe;
+begin
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.btnEnviarEventoManifestacaoNFeChange(Sender: TObject);
+var
+  oServico: TEnviarEventoManifestacaoNFe;
 begin
   try
     oServico.Executar();

@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="16" Y="9"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="73"/>
       </Unit>
       <Unit>
         <Filename Value="main.pas"/>
@@ -19,9 +19,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <TopLine Value="76"/>
-        <CursorPos X="40" Y="98"/>
-        <UsageCount Value="72"/>
+        <CursorPos X="57" Y="8"/>
+        <UsageCount Value="73"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -32,7 +31,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="26597"/>
         <CursorPos X="37" Y="26598"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="64"/>
       </Unit>
       <Unit>
         <Filename Value="consultarstatusnfe.pas"/>
@@ -41,16 +40,16 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="5"/>
         <CursorPos X="70" Y="47"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfesincrono.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFeSincrono"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="326"/>
         <CursorPos X="35" Y="351"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="61"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -60,7 +59,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="57"/>
         <CursorPos X="7" Y="90"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
       </Unit>
       <Unit>
         <Filename Value="main.lfm"/>
@@ -80,10 +79,11 @@
       </Unit>
       <Unit>
         <Filename Value="D:\lazarus\lcl\include\application.inc"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="571"/>
-        <CursorPos X="29" Y="597"/>
-        <UsageCount Value="12"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="1056"/>
+        <CursorPos Y="1072"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -124,9 +124,11 @@
       <Unit>
         <Filename Value="eventocancelamentonfe.pas"/>
         <UnitName Value="EventoCancelamentoNFe"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="5" Y="134"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="56"/>
+        <CursorPos X="32" Y="72"/>
         <UsageCount Value="13"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="main.lrs"/>
@@ -150,134 +152,142 @@
       <Unit>
         <Filename Value="consultardistribuicaodfe.pas"/>
         <UnitName Value="ConsultarDistribuicaoDFe"/>
-        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="91"/>
+        <CursorPos X="5" Y="128"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <UnitName Value="EnviarEventoManifestacaoNFe"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="94"/>
-        <CursorPos Y="31"/>
-        <UsageCount Value="11"/>
+        <TopLine Value="36"/>
+        <CursorPos Y="64"/>
+        <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="37" TopLine="13"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="54" TopLine="26"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="39" TopLine="13"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="55" TopLine="27"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="42" TopLine="14"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="56" TopLine="28"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="43" TopLine="15"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="57" TopLine="29"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="44" TopLine="16"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="58" TopLine="30"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="45" TopLine="17"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="59" TopLine="31"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="46" TopLine="18"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="61" Column="41" TopLine="52"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="48" TopLine="20"/>
-      </Position>
-      <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="49" TopLine="21"/>
-      </Position>
-      <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="51" TopLine="24"/>
-      </Position>
-      <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="52" Column="79" TopLine="33"/>
-      </Position>
-      <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
         <Caret Line="31" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
         <Caret Line="32" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
         <Caret Line="33" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="35" TopLine="13"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="34" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
         <Caret Line="37" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="38" TopLine="13"/>
+      </Position>
+      <Position>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
         <Caret Line="39" TopLine="13"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
         <Caret Line="42" TopLine="14"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
         <Caret Line="43" TopLine="15"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="44" TopLine="16"/>
-      </Position>
-      <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
         <Caret Line="45" TopLine="17"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="46" TopLine="18"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="47" TopLine="19"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="31" Column="15" TopLine="20"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="48" TopLine="20"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
         <Caret Line="49" TopLine="21"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="51" TopLine="30"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="52" TopLine="25"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="52" TopLine="30"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="53" TopLine="25"/>
       </Position>
       <Position>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <Caret Line="54" TopLine="30"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="54" TopLine="26"/>
       </Position>
       <Position>
-        <Filename Value="D:\lazarus\lcl\include\application.inc"/>
-        <Caret Line="1072" TopLine="1056"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="55" TopLine="27"/>
       </Position>
       <Position>
-        <Filename Value="D:\lazarus\lcl\include\application.inc"/>
-        <Caret Line="439" TopLine="421"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="56" TopLine="28"/>
       </Position>
       <Position>
-        <Filename Value="D:\lazarus\lcl\include\application.inc"/>
-        <Caret Line="597" Column="29" TopLine="571"/>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="57" TopLine="29"/>
+      </Position>
+      <Position>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="58" TopLine="30"/>
+      </Position>
+      <Position>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="59" TopLine="31"/>
+      </Position>
+      <Position>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="61" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <Caret Line="64" TopLine="36"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -285,4 +295,15 @@
       <Modes ActiveMode=""/>
     </RunParams>
   </ProjectSession>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="enviareventomanifestacaonfe.pas"/>
+        <Line Value="31"/>
+      </Item>
+    </BreakPoints>
+  </Debugging>
 </CONFIG>

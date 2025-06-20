@@ -91,5 +91,14 @@ object frmPrincipal: TfrmPrincipal
       OnChange = btnConsultarDistribuicaoDFeChange
       TabOrder = 7
     end
+    object btnEnviarEventoManifestacaoNFe: TToggleBox
+      Left = 10
+      Height = 31
+      Top = 312
+      Width = 270
+      Caption = 'Enviar Evento de Manifestação da NFe'
+      OnChange = btnEnviarEventoManifestacaoNFeChange
+      TabOrder = 8
+    end
   end
 end
