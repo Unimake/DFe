@@ -8,10 +8,10 @@
 			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Infse/RecepcionarLoteRps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>LoteRps</TagAssinatura>
-			<TagAtributoID>EnviarLoteRpsEnvio</TagAtributoID>
-			<TagLoteAssinatura>InfDeclaracaoPrestacaoServico</TagLoteAssinatura>
-			<TagLoteAtributoID>Rps</TagLoteAtributoID>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:RecepcionarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA{xmlBodyScape}{cCDATA}</nfseDadosMsg></nfse:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body</WebTagRetorno>
