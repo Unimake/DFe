@@ -649,7 +649,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// do número, que indica os minutos, que deve ser menor ou igual a 59.
         /// </summary>
         [XmlElement("hrsTrab")]
-        public virtual string HrsTrab { get; set; }
+        public string HrsTrab { get; set; }
 
 
         #region ShouldSreializa
