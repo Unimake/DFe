@@ -3249,29 +3249,6 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("cOperNFF")]
         public int COperNFF { get; set; }
 
-        [XmlElement("xEmb")]
-        public string XEmb { get; set; }
-
-        [XmlIgnore]
-        public double QVolEmb { get; set; }
-
-        [XmlElement("qVolEmb")]
-        public string QVolEmbField
-        {
-            get => QVolEmb.ToString("F2", CultureInfo.InvariantCulture);
-            set => QVolEmb = Converter.ToDouble(value);
-        }
-
-        [XmlElement("uEmb")]
-        public string UEmb { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeXEmb() => !string.IsNullOrWhiteSpace(XEmb);
-        public bool ShouldSerializeQVolEmbField() => !string.IsNullOrWhiteSpace(XEmb);
-        public bool ShouldSerializeUEmb() => !string.IsNullOrWhiteSpace(XEmb);
-
-        #endregion
     }
 
     /// <summary>
