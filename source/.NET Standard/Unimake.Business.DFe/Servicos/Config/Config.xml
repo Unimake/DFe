@@ -1991,4 +1991,10 @@
 		<ArqConfig>SantaCruzDoCapibaribePE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3301702">
+		<Nome>Duque de Caxias - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>DuqueDeCaxiasRJ.xml</ArqConfig>
+		<PadraoNFSe>ISSNET</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
