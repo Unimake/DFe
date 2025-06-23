@@ -135,7 +135,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.04</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoPrestado versao="2.04">
