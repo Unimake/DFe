@@ -926,7 +926,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public TipoPostoTarifario TpPosTar { get; set; }
 
         [XmlIgnore]
-        public double EnerInjet {  get; set; }
+        public double EnerInjet { get; set; }
 
         [XmlElement("enerInjet")]
         public string EnerInjetField
@@ -949,10 +949,10 @@ namespace Unimake.Business.DFe.Xml.NF3e
 #if INTEROP
         public bool ShouldSerializeTpPosTarInjet() => TpPosTarInjet != (TipoPostoTarifario)(-1);
 #else
-        public bool ShouldSerializeTpPosTarInter() => TpPosTarInjet != null;
+        public bool ShouldSerializeTpPosTarInjet() => TpPosTarInjet != null;
 #endif
 
-#endregion ShouldSerialize
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
