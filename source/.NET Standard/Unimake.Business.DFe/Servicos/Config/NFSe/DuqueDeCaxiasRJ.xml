@@ -195,5 +195,62 @@
 			<SchemaVersao>2.04</SchemaVersao>
 			<TargetNS></TargetNS>
 		</ConsultarNfseFaixa>
+		<ConsultarDadosCadastrais versao="2.04">
+			<Descricao>Consulta os dados cadastrais</Descricao>
+			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/duquedecaxias/nfse.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarDadosCadastrais</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarDadosCadastrais</WebActionProducao>
+			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<TagAssinatura>ConsultarDadosCadastraisEnvio</TagAssinatura>
+			<TagAtributoID>Pedido</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarDadosCadastrais><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarDadosCadastrais></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarDadosCadastraisResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarDadosCadastrais>
+		<ConsultarRpsDisponivel versao="2.04">
+			<Descricao>Consulta de RPS disponível</Descricao>
+			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/duquedecaxias/nfse.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionProducao>
+			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<TagAssinatura>ConsultarRpsDisponivelEnvio</TagAssinatura>
+			<TagAtributoID>Pedido</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarRpsDisponivel><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarRpsDisponivel></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarRpsDisponivel>
+		<ConsultarUrlNfse versao="2.04">
+			<Descricao>Consulta de URL de NFSe</Descricao>
+			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/duquedecaxias/nfse.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<TagAssinatura>ConsultarUrlNfseEnvio</TagAssinatura>
+			<TagAtributoID>Pedido</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarUrlNfse><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarUrlNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarUrlNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarUrlNfse>
 	</Servicos>
 </Configuracoes>
