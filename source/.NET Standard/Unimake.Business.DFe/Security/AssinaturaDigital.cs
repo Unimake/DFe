@@ -125,7 +125,7 @@ namespace Unimake.Business.DFe.Security
                                             break;
 
                                         default:
-                                            signedXml.SigningKey = x509Cert.PrivateKey;
+                                            signedXml.SigningKey = x509Cert.GetRSAPrivateKey();
                                             signedXml.SignedInfo.SignatureMethod = "http://www.w3.org/2000/09/xmldsig#rsa-sha1";
                                             reference.DigestMethod = "http://www.w3.org/2000/09/xmldsig#sha1";
                                             break;
@@ -237,7 +237,7 @@ namespace Unimake.Business.DFe.Security
                                     break;
 
                                 default:
-                                    signedXml.SigningKey = x509Cert.PrivateKey;
+                                    signedXml.SigningKey = x509Cert.GetRSAPrivateKey();
                                     signedXml.SignedInfo.SignatureMethod = "http://www.w3.org/2000/09/xmldsig#rsa-sha1";
                                     reference.DigestMethod = "http://www.w3.org/2000/09/xmldsig#sha1";
                                     break;
