@@ -4,9 +4,9 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Collections.Generic;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -254,6 +254,12 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         /// <summary>
+        /// Indicador de pertencimento do IRRF
+        /// </summary>
+        [XmlElement("indPertIRRF")]
+        public SimNaoLetra IndPertIRRF { get; set; } = SimNaoLetra.Nao;
+
+        /// <summary>
         /// Informações de contato
         /// </summary>
         [XmlElement("contato")]
@@ -287,6 +293,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #else
         public bool ShouldSerializeIndUniao() => IndUniao != null;
 #endif
+
+        public bool ShouldSerializeIndPertIRRF() => IndPertIRRF == SimNaoLetra.Sim;
 
         #endregion ShouldSerialize
 
