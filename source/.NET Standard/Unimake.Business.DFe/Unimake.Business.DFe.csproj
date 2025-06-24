@@ -200,6 +200,7 @@
 		<None Remove="Servicos\Config\NF3e\RS.xml" />
 		<None Remove="Servicos\Config\NF3e\SC.xml" />
 		<None Remove="Servicos\Config\NF3e\SE.xml" />
+		<None Remove="Servicos\Config\NF3e\SP.xml" />
 		<None Remove="Servicos\Config\NF3e\SVRS.xml" />
 		<None Remove="Servicos\Config\NF3e\TO.xml" />
 		<None Remove="Servicos\Config\NFCe\AC.xml" />
@@ -1265,6 +1266,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NF3e\MT.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\SP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\AC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\AL.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\AM.xml" />

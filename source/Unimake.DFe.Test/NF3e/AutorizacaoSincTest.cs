@@ -47,9 +47,10 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.RN, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.RS, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.RO, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.RR, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.RR, TipoAmbiente.Homologacao)]               
         [InlineData(UFBrasil.SC, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AC, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.AL, TipoAmbiente.Producao)]
@@ -76,6 +77,7 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.RR, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SC, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void EnviarNF3eSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
