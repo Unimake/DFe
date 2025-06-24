@@ -1683,7 +1683,7 @@
 		<Nome>João Pessoa - PB</Nome>
 		<UF>PB</UF>
 		<ArqConfig>JoaoPessoaPB.xml</ArqConfig>
-		<PadraoNFSe>SISPMJP</PadraoNFSe>
+		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2800308">
 		<Nome>Aracaju - SE</Nome>
