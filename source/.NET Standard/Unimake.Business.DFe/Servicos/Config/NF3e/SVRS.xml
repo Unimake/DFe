@@ -61,6 +61,7 @@
 			<TagAtributoID>infNF3e</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nf3="http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcaoSinc"><soap:Body><nf3:nf3eDadosMsg>{xmlBody}</nf3:nf3eDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
 			<GZIPCompress>true</GZIPCompress>
 			<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/nf3e/qrCode</UrlQrCodeHomologacao>
