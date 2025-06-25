@@ -1955,6 +1955,21 @@ namespace Unimake.Business.DFe.Xml.NFCom
             get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
             set => VCredPres = Converter.ToDouble(value);
         }
+
+        [XmlIgnore]
+        public double VCredPresCondSus { get; set; }
+
+        [XmlElement("vCredPresCondSus")]
+        public string VCredPresCondSusField
+        {
+            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPresCondSus = Converter.ToDouble(value);
+        }
+
+        #region Should Serialize
+        public bool ShouldSerializeVCredPresField() => VCredPresCondSus <= 0;
+        public bool ShouldSerializeVCredPresCondSusField() => VCredPres <= 0;
+        #endregion
     }
 
 #if INTEROP
@@ -1986,6 +2001,21 @@ namespace Unimake.Business.DFe.Xml.NFCom
             get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
             set => VCredPres = Converter.ToDouble(value);
         }
+
+        [XmlIgnore]
+        public double VCredPresCondSus { get; set; }
+
+        [XmlElement("vCredPresCondSus")]
+        public string VCredPresCondSusField
+        {
+            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPresCondSus = Converter.ToDouble(value);
+        }
+
+        #region Should Serialize
+        public bool ShouldSerializeVCredPresField() => VCredPresCondSus <= 0;
+        public bool ShouldSerializeVCredPresCondSusField() => VCredPres <= 0;
+        #endregion
     }
 
 #if INTEROP
