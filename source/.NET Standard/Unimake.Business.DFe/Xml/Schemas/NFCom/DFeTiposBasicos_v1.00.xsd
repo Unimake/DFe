@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2008 (http://www.altova.com) by sas-softwares@procergs.rs.gov.br (PROCERGS) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfcom="http://www.portalfiscal.inf.br/nfcom" targetNamespace="http://www.portalfiscal.inf.br/nfcom" elementFormDefault="qualified" attributeFormDefault="unqualified">	
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfcom="http://www.portalfiscal.inf.br/nfcom" targetNamespace="http://www.portalfiscal.inf.br/nfcom" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:simpleType name="TStringRTC">
 		<xs:annotation>
 			<xs:documentation>Tipo string genérico</xs:documentation>
@@ -368,7 +368,7 @@
 						</xs:element>
 						<xs:element name="vCredPresCondSus" type="nfcom:TDec1302">
 							<xs:annotation>
-								<xs:documentation>Total do Crédito Presumido em condição suspensiva</xs:documentation>
+								<xs:documentation>Total do Crédito Presumido Condição Suspensiva</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -450,6 +450,11 @@
 								<xs:documentation>Total do Crédito Presumido</xs:documentation>
 							</xs:annotation>
 						</xs:element>
+						<xs:element name="vCredPresCondSus" type="nfcom:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Crédito Presumido Condição Suspensiva</xs:documentation>
+							</xs:annotation>
+						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -477,6 +482,11 @@
 						<xs:element name="vCredPres" type="nfcom:TDec1302">
 							<xs:annotation>
 								<xs:documentation>Total do Crédito Presumido</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCredPresCondSus" type="nfcom:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Crédito Presumido Condição Suspensiva</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -534,30 +544,30 @@
 			</xs:annotation>
 			<xs:sequence minOccurs="0">
 				<xs:element name="qBCMono" type="nfcom:TDec_1104Op">
-				<xs:annotation>
-					<xs:documentation>Quantidade tributada.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="adRemIBS" type="nfcom:TDec_0302_04">
-				<xs:annotation>
-					<xs:documentation>Alíquota específica do IBS.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="adRemCBS" type="nfcom:TDec_0302_04">
-				<xs:annotation>
-					<xs:documentation>Alíquota específiac da CBS.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="vIBSMono" type="nfcom:TDec1302">
-				<xs:annotation>
-					<xs:documentation>Valor do IBS monofásico</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="vCBSMono" type="nfcom:TDec1302">
-				<xs:annotation>
-					<xs:documentation>Valor da CBS monofásica</xs:documentation>
-				</xs:annotation>
-			</xs:element>
+					<xs:annotation>
+						<xs:documentation>Quantidade tributada.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="adRemIBS" type="nfcom:TDec_0302_04">
+					<xs:annotation>
+						<xs:documentation>Alíquota específica do IBS.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="adRemCBS" type="nfcom:TDec_0302_04">
+					<xs:annotation>
+						<xs:documentation>Alíquota específiac da CBS.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="vIBSMono" type="nfcom:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor do IBS monofásico</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="vCBSMono" type="nfcom:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor da CBS monofásica</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 			</xs:sequence>
 			<xs:sequence minOccurs="0">
 				<xs:element name="qBCMonoReten" type="nfcom:TDec_1104Op">
@@ -624,7 +634,7 @@
 						<xs:documentation>Valor do IBS monofásico diferido</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element name="pDifCBS" type="nfcom:TDec_0302_04">
+				<xs:element name="pDifCBS" type="nfcom:TDec1302">
 					<xs:annotation>
 						<xs:documentation>Percentual do diferimento do imposto monofásico</xs:documentation>
 					</xs:annotation>
@@ -671,7 +681,7 @@
 								<xs:documentation>Aliquota do IBS de competência das UF</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="gDif" type="nfcom:TDifIBS" minOccurs="0">
+						<xs:element name="gDif" type="nfcom:TDif" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Grupo de campos do Diferimento</xs:documentation>
 							</xs:annotation>
@@ -705,7 +715,7 @@
 								<xs:documentation>Aliquota do IBS Municipal</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="gDif" type="nfcom:TDifCBS" minOccurs="0">
+						<xs:element name="gDif" type="nfcom:TDif" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Grupo de campos do Diferimento</xs:documentation>
 							</xs:annotation>
@@ -739,7 +749,7 @@
 								<xs:documentation>Aliquota da CBS</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="gDif" type="nfcom:TDifCBS" minOccurs="0">
+						<xs:element name="gDif" type="nfcom:TDif" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Grupo de campos do Diferimento</xs:documentation>
 							</xs:annotation>
@@ -824,43 +834,25 @@
 				</xs:element>
 				<xs:element name="vCredPresCondSus" type="nfcom:TDec1302">
 					<xs:annotation>
-						<xs:documentation>Valor do Crédito Presumido Condição Suspensiva
-Preencher apenas para cCredPres com indicacao de Condição Suspensiva</xs:documentation>
+						<xs:documentation>Valor do Crédito Presumido Condição Suspensiva, preencher apenas para cCredPres que possui indicação de Condição Suspensiva</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="TDifIBS">
+	<xs:complexType name="TDif">
 		<xs:annotation>
 			<xs:documentation>Tipo Diferimento</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="pDif" type="nfcom:TDec_0302_04">
 				<xs:annotation>
-					<xs:documentation>Percentual do diferemento</xs:documentation>
+					<xs:documentation>Percentual do diferimento</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="vDif" type="nfcom:TDec1302">
 				<xs:annotation>
-					<xs:documentation>Valor do diferemento</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TDifCBS">
-		<xs:annotation>
-			<xs:documentation>Tipo Diferimento</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="pDif" type="nfcom:TDec_0302_04">
-				<xs:annotation>
-					<xs:documentation>Percentual do diferemento</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="vDif" type="nfcom:TDec1302">
-				<xs:annotation>
-					<xs:documentation>Valor do diferemento</xs:documentation>
+					<xs:documentation>Valor do diferimento</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -872,8 +864,10 @@ Preencher apenas para cCredPres com indicacao de Condição Suspensiva</xs:docum
 		<xs:sequence>
 			<xs:element name="vDevTrib" type="nfcom:TDec1302">
 				<xs:annotation>
-					<xs:documentation>Valor do tributo devolvido. No fornecimento de energia elétrica, água, esgoto e
-gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
+					<xs:documentation>
+						Valor do tributo devolvido. No fornecimento de energia elétrica, água, esgoto e
+						gás natural e em outras hipóteses definidas no regulamento
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -965,11 +959,13 @@ gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
 		<xs:sequence>
 			<xs:element name="tpEnteGov" type="nfcom:TEnteGov">
 				<xs:annotation>
-					<xs:documentation>Para administração pública direta e suas autarquias e fundações:
-1=União
-2=Estados
-3=Distrito Federal
-4=Municípios</xs:documentation>
+					<xs:documentation>
+						Para administração pública direta e suas autarquias e fundações:
+						1=União
+						2=Estados
+						3=Distrito Federal
+						4=Municípios
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="pRedutor" type="nfcom:TDec_0302_04">
@@ -987,11 +983,13 @@ gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
 		<xs:sequence>
 			<xs:element name="tpEnteGov" type="nfcom:TEnteGov">
 				<xs:annotation>
-					<xs:documentation>Para administração pública direta e suas autarquias e fundações:
-1=União
-2=Estados
-3=Distrito Federal
-4=Municípios</xs:documentation>
+					<xs:documentation>
+						Para administração pública direta e suas autarquias e fundações:
+						1=União
+						2=Estados
+						3=Distrito Federal
+						4=Municípios
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="pRedutor" type="nfcom:TDec_0302_04">
@@ -1001,9 +999,11 @@ gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
 			</xs:element>
 			<xs:element name="tpOperGov" type="nfcom:TOperCompraGov">
 				<xs:annotation>
-					<xs:documentation>Tipo da operação com ente governamental:
-1 - Fornecimento
-2 - Recebimento do Pagamento</xs:documentation>
+					<xs:documentation>
+						Tipo da operação com ente governamental:
+						1 - Fornecimento
+						2 - Recebimento do Pagamento
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -1033,13 +1033,14 @@ gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
 			<xs:element name="tpCredPresIBSZFM" type="nfcom:TTpCredPresIBSZFM">
 				<xs:annotation>
 					<xs:documentation>Classificação de acordo com o art. 450, § 1º, da LC 214/25 para o cálculo do crédito presumido na ZFM</xs:documentation>
-					<xs:documentation>0 - Sem crédito presumido;
-1 - Bens de consumo final (55%);
-2 - Bens de capital (75%);
-3 - Bens intermediários (90,25%);
-4 - Bens de informática e outros definidos em legislação (100%).
-OBS: Percentuais definidos no art. 450, § 1º, da LC 214/25 para o cálculo do crédito presumido
-</xs:documentation>
+					<xs:documentation>
+						0 - Sem crédito presumido;
+						1 - Bens de consumo final (55%);
+						2 - Bens de capital (75%);
+						3 - Bens intermediários (90,25%);
+						4 - Bens de informática e outros definidos em legislação (100%).
+						OBS: Percentuais definidos no art. 450, § 1º, da LC 214/25 para o cálculo do crédito presumido
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="vCredPresIBSZFM" type="nfcom:TDec1302" minOccurs="0">
