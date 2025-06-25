@@ -211,7 +211,7 @@
 						<gCBSCredPres>
 							<cCredPres>123456</cCredPres>
 							<pCredPres>7.1234</pCredPres>
-							<vCredPres>8.12</vCredPres>
+							<vCredPresCondSus>8.15</vCredPresCondSus>
 						</gCBSCredPres>
 						<gTribCompraGov>
 							<pAliqIBSUF>12.1234</pAliqIBSUF>
