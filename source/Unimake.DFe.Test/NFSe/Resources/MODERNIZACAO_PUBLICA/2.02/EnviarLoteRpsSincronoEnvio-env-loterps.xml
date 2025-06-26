@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="ISO-8859-1"?>
+<EnviarLoteRpsSincronoEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<LoteRps Id="Lote_1809_1547" versao="2.02">
+		<NumeroLote>105</NumeroLote>
+		<CpfCnpj>
+			<Cnpj>00000000000000</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>00</InscricaoMunicipal>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfDeclaracaoPrestacaoServico Id="Declaracao_1809_1547">
+					<Rps Id="RPS1809_1547">
+						<IdentificacaoRps>
+							<Numero>27</Numero>
+							<Serie>0001</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2013-09-18</DataEmissao>
+						<Status>1</Status>
+					</Rps>
+					<Competencia>2013-09-18</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>100.00</ValorServicos>
+							<ValorDeducoes>0.00</ValorDeducoes>
+							<ValorPis>0.00</ValorPis>
+							<ValorCofins>0.00</ValorCofins>
+							<ValorInss>0.00</ValorInss>
+							<ValorIr>0.00</ValorIr>
+							<ValorCsll>0.00</ValorCsll>
+							<OutrasRetencoes>0.00</OutrasRetencoes>
+							<ValorIss>0.00</ValorIss>
+							<Aliquota>5.0</Aliquota>
+							<DescontoIncondicionado>0.00</DescontoIncondicionado>
+							<DescontoCondicionado>0.00</DescontoCondicionado>
+						</Valores>
+						<IssRetido>2</IssRetido>
+						<ResponsavelRetencao>1</ResponsavelRetencao>
+						<ItemListaServico>5.01</ItemListaServico>
+						<CodigoCnae>0111302</CodigoCnae>
+						<Discriminacao>Teste da GeraÃ§Ã£o de NFSE (Sem valor jurídico ou fiscal)</Discriminacao>
+						<CodigoMunicipio>4216602</CodigoMunicipio>
+						<ExigibilidadeISS>1</ExigibilidadeISS>
+						<MunicipioIncidencia>1200179</MunicipioIncidencia>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cnpj>00000000000000</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>00</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>00000000000</Cpf>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>PAULO JOSE TESTE</RazaoSocial>
+						<Endereco>
+							<Endereco>Rua Nazaré city</Endereco>
+							<Numero>14</Numero>
+							<Complemento>AP 502B</Complemento>
+							<Bairro>Floresta</Bairro>
+							<CodigoMunicipio>4216602</CodigoMunicipio>
+							<Uf>SC</Uf>
+							<Cep>88110612</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>7100000000</Telefone>
+							<Email>TESTE@gmail.com</Email>
+						</Contato>
+					</Tomador>
+					<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivoFiscal>2</IncentivoFiscal>
+				</InfDeclaracaoPrestacaoServico>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsSincronoEnvio>

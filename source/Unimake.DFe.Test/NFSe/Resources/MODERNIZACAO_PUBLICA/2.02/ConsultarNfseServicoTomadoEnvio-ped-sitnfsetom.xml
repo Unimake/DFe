@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ConsultarNfseServicoTomadoEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Consulente>
+		<CpfCnpj>
+			<Cnpj>00000000000000</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>00</InscricaoMunicipal>
+	</Consulente>
+	<NumeroNfse>2013907</NumeroNfse>
+	<PeriodoEmissao>
+		<DataInicial>2013-09-01</DataInicial>
+		<DataFinal>2013-09-19</DataFinal>
+	</PeriodoEmissao>
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>00000000000000</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>00</InscricaoMunicipal>
+	</Prestador>
+	<Tomador>
+		<CpfCnpj>
+			<Cpf>00000000000</Cpf>
+		</CpfCnpj>
+	</Tomador>
+	<Pagina>1</Pagina>
+</ConsultarNfseServicoTomadoEnvio>   

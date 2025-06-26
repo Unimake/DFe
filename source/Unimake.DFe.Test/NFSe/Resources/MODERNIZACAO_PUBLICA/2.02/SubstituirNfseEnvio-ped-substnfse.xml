@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<SubstituirNfseEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<SubstituicaoNfse Id="Substituicao_31847553589000139">
+		<Pedido>
+			<InfPedidoCancelamento Id="Cancelamento_180920131537">
+				<IdentificacaoNfse>
+					<Numero>2013000</Numero>
+					<CpfCnpj>
+						<Cnpj>00000000000000</Cnpj>
+					</CpfCnpj>
+					<InscricaoMunicipal>00</InscricaoMunicipal>
+					<CodigoMunicipio>000000</CodigoMunicipio>
+				</IdentificacaoNfse>
+				<CodigoCancelamento>1</CodigoCancelamento>
+				<MotivoCancelamento>SERVICO NAO PRESTADO</MotivoCancelamento>
+			</InfPedidoCancelamento>
+		</Pedido>
+		<Rps>
+			<InfDeclaracaoPrestacaoServico Id="Declaracao_18092013_1537">
+				<Rps Id="RPS_1251">
+					<IdentificacaoRps>
+						<Numero>254</Numero>
+						<Serie>00001</Serie>
+						<Tipo>1</Tipo>
+					</IdentificacaoRps>
+					<DataEmissao>2013-09-09</DataEmissao>
+					<Status>1</Status>
+				</Rps>
+				<Competencia>2013-09-09</Competencia>
+				<Servico>
+					<Valores>
+						<ValorServicos>330000.00</ValorServicos>
+						<ValorDeducoes>0</ValorDeducoes>
+						<ValorPis>0</ValorPis>
+						<ValorCofins>0</ValorCofins>
+						<ValorInss>0</ValorInss>
+						<ValorIr>0</ValorIr>
+						<ValorCsll>0</ValorCsll>
+						<OutrasRetencoes>0</OutrasRetencoes>
+						<ValorIss>600.00</ValorIss>
+						<Aliquota>2</Aliquota>
+						<DescontoIncondicionado>0</DescontoIncondicionado>
+						<DescontoCondicionado>0</DescontoCondicionado>
+					</Valores>
+					<IssRetido>2</IssRetido>
+					<ResponsavelRetencao>1</ResponsavelRetencao>
+					<ItemListaServico>1.01</ItemListaServico>
+					<CodigoCnae>0111302</CodigoCnae>
+					<Discriminacao>Teste da Substitucao de NFS-e</Discriminacao>
+					<CodigoMunicipio>4216602</CodigoMunicipio>
+					<ExigibilidadeISS>1</ExigibilidadeISS>
+					<MunicipioIncidencia>2100154</MunicipioIncidencia>
+				</Servico>
+				<Prestador>
+					<CpfCnpj>
+						<Cnpj>00000000000000</Cnpj>
+					</CpfCnpj>
+					<InscricaoMunicipal>0</InscricaoMunicipal>
+				</Prestador>
+				<Tomador>
+					<IdentificacaoTomador>
+						<CpfCnpj>
+							<Cnpj>00000000000000</Cnpj>
+						</CpfCnpj>
+					</IdentificacaoTomador>
+					<RazaoSocial>TESTE WEBSERVICE</RazaoSocial>
+					<Endereco>
+						<Endereco>RUA RUA JAIRO SIMOES</Endereco>
+						<Numero>123</Numero>
+						<Complemento>AP 901</Complemento>
+						<Bairro>BARRA</Bairro>
+						<CodigoMunicipio>2927408</CodigoMunicipio>
+						<Uf>BA</Uf>
+						<Cep>99999999</Cep>
+					</Endereco>
+					<Contato>
+						<Telefone>99999999</Telefone>
+						<Email>teste@gmail.com</Email>
+					</Contato>
+				</Tomador>
+				<RegimeEspecialTributacao>6</RegimeEspecialTributacao>
+				<OptanteSimplesNacional>1</OptanteSimplesNacional>
+				<IncentivoFiscal>2</IncentivoFiscal>
+			</InfDeclaracaoPrestacaoServico>
+		</Rps>
+	</SubstituicaoNfse>
+</SubstituirNfseEnvio>

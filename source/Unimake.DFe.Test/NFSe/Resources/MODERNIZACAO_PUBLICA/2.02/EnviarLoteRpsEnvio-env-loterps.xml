@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<EnviarLoteRpsEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<LoteRps Id="Lote_216_19092013_1145" versao="2.02">
+		<NumeroLote>216</NumeroLote>
+		<CpfCnpj>
+			<Cnpj>00000000000000</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>000</InscricaoMunicipal>
+		<QuantidadeRps>3</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfDeclaracaoPrestacaoServico Id="Declaracao_31847389000139">
+					<Rps Id="RPS_121">
+						<IdentificacaoRps>
+							<Numero>234</Numero>
+							<Serie>2</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2012-06-30</DataEmissao>
+						<Status>1</Status>
+					</Rps>
+					<Competencia>2012-06-30</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>330000.00</ValorServicos>
+							<ValorDeducoes>5688.99</ValorDeducoes>
+							<ValorPis>784.88</ValorPis>
+							<ValorCofins>7777.77</ValorCofins>
+							<ValorInss>56.66</ValorInss>
+							<ValorIr>55.55</ValorIr>
+							<ValorCsll>4.44</ValorCsll>
+							<OutrasRetencoes>3333.33</OutrasRetencoes>
+							<ValorIss>2222.22</ValorIss>
+							<Aliquota>3.0000000000</Aliquota>
+							<DescontoIncondicionado>1111.00</DescontoIncondicionado>
+							<DescontoCondicionado>1111.11</DescontoCondicionado>
+						</Valores>
+						<IssRetido>1</IssRetido>
+						<ResponsavelRetencao>1</ResponsavelRetencao>
+						<ItemListaServico>01.01</ItemListaServico>
+						<CodigoCnae>0</CodigoCnae>
+						<Discriminacao>Teste da Substitucao de NFSe</Discriminacao>
+						<CodigoMunicipio>4216602</CodigoMunicipio>
+						<CodigoPais>1058</CodigoPais>
+						<ExigibilidadeISS>1</ExigibilidadeISS>
+						<MunicipioIncidencia>4216602</MunicipioIncidencia>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cnpj>00000000000000</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>00</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>00000000000</Cpf>
+							</CpfCnpj>
+							<InscricaoMunicipal>999999</InscricaoMunicipal>
+						</IdentificacaoTomador>
+						<RazaoSocial>Modelo de Pessoa Tomadora de Servico</RazaoSocial>
+						<Endereco>
+							<Endereco>Logradouro do Tomador de Servico</Endereco>
+							<Numero>999</Numero>
+							<Complemento>AP 901</Complemento>
+							<Bairro>Bairro do Tomador de Servio</Bairro>
+							<CodigoMunicipio>4216602</CodigoMunicipio>
+							<Uf>SC</Uf>
+							<CodigoPais>1058</CodigoPais>
+							<Cep>99999999</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>99999999</Telefone>
+							<Email>teste@gmail.com</Email>
+						</Contato>
+					</Tomador>
+					<ConstrucaoCivil>
+						<CodigoObra>8888</CodigoObra>
+						<Art>9999</Art>
+					</ConstrucaoCivil>
+					<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivoFiscal>2</IncentivoFiscal>
+				</InfDeclaracaoPrestacaoServico>
+			</Rps>
+			<Rps>
+				<InfDeclaracaoPrestacaoServico Id="Declaracao_31847389000140">
+					<Rps Id="RPS_122">
+						<IdentificacaoRps>
+							<Numero>234</Numero>
+							<Serie>2</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2012-06-30</DataEmissao>
+						<Status>1</Status>
+					</Rps>
+					<Competencia>2012-06-30</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>330000.00</ValorServicos>
+							<ValorDeducoes>5688.99</ValorDeducoes>
+							<ValorPis>784.88</ValorPis>
+							<ValorCofins>7777.77</ValorCofins>
+							<ValorInss>56.66</ValorInss>
+							<ValorIr>55.55</ValorIr>
+							<ValorCsll>4.44</ValorCsll>
+							<OutrasRetencoes>3333.33</OutrasRetencoes>
+							<ValorIss>2222.22</ValorIss>
+							<Aliquota>3.0000000000</Aliquota>
+							<DescontoIncondicionado>1111.00</DescontoIncondicionado>
+							<DescontoCondicionado>1111.11</DescontoCondicionado>
+						</Valores>
+						<IssRetido>1</IssRetido>
+						<ResponsavelRetencao>1</ResponsavelRetencao>
+						<ItemListaServico>01.01</ItemListaServico>
+						<CodigoCnae>0</CodigoCnae>
+						<Discriminacao>Teste da Substitucao de NFSe</Discriminacao>
+						<CodigoMunicipio>4216602</CodigoMunicipio>
+						<CodigoPais>1058</CodigoPais>
+						<ExigibilidadeISS>1</ExigibilidadeISS>
+						<MunicipioIncidencia>4216602</MunicipioIncidencia>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cnpj>00000000000000</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>00</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>00000000000</Cpf>
+							</CpfCnpj>
+							<InscricaoMunicipal>999999</InscricaoMunicipal>
+						</IdentificacaoTomador>
+						<RazaoSocial>Modelo de Pessoa Tomadora de Servico</RazaoSocial>
+						<Endereco>
+							<Endereco>Logradouro do Tomador de Servico</Endereco>
+							<Numero>999</Numero>
+							<Complemento>AP 901</Complemento>
+							<Bairro>Bairro do Tomador de Servio</Bairro>
+							<CodigoMunicipio>4216602</CodigoMunicipio>
+							<Uf>SC</Uf>
+							<CodigoPais>1058</CodigoPais>
+							<Cep>99999999</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>99999999</Telefone>
+							<Email>teste@gmail.com</Email>
+						</Contato>
+					</Tomador>
+					<ConstrucaoCivil>
+						<CodigoObra>8888</CodigoObra>
+						<Art>9999</Art>
+					</ConstrucaoCivil>
+					<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivoFiscal>2</IncentivoFiscal>
+				</InfDeclaracaoPrestacaoServico>
+			</Rps>
+			<Rps>
+				<InfDeclaracaoPrestacaoServico Id="Declaracao_31847389000141">
+					<Rps Id="RPS_123">
+						<IdentificacaoRps>
+							<Numero>234</Numero>
+							<Serie>2</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2012-06-30</DataEmissao>
+						<Status>1</Status>
+					</Rps>
+					<Competencia>2012-06-30</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>330000.00</ValorServicos>
+							<ValorDeducoes>5688.99</ValorDeducoes>
+							<ValorPis>784.88</ValorPis>
+							<ValorCofins>7777.77</ValorCofins>
+							<ValorInss>56.66</ValorInss>
+							<ValorIr>55.55</ValorIr>
+							<ValorCsll>4.44</ValorCsll>
+							<OutrasRetencoes>3333.33</OutrasRetencoes>
+							<ValorIss>2222.22</ValorIss>
+							<Aliquota>3.0000000000</Aliquota>
+							<DescontoIncondicionado>1111.00</DescontoIncondicionado>
+							<DescontoCondicionado>1111.11</DescontoCondicionado>
+						</Valores>
+						<IssRetido>1</IssRetido>
+						<ResponsavelRetencao>1</ResponsavelRetencao>
+						<ItemListaServico>01.01</ItemListaServico>
+						<CodigoCnae>0</CodigoCnae>
+						<Discriminacao>Teste da Substituicao de NFSe</Discriminacao>
+						<CodigoMunicipio>4216602</CodigoMunicipio>
+						<CodigoPais>1058</CodigoPais>
+						<ExigibilidadeISS>1</ExigibilidadeISS>
+						<MunicipioIncidencia>4216602</MunicipioIncidencia>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cnpj>00000000000000</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>000</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>00000000000</Cpf>
+							</CpfCnpj>
+							<InscricaoMunicipal>999999</InscricaoMunicipal>
+						</IdentificacaoTomador>
+						<RazaoSocial>Modelo de Pessoa Tomadora de Servico</RazaoSocial>
+						<Endereco>
+							<Endereco>Logradouro do Tomador de Servico</Endereco>
+							<Numero>999</Numero>
+							<Complemento>AP 901</Complemento>
+							<Bairro>Bairro do Tomador de Servio</Bairro>
+							<CodigoMunicipio>4216602</CodigoMunicipio>
+							<Uf>SC</Uf>
+							<CodigoPais>1058</CodigoPais>
+							<Cep>99999999</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>99999999</Telefone>
+							<Email>teste@gmail.com</Email>
+						</Contato>
+					</Tomador>
+					<ConstrucaoCivil>
+						<CodigoObra>8888</CodigoObra>
+						<Art>9999</Art>
+					</ConstrucaoCivil>
+					<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivoFiscal>2</IncentivoFiscal>
+				</InfDeclaracaoPrestacaoServico>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsEnvio>

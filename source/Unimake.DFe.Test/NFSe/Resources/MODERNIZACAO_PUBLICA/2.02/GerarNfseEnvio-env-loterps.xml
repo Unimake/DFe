@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<GerarNfseEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Rps>
+		<InfDeclaracaoPrestacaoServico Id="ds20131534">
+			<Rps Id="RPS_111">
+				<IdentificacaoRps>
+					<Numero>29</Numero>
+					<Serie>1</Serie>
+					<Tipo>1</Tipo>
+				</IdentificacaoRps>
+				<DataEmissao>2018-01-01</DataEmissao>
+				<Status>1</Status>
+			</Rps>
+			<Competencia>2013-08-29</Competencia>
+			<Servico>
+				<Valores>
+					<ValorServicos>1781.29</ValorServicos>
+					<ValorDeducoes>1.00</ValorDeducoes>
+					<ValorPis>2.00</ValorPis>
+					<ValorCofins>3.00</ValorCofins>
+					<ValorInss>4.00</ValorInss>
+					<ValorIr>5.00</ValorIr>
+					<ValorCsll>6.00</ValorCsll>
+					<OutrasRetencoes>0</OutrasRetencoes>
+					<ValorIss>100.00</ValorIss>
+					<Aliquota>2</Aliquota>
+					<DescontoIncondicionado>80.00</DescontoIncondicionado>
+					<DescontoCondicionado>70.00</DescontoCondicionado>
+				</Valores>
+				<IssRetido>2</IssRetido>
+				<ResponsavelRetencao>2</ResponsavelRetencao>
+				<ItemListaServico>17.01</ItemListaServico>
+				<PrestacaoSus>2</PrestacaoSus>
+				<CodigoCnae>0111302</CodigoCnae>
+				<Discriminacao>Teste de nota fiscal via webservices, nota sem valor juridico ou fiscal</Discriminacao>
+				<CodigoMunicipio>2916401</CodigoMunicipio>
+				<ExigibilidadeISS>1</ExigibilidadeISS>
+				<MunicipioIncidencia>2916401</MunicipioIncidencia>
+			</Servico>
+			<Prestador>
+				<CpfCnpj>
+					<Cnpj>00000000000000</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>00</InscricaoMunicipal>
+			</Prestador>
+			<Tomador>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cnpj>00000000000000</Cnpj>
+					</CpfCnpj>
+				</IdentificacaoTomador>
+				<RazaoSocial>SOUZA TESTE WEBSERVICE</RazaoSocial>
+				<Endereco>
+					<Endereco>RUA SIMOES</Endereco>
+					<Numero>1234567890</Numero>
+					<Complemento>123456789012345678901234567890123456789012345678901</Complemento>
+					<Bairro>123456789012345678901234567890</Bairro>
+					<CodigoMunicipio>2916401</CodigoMunicipio>
+					<Uf>ba</Uf>
+					<Cep>44400999</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>(077)21XX-8888</Telefone>
+					<Email>CIRO@GMAIL.COM</Email>
+				</Contato>
+			</Tomador>
+			<Intermediario>
+				<IdentificacaoIntermediario>
+					<CpfCnpj>
+						<Cnpj>00000000000000</Cnpj>
+					</CpfCnpj>
+					<InscricaoMunicipal>000</InscricaoMunicipal>
+				</IdentificacaoIntermediario>
+				<RazaoSocial>RazaoSocial</RazaoSocial>
+			</Intermediario>
+			<RegimeEspecialTributacao>6</RegimeEspecialTributacao>
+			<OptanteSimplesNacional>1</OptanteSimplesNacional>
+			<IncentivoFiscal>2</IncentivoFiscal>
+		</InfDeclaracaoPrestacaoServico>
+	</Rps>
+</GerarNfseEnvio>  
+
