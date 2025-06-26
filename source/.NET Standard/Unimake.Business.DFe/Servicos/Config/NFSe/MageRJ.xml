@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.02">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://sis-nfs-e.mage.rj.gov.br:8013/homologacao/webservices/NFEServices.jws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws" xmlns:types="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:RecepcionarLoteRps xmlns:q1="http://DefaultNamespace"><Nfsecabecmsg xsi:type="xsd:string"><cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho></Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></q1:RecepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="2.02">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>http://sis-nfs-e.mage.rj.gov.br:8013/homologacao/webservices/NFEServices.jws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws" xmlns:types="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:RecepcionarLoteRpsSincrono xmlns:q1="http://DefaultNamespace"><Nfsecabecmsg xsi:type="xsd:string"><cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho></Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></q1:RecepcionarLoteRpsSincrono></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:RecepcionarLoteRpsSincronoResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<GerarNfse versao="2.02">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>http://sis-nfs-e.mage.rj.gov.br:8013/homologacao/webservices/NFEServices.jws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws" xmlns:types="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:GerarNfse xmlns:q1="http://DefaultNamespace"><Nfsecabecmsg xsi:type="xsd:string"><cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho></Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></q1:GerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:GerarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="2.02">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>http://sis-nfs-e.mage.rj.gov.br:8013/homologacao/webservices/NFEServices.jws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws" xmlns:types="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:CancelarNfse xmlns:q1="http://DefaultNamespace"><Nfsecabecmsg xsi:type="xsd:string"><cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho></Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></q1:CancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</CancelarNfse>
+		<SubstituirNfse versao="2.02">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>http://sis-nfs-e.mage.rj.gov.br:8013/homologacao/webservices/NFEServices.jws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
+			<TagExtraAssinatura>Pedido</TagExtraAssinatura>
+			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws" xmlns:types="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:SubstituirNfse xmlns:q1="http://DefaultNamespace"><Nfsecabecmsg xsi:type="xsd:string"><cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho></Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></q1:SubstituirNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:SubstituirNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.02">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://sis-nfs-e.mage.rj.gov.br:8013/homologacao/webservices/NFEServices.jws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws" xmlns:types="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:ConsultarLoteRps xmlns:q1="http://DefaultNamespace"><Nfsecabecmsg xsi:type="xsd:string"><cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho></Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></q1:ConsultarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.02">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>http://sis-nfs-e.mage.rj.gov.br:8013/homologacao/webservices/NFEServices.jws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws" xmlns:types="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:ConsultarNfsePorRps xmlns:q1="http://DefaultNamespace"><Nfsecabecmsg xsi:type="xsd:string"><cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho></Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></q1:ConsultarNfsePorRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="2.02">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<WebEnderecoHomologacao>http://sis-nfs-e.mage.rj.gov.br:8013/homologacao/webservices/NFEServices.jws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws" xmlns:types="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:ConsultarNfseServicoPrestado xmlns:q1="http://DefaultNamespace"><Nfsecabecmsg xsi:type="xsd:string"><cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho></Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></q1:ConsultarNfseServicoPrestado></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultarNfseServicoPrestadoResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="2.02">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>http://sis-nfs-e.mage.rj.gov.br:8013/homologacao/webservices/NFEServices.jws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws" xmlns:types="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:ConsultarNfseServicoTomado xmlns:q1="http://DefaultNamespace"><Nfsecabecmsg xsi:type="xsd:string"><cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho></Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></q1:ConsultarNfseServicoTomado></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultarNfseServicoTomadoResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoTomado>
+		<ConsultarNfseFaixa versao="2.02">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>http://sis-nfs-e.mage.rj.gov.br:8013/homologacao/webservices/NFEServices.jws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws" xmlns:types="http://sis-nfs-e.mage.rj.gov.br:8015/nfe/webservices/NFEServices.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:ConsultarNfseFaixa xmlns:q1="http://DefaultNamespace"><Nfsecabecmsg xsi:type="xsd:string"><cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho></Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></q1:ConsultarNfseFaixa></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultarNfsePorFaixaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseFaixa>
+	</Servicos>
+</Configuracoes>

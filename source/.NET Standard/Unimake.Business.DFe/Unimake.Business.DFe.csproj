@@ -460,6 +460,7 @@
 		<None Remove="Servicos\Config\NFSe\LorenaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml" />
 		<None Remove="Servicos\Config\NFSe\MafraSC.xml" />
+		<None Remove="Servicos\Config\NFSe\MageRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\ManausAM.xml" />
 		<None Remove="Servicos\Config\NFSe\MarataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\MarcolandiaPI.xml" />
@@ -554,6 +555,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoLuisMA.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoMarcosRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoPedroDaAldeiaRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoRoqueSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoSebastiaoDoCaiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SapirangaRS.xml" />
@@ -1158,6 +1160,7 @@
 		<None Remove="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\MODERNIZACAO_PUBLICA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NATALENSE\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NATALENSE\xmldsig-core-schema20020212.xsd" />
@@ -1323,6 +1326,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuquiaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MafraSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MageRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MonteCarmeloMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaLimaMG.xml" />
@@ -1446,6 +1450,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoLeopoldoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoLuisMA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoPedroDaAldeiaRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoSebastiaoDoParaisoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SapirangaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SeberiRS.xml" />
@@ -3084,6 +3089,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\MODERNIZACAO_PUBLICA\nfse v2 02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\MODERNIZACAO_PUBLICA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\xmldsig-core-schema20020212.xsd" />

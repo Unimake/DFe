@@ -7135,6 +7135,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("SH3")]
         SH3 = 72,
+
+        ///<summary>
+        ///MODERNIZACAO_PUBLICA
+        /// </summary>
+        [Description("MODERNIZACAO_PUBLICA")]
+        MODERNIZACAO_PUBLICA = 73,
     }
 
     #endregion
