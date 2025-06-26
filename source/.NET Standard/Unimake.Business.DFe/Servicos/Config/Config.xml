@@ -1997,4 +1997,23 @@
 		<ArqConfig>DuqueDeCaxiasRJ.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3162500">
+		<Nome>São João del Rei - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>SaoJoaoDelReiMG.xml</ArqConfig>
+		<PadraoNFSe>SH3</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3172004">
+		<Nome>Visconde do Rio Branco - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ViscondeDoRioBrancoMG.xml</ArqConfig>
+		<PadraoNFSe>SH3</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3105905">
+		<Nome>Barroso - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>BarrosoMG.xml</ArqConfig>
+		<PadraoNFSe>SH3</PadraoNFSe>
+	</Arquivo>
+	
 </Configuracoes>

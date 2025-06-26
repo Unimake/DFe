@@ -321,6 +321,7 @@
 		<None Remove="Servicos\Config\NFSe\BarraVelhaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BarreirasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\BarretosSP.xml" />
+		<None Remove="Servicos\Config\NFSe\BarrosoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\BarueriSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BelemPA.xml" />
@@ -542,6 +543,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoCarlosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoJoaoDelReiMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDeRibamarMA.xml" />
@@ -593,6 +595,7 @@
 		<None Remove="Servicos\Config\NFSe\VeraCruzRS.xml" />
 		<None Remove="Servicos\Config\NFSe\VeranopolisRS.xml" />
 		<None Remove="Servicos\Config\NFSe\VilaVelhaES.xml" />
+		<None Remove="Servicos\Config\NFSe\ViscondeDoRioBrancoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VoltaRedondaRJ.xml" />
@@ -1195,6 +1198,8 @@
 		<None Remove="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\XSDRLZ_Informatica_02.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SH3\nfse_v202.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SH3\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
@@ -1300,6 +1305,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AssuRN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BalnearioCamboriuSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraVelhaSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BarrosoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BelemPA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CacadorSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
@@ -1436,6 +1442,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantanaDoLivramentoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPlatinaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoCarlosSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDelReiMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoLeopoldoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoLuisMA.xml" />
@@ -1656,6 +1663,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiracicabaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ViscondeDoRioBrancoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VitoriaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\Webfisco.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -3118,6 +3126,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\XSDRLZ_Informatica_02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SH3\nfse_v202.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SH3\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />

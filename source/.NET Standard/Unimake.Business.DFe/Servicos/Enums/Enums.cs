@@ -7129,6 +7129,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("JLSOFT")]
         JLSOFT = 71,
+
+        ///<summary>
+        ///SH3
+        /// </summary>
+        [Description("SH3")]
+        SH3 = 72,
     }
 
     #endregion
