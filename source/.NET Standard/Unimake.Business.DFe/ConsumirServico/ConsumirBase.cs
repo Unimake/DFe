@@ -220,6 +220,7 @@ namespace Unimake.Business.DFe
 
             var urlpost = new Uri(soap.EnderecoWeb);
             var soapXML = EnveloparXML(soap, xml.OuterXml, certificado);
+            
             var buffer2 = Encoding.UTF8.GetBytes(soapXML);
 
             ServicePointManager.Expect100Continue = false;
@@ -342,6 +343,11 @@ namespace Unimake.Business.DFe
                     else if (soap.PadraoNFSe == PadraoNFSe.TECNOSISTEMAS)
                     {
                         RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Replace("&lt;", "<").Replace("&gt;", ">");
+                    }
+
+                    else if (soap.PadraoNFSe == PadraoNFSe.MODERNIZACAO_PUBLICA && !retornoXml.GetElementsByTagName(tagRetorno)[0].OuterXml.Contains("Resposta"))
+                    {
+                        RetornoServicoString = retornoXml.OuterXml;
                     }
 
                     else
