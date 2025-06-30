@@ -14674,96 +14674,96 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Alíquota do IBS de competência do Estado
         /// </summary>
         [XmlIgnore]
-        public double PIBSUF { get; set; }
+        public double PAliqIBSUF { get; set; }
 
         /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PIBSUF para atribuir ou resgatar o valor)
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqIBSUF para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("pIBSUF")]
-        public string PIBSUFField
+        [XmlElement("pAliqIBSUF")]
+        public string PAliqIBSUFField
         {
-            get => PIBSUF.ToString("F4", CultureInfo.InvariantCulture);
-            set => PIBSUF = Converter.ToDouble(value);
+            get => PAliqIBSUF.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqIBSUF = Converter.ToDouble(value);
         }
 
         /// <summary>
         /// Valor do Tributo do IBS da UF calculado
         /// </summary>
         [XmlIgnore]
-        public double VIBSUF { get; set; }
+        public double VTribIBSUF { get; set; }
 
         /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VIBSUF para atribuir ou resgatar o valor)
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribIBSUF para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vIBSUF")]
-        public string VIBSUFField
+        [XmlElement("vTribIBSUF")]
+        public string VTribIBSUFField
         {
-            get => VIBSUF.ToString("F2", CultureInfo.InvariantCulture);
-            set => VIBSUF = Converter.ToDouble(value);
+            get => VTribIBSUF.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribIBSUF = Converter.ToDouble(value);
         }
 
         /// <summary>
         /// Alíquota do IBS de competência do Município
         /// </summary>
         [XmlIgnore]
-        public double PIBSMun { get; set; }
+        public double PAliqIBSMun { get; set; }
 
         /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PIBSMun para atribuir ou resgatar o valor)
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqIBSMun para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("pIBSMun")]
-        public string PIBSMunField
+        [XmlElement("pAliqIBSMun")]
+        public string PAliqIBSMunField
         {
-            get => PIBSMun.ToString("F4", CultureInfo.InvariantCulture);
-            set => PIBSMun = Converter.ToDouble(value);
+            get => PAliqIBSMun.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqIBSMun = Converter.ToDouble(value);
         }
 
         /// <summary>
         /// Valor do Tributo do IBS do Município calculado
         /// </summary>
         [XmlIgnore]
-        public double VIBSMun { get; set; }
+        public double VTribIBSMun { get; set; }
 
         /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VIBSMun para atribuir ou resgatar o valor)
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribIBSMun para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vIBSMun")]
-        public string VIBSMunField
+        [XmlElement("vTribIBSMun")]
+        public string VTribIBSMunField
         {
-            get => VIBSMun.ToString("F2", CultureInfo.InvariantCulture);
-            set => VIBSMun = Converter.ToDouble(value);
+            get => VTribIBSMun.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribIBSMun = Converter.ToDouble(value);
         }
 
         /// <summary>
         /// Alíquota da CBS
         /// </summary>
         [XmlIgnore]
-        public double PCBS { get; set; }
+        public double PAliqCBS { get; set; }
 
         /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PCBS para atribuir ou resgatar o valor)
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqCBS para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("pCBS")]
-        public string PCBSField
+        [XmlElement("pAliqCBS")]
+        public string PAliqCBSField
         {
-            get => PCBS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PCBS = Converter.ToDouble(value);
+            get => PAliqCBS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqCBS = Converter.ToDouble(value);
         }
 
         /// <summary>
         /// Valor do Tributo da CBS calculado
         /// </summary>
         [XmlIgnore]
-        public double VCBS { get; set; }
+        public double VTribCBS { get; set; }
 
         /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCBS para atribuir ou resgatar o valor)
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribCBS para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vCBS")]
-        public string VCBSField
+        [XmlElement("vTribCBS")]
+        public string VTribCBSField
         {
-            get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCBS = Converter.ToDouble(value);
+            get => VTribCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribCBS = Converter.ToDouble(value);
         }
     }
 }
