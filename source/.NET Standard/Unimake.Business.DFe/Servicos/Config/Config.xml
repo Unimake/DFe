@@ -2033,4 +2033,34 @@
 		<ArqConfig>LauroDeFreitasBA.xml</ArqConfig>
 		<PadraoNFSe>METROPOLIS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5206503">
+		<Nome>Cromínia - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>CrominiaGO.xml</ArqConfig>
+		<PadraoNFSe>MEGASOFT</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5217708">
+		<Nome>Pontalina - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>PontalinaGO.xml</ArqConfig>
+		<PadraoNFSe>MEGASOFT</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5212600">
+		<Nome>Mairipotaba - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>MairipotabaGO.xml</ArqConfig>
+		<PadraoNFSe>MEGASOFT</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5218391">
+		<Nome>Professor Jamil - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>ProfessorJamilGO.xml</ArqConfig>
+		<PadraoNFSe>MEGASOFT</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5215603">
+		<Nome>Padre Bernardo - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>PadreBernardoGO.xml</ArqConfig>
+		<PadraoNFSe>MEGASOFT</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

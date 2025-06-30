@@ -7147,6 +7147,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("METROPOLIS")]
         METROPOLIS = 74,
+
+        ///<summary>
+        ///MEGASOFT
+        /// </summary>
+        [Description("MEGASOFT")]
+        MEGASOFT = 75,
     }
 
     #endregion
