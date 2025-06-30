@@ -2063,4 +2063,10 @@
 		<ArqConfig>PadreBernardoGO.xml</ArqConfig>
 		<PadraoNFSe>MEGASOFT</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3537305">
+		<Nome>Penápolis - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>PenapolisSP.xml</ArqConfig>
+		<PadraoNFSe>ISSONLINE_ASSESSORPUBLICO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

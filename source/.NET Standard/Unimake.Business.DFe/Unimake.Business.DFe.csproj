@@ -515,6 +515,7 @@
 		<None Remove="Servicos\Config\NFSe\PederneirasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
+		<None Remove="Servicos\Config\NFSe\PenapolisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PetropolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PiracicabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PiratiningaSP.xml" />
@@ -1347,6 +1348,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PadreBernardoGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParacambiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PauliniaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PenapolisSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PoaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AracajuSE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AriquemesRO.xml" />
