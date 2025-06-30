@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<GerarNfseEnvio xmlns="http://megasoftarrecadanet.com.br/xsd/nfse_v01.xsd">
+	<Rps>
+		<InfDeclaracaoPrestacaoServico Id="ID1">
+			<Rps>
+				<IdentificacaoRps>
+					<Numero>1</Numero>
+				</IdentificacaoRps>
+				<DataEmissao>2013-12-01T10:10:50</DataEmissao>
+			</Rps>
+			<Servico>
+				<Valores>
+					<ValorServicos>100.00</ValorServicos>
+					<ValorPis>1</ValorPis>
+					<ValorCofins>2</ValorCofins>
+					<ValorInss>3</ValorInss>
+					<ValorIr>5</ValorIr>
+					<ValorCsll>4</ValorCsll>
+					<Aliquota>5.00</Aliquota>
+					<DescontoIncondicionado>0</DescontoIncondicionado>
+				</Valores>
+				<IssRetido>1</IssRetido>
+				<CodigoMunicipio>5208707</CodigoMunicipio>
+				<CodigoTributacaoMunicipio>1</CodigoTributacaoMunicipio>
+				<Discriminacao>Servico de Manutencao em Software</Discriminacao>
+				<InfAdicional>Banco do Brasil AG: 1111-1 CC: 10000-1</InfAdicional>
+			</Servico>
+			<Prestador>
+				<CpfCnpj>
+					<Cnpj>99999999999999</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+			</Prestador>
+			<Tomador>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cnpj>99999999999999</Cnpj>
+					</CpfCnpj>
+					<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+					<InscricaoEstadual>2222</InscricaoEstadual>
+				</IdentificacaoTomador>
+				<RazaoSocial>Empresa LTDA</RazaoSocial>
+				<Endereco>
+					<Endereco>XXXXXXXXXXXX</Endereco>
+					<Numero>S/N</Numero>
+					<Complemento>XXXXXXXXXXX</Complemento>
+					<Bairro>Centro</Bairro>
+					<Cep>99999999</Cep>
+					<CodigoMunicipio>5208707</CodigoMunicipio>
+				</Endereco>
+			</Tomador>
+		</InfDeclaracaoPrestacaoServico>
+	</Rps>
+</GerarNfseEnvio>

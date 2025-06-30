@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio xmlns="http://megasoftarrecadanet.com.br/xsd/nfse_v01.xsd">
+	<IdentificacaoRps>
+		<Numero>3</Numero>
+	</IdentificacaoRps>
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>99999999999999</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+	</Prestador>
+</ConsultarNfseRpsEnvio>
