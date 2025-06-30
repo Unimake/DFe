@@ -2027,4 +2027,10 @@
 		<ArqConfig>SaoPedroDaAldeiaRJ.xml</ArqConfig>
 		<PadraoNFSe>MODERNIZACAO_PUBLICA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2919207">
+		<Nome>Lauro de Freitas - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>LauroDeFreitasBA.xml</ArqConfig>
+		<PadraoNFSe>METROPOLIS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

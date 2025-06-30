@@ -454,6 +454,7 @@
 		<None Remove="Servicos\Config\NFSe\JundiaiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JuquiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
+		<None Remove="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\LimeiraSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LondrinaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\LontrasSC.xml" />
@@ -1160,6 +1161,8 @@
 		<None Remove="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\METROPOLIS\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\METROPOLIS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MODERNIZACAO_PUBLICA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NATALENSE\nfse.xsd" />
@@ -1325,6 +1328,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItatingaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuquiaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MafraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MageRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MonteCarmeloMG.xml" />
@@ -3089,6 +3093,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\METROPOLIS\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\METROPOLIS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MODERNIZACAO_PUBLICA\nfse v2 02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MODERNIZACAO_PUBLICA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.00.xsd" />

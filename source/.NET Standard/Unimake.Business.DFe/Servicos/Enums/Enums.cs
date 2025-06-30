@@ -7141,6 +7141,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("MODERNIZACAO_PUBLICA")]
         MODERNIZACAO_PUBLICA = 73,
+
+        ///<summary>
+        ///METROPOLIS
+        /// </summary>
+        [Description("METROPOLIS")]
+        METROPOLIS = 74,
     }
 
     #endregion
