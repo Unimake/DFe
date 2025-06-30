@@ -182,6 +182,14 @@
 								<pCredPres>3.0000</pCredPres>
 								<vCredPres>30.00</vCredPres>
 							</gCBSCredPres>
+							<gTribCompraGov>
+								<pAliqIBSUF>1.0000</pAliqIBSUF>
+								<vTribIBSUF>2.00</vTribIBSUF>
+								<pAliqIBSMun>3.0000</pAliqIBSMun>
+								<vTribIBSMun>4.00</vTribIBSMun>
+								<pAliqCBS>5.0000</pAliqCBS>
+								<vTribCBS>6.00</vTribCBS>
+							</gTribCompraGov>
 						</gIBSCBS>
 					</IBSCBS>
 				</imposto>
