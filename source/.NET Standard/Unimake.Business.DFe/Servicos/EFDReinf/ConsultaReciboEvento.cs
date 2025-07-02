@@ -85,6 +85,25 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             Inicializar(reinfConsulta?.GerarXML() ?? throw new ArgumentNullException(nameof(reinfConsulta)), configuracao);
         }
 
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="conteudoXML">String do XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public ConsultaReciboEvento(string conteudoXML, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var doc = new XmlDocument();
+            doc.LoadXml(conteudoXML);
+
+            Inicializar(doc, configuracao);
+        }
+
         ///<summary>
         ///Construtor simplificado para API
         /// </summary>

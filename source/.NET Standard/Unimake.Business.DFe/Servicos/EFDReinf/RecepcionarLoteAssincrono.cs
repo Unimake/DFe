@@ -119,6 +119,24 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         }
 
         /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="conteudoXML">String do XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public RecepcionarLoteAssincrono(string conteudoXML, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var doc = new XmlDocument();
+            doc.LoadXml(conteudoXML);
+
+            Inicializar(doc, configuracao);
+        }
+
+        /// <summary>
         /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
         public ReinfRetornoLoteAssincrono Result
@@ -190,7 +208,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         {
             try
             {
-                throw new Exception("Não existe XML de distribuição para consulta status do serviço.");
+                throw new Exception("Utilize o serviço ConsultaLoteAssincrono para obter o XML de distribuição.");
             }
             catch (Exception ex)
             {
