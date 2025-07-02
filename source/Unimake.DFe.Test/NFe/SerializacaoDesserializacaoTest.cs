@@ -36,7 +36,9 @@ namespace Unimake.DFe.Test.NFe
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            var docGerado = xml.GerarXML();
+
+            Assert.True(doc.InnerText == docGerado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>

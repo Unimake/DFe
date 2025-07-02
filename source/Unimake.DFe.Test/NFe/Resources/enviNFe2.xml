@@ -190,7 +190,7 @@
 					<qCom>1</qCom>
 					<vUnCom>1</vUnCom>
 					<vProd>1.00</vProd>
-					<cEANTrib></cEANTrib>
+					<cEANTrib/>
 					<cBarraTrib>cBarraTrib1</cBarraTrib>
 					<uTrib>uTrib1</uTrib>
 					<qTrib>1</qTrib>
@@ -544,12 +544,12 @@
 								<vCredPres>30.00</vCredPres>
 							</gCBSCredPres>
 							<gTribCompraGov>
-								<pIBSUF>1.0000</pIBSUF>
-								<vIBSUF>2.00</vIBSUF>
-								<pIBSMun>3.0000</pIBSMun>
-								<vIBSMun>4.00</vIBSMun>
-								<pCBS>5.0000</pCBS>
-								<vCBS>6.00</vCBS>
+								<pAliqIBSUF>0.0000</pAliqIBSUF>
+								<vTribIBSUF>0.00</vTribIBSUF>
+								<pAliqIBSMun>0.0000</pAliqIBSMun>
+								<vTribIBSMun>0.00</vTribIBSMun>
+								<pAliqCBS>0.0000</pAliqCBS>
+								<vTribCBS>0.00</vTribCBS>
 							</gTribCompraGov>
 						</gIBSCBS>
 						<gIBSCBSMono>
