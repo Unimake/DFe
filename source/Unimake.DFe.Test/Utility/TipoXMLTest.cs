@@ -43,6 +43,7 @@ namespace Unimake.DFe.Test.Utility
         [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S1000-reinf-cons.xml", TipoXML.EFDReinfConsultaReciboEvento)]
         [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaLoteAssincrono-Reinf-consloteevt.xml", TipoXML.EFDReinfConsultaLoteAssincrono)]
         [InlineData(@"..\..\..\EFDReinf\Resources\loteEventosAssincrono-Reinf-loteevt.xml", TipoXML.EFDReinfEnvioLoteEventos)]
+        [InlineData(@"..\..\..\EFDReinf\Resources\1000_evtInfoContri-Reinf-evt.xml", TipoXML.EFDReinfEvento)]
         public void ObterTipoXmlEFDReinf(string arqXML, TipoXML tipoEsperado)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização do teste de obter o tipo do XML.");
