@@ -11571,6 +11571,14 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VDup.ToString("F2", CultureInfo.InvariantCulture);
             set => VDup = Converter.ToDouble(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeNDupField() => !string.IsNullOrEmpty(NDup);
+
+        public bool ShouldSerializeDVencField() => DVenc > DateTime.MinValue;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>

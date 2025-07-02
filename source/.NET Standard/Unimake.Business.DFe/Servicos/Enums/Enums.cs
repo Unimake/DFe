@@ -7571,6 +7571,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("XML de consulta recibo do evento de EFD Reinf")]
         EFDReinfConsultaReciboEvento = 46,
 
+        /// <summary>
+        /// XML específico de evento de EFD Reinf
+        /// </summary>
+        [Description("XML específico de evento de EFD Reinf")]
+        EFDReinfEvento = 47,
+
         #endregion EFD Reinf
 
         /// <summary>
