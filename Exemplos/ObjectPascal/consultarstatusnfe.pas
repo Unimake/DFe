@@ -22,6 +22,7 @@ implementation
 
 procedure TConsultarStatusNFe.Executar;
 var
+  // Declarar objetos
   oConfiguracao: olevariant;
   oConsStatServ: olevariant;
   oStatusServico: olevariant;
@@ -30,7 +31,7 @@ var
 begin
   // Criar objeto de configuração mínima
   oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
-  oConfiguracao.TipoDFe := 0; //0=NFe
+  oConfiguracao.TipoDFe := 0; //0=NFe 1=NFCe
   oConfiguracao.CertificadoArquivo := 'C:\Projetos\certificados\UnimakePV.pfx';
   oConfiguracao.CertificadoSenha := '12345678';
 
@@ -58,7 +59,9 @@ begin
 
     //Código de Status e Motivo
     ShowMessage(IntToStr(oStatusServico.Result.CStat) + ' - ' + oStatusServico.Result.XMotivo);
+
   except
+    //Demostrar a exceção
     ShowMessage(oExceptionInterop.GetMessage());
     ShowMessage(IntToStr(oExceptionInterop.GetErrorCode()));
   end;
