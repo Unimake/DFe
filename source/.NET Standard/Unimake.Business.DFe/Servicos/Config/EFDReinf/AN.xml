@@ -36,10 +36,10 @@
 				</Tipo>
 				<Tipo>
 					<Evento>evtTabLig</Evento>
-					<SchemaArquivoEvento>R-1050-evt1050evtTabLig-v{0}-.xsd</SchemaArquivoEvento>
+					<SchemaArquivoEvento>R-1050-evt1050TabLig-v{0}-.xsd</SchemaArquivoEvento>
 					<TagAssinatura>Reinf</TagAssinatura>
 					<TagAtributoID>evtTabLig</TagAtributoID>
-					<TargetNS>http://www.reinf.esocial.gov.br/schemas/evt1050evtTabLig/v{0}</TargetNS>
+					<TargetNS>http://www.reinf.esocial.gov.br/schemas/evt1050TabLig/v{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtTabProcesso</Evento>
