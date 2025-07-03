@@ -7159,6 +7159,13 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("ISSONLINE_ASSESSORPUBLICO")]
         ISSONLINE_ASSESSORPUBLICO = 76,
+
+
+        ///<summary>
+        ///SINSOFT
+        /// </summary>
+        [Description("SINSOFT")]
+        SINSOFT = 77,
     }
 
     #endregion

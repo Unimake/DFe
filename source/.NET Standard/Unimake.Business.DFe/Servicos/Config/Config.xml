@@ -2069,4 +2069,10 @@
 		<ArqConfig>PenapolisSP.xml</ArqConfig>
 		<PadraoNFSe>ISSONLINE_ASSESSORPUBLICO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4319703">
+		<Nome>São Valentim - RS </Nome>
+		<UF>RS</UF>
+		<ArqConfig>SaoValentimRS.xml</ArqConfig>
+		<PadraoNFSe>SINSOFT</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
