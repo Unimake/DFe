@@ -1078,6 +1078,8 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Tipo do XML</returns>
         private static TipoXML ObterTipoXmlEFDReinf(string primeiraTagFilha)
         {
+            var tipoXML = TipoXML.NaoIdentificado;
+
             switch (primeiraTagFilha)
             {
                 case "envioLoteEventos":
@@ -1088,10 +1090,14 @@ namespace Unimake.Business.DFe.Utility
 
                 case "ConsultaReciboEvento":
                     return TipoXML.EFDReinfConsultaReciboEvento;
-
-                default:
-                    return TipoXML.NaoIdentificado;
             }
+
+            if (primeiraTagFilha.Contains("evt"))
+            {
+                return TipoXML.EFDReinfEvento;
+            }
+
+            return tipoXML;
         }
 
         /// <summary>

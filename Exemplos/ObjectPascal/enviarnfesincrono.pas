@@ -29,31 +29,10 @@ var
   oEnviNFe: olevariant;
   oNfe: olevariant;
   oInfNFe: olevariant;
-  oIde: olevariant;
-  oEmit: olevariant;
-  oEnderEmit: olevariant;
-  oDest: olevariant;
-  oEnderDest: olevariant;
   oDet: olevariant;
-  oProd: olevariant;
-  oImposto: olevariant;
-  oICMS: olevariant;
-  oICMSSN101: olevariant;
-  oPIS: olevariant;
-  oPISOutr: olevariant;
-  oCOFINS: olevariant;
-  oCOFINSOutr: olevariant;
-  oTotal: olevariant;
-  oICMSTot: olevariant;
   oVol: olevariant;
-  oTransp: olevariant;
-  oCobr: olevariant;
-  oFat: olevariant;
   oDup: olevariant;
-  oPag: olevariant;
   oDetPag: olevariant;
-  oInfAdic: olevariant;
-  oInfRespTec: olevariant;
 
   oConteudoNFe: olevariant;
   oConteudoInfNFe: olevariant;
@@ -102,7 +81,7 @@ begin
     oInfNFe.Ide.NatOp := 'VENDA PRODUC.DO ESTABELEC';
     oInfNFe.Ide.&Mod := 55; // NFe
     oInfNFe.Ide.Serie := 59;
-    oInfNFe.Ide.NNF := 30;
+    oInfNFe.Ide.NNF := 33;
     oInfNFe.Ide.DhEmi := Now;
     oInfNFe.Ide.DhSaiEnt := Now;
     oInfNFe.Ide.TpNF := 1; // Saida
@@ -305,7 +284,7 @@ begin
     oInfNFe.InfRespTec.Email := 'zedascouves@gmail.com';
     oInfNFe.InfRespTec.Fone := '04430000000';
     oInfNFe.InfRespTec.IdCSRT := '01';
-    oInfNFe.InfRespTec.CSRT := '9x9x9x9x9x9x9x9x9x9x9x9x9x9x9x9x9x9x';
+    oInfNFe.InfRespTec.CSRT := '8WCARAO9D8P00R845TARUPPTGY5CL40WS3J1';
 
     // adicionar a tag InfNfe dentro da tag Nfe
     oNfe.AddInfNFe(IUnknown(oInfNFe));

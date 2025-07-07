@@ -1,0 +1,71 @@
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Rps xmlns="http://www.abrasf.org.br/nfse.xsd">
+		<InfDeclaracaoPrestacaoServico Id="rps100UNICA">
+			<Rps>
+				<IdentificacaoRps>
+					<Numero>100</Numero>
+					<Serie>UNICA</Serie>
+					<Tipo>1</Tipo>
+				</IdentificacaoRps>
+				<DataEmissao>2017-09-20</DataEmissao>
+				<Status>1</Status>
+			</Rps>
+			<Competencia>2017-09-20</Competencia>
+			<Servico>
+				<Valores>
+					<ValorServicos>1250.50</ValorServicos>
+					<ValorDeducoes>3.50</ValorDeducoes>
+					<ValorPis>2.00</ValorPis>
+					<ValorCofins>1.20</ValorCofins>
+					<ValorInss>1.30</ValorInss>
+					<ValorIr>0.50</ValorIr>
+					<ValorCsll>0.30</ValorCsll>
+					<OutrasRetencoes>2.50</OutrasRetencoes>
+					<ValorIss>9.80</ValorIss>
+					<Aliquota>3.00</Aliquota>
+					<DescontoIncondicionado>0.00</DescontoIncondicionado>
+					<DescontoCondicionado>1.80</DescontoCondicionado>
+				</Valores>
+				<IssRetido>2</IssRetido>
+				<ItemListaServico>01.05</ItemListaServico>
+				<CodigoTributacaoMunicipio>0000010000005</CodigoTributacaoMunicipio>
+				<Discriminacao>Analise de Sistemas</Discriminacao>
+				<CodigoMunicipio>4316600</CodigoMunicipio>
+				<CodigoPais>1058</CodigoPais>
+				<ExigibilidadeISS>1</ExigibilidadeISS>
+				<MunicipioIncidencia>4316600</MunicipioIncidencia>
+			</Servico>
+			<Prestador>
+				<CpfCnpj>
+					<Cnpj>04215111000176</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>4/4040</InscricaoMunicipal>
+			</Prestador>
+			<Tomador>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cnpj>01001001000113</Cnpj>
+					</CpfCnpj>
+					<InscricaoMunicipal>15000</InscricaoMunicipal>
+				</IdentificacaoTomador>
+				<RazaoSocial>Empresa de Teste</RazaoSocial>
+				<Endereco>
+					<Endereco>Rua das Flores</Endereco>
+					<Numero>1000</Numero>
+					<Complemento>Casa</Complemento>
+					<Bairro>Teste</Bairro>
+					<CodigoMunicipio>3504503</CodigoMunicipio>
+					<Uf>SP</Uf>
+					<CodigoPais>1058</CodigoPais>
+					<Cep>18000000</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>14000000000</Telefone>
+					<Email>teste@teste.com.br</Email>
+				</Contato>
+			</Tomador>
+			<OptanteSimplesNacional>2</OptanteSimplesNacional>
+			<IncentivoFiscal>2</IncentivoFiscal>
+		</InfDeclaracaoPrestacaoServico>
+	</Rps>
+</GerarNfseEnvio>

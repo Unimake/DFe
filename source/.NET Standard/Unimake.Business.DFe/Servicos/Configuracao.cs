@@ -623,6 +623,8 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         private void SubstituirValorPropriedadeVariavel()
         {
+            AtribuirWebSoapString();
+
             if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(WebEnderecoHomologacao))
             {
                 WebEnderecoHomologacao = WebEnderecoHomologacao.Replace("{MunicipioToken}", MunicipioToken);
@@ -668,14 +670,7 @@ namespace Unimake.Business.DFe.Servicos
                 }
             }
 
-            if (TipoAmbiente == TipoAmbiente.Homologacao)
-            {
-                WebSoapString = WebSoapStringHomologacao;
-            }
-            else
-            {
-                WebSoapString = WebSoapStringProducao;
-            }
+
 
             //Antiga implementação para uso do padrão AGILI (Rondonópolis) que acabou não sendo necessária no momento da implementação do município. Ticket ID #159383. Mauricio 05/12/2023
             //if (!string.IsNullOrEmpty(ClientSecret) && !string.IsNullOrEmpty(ClientID))
@@ -699,6 +694,18 @@ namespace Unimake.Business.DFe.Servicos
             {
                 RequestURIProducao = RequestURIProducao.Replace("{numeroProtocolo}", NumeroProtocolo);
                 RequestURIHomologacao = RequestURIHomologacao.Replace("{numeroProtocolo}", NumeroProtocolo);
+            }
+        }
+
+        private void AtribuirWebSoapString()
+        {
+            if (TipoAmbiente == TipoAmbiente.Homologacao)
+            {
+                WebSoapString = WebSoapStringHomologacao;
+            }
+            else
+            {
+                WebSoapString = WebSoapStringProducao;
             }
         }
 

@@ -1,101 +1,101 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 589
-  Height = 547
-  Top = 256
-  Width = 1028
+  Left = 5098
+  Height = 656
+  Top = 472
+  Width = 1234
   Caption = 'Como utilizar a DLL Unimake.DFe para envio de NFe, NFCe, CTe, etc.'
-  ClientHeight = 547
-  ClientWidth = 1028
-  DesignTimePPI = 120
+  ClientHeight = 656
+  ClientWidth = 1234
+  DesignTimePPI = 144
   OnCreate = FormCreate
   LCLVersion = '2.2.6.0'
   object GroupBox1: TGroupBox
-    Left = 10
-    Height = 520
-    Top = 10
-    Width = 298
+    Left = 12
+    Height = 624
+    Top = 12
+    Width = 358
     Caption = 'NF-e'
-    ClientHeight = 495
-    ClientWidth = 294
+    ClientHeight = 594
+    ClientWidth = 354
     TabOrder = 0
     OnClick = GroupBox1Click
     object btnConsultaStatusNFe: TButton
-      Left = 10
-      Height = 32
+      Left = 12
+      Height = 38
       Top = 0
-      Width = 270
+      Width = 324
       Caption = 'Consultar Status'
       OnClick = btnConsultaStatusNFeClick
       TabOrder = 0
     end
     object btnEnviarNFeSincrono: TButton
-      Left = 10
-      Height = 32
-      Top = 40
-      Width = 270
+      Left = 12
+      Height = 38
+      Top = 48
+      Width = 324
       Caption = 'Enviar NFe modo Síncrono'
       OnClick = btnEnviarNFeSincronoClick
       TabOrder = 1
     end
     object btnEnviarNFeSincronoDesserializacao: TButton
-      Left = 10
-      Height = 32
-      Top = 80
-      Width = 270
+      Left = 12
+      Height = 38
+      Top = 96
+      Width = 324
       Caption = 'Enviar NFe Síncrono c/Desserialização'
       OnClick = btnEnviarNFeSincronoDesserializacaoClick
       TabOrder = 2
     end
     object btnEnviarNFeSincronoDuplicidade: TButton
-      Left = 10
-      Height = 32
-      Top = 120
-      Width = 270
+      Left = 12
+      Height = 38
+      Top = 144
+      Width = 324
       Caption = 'Enviar NFe Síncrono - Duplicidade'
       OnClick = btnEnviarNFeSincronoDuplicidadeClick
       TabOrder = 3
     end
     object btnConsultarSituacaoNFe: TButton
-      Left = 10
-      Height = 32
-      Top = 159
-      Width = 270
+      Left = 12
+      Height = 38
+      Top = 191
+      Width = 324
       Caption = 'Consulta Situação da NFe'
       OnClick = btnConsultarSituacaoNFeClick
       TabOrder = 4
     end
     object btnEventoCancelamentoNFe: TButton
-      Left = 10
-      Height = 32
-      Top = 200
-      Width = 270
+      Left = 12
+      Height = 38
+      Top = 240
+      Width = 324
       Caption = 'Enviar o Evento de Cancelamento'
       OnClick = btnEventoCancelamentoNFeClick
       TabOrder = 5
     end
     object btnImprimirDANFEcomUniDANFE: TButton
-      Left = 7
-      Height = 32
-      Top = 240
-      Width = 273
+      Left = 8
+      Height = 38
+      Top = 288
+      Width = 328
       Caption = 'Imprimir DANFE com UniDANFE'
       OnClick = btnImprimirDANFEcomUniDANFEClick
       TabOrder = 6
     end
     object btnConsultarDistribuicaoDFe: TToggleBox
-      Left = 10
-      Height = 31
-      Top = 278
-      Width = 270
+      Left = 12
+      Height = 37
+      Top = 334
+      Width = 324
       Caption = 'Consultar Distribuição DFe'
       OnChange = btnConsultarDistribuicaoDFeChange
       TabOrder = 7
     end
     object btnEnviarEventoManifestacaoNFe: TToggleBox
-      Left = 10
-      Height = 31
-      Top = 312
-      Width = 270
+      Left = 12
+      Height = 37
+      Top = 374
+      Width = 324
       Caption = 'Enviar Evento de Manifestação da NFe'
       OnChange = btnEnviarEventoManifestacaoNFeChange
       TabOrder = 8

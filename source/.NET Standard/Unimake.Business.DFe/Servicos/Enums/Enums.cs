@@ -7160,11 +7160,18 @@ namespace Unimake.Business.DFe.Servicos
         [Description("ISSONLINE_ASSESSORPUBLICO")]
         ISSONLINE_ASSESSORPUBLICO = 76,
 
+
+        ///<summary>
+        ///SINSOFT
+        /// </summary>
+        [Description("SINSOFT")]
+        SINSOFT = 77,
+
         /// <summary>
         /// PRIMAX
         /// </summary>
         [Description("PRIMAX")]
-        PRIMAX = 77,
+        PRIMAX = 78,
     }
 
     #endregion
@@ -7576,6 +7583,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("XML de consulta recibo do evento de EFD Reinf")]
         EFDReinfConsultaReciboEvento = 46,
+
+        /// <summary>
+        /// XML específico de evento de EFD Reinf
+        /// </summary>
+        [Description("XML específico de evento de EFD Reinf")]
+        EFDReinfEvento = 47,
 
         #endregion EFD Reinf
 

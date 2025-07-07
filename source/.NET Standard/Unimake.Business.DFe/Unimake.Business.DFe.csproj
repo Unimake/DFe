@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2025.06.30.1823</AssemblyVersion>
-		<FileVersion>2025.06.30.1823</FileVersion>
+		<AssemblyVersion>2025.07.05.1500</AssemblyVersion>
+		<FileVersion>2025.07.05.1500</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1314,6 +1314,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoValentimRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmargosaBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AssuRN.xml" />

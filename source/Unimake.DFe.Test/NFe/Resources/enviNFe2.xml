@@ -190,7 +190,7 @@
 					<qCom>1</qCom>
 					<vUnCom>1</vUnCom>
 					<vProd>1.00</vProd>
-					<cEANTrib></cEANTrib>
+					<cEANTrib/>
 					<cBarraTrib>cBarraTrib1</cBarraTrib>
 					<uTrib>uTrib1</uTrib>
 					<qTrib>1</qTrib>
@@ -479,22 +479,22 @@
 						<gIBSCBS>
 							<vBC>1000.00</vBC>
 							<gIBSUF>
-								<pIBSUF>1.5000</pIBSUF>
+								<pIBSUF>0.1000</pIBSUF>
 								<gDif>
-									<pDif>0.5000</pDif>
-									<vDif>5.00</vDif>
+									<pDif>0.0000</pDif>
+									<vDif>0.00</vDif>
 								</gDif>
 								<gDevTrib>
-									<vDevTrib>2.00</vDevTrib>
+									<vDevTrib>0.00</vDevTrib>
 								</gDevTrib>
 								<gRed>
-									<pRedAliq>10.0000</pRedAliq>
-									<pAliqEfet>1.3500</pAliqEfet>
+									<pRedAliq>00.0000</pRedAliq>
+									<pAliqEfet>0.9000</pAliqEfet>
 								</gRed>
 								<vIBSUF>15.00</vIBSUF>
 							</gIBSUF>
 							<gIBSMun>
-								<pIBSMun>0.7500</pIBSMun>
+								<pIBSMun>0.1000</pIBSMun>
 								<gDif>
 									<pDif>0.2500</pDif>
 									<vDif>2.50</vDif>
@@ -503,23 +503,23 @@
 									<vDevTrib>1.00</vDevTrib>
 								</gDevTrib>
 								<gRed>
-									<pRedAliq>5.0000</pRedAliq>
-									<pAliqEfet>0.7125</pAliqEfet>
+									<pRedAliq>0.0000</pRedAliq>
+									<pAliqEfet>0.1000</pAliqEfet>
 								</gRed>
 								<vIBSMun>7.50</vIBSMun>
 							</gIBSMun>
 							<gCBS>
-								<pCBS>2.5000</pCBS>
+								<pCBS>0.9000</pCBS>
 								<gDif>
-									<pDif>0.3000</pDif>
-									<vDif>3.00</vDif>
+									<pDif>0.0000</pDif>
+									<vDif>0.00</vDif>
 								</gDif>
 								<gDevTrib>
-									<vDevTrib>1.50</vDevTrib>
+									<vDevTrib>0.00</vDevTrib>
 								</gDevTrib>
 								<gRed>
-									<pRedAliq>8.0000</pRedAliq>
-									<pAliqEfet>2.3000</pAliqEfet>
+									<pRedAliq>0.0000</pRedAliq>
+									<pAliqEfet>0.9000</pAliqEfet>
 								</gRed>
 								<vCBS>25.00</vCBS>
 							</gCBS>
@@ -544,12 +544,12 @@
 								<vCredPres>30.00</vCredPres>
 							</gCBSCredPres>
 							<gTribCompraGov>
-								<pIBSUF>1.0000</pIBSUF>
-								<vIBSUF>2.00</vIBSUF>
-								<pIBSMun>3.0000</pIBSMun>
-								<vIBSMun>4.00</vIBSMun>
-								<pCBS>5.0000</pCBS>
-								<vCBS>6.00</vCBS>
+								<pAliqIBSUF>0.0000</pAliqIBSUF>
+								<vTribIBSUF>0.00</vTribIBSUF>
+								<pAliqIBSMun>0.0000</pAliqIBSMun>
+								<vTribIBSMun>0.00</vTribIBSMun>
+								<pAliqCBS>0.0000</pAliqCBS>
+								<vTribCBS>0.00</vTribCBS>
 							</gTribCompraGov>
 						</gIBSCBS>
 						<gIBSCBSMono>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<GerarNfse versao="2.01">
+			<Descricao>Gerar NFSe</Descricao>
+			<WebEnderecoHomologacao>http://191.252.58.191:83/soap/INFSe</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://191.252.58.191:83/soap/INFSe</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.datasmart.com.br/GerarNfse</WebActionHomologacao>
+			<WebActionProducao>http://www.datasmart.com.br/GerarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://www.datasmart.com.br/"><soapenv:Header><Input xsi:type="urn:Input" xmlns:urn="urn:NFSeIntf"><Username xsi:type="xsd:string">{MunicipioUsuario}</Username><Password xsi:type="xsd:string">{MunicipioSenha}</Password><Prefeitura xsi:type="xsd:string">B_SVAL</Prefeitura></Input></soapenv:Header><soapenv:Body><dat:GerarNfse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:GerarNfseEnvio" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><nfseCabecMsg xsi:type="xsd:string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBodyScape}</nfseDadosMsg><Username xsi:type="xsd:string">{MunicipioUsuario}</Username><Password xsi:type="xsd:string">{MunicipioSenha}</Password><Prefeitura xsi:type="xsd:string">B_SVAL</Prefeitura></parameters></dat:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://www.datasmart.com.br/"><soapenv:Header><Input xsi:type="urn:Input" xmlns:urn="urn:NFSeIntf"><Username xsi:type="xsd:string">40221044000</Username><Password xsi:type="xsd:string">1234</Password><Prefeitura xsi:type="xsd:string">B_SVAL</Prefeitura></Input></soapenv:Header><soapenv:Body><dat:GerarNfse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:GerarNfseEnvio" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><nfseCabecMsg xsi:type="xsd:string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBodyScape}</nfseDadosMsg><Username xsi:type="xsd:string">40221044000</Username><Password xsi:type="xsd:string">1234</Password><Prefeitura xsi:type="xsd:string">BANCO_DEMONSTRACAO</Prefeitura></parameters></dat:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion></WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="2.01">
+			<Descricao>Cancelar nota fiscal de serviÃ§o</Descricao>
+			<WebEnderecoHomologacao>http://191.252.58.191:83/soap/INFSe</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://191.252.58.191:83/soap/INFSe</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.datasmart.com.br/CancelarNfse</WebActionHomologacao>
+			<WebActionProducao>http://www.datasmart.com.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://www.datasmart.com.br/"><soapenv:Header><Input xsi:type="urn:Input" xmlns:urn="urn:NFSeIntf"><Username xsi:type="xsd:string">40221044000</Username><Password xsi:type="xsd:string">1234</Password><Prefeitura xsi:type="xsd:string">BANCO_DEMONSTRACAO</Prefeitura></Input></soapenv:Header><soapenv:Body><dat:CancelarNfse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:CancelarNfseEnvio" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><nfseCabecMsg xsi:type="xsd:string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBodyScape}</nfseDadosMsg><Username xsi:type="xsd:string">40221044000</Username><Password xsi:type="xsd:string">1234</Password><Prefeitura xsi:type="xsd:string">BANCO_DEMONSTRACAO</Prefeitura></parameters></dat:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://www.datasmart.com.br/"><soapenv:Header><Input xsi:type="urn:Input" xmlns:urn="urn:NFSeIntf"><Username xsi:type="xsd:string">40221044000</Username><Password xsi:type="xsd:string">1234</Password><Prefeitura xsi:type="xsd:string">B_SVAL</Prefeitura></Input></soapenv:Header><soapenv:Body><dat:CancelarNfse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:CancelarNfseEnvio" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><nfseCabecMsg xsi:type="xsd:string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBodyScape}</nfseDadosMsg><Username xsi:type="xsd:string">{MunicipioUsuario}</Username><Password xsi:type="xsd:string">{MunicipioSenha}</Password><Prefeitura xsi:type="xsd:string">B_SVAL</Prefeitura></parameters></dat:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</CancelarNfse>
+		<ConsultarNfsePorRps versao="2.01">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>http://191.252.58.191:83/soap/INFSe</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://191.252.58.191:83/soap/INFSe</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.datasmart.com.br/ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>http://www.datasmart.com.br/ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://www.datasmart.com.br/"><soapenv:Header><Input xsi:type="urn:Input" xmlns:urn="urn:NFSeIntf"><Username xsi:type="xsd:string">40221044000</Username><Password xsi:type="xsd:string">1234</Password><Prefeitura xsi:type="xsd:string">BANCO_DEMONSTRACAO</Prefeitura></Input></soapenv:Header><soapenv:Body><dat:ConsultarNfsePorRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:ConsultarNfseRpsEnvio" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><nfseCabecMsg xsi:type="xsd:string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBodyScape}</nfseDadosMsg><Username xsi:type="xsd:string">40221044000</Username><Password xsi:type="xsd:string">1234</Password><Prefeitura xsi:type="xsd:string">BANCO_DEMONSTRACAO</Prefeitura></parameters></dat:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://www.datasmart.com.br/"><soapenv:Header><Input xsi:type="urn:Input" xmlns:urn="urn:NFSeIntf"><Username xsi:type="xsd:string">{MunicipioUsuario}</Username><Password xsi:type="xsd:string">{MunicipioSenha}</Password><Prefeitura xsi:type="xsd:string">B_SVAL</Prefeitura></Input></soapenv:Header><soapenv:Body><dat:ConsultarNfsePorRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:ConsultarNfseRpsEnvio" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><nfseCabecMsg xsi:type="xsd:string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBodyScape}</nfseDadosMsg><Username xsi:type="xsd:string">{MunicipioUsuario}</Username><Password xsi:type="xsd:string">{MunicipioSenha}</Password><Prefeitura xsi:type="xsd:string">B_SVAL</Prefeitura></parameters></dat:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseFaixa versao="2.01">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>http://191.252.58.191:83/soap/INFSe</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://191.252.58.191:83/soap/INFSe</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.datasmart.com.br/ConsultarNfseFaixa</WebActionHomologacao>
+			<WebActionProducao>http://www.datasmart.com.br/ConsultarNfseFaixa</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://www.datasmart.com.br/"><soapenv:Header><Input xsi:type="urn:Input" xmlns:urn="urn:NFSeIntf"><Username xsi:type="xsd:string">40221044000</Username><Password xsi:type="xsd:string">1234</Password><Prefeitura xsi:type="xsd:string">BANCO_DEMONSTRACAO</Prefeitura></Input></soapenv:Header><soapenv:Body><dat:ConsultarNfseFaixa soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:ConsultarNfseFaixaEnvio" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><nfseCabecMsg xsi:type="xsd:string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBodyScape}</nfseDadosMsg><Username xsi:type="xsd:string">40221044000</Username><Password xsi:type="xsd:string">1234</Password><Prefeitura xsi:type="xsd:string">BANCO_DEMONSTRACAO</Prefeitura><TipoConsulta xsi:type="xsd:string">N</TipoConsulta></parameters></dat:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://www.datasmart.com.br/"><soapenv:Header><Input xsi:type="urn:Input" xmlns:urn="urn:NFSeIntf"><Username xsi:type="xsd:string">{MunicipioUsuario}</Username><Password xsi:type="xsd:string">{MunicipioSenha}</Password><Prefeitura xsi:type="xsd:string">B_SVAL</Prefeitura></Input></soapenv:Header><soapenv:Body><dat:ConsultarNfseFaixa soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:ConsultarNfseFaixaEnvio" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><nfseCabecMsg xsi:type="xsd:string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBodyScape}</nfseDadosMsg><Username xsi:type="xsd:string">{MunicipioUsuario}</Username><Password xsi:type="xsd:string">{MunicipioSenha}</Password><Prefeitura xsi:type="xsd:string">B_SVAL</Prefeitura><TipoConsulta xsi:type="xsd:string">N</TipoConsulta></parameters></dat:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseFaixa>
+	</Servicos>
+</Configuracoes>
