@@ -7159,6 +7159,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("ISSONLINE_ASSESSORPUBLICO")]
         ISSONLINE_ASSESSORPUBLICO = 76,
+
+        /// <summary>
+        /// PRIMAX
+        /// </summary>
+        [Description("PRIMAX")]
+        PRIMAX = 77,
     }
 
     #endregion

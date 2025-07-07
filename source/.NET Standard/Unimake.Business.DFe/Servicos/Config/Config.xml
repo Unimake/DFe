@@ -903,7 +903,7 @@
 		<Nome>Guariba - SP</Nome>
 		<UF>SP</UF>
 		<ArqConfig>GuaribaSP.xml</ArqConfig>
-		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
+		<PadraoNFSe>PRIMAX</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4203204">
 		<Nome>Camboriú - SC</Nome>
