@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Enviar Nfe de forma sÃ­ncrona
+* Enviar Nfe de forma síncrona
 * ---------------------------------------------------------------------------------
 #IfNdef __XHARBOUR__
    #xcommand TRY => BEGIN SEQUENCE WITH {| oErr | Break( oErr ) }
@@ -20,11 +20,10 @@ Function EnviarNfeSincrono()
    Local I, oErro, notaAssinada
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
 
-   * Criar configuraï¿½ï¿½o bï¿½sica para consumir o serviï¿½o
+   * Criar configurações mínimas para consumir o serviço
    oInicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
 
    oInicializarConfiguracao:TipoDfe = 0 // 0=nfe
-   oInicializarConfiguracao:Servico = 6 // 6=Autorizaï¿½ï¿½o Nfe
    oInicializarConfiguracao:TipoEmissao = 1 // 1=Normal
    oInicializarConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oInicializarConfiguracao:CertificadoSenha = "12345678"
@@ -169,106 +168,92 @@ Function EnviarNfeSincrono()
       oProd:IndTot = 1 // SimNao.Sim
       oProd:XPed = "300474"
       oProd:NItemPed = 1
+      oProd:NFCI = ""
 
-/*   
-      // Criar tag <comb>
+      oProd:EXTIPI = ""
+      oProd:AddNVE("1")
+      oProd:AddNVE("2")
+      oProd:AddNVE("3")
+      oProd:CEST = ""
+      oProd:CBenef = ""
+      oProd:VFrete = 1.00
+      oProd:VSeg = 1.00
+      oProd:VDesc = 1.00
+
+      oDetExport = CreateObject("Unimake.Business.DFe.Xml.NFe.DetExport")
+      oDetExport:NDraw = ""
+      oDetExport:ExportInd = CreateObject("Unimake.Business.DFe.Xml.NFe.ExportInd")
+      oDetExport:ExportInd:ChNFe = ""
+      oDetExport:ExportInd:NRE = ""
+      oDetExport:ExportInd:QExport = 1.00
+      oProd:AddDetExport(oDetExport)
+
+      oRastro = CreateObject("Unimake.Business.DFe.Xml.NFe.Rastro")
+      oRastro:CAgreg = ""
+      oRastro:DFab = Date()
+      oRastro:DVal = Date()
+      oRastro:NLote = ""
+      oRastro:QLote = 0.00
+      oProd:AddRastro(oRastro)
+
+      oProd:Med = CreateObject("Unimake.Business.DFe.Xml.NFe.Med")
+      oProd:Med:CProdANVISA = ""
+      oProd:Med:VPMC= 0.00
+      oProd:Med:XMotivoIsencao = ""
+
+      oArma := CreateObject("Unimake.Business.DFe.Xml.NFe.Arma")
+      oArma:Descr = ""
+      oArma:NCano = ""
+      oArma:NSerie = ""
+      oArma:TpArma = 0 //TipoArma.UsoPermitido
+      oProd:AddArma(oArma)
+
+      oDI := CreateObject("Unimake.Business.DFe.Xml.NFe.DI")
+      oDI:NDI = ""
+      oDI:CExportador = ""
+      oDI:CNPJ = ""
+      oDI:CPF  = ""
+      oDI:DDesemb = Date()
+      oDI:DDI = Date()
+      oDI:TpIntermedio = 1 //FormaImportacaoIntermediacao.ImportacaoPorContaPropria
+      oDI:TpViaTransp = 7 //ViaTransporteInternacional.Rodoviaria
+      oDI:UFDesemb = 41 //UFBrasil.PR
+      oDI:UFTerceiro = 41 //UFBrasil.PR
+      oDI:VAFRMM = 0.00
+      oDI:XLocDesemb = ""
+      
+      oADI = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+      oADI:CFabricante = ""
+      oADI:NAdicao = 0
+      oADI:NDraw = ""
+      oADI:NSeqAdic = 0
+      oADI:VDescDI = 0.00
+      oDI:AddAdi(oADI)
+
+      oProd:AddDI(oDI)
+
       oComb = CreateObject("Unimake.Business.DFe.Xml.NFe.Comb")
+      oCIDE = CreateObject("Unimake.Business.DFe.Xml.NFe.CIDE")
+      oCIDE:QBCProd = 0.00
+      oCIDE:VAliqProd = 0.00
+      oCIDE:VCIDE = 0.00
+      oComb:CIDE = oCIDE
       oComb:CODIF = ""
       oComb:CProdANP = ""
       oComb:DescANP = ""
-      oComb:PGLP = 0
-      oComb:PGNi = 0
-      oComb:PGNn = 0
-      oComb:QTemp = 0
-      oComb:UFCons = 41 // UFBrasil.PR
-      oComb:VPart = 0
-
-      // Criar tag <encerrante>
-      oEncerrante = CreateObject("Unimake.Business.DFe.Xml.NFe.Encerrante")
-      oEncerrante:NBico  = 0
+      oEncerrante := CreateObject("Unimake.Business.DFe.Xml.NFe.Encerrante")
+      oEncerrante:NBico = 0
       oEncerrante:NBomba = 0
       oEncerrante:NTanque = 0
-      oEncerrante:VEncIni = 0
-      oEncerrante:VEncFin = 0
-
-      // Adicionar a tag <encerrante> dentro da tag <comb>
+      oEncerrante:VEncIni = 0.00
+      oEncerrante:VEncFin = 0.00
       oComb:Encerrante = oEncerrante
-
-      // Criar tag <CIDE>
-      oCIDE = CreateObject("Unimake.Business.DFe.Xml.NFe.CIDE")
-      oCIDE:QBCProd = 0
-      oCIDE:VAliqProd = 0
-      oCIDE:VCIDE = 0	   
-
-      // Adicionar a tag <CIDE> dentro da tag <comb>
-      oComb:CIDE = oCIDE	
-
-      // Adicionar a tag <comb> dentro da tag <prod>
-      oProd:AddComb(oComb)	
-*/   
-
-/*	   
-      // criar a tag <DI> - tem como ter mais de uma tag DI, vou criar duas para ficar de exemplo, esta Ã© a primeira
-      oDI = CreateObject("Unimake.Business.DFe.Xml.NFe.DI")
-      oDI:CExportador = ""
-      oDI:CNPJ = ""
-      oDI:DDesemb = DateTime()
-      oDI:DDI = DateTime()
-      oDI:TpViaTransp = 7 //ViaTransporteInternacional.Rodoviaria
-      oDI:TpIntermedio = 2 //FormaImportacaoIntermediacao.ImportacaoPorContaOrdem
-      oDI:NDI = "1222"
-
-      // Criar tag <adi>
-      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
-      oAdi:CFabricante = ""
-      oAdi:NDraw = "12344"
-
-      // Adicionar a tag <adi> dentro do grupo de tag <DI>
-      oDI:AddAdi(oAdi)
-
-      // Criar tag <adi> -> Posso ter mais de uma tag <adi> entÃ£o vou criar uma segunda vez para ficar o exemplo
-      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
-      oAdi:CFabricante = ""
-      oAdi:NDraw = "12344"
-
-      // Adicionar a tag <adi> dentro do grupo de tag <DI>
-      oDI:AddAdi(oAdi)
-
-      // Adicionar a tag <DI> dentro do grupo de tag <prod>   
-      oProd:AddDI(oDI)
-
-      // criar a tag <DI> - Segunda tag <DI>
-      oDI = CreateObject("Unimake.Business.DFe.Xml.NFe.DI")
-      oDI:CExportador = ""
-      oDI:CNPJ = ""
-      oDI:DDesemb = DateTime()
-      oDI:DDI = DateTime()
-      oDI:TpViaTransp = 7 //ViaTransporteInternacional.Rodoviaria
-      oDI:TpIntermedio = 2 //FormaImportacaoIntermediacao.ImportacaoPorContaOrdem
-      oDI:NDI = "1222"
-
-      // Criar tag <adi>
-      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
-      oAdi:CFabricante = ""
-      oAdi:NDraw = "12344"
-
-      // Adicionar a tag <adi> dentro do grupo de tag <DI>
-      oDI:AddAdi(oAdi)
-
-      // Criar tag <adi> -> Posso ter mais de uma tag <adi> entÃ£o vou criar uma segunda vez para ficar o exemplo
-      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
-      oAdi:CFabricante = ""
-      oAdi:NDraw = "12344"
-
-      // Adicionar a tag <adi> dentro do grupo de tag <DI>
-      oDI:AddAdi(oAdi)
-
-      // Adicionar a tag <DI> dentro do grupo de tag <prod>   
-      oProd:AddDI(oDI)	
-*/	   
+      oProd:AddComb(oComb)
 
       // adicionar a tag Prod dentro da tag Det
       oDet:Prod = oProd
+
+      oDet:InfAdProd = "OBSERVACAO DO PRODUTO"
 
       // criar tag Imposto
       oImposto          = CreateObject("Unimake.Business.DFe.Xml.NFe.Imposto")
@@ -431,13 +416,73 @@ Function EnviarNfeSincrono()
       // adicionar a PisAliq dentro da tag Pis
       oCOFINS:COFINSAliq = oCOFINSAliq	   
 */
-
       // adicionar a tag COFINS dentro da tag Imposto
       oImposto:COFINS = oCOFINS
+
+      oISSQN = CreateObject("Unimake.Business.DFe.Xml.NFe.ISSQN")
+      oISSQN:CListServ = 101 //ListaServicoISSQN.Servico0101
+      oISSQN:CMun = 4118402
+      oISSQN:CMunFG = 4118402
+      oISSQN:CPais = 1058
+      oISSQN:CServico = ""
+      oISSQN:IndIncentivo = 2 //SimNao12.Nao
+      oISSQN:IndISS = 3 //IndicadorExigibilidadeISSQN.Isencao
+      oISSQN:NProcesso = ""
+      oISSQN:VAliq = 0.00
+      oISSQN:VBC = 0.00
+      oISSQN:VDeducao = 0.00
+      oISSQN:VDescCond = 0.00
+      oISSQN:VISSQN = 0.00
+      oISSQN:VISSRet = 0.00
+      oISSQN:VOutro = 0.00
+      oISSQN:VDescIncond = 0.00  
+      oImposto:ISSQN = oISSQN        
+
+      oII := CreateObject("Unimake.Business.DFe.Xml.NFe.II")
+      oII:VBC = 0.00
+      oII:VDespAdu = 0.00
+      oII:VII = 0.00
+      oII:VIOF = 0.00
+      oImposto:II = oII
+
+      oICMSUFDest := CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSUFDest")
+      oICMSUFDest:VBCFCPUFDest = 0.00
+      oICMSUFDest:VFCPUFDest = 0.00
+      oICMSUFDest:VICMSUFDest = 0.00
+      oICMSUFDest:VICMSUFRemet = 0.00
+      oICMSUFDest:PFCPUFDest = 0.00
+      oICMSUFDest:PICMSInter = 0.00
+      oICMSUFDest:PICMSInterPart = 0.00
+      oICMSUFDest:PICMSUFDest = 0.00
+      oICMSUFDest:VBCUFDest = 0.00
+      oImposto:ICMSUFDest = oICMSUFDest
 
       // adicionar a tag Imposto dentro da tag Det
       oDet:Imposto = oImposto
 
+      oObsItem = CreateObject("Unimake.Business.DFe.Xml.NFe.ObsItem")
+
+      oObsCont = CreateObject("Unimake.Business.DFe.Xml.NFe.ObsCont")
+      oObsCont:XCampo = "OBSERVACAO"
+      oObsCont:XTexto = "OBSERVACAO DE TESTE"      
+      oObsItem:AddObsCont(oObsCont)
+
+      oObsCont = CreateObject("Unimake.Business.DFe.Xml.NFe.ObsCont")
+      oObsCont:XCampo = "OBSERVACAO"
+      oObsCont:XTexto = "OBSERVACAO DE TESTE"      
+      oObsItem:AddObsCont(oObsCont)
+
+      oObsFisco = CreateObject("Unimake.Business.DFe.Xml.NFe.ObsFisco")
+      oObsFisco:XCampo = "OBSERVACAO"
+      oObsFisco:XTexto = "OBSERVACAO DE TESTE"
+      oObsItem:AddObsFisco(oObsFisco)
+
+      oObsFisco = CreateObject("Unimake.Business.DFe.Xml.NFe.ObsFisco")
+      oObsFisco:XCampo = "OBSERVACAO"
+      oObsFisco:XTexto = "OBSERVACAO DE TESTE"
+      oObsItem:AddObsFisco(oObsFisco)
+
+      oDet:ObsItem = oObsItem
 /*
       // Criar tag <impostoDevol>
       oImpostoDevol = CreateObject("Unimake.Business.DFe.Xml.NFe.ImpostoDevol")
@@ -589,10 +634,10 @@ Function EnviarNfeSincrono()
    Wait
    Cls
 
-   * Consumir o serviÃ§o (Enviar NFE para SEFAZ)
+   * Consumir o serviço (Enviar NFE para SEFAZ)
    oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
 
-   // Criar objeto para pegar exceÃ§Ã£o do lado do CSHARP
+   // Criar objeto para pegar exceção do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
 
    Try
@@ -625,10 +670,10 @@ Function EnviarNfeSincrono()
 
       if oAutorizacao:Result:ProtNFe <> NIL
          if oAutorizacao:Result:ProtNFe:InfProt:CStat == 100 //100 = Autorizado o uso da NF-e
-            // Gravar XML de distribuiÃ§Ã£o em uma pasta (NFe com o protocolo de autorizaÃ§Ã£o anexado)
+            // Gravar XML de distribuição em uma pasta (NFe com o protocolo de autorização anexado)
             oAutorizacao:GravarXmlDistribuicao("d:\testenfe")
 
-            //Como pegar o numero do protocolo de autorizaÃ§Ã£o para gravar na base
+            //Como pegar o numero do protocolo de autorização para gravar na base
             ? oAutorizacao:Result:ProtNFe:InfProt:NProt
          else
             //Rejeitada ou Denegada - Fazer devidos tratamentos		 
@@ -639,14 +684,14 @@ Function EnviarNfeSincrono()
       endif
 
    Catch oErro
-      //Demonstrar exceÃ§Ãµes geradas no proprio Harbour, se existir.
+      //Demonstrar exceções geradas no proprio Harbour, se existir.
       ? "ERRO"
       ? "===="
       ? "Falha ao tentar consultar o status do servico."
       ? oErro:Description
       ? oErro:Operation
 
-      //Demonstrar a exceÃ§Ã£o do CSHARP
+      //Demonstrar a exceção do CSHARP
       ?
       ? "Excecao do CSHARP - Message: ", oExceptionInterop:GetMessage()
       ? "Excecao do CSHARP - Codigo: ", oExceptionInterop:GetErrorCode()
