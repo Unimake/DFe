@@ -2070,9 +2070,15 @@
 		<PadraoNFSe>ISSONLINE_ASSESSORPUBLICO</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4319703">
-		<Nome>São Valentim - RS </Nome>
+		<Nome>São Valentim - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>SaoValentimRS.xml</ArqConfig>
 		<PadraoNFSe>SINSOFT</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4306403">
+		<Nome>Dois Irmãos - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>DoisIrmaosRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
