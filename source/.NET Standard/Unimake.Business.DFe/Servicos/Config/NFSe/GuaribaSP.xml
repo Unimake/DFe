@@ -1,100 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
-  <Servicos ID="NFSe">
-    <RecepcionarLoteRps versao="1.00">
-      <Descricao>Recepcionar Lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://guariba-sp.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://guariba-sp.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
-      <WebActionHomologacao>https://guariba-sp.treino-issintegra.com.br/webservices/abrasf/api/RecepcionarLoteRps</WebActionHomologacao>
-      <WebActionProducao>https://guariba-sp.issintegra.com.br/webservices/abrasf/api/RecepcionarLoteRps</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>Rps</TagAssinatura>
-      <TagAtributoID>InfRps</TagAtributoID>
-      <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
-      <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>env:Body</WebTagRetorno>
-      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-      <WebSoapVersion>soap12</WebSoapVersion>
-      <SchemaVersao>1.00</SchemaVersao>
-      <TargetNS></TargetNS>
-    </RecepcionarLoteRps>
-    <CancelarNfse versao="1.00">
-      <Descricao>Cancelar nota fiscal de serviço</Descricao>
-      <WebEnderecoHomologacao>https://guariba-sp.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://guariba-sp.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
-      <WebActionHomologacao>https://guariba-sp.treino-issintegra.com.br/webservices/abrasf/api/CancelarNfse</WebActionHomologacao>
-      <WebActionProducao>https://guariba-sp.issintegra.com.br/webservices/abrasf/api/CancelarNfse</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>Pedido</TagAssinatura>
-      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>env:Body</WebTagRetorno>
-      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-      <WebSoapVersion>soap12</WebSoapVersion>
-      <SchemaVersao>1.00</SchemaVersao>
-      <TargetNS></TargetNS>
-    </CancelarNfse>
-    <ConsultarLoteRps versao="1.00">
-      <Descricao>Consulta lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://guariba-sp.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://guariba-sp.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
-      <WebActionHomologacao>https://guariba-sp.treino-issintegra.com.br/webservices/abrasf/api/ConsultarLoteRps</WebActionHomologacao>
-      <WebActionProducao>https://guariba-sp.issintegra.com.br/webservices/abrasf/api/ConsultarLoteRps</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml;charset=UTF-8</WebContentType>
-	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>env:Body</WebTagRetorno>
-      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-      <WebSoapVersion>soap12</WebSoapVersion>
-      <SchemaVersao>1.00</SchemaVersao>
-      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-    </ConsultarLoteRps>
-    <ConsultarNfsePorRps versao="1.00">
-      <Descricao>Consulta NFSe por RPS</Descricao>
-      <WebEnderecoHomologacao>https://guariba-sp.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://guariba-sp.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
-      <WebActionHomologacao>https://guariba-sp.treino-issintegra.com.br/webservices/abrasf/api/ConsultarNfsePorRps</WebActionHomologacao>
-      <WebActionProducao>https://guariba-sp.issintegra.com.br/webservices/abrasf/api/ConsultarNfsePorRps</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>env:Body</WebTagRetorno>
-      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-      <WebSoapVersion>soap12</WebSoapVersion>
-      <SchemaVersao>1.00</SchemaVersao>
-      <TargetNS></TargetNS>
-    </ConsultarNfsePorRps>
-    <ConsultarNfse versao="1.00">
-      <Descricao>Consulta NFSe</Descricao>
-      <WebEnderecoHomologacao>https://guariba-sp.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://guariba-sp.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
-      <WebActionHomologacao>https://guariba-sp.treino-issintegra.com.br/webservices/abrasf/api/ConsultarNfse</WebActionHomologacao>
-      <WebActionProducao>https://guariba-sp.issintegra.com.br/webservices/abrasf/api/ConsultarNfse</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>env:Body</WebTagRetorno>
-      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-      <WebSoapVersion>soap12</WebSoapVersion>
-      <SchemaVersao>1.00</SchemaVersao>
-      <TargetNS></TargetNS>
-    </ConsultarNfse>
-  </Servicos>
+	<Servicos ID="NFSe">
+		<EmissaoNota versao="1.00">
+			<Descricao>EnvNFe</Descricao>
+			<WebEnderecoHomologacao>https://www1.primaxonline.com.br/issqn/wservice/wsnfe_teste_homologacao.php?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeenvia.php</WebEnderecoProducao>
+			<WebActionHomologacao>https://www1.primaxonline.com.br/issqn/wservice/wsnfe_teste_homologacao.php/EnvNfe</WebActionHomologacao>
+			<WebActionProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeenvia.php/EnvNfe</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=UTF-8</WebContentType>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsn="https://www.primaxonline.com.br/issqn/wservice/wsnfeenvia.php"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebTagRetorno>ns1:EnvNfeResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</EmissaoNota>
+		<CancelarNotaFiscal versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfecancela.php</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfecancela.php/CancelaNfe</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:CancelaNfeResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</CancelarNotaFiscal>
+		<ConsultarNfsePDF versao="1.00">
+			<Descricao>Consulta/Download do PDF da NFSe</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeconsulta.php</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeconsulta.php/ConsultaNfe</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultaNfeResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarNfsePDF>
+		<ObterNotaFiscalXml versao="1.00">
+			<Descricao>Obter Nota Fiscal Xml</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeconsultaxml.php</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeconsultaxml.php/ConsultaNfe</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultaNfeResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ObterNotaFiscalXml>
+	</Servicos>
 </Configuracoes>

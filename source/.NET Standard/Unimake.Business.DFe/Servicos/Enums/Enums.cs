@@ -7166,6 +7166,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("SINSOFT")]
         SINSOFT = 77,
+
+        /// <summary>
+        /// PRIMAX
+        /// </summary>
+        [Description("PRIMAX")]
+        PRIMAX = 78,
     }
 
     #endregion

@@ -429,7 +429,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
         public bool ShouldSerializeIndNrInscFciScp() => !string.IsNullOrEmpty(NrInscFciScp);
 
-        public bool ShouldSerializePercSCP() => PercSCP > 0;
+        public bool ShouldSerializePercSCPField() => PercSCP > 0;
 
 #if INTEROP
         public bool ShouldSerializeIndJud() => IndJud != (SimNaoLetra)(-1);
