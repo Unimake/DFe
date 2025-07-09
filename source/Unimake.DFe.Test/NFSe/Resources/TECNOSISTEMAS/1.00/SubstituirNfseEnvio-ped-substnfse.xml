@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SubstituirNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <SubstituicaoNfse Id="01">
+    <Pedido>
+      <InfPedidoCancelamento Id="2999999999999620000000000000271">
+        <IdentificacaoNfse>
+          <Numero>999878773</Numero>
+          <CpfCnpj>
+            <Cnpj>14006801000179</Cnpj>
+          </CpfCnpj>
+          <InscricaoMunicipal>8472</InscricaoMunicipal>
+          <CodigoMunicipio>4300034</CodigoMunicipio>
+        </IdentificacaoNfse>
+        <CodigoCancelamento>1</CodigoCancelamento>
+        <MotivoCancelamento>TESTE DE SUBSTITUIÇÃO</MotivoCancelamento>
+        <Id>2999999999999620000000000000271</Id>
+      </InfPedidoCancelamento>      
+    </Pedido>
+    <Rps>
+      <InfDeclaracaoPrestacaoServico Id="1999999999999620000000000000001">
+        <Rps>
+          <IdentificacaoRps>
+            <Numero>340</Numero>
+            <Serie>UNICA</Serie>
+            <Tipo>1</Tipo>
+          </IdentificacaoRps>
+          <DataEmissao>2014-09-23</DataEmissao>
+          <Status>1</Status>
+        </Rps>
+        <Competencia>2014-09-23</Competencia>
+        <IdCidade>4300034</IdCidade>
+        <SiglaUF>RS</SiglaUF>
+        <Servico>
+          <tcDadosServico>
+            <Valores>
+              <ValorServicos>10.00</ValorServicos>
+              <ValorIss>0.20</ValorIss>
+              <Aliquota>2.00</Aliquota>
+            </Valores>
+            <IssRetido>2</IssRetido>
+            <ResponsavelRetencao>1</ResponsavelRetencao>
+            <ItemListaServico>1.01</ItemListaServico>
+            <CodigoTributacaoMunicipio>0</CodigoTributacaoMunicipio>
+            <Discriminacao>REF. CONTRATO DE MANUTENCAO</Discriminacao>
+            <CodigoMunicipio>4300034</CodigoMunicipio>
+            <CodigoPais>1058</CodigoPais>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>4300034</MunicipioIncidencia>
+          </tcDadosServico>
+        </Servico>
+        <Prestador>
+          <CpfCnpj>
+            <Cnpj>14006801000179</Cnpj>
+          </CpfCnpj>
+          <RazaoSocial>TESTE NFSE LTDA</RazaoSocial>
+          <InscricaoMunicipal>8472</InscricaoMunicipal>
+        </Prestador>
+        <Tomador>
+          <IdentificacaoTomador>
+            <CpfCnpj>
+              <Cnpj>99999999999962</Cnpj>
+            </CpfCnpj>
+          </IdentificacaoTomador>
+          <RazaoSocial>TESTE EQUIPAMENTOS ELETRONICOS LTDA</RazaoSocial>
+          <Endereco>
+            <Endereco>RUA JOSE DO PATROCINIO</Endereco>
+            <Numero>100</Numero>
+            <Bairro>CENTRO</Bairro>
+            <CodigoMunicipio>4300034</CodigoMunicipio>
+            <Uf>RS</Uf>
+            <CodigoPais>1058</CodigoPais>
+            <Cep>95390000</Cep>
+          </Endereco>
+          <Contato>
+            <Telefone>4419344</Telefone>
+          </Contato>
+        </Tomador>
+        <Intermediario>
+          <IdentificacaoIntermediario>
+            <CpfCnpj>
+              <Cpf>14006801000179</Cpf>
+            </CpfCnpj>
+          </IdentificacaoIntermediario>
+          <RazaoSocial>TESTE NFSE LTDA</RazaoSocial>
+        </Intermediario>
+        <OptanteSimplesNacional>1</OptanteSimplesNacional>
+        <IncentivoFiscal>2</IncentivoFiscal>
+        <NaturezaOperacao>1</NaturezaOperacao>
+      </InfDeclaracaoPrestacaoServico>     
+    </Rps>   
+  </SubstituicaoNfse>
+</SubstituirNfseEnvio>

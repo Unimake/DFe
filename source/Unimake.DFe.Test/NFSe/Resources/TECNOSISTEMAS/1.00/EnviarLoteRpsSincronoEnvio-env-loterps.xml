@@ -1,120 +1,126 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<EnviarLoteRpsSincronoEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
-  <LoteRps Id="ID12013999999999999990000000000000112" versao="20.01">
-    <NumeroLote>112</NumeroLote>
-    <CpfCnpj>
-      <Cnpj>99999999999999</Cnpj>
-    </CpfCnpj>
-    <InscricaoMunicipal>840</InscricaoMunicipal>
-    <QuantidadeRps>1</QuantidadeRps>
-    <ListaRps>
-      <Rps>
-        <tcDeclaracaoPrestacaoServico>
-          <InfDeclaracaoPrestacaoServico>
-            <Rps Id="12013999999999999990000000000000112">
-              <IdentificacaoRps>
-                <Numero>112</Numero>
-                <Serie>UNICA</Serie>
-                <Tipo>1</Tipo>
-              </IdentificacaoRps>
-              <DataEmissao>2013-08-22T14:54:00</DataEmissao>
-              <Status>1</Status>
-              <RpsSubstituido>
-                <Numero />
-                <Serie />
-                <Tipo>1</Tipo>
-              </RpsSubstituido>
-            </Rps>
-            <SiglaUF>RS</SiglaUF>
-            <IdCidade>4322806</IdCidade>
-            <Competencia>2013-08-22T14:54:00</Competencia>
-            <Servico>
-              <tcDadosServico>
-                <Valores>
-                  <BaseCalculoCRS>0</BaseCalculoCRS>
-                  <ValorServicos>100.00</ValorServicos>
-                  <ValorDeducoes>0.00</ValorDeducoes>
-                  <ValorPis>0.00</ValorPis>
-                  <ValorCofins>0.00</ValorCofins>
-                  <ValorInss>0.00</ValorInss>
-                  <ValorIr>0.00</ValorIr>
-                  <ValorCsll>0.00</ValorCsll>
-                  <OutrasRetencoes>0.00</OutrasRetencoes>
-                  <ValorIss>7.5</ValorIss>
-                  <Aliquota>0.05</Aliquota>
-                  <DescontoIncondicionado>0</DescontoIncondicionado>
-                  <DescontoCondicionado>0.00</DescontoCondicionado>
-                  <IrrfIndenizacao>0.00</IrrfIndenizacao>
-                </Valores>
-                <IssRetido>2</IssRetido>
-                <ResponsavelRetencao>1</ResponsavelRetencao>
-                <ItemListaServico>10.09</ItemListaServico>
-                <CodigoCnae>9511800</CodigoCnae>
-                <CodigoTributacaoMunicipio>0</CodigoTributacaoMunicipio>
-                <Discriminacao>TESTE</Discriminacao>
-                <CodigoMunicipio>4306403</CodigoMunicipio>
-                <CodigoPais>1058</CodigoPais>
-                <ExigibilidadeISS>1</ExigibilidadeISS>
-                <MunicipioIncidencia>4306403</MunicipioIncidencia>
-                <NumeroProcesso />
-              </tcDadosServico>
-            </Servico>
-            <Prestador>
-              <CpfCnpj>
-                <Cnpj>99999999999999</Cnpj>
-              </CpfCnpj>
-              <RazaoSocial>TECNOSWEB INFORMÁTICA LTDA</RazaoSocial>
-              <InscricaoMunicipal>840</InscricaoMunicipal>
-            </Prestador>
-            <Tomador>
-              <IdentificacaoTomador>
-                <CpfCnpj>
-                  <Cnpj>91593376000102</Cnpj>
-                </CpfCnpj>
-                <InscricaoMunicipal>0</InscricaoMunicipal>
-              </IdentificacaoTomador>
-              <RazaoSocial>TECNOSISTEMAS SISTEMAS DE COMPUTADORES L</RazaoSocial>
-              <Endereco>
-                <Endereco>AV. OSVALDO ARANHA</Endereco>
-                <Numero>1075</Numero>
-                <Complemento>SALA 602</Complemento>
-                <Bairro>CIDADE ALTA</Bairro>
-                <CodigoMunicipio>4302105</CodigoMunicipio>
-                <Uf>21</Uf>
-                <CodigoPais>1058</CodigoPais>
-                <Cep>95700000</Cep>
-              </Endereco>
-              <Contato>
-                <Telefone>1234567890</Telefone>
-                <Email>notafiscal@tecnosistemas.com.br</Email>
-              </Contato>
-            </Tomador>
-            <Intermediario>
-              <IdentificacaoIntermediario>
-                <CpfCnpj>
-                  <Cpf />
-                </CpfCnpj>
-                <InscricaoMunicipal />
-              </IdentificacaoIntermediario>
-              <RazaoSocial />
-            </Intermediario>
-            <ConstrucaoCivil>
-              <CodigoObra />
-              <Art />
-            </ConstrucaoCivil>
-            <RegimeEspecialTributacao>0</RegimeEspecialTributacao>
-            <NaturezaOperacao>1</NaturezaOperacao>
-            <OptanteSimplesNacional>2</OptanteSimplesNacional>
-            <IncentivoFiscal>2</IncentivoFiscal>
-            <OutrasInformacoes />
-            <TipoNota>0</TipoNota>
-            <SiglaUF>RS</SiglaUF>
-            <IdCidade>4322806</IdCidade>
-            <EspecieDocumento>0</EspecieDocumento>
-            <SerieTalonario>0</SerieTalonario>
-          </InfDeclaracaoPrestacaoServico>
-        </tcDeclaracaoPrestacaoServico>
-      </Rps>
-    </ListaRps>
-  </LoteRps>
+﻿<EnviarLoteRpsSincronoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<LoteRps Id="12013915933760001020000000000000001" versao="20.01">
+		<NumeroLote>1</NumeroLote>
+		<CpfCnpj>
+			<Cnpj>91593376000102</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>0000000031001042</InscricaoMunicipal>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<tcDeclaracaoPrestacaoServico>
+					<InfDeclaracaoPrestacaoServico Id="1123456789012340000000000000001">
+						<Rps>
+							<IdentificacaoRps>
+								<Numero>1</Numero>
+								<Serie>UNICA</Serie>
+								<Tipo>1</Tipo>
+							</IdentificacaoRps>
+							<DataEmissao>2022-01-05T13:34:54</DataEmissao>
+							<Status>1</Status>
+							<RpsSubstituido>
+								<Numero/>
+								<Serie/>
+								<Tipo>1</Tipo>
+							</RpsSubstituido>
+						</Rps>
+						<Competencia>2022-01-05T13:34:54</Competencia>
+						<IdCidade>4305108</IdCidade>
+						<Servico>
+							<tcDadosServico>
+								<Valores>
+									<BaseCalculoCRS>0.00</BaseCalculoCRS>
+									<IrrfIndenizacao>0.00</IrrfIndenizacao>
+									<ValorServicos>20.00</ValorServicos>
+									<ValorDeducoes>0.00</ValorDeducoes>
+									<ValorPis>0.00</ValorPis>
+									<ValorCofins>0.00</ValorCofins>
+									<ValorInss>0.00</ValorInss>
+									<ValorIr>0.00</ValorIr>
+									<ValorCsll>0.00</ValorCsll>
+									<OutrasRetencoes>0.00</OutrasRetencoes>
+									<ValorIss>0.60</ValorIss>
+									<Aliquota>3.00</Aliquota>
+									<DescontoIncondicionado>0.00</DescontoIncondicionado>
+									<DescontoCondicionado>0.00</DescontoCondicionado>
+								</Valores>
+								<IssRetido>2</IssRetido>
+								<ResponsavelRetencao>2</ResponsavelRetencao>
+								<ItemListaServico>14.01</ItemListaServico>
+								<CodigoCnae>0</CodigoCnae>
+								<CodigoTributacaoMunicipio>0</CodigoTributacaoMunicipio>
+								<Discriminacao>Teste</Discriminacao>
+								<CodigoMunicipio>4305108</CodigoMunicipio>
+								<CodigoPais>1058</CodigoPais>
+								<ExigibilidadeISS>1</ExigibilidadeISS>
+								<MunicipioIncidencia>4319505</MunicipioIncidencia>
+								<NumeroProcesso>91593376000102000000001</NumeroProcesso>
+							</tcDadosServico>
+						</Servico>
+						<Prestador>
+							<CpfCnpj>
+								<Cnpj>14006801000179</Cnpj>
+							</CpfCnpj>
+							<RazaoSocial>EMBUTIDOS 5454</RazaoSocial>
+							<InscricaoMunicipal>0000000000008472</InscricaoMunicipal>
+						</Prestador>
+						<Tomador>
+							<IdentificacaoTomador>
+								<CpfCnpj>
+									<Cnpj>91593376000102</Cnpj>
+								</CpfCnpj>
+								<InscricaoMunicipal/>
+								<InscricaoEstadual/>
+							</IdentificacaoTomador>
+							<RazaoSocial>TECNOSISTEMAS SISTEMAS DE COMPUT LTDA</RazaoSocial>
+							<Endereco>
+								<Endereco>AV OSVALDO ARANHA, 1075, SL 606</Endereco>
+								<Numero>1075</Numero>
+								<Complemento>sala 606</Complemento>
+								<Bairro>CENTRO</Bairro>
+								<CodigoMunicipio>4302105</CodigoMunicipio>
+								<Uf>21</Uf>
+								<CodigoPais>1058</CodigoPais>
+								<Cep>784912</Cep>
+							</Endereco>
+							<Contato>
+								<Telefone>5434550800</Telefone>
+								<Email>cristian.trevisan@multi24h.com.br</Email>
+							</Contato>
+						</Tomador>
+						<RegimeEspecialTributacao>0</RegimeEspecialTributacao>
+						<NaturezaOperacao>1</NaturezaOperacao>
+						<OptanteSimplesNacional>1</OptanteSimplesNacional>
+						<IncentivoFiscal>2</IncentivoFiscal>
+						<PercentualCargaTributaria>0.00</PercentualCargaTributaria>
+						<ValorCargaTributaria>0.00</ValorCargaTributaria>
+						<PercentualCargaTributariaEstadual>0.00</PercentualCargaTributariaEstadual>
+						<ValorCargaTributariaEstadual>0.00</ValorCargaTributariaEstadual>
+						<PercentualCargaTributariaMunicipal>0.00</PercentualCargaTributariaMunicipal>
+						<ValorCargaTributariaMunicipal>0.00</ValorCargaTributariaMunicipal>
+						<OutrasInformacoes>Teste</OutrasInformacoes>
+						<SiglaUF>RS</SiglaUF>
+						<IdCidade>4302105</IdCidade>
+						<FormaPagamento>0</FormaPagamento>
+						<NumeroParcelas>2</NumeroParcelas>
+						<Parcelamento>
+							<Parcelas>
+								<tcParcela>
+									<Numero>1</Numero>
+									<Valor>20.00</Valor>
+									<DataVencimento>2019-05-02T00:00:00</DataVencimento>
+								</tcParcela>
+								<tcParcela>
+									<Numero>2</Numero>
+									<Valor>20.00</Valor>
+									<DataVencimento>2019-06-02T00:00:00</DataVencimento>
+								</tcParcela>
+							</Parcelas>
+						</Parcelamento>
+					</InfDeclaracaoPrestacaoServico>
+				</tcDeclaracaoPrestacaoServico>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
 </EnviarLoteRpsSincronoEnvio>
+            

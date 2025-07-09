@@ -12,7 +12,6 @@
       </IdentificacaoNfse>
       <CodigoCancelamento>1</CodigoCancelamento>
       <MotivoCancelamento>Problema na geração da nota</MotivoCancelamento>
-      <Id>14006801009999000000281</Id>
     </InfPedidoCancelamento>
   </Pedido>
 </CancelarNfseEnvio>

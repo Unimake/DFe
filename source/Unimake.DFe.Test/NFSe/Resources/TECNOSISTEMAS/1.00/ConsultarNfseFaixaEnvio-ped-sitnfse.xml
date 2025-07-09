@@ -10,5 +10,5 @@
 		<NumeroNfseInicial>1</NumeroNfseInicial>
 		<NumeroNfseFinal>200</NumeroNfseFinal>
 	</Faixa>
-	<Pagina>2</Pagina>
+	<Pagina>000000</Pagina>
 </ConsultarNfseFaixaEnvio>
