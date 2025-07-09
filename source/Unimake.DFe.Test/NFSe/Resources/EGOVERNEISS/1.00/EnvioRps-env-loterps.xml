@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EmissaoNotaFiscalRequest xmlns="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Dominio.DataTransferObject.Prestador" xmlns:eis2="http://schemas.datacontract.org/2004/07/Eissnfe.Dominio.DataTransferObject.Contribuinte" xmlns:eis3="http://schemas.datacontract.org/2004/07/Eissnfe.Dominio.DataTransferObject.Contrbuinte" xmlns:xsi="_http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="_http://www.w3.org/2001/XMLSchema">
+	<NotaFiscal>
+		<eis:Aliquota>1.18</eis:Aliquota>
+		<eis:Atividade>1</eis:Atividade>
+		<eis:ChaveAutenticacao>EFRREEGE-ERGERGERG-ERGGG-G-GGEGEGERG-</eis:ChaveAutenticacao>
+		<eis:Homologacao>false</eis:Homologacao>
+		<eis:InformacoesAdicionais>INFORMACOES ADC</eis:InformacoesAdicionais>
+		<eis:NotificarTomadorPorEmail>false</eis:NotificarTomadorPorEmail>
+		<eis:SubstituicaoTributaria>false</eis:SubstituicaoTributaria>
+		<eis:Tomador>
+			<eis2:CPF>99999999999</eis2:CPF>
+			<eis2:DDD>44</eis2:DDD>
+			<eis2:Email>XXXXXXXXXX@gmail.com</eis2:Email>
+			<eis2:Endereco>
+				<eis3:Bairro>Centro</eis3:Bairro>
+				<eis3:CEP>99999999</eis3:CEP>
+				<eis3:Cidade>Paranavai</eis3:Cidade>
+				<eis3:Complemento>Completo</eis3:Complemento>
+				<eis3:Estado>PR</eis3:Estado>
+				<eis3:Logradouro>XXXXXXXXXX</eis3:Logradouro>
+				<eis3:Numero>1865</eis3:Numero>
+				<eis3:Pais>Brasil</eis3:Pais>
+				<eis3:TipoLogradouro>Rua</eis3:TipoLogradouro>
+			</eis2:Endereco>
+			<eis2:Nome>XXXXXXXXXXXXX</eis2:Nome>
+			<eis2:Telefone>99999999999999</eis2:Telefone>
+		</eis:Tomador>
+		<eis:TomadorEstrangeiro>false</eis:TomadorEstrangeiro>
+		<eis:Valor>10.00</eis:Valor>
+		<eis:ValorDeducao>0.00</eis:ValorDeducao>
+	</NotaFiscal>
+</EmissaoNotaFiscalRequest>

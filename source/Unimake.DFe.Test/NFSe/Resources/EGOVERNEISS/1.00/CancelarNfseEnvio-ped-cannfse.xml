@@ -1,0 +1,8 @@
+<tem:Cancelar xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem">
+	<tem:request>
+		<eis:ChaveAutenticacao>123456</eis:ChaveAutenticacao>
+		<eis:Homologacao>true</eis:Homologacao>
+		<eis:Motivo>teste</eis:Motivo>
+		<eis:NumeroNota>1</eis:NumeroNota>
+	</tem:request>
+</tem:Cancelar>

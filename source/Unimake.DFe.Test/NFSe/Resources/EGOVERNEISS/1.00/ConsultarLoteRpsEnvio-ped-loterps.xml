@@ -1,0 +1,7 @@
+<tem:ConsultarLote xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem">
+	<tem:request>
+		<eis:ChaveAutenticacao>123456</eis:ChaveAutenticacao>
+		<eis:CodigoLote>132</eis:CodigoLote>
+		<eis:StatusNotas>T</eis:StatusNotas>
+	</tem:request>
+</tem:ConsultarLote>

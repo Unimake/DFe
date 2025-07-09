@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EmissaoNotaFiscalLoteRequest xmlns="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Dominio.DataTransferObject.Prestador" xmlns:eis1="http://schemas.datacontract.org/2004/07/Eissnfe.Dominio.DataTransferObject.Prestador" xmlns:eis2="http://schemas.datacontract.org/2004/07/Eissnfe.Dominio.DataTransferObject.Contribuinte" xmlns:eis3="http://schemas.datacontract.org/2004/07/Eissnfe.Dominio.DataTransferObject.Contrbuinte" xmlns:xsi="_http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="_http://www.w3.org/2001/XMLSchema">
+		<Notas>
+			<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+			<eis1:EmailContato>teste@teste.com</eis1:EmailContato>
+			<eis1:Notas>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID1</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.00</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID2</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.01</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID3</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.02</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID4</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.03</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID5</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.04</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID5</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.04</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID6</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.05</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID7</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.06</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID9</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.04</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID8</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.07</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID9</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.08</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID10</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.09</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+				<eis1:NotaFiscalLoteDTO>
+					<eis1:Aliquota>1.00</eis1:Aliquota>
+					<eis1:Atividade>1.01</eis1:Atividade>
+					<eis1:CEPPrestacaoServico>12345678</eis1:CEPPrestacaoServico>
+					<eis1:ChaveAutenticacao>123456</eis1:ChaveAutenticacao>
+					<eis1:CidadePrestacaoServico>São Paulo</eis1:CidadePrestacaoServico>
+					<eis1:CodObra>OBRA123</eis1:CodObra>
+					<eis1:DataRecibo>2025-01-01</eis1:DataRecibo>
+					<eis1:EnderecoPrestacaoServico>Rua Exemplo, 123</eis1:EnderecoPrestacaoServico>
+					<eis1:EqptoRecibo>Equipamento X</eis1:EqptoRecibo>
+					<eis1:EstadoPrestacaoServico>SP</eis1:EstadoPrestacaoServico>
+					<eis1:Homologacao>true</eis1:Homologacao>
+					<eis1:Identificador>ID9</eis1:Identificador>
+					<eis1:InformacoesAdicionais>Informações adicionais dummy</eis1:InformacoesAdicionais>
+					<eis1:NotaSubstituida>0</eis1:NotaSubstituida>
+					<eis1:NotificarTomadorPorEmail>false</eis1:NotificarTomadorPorEmail>
+					<eis1:NovoModeloNFE>true</eis1:NovoModeloNFE>
+					<eis1:NumeroCDC>CDC123</eis1:NumeroCDC>
+					<eis1:NumeroCei>CEI123</eis1:NumeroCei>
+					<eis1:NumeroContrato>CON123</eis1:NumeroContrato>
+					<eis1:NumeroRecibo>1.08</eis1:NumeroRecibo>
+					<eis1:SemIncidenciaISS>false</eis1:SemIncidenciaISS>
+					<eis1:SimplesNacional>false</eis1:SimplesNacional>
+					<eis1:SubstituicaoTributaria>false</eis1:SubstituicaoTributaria>
+					<eis1:Tomador>
+						<eis2:CNPJ>12345678000199</eis2:CNPJ>
+						<eis2:CPF>00000000000</eis2:CPF>
+						<eis2:DDD>11</eis2:DDD>
+						<eis2:Email>cliente@dummy.com</eis2:Email>
+						<eis2:Endereco>
+							<eis2:Bairro>Centro</eis2:Bairro>
+							<eis2:CEP>01000000</eis2:CEP>
+							<eis2:Cidade>São Paulo</eis2:Cidade>
+							<eis2:Complemento>Apto 1</eis2:Complemento>
+							<eis2:Estado>SP</eis2:Estado>
+							<eis2:Logradouro>Rua Ficticia</eis2:Logradouro>
+							<eis2:Numero>100</eis2:Numero>
+							<eis2:Pais>BR</eis2:Pais>
+							<eis2:TipoLogradouro>Rua</eis2:TipoLogradouro>
+						</eis2:Endereco>
+						<eis2:InscricaoMunicipal>123456</eis2:InscricaoMunicipal>
+						<eis2:Nome>Cliente Dummy</eis2:Nome>
+						<eis2:Telefone>1123456789</eis2:Telefone>
+					</eis1:Tomador>
+					<eis1:TomadorEstrangeiro>false</eis1:TomadorEstrangeiro>
+					<eis1:Valor>100.00</eis1:Valor>
+					<eis1:ValorCSLL>2.00</eis1:ValorCSLL>
+					<eis1:ValorCofins>3.00</eis1:ValorCofins>
+					<eis1:ValorDeducao>0.00</eis1:ValorDeducao>
+					<eis1:ValorINSS>4.00</eis1:ValorINSS>
+					<eis1:ValorIR>1.00</eis1:ValorIR>
+					<eis1:ValorOutrosImpostos>5.00</eis1:ValorOutrosImpostos>
+					<eis1:ValorPisPasep>6.00</eis1:ValorPisPasep>
+					<eis1:ValorRepasse>90.00</eis1:ValorRepasse>
+					<eis1:nrExercicioReferencia>2025</eis1:nrExercicioReferencia>
+					<eis1:nrMesReferencia>07</eis1:nrMesReferencia>
+				</eis1:NotaFiscalLoteDTO>
+			</eis1:Notas>
+		</Notas>
+</EmissaoNotaFiscalLoteRequest>

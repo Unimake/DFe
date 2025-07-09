@@ -1,0 +1,14 @@
+<tem:Consultar xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem">
+	<tem:request>
+		<eis:ChaveAutenticacao>123456</eis:ChaveAutenticacao>
+		<eis:CNPJTomador>99999999999999</eis:CNPJTomador>
+		<eis:CPFTomador>99999999999</eis:CPFTomador>
+		<eis:DataInicial>2025-01-01</eis:DataInicial>
+		<eis:DataFinal>202501-02</eis:DataFinal>
+		<eis:NumeroNotaInicial>123</eis:NumeroNotaInicial>
+		<eis:NumeroNotaFinal>456</eis:NumeroNotaFinal>
+		<eis:NumeroReciboInicial>123</eis:NumeroReciboInicial>
+		<eis:NumeroReciboFinal>456</eis:NumeroReciboFinal>
+		<eis:NumeroReciboUnico>789</eis:NumeroReciboUnico>
+	</tem:request>
+</tem:Consultar>
