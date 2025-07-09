@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.abrasf.org.br/nfse.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="EnviarLoteCupomFiscalEnvio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="LoteCupomFiscal">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NumeroLote" type="xs:unsignedShort" />
+              <xs:element name="CpfCnpj">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Cpf" type="xs:unsignedLong" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="InscricaoMunicipal" type="xs:unsignedInt" />
+              <xs:element name="Quantidade" type="xs:unsignedByte" />
+              <xs:element name="ListaCupomFiscal">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DeclaracaoCupomFiscal">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="DadosCupomFiscal">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="IdentificacaoCupom">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Numero" type="xs:unsignedShort" />
+                                      <xs:element name="Tipo" type="xs:unsignedByte" />
+                                      <xs:element name="Serie" type="xs:string" />
+                                      <xs:element name="DataEmissao" type="xs:dateTime" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Servicos">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="tcDadosServico">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="Valores">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="BaseCalculoCRS" type="xs:unsignedByte" />
+                                                  <xs:element name="ValorServicos" type="xs:unsignedByte" />
+                                                  <xs:element name="ValorIss" type="xs:unsignedByte" />
+                                                  <xs:element name="Aliquota" type="xs:decimal" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="ItemListaServico" type="xs:decimal" />
+                                            <xs:element name="CodigoCnae" type="xs:unsignedByte" />
+                                            <xs:element name="Discriminacao" type="xs:string" />
+                                            <xs:element name="CodigoMunicipio" type="xs:unsignedByte" />
+                                            <xs:element name="CodigoPais" type="xs:unsignedShort" />
+                                            <xs:element name="ExigibilidadeISS" type="xs:unsignedByte" />
+                                            <xs:element name="MunicipioIncidencia" type="xs:unsignedInt" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Prestador">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="CpfCnpj">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="Cnpj" type="xs:unsignedLong" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="RazaoSocial" type="xs:string" />
+                                      <xs:element name="InscricaoMunicipal" type="xs:unsignedInt" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Tomador">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Email" type="xs:string" />
+                                      <xs:element name="Nome" type="xs:string" />
+                                      <xs:element name="CpfCnpj">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="Cnpj" type="xs:unsignedLong" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="PercentualCargaTributariaMunicipal" type="xs:unsignedByte" />
+                                <xs:element name="ValorCargaTributariaMunicipal" type="xs:decimal" />
+                                <xs:element name="PercentualCargaTributariaEstadual" type="xs:unsignedByte" />
+                                <xs:element name="ValorCargaTributariaEstadual" type="xs:decimal" />
+                                <xs:element name="PercentualCargaTributariaFederal" type="xs:unsignedByte" />
+                                <xs:element name="ValorCargaTributariaFederal" type="xs:decimal" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Id" type="xs:integer" use="required" />
+                        <xs:attribute name="versao" type="xs:decimal" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Id" type="xs:integer" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

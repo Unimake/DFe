@@ -2087,4 +2087,10 @@
 		<ArqConfig>OsascoSP.xml</ArqConfig>
 		<PadraoNFSe>EGOVERNEISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4301008">
+		<Nome>Arroio do Meio - RS </Nome>
+		<UF>RS</UF>
+		<ArqConfig>ArroioDoMeioRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
