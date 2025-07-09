@@ -7172,6 +7172,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("PRIMAX")]
         PRIMAX = 78,
+
+        ///<summary>
+        ///EGOVERNEISS
+        /// </summary>
+        [Description("EGOVERNEISS")]
+        EGOVERNEISS = 79,
     }
 
     #endregion

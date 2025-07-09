@@ -2081,4 +2081,10 @@
 		<ArqConfig>DoisIrmaosRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3534401">
+		<Nome>Osasco - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>OsascoSP.xml</ArqConfig>
+		<PadraoNFSe>EGOVERNEISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

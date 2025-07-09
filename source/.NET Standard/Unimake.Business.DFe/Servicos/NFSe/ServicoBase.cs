@@ -79,6 +79,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     }
 
                     break;
+
+                case PadraoNFSe.EGOVERNEISS:
+                    EGOVERNEISS();
+                    break;
             }
             Configuracoes.Definida = true;
             base.DefinirConfiguracao();
@@ -309,7 +313,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 {
                     foreach (XmlNode nodeTomador in tomador)
                     {
-                        cnpjCpfTomador = nodeTomador.FirstChild.InnerText;                        
+                        cnpjCpfTomador = nodeTomador.FirstChild.InnerText;
                     }
                 }
 
@@ -336,6 +340,46 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         #endregion EL
 
+        #region EGOVERNEISS
+        private void EGOVERNEISS()
+        {
+            //Para o EGOVERNEISS, temos que alterar a tag "Homologação" para true ou false dependendo do que for o ambiente.
+            switch (Configuracoes.Servico)
+            {
+                case Servico.NFSeEnvioRps:
+                    var xmlBodyNotaFiscal = GetXmlElementOuterXml("NotaFiscal");
+
+                    Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{xmlBodyNotaFiscal}", xmlBodyNotaFiscal);
+
+                    break;
+
+                case Servico.NFSeEnvioLoteRps:
+                    var xmlBodyNotas = GetXmlElementOuterXml("Notas");
+
+                    Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{xmlBodyNotas}", xmlBodyNotas);
+
+                    break;
+
+
+                case Servico.NFSeCancelarNfse:                  
+                    var chaveAutenticacao = GetXMLElementInnertext("ChaveAutenticacao");
+                    var homologacao = GetXMLElementInnertext("Homologacao");
+                    var motivo = string.Empty;
+                    var numeroNota = GetXMLElementInnertext("NumeroNota");
+
+                    Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{chaveAutenticacao}", chaveAutenticacao)
+                                                                     .Replace("{homologacao}", homologacao)
+                                                                     .Replace("{motivo}", motivo)
+                                                                     .Replace("{numeroNota}", numeroNota);
+
+                    break;
+
+            }
+        }
+
+
+        #endregion EGOVERNEISS
+
         #endregion Configurações separadas por PadrãoNFSe
 
         private void PadroesConfigUnica()
@@ -357,6 +401,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         private string GetXMLElementInnertext(string tag) => ConteudoXML.GetElementsByTagName(tag)[0]?.InnerText;
+
+        private string GetXmlElementOuterXml(string tag) => ConteudoXML.GetElementsByTagName(tag)[0]?.OuterXml;
 
         /// <summary>
         /// Ajustes no XMLs, depois de assinado.
