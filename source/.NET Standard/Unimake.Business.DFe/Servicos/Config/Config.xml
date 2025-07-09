@@ -2088,9 +2088,15 @@
 		<PadraoNFSe>EGOVERNEISS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4301008">
-		<Nome>Arroio do Meio - RS </Nome>
+		<Nome>Arroio do Meio - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>ArroioDoMeioRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4306205">
+		<Nome>Cruzeiro do Sul - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CruzeiroDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>

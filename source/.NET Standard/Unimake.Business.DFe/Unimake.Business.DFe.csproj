@@ -382,6 +382,7 @@
 		<None Remove="Servicos\Config\NFSe\CristalinaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CrominiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CruzAltaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CuritibaPR.xml" />
@@ -1344,6 +1345,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArroioDoMeioRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoValentimRS.xml" />
