@@ -1090,6 +1090,9 @@ namespace Unimake.Business.DFe.Utility
 
                 case "ConsultaReciboEvento":
                     return TipoXML.EFDReinfConsultaReciboEvento;
+
+                case "ConsultaResultadoFechamento2099":
+                    return TipoXML.EFDReinfConsultaFechamento2099;
             }
 
             if (primeiraTagFilha.Contains("evt"))
