@@ -126,6 +126,16 @@ namespace Unimake.Business.DFe
                 xmlBody = xmlBody.Replace("ConsultaReciboEvento", "ConsultaReciboEvento" + tpEvento);
             }
 
+            if (soap.Servico == Servico.EFDReinfConsultaFechamento2099)
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml(xmlBody);
+
+                var xmlBodyConteudo = doc.GetElementsByTagName("ConsultaResultadoFechamento2099")[0].OuterXml;
+
+                xmlBody = xmlBodyConteudo;
+            }
+
             if (TratarScapeEnvio)
             {
                 xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
