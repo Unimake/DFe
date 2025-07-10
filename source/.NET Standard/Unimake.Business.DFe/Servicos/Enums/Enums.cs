@@ -416,6 +416,12 @@ namespace Unimake.Business.DFe.Servicos
         EFDReinfRecepcionarLoteAssincrono = 67,
 
         /// <summary>
+        /// 84 - Consulta do fechamento do R-2099 EFD Reinf
+        /// </summary>
+        [Description("Consulta do fechamento do R-2099 EFD Reinf")]
+        EFDReinfConsultaFechamento2099 = 84,
+
+        /// <summary>
         /// 68 - ESocial Informacoes Do Empregador S-1000
         /// </summary>
         [Description("ESocial Informacoes Do Empregador S-1000")]
@@ -7602,6 +7608,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("XML específico de evento de EFD Reinf")]
         EFDReinfEvento = 47,
 
+        /// <summary>
+        /// XML de consulta do fechamento R-2099 do EFD Reinf
+        /// </summary>
+        [Description("XML de consulta do fechamento R-2099 do EFD Reinf")]
+        EFDReinfConsultaFechamento2099 = 48,
+
         #endregion EFD Reinf
 
         /// <summary>
@@ -7978,7 +7990,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 6 - CEI
         /// </summary>
         [XmlEnum("6")]
-        CEI = 6
+        CEI = 6,
+
+        /// <summary>
+        /// 0 - Não definido
+        /// </summary>
+        [XmlEnum("0")]
+        NaoDefinido = 0
     }
 
     #endregion
