@@ -37,8 +37,8 @@ namespace Unimake.DFe.Test.EFDReinf
                 }
             };
 
-            var consultaFechamento = new ConsultaFechamento2099();
-            consultaFechamento.Executar(xmlObjeto, configuracao);
+            var consultaFechamento = new ConsultaFechamento2099(xmlObjeto, configuracao);
+            consultaFechamento.Executar();
         }
 
         /// <summary>
