@@ -30,6 +30,8 @@ var
   oNfe: olevariant;
   xmlString: string;
 
+  oNFeObj, oInfNFeObj, oRespTecObj: olevariant;
+
   oConteudoNFe: olevariant;
   oConteudoInfNFe: olevariant;
   chaveNFe: string;
@@ -68,24 +70,40 @@ begin
     oNfe := CreateOleObject('Unimake.Business.DFe.Xml.NFe.NFe');
 
     //Desserializar o XML a partir de um arquivo no HD/SSD
-    //oEnviNFe.AddNFe(IUnknown(oNFe.LoadFromFile('D:\testenfe\41250206117473000150550590000000301399002691-nfe.xml')));
+    //oEnviNFe.AddNFe(IUnknown(oNFe.LoadFromFile('D:\testenfe\testewandrey-nfe.xml')));
 
     //Desserializar o XML a partir de uma string recuperada, por exemplo, do banco de dados ou montada no código
-    xmlString := '<?xml version="1.0" encoding="UTF-8" ?><NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe Id="NFe43230492797901000174650200000000021000000577" versao="4.00"><ide><cUF>43</cUF><cNF>00000057</cNF>';
-    xmlString := xmlString + '<natOp>VENDA DE MERCADORIA</natOp><mod>65</mod><serie>20</serie><nNF>2</nNF><dhEmi>2023-04-26T10:08:03-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>4314902</cMunFG><tpImp>4</tpImp><tpEmis>1</tpEmis>';
-    xmlString := xmlString + '<cDV>7</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres><procEmi>0</procEmi><verProc>1.4.229</verProc></ide><emit><CNPJ>92797901000174</CNPJ>';
-    xmlString := xmlString + '<xNome>GREMIO FOOT-BALL PORTO ALEGRENSE</xNome><xFant>GREMIOMANIA ARENA</xFant><enderEmit><xLgr>AV PADRE LEOPOLDO BRENTANO</xLgr><nro>110/2100</nro><xBairro>HUMAITA</xBairro>';
-    xmlString := xmlString + '<cMun>4314902</cMun><xMun>PORTO ALEGRE</xMun><UF>RS</UF><CEP>90250590</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>5132182000</fone></enderEmit><IE>0960578617</IE><CRT>3</CRT></emit>';
-    xmlString := xmlString + '<det nItem="1"><prod><cProd>2050000017377</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>61052000</NCM><CFOP>5102</CFOP>';
-    xmlString := xmlString + '<uCom>UN</uCom><qCom>1.0000</qCom><vUnCom>169.9000</vUnCom><vProd>169.90</vProd>';
-    xmlString := xmlString + '<cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.0000</qTrib><vUnTrib>169.9000</vUnTrib><indTot>1</indTot></prod><imposto><vTotTrib>37.72</vTotTrib><ICMS><ICMS00><orig>0</orig>';
-    xmlString := xmlString + '<CST>00</CST><modBC>0</modBC><vBC>169.90</vBC><pICMS>17.00</pICMS><vICMS>28.88</vICMS></ICMS00></ICMS><PIS><PISNT><CST>07</CST></PISNT></PIS><COFINS><COFINSNT><CST>07</CST></COFINSNT>';
-    xmlString := xmlString + '</COFINS></imposto></det><total><ICMSTot><vBC>169.90</vBC><vICMS>28.88</vICMS><vICMSDeson>0.00</vICMSDeson><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST>';
-    xmlString := xmlString + '<vFCPSTRet>0.00</vFCPSTRet><vProd>169.90</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS>';
-    xmlString := xmlString + '<vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>169.90</vNF><vTotTrib>37.72</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><pag><detPag><tPag>01</tPag><vPag>169.90</vPag>';
-    xmlString := xmlString + '</detPag></pag><infAdic><infCpl>OPERADOR: EDUARDO PERES CX-020;VENDEDOR: MEGASTORE *ARENA;</infCpl></infAdic></infNFe></NFe>';
-
+    xmlString := '<NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe Id="NFe41250706117473000150550590000000331966278621" versao="4.00"><ide><cUF>41</cUF><cNF>96627862</cNF><natOp>VENDA PRODUC.DO ESTABELEC</natOp><mod>55</mod><serie>59</serie>';
+    xmlString := xmlString + '<nNF>36</nNF><dhEmi>2025-07-03T09:44:01-03:00</dhEmi><dhSaiEnt>2025-07-03T09:44:01-03:00</dhSaiEnt><tpNF>1</tpNF><idDest>2</idDest><cMunFG>4118402</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>1</cDV><tpAmb>2</tpAmb>';
+    xmlString := xmlString + '<finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres><procEmi>0</procEmi><verProc>TESTE 1.00</verProc></ide><emit><CNPJ>06117473000150</CNPJ><xNome>UNIMAKE SOLUCOES CORPORATIVAS LTDA</xNome><xFant>UNIMAKE - PARANAVAI</xFant><enderEmit>';
+    xmlString := xmlString + '<xLgr>RUA PAULO ANTONIO COSTA</xLgr><nro>575</nro><xBairro>CENTRO</xBairro><cMun>4118402</cMun><xMun>PARANAVAI</xMun><UF>PR</UF><CEP>87707210</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>04431421010</fone></enderEmit><IE>9032000301</IE>';
+    xmlString := xmlString + '<IM>14018</IM><CNAE>6202300</CNAE><CRT>1</CRT></emit><dest><CNPJ>04218457000128</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>AVENIDA DA SAUDADE</xLgr><nro>1555</nro><xBairro>CAMPOS ELISEOS</xBairro>';
+    xmlString := xmlString + '<cMun>3543402</cMun><xMun>RIBEIRAO PRETO</xMun><UF>SP</UF><CEP>14080000</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>01639611500</fone></enderDest><indIEDest>1</indIEDest><IE>582614838110</IE><email>janelaorp@janelaorp.com.br</email></dest>';
+    xmlString := xmlString + '<det nItem="1"><prod><cProd>00001</cProd><cEAN>SEM GTIN</cEAN><xProd>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>84714900</NCM><CFOP>6101</CFOP><uCom>LU</uCom><qCom>1</qCom><vUnCom>84.9</vUnCom><vProd>84.90</vProd>';
+    xmlString := xmlString + '<cEANTrib>SEM GTIN</cEANTrib><uTrib>LU</uTrib><qTrib>1</qTrib><vUnTrib>84.9</vUnTrib><indTot>1</indTot><xPed>300474</xPed><nItemPed>1</nItemPed></prod><imposto><vTotTrib>12.63</vTotTrib><ICMS><ICMSSN101><orig>0</orig><CSOSN>101</CSOSN>';
+    xmlString := xmlString + '<pCredSN>2.8255</pCredSN><vCredICMSSN>2.40</vCredICMSSN></ICMSSN101></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.0000</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.0000</pCOFINS>';
+    xmlString := xmlString + '<vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><det nItem="2"><prod><cProd>00002</cProd><cEAN>SEM GTIN</cEAN><xProd>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>84714900</NCM><CFOP>6101</CFOP>';
+    xmlString := xmlString + '<uCom>LU</uCom><qCom>1</qCom><vUnCom>84.9</vUnCom><vProd>84.90</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>LU</uTrib><qTrib>1</qTrib><vUnTrib>84.9</vUnTrib><indTot>1</indTot><xPed>300474</xPed><nItemPed>1</nItemPed></prod><imposto>';
+    xmlString := xmlString + '<vTotTrib>12.63</vTotTrib><ICMS><ICMSSN101><orig>0</orig><CSOSN>101</CSOSN><pCredSN>2.8255</pCredSN><vCredICMSSN>2.40</vCredICMSSN></ICMSSN101></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.0000</pPIS><vPIS>0.00</vPIS></PISOutr>';
+    xmlString := xmlString + '</PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.0000</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><det nItem="3"><prod><cProd>00003</cProd><cEAN>SEM GTIN</cEAN><xProd>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>';
+    xmlString := xmlString + '<NCM>84714900</NCM><CFOP>6101</CFOP><uCom>LU</uCom><qCom>1</qCom><vUnCom>84.9</vUnCom><vProd>84.90</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>LU</uTrib><qTrib>1</qTrib><vUnTrib>84.9</vUnTrib><indTot>1</indTot><xPed>300474</xPed>';
+    xmlString := xmlString + '<nItemPed>1</nItemPed></prod><imposto><vTotTrib>12.63</vTotTrib><ICMS><ICMSSN101><orig>0</orig><CSOSN>101</CSOSN><pCredSN>2.8255</pCredSN><vCredICMSSN>2.40</vCredICMSSN></ICMSSN101></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC>';
+    xmlString := xmlString + '<pPIS>0.0000</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.0000</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS>';
+    xmlString := xmlString + '<vICMSDeson>0.00</vICMSDeson><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>254.70</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI>';
+    xmlString := xmlString + '<vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>254.70</vNF><vTotTrib>37.89</vTotTrib></ICMSTot></total><transp><modFrete>0</modFrete><vol><qVol>1</qVol><esp>LU</esp><marca>UNIMAKE</marca></vol>';
+    xmlString := xmlString + '<vol><qVol>1</qVol><esp>LU</esp><marca>UNIMAKE</marca></vol><vol><qVol>1</qVol><esp>LU</esp><marca>UNIMAKE</marca></vol></transp><cobr><fat><nFat>057910</nFat><vOrig>254.70</vOrig><vDesc>0.00</vDesc><vLiq>254.70</vLiq></fat><dup><nDup>001</nDup>';
+    xmlString := xmlString + '<dVenc>2025-07-03</dVenc><vDup>127.35</vDup></dup><dup><nDup>002</nDup><dVenc>2025-07-03</dVenc><vDup>127.35</vDup></dup></cobr><pag><detPag><indPag>0</indPag><tPag>01</tPag><vPag>254.70</vPag></detPag></pag><infAdic>';
+    xmlString := xmlString + '<infCpl>Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008</infCpl></infAdic><infRespTec><CNPJ>06117473000150</CNPJ><xContato>Ze das Couves</xContato><email>zedascouves@gmail.com</email><fone>04430000000</fone>';
+    xmlString := xmlString + '</infRespTec></infNFe></NFe>';
     oEnviNFe.AddNFe(IUnknown(oNFe.LoadFromXml(xmlString)));
+
+    //Atualizar o CSRT para gerar corretamente o hashCSRT
+    oNFeObj := oEnviNFe.GetNFe(0);
+    oInfNFeObj := oNFeObj.GetInfNFe(0);
+    oRespTecObj := oInfNFeObj.InfRespTec;
+    oRespTecObj.hashCSRT := '';
+    oRespTecObj.IdCSRT := '01';
+    oRespTecObj.CSRT := '8WCARAO9D8P00R845TARUPPTGY5CL40WS3J1';
 
     //Recuperar a chave da NFe
     oConteudoNFe := oEnviNFe.GetNFe(0);
