@@ -508,6 +508,7 @@
 		<None Remove="Servicos\Config\NFSe\PantanoGrandeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ParacambiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaDeMinasMG.xml" />
+		<None Remove="Servicos\Config\NFSe\ParagominasPA.xml" />
 		<None Remove="Servicos\Config\NFSe\ParanavaiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PareciNovoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ParobeRS.xml" />
@@ -582,7 +583,6 @@
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SorocabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaioSC.xml" />
-		<None Remove="Servicos\Config\NFSe\Tapejara.xml" />
 		<None Remove="Servicos\Config\NFSe\TaperaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TaquaritubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaubateSP.xml" />
@@ -1097,6 +1097,8 @@
 		<None Remove="Xml\Schemas\NFSe\COPLAN\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\nfse_v2_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\DESENVOLVECIDADE\nfsev203.xsd" />
+		<None Remove="Xml\Schemas\NFSe\DESENVOLVECIDADE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DIGIFRED\nfse_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DIGIFRED\xmldsig-core-schema_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DSF\2.03\nfse_v2-03_ima.xsd" />
@@ -1349,6 +1351,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ParagominasPA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoValentimRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmargosaBA.xml" />
@@ -1514,7 +1517,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RecifePE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoRoqueSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\Tapejara.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TapejaraRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresopolisRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TramandaiRS.xml" />
@@ -2251,6 +2254,8 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\substituir-nfse-envio-v2_04.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\tipos-v2_04.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DESENVOLVECIDADE\nfsev203.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DESENVOLVECIDADE\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\nfse_v2-03_ima.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ELOTECH\nfse_v2_03.xsd" />

@@ -1587,7 +1587,7 @@
 		<Nome>São Cristóvão - SE</Nome>
 		<UF>SE</UF>
 		<ArqConfig>SaoCristovaoSE.xml</ArqConfig>
-		<PadraoNFSe>WEBISS</PadraoNFSe>		
+		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="1100049">
 		<Nome>Cacoal - RO</Nome>
@@ -2102,7 +2102,13 @@
 	<Arquivo ID="4320909">
 		<Nome>Tapejara - RS</Nome>
 		<UF>RS</UF>
-		<ArqConfig>Tapejara.xml</ArqConfig>
+		<ArqConfig>TapejaraRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="1505502">
+		<Nome>Paragominas - PA</Nome>
+		<UF>PA</UF>
+		<ArqConfig>ParagominasPA.xml</ArqConfig>
+		<PadraoNFSe>DESENVOLVECIDADE</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>

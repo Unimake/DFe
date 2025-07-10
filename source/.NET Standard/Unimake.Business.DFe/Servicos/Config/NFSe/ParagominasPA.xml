@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.03">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://paragominas.desenvolvecidade.com.br/nfsd/IntegracaoNfsd?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfsev203.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integracao.nfsd.desenvolve/"><soapenv:Header/><soapenv:Body><ws:enviarLoteRpsEnvio><xml>{xmlBodyScape}</xml></ws:enviarLoteRpsEnvio></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:enviarLoteRpsEnvioResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="2.03">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://paragominas.desenvolvecidade.com.br/nfsd/IntegracaoNfsd?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfsev203.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integracao.nfsd.desenvolve/"><soapenv:Header/><soapenv:Body><ws:enviarLoteRpsSincronoEnvio><xml>{xmlBodyScape}</xml></ws:enviarLoteRpsSincronoEnvio></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:enviarLoteRpsSincronoEnvioResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<GerarNfse versao="2.03">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://paragominas.desenvolvecidade.com.br/nfsd/IntegracaoNfsd?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfsev203.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integracao.nfsd.desenvolve/"><soapenv:Header/><soapenv:Body><ws:gerarNfseEnvio><xml>{xmlBodyScape}</xml></ws:gerarNfseEnvio></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:gerarNfseEnvioResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="2.03">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://paragominas.desenvolvecidade.com.br/nfsd/IntegracaoNfsd?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfsev203.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integracao.nfsd.desenvolve/"><soapenv:Header/><soapenv:Body><ws:cancelarNfseEnvio><xml>{xmlBodyScape}</xml></ws:cancelarNfseEnvio></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:cancelarNfseEnvioResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="2.03">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://paragominas.desenvolvecidade.com.br/nfsd/IntegracaoNfsd?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integracao.nfsd.desenvolve/"><soapenv:Header/><soapenv:Body><ws:consultarLoteRpsEnvio><xml>{xmlBodyScape}</xml></ws:consultarLoteRpsEnvio></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:consultarLoteRpsEnvioResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.03">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://paragominas.desenvolvecidade.com.br/nfsd/IntegracaoNfsd?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integracao.nfsd.desenvolve/"><soapenv:Header/><soapenv:Body><ws:consultarNfseRpsEnvio><xml>{xmlBodyScape}</xml></ws:consultarNfseRpsEnvio></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:consultarNfseRpsEnvioResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoTomado versao="2.03">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://paragominas.desenvolvecidade.com.br/nfsd/IntegracaoNfsd?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
+			<TagAtributoID>Consulente</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integracao.nfsd.desenvolve/"><soapenv:Header/><soapenv:Body><ws:consultarNfseServicoTomadoEnvio><xml>{xmlBodyScape}</xml></ws:consultarNfseServicoTomadoEnvio></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:consultarNfseServicoTomadoEnvioResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoTomado>
+		</Servicos>
+</Configuracoes>

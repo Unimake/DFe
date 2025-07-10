@@ -7178,6 +7178,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("EGOVERNEISS")]
         EGOVERNEISS = 79,
+
+        ///<summary>
+        ///DESENVOLVECIDADE
+        /// </summary>
+        [Description("DESENVOLVECIDADE")]
+        DESENVOLVECIDADE = 80,
     }
 
     #endregion
