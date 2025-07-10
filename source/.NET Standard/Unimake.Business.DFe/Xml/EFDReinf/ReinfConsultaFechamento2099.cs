@@ -16,7 +16,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/envioLoteEventos/v1_05_01", IsNullable = false)]
+    [XmlRoot("Reinf", Namespace = "http://sped.fazenda.gov.br/", IsNullable = false)]
     public class ReinfConsultaFechamento2099 : XMLBase
     {
         [XmlElement("ConsultaResultadoFechamento2099")]
@@ -30,11 +30,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
     public class ConsultaResultadoFechamento2099
     {
-        [XmlElement("tipoInscricaoContribuinte")]
-        public TiposInscricao TipoInscricaoContribuinte { get; set; }
+        [XmlElement("tpInsc")]
+        public TiposInscricao TpInsc { get; set; }
 
-        [XmlElement("numeroInscricaoContribuinte")]
-        public string NumeroInscricaoContribuinte { get; set; }
+        [XmlElement("nrInsc")]
+        public string NrInsc { get; set; }
 
         [XmlElement("numeroProtocoloFechamento")]
         public string NumeroProtocoloFechamento { get; set; }
