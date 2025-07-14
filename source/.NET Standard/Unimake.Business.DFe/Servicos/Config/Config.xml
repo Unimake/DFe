@@ -2111,4 +2111,10 @@
 		<ArqConfig>ParagominasPA.xml</ArqConfig>
 		<PadraoNFSe>DESENVOLVECIDADE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5201108">
+		<Nome>Anápolis - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>AnapolisGO.xml</ArqConfig>
+		<PadraoNFSe>ISSNET</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
