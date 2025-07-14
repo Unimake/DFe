@@ -2117,4 +2117,10 @@
 		<ArqConfig>AnapolisGO.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3524402">
+		<Nome>Jacareí - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>JacareiSP.xml</ArqConfig>
+		<PadraoNFSe>EMBRAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
