@@ -465,6 +465,7 @@
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
 		<None Remove="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\LimeiraSP.xml" />
+		<None Remove="Servicos\Config\NFSe\LinharesES.xml" />
 		<None Remove="Servicos\Config\NFSe\LondrinaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\LontrasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\LorenaSP.xml" />
@@ -1366,6 +1367,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JacareiSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\LinharesES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MacaeRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NiteroiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />

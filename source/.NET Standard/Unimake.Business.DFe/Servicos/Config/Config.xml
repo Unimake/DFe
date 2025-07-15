@@ -2159,4 +2159,10 @@
 		<ArqConfig>NiteroiRJ.xml</ArqConfig>
 		<PadraoNFSe>TIPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3203205">
+		<Nome>Linhares - ES</Nome>
+		<UF>ES</UF>
+		<ArqConfig>LinharesES.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
