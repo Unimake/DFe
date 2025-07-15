@@ -301,6 +301,7 @@
 		<None Remove="Servicos\Config\NFSe\AgudoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AimoresMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AlegreteRS.xml" />
+		<None Remove="Servicos\Config\NFSe\AlemParaibaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AmambaiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\AmargosaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\AnapolisGO.xml" />
@@ -466,6 +467,7 @@
 		<None Remove="Servicos\Config\NFSe\LontrasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\LorenaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml" />
+		<None Remove="Servicos\Config\NFSe\MacaeRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\MafraSC.xml" />
 		<None Remove="Servicos\Config\NFSe\MageRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\MairipotabaGO.xml" />
@@ -1205,6 +1207,8 @@
 		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoInformacoesLote_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PAULISTANA\TiposNFe_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PORTAL_FACIL\nfse_v204.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PORTAL_FACIL\schema nfse v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODEB\nfse_v2_01.xsd" />
@@ -1263,6 +1267,7 @@
 		<None Remove="Xml\Schemas\NFSe\THEMA\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\THEMA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TINUS\nfsetempuri.xsd" />
+		<None Remove="Xml\Schemas\NFSe\TIPLAN\nfse v2 03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\nfse_municipal_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema20020212.xsd" />
@@ -1349,11 +1354,13 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AlemParaibaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AnapolisGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArroioDoMeioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JacareiSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MacaeRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParagominasPA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoValentimRS.xml" />
@@ -3184,6 +3191,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\TiposNFe_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PORTAL_FACIL\nfse_v202.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PORTAL_FACIL\schema nfse v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PORTAL_FACIL\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
@@ -3243,6 +3251,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\THEMA\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\THEMA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\nfsetempuri.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\nfse v2 03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\nfse_municipal_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema20020212.xsd" />
