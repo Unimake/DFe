@@ -2141,4 +2141,10 @@
 		<ArqConfig>PiraiRJ.xml</ArqConfig>
 		<PadraoNFSe>TIPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3501608">
+		<Nome>Americana - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>AmericanaSP.xml</ArqConfig>
+		<PadraoNFSe>TIPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
