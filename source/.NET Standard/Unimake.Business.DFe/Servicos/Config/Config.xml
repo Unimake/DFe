@@ -2153,4 +2153,10 @@
 		<ArqConfig>AngraDosReisRJ.xml</ArqConfig>
 		<PadraoNFSe>TIPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3303302">
+		<Nome>Niterói - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>NiteroiRJ.xml</ArqConfig>
+		<PadraoNFSe>TIPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
