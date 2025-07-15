@@ -32,6 +32,7 @@ namespace Unimake.DFe.Test.NFSe
 
             switch (padraoNFSe)
             {
+                case PadraoNFSe.PORTAL_FACIL:
                 case PadraoNFSe.NOBESISTEMAS:
                     arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + tipoAmbiente.ToString() + "\\" + nomeXMLEnvio;
                     break;

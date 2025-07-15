@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CancelarNfseEnvio xmlns="http://nfse-mg-alemparaiba.portalfacil.com.br/homologacao/schema/nfse_v204.xsd">
+	<Pedido>
+		<InfPedidoCancelamento Id="Pedido_123">
+			<IdentificacaoNfse>
+				<Numero>1111</Numero>
+				<CpfCnpj>
+					<Cnpj>99999999999999</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+				<CodigoMunicipio>1</CodigoMunicipio>
+			</IdentificacaoNfse>
+			<CodigoCancelamento>1</CodigoCancelamento>
+		</InfPedidoCancelamento>
+	</Pedido>
+</CancelarNfseEnvio>
