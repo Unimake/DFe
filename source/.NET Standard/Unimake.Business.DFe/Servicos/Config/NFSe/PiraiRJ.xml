@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.pirai.rj.gov.br/nfse/WSNacional/nfse.asmx?WSDL</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://www.nfe.com.br/RecepcionarLoteRps</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.nfe.com.br/"><soapenv:Header/><soapenv:Body><nfe:RecepcionarLoteRpsRequest><nfe:inputXML>{xmlBodyScape}</nfe:inputXML></nfe:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.nfe.com.br/</TargetNS>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.pirai.rj.gov.br/nfse/WSNacional/nfse.asmx?WSDL</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://www.nfe.com.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.nfe.com.br/"><soapenv:Header/><soapenv:Body><nfe:CancelarNfseRequest><nfe:inputXML>{xmlBodyScape}</nfe:inputXML></nfe:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.nfe.com.br/</TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.pirai.rj.gov.br/nfse/WSNacional/nfse.asmx?WSDL</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://www.nfe.com.br/ConsultarLoteRps</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.nfe.com.br/"><soapenv:Header/><soapenv:Body><nfe:ConsultarLoteRpsRequest><nfe:inputXML>{xmlBodyScape}</nfe:inputXML></nfe:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.nfe.com.br/</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.pirai.rj.gov.br/nfse/WSNacional/nfse.asmx?WSDL</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://www.nfe.com.br/ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.nfe.com.br/"><soapenv:Header/><soapenv:Body><nfe:ConsultarNfsePorRpsRequest><nfe:inputXML>{xmlBodyScape}</nfe:inputXML></nfe:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.nfe.com.br/</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao></Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.pirai.rj.gov.br/nfse/WSNacional/nfse.asmx?WSDL</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://www.nfe.com.br/ConsultarNfse</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.nfe.com.br/"><soapenv:Header/><soapenv:Body><nfe:ConsultarNfseRequest><nfe:inputXML>{xmlBodyScape}</nfe:inputXML></nfe:ConsultarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.nfe.com.br/</TargetNS>
+		</ConsultarNfse>
+		<ConsultarSituacaoLoteRps versao="1.00">
+			<Descricao>Consulta situação do lote RPS</Descricao>
+			<WebEnderecoProducao>https://nfse.pirai.rj.gov.br/nfse/WSNacional/nfse.asmx?WSDL</WebEnderecoProducao>
+			<WebActionProducao>http://www.nfe.com.br/ConsultarSituacaoLoteRps</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.nfe.com.br/"><soapenv:Header/><soapenv:Body><nfe:ConsultarSituacaoLoteRpsRequest><nfe:inputXML>{xmlBodyScape}</nfe:inputXML></nfe:ConsultarSituacaoLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarSituacaoLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.nfe.com.br/</TargetNS>
+		</ConsultarSituacaoLoteRps>
+	</Servicos>
+</Configuracoes>

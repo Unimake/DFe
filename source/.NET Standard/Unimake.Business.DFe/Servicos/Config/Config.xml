@@ -2135,4 +2135,10 @@
 		<ArqConfig>MacaeRJ.xml</ArqConfig>
 		<PadraoNFSe>TIPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3304003">
+		<Nome>Piraí - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>PiraiRJ.xml</ArqConfig>
+		<PadraoNFSe>TIPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -527,6 +527,7 @@
 		<None Remove="Servicos\Config\NFSe\PenapolisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PetropolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PiracicabaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\PiraiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PiratiningaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PomerodeSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PontalinaGO.xml" />
@@ -1363,6 +1364,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MacaeRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParagominasPA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PiraiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoValentimRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmargosaBA.xml" />
