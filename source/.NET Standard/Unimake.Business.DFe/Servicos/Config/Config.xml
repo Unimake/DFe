@@ -2147,4 +2147,10 @@
 		<ArqConfig>AmericanaSP.xml</ArqConfig>
 		<PadraoNFSe>TIPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3300100">
+		<Nome>Angra dos Reis - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>AngraDosReisRJ.xml</ArqConfig>
+		<PadraoNFSe>TIPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

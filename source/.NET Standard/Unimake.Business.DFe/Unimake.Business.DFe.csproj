@@ -306,6 +306,7 @@
 		<None Remove="Servicos\Config\NFSe\AmargosaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\AmericanaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AnapolisGO.xml" />
+		<None Remove="Servicos\Config\NFSe\AngraDosReisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\AracajuSE.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
@@ -1359,6 +1360,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlemParaibaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmericanaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AnapolisGO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AngraDosReisRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArroioDoMeioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
