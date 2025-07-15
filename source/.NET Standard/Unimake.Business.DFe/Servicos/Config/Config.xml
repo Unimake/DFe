@@ -2165,4 +2165,10 @@
 		<ArqConfig>LinharesES.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3205101">
+		<Nome>Manhuaçu - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ManhuacuMG.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

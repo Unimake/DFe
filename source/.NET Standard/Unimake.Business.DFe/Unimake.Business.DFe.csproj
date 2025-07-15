@@ -475,6 +475,7 @@
 		<None Remove="Servicos\Config\NFSe\MageRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\MairipotabaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\ManausAM.xml" />
+		<None Remove="Servicos\Config\NFSe\ManhuacuMG.xml" />
 		<None Remove="Servicos\Config\NFSe\MarataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\MarcolandiaPI.xml" />
 		<None Remove="Servicos\Config\NFSe\MariliaSP.xml" />
@@ -1369,6 +1370,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JacareiSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LinharesES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MacaeRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ManhuacuMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NiteroiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParagominasPA.xml" />
