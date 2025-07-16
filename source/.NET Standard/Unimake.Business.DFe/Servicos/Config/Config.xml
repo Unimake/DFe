@@ -2123,12 +2123,6 @@
 		<ArqConfig>JacareiSP.xml</ArqConfig>
 		<PadraoNFSe>EMBRAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3101508">
-		<Nome>Além Paraíba - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>AlemParaibaMG.xml</ArqConfig>
-		<PadraoNFSe>PORTAL_FACIL</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3302403">
 		<Nome>Macaé - RJ</Nome>
 		<UF>RJ</UF>
