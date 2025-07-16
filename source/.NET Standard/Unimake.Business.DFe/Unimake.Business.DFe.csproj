@@ -626,6 +626,7 @@
 		<None Remove="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VoltaRedondaRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\VotuporangaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\Webfisco.xml" />
 		<None Remove="Servicos\Config\NFSe\XangriLaRS.xml" />
 		<None Remove="Servicos\Config\SNCM\Config.xml" />
@@ -1757,6 +1758,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VianaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ViscondeDoRioBrancoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VitoriaES.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\VotuporangaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\Webfisco.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

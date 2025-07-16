@@ -2189,4 +2189,10 @@
 		<ArqConfig>VianaES.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3557105">
+		<Nome>Votuporanga - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>VotuporangaSP.xml</ArqConfig>
+		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
