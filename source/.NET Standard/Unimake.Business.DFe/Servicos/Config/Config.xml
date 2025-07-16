@@ -2171,4 +2171,10 @@
 		<ArqConfig>ManhuacuMG.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3204203">
+		<Nome>Piuma - ES</Nome>
+		<UF>ES</UF>
+		<ArqConfig>PiumaES.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
