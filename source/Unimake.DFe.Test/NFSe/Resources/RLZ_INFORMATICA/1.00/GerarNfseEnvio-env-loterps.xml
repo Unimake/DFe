@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nota>
+	<cpfcnpj>99999999999999</cpfcnpj>
+	<inscricao>99999999999999</inscricao>
+	<chave>999999999999999999999999999999999999999999</chave>
+	<cep>78250000</cep>
+	<data>2011-01-03</data>
+	<modelo>Eletrônica</modelo>
+	<serie>A</serie>
+	<fatura/>
+	<orcamento/>
+	<vencimento>2011-01-03</vencimento>
+	<pis>0.00</pis>
+	<csll>0.00</csll>
+	<cofins>0.00</cofins>
+	<irff>0.00</irff>
+	<situacao>Emitida</situacao>
+	<optante>Não</optante>
+	<aliquota>5.00</aliquota>
+	<texto>REV.ENTREG - REVISAO DE ENTREGA DE MOTO 0 KM</texto>
+	<servicos>
+		<servico>
+			<quantidade>1.00</quantidade>
+			<atividade>MOTOS, TRICICLOS, VESPA E ASSEMELHADOS 1</atividade>
+			<valor>0.01</valor>
+			<deducao>0.00</deducao>
+			<codigoservico>14.02</codigoservico>
+			<aliquota>5.00</aliquota>
+			<inss>0.00</inss>
+			<total>0.01</total>
+		</servico>
+		<servico>
+			<quantidade>1.00</quantidade>
+			<atividade>MOTOS, TRICICLOS, VESPA E ASSEMELHADOS 1</atividade>
+			<valor>0.01</valor>
+			<deducao>0.00</deducao>
+			<codigoservico>14.02</codigoservico>
+			<aliquota>5.00</aliquota>
+			<inss>0.00</inss>
+			<total>0.01</total>
+		</servico>
+	</servicos>
+	<tomador>
+		<endereco>xxxxxxxxxxxxx</endereco>
+		<numero>0</numero>
+		<complemento>xxxxxxxxxxxxxxxx</complemento>
+		<bairro>CENTRO</bairro>
+		<cep>78250000</cep>
+		<cidade>xxxxxxxxxxxx</cidade>
+		<uf>MT</uf>
+		<nome>xxxxxxxx</nome>
+		<nomefantasia>xxxxxxx</nomefantasia>
+		<inscricao/>
+		<cpfcnpj>99999999999999</cpfcnpj>
+		<rgie>99999999999999</rgie>
+		<email/>
+		<ddd>00</ddd>
+		<fone>99999999999999</fone>
+	</tomador>
+</nota>
