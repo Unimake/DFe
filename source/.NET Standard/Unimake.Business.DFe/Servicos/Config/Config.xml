@@ -2165,7 +2165,7 @@
 		<ArqConfig>LinharesES.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3205101">
+	<Arquivo ID="3139409">
 		<Nome>Manhuaçu - MG</Nome>
 		<UF>MG</UF>
 		<ArqConfig>ManhuacuMG.xml</ArqConfig>
@@ -2187,6 +2187,12 @@
 		<Nome>Taiobeiras - MG</Nome>
 		<UF>MG</UF>
 		<ArqConfig>TaiobeirasMG.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3205101">
+		<Nome>Viana - ES</Nome>
+		<UF>ES</UF>
+		<ArqConfig>VianaES.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
