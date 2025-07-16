@@ -2177,4 +2177,10 @@
 		<ArqConfig>PiumaES.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3162708">
+		<Nome>São João do Paraíso - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>SaoJoaoDoParaisoMG.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
