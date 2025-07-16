@@ -2183,4 +2183,10 @@
 		<ArqConfig>SaoJoaoDoParaisoMG.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3168002">
+		<Nome>Taiobeiras - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>TaiobeirasMG.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

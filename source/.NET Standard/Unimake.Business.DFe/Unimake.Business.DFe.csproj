@@ -594,6 +594,7 @@
 		<None Remove="Servicos\Config\NFSe\SimoesFilhoBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SorocabaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\TaiobeirasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\TaioSC.xml" />
 		<None Remove="Servicos\Config\NFSe\TaperaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TaquaritubaSP.xml" />
@@ -1544,6 +1545,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RecifePE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoRoqueSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TaiobeirasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TapejaraRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresopolisRJ.xml" />
