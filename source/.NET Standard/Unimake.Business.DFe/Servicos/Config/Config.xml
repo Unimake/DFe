@@ -2207,4 +2207,10 @@
 		<ArqConfig>TangaraDaSerraMT.xml</ArqConfig>
 		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3520509">
+		<Nome>Indaiatuba - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>IndaiatubaSP.xml</ArqConfig>
+		<PadraoNFSe>INDAIATUBA_SP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

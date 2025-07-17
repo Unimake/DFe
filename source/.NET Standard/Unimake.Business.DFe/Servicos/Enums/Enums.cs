@@ -7190,6 +7190,13 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("DESENVOLVECIDADE")]
         DESENVOLVECIDADE = 80,
+
+
+        ///<summary>
+        ///INDAIATUBA_SP
+        /// </summary>
+        [Description("INDAIATUBA_SP")]
+        INDAIATUBA_SP = 81,
     }
 
     #endregion
