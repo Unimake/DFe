@@ -2201,4 +2201,10 @@
 		<ArqConfig>CaceresMT.xml</ArqConfig>
 		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5107958">
+		<Nome>Tangará da Serra - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>TangaraDaSerraMT.xml</ArqConfig>
+		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
