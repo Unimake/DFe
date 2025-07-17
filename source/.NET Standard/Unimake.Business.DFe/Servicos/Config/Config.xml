@@ -2195,4 +2195,10 @@
 		<ArqConfig>VotuporangaSP.xml</ArqConfig>
 		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5102504">
+		<Nome>Cáceres - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>CaceresMT.xml</ArqConfig>
+		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

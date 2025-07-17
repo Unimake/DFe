@@ -347,6 +347,7 @@
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\CacadorSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CacapavaDoSulRS.xml" />
+		<None Remove="Servicos\Config\NFSe\CaceresMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeiraDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
 		<None Remove="Servicos\Config\NFSe\CamacariBA.xml" />
@@ -1368,6 +1369,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AnapolisGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AngraDosReisRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArroioDoMeioRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CaceresMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JacareiSP.xml" />
