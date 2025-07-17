@@ -601,6 +601,7 @@
 		<None Remove="Servicos\Config\NFSe\TaperaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TaquaritubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaubateSP.xml" />
+		<None Remove="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
 		<None Remove="Servicos\Config\NFSe\TeofiloOtoniMG.xml" />
 		<None Remove="Servicos\Config\NFSe\TeresinaPI.xml" />
@@ -1555,6 +1556,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaiobeirasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TangaraDaSerraMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TapejaraRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresopolisRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TramandaiRS.xml" />

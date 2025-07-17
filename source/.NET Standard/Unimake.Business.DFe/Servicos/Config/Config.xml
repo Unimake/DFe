@@ -2213,4 +2213,10 @@
 		<ArqConfig>IndaiatubaSP.xml</ArqConfig>
 		<PadraoNFSe>INDAIATUBA_SP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2931350">
+		<Nome>Teixeira de Freitas - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>TeixeiraDeFreitasBA.xml</ArqConfig>
+		<PadraoNFSe>MODERNIZACAO_PUBLICA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
