@@ -2219,4 +2219,10 @@
 		<ArqConfig>TeixeiraDeFreitasBA.xml</ArqConfig>
 		<PadraoNFSe>MODERNIZACAO_PUBLICA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2910727">
+		<Nome>Eunápolis - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>EunapolisBA.xml</ArqConfig>
+		<PadraoNFSe>MODERNIZACAO_PUBLICA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
