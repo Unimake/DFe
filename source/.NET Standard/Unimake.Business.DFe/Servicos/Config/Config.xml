@@ -501,7 +501,7 @@
 		<Nome>Guarantã do Norte - MT</Nome>
 		<UF>MT</UF>
 		<ArqConfig>GuarantaDoNorteMT.xml</ArqConfig>
-		<PadraoNFSe>COPLAN</PadraoNFSe>
+		<PadraoNFSe>AGILI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4113700">
 		<Nome>Londrina - PR</Nome>

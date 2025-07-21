@@ -46,6 +46,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Xml\Schemas\NFSe\AGILI\**" />
+	  <EmbeddedResource Remove="Xml\Schemas\NFSe\AGILI\**" />
+	  <None Remove="Xml\Schemas\NFSe\AGILI\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Remove="Exceptions\Exceptions.cs~RF1e809dd.TMP" />
 		<None Remove="Servicos\CCG\RS.xml" />
 		<None Remove="Servicos\Config\CCG\Config.xml" />
