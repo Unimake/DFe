@@ -2249,4 +2249,10 @@
 		<ArqConfig>EusebioCE.xml</ArqConfig>
 		<PadraoNFSe>INTERSOL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2312908">
+		<Nome>Sobral - CE</Nome>
+		<UF>CE</UF>
+		<ArqConfig>SobralCE.xml</ArqConfig>
+		<PadraoNFSe>INTERSOL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
