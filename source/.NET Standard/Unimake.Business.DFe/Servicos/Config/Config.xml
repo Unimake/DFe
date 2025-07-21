@@ -2243,4 +2243,10 @@
 		<ArqConfig>MaracanauCE.xml</ArqConfig>
 		<PadraoNFSe>INTERSOL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2304285">
+		<Nome>Eusébio - CE</Nome>
+		<UF>CE</UF>
+		<ArqConfig>EusebioCE.xml</ArqConfig>
+		<PadraoNFSe>INTERSOL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
