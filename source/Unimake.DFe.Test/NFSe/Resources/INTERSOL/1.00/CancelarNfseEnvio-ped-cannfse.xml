@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<p:CancelarNfseEnvio xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ws.speedgov.com.br/cancelar_nfse_envio_v1.xsd" xmlns:p1="http://ws.speedgov.com.br/tipos_v1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ws.speedgov.com.br/cancelar_nfse_envio_v1.xsd cancelar_nfse_envio_v1.xsd ">
+	<Pedido>
+		<p1:InfPedidoCancelamento Id="ID1">
+			<p1:IdentificacaoNfse>
+				<p1:Numero>1</p1:Numero>
+				<p1:Cnpj>99999999999999</p1:Cnpj>
+				<p1:InscricaoMunicipal>99999999999999</p1:InscricaoMunicipal>
+				<p1:CodigoMunicipio>9999999</p1:CodigoMunicipio>
+			</p1:IdentificacaoNfse>
+			<p1:CodigoCancelamento>E12</p1:CodigoCancelamento>
+		</p1:InfPedidoCancelamento>
+	</Pedido>
+</p:CancelarNfseEnvio>

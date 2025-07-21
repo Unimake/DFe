@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<p:ConsultarNfseRpsEnvio xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ws.speedgov.com.br/consultar_nfse_rps_envio_v1.xsd" xmlns:p1="http://ws.speedgov.com.br/tipos_v1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ws.speedgov.com.br/consultar_nfse_rps_envio_v1.xsd consultar_nfse_rps_envio_v1.xsd ">
+	<p:IdentificacaoRps>
+		<p1:Numero>1</p1:Numero>
+		<p1:Serie>00000</p1:Serie>
+		<p1:Tipo>1</p1:Tipo>
+	</p:IdentificacaoRps>
+	<p:Prestador>
+		<p1:Cnpj>99999999999999</p1:Cnpj>
+		<p1:InscricaoMunicipal>99999999999999</p1:InscricaoMunicipal>
+	</p:Prestador>
+</p:ConsultarNfseRpsEnvio>
