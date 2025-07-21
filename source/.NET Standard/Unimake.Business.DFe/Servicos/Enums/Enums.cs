@@ -7197,6 +7197,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("INDAIATUBA_SP")]
         INDAIATUBA_SP = 81,
+
+        ///<summary>
+        ///INTERSOL
+        /// </summary>
+        [Description("INTERSOL")]
+        INTERSOL = 82,
     }
 
     #endregion

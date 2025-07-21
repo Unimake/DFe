@@ -2237,4 +2237,10 @@
 		<ArqConfig>DracenaSP.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2307650">
+		<Nome>Maracanaú - CE</Nome>
+		<UF>CE</UF>
+		<ArqConfig>MaracanauCE.xml</ArqConfig>
+		<PadraoNFSe>INTERSOL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
