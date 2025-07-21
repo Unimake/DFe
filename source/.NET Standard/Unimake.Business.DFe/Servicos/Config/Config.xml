@@ -2231,4 +2231,10 @@
 		<ArqConfig>SaoJoseDoRioClaroMT.xml</ArqConfig>
 		<PadraoNFSe>COPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3514403">
+		<Nome>Dracena - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>DracenaSP.xml</ArqConfig>
+		<PadraoNFSe>ISSNET</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
