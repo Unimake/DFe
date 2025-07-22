@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://s47.asp.srv.br/issonline/servlet/anfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>application/soap+xml;charset=utf-8;</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="nfse"><soapenv:Header/><soapenv:Body><nfse:Nfse.Execute><nfse:Operacao>1</nfse:Operacao><nfse:Usuario>{MunicipioUsuario}</nfse:Usuario><nfse:Senha>{MunicipioSenha}</nfse:Senha><nfse:Webxml>{xmlBodyScape}</nfse:Webxml></nfse:Nfse.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://s47.asp.srv.br/issonline/servlet/anfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>application/soap+xml;charset=utf-8;</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="nfse"><soapenv:Header/><soapenv:Body><nfse:Nfse.Execute><nfse:Operacao>2</nfse:Operacao><nfse:Usuario>{MunicipioUsuario}</nfse:Usuario><nfse:Senha>{MunicipioSenha}</nfse:Senha><nfse:Webxml>{xmlBodyScape}</nfse:Webxml></nfse:Nfse.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</CancelarNfse>
+		<ConsultarNfse versao="1.00">
+			<Descricao></Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://s47.asp.srv.br/issonline/servlet/anfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>application/soap+xml;charset=utf-8;</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="nfse"><soapenv:Header/><soapenv:Body><nfse:Nfse.Execute><nfse:Operacao>4</nfse:Operacao><nfse:Usuario>{MunicipioUsuario}</nfse:Usuario><nfse:Senha>{MunicipioSenha}</nfse:Senha><nfse:Webxml>{xmlBodyScape}</nfse:Webxml></nfse:Nfse.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarNfse>
+		<ConsultaLote versao="1.00">
+			<Descricao>Consulta lote</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://s47.asp.srv.br/issonline/servlet/anfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>application/soap+xml;charset=utf-8;</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="nfse"><soapenv:Header/><soapenv:Body><nfse:Nfse.Execute><nfse:Operacao>3</nfse:Operacao><nfse:Usuario>{MunicipioUsuario}</nfse:Usuario><nfse:Senha>{MunicipioSenha}</nfse:Senha><nfse:Webxml>{xmlBodyScape}</nfse:Webxml></nfse:Nfse.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultaLote>
+	</Servicos>
+</Configuracoes>

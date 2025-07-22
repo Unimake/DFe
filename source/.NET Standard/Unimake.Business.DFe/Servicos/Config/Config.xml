@@ -2255,4 +2255,34 @@
 		<ArqConfig>SobralCE.xml</ArqConfig>
 		<PadraoNFSe>INTERSOL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3502804">
+		<Nome>Araçatuba - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>AracatubaSP.xml</ArqConfig>
+		<PadraoNFSe>ISSONLINE_ASSESSORPUBLICO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3527108">
+		<Nome>Lins - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>LinsSP.xml</ArqConfig>
+		<PadraoNFSe>ISSONLINE_ASSESSORPUBLICO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3539301">
+		<Nome>Pirassununga - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>PirassunungaSP.xml</ArqConfig>
+		<PadraoNFSe>ISSONLINE_ASSESSORPUBLICO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3553708">
+		<Nome>Taquaritinga - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>TaquaritingaSP.xml</ArqConfig>
+		<PadraoNFSe>ISSONLINE_ASSESSORPUBLICO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3557006">
+		<Nome>Votorantim - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>VotorantimSP.xml</ArqConfig>
+		<PadraoNFSe>ISSONLINE_ASSESSORPUBLICO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

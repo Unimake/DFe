@@ -314,6 +314,7 @@
 		<None Remove="Servicos\Config\NFSe\AngraDosReisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\AracajuSE.xml" />
+		<None Remove="Servicos\Config\NFSe\AracatubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguariMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AraquariSC.xml" />
@@ -476,6 +477,7 @@
 		<None Remove="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\LimeiraSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LinharesES.xml" />
+		<None Remove="Servicos\Config\NFSe\LinsSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LondrinaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\LontrasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\LorenaSP.xml" />
@@ -544,6 +546,7 @@
 		<None Remove="Servicos\Config\NFSe\PetropolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PiracicabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PiraiRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\PirassunungaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PiratiningaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PiumaES.xml" />
 		<None Remove="Servicos\Config\NFSe\PomerodeSC.xml" />
@@ -611,6 +614,7 @@
 		<None Remove="Servicos\Config\NFSe\TaioSC.xml" />
 		<None Remove="Servicos\Config\NFSe\TangaraDaSerraMT.xml" />
 		<None Remove="Servicos\Config\NFSe\TaperaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\TaquaritingaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaquaritubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaubateSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
@@ -642,6 +646,7 @@
 		<None Remove="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VoltaRedondaRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\VotorantimSP.xml" />
 		<None Remove="Servicos\Config\NFSe\VotuporangaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\Webfisco.xml" />
 		<None Remove="Servicos\Config\NFSe\XangriLaRS.xml" />
@@ -1407,6 +1412,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmericanaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AnapolisGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AngraDosReisRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AracatubaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArroioDoMeioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaceresMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
@@ -1417,6 +1423,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IndaiatubaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JacareiSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LinharesES.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\LinsSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MacaeRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ManhuacuMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MaracanauCE.xml" />
@@ -1424,6 +1431,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParagominasPA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiraiRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PirassunungaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiumaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDoParaisoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDoRioClaroMT.xml" />
@@ -1596,6 +1604,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaiobeirasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TangaraDaSerraMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TapejaraRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquaritingaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresopolisRJ.xml" />
@@ -1808,6 +1817,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VianaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ViscondeDoRioBrancoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VitoriaES.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\VotorantimSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VotuporangaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\Webfisco.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
