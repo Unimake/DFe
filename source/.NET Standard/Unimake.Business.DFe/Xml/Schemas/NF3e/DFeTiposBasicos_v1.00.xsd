@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2008 (http://www.altova.com) by sas-softwares@procergs.rs.gov.br (PROCERGS) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nf3e="http://www.portalfiscal.inf.br/nf3e" targetNamespace="http://www.portalfiscal.inf.br/nf3e" elementFormDefault="qualified" attributeFormDefault="unqualified">	
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nf3e="http://www.portalfiscal.inf.br/nf3e" targetNamespace="http://www.portalfiscal.inf.br/nf3e" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:simpleType name="TStringRTC">
 		<xs:annotation>
 			<xs:documentation>Tipo string genérico</xs:documentation>
@@ -553,30 +553,30 @@
 			</xs:annotation>
 			<xs:sequence minOccurs="0">
 				<xs:element name="qBCMono" type="nf3e:TDec_1104Op">
-				<xs:annotation>
+					<xs:annotation>
 						<xs:documentation>Quantidade tributada na monofasia</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="adRemIBS" type="nf3e:TDec_0302_04">
-				<xs:annotation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="adRemIBS" type="nf3e:TDec_0302_04">
+					<xs:annotation>
 						<xs:documentation>Alíquota ad rem do IBS</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="adRemCBS" type="nf3e:TDec_0302_04">
-				<xs:annotation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="adRemCBS" type="nf3e:TDec_0302_04">
+					<xs:annotation>
 						<xs:documentation>Alíquota ad rem da CBS</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="vIBSMono" type="nf3e:TDec1302">
-				<xs:annotation>
-					<xs:documentation>Valor do IBS monofásico</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="vCBSMono" type="nf3e:TDec1302">
-				<xs:annotation>
-					<xs:documentation>Valor da CBS monofásica</xs:documentation>
-				</xs:annotation>
-			</xs:element>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="vIBSMono" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor do IBS monofásico</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="vCBSMono" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor da CBS monofásica</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 			</xs:sequence>
 			<xs:sequence minOccurs="0">
 				<xs:element name="qBCMonoReten" type="nf3e:TDec_1104Op">
@@ -747,6 +747,11 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="vIBS" type="nf3e:TDec1302" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Valor do IBS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="gCBS">
 				<xs:annotation>
 					<xs:documentation>Grupo de Tributação da CBS</xs:documentation>
@@ -873,8 +878,10 @@
 		<xs:sequence>
 			<xs:element name="vDevTrib" type="nf3e:TDec1302">
 				<xs:annotation>
-					<xs:documentation>Valor do tributo devolvido. No fornecimento de energia elétrica, água, esgoto e
-gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
+					<xs:documentation>
+						Valor do tributo devolvido. No fornecimento de energia elétrica, água, esgoto e
+						gás natural e em outras hipóteses definidas no regulamento
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -966,11 +973,13 @@ gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
 		<xs:sequence>
 			<xs:element name="tpEnteGov" type="nf3e:TEnteGov">
 				<xs:annotation>
-					<xs:documentation>Para administração pública direta e suas autarquias e fundações:
-1=União
-2=Estados
-3=Distrito Federal
-4=Municípios</xs:documentation>
+					<xs:documentation>
+						Para administração pública direta e suas autarquias e fundações:
+						1=União
+						2=Estados
+						3=Distrito Federal
+						4=Municípios
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="pRedutor" type="nf3e:TDec_0302_04">
@@ -988,11 +997,13 @@ gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
 		<xs:sequence>
 			<xs:element name="tpEnteGov" type="nf3e:TEnteGov">
 				<xs:annotation>
-					<xs:documentation>Para administração pública direta e suas autarquias e fundações:
-1=União
-2=Estados
-3=Distrito Federal
-4=Municípios</xs:documentation>
+					<xs:documentation>
+						Para administração pública direta e suas autarquias e fundações:
+						1=União
+						2=Estados
+						3=Distrito Federal
+						4=Municípios
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="pRedutor" type="nf3e:TDec_0302_04">
@@ -1002,9 +1013,11 @@ gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
 			</xs:element>
 			<xs:element name="tpOperGov" type="nf3e:TOperCompraGov">
 				<xs:annotation>
-					<xs:documentation>Tipo da operação com ente governamental:
-1 - Fornecimento
-2 - Recebimento do Pagamento</xs:documentation>
+					<xs:documentation>
+						Tipo da operação com ente governamental:
+						1 - Fornecimento
+						2 - Recebimento do Pagamento
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -1034,13 +1047,14 @@ gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
 			<xs:element name="tpCredPresIBSZFM" type="nf3e:TTpCredPresIBSZFM">
 				<xs:annotation>
 					<xs:documentation>Classificação de acordo com o art. 450, § 1º, da LC 214/25 para o cálculo do crédito presumido na ZFM</xs:documentation>
-					<xs:documentation>0 - Sem crédito presumido;
-1 - Bens de consumo final (55%);
-2 - Bens de capital (75%);
-3 - Bens intermediários (90,25%);
-4 - Bens de informática e outros definidos em legislação (100%).
-OBS: Percentuais definidos no art. 450, § 1º, da LC 214/25 para o cálculo do crédito presumido
-</xs:documentation>
+					<xs:documentation>
+						0 - Sem crédito presumido;
+						1 - Bens de consumo final (55%);
+						2 - Bens de capital (75%);
+						3 - Bens intermediários (90,25%);
+						4 - Bens de informática e outros definidos em legislação (100%).
+						OBS: Percentuais definidos no art. 450, § 1º, da LC 214/25 para o cálculo do crédito presumido
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="vCredPresIBSZFM" type="nf3e:TDec1302" minOccurs="0">
