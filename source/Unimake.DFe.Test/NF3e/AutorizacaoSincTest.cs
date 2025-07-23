@@ -739,7 +739,7 @@ namespace Unimake.DFe.Test.NF3e
         [Theory]
         [Trait("DFe", "NF3e")]
         [InlineData(TipoAmbiente.Homologacao, @"..\..\..\NF3e\Resources\NF3e_RTC.xml")]
-        public void EnviarNF3e_RTC(TipoAmbiente tipoAmbiente, string arqXML)
+        public void ValidarNF3eReformaTributaria(TipoAmbiente tipoAmbiente, string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
             
