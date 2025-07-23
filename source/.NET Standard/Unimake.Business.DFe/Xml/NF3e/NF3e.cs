@@ -2557,6 +2557,22 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public GIBSMun GIBSMun { get; set; }
 
         /// <summary>
+        /// Valor do IBS (soma de vIBSUF e vIBSMun)
+        /// </summary>
+        [XmlIgnore]
+        public double VIBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VIBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vIBS")]
+        public string VIBSField
+        {
+            get => VIBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
         /// Grupo de informações da CBS
         /// </summary>
         [XmlElement("gCBS")]
@@ -2586,6 +2602,12 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// </summary>
         [XmlElement("gTribCompraGov")]
         public GTribCompraGov GTribCompraGov { get; set; }
+
+        #region Should Serialize
+
+        public bool ShouldSerializeVIBSField() => VIBS > 0;
+
+        #endregion Should Serialize
     }
 
     /// <summary>

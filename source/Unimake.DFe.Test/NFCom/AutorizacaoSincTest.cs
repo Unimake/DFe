@@ -521,5 +521,32 @@ namespace Unimake.DFe.Test.NFCom
 
             return xml;
         }
+
+
+        [Theory]
+        [Trait("DFe", "NFCom")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
+        public void EnviarNFCom_RTC(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var arqXML = "..\\..\\..\\NFCom\\Resources\\nfcom_completa_rtc.xml";
+
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
+
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFCom.NFCom>(conteudoXML.OuterXml);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCom,
+                CodigoUF = (int)ufBrasil,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacaoSincNFCom = new AutorizacaoSinc(xml, configuracao);
+        }
     }
 }
