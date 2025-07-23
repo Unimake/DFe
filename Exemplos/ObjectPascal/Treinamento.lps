@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="16" Y="9"/>
-        <UsageCount Value="87"/>
+        <UsageCount Value="93"/>
       </Unit>
       <Unit>
         <Filename Value="main.pas"/>
@@ -19,9 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <TopLine Value="97"/>
-        <CursorPos X="3" Y="143"/>
-        <UsageCount Value="87"/>
+        <TopLine Value="56"/>
+        <CursorPos Y="82"/>
+        <UsageCount Value="93"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -32,27 +32,25 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="26597"/>
         <CursorPos X="37" Y="26598"/>
-        <UsageCount Value="78"/>
+        <UsageCount Value="84"/>
       </Unit>
       <Unit>
         <Filename Value="consultarstatusnfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarStatusNFe"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="44"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="18"/>
         <CursorPos X="47" Y="61"/>
-        <UsageCount Value="76"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="82"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfesincrono.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFeSincrono"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="74"/>
         <CursorPos X="28" Y="97"/>
-        <UsageCount Value="75"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="81"/>
       </Unit>
       <Unit>
         <Filename Value="imprimirdanfecomunidanfe.pas"/>
@@ -61,7 +59,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="57"/>
         <CursorPos X="7" Y="90"/>
-        <UsageCount Value="38"/>
+        <UsageCount Value="44"/>
       </Unit>
       <Unit>
         <Filename Value="main.lfm"/>
@@ -95,12 +93,10 @@
       <Unit>
         <Filename Value="enviarnfesincronodesserializacao.pas"/>
         <UnitName Value="EnviarNFeSincronoDesserializacao"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="86"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="87"/>
         <CursorPos Y="101"/>
         <UsageCount Value="13"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfesincronoduplicidade.pas"/>
@@ -111,10 +107,11 @@
       <Unit>
         <Filename Value="consultarsituacaonfe.pas"/>
         <UnitName Value="ConsultarSituacaoNFe"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="59"/>
-        <CursorPos X="39" Y="71"/>
-        <UsageCount Value="11"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="48"/>
+        <CursorPos X="51" Y="57"/>
+        <UsageCount Value="13"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="D:\lazarus\lcl\interfaces\win32\win32callback.inc"/>
@@ -126,10 +123,11 @@
       <Unit>
         <Filename Value="eventocancelamentonfe.pas"/>
         <UnitName Value="EventoCancelamentoNFe"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="56"/>
-        <CursorPos X="32" Y="72"/>
-        <UsageCount Value="11"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="83"/>
+        <CursorPos X="11" Y="125"/>
+        <UsageCount Value="13"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="main.lrs"/>
@@ -166,127 +164,137 @@
         <CursorPos Y="64"/>
         <UsageCount Value="8"/>
       </Unit>
+      <Unit>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <UnitName Value="EnviarNFCeSincrono"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="29"/>
+        <CursorPos X="47" Y="307"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="85" TopLine="70"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="300" TopLine="256"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="86" TopLine="70"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="303" TopLine="259"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="88" TopLine="70"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="304" TopLine="260"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="91" TopLine="77"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="307" TopLine="263"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="92" TopLine="77"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="66" TopLine="40"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="95" TopLine="80"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="53" TopLine="40"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="96" TopLine="80"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="338" TopLine="289"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="99" TopLine="83"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="53" TopLine="27"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="102" TopLine="83"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="338" TopLine="289"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="105" TopLine="88"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="302" Column="22" TopLine="289"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="108" TopLine="94"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="307" TopLine="266"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="111" TopLine="94"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="55" TopLine="29"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="112" TopLine="94"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="204" TopLine="178"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="113" TopLine="94"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="148" Column="100" TopLine="112"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="112" TopLine="94"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="55" TopLine="29"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="115" TopLine="95"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="204" TopLine="178"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="116" TopLine="99"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="150" Column="30" TopLine="128"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="118" TopLine="99"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="55" TopLine="29"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="121" TopLine="110"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="204" TopLine="178"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="122" TopLine="110"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="176" TopLine="158"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="125" TopLine="110"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="55" TopLine="29"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="126" TopLine="110"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="202" TopLine="176"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="129" TopLine="116"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="305" TopLine="279"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="132" TopLine="116"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="308" TopLine="279"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="135" TopLine="116"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="311" TopLine="279"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="138" TopLine="118"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="314" TopLine="279"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="139" TopLine="119"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="315" TopLine="279"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="142" TopLine="125"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="318" TopLine="279"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="143" TopLine="125"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="319" TopLine="279"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="98" TopLine="86"/>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="48" Column="39" TopLine="43"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -323,6 +331,27 @@
         <WatchKind Value="wpkWrite"/>
         <Source Value="enviarnfesincronodesserializacao.pas"/>
         <Line Value="98"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="enviarnfcesincrono.pas"/>
+        <Line Value="202"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="enviarnfcesincrono.pas"/>
+        <Line Value="55"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="enviarnfcesincrono.pas"/>
+        <Line Value="305"/>
       </Item>
     </BreakPoints>
     <Watches>

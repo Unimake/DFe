@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComObj,
   ConsultarStatusNFe, EnviarNFeSincrono, EnviarNFeSincronoDuplicidade,
   EnviarNFeSincronoDesserializacao, ConsultarSituacaoNFe, EventoCancelamentoNFe,
-  ImprimirDANFEcomUniDANFE, ConsultarDistribuicaoDFe, EnviarEventoManifestacaoNFe;
+  ImprimirDANFEcomUniDANFE, ConsultarDistribuicaoDFe, EnviarEventoManifestacaoNFe, EnviarNFCeSincrono;
 
 type
 
@@ -16,6 +16,7 @@ type
 
   TfrmPrincipal = class(TForm)
     btnConsultaStatusNFe: TButton;
+    btnEnviarNFCeSincrono: TButton;
     btnEnviarNFeSincrono: TButton;
     btnEnviarNFeSincronoDesserializacao: TButton;
     btnEnviarNFeSincronoDuplicidade: TButton;
@@ -25,10 +26,12 @@ type
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
+    GroupBox2: TGroupBox;
     procedure btnConsultarDistribuicaoDFeChange(Sender: TObject);
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
     procedure btnConsultaStatusNFeClick(Sender: TObject);
     procedure btnEnviarEventoManifestacaoNFeChange(Sender: TObject);
+    procedure btnEnviarNFCeSincronoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoDesserializacaoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoDuplicidadeClick(Sender: TObject);
@@ -36,6 +39,7 @@ type
     procedure btnImprimirDANFEcomUniDANFEClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox1Click(Sender: TObject);
+
   private
 
   public
@@ -70,6 +74,17 @@ begin
   finally
   end;
 end;
+
+procedure TfrmPrincipal.btnEnviarNFCeSincronoClick(Sender: TObject);
+var
+  oServico: TEnviarNFCeSincrono;
+begin
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
 
 procedure TfrmPrincipal.btnConsultarSituacaoNFeClick(Sender: TObject);
 var
@@ -147,5 +162,6 @@ procedure TfrmPrincipal.GroupBox1Click(Sender: TObject);
 begin
 
 end;
+
 
 end.
