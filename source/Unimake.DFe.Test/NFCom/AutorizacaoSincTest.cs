@@ -526,7 +526,7 @@ namespace Unimake.DFe.Test.NFCom
         [Theory]
         [Trait("DFe", "NFCom")]
         [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
-        public void EnviarNFCom_RTC(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        public void ValidarNFComReformaTributaria(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             var arqXML = "..\\..\\..\\NFCom\\Resources\\nfcom_completa_rtc.xml";
 
