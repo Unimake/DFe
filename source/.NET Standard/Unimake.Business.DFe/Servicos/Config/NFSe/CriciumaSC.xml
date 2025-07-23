@@ -14,7 +14,7 @@
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>EnviarLoteRpsResposta</WebTagRetorno>
+			<WebTagRetorno>EnviarLoteRpsEnvioResponse</WebTagRetorno>
 			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -33,7 +33,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>CancelarNfseReposta</WebTagRetorno>
+			<WebTagRetorno>CancelarNfseEnvioResponse</WebTagRetorno>
 			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -52,7 +52,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarLoteRpsResposta</WebTagRetorno>
+			<WebTagRetorno>ns2:ConsultarLoteRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -71,7 +71,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarNfseRpsResposta</WebTagRetorno>
+			<WebTagRetorno>ConsultarNfseRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -90,11 +90,30 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarNfseResposta</WebTagRetorno>
+			<WebTagRetorno>ConsultarNfseEnvioResponse</WebTagRetorno>
 			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
 			<WebSoapVersion>c</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://www.betha.com.br/e-nota-contribuinte-ws</TargetNS>
 		</ConsultarNfse>
+		<ConsultarSituacaoLoteRps versao="1.00">
+			<Descricao>Consultar Situação Lote Rps</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/rps/ws/consultarSituacaoLoteRps</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>https://nota-eletronica.betha.cloud/rps/ws/consultarSituacaoLoteRps#consultarSituacaoLoteRpsEnvioService</WebActionProducao>
+			<SchemaArquivo>servico_consultar_situacao_lote_rps_envio_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>c</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.betha.com.br/e-nota-contribuinte-ws</TargetNS>
+		</ConsultarSituacaoLoteRps>
 	</Servicos>
 </Configuracoes>
