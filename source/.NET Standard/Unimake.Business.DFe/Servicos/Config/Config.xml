@@ -2285,4 +2285,10 @@
 		<ArqConfig>VotorantimSP.xml</ArqConfig>
 		<PadraoNFSe>ISSONLINE_ASSESSORPUBLICO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4204608">
+		<Nome>Criciúma - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>CriciumaSC.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

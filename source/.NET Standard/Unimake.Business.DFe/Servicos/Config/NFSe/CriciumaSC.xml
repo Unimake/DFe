@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/rps/ws/recepcionarLoteRps</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>https://nota-eletronica.betha.cloud/rps/ws/recepcionarLoteRps#EnviarLoteRpsEnvioService</WebActionProducao>
+			<SchemaArquivo>servico_enviar_lote_rps_envio_v01.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.betha.com.br/e-nota-contribuinte-ws</TargetNS>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/rps/ws/cancelarNfse</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>https://nota-eletronica.betha.cloud/rps/ws/cancelarNfse#CancelarNfseEnvioService</WebActionProducao>
+			<SchemaArquivo>servico_cancelar_nfse_envio_v01.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.betha.com.br/e-nota-contribuinte-ws</TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/rps/ws/consultarLoteRpsV110</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>https://nota-eletronica.betha.cloud/rps/ws/consultarLoteRpsV110#ConsultarLoteRpsV110EnvioService</WebActionProducao>
+			<SchemaArquivo>servico_consultar_lote_rps_envio_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.betha.com.br/e-nota-contribuinte-ws</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/rps/ws/consultarNfsePorRpsV110</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>https://nota-eletronica.betha.cloud/rps/ws/consultarNfsePorRpsV110#ConsultarNfsePorRpsV110EnvioService</WebActionProducao>
+			<SchemaArquivo>servico_consultar_nfse_rps_envio_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.betha.com.br/e-nota-contribuinte-ws</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consulta NFSe</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/rps/ws/consultarNfseV110</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>https://nota-eletronica.betha.cloud/rps/ws/consultarNfseV110#ConsultarNfseV110EnvioService</WebActionProducao>
+			<SchemaArquivo>servico_consultar_nfse_envio_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>c</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.betha.com.br/e-nota-contribuinte-ws</TargetNS>
+		</ConsultarNfse>
+	</Servicos>
+</Configuracoes>

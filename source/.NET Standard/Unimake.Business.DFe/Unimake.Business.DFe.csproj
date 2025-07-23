@@ -390,6 +390,7 @@
 		<None Remove="Servicos\Config\NFSe\CorumbaMS.xml" />
 		<None Remove="Servicos\Config\NFSe\CosmoramaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CotiaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\CriciumaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CristalinaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CrominiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CruzAltaRS.xml" />
@@ -1415,6 +1416,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AracatubaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArroioDoMeioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaceresMT.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CriciumaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DracenaSP.xml" />

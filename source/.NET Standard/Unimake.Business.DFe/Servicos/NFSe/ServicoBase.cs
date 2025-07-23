@@ -388,7 +388,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             //São José dos Pinhais - PR     |GINFES
             //Varginha - MG                 |BETHA
             //Fortaleza - CE                |GINFES
-            if (Configuracoes.CodigoMunicipio != 4125506 || Configuracoes.CodigoMunicipio != 3170701 || Configuracoes.CodigoMunicipio != 2304400)
+            //Criciúma - SC                 |BETHA
+            if (Configuracoes.CodigoMunicipio != 4125506 || Configuracoes.CodigoMunicipio != 3170701 || Configuracoes.CodigoMunicipio != 2304400 || Configuracoes.CodigoMunicipio != 4204608)
             {
                 Configuracoes.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), Configuracoes.PadraoNFSe.ToString());
             }
