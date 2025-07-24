@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tcLoteCancelamento>
+	<tsCodCadBic>1</tsCodCadBic>
+	<tsChvAcs>VKW75CTCJR07MQ4H3JDG13X8Q8AA9W</tsChvAcs>
+	<tsVrsArq>4</tsVrsArq>
+	<tcNotCan>
+		<tcInfNotCan>
+			<tsNumNot>6</tsNumNot>
+			<tsCodVer>CT1J1TYXOE</tsCodVer>
+			<tsDesMotCan>teste cancelamento webservice.</tsDesMotCan>
+		</tcInfNotCan>
+	</tcNotCan>
+</tcLoteCancelamento>
+ 

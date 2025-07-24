@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tcLoteRps>
+	<tsCodCadBic>02</tsCodCadBic>
+	<tsVrsArq>4</tsVrsArq>
+	<tsChvAcs>RCTN9OX1Q5K8T05CM5GKU7WJEY3DXY</tsChvAcs>
+	<tcRps>
+		<tcInfRps>
+			<tsNumRps>2</tsNumRps>
+			<tsCodVer>F2Z6HZPBGW</tsCodVer>
+			<tsVrsImp>5</tsVrsImp>
+			<tsNumDocTmd>12345678909</tsNumDocTmd>
+			<tsInsEstTmd>Isento</tsInsEstTmd>
+			<tsInsMunTmd/>
+			<tsNomTmd>Nome do Tomador do Serviço</tsNomTmd>
+			<tsDesEndTmd>Av. Brasil, 10</tsDesEndTmd>
+			<tsNomBaiTmd>Bairro Central</tsNomBaiTmd>
+			<tsNomCidTmd>Município A</tsNomCidTmd>
+			<tsCodEstTmd>MG</tsCodEstTmd>
+			<tsTlfTmd>1122223333</tsTlfTmd>
+			<tsCEPTmd>38400684</tsCEPTmd>
+			<tsEmlTmd/>
+			<tsCodAti>902</tsCodAti>
+			<tsPerAlq>2</tsPerAlq>
+			<tsRegRec>0</tsRegRec>
+			<tsFrmRec>0</tsFrmRec>
+			<tsMesCmp>2</tsMesCmp>
+			<tsAnoCmp>2018</tsAnoCmp>
+			<tsDatEmsRps>20180205</tsDatEmsRps>
+			<tsVlrRep>0</tsVlrRep>
+			<tsVlrDed>0</tsVlrDed>
+			<tsVlrDsc>0</tsVlrDsc>
+			<tsVlrPIS>0</tsVlrPIS>
+			<tsVlrCOFINS>0</tsVlrCOFINS>
+			<tsVlrINSS>0</tsVlrINSS>
+			<tsVlrIR>0</tsVlrIR>
+			<tsVlrCSLL>0</tsVlrCSLL>
+			<tsVlrOtrRtn>0</tsVlrOtrRtn>
+			<tsDesOtrRtn/>
+			<tsObs>Informe aqui a observação quando houver.</tsObs>
+			<tsEstServ>31</tsEstServ>
+			<tsMunSvc>3148004</tsMunSvc>
+			<tcItensRps>
+				<tcItemRps>
+					<tsSeqItem>1</tsSeqItem>
+					<tsDesSvc>Descrição do item 01</tsDesSvc>
+					<tsVlrUnt>100,00</tsVlrUnt>
+				</tcItemRps>
+				<tcItemRps>
+					<tsSeqItem>2</tsSeqItem>
+					<tsDesSvc>Descrição do item 02</tsDesSvc>
+					<tsVlrUnt>200,00</tsVlrUnt>
+				</tcItemRps>
+			</tcItensRps>
+		</tcInfRps>
+	</tcRps>
+</tcLoteRps>
+ 
