@@ -2291,4 +2291,10 @@
 		<ArqConfig>CriciumaSC.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3148004">
+		<Nome>Patos de Minas - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>PatosDeMinasMG.xml</ArqConfig>
+		<PadraoNFSe>PUBLICENTER</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

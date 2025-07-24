@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://ws.patosdeminas.mg.gov.br/eSiat.asmx?WSDL</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/RecepcionarLoteRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>application/soap+xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:RecepcionarLoteRps><tem:pArquivoXML>{xmlBodyScape}</tem:pArquivoXML></tem:RecepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
+		<GerarNfse versao="1.00">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://ws.patosdeminas.mg.gov.br/eSiat.asmx?WSDL</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/RecepcionarNFSe</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>application/soap+xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:RecepcionarNFSe><tem:pArquivoXML>{xmlBodyScape}</tem:pArquivoXML></tem:RecepcionarNFSe></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RecepcionarNFSeResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS></TargetNS>
+		</GerarNfse>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://ws.patosdeminas.mg.gov.br/eSiat.asmx?WSDL</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/RecepcionarConsultaRPS</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>application/soap+xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:RecepcionarConsultaRPS><tem:pArquivoXML>{xmlBodyScape}</tem:pArquivoXML></tem:RecepcionarConsultaRPS></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RecepcionarConsultaRPSResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS></TargetNS>
+		</ConsultarNfsePorRps>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://ws.patosdeminas.mg.gov.br/eSiat.asmx?WSDL</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/RecepcionarLoteNotasCanceladas</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>application/soap+xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:RecepcionarLoteNotasCanceladas><tem:pArquivoXML>{xmlBodyScape}</tem:pArquivoXML></tem:RecepcionarLoteNotasCanceladas></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RecepcionarLoteNotasCanceladasResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS></TargetNS>
+		</CancelarNfse>
+	</Servicos>
+</Configuracoes>

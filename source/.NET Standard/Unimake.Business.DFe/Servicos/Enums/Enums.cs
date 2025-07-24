@@ -7203,6 +7203,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("INTERSOL")]
         INTERSOL = 82,
+
+        ///<summary>
+        ///PUBLICENTER
+        /// </summary>
+        [Description("PUBLICENTER")]
+        PUBLICENTER = 83,
     }
 
     #endregion
