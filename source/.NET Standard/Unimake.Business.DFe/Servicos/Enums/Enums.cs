@@ -7209,6 +7209,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("PUBLICENTER")]
         PUBLICENTER = 83,
+
+        /// <summary>
+        /// LEXSOM
+        /// </summary>
+        [Description("LEXSOM")]
+        LEXSOM = 84,
     }
 
     #endregion

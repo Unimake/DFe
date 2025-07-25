@@ -417,6 +417,7 @@
 		<None Remove="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\FormosaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\FortalezaCE.xml" />
+		<None Remove="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
 		<None Remove="Servicos\Config\NFSe\FrancaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GaranhunsPE.xml" />
 		<None Remove="Servicos\Config\NFSe\GarcaSP.xml" />
@@ -1226,6 +1227,8 @@
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\xmldsig-core-schema20020212_v1.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\LEXSOM\NFSE.xsd" />
+		<None Remove="Xml\Schemas\NFSe\LEXSOM\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MEGASOFT\nfse_v01.xsd" />
@@ -1423,6 +1426,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DracenaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EunapolisBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EusebioCE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IndaiatubaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JacareiSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LinharesES.xml" />
@@ -3259,6 +3263,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\INTERSOL\xmldsig-core-schema20020212_v1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\LEXSOM\NFSE.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\LEXSOM\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MEGASOFT\nfse_v01.xsd" />

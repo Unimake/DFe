@@ -2297,4 +2297,10 @@
 		<ArqConfig>PatosDeMinasMG.xml</ArqConfig>
 		<PadraoNFSe>PUBLICENTER</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4108304">
+		<Nome>Foz do Iguaçu - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>FozDoIguacuPR.xml</ArqConfig>
+		<PadraoNFSe>LEXSOM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
