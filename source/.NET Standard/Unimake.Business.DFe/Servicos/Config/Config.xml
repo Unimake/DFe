@@ -2314,5 +2314,17 @@
 		<UF>MG</UF>
 		<ArqConfig>AlemParaibaMG.xml</ArqConfig>
 		<PadraoNFSe>PORTAL_FACIL</PadraoNFSe>
+	</Arquivo>3
+	<Arquivo ID="3515004">
+		<Nome>Embu das Artes - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>EmbuDasArtesSP.xml</ArqConfig>
+		<PadraoNFSe>GIAP</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3549102">
+		<Nome>São João da Boa Vista - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoJoaoDaBoaVistaSP.xml</ArqConfig>
+		<PadraoNFSe>GIAP</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
