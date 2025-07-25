@@ -2309,4 +2309,10 @@
 		<ArqConfig>MaracaiSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3101508">
+		<Nome>Além Paraíba - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>AlemParaibaMG.xml</ArqConfig>
+		<PadraoNFSe>PORTAL_FACIL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
