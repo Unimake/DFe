@@ -2602,12 +2602,6 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// </summary>
         [XmlElement("gTribCompraGov")]
         public GTribCompraGov GTribCompraGov { get; set; }
-
-        #region Should Serialize
-
-        public bool ShouldSerializeVIBSField() => VIBS > 0;
-
-        #endregion Should Serialize
     }
 
     /// <summary>
