@@ -2303,4 +2303,10 @@
 		<ArqConfig>FozDoIguacuPR.xml</ArqConfig>
 		<PadraoNFSe>LEXSOM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3528809">
+		<Nome>Maracaí - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>MaracaiSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
