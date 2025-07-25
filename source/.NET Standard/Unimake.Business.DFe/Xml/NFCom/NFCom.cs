@@ -1680,12 +1680,6 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         [XmlElement("gTribCompraGov")]
         public GTribCompraGov GTribCompraGov { get; set; }
-
-        #region Should Serialize
-
-        public bool ShouldSerializeVIBSField() => VIBS > 0;
-
-        #endregion Should Serialize
     }
 
 #if INTEROP

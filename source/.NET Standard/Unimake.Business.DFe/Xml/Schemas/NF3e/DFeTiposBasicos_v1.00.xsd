@@ -747,7 +747,7 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="vIBS" type="nf3e:TDec1302" minOccurs="0">
+			<xs:element name="vIBS" type="nf3e:TDec1302">
 				<xs:annotation>
 					<xs:documentation>Valor do IBS</xs:documentation>
 				</xs:annotation>
