@@ -1,0 +1,15 @@
+Como montar o link para pegar o PDF da NFSe:
+
+-----------------------------------------------------------------------------------------------------------
+Municipío de Foz do Iguaçu-PR
+-----------------------------------------------------------------------------------------------------------
+http://nfse.pmfi.pr.gov.br/nfseweb/NFSERelatorios/ImprimirNFSe?nfse=?????&codigo=???????
+
+Onde está:
+
+?nfse=?????     mudar para    ?nfse=12345       onde 12345 é o numero da NFSe que vc obtem no retorno da autorização da nota.
+&codigo=???????      mudar para     &codigo=abCd43D      onde abCd43D é o código de autenticação que você obtem no retorno da autorização da nota.
+
+-----------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------
