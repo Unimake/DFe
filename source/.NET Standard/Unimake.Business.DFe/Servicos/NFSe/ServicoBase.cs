@@ -71,6 +71,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     AuthorizationBasic();
                     break;
 
+                case PadraoNFSe.GIAP:
+                    GIAP();
+                    break;
+
                 case PadraoNFSe.EL:
 
                     if (Configuracoes.SchemaVersao == "1.00")
@@ -379,6 +383,16 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
 
         #endregion EGOVERNEISS
+
+        #region GIAP
+
+        private void GIAP()
+        {
+            Configuracoes.MunicipioToken = Configuracoes.MunicipioUsuario + "-" + Configuracoes.MunicipioSenha;
+
+        }
+
+        #endregion GIAP
 
         #endregion Configurações separadas por PadrãoNFSe
 
