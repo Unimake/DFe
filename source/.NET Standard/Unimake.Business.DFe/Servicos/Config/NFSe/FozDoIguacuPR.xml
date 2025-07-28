@@ -14,7 +14,7 @@
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>application/soap+xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:RecebeLoteRPS><tem:xml>{xmlBody}</tem:xml></tem:RecebeLoteRPS></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>RecebeLoteRPSResponse</WebTagRetorno>
+			<WebTagRetorno>RecebeLoteRPSResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -33,7 +33,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>application/soap+xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:CancelamentoNFSE><tem:xml>{xmlBody}</tem:xml></tem:CancelamentoNFSE></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>CancelamentoNFSEResponse</WebTagRetorno>
+			<WebTagRetorno>CancelamentoNFSEResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -52,7 +52,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>application/soap+xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:ConsultarLoteRPS><tem:xml>{xmlBody}</tem:xml></tem:ConsultarLoteRPS></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarLoteRPSResponse</WebTagRetorno>
+			<WebTagRetorno>ConsultarLoteRPSResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -71,7 +71,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>application/soap+xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:ConsultarNFSEPorRPS><tem:xml>{xmlBody}</tem:xml></tem:ConsultarNFSEPorRPS></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarNFSEPorRPSResponse</WebTagRetorno>
+			<WebTagRetorno>ConsultarNFSEPorRPSResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -90,7 +90,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>application/soap+xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:ConsultaNFSE><tem:xml>{xmlBody}</tem:xml></tem:ConsultaNFSE></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultaNFSEResponse</WebTagRetorno>
+			<WebTagRetorno>ConsultaNFSEResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -109,7 +109,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>application/soap+xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:ConsultarSituacaoLoteRPS><tem:xml>{xmlBody}</tem:xml></tem:ConsultarSituacaoLoteRPS></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarSituacaoLoteRPSResponse</WebTagRetorno>
+			<WebTagRetorno>ConsultarSituacaoLoteRPSResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
