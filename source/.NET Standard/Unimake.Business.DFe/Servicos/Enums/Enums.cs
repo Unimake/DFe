@@ -7215,6 +7215,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("LEXSOM")]
         LEXSOM = 84,
+
+        ///<summary>
+        ///SUPERNOVA
+        /// </summary>
+        [Description("SUPERNOVA")]
+        SUPERNOVA = 85,
     }
 
     #endregion
