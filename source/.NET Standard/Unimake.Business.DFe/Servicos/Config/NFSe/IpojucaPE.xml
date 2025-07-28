@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeipo/WSNFSE.RecepcionarLoteRps.CLS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/IPOJUCA/WSNFSE.RecepcionarLoteRps.CLS</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.RecepcionarLoteRps.RecepcionarLoteRps</WebActionHomologacao>
+			<WebActionProducao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.RecepcionarLoteRps.RecepcionarLoteRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRps>{xmlBody}</nfse:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.tinus.com.br</TargetNS>
+		</RecepcionarLoteRps>
+		<ConsultarSituacaoLoteRps versao="1.00">
+			<Descricao>Consultar Situação Lote Rps</Descricao>
+			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeipo/WSNFSE.ConsultarSituacaoLoteRps.CLS?</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/IPOJUCA/WSNFSE.ConsultarSituacaoLoteRps.CLS</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.ConsultarSituacaoLoteRps.ConsultarSituacaoLoteRps</WebActionHomologacao>
+			<WebActionProducao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.ConsultarSituacaoLoteRps.ConsultarSituacaoLoteRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><ConsultarSituacaoLoteRps><Arg>{xmlBody}</Arg></ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarSituacaoLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.tinus.com.br</TargetNS>
+		</ConsultarSituacaoLoteRps>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeipo/WSNFSE.ConsultarLoteRps.CLS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/IPOJUCA/WSNFSE.ConsultarLoteRps.CLS</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.ConsultarLoteRps.ConsultarLoteRps</WebActionHomologacao>
+			<WebActionProducao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.ConsultarLoteRps.ConsultarLoteRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><ConsultarLoteRps><Arg>{xmlBody}</Arg></ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.tinus.com.br</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeipo/WSNFSE.ConsultarNfsePorRps.CLS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/IPOJUCA/WSNFSE.ConsultarNfsePorRps.CLS</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.ConsultarNfsePorRps.ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.ConsultarNfsePorRps.ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><ConsultarNfsePorRps><Arg>{xmlBody}</Arg></ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.tinus.com.br</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consultar NFSe</Descricao>
+			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeipo/WSNFSE.ConsultarNfse.CLS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/IPOJUCA/WSNFSE.ConsultarNfse.CLS</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.ConsultarNfse.ConsultarNfse</WebActionHomologacao>
+			<WebActionProducao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.ConsultarNfse.ConsultarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><ConsultarNfse><Arg>{xmlBody}</Arg></ConsultarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.tinus.com.br</TargetNS>
+		</ConsultarNfse>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeipo/WSNFSE.CancelarNfse.CLS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://www.tinus.com.br/csp/IPOJUCA/WSNFSE.CancelarNfse.CLS</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.CancelarNfse.CancelarNfse</WebActionHomologacao>
+			<WebActionProducao>http://www.abrasf.org.br/nfse.xsd/WSNFSE.CancelarNfse.CancelarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><CancelarNfse><Arg>{xmlBody}</Arg></CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.tinus.com.br</TargetNS>
+		</CancelarNfse>
+	</Servicos>
+</Configuracoes>

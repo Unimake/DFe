@@ -2327,4 +2327,10 @@
 		<ArqConfig>SaoJoaoDaBoaVistaSP.xml</ArqConfig>
 		<PadraoNFSe>GIAP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2607208">
+		<Nome>Ipojuca - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>IpojucaPE.xml</ArqConfig>
+		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
