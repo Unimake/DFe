@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<procInutNFe xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+	<inutNFe xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+		<infInut Id="ID35250000000000000065101000006493000006493">
+			<tpAmb>2</tpAmb>
+			<xServ>INUTILIZAR</xServ>
+			<cUF>35</cUF>
+			<ano>25</ano>
+			<CNPJ>00000000000000</CNPJ>
+			<mod>65</mod>
+			<serie>101</serie>
+			<nNFIni>6493</nNFIni>
+			<nNFFin>6493</nNFFin>
+			<xJust>Erro durante emissao NFC-e</xJust>
+		</infInut>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+				<Reference URI="#ID35250000000000000065101000006493000006493">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>xxxxxxxxxxxxxxxxxxxxxxxxxxx=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>woHYC6IKiq3XP2emrg3H1HZ4DEz0Rvkg/Rxçdkldkçdkdkkdkdksjdkrowelkeldsjkfsdçlk sfçlks çlskfçlsdkfslçd kfsç lkfsçd fçsld fçsld kfsd</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>SDFKSDKFSDÇLKFSÇDKFSDKFSDÇLFKSDÇFKSDÇFKSDÇFKSDÇLFKSDÇLFKSDÇFKÇSDLFSD=</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</inutNFe>
+	<retInutNFe versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infInut>
+			<tpAmb>2</tpAmb>
+			<verAplic>SP_NFCE_PL_009_V400</verAplic>
+			<cStat>102</cStat>
+			<xMotivo>Inutilização de número homologado</xMotivo>
+			<cUF>35</cUF>
+			<ano>25</ano>
+			<CNPJ>00000000000000</CNPJ>
+			<mod>65</mod>
+			<serie>101</serie>
+			<nNFIni>6493</nNFIni>
+			<nNFFin>6493</nNFFin>
+			<dhRecbto>2025-06-12T10:41:05-03:00</dhRecbto>
+			<nProt>000000000000000</nProt>
+		</infInut>
+	</retInutNFe>
+</procInutNFe>

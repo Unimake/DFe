@@ -20,14 +20,14 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable()]
     [XmlRoot("procInutNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
-    public class ProcInutNFe: XMLBase
+    public class ProcInutNFe : XMLBase
     {
         #region Public Fields
 
         /// <summary>
         /// Extensão final do arquivo de distribuição da inutilização
         /// </summary>
-        public const string ExtensaoDoArquivo = "-procinutnfe.xml";
+        private const string ExtensaoDoArquivo = "-procinutnfe.xml";
 
         #endregion Public Fields
 
@@ -74,7 +74,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             return xmlDocument;
         }
 
-        public string MontarNomeArquivo(string id) => id.Substring(2, id.Length - 2) + ExtensaoDoArquivo;
+        private string MontarNomeArquivo(string id) => id.Substring(2, id.Length - 2) + ExtensaoDoArquivo;
 
         #endregion Public Methods
     }
