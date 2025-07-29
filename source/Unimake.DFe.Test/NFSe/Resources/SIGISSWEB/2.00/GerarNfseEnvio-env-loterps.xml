@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<notafiscal>
+	<cnpj_cpf_prestador>99999999999999</cnpj_cpf_prestador>
+	<exterior_dest>0</exterior_dest>
+	<cnpj_cpf_destinatario>99999999999999</cnpj_cpf_destinatario>
+	<pessoa_destinatario>F</pessoa_destinatario>
+	<ie_destinatario>isento</ie_destinatario>
+	<im_destinatario>isento</im_destinatario>
+	<razao_social_destinatario>TESTE XML</razao_social_destinatario>
+	<endereco_destinatario>xxxxxxxxxxxx</endereco_destinatario>
+	<numero_ende_destinatario>1728</numero_ende_destinatario>
+	<complemento_ende_destinatario>CASA 48</complemento_ende_destinatario>
+	<bairro_destinatario>Centro</bairro_destinatario>
+	<cep_destinatario>99999999</cep_destinatario>
+	<cidade_destinatario>xxxxxxx</cidade_destinatario>
+	<uf_destinatario>SP</uf_destinatario>
+	<pais_destinatario>Brasil</pais_destinatario>
+	<fone_destinatario>(19) 0000-0000</fone_destinatario>
+	<email_destinatario>suporte@xxxxxxx.com</email_destinatario>
+	<valor_nf>1,00</valor_nf>
+	<deducao>0,00</deducao>
+	<valor_servico>1,00</valor_servico>
+	<data_emissao>23/06/2022</data_emissao>
+	<forma_de_pagamento/>
+	<descricao>MENSALIDADES REGULARES 02-2019/1 \r\n BOLSA E/OU DESCONTO CONCEDIDO 0,00% - VALOR A PAGAR R$ 1,00</descricao>
+	<id_codigo_servico>10.01</id_codigo_servico>
+	<cancelada>N</cancelada>
+	<iss_retido>N</iss_retido>
+	<aliq_iss>0,00</aliq_iss>
+	<valor_iss>0,00</valor_iss>
+	<bc_pis>0,00</bc_pis>
+	<aliq_pis>0,00</aliq_pis>
+	<valor_pis>0,00</valor_pis>
+	<bc_cofins>0,00</bc_cofins>
+	<aliq_cofins>0,00</aliq_cofins>
+	<valor_cofins>0,00</valor_cofins>
+	<bc_csll>0,00</bc_csll>
+	<aliq_csll>0,00</aliq_csll>
+	<valor_csll>0,00</valor_csll>
+	<bc_irrf>0,00</bc_irrf>
+	<aliq_irrf>0,00</aliq_irrf>
+	<valor_irrf>0,00</valor_irrf>
+	<bc_inss>0,00</bc_inss>
+	<aliq_inss>0,00</aliq_inss>
+	<valor_inss>0,00</valor_inss>
+	<sistema_gerador>nome do programa emissor</sistema_gerador>
+	<serie_rps>RP</serie_rps>
+	<rps>28449</rps>
+</notafiscal>
