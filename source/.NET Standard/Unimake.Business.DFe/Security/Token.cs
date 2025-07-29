@@ -185,10 +185,15 @@ namespace Unimake.Business.DFe.Security
             {
                 case (TipoAmbiente.Producao):
                     //Produção
-                    if(codMunicipio == 3526704)
+                    if(codMunicipio == 3526704) // Leme - SP
                     {
                         loginUrl = "https://wsleme.sigissweb.com/rest/login";
                     }
+                    if(codMunicipio == 3503307) //Araras - SP
+                    {
+                        loginUrl = "https://wslararas.sigissweb.com/rest/login";
+                    }
+
                     break;
 
                 case TipoAmbiente.Homologacao:

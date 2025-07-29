@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<GerarNfse versao="2.00">
+			<Descricao>Gerar NFSe</Descricao>
+			<RequestURIProducao>https://wslararas.sigissweb.com/rest/nfes</RequestURIProducao>
+			<RequestURIHomologacao>https://wshml2.sigissweb.com/rest/nfes</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebContentType>application/xml</WebContentType>
+			<LoginConexao>true</LoginConexao>
+		</GerarNfse>
+		<CancelarNfse versao="2.00">
+			<Descricao>Cancelamento de NFSe</Descricao>
+			<RequestURIProducao>https://wslararas.sigissweb.com/rest/nfes/cancela/{numeronf}/serie/{serie}/motivo/{motivo}</RequestURIProducao>
+			<RequestURIHomologacao>https://wshml2.sigissweb.com/rest/nfes/cancela/{numeronf}/serie/{serie}/motivo/{motivo}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebContentType>application/xml</WebContentType>
+			<LoginConexao>true</LoginConexao>
+		</CancelarNfse>
+		<ConsultarNfse versao="2.00">
+			<Descricao>Consulta XML da NFSe</Descricao>
+			<RequestURIProducao>https://wslararas.sigissweb.com/rest/nfes/pegaxml/{numerorps}/serierps/{serierps}</RequestURIProducao>
+			<RequestURIHomologacao>https://wshml2.sigissweb.com/rest/nfes/pegaxml/{numerorps}/serierps/{serierps}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebContentType>application/xml</WebContentType>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfse>
+		<ConsultarNfsePDF versao="2.00">
+			<Descricao>Consulta PDF da NFSe</Descricao>
+			<RequestURIProducao>https://wslararas.sigissweb.com/rest/nfes/nfimpressa/{numeronf}/serie/{serie}</RequestURIProducao>
+			<RequestURIHomologacao>https://wshml2.sigissweb.com/rest/nfes/nfimpressa/{numeronf}/serie/{serie}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebContentType>application/xml</WebContentType>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfsePDF>
+	</Servicos>
+</Configuracoes>

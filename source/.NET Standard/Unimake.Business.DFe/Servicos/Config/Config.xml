@@ -2345,4 +2345,10 @@
 		<ArqConfig>LemeSP.xml</ArqConfig>
 		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3503307">
+		<Nome>Araras - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ArarasSP.xml</ArqConfig>
+		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
