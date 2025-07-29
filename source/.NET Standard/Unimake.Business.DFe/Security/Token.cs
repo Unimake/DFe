@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Security
 {
@@ -89,11 +91,11 @@ namespace Unimake.Business.DFe.Security
                     response = request.GetResponse();
 
                 }
-                catch(WebException e)
+                catch (WebException e)
                 {
                     response = e.Response;
                 }
-                
+
                 var streamDados = response.GetResponseStream();
                 var reader = new StreamReader(streamDados);
                 result = reader.ReadToEnd();
@@ -165,5 +167,55 @@ namespace Unimake.Business.DFe.Security
             // retorna o valor criptografado como string
             return strBuilder.ToString();
         }
+
+        /// <summary>
+        /// Gera um token para o SIGISSWEB, utilizado para autenticação em serviços de NFSe.
+        /// </summary>
+        /// <param name="usuario">CNPJ</param>
+        /// <param name="senha">Senha gerada no site da prefeitura</param>
+        /// <param name="tipoAmbiente">Homologação ou Produção</param>
+        /// <param name="codMunicipio">Código do município que utiliza o padrão</param>
+        /// <returns>Token para autenticação</returns>
+        /// <exception cref="InvalidOperationException"></exception>
+        public static string GerarTokenSIGISSWEB(string usuario, string senha, TipoAmbiente tipoAmbiente, int codMunicipio)
+        {
+            var loginUrl = string.Empty;
+
+            switch (tipoAmbiente)
+            {
+                case (TipoAmbiente.Producao):
+                    //Produção
+                    if(codMunicipio == 3526704)
+                    {
+                        loginUrl = "https://wsleme.sigissweb.com/rest/login";
+                    }
+                    break;
+
+                case TipoAmbiente.Homologacao:
+                    //Homologação
+                    loginUrl = "https://wshml2.sigissweb.com/rest/login";
+                    break;
+            }
+
+            var payload = new { login = usuario, senha = senha };
+            var json = JsonConvert.SerializeObject(payload);
+
+            using (var client = new HttpClient())
+            using (var content = new StringContent(json, Encoding.UTF8, "application/json"))
+            {
+                var response = client.PostAsync(loginUrl, content).GetAwaiter().GetResult();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    throw new InvalidOperationException($"Falha ao gerar token SigissWeb: {error}");
+                }
+
+                var tokenRaw = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                return tokenRaw.Trim('\"');
+            }
+
+        }
+
     }
 }

@@ -87,10 +87,15 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 case PadraoNFSe.EGOVERNEISS:
                     EGOVERNEISS();
                     break;
+
+                case PadraoNFSe.SIGISSWEB:
+                    SIGISSWEB();
+                    break;
             }
             Configuracoes.Definida = true;
             base.DefinirConfiguracao();
         }
+
 
         private void HM2SOLUCOES()
         {
@@ -365,7 +370,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     break;
 
 
-                case Servico.NFSeCancelarNfse:                  
+                case Servico.NFSeCancelarNfse:
                     var chaveAutenticacao = GetXMLElementInnertext("ChaveAutenticacao");
                     var homologacao = GetXMLElementInnertext("Homologacao");
                     var motivo = string.Empty;
@@ -393,6 +398,60 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #endregion GIAP
+
+        #region SIGISSWEB
+        private void SIGISSWEB()
+        {
+            // Substituições de placeholders na URL
+            if (Configuracoes.RequestURI.Contains("{numeronf}"))
+            {
+                var numeroNf = GetXMLElementInnertext("numeronf");
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numeronf}", numeroNf);
+            }
+            if (Configuracoes.RequestURI.Contains("{serie}"))
+            {
+                var serie = GetXMLElementInnertext("serie");
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{serie}", serie);
+            }
+            if (Configuracoes.RequestURI.Contains("{motivo}"))
+            {
+                var motivo = GetXMLElementInnertext("motivo");
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{motivo}", motivo);
+            }
+            if (Configuracoes.RequestURI.Contains("{numerorps}"))
+            {
+                var numeroRps = GetXMLElementInnertext("NumeroRPS");
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numerorps}", numeroRps);
+            }
+            if (Configuracoes.RequestURI.Contains("{serierps}"))
+            {
+                var serieRps = GetXMLElementInnertext("Serie");
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{serierps}", serieRps);
+            }
+
+            // ─────────── Monta o corpo do POST só para emissão de NFSe ───────────
+            if (Configuracoes.Servico == Servico.NFSeGerarNfse)
+            {
+                Configuracoes.HttpContent = new StringContent(
+                    ConteudoXMLAssinado.OuterXml,
+                    Encoding.UTF8,
+                    Configuracoes.WebContentType  
+                );
+            }
+            else
+            {
+                Configuracoes.HttpContent = null;
+            }
+
+            var token = Token.GerarTokenSIGISSWEB(Configuracoes.MunicipioUsuario, Configuracoes.MunicipioSenha, Configuracoes.TipoAmbiente, Configuracoes.CodigoMunicipio);
+
+            if (!string.IsNullOrEmpty(token))
+            {
+                Configuracoes.MunicipioToken = token;
+            }            
+        }
+
+        #endregion SIGISSWEB
 
         #endregion Configurações separadas por PadrãoNFSe
 

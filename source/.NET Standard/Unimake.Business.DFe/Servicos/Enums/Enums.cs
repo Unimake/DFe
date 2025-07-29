@@ -7221,6 +7221,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("SUPERNOVA")]
         SUPERNOVA = 85,
+
+        ///<summary>
+        ///SIGISSWEB
+        /// </summary>
+        [Description("SIGISSWEB")]
+        SIGISSWEB = 86, 
     }
 
     #endregion

@@ -2339,4 +2339,10 @@
 		<ArqConfig>SabaraMG.xml</ArqConfig>
 		<PadraoNFSe>SUPERNOVA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3526704">
+		<Nome>Leme - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>LemeSP.xml</ArqConfig>
+		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
