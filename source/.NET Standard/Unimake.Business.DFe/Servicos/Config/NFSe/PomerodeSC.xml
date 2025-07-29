@@ -3,7 +3,7 @@
 	<Servicos ID="NFSe">
 		<GerarNfse versao="1.20">
 			<Descricao>Gerar NFSe</Descricao>
-			<RequestURIProducao>https://ws-pomerode.atende.net:7443/atende.php?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
+			<RequestURIProducao>https://ws-pomerode.atende.net/atende.php?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -18,7 +18,7 @@
 		</GerarNfse>
 		<CancelarNfse versao="1.20">
 			<Descricao>Evento de cancelamento da NFSe</Descricao>
-			<RequestURIProducao>https://ws-pomerode.atende.net:7443/atende.php?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
+			<RequestURIProducao>https://ws-pomerode.atende.net/atende.php?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -33,7 +33,7 @@
 		</CancelarNfse>
 		<ConsultarNfse versao="1.20">
 			<Descricao>Consulta da NFSe</Descricao>
-			<RequestURIProducao>https://ws-pomerode.atende.net:7443/atende.php?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
+			<RequestURIProducao>https://ws-pomerode.atende.net/atende.php?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
