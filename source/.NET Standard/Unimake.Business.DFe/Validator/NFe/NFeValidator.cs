@@ -703,38 +703,42 @@ namespace Unimake.Business.DFe.Validator.NFe
                 }
             }).ValidateTag(element => element.NameEquals(nameof(Ide.DhSaiEnt)) && element.Parent.NameEquals(nameof(Ide)), Tag =>
             {
+                var tpNF = Tag.Parent.GetValue("tpNF");
                 var mod = Tag.Parent.GetValue("mod");
 
-                if (mod == "65")
+                if (tpNF == "1") //Somente notas de saída terá esta validação, tem notas de entrada que é permitido a data de entrada ser menor que a emissão.
                 {
-                    ThrowHelper.Instance.Throw(new ValidatorDFeException(
-                        $"A data de entrada/saída, tag <dhSaiEnt>, não deve ser informada quando o modelo do documento fiscal, tag <mod>, for 65 (NFC-e). " +
-                        $"[TAG: <dhSaiEnt> do grupo de tag <NFe><infNFe><ide>]"));
-                }
-
-                var dhSaiEntStr = Tag.Value;
-                var dhEmiStr = Tag.Parent.GetValue("dhEmi");
-
-                if (!string.IsNullOrWhiteSpace(dhSaiEntStr) && !string.IsNullOrWhiteSpace(dhEmiStr))
-                {
-                    if (DateTime.TryParse(dhSaiEntStr, out var dhSaiEnt) && DateTime.TryParse(dhEmiStr, out var dhEmi))
-                    {
-                        var dhSaiEntTrunc = new DateTime(dhSaiEnt.Year, dhSaiEnt.Month, dhSaiEnt.Day, dhSaiEnt.Hour, 0, 0);
-                        var dhEmiTrunc = new DateTime(dhEmi.Year, dhEmi.Month, dhEmi.Day, dhEmi.Hour, 0, 0);
-
-                        if (dhSaiEntTrunc < dhEmiTrunc)
-                        {
-                            ThrowHelper.Instance.Throw(new ValidatorDFeException(
-                                $"A data/hora de saída/entrada <dhSaiEnt> não pode ser anterior à data/hora de emissão <dhEmi>. " +
-                                $"Valores informados: dhEmi = {dhEmi:O}, dhSaiEnt = {dhSaiEnt:O}. " +
-                                $"[TAGs: <dhEmi> e <dhSaiEnt> do grupo de tag <NFe><infNFe><ide>]"));
-                        }
-                    }
-                    else
+                    if (mod == "65")
                     {
                         ThrowHelper.Instance.Throw(new ValidatorDFeException(
-                            $"Erro ao interpretar as datas das tags <dhEmi> ou <dhSaiEnt>. Verifique se os valores estão em um formato de data/hora válido conforme o padrão ISO 8601. " +
-                            $"Valores encontrados: dhEmi = '{dhEmiStr}', dhSaiEnt = '{dhSaiEntStr}'"));
+                            $"A data de entrada/saída, tag <dhSaiEnt>, não deve ser informada quando o modelo do documento fiscal, tag <mod>, for 65 (NFC-e). " +
+                            $"[TAG: <dhSaiEnt> do grupo de tag <NFe><infNFe><ide>]"));
+                    }
+
+                    var dhSaiEntStr = Tag.Value;
+                    var dhEmiStr = Tag.Parent.GetValue("dhEmi");
+
+                    if (!string.IsNullOrWhiteSpace(dhSaiEntStr) && !string.IsNullOrWhiteSpace(dhEmiStr))
+                    {
+                        if (DateTime.TryParse(dhSaiEntStr, out var dhSaiEnt) && DateTime.TryParse(dhEmiStr, out var dhEmi))
+                        {
+                            var dhSaiEntTrunc = new DateTime(dhSaiEnt.Year, dhSaiEnt.Month, dhSaiEnt.Day, dhSaiEnt.Hour, 0, 0);
+                            var dhEmiTrunc = new DateTime(dhEmi.Year, dhEmi.Month, dhEmi.Day, dhEmi.Hour, 0, 0);
+
+                            if (dhSaiEntTrunc < dhEmiTrunc)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException(
+                                    $"A data/hora de saída/entrada <dhSaiEnt> não pode ser anterior à data/hora de emissão <dhEmi>. " +
+                                    $"Valores informados: dhEmi = {dhEmi:O}, dhSaiEnt = {dhSaiEnt:O}. " +
+                                    $"[TAGs: <dhEmi> e <dhSaiEnt> do grupo de tag <NFe><infNFe><ide>]"));
+                            }
+                        }
+                        else
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException(
+                                $"Erro ao interpretar as datas das tags <dhEmi> ou <dhSaiEnt>. Verifique se os valores estão em um formato de data/hora válido conforme o padrão ISO 8601. " +
+                                $"Valores encontrados: dhEmi = '{dhEmiStr}', dhSaiEnt = '{dhSaiEntStr}'"));
+                        }
                     }
                 }
             }).ValidateTag(element => element.NameEquals(nameof(Prod.CFOP)) && element.Parent.NameEquals(nameof(Prod)), Tag =>

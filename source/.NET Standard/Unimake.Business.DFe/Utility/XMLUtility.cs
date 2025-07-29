@@ -161,7 +161,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Dígito verificador</returns>
         public static int CalcularDVChave(string chave)
         {
-            if(chave is null)
+            if (chave is null)
             {
                 throw new ArgumentNullException(nameof(chave));
             }
@@ -171,7 +171,7 @@ namespace Unimake.Business.DFe.Utility
 
             chave = chave.Replace("NFe", "").Replace("CTe", "").Replace("MDFe", "");
 
-            if(chave.Length != 43)
+            if (chave.Length != 43)
             {
                 throw new Exception(string.Format("Erro na composição da chave [{0}] para obter o dígito verificador.", chave) + Environment.NewLine);
             }
@@ -180,13 +180,13 @@ namespace Unimake.Business.DFe.Utility
                 j = 0;
                 try
                 {
-                    for(i = 0; i < 43; ++i)
+                    for (i = 0; i < 43; ++i)
                     {
                         j += Convert.ToInt32(chave.Substring(i, 1)) * Convert.ToInt32(PESO.Substring(i, 1));
                     }
 
                     Digito = 11 - (j % 11);
-                    if((j % 11) < 2)
+                    if ((j % 11) < 2)
                     {
                         Digito = 0;
                     }
@@ -221,7 +221,7 @@ namespace Unimake.Business.DFe.Utility
         {
             #region Verificar o tamanho da chave
 
-            if(chave.Length != 44)
+            if (chave.Length != 44)
             {
                 throw new Exception("Tamanho da chave do documento fiscal eletrônico está diferente de 44 dígitos. Chave deve ter exatamente 44 dígitos.");
             }
@@ -232,7 +232,7 @@ namespace Unimake.Business.DFe.Utility
 
             var mes = Convert.ToInt32(chave.Substring(4, 2));
 
-            if(mes < 1 || mes > 12)
+            if (mes < 1 || mes > 12)
             {
                 throw new Exception("Mês da data de emissão, do documento fiscal eletrônico, que compõe a chave, está incorreto. Mês informado: " + mes.ToString() + ". Meses permitidos: 01 a 12.");
             }
@@ -243,15 +243,15 @@ namespace Unimake.Business.DFe.Utility
 
             var modeloDFe = Convert.ToInt32(chave.Substring(20, 2));
             var tipoEnum = typeof(ModeloDFe);
-            if(!Enum.IsDefined(tipoEnum, modeloDFe))
+            if (!Enum.IsDefined(tipoEnum, modeloDFe))
             {
                 var modeloPermitido = string.Empty;
 
-                foreach(var item in tipoEnum.GetFields())
+                foreach (var item in tipoEnum.GetFields())
                 {
-                    if(Attribute.GetCustomAttribute(item, typeof(XmlEnumAttribute)) is XmlEnumAttribute attribute)
+                    if (Attribute.GetCustomAttribute(item, typeof(XmlEnumAttribute)) is XmlEnumAttribute attribute)
                     {
-                        if(!string.IsNullOrEmpty(modeloPermitido))
+                        if (!string.IsNullOrEmpty(modeloPermitido))
                         {
                             modeloPermitido += ", ";
                         }
@@ -269,15 +269,15 @@ namespace Unimake.Business.DFe.Utility
 
             var tpEmis = Convert.ToInt32(chave.Substring(34, 1));
             tipoEnum = typeof(TipoEmissao);
-            if(!Enum.IsDefined(tipoEnum, tpEmis))
+            if (!Enum.IsDefined(tipoEnum, tpEmis))
             {
                 var tipoPermitido = string.Empty;
 
-                foreach(var item in tipoEnum.GetFields())
+                foreach (var item in tipoEnum.GetFields())
                 {
-                    if(Attribute.GetCustomAttribute(item, typeof(XmlEnumAttribute)) is XmlEnumAttribute attribute)
+                    if (Attribute.GetCustomAttribute(item, typeof(XmlEnumAttribute)) is XmlEnumAttribute attribute)
                     {
-                        if(!string.IsNullOrEmpty(tipoPermitido))
+                        if (!string.IsNullOrEmpty(tipoPermitido))
                         {
                             tipoPermitido += ", ";
                         }
@@ -296,18 +296,18 @@ namespace Unimake.Business.DFe.Utility
             var cUF = Convert.ToInt32(chave.Substring(0, 2));
             tipoEnum = typeof(UFBrasil);
 
-            if(!Enum.IsDefined(tipoEnum, cUF) || cUF >= 90 || cUF == 0)
+            if (!Enum.IsDefined(tipoEnum, cUF) || cUF >= 90 || cUF == 0)
             {
                 var cufPermitido = string.Empty;
 
-                foreach(var item in Enum.GetValues(tipoEnum))
+                foreach (var item in Enum.GetValues(tipoEnum))
                 {
                     var ufBrasil = (UFBrasil)Enum.Parse(typeof(UFBrasil), item.ToString());
                     var uf = (int)ufBrasil;
 
-                    if(uf > 0 && uf < 90)
+                    if (uf > 0 && uf < 90)
                     {
-                        if(!string.IsNullOrEmpty(cufPermitido))
+                        if (!string.IsNullOrEmpty(cufPermitido))
                         {
                             cufPermitido += ", ";
                         }
@@ -325,7 +325,7 @@ namespace Unimake.Business.DFe.Utility
 
             var digitoCalc = CalcularDVChave(chave.Substring(0, 43));
             var digitoInf = chave.Substring(43, 1);
-            if(digitoCalc != Convert.ToInt32(digitoInf))
+            if (digitoCalc != Convert.ToInt32(digitoInf))
             {
                 throw new Exception("Dígito verificador, do documento fiscal eletrônico, que compõe a chave, está incorreto. Dígito informado: " + digitoInf + ". Dígito calculado: " + digitoCalc.ToString() + ".");
             }
@@ -345,7 +345,7 @@ namespace Unimake.Business.DFe.Utility
         /// <seealso cref="UnescapeReservedCharacters(string)"/>
         public static string ClearExtraSpaces(string content)
         {
-            if(string.IsNullOrWhiteSpace(content))
+            if (string.IsNullOrWhiteSpace(content))
             {
                 return content;
             }
@@ -366,7 +366,7 @@ namespace Unimake.Business.DFe.Utility
         public static T Deserializar<T>(string xml)
             where T : new()
         {
-            if(!Validate(xml))
+            if (!Validate(xml))
             {
                 return default;
             }
@@ -377,7 +377,7 @@ namespace Unimake.Business.DFe.Utility
 
                 var result = XmlHelper.Deserialize<T>(xml);
 
-                if(result is Contract.Serialization.IXmlSerializable serializable)
+                if (result is Contract.Serialization.IXmlSerializable serializable)
                 {
                     var xmlDoc = new XmlDocument();
                     xmlDoc.LoadXml(xml);
@@ -386,22 +386,22 @@ namespace Unimake.Business.DFe.Utility
 
                 return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                if(ex.GetLastException() is XmlException)
+                if (ex.GetLastException() is XmlException)
                 {
                     var exception = (XmlException)ex.GetLastException();
 
                     ImproveInvalidCharacterExceptionInXML(xml, exception);
                 }
-                else if(ex is InvalidOperationException)
+                else if (ex is InvalidOperationException)
                 {
                     var conteudo = ExtrairLinhaColuna(ex.Message);
 
                     var linha = conteudo[0];
                     var coluna = conteudo[1];
 
-                    if(coluna > 0)
+                    if (coluna > 0)
                     {
                         var message = ExtrairParteXMLComFalha(xml, coluna, true);
 
@@ -433,6 +433,8 @@ namespace Unimake.Business.DFe.Utility
                .Replace("<SignatureValue xmlns=\"\">", "<SignatureValue>")
                .Replace("<KeyInfo xmlns=\"\">", "<KeyInfo>")
                .Replace("<protNFe xmlns=\"\" versao=\"4.00\">", "<protNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\">")
+               .Replace("<ProcInutNFe ", "<procInutNFe ")
+               .Replace("</ProcInutNFe>", "</procInutNFe>")
             ;
 
         /// <summary>
@@ -451,7 +453,7 @@ namespace Unimake.Business.DFe.Utility
             var coluna = 0;
 
             // Verifica se houve uma correspondência
-            if(match.Success)
+            if (match.Success)
             {
                 // Os números estarão nos grupos de captura 1 e 2
                 linha = Convert.ToInt32(match.Groups[1].Value);
@@ -468,9 +470,9 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="ex">Exceção gerada inicialmente</param>
         public static void ImproveInvalidCharacterExceptionInXML(string xml, XmlException ex)
         {
-            if(!string.IsNullOrWhiteSpace(xml))
+            if (!string.IsNullOrWhiteSpace(xml))
             {
-                if(ex.LinePosition > 0)
+                if (ex.LinePosition > 0)
                 {
                     try
                     {
@@ -478,7 +480,7 @@ namespace Unimake.Business.DFe.Utility
 
                         throw new XmlException(message, ex.InnerException, ex.LineNumber, ex.LinePosition);
                     }
-                    catch(XmlException newException)
+                    catch (XmlException newException)
                     {
                         ThrowHelper.Instance.Throw(newException);
                     }
@@ -496,13 +498,13 @@ namespace Unimake.Business.DFe.Utility
         {
             var message = string.Empty;
 
-            if(!string.IsNullOrWhiteSpace(xml))
+            if (!string.IsNullOrWhiteSpace(xml))
             {
-                if(linePosition > 0)
+                if (linePosition > 0)
                 {
                     var positionStart = xml.LastIndexOf("<", linePosition);
 
-                    if(voltarUmaTag)
+                    if (voltarUmaTag)
                     {
                         positionStart = xml.LastIndexOf("<", positionStart - 1);
                     }
@@ -541,27 +543,27 @@ namespace Unimake.Business.DFe.Utility
         {
             var tipoDFe = TipoDFe.Desconhecido;
 
-            if(xml.Contains("<mod>55</mod>"))
+            if (xml.Contains("<mod>55</mod>"))
             {
                 tipoDFe = TipoDFe.NFe;
             }
-            else if(xml.Contains("<mod>65</mod>"))
+            else if (xml.Contains("<mod>65</mod>"))
             {
                 tipoDFe = TipoDFe.NFCe;
             }
-            else if(xml.Contains("<mod>57</mod>"))
+            else if (xml.Contains("<mod>57</mod>"))
             {
                 tipoDFe = TipoDFe.CTe;
             }
-            else if(xml.Contains("<mod>67</mod>"))
+            else if (xml.Contains("<mod>67</mod>"))
             {
                 tipoDFe = TipoDFe.CTeOS;
             }
-            else if(xml.Contains("infMDFe"))
+            else if (xml.Contains("infMDFe"))
             {
                 tipoDFe = TipoDFe.MDFe;
             }
-            else if(xml.Contains("infCFe"))
+            else if (xml.Contains("infCFe"))
             {
                 tipoDFe = TipoDFe.CFe;
             }
@@ -583,7 +585,7 @@ namespace Unimake.Business.DFe.Utility
             var tipoDFe = TipoDFe.Desconhecido;
             var tagId = "<infEvento Id=\"ID";
 
-            if(!xml.Contains(tagId))
+            if (!xml.Contains(tagId))
             {
                 return tipoDFe;
             }
@@ -592,7 +594,7 @@ namespace Unimake.Business.DFe.Utility
             pos += tagId.Length + 26;
             var modelo = xml.Substring(pos, 2);
 
-            switch(modelo)
+            switch (modelo)
             {
                 case "55":
                     tipoDFe = TipoDFe.NFe;
@@ -638,32 +640,32 @@ namespace Unimake.Business.DFe.Utility
         {
             var tipoEventoCTe = TipoEventoCTe.Desconhecido;
 
-            if(DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
+            if (DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
             {
                 return tipoEventoCTe;
             }
 
-            if(xml.Contains("<tpEvento>110110</tpEvento>"))
+            if (xml.Contains("<tpEvento>110110</tpEvento>"))
             {
                 tipoEventoCTe = TipoEventoCTe.CartaCorrecao;
             }
-            else if(xml.Contains("<tpEvento>110111</tpEvento>"))
+            else if (xml.Contains("<tpEvento>110111</tpEvento>"))
             {
                 tipoEventoCTe = TipoEventoCTe.Cancelamento;
             }
-            else if(xml.Contains("<tpEvento>110180</tpEvento>"))
+            else if (xml.Contains("<tpEvento>110180</tpEvento>"))
             {
                 tipoEventoCTe = TipoEventoCTe.ComprovanteEntrega;
             }
-            else if(xml.Contains("<tpEvento>110181</tpEvento>"))
+            else if (xml.Contains("<tpEvento>110181</tpEvento>"))
             {
                 tipoEventoCTe = TipoEventoCTe.CancelamentoComprovanteEntrega;
             }
-            else if(xml.Contains("<tpEvento>610110</tpEvento>"))
+            else if (xml.Contains("<tpEvento>610110</tpEvento>"))
             {
                 tipoEventoCTe = TipoEventoCTe.PrestDesacordo;
             }
-            else if(xml.Contains("<tpEvento>310620</tpEvento>"))
+            else if (xml.Contains("<tpEvento>310620</tpEvento>"))
             {
                 tipoEventoCTe = TipoEventoCTe.RegistroPassagem;
             }
@@ -686,24 +688,24 @@ namespace Unimake.Business.DFe.Utility
         {
             var tipoEventoMDFe = TipoEventoMDFe.Desconhecido;
 
-            if(DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
+            if (DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
             {
                 return tipoEventoMDFe;
             }
 
-            if(xml.Contains("<tpEvento>110111</tpEvento>"))
+            if (xml.Contains("<tpEvento>110111</tpEvento>"))
             {
                 tipoEventoMDFe = TipoEventoMDFe.Cancelamento;
             }
-            else if(xml.Contains("<tpEvento>110112</tpEvento>"))
+            else if (xml.Contains("<tpEvento>110112</tpEvento>"))
             {
                 tipoEventoMDFe = TipoEventoMDFe.Encerramento;
             }
-            else if(xml.Contains("<tpEvento>110114</tpEvento>"))
+            else if (xml.Contains("<tpEvento>110114</tpEvento>"))
             {
                 tipoEventoMDFe = TipoEventoMDFe.InclusaoCondutor;
             }
-            else if(xml.Contains("<tpEvento>110115</tpEvento>"))
+            else if (xml.Contains("<tpEvento>110115</tpEvento>"))
             {
                 tipoEventoMDFe = TipoEventoMDFe.InclusaoDFe;
             }
@@ -727,72 +729,72 @@ namespace Unimake.Business.DFe.Utility
         {
             var tipoEventoNFe = TipoEventoNFe.Desconhecido;
 
-            if(DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
+            if (DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
             {
                 return tipoEventoNFe;
             }
 
-            if(xml.Contains("<tpEvento>110110</tpEvento>"))
+            if (xml.Contains("<tpEvento>110110</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.CartaCorrecao;
             }
-            else if(xml.Contains("<tpEvento>110111</tpEvento>"))
+            else if (xml.Contains("<tpEvento>110111</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.Cancelamento;
             }
-            else if(xml.Contains("<tpEvento>110112</tpEvento>"))
+            else if (xml.Contains("<tpEvento>110112</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.CancelamentoPorSubstituicao;
             }
-            else if(xml.Contains("<tpEvento>110140</tpEvento>"))
+            else if (xml.Contains("<tpEvento>110140</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.EPEC;
             }
-            else if(xml.Contains("<tpEvento>111500</tpEvento>"))
+            else if (xml.Contains("<tpEvento>111500</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.PedidoProrrogacaoPrazo1;
             }
-            else if(xml.Contains("<tpEvento>111501</tpEvento>"))
+            else if (xml.Contains("<tpEvento>111501</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.PedidoProrrogacaoPrazo2;
             }
-            else if(xml.Contains("<tpEvento>111502</tpEvento>"))
+            else if (xml.Contains("<tpEvento>111502</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.CancelamentoPedidoProrrogacaoPrazo1;
             }
-            else if(xml.Contains("<tpEvento>111503</tpEvento>"))
+            else if (xml.Contains("<tpEvento>111503</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.CancelamentoPedidoProrrogacaoPrazo2;
             }
-            else if(xml.Contains("<tpEvento>210200</tpEvento>"))
+            else if (xml.Contains("<tpEvento>210200</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.ManifestacaoConfirmacaoOperacao;
             }
-            else if(xml.Contains("<tpEvento>210210</tpEvento>"))
+            else if (xml.Contains("<tpEvento>210210</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.ManifestacaoCienciaOperacao;
             }
-            else if(xml.Contains("<tpEvento>210220</tpEvento>"))
+            else if (xml.Contains("<tpEvento>210220</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.ManifestacaoDesconhecimentoOperacao;
             }
-            else if(xml.Contains("<tpEvento>210240</tpEvento>"))
+            else if (xml.Contains("<tpEvento>210240</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.ManifestacaoOperacaoNaoRealizada;
             }
-            else if(xml.Contains("<tpEvento>411500</tpEvento>"))
+            else if (xml.Contains("<tpEvento>411500</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.RespostaPedidoProrrogacaoPrazo1;
             }
-            else if(xml.Contains("<tpEvento>411501</tpEvento>"))
+            else if (xml.Contains("<tpEvento>411501</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.RespostaPedidoProrrogacaoPrazo2;
             }
-            else if(xml.Contains("<tpEvento>411502</tpEvento>"))
+            else if (xml.Contains("<tpEvento>411502</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.RespostaCancelamentoPedidoProrrogacaoPrazo1;
             }
-            else if(xml.Contains("<tpEvento>411503</tpEvento>"))
+            else if (xml.Contains("<tpEvento>411503</tpEvento>"))
             {
                 tipoEventoNFe = TipoEventoNFe.RespostaCancelamentoPedidoProrrogacaoPrazo2;
             }
@@ -837,7 +839,7 @@ namespace Unimake.Business.DFe.Utility
             var primeiraTagFilha = xmlDoc.DocumentElement.ChildNodes[0].Name;
             var tipoXML = TipoXML.NaoIdentificado;
 
-            switch(xmlDoc.DocumentElement.Name)
+            switch (xmlDoc.DocumentElement.Name)
             {
                 #region XML NFe
 
@@ -858,11 +860,11 @@ namespace Unimake.Business.DFe.Utility
                     break;
 
                 case "distDFeInt":
-                    if(xmlDoc.GetElementsByTagName("distDFeInt")[0].NamespaceURI.ToLower().Contains("/nfe"))
+                    if (xmlDoc.GetElementsByTagName("distDFeInt")[0].NamespaceURI.ToLower().Contains("/nfe"))
                     {
                         tipoXML = TipoXML.NFeDistribuicaoDFe;
                     }
-                    else if(xmlDoc.GetElementsByTagName("distDFeInt")[0].NamespaceURI.ToLower().Contains("/cte"))
+                    else if (xmlDoc.GetElementsByTagName("distDFeInt")[0].NamespaceURI.ToLower().Contains("/cte"))
                     {
                         tipoXML = TipoXML.CTeDistribuicaoDFe;
                     }
@@ -1230,7 +1232,7 @@ namespace Unimake.Business.DFe.Utility
         {
             var retorno = 0;
 
-            while(retorno == 0)
+            while (retorno == 0)
             {
                 var rnd = new Random(numeroNF);
 
@@ -1257,7 +1259,7 @@ namespace Unimake.Business.DFe.Utility
         {
             var typeString = "";
 
-            switch(typeDFe)
+            switch (typeDFe)
             {
                 case TipoDFe.NFe:
                 case TipoDFe.NFCe:
@@ -1304,7 +1306,7 @@ namespace Unimake.Business.DFe.Utility
         {
             var typeString = "";
 
-            switch(typeEventoCTe)
+            switch (typeEventoCTe)
             {
                 case TipoEventoCTe.CartaCorrecao:
                     typeString = "110110";
@@ -1353,7 +1355,7 @@ namespace Unimake.Business.DFe.Utility
         {
             var typeString = "";
 
-            switch(typeEventoMDFe)
+            switch (typeEventoMDFe)
             {
                 case TipoEventoMDFe.Cancelamento:
                     typeString = "110111";
@@ -1394,7 +1396,7 @@ namespace Unimake.Business.DFe.Utility
         {
             var typeString = "";
 
-            switch(typeEventoDFe)
+            switch (typeEventoDFe)
             {
                 case TipoEventoNFe.CartaCorrecao:
                     typeString = "110110";
@@ -1544,7 +1546,7 @@ namespace Unimake.Business.DFe.Utility
         /// <exception cref="ArgumentNullException"></exception>
         private static XmlDocument Serialize<T>(T obj, XmlRootAttribute xmlRootAttribute, List<(string Namespace, string Prefix)> namespaces = null)
         {
-            if(obj == null)
+            if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
@@ -1594,7 +1596,7 @@ namespace Unimake.Business.DFe.Utility
         /// <seealso cref="ClearExtraSpaces(string)"/>
         public static string UnescapeReservedCharacters(string content)
         {
-            if(string.IsNullOrWhiteSpace(content))
+            if (string.IsNullOrWhiteSpace(content))
             {
                 return content;
             }
@@ -1664,7 +1666,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Retorna a chave, completa, do documento fiscal eletrônico com o dígito verificar calculado e concatenado a chave</returns>
         public static string MontarChaveDFe(UFBrasil cUF, DateTime dhEmi, string cnpjcpf, ModeloDFe mod, int serie, int nNF, TipoEmissao tpEmis, string cNF = "")
         {
-            if(string.IsNullOrWhiteSpace(cNF))
+            if (string.IsNullOrWhiteSpace(cNF))
             {
                 cNF = XMLUtility.GerarCodigoNumerico(nNF).ToString("00000000");
             }
