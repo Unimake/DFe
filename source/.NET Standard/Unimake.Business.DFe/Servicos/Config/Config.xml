@@ -2363,4 +2363,10 @@
 		<ArqConfig>CianortePR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4110706">
+		<Nome>Irati - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>IratiPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

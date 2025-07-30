@@ -451,6 +451,7 @@
 		<None Remove="Servicos\Config\NFSe\IndaiatubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\IpojucaPE.xml" />
+		<None Remove="Servicos\Config\NFSe\IratiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabaianaSE.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaberabaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabiraMG.xml" />
@@ -1446,6 +1447,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IndaiatubaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IpojucaPE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\IratiPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JacareiSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LemeSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LinharesES.xml" />
