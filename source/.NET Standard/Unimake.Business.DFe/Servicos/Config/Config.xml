@@ -2393,4 +2393,10 @@
 		<ArqConfig>PalmeiraPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4119509">
+		<Nome>Piraquara - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>PiraquaraPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
