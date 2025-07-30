@@ -7226,7 +7226,13 @@ namespace Unimake.Business.DFe.Servicos
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 86, 
+        SIGISSWEB = 86,
+
+        /// <summary>
+        /// SOFTPLAN
+        /// </summary>
+        [Description("SOFTPLAN")]
+        SOFTPLAN = 87,
     }
 
     #endregion

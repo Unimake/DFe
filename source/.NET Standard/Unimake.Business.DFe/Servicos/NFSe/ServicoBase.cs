@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using System.Net;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -90,6 +91,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
                 case PadraoNFSe.SIGISSWEB:
                     SIGISSWEB();
+                    break;
+
+                case PadraoNFSe.SOFTPLAN:
+                    SOFTPLAN();
                     break;
             }
             Configuracoes.Definida = true;
@@ -435,7 +440,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 Configuracoes.HttpContent = new StringContent(
                     ConteudoXMLAssinado.OuterXml,
                     Encoding.UTF8,
-                    Configuracoes.WebContentType  
+                    Configuracoes.WebContentType
                 );
             }
             else
@@ -448,10 +453,61 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             if (!string.IsNullOrEmpty(token))
             {
                 Configuracoes.MunicipioToken = token;
-            }            
+            }
         }
 
         #endregion SIGISSWEB
+
+        #region SOFTPLAN
+
+        private void SOFTPLAN()
+        {
+            if (Configuracoes.RequestURI.Contains("{CodigoVerificacao}"))
+            {
+                var cv = GetXMLElementInnertext("CodigoVerificacao");
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{CodigoVerificacao}", cv);
+            }
+            if (Configuracoes.RequestURI.Contains("{CMC}"))
+            {
+                var cmc = GetXMLElementInnertext("CMC");
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{CMC}", cmc);
+            }
+            if (Configuracoes.RequestURI.Contains("numero"))
+            {
+                var numero = GetXMLElementInnertext("numero");
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numero}", numero);
+            }
+
+            IWebProxy proxy = null;
+            if (Configuracoes.HasProxy)
+            {
+                if (Configuracoes.ProxyAutoDetect)
+                    proxy = WebRequest.GetSystemWebProxy();
+                else if (!string.IsNullOrEmpty(Configuracoes.ProxyUser))
+                {
+                    var webProxy = new WebProxy(Configuracoes.ProxyUser);
+                    if (!string.IsNullOrEmpty(Configuracoes.ProxyPassword))
+                        webProxy.Credentials = new NetworkCredential(
+                            Configuracoes.ProxyUser,
+                            Configuracoes.ProxyPassword
+                        );
+                    proxy = webProxy;
+                }
+            }
+
+            var tokenObj = Token.GerarTokenSOFTPLAN(
+                proxy,
+                Configuracoes.MunicipioUsuario,
+                Configuracoes.MunicipioSenha,
+                Configuracoes.ClientID,
+                Configuracoes.ClientSecret,
+                Configuracoes.TipoAmbiente);
+
+            Configuracoes.MunicipioToken = tokenObj.AccessToken;
+        }
+
+        #endregion SOFTPLAN
+
 
         #endregion Configurações separadas por PadrãoNFSe
 

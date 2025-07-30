@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
 using Unimake.Business.DFe.Servicos;
+using static System.Net.WebRequestMethods;
 
 namespace Unimake.Business.DFe.Security
 {
@@ -185,11 +186,11 @@ namespace Unimake.Business.DFe.Security
             {
                 case (TipoAmbiente.Producao):
                     //Produção
-                    if(codMunicipio == 3526704) // Leme - SP
+                    if (codMunicipio == 3526704) // Leme - SP
                     {
                         loginUrl = "https://wsleme.sigissweb.com/rest/login";
                     }
-                    if(codMunicipio == 3503307) //Araras - SP
+                    if (codMunicipio == 3503307) //Araras - SP
                     {
                         loginUrl = "https://wslararas.sigissweb.com/rest/login";
                     }
@@ -220,6 +221,79 @@ namespace Unimake.Business.DFe.Security
                 return tokenRaw.Trim('\"');
             }
 
+        }
+
+        /// <summary>
+        /// Gera um token para o padrão SOFTPLAN, utilizado para autenticação em serviços de NFSe.
+        /// </summary>
+        /// <param name="proxy">Proxy para a requisição (pode ser null).</param>
+        /// <param name="usuario">CMC da empresa (username).</param>
+        /// <param name="senha">Senha de emissão (criptografada, será descriptografada internamente).</param>
+        /// <param name="clientId">Client ID fornecido pelo Softplan.</param>
+        /// <param name="clientSecret">Client Secret fornecido pelo Softplan.</param>
+        /// <param name="tipoAmbiente">Ambiente: Homologação ou Produção.</param>
+        /// <returns>Instância de Token contendo o access_token e demais dados.</returns>
+        public static Token GerarTokenSOFTPLAN(IWebProxy proxy,
+            string usuario,
+            string senha,
+            string clientId,
+            string clientSecret,
+            TipoAmbiente tipoAmbiente)
+        {
+            var urlHomolog = "https://nfps-e-hml.pmf.sc.gov.br/api/v1/autenticacao/oauth/token";
+            var urlProd = "https://nfps-e.pmf.sc.gov.br/api/v1/autenticacao/oauth/token";
+            var tokenUrl = tipoAmbiente == TipoAmbiente.Homologacao ? urlHomolog : urlProd;
+
+            senha = Criptografia.descriptografaSenha(senha);
+
+            var senhaMD5 = GerarMD5(senha).ToUpper();
+
+            var form = $"grant_type=password&username={usuario}&password={senhaMD5}"
+                        + $"&client_id={clientId}&client_secret={clientSecret}";
+            var data = Encoding.UTF8.GetBytes(form);
+
+            var request = (HttpWebRequest)WebRequest.Create(tokenUrl);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            if (proxy != null)
+            {
+                request.Proxy = proxy;
+                request.Credentials = proxy.Credentials;
+            }
+
+            var basic = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{clientSecret}"));
+            request.Headers[HttpRequestHeader.Authorization] = $"Basic {basic}";
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            try
+            {
+                var rawResponse = (HttpWebResponse)request.GetResponse();
+                using (var responseStream = rawResponse.GetResponseStream())
+                using (var reader = new StreamReader(responseStream))
+                {
+                    var json = reader.ReadToEnd();
+                    var token = JsonConvert.DeserializeObject<Token>(json);
+                    if (string.IsNullOrEmpty(token?.AccessToken))
+                        throw new InvalidOperationException("Access token não foi retornado pelo Softplan.");
+                    return token;
+                }
+            }
+            catch (WebException ex)
+            {
+                var rawError = (HttpWebResponse)ex.Response;
+                using (var errorStream = rawError.GetResponseStream())
+                using (var reader = new StreamReader(errorStream))
+                {
+                    var error = reader.ReadToEnd();
+                    throw new InvalidOperationException($"Falha ao gerar token Softplan ({rawError?.StatusCode}): {error}", ex);
+                }
+            }
         }
 
     }

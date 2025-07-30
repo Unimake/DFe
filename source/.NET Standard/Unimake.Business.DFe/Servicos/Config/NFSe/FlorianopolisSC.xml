@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<GerarNfse versao="2.00">
+			<Descricao>Geração de NFSe</Descricao>
+			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/processamento/notas</RequestURIHomologacao>
+			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/processamento/notas</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebContentType>application/xml</WebContentType>
+			<LoginConexao>false</LoginConexao>
+		</GerarNfse>
+		<ConsultarNfsePorRps versao="2.00">
+			<Descricao>Consulta de XML de NFSe por RPS</Descricao>
+			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/consultas/notas/xml/{CodigoVerificacao}/{CMC}</RequestURIHomologacao>
+			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/consultas/notas/xml/{CodigoVerificacao}/{CMC}</RequestURIProducao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebContentType>application/xml</WebContentType>
+			<LoginConexao>false</LoginConexao>
+		</ConsultarNfsePorRps>
+		<CancelarNfse versao="2.00">
+			<Descricao>Cancelamento de NFSe</Descricao>
+			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/cancelamento/notas</RequestURIHomologacao>
+			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/cancelamento/notas</RequestURIProducao>
+			<MetodoAPI>put</MetodoAPI>
+			<WebContentType>application/xml</WebContentType>
+			<LoginConexao>false</LoginConexao>
+		</CancelarNfse>
+		<ConsultarNfse versao="2.00">
+			<Descricao>Consulta de XML de NFSe</Descricao>
+			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/consultas/notas/por-numero/{numero}</RequestURIHomologacao>
+			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/consultas/notas/por-numero/{numero}</RequestURIProducao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebContentType>application/xml</WebContentType>
+			<LoginConexao>false</LoginConexao>
+		</ConsultarNfse>
+	</Servicos>
+</Configuracoes>

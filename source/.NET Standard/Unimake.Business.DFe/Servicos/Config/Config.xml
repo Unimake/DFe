@@ -2351,4 +2351,11 @@
 		<ArqConfig>ArarasSP.xml</ArqConfig>
 		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4205407">
+		<Nome>Florianópolis - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>FlorianopolisSC.xml</ArqConfig>
+		<PadraoNFSe>SOFTPLAN</PadraoNFSe>
+	</Arquivo>
+	
 </Configuracoes>
