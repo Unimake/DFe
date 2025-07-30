@@ -2376,15 +2376,21 @@
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4114807">
-	<Nome>Marialva - PR</Nome>
-	<UF>PR</UF>
-	<ArqConfig>MarialvaPR.xml</ArqConfig>
-	<PadraoNFSe>ELOTECH</PadraoNFSe>
-</Arquivo>
+		<Nome>Marialva - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>MarialvaPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 	<Arquivo ID="4115002">
 		<Nome>Marilena - PR</Nome>
 		<UF>PR</UF>
 		<ArqConfig>MarilenaPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4117701">
+		<Nome>Palmeira - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>PalmeiraPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>

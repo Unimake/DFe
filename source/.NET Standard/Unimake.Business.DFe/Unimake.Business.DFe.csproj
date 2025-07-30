@@ -541,6 +541,7 @@
 		<None Remove="Servicos\Config\NFSe\OuroFinoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PadreBernardoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PalmaresPE.xml" />
+		<None Remove="Servicos\Config\NFSe\PalmeiraPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PantanoGrandeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ParacambiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaDeMinasMG.xml" />
@@ -1464,6 +1465,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarilenaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NiteroiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmeiraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParagominasPA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatosDeMinasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiraiRJ.xml" />
