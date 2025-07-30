@@ -2399,4 +2399,10 @@
 		<ArqConfig>PiraquaraPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4119905">
+		<Nome>Ponta Grossa - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>PontaGrossaPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

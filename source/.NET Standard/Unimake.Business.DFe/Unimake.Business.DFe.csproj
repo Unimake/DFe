@@ -567,6 +567,7 @@
 		<None Remove="Servicos\Config\NFSe\PiratiningaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PiumaES.xml" />
 		<None Remove="Servicos\Config\NFSe\PomerodeSC.xml" />
+		<None Remove="Servicos\Config\NFSe\PontaGrossaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PontalinaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PorangatuGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PortaoRS.xml" />
@@ -1473,6 +1474,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiraquaraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PirassunungaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiumaES.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PontaGrossaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SabaraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDaBoaVistaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDoParaisoMG.xml" />
