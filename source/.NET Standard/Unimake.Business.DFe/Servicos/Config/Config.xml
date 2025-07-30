@@ -2369,4 +2369,10 @@
 		<ArqConfig>IratiPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4113502">
+		<Nome>Loanda - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>LoandaPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
