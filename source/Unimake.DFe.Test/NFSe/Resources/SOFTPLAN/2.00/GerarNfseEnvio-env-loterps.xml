@@ -1,0 +1,38 @@
+﻿<?xml version="1.0"?>
+<xmlProcessamentoNfpse>
+	<bairroTomador>Saguaçu</bairroTomador>
+	<baseCalculo>0</baseCalculo>
+	<baseCalculoSubstituicao>0</baseCalculoSubstituicao>
+	<cfps>9202</cfps>
+	<codigoMunicipioTomador>4209102</codigoMunicipioTomador>
+	<codigoPostalTomador>12345678</codigoPostalTomador>
+	<complementoEnderecoTomador>Complemento</complementoEnderecoTomador>
+	<dadosAdicionais>Casa</dadosAdicionais>
+	<dataEmissao>2018-01-12</dataEmissao>
+	<emailTomador>CXXXXXX@XXXXXX.com.br</emailTomador>
+	<identificacao>001</identificacao>
+	<identificacaoTomador>99999999999999</identificacaoTomador>
+	<inscricaoMunicipalTomador>99999999999999</inscricaoMunicipalTomador>
+	<itensServico>
+		<itemServico>
+			<aliquota>0</aliquota>
+			<cst>1</cst>
+			<descricaoServico>Serviço de Impressão</descricaoServico>
+			<idCNAE>11732</idCNAE>
+			<quantidade>1</quantidade>
+			<valorTotal>10</valorTotal>
+			<valorUnitario>10</valorUnitario>
+		</itemServico>
+	</itensServico>
+	<logradouroTomador>Rua Aracajú</logradouroTomador>
+	<nomeMunicipioTomador/>
+	<numeroAEDF>081285</numeroAEDF>
+	<numeroEnderecoTomador>123</numeroEnderecoTomador>
+	<paisTomador>1058</paisTomador>
+	<razaoSocialTomador>XXXXXXXXXXX</razaoSocialTomador>
+	<telefoneTomador>99999999999999</telefoneTomador>
+	<ufTomador>SC</ufTomador>
+	<valorISSQN>0</valorISSQN>
+	<valorISSQNSubstituicao>0</valorISSQNSubstituicao>
+	<valorTotalServicos>10</valorTotalServicos>
+</xmlProcessamentoNfpse>
