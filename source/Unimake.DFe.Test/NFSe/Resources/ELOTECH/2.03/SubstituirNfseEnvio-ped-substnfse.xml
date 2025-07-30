@@ -4,7 +4,7 @@
 		<CpfCnpj>
 			<Cpf>12345678901</Cpf>
 		</CpfCnpj>
-		<InscricaoMunicipal>Inscricao1</InscricaoMunicipal>
+		<InscricaoMunicipal>1234567</InscricaoMunicipal>
 		<Senha>Senha1</Senha>
 		<Homologa>true</Homologa>
 	</IdentificacaoRequerente>
