@@ -89,7 +89,7 @@ begin
     oInfNFe.Ide.TpNF := 1; // Saida
     oInfNFe.Ide.IdDest := 1; // OperacaoEstadual ###
     oInfNFe.Ide.CMunFG := 4118402;
-    oInfNFe.Ide.TpImp := 4; // FormatoImpressaoDANFE.NormalRetrato ###
+    oInfNFe.Ide.TpImp := 4; // FormatoImpressaoDANFE.DANFENFCe ###
     oInfNFe.Ide.TpEmis := 1; // TipoEmissao.Normal
     oInfNFe.Ide.TpAmb := 2; // TipoAmbiente.Homologacao
     oInfNFe.Ide.FinNFe := 1; // FinalidadeNFe.Normal ###
@@ -223,7 +223,7 @@ begin
 
     // Criar a tag Transp
     oInfNfe.Transp := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Transp');
-    oInfNfe.Transp.ModFrete := 9; // ModalidadeFrete.SemOcorrenciaTransporte
+    oInfNfe.Transp.ModFrete := 9; // ModalidadeFrete.SemOcorrenciaTransporte ###
 
     // criar tag Pag
     oInfNFe.Pag := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Pag');
