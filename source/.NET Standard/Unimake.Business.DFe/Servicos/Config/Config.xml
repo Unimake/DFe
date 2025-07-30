@@ -2357,5 +2357,10 @@
 		<ArqConfig>FlorianopolisSC.xml</ArqConfig>
 		<PadraoNFSe>SOFTPLAN</PadraoNFSe>
 	</Arquivo>
-	
+	<Arquivo ID="4105508">
+		<Nome>Cianorte - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>CianortePR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
