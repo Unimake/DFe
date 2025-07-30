@@ -2405,4 +2405,10 @@
 		<ArqConfig>PontaGrossaPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4102109">
+		<Nome>Astorga - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>AstorgaPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
