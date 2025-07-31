@@ -172,38 +172,25 @@ namespace Unimake.Business.DFe.Security
         /// <summary>
         /// Gera um token para o SIGISSWEB, utilizado para autenticação em serviços de NFSe.
         /// </summary>
-        /// <param name="usuario">CNPJ</param>
-        /// <param name="senha">Senha gerada no site da prefeitura</param>
-        /// <param name="tipoAmbiente">Homologação ou Produção</param>
-        /// <param name="codMunicipio">Código do município que utiliza o padrão</param>
+        /// <param name="configuracoes">Objeto do município que está sendo utilizado</param>
         /// <returns>Token para autenticação</returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public static string GerarTokenSIGISSWEB(string usuario, string senha, TipoAmbiente tipoAmbiente, int codMunicipio)
+        public static Configuracao GerarTokenSIGISSWEB(Configuracao configuracoes)
         {
             var loginUrl = string.Empty;
 
-            switch (tipoAmbiente)
+            switch (configuracoes.TipoAmbiente)
             {
                 case (TipoAmbiente.Producao):
-                    //Produção
-                    if (codMunicipio == 3526704) // Leme - SP
-                    {
-                        loginUrl = "https://wsleme.sigissweb.com/rest/login";
-                    }
-                    if (codMunicipio == 3503307) //Araras - SP
-                    {
-                        loginUrl = "https://wslararas.sigissweb.com/rest/login";
-                    }
-
+                    loginUrl = configuracoes.RequestURILoginProducao;
                     break;
 
                 case TipoAmbiente.Homologacao:
-                    //Homologação
-                    loginUrl = "https://wshml2.sigissweb.com/rest/login";
+                    loginUrl = configuracoes.RequestURILoginHomologacao;
                     break;
             }
 
-            var payload = new { login = usuario, senha = senha };
+            var payload = new { login = configuracoes.MunicipioUsuario, senha = configuracoes.MunicipioSenha };
             var json = JsonConvert.SerializeObject(payload);
 
             using (var client = new HttpClient())
@@ -214,11 +201,13 @@ namespace Unimake.Business.DFe.Security
                 if (!response.IsSuccessStatusCode)
                 {
                     var error = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    throw new InvalidOperationException($"Falha ao gerar token SigissWeb: {error}");
+                    throw new InvalidOperationException($"Falha ao gerar token no município. Mensagem: {error}");
                 }
 
                 var tokenRaw = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                return tokenRaw.Trim('\"');
+                configuracoes.MunicipioToken = tokenRaw.Trim('\"');
+
+                return configuracoes;
             }
 
         }

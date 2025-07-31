@@ -448,12 +448,9 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 Configuracoes.HttpContent = null;
             }
 
-            var token = Token.GerarTokenSIGISSWEB(Configuracoes.MunicipioUsuario, Configuracoes.MunicipioSenha, Configuracoes.TipoAmbiente, Configuracoes.CodigoMunicipio);
+            var token = Token.GerarTokenSIGISSWEB(Configuracoes);
 
-            if (!string.IsNullOrEmpty(token))
-            {
-                Configuracoes.MunicipioToken = token;
-            }
+            Configuracoes = token;
         }
 
         #endregion SIGISSWEB

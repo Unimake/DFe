@@ -8,6 +8,8 @@
 			<MetodoAPI>post</MetodoAPI>
 			<WebContentType>application/xml</WebContentType>
 			<LoginConexao>true</LoginConexao>
+			<RequestURILoginProducao>https://wsararas.sigissweb.com/rest/nfes</RequestURILoginProducao>
+			<RequestURILoginHomologacao>https://wshml2.sigissweb.com/rest/login</RequestURILoginHomologacao>
 		</GerarNfse>
 		<CancelarNfse versao="2.00">
 			<Descricao>Cancelamento de NFSe</Descricao>
@@ -16,6 +18,8 @@
 			<MetodoAPI>get</MetodoAPI>
 			<WebContentType>application/xml</WebContentType>
 			<LoginConexao>true</LoginConexao>
+			<RequestURILoginProducao>https://wsararas.sigissweb.com/rest/nfes</RequestURILoginProducao>
+			<RequestURILoginHomologacao>https://wshml2.sigissweb.com/rest/login</RequestURILoginHomologacao>
 		</CancelarNfse>
 		<ConsultarNfse versao="2.00">
 			<Descricao>Consulta XML da NFSe</Descricao>
@@ -24,6 +28,8 @@
 			<MetodoAPI>get</MetodoAPI>
 			<WebContentType>application/xml</WebContentType>
 			<LoginConexao>true</LoginConexao>
+			<RequestURILoginProducao>https://wsararas.sigissweb.com/rest/nfes</RequestURILoginProducao>
+			<RequestURILoginHomologacao>https://wshml2.sigissweb.com/rest/login</RequestURILoginHomologacao>
 		</ConsultarNfse>
 		<ConsultarNfsePDF versao="2.00">
 			<Descricao>Consulta PDF da NFSe</Descricao>
@@ -32,6 +38,8 @@
 			<MetodoAPI>get</MetodoAPI>
 			<WebContentType>application/xml</WebContentType>
 			<LoginConexao>true</LoginConexao>
+			<RequestURILoginProducao>https://wsararas.sigissweb.com/rest/nfes</RequestURILoginProducao>
+			<RequestURILoginHomologacao>https://wshml2.sigissweb.com/rest/login</RequestURILoginHomologacao>
 		</ConsultarNfsePDF>
 	</Servicos>
 </Configuracoes>
