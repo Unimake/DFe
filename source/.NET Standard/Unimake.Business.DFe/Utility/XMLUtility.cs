@@ -166,40 +166,110 @@ namespace Unimake.Business.DFe.Utility
                 throw new ArgumentNullException(nameof(chave));
             }
 
-            int i, j, Digito;
-            const string PESO = "4329876543298765432987654329876543298765432";
+            var tamanhoChaveSemDV = 43; // Tamanho da chave de acesso sem o dígito verificador
+            var tipoCNPJ = TipoCNPJ(chave.Substring(6, 14));
 
-            chave = chave.Replace("NFe", "").Replace("CTe", "").Replace("MDFe", "");
-
-            if (chave.Length != 43)
+            if (tipoCNPJ == "N") //CNPJ numérico
             {
-                throw new Exception(string.Format("Erro na composição da chave [{0}] para obter o dígito verificador.", chave) + Environment.NewLine);
+                int i, j, digito;
+                const string PESO = "4329876543298765432987654329876543298765432";
+
+                chave = chave.Replace("NFe", "").Replace("CTe", "").Replace("MDFe", "");
+
+                if (chave.Length != tamanhoChaveSemDV)
+                {
+                    throw new Exception(string.Format("Erro na composição da chave [{0}] para obter o dígito verificador.", chave) + Environment.NewLine);
+                }
+                else
+                {
+                    j = 0;
+                    try
+                    {
+                        for (i = 0; i < tamanhoChaveSemDV; ++i)
+                        {
+                            j += Convert.ToInt32(chave.Substring(i, 1)) * Convert.ToInt32(PESO.Substring(i, 1));
+                        }
+
+                        digito = 11 - (j % 11);
+                        if ((j % 11) < 2)
+                        {
+                            digito = 0;
+                        }
+                    }
+                    catch
+                    {
+                        digito = -1;
+                    }
+
+                    return digito == -1
+                        ? throw new Exception(string.Format("Erro no cálculo do dígito verificador da chave [{0}].", chave) + Environment.NewLine)
+                        : digito;
+                }
+            }
+            else if (tipoCNPJ == "A") //CNPJ alfanumérico
+            {
+                // Converte a string em um array de bytes, onde cada byte representa o código ASCII do caractere subtraído de 48
+                var chAcessoBytes = new byte[tamanhoChaveSemDV];
+                for (var i = 0; i < tamanhoChaveSemDV; i++)
+                {
+                    chAcessoBytes[i] = (byte)(chave[i] - 48);
+                }
+
+                var soma = 0;
+                var peso = 2; // multiplicador vai de 9 a 2
+
+                for (var i = tamanhoChaveSemDV - 1; i >= 0; i--) // Começa do final para o inicio
+                {
+                    soma += Convert.ToInt32(chAcessoBytes[i]) * peso;
+                    peso++;
+
+                    if (peso > 9)
+                    {
+                        peso = 2;
+                    }
+                }
+
+                var digito = 11 - (soma % 11);
+                if (digito >= 10)
+                {
+                    digito = 0;
+                }
+
+                return digito;
             }
             else
             {
-                j = 0;
-                try
-                {
-                    for (i = 0; i < 43; ++i)
-                    {
-                        j += Convert.ToInt32(chave.Substring(i, 1)) * Convert.ToInt32(PESO.Substring(i, 1));
-                    }
-
-                    Digito = 11 - (j % 11);
-                    if ((j % 11) < 2)
-                    {
-                        Digito = 0;
-                    }
-                }
-                catch
-                {
-                    Digito = -1;
-                }
-
-                return Digito == -1
-                    ? throw new Exception(string.Format("Erro no cálculo do dígito verificador da chave [{0}].", chave) + Environment.NewLine)
-                    : Digito;
+                throw new Exception("CNPJ ou CPF que compõe a chave é inválido.");
             }
+        }
+
+        /// <summary>
+        /// Verifica se o CNPJ é do tipo alfanumérico ou somente numérico.
+        /// </summary>
+        /// <param name="cnpj">CNPJ com ou sem máscara</param>
+        /// <returns>
+        /// "A" se for alfa-numérico, "N" se for numérico, ou "I" se tiver outro padrão (inválido).
+        /// </returns>
+        public static string TipoCNPJ(string cnpj)
+        {
+            if (string.IsNullOrWhiteSpace(cnpj))
+            {
+                return "I";
+            }
+
+            // Remove máscara (pontos, barra e hífen)
+            var cnpjLimpo = Regex.Replace(cnpj, @"[^\w]", ""); // Remove tudo que não é letra ou número
+
+            if (Regex.IsMatch(cnpjLimpo, @"^[0-9]{14}$"))
+            {
+                return "N";
+            }
+            else if (Regex.IsMatch(cnpjLimpo, @"^[A-Za-z0-9]{14}$") && Regex.IsMatch(cnpjLimpo, @"[A-Za-z]"))
+            {
+                return "A";
+            }
+
+            return "I";
         }
 
         /// <summary>
@@ -1172,7 +1242,6 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="conteudoChaveDFe">Conteúdos do CTe necessários para montagem da chave</param>
         /// <returns>Chave do CTe</returns>
         public static string MontarChaveNFCom(ref ConteudoChaveDFe conteudoChaveDFe) => MontarChaveNF3e(ref conteudoChaveDFe);
-
 
         /// <summary>
         /// Monta a chave do NF3e com base nos valores informados
