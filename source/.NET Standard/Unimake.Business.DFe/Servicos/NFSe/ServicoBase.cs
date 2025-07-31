@@ -13,6 +13,7 @@ using System.Net.Http.Headers;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Net;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -448,12 +449,9 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 Configuracoes.HttpContent = null;
             }
 
-            var token = Token.GerarTokenSIGISSWEB(Configuracoes.MunicipioUsuario, Configuracoes.MunicipioSenha, Configuracoes.TipoAmbiente, Configuracoes.CodigoMunicipio);
+            var token = Token.GerarTokenSIGISSWEB(Configuracoes);
 
-            if (!string.IsNullOrEmpty(token))
-            {
-                Configuracoes.MunicipioToken = token;
-            }
+            Configuracoes = token;
         }
 
         #endregion SIGISSWEB
@@ -478,32 +476,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numero}", numero);
             }
 
-            IWebProxy proxy = null;
-            if (Configuracoes.HasProxy)
-            {
-                if (Configuracoes.ProxyAutoDetect)
-                    proxy = WebRequest.GetSystemWebProxy();
-                else if (!string.IsNullOrEmpty(Configuracoes.ProxyUser))
-                {
-                    var webProxy = new WebProxy(Configuracoes.ProxyUser);
-                    if (!string.IsNullOrEmpty(Configuracoes.ProxyPassword))
-                        webProxy.Credentials = new NetworkCredential(
-                            Configuracoes.ProxyUser,
-                            Configuracoes.ProxyPassword
-                        );
-                    proxy = webProxy;
-                }
-            }
+            
+            var token = Token.GerarTokenSOFTPLAN(Configuracoes);
 
-            var tokenObj = Token.GerarTokenSOFTPLAN(
-                proxy,
-                Configuracoes.MunicipioUsuario,
-                Configuracoes.MunicipioSenha,
-                Configuracoes.ClientID,
-                Configuracoes.ClientSecret,
-                Configuracoes.TipoAmbiente);
-
-            Configuracoes.MunicipioToken = tokenObj.AccessToken;
+            Configuracoes.MunicipioToken = token.AccessToken;
         }
 
         #endregion SOFTPLAN

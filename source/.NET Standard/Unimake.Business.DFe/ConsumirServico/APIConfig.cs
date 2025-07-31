@@ -11,6 +11,7 @@ namespace Unimake.Business.DFe
     {
         private bool _B64;
         private string _RequestURI;
+        private string _RequestURILogin;
         private string _ContentType;
         private string _TagRetorno;
         private string _MunicipioUsuario;
@@ -219,6 +220,15 @@ namespace Unimake.Business.DFe
         {
             get => _RequestURI;
             set => _RequestURI = value;
+        }
+
+        /// <summary>
+        /// HttpAddress - Endereço da API para login, caso seja necessário
+        /// </summary>
+        public string RequestURILogin
+        {
+            get => _RequestURILogin;
+            set => _RequestURILogin = value;
         }
 
         /// <summary>

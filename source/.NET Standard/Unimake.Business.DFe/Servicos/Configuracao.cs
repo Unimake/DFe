@@ -313,6 +313,16 @@ namespace Unimake.Business.DFe.Servicos
                                 RequestURIHomologacao = XMLUtility.TagRead(elementPropriedades, "RequestURIHomologacao");
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "RequestURILoginProducao"))
+                            {
+                                RequestURILoginProducao = XMLUtility.TagRead(elementPropriedades, "RequestURILoginProducao");
+                            }
+
+                            if (XMLUtility.TagExist(elementPropriedades, "RequestURILoginHomologacao"))
+                            {
+                                RequestURILoginHomologacao = XMLUtility.TagRead(elementPropriedades, "RequestURILoginHomologacao");
+                            }
+
                             if (XMLUtility.TagExist(elementPropriedades, "MetodoAPI"))
                             {
                                 MetodoAPI = XMLUtility.TagRead(elementPropriedades, "MetodoAPI");
@@ -1150,6 +1160,16 @@ namespace Unimake.Business.DFe.Servicos
         /// Endereco para consumo de API - no ambiente de producao
         /// </summary>
         public string RequestURIProducao { get; set; }
+        
+        /// <summary>
+        /// Endereço para login na API - produção
+        /// </summary>
+        public string RequestURILoginProducao { get; set; }
+
+        /// <summary>
+        /// Endereço para login na API - homologação
+        /// </summary>
+        public string RequestURILoginHomologacao { get; set; }
 
         /// <summary>
         /// Chave de acesso utilizada nos URLs do padrão NACIONAL *(quando se necessita fazer o replace na url)

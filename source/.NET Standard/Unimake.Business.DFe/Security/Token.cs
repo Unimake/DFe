@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 using static System.Net.WebRequestMethods;
 
 namespace Unimake.Business.DFe.Security
@@ -31,6 +32,12 @@ namespace Unimake.Business.DFe.Security
 
         [JsonProperty(PropertyName = "scope")]
         public string Scope { get; set; }
+
+        [JsonProperty(PropertyName = "error")]
+        public string Error { get; set; }
+
+        [JsonProperty(PropertyName = "error_description")]
+        public string ErrorDescription { get; set; }
 
         #endregion Privte Properties
 
@@ -172,38 +179,25 @@ namespace Unimake.Business.DFe.Security
         /// <summary>
         /// Gera um token para o SIGISSWEB, utilizado para autenticação em serviços de NFSe.
         /// </summary>
-        /// <param name="usuario">CNPJ</param>
-        /// <param name="senha">Senha gerada no site da prefeitura</param>
-        /// <param name="tipoAmbiente">Homologação ou Produção</param>
-        /// <param name="codMunicipio">Código do município que utiliza o padrão</param>
+        /// <param name="configuracoes">Objeto do município que está sendo utilizado</param>
         /// <returns>Token para autenticação</returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public static string GerarTokenSIGISSWEB(string usuario, string senha, TipoAmbiente tipoAmbiente, int codMunicipio)
+        public static Configuracao GerarTokenSIGISSWEB(Configuracao configuracoes)
         {
             var loginUrl = string.Empty;
 
-            switch (tipoAmbiente)
+            switch (configuracoes.TipoAmbiente)
             {
                 case (TipoAmbiente.Producao):
-                    //Produção
-                    if (codMunicipio == 3526704) // Leme - SP
-                    {
-                        loginUrl = "https://wsleme.sigissweb.com/rest/login";
-                    }
-                    if (codMunicipio == 3503307) //Araras - SP
-                    {
-                        loginUrl = "https://wslararas.sigissweb.com/rest/login";
-                    }
-
+                    loginUrl = configuracoes.RequestURILoginProducao;
                     break;
 
                 case TipoAmbiente.Homologacao:
-                    //Homologação
-                    loginUrl = "https://wshml2.sigissweb.com/rest/login";
+                    loginUrl = configuracoes.RequestURILoginHomologacao;
                     break;
             }
 
-            var payload = new { login = usuario, senha = senha };
+            var payload = new { login = configuracoes.MunicipioUsuario, senha = configuracoes.MunicipioSenha };
             var json = JsonConvert.SerializeObject(payload);
 
             using (var client = new HttpClient())
@@ -214,11 +208,13 @@ namespace Unimake.Business.DFe.Security
                 if (!response.IsSuccessStatusCode)
                 {
                     var error = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    throw new InvalidOperationException($"Falha ao gerar token SigissWeb: {error}");
+                    throw new InvalidOperationException($"Falha ao gerar token no município. Mensagem: {error}");
                 }
 
                 var tokenRaw = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                return tokenRaw.Trim('\"');
+                configuracoes.MunicipioToken = tokenRaw.Trim('\"');
+
+                return configuracoes;
             }
 
         }
@@ -226,36 +222,40 @@ namespace Unimake.Business.DFe.Security
         /// <summary>
         /// Gera um token para o padrão SOFTPLAN, utilizado para autenticação em serviços de NFSe.
         /// </summary>
-        /// <param name="proxy">Proxy para a requisição (pode ser null).</param>
-        /// <param name="usuario">CMC da empresa (username).</param>
-        /// <param name="senha">Senha de emissão (criptografada, será descriptografada internamente).</param>
-        /// <param name="clientId">Client ID fornecido pelo Softplan.</param>
-        /// <param name="clientSecret">Client Secret fornecido pelo Softplan.</param>
-        /// <param name="tipoAmbiente">Ambiente: Homologação ou Produção.</param>
+        /// <param name="configuracoes">Objeto do município que está sendo utilizado</param>
         /// <returns>Instância de Token contendo o access_token e demais dados.</returns>
-        public static Token GerarTokenSOFTPLAN(IWebProxy proxy,
-            string usuario,
-            string senha,
-            string clientId,
-            string clientSecret,
-            TipoAmbiente tipoAmbiente)
+        public static Token GerarTokenSOFTPLAN(Configuracao configuracoes)
         {
-            var urlHomolog = "https://nfps-e-hml.pmf.sc.gov.br/api/v1/autenticacao/oauth/token";
-            var urlProd = "https://nfps-e.pmf.sc.gov.br/api/v1/autenticacao/oauth/token";
-            var tokenUrl = tipoAmbiente == TipoAmbiente.Homologacao ? urlHomolog : urlProd;
+            var loginUrl = string.Empty;
 
-            senha = Criptografia.descriptografaSenha(senha);
+            switch (configuracoes.TipoAmbiente)
+            {
+                case (TipoAmbiente.Producao):
+                    loginUrl = configuracoes.RequestURILoginProducao;
+                    break;
+
+                case TipoAmbiente.Homologacao:
+                    loginUrl = configuracoes.RequestURILoginHomologacao;
+                    break;
+            }
+
+            var senha = Criptografia.descriptografaSenha(configuracoes.MunicipioSenha);
 
             var senhaMD5 = GerarMD5(senha).ToUpper();
 
-            var form = $"grant_type=password&username={usuario}&password={senhaMD5}"
-                        + $"&client_id={clientId}&client_secret={clientSecret}";
+            var form = $"grant_type=password&username={configuracoes.MunicipioUsuario}&password={senhaMD5}"
+                        + $"&client_id={configuracoes.ClientID}&client_secret={configuracoes.ClientSecret}";
             var data = Encoding.UTF8.GetBytes(form);
 
-            var request = (HttpWebRequest)WebRequest.Create(tokenUrl);
+            var request = (HttpWebRequest)WebRequest.Create(loginUrl);
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = data.Length;
+
+            var proxy = Proxy.DefinirServidor(
+                configuracoes.ProxyAutoDetect,
+                configuracoes.ProxyUser,
+                configuracoes.ProxyPassword);
 
             if (proxy != null)
             {
@@ -263,7 +263,7 @@ namespace Unimake.Business.DFe.Security
                 request.Credentials = proxy.Credentials;
             }
 
-            var basic = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{clientSecret}"));
+            var basic = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{configuracoes.ClientID}:{configuracoes.ClientSecret}"));
             request.Headers[HttpRequestHeader.Authorization] = $"Basic {basic}";
 
             using (var stream = request.GetRequestStream())
@@ -279,8 +279,17 @@ namespace Unimake.Business.DFe.Security
                 {
                     var json = reader.ReadToEnd();
                     var token = JsonConvert.DeserializeObject<Token>(json);
-                    if (string.IsNullOrEmpty(token?.AccessToken))
-                        throw new InvalidOperationException("Access token não foi retornado pelo Softplan.");
+                    
+                    if (token.AccessToken == null)
+                    {
+                        if (!string.IsNullOrWhiteSpace(token.ErrorDescription))
+                        {
+                            var mensagemDecodificada = WebUtility.HtmlDecode(token.ErrorDescription);
+                            throw new Exception("Ocorreu um erro ao solicitar o token para a prefeitura:\n" + mensagemDecodificada);
+                        }
+
+                        throw new Exception("Ocorreu um erro ao solicitar o token para a prefeitura, e não foi retornada uma mensagem de erro.");
+                    }
                     return token;
                 }
             }
@@ -295,6 +304,5 @@ namespace Unimake.Business.DFe.Security
                 }
             }
         }
-
     }
 }

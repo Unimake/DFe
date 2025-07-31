@@ -361,6 +361,7 @@ namespace Unimake.Business.DFe.Servicos
                 {
                     ContentType = Configuracoes.WebContentType,
                     RequestURI = (Configuracoes.RequestURI),
+                    RequestURILogin = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURILoginProducao : Configuracoes.RequestURILoginHomologacao),
                     TagRetorno = Configuracoes.WebTagRetorno,
                     GZipCompress = Configuracoes.GZIPCompress,
                     WebSoapString = Configuracoes.WebSoapString,
