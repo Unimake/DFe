@@ -2403,8 +2403,21 @@ namespace Unimake.Business.DFe.Xml.NFe
 					<nItem>{item.NItem}</nItem>
 					<nItemDue>{item.NItemDue}</nItemDue>
 					<qItem>{item.QItem}</qItem>
-                    <motAlteracao>{item.MotAlteracao}</motAlteracao>
-                    </itensAverbados>";
+                    <motAlteracao>{item.MotAlteracao}</motAlteracao>";
+
+                if (item.Enquad != null)
+                {
+                    writeRaw += "<enquad>";
+
+                    foreach (var cEnq in item.Enquad.CEnq)
+                    {
+                        writeRaw += $@"<cEnq>{cEnq}</cEnq>";
+                    }
+
+                    writeRaw += "</enquad>";
+                }
+
+                writeRaw += $@"</itensAverbados>";
             }
 
             writer.WriteRaw(writeRaw);
@@ -2443,6 +2456,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 foreach (var itemAverbado in itensAverbadosNodeList)
                 {
                     var itensAverbadosElement = (XmlElement)itemAverbado;
+                    var enquadNodeList = itensAverbadosElement.GetElementsByTagName("enquad");
 
                     ItensAverbados.Add(new DetEventoAverbacaoExportacaoItensAverbados
                     {
@@ -2454,6 +2468,23 @@ namespace Unimake.Business.DFe.Xml.NFe
                         QItem = (itensAverbadosElement.GetElementsByTagName("qItem").Count > 0 ? itensAverbadosElement.GetElementsByTagName("qItem")[0].InnerText : ""),
                         MotAlteracao = (itensAverbadosElement.GetElementsByTagName("motAlteracao").Count > 0 ? itensAverbadosElement.GetElementsByTagName("motAlteracao")[0].InnerText : ""),
                     });
+
+                    if (enquadNodeList.Count > 0)
+                    {
+                        ItensAverbados[ItensAverbados.Count - 1].Enquad = new DetEventoAverbacaoExportacaoEnquad();
+                        var enquadElement = (XmlElement)enquadNodeList[0];
+
+                        if (enquadElement.GetElementsByTagName("cEnq").Count >= 0)
+                        {
+                            for (int i = 0; i < 4; i++)
+                            {
+                                if (enquadElement.GetElementsByTagName("cEnq").Count >= (i+1))
+                                {
+                                    ItensAverbados[ItensAverbados.Count - 1].Enquad.CEnq.Add(enquadElement.GetElementsByTagName("cEnq")[i].InnerText);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -2548,6 +2579,32 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlElement("motAlteracao")]
         public string MotAlteracao { get; set; }
+
+        /// <summary>
+        /// Grupo de informações do enquadramento do item
+        /// </summary>
+        [XmlElement("enquad")]
+        public DetEventoAverbacaoExportacaoEnquad Enquad { get; set; }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento das informações do enquadramento do item
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoAverbacaoExportacaoEnquad")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot("enquad", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+
+    public class DetEventoAverbacaoExportacaoEnquad
+    {
+        /// <summary>
+        /// Código do enquadramento
+        /// </summary>
+        [XmlElement("cEnq")]
+        public List<string> CEnq { get; set; } = new List<string>();
     }
 
     /// <summary>
