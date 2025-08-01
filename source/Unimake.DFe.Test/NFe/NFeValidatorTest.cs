@@ -34,7 +34,7 @@ namespace Unimake.DFe.Test.NFe
         /// </summary>
         /// <param name="arqXML">Caminho do arquivo XML que será testado</param>
         [Theory]
-        [Trait("DFe", "NFe")]
+        [Trait("DFe", "NFCe")]
         [InlineData(@"..\..\..\NFe\Resources\RTC\NFCe_CST550.xml")]
         [InlineData(@"..\..\..\NFe\Resources\RTC\NFCe_CST800.xml")]
         public void ValidarNFCeComIBSCBS(string arqXML)
