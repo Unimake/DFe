@@ -793,7 +793,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                         if (!string.IsNullOrWhiteSpace(emitUF) && emitUF == destUF)
                         {
                             tipoOperacao = "Devolução de compra estadual";
-                            cfopsValidos = new HashSet<string> 
+                            cfopsValidos = new HashSet<string>
                             {
                                 "5201", "5202", "5208", "5209", "5210", "5213", "5214", "5215", "5216", "5410", "5411", "5412", "5413", "5503", "5553", "5555", "5556", "5660", "5661", "5662", "5918", "5919", "5921", "5949"
                             };
@@ -801,7 +801,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                         else if (!string.IsNullOrWhiteSpace(destUF) && destUF.ToUpper() == "EX")
                         {
                             tipoOperacao = "Devolução de compra do exterior";
-                            cfopsValidos = new HashSet<string> 
+                            cfopsValidos = new HashSet<string>
                             {
                                 "7201", "7202", "7210", "7211", "7212", "7553", "7556", "7930", "7949"
                             };
@@ -809,7 +809,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                         else
                         {
                             tipoOperacao = "Devolução de compra interestadual";
-                            cfopsValidos = new HashSet<string> 
+                            cfopsValidos = new HashSet<string>
                             {
                                 "6201", "6202", "6208", "6209", "6210", "6213", "6214", "6215", "6216", "6410", "6411", "6412", "6413", "6503", "6553", "6555", "6556", "6660", "6661", "6662", "6918", "6919", "6921", "6949"
                             };
@@ -824,6 +824,326 @@ namespace Unimake.Business.DFe.Validator.NFe
                             $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <CFOP> do grupo de tag <NFe><infNFe><det><prod>]"));
                     }
                 }
+            }).ValidateTag(element => element.NameEquals(nameof(IBSCBS.CST)) && element.Parent.NameEquals(nameof(IBSCBS)), Tag =>
+            {
+                var cst = Tag?.Value;
+                var ibscbs = Tag?.Parent;
+                var det = ibscbs.Parent.Parent;
+                var cProd = det.GetValue("cProd");
+                var xProd = det.GetValue("xProd");
+                var nItem = det.GetAttributeValue("nItem");
+
+                var gIBSCBS = ibscbs.GetElement("gIBSCBS");
+                var gIBSCBSMono = ibscbs.GetElement("gIBSCBSMono");
+                var gTransfCred = ibscbs.GetElement("gTransfCred");
+
+                var gIBSUF = gIBSCBS?.GetElement("gIBSUF");
+                var gIBSMun = gIBSCBS?.GetElement("gIBSMun");
+                var gCBS = gIBSCBS?.GetElement("gCBS");
+
+                var ide = det.Parent.GetElement("ide");
+                var gCompraGov = ide.GetElement("gCompraGov");
+
+                switch (cst)
+                {
+                    case "000": // Tributação integral
+                    case "550": // Suspensão
+
+                        var ehNfce = det.Parent?.GetElement("ide")?.GetElement("mod")?.Value == ((int)ModeloDFe.NFCe).ToString();
+
+                        if (cst == "550" && ehNfce)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Para o modelo {ModeloDFe.NFCe.ToString()}, o CST '{cst}' de IBSCBS não deve ser utilizado. " +
+                                    $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <CST> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gIBSCBSMono != null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gIBSCBSMono de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gIBSCBSMono> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gTransfCred != null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gTransfCred de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gTransfCred> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gIBSCBS == null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gIBSCBS de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gIBSCBS> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gIBSUF != null)
+                        {
+                            if (gIBSUF.GetElement("gDif") != null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gDif de gIBSUF. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gDif> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSUF>]"));
+                            }
+
+                            if (gIBSUF.GetElement("gRed") != null)
+                            {
+                                if (gCompraGov == null)
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}' e o grupo gCompraGov não estiver preenchido em <NFe><infNFe><ide>, o preenchimento do grupo gRed dentro de gIBSUF não é permitido. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSUF>]"));
+                                }
+                            }
+                            else
+                            {
+                                if (gCompraGov != null)
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}' e o grupo gCompraGov estiver preenchido em <NFe><infNFe><ide>, o grupo gRed também deve ser informado dentro de gIBSUF. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSUF>]"));
+                                }
+                            }
+                        }
+
+                        if (gIBSMun != null)
+                        {
+                            if (gIBSMun.GetElement("gDif") != null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gDif de gIBSMun. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gDif> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSMun>]"));
+                            }
+
+                            if (gIBSMun.GetElement("gRed") != null)
+                            {
+                                if (gCompraGov == null)
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}' e o grupo gCompraGov não estiver preenchido em <NFe><infNFe><ide>, o preenchimento do grupo gRed dentro de gIBSMun não é permitido. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSMun>]"));
+                                }
+                            }
+                            else
+                            {
+                                if (gCompraGov != null)
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}' e o grupo gCompraGov estiver preenchido em <NFe><infNFe><ide>, o grupo gRed também deve ser informado dentro de gIBSMun. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSMun>]"));
+                                }
+                            }
+                        }
+
+                        if (gCBS != null)
+                        {
+                            if (gCBS.GetElement("gDif") != null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gDif de gCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gDif> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gCBS>]"));
+                            }
+
+                            if (gCBS.GetElement("gRed") != null)
+                            {
+                                if (gCompraGov == null)
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gRed de gCBS. " +
+                               $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gCBS>]"));
+                                }
+                            }
+                            else
+                            {
+                                if (gCompraGov != null)
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gRed de gCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gCBS>]"));
+                                }   
+                            }
+                        }
+
+                        break;
+
+                    case "410": // Imunidade e não incidência
+                        if (gIBSCBS != null || gIBSCBSMono != null || gTransfCred != null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento dos grupos gIBSCBS, gIBSCBSMono e/ou gTransfCred. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gIBSCBS>, <gIBSCBSMono> e <gTransfCred> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+                        break;
+
+                    case "200": // Alíquota reduzida
+
+                        if (gIBSCBS == null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gIBSCBS de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gIBSCBS> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gIBSCBSMono != null || gTransfCred != null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gIBSCBSMono e/ou o grupo gTransfCred. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gIBSCBSMono> e <gTransfCred> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gIBSUF != null)
+                        {
+                            if (gIBSUF.GetElement("gRed") == null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gRed de gIBSUF. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSUF>]"));
+                            }
+
+                            if (gIBSUF.GetElement("gDif") != null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gDif de gIBSUF. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gDif> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSUF>]"));
+                            }
+                        }
+
+                        if (gIBSMun != null)
+                        {
+                            if (gIBSMun.GetElement("gRed") == null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gRed de gIBSMun. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSMun>]"));
+                            }
+
+                            if (gIBSMun.GetElement("gDif") != null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gDif de gIBSMun. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gDif> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSMun>]"));
+                            }
+                        }
+
+                        if (gCBS != null)
+                        {
+                            if (gCBS.GetElement("gRed") == null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gRed de gCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gCBS>]"));
+                            }
+
+                            if (gCBS.GetElement("gDif") != null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gDif de gCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gDif> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gCBS>]"));
+                            }
+                        }
+
+                        break;
+
+                    case "510": // Diferimento
+
+                        if (gIBSCBSMono != null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gIBSCBSMono de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gIBSCBSMono> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gTransfCred != null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gTransfCred de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gTransfCred> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gIBSCBS == null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gIBSCBS de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gIBSCBS> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gIBSUF != null)
+                        {
+                            if (gIBSUF.GetElement("gDif") == null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gDif de gIBSUF. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gDif> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSUF>]"));
+                            }
+
+                            if (gIBSUF.GetElement("gRed") != null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gRed de gIBSUF. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSUF>]"));
+                            }
+                        }
+
+                        if (gIBSMun != null)
+                        {
+                            if (gIBSMun.GetElement("gDif") == null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gDif de gIBSMun. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gDif> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSMun>]"));
+                            }
+
+                            if (gIBSMun.GetElement("gRed") != null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gRed de gIBSMun. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSMun>]"));
+                            }
+                        }
+
+                        if (gCBS != null)
+                        {
+                            if (gCBS.GetElement("gDif") == null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gDif de gCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gDif> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gCBS>]"));
+                            }
+
+                            if (gCBS.GetElement("gRed") != null)
+                            {
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gRed de gCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gCBS>]"));
+                            }
+                        }
+
+                        break;
+
+                    case "620": // Tributação monofásica
+
+                        if (gIBSCBS != null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gIBSCBS de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gIBSCBS> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gTransfCred != null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gTransfCred de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gTransfCred> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gIBSCBSMono == null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gIBSCBSMono de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gIBSCBSMono> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        break;
+
+                    case "800": // Transferência de crédito
+
+                        var ehNfe = det.Parent?.GetElement("ide")?.GetElement("mod")?.Value == ((int)ModeloDFe.NFe).ToString();
+
+                        if (!ehNfe)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Para o modelo {ModeloDFe.NFCe.ToString()}, o CST '{cst}' de IBSCBS não deve ser utilizado. " +
+                                    $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <CST> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gIBSCBS != null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gIBSCBS de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gIBSCBS> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gIBSCBSMono != null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gIBSCBSMono de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gIBSCBSMono> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        if (gTransfCred == null)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gTransfCred de IBSCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gTransfCred> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS>]"));
+                        }
+
+                        break;
+                }
+
             });
 
         #endregion Public Constructors
