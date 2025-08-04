@@ -2525,4 +2525,10 @@
 		<ArqConfig>VenancioAiresRS.xml</ArqConfig>
 		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3104205">
+		<Nome>Arcos - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ArcosMG.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
