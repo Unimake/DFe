@@ -13670,6 +13670,75 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class GIBSCBSMono
     {
         /// <summary>
+        /// Grupo de informações da Tributação Monofásica Padrão
+        /// </summary>
+        [XmlElement("gMonoPadrao")]
+        public GMonoPadrao GMonoPadrao { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da Tributação Monofásica Sujeita à Retenção
+        /// </summary>
+        [XmlElement("gMonoReten")]
+        public GMonoReten GMonoReten { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da Tributação Monofásica Retida Anteriormente
+        /// </summary>
+        [XmlElement("gMonoRet")]
+        public GMonoRet GMonoRet { get; set; }
+
+        /// <summary>
+        /// Grupo de informações do Diferimento da Tributação Monofásica
+        /// </summary>
+        [XmlElement("gMonoDif")]
+        public GMonoDif GMonoDif { get; set; }
+
+        /// <summary>
+        /// Total de IBS Monofásico do item
+        /// </summary>
+        [XmlIgnore]
+        public double VTotIBSMonoItem { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vTotIBSMonoItem para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTotIBSMonoItem")]
+        public string VTotIBSMonoItemField
+        {
+            get => VTotIBSMonoItem.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTotIBSMonoItem = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Total de CBS Monofásico do item
+        /// </summary>
+        [XmlIgnore]
+        public double VTotCBSMonoItem { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vTotCBSMonoItem para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTotCBSMonoItem")]
+        public string VTotCBSMonoItemField
+        {
+            get => VTotCBSMonoItem.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTotCBSMonoItem = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>
+    /// Grupo de informações da Tributação Monofásica Sujeita à Retenção
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GMonoPadrao")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GMonoPadrao
+    {
+        /// <summary>
         /// Quantidade tributada na monofasia
         /// </summary>
         [XmlElement("qBCMono")]
@@ -13738,9 +13807,20 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VCBSMono.ToString("F2", CultureInfo.InvariantCulture);
             set => VCBSMono = Converter.ToDouble(value);
         }
+    }
 
-        #region Mono Reten
-
+    /// <summary>
+    /// Grupo de informações da Tributação Monofásica Padrão
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GMonoReten")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GMonoReten
+    {
         /// <summary>
         /// Quantidade tributada sujeita à retenção na monofasia
         /// </summary>
@@ -13810,21 +13890,20 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VCBSMonoReten.ToString("F2", CultureInfo.InvariantCulture);
             set => VCBSMonoReten = Converter.ToDouble(value);
         }
+    }
 
-        #endregion
-
-        #region ShouldSerialize Mono Reten
-
-        public bool ShouldSerializeQBCMonoReten() => QBCMonoReten > 0;
-        public bool ShouldSerializeAdRemIBSRetenField() => AdRemIBSReten > 0;
-        public bool ShouldSerializeVIBSMonoRetenField() => VIBSMonoReten > 0;
-        public bool ShouldSerializeAdRemCBSRetenField() => AdRemCBSReten > 0;
-        public bool ShouldSerializeVCBSMonoRetenField() => VCBSMonoReten > 0;
-
-        #endregion
-
-        #region Mono Ret
-
+    /// <summary>
+    /// Grupo de informações da Tributação Monofásica Retida Anteriormente
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GMonoRet")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GMonoRet
+    {
         /// <summary>
         /// Quantidade tributada retida anteriormente 
         /// </summary>
@@ -13894,21 +13973,20 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VCBSMonoRet.ToString("F2", CultureInfo.InvariantCulture);
             set => VCBSMonoRet = Converter.ToDouble(value);
         }
+    }
 
-        #endregion
-
-        #region ShouldSerialize Mono Ret
-
-        public bool ShouldSerializeQBCMonoRet() => QBCMonoRet > 0;
-        public bool ShouldSerializeAdRemIBSRetField() => AdRemIBSRet > 0;
-        public bool ShouldSerializeVIBSMonoRetField() => VIBSMonoRet > 0;
-        public bool ShouldSerializeAdRemCBSRetField() => AdRemCBSRet > 0;
-        public bool ShouldSerializeVCBSMonoRetField() => VCBSMonoRet > 0;
-
-        #endregion
-
-        #region Mono Dif
-
+    /// <summary>
+    /// Grupo de informações do Diferimento da Tributação Monofásica
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GMonoDif")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GMonoDif
+    {
         /// <summary>
         /// Percentual do diferimento do imposto monofásico
         /// </summary>
@@ -13971,49 +14049,6 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             get => VCBSMonoDif.ToString("F2", CultureInfo.InvariantCulture);
             set => VCBSMonoDif = Converter.ToDouble(value);
-        }
-
-        #endregion
-
-        #region ShouldSerialize Mono Dif
-
-        public bool ShouldSerializePDifIBSField() => PDifIBS > 0;
-        public bool ShouldSerializeVIBSMonoDifField() => VIBSMonoDif > 0;
-        public bool ShouldSerializePDifCBSField() => PDifCBS > 0;
-        public bool ShouldSerializeVCBSMonoDifField() => VCBSMonoDif > 0;
-
-        #endregion
-
-        /// <summary>
-        /// Total de IBS Monofásico do item
-        /// </summary>
-        [XmlIgnore]
-        public double VTotIBSMonoItem { get; set; }
-
-        /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vTotIBSMonoItem para atribuir ou resgatar o valor)
-        /// </summary>
-        [XmlElement("vTotIBSMonoItem")]
-        public string VTotIBSMonoItemField
-        {
-            get => VTotIBSMonoItem.ToString("F2", CultureInfo.InvariantCulture);
-            set => VTotIBSMonoItem = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Total de CBS Monofásico do item
-        /// </summary>
-        [XmlIgnore]
-        public double VTotCBSMonoItem { get; set; }
-
-        /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vTotCBSMonoItem para atribuir ou resgatar o valor)
-        /// </summary>
-        [XmlElement("vTotCBSMonoItem")]
-        public string VTotCBSMonoItemField
-        {
-            get => VTotCBSMonoItem.ToString("F2", CultureInfo.InvariantCulture);
-            set => VTotCBSMonoItem = Converter.ToDouble(value);
         }
     }
 

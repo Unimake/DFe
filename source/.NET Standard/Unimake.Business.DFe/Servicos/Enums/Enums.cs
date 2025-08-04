@@ -1719,7 +1719,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 02 - Apropriação de crédito presumido de IBS sobre o saldo devedor na ZFM (art. 450, § 1º, LC 214/25)
         /// </summary>
         [XmlEnum("02")]
-        ApropriacaoCreditoPresumidoIBSZFM = 2
+        ApropriacaoCreditoPresumidoIBSZFM = 2,
+
+        /// <summary>
+        /// 03 - Retorno
+        /// </summary>
+        [XmlEnum("03")]
+        Retorno = 3
     }
 
     #endregion
