@@ -2495,4 +2495,46 @@
 		<ArqConfig>LajeadoRS.xml</ArqConfig>
 		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4314100">
+		<Nome>Passo Fundo - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>PassoFundoRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4316808">
+		<Nome>Santa Cruz do Sul - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SantaCruzDoSulRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4317608">
+		<Nome>Santo Antônio da Patrulha - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SantoAntonioDaPatrulhaRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4321204">
+		<Nome>Taquara - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>TaquaraRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4322608">
+		<Nome>Venâncio Aires - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>VenancioAiresRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3104205">
+		<Nome>Arcos - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ArcosMG.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3105608">
+		<Nome>Barbacena - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>BarbacenaMG.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -1010,7 +1010,9 @@ namespace Unimake.DFe.Test.NFe
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(TipoOperacao.Saida, UFBrasil.PR, UFBrasil.EX, "7222")]
-        public void ValidatorNFeDevolucaoFalso(TipoOperacao tpNF, UFBrasil emitUF, UFBrasil destUF, string CFOP)
+        [InlineData(TipoOperacao.Saida, UFBrasil.PR, UFBrasil.SP, "5202", DestinoOperacao.OperacaoInterna)]
+        [InlineData(TipoOperacao.Entrada, UFBrasil.PR, UFBrasil.SP, "1202", DestinoOperacao.OperacaoInterna)]
+        public void ValidatorNFeDevolucaoFalso(TipoOperacao tpNF, UFBrasil emitUF, UFBrasil destUF, string CFOP, DestinoOperacao destinoOperacao = DestinoOperacao.OperacaoInterestadual)
         {
             var xml = new EnviNFe
             {
@@ -1035,7 +1037,7 @@ namespace Unimake.DFe.Test.NFe
                                         DhEmi = DateTime.Now,
                                         DhSaiEnt = DateTime.Now,
                                         TpNF = tpNF,
-                                        IdDest = DestinoOperacao.OperacaoInterestadual,
+                                        IdDest = destinoOperacao,
                                         CMunFG = 4118402,
                                         TpImp = FormatoImpressaoDANFE.NormalRetrato,
                                         TpEmis = TipoEmissao.Normal,
