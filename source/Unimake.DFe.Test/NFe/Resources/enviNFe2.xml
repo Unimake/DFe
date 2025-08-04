@@ -508,6 +508,7 @@
 								</gRed>
 								<vIBSMun>7.50</vIBSMun>
 							</gIBSMun>
+							<vIBS>1.11</vIBS>
 							<gCBS>
 								<pCBS>0.9000</pCBS>
 								<gDif>
@@ -553,25 +554,6 @@
 							</gTribCompraGov>
 						</gIBSCBS>
 						<gIBSCBSMono>
-							<qBCMono>100.00</qBCMono>
-							<adRemIBS>0.5000</adRemIBS>
-							<adRemCBS>0.7500</adRemCBS>
-							<vIBSMono>50.00</vIBSMono>
-							<vCBSMono>75.00</vCBSMono>
-							<qBCMonoReten>50</qBCMonoReten>
-							<adRemIBSReten>0.2500</adRemIBSReten>
-							<vIBSMonoReten>12.50</vIBSMonoReten>
-							<adRemCBSReten>0.3750</adRemCBSReten>
-							<vCBSMonoReten>18.75</vCBSMonoReten>
-							<qBCMonoRet>30</qBCMonoRet>
-							<adRemIBSRet>0.2000</adRemIBSRet>
-							<vIBSMonoRet>6.00</vIBSMonoRet>
-							<adRemCBSRet>0.3000</adRemCBSRet>
-							<vCBSMonoRet>9.00</vCBSMonoRet>
-							<pDifIBS>1.5000</pDifIBS>
-							<vIBSMonoDif>3.00</vIBSMonoDif>
-							<pDifCBS>2.0000</pDifCBS>
-							<vCBSMonoDif>4.00</vCBSMonoDif>
 							<vTotIBSMonoItem>125.00</vTotIBSMonoItem>
 							<vTotCBSMonoItem>180.00</vTotCBSMonoItem>
 						</gIBSCBSMono>

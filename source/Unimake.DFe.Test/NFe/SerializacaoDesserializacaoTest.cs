@@ -38,6 +38,12 @@ namespace Unimake.DFe.Test.NFe
 
             var docGerado = xml.GerarXML();
 
+            if (File.Exists(@"C:\Users\Wandrey\Downloads\XmlGerado.xml"))
+            {
+                File.Delete(@"C:\Users\Wandrey\Downloads\XmlGerado.xml");
+            }
+            File.WriteAllText(@"C:\Users\Wandrey\Downloads\XmlGerado.xml", docGerado.OuterXml);
+
             Assert.True(doc.InnerText == docGerado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 

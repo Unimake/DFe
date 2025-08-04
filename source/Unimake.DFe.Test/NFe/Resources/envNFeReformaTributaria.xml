@@ -123,8 +123,8 @@
 						</COFINSNT>
 					</COFINS>
 					<IBSCBS>
-						<CST>200</CST>
-						<cClassTrib>200032</cClassTrib>
+						<CST>001</CST>
+						<cClassTrib>000001</cClassTrib>
 						<gIBSCBS>
 							<vBC>1840.61</vBC>
 							<gIBSUF>
@@ -157,6 +157,7 @@
 								</gRed>
 								<vIBSMun>0.01</vIBSMun>
 							</gIBSMun>
+							<vIBS>1.11</vIBS>
 							<gCBS>
 								<pCBS>0.0900</pCBS>
 								<gDif>

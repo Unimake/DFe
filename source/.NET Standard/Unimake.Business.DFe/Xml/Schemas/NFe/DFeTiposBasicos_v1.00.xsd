@@ -776,7 +776,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="vIBS" type="TDec1302">
+				<xs:element name="vIBS" type="nfe:TDec1302">
 					<xs:annotation>
 						<xs:documentation>Valor do IBS</xs:documentation>
 					</xs:annotation>

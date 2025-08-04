@@ -47,6 +47,12 @@ namespace Unimake.DFe.Test.CTeSimp
 
             var doc2 = xml.GerarXML();
 
+            if (File.Exists(@"C:\Users\Wandrey\Downloads\XmlGerado.xml"))
+            {
+                File.Delete(@"C:\Users\Wandrey\Downloads\XmlGerado.xml");
+            }
+            File.WriteAllText(@"C:\Users\Wandrey\Downloads\XmlGerado.xml", doc2.OuterXml);
+
             Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
     }

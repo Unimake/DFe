@@ -13048,10 +13048,27 @@ namespace Unimake.Business.DFe.Xml.NFe
         public GIBSMun GIBSMun { get; set; }
 
         /// <summary>
+        /// Valor do IBS (soma de vIBSUF e vIBSMun). Quando houver crédito presumido com indicador “IndDeduzCredPres=1”, o vCredPres deve ser abatido desse valor.
+        /// </summary>
+        [XmlIgnore]
+        public double VIBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vIBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vIBS")]
+        public string VIBSField
+        {
+            get => VIBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
         /// Grupo de Informações da CBS
         /// </summary>
         [XmlElement("gCBS")]
         public GCBS GCBS { get; set; }
+
 
         /// <summary>
         /// Grupo de informações da Tributação Regular
