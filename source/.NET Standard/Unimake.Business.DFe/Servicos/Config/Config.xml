@@ -2501,4 +2501,10 @@
 		<ArqConfig>PassoFundoRS.xml</ArqConfig>
 		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4316808">
+		<Nome>Santa Cruz do Sul - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SantaCruzDoSulRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
