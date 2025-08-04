@@ -2411,4 +2411,82 @@
 		<ArqConfig>AstorgaPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3102605">
+		<Nome>Andradas - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>AndradasMG.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3128709">
+		<Nome>Guaxupé - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>GuaxupeMG.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3138203">
+		<Nome>Lavras - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>LavrasMG.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3147006">
+		<Nome>Paracatu - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ParacatuMG.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3149309">
+		<Nome>Pedro Leopoldo - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>PedroLeopoldoMG.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3151800">
+		<Nome>Poços de Caldas - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>PocosDeCaldasMG.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3152808">
+		<Nome>Prata - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>PrataMG.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3162922">
+		<Nome>São Joaquim de Bicas - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>SaoJoaquimDeBicasMG.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3162955">
+		<Nome>São José da Lapa - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>SaoJoseDaLapaMG.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3556453">
+		<Nome>Vargem Grande Paulista - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>VargemGrandePaulistaSP.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4307708">
+		<Nome>Esteio - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>EsteioRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4205902">
+		<Nome>Gaspar - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>GasparSC.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4310330">
+		<Nome>Imbé - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>ImbeRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
