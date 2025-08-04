@@ -182,7 +182,7 @@ namespace Unimake.Business.DFe.Security
         /// <param name="configuracoes">Objeto do município que está sendo utilizado</param>
         /// <returns>Token para autenticação</returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public static Configuracao GerarTokenSIGISSWEB(Configuracao configuracoes)
+        public static string GerarTokenSIGISSWEB(Configuracao configuracoes)
         {
             var loginUrl = string.Empty;
 
@@ -211,10 +211,12 @@ namespace Unimake.Business.DFe.Security
                     throw new InvalidOperationException($"Falha ao gerar token no município. Mensagem: {error}");
                 }
 
-                var tokenRaw = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                configuracoes.MunicipioToken = tokenRaw.Trim('\"');
+                var token = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-                return configuracoes;
+                token.Trim('\"');
+
+                return token;
+                
             }
 
         }
@@ -279,7 +281,7 @@ namespace Unimake.Business.DFe.Security
                 {
                     var json = reader.ReadToEnd();
                     var token = JsonConvert.DeserializeObject<Token>(json);
-                    
+
                     if (token.AccessToken == null)
                     {
                         if (!string.IsNullOrWhiteSpace(token.ErrorDescription))
