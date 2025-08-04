@@ -2483,4 +2483,10 @@
 		<ArqConfig>GasparSC.xml</ArqConfig>
 		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4310330">
+		<Nome>Imbé - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>ImbeRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
