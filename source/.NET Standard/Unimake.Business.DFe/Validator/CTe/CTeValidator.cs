@@ -332,7 +332,7 @@ namespace Unimake.Business.DFe.Validator.CTe
                             // Verifica se é regime normal para ficar de acordo com a rejeição 310
                             if (CRTEmitente == ((int)CRT.RegimeNormal).ToString())
                             {
-                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gIBSCBS de IBSCBS. " +
+                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}' e o CRT do emitente for igual a {(int)CRT.RegimeNormal} - {CRT.RegimeNormal}, deve ser preenchido o grupo gIBSCBS de IBSCBS. " +
                                 $"[TAG: <gIBSCBS> do grupo de tag <CTe><infCte><det><imp><IBSCBS>]"));
                             }
                         }
