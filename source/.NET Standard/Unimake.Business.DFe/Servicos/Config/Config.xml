@@ -2489,4 +2489,10 @@
 		<ArqConfig>ImbeRS.xml</ArqConfig>
 		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4311403">
+		<Nome>Lajeado - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>LajeadoRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

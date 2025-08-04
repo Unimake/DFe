@@ -489,6 +489,7 @@
 		<None Remove="Servicos\Config\NFSe\JundiaiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JuquiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
+		<None Remove="Servicos\Config\NFSe\LajeadoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\LavrasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\LemeSP.xml" />
@@ -1481,6 +1482,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IpojucaPE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IratiPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JacareiSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\LajeadoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LavrasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LemeSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LinharesES.xml" />
