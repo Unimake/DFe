@@ -430,6 +430,7 @@
 		<None Remove="Servicos\Config\NFSe\GaranhunsPE.xml" />
 		<None Remove="Servicos\Config\NFSe\GarcaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GaribaldiRS.xml" />
+		<None Remove="Servicos\Config\NFSe\GasparSC.xml" />
 		<None Remove="Servicos\Config\NFSe\GetulioVargasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Ginfes.xml" />
 		<None Remove="Servicos\Config\NFSe\GoianaPE.xml" />
@@ -1472,6 +1473,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EusebioCE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FlorianopolisSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GasparSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaxupeMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IndaiatubaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IpojucaPE.xml" />

@@ -2477,4 +2477,10 @@
 		<ArqConfig>EsteioRS.xml</ArqConfig>
 		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4205902">
+		<Nome>Gaspar - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>GasparSC.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
