@@ -2531,4 +2531,10 @@
 		<ArqConfig>ArcosMG.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3105608">
+		<Nome>Barbacena - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>BarbacenaMG.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
