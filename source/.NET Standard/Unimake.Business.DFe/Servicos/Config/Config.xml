@@ -2467,8 +2467,14 @@
 	</Arquivo>
 	<Arquivo ID="3556453">
 		<Nome>Vargem Grande Paulista - SP</Nome>
-		<UF>MG</UF>
+		<UF>SP</UF>
 		<ArqConfig>VargemGrandePaulistaSP.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4307708">
+		<Nome>Esteio - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>EsteioRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
