@@ -2507,4 +2507,10 @@
 		<ArqConfig>SantaCruzDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4317608">
+		<Nome>Santo Antônio da Patrulha - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SantoAntonioDaPatrulhaRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
