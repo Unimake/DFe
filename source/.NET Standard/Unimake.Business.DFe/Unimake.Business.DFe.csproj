@@ -558,6 +558,7 @@
 		<None Remove="Servicos\Config\NFSe\ParanavaiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PareciNovoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ParobeRS.xml" />
+		<None Remove="Servicos\Config\NFSe\PassoFundoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PassosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PatosDeMinasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PauliniaSP.xml" />
@@ -1499,6 +1500,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmeiraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParacatuMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParagominasPA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PassoFundoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatosDeMinasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PedroLeopoldoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiraiRJ.xml" />
