@@ -747,6 +747,8 @@ namespace Unimake.Business.DFe.Validator.NFe
                 var tpNF = Tag.Parent.Parent.Parent.GetValue("tpNF");
                 var idDest = Tag.Parent.Parent.Parent.GetValue("idDest");
 
+                var indIEDest = Tag.Document?.Descendants().FirstOrDefault(e => e.NameEquals(nameof(Dest)))?.GetValue("indIEDest");
+
                 var emitUF = Tag.Document?.Descendants().FirstOrDefault(e => e.NameEquals(nameof(EnderEmit)))?.GetValue(nameof(EnderEmit.UF));
                 var destUF = Tag.Document?.Descendants().FirstOrDefault(e => e.NameEquals(nameof(EnderDest)))?.GetValue(nameof(EnderDest.UF));
 
@@ -771,7 +773,8 @@ namespace Unimake.Business.DFe.Validator.NFe
                                 "3201", "3202", "3211", "3212", "3503", "3553", "3949"
                             };
                         }
-                        else if (!string.IsNullOrWhiteSpace(emitUF) && (emitUF == destUF || idDest == ((int)DestinoOperacao.OperacaoInterna).ToString()))
+                        else if (!string.IsNullOrWhiteSpace(emitUF) && emitUF == destUF || 
+                        (idDest == ((int)DestinoOperacao.OperacaoInterna).ToString() && indIEDest == ((int)IndicadorIEDestinatario.NaoContribuinte).ToString()))
                         {
                             tipoOperacao = "Devolução de venda estadual";
                             cfopsValidos = new HashSet<string>
@@ -791,7 +794,8 @@ namespace Unimake.Business.DFe.Validator.NFe
                     // Devolução de compra (saída)
                     else if (tpNF == "1")
                     {
-                        if (!string.IsNullOrWhiteSpace(emitUF) && (emitUF == destUF || idDest == ((int)DestinoOperacao.OperacaoInterna).ToString()))
+                        if (!string.IsNullOrWhiteSpace(emitUF) && emitUF == destUF ||
+                        (idDest == ((int)DestinoOperacao.OperacaoInterna).ToString() && indIEDest == ((int)IndicadorIEDestinatario.NaoContribuinte).ToString()))
                         {
                             tipoOperacao = "Devolução de compra estadual";
                             cfopsValidos = new HashSet<string>
