@@ -479,7 +479,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             
             var token = Token.GerarTokenSOFTPLAN(Configuracoes);
 
-            Configuracoes.MunicipioToken = token.AccessToken;
+            Configuracoes.MunicipioToken = token;
         }
 
         #endregion SOFTPLAN

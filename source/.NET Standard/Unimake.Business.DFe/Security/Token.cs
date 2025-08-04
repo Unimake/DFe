@@ -226,7 +226,7 @@ namespace Unimake.Business.DFe.Security
         /// </summary>
         /// <param name="configuracoes">Objeto do município que está sendo utilizado</param>
         /// <returns>Instância de Token contendo o access_token e demais dados.</returns>
-        public static Token GerarTokenSOFTPLAN(Configuracao configuracoes)
+        public static string GerarTokenSOFTPLAN(Configuracao configuracoes)
         {
             var loginUrl = string.Empty;
 
@@ -292,7 +292,7 @@ namespace Unimake.Business.DFe.Security
 
                         throw new Exception("Ocorreu um erro ao solicitar o token para a prefeitura, e não foi retornada uma mensagem de erro.");
                     }
-                    return token;
+                    return token.AccessToken;
                 }
             }
             catch (WebException ex)
