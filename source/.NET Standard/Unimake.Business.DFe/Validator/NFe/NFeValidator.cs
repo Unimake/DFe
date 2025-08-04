@@ -791,7 +791,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     // Devolução de compra (saída)
                     else if (tpNF == "1")
                     {
-                        if (!string.IsNullOrWhiteSpace(emitUF) && emitUF == destUF)
+                        if (!string.IsNullOrWhiteSpace(emitUF) && (emitUF == destUF || idDest == ((int)DestinoOperacao.OperacaoInterna).ToString()))
                         {
                             tipoOperacao = "Devolução de compra estadual";
                             cfopsValidos = new HashSet<string>
