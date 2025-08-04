@@ -2513,4 +2513,10 @@
 		<ArqConfig>SantoAntonioDaPatrulhaRS.xml</ArqConfig>
 		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4321204">
+		<Nome>Taquara - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>TaquaraRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
