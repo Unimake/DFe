@@ -2519,4 +2519,10 @@
 		<ArqConfig>TaquaraRS.xml</ArqConfig>
 		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4322608">
+		<Nome>Venâncio Aires - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>VenancioAiresRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
