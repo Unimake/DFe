@@ -641,6 +641,10 @@ namespace Unimake.Business.DFe.Utility
             {
                 tipoDFe = TipoDFe.NF3e;
             }
+            else if (xml.Contains("<mod>62</mod>"))
+            {
+                tipoDFe = TipoDFe.NFCom;
+            }
 
             return tipoDFe;
         }
