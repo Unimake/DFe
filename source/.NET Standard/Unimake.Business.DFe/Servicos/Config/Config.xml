@@ -2555,4 +2555,10 @@
 		<ArqConfig>AlagoinhasBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4301602">
+		<Nome>Bagé - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>BageRS.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
