@@ -2561,4 +2561,10 @@
 		<ArqConfig>BageRS.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3300308">
+		<Nome>Barra do Piraí - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>BarraDoPiraiRJ.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
