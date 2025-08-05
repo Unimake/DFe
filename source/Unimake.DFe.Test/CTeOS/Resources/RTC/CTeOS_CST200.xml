@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CTeOS versao="4.00" xmlns="http://www.portalfiscal.inf.br/cte">
+	<infCte versao="4.00" Id="CTe41250831905001000109670010000008611017220677">
+		<ide>
+			<cUF>41</cUF>
+			<cCT>01722067</cCT>
+			<CFOP>6352</CFOP>
+			<natOp>PREST.SERV.TRANSP.INDUSTR</natOp>
+			<mod>67</mod>
+			<serie>1</serie>
+			<nCT>861</nCT>
+			<dhEmi>2025-08-04T12:00:53-03:00</dhEmi>
+			<tpImp>2</tpImp>
+			<tpEmis>1</tpEmis>
+			<cDV>7</cDV>
+			<tpAmb>2</tpAmb>
+			<tpCTe>0</tpCTe>
+			<procEmi>0</procEmi>
+			<verProc>UNICO V8.0</verProc>
+			<cMunEnv>4118402</cMunEnv>
+			<xMunEnv>PARANAVAI</xMunEnv>
+			<UFEnv>PR</UFEnv>
+			<modal>01</modal>
+			<tpServ>6</tpServ>
+			<indIEToma>1</indIEToma>
+			<cMunIni>4118402</cMunIni>
+			<xMunIni>PARANAVAI</xMunIni>
+			<UFIni>PR</UFIni>
+			<cMunFim>3305109</cMunFim>
+			<xMunFim>SAO JOAO DE MERITI</xMunFim>
+			<UFFim>RJ</UFFim>
+		</ide>
+		<emit>
+			<CNPJ>06117473000150</CNPJ>
+			<IE>1234569790</IE>
+			<xNome>TESTE DE CTEOS COM IBSCBS</xNome>
+			<xFant>TESTE DE CTEOS COM IBSCBS</xFant>
+			<enderEmit>
+				<xLgr>TESTE DE CTEOS COM IBSCBS</xLgr>
+				<nro>01112</nro>
+				<xBairro>xxxxxxxxxxxxxx</xBairro>
+				<cMun>4118402</cMun>
+				<xMun>PARANAVAI</xMun>
+				<CEP>87706675</CEP>
+				<UF>PR</UF>
+				<fone>1234567901</fone>
+			</enderEmit>
+			<CRT>3</CRT>
+		</emit>
+		<toma>
+			<CNPJ>12345678901234</CNPJ>
+			<IE>9999999999</IE>
+			<xNome>TESTE DE CTEOS COM IBSCBS</xNome>
+			<xFant>TESTE DE CTEOS COM IBSCBS</xFant>
+			<enderToma>
+				<xLgr>TESTE DE CTEOS COM IBSCBS</xLgr>
+				<nro>01112</nro>
+				<xBairro>XXXXXXXXXXXXXX</xBairro>
+				<cMun>4118402</cMun>
+				<xMun>PARANAVAI</xMun>
+				<CEP>87706675</CEP>
+				<UF>PR</UF>
+				<cPais>1058</cPais>
+				<xPais>BRASIL</xPais>
+			</enderToma>
+		</toma>
+		<vPrest>
+			<vTPrest>50.00</vTPrest>
+			<vRec>50.00</vRec>
+			<Comp>
+				<xNome>FRETE VALOR</xNome>
+				<vComp>50.00</vComp>
+			</Comp>
+		</vPrest>
+		<imp>
+			<ICMS>
+				<ICMSSN>
+					<CST>90</CST>
+					<indSN>1</indSN>
+				</ICMSSN>
+			</ICMS>
+			<IBSCBS>
+				<CST>200</CST>
+				<cClassTrib>123456</cClassTrib>
+				<gIBSCBS>
+					<vBC>1000.00</vBC>
+					<gIBSUF>
+						<pIBSUF>1.5000</pIBSUF>
+						<gDevTrib>
+							<vDevTrib>2.00</vDevTrib>
+						</gDevTrib>
+						<gRed>
+							<pRedAliq>10.0000</pRedAliq>
+							<pAliqEfet>1.3500</pAliqEfet>
+						</gRed>
+						<vIBSUF>15.00</vIBSUF>
+					</gIBSUF>
+					<gIBSMun>
+						<pIBSMun>0.7500</pIBSMun>
+						<gDevTrib>
+							<vDevTrib>1.00</vDevTrib>
+						</gDevTrib>
+						<gRed>
+							<pRedAliq>5.0000</pRedAliq>
+							<pAliqEfet>0.7125</pAliqEfet>
+						</gRed>
+						<vIBSMun>7.50</vIBSMun>
+					</gIBSMun>
+					<gCBS>
+						<pCBS>2.5000</pCBS>
+						<gDevTrib>
+							<vDevTrib>1.50</vDevTrib>
+						</gDevTrib>
+						<gRed>
+							<pRedAliq>8.0000</pRedAliq>
+							<pAliqEfet>2.3000</pAliqEfet>
+						</gRed>
+						<vCBS>25.00</vCBS>
+					</gCBS>
+				</gIBSCBS>
+			</IBSCBS>
+			<vTotDFe>1.00</vTotDFe>
+		</imp>
+		<infCTeNorm>
+			<infServico>
+				<xDescServ>TRANSPORTE DE PASSAGEIROS</xDescServ>
+				<infQ>
+					<qCarga>45.0000</qCarga>
+				</infQ>
+			</infServico>
+			<seg>
+				<respSeg>4</respSeg>
+			</seg>
+			<infModal versaoModal="4.00">
+				<rodoOS>
+					<TAF>999999999999</TAF>
+					<veic>
+						<placa>XXX999</placa>
+						<RENAVAM>999999999</RENAVAM>
+						<UF>SP</UF>
+					</veic>
+				</rodoOS>
+			</infModal>
+		</infCTeNorm>
+		<infRespTec>
+			<CNPJ>06117473000150</CNPJ>
+			<xContato>Wandrey Mundin Ferreira</xContato>
+			<email>wandrey@unimake.com.br</email>
+			<fone>04431414900</fone>
+		</infRespTec>
+	</infCte>
+</CTeOS>
