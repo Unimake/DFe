@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTeOS;
 using Unimake.Business.DFe.Xml.CTeOS;
@@ -272,5 +274,28 @@ namespace Unimake.DFe.Test.CTeOS
             Assert.True(autorizacao.Result.CStat.Equals(753) || autorizacao.Result.CStat.Equals(213) || autorizacao.Result.CStat.Equals(539) || autorizacao.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacao.Result.XMotivo);
         }
 
+        /// <summary>
+        /// Testa a validação do XML de CTeOS com as tags da reforma tributária
+        /// </summary>
+        /// <param name="arqXML"></param>
+        [Theory]
+        [Trait("DFe", "CTeOS")]
+        [InlineData(@"..\..\..\CTeOS\Resources\RTC\CTeOS_CST000.xml")]
+        public void ValidarCTeOSComReformaTributaria(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTeOS,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacao = new Autorizacao(doc.OuterXml, configuracao);
+        }
     }
 }
