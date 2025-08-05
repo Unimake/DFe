@@ -458,6 +458,7 @@
 		<None Remove="Servicos\Config\NFSe\HarmoniaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\IbicoaraBA.xml" />
 		<None Remove="Servicos\Config\NFSe\IbirubaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\IcaraSC.xml" />
 		<None Remove="Servicos\Config\NFSe\IgarapeMG.xml" />
 		<None Remove="Servicos\Config\NFSe\IjuiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ImbeRS.xml" />
@@ -1502,6 +1503,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GasparSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaxupeMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\IcaraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImbeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IndaiatubaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IpojucaPE.xml" />

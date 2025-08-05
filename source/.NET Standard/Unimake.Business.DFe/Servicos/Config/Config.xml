@@ -2597,4 +2597,10 @@
 		<ArqConfig>VilhenaRO.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4207007">
+		<Nome>Içara - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>IcaraSC.xml</ArqConfig>
+		<PadraoNFSe>BAUHAUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
