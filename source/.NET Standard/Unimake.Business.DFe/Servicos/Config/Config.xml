@@ -2543,4 +2543,10 @@
 		<ArqConfig>CandeiasBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3126109">
+		<Nome>Formiga - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>FormigaMG.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
