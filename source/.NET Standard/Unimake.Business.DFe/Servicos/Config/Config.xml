@@ -2549,4 +2549,10 @@
 		<ArqConfig>FormigaMG.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2900702">
+		<Nome>Alagoinhas - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>AlagoinhasBA.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
