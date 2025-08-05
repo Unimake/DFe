@@ -2579,4 +2579,10 @@
 		<ArqConfig>ItanhangaMT.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1721000">
+		<Nome>Palmas - TO</Nome>
+		<UF>TO</UF>
+		<ArqConfig>PalmasTO.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
