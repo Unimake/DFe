@@ -2537,4 +2537,10 @@
 		<ArqConfig>BarbacenaMG.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2906501">
+		<Nome>Candeias - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>CandeiasBA.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
