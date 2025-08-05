@@ -2591,4 +2591,10 @@
 		<ArqConfig>SaoGoncaloDoParaMG.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1100304">
+		<Nome>Vilhena - RO</Nome>
+		<UF>RO</UF>
+		<ArqConfig>VilhenaRO.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
