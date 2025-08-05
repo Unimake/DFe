@@ -48,7 +48,7 @@ namespace Unimake.Business.DFe.Validator.NF3e
 
                     if (gIBSCBS == null)
                     {
-                        ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gIBSCB de IBSCBS." +
+                        ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gIBSCBS de IBSCBS." +
                             $" [Item]: {nItem} [Prod]: {cProd} [xProd]: {xProd} [TAG: <gIBSCBS> do grupo de tag <NF3e><infNF3e><NFdet><det><imposto><IBSCBS>]"));
                     }
 
@@ -135,7 +135,7 @@ namespace Unimake.Business.DFe.Validator.NF3e
                 case "200": // Alíquota reduzida
                     if (gIBSCBS == null)
                     {
-                        ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gIBSCB de IBSCBS." +
+                        ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gIBSCBS de IBSCBS." +
                             $" [Item]: {nItem} [Prod]: {cProd} [xProd]: {xProd} [TAG: <gIBSCBS> do grupo de tag <NF3e><infNF3e><NFdet><det><imposto><IBSCBS>]"));
                     }
 
@@ -190,7 +190,7 @@ namespace Unimake.Business.DFe.Validator.NF3e
 
                     if (gIBSCBS != null) 
                     {
-                        ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gIBSCB de IBSCBS." +
+                        ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gIBSCBS de IBSCBS." +
                             $" [Item]: {nItem} [Prod]: {cProd} [xProd]: {xProd} [TAG: <gIBSCBS> do grupo de tag <NF3e><infNF3e><NFdet><det><imposto><IBSCBS>]"));
                     }
 
