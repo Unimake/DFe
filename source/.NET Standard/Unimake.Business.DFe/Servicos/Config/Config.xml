@@ -2567,4 +2567,10 @@
 		<ArqConfig>BarraDoPiraiRJ.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2504009">
+		<Nome>Campina Grande - PB</Nome>
+		<UF>PB</UF>
+		<ArqConfig>CampinaGrandePB.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

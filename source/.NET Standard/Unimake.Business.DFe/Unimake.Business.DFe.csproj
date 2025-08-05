@@ -369,6 +369,7 @@
 		<None Remove="Servicos\Config\NFSe\CamacariBA.xml" />
 		<None Remove="Servicos\Config\NFSe\CamboriuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
+		<None Remove="Servicos\Config\NFSe\CampinaGrandePB.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoBomRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoGrandeMS.xml" />
@@ -1481,6 +1482,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarbacenaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDoPiraiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaceresMT.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandePB.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CandeiasBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CianortePR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CriciumaSC.xml" />
