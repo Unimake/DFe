@@ -2585,4 +2585,10 @@
 		<ArqConfig>PalmasTO.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3161809">
+		<Nome>São Gonçalo do Pará - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>SaoGoncaloDoParaMG.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -625,6 +625,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoCarlosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoParaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDaBoaVistaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDelReiMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
@@ -1537,6 +1538,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SabaraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPatrulhaRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloDoParaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDaBoaVistaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDoParaisoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDeBicasMG.xml" />
