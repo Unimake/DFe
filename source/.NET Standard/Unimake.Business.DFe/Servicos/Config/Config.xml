@@ -2573,4 +2573,10 @@
 		<ArqConfig>CampinaGrandePB.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5104542">
+		<Nome>Itanhangá - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>ItanhangaMT.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
