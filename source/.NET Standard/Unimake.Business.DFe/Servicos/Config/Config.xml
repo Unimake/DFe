@@ -2603,4 +2603,10 @@
 		<ArqConfig>IcaraSC.xml</ArqConfig>
 		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3535507">
+		<Nome>Paraguaçu Paulista - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ParaguacuPaulistaSP.xml</ArqConfig>
+		<PadraoNFSe>SIMPLISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
