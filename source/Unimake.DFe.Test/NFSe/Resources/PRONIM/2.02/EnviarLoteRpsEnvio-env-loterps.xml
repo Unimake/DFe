@@ -52,7 +52,7 @@
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>99999999999999</Cpf>
+								<Cpf>99999999999</Cpf>
 							</CpfCnpj>
 						</IdentificacaoTomador>
 						<RazaoSocial>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</RazaoSocial>
@@ -63,7 +63,7 @@
 							<Bairro>INTERIOR</Bairro>
 							<CodigoMunicipio>4303004</CodigoMunicipio>
 							<Uf>RS</Uf>
-							<Cep>99999999999999</Cep>
+							<Cep>12345678</Cep>
 						</Endereco>
 						<Contato>
 							<Telefone>99999999999999</Telefone>
