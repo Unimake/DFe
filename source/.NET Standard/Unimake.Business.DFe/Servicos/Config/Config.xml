@@ -2609,4 +2609,10 @@
 		<ArqConfig>ParaguacuPaulistaSP.xml</ArqConfig>
 		<PadraoNFSe>SIMPLISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3148103">
+		<Nome>Patrocínio - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>PatrocinioMG.xml</ArqConfig>
+		<PadraoNFSe>SIMPLISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
