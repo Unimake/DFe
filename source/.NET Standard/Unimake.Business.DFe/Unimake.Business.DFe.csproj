@@ -603,6 +603,7 @@
 		<None Remove="Servicos\Config\NFSe\PousoAltoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PrataMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PresidenteLucenaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\PresidentePrudenteSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
 		<None Remove="Servicos\Config\NFSe\ProfessorJamilGO.xml" />
 		<None Remove="Servicos\Config\NFSe\RecifePE.xml" />
@@ -1542,6 +1543,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PocosDeCaldasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PontaGrossaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PrataMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PresidentePrudenteSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SabaraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPatrulhaRS.xml" />

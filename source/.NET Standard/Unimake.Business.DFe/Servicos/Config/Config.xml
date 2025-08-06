@@ -2615,4 +2615,10 @@
 		<ArqConfig>PatrocinioMG.xml</ArqConfig>
 		<PadraoNFSe>SIMPLISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3541406">
+		<Nome>Presidente Prudente - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>PresidentePrudenteSP.xml</ArqConfig>
+		<PadraoNFSe>SIMPLISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
