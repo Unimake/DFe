@@ -20,13 +20,13 @@ implementation
 
 procedure TConsultarDistribuicaoDFe.Executar;
 var
-  oConfiguracao: OleVariant;
-  oDistDFeInt, oDistNSU: OleVariant;
-  oDistribuicaoDFe: OleVariant;
-  oExceptionInterop: OleVariant;
-  oDocZip, oResEvento, oResNFe, oProcEventoNFe, oNfeProc, oInfNFe: OleVariant;
+  oConfiguracao: olevariant;
+  oDistDFeInt, oDistNSU: olevariant;
+  oDistribuicaoDFe: olevariant;
+  oExceptionInterop: olevariant;
+  oDocZip, oResEvento, oResNFe, oProcEventoNFe, oNfeProc, oInfNFe: olevariant;
   nsu, folder: string;
-  I: Integer;
+  I: integer;
 begin
   oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
   oConfiguracao.CertificadoArquivo := 'C:\Projetos\certificados\UnimakePV.pfx';

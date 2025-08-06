@@ -20,12 +20,12 @@ implementation
 
 procedure TEnviarEventoManifestacaoNFe.Executar;
 var
-  oConfiguracao, oEnvEvento, oEvento, oDetEventoManif, oInfEvento: OleVariant;
-  oRecepcaoEvento, oRetEvento: OleVariant;
-  oExceptionInterop: OleVariant;
-  oTagEvento: OleVariant;
+  oConfiguracao, oEnvEvento, oEvento, oDetEventoManif, oInfEvento: olevariant;
+  oRecepcaoEvento, oRetEvento: olevariant;
+  oExceptionInterop: olevariant;
+  oTagEvento: olevariant;
   eventoAssinado: string;
-  I: Integer;
+  I: integer;
 begin
   // Criar configuração básica para consumir o serviço
   oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
@@ -67,8 +67,7 @@ begin
   for I := 1 to oEnvEvento.GetEventoCount do
   begin
     oTagEvento := oEnvEvento.GetEvento(I - 1);
-    ShowMessage('Sequência evento: ' + IntToStr(oTagEvento.InfEvento.NSeqEvento) +
-                ' - Órgão: ' + IntToStr(oTagEvento.InfEvento.COrgao));
+    ShowMessage('Sequência evento: ' + IntToStr(oTagEvento.InfEvento.NSeqEvento) + ' - Órgão: ' + IntToStr(oTagEvento.InfEvento.COrgao));
   end;
 
   // Criar objeto para exceção C#
@@ -92,8 +91,7 @@ begin
       Free;
     end;
 
-    ShowMessage('CStat do lote retornado: ' + IntToStr(oRecepcaoEvento.Result.CStat) +
-                ' - xMotivo: ' + oRecepcaoEvento.Result.XMotivo);
+    ShowMessage('CStat do lote retornado: ' + IntToStr(oRecepcaoEvento.Result.CStat) + ' - xMotivo: ' + oRecepcaoEvento.Result.XMotivo);
     ShowMessage(oRecepcaoEvento.RetornoWSString);
 
     if oRecepcaoEvento.Result.CStat = 128 then
@@ -104,16 +102,14 @@ begin
 
         case oRetEvento.InfEvento.CStat of
           135, 136, 155:
-            begin
-              oRecepcaoEvento.GravarXmlDistribuicao('d:\testenfe');
-            end;
-        else
+          begin
+            oRecepcaoEvento.GravarXmlDistribuicao('d:\testenfe');
+          end;
+          else
           // Evento rejeitado, tomar ação apropriada se necessário
         end;
 
-        ShowMessage('CStat do evento ' + IntToStr(I) + ': ' +
-                    IntToStr(oRetEvento.InfEvento.CStat) +
-                    ' - xMotivo: ' + oRetEvento.InfEvento.XMotivo);
+        ShowMessage('CStat do evento ' + IntToStr(I) + ': ' + IntToStr(oRetEvento.InfEvento.CStat) + ' - xMotivo: ' + oRetEvento.InfEvento.XMotivo);
       end;
     end;
 

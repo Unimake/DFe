@@ -51,7 +51,7 @@ var
 begin
   // Criar objeto de configuração mínima
   oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
-  oConfiguracao.TipoDFe := 1; //0=NFCe ###
+  oConfiguracao.TipoDFe := 1; //1=NFCe ###
   oConfiguracao.TipoEmissao := 1; //1=Normal
   oConfiguracao.CertificadoArquivo := 'C:\Projetos\certificados\UnimakePV.pfx';
   oConfiguracao.CertificadoSenha := '12345678';
@@ -73,11 +73,11 @@ begin
     oNfe := CreateOleObject('Unimake.Business.DFe.Xml.NFe.NFe');
 
     //Desserializar o XML a partir de um arquivo no HD/SSD
-    //oEnviNFe.AddNFe(IUnknown(oNFe.LoadFromFile('D:\testenfe\wandreytestenfce-nfe.xml')));
+//    oEnviNFe.AddNFe(IUnknown(oNFe.LoadFromFile('D:\testenfe\wandreytestenfce-nfe.xml')));
 
     //Desserializar o XML a partir de uma string recuperada, por exemplo, do banco de dados ou montada no código
     xmlString := '<NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe Id="NFe41250706117473000150650590000000021771093890" versao="4.00"><ide><cUF>41</cUF><cNF>77109389</cNF><natOp>VENDA PRODUC.DO ESTABELEC</natOp><mod>65</mod><serie>59</serie>';
-    xmlString := xmlString + '<nNF>6</nNF><dhEmi>2025-07-30T19:27:00-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>4118402</cMunFG><tpImp>4</tpImp><tpEmis>1</tpEmis><cDV>0</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres>';
+    xmlString := xmlString + '<nNF>6</nNF><dhEmi>2025-07-31T09:21:00-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>4118402</cMunFG><tpImp>4</tpImp><tpEmis>1</tpEmis><cDV>0</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres>';
     xmlString := xmlString + '<procEmi>0</procEmi><verProc>TESTE 1.00</verProc></ide><emit><CNPJ>06117473000150</CNPJ><xNome>UNIMAKE SOLUCOES CORPORATIVAS LTDA</xNome><xFant>UNIMAKE - PARANAVAI</xFant><enderEmit><xLgr>RUA PAULO ANTONIO COSTA</xLgr><nro>575</nro>';
     xmlString := xmlString + '<xBairro>CENTRO</xBairro><cMun>4118402</cMun><xMun>PARANAVAI</xMun><UF>PR</UF><CEP>87707210</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>04431421010</fone></enderEmit><IE>9032000301</IE><IM>14018</IM><CNAE>6202300</CNAE>';
     xmlString := xmlString + '<CRT>1</CRT></emit><dest><CNPJ>04218457000128</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><indIEDest>9</indIEDest></dest><det nItem="1"><prod><cProd>00001</cProd><cEAN>SEM GTIN</cEAN>';

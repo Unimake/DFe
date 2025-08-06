@@ -38,7 +38,7 @@ var
 begin
   // Criar objeto de configuração mínima
   oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
-  oConfiguracao.TipoDFe := 1; //0=NFCe ###
+  oConfiguracao.TipoDFe := 1; //1=NFCe ###
   oConfiguracao.CertificadoArquivo := 'C:\Projetos\certificados\UnimakePV.pfx';
   oConfiguracao.CertificadoSenha := '12345678';
 
@@ -54,7 +54,7 @@ begin
   //Criar tag InfEvento
   oEvento.InfEvento := CreateOleObject('Unimake.Business.DFe.Xml.NFe.InfEvento');
   oEvento.InfEvento.COrgao := 41; // UFBrasil.PR
-  oEvento.InfEvento.ChNFe := '41250706117473000150650590000000041771093895';
+  oEvento.InfEvento.ChNFe := '41250706117473000150650590000000061771093890';
   oEvento.InfEvento.CNPJ := '06117473000150';
   oEvento.InfEvento.DhEvento := Now;
   oEvento.InfEvento.TpEvento := 110111; // TipoEventoNFe.Cancelamento
@@ -65,7 +65,7 @@ begin
   //Criar a tag DetEvento
   oEvento.InfEvento.DetEvento := CreateOleObject('Unimake.Business.DFe.Xml.NFe.DetEventoCanc');
   oEvento.InfEvento.DetEvento.Versao := '1.00';
-  oEvento.InfEvento.DetEvento.NProt := '141250000244969';
+  oEvento.InfEvento.DetEvento.NProt := '141250000245318';
   oEvento.InfEvento.DetEvento.XJust := 'Justificativa para cancelamento da NFCe de teste';
 
   //Adicionar a o objeto oEvento dentro do oEnvEvento
@@ -86,7 +86,7 @@ begin
   try
     begin
       // Enviar evento
-      oRecepcaoEvento := CreateOleObject('Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento');
+      oRecepcaoEvento := CreateOleObject('Unimake.Business.DFe.Servicos.NFCe.RecepcaoEvento'); //###
       oRecepcaoEvento.Executar(IUnknown(oEnvEvento), IUnknown(oConfiguracao));
 
       eventoAssinado := oRecepcaoEvento.GetConteudoXMLAssinado();
@@ -109,6 +109,7 @@ begin
         begin
           oRetEvento := oRecepcaoEvento.Result.GetRetEvento(I - 1);
 
+          ShowMessage(VarToStr(oRetEvento.InfEvento.CStat) + ' ' +  oRetEvento.InfEvento.XMotivo);
           case oRetEvento.InfEvento.CStat of
             135, 136, 155: // Eventos homologados
             begin
