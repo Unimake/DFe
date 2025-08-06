@@ -2621,4 +2621,10 @@
 		<ArqConfig>PresidentePrudenteSP.xml</ArqConfig>
 		<PadraoNFSe>SIMPLISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3556404">
+		<Nome>Vargem Grande do Sul - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>VargemGrandeDoSulSP.xml</ArqConfig>
+		<PadraoNFSe>SIMPLISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
