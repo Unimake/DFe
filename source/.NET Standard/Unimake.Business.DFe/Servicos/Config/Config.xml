@@ -2537,4 +2537,70 @@
 		<ArqConfig>BarbacenaMG.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2906501">
+		<Nome>Candeias - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>CandeiasBA.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3126109">
+		<Nome>Formiga - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>FormigaMG.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="2900702">
+		<Nome>Alagoinhas - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>AlagoinhasBA.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4301602">
+		<Nome>Bagé - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>BageRS.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3300308">
+		<Nome>Barra do Piraí - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>BarraDoPiraiRJ.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="2504009">
+		<Nome>Campina Grande - PB</Nome>
+		<UF>PB</UF>
+		<ArqConfig>CampinaGrandePB.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5104542">
+		<Nome>Itanhangá - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>ItanhangaMT.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="1721000">
+		<Nome>Palmas - TO</Nome>
+		<UF>TO</UF>
+		<ArqConfig>PalmasTO.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3161809">
+		<Nome>São Gonçalo do Pará - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>SaoGoncaloDoParaMG.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="1100304">
+		<Nome>Vilhena - RO</Nome>
+		<UF>RO</UF>
+		<ArqConfig>VilhenaRO.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4207007">
+		<Nome>Içara - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>IcaraSC.xml</ArqConfig>
+		<PadraoNFSe>BAUHAUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

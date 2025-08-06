@@ -48,7 +48,7 @@
 				<Tomador>
 					<IdentificacaoTomador>
 						<CpfCnpj>
-							<Cpf>99999999999999</Cpf>
+							<Cpf>99999999999</Cpf>
 						</CpfCnpj>
 					</IdentificacaoTomador>
 					<RazaoSocial>xxxxxxxxxxxxxxxxxxxx</RazaoSocial>
@@ -58,7 +58,7 @@
 						<Bairro>CENTRO</Bairro>
 						<CodigoMunicipio>3530300</CodigoMunicipio>
 						<Uf>SP</Uf>
-						<Cep>99999999999999</Cep>
+						<Cep>12345678</Cep>
 					</Endereco>
 				</Tomador>
 			</InfRps>

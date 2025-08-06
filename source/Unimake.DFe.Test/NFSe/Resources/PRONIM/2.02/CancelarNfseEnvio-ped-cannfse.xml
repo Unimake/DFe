@@ -8,7 +8,7 @@
 					<Cnpj>99999999999999</Cnpj>
 				</CpfCnpj>
 				<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
-				<CodigoMunicipio>99999999999999</CodigoMunicipio>
+				<CodigoMunicipio>9999999</CodigoMunicipio>
 			</IdentificacaoNfse>
 			<CodigoCancelamento>1</CodigoCancelamento>
 		</InfPedidoCancelamento>
