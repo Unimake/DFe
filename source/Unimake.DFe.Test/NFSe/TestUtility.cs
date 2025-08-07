@@ -178,25 +178,24 @@ namespace Unimake.DFe.Test.NFSe
         }
 
         /// <summary>
-        /// Analisa o resultado do testa para verificar se é satisfatório. Existem padrões com retornos negativos devido a sua autenticação de certificados digitais, autorização, etc..
+        /// Analisa o resultado do teste para verificar se é satisfatório.
+        /// Existem padrões com retornos negativos devido a sua autenticação de certificados digitais, autorização, entre outros.
         /// </summary>
-        /// <param name="item"> Objeto serviço a ser analisado </param>
+        /// <param name="item">Objeto que contém o serviço que será testado</param>
         public static void AnalisaResultado(object item)
         {
             var servico = (ServicoBase)item;
 
-            // Precisei passar o executar aqui para dentro, por causa do padrão ADM_SISTEMAS.
-            // O padrão necessita de autenticação de login e senha, porém a resposta em xml vem quebrada, gerando erro nos testes como estava antigamente.
+            // Foi necessário passar o executar para esse método, por conta do padrão ADM_SISTEMAS.
+            // Neste padrão, a resposta em xml vem quebrada, gerando erro nos testes como estava antigamente.
             try
             {
                 servico.Executar();
             }
             catch (Exception ex)
             {
-                // Este método irá analisar a comunicação HttpStatusCode,junto com os padrões...
-                // O padrão BAUHAUS (exemplo), retorna um código 500, porém com uma comunicação satisfatória.
-                // Caso queira verificar o motivo de algum erro ou comunicação não satisfatória (impedido por causa de autenticação de certificado ou login/senha),
-                if (AnalisaComunicacao(servico))
+                // Analisa a comunicação com o município e separa cenários para diferentes statusCode e padrões
+                if (AnalisaComunicacao(servico, ex.Message))
                 {
                     return;
                 }
@@ -233,28 +232,58 @@ namespace Unimake.DFe.Test.NFSe
 
         #region Private Methods
 
-        private static bool AnalisaComunicacao(ServicoBase servico)
+        /// <summary>
+        /// Analisa a comunicação da requisição com base no StatusCode, o padrão testado e ambiente testado
+        /// </summary>
+        /// <param name="servico">Objeto com as configurações do serviço</param>
+        /// <param name="mensagemExcecao">Mensagem da exceção, se gerada, do ConsumirBase ou ConsumirAPI</param>
+        /// <returns></returns>
+        private static bool AnalisaComunicacao(ServicoBase servico, string mensagemExcecao)
         {
-            // Nesta parte, entendo que, alguns padrões retornam um HttpStatusCode diferente de 200 (OK), mesmo se a comunicação tenha sido satisfatória
-            //Exemplo: BAUHAUS, precisa de um token válido
-            if (servico.HttpStatusCode == System.Net.HttpStatusCode.NotFound)
+            var padraoNFSe = servico.Configuracoes.PadraoNFSe;
+            var statusCode = servico.HttpStatusCode;
+            var tipoAmbiente = servico.Configuracoes.TipoAmbiente;
+            var comunicacaoFuncionou = false;
+
+            switch (statusCode)
             {
-                return false;
-            }
-            else if (servico.HttpStatusCode == System.Net.HttpStatusCode.OK ||
-                (servico.HttpStatusCode == HttpStatusCode.InternalServerError && servico.Configuracoes.PadraoNFSe == PadraoNFSe.BAUHAUS) ||
-                servico.HttpStatusCode == (HttpStatusCode)0 && servico.Configuracoes.PadraoNFSe == PadraoNFSe.ADM_SISTEMAS ||
-                servico.HttpStatusCode == HttpStatusCode.BadRequest &&
-                    (servico.Configuracoes.PadraoNFSe == PadraoNFSe.NACIONAL
-                    || servico.Configuracoes.PadraoNFSe == PadraoNFSe.CENTI
-                    || servico.Configuracoes.PadraoNFSe == PadraoNFSe.DSF
-                    || servico.Configuracoes.PadraoNFSe == PadraoNFSe.AGILI) ||
-                servico.HttpStatusCode == HttpStatusCode.Unauthorized && servico.Configuracoes.PadraoNFSe == PadraoNFSe.IPM)
-            {
-                return true;
+                case HttpStatusCode.NotFound:
+                case HttpStatusCode.InternalServerError:
+                    return comunicacaoFuncionou;
+
+                case HttpStatusCode.OK:
+                    comunicacaoFuncionou = true;
+                    break;
+
+                case HttpStatusCode.BadRequest:
+                    if (padraoNFSe == PadraoNFSe.NACIONAL ||
+                        padraoNFSe == PadraoNFSe.DSF ||
+                        padraoNFSe == PadraoNFSe.AGILI)
+                    {
+                        comunicacaoFuncionou = true;
+                    }
+
+                    break;
+
+                case HttpStatusCode.Unauthorized:
+                    if (padraoNFSe == PadraoNFSe.IPM)
+                    {
+                        comunicacaoFuncionou = true;
+                    }
+
+                    break;
+
+                default:
+                    
+                    if (padraoNFSe == PadraoNFSe.SONNER && tipoAmbiente == TipoAmbiente.Producao && mensagemExcecao.Contains("vazio"))
+                    {
+                        comunicacaoFuncionou = true;
+                    }
+
+                    break;
             }
 
-            return false;
+            return comunicacaoFuncionou;
         }
 
         private static string VerificaContexto(ServicoBase servicoBase)
