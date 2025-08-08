@@ -2627,4 +2627,10 @@
 		<ArqConfig>VargemGrandeDoSulSP.xml</ArqConfig>
 		<PadraoNFSe>SIMPLISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5107925">
+		<Nome>Sorriso - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>SorrisoMT.xml</ArqConfig>
+		<PadraoNFSe>AGILI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
