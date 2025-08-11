@@ -2663,4 +2663,10 @@
 		<ArqConfig>ApucaranaPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4104808">
+		<Nome>Cascavel - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>CascavelPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
