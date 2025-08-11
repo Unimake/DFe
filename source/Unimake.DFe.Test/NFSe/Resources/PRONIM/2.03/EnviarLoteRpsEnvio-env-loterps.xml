@@ -35,7 +35,7 @@
 							<DescontoCondicionado>0.00</DescontoCondicionado>
 						</Valores>
 						<IssRetido>2</IssRetido>
-						<ItemListaServico>1401</ItemListaServico>
+						<ItemListaServico>10.01</ItemListaServico>
 						<CodigoTributacaoMunicipio>1401</CodigoTributacaoMunicipio>
 						<Discriminacao>MAO DE OBRA - R$ 0.50 TESTE DE NOTA</Discriminacao>
 						<CodigoMunicipio>4303004</CodigoMunicipio>
@@ -52,7 +52,7 @@
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>99999999999999</Cpf>
+								<Cpf>99999999999</Cpf>
 							</CpfCnpj>
 						</IdentificacaoTomador>
 						<RazaoSocial>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</RazaoSocial>

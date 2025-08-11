@@ -64,7 +64,7 @@
 				<Tomador>
 					<IdentificacaoTomador>
 						<CpfCnpj>
-							<Cpf>99999999999999</Cpf>
+							<Cpf>99999999999</Cpf>
 						</CpfCnpj>
 					</IdentificacaoTomador>
 					<RazaoSocial>RazaoSocial1</RazaoSocial>
