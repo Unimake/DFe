@@ -2639,4 +2639,10 @@
 		<ArqConfig>TerraBoaPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4115804">
+		<Nome>Medianeira - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>MedianeiraPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

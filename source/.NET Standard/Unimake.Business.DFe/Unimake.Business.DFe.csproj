@@ -528,6 +528,7 @@
 		<None Remove="Servicos\Config\NFSe\MassarandubaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\MataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MatupaMT.xml" />
+		<None Remove="Servicos\Config\NFSe\MedianeiraPR.xml" />
 		<None Remove="Servicos\Config\NFSe\Memory.xml" />
 		<None Remove="Servicos\Config\NFSe\MirassolandiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiDasCruzesSP.xml" />
@@ -1528,6 +1529,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MaracanauCE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarialvaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarilenaPR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MedianeiraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NiteroiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmasTO.xml" />
