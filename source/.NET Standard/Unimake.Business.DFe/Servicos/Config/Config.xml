@@ -2693,4 +2693,10 @@
 		<ArqConfig>ParanaguaPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4118006">
+		<Nome>Paraíso do Norte - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>ParaisoDoNortePR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
