@@ -2669,4 +2669,10 @@
 		<ArqConfig>CascavelPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4104907">
+		<Nome>Castro - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>CastroPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
