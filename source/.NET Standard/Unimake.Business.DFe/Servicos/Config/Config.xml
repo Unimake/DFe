@@ -2645,4 +2645,10 @@
 		<ArqConfig>MedianeiraPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5005707">
+		<Nome>Naviraí - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>NaviraiMS.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

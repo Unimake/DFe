@@ -543,6 +543,7 @@
 		<None Remove="Servicos\Config\NFSe\MossoroRN.xml" />
 		<None Remove="Servicos\Config\NFSe\NACIONAL.xml" />
 		<None Remove="Servicos\Config\NFSe\NatalRN.xml" />
+		<None Remove="Servicos\Config\NFSe\NaviraiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NiteroiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaBassanoRS.xml" />
@@ -1530,6 +1531,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarialvaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarilenaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MedianeiraPR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\NaviraiMS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NiteroiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmasTO.xml" />
