@@ -2729,4 +2729,10 @@
 		<ArqConfig>ItaperunaRJ.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3530300">
+		<Nome>Mirassol - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>MirassolSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

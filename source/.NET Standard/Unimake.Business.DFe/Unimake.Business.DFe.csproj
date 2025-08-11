@@ -540,6 +540,7 @@
 		<None Remove="Servicos\Config\NFSe\MedianeiraPR.xml" />
 		<None Remove="Servicos\Config\NFSe\Memory.xml" />
 		<None Remove="Servicos\Config\NFSe\MirassolandiaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\MirassolSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiDasCruzesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiGuacuSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiMirimSP.xml" />
@@ -1554,6 +1555,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarialvaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarilenaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MedianeiraPR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MirassolSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NaviraiMS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NiteroiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
