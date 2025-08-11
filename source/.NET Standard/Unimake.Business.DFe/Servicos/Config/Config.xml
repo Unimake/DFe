@@ -2633,4 +2633,10 @@
 		<ArqConfig>SorrisoMT.xml</ArqConfig>
 		<PadraoNFSe>AGILI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4127205">
+		<Nome>Terra Boa - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>TerraBoaPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
