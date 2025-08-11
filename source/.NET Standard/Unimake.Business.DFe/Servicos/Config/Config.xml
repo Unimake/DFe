@@ -2735,4 +2735,10 @@
 		<ArqConfig>MirassolSP.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3535804">
+		<Nome>Paranapanema - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ParanapanemaSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
