@@ -422,6 +422,7 @@
 		<None Remove="Servicos\Config\NFSe\EdeiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\EloiMendesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
+		<None Remove="Servicos\Config\NFSe\EntreIjuisRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Equiplano.xml" />
 		<None Remove="Servicos\Config\NFSe\ErnestinaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EstanciaVelhaRS.xml" />
@@ -1520,6 +1521,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DracenaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\EntreIjuisRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EsteioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EunapolisBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EusebioCE.xml" />

@@ -2717,4 +2717,10 @@
 		<ArqConfig>CangucuRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4306932">
+		<Nome>Entre-Ijuís - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>EntreIjuisRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
