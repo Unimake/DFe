@@ -2747,4 +2747,10 @@
 		<ArqConfig>PatoBrancoPR.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4314423">
+		<Nome>Picada Café - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>PicadaCafeRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
