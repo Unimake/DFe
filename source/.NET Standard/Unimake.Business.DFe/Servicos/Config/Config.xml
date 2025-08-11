@@ -2657,4 +2657,10 @@
 		<ArqConfig>Quatro BarrasPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4101408">
+		<Nome>Apucarana - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>ApucaranaPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
