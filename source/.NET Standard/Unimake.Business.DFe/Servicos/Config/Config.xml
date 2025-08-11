@@ -2711,4 +2711,10 @@
 		<ArqConfig>ArroioDoSalRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4304507">
+		<Nome>Canguçu - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CangucuRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

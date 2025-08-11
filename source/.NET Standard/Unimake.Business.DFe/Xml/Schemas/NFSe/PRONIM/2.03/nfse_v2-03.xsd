@@ -376,10 +376,12 @@
 			<xsd:whiteSpace value="collapse"/>
 		</xsd:restriction>
 	</xsd:simpleType>
-	<xsd:simpleType name="tsNif">xsd:restriction base="xsd:string">
-		<xsd:maxLength value="40"/>
-		<xsd:minLength value="0"/>
-		<xsd:whiteSpace value="collapse"/>
+	<xsd:simpleType name="tsNif">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="40"/>
+			<xsd:minLength value="0"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="tsEndereco">
 		<xsd:restriction base="xsd:string">

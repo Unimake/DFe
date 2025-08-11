@@ -93,23 +93,5 @@
 			<TargetNS></TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</ConsultarNfsePorRps>
-		<GerarNfse versao="2.03">
-			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoProducao>http://arroiodosal.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
-			<WebActionProducao>http://tempuri.org/INFSEGeracao/GerarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><cabecalho versao="2.03" xmlns="http://tempuri.org/"><versaoDados>2.03</versaoDados></cabecalho></soapenv:Header><soapenv:Body><tem:GerarNfse><tem:xmlEnvio>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</tem:xmlEnvio></tem:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>GerarNfseResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-			<TargetNS></TargetNS>
-			<TemCDATA>true</TemCDATA>
-		</GerarNfse>
 	</Servicos>
 </Configuracoes>
