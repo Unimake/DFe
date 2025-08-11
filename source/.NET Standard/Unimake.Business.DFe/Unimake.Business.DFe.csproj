@@ -525,6 +525,7 @@
 		<None Remove="Servicos\Config\NFSe\MaracanauCE.xml" />
 		<None Remove="Servicos\Config\NFSe\MarataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\MarcolandiaPI.xml" />
+		<None Remove="Servicos\Config\NFSe\MarechalCandidoRondonPR.xml" />
 		<None Remove="Servicos\Config\NFSe\MarialvaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\MarilenaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\MariliaSP.xml" />
@@ -1537,6 +1538,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ManhuacuMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MaracaiSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MaracanauCE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MarechalCandidoRondonPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarialvaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarilenaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MedianeiraPR.xml" />

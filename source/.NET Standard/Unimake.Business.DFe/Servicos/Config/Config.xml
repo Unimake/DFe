@@ -2681,4 +2681,10 @@
 		<ArqConfig>GuarapuavaPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4114609">
+		<Nome>Marechal Cândido Rondon - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>MarechalCandidoRondonPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
