@@ -2687,4 +2687,10 @@
 		<ArqConfig>MarechalCandidoRondonPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4118204">
+		<Nome>Paranaguá - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>ParanaguaPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
