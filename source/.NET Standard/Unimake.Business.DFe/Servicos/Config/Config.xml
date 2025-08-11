@@ -2705,4 +2705,10 @@
 		<ArqConfig>PinhaisPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4301057">
+		<Nome>Arroio do Sal - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>ArroioDoSalRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
