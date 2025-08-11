@@ -2699,4 +2699,10 @@
 		<ArqConfig>ParaisoDoNortePR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4119152">
+		<Nome>Pinhais - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>PinhaisPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
