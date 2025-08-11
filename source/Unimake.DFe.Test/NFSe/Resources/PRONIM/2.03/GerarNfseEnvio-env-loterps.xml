@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GerarNfseEnvio>
 	<Rps>
-		<InfDeclaracaoPrestacaoServico Id="ID1" versao="2.03">
+		<InfDeclaracaoPrestacaoServico Id="ID1">
 			<Rps Id="RPS1">
 				<IdentificacaoRps>
 					<Numero>1</Numero>
