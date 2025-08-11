@@ -587,6 +587,7 @@
 		<None Remove="Servicos\Config\NFSe\ParobeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PassoFundoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PassosMG.xml" />
+		<None Remove="Servicos\Config\NFSe\PatoBrancoPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PatosDeMinasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PatrocinioMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PauliniaSP.xml" />
@@ -1352,9 +1353,6 @@
 		<None Remove="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODEB\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODEB\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PRONIM\2.03\nfse.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PRONIM\2.03\nfse_v2-03.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PRONIM\2.03\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOGOIANIA\nfse_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOGOIANIA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\nfse_v2_04.xsd" />
@@ -1569,6 +1567,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanaguaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanapanemaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PassoFundoRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PatoBrancoPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatosDeMinasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatrocinioMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PedroLeopoldoMG.xml" />
@@ -3473,8 +3472,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODEB\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODEB\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\nfse.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\2.03\nfse_v2-03.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\2.03\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\nfse_v2-03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOGOIANIA\nfse_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOGOIANIA\xmldsig-core-schema20020212.xsd" />

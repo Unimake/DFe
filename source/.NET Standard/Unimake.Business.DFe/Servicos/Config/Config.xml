@@ -2741,4 +2741,10 @@
 		<ArqConfig>ParanapanemaSP.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4118501">
+		<Nome>Pato Branco - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>PatoBrancoPR.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
