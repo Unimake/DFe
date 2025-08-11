@@ -454,6 +454,7 @@
 		<None Remove="Servicos\Config\NFSe\GuaramirimSC.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarapariES.xml" />
+		<None Remove="Servicos\Config\NFSe\GuarapuavaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaratinguetaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaribaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaxupeMG.xml" />
@@ -1517,6 +1518,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FormigaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GasparSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarapuavaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaxupeMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IcaraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImbeRS.xml" />

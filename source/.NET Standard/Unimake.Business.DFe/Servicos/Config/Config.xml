@@ -2675,4 +2675,10 @@
 		<ArqConfig>CastroPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4109401">
+		<Nome>Guarapuava - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>GuarapuavaPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
