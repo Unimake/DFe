@@ -16,7 +16,7 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS></TargetNS>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</RecepcionarLoteRps>
 		<CancelarNfse versao="2.02">
@@ -34,7 +34,7 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS></TargetNS>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</CancelarNfse>
 		<SubstituirNfse versao="2.02">
@@ -72,7 +72,7 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS></TargetNS>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.02">
@@ -90,7 +90,7 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS></TargetNS>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</ConsultarNfsePorRps>
 	</Servicos>
