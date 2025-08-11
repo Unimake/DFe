@@ -2723,4 +2723,10 @@
 		<ArqConfig>EntreIjuisRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3302205">
+		<Nome>Itaperuna - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>ItaperunaRJ.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
