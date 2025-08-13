@@ -2753,4 +2753,10 @@
 		<ArqConfig>PicadaCafeRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4300604">
+		<Nome>Alvorada - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>AlvoradaRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
