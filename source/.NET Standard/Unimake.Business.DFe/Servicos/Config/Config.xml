@@ -2777,4 +2777,10 @@
 		<ArqConfig>OsorioRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4317202">
+		<Nome>Santa Rosa - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SantaRosaRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
