@@ -2765,4 +2765,10 @@
 		<ArqConfig>CachoeirinhaRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4309209">
+		<Nome>Gravataí - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>GravataiRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

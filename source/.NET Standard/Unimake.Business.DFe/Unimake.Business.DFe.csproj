@@ -453,6 +453,7 @@
 		<None Remove="Servicos\Config\NFSe\GoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\GovernadorValadaresMG.xml" />
 		<None Remove="Servicos\Config\NFSe\GramadoRS.xml" />
+		<None Remove="Servicos\Config\NFSe\GravataiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\GravataPE.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaibaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\GuairaPR.xml" />
@@ -1535,6 +1536,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FormigaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GasparSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GravataiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarapuavaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaxupeMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IcaraSC.xml" />
