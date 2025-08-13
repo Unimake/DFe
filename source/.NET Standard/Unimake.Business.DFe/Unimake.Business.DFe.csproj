@@ -571,6 +571,7 @@
 		<None Remove="Servicos\Config\NFSe\OlindaPE.xml" />
 		<None Remove="Servicos\Config\NFSe\OrizonaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\OsascoSP.xml" />
+		<None Remove="Servicos\Config\NFSe\OsorioRS.xml" />
 		<None Remove="Servicos\Config\NFSe\OuroFinoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PadreBernardoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PalmaresPE.xml" />
@@ -1565,6 +1566,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NaviraiMS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NiteroiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\OsorioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmasTO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmeiraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParacatuMG.xml" />

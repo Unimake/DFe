@@ -2771,4 +2771,10 @@
 		<ArqConfig>GravataiRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4313508">
+		<Nome>Osório - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>OsorioRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
