@@ -356,6 +356,7 @@
 		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BoaVistaRR.xml" />
 		<None Remove="Servicos\Config\NFSe\BoituvaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\BomDespachoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\BomPrincipioRS.xml" />
 		<None Remove="Servicos\Config\NFSe\BotucatuSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BrasiliaDF.xml" />
@@ -1517,6 +1518,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BageRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarbacenaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDoPiraiRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BomDespachoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaceresMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CachoeirinhaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandePB.xml" />

@@ -2783,4 +2783,10 @@
 		<ArqConfig>SantaRosaRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3107406">
+		<Nome>Bom Despacho - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>BomDespachoMG.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
