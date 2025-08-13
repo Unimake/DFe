@@ -1,121 +1,101 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRpsSincrono versao="2.02">
-			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos#RecepcionarLoteRpsSincrono</WebActionProducao>
-			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsSincronoRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></RecepcionarLoteRpsSincronoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>RecepcionarLoteRpsSincronoResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
-		</RecepcionarLoteRpsSincrono>
-		<GerarNfse versao="2.02">
-			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos#GerarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GerarNfseRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></GerarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>GerarNfseResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
+		<GerarNfse versao="1.00">
+			<Descricao>Envio de lote RPS - Sincrono</Descricao>
+			<RequestURIProducao>https://api-nfse-imperatriz-ma.prefeituramoderna.com.br/ws/services/gerar</RequestURIProducao>
+			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/gerar</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</GerarNfse>
-		<CancelarNfse versao="2.02">
-			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos#CancelarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></CancelarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>CancelarNfseResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
+		<CancelarNfse versao="1.00">
+			<Descricao>Envio do cancelamento de NFSe</Descricao>
+			<RequestURIProducao>https://api-nfse-imperatriz-ma.prefeituramoderna.com.br/ws/services/cancelar</RequestURIProducao>
+			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/cancelar</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</CancelarNfse>
-		<SubstituirNfse versao="2.02">
-			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos#SubstituirNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>//
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>//
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<TagExtraAssinatura></TagExtraAssinatura>
-			<TagExtraAtributoID></TagExtraAtributoID>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><SubstituirNfseRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></SubstituirNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>SubstituirNfseResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
-		</SubstituirNfse>
-		<ConsultarLoteRps versao="2.02">
-			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos#ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consultar NFSe por RPS</Descricao>
+			<RequestURIProducao>https://api-nfse-imperatriz-ma.prefeituramoderna.com.br/ws/services/Consultar?NumeroRps={Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/Consultar?NumeroRps={Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarLoteRpsResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
-		</ConsultarLoteRps>
-		<ConsultarNfsePorRps versao="2.02">
-			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos#ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfsePorRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarNfsePorRpsResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao>https://api-nfse-imperatriz-ma.prefeituramoderna.com.br/ws/services/Consultar?NumeroNfse={Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/Consultar?NumeroNfse={Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarNfse>
+		<SubstituirNfse versao="1.00">
+			<Descricao>Substituir NFSe</Descricao>
+			<RequestURIProducao>https://api-nfse-imperatriz-ma.prefeituramoderna.com.br/ws/services/substituir</RequestURIProducao>
+			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/substituir</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</SubstituirNfse>
+		<ConsultarRpsDisponivel versao="1.00">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao>https://api-nfse-imperatriz-ma.prefeituramoderna.com.br/ws/services/ultimorpsenviado</RequestURIProducao>
+			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/ultimorpsenviado</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarRpsDisponivel>
 	</Servicos>
 </Configuracoes>

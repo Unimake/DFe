@@ -1791,7 +1791,7 @@
 		<Nome>Imperatriz - MA</Nome>
 		<UF>MA</UF>
 		<ArqConfig>ImperatrizMA.xml</ArqConfig>
-		<PadraoNFSe>PORTAL_FACIL</PadraoNFSe>
+		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="1501402">
 		<Nome>Belém - PA</Nome>
