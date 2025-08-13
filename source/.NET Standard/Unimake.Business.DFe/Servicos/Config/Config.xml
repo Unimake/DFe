@@ -2789,4 +2789,10 @@
 		<ArqConfig>BomDespachoMG.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4309605">
+		<Nome>Horizontina - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>HorizontinaRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

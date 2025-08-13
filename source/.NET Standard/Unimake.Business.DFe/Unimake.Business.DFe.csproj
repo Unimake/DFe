@@ -467,6 +467,7 @@
 		<None Remove="Servicos\Config\NFSe\GuaxupeMG.xml" />
 		<None Remove="Servicos\Config\NFSe\GurupiTO.xml" />
 		<None Remove="Servicos\Config\NFSe\HarmoniaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\HorizontinaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\IbicoaraBA.xml" />
 		<None Remove="Servicos\Config\NFSe\IbirubaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\IcaraSC.xml" />
@@ -1543,6 +1544,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GravataiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarapuavaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaxupeMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\HorizontinaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IcaraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImbeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IndaiatubaSP.xml" />
