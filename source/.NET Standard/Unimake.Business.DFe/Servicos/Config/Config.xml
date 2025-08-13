@@ -2759,4 +2759,10 @@
 		<ArqConfig>AlvoradaRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4303103">
+		<Nome>Cachoeirinha - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CachoeirinhaRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
