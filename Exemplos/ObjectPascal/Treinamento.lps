@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="16" Y="9"/>
-        <UsageCount Value="104"/>
+        <UsageCount Value="111"/>
       </Unit>
       <Unit>
         <Filename Value="main.pas"/>
@@ -19,9 +19,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <TopLine Value="51"/>
-        <CursorPos Y="77"/>
-        <UsageCount Value="104"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="18"/>
+        <CursorPos Y="30"/>
+        <UsageCount Value="111"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -32,7 +33,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="26597"/>
         <CursorPos X="37" Y="26598"/>
-        <UsageCount Value="95"/>
+        <UsageCount Value="102"/>
       </Unit>
       <Unit>
         <Filename Value="consultarstatusnfe.pas"/>
@@ -41,16 +42,17 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="18"/>
         <CursorPos X="47" Y="61"/>
-        <UsageCount Value="93"/>
+        <UsageCount Value="100"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfesincrono.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFeSincrono"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="51"/>
-        <CursorPos X="29" Y="56"/>
-        <UsageCount Value="92"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="30"/>
+        <CursorPos Y="65"/>
+        <UsageCount Value="99"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="imprimirdanfecomunidanfe.pas"/>
@@ -59,7 +61,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="57"/>
         <CursorPos X="7" Y="90"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="62"/>
       </Unit>
       <Unit>
         <Filename Value="main.lfm"/>
@@ -101,8 +103,10 @@
       <Unit>
         <Filename Value="enviarnfesincronoduplicidade.pas"/>
         <UnitName Value="EnviarNFeSincronoDuplicidade"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="12"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="133"/>
+        <UsageCount Value="15"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="consultarsituacaonfe.pas"/>
@@ -122,9 +126,9 @@
       <Unit>
         <Filename Value="eventocancelamentonfe.pas"/>
         <UnitName Value="EventoCancelamentoNFe"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="6"/>
         <CursorPos X="27" Y="6"/>
-        <UsageCount Value="18"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -149,20 +153,19 @@
       <Unit>
         <Filename Value="consultardistribuicaodfe.pas"/>
         <UnitName Value="ConsultarDistribuicaoDFe"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="16"/>
         <CursorPos X="28" Y="72"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="enviareventomanifestacaonfe.pas"/>
         <UnitName Value="EnviarEventoManifestacaoNFe"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="75"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="73"/>
         <CursorPos X="35" Y="88"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -189,127 +192,136 @@
         <CursorPos Y="108"/>
         <UsageCount Value="12"/>
       </Unit>
+      <Unit>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <UnitName Value="EnviarNFeSincronoRTC"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="211"/>
+        <CursorPos Y="254"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="88" TopLine="46"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="41" Column="35"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="92" TopLine="48"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="42" Column="35"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="93" TopLine="49"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="43" Column="35"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="96" TopLine="52"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="44" Column="35"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="95" TopLine="52"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="132" Column="45" TopLine="86"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="96" TopLine="52"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="143" Column="45" TopLine="97"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="95" TopLine="52"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="154" Column="45" TopLine="108"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="96" TopLine="52"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="39" Column="22"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="95" TopLine="52"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="44" Column="43" TopLine="16"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="97" TopLine="53"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="165" Column="53" TopLine="137"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="99" TopLine="55"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="26" TopLine="16"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="101" TopLine="57"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="100" TopLine="71"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="103" TopLine="59"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="101" TopLine="71"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="105" TopLine="61"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="102" TopLine="71"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="116" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="103" TopLine="71"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="114" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="104" TopLine="71"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="116" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="105" TopLine="71"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="114" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="106" TopLine="71"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="116" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="107" TopLine="71"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="114" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="108" TopLine="71"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="116" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="109" TopLine="71"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="115" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="113" TopLine="71"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="116" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="248" Column="37" TopLine="226"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="114" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="100" TopLine="73"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="101" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="257" Column="47" TopLine="230"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="77" TopLine="51"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="100" TopLine="73"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="29" TopLine="2"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="271" Column="27" TopLine="226"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="128" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="272" TopLine="238"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="29" TopLine="2"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="294" Column="34" TopLine="288"/>
       </Position>
       <Position>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <Caret Line="128" TopLine="79"/>
+        <Filename Value="enviarnfesincronortc.pas"/>
+        <Caret Line="292" Column="27" TopLine="270"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -318,99 +330,6 @@
     </RunParams>
   </ProjectSession>
   <Debugging>
-    <BreakPoints>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="enviareventomanifestacaonfe.pas"/>
-        <Line Value="31"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="enviarnfesincrono.pas"/>
-        <Line Value="55"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="enviarnfesincrono.pas"/>
-        <Line Value="307"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="enviarnfesincronodesserializacao.pas"/>
-        <Line Value="98"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="enviarnfcesincrono.pas"/>
-        <Line Value="305"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="enviarnfcesincrono.pas"/>
-        <Line Value="55"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="enviarnfcesincrono.pas"/>
-        <Line Value="199"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="enviarnfcesincrono.pas"/>
-        <Line Value="271"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="eventocancelamentonfce.pas"/>
-        <Line Value="40"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="enviarnfcesincronodesserializacao.pas"/>
-        <Line Value="53"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="enviarnfcesincronodesserializacao.pas"/>
-        <Line Value="102"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="enviarnfcesincronodesserializacao.pas"/>
-        <Line Value="155"/>
-      </Item>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="eventocancelamentonfce.pas"/>
-        <Line Value="110"/>
-      </Item>
-    </BreakPoints>
     <Watches>
       <Item>
         <Expression Value="oEnviNFe.NFe[0]"/>

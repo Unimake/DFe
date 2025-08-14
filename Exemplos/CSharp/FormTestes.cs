@@ -10,6 +10,7 @@ using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Business.DFe.Xml.ESocial;
+using Unimake.Business.DFe.Xml.NF3e;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 using Unimake.Security.Platform;
@@ -24,11 +25,11 @@ using ServicoEFDReinf = Unimake.Business.DFe.Servicos.EFDReinf;
 using ServicoESocial = Unimake.Business.DFe.Servicos.ESocial;
 using ServicoGNRe = Unimake.Business.DFe.Servicos.GNRE;
 using ServicoMDFe = Unimake.Business.DFe.Servicos.MDFe;
+using ServicoNF3e = Unimake.Business.DFe.Servicos.NF3e;
 using ServicoNFCe = Unimake.Business.DFe.Servicos.NFCe;
+using ServicoNFCom = Unimake.Business.DFe.Servicos.NFCom;
 using ServicoNFe = Unimake.Business.DFe.Servicos.NFe;
 using ServicoNFSe = Unimake.Business.DFe.Servicos.NFSe;
-using ServicoNFCom = Unimake.Business.DFe.Servicos.NFCom;
-using ServicoNF3e = Unimake.Business.DFe.Servicos.NF3e;
 using XmlCCG = Unimake.Business.DFe.Xml.CCG;
 using XmlCTe = Unimake.Business.DFe.Xml.CTe;
 using XmlCTeOS = Unimake.Business.DFe.Xml.CTeOS;
@@ -36,10 +37,9 @@ using XmlEFDReinf = Unimake.Business.DFe.Xml.EFDReinf;
 using XmlESocial = Unimake.Business.DFe.Xml.ESocial;
 using XmlGNRe = Unimake.Business.DFe.Xml.GNRE;
 using XmlMDFe = Unimake.Business.DFe.Xml.MDFe;
-using XmlNFe = Unimake.Business.DFe.Xml.NFe;
-using XmlNFCom = Unimake.Business.DFe.Xml.NFCom;
 using XmlNF3e = Unimake.Business.DFe.Xml.NF3e;
-using Unimake.Business.DFe.Xml.NF3e;
+using XmlNFCom = Unimake.Business.DFe.Xml.NFCom;
+using XmlNFe = Unimake.Business.DFe.Xml.NFe;
 
 namespace TreinamentoDLL
 {
@@ -1707,24 +1707,7 @@ namespace TreinamentoDLL
                                     IndFinal = SimNao.Sim,
                                     IndPres = IndicadorPresenca.OperacaoPresencial,
                                     ProcEmi = ProcessoEmissao.AplicativoContribuinte,
-                                    VerProc = "TESTE 1.00",
-                                    CMunFGIBS = 3543402, //RTC
-                                    GCompraGov = new XmlNFe.GCompraGov //RTC
-                                    {
-                                        PRedutor = 0,
-                                        TpEnteGov = TipoEnteGovernamental.Municipio,
-                                        TpOperGov = TipoOperacaoEnteGovernamental.Fornecimento
-                                    },
-                                    GPagAntecipado = new GPagAntecipado //RTC
-                                    {
-                                        RefNFe = new List<string>
-                                        {
-                                            "00000000000000000000000000000000000000000000",
-                                            "11111111111111111111111111111111111111111111"
-                                        }
-                                    },
-                                    TpNFCredito = TipoNFCredito.ApropriacaoCreditoPresumidoIBSZFM, //RTC
-                                    TpNFDebito = TipoNFDebito.PagamentoAntecipado //RTC
+                                    VerProc = "TESTE 1.00"
                                 },
                                 Emit = new XmlNFe.Emit
                                 {
@@ -1791,51 +1774,7 @@ namespace TreinamentoDLL
                                         VOutro = 0,
                                         VNF = 84.90,
                                         VTotTrib = 12.63
-                                    },
-                                    IBSCBSTot = new XmlNFe.IBSCBSTot //RTC
-                                    {
-                                        GCBS = new XmlNFe.GCBSTot
-                                        {
-                                            VCBS = 0,
-                                            VCredPres = 0,
-                                            VCredPresCondSus = 0,
-                                            VDevTrib = 0,
-                                            VDif = 0
-                                        },
-                                        GIBS = new GIBSTot
-                                        {
-                                            GIBSMun = new XmlNFe.GIBSMunTot
-                                            {
-                                                VDevTrib = 0,
-                                                VDif = 0,
-                                                VIBSMun = 0
-                                            },
-                                            GIBSUF = new XmlNFe.GIBSUFTot
-                                            {
-                                                VDevTrib = 0,
-                                                VDif = 0,
-                                                VIBSUF = 0
-                                            },
-                                            VCredPres = 0,
-                                            VCredPresCondSus = 0,
-                                            VIBS = 0
-                                        },
-                                        GMono = new GMono
-                                        {
-                                            VCBSMono = 0,
-                                            VCBSMonoRet = 0,
-                                            VCBSMonoReten = 0,
-                                            VIBSMono = 0,
-                                            VIBSMonoRet = 0,
-                                            VIBSMonoReten = 0
-                                        },
-                                        VBCIBSCBS = 0,
-                                    },
-                                    ISTot = new ISTot  //RTC
-                                    {
-                                        VIS = 0
-                                    },
-                                    VNFTot = 0, //RTC
+                                    }
                                 },
                                 Transp = new XmlNFe.Transp
                                 {
@@ -2250,7 +2189,7 @@ namespace TreinamentoDLL
             }
         }
 
-        private List<XmlNFe.Det> CriarDet()
+        private List<XmlNFe.Det> CriarDet(bool rtc = false)
         {
             var dets = new List<XmlNFe.Det>();
 
@@ -2352,7 +2291,6 @@ namespace TreinamentoDLL
                         //}
 
                     },
-                    VItem = 0, //RTC
                     Imposto = new XmlNFe.Imposto
                     {
                         VTotTrib = 12.63,
@@ -2393,141 +2331,7 @@ namespace TreinamentoDLL
                                 VCOFINS = 0.00
                             }
                         },
-                        IBSCBS = new XmlNFe.IBSCBS //RTC
-                        {
-                            CST = "000",
-                            CClassTrib = "000001",
-                            GIBSCBS = new XmlNFe.GIBSCBS
-                            {
-                                VBC = 0,
-                                GCBS = new XmlNFe.GCBS
-                                {
-                                    PCBS = 0,
-                                    VCBS = 0,
-                                    GDevTrib = new XmlNFe.GDevTrib
-                                    {
-                                        VDevTrib = 0
-                                    },
-                                    GDif = new XmlNFe.GDif
-                                    {
-                                        PDif = 0,
-                                        VDif = 0
-                                    },
-                                    GRed = new XmlNFe.GRed
-                                    {
-                                        PAliqEfet = 0,
-                                        PRedAliq = 0
-                                    }
-                                },
-                                GIBSMun = new XmlNFe.GIBSMun
-                                {
-                                    PIBSMun = 0,
-                                    VIBSMun = 0,
-                                    GDevTrib = new XmlNFe.GDevTrib
-                                    {
-                                        VDevTrib = 0
-                                    },
-                                    GDif = new XmlNFe.GDif
-                                    {
-                                        PDif = 0,
-                                        VDif = 0
-                                    },
-                                    GRed = new XmlNFe.GRed
-                                    {
-                                        PAliqEfet = 0,
-                                        PRedAliq = 0
-                                    }
-                                },
-                                GIBSUF = new XmlNFe.GIBSUF
-                                {
-                                    PIBSUF = 0,
-                                    VIBSUF = 0,
-                                    GDevTrib = new XmlNFe.GDevTrib
-                                    {
-                                        VDevTrib = 0
-                                    },
-                                    GDif = new XmlNFe.GDif
-                                    {
-                                        PDif = 0,
-                                        VDif = 0
-                                    },
-                                    GRed = new XmlNFe.GRed
-                                    {
-                                        PAliqEfet = 0,
-                                        PRedAliq = 0
-
-                                    }
-                                },
-                                //GCBSCredPres = new XmlNFe.GCBSCredPres
-                                //{
-                                //    CCredPres = "",
-                                //    PCredPres = 0,
-                                //    VCredPres = 0,
-                                //    VCredPresCondSus = 0
-                                //},
-                                //GIBSCredPres = new XmlNFe.GIBSCredPres
-                                //{
-                                //    CCredPres = "",
-                                //    PCredPres = 0,
-                                //    VCredPres = 0,
-                                //    VCredPresCondSus = 0
-                                //},
-                                //GTribCompraGov = new XmlNFe.GTribCompraGov
-                                //{
-                                //    PAliqCBS = 0,
-                                //    PAliqIBSMun = 0,
-                                //    PAliqIBSUF = 0,
-                                //    VTribCBS = 0,
-                                //    VTribIBSMun = 0,
-                                //    VTribIBSUF = 0
-                                //},
-                                //GTribRegular = new XmlNFe.GTribRegular
-                                //{
-                                //    CClassTribReg = "000001",
-                                //    CSTReg = "000",
-                                //    PAliqEfetRegCBS = 0,
-                                //    PAliqEfetRegIBSMun = 0,
-                                //    PAliqEfetRegIBSUF = 0,
-                                //    VTribRegCBS = 0,
-                                //    VTribRegIBSMun = 0,
-                                //    VTribRegIBSUF = 0
-                                //}
-                            },
-                            //GCredPresIBSZFM = new GCredPresIBSZFM
-                            //{
-                            //    TpCredPresIBSZFM = TipoCreditoPresumidoIBSZFM.SemCreditoPresumido,
-                            //    VCredPresIBSZFM = 0
-                            //},
-                            //GIBSCBSMono = new XmlNFe.GIBSCBSMono
-                            //{
-                            //    AdRemCBS = 0,
-                            //    AdRemCBSRet = 0,
-                            //    AdRemCBSReten = 0,
-                            //    AdRemIBS = 0,
-                            //    AdRemIBSRet = 0,
-                            //    AdRemIBSReten = 0,
-                            //    PDifCBS = 0,
-                            //    PDifIBS = 0,
-                            //    QBCMono = 0,
-                            //    QBCMonoReten = 0,
-                            //    QBCMonoRet = 0,
-                            //    VCBSMono = 0,
-                            //    VCBSMonoDif = 0,
-                            //    VCBSMonoReten = 0,
-                            //    VCBSMonoRet = 0,
-                            //    VIBSMono = 0,
-                            //    VIBSMonoDif = 0,
-                            //    VIBSMonoRet = 0,
-                            //    VIBSMonoReten = 0,
-                            //    VTotCBSMonoItem = 0,
-                            //    VTotIBSMonoItem = 0
-                            //},
-                            //GTransfCred = new GTransfCred
-                            //{
-                            //    VCBS = 0,
-                            //    VIBS = 0
-                            //}                            
-                        }
+                        IBSCBS = rtc ? CriarIBSCBS() : null
                     },
                     ImpostoDevol = new ImpostoDevol
                     {
@@ -2542,6 +2346,159 @@ namespace TreinamentoDLL
             }
 
             return dets;
+        }
+
+        public XmlNFe.IBSCBS CriarIBSCBS()
+        {
+            var ibscbs = new XmlNFe.IBSCBS //RTC
+            {
+                CST = "000",
+                CClassTrib = "000001",
+                GIBSCBS = new XmlNFe.GIBSCBS
+                {
+                    VBC = 0,
+                    GCBS = new XmlNFe.GCBS
+                    {
+                        PCBS = 0,
+                        VCBS = 0,
+                        GDevTrib = new XmlNFe.GDevTrib
+                        {
+                            VDevTrib = 0
+                        },
+                        //GDif = new XmlNFe.GDif
+                        //{
+                        //    PDif = 0,
+                        //    VDif = 0
+                        //},
+                        GRed = new XmlNFe.GRed
+                        {
+                            PAliqEfet = 0,
+                            PRedAliq = 0
+                        }
+                    },
+                    GIBSMun = new XmlNFe.GIBSMun
+                    {
+                        PIBSMun = 0,
+                        VIBSMun = 0,
+                        GDevTrib = new XmlNFe.GDevTrib
+                        {
+                            VDevTrib = 0
+                        },
+                        //GDif = new XmlNFe.GDif
+                        //{
+                        //    PDif = 0,
+                        //    VDif = 0
+                        //},
+                        GRed = new XmlNFe.GRed
+                        {
+                            PAliqEfet = 0,
+                            PRedAliq = 0
+                        }
+                    },
+                    GIBSUF = new XmlNFe.GIBSUF
+                    {
+                        PIBSUF = 0,
+                        VIBSUF = 0,
+                        GDevTrib = new XmlNFe.GDevTrib
+                        {
+                            VDevTrib = 0
+                        },
+                        //GDif = new XmlNFe.GDif
+                        //{
+                        //    PDif = 0,
+                        //    VDif = 0
+                        //},
+                        GRed = new XmlNFe.GRed
+                        {
+                            PAliqEfet = 0,
+                            PRedAliq = 0
+                        }
+                    },
+                    VIBS = 0,
+                    //GCBSCredPres = new XmlNFe.GCBSCredPres
+                    //{
+                    //    CCredPres = "",
+                    //    PCredPres = 0,
+                    //    VCredPres = 0,
+                    //    VCredPresCondSus = 0
+                    //},
+                    //GIBSCredPres = new XmlNFe.GIBSCredPres
+                    //{
+                    //    CCredPres = "",
+                    //    PCredPres = 0,
+                    //    VCredPres = 0,
+                    //    VCredPresCondSus = 0
+                    //},
+                    //GTribCompraGov = new XmlNFe.GTribCompraGov
+                    //{
+                    //    PAliqCBS = 0,
+                    //    PAliqIBSMun = 0,
+                    //    PAliqIBSUF = 0,
+                    //    VTribCBS = 0,
+                    //    VTribIBSMun = 0,
+                    //    VTribIBSUF = 0
+                    //},
+                    //GTribRegular = new XmlNFe.GTribRegular
+                    //{
+                    //    CClassTribReg = "000001",
+                    //    CSTReg = "000",
+                    //    PAliqEfetRegCBS = 0,
+                    //    PAliqEfetRegIBSMun = 0,
+                    //    PAliqEfetRegIBSUF = 0,
+                    //    VTribRegCBS = 0,
+                    //    VTribRegIBSMun = 0,
+                    //    VTribRegIBSUF = 0
+                    //}
+                },
+                //GCredPresIBSZFM = new GCredPresIBSZFM
+                //{
+                //    TpCredPresIBSZFM = TipoCreditoPresumidoIBSZFM.SemCreditoPresumido,
+                //    VCredPresIBSZFM = 0
+                //},
+                //GIBSCBSMono = new XmlNFe.GIBSCBSMono
+                //{
+                //    GMonoDif = new GMonoDif
+                //    {
+                //        PDifCBS = 0,
+                //        PDifIBS = 0,
+                //        VIBSMonoDif = 0,
+                //        VCBSMonoDif = 0                                    
+                //    },
+                //    GMonoPadrao = new GMonoPadrao
+                //    {
+                //        QBCMono = 0,
+                //        AdRemCBS = 0,
+                //        AdRemIBS = 0,
+                //        VIBSMono = 0,
+                //        VCBSMono = 0                                 
+                //    },
+                //    GMonoRet = new GMonoRet
+                //    {
+                //        QBCMonoRet = 0,
+                //        AdRemCBSRet = 0,
+                //        AdRemIBSRet = 0,
+                //        VIBSMonoRet = 0,
+                //        VCBSMonoRet = 0                                    
+                //    },
+                //    GMonoReten = new GMonoReten
+                //    {
+                //        QBCMonoReten = 0,
+                //        AdRemCBSReten = 0,
+                //        AdRemIBSReten = 0,
+                //        VCBSMonoReten = 0,
+                //        VIBSMonoReten = 0
+                //    },
+                //    VTotCBSMonoItem = 0,
+                //    VTotIBSMonoItem = 0
+                //},
+                //GTransfCred = new GTransfCred
+                //{
+                //    VCBS = 0,
+                //    VIBS = 0
+                //}
+            };
+
+            return ibscbs;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -7471,6 +7428,274 @@ namespace TreinamentoDLL
                 default:
                     // Evento rejeitado, fazer os devidos tratamentos.
                     break;
+            }
+        }
+
+        private void BtnEnviarNFeSincronoRTC_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlNFe.EnviNFe
+            {
+                Versao = "4.00",
+                IdLote = "000000000000001",
+                IndSinc = SimNao.Sim,
+                NFe = new List<XmlNFe.NFe>
+                {
+                    new XmlNFe.NFe
+                    {
+                        InfNFe = new List<XmlNFe.InfNFe>
+                        {
+                            new XmlNFe.InfNFe
+                            {
+                                Versao = "4.00",
+                                Ide = new XmlNFe.Ide
+                                {
+                                    CUF = UFBrasil.PR,
+                                    NatOp = "VENDA PRODUC.DO ESTABELEC",
+                                    Mod = ModeloDFe.NFe,
+                                    Serie = 59,
+                                    NNF = 1,
+                                    DhEmi = DateTime.Now,
+                                    DhSaiEnt = DateTime.Now,
+                                    TpNF = TipoOperacao.Saida,
+                                    IdDest = DestinoOperacao.OperacaoInterestadual,
+                                    CMunFG = 4118402,
+                                    TpImp = FormatoImpressaoDANFE.NormalRetrato,
+                                    TpEmis = TipoEmissao.Normal,
+                                    TpAmb = TipoAmbiente.Homologacao,
+                                    FinNFe = FinalidadeNFe.Normal,
+                                    IndFinal = SimNao.Sim,
+                                    IndPres = IndicadorPresenca.OperacaoPresencial,
+                                    ProcEmi = ProcessoEmissao.AplicativoContribuinte,
+                                    VerProc = "TESTE 1.00",
+                                    CMunFGIBS = 3543402, //RTC
+                                    GCompraGov = new XmlNFe.GCompraGov //RTC
+                                    {
+                                        PRedutor = 0,
+                                        TpEnteGov = TipoEnteGovernamental.Municipio,
+                                        TpOperGov = TipoOperacaoEnteGovernamental.Fornecimento
+                                    },
+                                    GPagAntecipado = new GPagAntecipado //RTC
+                                    {
+                                        RefNFe = new List<string>
+                                        {
+                                            "00000000000000000000000000000000000000000000",
+                                            "11111111111111111111111111111111111111111111"
+                                        }
+                                    },
+                                    TpNFCredito = TipoNFCredito.ApropriacaoCreditoPresumidoIBSZFM, //RTC
+                                    TpNFDebito = TipoNFDebito.PagamentoAntecipado //RTC
+                                },
+                                Emit = new XmlNFe.Emit
+                                {
+                                    CNPJ = "06117473000150",
+                                    XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA",
+                                    XFant = "UNIMAKE - PARANAVAI",
+                                    EnderEmit = new XmlNFe.EnderEmit
+                                    {
+                                        XLgr = "RUA ANTONIO FELIPE",
+                                        Nro = "1500",
+                                        XBairro = "CENTRO",
+                                        CMun = 4118402,
+                                        XMun = "PARANAVAI",
+                                        UF = UFBrasil.PR,
+                                        CEP = "87704030",
+                                        Fone = "04431414900"
+                                    },
+                                    IE = "9032000301",
+                                    IM = "14018",
+                                    CNAE = "6202300",
+                                    CRT = CRT.SimplesNacional
+                                },
+                                Dest = new XmlNFe.Dest
+                                {
+                                    CNPJ = "04218457000128",
+                                    XNome = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
+                                    EnderDest = new XmlNFe.EnderDest
+                                    {
+                                        XLgr = "AVENIDA DA SAUDADE",
+                                        Nro = "1555",
+                                        XBairro = "CAMPOS ELISEOS",
+                                        CMun = 3543402,
+                                        XMun = "RIBEIRAO PRETO",
+                                        UF = UFBrasil.SP,
+                                        CEP = "14080000",
+                                        Fone = "01639611500"
+                                    },
+                                    IndIEDest = IndicadorIEDestinatario.ContribuinteICMS,
+                                    IE = "582614838110",
+                                    Email = "janelaorp@janelaorp.com.br"
+                                },
+                                Det = CriarDet(true),
+                                Total = new XmlNFe.Total
+                                {
+                                    ICMSTot = new XmlNFe.ICMSTot
+                                    {
+                                        VBC = 0,
+                                        VICMS = 0,
+                                        VICMSDeson = 0,
+                                        VFCP = 0,
+                                        VBCST = 0,
+                                        VST = 0,
+                                        VFCPST = 0,
+                                        VFCPSTRet = 0,
+                                        VProd = 84.90,
+                                        VFrete = 0,
+                                        VSeg = 0,
+                                        VDesc = 0,
+                                        VII = 0,
+                                        VIPI = 0,
+                                        VIPIDevol = 0,
+                                        VPIS = 0,
+                                        VCOFINS = 0,
+                                        VOutro = 0,
+                                        VNF = 84.90,
+                                        VTotTrib = 12.63
+                                    },
+                                    IBSCBSTot = new XmlNFe.IBSCBSTot //RTC
+                                    {
+                                        GCBS = new XmlNFe.GCBSTot
+                                        {
+                                            VCBS = 0,
+                                            VCredPres = 0,
+                                            VCredPresCondSus = 0,
+                                            VDevTrib = 0,
+                                            VDif = 0
+                                        },
+                                        GIBS = new GIBSTot
+                                        {
+                                            GIBSMun = new XmlNFe.GIBSMunTot
+                                            {
+                                                VDevTrib = 0,
+                                                VDif = 0,
+                                                VIBSMun = 0
+                                            },
+                                            GIBSUF = new XmlNFe.GIBSUFTot
+                                            {
+                                                VDevTrib = 0,
+                                                VDif = 0,
+                                                VIBSUF = 0
+                                            },
+                                            VCredPres = 0,
+                                            VCredPresCondSus = 0,
+                                            VIBS = 0
+                                        },
+                                        GMono = new GMono
+                                        {
+                                            VCBSMono = 0,
+                                            VCBSMonoRet = 0,
+                                            VCBSMonoReten = 0,
+                                            VIBSMono = 0,
+                                            VIBSMonoRet = 0,
+                                            VIBSMonoReten = 0
+                                        },
+                                        VBCIBSCBS = 0,
+                                    },
+                                    ISTot = new ISTot  //RTC
+                                    {
+                                        VIS = 0
+                                    },
+                                    VNFTot = 0, //RTC
+                                },
+                                Transp = new XmlNFe.Transp
+                                {
+                                    ModFrete = ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF,
+                                    Vol = new List<XmlNFe.Vol>
+                                    {
+                                        new XmlNFe.Vol
+                                        {
+                                            QVol = 1,
+                                            Esp = "LU",
+                                            Marca = "UNIMAKE",
+                                            PesoL = 0.000,
+                                            PesoB = 0.000
+                                        }
+                                    }
+                                },
+                                Cobr = new XmlNFe.Cobr()
+                                {
+                                    Fat = new XmlNFe.Fat
+                                    {
+                                        NFat = "057910",
+                                        VOrig = 84.90,
+                                        VDesc = 0,
+                                        VLiq = 84.90
+                                    },
+                                    Dup = new List<XmlNFe.Dup>
+                                    {
+                                        new XmlNFe.Dup
+                                        {
+                                            NDup = "001",
+                                            DVenc = DateTime.Now,
+                                            VDup = 84.90
+                                        }
+                                    }
+                                },
+                                Pag = new XmlNFe.Pag
+                                {
+                                    DetPag = new List<XmlNFe.DetPag>
+                                    {
+                                        new XmlNFe.DetPag
+                                        {
+                                            IndPag = IndicadorPagamento.PagamentoVista,
+                                            TPag = MeioPagamento.Dinheiro,
+                                            VPag = 80.90
+                                        }
+                                    }
+                                },
+                                InfAdic = new XmlNFe.InfAdic
+                                {
+                                    InfCpl = ";CONTROLE: 0000241197;PEDIDO(S) ATENDIDO(S): 300474;Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008;Permite o aproveitamento do credito de ICMS no valor de R$ 2,40, correspondente ao percentual de 2,83% . Nos termos do Art. 23 - LC 123/2006 (Resolucoes CGSN n. 10/2007 e 53/2008);Voce pagou aproximadamente: R$ 6,69 trib. federais / R$ 5,94 trib. estaduais / R$ 0,00 trib. municipais. Fonte: IBPT/empresometro.com.br 18.2.B A3S28F;",
+                                },
+                                InfRespTec = new XmlNFe.InfRespTec
+                                {
+                                    CNPJ = "06117473000150",
+                                    XContato = "Wandrey Mundin Ferreira",
+                                    Email = "wandrey@unimake.com.br",
+                                    Fone = "04431414900"
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var autorizacao = new ServicoNFe.Autorizacao(xml, configuracao);
+            var xmlNFeAssinadoNoFormatoString = autorizacao.ConteudoXMLAssinado.OuterXml;
+
+            //Gravo no meu banco de dados o xmlString
+            autorizacao.Executar();
+
+
+            //Gravar o arquivo do conteúdo retornado em uma pasta qualquer para ter em segurança. Pode-se também gravar na base de dados. Fica a critério de cada um.
+            File.WriteAllText(@"d:\testenfe\retorno\nomearquivoretorno.xml", autorizacao.RetornoWSString);
+
+            if (autorizacao.Result.ProtNFe != null)
+            {
+                switch (autorizacao.Result.ProtNFe.InfProt.CStat)
+                {
+                    case 100: //Autorizado o uso da NFe
+                    case 110: //Uso Denegado
+                    case 150: //Autorizado o uso da NF-e, autorização fora de prazo
+                    case 205: //NF-e está denegada na base de dados da SEFAZ [nRec:999999999999999]
+                    case 301: //Uso Denegado: Irregularidade fiscal do emitente
+                    case 302: //Uso Denegado: Irregularidade fiscal do destinatário
+                    case 303: //Uso Denegado: Destinatário não habilitado a operar na UF
+                        autorizacao.GravarXmlDistribuicao(@"D:\testenfe\");
+                        var docProcNFe = autorizacao.NfeProcResult.GerarXML().OuterXml; //Gerar o Objeto para pegar a string e gravar em banco de dados
+                        MessageBox.Show(autorizacao.NfeProcResult.NomeArquivoDistribuicao);
+                        break;
+
+                    default:
+                        //NF Rejeitada
+                        break;
+                }
             }
         }
     }

@@ -1,9 +1,8 @@
 // ------------------------------------------------------------------
-// Enviar NFe no modo síncrono
-//   Tratando rejeição de duplicidade de NFe (chaves identicas)
+// Enviar NFe no modo síncrono (Com as tags da reforma tributária)
 // ------------------------------------------------------------------
 
-unit EnviarNFeSincronoDuplicidade;
+unit EnviarNFeSincronoRTC;
 
 {$mode ObjFPC}{$H+}
 
@@ -13,7 +12,7 @@ uses
   Classes, SysUtils, ComObj, Dialogs, Variants;
 
 type
-  TEnviarNFeSincronoDuplicidade = class
+  TEnviarNFeSincronoRTC = class
   private
 
   public
@@ -22,40 +21,18 @@ type
 
 implementation
 
-procedure TEnviarNFeSincronoDuplicidade.Executar;
+procedure TEnviarNFeSincronoRTC.Executar;
 var
   oConfiguracao: olevariant;
-  oConfCons: olevariant;
   oExceptionInterop: olevariant;
 
   oEnviNFe: olevariant;
   oNfe: olevariant;
   oInfNFe: olevariant;
-  oIde: olevariant;
-  oEmit: olevariant;
-  oEnderEmit: olevariant;
-  oDest: olevariant;
-  oEnderDest: olevariant;
   oDet: olevariant;
-  oProd: olevariant;
-  oImposto: olevariant;
-  oICMS: olevariant;
-  oICMSSN101: olevariant;
-  oPIS: olevariant;
-  oPISOutr: olevariant;
-  oCOFINS: olevariant;
-  oCOFINSOutr: olevariant;
-  oTotal: olevariant;
-  oICMSTot: olevariant;
   oVol: olevariant;
-  oTransp: olevariant;
-  oCobr: olevariant;
-  oFat: olevariant;
   oDup: olevariant;
-  oPag: olevariant;
   oDetPag: olevariant;
-  oInfAdic: olevariant;
-  oInfRespTec: olevariant;
 
   oConteudoNFe: olevariant;
   oConteudoInfNFe: olevariant;
@@ -70,8 +47,6 @@ var
   statusRetorno, motivoRetorno: string;
   docProcNFe: string;
   numeroProtocolo: string;
-  oConsSitNFe: olevariant;
-  oConsultaProtocolo: olevariant;
 
   i: integer;
 
@@ -120,6 +95,18 @@ begin
     oInfNFe.Ide.IndPres := 1; // IndicadorPresenca.OperacaoPresencial
     oInfNFe.Ide.ProcEmi := 0; // ProcessoEmissao.AplicativoContribuinte
     oInfNFe.Ide.VerProc := 'TESTE 1.00';
+
+    //RTC
+    oInfNFe.Ide.CMunFGIBS := 3543402;
+    oInfNFe.Ide.GCompraGov := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GCompraGov');
+    oInfNFe.Ide.GCompraGov.PRedutor := 0;
+    oInfNFe.Ide.GCompraGov.TpEnteGov := 4; //TipoEnteGovernamental.Municipio,
+    oInfNFe.Ide.GCompraGov.TpOperGov := 1; //TipoOperacaoEnteGovernamental.Fornecimento
+    oInfNFe.Ide.GPagAntecipado := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GPagAntecipado');
+    oInfNFe.Ide.GPagAntecipado.AddRefNFe('00000000000000000000000000000000000000000000');
+    oInfNFe.Ide.GPagAntecipado.AddRefNFe('11111111111111111111111111111111111111111111');
+    oInfNFe.Ide.TpNFCredito := 2; //TipoNFCredito.ApropriacaoCreditoPresumidoIBSZFM
+    oInfNFe.Ide.TpNFDebito := 6; //TipoNFDebito.PagamentoAntecipado
 
     // criar tag Emit
     oInfNFe.Emit := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Emit');
@@ -216,6 +203,130 @@ begin
       oDet.Imposto.COFINS.COFINSOutr.PCOFINS := olevariant(0.00);
       oDet.Imposto.COFINS.COFINSOutr.VCOFINS := olevariant(0.00);
 
+      //RTC
+      oDet.Imposto.IBSCBS := CreateOleObject('Unimake.Business.DFe.Xml.NFe.IBSCBS');
+      oDet.Imposto.IBSCBS.CST := '000';
+      oDet.Imposto.IBSCBS.CClassTrib := '000001';
+
+      oDet.Imposto.IBSCBS.GIBSCBS := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GIBSCBS');
+      oDet.Imposto.IBSCBS.GIBSCBS.VBC := 0;
+
+      oDet.Imposto.IBSCBS.GIBSCBS.GCBS := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GCBS');
+      oDet.Imposto.IBSCBS.GIBSCBS.GCBS.PCBS := 0;
+      oDet.Imposto.IBSCBS.GIBSCBS.GCBS.VCBS := 0;
+
+      oDet.Imposto.IBSCBS.GIBSCBS.GCBS.GDevTrib := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GDevTrib');
+      oDet.Imposto.IBSCBS.GIBSCBS.GCBS.GDevTrib.VDevTrib := 0;
+
+      //oDet.Imposto.IBSCBS.GIBSCBS.GCBS.GDif := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GDif');
+      //oDet.Imposto.IBSCBS.GIBSCBS.GCBS.GDif.PDif := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GCBS.GDif.VDif := 0;
+
+      oDet.Imposto.IBSCBS.GIBSCBS.GCBS.GRed := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GRed');
+      oDet.Imposto.IBSCBS.GIBSCBS.GCBS.GRed.PAliqEfet := 0;
+      oDet.Imposto.IBSCBS.GIBSCBS.GCBS.GRed.PRedAliq := 0;
+
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSMun := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GIBSMun');
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSMun.PIBSMun := 0;
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSMun.VIBSMun := 0;
+
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSMun.GDevTrib := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GDevTrib');
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSMun.GDevTrib.VDevTrib := 0;
+
+      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSMun.GDif := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GDif');
+      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSMun.GDif.PDif := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSMun.GDif.VDif := 0;
+
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSMun.GRed := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GRed');
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSMun.GRed.PAliqEfet := 0;
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSMun.GRed.PRedAliq := 0;
+
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GIBSUF');
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.PIBSUF := 0;
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.VIBSUF := 0;
+
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.GDevTrib := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GDevTrib');
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.GDevTrib.VDevTrib := 0;
+
+      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.GDif := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GDif');
+      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.GDif.PDif := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.GDif.VDif := 0;
+
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.GRed := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GRed');
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.GRed.PAliqEfet := 0;
+      oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.GRed.PRedAliq := 0;
+      oDet.Imposto.IBSCBS.GIBSCBS.VIBS := 0;
+
+      //oDet.Imposto.IBSCBS.GIBSCBS.GCBSCredPres :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GCBSCredPres');
+      //oDet.Imposto.IBSCBS.GIBSCBS.GCBSCredPres.CCredPres := '';
+      //oDet.Imposto.IBSCBS.GIBSCBS.GCBSCredPres.PCredPres := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GCBSCredPres.VCredPres := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GCBSCredPres.VCredPresCondSus := 0;
+      //
+      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSCredPres :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GIBSCredPres');
+      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSCredPres.CCredPres := '';
+      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSCredPres.PCredPres := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSCredPres.VCredPres := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSCredPres.VCredPresCondSus := 0;
+      //
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GTribCompraGov');
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.PAliqCBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.PAliqIBSMun := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.PAliqIBSUF := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.VTribCBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.VTribIBSMun := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.VTribIBSUF := 0;
+      //
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GTribRegular');
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.CClassTribReg := '000001';
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.CSTReg := '000';
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.PAliqEfetRegCBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.PAliqEfetRegIBSMun := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.PAliqEfetRegIBSUF := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.VTribRegCBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.VTribRegIBSMun := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.VTribRegIBSUF := 0;
+
+      //oDet.Imposto.IBSCBS.GCredPresIBSZFM :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GCredPresIBSZFM');
+      //oDet.Imposto.IBSCBS.GCredPresIBSZFM.TpCredPresIBSZFM := 0; //TipoCreditoPresumidoIBSZFM.SemCreditoPresumido
+      //oDet.Imposto.IBSCBS.GCredPresIBSZFM.VCredPresIBSZFM := 0;
+      //
+      //oDet.Imposto.IBSCBS.GIBSCBSMono :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GIBSCBSMono');
+      //
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GMonoDif');
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.PDifCBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.PDifIBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.VIBSMonoDif := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.VCBSMonoDif := 0;
+      //
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GMonoPadrao');
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao.QBCMono := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao.AdRemCBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao.AdRemIBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao.VIBSMono := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao.VCBSMono := 0;
+      //
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GMonoRet');
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.QBCMonoRet := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.AdRemCBSRet := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.AdRemIBSRet := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.VIBSMonoRet := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.VCBSMonoRet := 0;
+      //
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GMonoReten');
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten.QBCMonoReten := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten.AdRemCBSReten := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten.AdRemIBSReten := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten.VCBSMonoReten := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten.VIBSMonoReten := 0;
+      //
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.VTotCBSMonoItem := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.VTotIBSMonoItem := 0;
+      //
+      //oDet.Imposto.IBSCBS.GTransfCred :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GTransfCred');
+      //oDet.Imposto.IBSCBS.GTransfCred.VCBS := 0;
+      //oDet.Imposto.IBSCBS.GTransfCred.VIBS := 0;
+
       // adicionar a tag Det dentro da tag InfNfe
       oInfNfe.AddDet(IUnknown(oDet));
     end;
@@ -245,6 +356,46 @@ begin
     oInfNfe.Total.ICMSTot.VOutro := 0;
     oInfNfe.Total.ICMSTot.VNF := 254.70;
     oInfNfe.Total.ICMSTot.VTotTrib := 37.89;
+
+    // RTC
+    oInfNfe.Total.IBSCBSTot := CreateOleObject('Unimake.Business.DFe.Xml.NFe.IBSCBSTot');
+    oInfNFe.Total.IBSCBSTot.VBCIBSCBS := 0;
+
+    oInfNfe.Total.IBSCBSTot.GCBS := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GCBSTot');
+    oInfNfe.Total.IBSCBSTot.GCBS.VCBS := 0;
+    oInfNfe.Total.IBSCBSTot.GCBS.VCredPres := 0;
+    oInfNfe.Total.IBSCBSTot.GCBS.VCredPresCondSus := 0;
+    oInfNfe.Total.IBSCBSTot.GCBS.VDevTrib := 0;
+    oInfNfe.Total.IBSCBSTot.GCBS.VDif := 0;
+
+    oInfNfe.Total.IBSCBSTot.GIBS := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GIBSTot');
+
+    oInfNfe.Total.IBSCBSTot.GIBS.GIBSMun := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GIBSMunTot');
+    oInfNfe.Total.IBSCBSTot.GIBS.GIBSMun.VDevTrib := 0;
+    oInfNfe.Total.IBSCBSTot.GIBS.GIBSMun.VDif := 0;
+    oInfNfe.Total.IBSCBSTot.GIBS.GIBSMun.VIBSMun := 0;
+
+    oInfNfe.Total.IBSCBSTot.GIBS.GIBSUF := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GIBSUFTot');
+    oInfNfe.Total.IBSCBSTot.GIBS.GIBSUF.VDevTrib := 0;
+    oInfNfe.Total.IBSCBSTot.GIBS.GIBSUF.VDif := 0;
+    oInfNfe.Total.IBSCBSTot.GIBS.GIBSUF.VIBSUF := 0;
+
+    oInfNfe.Total.IBSCBSTot.GIBS.VCredPres := 0;
+    oInfNfe.Total.IBSCBSTot.GIBS.VCredPresCondSus := 0;
+    oInfNfe.Total.IBSCBSTot.GIBS.VIBS := 0;
+
+    oInfNFe.Total.IBSCBSTot.GMono := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GMono');
+    oInfNFe.Total.IBSCBSTot.GMono.VCBSMono := 0;
+    oInfNFe.Total.IBSCBSTot.GMono.VCBSMonoRet := 0;
+    oInfNFe.Total.IBSCBSTot.GMono.VCBSMonoReten := 0;
+    oInfNFe.Total.IBSCBSTot.GMono.VIBSMono := 0;
+    oInfNFe.Total.IBSCBSTot.GMono.VIBSMonoRet := 0;
+    oInfNFe.Total.IBSCBSTot.GMono.VIBSMonoReten := 0;
+
+    oInfNFe.Total.ISTot := CreateOleObject('Unimake.Business.DFe.Xml.NFe.ISTot');
+    oInfNFe.Total.ISTot.VIS := 0;
+
+    oInfNFe.Total.VNFTot := 1;
 
     // Criar a tag Transp
     oInfNfe.Transp := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Transp');
@@ -380,43 +531,10 @@ begin
         ShowMessage(numeroProtocolo);
       end
       else
-        // Rejeitada ou Denegada - Fazer devidos tratamentos
-        statusRetorno := Trim(IntToStr(oAutorizacao.Result.ProtNFe.InfProt.CStat)) + ' ' + VarToStr(oAutorizacao.Result.ProtNFe.InfProt.XMotivo);
-      ShowMessage(statusRetorno);
-    end
-    else if oAutorizacao.Result.CStat = 204 then // Nota fiscal duplicada, chave idêntica
-    begin
-      // Criar configuração mínima para consulta de protocolo
-      oConfCons := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
-      oConfCons.TipoDFe := 0; // 0=NFe
-      oConfCons.TipoEmissao := 1; // 1=Normal
-      oConfCons.CertificadoArquivo := 'C:\Projetos\certificados\UnimakePV.pfx';
-      oConfCons.CertificadoSenha := '12345678';
-
-      // Criar requisição para consulta de situação da NF-e
-      oConsSitNFe := CreateOleObject('Unimake.Business.DFe.Xml.NFe.ConsSitNFe');
-      oConsSitNFe.Versao := '4.00';
-      oConsSitNFe.TpAmb := 2; // Homologação
-      oConsSitNFe.ChNFe := chaveNFe;
-
-      oConsultaProtocolo := CreateOleObject('Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo');
-      oConsultaProtocolo.Executar(IUnknown(oConsSitNFe), IUnknown(oConfCons));
-
-      ShowMessage(VarToStr(oConsultaProtocolo.RetornoWSString));
-
-      if oConsultaProtocolo.Result.CStat = 100 then
       begin
-        oAutorizacao.AddRetConsSitNFes(IUnknown(oConsultaProtocolo.Result));
-
-        // Gravar XML de distribuição
-        oAutorizacao.GravarXmlDistribuicao('d:\testenfe');
-
-        // Pegar a string do XML de distribuição
-        docProcNFe := VarToStr(oAutorizacao.GetNFeProcResults(chaveNFe));
-        ShowMessage(docProcNFe);
-      end
-      else
-        ShowMessage(Trim(IntToStr(oConsultaProtocolo.Result.CStat)) + ' - ' + oConsultaProtocolo.Result.XMotivo);
+        // Rejeitada ou Denegada - Fazer devidos tratamentos
+        ShowMessage('NF-e rejeitada ou denegada. Verifique os detalhes.');
+      end;
     end;
 
   except

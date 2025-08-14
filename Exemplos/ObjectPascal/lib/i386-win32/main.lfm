@@ -11,13 +11,12 @@ object frmPrincipal: TfrmPrincipal
   object GroupBox1: TGroupBox
     Left = 12
     Height = 624
-    Top = 12
+    Top = 0
     Width = 358
     Caption = 'NF-e'
     ClientHeight = 594
     ClientWidth = 354
     TabOrder = 0
-    OnClick = GroupBox1Click
     object btnConsultaStatusNFe: TButton
       Left = 12
       Height = 38
@@ -88,7 +87,7 @@ object frmPrincipal: TfrmPrincipal
       Width = 324
       Caption = 'Consultar Distribuição DFe'
       TabOrder = 7
-      OnChange = btnConsultarDistribuicaoDFeChange
+      OnClick = btnConsultarDistribuicaoDFeOnClick
     end
     object btnEnviarEventoManifestacaoNFe: TToggleBox
       Left = 12
@@ -97,7 +96,16 @@ object frmPrincipal: TfrmPrincipal
       Width = 324
       Caption = 'Enviar Evento de Manifestação da NFe'
       TabOrder = 8
-      OnChange = btnEnviarEventoManifestacaoNFeChange
+      OnClick = btnEnviarEventoManifestacaoNFeClick
+    end
+    object btnEnviarNFeSincronoRTCClick: TButton
+      Left = 13
+      Height = 38
+      Top = 416
+      Width = 321
+      Caption = '(RTC) Enviar NFe modo Síncrono '
+      TabOrder = 9
+      OnClick = btnEnviarNFeSincronoRTCClick
     end
   end
   object GroupBox2: TGroupBox
