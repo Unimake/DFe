@@ -38,7 +38,7 @@ namespace Unimake.DFe.Test.NFe
 
             var docGerado = xml.GerarXML();
 
-            
+
             Assert.True(doc.InnerText == docGerado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
@@ -69,15 +69,9 @@ namespace Unimake.DFe.Test.NFe
                 ]
             };
 
-            var configuracao = new Configuracao
-            {
-                TipoDFe = TipoDFe.NFe,
-                CertificadoDigital = PropConfig.CertificadoDigital
-            };
+            var doc2 = enviNFe.GerarXML();
 
-            var autorizacao = new Business.DFe.Servicos.NFe.Autorizacao(enviNFe, configuracao);
-
-            Assert.True(doc.InnerText == autorizacao.ConteudoXMLOriginal.GetElementsByTagName("NFe")[0].InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == doc2.GetElementsByTagName("NFe")[0].InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
