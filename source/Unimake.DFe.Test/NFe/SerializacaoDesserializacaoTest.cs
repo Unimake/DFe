@@ -56,6 +56,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\NFe2.xml")]
         [InlineData(@"..\..\..\NFe\Resources\NFe3.xml")]
         [InlineData(@"..\..\..\NFe\Resources\NFe4.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\NFeRTC1.xml")]
         public void SerializacaoDesserializacaoNFe(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");

@@ -13069,7 +13069,6 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("gCBS")]
         public GCBS GCBS { get; set; }
 
-
         /// <summary>
         /// Grupo de informações da Tributação Regular
         /// </summary>
@@ -13093,6 +13092,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlElement("gTribCompraGov")]
         public GTribCompraGov GTribCompraGov { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVIBSField() => VIBS > 0;
+
+        #endregion
     }
 
     /// <summary>
