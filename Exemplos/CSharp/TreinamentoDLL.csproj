@@ -90,8 +90,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Unimake.Business.DFe, Version=2025.8.13.1144, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.DFe.20250813.1144.2\lib\net472\Unimake.Business.DFe.dll</HintPath>
+    <Reference Include="Unimake.Business.DFe, Version=2025.8.14.1532, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Unimake.DFe.20250814.1532.4\lib\net472\Unimake.Business.DFe.dll</HintPath>
     </Reference>
     <Reference Include="Unimake.Cryptography, Version=2025.7.28.1652, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Unimake.Cryptography.20250728.1652.21\lib\netstandard2.0\Unimake.Cryptography.dll</HintPath>
