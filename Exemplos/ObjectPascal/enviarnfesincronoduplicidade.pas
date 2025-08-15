@@ -30,32 +30,9 @@ var
 
   oEnviNFe: olevariant;
   oNfe: olevariant;
-  oInfNFe: olevariant;
-  oIde: olevariant;
-  oEmit: olevariant;
-  oEnderEmit: olevariant;
-  oDest: olevariant;
-  oEnderDest: olevariant;
-  oDet: olevariant;
-  oProd: olevariant;
-  oImposto: olevariant;
-  oICMS: olevariant;
-  oICMSSN101: olevariant;
-  oPIS: olevariant;
-  oPISOutr: olevariant;
-  oCOFINS: olevariant;
-  oCOFINSOutr: olevariant;
-  oTotal: olevariant;
-  oICMSTot: olevariant;
-  oVol: olevariant;
-  oTransp: olevariant;
-  oCobr: olevariant;
-  oFat: olevariant;
-  oDup: olevariant;
-  oPag: olevariant;
-  oDetPag: olevariant;
-  oInfAdic: olevariant;
-  oInfRespTec: olevariant;
+  xmlString: string;
+
+  oNFeObj, oInfNFeObj, oRespTecObj: olevariant;
 
   oConteudoNFe: olevariant;
   oConteudoInfNFe: olevariant;
@@ -70,6 +47,7 @@ var
   statusRetorno, motivoRetorno: string;
   docProcNFe: string;
   numeroProtocolo: string;
+
   oConsSitNFe: olevariant;
   oConsultaProtocolo: olevariant;
 
@@ -87,235 +65,50 @@ begin
   oExceptionInterop := CreateOleObject('Unimake.Exceptions.ThrowHelper');
 
   try
-    // Criar a tag <enviNFe>
+    //Criar a tag <enviNFe>
     oEnviNFe := CreateOleObject('Unimake.Business.DFe.Xml.NFe.EnviNFe');
     oEnviNFe.Versao := '4.00';
     oEnviNFe.IdLote := '000000000000001';
     oEnviNFe.IndSinc := 1; // 1=Sim 0=Nao
 
-    // Criar a tag <NFe>
+    //Criar a tag <NFe>
     oNfe := CreateOleObject('Unimake.Business.DFe.Xml.NFe.NFe');
 
-    // Criar tag InfNfe
-    oInfNFe := CreateOleObject('Unimake.Business.DFe.Xml.NFe.InfNFe');
-    oInfNFe.Versao := '4.00';
+    //Desserializar o XML a partir de um arquivo no HD/SSD
+    oEnviNFe.AddNFe(IUnknown(oNFe.LoadFromFile('D:\testenfe\testewandrey-nfe.xml')));
 
-    // Cria tag Ide
-    oInfNFe.Ide := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Ide');
-    oInfNFe.Ide.CUF := 41; // Brasil.PR
-    oInfNFe.Ide.NatOp := 'VENDA PRODUC.DO ESTABELEC';
-    oInfNFe.Ide.&Mod := 55; // NFe
-    oInfNFe.Ide.Serie := 59;
-    oInfNFe.Ide.NNF := 33;
-    oInfNFe.Ide.DhEmi := Now;
-    oInfNFe.Ide.DhSaiEnt := Now;
-    oInfNFe.Ide.TpNF := 1; // Saida
-    oInfNFe.Ide.IdDest := 2; // OperacaoInterestadual
-    oInfNFe.Ide.CMunFG := 4118402;
-    oInfNFe.Ide.TpImp := 1; // FormatoImpressaoDANFE.NormalRetrato
-    oInfNFe.Ide.TpEmis := 1; // TipoEmissao.Normal
-    oInfNFe.Ide.TpAmb := 2; // TipoAmbiente.Homologacao
-    oInfNFe.Ide.FinNFe := 1; // FinalidadeNFe.Normal
-    oInfNFe.Ide.IndFinal := 1; // SimNao.Sim
-    oInfNFe.Ide.IndPres := 1; // IndicadorPresenca.OperacaoPresencial
-    oInfNFe.Ide.ProcEmi := 0; // ProcessoEmissao.AplicativoContribuinte
-    oInfNFe.Ide.VerProc := 'TESTE 1.00';
+    //Desserializar o XML a partir de uma string recuperada, por exemplo, do banco de dados ou montada no código
+    //xmlString := '<NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe Id="NFe41250706117473000150550590000000331966278621" versao="4.00"><ide><cUF>41</cUF><cNF>96627862</cNF><natOp>VENDA PRODUC.DO ESTABELEC</natOp><mod>55</mod><serie>59</serie>';
+    //xmlString := xmlString + '<nNF>36</nNF><dhEmi>2025-07-03T09:44:01-03:00</dhEmi><dhSaiEnt>2025-07-03T09:44:01-03:00</dhSaiEnt><tpNF>1</tpNF><idDest>2</idDest><cMunFG>4118402</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>1</cDV><tpAmb>2</tpAmb>';
+    //xmlString := xmlString + '<finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres><procEmi>0</procEmi><verProc>TESTE 1.00</verProc></ide><emit><CNPJ>06117473000150</CNPJ><xNome>UNIMAKE SOLUCOES CORPORATIVAS LTDA</xNome><xFant>UNIMAKE - PARANAVAI</xFant><enderEmit>';
+    //xmlString := xmlString + '<xLgr>RUA PAULO ANTONIO COSTA</xLgr><nro>575</nro><xBairro>CENTRO</xBairro><cMun>4118402</cMun><xMun>PARANAVAI</xMun><UF>PR</UF><CEP>87707210</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>04431421010</fone></enderEmit><IE>9032000301</IE>';
+    //xmlString := xmlString + '<IM>14018</IM><CNAE>6202300</CNAE><CRT>1</CRT></emit><dest><CNPJ>04218457000128</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>AVENIDA DA SAUDADE</xLgr><nro>1555</nro><xBairro>CAMPOS ELISEOS</xBairro>';
+    //xmlString := xmlString + '<cMun>3543402</cMun><xMun>RIBEIRAO PRETO</xMun><UF>SP</UF><CEP>14080000</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>01639611500</fone></enderDest><indIEDest>1</indIEDest><IE>582614838110</IE><email>janelaorp@janelaorp.com.br</email></dest>';
+    //xmlString := xmlString + '<det nItem="1"><prod><cProd>00001</cProd><cEAN>SEM GTIN</cEAN><xProd>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>84714900</NCM><CFOP>6101</CFOP><uCom>LU</uCom><qCom>1</qCom><vUnCom>84.9</vUnCom><vProd>84.90</vProd>';
+    //xmlString := xmlString + '<cEANTrib>SEM GTIN</cEANTrib><uTrib>LU</uTrib><qTrib>1</qTrib><vUnTrib>84.9</vUnTrib><indTot>1</indTot><xPed>300474</xPed><nItemPed>1</nItemPed></prod><imposto><vTotTrib>12.63</vTotTrib><ICMS><ICMSSN101><orig>0</orig><CSOSN>101</CSOSN>';
+    //xmlString := xmlString + '<pCredSN>2.8255</pCredSN><vCredICMSSN>2.40</vCredICMSSN></ICMSSN101></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.0000</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.0000</pCOFINS>';
+    //xmlString := xmlString + '<vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><det nItem="2"><prod><cProd>00002</cProd><cEAN>SEM GTIN</cEAN><xProd>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>84714900</NCM><CFOP>6101</CFOP>';
+    //xmlString := xmlString + '<uCom>LU</uCom><qCom>1</qCom><vUnCom>84.9</vUnCom><vProd>84.90</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>LU</uTrib><qTrib>1</qTrib><vUnTrib>84.9</vUnTrib><indTot>1</indTot><xPed>300474</xPed><nItemPed>1</nItemPed></prod><imposto>';
+    //xmlString := xmlString + '<vTotTrib>12.63</vTotTrib><ICMS><ICMSSN101><orig>0</orig><CSOSN>101</CSOSN><pCredSN>2.8255</pCredSN><vCredICMSSN>2.40</vCredICMSSN></ICMSSN101></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.0000</pPIS><vPIS>0.00</vPIS></PISOutr>';
+    //xmlString := xmlString + '</PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.0000</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><det nItem="3"><prod><cProd>00003</cProd><cEAN>SEM GTIN</cEAN><xProd>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>';
+    //xmlString := xmlString + '<NCM>84714900</NCM><CFOP>6101</CFOP><uCom>LU</uCom><qCom>1</qCom><vUnCom>84.9</vUnCom><vProd>84.90</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>LU</uTrib><qTrib>1</qTrib><vUnTrib>84.9</vUnTrib><indTot>1</indTot><xPed>300474</xPed>';
+    //xmlString := xmlString + '<nItemPed>1</nItemPed></prod><imposto><vTotTrib>12.63</vTotTrib><ICMS><ICMSSN101><orig>0</orig><CSOSN>101</CSOSN><pCredSN>2.8255</pCredSN><vCredICMSSN>2.40</vCredICMSSN></ICMSSN101></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC>';
+    //xmlString := xmlString + '<pPIS>0.0000</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.0000</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS>';
+    //xmlString := xmlString + '<vICMSDeson>0.00</vICMSDeson><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>254.70</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI>';
+    //xmlString := xmlString + '<vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>254.70</vNF><vTotTrib>37.89</vTotTrib></ICMSTot></total><transp><modFrete>0</modFrete><vol><qVol>1</qVol><esp>LU</esp><marca>UNIMAKE</marca></vol>';
+    //xmlString := xmlString + '<vol><qVol>1</qVol><esp>LU</esp><marca>UNIMAKE</marca></vol><vol><qVol>1</qVol><esp>LU</esp><marca>UNIMAKE</marca></vol></transp><cobr><fat><nFat>057910</nFat><vOrig>254.70</vOrig><vDesc>0.00</vDesc><vLiq>254.70</vLiq></fat><dup><nDup>001</nDup>';
+    //xmlString := xmlString + '<dVenc>2025-07-03</dVenc><vDup>127.35</vDup></dup><dup><nDup>002</nDup><dVenc>2025-07-03</dVenc><vDup>127.35</vDup></dup></cobr><pag><detPag><indPag>0</indPag><tPag>01</tPag><vPag>254.70</vPag></detPag></pag><infAdic>';
+    //xmlString := xmlString + '<infCpl>Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008</infCpl></infAdic><infRespTec><CNPJ>06117473000150</CNPJ><xContato>Ze das Couves</xContato><email>zedascouves@gmail.com</email><fone>04430000000</fone>';
+    //xmlString := xmlString + '</infRespTec></infNFe></NFe>';
+    //oEnviNFe.AddNFe(IUnknown(oNFe.LoadFromXml(xmlString)));
 
-    // criar tag Emit
-    oInfNFe.Emit := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Emit');
-    oInfNFe.Emit.CNPJ := '06117473000150';
-    oInfNFe.Emit.XNome := 'UNIMAKE SOLUCOES CORPORATIVAS LTDA';
-    oInfNFe.Emit.XFant := 'UNIMAKE - PARANAVAI';
-    oInfNFe.Emit.IE := '9032000301';
-    oInfNFe.Emit.IM := '14018';
-    oInfNFe.Emit.CNAE := '6202300';
-    oInfNFe.Emit.CRT := 1; // CRT.SimplesNacional
-
-    oInfNFe.Emit.EnderEmit := CreateOleObject('Unimake.Business.DFe.Xml.NFe.EnderEmit');
-    oInfNFe.Emit.EnderEmit.XLgr := 'RUA PAULO ANTONIO COSTA';
-    oInfNFe.Emit.EnderEmit.Nro := '575';
-    oInfNFe.Emit.EnderEmit.XBairro := 'CENTRO';
-    oInfNFe.Emit.EnderEmit.CMun := 4118402;
-    oInfNFe.Emit.EnderEmit.XMun := 'PARANAVAI';
-    oInfNFe.Emit.EnderEmit.UF := 41; // UFBrasil.PR
-    oInfNFe.Emit.EnderEmit.CEP := '87707210';
-    oInfNFe.Emit.EnderEmit.Fone := '04431421010';
-
-    // criar tag Dest
-    oInfNFe.Dest := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Dest');
-    oInfNFe.Dest.CNPJ := '04218457000128';
-    oInfNFe.Dest.XNome := 'NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL';
-    oInfNFe.Dest.IndIEDest := 1; // IndicadorIEDestinatario.ContribuinteICMS
-    oInfNFe.Dest.IE := '582614838110';
-    oInfNFe.Dest.Email := 'janelaorp@janelaorp.com.br';
-
-    oInfNFe.Dest.EnderDest := CreateOleObject('Unimake.Business.DFe.Xml.NFe.EnderDest');
-    oInfNFe.Dest.EnderDest.XLgr := 'AVENIDA DA SAUDADE';
-    oInfNFe.Dest.EnderDest.Nro := '1555';
-    oInfNFe.Dest.EnderDest.XBairro := 'CAMPOS ELISEOS';
-    oInfNFe.Dest.EnderDest.CMun := 3543402;
-    oInfNFe.Dest.EnderDest.XMun := 'RIBEIRAO PRETO';
-    oInfNFe.Dest.EnderDest.UF := 35; // UFBrasil.SP
-    oInfNFe.Dest.EnderDest.CEP := '14080000';
-    oInfNFe.Dest.EnderDest.Fone := '01639611500';
-
-    for i := 1 to 3 do
-    begin
-      // criar tag Det
-      oDet := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Det');
-      oDet.NItem := i;
-
-      oDet.Prod := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Prod');
-      oDet.Prod.CProd := '0000' + TrimRight(IntToStr(i));
-      oDet.Prod.CEAN := 'SEM GTIN';
-      oDet.Prod.XProd := 'NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL';
-      oDet.Prod.NCM := '84714900';
-      oDet.Prod.CFOP := '6101';
-      oDet.Prod.UCom := 'LU';
-      oDet.Prod.QCom := 1.00;
-      oDet.Prod.VUnCom := 84.90;
-      oDet.Prod.VProd := 84.90;
-      oDet.Prod.CEANTrib := 'SEM GTIN';
-      oDet.Prod.UTrib := 'LU';
-      oDet.Prod.QTrib := 1.00;
-      oDet.Prod.VUnTrib := 84.90;
-      oDet.Prod.IndTot := 1; // SimNao.Sim
-      oDet.Prod.XPed := '300474';
-      oDet.Prod.NItemPed := 1;
-
-      // criar tag Imposto
-      oDet.Imposto := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Imposto');
-      oDet.Imposto.VTotTrib := 12.63;
-
-      // criar tag Icms
-      oDet.Imposto.ICMS := CreateOleObject('Unimake.Business.DFe.Xml.NFe.ICMS');
-
-      // criar tag ICMSSN101
-      oDet.Imposto.ICMS.ICMSSN101 := CreateOleObject('Unimake.Business.DFe.Xml.NFe.ICMSSN101');
-      oDet.Imposto.ICMS.ICMSSN101.Orig := 0; // OrigemMercadoria.Nacional
-      oDet.Imposto.ICMS.ICMSSN101.PCredSN := 2.8255;
-      oDet.Imposto.ICMS.ICMSSN101.VCredICMSSN := 2.40;
-
-      // criar tag PIS
-      oDet.Imposto.PIS := CreateOleObject('Unimake.Business.DFe.Xml.NFe.PIS');
-
-      // criar tag PISOutr
-      oDet.Imposto.PIS.PISOutr := CreateOleObject('Unimake.Business.DFe.Xml.NFe.PISOutr');
-      oDet.Imposto.PIS.PISOutr.CST := '99';
-      oDet.Imposto.PIS.PISOutr.VBC := olevariant(0.00);
-      oDet.Imposto.PIS.PISOutr.PPIS := olevariant(0.00);
-      oDet.Imposto.PIS.PISOutr.VPIS := olevariant(0.00);
-
-      // criar tag COFINS
-      oDet.Imposto.COFINS := CreateOleObject('Unimake.Business.DFe.Xml.NFe.COFINS');
-
-      // criar tag COFINSOutr
-      oDet.Imposto.COFINS.COFINSOutr := CreateOleObject('Unimake.Business.DFe.Xml.NFe.COFINSOutr');
-      oDet.Imposto.COFINS.COFINSOutr.CST := '99';
-      oDet.Imposto.COFINS.COFINSOutr.VBC := olevariant(0.00);
-      oDet.Imposto.COFINS.COFINSOutr.PCOFINS := olevariant(0.00);
-      oDet.Imposto.COFINS.COFINSOutr.VCOFINS := olevariant(0.00);
-
-      // adicionar a tag Det dentro da tag InfNfe
-      oInfNfe.AddDet(IUnknown(oDet));
-    end;
-
-    // Criar tag Total
-    oInfNfe.Total := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Total');
-
-    // Criar tag ICMSTot
-    oInfNfe.Total.ICMSTot := CreateOleObject('Unimake.Business.DFe.Xml.NFe.ICMSTot');
-    oInfNfe.Total.ICMSTot.VBC := 0;
-    oInfNfe.Total.ICMSTot.VICMS := 0;
-    oInfNfe.Total.ICMSTot.VICMSDeson := 0;
-    oInfNfe.Total.ICMSTot.VFCP := 0;
-    oInfNfe.Total.ICMSTot.VBCST := 0;
-    oInfNfe.Total.ICMSTot.VST := 0;
-    oInfNfe.Total.ICMSTot.VFCPST := 0;
-    oInfNfe.Total.ICMSTot.VFCPSTRet := 0;
-    oInfNfe.Total.ICMSTot.VProd := 254.70;
-    oInfNfe.Total.ICMSTot.VFrete := 0;
-    oInfNfe.Total.ICMSTot.VSeg := 0;
-    oInfNfe.Total.ICMSTot.VDesc := 0;
-    oInfNfe.Total.ICMSTot.VII := 0;
-    oInfNfe.Total.ICMSTot.VIPI := 0;
-    oInfNfe.Total.ICMSTot.VIPIDevol := 0;
-    oInfNfe.Total.ICMSTot.VPIS := 0;
-    oInfNfe.Total.ICMSTot.VCOFINS := 0;
-    oInfNfe.Total.ICMSTot.VOutro := 0;
-    oInfNfe.Total.ICMSTot.VNF := 254.70;
-    oInfNfe.Total.ICMSTot.VTotTrib := 37.89;
-
-    // Criar a tag Transp
-    oInfNfe.Transp := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Transp');
-    oInfNfe.Transp.ModFrete := 0; // ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
-
-    for i := 1 to 3 do
-    begin
-      // Criar a tag Vol
-      oVol := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Vol');
-      oVol.QVol := 1;
-      oVol.Esp := 'LU';
-      oVol.Marca := 'UNIMAKE';
-      oVol.PesoL := 0.000;
-      oVol.PesoB := 0.000;
-
-      // adicionar a tag Vol na tag Transp
-      oInfNfe.Transp.AddVol(IUnknown(oVol));
-    end;
-
-    // Criar tag Cobr
-    oInfNfe.Cobr := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Cobr');
-
-    // Criar tag Fat
-    oInfNfe.Cobr.Fat := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Fat');
-    oInfNfe.Cobr.Fat.NFat := '057910';
-    oInfNfe.Cobr.Fat.VOrig := 254.70;
-    oInfNfe.Cobr.Fat.VDesc := 0;
-    oInfNfe.Cobr.Fat.VLiq := 254.70;
-
-    for i := 1 to 2 do
-    begin
-      // Criar tag Dup
-      oDup := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Dup');
-      oDup.NDup := '00' + TrimRight(IntToStr(I));
-      oDup.DVenc := Date();
-      oDup.VDup := 127.35;
-
-      // adicionar a tag Dup dentro da tag Cobr
-      oInfNfe.Cobr.AddDup(IUnknown(oDup));
-    end;
-
-    // criar tag Pag
-    oInfNFe.Pag := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Pag');
-
-    // criar tag DetPag (pode ter mais que uma, sÃ³ foi criada uma como exemplo)
-    oDetPag := CreateOleObject('Unimake.Business.DFe.Xml.NFe.DetPag');
-    oDetPag.IndPag := 0; // IndicadorPagamento.PagamentoVista
-    oDetPag.TPag := 1; // MeioPagamento.Dinheiro
-    oDetPag.VPag := 254.70;
-
-    // adicionar a tag DetPag dentro da tag Tag
-    oInfNFe.Pag.AddDetPag(IUnknown(oDetPag));
-
-    // criar tag InfAdic
-    oInfNFe.InfAdic := CreateOleObject('Unimake.Business.DFe.Xml.NFe.InfAdic');
-    oInfNFe.InfAdic.InfCpl := 'Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008';
-
-    // criar tag InfRespTec
-    oInfNFe.InfRespTec := CreateOleObject('Unimake.Business.DFe.Xml.NFe.InfRespTec');
-    oInfNFe.InfRespTec.CNPJ := '06117473000150';
-    oInfNFe.InfRespTec.XContato := 'Ze das Couves';
-    oInfNFe.InfRespTec.Email := 'zedascouves@gmail.com';
-    oInfNFe.InfRespTec.Fone := '04430000000';
-    oInfNFe.InfRespTec.IdCSRT := '01';
-    oInfNFe.InfRespTec.CSRT := '8WCARAO9D8P00R845TARUPPTGY5CL40WS3J1';
-
-    // adicionar a tag InfNfe dentro da tag Nfe
-    oNfe.AddInfNFe(IUnknown(oInfNFe));
-
-    // adiconar a tag nfe dentro da tag EnviNfe
-    oEnviNFe.AddNfe(IUnknown(oNfe));
+    //Atualizar o CSRT para gerar corretamente o hashCSRT
+    oNFeObj := oEnviNFe.GetNFe(0);
+    oInfNFeObj := oNFeObj.GetInfNFe(0);
+    oRespTecObj := oInfNFeObj.InfRespTec;
+    oRespTecObj.hashCSRT := '';
+    oRespTecObj.IdCSRT := '01';
+    oRespTecObj.CSRT := '8WCARAO9D8P00R845TARUPPTGY5CL40WS3J1';
 
     //Recuperar a chave da NFe
     oConteudoNFe := oEnviNFe.GetNFe(0);
@@ -384,7 +177,7 @@ begin
         statusRetorno := Trim(IntToStr(oAutorizacao.Result.ProtNFe.InfProt.CStat)) + ' ' + VarToStr(oAutorizacao.Result.ProtNFe.InfProt.XMotivo);
       ShowMessage(statusRetorno);
     end
-    else if oAutorizacao.Result.CStat = 204 then // Nota fiscal duplicada, chave idêntica
+    else if oAutorizacao.Result.CStat = 204 then // Nota fiscal duplicada, chave idêntica  (539=Chave diferente)
     begin
       // Criar configuração mínima para consulta de protocolo
       oConfCons := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');

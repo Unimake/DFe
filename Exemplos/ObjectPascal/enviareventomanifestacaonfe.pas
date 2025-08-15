@@ -53,7 +53,13 @@ begin
   oEvento.InfEvento.ChNFe := '41191006117473000150550010000579281779843610';
   oEvento.InfEvento.CNPJ := '06117473000150';
   oEvento.InfEvento.DhEvento := Now;
+
+  //ManifestacaoConfirmacaoOperacao = 210200,
+  //ManifestacaoCienciaOperacao = 210210,
+  //ManifestacaoDesconhecimentoOperacao = 210220,
+  //ManifestacaoOperacaoNaoRealizada = 210240,
   oEvento.InfEvento.TpEvento := 210210; // Ciência da operação
+
   oEvento.InfEvento.NSeqEvento := 1;
   oEvento.InfEvento.VerEvento := '1.00';
   oEvento.InfEvento.TpAmb := 2; // Homologação

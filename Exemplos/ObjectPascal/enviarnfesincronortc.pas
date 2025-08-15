@@ -357,7 +357,7 @@ begin
     oInfNfe.Total.ICMSTot.VNF := 254.70;
     oInfNfe.Total.ICMSTot.VTotTrib := 37.89;
 
-    // RTC
+    //RTC
     oInfNfe.Total.IBSCBSTot := CreateOleObject('Unimake.Business.DFe.Xml.NFe.IBSCBSTot');
     oInfNFe.Total.IBSCBSTot.VBCIBSCBS := 0;
 
