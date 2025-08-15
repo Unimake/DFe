@@ -96,6 +96,41 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
         #endregion Protected Methods
 
+        #region Private Methods
+
+        /// <summary>
+        /// Remove a assinatura do objeto para ser assinado novamente evitando problemas
+        /// </summary>
+        private void RemoverAssinaturaDoERP()
+        {
+            ReinfEnvioLoteEventos = ReinfEnvioLoteEventos.LerXML<ReinfEnvioLoteEventos>(ConteudoXML);
+
+            foreach (var evento in ReinfEnvioLoteEventos.EnvioLoteEventos.Eventos.Evento)
+            {
+                var propriedades = evento.GetType().GetProperties();
+
+                foreach (var propriedade in propriedades)
+                {
+                    var valorEvento = propriedade.GetValue(evento);
+
+                    if (valorEvento!= null)
+                    {
+                        var propriedadeAssinatura = valorEvento.GetType().GetProperty("Signature");
+                        
+                        propriedadeAssinatura?.SetValue(valorEvento, null);
+                    }
+                }
+            }
+
+            ConteudoXML = ReinfEnvioLoteEventos.GerarXML();
+
+            _ = ConteudoXMLAssinado;
+
+            ReinfEnvioLoteEventos = ReinfEnvioLoteEventos.LerXML<ReinfEnvioLoteEventos>(ConteudoXML);
+        }
+
+        #endregion Private Methods
+
         #region Public Constructors
 
         /// <summary>
@@ -116,6 +151,8 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             }
 
             Inicializar(reinfRecepcionarLoteAssinc?.GerarXML() ?? throw new ArgumentNullException(nameof(reinfRecepcionarLoteAssinc)), configuracao);
+
+            RemoverAssinaturaDoERP();
         }
 
         /// <summary>
@@ -134,6 +171,8 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             doc.LoadXml(conteudoXML);
 
             Inicializar(doc, configuracao);
+
+            RemoverAssinaturaDoERP();
         }
 
         /// <summary>
