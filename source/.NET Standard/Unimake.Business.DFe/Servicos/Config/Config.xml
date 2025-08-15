@@ -2795,4 +2795,10 @@
 		<ArqConfig>HorizontinaRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3525300">
+		<Nome>Jaú - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Jau SP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
