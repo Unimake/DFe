@@ -2849,4 +2849,10 @@
 		<ArqConfig>PortoBeloSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4215000">
+		<Nome>Rio Negrinho - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>RioNegrinhoSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
