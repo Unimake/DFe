@@ -2825,4 +2825,10 @@
 		<ArqConfig>CorupaSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4211801">
+		<Nome>Ouro - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>OuroSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
