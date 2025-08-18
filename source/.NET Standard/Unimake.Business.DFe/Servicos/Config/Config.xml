@@ -2819,4 +2819,10 @@
 		<ArqConfig>PanambiRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4204509">
+		<Nome>Corupá - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>CorupaSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

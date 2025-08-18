@@ -408,6 +408,7 @@
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CorumbaMS.xml" />
+		<None Remove="Servicos\Config\NFSe\CorupaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CosmoramaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CotiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CriciumaSC.xml" />
@@ -1532,6 +1533,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CascavelPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CastroPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CianortePR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CorupaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CriciumaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
