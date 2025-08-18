@@ -681,6 +681,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoJoseDosCamposSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDosPinhaisPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDoSulRS.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoJoseSC.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoLuisMA.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoMarcosRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
@@ -1631,6 +1632,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDeBicasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDaLapaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDoRioClaroMT.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoValentimRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmargosaBA.xml" />

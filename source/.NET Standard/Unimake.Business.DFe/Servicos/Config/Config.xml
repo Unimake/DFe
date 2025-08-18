@@ -2873,4 +2873,10 @@
 		<ArqConfig>SaoBentoDoSulSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4216602">
+		<Nome>São José - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>SaoJoseSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
