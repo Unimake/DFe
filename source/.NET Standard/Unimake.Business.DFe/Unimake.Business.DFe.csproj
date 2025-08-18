@@ -476,6 +476,7 @@
 		<None Remove="Servicos\Config\NFSe\IjuiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ImbeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ImperatrizMA.xml" />
+		<None Remove="Servicos\Config\NFSe\IndaialSC.xml" />
 		<None Remove="Servicos\Config\NFSe\IndaiatubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\IpojucaPE.xml" />
@@ -1562,6 +1563,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\HorizontinaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IcaraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImbeRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\IndaialSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IndaiatubaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IpojucaPE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IratiPR.xml" />

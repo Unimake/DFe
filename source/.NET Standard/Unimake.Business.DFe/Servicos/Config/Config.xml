@@ -2879,4 +2879,10 @@
 		<ArqConfig>SaoJoseSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4207502">
+		<Nome>Indaial - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>IndaialSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
