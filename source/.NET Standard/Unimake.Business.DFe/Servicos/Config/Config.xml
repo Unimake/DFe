@@ -2843,4 +2843,10 @@
 		<ArqConfig>PenhaSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4213500">
+		<Nome>Porto Belo - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>PortoBeloSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
