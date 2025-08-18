@@ -2813,4 +2813,10 @@
 		<ArqConfig>TaquarivaiSP.xml</ArqConfig>
 		<PadraoNFSe>JLSOFT</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4313904">
+		<Nome>Panambi - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>PanambiRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
