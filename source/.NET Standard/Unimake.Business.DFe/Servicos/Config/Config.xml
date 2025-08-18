@@ -2801,4 +2801,10 @@
 		<ArqConfig>Jau SP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3522208">
+		<Nome>Itapecerica da Serra - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ItapecericaDaSerraSP.xml</ArqConfig>
+		<PadraoNFSe>GIAP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
