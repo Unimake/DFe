@@ -580,6 +580,7 @@
 		<None Remove="Servicos\Config\NFSe\OuroFinoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\OuroSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PadreBernardoGO.xml" />
+		<None Remove="Servicos\Config\NFSe\PalhocaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PalmaresPE.xml" />
 		<None Remove="Servicos\Config\NFSe\PalmasTO.xml" />
 		<None Remove="Servicos\Config\NFSe\PalmeiraPR.xml" />
@@ -1582,6 +1583,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsorioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OuroSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PalhocaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmasTO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmeiraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PanambiRS.xml" />

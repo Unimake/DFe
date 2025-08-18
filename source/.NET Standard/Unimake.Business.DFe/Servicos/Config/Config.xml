@@ -2831,4 +2831,10 @@
 		<ArqConfig>OuroSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4211900">
+		<Nome>Palhoça - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>PalhocaSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
