@@ -611,6 +611,7 @@
 		<None Remove="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PenapolisSP.xml" />
+		<None Remove="Servicos\Config\NFSe\PenhaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PetropolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PicadaCafeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PinhaisPR.xml" />
@@ -1598,6 +1599,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatosDeMinasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatrocinioMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PedroLeopoldoMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PenhaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PicadaCafeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PinhaisPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiraiRJ.xml" />

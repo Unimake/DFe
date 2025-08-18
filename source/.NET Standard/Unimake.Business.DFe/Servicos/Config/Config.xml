@@ -2837,4 +2837,10 @@
 		<ArqConfig>PalhocaSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4212502">
+		<Nome>Penha - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>PenhaSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
