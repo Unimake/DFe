@@ -2861,4 +2861,10 @@
 		<ArqConfig>RioDoSulSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4214706">
+		<Nome>Rio dos Cedrosl - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>RioDosCedrosSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
