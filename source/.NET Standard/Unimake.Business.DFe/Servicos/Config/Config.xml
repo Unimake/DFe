@@ -2807,4 +2807,10 @@
 		<ArqConfig>ItapecericaDaSerraSP.xml</ArqConfig>
 		<PadraoNFSe>GIAP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3553856">
+		<Nome>Taquarivaí - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>TaquarivaiSP.xml</ArqConfig>
+		<PadraoNFSe>JLSOFT</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
