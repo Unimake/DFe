@@ -3,7 +3,7 @@
 	<Servicos ID="NFSe">
 		<GerarNfse versao="2.04">
 			<Descricao>Gerar NFSe</Descricao>
-			<RequestURIProducao>https://canoinhas.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://canoinhas.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -18,7 +18,7 @@
 		</GerarNfse>
 		<RecepcionarLoteRpsSincrono versao="2.04">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<RequestURIProducao>https://canoinhas.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://canoinhas.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -33,7 +33,7 @@
 		</RecepcionarLoteRpsSincrono>
 		<RecepcionarLoteRps versao="2.04">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<RequestURIProducao>https://canoinhas.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://canoinhas.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -48,7 +48,7 @@
 		</RecepcionarLoteRps>
 		<SubstituirNfse versao="2.04">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<RequestURIProducao>https://canoinhas.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://canoinhas.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -63,7 +63,7 @@
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="2.04">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<RequestURIProducao>https://canoinhas.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://canoinhas.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -78,7 +78,7 @@
 		</ConsultarLoteRps>
 		<ConsultarNfseServicoPrestado versao="2.04">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<RequestURIProducao>https://canoinhas.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://canoinhas.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -93,7 +93,7 @@
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseFaixa versao="2.04">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<RequestURIProducao>https://canoinhas.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://canoinhas.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -108,7 +108,7 @@
 		</ConsultarNfseFaixa>
 		<CancelarNfse versao="2.04">
 			<Descricao>Cancelar NFSe</Descricao>
-			<RequestURIProducao>https://canoinhas.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://canoinhas.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -123,7 +123,7 @@
 		</CancelarNfse>
 		<ConsultarNfsePorRps versao="2.04">
 			<Descricao>Consulta NFSe por Rps</Descricao>
-			<RequestURIProducao>https://canoinhas.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://canoinhas.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
