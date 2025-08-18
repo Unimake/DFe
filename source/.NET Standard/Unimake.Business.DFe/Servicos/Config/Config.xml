@@ -2855,4 +2855,10 @@
 		<ArqConfig>RioNegrinhoSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4214805">
+		<Nome>Rio do Sul - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>RioDoSulSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
