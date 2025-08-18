@@ -662,6 +662,7 @@
 		<None Remove="Servicos\Config\NFSe\SantoAntonioDaPlatinaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SantoAntonioDeJesusBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SantosSP.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoBentoDoSulSC.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoBorjaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoCarlosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
@@ -1623,6 +1624,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaRosaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPatrulhaRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBentoDoSulSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloDoParaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDaBoaVistaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDoParaisoMG.xml" />

@@ -2862,9 +2862,15 @@
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4214706">
-		<Nome>Rio dos Cedrosl - SC</Nome>
+		<Nome>Rio dos Cedros - SC</Nome>
 		<UF>SC</UF>
 		<ArqConfig>RioDosCedrosSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4215802">
+		<Nome>São Bento do Sul - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>SaoBentoDoSulSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
