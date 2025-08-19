@@ -2939,4 +2939,10 @@
 		<ArqConfig>EstacaoRS.xml</ArqConfig>
 		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4303806">
+		<Nome>Campinas do Sul - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CampinasDoSulRS.xml</ArqConfig>
+		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

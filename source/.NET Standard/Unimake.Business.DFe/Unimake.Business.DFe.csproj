@@ -380,6 +380,7 @@
 		<None Remove="Servicos\Config\NFSe\CamboriuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinaGrandePB.xml" />
+		<None Remove="Servicos\Config\NFSe\CampinasDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoBomRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoGrandeMS.xml" />
@@ -1554,6 +1555,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaieirasSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CajuruSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandePB.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinasDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CandeiasBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CangucuRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CascavelPR.xml" />
