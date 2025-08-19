@@ -335,6 +335,7 @@
 		<None Remove="Servicos\Config\NFSe\BageRS.xml" />
 		<None Remove="Servicos\Config\NFSe\BalnearioCamboriuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
+		<None Remove="Servicos\Config\NFSe\BaraoDeCotegipeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\BarbacenaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\BaririSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BarraDeSaoFranciscoES.xml" />
@@ -1541,6 +1542,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArroioDoSalRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AstorgaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BageRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BaraoDeCotegipeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarbacenaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDoPiraiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BebedouroSP.xml" />

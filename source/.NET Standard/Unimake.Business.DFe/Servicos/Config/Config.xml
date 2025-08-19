@@ -2927,4 +2927,10 @@
 		<ArqConfig>ErechimRS.xml</ArqConfig>
 		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4301701">
+		<Nome>Barão de Cotegipe - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>BaraoDeCotegipeRS.xml</ArqConfig>
+		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
