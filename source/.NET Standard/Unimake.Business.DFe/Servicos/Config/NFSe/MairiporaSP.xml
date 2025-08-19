@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.mairipora/webservice/aws_nfe.aspx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfehomologacao.etransparencia.com.br/sp.mairipora/webservice/aws_nfe.aspx</WebEnderecoHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><nfe:ws_nfe.PROCESSARPS>{xmlBody}</nfe:ws_nfe.PROCESSARPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ws_nfe.PROCESSARPSResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.00</SchemaVersao>
+			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="2.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.mairipora/webservice/aws_nfe.aspx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfehomologacao.etransparencia.com.br/sp.mairipora/webservice/aws_nfe.aspx</WebEnderecoHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ws_nfe.CANCELANOTAELETRONICA xmlns="NFe">{xmlBody}</ws_nfe.CANCELANOTAELETRONICA></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ws_nfe.CANCELANOTAELETRONICAResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.00</SchemaVersao>
+			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</CancelarNfse>
+		<ConsultarNfsePDF versao="2.00">
+			<Descricao>Consulta o link de download da nota fiscal de Serviço</Descricao>
+			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.mairipora/webservice/aws_nfe.aspx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfehomologacao.etransparencia.com.br/sp.mairipora/webservice/aws_nfe.aspx</WebEnderecoHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ws_nfe.IMPRESSAOLINKNFSE xmlns="NFe"><Xml_entrada>{xmlBodyScape}</Xml_entrada></ws_nfe.IMPRESSAOLINKNFSE></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ws_nfe.IMPRESSAOLINKNFSEResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.00</SchemaVersao>
+			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarNfsePDF>
+		<ConsultarLoteRps versao="2.00">
+			<Descricao>Consulta lote por RPS</Descricao>
+			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.mairipora/webservice/aws_nfe.aspx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfehomologacao.etransparencia.com.br/sp.mairipora/webservice/aws_nfe.aspx</WebEnderecoHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><nfe:ws_nfe.CONSULTAPROTOCOLO>{xmlBody}</nfe:ws_nfe.CONSULTAPROTOCOLO></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ws_nfe.CONSULTAPROTOCOLOResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.00</SchemaVersao>
+			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarLoteRps>
+	</Servicos>
+</Configuracoes>

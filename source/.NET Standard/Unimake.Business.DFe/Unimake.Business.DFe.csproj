@@ -531,6 +531,7 @@
 		<None Remove="Servicos\Config\NFSe\MacaeRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\MafraSC.xml" />
 		<None Remove="Servicos\Config\NFSe\MageRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\MairiporaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MairipotabaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\ManausAM.xml" />
 		<None Remove="Servicos\Config\NFSe\ManhuacuMG.xml" />
@@ -1579,6 +1580,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LinsSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LoandaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MacaeRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MairiporaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ManhuacuMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MaracaiSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MaracanauCE.xml" />

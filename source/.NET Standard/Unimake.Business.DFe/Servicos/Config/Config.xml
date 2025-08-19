@@ -2885,4 +2885,10 @@
 		<ArqConfig>IndaialSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3528502">
+		<Nome>Mairiporã - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>MairiporaSP.xml</ArqConfig>
+		<PadraoNFSe>CONAM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
