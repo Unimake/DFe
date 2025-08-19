@@ -389,6 +389,7 @@
 		<None Remove="Servicos\Config\NFSe\CampoNovoParecisMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CanaaDosCarajasPA.xml" />
 		<None Remove="Servicos\Config\NFSe\CandeiasBA.xml" />
+		<None Remove="Servicos\Config\NFSe\CanelaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CangucuRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoinhasSC.xml" />
@@ -1557,6 +1558,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandePB.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinasDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CandeiasBA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CanelaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CangucuRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CascavelPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CastroPR.xml" />

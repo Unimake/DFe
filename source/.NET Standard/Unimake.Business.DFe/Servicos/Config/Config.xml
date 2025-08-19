@@ -2945,4 +2945,10 @@
 		<ArqConfig>CampinasDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4304408">
+		<Nome>Canela - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CanelaRS.xml</ArqConfig>
+		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
