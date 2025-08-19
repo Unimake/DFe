@@ -2915,4 +2915,10 @@
 		<ArqConfig>BragancaPaulistaSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3509403">
+		<Nome>Cajuru - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>CajuruSP.xml</ArqConfig>
+		<PadraoNFSe>CONAM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
