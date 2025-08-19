@@ -2903,4 +2903,10 @@
 		<ArqConfig>TaboaoDaSerraSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3509007">
+		<Nome>Caieiras - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>CaieirasSP.xml</ArqConfig>
+		<PadraoNFSe>CONAM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
