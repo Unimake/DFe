@@ -2909,4 +2909,10 @@
 		<ArqConfig>CaieirasSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3507605">
+		<Nome>Bragança Paulista - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>BragancaPaulistaSP.xml</ArqConfig>
+		<PadraoNFSe>CONAM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
