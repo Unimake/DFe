@@ -435,6 +435,7 @@
 		<None Remove="Servicos\Config\NFSe\Equiplano.xml" />
 		<None Remove="Servicos\Config\NFSe\ErechimRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ErnestinaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\EstacaoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EstanciaVelhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EsteioRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EstrelaRS.xml" />
@@ -1566,6 +1567,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EntreIjuisRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ErechimRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\EstacaoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EsteioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EunapolisBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EusebioCE.xml" />

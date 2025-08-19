@@ -2933,4 +2933,10 @@
 		<ArqConfig>BaraoDeCotegipeRS.xml</ArqConfig>
 		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4307559">
+		<Nome>Estação - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>EstacaoRS.xml</ArqConfig>
+		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
