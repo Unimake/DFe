@@ -10,7 +10,7 @@ uses
   EnviarNFeSincronoDesserializacao, ConsultarSituacaoNFe, EventoCancelamentoNFe,
   ImprimirDANFEcomUniDANFE, ConsultarDistribuicaoDFe, EnviarEventoManifestacaoNFe,
   EnviarNFCeSincrono, EnviarNFCeSincronoDesserializacao, EventoCancelamentoNFCe,
-  EnviarNFeSincronoRTC;
+  EnviarNFeSincronoRTC, DesserializarRetornoConsultaDFe;
 
 type
 
@@ -23,8 +23,8 @@ type
     btnEnviarNFeSincrono: TButton;
     btnEnviarNFeSincronoDesserializacao: TButton;
     btnEnviarNFeSincronoDuplicidade: TButton;
-    btnEnviarNFeSincronoRTC: TButton;
     btnConsultarSituacaoNFe: TButton;
+    btnEnviarNFeSincronoRTC: TButton;
     btnEventoCancelamentoNFe: TButton;
     btnImprimirDANFEcomUniDANFE: TButton;
     GroupBox1: TGroupBox;
@@ -32,9 +32,11 @@ type
     btnEnviarEventoManifestacaoNFe: TToggleBox;
     GroupBox2: TGroupBox;
     btnEventoCancelamentoNFCe: TToggleBox;
+    btnDesserializarRetornoConsultaDFe: TToggleBox;
     procedure btnConsultarDistribuicaoDFeOnClick(Sender: TObject);
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
     procedure btnConsultaStatusNFeClick(Sender: TObject);
+    procedure btnDesserializarRetornoConsultaDFeClick(Sender: TObject);
     procedure btnEnviarEventoManifestacaoNFeClick(Sender: TObject);
     procedure btnEnviarNFCeSincronoClick(Sender: TObject);
     procedure btnEnviarNFCeSincronoDesserializacaoClick(Sender: TObject);
@@ -72,6 +74,19 @@ begin
   finally
   end;
 end;
+
+procedure TfrmPrincipal.btnDesserializarRetornoConsultaDFeClick(Sender: TObject
+  );
+var
+  oServico: TDesserializarRetornoConsultaDFe;
+begin
+  oServico := TDesserializarRetornoConsultaDFe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
 
 procedure TfrmPrincipal.btnEnviarEventoManifestacaoNFeClick(Sender: TObject);
 var

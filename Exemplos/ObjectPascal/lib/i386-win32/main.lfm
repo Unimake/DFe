@@ -98,14 +98,23 @@ object frmPrincipal: TfrmPrincipal
       TabOrder = 8
       OnClick = btnEnviarEventoManifestacaoNFeClick
     end
-    object btnEnviarNFeSincronoRTCClick: TButton
-      Left = 13
+    object btnEnviarNFeSincronoRTC: TButton
+      Left = 12
       Height = 38
       Top = 416
       Width = 321
       Caption = '(RTC) Enviar NFe modo Síncrono '
       TabOrder = 9
       OnClick = btnEnviarNFeSincronoRTCClick
+    end
+    object btnDesserializarRetornoConsultaDFe: TToggleBox
+      Left = 13
+      Height = 38
+      Top = 464
+      Width = 321
+      Caption = 'Desserializar retorno Consulta DFe'
+      TabOrder = 10
+      OnClick = btnDesserializarRetornoConsultaDFeClick
     end
   end
   object GroupBox2: TGroupBox
