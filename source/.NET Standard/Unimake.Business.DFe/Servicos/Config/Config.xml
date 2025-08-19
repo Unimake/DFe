@@ -2897,4 +2897,10 @@
 		<ArqConfig>BebedouroSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3552809">
+		<Nome>Taboão da Serra - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>TaboaoDaSerraSP.xml</ArqConfig>
+		<PadraoNFSe>CONAM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
