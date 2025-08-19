@@ -2891,4 +2891,10 @@
 		<ArqConfig>MairiporaSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3506102">
+		<Nome>Bebedouro - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>BebedouroSP.xml</ArqConfig>
+		<PadraoNFSe>CONAM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
