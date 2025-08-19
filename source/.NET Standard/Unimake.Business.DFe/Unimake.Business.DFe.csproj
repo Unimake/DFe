@@ -432,6 +432,7 @@
 		<None Remove="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\EntreIjuisRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Equiplano.xml" />
+		<None Remove="Servicos\Config\NFSe\ErechimRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ErnestinaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EstanciaVelhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EsteioRS.xml" />
@@ -1407,6 +1408,8 @@
 		<None Remove="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SUPERNOVA\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SUPERNOVA\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SYSTEMPRO\nfse_v2_01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SYSTEMPRO\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarCupomFiscalEnvio.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarCupomFiscalResposta.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarNfseEnvio.xsd" />
@@ -1560,6 +1563,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DracenaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EntreIjuisRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ErechimRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EsteioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EunapolisBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EusebioCE.xml" />
@@ -3557,6 +3561,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SUPERNOVA\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SUPERNOVA\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SYSTEMPRO\nfse_v2_01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SYSTEMPRO\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarCupomFiscalEnvio.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarCupomFiscalResposta.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarNfseEnvio.xsd" />

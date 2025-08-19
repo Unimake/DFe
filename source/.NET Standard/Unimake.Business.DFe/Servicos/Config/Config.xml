@@ -2921,4 +2921,10 @@
 		<ArqConfig>CajuruSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4307005">
+		<Nome>Erechim - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>ErechimRS.xml</ArqConfig>
+		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
