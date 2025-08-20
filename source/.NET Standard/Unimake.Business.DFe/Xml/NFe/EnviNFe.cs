@@ -14021,7 +14021,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("pDifIBS")]
         public string PDifIBSField
         {
-            get => PDifIBS.ToString("F4", CultureInfo.InvariantCulture);
+            get => PDifIBS.ToString("F2", CultureInfo.InvariantCulture);
             set => PDifIBS = Converter.ToDouble(value);
         }
 
@@ -14053,7 +14053,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("pDifCBS")]
         public string PDifCBSField
         {
-            get => PDifCBS.ToString("F4", CultureInfo.InvariantCulture);
+            get => PDifCBS.ToString("F2", CultureInfo.InvariantCulture);
             set => PDifCBS = Converter.ToDouble(value);
         }
 
