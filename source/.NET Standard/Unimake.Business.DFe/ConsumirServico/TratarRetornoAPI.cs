@@ -40,6 +40,13 @@ namespace Unimake.Business.DFe
                 naoEncontradoErro.LoadXml(StringToXml("O servidor da Receita Federal retornou um erro (404) pois não encontrou a determinada nota no ambiente. " + responseString));
                 return naoEncontradoErro;
             }
+            else if (Response.StatusCode == System.Net.HttpStatusCode.Unauthorized && Config.PadraoNFSe == PadraoNFSe.GIAP)
+            {
+                var naoAutorizadoErro = new XmlDocument();
+                naoAutorizadoErro.LoadXml(StringToXml($"Prefeitura retornou que o usuário {Config.MunicipioUsuario} não possui autorização para emissão de NFSe. Verifique as credenciais informadas: " +
+                    $"usuário, senha e/ou token"));
+                return naoAutorizadoErro;
+            }
 
             var resultadoRetorno = new XmlDocument();
             var tipoRetorno = (string.IsNullOrWhiteSpace(Config.ResponseMediaType) ? Response.Content.Headers.ContentType.MediaType : Config.ResponseMediaType);
