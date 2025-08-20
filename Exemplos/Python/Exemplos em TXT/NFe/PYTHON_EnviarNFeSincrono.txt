@@ -6,7 +6,7 @@ from config_dll import inicializar_DLL
 from System import Decimal
 
 from Unimake.Business.DFe.Servicos import *
-from Unimake.Business.DFe.Xml.NFe import *
+import Unimake.Business.DFe.Xml.NFe as XmlNFe
 from Unimake.Business.DFe.Servicos.NFe import * 
 from Unimake.Exceptions import ThrowHelper
 
@@ -22,44 +22,62 @@ def enviar_nfe():
     oConfig.CertificadoSenha   = "12345678"
     
     # Criar XML
-    oXml         = EnviNFe() # Unimake.Business.DFe.Xml.NFe.EnviNFe
+    oXml         = XmlNFe.EnviNFe() # Unimake.Business.DFe.Xml.NFe.EnviNFe
     oXml.Versao  = "4.00"
     oXml.IdLote  = "000000000000001"
     oXml.IndSinc = SimNao.Sim
     
-    oNfe = NFe() # Unimake.Business.DFe.Xml.NFe.NFe
+    oNfe = XmlNFe.NFe() # Unimake.Business.DFe.Xml.NFe.NFe
     
     # Criar tag InfNfe
-    oInfNFe        = InfNFe() # Unimake.Business.DFe.Xml.NFe.InfNFe
+    oInfNFe        = XmlNFe.InfNFe() # Unimake.Business.DFe.Xml.NFe.InfNFe
     oInfNFe.Versao = "4.00"
     
     # Criar tag Ide
-    oIde = Ide() # Unimake.Business.DFe.Xml.NFe.Ide
-    oIde.CUF      = UFBrasil.PR
-    oIde.NatOp    = "VENDA PRODUC.DO ESTABELEC"
-    oIde.Mod      = ModeloDFe.NFe
-    oIde.Serie    = 30
-    oIde.NNF      = 16
-    oIde.DhEmi    = clr.System.DateTime.Now
-    oIde.DhsaiEnt = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).strftime("yyyy-MM-ddTHH:mm:sszzz")
-    oIde.TpNF     = TipoOperacao.Saida
-    oIde.IdDest   = DestinoOperacao.OperacaoInterestadual
-    oIde.CMunFG   = 4118402
-    oIde.TpImp    = FormatoImpressaoDANFE.NormalRetrato
-    oIde.TpEmis   = TipoEmissao.Normal
-    oIde.TpAmb    = TipoAmbiente.Homologacao
-    oIde.FinNFe   = FinalidadeNFe.Normal
-    oIde.IndFinal = SimNao.Sim
-    oIde.IndPres  = IndicadorPresenca.OperacaoPresencial
-    oIde.ProcEmi  = ProcessoEmissao.AplicativoContribuinte
-    oIde.VerProc  = "TESTE 1.00"
+    oIde = XmlNFe.Ide() # Unimake.Business.DFe.Xml.NFe.Ide
+    oIde.CUF         = UFBrasil.PR
+    oIde.NatOp       = "VENDA PRODUC.DO ESTABELEC"
+    oIde.Mod         = ModeloDFe.NFe
+    oIde.Serie       = 30
+    oIde.NNF         = 14
+    oIde.DhEmi       = clr.System.DateTime.Now
+    oIde.DhsaiEnt    = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).strftime("yyyy-MM-ddTHH:mm:sszzz")
+    oIde.TpNF        = TipoOperacao.Saida
+    oIde.IdDest      = DestinoOperacao.OperacaoInterestadual
+    oIde.CMunFG      = 4118402
+    oIde.TpImp       = FormatoImpressaoDANFE.NormalRetrato
+    oIde.TpEmis      = TipoEmissao.Normal
+    oIde.TpAmb       = TipoAmbiente.Homologacao
+    oIde.FinNFe      = FinalidadeNFe.Normal
+    oIde.IndFinal    = SimNao.Sim
+    oIde.IndPres     = IndicadorPresenca.OperacaoPresencial
+    oIde.ProcEmi     = ProcessoEmissao.AplicativoContribuinte
+    oIde.VerProc     = "TESTE 1.00"
+    oIde.CMunFGIBS   = 4118402 # RTC
+    oIde.TpNFCredito = TipoNFCredito.ApropriacaoCreditoPresumidoIBSZFM # RTC
+    oIde.TpNFDebito  = TipoNFDebito.PagamentoAntecipado # RTC
+    
+    # Criar o grupo de compra governamental
+    oGCompraGov = XmlNFe.GCompraGov() # RTC
+    oGCompraGov.PRedutor = 0
+    oGCompraGov.TpEnteGov = TipoEnteGovernamental.Municipio
+    oGCompraGov.TpOperGov = TipoOperacaoEnteGovernamental.Fornecimento
+    
+    oIde.GCompraGov = oGCompraGov # RTC
+    
+    # Criar o grupo de pagamento antecipado
+    oGPagAntecipado = XmlNFe.GPagAntecipado() # RTC
+    oGPagAntecipado.AddRefNFe("00000000000000000000000000000000000000000000")
+    oGPagAntecipado.AddRefNFe("11111111111111111111111111111111111111111111")
+    
+    oIde.GPagAntecipado = oGPagAntecipado # RTC
     
     # Adicionar a tag Ide dentro da tag InfNfe
     oInfNFe.Ide = oIde
     
     # Criar tag Emit
-    oEmit = Emit() # Unimake.Business.DFe.Xml.NFe.Emit
-    oEmit.CNPJ = "06117473000150"
+    oEmit = XmlNFe.Emit() # Unimake.Business.DFe.Xml.NFe.Emit
+    oEmit.CNPJ = "12345678901234"
     oEmit.XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA"
     oEmit.XFant = "UNIMAKE - PARANAVAI"
     oEmit.IE    = "9032000301"
@@ -67,7 +85,7 @@ def enviar_nfe():
     oEmit.CNAE  = "6202300"
     oEmit.CRT   = CRT.SimplesNacional
     
-    oEnderEmit = EnderEmit() # Unimake.Business.DFe.Xml.NFe.EnderEmit
+    oEnderEmit = XmlNFe.EnderEmit() # Unimake.Business.DFe.Xml.NFe.EnderEmit
     oEnderEmit.XLgr    = "RUA PAULO ANTONIO COSTA"
     oEnderEmit.Nro     = "575"
     oEnderEmit.XBairro = "CENTRO"
@@ -84,14 +102,14 @@ def enviar_nfe():
     oInfNFe.Emit = oEmit
     
     # Criar tag Dest
-    oDest = Dest() # Unimake.Business.DFe.Xml.NFe.Dest
+    oDest = XmlNFe.Dest() # Unimake.Business.DFe.Xml.NFe.Dest
     oDest.CNPJ       = "04218457000128"
     oDest.XNome      = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
     oDest.IndIEDest  = IndicadorIEDestinatario.ContribuinteICMS
     oDest.IE         = "582614838110"
     oDest.Email      = "janelaorp@janelaorp.com.br"
     
-    oEnderDest = EnderDest() # Unimake.Business.DFe.Xml.NFe.EnderDest
+    oEnderDest = XmlNFe.EnderDest() # Unimake.Business.DFe.Xml.NFe.EnderDest
     oEnderDest.XLgr    = "AVENIDA DA SAUDADE"
     oEnderDest.Nro     = "1555"
     oEnderDest.XBairro = "CAMPOS ELISEOS"
@@ -107,12 +125,12 @@ def enviar_nfe():
     # Adicionar a tag Dest dentor da tag InfNfe
     oInfNFe.Dest = oDest
     
-    for cont in range(1, 3):
+    for cont in range(1, 2):
         # Criar tag Det
-        oDet = Det() # Unimake.Business.DFe.Xml.NFe.Det
+        oDet = XmlNFe.Det() # Unimake.Business.DFe.Xml.NFe.Det
         oDet.NItem = cont
         
-        oProd = Prod() # Unimake.Business.DFe.Xml.NFe.Prod
+        oProd = XmlNFe.Prod() # Unimake.Business.DFe.Xml.NFe.Prod
         oProd.CProd    = str(cont)
         oProd.CEAN     = "SEM GTIN"
         oProd.XProd    = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
@@ -134,14 +152,14 @@ def enviar_nfe():
         oDet.Prod = oProd
 	   
         # criar tag Imposto
-        oImposto          = Imposto() # Unimake.Business.DFe.Xml.NFe.Imposto
+        oImposto          = XmlNFe.Imposto() # Unimake.Business.DFe.Xml.NFe.Imposto
         oImposto.VTotTrib = 12.63
         
         # criar tag Icms
-        oICMS             = ICMS() # Unimake.Business.DFe.Xml.NFe.ICMS
+        oICMS             = XmlNFe.ICMS() # Unimake.Business.DFe.Xml.NFe.ICMS
         
         # criar tag ICMSSN101
-        oICMSSN101             = ICMSSN101() # Unimake.Business.DFe.Xml.NFe.ICMSSN101
+        oICMSSN101             = XmlNFe.ICMSSN101() # Unimake.Business.DFe.Xml.NFe.ICMSSN101
         oICMSSN101.Orig        = OrigemMercadoria.Nacional
         oICMSSN101.PCredSN     = 2.8255
         oICMSSN101.VCredICMSSN = 2.40
@@ -152,10 +170,10 @@ def enviar_nfe():
         oImposto.ICMS = oICMS
         
         # criar tag PIS
-        oPIS           = PIS() # Unimake.Business.DFe.Xml.NFe.PIS
+        oPIS           = XmlNFe.PIS() # Unimake.Business.DFe.Xml.NFe.PIS
 
         # criar tag PISOutr
-        oPISOutr      = PISOutr() # Unimake.Business.DFe.Xml.NFe.PISOutr
+        oPISOutr      = XmlNFe.PISOutr() # Unimake.Business.DFe.Xml.NFe.PISOutr
         oPISOutr.CST  = "99"
         oPISOutr.VBC  = 0.00
         oPISOutr.PPIS = 0.00
@@ -168,10 +186,10 @@ def enviar_nfe():
         oImposto.PIS = oPIS
         
         # criar tag COFINS
-        oCOFINS      = COFINS() # Unimake.Business.DFe.Xml.NFe.COFINS
+        oCOFINS      = XmlNFe.COFINS() # Unimake.Business.DFe.Xml.NFe.COFINS
  
         # criar tag COFINSOutr
-        oCOFINSOutr         = COFINSOutr() # Unimake.Business.DFe.Xml.NFe.COFINSOutr
+        oCOFINSOutr         = XmlNFe.COFINSOutr() # Unimake.Business.DFe.Xml.NFe.COFINSOutr
         oCOFINSOutr.CST     = "99"
         oCOFINSOutr.VBC     = 0.00
         oCOFINSOutr.PCOFINS = 0.00
@@ -183,16 +201,183 @@ def enviar_nfe():
         # adicionar a tag COFINS dentro da tag Imposto
         oImposto.COFINS = oCOFINS
         
+        #region RTC
+        
+        #region IS
+        
+        # Ainda não será aceito o Imposto Seletivo (IS) em 2026
+        # oIS              = XmlNFe.IS() # Unimake.Business.DFe.Xml.NFe.IS
+        # oIS.CSTIS        = "000"
+        # oIS.CClassTribIS = "000001"
+        # oIS.VBCIS        = 2.00
+        # oIS.PIS          = 1.0000
+        # oIS.PISEspec     = 1.0000
+        # oIS.UTrib        = "UN"
+        # oIS.QTrib        = 10
+        # oIS.VIS          = 1.00
+        
+        # oImposto.IS = oIS
+        
+        #endregion IS
+        
+        #region IBSCBS
+        
+        oIBSCBS            = XmlNFe.IBSCBS() # Unimake.Business.DFe.Xml.NFe.IBSCBS
+        oIBSCBS.CST        = "000"
+        oIBSCBS.CClassTrib = "000001"
+        
+        #region Escolha entre gIBSCBS, gIBSCBSMono ou gTransfCred conforme o CST
+        
+        #-----GIBSCBS------
+        oGIBSCBS     = XmlNFe.GIBSCBS() # Unimake.Business.DFe.Xml.NFe.GIBSCBS
+        oGIBSCBS.VBC = 79.86
+        
+        oGIBSUF         = XmlNFe.GIBSUF() # Unimake.Business.DFe.Xml.NFe.GIBSUF
+        oGIBSUF.PIBSUF  = 0.1000
+        oGIBSUF.VIBSUF  = 0.08
+        
+        # Usar esse grupo (gDif) quando o CST do IBSCBS permitir diferimento
+        # oGDif        = XmlNFe.GDif() # Unimake.Business.DFe.Xml.NFe.GDif
+        # oGDif.PDif   = 0
+        # oGDif.VDif   = 0
+        # oGIBSUF.GDif = oGDif
+        
+        # Usar esse grupo (gRed) quando o CST do IBSCBS permitir redução ou quando for informado o grupo gCompraGov (NFe->infNFe->ide->gCompraGov)
+        oGRed           = XmlNFe.GRed() # Unimake.Business.DFe.Xml.NFe.GRed
+        oGRed.PAliqEfet = 0
+        oGRed.PRedAliq  = 0
+        oGIBSUF.GRed    = oGRed
+        
+        # Adicionar o objeto de gIBSUF dentro de gIBSCBS
+        oGIBSCBS.GIBSUF = oGIBSUF
+        
+        oGIBSMun         = XmlNFe.GIBSMun() # Unimake.Business.DFe.Xml.NFe.GIBSMun
+        oGIBSMun.PIBSMun = 0.0000
+        oGIBSMun.VIBSMun = 0.00
+        
+        # Usar esse grupo (gDif) quando a CST do IBSCBS permitir diferimento
+        # oGDif        = XmlNFe.GDif() # Unimake.Business.DFe.Xml.NFe.GDif
+        # oGDif.PDif   = 0
+        # oGDif.VDif   = 0
+        # oGIBSMun.GDif = oGDif
+        
+        # Usar esse grupo (gRed) quando a CST do IBSCBS permitir redução ou quando for informado o grupo gCompraGov (NFe->infNFe->ide->gCompraGov)
+        oGRed           = XmlNFe.GRed() # Unimake.Business.DFe.Xml.NFe.GRed
+        oGRed.PAliqEfet = 0
+        oGRed.PRedAliq  = 0
+        oGIBSMun.GRed    = oGRed
+        
+        # Adicionar o objeto de gIBSMun dentro de gIBSCBS
+        oGIBSCBS.GIBSMun = oGIBSMun
+        
+        # Tag opcional pois algumas SEFAZs ainda não está aceitando
+        #oGIBSCBS.vIBS = 0.00
+        
+        oGCBS         = XmlNFe.GCBS() # Unimake.Business.DFe.Xml.NFe.GCBS
+        oGCBS.PCBS    = 0.8000
+        oGCBS.VCBS    = 0.64
+        
+        # Usar esse grupo (gDif) quando a CST do IBSCBS permitir diferimento
+        # oGDif        = XmlNFe.GDif() # Unimake.Business.DFe.Xml.NFe.GDif
+        # oGDif.PDif   = 0
+        # oGDif.VDif   = 0
+        # oGCBS.GDif = oGDif
+        
+        # Usar esse grupo (gRed) quando a CST do IBSCBS permitir redução ou quando for informado o grupo gCompraGov (NFe->infNFe->ide->gCompraGov)
+        oGRed           = XmlNFe.GRed() # Unimake.Business.DFe.Xml.NFe.GRed
+        oGRed.PAliqEfet = 0
+        oGRed.PRedAliq  = 0
+        oGCBS.GRed    = oGRed
+        
+        # Adicionar o objeto de gCBS dentro de gIBSCBS
+        oGIBSCBS.GCBS = oGCBS
+        
+        #------------GRUPOS OPCIONAIS-------------
+        
+        oGIBSCredPres = XmlNFe.GIBSCredPres() # Unimake.Business.DFe.Xml.NFe.GIBSCredPres
+        oGIBSCredPres.CCredPres = "987654"
+        oGIBSCredPres.PCredPres = 0
+        oGIBSCredPres.VCredPres = 1.00
+        #oGIBSCredPres.VCredPresCondSus = 0 # Se informar essa propriedade, não deve informar a propriedade VCredPres e vice-versa
+        
+        # Adicionar o objeto de gIBSCredPres dentro de gIBSCBS
+        oGIBSCBS.GIBSCredPres = oGIBSCredPres
+        
+        oGCBSCredPres = XmlNFe.GCBSCredPres() # Unimake.Business.DFe.Xml.NFe.GCBSCredPres
+        oGCBSCredPres.CCredPres = "123456"
+        oGCBSCredPres.PCredPres = 0
+        oGCBSCredPres.VCredPres = 2.00
+        #oGCBSCredPres.VCredPresCondSus = 0 # Se informar essa propriedade, não deve informar a propriedade VCredPres e vice-versa
+        
+        # Adicionar o objeto de gCBSCredPres dentro de gIBSCBS
+        oGIBSCBS.GCBSCredPres = oGCBSCredPres
+        
+        oGTribCompraGov             = XmlNFe.GTribCompraGov() # Unimake.Business.DFe.Xml.NFe.GTribCompraGov
+        oGTribCompraGov.PAliqCBS    = 0
+        oGTribCompraGov.PAliqIBSMun = 0
+        oGTribCompraGov.PAliqIBSUF  = 0
+        oGTribCompraGov.VTribCBS    = 0
+        oGTribCompraGov.VTribIBSMun = 0
+        oGTribCompraGov.VTribIBSUF  = 0
+        
+        # Adicionar o objeto de gTribCompraGov dentro de gIBSCBS
+        oGIBSCBS.GTribCompraGov = oGTribCompraGov
+        
+        oGTribRegular                    = XmlNFe.GTribRegular() # Unimake.Business.DFe.Xml.NFe.GTribRegular
+        oGTribRegular.CClassTribReg      = "000001"
+        oGTribRegular.CSTReg             = "000"
+        oGTribRegular.PAliqEfetRegCBS    = 0
+        oGTribRegular.PAliqEfetRegIBSMun = 0
+        oGTribRegular.PAliqEfetRegIBSUF  = 0
+        oGTribRegular.VTribRegCBS        = 0
+        oGTribRegular.VTribRegIBSMun     = 0
+        oGTribRegular.VTribRegIBSUF      = 0
+        
+        # Adicionar o objeto de gTribRegular dentro de gIBSCBS
+        oGIBSCBS.GTribRegular = oGTribRegular
+        
+        # Adiciona o objeto do gIBSCBS dentro de IBSCBS
+        #oIBSCBS.GIBSCBS = oGIBSCBS
+        
+        #------------GIBSCBSMono------------
+        # Gerar o grupo gIBSCBSMono se necessário
+        oIBSCBS.GIBSCBSMono = gerar_grupo_gIBSCBSMono()
+        
+        #------------GTransfCred------------
+        # oGTransfCred = XmlNFe.GTransfCred() # Unimake.Business.DFe.Xml.NFe.GTransfCred
+        # oGTransfCred.VIBS = 0.00
+        # oGTransfCred.VCBS = 0.00
+        # oIBSCBS.GTransfCred = oGTransfCred
+        
+        #endregion GIBSCBSMono - Escolha entre gIBSCBS, gIBSCBSMono ou gTransfCred
+        
+        #region GCredPresIBSZFM - Opcional
+        
+        oGCredPresIBSZFM                  = XmlNFe.GCredPresIBSZFM()
+        oGCredPresIBSZFM.TpCredPresIBSZFM = TipoCreditoPresumidoIBSZFM.SemCreditoPresumido
+        oGCredPresIBSZFM.VCredPresIBSZFM  = 0.01
+        
+        oIBSCBS.GCredPresIBSZFM = oGCredPresIBSZFM
+        
+        #endregion GCredPresIBSZFM - Opcional
+        
+        # Adicionar o objeto IBSCBS dentro de imposto
+        oImposto.IBSCBS = oIBSCBS
+        
+        #endregion IBSCBS
+
+        #endregion RTC
+        
         # adicionar a tag Imposto dentro da tag Det
         oDet.Imposto = oImposto
         
         oInfNFe.AddDet(oDet)
         
     # Criar tag Total
-    oTotal = Total() # Unimake.Business.DFe.Xml.NFe.Total
+    oTotal = XmlNFe.Total() # Unimake.Business.DFe.Xml.NFe.Total
 
     # Criar tag ICMSTot
-    oICMSTot            = ICMSTot() # Unimake.Business.DFe.Xml.NFe.ICSMTot
+    oICMSTot            = XmlNFe.ICMSTot() # Unimake.Business.DFe.Xml.NFe.ICSMTot
     oICMSTot.VBC        = 0
     oICMSTot.VICMS      = 0
     oICMSTot.VICMSDeson = 0
@@ -217,15 +402,80 @@ def enviar_nfe():
     # adicionar a tag ICMSTot dentro da tag Total
     oTotal.ICMSTot = oICMSTot
     
+    #region RTC - Totalização
+    
+    #region ISTot
+    
+    # Ainda não será aceito o Imposto Seletivo (IS) em 2026
+    # oISTot = XmlNFe.ISTot() # Unimake.Business.DFe.Xml.NFe
+    # oISTot.VIS = 500.00
+    
+    #endregion ISTot
+    
+    #region IBSCBSTot
+    
+    oIBSCBSTot           = XmlNFe.IBSCBSTot() # Unimake.Business.DFe.Xml.NFe.IBSCBSTot
+    oIBSCBSTot.VBCIBSCBS = 0.00
+    
+    oGIBSTot = XmlNFe.GIBSTot() # Unimake.Business.DFe.Xml.NFe.GIBSTot
+    
+    oGIBSUFTot          = XmlNFe.GIBSUFTot() # Unimake.Business.DFe.Xml.NFe.GIBSUFTot
+    oGIBSUFTot.VDif     = 0.00
+    oGIBSUFTot.VDevTrib = 0.00
+    oGIBSUFTot.VIBSUF   = 0.08
+    # Adiciona o objeto gIBSUF dentro de gIBS
+    oGIBSTot.GIBSUF     = oGIBSUFTot
+    
+    oGIBSMunTot          = XmlNFe.GIBSMunTot() # Unimake.Business.DFe.Xml.NFe.GIBSMunTot
+    oGIBSMunTot.VDif     = 0.00
+    oGIBSMunTot.VDevTrib = 0.00
+    oGIBSMunTot.VIBSMun  = 0.00
+    # Adiciona o objeto gIBSMun dentro de gIBS
+    oGIBSTot.GIBSMun     = oGIBSMunTot
+    
+    oGIBSTot.VIBS             = 0.08
+    oGIBSTot.VCredPres        = 0.00
+    oGIBSTot.VCredPresCondSus = 0.00
+    # Adiciona o objeto gIBSTot dentro de IBSCBSTot
+    oIBSCBSTot.GIBS = oGIBSTot
+    
+    oGCBSTot                  = XmlNFe.GCBSTot() # Unimake.Business.DFe.Xml.NFe.GCBSTot
+    oGCBSTot.VDif             = 0.00
+    oGCBSTot.VDevTrib         = 0.00
+    oGCBSTot.VCBS             = 0.64
+    oGCBSTot.VCredPres        = 0.00
+    oGCBSTot.VCredPresCondSus = 0.00
+    # Adiciona o objeto gBCSTot dentro de IBSCBSTot
+    oIBSCBSTot.GCBS = oGCBSTot
+    
+    oGMono = XmlNFe.GMono() # Unimake.Business.DFe.Xml.NFe.GMono
+    oGMono.VCBSMono      = 0
+    oGMono.VCBSMonoRet   = 0
+    oGMono.VCBSMonoReten = 0
+    oGMono.VIBSMono      = 0
+    oGMono.VIBSMonoRet   = 0
+    oGMono.VIBSMonoReten = 0
+    # Adiciona o objeto oGMono dentro de IBSCBSTot
+    oIBSCBSTot.GMono = oGMono
+    
+    # Adiciona o objeto IBSCBSTot dentro de Total
+    oTotal.IBSCBSTot = oIBSCBSTot
+    
+    oTotal.VNFTot = 0.01
+    
+    #endregion IBSCBSTot
+    
+    #endregion RTC - Totalização
+    
     # adicionar a tag Total dentro da tag InfNfe
     oInfNFe.Total = oTotal
     
     # Criar a tag Transp  
-    oTransp          = Transp() # Unimake.Business.DFe.Xml.NFe.Transp
+    oTransp          = XmlNFe.Transp() # Unimake.Business.DFe.Xml.NFe.Transp
     oTransp.ModFrete = ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
 
     # Criar a tag Vol
-    oVol       = Vol() # Unimake.Business.DFe.Xml.NFe.Vol
+    oVol       = XmlNFe.Vol() # Unimake.Business.DFe.Xml.NFe.Vol
     oVol.QVol  = 1
     oVol.Esp   = "LU"
     oVol.Marca = "UNIMAKE"
@@ -239,17 +489,17 @@ def enviar_nfe():
     oInfNFe.Transp = oTransp
 
     # Criar tag Cobr 
-    oCobr = Cobr() # Unimake.Business.DFe.Xml.NFe.Cobr
+    oCobr = XmlNFe.Cobr() # Unimake.Business.DFe.Xml.NFe.Cobr
 
     # Criar tag Fat 
-    oFat       = Fat() # Unimake.Business.DFe.Xml.NFe.Fat
+    oFat       = XmlNFe.Fat() # Unimake.Business.DFe.Xml.NFe.Fat
     oFat.NFat  = "057910"
     oFat.VOrig = 169.80
     oFat.VDesc = 0
     oFat.VLiq  = 169.80
     
     # Criar tag Dup (parcela 1)
-    oDup       = Dup() # Unimake.Business.DFe.Xml.NFe.Dup
+    oDup       = XmlNFe.Dup() # Unimake.Business.DFe.Xml.NFe.Dup
     oDup.NDup  = "001"
     oDup.DVenc = clr.System.DateTime.Now
     oDup.VDup  = 84.90
@@ -258,7 +508,7 @@ def enviar_nfe():
     oCobr.AddDup(oDup)
     
     # Criar tag Dup (parcela 2)
-    oDup       = Dup() # Unimake.Business.DFe.Xml.NFe.Dup
+    oDup       = XmlNFe.Dup() # Unimake.Business.DFe.Xml.NFe.Dup
     oDup.NDup  = "002"
     oDup.DVenc = clr.System.DateTime.Now
     oDup.VDup  = 84.90
@@ -273,10 +523,10 @@ def enviar_nfe():
     oInfNFe.Cobr = oCobr
     
     # criar tag Pag
-    oPag = Pag() # Unimake.Business.DFe.Xml.NFe.Pag
+    oPag = XmlNFe.Pag() # Unimake.Business.DFe.Xml.NFe.Pag
 
     # criar tag DetPag (pode ter mais que uma, só foi criada uma como exemplo)
-    oDetPag        = DetPag() # Unimake.Business.DFe.Xml.NFe.DetPag
+    oDetPag        = XmlNFe.DetPag() # Unimake.Business.DFe.Xml.NFe.DetPag
     oDetPag.IndPag = IndicadorPagamento.PagamentoVista
     oDetPag.TPag   = MeioPagamento.Dinheiro
     oDetPag.VPag   = 169.80
@@ -288,14 +538,14 @@ def enviar_nfe():
     oInfNFe.Pag = oPag
 
     # criar tag InfAdic
-    oInfAdic        = InfAdic() # Unimake.Business.DFe.Xml.NFe.InfAdic
+    oInfAdic        = XmlNFe.InfAdic() # Unimake.Business.DFe.Xml.NFe.InfAdic
     oInfAdic.InfCpl = ";CONTROLE: 0000241197;PEDIDO(S) ATENDIDO(S): 300474;Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008;Permite o aproveitamento do credito de ICMS no valor de R$ 2,40, correspondente ao percentual de 2,83% . Nos termos do Art. 23 - LC 123/2006 (Resolucoes CGSN n. 10/2007 e 53/2008);Voce pagou aproximadamente: R$ 6,69 trib. federais / R$ 5,94 trib. estaduais / R$ 0,00 trib. municipais. Fonte: IBPT/empresometro.com.br 18.2.B A3S28F;"
     
     # adicionar a tag InfAdic dentro da tag InfNfe
     oInfNFe.InfAdic = oInfAdic
 
     # criar tag InfRespTec
-    oInfRespTec          = InfRespTec() # Unimake.Business.DFe.Xml.NFe.InfRespTec
+    oInfRespTec          = XmlNFe.InfRespTec() # Unimake.Business.DFe.Xml.NFe.InfRespTec
     oInfRespTec.CNPJ     = "06117473000150"
     oInfRespTec.XContato = "Ze das Couves"
     oInfRespTec.Email    = "zedascouves@gmail.com"
@@ -320,11 +570,11 @@ def enviar_nfe():
     
     oAutorizacao      = Autorizacao() # Unimake.Business.DFe.Servicos.NFe.Autorizacao
     oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
-    oRetEnviNFe       = RetEnviNFe() # Unimake.Business.DFe.Xml.NFe.RetEnviNFe
+    oRetEnviNFe       = XmlNFe.RetEnviNFe() # Unimake.Business.DFe.Xml.NFe.RetEnviNFe
     
     try:
         # Consumir o serviço da SEFAZ
-        oAutorizacao.SetXMLConfiguracao(oXml, oConfig) 
+        oAutorizacao.SetXMLConfiguracao(oXml, oConfig)
         notaAssinada = oAutorizacao.GetConteudoNFeAssinada(0)
         print("NFe assinada: ", notaAssinada)
         
@@ -346,3 +596,51 @@ def enviar_nfe():
     except Exception as e:
         print("Erro ao enviar a NFe: ", e)
         print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())
+
+# Funções auxiliares para criar grupos da RTC
+
+def gerar_grupo_gIBSCBSMono():
+
+    oGIBSCBSMono                 = XmlNFe.GIBSCBSMono() # Unimake.Business.DFe.Xml.NFe.GIBSCBSMono
+    # Criar as tags obrigatórias de gIBSCBSMono
+    oGIBSCBSMono.VTotCBSMonoItem = 0
+    oGIBSCBSMono.VTotIBSMonoItem = 0
+        
+    #------------GRUPOS OPCIONAIS-------------
+    
+    oGMonoDif             = XmlNFe.GMonoDif() # Unimake.Business.DFe.Xml.NFe.GMonoDif
+    oGMonoDif.PDifCBS     = 0.00
+    oGMonoDif.PDifIBS     = 0.00
+    oGMonoDif.VCBSMonoDif = 0.00
+    oGMonoDif.VIBSMonoDif = 0.00
+    # Adicionar o objeto gMonoDif dentro de gIBSCBSMono
+    oGIBSCBSMono.GMonoDif = oGMonoDif
+    
+    oGMonoPadrao = XmlNFe.GMonoPadrao() # Unimake.Business.DFe.Xml.NFe.GMonoPadrao
+    oGMonoPadrao.QBCMono     = Decimal(0.0012)
+    oGMonoPadrao.AdRemCBS    = 0.00
+    oGMonoPadrao.AdRemIBS    = 0.00
+    oGMonoPadrao.VIBSMono    = 0.00
+    oGMonoPadrao.VCBSMono    = 0.00
+    # Adicionar o objeto gMonoPadrao dentro de gIBSCBSMono
+    oGIBSCBSMono.GMonoPadrao = oGMonoPadrao
+        
+    oGMonoRet = XmlNFe.GMonoRet() # Unimake.Business.DFe.Xml.NFe.GMonoRet
+    oGMonoRet.QBCMonoRet  = 0.0012
+    oGMonoRet.AdRemCBSRet = 0.00
+    oGMonoRet.AdRemIBSRet = 0.00
+    oGMonoRet.VIBSMonoRet = 0.00
+    oGMonoRet.VCBSMonoRet = 0.00
+    # Adicionar o objeto gMonoRet dentro de gIBSCBSMono
+    oGIBSCBSMono.GMonoRet = oGMonoRet
+        
+    oGMonoReten = XmlNFe.GMonoReten() # Unimake.Business.DFe.Xml.NFe.GMonoReten
+    oGMonoReten.QBCMonoReten  = 0.1847
+    oGMonoReten.AdRemCBSReten = 0
+    oGMonoReten.AdRemIBSReten = 0
+    oGMonoReten.VCBSMonoReten = 0
+    oGMonoReten.VIBSMonoReten = 0
+    # Adicionar o objeto gMonoReten dentro de gIBSCBSMono
+    oGIBSCBSMono.GMonoReten   = oGMonoReten
+        
+    return oGIBSCBSMono
