@@ -77,7 +77,7 @@ var
       oUnidanfeServices.Execute(oUnidanfeConfiguration);
       ShowMessage('Aguarde!');
 
-      oUnidanfeConfiguration.Arquivo := '\\192.168.0.250\app\adm\NFe\Emp0001_Fil002_Envio\Enviadas\Autorizados\202202\41220206117473000150550010000717301715751703-procNFe.xml';
+      oUnidanfeConfiguration.Arquivo := '\\192.168.0.242\app\adm\NFe\Emp0001_Fil002_Envio\Enviadas\Autorizados\202202\41220206117473000150550010000717301715751703-procNFe.xml';
       oUnidanfeConfiguration.NomePDF := 'D:\testenfe\pdf\41220206117473000150550010000717301715751703.pdf';
       oUnidanfeConfiguration.Visualizar := False;
       oUnidanfeConfiguration.Imprimir := False;
@@ -85,16 +85,12 @@ var
       ShowMessage('Aguarde!');
 
       oUnidanfeServices.ShowConfigurationScreen();
-      ShowMessage('Aguarde!');
 
       oUnidanfeServices.ShowConfigurationScreenPastaConfig('C:\Unimake\Unimake.UniDANFe\Unimake_EXE');
-      ShowMessage('Aguarde!');
 
       oUnidanfeServices.ShowEmailScreen();
-      ShowMessage('Aguarde!');
 
       oUnidanfeServices.ShowLicencaScreen();
-      ShowMessage('Aguarde!');
 
       // Executar o UniDANFe.EXE sem parâmetros
       ShellExecResult := ShellExecute(0, 'open', 'D:\testenfe\unidanfe\unidanfe.exe', nil, 'D:\testenfe\unidanfe', SW_SHOWNORMAL);
