@@ -322,6 +322,12 @@ namespace Unimake.Business.DFe
 
                     if (retornoXml.GetElementsByTagName(tagRetorno)[0] == null)
                     {
+                        if (soap.PadraoNFSe == PadraoNFSe.SYSTEMPRO && webException.ToString().Contains("401"))
+                        {
+                            throw new Exception("Erro de autenticação no webservice. Verifique se o certificado digital está autorizado a consumir o webservice." +
+                                "\r\n\r\nConteúdo retornado pelo servidor:\r\n\r\n" + retornoXml.InnerXml);
+                        }
+
                         throw new Exception("Não foi possível localizar a tag <" + tagRetorno + "> no XML retornado pelo web-service.\r\n\r\n" +
                             "Conteúdo retornado pelo servidor:\r\n\r\n" + retornoXml.InnerXml);
                     }
