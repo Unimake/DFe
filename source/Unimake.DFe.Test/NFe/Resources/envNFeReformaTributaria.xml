@@ -174,12 +174,12 @@
 								<vCBS>6.63</vCBS>
 							</gCBS>
 							<gIBSCredPres>
-								<cCredPres>1111</cCredPres>
+								<cCredPres>11</cCredPres>
 								<pCredPres>5.0000</pCredPres>
 								<vCredPresCondSus>10.00</vCredPresCondSus>
 							</gIBSCredPres>
 							<gCBSCredPres>
-								<cCredPres>2222</cCredPres>
+								<cCredPres>22</cCredPres>
 								<pCredPres>3.0000</pCredPres>
 								<vCredPres>30.00</vCredPres>
 							</gCBSCredPres>
