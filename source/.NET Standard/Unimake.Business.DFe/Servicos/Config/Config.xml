@@ -2975,4 +2975,10 @@
 		<ArqConfig>SantaTerezinhaDeItaipuPR.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3550407">
+		<Nome>São Pedro - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoPedroSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
