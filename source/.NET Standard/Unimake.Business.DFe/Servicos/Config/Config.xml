@@ -2951,4 +2951,10 @@
 		<ArqConfig>CanelaRS.xml</ArqConfig>
 		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2616407">
+		<Nome>Vitória de Santo Antão - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>VitoriaDeSantoAntaoPE.xml</ArqConfig>
+		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

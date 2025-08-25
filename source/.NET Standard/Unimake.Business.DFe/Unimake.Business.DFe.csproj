@@ -755,6 +755,7 @@
 		<None Remove="Servicos\Config\NFSe\VilhenaRO.xml" />
 		<None Remove="Servicos\Config\NFSe\ViscondeDoRioBrancoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml" />
+		<None Remove="Servicos\Config\NFSe\VitoriaDeSantoAntaoPE.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VoltaRedondaRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\VotorantimSP.xml" />
@@ -2048,6 +2049,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VianaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VilhenaRO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ViscondeDoRioBrancoMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\VitoriaDeSantoAntaoPE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VitoriaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VotorantimSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VotuporangaSP.xml" />
