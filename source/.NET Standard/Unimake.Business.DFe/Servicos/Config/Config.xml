@@ -2987,4 +2987,10 @@
 		<ArqConfig>TeodoroSampaioSP.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4321709">
+		<Nome>Três Coroas - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>TresCoroasRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
