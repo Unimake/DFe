@@ -652,6 +652,7 @@
 		<None Remove="Servicos\Config\NFSe\Quatro BarrasPR.xml" />
 		<None Remove="Servicos\Config\NFSe\RecifePE.xml" />
 		<None Remove="Servicos\Config\NFSe\RedencaoPA.xml" />
+		<None Remove="Servicos\Config\NFSe\RegenteFeijoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RibasDoRioPardoMS.xml" />
 		<None Remove="Servicos\Config\NFSe\RibeiraoDasNevesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\RibeiraoPretoSP.xml" />
@@ -1644,6 +1645,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PrataMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PresidentePrudenteSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\Quatro BarrasPR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\RegenteFeijoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDosCedrosSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDoSulSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioNegrinhoSC.xml" />

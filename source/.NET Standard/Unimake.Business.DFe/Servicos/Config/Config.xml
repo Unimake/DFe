@@ -2957,4 +2957,10 @@
 		<ArqConfig>VitoriaDeSantoAntaoPE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3542404">
+		<Nome>Regente Feijó - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>RegenteFeijoSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
