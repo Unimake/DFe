@@ -729,6 +729,7 @@
 		<None Remove="Servicos\Config\NFSe\TaubateSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
+		<None Remove="Servicos\Config\NFSe\TeodoroSampaioSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TeofiloOtoniMG.xml" />
 		<None Remove="Servicos\Config\NFSe\TeresinaPI.xml" />
 		<None Remove="Servicos\Config\NFSe\TeresopolisRJ.xml" />
@@ -1842,6 +1843,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquaritingaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquarivaiSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TeodoroSampaioSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresopolisRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TerraBoaPR.xml" />

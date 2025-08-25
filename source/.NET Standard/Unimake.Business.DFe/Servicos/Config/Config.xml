@@ -2981,4 +2981,10 @@
 		<ArqConfig>SaoPedroSP.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3554300">
+		<Nome>Teodoro Sampaio - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>TeodoroSampaioSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
