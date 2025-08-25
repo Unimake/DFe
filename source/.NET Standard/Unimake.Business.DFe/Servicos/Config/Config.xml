@@ -2969,4 +2969,10 @@
 		<ArqConfig>RolandiaPR.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4124053">
+		<Nome>Santa Terezinha de Itaipu - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>SantaTerezinhaDeItaipuPR.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
