@@ -2963,4 +2963,10 @@
 		<ArqConfig>RegenteFeijoSP.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4122404">
+		<Nome>Rolândia - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>RolandiaPR.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

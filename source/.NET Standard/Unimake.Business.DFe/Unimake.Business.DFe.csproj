@@ -662,6 +662,7 @@
 		<None Remove="Servicos\Config\NFSe\RioDoSulSC.xml" />
 		<None Remove="Servicos\Config\NFSe\RioGrandeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\RioNegrinhoSC.xml" />
+		<None Remove="Servicos\Config\NFSe\RolandiaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\RolanteRS.xml" />
 		<None Remove="Servicos\Config\NFSe\RondonopolisMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SabaraMG.xml" />
@@ -1649,6 +1650,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDosCedrosSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDoSulSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioNegrinhoSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\RolandiaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SabaraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaRosaRS.xml" />
