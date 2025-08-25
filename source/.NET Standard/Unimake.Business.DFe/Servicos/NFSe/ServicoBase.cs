@@ -464,15 +464,15 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void SOFTPLAN()
         {
-            if (Configuracoes.RequestURI.Contains("{CodigoVerificacao}"))
+            if (Configuracoes.RequestURI.Contains("{codigoVerificacao}"))
             {
                 var cv = GetXMLElementInnertext("CodigoVerificacao");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{CodigoVerificacao}", cv);
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{codigoVerificacao}", cv);
             }
-            if (Configuracoes.RequestURI.Contains("{CMC}"))
+            if (Configuracoes.RequestURI.Contains("{cmc}"))
             {
                 var cmc = GetXMLElementInnertext("CMC");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{CMC}", cmc);
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{cmc}", cmc);
             }
             if (Configuracoes.RequestURI.Contains("numero"))
             {
@@ -483,7 +483,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
             var token = Token.GerarTokenSOFTPLAN(Configuracoes);
 
-            Configuracoes.MunicipioToken = token;
+            Configuracoes.MunicipioToken = $"Bearer {token}";
         }
 
         #endregion SOFTPLAN
