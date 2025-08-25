@@ -1737,7 +1737,7 @@
 		<Nome>Teresópolis - RJ</Nome>
 		<UF>RJ</UF>
 		<ArqConfig>TeresopolisRJ.xml</ArqConfig>
-		<PadraoNFSe>WEBISS</PadraoNFSe>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4318705">
 		<Nome>São Leopoldo - RS</Nome>
@@ -2950,5 +2950,47 @@
 		<UF>RS</UF>
 		<ArqConfig>CanelaRS.xml</ArqConfig>
 		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="2616407">
+		<Nome>Vitória de Santo Antão - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>VitoriaDeSantoAntaoPE.xml</ArqConfig>
+		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3542404">
+		<Nome>Regente Feijó - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>RegenteFeijoSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4122404">
+		<Nome>Rolândia - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>RolandiaPR.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4124053">
+		<Nome>Santa Terezinha de Itaipu - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>SantaTerezinhaDeItaipuPR.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3550407">
+		<Nome>São Pedro - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoPedroSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3554300">
+		<Nome>Teodoro Sampaio - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>TeodoroSampaioSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4321709">
+		<Nome>Três Coroas - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>TresCoroasRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>

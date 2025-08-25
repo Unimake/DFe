@@ -3,43 +3,47 @@
 	<Servicos ID="NFSe">
 		<GerarNfse versao="2.00">
 			<Descricao>Geração de NFSe</Descricao>
-			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/processamento/notas</RequestURIHomologacao>
-			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/processamento/notas</RequestURIProducao>
+			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/processamento/notas/processa</RequestURIHomologacao>
+			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/processamento/notas/processa</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebContentType>application/xml</WebContentType>
 			<LoginConexao>false</LoginConexao>
+			<TagAssinatura>xmlProcessamentoNfpse</TagAssinatura>
+			<TagAtributoID>valorTotalServicos</TagAtributoID>
 			<RequestURILoginProducao>https://nfps-e.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginProducao>
 			<RequestURILoginHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginHomologacao>
 		</GerarNfse>
-		<ConsultarNfsePorRps versao="2.00">
-			<Descricao>Consulta de XML de NFSe por RPS</Descricao>
-			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/consultas/notas/xml/{CodigoVerificacao}/{CMC}</RequestURIHomologacao>
-			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/consultas/notas/xml/{CodigoVerificacao}/{CMC}</RequestURIProducao>
-			<MetodoAPI>get</MetodoAPI>
-			<WebContentType>application/xml</WebContentType>
-			<LoginConexao>false</LoginConexao>
-			<RequestURILoginProducao>https://nfps-e.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginProducao>
-			<RequestURILoginHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginHomologacao>
-		</ConsultarNfsePorRps>
-		<CancelarNfse versao="2.00">
-			<Descricao>Cancelamento de NFSe</Descricao>
-			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/cancelamento/notas</RequestURIHomologacao>
-			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/cancelamento/notas</RequestURIProducao>
-			<MetodoAPI>put</MetodoAPI>
-			<WebContentType>application/xml</WebContentType>
-			<LoginConexao>false</LoginConexao>
-			<RequestURILoginProducao>https://nfps-e.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginProducao>
-			<RequestURILoginHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginHomologacao>
-		</CancelarNfse>
 		<ConsultarNfse versao="2.00">
 			<Descricao>Consulta de XML de NFSe</Descricao>
-			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/consultas/notas/por-numero/{numero}</RequestURIHomologacao>
-			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/consultas/notas/por-numero/{numero}</RequestURIProducao>
+			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/consultas/notas/codigo/{codigoVerificacao}/{cmc}</RequestURIHomologacao>
+			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/consultas/notas/codigo/{codigoVerificacao}/{cmc}</RequestURIProducao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebContentType>application/xml</WebContentType>
 			<LoginConexao>false</LoginConexao>
 			<RequestURILoginProducao>https://nfps-e.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginProducao>
 			<RequestURILoginHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginHomologacao>
 		</ConsultarNfse>
+		<CancelarNfse versao="2.00">
+			<Descricao>Cancelamento de NFSe</Descricao>
+			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/cancelamento/notas/cancela</RequestURIHomologacao>
+			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/cancelamento/notas/cancela</RequestURIProducao>
+			<MetodoAPI>put</MetodoAPI>
+			<WebContentType>application/xml</WebContentType>
+			<LoginConexao>false</LoginConexao>
+			<TagAssinatura>xmlCancelamentoNfpse</TagAssinatura>
+			<TagAtributoID>codigoVerificacao</TagAtributoID>
+			<RequestURILoginProducao>https://nfps-e.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginProducao>
+			<RequestURILoginHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginHomologacao>
+		</CancelarNfse>
+		<ConsultarNfsePorRps versao="2.00">
+			<Descricao>Consulta de XML de NFSe por RPS</Descricao>
+			<RequestURIHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/consultas/notas/numero/{numero}</RequestURIHomologacao>
+			<RequestURIProducao>https://nfps-e.pmf.sc.gov.br/api/v1/consultas/notas/numero/{numero}</RequestURIProducao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebContentType>application/xml</WebContentType>
+			<LoginConexao>false</LoginConexao>
+			<RequestURILoginProducao>https://nfps-e.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginProducao>
+			<RequestURILoginHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginHomologacao>
+		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>

@@ -97,6 +97,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 case PadraoNFSe.SOFTPLAN:
                     SOFTPLAN();
                     break;
+
+                case PadraoNFSe.ISSONLINE_ASSESSORPUBLICO:
+                    ISSONLINE_ASSESSORPUBLICO();
+                    break;
             }
             Configuracoes.Definida = true;
             base.DefinirConfiguracao();
@@ -460,15 +464,15 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void SOFTPLAN()
         {
-            if (Configuracoes.RequestURI.Contains("{CodigoVerificacao}"))
+            if (Configuracoes.RequestURI.Contains("{codigoVerificacao}"))
             {
                 var cv = GetXMLElementInnertext("CodigoVerificacao");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{CodigoVerificacao}", cv);
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{codigoVerificacao}", cv);
             }
-            if (Configuracoes.RequestURI.Contains("{CMC}"))
+            if (Configuracoes.RequestURI.Contains("{cmc}"))
             {
                 var cmc = GetXMLElementInnertext("CMC");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{CMC}", cmc);
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{cmc}", cmc);
             }
             if (Configuracoes.RequestURI.Contains("numero"))
             {
@@ -476,13 +480,24 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numero}", numero);
             }
 
-            
+
             var token = Token.GerarTokenSOFTPLAN(Configuracoes);
 
-            Configuracoes.MunicipioToken = token;
+            Configuracoes.MunicipioToken = $"Bearer {token}";
         }
 
         #endregion SOFTPLAN
+
+        #region ISSONLINE_ASSESSORPUBLICO
+
+        private void ISSONLINE_ASSESSORPUBLICO()
+        {
+            var senhaCriptografada = Criptografia.GetMD5Hash(Configuracoes.MunicipioSenha);
+
+            Configuracoes.MunicipioSenha = senhaCriptografada;
+        }
+
+        #endregion ISSONLINE_ASSESSORPUBLICO
 
 
         #endregion Configurações separadas por PadrãoNFSe

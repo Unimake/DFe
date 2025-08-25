@@ -1,197 +1,196 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRps versao="2.02">
+		<RecepcionarLoteRps versao="2.01">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://teresopolisrj.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsteresopolis.oppcloud.com.br/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>recepcionarLoteRps</WebActionHomologacao>
+			<WebActionProducao>recepcionarLoteRps</WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></RecepcionarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>outputXML</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:recepcionarLoteRps>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:recepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns3:recepcionarLoteRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
 		</RecepcionarLoteRps>
-		<RecepcionarLoteRpsSincrono versao="2.02">
+		<RecepcionarLoteRpsSincrono versao="2.01">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://teresopolisrj.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsteresopolis.oppcloud.com.br/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>recepcionarLoteRpsSincrono</WebActionHomologacao>
+			<WebActionProducao>recepcionarLoteRpsSincrono</WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsSincronoRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></RecepcionarLoteRpsSincronoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>outputXML</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:recepcionarLoteRpsSincrono>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:recepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns3:recepcionarLoteRpsSincronoResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
 		</RecepcionarLoteRpsSincrono>
-		<GerarNfse versao="2.02">
+		<GerarNfse versao="2.01">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://teresopolisrj.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsteresopolis.oppcloud.com.br/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>gerarNfse</WebActionHomologacao>
+			<WebActionProducao>gerarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura>Rps</TagLoteAssinatura>
+			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GerarNfseRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></GerarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>outputXML</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:gerarNfse>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:gerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns3:gerarNfseResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
 		</GerarNfse>
-		<CancelarNfse versao="2.02">
+		<CancelarNfse versao="2.01">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://teresopolisrj.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsteresopolis.oppcloud.com.br/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>cancelarNfse</WebActionHomologacao>
+			<WebActionProducao>cancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></CancelarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>outputXML</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:cancelarNfse>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:cancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns3:cancelarNfseResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
 		</CancelarNfse>
-		<SubstituirNfse versao="2.02">
+		<SubstituirNfse versao="2.01">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://teresopolisrj.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsteresopolis.oppcloud.com.br/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>substituirNfse</WebActionHomologacao>
+			<WebActionProducao>substituirNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura>Rps</TagLoteAssinatura>
 			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
-			<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
-			<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><SubstituirNfseRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></SubstituirNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>outputXML</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:substituirNfse>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:substituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns3:substituirNfseResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
 		</SubstituirNfse>
-		<ConsultarLoteRps versao="2.02">
+		<ConsultarLoteRps versao="2.01">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://teresopolisrj.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsteresopolis.oppcloud.com.br/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>consultarLoteRps</WebActionHomologacao>
+			<WebActionProducao>consultarLoteRps</WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>outputXML</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarLoteRps>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns3:consultarLoteRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
 		</ConsultarLoteRps>
-		<ConsultarNfsePorRps versao="2.02">
+		<ConsultarNfsePorRps versao="2.01">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://teresopolisrj.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsteresopolis.oppcloud.com.br/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>consultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>consultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRpsRequest><nfseCabecMsg>&lt;cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>outputXML</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfsePorRps>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns3:consultarNfsePorRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
 		</ConsultarNfsePorRps>
-		<ConsultarNfseServicoTomado versao="2.02">
-			<Descricao>Consulta NFSe de serviços tomados</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://teresopolisrj.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseServicoTomadoRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfseServicoTomadoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>outputXML</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
-		</ConsultarNfseServicoTomado>
-		<ConsultarNfseServicoPrestado versao="2.02">
+		<ConsultarNfseServicoPrestado versao="2.01">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://teresopolisrj.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsteresopolis.oppcloud.com.br/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>consultarNfseServicoPrestado</WebActionHomologacao>
+			<WebActionProducao>consultarNfseServicoPrestado</WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseServicoPrestadoRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfseServicoPrestadoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>outputXML</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfseServicoPrestado>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns3:consultarNfseServicoPrestadoResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
 		</ConsultarNfseServicoPrestado>
-		<ConsultarNfseFaixa versao="2.02">
-			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://teresopolisrj.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+		<ConsultarNfseServicoTomado versao="2.01">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsteresopolis.oppcloud.com.br/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>consultarNfseServicoTomado</WebActionHomologacao>
+			<WebActionProducao>consultarNfseServicoTomado</WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorFaixaRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfsePorFaixaRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>outputXML</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfseServicoTomado>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns3:consultarNfseServicoTomadoResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseServicoTomado>
+		<ConsultarNfseFaixa versao="2.01">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsteresopolis.oppcloud.com.br/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>consultarNfsePorFaixa</WebActionHomologacao>
+			<WebActionProducao>consultarNfsePorFaixa</WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfsePorFaixa>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns3:consultarNfsePorFaixaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
 		</ConsultarNfseFaixa>
 	</Servicos>
 </Configuracoes>
+
