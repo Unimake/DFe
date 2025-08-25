@@ -1737,7 +1737,7 @@
 		<Nome>Teresópolis - RJ</Nome>
 		<UF>RJ</UF>
 		<ArqConfig>TeresopolisRJ.xml</ArqConfig>
-		<PadraoNFSe>WEBISS</PadraoNFSe>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4318705">
 		<Nome>São Leopoldo - RS</Nome>
