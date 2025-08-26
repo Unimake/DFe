@@ -3005,4 +3005,10 @@
 		<ArqConfig>SaoGabrielRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3550803">
+		<Nome>São Sebastião da Grama - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoSebastiaoDaGramaSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
