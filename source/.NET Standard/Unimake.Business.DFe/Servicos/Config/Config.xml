@@ -3023,4 +3023,10 @@
 		<ArqConfig>ViamaoRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3501301">
+		<Nome>Álvares Machado - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>AlvaresMachadoSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

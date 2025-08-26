@@ -309,6 +309,7 @@
 		<None Remove="Servicos\Config\NFSe\AlagoinhasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\AlegreteRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AlemParaibaMG.xml" />
+		<None Remove="Servicos\Config\NFSe\AlvaresMachadoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AlvoradaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AmambaiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\AmargosaBA.xml" />
@@ -1544,6 +1545,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlagoinhasBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlemParaibaMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AlvaresMachadoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlvoradaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmericanaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AnapolisGO.xml" />
