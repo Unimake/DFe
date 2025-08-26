@@ -681,6 +681,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoBorjaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoCarlosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoGabrielRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoParaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDaBoaVistaSP.xml" />
@@ -1663,6 +1664,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaTerezinhaDeItaipuPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPatrulhaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBentoDoSulSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGabrielRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloDoParaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDaBoaVistaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDoParaisoMG.xml" />
