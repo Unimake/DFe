@@ -3011,4 +3011,10 @@
 		<ArqConfig>SaoSebastiaoDaGramaSP.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4322509">
+		<Nome>Vacaria - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>VacariaRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
