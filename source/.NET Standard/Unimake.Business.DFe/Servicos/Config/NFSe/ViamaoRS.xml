@@ -3,7 +3,7 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="2.03">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoProducao>http://vacaria.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
+			<WebEnderecoProducao>http://viamao.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEGeracao/RecepcionarLoteRps</WebActionProducao>
 			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -21,7 +21,7 @@
 		</RecepcionarLoteRps>
 		<CancelarNfse versao="2.03">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoProducao>http://vacaria.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
+			<WebEnderecoProducao>http://viamao.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEGeracao/CancelarNfse</WebActionProducao>
 			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
@@ -39,7 +39,7 @@
 		</CancelarNfse>
 		<SubstituirNfse versao="2.03">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoProducao>http://vacaria.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
+			<WebEnderecoProducao>http://viamao.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEGeracao/SubstituirNfse</WebActionProducao>
 			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -59,7 +59,7 @@
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="2.03">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoProducao>http://vacaria.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
+			<WebEnderecoProducao>http://viamao.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarLoteRps</WebActionProducao>
 			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
@@ -77,7 +77,7 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.03">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoProducao>http://vacaria.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
+			<WebEnderecoProducao>http://viamao.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarNfsePorRps</WebActionProducao>
 			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>

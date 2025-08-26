@@ -760,6 +760,7 @@
 		<None Remove="Servicos\Config\NFSe\VenancioAiresRS.xml" />
 		<None Remove="Servicos\Config\NFSe\VeraCruzRS.xml" />
 		<None Remove="Servicos\Config\NFSe\VeranopolisRS.xml" />
+		<None Remove="Servicos\Config\NFSe\ViamaoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\VianaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VilaVelhaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VilhenaRO.xml" />
@@ -2066,6 +2067,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiracicabaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VianaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VilhenaRO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ViscondeDoRioBrancoMG.xml" />
