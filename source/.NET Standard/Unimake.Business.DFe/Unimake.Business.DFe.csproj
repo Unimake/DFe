@@ -347,6 +347,7 @@
 		<None Remove="Servicos\Config\NFSe\BarretosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BarrosoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\BarueriSP.xml" />
+		<None Remove="Servicos\Config\NFSe\BastosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BebedouroSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BelemPA.xml" />
@@ -1555,6 +1556,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BaraoDeCotegipeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarbacenaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDoPiraiRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BastosSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BebedouroSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BomDespachoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BragancaPaulistaSP.xml" />

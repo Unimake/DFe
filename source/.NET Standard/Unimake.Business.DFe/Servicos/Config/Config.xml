@@ -2993,4 +2993,10 @@
 		<ArqConfig>TresCoroasRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3505807">
+		<Nome>Bastos - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>BastosSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
