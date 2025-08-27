@@ -43,11 +43,6 @@
         <UnitName Value="Main"/>
       </Unit>
       <Unit>
-        <Filename Value="unimake_business_dfe_2023_7_tlb.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="Unimake_Business_DFe_2023_7_TLB"/>
-      </Unit>
-      <Unit>
         <Filename Value="consultarstatusnfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarStatusNFe"/>
@@ -61,6 +56,46 @@
         <Filename Value="imprimirdanfecomunidanfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ImprimirDANFEcomUniDANFE"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviarnfesincronodesserializacao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarNFeSincronoDesserializacao"/>
+      </Unit>
+      <Unit>
+        <Filename Value="consultarsituacaonfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarSituacaoNFe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarDistribuicaoDFe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarEventoManifestacaoNFe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarNFCeSincrono"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviarnfcesincronodesserializacao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarNFCeSincronoDesserializacao"/>
+      </Unit>
+      <Unit>
+        <Filename Value="desserializarretornoconsultadfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DesserializarRetornoConsultaDFe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="certificadodigital.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CertificadoDigital"/>
       </Unit>
     </Units>
   </ProjectOptions>
@@ -98,6 +133,9 @@
       </Item>
       <Item>
         <Name Value="EOleSysError"/>
+      </Item>
+      <Item>
+        <Name Value="EOleException"/>
       </Item>
     </Exceptions>
   </Debugging>
