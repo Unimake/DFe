@@ -342,7 +342,8 @@ namespace Unimake.DFe.Test.CTe
                     Total = new Total
                     {
                         VTPrest = 1.00,
-                        VTRec = 1.00
+                        VTRec = 1.00,
+                        //VTotDFe = 0.11 //RTC
                     },
                     InfRespTec = new Business.DFe.Xml.CTe.InfRespTec
                     {

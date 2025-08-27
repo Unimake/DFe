@@ -1019,5 +1019,27 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             get => VTRec.ToString("F2", CultureInfo.InvariantCulture);
             set => VTRec = Utility.Converter.ToDouble(value);
         }
+
+        /// <summary>
+        /// Valor total do documento fiscal
+        /// </summary>
+        [XmlIgnore]
+        public double VTotDFe { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VTotDFe" para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTotDFe")]
+        public string VTotDFeField
+        {
+            get => VTotDFe.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTotDFe = Utility.Converter.ToDouble(value);
+        }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVTotDFeField() => VTotDFe > 0;
+
+        #endregion
     }
 }
