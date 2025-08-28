@@ -10,7 +10,11 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Main, ConsultarStatusNFe, EnviarNFeSincrono, EnviarNFeSincronoDesserializacao, ImprimirDANFEcomUniDANFE
+  Forms, Main, ConsultarStatusNFe, EnviarNFeSincrono,
+  EnviarNFeSincronoDesserializacao, ImprimirDANFEcomUniDANFE,
+  CertificadoDigital, ConsultarDistribuicaoDFe, ConsultarSituacaoNFe,
+  DesserializarRetornoConsultaDFe, EnviarEventoManifestacaoNFe,
+  EnviarNFCeSincrono, EnviarNFCeSincronoDesserializacao
   { you can add units after this };
 
 {$R *.res}

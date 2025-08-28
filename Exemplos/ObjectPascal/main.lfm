@@ -118,18 +118,18 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object GroupBox2: TGroupBox
-    Left = 392
-    Height = 620
-    Top = 16
+    Left = 384
+    Height = 628
+    Top = 0
     Width = 344
     Caption = 'NFC-e'
-    ClientHeight = 590
+    ClientHeight = 598
     ClientWidth = 340
     TabOrder = 1
     object btnEventoCancelamentoNFCe: TToggleBox
       Left = 8
       Height = 38
-      Top = 236
+      Top = 232
       Width = 320
       Caption = 'Enviar Evento de Cancelamento'
       TabOrder = 0
@@ -137,21 +137,40 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object btnEnviarNFCeSincrono: TButton
-    Left = 400
+    Left = 392
     Height = 38
-    Top = 88
+    Top = 80
     Width = 324
     Caption = 'Enviar NFCe modo Síncrono'
     TabOrder = 2
     OnClick = btnEnviarNFCeSincronoClick
   end
   object btnEnviarNFCeSincronoDesserializacao: TButton
-    Left = 400
+    Left = 392
     Height = 38
-    Top = 136
+    Top = 128
     Width = 324
     Caption = 'Enviar NFCe Síncrono c/Desserialização'
     TabOrder = 3
     OnClick = btnEnviarNFCeSincronoDesserializacaoClick
+  end
+  object GroupBox3: TGroupBox
+    Left = 744
+    Height = 624
+    Top = 0
+    Width = 374
+    Caption = 'Diversos'
+    ClientHeight = 594
+    ClientWidth = 370
+    TabOrder = 4
+    object BtnCertificadoDigital: TButton
+      Left = 8
+      Height = 38
+      Top = 0
+      Width = 352
+      Caption = 'Exemplos Diversos Certificado Digital'
+      TabOrder = 0
+      OnClick = BtnCertificadoDigitalClick
+    end
   end
 end

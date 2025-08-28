@@ -10,7 +10,7 @@ uses
   EnviarNFeSincronoDesserializacao, ConsultarSituacaoNFe, EventoCancelamentoNFe,
   ImprimirDANFEcomUniDANFE, ConsultarDistribuicaoDFe, EnviarEventoManifestacaoNFe,
   EnviarNFCeSincrono, EnviarNFCeSincronoDesserializacao, EventoCancelamentoNFCe,
-  EnviarNFeSincronoRTC, DesserializarRetornoConsultaDFe;
+  EnviarNFeSincronoRTC, DesserializarRetornoConsultaDFe, CertificadoDigital;
 
 type
 
@@ -27,12 +27,15 @@ type
     btnEnviarNFeSincronoRTC: TButton;
     btnEventoCancelamentoNFe: TButton;
     btnImprimirDANFEcomUniDANFE: TButton;
+    BtnCertificadoDigital: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
     GroupBox2: TGroupBox;
     btnEventoCancelamentoNFCe: TToggleBox;
     btnDesserializarRetornoConsultaDFe: TToggleBox;
+    GroupBox3: TGroupBox;
+    procedure BtnCertificadoDigitalClick(Sender: TObject);
     procedure btnConsultarDistribuicaoDFeOnClick(Sender: TObject);
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
     procedure btnConsultaStatusNFeClick(Sender: TObject);
@@ -144,6 +147,16 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.BtnCertificadoDigitalClick(Sender: TObject);
+var
+  oServico: TCertificadoDigital;
+begin
+  oServico := TCertificadoDigital.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
 procedure TfrmPrincipal.btnEnviarNFeSincronoClick(Sender: TObject);
 var
   oServico: TEnviarNFeSincrono;
