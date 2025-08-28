@@ -147,9 +147,12 @@ begin
 
     // Carregar o certificado pelo Base64
     oConfiguracao.CertificadoBase64 := certBase64;
+    oConfiguracao.CertificadoSenha := '12345678';
 
     // Informar um certificado digital já carregado anteriormente
     oConfiguracao.CertificadoDigital := IUnknown(oCertSel5);
+
+    MostrarDados(oCertificado, oConfiguracao.CertificadoDigital);
 
   except
     on E: Exception do

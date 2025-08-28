@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="16" Y="9"/>
-        <UsageCount Value="128"/>
+        <UsageCount Value="132"/>
       </Unit>
       <Unit>
         <Filename Value="main.pas"/>
@@ -20,26 +20,19 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
         <CursorPos X="76" Y="13"/>
-        <UsageCount Value="128"/>
+        <UsageCount Value="132"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="unimake_business_dfe_2023_7_tlb.pas"/>
-        <UnitName Value="Unimake_Business_DFe_2023_7_TLB"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="26597"/>
-        <CursorPos X="37" Y="26598"/>
-        <UsageCount Value="117"/>
       </Unit>
       <Unit>
         <Filename Value="consultarstatusnfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarStatusNFe"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="18"/>
-        <CursorPos X="47" Y="61"/>
-        <UsageCount Value="117"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="25"/>
+        <CursorPos X="10" Y="34"/>
+        <UsageCount Value="121"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfesincrono.pas"/>
@@ -48,16 +41,98 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="31"/>
         <CursorPos X="26" Y="35"/>
-        <UsageCount Value="116"/>
+        <UsageCount Value="120"/>
       </Unit>
       <Unit>
         <Filename Value="imprimirdanfecomunidanfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ImprimirDANFEcomUniDANFE"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="55" Y="11"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="83"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviarnfesincronodesserializacao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarNFeSincronoDesserializacao"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="146"/>
+        <CursorPos X="59" Y="160"/>
+        <UsageCount Value="25"/>
+      </Unit>
+      <Unit>
+        <Filename Value="consultarsituacaonfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarSituacaoNFe"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="48"/>
+        <CursorPos X="51" Y="57"/>
+        <UsageCount Value="25"/>
+      </Unit>
+      <Unit>
+        <Filename Value="consultardistribuicaodfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarDistribuicaoDFe"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4"/>
+        <CursorPos Y="31"/>
+        <UsageCount Value="25"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviareventomanifestacaonfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarEventoManifestacaoNFe"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="96"/>
+        <CursorPos X="24" Y="110"/>
+        <UsageCount Value="25"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarNFCeSincrono"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="44"/>
+        <CursorPos Y="58"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviarnfcesincronodesserializacao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarNFCeSincronoDesserializacao"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="137"/>
+        <CursorPos X="52" Y="149"/>
+        <UsageCount Value="25"/>
+      </Unit>
+      <Unit>
+        <Filename Value="desserializarretornoconsultadfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DesserializarRetornoConsultaDFe"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="15"/>
+        <CursorPos X="9" Y="67"/>
+        <UsageCount Value="25"/>
+      </Unit>
+      <Unit>
+        <Filename Value="certificadodigital.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CertificadoDigital"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="127"/>
+        <CursorPos Y="136"/>
+        <UsageCount Value="25"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unimake_business_dfe_2023_7_tlb.pas"/>
+        <UnitName Value="Unimake_Business_DFe_2023_7_TLB"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="26597"/>
+        <CursorPos X="37" Y="26598"/>
+        <UsageCount Value="117"/>
       </Unit>
       <Unit>
         <Filename Value="main.lfm"/>
@@ -89,30 +164,12 @@
         <UsageCount Value="10"/>
       </Unit>
       <Unit>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="EnviarNFeSincronoDesserializacao"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="146"/>
-        <CursorPos X="59" Y="160"/>
-        <UsageCount Value="21"/>
-      </Unit>
-      <Unit>
         <Filename Value="enviarnfesincronoduplicidade.pas"/>
         <UnitName Value="EnviarNFeSincronoDuplicidade"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="168"/>
         <CursorPos X="44" Y="180"/>
         <UsageCount Value="17"/>
-      </Unit>
-      <Unit>
-        <Filename Value="consultarsituacaonfe.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="ConsultarSituacaoNFe"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="48"/>
-        <CursorPos X="51" Y="57"/>
-        <UsageCount Value="21"/>
       </Unit>
       <Unit>
         <Filename Value="D:\lazarus\lcl\interfaces\win32\win32callback.inc"/>
@@ -149,43 +206,6 @@
         <UsageCount Value="8"/>
       </Unit>
       <Unit>
-        <Filename Value="consultardistribuicaodfe.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="ConsultarDistribuicaoDFe"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="4"/>
-        <CursorPos Y="31"/>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="enviareventomanifestacaonfe.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="EnviarEventoManifestacaoNFe"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="96"/>
-        <CursorPos X="24" Y="110"/>
-        <UsageCount Value="21"/>
-      </Unit>
-      <Unit>
-        <Filename Value="enviarnfcesincrono.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="EnviarNFCeSincrono"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="72"/>
-        <CursorPos X="10" Y="78"/>
-        <UsageCount Value="21"/>
-      </Unit>
-      <Unit>
-        <Filename Value="enviarnfcesincronodesserializacao.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="EnviarNFCeSincronoDesserializacao"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="137"/>
-        <CursorPos X="52" Y="149"/>
-        <UsageCount Value="21"/>
-      </Unit>
-      <Unit>
         <Filename Value="eventocancelamentonfce.pas"/>
         <UnitName Value="EventoCancelamentoNFCe"/>
         <EditorIndex Value="-1"/>
@@ -201,121 +221,8 @@
         <CursorPos X="26" Y="393"/>
         <UsageCount Value="14"/>
       </Unit>
-      <Unit>
-        <Filename Value="desserializarretornoconsultadfe.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="DesserializarRetornoConsultaDFe"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="15"/>
-        <CursorPos X="9" Y="67"/>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="certificadodigital.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="CertificadoDigital"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="107"/>
-        <CursorPos X="114" Y="24"/>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
-      </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="68" Column="23" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="55" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="57" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="61" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="67" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="77" Column="75" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="71" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="73" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="74" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="76" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="81" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="83" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="34" Column="110" TopLine="32"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="130" Column="55" TopLine="106"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="136" TopLine="98"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="139" TopLine="98"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="140" TopLine="98"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="143" TopLine="98"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="146" TopLine="98"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="149" TopLine="98"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="152" Column="60" TopLine="101"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="136" TopLine="101"/>
-      </Position>
-      <Position>
-        <Filename Value="certificadodigital.pas"/>
-        <Caret Line="139" TopLine="101"/>
-      </Position>
       <Position>
         <Filename Value="certificadodigital.pas"/>
         <Caret Line="140" TopLine="101"/>
@@ -343,6 +250,98 @@
       <Position>
         <Filename Value="certificadodigital.pas"/>
         <Caret Line="28" Column="76" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="18" Column="59" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="49" Column="44" TopLine="34"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="124" Column="39" TopLine="101"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="65" Column="14" TopLine="50"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="154" TopLine="131"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="136" TopLine="130"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="139" TopLine="130"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="140" TopLine="130"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="153" Column="37" TopLine="130"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="149" Column="32" TopLine="130"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="150" TopLine="130"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="153" Column="37" TopLine="130"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="155" Column="34" TopLine="136"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="136" TopLine="121"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="139" TopLine="121"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="140" TopLine="121"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="143" TopLine="121"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="146" TopLine="122"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="149" TopLine="125"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="150" TopLine="126"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="153" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="certificadodigital.pas"/>
+        <Caret Line="155" TopLine="131"/>
+      </Position>
+      <Position>
+        <Filename Value="enviarnfcesincrono.pas"/>
+        <Caret Line="62" Column="30" TopLine="52"/>
       </Position>
     </JumpHistory>
     <RunParams>
