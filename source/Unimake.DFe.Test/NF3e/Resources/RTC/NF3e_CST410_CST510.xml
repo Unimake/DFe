@@ -238,7 +238,7 @@
 						</retTrib>
 						<IBSCBS>
 							<CST>510</CST>
-							<cClassTrib>444444</cClassTrib>
+							<cClassTrib>510001</cClassTrib>
 							<gIBSCBS>
 								<vBC>1000.00</vBC>
 								<gIBSUF>
@@ -250,6 +250,10 @@
 									<gDevTrib>
 										<vDevTrib>2.00</vDevTrib>
 									</gDevTrib>
+									<gRed>
+										<pRedAliq>10.0000</pRedAliq>
+										<pAliqEfet>1.3500</pAliqEfet>
+									</gRed>
 									<vIBSUF>15.00</vIBSUF>
 								</gIBSUF>
 								<gIBSMun>
@@ -261,6 +265,10 @@
 									<gDevTrib>
 										<vDevTrib>1.00</vDevTrib>
 									</gDevTrib>
+									<gRed>
+										<pRedAliq>10.0000</pRedAliq>
+										<pAliqEfet>1.3500</pAliqEfet>
+									</gRed>
 									<vIBSMun>7.50</vIBSMun>
 								</gIBSMun>
 								<vIBS>1.11</vIBS>
@@ -273,6 +281,10 @@
 									<gDevTrib>
 										<vDevTrib>1.50</vDevTrib>
 									</gDevTrib>
+									<gRed>
+										<pRedAliq>10.0000</pRedAliq>
+										<pAliqEfet>1.3500</pAliqEfet>
+									</gRed>
 									<vCBS>25.00</vCBS>
 								</gCBS>
 							</gIBSCBS>
