@@ -480,10 +480,17 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numero}", numero);
             }
 
+            var tokenTemp = Configuracoes.MunicipioToken;
 
-            var token = Token.GerarTokenSOFTPLAN(Configuracoes);
+            if (!Token.TokenEhValido(Configuracoes.MunicipioTokenValidade, tokenTemp))
+            {
+                var token = Token.GerarTokenSOFTPLAN(Configuracoes);
 
-            Configuracoes.MunicipioToken = $"Bearer {token}";
+                Configuracoes.MunicipioTokenValidade = DateTime.Now.AddSeconds(token.ExpiresIn);
+                tokenTemp = token.AccessToken;
+            }
+
+            Configuracoes.MunicipioToken = $"Bearer {tokenTemp}";
         }
 
         #endregion SOFTPLAN

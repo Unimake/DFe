@@ -1338,6 +1338,11 @@ namespace Unimake.Business.DFe.Servicos
         public string MunicipioToken { get; set; }
 
         /// <summary>
+        /// Data de validade do token de acesso ao webservice/api do município
+        /// </summary>
+        public DateTime MunicipioTokenValidade { get; set; }
+
+        /// <summary>
         /// Token de acesso ao soap do município
         /// </summary>
         public string TokenSoap { get; set; }

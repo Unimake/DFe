@@ -226,7 +226,7 @@ namespace Unimake.Business.DFe.Security
         /// </summary>
         /// <param name="configuracoes">Objeto do município que está sendo utilizado</param>
         /// <returns>Instância de Token contendo o access_token e demais dados.</returns>
-        public static string GerarTokenSOFTPLAN(Configuracao configuracoes)
+        public static Token GerarTokenSOFTPLAN(Configuracao configuracoes)
         {
             var loginUrl = string.Empty;
 
@@ -253,6 +253,7 @@ namespace Unimake.Business.DFe.Security
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = data.Length;
+            
 
             var proxy = Proxy.DefinirServidor(
                 configuracoes.ProxyAutoDetect,
@@ -292,7 +293,8 @@ namespace Unimake.Business.DFe.Security
 
                         throw new Exception("Ocorreu um erro ao solicitar o token para a prefeitura, e não foi retornada uma mensagem de erro.");
                     }
-                    return token.AccessToken;
+
+                    return token;
                 }
             }
             catch (WebException ex)
@@ -305,6 +307,16 @@ namespace Unimake.Business.DFe.Security
                     throw new InvalidOperationException($"Falha ao gerar token Softplan ({rawError?.StatusCode}): {error}", ex);
                 }
             }
+        }
+
+        public static bool TokenEhValido(DateTime validadeToken, string tokenTemp)
+        {
+            if (validadeToken < DateTime.Now || String.IsNullOrEmpty(tokenTemp))
+            {
+                return false;
+            }
+            
+            return true;
         }
     }
 }
