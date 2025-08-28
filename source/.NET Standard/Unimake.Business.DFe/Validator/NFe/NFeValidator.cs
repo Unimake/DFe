@@ -773,7 +773,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                                 "3201", "3202", "3211", "3212", "3503", "3553", "3949"
                             };
                         }
-                        else if (!string.IsNullOrWhiteSpace(emitUF) && emitUF == destUF || 
+                        else if (!string.IsNullOrWhiteSpace(emitUF) && emitUF == destUF ||
                         (idDest == ((int)DestinoOperacao.OperacaoInterna).ToString() && indIEDest == ((int)IndicadorIEDestinatario.NaoContribuinte).ToString()))
                         {
                             tipoOperacao = "Devolução de venda estadual";
@@ -833,7 +833,10 @@ namespace Unimake.Business.DFe.Validator.NFe
             {
                 var cst = Tag?.Value;
                 var ibscbs = Tag?.Parent;
+
+                var cClassTrib = ibscbs.GetValue("cClassTrib");
                 var det = ibscbs.Parent.Parent;
+
                 var cProd = det.GetValue("cProd");
                 var xProd = det.GetValue("xProd");
                 var nItem = det.GetAttributeValue("nItem");
@@ -952,9 +955,9 @@ namespace Unimake.Business.DFe.Validator.NFe
                             {
                                 if (gCompraGov != null)
                                 {
-                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', deve ser preenchido o grupo gRed de gCBS. " +
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}' e o grupo gCompraGov estiver preenchido em <NFe><infNFe><ide>, o grupo gRed também deve ser informado dentro de gCBS. " +
                                 $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gCBS>]"));
-                                }   
+                                }
                             }
                         }
 
@@ -1059,8 +1062,20 @@ namespace Unimake.Business.DFe.Validator.NFe
 
                             if (gIBSUF.GetElement("gRed") != null)
                             {
-                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gRed de gIBSUF. " +
+                                if (gCompraGov == null && cClassTrib != "510002")
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', " +
+                                        $"o grupo gCompraGov não estiver preenchido em <NFe><infNFe><ide> e o cClassTrib do IBSCBS ser diferente de 510002, não é permitido o preenchimento do grupo gRed de gIBSUF. " +
                                 $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSUF>]"));
+                                }
+                            }
+                            else
+                            {
+                                if (gCompraGov != null)
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}' e o grupo gCompraGov estiver preenchido em <NFe><infNFe><ide>, o grupo gRed também deve ser informado dentro de gIBSUF. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSUF>]"));
+                                }
                             }
                         }
 
@@ -1074,8 +1089,20 @@ namespace Unimake.Business.DFe.Validator.NFe
 
                             if (gIBSMun.GetElement("gRed") != null)
                             {
-                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gRed de gIBSMun. " +
+                                if (gCompraGov == null && cClassTrib != "510002")
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', " +
+                                        $"o grupo gCompraGov não estiver preenchido em <NFe><infNFe><ide> e o cClassTrib do IBSCBS ser diferente de 510002, não é permitido o preenchimento do grupo gRed de gIBSMun. " +
                                 $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSMun>]"));
+                                }
+                            }
+                            else
+                            {
+                                if (gCompraGov != null)
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}' e o grupo gCompraGov estiver preenchido em <NFe><infNFe><ide>, o grupo gRed também deve ser informado dentro de gIBSMun. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gIBSMun>]"));
+                                }
                             }
                         }
 
@@ -1089,8 +1116,20 @@ namespace Unimake.Business.DFe.Validator.NFe
 
                             if (gCBS.GetElement("gRed") != null)
                             {
-                                ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', não é permitido o preenchimento do grupo gRed de gCBS. " +
+                                if (gCompraGov == null && cClassTrib != "510002")
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}', " +
+                                        $"o grupo gCompraGov não estiver preenchido em <NFe><infNFe><ide> e o cClassTrib do IBSCBS ser diferente de 510002, não é permitido o preenchimento do grupo gRed de gCBS. " +
                                 $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gCBS>]"));
+                                }
+                            }
+                            else
+                            {
+                                if (gCompraGov != null)
+                                {
+                                    ThrowHelper.Instance.Throw(new ValidatorDFeException($"Quando o CST de IBSCBS for '{cst}' e o grupo gCompraGov estiver preenchido em <NFe><infNFe><ide>, o grupo gRed também deve ser informado dentro de gCBS. " +
+                                $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <gRed> do grupo de tag <NFe><infNFe><det><imposto><IBSCBS><gIBSCBS><gCBS>]"));
+                                }
                             }
                         }
 
