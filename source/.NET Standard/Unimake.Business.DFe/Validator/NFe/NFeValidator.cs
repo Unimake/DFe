@@ -752,6 +752,14 @@ namespace Unimake.Business.DFe.Validator.NFe
                 var emitUF = Tag.Document?.Descendants().FirstOrDefault(e => e.NameEquals(nameof(EnderEmit)))?.GetValue(nameof(EnderEmit.UF));
                 var destUF = Tag.Document?.Descendants().FirstOrDefault(e => e.NameEquals(nameof(EnderDest)))?.GetValue(nameof(EnderDest.UF));
 
+                //Ver se tem local de entrega, se tiver a UF passa a ser esta.
+                var entrega = Tag.Parent.Parent.Parent.GetElement("entrega");
+                var ufEntrega = entrega?.GetValue("UF");
+                if (!string.IsNullOrWhiteSpace(ufEntrega))
+                {
+                    destUF = ufEntrega;
+                }
+
                 var cfop = Tag.Value.Trim();
                 var cProd = Tag.Parent?.Parent?.GetValue("cProd");
                 var xProd = Tag.Parent?.Parent?.GetValue("xProd");
