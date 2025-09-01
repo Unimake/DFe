@@ -420,6 +420,55 @@ namespace Unimake.Business.DFe.Servicos
                                     }
                                 }
                             }
+
+                            //Verificar se existem URLs para consulta de recibos de eventos
+                            if (XMLUtility.TagExist(elementPropriedades, "UrlsRecibosEventos"))
+                            {
+                                var listUrlsRecibosEventos = elementPropriedades.GetElementsByTagName("UrlsRecibosEventos");
+
+                                foreach (var nodeUrlsRecibosEventos in listUrlsRecibosEventos)
+                                {
+                                    var elementUrlsRecibosEventos = (XmlElement)nodeUrlsRecibosEventos;
+
+                                    var listUrl = elementUrlsRecibosEventos.GetElementsByTagName("Evento");
+
+                                    foreach (var nodeUrl in listUrl)
+                                    {
+                                        var elementUrl = (XmlElement)nodeUrl;
+
+                                        // Tipo do evento (obrigatório)
+                                        var tipoNodes = elementUrl.GetElementsByTagName("Tipo");
+                                        if (tipoNodes.Count == 0) { continue; }
+                                        var eventoRecibo = tipoNodes[0]?.InnerText?.Trim();
+                                        if (string.IsNullOrWhiteSpace(eventoRecibo)) { continue; }
+
+                                        // URL primária (obrigatória)
+                                        var primariaNodes = elementUrl.GetElementsByTagName("UrlReciboPrimaria");
+                                        if (primariaNodes.Count == 0) { continue; }
+                                        var urlPrimaria = primariaNodes[0]?.InnerText?.Trim();
+                                        if (string.IsNullOrWhiteSpace(urlPrimaria)) { continue; }
+
+                                        // URL secundária (opcional: existe para 4010/4020)
+                                        string urlSecundaria = null;
+                                        var secundNodes = elementUrl.GetElementsByTagName("UrlReciboSecundaria");
+                                        if (secundNodes.Count > 0)
+                                        {
+                                            urlSecundaria = secundNodes[0]?.InnerText?.Trim();
+                                            if (string.IsNullOrWhiteSpace(urlSecundaria))
+                                            {
+                                                urlSecundaria = null;
+                                            }
+                                        }
+
+                                        UrlsRecibosEventos[eventoRecibo] = new UrlsRecibosEventos
+                                        {
+                                            Tipo = eventoRecibo,
+                                            UrlReciboPrimaria = urlPrimaria,
+                                            UrlReciboSecundaria = urlSecundaria
+                                        };
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -635,88 +684,68 @@ namespace Unimake.Business.DFe.Servicos
         {
             AtribuirWebSoapString();
 
+            // 1) Normaliza para evitar NRE nos Replace
+            if (WebSoapString == null)
+            {
+                WebSoapString = string.Empty;
+            }
+
+            // Substituições que não dependem de SOAP (URLs base / RequestURI)
             if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(WebEnderecoHomologacao))
-            {
                 WebEnderecoHomologacao = WebEnderecoHomologacao.Replace("{MunicipioToken}", MunicipioToken);
-            }
             else if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(RequestURIHomologacao))
-            {
                 RequestURIHomologacao = RequestURIHomologacao.Replace("{MunicipioToken}", MunicipioToken);
-            }
 
             if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(WebEnderecoProducao))
-            {
                 WebEnderecoProducao = WebEnderecoProducao.Replace("{MunicipioToken}", MunicipioToken);
-            }
             else if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(RequestURIProducao))
-            {
                 RequestURIProducao = RequestURIProducao.Replace("{MunicipioToken}", MunicipioToken);
-            }
 
-            if (!string.IsNullOrWhiteSpace(TokenSoap))
+            // 2) Só processa SOAP se houver template
+            if (!string.IsNullOrEmpty(WebSoapString))
             {
-                WebSoapString = WebSoapString.Replace("{TokenSoap}", TokenSoap);
+                if (!string.IsNullOrWhiteSpace(TokenSoap))
+                    WebSoapString = WebSoapString.Replace("{TokenSoap}", TokenSoap);
+
+                // Melhor que checar ToString() — evita true sempre
+                if (CodigoMunicipio > 0)
+                    WebSoapString = WebSoapString.Replace("{CodigoMunicipio}", CodigoMunicipio.ToString());
+
+                if (!string.IsNullOrWhiteSpace(MunicipioUsuario))
+                    WebSoapString = WebSoapString.Replace("{MunicipioUsuario}", MunicipioUsuario);
+
+                if (!string.IsNullOrWhiteSpace(MunicipioSenha))
+                    WebSoapString = WebSoapString.Replace(
+                        "{MunicipioSenha}",
+                        ConverteSenhaBase64 ? MunicipioSenha.Base64Encode() : MunicipioSenha
+                    );
+
+                var actionWeb = (TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao) ?? string.Empty;
+                WebSoapString = WebSoapString.Replace("{ActionWeb}", actionWeb);
+                WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());
+                WebSoapString = WebSoapString.Replace("{versaoDados}", SchemaVersao ?? string.Empty);
             }
 
-            if (!string.IsNullOrWhiteSpace(CodigoMunicipio.ToString()))
+            // Ajustes específicos de API (sem SOAP)
+            if (Servico == Servico.EFDReinfConsultaLoteAssincrono)
             {
-                WebSoapString = WebSoapString.Replace("{CodigoMunicipio}", CodigoMunicipio.ToString());
+                if (!string.IsNullOrEmpty(RequestURIProducao))
+                    RequestURIProducao = RequestURIProducao.Replace("{numeroProtocolo}", NumeroProtocolo ?? string.Empty);
+                if (!string.IsNullOrEmpty(RequestURIHomologacao))
+                    RequestURIHomologacao = RequestURIHomologacao.Replace("{numeroProtocolo}", NumeroProtocolo ?? string.Empty);
             }
 
-            if (!string.IsNullOrWhiteSpace(MunicipioUsuario))
-            {
-                WebSoapString = WebSoapString.Replace("{MunicipioUsuario}", MunicipioUsuario);
-            }
-
-            if (!string.IsNullOrWhiteSpace(MunicipioSenha))
-            {
-                if (ConverteSenhaBase64)
-                {
-                    WebSoapString = WebSoapString.Replace("{MunicipioSenha}", MunicipioSenha.Base64Encode());
-                }
-                else
-                {
-                    WebSoapString = WebSoapString.Replace("{MunicipioSenha}", MunicipioSenha);
-                }
-            }
-
-
-
-            //Antiga implementação para uso do padrão AGILI (Rondonópolis) que acabou não sendo necessária no momento da implementação do município. Ticket ID #159383. Mauricio 05/12/2023
-            //if (!string.IsNullOrEmpty(ClientSecret) && !string.IsNullOrEmpty(ClientID))
-            //{
-            //    var proxy = Proxy.DefinirServidor(ProxyAutoDetect, ProxyUser, ProxyPassword);
-            //    var token =  Token.GerarToken(proxy, MunicipioUsuario, MunicipioSenha, ClientID, ClientSecret);
-            //    MunicipioToken = token.AccessToken;
-            //}
-
-            WebSoapString = WebSoapString.Replace("{ActionWeb}", (TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao));
-            WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());
-            WebSoapString = WebSoapString.Replace("{versaoDados}", SchemaVersao);
-
-            if (Servico == Servico.EFDReinfConsultaReciboEvento && !string.IsNullOrWhiteSpace(TipoEventoEFDReinf))
-            {
-                WebActionHomologacao = WebActionHomologacao.Replace("{TipoEventoEFDReinf}", TipoEventoEFDReinf);
-                WebActionProducao = WebActionProducao.Replace("{TipoEventoEFDReinf}", TipoEventoEFDReinf);
-                WebTagRetorno = WebTagRetorno.Replace("{TipoEventoEFDReinf}", TipoEventoEFDReinf);
-            }
-            else if (Servico == Servico.EFDReinfConsultaLoteAssincrono)
-            {
-                RequestURIProducao = RequestURIProducao.Replace("{numeroProtocolo}", NumeroProtocolo);
-                RequestURIHomologacao = RequestURIHomologacao.Replace("{numeroProtocolo}", NumeroProtocolo);
-            }
+            // Se for a sua ConsultaReciboEvento e você já montou RequestURI depois do base.DefinirConfiguracao(),
+            // não há mais nada extra aqui para ela.
         }
+
 
         private void AtribuirWebSoapString()
         {
             if (TipoAmbiente == TipoAmbiente.Homologacao)
-            {
-                WebSoapString = WebSoapStringHomologacao;
-            }
+                WebSoapString = string.IsNullOrWhiteSpace(_webSoapStringHomologacao) ? WebSoapString : _webSoapStringHomologacao;
             else
-            {
-                WebSoapString = WebSoapStringProducao;
-            }
+                WebSoapString = string.IsNullOrWhiteSpace(_webSoapStringProducao) ? WebSoapString : _webSoapStringProducao;
         }
 
         /// <summary>
@@ -861,6 +890,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Tipos de eventos específicos do REINF e eSocial
         /// </summary>
         public Dictionary<string, TiposEventosEspecificos> TiposEventosEspecificos = new Dictionary<string, TiposEventosEspecificos>();
+
+        /// <summary>
+        /// URLs para consulta de recibos do REINF
+        /// </summary>
+        public Dictionary<string, UrlsRecibosEventos> UrlsRecibosEventos = new Dictionary<string, UrlsRecibosEventos>();
 
         /// <summary>
         /// HttpContent utilizado para a comunicação
@@ -1582,5 +1616,27 @@ namespace Unimake.Business.DFe.Servicos
         public string TargetNS { get; set; }
 
         #endregion Public Properties
+    }
+
+    /// <summary>
+    /// Urls para Consult de Recibos REINF
+    /// </summary>
+    public class UrlsRecibosEventos
+    {
+        /// <summary>
+        /// Tipo do Evento do EFDReinf
+        /// </summary>
+        public string Tipo { get; set; }
+
+        /// <summary>
+        /// Url primária para consulta do recibo.
+        /// </summary>
+        public string UrlReciboPrimaria { get; set; }
+
+        /// <summary>
+        /// Url secundária para consulta do recibo. (Evento 4010 e 4020)
+        /// </summary>
+        public string UrlReciboSecundaria { get; set; }
+
     }
 }

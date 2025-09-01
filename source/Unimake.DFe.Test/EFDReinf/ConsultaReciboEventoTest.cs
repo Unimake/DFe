@@ -500,5 +500,276 @@ namespace Unimake.DFe.Test.EFDReinf
             Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"),
                 "O código retornado é diferente de 3");
         }
+
+        /// <summary>
+        /// Testar a consulta recibo do Evento 4010 COM CPF do beneficiário
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaReciboEvento4010_ComCpf(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.EFDReinfConsultaReciboEvento,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var xml = new ReinfConsulta
+            {
+                Versao = "1.05.01",
+                ConsultaReciboEvento = new ConsultaReciboEvento
+                {
+                    TipoEvento = "4010",
+                    TpInsc = TiposInscricao.CNPJ,
+                    NrInsc = "00000000",
+                    PerApur = new DateTime(2018, 12, 20),
+                    TpInscEstab = TipoInscricaoEstabelecimento.CNPJ,
+                    NrInscEstab = "00000000000000",
+                    CpfBenef = "00000000000"
+                }
+            };
+
+            var serv = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
+            serv.Executar();
+
+            Assert.True(serv.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
+        }
+
+        /// <summary>
+        /// Testar a consulta recibo do Evento 4010 SEM CPF do beneficiário (endpoint secundário)
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaReciboEvento4010_SemCpf(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.EFDReinfConsultaReciboEvento,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var xml = new ReinfConsulta
+            {
+                Versao = "1.05.01",
+                ConsultaReciboEvento = new ConsultaReciboEvento
+                {
+                    TipoEvento = "4010",
+                    TpInsc = TiposInscricao.CNPJ,
+                    NrInsc = "00000000",
+                    PerApur = new DateTime(2018, 12, 20),
+                    TpInscEstab = TipoInscricaoEstabelecimento.CNPJ,
+                    NrInscEstab = "00000000000000"
+                    // Sem CpfBenef -> deve usar endpoint R4010/semCpfBeneficiario/...
+                }
+            };
+
+            var serv = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
+            serv.Executar();
+
+            Assert.True(serv.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
+        }
+
+        /// <summary>
+        /// Testar a consulta recibo do Evento 4020 COM CNPJ do beneficiário
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaReciboEvento4020_ComCnpj(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.EFDReinfConsultaReciboEvento,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var xml = new ReinfConsulta
+            {
+                Versao = "1.05.01",
+                ConsultaReciboEvento = new ConsultaReciboEvento
+                {
+                    TipoEvento = "4020",
+                    TpInsc = TiposInscricao.CNPJ,
+                    NrInsc = "00000000",
+                    PerApur = new DateTime(2018, 12, 20),
+                    TpInscEstab = TipoInscricaoEstabelecimento.CNPJ,
+                    NrInscEstab = "00000000000000",
+                    CnpjBenef = "00000000000000"
+                }
+            };
+
+            var serv = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
+            serv.Executar();
+
+            Assert.True(serv.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
+        }
+
+        /// <summary>
+        /// Testar a consulta recibo do Evento 4020 SEM CNPJ do beneficiário (endpoint secundário)
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaReciboEvento4020_SemCnpj(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.EFDReinfConsultaReciboEvento,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var xml = new ReinfConsulta
+            {
+                Versao = "1.05.01",
+                ConsultaReciboEvento = new ConsultaReciboEvento
+                {
+                    TipoEvento = "4020",
+                    TpInsc = TiposInscricao.CNPJ,
+                    NrInsc = "00000000",
+                    PerApur = new DateTime(2018, 12, 20),
+                    TpInscEstab = TipoInscricaoEstabelecimento.CNPJ,
+                    NrInscEstab = "00000000000000"
+                    // Sem CnpjBenef -> deve usar endpoint R4020/semCnpjBeneficiario/...
+                }
+            };
+
+            var serv = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
+            serv.Executar();
+
+            Assert.True(serv.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
+        }
+
+        /// <summary>
+        /// Testar a consulta recibo do Evento 4040 EFDReinf
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaReciboEvento4040(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.EFDReinfConsultaReciboEvento,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var xml = new ReinfConsulta
+            {
+                Versao = "1.05.01",
+                ConsultaReciboEvento = new ConsultaReciboEvento
+                {
+                    TipoEvento = "4040",
+                    TpInsc = TiposInscricao.CNPJ,
+                    NrInsc = "00000000",
+                    PerApur = new DateTime(2018, 12, 20),
+                    TpInscEstab = TipoInscricaoEstabelecimento.CNPJ,
+                    NrInscEstab = "00000000000000"
+                }
+            };
+
+            var serv = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
+            serv.Executar();
+
+            Assert.True(serv.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
+        }
+
+        /// <summary>
+        /// Testar a consulta recibo do Evento 4080 EFDReinf
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaReciboEvento4080(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.EFDReinfConsultaReciboEvento,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var xml = new ReinfConsulta
+            {
+                Versao = "1.05.01",
+                ConsultaReciboEvento = new ConsultaReciboEvento
+                {
+                    TipoEvento = "4080",
+                    TpInsc = TiposInscricao.CNPJ,
+                    NrInsc = "00000000",
+                    PerApur = new DateTime(2018, 12, 20),
+                    TpInscEstab = TipoInscricaoEstabelecimento.CNPJ,
+                    NrInscEstab = "00000000000000",
+                    // Não existe CnpjFonte no modelo -> usar CnpjPrestador conforme mapeamento do serviço
+                    CnpjPrestador = "00000000000000"
+                }
+            };
+
+            var serv = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
+            serv.Executar();
+
+            Assert.True(serv.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
+        }
+
+        /// <summary>
+        /// Testar a consulta recibo do Evento 4099 EFDReinf
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaReciboEvento4099(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.EFDReinfConsultaReciboEvento,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var xml = new ReinfConsulta
+            {
+                Versao = "1.05.01",
+                ConsultaReciboEvento = new ConsultaReciboEvento
+                {
+                    TipoEvento = "4099",
+                    TpInsc = TiposInscricao.CNPJ,
+                    NrInsc = "00000000",
+                    PerApur = new DateTime(2018, 12, 20)
+                }
+            };
+
+            var serv = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
+            serv.Executar();
+
+            Assert.True(serv.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
+        }
+
     }
 }

@@ -38,8 +38,82 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
                 Configuracoes.TipoEventoEFDReinf = xml.ConsultaReciboEvento.TipoEvento;
 
                 base.DefinirConfiguracao();
+
+                // Montar a URL específica do evento (RequestURI)
+                MontarRequestURI(xml, Configuracoes);
             }
         }
+
+        /// <summary>
+        /// Método para juntar a URL base com o path do serviço
+        /// </summary>
+        /// <param name="baseUrl"></param>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private static string JoinUrl(string baseUrl, string path)
+        {
+            if (string.IsNullOrWhiteSpace(baseUrl)) baseUrl = string.Empty;
+            if (string.IsNullOrWhiteSpace(path)) path = string.Empty;
+            baseUrl = baseUrl.TrimEnd('/');
+            path = path.TrimStart('/');
+            return baseUrl.Length == 0 ? path : $"{baseUrl}/{path}";
+        }
+
+
+        /// <summary>
+        /// Substitui as tags do template da URL do web-service pelos valores do XML
+        /// </summary>
+        /// <param name="xml"></param>
+        /// <param name="config"></param>
+        /// <exception cref="Exception"></exception>
+        private void MontarRequestURI(ReinfConsulta xml, Configuracao config)
+        {
+            var tipoEvento = xml.ConsultaReciboEvento.TipoEvento;
+
+            if (string.IsNullOrWhiteSpace(tipoEvento) || !config.UrlsRecibosEventos.ContainsKey(tipoEvento))
+                throw new Exception($"Não foi encontrada configuração de URL para o evento {tipoEvento}.");
+
+            var cfgURL = config.UrlsRecibosEventos[tipoEvento];
+
+            // Primária por padrão; 4010/4020 podem usar secundária quando faltar CPF/CNPJ
+            var urlTemplate = cfgURL.UrlReciboPrimaria ?? string.Empty;
+            if (tipoEvento == "4010" && string.IsNullOrWhiteSpace(xml.ConsultaReciboEvento.CpfBenef) && !string.IsNullOrWhiteSpace(cfgURL.UrlReciboSecundaria))
+                urlTemplate = cfgURL.UrlReciboSecundaria;
+            else if (tipoEvento == "4020" && string.IsNullOrWhiteSpace(xml.ConsultaReciboEvento.CnpjBenef) && !string.IsNullOrWhiteSpace(cfgURL.UrlReciboSecundaria))
+                urlTemplate = cfgURL.UrlReciboSecundaria;
+
+            urlTemplate = urlTemplate
+                .Replace("{tpInsc}", ((int?)xml.ConsultaReciboEvento.TpInsc)?.ToString() ?? "")
+                .Replace("{nrInsc}", xml.ConsultaReciboEvento.NrInsc ?? "")
+                .Replace("{perApur}", xml.ConsultaReciboEvento.PerApur.ToString("yyyy-MM"))
+                .Replace("{dtApur}", xml.ConsultaReciboEvento.DtApur.ToString("yyyy-MM"))
+                .Replace("{dtApuracao}", xml.ConsultaReciboEvento.DtApuracao.ToString("yyyy-MM-dd"))
+                .Replace("{tpInscEstab}", ((int?)xml.ConsultaReciboEvento.TpInscEstab)?.ToString() ?? "")
+                .Replace("{nrInscEstab}", xml.ConsultaReciboEvento.NrInscEstab ?? "")
+                .Replace("{nrInscEstabPrest}", xml.ConsultaReciboEvento.NrInscEstabPrest ?? "")
+                .Replace("{tpInscTomador}", ((int?)xml.ConsultaReciboEvento.TpInscTomador)?.ToString() ?? "")
+                .Replace("{nrInscTomador}", xml.ConsultaReciboEvento.NrInscTomador ?? "")
+                .Replace("{cnpjPrestador}", xml.ConsultaReciboEvento.CnpjPrestador ?? "")
+                .Replace("{nrInscAdq}", xml.ConsultaReciboEvento.NrInscAdq ?? "")
+                .Replace("{tpInscAdq}", ((int?)xml.ConsultaReciboEvento.TpInscAdq)?.ToString() ?? "")
+                .Replace("{tpInscProd}", ((int?)xml.ConsultaReciboEvento.TpInscProd)?.ToString() ?? "")
+                .Replace("{nrInscProd}", xml.ConsultaReciboEvento.NrInscProd ?? "")
+                .Replace("{nrInscEstabelecimento}", xml.ConsultaReciboEvento.NrInscEstabelecimento ?? "")
+                .Replace("{cpfBenef}", xml.ConsultaReciboEvento.CpfBenef ?? "")
+                .Replace("{cnpjBenef}", xml.ConsultaReciboEvento.CnpjBenef ?? "");
+
+            // Evento 4080 usa {cnpjFonte}. Seu modelo não tem CnpjFonte.
+            urlTemplate = urlTemplate.Replace("{cnpjFonte}", xml.ConsultaReciboEvento.CnpjPrestador ?? "");
+
+            // Base: prioriza RequestURI*, senão WebEndereco*
+            var basePrefix = (config.TipoAmbiente == TipoAmbiente.Homologacao)
+                ? (!string.IsNullOrWhiteSpace(config.RequestURIHomologacao) ? config.RequestURIHomologacao : config.WebEnderecoHomologacao)
+                : (!string.IsNullOrWhiteSpace(config.RequestURIProducao) ? config.RequestURIProducao : config.WebEnderecoProducao);
+
+            config.RequestURI = JoinUrl(basePrefix, urlTemplate);
+        }
+
+
 
         #endregion Protected Methods
 
@@ -213,7 +287,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             }
         }
 
-        
+
         #endregion Public Methods
 
     }

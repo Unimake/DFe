@@ -149,6 +149,12 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("nrInscEstabelecimento")]
         public string NrInscEstabelecimento { get; set; }
 
+        [XmlElement("cpfBenef")]
+        public string CpfBenef { get; set; }
+
+        [XmlElement("cnpjBenef")]
+        public string CnpjBenef { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializePerApurField() => PerApur > DateTime.MinValue;
@@ -170,6 +176,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSerializeNrInscEstabPrestField() => !string.IsNullOrEmpty(NrInscEstabPrest);
 
         public bool ShouldSerializeNrInscAdqField() => !string.IsNullOrEmpty(NrInscAdq);
+
+        public bool ShouldSerializeSemCpfBeneficiarioField() => !string.IsNullOrEmpty(CpfBenef);
+
+        public bool ShouldSerializeSemCnpjBeneficiarioField() => !string.IsNullOrEmpty(CnpjBenef);
 
 
 #if INTEROP
