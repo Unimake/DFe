@@ -10,6 +10,7 @@
 			<LoginConexao>false</LoginConexao>
 			<TagAssinatura>xmlProcessamentoNfpse</TagAssinatura>
 			<TagAtributoID>valorTotalServicos</TagAtributoID>
+			<WebTagRetorno>xmlNfpse</WebTagRetorno>
 			<RequestURILoginProducao>https://nfps-e.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginProducao>
 			<RequestURILoginHomologacao>https://nfps-e-hml.pmf.sc.gov.br/api/v1/autenticacao/oauth/token</RequestURILoginHomologacao>
 		</GerarNfse>
