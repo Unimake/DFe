@@ -99,11 +99,11 @@
 			<TagAtributoID>infNFe</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<UrlQrCodeHomologacao>http://homolog.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe</UrlQrCodeHomologacao>
-			<UrlQrCodeProducao>http://nfe.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe</UrlQrCodeProducao>
-			<UrlChaveHomologacao>http://homolog.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe</UrlChaveHomologacao>
+      <UrlQrCodeHomologacao>https://nfewebhomolog.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://nfeweb.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe</UrlQrCodeProducao>      
+			<UrlChaveHomologacao>www.sefaz.go.gov.br/nfce/consulta</UrlChaveHomologacao>
 			<UrlChaveProducao>www.sefaz.go.gov.br/nfce/consulta</UrlChaveProducao>
-		</Autorizacao>
+    </Autorizacao>
 		<RetAutorizacao versao="4.00">
 			<Descricao>Consulta recibo da nota fiscal consumidor eletrônica</Descricao>
 			<WebEnderecoHomologacao>https://homolog.sefaz.go.gov.br:443/nfe/services/NFeRetAutorizacao4</WebEnderecoHomologacao>
