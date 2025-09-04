@@ -36,7 +36,7 @@ begin
     oConfiguracao.CertificadoSenha := '12345678';
     oConfiguracao.CodigoMunicipio := 9999903;
     oConfiguracao.TipoAmbiente := 2; // Homologação
-    oConfiguracao.Servico := 28; // CancelarNFSe
+    oConfiguracao.Servico := 24; // CancelarNFSe
     oConfiguracao.SchemaVersao := '2.02';
 
     // Montar o XML como string (evita problema com namespace ns0)
@@ -71,3 +71,4 @@ begin
 end;
 
 end.
+

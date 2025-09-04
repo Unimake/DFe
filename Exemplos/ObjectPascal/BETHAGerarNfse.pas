@@ -33,7 +33,7 @@ begin
   try
     // Criar objeto de configuração mínima
     oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
-    oConfiguracao.TipoDFe := 5; //0=NFSe
+    oConfiguracao.TipoDFe := 5; //5=NFSe
     oConfiguracao.CertificadoArquivo := 'C:\Projetos\certificados\UnimakePV.pfx';
     oConfiguracao.CertificadoSenha := '12345678';
 
@@ -116,10 +116,11 @@ begin
       '</Rps>' +
       '</GerarNfseEnvio>';
 
-    oGerarNFse := CreateOleObject('Unimake.Business.DFe.Servicos.NFSe.GerarNFSe');
-    oGerarNFSe.Executar(XML, IUnknown(oConfiguracao));
+      oGerarNFse := CreateOleObject('Unimake.Business.DFe.Servicos.NFSe.GerarNFSe');
+      oGerarNFSe.Executar(XML, IUnknown(oConfiguracao));
 
-    ShowMessage('XML retornado pela prefeitura:' + sLineBreak + oGerarNFSe.RetornoWSString);
+      ShowMessage('XML retornado pela prefeitura:' + sLineBreak + oGerarNFSe.RetornoWSString);
+
   except
     on E: Exception do
     begin

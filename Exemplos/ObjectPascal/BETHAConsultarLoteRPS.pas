@@ -34,7 +34,7 @@ begin
     oConfiguracao.CertificadoSenha := '12345678';
     oConfiguracao.CodigoMunicipio := 9999903;
     oConfiguracao.TipoAmbiente := 2; // Homologação
-    oConfiguracao.Servico := 30; // NFSeConsultarLoteRps
+    oConfiguracao.Servico := 31; // NFSeConsultarLoteRps
     oConfiguracao.SchemaVersao := '2.02';
 
     XML :=
@@ -65,3 +65,4 @@ begin
 end;
 
 end.
+
