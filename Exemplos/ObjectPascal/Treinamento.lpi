@@ -97,6 +97,27 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="CertificadoDigital"/>
       </Unit>
+      <Unit>
+        <Filename Value="BETHAGerarNfse.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="BETHAGerarNFSe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="BETHACancelarNFSe.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="BETHAEnviarLoteRPSSincrono.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="BETHAConsultarNFSeRPS.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="BETHAConsultarLoteRPS.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

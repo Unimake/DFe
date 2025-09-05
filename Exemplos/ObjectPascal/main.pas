@@ -10,7 +10,9 @@ uses
   EnviarNFeSincronoDesserializacao, ConsultarSituacaoNFe, EventoCancelamentoNFe,
   ImprimirDANFEcomUniDANFE, ConsultarDistribuicaoDFe, EnviarEventoManifestacaoNFe,
   EnviarNFCeSincrono, EnviarNFCeSincronoDesserializacao, EventoCancelamentoNFCe,
-  EnviarNFeSincronoRTC, DesserializarRetornoConsultaDFe, CertificadoDigital;
+  EnviarNFeSincronoRTC, DesserializarRetornoConsultaDFe, CertificadoDigital,
+  BETHAGerarNFSe, BETHACancelarNFSe, BETHAEnviarLoteRPSSincrono,
+  BETHAConsultarNFSeRPS, BETHAConsultarLoteRPS;
 
 type
 
@@ -28,6 +30,10 @@ type
     btnEventoCancelamentoNFe: TButton;
     btnImprimirDANFEcomUniDANFE: TButton;
     BtnCertificadoDigital: TButton;
+    BtnBETHAGerarNFSe: TButton;
+    BtnBETHACancelarNFSe: TButton;
+    BtnBETHAEnviarLoteRPSSincrono: TButton;
+    BtnBETHAConsultarLoteRPS: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -35,6 +41,13 @@ type
     btnEventoCancelamentoNFCe: TToggleBox;
     btnDesserializarRetornoConsultaDFe: TToggleBox;
     GroupBox3: TGroupBox;
+    GroupBox4: TGroupBox;
+    BtnBETHAConsultarNfseRps: TButton;
+    procedure BtnBETHACancelarNFSeClick(Sender: TObject);
+    procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
+    procedure BtnBETHAConsultarNFSeRPSClick(Sender: TObject);
+    procedure BtnBETHAEnviarLoteRPSSincronoClick(Sender: TObject);
+    procedure BtnBETHAGerarNFSeClick(Sender: TObject);
     procedure BtnCertificadoDigitalClick(Sender: TObject);
     procedure btnConsultarDistribuicaoDFeOnClick(Sender: TObject);
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
@@ -157,6 +170,62 @@ begin
   finally
   end;
 end;
+
+procedure TfrmPrincipal.BtnBETHAGerarNFSeClick(Sender: TObject);
+var
+  oServico: TBETHAGerarNFSe;
+begin
+  oServico := TBETHAGerarNFSe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnBETHACancelarNFSeClick(Sender: TObject);
+var
+  oServico: TBETHACancelarNFSe;
+begin
+  oServico := TBETHACancelarNFSe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnBETHAConsultarLoteRPSClick(Sender: TObject);
+var
+  oServico: TBETHAConsultarLoteRPS;
+begin
+  oServico := TBETHAConsultarLoteRPS.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnBETHAConsultarNFSeRPSClick(Sender: TObject);
+var
+  oServico: TBETHAConsultarNFSeRPS;
+begin
+  oServico := TBETHAConsultarNFSeRPS.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnBETHAEnviarLoteRPSSincronoClick(Sender: TObject);
+var
+  oServico: TBETHAEnviarLoteRPSSincrono;
+begin
+  oServico := TBETHAEnviarLoteRPSSincrono.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
 procedure TfrmPrincipal.btnEnviarNFeSincronoClick(Sender: TObject);
 var
   oServico: TEnviarNFeSincrono;

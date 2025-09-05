@@ -137,7 +137,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
             if ((Det?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Det[index];
         }
@@ -189,7 +189,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
             if ((AutXML?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return AutXML[index];
         }
@@ -678,7 +678,6 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public void AddNroTermAdic(string item) => TerminaisAdicionais.Add(new TerminalAdicional { NroTermAdic = item });
         public string GetNroTermAdic(int index) => (index >= 0 && index < TerminaisAdicionais.Count) ? TerminaisAdicionais[index].NroTermAdic : default;
         public int GetNroTermAdicCount => TerminaisAdicionais.Count;
-
         public void AddCUFAdic(UFBrasil item) => TerminaisAdicionais.Add(new TerminalAdicional { CUFAdic = item });
         public int GetCUFAdic(int index) => (index >= 0 && index < TerminaisAdicionais.Count) ? (int)TerminaisAdicionais[index].CUFAdic : default;
         public int GetCUFAdicCount => TerminaisAdicionais.Count;
@@ -689,6 +688,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public bool ShouldSerializeDContratoIniField() => DContratoIni != default;
         public bool ShouldSerializeDContratoFimField() => DContratoFim != default;
         public bool ShouldSerializeNroTermPrinc() => !string.IsNullOrEmpty(NroTermPrinc);
+        public bool ShouldSerializeCUFPrincField() => CUFPrinc != null && CUFPrinc != (UFBrasil)(-1);
         public bool ShouldSerializeTerminaisAdicionaisRaw() => TerminaisAdicionais?.Count > 0;
         #endregion
     }
@@ -986,7 +986,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
             if ((ICMSUFDest?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return ICMSUFDest[index];
         }
@@ -1039,7 +1039,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
     [ProgId("Unimake.Business.DFe.Xml.NFCom.ICMS00")]
     [ComVisible(true)]
 #endif
-    public class ICMS00 
+    public class ICMS00
     {
         [XmlElement("CST")]
         public string CST { get; set; }
@@ -1700,7 +1700,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
         }
 
         [XmlElement("gDif")]
-        public GDif GDif { get; set;}
+        public GDif GDif { get; set; }
 
         [XmlElement("gDevTrib")]
         public GDevTrib GDevTrib { get; set; }
@@ -2243,7 +2243,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
             if ((GProc?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return GProc[index];
         }
@@ -2697,7 +2697,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
     [ProgId("Unimake.Business.DFe.Xml.NFCom.GCBSTot")]
     [ComVisible(true)]
 #endif
-    public class  GCBSTot
+    public class GCBSTot
     {
         [XmlIgnore]
         public double VDif { get; set; }

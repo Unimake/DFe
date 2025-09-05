@@ -14,7 +14,9 @@ uses
   EnviarNFeSincronoDesserializacao, ImprimirDANFEcomUniDANFE,
   CertificadoDigital, ConsultarDistribuicaoDFe, ConsultarSituacaoNFe,
   DesserializarRetornoConsultaDFe, EnviarEventoManifestacaoNFe,
-  EnviarNFCeSincrono, EnviarNFCeSincronoDesserializacao
+  EnviarNFCeSincrono, EnviarNFCeSincronoDesserializacao, BETHAGerarNFSe,
+  BETHACancelarNFSe, BETHAEnviarLoteRPSSincrono, BETHAConsultarNFSeRPS,
+  BETHAConsultarLoteRPS
   { you can add units after this };
 
 {$R *.res}

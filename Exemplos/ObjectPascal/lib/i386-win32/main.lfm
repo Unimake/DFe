@@ -2,10 +2,10 @@ object frmPrincipal: TfrmPrincipal
   Left = 1078
   Height = 656
   Top = 404
-  Width = 1234
+  Width = 1905
   Caption = 'Como utilizar a DLL Unimake.DFe para envio de NFe, NFCe, CTe, etc.'
   ClientHeight = 656
-  ClientWidth = 1234
+  ClientWidth = 1905
   DesignTimePPI = 144
   OnCreate = FormCreate
   object GroupBox1: TGroupBox
@@ -171,6 +171,61 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Exemplos Diversos Certificado Digital'
       TabOrder = 0
       OnClick = BtnCertificadoDigitalClick
+    end
+  end
+  object GroupBox4: TGroupBox
+    Left = 1128
+    Height = 624
+    Top = 0
+    Width = 350
+    Caption = 'NFS-e'
+    ClientHeight = 594
+    ClientWidth = 346
+    TabOrder = 5
+    object BtnBETHAGerarNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 0
+      Width = 328
+      Caption = 'Padrão BETHA - Gerar NFSe'
+      TabOrder = 0
+      OnClick = BtnBETHAGerarNFSeClick
+    end
+    object BtnBETHACancelarNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 48
+      Width = 328
+      Caption = 'Padrão BETHA - Cancelar NFSe'
+      TabOrder = 1
+      OnClick = BtnBETHACancelarNFSeClick
+    end
+    object BtnBETHAEnviarLoteRPSSincrono: TButton
+      Left = 8
+      Height = 38
+      Top = 95
+      Width = 328
+      Caption = 'Padrão BETHA - Enviar Lote RPS Sinc'
+      TabOrder = 2
+      OnClick = BtnBETHAEnviarLoteRPSSincronoClick
+    end
+    object BtnBETHAConsultarNfseRps: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 144
+      Width = 328
+      Caption = 'Padrão BETHA - Consultar NFSe p/RPS'
+      TabOrder = 3
+      OnClick = BtnBETHAConsultarNfseRpsClick
+    end
+    object BtnBETHAConsultarLoteRPS: TButton
+      Left = 8
+      Height = 38
+      Top = 193
+      Width = 328
+      Caption = 'Padrão BETHA - Consultar Lote RPS'
+      TabOrder = 4
+      OnClick = BtnBETHAConsultarLoteRPSClick
     end
   end
 end
