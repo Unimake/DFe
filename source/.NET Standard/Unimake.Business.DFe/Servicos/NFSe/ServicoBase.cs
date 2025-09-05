@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Net;
 using Unimake.Business.DFe.Utility;
+using System.Text.RegularExpressions;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -502,6 +503,12 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             var senhaCriptografada = Criptografia.GetMD5Hash(Configuracoes.MunicipioSenha);
 
             Configuracoes.MunicipioSenha = senhaCriptografada;
+
+            var soap = Configuracoes.WebSoapString;
+
+            var substuicao = Regex.Replace(soap, @"<nfse:Senha>.*?</nfse:Senha>", $"<nfse:Senha>{Configuracoes.MunicipioSenha}</nfse:Senha>");
+
+            Configuracoes.WebSoapString = substuicao;
         }
 
         #endregion ISSONLINE_ASSESSORPUBLICO
