@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Validator.Contract;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Validator.Abstractions
 {
@@ -42,6 +43,11 @@ namespace Unimake.Business.DFe.Validator.Abstractions
         /// <inheritdoc cref="IXmlValidator.Xml"/>
         /// </summary>
         public string Xml { get; set; }
+
+        /// <summary>
+        /// Exceções que não interrompem o fluxo do sistema, sendo registradas apenas como avisos ou alertas.
+        /// </summary>
+        public List<ValidatorDFeException> Warnings { protected get; set; } = new List<ValidatorDFeException>();
 
         #endregion Public Properties
 
