@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -232,6 +233,13 @@ namespace Unimake.Business.DFe.Validator.NFe
                     ThrowHelper.Instance.Throw(new ValidatorDFeException("O CST do grupo de tributação de ICMS20 está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 20." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS20>]"));
                 }
+                if (value == "20" && !HasNotaFooterBaseLegal(Tag))
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "Nota Fiscal CST 020 e não encontrou nenhuma regra de texto para base legal de benefício " +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS20>]"));
+                }
             }).ValidateTag(element => element.NameEquals(nameof(ICMS30.CST)) && element.Parent.NameEquals(nameof(ICMS30)), Tag =>
             {
                 var value = Tag.Value;
@@ -256,6 +264,13 @@ namespace Unimake.Business.DFe.Validator.NFe
                     ThrowHelper.Instance.Throw(new ValidatorDFeException("O CST do grupo de tributação de ICMS40 está incorreto. Valor informado: " + Tag.Value + " - Valores aceitos: 40, 41 ou 50." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS40>]"));
                 }
+                if (value == "40" && !HasNotaFooterBaseLegal(Tag))
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "Nota Fiscal CST 040 e não encontrou nenhuma regra de texto para base legal de benefício " +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS40>]"));
+                }
             }).ValidateTag(element => element.NameEquals(nameof(ICMS51.CST)) && element.Parent.NameEquals(nameof(ICMS51)), Tag =>
             {
                 var value = Tag.Value;
@@ -267,6 +282,13 @@ namespace Unimake.Business.DFe.Validator.NFe
                 {
                     ThrowHelper.Instance.Throw(new ValidatorDFeException("O CST do grupo de tributação de ICMS51 está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 51." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS51>]"));
+                }
+                if (value == "51" && !HasNotaFooterBaseLegal(Tag))
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "Nota Fiscal CST 051 e não encontrou nenhuma regra de texto para base legal de benefício " +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS51>]"));
                 }
             }).ValidateTag(element => element.NameEquals(nameof(ICMS53.CST)) && element.Parent.NameEquals(nameof(ICMS53)), Tag =>
             {
@@ -1230,5 +1252,51 @@ namespace Unimake.Business.DFe.Validator.NFe
 
             return true;
         }
+
+        /// <summary>
+        /// Retorna true se encontrar "base legal" no rodapé da nota (infAdic).
+        /// </summary>
+        private bool HasNotaFooterBaseLegal(XElement tag)
+        {
+            var infAdic = tag.Document?.Descendants()
+                .FirstOrDefault(e => e.NameEquals("infAdic"));
+
+            if (infAdic == null) return false;
+
+            var sb = new StringBuilder();
+
+            var infCpl = infAdic.GetValue("infCpl");
+            if (!string.IsNullOrWhiteSpace(infCpl))
+                sb.Append(' ').Append(infCpl);
+
+            foreach (var obsCont in infAdic.Elements().Where(e => e.NameEquals("obsCont")))
+            {
+                var xTexto = obsCont.GetValue("xTexto");
+                if (!string.IsNullOrWhiteSpace(xTexto))
+                    sb.Append(' ').Append(xTexto);
+            }
+
+            foreach (var obsFisco in infAdic.Elements().Where(e => e.NameEquals("obsFisco")))
+            {
+                var xTexto = obsFisco.GetValue("xTexto");
+                if (!string.IsNullOrWhiteSpace(xTexto))
+                    sb.Append(' ').Append(xTexto);
+            }
+
+            var texto = sb.ToString().ToLowerInvariant();
+            if (string.IsNullOrWhiteSpace(texto)) return false;
+
+            string[] tokens = {
+                "base legal",
+                "lei ", "lei nº", "lei n.º", "lei complementar", "lc ",
+                "convênio icms", "ajuste sinief", "protocolo icms",
+                "decreto", "portaria", "art.", "artigo", "§", "inciso", "alínea",
+                "ricms", "ripi", "alinea", "convenio icms", "lei n", "lei n."
+            };
+
+            return tokens.Any(t => texto.Contains(t));
+        }
+
+
     }
 }
