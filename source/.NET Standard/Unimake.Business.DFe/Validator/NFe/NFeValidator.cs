@@ -787,6 +787,18 @@ namespace Unimake.Business.DFe.Validator.NFe
                 var xProd = Tag.Parent?.Parent?.GetValue("xProd");
                 var nItem = Tag.Parent?.Parent?.GetAttributeValue("nItem");
 
+                var det = Tag.Parent?.Parent;
+                var cst = PegarCstDoDet(det);
+
+                //Regra 01 -> CFOP 6101 + CST 00
+                if (cfop == "6101" && cst == "00")
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "Possível débito de ICMS indevido: CFOP 6.101 com CST 00. " +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                }
+
                 if (finNFe == "4") // Devolução
                 {
                     var tipoOperacao = "";
@@ -858,6 +870,9 @@ namespace Unimake.Business.DFe.Validator.NFe
                             $"Para esse tipo de devolução, utilize um dos seguintes CFOPs: {string.Join(", ", cfopsValidos.OrderBy(x => x))}. " +
                             $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <CFOP> do grupo de tag <NFe><infNFe><det><prod>]"));
                     }
+
+                    
+
                 }
             }).ValidateTag(element => element.NameEquals(nameof(IBSCBS.CST)) && element.Parent.NameEquals(nameof(IBSCBS)), Tag =>
             {
@@ -1218,6 +1233,25 @@ namespace Unimake.Business.DFe.Validator.NFe
                         break;
                 }
 
+            }).ValidateTag(element => element.NameEquals(nameof(Prod.CFOP)) && element.Parent.NameEquals(nameof(Prod)), Tag => {
+
+                var cfop = Tag.Value;
+                var det = Tag.Parent?.Parent;
+                var nItem = det.GetAttributeValue("nItem");
+                var cProd = det.GetValue("cProd");
+                var xProd = det.GetValue("xProd");
+
+                var cst = PegarCstDoDet(det);
+
+                //Regra 01 -> CFOP 6101 + CST 00
+                if (cfop == "6101" && cst == "00")
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "Possível débito de ICMS indevido: CFOP 6.101 com CST 00. " +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                }
+
             });
 
         #endregion Public Constructors
@@ -1297,6 +1331,36 @@ namespace Unimake.Business.DFe.Validator.NFe
             return tokens.Any(t => texto.Contains(t));
         }
 
+        /// <summary>
+        /// Extrai o primeiro CST encontrado no grupo de tags do item (det).
+        /// </summary>
+        /// <param name="det"></param>
+        /// <returns>CST</returns>
+        private static string PegarCstDoDet(XElement det)
+        {
+            if (det == null) return null;
+
+            var imposto = det.GetElement("imposto");
+            var icms = imposto?.GetElement("ICMS");
+
+            if (icms == null) return null;
+
+            string[] grupos = { "ICMS00", "ICMS10", "ICMS20", "ICMS30", "ICMS40", "ICMS41", "ICMS51", "ICMS60", "ICMS70", "ICMS90" };
+
+            foreach (var g in grupos)
+            {
+                var el = icms.GetElement(g);
+
+                if (el == null) continue;
+
+                var v = el.GetValue("CST");
+                if (!string.IsNullOrWhiteSpace(v))
+                    return v;
+            }
+
+            return null;
+
+        }
 
     }
 }
