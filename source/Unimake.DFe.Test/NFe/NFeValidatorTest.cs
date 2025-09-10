@@ -298,5 +298,39 @@ namespace Unimake.DFe.Test.NFe
             }
         }
 
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(@"..\..\..\NFe\Resources\Warnings\NFe_CFOP5949_CST00.xml", true)]
+        [InlineData(@"..\..\..\NFe\Resources\Warnings\NFe_CFOP5949_CST10.xml", false)]
+        public void ValidarNFe_CFOP5949_CST00(string arqXml, bool deveAvisar)
+        {
+            Assert.True(File.Exists(arqXml), "Arquivo " + arqXml + " não foi localizado para a validação.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXml);
+
+            var validator = new Unimake.Business.DFe.Validator.NFe.NFeValidator { Xml = doc.InnerXml };
+
+            // aviso não impede
+            Assert.True(validator.Validate());
+
+            // ler Warnings (reflection)
+            var prop = validator.GetType().GetProperty("Warnings",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            var getter = prop!.GetGetMethod(nonPublic: true);
+            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+
+            if (deveAvisar)
+            {
+                Assert.Single(warnings);
+                Assert.Contains("CFOP 5.949", warnings[0].Message, StringComparison.OrdinalIgnoreCase);
+                Assert.Contains("CST 00", warnings[0].Message, StringComparison.OrdinalIgnoreCase);
+            }
+            else
+            {
+                Assert.Empty(warnings);
+            }
+        }
+
     }
 }
