@@ -2441,14 +2441,21 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public IBSCBSTot IBSCBSTot { get; set; }
 
         [XmlIgnore]
-        public double VTotDFe { get; set; }
+        public double? VTotDFe { get; set; }
 
         [XmlElement("vTotDFe")]
         public string VTotDFeField
         {
-            get => VTotDFe.ToString("F2", CultureInfo.InvariantCulture);
+            get => VTotDFe?.ToString("F2", CultureInfo.InvariantCulture);
             set => VTotDFe = Converter.ToDouble(value);
         }
+
+
+        #region ShouldSerialize 
+
+        public bool ShouldSerializeVTotDFeField() => VTotDFe != null;
+
+        #endregion
     }
 
 #if INTEROP
