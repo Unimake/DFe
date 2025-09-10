@@ -259,5 +259,44 @@ namespace Unimake.DFe.Test.NFe
             }
         }
 
+        /// <summary>
+        /// Testa o XML da NFe com CFOP 5.102 e CST 40 no ICMS. Deve lançar um aviso (não-impeditivo)
+        /// </summary>
+        /// <param name="arqXml"></param>
+        /// <param name="deveAvisar"></param>
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(@"..\..\..\NFe\Resources\Warnings\NFe_CFOP5102_CST40.xml", true)]
+        [InlineData(@"..\..\..\NFe\Resources\Warnings\NFe_CFOP5102_CST00.xml", false)]
+        public void ValidarNFe_CFOP5102_CST40(string arqXml, bool deveAvisar)
+        {
+            Assert.True(File.Exists(arqXml), "Arquivo " + arqXml + " não foi localizado para a validação.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXml);
+
+            var validator = new Unimake.Business.DFe.Validator.NFe.NFeValidator { Xml = doc.InnerXml };
+
+            // aviso não impede
+            Assert.True(validator.Validate());
+
+            // ler Warnings (reflection)
+            var prop = validator.GetType().GetProperty("Warnings",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            var getter = prop!.GetGetMethod(nonPublic: true);
+            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+
+            if (deveAvisar)
+            {
+                Assert.Single(warnings);
+                Assert.Contains("CFOP 5.102", warnings[0].Message, StringComparison.OrdinalIgnoreCase);
+                Assert.Contains("CST 40", warnings[0].Message, StringComparison.OrdinalIgnoreCase);
+            }
+            else
+            {
+                Assert.Empty(warnings);
+            }
+        }
+
     }
 }
