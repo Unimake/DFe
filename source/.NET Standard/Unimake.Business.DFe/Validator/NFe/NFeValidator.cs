@@ -794,14 +794,23 @@ namespace Unimake.Business.DFe.Validator.NFe
                 if (cfop == "6101" && cst == "00")
                 {
                     Warnings.Add(new ValidatorDFeException(
-                        "Possível débito de ICMS indevido: CFOP 6.101 com CST 00. " +
+                        "Se a operação for isenta (por exemplo, para zona franca ou consumidor final sem substituição tributária), usar CST 00 com CFOP 6.101 implica débito de ICMS, podendo gerar imposto a pagar mesmo sem necessidade." +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
                         "[TAG: <CFOP> do grupo de tag <det><prod>]"));
                 }
+                
                 if (cfop == "6102" && cst == "10" && ConsumirdorFinalMesmoEstado(Tag))
                 {
                     Warnings.Add(new ValidatorDFeException(
-                        "Venda interestadual a consumidor final: CFOP 6.102 com CST 10 pode indicar ST indevida e/ou erro no DIFAL (considere CFOP 6.108/6.109). " +
+                        " Para venda interestadual a consumidor final, o correto seria usar CFOP 6.108 ou 6.109, com destaque do ICMS de diferencial de alíquota (DIFAL). Se usar CFOP 6.102 e CST 10, pode gerar cobrança indevida de ST e/ou erro de cálculo do DIFAL" +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                }
+
+                if (cfop == "5102" && cst == "40")
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "Se não há isenção prevista em lei, pode se usar CST 40 com CFOP 5.102 pode levar à ''sonegação involuntária'', e posteriormente a autuação fiscal." +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
                         "[TAG: <CFOP> do grupo de tag <det><prod>]"));
                 }
