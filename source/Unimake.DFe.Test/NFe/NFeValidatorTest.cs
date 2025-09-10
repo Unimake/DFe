@@ -171,6 +171,10 @@ namespace Unimake.DFe.Test.NFe
             }
         }
 
+        /// <summary>
+        /// Testa o XML da NFe com CFOP 6.101 e CST 00 ou 10 no ICMS. Deve lançar um aviso (não-impeditivo) apenas se for CST 00.
+        /// </summary>
+        /// <param name="arqXml"></param>
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(@"..\..\..\NFe\Resources\Warnings\NFe_CFOP6101_CST00.xml")]
@@ -211,6 +215,48 @@ namespace Unimake.DFe.Test.NFe
                 Assert.Empty(warnings);
             }
 
+        }
+
+        /// <summary>
+        /// Testa o XML da NFe com CFOP 6.102 e CST 10 no ICMS. Deve lançar um aviso (não-impeditivo) apenas se a operação for de "CFe com entrega em outro estado" (venda interestadual com entrega em outro estado, CFOP 6.102).
+        /// </summary>
+        /// <param name="arqXml"></param>
+        /// <param name="deveAvisar"></param>
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(@"..\..\..\NFe\Resources\Warnings\NFe_CFOP6102_CST10_CFInterestadual.xml", true)]
+        [InlineData(@"..\..\..\NFe\Resources\Warnings\NFe_CFOP6102_CST10_VendaNormal.xml", false)]
+        public void ValidarNfe_CFOP6102_CST10(string arqXml, bool deveAvisar)
+        {
+            var doc = new XmlDocument();
+            doc.Load(arqXml);
+
+            var validator = new Unimake.Business.DFe.Validator.NFe.NFeValidator
+            {
+                Xml = doc.InnerXml
+            };
+
+            // validação deve passar (aviso é não-impeditivo)
+            Assert.True(validator!.Validate());
+
+            // Warnings é protegido em XmlValidatorBase → reflection
+            var prop = validator.GetType().GetProperty(
+                "Warnings",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
+            );
+            var getter = prop!.GetGetMethod(nonPublic: true);
+            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+
+            if (deveAvisar)
+            {
+                Assert.Single(warnings);
+                Assert.Contains("CFOP 6.102", warnings[0].Message, StringComparison.OrdinalIgnoreCase);
+                Assert.Contains("CST 10", warnings[0].Message, StringComparison.OrdinalIgnoreCase);
+            }
+            else
+            {
+                Assert.Empty(warnings);
+            }
         }
 
     }
