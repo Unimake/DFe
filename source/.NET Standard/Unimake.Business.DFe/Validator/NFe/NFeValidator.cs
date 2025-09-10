@@ -236,7 +236,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                 if (value == "20" && !HasNotaFooterBaseLegal(Tag))
                 {
                     Warnings.Add(new ValidatorDFeException(
-                        "Nota Fiscal CST 020 e não encontrou nenhuma regra de texto para base legal de benefício " +
+                        "Nota Fiscal possui produto utilizando CST 020 e não foi localizado nenhum texto de base legal para o benefício nas informações adicionais da NFe/NFCe. " +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
                         "[TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS20>]"));
                 }
@@ -267,7 +267,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                 if (value == "40" && !HasNotaFooterBaseLegal(Tag))
                 {
                     Warnings.Add(new ValidatorDFeException(
-                        "Nota Fiscal CST 040 e não encontrou nenhuma regra de texto para base legal de benefício " +
+                        "Nota Fiscal possui produto utilizando CST 040 e não foi localizado nenhum texto de base legal para o benefício nas informações adicionais da NFe/NFCe. " +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
                         "[TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS40>]"));
                 }
@@ -286,7 +286,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                 if (value == "51" && !HasNotaFooterBaseLegal(Tag))
                 {
                     Warnings.Add(new ValidatorDFeException(
-                        "Nota Fiscal CST 051 e não encontrou nenhuma regra de texto para base legal de benefício " +
+                        "Nota Fiscal possui produto utilizando CST 051 e não foi localizado nenhum texto de base legal para o benefício nas informações adicionais da NFe/NFCe. " +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
                         "[TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS51>]"));
                 }
