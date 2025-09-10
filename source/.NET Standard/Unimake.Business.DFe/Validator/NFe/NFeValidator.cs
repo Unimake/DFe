@@ -798,6 +798,13 @@ namespace Unimake.Business.DFe.Validator.NFe
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
                         "[TAG: <CFOP> do grupo de tag <det><prod>]"));
                 }
+                if (cfop == "6102" && cst == "10" && ConsumirdorFinalMesmoEstado(Tag))
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "Venda interestadual a consumidor final: CFOP 6.102 com CST 10 pode indicar ST indevida e/ou erro no DIFAL (considere CFOP 6.108/6.109). " +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                }
 
                 if (finNFe == "4") // Devolução
                 {
@@ -871,7 +878,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                             $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <CFOP> do grupo de tag <NFe><infNFe><det><prod>]"));
                     }
 
-                    
+
 
                 }
             }).ValidateTag(element => element.NameEquals(nameof(IBSCBS.CST)) && element.Parent.NameEquals(nameof(IBSCBS)), Tag =>
@@ -1233,25 +1240,6 @@ namespace Unimake.Business.DFe.Validator.NFe
                         break;
                 }
 
-            }).ValidateTag(element => element.NameEquals(nameof(Prod.CFOP)) && element.Parent.NameEquals(nameof(Prod)), Tag => {
-
-                var cfop = Tag.Value;
-                var det = Tag.Parent?.Parent;
-                var nItem = det.GetAttributeValue("nItem");
-                var cProd = det.GetValue("cProd");
-                var xProd = det.GetValue("xProd");
-
-                var cst = PegarCstDoDet(det);
-
-                //Regra 01 -> CFOP 6101 + CST 00
-                if (cfop == "6101" && cst == "00")
-                {
-                    Warnings.Add(new ValidatorDFeException(
-                        "Possível débito de ICMS indevido: CFOP 6.101 com CST 00. " +
-                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
-                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
-                }
-
             });
 
         #endregion Public Constructors
@@ -1360,6 +1348,40 @@ namespace Unimake.Business.DFe.Validator.NFe
 
             return null;
 
+        }
+
+        private static bool ConsumirdorFinalMesmoEstado(XElement tag)
+        {
+            var doc = tag.Document;
+            if (doc == null) return false;
+
+            // ide/indFinal (1 = consumidor final)
+            var indFinal = doc.Descendants().FirstOrDefault(e => e.Name.LocalName == "ide")
+                ?.Elements().FirstOrDefault(e => e.Name.LocalName == "indFinal")?.Value;
+
+            // dest/indIEDest (9 = não contribuinte) – se não houver a tag, não bloqueia a regra
+            var indIEDest = doc.Descendants().FirstOrDefault(e => e.Name.LocalName == "dest")
+                ?.Elements().FirstOrDefault(e => e.Name.LocalName == "indIEDest")?.Value;
+
+            // UF emitente
+            var ufEmit = doc.Descendants().FirstOrDefault(e => e.Name.LocalName == "enderEmit")
+                ?.Elements().FirstOrDefault(e => e.Name.LocalName == "UF")?.Value;
+
+            // UF destino: prioriza <entrega><UF>, senão <dest><enderDest><UF>
+            var ufEntrega = doc.Descendants().FirstOrDefault(e => e.Name.LocalName == "entrega")
+                ?.Elements().FirstOrDefault(e => e.Name.LocalName == "UF")?.Value;
+
+            var ufDest = ufEntrega ?? doc.Descendants().FirstOrDefault(e => e.Name.LocalName == "enderDest")
+                ?.Elements().FirstOrDefault(e => e.Name.LocalName == "UF")?.Value;
+
+            // consumidor final, não contribuinte e interestadual
+            var isConsumidorFinal = indFinal == "1";
+            var isNaoContribuinte = indIEDest == "9" || string.IsNullOrWhiteSpace(indIEDest);
+            var isInterestadual = !string.IsNullOrWhiteSpace(ufEmit) &&
+                                  !string.IsNullOrWhiteSpace(ufDest) &&
+                                  !ufEmit.Equals(ufDest, System.StringComparison.OrdinalIgnoreCase);
+
+            return isConsumidorFinal && isNaoContribuinte && isInterestadual;
         }
 
     }
