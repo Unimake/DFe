@@ -823,6 +823,14 @@ namespace Unimake.Business.DFe.Validator.NFe
                         "[TAG: <CFOP> do grupo de tag <det><prod>]"));
                 }
 
+                if (cfop == "6350" && (cst == "00" || cst == "10"))
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "A Zona Franca, CFOP 6.350 pode garantir isenção do ICMS. Usar CST 00 ou 10, que destaca o imposto pode gerar débito indevido ou não aproveitamento de benefício fiscal." +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                }
+
                 if (finNFe == "4") // Devolução
                 {
                     var tipoOperacao = "";
