@@ -83,7 +83,7 @@ namespace Unimake.DFe.Test.NFe
             if (arqXml.Contains("sem_base_legal", StringComparison.OrdinalIgnoreCase))
             {
                 Assert.Single(warnings);
-                Assert.StartsWith("Nota Fiscal CST 020", warnings[0].Message);
+                Assert.StartsWith("Nota Fiscal possui produto utilizando CST 020", warnings[0].Message);
             }
             else // com_base_legal
             {
@@ -123,7 +123,7 @@ namespace Unimake.DFe.Test.NFe
             if (arqXml.Contains("sem_base_legal", StringComparison.OrdinalIgnoreCase))
             {
                 Assert.Single(warnings);
-                Assert.StartsWith("Nota Fiscal CST 040", warnings[0].Message);
+                Assert.StartsWith("Nota Fiscal possui produto utilizando CST 040", warnings[0].Message);
             }
             else // com_base_legal
             {
@@ -163,7 +163,7 @@ namespace Unimake.DFe.Test.NFe
             if (arqXml.Contains("sem_base_legal", StringComparison.OrdinalIgnoreCase))
             {
                 Assert.Single(warnings);
-                Assert.StartsWith("Nota Fiscal CST 051", warnings[0].Message);
+                Assert.StartsWith("Nota Fiscal possui produto utilizando CST 051", warnings[0].Message);
             }
             else // com_base_legal
             {
