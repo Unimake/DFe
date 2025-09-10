@@ -1,0 +1,33 @@
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+	<infNFe versao="4.00" Id="NFe35150900000000000000550010000000011000000010">
+		<ide>
+			<mod>55</mod>
+			<indFinal>1</indFinal>
+		</ide>
+		<emit>
+			<enderEmit>
+				<UF>PR</UF>
+			</enderEmit>
+		</emit>
+		<dest>
+			<enderDest>
+				<UF>SP</UF>
+			</enderDest>
+		</dest>
+		<det nItem="1">
+			<prod>
+				<cProd>SKU-A</cProd>
+				<xProd>Produto A</xProd>
+				<CFOP>6101</CFOP>
+			</prod>
+			<imposto>
+				<ICMS>
+					<ICMS00>
+						<CST>00</CST>
+					</ICMS00>
+				</ICMS>
+			</imposto>
+		</det>
+		<infAdic/>
+	</infNFe>
+</NFe>
