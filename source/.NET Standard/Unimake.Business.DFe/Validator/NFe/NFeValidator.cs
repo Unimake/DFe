@@ -787,6 +787,50 @@ namespace Unimake.Business.DFe.Validator.NFe
                 var xProd = Tag.Parent?.Parent?.GetValue("xProd");
                 var nItem = Tag.Parent?.Parent?.GetAttributeValue("nItem");
 
+                var det = Tag.Parent?.Parent;
+                var cst = PegarCstDoDet(det);
+
+                //Regra 01 -> CFOP 6101 + CST 00
+                if (cfop == "6101" && cst == "00")
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "Se a operação for isenta (por exemplo, para zona franca ou consumidor final sem substituição tributária), usar CST 00 com CFOP 6.101 implica débito de ICMS, podendo gerar imposto a pagar mesmo sem necessidade." +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                }
+                
+                if (cfop == "6102" && cst == "10" && ConsumirdorFinalMesmoEstado(Tag))
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        " Para venda interestadual a consumidor final, o correto seria usar CFOP 6.108 ou 6.109, com destaque do ICMS de diferencial de alíquota (DIFAL). Se usar CFOP 6.102 e CST 10, pode gerar cobrança indevida de ST e/ou erro de cálculo do DIFAL" +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                }
+
+                if (cfop == "5102" && cst == "40")
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "Se não há isenção prevista em lei, pode se usar CST 40 com CFOP 5.102 pode levar à ''sonegação involuntária'', e posteriormente a autuação fiscal." +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                }
+
+                if (cfop == "5949" && cst == "00")
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "CFOP 5.949 e CST 00 genéricos. Podem esconder operação real e gerar tributação indevida por padrão, além de chamar atenção do fisco." +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                }
+
+                if (cfop == "6350" && (cst == "00" || cst == "10"))
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "A Zona Franca, CFOP 6.350 pode garantir isenção do ICMS. Usar CST 00 ou 10, que destaca o imposto pode gerar débito indevido ou não aproveitamento de benefício fiscal." +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                }
+
                 if (finNFe == "4") // Devolução
                 {
                     var tipoOperacao = "";
@@ -858,6 +902,9 @@ namespace Unimake.Business.DFe.Validator.NFe
                             $"Para esse tipo de devolução, utilize um dos seguintes CFOPs: {string.Join(", ", cfopsValidos.OrderBy(x => x))}. " +
                             $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <CFOP> do grupo de tag <NFe><infNFe><det><prod>]"));
                     }
+
+
+
                 }
             }).ValidateTag(element => element.NameEquals(nameof(IBSCBS.CST)) && element.Parent.NameEquals(nameof(IBSCBS)), Tag =>
             {
@@ -1297,6 +1344,70 @@ namespace Unimake.Business.DFe.Validator.NFe
             return tokens.Any(t => texto.Contains(t));
         }
 
+        /// <summary>
+        /// Extrai o primeiro CST encontrado no grupo de tags do item (det).
+        /// </summary>
+        /// <param name="det"></param>
+        /// <returns>CST</returns>
+        private static string PegarCstDoDet(XElement det)
+        {
+            if (det == null) return null;
+
+            var imposto = det.GetElement("imposto");
+            var icms = imposto?.GetElement("ICMS");
+
+            if (icms == null) return null;
+
+            string[] grupos = { "ICMS00", "ICMS10", "ICMS20", "ICMS30", "ICMS40", "ICMS41", "ICMS51", "ICMS60", "ICMS70", "ICMS90" };
+
+            foreach (var g in grupos)
+            {
+                var el = icms.GetElement(g);
+
+                if (el == null) continue;
+
+                var v = el.GetValue("CST");
+                if (!string.IsNullOrWhiteSpace(v))
+                    return v;
+            }
+
+            return null;
+
+        }
+
+        private static bool ConsumirdorFinalMesmoEstado(XElement tag)
+        {
+            var doc = tag.Document;
+            if (doc == null) return false;
+
+            // ide/indFinal (1 = consumidor final)
+            var indFinal = doc.Descendants().FirstOrDefault(e => e.Name.LocalName == "ide")
+                ?.Elements().FirstOrDefault(e => e.Name.LocalName == "indFinal")?.Value;
+
+            // dest/indIEDest (9 = não contribuinte) – se não houver a tag, não bloqueia a regra
+            var indIEDest = doc.Descendants().FirstOrDefault(e => e.Name.LocalName == "dest")
+                ?.Elements().FirstOrDefault(e => e.Name.LocalName == "indIEDest")?.Value;
+
+            // UF emitente
+            var ufEmit = doc.Descendants().FirstOrDefault(e => e.Name.LocalName == "enderEmit")
+                ?.Elements().FirstOrDefault(e => e.Name.LocalName == "UF")?.Value;
+
+            // UF destino: prioriza <entrega><UF>, senão <dest><enderDest><UF>
+            var ufEntrega = doc.Descendants().FirstOrDefault(e => e.Name.LocalName == "entrega")
+                ?.Elements().FirstOrDefault(e => e.Name.LocalName == "UF")?.Value;
+
+            var ufDest = ufEntrega ?? doc.Descendants().FirstOrDefault(e => e.Name.LocalName == "enderDest")
+                ?.Elements().FirstOrDefault(e => e.Name.LocalName == "UF")?.Value;
+
+            // consumidor final, não contribuinte e interestadual
+            var isConsumidorFinal = indFinal == "1";
+            var isNaoContribuinte = indIEDest == "9" || string.IsNullOrWhiteSpace(indIEDest);
+            var isInterestadual = !string.IsNullOrWhiteSpace(ufEmit) &&
+                                  !string.IsNullOrWhiteSpace(ufDest) &&
+                                  !ufEmit.Equals(ufDest, System.StringComparison.OrdinalIgnoreCase);
+
+            return isConsumidorFinal && isNaoContribuinte && isInterestadual;
+        }
 
     }
 }
