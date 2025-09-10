@@ -12,7 +12,9 @@ uses
   EnviarNFCeSincrono, EnviarNFCeSincronoDesserializacao, EventoCancelamentoNFCe,
   EnviarNFeSincronoRTC, DesserializarRetornoConsultaDFe, CertificadoDigital,
   BETHAGerarNFSe, BETHACancelarNFSe, BETHAEnviarLoteRPSSincrono,
-  BETHAConsultarNFSeRPS, BETHAConsultarLoteRPS;
+  BETHAConsultarNFSeRPS, BETHAConsultarLoteRPS, NACIONALGerarNFSe,
+  NACIONALCancelarNFSe, NACIONALConsultarNFSe, NACIONALConsultarNFSeRPS,
+  NACIONALConsultarNFSePDF;
 
 type
 
@@ -34,6 +36,11 @@ type
     BtnBETHACancelarNFSe: TButton;
     BtnBETHAEnviarLoteRPSSincrono: TButton;
     BtnBETHAConsultarLoteRPS: TButton;
+    BtnNACIONALGerarNFSe: TButton;
+    BtnNACIONALCancelarNFSe: TButton;
+    BtnNACIONALConsultarNFSe: TButton;
+    BtnNACIONALConsultarNFSePorRPS: TButton;
+    BtnNACIONALConsultarPDFNFSe: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -63,6 +70,11 @@ type
     procedure btnEventoCancelamentoNFCeClick(Sender: TObject);
     procedure btnEventoCancelamentoNFeClick(Sender: TObject);
     procedure btnImprimirDANFEcomUniDANFEClick(Sender: TObject);
+    procedure BtnNACIONALCancelarNFSeClick(Sender: TObject);
+    procedure BtnNACIONALConsultarNFSeClick(Sender: TObject);
+    procedure BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
+    procedure BtnNACIONALConsultarPDFNFSeClick(Sender: TObject);
+    procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
 
   private
@@ -297,6 +309,61 @@ var
   oServico: TImprimirDANFEcomUniDANFE;
 begin
   oServico := TImprimirDANFEcomUniDANFE.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.BtnNACIONALCancelarNFSeClick(Sender: TObject);
+var
+  oServico: TNACIONALCancelarNFSe;
+begin
+  oServico := TNACIONALCancelarNFSe.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.BtnNACIONALConsultarNFSeClick(Sender: TObject);
+var
+  oServico: TNACIONALConsultarNFSe;
+begin
+  oServico := TNACIONALConsultarNFSe.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
+var
+  oServico: TNACIONALConsultarNFSeRPS;
+begin
+  oServico := TNACIONALConsultarNFSeRPS.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.BtnNACIONALConsultarPDFNFSeClick(Sender: TObject);
+var
+  oServico: TNACIONALConsultarNFSePDF;
+begin
+  oServico := TNACIONALConsultarNFSePDF.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.BtnNACIONALGerarNFSeClick(Sender: TObject);
+var
+  oServico: TNACIONALGerarNFSe;
+begin
+  oServico := TNACIONALGerarNFSe.Create;
   try
       oServico.Executar();
     finally

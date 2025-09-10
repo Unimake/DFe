@@ -174,7 +174,7 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object GroupBox4: TGroupBox
-    Left = 1128
+    Left = 1136
     Height = 624
     Top = 0
     Width = 350
@@ -226,6 +226,51 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Padrão BETHA - Consultar Lote RPS'
       TabOrder = 4
       OnClick = BtnBETHAConsultarLoteRPSClick
+    end
+    object BtnNACIONALGerarNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 240
+      Width = 328
+      Caption = 'NACIONAL - Gerar NFSe'
+      TabOrder = 5
+      OnClick = BtnNACIONALGerarNFSeClick
+    end
+    object BtnNACIONALCancelarNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 288
+      Width = 328
+      Caption = 'NACIONAL - Cancelar NFSe'
+      TabOrder = 6
+      OnClick = BtnNACIONALCancelarNFSeClick
+    end
+    object BtnNACIONALConsultarNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 333
+      Width = 328
+      Caption = 'NACIONAL - Consultar NFSe'
+      TabOrder = 7
+      OnClick = BtnNACIONALConsultarNFSeClick
+    end
+    object BtnNACIONALConsultarNFSePorRPS: TButton
+      Left = 8
+      Height = 38
+      Top = 384
+      Width = 328
+      Caption = 'NACIONAL - Consultar NFSe p/RPS'
+      TabOrder = 8
+      OnClick = BtnNACIONALConsultarNFSePorRPSClick
+    end
+    object BtnNACIONALConsultarPDFNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 432
+      Width = 328
+      Caption = 'NACIONAL - Consultar PDF NFSe'
+      TabOrder = 9
+      OnClick = BtnNACIONALConsultarPDFNFSeClick
     end
   end
 end

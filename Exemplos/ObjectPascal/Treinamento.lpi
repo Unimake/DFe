@@ -118,6 +118,27 @@
         <Filename Value="BETHAConsultarLoteRPS.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="NACIONALGerarNfse.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="NACIONALGerarNFSe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="NACIONALCancelarNFSe.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="NACIONALConsultarNFSe.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="NACIONALConsultarNFSeRPS.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="NACIONALConsultarNFSePDF.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

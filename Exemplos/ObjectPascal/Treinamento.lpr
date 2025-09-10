@@ -16,7 +16,8 @@ uses
   DesserializarRetornoConsultaDFe, EnviarEventoManifestacaoNFe,
   EnviarNFCeSincrono, EnviarNFCeSincronoDesserializacao, BETHAGerarNFSe,
   BETHACancelarNFSe, BETHAEnviarLoteRPSSincrono, BETHAConsultarNFSeRPS,
-  BETHAConsultarLoteRPS
+  BETHAConsultarLoteRPS, NACIONALGerarNFSe, NACIONALCancelarNFSe,
+  NACIONALConsultarNFSe, NACIONALConsultarNFSePDF, NACIONALConsultarNFSeRPS
   { you can add units after this };
 
 {$R *.res}
