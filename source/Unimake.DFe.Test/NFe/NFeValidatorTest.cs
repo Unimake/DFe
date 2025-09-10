@@ -171,5 +171,47 @@ namespace Unimake.DFe.Test.NFe
             }
         }
 
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(@"..\..\..\NFe\Resources\Warnings\NFe_CFOP6101_CST00.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\Warnings\NFe_CFOP6101_CST10.xml")]
+        public void ValidarNfe_CFOP6101_CST00(string arqXml)
+        {
+            Assert.True(File.Exists(arqXml), "Arquivo " + arqXml + " não foi localizado para a validação.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXml);
+
+            var validator = new Unimake.Business.DFe.Validator.NFe.NFeValidator
+            {
+                Xml = doc.InnerXml
+            };
+
+            // validação deve passar (aviso é não-impeditivo)
+            Assert.True(validator!.Validate());
+
+            // Warnings é protegido em XmlValidatorBase → reflection
+            var prop = validator.GetType().GetProperty(
+                "Warnings",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
+            );
+            var getter = prop!.GetGetMethod(nonPublic: true);
+            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+
+            var deveAvisar = arqXml.Contains("CST00", StringComparison.OrdinalIgnoreCase);
+
+            if (deveAvisar)
+            {
+                Assert.Single(warnings);
+                Assert.Contains("CFOP 6.101", warnings[0].Message, StringComparison.OrdinalIgnoreCase);
+                Assert.Contains("CST 00", warnings[0].Message, StringComparison.OrdinalIgnoreCase);
+            }
+            else
+            {
+                Assert.Empty(warnings);
+            }
+
+        }
+
     }
 }
