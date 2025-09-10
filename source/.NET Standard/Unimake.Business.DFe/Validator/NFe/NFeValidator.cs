@@ -815,6 +815,14 @@ namespace Unimake.Business.DFe.Validator.NFe
                         "[TAG: <CFOP> do grupo de tag <det><prod>]"));
                 }
 
+                if (cfop == "5949" && cst == "00")
+                {
+                    Warnings.Add(new ValidatorDFeException(
+                        "CFOP 5.949 e CST 00 genéricos. Podem esconder operação real e gerar tributação indevida por padrão, além de chamar atenção do fisco." +
+                        "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
+                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                }
+
                 if (finNFe == "4") // Devolução
                 {
                     var tipoOperacao = "";
