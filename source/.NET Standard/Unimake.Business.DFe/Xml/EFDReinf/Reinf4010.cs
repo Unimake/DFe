@@ -799,8 +799,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #region ShouldSerialize
 
         public bool ShouldSerializeDescRendimento() => !string.IsNullOrEmpty(DescRendimento);
-
-        public bool ShouldSerializeDtObitoField() => DtLaudo > DateTime.MinValue;
+        public bool ShouldSerializeDtLaudoField() => DtLaudo > DateTime.MinValue;
 
         #endregion ShouldSerialize
     }
