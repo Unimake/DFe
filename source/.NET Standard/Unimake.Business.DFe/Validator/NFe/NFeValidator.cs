@@ -798,7 +798,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
                         "[TAG: <CFOP> do grupo de tag <det><prod>]"));
                 }
-                
+
                 if (cfop == "6102" && cst == "10" && ConsumirdorFinalMesmoEstado(Tag))
                 {
                     Warnings.Add(new ValidatorDFeException(
@@ -842,10 +842,21 @@ namespace Unimake.Business.DFe.Validator.NFe
                         if (string.IsNullOrWhiteSpace(destUF) || destUF.ToUpper() == "EX")
                         {
                             tipoOperacao = "Devolução de venda do exterior";
-                            cfopsValidos = new HashSet<string>
+
+                            if (idDest == ((int)DestinoOperacao.OperacaoInterna).ToString() && indIEDest == ((int)IndicadorIEDestinatario.NaoContribuinte).ToString())
                             {
-                                "3201", "3202", "3211", "3212", "3503", "3553", "3949"
-                            };
+                                cfopsValidos = new HashSet<string>
+                                {
+                                    "1201", "1202", "1203", "1204", "1208", "1209", "1212", "1213", "1214", "1215", "1216", "1410", "1411", "1503", "1504", "1505", "1506", "1553", "1660", "1661", "1662", "1918", "1919", "1949"
+                                };
+                            }
+                            else
+                            {
+                                cfopsValidos = new HashSet<string>
+                                {
+                                    "3201", "3202", "3211", "3212", "3503", "3553", "3949"
+                                };
+                            }
                         }
                         else if (!string.IsNullOrWhiteSpace(emitUF) && emitUF == destUF ||
                         (idDest == ((int)DestinoOperacao.OperacaoInterna).ToString() && indIEDest == ((int)IndicadorIEDestinatario.NaoContribuinte).ToString()))
