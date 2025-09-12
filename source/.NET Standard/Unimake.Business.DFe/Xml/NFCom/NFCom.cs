@@ -1654,7 +1654,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
         /// Valor do IBS (soma de vIBSUF e vIBSMun)
         /// </summary>
         [XmlIgnore]
-        public double VIBS { get; set; }
+        public double? VIBS { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VIBS para atribuir ou resgatar o valor)
@@ -1662,7 +1662,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
         [XmlElement("vIBS")]
         public string VIBSField
         {
-            get => VIBS.ToString("F2", CultureInfo.InvariantCulture);
+            get => VIBS?.ToString("F2", CultureInfo.InvariantCulture);
             set => VIBS = Converter.ToDouble(value);
         }
 
@@ -1680,6 +1680,11 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         [XmlElement("gTribCompraGov")]
         public GTribCompraGov GTribCompraGov { get; set; }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeVIBSField() => VIBS != null;
+
+        #endregion
     }
 
 #if INTEROP
