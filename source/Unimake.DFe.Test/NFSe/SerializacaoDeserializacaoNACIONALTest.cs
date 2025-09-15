@@ -76,5 +76,33 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             Assert.True(docRoundTrip.InnerText == docCriado.InnerText,
                 "XML criado do zero difere do XML do round-trip (possível problema de defaults/namespace).");
         }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\ConsultarNotaPdfEnvio-ped-nfsepdf.xml")]
+        public void ConsultarNFSePDFEnvio(string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+            docFixture.Load(caminhoXml);
+
+            var lido = new ConsultarNfsePDFEnvio().LerXML<ConsultarNfsePDFEnvio>(docFixture);
+            Assert.Equal("1.00", lido.Versao);
+            Assert.False(string.IsNullOrWhiteSpace(lido.InfNFSe?.Id));
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+
+            var criado = new ConsultarNfsePDFEnvio
+            {
+                Versao = "1.00",
+                InfNFSe = new InfNFSeConsulta { Id = lido.InfNFSe.Id }
+            };
+
+            var docCriado = criado.GerarXML();
+            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+        }
     }
 }
