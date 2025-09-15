@@ -322,7 +322,7 @@
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
-						<xs:element name="vIBS" type="nfcom:TDec1302">
+						<xs:element name="vIBS" type="nfcom:TDec1302" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Valor total do IBS</xs:documentation>
 							</xs:annotation>
@@ -440,7 +440,7 @@
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
-						<xs:element name="vIBS" type="nfcom:TDec1302">
+						<xs:element name="vIBS" type="nfcom:TDec1302" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Valor total do IBS</xs:documentation>
 							</xs:annotation>
@@ -738,7 +738,7 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="vIBS" type="nfcom:TDec1302">
+			<xs:element name="vIBS" type="nfcom:TDec1302" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Valor do IBS</xs:documentation>
 				</xs:annotation>
@@ -1018,7 +1018,7 @@
 			<xs:documentation>Tipo Transferência de Crédito</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="vIBS" type="nfcom:TDec1302">
+			<xs:element name="vIBS" type="nfcom:TDec1302" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Valor do IBS a ser transferido</xs:documentation>
 				</xs:annotation>
