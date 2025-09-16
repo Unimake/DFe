@@ -104,5 +104,55 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var docCriado = criado.GerarXML();
             Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
         }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\CancelarNfseEnvio-ped-cannfse.xml")]
+        public void CancelarNfseEnvio(string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+            docFixture.Load(caminhoXml);
+
+            var lido = new CancelarNfseEnvio().LerXML<CancelarNfseEnvio>(docFixture);
+            Assert.Equal("1.00", lido.Versao);
+            Assert.False(string.IsNullOrWhiteSpace(lido.InfPedReg?.Id));
+            Assert.NotNull(lido.InfPedReg?.E101101);
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+
+            var autor = !string.IsNullOrWhiteSpace(lido.InfPedReg.CNPJAutor)
+                        ? new { cnpj = lido.InfPedReg.CNPJAutor, cpf = (string)null }
+                        : new { cnpj = (string)null, cpf = lido.InfPedReg.CPFAutor };
+
+            var criado = new CancelarNfseEnvio
+            {
+                Versao = lido.Versao,
+                InfPedReg = new InfPedRegCancelamento
+                {
+                    Id = lido.InfPedReg.Id,
+                    TpAmb = lido.InfPedReg.TpAmb,
+                    VerAplic = lido.InfPedReg.VerAplic,
+                    DhEvento = lido.InfPedReg.DhEvento,
+                    CNPJAutor = autor.cnpj,
+                    CPFAutor = autor.cpf,
+                    ChNFSe = lido.InfPedReg.ChNFSe,
+                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
+                    E101101 = new EvCanc101101
+                    {
+                        XDesc = lido.InfPedReg.E101101.XDesc,
+                        CMotivo = lido.InfPedReg.E101101.CMotivo,
+                        XMotivo = lido.InfPedReg.E101101.XMotivo
+                    }
+                }
+            };
+
+
+            var docCriado = criado.GerarXML();
+            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+        }
     }
 }
