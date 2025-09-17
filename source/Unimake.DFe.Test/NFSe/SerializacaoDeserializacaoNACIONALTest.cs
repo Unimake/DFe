@@ -11,14 +11,14 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
         [Trait("DFe", "NFSe")]
         [Trait("Layout", "Nacional")]
         [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\ConsultarNfseEnvio-ped-sitnfse.xml")]
-        public void ConsultarNFSeEnvio(string caminhoXml)
+        public void ConsultarNFSeNACIONAL(string caminhoXml)
         {
             Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
 
             // Carrega fixture e desserializa
             var docFixture = new XmlDocument();
             docFixture.Load(caminhoXml);
-            var lido = new ConsultarNfseEnvio().LerXML<ConsultarNfseEnvio>(docFixture);
+            var lido = new ConsultarNfse().LerXML<ConsultarNfse>(docFixture);
 
             // Sanity checks 
             Assert.Equal("1.00", lido.Versao);
@@ -30,7 +30,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                 "Round-trip diferente do fixture.");
 
             // Cria do zero com os mesmos valores (pega problemas de defaults/ShouldSerialize)
-            var criado = new ConsultarNfseEnvio
+            var criado = new ConsultarNfse
             {
                 Versao = "1.00",
                 InfNFSe = new InfNFSeConsulta { Id = lido.InfNFSe.Id }
@@ -46,14 +46,14 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
         [Trait("DFe", "NFSe")]
         [Trait("Layout", "Nacional")]
         [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml")]
-        public void ConsultarNFSePorRPSEnvio(string arqXml)
+        public void ConsultarNFSePorRPSNACIONAL(string arqXml)
         {
             Assert.True(File.Exists(arqXml), $"Arquivo {arqXml} não encontrado.");
 
             // Carrega fixture e desserializa
             var docFixture = new XmlDocument();
             docFixture.Load(arqXml);
-            var lido = new ConsultarNfseEnvio().LerXML<ConsultarNfsePorRpsEnvio>(docFixture);
+            var lido = new ConsultarNfse().LerXML<ConsultarNfsePorRpsEnvio>(docFixture);
 
             // Sanity checks 
             Assert.Equal("1.00", lido.Versao);
@@ -65,7 +65,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                 "Round-trip diferente do fixture.");
 
             // Cria do zero com os mesmos valores (pega problemas de defaults/ShouldSerialize)
-            var criado = new ConsultarNfseEnvio
+            var criado = new ConsultarNfse
             {
                 Versao = "1.00",
                 InfNFSe = new InfNFSeConsulta { Id = lido.InfDPS.Id }
@@ -81,7 +81,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
         [Trait("DFe", "NFSe")]
         [Trait("Layout", "Nacional")]
         [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\ConsultarNotaPdfEnvio-ped-nfsepdf.xml")]
-        public void ConsultarNFSePDFEnvio(string caminhoXml)
+        public void ConsultarNFSePDFNACIONAL(string caminhoXml)
         {
             Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
 
@@ -109,14 +109,14 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
         [Trait("DFe", "NFSe")]
         [Trait("Layout", "Nacional")]
         [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\CancelarNfseEnvio-ped-cannfse.xml")]
-        public void CancelarNfseEnvio(string caminhoXml)
+        public void CancelarNfseNACIONAL(string caminhoXml)
         {
             Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
 
             var docFixture = new XmlDocument();
             docFixture.Load(caminhoXml);
 
-            var lido = new CancelarNfseEnvio().LerXML<CancelarNfseEnvio>(docFixture);
+            var lido = new CancelarNfse().LerXML<CancelarNfse>(docFixture);
             Assert.Equal("1.00", lido.Versao);
             Assert.False(string.IsNullOrWhiteSpace(lido.InfPedReg?.Id));
             Assert.NotNull(lido.InfPedReg?.E101101);
@@ -128,7 +128,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                         ? new { cnpj = lido.InfPedReg.CNPJAutor, cpf = (string)null }
                         : new { cnpj = (string)null, cpf = lido.InfPedReg.CPFAutor };
 
-            var criado = new CancelarNfseEnvio
+            var criado = new CancelarNfse
             {
                 Versao = lido.Versao,
                 InfPedReg = new InfPedRegCancelamento
