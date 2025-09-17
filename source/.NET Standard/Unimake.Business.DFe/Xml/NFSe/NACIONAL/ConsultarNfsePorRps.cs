@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     [Serializable]
     [XmlType(Namespace = "http://www.sped.fazenda.gov.br/nfse")]
     [XmlRoot("DPS", Namespace = "http://www.sped.fazenda.gov.br/nfse", IsNullable = false)]
-    public class ConsultarNfsePorRpsEnvio : XMLBase
+    public class ConsultarNfsePorRps : XMLBase
     {
         /// <summary>
         /// Versão do schema do XML de consulta por RPS (DPS).
