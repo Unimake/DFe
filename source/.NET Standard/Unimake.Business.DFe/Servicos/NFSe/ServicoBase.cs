@@ -645,32 +645,53 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         {
             get
             {
-                if (Configuracoes.PadraoNFSe == PadraoNFSe.DSF && Configuracoes.EncriptaTagAssinatura)
+                if (Configuracoes.EncriptaTagAssinatura)
                 {
-                    var listLote = ConteudoXML.GetElementsByTagName("Lote");
-
-                    foreach (XmlNode nodeLote in listLote)
+                    if (Configuracoes.PadraoNFSe == PadraoNFSe.DSF)
                     {
-                        var elementListLote = (XmlElement)nodeLote;
-
-                        foreach (XmlNode nodeRps in elementListLote.GetElementsByTagName("RPS"))
+                        // DSF: RPS dentro de cada Lote; normaliza quando vier com mais de 40 chars
+                        foreach (XmlElement lote in ConteudoXML.GetElementsByTagName("Lote"))
                         {
-                            var elementRps = (XmlElement)nodeRps;
-
-                            var tagAssinatura = elementRps.GetElementsByTagName("Assinatura");
-
-                            if (tagAssinatura.Count > 0)
+                            foreach (XmlElement rps in lote.GetElementsByTagName("RPS"))
                             {
-                                var conteudoTagAssinatura = tagAssinatura[0].InnerText;
+                                var assinaturaNodes = rps.GetElementsByTagName("Assinatura");
+                                if (assinaturaNodes.Count == 0) continue;
 
-                                // O formato esperado do hash SHA-1 é 40 caracteres
-                                // Se vier encriptado, vamos fazer nada
-                                if (conteudoTagAssinatura.Length > 40)
+                                var el = (XmlElement)assinaturaNodes[0];
+                                var valor = el.InnerText?.Trim();
+
+                                if (!IsSha1Hex(valor) && (valor?.Length > 40))
                                 {
-                                    var sh1 = Criptografia.GetSHA1HashData(conteudoTagAssinatura);
-
-                                    elementRps.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
+                                    el.InnerText = Criptografia.GetSHA1HashData(valor);
                                 }
+                            }
+                        }
+                    }
+                    else if (Configuracoes.PadraoNFSe == PadraoNFSe.PAULISTANA)
+                    {
+                        // PAULISTANA: normalização nos RPS
+                        foreach (XmlElement rps in ConteudoXML.GetElementsByTagName("RPS"))
+                        {
+                            var assinaturaNodes = rps.GetElementsByTagName("Assinatura");
+                            if (assinaturaNodes.Count == 0) continue;
+
+                            var el = (XmlElement)assinaturaNodes[0];
+                            var valor = el.InnerText?.Trim();
+
+                            if (!IsSha1Hex(valor) && (valor?.Length == 86 || valor?.Length == 101))
+                            {
+                                el.InnerText = Criptografia.GetSHA1HashData(valor);
+                            }
+                        }
+
+                        //CANCELAMENTO: <AssinaturaCancelamento>
+                        foreach (XmlElement el in ConteudoXML.GetElementsByTagName("AssinaturaCancelamento"))
+                        {
+                            var valor = el.InnerText?.Trim();
+
+                            if (!IsSha1Hex(valor) && (valor?.Length == 20))
+                            {
+                                el.InnerText = Criptografia.GetSHA1HashData(valor);
                             }
                         }
                     }
@@ -869,5 +890,20 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             stream.Write(byteData, 0, byteData.Length);
             stream.Close();
         }
+
+        #region Private Methods
+        private static bool IsSha1Hex(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s) || s.Length != 40) return false;
+            foreach (var c in s)
+            {
+                bool isHex = (c >= '0' && c <= '9') ||
+                             (c >= 'a' && c <= 'f') ||
+                             (c >= 'A' && c <= 'F');
+                if (!isHex) return false;
+            }
+            return true;
+        }
+        #endregion Private Methods
     }
 }
