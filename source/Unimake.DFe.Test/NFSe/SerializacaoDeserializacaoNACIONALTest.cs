@@ -131,7 +131,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var criado = new CancelarNfse
             {
                 Versao = lido.Versao,
-                InfPedReg = new InfPedRegCancelamento
+                InfPedReg = new InfPedReg
                 {
                     Id = lido.InfPedReg.Id,
                     TpAmb = lido.InfPedReg.TpAmb,
@@ -141,7 +141,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
                     NPedRegEvento = lido.InfPedReg.NPedRegEvento,
-                    E101101 = new EvCanc101101
+                    E101101 = new E101101
                     {
                         XDesc = lido.InfPedReg.E101101.XDesc,
                         CMotivo = lido.InfPedReg.E101101.CMotivo,
