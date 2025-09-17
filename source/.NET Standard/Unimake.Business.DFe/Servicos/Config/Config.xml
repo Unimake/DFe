@@ -3029,4 +3029,10 @@
 		<ArqConfig>AlvaresMachadoSP.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4111902">
+		<Nome>Jaguapitã - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>JaguapitaPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
