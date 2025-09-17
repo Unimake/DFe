@@ -53,7 +53,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             // Carrega fixture e desserializa
             var docFixture = new XmlDocument();
             docFixture.Load(arqXml);
-            var lido = new ConsultarNfse().LerXML<ConsultarNfsePorRpsEnvio>(docFixture);
+            var lido = new ConsultarNfse().LerXML<ConsultarNfsePorRps>(docFixture);
 
             // Sanity checks 
             Assert.Equal("1.00", lido.Versao);
