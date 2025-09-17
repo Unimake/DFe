@@ -516,6 +516,7 @@
 		<None Remove="Servicos\Config\NFSe\JacareiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JaciSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JacobinaBA.xml" />
+		<None Remove="Servicos\Config\NFSe\JaguapitaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\JataiGO.xml" />
 		<None Remove="Servicos\Config\NFSe\JauSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JiParanaRO.xml" />
@@ -1608,6 +1609,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItapecericaDaSerraSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaperunaRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JacareiSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguapitaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JauSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LajeadoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LavrasMG.xml" />
