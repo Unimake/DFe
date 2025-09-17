@@ -36,7 +36,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// Informações do Pedido de Cancelamento da NFS-e.
         /// </summary>
         [XmlElement("infPedReg", Namespace = NfseNs.Ns)]
-        public InfPedRegCancelamento InfPedReg { get; set; } = new InfPedRegCancelamento();
+        public InfPedReg InfPedReg { get; set; } = new InfPedReg();
 
         /// <summary>
         /// Assinatura XML-DSig (se exigida pelo provedor).
@@ -47,12 +47,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.InfPedRegCancelamento")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.InfPedReg")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlType("infPedReg", Namespace = NfseNs.Ns)]
-    public class InfPedRegCancelamento
+    public class InfPedReg
     {
         /// <summary>
         /// Identificador do Pedido de Cancelamento da NFS-e.
