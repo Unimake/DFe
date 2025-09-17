@@ -139,6 +139,16 @@
         <Filename Value="NACIONALConsultarNFSePDF.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="eventoccenfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EventoCCENFe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="inutilizacaonumeronfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="InutilizacaoNumeroNFe"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

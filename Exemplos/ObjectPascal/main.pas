@@ -14,7 +14,7 @@ uses
   BETHAGerarNFSe, BETHACancelarNFSe, BETHAEnviarLoteRPSSincrono,
   BETHAConsultarNFSeRPS, BETHAConsultarLoteRPS, NACIONALGerarNFSe,
   NACIONALCancelarNFSe, NACIONALConsultarNFSe, NACIONALConsultarNFSeRPS,
-  NACIONALConsultarNFSePDF;
+  NACIONALConsultarNFSePDF, EventoCCENFe, InutilizacaoNumeroNFe;
 
 type
 
@@ -41,6 +41,8 @@ type
     BtnNACIONALConsultarNFSe: TButton;
     BtnNACIONALConsultarNFSePorRPS: TButton;
     BtnNACIONALConsultarPDFNFSe: TButton;
+    btnEventoCCENFe: TButton;
+    btnInutilizacaoNumeroNFe: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -69,7 +71,9 @@ type
     procedure btnEnviarNFeSincronoRTCClick(Sender: TObject);
     procedure btnEventoCancelamentoNFCeClick(Sender: TObject);
     procedure btnEventoCancelamentoNFeClick(Sender: TObject);
+    procedure btnEventoCCENFeClick(Sender: TObject);
     procedure btnImprimirDANFEcomUniDANFEClick(Sender: TObject);
+    procedure btnInutilizacaoNumeroNFeClick(Sender: TObject);
     procedure BtnNACIONALCancelarNFSeClick(Sender: TObject);
     procedure BtnNACIONALConsultarNFSeClick(Sender: TObject);
     procedure BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
@@ -304,11 +308,33 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.btnEventoCCENFeClick(Sender: TObject);
+var
+  oServico: TEventoCCENFe;
+begin
+  oServico := TEventoCCENFe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
 procedure TfrmPrincipal.btnImprimirDANFEcomUniDANFEClick(Sender: TObject);
 var
   oServico: TImprimirDANFEcomUniDANFE;
 begin
   oServico := TImprimirDANFEcomUniDANFE.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.btnInutilizacaoNumeroNFeClick(Sender: TObject);
+var
+  oServico: TInutilizacaoNumeroNFe;
+begin
+  oServico := TInutilizacaoNumeroNFe.Create;
   try
       oServico.Executar();
     finally

@@ -17,7 +17,8 @@ uses
   EnviarNFCeSincrono, EnviarNFCeSincronoDesserializacao, BETHAGerarNFSe,
   BETHACancelarNFSe, BETHAEnviarLoteRPSSincrono, BETHAConsultarNFSeRPS,
   BETHAConsultarLoteRPS, NACIONALGerarNFSe, NACIONALCancelarNFSe,
-  NACIONALConsultarNFSe, NACIONALConsultarNFSePDF, NACIONALConsultarNFSeRPS
+  NACIONALConsultarNFSe, NACIONALConsultarNFSePDF, NACIONALConsultarNFSeRPS,
+  EventoCCENFe, InutilizacaoNumeroNFe
   { you can add units after this };
 
 {$R *.res}
