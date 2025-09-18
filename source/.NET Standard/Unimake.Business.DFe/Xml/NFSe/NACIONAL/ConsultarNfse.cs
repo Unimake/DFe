@@ -14,7 +14,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfseEnvio")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfse")]
     [ComVisible(true)]
 #endif
     [Serializable]
@@ -32,7 +32,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// Informações da NFS-e a ser consultada.
         /// </summary>
         [XmlElement("infNFSe")]
-        public InfNFSeConsulta InfNFSe { get; set; } = new InfNFSeConsulta();
+        public InfNFSe InfNFSe { get; set; } = new InfNFSe();
     }
 
     /// <summary>
@@ -40,12 +40,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.InfNFSeConsulta")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.InfNFSe")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlType(Namespace = "http://www.sped.fazenda.gov.br/nfse")]
-    public class InfNFSeConsulta
+    public class InfNFSe
     {
         /// <summary>
         /// ID da NFS-e a ser consultada. Fornecido externamente (não é calculado aqui).
