@@ -43,6 +43,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// </summary>
         [XmlElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
+
+        public override System.Xml.XmlDocument GerarXML()
+        {
+            InfPedReg?.ValidarRegrasAutor();
+            return base.GerarXML();
+        }
     }
 
 #if INTEROP
@@ -127,6 +133,16 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public bool ShouldSerializeCNPJAutor() => !string.IsNullOrWhiteSpace(CNPJAutor);
         public bool ShouldSerializeCPFAutor() => !string.IsNullOrWhiteSpace(CPFAutor);
         #endregion
+
+        public void ValidarRegrasAutor()
+        {
+            var temCnpj = !string.IsNullOrWhiteSpace(CNPJAutor);
+            var temCpf = !string.IsNullOrWhiteSpace(CPFAutor);
+            if (temCnpj == temCpf)
+            {
+                throw new Exception("Informe exatamente um identificador do autor: CNPJAutor OU CPFAutor.");
+            }
+        }
 
     }
 
