@@ -33,7 +33,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var criado = new ConsultarNfse
             {
                 Versao = "1.00",
-                InfNFSe = new InfNFSeConsulta { Id = lido.InfNFSe.Id }
+                InfNFSe = new InfNFSe { Id = lido.InfNFSe.Id }
             };
             var docCriado = criado.GerarXML();
 
@@ -50,31 +50,29 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
         {
             Assert.True(File.Exists(arqXml), $"Arquivo {arqXml} não encontrado.");
 
-            // Carrega fixture e desserializa
+            // Carrega fixture e desserializa como DPS
             var docFixture = new XmlDocument();
             docFixture.Load(arqXml);
-            var lido = new ConsultarNfse().LerXML<ConsultarNfsePorRps>(docFixture);
 
-            // Sanity checks 
+            var lido = new ConsultarNfsePorRps().LerXML<ConsultarNfsePorRps>(docFixture);
+
+            // Sanity checks
             Assert.Equal("1.00", lido.Versao);
             Assert.False(string.IsNullOrWhiteSpace(lido.InfDPS?.Id));
 
-            // Serializa de volta (round-trip)
+            // Round-trip
             var docRoundTrip = lido.GerarXML();
-            Assert.True(docFixture.InnerText == docRoundTrip.InnerText,
-                "Round-trip diferente do fixture.");
+            Assert.Equal(docFixture.OuterXml, docRoundTrip.OuterXml);
 
-            // Cria do zero com os mesmos valores (pega problemas de defaults/ShouldSerialize)
-            var criado = new ConsultarNfse
+            // Cria do zero com os mesmos valores (root DPS + infDPS)
+            var criado = new ConsultarNfsePorRps
             {
-                Versao = "1.00",
-                InfNFSe = new InfNFSeConsulta { Id = lido.InfDPS.Id }
+                Versao = lido.Versao,
+                InfDPS = new InfDPS { Id = lido.InfDPS.Id }
             };
             var docCriado = criado.GerarXML();
 
-            // Compara com o round-trip (mesmo serializer, expectativa idêntica)
-            Assert.True(docRoundTrip.InnerText == docCriado.InnerText,
-                "XML criado do zero difere do XML do round-trip (possível problema de defaults/namespace).");
+            Assert.Equal(docRoundTrip.OuterXml, docCriado.OuterXml);
         }
 
         [Theory]
@@ -98,7 +96,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var criado = new ConsultarNfsePDFEnvio
             {
                 Versao = "1.00",
-                InfNFSe = new InfNFSeConsulta { Id = lido.InfNFSe.Id }
+                InfNFSe = new InfNFSe { Id = lido.InfNFSe.Id }
             };
 
             var docCriado = criado.GerarXML();
