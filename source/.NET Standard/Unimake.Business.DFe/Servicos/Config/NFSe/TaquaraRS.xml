@@ -1,6 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
+		<RecepcionarLoteRpsSincrono versao="1.00">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://nfsehomologacao.taquara.rs.gov.br/thema-nfse/services/NFSEremessa</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.taquara.rs.gov.br/thema-nfse/services/NFSEremessa</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><recepcionarLoteRpsLimitado><xml>{xmlBodyScapeEnvio}</xml></recepcionarLoteRpsLimitado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS/>
+		</RecepcionarLoteRpsSincrono>
 		<RecepcionarLoteRps versao="1.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfsehomologacao.taquara.rs.gov.br/thema-nfse/services/NFSEremessa</WebEnderecoHomologacao>
