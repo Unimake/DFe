@@ -744,8 +744,8 @@ namespace Unimake.Business.DFe.Validator.NFe
                     {
                         if (DateTime.TryParse(dhSaiEntStr, out var dhSaiEnt) && DateTime.TryParse(dhEmiStr, out var dhEmi))
                         {
-                            var dhSaiEntTrunc = new DateTime(dhSaiEnt.Year, dhSaiEnt.Month, dhSaiEnt.Day, dhSaiEnt.Hour, 0, 0);
-                            var dhEmiTrunc = new DateTime(dhEmi.Year, dhEmi.Month, dhEmi.Day, dhEmi.Hour, 0, 0);
+                            var dhSaiEntTrunc = new DateTime(dhSaiEnt.Year, dhSaiEnt.Month, dhSaiEnt.Day, 0, 0, 0);
+                            var dhEmiTrunc = new DateTime(dhEmi.Year, dhEmi.Month, dhEmi.Day, 0, 0, 0);
 
                             if (dhSaiEntTrunc < dhEmiTrunc)
                             {
