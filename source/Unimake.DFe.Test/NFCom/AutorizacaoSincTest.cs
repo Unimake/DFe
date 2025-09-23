@@ -81,6 +81,7 @@ namespace Unimake.DFe.Test.NFCom
         [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.MT, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AC, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.AL, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.AP, TipoAmbiente.Producao)]
@@ -107,6 +108,7 @@ namespace Unimake.DFe.Test.NFCom
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.MT, TipoAmbiente.Producao)]
         public void EnviarNFComSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             var conteudoXML = MontarXMLNFCom(ufBrasil, tipoAmbiente);
@@ -349,6 +351,7 @@ namespace Unimake.DFe.Test.NFCom
                                             },
                                             VIBSMun = 11.12
                                         },
+                                        VIBS = 20.24,
                                         GCBS = new GCBS
                                         {
                                             PCBS = 12.1234,
