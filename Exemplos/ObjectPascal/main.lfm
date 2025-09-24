@@ -173,14 +173,15 @@ object frmPrincipal: TfrmPrincipal
     OnClick = btnEnviarNFCeSincronoDesserializacaoClick
   end
   object GroupBox3: TGroupBox
-    Left = 744
+    Left = 760
     Height = 624
-    Top = 0
+    Top = -8
     Width = 374
     Caption = 'Diversos'
     ClientHeight = 594
     ClientWidth = 370
     TabOrder = 4
+    OnClick = GroupBox3Click
     object BtnCertificadoDigital: TButton
       Left = 8
       Height = 38
@@ -289,6 +290,34 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'NACIONAL - Consultar PDF NFSe'
       TabOrder = 9
       OnClick = BtnNACIONALConsultarPDFNFSeClick
+    end
+  end
+  object GroupBox5: TGroupBox
+    Left = 1488
+    Height = 622
+    Top = 0
+    Width = 376
+    Caption = 'NFCom'
+    ClientHeight = 592
+    ClientWidth = 372
+    TabOrder = 6
+    object BtnConsultarStatusNFCom: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 0
+      Width = 360
+      Caption = 'Consultar Status'
+      TabOrder = 0
+      OnClick = BtnConsultarStatusNFComClick
+    end
+    object BtnEnviarNFComSincrono: TButton
+      Left = 9
+      Height = 38
+      Top = 48
+      Width = 355
+      Caption = 'Enviar NFCom Síncrono'
+      TabOrder = 1
+      OnClick = BtnEnviarNFComSincronoClick
     end
   end
 end

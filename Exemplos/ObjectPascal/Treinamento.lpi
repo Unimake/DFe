@@ -149,6 +149,16 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="InutilizacaoNumeroNFe"/>
       </Unit>
+      <Unit>
+        <Filename Value="consultarstatusnfcom.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarStatusNFCom"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviarnfcomsincrono.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarNFComSincrono"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
