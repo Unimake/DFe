@@ -1294,22 +1294,28 @@ namespace Unimake.Business.DFe.Utility
             chave += conteudoChaveDFe.DigitoVerificador.ToString();
 
             return chave;
-        }
+        }        
 
         /// <summary>
         /// Gera um número randômico para ser utilizado no Código Numérico da NFe, NFCe, CTe, MDFe, etc...
         /// </summary>
         /// <param name="numeroNF">Número da NF, CT ou MDF</param>
+        /// <param name="tamanho">Quantidade de dígitos do código numérico</param>
         /// <returns>Código numérico</returns>
-        public static int GerarCodigoNumerico(int numeroNF)
+        public static int GerarCodigoNumerico(int numeroNF, int tamanho = 8)
         {
-            var retorno = 0;
+            if (tamanho < 1 || tamanho > 9)
+                throw new ArgumentOutOfRangeException(nameof(tamanho), "O tamanho deve estar entre 1 e 9 para evitar overflow de int.");
+
+            int retorno = 0;
+            int limiteSuperior = (int)Math.Pow(10, tamanho); // Ex: 10^8 = 100000000
+            int limiteInferior = (int)Math.Pow(10, tamanho - 1); // Ex: 10^7 = 10000000
+
+            var rnd = new Random(numeroNF); // Seed fixa para gerar mesmo número a partir do mesmo NF
 
             while (retorno == 0)
             {
-                var rnd = new Random(numeroNF);
-
-                retorno = Convert.ToInt32(rnd.Next(1, 99999999).ToString("00000000"));
+                retorno = rnd.Next(limiteInferior, limiteSuperior);
             }
 
             return retorno;
