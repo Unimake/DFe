@@ -24,6 +24,8 @@ namespace Unimake.Business.DFe.Validator.NFe
         public NFeValidator() =>
             ValidateTag(element => element.NameEquals(nameof(EnderDest.CMun)) && element.Parent.NameEquals(nameof(EnderDest)), Tag =>
             {
+                Warnings.Add(new ValidatorDFeException("Teste1"));
+                Warnings.Add(new ValidatorDFeException("Teste2"));
                 if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
                 {
                     ThrowHelper.Instance.Throw(new ValidatorDFeException("Código do município do destinatário está sem conteúdo. É obrigatório informar o código IBGE do município." +

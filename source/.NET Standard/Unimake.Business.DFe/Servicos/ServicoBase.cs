@@ -14,6 +14,8 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Net.Http;
 using System.Text;
+using Unimake.Exceptions;
+using Unimake.Business.DFe.Validator.Abstractions;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -72,6 +74,11 @@ namespace Unimake.Business.DFe.Servicos
                 _ConteudoXML = value;
             }
         }
+
+        /// <summary>
+        /// Exceções que não interrompem o fluxo do sistema, sendo registradas apenas como avisos ou alertas.
+        /// </summary>
+        public List<ValidatorDFeException> Warnings { get; protected set; } = new List<ValidatorDFeException>();
 
         /// <summary>
         /// Construtor
@@ -341,7 +348,12 @@ namespace Unimake.Business.DFe.Servicos
 #endif
         public virtual void Executar()
         {
-            if (!(ValidatorFactory.BuidValidator(ConteudoXML.InnerXml)?.Validate() ?? true))
+            var validator = (XmlValidatorBase)(ValidatorFactory.BuidValidator(ConteudoXML.InnerXml));
+            var validou = (validator?.Validate() ?? true);
+            
+            Warnings = validator?.Warnings;
+
+            if (!validou)
             {
                 return;
             }
