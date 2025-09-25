@@ -313,11 +313,29 @@ namespace Unimake.Business.DFe
             {
                 var tagRetorno = soap.TagRetorno;
 
+                if (tagRetorno.Split('|').Length > 1)
+                {
+                    for (int i = 0; i < tagRetorno.Split('|').Length; i++)
+                    {
+                        var nomeTag = tagRetorno.Split('|')[i];
+                        if (retornoXml.GetElementsByTagName(nomeTag)[0] != null)
+                        {
+                            tagRetorno = nomeTag;
+                            break;
+                        }    
+                    }
+                }
+
                 if (retornoXml.GetElementsByTagName(tagRetorno)[0] == null)
                 {
                     if (retornoXml.GetElementsByTagName("soap:Body").Count >= 1 && retornoXml.GetElementsByTagName("soap:Body")[0].ChildNodes.Count >= 1)
                     {
                         tagRetorno = retornoXml.GetElementsByTagName("soap:Body")[0].ChildNodes[0].Name;
+                    }
+
+                    if (retornoXml.GetElementsByTagName("env:Body").Count >= 1 && retornoXml.GetElementsByTagName("env:Body")[0].ChildNodes.Count >= 1)
+                    {
+                        tagRetorno = retornoXml.GetElementsByTagName("env:Body")[0].ChildNodes[0].Name;
                     }
 
                     if (retornoXml.GetElementsByTagName(tagRetorno)[0] == null)

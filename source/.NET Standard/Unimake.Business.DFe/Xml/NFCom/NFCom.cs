@@ -11,6 +11,7 @@ using Unimake.Business.DFe.Utility;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Xml;
+using System.Linq;
 
 namespace Unimake.Business.DFe.Xml.NFCom
 {
@@ -23,7 +24,6 @@ namespace Unimake.Business.DFe.Xml.NFCom
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfcom")]
     [XmlRoot("NFCom", Namespace = "http://www.portalfiscal.inf.br/nfcom", IsNullable = false)]
     public class NFCom : XMLBase
     {
@@ -67,6 +67,10 @@ namespace Unimake.Business.DFe.Xml.NFCom
         {
             get
             {
+                if (Ide == null) throw new NullReferenceException("A propriedade 'Ide' está nula.");
+                if (Emit == null) throw new NullReferenceException("A propriedade 'Emit' está nula.");
+                if (string.IsNullOrWhiteSpace(Emit.CNPJ)) throw new NullReferenceException("Emit.CNPJ não foi informado.");
+
                 var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
                 {
                     UFEmissor = (UFBrasil)(int)Ide.CUF,
@@ -81,7 +85,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
                     CodigoNumerico = Ide.CNF
                 };
 
-                ChaveField = XMLUtility.MontarChaveNF3e(ref conteudoChaveDFe);
+                ChaveField = XMLUtility.MontarChaveNFCom(ref conteudoChaveDFe);
                 Ide.CDV = conteudoChaveDFe.DigitoVerificador;
 
                 return ChaveField;
@@ -214,6 +218,9 @@ namespace Unimake.Business.DFe.Xml.NFCom
 #endif
     public class Ide
     {
+        private string CNFField;
+        private string NSiteAutorizField;
+
         [XmlIgnore]
         public UFBrasil CUF { get; set; }
 
@@ -236,8 +243,33 @@ namespace Unimake.Business.DFe.Xml.NFCom
         [XmlElement("nNF")]
         public int NNF { get; set; }
 
+        /// <summary>
+        /// Código numérico que compõe a Chave de Acesso. Número aleatório gerado pelo emitente para cada NFe/NFCe
+        /// </summary>
         [XmlElement("cNF")]
-        public string CNF { get; set; }
+        public string CNF
+        {
+            get
+            {
+                string retorno;
+                if (string.IsNullOrWhiteSpace(CNFField))
+                {
+                    if (NNF < 0)
+                    {
+                        throw new Exception("Defina o conteúdo da TAG <nNF>, pois a mesma é utilizada como base para calcular o código numérico.");
+                    }
+
+                    retorno = XMLUtility.GerarCodigoNumerico(NNF, 7).ToString("0000000");
+                }
+                else
+                {
+                    retorno = CNFField;
+                }
+
+                return retorno;
+            }
+            set => CNFField = value;
+        }
 
         [XmlElement("cDV")]
         public int CDV { get; set; }
@@ -264,7 +296,22 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public TipoEmissao TpEmis { get; set; }
 
         [XmlElement("nSiteAutoriz")]
-        public string NSiteAutoriz { get; set; }
+        public string NSiteAutoriz
+
+        {
+            get => NSiteAutorizField;
+            set
+            {
+                var valoresPermitidos = new[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+                if (!valoresPermitidos.Contains(value))
+                {
+                    throw new Exception("A tag <nSiteAutoriz> só aceita os valores 0, 1, 2, 3, 4, 5, 6, 7, 8 e 9.");
+                }
+
+                NSiteAutorizField = value;
+            }
+        }
 
         [XmlElement("cMunFG")]
         public string CMunFG { get; set; }
@@ -859,8 +906,16 @@ namespace Unimake.Business.DFe.Xml.NFCom
             set => QFaturada = Converter.ToDouble(value);
         }
 
-        [XmlElement("vItem")]
+        [XmlIgnore]
         public decimal VItem { get; set; }
+
+        [XmlElement("vItem")]
+        public string VItemField
+        {
+            // mínimo 2 casas, máximo 8 -> "0.00######" (2 zeros + 8 #)
+            get => VItem.ToString("0.00######", CultureInfo.InvariantCulture);
+            set => VItem = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
 
         [XmlIgnore]
         public double VDesc { get; set; }
@@ -882,8 +937,16 @@ namespace Unimake.Business.DFe.Xml.NFCom
             set => VOutro = Converter.ToDouble(value);
         }
 
-        [XmlElement("vProd")]
+        [XmlIgnore]
         public decimal VProd { get; set; }
+
+        [XmlElement("vProd")]
+        public string VProdField
+        {
+            // mínimo 2 casas, máximo 8 -> "0.00######" (2 zeros + 8 #)
+            get => VProd.ToString("0.00######", CultureInfo.InvariantCulture);
+            set => VProd = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
 
         [XmlIgnore]
 #if INTEROP
@@ -1594,20 +1657,60 @@ namespace Unimake.Business.DFe.Xml.NFCom
 #endif
     public class RetTrib
     {
-        [XmlElement("vRetPIS")]
+        [XmlIgnore]
         public decimal VRetPIS { get; set; }
 
-        [XmlElement("vRetCofins")]
+        [XmlElement("vRetPIS")]
+        public string VRetPISField
+        {
+            // mínimo 2 casas, máximo 8 -> "0.00######" (2 zeros + 8 #)
+            get => VRetPIS.ToString("0.00######", CultureInfo.InvariantCulture);
+            set => VRetPIS = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
+
+        [XmlIgnore]
         public decimal VRetCofins { get; set; }
 
-        [XmlElement("vRetCSLL")]
+        [XmlElement("vRetCofins")]
+        public string VRetCofinsField
+        {
+            // mínimo 2 casas, máximo 8 -> "0.00######" (2 zeros + 8 #)
+            get => VRetCofins.ToString("0.00######", CultureInfo.InvariantCulture);
+            set => VRetCofins = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
+
+        [XmlIgnore]
         public decimal VRetCSLL { get; set; }
 
-        [XmlElement("vBCIRRF")]
+        [XmlElement("vRetCSLL")]
+        public string VRetCSLLField
+        {
+            // mínimo 2 casas, máximo 8 -> "0.00######" (2 zeros + 8 #)
+            get => VRetCSLL.ToString("0.00######", CultureInfo.InvariantCulture);
+            set => VRetCSLL = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
+
+        [XmlIgnore]
         public decimal VBCIRRF { get; set; }
 
-        [XmlElement("vIRRF")]
+        [XmlElement("vBCIRRF")]
+        public string VBCIRRFField
+        {
+            // mínimo 2 casas, máximo 8 -> "0.00######" (2 zeros + 8 #)
+            get => VBCIRRF.ToString("0.00######", CultureInfo.InvariantCulture);
+            set => VBCIRRF = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
+
+        [XmlIgnore]
         public decimal VIRRF { get; set; }
+
+        [XmlElement("vIRRF")]
+        public string VIRRFField
+        {
+            // mínimo 2 casas, máximo 8 -> "0.00######" (2 zeros + 8 #)
+            get => VIRRF.ToString("0.00######", CultureInfo.InvariantCulture);
+            set => VIRRF = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
     }
 
 #if INTEROP
@@ -2115,8 +2218,16 @@ namespace Unimake.Business.DFe.Xml.NFCom
 #endif
     public class GProcRef
     {
-        [XmlElement("vItem")]
+        [XmlIgnore]
         public decimal VItem { get; set; }
+
+        [XmlElement("vItem")]
+        public string VItemField
+        {
+            // mínimo 2 casas, máximo 8 -> "0.00######" (2 zeros + 8 #)
+            get => VItem.ToString("0.00######", CultureInfo.InvariantCulture);
+            set => VItem = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
 
         [XmlIgnore]
         public double QFaturada { get; set; }
@@ -2128,8 +2239,16 @@ namespace Unimake.Business.DFe.Xml.NFCom
             set => QFaturada = Converter.ToDouble(value);
         }
 
-        [XmlElement("vProd")]
+        [XmlIgnore]
         public decimal VProd { get; set; }
+
+        [XmlElement("vProd")]
+        public string VProdField
+        {
+            // mínimo 2 casas, máximo 8 -> "0.00######" (2 zeros + 8 #)
+            get => VProd.ToString("0.00######", CultureInfo.InvariantCulture);
+            set => VProd = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
 
         [XmlIgnore]
         public double VDesc { get; set; }
@@ -2564,7 +2683,6 @@ namespace Unimake.Business.DFe.Xml.NFCom
     [ProgId("Unimake.Business.DFe.Xml.NFCom.IBSCBSTot")]
     [ComVisible(true)]
 #endif
-
     public class IBSCBSTot
     {
         [XmlIgnore]

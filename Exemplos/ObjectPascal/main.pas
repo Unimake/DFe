@@ -14,7 +14,8 @@ uses
   BETHAGerarNFSe, BETHACancelarNFSe, BETHAEnviarLoteRPSSincrono,
   BETHAConsultarNFSeRPS, BETHAConsultarLoteRPS, NACIONALGerarNFSe,
   NACIONALCancelarNFSe, NACIONALConsultarNFSe, NACIONALConsultarNFSeRPS,
-  NACIONALConsultarNFSePDF, EventoCCENFe, InutilizacaoNumeroNFe;
+  NACIONALConsultarNFSePDF, EventoCCENFe, InutilizacaoNumeroNFe,
+  ConsultarStatusNFCom, EnviarNFComSincrono;
 
 type
 
@@ -43,6 +44,7 @@ type
     BtnNACIONALConsultarPDFNFSe: TButton;
     btnEventoCCENFe: TButton;
     btnInutilizacaoNumeroNFe: TButton;
+    BtnEnviarNFComSincrono: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -52,6 +54,8 @@ type
     GroupBox3: TGroupBox;
     GroupBox4: TGroupBox;
     BtnBETHAConsultarNfseRps: TButton;
+    GroupBox5: TGroupBox;
+    BtnConsultarStatusNFCom: TToggleBox;
     procedure BtnBETHACancelarNFSeClick(Sender: TObject);
     procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
     procedure BtnBETHAConsultarNFSeRPSClick(Sender: TObject);
@@ -60,11 +64,13 @@ type
     procedure BtnCertificadoDigitalClick(Sender: TObject);
     procedure btnConsultarDistribuicaoDFeOnClick(Sender: TObject);
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
+    procedure BtnConsultarStatusNFComClick(Sender: TObject);
     procedure btnConsultaStatusNFeClick(Sender: TObject);
     procedure btnDesserializarRetornoConsultaDFeClick(Sender: TObject);
     procedure btnEnviarEventoManifestacaoNFeClick(Sender: TObject);
     procedure btnEnviarNFCeSincronoClick(Sender: TObject);
     procedure btnEnviarNFCeSincronoDesserializacaoClick(Sender: TObject);
+    procedure BtnEnviarNFComSincronoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoDesserializacaoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoDuplicidadeClick(Sender: TObject);
@@ -80,6 +86,7 @@ type
     procedure BtnNACIONALConsultarPDFNFSeClick(Sender: TObject);
     procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure GroupBox3Click(Sender: TObject);
 
   private
 
@@ -153,12 +160,34 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.BtnEnviarNFComSincronoClick(Sender: TObject);
+var
+  oServico: TEnviarNFComSincrono;
+begin
+  oServico := TEnviarNFComSincrono.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
 
 procedure TfrmPrincipal.btnConsultarSituacaoNFeClick(Sender: TObject);
 var
   oServico: TConsultarSituacaoNFe;
 begin
   oServico := TConsultarSituacaoNFe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnConsultarStatusNFComClick(Sender: TObject);
+var
+  oServico: TConsultarStatusNFCom;
+begin
+  oServico := TConsultarStatusNFCom.Create;
   try
     oServico.Executar();
   finally
@@ -397,6 +426,11 @@ begin
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmPrincipal.GroupBox3Click(Sender: TObject);
 begin
 
 end;

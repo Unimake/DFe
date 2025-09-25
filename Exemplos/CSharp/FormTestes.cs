@@ -905,7 +905,8 @@ namespace TreinamentoDLL
                                                     TpIntegra = TipoIntegracaoPagamento.PagamentoNaoIntegrado
                                                 }
                                             }
-                                    }
+                                    },
+                                    VTroco = 0.00                                    
                                 },
                                 InfAdic = new XmlNFe.InfAdic
                                 {
@@ -2139,11 +2140,12 @@ namespace TreinamentoDLL
         {
             var config = new DANFe.Configurations.UnidanfeConfiguration
             {
-                Arquivo = @"C:\Users\Wandrey\Downloads\Telegram Desktop\35220639397657000170550010000001881942202322-procnfe.xml",
+                Arquivo = @"D:\testenfe\41220606117473000150550010000580071051443444-procnfe.xml",
                 Visualizar = true,
                 Imprimir = false,
                 EnviaEmail = false,
-                Configuracao = "PAISAGEM"
+                Configuracao = "PAISAGEM",
+                PastaConfiguracao = @"d:\testenfe\unidanfe_teste"
             };
 
             DANFe.UnidanfeServices.Execute(config);
