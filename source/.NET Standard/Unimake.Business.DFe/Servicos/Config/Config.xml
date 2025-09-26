@@ -1119,7 +1119,7 @@
 		<Nome>Paulista - PE</Nome>
 		<UF>PE</UF>
 		<ArqConfig>PaulistaPE.xml</ArqConfig>
-		<PadraoNFSe>TINUS</PadraoNFSe>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4322806">
 		<Nome>Veranópolis - RS</Nome>
