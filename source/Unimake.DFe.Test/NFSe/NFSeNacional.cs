@@ -2,7 +2,6 @@
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFSe;
-using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
 using Xunit;
 
 namespace Unimake.DFe.Test.NFSe.NACIONAL
