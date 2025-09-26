@@ -1557,7 +1557,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 3 - Regime Especial NFF (Nota Fiscal Fácil)
         /// </summary>
         [XmlEnum("3")]
-        RegimeEspecialNFF,
+        RegimeEspecialNFF = 3,
 
         /// <summary>
         /// 4 - Contingência EPEC (Evento Prévio de Emissão em Contingência)
@@ -15580,6 +15580,12 @@ namespace Unimake.Business.DFe.Servicos
     public enum CSTPisCofins
     {
         /// <summary>
+        /// 00 – Não tributada pelo PIS
+        /// </summary>
+        [XmlEnum("00")]
+        Nnehum = 00,
+
+        /// <summary>
         /// 01 – Tributável com alíquota básica
         /// </summary>
         [XmlEnum("01")]
@@ -15590,6 +15596,24 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("02")]
         AliquotaDiferenciada = 02,
+
+        /// <summary>
+        /// 03 - Tributável com Alíquota por Unidade de Medida de Produto
+        /// </summary>
+        [XmlEnum("03")]
+        AliquotaPorUnidadeDeMedidaDeProduto = 03,
+
+        /// <summary>
+        /// 04 – Monofásica - Revenda com Alíquota Zero
+        /// </summary>
+        [XmlEnum("04")]
+        MonofasicarevendaAliquotaZero = 04,
+
+        /// <summary>
+        /// Tributável com Alíquota por Unidade de Medida de Produto
+        /// </summary>
+        [XmlEnum("05")]
+        SubstituicaoTributaria = 05,
 
         /// <summary>
         /// 06 – Tributável com alíquota zero
@@ -16057,4 +16081,647 @@ namespace Unimake.Business.DFe.Servicos
     #endregion TipoEventoNFCom
 
     #endregion NFCom
+    #region NFS-e NACIONAL
+
+    #region Tipo de Exigibilidade Suspensa NFS-e NACIONAL
+    /// <summary>
+    /// Tipo de Exigibilidade Suspensa NFS-e NACIONAL
+    /// </summary>
+    public enum TipoExigibilidadeSuspensa
+    {
+        /// <summary>
+        /// 1 - Decisão Judicial
+        /// </summary>
+        [XmlEnum("1")]
+        DecisaoJudicial = 1,
+        /// <summary>
+        /// 2 - Processo Administrativo
+        /// </summary>
+        [XmlEnum("2")]
+        ProcessoAdministrativo = 2,
+
+    }
+    #endregion Tipo de Exigibilidade Suspensa NFS-e NACIONAL
+
+    #region Tipo Imunidade ISSQN NFS-e NACIONAL
+    /// <summary>
+    /// Tipo Imunidade ISSQN NFS-e NACIONAL
+    /// </summary>
+    public enum TipoImunidadeISSQN
+    {
+        /// <summary>
+        /// 0 - Tipo não informado
+        /// </summary>
+        [XmlEnum("0")]
+        Nenhum = 0,
+
+        /// <summary>
+        /// 1 - Patrimônio, renda ou serviço
+        /// </summary>
+        [XmlEnum("1")]
+        PatrimonioRendaServico = 1,
+
+        /// <summary>
+        /// 2 - Templos de qualquer culto
+        /// </summary>
+        [XmlEnum("2")]
+        Templo = 2,
+
+        /// <summary>
+        /// 3 - Patrimônio, renda ou serviço político
+        /// </summary>
+        [XmlEnum("3")]
+        PatrimonioRendaServicoPolitico = 3,
+
+        /// <summary>
+        /// 4 - Livros, jornais, periódicos e o papel destinado a sua impressão
+        /// </summary>
+        [XmlEnum("4")]
+        DestinadosImpresao = 4,
+
+    }
+    #endregion Tipo Imunidade ISSQN NFS-e NACIONAL
+
+    #region Tipo de Retenção ISSQN NFS-e NACIONAL
+    /// <summary>
+    /// Tipo de Retenção ISSQN NFS-e NACIONAL
+    /// </summary>
+    public enum TipoRetencaoISSQN
+    {
+        /// <summary>
+        /// 1 - Não Retido
+        /// </summary>
+        [XmlEnum("1")]
+        NaoRetido = 1,
+
+        /// <summary>
+        /// 2 - Retido pelo Tomador
+        /// </summary>
+        [XmlEnum("2")]
+        RetidoTomador = 2,
+
+        /// <summary>
+        /// 3 - Retido pelo Intermediário
+        /// </summary>
+        [XmlEnum("3")]
+        RetidoIntermediario = 3,
+    }
+
+    #endregion Tipo de Retenção ISSQN NFS-e NACIONAL
+
+    #region Tipo de Retenção PIS/COFINS NFS-e NACIONAL
+    /// <summary>
+    /// Tipo de Retenção PIS/COFINS NFS-e NACIONAL
+    /// </summary>
+    public enum TipoRetPisCofins
+    {
+        /// <summary>
+        /// 1 - Retido
+        /// </summary>
+        [XmlEnum("1")]
+        Retido = 1,
+
+        /// <summary>
+        /// 2 - Não Retido
+        /// </summary>
+        [XmlEnum("2")]
+        NaoRetido = 2,
+    }
+    #endregion Tipo de Retenção PIS/COFINS NFS-e NACIONAL
+
+    #region Tipo Chave DFe NACIONAL
+    /// <summary>
+    /// Tipos de Chave DFe para padrão NACIONAL
+    /// </summary>
+    public enum TipoChaveDFe
+    {
+        /// <summary>
+        /// 1 - NFS-e
+        /// </summary>
+        [XmlEnum("1")]
+        NFSe = 1,
+        /// <summary>
+        /// 2 - NF-e
+        /// </summary>
+        [XmlEnum("2")]
+        NFe = 2,
+        /// <summary>
+        /// 3 - CT-e
+        /// </summary>
+        [XmlEnum("3")]
+        CTe = 3,
+        /// <summary>
+        /// 9 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9,
+    }
+    #endregion Tipo Chave DFe NACIONAL
+
+    #region Código de justificativa para substituição de NFS-e NACIONAL
+    /// <summary>
+    /// Código de justificativa para substituição de NFS-e NACIONAL
+    /// </summary>
+    public enum CMotivoSubs
+    {
+        /// <summary>
+        /// 1 -  Desenquandramento Simples NACIONAL
+        /// </summary>
+        [XmlEnum("1")]
+        DesenquadaSimplesNacional = 1,
+
+        /// <summary>
+        /// 2 - Enquadramento Simples NACIONAL
+        /// </summary>
+        [XmlEnum("2")]
+        EnquadraSimplesNacional = 2,
+
+        /// <summary>
+        /// 3 - Inclusão Retroativa Imunidade
+        /// </summary>
+        [XmlEnum("3")]
+        InclusaoRetroImunidade = 3,
+
+        /// <summary>
+        /// 4 - Exclusão Retroativa Imunidade
+        /// </summary>
+        [XmlEnum("4")]
+        ExclusaoRetroImunidade = 4,
+
+        /// <summary>
+        /// 5 - Rejeição tomador ou intermediário
+        /// </summary>
+        [XmlEnum("5")]
+        RejeicaoTomadorIntermediario = 5,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99,
+    }
+
+    #endregion Código de justificativa para substituição de NFS-e NACIONAL
+
+    #region Modo de prestação NFS-e NACIONAL
+    /// <summary>
+    /// Modo de prestação NFS-e NACIONAL
+    /// </summary>
+    public enum ModoPrestacaoNFSe
+    {
+        /// <summary>
+        /// 0 - Desconhecido
+        /// </summary>
+        [XmlEnum("0")]
+        Desconhecido = 0,
+
+        /// <summary>
+        /// 1 - Transfronteirico
+        /// </summary>
+        [XmlEnum("1")]
+        Transfronteirico = 1,
+
+        /// <summary>
+        /// 2 - Consumo no Brasil
+        /// </summary>
+        [XmlEnum("2")]
+        ConsumoBrasil = 2,
+
+        /// <summary>
+        /// 3 - Presença Comercial no Exterior
+        /// </summary>
+        [XmlEnum("3")]
+        PrecencaComercialExt = 3,
+
+        /// <summary>
+        /// 4 - Movimento Temporário Pessoa Física
+        /// </summary>
+        [XmlEnum("4")]
+        MovimentoTempPessoaFisica = 4,
+    }
+
+    #endregion Modo de prestação NFS-e NACIONAL
+
+    #region Vinculo Entre as partes no negócio NFS-e NACIONAL
+    /// <summary>
+    /// Vinculo Entre as partes no negócio NFS-e NACIONAL
+    /// </summary>
+    public enum VinculoEntrePartes
+    {
+        /// <summary>
+        /// 0 - Sem Vinculo
+        /// </summary>
+        [XmlEnum("0")]
+        SemVinculo = 0,
+
+        /// <summary>
+        /// 1 - Controlada
+        /// </summary>
+        [XmlEnum("1")]
+        Controlada = 1,
+
+        /// <summary>
+        /// 2 - Controladora
+        /// </summary>
+        [XmlEnum("2")]
+        Controladora = 2,
+
+        /// <summary>
+        /// 3 - Coligada
+        /// </summary>
+        [XmlEnum("3")]
+        Coligada = 3,
+
+        /// <summary>
+        /// 4 - Matriz
+        /// </summary>
+        [XmlEnum("4")]
+        Matriz = 4,
+
+        /// <summary>
+        /// 5 - Filial/Sucursal
+        /// </summary>
+        [XmlEnum("5")]
+        FilialSucursal = 5,
+
+        /// <summary>
+        /// 6 - Outro Vinculo
+        /// </summary>
+        [XmlEnum("6")]
+        OutroVinculo = 6,
+    }
+
+    #endregion Vinculo Entre as partes no negócio NFS-e NACIONAL
+
+    #region Mecanimos de aopio/fomento comércio exterior prestador NFS-e NACIONAL
+    /// <summary>
+    /// Mecanismo de apoio/fomento ao Comércio Exterior utilizado pelo prestador do serviço
+    /// </summary>
+    public enum MecAFComexP
+    {
+        /// <summary>
+        /// 00 - Desconhecido (tipo não informado na nota de origem)
+        /// </summary>
+        [XmlEnum("00")]
+        Desconhecido = 00,
+
+        /// <summary>
+        /// 01 - Nenhum
+        /// </summary>
+        [XmlEnum("01")]
+        Nenhum = 01,
+
+        /// <summary>
+        /// 02 - ACC - Adiantamento sobre Contrato de Câmbio – Redução a Zero do IR e do IOF
+        /// </summary>
+        [XmlEnum("02")]
+        ACC = 02,
+
+        /// <summary>
+        /// 03 - ACE – Adiantamento sobre Cambiais Entregues - Redução a Zero do IR e do IOF
+        /// </summary>
+        [XmlEnum("03")]
+        ACE = 03,
+
+        /// <summary>
+        /// 04 - BNDES-Exim Pós-Embarque – Serviços
+        /// </summary>
+        [XmlEnum("04")]
+        BNDESPosEmbarque = 04,
+
+        /// <summary>
+        /// 05 - BNDES-Exim Pré-Embarque - Serviços
+        /// </summary>
+        [XmlEnum("05")]
+        BNDESPreEmbarque = 05,
+
+        /// <summary>
+        /// 06 - FGE - Fundo de Garantia à Exportação
+        /// </summary>
+        [XmlEnum("06")]
+        FGE = 06,
+
+        /// <summary>
+        /// 07 - PROEX - EQUALIZAÇÃO
+        /// </summary>
+        [XmlEnum("07")]
+        PROEXequalizacao = 07,
+
+        /// <summary>
+        /// 08 - PROEX - Financiamento
+        /// </summary>
+        [XmlEnum("08")]
+        PROEXfinanciamento = 08,
+    }
+
+    #endregion Mecanimos de aopio/fomento comércio exterior prestador NFS-e NACIONAL
+
+    #region Mecanimos de aopio/fomento comércio exterior tomador NFS-e NACIONAL
+    /// <summary>
+    /// Mecanismo de apoio/fomento ao Comércio Exterior utilizado pelo tomador do serviço
+    /// </summary>
+    public enum MecAFComexT
+    {
+        /// <summary>
+        /// 00 - Desconhecido (tipo não informado na nota de origem)
+        /// </summary>
+        [XmlEnum("00")]
+        Desconhecido = 00,
+
+        /// <summary>
+        /// 01 - Nenhum
+        /// </summary>
+        [XmlEnum("01")]
+        Nenhum = 01,
+
+        /// <summary>
+        /// 02 - Adm. Pública e Representação Internacional
+        /// </summary>
+        [XmlEnum("02")]
+        AdmPublicaERepresentacaoInternacional = 02,
+
+        /// <summary>
+        /// 03 - Aluguéis e Arrendamento Mercantil de máquinas, equipamentos, embarcações e aeronaves
+        /// </summary>
+        [XmlEnum("03")]
+        AlugueisEArrendamentoMercantilDeMaquinasEquipEmbarcEAeronaves = 03,
+
+        /// <summary>
+        /// 04 - Arrendamento Mercantil de aeronave para empresa de transporte aéreo público
+        /// </summary>
+        [XmlEnum("04")]
+        ArrendamentoMercantilAeronaveTransporteAereoPublico = 04,
+
+        /// <summary>
+        /// 05 - Comissão a agentes externos na exportação
+        /// </summary>
+        [XmlEnum("05")]
+        ComissaoAgentesExternosExportacao = 05,
+
+        /// <summary>
+        /// 06 - Despesas de armazenagem, movimentação e transporte de carga no exterior
+        /// </summary>
+        [XmlEnum("06")]
+        DespesasArmazenagemMovimentacaoTransporteCargaExterior = 06,
+
+        /// <summary>
+        /// 07 - Eventos FIFA (subsidiária)
+        /// </summary>
+        [XmlEnum("07")]
+        EventosFifaSubsidiaria = 07,
+
+        /// <summary>
+        /// 08 - Eventos FIFA
+        /// </summary>
+        [XmlEnum("08")]
+        EventosFifa = 08,
+
+        /// <summary>
+        /// 09 - Fretes, arrendamentos de embarcações ou aeronaves e outros
+        /// </summary>
+        [XmlEnum("09")]
+        FretesEArrendamentosDeEmbarcacoesOuAeronavesEOtros = 09,
+
+        /// <summary>
+        /// 10 - Material Aeronáutico
+        /// </summary>
+        [XmlEnum("10")]
+        MaterialAeronautico = 10,
+
+        /// <summary>
+        /// 11 - Promoção de Bens no Exterior
+        /// </summary>
+        [XmlEnum("11")]
+        PromocaoBensExterior = 11,
+
+        /// <summary>
+        /// 12 - Promoção de Destinos Turísticos Brasileiros
+        /// </summary>
+        [XmlEnum("12")]
+        PromocaoDestinosTuristicosBrasileiros = 12,
+
+        /// <summary>
+        /// 13 - Promoção do Brasil no Exterior
+        /// </summary>
+        [XmlEnum("13")]
+        PromocaoBrasilExterior = 13,
+
+        /// <summary>
+        /// 14 - Promoção de Serviços no Exterior
+        /// </summary>
+        [XmlEnum("14")]
+        PromocaoServicosExterior = 14,
+
+        /// <summary>
+        /// 15 - RECINE
+        /// </summary>
+        [XmlEnum("15")]
+        RECINE = 15,
+
+        /// <summary>
+        /// 16 - RECOPA
+        /// </summary>
+        [XmlEnum("16")]
+        RECOPA = 16,
+
+        /// <summary>
+        /// 17 - Registro e Manutenção de marcas, patentes e cultivares
+        /// </summary>
+        [XmlEnum("17")]
+        RegistroManutencaoMarcasPatentesCultivares = 17,
+
+        /// <summary>
+        /// 18 - REICOMP
+        /// </summary>
+        [XmlEnum("18")]
+        REICOMP = 18,
+
+        /// <summary>
+        /// 19 - REIDI
+        /// </summary>
+        [XmlEnum("19")]
+        REIDI = 19,
+
+        /// <summary>
+        /// 20 - REPENEC
+        /// </summary>
+        [XmlEnum("20")]
+        REPENEC = 20,
+
+        /// <summary>
+        /// 21 - REPES
+        /// </summary>
+        [XmlEnum("21")]
+        REPES = 21,
+
+        /// <summary>
+        /// 22 - RETAERO
+        /// </summary>
+        [XmlEnum("22")]
+        RETAERO = 22,
+
+        /// <summary>
+        /// 23 - RETID
+        /// </summary>
+        [XmlEnum("23")]
+        RETID = 23,
+
+        /// <summary>
+        /// 24 - Royalties, Assistência Técnica, Científica e Assemelhados
+        /// </summary>
+        [XmlEnum("24")]
+        RoyaltiesAssistenciaTecnicaCientificaAssemelhados = 24,
+
+        /// <summary>
+        /// 25 - Serviços de avaliação da conformidade vinculados aos Acordos da OMC
+        /// </summary>
+        [XmlEnum("25")]
+        ServicosAvaliacaoConformidadeAcordosOMC = 25,
+
+        /// <summary>
+        /// 26 - ZPE
+        /// </summary>
+        [XmlEnum("26")]
+        ZPE = 26
+    }
+    #endregion Mecanimos de aopio/fomento comércio exterior tomador NFS-e NACIONAL
+
+    #region Operação está vinculada a movimentação temporária de bens NFS-e NACIONAL
+    /// <summary>
+    /// Operação está vinculada à Movimentação Temporária de Bens
+    /// </summary>
+    public enum MovTempBens
+    {
+        /// <summary>
+        /// 0 - Desconhecido, não informado na nota de origem
+        /// </summary>
+        [XmlEnum("0")]
+        Desconhecido = 0,
+
+        /// <summary>
+        /// 1 - Não
+        /// </summary>
+        [XmlEnum("1")]
+        Nao = 1,
+
+        /// <summary>
+        /// 2- Vinculada: Declaração de Importação
+        /// </summary>
+        [XmlEnum("2")]
+        VinculadaImportacao = 2,
+
+        /// <summary>
+        /// 3 - Vinculada: Declaração de Exportação
+        /// </summary>
+        [XmlEnum("3")]
+        VinculadaExportacao = 3,
+    }
+    #endregion Operação está vinculada a movimentação temporária de bens NFS-e NACIONAL
+
+    #region Tipo da dedução de redução NFS-e NACIONAL
+    /// <summary>
+    /// Identificacao da Deducao/Reducao
+    /// </summary>
+    public enum TipoDeducaoReducao
+    {
+        /// <summary>1 – Alimentacao e bebidas/frigobar</summary>
+        [XmlEnum("1")]
+        AlimentacaoBebidasFrigobar = 1,
+
+        /// <summary>2 – Materiais</summary>
+        [XmlEnum("2")]
+        Materiais = 2,
+
+        /// <summary>3 – Producao externa</summary>
+        [XmlEnum("3")]
+        ProducaoExterna = 3,
+
+        /// <summary>4 – Reembolso de despesas</summary>
+        [XmlEnum("4")]
+        ReembolsoDespesas = 4,
+
+        /// <summary>5 – Repasse consorciado</summary>
+        [XmlEnum("5")]
+        RepasseConsorciado = 5,
+
+        /// <summary>6 – Repasse plano de saude</summary>
+        [XmlEnum("6")]
+        RepassePlanoSaude = 6,
+
+        /// <summary>7 – Servicos</summary>
+        [XmlEnum("7")]
+        Servicos = 7,
+
+        /// <summary>8 – Subempreitada de mao de obra</summary>
+        [XmlEnum("8")]
+        SubempreitadaMaoDeObra = 8,
+
+        /// <summary>99 – Outras deducoes</summary>
+        [XmlEnum("99")]
+        OutrasDeducoes = 99
+    }
+    #endregion Tipo da dedução de redução NFS-e NACIONAL
+
+    #region Tributação ISSQN sobre serviço prestado NFS-e NACIONAL
+    /// <summary>
+    /// Tributação do ISSQN sobre o serviço prestado
+    /// </summary>
+    public enum TribISSQN
+    {
+        /// <summary>
+        /// 1 - OperacaoIntributavel
+        /// </summary>
+        [XmlEnum("1")]
+        OperacaoIntributavel = 1,
+
+        /// <summary>
+        /// 2 - Exportação de Serviço
+        /// </summary>
+        [XmlEnum("2")]
+        ExportacaoServico = 2,
+
+        /// <summary>
+        /// 3 - Não Incidencia
+        /// </summary>
+        [XmlEnum("3")]
+        NaoIncidencia = 3,
+
+        /// <summary>
+        /// 4 - Imunidade
+        /// </summary>
+        [XmlEnum("4")]
+        Imunidade = 4,
+    }
+    #endregion Tributação ISSQN sobre serviço prestado NFS-e NACIONAL
+
+    #region Tipo Emitente NFS-e NACIONAL
+    /// <summary>
+    /// Emitente da DPS
+    /// </summary>
+    public enum TipoEmitenteNFSe
+    {
+        /// <summary>
+        /// 1 - Prestador
+        /// </summary>
+        [XmlEnum("1")]
+        Prestador = 1,
+
+        /// <summary>
+        /// 2 - Tomador
+        /// </summary>
+        [XmlEnum("2")]
+        Tomador = 2,
+
+        /// <summary>
+        /// 3 - Intermediário
+        /// </summary>
+        [XmlEnum("3")]
+        Intermediario = 3,
+
+    }
+    #endregion Tipo Emitente NFS-e NACIONAL
+
+    #endregion NFS-e NACIONAL
+
+
 }
