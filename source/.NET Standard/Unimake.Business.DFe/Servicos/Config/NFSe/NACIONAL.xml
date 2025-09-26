@@ -9,9 +9,11 @@
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
 			<TagAssinatura>DPS</TagAssinatura>
 			<TagAtributoID>infDPS</TagAtributoID>
-			<WebSoapString></WebSoapString>
+			<WebSoapString></WebSoapString>      
+      <SchemaArquivo>DPS_v1.00.xsd</SchemaArquivo>
 			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>      
+      <TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>true</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
