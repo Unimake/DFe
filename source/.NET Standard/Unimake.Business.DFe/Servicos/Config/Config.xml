@@ -411,7 +411,7 @@
 		<Nome>Goiânia - GO</Nome>
 		<UF>GO</UF>
 		<ArqConfig>GoianiaGO.xml</ArqConfig>
-		<PadraoNFSe>PROPRIOGOIANIA</PadraoNFSe>
+		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5105200">
 		<Nome>Juscimeira - MT</Nome>
