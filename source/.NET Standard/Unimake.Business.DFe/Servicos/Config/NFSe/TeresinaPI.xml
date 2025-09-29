@@ -1,12 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuracoes>
 	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.03">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notafiscal.teresina.pi.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRps>{xmlBody}</nfse:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns4:RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
 		<CancelarNfse versao="2.03">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoProducao>https://notafiscal.teresina.pi.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -24,7 +43,7 @@
 			<WebEnderecoProducao>https://notafiscal.teresina.pi.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
 			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -42,7 +61,7 @@
 			<WebEnderecoProducao>https://notafiscal.teresina.pi.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
 			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -60,7 +79,7 @@
 			<WebEnderecoProducao>https://notafiscal.teresina.pi.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
 			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -78,7 +97,7 @@
 			<WebEnderecoProducao>https://notafiscal.teresina.pi.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
 			<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -96,7 +115,7 @@
 			<WebEnderecoProducao>https://notafiscal.teresina.pi.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
 			<TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -114,7 +133,7 @@
 			<WebEnderecoProducao>https://notafiscal.teresina.pi.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -132,7 +151,7 @@
 			<WebEnderecoProducao>https://notafiscal.teresina.pi.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
 			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -150,7 +169,7 @@
 			<WebEnderecoProducao>https://notafiscal.teresina.pi.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
@@ -168,7 +187,7 @@
 			<WebEnderecoProducao>https://notafiscal.teresina.pi.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
