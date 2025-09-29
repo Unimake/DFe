@@ -185,7 +185,7 @@ namespace Unimake.Business.DFe.Servicos.NFCom
                 var urlQrCode = Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao;
                 var paramLinkQRCode = urlQrCode + "?chNFCom=" + chave + "&tpAmb=" + ((int)tpAmb).ToString();
 
-                if (tpEmis == TipoEmissao.ContingenciaOffLine)
+                if ((int)tpEmis == 2)
                 {
                     paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, chave);
                 }

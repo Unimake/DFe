@@ -86,7 +86,7 @@ namespace Unimake.DFe.Test.NF3e
             var configuracao = new Configuracao
             {
                 TipoDFe = TipoDFe.NF3e,
-                TipoEmissao = TipoEmissao.ContingenciaOfflineNF3eNFCom,
+                TipoEmissao = TipoEmissao.ContingenciaFSIA,
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
@@ -100,7 +100,7 @@ namespace Unimake.DFe.Test.NF3e
         /// <param name="ufBrasil">UF</param>
         /// <param name="tipoAmbiente">Ambiente</param>
         /// <returns></returns>
-        private Business.DFe.Xml.NF3e.NF3e MontarXMLNF3e(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        private static Business.DFe.Xml.NF3e.NF3e MontarXMLNF3e(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             var xml = new Business.DFe.Xml.NF3e.NF3e
             {
