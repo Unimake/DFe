@@ -68,8 +68,7 @@
 		</ConsultarNfse>
 		<ConsultarNfsePDF versao="1.00">
 			<Descricao>Consultar NFSe PDF</Descricao>
-			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/danfse/{Chave}</RequestURIProducao>
-			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/danfse/{Chave}</RequestURIHomologacao>
+			<RequestURIProducao>https://adn.producaorestrita.nfse.gov.br/danfse/{Chave}</RequestURIProducao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -80,7 +79,7 @@
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfsePDF>
 	</Servicos>
 </Configuracoes>
