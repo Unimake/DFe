@@ -138,7 +138,7 @@
           <xs:documentation>Grupo de valores referentes ao Serviço Prestado</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IBSCBS" type="TCIBSCBS">
+      <xs:element name="IBSCBS" type="TCIBSCBS" minOccurs="0">
         <xs:annotation>
           <xs:documentation>Grupo de informações geradas pelo sistema referentes ao IBS e à CBS</xs:documentation>
         </xs:annotation>
@@ -1383,12 +1383,12 @@
           <xs:documentation>Tipo de objetos da locação, sublocação, arrendamento, direito de passagem ou permissão de uso</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="extensao" type="TSExtensaoTotal" minOccurs="0">
+      <xs:element name="extensao" type="TSExtensaoTotal">
         <xs:annotation>
           <xs:documentation>Extensão total da ferrovia, rodovia, cabos, dutos ou condutos</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="nPostes" type="TSNumeroPostes" minOccurs="0">
+      <xs:element name="nPostes" type="TSNumeroPostes">
         <xs:annotation>
           <xs:documentation>Número total de postes</xs:documentation>
         </xs:annotation>

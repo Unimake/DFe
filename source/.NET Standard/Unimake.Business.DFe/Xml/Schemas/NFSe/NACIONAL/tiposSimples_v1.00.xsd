@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sped.fazenda.gov.br/nfse" xmlns="http://www.sped.fazenda.gov.br/nfse" attributeFormDefault="unqualified" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.sped.fazenda.gov.br/nfse"
+           xmlns="http://www.sped.fazenda.gov.br/nfse"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+
 	<xs:simpleType name="TVerNFSe">
 		<xs:annotation>
 			<xs:documentation>Tipo Versão da NF-e - 1.00</xs:documentation>
@@ -88,7 +93,10 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSIdNFSe">
 		<xs:annotation>
-			<xs:documentation>Informar o identificador precedido do literal ‘NFS’. A regra de formação do identificador de 53 posições da NFS-e é: "NFS" + Cód.Mun.(7) + Amb.Ger.(1) + Tipo de Inscrição Federal(1) + Inscrição Federal(14) + No.NFS-e(13) + AnoMes Emis.(4) + Cód.Num.(9) + DV(1)</xs:documentation>
+      <xs:documentation>
+        Informar o identificador precedido do literal ‘NFS’. A regra de formação do identificador de 53 posições da NFS-e é:
+        "NFS" + Cód.Mun.(7) + Amb.Ger.(1) + Tipo de Inscrição Federal(1) + Inscrição Federal(14) + No.NFS-e(13) + AnoMes Emis.(4) + Cód.Num.(9) + DV(1)
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -98,7 +106,10 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSIdDPS">
 		<xs:annotation>
-			<xs:documentation>Informar o identificador precedido do literal ‘DPS’. A regra de formação do identificador de 45 posições da DPS é: "DPS" + Cód.Mun (7) + Tipo de Inscrição Federal (1) + Inscrição Federal (14 - CPF completar com 000 à esquerda) + Série DPS (5)+ Núm. DPS (15)</xs:documentation>
+      <xs:documentation>
+        Informar o identificador precedido do literal ‘DPS’. A regra de formação do identificador de 45 posições da DPS é:
+        "DPS" + Cód.Mun (7) + Tipo de Inscrição Federal (1) + Inscrição Federal (14 - CPF completar com 000 à esquerda) + Série DPS (5)+ Núm. DPS (15)
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -108,7 +119,9 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSTipoAmbiente">
 		<xs:annotation>
-			<xs:documentation>Tipos de ambiente do Sistema Nacional NFS-e: 1 - Produção; 2 - Homologação;</xs:documentation>
+      <xs:documentation>
+        Tipos de ambiente do Sistema Nacional NFS-e: 1 - Produção; 2 - Homologação;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -118,7 +131,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSAmbGeradorNFSe">
 		<xs:annotation>
-			<xs:documentation>Tipo Ambiente Gerador de NFS-e: 1 - Prefeitura; 2 - Sistema Nacional da NFS-e;</xs:documentation>
+      <xs:documentation>
+        Tipo Ambiente Gerador de NFS-e:
+        1 - Prefeitura;
+        2 - Sistema Nacional da NFS-e;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -128,7 +145,12 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSAmbGeradorEvt">
 		<xs:annotation>
-			<xs:documentation>Tipo Ambiente gerador do evento: 1- Prefeitura; 2- Sefin Nacional; 3- Ambiente Nacional.</xs:documentation>
+      <xs:documentation>
+        Tipo Ambiente gerador do evento:
+        1- Prefeitura;
+        2- Sefin Nacional;
+        3- Ambiente Nacional.
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -139,7 +161,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSTipoEmissao">
 		<xs:annotation>
-			<xs:documentation>Tipo de emissão da NFS-e: 1 - Emissão normal no modelo da NFS-e Nacional; 2 - Emissão original em leiaute próprio do município com transcrição para o modelo da NFS-e Nacional.</xs:documentation>
+      <xs:documentation>
+        Tipo de emissão da NFS-e:
+        1 - Emissão normal no modelo da NFS-e Nacional;
+        2 - Emissão original em leiaute próprio do município com transcrição para o modelo da NFS-e Nacional.
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -149,7 +175,12 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSProcEmissao">
 		<xs:annotation>
-			<xs:documentation>Processo de Emissão da DPS: 1 - Emissão com aplicativo do contribuinte (via Web Service); 2 - Emissão com aplicativo disponibilizado pelo fisco (Web); 3 - Emissão com aplicativo disponibilizado pelo fisco (App);</xs:documentation>
+      <xs:documentation>
+        Processo de Emissão da DPS:
+        1 - Emissão com aplicativo do contribuinte (via Web Service);
+        2 - Emissão com aplicativo disponibilizado pelo fisco (Web);
+        3 - Emissão com aplicativo disponibilizado pelo fisco (App);
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -194,22 +225,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSEmitenteDPS">
 		<xs:annotation>
-			<xs:documentation>Emitente da DPS: 1 - Prestador 2 - Tomador 3 - Intermediário</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:whiteSpace value="preserve"/>
-			<xs:enumeration value="1"/>
-			<xs:enumeration value="2"/>
-			<xs:enumeration value="3"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="TSMotivoEmisTI">
-		<xs:annotation>
-			<xs:documentation>Motivo da Emissão da DPS pelo Tomador/Intermediário:
-			1 - Importação de Serviço;
-			2 - Tomador/Intermediário obrigado a emitir NFS-e por legislação municipal;
-			3 - Tomador/Intermediário emitindo NFS-e por recusa de emissão pelo prestador;
-			4 - Tomador/Intermediário emitindo por rejeitar a NFS-e emitida pelo prestador;
+      <xs:documentation>
+        Emitente da DPS:
+        1 - Prestador
+        2 - Tomador
+        3 - Intermediário
 			</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
@@ -306,7 +326,12 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCodJustCanc">
 		<xs:annotation>
-			<xs:documentation>Código de justificativa de cancelamento: 1 - Erro na Emissão; 2 - Serviço não Prestado; 9 - Outros;</xs:documentation>
+      <xs:documentation>
+        Código de justificativa de cancelamento:
+        1 - Erro na Emissão;
+        2 - Serviço não Prestado;
+        9 - Outros;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -317,21 +342,34 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCodJustSubst">
 		<xs:annotation>
-			<xs:documentation>Código de justificativa para substituição de NFS-e: 1 - Desenquadramento de NFS-e do Simples Nacional; 2 - Enquadramento de NFS-e no Simples Nacional; 3 - Inclusão Retroativa de Imunidade/Isenção para NFS-e; 4 - Exclusão Retroativa de Imunidade/Isenção para NFS-e; 5 - Rejeição de NFS-e pelo tomador ou pelo intermediário se responsável pelo recolhimento do tributo; 99 - Outros;</xs:documentation>
+      <xs:documentation>
+        Código de justificativa para substituição de NFS-e:
+        01 - Desenquadramento de NFS-e do Simples Nacional;
+        02 - Enquadramento de NFS-e no Simples Nacional;
+        03 - Inclusão Retroativa de Imunidade/Isenção para NFS-e;
+        04 - Exclusão Retroativa de Imunidade/Isenção para NFS-e;
+        05 - Rejeição de NFS-e pelo tomador ou pelo intermediário se responsável pelo recolhimento do tributo;
+        99 - Outros;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
-			<xs:enumeration value="1"/>
-			<xs:enumeration value="2"/>
-			<xs:enumeration value="3"/>
-			<xs:enumeration value="4"/>
-			<xs:enumeration value="5"/>
+      <xs:enumeration value="01"/>
+      <xs:enumeration value="02"/>
+      <xs:enumeration value="03"/>
+      <xs:enumeration value="04"/>
+      <xs:enumeration value="05"/>
 			<xs:enumeration value="99"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="TSCodJustAnaliseFiscalCanc">
 		<xs:annotation>
-			<xs:documentation>Código do motivo da solicitação de análise fiscal para cancelamento de NFS-e: 1 - Erro na Emissão; 2 - Serviço não Prestado; 3 - Outros.</xs:documentation>
+      <xs:documentation>
+        Código do motivo da solicitação de análise fiscal para cancelamento de NFS-e:
+        1 - Erro na Emissão;
+        2 - Serviço não Prestado;
+        3 - Outros.
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -342,7 +380,16 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCodMotivoRejeicao">
 		<xs:annotation>
-			<xs:documentation>Motivo da Rejeição da NFS-e: 1 - NFS-e em duplicidade; 2 - NFS-e já emitida pelo tomador; 3 - Não ocorrência do fato gerador; 4 - Erro quanto a responsabilidade tributária; 5 - Erro quanto ao valor do serviço, valor das deduções ou serviço prestado ou data do fato gerador; 9 - Outros;</xs:documentation>
+      <xs:documentation>
+        Motivo da Rejeição da NFS-e:
+
+        1 - NFS-e em duplicidade;
+        2 - NFS-e já emitida pelo tomador;
+        3 - Não ocorrência do fato gerador;
+        4 - Erro quanto a responsabilidade tributária;
+        5 - Erro quanto ao valor do serviço, valor das deduções ou serviço prestado ou data do fato gerador;
+        9 - Outros;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -356,7 +403,10 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCodJustAnaliseFiscalCancDef">
 		<xs:annotation>
-			<xs:documentation>Resposta da análise da solicitação do cancelamento extemporâneo de NFS-e: 1 - Cancelamento Extemporâneo Deferido.</xs:documentation>
+      <xs:documentation>
+        Resposta da análise da solicitação do cancelamento extemporâneo de NFS-e:
+        1 - Cancelamento Extemporâneo Deferido.
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -365,7 +415,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCodJustAnaliseFiscalCancIndef">
 		<xs:annotation>
-			<xs:documentation>Resposta da análise da solicitação do cancelamento extemporâneo de NFS-e: 1 - Cancelamento Extemporâneo Indeferido; 2 - Cancelamento Extemporâneo Indeferido Sem Análise de Mérito.</xs:documentation>
+      <xs:documentation>
+        Resposta da análise da solicitação do cancelamento extemporâneo de NFS-e:
+        1 - Cancelamento Extemporâneo Indeferido;
+        2 - Cancelamento Extemporâneo Indeferido Sem Análise de Mérito.
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -386,7 +440,12 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCodAutorManifestacao">
 		<xs:annotation>
-			<xs:documentation>Tipo do autor da manifestação da NFS-e: 1 - Prestador; 2 - Tomador; 3 - Intermediário.</xs:documentation>
+      <xs:documentation>
+        Tipo do autor da manifestação da NFS-e:
+        1 - Prestador;
+        2 - Tomador;
+        3 - Intermediário.
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -443,7 +502,12 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCodNaoNIF">
 		<xs:annotation>
-			<xs:documentation>Motivo para não informação do NIF: 0 - Não informado na nota de origem; 1 - Dispensado do NIF; 2 - Não exigência do NIF;</xs:documentation>
+      <xs:documentation>
+        Motivo para não informação do NIF:
+        0 - Não informado na nota de origem;
+        1 - Dispensado do NIF;
+        2 - Não exigência do NIF;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -463,7 +527,7 @@
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
 			<xs:minLength value="1"/>
-			<xs:maxLength value="150"/>
+      <xs:maxLength value="300"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="TSNomeFantasia">
@@ -592,7 +656,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSTelefone">
 		<xs:annotation>
-			<xs:documentation>Número do telefone do prestador: Preencher com o Código DDD + número do telefone. Nas operações com exterior é permitido informar o código do país + código da localidade + número do telefone</xs:documentation>
+      <xs:documentation>
+        Número do telefone do prestador:
+        Preencher com o Código DDD + número do telefone.
+        Nas operações com exterior é permitido informar o código do país + código da localidade + número do telefone
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -627,7 +695,14 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSModoPrestacao">
 		<xs:annotation>
-			<xs:documentation>Modo de Prestação: 0 - Desconhecido (tipo não informado na nota de origem); 1 - Transfronteiriço; 2 - Consumo no Brasil; 3 - Presença Comercial no Exterior; 4 - Movimento Temporário de Pessoas Físicas;</xs:documentation>
+      <xs:documentation>
+        Modo de Prestação:
+        0 - Desconhecido (tipo não informado na nota de origem);
+        1 - Transfronteiriço;
+        2 - Consumo no Brasil;
+        3 - Presença Comercial no Exterior;
+        4 - Movimento Temporário de Pessoas Físicas;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -640,11 +715,19 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSVincPrest">
 		<xs:annotation>
-			<xs:documentation>Vínculo entre as partes no negócio: 0 - Sem vínculo com o tomador/ Prestador 1 - Controlada; 2 - Controladora; 3 - Coligada; 4 - Matriz; 5 - Filial ou sucursal; 6 - Outro vínculo;</xs:documentation>
+      <xs:documentation>
+        Vínculo entre as partes no negócio:
+        0 - Sem vínculo com o tomador/ Prestador
+        1 - Controlada;
+        2 - Controladora;
+        3 - Coligada;
+        4 - Matriz;
+        5 - Filial ou sucursal;
+        6 - Outro vínculo;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
-			<xs:enumeration value="0"/>
 			<xs:enumeration value="1"/>
 			<xs:enumeration value="2"/>
 			<xs:enumeration value="3"/>
@@ -655,7 +738,18 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSMecAFComExPrest">
 		<xs:annotation>
-			<xs:documentation>Mecanismo de apoio/fomento ao Comércio Exterior utilizado pelo prestador do serviço: 00 - Desconhecido (tipo não informado na nota de origem); 01 - Nenhum; 02 - ACC - Adiantamento sobre Contrato de Câmbio – Redução a Zero do IR e do IOF; 03 - ACE – Adiantamento sobre Cambiais Entregues - Redução a Zero do IR e do IOF; 04 - BNDES-Exim Pós-Embarque – Serviços; 05 - BNDES-Exim Pré-Embarque - Serviços; 06 - FGE - Fundo de Garantia à Exportação; 07 - PROEX - EQUALIZAÇÃO 08 - PROEX - Financiamento;</xs:documentation>
+      <xs:documentation>
+        Mecanismo de apoio/fomento ao Comércio Exterior utilizado pelo prestador do serviço:
+        00 - Desconhecido (tipo não informado na nota de origem);
+        01 - Nenhum;
+        02 - ACC - Adiantamento sobre Contrato de Câmbio – Redução a Zero do IR e do IOF;
+        03 - ACE – Adiantamento sobre Cambiais Entregues - Redução a Zero do IR e do IOF;
+        04 - BNDES-Exim Pós-Embarque – Serviços;
+        05 - BNDES-Exim Pré-Embarque - Serviços;
+        06 - FGE - Fundo de Garantia à Exportação;
+        07 - PROEX - EQUALIZAÇÃO
+        08 - PROEX - Financiamento;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -672,7 +766,36 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSMecAFComExToma">
 		<xs:annotation>
-			<xs:documentation>Mecanismo de apoio/fomento ao Comércio Exterior utilizado pelo tomador do serviço: 00 - Desconhecido (tipo não informado na nota de origem); 01 - Nenhum; 02 - Adm. Pública e Repr. Internacional; 03 - Alugueis e Arrend. Mercantil de maquinas, equip., embarc. e aeronaves; 04 - Arrendamento Mercantil de aeronave para empresa de transporte aéreo público; 05 - Comissão a agentes externos na exportação; 06 - Despesas de armazenagem, mov. e transporte de carga no exterior; 07 - Eventos FIFA (subsidiária); 08 - Eventos FIFA; 09 - Fretes, arrendamentos de embarcações ou aeronaves e outros; 10 - Material Aeronáutico; 11 - Promoção de Bens no Exterior; 12 - Promoção de Dest. Turísticos Brasileiros; 13 - Promoção do Brasil no Exterior; 14 - Promoção Serviços no Exterior; 15 - RECINE; 16 - RECOPA; 17 - Registro e Manutenção de marcas, patentes e cultivares; 18 - REICOMP; 19 - REIDI; 20 - REPENEC; 21 - REPES; 22 - RETAERO; 23 - RETID; 24 - Royalties, Assistência Técnica, Científica e Assemelhados; 25 - Serviços de avaliação da conformidade vinculados aos Acordos da OMC; 26 - ZPE;</xs:documentation>
+      <xs:documentation>
+        Mecanismo de apoio/fomento ao Comércio Exterior utilizado pelo tomador do serviço:
+        00 - Desconhecido (tipo não informado na nota de origem);
+        01 - Nenhum;
+        02 - Adm. Pública e Repr. Internacional;
+        03 - Alugueis e Arrend. Mercantil de maquinas, equip., embarc. e aeronaves;
+        04 - Arrendamento Mercantil de aeronave para empresa de transporte aéreo público;
+        05 - Comissão a agentes externos na exportação;
+        06 - Despesas de armazenagem, mov. e transporte de carga no exterior;
+        07 - Eventos FIFA (subsidiária);
+        08 - Eventos FIFA;
+        09 - Fretes, arrendamentos de embarcações ou aeronaves e outros;
+        10 - Material Aeronáutico;
+        11 - Promoção de Bens no Exterior;
+        12 - Promoção de Dest. Turísticos Brasileiros;
+        13 - Promoção do Brasil no Exterior;
+        14 - Promoção Serviços no Exterior;
+        15 - RECINE;
+        16 - RECOPA;
+        17 - Registro e Manutenção de marcas, patentes e cultivares;
+        18 - REICOMP;
+        19 - REIDI;
+        20 - REPENEC;
+        21 - REPES;
+        22 - RETAERO;
+        23 - RETID;
+        24 - Royalties, Assistência Técnica, Científica e Assemelhados;
+        25 - Serviços de avaliação da conformidade vinculados aos Acordos da OMC;
+        26 - ZPE;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -707,7 +830,13 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSMovTempBens">
 		<xs:annotation>
-			<xs:documentation>Operação está vinculada à Movimentação Temporária de Bens: 0 - Desconhecido (tipo não informado na nota de origem); 1 - Não 2 - Vinculada - Declaração de Importação 3 - Vinculada - Declaração de Exportação</xs:documentation>
+      <xs:documentation>
+        Operação está vinculada à Movimentação Temporária de Bens:
+        0 - Desconhecido (tipo não informado na nota de origem);
+        1 - Não
+        2 - Vinculada - Declaração de Importação
+        3 - Vinculada - Declaração de Exportação
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -719,7 +848,21 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCategVeic">
 		<xs:annotation>
-			<xs:documentation>Categorias de veículos para cobrança: 00 - Categoria de Veículos (tipo não informado na nota de origem); 01 - Automóvel, caminhonete e furgão; 02 - Caminhão leve, ônibus, caminhão trator e furgão; 03 - Automóvel e caminhonete com semireboque; 04 - Caminhão, caminhão-trator, caminhão-trator com semi-reboque e ônibus; 05 - Automóvel e caminhonete com reboque; 06 - Caminhão com reboque e caminhãotrator com semi-reboque; 07 - Caminhão com reboque e caminhãotrator com semi-reboque; 08 - Caminhão com reboque e caminhãotrator com semi-reboque; 09 - Motocicletas, motonetas e bicicletas motorizadas; 10 - Veículo especial; 11 - Veículo Isento;</xs:documentation>
+      <xs:documentation>
+        Categorias de veículos para cobrança:
+        00 - Categoria de Veículos (tipo não informado na nota de origem);
+        01 - Automóvel, caminhonete e furgão;
+        02 - Caminhão leve, ônibus, caminhão trator e furgão;
+        03 - Automóvel e caminhonete com semireboque;
+        04 - Caminhão, caminhão-trator, caminhão-trator com semi-reboque e ônibus;
+        05 - Automóvel e caminhonete com reboque;
+        06 - Caminhão com reboque e caminhãotrator com semi-reboque;
+        07 - Caminhão com reboque e caminhãotrator com semi-reboque;
+        08 - Caminhão com reboque e caminhãotrator com semi-reboque;
+        09 - Motocicletas, motonetas e bicicletas motorizadas;
+        10 - Veículo especial;
+        11 - Veículo Isento;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -757,7 +900,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSEnvMDIC">
 		<xs:annotation>
-			<xs:documentation>Compartilhar as informações da NFS-e gerada a partir desta DPS com a Secretaria de Comércio Exterior: 0 - Não enviar para o MDIC; 1 - Enviar para o MDIC;</xs:documentation>
+      <xs:documentation>
+        Compartilhar as informações da NFS-e gerada a partir desta DPS com a Secretaria de Comércio Exterior:
+        0 - Não enviar para o MDIC;
+        1 - Enviar para o MDIC;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -794,7 +941,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSRodagem">
 		<xs:annotation>
-			<xs:documentation>Tipo de rodagem: 1 - Simples; 2 - Dupla;</xs:documentation>
+      <xs:documentation>
+        Tipo de rodagem:
+        1 - Simples;
+        2 - Dupla;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -874,7 +1025,18 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSIdeDedRed">
 		<xs:annotation>
-			<xs:documentation>Identificação da Dedução/Redução: 1 – Alimentação e bebidas/frigobar; 2 – Materiais; 3 – Produção externa; 4 – Reembolso de despesas; 5 – Repasse consorciado; 6 – Repasse plano de saúde; 7 – Serviços; 8 – Subempreitada de mão de obra; 99 – Outras deduções;</xs:documentation>
+      <xs:documentation>
+        Identificação da Dedução/Redução:
+        1 – Alimentação e bebidas/frigobar;
+        2 – Materiais;
+        3 – Produção externa;
+        4 – Reembolso de despesas;
+        5 – Repasse consorciado;
+        6 – Repasse plano de saúde;
+        7 – Serviços;
+        8 – Subempreitada de mão de obra;
+        99 – Outras deduções;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -901,7 +1063,12 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSOpTipoBM">
 		<xs:annotation>
-			<xs:documentation>Tipo do Benefício Municipal: 1 - Alíquota Diferenciada; 2 - Redução da BC; 3 - Isenção;</xs:documentation>
+      <xs:documentation>
+        Tipo do Benefício Municipal:
+        1 - Alíquota Diferenciada;
+        2 - Redução da BC;
+        3 - Isenção;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -920,7 +1087,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSOpExigSuspensa">
 		<xs:annotation>
-			<xs:documentation>Opção para Exigibilidade Suspensa: 1 - Exigibilidade Suspensa por Decisão Judicial; 2 - Exigibilidade Suspensa por Processo Administrativo;</xs:documentation>
+      <xs:documentation>
+        Opção para Exigibilidade Suspensa:
+        1 - Exigibilidade Suspensa por Decisão Judicial;
+        2 - Exigibilidade Suspensa por Processo Administrativo;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -938,7 +1109,12 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSOpSimpNac">
 		<xs:annotation>
-			<xs:documentation>Situação perante o Simples Nacional: 1 - Não Optante; 2 - Optante - Microempreendedor Individual (MEI); 3 - Optante - Microempresa ou Empresa de Pequeno Porte (ME/EPP);</xs:documentation>
+      <xs:documentation>
+        Situação perante o Simples Nacional:
+        1 - Não Optante;
+        2 - Optante - Microempreendedor Individual (MEI);
+        3 - Optante - Microempresa ou Empresa de Pequeno Porte (ME/EPP);
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -949,7 +1125,12 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSRegimeApuracaoSimpNac">
 		<xs:annotation>
-			<xs:documentation>Opção para que o contribuinte optante pelo Simples Nacional ME/EPP (opSimpNac = 3) possa indicar, ao emitir o documento fiscal, em qual regime de apuração os tributos federais e municipal estão inseridos, caso tenha ultrapassado algum sublimite ou limite definido para o Simples Nacional. 1 – Regime de apuração dos tributos federais e municipal pelo SN; 2 – Regime de apuração dos tributos federais pelo SN e ISSQN por fora do SN conforme respectiva legislação municipal do tributo; 3 – Regime de apuração dos tributos federais e municipal por fora do SN conforme respectivas legilações federal e municipal de cada tributo;</xs:documentation>
+      <xs:documentation>
+        Opção para que o contribuinte optante pelo Simples Nacional ME/EPP (opSimpNac = 3) possa indicar, ao emitir o documento fiscal, em qual regime de apuração os tributos federais e municipal estão inseridos, caso tenha ultrapassado algum sublimite ou limite definido para o Simples Nacional.
+        1 – Regime de apuração dos tributos federais e municipal pelo SN;
+        2 – Regime de apuração dos tributos federais pelo SN e ISSQN  por fora do SN conforme respectiva legislação municipal do tributo;
+        3 – Regime de apuração dos tributos federais e municipal por fora do SN conforme respectivas legilações federal e municipal de cada tributo;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -960,7 +1141,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSOpSNLimUltrap">
 		<xs:annotation>
-			<xs:documentation>Opção que indica se o limite do Simples Nacional foi ultrapassado: 0 - Não ultrapassado; 1 - Ultrapassado;</xs:documentation>
+      <xs:documentation>
+        Opção que indica se o limite do Simples Nacional foi ultrapassado:
+        0 - Não ultrapassado;
+        1 - Ultrapassado;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -970,7 +1155,16 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSRegEspTrib">
 		<xs:annotation>
-			<xs:documentation>Tipos de Regimes Especiais de Tributação: 0 - Nenhum; 1 - Ato Cooperado (Cooperativa); 2 - Estimativa; 3 - Microempresa Municipal; 4 - Notário ou Registrador; 5 - Profissional Autônomo; 6 - Sociedade de Profissionais;</xs:documentation>
+      <xs:documentation>
+        Tipos de Regimes Especiais de Tributação:
+        0 - Nenhum;
+        1 - Ato Cooperado (Cooperativa);
+        2 - Estimativa;
+        3 - Microempresa Municipal;
+        4 - Notário ou Registrador;
+        5 - Profissional Autônomo;
+        6 - Sociedade de Profissionais;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -985,7 +1179,13 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSTribISSQN">
 		<xs:annotation>
-			<xs:documentation>Tributação do ISSQN sobre o serviço prestado: 1 - Operação tributável; 2 - Exportação de serviço; 3 - Não Incidência; 4 - Imunidade;</xs:documentation>
+      <xs:documentation>
+        Tributação do ISSQN sobre o serviço prestado:
+        1 - Operação tributável;
+        2 - Exportação de serviço;
+        3 - Não Incidência;
+        4 - Imunidade;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -997,7 +1197,9 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSNumProcesso">
 		<xs:annotation>
-			<xs:documentation>Número do processo judicial ou administrativo de suspensão da exigibilidade.</xs:documentation>
+      <xs:documentation>
+        Número do processo judicial ou administrativo de suspensão da exigibilidade.
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="TSString">
 			<xs:whiteSpace value="preserve"/>
@@ -1007,7 +1209,16 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSTipoImunidadeISSQN">
 		<xs:annotation>
-			<xs:documentation>Identificação da Imunidade do ISSQN – somente para o caso de Imunidade. Tipos de Imunidades: 0 - Imunidade (tipo não informado na nota de origem); 1 - Patrimônio, renda ou serviços, uns dos outros (CF88, Art 150, VI, a); 2 - Templos de qualquer culto (CF88, Art 150, VI, b); 3 - Patrimônio, renda ou serviços dos partidos políticos, inclusive suas fundações, das entidades sindicais dos trabalhadores, das instituições de educação e de assistência social, sem fins lucrativos, atendidos os requisitos da lei (CF88, Art 150, VI, c); 4 - Livros, jornais, periódicos e o papel destinado a sua impressão (CF88, Art 150, VI, d); 5 - Fonogramas e videofonogramas musicais produzidos no Brasil contendo obras musicais ou literomusicais de autores brasileiros e/ou obras em geral interpretadas por artistas brasileiros bem como os suportes materiais ou arquivos digitais que os contenham, salvo na etapa de replicação industrial de mídias ópticas de leitura a laser. (CF88, Art 150, VI, e);</xs:documentation>
+      <xs:documentation>
+        Identificação da Imunidade do ISSQN – somente para o caso de Imunidade.
+        Tipos de Imunidades:
+        0 - Imunidade (tipo não informado na nota de origem);
+        1 - Patrimônio, renda ou serviços, uns dos outros (CF88, Art 150, VI, a);
+        2 - Templos de qualquer culto (CF88, Art 150, VI, b);
+        3 - Patrimônio, renda ou serviços dos partidos políticos, inclusive suas fundações, das entidades sindicais dos trabalhadores, das instituições de        educação e de assistência social, sem fins lucrativos, atendidos os requisitos da lei (CF88, Art 150, VI, c);
+        4 - Livros, jornais, periódicos e o papel destinado a sua impressão (CF88, Art 150, VI, d);
+        5 - Fonogramas e videofonogramas musicais produzidos no Brasil contendo obras musicais ou literomusicais de autores brasileiros e/ou obras em geral interpretadas por artistas brasileiros bem como os suportes materiais ou arquivos digitais que os contenham, salvo na etapa de replicação industrial de mídias ópticas de leitura a laser.   (CF88, Art 150, VI, e);
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1021,7 +1232,12 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSTipoRetISSQN">
 		<xs:annotation>
-			<xs:documentation>Tipo de retencao do ISSQN: 1 - Não Retido; 2 - Retido pelo Tomador; 3 - Retido pelo Intermediario;</xs:documentation>
+      <xs:documentation>
+        Tipo de retencao do ISSQN:
+        1 - Não Retido;
+        2 - Retido pelo Tomador;
+        3 - Retido pelo Intermediario;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1032,7 +1248,19 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSTipoCST">
 		<xs:annotation>
-			<xs:documentation>Código de Situação Tributária do PIS/COFINS (CST): 00 - Nenhum; 01 - Operação Tributável com Alíquota Básica; 02 - Operação Tributável com Alíquota Diferenciada; 03 - Operação Tributável com Alíquota por Unidade de Medida de Produto; 04 - Operação Tributável monofásica - Revenda a Alíquota Zero; 05 - Operação Tributável por Substituição Tributária; 06 - Operação Tributável a Alíquota Zero; 07 - Operação Tributável da Contribuição; 08 - Operação sem Incidência da Contribuição; 09 - Operação com Suspensão da Contribuição;</xs:documentation>
+      <xs:documentation>
+        Código de Situação Tributária do PIS/COFINS (CST):
+        00 - Nenhum;
+        01 - Operação Tributável com Alíquota Básica;
+        02 - Operação Tributável com Alíquota Diferenciada;
+        03 - Operação Tributável com Alíquota por Unidade de Medida de Produto;
+        04 - Operação Tributável monofásica - Revenda a Alíquota Zero;
+        05 - Operação Tributável por Substituição Tributária;
+        06 - Operação Tributável a Alíquota Zero;
+        07 - Operação Tributável da Contribuição;
+        08 - Operação sem Incidência da Contribuição;
+        09 - Operação com Suspensão da Contribuição;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1050,7 +1278,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSOpConsumServ">
 		<xs:annotation>
-			<xs:documentation>Opção para que o emitente informe onde ocorreu o consumo do serviço prestado. 0 - Consumo do serviço prestado ocorrido no município do local da prestação; 1 - Consumo do serviço prestado ocorrido ocorrido no exterior ;</xs:documentation>
+      <xs:documentation>
+        Opção para que o emitente informe onde ocorreu o consumo do serviço prestado.
+        0 - Consumo do serviço prestado ocorrido no município do local da prestação;
+        1 - Consumo do serviço prestado ocorrido ocorrido no exterior ;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1060,7 +1292,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSTipoRetPISCofins">
 		<xs:annotation>
-			<xs:documentation>Tipo de retencao do Pis/Cofins: 1 - Retido; 2 - Não Retido;</xs:documentation>
+      <xs:documentation>
+        Tipo de retencao do Pis/Cofins:
+        1 - Retido;
+        2 - Não Retido;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1070,7 +1306,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSTipoIndTotTrib">
 		<xs:annotation>
-			<xs:documentation>Indicador de informação de valor total de tributos. Possui valor fixo igual a zero (indTotTrib=0). Não informar nenhum valor estimado para os Tributos (Decreto 8.264/2014). 0 - Não;</xs:documentation>
+      <xs:documentation>
+        Indicador de informação de valor total de tributos. Possui valor fixo igual a zero (indTotTrib=0).
+        Não informar nenhum valor estimado para os Tributos (Decreto 8.264/2014).
+        0 - Não;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1079,7 +1319,12 @@
 	</xs:simpleType>
 	<xs:simpleType name="TStat">
 		<xs:annotation>
-			<xs:documentation>100 - NFS-e Gerada; 101 - NFS-e de Substituição Gerada; 102 - NFS-e de Decisão Judicial; 103 - NFS-e Avulsa;107 - NFS-e MEI;</xs:documentation>
+      <xs:documentation>
+        100 - NFS-e Gerada;
+        101 - NFS-e de Substituição Gerada;
+        102 - NFS-e de Decisão Judicial;
+        103 - NFS-e Avulsa;"
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1087,7 +1332,6 @@
 			<xs:enumeration value="101"/>
 			<xs:enumeration value="102"/>
 			<xs:enumeration value="103"/>
-			<xs:enumeration value="107"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="TSNumDPS">
@@ -1140,7 +1384,10 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCodTribNac">
 		<xs:annotation>
-			<xs:documentation>Código de tributação nacional do ISSQN: Regra de formação - 6 dígitos numéricos sendo: 2 para Item (LC 116/2003), 2 para Subitem (LC 116/2003) e 2 para Desdobro Nacional</xs:documentation>
+      <xs:documentation>
+        Código de tributação nacional do ISSQN:
+        Regra de formação - 6 dígitos numéricos sendo: 2 para Item (LC 116/2003), 2 para Subitem (LC 116/2003) e 2 para Desdobro Nacional
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1149,7 +1396,9 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCodNBS">
 		<xs:annotation>
-			<xs:documentation>Código da lista de Nomenclatura Brasileira de Serviços (NBS)</xs:documentation>
+      <xs:documentation>
+        Código da lista de Nomenclatura Brasileira de Serviços (NBS)
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1297,7 +1546,10 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSIdPedRefEvt">
 		<xs:annotation>
-			<xs:documentation>O identificador do pedido de registro do evento é formado conforme a concatenação dos seguintes campos: "PRE" + Chave de Acesso NFS-e + Tipo do evento + Número do Pedido de Registro do Evento (nPedRegEvento)</xs:documentation>
+      <xs:documentation>
+        O identificador do pedido de registro do evento é formado conforme a concatenação dos seguintes campos:
+        "PRE" + Chave de Acesso NFS-e + Tipo do evento + Número do Pedido de Registro do Evento (nPedRegEvento)
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1307,7 +1559,9 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSIdEvento">
 		<xs:annotation>
-			<xs:documentation>Identificador do evento: "EVT" + Chave de acesso(50) Tipo do evento (6) + Pedido de Registro do Evento(3) (nPedRegEvento)</xs:documentation>
+      <xs:documentation>
+        Identificador do evento: "EVT" + Chave de acesso(50) Tipo do evento (6) + Pedido de Registro do Evento(3) (nPedRegEvento)
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1317,7 +1571,9 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCodigoEventoNFSe">
 		<xs:annotation>
-			<xs:documentation>Código de evento da NFS-e</xs:documentation>
+      <xs:documentation>
+        Código de evento da NFS-e
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="e101101"/>
@@ -1331,7 +1587,9 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSIdNumEvento">
 		<xs:annotation>
-			<xs:documentation>Referência ao Id "Manifestação de rejeição da NFS-e" que originou o presente evento de anulação.</xs:documentation>
+      <xs:documentation>
+        Referência ao Id "Manifestação de rejeição da NFS-e" que originou o presente evento de anulação.
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1352,7 +1610,9 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSNumDFe">
 		<xs:annotation>
-			<xs:documentation>Número sequencial do documento gerado por ambiente gerador de DFe do município.</xs:documentation>
+      <xs:documentation>
+        Número sequencial do documento gerado por ambiente gerador de DFe do município.
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1378,7 +1638,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSSituacaoEmissaoNFSE">
 		<xs:annotation>
-			<xs:documentation>Situação Emissão NFS-e: 0 - Não Habilitado; 1 - Habilitado;</xs:documentation>
+      <xs:documentation>
+        Situação Emissão NFS-e:
+        0 - Não Habilitado;
+        1 - Habilitado;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1388,7 +1652,14 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCategoriaServico">
 		<xs:annotation>
-			<xs:documentation>Categorias do serviço: 1 - Locação; 2 - Sublocação; 3 - Arrendamento; 4 - Direito de passagem; 5 - Permissão de uso;</xs:documentation>
+      <xs:documentation>
+        Categorias do serviço:
+        1 - Locação;
+        2 - Sublocação;
+        3 - Arrendamento;
+        4 - Direito de passagem;
+        5 - Permissão de uso;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -1401,7 +1672,15 @@
 	</xs:simpleType>
 	<xs:simpleType name="TCObjetoLocacao">
 		<xs:annotation>
-			<xs:documentation>Tipo de objetos da locação, sublocação, arrendamento, direito de passagem ou permissão de uso: 1 - Ferrovia; 2 - Rodovia; 3 - Postes; 4 - Cabos; 5 - Dutos; 6 - Condutos de qualquer natureza;</xs:documentation>
+      <xs:documentation>
+        Tipo de objetos da locação, sublocação, arrendamento, direito de passagem ou permissão de uso:
+        1 - Ferrovia;
+        2 - Rodovia;
+        3 - Postes;
+        4 - Cabos;
+        5 - Dutos;
+        6 - Condutos de qualquer natureza;
+      </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
