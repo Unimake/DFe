@@ -436,11 +436,6 @@ namespace Unimake.Business.DFe.Utility
         public static T Deserializar<T>(string xml)
             where T : new()
         {
-            if (!Validate(xml))
-            {
-                return default;
-            }
-
             try
             {
                 xml = TratarFalhaXML(xml);
