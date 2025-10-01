@@ -96,19 +96,19 @@ begin
 
     // criar tag Dest
     oNFCom.InfNFCom.Dest := CreateOleObject('Unimake.Business.DFe.Xml.NFCom.Dest');
-    oNFCom.InfNFCom.Dest.CNPJ := '04218457000128';
+    oNFCom.InfNFCom.Dest.CNPJ := '11111111111111';
     oNFCom.InfNFCom.Dest.XNome := 'NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL';
     oNFCom.InfNFCom.Dest.IndIEDest := 9; // IndicadorIEDestinatario.NaoContribuinte
 
     oNFCom.InfNFCom.Dest.EnderDest := CreateOleObject('Unimake.Business.DFe.Xml.NFCom.EnderDest');
-    oNFCom.InfNFCom.Dest.EnderDest.XLgr := 'AVENIDA DA SAUDADE';
-    oNFCom.InfNFCom.Dest.EnderDest.Nro := '1555';
-    oNFCom.InfNFCom.Dest.EnderDest.XBairro := 'CAMPOS ELISEOS';
+    oNFCom.InfNFCom.Dest.EnderDest.XLgr := 'XXXXXXX XX XXXXXXX';
+    oNFCom.InfNFCom.Dest.EnderDest.Nro := '1111';
+    oNFCom.InfNFCom.Dest.EnderDest.XBairro := 'XXXXXX XXXXXX';
     oNFCom.InfNFCom.Dest.EnderDest.CMun := 3543402;
-    oNFCom.InfNFCom.Dest.EnderDest.XMun := 'RIBEIRAO PRETO';
+    oNFCom.InfNFCom.Dest.EnderDest.XMun := 'XXXXXXXX XXXXX';
     oNFCom.InfNFCom.Dest.EnderDest.UF := 35; // UFBrasil.SP
     oNFCom.InfNFCom.Dest.EnderDest.CEP := '14080000';
-    oNFCom.InfNFCom.Dest.EnderDest.Fone := '01236566650';
+    oNFCom.InfNFCom.Dest.EnderDest.Fone := '01231111111';
     oNFCom.InfNFCom.Dest.EnderDest.Email := 'teste@teste.com';
 
     //Criar tag assinante
@@ -318,3 +318,4 @@ begin
 end;
 
 end.
+
