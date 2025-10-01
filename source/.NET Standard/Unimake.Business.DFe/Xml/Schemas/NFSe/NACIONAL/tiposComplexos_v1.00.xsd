@@ -1787,15 +1787,6 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="pAliq" type="TSDec1V2" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>
-            Valor da alíquota (%) do serviço prestado relativo ao município sujeito ativo (município de incidência) do ISSQN.
-            Se o município de incidência pertence ao Sistema Nacional NFS-e a alíquota estará parametrizada e, portanto, será fornecida pelo sistema.
-            Se o município de incidência não pertence ao Sistema Nacional NFS-e a alíquota não estará parametrizada e, por isso, deverá ser fornecida pelo emitente.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="tpRetISSQN" type="TSTipoRetISSQN">
         <xs:annotation>
           <xs:documentation>
@@ -1806,6 +1797,15 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="pAliq" type="TSDec1V2" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Valor da alíquota (%) do serviço prestado relativo ao município sujeito ativo (município de incidência) do ISSQN.
+            Se o município de incidência pertence ao Sistema Nacional NFS-e a alíquota estará parametrizada e, portanto, será fornecida pelo sistema.
+            Se o município de incidência não pertence ao Sistema Nacional NFS-e a alíquota não estará parametrizada e, por isso, deverá ser fornecida pelo emitente.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>        
     </xs:sequence>
   </xs:complexType>
   <!--TIPO COMPLEXO PARA INFORMAÇÕES DE BENEFÍCIO MUNICIPAL-->
