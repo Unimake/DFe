@@ -1510,6 +1510,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CapitaoRS.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NF3e\MS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

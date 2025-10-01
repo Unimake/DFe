@@ -3035,4 +3035,10 @@
 		<ArqConfig>JaguapitaPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4304697">
+		<Nome>Capitão - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CapitaoRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
