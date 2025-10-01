@@ -205,12 +205,12 @@
 							<vTribRegCBS>8.12</vTribRegCBS>
 						</gTribRegular>
 						<gIBSCredPres>
-							<cCredPres>123456</cCredPres>
+							<cCredPres>12</cCredPres>
 							<pCredPres>7.1234</pCredPres>
 							<vCredPres>8.12</vCredPres>
 						</gIBSCredPres>
 						<gCBSCredPres>
-							<cCredPres>123456</cCredPres>
+							<cCredPres>12</cCredPres>
 							<pCredPres>7.1234</pCredPres>
 							<vCredPres>8.12</vCredPres>
 						</gCBSCredPres>

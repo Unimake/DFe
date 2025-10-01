@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFCom;
@@ -25,7 +26,7 @@ namespace Unimake.DFe.Test.NFCom
         [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
         public void EnviarNFComSincronoXml(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            var arqXML = "..\\..\\..\\NFCom\\Resources\\"+ "nfcom.xml";
+            var arqXML = "..\\..\\..\\NFCom\\Resources\\nfcom.xml";
 
             //Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
 
@@ -126,7 +127,7 @@ namespace Unimake.DFe.Test.NFCom
             autorizacaoSincNFCom.Executar();
         }
 
-        private Business.DFe.Xml.NFCom.NFCom MontarXMLNFCom(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        private static Business.DFe.Xml.NFCom.NFCom MontarXMLNFCom(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, TipoEmissao tpEmis = TipoEmissao.Normal)
         {
             var xml = new Business.DFe.Xml.NFCom.NFCom
             {
@@ -142,7 +143,7 @@ namespace Unimake.DFe.Test.NFCom
                         NNF = 123,
                         CNF = "1234567",
                         DhEmi = System.DateTime.Now,
-                        TpEmis = TipoEmissao.Normal,
+                        TpEmis = tpEmis,
                         NSiteAutoriz = "0",
                         CMunFG = "1234567",
                         FinNFCom = FinalidadeNFCom.Normal,
@@ -155,7 +156,10 @@ namespace Unimake.DFe.Test.NFCom
                         {
                             TpEnteGov = TipoEnteGovernamental.Estado,
                             PRedutor = 5.0000
-                        }
+                        },
+                        DhCont = (tpEmis == TipoEmissao.ContingenciaFSIA ? DateTime.Now : DateTime.MinValue),
+                        XJust = (tpEmis == TipoEmissao.ContingenciaFSIA ? "Teste de contingência com a NFCom" : string.Empty)
+
                     },
                     Emit = new Emit
                     {
@@ -226,8 +230,8 @@ namespace Unimake.DFe.Test.NFCom
                     {
                         ChNFComLocal = "12345678901234567890123456789012345678901234"
                     },
-                    Det = new System.Collections.Generic.List<Det>
-                    {
+                    Det =
+                    [
                         new Det
                         {
                             NItem = "1",
@@ -258,8 +262,8 @@ namespace Unimake.DFe.Test.NFCom
                                     PFCP = 1.190,
                                     VFCP = 111.47
                                 },
-                                ICMSUFDest = new System.Collections.Generic.List<ICMSUFDest>
-                                {
+                                ICMSUFDest =
+                                [
                                     new ICMSUFDest
                                     {
                                         CUFDest = ufBrasil,
@@ -271,7 +275,7 @@ namespace Unimake.DFe.Test.NFCom
                                         VICMSUFEmi = 158.55,
                                         CBenefUFDest = "11"
                                     }
-                                },
+                                ],
                                 PIS = new PIS
                                 {
                                     CST = CSTPisCofins.OperacaoComSuspensao,
@@ -383,13 +387,13 @@ namespace Unimake.DFe.Test.NFCom
                                         },
                                         GIBSCredPres = new GIBSCredPres
                                         {
-                                            CCredPres = "123456",
+                                            CCredPres = "12",
                                             PCredPres = 18.1234,
                                             VCredPres = 19.12
                                         },
                                         GCBSCredPres = new GCBSCredPres
                                         {
-                                            CCredPres = "123456",
+                                            CCredPres = "12",
                                             PCredPres = 18.1234,
                                             VCredPres = 19.12
                                         },
@@ -419,14 +423,14 @@ namespace Unimake.DFe.Test.NFCom
                                 VPIS = 123.48,
                                 VCOFINS = 123.48,
                                 VFCP = 123.48,
-                                GProc = new System.Collections.Generic.List<GProc>
-                                {
+                                GProc =
+                                [
                                     new GProc
                                     {
                                         TpProc = TipoProcessoNF3eNFCom.JusticaFederal,
                                         NProcesso = "12345678"
                                     }
-                                }
+                                ]
                             },
                             GRessarc = new GRessarc
                             {
@@ -437,7 +441,7 @@ namespace Unimake.DFe.Test.NFCom
                                 XObs = "Teste total da NFCom"
                             }
                         }
-                    },
+                    ],
                     Total = new Total
                     {
                         VProd = 1.54,
@@ -494,21 +498,21 @@ namespace Unimake.DFe.Test.NFCom
                         },
                         VTotDFe = 1.54
                     },
-                    AutXML = new System.Collections.Generic.List<AutXML>
-                    {
+                    AutXML =
+                    [
                         new AutXML
                         {
                             CNPJ = "06117473000150"
                         }
-                    },
+                    ],
                     InfAdic = new InfAdic
                     {
                         InfAdFisco = "teste total da NFCom",
-                        InfCpl = new System.Collections.Generic.List<string>
-                        {
+                        InfCpl =
+                        [
                             "Informacao 1",
                             "Informacao 2"
-                        }
+                        ]
                     },
                     GRespTec = new GRespTec
                     {
@@ -549,7 +553,54 @@ namespace Unimake.DFe.Test.NFCom
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var autorizacaoSincNFCom = new AutorizacaoSinc(xml, configuracao);
+            _ = new AutorizacaoSinc(xml, configuracao);
+        }
+
+        [Theory]
+        [Trait("DFe", "NFCom")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
+        public void EnviarNFComSincronoContingenciaDesserializacao(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var arqXML = "..\\..\\..\\NFCom\\Resources\\rtc\\RTC_nfcom_contingencia.xml";
+
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
+
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFCom.NFCom>(conteudoXML.OuterXml);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCom,
+                CodigoUF = (int)ufBrasil,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacaoSinc = new AutorizacaoSinc(xml, configuracao);
+            autorizacaoSinc.Executar();
+        }
+
+        [Theory]
+        [Trait("DFe", "NFCom")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
+        public void EnviarNFComSincronoContingencia(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var conteudoXML = MontarXMLNFCom(ufBrasil, tipoAmbiente, TipoEmissao.ContingenciaFSIA);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCom,
+                CodigoUF = (int)ufBrasil,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacaoSinc = new AutorizacaoSinc(conteudoXML, configuracao);
+            autorizacaoSinc.Executar();
         }
     }
 }

@@ -1537,7 +1537,7 @@ namespace Unimake.Business.DFe.Servicos
     #region TipoEmissao
 
     /// <summary>
-    /// Tipo de emissão do DF-e (NFe, NFCe, CTe, MDFe, etc...)
+    /// Tipo de emissão do DF-e (NFe, NFCe, CTe, MDFe, NFCom, NF3e, etc...)
     /// </summary>
     public enum TipoEmissao
     {
@@ -1548,7 +1548,7 @@ namespace Unimake.Business.DFe.Servicos
         Normal = 1,
 
         /// <summary>
-        /// 2 - Contingência FS-IA, com impressão do DANFE em formulário de segurança ou Para MDFe é impressão em formulário branco (sulfite)
+        /// 2 - Contingência FS-IA, com impressão do DANFE em formulário de segurança ou Para MDFe/NFCom/NF3e é impressão em formulário branco (sulfite)
         /// </summary>
         [XmlEnum("2")]
         ContingenciaFSIA = 2,
@@ -1593,13 +1593,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 9 - Contingência off-line da NFC-e
         /// </summary>
         [XmlEnum("9")]
-        ContingenciaOffLine = 9,
-
-        /// <summary>
-        /// 2 - Contingência off-line da NF3e e da NFCom
-        /// </summary>
-        [XmlEnum("2")]
-        ContingenciaOfflineNF3eNFCom = 10
+        ContingenciaOffLine = 9
     }
 
     #endregion

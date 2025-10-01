@@ -263,6 +263,16 @@ namespace Unimake.Business.DFe.Servicos
             Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
             ConteudoXML = conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML));
 
+            var validator = (XmlValidatorBase)(ValidatorFactory.BuidValidator(ConteudoXML.InnerXml));
+            var validou = (validator?.Validate() ?? true);
+
+            Warnings = validator?.Warnings;
+
+            if (!validou)
+            {
+                return;
+            }
+
             if (!Configuracoes.Definida)
             {
                 DefinirConfiguracao();
@@ -348,16 +358,6 @@ namespace Unimake.Business.DFe.Servicos
 #endif
         public virtual void Executar()
         {
-            var validator = (XmlValidatorBase)(ValidatorFactory.BuidValidator(ConteudoXML.InnerXml));
-            var validou = (validator?.Validate() ?? true);
-            
-            Warnings = validator?.Warnings;
-
-            if (!validou)
-            {
-                return;
-            }
-
             if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && Configuracoes.NaoAssina != null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
             {
                 if (!AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))

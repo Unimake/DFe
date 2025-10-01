@@ -194,11 +194,11 @@ object frmPrincipal: TfrmPrincipal
   end
   object GroupBox4: TGroupBox
     Left = 1136
-    Height = 624
+    Height = 618
     Top = 0
     Width = 350
     Caption = 'NFS-e'
-    ClientHeight = 594
+    ClientHeight = 588
     ClientWidth = 346
     TabOrder = 5
     object BtnBETHAGerarNFSe: TButton
@@ -294,11 +294,11 @@ object frmPrincipal: TfrmPrincipal
   end
   object GroupBox5: TGroupBox
     Left = 1488
-    Height = 622
+    Height = 468
     Top = 0
     Width = 376
     Caption = 'NFCom'
-    ClientHeight = 592
+    ClientHeight = 438
     ClientWidth = 372
     TabOrder = 6
     object BtnConsultarStatusNFCom: TToggleBox
@@ -318,6 +318,25 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Enviar NFCom Síncrono'
       TabOrder = 1
       OnClick = BtnEnviarNFComSincronoClick
+    end
+  end
+  object GroupBox6: TGroupBox
+    Left = 1488
+    Height = 566
+    Top = 472
+    Width = 374
+    Caption = 'MDF-e'
+    ClientHeight = 536
+    ClientWidth = 370
+    TabOrder = 7
+    object BtnEnviarMDFeSincrono: TToggleBox
+      Left = 4
+      Height = 38
+      Top = 0
+      Width = 355
+      Caption = 'Enviar MDFe modo síncrono'
+      TabOrder = 0
+      OnClick = BtnEnviarMDFeSincronoClick
     end
   end
 end

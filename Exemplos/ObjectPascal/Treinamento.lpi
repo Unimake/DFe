@@ -159,6 +159,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFComSincrono"/>
       </Unit>
+      <Unit>
+        <Filename Value="enviarmdfesincrono.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarMDFeSincrono"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

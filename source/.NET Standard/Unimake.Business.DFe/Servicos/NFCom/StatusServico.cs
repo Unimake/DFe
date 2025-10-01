@@ -53,11 +53,6 @@ namespace Unimake.Business.DFe.Servicos.NFCom
             {
                 if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    if (Configuracoes.CodigoUF == (int)UFBrasil.MG)
-                    {
-                        return XMLUtility.Deserializar<RetConsStatServNFComMG>(RetornoWSXML);
-                    }
-
                     return XMLUtility.Deserializar<RetConsStatServNFCom>(RetornoWSXML);
                 }
 

@@ -80,7 +80,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
                     Modelo = (ModeloDFe)(int)Ide.Mod,
                     Serie = Ide.Serie,
                     NumeroDoctoFiscal = Ide.NNF,
-                    TipoEmissao = (TipoEmissao)(int)Ide.TpEmis,
+                    TipoEmissao = Ide.TpEmis,
                     NSiteAutoriz = Ide.NSiteAutoriz,
                     CodigoNumerico = Ide.CNF
                 };
