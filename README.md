@@ -5,6 +5,7 @@
 [![NuGet](https://img.shields.io/nuget/v/Unimake.DFe.svg?logo=nuget)](https://www.nuget.org/packages/Unimake.DFe/)
 [![Documentação](https://img.shields.io/badge/docs-Wiki-blue)](https://wiki.unimake.com.br/index.php/Manuais:Unimake.DFe)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](#)
+[![Discord](https://img.shields.io/discord/936980012257652788?label=Discord&logo=discord&logoColor=white&color=5865F2)](https://discord.gg/JhCEhbfK)
 
 ---
 
