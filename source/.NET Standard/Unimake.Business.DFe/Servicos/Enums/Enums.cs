@@ -16715,6 +16715,202 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion Tipo Emitente NFS-e NACIONAL
 
+    #region Optante Simples NACIONAL NFS-e NACIONAL
+    /// <summary>
+    /// Situação perante o Simples Nacional
+    /// </summary>
+    public enum OptSimplesNacional
+    {
+        /// <summary>
+        /// 1 - Não Optante
+        /// </summary>
+        [XmlEnum("1")]
+        NaoOptante = 1,
+
+        /// <summary>
+        /// Optante - Microempreendedor Individual (MEI)
+        /// </summary>
+        [XmlEnum("2")]
+        MEI = 2,
+
+        /// <summary>
+        /// 3 - Optante - Microempresa ou Empresa de Pequeno Porte (ME/EPP)
+        /// </summary>
+        [XmlEnum("3")]
+        ME_EPP = 3,
+    }
+    #endregion Optante Simples NACIONAL NFS-e NACIONAL
+
+    #region Regime de apuração de tributos NFS-e NACIONAL
+    /// <summary>
+    /// Opção para que o contribuinte optante pelo Simples Nacional ME/EPP (opSimpNac = 3) possa indicar, ao emitir o documento fiscal, em qual regime de apuração os tributos federais e municipal estão inseridos, caso tenha ultrapassado algum sublimite ou limite definido para o Simples Nacional.
+    /// </summary>
+    public enum RegApTribSN
+    {
+        /// <summary>
+        /// 1 – Regime de apuração dos tributos federais e municipal pelo SN
+        /// </summary>
+        [XmlEnum("1")]
+        RegApurTribSN = 1,
+
+        /// <summary>
+        /// 2 – Regime de apuração dos tributos federais pelo SN e ISSQN  por fora do SN conforme respectiva legislação municipal do tributo
+        /// </summary>
+        [XmlEnum("2")]
+        RegApurTribFedSN_ISSQNforaSN = 2,
+
+        /// <summary>
+        /// 3 – Regime de apuração dos tributos federais e municipal por fora do SN conforme respectivas legilações federal e municipal de cada tributo
+        /// </summary>
+        [XmlEnum("3")]
+        RegApurTribFedEISSQNforaSN = 3,
+    }
+    #endregion Regime de apuração de tributos NFS-e NACIONAL
+
+    #region Tipo de regimes especiais de tributação NFS-e NACIONAL
+    /// <summary>
+    /// Tipos de Regimes Especiais de Tributação
+    /// </summary>
+    public enum RegEspTrib
+    {
+        /// <summary>
+        /// 0 - Nenhum
+        /// </summary>
+        [XmlEnum("0")]
+        Nenhum = 0,
+
+        /// <summary>
+        /// 1 - Ato Cooperado (Cooperativa)
+        /// </summary>
+        [XmlEnum("1")]
+        Cooperativa = 1,
+
+        /// <summary>
+        /// 2 - Estimativa
+        /// </summary>
+        [XmlEnum("2")]
+        Estimativa = 2,
+
+        /// <summary>
+        /// 3 - Microempresa Municipal
+        /// </summary>
+        [XmlEnum("3")]
+        MicroempresaMunicipal = 3,
+
+        /// <summary>
+        /// 4 - Notário ou Registrador
+        /// </summary>
+        [XmlEnum("4")]
+        NotarioRegistrador = 4,
+
+        /// <summary>
+        /// 5 - Profissional Autônomo
+        /// </summary>
+        [XmlEnum("5")]
+        ProfissionalAutonomo = 5,
+
+        /// <summary>
+        /// 6 - Sociedade de Profissionais
+        /// </summary>
+        [XmlEnum("6")]
+        SociedadeProfissionais = 6,
+    }
+    #endregion Tipo de regimes especiais de tributação NFS-e NACIONAL
+
+    #region Opção para que o emitente informe onde ocorreu o consumo do serviço prestado
+    /// <summary>
+    /// Opção para que o emitente informe onde ocorreu o consumo do serviço prestado
+    /// </summary>
+    public enum OpConsumServ
+    {
+        /// <summary>
+        /// 0 - Consumo do serviço prestado ocorrido no município do local da prestação
+        /// </summary>
+        [XmlEnum("0")]
+        MunicipioLocal = 0,
+
+        /// <summary>
+        /// 1 - Consumo do serviço prestado ocorrido ocorrido no exterior
+        /// </summary>
+        [XmlEnum("")]
+        Exterior = 1,
+    }
+    #endregion Opção para que o emitente informe onde ocorreu o consumo do serviço prestado
+
+    #region Categoria de veículo para cobrança
+    /// <summary>
+    /// Categoria de veículo para cobrança
+    /// </summary>
+    public enum CategVeic
+    {
+        /// <summary>
+        /// 00 - Categoria de Veículos (tipo não informado na nota de origem)
+        /// </summary>
+        [XmlEnum("00")]
+        NaoInformado = 00,
+
+        /// <summary>
+        /// 01 - Automóvel, caminhonete e furgão
+        /// </summary>
+        [XmlEnum("01")]
+        AutomovelCaminhoneteFurgao = 01,
+
+        /// <summary>
+        /// 02 - Caminhão leve, ônibus, caminhão trator e furgão
+        /// </summary>
+        [XmlEnum("02")]
+        CaminhaoLeveOnibusCaminhaoTratorFurgao = 02,
+
+        /// <summary>
+        /// 03 - Automóvel e caminhonete com semireboque
+        /// </summary>
+        [XmlEnum("03")]
+        AutomovelCaminhoneteComSemireboque = 03,
+
+        /// <summary>
+        /// 04 - Caminhão, caminhão-trator, caminhão-trator com semi-reboque e ônibus
+        /// </summary>
+        [XmlEnum("04")]
+        CaminhaoCaminhaoTratorCaminhaoTratorComSemireboqueOnibus = 04,
+
+        /// <summary>
+        /// 05 - Automóvel e caminhonete com reboque
+        /// </summary>
+        [XmlEnum("05")]
+        AutomovelCaminhoneteComReboque = 05,
+
+        /// <summary>
+        /// 06 - Caminhão com reboque
+        /// </summary>
+        [XmlEnum("06")]
+        CaminhaoComReboque = 06,
+
+        /// <summary>
+        /// 07 - Caminhão trator com semi-reboque
+        /// </summary>
+        [XmlEnum("07")]
+        CaminhaotratorComSemireboque = 07,
+
+        /// <summary>
+        /// 08 - Motocicletas, motonetas e bicicletas motorizadas
+        /// </summary>
+        [XmlEnum("08")]
+        MotocicletasMotonetasEBicicletasMotorizadas = 08,
+
+        /// <summary>
+        /// 09 - Veículo especial
+        /// </summary>
+        [XmlEnum("09")]
+        VeiculoEspecial = 09,
+
+        /// <summary>
+        /// 10 - Veiculo Isento
+        /// </summary>
+        [XmlEnum("10")]
+        VeiculoIsento = 10,
+    }
+    #endregion Categoria de veículo para cobrança
+
     #endregion NFS-e NACIONAL
 
 
