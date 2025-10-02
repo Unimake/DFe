@@ -43,7 +43,7 @@ var
 begin
   // Criar objeto de configuração mínima
   oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
-  oConfiguracao.TipoDFe := 15; //0=NFCe ###
+  oConfiguracao.TipoDFe := 15; //15=NFCom ###
   oConfiguracao.TipoEmissao := 1; //1=Normal
   oConfiguracao.CertificadoArquivo := 'C:\Projetos\certificados\UnimakePV.pfx';
   oConfiguracao.CertificadoSenha := '12345678';
