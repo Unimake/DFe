@@ -152,5 +152,22 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var docCriado = criado.GerarXML();
             Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
         }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\GerarNfseEnvio-env-loterps.xml")]
+        public void GerarNfseNACIONAL(string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+            docFixture.Load(caminhoXml);
+
+            var lido = new GerarNfse().LerXML<GerarNfse>(docFixture);
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+        }
     }
 }
