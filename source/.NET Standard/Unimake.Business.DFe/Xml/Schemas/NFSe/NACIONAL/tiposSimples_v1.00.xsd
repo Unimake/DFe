@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.sped.fazenda.gov.br/nfse"
-           xmlns="http://www.sped.fazenda.gov.br/nfse"
-           attributeFormDefault="unqualified"
-           elementFormDefault="qualified">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.sped.fazenda.gov.br/nfse" xmlns="http://www.sped.fazenda.gov.br/nfse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<xs:simpleType name="TVerNFSe">
 		<xs:annotation>
@@ -239,6 +235,24 @@
 			<xs:enumeration value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
+  <xs:simpleType name="TSMotivoEmisTI">
+    <xs:annotation>
+      <xs:documentation>
+        Motivo da Emissão da DPS pelo Tomador/Intermediário:
+        1 - Importação de Serviço;
+        2 - Tomador/Intermediário obrigado a emitir NFS-e por legislação municipal;
+        3 - Tomador/Intermediário emitindo NFS-e por recusa de emissão pelo prestador;
+        4 - Tomador/Intermediário emitindo por rejeitar a NFS-e emitida pelo prestador;
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
 	<xs:simpleType name="TSChaveNFSe">
 		<xs:annotation>
 			<xs:documentation>Tipo Chave da Nota Fiscal de Serviço Eletrônica</xs:documentation>
@@ -717,7 +731,7 @@
 		<xs:annotation>
       <xs:documentation>
         Vínculo entre as partes no negócio:
-        0 - Sem vínculo com o tomador/ Prestador
+        0 - Sem vínculo com o Tomador/Prestador
         1 - Controlada;
         2 - Controladora;
         3 - Coligada;
@@ -728,6 +742,7 @@
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
+      <xs:enumeration value="0"/>
 			<xs:enumeration value="1"/>
 			<xs:enumeration value="2"/>
 			<xs:enumeration value="3"/>
@@ -831,11 +846,11 @@
 	<xs:simpleType name="TSMovTempBens">
 		<xs:annotation>
       <xs:documentation>
-        Operação está vinculada à Movimentação Temporária de Bens:
+        Vínculo da Operação à Movimentação Temporária de Bens:
         0 - Desconhecido (tipo não informado na nota de origem);
-        1 - Não
-        2 - Vinculada - Declaração de Importação
-        3 - Vinculada - Declaração de Exportação
+        1 - Não;
+        2 - Vinculada - Declaração de Importação;
+        3 - Vinculada - Declaração de Exportação;
       </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
@@ -850,18 +865,17 @@
 		<xs:annotation>
       <xs:documentation>
         Categorias de veículos para cobrança:
-        00 - Categoria de Veículos (tipo não informado na nota de origem);
+        00 - Categoria de veículos (tipo não informado na nota de origem)
         01 - Automóvel, caminhonete e furgão;
         02 - Caminhão leve, ônibus, caminhão trator e furgão;
         03 - Automóvel e caminhonete com semireboque;
         04 - Caminhão, caminhão-trator, caminhão-trator com semi-reboque e ônibus;
         05 - Automóvel e caminhonete com reboque;
-        06 - Caminhão com reboque e caminhãotrator com semi-reboque;
-        07 - Caminhão com reboque e caminhãotrator com semi-reboque;
-        08 - Caminhão com reboque e caminhãotrator com semi-reboque;
-        09 - Motocicletas, motonetas e bicicletas motorizadas;
-        10 - Veículo especial;
-        11 - Veículo Isento;
+        06 - Caminhão com reboque;
+        07 - Caminhão trator com semi-reboque;
+        08 - Motocicletas, motonetas e bicicletas motorizadas;
+        09 - Veículo especial;
+        10 - Veículo Isento;
       </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
@@ -877,7 +891,6 @@
 			<xs:enumeration value="08"/>
 			<xs:enumeration value="09"/>
 			<xs:enumeration value="10"/>
-			<xs:enumeration value="11"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="TSNumDocImport">
@@ -1061,25 +1074,18 @@
 			<xs:maxLength value="150"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="TSOpTipoBM">
+  <xs:simpleType name="TSNumBeneficioMunicipal">
 		<xs:annotation>
       <xs:documentation>
-        Tipo do Benefício Municipal:
-        1 - Alíquota Diferenciada;
-        2 - Redução da BC;
-        3 - Isenção;
+        Identificador do benefício parametrizado pelo município.
+
+        Trata-se de um identificador único que foi gerado pelo Sistema Nacional no momento em que o município de incidência do ISSQN incluiu o benefício no sistema.
+        
+        Critério de formação do número de identificação de parâmetros municipais:   
+        7 dígitos - posição 1 a 7: número identificador do Município, conforme código IBGE;
+        2 dígitos - posições 8 e 9 : número identificador do tipo de parametrização (01-legislação, 02-regimes especiais, 03-retenções, 04-outros benefícios);
+        5 dígitos - posição 10 a 14 : número sequencial definido pelo sistema quando do registro específico do parâmetro dentro do tipo de parametrização no sistema;
       </xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:whiteSpace value="preserve"/>
-			<xs:enumeration value="1"/>
-			<xs:enumeration value="2"/>
-			<xs:enumeration value="3"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="TSNumBeneficioMunicipal">
-		<xs:annotation>
-			<xs:documentation>Identificador do benefício municipal parametrizado pelo município</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:pattern value="[0-9]{14}"/>
@@ -1182,9 +1188,9 @@
       <xs:documentation>
         Tributação do ISSQN sobre o serviço prestado:
         1 - Operação tributável;
-        2 - Exportação de serviço;
-        3 - Não Incidência;
-        4 - Imunidade;
+        2 - Imunidade;
+        3 - Exportação de serviço;
+        4 - Não Incidência;
       </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
@@ -1317,6 +1323,25 @@
 			<xs:enumeration value="0"/>
 		</xs:restriction>
 	</xs:simpleType>
+  <xs:simpleType name="TBMISSQN">
+    <xs:annotation>
+      <xs:documentation>
+		  Tipo Benefício Municipal (BM):
+
+		  1) Isenção;
+		  2) Redução da BC em 'ppBM' %;
+		  3) Redução da BC em R$ 'vInfoBM';
+		  4) Alíquota Diferenciada de 'aliqDifBM' %;
+	  </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+    <xs:whiteSpace value="preserve"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+	</xs:restriction>
+  </xs:simpleType>
 	<xs:simpleType name="TStat">
 		<xs:annotation>
       <xs:documentation>
@@ -1384,8 +1409,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="TSCodTribNac">
 		<xs:annotation>
-      <xs:documentation>
-        Código de tributação nacional do ISSQN:
+      <xs:documentation>Código de tributação nacional do ISSQN:
         Regra de formação - 6 dígitos numéricos sendo: 2 para Item (LC 116/2003), 2 para Subitem (LC 116/2003) e 2 para Desdobro Nacional
       </xs:documentation>
 		</xs:annotation>
