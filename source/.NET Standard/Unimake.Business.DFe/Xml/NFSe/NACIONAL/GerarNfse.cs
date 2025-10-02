@@ -134,16 +134,28 @@ public DateTimeOffset DCompet { get; set; }
         public TipoEmitenteNFSe TpEmit { get; set; }
 
         /// <summary>
+        /// Motivo da Emissão da DPS pelo Tomador/Intermediário
+        /// </summary>
+        [XmlElement("cMotivoEmisTI")]
+        public string CMotivoEmisTI { get; set; }
+
+        /// <summary>
+        /// Chave de acesso rejeitada pelo Tomador/Intermediário
+        /// </summary>
+        [XmlElement("chNFSeRej")]
+        public string ChNFSeRej { get; set; }
+
+        /// <summary>
         /// Código de município de emissão da NFS-e
         /// </summary>
-        [XmlElement("cLocEmit")]
-        public int CLocEmit { get; set; }
+        [XmlElement("cLocEmi")]
+        public int CLocEmi { get; set; }
 
         /// <summary>
         /// Grupo para NFSe Substituida
         /// </summary>
-        [XmlElement("subs")]
-        public Subs Subs { get; set; }
+        [XmlElement("subst")]
+        public Subst Subst { get; set; }
 
         /// <summary>
         /// Dados do Prestador de Serviço
@@ -175,14 +187,20 @@ public DateTimeOffset DCompet { get; set; }
         [XmlElement("valores")]
         public Valores Valores { get; set; }
 
+        #region Should Serialize
+        public bool ShouldSerializeCMotivoEmisTI() => !string.IsNullOrWhiteSpace(CMotivoEmisTI);
+
+        public bool ShouldSerializeChNFSeRej() => !string.IsNullOrWhiteSpace(ChNFSeRej);
+        #endregion Should Serialize
+
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Subs")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Subst")]
     [ComVisible(true)]
 #endif
-    public class Subs
+    public class Subst
     {
         /// <summary>
         /// Chave de Acesso da NFS-e substituída
@@ -218,13 +236,13 @@ public DateTimeOffset DCompet { get; set; }
         public string NIF { get; set; }
 
         [XmlElement("cNaoNIF")]
-        public IndicativoNIF CNaoNIF { get; set; }
+        public string CNaoNIF { get; set; }
 
         [XmlElement("CAEPF")]
         public int CAEPF { get; set; }
 
         [XmlElement("IM")]
-        public int IM { get; set; }
+        public string IM { get; set; }
 
         [XmlElement("xNome")]
         public string XNome { get; set; }
@@ -245,6 +263,7 @@ public DateTimeOffset DCompet { get; set; }
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeNIF() => !string.IsNullOrWhiteSpace(NIF);
+        public bool ShouldSerializeCNaoNIF() => !string.IsNullOrWhiteSpace(CNaoNIF); 
         public bool ShouldSerializeCAEPF() => CAEPF > 0;
         public bool ShouldSerializexNome() => !string.IsNullOrWhiteSpace(XNome);
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
@@ -262,9 +281,6 @@ public DateTimeOffset DCompet { get; set; }
                 count++;
             }
             if (!string.IsNullOrWhiteSpace(NIF))
-            {
-                count++;
-            }
             {
                 count++;
             }
@@ -358,18 +374,17 @@ public DateTimeOffset DCompet { get; set; }
     public class RegTrib
     {
         [XmlElement("opSimpNac")]
-        public int OpSimpNac { get; set; }
+        public OptSimplesNacional OpSimpNac { get; set; }
 
         [XmlElement("regApTribSN")]
-        public int RegApTribSN { get; set; }
+        public RegApTribSN? RegApTribSN { get; set; }
 
         [XmlElement("regEspTrib")]
-        public int RegEspTrib { get; set; }
+        public RegEspTrib RegEspTrib { get; set; }
 
         #region Should Serialize
-        public bool ShouldSerializeRegApTribSN() => RegApTribSN > 0;
+        public bool ShouldSerializeRegApTribSN() => RegApTribSN.HasValue;
         #endregion Should Serialize
-
     }
 
 #if INTEROP
@@ -389,7 +404,7 @@ public DateTimeOffset DCompet { get; set; }
         public string NIF { get; set; }
 
         [XmlElement("cNaoNIF")]
-        public IndicativoNIF CNaoNIF { get; set; }
+        public string CNaoNIF { get; set; }
 
         [XmlElement("CAEPF")]
         public int CAEPF { get; set; }
@@ -413,6 +428,7 @@ public DateTimeOffset DCompet { get; set; }
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeNIF() => !string.IsNullOrWhiteSpace(NIF);
+        public bool ShouldSerializeCNaoNIF() => !string.IsNullOrWhiteSpace(CNaoNIF);
         public bool ShouldSerializeCAEPF() => CAEPF > 0;
         public bool ShouldSerializexNome() => !string.IsNullOrWhiteSpace(XNome);
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
@@ -474,6 +490,9 @@ public DateTimeOffset DCompet { get; set; }
         [XmlElement("atvEvento")]
         public AtvEvento AtvEvento { get; set; }
 
+        [XmlElement("explRod")]
+        public ExplRod ExplRod { get; set; }
+
         [XmlElement("infoCompl")]
         public InfoCompl InfoCompl { get; set; }
 
@@ -492,10 +511,13 @@ public DateTimeOffset DCompet { get; set; }
         [XmlElement("cPaisPrestacao")]
         public string CPaisPrestacao { get; set; }
 
+        [XmlElement("opConsumServ")]
+        public OpConsumServ? OpConsumServ { get; set; }
+
         #region ShouldSerialize
         public bool ShouldSerializeCLocPrestacao() => CLocPrestacao > 0;
         public bool ShouldSerializeCPaisPrestacao() => !string.IsNullOrWhiteSpace(CPaisPrestacao);
-
+        public bool ShouldSerializeOpConsumServ() => OpConsumServ.HasValue;
         public void ValidarLocalPrestacao()
         {
             if ((CLocPrestacao == 0 && string.IsNullOrWhiteSpace(CPaisPrestacao)) || (CLocPrestacao > 0 && !string.IsNullOrWhiteSpace(CPaisPrestacao)))
@@ -515,7 +537,7 @@ public DateTimeOffset DCompet { get; set; }
     public class CServ
     {
         [XmlElement("cTribNac")]
-        public int CTribNac { get; set; }
+        public string CTribNac { get; set; }
 
         [XmlElement("cTribMun")]
         public int CTribMun { get; set; }
@@ -533,6 +555,7 @@ public DateTimeOffset DCompet { get; set; }
         #region Should Serialize
         public bool ShouldSerializeCTribMun() => CTribMun > 0;
         public bool ShouldSerializeCIntContrib() => CIntContrib > 0;
+        public bool ShouldSerializeCNBS() => CNBS > 0;
         #endregion Should Serialize
     }
 
@@ -583,6 +606,7 @@ public DateTimeOffset DCompet { get; set; }
         #region Should Serialize
         public bool ShouldSerializeNDI() => NDI > 0;
         public bool ShouldSerializeNRE() => NRE > 0;
+        public bool ShouldSerializeMDic() => MDic > 0;
         #endregion Should Serialize
 
     }
@@ -650,8 +674,8 @@ public DateTimeOffset DCompet { get; set; }
 #endif
     public class AtvEvento
     {
-        [XmlElement("desc")]
-        public string Desc { get; set; }
+        [XmlElement("xNome")]
+        public string XNome { get; set; }
 
         [XmlIgnore]
 #if INTEROP
@@ -695,8 +719,8 @@ public DateTimeOffset DtFim { get; set; }
 #endif
         }
 
-        [XmlElement("id")]
-        public int Id { get; set; }
+        [XmlElement("idAtvEvt")]
+        public int IdAtvEvt { get; set; }
 
         [XmlElement("end")]
         public ServEnd End { get; set; }
@@ -740,6 +764,32 @@ public DateTimeOffset DtFim { get; set; }
             }
         }
         #endregion Should Serialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.ExplRod")]
+    [ComVisible(true)]
+#endif
+    public class ExplRod
+    {
+        [XmlElement("categVeic")]
+        public CategVeic CategVeic { get; set; }
+
+        [XmlElement("nEixos")]
+        public int NEixos { get; set; }
+
+        [XmlElement("sentido")]
+        public string Sentido { get; set; }
+
+        [XmlElement("placa")]
+        public string Placa { get; set; }
+
+        [XmlElement("codAcessoPed")]
+        public string CodAcessoPed { get; set; }
+
+        [XmlElement("codContrato")]
+        public string CodContrato { get; set; }
     }
 
 #if INTEROP
@@ -1043,8 +1093,8 @@ public DateTimeOffset DtEmiDoc { get; set; }
         [XmlElement("tribMun")]
         public TribMun TribMun { get; set; }
 
-        [XmlElement("tribNac")]
-        public TribNac TribNac { get; set; }
+        [XmlElement("tribFed")]
+        public TribFed TribFed { get; set; }
 
         [XmlElement("totTrib")]
         public TotTrib TotTrib { get; set; }
@@ -1071,7 +1121,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
         public ExigSusp ExigSusp { get; set; }
 
         [XmlElement("tpImunidade")]
-        public TipoImunidadeISSQN TpImunidade { get; set; }
+        public TipoImunidadeISSQN? TpImunidade { get; set; }
 
         [XmlIgnore]
         public double PAliq { get; set; }
@@ -1088,7 +1138,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
 
         #region Should Serialize
         public bool ShouldSerializeCPaisResult() => !string.IsNullOrWhiteSpace(CPaisResult);
-        public bool ShouldSerializeTpImunidade() => !string.IsNullOrWhiteSpace(TpImunidade.ToString());
+        public bool ShouldSerializeTpImunidade() => TpImunidade.HasValue;
         public bool ShouldSerializePAliqField() => PAliq > 0;
 
         #endregion Should Serialize
@@ -1149,7 +1199,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
     [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.TribFed")]
     [ComVisible(true)]
 #endif
-    public class TribNac
+    public class TribFed
     {
         [XmlElement("piscofins")]
         public PISCOFINS PISCOFINS { get; set; }
@@ -1281,6 +1331,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
 
 
         #region Should Serialize
+        public bool ShouldSerializeIndTotTrib() => IndTotTrib > 0;
         public void ValidarTotaisTributacao()
         {
             if (VTotTrib == null && PTotTrib == null)
@@ -1647,7 +1698,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
         public string NIF { get; set; }
 
         [XmlElement("cNaoNIF")]
-        public IndicativoNIF CNaoNIF { get; set; }
+        public string CNaoNIF { get; set; }
 
         [XmlElement("xNome")]
         public string XNome { get; set; }
@@ -1711,6 +1762,7 @@ public DateTimeOffset DtCompDoc { get; set; }
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeNIF() => !string.IsNullOrWhiteSpace(NIF);
+        public bool ShouldSerializeCNaoNIF() => !string.IsNullOrWhiteSpace(CNaoNIF);
         public bool ShouldSerializeXTpReeRepRes() => !string.IsNullOrWhiteSpace(XTpReeRepRes);
         public void ValidarDocUnico()
         {
@@ -1770,7 +1822,7 @@ public DateTimeOffset DtCompDoc { get; set; }
         public GDif GDif { get; set; }
 
         #region Should Serialize
-        public bool ShloudSerializeCCredPres() => CCredPres > 0;
+        public bool ShouldSerializeCCredPres() => CCredPres > 0;
         #endregion Should Serialize
     }
 
