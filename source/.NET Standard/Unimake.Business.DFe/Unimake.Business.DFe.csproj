@@ -3550,7 +3550,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\tiposSimples_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\xmldsig-core-schema.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\xmldsig-core-schema_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
