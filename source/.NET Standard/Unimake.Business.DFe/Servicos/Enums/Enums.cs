@@ -7233,6 +7233,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("SOFTPLAN")]
         SOFTPLAN = 87,
+
+        /// <summary>
+        /// BETHA_CLOUD
+        /// </summary>
+        [Description("BETHA_CLOUD")]
+        BETHA_CLOUD = 88,
     }
 
     #endregion
