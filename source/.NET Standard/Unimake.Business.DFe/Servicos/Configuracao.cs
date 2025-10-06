@@ -130,7 +130,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         /// <param name="arquivo">Nome do arquivo que é para ler o conteúdo</param>
         /// <returns>Stream do arquivo de configuração contido nos recursos da DLL</returns>
-        private Stream LoadXmlConfig(string arquivo) => _assembly.GetManifestResourceStream(arquivo);
+        public Stream LoadXmlConfig(string arquivo) => _assembly.GetManifestResourceStream(arquivo);
 
         /// <summary>
         /// Ler as configurações do XML
