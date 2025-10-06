@@ -18,7 +18,8 @@ uses
   BETHACancelarNFSe, BETHAEnviarLoteRPSSincrono, BETHAConsultarNFSeRPS,
   BETHAConsultarLoteRPS, NACIONALGerarNFSe, NACIONALCancelarNFSe,
   NACIONALConsultarNFSe, NACIONALConsultarNFSePDF, NACIONALConsultarNFSeRPS,
-  EventoCCENFe, InutilizacaoNumeroNFe, ConsultarStatusNFCom, EnviarNFComSincrono
+  EventoCCENFe, InutilizacaoNumeroNFe, ConsultarStatusNFCom,
+  EnviarNFComSincrono, EnviarMDFeSincrono
   { you can add units after this };
 
 {$R *.res}

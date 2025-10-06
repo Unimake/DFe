@@ -68,7 +68,7 @@
 		</ConsultarNfse>
 		<ConsultarNfsePDF versao="1.00">
 			<Descricao>Consultar NFSe PDF</Descricao>
-			<RequestURIProducao>https://adn.nfse.gov.br/sefinnacional/danfse/{Chave}</RequestURIProducao>
+			<RequestURIProducao>https://adn.nfse.gov.br/danfse/{Chave}</RequestURIProducao>
 			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/danfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>

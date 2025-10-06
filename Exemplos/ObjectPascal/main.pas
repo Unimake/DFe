@@ -15,7 +15,7 @@ uses
   BETHAConsultarNFSeRPS, BETHAConsultarLoteRPS, NACIONALGerarNFSe,
   NACIONALCancelarNFSe, NACIONALConsultarNFSe, NACIONALConsultarNFSeRPS,
   NACIONALConsultarNFSePDF, EventoCCENFe, InutilizacaoNumeroNFe,
-  ConsultarStatusNFCom, EnviarNFComSincrono;
+  ConsultarStatusNFCom, EnviarNFComSincrono, EnviarMDFeSincrono;
 
 type
 
@@ -56,6 +56,8 @@ type
     BtnBETHAConsultarNfseRps: TButton;
     GroupBox5: TGroupBox;
     BtnConsultarStatusNFCom: TToggleBox;
+    GroupBox6: TGroupBox;
+    BtnEnviarMDFeSincrono: TToggleBox;
     procedure BtnBETHACancelarNFSeClick(Sender: TObject);
     procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
     procedure BtnBETHAConsultarNFSeRPSClick(Sender: TObject);
@@ -68,6 +70,7 @@ type
     procedure btnConsultaStatusNFeClick(Sender: TObject);
     procedure btnDesserializarRetornoConsultaDFeClick(Sender: TObject);
     procedure btnEnviarEventoManifestacaoNFeClick(Sender: TObject);
+    procedure BtnEnviarMDFeSincronoClick(Sender: TObject);
     procedure btnEnviarNFCeSincronoClick(Sender: TObject);
     procedure btnEnviarNFCeSincronoDesserializacaoClick(Sender: TObject);
     procedure BtnEnviarNFComSincronoClick(Sender: TObject);
@@ -132,6 +135,17 @@ var
   oServico: TEnviarEventoManifestacaoNFe;
 begin
   oServico := TEnviarEventoManifestacaoNFe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnEnviarMDFeSincronoClick(Sender: TObject);
+var
+  oServico: TEnviarMDFeSincrono;
+begin
+  oServico := TEnviarMDFeSincrono.Create;
   try
     oServico.Executar();
   finally

@@ -196,6 +196,12 @@
 		<ArqConfig>FISCO.xml</ArqConfig>
 		<PadraoNFSe>FISCO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="9999907">
+		<Nome>BETHA_CLOUD</Nome>
+		<UF>BR</UF>
+		<ArqConfig>BETHA_CLOUD.xml</ArqConfig>
+		<PadraoNFSe>BETHA_CLOUD</PadraoNFSe>
+	</Arquivo>
 	<!-- **** Fim dos padrões com apenas um XML de configuração **** -->
 	<Arquivo ID="3303203">
 		<Nome>Nilópolis - RJ</Nome>
@@ -3034,5 +3040,11 @@
 		<UF>PR</UF>
 		<ArqConfig>JaguapitaPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4304697">
+		<Nome>Capitão - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CapitaoRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
