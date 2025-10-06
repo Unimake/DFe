@@ -576,7 +576,7 @@ namespace Unimake.Business.DFe.Utility
 
                     var positionFinal = xml.IndexOf(">", linePosition) - positionStart + 1;
 
-                    message = "TAG com caracteres inválidos: " + xml.Substring(positionStart, positionFinal) + ".";
+                    message = "TAG com caracteres inválidos: " + xml.Substring(positionStart, positionFinal);
                 }
             }
 
