@@ -66,6 +66,8 @@
             <!--Opcional-->
             <CodigoTributacaoMunicipio>54512145</CodigoTributacaoMunicipio>
             <!--Opcional-->
+			<CodigoServicoNacional>54512145</CodigoServicoNacional>
+			<!--Opcional-->
             <CodigoNbs>545454</CodigoNbs>
             <!--Opcional-->
             <Discriminacao>TTESTE DE DISCRIMINACAO</Discriminacao>
