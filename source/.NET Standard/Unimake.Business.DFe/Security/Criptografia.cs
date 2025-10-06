@@ -174,22 +174,61 @@ namespace Unimake.Business.DFe.Security
         /// <returns></returns>
         public static string SignWithRSASHA1(X509Certificate2 cert, String value)
         {
-            //Regras retiradas da página 39 do manual da Prefeitura Municipal de Blumenau
-            // Converta a cadeia de caracteres ASCII para bytes. 
-            ASCIIEncoding asciiEncoding = new ASCIIEncoding();
-            byte[] asciiBytes = asciiEncoding.GetBytes(value);
+            if (cert == null)
+            {
+                throw new ArgumentNullException(nameof(cert));
+            }
 
-            // Gere o HASH (array de bytes) utilizando SHA1
-            SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider();
-            byte[] sha1Hash = sha1.ComputeHash(asciiBytes);
+            // 1) ASCII -> bytes
+            byte[] data = Encoding.ASCII.GetBytes(value);
 
-            //- Assine o HASH (array de bytes) utilizando RSA-SHA1.
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-            rsa = cert.PrivateKey as RSACryptoServiceProvider;
-            asciiBytes = rsa.SignHash(sha1Hash, "SHA1");
-            string result = Convert.ToBase64String(asciiBytes);
-            return result;
+            // 2) SHA-1 do conteúdo
+            using (var sha1 = SHA1.Create())
+            {
+                byte[] hash = sha1.ComputeHash(data);
+
+                // 3) Tenta a API moderna (pode vir RSACng OU RSACryptoServiceProvider)
+                RSA rsa = null;
+                try
+                {
+                    rsa = cert.GetRSAPrivateKey();
+                }
+                catch { /* alguns frameworks antigos podem lançar aqui */ }
+
+                if (rsa != null)
+                {
+                    try
+                    {
+                        // Assina o HASH com RSA+SHA1 (PKCS#1 v1.5)
+                        byte[] sig = rsa.SignHash(hash, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
+                        return Convert.ToBase64String(sig);
+                    }
+                    finally
+                    {
+                        rsa.Dispose();
+                    }
+                }
+
+                // 4) Fallback legado (se só houver CSP exposto via .PrivateKey)
+                var rsaCsp = cert.PrivateKey as RSACryptoServiceProvider;
+                if (rsaCsp != null)
+                {
+                    byte[] sig = rsaCsp.SignHash(hash, CryptoConfig.MapNameToOID("SHA1"));
+                    return Convert.ToBase64String(sig);
+                }
+
+                // 5) (Opcional) Fallback para RSACng via .PrivateKey, se aplicável no seu runtime
+                var rsaCng = cert.PrivateKey as RSACng;
+                if (rsaCng != null)
+                {
+                    byte[] sig = rsaCng.SignHash(hash, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
+                    return Convert.ToBase64String(sig);
+                }
+
+                throw new NotSupportedException("Não foi possível obter uma chave RSA válida do certificado.");
+            }
         }
+
 
         public static string GerarRSASHA512(string value, bool lower = false)
         {

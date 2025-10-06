@@ -662,7 +662,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
                                 if (!IsSha1Hex(valor) && (valor?.Length > 40))
                                 {
-                                    el.InnerText = Criptografia.GetSHA1HashData(valor);
+                                    el.InnerText = Criptografia.SignWithRSASHA1(Configuracoes.CertificadoDigital, valor);
+
                                 }
                             }
                         }
@@ -680,7 +681,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
                             if (!IsSha1Hex(valor) && (valor?.Length == 86 || valor?.Length == 101))
                             {
-                                el.InnerText = Criptografia.GetSHA1HashData(valor);
+                                var sh1 = Criptografia.SignWithRSASHA1(Configuracoes.CertificadoDigital, valor);
+                                el.InnerText = sh1;
                             }
                         }
 
@@ -691,7 +693,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
                             if (!IsSha1Hex(valor) && (valor?.Length == 20))
                             {
-                                el.InnerText = Criptografia.GetSHA1HashData(valor);
+                                var sh1 = Criptografia.SignWithRSASHA1(Configuracoes.CertificadoDigital, valor);
+                                el.InnerText = sh1;
                             }
                         }
                     }
