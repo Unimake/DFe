@@ -104,6 +104,7 @@
 						<ItemListaServico>01.01</ItemListaServico>
 						<CodigoTributacaoMunicipio>2</CodigoTributacaoMunicipio>
 						<!--Opcional-->
+						<CodigoServicoNacional>54512145</CodigoServicoNacional>
 						<Discriminacao>TTESTE DE DISCRIMINACAO</Discriminacao>
 						<CodigoMunicipio>5007307</CodigoMunicipio>
 						<ExigibilidadeISS>6</ExigibilidadeISS>
