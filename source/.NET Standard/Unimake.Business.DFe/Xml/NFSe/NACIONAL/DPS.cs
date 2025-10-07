@@ -22,13 +22,13 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.DPS")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlType(Namespace = Nfse.Ns)]
     [XmlRoot("DPS", Namespace = Nfse.Ns, IsNullable = false)]
-    public class GerarNfse : XMLBase
+    public class DPS : XMLBase
     {
         /// <summary>
         /// Versão do schema do XML de geração da NFS-e.
