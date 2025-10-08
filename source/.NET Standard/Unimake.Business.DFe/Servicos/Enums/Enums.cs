@@ -9073,6 +9073,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("7")]
         Dependentes = 7,
+
+        /// <summary>
+        /// 8 - Desconto simplificado mensal. 
+        /// </summary>
+        [XmlEnum("8")]
+        DescontoSimplificadoMensal = 8, 
     }
     #endregion
 
