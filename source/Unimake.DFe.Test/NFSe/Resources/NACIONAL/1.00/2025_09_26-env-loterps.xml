@@ -59,14 +59,14 @@
       <trib>
         <tribMun>
           <tribISSQN>1</tribISSQN>
-          <pAliq>2.01</pAliq>
           <tpRetISSQN>1</tpRetISSQN>
+		  <pAliq>2.01</pAliq>
         </tribMun>
-        <tribNac>
+        <tribFed>
           <vRetCP>0</vRetCP>
           <vRetIRRF>0</vRetIRRF>
           <vRetCSLL>0</vRetCSLL>
-        </tribNac>
+        </tribFed>
         <totTrib>
           <vTotTrib>
             <vTotTribFed>16.14</vTotTribFed>
