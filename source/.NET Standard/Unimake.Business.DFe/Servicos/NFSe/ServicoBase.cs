@@ -647,57 +647,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             {
                 if (Configuracoes.EncriptaTagAssinatura)
                 {
-                    if (Configuracoes.PadraoNFSe == PadraoNFSe.DSF)
-                    {
-                        // DSF: RPS dentro de cada Lote; normaliza quando vier com mais de 40 chars
-                        foreach (XmlElement lote in ConteudoXML.GetElementsByTagName("Lote"))
-                        {
-                            foreach (XmlElement rps in lote.GetElementsByTagName("RPS"))
-                            {
-                                var assinaturaNodes = rps.GetElementsByTagName("Assinatura");
-                                if (assinaturaNodes.Count == 0) continue;
-
-                                var el = (XmlElement)assinaturaNodes[0];
-                                var valor = el.InnerText?.Trim();
-
-                                if (!IsSha1Hex(valor) && (valor?.Length > 40))
-                                {
-                                    el.InnerText = Criptografia.SignWithRSASHA1(Configuracoes.CertificadoDigital, valor);
-
-                                }
-                            }
-                        }
-                    }
-                    else if (Configuracoes.PadraoNFSe == PadraoNFSe.PAULISTANA)
-                    {
-                        // PAULISTANA: normalização nos RPS
-                        foreach (XmlElement rps in ConteudoXML.GetElementsByTagName("RPS"))
-                        {
-                            var assinaturaNodes = rps.GetElementsByTagName("Assinatura");
-                            if (assinaturaNodes.Count == 0) continue;
-
-                            var el = (XmlElement)assinaturaNodes[0];
-                            var valor = el.InnerText?.Trim();
-
-                            if (!IsSha1Hex(valor) && (valor?.Length == 86 || valor?.Length == 101))
-                            {
-                                var sh1 = Criptografia.SignWithRSASHA1(Configuracoes.CertificadoDigital, valor);
-                                el.InnerText = sh1;
-                            }
-                        }
-
-                        //CANCELAMENTO: <AssinaturaCancelamento>
-                        foreach (XmlElement el in ConteudoXML.GetElementsByTagName("AssinaturaCancelamento"))
-                        {
-                            var valor = el.InnerText?.Trim();
-
-                            if (!IsSha1Hex(valor) && (valor?.Length == 20))
-                            {
-                                var sh1 = Criptografia.SignWithRSASHA1(Configuracoes.CertificadoDigital, valor);
-                                el.InnerText = sh1;
-                            }
-                        }
-                    }
+                    XMLUtility.EncryptTagAssinaturaNFSe(Configuracoes.PadraoNFSe, ConteudoXML, Configuracoes.CertificadoDigital);
                 }
 
                 VerificarAssinarXML(Configuracoes.TagAssinatura, Configuracoes.TagAtributoID);
@@ -894,19 +844,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             stream.Close();
         }
 
-        #region Private Methods
-        private static bool IsSha1Hex(string s)
-        {
-            if (string.IsNullOrWhiteSpace(s) || s.Length != 40) return false;
-            foreach (var c in s)
-            {
-                bool isHex = (c >= '0' && c <= '9') ||
-                             (c >= 'a' && c <= 'f') ||
-                             (c >= 'A' && c <= 'F');
-                if (!isHex) return false;
-            }
-            return true;
-        }
-        #endregion Private Methods
+        
     }
 }
