@@ -311,7 +311,7 @@ public DateTimeOffset DCompet { get; set; }
         public string XLgr { get; set; }
 
         [XmlElement("nro")]
-        public int Nro { get; set; }
+        public string Nro { get; set; }
 
         [XmlElement("xCpl")]
         public string XCpl { get; set; }
@@ -744,7 +744,7 @@ public DateTimeOffset DtFim { get; set; }
         public string XLgr { get; set; }
 
         [XmlElement("nro")]
-        public int Nro { get; set; }
+        public string Nro { get; set; }
 
         [XmlElement("xCpl")]
         public string XCpl { get; set; }
@@ -1526,7 +1526,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
         public string XLgr { get; set; }
 
         [XmlElement("nro")]
-        public int Nro { get; set; }
+        public string Nro { get; set; }
 
         [XmlElement("xCpl")]
         public string XCpl { get; set; }
