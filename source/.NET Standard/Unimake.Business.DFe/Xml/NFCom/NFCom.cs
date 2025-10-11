@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 #endif
 
 using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Xml;
-using System.Linq;
 
 namespace Unimake.Business.DFe.Xml.NFCom
 {
@@ -1726,8 +1726,71 @@ namespace Unimake.Business.DFe.Xml.NFCom
         [XmlElement("cClassTrib")]
         public string CClassTrib { get; set; }
 
+        /// <summary>
+        /// Indica a natureza da operação de doação, orientando a apuração e a geração de débitos ou estornos conforme o cenário
+        /// </summary>
+        [XmlElement("indDoacao")]
+        public int IndDoacao { get; set; }
+
         [XmlElement("gIBSCBS")]
         public GIBSCBS GIBSCBS { get; set; }
+
+        /// <summary>
+        /// Estorno de Crédito
+        /// </summary>
+        [XmlElement("gEstornoCred")]
+        public GEstornoCred GEstornoCred { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeIndDoacao() => IndDoacao == 1;
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Estorno de Crédito
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.GEstornoCred")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfcom")]
+    public class GEstornoCred 
+    {
+        /// <summary>
+        /// Valor do IBS a ser estornado
+        /// </summary>
+        [XmlIgnore]
+        public double VIBSEstCred { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VIBSEstCred para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vIBSEstCred")]
+        public string VIBSEstCredField
+        {
+            get => VIBSEstCred.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSEstCred = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da CBS a ser estornada
+        /// </summary>
+        [XmlIgnore]
+        public double VCBSEstCred { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCBSEstCred para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCBSEstCred")]
+        public string VCBSEstCredField
+        {
+            get => VCBSEstCred.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSEstCred = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -1774,12 +1837,6 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         [XmlElement("gTribRegular")]
         public GTribRegular GTribRegular { get; set; }
-
-        [XmlElement("gIBSCredPres")]
-        public GIBSCredPres GIBSCredPres { get; set; }
-
-        [XmlElement("gCBSCredPres")]
-        public GCBSCredPres GCBSCredPres { get; set; }
 
         [XmlElement("gTribCompraGov")]
         public GTribCompraGov GTribCompraGov { get; set; }
@@ -2048,98 +2105,6 @@ namespace Unimake.Business.DFe.Xml.NFCom
             set => VTribRegCBS = Converter.ToDouble(value);
         }
 
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.GIBSCredPres")]
-    [ComVisible(true)]
-#endif
-    public class GIBSCredPres
-    {
-        [XmlElement("cCredPres")]
-        public string CCredPres { get; set; }
-
-        [XmlIgnore]
-        public double PCredPres { get; set; }
-
-        [XmlElement("pCredPres")]
-        public string PCredPresField
-        {
-            get => PCredPres.ToString("F4", CultureInfo.InvariantCulture);
-            set => PCredPres = Converter.ToDouble(value);
-        }
-
-        [XmlIgnore]
-        public double VCredPres { get; set; }
-
-        [XmlElement("vCredPres")]
-        public string VCredPresField
-        {
-            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPres = Converter.ToDouble(value);
-        }
-
-        [XmlIgnore]
-        public double VCredPresCondSus { get; set; }
-
-        [XmlElement("vCredPresCondSus")]
-        public string VCredPresCondSusField
-        {
-            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPresCondSus = Converter.ToDouble(value);
-        }
-
-        #region Should Serialize
-        public bool ShouldSerializeVCredPresField() => VCredPresCondSus <= 0;
-        public bool ShouldSerializeVCredPresCondSusField() => VCredPres <= 0;
-        #endregion
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.GCBSCredPres")]
-    [ComVisible(true)]
-#endif
-    public class GCBSCredPres
-    {
-        [XmlElement("cCredPres")]
-        public string CCredPres { get; set; }
-
-        [XmlIgnore]
-        public double PCredPres { get; set; }
-
-        [XmlElement("pCredPres")]
-        public string PCredPresField
-        {
-            get => PCredPres.ToString("F4", CultureInfo.InvariantCulture);
-            set => PCredPres = Converter.ToDouble(value);
-        }
-
-        [XmlIgnore]
-        public double VCredPres { get; set; }
-
-        [XmlElement("vCredPres")]
-        public string VCredPresField
-        {
-            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPres = Converter.ToDouble(value);
-        }
-
-        [XmlIgnore]
-        public double VCredPresCondSus { get; set; }
-
-        [XmlElement("vCredPresCondSus")]
-        public string VCredPresCondSusField
-        {
-            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPresCondSus = Converter.ToDouble(value);
-        }
-
-        #region Should Serialize
-        public bool ShouldSerializeVCredPresField() => VCredPresCondSus <= 0;
-        public bool ShouldSerializeVCredPresCondSusField() => VCredPres <= 0;
-        #endregion
     }
 
 #if INTEROP
@@ -2700,6 +2665,12 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         [XmlElement("gCBS")]
         public GCBSTot GCBSTot { get; set; }
+
+        /// <summary>
+        /// Total do Estorno de crédito
+        /// </summary>
+        [XmlElement("gEstornoCred")]
+        public GEstornoCred GEstornoCred { get; set; }
     }
 
 #if INTEROP
@@ -2723,26 +2694,6 @@ namespace Unimake.Business.DFe.Xml.NFCom
         {
             get => VIBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VIBS = Converter.ToDouble(value);
-        }
-
-        [XmlIgnore]
-        public double VCredPres { get; set; }
-
-        [XmlElement("vCredPres")]
-        public string VCredPresField
-        {
-            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPres = Converter.ToDouble(value);
-        }
-
-        [XmlIgnore]
-        public double VCredPresCondSus { get; set; }
-
-        [XmlElement("vCredPresCondSus")]
-        public string VCredPresCondSusField
-        {
-            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPresCondSus = Converter.ToDouble(value);
         }
     }
 
@@ -2857,26 +2808,6 @@ namespace Unimake.Business.DFe.Xml.NFCom
         {
             get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VCBS = Converter.ToDouble(value);
-        }
-
-        [XmlIgnore]
-        public double VCredPres { get; set; }
-
-        [XmlElement("vCredPres")]
-        public string VCredPresField
-        {
-            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPres = Converter.ToDouble(value);
-        }
-
-        [XmlIgnore]
-        public double VCredPresCondSus { get; set; }
-
-        [XmlElement("vCredPresCondSus")]
-        public string VCredPresCondSusField
-        {
-            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPresCondSus = Converter.ToDouble(value);
         }
     }
 

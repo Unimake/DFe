@@ -385,18 +385,6 @@ namespace Unimake.DFe.Test.NFCom
                                             VtribRegIBSMun = 17.12,
                                             VTribRegCBS = 8.12
                                         },
-                                        GIBSCredPres = new GIBSCredPres
-                                        {
-                                            CCredPres = "12",
-                                            PCredPres = 18.1234,
-                                            VCredPres = 19.12
-                                        },
-                                        GCBSCredPres = new GCBSCredPres
-                                        {
-                                            CCredPres = "12",
-                                            PCredPres = 18.1234,
-                                            VCredPres = 19.12
-                                        },
                                         GTribCompraGov = new GTribCompraGov
                                         {
                                             PAliqIBSUF = 20.1234,
@@ -484,16 +472,12 @@ namespace Unimake.DFe.Test.NFCom
                                     VIBSMun = 1.54,
                                 },
                                 VIBS = 1.54,
-                                VCredPres = 1.54,
-                                VCredPresCondSus = 1.54,
                             },
                             GCBSTot = new GCBSTot
                             {
                                 VDif = 1.54,
                                 VDevTrib = 1.54,
                                 VCBS = 1.54,
-                                VCredPres = 1.54,
-                                VCredPresCondSus = 1.54
                             }
                         },
                         VTotDFe = 1.54
