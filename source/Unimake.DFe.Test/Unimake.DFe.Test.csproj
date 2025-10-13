@@ -13,6 +13,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Utility\CertificadoDigitalTesteMetodo.cs" />
+	  <Compile Remove="Utility\TesteVelocidadeCache.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Remove="NFSe\Resources\MANAUS_AM\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml" />
 		<None Remove="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<None Remove="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
