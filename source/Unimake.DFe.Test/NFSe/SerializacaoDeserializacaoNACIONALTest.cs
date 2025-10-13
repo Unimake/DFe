@@ -114,7 +114,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var docFixture = new XmlDocument();
             docFixture.Load(caminhoXml);
 
-            var lido = new CancelarNfse().LerXML<CancelarNfse>(docFixture);
+            var lido = new PedRegEvento().LerXML<PedRegEvento>(docFixture);
             Assert.Equal("1.00", lido.Versao);
             Assert.False(string.IsNullOrWhiteSpace(lido.InfPedReg?.Id));
             Assert.NotNull(lido.InfPedReg?.E101101);
@@ -126,7 +126,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                         ? new { cnpj = lido.InfPedReg.CNPJAutor, cpf = (string)null }
                         : new { cnpj = (string)null, cpf = lido.InfPedReg.CPFAutor };
 
-            var criado = new CancelarNfse
+            var criado = new PedRegEvento
             {
                 Versao = lido.Versao,
                 InfPedReg = new InfPedReg
@@ -164,7 +164,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var docFixture = new XmlDocument();
             docFixture.Load(caminhoXml);
 
-            var lido = new GerarNfse().LerXML<GerarNfse>(docFixture);
+            var lido = new DPS().LerXML<DPS>(docFixture);
 
             var docRoundTrip = lido.GerarXML();
             Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");

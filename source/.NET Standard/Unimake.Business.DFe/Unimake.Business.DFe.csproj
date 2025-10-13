@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2025.09.29.2030</AssemblyVersion>
-		<FileVersion>2025.09.29.2030</FileVersion>
+		<AssemblyVersion>2025.10.11.1001</AssemblyVersion>
+		<FileVersion>2025.10.11.1001</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -356,6 +356,7 @@
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
 		<None Remove="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
+		<None Remove="Servicos\Config\NFSe\BETHA_CLOUD.xml" />
 		<None Remove="Servicos\Config\NFSe\BiguacuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BiriguiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
@@ -1259,6 +1260,21 @@
 		<None Remove="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\nfse_betha_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_cancelar_nfse_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_cancelar_nfse_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_lote_rps_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_lote_rps_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_nfse_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_nfse_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_nfse_rps_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_nfse_rps_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_situacao_lote_rps_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_situacao_lote_rps_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_enviar_lote_rps_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_enviar_lote_rps_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\TiposNFe_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\xmldsig-core-schema_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BHISS\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BHISS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\nfse_v2-03.xsd" />
@@ -1513,6 +1529,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BETHA_CLOUD.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CapitaoRS.xml" />
 	</ItemGroup>
 
@@ -2587,6 +2604,22 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\nfse v2 03.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\nfse_v202.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_cancelar_nfse_envio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_cancelar_nfse_resposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_lote_rps_envio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_lote_rps_resposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_nfse_envio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_nfse_resposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_nfse_rps_envio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_nfse_rps_resposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_situacao_lote_rps_envio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_consultar_situacao_lote_rps_resposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_enviar_lote_rps_envio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_enviar_lote_rps_resposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\TiposNFe_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\xmldsig-core-schema_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDCadastroContasContabeis.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDCadastroContasContabeisRetorno.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDConsultaContasPendentes.xsd" />

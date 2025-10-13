@@ -939,6 +939,8 @@
 				minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CodigoTributacaoMunicipio" type="tsCodigoTributacao"
 				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CodigoServicoNacional" type="tsCodigoTributacao"
+				minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CodigoNbs" type="tsCodigoNbs"
 				minOccurs="0" maxOccurs="1" />
 			<xsd:element name="Discriminacao" type="tsDiscriminacao"

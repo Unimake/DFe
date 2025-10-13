@@ -45,6 +45,8 @@
           <IssRetido>2</IssRetido>
           <ItemListaServico>01.01</ItemListaServico>
           <CodigoCnae>4930202</CodigoCnae>
+		  <!--Opcional-->
+		  <CodigoServicoNacional>54512145</CodigoServicoNacional>
           <CodigoNbs>101</CodigoNbs>
           <Discriminacao>TTESTE DE DISCRIMINACAO</Discriminacao>
           <CodigoMunicipio>3202405</CodigoMunicipio>

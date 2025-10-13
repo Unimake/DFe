@@ -18,13 +18,13 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.CancelarNfse")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.PedRegEvento")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlType(Namespace = NfseNs.Ns)]
     [XmlRoot("pedRegEvento", Namespace = NfseNs.Ns, IsNullable = false)]
-    public class CancelarNfse : XMLBase
+    public class PedRegEvento : XMLBase
     {
         /// <summary>
         /// Versão do schema do XML de Cancelamento da NFS-e.
