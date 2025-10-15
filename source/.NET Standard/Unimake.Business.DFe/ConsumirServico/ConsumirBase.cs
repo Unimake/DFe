@@ -108,8 +108,7 @@ namespace Unimake.Business.DFe
                 {
                     xmlBody = xmlBody.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
 
-                    var soapAssinado = new XmlDocument();
-                    soapAssinado = ELOTECH.AssinaSoapElotech(soap, xmlBody, certificado);
+                    var soapAssinado = ELOTECH.AssinaSoapElotech(soap, xmlBody, certificado);
 
                     retorna = soapAssinado.OuterXml;
                 }
