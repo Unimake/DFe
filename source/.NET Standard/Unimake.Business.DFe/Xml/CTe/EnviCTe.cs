@@ -7726,6 +7726,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// </summary>
         [XmlElement("gEstornoCred")]
         public GEstornoCred GEstornoCred { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeIndDoacao() => IndDoacao == 1;
+
+        #endregion
     }
 
     /// <summary>

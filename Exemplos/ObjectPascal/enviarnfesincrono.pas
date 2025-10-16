@@ -225,6 +225,14 @@ begin
     oInfNfe.Transp := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Transp');
     oInfNfe.Transp.ModFrete := 0; // ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
 
+    //oInfNfe.Transp.Transporta := CreateOleObject('Unimake.Business.DFe.Xml.NFe.Transporta');
+    //oInfNfe.Transp.Transporta.CNPJ := '00000000000000';
+    //oInfNfe.Transp.Transporta.xNome := 'teste';
+    //oInfNfe.Transp.Transporta.IE := '000';
+    //oInfNfe.Transp.Transporta.xEnder := 'teste';
+    //oInfNfe.Transp.Transporta.xMun := 'teste';
+    //oInfNfe.Transp.Transporta.UF := 41;
+
     for i := 1 to 3 do
     begin
       // Criar a tag Vol

@@ -333,7 +333,7 @@ namespace Unimake.DFe.Test.NFe
 
             var autorizacao = new Autorizacao(xml, configuracao);
 
-            XmlElement elementInfRespTec = null;
+            XmlElement elementInfRespTec;
 
             #region Testar o hashCSRT
             switch (ufBrasil)
@@ -1001,7 +1001,7 @@ namespace Unimake.DFe.Test.NFe
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var autorizacao = new Autorizacao(xml, configuracao);
+            _ = new Autorizacao(xml, configuracao);
         }
 
         /// <summary>

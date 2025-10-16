@@ -728,6 +728,9 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public void AddCUFAdic(UFBrasil item) => TerminaisAdicionais.Add(new TerminalAdicional { CUFAdic = item });
         public int GetCUFAdic(int index) => (index >= 0 && index < TerminaisAdicionais.Count) ? (int)TerminaisAdicionais[index].CUFAdic : default;
         public int GetCUFAdicCount => TerminaisAdicionais.Count;
+        public bool ShouldSerializeCUFPrincField() => CUFPrinc != (UFBrasil)(-1);
+#else
+        public bool ShouldSerializeCUFPrincField() => CUFPrinc != null;
 #endif
 
         #region ShouldSerialize
@@ -735,7 +738,6 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public bool ShouldSerializeDContratoIniField() => DContratoIni != default;
         public bool ShouldSerializeDContratoFimField() => DContratoFim != default;
         public bool ShouldSerializeNroTermPrinc() => !string.IsNullOrEmpty(NroTermPrinc);
-        public bool ShouldSerializeCUFPrincField() => CUFPrinc != null && CUFPrinc != (UFBrasil)(-1);
         public bool ShouldSerializeTerminaisAdicionaisRaw() => TerminaisAdicionais?.Count > 0;
         #endregion
     }

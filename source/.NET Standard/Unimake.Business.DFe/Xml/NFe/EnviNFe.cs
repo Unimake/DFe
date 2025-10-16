@@ -13094,7 +13094,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class GCredPresOper
     {
-        // <summary>
+        /// <summary>
         /// Valor da Base de Cálculo do Crédito Presumido da Operação
         /// </summary>
         [XmlIgnore]
@@ -14804,7 +14804,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class GAjusteCompet
     {
-        // <summary>
+        /// <summary>
         /// Ano e mês referência do período de apuração (AAAA-MM); Informar período atual ou retroativo.
         /// </summary>
         [XmlIgnore]
@@ -14910,7 +14910,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class GCredPresIBSZFM
     {
-        // <summary>
+        /// <summary>
         /// Ano e mês referência do período de apuração (AAAA-MM); Informar período atual ou retroativo.
         /// </summary>
         [XmlIgnore]
