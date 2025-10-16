@@ -3047,4 +3047,10 @@
 		<ArqConfig>CapitaoRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3546702">
+		<Nome>Santa Gertrudes - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SantaGertrudesSP.xml</ArqConfig>
+		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

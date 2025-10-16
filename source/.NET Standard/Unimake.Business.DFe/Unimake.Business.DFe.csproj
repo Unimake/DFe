@@ -674,6 +674,7 @@
 		<None Remove="Servicos\Config\NFSe\SalvadorBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SalvadorDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaCruzDoSulRS.xml" />
+		<None Remove="Servicos\Config\NFSe\SantaGertrudesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaMariaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaRosaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaTerezinhaDeItaipuPR.xml" />
@@ -1693,6 +1694,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RolandiaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SabaraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoSulRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaGertrudesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaRosaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaTerezinhaDeItaipuPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPatrulhaRS.xml" />
