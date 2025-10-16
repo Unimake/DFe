@@ -27,7 +27,7 @@ var
 begin
   // Criar configuração básica para consumir o serviço
   oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
-  oConfiguracao.TipoDFe := 4; // 0 = MDFe
+  oConfiguracao.TipoDFe := 4; // 4 = MDFe
   oConfiguracao.CertificadoSenha := '12345678';
   oConfiguracao.CertificadoArquivo := 'C:\Projetos\certificados\UnimakePV.pfx';
 
