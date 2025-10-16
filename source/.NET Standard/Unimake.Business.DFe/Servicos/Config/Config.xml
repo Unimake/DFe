@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
-	<Arquivo ID="35">
-		<Nome>São Paulo</Nome>
-		<UF>SP</UF>
-		<ArqConfig>SP.xml</ArqConfig>
+	<Arquivo ID="16">
+		<Nome>Amapá</Nome>
+		<UF>AP</UF>
+		<ArqConfig>AP.xml</ArqConfig>
 	</Arquivo>
 	<Arquivo ID="41">
 		<Nome>Paraná</Nome>
@@ -3046,5 +3046,17 @@
 		<UF>RS</UF>
 		<ArqConfig>CapitaoRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4103602">
+		<Nome>Cambará - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>CambaraPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3546702">
+		<Nome>Santa Gertrudes - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SantaGertrudesSP.xml</ArqConfig>
+		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>

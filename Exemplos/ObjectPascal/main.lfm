@@ -330,13 +330,31 @@ object frmPrincipal: TfrmPrincipal
     ClientWidth = 370
     TabOrder = 7
     object BtnEnviarMDFeSincrono: TToggleBox
-      Left = 4
+      Left = 9
       Height = 38
       Top = 0
       Width = 355
       Caption = 'Enviar MDFe modo síncrono'
       TabOrder = 0
       OnClick = BtnEnviarMDFeSincronoClick
+    end
+    object BtnEnviarEventoCancelamentoMDFe: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 48
+      Width = 356
+      Caption = 'Enviar evento de cancelamento'
+      TabOrder = 1
+      OnClick = BtnEnviarEventoCancelamentoMDFeClick
+    end
+    object BtnEnviarEventoEncerramentoMDFe: TButton
+      Left = 13
+      Height = 38
+      Top = 92
+      Width = 347
+      Caption = 'Enviar evento de encerramento'
+      TabOrder = 2
+      OnClick = BtnEnviarEventoEncerramentoMDFeClick
     end
   end
 end

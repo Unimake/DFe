@@ -15,7 +15,8 @@ uses
   BETHAConsultarNFSeRPS, BETHAConsultarLoteRPS, NACIONALGerarNFSe,
   NACIONALCancelarNFSe, NACIONALConsultarNFSe, NACIONALConsultarNFSeRPS,
   NACIONALConsultarNFSePDF, EventoCCENFe, InutilizacaoNumeroNFe,
-  ConsultarStatusNFCom, EnviarNFComSincrono, EnviarMDFeSincrono;
+  ConsultarStatusNFCom, EnviarNFComSincrono, EnviarMDFeSincrono,
+  EnviarEventoCancelamentoMDFe, EnviarEventoEncerramentoMDFe;
 
 type
 
@@ -45,6 +46,7 @@ type
     btnEventoCCENFe: TButton;
     btnInutilizacaoNumeroNFe: TButton;
     BtnEnviarNFComSincrono: TButton;
+    BtnEnviarEventoEncerramentoMDFe: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -58,6 +60,7 @@ type
     BtnConsultarStatusNFCom: TToggleBox;
     GroupBox6: TGroupBox;
     BtnEnviarMDFeSincrono: TToggleBox;
+    BtnEnviarEventoCancelamentoMDFe: TToggleBox;
     procedure BtnBETHACancelarNFSeClick(Sender: TObject);
     procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
     procedure BtnBETHAConsultarNFSeRPSClick(Sender: TObject);
@@ -69,6 +72,8 @@ type
     procedure BtnConsultarStatusNFComClick(Sender: TObject);
     procedure btnConsultaStatusNFeClick(Sender: TObject);
     procedure btnDesserializarRetornoConsultaDFeClick(Sender: TObject);
+    procedure BtnEnviarEventoCancelamentoMDFeClick(Sender: TObject);
+    procedure BtnEnviarEventoEncerramentoMDFeClick(Sender: TObject);
     procedure btnEnviarEventoManifestacaoNFeClick(Sender: TObject);
     procedure BtnEnviarMDFeSincronoClick(Sender: TObject);
     procedure btnEnviarNFCeSincronoClick(Sender: TObject);
@@ -123,6 +128,28 @@ var
   oServico: TDesserializarRetornoConsultaDFe;
 begin
   oServico := TDesserializarRetornoConsultaDFe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnEnviarEventoCancelamentoMDFeClick(Sender: TObject);
+var
+  oServico: TEnviarEventoCancelamentoMDFe;
+begin
+  oServico := TEnviarEventoCancelamentoMDFe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnEnviarEventoEncerramentoMDFeClick(Sender: TObject);
+var
+  oServico: TEnviarEventoEncerramentoMDFe;
+begin
+  oServico := TEnviarEventoEncerramentoMDFe.Create;
   try
     oServico.Executar();
   finally

@@ -693,6 +693,31 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
+
+        /// <summary>
+        /// Data da previsão de entrega ou disponibilização do bem.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DPrevEntrega { get; set; }
+#else
+        public DateTimeOffset DPrevEntrega { get; set; }
+#endif
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DPrevEntrega para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("dPrevEntrega")]
+        public string DPrevEntregaField
+        {
+            get => DPrevEntrega.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DPrevEntrega = DateTime.Parse(value);
+#else
+            set => DPrevEntrega = DateTimeOffset.Parse(value);
+#endif
+        }
+
         /// <summary>
         /// Tipo do Documento Fiscal
         /// </summary>
@@ -898,8 +923,6 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeDhSaiEntField()
         {
-            // ~\uninfe\doc\NFCe e NFe 3.10\NT2012.004_v1.2_NFCe.pdf
-            // Página 06 item #14
             // Nota: Para a NFC-e este campo não deve existir
             if (Mod == ModeloDFe.NFCe)
             {
@@ -907,6 +930,17 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
 
             return DhSaiEnt > DateTime.MinValue;
+        }
+
+        public bool ShouldSerializeDPrevEntregaField()
+        {
+            // Nota: Para a NFC-e este campo não deve existir
+            if (Mod == ModeloDFe.NFCe)
+            {
+                return false;
+            }
+
+            return DPrevEntrega > DateTime.MinValue;
         }
 
         #endregion
@@ -13060,7 +13094,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class GCredPresOper
     {
-        // <summary>
+        /// <summary>
         /// Valor da Base de Cálculo do Crédito Presumido da Operação
         /// </summary>
         [XmlIgnore]
@@ -14770,7 +14804,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class GAjusteCompet
     {
-        // <summary>
+        /// <summary>
         /// Ano e mês referência do período de apuração (AAAA-MM); Informar período atual ou retroativo.
         /// </summary>
         [XmlIgnore]
@@ -14876,7 +14910,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class GCredPresIBSZFM
     {
-        // <summary>
+        /// <summary>
         /// Ano e mês referência do período de apuração (AAAA-MM); Informar período atual ou retroativo.
         /// </summary>
         [XmlIgnore]

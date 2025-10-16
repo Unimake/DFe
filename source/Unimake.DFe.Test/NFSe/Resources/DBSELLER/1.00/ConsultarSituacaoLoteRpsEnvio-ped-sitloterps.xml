@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarSituacaoLoteRps>
+	<ConsultarSituacaoLoteRpsEnvio>
+		<Prestador>
+			<Cnpj>00000000000000</Cnpj>
+			<InscricaoMunicipal>00000</InscricaoMunicipal>
+		</Prestador>
+		<Protocolo>00000000000</Protocolo>
+	</ConsultarSituacaoLoteRpsEnvio>
+</ConsultarSituacaoLoteRps>
