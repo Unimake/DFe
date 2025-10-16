@@ -108,5 +108,26 @@
 			<TargetNS>http://nfse.tramandai.rs.gov.br/webservice/index/producao</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</ConsultarNfsePorRps>
+		<ConsultarSituacaoLoteRps versao="1.00">
+			<Descricao>Consulta Situacao Lote Rps</Descricao>
+			<WebEnderecoHomologacao>https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarSituacaoLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarSituacaoLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://nfse.tramandai.rs.gov.br/webservice/index/producao</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</ConsultarSituacaoLoteRps>
 	</Servicos>
 </Configuracoes>
