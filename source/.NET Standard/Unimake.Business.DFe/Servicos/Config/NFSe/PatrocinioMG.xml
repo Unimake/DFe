@@ -8,7 +8,7 @@
 			<WebActionHomologacao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/GerarNfse</WebActionHomologacao>
 			<WebActionProducao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/GerarNfse</WebActionProducao>
 			<SchemaArquivo>nfse_3.xsd</SchemaArquivo>
-			<TagAssinatura>GerarNovaNfseEnvio</TagAssinatura>
+			<TagAssinatura>Prestador</TagAssinatura>
 			<TagAtributoID>InformacaoNfse</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
