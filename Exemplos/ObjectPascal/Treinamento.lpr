@@ -20,7 +20,7 @@ uses
   NACIONALConsultarNFSe, NACIONALConsultarNFSePDF, NACIONALConsultarNFSeRPS,
   EventoCCENFe, InutilizacaoNumeroNFe, ConsultarStatusNFCom,
   EnviarNFComSincrono, EnviarMDFeSincrono, EnviarEventoCancelamentoMDFe,
-  EnviarEventoEncerramentoMDFe
+  EnviarEventoEncerramentoMDFe, ConsultarStatusMDFe
   { you can add units after this };
 
 {$R *.res}
