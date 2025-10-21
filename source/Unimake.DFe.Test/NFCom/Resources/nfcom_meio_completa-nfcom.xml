@@ -260,16 +260,6 @@
 							<pAliqEfetRegCBS>7.1234</pAliqEfetRegCBS>
 							<vTribRegCBS>8.12</vTribRegCBS>
 						</gTribRegular>
-						<gIBSCredPres>
-							<cCredPres>123456</cCredPres>
-							<pCredPres>7.1234</pCredPres>
-							<vCredPres>8.12</vCredPres>
-						</gIBSCredPres>
-						<gCBSCredPres>
-							<cCredPres>123456</cCredPres>
-							<pCredPres>7.1234</pCredPres>
-							<vCredPres>8.12</vCredPres>
-						</gCBSCredPres>
 						<gTribCompraGov>
 							<pAliqIBSUF>12.1234</pAliqIBSUF>
 							<vTribIBSUF>3.12</vTribIBSUF>
@@ -331,15 +321,11 @@
 						<vIBSMun>8.12</vIBSMun>
 					</gIBSMun>
 					<vIBS>8.12</vIBS>
-					<vCredPres>8.12</vCredPres>
-					<vCredPresCondSus>8.12</vCredPresCondSus>
 				</gIBS>
 				<gCBS>
 					<vDif>8.12</vDif>
 					<vDevTrib>8.12</vDevTrib>
 					<vCBS>8.12</vCBS>
-					<vCredPres>8.12</vCredPres>
-					<vCredPresCondSus>8.12</vCredPresCondSus>
 				</gCBS>
 			</IBSCBSTot>
 			<vTotDFe>8.12</vTotDFe>

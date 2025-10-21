@@ -7710,10 +7710,73 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string CClassTrib { get; set; }
 
         /// <summary>
+        /// Indica a natureza da operação de doação, orientando a apuração e a geração de débitos ou estornos conforme o cenário
+        /// </summary>
+        [XmlElement("indDoacao")]
+        public int IndDoacao { get; set; }
+
+        /// <summary>
         /// Grupo de Informações específicas do IBS e da CBS
         /// </summary>
         [XmlElement("gIBSCBS")]
         public GIBSCBS GIBSCBS { get; set; }
+
+        /// <summary>
+        /// Estorno de Crédito
+        /// </summary>
+        [XmlElement("gEstornoCred")]
+        public GEstornoCred GEstornoCred { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeIndDoacao() => IndDoacao == 1;
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Estorno de Crédito
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.GEstornoCred")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GEstornoCred
+    {
+        /// <summary>
+        /// Valor do IBS a ser estornado
+        /// </summary>
+        [XmlIgnore]
+        public double VIBSEstCred { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VIBSEstCred para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vIBSEstCred")]
+        public string VIBSEstCredField
+        {
+            get => VIBSEstCred.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSEstCred = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da CBS a ser estornada
+        /// </summary>
+        [XmlIgnore]
+        public double VCBSEstCred { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCBSEstCred para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCBSEstCred")]
+        public string VCBSEstCredField
+        {
+            get => VCBSEstCred.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSEstCred = Converter.ToDouble(value);
+        }
     }
 
     /// <summary>
@@ -7783,18 +7846,6 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// </summary>
         [XmlElement("gTribRegular")]
         public GTribRegular GTribRegular { get; set; }
-
-        /// <summary>
-        /// Grupo de Informações do Crédito Presumido referente ao IBS
-        /// </summary>
-        [XmlElement("gIBSCredPres")]
-        public GIBSCredPres GIBSCredPres { get; set; }
-
-        /// <summary>
-        /// Grupo de Informações do Crédito Presumido referente ao CBS
-        /// </summary>
-        [XmlElement("GCBSCredPres")]
-        public GCBSCredPres GCBSCredPres { get; set; }
 
         /// <summary>
         /// Grupo de informações da composição do valor do IBS e da CBS em compras governamental

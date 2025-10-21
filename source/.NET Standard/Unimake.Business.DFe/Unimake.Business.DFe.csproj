@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2025.10.09.1137</AssemblyVersion>
-		<FileVersion>2025.10.09.1137</FileVersion>
+		<AssemblyVersion>2025.10.20.1346</AssemblyVersion>
+		<FileVersion>2025.10.20.1346</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -381,6 +381,7 @@
 		<None Remove="Servicos\Config\NFSe\CaieirasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CajuruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CamacariBA.xml" />
+		<None Remove="Servicos\Config\NFSe\CambaraPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CamboriuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinaGrandePB.xml" />
@@ -674,6 +675,7 @@
 		<None Remove="Servicos\Config\NFSe\SalvadorBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SalvadorDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaCruzDoSulRS.xml" />
+		<None Remove="Servicos\Config\NFSe\SantaGertrudesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaMariaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaRosaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaTerezinhaDeItaipuPR.xml" />
@@ -1437,7 +1439,20 @@
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\nfse_3.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\nfse_v2-03.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_cancelar_nfse_envio.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_cancelar_nfse_resposta.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_lote_rps_envio.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_lote_rps_resposta.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_nfse_envio.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_nfse_resposta.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_nfse_rps_envio.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_nfse_rps_resposta.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_situacao_lote_rps_envio.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_situacao_lote_rps_resposta.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_enviar_lote_rps_envio.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_enviar_lote_rps_resposta.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SISPMJP\nfse v2 02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SISPMJP\xmldsig-core-schema20020212.xsd" />
@@ -1531,6 +1546,7 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BETHA_CLOUD.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CambaraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CapitaoRS.xml" />
 	</ItemGroup>
 
@@ -1694,6 +1710,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RolandiaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SabaraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoSulRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaGertrudesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaRosaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaTerezinhaDeItaipuPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPatrulhaRS.xml" />
@@ -3633,7 +3650,20 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\nfse_3.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\nfse_v2-03.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_cancelar_nfse_envio.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_cancelar_nfse_resposta.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_lote_rps_envio.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_lote_rps_resposta.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_nfse_envio.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_nfse_resposta.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_nfse_rps_envio.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_nfse_rps_resposta.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_situacao_lote_rps_envio.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_situacao_lote_rps_resposta.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_enviar_lote_rps_envio.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_enviar_lote_rps_resposta.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SISPMJP\nfse v2 02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SISPMJP\xmldsig-core-schema20020212.xsd" />
@@ -3703,7 +3733,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.9" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.10" />
 		<PackageReference Include="Unimake.Cryptography" Version="20250912.1810.37" />
 		<PackageReference Include="Unimake.Extensions" Version="20250912.1810.37" />
 		<PackageReference Include="Unimake.Utils" Version="20250912.1810.37" />

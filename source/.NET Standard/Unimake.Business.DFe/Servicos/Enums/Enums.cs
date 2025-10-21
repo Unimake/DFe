@@ -1691,7 +1691,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 07 - Perda em estoque
         /// </summary>
         [XmlEnum("07")]
-        PerdaEmEstoque = 7
+        PerdaEmEstoque = 7,
+
+        /// <summary>
+        /// 08 - Desenquadramento do Simples Nacional
+        /// </summary>
+        [XmlEnum("8")]
+        DesenquadramentoSN = 8
     }
 
     #endregion
@@ -1716,10 +1722,22 @@ namespace Unimake.Business.DFe.Servicos
         ApropriacaoCreditoPresumidoIBSZFM = 2,
 
         /// <summary>
-        /// 03 - Retorno
+        /// 03 - Retorno por recusa na entrega ou por não localização do destinatário na tentativa de entrega
         /// </summary>
         [XmlEnum("03")]
-        Retorno = 3
+        RetornoEntrega = 3,
+
+        /// <summary>
+        /// 04 - Redução de valores
+        /// </summary>
+        [XmlEnum("4")]
+        ReducaoValores = 4,
+
+        /// <summary>
+        /// 05 - Transferência de crédito na sucessão
+        /// </summary>
+        [XmlEnum("5")]
+        TransferenciaDeCreditoNaSucessao = 5
     }
 
     #endregion
@@ -2757,6 +2775,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("90")]
         SemPagamento = 90,
+
+        /// <summary>
+        /// 91 - Pagamento Posterior
+        /// </summary>
+        [XmlEnum("91")]
+        PagamentoPosterior = 91,
 
         /// <summary>
         /// 99 - Outros - Quando o pagamento não estiver no rol desta tabela, o contribuinte deverá preencher o tipo de pagamento com "Outros" e informar, em campo específico da Nota Fiscal, a descrição adequada do meio de pagamento utilizado na operação ou prestação.

@@ -164,6 +164,16 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarMDFeSincrono"/>
       </Unit>
+      <Unit>
+        <Filename Value="enviareventocancelamentomdfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarEventoCancelamentoMDFe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviareventoencerramentomdfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarEventoEncerramentoMDFe"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

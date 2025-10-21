@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
-	<Arquivo ID="35">
-		<Nome>São Paulo</Nome>
-		<UF>SP</UF>
-		<ArqConfig>SP.xml</ArqConfig>
-	</Arquivo>
-	<Arquivo ID="41">
+  <Arquivo ID="35">
+    <Nome>São Paulo</Nome>
+    <UF>SP</UF>
+    <ArqConfig>SP.xml</ArqConfig>
+  </Arquivo>
+  <Arquivo ID="41">
 		<Nome>Paraná</Nome>
 		<UF>PR</UF>
 		<ArqConfig>PR.xml</ArqConfig>

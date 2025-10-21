@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2008 (http://www.altova.com) by sas-softwares@procergs.rs.gov.br (PROCERGS) -->
+<!-- edited with XMLSpy v2025 rel. 2 (x64) (https://www.altova.com) by PROCERGS (Procergs - Centro de Tecnologia da Informação e Comunicação do Estado do Rio Grande do Sul S.A.) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfcom="http://www.portalfiscal.inf.br/nfcom" targetNamespace="http://www.portalfiscal.inf.br/nfcom" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:simpleType name="TStringRTC">
 		<xs:annotation>
@@ -107,6 +107,14 @@
 			<xs:enumeration value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="TIndDoacao">
+		<xs:annotation>
+			<xs:documentation>Tipo Indicador de Doação</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:complexType name="TTribNFCom">
 		<xs:annotation>
 			<xs:documentation>Grupo de informações da Tributação da NFCom</xs:documentation>
@@ -118,7 +126,17 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cClassTrib" type="nfcom:TcClassTrib"/>
+			<xs:element name="indDoacao" type="nfcom:TIndDoacao" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indica se a operação é de doação</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="gIBSCBS" type="nfcom:TCIBS" minOccurs="0"/>
+			<xs:element name="gEstornoCred" type="nfcom:TEstornoCred" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Informado conforme indicador no cClassTrib</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TTribNF3e">
@@ -132,7 +150,17 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cClassTrib" type="nfcom:TcClassTrib"/>
+			<xs:element name="indDoacao" type="nfcom:TIndDoacao" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indica se a operação é de doação</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="gIBSCBS" type="nfcom:TCIBS" minOccurs="0"/>
+			<xs:element name="gEstornoCred" type="nfcom:TEstornoCred" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Informado conforme indicador no cClassTrib</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TTribNFAg">
@@ -146,7 +174,13 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cClassTrib" type="nfcom:TcClassTrib"/>
+			<xs:element name="indDoacao" type="nfcom:TIndDoacao" minOccurs="0"/>
 			<xs:element name="gIBSCBS" type="nfcom:TCIBS" minOccurs="0"/>
+			<xs:element name="gEstornoCred" type="nfcom:TEstornoCred" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Informado conforme indicador no cClassTrib</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TTribCTe">
@@ -160,7 +194,13 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cClassTrib" type="nfcom:TcClassTrib"/>
+			<xs:element name="indDoacao" type="nfcom:TIndDoacao" minOccurs="0"/>
 			<xs:element name="gIBSCBS" type="nfcom:TCIBS" minOccurs="0"/>
+			<xs:element name="gEstornoCred" type="nfcom:TEstornoCred" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Informado conforme indicador no cClassTrib</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TTribBPe">
@@ -174,7 +214,13 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cClassTrib" type="nfcom:TcClassTrib"/>
+			<xs:element name="indDoacao" type="nfcom:TIndDoacao" minOccurs="0"/>
 			<xs:element name="gIBSCBS" type="nfcom:TCIBS" minOccurs="0"/>
+			<xs:element name="gEstornoCred" type="nfcom:TEstornoCred" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Informado conforme indicador no cClassTrib</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TTribNFCe">
@@ -188,6 +234,11 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cClassTrib" type="nfcom:TcClassTrib"/>
+			<xs:element name="indDoacao" type="nfcom:TIndDoacao" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indica se a operação é de doação</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:choice minOccurs="0">
 				<xs:element name="gIBSCBS" type="nfcom:TCIBS"/>
 				<xs:element name="gIBSCBSMono" type="nfcom:TMonofasia"/>
@@ -205,11 +256,16 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cClassTrib" type="nfcom:TcClassTrib"/>
+			<xs:element name="indDoacao" type="nfcom:TIndDoacao" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indica se a operação é de doação</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:choice minOccurs="0">
 				<xs:element name="gIBSCBS" type="nfcom:TCIBS"/>
 				<xs:element name="gIBSCBSMono" type="nfcom:TMonofasia">
 					<xs:annotation>
-						<xs:documentation>Informar essa opção da Choice para Monofasia</xs:documentation>
+						<xs:documentation>Informar essa opção da Choice para Monofasia (CST 620)</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element name="gTransfCred" type="nfcom:TTransfCred">
@@ -217,12 +273,29 @@
 						<xs:documentation>Informar essa opção da Choice para o CST 800</xs:documentation>
 					</xs:annotation>
 				</xs:element>
+				<xs:element name="gAjusteCompet" type="nfcom:TAjusteCompet">
+					<xs:annotation>
+						<xs:documentation>Informar essa opção da Choice para o CST 811</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 			</xs:choice>
-			<xs:element name="gCredPresIBSZFM" type="nfcom:TCredPresIBSZFM" minOccurs="0">
+			<xs:element name="gEstornoCred" type="nfcom:TEstornoCred" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Classificação de acordo com o art. 450, § 1º, da LC 214/25 para o cálculo do crédito presumido na ZFM</xs:documentation>
+					<xs:documentation>Informado conforme indicador no cClassTrib</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:choice minOccurs="0">
+				<xs:element name="gCredPresOper" type="nfcom:TCredPresOper">
+					<xs:annotation>
+						<xs:documentation>Crédito Presumido da Operação. Informado conforme indicador no cClassTrib.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="gCredPresIBSZFM" type="nfcom:TCredPresIBSZFM">
+					<xs:annotation>
+						<xs:documentation>Classificação de acordo com o art. 450, § 1º, da LC 214/25 para o cálculo do crédito presumido na ZFM. Informado conforme indicador no cClassTrib.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TTribNFGas">
@@ -236,6 +309,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cClassTrib" type="nfcom:TcClassTrib"/>
+			<xs:element name="indDoacao" type="nfcom:TIndDoacao" minOccurs="0"/>
 			<xs:choice minOccurs="0">
 				<xs:element name="gIBSCBS" type="nfcom:TCIBS"/>
 				<xs:element name="gIBSCBSMono" type="nfcom:TMonofasia">
@@ -244,6 +318,11 @@
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>
+			<xs:element name="gEstornoCred" type="nfcom:TEstornoCred" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Informado conforme indicador no cClassTrib</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TIS">
@@ -380,16 +459,6 @@
 								<xs:documentation>Valor total do IBS</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="vCredPres" type="nfcom:TDec1302RTC">
-							<xs:annotation>
-								<xs:documentation>Total do Crédito Presumido</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="vCredPresCondSus" type="nfcom:TDec1302RTC">
-							<xs:annotation>
-								<xs:documentation>Total do Crédito Presumido Condição Suspensiva</xs:documentation>
-							</xs:annotation>
-						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -414,14 +483,23 @@
 								<xs:documentation>Valor total da CBS</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="vCredPres" type="nfcom:TDec1302RTC">
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="gEstornoCred" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Totalização do estorno de crédito</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="vIBSEstCred" type="nfcom:TDec1302RTC">
 							<xs:annotation>
-								<xs:documentation>Total do Crédito Presumido</xs:documentation>
+								<xs:documentation>Valor total do IBS estornado</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="vCredPresCondSus" type="nfcom:TDec1302RTC">
+						<xs:element name="vCBSEstCred" type="nfcom:TDec1302RTC">
 							<xs:annotation>
-								<xs:documentation>Total do Crédito Presumido Condição Suspensiva</xs:documentation>
+								<xs:documentation>Valor total da CBS estornada</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -585,6 +663,25 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="gEstornoCred" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Totalização do estorno de crédito</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="vIBSEstCred" type="nfcom:TDec1302RTC">
+							<xs:annotation>
+								<xs:documentation>Valor total do IBS estornado</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCBSEstCred" type="nfcom:TDec1302RTC">
+							<xs:annotation>
+								<xs:documentation>Valor total da CBS estornada</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TMonofasia">
@@ -601,7 +698,7 @@
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="qBCMono" type="nfcom:TDec_1104OpRTC">
+						<xs:element name="qBCMono" type="nfcom:TDec1104RTC">
 							<xs:annotation>
 								<xs:documentation>Quantidade tributada na monofasia</xs:documentation>
 							</xs:annotation>
@@ -635,7 +732,7 @@
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="qBCMonoReten" type="nfcom:TDec_1104OpRTC">
+						<xs:element name="qBCMonoReten" type="nfcom:TDec1104RTC">
 							<xs:annotation>
 								<xs:documentation>Quantidade tributada sujeita a retenção.</xs:documentation>
 							</xs:annotation>
@@ -669,7 +766,7 @@
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="qBCMonoRet" type="nfcom:TDec_1104OpRTC">
+						<xs:element name="qBCMonoRet" type="nfcom:TDec1104RTC">
 							<xs:annotation>
 								<xs:documentation>Quantidade tributada retida anteriormente</xs:documentation>
 							</xs:annotation>
@@ -713,7 +810,7 @@
 								<xs:documentation>Valor do IBS monofásico diferido</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="pDifCBS" type="nfcom:TDec1302RTC">
+						<xs:element name="pDifCBS" type="nfcom:TDec_0302_04RTC">
 							<xs:annotation>
 								<xs:documentation>Percentual do diferimento do imposto monofásico</xs:documentation>
 							</xs:annotation>
@@ -760,7 +857,7 @@
 						<xs:sequence>
 							<xs:element name="pIBSUF" type="nfcom:TDec_0302_04RTC">
 								<xs:annotation>
-									<xs:documentation>Aliquota do IBS de competência das UF</xs:documentation>
+									<xs:documentation>Aliquota do IBS de competência das UF (em percentual)</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="gDif" type="nfcom:TDif" minOccurs="0">
@@ -794,7 +891,7 @@
 						<xs:sequence>
 							<xs:element name="pIBSMun" type="nfcom:TDec_0302_04RTC">
 								<xs:annotation>
-									<xs:documentation>Aliquota do IBS Municipal</xs:documentation>
+									<xs:documentation>Aliquota do IBS Municipal (em percentual)</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="gDif" type="nfcom:TDif" minOccurs="0">
@@ -834,7 +931,7 @@
 					<xs:sequence>
 						<xs:element name="pCBS" type="nfcom:TDec_0302_04RTC">
 							<xs:annotation>
-								<xs:documentation>Aliquota da CBS</xs:documentation>
+								<xs:documentation>Aliquota da CBS (em percentual)</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="gDif" type="nfcom:TDif" minOccurs="0">
@@ -865,16 +962,6 @@
 					<xs:documentation>Grupo de informações da Tributação Regular. Informar como seria a tributação caso não cumprida a condição resolutória/suspensiva. Exemplo 1: Art. 442, §4. Operações com ZFM e ALC. Exemplo 2: Operações com suspensão do tributo.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="gIBSCredPres" type="nfcom:TCredPres" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Grupo de Informações do Crédito Presumido referente ao IBS, quando aproveitado pelo emitente do documento. </xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="gCBSCredPres" type="nfcom:TCredPres" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Grupo de Informações do Crédito Presumido referente a CBS, quando aproveitado pelo emitente do documento. </xs:documentation>
-				</xs:annotation>
-			</xs:element>
 			<xs:element name="gTribCompraGov" type="nfcom:TTribCompraGov" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Grupo de informações da composição do valor do IBS e da CBS em compras governamental</xs:documentation>
@@ -894,7 +981,7 @@
 			</xs:element>
 			<xs:element name="pAliqEfet" type="nfcom:TDec_0302_04RTC">
 				<xs:annotation>
-					<xs:documentation>Aliquota Efetiva que será aplicada a Base de Calculo</xs:documentation>
+					<xs:documentation>Aliquota Efetiva que será aplicada a Base de Calculo (em percentual)</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -904,11 +991,6 @@
 			<xs:documentation>Tipo Crédito Presumido</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="cCredPres" type="nfcom:TcCredPres">
-				<xs:annotation>
-					<xs:documentation>Código de Classificação do Crédito Presumido do IBS e da CBS</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 			<xs:element name="pCredPres" type="nfcom:TDec_0302_04RTC">
 				<xs:annotation>
 					<xs:documentation>Percentual do Crédito Presumido</xs:documentation>
@@ -1054,7 +1136,7 @@ gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
 			</xs:element>
 			<xs:element name="pRedutor" type="nfcom:TDec_0302_04RTC">
 				<xs:annotation>
-					<xs:documentation>Percentual de redução de aliquota em compra goverrnamental</xs:documentation>
+					<xs:documentation>Percentual de redução de aliquota em compra governamental</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -1076,7 +1158,7 @@ gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
 			</xs:element>
 			<xs:element name="pRedutor" type="nfcom:TDec_0302_04RTC">
 				<xs:annotation>
-					<xs:documentation>Percentual de redução de aliquota em compra goverrnamental</xs:documentation>
+					<xs:documentation>Percentual de redução de aliquota em compra governamental</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="tpOperGov" type="nfcom:TOperCompraGov">
@@ -1105,11 +1187,90 @@ gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:complexType name="TEstornoCred">
+		<xs:annotation>
+			<xs:documentation>Tipo Estorno de Crédito</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vIBSEstCred" type="nfcom:TDec1302RTC">
+				<xs:annotation>
+					<xs:documentation>Valor do IBS a ser estornado</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vCBSEstCred" type="nfcom:TDec1302RTC">
+				<xs:annotation>
+					<xs:documentation>Valor da CBS a ser estornada</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="TCompetApur">
+		<xs:annotation>
+			<xs:documentation>Ano e mês referência do período de apuração (AAAA-MM)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:gYearMonth">
+			<xs:minInclusive value="2025-01"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="TAjusteCompet">
+		<xs:annotation>
+			<xs:documentation>Tipo Ajuste de Competência</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="competApur" type="nfcom:TCompetApur">
+				<xs:annotation>
+					<xs:documentation>Ano e mês referência do período de apuração (AAAA-MM)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vIBS" type="nfcom:TDec1302RTC">
+				<xs:annotation>
+					<xs:documentation>Valor do IBS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vCBS" type="nfcom:TDec1302RTC">
+				<xs:annotation>
+					<xs:documentation>Valor da CBS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TCredPresOper">
+		<xs:annotation>
+			<xs:documentation>Tipo Crédito Presumido da Operação</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vBCCredPres" type="nfcom:TDec1302RTC">
+				<xs:annotation>
+					<xs:documentation>Valor da Base de Cálculo do Crédito Presumido da Operação</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cCredPres" type="nfcom:TcCredPres">
+				<xs:annotation>
+					<xs:documentation>Código de Classificação do Crédito Presumido do IBS e da CBS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="gIBSCredPres" type="nfcom:TCredPres" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Grupo de Informações do Crédito Presumido referente ao IBS, quando aproveitado pelo emitente do documento. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="gCBSCredPres" type="nfcom:TCredPres" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Grupo de Informações do Crédito Presumido referente a CBS, quando aproveitado pelo emitente do documento. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="TCredPresIBSZFM">
 		<xs:annotation>
 			<xs:documentation>Tipo Informações do crédito presumido de IBS para fornecimentos a partir da ZFM</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<xs:element name="competApur" type="nfcom:TCompetApur">
+				<xs:annotation>
+					<xs:documentation>Ano e mês referência do período de apuração (AAAA-MM)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="tpCredPresIBSZFM" type="nfcom:TTpCredPresIBSZFM">
 				<xs:annotation>
 					<xs:documentation>Classificação de acordo com o art. 450, § 1º, da LC 214/25 para o cálculo do crédito presumido na ZFM</xs:documentation>
@@ -1122,7 +1283,7 @@ OBS: Percentuais definidos no art. 450, § 1º, da LC 214/25 para o cálculo do 
 </xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="vCredPresIBSZFM" type="nfcom:TDec1302RTC" minOccurs="0">
+			<xs:element name="vCredPresIBSZFM" type="nfcom:TDec1302RTC">
 				<xs:annotation>
 					<xs:documentation>Valor do crédito presumido calculado sobre o saldo devedor apurado</xs:documentation>
 				</xs:annotation>

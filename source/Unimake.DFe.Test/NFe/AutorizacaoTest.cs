@@ -333,7 +333,7 @@ namespace Unimake.DFe.Test.NFe
 
             var autorizacao = new Autorizacao(xml, configuracao);
 
-            XmlElement elementInfRespTec = null;
+            XmlElement elementInfRespTec;
 
             #region Testar o hashCSRT
             switch (ufBrasil)
@@ -1001,7 +1001,7 @@ namespace Unimake.DFe.Test.NFe
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var autorizacao = new Autorizacao(xml, configuracao);
+            _ = new Autorizacao(xml, configuracao);
         }
 
         /// <summary>
@@ -1259,13 +1259,14 @@ namespace Unimake.DFe.Test.NFe
 
 
         /// <summary>
-        /// Testar o envio de um XML com as tags da reforma tributária
+        /// Validar o XML com as tags da reforma tributária
         /// </summary>
         /// <param name="tipoAmbiente"></param>
         /// <param name="arqXML"></param>
         [Theory]
         [Trait("DFe", "NFe")]
-        [InlineData(TipoAmbiente.Homologacao, @"..\..\..\NFe\Resources\envNFeReformaTributaria.xml")]
+        [InlineData(TipoAmbiente.Homologacao, @"..\..\..\NFe\Resources\NFeRTC2.xml")]
+        [InlineData(TipoAmbiente.Homologacao, @"..\..\..\NFe\Resources\NFeRTC3.xml")]
         public void ValidarNFeComReformaTributaria(TipoAmbiente tipoAmbiente, string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
@@ -1281,10 +1282,16 @@ namespace Unimake.DFe.Test.NFe
             };
 
             var enviNFe = new EnviNFe();
-            enviNFe = enviNFe.LerXML<EnviNFe>(doc);
+            enviNFe.Versao = "4.00";
+            enviNFe.IdLote = "000000000000001";
+            enviNFe.NFe = new List<Business.DFe.Xml.NFe.NFe>
+            {
+                XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(doc)
+            };
 
             var autorizacaoNFe = new Autorizacao(enviNFe, configuracao);
-            
+
+            Assert.True(doc.InnerText == autorizacaoNFe.ConteudoXMLOriginal.GetElementsByTagName("NFe")[0].InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
     }
 }

@@ -1,43 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRps versao="3.00">
-			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>http://wshomologacao.simplissweb.com.br/nfseservice.svc?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://wsvargemgrandedosul.simplissweb.com.br/nfseservice.svc?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/RecepcionarLoteRps</WebActionHomologacao>
-			<WebActionProducao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>nfse:InfRps</TagAssinatura>
-			<TagAtributoID>nfse:Rps</TagAtributoID>
-			<TagLoteAssinatura>nfse:InfRps</TagLoteAssinatura>
-			<TagLoteAtributoID>nfse:Rps</TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sis="http://www.sistema.com.br/Sistema.Ws.Nfse" xmlns:nfse="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd" xmlns:sis1="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn"><soapenv:Header/><soapenv:Body><sis:RecepcionarLoteRps>{xmlBody}<sis:pParam><sis1:P1>{MunicipioUsuario}</sis1:P1><sis1:P2>{MunicipioSenha}</sis1:P2></sis:pParam></sis:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>RecepcionarLoteRpsResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</RecepcionarLoteRps>
 		<GerarNfse versao="3.00">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao>http://wshomologacao.simplissweb.com.br/nfseservice.svc?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>http://wsvargemgrandedosul.simplissweb.com.br/nfseservice.svc?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/GerarNfse</WebActionHomologacao>
 			<WebActionProducao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/GerarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>nfse:InformacaoNfse</TagAssinatura>
-			<TagAtributoID>sis:GerarNovaNfseEnvio</TagAtributoID>
+			<SchemaArquivo>nfse_3.xsd</SchemaArquivo>
+			<TagAssinatura>Prestador</TagAssinatura>
+			<TagAtributoID>InformacaoNfse</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sis="http://www.sistema.com.br/Sistema.Ws.Nfse" xmlns:nfse="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd" xmlns:sis1="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn"><soapenv:Header/><soapenv:Body><sis:GerarNfse>{xmlBody}<sis:pParam><sis1:P1>{MunicipioUsuario}</sis1:P1><sis1:P2>{MunicipioSenha}</sis1:P2></sis:pParam></sis:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GerarNfse xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse">{xmlBody}<pParam><P1 xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn">{MunicipioUsuario}</P1><P2 xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn">{MunicipioSenha}</P2></pParam></GerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>GerarNfseResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TargetNS>http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd</TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</GerarNfse>
 		<ConsultarNfsePorRps versao="3.00">
 			<Descricao>Consultar NFSe por rps</Descricao>
@@ -45,7 +27,7 @@
 			<WebEnderecoProducao>http://wsvargemgrandedosul.simplissweb.com.br/nfseservice.svc?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<SchemaArquivo>nfse_3.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -53,12 +35,12 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sis="http://www.sistema.com.br/Sistema.Ws.Nfse" xmlns:nfse="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd" xmlns:sis1="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn"><soapenv:Header/><soapenv:Body><sis:ConsultarNfsePorRps>{xmlBody}<sis:pParam><sis1:P1>{MunicipioUsuario}</sis1:P1><sis1:P2>{MunicipioSenha}</sis1:P2></sis:pParam></sis:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRps xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse">{xmlBody}<pParam><P1 xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn">{MunicipioUsuario}</P1><P2 xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn">{MunicipioSenha}</P2></pParam></ConsultarNfsePorRps></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ConsultarNfsePorRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TargetNS>http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd</TargetNS>
 		</ConsultarNfsePorRps>
 		<ConsultarLoteRps versao="3.00">
 			<Descricao>Consulta lote RPS</Descricao>
@@ -66,18 +48,19 @@
 			<WebEnderecoProducao>http://wsvargemgrandedosul.simplissweb.com.br/nfseservice.svc?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>sis:ConsultarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>nfse:Protocolo</TagAtributoID>
+			<SchemaArquivo>nfse_3.xsd</SchemaArquivo>
+			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Protocolo</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sis="http://www.sistema.com.br/Sistema.Ws.Nfse" xmlns:nfse="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd" xmlns:sis1="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn"><soapenv:Header/><soapenv:Body><sis:ConsultarLoteRps>{xmlBody}<sis:pParam><sis1:P1>{MunicipioUsuario}</sis1:P1><sis1:P2>{MunicipioSenha}</sis1:P2></sis:pParam></sis:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRps xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse">{xmlBody}<pParam><P1 xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn">{MunicipioUsuario}</P1><P2 xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn">{MunicipioSenha}</P2></pParam></ConsultarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ConsultarLoteRpsResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TargetNS>http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd</TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarLoteRps>
 		<CancelarNfse versao="3.00">
 			<Descricao>Consulta lote RPS</Descricao>
@@ -85,18 +68,19 @@
 			<WebEnderecoProducao>http://wsvargemgrandedosul.simplissweb.com.br/nfseservice.svc?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/CancelarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<SchemaArquivo>nfse_3.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sis="http://www.sistema.com.br/Sistema.Ws.Nfse" xmlns:nfse="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd" xmlns:sis1="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn"><soapenv:Header/><soapenv:Body><sis:CancelarNfse>{xmlBody}<sis:pParam><sis1:P1>{MunicipioUsuario}</sis1:P1><sis1:P2>{MunicipioSenha}</sis1:P2></sis:pParam></sis:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfse xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse">{xmlBody}<pParam><P1 xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn">{MunicipioUsuario}</P1><P2 xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn">{MunicipioSenha}</P2></pParam></CancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>CancelarNfseResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TargetNS>http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd</TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</CancelarNfse>
 		<ConsultarSituacaoLoteRps versao="3.00">
 			<Descricao>Consulta lote RPS</Descricao>
@@ -104,37 +88,19 @@
 			<WebEnderecoProducao>http://wsvargemgrandedosul.simplissweb.com.br/nfseservice.svc?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/ConsultarSituacaoLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/ConsultarSituacaoLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<SchemaArquivo>nfse_3.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sis="http://www.sistema.com.br/Sistema.Ws.Nfse" xmlns:nfse="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd" xmlns:sis1="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn"><soapenv:Header/><soapenv:Body><sis:ConsultarSituacaoLoteRps>{xmlBody}<sis:pParam><sis1:P1>{MunicipioUsuario}</sis1:P1><sis1:P2>{MunicipioSenha}</sis1:P2></sis:pParam></sis:ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRps xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse">{xmlBody}<pParam><P1 xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn">{MunicipioUsuario}</P1><P2 xmlns="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn">{MunicipioSenha}</P2></pParam></ConsultarSituacaoLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ConsultarSituacaoLoteRpsResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TargetNS>http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd</TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarSituacaoLoteRps>
-		<ConsultarNfseServicoTomado versao="3.00">
-			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://wsvargemgrandedosul.simplissweb.com.br/nfseservice.svc?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://www.sistema.com.br/Sistema.Ws.Nfse/INfseService/ConsultarNfseServicoTomado</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sis="http://www.sistema.com.br/Sistema.Ws.Nfse" xmlns:nfse="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd" xmlns:sis1="http://www.sistema.com.br/Sistema.Ws.Nfse.Cn"><soapenv:Header/><soapenv:Body><sis:ConsultarNfseServicoTomado>{xmlBody}<sis:pParam><sis1:P1>{MunicipioUsuario}</sis1:P1><sis1:P2>{MunicipioSenha}</sis1:P2></sis:pParam></sis:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarNfseServicoTomadoResult</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</ConsultarNfseServicoTomado>
 	</Servicos>
 </Configuracoes>

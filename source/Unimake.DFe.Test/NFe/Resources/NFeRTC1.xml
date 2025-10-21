@@ -125,6 +125,7 @@
               <pIBSMun>0.0000</pIBSMun>
               <vIBSMun>0.00</vIBSMun>
             </gIBSMun>
+            <vIBS>1.00</vIBS>
             <gCBS>
               <pCBS>0.8000</pCBS>
               <vCBS>0.59</vCBS>

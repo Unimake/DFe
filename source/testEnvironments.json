@@ -1,0 +1,17 @@
+﻿{
+  "version": "1",
+  "environments": [
+    //Consulte https://aka.ms/remotetesting para obter mais detalhe
+    //sobre como configurar ambientes remotos.
+    //{
+    //  "name": "WSL Ubuntu",
+    //  "type": "wsl",
+    //  "wslDistribution": "Ubuntu"
+    //},
+    //{
+    //  "name": "Docker dotnet/sdk",
+    //  "type": "docker",
+    //  "dockerImage": "mcr.microsoft.com/dotnet/sdk"
+    //}
+  ]
+}
