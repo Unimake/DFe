@@ -3047,4 +3047,10 @@
 		<ArqConfig>CapitaoRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4216354">
+		<Nome>São João do Itaperiú - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>SaoJoaoDoItaperiuSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
