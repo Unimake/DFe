@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2025.10.11.1001</AssemblyVersion>
-		<FileVersion>2025.10.11.1001</FileVersion>
+		<AssemblyVersion>2025.10.20.1346</AssemblyVersion>
+		<FileVersion>2025.10.20.1346</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -693,6 +693,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDaBoaVistaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDelReiMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoJoaoDoItaperiuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDoParaisoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaquimDeBicasMG.xml" />
@@ -1717,6 +1718,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGabrielRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloDoParaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDaBoaVistaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDoItaperiuSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDoParaisoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDeBicasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDaLapaMG.xml" />
@@ -3731,7 +3733,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.9" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.10" />
 		<PackageReference Include="Unimake.Cryptography" Version="20250912.1810.37" />
 		<PackageReference Include="Unimake.Extensions" Version="20250912.1810.37" />
 		<PackageReference Include="Unimake.Utils" Version="20250912.1810.37" />
