@@ -19,7 +19,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <CursorPos X="51" Y="23"/>
+        <TopLine Value="461"/>
+        <CursorPos X="19" Y="479"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -37,7 +38,7 @@
         <Filename Value="enviarnfesincrono.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFeSincrono"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="199"/>
         <CursorPos Y="234"/>
         <UsageCount Value="189"/>
@@ -237,7 +238,7 @@
         <Filename Value="enviarnfcomsincrono.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFComSincrono"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="41"/>
         <CursorPos X="68" Y="56"/>
         <UsageCount Value="65"/>
@@ -247,7 +248,7 @@
         <Filename Value="enviarmdfesincrono.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarMDFeSincrono"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="88"/>
         <CursorPos X="37" Y="264"/>
         <UsageCount Value="34"/>
@@ -257,9 +258,8 @@
         <Filename Value="enviareventocancelamentomdfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarEventoCancelamentoMDFe"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="73"/>
-        <CursorPos X="19" Y="79"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="59" Y="10"/>
         <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit>
@@ -267,10 +267,9 @@
         <Filename Value="enviareventoencerramentomdfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarEventoEncerramentoMDFe"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="18"/>
-        <CursorPos X="35" Y="30"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="43"/>
+        <CursorPos X="38" Y="66"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>
@@ -329,7 +328,7 @@
       <Unit>
         <Filename Value="eventocancelamentonfe.pas"/>
         <UnitName Value="EventoCancelamentoNFe"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="75"/>
         <CursorPos X="41" Y="89"/>
         <UsageCount Value="27"/>
@@ -390,116 +389,19 @@
         <CursorPos X="27" Y="4"/>
         <UsageCount Value="6"/>
       </Unit>
+      <Unit>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarStatusMDFe"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="26"/>
+        <CursorPos X="70" Y="48"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="43" TopLine="19"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="44" TopLine="20"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="45" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="47" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="48" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="49" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="50" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="51" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="52" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="55" TopLine="49"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="56" TopLine="49"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="57" TopLine="49"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="58" TopLine="49"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="61" TopLine="49"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="63" TopLine="49"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="65" TopLine="49"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="66" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="68" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="69" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="72" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="73" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="74" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="75" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="76" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="74" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="78" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="enviareventoencerramentomdfe.pas"/>
-        <Caret Line="79" TopLine="58"/>
-      </Position>
       <Position>
         <Filename Value="enviareventoencerramentomdfe.pas"/>
         <Caret Line="81" TopLine="73"/>
@@ -511,6 +413,114 @@
       <Position>
         <Filename Value="enviareventoencerramentomdfe.pas"/>
         <Caret Line="85" TopLine="73"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="23" Column="51"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="16" Column="89"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="59" Column="105" TopLine="38"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="28" Column="75" TopLine="5"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="33" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="67" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="41" Column="101" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="34" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="35" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="36" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="37" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="40" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="41" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="42" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="45" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="46" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="49" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="51" TopLine="25"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="53" TopLine="27"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="54" TopLine="28"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="64" TopLine="38"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="65" TopLine="38"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="51" TopLine="38"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="31" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="67" TopLine="38"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="31" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarstatusmdfe.pas"/>
+        <Caret Line="67" TopLine="38"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -575,6 +585,13 @@
         <WatchKind Value="wpkWrite"/>
         <Source Value="enviareventoencerramentomdfe.pas"/>
         <Line Value="29"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="consultarstatusmdfe.pas"/>
+        <Line Value="33"/>
       </Item>
     </BreakPoints>
     <Watches>

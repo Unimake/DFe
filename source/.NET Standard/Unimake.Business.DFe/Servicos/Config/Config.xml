@@ -3047,16 +3047,10 @@
 		<ArqConfig>CapitaoRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3546702">
-		<Nome>Santa Gertrudes - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>SantaGertrudesSP.xml</ArqConfig>
-		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3546702">
-		<Nome>Cambará - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>CambaraPR.xml</ArqConfig>
-		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	<Arquivo ID="4216354">
+		<Nome>São João do Itaperiú - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>SaoJoaoDoItaperiuSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>

@@ -16,7 +16,8 @@ uses
   NACIONALCancelarNFSe, NACIONALConsultarNFSe, NACIONALConsultarNFSeRPS,
   NACIONALConsultarNFSePDF, EventoCCENFe, InutilizacaoNumeroNFe,
   ConsultarStatusNFCom, EnviarNFComSincrono, EnviarMDFeSincrono,
-  EnviarEventoCancelamentoMDFe, EnviarEventoEncerramentoMDFe;
+  EnviarEventoCancelamentoMDFe, EnviarEventoEncerramentoMDFe,
+  ConsultarStatusMDFe;
 
 type
 
@@ -47,6 +48,7 @@ type
     btnInutilizacaoNumeroNFe: TButton;
     BtnEnviarNFComSincrono: TButton;
     BtnEnviarEventoEncerramentoMDFe: TButton;
+    Btn_ConsultarStatusMDFe: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -93,6 +95,7 @@ type
     procedure BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
     procedure BtnNACIONALConsultarPDFNFSeClick(Sender: TObject);
     procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
+    procedure Btn_ConsultarStatusMDFeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox3Click(Sender: TObject);
 
@@ -460,6 +463,17 @@ var
   oServico: TNACIONALGerarNFSe;
 begin
   oServico := TNACIONALGerarNFSe.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.Btn_ConsultarStatusMDFeClick(Sender: TObject);
+var
+  oServico: TConsultarStatusMDFe;
+begin
+  oServico := TConsultarStatusMDFe.Create;
   try
       oServico.Executar();
     finally
