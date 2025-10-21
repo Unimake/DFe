@@ -321,9 +321,9 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object GroupBox6: TGroupBox
-    Left = 1240
+    Left = 1241
     Height = 472
-    Top = 393
+    Top = 388
     Width = 312
     Caption = 'MDF-e'
     ClientHeight = 447
@@ -348,7 +348,7 @@ object frmPrincipal: TfrmPrincipal
       OnClick = BtnEnviarEventoCancelamentoMDFeClick
     end
     object BtnEnviarEventoEncerramentoMDFe: TButton
-      Left = 11
+      Left = 8
       Height = 32
       Top = 77
       Width = 289
@@ -357,13 +357,22 @@ object frmPrincipal: TfrmPrincipal
       OnClick = BtnEnviarEventoEncerramentoMDFeClick
     end
     object Btn_ConsultarStatusMDFe: TButton
-      Left = 11
+      Left = 8
       Height = 31
       Top = 112
       Width = 289
       Caption = 'Consulta Status'
       TabOrder = 3
       OnClick = Btn_ConsultarStatusMDFeClick
+    end
+    object Btn_ConsultarSituacaoMDFe: TButton
+      Left = 8
+      Height = 31
+      Top = 144
+      Width = 289
+      Caption = 'Consulta Situacao'
+      TabOrder = 4
+      OnClick = Btn_ConsultarSituacaoMDFeClick
     end
   end
 end

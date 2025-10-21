@@ -179,6 +179,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarStatusMDFe"/>
       </Unit>
+      <Unit>
+        <Filename Value="consultarsituacaomdfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarSituacaoMDFe"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
