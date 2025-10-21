@@ -270,16 +270,6 @@
 									<pAliqEfetRegCBS>2.7000</pAliqEfetRegCBS>
 									<vTribRegCBS>27.00</vTribRegCBS>
 								</gTribRegular>
-								<gIBSCredPres>
-									<cCredPres>1111</cCredPres>
-									<pCredPres>5.0000</pCredPres>
-									<vCredPresCondSus>10.00</vCredPresCondSus>
-								</gIBSCredPres>
-								<gCBSCredPres>
-									<cCredPres>2222</cCredPres>
-									<pCredPres>3.0000</pCredPres>
-									<vCredPres>30.00</vCredPres>
-								</gCBSCredPres>
 								<gTribCompraGov>
 									<pAliqIBSUF>1.0000</pAliqIBSUF>
 									<vTribIBSUF>1.11</vTribIBSUF>
@@ -355,15 +345,11 @@
 						<vIBSMun>155.89</vIBSMun>
 					</gIBSMun>
 					<vIBS>1.17</vIBS>
-					<vCredPres>117.40</vCredPres>
-					<vCredPresCondSus>1.59</vCredPresCondSus>
 				</gIBS>
 				<gCBS>
 					<vDif>22.22</vDif>
 					<vDevTrib>23.33</vDevTrib>
 					<vCBS>44.44</vCBS>
-					<vCredPres>55.55</vCredPres>
-					<vCredPresCondSus>66.66</vCredPresCondSus>
 				</gCBS>
 			</IBSCBSTot>
 			<vTotDFe>1000.55</vTotDFe>

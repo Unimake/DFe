@@ -2512,10 +2512,71 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public string CClassTrib { get; set; }
 
         /// <summary>
+        /// Indica a natureza da operação de doação, orientando a apuração e a geração de débitos ou estornos conforme o cenário
+        /// </summary>
+        [XmlElement("indDoacao")]
+        public int IndDoacao { get; set; }
+
+        /// <summary>
         /// Grupo de informações específicas do IBS/CBS
         /// </summary>
         [XmlElement("gIBSCBS")]
         public GIBSCBS GIBSCBS { get; set; }
+
+        /// <summary>
+        /// Estorno de Crédito
+        /// </summary>
+        [XmlElement("gEstornoCred")]
+        public GEstornoCred GEstornoCred { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeIndDoacao() => IndDoacao == 1;
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Estorno de Crédito
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GEstornoCred")]
+    [ComVisible(true)]
+#endif
+    public class GEstornoCred
+    {
+        /// <summary>
+        /// Valor do IBS a ser estornado
+        /// </summary>
+        [XmlIgnore]
+        public double VIBSEstCred { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VIBSEstCred para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vIBSEstCred")]
+        public string VIBSEstCredField
+        {
+            get => VIBSEstCred.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSEstCred = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da CBS a ser estornada
+        /// </summary>
+        [XmlIgnore]
+        public double VCBSEstCred { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCBSEstCred para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCBSEstCred")]
+        public string VCBSEstCredField
+        {
+            get => VCBSEstCred.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSEstCred = Converter.ToDouble(value);
+        }
     }
 
     /// <summary>
@@ -2584,18 +2645,6 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// </summary>
         [XmlElement("gTribRegular")]
         public GTribRegular GTribRegular { get; set; }
-
-        /// <summary>
-        /// Grupo de Informações do Crédito Presumido, quando aproveitado pelo emitente do documento.
-        /// </summary>
-        [XmlElement("gIBSCredPres")]
-        public GIBSCredPres GIBSCredPres { get; set; }
-
-        /// <summary>
-        /// Grupo de Informações do Crédito Presumido, quando aproveitado pelo emitente do documento.
-        /// </summary>
-        [XmlElement("gCBSCredPres")]
-        public GCBSCredPres GCBSCredPres { get; set; }
 
         /// <summary>
         /// Grupo de informações da composição do valor do IBS e da CBS em compras governamental
@@ -3536,7 +3585,13 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Total do CBS
         /// </summary>
         [XmlElement("gCBS")]
-        public GCBSTot GCBS { get; set; } 
+        public GCBSTot GCBS { get; set; }
+
+        /// <summary>
+        /// Total do Estorno de crédito
+        /// </summary>
+        [XmlElement("gEstornoCred")]
+        public GEstornoCred GEstornoCred { get; set; }
     }
 
     /// <summary>
@@ -3575,38 +3630,6 @@ namespace Unimake.Business.DFe.Xml.NF3e
         {
             get => VIBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VIBS = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Total do Crédito Presumido
-        /// </summary>
-        [XmlIgnore]
-        public double VCredPres { get; set; }
-
-        /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCredPres para atribuir ou resgatar o valor)
-        /// </summary>
-        [XmlElement("vCredPres")]
-        public string VCredPresField
-        {
-            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPres = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Total do Crédito Presumido Condição Suspensiva
-        /// </summary>
-        [XmlIgnore]
-        public double VCredPresCondSus { get; set; }
-
-        /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCredPresCondSus para atribuir ou resgatar o valor)
-        /// </summary>
-        [XmlElement("vCredPresCondSus")]
-        public string VCredPresCondSusField
-        {
-            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPresCondSus = Converter.ToDouble(value);
         }
     }
 
@@ -3778,38 +3801,6 @@ namespace Unimake.Business.DFe.Xml.NF3e
         {
             get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VCBS = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Total do Crédito Presumido 
-        /// </summary>
-        [XmlIgnore]
-        public double VCredPres { get; set; }
-
-        /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCredPres para atribuir ou resgatar o valor)
-        /// </summary>
-        [XmlElement("vCredPres")]
-        public string VCredPresField
-        {
-            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPres = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Total do Crédito Presumido Condição Suspensiva
-        /// </summary>
-        [XmlIgnore]
-        public double VCredPresCondSus { get; set; }
-
-        /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCredPresCondSus para atribuir ou resgatar o valor)
-        /// </summary>
-        [XmlElement("vCredPresCondSus")]
-        public string VCredPresCondSusField
-        {
-            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredPresCondSus = Converter.ToDouble(value);
         }
     }
 
