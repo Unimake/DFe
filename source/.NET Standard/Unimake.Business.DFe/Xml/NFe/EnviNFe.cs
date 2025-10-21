@@ -4049,6 +4049,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         public COFINS COFINS { get; set; }
 
         /// <summary>
+        /// Dados do UB Reforma tributaria
+        /// </summary>
+        [XmlElement("UB")]
+        public UB UB { get; set; }
+
+        /// <summary>
         /// Dados do COFINSST
         /// </summary>
         [XmlElement("COFINSST")]
@@ -9236,6 +9242,134 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion
     }
 
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.UB")]
+    [ComVisible(true)]
+#endif
+    /// <summary>
+    /// Grupo UB - Informações do IBS / CBS / IS do item
+    /// </summary>
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class UB
+    {
+        [XmlElement("cClassTrib")]
+        public int cClassTrib { get; set; }
+
+        [XmlElement("vBCIBS")]
+        public decimal vBCIBS { get; set; }
+
+        [XmlElement("pIBS")]
+        public decimal pIBS { get; set; }
+
+        [XmlElement("vIBS")]
+        public decimal vIBS { get; set; }
+
+        [XmlElement("vBCCBS")]
+        public decimal vBCCBS { get; set; }
+
+        [XmlElement("pCBS")]
+        public decimal pCBS { get; set; }
+
+        [XmlElement("vCBS")]
+        public decimal vCBS { get; set; }
+
+        [XmlElement("gCredPres")]
+        public gCredPres gCredPres { get; set; }
+
+        [XmlElement("gDif")]
+        public gDif gDif { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.gCredPres")]
+    [ComVisible(true)]
+#endif
+    /// <summary>
+    /// Grupo de crédito presumido do IBS/CBS
+    /// </summary>
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class gCredPres
+    {
+        [XmlElement("pCredPresIBS")]
+        public decimal pCredPresIBS { get; set; }
+
+        [XmlElement("vCredPresIBS")]
+        public decimal vCredPresIBS { get; set; }
+
+        [XmlElement("pCredPresCBS")]
+        public decimal pCredPresCBS { get; set; }
+
+        [XmlElement("vCredPresCBS")]
+        public decimal vCredPresCBS { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.gDif")]
+    [ComVisible(true)]
+#endif
+    /// <summary>
+    /// Grupo de diferimento do IBS/CBS (UF e Município)
+    /// </summary>
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class gDif
+    {
+        [XmlElement("pDifUF")]
+        public decimal pDifUF { get; set; }
+
+        [XmlElement("vDifUF")]
+        public decimal vDifUF { get; set; }
+
+        [XmlElement("pDifMun")]
+        public decimal pDifMun { get; set; }
+
+        [XmlElement("vDifMun")]
+        public decimal vDifMun { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.W03")]
+    [ComVisible(true)]
+#endif
+    /// <summary>
+    /// Grupo W03 - Totais do IBS / CBS / IS na NF-e
+    /// </summary>
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class W03
+    {
+        [XmlElement("vBCIBSTot")]
+        public decimal vBCIBSTot { get; set; }
+
+        [XmlElement("vIBSTot")]
+        public decimal vIBSTot { get; set; }
+
+        [XmlElement("vBCCBSTot")]
+        public decimal vBCCBSTot { get; set; }
+
+        [XmlElement("vCBSTot")]
+        public decimal vCBSTot { get; set; }
+
+        [XmlElement("vCredPresIBSTot")]
+        public decimal vCredPresIBSTot { get; set; }
+
+        [XmlElement("vCredPresCBSTot")]
+        public decimal vCredPresCBSTot { get; set; }
+
+        [XmlElement("vDifUFTot")]
+        public decimal vDifUFTot { get; set; }
+
+        [XmlElement("vDifMunTot")]
+        public decimal vDifMunTot { get; set; }
+    }
+
     /// <summary>
     /// Classe de informações do COFINS
     /// </summary>
@@ -9952,6 +10086,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlElement("ISTot")]
         public ISTot ISTot { get; set; }
+
+        /// <summary>
+        /// Totais novos IBS / CBS / IS no grupo de totais Reforma tributaria
+        /// </summary>
+        [XmlElement("W03")]
+        public W03 W03 { get; set; }
+
 
         /// <summary>
         /// Totais da NF-e com IBS e CBS
