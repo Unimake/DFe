@@ -366,11 +366,12 @@ Nota: No caso de Contribuinte Isento de Inscrição (indIEDest=2) informar a tag
 									<xs:element name="tpAcesso" type="TAcessante">
 										<xs:annotation>
 											<xs:documentation>Tipo de Acessante</xs:documentation>
-											<xs:documentation>0 - Gerador; 1 – Cativo; 
+											<xs:documentation>0 - Gerador;
+1 – Cativo; 
 2 – Livre;
- 3 – Parcialmente Livre; 
+3 – Parcialmente Livre; 
 4 – Consumidor Especial;
- 5 – Parcialmente Especial;
+5 – Parcialmente Especial;
  6 – Comunhão; 
 7 – Suprimento; 
 8 – Distribuidora.</xs:documentation>
@@ -3367,9 +3368,9 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 					<xs:documentation>Tipo de grandeza medida</xs:documentation>
 					<xs:documentation>01 - Demanda; 
 02 - Demanda Reativa
-; 03 - Energia Ativa; 
+03 - Energia Ativa; 
 04 - Energia Ativa injetada
-; 05 - Energia Reativa</xs:documentation>
+05 - Energia Reativa</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cPosTarif" type="TPosTarifCompleto">
@@ -3630,7 +3631,6 @@ Observação: 28 caracteres são representados no schema como 20 bytes do tipo b
 			<xs:enumeration value="6"/>
 			<xs:enumeration value="7"/>
 			<xs:enumeration value="8"/>
-			<xs:enumeration value=""/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="TClasse">

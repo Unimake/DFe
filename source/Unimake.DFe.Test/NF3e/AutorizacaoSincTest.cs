@@ -436,18 +436,6 @@ namespace Unimake.DFe.Test.NF3e
                                                         PAliqEfetRegCBS = 2.7000,
                                                         VTribRegCBS = 27.00
                                                     },
-                                                    GIBSCredPres = new GIBSCredPres
-                                                    {
-                                                        CCredPres = "1111",
-                                                        PCredPres = 5.0000,
-                                                        VCredPresCondSus = 50.00,
-                                                    },
-                                                    GCBSCredPres = new GCBSCredPres
-                                                    {
-                                                        CCredPres = "2222",
-                                                        PCredPres = 3.0000,
-                                                        VCredPres = 30.00,
-                                                    },
                                                     GTribCompraGov = new GTribCompraGov
                                                     {
                                                         PAliqIBSUF = 1.0000,
@@ -537,17 +525,13 @@ namespace Unimake.DFe.Test.NF3e
                                     VDevTrib = 1.99,
                                     VIBSMun = 155.89
                                 },
-                                VIBS = 1.17,
-                                VCredPres = 117.40,
-                                VCredPresCondSus = 1.59
+                                VIBS = 1.17
                             },
                             GCBS = new GCBSTot
                             {
                                 VDif = 22.22,
                                 VDevTrib = 23.33,
-                                VCBS = 44.44,
-                                VCredPres = 55.55,
-                                VCredPresCondSus = 66.66
+                                VCBS = 44.44
                             }
                         },
                         VTotDFe = 1000.55
