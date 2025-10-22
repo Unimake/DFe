@@ -3053,4 +3053,10 @@
 		<ArqConfig>SaoJoaoDoItaperiuSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4103602">
+		<Nome>Cambará - PR</Nome>
+		<UF>SC</UF>
+		<ArqConfig>CambaraPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
