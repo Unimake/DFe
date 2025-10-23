@@ -17,7 +17,7 @@ uses
   NACIONALConsultarNFSePDF, EventoCCENFe, InutilizacaoNumeroNFe,
   ConsultarStatusNFCom, EnviarNFComSincrono, EnviarMDFeSincrono,
   EnviarEventoCancelamentoMDFe, EnviarEventoEncerramentoMDFe,
-  ConsultarStatusMDFe;
+  ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrada;
 
 type
 
@@ -49,6 +49,8 @@ type
     BtnEnviarNFComSincrono: TButton;
     BtnEnviarEventoEncerramentoMDFe: TButton;
     Btn_ConsultarStatusMDFe: TButton;
+    Btn_ConsultarSituacaoMDFe: TButton;
+    Btn_ConsultaMdfeNaoEncerrado: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -95,7 +97,9 @@ type
     procedure BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
     procedure BtnNACIONALConsultarPDFNFSeClick(Sender: TObject);
     procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
+    procedure Btn_ConsultaMdfeNaoEncerradoClick(Sender: TObject);
     procedure Btn_ConsultarStatusMDFeClick(Sender: TObject);
+    procedure Btn_ConsultarSituacaoMDFeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox3Click(Sender: TObject);
 
@@ -469,6 +473,17 @@ begin
     end;
 end;
 
+procedure TfrmPrincipal.Btn_ConsultaMdfeNaoEncerradoClick(Sender: TObject);
+  var
+    oServico: TConsultarMDFeNaoEncerrada;
+  begin
+    oServico := TConsultarMDFeNaoEncerrada.create;
+    try
+        oServico.Executar();
+      finally
+      end;
+  end;
+
 procedure TfrmPrincipal.Btn_ConsultarStatusMDFeClick(Sender: TObject);
 var
   oServico: TConsultarStatusMDFe;
@@ -478,6 +493,17 @@ begin
       oServico.Executar();
     finally
     end;
+end;
+
+procedure TfrmPrincipal.Btn_ConsultarSituacaoMDFeClick(Sender: TObject);
+var
+  oServico: TConsultarSituacaoMDFe;
+begin
+  oServico := TConsultarSituacaoMDFe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);

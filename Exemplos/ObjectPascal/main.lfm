@@ -370,9 +370,18 @@ object frmPrincipal: TfrmPrincipal
       Height = 31
       Top = 144
       Width = 289
-      Caption = 'Consulta Situacao'
+      Caption = 'Consulta Situação'
       TabOrder = 4
       OnClick = Btn_ConsultarSituacaoMDFeClick
+    end
+    object Btn_ConsultaMdfeNaoEncerrado: TButton
+      Left = 6
+      Height = 31
+      Top = 176
+      Width = 291
+      Caption = 'Consultar MDFe''s não Encerrados'
+      TabOrder = 5
+      OnClick = Btn_ConsultaMdfeNaoEncerradoClick
     end
   end
 end

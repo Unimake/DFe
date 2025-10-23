@@ -184,6 +184,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarSituacaoMDFe"/>
       </Unit>
+      <Unit>
+        <Filename Value="consultarmdfenaoencerrada.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarMDFeNaoEncerrada"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
