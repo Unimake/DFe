@@ -1,80 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
-  <Rps xmlns="http://www.abrasf.org.br/nfse.xsd">
-    <InfDeclaracaoPrestacaoServico Id="ID1999999990001911733160024200900000000001">
-      <Rps Id="RPS6">
-        <IdentificacaoRps>
-          <Numero>6</Numero>
-          <Serie>A123</Serie>
-          <Tipo>1</Tipo>
-        </IdentificacaoRps>
-        <DataEmissao>2017-12-09</DataEmissao>
-        <Status>1</Status>
-      </Rps>
-      <Competencia>2017-12-09</Competencia>
-      <Servico>
-        <Valores>
-          <ValorServicos>121.12</ValorServicos>
-          <ValorDeducoes>12.22</ValorDeducoes>
-          <ValorPis>1.20</ValorPis>
-          <ValorCofins>1.20</ValorCofins>
-          <ValorInss>0.00</ValorInss>
-          <ValorIr>1.20</ValorIr>
-          <ValorCsll>1.20</ValorCsll>
-          <OutrasRetencoes>0.00</OutrasRetencoes>
-          <ValTotTributos>0.00</ValTotTributos>
-          <ValorIss>0.00</ValorIss>
-          <Aliquota>2.79</Aliquota>
-          <DescontoIncondicionado>0.00</DescontoIncondicionado>
-          <DescontoCondicionado>0.00</DescontoCondicionado>
-        </Valores>
-        <IssRetido>2</IssRetido>
-        <ItemListaServico>01.01</ItemListaServico>
-        <CodigoCnae>4930202</CodigoCnae>
-        <CodigoNbs>101</CodigoNbs>
-        <Discriminacao>TTESTE DE DISCRIMINACAO</Discriminacao>
-        <CodigoMunicipio>3202405</CodigoMunicipio>
-        <ExigibilidadeISS>6</ExigibilidadeISS>
-        <IdentifNaoExigibilidade>ABC</IdentifNaoExigibilidade>
-        <MunicipioIncidencia>3202405</MunicipioIncidencia>
-        <NumeroProcesso>457487854</NumeroProcesso>
-      </Servico>
-      <Prestador>
-        <CpfCnpj>
-          <Cnpj>99999999999999</Cnpj>
-        </CpfCnpj>
-        <InscricaoMunicipal>281302</InscricaoMunicipal>
-      </Prestador>
-      <TomadorServico>
-        <IdentificacaoTomador>
-          <CpfCnpj>
-            <Cpf>99999999999</Cpf>
-          </CpfCnpj>
-        </IdentificacaoTomador>
-        <RazaoSocial>xxxxxxxxxxxxx</RazaoSocial>
-        <Endereco>
-          <Endereco>xxxxxxxxxxx</Endereco>
-          <Numero>446</Numero>
-          <Complemento>CJ 1</Complemento>
-          <Bairro>xxxxxxxxxxxx</Bairro>
-          <CodigoMunicipio>3543402</CodigoMunicipio>
-          <Uf>SP</Uf>
-          <Cep>14030530</Cep>
-        </Endereco>
-        <Contato>
-          <Telefone>17981707756</Telefone>
-          <Email>tomador@dominio.com</Email>
-        </Contato>
-      </TomadorServico>
-      <RegimeEspecialTributacao>6</RegimeEspecialTributacao>
-      <OptanteSimplesNacional>1</OptanteSimplesNacional>
-      <IncentivoFiscal>2</IncentivoFiscal>
-      <Evento>
-        <IdentificacaoEvento>IDENTEVENTO</IdentificacaoEvento>
-        <DescricaoEvento>DESCRICAO EVENTO</DescricaoEvento>
-      </Evento>
-      <InformacoesComplementares>INFORMACAO EXTRA BLA BLA BLA
-			</InformacoesComplementares>
-    </InfDeclaracaoPrestacaoServico>
-  </Rps>
+	<Rps xmlns="http://www.abrasf.org.br/nfse.xsd">
+		<InfDeclaracaoPrestacaoServico Id="ID1">
+			<Rps Id="RPS1">
+				<IdentificacaoRps>
+					<Numero>1</Numero>
+					<Serie>1</Serie>
+					<Tipo>1</Tipo>
+				</IdentificacaoRps>
+				<DataEmissao>2025-10-23</DataEmissao>
+				<Status>1</Status>
+			</Rps>
+			<Competencia>2025-10-23</Competencia>
+			<Servico>
+				<Valores>
+					<ValorServicos>3795.00</ValorServicos>
+					<ValorDeducoes>0.00</ValorDeducoes>
+					<ValorPis>24.67</ValorPis>
+					<ValorCofins>113.85</ValorCofins>
+					<ValorInss>0.00</ValorInss>
+					<ValorIr>56.93</ValorIr>
+					<ValorCsll>37.95</ValorCsll>
+					<OutrasRetencoes>0.00</OutrasRetencoes>
+					<DescontoIncondicionado>0.00</DescontoIncondicionado>
+					<DescontoCondicionado>0.00</DescontoCondicionado>
+				</Valores>
+				<IssRetido>2</IssRetido>
+				<ItemListaServico>17.01</ItemListaServico>
+				<CodigoCnae>7020400</CodigoCnae>
+				<CodigoTributacaoMunicipio>1701</CodigoTributacaoMunicipio>
+				<Discriminacao>SERVICOS DE ASSESSORIA E CONSULTORIA - IE 111111111 - Val. Aprox. dos Tributos R$ 657,12 (18,45) Fonte: IBPT</Discriminacao>
+				<CodigoMunicipio>5208707</CodigoMunicipio>
+				<ExigibilidadeISS>1</ExigibilidadeISS>
+				<MunicipioIncidencia>5208707</MunicipioIncidencia>
+			</Servico>
+			<Prestador>
+				<CpfCnpj>
+					<Cnpj>11111111111111</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>1111111</InscricaoMunicipal>
+			</Prestador>
+			<TomadorServico>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cnpj>00000000000000</Cnpj>
+					</CpfCnpj>
+				</IdentificacaoTomador>
+				<RazaoSocial>XX XXXXX XXXX</RazaoSocial>
+				<Endereco>
+					<Endereco>1111111111111</Endereco>
+					<Numero>11111</Numero>
+					<Complemento>XXXXXXXXXXXXX</Complemento>
+					<Bairro>111111</Bairro>
+					<CodigoMunicipio>5208707</CodigoMunicipio>
+					<Uf>GO</Uf>
+					<Cep>11111111</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>00000000000</Telefone>
+					<Email>financeiro@xxxxxxx.com.br</Email>
+				</Contato>
+			</TomadorServico>
+			<OptanteSimplesNacional>2</OptanteSimplesNacional>
+			<IncentivoFiscal>2</IncentivoFiscal>
+		</InfDeclaracaoPrestacaoServico>
+	</Rps>
 </GerarNfseEnvio>
