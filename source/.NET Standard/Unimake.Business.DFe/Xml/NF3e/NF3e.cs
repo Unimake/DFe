@@ -2050,7 +2050,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
+        public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0 || !string.IsNullOrEmpty(CBenef);
 
         public bool ShouldSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
 
