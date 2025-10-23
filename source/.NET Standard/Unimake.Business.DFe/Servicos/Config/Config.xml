@@ -3059,4 +3059,10 @@
 		<ArqConfig>CambaraPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3525102">
+		<Nome>Jardinópolis - SP</Nome>
+		<UF>SC</UF>
+		<ArqConfig>JardinopolisSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
