@@ -189,6 +189,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarMDFeNaoEncerrada"/>
       </Unit>
+      <Unit>
+        <Filename Value="eventopagamentomdfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EventoPagamentoMDFe"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

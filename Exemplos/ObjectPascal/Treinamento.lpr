@@ -21,7 +21,7 @@ uses
   EventoCCENFe, InutilizacaoNumeroNFe, ConsultarStatusNFCom,
   EnviarNFComSincrono, EnviarMDFeSincrono, EnviarEventoCancelamentoMDFe,
   EnviarEventoEncerramentoMDFe, ConsultarStatusMDFe, ConsultarSituacaoMDFe,
-  ConsultarMDFeNaoEncerrada
+  ConsultarMDFeNaoEncerrada, EventoPagamentoMDFe
   { you can add units after this };
 
 {$R *.res}
