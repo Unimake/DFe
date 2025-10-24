@@ -4,7 +4,7 @@
 		<GerarNfse versao="1.00">
 			<Descricao>Gerar NFSe</Descricao>
 			<RequestURIProducao>http://sync.nfs-e.net/datacenter/include/nfw/importa_nfw/nfw_import_upload.php</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
+			<RequestURIHomologacao>https://migracao.atende.net/?pg=rest&service=WNERestServiceNFSe&cidade=treina_saobentodosul</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -21,8 +21,8 @@
 		<CancelarNfse versao="1.00">
 			<Descricao>Evento de cancelamento da NFSe</Descricao>
 			<RequestURIProducao>http://sync.nfs-e.net/datacenter/include/nfw/importa_nfw/nfw_import_upload.php</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
-			<MetodoAPI>post</MetodoAPI>
+      <RequestURIHomologacao>https://migracao.atende.net/?pg=rest&service=WNERestServiceNFSe&cidade=treina_saobentodosul</RequestURIHomologacao>
+      <MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -38,8 +38,8 @@
 		<ConsultarNfse versao="1.00">
 			<Descricao>Consulta da NFSe</Descricao>
 			<RequestURIProducao>http://sync.nfs-e.net/datacenter/include/nfw/importa_nfw/nfw_import_upload.php</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
-			<MetodoAPI>post</MetodoAPI>
+      <RequestURIHomologacao>https://migracao.atende.net/?pg=rest&service=WNERestServiceNFSe&cidade=treina_saobentodosul</RequestURIHomologacao>
+      <MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>

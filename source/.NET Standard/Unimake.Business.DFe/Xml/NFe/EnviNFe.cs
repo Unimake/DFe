@@ -13702,11 +13702,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
+        public bool ShouldSerializePCredPresField() => VCredPresCondSus <= 0;
         public bool ShouldSerializeVCredPresField() => VCredPresCondSus <= 0;
+        public bool ShouldSerializeVCredPresCondSusField() => VCredPresCondSus > 0;
 
-        public bool ShouldSerializeVCredPresCondSusField() => VCredPres <= 0;
-
-        #endregion ShouldSerialize
+        #endregion
     }
 
     /// <summary>
@@ -13777,11 +13777,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
+        public bool ShouldSerializePCredPresField() => VCredPresCondSus <= 0;
         public bool ShouldSerializeVCredPresField() => VCredPresCondSus <= 0;
+        public bool ShouldSerializeVCredPresCondSusField() => VCredPresCondSus > 0;
 
-        public bool ShouldSerializeVCredPresCondSusField() => VCredPres <= 0;
-
-        #endregion ShouldSerialize
+        #endregion
     }
 
     /// <summary>
