@@ -5596,7 +5596,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeVFCPField() => (VBCFCP + VFCP + PFCP) > 0;
 
         public bool ShouldSerializePFCPDifField() => PFCPDif > 0;
-        public bool ShouldSerializeVFCPDifField() => VFCPDif > 0;
+        public bool ShouldSerializeVFCPDifField() => VFCPDif > 0 || PFCPDif > 0;
         public bool ShouldSerializeVFCPEfetField() => VFCPEfet > 0;
 
         #endregion
