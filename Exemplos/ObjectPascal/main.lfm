@@ -383,5 +383,14 @@ object frmPrincipal: TfrmPrincipal
       TabOrder = 5
       OnClick = Btn_ConsultaMdfeNaoEncerradoClick
     end
+    object Btn_EventoPagamentoMDFe: TButton
+      Left = 8
+      Height = 31
+      Top = 208
+      Width = 295
+      Caption = 'Evento de pagamento MDFe'
+      TabOrder = 6
+      OnClick = Btn_EventoPagamentoMDFeClick
+    end
   end
 end
