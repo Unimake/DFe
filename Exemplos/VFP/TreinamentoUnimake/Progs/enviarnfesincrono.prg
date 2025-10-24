@@ -56,6 +56,16 @@ Function EnviarNfeSincrono()
    oIde.ProcEmi  = 0 && ProcessoEmissao.AplicativoContribuinte
    oIde.VerProc  = "TESTE 1.00"
    
+ * Referenciar chave 1
+   oNFref = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.NFref")
+   oNFRef.RefNFe = "chave referenciada"
+   oIde.AddNFRef(oNFref)   
+
+ * Referenciar chave 2   
+   oNFref = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.NFref")
+   oNFRef.RefNFe = "chave referenciada"
+   oIde.AddNFRef(oNFref)      
+
  * adicionar a tag Ide dentro da tag InfDfe
    oInfNFe.Ide = oIde
 
