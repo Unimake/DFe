@@ -351,7 +351,7 @@ object frmPrincipal: TfrmPrincipal
       Left = 8
       Height = 32
       Top = 77
-      Width = 289
+      Width = 296
       Caption = 'Enviar evento de encerramento'
       TabOrder = 2
       OnClick = BtnEnviarEventoEncerramentoMDFeClick
@@ -360,7 +360,7 @@ object frmPrincipal: TfrmPrincipal
       Left = 8
       Height = 31
       Top = 112
-      Width = 289
+      Width = 295
       Caption = 'Consulta Status'
       TabOrder = 3
       OnClick = Btn_ConsultarStatusMDFeClick
@@ -369,7 +369,7 @@ object frmPrincipal: TfrmPrincipal
       Left = 8
       Height = 31
       Top = 144
-      Width = 289
+      Width = 296
       Caption = 'Consulta Situação'
       TabOrder = 4
       OnClick = Btn_ConsultarSituacaoMDFeClick
@@ -378,7 +378,7 @@ object frmPrincipal: TfrmPrincipal
       Left = 6
       Height = 31
       Top = 176
-      Width = 291
+      Width = 297
       Caption = 'Consultar MDFe''s não Encerrados'
       TabOrder = 5
       OnClick = Btn_ConsultaMdfeNaoEncerradoClick
@@ -391,6 +391,15 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Evento de pagamento MDFe'
       TabOrder = 6
       OnClick = Btn_EventoPagamentoMDFeClick
+    end
+    object Btn_EnviarEventoAlteracaoPagamentoMDFe: TButton
+      Left = 8
+      Height = 31
+      Top = 240
+      Width = 298
+      Caption = 'Enviar Evento Alteração Pagamento MDFe'
+      TabOrder = 7
+      OnClick = Btn_EnviarEventoAlteracaoPagamentoMDFeClick
     end
   end
 end

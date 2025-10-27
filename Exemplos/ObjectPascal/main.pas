@@ -17,7 +17,8 @@ uses
   NACIONALConsultarNFSePDF, EventoCCENFe, InutilizacaoNumeroNFe,
   ConsultarStatusNFCom, EnviarNFComSincrono, EnviarMDFeSincrono,
   EnviarEventoCancelamentoMDFe, EnviarEventoEncerramentoMDFe,
-  ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrada,EventoPagamentoMDFe;
+  ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrada,EventoPagamentoMDFe,
+  EnviarEventoAlteracaoPagamentoMDFe;
 
 type
 
@@ -52,6 +53,7 @@ type
     Btn_ConsultarSituacaoMDFe: TButton;
     Btn_ConsultaMdfeNaoEncerrado: TButton;
     Btn_EventoPagamentoMDFe: TButton;
+    Btn_EnviarEventoAlteracaoPagamentoMDFe: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -98,6 +100,7 @@ type
     procedure BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
     procedure BtnNACIONALConsultarPDFNFSeClick(Sender: TObject);
     procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
+    procedure Btn_EnviarEventoAlteracaoPagamentoMDFeClick(Sender: TObject);
     procedure Btn_ConsultaMdfeNaoEncerradoClick(Sender: TObject);
     procedure Btn_ConsultarStatusMDFeClick(Sender: TObject);
     procedure Btn_ConsultarSituacaoMDFeClick(Sender: TObject);
@@ -469,6 +472,17 @@ var
   oServico: TNACIONALGerarNFSe;
 begin
   oServico := TNACIONALGerarNFSe.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.Btn_EnviarEventoAlteracaoPagamentoMDFeClick(Sender: TObject);
+var
+  oServico: TEnviarEventoAlteracaoPagamentoMDFe;
+begin
+  oServico := TEnviarEventoAlteracaoPagamentoMDFe.create;
   try
       oServico.Executar();
     finally

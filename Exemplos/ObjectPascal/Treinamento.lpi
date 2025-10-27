@@ -194,6 +194,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EventoPagamentoMDFe"/>
       </Unit>
+      <Unit>
+        <Filename Value="enviareventoalteracaopagamentomdfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarEventoAlteracaoPagamentoMDFe"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
