@@ -199,6 +199,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarEventoAlteracaoPagamentoMDFe"/>
       </Unit>
+      <Unit>
+        <Filename Value="consultarsituacaonfcom.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarSituacaoNFCom"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

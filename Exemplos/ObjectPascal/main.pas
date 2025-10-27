@@ -18,7 +18,7 @@ uses
   ConsultarStatusNFCom, EnviarNFComSincrono, EnviarMDFeSincrono,
   EnviarEventoCancelamentoMDFe, EnviarEventoEncerramentoMDFe,
   ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrada,EventoPagamentoMDFe,
-  EnviarEventoAlteracaoPagamentoMDFe;
+  EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom;
 
 type
 
@@ -54,6 +54,7 @@ type
     Btn_ConsultaMdfeNaoEncerrado: TButton;
     Btn_EventoPagamentoMDFe: TButton;
     Btn_EnviarEventoAlteracaoPagamentoMDFe: TButton;
+    Btn_ConsultaSituacaoNFCom: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -105,6 +106,7 @@ type
     procedure Btn_ConsultarStatusMDFeClick(Sender: TObject);
     procedure Btn_ConsultarSituacaoMDFeClick(Sender: TObject);
     procedure Btn_EventoPagamentoMDFeClick(Sender: TObject);
+    procedure Btn_ConsultaSituacaoNFComClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox3Click(Sender: TObject);
 
@@ -527,6 +529,17 @@ var
   oServico: TEventoPagamentoMDFe;
 begin
   oServico := TEventoPagamentoMDFe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.Btn_ConsultaSituacaoNFComClick(Sender: TObject);
+var
+  oServico: TConsultaSituacaoNFCom;
+begin
+  oServico := TConsultaSituacaoNFCom.Create;
   try
     oServico.Executar();
   finally
