@@ -39,8 +39,8 @@
 						</Valores>
 						<IssRetido>2</IssRetido>
 						<ResponsavelRetencao>2</ResponsavelRetencao>
-						<ItemListaServico>12.34</ItemListaServico>
-						<CodigoCnae>123456789</CodigoCnae>
+						<ItemListaServico>01.01</ItemListaServico>
+						<CodigoCnae>1</CodigoCnae>
 						<CodigoTributacaoMunicipio>1234567</CodigoTributacaoMunicipio>
 						<Discriminacao>Teste</Discriminacao>
 						<CodigoMunicipio>1234567</CodigoMunicipio>

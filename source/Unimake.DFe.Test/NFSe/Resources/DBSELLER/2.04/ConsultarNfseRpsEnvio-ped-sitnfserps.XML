@@ -1,5 +1,4 @@
 <ConsultarNfseRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
-	<Pedido>
 		<IdentificacaoRps>
 			<Numero>1</Numero>
 			<Serie>1</Serie>
@@ -11,5 +10,4 @@
 			</CpfCnpj>
 			<InscricaoMunicipal>1234567</InscricaoMunicipal>
 		</Prestador>
-	</Pedido>
 </ConsultarNfseRpsEnvio>
