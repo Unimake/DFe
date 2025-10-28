@@ -48,6 +48,9 @@ begin
     oConsultarNfsePDF.Executar(XML, IUnknown(oConfiguracao));
 
     ShowMessage('XML retornado pela prefeitura:' + sLineBreak + oConsultarNfsePDF.RetornoWSString);
+	 
+	 // Extrair o PDF
+	 oConsultarNfsePDF.ExtrairPDF('d:\testenfe\pdf', 'nome_arquivo.pdf', 'Base64Pdf');
 
   except
     on E: Exception do
