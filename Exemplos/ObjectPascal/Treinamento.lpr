@@ -22,7 +22,8 @@ uses
   EnviarNFComSincrono, EnviarMDFeSincrono, EnviarEventoCancelamentoMDFe,
   EnviarEventoEncerramentoMDFe, ConsultarStatusMDFe, ConsultarSituacaoMDFe,
   ConsultarMDFeNaoEncerrada, EventoPagamentoMDFe,
-  EnviarEventoAlteracaoPagamentoMDFe, ConsultarSituacaoNFCom
+  EnviarEventoAlteracaoPagamentoMDFe, ConsultarSituacaoNFCom,
+  EnviarEventoCancelamentoNFCom
   { you can add units after this };
 
 {$R *.res}

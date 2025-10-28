@@ -7,6 +7,7 @@ object frmPrincipal: TfrmPrincipal
   ClientHeight = 884
   ClientWidth = 1588
   DesignTimePPI = 120
+  LCLVersion = '4.2.0.0'
   OnCreate = FormCreate
   object GroupBox1: TGroupBox
     Left = 10
@@ -327,6 +328,15 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Consultar Situação'
       TabOrder = 2
       OnClick = Btn_ConsultaSituacaoNFComClick
+    end
+    object Btn_EnviarEventoCancelamentoNFCom: TButton
+      Left = 8
+      Height = 31
+      Top = 120
+      Width = 296
+      Caption = 'Enviar o Evento de Cancelamento'
+      TabOrder = 3
+      OnClick = Btn_EnviarEventoCancelamentoNFComClick
     end
   end
   object GroupBox6: TGroupBox
