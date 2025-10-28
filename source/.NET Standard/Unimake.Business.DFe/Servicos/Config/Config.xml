@@ -2307,7 +2307,7 @@
 		<Nome>Foz do Iguaçu - PR</Nome>
 		<UF>PR</UF>
 		<ArqConfig>FozDoIguacuPR.xml</ArqConfig>
-		<PadraoNFSe>LEXSOM</PadraoNFSe>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3528809">
 		<Nome>Maracaí - SP</Nome>
