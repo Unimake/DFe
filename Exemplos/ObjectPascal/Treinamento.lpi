@@ -209,6 +209,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarEventoCancelamentoNFCom"/>
       </Unit>
+      <Unit>
+        <Filename Value="consultarstatuscte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarStatusCte"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
