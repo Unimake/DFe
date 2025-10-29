@@ -27,11 +27,6 @@ var
   oConsultaProtocolo: olevariant;
   oExceptionInterop: olevariant;
 
-  X: Integer;
-  oProcEventoNFe: OleVariant;
-  xmlEvento, nomeArqDistribEvento: string;
-  nHandle: TFileStream;
-
 begin
   // Criar objeto de configuração mínima
   oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
