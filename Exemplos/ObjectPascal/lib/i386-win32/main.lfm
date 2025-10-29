@@ -7,7 +7,6 @@ object frmPrincipal: TfrmPrincipal
   ClientHeight = 884
   ClientWidth = 1588
   DesignTimePPI = 120
-  LCLVersion = '4.2.0.0'
   OnCreate = FormCreate
   object GroupBox1: TGroupBox
     Left = 10
@@ -419,6 +418,25 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Enviar Evento Alteração Pagamento MDFe'
       TabOrder = 7
       OnClick = Btn_EnviarEventoAlteracaoPagamentoMDFeClick
+    end
+  end
+  object GroupBox7: TGroupBox
+    Left = 944
+    Height = 344
+    Top = 520
+    Width = 295
+    Caption = 'CTe e CTeOS'
+    ClientHeight = 319
+    ClientWidth = 291
+    TabOrder = 8
+    object Btn_ConsultaStatusCte: TButton
+      Left = 0
+      Height = 31
+      Top = 8
+      Width = 283
+      Caption = 'Consulta Status'
+      TabOrder = 0
+      OnClick = Btn_ConsultaStatusCteClick
     end
   end
 end
