@@ -19,7 +19,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <CursorPos X="187" Y="502"/>
+        <IsVisibleTab Value="True"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -269,23 +269,22 @@
         <Filename Value="consultarstatusmdfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarStatusMDFe"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="68" Y="30"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="39" Y="34"/>
         <UsageCount Value="76"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="consultarsituacaomdfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarSituacaoMDFe"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="37"/>
-        <CursorPos X="41" Y="54"/>
+        <CursorPos X="50" Y="19"/>
         <UsageCount Value="75"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="consultarmdfenaoencerrada.pas"/>
-        <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarMDFeNaoEncerrada"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="39"/>
@@ -326,6 +325,14 @@
         <TopLine Value="20"/>
         <CursorPos X="33" Y="33"/>
         <UsageCount Value="23"/>
+      </Unit>
+      <Unit>
+        <Filename Value="consultarstatuscte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarStatusCte"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="31" Y="2"/>
+        <UsageCount Value="22"/>
       </Unit>
       <Unit>
         <Filename Value="unimake_business_dfe_2023_7_tlb.pas"/>
@@ -426,137 +433,38 @@
         <UsageCount Value="7"/>
       </Unit>
       <Unit>
-        <Filename Value="consultarstatuscte.pas"/>
+        <Filename Value="consultarmdfenaoencerrado.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="ConsultarStatusCte"/>
-        <IsVisibleTab Value="True"/>
+        <UnitName Value="ConsultarMDFeNaoEncerrado"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="34"/>
-        <CursorPos X="77" Y="52"/>
-        <UsageCount Value="22"/>
+        <CursorPos X="45" Y="8"/>
+        <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="54" TopLine="36"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="55" TopLine="36"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="46" Column="120" TopLine="27"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="50" TopLine="27"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="54" Column="57" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="59" Column="48" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="49" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="50" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="60" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="61" TopLine="34"/>
-      </Position>
+    <JumpHistory HistoryIndex="5">
       <Position>
         <Filename Value="main.pas"/>
         <Caret Line="502" Column="187"/>
       </Position>
       <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="44" Column="79" TopLine="25"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="19" Column="35"/>
       </Position>
       <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="49" TopLine="25"/>
+        <Filename Value="main.pas"/>
       </Position>
       <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="50" TopLine="25"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="20" Column="71"/>
       </Position>
       <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="60" TopLine="34"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="511" TopLine="463"/>
       </Position>
       <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="61" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="26" TopLine="15"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="50" TopLine="34"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="33" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="34" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="35" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="36" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="39" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="40" TopLine="13"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="41" TopLine="14"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="42" TopLine="15"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="45" TopLine="18"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="47" TopLine="20"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="49" TopLine="22"/>
-      </Position>
-      <Position>
-        <Filename Value="consultarstatuscte.pas"/>
-        <Caret Line="50" TopLine="23"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="587" Column="5" TopLine="530"/>
       </Position>
     </JumpHistory>
     <RunParams>

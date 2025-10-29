@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Consulta status do serviço da MDFe
+// Consultar MDFe´s não encerrados
 // ------------------------------------------------------------------
 unit ConsultarMDFeNaoEncerrado;
 

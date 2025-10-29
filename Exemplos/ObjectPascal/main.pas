@@ -17,7 +17,7 @@ uses
   NACIONALConsultarNFSePDF, EventoCCENFe, InutilizacaoNumeroNFe,
   ConsultarStatusNFCom, EnviarNFComSincrono, EnviarMDFeSincrono,
   EnviarEventoCancelamentoMDFe, EnviarEventoEncerramentoMDFe,
-  ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrada,EventoPagamentoMDFe,
+  ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrado,EventoPagamentoMDFe,
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
   ConsultarStatusCte;
 
@@ -510,9 +510,9 @@ end;
 
 procedure TfrmPrincipal.Btn_ConsultaMdfeNaoEncerradoClick(Sender: TObject);
   var
-    oServico: TConsultarMDFeNaoEncerrada;
+    oServico: TConsultarMDFeNaoEncerrado;
   begin
-    oServico := TConsultarMDFeNaoEncerrada.create;
+    oServico := TConsultarMDFeNaoEncerrado.create;
     try
         oServico.Executar();
       finally

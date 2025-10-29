@@ -185,11 +185,6 @@
         <UnitName Value="ConsultarSituacaoMDFe"/>
       </Unit>
       <Unit>
-        <Filename Value="consultarmdfenaoencerrada.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="ConsultarMDFeNaoEncerrada"/>
-      </Unit>
-      <Unit>
         <Filename Value="eventopagamentomdfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EventoPagamentoMDFe"/>
@@ -213,6 +208,11 @@
         <Filename Value="consultarstatuscte.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarStatusCte"/>
+      </Unit>
+      <Unit>
+        <Filename Value="consultarmdfenaoencerrado.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarMDFeNaoEncerrado"/>
       </Unit>
     </Units>
   </ProjectOptions>
