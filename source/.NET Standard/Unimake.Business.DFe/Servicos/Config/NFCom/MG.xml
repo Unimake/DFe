@@ -62,7 +62,7 @@
 			<TagAtributoID>infNFCom</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebTagRetorno>ns2:nfcomResultMsg</WebTagRetorno>
+			<WebTagRetorno>ns2:nfcomResultMsg|ns0:nfcomResultMsg|nfcomResultMsg</WebTagRetorno>
 			<GZIPCompress>true</GZIPCompress>
 			<UrlQrCodeHomologacao>https://portalnfcom.fazenda.mg.gov.br/qrcode</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>https://portalnfcom.fazenda.mg.gov.br/qrcode</UrlQrCodeProducao>
