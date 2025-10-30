@@ -19,7 +19,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <IsVisibleTab Value="True"/>
+        <TopLine Value="477"/>
+        <CursorPos X="70" Y="497"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -269,27 +270,17 @@
         <Filename Value="consultarstatusmdfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarStatusMDFe"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="39" Y="34"/>
         <UsageCount Value="76"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="consultarsituacaomdfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarSituacaoMDFe"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="50" Y="19"/>
         <UsageCount Value="75"/>
-        <Loaded Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="consultarmdfenaoencerrada.pas"/>
-        <UnitName Value="ConsultarMDFeNaoEncerrada"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="39"/>
-        <CursorPos X="119" Y="66"/>
-        <UsageCount Value="72"/>
       </Unit>
       <Unit>
         <Filename Value="eventopagamentomdfe.pas"/>
@@ -333,6 +324,22 @@
         <EditorIndex Value="-1"/>
         <CursorPos X="31" Y="2"/>
         <UsageCount Value="22"/>
+      </Unit>
+      <Unit>
+        <Filename Value="consultarmdfenaoencerrado.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarMDFeNaoEncerrado"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="45" Y="8"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="consultarmdfenaoencerrada.pas"/>
+        <UnitName Value="ConsultarMDFeNaoEncerrada"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="39"/>
+        <CursorPos X="119" Y="66"/>
+        <UsageCount Value="72"/>
       </Unit>
       <Unit>
         <Filename Value="unimake_business_dfe_2023_7_tlb.pas"/>
@@ -433,16 +440,18 @@
         <UsageCount Value="7"/>
       </Unit>
       <Unit>
-        <Filename Value="consultarmdfenaoencerrado.pas"/>
+        <Filename Value="consultarsituacaocte.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="ConsultarMDFeNaoEncerrado"/>
-        <EditorIndex Value="2"/>
-        <CursorPos X="45" Y="8"/>
+        <UnitName Value="ConsultarSituacaoCTe"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="26"/>
+        <CursorPos X="20" Y="41"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="5">
+    <JumpHistory HistoryIndex="12">
       <Position>
         <Filename Value="main.pas"/>
         <Caret Line="502" Column="187"/>
@@ -465,6 +474,32 @@
       <Position>
         <Filename Value="main.pas"/>
         <Caret Line="587" Column="5" TopLine="530"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarsituacaocte.pas"/>
+        <Caret Line="46" Column="100"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="24" Column="72"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarsituacaocte.pas"/>
+        <Caret Line="2" Column="27"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="24" Column="34" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="consultarsituacaocte.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="497" Column="70" TopLine="477"/>
       </Position>
     </JumpHistory>
     <RunParams>

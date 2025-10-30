@@ -19,7 +19,7 @@ uses
   EnviarEventoCancelamentoMDFe, EnviarEventoEncerramentoMDFe,
   ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrado,EventoPagamentoMDFe,
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
-  ConsultarStatusCte;
+  ConsultarStatusCte, ConsultarSituacaoCTe;
 
 type
 
@@ -58,6 +58,7 @@ type
     Btn_ConsultaSituacaoNFCom: TButton;
     Btn_EnviarEventoCancelamentoNFCom: TButton;
     Btn_ConsultaStatusCte: TButton;
+    Btn_ConsultaSituacaoCTe: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -105,6 +106,7 @@ type
     procedure BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
     procedure BtnNACIONALConsultarPDFNFSeClick(Sender: TObject);
     procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
+    procedure Btn_ConsultaSituacaoCTeClick(Sender: TObject);
     procedure Btn_ConsultaStatusCteClick(Sender: TObject);
     procedure Btn_EnviarEventoAlteracaoPagamentoMDFeClick(Sender: TObject);
     procedure Btn_ConsultaMdfeNaoEncerradoClick(Sender: TObject);
@@ -480,6 +482,17 @@ var
   oServico: TNACIONALGerarNFSe;
 begin
   oServico := TNACIONALGerarNFSe.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.Btn_ConsultaSituacaoCTeClick(Sender: TObject);
+var
+  oServico: TConsultarSituacaoCTe;
+begin
+  oServico := TConsultarSituacaoCTe.create;
   try
       oServico.Executar();
     finally
