@@ -442,12 +442,6 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void EnviarNFeSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            //Estados que não tem envio Sincrono para NFe
-            if (ufBrasil == UFBrasil.SP || ufBrasil == UFBrasil.BA)
-            {
-                return;
-            }
-
             var xml = MontaXMLEnviNFe(ufBrasil, tipoAmbiente);
 
             var configuracao = new Configuracao
