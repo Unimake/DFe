@@ -1804,7 +1804,7 @@ namespace Unimake.Business.DFe.Utility
                     var el = (XmlElement)assinaturaNodes[0];
                     var valor = el.InnerText?.Trim();
 
-                    if (!IsSha1Hex(valor) && (valor?.Length == 86 || valor?.Length == 101))
+                    if (!IsSha1Hex(valor) && valor?.Length <= 120)
                     {
                         var sh1 = Criptografia.SignWithRSASHA1(certificado, valor);
                         el.InnerText = sh1;
