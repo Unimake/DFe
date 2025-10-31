@@ -257,75 +257,65 @@ begin
       oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.GRed.PRedAliq := 0;
       oDet.Imposto.IBSCBS.GIBSCBS.VIBS := 0;
 
-      //oDet.Imposto.IBSCBS.GIBSCBS.GCBSCredPres :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GCBSCredPres');
-      //oDet.Imposto.IBSCBS.GIBSCBS.GCBSCredPres.CCredPres := '';
-      //oDet.Imposto.IBSCBS.GIBSCBS.GCBSCredPres.PCredPres := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GCBSCredPres.VCredPres := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GCBSCredPres.VCredPresCondSus := 0;
-      //
-      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSCredPres :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GIBSCredPres');
-      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSCredPres.CCredPres := '';
-      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSCredPres.PCredPres := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSCredPres.VCredPres := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GIBSCredPres.VCredPresCondSus := 0;
-      //
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GTribCompraGov');
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.PAliqCBS := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.PAliqIBSMun := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.PAliqIBSUF := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.VTribCBS := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.VTribIBSMun := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.VTribIBSUF := 0;
-      //
       //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GTribRegular');
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.CClassTribReg := '000001';
       //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.CSTReg := '000';
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.PAliqEfetRegCBS := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.PAliqEfetRegIBSMun := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.CClassTribReg := '000001';
       //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.PAliqEfetRegIBSUF := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.VTribRegCBS := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.VTribRegIBSMun := 0;
       //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.VTribRegIBSUF := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.PAliqEfetRegIBSMun := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.VTribRegIBSMun := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.PAliqEfetRegCBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribRegular.VTribRegCBS := 0;
 
-      //oDet.Imposto.IBSCBS.GCredPresIBSZFM :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GCredPresIBSZFM');
-      //oDet.Imposto.IBSCBS.GCredPresIBSZFM.TpCredPresIBSZFM := 0; //TipoCreditoPresumidoIBSZFM.SemCreditoPresumido
-      //oDet.Imposto.IBSCBS.GCredPresIBSZFM.VCredPresIBSZFM := 0;
-      //
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GTribCompraGov');
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.PAliqIBSUF := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.VTribIBSUF := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.PAliqIBSMun := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.VTribIBSMun := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.PAliqCBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBS.GTribCompraGov.VTribCBS := 0;
+
       //oDet.Imposto.IBSCBS.GIBSCBSMono :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GIBSCBSMono');
-      //
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GMonoDif');
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.PDifCBS := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.PDifIBS := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.VIBSMonoDif := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.VCBSMonoDif := 0;
-      //
+
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GMonoPadrao');
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao.QBCMono := 0;
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao.AdRemCBS := 0;
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao.AdRemIBS := 0;
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao.VIBSMono := 0;
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoPadrao.VCBSMono := 0;
-      //
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GMonoRet');
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.QBCMonoRet := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.AdRemCBSRet := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.AdRemIBSRet := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.VIBSMonoRet := 0;
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.VCBSMonoRet := 0;
-      //
+
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GMonoReten');
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten.QBCMonoReten := 0;
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten.AdRemCBSReten := 0;
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten.AdRemIBSReten := 0;
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten.VCBSMonoReten := 0;
       //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoReten.VIBSMonoReten := 0;
-      //
-      //oDet.Imposto.IBSCBS.GIBSCBSMono.VTotCBSMonoItem := 0;
+
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GMonoRet');
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.QBCMonoRet := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.AdRemCBSRet := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.AdRemIBSRet := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.VIBSMonoRet := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoRet.VCBSMonoRet := 0;
+
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GMonoDif');
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.PDifCBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.PDifIBS := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.VIBSMonoDif := 0;
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.GMonoDif.VCBSMonoDif := 0;
+
       //oDet.Imposto.IBSCBS.GIBSCBSMono.VTotIBSMonoItem := 0;
-      //
+      //oDet.Imposto.IBSCBS.GIBSCBSMono.VTotCBSMonoItem := 0;
+
       //oDet.Imposto.IBSCBS.GTransfCred :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GTransfCred');
       //oDet.Imposto.IBSCBS.GTransfCred.VCBS := 0;
       //oDet.Imposto.IBSCBS.GTransfCred.VIBS := 0;
+
+
+      //oDet.Imposto.IBSCBS.GCredPresIBSZFM :=  CreateOleObject('Unimake.Business.DFe.Xml.NFe.GCredPresIBSZFM');
+      //oDet.Imposto.IBSCBS.GCredPresIBSZFM.CompetApurField := '2025-10';
+      //oDet.Imposto.IBSCBS.GCredPresIBSZFM.TpCredPresIBSZFM := 0; //TipoCreditoPresumidoIBSZFM.SemCreditoPresumido
+      //oDet.Imposto.IBSCBS.GCredPresIBSZFM.VCredPresIBSZFM := 0;
 
       // adicionar a tag Det dentro da tag InfNfe
       oInfNfe.AddDet(IUnknown(oDet));
