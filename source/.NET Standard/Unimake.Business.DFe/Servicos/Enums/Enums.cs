@@ -6742,6 +6742,7 @@ namespace Unimake.Business.DFe.Servicos
 
         /// <summary>
         /// SIGCORP - Tecnologia da informação
+        /// SIGCORP - Tecnologia da informação
         /// </summary>
         [Description("SIGCORP - Tecnologia da informação")]
         SIGCORP = 2,

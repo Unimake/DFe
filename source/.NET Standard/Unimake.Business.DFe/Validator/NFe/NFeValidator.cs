@@ -238,7 +238,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     Warnings.Add(new ValidatorDFeException(
                         "Nota Fiscal possui produto utilizando CST 020 e não foi localizado nenhum texto de base legal para o benefício nas informações adicionais da NFe/NFCe. " +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
-                        "[TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS20>]"));
+                        "[TAG: CST dos grupos de tag det, imposto, ICMS e ICMS20]"));
                 }
             }).ValidateTag(element => element.NameEquals(nameof(ICMS30.CST)) && element.Parent.NameEquals(nameof(ICMS30)), Tag =>
             {
@@ -269,7 +269,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     Warnings.Add(new ValidatorDFeException(
                         "Nota Fiscal possui produto utilizando CST 040 e não foi localizado nenhum texto de base legal para o benefício nas informações adicionais da NFe/NFCe. " +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
-                        "[TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS40>]"));
+                        "[TAG: CST dos grupos de tag det, imposto, ICMS e ICMS40]"));
                 }
             }).ValidateTag(element => element.NameEquals(nameof(ICMS51.CST)) && element.Parent.NameEquals(nameof(ICMS51)), Tag =>
             {
@@ -288,7 +288,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     Warnings.Add(new ValidatorDFeException(
                         "Nota Fiscal possui produto utilizando CST 051 e não foi localizado nenhum texto de base legal para o benefício nas informações adicionais da NFe/NFCe. " +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
-                        "[TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS51>]"));
+                        "[TAG: CST dos grupos de tag det, imposto, ICMS e ICMS51]"));
                 }
             }).ValidateTag(element => element.NameEquals(nameof(ICMS53.CST)) && element.Parent.NameEquals(nameof(ICMS53)), Tag =>
             {
@@ -796,7 +796,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     Warnings.Add(new ValidatorDFeException(
                         "Se a operação for isenta (por exemplo, para zona franca ou consumidor final sem substituição tributária), usar CST 00 com CFOP 6.101 implica débito de ICMS, podendo gerar imposto a pagar mesmo sem necessidade." +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
-                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                        "[TAG: CFOP dos grupos de tag det e prod]"));
                 }
 
                 if (cfop == "6102" && cst == "10" && ConsumirdorFinalMesmoEstado(Tag))
@@ -804,7 +804,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     Warnings.Add(new ValidatorDFeException(
                         " Para venda interestadual a consumidor final, o correto seria usar CFOP 6.108 ou 6.109, com destaque do ICMS de diferencial de alíquota (DIFAL). Se usar CFOP 6.102 e CST 10, pode gerar cobrança indevida de ST e/ou erro de cálculo do DIFAL" +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
-                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                        "[TAG: CFOP dos grupos de tag det e prod]"));
                 }
 
                 if (cfop == "5102" && cst == "40")
@@ -812,7 +812,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     Warnings.Add(new ValidatorDFeException(
                         "Se não há isenção prevista em lei, pode se usar CST 40 com CFOP 5.102 pode levar à ''sonegação involuntária'', e posteriormente a autuação fiscal." +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
-                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                        "[TAG: CFOP dos grupos de tag det e prod]"));
                 }
 
                 if (cfop == "5949" && cst == "00")
@@ -820,7 +820,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     Warnings.Add(new ValidatorDFeException(
                         "CFOP 5.949 e CST 00 genéricos. Podem esconder operação real e gerar tributação indevida por padrão, além de chamar atenção do fisco." +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
-                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                        "[TAG: CFOP dos grupos de tag det e prod]"));
                 }
 
                 if (cfop == "6350" && (cst == "00" || cst == "10"))
@@ -828,7 +828,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     Warnings.Add(new ValidatorDFeException(
                         "A Zona Franca, CFOP 6.350 pode garantir isenção do ICMS. Usar CST 00 ou 10, que destaca o imposto pode gerar débito indevido ou não aproveitamento de benefício fiscal." +
                         "[Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] " +
-                        "[TAG: <CFOP> do grupo de tag <det><prod>]"));
+                        "[TAG: CFOP dos grupos de tag det e prod]"));
                 }
 
                 if (finNFe == "4") // Devolução
