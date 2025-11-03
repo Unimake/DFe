@@ -224,6 +224,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarCteSincrono"/>
       </Unit>
+      <Unit>
+        <Filename Value="enviarcteossincrono.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarCteOsSincrono"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
