@@ -219,6 +219,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarSituacaoCTe"/>
       </Unit>
+      <Unit>
+        <Filename Value="enviarctesincrono.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarCteSincrono"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

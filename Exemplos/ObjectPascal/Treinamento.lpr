@@ -23,7 +23,7 @@ uses
   EnviarEventoEncerramentoMDFe, ConsultarStatusMDFe, ConsultarSituacaoMDFe,
   EventoPagamentoMDFe, EnviarEventoAlteracaoPagamentoMDFe,
   ConsultarSituacaoNFCom, EnviarEventoCancelamentoNFCom, ConsultarStatusCte,
-  ConsultarMDFeNaoEncerrado, ConsultarSituacaoCTe
+  ConsultarMDFeNaoEncerrado, ConsultarSituacaoCTe, EnviarCteSincrono
   { you can add units after this };
 
 {$R *.res}

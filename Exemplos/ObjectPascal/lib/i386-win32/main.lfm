@@ -447,5 +447,14 @@ object frmPrincipal: TfrmPrincipal
       TabOrder = 1
       OnClick = Btn_ConsultaSituacaoCTeClick
     end
+    object Btn_EnviarCteSincrono: TButton
+      Left = 0
+      Height = 31
+      Top = 80
+      Width = 283
+      Caption = 'Enviar CTe Sincrono'
+      TabOrder = 2
+      OnClick = Btn_EnviarCteSincronoClick
+    end
   end
 end

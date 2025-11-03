@@ -19,7 +19,7 @@ uses
   EnviarEventoCancelamentoMDFe, EnviarEventoEncerramentoMDFe,
   ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrado,EventoPagamentoMDFe,
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
-  ConsultarStatusCte, ConsultarSituacaoCTe;
+  ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono;
 
 type
 
@@ -59,6 +59,7 @@ type
     Btn_EnviarEventoCancelamentoNFCom: TButton;
     Btn_ConsultaStatusCte: TButton;
     Btn_ConsultaSituacaoCTe: TButton;
+    Btn_EnviarCteSincrono: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -115,6 +116,7 @@ type
     procedure Btn_EventoPagamentoMDFeClick(Sender: TObject);
     procedure Btn_ConsultaSituacaoNFComClick(Sender: TObject);
     procedure Btn_EnviarEventoCancelamentoNFComClick(Sender: TObject);
+    procedure Btn_EnviarCteSincronoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox3Click(Sender: TObject);
 
@@ -581,6 +583,17 @@ var
   oServico: TEnviarEventoCancelamentoNFCom;
 begin
   oServico := TEnviarEventoCancelamentoNFCom.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.Btn_EnviarCteSincronoClick(Sender: TObject);
+var
+  oServico: TEnviarCteSincrono;
+begin
+  oServico := TEnviarCteSincrono.Create;
   try
     oServico.Executar();
   finally
