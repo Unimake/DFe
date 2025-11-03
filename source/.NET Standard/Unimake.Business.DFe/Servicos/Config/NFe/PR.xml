@@ -102,6 +102,11 @@
 					<SchemaArquivo>envEventoCancEConf_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e110751_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
+        <Tipo>
+          <ID>110001</ID>
+          <SchemaArquivo>Evento_110001_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110001_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>      
 			</SchemasEspecificos>
 			<TagAssinatura>evento</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>

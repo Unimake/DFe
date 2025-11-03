@@ -166,7 +166,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             if ((Evento?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Evento[index];
         }
@@ -441,6 +441,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                     case TipoEventoNFe.CancelamentoConciliacaoFinanceira:
                         _detEvento = new DetEventoCancelamentoConciliacaoFinanceira();
+                        break;
+
+                    case TipoEventoNFe.CancelamentoDeEvento:
+                        _detEvento = new DetEventoCancelamentoDeEvento();
                         break;
 
                     default:
@@ -1512,7 +1516,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             if ((ItemPedido?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return ItemPedido[index];
         }
@@ -2079,7 +2083,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlElement("tpAutor", Order = 2)]
         public string TpAutor { get; set; }
-        
+
         /// <summary>
         /// Versão do aplicativo do autor do evento
         /// </summary>
@@ -2478,7 +2482,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                         {
                             for (int i = 0; i < 4; i++)
                             {
-                                if (enquadElement.GetElementsByTagName("cEnq").Count >= (i+1))
+                                if (enquadElement.GetElementsByTagName("cEnq").Count >= (i + 1))
                                 {
                                     ItensAverbados[ItensAverbados.Count - 1].Enquad.CEnq.Add(enquadElement.GetElementsByTagName("cEnq")[i].InnerText);
                                 }
@@ -3384,7 +3388,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     }
 
     /// <summary>
-    /// Classe de detalhametno do evento de cancelamento da conciliação financeira
+    /// Classe de detalhamento do evento de cancelamento da conciliação financeira
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -3420,6 +3424,72 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             var xml = $@"<descEvento>{DescEvento}</descEvento>
                          <verAplic>{VerAplic}</verAplic>
+                         <nProtEvento>{NProtEvento}</nProtEvento>";
+
+            writer.WriteRaw(xml);
+        }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do evento de cancelamento de eventos
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCancelamentoDeEvento")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoCancelamentoDeEvento : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Cancelamento de Evento";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 2)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Tipo do evento da NFe/NFCe
+        /// </summary>
+        [XmlElement("tpEventoAut", Order = 3)]
+        public TipoEventoNFe TpEventoAut { get; set; }
+
+        /// <summary>
+        /// Informar o número do protocolo de autorização do evento que se refere a este cancelamento
+        /// </summary>
+        [XmlElement("nProtEvento", Order = 4)]
+        public string NProtEvento { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <tpEventoAut>{(int)TpEventoAut}</tpEventoAut>
                          <nProtEvento>{NProtEvento}</nProtEvento>";
 
             writer.WriteRaw(xml);

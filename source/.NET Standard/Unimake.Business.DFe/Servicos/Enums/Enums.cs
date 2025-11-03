@@ -883,6 +883,12 @@ namespace Unimake.Business.DFe.Servicos
         Desconhecido = 0,
 
         /// <summary>
+        /// 110001 - Evento de cancelamento de eventos
+        /// </summary>
+        [XmlEnum("110001")]
+        CancelamentoDeEvento = 110001,
+
+        /// <summary>
         /// 110110 - Carta de correção eletrônica
         /// </summary>
         [XmlEnum("110110")]
@@ -971,6 +977,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("110751")]
         CancelamentoConciliacaoFinanceira = 110751,
+
+        /// <summary>
+        /// 112110 - Informação de efetivo pagamento integral para liberar crédito presumido do adquirente
+        /// </summary>
+        [XmlEnum("112110")]
+        InformacaoEfetivoPagamentoIntegral = 112110,
 
         /// <summary>
         /// 210200 - Manifestação do Destinatário - Confirmação da Operação
@@ -9103,7 +9115,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 8 - Desconto simplificado mensal. 
         /// </summary>
         [XmlEnum("8")]
-        DescontoSimplificadoMensal = 8, 
+        DescontoSimplificadoMensal = 8,
     }
     #endregion
 
