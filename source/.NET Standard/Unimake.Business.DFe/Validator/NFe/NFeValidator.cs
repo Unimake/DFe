@@ -906,13 +906,13 @@ namespace Unimake.Business.DFe.Validator.NFe
                         }
                     }
 
-                    if (!cfopsValidos.Contains(cfop))
-                    {
-                        ThrowHelper.Instance.Throw(new ValidatorDFeException(
-                            $"CFOP '{cfop}' inválido para {tipoOperacao}. " +
-                            $"Para esse tipo de devolução, utilize um dos seguintes CFOPs: {string.Join(", ", cfopsValidos.OrderBy(x => x))}. " +
-                            $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <CFOP> do grupo de tag <NFe><infNFe><det><prod>]"));
-                    }
+                    //if (!cfopsValidos.Contains(cfop))
+                    //{
+                    //    ThrowHelper.Instance.Throw(new ValidatorDFeException(
+                    //        $"CFOP '{cfop}' inválido para {tipoOperacao}. " +
+                    //        $"Para esse tipo de devolução, utilize um dos seguintes CFOPs: {string.Join(", ", cfopsValidos.OrderBy(x => x))}. " +
+                    //        $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <CFOP> do grupo de tag <NFe><infNFe><det><prod>]"));
+                    //}
 
 
 
