@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--  03/11/2025 - Criado pela Unimake Software pois a SEFAZ não criou esta parte do evento -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://www.portalfiscal.inf.br/nfe" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <xs:include schemaLocation="leiauteEvento_110001_v1.00.xsd"/>
+  <xs:include schemaLocation="leiauteEvento_DVS_v1.00.xsd"/>
   <xs:element name="envEvento" type="TEnvEvento">
     <xs:annotation>
-      <xs:documentation>Schema XML de validação do evento 110001</xs:documentation>
+      <xs:documentation>Schema XML de validação de DIVERSOS eventos</xs:documentation>
     </xs:annotation>
   </xs:element>
 </xs:schema>

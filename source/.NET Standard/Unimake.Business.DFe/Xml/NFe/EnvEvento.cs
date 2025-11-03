@@ -447,6 +447,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoCancelamentoDeEvento();
                         break;
 
+                    case TipoEventoNFe.InformacaoEfetivoPagamentoIntegral:
+                        _detEvento = new DetEventoInformacaoEfetivoPagamentoIntegral();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -3496,4 +3500,69 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de Informação de efetivo pagamento integral
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoInformacaoEfetivoPagamentoIntegral")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoInformacaoEfetivoPagamentoIntegral : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Informação de efetivo pagamento integral para liberar crédito presumido do adquirente";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Indicador de efetiva quitação do pagamento integral referente a NFe referenciada. 
+        /// </summary>
+        [XmlElement("indQuitacao", Order = 4)]
+        public int IndQuitacao { get; set; } = 1;
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <indQuitacao>{IndQuitacao}</indQuitacao>";
+
+            writer.WriteRaw(xml);
+        }
+    }
 }
