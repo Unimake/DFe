@@ -54,6 +54,17 @@
 			<xs:enumeration value="53"/>
 		</xs:restriction>
 	</xs:simpleType>
+    <!-- WANDREY - Não retirar para não gerar falhas nos novos eventos referente a RTC -->
+	<xs:simpleType name="TnItem">
+		<xs:annotation>
+			<xs:documentation>Tipo correspondente ao atributo “nItem”</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:pattern value="[1-9]{1}[0-9]{0,1}|[1-8]{1}[0-9]{2}|[9]{1}[0-8]{1}[0-9]{1}|[9]{1}[9]{1}[0]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+    <!-- WANDREY - FIM -->
 	<xs:simpleType name="TCodMunIBGE">
 		<xs:annotation>
 			<xs:documentation>Tipo Código do Município da tabela do IBGE</xs:documentation>

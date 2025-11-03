@@ -2593,6 +2593,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e110750_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e110751_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e112110_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFe\e112120_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e790700_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\envAverb_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\envEventoAtorInteressado_v1.00.xsd" />
