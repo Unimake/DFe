@@ -17,7 +17,7 @@
 				<tpAutor>1</tpAutor>
 				<verAplic>uninfeteste1.0</verAplic>
 				<autXML>
-					<CPF>00000000000000</CPF>
+					<CPF>00000000000</CPF>
 				</autXML>
 				<tpAutorizacao>1</tpAutorizacao>
 				<xCondUso>O emitente ou destinatário da NF-e, declara que permite o transportador declarado no campo CNPJ/CPF deste evento a autorizar os transportadores subcontratados ou redespachados a terem acesso ao download da NF-e</xCondUso>
