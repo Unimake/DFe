@@ -20,25 +20,6 @@
 			<SchemaVersao>3.01</SchemaVersao>
 			<TargetNS>http://www.publica.inf.br</TargetNS>
 		</RecepcionarLoteRps>
-		<GerarNfse versao="3.01">
-			<Descricao>Gerar uma única NFSe</Descricao>
-			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
-			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_nfse_v0301.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfRps</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:GerarNfse><XML>{xmlBodyScape}</XML></ser:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns2:GerarNfseResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>3.01</SchemaVersao>
-			<TargetNS>http://www.publica.inf.br</TargetNS>
-		</GerarNfse>
 		<CancelarNfse versao="3.01">
 			<Descricao>Cancelar NFSe</Descricao>
 			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
