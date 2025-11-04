@@ -229,6 +229,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarCteOsSincrono"/>
       </Unit>
+      <Unit>
+        <Filename Value="eventocancelamentocte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EventoCancelamentoCTe"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

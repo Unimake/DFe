@@ -2,7 +2,6 @@
 <xs:schema xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe" targetNamespace="http://www.portalfiscal.inf.br/nfe" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_v1.01.xsd"/>
   <xs:include schemaLocation="tiposBasico_v1.03.xsd"/>
-  <xs:include schemaLocation="e110001_v1.00.xsd"/>
   <xs:complexType name="TEvento">
     <xs:annotation>
       <xs:documentation>Tipo Evento</xs:documentation>
@@ -59,6 +58,8 @@
                   <xs:whiteSpace value="preserve"/>
                   <xs:pattern value="[0-9]{6}"/>
                   <xs:enumeration value="110001"/>
+                  <xs:enumeration value="112110"/>
+                  <xs:enumeration value="112120"/>
                 </xs:restriction>
               </xs:simpleType>
             </xs:element>
@@ -84,7 +85,7 @@
                 </xs:restriction>
               </xs:simpleType>
             </xs:element>
-            <xs:element ref="detEvento"/>
+            <xs:element name="detEvento" type="xs:anyType"/>
           </xs:sequence>
           <xs:attribute name="Id" use="required">
             <xs:annotation>

@@ -1188,6 +1188,7 @@
 		<None Remove="Xml\Schemas\NFe\e110193_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110750_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110751_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\e112110_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e790700_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\envAverb_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\envEPEC_v1.00.xsd" />
@@ -2592,6 +2593,8 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e110193_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e110750_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e110751_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFe\e112110_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFe\e112120_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e790700_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\envAverb_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\envEventoAtorInteressado_v1.00.xsd" />
@@ -2603,14 +2606,14 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFe\EventoCancEConf_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\EventoCancInsucessoNFe_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\EventoEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\Evento_110001_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFe\Evento_DVS_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\EventoInsucessoNFe_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteAverb_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoAtorInteressado_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancEConf_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancInsucessoNFe_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEvento_110001_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEvento_DVS_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoInsucessoNFe_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\procAverbNFe_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\procEventoAtorInteressado_v1.00.xsd" />

@@ -263,6 +263,7 @@ namespace Unimake.Business.DFe.Servicos
 #endif
         protected virtual void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
         {
+            Warnings.Clear();
             Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
             ConteudoXML = conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML));
 

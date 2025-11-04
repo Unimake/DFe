@@ -985,6 +985,12 @@ namespace Unimake.Business.DFe.Servicos
         InformacaoEfetivoPagamentoIntegral = 112110,
 
         /// <summary>
+        /// 112120 - Importação em ALC/ZFM não convertida em isenção
+        /// </summary>
+        [XmlEnum("112120")]
+        ImportacaoALCZFMNaoConvertidaIsencao = 112120,
+
+        /// <summary>
         /// 210200 - Manifestação do Destinatário - Confirmação da Operação
         /// </summary>
         [XmlEnum("210200")]

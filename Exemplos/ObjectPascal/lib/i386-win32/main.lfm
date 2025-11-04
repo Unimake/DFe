@@ -465,5 +465,14 @@ object frmPrincipal: TfrmPrincipal
       TabOrder = 3
       OnClick = Btn_EnviarCteOsSincronoClick
     end
+    object Btn_EventoCancelamentoCTe: TButton
+      Left = 0
+      Height = 31
+      Top = 144
+      Width = 283
+      Caption = 'Enviar Evento Cancelamento CTe'
+      TabOrder = 4
+      OnClick = Btn_EventoCancelamentoCTeClick
+    end
   end
 end
