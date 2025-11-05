@@ -24,7 +24,7 @@ uses
   EventoPagamentoMDFe, EnviarEventoAlteracaoPagamentoMDFe,
   ConsultarSituacaoNFCom, EnviarEventoCancelamentoNFCom, ConsultarStatusCte,
   ConsultarMDFeNaoEncerrado, ConsultarSituacaoCTe, EnviarCteSincrono,
-  EnviarCteOsSincrono, EventoCancelamentoCTe
+  EnviarCteOsSincrono, EventoCancelamentoCTe, EnviarEventoCancelamentoCTeOS
   { you can add units after this };
 
 {$R *.res}

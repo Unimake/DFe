@@ -19,7 +19,8 @@ uses
   EnviarEventoCancelamentoMDFe, EnviarEventoEncerramentoMDFe,
   ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrado,EventoPagamentoMDFe,
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
-  ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe;
+  ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe,
+  EnviarEventoCancelamentoCTeOS;
 
 type
 
@@ -62,6 +63,7 @@ type
     Btn_EnviarCteSincrono: TButton;
     Btn_EnviarCteOsSincrono: TButton;
     Btn_EventoCancelamentoCTe: TButton;
+    Btn_EnviarEventoCancelamentoCTeOS: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -111,6 +113,7 @@ type
     procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
     procedure Btn_ConsultaSituacaoCTeClick(Sender: TObject);
     procedure Btn_ConsultaStatusCteClick(Sender: TObject);
+    procedure Btn_EnviarEventoCancelamentoCTeOSClick(Sender: TObject);
     procedure Btn_EnviarCteOsSincronoClick(Sender: TObject);
     procedure Btn_EnviarEventoAlteracaoPagamentoMDFeClick(Sender: TObject);
     procedure Btn_ConsultaMdfeNaoEncerradoClick(Sender: TObject);
@@ -122,6 +125,7 @@ type
     procedure Btn_EnviarEventoCancelamentoNFComClick(Sender: TObject);
     procedure Btn_EnviarCteSincronoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure GroupBox1Click(Sender: TObject);
     procedure GroupBox3Click(Sender: TObject);
 
   private
@@ -516,6 +520,17 @@ begin
     end;
 end;
 
+procedure TfrmPrincipal.Btn_EnviarEventoCancelamentoCTeOSClick(Sender: TObject);
+var
+  oServico: TEnviarEventoCancelamentoCTeOS;
+begin
+  oServico := TEnviarEventoCancelamentoCTeOS.create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
 procedure TfrmPrincipal.Btn_EnviarCteOsSincronoClick(Sender: TObject);
 var
   oServico: TEnviarCteOsSincrono;
@@ -627,6 +642,11 @@ begin
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmPrincipal.GroupBox1Click(Sender: TObject);
 begin
 
 end;
