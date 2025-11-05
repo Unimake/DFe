@@ -765,23 +765,6 @@ namespace Unimake.Business.DFe.Validator.NFe
                 }
             }).ValidateTag(element => element.NameEquals(nameof(Prod.CFOP)) && element.Parent.NameEquals(nameof(Prod)), Tag =>
             {
-                var finNFe = Tag.Parent.Parent.Parent.GetValue("finNFe");
-                var tpNF = Tag.Parent.Parent.Parent.GetValue("tpNF");
-                var idDest = Tag.Parent.Parent.Parent.GetValue("idDest");
-
-                var indIEDest = Tag.Document?.Descendants().FirstOrDefault(e => e.NameEquals(nameof(Dest)))?.GetValue("indIEDest");
-
-                var emitUF = Tag.Document?.Descendants().FirstOrDefault(e => e.NameEquals(nameof(EnderEmit)))?.GetValue(nameof(EnderEmit.UF));
-                var destUF = Tag.Document?.Descendants().FirstOrDefault(e => e.NameEquals(nameof(EnderDest)))?.GetValue(nameof(EnderDest.UF));
-
-                //Ver se tem local de entrega, se tiver a UF passa a ser esta.
-                var entrega = Tag.Parent.Parent.Parent.GetElement("entrega");
-                var ufEntrega = entrega?.GetValue("UF");
-                if (!string.IsNullOrWhiteSpace(ufEntrega))
-                {
-                    destUF = ufEntrega;
-                }
-
                 var cfop = Tag.Value.Trim();
                 var cProd = Tag.Parent?.Parent?.GetValue("cProd");
                 var xProd = Tag.Parent?.Parent?.GetValue("xProd");
@@ -831,92 +814,6 @@ namespace Unimake.Business.DFe.Validator.NFe
                         "[TAG: CFOP dos grupos de tag det e prod]"));
                 }
 
-                if (finNFe == "4") // Devolução
-                {
-                    var tipoOperacao = "";
-                    var cfopsValidos = new HashSet<string>();
-
-                    // Devolução de venda (entrada)
-                    if (tpNF == "0")
-                    {
-                        if (string.IsNullOrWhiteSpace(destUF) || destUF.ToUpper() == "EX")
-                        {
-                            tipoOperacao = "Devolução de venda do exterior";
-
-                            if (idDest == ((int)DestinoOperacao.OperacaoInterna).ToString() && indIEDest == ((int)IndicadorIEDestinatario.NaoContribuinte).ToString())
-                            {
-                                cfopsValidos = new HashSet<string>
-                                {
-                                    "1201", "1202", "1203", "1204", "1208", "1209", "1212", "1213", "1214", "1215", "1216", "1410", "1411", "1503", "1504", "1505", "1506", "1553", "1660", "1661", "1662", "1918", "1919", "1949"
-                                };
-                            }
-                            else
-                            {
-                                cfopsValidos = new HashSet<string>
-                                {
-                                    "3201", "3202", "3211", "3212", "3503", "3553", "3949"
-                                };
-                            }
-                        }
-                        else if (!string.IsNullOrWhiteSpace(emitUF) && emitUF == destUF ||
-                        (idDest == ((int)DestinoOperacao.OperacaoInterna).ToString() && indIEDest == ((int)IndicadorIEDestinatario.NaoContribuinte).ToString()))
-                        {
-                            tipoOperacao = "Devolução de venda estadual";
-                            cfopsValidos = new HashSet<string>
-                            {
-                                "1201", "1202", "1203", "1204", "1208", "1209", "1212", "1213", "1214", "1215", "1216", "1410", "1411", "1503", "1504", "1505", "1506", "1553", "1660", "1661", "1662", "1918", "1919", "1949"
-                            };
-                        }
-                        else
-                        {
-                            tipoOperacao = "Devolução de venda interestadual";
-                            cfopsValidos = new HashSet<string>
-                            {
-                                "2201", "2202", "2203", "2204", "2208", "2209", "2212", "2213", "2214", "2215", "2216", "2410", "2411", "2503", "2504", "2505", "2506", "2553", "2660", "2661", "2662", "2918", "2919","2949"
-                            };
-                        }
-                    }
-                    // Devolução de compra (saída)
-                    else if (tpNF == "1")
-                    {
-                        if (!string.IsNullOrWhiteSpace(emitUF) && emitUF == destUF ||
-                        (idDest == ((int)DestinoOperacao.OperacaoInterna).ToString() && indIEDest == ((int)IndicadorIEDestinatario.NaoContribuinte).ToString()))
-                        {
-                            tipoOperacao = "Devolução de compra estadual";
-                            cfopsValidos = new HashSet<string>
-                            {
-                                "5201", "5202", "5208", "5209", "5210", "5213", "5214", "5215", "5216", "5410", "5411", "5412", "5413", "5503", "5553", "5555", "5556", "5660", "5661", "5662", "5918", "5919", "5921", "5949"
-                            };
-                        }
-                        else if (!string.IsNullOrWhiteSpace(destUF) && destUF.ToUpper() == "EX")
-                        {
-                            tipoOperacao = "Devolução de compra do exterior";
-                            cfopsValidos = new HashSet<string>
-                            {
-                                "7201", "7202", "7210", "7211", "7212", "7553", "7556", "7930", "7949"
-                            };
-                        }
-                        else
-                        {
-                            tipoOperacao = "Devolução de compra interestadual";
-                            cfopsValidos = new HashSet<string>
-                            {
-                                "6201", "6202", "6208", "6209", "6210", "6213", "6214", "6215", "6216", "6410", "6411", "6412", "6413", "6503", "6553", "6555", "6556", "6660", "6661", "6662", "6918", "6919", "6921", "6949"
-                            };
-                        }
-                    }
-
-                    //if (!cfopsValidos.Contains(cfop))
-                    //{
-                    //    ThrowHelper.Instance.Throw(new ValidatorDFeException(
-                    //        $"CFOP '{cfop}' inválido para {tipoOperacao}. " +
-                    //        $"Para esse tipo de devolução, utilize um dos seguintes CFOPs: {string.Join(", ", cfopsValidos.OrderBy(x => x))}. " +
-                    //        $"[Item: {nItem}] [cProd: {cProd}] [xProd: {xProd}] [TAG: <CFOP> do grupo de tag <NFe><infNFe><det><prod>]"));
-                    //}
-
-
-
-                }
             }).ValidateTag(element => element.NameEquals(nameof(IBSCBS.CST)) && element.Parent.NameEquals(nameof(IBSCBS)), Tag =>
             {
                 var cst = Tag?.Value;
