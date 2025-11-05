@@ -17,6 +17,7 @@ object frmPrincipal: TfrmPrincipal
     ClientHeight = 835
     ClientWidth = 294
     TabOrder = 0
+    OnClick = GroupBox1Click
     object btnConsultaStatusNFe: TButton
       Left = 10
       Height = 32
@@ -473,6 +474,15 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Enviar Evento Cancelamento CTe'
       TabOrder = 4
       OnClick = Btn_EventoCancelamentoCTeClick
+    end
+    object Btn_EnviarEventoCancelamentoCTeOS: TButton
+      Left = 0
+      Height = 31
+      Top = 176
+      Width = 283
+      Caption = 'Enviar Evento Cancelamento CTeOS'
+      TabOrder = 5
+      OnClick = Btn_EnviarEventoCancelamentoCTeOSClick
     end
   end
 end
