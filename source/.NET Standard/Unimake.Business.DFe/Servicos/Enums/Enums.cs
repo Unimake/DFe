@@ -1021,6 +1021,12 @@ namespace Unimake.Business.DFe.Servicos
         ManifestacaoOperacaoNaoRealizada = 210240,
 
         /// <summary>
+        /// 211128 - Aceite de débito na apuração por emissão de nota de crédito
+        /// </summary>
+        [XmlEnum("211128")]
+        AceiteDebitoApuracaoEmissaoNotaCredito = 211128,
+
+        /// <summary>
         /// 400200 - SEFAZ do emitente declara que NF-e é um "Documento Fiscal Inidôneo".
         /// </summary>
         [XmlEnum("400200")]

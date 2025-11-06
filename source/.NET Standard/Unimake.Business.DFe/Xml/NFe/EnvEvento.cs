@@ -499,6 +499,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoAtualizacaoDataPrevisaoEntrega();
                         break;
 
+                    case TipoEventoNFe.AceiteDebitoApuracaoEmissaoNotaCredito:
+                        _detEvento = new DetEventoAceiteDebitoApuracaoEmissaoNotaCredito();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -3894,6 +3898,72 @@ namespace Unimake.Business.DFe.Xml.NFe
                          <tpAutor>{(int)TpAutor}</tpAutor>
                          <verAplic>{VerAplic}</verAplic>
                          <dPrevEntrega>{DPrevEntregaField}</dPrevEntrega>";
+
+            writer.WriteRaw(xml);
+        }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do Evento de Aceite de débito na apuração por emissão de nota de crédito
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoAceiteDebitoApuracaoEmissaoNotaCredito")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoAceiteDebitoApuracaoEmissaoNotaCredito : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Aceite de débito na apuração por emissão de nota de crédito";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Indicador de concordância com o valor da nota de crédito que lançaram IBS e CBS na apuração assistida.
+        /// </summary>
+        [XmlElement("indAceitacao", Order = 4)]
+        public SimNao IndAceitacao { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <indAceitacao>{(int)IndAceitacao}</indAceitacao>";
 
             writer.WriteRaw(xml);
         }

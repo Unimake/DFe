@@ -122,6 +122,11 @@
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e112150_v{0}.xsd</SchemaArquivoEspecifico>
         </Tipo>
+        <Tipo>
+          <ID>211128</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211128_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>      
       </SchemasEspecificos>
 			<TagAssinatura>evento</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
