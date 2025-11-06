@@ -239,6 +239,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarEventoCancelamentoCTeOS"/>
       </Unit>
+      <Unit>
+        <Filename Value="eventoccecte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EventoCCeCTe"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
