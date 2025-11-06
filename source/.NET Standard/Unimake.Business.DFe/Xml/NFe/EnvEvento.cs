@@ -495,6 +495,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoImportacaoALCZFMNaoConvertidaIsencao();
                         break;
 
+                    case TipoEventoNFe.AtualizacaoDataPrevisaoEntrega:
+                        _detEvento = new DetEventoAtualizacaoDataPrevisaoEntrega();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -3809,5 +3813,89 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlElement("unidade")]
         public string Unidade { get; set; }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do evento de atualização da data de previsão de entrega
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoAtualizacaoDataPrevisaoEntrega")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoAtualizacaoDataPrevisaoEntrega : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Atualização da Data de Previsão de Entrega";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Data da previsão da entrega AAAA-MM-DD
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DPrevEntrega { get; set; }
+#else
+        public DateTimeOffset DPrevEntrega { get; set; }
+#endif
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DPrevEntrega para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("dPrevEntrega", Order = 4)]
+        public string DPrevEntregaField
+        {
+            get => DPrevEntrega.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DPrevEntrega = DateTime.Parse(value);
+#else
+            set => DPrevEntrega = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <dPrevEntrega>{DPrevEntregaField}</dPrevEntrega>";
+
+            writer.WriteRaw(xml);
+        }
     }
 }

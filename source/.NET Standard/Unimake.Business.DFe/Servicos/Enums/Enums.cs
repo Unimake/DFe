@@ -991,6 +991,12 @@ namespace Unimake.Business.DFe.Servicos
         ImportacaoALCZFMNaoConvertidaIsencao = 112120,
 
         /// <summary>
+        /// 112150 - Atualização da data prevista para entrega
+        /// </summary>
+        [XmlEnum("112150")]
+        AtualizacaoDataPrevisaoEntrega = 112150,
+
+        /// <summary>
         /// 210200 - Manifestação do Destinatário - Confirmação da Operação
         /// </summary>
         [XmlEnum("210200")]
