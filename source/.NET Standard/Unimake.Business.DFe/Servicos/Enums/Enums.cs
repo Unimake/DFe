@@ -1087,6 +1087,12 @@ namespace Unimake.Business.DFe.Servicos
         RespostaCancelamentoPedidoProrrogacaoPrazo2 = 411503,
 
         /// <summary>
+        /// 412120 - Manifestação do Fisco sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão
+        /// </summary>
+        [XmlEnum("412120")]
+        ManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao = 412120,
+
+        /// <summary>
         /// 510620 - Registro de Passagem Automático da NFe (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("510620")]
@@ -2829,6 +2835,28 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("99")]
         Outros = 99
+    }
+
+    #endregion
+
+    #region Motivos para a Manifestação do Fisco sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão
+
+    /// <summary>
+    /// Motivos para a Manifestação do Fisco sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão
+    /// </summary>
+    public enum MotivoManifestacaoFisco
+    {
+        /// <summary>
+        /// 1 - Falta de manifestação de todas as sucessoras
+        /// </summary>
+        [XmlEnum("1")]
+        FaltaManifestacaoTodasSucessoras = 1,
+
+        /// <summary>
+        /// 2 - Outros
+        /// </summary>
+        [XmlEnum("2")]
+        Outros = 2
     }
 
     #endregion

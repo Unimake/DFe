@@ -511,6 +511,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoManifestacaoPedidoTransferenciaCreditoCBSOperacaoSucessao();
                         break;
 
+                    case TipoEventoNFe.ManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao:
+                        _detEvento = new DetEventoManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao();
+                        break;                        
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -4044,7 +4048,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     }
 
     /// <summary>
-    /// Classe de detalhamento do Evento de Manifestação sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão
+    /// Classe de detalhamento do Evento de Manifestação sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -4104,6 +4108,86 @@ namespace Unimake.Business.DFe.Xml.NFe
                          <tpAutor>{(int)TpAutor}</tpAutor>
                          <verAplic>{VerAplic}</verAplic>
                          <indAceitacao>{(int)IndAceitacao}</indAceitacao>";
+
+            writer.WriteRaw(xml);
+        }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do Evento de Manifestação sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Manifestação do Fisco sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Indicador de aceitação do valor de transferência para a empresa que emitiu a nota referenciada.
+        /// </summary>
+        [XmlElement("indDeferimento", Order = 4)]
+        public SimNao IndDeferimento { get; set; }
+
+        /// <summary>
+        /// Motivo da manifestação do fisco sobre o pedido de transferência de crédito de IBS.
+        /// </summary>
+        [XmlElement("cMotivo", Order = 5)]
+        public MotivoManifestacaoFisco CMotivo { get; set; }
+
+        /// <summary>
+        /// Motivo da manifestação do fisco sobre o pedido de transferência de crédito de IBS.
+        /// </summary>
+        [XmlElement("xMotivo", Order = 6)]
+        public string XMotivo { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <indDeferimento>{(int)IndDeferimento}</indDeferimento>
+                         <cMotivo>{(int)CMotivo}</cMotivo>
+                         <xMotivo>{XMotivo}</xMotivo>";
 
             writer.WriteRaw(xml);
         }
