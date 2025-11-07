@@ -1027,6 +1027,12 @@ namespace Unimake.Business.DFe.Servicos
         AceiteDebitoApuracaoEmissaoNotaCredito = 211128,
 
         /// <summary>
+        /// 212110 - Manifestação sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão
+        /// </summary>
+        [XmlEnum("212110")]
+        ManifestacaoPedidoTransferenciaCreditoIBSOperacaoSucessao = 212110,
+
+        /// <summary>
         /// 400200 - SEFAZ do emitente declara que NF-e é um "Documento Fiscal Inidôneo".
         /// </summary>
         [XmlEnum("400200")]
@@ -5023,6 +5029,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("6")]
         RFB = 6,
+
+        /// <summary>
+        /// 8 - Empresa Sucessora
+        /// </summary>
+        [XmlEnum("8")]
+        EmpresaSucessora = 8,
 
         /// <summary>
         /// 9 - Outros Órgãos
