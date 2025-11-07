@@ -1033,6 +1033,12 @@ namespace Unimake.Business.DFe.Servicos
         ManifestacaoPedidoTransferenciaCreditoIBSOperacaoSucessao = 212110,
 
         /// <summary>
+        /// 212120 - Manifestação sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão
+        /// </summary>
+        [XmlEnum("212120")]
+        ManifestacaoPedidoTransferenciaCreditoCBSOperacaoSucessao = 212120,
+
+        /// <summary>
         /// 400200 - SEFAZ do emitente declara que NF-e é um "Documento Fiscal Inidôneo".
         /// </summary>
         [XmlEnum("400200")]

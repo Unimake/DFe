@@ -1192,6 +1192,7 @@
 		<None Remove="Xml\Schemas\NFe\e112150_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e211128_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e212110_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\e212120_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e790700_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\envAverb_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\envEPEC_v1.00.xsd" />
@@ -2601,6 +2602,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e112150_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e211128_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e212110_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFe\e212120_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e790700_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\envAverb_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\envEventoAtorInteressado_v1.00.xsd" />
