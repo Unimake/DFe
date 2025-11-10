@@ -17,6 +17,7 @@ object frmPrincipal: TfrmPrincipal
     ClientHeight = 835
     ClientWidth = 294
     TabOrder = 0
+    OnClick = GroupBox1Click
     object btnConsultaStatusNFe: TButton
       Left = 10
       Height = 32
@@ -339,7 +340,7 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object GroupBox6: TGroupBox
-    Left = 1241
+    Left = 1242
     Height = 472
     Top = 388
     Width = 312
@@ -432,7 +433,7 @@ object frmPrincipal: TfrmPrincipal
     object Btn_ConsultaStatusCte: TButton
       Left = 0
       Height = 31
-      Top = 8
+      Top = 16
       Width = 283
       Caption = 'Consulta Status'
       TabOrder = 0
@@ -441,11 +442,65 @@ object frmPrincipal: TfrmPrincipal
     object Btn_ConsultaSituacaoCTe: TButton
       Left = 0
       Height = 31
-      Top = 44
+      Top = 48
       Width = 283
       Caption = 'Consulta Situção'
       TabOrder = 1
       OnClick = Btn_ConsultaSituacaoCTeClick
+    end
+    object Btn_EnviarCteSincrono: TButton
+      Left = 0
+      Height = 31
+      Top = 80
+      Width = 283
+      Caption = 'Enviar CTe Sincrono'
+      TabOrder = 2
+      OnClick = Btn_EnviarCteSincronoClick
+    end
+    object Btn_EnviarCteOsSincrono: TButton
+      Left = 0
+      Height = 31
+      Top = 112
+      Width = 283
+      Caption = 'EnviarCTeOS Sincrono'
+      TabOrder = 3
+      OnClick = Btn_EnviarCteOsSincronoClick
+    end
+    object Btn_EventoCancelamentoCTe: TButton
+      Left = 0
+      Height = 31
+      Top = 144
+      Width = 283
+      Caption = 'Enviar Evento Cancelamento CTe'
+      TabOrder = 4
+      OnClick = Btn_EventoCancelamentoCTeClick
+    end
+    object Btn_EnviarEventoCancelamentoCTeOS: TButton
+      Left = 0
+      Height = 31
+      Top = 176
+      Width = 283
+      Caption = 'Enviar Evento Cancelamento CTeOS'
+      TabOrder = 5
+      OnClick = Btn_EnviarEventoCancelamentoCTeOSClick
+    end
+    object Btn_EventoCCeCTe: TButton
+      Left = 0
+      Height = 31
+      Top = 208
+      Width = 283
+      Caption = 'Evento de CC e CTe'
+      TabOrder = 6
+      OnClick = Btn_EventoCCeCTeClick
+    end
+    object Btn_InsucessoEntregaCTe: TButton
+      Left = 0
+      Height = 31
+      Top = 240
+      Width = 283
+      Caption = 'Evento do Insucesso na Entrega do CTe'
+      TabOrder = 7
+      OnClick = Btn_InsucessoEntregaCTeClick
     end
   end
 end

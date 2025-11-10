@@ -1,6 +1,120 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="3.01">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao/>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/RecepcionarLoteRpsRequest</WebActionHomologacao>
+			<WebActionProducao/>
+			<SchemaArquivo>schema_nfse_v0301.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:RecepcionarLoteRps><XML>{xmlBodyScape}</XML></ser:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.01</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="3.01">
+			<Descricao>Cancelar NFSe</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao/>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/CancelarNfseRequest</WebActionHomologacao>
+			<WebActionProducao/>
+			<SchemaArquivo>schema_nfse_v0301.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:CancelarNfse><XML>{xmlBodyScape}</XML></ser:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.01</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="3.01">
+			<Descricao>Consultar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao/>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarLoteRpsRequest</WebActionHomologacao>
+			<WebActionProducao/>
+			<SchemaArquivo/>
+			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarLoteRps><XML>{xmlBodyScape}</XML></ser:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.01</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="3.01">
+			<Descricao>Consultar NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao/>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfsePorRpsRequest</WebActionHomologacao>
+			<WebActionProducao/>
+			<SchemaArquivo>schema_nfse_v0301.xsd</SchemaArquivo>
+			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarNfsePorRps><XML>{xmlBodyScape}</XML></ser:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.01</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseFaixa versao="3.01">
+			<Descricao>Consultar NFSe por faixa de numeração</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao/>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfseFaixaRequest</WebActionHomologacao>
+			<WebActionProducao/>
+			<SchemaArquivo/>
+			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarNfseFaixa><XML>{xmlBodyScape}</XML></ser:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfseFaixaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.01</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+		</ConsultarNfseFaixa>
+		<ConsultarSituacaoLoteRps versao="3.01">
+			<Descricao>Consultar situação do lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao/>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarSituacaoLoteRpsRequest</WebActionHomologacao>
+			<WebActionProducao/>
+			<SchemaArquivo/>
+			<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarSituacaoLoteRps><XML>{xmlBodyScape}</XML></ser:ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarSituacaoLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.01</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+		</ConsultarSituacaoLoteRps>
 		<RecepcionarLoteRps versao="3.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>

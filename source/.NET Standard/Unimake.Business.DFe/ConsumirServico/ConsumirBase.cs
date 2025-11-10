@@ -425,6 +425,7 @@ namespace Unimake.Business.DFe
                 RetornoServicoString = RetornoServicoString.Replace("ns2:", string.Empty);
                 RetornoServicoString = RetornoServicoString.Replace("ns3:", string.Empty);
                 RetornoServicoString = RetornoServicoString.Replace("ns4:", string.Empty);
+                RetornoServicoString = RetornoServicoString.Replace("ns0:", string.Empty);
             }
             else if (soap.PadraoNFSe == PadraoNFSe.SIMPLE)
             {

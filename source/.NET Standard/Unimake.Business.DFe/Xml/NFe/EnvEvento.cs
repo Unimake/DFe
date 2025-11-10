@@ -72,6 +72,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                 case "110750":
                     PreparaDetPag(document);
                     break;
+
+                case "112120":
+                    PrepararGConsumo(document);
+                    break;
             }
         }
 
@@ -141,6 +145,42 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
         }
 
+        public void PrepararGConsumo(XmlDocument xmlDoc)
+        {
+            var gConsumos = xmlDoc.GetElementsByTagName("gConsumo");
+
+            foreach (var evento in Evento)
+            {
+                if (evento.InfEvento.DetEvento is DetEventoImportacaoALCZFMNaoConvertidaIsencao detEvento)
+                {
+                    detEvento.GConsumo = new List<GConsumo>();
+
+                    foreach (var nodeGConsumo in gConsumos)
+                    {
+                        var elementGConsumo = (XmlElement)nodeGConsumo;
+
+                        detEvento.GConsumo.Add(new GConsumo
+                        {
+                            NItem = Convert.ToInt32(elementGConsumo.GetAttribute("nItem")),
+                            VIBS = Convert.ToDouble(elementGConsumo.GetElementsByTagName("vIBS")[0].InnerText, CultureInfo.InvariantCulture),
+                            VCBS = Convert.ToDouble(elementGConsumo.GetElementsByTagName("vCBS")[0].InnerText, CultureInfo.InvariantCulture),
+                        });
+
+                        if (elementGConsumo.GetElementsByTagName("gControleEstoque").Count > 0)
+                        {
+                            var elementGControleEstoque = (XmlElement)elementGConsumo.GetElementsByTagName("gControleEstoque")[0];
+
+                            detEvento.GConsumo[detEvento.GConsumo.Count - 1].GControleEstoque = new GControleEstoque
+                            {
+                                Qtde = Convert.ToDouble(elementGControleEstoque.GetElementsByTagName("qtde")[0].InnerText, CultureInfo.InvariantCulture),
+                                Unidade = elementGControleEstoque.GetElementsByTagName("unidade")[0].InnerText
+                            };
+                        }
+                    }
+                }
+            }
+        }
+
 #if INTEROP
         /// <summary>
         /// Adicionar novo elemento a lista
@@ -166,7 +206,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             if ((Evento?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Evento[index];
         }
@@ -443,6 +483,38 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoCancelamentoConciliacaoFinanceira();
                         break;
 
+                    case TipoEventoNFe.CancelamentoDeEvento:
+                        _detEvento = new DetEventoCancelamentoDeEvento();
+                        break;
+
+                    case TipoEventoNFe.InformacaoEfetivoPagamentoIntegral:
+                        _detEvento = new DetEventoInformacaoEfetivoPagamentoIntegral();
+                        break;
+
+                    case TipoEventoNFe.ImportacaoALCZFMNaoConvertidaIsencao:
+                        _detEvento = new DetEventoImportacaoALCZFMNaoConvertidaIsencao();
+                        break;
+
+                    case TipoEventoNFe.AtualizacaoDataPrevisaoEntrega:
+                        _detEvento = new DetEventoAtualizacaoDataPrevisaoEntrega();
+                        break;
+
+                    case TipoEventoNFe.AceiteDebitoApuracaoEmissaoNotaCredito:
+                        _detEvento = new DetEventoAceiteDebitoApuracaoEmissaoNotaCredito();
+                        break;
+
+                    case TipoEventoNFe.ManifestacaoPedidoTransferenciaCreditoIBSOperacaoSucessao:
+                        _detEvento = new DetEventoManifestacaoPedidoTransferenciaCreditoIBSOperacaoSucessao();
+                        break;
+
+                    case TipoEventoNFe.ManifestacaoPedidoTransferenciaCreditoCBSOperacaoSucessao:
+                        _detEvento = new DetEventoManifestacaoPedidoTransferenciaCreditoCBSOperacaoSucessao();
+                        break;
+
+                    case TipoEventoNFe.ManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao:
+                        _detEvento = new DetEventoManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao();
+                        break;                        
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -640,7 +712,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public XmlSchema GetSchema() => default;
 
-        public void ReadXml(XmlReader reader) => XmlReader = reader;
+        public virtual void ReadXml(XmlReader reader) => XmlReader = reader;
 
         public virtual void WriteXml(XmlWriter writer) => writer.WriteAttributeString("versao", Versao);
 
@@ -1512,7 +1584,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             if ((ItemPedido?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return ItemPedido[index];
         }
@@ -2079,7 +2151,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlElement("tpAutor", Order = 2)]
         public string TpAutor { get; set; }
-        
+
         /// <summary>
         /// Versão do aplicativo do autor do evento
         /// </summary>
@@ -2478,7 +2550,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                         {
                             for (int i = 0; i < 4; i++)
                             {
-                                if (enquadElement.GetElementsByTagName("cEnq").Count >= (i+1))
+                                if (enquadElement.GetElementsByTagName("cEnq").Count >= (i + 1))
                                 {
                                     ItensAverbados[ItensAverbados.Count - 1].Enquad.CEnq.Add(enquadElement.GetElementsByTagName("cEnq")[i].InnerText);
                                 }
@@ -3384,7 +3456,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     }
 
     /// <summary>
-    /// Classe de detalhametno do evento de cancelamento da conciliação financeira
+    /// Classe de detalhamento do evento de cancelamento da conciliação financeira
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -3426,4 +3498,698 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de cancelamento de eventos
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCancelamentoDeEvento")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoCancelamentoDeEvento : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Cancelamento de Evento";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 2)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Tipo do evento da NFe/NFCe
+        /// </summary>
+        [XmlElement("tpEventoAut", Order = 3)]
+        public TipoEventoNFe TpEventoAut { get; set; }
+
+        /// <summary>
+        /// Informar o número do protocolo de autorização do evento que se refere a este cancelamento
+        /// </summary>
+        [XmlElement("nProtEvento", Order = 4)]
+        public string NProtEvento { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <tpEventoAut>{(int)TpEventoAut}</tpEventoAut>
+                         <nProtEvento>{NProtEvento}</nProtEvento>";
+
+            writer.WriteRaw(xml);
+        }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do evento de Informação de efetivo pagamento integral
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoInformacaoEfetivoPagamentoIntegral")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoInformacaoEfetivoPagamentoIntegral : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Informação de efetivo pagamento integral para liberar crédito presumido do adquirente";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Indicador de efetiva quitação do pagamento integral referente a NFe referenciada. 
+        /// </summary>
+        [XmlElement("indQuitacao", Order = 4)]
+        public int IndQuitacao { get; set; } = 1;
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <indQuitacao>{IndQuitacao}</indQuitacao>";
+
+            writer.WriteRaw(xml);
+        }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do evento de Importação em ALC/ZFM não convertida em isenção
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoImportacaoALCZFMNaoConvertidaIsencao")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoImportacaoALCZFMNaoConvertidaIsencao : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Importação em ALC/ZFM não convertida em isenção";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Informações de itens integrados ao ativo imobilizado
+        /// </summary>        
+        [XmlElement("gConsumo", Order = 4)]
+        public List<GConsumo> GConsumo { get; set; } = new List<GConsumo>();
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>";
+
+            if (GConsumo != null)
+            {
+                if (GConsumo.Count > 0)
+                {
+                    for (int i = 0; i < GConsumo.Count; i++)
+                    {
+                        xml += $@"<gConsumo nItem={"\"" + GConsumo[i].NItem.ToString() + "\""}>
+                              <vIBS>{GConsumo[i].VIBSField}</vIBS>
+                              <vCBS>{GConsumo[i].VCBSField}</vCBS>";
+
+                        if (GConsumo[i].GControleEstoque != null)
+                        {
+                            xml += $@"<gControleEstoque>
+                                  <qtde>{GConsumo[i].GControleEstoque.QtdeField}</qtde>
+                                  <unidade>{GConsumo[i].GControleEstoque.Unidade}</unidade>
+                                  </gControleEstoque>";
+                        }
+
+                        xml += $@"</gConsumo>";
+                    }
+                }
+            }
+
+            writer.WriteRaw(xml);
+        }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddGConsumo(GConsumo item)
+        {
+            if (GConsumo == null)
+            {
+                GConsumo = new List<GConsumo>();
+            }
+
+            GConsumo.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista GConsumo (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da GConsumo</returns>
+        public GConsumo GetGConsumo(int index)
+        {
+            if ((GConsumo?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return GConsumo[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista GConsumo
+        /// </summary>
+        public int GetGConsumoCount => (GConsumo != null ? GConsumo.Count : 0);
+
+#endif
+    }
+
+    /// <summary>
+    /// Informações de itens integrados ao ativo imobilizado
+    /// </summary>
+    public class GConsumo
+    {
+        /// <summary>
+        /// Número do item
+        /// </summary>
+        [XmlAttribute(AttributeName = "nItem")]
+        public int NItem { get; set; }
+
+        /// <summary>
+        /// Valor do IBS correspondente à quantidade que não atendeu aos requisitos para a conversão em isenção
+        /// </summary>
+        [XmlIgnore]
+        public double VIBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vIBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vIBS")]
+        public string VIBSField
+        {
+            get => VIBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do CBS correspondente à quantidade que não atendeu aos requisitos para a conversão em isenção
+        /// </summary>
+        [XmlIgnore]
+        public double VCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCBS")]
+        public string VCBSField
+        {
+            get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlElement("gControleEstoque")]
+        public GControleEstoque GControleEstoque { get; set; }
+    }
+
+    public class GControleEstoque
+    {
+        /// <summary>
+        /// Informar a quantidade que não atendeu os requisitos para a conversão em isenção
+        /// </summary>
+        [XmlIgnore]
+        public double Qtde { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade Qtde para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("qtde")]
+        public string QtdeField
+        {
+            get => Qtde.ToString("F4", CultureInfo.InvariantCulture);
+            set => Qtde = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Informar a unidade relativa ao campo gConsumo
+        /// </summary>
+        [XmlElement("unidade")]
+        public string Unidade { get; set; }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do evento de atualização da data de previsão de entrega
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoAtualizacaoDataPrevisaoEntrega")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoAtualizacaoDataPrevisaoEntrega : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Atualização da Data de Previsão de Entrega";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Data da previsão da entrega AAAA-MM-DD
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DPrevEntrega { get; set; }
+#else
+        public DateTimeOffset DPrevEntrega { get; set; }
+#endif
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DPrevEntrega para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("dPrevEntrega", Order = 4)]
+        public string DPrevEntregaField
+        {
+            get => DPrevEntrega.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DPrevEntrega = DateTime.Parse(value);
+#else
+            set => DPrevEntrega = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <dPrevEntrega>{DPrevEntregaField}</dPrevEntrega>";
+
+            writer.WriteRaw(xml);
+        }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do Evento de Aceite de débito na apuração por emissão de nota de crédito
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoAceiteDebitoApuracaoEmissaoNotaCredito")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoAceiteDebitoApuracaoEmissaoNotaCredito : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Aceite de débito na apuração por emissão de nota de crédito";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Indicador de concordância com o valor da nota de crédito que lançaram IBS e CBS na apuração assistida.
+        /// </summary>
+        [XmlElement("indAceitacao", Order = 4)]
+        public SimNao IndAceitacao { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <indAceitacao>{(int)IndAceitacao}</indAceitacao>";
+
+            writer.WriteRaw(xml);
+        }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do Evento de Manifestação sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoManifestacaoPedidoTransferenciaCreditoIBSOperacaoSucessao")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoManifestacaoPedidoTransferenciaCreditoIBSOperacaoSucessao : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Manifestação sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Indicador de concordância com o valor da nota de crédito que lançaram IBS e CBS na apuração assistida.
+        /// </summary>
+        [XmlElement("indAceitacao", Order = 4)]
+        public SimNao IndAceitacao { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <indAceitacao>{(int)IndAceitacao}</indAceitacao>";
+
+            writer.WriteRaw(xml);
+        }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do Evento de Manifestação sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoManifestacaoPedidoTransferenciaCreditoCBSOperacaoSucessao")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoManifestacaoPedidoTransferenciaCreditoCBSOperacaoSucessao : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Manifestação sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Indicador de concordância com o valor da nota de crédito que lançaram IBS e CBS na apuração assistida.
+        /// </summary>
+        [XmlElement("indAceitacao", Order = 4)]
+        public SimNao IndAceitacao { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <indAceitacao>{(int)IndAceitacao}</indAceitacao>";
+
+            writer.WriteRaw(xml);
+        }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do Evento de Manifestação sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Manifestação do Fisco sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Indicador de aceitação do valor de transferência para a empresa que emitiu a nota referenciada.
+        /// </summary>
+        [XmlElement("indDeferimento", Order = 4)]
+        public SimNao IndDeferimento { get; set; }
+
+        /// <summary>
+        /// Motivo da manifestação do fisco sobre o pedido de transferência de crédito de IBS.
+        /// </summary>
+        [XmlElement("cMotivo", Order = 5)]
+        public MotivoManifestacaoFisco CMotivo { get; set; }
+
+        /// <summary>
+        /// Motivo da manifestação do fisco sobre o pedido de transferência de crédito de IBS.
+        /// </summary>
+        [XmlElement("xMotivo", Order = 6)]
+        public string XMotivo { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <indDeferimento>{(int)IndDeferimento}</indDeferimento>
+                         <cMotivo>{(int)CMotivo}</cMotivo>
+                         <xMotivo>{XMotivo}</xMotivo>";
+
+            writer.WriteRaw(xml);
+        }
+    }
 }

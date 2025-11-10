@@ -83,7 +83,9 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Construtor
         /// </summary>
-        protected ServicoBase() { }
+        protected ServicoBase()
+        {
+        }
 
         /// <summary>
         /// Este método é uma possibilidade de fazer ajustes no XML depois de assinado, pois ele é executado assim que a assinatura é feita. Basta implementar ele nas heranças.
@@ -109,8 +111,8 @@ namespace Unimake.Business.DFe.Servicos
                 ....                            oque é específico entre um tipo de DFe, dentro da classe ServicoBaseDFe..
 
              */
-            if (!Configuracoes.Definida)                                    
-            {                                                               
+            if (!Configuracoes.Definida)
+            {
                 Configuracoes.Load(GetType().Name);
             }
 
@@ -382,8 +384,8 @@ namespace Unimake.Business.DFe.Servicos
                     WebAction = Configuracoes.WebActionProducao,
                     MunicipioSenha = Configuracoes.MunicipioSenha,
                     MunicipioUsuario = Configuracoes.MunicipioUsuario,
-                    PadraoNFSe = Configuracoes.PadraoNFSe,              
-                    LoginConexao = Configuracoes.LoginConexao,          
+                    PadraoNFSe = Configuracoes.PadraoNFSe,
+                    LoginConexao = Configuracoes.LoginConexao,
                     ResponseMediaType = Configuracoes.ResponseMediaType,
                     CodigoTom = Configuracoes.CodigoTom,
                     Servico = Configuracoes.Servico,

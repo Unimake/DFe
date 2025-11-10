@@ -57,7 +57,9 @@ namespace Unimake.Business.DFe.Validator.Abstractions
         /// Inicia o objeto de validação
         /// </summary>
         public XmlValidatorBase()
-        { }
+        { 
+            Warnings.Clear();
+        }
 
         #endregion Public Constructors
 

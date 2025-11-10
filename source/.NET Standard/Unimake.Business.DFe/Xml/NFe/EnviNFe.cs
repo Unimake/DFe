@@ -13110,7 +13110,6 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => VBCCredPres = Converter.ToDouble(value);
         }
 
-
         /// <summary>
         /// Código de Classificação do Crédito Presumido 
         /// </summary>
@@ -13647,12 +13646,6 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class GIBSCredPres
     {
         /// <summary>
-        /// Código de Classificação do Crédito Presumido
-        /// </summary>
-        [XmlElement("cCredPres")]
-        public string CCredPres { get; set; }
-
-        /// <summary>
         /// Percentual do Crédito Presumido
         /// </summary>
         [XmlIgnore]
@@ -13721,12 +13714,6 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class GCBSCredPres
     {
-        /// <summary>
-        /// Código de Classificação do Crédito Presumido
-        /// </summary>
-        [XmlElement("cCredPres")]
-        public string CCredPres { get; set; }
-
         /// <summary>
         /// Percentual do Crédito Presumido
         /// </summary>

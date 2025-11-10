@@ -219,6 +219,36 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarSituacaoCTe"/>
       </Unit>
+      <Unit>
+        <Filename Value="enviarctesincrono.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarCteSincrono"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviarcteossincrono.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarCteOsSincrono"/>
+      </Unit>
+      <Unit>
+        <Filename Value="eventocancelamentocte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EventoCancelamentoCTe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviareventocancelamentocteos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarEventoCancelamentoCTeOS"/>
+      </Unit>
+      <Unit>
+        <Filename Value="eventoccecte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EventoCCeCTe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="insucessoentregacte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="InsucessoEntregaCTe"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -19,7 +19,8 @@ uses
   EnviarEventoCancelamentoMDFe, EnviarEventoEncerramentoMDFe,
   ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrado,EventoPagamentoMDFe,
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
-  ConsultarStatusCte, ConsultarSituacaoCTe;
+  ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe,
+  EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe;
 
 type
 
@@ -59,6 +60,12 @@ type
     Btn_EnviarEventoCancelamentoNFCom: TButton;
     Btn_ConsultaStatusCte: TButton;
     Btn_ConsultaSituacaoCTe: TButton;
+    Btn_EnviarCteSincrono: TButton;
+    Btn_EnviarCteOsSincrono: TButton;
+    Btn_EventoCancelamentoCTe: TButton;
+    Btn_EnviarEventoCancelamentoCTeOS: TButton;
+    Btn_EventoCCeCTe: TButton;
+    Btn_InsucessoEntregaCTe: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -108,14 +115,21 @@ type
     procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
     procedure Btn_ConsultaSituacaoCTeClick(Sender: TObject);
     procedure Btn_ConsultaStatusCteClick(Sender: TObject);
+    procedure Btn_EnviarEventoCancelamentoCTeOSClick(Sender: TObject);
+    procedure Btn_EnviarCteOsSincronoClick(Sender: TObject);
     procedure Btn_EnviarEventoAlteracaoPagamentoMDFeClick(Sender: TObject);
     procedure Btn_ConsultaMdfeNaoEncerradoClick(Sender: TObject);
     procedure Btn_ConsultarStatusMDFeClick(Sender: TObject);
     procedure Btn_ConsultarSituacaoMDFeClick(Sender: TObject);
+    procedure Btn_EventoCancelamentoCTeClick(Sender: TObject);
+    procedure Btn_EventoCCeCTeClick(Sender: TObject);
     procedure Btn_EventoPagamentoMDFeClick(Sender: TObject);
     procedure Btn_ConsultaSituacaoNFComClick(Sender: TObject);
     procedure Btn_EnviarEventoCancelamentoNFComClick(Sender: TObject);
+    procedure Btn_EnviarCteSincronoClick(Sender: TObject);
+    procedure Btn_InsucessoEntregaCTeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure GroupBox1Click(Sender: TObject);
     procedure GroupBox3Click(Sender: TObject);
 
   private
@@ -510,6 +524,28 @@ begin
     end;
 end;
 
+procedure TfrmPrincipal.Btn_EnviarEventoCancelamentoCTeOSClick(Sender: TObject);
+var
+  oServico: TEnviarEventoCancelamentoCTeOS;
+begin
+  oServico := TEnviarEventoCancelamentoCTeOS.create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.Btn_EnviarCteOsSincronoClick(Sender: TObject);
+var
+  oServico: TEnviarCteOsSincrono;
+begin
+  oServico := TEnviarCteOsSincrono.create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
 procedure TfrmPrincipal.Btn_EnviarEventoAlteracaoPagamentoMDFeClick(Sender: TObject);
 var
   oServico: TEnviarEventoAlteracaoPagamentoMDFe;
@@ -554,6 +590,28 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.Btn_EventoCancelamentoCTeClick(Sender: TObject);
+var
+  oServico: TEventoCancelamentoCTe;
+begin
+  oServico := TEventoCancelamentoCTe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.Btn_EventoCCeCTeClick(Sender: TObject);
+var
+  oServico: TEventoCCeCTe;
+begin
+  oServico := TEventoCCeCTe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
 procedure TfrmPrincipal.Btn_EventoPagamentoMDFeClick(Sender: TObject);
 var
   oServico: TEventoPagamentoMDFe;
@@ -587,7 +645,34 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.Btn_EnviarCteSincronoClick(Sender: TObject);
+var
+  oServico: TEnviarCteSincrono;
+begin
+  oServico := TEnviarCteSincrono.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.Btn_InsucessoEntregaCTeClick(Sender: TObject);
+var
+  oServico: TInsucessoEntregaCTe;
+begin
+  oServico := TInsucessoEntregaCTe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmPrincipal.GroupBox1Click(Sender: TObject);
 begin
 
 end;

@@ -23,7 +23,9 @@ uses
   EnviarEventoEncerramentoMDFe, ConsultarStatusMDFe, ConsultarSituacaoMDFe,
   EventoPagamentoMDFe, EnviarEventoAlteracaoPagamentoMDFe,
   ConsultarSituacaoNFCom, EnviarEventoCancelamentoNFCom, ConsultarStatusCte,
-  ConsultarMDFeNaoEncerrado, ConsultarSituacaoCTe
+  ConsultarMDFeNaoEncerrado, ConsultarSituacaoCTe, EnviarCteSincrono,
+  EnviarCteOsSincrono, EventoCancelamentoCTe, EnviarEventoCancelamentoCTeOS,
+  EventoCCeCTe, InsucessoEntregaCTe
   { you can add units after this };
 
 {$R *.res}
