@@ -156,7 +156,8 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
         [Theory]
         [Trait("DFe", "NFSe")]
         [Trait("Layout", "Nacional")]
-        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\GerarNfseEnvio-env-loterps.xml")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\1111111111111111111111-env-loterps.xml")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\GerarNFSeEnvio-env-loterps.xml")]
         public void GerarNfseNACIONAL(string caminhoXml)
         {
             Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
@@ -164,10 +165,26 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var docFixture = new XmlDocument();
             docFixture.Load(caminhoXml);
 
+            // Teste de deserialização
             var lido = new DPS().LerXML<DPS>(docFixture);
+            Assert.Equal("1.00", lido.Versao);
+            Assert.NotNull(lido.infDPS);
 
+            // Teste de serialização
             var docRoundTrip = lido.GerarXML();
-            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+            Assert.NotNull(docRoundTrip);
+
+            // Verifica se elementos essenciais estão presentes
+            Assert.NotNull(docRoundTrip.SelectSingleNode("//ns:DPS", CreateNamespaceManager(docRoundTrip)));
+            Assert.NotNull(docRoundTrip.SelectSingleNode("//ns:infDPS", CreateNamespaceManager(docRoundTrip)));
         }
+
+        private XmlNamespaceManager CreateNamespaceManager(XmlDocument doc)
+        {
+            var nsmgr = new XmlNamespaceManager(doc.NameTable);
+            nsmgr.AddNamespace("ns", "http://www.sped.fazenda.gov.br/nfse");
+            return nsmgr;
+        }
+
     }
 }

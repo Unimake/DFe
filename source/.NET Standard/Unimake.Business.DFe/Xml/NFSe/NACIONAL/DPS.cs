@@ -433,6 +433,7 @@ public DateTimeOffset DCompet { get; set; }
         public bool ShouldSerializexNome() => !string.IsNullOrWhiteSpace(XNome);
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
+        public bool ShouldSerializeIM() => IM > 0;
 
         public void ValidarDocUnico()
         {
@@ -549,12 +550,12 @@ public DateTimeOffset DCompet { get; set; }
         public int CNBS { get; set; }
 
         [XmlElement("cIntContrib")]
-        public int CIntContrib { get; set; }
+        public string CIntContrib { get; set; }
 
 
         #region Should Serialize
         public bool ShouldSerializeCTribMun() => CTribMun > 0;
-        public bool ShouldSerializeCIntContrib() => CIntContrib > 0;
+        public bool ShouldSerializeCIntContrib() => !string.IsNullOrWhiteSpace(CIntContrib);
         public bool ShouldSerializeCNBS() => CNBS > 0;
         #endregion Should Serialize
     }
@@ -1332,6 +1333,8 @@ public DateTimeOffset DtEmiDoc { get; set; }
 
         #region Should Serialize
         public bool ShouldSerializeIndTotTrib() => IndTotTrib > 0;
+
+        public bool ShouldSerializePTotTribSNField() => PTotTribSN > 0;
         public void ValidarTotaisTributacao()
         {
             if (VTotTrib == null && PTotTrib == null)

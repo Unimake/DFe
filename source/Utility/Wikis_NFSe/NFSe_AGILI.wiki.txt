@@ -1,0 +1,47 @@
+== <span style="color:#008000;">Padrão AGILI</span> ==
+* Municípios no padrão AGILI utilizam URLs diferentes para emissão de NFSe;
+* No UniNFe e DLL, tem uma versão de SCHEMA disponível.
+<div style="background-color:#e3a8a8; border-left:4px solid red; padding:6px;">
+Observação: Padrão AGILI é trabalhado por API, logo cada contribuinte deve ter um login e senha para uso desse padrão.
+</div>
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FAGILI%2F1.00 Exemplos versão 1.00]'''</div>
+|-
+||Consultar Lote RPS||<div style="text-align: center;">ConsultarLoteRpsEnvio-ped-loterps.xml</div>
+|-
+||<font color=#008000>Consultar NFSe pelo RPS</font>||<font color=#008000><div style="text-align: center;">ConsultarNfsePorRpsEnvio-ped-cnprnfse.xml</div></font>
+|-
+||Consultar NFSe por faixa||<div style="text-align: center;">ConsultarNfseFaixaEnvio-ped-sitnfse.xml</div>
+|-
+||<font color=#008000>Consultar situação do cancelamento da NFSe</font>||<font color=#008000><div style="text-align: center;">ConsultarRequerimentoCancelamentoEnvio-ped-crc.xml</div></font>
+|-
+||Envio de lote RPS||<div style="text-align: center;">EnvioLoteRpsEnvio-ped-elr.xml</div>
+|-
+||<font color=#008000>Envio de lote RPS - Sincrono</font>||<font color=#008000><div style="text-align: center;">GerarNfseEnvio-env-loterps.xml</div></font>
+|-
+||Envio do cancelamento de NFSe||<div style="text-align: center;">CancelarNfseEnvio-ped-cannfse.xml</div>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FAGILI%2F1.00 Exemplos versão 1.00]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Consultar Lote RPS||<div style="text-align: center;">ConsultarLoteRps</div>||<div style="text-align: center;">31</div>
+|-
+||<font color=#008000>Consultar NFSe pelo RPS</font>||<font color=#008000><div style="text-align: center;">ConsultarNfsePorRps</div></font>||<font color=#008000><div style="text-align: center;">36</div></font>
+|-
+||Consultar NFSe por faixa||<div style="text-align: center;">ConsultarNfseFaixa</div>||<div style="text-align: center;">35</div>
+|-
+||<font color=#008000>Consultar situação do cancelamento da NFSe</font>||<font color=#008000><div style="text-align: center;">ConsultarRequerimentoCancelamento</div></font>||<font color=#008000><div style="text-align: center;">64</div></font>
+|-
+||Envio de lote RPS||<div style="text-align: center;">EnvioLoteRps</div>||<div style="text-align: center;">44</div>
+|-
+||<font color=#008000>Envio de lote RPS - Sincrono</font>||<font color=#008000><div style="text-align: center;">GerarNfse</div></font>||<font color=#008000><div style="text-align: center;">27</div></font>
+|-
+||Envio do cancelamento de NFSe||<div style="text-align: center;">CancelarNfse</div>||<div style="text-align: center;">24</div>
+|-
+|}
+<br>

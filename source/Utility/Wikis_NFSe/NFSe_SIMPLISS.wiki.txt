@@ -1,0 +1,94 @@
+== <span style="color:#008000;">Padrão SIMPLISS</span> ==
+* Municípios no padrão SIMPLISS utilizam WSDL's diferentes para emissão de NFSe, logo cada prefeitura pode ou não implementar os serviços listados abaixo;
+* No UniNFe e DLL, tem 2 versões de SCHEMA disponíveis.
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FSIMPLISS%2F2.03 Exemplos versão 2.03]'''</div>||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FSIMPLISS%2F3.00 Exemplos versão 3.00]'''</div>
+|-
+||Cancelar Nota Fiscal de Serviço||<div style="text-align: center;">CancelarNfseEnvio-ped-cannfse.xml</div>||<div style="text-align: center;">CancelarNfseEnvio-ped-cannfse.xml</div>
+|-
+||<font color=#008000>Consulta lote RPS</font>||<font color=#008000><div style="text-align: center;">ConsultarLoteRpsEnvio-ped-loterps.xml</div></font>||<font color=#008000><div style="text-align: center;">ConsultarLoteRpsEnvio-ped-loterps.xml</div></font>
+|-
+||Consulta lote RPS||<div style="text-align: center;">-</div>||<div style="text-align: center;">ConsultarSituacaoLoteRpsEnvio-ped-cslr.xml</div>
+|-
+||<font color=#008000>Consulta NFSe de serviços prestados</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml</div></font>||<font color=#008000><div style="text-align: center;">-</div></font>
+|-
+||Consulta NFSe de serviços tomados||<div style="text-align: center;">ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml</div>||<div style="text-align: center;">-</div>
+|-
+||<font color=#008000>Consulta NFSe por Faixa</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseFaixaEnvio-ped-sitnfse.xml</div></font>||<font color=#008000><div style="text-align: center;">-</div></font>
+|-
+||Consultar NFSe por rps||<div style="text-align: center;">ConsultarNfsePorRpsEnvio-ped-cnprnfse.xml</div>||<div style="text-align: center;">ConsultarNfsePorRpsEnvio-ped-cnprnfse.xml</div>
+|-
+||<font color=#008000>Gerar Nota Fiscal de Serviço</font>||<font color=#008000><div style="text-align: center;">GerarNfseEnvio-env-loterps.xml</div></font>||<font color=#008000><div style="text-align: center;">GerarNfseEnvio-env-loterps.xml</div></font>
+|-
+||Recepcionar Lote RPS||<div style="text-align: center;">RecepcionarLoteRpsEnvio-env-loterps.xml</div>||<div style="text-align: center;">-</div>
+|-
+||<font color=#008000>Substituir nota fiscal de Serviço</font>||<font color=#008000><div style="text-align: center;">SubstituirNfseEnvio-ped-substnfse.xml</div></font>||<font color=#008000><div style="text-align: center;">-</div></font>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FSIMPLISS%2F2.03 Exemplos versão 2.03]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FSIMPLISS%2F3.00 Exemplos versão 3.00]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Cancelar Nota Fiscal de Serviço||<div style="text-align: center;">CancelarNfse</div>||<div style="text-align: center;">CancelarNfse</div>||<div style="text-align: center;">24</div>
+|-
+||<font color=#008000>Consulta lote RPS</font>||<font color=#008000><div style="text-align: center;">ConsultarLoteRps</div></font>||<font color=#008000><div style="text-align: center;">ConsultarLoteRps</div></font>||<font color=#008000><div style="text-align: center;">31</div></font>
+|-
+||Consulta lote RPS||<div style="text-align: center;">-</div>||<div style="text-align: center;">ConsultarSituacaoLoteRps</div>||<div style="text-align: center;">40</div>
+|-
+||<font color=#008000>Consulta NFSe de serviços prestados</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseServicoPrestado</div></font>||<div style="text-align: center;">-</div>||<font color=#008000><div style="text-align: center;">33</div></font>
+|-
+||Consulta NFSe de serviços tomados||<div style="text-align: center;">ConsultarNfseServicoTomado</div>||<div style="text-align: center;">-</div>||<div style="text-align: center;">34</div>
+|-
+||<font color=#008000>Consulta NFSe por Faixa</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseFaixa</div></font>||<div style="text-align: center;">-</div>||<font color=#008000><div style="text-align: center;">35</div></font>
+|-
+||Consultar NFSe por rps||<div style="text-align: center;">ConsultarNfsePorRps</div>||<div style="text-align: center;">ConsultarNfsePorRps</div>||<div style="text-align: center;">36</div>
+|-
+||<font color=#008000>Gerar Nota Fiscal de Serviço</font>||<font color=#008000><div style="text-align: center;">GerarNfse</div></font>||<font color=#008000><div style="text-align: center;">GerarNfse</div></font>||<font color=#008000><div style="text-align: center;">27</div></font>
+|-
+||Recepcionar Lote RPS||<div style="text-align: center;">RecepcionarLoteRps</div>||<div style="text-align: center;">-</div>||<div style="text-align: center;">28</div>
+|-
+||<font color=#008000>Substituir nota fiscal de Serviço</font>||<font color=#008000><div style="text-align: center;">SubstituirNfse</div></font>||<div style="text-align: center;">-</div>||<font color=#008000><div style="text-align: center;">30</div></font>
+|-
+|}
+<br>
+==== <font color="#008000">Exemplo de uso na DLL em C#:</font> ====
+<font color="#008000">Versão 2.03</font>
+<pre style="width: 80%;background-color:#c5e6c5;">
+var configuracao = new Configuracao
+{{
+    TipoDFe = TipoDFe.NFSe,
+    CertificadoDigital = CertificadoSelecionado,
+    TipoAmbiente = TipoAmbiente.Producao,
+    CodigoMunicipio = codigo_ibge_do_municipio,
+    Servico = Servico.NFSeGerarNfse,
+    SchemaVersao = "2.03"
+}};
+
+var servico = new GerarNfse(conteudoXML, configuracao);
+servico.Executar();
+
+var retornoPrefeitura = servico.RetornoWSString;
+</pre>
+<font color="#008000">Versão 3.00</font>
+<pre style="width: 80%;background-color:#c5e6c5;">
+var configuracao = new Configuracao
+{{
+    TipoDFe = TipoDFe.NFSe,
+    CertificadoDigital = CertificadoSelecionado,
+    TipoAmbiente = TipoAmbiente.Producao,
+    CodigoMunicipio = codigo_ibge_do_municipio,
+    Servico = Servico.NFSeGerarNfse,
+    SchemaVersao = "3.00"
+    MunicipioUsuario = "12345678901234",
+    MunicipioSenha = "123456"
+}};
+
+var servico = new GerarNfse(conteudoXML, configuracao);
+servico.Executar();
+
+var retornoPrefeitura = servico.RetornoWSString;
+</pre>
+<br>

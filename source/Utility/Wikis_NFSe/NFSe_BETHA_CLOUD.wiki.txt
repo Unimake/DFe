@@ -1,0 +1,64 @@
+== <span style="color:#008000;">Padrão BETHA_CLOUD</span> ==
+* Municípios no padrão BETHA_CLOUD utilizam o mesmo WSDL para emissão de NFSe;
+* No UniNFe e DLL, tem 2 versões de SCHEMA disponíveis.
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FBETHA_CLOUD%2F1.00 Exemplos versão 1.00]'''</div>||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FBETHA_CLOUD%2F2.02 Exemplos versão 2.02]'''</div>
+|-
+||Cancelar nota fiscal de serviço||<div style="text-align: center;">-</div>||<div style="text-align: center;">CancelarNfseEnvio-ped-cannfse.xml</div>
+|-
+||<font color=#008000>Consulta lote RPS</font>||<font color=#008000><div style="text-align: center;">-</div></font>||<font color=#008000><div style="text-align: center;">ConsultarLoteRpsEnvio-ped-loterps.xml</div></font>
+|-
+||Consulta NFSe||<div style="text-align: center;">ConsultarNfseEnvio-ped-cnfse.xml</div>||<div style="text-align: center;">-</div>
+|-
+||<font color=#008000>Consulta NFSe por faixa</font>||<font color=#008000><div style="text-align: center;">-</div></font>||<font color=#008000><div style="text-align: center;">ConsultarNfseFaixaEnvio-ped-sitnfse.xml</div></font>
+|-
+||Consulta NFSe por RPS||<div style="text-align: center;">-</div>||<div style="text-align: center;">ConsultarNfsePorRpsEnvio-ped-cnprnfse.xml</div>
+|-
+||<font color=#008000>Consulta NFSe Serviço Prestado</font>||<font color=#008000><div style="text-align: center;">-</div></font>||<font color=#008000><div style="text-align: center;">ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml</div></font>
+|-
+||Consulta NFSe Serviço Tomado||<div style="text-align: center;">-</div>||<div style="text-align: center;">ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml</div>
+|-
+||<font color=#008000>Consultar Situação Lote Rps</font>||<font color=#008000><div style="text-align: center;">ConsultarSituacaoLoteRpsEnvio-ped-cslr.xml</div></font>||<font color=#008000><div style="text-align: center;">-</div></font>
+|-
+||Envio de NFSe Síncrono||<div style="text-align: center;">-</div>||<div style="text-align: center;">GerarNfseEnvio-env-loterps.xml</div>
+|-
+||<font color=#008000>Recepcionar Lote RPS</font>||<font color=#008000><div style="text-align: center;">-</div></font>||<font color=#008000><div style="text-align: center;">RecepcionarLoteRpsEnvio-env-loterps.xml</div></font>
+|-
+||Recepcionar Lote RPS Sincrono||<div style="text-align: center;">-</div>||<div style="text-align: center;">RecepcionarLoteRpsSincronoEnvio-env-loterps.xml</div>
+|-
+||<font color=#008000>Substituir NFSe</font>||<font color=#008000><div style="text-align: center;">-</div></font>||<font color=#008000><div style="text-align: center;">SubstituirNfseEnvio-ped-substnfse.xml</div></font>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FBETHA_CLOUD%2F1.00 Exemplos versão 1.00]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FBETHA_CLOUD%2F2.02 Exemplos versão 2.02]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Cancelar nota fiscal de serviço||<div style="text-align: center;">-</div>||<div style="text-align: center;">CancelarNfse</div>||<div style="text-align: center;">24</div>
+|-
+||<font color=#008000>Consulta lote RPS</font>||<div style="text-align: center;">-</div>||<font color=#008000><div style="text-align: center;">ConsultarLoteRps</div></font>||<font color=#008000><div style="text-align: center;">31</div></font>
+|-
+||Consulta NFSe||<div style="text-align: center;">ConsultarNfse</div>||<div style="text-align: center;">-</div>||<div style="text-align: center;">32</div>
+|-
+||<font color=#008000>Consulta NFSe por faixa</font>||<div style="text-align: center;">-</div>||<font color=#008000><div style="text-align: center;">ConsultarNfseFaixa</div></font>||<font color=#008000><div style="text-align: center;">35</div></font>
+|-
+||Consulta NFSe por RPS||<div style="text-align: center;">-</div>||<div style="text-align: center;">ConsultarNfsePorRps</div>||<div style="text-align: center;">36</div>
+|-
+||<font color=#008000>Consulta NFSe Serviço Prestado</font>||<div style="text-align: center;">-</div>||<font color=#008000><div style="text-align: center;">ConsultarNfseServicoPrestado</div></font>||<font color=#008000><div style="text-align: center;">33</div></font>
+|-
+||Consulta NFSe Serviço Tomado||<div style="text-align: center;">-</div>||<div style="text-align: center;">ConsultarNfseServicoTomado</div>||<div style="text-align: center;">34</div>
+|-
+||<font color=#008000>Consultar Situação Lote Rps</font>||<font color=#008000><div style="text-align: center;">ConsultarSituacaoLoteRps</div></font>||<div style="text-align: center;">-</div>||<font color=#008000><div style="text-align: center;">40</div></font>
+|-
+||Envio de NFSe Síncrono||<div style="text-align: center;">-</div>||<div style="text-align: center;">GerarNfse</div>||<div style="text-align: center;">27</div>
+|-
+||<font color=#008000>Recepcionar Lote RPS</font>||<div style="text-align: center;">-</div>||<font color=#008000><div style="text-align: center;">RecepcionarLoteRps</div></font>||<font color=#008000><div style="text-align: center;">28</div></font>
+|-
+||Recepcionar Lote RPS Sincrono||<div style="text-align: center;">-</div>||<div style="text-align: center;">RecepcionarLoteRpsSincrono</div>||<div style="text-align: center;">29</div>
+|-
+||<font color=#008000>Substituir NFSe</font>||<div style="text-align: center;">-</div>||<font color=#008000><div style="text-align: center;">SubstituirNfse</div></font>||<font color=#008000><div style="text-align: center;">30</div></font>
+|-
+|}
+<br>

@@ -1,0 +1,48 @@
+== <span style="color:#008000;">Padrão GIAP</span> ==
+* Municípios no padrão GIAP utilizam WSDL's diferentes para emissão de NFSe, logo cada prefeitura pode ou não implementar os serviços listados abaixo;
+* No UniNFe e DLL, tem uma versão de SCHEMA disponível.
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FGIAP%2F2.00 Exemplos versão 2.00]'''</div>
+|-
+||Consulta da NFSe||<div style="text-align: center;">ConsultarNfseEnvio-ped-cnfse.xml</div>
+|-
+||<font color=#008000>Envio de lote RPS - Sincrono</font>||<font color=#008000><div style="text-align: center;">GerarNfseEnvio-env-loterps.xml</div></font>
+|-
+||Evento de cancelamento da NFSe||<div style="text-align: center;">CancelarNfseEnvio-ped-cannfse.xml</div>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FGIAP%2F2.00 Exemplos versão 2.00]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Consulta da NFSe||<div style="text-align: center;">ConsultarNfse</div>||<div style="text-align: center;">32</div>
+|-
+||<font color=#008000>Envio de lote RPS - Sincrono</font>||<font color=#008000><div style="text-align: center;">GerarNfse</div></font>||<font color=#008000><div style="text-align: center;">27</div></font>
+|-
+||Evento de cancelamento da NFSe||<div style="text-align: center;">CancelarNfse</div>||<div style="text-align: center;">24</div>
+|-
+|}
+<br>
+==== <font color="#008000">Exemplo de uso na DLL em C#:</font> ====
+<font color="#008000">Uso para todas versões</font>
+<pre style="width: 80%;background-color:#c5e6c5;">
+var configuracao = new Configuracao
+{
+    TipoDFe = TipoDFe.NFSe,
+    CertificadoDigital = CertificadoSelecionado,
+    TipoAmbiente = TipoAmbiente.Producao,
+    CodigoMunicipio = codigo_ibge_do_municipio,
+    Servico = Servico.NFSe,
+    SchemaVersao = "2.00",
+
+};
+
+var servico = new (conteudoXML, configuracao);
+servico.Executar();
+
+var retornoPrefeitura = servico.RetornoWSString;
+</pre>
+<br>

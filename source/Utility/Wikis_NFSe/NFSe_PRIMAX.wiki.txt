@@ -1,0 +1,52 @@
+== <span style="color:#008000;">Padrão PRIMAX</span> ==
+* Municípios no padrão PRIMAX utilizam WSDL's diferentes para emissão de NFSe, logo cada prefeitura pode ou não implementar os serviços listados abaixo;
+* No UniNFe e DLL, tem uma versão de SCHEMA disponível.
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FPRIMAX%2F1.00 Exemplos versão 1.00]'''</div>
+|-
+||Cancelar nota fiscal de serviço||<div style="text-align: center;">CancelarNotaFiscalEnvio-ped-cnf.xml</div>
+|-
+||<font color=#008000>Consulta/Download do PDF da NFSe</font>||<font color=#008000><div style="text-align: center;">ConsultarNfsePDFEnvio-ped-cnnfse.xml</div></font>
+|-
+||EnvNFe||<div style="text-align: center;">EmissaoNotaEnvio-ped-en.xml</div>
+|-
+||<font color=#008000>Obter Nota Fiscal Xml</font>||<font color=#008000><div style="text-align: center;">ObterNotaFiscalXmlEnvio-ped-onfx.xml</div></font>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FPRIMAX%2F1.00 Exemplos versão 1.00]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Cancelar nota fiscal de serviço||<div style="text-align: center;">CancelarNotaFiscal</div>||<div style="text-align: center;">52</div>
+|-
+||<font color=#008000>Consulta/Download do PDF da NFSe</font>||<font color=#008000><div style="text-align: center;">ConsultarNfsePDF</div></font>||<font color=#008000><div style="text-align: center;">37</div></font>
+|-
+||EnvNFe||<div style="text-align: center;">EmissaoNota</div>||<div style="text-align: center;">51</div>
+|-
+||<font color=#008000>Obter Nota Fiscal Xml</font>||<font color=#008000><div style="text-align: center;">ObterNotaFiscalXml</div></font>||<font color=#008000><div style="text-align: center;">62</div></font>
+|-
+|}
+<br>
+==== <font color="#008000">Exemplo de uso na DLL em C#:</font> ====
+<font color="#008000">Uso para todas versões</font>
+<pre style="width: 80%;background-color:#c5e6c5;">
+var configuracao = new Configuracao
+{
+    TipoDFe = TipoDFe.NFSe,
+    CertificadoDigital = CertificadoSelecionado,
+    TipoAmbiente = TipoAmbiente.Producao,
+    CodigoMunicipio = codigo_ibge_do_municipio,
+    Servico = Servico.NFSeEmissaoNota,
+    SchemaVersao = "1.00",
+
+};
+
+var servico = new EmissaoNota(conteudoXML, configuracao);
+servico.Executar();
+
+var retornoPrefeitura = servico.RetornoWSString;
+</pre>
+<br>

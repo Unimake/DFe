@@ -79,21 +79,36 @@ namespace Unimake.Business.DFe
                 case "application/problem+json": //DARE SP retorna isso quando o JSON de envio tem problemas nas tags
                     try
                     {
-                        resultadoRetorno.LoadXml(BuscarXML(ref Config, responseString));
-
-                        if (Config.Servico == Servico.DAREEnvio)
+                        // Verificar se o conteúdo é realmente JSON ou se é XML com Content-Type incorreto
+                        if (responseString.TrimStart().StartsWith("<"))
                         {
-                            if (responseString.Contains("itensParaGeracao"))
+                            // É XML, não JSON. Tratar como XML diretamente
+                            try
                             {
-                                DARELoteRetorno dareLote = JsonConvert.DeserializeObject<DARELoteRetorno>(responseString);
-
-                                resultadoRetorno = dareLote.GerarXML();
+                                resultadoRetorno = ProcessarXmlComEncodingSeguro(Response);
                             }
-                            else if (responseString.Contains("documentoImpressao"))
+                            catch
                             {
-                                DAREUnicoRetorno dareUnico = JsonConvert.DeserializeObject<DAREUnicoRetorno>(responseString);
+                                resultadoRetorno.LoadXml(responseString);
+                            }
+                        }
+                        else
+                        {
+                            // É JSON verdadeiro, processar normalmente
+                            resultadoRetorno.LoadXml(BuscarXML(ref Config, responseString));
 
-                                resultadoRetorno = CreateXmlDocumentDARERetorno(dareUnico);
+                            if (Config.Servico == Servico.DAREEnvio)
+                            {
+                                if (responseString.Contains("itensParaGeracao"))
+                                {
+                                    DARELoteRetorno dareLote = JsonConvert.DeserializeObject<DARELoteRetorno>(responseString);
+                                    resultadoRetorno = dareLote.GerarXML();
+                                }
+                                else if (responseString.Contains("documentoImpressao"))
+                                {
+                                    DAREUnicoRetorno dareUnico = JsonConvert.DeserializeObject<DAREUnicoRetorno>(responseString);
+                                    resultadoRetorno = CreateXmlDocumentDARERetorno(dareUnico);
+                                }
                             }
                         }
                     }
@@ -192,6 +207,28 @@ namespace Unimake.Business.DFe
         }
 
         /// <summary>
+        /// Método para processar XML com tratamento seguro de encoding
+        /// </summary>
+        /// <param name="response">Resposta HTTP da API</param>
+        /// <returns>XmlDocument processado com encoding correto</returns>
+        private static XmlDocument ProcessarXmlComEncodingSeguro(HttpResponseMessage response)
+        {
+            var stream = response.Content.ReadAsStreamAsync().Result;
+
+            var settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Prohibit,
+                CloseInput = true
+            };
+
+            var reader = XmlReader.Create(stream, settings);
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(reader);
+
+            return xmlDoc;
+        }
+
+        /// <summary>
         /// Método para "limpar" o HTML, deixando apenas a string com conteúdo
         /// </summary>
         /// <param name="html"></param>
@@ -255,7 +292,7 @@ namespace Unimake.Business.DFe
             return xmlDoc;
         }
 
-        static XmlDocument CreateXmlDocumentDARERetorno(DAREUnicoRetorno dareUnico) 
+        static XmlDocument CreateXmlDocumentDARERetorno(DAREUnicoRetorno dareUnico)
         {
             var dareRetorno = new DARERetorno();
             dareRetorno.DARE = dareUnico;
