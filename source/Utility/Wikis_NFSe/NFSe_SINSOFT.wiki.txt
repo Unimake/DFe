@@ -1,0 +1,53 @@
+== <span style="color:#008000;">Padrão SINSOFT</span> ==
+* Municípios no padrão SINSOFT utilizam WSDL's diferentes para emissão de NFSe, logo cada prefeitura pode ou não implementar os serviços listados abaixo;
+* No UniNFe e DLL, tem uma versão de SCHEMA disponível.
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FSINSOFT%2F2.01 Exemplos versão 2.01]'''</div>
+|-
+||Cancelar nota fiscal de serviÃ§o||<div style="text-align: center;">CancelarNfseEnvio-ped-cannfse.xml</div>
+|-
+||<font color=#008000>Consulta NFSe por Faixa</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseFaixaEnvio-ped-sitnfse.xml</div></font>
+|-
+||Consulta NFSe por RPS||<div style="text-align: center;">ConsultarNfsePorRpsEnvio-ped-cnprnfse.xml</div>
+|-
+||<font color=#008000>Gerar NFSe</font>||<font color=#008000><div style="text-align: center;">GerarNfseEnvio-env-loterps.xml</div></font>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FSINSOFT%2F2.01 Exemplos versão 2.01]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Cancelar nota fiscal de serviÃ§o||<div style="text-align: center;">CancelarNfse</div>||<div style="text-align: center;">24</div>
+|-
+||<font color=#008000>Consulta NFSe por Faixa</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseFaixa</div></font>||<font color=#008000><div style="text-align: center;">35</div></font>
+|-
+||Consulta NFSe por RPS||<div style="text-align: center;">ConsultarNfsePorRps</div>||<div style="text-align: center;">36</div>
+|-
+||<font color=#008000>Gerar NFSe</font>||<font color=#008000><div style="text-align: center;">GerarNfse</div></font>||<font color=#008000><div style="text-align: center;">27</div></font>
+|-
+|}
+<br>
+==== <font color="#008000">Exemplo de uso na DLL em C#:</font> ====
+<font color="#008000">Uso para todas versões</font>
+<pre style="width: 80%;background-color:#c5e6c5;">
+var configuracao = new Configuracao
+{
+    TipoDFe = TipoDFe.NFSe,
+    CertificadoDigital = CertificadoSelecionado,
+    TipoAmbiente = TipoAmbiente.Producao,
+    CodigoMunicipio = codigo_ibge_do_municipio,
+    Servico = Servico.NFSeGerarNfse,
+    SchemaVersao = "2.01",
+    MunicipioUsuario = "12345678901234",
+    MunicipioSenha = "123456",
+};
+
+var servico = new GerarNfse(conteudoXML, configuracao);
+servico.Executar();
+
+var retornoPrefeitura = servico.RetornoWSString;
+</pre>
+<br>
