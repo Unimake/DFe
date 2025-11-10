@@ -25,7 +25,7 @@ uses
   ConsultarSituacaoNFCom, EnviarEventoCancelamentoNFCom, ConsultarStatusCte,
   ConsultarMDFeNaoEncerrado, ConsultarSituacaoCTe, EnviarCteSincrono,
   EnviarCteOsSincrono, EventoCancelamentoCTe, EnviarEventoCancelamentoCTeOS,
-  EventoCCeCTe, InsucessoEntregaCTe
+  EventoCCeCTe, InsucessoEntregaCTe, CancelamentoInsucessoEntregaCTe
   { you can add units after this };
 
 {$R *.res}
