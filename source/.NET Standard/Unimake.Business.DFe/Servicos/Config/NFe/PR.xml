@@ -123,6 +123,11 @@
           <SchemaArquivoEspecifico>e112130_v{0}.xsd</SchemaArquivoEspecifico>
         </Tipo>
         <Tipo>
+          <ID>112140</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e112140_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
           <ID>112150</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e112150_v{0}.xsd</SchemaArquivoEspecifico>

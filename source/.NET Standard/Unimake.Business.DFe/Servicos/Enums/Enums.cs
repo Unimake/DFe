@@ -1002,6 +1002,12 @@ namespace Unimake.Business.DFe.Servicos
         PerecimentoDuranteTransporteContratadoFornecedor = 112130,
 
         /// <summary>
+        /// 112140 - Fornecimento não realizado com pagamento antecipado
+        /// </summary>
+        [XmlEnum("112140")]
+        FornecimentoNaoRealizadoComPagamentoAntecipado = 112140,
+
+        /// <summary>
         /// 112150 - Atualização da data prevista para entrega
         /// </summary>
         [XmlEnum("112150")]
