@@ -996,6 +996,12 @@ namespace Unimake.Business.DFe.Servicos
         ImportacaoALCZFMNaoConvertidaIsencao = 112120,
 
         /// <summary>
+        /// 112130 - Perecimento, perda, roubo ou furto durante o transporte contratado pelo fornecedor
+        /// </summary>
+        [XmlEnum("112130")]
+        PerecimentoDuranteTransporteContratadoFornecedor = 112130,
+
+        /// <summary>
         /// 112150 - Atualização da data prevista para entrega
         /// </summary>
         [XmlEnum("112150")]
