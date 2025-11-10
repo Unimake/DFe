@@ -1027,6 +1027,18 @@ namespace Unimake.Business.DFe.Servicos
         AceiteDebitoApuracaoEmissaoNotaCredito = 211128,
 
         /// <summary>
+        /// 212110 - Manifestação sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão
+        /// </summary>
+        [XmlEnum("212110")]
+        ManifestacaoPedidoTransferenciaCreditoIBSOperacaoSucessao = 212110,
+
+        /// <summary>
+        /// 212120 - Manifestação sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão
+        /// </summary>
+        [XmlEnum("212120")]
+        ManifestacaoPedidoTransferenciaCreditoCBSOperacaoSucessao = 212120,
+
+        /// <summary>
         /// 400200 - SEFAZ do emitente declara que NF-e é um "Documento Fiscal Inidôneo".
         /// </summary>
         [XmlEnum("400200")]
@@ -1073,6 +1085,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("411503")]
         RespostaCancelamentoPedidoProrrogacaoPrazo2 = 411503,
+
+        /// <summary>
+        /// 412120 - Manifestação do Fisco sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão
+        /// </summary>
+        [XmlEnum("412120")]
+        ManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao = 412120,
 
         /// <summary>
         /// 510620 - Registro de Passagem Automático da NFe (Evento exclusivo do fisco)
@@ -2817,6 +2835,28 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("99")]
         Outros = 99
+    }
+
+    #endregion
+
+    #region Motivos para a Manifestação do Fisco sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão
+
+    /// <summary>
+    /// Motivos para a Manifestação do Fisco sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão
+    /// </summary>
+    public enum MotivoManifestacaoFisco
+    {
+        /// <summary>
+        /// 1 - Falta de manifestação de todas as sucessoras
+        /// </summary>
+        [XmlEnum("1")]
+        FaltaManifestacaoTodasSucessoras = 1,
+
+        /// <summary>
+        /// 2 - Outros
+        /// </summary>
+        [XmlEnum("2")]
+        Outros = 2
     }
 
     #endregion
@@ -5023,6 +5063,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("6")]
         RFB = 6,
+
+        /// <summary>
+        /// 8 - Empresa Sucessora
+        /// </summary>
+        [XmlEnum("8")]
+        EmpresaSucessora = 8,
 
         /// <summary>
         /// 9 - Outros Órgãos
