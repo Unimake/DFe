@@ -340,7 +340,7 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object GroupBox6: TGroupBox
-    Left = 1241
+    Left = 1242
     Height = 472
     Top = 388
     Width = 312
@@ -492,6 +492,15 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Evento de CC e CTe'
       TabOrder = 6
       OnClick = Btn_EventoCCeCTeClick
+    end
+    object Btn_InsucessoEntregaCTe: TButton
+      Left = 0
+      Height = 31
+      Top = 240
+      Width = 283
+      Caption = 'Evento do Insucesso na Entrega do CTe'
+      TabOrder = 7
+      OnClick = Btn_InsucessoEntregaCTeClick
     end
   end
 end

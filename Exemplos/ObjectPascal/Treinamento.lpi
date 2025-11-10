@@ -244,6 +244,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EventoCCeCTe"/>
       </Unit>
+      <Unit>
+        <Filename Value="insucessoentregacte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="InsucessoEntregaCTe"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
