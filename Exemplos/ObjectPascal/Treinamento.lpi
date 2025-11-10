@@ -249,6 +249,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="InsucessoEntregaCTe"/>
       </Unit>
+      <Unit>
+        <Filename Value="cancelamentoinsucessoentregacte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CancelamentoInsucessoEntregaCTe"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
