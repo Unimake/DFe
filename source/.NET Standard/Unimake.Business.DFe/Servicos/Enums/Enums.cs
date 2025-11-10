@@ -1104,6 +1104,12 @@ namespace Unimake.Business.DFe.Servicos
         ManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao = 412120,
 
         /// <summary>
+        /// 412130 - Manifestação do Fisco sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão
+        /// </summary>
+        [XmlEnum("412130")]
+        ManifestacaoFiscoPedidoTransferenciaCreditoCBSOperacaoSucessao = 412130,
+
+        /// <summary>
         /// 510620 - Registro de Passagem Automático da NFe (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("510620")]

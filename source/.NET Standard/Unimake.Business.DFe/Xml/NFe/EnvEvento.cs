@@ -557,6 +557,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao();
                         break;
 
+                    case TipoEventoNFe.ManifestacaoFiscoPedidoTransferenciaCreditoCBSOperacaoSucessao:
+                        _detEvento = new DetEventoManifestacaoFiscoPedidoTransferenciaCreditoCBSOperacaoSucessao();
+                        break;
+
                     case TipoEventoNFe.PerecimentoDuranteTransporteContratadoFornecedor:
                         _detEvento = new DetEventoPerecimentoDuranteTransporteContratadoFornecedor();
                         break;
@@ -4239,6 +4243,24 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do Evento de Manifestação sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoManifestacaoFiscoPedidoTransferenciaCreditoCBSOperacaoSucessao")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoManifestacaoFiscoPedidoTransferenciaCreditoCBSOperacaoSucessao : DetEventoManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Manifestação do Fisco sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão";
+    }
 
     /// <summary>
     /// Classe de detalhamento do Evento de Perecimento, perda, roubo ou furto durante o transporte contratado pelo fornecedor

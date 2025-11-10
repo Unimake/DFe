@@ -158,6 +158,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\envEvento_212120.xml")]
         [InlineData(@"..\..\..\NFe\Resources\envEvento_412120.xml")]
         [InlineData(@"..\..\..\NFe\Resources\envEvento_112130.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_412130.xml")]
         public void SerializacaoDesserializacaoEnvEvento(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");

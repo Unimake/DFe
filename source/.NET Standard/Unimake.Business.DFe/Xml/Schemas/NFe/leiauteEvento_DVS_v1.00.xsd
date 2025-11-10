@@ -66,6 +66,7 @@
                   <xs:enumeration value="212110"/>
                   <xs:enumeration value="212120"/>
                   <xs:enumeration value="412120"/>
+                  <xs:enumeration value="412130"/>
                 </xs:restriction>
               </xs:simpleType>
             </xs:element>
