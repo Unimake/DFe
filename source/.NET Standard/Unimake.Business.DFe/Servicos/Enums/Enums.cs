@@ -517,6 +517,11 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização síncrona de NFCom")]
         NFComAutorizacaoSinc = 83,
 
+        /// <summary>
+        /// 84 - Consulta o XML de emissão da NFS-e para prefeitura
+        /// </summary>
+        [Description("Consulta NFS-e")]
+        NFSeConsultarNotaFiscal = 84,
         #endregion
 
         #region Gerais
@@ -6742,7 +6747,6 @@ namespace Unimake.Business.DFe.Servicos
 
         /// <summary>
         /// SIGCORP - Tecnologia da informação
-        /// SIGCORP - Tecnologia da informação
         /// </summary>
         [Description("SIGCORP - Tecnologia da informação")]
         SIGCORP = 2,
@@ -9103,7 +9107,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 8 - Desconto simplificado mensal. 
         /// </summary>
         [XmlEnum("8")]
-        DescontoSimplificadoMensal = 8, 
+        DescontoSimplificadoMensal = 8,
     }
     #endregion
 

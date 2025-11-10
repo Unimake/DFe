@@ -1,0 +1,35 @@
+== <span style="color:#008000;">Padrão SOFTPLAN</span> ==
+* Municípios no padrão SOFTPLAN utilizam-se de API para os serviços relacionados a NFSe, logo cada prefeitura tem seu link de produção e homologação para emissão;
+* No UniNFe e DLL, tem uma versão de SCHEMA disponível.
+<div style="background-color:#e3a8a8; border-left:4px solid red; padding:6px;">
+Observação: Cada contribuinte deve ter um usuário e senha, fornecidos pela prefeitura do município, para acessar a API e utilizar os serviços.
+</div>
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FSOFTPLAN%2F2.00 Exemplos versão 2.00]'''</div>
+|-
+||Cancelamento de NFSe||<div style="text-align: center;">CancelarNfseEnvio-ped-cannfse.xml</div>
+|-
+||<font color=#008000>Consulta de XML de NFSe</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseEnvio-ped-cnfse.xml</div></font>
+|-
+||Consulta de XML de NFSe por RPS||<div style="text-align: center;">ConsultarNfsePorRpsEnvio-ped-cnprnfse.xml</div>
+|-
+||<font color=#008000>Geração de NFSe</font>||<font color=#008000><div style="text-align: center;">GerarNfseEnvio-env-loterps.xml</div></font>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FSOFTPLAN%2F2.00 Exemplos versão 2.00]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Cancelamento de NFSe||<div style="text-align: center;">CancelarNfse</div>||<div style="text-align: center;">24</div>
+|-
+||<font color=#008000>Consulta de XML de NFSe</font>||<font color=#008000><div style="text-align: center;">ConsultarNfse</div></font>||<font color=#008000><div style="text-align: center;">32</div></font>
+|-
+||Consulta de XML de NFSe por RPS||<div style="text-align: center;">ConsultarNfsePorRps</div>||<div style="text-align: center;">36</div>
+|-
+||<font color=#008000>Geração de NFSe</font>||<font color=#008000><div style="text-align: center;">GerarNfse</div></font>||<font color=#008000><div style="text-align: center;">27</div></font>
+|-
+|}
+<br>

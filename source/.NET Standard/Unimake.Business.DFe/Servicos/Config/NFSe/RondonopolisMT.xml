@@ -48,7 +48,7 @@
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
 		</ConsultarNfsePorRps>
-		<EnviarLoteRps versao="1.00">
+		<EnvioLoteRps versao="1.00">
 			<Descricao>Envio de lote RPS</Descricao>
 			<RequestURIProducao>https://nfse.rondonopolis.mt.gov.br/api/EnviarLoteRps</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
@@ -63,7 +63,7 @@
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
-		</EnviarLoteRps>
+		</EnvioLoteRps>
 		<ConsultarLoteRps versao="1.00">
 			<Descricao>Consultar Lote RPS</Descricao>
 			<RequestURIProducao>https://nfse.rondonopolis.mt.gov.br/api/ConsultarLoteRps</RequestURIProducao>

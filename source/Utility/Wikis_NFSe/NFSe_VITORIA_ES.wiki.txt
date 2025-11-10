@@ -1,0 +1,56 @@
+== <span style="color:#008000;">Padrão VITORIA_ES</span> ==
+* Somente <b>Vitória - ES</b> utiliza esse padrão, pois foi feito especialmente para essa prefeitura;
+* No UniNFe e DLL, tem uma versão de SCHEMA disponível.
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FVITORIA_ES%2F2.01 Exemplos versão 2.01]'''</div>
+|-
+||Cancelar NFSe||<div style="text-align: center;">CancelarNfseEnvio-ped-cannfse.xml</div>
+|-
+||<font color=#008000>Consulta lote RPS</font>||<font color=#008000><div style="text-align: center;">ConsultarLoteRpsEnvio-ped-loterps.xml</div></font>
+|-
+||Consulta NFSe por RPS||<div style="text-align: center;">ConsultarNfsePorRpsEnvio-ped-cnprnfse.xml</div>
+|-
+||<font color=#008000>Consultar NFSe Faixa</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseFaixaEnvio-ped-sitnfse.xml</div></font>
+|-
+||Consultar NFSe Servico Prestado||<div style="text-align: center;">ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml</div>
+|-
+||<font color=#008000>Consultar NFSe Servico Tomado</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml</div></font>
+|-
+||Gerar NFSe||<div style="text-align: center;">GerarNfseEnvio-env-loterps.xml</div>
+|-
+||<font color=#008000>Recepcionar Lote RPS</font>||<font color=#008000><div style="text-align: center;">RecepcionarLoteRpsEnvio-env-loterps.xml</div></font>
+|-
+||Recepcionar LoteRPS Sincrono||<div style="text-align: center;">RecepcionarLoteRpsSincronoEnvio-env-loterps.xml</div>
+|-
+||<font color=#008000>Substituir NFSe</font>||<font color=#008000><div style="text-align: center;">SubstituirNfseEnvio-ped-substnfse.xml</div></font>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FVITORIA_ES%2F2.01 Exemplos versão 2.01]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Cancelar NFSe||<div style="text-align: center;">CancelarNfse</div>||<div style="text-align: center;">24</div>
+|-
+||<font color=#008000>Consulta lote RPS</font>||<font color=#008000><div style="text-align: center;">ConsultarLoteRps</div></font>||<font color=#008000><div style="text-align: center;">31</div></font>
+|-
+||Consulta NFSe por RPS||<div style="text-align: center;">ConsultarNfsePorRps</div>||<div style="text-align: center;">36</div>
+|-
+||<font color=#008000>Consultar NFSe Faixa</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseFaixa</div></font>||<font color=#008000><div style="text-align: center;">35</div></font>
+|-
+||Consultar NFSe Servico Prestado||<div style="text-align: center;">ConsultarNfseServicoPrestado</div>||<div style="text-align: center;">33</div>
+|-
+||<font color=#008000>Consultar NFSe Servico Tomado</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseServicoTomado</div></font>||<font color=#008000><div style="text-align: center;">34</div></font>
+|-
+||Gerar NFSe||<div style="text-align: center;">GerarNfse</div>||<div style="text-align: center;">27</div>
+|-
+||<font color=#008000>Recepcionar Lote RPS</font>||<font color=#008000><div style="text-align: center;">RecepcionarLoteRps</div></font>||<font color=#008000><div style="text-align: center;">28</div></font>
+|-
+||Recepcionar LoteRPS Sincrono||<div style="text-align: center;">RecepcionarLoteRpsSincrono</div>||<div style="text-align: center;">29</div>
+|-
+||<font color=#008000>Substituir NFSe</font>||<font color=#008000><div style="text-align: center;">SubstituirNfse</div></font>||<font color=#008000><div style="text-align: center;">30</div></font>
+|-
+|}
+<br>

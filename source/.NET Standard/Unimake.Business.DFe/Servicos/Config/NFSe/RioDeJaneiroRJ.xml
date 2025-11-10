@@ -70,7 +70,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 		</ConsultarNfsePorRps>
 		<ConsultarNfse versao="1.00">
-			<Descricao></Descricao>
+			<Descricao>Consulta NFSe</Descricao>
 			<WebEnderecoHomologacao>https://notacariocahom.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://notacarioca.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://notacarioca.rio.gov.br/ConsultarNfse</WebActionHomologacao>

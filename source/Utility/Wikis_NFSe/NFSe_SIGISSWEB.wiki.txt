@@ -1,0 +1,35 @@
+== <span style="color:#008000;">Padrão SIGISSWEB</span> ==
+* Municípios no padrão SIGISSWEB utilizam-se de API para os serviços relacionados a NFSe, logo cada prefeitura tem seu link de produção e homologação para emissão;
+* No UniNFe e DLL, tem uma versão de SCHEMA disponível.
+<div style="background-color:#e3a8a8; border-left:4px solid red; padding:6px;">
+Observação: Para realizar a conexão com a API deve-se informar no campo <b>usuário</b> e <b>senha</b> do UniNFe as credencias que são disponibilizadas pela prefeitura do município, ao qual o usuário será o <b>CNPJ</b> do contribuinte e a <b>senha precisa ser gerada no site da prefeitura.</b>
+</div>
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FSIGISSWEB%2F2.00 Exemplos versão 2.00]'''</div>
+|-
+||Cancelamento de NFSe||<div style="text-align: center;">CancelarNfseEnvio-ped-cannfse.xml</div>
+|-
+||<font color=#008000>Consulta PDF da NFSe</font>||<font color=#008000><div style="text-align: center;">ConsultarNfsePDFEnvio-ped-cnnfse.xml</div></font>
+|-
+||Consulta XML da NFSe||<div style="text-align: center;">ConsultarNfseEnvio-ped-cnfse.xml</div>
+|-
+||<font color=#008000>Gerar NFSe</font>||<font color=#008000><div style="text-align: center;">GerarNfseEnvio-env-loterps.xml</div></font>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FSIGISSWEB%2F2.00 Exemplos versão 2.00]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Cancelamento de NFSe||<div style="text-align: center;">CancelarNfse</div>||<div style="text-align: center;">24</div>
+|-
+||<font color=#008000>Consulta PDF da NFSe</font>||<font color=#008000><div style="text-align: center;">ConsultarNfsePDF</div></font>||<font color=#008000><div style="text-align: center;">37</div></font>
+|-
+||Consulta XML da NFSe||<div style="text-align: center;">ConsultarNfse</div>||<div style="text-align: center;">32</div>
+|-
+||<font color=#008000>Gerar NFSe</font>||<font color=#008000><div style="text-align: center;">GerarNfse</div></font>||<font color=#008000><div style="text-align: center;">27</div></font>
+|-
+|}
+<br>
