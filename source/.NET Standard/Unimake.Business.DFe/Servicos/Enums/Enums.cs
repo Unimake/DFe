@@ -996,6 +996,18 @@ namespace Unimake.Business.DFe.Servicos
         ImportacaoALCZFMNaoConvertidaIsencao = 112120,
 
         /// <summary>
+        /// 112130 - Perecimento, perda, roubo ou furto durante o transporte contratado pelo fornecedor
+        /// </summary>
+        [XmlEnum("112130")]
+        PerecimentoDuranteTransporteContratadoFornecedor = 112130,
+
+        /// <summary>
+        /// 112140 - Fornecimento não realizado com pagamento antecipado
+        /// </summary>
+        [XmlEnum("112140")]
+        FornecimentoNaoRealizadoComPagamentoAntecipado = 112140,
+
+        /// <summary>
         /// 112150 - Atualização da data prevista para entrega
         /// </summary>
         [XmlEnum("112150")]
@@ -1096,6 +1108,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("412120")]
         ManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao = 412120,
+
+        /// <summary>
+        /// 412130 - Manifestação do Fisco sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão
+        /// </summary>
+        [XmlEnum("412130")]
+        ManifestacaoFiscoPedidoTransferenciaCreditoCBSOperacaoSucessao = 412130,
 
         /// <summary>
         /// 510620 - Registro de Passagem Automático da NFe (Evento exclusivo do fisco)

@@ -122,8 +122,8 @@ FUNCTION EnviarGNRE()
                  * Tentar consultar mais tarde   
                
             CASE oConsultaResultadoLote.Result.SituacaoProcess.Codigo = "402" && Lote processado com sucesso
-                 oConsultaResultadoLote.GravarXmlRetorno(@"d:\testenfe", xmlCons.NumeroRecibo + "-procgnre.xml");
-                 oConsultaResultadoLote.GravarPDFGuia(@"d:\testenfe", "GuiaGNRE.pdf");
+                 oConsultaResultadoLote.GravarXmlRetorno("d:\testenfe", xmlCons.NumeroRecibo + "-procgnre.xml")
+                 oConsultaResultadoLote.GravarPDFGuia("d:\testenfe", "GuiaGNRE.pdf")
                  
                * Criar as configurações 
                  oUnidanfeConfiguration = CreateObject("Unimake.Unidanfe.Configurations.UnidanfeConfiguration")   

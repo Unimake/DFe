@@ -20,7 +20,7 @@ uses
   ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrado,EventoPagamentoMDFe,
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
   ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe,
-  EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe;
+  EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe,CancelamentoInsucessoEntregaCTe;
 
 type
 
@@ -51,6 +51,7 @@ type
     btnInutilizacaoNumeroNFe: TButton;
     BtnEnviarNFComSincrono: TButton;
     BtnEnviarEventoEncerramentoMDFe: TButton;
+    Btn_CancelamentoInsucessoEntregaCTe: TButton;
     Btn_ConsultarStatusMDFe: TButton;
     Btn_ConsultarSituacaoMDFe: TButton;
     Btn_ConsultaMdfeNaoEncerrado: TButton;
@@ -113,6 +114,7 @@ type
     procedure BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
     procedure BtnNACIONALConsultarPDFNFSeClick(Sender: TObject);
     procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
+    procedure Btn_CancelamentoInsucessoEntregaCTeClick(Sender: TObject);
     procedure Btn_ConsultaSituacaoCTeClick(Sender: TObject);
     procedure Btn_ConsultaStatusCteClick(Sender: TObject);
     procedure Btn_EnviarEventoCancelamentoCTeOSClick(Sender: TObject);
@@ -496,6 +498,17 @@ var
   oServico: TNACIONALGerarNFSe;
 begin
   oServico := TNACIONALGerarNFSe.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.Btn_CancelamentoInsucessoEntregaCTeClick(Sender: TObject);
+var
+  oServico: TCancelamentoInsucessoEntregaCTe;
+begin
+  oServico := TCancelamentoInsucessoEntregaCTe.create;
   try
       oServico.Executar();
     finally

@@ -73,6 +73,16 @@
 					<SchemaArquivoEspecifico>e110110_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
+					<ID>110192</ID>
+					<SchemaArquivo>envEventoInsucessoNFe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110192_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110193</ID>
+					<SchemaArquivo>envEventoCancInsucessoNFe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110193_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
 					<ID>111500</ID>
 					<SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e111500_v{0}.xsd</SchemaArquivoEspecifico>
@@ -118,6 +128,16 @@
           <SchemaArquivoEspecifico>e112120_v{0}.xsd</SchemaArquivoEspecifico>
         </Tipo>
         <Tipo>
+          <ID>112130</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e112130_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>112140</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e112140_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
           <ID>112150</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e112150_v{0}.xsd</SchemaArquivoEspecifico>
@@ -141,6 +161,11 @@
           <ID>412120</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e412120_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>      
+        <Tipo>
+          <ID>412130</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e412130_v{0}.xsd</SchemaArquivoEspecifico>
         </Tipo>      
       </SchemasEspecificos>
 			<TagAssinatura>evento</TagAssinatura>
