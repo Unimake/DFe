@@ -38,7 +38,7 @@
 			<SchemaVersao>1.00</SchemaVersao>
 		</CancelarNfse>
 		<ConsultarNfse versao="1.00">
-			<Descricao></Descricao>
+			<Descricao>Consultar Nfse</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>http://sql.sefvotorantim.sp.gov.br:8080/issonline/servlet/anfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
