@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
   <Servicos ID="NFSe">
-    <GerarNfse versao="1.00">
+    <GerarNfse versao="1.20">
       <Descricao>Gerar NFSe</Descricao>
-      <RequestURIProducao>http://sync.nfs-e.net/datacenter/include/nfw/importa_nfw/nfw_import_upload.php</RequestURIProducao>
-      <RequestURIHomologacao>https://migracao.atende.net/?pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=treina_saobentodosul</RequestURIHomologacao>
+      <RequestURIProducao>https://saobentodosul.atende.net/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
+      <RequestURIHomologacao></RequestURIHomologacao>
       <MetodoAPI>post</MetodoAPI>
       <WebActionProducao></WebActionProducao>
       <TagAssinatura></TagAssinatura>
@@ -14,14 +14,14 @@
       <WebTagRetorno>prop:innertext</WebTagRetorno>
       <ResponseMediaType>text/xml</ResponseMediaType>
       <CodigoTom>8311</CodigoTom>
-      <SchemaVersao>1.00</SchemaVersao>
+      <SchemaVersao>1.20</SchemaVersao>
       <GZIPCompress>false</GZIPCompress>
       <LoginConexao>true</LoginConexao>
     </GerarNfse>
-    <CancelarNfse versao="1.00">
+    <CancelarNfse versao="1.20">
       <Descricao>Evento de cancelamento da NFSe</Descricao>
-      <RequestURIProducao>http://sync.nfs-e.net/datacenter/include/nfw/importa_nfw/nfw_import_upload.php</RequestURIProducao>
-      <RequestURIHomologacao>https://migracao.atende.net/?pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=treina_saobentodosul</RequestURIHomologacao>
+      <RequestURIProducao>https://saobentodosul.atende.net/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
+	  <RequestURIHomologacao></RequestURIHomologacao>
       <MetodoAPI>post</MetodoAPI>
       <WebActionProducao></WebActionProducao>
       <TagAssinatura></TagAssinatura>
@@ -31,14 +31,14 @@
       <WebTagRetorno>prop:innertext</WebTagRetorno>
       <ResponseMediaType>text/xml</ResponseMediaType>
       <CodigoTom>8311</CodigoTom>
-      <SchemaVersao>1.00</SchemaVersao>
+      <SchemaVersao>1.20</SchemaVersao>
       <GZIPCompress>false</GZIPCompress>
       <LoginConexao>true</LoginConexao>
     </CancelarNfse>
-    <ConsultarNfse versao="1.00">
+    <ConsultarNfse versao="1.20">
       <Descricao>Consulta da NFSe</Descricao>
-      <RequestURIProducao>http://sync.nfs-e.net/datacenter/include/nfw/importa_nfw/nfw_import_upload.php</RequestURIProducao>
-      <RequestURIHomologacao>https://migracao.atende.net/?pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=treina_saobentodosul</RequestURIHomologacao>
+      <RequestURIProducao>https://saobentodosul.atende.net/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
+	  <RequestURIHomologacao></RequestURIHomologacao>
       <MetodoAPI>post</MetodoAPI>
       <WebActionProducao></WebActionProducao>
       <TagAssinatura></TagAssinatura>
@@ -48,7 +48,7 @@
       <WebTagRetorno>prop:innertext</WebTagRetorno>
       <ResponseMediaType>text/xml</ResponseMediaType>
       <CodigoTom>8311</CodigoTom>
-      <SchemaVersao>1.00</SchemaVersao>
+      <SchemaVersao>1.20</SchemaVersao>
       <GZIPCompress>false</GZIPCompress>
       <LoginConexao>true</LoginConexao>
     </ConsultarNfse>
