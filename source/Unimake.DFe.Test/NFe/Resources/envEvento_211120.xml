@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<envEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<idLote>000000000000001</idLote>
+	<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID2111204111250611747300015000000000000000000000000001">
+			<cOrgao>41</cOrgao>
+			<tpAmb>2</tpAmb>
+			<CNPJ>06117473000150</CNPJ>
+			<chNFe>41112506117473000150000000000000000000000000</chNFe>
+			<dhEvento>2025-11-03T14:00:00-03:00</dhEvento>
+			<tpEvento>211120</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<verEvento>1.00</verEvento>
+			<detEvento versao="1.00">
+				<descEvento>Destinação de item para consumo pessoal</descEvento>
+				<cOrgaoAutor>41</cOrgaoAutor>
+				<tpAutor>1</tpAutor>
+				<verAplic>verAplic1</verAplic>
+				<gConsumo nItem="1">
+					<vIBS>11.00</vIBS>
+					<vCBS>11.01</vCBS>
+					<gControleEstoque>
+						<qConsumo>1.0000</qConsumo>
+						<uConsumo>UN</uConsumo>
+					</gControleEstoque>
+					<DFeReferenciado>
+						<chaveAcesso>11111111111111111111111111111111111111111111</chaveAcesso>
+						<nItem>1</nItem>
+					</DFeReferenciado>
+				</gConsumo>
+				<gConsumo nItem="2">
+					<vIBS>22.00</vIBS>
+					<vCBS>22.02</vCBS>
+					<gControleEstoque>
+						<qConsumo>2.0000</qConsumo>
+						<uConsumo>UB</uConsumo>
+					</gControleEstoque>
+					<DFeReferenciado>
+						<chaveAcesso>22222222222222222222222222222222222222222222</chaveAcesso>
+						<nItem>2</nItem>
+					</DFeReferenciado>
+				</gConsumo>
+				<gConsumo nItem="3">
+					<vIBS>33.00</vIBS>
+					<vCBS>33.03</vCBS>
+					<gControleEstoque>
+						<qConsumo>3.0000</qConsumo>
+						<uConsumo>UU</uConsumo>
+					</gControleEstoque>
+					<DFeReferenciado>
+						<chaveAcesso>33333333333333333333333333333333333333333333</chaveAcesso>
+						<nItem>3</nItem>
+					</DFeReferenciado>
+				</gConsumo>
+			</detEvento>
+		</infEvento>
+	</evento>
+</envEvento>

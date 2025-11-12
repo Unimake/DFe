@@ -1044,6 +1044,12 @@ namespace Unimake.Business.DFe.Servicos
         SolicitacaoApropriacaoCreditoPresumido = 211110,
 
         /// <summary>
+        /// 211120 - Destinação de item para consumo pessoal
+        /// </summary>
+        [XmlEnum("211120")]
+        DestinacaoItemParaConsumoPessoal = 211120,
+
+        /// <summary>
         /// 211128 - Aceite de débito na apuração por emissão de nota de crédito
         /// </summary>
         [XmlEnum("211128")]

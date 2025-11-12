@@ -88,6 +88,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                 case "211110":
                     PrepararGCredPres(document);
                     break;
+
+                case "211120":
+                    PrepararGConsumoAquisicao(document);
+                    break;
             }
         }
 
@@ -310,6 +314,53 @@ namespace Unimake.Business.DFe.Xml.NFe
                                 CCredPres = elementGCBS.GetElementsByTagName("cCredPres")[0].InnerText,
                                 PCredPres = Convert.ToDouble(elementGCBS.GetElementsByTagName("pCredPres")[0].InnerText, CultureInfo.InvariantCulture),
                                 VCredPres = Convert.ToDouble(elementGCBS.GetElementsByTagName("vCredPres")[0].InnerText, CultureInfo.InvariantCulture)
+                            };
+                        }
+                    }
+                }
+            }
+        }
+
+        public void PrepararGConsumoAquisicao(XmlDocument xmlDoc)
+        {
+            var gConsumos = xmlDoc.GetElementsByTagName("gConsumo");
+
+            foreach (var evento in Evento)
+            {
+                if (evento.InfEvento.DetEvento is DetEventoDestinacaoItemParaConsumoPessoal detEvento)
+                {
+                    detEvento.GConsumo = new List<GConsumoAquisicao>();
+
+                    foreach (var nodeGConsumo in gConsumos)
+                    {
+                        var elementGConsumo = (XmlElement)nodeGConsumo;
+
+                        detEvento.GConsumo.Add(new GConsumoAquisicao
+                        {
+                            NItem = Convert.ToInt32(elementGConsumo.GetAttribute("nItem")),
+                            VIBS = Convert.ToDouble(elementGConsumo.GetElementsByTagName("vIBS")[0].InnerText, CultureInfo.InvariantCulture),
+                            VCBS = Convert.ToDouble(elementGConsumo.GetElementsByTagName("vCBS")[0].InnerText, CultureInfo.InvariantCulture),
+                        });
+
+                        if (elementGConsumo.GetElementsByTagName("gControleEstoque").Count > 0)
+                        {
+                            var elementGControleEstoque = (XmlElement)elementGConsumo.GetElementsByTagName("gControleEstoque")[0];
+
+                            detEvento.GConsumo[detEvento.GConsumo.Count - 1].GControleEstoque = new GControleEstoqueAquisicao
+                            {
+                                QConsumo = Convert.ToDouble(elementGControleEstoque.GetElementsByTagName("qConsumo")[0].InnerText, CultureInfo.InvariantCulture),
+                                UConsumo = elementGControleEstoque.GetElementsByTagName("uConsumo")[0].InnerText
+                            };
+                        }
+
+                        if (elementGConsumo.GetElementsByTagName("DFeReferenciado").Count > 0)
+                        {
+                            var elementDFeReferenciado = (XmlElement)elementGConsumo.GetElementsByTagName("DFeReferenciado")[0];
+
+                            detEvento.GConsumo[detEvento.GConsumo.Count - 1].DFeReferenciado = new DFeReferenciado
+                            {
+                                ChaveAcesso = elementDFeReferenciado.GetElementsByTagName("chaveAcesso")[0].InnerText,
+                                NItem = elementDFeReferenciado.GetElementsByTagName("nItem")[0].InnerText
                             };
                         }
                     }
@@ -665,6 +716,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                     case TipoEventoNFe.SolicitacaoApropriacaoCreditoPresumido:
                         _detEvento = new DetEventoSolicitacaoApropriacaoCreditoPresumido();
+                        break;
+
+                    case TipoEventoNFe.DestinacaoItemParaConsumoPessoal:
+                        _detEvento = new DetEventoDestinacaoItemParaConsumoPessoal();
                         break;
 
                     default:
@@ -4865,7 +4920,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                     for (int i = 0; i < GCredPres.Count; i++)
                     {
                         xml += $@"<gCredPres nItem={"\"" + GCredPres[i].NItem.ToString() + "\""}>
-                              <vBC>{GCredPres[i].VBCField}</vBC>";                              
+                              <vBC>{GCredPres[i].VBCField}</vBC>";
 
                         if (GCredPres[i].GIBS != null)
                         {
@@ -5051,4 +5106,219 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de Destinação de item para consumo pessoal
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoDestinacaoItemParaConsumoPessoal")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoDestinacaoItemParaConsumoPessoal : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Destinação de item para consumo pessoal";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Informações por item da NF-e de Aquisição
+        /// </summary>        
+        [XmlElement("gConsumo", Order = 4)]
+        public List<GConsumoAquisicao> GConsumo { get; set; } = new List<GConsumoAquisicao>();
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>";
+
+            if (GConsumo != null)
+            {
+                if (GConsumo.Count > 0)
+                {
+                    for (int i = 0; i < GConsumo.Count; i++)
+                    {
+                        xml += $@"<gConsumo nItem={"\"" + GConsumo[i].NItem.ToString() + "\""}>
+                              <vIBS>{GConsumo[i].VIBSField}</vIBS>
+                              <vCBS>{GConsumo[i].VCBSField}</vCBS>";
+
+                        if (GConsumo[i].GControleEstoque != null)
+                        {
+                            xml += $@"<gControleEstoque>
+                                  <qConsumo>{GConsumo[i].GControleEstoque.QConsumoField}</qConsumo>
+                                  <uConsumo>{GConsumo[i].GControleEstoque.UConsumo}</uConsumo>
+                                  </gControleEstoque>";
+                        }
+
+                        if (GConsumo[i].DFeReferenciado != null)
+                        {
+                            xml += $@"<DFeReferenciado>
+                                  <chaveAcesso>{GConsumo[i].DFeReferenciado.ChaveAcesso}</chaveAcesso>
+                                  <nItem>{GConsumo[i].DFeReferenciado.NItem}</nItem>
+                                  </DFeReferenciado>";
+                        }
+
+                        xml += $@"</gConsumo>";
+                    }
+                }
+            }
+
+            writer.WriteRaw(xml);
+        }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddGConsumo(GConsumoAquisicao item)
+        {
+            if (GConsumo == null)
+            {
+                GConsumo = new List<GConsumoAquisicao>();
+            }
+
+            GConsumo.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista GConsumo (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da GConsumo</returns>
+        public GConsumoAquisicao GetGConsumo(int index)
+        {
+            if ((GConsumo?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return GConsumo[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista GConsumo
+        /// </summary>
+        public int GetGConsumoCount => (GConsumo != null ? GConsumo.Count : 0);
+
+#endif
+    }
+
+    /// <summary>
+    /// Informações por item da NF-e de Aquisição
+    /// </summary>
+    public class GConsumoAquisicao
+    {
+        /// <summary>
+        /// Número do item
+        /// </summary>
+        [XmlAttribute(AttributeName = "nItem")]
+        public int NItem { get; set; }
+
+        /// <summary>
+        /// Valor do IBS correspondente à quantidade que não atendeu aos requisitos para a conversão em isenção
+        /// </summary>
+        [XmlIgnore]
+        public double VIBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vIBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vIBS")]
+        public string VIBSField
+        {
+            get => VIBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do CBS correspondente à quantidade que não atendeu aos requisitos para a conversão em isenção
+        /// </summary>
+        [XmlIgnore]
+        public double VCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCBS")]
+        public string VCBSField
+        {
+            get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Controle de estoque do consumo
+        /// </summary>
+        [XmlElement("gControleEstoque")]
+        public GControleEstoqueAquisicao GControleEstoque { get; set; }
+
+
+        /// <summary>
+        /// Documentos e itens referenciados
+        /// </summary>
+        [XmlElement("DFeReferenciado")]
+        public DFeReferenciado DFeReferenciado { get; set; }
+    }
+
+    public class GControleEstoqueAquisicao
+    {
+        /// <summary>
+        /// Informar a quantidade para consumo de pessoa física
+        /// </summary>
+        [XmlIgnore]
+        public double QConsumo { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade QConsumo para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("qConsumo")]
+        public string QConsumoField
+        {
+            get => QConsumo.ToString("F4", CultureInfo.InvariantCulture);
+            set => QConsumo = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Informar a unidade relativa ao campo gConsumo
+        /// </summary>
+        [XmlElement("uConsumo")]
+        public string UConsumo { get; set; }
+    }
 }
