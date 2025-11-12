@@ -27,30 +27,11 @@ var
   oExceptionInterop: olevariant;
 
   // --- Variáveis do XML CTe ---
-  oCTe: olevariant;         // CTe
-  oIde: olevariant;
-  oToma3: olevariant;
-  oEmit: olevariant;
-  oEnderEmit: olevariant;
-  oRem: olevariant;
-  oEnderReme: olevariant;
-  oDest: olevariant;
-  oEnderDest: olevariant;
-  oVPrest: olevariant;
+  oCTe: olevariant;
   oComp: olevariant;
-  oImp: olevariant;
-  oICMS: olevariant;
-  oICMSSN: olevariant;
-  oInfCTeNorm: olevariant;
-  oInfCarga: olevariant;
   oInfQ: olevariant;
-  oInfDoc: olevariant;
   oInfNFe: olevariant;
-  oInfModal: olevariant;
-  oRodo: olevariant;
   oOcc: olevariant;
-  oEmiOcc: olevariant;
-  oInfRespTec: olevariant;
   // --- Fim das Variáveis do XML ---
 
   oAutorizacaoSinc: olevariant;
