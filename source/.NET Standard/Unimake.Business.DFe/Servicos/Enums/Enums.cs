@@ -1038,6 +1038,12 @@ namespace Unimake.Business.DFe.Servicos
         ManifestacaoOperacaoNaoRealizada = 210240,
 
         /// <summary>
+        /// 211110 - Solicitação de Apropriação de crédito presumido
+        /// </summary>
+        [XmlEnum("211110")]
+        SolicitacaoApropriacaoCreditoPresumido = 211110,
+
+        /// <summary>
         /// 211128 - Aceite de débito na apuração por emissão de nota de crédito
         /// </summary>
         [XmlEnum("211128")]

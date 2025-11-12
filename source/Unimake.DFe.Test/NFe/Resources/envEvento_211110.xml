@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<envEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<idLote>000000000000001</idLote>
+	<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID2111104111250611747300015000000000000000000000000001">
+			<cOrgao>41</cOrgao>
+			<tpAmb>2</tpAmb>
+			<CNPJ>06117473000150</CNPJ>
+			<chNFe>41112506117473000150000000000000000000000000</chNFe>
+			<dhEvento>2025-11-03T14:00:00-03:00</dhEvento>
+			<tpEvento>211110</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<verEvento>1.00</verEvento>
+			<detEvento versao="1.00">
+				<descEvento>Solicitação de Apropriação de crédito presumido</descEvento>
+				<cOrgaoAutor>41</cOrgaoAutor>
+				<tpAutor>2</tpAutor>
+				<verAplic>verAplic1</verAplic>
+				<gCredPres nItem="1">
+					<vBC>11.11</vBC>
+					<gIBS>
+						<cCredPres>01</cCredPres>
+						<pCredPres>1.1111</pCredPres>
+						<vCredPres>11.11</vCredPres>
+					</gIBS>
+					<gCBS>
+						<cCredPres>02</cCredPres>
+						<pCredPres>2.2222</pCredPres>
+						<vCredPres>22.22</vCredPres>
+					</gCBS>
+				</gCredPres>
+				<gCredPres nItem="2">
+					<vBC>22.22</vBC>
+					<gIBS>
+						<cCredPres>03</cCredPres>
+						<pCredPres>3.3333</pCredPres>
+						<vCredPres>33.33</vCredPres>
+					</gIBS>
+					<gCBS>
+						<cCredPres>04</cCredPres>
+						<pCredPres>4.4444</pCredPres>
+						<vCredPres>44.44</vCredPres>
+					</gCBS>
+				</gCredPres>
+				<gCredPres nItem="3">
+					<vBC>33.33</vBC>
+					<gIBS>
+						<cCredPres>05</cCredPres>
+						<pCredPres>5.5555</pCredPres>
+						<vCredPres>55.55</vCredPres>
+					</gIBS>
+					<gCBS>
+						<cCredPres>06</cCredPres>
+						<pCredPres>6.6666</pCredPres>
+						<vCredPres>66.66</vCredPres>
+					</gCBS>
+				</gCredPres>
+			</detEvento>
+		</infEvento>
+	</evento>
+</envEvento>
