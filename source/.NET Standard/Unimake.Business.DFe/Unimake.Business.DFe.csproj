@@ -1192,6 +1192,7 @@
 		<None Remove="Xml\Schemas\NFe\e112130_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e112140_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e112150_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\e211110_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e211128_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e212110_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e212120_v1.00.xsd" />
@@ -2606,6 +2607,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e112130_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e112140_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e112150_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFe\e211110_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e211128_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e212110_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e212120_v1.00.xsd" />

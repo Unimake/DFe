@@ -422,18 +422,18 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object GroupBox7: TGroupBox
-    Left = 896
+    Left = 624
     Height = 344
     Top = 520
-    Width = 343
+    Width = 614
     Caption = 'CTe e CTeOS'
     ClientHeight = 319
-    ClientWidth = 339
+    ClientWidth = 610
     TabOrder = 8
     object Btn_ConsultaStatusCte: TButton
       Left = 0
       Height = 31
-      Top = 16
+      Top = 0
       Width = 331
       Caption = 'Consulta Status'
       TabOrder = 0
@@ -442,7 +442,7 @@ object frmPrincipal: TfrmPrincipal
     object Btn_ConsultaSituacaoCTe: TButton
       Left = 0
       Height = 31
-      Top = 48
+      Top = 32
       Width = 331
       Caption = 'Consulta Situção'
       TabOrder = 1
@@ -451,7 +451,7 @@ object frmPrincipal: TfrmPrincipal
     object Btn_EnviarCteSincrono: TButton
       Left = 0
       Height = 31
-      Top = 80
+      Top = 64
       Width = 331
       Caption = 'Enviar CTe Sincrono'
       TabOrder = 2
@@ -460,7 +460,7 @@ object frmPrincipal: TfrmPrincipal
     object Btn_EnviarCteOsSincrono: TButton
       Left = 0
       Height = 31
-      Top = 112
+      Top = 96
       Width = 331
       Caption = 'EnviarCTeOS Sincrono'
       TabOrder = 3
@@ -469,7 +469,7 @@ object frmPrincipal: TfrmPrincipal
     object Btn_EventoCancelamentoCTe: TButton
       Left = 0
       Height = 31
-      Top = 144
+      Top = 128
       Width = 331
       Caption = 'Enviar Evento Cancelamento CTe'
       TabOrder = 4
@@ -478,7 +478,7 @@ object frmPrincipal: TfrmPrincipal
     object Btn_EnviarEventoCancelamentoCTeOS: TButton
       Left = 0
       Height = 31
-      Top = 176
+      Top = 160
       Width = 331
       Caption = 'Enviar Evento Cancelamento CTeOS'
       TabOrder = 5
@@ -487,7 +487,7 @@ object frmPrincipal: TfrmPrincipal
     object Btn_EventoCCeCTe: TButton
       Left = 0
       Height = 31
-      Top = 208
+      Top = 192
       Width = 331
       Caption = 'Evento de CC e CTe'
       TabOrder = 6
@@ -496,7 +496,7 @@ object frmPrincipal: TfrmPrincipal
     object Btn_InsucessoEntregaCTe: TButton
       Left = 0
       Height = 31
-      Top = 240
+      Top = 224
       Width = 331
       Caption = 'Evento do Insucesso na Entrega do CTe'
       TabOrder = 7
@@ -505,11 +505,20 @@ object frmPrincipal: TfrmPrincipal
     object Btn_CancelamentoInsucessoEntregaCTe: TButton
       Left = 0
       Height = 32
-      Top = 272
+      Top = 256
       Width = 331
       Caption = 'Evento de Cancelamento do Insucesso do CTe'
       TabOrder = 8
       OnClick = Btn_CancelamentoInsucessoEntregaCTeClick
+    end
+    object Btn_DesserializandoXmlCTeOS: TButton
+      Left = 0
+      Height = 31
+      Top = 288
+      Width = 331
+      Caption = 'Desserializando XML do CTeOS'
+      TabOrder = 9
+      OnClick = Btn_DesserializandoXmlCTeOSClick
     end
   end
 end

@@ -20,7 +20,7 @@ uses
   ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrado,EventoPagamentoMDFe,
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
   ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe,
-  EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe,CancelamentoInsucessoEntregaCTe;
+  EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe,CancelamentoInsucessoEntregaCTe, DesserializandoXmlCTeOS;
 
 type
 
@@ -67,6 +67,7 @@ type
     Btn_EnviarEventoCancelamentoCTeOS: TButton;
     Btn_EventoCCeCTe: TButton;
     Btn_InsucessoEntregaCTe: TButton;
+    Btn_DesserializandoXmlCTeOS: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -130,6 +131,7 @@ type
     procedure Btn_EnviarEventoCancelamentoNFComClick(Sender: TObject);
     procedure Btn_EnviarCteSincronoClick(Sender: TObject);
     procedure Btn_InsucessoEntregaCTeClick(Sender: TObject);
+    procedure Btn_DesserializandoXmlCTeOSClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox1Click(Sender: TObject);
     procedure GroupBox3Click(Sender: TObject);
@@ -674,6 +676,17 @@ var
   oServico: TInsucessoEntregaCTe;
 begin
   oServico := TInsucessoEntregaCTe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.Btn_DesserializandoXmlCTeOSClick(Sender: TObject);
+var
+  oServico: TDesserializandoXmlCTeOS;
+begin
+  oServico := TDesserializandoXmlCTeOS.Create;
   try
     oServico.Executar();
   finally

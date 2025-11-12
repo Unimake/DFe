@@ -254,6 +254,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="CancelamentoInsucessoEntregaCTe"/>
       </Unit>
+      <Unit>
+        <Filename Value="desserializandoxmlcteos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DesserializandoXmlCTeOS"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
