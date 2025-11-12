@@ -27,8 +27,7 @@ var
   oExceptionInterop: olevariant;
 
   // --- Variáveis do XML CTe ---
-  oXml: olevariant;         // CTe
-  oInfCTe: olevariant;      // InfCTe
+  oCTe: olevariant;         // CTe
   oIde: olevariant;
   oToma3: olevariant;
   oEmit: olevariant;
@@ -56,8 +55,9 @@ var
 
   oAutorizacaoSinc: olevariant;
   chaveCTe: string;
+  caminhoArquivo: string;
+  cteAssinado: string;
   stringXMLDistribuicaoCTe: string;
-
 begin
   // Criar objeto de configuração mínima
   oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
@@ -71,210 +71,211 @@ begin
 
   try
     // 1. Criar o objeto XML principal (CTe)
-    oXml := CreateOleObject('Unimake.Business.DFe.Xml.CTe.CTe');
+    oCTe := CreateOleObject('Unimake.Business.DFe.Xml.CTe.CTe');
 
     // 2. Criar o objeto 'InfCTe'
-    oInfCTe := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfCTe');
-    oXml.InfCTe := IUnknown(oInfCTe); // *** Importante: Ligar o InfCTe ao CTe ***
-    oInfCTe.Versao := '4.00';
+    oCTe.InfCTe := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfCTe');
+    oCTe.InfCTe.Versao := '4.00';
 
     // 3. Criar 'Ide'
-    oIde := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Ide');
-    oInfCTe.Ide := IUnknown(oIde); // Ligar o Ide ao InfCTe
-    oIde.CUF := 41; // UFBrasil.PR
-    oIde.CCT := '01234567';
-    oIde.CFOP := '6352';
-    oIde.NatOp := 'PREST.SERV.TRANSP.INDUSTR';
-    oIde.&Mod := 57; // ModeloDFe.CTe
-    oIde.Serie := 1;
-    oIde.NCT := 868;
-    oIde.DhEmi := Now;
-    oIde.TpImp := 1; // FormatoImpressaoDACTE.NormalPaisagem
-    oIde.TpEmis := 1; // TipoEmissao.Normal
-    oIde.TpAmb := 2; // TipoAmbiente.Homologacao
-    oIde.TpCTe := 0; // TipoCTe.Normal
-    oIde.ProcEmi := 0; // ProcessoEmissao.AplicativoContribuinte
-    oIde.VerProc := 'UNICO V8.0';
-    oIde.CMunEnv := '4118402';
-    oIde.XMunEnv := 'PARANAVAI';
-    oIde.UFEnv := 41; // UFBrasil.PR
-    oIde.Modal := 1; // ModalidadeTransporteCTe.Rodoviario
-    oIde.TpServ := 0; // TipoServicoCTe.Normal
-    oIde.CMunIni := '4118402';
-    oIde.XMunIni := 'PARANAVAI';
-    oIde.UFIni := 41; // UFBrasil.PR
-    oIde.CMunFim := '3305109';
-    oIde.XMunFim := 'SAO JOAO DE MERITI';
-    oIde.UFFim := 33; // UFBrasil.RJ
-    oIde.Retira := 0; // SimNao.Nao
-    oIde.IndIEToma := 1; // IndicadorIEDestinatario.ContribuinteICMS
+    oCTe.InfCTe.Ide := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Ide');
+    oCTe.InfCTe.Ide.CUF := 41; // UFBrasil.PR
+    oCTe.InfCTe.Ide.CCT := '01234567';
+    oCTe.InfCTe.Ide.CFOP := '6352';
+    oCTe.InfCTe.Ide.NatOp := 'PREST.SERV.TRANSP.INDUSTR';
+    oCTe.InfCTe.Ide.&Mod := 57; // ModeloDFe.CTe
+    oCTe.InfCTe.Ide.Serie := 1;
+    oCTe.InfCTe.Ide.NCT := 868;
+    oCTe.InfCTe.Ide.DhEmi := Now;
+    oCTe.InfCTe.Ide.TpImp := 1; // FormatoImpressaoDACTE.NormalPaisagem
+    oCTe.InfCTe.Ide.TpEmis := 1; // TipoEmissao.Normal
+    oCTe.InfCTe.Ide.TpAmb := 2; // TipoAmbiente.Homologacao
+    oCTe.InfCTe.Ide.TpCTe := 0; // TipoCTe.Normal
+    oCTe.InfCTe.Ide.ProcEmi := 0; // ProcessoEmissao.AplicativoContribuinte
+    oCTe.InfCTe.Ide.VerProc := 'UNICO V8.0';
+    oCTe.InfCTe.Ide.CMunEnv := '4118402';
+    oCTe.InfCTe.Ide.XMunEnv := 'PARANAVAI';
+    oCTe.InfCTe.Ide.UFEnv := 41; // UFBrasil.PR
+    oCTe.InfCTe.Ide.Modal := 1; // ModalidadeTransporteCTe.Rodoviario
+    oCTe.InfCTe.Ide.TpServ := 0; // TipoServicoCTe.Normal
+    oCTe.InfCTe.Ide.CMunIni := '4118402';
+    oCTe.InfCTe.Ide.XMunIni := 'PARANAVAI';
+    oCTe.InfCTe.Ide.UFIni := 41; // UFBrasil.PR
+    oCTe.InfCTe.Ide.CMunFim := '3305109';
+    oCTe.InfCTe.Ide.XMunFim := 'SAO JOAO DE MERITI';
+    oCTe.InfCTe.Ide.UFFim := 33; // UFBrasil.RJ
+    oCTe.InfCTe.Ide.Retira := 0; // SimNao.Nao
+    oCTe.InfCTe.Ide.IndIEToma := 1; // IndicadorIEDestinatario.ContribuinteICMS
 
-    oToma3 := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Toma3');
-    oIde.Toma3 := IUnknown(oToma3);
-    oToma3.Toma := 0; // TomadorServicoCTe.Remetente
+    oCTe.InfCTe.Ide.Toma3 := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Toma3');
+    oCTe.InfCTe.Ide.Toma3.Toma := 0; // TomadorServicoCTe.Remetente
 
     // 4. Criar 'Emit'
-    oEmit := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Emit');
-    oInfCTe.Emit := IUnknown(oEmit);
-    oEmit.CNPJ := '00000000000000';
-    oEmit.IE := '9999999999';
-    oEmit.XNome := 'XXXXXX XXXXXX XXXXXX';
-    oEmit.XFant := 'XXXXXX XXXXXX';
-    oEmit.CRT := 3; // CRT.RegimeNormal
+    oCTe.InfCTe.Emit := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Emit');
+    oCTe.InfCTe.Emit.CNPJ := '00000000000000';
+    oCTe.InfCTe.Emit.IE := '9999999999';
+    oCTe.InfCTe.Emit.XNome := 'XXXXXX XXXXXX XXXXXX';
+    oCTe.InfCTe.Emit.XFant := 'XXXXXX XXXXXX';
+    oCTe.InfCTe.Emit.CRT := 3; // CRT.RegimeNormal
 
-    oEnderEmit := CreateOleObject('Unimake.Business.DFe.Xml.CTe.EnderEmit');
-    oEmit.EnderEmit := IUnknown(oEnderEmit);
-    oEnderEmit.XLgr := 'XXXXXXXXXXXXXXXXXXXXXXX';
-    oEnderEmit.Nro := '11111';
-    oEnderEmit.XBairro := 'XXXXXXXXXXXXXX';
-    oEnderEmit.CMun := 4118402;
-    oEnderEmit.XMun := 'PARANAVAI';
-    oEnderEmit.CEP := '87700000';
-    oEnderEmit.UF := 41; // UFBrasil.PR
-    oEnderEmit.Fone := '04433333333';
+    oCTe.InfCTe.Emit.EnderEmit := CreateOleObject('Unimake.Business.DFe.Xml.CTe.EnderEmit');
+    oCTe.InfCTe.Emit.EnderEmit.XLgr := 'XXXXXXXXXXXXXXXXXXXXXXX';
+    oCTe.InfCTe.Emit.EnderEmit.Nro := '11111';
+    oCTe.InfCTe.Emit.EnderEmit.XBairro := 'XXXXXXXXXXXXXX';
+    oCTe.InfCTe.Emit.EnderEmit.CMun := 4118402;
+    oCTe.InfCTe.Emit.EnderEmit.XMun := 'PARANAVAI';
+    oCTe.InfCTe.Emit.EnderEmit.CEP := '87700000';
+    oCTe.InfCTe.Emit.EnderEmit.UF := 41; // UFBrasil.PR
+    oCTe.InfCTe.Emit.EnderEmit.Fone := '04433333333';
 
     // 5. Criar 'Rem' (Remetente)
-    oRem := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Rem');
-    oInfCTe.Rem := IUnknown(oRem);
-    oRem.CNPJ := '00000000000000';
-    oRem.IE := '9999999999';
-    oRem.XNome := 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL';
-    oRem.XFant := 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL';
-    oRem.Fone := '04433333333';
+    oCTe.InfCTe.Rem := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Rem');
+    oCTe.InfCTe.Rem.CNPJ := '00000000000000';
+    oCTe.InfCTe.Rem.IE := '9999999999';
+    oCTe.InfCTe.Rem.XNome := 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL';
+    oCTe.InfCTe.Rem.XFant := 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL';
+    oCTe.InfCTe.Rem.Fone := '04433333333';
 
-    oEnderReme := CreateOleObject('Unimake.Business.DFe.Xml.CTe.EnderReme');
-    oRem.EnderReme := IUnknown(oEnderReme);
-    oEnderReme.XLgr := 'XXXXXXXXXXXXXXXXXX';
-    oEnderReme.Nro := '9999';
-    oEnderReme.XBairro := 'XXXXXXXXXXXXXXX';
-    oEnderReme.CMun := 4118402;
-    oEnderReme.XMun := 'PARANAVAI';
-    oEnderReme.CEP := '87700000';
-    oEnderReme.UF := 41; // UFBrasil.PR
-    oEnderReme.CPais := 1058;
-    oEnderReme.XPais := 'BRASIL';
+    oCTe.InfCTe.Rem.EnderReme := CreateOleObject('Unimake.Business.DFe.Xml.CTe.EnderReme');
+    oCTe.InfCTe.Rem.EnderReme.XLgr := 'XXXXXXXXXXXXXXXXXX';
+    oCTe.InfCTe.Rem.EnderReme.Nro := '9999';
+    oCTe.InfCTe.Rem.EnderReme.XBairro := 'XXXXXXXXXXXXXXX';
+    oCTe.InfCTe.Rem.EnderReme.CMun := 4118402;
+    oCTe.InfCTe.Rem.EnderReme.XMun := 'PARANAVAI';
+    oCTe.InfCTe.Rem.EnderReme.CEP := '87700000';
+    oCTe.InfCTe.Rem.EnderReme.UF := 41; // UFBrasil.PR
+    oCTe.InfCTe.Rem.EnderReme.CPais := 1058;
+    oCTe.InfCTe.Rem.EnderReme.XPais := 'BRASIL';
 
     // 6. Criar 'Dest' (Destinatário)
-    oDest := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Dest');
-    oInfCTe.Dest := IUnknown(oDest);
-    oDest.CNPJ := '00000000000000';
-    oDest.IE := 'ISENTO';
-    oDest.XNome := 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL';
+    oCTe.InfCTe.Dest := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Dest');
+    oCTe.InfCTe.Dest.CNPJ := '00000000000000';
+    oCTe.InfCTe.Dest.IE := 'ISENTO';
+    oCTe.InfCTe.Dest.XNome := 'CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL';
 
-    oEnderDest := CreateOleObject('Unimake.Business.DFe.Xml.CTe.EnderDest');
-    oDest.EnderDest := IUnknown(oEnderDest);
-    oEnderDest.XLgr := 'XXXXXXXXXXXXXXXXXXXXXXXXXXX';
-    oEnderDest.Nro := '55';
-    oEnderDest.XBairro := 'CENTRO';
-    oEnderDest.CMun := 3305109;
-    oEnderDest.XMun := 'SAO JOAO DE MERITI';
-    oEnderDest.CEP := '25520570';
-    oEnderDest.UF := 33; // UFBrasil.RJ
-    oEnderDest.CPais := 1058;
-    oEnderDest.XPais := 'BRASIL';
+    oCTe.InfCTe.Dest.EnderDest := CreateOleObject('Unimake.Business.DFe.Xml.CTe.EnderDest');
+    oCTe.InfCTe.Dest.EnderDest.XLgr := 'XXXXXXXXXXXXXXXXXXXXXXXXXXX';
+    oCTe.InfCTe.Dest.EnderDest.Nro := '55';
+    oCTe.InfCTe.Dest.EnderDest.XBairro := 'CENTRO';
+    oCTe.InfCTe.Dest.EnderDest.CMun := 3305109;
+    oCTe.InfCTe.Dest.EnderDest.XMun := 'SAO JOAO DE MERITI';
+    oCTe.InfCTe.Dest.EnderDest.CEP := '25520570';
+    oCTe.InfCTe.Dest.EnderDest.UF := 33; // UFBrasil.RJ
+    oCTe.InfCTe.Dest.EnderDest.CPais := 1058;
+    oCTe.InfCTe.Dest.EnderDest.XPais := 'BRASIL';
 
     // 7. Criar 'VPrest'
-    oVPrest := CreateOleObject('Unimake.Business.DFe.Xml.CTe.VPrest');
-    oInfCTe.VPrest := IUnknown(oVPrest);
-    oVPrest.VTPrest := 50.00;
-    oVPrest.VRec := 50.00;
+    oCTe.InfCTe.VPrest := CreateOleObject('Unimake.Business.DFe.Xml.CTe.VPrest');
+    oCTe.InfCTe.VPrest.VTPrest := 50.00;
+    oCTe.InfCTe.VPrest.VRec := 50.00;
 
     oComp := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Comp');
     oComp.XNome := 'FRETE VALOR';
     oComp.VComp := 50.00;
-    oVPrest.AddComp(IUnknown(oComp)); // Adicionar à lista 'Comp'
+    oCTe.InfCTe.VPrest.AddComp(IUnknown(oComp)); // Adicionar à lista 'Comp'
 
     // 8. Criar 'Imp' (Imposto)
-    oImp := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Imp');
-    oInfCTe.Imp := IUnknown(oImp);
+    oCTe.InfCTe.Imp := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Imp');
 
-    oICMS := CreateOleObject('Unimake.Business.DFe.Xml.CTe.ICMS');
-    oImp.ICMS := IUnknown(oICMS);
+    oCTe.InfCTe.Imp.ICMS := CreateOleObject('Unimake.Business.DFe.Xml.CTe.ICMS');
 
-    oICMSSN := CreateOleObject('Unimake.Business.DFe.Xml.CTe.ICMSSN');
-    oICMS.ICMSSN := IUnknown(oICMSSN);
-    oICMSSN.CST := '90';
-    oICMSSN.IndSN := 1; // SimNao.Sim
+    oCTe.InfCTe.Imp.ICMS.ICMSSN := CreateOleObject('Unimake.Business.DFe.Xml.CTe.ICMSSN');
+    oCTe.InfCTe.Imp.ICMS.ICMSSN.CST := '90';
+    oCTe.InfCTe.Imp.ICMS.ICMSSN.IndSN := 1; // SimNao.Sim
 
     // 9. Criar 'InfCTeNorm'
-    oInfCTeNorm := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfCTeNorm');
-    oInfCTe.InfCTeNorm := IUnknown(oInfCTeNorm);
+    oCTe.InfCTe.InfCTeNorm := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfCTeNorm');
 
     // 9a. 'InfCarga'
-    oInfCarga := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfCarga');
-    oInfCTeNorm.InfCarga := IUnknown(oInfCarga);
-    oInfCarga.VCarga := 6252.96;
-    oInfCarga.ProPred := 'xxxxxxx';
+    oCTe.InfCTe.InfCTeNorm.InfCarga := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfCarga');
+    oCTe.InfCTe.InfCTeNorm.InfCarga.VCarga := 6252.96;
+    oCTe.InfCTe.InfCTeNorm.InfCarga.ProPred := 'xxxxxxx';
 
     // InfQ 1
     oInfQ := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfQ');
     oInfQ.CUnid := 01; // CodigoUnidadeMedidaCTe.KG
     oInfQ.TpMed := 'PESO BRUTO';
     oInfQ.QCarga := 320.0000;
-    oInfCarga.AddInfQ(IUnknown(oInfQ));
+    oCTe.InfCTe.InfCTeNorm.InfCarga.AddInfQ(IUnknown(oInfQ));
 
     // InfQ 2
     oInfQ := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfQ');
     oInfQ.CUnid := 00; // CodigoUnidadeMedidaCTe.UNIDADE
     oInfQ.TpMed := 'UNIDADE';
     oInfQ.QCarga := 1.0000;
-    oInfCarga.AddInfQ(IUnknown(oInfQ));
+    oCTe.InfCTe.InfCTeNorm.InfCarga.AddInfQ(IUnknown(oInfQ));
 
     // 9b. 'InfDoc' (Documentos)
-    oInfDoc := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfDoc');
-    oInfCTeNorm.InfDoc := IUnknown(oInfDoc);
+    oCTe.InfCTe.InfCTeNorm.InfDoc := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfDoc');
 
     oInfNFe := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfNFe');
     oInfNFe.Chave := '41444444444444444444444444444444444444444441';
-    oInfDoc.AddInfNFe(IUnknown(oInfNFe)); // Adicionar NFe à lista InfNFe
+    oCTe.InfCTe.InfCTeNorm.InfDoc.AddInfNFe(IUnknown(oInfNFe)); // Adicionar NFe à lista InfNFe
 
     // 9c. 'InfModal'
-    oInfModal := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfModal');
-    oInfCTeNorm.InfModal := IUnknown(oInfModal);
-    oInfModal.VersaoModal := '4.00';
+    oCTe.InfCTe.InfCTeNorm.InfModal := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfModal');
+    oCTe.InfCTe.InfCTeNorm.InfModal.VersaoModal := '4.00';
 
-    oRodo := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Rodo');
-    oInfModal.Rodo := IUnknown(oRodo);
-    oRodo.RNTRC := '44444444';
+    oCTe.InfCTe.InfCTeNorm.InfModal.Rodo := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Rodo');
+    oCTe.InfCTe.InfCTeNorm.InfModal.Rodo.RNTRC := '44444444';
 
     oOcc := CreateOleObject('Unimake.Business.DFe.Xml.CTe.Occ');
     oOcc.NOcc := 810;
     oOcc.DEmi := Now;
 
-    oEmiOcc := CreateOleObject('Unimake.Business.DFe.Xml.CTe.EmiOcc');
-    oOcc.EmiOcc := IUnknown(oEmiOcc);
-    oEmiOcc.CNPJ := '00000000000000';
-    oEmiOcc.CInt := '0000000000';
-    oEmiOcc.IE := '9999999999';
-    oEmiOcc.UF := 41; // UFBrasil.PR
-    oEmiOcc.Fone := '04433333333';
+    oOcc.EmiOcc := CreateOleObject('Unimake.Business.DFe.Xml.CTe.EmiOcc');
+    oOcc.EmiOcc.CNPJ := '00000000000000';
+    oOcc.EmiOcc.CInt := '0000000000';
+    oOcc.EmiOcc.IE := '9999999999';
+    oOcc.EmiOcc.UF := 41; // UFBrasil.PR
+    oOcc.EmiOcc.Fone := '04433333333';
 
-    oRodo.AddOcc(IUnknown(oOcc)); // Adicionar Occ à lista
+    oCTe.InfCTe.InfCTeNorm.InfModal.Rodo.AddOcc(IUnknown(oOcc)); // Adicionar Occ à lista
 
     // 10. Criar 'InfRespTec'
-    oInfRespTec := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfRespTec');
-    oInfCTe.InfRespTec := IUnknown(oInfRespTec);
-    oInfRespTec.CNPJ := '00000000000000';
-    oInfRespTec.XContato := 'XXXXXXXXXXXXXXXXXXXXXXX';
-    oInfRespTec.Email := 'teste@gmail.com';
-    oInfRespTec.Fone := '04433333333';
+    oCTe.InfCTe.InfRespTec := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfRespTec');
+    oCTe.InfCTe.InfRespTec.CNPJ := '00000000000000';
+    oCTe.InfCTe.InfRespTec.XContato := 'XXXXXXXXXXXXXXXXXXXXXXX';
+    oCTe.InfCTe.InfRespTec.Email := 'teste@gmail.com';
+    oCTe.InfCTe.InfRespTec.Fone := '04433333333';
 
     // --- FIM DA MONTAGEM DO XML ---
 
     // Recuperar a chave do CTe para usar depois
-    chaveCTe := VarToStr(oInfCTe.Chave);
+    chaveCTe := VarToStr(oCTe.InfCTe.Chave);
     ShowMessage('Chave CTe: ' + chaveCTe);
 
     // 11. Consumir o serviço
     oAutorizacaoSinc := CreateOleObject('Unimake.Business.DFe.Servicos.CTe.AutorizacaoSinc');
-    oAutorizacaoSinc.Executar(IUnknown(oXml), IUnknown(oConfiguracao));
+    oAutorizacaoSinc.SetXMLConfiguracao(IUnknown(oCTe), IUnknown(oConfiguracao));
+
+    //Recuperar o conteúdo do XML assinado
+    cteAssinado := VarToStr(oAutorizacaoSinc.GetConteudoCTeAssinado(0));
+
+    //Exibir o XML assinado
+    ShowMessage(cteAssinado);
+
+    //Definir caminho para salvar o XML assinado no HD/SSD
+    caminhoArquivo := 'd:\testenfe\' + oCTe.InfCTe.Chave + '-cte.xml';
+
+    // Excluir arquivo existente, se houver
+    if FileExists(caminhoArquivo) then DeleteFile(caminhoArquivo);
+
+    // Gravar o XML assinado no HD
+    with TFileStream.Create(caminhoArquivo, fmCreate) do
+    try
+      WriteBuffer(Pointer(cteAssinado)^, Length(cteAssinado));
+    finally
+      Free;
+    end;
+
+    oAutorizacaoSinc.Executar(IUnknown(oCTe), IUnknown(oConfiguracao));
 
     // 12. Tratar o Retorno
-    ShowMessage('CStat: ' + VarToStr(oAutorizacaoSinc.Result.CStat) +
-                ' - XMotivo: ' + oAutorizacaoSinc.Result.XMotivo);
+    ShowMessage('CStat: ' + VarToStr(oAutorizacaoSinc.Result.CStat) + ' - XMotivo: ' + oAutorizacaoSinc.Result.XMotivo);
 
     if (oAutorizacaoSinc.Result.CStat = 104) or //Lote Recebido com Sucesso
-       (oAutorizacaoSinc.Result.CStat = 100) then //CTe Autorizado (caso raro em sinc)
+      (oAutorizacaoSinc.Result.CStat = 100) then //CTe Autorizado (caso raro em sinc)
     begin
       if oAutorizacaoSinc.Result.ProtCTe.InfProt.CStat = 100 then //CTe Autorizado
       begin
@@ -290,10 +291,8 @@ begin
       end
       else
       begin
-         // Rejeitado
-         ShowMessage('CTe Rejeitado: ' +
-                      VarToStr(oAutorizacaoSinc.Result.ProtCTe.InfProt.CStat) + ' - ' +
-                      oAutorizacaoSinc.Result.ProtCTe.InfProt.XMotivo);
+        // Rejeitado
+        ShowMessage('CTe Rejeitado: ' + VarToStr(oAutorizacaoSinc.Result.ProtCTe.InfProt.CStat) + ' - ' + oAutorizacaoSinc.Result.ProtCTe.InfProt.XMotivo);
       end;
     end;
 
