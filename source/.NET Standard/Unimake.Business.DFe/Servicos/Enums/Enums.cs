@@ -1050,6 +1050,12 @@ namespace Unimake.Business.DFe.Servicos
         DestinacaoItemParaConsumoPessoal = 211120,
 
         /// <summary>
+        /// 211124 - Perecimento, perda, roubo ou furto durante o transporte contratado pelo adquirente
+        /// </summary>
+        [XmlEnum("211124")]
+        PerecimentoDuranteTransporteContratadoAdquirente = 211124,
+
+        /// <summary>
         /// 211128 - Aceite de débito na apuração por emissão de nota de crédito
         /// </summary>
         [XmlEnum("211128")]

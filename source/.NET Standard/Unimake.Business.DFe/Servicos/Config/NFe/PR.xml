@@ -153,6 +153,11 @@
           <SchemaArquivoEspecifico>e211120_v{0}.xsd</SchemaArquivoEspecifico>
         </Tipo>
         <Tipo>
+          <ID>211124</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211124_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
           <ID>211128</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e211128_v{0}.xsd</SchemaArquivoEspecifico>
