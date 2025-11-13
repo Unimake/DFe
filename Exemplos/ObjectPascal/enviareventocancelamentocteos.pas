@@ -72,6 +72,17 @@ begin
       oRecepcaoEvento.Executar(IUnknown(oEvento), IUnknown(oConfiguracao));
 
       eventoAssinado := oRecepcaoEvento.GetConteudoXMLAssinado();
+
+      DeleteFile('d:\testenfe\CancelamentoCTeOS.xml');
+      with TStringList.Create do
+      try
+        Text := eventoAssinado;
+        SaveToFile('d:\testenfe\CancelamentoCTeOS.xml');
+      finally
+        Free;
+      end;
+
+
       ShowMessage(eventoAssinado);
 
       ShowMessage(oRecepcaoEvento.RetornoWSString);

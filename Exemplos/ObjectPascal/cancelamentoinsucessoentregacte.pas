@@ -47,14 +47,14 @@ begin
   oConfiguracao.CertificadoSenha := '12345678';
 
   //Criar objeto do XML
-  oEvento := CreateOleObject('Unimake.Business.DFe.Xml.CTe.EventoCTe'); //
+  oEvento := CreateOleObject('Unimake.Business.DFe.Xml.CTe.EventoCTe');
   oEvento.Versao := '4.00';
 
   //Criar tag InfEvento
-  oEvento.InfEvento := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfEvento'); //
-  oEvento.InfEvento.COrgao := 41; // UFBrasil.PR
-  oEvento.InfEvento.ChCTe := '41200210859283000185570010000005671227070615'; //
-  oEvento.InfEvento.CNPJ := '11111111111111'; // CNPJ do emitente do CTe
+  oEvento.InfEvento := CreateOleObject('Unimake.Business.DFe.Xml.CTe.InfEvento');
+  oEvento.InfEvento.COrgao := 41;
+  oEvento.InfEvento.ChCTe := '41200210859283000185570010000005671227070615';
+  oEvento.InfEvento.CNPJ := '11111111111111';
   oEvento.InfEvento.DhEvento := Now;
   oEvento.InfEvento.TpEvento := 110191;
   oEvento.InfEvento.NSeqEvento := 1;
@@ -69,18 +69,13 @@ begin
 
   oExceptionInterop := CreateOleObject('Unimake.Exceptions.ThrowHelper');
 
-  // **************************************************************************
-  // *** INÍCIO: BLOCO DE EXECUÇÃO E VALIDAÇÃO CORRIGIDO PARA CTE ***
-  // **************************************************************************
   try
     begin
-      // Enviar evento
       oRecepcaoEvento := CreateOleObject('Unimake.Business.DFe.Servicos.CTe.RecepcaoEvento'); //
       oRecepcaoEvento.Executar(IUnknown(oEvento), IUnknown(oConfiguracao));
 
       eventoAssinado := oRecepcaoEvento.GetConteudoXMLAssinado();
 
-      // Salvar o XML de evento assinado (envio)
       nomeArquivoEvento := 'c:\testenfe\CancelamentoInsucessoCTe-env.xml';
       nHandle := TFileStream.Create(nomeArquivoEvento, fmCreate);
       try
@@ -89,11 +84,8 @@ begin
         nHandle.Free;
       end;
 
-      // O 'Result' já é o 'retEvento'.
-      // Vamos atribuí-lo a 'oRetEvento' para clareza (opcional)
       oRetEvento := oRecepcaoEvento.Result;
 
-      // Exibe o CStat do EVENTO (retEvento)
       ShowMessage('CStat do Lote Retornado: ' + VarToStr(oRecepcaoEvento.Result.InfEvento.CStat) + ' - XMotivo: ' + oRecepcaoEvento.Result.InfEvento.XMotivo);
 
       case oRetEvento.InfEvento.CStat of
@@ -114,9 +106,6 @@ begin
     ShowMessage(oExceptionInterop.GetMessage());
     ShowMessage(IntToStr(oExceptionInterop.GetErrorCode()));
   end;
-  // **************************************************************************
-  // *** FIM DO BLOCO DE EXECUÇÃO E VALIDAÇÃO ***
-  // **************************************************************************
 end;
 
 end.

@@ -24,7 +24,6 @@ procedure TInsucessoEntregaCTe.Executar;
 var
   oConfiguracao: olevariant;
   oEvento: olevariant; // No CTe, o 'EventoCTe' é o XML raiz, não o 'EnvEvento'
-  oInfEvento: olevariant;
   oDetEvento: olevariant;
   oEventoCCe: olevariant;
   oInfCorrecao: olevariant;
@@ -81,9 +80,6 @@ begin
 
   oExceptionInterop := CreateOleObject('Unimake.Exceptions.ThrowHelper');
 
-  // **************************************************************************
-  // *** INÍCIO: BLOCO DE EXECUÇÃO E VALIDAÇÃO CORRIGIDO PARA CTE ***
-  // **************************************************************************
   try
     begin
       // Enviar evento
@@ -124,9 +120,6 @@ begin
     ShowMessage(oExceptionInterop.GetMessage());
     ShowMessage(IntToStr(oExceptionInterop.GetErrorCode()));
   end;
-  // **************************************************************************
-  // *** FIM DO BLOCO DE EXECUÇÃO E VALIDAÇÃO ***
-  // **************************************************************************
 end;
 
 end.
