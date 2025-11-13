@@ -35,14 +35,6 @@ def get_dados_xml(caminho):
         return "", False, False
 
 def main():
-    # print("Caminho esperado para Config.xml:")
-    # print(CONFIG_XML)
-    # print("Existe?", CONFIG_XML.exists())
-
-    # print("Caminho esperado para CidadeBR.xml:")
-    # print(NFSE_DIR)
-    # print("Existe?", NFSE_DIR.exists())
-
 
     if not os.path.exists(CONFIG_XML):
         print("Config.xml não encontrado!")
@@ -73,7 +65,7 @@ def main():
         if not versao:
             continue
 
-        # === SUBSTITUI EL POR E&L NO TEXTO ===
+        # Substitui EL por E&L no texto
         padrao_exibido = "E&L" if padrao == "EL" else padrao
 
         entradas.append((nome, uf, ibge, padrao, padrao_exibido, versao, prod, homo))
@@ -97,7 +89,7 @@ def main():
 
     for n, u, i, p, p_exib, v, pr, h in entradas:
         # Usa p_exib no texto, mas p no link (mantém compatibilidade)
-        link = f"[[Manuais:UniNFe/MunicipiosMonitor/{p}|{p_exib}]]"
+        link = f"[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_{p}|{p_exib}]]"
         lines += [
             f"||{escape_wiki(n)}||{u}||{i}||{link}||"
             f"<div style=\"text-align: center;\">{v}</div>||"

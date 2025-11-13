@@ -20,7 +20,7 @@ uses
   ConsultarStatusMDFe, ConsultarSituacaoMDFe,ConsultarMDFeNaoEncerrado,EventoPagamentoMDFe,
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
   ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe,
-  EnviarEventoCancelamentoCTeOS, EventoCCeCTe;
+  EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe,CancelamentoInsucessoEntregaCTe, DesserializandoXmlCTeOS;
 
 type
 
@@ -51,6 +51,7 @@ type
     btnInutilizacaoNumeroNFe: TButton;
     BtnEnviarNFComSincrono: TButton;
     BtnEnviarEventoEncerramentoMDFe: TButton;
+    Btn_CancelamentoInsucessoEntregaCTe: TButton;
     Btn_ConsultarStatusMDFe: TButton;
     Btn_ConsultarSituacaoMDFe: TButton;
     Btn_ConsultaMdfeNaoEncerrado: TButton;
@@ -65,6 +66,8 @@ type
     Btn_EventoCancelamentoCTe: TButton;
     Btn_EnviarEventoCancelamentoCTeOS: TButton;
     Btn_EventoCCeCTe: TButton;
+    Btn_InsucessoEntregaCTe: TButton;
+    Btn_DesserializandoXmlCTeOS: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -112,6 +115,7 @@ type
     procedure BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
     procedure BtnNACIONALConsultarPDFNFSeClick(Sender: TObject);
     procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
+    procedure Btn_CancelamentoInsucessoEntregaCTeClick(Sender: TObject);
     procedure Btn_ConsultaSituacaoCTeClick(Sender: TObject);
     procedure Btn_ConsultaStatusCteClick(Sender: TObject);
     procedure Btn_EnviarEventoCancelamentoCTeOSClick(Sender: TObject);
@@ -126,6 +130,8 @@ type
     procedure Btn_ConsultaSituacaoNFComClick(Sender: TObject);
     procedure Btn_EnviarEventoCancelamentoNFComClick(Sender: TObject);
     procedure Btn_EnviarCteSincronoClick(Sender: TObject);
+    procedure Btn_InsucessoEntregaCTeClick(Sender: TObject);
+    procedure Btn_DesserializandoXmlCTeOSClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox1Click(Sender: TObject);
     procedure GroupBox3Click(Sender: TObject);
@@ -500,6 +506,17 @@ begin
     end;
 end;
 
+procedure TfrmPrincipal.Btn_CancelamentoInsucessoEntregaCTeClick(Sender: TObject);
+var
+  oServico: TCancelamentoInsucessoEntregaCTe;
+begin
+  oServico := TCancelamentoInsucessoEntregaCTe.create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
 procedure TfrmPrincipal.Btn_ConsultaSituacaoCTeClick(Sender: TObject);
 var
   oServico: TConsultarSituacaoCTe;
@@ -648,6 +665,28 @@ var
   oServico: TEnviarCteSincrono;
 begin
   oServico := TEnviarCteSincrono.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.Btn_InsucessoEntregaCTeClick(Sender: TObject);
+var
+  oServico: TInsucessoEntregaCTe;
+begin
+  oServico := TInsucessoEntregaCTe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.Btn_DesserializandoXmlCTeOSClick(Sender: TObject);
+var
+  oServico: TDesserializandoXmlCTeOS;
+begin
+  oServico := TDesserializandoXmlCTeOS.Create;
   try
     oServico.Executar();
   finally

@@ -517,6 +517,11 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização síncrona de NFCom")]
         NFComAutorizacaoSinc = 83,
 
+        /// <summary>
+        /// 84 - Consulta o XML de emissão da NFS-e para prefeitura
+        /// </summary>
+        [Description("Consulta NFS-e")]
+        NFSeConsultarNotaFiscal = 84,
         #endregion
 
         #region Gerais
@@ -991,6 +996,18 @@ namespace Unimake.Business.DFe.Servicos
         ImportacaoALCZFMNaoConvertidaIsencao = 112120,
 
         /// <summary>
+        /// 112130 - Perecimento, perda, roubo ou furto durante o transporte contratado pelo fornecedor
+        /// </summary>
+        [XmlEnum("112130")]
+        PerecimentoDuranteTransporteContratadoFornecedor = 112130,
+
+        /// <summary>
+        /// 112140 - Fornecimento não realizado com pagamento antecipado
+        /// </summary>
+        [XmlEnum("112140")]
+        FornecimentoNaoRealizadoComPagamentoAntecipado = 112140,
+
+        /// <summary>
         /// 112150 - Atualização da data prevista para entrega
         /// </summary>
         [XmlEnum("112150")]
@@ -1019,6 +1036,24 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("210240")]
         ManifestacaoOperacaoNaoRealizada = 210240,
+
+        /// <summary>
+        /// 211110 - Solicitação de Apropriação de crédito presumido
+        /// </summary>
+        [XmlEnum("211110")]
+        SolicitacaoApropriacaoCreditoPresumido = 211110,
+
+        /// <summary>
+        /// 211120 - Destinação de item para consumo pessoal
+        /// </summary>
+        [XmlEnum("211120")]
+        DestinacaoItemParaConsumoPessoal = 211120,
+
+        /// <summary>
+        /// 211124 - Perecimento, perda, roubo ou furto durante o transporte contratado pelo adquirente
+        /// </summary>
+        [XmlEnum("211124")]
+        PerecimentoDuranteTransporteContratadoAdquirente = 211124,
 
         /// <summary>
         /// 211128 - Aceite de débito na apuração por emissão de nota de crédito
@@ -1091,6 +1126,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("412120")]
         ManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao = 412120,
+
+        /// <summary>
+        /// 412130 - Manifestação do Fisco sobre Pedido de Transferência de Crédito de CBS em Operação de Sucessão
+        /// </summary>
+        [XmlEnum("412130")]
+        ManifestacaoFiscoPedidoTransferenciaCreditoCBSOperacaoSucessao = 412130,
 
         /// <summary>
         /// 510620 - Registro de Passagem Automático da NFe (Evento exclusivo do fisco)
@@ -6817,7 +6858,6 @@ namespace Unimake.Business.DFe.Servicos
         BETHA = 1,
 
         /// <summary>
-        /// SIGCORP - Tecnologia da informação
         /// SIGCORP - Tecnologia da informação
         /// </summary>
         [Description("SIGCORP - Tecnologia da informação")]

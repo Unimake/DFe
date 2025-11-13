@@ -59,7 +59,7 @@
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.00">
-			<Descricao></Descricao>
+			<Descricao>Consulta NFSe pelo RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>http://gestaopublica.jatai.bsit-br.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>

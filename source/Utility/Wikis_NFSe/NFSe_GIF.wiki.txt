@@ -1,0 +1,56 @@
+== <span style="color:#008000;">Padrão GIF</span> ==
+* Municípios no padrão GIF utilizam WSDL's diferentes para emissão de NFSe, logo cada prefeitura pode ou não implementar os serviços listados abaixo;
+* No UniNFe e DLL, tem uma versão de SCHEMA disponível.
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FGIF%2F1.00 Exemplos versão 1.00]'''</div>
+|-
+||Cancelamento Nota Fiscal||<div style="text-align: center;">CancelarNotaFiscalEnvio-ped-cnf.xml</div>
+|-
+||<font color=#008000>Consulta Pedido Status Lote</font>||<font color=#008000><div style="text-align: center;">ObterCriticaLoteEnvio-ped-ocl.xml</div></font>
+|-
+||Consultar Lote Nota Fiscal||<div style="text-align: center;">ConsultaLoteEnvio-ped-cl.xml</div>
+|-
+||<font color=#008000>Consultar Lote Nota Fiscal</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml</div></font>
+|-
+||Consultar NFSe serviço prestado||<div style="text-align: center;">ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml</div>
+|-
+||<font color=#008000>Consultar Nota Fiscal</font>||<font color=#008000><div style="text-align: center;">ConsultarNotaFiscalEnvio-ped-cnf.xml</div></font>
+|-
+||Enviar Lote Notas||<div style="text-align: center;">EnviarLoteNotasEnvio-ped-eln.xml</div>
+|-
+||<font color=#008000>Obter Nota Fiscal Xml</font>||<font color=#008000><div style="text-align: center;">ObterNotaFiscalXmlEnvio-ped-onfx.xml</div></font>
+|-
+||Obter Nota Fiscal Xml||<div style="text-align: center;">ConsultarNfsePDFEnvio-ped-cnnfse.xml</div>
+|-
+||<font color=#008000>Solicitar Inutilizacao NFSe</font>||<font color=#008000><div style="text-align: center;">SolicitacaoInutilizacaoEnvio-ped-si.xml</div></font>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FGIF%2F1.00 Exemplos versão 1.00]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Cancelamento Nota Fiscal||<div style="text-align: center;">CancelarNotaFiscal</div>||<div style="text-align: center;">52</div>
+|-
+||<font color=#008000>Consulta Pedido Status Lote</font>||<font color=#008000><div style="text-align: center;">ObterCriticaLote</div></font>||<font color=#008000><div style="text-align: center;">57</div></font>
+|-
+||Consultar Lote Nota Fiscal||<div style="text-align: center;">ConsultaLote</div>||<div style="text-align: center;">48</div>
+|-
+||<font color=#008000>Consultar Lote Nota Fiscal</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseServicoTomado</div></font>||<font color=#008000><div style="text-align: center;">34</div></font>
+|-
+||Consultar NFSe serviço prestado||<div style="text-align: center;">ConsultarNfseServicoPrestado</div>||<div style="text-align: center;">33</div>
+|-
+||<font color=#008000>Consultar Nota Fiscal</font>||<font color=#008000><div style="text-align: center;">ConsultarNotaFiscal</div></font>||<font color=#008000><div style="text-align: center;">84</div></font>
+|-
+||Enviar Lote Notas||<div style="text-align: center;">EnviarLoteNotas</div>||<div style="text-align: center;">54</div>
+|-
+||<font color=#008000>Obter Nota Fiscal Xml</font>||<font color=#008000><div style="text-align: center;">ConsultarNfsePDF</div></font>||<font color=#008000><div style="text-align: center;">37</div></font>
+|-
+||Obter Nota Fiscal Xml||<div style="text-align: center;">ObterNotaFiscalXml</div>||<div style="text-align: center;">62</div>
+|-
+||<font color=#008000>Solicitar Inutilizacao NFSe</font>||<font color=#008000><div style="text-align: center;">SolicitacaoInutilizacao</div></font>||<font color=#008000><div style="text-align: center;">63</div></font>
+|-
+|}
+<br>

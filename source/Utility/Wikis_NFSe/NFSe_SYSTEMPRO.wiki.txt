@@ -1,0 +1,36 @@
+== <span style="color:#008000;">Padrão SYSTEMPRO</span> ==
+* Municípios no padrão SYSTEMPRO utilizam WSDL's diferentes para emissão de NFSe, logo cada prefeitura pode ou não implementar os serviços listados abaixo;
+* No UniNFe e DLL, tem uma versão de SCHEMA disponível.
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FSYSTEMPRO%2F2.01 Exemplos versão 2.01]'''</div>
+|-
+||Cancelar nota fiscal de serviço||<div style="text-align: center;">CancelarNfseEnvio-ped-cannfse.xml</div>
+|-
+||<font color=#008000>Consulta NFSe por Faixa</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseFaixaEnvio-ped-sitnfse.xml</div></font>
+|-
+||Gerar Nota Fiscal de Serviço||<div style="text-align: center;">GerarNfseEnvio-env-loterps.xml</div>
+|-
+||<font color=#008000>Recepcionar Lote RPS Sincrono</font>||<font color=#008000><div style="text-align: center;">RecepcionarLoteRpsSincronoEnvio-env-loterps.xml</div></font>
+|-
+||Substituir nota fiscal de Serviço||<div style="text-align: center;">SubstituirNfseEnvio-ped-substnfse.xml</div>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FSYSTEMPRO%2F2.01 Exemplos versão 2.01]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Cancelar nota fiscal de serviço||<div style="text-align: center;">CancelarNfse</div>||<div style="text-align: center;">24</div>
+|-
+||<font color=#008000>Consulta NFSe por Faixa</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseFaixa</div></font>||<font color=#008000><div style="text-align: center;">35</div></font>
+|-
+||Gerar Nota Fiscal de Serviço||<div style="text-align: center;">GerarNfse</div>||<div style="text-align: center;">27</div>
+|-
+||<font color=#008000>Recepcionar Lote RPS Sincrono</font>||<font color=#008000><div style="text-align: center;">RecepcionarLoteRpsSincrono</div></font>||<font color=#008000><div style="text-align: center;">29</div></font>
+|-
+||Substituir nota fiscal de Serviço||<div style="text-align: center;">SubstituirNfse</div>||<div style="text-align: center;">30</div>
+|-
+|}
+<br>

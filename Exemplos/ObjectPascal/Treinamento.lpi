@@ -244,6 +244,21 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EventoCCeCTe"/>
       </Unit>
+      <Unit>
+        <Filename Value="insucessoentregacte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="InsucessoEntregaCTe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="cancelamentoinsucessoentregacte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CancelamentoInsucessoEntregaCTe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="desserializandoxmlcteos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DesserializandoXmlCTeOS"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

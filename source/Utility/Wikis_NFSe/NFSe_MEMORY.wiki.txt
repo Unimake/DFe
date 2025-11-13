@@ -1,0 +1,36 @@
+== <span style="color:#008000;">Padrão MEMORY</span> ==
+* Municípios no padrão MEMORY utilizam o mesmo WSDL para emissão de NFSe;
+* No UniNFe e DLL, tem uma versão de SCHEMA disponível.
+<br>
+=== <span style="color=#008000;">Para uso no UniNFe</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+!scope="row"|'''Descrição do serviço'''||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2FMEMORY%2F1.00 Exemplos versão 1.00]'''</div>
+|-
+||Cancelar nota fiscal de serviço||<div style="text-align: center;">CancelarNfseEnvio-ped-cannfse.xml</div>
+|-
+||<font color=#008000>Consulta nota fiscal de serviço do prestador</font>||<font color=#008000><div style="text-align: center;">ConsultarNfseEnvio-ped-cnfse.xml</div></font>
+|-
+||Consulta nota fiscal de serviço por RPS||<div style="text-align: center;">ConsultarNfsePorRpsEnvio-ped-cnprnfse.xml</div>
+|-
+||<font color=#008000>Consulta o Lote RPS enviado</font>||<font color=#008000><div style="text-align: center;">ConsultarLoteRpsEnvio-ped-loterps.xml</div></font>
+|-
+||Recepcionar Lote RPS||<div style="text-align: center;">RecepcionarLoteRpsEnvio-env-loterps.xml</div>
+|-
+|}
+<br>
+=== <span style="color=#008000;">Para uso na DLL</span> ===
+{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"
+! '''Descrição do serviço''' ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FMEMORY%2F1.00 Exemplos versão 1.00]'''</div> ||<div style="text-align: center;">'''[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]'''</div>
+|-
+||Cancelar nota fiscal de serviço||<div style="text-align: center;">CancelarNfse</div>||<div style="text-align: center;">24</div>
+|-
+||<font color=#008000>Consulta nota fiscal de serviço do prestador</font>||<font color=#008000><div style="text-align: center;">ConsultarNfse</div></font>||<font color=#008000><div style="text-align: center;">32</div></font>
+|-
+||Consulta nota fiscal de serviço por RPS||<div style="text-align: center;">ConsultarNfsePorRps</div>||<div style="text-align: center;">36</div>
+|-
+||<font color=#008000>Consulta o Lote RPS enviado</font>||<font color=#008000><div style="text-align: center;">ConsultarLoteRps</div></font>||<font color=#008000><div style="text-align: center;">31</div></font>
+|-
+||Recepcionar Lote RPS||<div style="text-align: center;">RecepcionarLoteRps</div>||<div style="text-align: center;">28</div>
+|-
+|}
+<br>

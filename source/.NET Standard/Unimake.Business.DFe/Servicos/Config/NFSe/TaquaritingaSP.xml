@@ -38,7 +38,7 @@
 			<SchemaVersao>1.00</SchemaVersao>
 		</CancelarNfse>
 		<ConsultarNfse versao="1.00">
-			<Descricao></Descricao>
+			<Descricao>Consultar Nfse</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://s97.asp.srv.br/issonline/servlet/anfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
