@@ -1,0 +1,29 @@
+﻿<ServicosValidacao>
+    <Servico tagRaiz="consStatServ" versao="4.00" padraoNFSe ="" versaoPadrao ="">
+		<SchemaArquivo>consStatServ_v4.00.xsd</SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+    </Servico>
+	<Servico tagRaiz ="consSitNFe" versao ="4.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo>consSitNFe_v4.00.xsd</SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+	</Servico>
+	<Servico tagRaiz ="" versao="" pradraoNFSe ="" versaoPadrao ="">
+		<SchamaArquivo></SchamaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+	</Servico>
+</ServicosValidacao>

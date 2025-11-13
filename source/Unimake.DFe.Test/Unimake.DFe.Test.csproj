@@ -40,6 +40,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Include="Utility\TesteValidacao\ServicoValidacao.xml">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
@@ -103,6 +109,12 @@
 	<ItemGroup>
 		<Folder Include="NFSe\Resources\ADM_SISTEMAS\2.01\" />
 		<Folder Include="NFSe\Resources\PORTAL_FACIL\2.02\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Utility\TesteValidacao\Dicionario.cs">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Compile>
 	</ItemGroup>
 
 
