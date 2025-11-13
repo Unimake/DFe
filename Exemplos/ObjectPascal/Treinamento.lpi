@@ -259,6 +259,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="DesserializandoXmlCTeOS"/>
       </Unit>
+      <Unit>
+        <Filename Value="eventoctedesacordo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EventoCTeDesacordo"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

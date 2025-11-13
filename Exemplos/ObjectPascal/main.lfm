@@ -7,6 +7,7 @@ object frmPrincipal: TfrmPrincipal
   ClientHeight = 884
   ClientWidth = 1588
   DesignTimePPI = 120
+  LCLVersion = '4.2.0.0'
   OnCreate = FormCreate
   object GroupBox1: TGroupBox
     Left = 10
@@ -519,6 +520,15 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Desserializando XML do CTeOS'
       TabOrder = 9
       OnClick = Btn_DesserializandoXmlCTeOSClick
+    end
+    object Btn_EventoCteDesacordo: TButton
+      Left = 330
+      Height = 31
+      Top = 0
+      Width = 273
+      Caption = 'Evento de CTe em desacordo'
+      TabOrder = 10
+      OnClick = Btn_EventoCteDesacordoClick
     end
   end
 end
