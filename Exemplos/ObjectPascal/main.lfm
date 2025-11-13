@@ -7,7 +7,6 @@ object frmPrincipal: TfrmPrincipal
   ClientHeight = 884
   ClientWidth = 1588
   DesignTimePPI = 120
-  LCLVersion = '4.2.0.0'
   OnCreate = FormCreate
   object GroupBox1: TGroupBox
     Left = 10
@@ -529,6 +528,15 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Evento de CTe em desacordo'
       TabOrder = 10
       OnClick = Btn_EventoCteDesacordoClick
+    end
+    object Btn_EventoEpecCte: TButton
+      Left = 330
+      Height = 31
+      Top = 32
+      Width = 273
+      Caption = 'Evento de EPEC CTe'
+      TabOrder = 11
+      OnClick = Btn_EventoEpecCteClick
     end
   end
 end

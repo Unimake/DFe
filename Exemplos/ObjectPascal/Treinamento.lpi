@@ -264,6 +264,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EventoCTeDesacordo"/>
       </Unit>
+      <Unit>
+        <Filename Value="eventoepeccte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EventoEpecCte"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

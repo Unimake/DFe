@@ -21,7 +21,7 @@ uses
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
   ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe,
   EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe,CancelamentoInsucessoEntregaCTe, DesserializandoXmlCTeOS,
-  EventoCTeDesacordo;
+  EventoCTeDesacordo, EventoEpecCte;
 
 type
 
@@ -70,6 +70,7 @@ type
     Btn_InsucessoEntregaCTe: TButton;
     Btn_DesserializandoXmlCTeOS: TButton;
     Btn_EventoCteDesacordo: TButton;
+    Btn_EventoEpecCte: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -128,6 +129,7 @@ type
     procedure Btn_ConsultarSituacaoMDFeClick(Sender: TObject);
     procedure Btn_EventoCancelamentoCTeClick(Sender: TObject);
     procedure Btn_EventoCCeCTeClick(Sender: TObject);
+    procedure Btn_EventoEpecCteClick(Sender: TObject);
     procedure Btn_EventoPagamentoMDFeClick(Sender: TObject);
     procedure Btn_ConsultaSituacaoNFComClick(Sender: TObject);
     procedure Btn_EnviarEventoCancelamentoNFComClick(Sender: TObject);
@@ -624,6 +626,17 @@ var
   oServico: TEventoCCeCTe;
 begin
   oServico := TEventoCCeCTe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.Btn_EventoEpecCteClick(Sender: TObject);
+var
+  oServico: TEventoEpecCte;
+begin
+  oServico := TEventoEpecCte.Create;
   try
     oServico.Executar();
   finally
