@@ -41,7 +41,7 @@
 
 	<ItemGroup>
 	  <Content Include="Utility\TesteValidacao\ServicoValidacao.xml">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>
 

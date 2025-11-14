@@ -45,11 +45,13 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         // O paametro caminhoServicoValidacao também será mudado para ser carregado internamente pelo UniNFe dependendo do local especifico.
         // LEMBRETE: implementar dicionario para envios de lote também.
 
-        [Theory]
-        [InlineData("C:\\Projetos\\GitHub\\DFe\\source\\Unimake.DFe.Test\\Utility\\TesteValidacao\\ServicoValidacao.xml", "consStatServ", "C:\\Users\\UnimakeLenovo\\Desktop\\testeDicionarioValidacao\\20100222T222310-ped-sta.xml")]
-        [InlineData("C:\\Projetos\\GitHub\\DFe\\source\\Unimake.DFe.Test\\Utility\\TesteValidacao\\ServicoValidacao.xml", "consSitNFe", "C:\\Users\\UnimakeLenovo\\Desktop\\testeDicionarioValidacao\\99999999999999999999999999999999999999999993-ped-sit.xml")]
+        [Theory]                                                                           
+        [InlineData(@"..\..\..\Utility\TesteValidacao\ServicoValidacao.xml", "consStatServ", @"..\..\..\Utility\TesteValidacao\XMLteste\20100222T222310-ped-sta.xml")]
+        [InlineData(@"..\..\..\Utility\TesteValidacao\ServicoValidacao.xml", "consSitNFe", @"..\..\..\Utility\TesteValidacao\XMLteste\99999999999999999999999999999999999999999993-ped-sit.xml")]
         public static void CaregarServico(string caminhoServicoValidacao, string tagRaiz, string caminhoArquivo) 
         {
+
+
             if (!File.Exists(caminhoServicoValidacao))
             {
                 throw new Exception("Arquivo 'ServicoValidacao' não encontrado");
@@ -120,8 +122,6 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
   
      
         }
-
-
 
 
 
