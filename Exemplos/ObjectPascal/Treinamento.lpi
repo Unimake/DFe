@@ -269,6 +269,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EventoEpecCte"/>
       </Unit>
+      <Unit>
+        <Filename Value="consultaconfiggnre.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultaConfigGNRE"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

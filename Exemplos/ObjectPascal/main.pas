@@ -21,7 +21,7 @@ uses
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
   ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe,
   EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe,CancelamentoInsucessoEntregaCTe, DesserializandoXmlCTeOS,
-  EventoCTeDesacordo, EventoEpecCte;
+  EventoCTeDesacordo, EventoEpecCte, ConsultaConfigGNRE;
 
 type
 
@@ -71,6 +71,7 @@ type
     Btn_DesserializandoXmlCTeOS: TButton;
     Btn_EventoCteDesacordo: TButton;
     Btn_EventoEpecCte: TButton;
+    ConsultaConfigGNRE: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
     btnEnviarEventoManifestacaoNFe: TToggleBox;
@@ -86,6 +87,7 @@ type
     BtnEnviarMDFeSincrono: TToggleBox;
     BtnEnviarEventoCancelamentoMDFe: TToggleBox;
     GroupBox7: TGroupBox;
+    GroupBox8: TGroupBox;
     procedure BtnBETHACancelarNFSeClick(Sender: TObject);
     procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
     procedure BtnBETHAConsultarNFSeRPSClick(Sender: TObject);
@@ -137,9 +139,11 @@ type
     procedure Btn_InsucessoEntregaCTeClick(Sender: TObject);
     procedure Btn_DesserializandoXmlCTeOSClick(Sender: TObject);
     procedure Btn_EventoCteDesacordoClick(Sender: TObject);
+    procedure ConsultaConfigGNREClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox1Click(Sender: TObject);
     procedure GroupBox3Click(Sender: TObject);
+    procedure GroupBox8Click(Sender: TObject);
 
   private
 
@@ -720,6 +724,17 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.ConsultaConfigGNREClick(Sender: TObject);
+var
+  oServico: TConsultaConfigGNRE;
+begin
+  oServico := TConsultaConfigGNRE.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
 
@@ -731,6 +746,11 @@ begin
 end;
 
 procedure TfrmPrincipal.GroupBox3Click(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmPrincipal.GroupBox8Click(Sender: TObject);
 begin
 
 end;

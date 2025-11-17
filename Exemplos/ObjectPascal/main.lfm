@@ -539,4 +539,24 @@ object frmPrincipal: TfrmPrincipal
       OnClick = Btn_EventoEpecCteClick
     end
   end
+  object GroupBox8: TGroupBox
+    Left = 320
+    Height = 131
+    Top = 528
+    Width = 287
+    Caption = 'GNRE'
+    ClientHeight = 106
+    ClientWidth = 283
+    TabOrder = 9
+    OnClick = GroupBox8Click
+    object ConsultaConfigGNRE: TButton
+      Left = 0
+      Height = 31
+      Top = 0
+      Width = 280
+      Caption = 'Consultar Config UF'
+      TabOrder = 0
+      OnClick = ConsultaConfigGNREClick
+    end
+  end
 end
