@@ -69,6 +69,7 @@
                   <xs:enumeration value="211128"/>
                   <xs:enumeration value="211130"/>
                   <xs:enumeration value="211140"/>
+                  <xs:enumeration value="211150"/>
                   <xs:enumeration value="212110"/>
                   <xs:enumeration value="212120"/>
                   <xs:enumeration value="412120"/>

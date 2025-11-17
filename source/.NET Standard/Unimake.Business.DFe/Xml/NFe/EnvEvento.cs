@@ -104,6 +104,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                 case "211140":
                     PrepararGConsumoComb(document);
                     break;
+
+                case "211150":
+                    PrepararGCredito(document);
+                    break;
             }
         }
 
@@ -487,6 +491,31 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
         }
 
+        public void PrepararGCredito(XmlDocument xmlDoc)
+        {
+            var gCredito = xmlDoc.GetElementsByTagName("gCredito");
+
+            foreach (var evento in Evento)
+            {
+                if (evento.InfEvento.DetEvento is DetEventoSolicitacaoApropriacaoCreditoBensServicosAdquirente detEvento)
+                {
+                    detEvento.GCredito = new List<GCredito>();
+
+                    foreach (var nodeGCredito in gCredito)
+                    {
+                        var elementGCredito = (XmlElement)nodeGCredito;
+
+                        detEvento.GCredito.Add(new GCredito
+                        {
+                            NItem = Convert.ToInt32(elementGCredito.GetAttribute("nItem")),
+                            VCredIBS = Convert.ToDouble(elementGCredito.GetElementsByTagName("vCredIBS")[0].InnerText, CultureInfo.InvariantCulture),
+                            VCredCBS = Convert.ToDouble(elementGCredito.GetElementsByTagName("vCredCBS")[0].InnerText, CultureInfo.InvariantCulture),
+                        });
+                    }
+                }
+            }
+        }
+
 #if INTEROP
         /// <summary>
         /// Adicionar novo elemento a lista
@@ -851,6 +880,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                     case TipoEventoNFe.SolicitacaoApropriacaoCreditoCombustivel:
                         _detEvento = new DetEventoSolicitacaoApropriacaoCreditoCombustivel();
+                        break;
+
+                    case TipoEventoNFe.SolicitacaoApropriacaoCreditoBensServicosAdquirente:
+                        _detEvento = new DetEventoSolicitacaoApropriacaoCreditoBensServicosAdquirente();
                         break;                        
 
                     default:
@@ -5850,30 +5883,6 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string UImobilizado { get; set; }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /// <summary>
     /// Classe de detalhamento do Evento de Imobilização de Item
     /// </summary>
@@ -6070,5 +6079,164 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlElement("uComb")]
         public string UComb { get; set; }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do Evento de Solicitação de Apropriação de Crédito para bens e serviços que dependem de atividade do adquirente
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoSolicitacaoApropriacaoCreditoBensServicosAdquirente")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoSolicitacaoApropriacaoCreditoBensServicosAdquirente : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Solicitação de Apropriação de Crédito para bens e serviços que dependem de atividade do adquirente";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Informações de crédito
+        /// </summary>        
+        [XmlElement("gCredito", Order = 4)]
+        public List<GCredito> GCredito { get; set; } = new List<GCredito>();
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>";
+
+            if (GCredito != null)
+            {
+                if (GCredito.Count > 0)
+                {
+                    for (int i = 0; i < GCredito.Count; i++)
+                    {
+                        xml += $@"<gCredito nItem={"\"" + GCredito[i].NItem.ToString() + "\""}>
+                              <vCredIBS>{GCredito[i].VCredIBSField}</vCredIBS>
+                              <vCredCBS>{GCredito[i].VCredCBSField}</vCredCBS>";
+
+                        xml += $@"</gCredito>";
+                    }
+                }
+            }
+
+            writer.WriteRaw(xml);
+        }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddGCredito(GCredito item)
+        {
+            if (GCredito == null)
+            {
+                GCredito = new List<GCredito>();
+            }
+
+            GCredito.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista GCredito (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da GCredito</returns>
+        public GCredito GetGCredito(int index)
+        {
+            if ((GCredito?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return GCredito[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista GCredito
+        /// </summary>
+        public int GetGCreditoCount => (GCredito != null ? GCredito.Count : 0);
+
+#endif
+    }
+
+    public class GCredito
+    {
+        /// <summary>
+        /// Número do item
+        /// </summary>
+        [XmlAttribute(AttributeName = "nItem")]
+        public int NItem { get; set; }
+
+        /// <summary>
+        /// Valor da solicitação de crédito a ser apropriado de IBS
+        /// </summary>
+        [XmlIgnore]
+        public double VCredIBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCredIBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCredIBS")]
+        public string VCredIBSField
+        {
+            get => VCredIBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredIBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da solicitação de crédito a ser apropriado de CBS
+        /// </summary>
+        [XmlIgnore]
+        public double VCredCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCredCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCredCBS")]
+        public string VCredCBSField
+        {
+            get => VCredCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredCBS = Converter.ToDouble(value);
+        }
     }
 }
