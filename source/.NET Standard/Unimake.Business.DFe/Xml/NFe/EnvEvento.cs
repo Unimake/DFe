@@ -100,6 +100,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                 case "211130":
                     PrepararGImobilizado(document);
                     break;
+
+                case "211140":
+                    PrepararGConsumoComb(document);
+                    break;
             }
         }
 
@@ -440,6 +444,42 @@ namespace Unimake.Business.DFe.Xml.NFe
                             {
                                 QImobilizado = Convert.ToDouble(elementGControleEstoque.GetElementsByTagName("qImobilizado")[0].InnerText, CultureInfo.InvariantCulture),
                                 UImobilizado = elementGControleEstoque.GetElementsByTagName("uImobilizado")[0].InnerText
+                            };
+                        }
+                    }
+                }
+            }
+        }
+
+        public void PrepararGConsumoComb(XmlDocument xmlDoc)
+        {
+            var gConsumoComb = xmlDoc.GetElementsByTagName("gConsumoComb");
+
+            foreach (var evento in Evento)
+            {
+                if (evento.InfEvento.DetEvento is DetEventoSolicitacaoApropriacaoCreditoCombustivel detEvento)
+                {
+                    detEvento.GConsumoComb = new List<GConsumoComb>();
+
+                    foreach (var nodeGConsumoComb in gConsumoComb)
+                    {
+                        var elementGConsumoComb = (XmlElement)nodeGConsumoComb;
+
+                        detEvento.GConsumoComb.Add(new GConsumoComb
+                        {
+                            NItem = Convert.ToInt32(elementGConsumoComb.GetAttribute("nItem")),
+                            VIBS = Convert.ToDouble(elementGConsumoComb.GetElementsByTagName("vIBS")[0].InnerText, CultureInfo.InvariantCulture),
+                            VCBS = Convert.ToDouble(elementGConsumoComb.GetElementsByTagName("vCBS")[0].InnerText, CultureInfo.InvariantCulture),
+                        });
+
+                        if (elementGConsumoComb.GetElementsByTagName("gControleEstoque").Count > 0)
+                        {
+                            var elementGControleEstoque = (XmlElement)elementGConsumoComb.GetElementsByTagName("gControleEstoque")[0];
+
+                            detEvento.GConsumoComb[detEvento.GConsumoComb.Count - 1].GControleEstoque = new GControleEstoqueConsumoComb
+                            {
+                                QComb = Convert.ToDouble(elementGControleEstoque.GetElementsByTagName("qComb")[0].InnerText, CultureInfo.InvariantCulture),
+                                UComb = elementGControleEstoque.GetElementsByTagName("uComb")[0].InnerText
                             };
                         }
                     }
@@ -808,6 +848,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                     case TipoEventoNFe.ImobilizacaoItem:
                         _detEvento = new DetEventoImobilizacaoItem();
                         break;
+
+                    case TipoEventoNFe.SolicitacaoApropriacaoCreditoCombustivel:
+                        _detEvento = new DetEventoSolicitacaoApropriacaoCreditoCombustivel();
+                        break;                        
 
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
@@ -5804,5 +5848,227 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlElement("uImobilizado")]
         public string UImobilizado { get; set; }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /// <summary>
+    /// Classe de detalhamento do Evento de Imobilização de Item
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoSolicitacaoApropriacaoCreditoCombustivel")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoSolicitacaoApropriacaoCreditoCombustivel : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Solicitação de Apropriação de Crédito de Combustível";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Informações de consumo de combustíveis
+        /// </summary>        
+        [XmlElement("gConsumoComb", Order = 4)]
+        public List<GConsumoComb> GConsumoComb { get; set; } = new List<GConsumoComb>();
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>";
+
+            if (GConsumoComb != null)
+            {
+                if (GConsumoComb.Count > 0)
+                {
+                    for (int i = 0; i < GConsumoComb.Count; i++)
+                    {
+                        xml += $@"<gConsumoComb nItem={"\"" + GConsumoComb[i].NItem.ToString() + "\""}>
+                              <vIBS>{GConsumoComb[i].VIBSField}</vIBS>
+                              <vCBS>{GConsumoComb[i].VCBSField}</vCBS>";
+
+                        if (GConsumoComb[i].GControleEstoque != null)
+                        {
+                            xml += $@"<gControleEstoque>
+                                  <qComb>{GConsumoComb[i].GControleEstoque.QCombField}</qComb>
+                                  <uComb>{GConsumoComb[i].GControleEstoque.UComb}</uComb>
+                                  </gControleEstoque>";
+                        }
+
+                        xml += $@"</gConsumoComb>";
+                    }
+                }
+            }
+
+            writer.WriteRaw(xml);
+        }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddGConsumoComb(GConsumoComb item)
+        {
+            if (GConsumoComb == null)
+            {
+                GConsumoComb = new List<GConsumoComb>();
+            }
+
+            GConsumoComb.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista GConsumoComb (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da GConsumoComb</returns>
+        public GConsumoComb GetGConsumoComb(int index)
+        {
+            if ((GConsumoComb?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return GConsumoComb[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista GConsumoComb
+        /// </summary>
+        public int GetGConsumoCombCount => (GConsumoComb != null ? GConsumoComb.Count : 0);
+
+#endif
+    }
+
+    public class GConsumoComb
+    {
+        /// <summary>
+        /// Número do item
+        /// </summary>
+        [XmlAttribute(AttributeName = "nItem")]
+        public int NItem { get; set; }
+
+        /// <summary>
+        /// Valor do IBS relativo ao consumo de combustível na nota de aquisição
+        /// </summary>
+        [XmlIgnore]
+        public double VIBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vIBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vIBS")]
+        public string VIBSField
+        {
+            get => VIBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da CBS relativo ao consumo de combustível na nota de aquisição
+        /// </summary>
+        [XmlIgnore]
+        public double VCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCBS")]
+        public string VCBSField
+        {
+            get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Informações de consumo de combustíveis
+        /// </summary>
+        [XmlElement("gControleEstoque")]
+        public GControleEstoqueConsumoComb GControleEstoque { get; set; }
+    }
+
+    public class GControleEstoqueConsumoComb
+    {
+        /// <summary>
+        /// Informar a quantidade de consumo do item
+        /// </summary>
+        [XmlIgnore]
+        public double QComb { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade QComb para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("qComb")]
+        public string QCombField
+        {
+            get => QComb.ToString("F4", CultureInfo.InvariantCulture);
+            set => QComb = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Informar a unidade relativa ao campo qComb
+        /// </summary>
+        [XmlElement("uComb")]
+        public string UComb { get; set; }
     }
 }
