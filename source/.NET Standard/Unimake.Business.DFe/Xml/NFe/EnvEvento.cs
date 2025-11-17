@@ -96,6 +96,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                 case "211120":
                     PrepararGConsumoAquisicao(document);
                     break;
+
+                case "211130":
+                    PrepararGImobilizado(document);
+                    break;
             }
         }
 
@@ -400,6 +404,42 @@ namespace Unimake.Business.DFe.Xml.NFe
                             {
                                 ChaveAcesso = elementDFeReferenciado.GetElementsByTagName("chaveAcesso")[0].InnerText,
                                 NItem = elementDFeReferenciado.GetElementsByTagName("nItem")[0].InnerText
+                            };
+                        }
+                    }
+                }
+            }
+        }
+
+        public void PrepararGImobilizado(XmlDocument xmlDoc)
+        {
+            var gImobilizacao = xmlDoc.GetElementsByTagName("gImobilizacao");
+
+            foreach (var evento in Evento)
+            {
+                if (evento.InfEvento.DetEvento is DetEventoImobilizacaoItem detEvento)
+                {
+                    detEvento.GImobilizacao = new List<GImobilizacao>();
+
+                    foreach (var nodeGImobilizacao in gImobilizacao)
+                    {
+                        var elementGImobilizacao = (XmlElement)nodeGImobilizacao;
+
+                        detEvento.GImobilizacao.Add(new GImobilizacao
+                        {
+                            NItem = Convert.ToInt32(elementGImobilizacao.GetAttribute("nItem")),
+                            VIBS = Convert.ToDouble(elementGImobilizacao.GetElementsByTagName("vIBS")[0].InnerText, CultureInfo.InvariantCulture),
+                            VCBS = Convert.ToDouble(elementGImobilizacao.GetElementsByTagName("vCBS")[0].InnerText, CultureInfo.InvariantCulture),
+                        });
+
+                        if (elementGImobilizacao.GetElementsByTagName("gControleEstoque").Count > 0)
+                        {
+                            var elementGControleEstoque = (XmlElement)elementGImobilizacao.GetElementsByTagName("gControleEstoque")[0];
+
+                            detEvento.GImobilizacao[detEvento.GImobilizacao.Count - 1].GControleEstoque = new GControleEstoqueImobilizacao
+                            {
+                                QImobilizado = Convert.ToDouble(elementGControleEstoque.GetElementsByTagName("qImobilizado")[0].InnerText, CultureInfo.InvariantCulture),
+                                UImobilizado = elementGControleEstoque.GetElementsByTagName("uImobilizado")[0].InnerText
                             };
                         }
                     }
@@ -765,6 +805,9 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoPerecimentoDuranteTransporteContratadoAdquirente();
                         break;
 
+                    case TipoEventoNFe.ImobilizacaoItem:
+                        _detEvento = new DetEventoImobilizacaoItem();
+                        break;
 
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
@@ -5492,7 +5535,6 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     }
 
-
     public class GPerecimentoAdquirente
     {
         /// <summary>
@@ -5540,6 +5582,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public GControleEstoquePerecimentoAdquirente GControleEstoque { get; set; }
 
     }
+
     public class GControleEstoquePerecimentoAdquirente
     {
         /// <summary>
@@ -5563,5 +5606,203 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlElement("uPerecimento")]
         public string UPerecimento { get; set; }
+    }
+
+    /// <summary>
+    /// Classe de detalhamento do Evento de Imobilização de Item
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoImobilizacaoItem")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoImobilizacaoItem : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Imobilização de Item";
+
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutorField
+        {
+            get => ((int)COrgaoAutor).ToString();
+            set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
+        }
+
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
+        [XmlElement("tpAutor", Order = 2)]
+        public TipoAutor TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do autor do evento. 
+        /// </summary>
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Informações por item da Nota de Fornecimento
+        /// </summary>        
+        [XmlElement("gImobilizacao", Order = 4)]
+        public List<GImobilizacao> GImobilizacao { get; set; } = new List<GImobilizacao>();
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>";
+
+            if (GImobilizacao != null)
+            {
+                if (GImobilizacao.Count > 0)
+                {
+                    for (int i = 0; i < GImobilizacao.Count; i++)
+                    {
+                        xml += $@"<gImobilizacao nItem={"\"" + GImobilizacao[i].NItem.ToString() + "\""}>
+                              <vIBS>{GImobilizacao[i].VIBSField}</vIBS>
+                              <vCBS>{GImobilizacao[i].VCBSField}</vCBS>";
+
+                        if (GImobilizacao[i].GControleEstoque != null)
+                        {
+                            xml += $@"<gControleEstoque>
+                                  <qImobilizado>{GImobilizacao[i].GControleEstoque.QImobilizadoField}</qImobilizado>
+                                  <uImobilizado>{GImobilizacao[i].GControleEstoque.UImobilizado}</uImobilizado>
+                                  </gControleEstoque>";
+                        }
+
+                        xml += $@"</gImobilizacao>";
+                    }
+                }
+            }
+
+            writer.WriteRaw(xml);
+        }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddGImobilizacao(GImobilizacao item)
+        {
+            if (GImobilizacao == null)
+            {
+                GImobilizacao = new List<GImobilizacao>();
+            }
+
+            GImobilizacao.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista GImobilizacao (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da GImobilizacao</returns>
+        public GImobilizacao GetGImobilizacao(int index)
+        {
+            if ((GImobilizacao?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return GImobilizacao[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista GImobilizacao
+        /// </summary>
+        public int GetGImobilizacaoCount => (GImobilizacao != null ? GImobilizacao.Count : 0);
+
+#endif
+    }
+
+    public class GImobilizacao
+    {
+        /// <summary>
+        /// Número do item
+        /// </summary>
+        [XmlAttribute(AttributeName = "nItem")]
+        public int NItem { get; set; }
+
+        /// <summary>
+        /// Valor do IBS relativo à imobilização
+        /// </summary>
+        [XmlIgnore]
+        public double VIBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vIBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vIBS")]
+        public string VIBSField
+        {
+            get => VIBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da CBS relativo à imobilização
+        /// </summary>
+        [XmlIgnore]
+        public double VCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCBS")]
+        public string VCBSField
+        {
+            get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Informações de itens integrados ao ativo imobilizado
+        /// </summary>
+        [XmlElement("gControleEstoque")]
+        public GControleEstoqueImobilizacao GControleEstoque { get; set; }
+    }
+
+    public class GControleEstoqueImobilizacao
+    {
+        /// <summary>
+        /// Informar a quantidade do item a ser imobilizado
+        /// </summary>
+        [XmlIgnore]
+        public double QImobilizado { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade QImobilizado para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("qImobilizado")]
+        public string QImobilizadoField
+        {
+            get => QImobilizado.ToString("F4", CultureInfo.InvariantCulture);
+            set => QImobilizado = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Informar a unidade relativa ao campo qImobilizado
+        /// </summary>
+        [XmlElement("uImobilizado")]
+        public string UImobilizado { get; set; }
     }
 }
