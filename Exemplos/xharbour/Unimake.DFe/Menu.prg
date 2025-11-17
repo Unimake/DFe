@@ -37,9 +37,9 @@ Function Main()
    Aadd(aOpcoes, "Finalizar a nota pela consulta situacao da NFe") 
    AAdd(aOpcoes, "Gerando a NFCe em contingencia OffLine")
    AAdd(aOpcoes, "Enviar CTe - Modo Assincrono") 
-   AAdd(aOpcoes, "Enviar Lote RPS (NFSe) - Assincrono")
-   AAdd(aOpcoes, "Enviar Consulta Lote RPS (NFSe)")
-   AAdd(aOpcoes, "Enviar Cancelamento da NFSe")
+   AAdd(aOpcoes, "NFSe - PM São Paulo - Enviar Lote RPS - Assincrono")
+   AAdd(aOpcoes, "NFSe - PM São Paulo - Enviar Consulta Lote RPS")
+   AAdd(aOpcoes, "NFSe - PM São Paulo - Enviar Cancelamento da NFSe")
    AAdd(aOpcoes, "Enviar NFe em contingencia SVC-AN e SVC-RS")
    AAdd(aOpcoes, "Enviar CTe em contingencia SVC-SP e SVC-RS")
    AAdd(aOpcoes, "Como encriptar a tag <Assinatura> NFSe Sao Paulo")
@@ -97,6 +97,11 @@ Function Main()
    Aadd(aOpcoes, "Assinar XML")   
    
    Aadd(aOpcoes, "eSocial - Evento 2206 - Enviar lote")
+   
+	AAdd(aOpcoes, "NFSe - Nacional - Enviar NFSe")
+	AAdd(aOpcoes, "NFSe - Nacional - Consultar DPS")
+	AAdd(aOpcoes, "NFSe - Nacional - Consultar NFSe")
+	AAdd(aOpcoes, "NFSe - Nacional - Consultar PDF")
    
    Do While .T.
       Cls
@@ -346,6 +351,18 @@ Function Main()
 			  
          case nOpcao = 76
               EnviarEsocial2206()			  
+				  
+         case nOpcao = 77
+              NACIONALGerarNFSe()
+				  
+         case nOpcao = 78
+              NACIONALConsultarNFSeDPS()
+				  
+         case nOpcao = 79
+              NACIONALConsultarNFSe()
+				  
+         case nOpcao = 80
+              NACIONALConsultarNFSePDF()
       endcase
    EndDo
 Return       
