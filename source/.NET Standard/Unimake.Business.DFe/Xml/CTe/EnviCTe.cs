@@ -8315,16 +8315,16 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// Valor do Tributo do IBS da UF. Valor que seria devido a UF, sem aplicação do Art. 473. da LC 214/20025 
         /// </summary>
         [XmlIgnore]
-        public double VTribBSUF { get; set; }
+        public double VTribIBSUF { get; set; }
 
         /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribBSUF para atribuir ou resgatar o valor)
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribIBSUF para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vTribBSUF")]
-        public string VTribBSUFField
+        [XmlElement("vTribIBSUF")]
+        public string VTribIBSUFField
         {
-            get => VTribBSUF.ToString("F2", CultureInfo.InvariantCulture);
-            set => VTribBSUF = Converter.ToDouble(value);
+            get => VTribIBSUF.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribIBSUF = Converter.ToDouble(value);
         }
 
         /// <summary>
