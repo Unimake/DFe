@@ -300,12 +300,47 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void NACIONAL()
         {
-            var URI = Configuracoes.RequestURI;// = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURIProducao : Configuracoes.RequestURIHomologacao);
+            // Verificar se é um dos novos serviços de parâmetros municipais
+            bool isParametrosMunicipais = Configuracoes.Servico == Servico.NFSeConsultarConvenioMunicipal ||
+                                          Configuracoes.Servico == Servico.NFSeConsultarAliquotasMunicipais ||
+                                          Configuracoes.Servico == Servico.NFSeConsultarHistoricoAliquotasMunicipais ||
+                                          Configuracoes.Servico == Servico.NFSeConsultarRegimesEspeciaisMunicipais ||
+                                          Configuracoes.Servico == Servico.NFSeConsultarRetencoesMunicipais ||
+                                          Configuracoes.Servico == Servico.NFSeConsultarBeneficioMunicipal;
 
-            var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
-            var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
-            var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
-            Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+            if (isParametrosMunicipais)
+            {
+                // Para serviços de parâmetros municipais, fazer substituições na URL conforme o XML
+                if (Configuracoes.RequestURI.Contains("{codigoMunicipio}"))
+                {
+                    var codigoMunicipio = GetXMLElementInnertext("codigoMunicipio");
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{codigoMunicipio}", codigoMunicipio);
+                }
+                if (Configuracoes.RequestURI.Contains("{codigoServico}"))
+                {
+                    var codigoServico = GetXMLElementInnertext("codigoServico");
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{codigoServico}", codigoServico);
+                }
+                if (Configuracoes.RequestURI.Contains("{competencia}"))
+                {
+                    var competencia = GetXMLElementInnertext("competencia");
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{competencia}", competencia);
+                }
+                if (Configuracoes.RequestURI.Contains("{numeroBeneficio}"))
+                {
+                    var numeroBeneficio = GetXMLElementInnertext("numeroBeneficio");
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numeroBeneficio}", numeroBeneficio);
+                }
+            }
+            else
+            {
+                var URI = Configuracoes.RequestURI;
+
+                var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+                var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+                var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+            }
         }
 
         #endregion NACIONAL

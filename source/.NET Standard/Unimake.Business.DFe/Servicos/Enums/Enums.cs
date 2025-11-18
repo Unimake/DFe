@@ -522,6 +522,43 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("Consulta NFS-e")]
         NFSeConsultarNotaFiscal = 84,
+
+        ///<summary>
+        ///85 - Consultar Convênio Municipal da NFSe NACIONAL
+        /// </summary>
+        [Description("Consultar Convênio Municipal da NFSe NACIONAL")]
+        NFSeConsultarConvenioMunicipal = 85,
+
+        ///<summary>
+        ///86 - Consultar Alíquotas Municipais da NFSe NACIONAL
+        /// </summary>
+        [Description("Consultar Alíquotas Municipais da NFSe NACIONAL")]
+        NFSeConsultarAliquotasMunicipais = 86,
+
+        ///<summary>
+        ///87 - Consultar Histórico de Alíquotas Municipais da NFSe NACIONAL
+        /// </summary>
+        [Description("Consultar Histórico de Alíquotas Municipais da NFSe NACIONAL")]
+        NFSeConsultarHistoricoAliquotasMunicipais = 87,
+
+        ///<summary>
+        ///88 - Consultar Regimes Especiais Municipais da NFSe NACIONAL
+        /// </summary>
+        [Description("Consultar Regimes Especiais Municipais da NFSe NACIONAL")]
+        NFSeConsultarRegimesEspeciaisMunicipais = 88,
+
+        ///<summary>
+        ///89 - Consultar Retenções Municipais da NFSe NACIONAL
+        /// </summary>
+        [Description("Consultar Retenções Municipais da NFSe NACIONAL")]
+        NFSeConsultarRetencoesMunicipais = 89,
+
+        ///<summary>
+        ///90 - Consultar Benefícios Municipais da NFSe NACIONAL
+        /// </summary>
+        [Description("Consultar Benefícios Municipais da NFSe NACIONAL")]
+        NFSeConsultarBeneficioMunicipal = 90,
+
         #endregion
 
         #region Gerais
