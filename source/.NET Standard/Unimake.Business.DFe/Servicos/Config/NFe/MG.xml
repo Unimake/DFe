@@ -75,6 +75,16 @@
           <SchemaArquivoEspecifico>e110110_v{0}.xsd</SchemaArquivoEspecifico>
         </Tipo>
         <Tipo>
+          <ID>110192</ID>
+          <SchemaArquivo>envEventoInsucessoNFe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110192_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110193</ID>
+          <SchemaArquivo>envEventoCancInsucessoNFe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110193_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
           <ID>111500</ID>
           <SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e111500_v{0}.xsd</SchemaArquivoEspecifico>
@@ -133,6 +143,36 @@
           <ID>112150</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e112150_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>211110</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211110_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>211120</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211120_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>211124</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211124_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>211130</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211130_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>211140</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211140_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>211150</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211150_v{0}.xsd</SchemaArquivoEspecifico>
         </Tipo>
         <Tipo>
           <ID>211128</ID>

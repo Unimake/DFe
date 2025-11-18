@@ -56,62 +56,72 @@
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-<SchemasEspecificos>
-				<Tipo>
-					<ID>110111</ID>
-					<SchemaArquivo>envEventoCancNFe_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110111_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110112</ID>
-					<SchemaArquivo>envEventoCancSubst_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110112_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110110</ID>
-					<SchemaArquivo>envCCe_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110110_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>111500</ID>
-					<SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e111500_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>111501</ID>
-					<SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e111501_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>111502</ID>
-					<SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e111502_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>111503</ID>
-					<SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e111503_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110750</ID>
-					<SchemaArquivo>envEventoEConf_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110750_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110751</ID>
-					<SchemaArquivo>envEventoCancEConf_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110751_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
+      <SchemasEspecificos>
+        <Tipo>
+          <ID>110111</ID>
+          <SchemaArquivo>envEventoCancNFe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110111_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110112</ID>
+          <SchemaArquivo>envEventoCancSubst_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110112_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110110</ID>
+          <SchemaArquivo>envCCe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110110_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110192</ID>
+          <SchemaArquivo>envEventoInsucessoNFe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110192_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110193</ID>
+          <SchemaArquivo>envEventoCancInsucessoNFe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110193_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>111500</ID>
+          <SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e111500_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>111501</ID>
+          <SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e111501_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>111502</ID>
+          <SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e111502_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>111503</ID>
+          <SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e111503_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110750</ID>
+          <SchemaArquivo>envEventoEConf_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110750_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110751</ID>
+          <SchemaArquivo>envEventoCancEConf_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110751_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
         <Tipo>
           <ID>110001</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e110001_v{0}.xsd</SchemaArquivoEspecifico>
-        </Tipo>      
+        </Tipo>
         <Tipo>
           <ID>112110</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e112110_v{0}.xsd</SchemaArquivoEspecifico>
-        </Tipo>      
+        </Tipo>
         <Tipo>
           <ID>112120</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
@@ -133,30 +143,60 @@
           <SchemaArquivoEspecifico>e112150_v{0}.xsd</SchemaArquivoEspecifico>
         </Tipo>
         <Tipo>
+          <ID>211110</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211110_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>211120</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211120_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>211124</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211124_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>211130</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211130_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>211140</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211140_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>211150</ID>
+          <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e211150_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
           <ID>211128</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e211128_v{0}.xsd</SchemaArquivoEspecifico>
-        </Tipo>      
+        </Tipo>
         <Tipo>
           <ID>212110</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e212110_v{0}.xsd</SchemaArquivoEspecifico>
-        </Tipo>      
+        </Tipo>
         <Tipo>
           <ID>212120</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e212120_v{0}.xsd</SchemaArquivoEspecifico>
-        </Tipo>      
+        </Tipo>
         <Tipo>
           <ID>412120</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e412120_v{0}.xsd</SchemaArquivoEspecifico>
-        </Tipo>      
+        </Tipo>
         <Tipo>
           <ID>412130</ID>
           <SchemaArquivo>Evento_DVS_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e412130_v{0}.xsd</SchemaArquivoEspecifico>
-        </Tipo>      
+        </Tipo>
       </SchemasEspecificos>
 			<TagAssinatura>evento</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>

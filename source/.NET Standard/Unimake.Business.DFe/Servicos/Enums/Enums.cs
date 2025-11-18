@@ -1099,6 +1099,24 @@ namespace Unimake.Business.DFe.Servicos
         AceiteDebitoApuracaoEmissaoNotaCredito = 211128,
 
         /// <summary>
+        /// 211130 - Imobilização de Item
+        /// </summary>
+        [XmlEnum("211130")]
+        ImobilizacaoItem = 211130,
+
+        /// <summary>
+        /// 211140 - Solicitação de Apropriação de Crédito de Combustível
+        /// </summary>
+        [XmlEnum("211140")]
+        SolicitacaoApropriacaoCreditoCombustivel = 211140,
+
+        /// <summary>
+        /// 211150 - Solicitação de Apropriação de Crédito para bens e serviços que dependem de atividade do adquirente
+        /// </summary>
+        [XmlEnum("211150")]
+        SolicitacaoApropriacaoCreditoBensServicosAdquirente = 211150,
+
+        /// <summary>
         /// 212110 - Manifestação sobre Pedido de Transferência de Crédito de IBS em Operação de Sucessão
         /// </summary>
         [XmlEnum("212110")]

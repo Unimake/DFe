@@ -26,7 +26,8 @@ uses
   ConsultarMDFeNaoEncerrado, ConsultarSituacaoCTe, EnviarCteSincrono,
   EnviarCteOsSincrono, EventoCancelamentoCTe, EnviarEventoCancelamentoCTeOS,
   EventoCCeCTe, InsucessoEntregaCTe, CancelamentoInsucessoEntregaCTe,
-  DesserializandoXmlCTeOS, EventoCTeDesacordo, EventoEpecCte, ConsultaConfigGNRE
+  DesserializandoXmlCTeOS, EventoCTeDesacordo, EventoEpecCte,
+  ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE
   { you can add units after this };
 
 {$R *.res}
