@@ -21,7 +21,7 @@ uses
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
   ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe,
   EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe,CancelamentoInsucessoEntregaCTe, DesserializandoXmlCTeOS,
-  EventoCTeDesacordo, EventoEpecCte, ConsultaConfigGNRE;
+  EventoCTeDesacordo, EventoEpecCte, ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE;
 
 type
 
@@ -71,6 +71,8 @@ type
     Btn_DesserializandoXmlCTeOS: TButton;
     Btn_EventoCteDesacordo: TButton;
     Btn_EventoEpecCte: TButton;
+    Btn_ConsultaResultadoLoteGNRE: TButton;
+    EnviarXmlGNRe: TButton;
     ConsultaConfigGNRE: TButton;
     GroupBox1: TGroupBox;
     btnConsultarDistribuicaoDFe: TToggleBox;
@@ -121,6 +123,7 @@ type
     procedure BtnNACIONALConsultarPDFNFSeClick(Sender: TObject);
     procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
     procedure Btn_CancelamentoInsucessoEntregaCTeClick(Sender: TObject);
+    procedure Btn_ConsultaResultadoLoteGNREClick(Sender: TObject);
     procedure Btn_ConsultaSituacaoCTeClick(Sender: TObject);
     procedure Btn_ConsultaStatusCteClick(Sender: TObject);
     procedure Btn_EnviarEventoCancelamentoCTeOSClick(Sender: TObject);
@@ -140,6 +143,7 @@ type
     procedure Btn_DesserializandoXmlCTeOSClick(Sender: TObject);
     procedure Btn_EventoCteDesacordoClick(Sender: TObject);
     procedure ConsultaConfigGNREClick(Sender: TObject);
+    procedure EnviarXmlGNReClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox1Click(Sender: TObject);
     procedure GroupBox3Click(Sender: TObject);
@@ -526,6 +530,17 @@ begin
     end;
 end;
 
+procedure TfrmPrincipal.Btn_ConsultaResultadoLoteGNREClick(Sender: TObject);
+var
+  oServico: TConsultaResultadoLoteGNRE;
+begin
+  oServico := TConsultaResultadoLoteGNRE.create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
 procedure TfrmPrincipal.Btn_ConsultaSituacaoCTeClick(Sender: TObject);
 var
   oServico: TConsultarSituacaoCTe;
@@ -729,6 +744,17 @@ var
   oServico: TConsultaConfigGNRE;
 begin
   oServico := TConsultaConfigGNRE.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.EnviarXmlGNReClick(Sender: TObject);
+var
+  oServico: TEnviarXmlGNRe;
+begin
+  oServico := TEnviarXmlGNRe.Create;
   try
     oServico.Executar();
   finally
