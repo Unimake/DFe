@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DPS versao="1.00" xmlns="http://www.sped.fazenda.gov.br/nfse">
+	<infDPS Id="DPS420290929999999999999900001000000000000200">
+		<tpAmb>1</tpAmb>
+		<dhEmi>2025-09-29T15:23:56-03:00</dhEmi>
+		<verAplic>1.00</verAplic>
+		<serie>1</serie>
+		<nDPS>200</nDPS>
+		<dCompet>2025-09-29</dCompet>
+		<tpEmit>1</tpEmit>
+		<cLocEmi>4202909</cLocEmi>
+		<prest>
+			<CNPJ>99999999999999</CNPJ>
+			<regTrib>
+				<opSimpNac>3</opSimpNac>
+				<regApTribSN>1</regApTribSN>
+				<regEspTrib>0</regEspTrib>
+			</regTrib>
+		</prest>
+		<toma>
+			<CNPJ>00000000000000</CNPJ>
+			<xNome>COMERCIO E XXXXXXXXXXX XXXXXXXX LTDA</xNome>
+			<end>
+				<endNac>
+					<cMun>1111111</cMun>
+					<CEP>11111000</CEP>
+				</endNac>
+				<xLgr>RUA XX XXXXX</xLgr>
+				<nro>800</nro>
+				<xBairro>XXX XXXXXXX</xBairro>
+			</end>
+			<email>teste@hotmail.com</email>
+		</toma>
+		<serv>
+			<locPrest>
+				<cLocPrestacao>4202909</cLocPrestacao>
+			</locPrest>
+			<cServ>
+				<cTribNac>140101</cTribNac>
+				<xDescServ>CALAFETACAO PARABRISA VEICULO PASSEIO 1.00 10.00   Valor dos tributos R$:0,00 (18,14%)</xDescServ>
+				<cIntContrib>00001</cIntContrib>
+			</cServ>
+		</serv>
+		<valores>
+			<vServPrest>
+				<vServ>10.00</vServ>
+			</vServPrest>
+			<trib>
+				<tribMun>
+					<tribISSQN>1</tribISSQN>
+					<tpRetISSQN>1</tpRetISSQN>
+				</tribMun>
+				<totTrib>
+					<vTotTrib>
+						<vTotTribFed>1.35</vTotTribFed>
+						<vTotTribEst>0</vTotTribEst>
+						<vTotTribMun>0.47</vTotTribMun>
+					</vTotTrib>
+				</totTrib>
+			</trib>
+		</valores>
+	</infDPS>
+</DPS>
