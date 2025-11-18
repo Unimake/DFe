@@ -81,6 +81,103 @@
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+			<!-- Novos serviços de consulta de parâmetros municipais -->
+			<ConsultarConvenioMunicipal versao="1.00">
+				<Descricao>Consultar Convênio Municipal</Descricao>
+				<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/convenio</RequestURIProducao>
+				<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/convenio</RequestURIHomologacao>
+				<MetodoAPI>get</MetodoAPI>
+				<WebActionProducao></WebActionProducao>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<WebSoapString></WebSoapString>
+				<WebContentType>application/json</WebContentType>
+				<WebTagRetorno>prop:innertext</WebTagRetorno>
+				<SchemaVersao>1.00</SchemaVersao>
+				<GZIPCompress>false</GZIPCompress>
+				<LoginConexao>false</LoginConexao>
+				<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			</ConsultarConvenioMunicipal>
+			<ConsultarAliquotasMunicipais versao="1.00">
+				<Descricao>Consultar Alíquotas Municipais</Descricao>
+				<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/aliquota</RequestURIProducao>
+				<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/aliquota</RequestURIHomologacao>
+				<MetodoAPI>get</MetodoAPI>
+				<WebActionProducao></WebActionProducao>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<WebSoapString></WebSoapString>
+				<WebContentType>application/json</WebContentType>
+				<WebTagRetorno>prop:innertext</WebTagRetorno>
+				<SchemaVersao>1.00</SchemaVersao>
+				<GZIPCompress>false</GZIPCompress>
+				<LoginConexao>false</LoginConexao>
+				<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			</ConsultarAliquotasMunicipais>
+			<ConsultarHistoricoAliquotasMunicipais versao="1.00">
+				<Descricao>Consultar Histórico de Alíquotas Municipais</Descricao>
+				<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/historicoaliquotas</RequestURIProducao>
+				<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/historicoaliquotas</RequestURIHomologacao>
+				<MetodoAPI>get</MetodoAPI>
+				<WebActionProducao></WebActionProducao>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<WebSoapString></WebSoapString>
+				<WebContentType>application/json</WebContentType>
+				<WebTagRetorno>prop:innertext</WebTagRetorno>
+				<SchemaVersao>1.00</SchemaVersao>
+				<GZIPCompress>false</GZIPCompress>
+				<LoginConexao>false</LoginConexao>
+				<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			</ConsultarHistoricoAliquotasMunicipais>
+			<ConsultarRegimesEspeciaisMunicipais versao="1.00">
+				<Descricao>Consultar Regimes Especiais Municipais</Descricao>
+				<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/regimes_especiais</RequestURIProducao>
+				<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/regimes_especiais</RequestURIHomologacao>
+				<MetodoAPI>get</MetodoAPI>
+				<WebActionProducao></WebActionProducao>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<WebSoapString></WebSoapString>
+				<WebContentType>application/json</WebContentType>
+				<WebTagRetorno>prop:innertext</WebTagRetorno>
+				<SchemaVersao>1.00</SchemaVersao>
+				<GZIPCompress>false</GZIPCompress>
+				<LoginConexao>false</LoginConexao>
+				<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			</ConsultarRegimesEspeciaisMunicipais>
+			<ConsultarRetencoesMunicipais versao="1.00">
+				<Descricao>Consultar Retenções Municipais</Descricao>
+				<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{competencia}/retencoes</RequestURIProducao>
+				<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{competencia}/retencoes</RequestURIHomologacao>
+				<MetodoAPI>get</MetodoAPI>
+				<WebActionProducao></WebActionProducao>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<WebSoapString></WebSoapString>
+				<WebContentType>application/json</WebContentType>
+				<WebTagRetorno>prop:innertext</WebTagRetorno>
+				<SchemaVersao>1.00</SchemaVersao>
+				<GZIPCompress>false</GZIPCompress>
+				<LoginConexao>false</LoginConexao>
+				<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			</ConsultarRetencoesMunicipais>
+			<ConsultarBeneficioMunicipal versao="1.00">
+				<Descricao>Consultar Benefícios Municipais</Descricao>
+				<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{numeroBeneficio}/{competencia}/beneficio</RequestURIProducao>
+				<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{numeroBeneficio}/{competencia}/beneficio</RequestURIHomologacao>
+				<MetodoAPI>get</MetodoAPI>
+				<WebActionProducao></WebActionProducao>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<WebSoapString></WebSoapString>
+				<WebContentType>application/json</WebContentType>
+				<WebTagRetorno>prop:innertext</WebTagRetorno>
+				<SchemaVersao>1.00</SchemaVersao>
+				<GZIPCompress>false</GZIPCompress>
+				<LoginConexao>false</LoginConexao>
+				<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			</ConsultarBeneficioMunicipal>
 		</ConsultarNfsePDF>
 	</Servicos>
 </Configuracoes>
