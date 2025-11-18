@@ -74,13 +74,13 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao, TipoEmissao.ContingenciaSVCAN)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao, TipoEmissao.ContingenciaSVCAN)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao, TipoEmissao.ContingenciaSVCAN)]
-        public void EnviarNFeAssincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, TipoEmissao tipoEmissao)
+        public void EnviarNFeSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, TipoEmissao tipoEmissao)
         {
             var xml = new EnviNFe
             {
                 Versao = "4.00",
                 IdLote = "000000000000001",
-                IndSinc = SimNao.Nao,
+                IndSinc = SimNao.Sim,
                 NFe = new List<Business.DFe.Xml.NFe.NFe> {
                         new Business.DFe.Xml.NFe.NFe
                         {
@@ -300,7 +300,7 @@ namespace Unimake.DFe.Test.NFe
             var configuracao = new Configuracao
             {
                 TipoDFe = TipoDFe.NFe,
-                TipoEmissao = TipoEmissao.Normal,
+                TipoEmissao = tipoEmissao,
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
@@ -311,7 +311,7 @@ namespace Unimake.DFe.Test.NFe
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
             Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(autorizacao.Result.CStat.Equals(114) || autorizacao.Result.CStat.Equals(452) || autorizacao.Result.CStat.Equals(103), "Lote não foi processado. <xMotivo>" + autorizacao.Result.XMotivo + "<xMotivo>" + " - <cStat>"+autorizacao.Result.CStat + "</cStat>");
+            Assert.True(autorizacao.Result.CStat.Equals(114) || autorizacao.Result.CStat.Equals(452) || autorizacao.Result.CStat.Equals(104), "Lote não foi processado. <xMotivo>" + autorizacao.Result.XMotivo + "<xMotivo>" + " - <cStat>" + autorizacao.Result.CStat + "</cStat>");
 
             if (tipoEmissao == TipoEmissao.ContingenciaSVCAN)
             {
@@ -322,5 +322,5 @@ namespace Unimake.DFe.Test.NFe
                 Assert.True(autorizacao.Result.VerAplic.Contains("SVRS"), "Web-service retornou uma versão de aplicação diferente da comum para SVC-RS");
             }
         }
-   }
+    }
 }

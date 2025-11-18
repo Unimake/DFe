@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Begin VB.Form frmMain 
    Caption         =   "Unimake.DFe Interop Tests"
    ClientHeight    =   10650
@@ -11,12 +10,14 @@ Begin VB.Form frmMain
    ScaleHeight     =   10650
    ScaleWidth      =   11580
    StartUpPosition =   2  'CenterScreen
-   Begin MSComDlg.CommonDialog OpenFileDialog 
+   Begin VB.PictureBox OpenFileDialog 
+      Height          =   480
       Left            =   840
+      ScaleHeight     =   420
+      ScaleWidth      =   1140
+      TabIndex        =   2
       Top             =   10215
-      _ExtentX        =   847
-      _ExtentY        =   847
-      _Version        =   393216
+      Width           =   1200
    End
    Begin VB.TextBox txtLog 
       BorderStyle     =   0  'None
@@ -186,6 +187,12 @@ Begin VB.Form frmMain
       End
       Begin VB.Menu mnuMDFe_EmitirUm 
          Caption         =   "Emitir um MDF-e"
+      End
+   End
+   Begin VB.Menu mnuNFSe 
+      Caption         =   "NFS-e"
+      Begin VB.Menu mnuNFSeSaoPaulo 
+         Caption         =   "Enviar NFSe Municipio de São Paulo"
       End
    End
    Begin VB.Menu mnuCertificado 
@@ -382,4 +389,8 @@ End Sub
 
 Private Sub mnuNFeValidarXML_Click()
 ValidarXML
+End Sub
+
+Private Sub mnuNFSeSaoPaulo_Click()
+EnviarNFSeSaoPaulo
 End Sub
