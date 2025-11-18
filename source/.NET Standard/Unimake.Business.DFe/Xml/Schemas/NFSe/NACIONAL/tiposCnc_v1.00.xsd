@@ -6,10 +6,8 @@
            attributeFormDefault="unqualified"
            elementFormDefault="qualified">
   <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd"/>
-  <xs:include schemaLocation="tiposComplexos_v1.00.xsd"/>
-  <xs:include schemaLocation="tiposSimples_v1.00.xsd"/>
-
-
+  <xs:include schemaLocation="tiposComplexos_v1.01.xsd"/>
+  <xs:include schemaLocation="tiposSimples_v1.01.xsd"/>
   <!--TIPO COMPLEXO PARA ENDEREÇO UPLOAD DE CONTRIBUINTES -->
   <xs:complexType name="TCEnderContribuinteCNC">
     <xs:sequence>
@@ -35,10 +33,8 @@
     <xs:sequence>
       <xs:element name="infCNC" type="TCInfCNC"/>
     </xs:sequence>
-    <xs:attribute name="versao" type="TVerNFSe" use="required"/>
+    <xs:attribute name="versao" type="TVerCNC" use="required"/>
   </xs:complexType>
-
-
   <!--TIPO COMPLEXO PARA INFORMAÇÕES DO UPLOAD DE CONTRIBUINTES DO CNC -->
   <xs:complexType name="TCInfCNC">
     <xs:sequence>
@@ -70,8 +66,6 @@
       </xs:element>      
     </xs:sequence>
   </xs:complexType>
-
-
   <!--TIPO COMPLEXO PARA INFORMAÇÕES DE UMA PESSOA MANTIDA PELO  CADASTRO DO CNC (CNPJ,CPF)-->
   <xs:complexType name="TCInfoContribuinteCNC">
     <xs:annotation>
@@ -158,6 +152,4 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-
-
 </xs:schema>
