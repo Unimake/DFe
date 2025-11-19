@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<CancelarNfse versao="2.02">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:CancelarNfseRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS></TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="2.02">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteRpsRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfseFaixa versao="2.02">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorFaixaRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfsePorFaixaRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseFaixa>
+		<ConsultarNfsePorRps versao="2.02">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString>
+				<![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRpsRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]>
+			</WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="2.02">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestadoRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfseServicoPrestadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="2.02">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomadoRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfseServicoTomadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseServicoTomado>
+		<GerarNfse versao="2.02">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:GerarNfseRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS></TargetNS>
+		</GerarNfse>
+		<RecepcionarLoteRpsSincrono versao="2.02">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsSincronoRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:RecepcionarLoteRpsSincronoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<SubstituirNfse versao="2.02">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
+			<WebContentType>text/xml; charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:SubstituirNfseRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:SubstituirNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS></TargetNS>
+		</SubstituirNfse>
+	</Servicos>
+</Configuracoes>

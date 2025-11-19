@@ -1329,6 +1329,7 @@
 		<None Remove="Xml\Schemas\NFSe\E_RECEITA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\FIORILLI\nfse_v201.xsd" />
 		<None Remove="Xml\Schemas\NFSe\FIORILLI\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\FUTURIZE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GIF\xmldsig-core-schema_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\cabecalho_v03.xsd" />
@@ -1659,6 +1660,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GravataiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarapuavaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaxupeMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuararaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\HorizontinaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IcaraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImbeRS.xml" />
@@ -2733,6 +2735,8 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\E_RECEITA\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\FIORILLI\nfse_v201.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\FIORILLI\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\FUTURIZE\nfse_v2_02.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\FUTURIZE\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\xmldsig-core-schema_v1.01.xsd" />
 	</ItemGroup>

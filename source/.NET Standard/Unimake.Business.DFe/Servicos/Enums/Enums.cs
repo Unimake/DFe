@@ -7398,6 +7398,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("BETHA_CLOUD")]
         BETHA_CLOUD = 88,
+
+        /// <summary>
+        /// FUTURIZE
+        /// </summary>
+        [Description("FUTURIZE")]
+        FUTURIZE = 89,
     }
 
     #endregion

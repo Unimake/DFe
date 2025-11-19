@@ -3071,4 +3071,10 @@
 		<ArqConfig>SantaGertrudesSP.xml</ArqConfig>
 		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3128501">
+		<Nome>Guarará - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>GuararaMG.xml</ArqConfig>
+		<PadraoNFSe>FUTURIZE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
