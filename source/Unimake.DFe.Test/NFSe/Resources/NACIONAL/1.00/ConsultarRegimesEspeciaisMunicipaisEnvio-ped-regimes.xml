@@ -2,8 +2,8 @@
 <ConsultaParametros versao="1.00" xmlns="http://www.sped.fazenda.gov.br/nfse">
     <infConsulta>
         <codigoMunicipio>4204608</codigoMunicipio>
-        <codigoServico>123456789</codigoServico>
-        <competencia>2025-11-15T10:30:00</competencia>
+        <codigoServico>99.99.99.999</codigoServico>
+        <competencia>2025-11-15</competencia>
         <tipoParametro>regimesespeciais</tipoParametro>
     </infConsulta>
 </ConsultaParametros>

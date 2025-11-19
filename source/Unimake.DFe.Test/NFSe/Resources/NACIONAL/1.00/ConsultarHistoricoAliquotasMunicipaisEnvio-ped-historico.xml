@@ -2,7 +2,7 @@
 <ConsultaParametros versao="1.00" xmlns="http://www.sped.fazenda.gov.br/nfse">
 	<infConsulta>
 		<codigoMunicipio>4204608</codigoMunicipio>
-		<codigoServico>123456789</codigoServico>
+		<codigoServico>99.99.99.999</codigoServico>
 		<tipoParametro>historicoaliquotas</tipoParametro>
 	</infConsulta>
 </ConsultaParametros>
