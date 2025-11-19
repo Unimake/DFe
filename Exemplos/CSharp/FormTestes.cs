@@ -7700,5 +7700,46 @@ namespace TreinamentoDLL
                 }
             }
         }
+
+        private void btnImprimirNFeCancelada_Click(object sender, EventArgs e)
+        {
+            //Imprimir o DANFE como cancelado
+            var config = new DANFe.Configurations.UnidanfeConfiguration
+            {
+                Arquivo = @"D:\testenfe\41230106117473000150550010000590031387056372-procnfe.xml", //XML do evento de cancelamento
+                Visualizar = true,
+                Imprimir = false,
+                EnviaEmail = false,
+                Cancelada = true //Tem que ter esta propriedade como true para imprimir o DANFE com a marca D'Água de cancelado
+            };
+
+            DANFe.UnidanfeServices.Execute(config);
+        }
+
+        private void btnImprimirEventos_Click(object sender, EventArgs e)
+        {
+            //Imprimir o evento de cancelamento ou CCe com os dados da NFe ligada ao evento
+            var config = new DANFe.Configurations.UnidanfeConfiguration
+            {
+                NFe = @"D:\testenfe\41230106117473000150550010000590031387056372-procnfe.xml", //XML da NFe ligada ao evento em questão
+                Arquivo = @"D:\testenfe\41230106117473000150550010000590031387056372_110111_01-procEventoNFe.xml", //XML do evento de cancelamento ou CCe, etc..
+                Visualizar = true,
+                Imprimir = false,
+                EnviaEmail = false
+            };
+
+            DANFe.UnidanfeServices.Execute(config);
+
+            //Imprimir somente o evento sem dados da NFe
+            var config2 = new DANFe.Configurations.UnidanfeConfiguration
+            {
+                Arquivo = @"D:\testenfe\41230106117473000150550010000590031387056372_110111_01-procEventoNFe.xml", //XML do evento de cancelamento ou CCe, etc..
+                Visualizar = true,
+                Imprimir = false,
+                EnviaEmail = false
+            };
+
+            DANFe.UnidanfeServices.Execute(config2);
+        }
     }
 }
