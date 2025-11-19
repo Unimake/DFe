@@ -28,21 +28,19 @@ namespace Unimake.DFe.Test.NFSe
         [MemberData(nameof(Parametros))]
         public void ConsultarConvenioMunicipal(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
         {
-            // Para o padrão NACIONAL, usamos apenas testes específicos
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
 
             var nomeXMLEnvio = "ConsultarConvenioMunicipalEnvio-ped-convenio.xml";
             var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
 
-            // Criar um XML de exemplo se não existir
             if (!File.Exists(arqXML))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(arqXML));
-                var xmlExemplo = @"<?xml version=""1.0"" encoding=""utf-8""?>
+                var xmlExemplo = $@"<?xml version=""1.0"" encoding=""utf-8""?>
 <ConsultaParametros versao=""1.00"" xmlns=""http://www.sped.fazenda.gov.br/nfse"">
     <infConsulta>
-        <codigoMunicipio>4106902</codigoMunicipio>
+        <codigoMunicipio>{codMunicipio}</codigoMunicipio>
         <tipoParametro>convenio</tipoParametro>
     </infConsulta>
 </ConsultaParametros>";
@@ -90,10 +88,10 @@ namespace Unimake.DFe.Test.NFSe
             if (!File.Exists(arqXML))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(arqXML));
-                var xmlExemplo = @"<?xml version=""1.0"" encoding=""utf-8""?>
+                var xmlExemplo = $@"<?xml version=""1.0"" encoding=""utf-8""?>
 <ConsultaParametros versao=""1.00"" xmlns=""http://www.sped.fazenda.gov.br/nfse"">
     <infConsulta>
-        <codigoMunicipio>4106902</codigoMunicipio>
+        <codigoMunicipio>{codMunicipio}</codigoMunicipio>
         <codigoServico>123456789</codigoServico>
         <competencia>2024-01-15T10:30:00</competencia>
         <tipoParametro>aliquotas</tipoParametro>
@@ -142,10 +140,10 @@ namespace Unimake.DFe.Test.NFSe
             if (!File.Exists(arqXML))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(arqXML));
-                var xmlExemplo = @"<?xml version=""1.0"" encoding=""utf-8""?>
+                var xmlExemplo = $@"<?xml version=""1.0"" encoding=""utf-8""?>
 <ConsultaParametros versao=""1.00"" xmlns=""http://www.sped.fazenda.gov.br/nfse"">
     <infConsulta>
-        <codigoMunicipio>4106902</codigoMunicipio>
+        <codigoMunicipio>{codMunicipio}</codigoMunicipio>
         <codigoServico>123456789</codigoServico>
         <tipoParametro>historicoaliquotas</tipoParametro>
     </infConsulta>
@@ -193,10 +191,10 @@ namespace Unimake.DFe.Test.NFSe
             if (!File.Exists(arqXML))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(arqXML));
-                var xmlExemplo = @"<?xml version=""1.0"" encoding=""utf-8""?>
+                var xmlExemplo = $@"<?xml version=""1.0"" encoding=""utf-8""?>
 <ConsultaParametros versao=""1.00"" xmlns=""http://www.sped.fazenda.gov.br/nfse"">
     <infConsulta>
-        <codigoMunicipio>4106902</codigoMunicipio>
+        <codigoMunicipio>{codMunicipio}</codigoMunicipio>
         <codigoServico>01.01</codigoServico>
         <competencia>2024-01-15T10:30:00</competencia>
         <tipoParametro>regimesespeciais</tipoParametro>
@@ -245,10 +243,10 @@ namespace Unimake.DFe.Test.NFSe
             if (!File.Exists(arqXML))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(arqXML));
-                var xmlExemplo = @"<?xml version=""1.0"" encoding=""utf-8""?>
+                var xmlExemplo = $@"<?xml version=""1.0"" encoding=""utf-8""?>
 <ConsultaParametros versao=""1.00"" xmlns=""http://www.sped.fazenda.gov.br/nfse"">
     <infConsulta>
-        <codigoMunicipio>4106902</codigoMunicipio>
+        <codigoMunicipio>{codMunicipio}</codigoMunicipio>
         <competencia>2024-01-15T10:30:00</competencia>
         <tipoParametro>retencoes</tipoParametro>
     </infConsulta>
@@ -296,10 +294,10 @@ namespace Unimake.DFe.Test.NFSe
             if (!File.Exists(arqXML))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(arqXML));
-                var xmlExemplo = @"<?xml version=""1.0"" encoding=""utf-8""?>
+                var xmlExemplo = $@"<?xml version=""1.0"" encoding=""utf-8""?>
 <ConsultaParametros versao=""1.00"" xmlns=""http://www.sped.fazenda.gov.br/nfse"">
     <infConsulta>
-        <codigoMunicipio>4106902</codigoMunicipio>
+        <codigoMunicipio>{codMunicipio}</codigoMunicipio>
         <numeroBeneficio>12345678901</numeroBeneficio>
         <competencia>2024-01-15T10:30:00</competencia>
         <tipoParametro>beneficiomunicipal</tipoParametro>
@@ -348,7 +346,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = versaoSchema
             };
 
-            var consultarBeneficio = new ConsultarBeneficioMunicipal(4204608, "123456", DateTime.Now, configuracao);
+            var consultarBeneficio = new ConsultarBeneficioMunicipal(codMunicipio, "123456789", DateTime.Now, configuracao);
             Assert.Multiple(() => TestUtility.AnalisaResultado(consultarBeneficio));
         }
 
@@ -372,7 +370,6 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = "1.00"
             };
 
-            // Teste: Convênio sem código do município deve dar erro
             var xmlSemMunicipio = new XmlDocument();
             xmlSemMunicipio.LoadXml(@"<?xml version=""1.0"" encoding=""utf-8""?>
 <ConsultaParametros versao=""1.00"" xmlns=""http://www.sped.fazenda.gov.br/nfse"">
