@@ -122,6 +122,8 @@ namespace TreinamentoDLL
             this.BtnConsultaStatusNF3e = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnEnviarNFeSincronoRTC = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -133,10 +135,11 @@ namespace TreinamentoDLL
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.tabPage12 = new System.Windows.Forms.TabPage();
-            this.BtnEnviarNFeSincronoRTC = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnImprimirNFeCancelada = new System.Windows.Forms.Button();
+            this.btnImprimirEventos = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -148,7 +151,6 @@ namespace TreinamentoDLL
             this.tabPage10.SuspendLayout();
             this.tabPage11.SuspendLayout();
             this.tabPage12.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnConsultaStatusNFe
@@ -1237,6 +1239,28 @@ namespace TreinamentoDLL
             this.tabPage1.Text = "NFe";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.BtnEnviarNFeSincronoRTC);
+            this.groupBox1.Location = new System.Drawing.Point(331, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(374, 151);
+            this.groupBox1.TabIndex = 37;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Exemplos com Reforma Tributária";
+            // 
+            // BtnEnviarNFeSincronoRTC
+            // 
+            this.BtnEnviarNFeSincronoRTC.CausesValidation = false;
+            this.BtnEnviarNFeSincronoRTC.Location = new System.Drawing.Point(7, 27);
+            this.BtnEnviarNFeSincronoRTC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarNFeSincronoRTC.Name = "BtnEnviarNFeSincronoRTC";
+            this.BtnEnviarNFeSincronoRTC.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarNFeSincronoRTC.TabIndex = 36;
+            this.BtnEnviarNFeSincronoRTC.Text = "Enviar NFe Sincrono";
+            this.BtnEnviarNFeSincronoRTC.UseVisualStyleBackColor = true;
+            this.BtnEnviarNFeSincronoRTC.Click += new System.EventHandler(this.BtnEnviarNFeSincronoRTC_Click);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.BtnInutilizacaoNFCe);
@@ -1250,7 +1274,7 @@ namespace TreinamentoDLL
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1160, 997);
+            this.tabPage2.Size = new System.Drawing.Size(1694, 997);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "NFCe";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1268,7 +1292,7 @@ namespace TreinamentoDLL
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1160, 997);
+            this.tabPage3.Size = new System.Drawing.Size(1694, 997);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "MDFe";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1291,7 +1315,7 @@ namespace TreinamentoDLL
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1160, 997);
+            this.tabPage4.Size = new System.Drawing.Size(1694, 997);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "NFSe";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1314,7 +1338,7 @@ namespace TreinamentoDLL
             this.tabPage5.Location = new System.Drawing.Point(4, 29);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1160, 997);
+            this.tabPage5.Size = new System.Drawing.Size(1694, 997);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "CTe e CTeOS";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1327,7 +1351,7 @@ namespace TreinamentoDLL
             this.tabPage6.Location = new System.Drawing.Point(4, 29);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1160, 997);
+            this.tabPage6.Size = new System.Drawing.Size(1694, 997);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "GNRE";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1338,7 +1362,7 @@ namespace TreinamentoDLL
             this.tabPage7.Location = new System.Drawing.Point(4, 29);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1160, 997);
+            this.tabPage7.Size = new System.Drawing.Size(1694, 997);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "CCG/GTIN";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1352,7 +1376,7 @@ namespace TreinamentoDLL
             this.tabPage8.Location = new System.Drawing.Point(4, 29);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1160, 997);
+            this.tabPage8.Size = new System.Drawing.Size(1694, 997);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "NF3e";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1366,7 +1390,7 @@ namespace TreinamentoDLL
             this.tabPage9.Location = new System.Drawing.Point(4, 29);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(1160, 997);
+            this.tabPage9.Size = new System.Drawing.Size(1694, 997);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "NFCom";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -1377,7 +1401,7 @@ namespace TreinamentoDLL
             this.tabPage10.Location = new System.Drawing.Point(4, 29);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(1160, 997);
+            this.tabPage10.Size = new System.Drawing.Size(1694, 997);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "EFD Reinf";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -1395,6 +1419,8 @@ namespace TreinamentoDLL
             // 
             // tabPage12
             // 
+            this.tabPage12.Controls.Add(this.btnImprimirEventos);
+            this.tabPage12.Controls.Add(this.btnImprimirNFeCancelada);
             this.tabPage12.Controls.Add(this.BtnDistribuicaoDFeChNFe);
             this.tabPage12.Controls.Add(this.BtnCarregarA3comPIN);
             this.tabPage12.Controls.Add(this.BtnImprimirSAT);
@@ -1416,32 +1442,32 @@ namespace TreinamentoDLL
             this.tabPage12.Location = new System.Drawing.Point(4, 29);
             this.tabPage12.Name = "tabPage12";
             this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage12.Size = new System.Drawing.Size(1160, 997);
+            this.tabPage12.Size = new System.Drawing.Size(1694, 997);
             this.tabPage12.TabIndex = 11;
             this.tabPage12.Text = "Diversos";
             this.tabPage12.UseVisualStyleBackColor = true;
             // 
-            // BtnEnviarNFeSincronoRTC
+            // btnImprimirNFeCancelada
             // 
-            this.BtnEnviarNFeSincronoRTC.CausesValidation = false;
-            this.BtnEnviarNFeSincronoRTC.Location = new System.Drawing.Point(7, 27);
-            this.BtnEnviarNFeSincronoRTC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnEnviarNFeSincronoRTC.Name = "BtnEnviarNFeSincronoRTC";
-            this.BtnEnviarNFeSincronoRTC.Size = new System.Drawing.Size(296, 35);
-            this.BtnEnviarNFeSincronoRTC.TabIndex = 36;
-            this.BtnEnviarNFeSincronoRTC.Text = "Enviar NFe Sincrono";
-            this.BtnEnviarNFeSincronoRTC.UseVisualStyleBackColor = true;
-            this.BtnEnviarNFeSincronoRTC.Click += new System.EventHandler(this.BtnEnviarNFeSincronoRTC_Click);
+            this.btnImprimirNFeCancelada.Location = new System.Drawing.Point(311, 8);
+            this.btnImprimirNFeCancelada.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnImprimirNFeCancelada.Name = "btnImprimirNFeCancelada";
+            this.btnImprimirNFeCancelada.Size = new System.Drawing.Size(296, 35);
+            this.btnImprimirNFeCancelada.TabIndex = 34;
+            this.btnImprimirNFeCancelada.Text = "Imprimir DANFE como Cancelado";
+            this.btnImprimirNFeCancelada.UseVisualStyleBackColor = true;
+            this.btnImprimirNFeCancelada.Click += new System.EventHandler(this.btnImprimirNFeCancelada_Click);
             // 
-            // groupBox1
+            // btnImprimirEventos
             // 
-            this.groupBox1.Controls.Add(this.BtnEnviarNFeSincronoRTC);
-            this.groupBox1.Location = new System.Drawing.Point(331, 8);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(374, 151);
-            this.groupBox1.TabIndex = 37;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Exemplos com Reforma Tributária";
+            this.btnImprimirEventos.Location = new System.Drawing.Point(311, 53);
+            this.btnImprimirEventos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnImprimirEventos.Name = "btnImprimirEventos";
+            this.btnImprimirEventos.Size = new System.Drawing.Size(296, 35);
+            this.btnImprimirEventos.TabIndex = 35;
+            this.btnImprimirEventos.Text = "Imprimir Eventos de NFe, NFCe, etc";
+            this.btnImprimirEventos.UseVisualStyleBackColor = true;
+            this.btnImprimirEventos.Click += new System.EventHandler(this.btnImprimirEventos_Click);
             // 
             // FormTestes
             // 
@@ -1455,6 +1481,7 @@ namespace TreinamentoDLL
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
@@ -1466,7 +1493,6 @@ namespace TreinamentoDLL
             this.tabPage10.ResumeLayout(false);
             this.tabPage11.ResumeLayout(false);
             this.tabPage12.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1579,6 +1605,8 @@ namespace TreinamentoDLL
         private System.Windows.Forms.TabPage tabPage12;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button BtnEnviarNFeSincronoRTC;
+        private System.Windows.Forms.Button btnImprimirNFeCancelada;
+        private System.Windows.Forms.Button btnImprimirEventos;
     }
 }
 
