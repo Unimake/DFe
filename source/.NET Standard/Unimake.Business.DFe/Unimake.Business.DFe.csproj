@@ -1555,6 +1555,7 @@
 		<None Remove="Xml\Schemas\retEnviNFe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\retEnvRemIndus_v1.00.xsd" />
 		<None Remove="Xml\Schemas\retInutNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SALVADOR_BA\nfse_salvador.xsd" />
 		<None Remove="Xml\Schemas\SNCM\msgevtin_ver_0-01.xsd" />
 		<None Remove="Xml\Schemas\SNCM\msgmbragtmgmt_ver_0-01-r1.xsd" />
 		<None Remove="Xml\Schemas\SNCM\msgmdatamah_ver_0-01-r1.xsd" />
@@ -3781,6 +3782,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\VITORIA_ES\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SALVADOR_BA\nfse_salvador.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SALVADOR_BA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\msgevtin_ver_0-01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\msgmbragtmgmt_ver_0-01-r1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\msgmdatamah_ver_0-01-r1.xsd" />
