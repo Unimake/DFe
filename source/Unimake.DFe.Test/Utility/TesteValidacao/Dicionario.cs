@@ -7,6 +7,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.NFe;
+using Unimake.DFe.Test.NFSe.NACIONAL;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -27,18 +28,49 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         public string TagExtraAssinatura { get; set; }
         public string TagExtraAtributoID { get; set; }
 
+
+        public override string ToString()
+        {
+            return $"  [ TagRaiz: {TagRaiz}, Versao: {versao}, Schema: {SchemaArquivo} ]";
+        }
+
     }
+
+
+    public class DictService
+    {
+        private readonly Dictionary<string, InformacaoXML> _dicionario;
+
+
+        public DictService()
+        {
+            _dicionario = new Dictionary<string, InformacaoXML>();
+        }
+
+        public IReadOnlyDictionary<string, InformacaoXML> Dicionario => _dicionario;
+
+        public InformacaoXML GetInformacao(string chave)
+        {
+            if (_dicionario.ContainsKey(chave))
+            {
+                return _dicionario[chave];
+            }
+            return null; 
+        }
+
+        public void SetInformacao(string chave, InformacaoXML informacao)
+        {
+            _dicionario[chave] = informacao;
+        }
+
+    };
+
+
+
 
     public class DicionarioServico
     {
         private readonly ITestOutputHelper _output;
-
-        public DicionarioServico(ITestOutputHelper output)
-        {
-            _output = output;
-        }
-        private static readonly Dictionary<string, InformacaoXML> dicionario = new();
-
 
         // O parametro de caminhoArquivo foi utilizado de maneira para facilitar os testes locais, 
         // pórem ao utilizar pelo UniNFe o caminho não será passado e sim o XML em si. Ou outra forma que seja mais adequada.
@@ -50,7 +82,6 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         [InlineData(@"..\..\..\Utility\TesteValidacao\ServicoValidacao.xml", "consSitNFe", @"..\..\..\Utility\TesteValidacao\XMLteste\99999999999999999999999999999999999999999993-ped-sit.xml")]
         public static void CaregarServico(string caminhoServicoValidacao, string tagRaiz, string caminhoArquivo) 
         {
-
 
             if (!File.Exists(caminhoServicoValidacao))
             {
@@ -76,6 +107,8 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
             XmlNodeList servicos = doCaminhoServicoValidacao.GetElementsByTagName("Servico");
 
+            var dicionario = new DictService();
+
             foreach (XmlNode servico in servicos)
             {
 
@@ -96,8 +129,8 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
                 try
                 {
+                    dicionario.SetInformacao(informacaoXML.TagRaiz, informacaoXML);
 
-                    dicionario[informacaoXML.TagRaiz] = informacaoXML;
 
                 } catch (Exception e)
                 {
@@ -113,6 +146,18 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                     Console.WriteLine($"Serviço encontrado: {informacaoXML.TagRaiz} com versão {informacaoXML.versao} e schema: {informacaoXML.SchemaArquivo}");
                 }
 
+            }
+
+            Console.WriteLine("\n--- Conteúdo Final do Dicionário ---");
+
+            // (Assumindo que você criou a propriedade pública 'Informacoes' no seu DictService)
+            foreach (KeyValuePair<string, InformacaoXML> item in dicionario.Dicionario)
+            {
+                Console.WriteLine($"Chave: {item.Key}");
+
+                // (Isso usará o método .ToString() da sua classe InformacaoXML)
+                Console.WriteLine($"Valor: {item.Value}");
+                Console.WriteLine("-----------------");
             }
 
 

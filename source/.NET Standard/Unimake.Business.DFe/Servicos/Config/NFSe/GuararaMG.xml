@@ -6,7 +6,7 @@
 			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -20,10 +20,10 @@
 		</CancelarNfse>
 		<ConsultarLoteRps versao="2.02">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps?wsdl</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -37,10 +37,10 @@
 		</ConsultarLoteRps>
 		<ConsultarNfseFaixa versao="2.02">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa?wsdl</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -54,10 +54,10 @@
 		</ConsultarNfseFaixa>
 		<ConsultarNfsePorRps versao="2.02">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps?wsdl</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -75,10 +75,10 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoPrestado versao="2.02">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado?wsdl</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -94,10 +94,10 @@
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseServicoTomado versao="2.02">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
-			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado?wsdl</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -113,10 +113,10 @@
 		</ConsultarNfseServicoTomado>
 		<GerarNfse versao="2.02">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse?wsdl</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -132,10 +132,10 @@
 		</GerarNfse>
 		<RecepcionarLoteRpsSincrono versao="2.02">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono?wsdl</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -151,10 +151,10 @@
 		</RecepcionarLoteRpsSincrono>
 		<SubstituirNfse versao="2.02">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://guararamg.futurize-nfse.com.br/webservice/homo?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://guararamg.futurize-nfse.com.br/webservice/prod</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse?wsdl</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse?wsdl</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse?wsdl</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
