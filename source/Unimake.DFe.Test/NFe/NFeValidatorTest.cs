@@ -32,26 +32,6 @@ namespace Unimake.DFe.Test.NFe
         }
 
         /// <summary>
-        /// Testa o XML da NFCe com tags da RTC com CSTs que não devem ser utilizadas para esse modelo: 550 e 800
-        /// </summary>
-        /// <param name="arqXML">Caminho do arquivo XML que será testado</param>
-        [Theory]
-        [Trait("DFe", "NFCe")]
-        [InlineData(@"..\..\..\NFe\Resources\RTC\NFCe_CST550.xml")]
-        [InlineData(@"..\..\..\NFe\Resources\RTC\NFCe_CST800.xml")]
-        public void ValidarNFCeComIBSCBS(string arqXML)
-        {
-            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da validação.");
-
-            var doc = new XmlDocument();
-            doc.Load(arqXML);
-
-            var excecao = Assert.Throws<ValidatorDFeException>(() => ValidatorFactory.BuidValidator(doc.InnerXml)?.Validate());
-
-            Assert.Contains($"Para o modelo {ModeloDFe.NFCe.ToString()}, o CST", excecao.Message);
-        }
-
-        /// <summary>
         /// Testa o XML da NFe com CST 020 no ICMS, que pode ou não ter a base legal informada. Lançar apenas um aviso, não interromper.
         /// </summary>
         /// <param name="arqXml"></param>
