@@ -85,16 +85,6 @@
 				</Evento>
 			</UrlsRecibosEventos>		
 	</ConsultaReciboEvento>
-		<ConsultaFechamento2099 versao="1.05.01">
-			<Descricao>Consulta fechamento do evento R-2099</Descricao>
-			<WebEnderecoHomologacao>https://preprodefdreinf.receita.fazenda.gov.br/WsREINFConsultas/ConsultasReinf.svc?singlewsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://reinf.receita.fazenda.gov.br/WsREINFConsultas/ConsultasReinf.svc?singlewsdl</WebEnderecoProducao>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body>{xmlBody}</soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebActionProducao>http://sped.fazenda.gov.br/ConsultasReinf/ConsultaResultadoFechamento2099</WebActionProducao>
-			<WebActionHomologacao>http://sped.fazenda.gov.br/ConsultasReinf/ConsultaResultadoFechamento2099</WebActionHomologacao>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<WebTagRetorno>ConsultaResultadoFechamento2099Result</WebTagRetorno>
-		</ConsultaFechamento2099>
 		<ConsultaLoteAssincrono versao="1.00.00">
 			<Descricao>Consulta Lote Eventos Assincrono Reinf</Descricao>
 			<RequestURIHomologacao>https://pre-reinf.receita.economia.gov.br/consulta/lotes/{numeroProtocolo}</RequestURIHomologacao>
