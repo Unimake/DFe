@@ -150,8 +150,8 @@ namespace TreinamentoDLL
             var xml = new XmlNFe.ConsSitNFe
             {
                 Versao = "4.00",
-                TpAmb = TipoAmbiente.Producao,
-                ChNFe = "41211206117473000150550010000710231016752423"
+                TpAmb = TipoAmbiente.Homologacao,
+                ChNFe = "35240110654122000155550010000085161700218900"
             };
 
             var configuracao = new Configuracao
@@ -165,6 +165,13 @@ namespace TreinamentoDLL
             consultaProtocolo.Executar();
 
             MessageBox.Show(consultaProtocolo.Result.CStat + " - " + consultaProtocolo.Result.XMotivo);
+
+            //Resgatar os eventos retornados na consulta de situação da NFe e salvar no HD
+            foreach (var evento in consultaProtocolo.Result.ProcEventoNFe)
+            {
+                var nomeXmlDistribuicaoEvento = evento.NomeArquivoDistribuicao;
+                File.WriteAllText(@"d:\testenfe\" + nomeXmlDistribuicaoEvento, evento.GerarXML().OuterXml);
+            }
         }
 
         private void BtnConsultaStatusMDFe_Click(object sender, EventArgs e)

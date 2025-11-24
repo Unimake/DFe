@@ -187,6 +187,9 @@ public DateTimeOffset DCompet { get; set; }
         [XmlElement("valores")]
         public Valores Valores { get; set; }
 
+        [XmlElement("IBSCBS")]
+        public IBSCBS IBSCBS { get; set; }
+
         #region Should Serialize
         public bool ShouldSerializeCMotivoEmisTI() => !string.IsNullOrWhiteSpace(CMotivoEmisTI);
 
@@ -263,7 +266,7 @@ public DateTimeOffset DCompet { get; set; }
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeNIF() => !string.IsNullOrWhiteSpace(NIF);
-        public bool ShouldSerializeCNaoNIF() => !string.IsNullOrWhiteSpace(CNaoNIF); 
+        public bool ShouldSerializeCNaoNIF() => !string.IsNullOrWhiteSpace(CNaoNIF);
         public bool ShouldSerializeCAEPF() => CAEPF > 0;
         public bool ShouldSerializexNome() => !string.IsNullOrWhiteSpace(XNome);
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
@@ -512,13 +515,9 @@ public DateTimeOffset DCompet { get; set; }
         [XmlElement("cPaisPrestacao")]
         public string CPaisPrestacao { get; set; }
 
-        [XmlElement("opConsumServ")]
-        public OpConsumServ? OpConsumServ { get; set; }
-
         #region ShouldSerialize
         public bool ShouldSerializeCLocPrestacao() => CLocPrestacao > 0;
         public bool ShouldSerializeCPaisPrestacao() => !string.IsNullOrWhiteSpace(CPaisPrestacao);
-        public bool ShouldSerializeOpConsumServ() => OpConsumServ.HasValue;
         public void ValidarLocalPrestacao()
         {
             if ((CLocPrestacao == 0 && string.IsNullOrWhiteSpace(CPaisPrestacao)) || (CLocPrestacao > 0 && !string.IsNullOrWhiteSpace(CPaisPrestacao)))
@@ -647,6 +646,9 @@ public DateTimeOffset DCompet { get; set; }
         [XmlElement("cObra")]
         public int CObra { get; set; }
 
+        [XmlElement("cCIB")]
+        public int CCIB { get; set; }
+
         [XmlElement("inscImobFisc")]
         public int InscImobFisc { get; set; }
 
@@ -661,9 +663,10 @@ public DateTimeOffset DCompet { get; set; }
         {
             int count = 0;
             if (CObra > 0) count++;
+            if (CCIB > 0) count++;
             if (End != null) count++;
             if (count != 1)
-                throw new Exception("Obra: informe exatamente um dos campos: cObra ou end.");
+                throw new Exception("Obra: informe exatamente um dos campos: cObra, cCIB ou end.");
         }
         #endregion Should Serialize
     }
@@ -780,6 +783,9 @@ public DateTimeOffset DtFim { get; set; }
         [XmlElement("nEixos")]
         public int NEixos { get; set; }
 
+        [XmlElement("rodagem")]
+        public string Rodagem { get; set; }
+
         [XmlElement("sentido")]
         public string Sentido { get; set; }
 
@@ -806,14 +812,32 @@ public DateTimeOffset DtFim { get; set; }
         [XmlElement("docRef")]
         public string DocRef { get; set; }
 
-        [XmlElement("xInfoComp")]
-        public string XInfoComp { get; set; }
+        [XmlElement("xPed")]  // Campo novo
+        public string XPed { get; set; }
+
+        [XmlElement("gItemPed")]  // Campo novo
+        public GItemPed GItemPed { get; set; }
+
+        [XmlElement("xInfComp")]  // Renomear de xInfoComp para xInfComp
+        public string XInfComp { get; set; }
 
         #region Should Serialize
         public bool ShouldSerializeIdDocTec() => IdDocTec > 0;
         public bool ShouldSerializeDocRef() => !string.IsNullOrWhiteSpace(DocRef);
-        public bool ShouldSerializeXInfoComp() => !string.IsNullOrWhiteSpace(XInfoComp);
+        public bool ShouldSerializeXInfComp() => !string.IsNullOrWhiteSpace(XInfComp);
+        public bool ShouldSerializeXPed() => !string.IsNullOrWhiteSpace(XPed);
         #endregion Should Serialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.GItemPed")]
+    [ComVisible(true)]
+#endif
+    public class GItemPed
+    {
+        [XmlElement("xItemPed")]
+        public string XItemPed { get; set; }
     }
 
 #if INTEROP
@@ -834,10 +858,6 @@ public DateTimeOffset DtFim { get; set; }
 
         [XmlElement("trib")]
         public Trib Trib { get; set; }
-
-        [XmlElement("IBSCBS")]
-        public IBSCBS IBSCBS { get; set; }
-
 
     }
 
@@ -1450,20 +1470,23 @@ public DateTimeOffset DtEmiDoc { get; set; }
         [XmlElement("cIndOp")]
         public int CIndOp { get; set; }
 
+        [XmlElement("tpOper")]
+        public TpOperacaoGov? TpOper { get; set; }
+
+        [XmlElement("gRefNFSe")]
+        public GRefNFSe GRefNFSe { get; set; }
+
         [XmlElement("tpEnteGov")]
-        public TipoEnteGovernamental TpEnteGov { get; set; }
+        public TipoEnteGovernamental? TpEnteGov { get; set; }
 
         [XmlElement("xTpEnteGov")]
         public string XTpEnteGov { get; set; }
 
-        [XmlElement("indPessoas")]
-        public int IndPessoas { get; set; }
+        [XmlElement("indDest")]
+        public int IndDest { get; set; }
 
         [XmlElement("dest")]
         public Dest Dest { get; set; }
-
-        [XmlElement("adq")]
-        public Adq Adq { get; set; }
 
         [XmlElement("imovel")]
         public Imovel Imovel { get; set; }
@@ -1472,9 +1495,55 @@ public DateTimeOffset DtEmiDoc { get; set; }
         public ValoresValores Valores { get; set; }
 
         #region Should Serialize
-        public bool ShouldSerializeTpEnteGov() => !string.IsNullOrWhiteSpace(TpEnteGov.ToString());
+        public bool ShouldSerializeTpOper() => TpOper.HasValue;
+        public bool ShouldSerializeTpEnteGov() => TpEnteGov.HasValue;
         public bool ShouldSerializeXTpEnteGov() => !string.IsNullOrWhiteSpace(XTpEnteGov);
         #endregion Should Serialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.GRefNFSe")]
+    [ComVisible(true)]
+#endif
+    public class GRefNFSe
+    {
+        [XmlElement("refNFSe")]
+        public List<string> RefNFSe { get; set; }
+
+#if INTEROP
+        /// <summary>
+        /// Adiciona uma nova referência de NFSe à lista
+        /// </summary>
+        /// <param name="chaveNFSe">Chave da NFS-e referenciada</param>
+        public void AddRefNFSe(string chaveNFSe)
+        {
+            if (RefNFSe == null)
+            {
+                RefNFSe = new List<string>();
+            }
+            RefNFSe.Add(chaveNFSe);
+        }
+
+        /// <summary>
+        /// Retorna uma referência de NFSe da lista pelo index informado
+        /// </summary>
+        /// <param name="index">Index da lista a ser retornado</param>
+        /// <returns>Chave da NFSe no index passado por parâmetro</returns>
+        public string GetRefNFSe(int index)
+        {
+            if ((RefNFSe?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+            return RefNFSe[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos na lista
+        /// </summary>
+        public int GetRefNFSeCount => (RefNFSe != null ? RefNFSe.Count : 0);
+#endif
     }
 
 #if INTEROP
@@ -1483,13 +1552,6 @@ public DateTimeOffset DtEmiDoc { get; set; }
     [ComVisible(true)]
 #endif
     public class Dest : Toma { }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Adq")]
-    [ComVisible(true)]
-#endif
-    public class Adq : Toma { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1799,7 +1861,7 @@ public DateTimeOffset DtCompDoc { get; set; }
     public class ValoresValoresTrib
     {
         [XmlElement("gIBSCBS")]
-        public GIBSCBS GIBSCBS {  get; set; }
+        public GIBSCBS GIBSCBS { get; set; }
     }
 
 #if INTEROP
@@ -1840,7 +1902,7 @@ public DateTimeOffset DtCompDoc { get; set; }
         public int CSTReg { get; set; }
 
         [XmlElement("cClassTribReg")]
-        public int CClassTribReg {  get; set; }
+        public int CClassTribReg { get; set; }
     }
 
 #if INTEROP

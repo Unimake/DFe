@@ -53,8 +53,8 @@ Function Main()
    AAdd(aOpcoes, "Enviar Evento de Cancelamento do CTe - Desserializando XML")   
    AAdd(aOpcoes, "Desserializar XML NFe compra p/dar entrada no ERP (B2B)")
    AAdd(aOpcoes, "Testes diversos com certificado digital no Harbour 3.x")  
-   AAdd(aOpcoes, "Enviar XML de Inutirlizacao do CTe")  
-   AAdd(aOpcoes, "Enviar XML de Inutirlizacao do CTe - Com Desserializacao")  
+   AAdd(aOpcoes, "Enviar XML de Inutilizacao do CTe")  
+   AAdd(aOpcoes, "Enviar XML de Inutilizacao do CTe - Com Desserializacao")  
    AAdd(aOpcoes, "Enviar Evento de CCE da NFe")  
    Aadd(aOpcoes, "Enviar CTe - Modo Assincrono - Desserializando o XML")
    
@@ -102,6 +102,9 @@ Function Main()
 	AAdd(aOpcoes, "NFSe - Nacional - Consultar DPS")
 	AAdd(aOpcoes, "NFSe - Nacional - Consultar NFSe")
 	AAdd(aOpcoes, "NFSe - Nacional - Consultar PDF")
+	
+	Aadd(aOpcoes, "Inutilizar Numero NF-e")
+	Aadd(aOpcoes, "Inutilizar Numero NFC-e")
    
    Do While .T.
       Cls
@@ -363,6 +366,12 @@ Function Main()
 				  
          case nOpcao = 80
               NACIONALConsultarNFSePDF()
+				  
+         case nOpcao = 81
+              InutilizarNumeroNfe()
+				  
+         case nOpcao = 82
+              InutilizarNumeroNfce()
       endcase
    EndDo
 Return       

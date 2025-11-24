@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Consumindo o serviço de consulta a situacao da NFe
+* Inutilizar números da NF-e
 * ---------------------------------------------------------------------------------
 Function InutilizarNumeroNfe()
    Local InicializarConfiguracao
@@ -10,7 +10,6 @@ Function InutilizarNumeroNfe()
  * Criar configuraçao básica para consumir o serviço
    InicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
    InicializarConfiguracao:TipoDfe = 0 // 0=nfe
-   InicializarConfiguracao:Servico = 3 // 3=Inutilizacao de numero da NFE
    InicializarConfiguracao:CertificadoSenha = "12345678"
    InicializarConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
@@ -31,7 +30,7 @@ Function InutilizarNumeroNfe()
    InutNfe:InfInut = InutNFeInfInut
 
  * Consumir o serviço
-   inutilizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Inutilizacao")
+   inutilizacao = CreateObject("Unimake.Business.DFe.Servicos.NFCe.Inutilizacao")
    inutilizacao:Executar(InutNFe,InicializarConfiguracao)
 
    ? "XML Retornado pela SEFAZ"
