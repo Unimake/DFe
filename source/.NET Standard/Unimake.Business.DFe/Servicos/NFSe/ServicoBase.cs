@@ -102,6 +102,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 case PadraoNFSe.ISSONLINE_ASSESSORPUBLICO:
                     ISSONLINE_ASSESSORPUBLICO();
                     break;
+
+                case PadraoNFSe.PRONIM:
+                    PRONIM();
+                    break;
             }
             Configuracoes.Definida = true;
             base.DefinirConfiguracao();
@@ -547,6 +551,53 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #endregion ISSONLINE_ASSESSORPUBLICO
+
+        #region PRONIM
+
+        /// <summary>
+        /// Processa os parâmetros e ajusta a URL para o padrão PRONIM.
+        /// </summary>
+        public void PRONIM()
+        {
+            if (Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps)
+            {
+                Console.WriteLine(ConteudoXMLAssinado.OuterXml);
+
+                var idNodeList =
+                 ConteudoXMLAssinado.GetElementsByTagName(
+                     "infDPS",
+                     "http://www.sped.fazenda.gov.br/nfse"
+                 );
+
+                if (idNodeList == null || idNodeList.Count == 0)
+                    throw new Exception("Elemento infDPS não encontrado no XML da DPS.");
+
+                var infDps = (XmlElement)idNodeList[0];
+
+                string id = infDps.GetAttribute("Id");
+
+                if (string.IsNullOrWhiteSpace(id))
+                    throw new Exception("Atributo Id da DPS não encontrado.");
+
+                if (!id.StartsWith("DPS"))
+                    throw new Exception("Atributo Id não inicia com 'DPS'.");
+
+                string chave = id.Substring(3);
+
+
+                string documentoDps = chave.Substring(0, 14);
+                string municipioDps = chave.Substring(14, 7);
+                string serieDps = chave.Substring(21, 3);
+                string numeroDps = chave.Substring(24, 9);
+
+                // 4 — Substituir placeholders
+                Configuracoes.RequestURI = Configuracoes.RequestURI
+                    .Replace("{documento}", documentoDps)
+                    .Replace("{serie}", serieDps)
+                    .Replace("{numero}", numeroDps);
+            }
+        }
+        #endregion PRONIM
 
 
         #endregion Configurações separadas por PadrãoNFSe

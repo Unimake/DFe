@@ -3689,8 +3689,16 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODEB\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODEB\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\DPS_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\evento_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\NFSe_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\nfse_v2-03.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\pedRegEvento_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposComplexos_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposEventos_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposSimples_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOGOIANIA\nfse_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOGOIANIA\xmldsig-core-schema20020212.xsd" />
