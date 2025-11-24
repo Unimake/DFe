@@ -7,7 +7,7 @@
 			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/ENVIOLOTERPS/EnvioLoteRPS.svc</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/IEnvioLoteRPS/EnviarLoteRPS</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/IEnvioLoteRPS/EnviarLoteRPS</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfRps</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
@@ -26,7 +26,7 @@
 			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTASITUACAOLOTERPS/ConsultaSituacaoLoteRPS.svc</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/IConsultaSituacaoLoteRPS/ConsultarSituacaoLoteRPS</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/IConsultaSituacaoLoteRPS/ConsultarSituacaoLoteRPS</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
 			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTALOTERPS/ConsultaLoteRPS.svc</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/IConsultaLoteRPS/ConsultarLoteRPS</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/IConsultaLoteRPS/ConsultarLoteRPS</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -62,7 +62,7 @@
 			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTANFSERPS/ConsultaNfseRPS.svc</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/IConsultaNfseRPS/ConsultarNfseRPS</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/IConsultaNfseRPS/ConsultarNfseRPS</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -81,7 +81,7 @@
 			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTANFSE/ConsultaNfse.svc</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/IConsultaNfse/ConsultarNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/IConsultaNfse/ConsultarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>

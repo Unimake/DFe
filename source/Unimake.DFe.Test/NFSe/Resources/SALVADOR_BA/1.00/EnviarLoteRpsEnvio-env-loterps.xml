@@ -40,6 +40,9 @@
 						<CodigoTributacaoMunicipio>17</CodigoTributacaoMunicipio>
 						<Discriminacao>Teste emissÃ£o de nota</Discriminacao>
 						<CodigoMunicipio>2927408</CodigoMunicipio>
+						<NBS>XXXXXXXXX</NBS>
+						<cClassTrib>XXXXXX</cClassTrib>
+						<INDOP>XXXXXX</INDOP>
 					</Servico>
 					<Prestador>
 						<Cnpj>99999999999999</Cnpj>

@@ -135,7 +135,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                             {
                                 var idConteudo = id.InnerText;
 
-                                if (tpEvento == idConteudo)
+                                if (tpEvento == idConteudo) // ver de dar um break quando encontra para parar de iterar talvez....
                                 {
 
                                     // TODO: DECIDIR COMO MANDAR PARA O VALIDAR E QUAL SCHEMA MANDAR
@@ -193,22 +193,22 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                         }
 
                     }
-            
+
                     try
-                        {
-                            // TipoDFe tipoDFe = TipoDFe.NFe; Definir o tipo de DFe conforme necessário com o DetectTpeXML 
-                            string tipoDFeString = "NFe"; // Exemplo: "NFe", "CTe", etc.
-                            string schemaMontado = $"{tipoDFeString}.{informacaoXML.SchemaArquivo}";
-                            var validar = new ValidarSchema();
-                            validar.Validar(docCaminhoArquivo, schemaMontado, informacaoXML.TargetNS);
+                    {
+                        // TipoDFe tipoDFe = TipoDFe.NFe; Definir o tipo de DFe conforme necessário com o DetectTpeXML 
+                        string tipoDFeString = "NFe"; // Exemplo: "NFe", "CTe", etc.
+                        string schemaMontado = $"{tipoDFeString}.{informacaoXML.SchemaArquivo}"; // Exemplo: "NFe.consStatServ_v4.00.xsd"
+                        var validar = new ValidarSchema();
+                        validar.Validar(docCaminhoArquivo, schemaMontado, informacaoXML.TargetNS);
 
 
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Erro ao validar o XML: {ex.Message}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Erro ao validar o XML: {ex.Message}");
 
-                        }
+                    }
 
 
 
