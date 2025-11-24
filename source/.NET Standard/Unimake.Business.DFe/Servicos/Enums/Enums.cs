@@ -17125,6 +17125,44 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion Categoria de veículo para cobrança
 
+    #region Tipo de Operação com Entes Governamentais ou outros serviços sobre bens imóveis
+    /// <summary>
+    /// Tipo de Operação com Entes Governamentais ou outros serviços sobre bens imóveis
+    /// </summary>
+    public enum TpOperacaoGov
+    {
+        /// <summary>
+        /// 1 - Fornecimento com pagamento posterior;
+        /// </summary>
+        [XmlEnum("1")]
+        FornecicoComPagamentoPosterior = 1,
+
+        /// <summary>
+        /// 2 - Recebimento do pagamento com fornecimento já realizado;
+        /// </summary>
+        [XmlEnum("2")]
+        RecebimentoPagamentoFornecimentoRealizado = 2,
+
+        /// <summary>
+        /// 3 - Fornecimento com pagamento já realizado;
+        /// </summary>
+        [XmlEnum("3")]
+        FornecimentoPagamentoRealizado = 3,
+
+        /// <summary>
+        /// 4 - Recebimento do pagamento com fornecimento posterior;
+        /// </summary>
+        [XmlEnum("4")]
+        RecebimentoPagamentoPosterior = 4,
+
+        /// <summary>
+        /// 5 - Fornecimento e recebimento do pagamento concomitantes;
+        /// </summary>
+        [XmlEnum("5")]
+        FornecimentoRecebimentoPagamentoConcomitante = 5,
+    }
+# endregion Tipo de Operação com Entes Governamentais ou outros serviços sobre bens imóveis
+
     #endregion NFS-e NACIONAL
 
 
