@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Unimake.Business.DFe.Security
@@ -171,64 +171,45 @@ namespace Unimake.Business.DFe.Security
         /// </summary>
         /// <param name="cert">certificado utilizado para assinar a string</param>
         /// <param name="value">Valor a ser assinado</param>
-        /// <returns></returns>
-        public static string SignWithRSASHA1(X509Certificate2 cert, String value)
+        /// <returns>string assinada com RSA-SHA1</returns>
+        public static string SignWithRSASHA1(X509Certificate2 cert, string value)
         {
-            if (cert == null)
-            {
-                throw new ArgumentNullException(nameof(cert));
-            }
+            if (cert == null) throw new ArgumentNullException(nameof(cert));
+            if (!cert.HasPrivateKey) throw new InvalidOperationException("O certificado não contém chave privada.");
 
-            // 1) ASCII -> bytes
+            // ASCII -> bytes
             byte[] data = Encoding.ASCII.GetBytes(value);
 
-            // 2) SHA-1 do conteúdo
+            // SHA-1 do conteúdo
+            byte[] hash;
             using (var sha1 = SHA1.Create())
-            {
-                byte[] hash = sha1.ComputeHash(data);
+                hash = sha1.ComputeHash(data);
 
-                // 3) Tenta a API moderna (pode vir RSACng OU RSACryptoServiceProvider)
-                RSA rsa = null;
+            // 1) API moderna (pode vir CNG ou CSP por trás, sem referenciar CNG)
+            RSA rsa = null;
+            try { rsa = cert.GetRSAPrivateKey(); } catch { }
+            if (rsa != null)
+            {
                 try
                 {
-                    rsa = cert.GetRSAPrivateKey();
-                }
-                catch { /* alguns frameworks antigos podem lançar aqui */ }
-
-                if (rsa != null)
-                {
-                    try
-                    {
-                        // Assina o HASH com RSA+SHA1 (PKCS#1 v1.5)
-                        byte[] sig = rsa.SignHash(hash, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
-                        return Convert.ToBase64String(sig);
-                    }
-                    finally
-                    {
-                        rsa.Dispose();
-                    }
-                }
-
-                // 4) Fallback legado (se só houver CSP exposto via .PrivateKey)
-                var rsaCsp = cert.PrivateKey as RSACryptoServiceProvider;
-                if (rsaCsp != null)
-                {
-                    byte[] sig = rsaCsp.SignHash(hash, CryptoConfig.MapNameToOID("SHA1"));
+                    byte[] sig = rsa.SignHash(hash, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
                     return Convert.ToBase64String(sig);
                 }
-
-                // 5) (Opcional) Fallback para RSACng via .PrivateKey, se aplicável no seu runtime
-                var rsaCng = cert.PrivateKey as RSACng;
-                if (rsaCng != null)
-                {
-                    byte[] sig = rsaCng.SignHash(hash, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
-                    return Convert.ToBase64String(sig);
-                }
-
-                throw new NotSupportedException("Não foi possível obter uma chave RSA válida do certificado.");
+                finally { rsa.Dispose(); }
             }
-        }
 
+            // 2) Fallback legado via CAPI
+            var rsaCsp = cert.PrivateKey as RSACryptoServiceProvider;
+            if (rsaCsp != null)
+            {
+                byte[] sig = rsaCsp.SignHash(hash, CryptoConfig.MapNameToOID("SHA1"));
+                return Convert.ToBase64String(sig);
+            }
+
+            // (Opcional) Se você quiser manter o fallback RSACng **sem** referenciar o tipo,
+            // não há como — teria que tipar RSACng. Se a ideia é não depender desse pacote, pare aqui.
+            throw new NotSupportedException("Não foi possível obter uma chave RSA válida do certificado.");
+        }
 
         public static string GerarRSASHA512(string value, bool lower = false)
         {
