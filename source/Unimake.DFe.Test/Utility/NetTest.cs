@@ -35,7 +35,7 @@ namespace Unimake.DFe.Test.Utility
             {
                 urls = new string[] { url };
 
-                Assert.True(Business.DFe.Utility.Net.HasInternetConnection(null, 3, urls));
+                Assert.True(Business.DFe.Utility.Net.HasInternetConnection(null, 3, urls), url);
             }
 
             testUrls = new string[] {
