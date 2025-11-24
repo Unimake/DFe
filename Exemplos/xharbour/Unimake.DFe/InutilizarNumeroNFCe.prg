@@ -1,7 +1,7 @@
 * ---------------------------------------------------------------------------------
-* Inutilizar números da NF-e
+* Inutilizar números da NFC-e
 * ---------------------------------------------------------------------------------
-Function InutilizarNumeroNfe()
+Function InutilizarNumeroNfce()
    Local InicializarConfiguracao
    Local InutNFe
    Local InutNFeInfInut
@@ -9,7 +9,7 @@ Function InutilizarNumeroNfe()
 
  * Criar configuraçao básica para consumir o serviço
    InicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
-   InicializarConfiguracao:TipoDfe = 0 // 0=nfe
+   InicializarConfiguracao:TipoDfe = 1 // 1=nfce
    InicializarConfiguracao:CertificadoSenha = "12345678"
    InicializarConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
@@ -22,7 +22,7 @@ Function InutilizarNumeroNfe()
    InutNFeInfInut:Ano = "19"
    InutNFeInfInut:CNPJ = "06117473000150"
    InutNFeInfInut:CUF = 41 // PR
-   InutNFeInfInut:Mod = 55 // Modelo NFe
+   InutNFeInfInut:Mod = 65 // Modelo NFCe
    InutNFeInfInut:NNFIni = 57919
    InutNFeInfInut:NNFFin = 57919
    InutNFeInfInut:Serie = 1
