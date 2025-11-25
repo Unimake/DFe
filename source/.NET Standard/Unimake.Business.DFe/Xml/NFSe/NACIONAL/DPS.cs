@@ -1468,7 +1468,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
         public int IndFinal { get; set; }
 
         [XmlElement("cIndOp")]
-        public int CIndOp { get; set; }
+        public string CIndOp { get; set; }
 
         [XmlElement("tpOper")]
         public TpOperacaoGov? TpOper { get; set; }
@@ -1872,22 +1872,22 @@ public DateTimeOffset DtCompDoc { get; set; }
     public class GIBSCBS
     {
         [XmlElement("CST")]
-        public int CST { get; set; }
+        public string CST { get; set; }
 
         [XmlElement("cClassTrib")]
-        public int CClassTrib { get; set; }
+        public string CClassTrib { get; set; }
 
         [XmlElement("cCredPres")]
-        public int CCredPres { get; set; }
+        public string CCredPres { get; set; }
 
-        [XmlElement("gTribregular")]
+        [XmlElement("gTribRegular")]
         public GTribRegular GTribRegular { get; set; }
 
         [XmlElement("gDif")]
         public GDif GDif { get; set; }
 
         #region Should Serialize
-        public bool ShouldSerializeCCredPres() => CCredPres > 0;
+        public bool ShouldSerializeCCredPres() => CCredPres != null;
         #endregion Should Serialize
     }
 
@@ -1899,10 +1899,10 @@ public DateTimeOffset DtCompDoc { get; set; }
     public class GTribRegular
     {
         [XmlElement("CSTReg")]
-        public int CSTReg { get; set; }
+        public string CSTReg { get; set; }
 
         [XmlElement("cClassTribReg")]
-        public int CClassTribReg { get; set; }
+        public string CClassTribReg { get; set; }
     }
 
 #if INTEROP
