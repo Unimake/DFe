@@ -1888,7 +1888,8 @@ public DateTimeOffset DtCompDoc { get; set; }
         public GDif GDif { get; set; }
 
         #region Should Serialize
-        public bool ShouldSerializeCCredPres() => CCredPres != null;
+        public bool ShouldSerializeCCredPres() => ! string.IsNullOrWhiteSpace(CCredPres);
+
         #endregion Should Serialize
     }
 
