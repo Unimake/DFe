@@ -190,7 +190,7 @@
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>true</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</GerarNfse>
 	</Servicos>
 </Configuracoes>
