@@ -82,12 +82,22 @@ begin
         Free;
       end;
 
-
       ShowMessage(eventoAssinado);
-
       ShowMessage(oRecepcaoEvento.RetornoWSString);
-
       ShowMessage('CStat do Lote Retornado: ' + IntToStr(oRecepcaoEvento.Result.InfEvento.CStat) + ' - XMotivo: ' + oRecepcaoEvento.Result.InfEvento.XMotivo);
+
+      case oRecepcaoEvento.Result.InfEvento.CStat of
+        134, 135, 156:
+          begin
+            // Recebido pelo Sistema de Registro de Eventos
+            // Grava o XML de distribuição
+            oRecepcaoEvento.GravarXmlDistribuicao('tmp\testenfe');
+          end;
+      else
+        begin
+          // Evento rejeitado, realizar as ações necessárias
+        end;
+      end;
     end;
 
   except
