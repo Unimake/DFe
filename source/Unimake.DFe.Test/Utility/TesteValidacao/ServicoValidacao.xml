@@ -159,6 +159,117 @@
 				<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
 				<SchemaArquivoEspecifico>e412130_v1.00.xsd</SchemaArquivoEspecifico>
 			</Tipo>
+			<Tipo>
+				<ID>211110</ID>
+				<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e211110_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>211120</ID>
+				<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e211120_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>211124</ID>
+				<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e211124_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>211130</ID>
+				<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e211130_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>211140</ID>
+				<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e211140_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>211150</ID>
+				<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e211150_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110192</ID>
+				<SchemaArquivo>envEventoInsucessoNFe_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e110192_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110193</ID>
+				<SchemaArquivo>envEventoCancInsucessoNFe_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e110193_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>210200</ID>
+				<SchemaArquivo>envConfRecebto_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e210200_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>210210</ID>
+				<SchemaArquivo>envConfRecebto_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e210210_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>210220</ID>
+				<SchemaArquivo>envConfRecebto_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e210220_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>210240</ID>
+				<SchemaArquivo>envConfRecebto_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e210240_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110140</ID>
+				<SchemaArquivo>envEPEC_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e110140_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110150</ID>
+				<SchemaArquivo>envEventoAtorInteressado_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>110150_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110130</ID>
+				<SchemaArquivo>envEventoEntregaNFe_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e110130_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110131</ID>
+				<SchemaArquivo>envEventoCancEntregaNFe_v1.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>e110131_v1.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
 		</SchemasEspecificos>
 	</Servico>
+	<Servico tagRaiz ="enviNFe" versao ="4.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo>enviNFe_v4.00.xsd</SchemaArquivo>
+		<TagAssinatura>NFe</TagAssinatura>
+		<TagAtributoID>infNFe</TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+	</Servico>
+	<Servico tagRaiz ="distDFeInt" versao ="1.01" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo>distDFeInt_v1.01.xsd</SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+	</Servico>
+	<Servico tagRaiz ="distDFeInt" versao ="1.35" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo>distDFeInt_v1.35.xsd</SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+	</Servico>
+	
 </ServicosValidacao>

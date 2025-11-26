@@ -39,11 +39,24 @@ DEFAULT_CONFIG: Dict = {
     "exemplo_dll_padrao": False,
     "exemplo_user_pass": False,
     "exemplo_servico": "",
+    "codigo_mun": "codigo_ibge_do_municipio",
     "exemplo_dll_unico": ""
 }
 
 # ------------------- Configurações de exceção -------------------
 PADROES_CONFIG: Dict[str, Dict] = {
+    "ABASE": {
+        "wsdl_unico": True,
+        "wsdl_diferente": False,
+        "api": False,
+        "notas_unicas": [],
+        "obs_unicas": [],
+        "exemplo_dll_padrao": True,
+        "exemplo_user_pass": False,
+        "exemplo_servico": "RecepcionarLoteRps",
+        "codigo_mun": "9999902",
+        "exemplo_dll_unico": ""
+    },
     "ADM_SISTEMAS": {
         "wsdl_unico": False,
         "wsdl_diferente": True,
@@ -53,6 +66,7 @@ PADROES_CONFIG: Dict[str, Dict] = {
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": True,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "AGILI": {
@@ -68,6 +82,7 @@ PADROES_CONFIG: Dict[str, Dict] = {
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "AVMB": {
@@ -81,6 +96,7 @@ PADROES_CONFIG: Dict[str, Dict] = {
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "BAUHAUS": {
@@ -94,6 +110,7 @@ PADROES_CONFIG: Dict[str, Dict] = {
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": 
             """==== <font color="#008000">Exemplo de uso na DLL em C#:</font> ====
 <font color="#008000">Versão 1.00</font>
@@ -103,7 +120,7 @@ var configuracao = new Configuracao
     TipoDFe = TipoDFe.NFSe,
     CertificadoDigital = CertificadoSelecionado,
     TipoAmbiente = TipoAmbiente.Producao,
-    CodigoMunicipio = codigo_ibge_do_municipio,
+    codigo_municipio = codigo_ibge_do_municipio,
     Servico = Servico.NFSeGerarNfse,
     SchemaVersao = "1.00"
     MunicipioToken = "TOKEN_AQUI"
@@ -121,9 +138,10 @@ var retornoPrefeitura = servico.RetornoWSString;
         "api": False,
         "notas_unicas": [],
         "obs_unicas": [],
-        "exemplo_dll_padrao": False,
+        "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
-        "exemplo_servico": "",
+        "exemplo_servico": "GerarNfse",
+        "codigo_mun": "9999907",
         "exemplo_dll_unico": ""
     },
     "BETHA": {
@@ -132,9 +150,10 @@ var retornoPrefeitura = servico.RetornoWSString;
         "api": False,
         "notas_unicas": [],
         "obs_unicas": [],
-        "exemplo_dll_padrao": False,
+        "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
-        "exemplo_servico": "",
+        "exemplo_servico": "RecepcionarLoteRps",
+        "codigo_mun": "9999903",
         "exemplo_dll_unico": ""
     },
     "BSITBR": {
@@ -148,6 +167,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "CARIOCA": {
@@ -162,6 +182,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "CENTI": {
@@ -173,6 +194,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "CONAM": {
@@ -184,6 +206,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "RecepcionarLoteRps",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "COPLAN": {
@@ -195,6 +218,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "DBSELLER": {
@@ -206,6 +230,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "SubstituirNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "DESENVOLVECIDADE": {
@@ -217,6 +242,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "DSF": {
@@ -231,6 +257,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "E_RECEITA": {
@@ -242,6 +269,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "EGOVERNE": {
@@ -257,6 +285,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "EGOVERNEISS": {
@@ -270,6 +299,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "EnvioLoteRps",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "EL": {
@@ -283,6 +313,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico":
             """==== <font color="#008000">Exemplo de uso na DLL em C#:</font> ====
 <font color="#008000">Versão 1.00</font>
@@ -292,7 +323,7 @@ var configuracao = new Configuracao
     TipoDFe = TipoDFe.NFSe,
     CertificadoDigital = CertificadoSelecionado,
     TipoAmbiente = TipoAmbiente.Producao,
-    CodigoMunicipio = codigo_ibge_do_municipio,
+    codigo_municipio = codigo_ibge_do_municipio,
     Servico = Servico.NFSeRecepcionarLoteRps,
     SchemaVersao = "1.00"
     MunicipioUsuario = "12345678901234",
@@ -311,7 +342,7 @@ var configuracao = new Configuracao
     TipoDFe = TipoDFe.NFSe,
     CertificadoDigital = CertificadoSelecionado,
     TipoAmbiente = TipoAmbiente.Producao,
-    CodigoMunicipio = codigo_ibge_do_municipio,
+    codigo_municipio = codigo_ibge_do_municipio,
     Servico = Servico.NFSeGerarNfse,
     SchemaVersao = "2.04"
 }};
@@ -333,6 +364,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "EQUIPLANO": {
@@ -341,9 +373,10 @@ var retornoPrefeitura = servico.RetornoWSString;
         "api": False,
         "notas_unicas": [],
         "obs_unicas": [],
-        "exemplo_dll_padrao": False,
+        "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
-        "exemplo_servico": "",
+        "exemplo_servico": "RecepcionarLoteRps",
+        "codigo_mun": "9999905",
         "exemplo_dll_unico": ""
     },
     "FINTEL": {
@@ -355,6 +388,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "FIORILLI": {
@@ -368,6 +402,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": True,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "FISCO": {
@@ -378,9 +413,10 @@ var retornoPrefeitura = servico.RetornoWSString;
         "obs_unicas": [
             "Não possui ambiente de homologação."
             ],
-        "exemplo_dll_padrao": False,
+        "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
-        "exemplo_servico": "",
+        "exemplo_servico": "GerarNfse",
+        "codigo_mun": "9999906",
         "exemplo_dll_unico": ""
     },
     "GIAP": {
@@ -395,6 +431,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "EnviarLoteNotas",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "GIAP": {
@@ -406,6 +443,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_user_pass": False,
         "exemplo_dll_unico": ""
     },
@@ -418,9 +456,10 @@ var retornoPrefeitura = servico.RetornoWSString;
             "Os municípios <b>Fortaleza - CE</b> e <b>Contagem - MG</b> utilizam a versão <b>2.00</b> para o serviço de cancelamento.",
            "Município de <b>São José dos Pinhais - PR</b> (Cód. IBGE 4125506) possui XMLs modificados que utilizam versão <b>3.00</b> disponibilizado nesse [https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2FGINFES%2F3.00+-+Sao+Jose+dos+Pinhais+-+PR link.]"
            ],
-        "exemplo_dll_padrao": False,
+        "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
-        "exemplo_servico": "",
+        "exemplo_servico": "RecepcionarLoteRps",
+        "codigo_mun": "9999900",
         "exemplo_dll_unico": ""
     },
     "GISSONLINE": {
@@ -435,6 +474,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "HM2SOLUCOES": {
@@ -448,6 +488,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": True,
         "exemplo_servico": "RecepcionarLoteRps",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "IIBRASIL": {
@@ -461,6 +502,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "INDAIATUBA_SP": {
@@ -474,6 +516,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "INTERSOL": {
@@ -487,6 +530,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "IPM": {
@@ -501,6 +545,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": True,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "ISSNET": {
@@ -512,6 +557,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "MANAUS_AM": {
@@ -525,6 +571,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "MEGASOFT": {
@@ -538,6 +585,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "MEMORY": {
@@ -546,9 +594,10 @@ var retornoPrefeitura = servico.RetornoWSString;
         "api": False,
         "notas_unicas": [],
         "obs_unicas": [],
-        "exemplo_dll_padrao": False,
+        "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
-        "exemplo_servico": "",
+        "exemplo_servico": "RecepcionarLoteRps",
+        "codigo_mun": "9999901",
         "exemplo_dll_unico": ""
     },
     "MODERNIZACAO_PUBLICA": {
@@ -560,6 +609,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "NACIONAL": {
@@ -571,6 +621,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "1001058",
         "exemplo_dll_unico": ""
     },
     "NATALENSE": {
@@ -584,6 +635,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "NOBESISTEMAS": {
@@ -597,6 +649,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "PAULISTANA": {
@@ -614,6 +667,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "EnvioLoteRps",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "PORTAL_FACIL": {
@@ -627,6 +681,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "PRIMAX": {
@@ -638,6 +693,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "EmissaoNota",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "PRONIM": {
@@ -651,6 +707,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "PROPRIOBARUERISP": {
@@ -666,6 +723,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "QUASAR": {
@@ -679,6 +737,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "SALVADOR_BA": {
@@ -691,6 +750,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "SH3": {
@@ -704,6 +764,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "SIGCORP": {
@@ -718,6 +779,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "SIGISSWEB": {
@@ -731,6 +793,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "SIMPLISS": {
@@ -742,6 +805,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico":
             """==== <font color="#008000">Exemplo de uso na DLL em C#:</font> ====
 <font color="#008000">Versão 2.03</font>
@@ -751,7 +815,7 @@ var configuracao = new Configuracao
     TipoDFe = TipoDFe.NFSe,
     CertificadoDigital = CertificadoSelecionado,
     TipoAmbiente = TipoAmbiente.Producao,
-    CodigoMunicipio = codigo_ibge_do_municipio,
+    codigo_municipio = codigo_ibge_do_municipio,
     Servico = Servico.NFSeGerarNfse,
     SchemaVersao = "2.03"
 }};
@@ -768,7 +832,7 @@ var configuracao = new Configuracao
     TipoDFe = TipoDFe.NFSe,
     CertificadoDigital = CertificadoSelecionado,
     TipoAmbiente = TipoAmbiente.Producao,
-    CodigoMunicipio = codigo_ibge_do_municipio,
+    codigo_municipio = codigo_ibge_do_municipio,
     Servico = Servico.NFSeGerarNfse,
     SchemaVersao = "3.00"
     MunicipioUsuario = "12345678901234",
@@ -790,6 +854,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": True,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "SOFTPLAN": {
@@ -803,6 +868,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "TECNOSISTEMAS": {
@@ -814,6 +880,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "ConsultarSequenciaLoteNotaRPS",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "THEMA": {
@@ -825,6 +892,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "RecepcionarLoteRps",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "TINUS": {
@@ -838,6 +906,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "TIPLAN": {
@@ -852,6 +921,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "TRIBUTUS": {
@@ -867,6 +937,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "VITORIA_ES": {
@@ -880,6 +951,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "WEBFISCO": {
@@ -888,9 +960,10 @@ var retornoPrefeitura = servico.RetornoWSString;
         "api": False,
         "notas_unicas": [],
         "obs_unicas": [],
-        "exemplo_dll_padrao": False,
+        "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
-        "exemplo_servico": "",
+        "exemplo_servico": "RecepcionarLoteRpsSincrono",
+        "codigo_mun": "9999904",
         "exemplo_dll_unico": ""
     },
     "WEBISS": {
@@ -905,6 +978,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": False,
         "exemplo_user_pass": False,
         "exemplo_servico": "",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
     "WEBISS": {
@@ -916,6 +990,7 @@ var retornoPrefeitura = servico.RetornoWSString;
         "exemplo_dll_padrao": True,
         "exemplo_user_pass": False,
         "exemplo_servico": "GerarNfse",
+        "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     }
 }

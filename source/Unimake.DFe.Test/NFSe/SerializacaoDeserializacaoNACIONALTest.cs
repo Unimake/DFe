@@ -217,7 +217,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
 
             // Novos campos opcionais v1.01 (presentes neste XML)
             Assert.NotNull(ibscbs.TpOper);
-            Assert.Equal(TpOperacaoGov.FornecicoComPagamentoPosterior, ibscbs.TpOper); // tpOper=1
+            Assert.Equal(TpOperacaoGov.FornecimentoComPagamentoPosterior, ibscbs.TpOper); // tpOper=1
 
             // Campos existentes
             Assert.Equal(0, ibscbs.FinNFSe);
@@ -319,7 +319,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                 FinNFSe = 0,
                 IndFinal = 0,
                 CIndOp = "000001",
-                TpOper = TpOperacaoGov.FornecicoComPagamentoPosterior,
+                TpOper = TpOperacaoGov.FornecimentoComPagamentoPosterior,
                 TpEnteGov = TipoEnteGovernamental.Municipio, 
                 IndDest = 0, 
             };
@@ -415,7 +415,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             Assert.False(ibscbs.ShouldSerializeXTpEnteGov()); // null/empty
 
             // Define valores
-            ibscbs.TpOper = TpOperacaoGov.FornecicoComPagamentoPosterior;
+            ibscbs.TpOper = TpOperacaoGov.FornecimentoComPagamentoPosterior;
             ibscbs.TpEnteGov = TipoEnteGovernamental.Municipio;
             ibscbs.XTpEnteGov = "Descrição";
 

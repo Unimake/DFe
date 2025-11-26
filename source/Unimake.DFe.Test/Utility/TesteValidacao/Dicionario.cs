@@ -13,6 +13,7 @@ using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
 using Xunit.Abstractions;
+using Org.BouncyCastle.Asn1.X509;
 
 
 namespace Unimake.DFe.Test.Utility.TesteValidacao
@@ -50,7 +51,6 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 $"TagExtraAtributoID: {TagExtraAtributoID}";
         }
 
-
     }
 
     public class DicionarioServico
@@ -67,159 +67,201 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         //[InlineData(@"..\..\..\Utility\TesteValidacao\ServicoValidacao.xml", "consStatServ", @"..\..\..\Utility\TesteValidacao\XMLteste\consStatServ.xml")]
         //[InlineData(@"..\..\..\Utility\TesteValidacao\ServicoValidacao.xml", "consSitNFe", @"..\..\..\Utility\TesteValidacao\XMLteste\consSitNFe.xml")]
         //[InlineData(@"..\..\..\Utility\TesteValidacao\ServicoValidacao.xml", "inutNFe", @"..\..\..\Utility\TesteValidacao\XMLteste\inutNFe.xml")]
-        [InlineData(@"..\..\..\Utility\TesteValidacao\ServicoValidacao.xml", "envEvento", @"..\..\..\Utility\TesteValidacao\XMLteste\envEvento_110001.xml")]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ServicoValidacao.xml", "envEvento", @"..\..\..\Utility\TesteValidacao\XMLteste\envEvento_110001.xml")]
+        [InlineData(@"..\..\..\Utility\TesteValidacao\ServicoValidacao.xml", "infNFe", @"..\..\..\Utility\TesteValidacao\XMLteste\infNFe.xml")]
         public static void CaregarServicoValidar(string caminhoServicoValidacao, string tagRaiz, string caminhoArquivo)
         {
-
-            // o certificado sera passado pelo UniNFe, aqui é apenas um exemplo de carregamento do certificado
+            // Carregar certificado
             var CertificadoCaminho = @"C:\Projetos\Unimake_PV.pfx";
             var CertificadoSenha = "12345678";
             var certificado = new CertificadoDigital().CarregarCertificadoDigitalA1(CertificadoCaminho, CertificadoSenha);
 
-            // Carregar o XML de configuração dos serviços
-            XmlDocument doCaminhoServicoValidacao = new();
-            doCaminhoServicoValidacao.Load(caminhoServicoValidacao);
+            // Carregar config
+            XmlDocument xmlConfig = new();
+            xmlConfig.Load(caminhoServicoValidacao);
 
-            // verificar se o arquivo a ser validado existe
             if (!File.Exists(caminhoArquivo))
             {
-                throw new Exception("Arquivo 'caminhoArquivo' não encontrado");
+                throw new Exception("Arquivo XML não encontrado");
             }
 
+            XmlDocument xml = new();
+            xml.Load(caminhoArquivo);
 
-            XmlDocument docCaminhoArquivo = new();
-            docCaminhoArquivo.Load(caminhoArquivo);
-
-            // so funciona para NFe
-            var versao = docCaminhoArquivo.DocumentElement.GetAttribute("versao");
-
-
-
-            XmlNodeList servicos = doCaminhoServicoValidacao.GetElementsByTagName("Servico");
-            var informacaoXML = new InformacaoXML();
+            var versao = xml.DocumentElement.GetAttribute("versao");
+            XmlNodeList servicos = xmlConfig.GetElementsByTagName("Servico");
 
             foreach (XmlNode servico in servicos)
             {
-                var nodeScheamaEspecifico = servico.SelectSingleNode("*[local-name()='SchemasEspecificos']");
-                if (nodeScheamaEspecifico == null)
-                {
-                    informacaoXML.TagRaiz = servico.Attributes["tagRaiz"]?.Value;
-                    informacaoXML.Versao = servico.Attributes["versao"]?.Value;
-                    informacaoXML.SchemaArquivo = servico.SelectSingleNode("*[local-name()='SchemaArquivo']")?.InnerText;
-                    informacaoXML.TargetNS = servico.SelectSingleNode("*[local-name()='TargetNS']")?.InnerText;
-                    informacaoXML.TagAssinatura = servico.SelectSingleNode("*[local-name()='TagAssinatura']")?.InnerText;
-                    informacaoXML.TagAtributoID = servico.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText;
-                    informacaoXML.TagLoteAssinatura = servico.SelectSingleNode("*[local-name()='TagLoteAssinatura']")?.InnerText;
-                    informacaoXML.TagLoteAtributoID = servico.SelectSingleNode("*[local-name()='TagLoteAtributoID']")?.InnerText;
-                    informacaoXML.TagExtraAssinatura = servico.SelectSingleNode("*[local-name()='TagExtraAssinatura']")?.InnerText;
-                    informacaoXML.TagExtraAtributoID = servico.SelectSingleNode("*[local-name()='TagExtraAtributoID']")?.InnerText;
+                
+                string tagRaizServico = servico.Attributes["tagRaiz"]?.Value;
+                string versaoServico = servico.Attributes["versao"]?.Value;
 
+                if (tagRaizServico != tagRaiz || versaoServico != versao)
+                    continue;
+
+                // se não for evento
+                if (tagRaiz != "envEvento")
+                {
+                    var inform = MontarInformacaoGeral(servico);
+
+                  
+                    AssinarSeNecessario(xml, inform, certificado);
+                    ValidarSchemaGeral(xml, inform);
+
+                    Console.WriteLine(inform);
+                    return;
                 }
 
+                // se for evento
+                XmlNodeList eventos = xml.GetElementsByTagName("evento");
 
-                else if (nodeScheamaEspecifico != null)
+                foreach (XmlNode eventoNode in eventos)
                 {
+                    var tpEventoNode = eventoNode.SelectSingleNode("*[local-name()='infEvento']/*[local-name()='tpEvento']");
+                    string tpEvento = tpEventoNode?.InnerText;
 
-                    var tpEvento = docCaminhoArquivo.SelectSingleNode("//*[local-name()='tpEvento']")?.InnerText;
+                    if (String.IsNullOrWhiteSpace(tpEvento))
+                        throw new Exception("Tag <tpEvento> não encontrada");
 
-                    if (!tpEvento.IsNullOrEmpty())
+                    // Procura schema pelo ID específico
+                    XmlNode schemasEspecificos = servico.SelectSingleNode("*[local-name()='SchemasEspecificos']");
+                    if (schemasEspecificos == null)
                     {
-                        var nodeTipo = nodeScheamaEspecifico.SelectNodes("*[local-name()='Tipo']");
+                        throw new Exception("Configuração de SchemasEspecificos não encontrada");
+                    }
 
-                        foreach (XmlNode tipo in nodeTipo)
+                    XmlNode tipoCorreto = null;
+
+                    foreach (XmlNode tipo in schemasEspecificos.SelectNodes("*[local-name()='Tipo']"))
+                    {
+                        string id = tipo.SelectSingleNode("*[local-name()='ID']")?.InnerText;
+
+                        if (id == tpEvento)
                         {
-
-                            var idEspecificoList = tipo.SelectNodes("*[local-name()='ID']");
-
-                            foreach (XmlNode id in idEspecificoList)
-                            {
-                                var idConteudo = id.InnerText;
-
-                                if (tpEvento == idConteudo) // ver de dar um break quando encontra para parar de iterar talvez....
-                                {
-
-                                    // TODO: DECIDIR COMO MANDAR PARA O VALIDAR E QUAL SCHEMA MANDAR
-                                    // VERIFICAR UM EVENTO USANDO O VALIDAR NA DLL PARA VER COMO ELE PASSA O SCHEMA 
-                                    informacaoXML.TagRaiz = servico.Attributes["tagRaiz"]?.Value;
-                                    informacaoXML.Versao = servico.Attributes["versao"]?.Value;
-                                    informacaoXML.SchemaArquivo = tipo.SelectSingleNode("*[local-name()='SchemaArquivo']")?.InnerText;
-                                    informacaoXML.SchemaArquivoEspecifico = tipo.SelectSingleNode("*[local-name()='SchemaArquivoEspecifico']")?.InnerText;
-                                    informacaoXML.TargetNS = servico.SelectSingleNode("*[local-name()='TargetNS']")?.InnerText;
-                                    informacaoXML.TagAssinatura = servico.SelectSingleNode("*[local-name()='TagAssinatura']")?.InnerText;
-                                    informacaoXML.TagAtributoID = servico.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText;
-                                    informacaoXML.TagLoteAssinatura = servico.SelectSingleNode("*[local-name()='TagLoteAssinatura']")?.InnerText;
-                                    informacaoXML.TagLoteAtributoID = servico.SelectSingleNode("*[local-name()='TagLoteAtributoID']")?.InnerText;
-                                    informacaoXML.TagExtraAssinatura = servico.SelectSingleNode("*[local-name()='TagExtraAssinatura']")?.InnerText;
-                                    informacaoXML.TagExtraAtributoID = servico.SelectSingleNode("*[local-name()='TagExtraAtributoID']")?.InnerText;
-
-                                }
-                            }
-
+                            tipoCorreto = tipo;
+                            break;
                         }
-
                     }
 
+                    if (tipoCorreto == null)
+                        throw new Exception($"Não existe Schema Específico configurado para o evento {tpEvento}");
 
-                }
-                if (informacaoXML.TagRaiz == tagRaiz && informacaoXML.Versao == versao)
-                {
-                    string chave = $"{informacaoXML.TagRaiz}-{informacaoXML.Versao}"; // Exemplo de chave: "consStatServ-4.00"
-                    dicionario[chave] = informacaoXML;
+                   
+                    var inform = MontarInformacaoEspecifica(servico, tipoCorreto);
 
-                    Console.WriteLine(dicionario[chave]);
+                    AssinarSeNecessario(xml, inform, certificado);
 
-                    if (!string.IsNullOrWhiteSpace(informacaoXML.TagAssinatura)) // caso tenha que assinar o XML
-                    {
+                    ValidarSchemaGeral(xml, inform);
 
-                        //|  TipoDFe          | Algoritmo |
-                        //| ---------------   | --------- |
-                        //| **NFe * *         | SHA1      |
-                        //| **CTe / CTeOS * * | SHA1      |
-                        //| **MDFe * *        | SHA1      |
-                        //| **NFSe * *        | SHA1      |
-                        //| **Reinf * *       | SHA256    |
-                        //| **eSocial * *     | SHA256    |
-                        //| **DARE * *        | SHA256    |
+                    ValidarSchemaEspecifico(eventoNode, inform);
 
-                        try
-                        {
-                            AssinaturaDigital.Assinar(docCaminhoArquivo, informacaoXML.TagAssinatura, informacaoXML.TagAtributoID, certificado, AlgorithmType.Sha1);
-                            Console.WriteLine($"assinado.xml: {docCaminhoArquivo.OuterXml}");
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Erro ao assinar o XML: {ex.Message}");
-
-                        }
-
-                    }
-
-                    try
-                    {
-                        // TipoDFe tipoDFe = TipoDFe.NFe; Definir o tipo de DFe conforme necessário com o DetectTpeXML 
-                        string tipoDFeString = "NFe"; // Exemplo: "NFe", "CTe", etc.
-                        string schemaMontado = $"{tipoDFeString}.{informacaoXML.SchemaArquivo}"; // Exemplo: "NFe.consStatServ_v4.00.xsd"
-                        var validar = new ValidarSchema();
-                        validar.Validar(docCaminhoArquivo, schemaMontado, informacaoXML.TargetNS);
-
-
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Erro ao validar o XML: {ex.Message}");
-
-                    }
-
-
-
-
+                    Console.WriteLine(inform);
                 }
 
-
+                return;
             }
+        }
 
 
 
+        private static InformacaoXML MontarInformacaoGeral(XmlNode servico)
+        {
+            return new InformacaoXML
+            {
+                TagRaiz = servico.Attributes["tagRaiz"]?.Value,
+                Versao = servico.Attributes["versao"]?.Value,
+                SchemaArquivo = servico.SelectSingleNode("*[local-name()='SchemaArquivo']")?.InnerText,
+                TargetNS = servico.SelectSingleNode("*[local-name()='TargetNS']")?.InnerText,
+                TagAssinatura = servico.SelectSingleNode("*[local-name()='TagAssinatura']")?.InnerText,
+                TagAtributoID = servico.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText,
+                TagLoteAssinatura = servico.SelectSingleNode("*[local-name()='TagLoteAssinatura']")?.InnerText,
+                TagLoteAtributoID = servico.SelectSingleNode("*[local-name()='TagLoteAtributoID']")?.InnerText,
+                TagExtraAssinatura = servico.SelectSingleNode("*[local-name()='TagExtraAssinatura']")?.InnerText,
+                TagExtraAtributoID = servico.SelectSingleNode("*[local-name()='TagExtraAtributoID']")?.InnerText
+            };
+        }
+
+
+        private static InformacaoXML MontarInformacaoEspecifica(XmlNode servico, XmlNode tipo)
+        {
+            return new InformacaoXML
+            {
+                TagRaiz = servico.Attributes["tagRaiz"]?.Value,
+                Versao = servico.Attributes["versao"]?.Value,
+                SchemaArquivo = tipo.SelectSingleNode("*[local-name()='SchemaArquivo']")?.InnerText,
+                SchemaArquivoEspecifico = tipo.SelectSingleNode("*[local-name()='SchemaArquivoEspecifico']")?.InnerText,
+                TargetNS = servico.SelectSingleNode("*[local-name()='TargetNS']")?.InnerText,
+                TagAssinatura = servico.SelectSingleNode("*[local-name()='TagAssinatura']")?.InnerText,
+                TagAtributoID = servico.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText
+            };
+        }
+
+
+        private static void AssinarSeNecessario(XmlDocument xml, InformacaoXML info, X509Certificate2 cert)
+        {
+            if (String.IsNullOrWhiteSpace(info.TagAssinatura))
+                return;
+
+
+            //| TipoDFe         | Algoritmo |
+            //| --------------- | --------- | 
+            //| NFe             | SHA1      | 
+            //| CTe  CTeOS      | SHA1      | 
+            //| MDFe            | SHA1      | 
+            //| NFSe            | SHA1      | 
+            //| Reinf           | SHA256    |
+            //| eSocial         | SHA256    | 
+            //| DARE            | SHA256    |
+
+            try
+            {
+                AssinaturaDigital.Assinar(xml, info.TagAssinatura, info.TagAtributoID, cert, AlgorithmType.Sha1);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao assinar XML: {ex.Message}");
+            }
+        }
+
+
+        private static void ValidarSchemaGeral(XmlDocument xml, InformacaoXML info)
+        {
+            
+                string tipoDFe = "NFe";
+                string schema = $"{tipoDFe}.{info.SchemaArquivo}";
+
+                var validar = new ValidarSchema();
+                validar.Validar(xml, schema, info.TargetNS);
+
+            
+            if(!validar.Success)
+            {
+                throw new Exception($"Erro ao validar schema geral {validar.ErrorMessage}");
+            }
+        }
+
+
+
+        private static void ValidarSchemaEspecifico(XmlNode eventoNode, InformacaoXML info)
+        {
+           
+                var infEvento = eventoNode.SelectSingleNode("*[local-name()='infEvento']");
+                var detEvento = infEvento.SelectSingleNode("*[local-name()='detEvento']");
+
+                XmlDocument xmlEspecifico = new();
+                xmlEspecifico.LoadXml(detEvento.OuterXml);
+
+                var validarEspecifico = new ValidarSchema();
+
+                string tipoDFe = "NFe";
+                string schemaEspecifico = $"{tipoDFe}.{info.SchemaArquivoEspecifico}";
+                validarEspecifico.Validar(xmlEspecifico, schemaEspecifico, info.TargetNS);
+
+            if(!validarEspecifico.Success)
+            {
+                throw new Exception($"Erro ao validar schema específico {validarEspecifico.ErrorMessage}");
+            }
         }
     }
 }

@@ -1144,6 +1144,9 @@ public DateTimeOffset DtEmiDoc { get; set; }
         [XmlElement("tpImunidade")]
         public TipoImunidadeISSQN? TpImunidade { get; set; }
 
+        [XmlElement("tpRetISSQN")]
+        public TipoRetencaoISSQN TpRetISSQN { get; set; }
+
         [XmlIgnore]
         public double PAliq { get; set; }
 
@@ -1154,8 +1157,6 @@ public DateTimeOffset DtEmiDoc { get; set; }
             set => PAliq = Converter.ToDouble(value);
         }
 
-        [XmlElement("tpRetISSQN")]
-        public TipoRetencaoISSQN TpRetISSQN { get; set; }
 
         #region Should Serialize
         public bool ShouldSerializeCPaisResult() => !string.IsNullOrWhiteSpace(CPaisResult);
