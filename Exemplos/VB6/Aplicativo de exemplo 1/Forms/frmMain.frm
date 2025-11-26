@@ -194,6 +194,12 @@ Begin VB.Form frmMain
          Caption         =   "Emitir um MDF-e"
       End
    End
+   Begin VB.Menu mnuNFCom 
+      Caption         =   "NFCom"
+      Begin VB.Menu mnuNFCom_EmitirUma 
+         Caption         =   "Emitir uma NFCom"
+      End
+   End
    Begin VB.Menu mnuCertificado 
       Caption         =   "Certificado"
       Begin VB.Menu mnuCertificadoSelecionar 
@@ -328,6 +334,10 @@ End Sub
 
 Private Sub mnuNFCe_Inutilizar_Click()
 InutilizarNumeroNFCe
+End Sub
+
+Private Sub mnuNFCom_EmitirUma_Click()
+EnviarNFComSincrono
 End Sub
 
 Private Sub mnuNFe_Autorizar_Click()
