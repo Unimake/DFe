@@ -1330,7 +1330,11 @@
 		<None Remove="Xml\Schemas\NFSe\FIORILLI\nfse_v201.xsd" />
 		<None Remove="Xml\Schemas\NFSe\FIORILLI\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\FUTURIZE\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GIF\DPS_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GIF\tiposComplexos_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GIF\tiposEventos_v1.01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GIF\tiposSimples_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GIF\xmldsig-core-schema_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\cabecalho_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_cancelar_nfse_envio_v02.xsd" />
@@ -2745,7 +2749,15 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\FIORILLI\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\FUTURIZE\nfse_v2_02.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\FUTURIZE\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\DPS_v1.01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\evento_v1.01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe_v1.01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\pedRegEvento_v1.01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\tiposComplexos_v1.01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\tiposEventos_v1.01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\tiposSimples_v1.01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\xmldsig-core-schema.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\xmldsig-core-schema_v1.01.xsd" />
 	</ItemGroup>
 
