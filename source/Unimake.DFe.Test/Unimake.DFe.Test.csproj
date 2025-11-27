@@ -109,7 +109,6 @@
 	<ItemGroup>
 		<Folder Include="NFSe\Resources\ADM_SISTEMAS\2.01\" />
 		<Folder Include="NFSe\Resources\PORTAL_FACIL\2.02\" />
-		<Folder Include="NFSe\Resources\PRONIM\1.01 - Cópia\" />
 	</ItemGroup>
 
 	<ItemGroup>
