@@ -1,0 +1,529 @@
+//Criar tag <enviNFe>
+oEnviNFe is Unimake.Business.DFe.XML.NFe.EnviNFe()
+oEnviNFe.Versao     = "4.00"
+oEnviNFe.IdLote     = "000000000000001"
+oEnviNFe.IndSinc    = SimNao.Nao
+
+//Criar a tag <NFe>  
+oNfe is Unimake.Business.DFe.XML.NFe.NFe()
+
+// Criar tag <infNfe>
+oInfNFe is Unimake.Business.DFe.XML.NFe.InfNFe()
+oInfNFe.Versao  = "4.00"
+
+//Criar tag <ide>
+oIde is Unimake.Business.DFe.XML.NFe.Ide()
+oIde.CUF        = UFBrasil.PR
+oIde.NatOp      = "VENDA PRODUC.DO ESTABELEC"
+oIde.Mod        = ModeloDFe.NFe
+oIde.Serie      = 30
+oIde.NNF        = 6
+oIde.DhEmi      = SysDateTime()
+oIde.DhSaiEnt   = SysDateTime()
+oIde.TpNF       = 1 //TipoOperacao.Saida
+oIde.IdDest     = 2 //DestinoOperacao.OperacaoInterestadual
+oIde.CMunFG     = 4118402
+oIde.TpImp      = 1 //FormatoImpressaoDANFE.NormalRetrato
+oIde.TpEmis     = TipoEmissao.Normal
+oIde.TpAmb      = TipoAmbiente.Homologacao
+oIde.FinNFe     = FinalidadeNFe.Normal
+oIde.IndFinal   = SimNao.Sim
+oIde.IndPres    = IndicadorPresenca.OperacaoPresencial
+oIde.ProcEmi    = ProcessoEmissao.AplicativoContribuinte
+oIde.VerProc    = "TESTE 2.00"
+
+//RTC
+oIde.CMunFGIBS  = 3543402
+
+//Criar tag GCompraGov
+oGCompraGov is Unimake.Business.DFe.XML.NFe.GCompraGov
+oGCompraGov.PRedutor  = 0
+oGCompraGov.TpEnteGov = 4 //TipoEnteGovernamental.Municipio
+oGCompraGov.TpOperGov = 1 //TipoOperacaoEnteGovernamental.Fornecimento
+oIde.GCompraGov       = oGCompraGov
+
+//Criar tag GPagAntecipado
+oGPagAntecipado is Unimake.Business.DFe.XML.NFe.GPagAntecipado
+oGPagAntecipado.AddRefNFe("00000000000000000000000000000000000000000000")
+oGPagAntecipado.AddRefNFe("11111111111111111111111111111111111111111111")
+oIde.GPagAntecipado   = oGPagAntecipado
+
+oIde.TpNFCredito      = 2 //TipoNFCredito.ApropriacaoCreditoPresumidoIBSZFM
+oIde.TpNFDebito       = 6 //TipoNFDebito.PagamentoAntecipado
+
+//Adicionar a tag Ide dentro da tag InfNFe
+oInfNFe.Ide       = oIde
+
+//Criar tag Emit
+oEmit is Unimake.Business.DFe.XML.NFe.Emit()
+oEmit.CNPJ           = "06117473000150"
+oEmit.XNome          = "UNIMAKE SOLUCOES CORPORATIVAS LTDA"
+oEmit.XFant          = "UNIMAKE - PARANAVAI"
+oEmit.IE             = "9032000301"
+oEmit.IM             = "14018"
+oEmit.CNAE           = "6202300"
+oEmit.CRT            = 1 //CRT.SimplesNacional
+
+oEnderEmit is Unimake.Business.DFe.XML.NFe.EnderEmit()
+oEnderEmit.XLgr      = "RUA PAULO ANTONIO COSTA"
+oEnderEmit.Nro       = "575"
+oEnderEmit.XBairro   = "CENTRO"
+oEnderEmit.CMun      = 4118402
+oEnderEmit.XMun      = "PARANAVAI"
+oEnderEmit.UF        = 41 //UFBrasil.PR
+oEnderEmit.CEP       = "87707210"
+oEnderEmit.Fone      = "04431421010"
+
+//Adicionar a tag EnderEmit dentro da tag Emit 
+oEmit.EnderEmit      = oEnderEmit
+
+//Adicionar a tag Emit dentro da tag InfNfe
+oInfNFe.Emit         = oEmit
+
+//Criar tag Dest
+oDest is Unimake.Business.DFe.XML.NFe.Dest()
+oDest.CNPJ           = "04218457000128"
+oDest.XNome          = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
+oDest.IndIEDest      = 1 //IndicadorIEDestinatario.ContribuinteICMS
+oDest.IE             = "582614838110"
+oDest.Email          = "janelaorp@janelaorp.com.br"
+
+oEnderDest is Unimake.Business.DFe.XML.NFe.EnderDest()
+oEnderDest.XLgr      = "AVENIDA DA SAUDADE"
+oEnderDest.Nro       = "1555"
+oEnderDest.XBairro   = "CAMPOS ELISEOS"
+oEnderDest.CMun      = 3543402
+oEnderDest.XMun      = "RIBEIRAO PRETO"
+oEnderDest.UF        = 35 //UFBrasil.SP
+oEnderDest.CEP       = "14080000"
+oEnderDest.Fone      = "01639611500"
+
+//Adicionar a tag EnderDest dentro da tag Dest 
+oDest.EnderDest      = oEnderDest
+
+//Adicionar a tag Dest dentro da tag InfNfe
+oInfNFe.Dest         = oDest
+
+FOR I = 1 TO 3
+ //criar tag Det
+ oDet is Unimake.Business.DFe.XML.NFe.Det()
+ oDet.NItem      = I
+ 
+ oProd is Unimake.Business.DFe.XML.NFe.Prod()
+ oProd.CProd     = Complete(NumToString(I), 5, "0")
+ oProd.CEAN      = "SEM GTIN"
+ oProd.XProd     = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
+ oProd.NCM       = "84714900"
+ oProd.CFOP      = "6101"
+ oProd.UCom      = "LU"
+ oProd.QCom      = 1.00
+ oProd.VUnCom    = 84.90
+ oProd.VProd     = 84.90
+ oProd.CEANTrib  = "SEM GTIN"
+ oProd.UTrib     = "LU"
+ oProd.QTrib     = 1.00
+ oProd.VUnTrib   = 84.90
+ oProd.IndTot    = SimNao.Sim //ou 1
+ oProd.XPed      = "300474"
+ oProd.NItemPed  = 1
+ 
+ //Adicionar a tag Prod dentro da tag Det
+ oDet.Prod       = oProd
+ 
+ //Criar tag Imposto
+ oImposto is Unimake.Business.DFe.XML.NFe.Imposto()
+ oImposto.VTotTrib  = 12.63
+ 
+ //Criar tag Icms
+ oICMS  is Unimake.Business.DFe.XML.NFe.ICMS()
+ 
+ //Criar tag ICMSSN101
+ oICMSSN101 is Unimake.Business.DFe.XML.NFe.ICMSSN101
+ oICMSSN101.Orig         = 0 //OrigemMercadoria.Nacional
+ oICMSSN101.PCredSN      = 2.8255
+ oICMSSN101.VCredICMSSN  = 2.40
+ 
+ //Adicionar a tag ICMSSN101 dentro da tag ICMS
+ oICMS.ICMSSN101         = oICMSSN101
+ 
+ //Adicionar a tag ICMS dentro da tag Imposto
+ oImposto.Icms           = oICMS
+ 
+ //Criar tag PIS
+ oPIS    is Unimake.Business.DFe.XML.NFe.PIS()
+ 
+ //Criar tag PISOutr
+ oPISOutr  is Unimake.Business.DFe.XML.NFe.PISOutr()
+ oPISOutr.CST = "99"
+ oPISOutr.VBC = 0.00
+ oPISOutr.PPIS  = 0.00
+ oPISOutr.VPIS  = 0.00
+ 
+ //Adicionar a PisOutr dentro da tag Pis
+ oPIS.PISOutr   = oPISOutr   
+ 
+ //Adicionar a tag Pis dentro da tag Imposto
+ oImposto.PIS   = oPIS
+ 
+ //Criar tag COFINS
+ oCOFINS  is Unimake.Business.DFe.XML.NFe.COFINS()
+ 
+ //Criar tag COFINSOutr
+ oCOFINSOutr is Unimake.Business.DFe.XML.NFe.COFINSOutr
+ oCOFINSOutr.CST   = "99"
+ oCOFINSOutr.VBC   = 0.00
+ oCOFINSOutr.PCOFINS = 0.00
+ oCOFINSOutr.VCOFINS = 0.00
+ 
+ //Adicionar a COFINSOutr dentro da tag COFINS
+ oCOFINS.COFINSOutr = oCOFINSOutr
+ 
+ //Adicionar a tag COFINS dentro da tag Imposto
+ oImposto.COFINS   = oCOFINS
+ 
+ //RTC
+ oIBSCBS is Unimake.Business.DFe.XML.NFe.IBSCBS
+ oIBSCBS.CST          = "000"
+ oIBSCBS.CClassTrib   = "000001"
+ 
+ //Criar tag GIBSCBS
+ oGIBSCBS is Unimake.Business.DFe.XML.NFe.GIBSCBS
+ oGIBSCBS.VBC         = 0
+ 
+ //Criar tag GCBS
+ oGCBS is Unimake.Business.DFe.XML.NFe.GCBS
+ oGCBS.PCBS           = 0
+ oGCBS.VCBS           = 0
+ 
+ //Criar tag GDevTrib (GCBS)
+ oGDevTrib is Unimake.Business.DFe.XML.NFe.GDevTrib
+ oGDevTrib.VDevTrib   = 0
+ oGCBS.GDevTrib       = oGDevTrib
+ 
+ //Criar tag GDif (GCBS)
+ //oGDif is Unimake.Business.DFe.XML.NFe.GDif
+ //oGDif.PDif          = 0
+ //oGDif.VDif          = 0
+ //oGCBS.GDif          = oGDif
+ 
+ //Criar tag GRed (GCBS)
+ oGRed is Unimake.Business.DFe.XML.NFe.GRed
+ oGRed.PAliqEfet      = 0
+ oGRed.PRedAliq       = 0
+ oGCBS.GRed           = oGRed
+ 
+ oGIBSCBS.GCBS        = oGCBS
+ 
+ //Criar tag GIBSMun
+ oGIBSMun is Unimake.Business.DFe.XML.NFe.GIBSMun
+ oGIBSMun.PIBSMun     = 0
+ oGIBSMun.VIBSMun     = 0
+ 
+ //Criar tag GDevTrib (GIBSMun)
+ oGDevTribMun is Unimake.Business.DFe.XML.NFe.GDevTrib
+ oGDevTribMun.VDevTrib = 0
+ oGIBSMun.GDevTrib     = oGDevTribMun
+ 
+ //Criar tag GDif (GIBSMun)
+ //oGDifMun is Unimake.Business.DFe.XML.NFe.GDif
+ //oGDifMun.PDif        = 0
+ //oGDifMun.VDif        = 0
+ //oGIBSMun.GDif        = oGDifMun
+ 
+ //Criar tag GRed (GIBSMun)
+ oGRedMun is Unimake.Business.DFe.XML.NFe.GRed
+ oGRedMun.PAliqEfet    = 0
+ oGRedMun.PRedAliq     = 0
+ oGIBSMun.GRed         = oGRedMun
+ 
+ oGIBSCBS.GIBSMun      = oGIBSMun
+ 
+ //Criar tag GIBSUF
+ oGIBSUF is Unimake.Business.DFe.XML.NFe.GIBSUF
+ oGIBSUF.PIBSUF        = 0
+ oGIBSUF.VIBSUF        = 0
+ 
+ //Criar tag GDevTrib (GIBSUF)
+ oGDevTribUF is Unimake.Business.DFe.XML.NFe.GDevTrib
+ oGDevTribUF.VDevTrib  = 0
+ oGIBSUF.GDevTrib      = oGDevTribUF
+ 
+ //Criar tag GDif (GIBSUF)
+ //oGDifUF is Unimake.Business.DFe.XML.NFe.GDif
+ //oGDifUF.PDif         = 0
+ //oGDifUF.VDif         = 0
+ //oGIBSUF.GDif         = oGDifUF
+ 
+ //Criar tag GRed (GIBSUF)
+ oGRedUF is Unimake.Business.DFe.XML.NFe.GRed
+ oGRedUF.PAliqEfet     = 0
+ oGRedUF.PRedAliq      = 0
+ oGIBSUF.GRed          = oGRedUF
+ 
+ oGIBSCBS.GIBSUF       = oGIBSUF
+ oGIBSCBS.VIBS         = 0
+ 
+ //Criar tag GTribRegular
+ //oGTribRegular is Unimake.Business.DFe.XML.NFe.GTribRegular
+ //oGTribRegular.CSTReg             = "000"
+ //oGTribRegular.CClassTribReg      = "000001"
+ //oGTribRegular.PAliqEfetRegIBSUF  = 0
+ //oGTribRegular.VTribRegIBSUF      = 0
+ //oGTribRegular.PAliqEfetRegIBSMun = 0
+ //oGTribRegular.VTribRegIBSMun     = 0
+ //oGTribRegular.PAliqEfetRegCBS    = 0
+ //oGTribRegular.VTribRegCBS        = 0
+ //oGIBSCBS.GTribRegular            = oGTribRegular
+ 
+ //Criar tag GTribCompraGov
+ //oGTribCompraGov is Unimake.Business.DFe.XML.NFe.GTribCompraGov
+ //oGTribCompraGov.PAliqIBSUF       = 0
+ //oGTribCompraGov.VTribIBSUF       = 0
+ //oGTribCompraGov.PAliqIBSMun      = 0
+ //oGTribCompraGov.VTribIBSMun      = 0
+ //oGTribCompraGov.PAliqCBS         = 0
+ //oGTribCompraGov.VTribCBS         = 0
+ //oGIBSCBS.GTribCompraGov          = oGTribCompraGov
+ 
+ //Criar tag GIBSCBSMono
+ //oGIBSCBSMono is Unimake.Business.DFe.XML.NFe.GIBSCBSMono
+ 
+ //Criar tag GMonoPadrao
+ //oGMonoPadrao is Unimake.Business.DFe.XML.NFe.GMonoPadrao
+ //oGMonoPadrao.QBCMono             = 0
+ //oGMonoPadrao.AdRemCBS            = 0
+ //oGMonoPadrao.AdRemIBS            = 0
+ //oGMonoPadrao.VIBSMono            = 0
+ //oGMonoPadrao.VCBSMono            = 0
+ //oGIBSCBSMono.GMonoPadrao         = oGMonoPadrao
+ 
+ //Criar tag GMonoReten
+ //oGMonoReten is Unimake.Business.DFe.XML.NFe.GMonoReten
+ //oGMonoReten.QBCMonoReten         = 0
+ //oGMonoReten.AdRemCBSReten        = 0
+ //oGMonoReten.AdRemIBSReten        = 0
+ //oGMonoReten.VCBSMonoReten        = 0
+ //oGMonoReten.VIBSMonoReten        = 0
+ //oGIBSCBSMono.GMonoReten          = oGMonoReten
+ 
+ //Criar tag GMonoRet
+ //oGMonoRet is Unimake.Business.DFe.XML.NFe.GMonoRet
+ //oGMonoRet.QBCMonoRet             = 0
+ //oGMonoRet.AdRemCBSRet            = 0
+ //oGMonoRet.AdRemIBSRet            = 0
+ //oGMonoRet.VIBSMonoRet            = 0
+ //oGMonoRet.VCBSMonoRet            = 0
+ //oGIBSCBSMono.GMonoRet            = oGMonoRet
+ 
+ //Criar tag GMonoDif
+ //oGMonoDif is Unimake.Business.DFe.XML.NFe.GMonoDif
+ //oGMonoDif.PDifCBS                = 0
+ //oGMonoDif.PDifIBS                = 0
+ //oGMonoDif.VIBSMonoDif            = 0
+ //oGMonoDif.VCBSMonoDif            = 0
+ //oGIBSCBSMono.GMonoDif            = oGMonoDif
+ 
+ //oGIBSCBSMono.VTotIBSMonoItem     = 0
+ //oGIBSCBSMono.VTotCBSMonoItem     = 0
+ 
+ //Criar tag GTransfCred
+ //oGTransfCred is Unimake.Business.DFe.XML.NFe.GTransfCred
+ //oGTransfCred.VCBS                = 0
+ //oGTransfCred.VIBS                = 0
+ //oIBSCBS.GTransfCred              = oGTransfCred
+ 
+ //Criar tag GCredPresIBSZFM
+ //oGCredPresIBSZFM is Unimake.Business.DFe.XML.NFe.GCredPresIBSZFM
+ //oGCredPresIBSZFM.CompetApurField  = "2025-10"
+ //oGCredPresIBSZFM.TpCredPresIBSZFM = 0 //TipoCreditoPresumidoIBSZFM.SemCreditoPresumido
+ //oGCredPresIBSZFM.VCredPresIBSZFM  = 0
+ //oIBSCBS.GCredPresIBSZFM           = oGCredPresIBSZFM
+ 
+ oIBSCBS.GIBSCBS      = oGIBSCBS
+ oImposto.IBSCBS      = oIBSCBS
+ 
+ //Adicionar a tag Imposto dentro da tag Det
+ oDet.Imposto      = oImposto
+ 
+ //Adicionar a tag Det dentro da tag InfNfe 
+ oInfNFe.AddDet(oDet)        
+END
+
+//Criar tag Total
+oTotal  is Unimake.Business.DFe.XML.NFe.Total()
+
+//Criar tag ICMSTot
+oICMSTot  is Unimake.Business.DFe.XML.NFe.ICMSTot()
+oICMSTot.VBC      = 0
+oICMSTot.VICMS    = 0
+oICMSTot.VICMSDeson = 0
+oICMSTot.VFCP     = 0
+oICMSTot.VBCST    = 0
+oICMSTot.VST      = 0
+oICMSTot.VFCPST   = 0
+oICMSTot.VFCPSTRet  = 0
+oICMSTot.VProd    = 254.70
+oICMSTot.VFrete   = 0
+oICMSTot.VSeg     = 0
+oICMSTot.VDesc    = 0
+oICMSTot.VII      = 0
+oICMSTot.VIPI     = 0
+oICMSTot.VIPIDevol  = 0
+oICMSTot.VPIS     = 0
+oICMSTot.VCOFINS  = 0
+oICMSTot.VOutro   = 0
+oICMSTot.VNF      = 254.70
+oICMSTot.VTotTrib = 37.89  
+
+//Adicionar a tag ICMSTot dentro da tag Total
+oTotal.ICMSTot     = oICMSTot
+
+//RTC Total
+oIBSCBSTot is Unimake.Business.DFe.XML.NFe.IBSCBSTot
+oIBSCBSTot.VBCIBSCBS = 0
+
+//Criar tag GCBS Tot
+oGCBS_Tot is Unimake.Business.DFe.XML.NFe.GCBSTot
+oGCBS_Tot.VCBS             = 0
+oGCBS_Tot.VCredPres        = 0
+oGCBS_Tot.VCredPresCondSus = 0
+oGCBS_Tot.VDevTrib         = 0
+oGCBS_Tot.VDif             = 0
+oIBSCBSTot.GCBS            = oGCBS_Tot
+
+//Criar tag GIBS Tot
+oGIBS_Tot is Unimake.Business.DFe.XML.NFe.GIBSTot
+
+//Criar tag GIBSMunTot
+oGIBSMun_Tot is Unimake.Business.DFe.XML.NFe.GIBSMunTot
+oGIBSMun_Tot.VDevTrib      = 0
+oGIBSMun_Tot.VDif          = 0
+oGIBSMun_Tot.VIBSMun       = 0
+oGIBS_Tot.GIBSMun          = oGIBSMun_Tot
+
+//Criar tag GIBSUFTot
+oGIBSUF_Tot is Unimake.Business.DFe.XML.NFe.GIBSUFTot
+oGIBSUF_Tot.VDevTrib       = 0
+oGIBSUF_Tot.VDif           = 0
+oGIBSUF_Tot.VIBSUF         = 0
+oGIBS_Tot.GIBSUF           = oGIBSUF_Tot
+
+oGIBS_Tot.VCredPres        = 0
+oGIBS_Tot.VCredPresCondSus = 0
+oGIBS_Tot.VIBS             = 0
+
+oIBSCBSTot.GIBS            = oGIBS_Tot
+
+//Criar tag GMono Tot
+oGMono_Tot is Unimake.Business.DFe.XML.NFe.GMono
+oGMono_Tot.VCBSMono        = 0
+oGMono_Tot.VCBSMonoRet     = 0
+oGMono_Tot.VCBSMonoReten   = 0
+oGMono_Tot.VIBSMono        = 0
+oGMono_Tot.VIBSMonoRet     = 0
+oGMono_Tot.VIBSMonoReten   = 0
+oIBSCBSTot.GMono           = oGMono_Tot
+
+oTotal.IBSCBSTot           = oIBSCBSTot
+
+//Criar tag ISTot
+oISTot is Unimake.Business.DFe.XML.NFe.ISTot
+oISTot.VIS                 = 0
+oTotal.ISTot               = oISTot
+
+oTotal.VNFTot              = 1
+
+//Adicionar a tag Total dentro da tag InfNfe
+oInfNFe.Total      = oTotal
+
+//Criar a tag Transp  
+oTransp is Unimake.Business.DFe.XML.NFe.Transp()
+oTransp.ModFrete = 0 //ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
+
+//Criar a tag Vol
+oVol is Unimake.Business.DFe.XML.NFe.Vol
+oVol.QVol  = 1
+oVol.Esp   = "LU"
+oVol.Marca = "UNIMAKE"
+oVol.PesoL = 0.000
+oVol.PesoB = 0.000
+
+//Adicionar a tag Vol na tag Transp
+oTransp.AddVol(oVol)
+
+//Adicionar a tag Transp dentro da tag InfNfe
+oInfNFe.Transp = oTransp
+
+//Criar tag Cobr 
+oCobr  is Unimake.Business.DFe.XML.NFe.Cobr()
+
+//Criar tag Fat 
+oFat is Unimake.Business.DFe.XML.NFe.Fat()
+oFat.NFat  = "057910"
+oFat.VOrig = 254.70
+oFat.VDesc = 0
+oFat.VLiq  = 254.70
+
+//Criar tag Dup (parcela 1)
+oDup is Unimake.Business.DFe.XML.NFe.Dup()
+oDup.NDup  = "001"
+oDup.DVenc = SysDateTime()
+oDup.VDup  = 127.35
+
+//Adicionar a tag Dup dentro da tag Cobr
+oCobr.AddDup(oDup)
+
+//Criar tag Dup (parcela 2)
+oDup2 is Unimake.Business.DFe.XML.NFe.Dup()
+oDup2.NDup  = "002"
+oDup2.DVenc = SysDateTime()
+oDup2.VDup  = 127.35
+
+//Adicionar a tag Dup dentro da tag Cobr
+oCobr.AddDup(oDup2)
+
+//Adicionar a tag Fat dentro da tag Cobr
+oCobr.Fat   = oFat
+
+//Adicionar a tag Cobr dentro da tag InfNfe
+oInfNFe.Cobr  = oCobr
+
+//Criar tag Pag
+oPag  is Unimake.Business.DFe.XML.NFe.Pag()
+
+//Criar tag DetPag (pode ter mais que uma, só foi criada uma como exemplo)
+oDetPag is Unimake.Business.DFe.XML.NFe.DetPag()
+oDetPag.IndPag  = 0 // IndicadorPagamento.PagamentoVista
+oDetPag.TPag    = 1 // MeioPagamento.Dinheiro
+oDetPag.VPag    = 254.70
+
+//Adicionar a tag DetPag dentro da tag Tag
+oPag.AddDetPag(oDetPag)
+
+//Adicionar a tag Pag dentro da InfNfe
+oInfNFe.Pag = oPag
+
+//Criar tag InfAdic
+oInfAdic is Unimake.Business.DFe.XML.NFe.InfAdic()
+oInfAdic.InfCpl = "Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008"
+
+//Adicionar a tag InfAdic dentro da tag InfNfe
+oInfNFe.InfAdic = oInfAdic
+
+//Criar tag InfRespTec
+oInfRespTec is Unimake.Business.DFe.XML.NFe.InfRespTec()
+oInfRespTec.CNPJ     = "06117473000150"
+oInfRespTec.XContato = "Ze das Couves"
+oInfRespTec.Email    = "zedascouves@gmail.com"
+oInfRespTec.Fone     = "04430000000"
+oInfRespTec.IdCSRT   = "01"
+oInfRespTec.CSRT     = "8WCARAO9D8P00R845TARUPPTGY5CL40WS3J1"
+
+//Adicionar a tag InfRespTec dentro da tag InfNfe
+oInfNFe.InfRespTec   = oInfRespTec
+
+//Adicionar a tag InfNfe dentro da tag Nfe
+oNfe.AddInfNFe(oInfNFe)
+
+//Adiconar a tag nfe dentro da tag EnviNfe 
+oEnviNFe.AddNFe(oNfe)
