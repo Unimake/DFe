@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultaParametros versao="1.00" xmlns="http://www.sped.fazenda.gov.br/nfse">
+	<infConsulta>
+		<codigoMunicipio>4204608</codigoMunicipio>
+		<numeroBeneficio>1234.56.78.901</numeroBeneficio>
+		<competencia>2025-11-15</competencia>
+		<tipoParametro>beneficiomunicipal</tipoParametro>
+	</infConsulta>
+</ConsultaParametros>

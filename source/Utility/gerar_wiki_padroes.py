@@ -256,15 +256,19 @@ def gerar_pagina_completa(padrao: str, arvore_dll: dict, arvore_uninfe: dict, en
 
     # --- Exemplo na DLL ---
     if config.get("exemplo_dll_padrao", False):
-        versao_exemplo = versoes[0] if versoes else "X.XX"
+        if versoes and len(versoes) == 1:
+            versao_exemplo = versoes[0]
+        else:
+            versao_exemplo = "X.XX"
 
         # Inicializa com valor padrão
         mun_user_pass = ""
-        if config.get("exemplo_user_pass", False):
+        if config["exemplo_user_pass"]:
             mun_user_pass = """    MunicipioUsuario = "12345678901234",
     MunicipioSenha = "123456","""
 
         servico_classe = config.get("exemplo_servico", "GerarNfse")
+        codigo_municipio = config.get("codigo_mun", "codigo_ibge_do_municipio")
 
         exemplo_codigo = f"""==== <font color="#008000">Exemplo de uso na DLL em C#:</font> ====
 <font color="#008000">Uso para todas versões</font>
@@ -274,7 +278,7 @@ var configuracao = new Configuracao
     TipoDFe = TipoDFe.NFSe,
     CertificadoDigital = CertificadoSelecionado,
     TipoAmbiente = TipoAmbiente.Producao,
-    CodigoMunicipio = codigo_ibge_do_municipio,
+    CodigoMunicipio = {codigo_municipio},
     Servico = Servico.NFSe{servico_classe},
     SchemaVersao = "{versao_exemplo}",
 {mun_user_pass}

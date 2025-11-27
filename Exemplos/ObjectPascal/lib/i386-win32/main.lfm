@@ -10,11 +10,11 @@ object frmPrincipal: TfrmPrincipal
   OnCreate = FormCreate
   object GroupBox1: TGroupBox
     Left = 10
-    Height = 860
+    Height = 528
     Top = 0
     Width = 298
     Caption = 'NF-e'
-    ClientHeight = 835
+    ClientHeight = 503
     ClientWidth = 294
     TabOrder = 0
     OnClick = GroupBox1Click
@@ -519,6 +519,62 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Desserializando XML do CTeOS'
       TabOrder = 9
       OnClick = Btn_DesserializandoXmlCTeOSClick
+    end
+    object Btn_EventoCteDesacordo: TButton
+      Left = 330
+      Height = 31
+      Top = 0
+      Width = 273
+      Caption = 'Evento de CTe em desacordo'
+      TabOrder = 10
+      OnClick = Btn_EventoCteDesacordoClick
+    end
+    object Btn_EventoEpecCte: TButton
+      Left = 330
+      Height = 31
+      Top = 32
+      Width = 273
+      Caption = 'Evento de EPEC CTe'
+      TabOrder = 11
+      OnClick = Btn_EventoEpecCteClick
+    end
+  end
+  object GroupBox8: TGroupBox
+    Left = 320
+    Height = 131
+    Top = 528
+    Width = 287
+    Caption = 'GNRE'
+    ClientHeight = 106
+    ClientWidth = 283
+    TabOrder = 9
+    OnClick = GroupBox8Click
+    object ConsultaConfigGNRE: TButton
+      Left = 0
+      Height = 31
+      Top = 0
+      Width = 280
+      Caption = 'Consultar Config UF'
+      TabOrder = 0
+      OnClick = ConsultaConfigGNREClick
+    end
+    object EnviarXmlGNRe: TButton
+      Left = 0
+      Height = 31
+      Top = 32
+      Width = 280
+      Caption = 'Enviar XML GNRe'
+      TabOrder = 1
+      OnClick = EnviarXmlGNReClick
+    end
+    object Btn_ConsultaResultadoLoteGNRE: TButton
+      Left = 0
+      Height = 31
+      Top = 64
+      Width = 280
+      Caption = 'Consultar Resultado Lote GNRE'
+      TabOrder = 2
+      OnClick = Btn_ConsultaResultadoLoteGNREClick
     end
   end
 end

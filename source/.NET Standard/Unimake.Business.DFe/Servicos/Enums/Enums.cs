@@ -17135,7 +17135,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 1 - Fornecimento com pagamento posterior;
         /// </summary>
         [XmlEnum("1")]
-        FornecicoComPagamentoPosterior = 1,
+        FornecimentoComPagamentoPosterior = 1,
 
         /// <summary>
         /// 2 - Recebimento do pagamento com fornecimento já realizado;

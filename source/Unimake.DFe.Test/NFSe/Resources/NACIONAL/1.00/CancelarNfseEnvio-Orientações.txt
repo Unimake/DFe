@@ -1,0 +1,3 @@
+Caso esteja enviando em ambiente de HOMOLOGAÇÃO, deve remover a tag <nPedRegEvento>
+
+Em ambiente de PRODUÇÃO, a tag <nPedRegEvento> é OBRIGATÓRIA.

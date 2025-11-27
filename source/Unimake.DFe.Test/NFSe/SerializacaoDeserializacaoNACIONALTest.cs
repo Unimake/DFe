@@ -217,12 +217,12 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
 
             // Novos campos opcionais v1.01 (presentes neste XML)
             Assert.NotNull(ibscbs.TpOper);
-            Assert.Equal(TpOperacaoGov.FornecicoComPagamentoPosterior, ibscbs.TpOper); // tpOper=1
+            Assert.Equal(TpOperacaoGov.FornecimentoComPagamentoPosterior, ibscbs.TpOper); // tpOper=1
 
             // Campos existentes
             Assert.Equal(0, ibscbs.FinNFSe);
             Assert.Equal(0, ibscbs.IndFinal);
-            Assert.Equal(1, ibscbs.CIndOp); // cIndOp="000001"
+            Assert.Equal("000001", ibscbs.CIndOp); // cIndOp="000001"
             Assert.Equal(TipoEnteGovernamental.Uniao, ibscbs.TpEnteGov); // tpEnteGov=1
 
             // Campo opcional não presente neste XML
@@ -234,9 +234,9 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             Assert.NotNull(ibscbs.Valores.Trib.GIBSCBS);
 
             var gIBSCBS = ibscbs.Valores.Trib.GIBSCBS;
-            Assert.Equal(101, gIBSCBS.CST);
-            Assert.Equal(1, gIBSCBS.CClassTrib); // "000001"
-            Assert.Equal(1, gIBSCBS.CCredPres); // "01"
+            Assert.Equal("101", gIBSCBS.CST);
+            Assert.Equal("000001", gIBSCBS.CClassTrib); // "000001"
+            Assert.Equal("01", gIBSCBS.CCredPres); // "01"
 
             // Serialização (round-trip)
             var docRoundTrip = lido.GerarXML();
@@ -318,8 +318,8 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             {
                 FinNFSe = 0,
                 IndFinal = 0,
-                CIndOp = 1,
-                TpOper = TpOperacaoGov.FornecicoComPagamentoPosterior,
+                CIndOp = "000001",
+                TpOper = TpOperacaoGov.FornecimentoComPagamentoPosterior,
                 TpEnteGov = TipoEnteGovernamental.Municipio, 
                 IndDest = 0, 
             };
@@ -415,7 +415,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             Assert.False(ibscbs.ShouldSerializeXTpEnteGov()); // null/empty
 
             // Define valores
-            ibscbs.TpOper = TpOperacaoGov.FornecicoComPagamentoPosterior;
+            ibscbs.TpOper = TpOperacaoGov.FornecimentoComPagamentoPosterior;
             ibscbs.TpEnteGov = TipoEnteGovernamental.Municipio;
             ibscbs.XTpEnteGov = "Descrição";
 
