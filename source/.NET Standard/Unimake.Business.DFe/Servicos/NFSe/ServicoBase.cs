@@ -64,7 +64,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 case PadraoNFSe.IPM:
                     IPM();
                     break;
-
+                
                 case PadraoNFSe.NACIONAL:
                     NACIONAL();
                     break;
@@ -105,6 +105,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
                 case PadraoNFSe.PRONIM:
                     PRONIM();
+                    break;
+
+                case PadraoNFSe.GIF:
+                    GIF();
                     break;
             }
             Configuracoes.Definida = true;
@@ -598,6 +602,22 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             }
         }
         #endregion PRONIM
+
+        #region GIF
+        /// <summary>
+        /// Definindo configurações padrão GIF
+        /// </summary>
+        public void GIF()
+        { 
+            var URI = Configuracoes.RequestURI;
+
+            var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+            var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+            var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+            Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+        
+        }
+        #endregion
 
 
         #endregion Configurações separadas por PadrãoNFSe
