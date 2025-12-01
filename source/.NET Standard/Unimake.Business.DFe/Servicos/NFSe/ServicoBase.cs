@@ -611,11 +611,13 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         { 
             var URI = Configuracoes.RequestURI;
 
-            var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
-            var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
-            var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
-            Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
-        
+            if (URI != null)
+            {
+                var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+                var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+                var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+            }
         }
         #endregion
 
