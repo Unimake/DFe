@@ -30,16 +30,16 @@ Function Main()
    Aadd(aOpcoes, "Validar XML")
    AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFCe")     
    Aadd(aOpcoes, "Consultar GTIN")
-   Aadd(aOpcoes, "Imprimir DANFe/DACTe/DAMDFe via DLL UniDANFe")
-   Aadd(aOpcoes, "Executar telas do UniDANFe")                              
+   Aadd(aOpcoes, "Imprimir DANFe/DACTe/DAMDFe via DLL UniDANFE")
+   Aadd(aOpcoes, "Executar telas do UniDANFE")                              
    AAdd(aOpcoes, "Enviar Evento de cancelamento do MDFe")   
    AAdd(aOpcoes, "Enviar Evento de encerramento do MDFe")   
    Aadd(aOpcoes, "Finalizar a nota pela consulta situacao da NFe") 
    AAdd(aOpcoes, "Gerando a NFCe em contingencia OffLine")
    AAdd(aOpcoes, "Enviar CTe - Modo Assincrono") 
-   AAdd(aOpcoes, "NFSe - PM São Paulo - Enviar Lote RPS - Assincrono")
-   AAdd(aOpcoes, "NFSe - PM São Paulo - Enviar Consulta Lote RPS")
-   AAdd(aOpcoes, "NFSe - PM São Paulo - Enviar Cancelamento da NFSe")
+   AAdd(aOpcoes, "NFSe - PM Sao Paulo - Enviar Lote RPS - Assincrono")
+   AAdd(aOpcoes, "NFSe - PM Sao Paulo - Enviar Consulta Lote RPS")
+   AAdd(aOpcoes, "NFSe - PM Sao Paulo - Enviar Cancelamento da NFSe")
    AAdd(aOpcoes, "Enviar NFe em contingencia SVC-AN e SVC-RS")
    AAdd(aOpcoes, "Enviar CTe em contingencia SVC-SP e SVC-RS")
    AAdd(aOpcoes, "Como encriptar a tag <Assinatura> NFSe Sao Paulo")
@@ -105,6 +105,10 @@ Function Main()
 	
 	Aadd(aOpcoes, "Inutilizar Numero NF-e")
 	Aadd(aOpcoes, "Inutilizar Numero NFC-e")
+	
+	Aadd(aOpcoes, "Imprimir NFS-e com UniDANFE")
+	Aadd(aOpcoes, "Executar tela de configuracao do UniDANFE")
+	
    
    Do While .T.
       Cls
@@ -372,6 +376,12 @@ Function Main()
 				  
          case nOpcao = 82
               InutilizarNumeroNfce()
+				  
+         case nOpcao = 83
+              ImprimirNFSeUniDANFe()
+
+         case nOpcao = 84
+              UniDANFEConfiguracao()
       endcase
    EndDo
 Return       
