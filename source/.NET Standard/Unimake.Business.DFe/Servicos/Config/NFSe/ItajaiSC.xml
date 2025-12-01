@@ -4,7 +4,7 @@
 		<RecepcionarLoteRps versao="3.01">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao/>
+			<WebEnderecoProducao>https://nfse.itajai.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/RecepcionarLoteRpsRequest</WebActionHomologacao>
 			<WebActionProducao/>
 			<SchemaArquivo>schema_nfse_v0301.xsd</SchemaArquivo>
@@ -23,7 +23,7 @@
 		<CancelarNfse versao="3.01">
 			<Descricao>Cancelar NFSe</Descricao>
 			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao/>
+			<WebEnderecoProducao>https://nfse.itajai.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/CancelarNfseRequest</WebActionHomologacao>
 			<WebActionProducao/>
 			<SchemaArquivo>schema_nfse_v0301.xsd</SchemaArquivo>
@@ -42,7 +42,7 @@
 		<ConsultarLoteRps versao="3.01">
 			<Descricao>Consultar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao/>
+			<WebEnderecoProducao>https://nfse.itajai.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarLoteRpsRequest</WebActionHomologacao>
 			<WebActionProducao/>
 			<SchemaArquivo/>
@@ -61,7 +61,7 @@
 		<ConsultarNfsePorRps versao="3.01">
 			<Descricao>Consultar NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao/>
+			<WebEnderecoProducao>https://nfse.itajai.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfsePorRpsRequest</WebActionHomologacao>
 			<WebActionProducao/>
 			<SchemaArquivo>schema_nfse_v0301.xsd</SchemaArquivo>
@@ -80,7 +80,7 @@
 		<ConsultarNfseFaixa versao="3.01">
 			<Descricao>Consultar NFSe por faixa de numeração</Descricao>
 			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao/>
+			<WebEnderecoProducao>https://nfse.itajai.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfseFaixaRequest</WebActionHomologacao>
 			<WebActionProducao/>
 			<SchemaArquivo/>
@@ -99,7 +99,7 @@
 		<ConsultarSituacaoLoteRps versao="3.01">
 			<Descricao>Consultar situação do lote RPS</Descricao>
 			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/itajai_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao/>
+			<WebEnderecoProducao>https://nfse.itajai.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarSituacaoLoteRpsRequest</WebActionHomologacao>
 			<WebActionProducao/>
 			<SchemaArquivo/>
