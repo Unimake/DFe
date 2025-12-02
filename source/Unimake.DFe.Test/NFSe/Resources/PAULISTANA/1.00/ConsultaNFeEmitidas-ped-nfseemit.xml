@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p1:PedidoConsultaNFePeriodo xmlns:p1="http://www.prefeitura.sp.gov.br/nfe">
+	<Cabecalho Versao="1">
+		<CPFCNPJRemetente>
+			<CNPJ>04642554000143</CNPJ>
+		</CPFCNPJRemetente>
+		<CPFCNPJ>
+			<CNPJ>04642554000143</CNPJ>
+		</CPFCNPJ>
+		<Inscricao>31000000</Inscricao>
+		<dtInicio>2022-01-01</dtInicio>
+		<dtFim>2022-01-30</dtFim>
+		<NumeroPagina>1</NumeroPagina>
+	</Cabecalho>
+</p1:PedidoConsultaNFePeriodo>
