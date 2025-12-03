@@ -338,8 +338,8 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                     TpAmb = TipoAmbiente.Homologacao,
                     DhEmi = DateTime.Now, 
                     VerAplic = "1.01.01",            
-                    Serie = 1,                        
-                    NDPS = 1,                         
+                    Serie = "1",                        
+                    NDPS = "1",                         
                     DCompet = DateTime.Now,    
                     TpEmit = TipoEmitenteNFSe.Prestador, 
                     CLocEmi = 4202909,                
@@ -423,6 +423,42 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             Assert.True(ibscbs.ShouldSerializeTpOper());
             Assert.True(ibscbs.ShouldSerializeTpEnteGov());
             Assert.True(ibscbs.ShouldSerializeXTpEnteGov());
+        }
+
+        /// <summary>
+        /// Testa a geração automática do ID do DPS seguindo o padrão:
+        /// DPS + Código IBGE Município(7) + Tipo Inscrição(1) + Inscrição Federal(14) + Série(5) + Núm. DPS(15)
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        public void GerarNfseNACIONAL_GeracaoAutomaticaID()
+        {
+            // Arrange - Exemplo do manual: Porto Alegre/RS, CNPJ 01878890000100, Série 10, Número 9147
+            var dps = new DPS
+            {
+                Versao = "1.00",
+                infDPS = new infDPS
+                {
+                    // ID não informado - será gerado automaticamente
+                    CLocEmi = 4314902,              // Porto Alegre/RS
+                    Serie = "10",
+                    NDPS = "9147",
+                    Prest = new Prest
+                    {
+                        CNPJ = "01878890000100"     // CNPJ do prestador
+                    }
+                }
+            };
+
+            // Act - Acessa a propriedade Id para forçar a geração
+            var idGerado = dps.infDPS.Id;
+
+            // Assert - Valida o ID esperado: DPS + 4314902 + 2 + 01878890000100 + 00010 + 000000000009147
+            var idEsperado = "DPS431490220187889000010000010000000000009147";
+            Assert.Equal(idEsperado, idGerado);
+            Assert.Equal(45, idGerado.Length); // 3 + 7 + 1 + 14 + 5 + 15
+            Assert.StartsWith("DPS", idGerado);
         }
 
     }
