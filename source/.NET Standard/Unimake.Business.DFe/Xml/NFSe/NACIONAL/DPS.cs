@@ -1294,6 +1294,16 @@ public DateTimeOffset DtEmiDoc { get; set; }
         }
 
         [XmlIgnore]
+        public double PAliqCofins { get; set; }
+
+        [XmlElement("pAliqCofins")]
+        public string PAliqCofinsField
+        {
+            get => PAliqCofins.ToString("F2", CultureInfo.InvariantCulture);
+            set => PAliqCofins = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
         public double VPis { get; set; }
 
         [XmlElement("vPis")]
@@ -1319,6 +1329,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
         #region Should Serialize
         public bool ShouldSerializeVBCPisCofinsField() => VBCPisCofins > 0;
         public bool ShouldSerializePAliqPisField() => PAliqPis > 0;
+        public bool ShouldSerializePAlisCofinsField() => PAliqCofins > 0;
         public bool ShouldSerializeVPisField() => VPis > 0;
         public bool ShouldSerializeVCofinsField() => VCofins > 0;
         public bool ShouldSerializeTpRetPisCofins() => !string.IsNullOrWhiteSpace(TpRetPisCofins.ToString());
