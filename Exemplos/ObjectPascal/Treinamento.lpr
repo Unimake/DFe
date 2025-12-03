@@ -27,7 +27,8 @@ uses
   EnviarCteOsSincrono, EventoCancelamentoCTe, EnviarEventoCancelamentoCTeOS,
   EventoCCeCTe, InsucessoEntregaCTe, CancelamentoInsucessoEntregaCTe,
   DesserializandoXmlCTeOS, EventoCTeDesacordo, EventoEpecCte,
-  ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE
+  ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE,
+  EnviarNFCeOffline
   { you can add units after this };
 
 {$R *.res}
