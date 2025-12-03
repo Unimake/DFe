@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p1:PedidoInformacoesLote xmlns:p1="http://www.prefeitura.sp.gov.br/nfe">
+  <Cabecalho Versao="1">
+    <CPFCNPJRemetente>
+      <CNPJ>44073893000170</CNPJ>
+    </CPFCNPJRemetente>
+	  <NumeroLote>1</NumeroLote>
+    <InscricaoPrestador>31000000</InscricaoPrestador>
+  </Cabecalho>
+</p1:PedidoInformacoesLote>

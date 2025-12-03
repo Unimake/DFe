@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PedidoEnvioRPS xmlns="http://www.prefeitura.sp.gov.br/nfe">
+	<Cabecalho Versao="1" xmlns="">
+		<CPFCNPJRemetente>
+			<CNPJ>99999997000100</CNPJ>
+		</CPFCNPJRemetente>
+	</Cabecalho>
+	<RPS xmlns="">
+		<Assinatura>d8Pg/jdA7t5tSaB8Il1d/CMiLGgfFAXzTL9o5stv6TNbhm9I94DIo0/ocqJpGx0KzoEeIQz4RSn99pWX4fiW/aETlNT3u5woqCAyL6U2hSyl/eQfWRYrqFu2zcdc4rsAG/wJbDjNO8y0Pz9b6rlTwkIJ+kMdLo+EWXMnB744olYE721g2O9CmUTvjtBgCfVUgvuN1MGjgzpgyussCOSkLpGbrqtM5+pYMXZsTaEVIIck1baDkoRpLmZ5Y/mcn1/Om1fMyhJVUAkgI5xBrORuotIP7e3+HLJnKgzQQPWCtLyEEyAqUk9Gq64wMayITua5FodaJsX+Eic/ie3kS5m50Q==</Assinatura>
+		<ChaveRPS>
+			<InscricaoPrestador>39616924</InscricaoPrestador>
+			<SerieRPS>BB</SerieRPS>
+			<NumeroRPS>4105</NumeroRPS>
+		</ChaveRPS>
+		<TipoRPS>RPS-M</TipoRPS>
+		<DataEmissao>2015-01-20</DataEmissao>
+		<StatusRPS>N</StatusRPS>
+		<TributacaoRPS>T</TributacaoRPS>
+		<ValorServicos>20500</ValorServicos>
+		<ValorDeducoes>5000</ValorDeducoes>
+		<ValorPIS>10</ValorPIS>
+		<ValorCOFINS>10</ValorCOFINS>
+		<ValorINSS>10</ValorINSS>
+		<ValorIR>10</ValorIR>
+		<ValorCSLL>10</ValorCSLL>
+		<CodigoServico>7617</CodigoServico>
+		<AliquotaServicos>0.05</AliquotaServicos>
+		<ISSRetido>false</ISSRetido>
+		<CPFCNPJTomador>
+			<CPF>12345678909</CPF>
+		</CPFCNPJTomador>
+		<RazaoSocialTomador>TOMADOR PF</RazaoSocialTomador>
+		<EnderecoTomador>
+			<TipoLogradouro>Av</TipoLogradouro>
+			<Logradouro>Paulista</Logradouro>
+			<NumeroEndereco>100</NumeroEndereco>
+			<ComplementoEndereco>Cj 35</ComplementoEndereco>
+			<Bairro>Bela Vista</Bairro>
+			<Cidade>3550308</Cidade>
+			<UF>SP</UF>
+			<CEP>1310100</CEP>
+		</EnderecoTomador>
+		<EmailTomador>tomador@teste.com.br</EmailTomador>
+		<Discriminacao>Desenvolvimento de Web Site Pessoal.</Discriminacao>
+	</RPS>
+</PedidoEnvioRPS>

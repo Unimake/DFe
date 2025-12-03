@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<EnvioLoteRps versao="2.00">
+		<EnvioLoteRps versao="1.00">
 			<Descricao>Envio Lote Rps</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
@@ -17,11 +17,11 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
 			<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 		</EnvioLoteRps>
-		<TesteEnvioLoteRps versao="2.00">
+		<TesteEnvioLoteRps versao="1.00">
 			<Descricao>Envio Lote RPS Teste</Descricao>
 			<WebEnderecoHomologacao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao></WebEnderecoProducao>
@@ -37,11 +37,11 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
 			<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 		</TesteEnvioLoteRps>
-		<EnvioRps versao="2.00">
+		<EnvioRps versao="1.00">
 			<Descricao>Envio Rps</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
@@ -57,11 +57,11 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
 			<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 		</EnvioRps>
-		<CancelamentoNfe versao="2.00">
+		<CancelamentoNfe versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
@@ -77,11 +77,11 @@
 			<WebTagRetorno>RetornoXML</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
 			<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 		</CancelamentoNfe>
-		<ConsultaLote versao="2.00">
+		<ConsultaLote versao="1.00">
 			<Descricao>Consulta lote</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
@@ -97,10 +97,10 @@
 			<WebTagRetorno>RetornoXML</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 		</ConsultaLote>
-		<ConsultaInformacoesLote versao="2.00">
+		<ConsultaInformacoesLote versao="1.00">
 			<Descricao>Consulta Informações Lote</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
@@ -116,10 +116,10 @@
 			<WebTagRetorno>RetornoXML</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 		</ConsultaInformacoesLote>
-		<ConsultarNfse versao="2.00">
+		<ConsultarNfse versao="1.00">
 			<Descricao>Consultar Nfse</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
@@ -135,10 +135,10 @@
 			<WebTagRetorno>RetornoXML</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 		</ConsultarNfse>
-		<ConsultaNFeRecebidas versao="2.00">
+		<ConsultaNFeRecebidas versao="1.00">
 			<Descricao>Consulta NFSe Recebidas</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
@@ -154,10 +154,10 @@
 			<WebTagRetorno>RetornoXML</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 		</ConsultaNFeRecebidas>
-		<ConsultaNFeEmitidas versao="2.00">
+		<ConsultaNFeEmitidas versao="1.00">
 			<Descricao>Consulta NFSe Emitidas</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
@@ -173,7 +173,7 @@
 			<WebTagRetorno>RetornoXML</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 		</ConsultaNFeEmitidas>
 	</Servicos>
