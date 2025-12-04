@@ -1417,7 +1417,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         }
 
         [XmlElement("tpRetPisCofins")]
-        public TipoRetencaoISSQN TpRetPisCofins { get; set; }
+        public TipoRetPisCofins TpRetPisCofins { get; set; }
 
         #region Should Serialize
         public bool ShouldSerializeVBCPisCofinsField() => VBCPisCofins > 0;
