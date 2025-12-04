@@ -71,15 +71,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         {
             get
             {
-                // Se o ID não foi informado manualmente, gera automaticamente
-                if (string.IsNullOrWhiteSpace(IdField))
-                {
-                    // Validar se os dados necessários foram informados
-                    ValidarDadosParaGerarId();
+                // Validar se os dados necessários foram informados
+                ValidarDadosParaGerarId();
 
-                    // Montar o ID seguindo o padrão NFSe Nacional
-                    IdField = MontarIdDPS();
-                }
+                // Montar o ID seguindo o padrão NFSe Nacional
+                IdField = MontarIdDPS();
                 return IdField;
             }
             set => IdField = value;
@@ -147,8 +143,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
             // 4. Inscrição Federal (14 dígitos)
             // Se for CPF, completa com 000 à esquerda até 14 dígitos
             // Se for CNPJ, completa com zeros à esquerda se necessário
-            var inscricaoFederal = !string.IsNullOrWhiteSpace(Prest.CPF) 
-                ? Prest.CPF.PadLeft(14, '0') 
+            var inscricaoFederal = !string.IsNullOrWhiteSpace(Prest.CPF)
+                ? Prest.CPF.PadLeft(14, '0')
                 : Prest.CNPJ.PadLeft(14, '0');
             id += inscricaoFederal;
 
@@ -207,7 +203,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #if INTEROP
         public DateTime DCompet { get; set; }
 #else
-public DateTimeOffset DCompet { get; set; }
+        public DateTimeOffset DCompet { get; set; }
 #endif
         /// <summary>
         /// Data em que se iniciou a prestação do serviço
@@ -782,7 +778,7 @@ public DateTimeOffset DCompet { get; set; }
 #if INTEROP
         public DateTime DtIni { get; set; }
 #else
-public DateTimeOffset DtIni { get; set; }
+        public DateTimeOffset DtIni { get; set; }
 #endif
         /// <summary>
         /// Data em que se iniciou a prestação do serviço
@@ -803,7 +799,7 @@ public DateTimeOffset DtIni { get; set; }
 #if INTEROP
         public DateTime DtFim { get; set; }
 #else
-public DateTimeOffset DtFim { get; set; }
+        public DateTimeOffset DtFim { get; set; }
 #endif
         /// <summary>
         /// Data em que se iniciou a prestação do serviço
@@ -1100,7 +1096,7 @@ public DateTimeOffset DtFim { get; set; }
 #if INTEROP
         public DateTime DtEmiDoc { get; set; }
 #else
-public DateTimeOffset DtEmiDoc { get; set; }
+        public DateTimeOffset DtEmiDoc { get; set; }
 #endif
         [XmlElement("dtEmiDoc")]
         public string DtEmiDocField
@@ -1881,7 +1877,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
 #if INTEROP
         public DateTime DtEmiDoc { get; set; }
 #else
-public DateTimeOffset DtEmiDoc { get; set; }
+        public DateTimeOffset DtEmiDoc { get; set; }
 #endif
         /// <summary>
         /// Data em que se iniciou a prestação do serviço
@@ -1902,7 +1898,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
 #if INTEROP
         public DateTime DtCompDoc { get; set; }
 #else
-public DateTimeOffset DtCompDoc { get; set; }
+        public DateTimeOffset DtCompDoc { get; set; }
 #endif
         /// <summary>
         /// Data em que se iniciou a prestação do serviço
@@ -1996,7 +1992,7 @@ public DateTimeOffset DtCompDoc { get; set; }
         public GDif GDif { get; set; }
 
         #region Should Serialize
-        public bool ShouldSerializeCCredPres() => ! string.IsNullOrWhiteSpace(CCredPres);
+        public bool ShouldSerializeCCredPres() => !string.IsNullOrWhiteSpace(CCredPres);
 
         #endregion Should Serialize
     }
