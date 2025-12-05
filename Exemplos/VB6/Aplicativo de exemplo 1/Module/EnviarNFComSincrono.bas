@@ -76,7 +76,7 @@ Public Sub EnviarNFComSincrono()
     oNFCom.InfNFCom.Emit.EnderEmit.XMun = "PARANAVAI"
     oNFCom.InfNFCom.Emit.EnderEmit.UF = 41        ' PR
     oNFCom.InfNFCom.Emit.EnderEmit.CEP = "87707210"
-    oNFCom.InfNFCom.Emit.EnderEmit.fone = "04431421010"
+    oNFCom.InfNFCom.Emit.EnderEmit.Fone = "04431421010"
     
     ' Criar tag Dest
     Set oNFCom.InfNFCom.Dest = CreateObject("Unimake.Business.DFe.Xml.NFCom.Dest")
@@ -93,8 +93,8 @@ Public Sub EnviarNFComSincrono()
     oNFCom.InfNFCom.Dest.EnderDest.XMun = "XXXXXXXX XXXXX"
     oNFCom.InfNFCom.Dest.EnderDest.UF = 35       ' SP
     oNFCom.InfNFCom.Dest.EnderDest.CEP = "14080000"
-    oNFCom.InfNFCom.Dest.EnderDest.fone = "01231111111"
-    oNFCom.InfNFCom.Dest.EnderDest.email = "teste@teste.com"
+    oNFCom.InfNFCom.Dest.EnderDest.Fone = "01231111111"
+    oNFCom.InfNFCom.Dest.EnderDest.Email = "teste@teste.com"
     
     ' Criar tag Assinante
     Set oNFCom.InfNFCom.Assinante = CreateObject("Unimake.Business.DFe.Xml.NFCom.Assinante")
@@ -131,16 +131,16 @@ Public Sub EnviarNFComSincrono()
         ' PIS
         Set oDet.Imposto.PIS = CreateObject("Unimake.Business.DFe.Xml.NFCom.PIS")
         oDet.Imposto.PIS.CST = 49
-        oDet.Imposto.PIS.vBC = 0#
+        oDet.Imposto.PIS.VBC = 0#
         oDet.Imposto.PIS.PPIS = 0#
-        oDet.Imposto.PIS.vPIS = 0#
+        oDet.Imposto.PIS.VPIS = 0#
         
         ' COFINS
         Set oDet.Imposto.COFINS = CreateObject("Unimake.Business.DFe.Xml.NFCom.COFINS")
         oDet.Imposto.COFINS.CST = 49
-        oDet.Imposto.COFINS.vBC = 0#
+        oDet.Imposto.COFINS.VBC = 0#
         oDet.Imposto.COFINS.PCOFINS = 0#
-        oDet.Imposto.COFINS.vCOFINS = 0#
+        oDet.Imposto.COFINS.VCOFINS = 0#
         
         ' IBSCBS
         Set oDet.Imposto.IBSCBS = CreateObject("Unimake.Business.DFe.Xml.NFCom.IBSCBS")
@@ -148,7 +148,7 @@ Public Sub EnviarNFComSincrono()
         oDet.Imposto.IBSCBS.CClassTrib = "000001"
         
         Set oDet.Imposto.IBSCBS.GIBSCBS = CreateObject("Unimake.Business.DFe.Xml.NFCom.GIBSCBS")
-        oDet.Imposto.IBSCBS.GIBSCBS.vBC = 104.9
+        oDet.Imposto.IBSCBS.GIBSCBS.VBC = 104.9
         
         Set oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF = CreateObject("Unimake.Business.DFe.Xml.NFCom.GIBSUF")
         oDet.Imposto.IBSCBS.GIBSCBS.GIBSUF.PIBSUF = 0.1
@@ -173,13 +173,13 @@ Public Sub EnviarNFComSincrono()
     oNFCom.InfNFCom.Total.VProd = Format$(104.9, "0.00")
     
     Set oNFCom.InfNFCom.Total.ICMSTot = CreateObject("Unimake.Business.DFe.Xml.NFCom.ICMSTot")
-    oNFCom.InfNFCom.Total.ICMSTot.vBC = 0#
-    oNFCom.InfNFCom.Total.ICMSTot.vICMS = 0#
-    oNFCom.InfNFCom.Total.ICMSTot.vICMSDeson = 0#
-    oNFCom.InfNFCom.Total.ICMSTot.vFCP = 0#
+    oNFCom.InfNFCom.Total.ICMSTot.VBC = 0#
+    oNFCom.InfNFCom.Total.ICMSTot.VICMS = 0#
+    oNFCom.InfNFCom.Total.ICMSTot.VICMSDeson = 0#
+    oNFCom.InfNFCom.Total.ICMSTot.VFCP = 0#
     
-    oNFCom.InfNFCom.Total.vCOFINS = 0#
-    oNFCom.InfNFCom.Total.vPIS = 0#
+    oNFCom.InfNFCom.Total.VCOFINS = 0#
+    oNFCom.InfNFCom.Total.VPIS = 0#
     oNFCom.InfNFCom.Total.vFUNTTEL = 0#
     oNFCom.InfNFCom.Total.vFUST = 0#
     
@@ -189,9 +189,9 @@ Public Sub EnviarNFComSincrono()
     oNFCom.InfNFCom.Total.vRetTribTot.vRetCSLL = 0#
     oNFCom.InfNFCom.Total.vRetTribTot.vIRRF = 0#
     
-    oNFCom.InfNFCom.Total.vDesc = 0#
-    oNFCom.InfNFCom.Total.vOutro = 0#
-    oNFCom.InfNFCom.Total.vNF = CCur(104.9)
+    oNFCom.InfNFCom.Total.VDesc = 0#
+    oNFCom.InfNFCom.Total.VOutro = 0#
+    oNFCom.InfNFCom.Total.VNF = CCur(104.9)
     
     Set oNFCom.InfNFCom.Total.IBSCBSTot = CreateObject("Unimake.Business.DFe.Xml.NFCom.IBSCBSTot")
     oNFCom.InfNFCom.Total.IBSCBSTot.vBCIBSCBS = 104.9
@@ -231,9 +231,9 @@ Public Sub EnviarNFComSincrono()
     ' gRespTec
     Set oNFCom.InfNFCom.gRespTec = CreateObject("Unimake.Business.DFe.Xml.NFCom.gRespTec")
     oNFCom.InfNFCom.gRespTec.CNPJ = "99999999999999"
-    oNFCom.InfNFCom.gRespTec.xContato = "XXXXXXX XXXXXX XXXXXXXX"
-    oNFCom.InfNFCom.gRespTec.email = "teste@teste.com.br"
-    oNFCom.InfNFCom.gRespTec.fone = "99999999999"
+    oNFCom.InfNFCom.gRespTec.XContato = "XXXXXXX XXXXXX XXXXXXXX"
+    oNFCom.InfNFCom.gRespTec.Email = "teste@teste.com.br"
+    oNFCom.InfNFCom.gRespTec.Fone = "99999999999"
     
     ' Consumir o serviço
     Set oAutorizacaoSinc = CreateObject("Unimake.Business.DFe.Servicos.NFCom.AutorizacaoSinc")
