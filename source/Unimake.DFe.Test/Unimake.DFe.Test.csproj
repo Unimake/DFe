@@ -40,7 +40,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="Utility\TesteValidacao\ServicoValidacao.xml">
+	  <Content Include="Utility\TesteValidacao\ConfigValidacao.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>
