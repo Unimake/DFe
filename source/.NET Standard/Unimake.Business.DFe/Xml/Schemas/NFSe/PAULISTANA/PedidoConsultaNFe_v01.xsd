@@ -3,12 +3,12 @@
            xmlns:tipos="http://www.prefeitura.sp.gov.br/nfe/tipos" 
            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
            xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-  <xs:import namespace="http://www.prefeitura.sp.gov.br/nfe/tipos" schemaLocation="TiposNFe_v02.xsd" />
-  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_v02.xsd" />
-  <xs:element name="PedidoConsultaCNPJ">
+  <xs:import namespace="http://www.prefeitura.sp.gov.br/nfe/tipos" schemaLocation="TiposNFe_v01.xsd" />
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_v01.xsd" />
+  <xs:element name="PedidoConsultaNFe">
     <xs:annotation>
-      <xs:documentation>Schema utilizado para PEDIDO de consultas de CNPJ.</xs:documentation>
-      <xs:documentation>Este Schema XML é utilizado pelos tomadores e/ou prestadores de serviços consultarem quais Inscrições Municipais (CCM) estão vinculadas a um determinado CNPJ e se estes CCM emitem NFS-e ou não.</xs:documentation>
+      <xs:documentation>Schema utilizado para PEDIDO de consultas de NFS-e.</xs:documentation>
+      <xs:documentation>Este Schema XML é utilizado pelos prestadores de serviços consultarem NFS-e geradas por eles.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:sequence>
@@ -24,21 +24,27 @@
                 </xs:annotation>
               </xs:element>
             </xs:sequence>
-            <xs:attribute name="Versao" type="tipos:tpVersao" use="required" >
+            <xs:attribute name="Versao" type="tipos:tpVersao" use="required" fixed="1">
               <xs:annotation>
                 <xs:documentation>Informe a Versão do Schema XML utilizado.</xs:documentation>
               </xs:annotation>
             </xs:attribute>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CNPJContribuinte" type="tipos:tpCPFCNPJ" minOccurs="1" maxOccurs="1">
+        <xs:element name="Detalhe" minOccurs="1" maxOccurs="50">
           <xs:annotation>
-            <xs:documentation>Informe o CNPJ do Contribuinte que se deseja consultar.</xs:documentation>
+            <xs:documentation>Detalhe do pedido. Cada item de detalhe deverá conter a chave de uma NFS-e ou a chave de um RPS.</xs:documentation>
           </xs:annotation>
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="ChaveRPS" type="tipos:tpChaveRPS" minOccurs="1" maxOccurs="1" />
+              <xs:element name="ChaveNFe" type="tipos:tpChaveNFe" minOccurs="1" maxOccurs="1" />
+            </xs:choice>
+          </xs:complexType>
         </xs:element>
         <xs:element ref="ds:Signature" minOccurs="1" maxOccurs="1">
           <xs:annotation>
-            <xs:documentation>Assinatura digital do CNPJ tomador/prestador que gerou a mensagem XML.</xs:documentation>
+            <xs:documentation>Assinatura digital do contribuinte que gerou as NFS-e/RPS.</xs:documentation>
           </xs:annotation>
         </xs:element>
       </xs:sequence>
