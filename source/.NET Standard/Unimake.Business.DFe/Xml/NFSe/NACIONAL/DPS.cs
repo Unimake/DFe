@@ -1417,7 +1417,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         }
 
         [XmlElement("tpRetPisCofins")]
-        public TipoRetPisCofins TpRetPisCofins { get; set; }
+#if INTEROP
+        public TipoRetPisCofins TpRetPisCofins { get; set; } = (TipoRetPisCofins)(-1);
+#else
+        public TipoRetPisCofins? TpRetPisCofins { get; set; }
+#endif
 
         #region Should Serialize
         public bool ShouldSerializeVBCPisCofinsField() => VBCPisCofins > 0;
@@ -1425,7 +1429,13 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public bool ShouldSerializePAlisCofinsField() => PAliqCofins > 0;
         public bool ShouldSerializeVPisField() => VPis > 0;
         public bool ShouldSerializeVCofinsField() => VCofins > 0;
-        public bool ShouldSerializeTpRetPisCofins() => !string.IsNullOrWhiteSpace(TpRetPisCofins.ToString());
+
+#if INTEROP
+        public bool ShouldSerializeTpRetPisCofins() => TpRetPisCofins != (TipoRetPisCofins)(-1);
+#else
+        public bool ShouldSerializeTpRetPisCofins() => TpRetPisCofins != null;
+#endif
+
         #endregion Should Serialize
     }
 
