@@ -21,7 +21,8 @@ uses
   EnviarEventoAlteracaoPagamentoMDFe,ConsultarSituacaoNFCom,EnviarEventoCancelamentoNFCom,
   ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe,
   EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe,CancelamentoInsucessoEntregaCTe, DesserializandoXmlCTeOS,
-  EventoCTeDesacordo, EventoEpecCte, ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE;
+  EventoCTeDesacordo, EventoEpecCte, ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE,
+  EnviarNFCeOffline;
 
 type
 
@@ -72,6 +73,7 @@ type
     Btn_EventoCteDesacordo: TButton;
     Btn_EventoEpecCte: TButton;
     Btn_ConsultaResultadoLoteGNRE: TButton;
+    btnEnviarNFCeOffline: TButton;
     EnviarXmlGNRe: TButton;
     ConsultaConfigGNRE: TButton;
     GroupBox1: TGroupBox;
@@ -105,6 +107,7 @@ type
     procedure BtnEnviarEventoEncerramentoMDFeClick(Sender: TObject);
     procedure btnEnviarEventoManifestacaoNFeClick(Sender: TObject);
     procedure BtnEnviarMDFeSincronoClick(Sender: TObject);
+    procedure btnEnviarNFCeOfflineClick(Sender: TObject);
     procedure btnEnviarNFCeSincronoClick(Sender: TObject);
     procedure btnEnviarNFCeSincronoDesserializacaoClick(Sender: TObject);
     procedure BtnEnviarNFComSincronoClick(Sender: TObject);
@@ -146,6 +149,7 @@ type
     procedure EnviarXmlGNReClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox1Click(Sender: TObject);
+    procedure GroupBox2Click(Sender: TObject);
     procedure GroupBox3Click(Sender: TObject);
     procedure GroupBox8Click(Sender: TObject);
 
@@ -231,6 +235,18 @@ begin
   finally
   end;
 end;
+
+procedure TfrmPrincipal.btnEnviarNFCeOfflineClick(Sender: TObject);
+var
+  oServico: TEnviarNFCeOffline;
+begin
+  oServico := TEnviarNFCeOffline.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
 
 procedure TfrmPrincipal.btnEnviarNFCeSincronoClick(Sender: TObject);
 var
@@ -767,6 +783,11 @@ begin
 end;
 
 procedure TfrmPrincipal.GroupBox1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmPrincipal.GroupBox2Click(Sender: TObject);
 begin
 
 end;

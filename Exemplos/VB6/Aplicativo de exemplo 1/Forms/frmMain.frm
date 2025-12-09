@@ -211,6 +211,9 @@ Begin VB.Form frmMain
       Begin VB.Menu mnuCertificadoSelecionarBase64 
          Caption         =   "Selecionar de Base64"
       End
+      Begin VB.Menu mnuCertificadoTestesDiversos 
+         Caption         =   "Testes Diversos"
+      End
    End
 End
 Attribute VB_Name = "frmMain"
@@ -258,6 +261,10 @@ End Sub
 
 Private Sub mnuCertificadoSelecionarBase64_Click()
 SelecionarCertificado.SelecionarDeBase64
+End Sub
+
+Private Sub mnuCertificadoTestesDiversos_Click()
+TestesDiversosCertificado
 End Sub
 
 Private Sub mnuCTe_ConsultaCadastroContribuinte_Click()

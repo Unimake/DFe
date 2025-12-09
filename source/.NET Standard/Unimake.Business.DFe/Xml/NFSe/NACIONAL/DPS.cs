@@ -58,11 +58,111 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     [XmlType("infDPS", Namespace = Nfse.Ns)]
     public class infDPS
     {
+        private string IdField;
+
         /// <summary>
         /// Id da NFS-e a ser gerada.
+        /// Gerado automaticamente se não for informado.
+        /// Composição: "DPS" + Código IBGE do Município Emissor (7) + Tipo de Inscrição (1) + 
+        /// Inscrição Federal (14 - CPF completar com 000 à esquerda) + Série DPS (5) + Núm. DPS (15)
         /// </summary>
         [XmlAttribute("Id", DataType = "token")]
-        public string Id { get; set; }
+        public string Id
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(IdField) && CLocEmi > 0)
+                {
+                    try
+                    {
+                        ValidarDadosParaGerarId();
+                        IdField = MontarIdDPS();
+                    }
+                    catch
+                    {
+                        return IdField;
+                    }
+                }
+                return IdField;
+            }
+            set => IdField = value;
+        }
+
+        /// <summary>
+        /// Valida se todos os dados necessários para gerar o ID foram informados
+        /// </summary>
+        private void ValidarDadosParaGerarId()
+        {
+            if (CLocEmi == 0)
+            {
+                throw new Exception("Informe o código IBGE do município de emissão (CLocEmi) antes de gerar o ID.");
+            }
+
+            if (Prest == null)
+            {
+                throw new Exception("Informe os dados do Prestador (Prest) antes de gerar o ID.");
+            }
+
+            if (string.IsNullOrWhiteSpace(Prest.CNPJ) && string.IsNullOrWhiteSpace(Prest.CPF))
+            {
+                throw new Exception("Informe o CNPJ ou CPF do Prestador antes de gerar o ID.");
+            }
+
+            if (string.IsNullOrWhiteSpace(Serie))
+            {
+                throw new Exception("Informe a Série (Serie) antes de gerar o ID.");
+            }
+
+            if (string.IsNullOrWhiteSpace(NDPS))
+            {
+                throw new Exception("Informe o número do DPS (NDPS) antes de gerar o ID.");
+            }
+        }
+
+        /// <summary>
+        /// Monta o ID do DPS seguindo o padrão NFSe Nacional conforme manual técnico.
+        /// Composição: DPS + cLocEmi(7) + TipoInscricao(1) + InscricaoFederal(14) + SerieDPS(5) + NumDPS(15)
+        /// 
+        /// Exemplo real:
+        /// DPS123456721234567890123412345123456789012345
+        /// 
+        /// Onde:
+        /// - DPS: Prefixo fixo (3 caracteres)
+        /// - 1234567: Código IBGE do Município (7 dígitos)
+        /// - 2: Tipo de Inscrição (1=CPF, 2=CNPJ)
+        /// - 12345678901234: Inscrição Federal (14 dígitos - se CPF completa com 000 à esquerda)
+        /// - 12345: Série do DPS (5 dígitos)
+        /// - 123456789012345: Número do DPS (15 dígitos)
+        /// </summary>
+        /// <returns>ID formatado com 45 caracteres (DPS + 42 dígitos)</returns>
+        private string MontarIdDPS()
+        {
+            // 1. Prefixo fixo "DPS"
+            var id = "DPS";
+
+            // 2. Código IBGE do Município de Emissão (7 dígitos)
+            id += CLocEmi.ToString("0000000");
+
+            // 3. Tipo de Inscrição Federal (1 dígito: 1=CPF, 2=CNPJ)
+            var tipoInscricao = !string.IsNullOrWhiteSpace(Prest.CPF) ? "1" : "2";
+            id += tipoInscricao;
+
+            // 4. Inscrição Federal (14 dígitos)
+            // Se for CPF, completa com 000 à esquerda até 14 dígitos
+            // Se for CNPJ, completa com zeros à esquerda se necessário
+            var inscricaoFederal = !string.IsNullOrWhiteSpace(Prest.CPF)
+                ? Prest.CPF.PadLeft(14, '0')
+                : Prest.CNPJ.PadLeft(14, '0');
+            id += inscricaoFederal;
+
+            // 5. Série do DPS (5 dígitos)
+            id += Serie.PadLeft(5, '0');
+
+            // 6. Número do DPS (15 dígitos)
+            id += NDPS.PadLeft(15, '0');
+
+            return id;
+        }
 
         /// <summary>
         /// Tipo de ambiente: Produção ou Homologação
@@ -98,19 +198,19 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// Número do equipamento emissor do DPS ou série do DPS
         /// </summary>
         [XmlElement("serie")]
-        public int Serie { get; set; }
+        public string Serie { get; set; }
 
         /// <summary>
         /// Número do DPS
         /// </summary>
         [XmlElement("nDPS")]
-        public int NDPS { get; set; }
+        public string NDPS { get; set; }
 
         [XmlIgnore]
 #if INTEROP
         public DateTime DCompet { get; set; }
 #else
-public DateTimeOffset DCompet { get; set; }
+        public DateTimeOffset DCompet { get; set; }
 #endif
         /// <summary>
         /// Data em que se iniciou a prestação do serviço
@@ -685,7 +785,7 @@ public DateTimeOffset DCompet { get; set; }
 #if INTEROP
         public DateTime DtIni { get; set; }
 #else
-public DateTimeOffset DtIni { get; set; }
+        public DateTimeOffset DtIni { get; set; }
 #endif
         /// <summary>
         /// Data em que se iniciou a prestação do serviço
@@ -706,7 +806,7 @@ public DateTimeOffset DtIni { get; set; }
 #if INTEROP
         public DateTime DtFim { get; set; }
 #else
-public DateTimeOffset DtFim { get; set; }
+        public DateTimeOffset DtFim { get; set; }
 #endif
         /// <summary>
         /// Data em que se iniciou a prestação do serviço
@@ -1003,7 +1103,7 @@ public DateTimeOffset DtFim { get; set; }
 #if INTEROP
         public DateTime DtEmiDoc { get; set; }
 #else
-public DateTimeOffset DtEmiDoc { get; set; }
+        public DateTimeOffset DtEmiDoc { get; set; }
 #endif
         [XmlElement("dtEmiDoc")]
         public string DtEmiDocField
@@ -1294,6 +1394,16 @@ public DateTimeOffset DtEmiDoc { get; set; }
         }
 
         [XmlIgnore]
+        public double PAliqCofins { get; set; }
+
+        [XmlElement("pAliqCofins")]
+        public string PAliqCofinsField
+        {
+            get => PAliqCofins.ToString("F2", CultureInfo.InvariantCulture);
+            set => PAliqCofins = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
         public double VPis { get; set; }
 
         [XmlElement("vPis")]
@@ -1314,14 +1424,25 @@ public DateTimeOffset DtEmiDoc { get; set; }
         }
 
         [XmlElement("tpRetPisCofins")]
-        public TipoRetencaoISSQN TpRetPisCofins { get; set; }
+#if INTEROP
+        public TipoRetPisCofins TpRetPisCofins { get; set; } = (TipoRetPisCofins)(-1);
+#else
+        public TipoRetPisCofins? TpRetPisCofins { get; set; }
+#endif
 
         #region Should Serialize
         public bool ShouldSerializeVBCPisCofinsField() => VBCPisCofins > 0;
         public bool ShouldSerializePAliqPisField() => PAliqPis > 0;
+        public bool ShouldSerializePAlisCofinsField() => PAliqCofins > 0;
         public bool ShouldSerializeVPisField() => VPis > 0;
         public bool ShouldSerializeVCofinsField() => VCofins > 0;
-        public bool ShouldSerializeTpRetPisCofins() => !string.IsNullOrWhiteSpace(TpRetPisCofins.ToString());
+
+#if INTEROP
+        public bool ShouldSerializeTpRetPisCofins() => TpRetPisCofins != (TipoRetPisCofins)(-1);
+#else
+        public bool ShouldSerializeTpRetPisCofins() => TpRetPisCofins != null;
+#endif
+
         #endregion Should Serialize
     }
 
@@ -1773,7 +1894,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
 #if INTEROP
         public DateTime DtEmiDoc { get; set; }
 #else
-public DateTimeOffset DtEmiDoc { get; set; }
+        public DateTimeOffset DtEmiDoc { get; set; }
 #endif
         /// <summary>
         /// Data em que se iniciou a prestação do serviço
@@ -1794,7 +1915,7 @@ public DateTimeOffset DtEmiDoc { get; set; }
 #if INTEROP
         public DateTime DtCompDoc { get; set; }
 #else
-public DateTimeOffset DtCompDoc { get; set; }
+        public DateTimeOffset DtCompDoc { get; set; }
 #endif
         /// <summary>
         /// Data em que se iniciou a prestação do serviço
@@ -1888,7 +2009,7 @@ public DateTimeOffset DtCompDoc { get; set; }
         public GDif GDif { get; set; }
 
         #region Should Serialize
-        public bool ShouldSerializeCCredPres() => ! string.IsNullOrWhiteSpace(CCredPres);
+        public bool ShouldSerializeCCredPres() => !string.IsNullOrWhiteSpace(CCredPres);
 
         #endregion Should Serialize
     }

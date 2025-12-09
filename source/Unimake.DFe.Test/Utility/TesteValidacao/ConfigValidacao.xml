@@ -39,7 +39,7 @@
 		<TagExtraAtributoID></TagExtraAtributoID>
 		<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 	</Servico>
-	<Servico tagRaiz ="ConsCad" versao ="2.00" padraoNFSe="" versaoPadrao ="">
+	<Servico tagRaiz ="consCad" versao ="2.00" padraoNFSe="" versaoPadrao ="">
 		<SchemaArquivo>consCad_v2.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
@@ -271,5 +271,4 @@
 		<TagExtraAtributoID></TagExtraAtributoID>
 		<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 	</Servico>
-	
 </ServicosValidacao>

@@ -284,6 +284,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultaResultadoLoteGNRE"/>
       </Unit>
+      <Unit>
+        <Filename Value="enviarnfceoffline.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnviarNFCeOffline"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

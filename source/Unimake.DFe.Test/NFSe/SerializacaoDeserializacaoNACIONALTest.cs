@@ -1,9 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Servicos.NFSe;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
 using Xunit;
+using ConsultarNfse = Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfse;
+using ConsultarNfsePorRps = Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfsePorRps;
 
 namespace Unimake.DFe.Test.NFSe.NACIONAL
 {
@@ -338,8 +341,8 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                     TpAmb = TipoAmbiente.Homologacao,
                     DhEmi = DateTime.Now, 
                     VerAplic = "1.01.01",            
-                    Serie = 1,                        
-                    NDPS = 1,                         
+                    Serie = "1",                        
+                    NDPS = "1",                         
                     DCompet = DateTime.Now,    
                     TpEmit = TipoEmitenteNFSe.Prestador, 
                     CLocEmi = 4202909,                
@@ -423,6 +426,159 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             Assert.True(ibscbs.ShouldSerializeTpOper());
             Assert.True(ibscbs.ShouldSerializeTpEnteGov());
             Assert.True(ibscbs.ShouldSerializeXTpEnteGov());
+        }
+
+        /// <summary>
+        /// Testa a geração automática do ID do DPS seguindo o padrão:
+        /// DPS + Código IBGE Município(7) + Tipo Inscrição(1) + Inscrição Federal(14) + Série(5) + Núm. DPS(15)
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        public void GerarNfseNACIONAL_GeracaoAutomaticaID()
+        {
+            // Arrange - Exemplo do manual: Porto Alegre/RS, CNPJ 01878890000100, Série 10, Número 9147
+            var dps = new DPS
+            {
+                Versao = "1.00",
+                infDPS = new infDPS
+                {
+                    // ID não informado - será gerado automaticamente
+                    CLocEmi = 4314902,              // Porto Alegre/RS
+                    Serie = "10",
+                    NDPS = "9147",
+                    Prest = new Prest
+                    {
+                        CNPJ = "01878890000100"     // CNPJ do prestador
+                    }
+                }
+            };
+
+            // Act - Acessa a propriedade Id para forçar a geração
+            var idGerado = dps.infDPS.Id;
+
+            // Assert - Valida o ID esperado: DPS + 4314902 + 2 + 01878890000100 + 00010 + 000000000009147
+            var idEsperado = "DPS431490220187889000010000010000000000009147";
+            Assert.Equal(idEsperado, idGerado);
+            Assert.Equal(45, idGerado.Length); // 3 + 7 + 1 + 14 + 5 + 15
+            Assert.StartsWith("DPS", idGerado);
+        }
+
+        /// <summary>
+        /// Testa a geração de DPS montando o objeto completo a partir do XML de exemplo.
+        /// Valida a geração automática do ID e a serialização completa.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        public void GerarNfseNACIONAL_Montar1_00()
+        {
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeGerarNfse,
+                SchemaVersao = "1.00",
+                MunicipioToken = "99n0556af8e4218e05b88e266fhca55be17b14a4495c269d1db0af57f925f04e77c38f9870842g5g60b6827a9fje8ec9", //Tem município que exige token, então já vamos deixar algo definido para que utilize nos padrões necessários durante o teste unitário. Não é obrigatório para todos os padrões e será utilizado somente nos que solicitam.
+                MunicipioSenha = "123456",
+                MunicipioUsuario = "01001001000113"
+            };
+
+            var dps = new DPS
+            {
+                Versao = "1.00",
+                infDPS = new infDPS
+                {
+
+                    TpAmb = TipoAmbiente.Homologacao,
+                    DhEmi = new DateTime(2022, 9, 28, 13, 50, 29),
+                    VerAplic = "EmissorWeb_1.0.0.0",
+                    Serie = "900",
+                    NDPS = "6",
+                    DCompet = new DateTime(2022, 9, 28),
+                    TpEmit = TipoEmitenteNFSe.Prestador,
+                    CLocEmi = 1400159, 
+
+
+                    Prest = new Prest
+                    {
+                        CNPJ = "01761135000132",
+                        IM = "01761135000132",
+                        RegTrib = new RegTrib
+                        {
+                            OpSimpNac = OptSimplesNacional.ME_EPP,
+                            RegApTribSN = RegApTribSN.RegApurTribSN,
+                            RegEspTrib = RegEspTrib.Nenhum
+                        }
+                    },
+
+                    Serv = new Serv
+                    {
+                        LocPrest = new LocPrest
+                        {
+                            CLocPrestacao = 1400159
+                        },
+                        CServ = new CServ
+                        {
+                            CTribNac = "010101",
+                            XDescServ = "teste teste teste teste teste teste teste teste teste teste teste"
+                        }
+                    },
+
+                    Valores = new Valores
+                    {
+                        VServPrest = new VServPrest
+                        {
+                            VServ = 999999999.99
+                        },
+                        vDescCondIncond = new VDescCondIncond
+                        {
+                            VDescIncond = 9999999.99,
+                            VDescCond = 9.99
+                        },
+                        Trib = new Trib
+                        {
+                            TribMun = new TribMun
+                            {
+                                TribISSQN = TribISSQN.OperacaoIntributavel,
+                                TpRetISSQN = TipoRetencaoISSQN.NaoRetido
+                            },
+                            TotTrib = new TotTrib
+                            {
+                                PTotTribSN = 0.01
+                            }
+                        }
+                    }
+                }
+            };
+
+
+            var idGerado = dps.infDPS.Id;
+            var xmlGerado = dps.GerarXML();
+
+            var idEsperado = "DPS140015920176113500013200900000000000000006";
+            Assert.Equal(idEsperado, idGerado);
+            Assert.Equal(45, idGerado.Length);
+            Assert.StartsWith("DPS", idGerado);
+
+            Assert.NotNull(xmlGerado);
+            var nsmgr = CreateNamespaceManager(xmlGerado);
+
+            var dpsNode = xmlGerado.SelectSingleNode("//ns:DPS", nsmgr);
+            Assert.NotNull(dpsNode);
+
+            var infDPSNode = xmlGerado.SelectSingleNode("//ns:infDPS", nsmgr);
+            Assert.Equal(idEsperado, infDPSNode.Attributes["Id"]?.Value);
+
+            var dpsDeserializado = new DPS().LerXML<DPS>(xmlGerado);
+            Assert.Equal(idEsperado, dpsDeserializado.infDPS.Id);
+
+            var gerarNfse = new GerarNfse(xmlGerado, configuracao);
+            gerarNfse.Executar();
+
         }
 
     }

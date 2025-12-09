@@ -67,7 +67,7 @@
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/cancelamentoNFe</WebActionProducao>
-			<SchemaArquivo>PedidoCancelamentoNFe_v02.xsd</SchemaArquivo>
+			<SchemaArquivo>PedidoCancelamentoNFe_v01.xsd</SchemaArquivo>
 			<TagAssinatura>PedidoCancelamentoNFe</TagAssinatura>
 			<TagAtributoID>Cabecalho</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -87,7 +87,7 @@
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaLote</WebActionProducao>
-			<SchemaArquivo>PedidoConsultaLote_v02.xsd</SchemaArquivo>
+			<SchemaArquivo>PedidoConsultaLote_v01.xsd</SchemaArquivo>
 			<TagAssinatura>PedidoConsultaLote</TagAssinatura>
 			<TagAtributoID>Cabecalho</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -106,7 +106,7 @@
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaInformacoesLote</WebActionProducao>
-			<SchemaArquivo>PedidoInformacoesLote_v02.xsd</SchemaArquivo>
+			<SchemaArquivo>PedidoInformacoesLote_v01.xsd</SchemaArquivo>
 			<TagAssinatura>p1:PedidoInformacoesLote</TagAssinatura>
 			<TagAtributoID>Cabecalho</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -125,7 +125,7 @@
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFe</WebActionProducao>
-			<SchemaArquivo>PedidoConsultaNFe_v02.xsd</SchemaArquivo>
+			<SchemaArquivo>PedidoConsultaNFe_v01.xsd</SchemaArquivo>
 			<TagAssinatura>p1:PedidoConsultaNFe</TagAssinatura>
 			<TagAtributoID>Cabecalho</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -144,7 +144,7 @@
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeRecebidas</WebActionProducao>
-			<SchemaArquivo>PedidoConsultaNFePeriodo_v02.xsd</SchemaArquivo>
+			<SchemaArquivo>PedidoConsultaNFePeriodo_v01.xsd</SchemaArquivo>
 			<TagAssinatura>p1:PedidoConsultaNFePeriodo</TagAssinatura>
 			<TagAtributoID>Cabecalho</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -163,7 +163,7 @@
 			<WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeEmitidas</WebActionProducao>
-			<SchemaArquivo>PedidoConsultaNFePeriodo_v02.xsd</SchemaArquivo>
+			<SchemaArquivo>PedidoConsultaNFePeriodo_v01.xsd</SchemaArquivo>
 			<TagAssinatura>p1:PedidoConsultaNFePeriodo</TagAssinatura>
 			<TagAtributoID>Cabecalho</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>

@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2025.12.01.1732</AssemblyVersion>
-		<FileVersion>2025.12.01.1732</FileVersion>
+		<AssemblyVersion>2025.12.08.1618</AssemblyVersion>
+		<FileVersion>2025.12.08.1618</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1430,23 +1430,23 @@
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOTAINTELIGENTE\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoLote_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoNFe_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaCNPJ_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaLote_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFePeriodo_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFe_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioLoteRPS_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioRPS_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoInformacoesLote_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoCancelamentoNFe_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoConsultaCNPJ_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoConsulta_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioLoteRPS_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioRPS_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoInformacoesLote_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\TiposNFe_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v02.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoLote_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoNFe_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaCNPJ_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaLote_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFePeriodo_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFe_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioLoteRPS_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioRPS_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoInformacoesLote_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoCancelamentoNFe_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoConsultaCNPJ_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoConsulta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioLoteRPS_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioRPS_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoInformacoesLote_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\TiposNFe_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PORTAL_FACIL\nfse_v204.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PORTAL_FACIL\schema nfse v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
@@ -3600,28 +3600,51 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\tipos_v03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema20020212_v03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema_v02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\cabecalho-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\cabecalho-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\cancelar-nfse-envio-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\cancelar-nfse-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\cancelar-nfse-reposta-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\cancelar-nfse-reposta-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-lote-rps-envio-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-lote-rps-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-lote-rps-resposta-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-lote-rps-resposta-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-faixa-envio-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-faixa-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-faixa-resposta-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-faixa-resposta-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-rps-envio-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-rps-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-rps-resposta-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-rps-resposta-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-servico-prestado-envio-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-servico-prestado-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-servico-prestado-resposta-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-servico-prestado-resposta-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-servico-tomado-envio-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-servico-tomado-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-servico-tomado-resposta-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\consultar-nfse-servico-tomado-resposta-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\enviar-lote-rps-envio-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\enviar-lote-rps-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\enviar-lote-rps-resposta-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\enviar-lote-rps-resposta-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\enviar-lote-rps-sincrono-envio-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\enviar-lote-rps-sincrono-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\enviar-lote-rps-sincrono-resposta-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\enviar-lote-rps-sincrono-resposta-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\gerar-nfse-envio-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\gerar-nfse-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\gerar-nfse-resposta-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\gerar-nfse-resposta-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\nfse_v2-04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\nfse_v2-04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\substituir-nfse-envio-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\substituir-nfse-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\substituir-nfse-resposta-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\substituir-nfse-resposta-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\tipos-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\tipos-v2_04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\INDAIATUBA_SP\nfse_v2-03 2016.xsd" />
@@ -3676,23 +3699,23 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOTAINTELIGENTE\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoLote_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoNFe_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaCNPJ_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaLote_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFePeriodo_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFe_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioLoteRPS_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioRPS_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoInformacoesLote_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoCancelamentoNFe_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoConsultaCNPJ_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoConsulta_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioLoteRPS_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioRPS_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoInformacoesLote_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\TiposNFe_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoLote_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoNFe_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaCNPJ_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaLote_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFePeriodo_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFe_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioLoteRPS_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioRPS_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoInformacoesLote_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoCancelamentoNFe_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoConsultaCNPJ_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoConsulta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioLoteRPS_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioRPS_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoInformacoesLote_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\TiposNFe_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PORTAL_FACIL\nfse_v202.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PORTAL_FACIL\schema nfse v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PORTAL_FACIL\xmldsig-core-schema20020212.xsd" />

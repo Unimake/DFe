@@ -3,8 +3,8 @@
            xmlns:tipos="http://www.prefeitura.sp.gov.br/nfe/tipos" 
            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
            xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-  <xs:import namespace="http://www.prefeitura.sp.gov.br/nfe/tipos" schemaLocation="TiposNFe_v02.xsd" />
-  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_v02.xsd" />
+  <xs:import namespace="http://www.prefeitura.sp.gov.br/nfe/tipos" schemaLocation="TiposNFe_v01.xsd" />
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_v01.xsd" />
   <xs:element name="PedidoEnvioLoteRPS">
     <xs:annotation>
       <xs:documentation>Schema utilizado para PEDIDO de envio de lote de RPS.</xs:documentation>
@@ -54,7 +54,7 @@
                 </xs:annotation>
               </xs:element>
             </xs:sequence>
-            <xs:attribute name="Versao" type="tipos:tpVersao" use="required">
+            <xs:attribute name="Versao" type="tipos:tpVersao" use="required" fixed="1">
               <xs:annotation>
                 <xs:documentation>Informe a Versão do Schema XML utilizado.</xs:documentation>
               </xs:annotation>
