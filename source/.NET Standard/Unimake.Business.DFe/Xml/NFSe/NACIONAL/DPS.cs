@@ -71,11 +71,18 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         {
             get
             {
-                // Validar se os dados necessários foram informados
-                ValidarDadosParaGerarId();
-
-                // Montar o ID seguindo o padrão NFSe Nacional
-                IdField = MontarIdDPS();
+                if (string.IsNullOrWhiteSpace(IdField) && CLocEmi > 0)
+                {
+                    try
+                    {
+                        ValidarDadosParaGerarId();
+                        IdField = MontarIdDPS();
+                    }
+                    catch
+                    {
+                        return IdField;
+                    }
+                }
                 return IdField;
             }
             set => IdField = value;
