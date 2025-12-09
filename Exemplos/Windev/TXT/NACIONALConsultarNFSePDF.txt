@@ -1,0 +1,35 @@
+// Esse serviço é síncrono, no retorno do envio já consta se o RPS foi autorizado ou não
+oConfiguracao is Unimake.Business.DFe.Servicos.Configuracao
+oConfiguracao.TipoDFe				= TipoDFe.NFSe
+oConfiguracao.TipoAmbiente			= TipoAmbiente.Homologacao
+oConfiguracao.Servico				= Servico.NFSeConsultarNfsePDF
+oConfiguracao.CodigoMunicipio		= 1001058	
+oConfiguracao.SchemaVersao			= "1.00"
+oConfiguracao.CertificadoArquivo	= "C:\projetos\Unimake_PV.pfx"
+oConfiguracao.CertificadoSenha		= "12345678"
+
+//Montar a string do XML
+cXML is string
+
+cXML = "<?xml version=""1.0"" encoding=""utf-8""?>"
+cXML += "<NFSe versao=""1.00"" xmlns=""http://www.sped.fazenda.gov.br/nfse"">"
+cXML += "<infNFSe Id=""NFS42046082222441399000189000000000000125110511831204""/>"
+cXML += "</NFSe>"
+
+EDT_Retorno = "XML da NFSe:" + CR + cXML
+
+WHEN EXCEPTION IN
+	oConsultarNfsePDF is Unimake.Business.DFe.Servicos.NFSe.ConsultarNfsePDF()
+	oConsultarNfsePDF.Executar(cXML, oConfiguracao)
+	
+	// PEgar o conteúdo do XML retornado pelo ambiente nacional
+	EDT_Retorno += CR + CR + "XML Retornado:"
+	EDT_Retorno += CR + CR + oConsultarNfsePDF.RetornoWSString
+
+    //Gravar o PDF da NFSe retornado em uma pasta
+	oConsultarNfsePDF.ExtrairPDF("d:\testenfe\pdf", "nfsenacional_retornoconsultapdf.pdf", "Base64Pdf")
+	
+	Info("FIM")
+DO
+	Info(ExceptionInfo(errFullDetails)) //Ele também pega o conteúdo da Exception do lado do C#, importante envolver o código em Try/Catch
+END

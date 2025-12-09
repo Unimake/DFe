@@ -1,0 +1,33 @@
+// Esse serviço é síncrono, no retorno do envio já consta se o RPS foi autorizado ou não
+oConfiguracao is Unimake.Business.DFe.Servicos.Configuracao
+oConfiguracao.TipoDFe				= TipoDFe.NFSe
+oConfiguracao.TipoAmbiente			= TipoAmbiente.Homologacao
+oConfiguracao.Servico				= Servico.NFSeGerarNfse
+oConfiguracao.CodigoMunicipio		= 1001058	
+oConfiguracao.SchemaVersao			= "1.00"
+oConfiguracao.CertificadoArquivo	= "C:\projetos\Unimake_PV.pfx"
+oConfiguracao.CertificadoSenha		= "12345678"
+
+//Montar a string do XML
+xmlNfse is string = fLoadText("D:\testenfe\nfse_envio_95664.xml")
+
+EDT_Retorno = "XML da NFSe:" + CR + xmlNfse
+
+WHEN EXCEPTION IN
+	oGerarNFSe is Unimake.Business.DFe.Servicos.NFSe.GerarNfse()
+	oGerarNFSe.Executar(xmlNfse, oConfiguracao)
+	
+	// Gravar o xml assinado
+	notaAssinada is string = oGerarNFSe.GetConteudoXMLAssinado()
+
+	EDT_Retorno += CR + CR + "XML DPS Assinado:"
+	EDT_Retorno += CR + CR + notaAssinada // Demonstrar o XML da nota assinada na tela			
+
+    // PEgar o conteúdo do XML retornado pelo ambiente nacional
+    EDT_Retorno += CR + CR + "XML Retornado:"
+	EDT_Retorno += CR + CR + oGerarNFSe.RetornoWSString
+	
+	Info("FIM")
+DO
+	Info(ExceptionInfo(errFullDetails)) //Ele também pega o conteúdo da Exception do lado do C#, importante envolver o código em Try/Catch
+END

@@ -1,0 +1,34 @@
+// Esse serviço é síncrono, no retorno do envio já consta se o RPS foi autorizado ou não
+oConfiguracao is Unimake.Business.DFe.Servicos.Configuracao
+oConfiguracao.TipoDFe				= TipoDFe.NFSe
+oConfiguracao.TipoAmbiente			= TipoAmbiente.Homologacao
+oConfiguracao.Servico				= Servico.NFSeConsultarNfsePorRps
+oConfiguracao.CodigoMunicipio		= 1001058	
+oConfiguracao.SchemaVersao			= "1.00"
+oConfiguracao.CertificadoArquivo	= "C:\projetos\Unimake_PV.pfx"
+oConfiguracao.CertificadoSenha		= "12345678"
+
+//Montar a string do XML
+cXML is string
+
+cXML = "<?xml version=""1.0"" encoding=""utf-8""?>"
+cXML += "<DPS versao=""1.00"" xmlns=""http://www.sped.fazenda.gov.br/nfse"">"
+cXML += "<infDPS Id=""DPS420460822244139900018900001000000000000749""/>"
+cXML += "</DPS>"
+
+EDT_Retorno = "XML da NFSe:" + CR + cXML
+
+WHEN EXCEPTION IN
+	oConsultarNfsePorRps is Unimake.Business.DFe.Servicos.NFSe.ConsultarNfsePorRps()
+	oConsultarNfsePorRps.Executar(cXML, oConfiguracao)
+	
+	// PEgar o conteúdo do XML retornado pelo ambiente nacional
+	EDT_Retorno += CR + CR + "XML Retornado:"
+	EDT_Retorno += CR + CR + oConsultarNfsePorRps.RetornoWSString
+	
+	Info("FIM")
+DO
+	Info(ExceptionInfo(errFullDetails)) //Ele também pega o conteúdo da Exception do lado do C#, importante envolver o código em Try/Catch
+END
+
+
