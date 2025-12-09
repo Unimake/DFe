@@ -193,5 +193,43 @@
       <SchemaVersao>2.03</SchemaVersao>
       <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
     </ConsultarNfseFaixa>
+	  <GerarNfse versao="1.01">
+		  <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+		  <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/NotaFiscalNacional?wsdl</WebEnderecoHomologacao>
+		  <WebEnderecoProducao></WebEnderecoProducao>
+		  <WebActionHomologacao>http://webservices.sil.com/NotaFiscalNacional/NotaFiscalNacionalGerarRequest</WebActionHomologacao>
+		  <WebActionProducao></WebActionProducao>
+		  <SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+		  <TagAssinatura>DPS</TagAssinatura>
+		  <TagAtributoID>infDPS</TagAtributoID>
+		  <TagLoteAssinatura></TagLoteAssinatura>
+		  <TagLoteAtributoID></TagLoteAtributoID>
+		  <WebContentType>text/xml;charset=UTF-8</WebContentType>
+		  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.sil.com/"><soapenv:Header/><soapenv:Body><web:NotaFiscalNacionalGerar><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></web:NotaFiscalNacionalGerar></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+		  <WebTagRetorno>prop:innertext</WebTagRetorno>
+		  <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+		  <WebSoapVersion>soap11</WebSoapVersion>
+		  <SchemaVersao>1.01</SchemaVersao>
+		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+	  </GerarNfse>
+	  <CancelarNfse versao="1.01">
+		  <Descricao>Cancelar nota fiscal de serviço</Descricao>
+		  <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/NotaFiscalNacional?wsdl</WebEnderecoHomologacao>
+		  <WebEnderecoProducao></WebEnderecoProducao>
+		  <WebActionHomologacao>http://webservices.sil.com/NotaFiscalNacional/NotaFiscalNacionalCancelarRequest</WebActionHomologacao>
+		  <WebActionProducao></WebActionProducao>
+		  <SchemaArquivo></SchemaArquivo>
+		  <TagAssinatura>pedRegEvento</TagAssinatura>
+		  <TagAtributoID>infPedReg</TagAtributoID>
+		  <TagLoteAssinatura></TagLoteAssinatura>
+		  <TagLoteAtributoID></TagLoteAtributoID>
+		  <WebContentType>text/xml;charset=UTF-8</WebContentType>
+		  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.sil.com/"><soapenv:Header/><soapenv:Body><web:NotaFiscalNacionalCancelar><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></web:NotaFiscalNacionalCancelar></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+		  <WebTagRetorno>prop:innertext</WebTagRetorno>
+		  <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+		  <WebSoapVersion>soap11</WebSoapVersion>
+		  <SchemaVersao>1.01</SchemaVersao>
+		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+	  </CancelarNfse>
   </Servicos>
 </Configuracoes>
