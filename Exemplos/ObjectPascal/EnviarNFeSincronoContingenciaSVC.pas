@@ -1,8 +1,8 @@
 // ------------------------------------------------------------------
-// Enviar NFe no modo síncrono
+// Enviar NFe no modo síncrono em contingência SVC
 // ------------------------------------------------------------------
 
-unit EnviarNFeSincrono;
+unit EnviarNFeSincronoContingenciaSVC;
 
 {$mode ObjFPC}{$H+}
 
@@ -12,7 +12,7 @@ uses
   Classes, SysUtils, ComObj, Dialogs, Variants;
 
 type
-  TEnviarNFeSincrono = class
+  TEnviarNFeSincronoContingenciaSVC = class
   private
 
   public
@@ -21,7 +21,7 @@ type
 
 implementation
 
-procedure TEnviarNFeSincrono.Executar;
+procedure TEnviarNFeSincronoContingenciaSVC.Executar;
 var
   oConfiguracao: olevariant;
   oExceptionInterop: olevariant;
@@ -54,7 +54,7 @@ begin
   // Criar objeto de configuração mínima
   oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
   oConfiguracao.TipoDFe := 0; //0=NFe
-  oConfiguracao.TipoEmissao := 1; //1=Normal
+  oConfiguracao.TipoEmissao := 7; //6=SVCAN 7=SVCRS ###
   oConfiguracao.CertificadoArquivo := 'C:\Projetos\certificados\UnimakePV.pfx';
   oConfiguracao.CertificadoSenha := '12345678';
 
@@ -88,7 +88,7 @@ begin
     oInfNFe.Ide.IdDest := 2; // OperacaoInterestadual
     oInfNFe.Ide.CMunFG := 4118402;
     oInfNFe.Ide.TpImp := 1; // FormatoImpressaoDANFE.NormalRetrato
-    oInfNFe.Ide.TpEmis := 1; // TipoEmissao.Normal
+    oInfNFe.Ide.TpEmis := 7; // 6=SVCAN 7=SVCRS ###
     oInfNFe.Ide.TpAmb := 2; // TipoAmbiente.Homologacao
     oInfNFe.Ide.FinNFe := 1; // FinalidadeNFe.Normal
     oInfNFe.Ide.IndFinal := 1; // SimNao.Sim

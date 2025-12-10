@@ -10,11 +10,11 @@ object frmPrincipal: TfrmPrincipal
   OnCreate = FormCreate
   object GroupBox1: TGroupBox
     Left = 12
-    Height = 634
+    Height = 744
     Top = 0
     Width = 358
     Caption = 'NF-e'
-    ClientHeight = 604
+    ClientHeight = 714
     ClientWidth = 354
     TabOrder = 0
     OnClick = GroupBox1Click
@@ -134,6 +134,15 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Inutilização de Números da NFe'
       TabOrder = 12
       OnClick = btnInutilizacaoNumeroNFeClick
+    end
+    object btnEnviarNFeSincronoContingenciaSVC: TButton
+      Left = 12
+      Height = 38
+      Top = 603
+      Width = 324
+      Caption = 'Enviar NFe Contingência SVC'
+      TabOrder = 13
+      OnClick = btnEnviarNFeSincronoContingenciaSVCClick
     end
   end
   object GroupBox2: TGroupBox

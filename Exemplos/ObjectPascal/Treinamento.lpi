@@ -289,6 +289,10 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFCeOffline"/>
       </Unit>
+      <Unit>
+        <Filename Value="EnviarNFeSincronoContingenciaSVC.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
