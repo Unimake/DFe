@@ -555,7 +555,6 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                 }
             };
 
-
             var idGerado = dps.infDPS.Id;
             var xmlGerado = dps.GerarXML();
 
@@ -578,8 +577,6 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
 
             var gerarNfse = new GerarNfse(xmlGerado, configuracao);
             gerarNfse.Executar();
-
         }
-
     }
 }

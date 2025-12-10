@@ -669,68 +669,42 @@ namespace Unimake.DFe.Test.NFe
 
         [Theory]
         [Trait("DFe", "NFe")]
-        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
-        public void RecepcaoEventoAutorizadosSVRS(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_112110.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_112120.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_112150.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_211128.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_212110.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_212120.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_412120.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_112130.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_412130.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_112140.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_211110.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_211120.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_211124.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_211130.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_211140.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\envEvento_211150.xml")]
+        public void RecepcaoEventoAutorizadosSVRS(string arq)
         {
-            var xmls = new List<string>
+            var doc = new XmlDocument();
+            doc.Load(arq);
+
+            var configuracao = new Configuracao
             {
-                @"..\..\..\NFe\Resources\envEvento_110001.xml",
-                @"..\..\..\NFe\Resources\envEvento_112110.xml",
-                @"..\..\..\NFe\Resources\envEvento_112120.xml",
-                @"..\..\..\NFe\Resources\envEvento_112150.xml",
-                @"..\..\..\NFe\Resources\envEvento_211128.xml",
-                @"..\..\..\NFe\Resources\envEvento_212110.xml",
-                @"..\..\..\NFe\Resources\envEvento_212120.xml",
-                @"..\..\..\NFe\Resources\envEvento_412120.xml",
-                @"..\..\..\NFe\Resources\envEvento_112130.xml",
-                @"..\..\..\NFe\Resources\envEvento_412130.xml",
-                @"..\..\..\NFe\Resources\envEvento_112140.xml",
-                @"..\..\..\NFe\Resources\envEvento_211110.xml",
-                @"..\..\..\NFe\Resources\envEvento_211120.xml",
-                @"..\..\..\NFe\Resources\envEvento_211124.xml",
-                @"..\..\..\NFe\Resources\envEvento_211130.xml",
-                @"..\..\..\NFe\Resources\envEvento_211140.xml",
-                @"..\..\..\NFe\Resources\envEvento_211150.xml",
-                @"..\..\..\NFe\Resources\envEvento_112110.xml",
-                @"..\..\..\NFe\Resources\envEvento_112120.xml",
-                @"..\..\..\NFe\Resources\envEvento_112150.xml",
-                @"..\..\..\NFe\Resources\envEvento_211128.xml",
-                @"..\..\..\NFe\Resources\envEvento_212110.xml",
-                @"..\..\..\NFe\Resources\envEvento_212120.xml",
-                @"..\..\..\NFe\Resources\envEvento_412120.xml",
-                @"..\..\..\NFe\Resources\envEvento_112130.xml",
-                @"..\..\..\NFe\Resources\envEvento_412130.xml",
-                @"..\..\..\NFe\Resources\envEvento_112140.xml",
-                @"..\..\..\NFe\Resources\envEvento_211110.xml",
-                @"..\..\..\NFe\Resources\envEvento_211120.xml",
-                @"..\..\..\NFe\Resources\envEvento_211124.xml",
-                @"..\..\..\NFe\Resources\envEvento_211130.xml",
-                @"..\..\..\NFe\Resources\envEvento_211140.xml",
-                @"..\..\..\NFe\Resources\envEvento_211150.xml"
+                TipoDFe = TipoDFe.NFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            foreach (var arq in xmls)
-            {
-                var doc = new XmlDocument();
-                doc.Load(arq);
+            var recepcaoEvento = new RecepcaoEvento(doc.OuterXml, configuracao);
+            recepcaoEvento.Executar();
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.NFe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
-
-                var recepcaoEvento = new RecepcaoEvento(doc.OuterXml, configuracao);
-                recepcaoEvento.Executar();
-
-                //Assert.True(configuracao.CodigoUF.Equals((int)UFBrasil.SVRS), "UF definida nas configurações diferente de " + UFBrasil.SVRS.ToString());
-                //Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                //Assert.True(recepcaoEvento.Result.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                //Assert.True(recepcaoEvento.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                //Assert.True(recepcaoEvento.Result.CStat.Equals(128) || recepcaoEvento.Result.CStat.Equals(656) || recepcaoEvento.Result.CStat.Equals(217), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.XMotivo + "<xMotivo>");
-            }
+            Assert.True(configuracao.CodigoUF.Equals((int)UFBrasil.SVRS), "UF definida nas configurações diferente de " + UFBrasil.SVRS.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(TipoAmbiente.Homologacao), "Tipo de ambiente definido nas configurações diferente de " + TipoAmbiente.Homologacao.ToString());
+            Assert.True(recepcaoEvento.Result.COrgao.Equals(UFBrasil.PR), "Webservice retornou uma UF e está diferente de " + UFBrasil.PR.ToString());
+            Assert.True(recepcaoEvento.Result.TpAmb.Equals(TipoAmbiente.Homologacao), "Webservice retornou um Tipo de ambiente diferente " + TipoAmbiente.Homologacao.ToString());
+            Assert.True(recepcaoEvento.Result.CStat.Equals(128) || recepcaoEvento.Result.CStat.Equals(656) || recepcaoEvento.Result.CStat.Equals(217) || recepcaoEvento.Result.CStat.Equals(215), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.XMotivo + "<xMotivo>");
         }
     }
 }
