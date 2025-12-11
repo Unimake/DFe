@@ -22,7 +22,7 @@ uses
   ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe,
   EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe,CancelamentoInsucessoEntregaCTe, DesserializandoXmlCTeOS,
   EventoCTeDesacordo, EventoEpecCte, ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE,
-  EnviarNFCeOffline;
+  EnviarNFCeOffline, EnviarNFeSincronoContingenciaSVC;
 
 type
 
@@ -74,6 +74,7 @@ type
     Btn_EventoEpecCte: TButton;
     Btn_ConsultaResultadoLoteGNRE: TButton;
     btnEnviarNFCeOffline: TButton;
+    btnEnviarNFeSincronoContingenciaSVC: TButton;
     EnviarXmlGNRe: TButton;
     ConsultaConfigGNRE: TButton;
     GroupBox1: TGroupBox;
@@ -112,6 +113,7 @@ type
     procedure btnEnviarNFCeSincronoDesserializacaoClick(Sender: TObject);
     procedure BtnEnviarNFComSincronoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoClick(Sender: TObject);
+    procedure btnEnviarNFeSincronoContingenciaSVCClick(Sender: TObject);
     procedure btnEnviarNFeSincronoDesserializacaoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoDuplicidadeClick(Sender: TObject);
     procedure btnEnviarNFeSincronoRTCClick(Sender: TObject);
@@ -386,6 +388,17 @@ var
   oServico: TEnviarNFeSincrono;
 begin
   oServico := TEnviarNFeSincrono.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.btnEnviarNFeSincronoContingenciaSVCClick(Sender: TObject);
+var
+  oServico: TEnviarNFeSincronoContingenciaSVC;
+begin
+  oServico := TEnviarNFeSincronoContingenciaSVC.Create;
   try
     oServico.Executar();
   finally
