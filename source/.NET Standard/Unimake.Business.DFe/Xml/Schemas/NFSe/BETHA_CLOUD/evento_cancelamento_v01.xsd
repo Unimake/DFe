@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+           targetNamespace="http://www.betha.com.br/e-nota-evento"
+           xmlns:evt="http://www.betha.com.br/e-nota-evento"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_v01.xsd"/>
+
+    <!-- Recepcionar Evento Cancelamento -->
+    <xs:element name="RecepcionarEventoCancelamentoEnvio">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="evento" type="evt:TEvento"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="RecepcionarEventoCancelamentoResposta">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="protocolo" type="xs:string"/>
+                <xs:element name="dhRecebimento" type="xs:dateTime"/>
+                <xs:element name="status" type="xs:string"/>
+                <xs:element name="listaMensagens" type="evt:TListaMensagens" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Consultar Evento -->
+    <xs:element name="ConsultarEventoCancelamentoEnvio">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="protocolo" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ConsultarEventoCancelamentoResposta">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="protocolo" type="xs:string"/>
+                <xs:element name="dhRecebimento" type="xs:dateTime"/>
+                <xs:element name="status" type="xs:string"/>
+                <xs:element name="idEvento" type="xs:string" minOccurs="0"/>
+                <xs:element name="listaMensagens" type="evt:TListaMensagens" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Tipos -->
+    <xs:complexType name="TEvento">
+        <xs:sequence>
+            <xs:element name="infEvento" type="evt:TInfEvento"/>
+            <xs:element ref="ds:Signature"/>
+        </xs:sequence>
+        <xs:attribute name="versao" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TInfEvento">
+        <xs:sequence>
+            <xs:element name="verAplic" type="xs:string" minOccurs="0"/>
+            <xs:element name="ambGer" type="xs:int" minOccurs="0"/>
+            <xs:element name="nSeqEvento" type="xs:int" minOccurs="0"/>
+            <xs:element name="dhProc" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="nDFe" type="xs:string" minOccurs="0"/>
+            <xs:element name="pedRegEvento" type="evt:TPedRegEvento"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="TPedRegEvento">
+        <xs:sequence>
+            <xs:element name="infPedReg" type="evt:TInfPedReg"/>
+            <xs:element ref="ds:Signature"/>
+        </xs:sequence>
+        <xs:attribute name="versao" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TInfPedReg">
+        <xs:sequence>
+            <xs:element name="chNFSe" type="evt:TChNFSe"/>
+            <xs:element name="CNPJAutor" type="evt:TCnpj" minOccurs="0"/>
+            <xs:element name="CPFAutor" type="evt:TCpf" minOccurs="0"/>
+            <xs:element name="dhEvento" type="xs:dateTime"/>
+            <xs:element name="tpAmb" type="xs:int"/>
+            <xs:element name="verAplic" type="xs:string"/>
+            <xs:element name="e105101" type="evt:TEventoCancelamento"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="TCnpj">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{14}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="TCpf">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{11}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="TChNFSe">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{50}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="TEventoCancelamento">
+        <xs:sequence>
+            <xs:element name="xDesc" type="xs:string"/>
+            <xs:element name="cMotivo" type="xs:int"/>
+            <xs:element name="xMotivo" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TListaMensagens">
+        <xs:sequence>
+            <xs:element name="mensagem" type="evt:TMensagem" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TMensagem">
+        <xs:sequence>
+            <xs:element name="codigo" type="xs:string"/>
+            <xs:element name="mensagem" type="xs:string"/>
+            <xs:element name="correcao" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

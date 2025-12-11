@@ -1280,6 +1280,9 @@
 		<None Remove="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\consulta_status.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\dps_completo_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\evento_cancelamento_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\nfse_betha_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_cancelar_nfse_envio_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\servico_cancelar_nfse_resposta_v01.xsd" />
@@ -2674,6 +2677,9 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\nfse v2 03.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\consulta_status.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\dps_completo_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\evento_cancelamento_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\nfse_v202.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_cancelar_nfse_envio_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\servico_cancelar_nfse_resposta_v01.xsd" />

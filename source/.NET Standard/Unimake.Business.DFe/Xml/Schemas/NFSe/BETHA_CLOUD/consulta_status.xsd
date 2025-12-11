@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+           targetNamespace="http://www.betha.com.br/e-nota-dps"
+           xmlns:dps="http://www.betha.com.br/e-nota-dps"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_v01.xsd"/>
+
+    <!-- Consulta Status DPS -->
+    <xs:element name="ConsultarStatusDpsEnvio">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoIbge" type="dps:TCodigoIbge"/>
+                <xs:element name="cpfCnpjPrestador" type="dps:TCpfCnpj"/>
+                <xs:element name="protocolo" type="xs:string"/>
+                <xs:element name="tipoIntegracao" type="dps:TTipoIntegracao"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Elementos raiz (para permitir polimorfismo via substitutionGroup) -->
+    <xs:element name="ConsultarStatusDpsResposta" type="dps:ConsultarStatusDpsResposta" abstract="true"/>
+    <xs:element name="ConsultarStatusDpsEmissaoResposta" substitutionGroup="dps:ConsultarStatusDpsResposta" type="dps:ConsultarStatusDpsEmissaoResposta"/>
+    <xs:element name="ConsultarStatusDpsCancelamentoResposta" substitutionGroup="dps:ConsultarStatusDpsResposta" type="dps:ConsultarStatusDpsCancelamentoResposta"/>
+    <xs:element name="ConsultarStatusDpsCancelamentoSubstituicaoResposta" substitutionGroup="dps:ConsultarStatusDpsResposta" type="dps:ConsultarStatusDpsCancelamentoSubstituicaoResposta"/>
+
+    <!-- Tipo base abstrato -->
+    <xs:complexType name="ConsultarStatusDpsResposta" abstract="true">
+        <xs:sequence>
+            <xs:element name="statusProcessamento" type="xs:string"/>
+            <xs:element name="dataHoraRecebimento" type="xs:dateTime"/>
+            <xs:element name="protocolo" type="xs:string"/>
+            <xs:element name="mensagemErro" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Retorno da consulta do status de emissão da DPS -->
+    <xs:complexType name="ConsultarStatusDpsEmissaoResposta">
+        <xs:complexContent>
+            <xs:extension base="dps:ConsultarStatusDpsResposta">
+                <xs:sequence>
+                    <xs:element name="idDps" type="xs:string"/>
+                    <xs:element name="chaveAcesso" type="xs:string" minOccurs="0"/>
+                    <xs:element name="numeroDps" type="xs:string" minOccurs="0"/>
+                    <xs:element name="serieDps" type="xs:string" minOccurs="0"/>
+                    <xs:element name="numeroNotaFiscal" type="xs:string" minOccurs="0"/>
+                    <xs:element name="linkPdf" type="xs:anyURI" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Retorno da consulta do status de cancelamento -->
+    <xs:complexType name="ConsultarStatusDpsCancelamentoResposta">
+        <xs:complexContent>
+            <xs:extension base="dps:ConsultarStatusDpsResposta">
+                <xs:sequence>
+                    <xs:element name="idCancelamento" type="xs:string"/>
+                    <xs:element name="chaveAcesso" type="xs:string" minOccurs="0"/>
+                    <xs:element name="numeroNotaFiscal" type="xs:string" minOccurs="0"/>
+                    <xs:element name="linkPdf" type="xs:anyURI" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Retorno da consulta do status de cancelamento por substituição -->
+    <xs:complexType name="ConsultarStatusDpsCancelamentoSubstituicaoResposta">
+        <xs:complexContent>
+            <xs:extension base="dps:ConsultarStatusDpsResposta">
+                <xs:sequence>
+                    <xs:element name="idCancelamentoSubstituicao" type="xs:string"/>
+                    <xs:element name="chaveAcessoSubstituida" type="xs:string" minOccurs="0"/>
+                    <xs:element name="numeroNotaFiscalSubstituida" type="xs:string" minOccurs="0"/>
+                    <xs:element name="linkPdfSubstituida" type="xs:anyURI" minOccurs="0"/>
+                    <xs:element name="chaveAcessoSubstituta" type="xs:string" minOccurs="0"/>
+                    <xs:element name="numeroNotaFiscalSubstituta" type="xs:string" minOccurs="0"/>
+                    <xs:element name="linkPdfSubstituta" type="xs:anyURI" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="TTipoIntegracao">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EMISSAO"/>
+            <xs:enumeration value="CANCELAMENTO"/>
+            <xs:enumeration value="CANCELAMENTO_POR_SUBSTITUICAO"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Enum para o status -->
+    <xs:simpleType name="TStatusProcessamentoType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="AGUARDANDO_VALIDACAO_AMBIENTE_NACIONAL"/>
+            <xs:enumeration value="PROCESSADO_COM_SUCESSO"/>
+            <xs:enumeration value="PROCESSADO_COM_ERRO"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="TCodigoIbge">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{7}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="TCpfCnpj">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{11}|[0-9]{14}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
