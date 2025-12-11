@@ -307,5 +307,65 @@
 			<SchemaVersao>2.02</SchemaVersao>
 			<TargetNS>http://www.betha.com.br/e-nota-contribuinte-ws</TargetNS>
 		</SubstituirNfse>
+		<GerarNfse versao="1.01">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://nota-eletronica.betha.cloud/dps/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>https://www.betha.com.br/e-nota-dps-service/RecepcionarDps</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>dps_completo_v01.xsd</SchemaArquivo>
+			<TagAssinatura>e:DPS</TagAssinatura>
+			<TagAtributoID>e:infDPS</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+			<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="1.01">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://nota-eletronica.betha.cloud/dps/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.betha.com.br/e-nota-dps-service/RecepcionarEventoCancelamento</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>evento_cancelamento_v01.xsd</SchemaArquivo>
+			<TagAssinatura>evt:evento</TagAssinatura>
+			<TagAtributoID>evt:infEvento</TagAtributoID>
+			<TagLoteAssinatura>evt:pedRegEvento</TagLoteAssinatura>
+			<TagLoteAtributoID>evt:infPedReg</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+			<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
+		</CancelarNfse>
+		<ConsultarNfse versao="1.01">
+			<Descricao></Descricao>
+			<WebEnderecoHomologacao>https://nota-eletronica.betha.cloud/dps/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.betha.com.br/e-nota-dps-service/ConsultarDps</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
+			<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
+		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>
