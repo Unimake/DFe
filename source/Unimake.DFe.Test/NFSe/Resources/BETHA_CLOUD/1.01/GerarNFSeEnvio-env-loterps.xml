@@ -1,0 +1,64 @@
+﻿<e:RecepcionarDpsEnvio xmlns:e="http://www.betha.com.br/e-nota-dps">
+	<e:DPS versao="1.01">
+		<e:infDPS id="DPS410550821234567890123400003000000000000051">
+			<e:tpAmb>2</e:tpAmb>
+			<e:dhEmi>2025-12-10T09:38:00-03:00</e:dhEmi>
+			<e:verAplic>1.00</e:verAplic>
+			<e:serie>3</e:serie>
+			<e:nDPS>51</e:nDPS>
+			<e:dCompet>2025-12-10</e:dCompet>
+			<e:tpEmit>1</e:tpEmit>
+			<e:cLocEmi>4105508</e:cLocEmi>
+			<e:prest>
+				<e:CNPJ>12345678901234</e:CNPJ>
+				<e:regTrib>
+					<e:opSimpNac>3</e:opSimpNac>
+					<e:regApTribSN>1</e:regApTribSN>
+					<e:regEspTrib>0</e:regEspTrib>
+				</e:regTrib>
+			</e:prest>
+			<e:toma>
+				<e:CNPJ>12345678901234</e:CNPJ>
+				<e:xNome>Teste Teste Inc</e:xNome>
+				<e:end>
+					<e:endNac>
+						<e:cMun>4128104</e:cMun>
+						<e:CEP>12345678</e:CEP>
+					</e:endNac>
+					<e:xLgr>Rua do Teste</e:xLgr>
+					<e:nro>9001</e:nro>
+					<e:xBairro>ZONA SUBURBANA</e:xBairro>
+				</e:end>
+				<e:email>TesteTeste@Teste.com</e:email>
+			</e:toma>
+			<e:serv>
+				<e:locPrest>
+					<e:cLocPrestacao>4105508</e:cLocPrestacao>
+				</e:locPrest>
+				<e:cServ>
+					<e:cTribNac>0101010</e:cTribNac>
+					<e:xDescServ>PRESTACAO DE SERVICOS DE SOFTWARE MANUTENCAO</e:xDescServ>
+					<e:cNBS>115022000</e:cNBS>
+				</e:cServ>
+			</e:serv>
+			<e:valores>
+				<e:vServPrest>
+					<e:vServ>10.00</e:vServ>
+				</e:vServPrest>
+				<e:trib>
+					<e:tribMun>
+						<e:tribISSQN>1</e:tribISSQN>
+						<e:tpRetISSQN>1</e:tpRetISSQN>
+					</e:tribMun>
+					<e:totTrib>
+						<e:vTotTrib>
+							<e:vTotTribFed>1.35</e:vTotTribFed>
+							<e:vTotTribEst>0</e:vTotTribEst>
+							<e:vTotTribMun>0.47</e:vTotTribMun>
+						</e:vTotTrib>
+					</e:totTrib>
+				</e:trib>
+			</e:valores>
+		</e:infDPS>
+	</e:DPS>
+</e:RecepcionarDpsEnvio>

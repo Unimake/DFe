@@ -1,0 +1,25 @@
+﻿<evt:RecepcionarEventoCancelamentoEnvio xmlns:evt="http://www.betha.com.br/e-nota-evento">
+	<evt:evento versao="1.01">
+		<evt:infEvento id="EVT_PRE14001591201761135000132000000000000022096100197260101101001">
+			<evt:verAplic>Teste_0.1.0</evt:verAplic>
+			<evt:ambGer>2</evt:ambGer>
+			<evt:nSeqEvento>1</evt:nSeqEvento>
+			<evt:dhProc>2022-09-28T13:50:29-03:00</evt:dhProc>
+			<evt:nDFe>14001591201761135000132000000000000022096100197260</evt:nDFe>
+			<evt:pedRegEvento versao="1.01">
+				<evt:infPedReg id="PRE14001591201761135000132000000000000022096100197260101101001">
+					<evt:chNFSe>14001591201761135000132000000000000022096100197260</evt:chNFSe>
+					<evt:CNPJAutor>01761135000132</evt:CNPJAutor>
+					<evt:dhEvento>2022-09-28T13:50:29-03:00</evt:dhEvento>
+					<evt:tpAmb>2</evt:tpAmb>
+					<evt:verAplic>Teste_0.1.0</evt:verAplic>
+					<evt:e105101>
+						<evt:xDesc>Cancelamento de NFS-e</evt:xDesc>
+						<evt:cMotivo>1</evt:cMotivo>
+						<evt:xMotivo>xMotivo___teste____1</evt:xMotivo>
+					</evt:e105101>
+				</evt:infPedReg>
+			</evt:pedRegEvento>
+		</evt:infEvento>
+	</evt:evento>
+</evt:RecepcionarEventoCancelamentoEnvio>
