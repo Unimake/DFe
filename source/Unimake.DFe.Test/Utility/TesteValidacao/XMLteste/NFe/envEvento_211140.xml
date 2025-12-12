@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<envEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<idLote>000000000000001</idLote>
+	<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID2111404111250611747300015000000000000000000000000001">
+			<cOrgao>41</cOrgao>
+			<tpAmb>2</tpAmb>
+			<CNPJ>06117473000150</CNPJ>
+			<chNFe>41112506117473000150000000000000000000000000</chNFe>
+			<dhEvento>2025-11-03T14:00:00-03:00</dhEvento>
+			<tpEvento>211140</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<verEvento>1.00</verEvento>
+			<detEvento versao="1.00">
+				<descEvento>Solicitação de Apropriação de Crédito de Combustível</descEvento>
+				<cOrgaoAutor>41</cOrgaoAutor>
+				<tpAutor>2</tpAutor>
+				<verAplic>verAplic1</verAplic>
+				<gConsumoComb nItem="1">
+					<vIBS>11.00</vIBS>
+					<vCBS>11.01</vCBS>
+					<gControleEstoque>
+						<qComb>1.0000</qComb>
+						<uComb>UN</uComb>
+					</gControleEstoque>
+				</gConsumoComb>
+				<gConsumoComb nItem="2">
+					<vIBS>22.00</vIBS>
+					<vCBS>22.02</vCBS>
+					<gControleEstoque>
+						<qComb>2.0000</qComb>
+						<uComb>UE</uComb>
+					</gControleEstoque>
+				</gConsumoComb>
+				<gConsumoComb nItem="3">
+					<vIBS>33.00</vIBS>
+					<vCBS>33.03</vCBS>
+					<gControleEstoque>
+						<qComb>3.0000</qComb>
+						<uComb>UU</uComb>
+					</gControleEstoque>
+				</gConsumoComb>
+			</detEvento>
+		</infEvento>
+	</evento>
+</envEvento>

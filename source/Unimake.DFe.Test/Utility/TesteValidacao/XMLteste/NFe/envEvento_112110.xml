@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<envEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <idLote>000000000000001</idLote>
+  <evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infEvento Id="ID1100014111250611747300015000000000000000000000000001">
+      <cOrgao>41</cOrgao>
+      <tpAmb>2</tpAmb>
+      <CNPJ>06117473000150</CNPJ>
+      <chNFe>41112506117473000150000000000000000000000000</chNFe>
+      <dhEvento>2025-11-03T14:00:00-03:00</dhEvento>
+      <tpEvento>112110</tpEvento>
+      <nSeqEvento>1</nSeqEvento>
+      <verEvento>1.00</verEvento>
+      <detEvento versao="1.00">
+        <descEvento>Informação de efetivo pagamento integral para liberar crédito presumido do adquirente</descEvento>
+        <cOrgaoAutor>11</cOrgaoAutor>
+        <tpAutor>1</tpAutor>
+        <verAplic>verAplic1</verAplic>
+        <indQuitacao>1</indQuitacao>
+      </detEvento>
+    </infEvento>
+  </evento>
+</envEvento>

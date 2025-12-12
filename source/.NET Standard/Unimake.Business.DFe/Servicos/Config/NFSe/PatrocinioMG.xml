@@ -102,5 +102,23 @@
 			<TargetNS>http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd</TargetNS>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarSituacaoLoteRps>
+		<GerarNfse versao="1.00">
+			<Descricao>Envio do DPS - Sincrono</Descricao>
+			<RequestURIProducao></RequestURIProducao>
+			<RequestURIHomologacao>https://producaorestrita.simplissweb.com.br/nfse</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<SchemaArquivo>DPS_v1.00.xsd</SchemaArquivo>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</GerarNfse>
 	</Servicos>
 </Configuracoes>

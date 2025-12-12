@@ -37,6 +37,7 @@
 		<None Remove="NFSe\Resources\VITORIA_ES\2.01\EnviarLoteRpsSincronoEnvio-env-loterps.xml" />
 		<None Remove="NFSe\Resources\VITORIA_ES\2.01\GerarNfseEnvio-env-loterps.xml" />
 		<None Remove="NFSe\Resources\VITORIA_ES\2.01\SubstituirNfseEnvio-ped-substnfse.xml" />
+		<None Remove="Utility\TesteValidacao\XMLteste\CTe\consReciCTe .xml" />
 	</ItemGroup>
 
 	<ItemGroup>

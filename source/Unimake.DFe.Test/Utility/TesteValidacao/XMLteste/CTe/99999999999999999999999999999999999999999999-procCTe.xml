@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cteProc versao="3.00" xmlns="http://www.portalfiscal.inf.br/cte">
+	<CTe xmlns="http://www.portalfiscal.inf.br/cte">
+		<infCte versao="3.00" Id="CTe41201299999999999999570010000004841999999998">
+			<ide>
+				<cUF>41</cUF>
+				<cCT>99999999</cCT>
+				<CFOP>5352</CFOP>
+				<natOp>PREST.SERV.TRANSP.INDUSTR</natOp>
+				<mod>57</mod>
+				<serie>1</serie>
+				<nCT>484</nCT>
+				<dhEmi>2020-12-04T08:00:29-03:00</dhEmi>
+				<tpImp>1</tpImp>
+				<tpEmis>1</tpEmis>
+				<cDV>8</cDV>
+				<tpAmb>1</tpAmb>
+				<tpCTe>0</tpCTe>
+				<procEmi>0</procEmi>
+				<verProc>UNICO V8.0</verProc>
+				<cMunEnv>4118402</cMunEnv>
+				<xMunEnv>PARANAVAI</xMunEnv>
+				<UFEnv>PR</UFEnv>
+				<modal>01</modal>
+				<tpServ>0</tpServ>
+				<cMunIni>4118402</cMunIni>
+				<xMunIni>PARANAVAI</xMunIni>
+				<UFIni>PR</UFIni>
+				<cMunFim>4106902</cMunFim>
+				<xMunFim>CURITIBA</xMunFim>
+				<UFFim>PR</UFFim>
+				<retira>1</retira>
+				<indIEToma>1</indIEToma>
+				<toma3>
+					<toma>0</toma>
+				</toma3>
+			</ide>
+			<emit>
+				<CNPJ>99999999999999</CNPJ>
+				<IE>9999999999</IE>
+				<xNome>XXXXXXXXXXXXXXXXXX</xNome>
+				<xFant>XXXXXXXXXXXXXXXXXX</xFant>
+				<enderEmit>
+					<xLgr>XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</xLgr>
+					<nro>01297</nro>
+					<xBairro>XXXXXXXXXXXXXXXX</xBairro>
+					<cMun>4118402</cMun>
+					<xMun>PARANAVAI</xMun>
+					<CEP>99999999</CEP>
+					<UF>PR</UF>
+					<fone>99999999999</fone>
+				</enderEmit>
+			</emit>
+			<rem>
+				<CNPJ>99999999999999</CNPJ>
+				<IE>9999999999</IE>
+				<xNome>XXXXXXXXXXXXXXX</xNome>
+				<xFant>XXXXXXXXXXXXXXX</xFant>
+				<fone>99999999999</fone>
+				<enderReme>
+					<xLgr>XXXXXXXXXXXXXXXXXX</xLgr>
+					<nro>1140</nro>
+					<xBairro>XXXXXXXXXXXXX</xBairro>
+					<cMun>4118402</cMun>
+					<xMun>PARANAVAI</xMun>
+					<CEP>99999999</CEP>
+					<UF>PR</UF>
+					<cPais>1058</cPais>
+					<xPais>BRASIL</xPais>
+				</enderReme>
+			</rem>
+			<dest>
+				<CNPJ>99999999999999</CNPJ>
+				<IE>ISENTO</IE>
+				<xNome>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</xNome>
+				<enderDest>
+					<xLgr>XXXXXXXXXXXXXXXXXXXXXXXXXXXX</xLgr>
+					<nro>2886</nro>
+					<xBairro>UBERABA</xBairro>
+					<cMun>4106902</cMun>
+					<xMun>CURITIBA</xMun>
+					<CEP>99999999</CEP>
+					<UF>PR</UF>
+					<cPais>1058</cPais>
+					<xPais>BRASIL</xPais>
+				</enderDest>
+			</dest>
+			<vPrest>
+				<vTPrest>104.04</vTPrest>
+				<vRec>104.04</vRec>
+				<Comp>
+					<xNome>FRETE VALOR</xNome>
+					<vComp>104.04</vComp>
+				</Comp>
+			</vPrest>
+			<imp>
+				<ICMS>
+					<ICMS00>
+						<CST>00</CST>
+						<vBC>0.00</vBC>
+						<pICMS>0.00</pICMS>
+						<vICMS>0.00</vICMS>
+					</ICMS00>
+				</ICMS>
+			</imp>
+			<infCTeNorm>
+				<infCarga>
+					<vCarga>3468.80</vCarga>
+					<proPred>XXXXXX</proPred>
+					<infQ>
+						<cUnid>01</cUnid>
+						<tpMed>PESO BRUTO</tpMed>
+						<qCarga>152.0000</qCarga>
+					</infQ>
+					<infQ>
+						<cUnid>03</cUnid>
+						<tpMed>UNIDADE</tpMed>
+						<qCarga>4.0000</qCarga>
+					</infQ>
+					<infQ>
+						<cUnid>01</cUnid>
+						<tpMed>PESO BRUTO</tpMed>
+						<qCarga>65.0000</qCarga>
+					</infQ>
+					<infQ>
+						<cUnid>03</cUnid>
+						<tpMed>UNIDADE</tpMed>
+						<qCarga>1.0000</qCarga>
+					</infQ>
+				</infCarga>
+				<infDoc>
+					<infNFe>
+						<chave>99999999999999999999999999999999999999999999</chave>
+					</infNFe>
+					<infNFe>
+						<chave>99999999999999999999999999999999999999999999</chave>
+					</infNFe>
+				</infDoc>
+				<infModal versaoModal="3.00">
+					<rodo>
+						<RNTRC>99999999</RNTRC>
+						<occ>
+							<nOcc>999</nOcc>
+							<dEmi>2020-12-04</dEmi>
+							<emiOcc>
+								<CNPJ>99999999999999</CNPJ>
+								<cInt>9999999999</cInt>
+								<IE>9999999999</IE>
+								<UF>PR</UF>
+								<fone>99999999999</fone>
+							</emiOcc>
+						</occ>
+					</rodo>
+				</infModal>
+			</infCTeNorm>
+			<infRespTec>
+				<CNPJ>99999999999999</CNPJ>
+				<xContato>XXXXXXXXXXXXXXXXXXXXXXX</xContato>
+				<email>xxxxxxx@xxxxxxx.xxx.xx</email>
+				<fone>99999999999</fone>
+			</infRespTec>
+		</infCte>
+		<infCTeSupl>
+			<qrCodCTe>http://www.fazenda.pr.gov.br/cte/qrcode?chCTe=99999999999999999999999999999999999999999999&amp;tpAmb=1</qrCodCTe>
+		</infCTeSupl>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+				<Reference URI="#CTe99999999999999999999999999999999999999999999">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+					<DigestValue>VFHL16ctT5MqBqQld/8D9CwBbIA=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>mWo6Kv5Ba8/BDbhInRQVteYZ9KYRftbPaaIQHMk0JpDs35ZGrb6wryTnI37K94PSAK2E+NLSwsHUCVutiHnJEv7oq3XFRu5av98KHbOVuzw9mMOZ/5eQHfRdq2XJTcJPevzQua9/mxnnWgukkCHC8Gzr73X4JmizS50XlUm0igteyAilWHq3u6nvQprbJ5pSMSVIGWivQBfhRs2IpUsPPKO64qe+lvOcHe73PsuNu0FYwjYJ7JWlTHrmqWD4oMLcVdP5OE4ElMDEGmXaq10rVM7CeUcvAxa8AORz9hu68MnkrS6w7wn6Xo3TvRvTXo+NSEbo041gZnEkw3P/mrHAuw==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>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</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</CTe>
+	<protCTe versao="3.00" xmlns="http://www.portalfiscal.inf.br/cte">
+		<infProt>
+			<tpAmb>1</tpAmb>
+			<verAplic>PR-v3_1_25</verAplic>
+			<chCTe>99999999999999999999999999999999999999999999</chCTe>
+			<dhRecbto>2020-12-04T08:00:44-03:00</dhRecbto>
+			<nProt>999999999999999</nProt>
+			<digVal>VFHL16ctT5MqBqQld/8D9CwBbIA=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso do CT-e</xMotivo>
+		</infProt>
+	</protCTe>
+</cteProc>

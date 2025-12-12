@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<envEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<idLote>000000000000001</idLote>
+	<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID1119241999999999999999999999999999999999999999999901">
+			<cOrgao>92</cOrgao>
+			<tpAmb>1</tpAmb>
+			<CNPJ>99999999999999</CNPJ>
+			<chNFe>41999999999999999999999999999999999999999999</chNFe>
+			<dhEvento>2022-05-16T10:25:38-03:00</dhEvento>
+			<tpEvento>110192</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<verEvento>1.00</verEvento>
+			<detEvento versao="1.00">
+				<descEvento>Insucesso na Entrega da NF-e</descEvento>
+				<cOrgaoAutor>41</cOrgaoAutor>
+				<verAplic>uninfeteste1.0</verAplic>
+				<dhTentativaEntrega>2023-06-28T13:57:41-03:00</dhTentativaEntrega>
+				<nTentativa>1</nTentativa>
+				<tpMotivo>4</tpMotivo>
+				<xJustMotivo>Teste da justificativa do motivo da entrega quando é outro = 4</xJustMotivo>
+				<latGPS>37.774929</latGPS>
+				<longGPS>122.419418</longGPS>
+				<hashTentativaEntrega>RX2tvfSSZWhNsjSwmWQOzZM71hI=</hashTentativaEntrega>
+				<dhHashTentativaEntrega>2023-06-28T13:57:41-03:00</dhHashTentativaEntrega>
+			</detEvento>
+		</infEvento>
+	</evento>
+</envEvento>
