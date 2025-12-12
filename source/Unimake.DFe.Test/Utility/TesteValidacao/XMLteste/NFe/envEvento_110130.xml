@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<envEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<idLote>000000000000001</idLote>
+	<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID1101304119080611747300015055001000057913194346389001">
+			<cOrgao>91</cOrgao>
+			<tpAmb>2</tpAmb>
+			<CNPJ>06117473000150</CNPJ>
+			<chNFe>41190806117473000150550010000579131943463890</chNFe>
+			<dhEvento>2021-07-10T11:32:30-03:00</dhEvento>
+			<tpEvento>110130</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<verEvento>1.00</verEvento>
+			<detEvento versao="1.00">
+				<descEvento>Comprovante de Entrega da NF-e</descEvento>
+				<cOrgaoAutor>41</cOrgaoAutor>
+				<tpAutor>1</tpAutor>
+				<verAplic>uninfe teste 1.0</verAplic>
+				<dhEntrega>2021-07-10T11:32:30-03:00</dhEntrega>
+				<nDoc>00000000000</nDoc>
+				<xNome>Jose silva joao</xNome>
+				<latGPS>53.339688</latGPS>
+				<longGPS>-6.236688</longGPS>
+				<hashComprovante>WmqAoq8CEZayyjF7GEpc+3yf9EY=</hashComprovante>
+				<dhHashComprovante>2021-07-10T11:32:30-03:00</dhHashComprovante>
+			</detEvento>
+		</infEvento>
+	</evento>
+</envEvento>

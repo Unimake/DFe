@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<eventoCTe xmlns="http://www.portalfiscal.inf.br/cte" versao="4.00">
+	<infEvento Id="ID11018041131080568835000181570040000001081211931324001">
+		<cOrgao>41</cOrgao>
+		<tpAmb>2</tpAmb>
+		<CNPJ>80568835000181</CNPJ>
+		<chCTe>41131080568835000181570040000001081211931324</chCTe>
+		<dhEvento>2019-08-14T09:15:00-02:00</dhEvento>
+		<tpEvento>110180</tpEvento>
+		<nSeqEvento>1</nSeqEvento>
+		<detEvento versaoEvento="4.00">
+			<evCECTe>
+				<descEvento>Comprovante de Entrega do CT-e</descEvento>
+				<nProt>141190000039741</nProt>
+				<dhEntrega>2019-08-14T09:15:00-02:00</dhEntrega>
+				<nDoc>91886127085</nDoc>
+				<xNome>Teste</xNome>
+				<latitude>00</latitude>
+				<longitude>000</longitude>
+				<hashEntrega>WmqAoq8CEZayyjF7GEpc+3yf9EY=</hashEntrega>
+				<dhHashEntrega>2019-08-14T09:15:00-02:00</dhHashEntrega>
+				<infEntrega>
+					<chNFe>41190880568835000181570010000000321012050691</chNFe>
+				</infEntrega>
+				<infEntrega>
+					<chNFe>41190880568835000181570010000000321012050691</chNFe>
+				</infEntrega>
+			</evCECTe>
+		</detEvento>
+	</infEvento>
+</eventoCTe>

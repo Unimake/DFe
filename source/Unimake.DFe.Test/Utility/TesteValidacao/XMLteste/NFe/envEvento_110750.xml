@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<envEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<idLote>000000000000001</idLote>
+	<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID1107502119080611747300015055001000057913194346389001">
+			<cOrgao>21</cOrgao>
+			<tpAmb>1</tpAmb>
+			<CNPJ>06117473000150</CNPJ>
+			<chNFe>21190806117473000150550010000579131943463890</chNFe>
+			<dhEvento>2024-08-30T11:43:08-03:00</dhEvento>
+			<tpEvento>110750</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<verEvento>1.00</verEvento>
+			<detEvento versao="1.00">
+				<descEvento>ECONF</descEvento>
+				<verAplic>uninfeteste1.0</verAplic>
+				<detPag>
+					<indPag>0</indPag>
+					<tPag>03</tPag>
+					<vPag>11.11</vPag>
+					<dPag>2024-08-30</dPag>
+					<CNPJPag>11111111111111</CNPJPag>
+					<UFPag>PR</UFPag>
+					<CNPJIF>22222222222222</CNPJIF>
+					<tBand>01</tBand>
+					<cAut>000000000000000</cAut>
+					<CNPJReceb>33333333333333</CNPJReceb>
+					<UFReceb>MG</UFReceb>
+				</detPag>
+				<detPag>
+					<indPag>0</indPag>
+					<tPag>03</tPag>
+					<vPag>22.22</vPag>
+					<dPag>2024-08-30</dPag>
+					<CNPJPag>11111111111111</CNPJPag>
+					<UFPag>PR</UFPag>
+					<CNPJIF>22222222222222</CNPJIF>
+					<tBand>01</tBand>
+					<cAut>000000000000000</cAut>
+					<CNPJReceb>33333333333333</CNPJReceb>
+					<UFReceb>MG</UFReceb>
+				</detPag>
+			</detEvento>
+		</infEvento>
+	</evento>
+</envEvento>

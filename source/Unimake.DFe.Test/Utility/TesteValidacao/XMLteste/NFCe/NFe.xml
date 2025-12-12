@@ -1,0 +1,145 @@
+﻿<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+	<infNFe versao="4.00" Id="NFe41170706117473000150650010000463199912756546">
+		<ide>
+			<cUF>41</cUF>
+			<cNF>91275654</cNF>
+			<natOp>VENDA PRODUC.DO ESTABELEC</natOp>
+			<mod>65</mod>
+			<serie>1</serie>
+			<nNF>46319</nNF>
+			<dhEmi>2017-07-12T09:44:07-03:00</dhEmi>
+			<tpNF>1</tpNF>
+			<idDest>2</idDest>
+			<cMunFG>4118402</cMunFG>
+			<tpImp>4</tpImp>
+			<tpEmis>9</tpEmis>
+			<cDV>6</cDV>
+			<tpAmb>2</tpAmb>
+			<finNFe>1</finNFe>
+			<indFinal>0</indFinal>
+			<indPres>1</indPres>
+			<procEmi>0</procEmi>
+			<verProc>UNICO V8.0</verProc>
+		</ide>
+		<emit>
+			<CNPJ>06117473000150</CNPJ>
+			<xNome>UNIMAKE SOLUCOES CORPORATIVAS LTDA</xNome>
+			<xFant>UNIMAKE - PARANAVAI</xFant>
+			<enderEmit>
+				<xLgr>RUA ANTONIO FELIPE</xLgr>
+				<nro>01500</nro>
+				<xBairro>CENTRO</xBairro>
+				<cMun>4118402</cMun>
+				<xMun>PARANAVAI</xMun>
+				<UF>PR</UF>
+				<CEP>87704030</CEP>
+				<cPais>1058</cPais>
+				<xPais>BRASIL</xPais>
+				<fone>04431414900</fone>
+			</enderEmit>
+			<IE>9032000301</IE>
+			<IM>14018</IM>
+			<CNAE>6202300</CNAE>
+			<CRT>1</CRT>
+		</emit>
+		<dest>
+			<CNPJ>11106441000199</CNPJ>
+			<xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+			<enderDest>
+				<xLgr>RUA ACAIPE</xLgr>
+				<nro>50</nro>
+				<xBairro>BURGO PAULISTA</xBairro>
+				<cMun>3550308</cMun>
+				<xMun>SAO PAULO</xMun>
+				<UF>SP</UF>
+				<CEP>03682040</CEP>
+				<cPais>1058</cPais>
+				<xPais>BRASIL</xPais>
+				<fone>01120461080</fone>
+			</enderDest>
+			<indIEDest>1</indIEDest>
+			<IE>146939365114</IE>
+		</dest>
+		<det nItem="1">
+			<prod>
+				<cProd>01041</cProd>
+				<cEAN/>
+				<xProd>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+				<NCM>84714900</NCM>
+				<CFOP>6101</CFOP>
+				<uCom>LU</uCom>
+				<qCom>1</qCom>
+				<vUnCom>94.9000000000</vUnCom>
+				<vProd>94.90</vProd>
+				<cEANTrib/>
+				<uTrib>LU</uTrib>
+				<qTrib>1</qTrib>
+				<vUnTrib>94.9000000000</vUnTrib>
+				<indTot>1</indTot>
+				<xPed>230890</xPed>
+				<nItemPed>1</nItemPed>
+			</prod>
+			<imposto>
+				<vTotTrib>18.21</vTotTrib>
+				<ICMS>
+					<ICMSSN102>
+						<orig>0</orig>
+						<CSOSN>102</CSOSN>
+					</ICMSSN102>
+				</ICMS>
+				<PIS>
+					<PISOutr>
+						<CST>99</CST>
+						<vBC>0.00</vBC>
+						<pPIS>0.0000</pPIS>
+						<vPIS>0.00</vPIS>
+					</PISOutr>
+				</PIS>
+				<COFINS>
+					<COFINSOutr>
+						<CST>99</CST>
+						<vBC>0.00</vBC>
+						<pCOFINS>0.0000</pCOFINS>
+						<vCOFINS>0.00</vCOFINS>
+					</COFINSOutr>
+				</COFINS>
+			</imposto>
+		</det>
+		<total>
+			<ICMSTot>
+				<vBC>0.00</vBC>
+				<vICMS>0.00</vICMS>
+				<vICMSDeson>0.00</vICMSDeson>
+				<vFCP>0.00</vFCP>
+				<vBCST>0.00</vBCST>
+				<vST>0.00</vST>
+				<vFCPST>0.00</vFCPST>
+				<vFCPSTRet>0.00</vFCPSTRet>
+				<vProd>94.90</vProd>
+				<vFrete>0.00</vFrete>
+				<vSeg>0.00</vSeg>
+				<vDesc>0.00</vDesc>
+				<vII>0.00</vII>
+				<vIPI>0.00</vIPI>
+				<vIPIDevol>0.00</vIPIDevol>
+				<vPIS>0.00</vPIS>
+				<vCOFINS>0.00</vCOFINS>
+				<vOutro>0.00</vOutro>
+				<vNF>94.90</vNF>
+				<vTotTrib>18.21</vTotTrib>
+			</ICMSTot>
+		</total>
+		<transp>
+			<modFrete>0</modFrete>
+		</transp>
+		<pag>
+			<detPag>
+				<tPag>01</tPag>
+				<vPag>94.90</vPag>
+			</detPag>
+		</pag>
+		<infAdic>
+			<infCpl>;CONTROLE: 0000178654;PEDIDO(S) ATENDIDO(S): 230890;Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008;Voce pagou aproximadamente: R$ 11,57 trib. federais / R$ 6,64 trib. estaduais / R$ 0,00 trib. municipais. Fonte: IBPT 16.2.A Ar5Fr7;</infCpl>
+		</infAdic>
+	</infNFe>
+</NFe>

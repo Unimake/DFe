@@ -1,0 +1,88 @@
+<retConsSitCTe versao="4.00" xmlns="http://www.portalfiscal.inf.br/cte">
+	<tpAmb>1</tpAmb>
+	<verAplic>SP-CTe-2024-06-17-1</verAplic>
+	<cStat>100</cStat>
+	<xMotivo>Autorizado o uso do CT-e.</xMotivo>
+	<cUF>35</cUF>
+	<protCTe versao="4.00">
+		<infProt>
+			<tpAmb>1</tpAmb>
+			<verAplic>SP-CTe-2024-06-17-1</verAplic>
+			<chCTe>99999999999999999999999999999999999999999999</chCTe>
+			<dhRecbto>2024-09-03T19:07:11-03:00</dhRecbto>
+			<nProt>999999999999999</nProt>
+			<digVal>eLRoNrqxvkJT/MO9BNtsz7u/qB4=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso do CT-e.</xMotivo>
+		</infProt>
+	</protCTe>
+	<procEventoCTe versao="4.00">
+		<eventoCTe versao="4.00">
+			<infEvento Id="ID11011399999999999999999999999999999999999999999999001">
+				<cOrgao>35</cOrgao>
+				<tpAmb>2</tpAmb>
+				<CNPJ>11111111111111</CNPJ>
+				<chCTe>99999999999999999999999999999999999999999999</chCTe>
+				<dhEvento>2024-09-26T14:46:33-03:00</dhEvento>
+				<tpEvento>110113</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<detEvento versaoEvento="4.00">
+					<evEPECCTe>
+						<descEvento>EPEC</descEvento>
+						<xJust>Indisponibilidade dos sistemas normais</xJust>
+						<vICMS>1.01</vICMS>
+						<vICMSST>2.02</vICMSST>
+						<vTPrest>10.01</vTPrest>
+						<vCarga>10.02</vCarga>
+						<toma4>
+							<toma>0</toma>
+							<UF>PR</UF>
+							<CNPJ>99999999999999</CNPJ>
+							<IE>ISENTO</IE>
+						</toma4>
+						<modal>01</modal>
+						<UFIni>PR</UFIni>
+						<UFFim>SP</UFFim>
+						<tpCTe>0</tpCTe>
+						<dhEmi>2024-09-26T14:45:40-03:00</dhEmi>
+					</evEPECCTe>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID11011399999999999999999999999999999999999999999999001">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>ihUI4feOn1hPlVLzwwv8raqRHyM=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>WwsWcuGYAblR1z/1+RixmJdzth2b9n/HrTPT+w2vA0qiB3R2r6yZAC077r3JiG648ygm9NootzcORz/2/FW37LaEggURyZaZHSMMnJrqiso14CIFCxtLIAc1Pfpc12SsGsM0X0GbnJ9PcMOa8TjOSQfBg9JEo1SeOmQUuIGOdnai0km/yL+04nPdl7Yfr88MbJCWaRaZX7vxiehYQIACUwh4sqS5dGnoW9A5LIkvo3+3M8EFIHhMhRLwDZtZLEE/z8lqGuOGXME4nj49NhhyoWZeMuNRiZaOwzZX6jRiTUEBv1IMshhvC8VjDQjEIGHkm5Gw0UGuvX/NkcpDvTNLsg==</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>MIIHhzCCBW+gAwIBAgIIaZVGU80qEpUwDQYJKoZIhvcNAQELBQAwczELMAkGA1UEBhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxNjA0BgNVBAsTLVNlY3JldGFyaWEgZGEgUmVjZWl0YSBGZWRlcmFsIGRvIEJyYXNpbCAtIFJGQjEXMBUGA1UEAxMOQUMgQ05ETCBSRkIgdjMwHhcNMjMxMDEzMTQzMjA0WhcNMjQxMDEyMTQzMjA0WjCCAQgxCzAJBgNVBAYTAkJSMRMwEQYDVQQKEwpJQ1AtQnJhc2lsMQswCQYDVQQIEwJQUjEWMBQGA1UEBxMNUVVBVFJPIFBPTlRFUzEXMBUGA1UECxMOMzQxNzM2ODIwMDAzMTgxNjA0BgNVBAsTLVNlY3JldGFyaWEgZGEgUmVjZWl0YSBGZWRlcmFsIGRvIEJyYXNpbCAtIFJGQjEWMBQGA1UECxMNUkZCIGUtQ05QSiBBMTETMBEGA1UECxMKcHJlc2VuY2lhbDFBMD8GA1UEAxM4RkFSTyBUUkFOU1BPUlRFIFJPRE9WSUFSSU8gREUgQ0FSR0FTIExUREE6MDg3NTU1MjQwMDAxMDIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDKKzOUSOLMFWoTFPRXMmGOCJlh1ofY6cLvBxSH7+BL+OF7hYv6+Vc8IKScHwtl5pR3ppa6epS80Kk0sHxJUhaw2aP+cS6F8ZsgWhaGgqMdKqljP8y/UtBcktF4RfA2qWUBDMBym6WPg936OeLuKNtDFttoXcNwFwGRSqRkfwqi2xgZRL6lZ8ASmbTukapHJPJt/AKWKKvtwxzHljprfWsoooowW4PITTNY+EsGWAOK3EB10j6XJ59CFRHfH3gSzVj8v8EddQ5d3TCh/CMqoqzz9fVv7KXUozKg5SkkT+iqj9awKhnUiaK9W/72OeXT5Pt2IRvBubX9xErrlcYAzGpJAgMBAAGjggKGMIICgjAfBgNVHSMEGDAWgBRrHzQVQRrqmx7KItLO3e+76TLKiTAOBgNVHQ8BAf8EBAMCBeAwZwYDVR0gBGAwXjBcBgZgTAECATQwUjBQBggrBgEFBQcCARZEaHR0cDovL3JlcG9zaXRvcmlvLmFjc3BjYnJhc2lsLm9yZy5ici9hYy1jbmRscmZiL2FjLWNuZGwtcmZiLWRwYy5wZGYwgaYGA1UdHwSBnjCBmzBLoEmgR4ZFaHR0cDovL3JlcG9zaXRvcmlvLmFjc3BjYnJhc2lsLm9yZy5ici9hYy1jbmRscmZiL2xjci1hYy1jbmRscmZidjUuY3JsMEygSqBIhkZodHRwOi8vcmVwb3NpdG9yaW8yLmFjc3BjYnJhc2lsLm9yZy5ici9hYy1jbmRscmZiL2xjci1hYy1jbmRscmZidjUuY3JsMF0GCCsGAQUFBwEBBFEwTzBNBggrBgEFBQcwAoZBaHR0cDovL3JlcG9zaXRvcmlvLmFjc3BjYnJhc2lsLm9yZy5ici9hYy1jbmRscmZiL2FjLWNuZGxyZmJ2NS5wN2IwgbMGA1UdEQSBqzCBqIEdRVNDUklUT1JJTzRQT05URVNASE9UTUFJTC5DT02gGQYFYEwBAwKgEBMOUk9CRVJUTyBNVUxMRVKgGQYFYEwBAwOgEBMOMDg3NTU1MjQwMDAxMDKgOAYFYEwBAwSgLxMtMjcwNjE5NjY1NTcyNTY4Njk0OTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwoBcGBWBMAQMHoA4TDDAwMDAwMDAwMDAwMDAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwCQYDVR0TBAIwADANBgkqhkiG9w0BAQsFAAOCAgEAW1cZZc2TiwWPswXYsKLo218C3vQ5/rO761g+FM/QRtUiHA4p2Wg6alOFGaM8xdu/JbW3ZIVEbUYE7GV3tQi1/8ugohIlyDu3mnJ/JYwVixduCEbNxustTPyuSq7PhJCRcnseJq158FtCoTdVw5ukTQVhvWmQ8LiUKcfFCCie0CEKUgVJtRSLhd+j9Inwo/hcPZNYPRJk56F+EJip8RiHT0RGgRmM6FBK3lVUhupLyX7FI4cMVosUdV/cPJa/89nG3TffSAltfxUXnjWHrpuLCucIe8Q2BiTs2xwJGdcDkk+7bHzVN3TfS0pPvNpgW7pFSWwttsA+rY63ESwY0wZF1ivDUjXSJzliHaqmP67I+Gtb0eJAB6fetD9J4CxwqgvTtVbIjl601KYMAgdY0Tfl278NpTUbvW4bLyLZRltKznYXi/qi7SOAHPSxKVO5bL7t6FScoE80mRTh6iXexhUhi5+K13If0sXdsyUvlYRa+wMl6cMLcB2BUr7edFTDVRhOcfvoK6QADyf2WbiG/R+D8z2wsbsQHzJzs4b52vsn2j9MM9Mhk84kNKmdeLSSJtCeVwsyhKO8iG7swE1JZ01r1dhg+a72MbWQ9+lATCDT8Eloj90aOixPr3RjHXWQqoIAvaNxDhJLJUwNutcovPGoJOBU6fzdj9dTNwpVuQUX6RU=</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</eventoCTe>
+		<retEventoCTe versao="4.00">
+			<infEvento>
+				<tpAmb>2</tpAmb>
+				<verAplic>SP-CTe-2024-09-16-1</verAplic>
+				<cOrgao>41</cOrgao>
+				<cStat>136</cStat>
+				<xMotivo>Evento registrado, mas não vinculado a CT-e.</xMotivo>
+				<chCTe>99999999999999999999999999999999999999999999</chCTe>
+				<tpEvento>110113</tpEvento>
+				<xEvento>EPEC</xEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<dhRegEvento>2024-09-26T14:46:31-03:00</dhRegEvento>
+				<nProt>111111111111111</nProt>
+			</infEvento>
+		</retEventoCTe>
+	</procEventoCTe>
+</retConsSitCTe>

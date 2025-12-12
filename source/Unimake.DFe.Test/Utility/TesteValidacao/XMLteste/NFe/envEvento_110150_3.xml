@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<envEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<idLote>000000000000001</idLote>
+	<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID1101504199999999999999999999999999999999999999999901">
+			<cOrgao>91</cOrgao>
+			<tpAmb>1</tpAmb>
+			<CNPJ>99999999999999</CNPJ>
+			<chNFe>41999999999999999999999999999999999999999999</chNFe>
+			<dhEvento>2022-05-16T10:25:38-03:00</dhEvento>
+			<tpEvento>110150</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<verEvento>1.00</verEvento>
+			<detEvento versao="1.00">
+				<descEvento>Ator interessado na NF-e</descEvento>
+				<cOrgaoAutor>41</cOrgaoAutor>
+				<tpAutor>1</tpAutor>
+				<verAplic>uninfeteste1.0</verAplic>
+				<autXML>
+					<CNPJ>00000000000000</CNPJ>
+				</autXML>
+			</detEvento>
+		</infEvento>
+	</evento>
+</envEvento>
