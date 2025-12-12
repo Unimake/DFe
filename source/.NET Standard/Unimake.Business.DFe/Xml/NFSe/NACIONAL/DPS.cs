@@ -758,6 +758,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #region Should Serialize
         public bool ShouldSerializeInscImobFisc() => InscImobFisc > 0;
         public bool ShouldSerializeCObra() => CObra > 0;
+        public bool ShouldSerializeCCIB() => CCIB > 0;
 
         public void ValidarEscolhaCObraCCIBEnd()
         {
