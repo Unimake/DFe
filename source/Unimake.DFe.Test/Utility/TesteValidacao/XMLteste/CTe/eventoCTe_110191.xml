@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eventoCTe versao="4.00" xmlns="http://www.portalfiscal.inf.br/cte">
+	<infEvento Id="ID11019141200210859283000185570010000005671227070615001">
+		<cOrgao>41</cOrgao>
+		<tpAmb>2</tpAmb>
+		<CNPJ>10859283000185</CNPJ>
+		<chCTe>41200210859283000185570010000005671227070615</chCTe>
+		<dhEvento>2023-06-28T13:57:41-03:00</dhEvento>
+		<tpEvento>110191</tpEvento>
+		<nSeqEvento>1</nSeqEvento>
+		<detEvento versaoEvento="4.00">
+			<evCancIECTe>
+				<descEvento>Cancelamento do Insucesso de Entrega do CT-e</descEvento>
+				<nProt>141200000007987</nProt>
+				<nProtIE>141200000007987</nProtIE>
+			</evCancIECTe>
+		</detEvento>
+	</infEvento>
+</eventoCTe>

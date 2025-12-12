@@ -10,6 +10,7 @@ using Unimake.Business.Security;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
 using Xunit.Abstractions;
@@ -55,29 +56,32 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
     public class DicionarioServico
     {
 
-        // Esse metodo irá ser chamado pelo UniNFe, onde ele passará o documento XML a ser validado, tag raiz e 
-        // o certificado digital para assinar o XML caso necessário utilizando o mesmo formato que o UniNFe faz para pegar  
+
+        // Esse metodo irá ser chamado pelo UniNFe, onde ele passará o documento XML a ser validado e 
+        // o certificado digital para assinar o XML caso necessário. Será utilizando o mesmo formato que o UniNFe faz para pegar  
         // (CertificadoDigital = Empresas.Configuracoes[emp].X509Certificado)
         // precisa passar também o tipo de DFe para montar o schema corretamente é possivel utilizar o DectectTypeXML para isso dependendo do tipo de servico
 
         [Theory]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", "consStatServ", @"..\..\..\Utility\TesteValidacao\XMLteste\consStatServ.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", "consSitNFe", @"..\..\..\Utility\TesteValidacao\XMLteste\consSitNFe.xml")]                                                                  // C:\Projetos\GitHub\DFe\source\Unimake.DFe.Test\Utility\TesteValidacao\XMLteste\consSitNFe.xml
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", "inutNFe", @"..\..\..\Utility\TesteValidacao\XMLteste\inutNFe.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", "envEvento", @"..\..\..\Utility\TesteValidacao\XMLteste\envEvento_110001.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", "NFe", @"..\..\..\Utility\TesteValidacao\XMLteste\NFe.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", "consCad", @"..\..\..\Utility\TesteValidacao\XMLteste\consCad.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", "distDFeInt", @"..\..\..\Utility\TesteValidacao\XMLteste\distDFeInt_01.xml")]
-        [InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", "distDFeInt", @"..\..\..\Utility\TesteValidacao\XMLteste\distDFeInt_035.xml")]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\distDFeInt.xml")]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\consReciCTe.xml")]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\enviCTe_ModalAereo.xml")]
+        [InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFe\envEvento_211110.xml")]
 
-        public static void CaregarServicoValidar(string caminhoServicoValidacao, string tagRaiz, string caminhoArquivo)
+
+
+
+
+
+
+        public static void CaregarServicoValidar(string caminhoServicoValidacao, string caminhoArquivo)
         {
+
             // Carregar certificado
             var CertificadoCaminho = @"C:\Projetos\Unimake_PV.pfx";
             var CertificadoSenha = "12345678";
             var certificado = new CertificadoDigital().CarregarCertificadoDigitalA1(CertificadoCaminho, CertificadoSenha);
 
-            //Verificar se tem a tag schema especifico para valuidar em vez de utilizar a tagraiz
 
             // Carregar config
             XmlDocument xmlConfig = new();
@@ -91,6 +95,9 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             XmlDocument xml = new(); // passar direto o XmlDocument  quando for chamar o xml do UniNFe
             xml.Load(caminhoArquivo);
 
+            var tagRaiz = xml.DocumentElement.Name; // extraindo a tag raiz
+
+
             var versao = ObterVersao(xml);
             XmlNodeList servicos = xmlConfig.GetElementsByTagName("Servico");
 
@@ -100,30 +107,18 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 string tagRaizServico = servico.Attributes["tagRaiz"]?.Value;
                 string versaoServico = servico.Attributes["versao"]?.Value;
 
-                // Verificar se é NFe para pegar a tag raiz correta
                 if (tagRaiz == "NFe")
                 {
-                    var modelo = ObterModelo(xml);
-                    if (modelo == "55")
-                    {
-                        var xmlEnvolopado = CorrigirTagRaizNFe(xml, versao);
-                        XmlDocument xmlCorrigido = new();
-                        xmlCorrigido.LoadXml(xmlEnvolopado);
+                    xml = MontarEnvio(xml, versao);
+                    tagRaiz = "enviNFe";
 
-                        xml = xmlCorrigido;
-                        tagRaiz = "enviNFe";
-                    }
-                    else
-                    {
-                        throw new Exception("O documento não NFe.");
-                    }
                 }
 
                 if (tagRaizServico != tagRaiz || versaoServico != versao)
                     continue;
 
-                // se não for evento
-                if (tagRaiz != "envEvento")
+                
+                if (!String.IsNullOrWhiteSpace(servico.SelectSingleNode("*[local-name()='SchemaArquivo']")?.InnerText)) // serviço sem schemaEspecífico
                 {
                     var inform = MontarInformacaoGeral(servico);
 
@@ -135,10 +130,8 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                     return;
                 }
 
-                // se for evento
-                XmlNodeList eventos = xml.GetElementsByTagName("evento");
 
-                var eventosProcessados = ObterEvento(servico, eventos);
+                var eventosProcessados = ObterEvento(servico, xml);
 
 
                 foreach (var (tipoCorreto, eventoNode) in eventosProcessados)
@@ -154,9 +147,9 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
                     Console.WriteLine(inform);
                 }
+             }
 
                 return;
-            }
         }
 
 
@@ -224,7 +217,10 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         private static void ValidarSchemaGeral(XmlDocument xml, InformacaoXML info)
         {
 
-            TipoDFe tipoDFe = TipoDFe.NFe;
+            //TipoDFe tipoDFe = TipoDFe.NFe; // TODO: Detectar o tipo de DFe conforme o XML recebido
+
+            TipoDFe tipoDFe = DetectarTipoDFe(xml);
+
             string schema = $"{tipoDFe.ToString()}.{info.SchemaArquivo}";
 
             var validar = new ValidarSchema();
@@ -261,9 +257,11 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         }
 
 
-        private static List<(XmlNode NodetipoCorreto, XmlNode eventoNode)> ObterEvento(XmlNode servico, XmlNodeList eventos)
+        private static List<(XmlNode NodetipoCorreto, XmlNode eventoNode)> ObterEvento(XmlNode servico, XmlDocument  xml)
         {
             var lista = new List<(XmlNode NodetipoCorreto, XmlNode eventoNode)>();
+            XmlNodeList eventos = null;
+
 
             foreach (XmlNode eventoNode in eventos)
             {
@@ -304,19 +302,46 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
 
 
-        private static string ObterModelo(XmlDocument document)
+        //private static string ObterModelo(XmlDocument document)
+        //{
+
+        //    if (document.GetElementsByTagName("mod").Count == 0)
+        //    {
+        //        throw new Exception("Tag obrigatória <mod> não foi localizada no grupo de tag <NFe><infNFe><ide>.");
+        //    }
+
+        //    var modeloDoc = document.GetElementsByTagName("mod")[0].InnerText;
+
+        //    return modeloDoc;
+
+        //}
+
+
+        private static List<string> ObterListaTagId()
         {
-            if (document.GetElementsByTagName("mod").Count == 0)
+            List<string> tagsId = new List<string>();
+
+            // so para poder utilizar o config também  --> depois ver como fazer isso melhor
+            var caminhoConfig = @"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml";
+            XmlDocument xmlDocument = new();
+            xmlDocument.Load(caminhoConfig);
+
+
+            XmlNodeList servicos = xmlDocument.GetElementsByTagName("Servico");
+
+            foreach (XmlNode servico in servicos)
             {
-                throw new Exception("Tag obrigatória <mod> não foi localizada no grupo de tag <NFe><infNFe><ide>.");
+                var tagAtributoID = servico.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText;
+                if (!String.IsNullOrEmpty(tagAtributoID) && !tagsId.Contains(tagAtributoID))
+                {
+                    tagsId.Add(tagAtributoID);
+
+                }
             }
 
-            var modeloDoc = document.GetElementsByTagName("mod")[0].InnerText;
-
-            return modeloDoc;
+            return tagsId;
 
         }
-
 
 
 
@@ -329,7 +354,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 return versao;
             }
 
-            var tags = new[] { "infNFe", "infMDFe", "infCTe", "infEvento" };
+            var tags = ObterListaTagId();
 
             foreach (var tag in tags)
             {
@@ -352,7 +377,9 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
         }
 
-        private static string CorrigirTagRaizNFe(XmlDocument xml, string versao)
+
+
+        private static XmlDocument MontarEnvio(XmlDocument xml, string versao)
         {
             var nfeNode = xml.GetElementsByTagName("NFe")[0];
 
@@ -360,10 +387,113 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                          + "<indSinc>0</indSinc>" + nfeNode.OuterXml +
                          "</enviNFe>";
 
-            return xmlNFe;
+            var doc = new XmlDocument();
+            doc.LoadXml(xmlNFe);
+
+            return doc;
 
         }
-    }
 
+
+
+        private static TipoDFe DetectarTipoDFe(XmlDocument xml)
+        {
+            var tipoDFe = TipoDFe.Desconhecido;
+
+            switch (xml.DocumentElement.Name)
+            {
+                #region NFe
+
+                case "consStatServ":
+                case "consSitNFe":
+                case "consReciNFe":
+                case "ConsCad":
+                case "envEvento": 
+                case "inutNFe":
+                case "NFe":
+                case "enviNFe":
+                case "nfeProc":
+                    tipoDFe = TipoDFe.NFe;
+                    break;
+
+                case "distDFeInt":
+                    var ns = xml.GetElementsByTagName("distDFeInt")[0].NamespaceURI.ToLower();
+
+                    if (ns.Contains("/nfe"))
+                    {
+                        tipoDFe = TipoDFe.NFe;
+                    }
+                    else if (ns.Contains("/cte"))
+                    {
+                        tipoDFe = TipoDFe.CTe;
+                    }
+                    break;
+
+                #endregion
+
+                #region CTe
+
+                case "consStatServCte":
+                case "consSitCTe":
+                case "consReciCTe":
+                case "eventoCTe":
+                case "CTe":
+                case "enviCTe":
+                case "CTeOS":   // verificar como fazer a validação depois de documento com a tag raiz.
+                case "cteProc": // verificar como fazer a validação depois de documento com a tag raiz.
+                case "CTeSimp":
+                    tipoDFe = TipoDFe.CTe;
+                    break;
+
+                #endregion
+
+                #region MDFe
+
+                case "consStatServMDFe":
+                case "consSitMDFe":
+                case "consReciMDFe":
+                case "eventoMDFe":
+                case "MDFe":
+                case "enviMDFe":
+                case "consMDFeNaoEnc":
+                case "mdfeProc":
+                    tipoDFe = TipoDFe.MDFe;
+                    break;
+
+                #endregion
+
+                #region NF3e
+
+                case "consStatServNF3e":
+                case "consSitNF3e":
+                case "consReciNF3e":
+                case "eventoNF3e":
+                case "NF3e":
+                    tipoDFe = TipoDFe.NF3e;
+                    break;
+
+                #endregion
+
+                #region NFCom
+
+                case "consStatServNFCom":
+                case "consSitNFCom":
+                case "eventoNFCom":
+                case "NFCom":
+                    tipoDFe = TipoDFe.NFCom;
+                    break;
+
+                #endregion
+
+                default:
+                    tipoDFe = TipoDFe.Desconhecido;
+                    break;
+            }
+
+            return tipoDFe;
+        }
+
+
+    }
 }
 

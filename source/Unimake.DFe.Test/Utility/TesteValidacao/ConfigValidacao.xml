@@ -1,4 +1,5 @@
 ﻿<ServicosValidacao>
+	<!--NFe -->
     <Servico tagRaiz="consStatServ" versao="4.00" padraoNFSe ="" versaoPadrao ="">
 		<SchemaArquivo>consStatServ_v4.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
@@ -19,8 +20,8 @@
 		<TagExtraAtributoID></TagExtraAtributoID>
 		<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 	</Servico>
-	<Servico tagRaiz ="consReciNFe" versao="4.00" pradraoNFSe ="" versaoPadrao ="">
-		<SchamaArquivo>consReciNFe_v4.00.xsd</SchamaArquivo>
+	<Servico tagRaiz ="consReciNFe" versao="4.00" padraoNFSe ="" versaoPadrao ="">
+		<SchemaArquivo>consReciNFe_v4.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
 		<TagLoteAssinatura></TagLoteAssinatura>
@@ -39,7 +40,7 @@
 		<TagExtraAtributoID></TagExtraAtributoID>
 		<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 	</Servico>
-	<Servico tagRaiz ="consCad" versao ="2.00" padraoNFSe="" versaoPadrao ="">
+	<Servico tagRaiz ="ConsCad" versao ="2.00" padraoNFSe="" versaoPadrao ="">
 		<SchemaArquivo>consCad_v2.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
@@ -270,5 +271,345 @@
 		<TagExtraAssinatura></TagExtraAssinatura>
 		<TagExtraAtributoID></TagExtraAtributoID>
 		<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+	</Servico>
+	
+	<!--CTe -->
+
+	<Servico tagRaiz ="distDFeInt" versao ="1.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo>distDFeInt_v1.00.xsd</SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+	</Servico>
+	<Servico tagRaiz ="consReciCTe" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo>consReciCTe_v3.00.xsd</SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+	</Servico>
+	<Servico tagRaiz ="eventoCTe" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo></SchemaArquivo>
+		<TagAssinatura>eventoCTe</TagAssinatura>
+		<TagAtributoID>infEvento</TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+		<SchemasEspecificos>
+			<Tipo>
+				<ID>110110</ID>
+				<SchemaArquivo>eventoCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evCCeCTe_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110111</ID>
+				<SchemaArquivo>eventoCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evCancCTe_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110113</ID>
+				<SchemaArquivo>eventoCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evEPECCTe_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110180</ID>
+				<SchemaArquivo>eventoCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evCECTe_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110181</ID>
+				<SchemaArquivo>eventoCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evCancCECTe_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110190</ID>
+				<SchemaArquivo>eventoCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evIECTe_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>610110</ID>
+				<SchemaArquivo>eventoCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evPrestDesacordo_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>610111</ID>
+				<SchemaArquivo>eventoCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evCancPrestDesacordo_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+		</SchemasEspecificos>
+	</Servico>
+	<Servico tagRaiz ="enviCTe" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo></SchemaArquivo>
+		<TagAssinatura>CTe</TagAssinatura>
+		<TagAtributoID>infCte</TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+		<SchemasEspecificos>
+			<Tipo>
+				<ID>1</ID>
+				<SchemaArquivo>enviCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalRodoviario_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>2</ID>
+				<SchemaArquivo>enviCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalAereo_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>3</ID>
+				<SchemaArquivo>enviCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalAquaviario_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>4</ID>
+				<SchemaArquivo>enviCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalFerroviario_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>5</ID>
+				<SchemaArquivo>enviCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalDutoviario_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>6</ID>
+				<SchemaArquivo>enviCTe_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteMultiModal_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+		</SchemasEspecificos>
+	</Servico>
+	<Servico tagRaiz ="consStatServCTe" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo>consStatServCTe_v3.00.xsd</SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+	</Servico>
+	<Servico tagRaiz ="consSitCTe" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo>consSitCTe_v3.00.xsd</SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+	</Servico>
+	<Servico tagRaiz ="CTe" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo></SchemaArquivo>
+		<TagAssinatura>CTe</TagAssinatura>
+		<TagAtributoID>infCte</TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+		<SchemasEspecificos>
+		<Tipo>
+			<ID>1</ID>
+			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+			<SchemaArquivoEspecifico>cteModalRodoviario_v3.00.xsd</SchemaArquivoEspecifico>
+		</Tipo>
+		<Tipo>
+			<ID>2</ID>
+			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+			<SchemaArquivoEspecifico>cteModalAereo_v3.00.xsd</SchemaArquivoEspecifico>
+		</Tipo>
+		<Tipo>
+			<ID>3</ID>
+			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+			<SchemaArquivoEspecifico>cteModalAquaviario_v3.00.xsd</SchemaArquivoEspecifico>
+		</Tipo>
+		<Tipo>
+			<ID>4</ID>
+			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+			<SchemaArquivoEspecifico>cteModalFerroviario_v3.00.xsd</SchemaArquivoEspecifico>
+		</Tipo>
+		<Tipo>
+			<ID>5</ID>
+			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+			<SchemaArquivoEspecifico>cteModalDutoviario_v3.00.xsd</SchemaArquivoEspecifico>
+		</Tipo>
+		<Tipo>
+			<ID>6</ID>
+			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+			<SchemaArquivoEspecifico>cteMultiModal_v3.00.xsd</SchemaArquivoEspecifico>
+		</Tipo>
+	</SchemasEspecificos>
+	</Servico>
+	<Servico tagRaiz ="consStatServCTe" versao ="4.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo>consStatServCTe_v4.00.xsd</SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+	</Servico>
+	<Servico tagRaiz ="consSitCTe" versao ="4.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo>consSitCTe_v4.00.xsd</SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+	</Servico>
+	<Servico tagRaiz ="eventoCTe" versao ="4.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo></SchemaArquivo>
+		<TagAssinatura>eventoCTe</TagAssinatura>
+		<TagAtributoID>infEvento</TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+		<SchemasEspecificos>
+			<Tipo>
+				<ID>110110</ID>
+				<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evCCeCTe_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110111</ID>
+				<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evCancCTe_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110113</ID>
+				<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evEPECCTe_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110180</ID>
+				<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evCECTe_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110181</ID>
+				<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evCancCECTe_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110190</ID>
+				<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evIECTe_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>110191</ID>
+				<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evCancIECTe_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>610110</ID>
+				<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evPrestDesacordo_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>610111</ID>
+				<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>evCancPrestDesacordo_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+		</SchemasEspecificos>
+	</Servico>
+	<Servico tagRaiz ="CTe" versao ="4.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo></SchemaArquivo>
+		<TagAssinatura>CTe</TagAssinatura>
+		<TagAtributoID>infCte</TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+		<SchemasEspecificos>
+			<Tipo>
+				<ID>1</ID>
+				<SchemaArquivo>cte_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalRodoviario_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>2</ID>
+				<SchemaArquivo>cte_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalAereo_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>3</ID>
+				<SchemaArquivo>cte_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalAquaviario_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>4</ID>
+				<SchemaArquivo>cte_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalFerroviario_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>5</ID>
+				<SchemaArquivo>cte_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalDutoviario_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>6</ID>
+				<SchemaArquivo>cte_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteMultiModal_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+		</SchemasEspecificos>
+	</Servico>
+	<Servico tagRaiz ="CTeSimp" versao ="4.00" padraoNFSe="" versaoPadrao ="">
+		<SchemaArquivo></SchemaArquivo>
+		<TagAssinatura>CTeSimp</TagAssinatura>
+		<TagAtributoID>infCte</TagAtributoID>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+		<SchemasEspecificos>
+			<Tipo>
+				<ID>1</ID>
+				<SchemaArquivo>cteSimp_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalRodoviario_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>2</ID>
+				<SchemaArquivo>cteSimp_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalAereo_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>3</ID>
+				<SchemaArquivo>cteSimp_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalAquaviario_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>4</ID>
+				<SchemaArquivo>cteSimp_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalFerroviario_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>5</ID>
+				<SchemaArquivo>cteSimp_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalDutoviario_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>6</ID>
+				<SchemaArquivo>cteSimp_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteMultiModal_v4.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+		</SchemasEspecificos>
 	</Servico>
 </ServicosValidacao>

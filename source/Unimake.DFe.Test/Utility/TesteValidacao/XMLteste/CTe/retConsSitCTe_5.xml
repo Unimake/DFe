@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsSitCTe versao="4.00" xmlns="http://www.portalfiscal.inf.br/cte">
+	<tpAmb>1</tpAmb>
+	<verAplic>W-6.3.15</verAplic>
+	<cStat>100</cStat>
+	<xMotivo>Autorizado o uso do CT-e</xMotivo>
+	<cUF>31</cUF>
+	<protCTe versao="4.00">
+		<infProt Id="ID111111111111111">
+			<tpAmb>1</tpAmb>
+			<verAplic>W-6.3.12</verAplic>
+			<chCTe>31111111111111111111111111111111111111111116</chCTe>
+			<dhRecbto>2025-01-15T10:59:53-03:00</dhRecbto>
+			<nProt>111111111111111</nProt>
+			<digVal>111111111111111111111111111=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso do CT-e</xMotivo>
+		</infProt>
+	</protCTe>
+	<procEventoCTe versao="4.00">
+		<eventoCTe versao="4.00">
+			<infEvento Id="ID31061031111111111111111111111111111111111111111116001">
+				<cOrgao>31</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>11111111111111</CNPJ>
+				<chCTe>31111111111111111111111111111111111111111116</chCTe>
+				<dhEvento>2025-01-15T11:02:33-03:00</dhEvento>
+				<tpEvento>310610</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<detEvento versaoEvento="4.00">
+					<evCTeAutorizadoMDFe>
+						<descEvento>MDF-e Autorizado</descEvento>
+						<MDFe>
+							<chMDFe>31111111111111111111111111111111111111111119</chMDFe>
+							<modal>01</modal>
+							<dhEmi>2025-01-15T11:03:00-03:00</dhEmi>
+							<nProt>111111111111111</nProt>
+							<dhRecbto>2025-01-15T11:02:33-03:00</dhRecbto>
+						</MDFe>
+						<emit>
+							<CNPJ>11111111111111</CNPJ>
+							<IE>11111111111</IE>
+							<xNome>NOME NÃO LOCALIZADO</xNome>
+						</emit>
+					</evCTeAutorizadoMDFe>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID31061031111111111111111111111111111111111111111116001">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>111111111111111111111111111=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>askdlaksjdalkjdlakjdlkajdas</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>asdkjasldkjasldjaslkdjaslkjdas</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</eventoCTe>
+		<retEventoCTe versao="4.00">
+			<infEvento Id="ID111111111111111">
+				<tpAmb>1</tpAmb>
+				<verAplic>RS20240708153944</verAplic>
+				<cOrgao>31</cOrgao>
+				<cStat>136</cStat>
+				<xMotivo>Evento registrado, mas não vinculado a CT-e</xMotivo>
+				<chCTe>31111111111111111111111111111111111111111116</chCTe>
+				<tpEvento>310610</tpEvento>
+				<xEvento>MDF-e Autorizado</xEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<dhRegEvento>2025-01-15T11:02:33-03:00</dhRegEvento>
+				<nProt>111111111111111</nProt>
+			</infEvento>
+		</retEventoCTe>
+	</procEventoCTe>
+	<procEventoCTe versao="4.00">
+		<eventoCTe versao="4.00">
+			<infEvento Id="ID24013031111111111111111111111111111111111111111116001">
+				<cOrgao>31</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>11111111111111</CNPJ>
+				<chCTe>31111111111111111111111111111111111111111116</chCTe>
+				<dhEvento>2025-01-17T08:54:02-03:00</dhEvento>
+				<tpEvento>240130</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<detEvento versaoEvento="4.00">
+					<evCTeComplementar>
+						<descEvento>Autorizado CT-e Complementar</descEvento>
+						<chCTeCompl>31111111111111111111111111111111111111111118</chCTeCompl>
+						<dhRecbto/>
+						<nProt>111111111111111</nProt>
+					</evCTeComplementar>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID24013031111111111111111111111111111111111111111116001">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>111111111111111111111111111=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>askdlaksjdalkjdlakjdlkajdas</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>asdkjasldkjasldjaslkdjaslkjdas</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</eventoCTe>
+		<retEventoCTe versao="4.00">
+			<infEvento>
+				<tpAmb>1</tpAmb>
+				<verAplic>W-6.3.12</verAplic>
+				<cOrgao>31</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado a CTe</xMotivo>
+				<chCTe>31111111111111111111111111111111111111111116</chCTe>
+				<tpEvento>240130</tpEvento>
+				<xEvento>Autorizado CT-e Complementar</xEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<dhRegEvento>2025-01-17T08:54:02-03:00</dhRegEvento>
+				<nProt>111111111111111</nProt>
+			</infEvento>
+		</retEventoCTe>
+	</procEventoCTe>
+	<procEventoCTe versao="4.00">
+		<eventoCTe versao="4.00">
+			<infEvento Id="ID61011031111111111111111111111111111111111111111116001">
+				<cOrgao>31</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>11111111111111</CNPJ>
+				<chCTe>31111111111111111111111111111111111111111116</chCTe>
+				<dhEvento>2025-01-18T08:12:48-03:00</dhEvento>
+				<tpEvento>610110</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<detEvento versaoEvento="4.00">
+					<evPrestDesacordo>
+						<descEvento>Prestacao do Servico em Desacordo</descEvento>
+						<indDesacordoOper>1</indDesacordoOper>
+						<xObs>A empresa de CNPJ 01.849.036/0019-36 declara estar em desacordo com as informacoes contidas no CTe de chave de acesso 3125 0157 5794 3200 0116 5700 1000 0000 2610 0000 0266, emitido pela transportadora de CNPJ 57.579.432/0001-16.</xObs>
+					</evPrestDesacordo>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID61011031111111111111111111111111111111111111111116001">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>111111111111111111111111111=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>askdlaksjdalkjdlakjdlkajdas</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>asdkjasldkjasldjaslkdjaslkjdas</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</eventoCTe>
+		<retEventoCTe versao="4.00">
+			<infEvento>
+				<tpAmb>1</tpAmb>
+				<verAplic>W-6.3.12</verAplic>
+				<cOrgao>31</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado a CTe</xMotivo>
+				<chCTe>31111111111111111111111111111111111111111116</chCTe>
+				<tpEvento>610110</tpEvento>
+				<xEvento>Prestacao do servico em desacordo</xEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<dhRegEvento>2025-01-18T08:12:49-03:00</dhRegEvento>
+				<nProt>111111111111111</nProt>
+			</infEvento>
+		</retEventoCTe>
+	</procEventoCTe>
+</retConsSitCTe>

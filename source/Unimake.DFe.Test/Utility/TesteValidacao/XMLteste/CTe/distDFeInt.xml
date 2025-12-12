@@ -1,0 +1,8 @@
+﻿<distDFeInt xmlns="http://www.portalfiscal.inf.br/cte" versao="1.00">
+	<tpAmb>2</tpAmb>
+	<cUFAutor>35</cUFAutor>
+	<CNPJ>11111111111111</CNPJ>
+	<consNSU>
+		<NSU>000000000000000</NSU>
+	</consNSU>
+</distDFeInt>
