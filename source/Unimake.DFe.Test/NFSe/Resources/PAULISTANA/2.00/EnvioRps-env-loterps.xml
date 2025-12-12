@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <PedidoEnvioRPS xmlns="http://www.prefeitura.sp.gov.br/nfe">
 	<Cabecalho Versao="1" xmlns="">
 		<CPFCNPJRemetente>
@@ -42,5 +42,65 @@
 		</EnderecoTomador>
 		<EmailTomador>tomador@teste.com.br</EmailTomador>
 		<Discriminacao>Desenvolvimento de Web Site Pessoal.</Discriminacao>
+		<!--Grupo da RTC Obrigatório a partir de janeiro 2026-->
+		<IBSCBS>
+			<!--Opcional\/-->
+			<dest>
+				<CPF>CPF1</CPF>
+				<xNome>xNome1</xNome>
+				<!--Opcional\/-->
+				<end>
+					<TipoLogradouro>R</TipoLogradouro>
+					<Logradouro>Guararapes</Logradouro>
+					<NumeroEndereco>2</NumeroEndereco>
+					<ComplementoEndereco>xxxxxxxxxxxxxxx</ComplementoEndereco>
+					<Bairro>zxxxxxxxxxxxxxxxx</Bairro>
+					<Cidade>3550308</Cidade>
+					<UF>SP</UF>
+					<CEP>4561000</CEP>
+				</end>
+				<!--Opcional\/-->
+				<email>teste@prodam.sp.gov.br</email>
+			</dest>
+			<!--=============================================-->
+			<!--Opcional \/-->
+			<adq>
+				<CPF>CPF1</CPF>
+				<xNome>xNome1</xNome>
+				<!--Opcional\/-->
+				<end>
+					<TipoLogradouro>R</TipoLogradouro>
+					<Logradouro>Guararapes</Logradouro>
+					<NumeroEndereco>2</NumeroEndereco>
+					<ComplementoEndereco>xxxxxxxxxxxxxxx</ComplementoEndereco>
+					<Bairro>zxxxxxxxxxxxxxxxx</Bairro>
+					<Cidade>3550308</Cidade>
+					<UF>SP</UF>
+					<CEP>4561000</CEP>
+				</end>
+				<!--Opcional\/-->
+				<email>teste@prodam.sp.gov.br</email>
+			</adq>
+			<!--=============================================-->
+			<serv>
+				<modoPrestServ>1</modoPrestServ>
+				<clocalPrestServ>1</clocalPrestServ>
+				<!--Opcional\/-->
+				<cCIB>cCIB1</cCIB>
+				<!--=============================================-->
+				<indCompGov>0</indCompGov>
+				<!--Opcional\/-->
+				<tpEnteGov>1</tpEnteGov>
+			</serv>
+			<valores>
+				<trib>
+					<gIBSCBS>
+						<cClassTribIBSCBS>1</cClassTribIBSCBS>
+						<!--Opcional\/-->
+						<CClassTribReg>1</CClassTribReg>
+					</gIBSCBS>
+				</trib>
+			</valores>
+		</IBSCBS>
 	</RPS>
 </PedidoEnvioRPS>

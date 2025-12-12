@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <PedidoCancelamentoNFe xmlns="http://www.prefeitura.sp.gov.br/nfe">
-	<Cabecalho Versao="1" xmlns="">
+	<Cabecalho Versao="2" xmlns="">
 		<CPFCNPJRemetente>
 			<CNPJ>99999997000100</CNPJ>
 		</CPFCNPJRemetente>
