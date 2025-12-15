@@ -28,8 +28,7 @@
         <Filename Value="consultarstatusnfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarStatusNFe"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="11"/>
         <CursorPos X="33" Y="35"/>
         <UsageCount Value="209"/>
@@ -39,7 +38,8 @@
         <Filename Value="enviarnfesincrono.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFeSincrono"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="50"/>
         <CursorPos X="54" Y="347"/>
         <UsageCount Value="208"/>
         <Loaded Value="True"/>
@@ -219,10 +219,12 @@
         <Filename Value="inutilizacaonumeronfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="InutilizacaoNumeroNFe"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="19"/>
-        <CursorPos Y="35"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="38"/>
+        <CursorPos X="36" Y="58"/>
         <UsageCount Value="202"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="consultarstatusnfcom.pas"/>
@@ -469,6 +471,15 @@
         <UsageCount Value="27"/>
       </Unit>
       <Unit>
+        <Filename Value="EnviarNFeSincronoContingenciaSVC.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="305"/>
+        <CursorPos Y="345"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
         <Filename Value="consultarmdfenaoencerrada.pas"/>
         <UnitName Value="ConsultarMDFeNaoEncerrada"/>
         <EditorIndex Value="-1"/>
@@ -532,17 +543,8 @@
         <CursorPos X="10" Y="86"/>
         <UsageCount Value="6"/>
       </Unit>
-      <Unit>
-        <Filename Value="EnviarNFeSincronoContingenciaSVC.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="305"/>
-        <CursorPos Y="345"/>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
-      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="6">
+    <JumpHistory HistoryIndex="5">
       <Position>
         <Filename Value="enviarnfesincrono.pas"/>
         <Caret Line="182" Column="37" TopLine="171"/>
@@ -558,10 +560,6 @@
       <Position>
         <Filename Value="main.pas"/>
         <Caret Line="401" Column="48" TopLine="385"/>
-      </Position>
-      <Position>
-        <Filename Value="EnviarNFeSincronoContingenciaSVC.pas"/>
-        <Caret Line="79" Column="34" TopLine="322"/>
       </Position>
       <Position>
         <Filename Value="consultarstatusnfe.pas"/>
