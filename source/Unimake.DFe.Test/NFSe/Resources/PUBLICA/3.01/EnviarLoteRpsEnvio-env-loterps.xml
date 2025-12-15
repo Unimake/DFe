@@ -83,6 +83,8 @@
 						<InformacoesComplementares>InformacoesComplementares1</InformacoesComplementares>
 						<CodigoMunicipio>1</CodigoMunicipio>
 						<CodigoPais>Cod1</CodigoPais>
+						<CodigoMunicipioLocalPrestacao>1</CodigoMunicipioLocalPrestacao>
+						<CodigoPaisLocalPrestacao>Cod1</CodigoPaisLocalPrestacao>
 						<DiscriminacaoServicosCartaCorrecao>DiscriminacaoServicosCartaCorrecao1</DiscriminacaoServicosCartaCorrecao>
 						<cNBS>123456789</cNBS>
 					</Servico>
@@ -176,6 +178,7 @@
 						</Parcelas>
 					</CondicaoPagamento>
 					<ConstrucaoCivil>
+						<TipoIdentificacaoObra>1</TipoIdentificacaoObra>
 						<CodigoObra>CodigoObra1</CodigoObra>
 						<Art>Art1</Art>
 						<EnderecoCompleto>
