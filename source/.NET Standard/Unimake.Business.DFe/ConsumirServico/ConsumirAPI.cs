@@ -1,13 +1,9 @@
-﻿using Org.BouncyCastle.Tls;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Xml;
-using Unimake.Business.DFe.Servicos;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe

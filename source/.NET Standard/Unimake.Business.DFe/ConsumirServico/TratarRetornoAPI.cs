@@ -10,8 +10,6 @@ using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.DARE;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.SNCM;
 
 namespace Unimake.Business.DFe
 {
