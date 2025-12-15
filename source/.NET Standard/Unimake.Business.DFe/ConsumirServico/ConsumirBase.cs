@@ -15,8 +15,9 @@ namespace Unimake.Business.DFe
     /// <summary>
     /// Classe para consumir webservices e API´s
     /// </summary>
-    public abstract class ConsumirBase
+    public abstract class ConsumirBase : IDisposable
     {
+        private bool _disposed = false;
         #region Private Fields
 
         /// <summary>
@@ -228,7 +229,7 @@ namespace Unimake.Business.DFe
 
             var urlpost = new Uri(soap.EnderecoWeb);
             var soapXML = EnveloparXML(soap, xml.OuterXml, certificado);
-            
+
             var buffer2 = Encoding.UTF8.GetBytes(soapXML);
 
             ServicePointManager.Expect100Continue = false;
@@ -286,10 +287,10 @@ namespace Unimake.Business.DFe
             var retornoXml = new XmlDocument();
             try
             {
-                if (string.IsNullOrEmpty(conteudoRetorno)) 
+                if (string.IsNullOrEmpty(conteudoRetorno))
                     throw new ValidarXMLRetornoException($"O XML retornado pelo WebService está vazio. Conteúdo XML: {conteudoRetorno}");
 
-                if (!conteudoRetorno.TrimStart().StartsWith("<")) 
+                if (!conteudoRetorno.TrimStart().StartsWith("<"))
                     throw new ValidarXMLRetornoException($"O conteúdo retornado pelo WebService não é um XML válido. Conteúdo XML: {conteudoRetorno}");
 
                 retornoXml.LoadXml(conteudoRetorno);
@@ -321,7 +322,7 @@ namespace Unimake.Business.DFe
                         {
                             tagRetorno = nomeTag;
                             break;
-                        }    
+                        }
                     }
                 }
 
@@ -352,7 +353,7 @@ namespace Unimake.Business.DFe
 
                 if (TratarScapeRetorno)
                 {
-                    if (soap.PadraoNFSe == PadraoNFSe.GIF && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Contains("SOAP-ENV:Fault") || 
+                    if (soap.PadraoNFSe == PadraoNFSe.GIF && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Contains("SOAP-ENV:Fault") ||
                         soap.PadraoNFSe == PadraoNFSe.DBSELLER && soap.TagRetorno == "SOAP-ENV:Body" || soap.PadraoNFSe == PadraoNFSe.FINTEL && soap.TagRetorno == "soap:Body")
                     {
                         RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml;
@@ -377,10 +378,10 @@ namespace Unimake.Business.DFe
                         RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Replace("&lt;", "<").Replace("&gt;", ">");
                     }
 
-                    else if ((soap.PadraoNFSe == PadraoNFSe.MODERNIZACAO_PUBLICA || soap.PadraoNFSe == PadraoNFSe.METROPOLIS) && (soap.Servico != Servico.NFSeConsultarNfseFaixa && soap.Servico != Servico.NFSeConsultarNfsePorRps && 
+                    else if ((soap.PadraoNFSe == PadraoNFSe.MODERNIZACAO_PUBLICA || soap.PadraoNFSe == PadraoNFSe.METROPOLIS) && (soap.Servico != Servico.NFSeConsultarNfseFaixa && soap.Servico != Servico.NFSeConsultarNfsePorRps &&
                                 soap.Servico != Servico.NFSeConsultarNfseServicoPrestado && soap.Servico != Servico.NFSeConsultarNfseServicoTomado && !retornoXml.GetElementsByTagName(tagRetorno)[0].OuterXml.Contains("Resposta")))
                     {
-                        
+
                         RetornoServicoString = retornoXml.OuterXml;
                     }
 
@@ -440,6 +441,44 @@ namespace Unimake.Business.DFe
         }
 
         #endregion Public Methods
+
+        /// <summary>
+        /// Implementação do padrão Dispose para liberar recursos.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Dispose protegido para sobrescrita em classes derivadas.
+        /// </summary>
+        /// <param name="disposing">Indica se está liberando recursos gerenciados.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+                return;
+
+            if (disposing)
+            {
+                if (RetornoStream != null)
+                {
+                    RetornoStream.Dispose();
+                    RetornoStream = null;
+                }
+            }
+
+            _disposed = true;
+        }
+
+        /// <summary>
+        /// Finalizador
+        /// </summary>
+        ~ConsumirBase()
+        {
+            Dispose(false);
+        }
 
         /// <summary>
         /// Efetua validações do certificado - Por hora retorna sempre true, ou seja, não estamos validando nada.

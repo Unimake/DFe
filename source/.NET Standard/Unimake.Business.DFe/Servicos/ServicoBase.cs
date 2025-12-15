@@ -27,8 +27,9 @@ namespace Unimake.Business.DFe.Servicos
     [ProgId("Unimake.Business.DFe.Servicos.ServicoBase")]
     [ComVisible(true)]
 #endif
-    public abstract class ServicoBase
+    public abstract class ServicoBase : IDisposable
     {
+        private bool _disposed = false;
         private XmlDocument _ConteudoXML;
 
         /// <summary>
@@ -402,6 +403,8 @@ namespace Unimake.Business.DFe.Servicos
                 RetornoWSXML = consumirAPI.RetornoServicoXML;
                 RetornoStream = consumirAPI.RetornoStream;  //Retorno específico para criação de .pdf para os casos em que a String corrompe o conteúdo. Mauricio 27/09/2023 #157859
                 HttpStatusCode = consumirAPI.HttpStatusCode;
+
+                apiConfig.Dispose();
             }
             else
             {
@@ -437,6 +440,8 @@ namespace Unimake.Business.DFe.Servicos
                 RetornoWSString = consumirWS.RetornoServicoString;
                 RetornoWSXML = consumirWS.RetornoServicoXML;
                 HttpStatusCode = consumirWS.HttpStatusCode;
+
+                consumirWS.Dispose();
             }
         }
 
@@ -450,5 +455,46 @@ namespace Unimake.Business.DFe.Servicos
         [ComVisible(false)]
 #endif
         public abstract void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML);
+
+        /// <summary>
+        /// Implementação do padrão Dispose para liberar recursos.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Dispose protegido para sobrescrita em classes derivadas.
+        /// </summary>
+        /// <param name="disposing">Indica se está liberando recursos gerenciados.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+                return;
+
+            if (disposing)
+            {
+                // Liberar recursos gerenciados
+                if (RetornoStream != null)
+                {
+                    RetornoStream.Dispose();
+                    RetornoStream = null;
+                }
+            }
+
+            // Liberar recursos não gerenciados (se houver)
+
+            _disposed = true;
+        }
+
+        /// <summary>
+        /// Finalizador
+        /// </summary>
+        ~ServicoBase()
+        {
+            Dispose(false);
+        }
     }
 }
