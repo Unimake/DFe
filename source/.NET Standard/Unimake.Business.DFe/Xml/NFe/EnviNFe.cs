@@ -13855,8 +13855,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Quantidade tributada na monofasia
         /// </summary>
+        [XmlIgnore]
+        public double QBCMono { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade QBCMono para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("qBCMono")]
-        public decimal QBCMono { get; set; }
+        public string QBCMonoField
+        {
+            get => QBCMono.ToString("F4", CultureInfo.InvariantCulture);
+            set => QBCMono = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Alíquota ad rem do IBS
@@ -13936,10 +13946,20 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class GMonoReten
     {
         /// <summary>
-        /// Quantidade tributada sujeita à retenção na monofasia
+        /// Quantidade tributada sujeita à retenção na monofasia 
+        /// </summary>
+        [XmlIgnore]
+        public double QBCMonoReten { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade QBCMonoReten para atribuir ou resgatar o valor)
         /// </summary>
         [XmlElement("qBCMonoReten")]
-        public double QBCMonoReten { get; set; }
+        public string QBCMonoRetenField
+        {
+            get => QBCMonoReten.ToString("F4", CultureInfo.InvariantCulture);
+            set => QBCMonoReten = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Alíquota ad rem do IBS sujeito a retenção 
@@ -14021,8 +14041,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Quantidade tributada retida anteriormente 
         /// </summary>
-        [XmlElement("qBCMonoRet")]
+        [XmlIgnore]
         public double QBCMonoRet { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade QBCMonoRet para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("qBCMonoRet")]
+        public string QBCMonoRetField
+        {
+            get => QBCMonoRet.ToString("F4", CultureInfo.InvariantCulture);
+            set => QBCMonoRet = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Alíquota ad rem do IBS retido anteriormente
