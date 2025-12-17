@@ -199,7 +199,7 @@
 		  <WebEnderecoProducao></WebEnderecoProducao>
 		  <WebActionHomologacao>http://webservices.sil.com/NotaFiscalNacional/NotaFiscalNacionalGerarRequest</WebActionHomologacao>
 		  <WebActionProducao></WebActionProducao>
-		  <SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+		  <SchemaArquivo></SchemaArquivo>
 		  <TagAssinatura>DPS</TagAssinatura>
 		  <TagAtributoID>infDPS</TagAtributoID>
 		  <TagLoteAssinatura></TagLoteAssinatura>
