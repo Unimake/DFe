@@ -15,8 +15,9 @@ namespace Unimake.Business.DFe
     /// <summary>
     /// Classe para consumir webservices e API´s
     /// </summary>
-    public abstract class ConsumirBase
+    public abstract class ConsumirBase : IDisposable
     {
+        private bool _disposed = false;
         #region Private Fields
 
         /// <summary>
@@ -24,8 +25,8 @@ namespace Unimake.Business.DFe
         /// </summary>
         private readonly CookieContainer cookies = new CookieContainer();
 
-        private static bool TratarScapeEnvio { get; set; }
-        private static bool TratarScapeRetorno { get; set; }
+        private bool tratarScapeEnvio;
+        private bool tratarScapeRetorno;
 
         #endregion Private Fields
 
@@ -107,9 +108,7 @@ namespace Unimake.Business.DFe
                 else
                 {
                     xmlBody = xmlBody.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
-
                     var soapAssinado = ELOTECH.AssinaSoapElotech(soap, xmlBody, certificado);
-
                     retorna = soapAssinado.OuterXml;
                 }
             }
@@ -118,9 +117,7 @@ namespace Unimake.Business.DFe
             {
                 var doc = new XmlDocument();
                 doc.LoadXml(xmlBody);
-
                 var tpEvento = doc.GetElementsByTagName("tipoEvento")[0].InnerText;
-
                 xmlBody = doc.GetElementsByTagName("ConsultaReciboEvento")[0].OuterXml;
                 xmlBody = xmlBody.Replace("ConsultaReciboEvento", "ConsultaReciboEvento" + tpEvento);
             }
@@ -129,13 +126,11 @@ namespace Unimake.Business.DFe
             {
                 var doc = new XmlDocument();
                 doc.LoadXml(xmlBody);
-
                 var xmlBodyConteudo = doc.GetElementsByTagName("ConsultaResultadoFechamento2099")[0].OuterXml;
-
                 xmlBody = xmlBodyConteudo;
             }
 
-            if (TratarScapeEnvio)
+            if (tratarScapeEnvio)
             {
                 xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
 
@@ -147,9 +142,8 @@ namespace Unimake.Business.DFe
                 {
                     retorna += soap.SoapString.Replace("{xmlBodyScapeEnvio}", xmlBody);
                 }
-
             }
-            else if (TratarScapeRetorno)
+            else if (tratarScapeRetorno)
             {
                 retorna += soap.SoapString.Replace("{xmlBodyScapeRetorno}", xmlBody);
             }
@@ -181,7 +175,7 @@ namespace Unimake.Business.DFe
         /// <summary>
         /// Stream retornada pelo Webservice. Para consumo de serviços que retornam .pdf
         /// </summary>
-        public Stream RetornoStream { get; set; }
+        public Stream RetornoStream { get; protected set; }
 
         /// <summary>
         /// Propriedade para uso interno nos testes unitários. 
@@ -207,29 +201,28 @@ namespace Unimake.Business.DFe
                 throw new CertificadoDigitalException();
             }
 
-            TratarScapeEnvio = false;
-            TratarScapeRetorno = false;
+            tratarScapeEnvio = false;
+            tratarScapeRetorno = false;
 
             if (soap.SoapString.IndexOf("{xmlBodyScape}") > 0)
             {
-                TratarScapeEnvio = true;
-                TratarScapeRetorno = true;
+                tratarScapeEnvio = true;
+                tratarScapeRetorno = true;
             }
             else if (soap.SoapString.IndexOf("{xmlBodyScapeEnvio}") > 0)
             {
-                TratarScapeEnvio = true;
-                TratarScapeRetorno = false;
+                tratarScapeEnvio = true;
+                tratarScapeRetorno = false;
             }
             else if (soap.SoapString.IndexOf("{xmlBodyScapeRetorno}") > 0)
             {
-                TratarScapeEnvio = false;
-                TratarScapeRetorno = true;
+                tratarScapeEnvio = false;
+                tratarScapeRetorno = true;
             }
 
             var urlpost = new Uri(soap.EnderecoWeb);
             var soapXML = EnveloparXML(soap, xml.OuterXml, certificado);
-            
-            var buffer2 = Encoding.UTF8.GetBytes(soapXML);
+            var soapXmlBytes = Encoding.UTF8.GetBytes(soapXML);
 
             ServicePointManager.Expect100Continue = false;
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(RetornoValidacao);
@@ -245,7 +238,7 @@ namespace Unimake.Business.DFe
             {
                 httpWebRequest.ClientCertificates.Add(certificado);
             }
-            httpWebRequest.ContentLength = buffer2.Length;
+            httpWebRequest.ContentLength = soapXmlBytes.Length;
 
             //Definir dados para conexão com proxy
             if (soap.Proxy != null)
@@ -253,12 +246,13 @@ namespace Unimake.Business.DFe
                 httpWebRequest.Proxy = soap.Proxy;
             }
 
-            var postData = httpWebRequest.GetRequestStream();
-            postData.Write(buffer2, 0, buffer2.Length);
-            postData.Close();
+            using (var postData = httpWebRequest.GetRequestStream())
+            {
+                postData.Write(soapXmlBytes, 0, soapXmlBytes.Length);
+            }
 
             WebException webException = null;
-            WebResponse responsePost = null;
+            HttpWebResponse responsePost = null;
             try
             {
                 responsePost = (HttpWebResponse)httpWebRequest.GetResponse();
@@ -268,178 +262,218 @@ namespace Unimake.Business.DFe
             {
                 HttpStatusCode = (HttpStatusCode)ex.Status;
                 webException = ex;
-                responsePost = ex.Response;
+                responsePost = ex.Response as HttpWebResponse;
 
                 if (ex.Response == null)
                 {
-                    throw (ex);
+                    throw;
                 }
             }
 
-            var streamPost = responsePost.GetResponseStream();
-
-            var encoding = Encoding.GetEncoding(soap.EncodingRetorno);
-
-            var streamReaderResponse = new StreamReader(streamPost, encoding);
-            var conteudoRetorno = streamReaderResponse.ReadToEnd();
-
-            var retornoXml = new XmlDocument();
             try
             {
-                if (string.IsNullOrEmpty(conteudoRetorno)) 
-                    throw new ValidarXMLRetornoException($"O XML retornado pelo WebService está vazio. Conteúdo XML: {conteudoRetorno}");
-
-                if (!conteudoRetorno.TrimStart().StartsWith("<")) 
-                    throw new ValidarXMLRetornoException($"O conteúdo retornado pelo WebService não é um XML válido. Conteúdo XML: {conteudoRetorno}");
-
-                retornoXml.LoadXml(conteudoRetorno);
-            }
-            catch (XmlException ex)
-            {
-                if (webException != null)
+                using (responsePost)
+                using (var streamPost = responsePost.GetResponseStream())
+                using (var streamReaderResponse = new StreamReader(streamPost, GetEncodingSafe(soap.EncodingRetorno)))
                 {
-                    throw (webException);
-                }
+                    var conteudoRetorno = streamReaderResponse.ReadToEnd();
 
-                throw (ex);
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-
-            if (soap.TagRetorno.ToLower() != "prop:innertext")
-            {
-                var tagRetorno = soap.TagRetorno;
-
-                if (tagRetorno.Split('|').Length > 1)
-                {
-                    for (int i = 0; i < tagRetorno.Split('|').Length; i++)
+                    var retornoXml = new XmlDocument();
+                    try
                     {
-                        var nomeTag = tagRetorno.Split('|')[i];
-                        if (retornoXml.GetElementsByTagName(nomeTag)[0] != null)
+                        if (string.IsNullOrEmpty(conteudoRetorno))
+                            throw new ValidarXMLRetornoException($"O XML retornado pelo WebService está vazio. Conteúdo XML: {conteudoRetorno}");
+
+                        if (!conteudoRetorno.TrimStart().StartsWith("<"))
+                            throw new ValidarXMLRetornoException($"O conteúdo retornado pelo WebService não é um XML válido. Conteúdo XML: {conteudoRetorno}");
+
+                        retornoXml.LoadXml(conteudoRetorno);
+                    }
+                    catch (XmlException)
+                    {
+                        if (webException != null)
                         {
-                            tagRetorno = nomeTag;
-                            break;
-                        }    
-                    }
-                }
-
-                if (retornoXml.GetElementsByTagName(tagRetorno)[0] == null)
-                {
-                    if (retornoXml.GetElementsByTagName("soap:Body").Count >= 1 && retornoXml.GetElementsByTagName("soap:Body")[0].ChildNodes.Count >= 1)
-                    {
-                        tagRetorno = retornoXml.GetElementsByTagName("soap:Body")[0].ChildNodes[0].Name;
-                    }
-
-                    if (retornoXml.GetElementsByTagName("env:Body").Count >= 1 && retornoXml.GetElementsByTagName("env:Body")[0].ChildNodes.Count >= 1)
-                    {
-                        tagRetorno = retornoXml.GetElementsByTagName("env:Body")[0].ChildNodes[0].Name;
-                    }
-
-                    if (retornoXml.GetElementsByTagName(tagRetorno)[0] == null)
-                    {
-                        if (soap.PadraoNFSe == PadraoNFSe.SYSTEMPRO && webException.ToString().Contains("401"))
-                        {
-                            throw new Exception("Erro de autenticação no webservice. Verifique se o certificado digital está autorizado a consumir o webservice." +
-                                "\r\n\r\nConteúdo retornado pelo servidor:\r\n\r\n" + retornoXml.InnerXml);
+                            throw (webException);
                         }
 
-                        throw new Exception("Não foi possível localizar a tag <" + tagRetorno + "> no XML retornado pelo web-service.\r\n\r\n" +
-                            "Conteúdo retornado pelo servidor:\r\n\r\n" + retornoXml.InnerXml);
+                        throw;
                     }
-                }
-
-                if (TratarScapeRetorno)
-                {
-                    if (soap.PadraoNFSe == PadraoNFSe.GIF && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Contains("SOAP-ENV:Fault") || 
-                        soap.PadraoNFSe == PadraoNFSe.DBSELLER && soap.TagRetorno == "SOAP-ENV:Body" || soap.PadraoNFSe == PadraoNFSe.FINTEL && soap.TagRetorno == "soap:Body")
+                    catch
                     {
-                        RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml;
-                    }
-                    else if (soap.PadraoNFSe == PadraoNFSe.GISSONLINE && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0] == null)
-                    {
-                        RetornoServicoString = retornoXml.ChildNodes[0].OuterXml;
-                    }
-                    else if (soap.PadraoNFSe == PadraoNFSe.TIPLAN && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Contains("faultcode"))
-                    {
-                        RetornoServicoString = retornoXml.OuterXml;
-                    }
-                    else if (tagRetorno == "soap:Fault" || tagRetorno.Contains("faultcode") || (soap.PadraoNFSe == PadraoNFSe.ADM_SISTEMAS && retornoXml.OuterXml.Contains("s:Fault")))
-                    {
-                        RetornoServicoString = retornoXml.OuterXml;
+                        throw;
                     }
 
-                    // Padrão TECNOSISTEMAS às vezes retorna o InnerText sem formatação e gera o erro Dados nível raiz inválidos. Linha 1, posição 1
-                    // Para corrigir, pegamos o OuterXml e fazemos um replace nos scapes para ficar correto
-                    else if (soap.PadraoNFSe == PadraoNFSe.TECNOSISTEMAS)
+                    if (soap.TagRetorno.ToLower() != "prop:innertext")
                     {
-                        RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Replace("&lt;", "<").Replace("&gt;", ">");
-                    }
+                        var tagRetorno = soap.TagRetorno;
 
-                    else if ((soap.PadraoNFSe == PadraoNFSe.MODERNIZACAO_PUBLICA || soap.PadraoNFSe == PadraoNFSe.METROPOLIS) && (soap.Servico != Servico.NFSeConsultarNfseFaixa && soap.Servico != Servico.NFSeConsultarNfsePorRps && 
-                                soap.Servico != Servico.NFSeConsultarNfseServicoPrestado && soap.Servico != Servico.NFSeConsultarNfseServicoTomado && !retornoXml.GetElementsByTagName(tagRetorno)[0].OuterXml.Contains("Resposta")))
-                    {
-                        
-                        RetornoServicoString = retornoXml.OuterXml;
-                    }
+                        if (tagRetorno.Split('|').Length > 1)
+                        {
+                            for (int i = 0; i < tagRetorno.Split('|').Length; i++)
+                            {
+                                var nomeTag = tagRetorno.Split('|')[i];
+                                if (retornoXml.GetElementsByTagName(nomeTag)[0] != null)
+                                {
+                                    tagRetorno = nomeTag;
+                                    break;
+                                }
+                            }
+                        }
 
+                        if (retornoXml.GetElementsByTagName(tagRetorno)[0] == null)
+                        {
+                            if (retornoXml.GetElementsByTagName("soap:Body").Count >= 1 && retornoXml.GetElementsByTagName("soap:Body")[0].ChildNodes.Count >= 1)
+                            {
+                                tagRetorno = retornoXml.GetElementsByTagName("soap:Body")[0].ChildNodes[0].Name;
+                            }
+
+                            if (retornoXml.GetElementsByTagName("env:Body").Count >= 1 && retornoXml.GetElementsByTagName("env:Body")[0].ChildNodes.Count >= 1)
+                            {
+                                tagRetorno = retornoXml.GetElementsByTagName("env:Body")[0].ChildNodes[0].Name;
+                            }
+
+                            if (retornoXml.GetElementsByTagName(tagRetorno)[0] == null)
+                            {
+                                if (soap.PadraoNFSe == PadraoNFSe.SYSTEMPRO && webException != null && webException.ToString().Contains("401"))
+                                {
+                                    throw new Exception("Erro de autenticação no webservice. Verifique se o certificado digital está autorizado a consumir o webservice.\r\n\r\nConteúdo retornado pelo servidor:\r\n\r\n" + retornoXml.InnerXml);
+                                }
+
+                                throw new Exception("Não foi possível localizar a tag <" + tagRetorno + "> no XML retornado pelo web-service.\r\n\r\n" +
+                                    "Conteúdo retornado pelo servidor:\r\n\r\n" + retornoXml.InnerXml);
+                            }
+                        }
+
+                        if (tratarScapeRetorno)
+                        {
+                            if (soap.PadraoNFSe == PadraoNFSe.GIF && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Contains("SOAP-ENV:Fault") ||
+                                soap.PadraoNFSe == PadraoNFSe.DBSELLER && soap.TagRetorno == "SOAP-ENV:Body" || soap.PadraoNFSe == PadraoNFSe.FINTEL && soap.TagRetorno == "soap:Body")
+                            {
+                                RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml;
+                            }
+                            else if (soap.PadraoNFSe == PadraoNFSe.GISSONLINE && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0] == null)
+                            {
+                                RetornoServicoString = retornoXml.ChildNodes[0].OuterXml;
+                            }
+                            else if (soap.PadraoNFSe == PadraoNFSe.TIPLAN && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Contains("faultcode"))
+                            {
+                                RetornoServicoString = retornoXml.OuterXml;
+                            }
+                            else if (tagRetorno == "soap:Fault" || tagRetorno.Contains("faultcode") || (soap.PadraoNFSe == PadraoNFSe.ADM_SISTEMAS && retornoXml.OuterXml.Contains("s:Fault")))
+                            {
+                                RetornoServicoString = retornoXml.OuterXml;
+                            }
+
+                            // Padrão TECNOSISTEMAS às vezes retorna o InnerText sem formatação e gera o erro Dados nível raiz inválidos. Linha 1, posição 1
+                            // Para corrigir, pegamos o OuterXml e fazemos um replace nos scapes para ficar correto
+                            else if (soap.PadraoNFSe == PadraoNFSe.TECNOSISTEMAS)
+                            {
+                                RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Replace("&lt;", "<").Replace("&gt;", ">");
+                            }
+                            else if ((soap.PadraoNFSe == PadraoNFSe.MODERNIZACAO_PUBLICA || soap.PadraoNFSe == PadraoNFSe.METROPOLIS) && (soap.Servico != Servico.NFSeConsultarNfseFaixa && soap.Servico != Servico.NFSeConsultarNfsePorRps &&
+                                        soap.Servico != Servico.NFSeConsultarNfseServicoPrestado && soap.Servico != Servico.NFSeConsultarNfseServicoTomado && !retornoXml.GetElementsByTagName(tagRetorno)[0].OuterXml.Contains("Resposta")))
+                            {
+                                RetornoServicoString = retornoXml.OuterXml;
+                            }
+                            else
+                            {
+                                RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].InnerText;
+                            }
+                        }
+                        else
+                        {
+                            RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml;
+
+                            if (soap.PadraoNFSe == PadraoNFSe.DSF && tagRetorno == "soap:Fault")
+                            {
+                                RetornoServicoString = retornoXml.OuterXml;
+                            }
+                        }
+                    }
                     else
                     {
-                        RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].InnerText;
+                        if (string.IsNullOrWhiteSpace(retornoXml.InnerText))
+                        {
+                            throw new Exception("A propriedade InnerText do XML retornado pelo web-service está vazia.");
+                        }
+
+                        RetornoServicoString = retornoXml.InnerText;
+
+                        //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
+                        if (RetornoServicoString.IndexOf("?>") >= 0)
+                        {
+                            RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
+                        }
+
+                        //Remover quebras de linhas
+                        RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
                     }
 
-                }
-                else
-                {
-                    RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml;
-
-                    if (soap.PadraoNFSe == PadraoNFSe.DSF && tagRetorno == "soap:Fault")
+                    if (soap.PadraoNFSe == PadraoNFSe.FIORILLI || soap.PadraoNFSe == PadraoNFSe.SONNER || soap.PadraoNFSe == PadraoNFSe.SMARAPD || soap.PadraoNFSe == PadraoNFSe.DSF)
                     {
-                        RetornoServicoString = retornoXml.OuterXml;
+                        RetornoServicoString = RetornoServicoString.Replace("ns1:", string.Empty);
+                        RetornoServicoString = RetornoServicoString.Replace("ns2:", string.Empty);
+                        RetornoServicoString = RetornoServicoString.Replace("ns3:", string.Empty);
+                        RetornoServicoString = RetornoServicoString.Replace("ns4:", string.Empty);
+                        RetornoServicoString = RetornoServicoString.Replace("ns0:", string.Empty);
                     }
+                    else if (soap.PadraoNFSe == PadraoNFSe.SIMPLE)
+                    {
+                        RetornoServicoString = RetornoServicoString.Replace("m:", string.Empty);
+                    }
+
+                    RetornoServicoXML = new XmlDocument
+                    {
+                        PreserveWhitespace = false
+                    };
+                    RetornoServicoXML.LoadXml(RetornoServicoString);
                 }
             }
-            else
+            finally
             {
-                if (string.IsNullOrWhiteSpace(retornoXml.InnerText))
-                {
-                    throw new Exception("A propriedade InnerText do XML retornado pelo web-service está vazia.");
-                }
-
-                RetornoServicoString = retornoXml.InnerText;
-
-                //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
-                if (RetornoServicoString.IndexOf("?>") >= 0)
-                {
-                    RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
-                }
-
-                //Remover quebras de linhas
-                RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
+                // Nada a liberar aqui, pois todos os recursos estão em using
             }
-
-            if (soap.PadraoNFSe == PadraoNFSe.FIORILLI || soap.PadraoNFSe == PadraoNFSe.SONNER || soap.PadraoNFSe == PadraoNFSe.SMARAPD || soap.PadraoNFSe == PadraoNFSe.DSF)
-            {
-                RetornoServicoString = RetornoServicoString.Replace("ns1:", string.Empty);
-                RetornoServicoString = RetornoServicoString.Replace("ns2:", string.Empty);
-                RetornoServicoString = RetornoServicoString.Replace("ns3:", string.Empty);
-                RetornoServicoString = RetornoServicoString.Replace("ns4:", string.Empty);
-                RetornoServicoString = RetornoServicoString.Replace("ns0:", string.Empty);
-            }
-            else if (soap.PadraoNFSe == PadraoNFSe.SIMPLE)
-            {
-                RetornoServicoString = RetornoServicoString.Replace("m:", string.Empty);
-            }
-
-            RetornoServicoXML = new XmlDocument
-            {
-                PreserveWhitespace = false
-            };
-            RetornoServicoXML.LoadXml(RetornoServicoString);
         }
 
         #endregion Public Methods
+
+        /// <summary>
+        /// Implementação do padrão Dispose para liberar recursos.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Dispose protegido para sobrescrita em classes derivadas.
+        /// </summary>
+        /// <param name="disposing">Indica se está liberando recursos gerenciados.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+                return;
+
+            if (disposing)
+            {
+                if (RetornoStream != null)
+                {
+                    RetornoStream.Dispose();
+                    RetornoStream = null;
+                }
+            }
+
+            _disposed = true;
+        }
+
+        /// <summary>
+        /// Finalizador
+        /// </summary>
+        ~ConsumirBase()
+        {
+            Dispose(false);
+        }
 
         /// <summary>
         /// Efetua validações do certificado - Por hora retorna sempre true, ou seja, não estamos validando nada.
@@ -453,5 +487,21 @@ namespace Unimake.Business.DFe
            X509Certificate certificate,
            X509Chain chain,
            SslPolicyErrors sslPolicyErros) => true;
+
+        /// <summary>
+        /// Obtém o encoding de forma segura, retornando UTF-8 se inválido.
+        /// </summary>
+        /// <param name="encodingName">Nome do encoding</param>
+        private Encoding GetEncodingSafe(string encodingName)
+        {
+            try
+            {
+                return Encoding.GetEncoding(encodingName);
+            }
+            catch
+            {
+                return Encoding.UTF8;
+            }
+        }
     }
 }

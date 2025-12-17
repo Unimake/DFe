@@ -1,23 +1,18 @@
-﻿using Org.BouncyCastle.Tls;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Xml;
-using Unimake.Business.DFe.Servicos;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe
 {
-    /// <summary>{
+    /// <summary>
     /// Classe para consumir API
     /// </summary>
     public class ConsumirAPI : ConsumirBase
     {
-
         /// <summary>
         /// Estabelece conexão com o Webservice e faz o envio do XML e recupera o retorno. Conteúdo retornado pelo webservice pode ser recuperado através das propriedades RetornoServicoXML ou RetornoServicoString.
         /// </summary>
@@ -29,98 +24,96 @@ namespace Unimake.Business.DFe
             {
                 throw new CertificadoDigitalException();
             }
-            var httpWebRequest = CriarAPIRequest(apiConfig, certificado);
 
-            var postData = new HttpResponseMessage();
-
-            // Por não necessitar de conteúdo no envio, adiantei o método 
-            if (string.Equals(apiConfig.MetodoAPI, "get", StringComparison.CurrentCultureIgnoreCase))
+            using (var httpClient = CriarAPIRequest(apiConfig, certificado))
+            using (var httpResponse = string.Equals(apiConfig.MetodoAPI, "get", StringComparison.CurrentCultureIgnoreCase)
+                ? httpClient.GetAsync("").GetAwaiter().GetResult()
+                : httpClient.PostAsync(apiConfig.RequestURI, apiConfig.HttpContent).GetAwaiter().GetResult())
             {
-                postData = httpWebRequest.GetAsync("").GetAwaiter().GetResult();
-            }
-            else
-            {
-                postData = httpWebRequest.PostAsync(apiConfig.RequestURI, apiConfig.HttpContent).GetAwaiter().GetResult();
-            }
-
-            httpWebRequest.Dispose();
-
-            WebException webException = default(WebException);
-            var responsePost = default(string);
-            try
-            {
-                responsePost = postData.Content.ReadAsStringAsync().Result;
-            }
-            catch (WebException ex)
-            {
-                if (ex.Response == null)
+                WebException webException = null;
+                string responseContent = null;
+                try
                 {
-                    throw (ex);
+                    responseContent = httpResponse.Content.ReadAsStringAsync().Result;
+                }
+                catch (WebException ex)
+                {
+                    if (ex.Response == null)
+                    {
+                        throw;
+                    }
+                    else
+                    {
+                        webException = ex;
+                    }
+                }
+
+                var retornoXml = new XmlDocument();
+                try
+                {
+                    HttpStatusCode = httpResponse.StatusCode;
+                    Stream stream = null;
+                    retornoXml = TratarRetornoAPI.ReceberRetorno(ref apiConfig, httpResponse, ref stream);
+                    RetornoStream = stream;
+                }
+                catch (XmlException)
+                {
+                    if (webException != null)
+                    {
+                        throw;
+                    }
+                    throw new Exception(responseContent);
+                }
+                catch
+                {
+                    throw new Exception(responseContent);
+                }
+
+                if (apiConfig.TagRetorno.ToLower() != "prop:innertext" && httpResponse.IsSuccessStatusCode)
+                {
+                    if (retornoXml.GetElementsByTagName(apiConfig.TagRetorno)[0] == null)
+                    {
+                        throw new Exception("Não foi possível localizar a tag <" + apiConfig.TagRetorno + "> no XML retornado pelo webservice.\r\n\r\n" +
+                            "Conteúdo retornado pelo servidor:\r\n\r\n" +
+                            retornoXml.InnerXml);
+                    }
+
+                    RetornoServicoString = retornoXml.GetElementsByTagName(apiConfig.TagRetorno)[0].OuterXml;
                 }
                 else
                 {
-                    webException = ex;
-                }
-            }
+                    if (string.IsNullOrWhiteSpace(retornoXml.InnerText))
+                    {
+                        throw new Exception("A propriedade InnerText do XML retornado pelo webservice está vazia.");
+                    }
 
-            var retornoXml = new XmlDocument();
-            try
-            {
-                HttpStatusCode = postData.StatusCode;
-                var stream = default(Stream);
-                retornoXml = TratarRetornoAPI.ReceberRetorno(ref apiConfig, postData, ref stream);
-                RetornoStream = stream != null ? stream : null;
-            }
-            catch (XmlException)
-            {
-                if (webException != null)
+                    RetornoServicoString = retornoXml.OuterXml;
+
+                    //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
+                    if (RetornoServicoString.IndexOf("?>") >= 0)
+                    {
+                        RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
+                    }
+
+                    //Remover quebras de linhas
+                    RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
+                }
+
+                RetornoServicoXML = new XmlDocument
                 {
-                    throw (webException);
-                }
+                    PreserveWhitespace = false
+                };
 
-                throw new Exception(responsePost);
+                RetornoServicoXML.LoadXml(retornoXml.InnerXml);
             }
-            catch
-            {
-                throw new Exception(responsePost);
-            }
-
-            if (apiConfig.TagRetorno.ToLower() != "prop:innertext" && postData.IsSuccessStatusCode == true)
-            {
-                if (retornoXml.GetElementsByTagName(apiConfig.TagRetorno)[0] == null)
-                {
-                    throw new Exception("Não foi possível localizar a tag <" + apiConfig.TagRetorno + "> no XML retornado pelo webservice.\r\n\r\n" +
-                        "Conteúdo retornado pelo servidor:\r\n\r\n" +
-                        retornoXml.InnerXml);
-                }
-                RetornoServicoString = retornoXml.GetElementsByTagName(apiConfig.TagRetorno)[0].OuterXml;
-            }
-            else
-            {
-                if (string.IsNullOrWhiteSpace(retornoXml.InnerText))
-                {
-                    throw new Exception("A propriedade InnerText do XML retornado pelo webservice está vazia.");
-                }
-
-                RetornoServicoString = retornoXml.OuterXml;
-
-                //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
-                if (RetornoServicoString.IndexOf("?>") >= 0)
-                {
-                    RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
-                }
-
-                //Remover quebras de linhas
-                RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
-            }
-
-            RetornoServicoXML = new XmlDocument
-            {
-                PreserveWhitespace = false
-            };
-            RetornoServicoXML.LoadXml(retornoXml.InnerXml);
         }
 
+        /// <summary>
+        /// Cria e configura uma instância de HttpClient para requisições à API, incluindo certificado digital e headers necessários.
+        /// </summary>
+        /// <param name="configuracoes">Configurações da API, incluindo URI, headers e opções de autenticação.</param>
+        /// <param name="certificado">Certificado digital a ser utilizado na conexão, se necessário.</param>
+        /// <returns>Instância de HttpClient pronta para uso na requisição.</returns>
         private HttpClient CriarAPIRequest(APIConfig configuracoes, X509Certificate2 certificado)
         {
             var httpClientHandler = new HttpClientHandler();
@@ -138,7 +131,7 @@ namespace Unimake.Business.DFe
 
             var client = new HttpClient(httpClientHandler)
             {
-                BaseAddress = new Uri(configuracoes.RequestURI),
+                BaseAddress = new Uri(configuracoes.RequestURI)
             };
 
             if (!string.IsNullOrEmpty(configuracoes.Token))
@@ -160,7 +153,6 @@ namespace Unimake.Business.DFe
             {
                 client.DefaultRequestHeaders.Add("Cookie: ", configuracoes.Cookie);
             }
-
 
             ServicePointManager.Expect100Continue = false;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;

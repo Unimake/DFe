@@ -1,13 +1,14 @@
 ﻿using System.Net;
 using System.Net.Http;
 using Unimake.Business.DFe.Servicos;
+using System;
 
 namespace Unimake.Business.DFe
 {
     /// <summary>
     /// Classe para definição de parâmetros da API
     /// </summary>
-    public class APIConfig
+    public class APIConfig : IDisposable
     {
         private bool _B64;
         private string _RequestURI;
@@ -33,6 +34,7 @@ namespace Unimake.Business.DFe
         private string _ApiKey;
         private HttpContent _HttpContent;
         private string _Cookie;
+        private bool _disposed = false;
 
         /// <summary>
         /// Cookie - Header API
@@ -247,6 +249,44 @@ namespace Unimake.Business.DFe
         {
             get => _TagRetorno;
             set => _TagRetorno = value;
+        }
+
+        /// <summary>
+        /// Implementação do padrão Dispose para liberar recursos.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Dispose protegido para sobrescrita em classes derivadas.
+        /// </summary>
+        /// <param name="disposing">Indica se está liberando recursos gerenciados.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+                return;
+
+            if (disposing)
+            {
+                if (_HttpContent != null)
+                {
+                    _HttpContent.Dispose();
+                    _HttpContent = null;
+                }
+            }
+
+            _disposed = true;
+        }
+
+        /// <summary>
+        /// Finalizador
+        /// </summary>
+        ~APIConfig()
+        {
+            Dispose(false);
         }
     }
 }

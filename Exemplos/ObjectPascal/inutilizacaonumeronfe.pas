@@ -55,6 +55,7 @@ begin
 
   ShowMessage(oInutNFe.Versao);
   ShowMessage(oInutNFe.InfInut.CNPJ);
+  ShowMessage(oInutNFe.InfInut.Id);
 
   //Criar objeto para pegar exceção do lado do CSHARP
   oExceptionInterop := CreateOleObject('Unimake.Exceptions.ThrowHelper');

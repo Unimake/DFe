@@ -10,8 +10,6 @@ using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.DARE;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.SNCM;
 
 namespace Unimake.Business.DFe
 {
@@ -59,12 +57,11 @@ namespace Unimake.Business.DFe
                 }
             }
 
-            //Response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação || (Config.ContentType)
-            switch (tipoRetorno)             //(Config.ContentType)
+            switch (tipoRetorno)
             {
-                case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
-                case "application/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
-                case "text/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
+                case "text/plain":
+                case "application/xml":
+                case "text/xml":
                     try
                     {
                         resultadoRetorno.LoadXml(responseString);
@@ -118,26 +115,28 @@ namespace Unimake.Business.DFe
                         {
                             resultadoRetorno.LoadXml(StringToXml(responseString));
                         }
-
                         else if (Config.Servico == Servico.DAREReceita)
                         {
-                            // Desserializando JSON para lista de objetos
-                            List<ReceitaDARE> dare = JsonConvert.DeserializeObject<List<ReceitaDARE>>(responseString);
-
+                            List<ReceitaDARE> dare = null;
+                            try
+                            {
+                                dare = JsonConvert.DeserializeObject<List<ReceitaDARE>>(responseString);
+                            }
+                            catch (Exception ex)
+                            {
+                                throw new InvalidOperationException("Não foi possível desserializar a lista de receitas.", ex);
+                            }
                             if (dare == null)
                             {
                                 throw new InvalidOperationException("Não foi possível desserializar a lista de receitas.");
                             }
-
                             resultadoRetorno = CreateXmlDocumentReceitas(dare);
                         }
-
                         else
                         {
                             resultadoRetorno.LoadXml(responseString);
                         }
                     }
-
                     break;
 
                 case "text/html": //Retorno HTML -> Entendemos que sempre será erro
@@ -158,20 +157,21 @@ namespace Unimake.Business.DFe
                     resultadoRetorno = CreateXmlDocument(responseString);
                     break;
 
-                default: return CreateXmlDocument(Response.Content.Headers.ToString());
+                default:
+                    return CreateXmlDocument(Response.Content.Headers.ToString());
             }
 
             if (Config.PadraoNFSe == PadraoNFSe.IPM)
             {
-                if (resultadoRetorno.GetElementsByTagName("codigo_html").Count >= 1)
+                var htmlNodes = resultadoRetorno.GetElementsByTagName("codigo_html");
+                if (htmlNodes.Count >= 1 && resultadoRetorno.DocumentElement != null)
                 {
-                    resultadoRetorno.DocumentElement.RemoveChild(resultadoRetorno.GetElementsByTagName("codigo_html")[0]);
+                    resultadoRetorno.DocumentElement.RemoveChild(htmlNodes[0]);
                 }
             }
 
             return resultadoRetorno;
         }
-
 
         #region Private Methods
 
@@ -185,22 +185,25 @@ namespace Unimake.Business.DFe
         {
             string result;
             var xml = JsonConvert.DeserializeXmlNode(content, "temp");
-            XmlNode node;
+            XmlNode node = null;
 
             try
             {
-                node = xml.GetElementsByTagName(config.TagRetorno)[0];         //tag retorno
-                if (node != null && config.TagRetorno != "chaveAcesso")
+                var nodes = xml.GetElementsByTagName(config.TagRetorno);
+                if (nodes.Count > 0)
                 {
-                    var temp = Compress.GZIPDecompress(node.InnerText);
-                    config.TagRetorno = "prop:innertext";
-                    return temp;
+                    node = nodes[0];
+                    if (node != null && config.TagRetorno != "chaveAcesso")
+                    {
+                        var temp = Compress.GZIPDecompress(node.InnerText);
+                        config.TagRetorno = "prop:innertext";
+                        return temp;
+                    }
                 }
             }
             finally
             {
                 result = xml.OuterXml;
-                //throw new Exception("Problema ao buscar o XML dentro do JSON :" + ex.Message);
             }
 
             return result;
@@ -213,19 +216,21 @@ namespace Unimake.Business.DFe
         /// <returns>XmlDocument processado com encoding correto</returns>
         private static XmlDocument ProcessarXmlComEncodingSeguro(HttpResponseMessage response)
         {
-            var stream = response.Content.ReadAsStreamAsync().Result;
-
-            var settings = new XmlReaderSettings
+            using (var stream = response.Content.ReadAsStreamAsync().Result)
             {
-                DtdProcessing = DtdProcessing.Prohibit,
-                CloseInput = true
-            };
+                var settings = new XmlReaderSettings
+                {
+                    DtdProcessing = DtdProcessing.Prohibit,
+                    CloseInput = true
+                };
 
-            var reader = XmlReader.Create(stream, settings);
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load(reader);
-
-            return xmlDoc;
+                using (var reader = XmlReader.Create(stream, settings))
+                {
+                    var xmlDoc = new XmlDocument();
+                    xmlDoc.Load(reader);
+                    return xmlDoc;
+                }
+            }
         }
 
         /// <summary>
@@ -243,13 +248,9 @@ namespace Unimake.Business.DFe
             var tagWhiteSpaceRegex = new Regex(tagWhiteSpace, RegexOptions.Multiline);
 
             var text = html;
-            //Decode html specific characters
             text = System.Net.WebUtility.HtmlDecode(text);
-            //Remove tag whitespace/line breaks
             text = tagWhiteSpaceRegex.Replace(text, "><");
-            //Replace <br /> with line breaks
             text = lineBreakRegex.Replace(text, Environment.NewLine);
-            //Strip formatting
             text = stripFormattingRegex.Replace(text, string.Empty);
 
             return text;
@@ -262,11 +263,12 @@ namespace Unimake.Business.DFe
         /// <returns></returns>
         private static string StringToXml(string str)
         {
-            var xml = new XmlSerializer(str.GetType());
-            var retorno = new StringWriter();
-            xml.Serialize(retorno, str);
-
-            return retorno.ToString();
+            using (var retorno = new StringWriter())
+            {
+                var xml = new XmlSerializer(str.GetType());
+                xml.Serialize(retorno, str);
+                return retorno.ToString();
+            }
         }
 
         static XmlDocument CreateXmlDocument(string text)
