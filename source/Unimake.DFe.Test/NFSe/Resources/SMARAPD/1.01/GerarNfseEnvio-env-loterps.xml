@@ -1,90 +1,136 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<DPS versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse">
-	<infDPS Id="DPS410690211234567800019500001000000000000001">
-		<tpAmb>2</tpAmb>
-		<dhEmi>2025-11-18T15:23:56-03:00</dhEmi>
-		<verAplic>1.01.01</verAplic>
-		<serie>1</serie>
-		<nDPS>1</nDPS>
-		<dCompet>2025-11-18</dCompet>
-		<tpEmit>1</tpEmit>
-		<cLocEmi>4202909</cLocEmi>
-		<prest>
-			<CNPJ>99999999999999</CNPJ>
-			<regTrib>
-				<opSimpNac>3</opSimpNac>
-				<regApTribSN>1</regApTribSN>
-				<regEspTrib>0</regEspTrib>
-			</regTrib>
-		</prest>
-		<toma>
-			<CNPJ>00000000000000</CNPJ>
-			<xNome>COMERCIO E XXXXXXXXXXX XXXXXXXX LTDA</xNome>
-			<end>
-				<endNac>
-					<cMun>1111111</cMun>
-					<CEP>11111000</CEP>
-				</endNac>
-				<xLgr>RUA XX XXXXX</xLgr>
-				<nro>800</nro>
-				<xBairro>XXX XXXXXXX</xBairro>
-			</end>
-			<email>teste@hotmail.com</email>
-		</toma>
-		<serv>
-			<locPrest>
-				<cLocPrestacao>4202909</cLocPrestacao>
-			</locPrest>
-			<cServ>
-				<cTribNac>140101</cTribNac>
-				<xDescServ>CALAFETACAO PARABRISA VEICULO PASSEIO 1.00 10.00   Valor dos tributos R$:0,00 (18,14%)</xDescServ>
-				<cNBS>115029000</cNBS>
-				<cIntContrib>00001</cIntContrib>
-			</cServ>
-		</serv>
+<NFSe xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
+	<infNFSe Id="NFS35306071100055555555555000190312810125110559995282">
+		<xLocEmi>MUNICIPIO</xLocEmi>
+		<xLocPrestacao>MUNICIPIO</xLocPrestacao>
+		<nNFSe>0</nNFSe>
+		<cLocIncid>0000000</cLocIncid>
+		<xLocIncid>MUNICIPIO</xLocIncid>
+		<xTribNac>DESCRIÇÃO DA cTribNac</xTribNac>
+		<verAplic>SilTecnologia_v1.00</verAplic>
+		<ambGer>1</ambGer>
+		<tpEmis>2</tpEmis>
+		<cStat>100</cStat>
+		<dhProc>2025-11-19T00:00:00-03:00</dhProc>
+		<nDFSe>55999528</nDFSe>
+		<emit>
+			<CPF>55555555555</CPF>
+			<IM>9999957</IM>
+			<xNome>EMPRESA DECLARANTE TESTE</xNome>
+			<enderNac>
+				<xLgr>08743-040 - R GRAMADO, 95</xLgr>
+				<nro>0</nro>
+				<xBairro>CJ R DO BOSQUE</xBairro>
+				<cMun>3530607</cMun>
+				<UF>SP</UF>
+				<CEP>08743040</CEP>
+			</enderNac>
+			<fone>1147474747</fone>
+			<email>suporte@nfe.com.br</email>
+		</emit>
 		<valores>
-			<vServPrest>
-				<vServ>10.00</vServ>
-			</vServPrest>
-			<trib>
-				<tribMun>
-					<tribISSQN>1</tribISSQN>
-					<tpRetISSQN>1</tpRetISSQN>
-				</tribMun>
-				<totTrib>
-					<vTotTrib>
-						<vTotTribFed>1.35</vTotTribFed>
-						<vTotTribEst>0</vTotTribEst>
-						<vTotTribMun>0.47</vTotTribMun>
-					</vTotTrib>
-				</totTrib>
-			</trib>
+			<vBC>1250.00</vBC>
+			<pAliqAplic>3.00</pAliqAplic>
+			<vISSQN>37.50</vISSQN>
+			<vTotalRet>27.77</vTotalRet>
+			<vLiq>1250.00</vLiq>
 		</valores>
-		<IBSCBS>
-			<finNFSe>0</finNFSe>
-			<indFinal>0</indFinal>
-			<cIndOp>000001</cIndOp>
-			<tpOper>1</tpOper>
-			<tpEnteGov>1</tpEnteGov>
-			<indDest>0</indDest>
-			<valores>
-				<trib>
-					<gIBSCBS>
-						<CST>101</CST>
-						<cClassTrib>000001</cClassTrib>
-						<cCredPres>01</cCredPres>
-						<gTribRegular>
-							<CSTReg>101</CSTReg>
-							<cClassTribReg>000002</cClassTribReg>
-						</gTribRegular>
-						<gDif>
-							<pDifUF>0.00</pDifUF>
-							<pDifMun>0.00</pDifMun>
-							<pDifCBS>0.00</pDifCBS>
-						</gDif>
-					</gIBSCBS>
-				</trib>
-			</valores>
-		</IBSCBS>
-	</infDPS>
-</DPS>
+		<DPS versao="1.01">
+			<infDPS Id="DPS353060710005555555555500900000001903128101">
+				<tpAmb>2</tpAmb>
+				<dhEmi>2025-11-19T00:00:00-03:00</dhEmi>
+				<verAplic>SilTecnologia_v1.00</verAplic>
+				<serie>00001</serie>
+				<nDPS>1903128101</nDPS>
+				<dCompet>2025-11-19</dCompet>
+				<tpEmit>1</tpEmit>
+				<cLocEmi>3530607</cLocEmi>
+				<prest>
+					<CPF>55555555555</CPF>
+					<IM>9999957</IM>
+					<fone>1147474747</fone>
+					<email>nfe@suporte.com.br</email>
+					<regTrib>
+						<opSimpNac>1</opSimpNac>
+						<regEspTrib>0</regEspTrib>
+					</regTrib>
+				</prest>
+				<toma>
+					<CNPJ>11111111111111</CNPJ>
+					<xNome>EMPRESA TOMADORA TESTE</xNome>
+					<end>
+						<endNac>
+							<cMun>3530607</cMun>
+							<CEP>07400000</CEP>
+						</endNac>
+						<xLgr>RUA DOS BANCOS</xLgr>
+						<nro>0</nro>
+						<xBairro>CENTRO</xBairro>
+					</end>
+				</toma>
+				<serv>
+					<locPrest>
+						<cLocPrestacao>3530607</cLocPrestacao>
+					</locPrest>
+					<cServ>
+						<cTribNac>010101</cTribNac>
+						<xDescServ>Descrição da nota fiscal de serviço</xDescServ>
+						<cNBS>115029000</cNBS>
+					</cServ>
+					<comExt>
+						<mdPrestacao>0</mdPrestacao>
+						<vincPrest>0</vincPrest>
+						<tpMoeda>986</tpMoeda>
+						<vServMoeda>0</vServMoeda>
+						<mecAFComexP>00</mecAFComexP>
+						<mecAFComexT>00</mecAFComexT>
+						<movTempBens>0</movTempBens>
+						<mdic>0</mdic>
+					</comExt>
+					<infoCompl>
+						<xInfComp>xxxxxxxx</xInfComp>
+					</infoCompl>
+				</serv>
+				<valores>
+					<vServPrest>
+						<vServ>1250.00</vServ>
+					</vServPrest>
+					<vDescCondIncond>
+						<vDescIncond>0.00</vDescIncond>
+						<vDescCond>0.00</vDescCond>
+					</vDescCondIncond>
+					<vDedRed>
+						<vDR>0.00</vDR>
+					</vDedRed>
+					<trib>
+						<tribMun>
+							<tribISSQN>1</tribISSQN>
+							<tpRetISSQN>1</tpRetISSQN>
+						</tribMun>
+						<tribFed>
+							<piscofins>
+								<CST>01</CST>
+								<vBCPisCofins>9152.15</vBCPisCofins>
+								<pAliqPis>0.65</pAliqPis>
+								<pAliqCofins>3.00</pAliqCofins>
+								<vPis>59.49</vPis>
+								<vCofins>274.56</vCofins>
+								<tpRetPisCofins>1</tpRetPisCofins>
+							</piscofins>
+							<vRetCP>137.28</vRetCP>
+							<vRetIRRF>137.28</vRetIRRF>
+							<vRetCSLL>91.52</vRetCSLL>
+						</tribFed>
+						<totTrib>
+							<vTotTrib>
+								<vTotTribFed>0.00</vTotTribFed>
+								<vTotTribEst>0.00</vTotTribEst>
+								<vTotTribMun>1115.30</vTotTribMun>
+							</vTotTrib>
+						</totTrib>
+					</trib>
+				</valores>
+			</infDPS>
+		</DPS>
+	</infNFSe>
+	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">asdasda</Signature>
+</NFSe>
