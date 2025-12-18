@@ -1,99 +1,233 @@
-<NFSe xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
-	<infNFSe Id="NFS35306071209278456000192000000000001025120000000010">
-		<xLocEmi>BAURU</xLocEmi>
-		<xLocPrestacao>BAURU</xLocPrestacao>
+<NFSe xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.00">
+	<infNFSe Id="NFS35306071100055555555555000190312810125110559995282">
+		<!-- Informar o nome do municipio da emissão da nota fiscal conforme tabela do IBGE  -->
+		<xLocEmi>MUNICIPIO</xLocEmi>
+		<!-- Informar o nome do municipio do local da prestação da nota fiscal conforme tabela do IBGE  -->
+		<xLocPrestacao>MUNICIPIO</xLocPrestacao>
+		<!-- Informar sempre o valor fixo zero, o número será atribuito pelo sistema da prefeitura  -->
 		<nNFSe>0</nNFSe>
-		<cLocIncid>3506003</cLocIncid>
-		<xLocIncid>BAURU</xLocIncid>
+		<!-- Informar o código IBGE do municipio da incidência -->
+		<cLocIncid>0000000</cLocIncid>
+		<!-- Informar o nome do municipio da incidência da nota fiscal conforme tabela do IBGE  -->
+		<xLocIncid>MUNICIPIO</xLocIncid>
+		<!-- Informar a descrição da atividade referente ao codigo de tributação nacional  -->
 		<xTribNac>DESCRIÇÃO DA cTribNac</xTribNac>
+		<!-- Informar o valor fixo SilTecnologia_v1.00  -->
 		<verAplic>SilTecnologia_v1.00</verAplic>
+		<!-- Informar o valor fixo 1 (Sistema Próprio do Município)  -->
 		<ambGer>1</ambGer>
+		<!-- Informar o valor fixo 2 (Emissão com aplicativo disponibilizado pelo fisco (Web))  -->
 		<tpEmis>2</tpEmis>
+		<!-- Informar o valor fixo 100 (NFS-e Gerada)  -->
 		<cStat>100</cStat>
-		<dhProc>2025-12-16T14:55:00-03:00</dhProc>
-		<nDFSe>1</nDFSe>
+		<!-- Informar a data de envio do XML no formato UTC (Universal Coordinated Time):AAAA-MM-DDThh:mm:ssTZD  -->
+		<dhProc>2025-11-19T00:00:00-03:00</dhProc>
+		<!-- Informar o numero do RPS  -->
+		<nDFSe>55999528</nDFSe>
+		<!-- Informar os dados do prestador  -->
 		<emit>
-			<CNPJ>09278456000192</CNPJ>
-			<IM>0</IM>
+			<CPF>55555555555</CPF>
+			<IM>9999957</IM>
 			<xNome>EMPRESA DECLARANTE TESTE</xNome>
 			<enderNac>
 				<xLgr>08743-040 - R GRAMADO, 95</xLgr>
 				<nro>0</nro>
 				<xBairro>CJ R DO BOSQUE</xBairro>
-				<cMun>3506003</cMun>
+				<cMun>3530607</cMun>
 				<UF>SP</UF>
 				<CEP>08743040</CEP>
 			</enderNac>
 			<fone>1147474747</fone>
 			<email>suporte@nfe.com.br</email>
 		</emit>
+		<!-- Informar os valores da nota  -->
 		<valores>
-			<vBC>10.00</vBC>
-			<pAliqAplic>2.00</pAliqAplic>
-			<vISSQN>0.20</vISSQN>
-			<vTotalRet>0.00</vTotalRet>
-			<vLiq>10.00</vLiq>
+			<!-- Informar o valor bruto da nota  -->
+			<vBC>1250.00</vBC>
+			<!-- Informar a aliquota  -->
+			<pAliqAplic>3.00</pAliqAplic>
+			<!-- Informar o valor do ISS  -->
+			<vISSQN>37.50</vISSQN>
+			<!-- Informar o total de retenções da nota (somar dedução, descontos e retenções tribFed)  -->
+			<vTotalRet>27.77</vTotalRet>
+			<!-- Informar o valor líquido da nota, ou seja, valor deduzindo as retenções e ISS quando for retido  -->
+			<vLiq>1250.00</vLiq>
 		</valores>
-		<DPS versao="1.01">
-			<infDPS Id="DPS353060720927845600019200001000000000000010">
+		<!-- Informar os dados do RPS  -->
+		<DPS versao="1.00">
+			<infDPS Id="DPS353060710005555555555500900000001903128101">
+				<!-- Informar 1 para Produção e 2 para Homologação  -->
 				<tpAmb>2</tpAmb>
-				<dhEmi>2025-12-16T14:55:38-03:00</dhEmi>
+				<!-- Informar a data de emissão do RPS no formato UTC (Universal Coordinated Time):AAAA-MM-DDThh:mm:ssTZD  -->
+				<dhEmi>2025-11-19T00:00:00-03:00</dhEmi>
+				<!-- Informar o valor fixo SilTecnologia_v1.00  -->
 				<verAplic>SilTecnologia_v1.00</verAplic>
+				<!-- Informar o valor fixo 00001 (00001 a 49999 - Emissão com aplicativo pŕoprio)  -->
 				<serie>00001</serie>
-				<nDPS>10</nDPS>
-				<dCompet>2025-12-13</dCompet>
+				<!-- Informar o numero do RPS  -->
+				<nDPS>1903128101</nDPS>
+				<!-- Informar a data de emissão do RPS - padrão (yyyy-mm-dd)   -->
+				<dCompet>2025-11-19</dCompet>
+				<!-- Informar o valor fixo 1 (Prestador)  -->
 				<tpEmit>1</tpEmit>
+				<!-- Informar o código IBGE do municipio de emissão  -->
 				<cLocEmi>3530607</cLocEmi>
+				<!-- Informar os dados do Prestador  -->
 				<prest>
-					<CNPJ>09278456000192</CNPJ>
-					<IM>0</IM>
+					<CPF>55555555555</CPF>
+					<IM>9999957</IM>
+					<fone>1147474747</fone>
+					<email>nfe@suporte.com.br</email>
 					<regTrib>
-						<opSimpNac>3</opSimpNac>
-						<regApTribSN>1</regApTribSN>
+						<!-- Informar 1 (não optante simples nacional), 2 (SINAC), 3 (SIMEI)  -->
+						<opSimpNac>1</opSimpNac>
+						<!-- Informar 0 (nenhum), 1 (cooperativa), 2 (estimativa), 3 (microempresa), 4 (cartório), 5 (autonomo), 6 (sociedade), 7 (especificos municipais)  -->
 						<regEspTrib>0</regEspTrib>
 					</regTrib>
 				</prest>
+				<!-- Informar os dados do Tomador  -->
 				<toma>
-					<CNPJ>10599315000150</CNPJ>
-					<xNome>ROGERIO BUENO MARTINS</xNome>
+					<CNPJ>11111111111111</CNPJ>
+					<xNome>EMPRESA TOMADORA TESTE</xNome>
 					<end>
 						<endNac>
-							<cMun>3506003</cMun>
-							<CEP>17020630</CEP>
+							<cMun>3530607</cMun>
+							<CEP>07400000</CEP>
 						</endNac>
-						<xLgr>ALAMEDA DOS GOIVOS QUADRA</xLgr>
-						<nro>1-6</nro>
-						<xBairro>PARQUE ALTO SUMARE</xBairro>
+						<xLgr>RUA DOS BANCOS</xLgr>
+						<nro>0</nro>
+						<xBairro>CENTRO</xBairro>
 					</end>
-					<fone>1430118727</fone>
-					<email>drigo_martins@hotmail.com</email>
 				</toma>
+				<!-- Informar os dados do serviço prestado  -->
 				<serv>
 					<locPrest>
-						<cLocPrestacao>3506003</cLocPrestacao>
+						<!-- Informar o código IBGE do municipio de prestação  -->
+						<cLocPrestacao>3530607</cLocPrestacao>
 					</locPrest>
 					<cServ>
-						<cTribNac>140101</cTribNac>
-						<xDescServ>1- TESTE .......R$ 10,00</xDescServ>
-						<cNBS>120015000</cNBS>
+						<!-- Informar o código de tributação nacional da atividade  -->
+						<cTribNac>010101</cTribNac>
+						<!-- Informar a descrição do serviço prestado  -->
+						<xDescServ>Descrição da nota fiscal de serviço</xDescServ>
+						<!-- Informar o código do NBS  -->
+						<cNBS>0000000000</cNBS>
 					</cServ>
+					<!-- Informar os dados do comercio exterior para tribISSQN = 3 ou tomador / intermediário com endereço no exterior  -->
+					<comExt>
+						<mdPrestacao>0</mdPrestacao>
+						<vincPrest>0</vincPrest>
+						<tpMoeda>986</tpMoeda>
+						<vServMoeda>0</vServMoeda>
+						<mecAFComexP>00</mecAFComexP>
+						<mecAFComexT>00</mecAFComexT>
+						<movTempBens>0</movTempBens>
+						<mdic>0</mdic>
+					</comExt>
+					<!-- Informar os dados da Obra para 07.02.01, 07.02.02, 07.04.01, 07.05,01, 07.05.02, 07.06.01, 07.06.02, 07.07.01, 07.08.01, 07.17.01 e 07.19.01   -->
+					<obra>
+						<cObra>XXXXXXXXXX</cObra>
+						<end>
+							<CEP>XXXXXX</CEP>
+							<xLgr>XXXXXXX</xLgr>
+							<nro>XXXXXX</nro>
+							<xCpl>XXXX</xCpl>
+							<xBairro>XXXXXXX</xBairro>
+						</end>
+					</obra>
+					<!-- Informar os dados do evento para os itens 12 da lista de serviços (12.01.01, 12.02.01 ...)  -->
+					<atvEvento>
+						<xNome>XXXXXXX</xNome>
+						<dtIni>XXXXXXX</dtIni>
+						<dtFim>XXXXXXX</dtFim>
+						<idAtvEvt>XXXXXXX</idAtvEvt>
+						<end>
+							<CEP>XXXXXXX</CEP>
+							<endExt>
+								<cEndPost>XXXXXXX</cEndPost>
+								<xCidade>XXXXXXX</xCidade>
+								<xEstProvReg>XXXXXXX</xEstProvReg>
+								<xLgr>XXXXXXX</xLgr>
+								<nro>XXXXXXX</nro>
+								<xCpl>XXXXXXX</xCpl>
+								<xBairro>XXXXXXX</xBairro>
+							</endExt>
+						</end>
+					</atvEvento>
+					<infoCompl>
+						<!-- Informar a observação da nota  -->
+						<xInfComp>xxxxxxxx</xInfComp>
+					</infoCompl>
 				</serv>
 				<valores>
 					<vServPrest>
-						<vServ>10.00</vServ>
+						<!-- Informar o valor do serviço (vBC)  -->
+						<vServ>1250.00</vServ>
 					</vServPrest>
+					<vDescCondIncond>
+						<!-- Informar o valor do desconto incondicionado  -->
+						<vDescIncond>0.00</vDescIncond>
+						<!-- Informar o valor do desconto condicionado  -->
+						<vDescCond>0.00</vDescCond>
+					</vDescCondIncond>
+					<vDedRed>
+						<!-- Informar o valor das deduções  -->
+						<vDR>0.00</vDR>
+					</vDedRed>
 					<trib>
 						<tribMun>
+							<!-- Informar 1 (tributavel), 2 (imune), 3 (exportação), 4 (não incidente)  -->
 							<tribISSQN>1</tribISSQN>
-							<tpRetISSQN>2</tpRetISSQN>
-							<pAliq>2.00</pAliq>
+							<!-- Informar 1 (não retido), 2 (retido pelo tomador), 3 (retido pelo intermediário)  -->
+							<tpRetISSQN>1</tpRetISSQN>
 						</tribMun>
+						<tribFed>
+							<piscofins>
+								<!-- Informar a situação do PIS e COFINS   -->
+								<!-- 00,Nenhum   -->
+								<!-- 01,Operação Tributável com Alíquota Básica   -->
+								<!-- 02,Operação Tributável com Alíquota Diferenciada   -->
+								<!-- 03,Operação Tributável com Alíquota por Unidade de Medida de Produto   -->
+								<!-- 04,Operação Tributável monofásica - Revenda a Alíquota Zero   -->
+								<!-- 05,Operação Tributável por Substituição Tributária   -->
+								<!-- 06,Operação Tributável a Alíquota Zero   -->
+								<!-- 07,Operação Tributável da Contribuição   -->
+								<!-- 08,Operação sem Incidência da Contribuição   -->
+								<!-- 09,Operação com Suspensão da Contribuição   -->
+								<CST>01</CST>
+								<!-- Informar a base de calculo para PIS e COFINS  -->
+								<vBCPisCofins>9152.15</vBCPisCofins>
+								<!-- Informar a aliquota do PIS  -->
+								<pAliqPis>0.65</pAliqPis>
+								<!-- Informar a aliquota do COFINS  -->
+								<pAliqCofins>3.00</pAliqCofins>
+								<!-- Informar o valor do PIS  -->
+								<vPis>59.49</vPis>
+								<!-- Informar o valor do COFINS  -->
+								<vCofins>274.56</vCofins>
+								<!-- Informar se o PIS e/ou COFINS sao retidos (1 ambos retido, 2 ambos não retidos, 3 apenas PIS Retido, 4 apenas COFINS Retido)  -->
+								<tpRetPisCofins>1</tpRetPisCofins>
+							</piscofins>
+							<!-- Informar o valor do INSS / CP  -->
+							<vRetCP>137.28</vRetCP>
+							<!-- Informar o valor do imposto de renda  -->
+							<vRetIRRF>137.28</vRetIRRF>
+							<!-- Informar o valor do CSLL  -->
+							<vRetCSLL>91.52</vRetCSLL>
+						</tribFed>
 						<totTrib>
-							<pTotTribSN>13.00</pTotTribSN>
+							<vTotTrib>
+								<!-- Informar o total do tribFed  -->
+								<vTotTribFed>0.00</vTotTribFed>
+								<vTotTribEst>0.00</vTotTribEst>
+								<!-- Informar o total do vISSQN  -->
+								<vTotTribMun>1115.30</vTotTribMun>
+							</vTotTrib>
 						</totTrib>
 					</trib>
 				</valores>
 			</infDPS>
 		</DPS>
 	</infNFSe>
+	<!-- Assinar o XML -->
 </NFSe>
