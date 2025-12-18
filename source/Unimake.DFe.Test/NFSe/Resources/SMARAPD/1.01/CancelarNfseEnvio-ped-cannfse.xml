@@ -1,16 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<pedRegEvento xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
-      <infPedReg xmlns="http://www.sped.fazenda.gov.br/nfse" Id="PRE14001591201761135000132000000000000022096100197260101101001">
-        <tpAmb>2</tpAmb>
-        <verAplic>Teste_0.1.0</verAplic>
-        <dhEvento>2022-09-28T13:50:29-03:00</dhEvento>
-        <CNPJAutor>01761135000132</CNPJAutor>
-        <chNFSe>14001591201761135000132000000000000022096100197260</chNFSe>
-        <nPedRegEvento>001</nPedRegEvento>
-        <e101101>
-          <xDesc>Cancelamento de NFS-e</xDesc>
-          <cMotivo>1</cMotivo>
-          <xMotivo>xMotivo___teste____1</xMotivo>
-        </e101101>
-      </infPedReg>
-</pedRegEvento>
+<evento xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.00">
+	<infEvento Id="EVT00000001000000000000154000000000311425120000026171101101001">
+		<verAplic>SilTecnologia_v1.00</verAplic>
+		<ambGer>1</ambGer>
+		<nSeqEvento>0</nSeqEvento>
+		<dhProc>2025-12-07T00:00:00-03:00</dhProc>
+		<nDFe>0</nDFe>
+		<pedRegEvento versao="1.00">
+			<infPedReg Id="PRE00000001000000000000154000000000311425120000026171101101001">
+				<tpAmb>1</tpAmb>
+				<verAplic>SilTecnologia_v1.00</verAplic>
+				<dhEvento>2025-12-07T00:00:00-03:00</dhEvento>
+				<CNPJAutor>00000000000000</CNPJAutor>
+				<chNFSe>00000001000000000000154000000000311425120000026171</chNFSe>
+				<nPedRegEvento>1</nPedRegEvento>
+				<e101101>
+					<xDesc>Cancelamento de NFS-e</xDesc>
+					<cMotivo>1</cMotivo>
+					<xMotivo>TESTE DO CANCELAMENTO DA NOTA</xMotivo>
+				</e101101>
+			</infPedReg>
+		</pedRegEvento>
+	</infEvento>
+</evento>

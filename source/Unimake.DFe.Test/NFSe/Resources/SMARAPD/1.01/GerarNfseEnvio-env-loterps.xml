@@ -1,26 +1,26 @@
 <NFSe xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
-	<infNFSe Id="NFS35306071100055555555555000190312810125110559995282">
-		<xLocEmi>MUNICIPIO</xLocEmi>
-		<xLocPrestacao>MUNICIPIO</xLocPrestacao>
+	<infNFSe Id="NFS35306071209278456000192000000000001025120000000010">
+		<xLocEmi>BAURU</xLocEmi>
+		<xLocPrestacao>BAURU</xLocPrestacao>
 		<nNFSe>0</nNFSe>
-		<cLocIncid>0000000</cLocIncid>
-		<xLocIncid>MUNICIPIO</xLocIncid>
+		<cLocIncid>3506003</cLocIncid>
+		<xLocIncid>BAURU</xLocIncid>
 		<xTribNac>DESCRIÇÃO DA cTribNac</xTribNac>
 		<verAplic>SilTecnologia_v1.00</verAplic>
 		<ambGer>1</ambGer>
 		<tpEmis>2</tpEmis>
 		<cStat>100</cStat>
-		<dhProc>2025-11-19T00:00:00-03:00</dhProc>
-		<nDFSe>55999528</nDFSe>
+		<dhProc>2025-12-16T14:55:00-03:00</dhProc>
+		<nDFSe>1</nDFSe>
 		<emit>
-			<CPF>55555555555</CPF>
-			<IM>9999957</IM>
+			<CNPJ>09278456000192</CNPJ>
+			<IM>0</IM>
 			<xNome>EMPRESA DECLARANTE TESTE</xNome>
 			<enderNac>
 				<xLgr>08743-040 - R GRAMADO, 95</xLgr>
 				<nro>0</nro>
 				<xBairro>CJ R DO BOSQUE</xBairro>
-				<cMun>3530607</cMun>
+				<cMun>3506003</cMun>
 				<UF>SP</UF>
 				<CEP>08743040</CEP>
 			</enderNac>
@@ -28,109 +28,72 @@
 			<email>suporte@nfe.com.br</email>
 		</emit>
 		<valores>
-			<vBC>1250.00</vBC>
-			<pAliqAplic>3.00</pAliqAplic>
-			<vISSQN>37.50</vISSQN>
-			<vTotalRet>27.77</vTotalRet>
-			<vLiq>1250.00</vLiq>
+			<vBC>10.00</vBC>
+			<pAliqAplic>2.00</pAliqAplic>
+			<vISSQN>0.20</vISSQN>
+			<vTotalRet>0.00</vTotalRet>
+			<vLiq>10.00</vLiq>
 		</valores>
 		<DPS versao="1.01">
-			<infDPS Id="DPS353060710005555555555500900000001903128101">
+			<infDPS Id="DPS353060720927845600019200001000000000000010">
 				<tpAmb>2</tpAmb>
-				<dhEmi>2025-11-19T00:00:00-03:00</dhEmi>
+				<dhEmi>2025-12-16T14:55:38-03:00</dhEmi>
 				<verAplic>SilTecnologia_v1.00</verAplic>
 				<serie>00001</serie>
-				<nDPS>1903128101</nDPS>
-				<dCompet>2025-11-19</dCompet>
+				<nDPS>10</nDPS>
+				<dCompet>2025-12-13</dCompet>
 				<tpEmit>1</tpEmit>
 				<cLocEmi>3530607</cLocEmi>
 				<prest>
-					<CPF>55555555555</CPF>
-					<IM>9999957</IM>
-					<fone>1147474747</fone>
-					<email>nfe@suporte.com.br</email>
+					<CNPJ>09278456000192</CNPJ>
+					<IM>0</IM>
 					<regTrib>
-						<opSimpNac>1</opSimpNac>
+						<opSimpNac>3</opSimpNac>
+						<regApTribSN>1</regApTribSN>
 						<regEspTrib>0</regEspTrib>
 					</regTrib>
 				</prest>
 				<toma>
-					<CNPJ>11111111111111</CNPJ>
-					<xNome>EMPRESA TOMADORA TESTE</xNome>
+					<CNPJ>10599315000150</CNPJ>
+					<xNome>ROGERIO BUENO MARTINS</xNome>
 					<end>
 						<endNac>
-							<cMun>3530607</cMun>
-							<CEP>07400000</CEP>
+							<cMun>3506003</cMun>
+							<CEP>17020630</CEP>
 						</endNac>
-						<xLgr>RUA DOS BANCOS</xLgr>
-						<nro>0</nro>
-						<xBairro>CENTRO</xBairro>
+						<xLgr>ALAMEDA DOS GOIVOS QUADRA</xLgr>
+						<nro>1-6</nro>
+						<xBairro>PARQUE ALTO SUMARE</xBairro>
 					</end>
+					<fone>1430118727</fone>
+					<email>drigo_martins@hotmail.com</email>
 				</toma>
 				<serv>
 					<locPrest>
-						<cLocPrestacao>3530607</cLocPrestacao>
+						<cLocPrestacao>3506003</cLocPrestacao>
 					</locPrest>
 					<cServ>
-						<cTribNac>010101</cTribNac>
-						<xDescServ>Descrição da nota fiscal de serviço</xDescServ>
-						<cNBS>115029000</cNBS>
+						<cTribNac>140101</cTribNac>
+						<xDescServ>1- TESTE .......R$ 10,00</xDescServ>
+						<cNBS>120015000</cNBS>
 					</cServ>
-					<comExt>
-						<mdPrestacao>0</mdPrestacao>
-						<vincPrest>0</vincPrest>
-						<tpMoeda>986</tpMoeda>
-						<vServMoeda>0</vServMoeda>
-						<mecAFComexP>00</mecAFComexP>
-						<mecAFComexT>00</mecAFComexT>
-						<movTempBens>0</movTempBens>
-						<mdic>0</mdic>
-					</comExt>
-					<infoCompl>
-						<xInfComp>xxxxxxxx</xInfComp>
-					</infoCompl>
 				</serv>
 				<valores>
 					<vServPrest>
-						<vServ>1250.00</vServ>
+						<vServ>10.00</vServ>
 					</vServPrest>
-					<vDescCondIncond>
-						<vDescIncond>0.00</vDescIncond>
-						<vDescCond>0.00</vDescCond>
-					</vDescCondIncond>
-					<vDedRed>
-						<vDR>0.00</vDR>
-					</vDedRed>
 					<trib>
 						<tribMun>
 							<tribISSQN>1</tribISSQN>
-							<tpRetISSQN>1</tpRetISSQN>
+							<tpRetISSQN>2</tpRetISSQN>
+							<pAliq>2.00</pAliq>
 						</tribMun>
-						<tribFed>
-							<piscofins>
-								<CST>01</CST>
-								<vBCPisCofins>9152.15</vBCPisCofins>
-								<pAliqPis>0.65</pAliqPis>
-								<pAliqCofins>3.00</pAliqCofins>
-								<vPis>59.49</vPis>
-								<vCofins>274.56</vCofins>
-								<tpRetPisCofins>1</tpRetPisCofins>
-							</piscofins>
-							<vRetCP>137.28</vRetCP>
-							<vRetIRRF>137.28</vRetIRRF>
-							<vRetCSLL>91.52</vRetCSLL>
-						</tribFed>
 						<totTrib>
-							<vTotTrib>
-								<vTotTribFed>0.00</vTotTribFed>
-								<vTotTribEst>0.00</vTotTribEst>
-								<vTotTribMun>1115.30</vTotTribMun>
-							</vTotTrib>
+							<pTotTribSN>13.00</pTotTribSN>
 						</totTrib>
 					</trib>
 				</valores>
 			</infDPS>
 		</DPS>
 	</infNFSe>
-	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">asdasda</Signature>
 </NFSe>

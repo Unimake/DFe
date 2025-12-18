@@ -200,8 +200,8 @@
 		  <WebActionHomologacao>http://webservices.sil.com/NotaFiscalNacional/NotaFiscalNacionalGerarRequest</WebActionHomologacao>
 		  <WebActionProducao></WebActionProducao>
 		  <SchemaArquivo></SchemaArquivo>
-		  <TagAssinatura>DPS</TagAssinatura>
-		  <TagAtributoID>infDPS</TagAtributoID>
+		  <TagAssinatura>NFSe</TagAssinatura>
+		  <TagAtributoID>infNFSe</TagAtributoID>
 		  <TagLoteAssinatura></TagLoteAssinatura>
 		  <TagLoteAtributoID></TagLoteAtributoID>
 		  <WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -219,8 +219,8 @@
 		  <WebActionHomologacao>http://webservices.sil.com/NotaFiscalNacional/NotaFiscalNacionalCancelarRequest</WebActionHomologacao>
 		  <WebActionProducao></WebActionProducao>
 		  <SchemaArquivo></SchemaArquivo>
-		  <TagAssinatura>pedRegEvento</TagAssinatura>
-		  <TagAtributoID>infPedReg</TagAtributoID>
+		  <TagAssinatura>evento</TagAssinatura>
+		  <TagAtributoID>infEvento</TagAtributoID>
 		  <TagLoteAssinatura></TagLoteAssinatura>
 		  <TagLoteAtributoID></TagLoteAtributoID>
 		  <WebContentType>text/xml;charset=UTF-8</WebContentType>
