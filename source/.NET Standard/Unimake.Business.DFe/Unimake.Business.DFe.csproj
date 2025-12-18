@@ -1496,8 +1496,12 @@
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\DPS_v1.01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\evento_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\nfse_3.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\NFSe_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\nfse_v2-03.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\pedRegEvento_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_cancelar_nfse_envio.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_cancelar_nfse_resposta.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_lote_rps_envio.xsd" />
@@ -1510,6 +1514,9 @@
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_situacao_lote_rps_resposta.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_enviar_lote_rps_envio.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\servico_enviar_lote_rps_resposta.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\tiposComplexos_v1.01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\tiposEventos_v1.01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIMPLISS\tiposSimples_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SISPMJP\nfse v2 02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SISPMJP\xmldsig-core-schema20020212.xsd" />
@@ -3805,9 +3812,13 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\DPS_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\DPS_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\evento_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\nfse_3.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\NFSe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\NFSe_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\nfse_v2-03.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\pedRegEvento_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_cancelar_nfse_envio.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_cancelar_nfse_resposta.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_consultar_lote_rps_envio.xsd" />
@@ -3821,7 +3832,10 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_enviar_lote_rps_envio.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\servico_enviar_lote_rps_resposta.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\tiposComplexos_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\tiposComplexos_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\tiposEventos_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\tiposSimples_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\tiposSimples_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SISPMJP\nfse v2 02.xsd" />
