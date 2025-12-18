@@ -153,7 +153,20 @@ namespace Unimake.Business.DFe
                 case "application/pdf":
                     responseString = responseString.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&amp;", "&");
                     responseString = Convert.ToBase64String(Encoding.UTF8.GetBytes(responseString));
-                    stream = Response.IsSuccessStatusCode ? Response.Content.ReadAsStreamAsync().Result : null;
+                    if (Response.IsSuccessStatusCode)
+                    {
+                        using (var originalStream = Response.Content.ReadAsStreamAsync().Result)
+                        {
+                            var memoryStream = new MemoryStream();
+                            originalStream.CopyTo(memoryStream);
+                            memoryStream.Position = 0;
+                            stream = memoryStream;
+                        }
+                    }
+                    else
+                    {
+                        stream = null;
+                    }
                     resultadoRetorno = CreateXmlDocument(responseString);
                     break;
 

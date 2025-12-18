@@ -175,7 +175,7 @@ namespace Unimake.Business.DFe
         /// <summary>
         /// Stream retornada pelo Webservice. Para consumo de serviços que retornam .pdf
         /// </summary>
-        public Stream RetornoStream { get; protected set; }
+        public Stream RetornoServicoStream { get; protected set; }
 
         /// <summary>
         /// Propriedade para uso interno nos testes unitários. 
@@ -457,10 +457,10 @@ namespace Unimake.Business.DFe
 
             if (disposing)
             {
-                if (RetornoStream != null)
+                if (RetornoServicoStream != null)
                 {
-                    RetornoStream.Dispose();
-                    RetornoStream = null;
+                    RetornoServicoStream.Dispose();
+                    RetornoServicoStream = null;
                 }
             }
 

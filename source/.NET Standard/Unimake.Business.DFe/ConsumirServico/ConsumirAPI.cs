@@ -54,7 +54,7 @@ namespace Unimake.Business.DFe
                     HttpStatusCode = httpResponse.StatusCode;
                     Stream stream = null;
                     retornoXml = TratarRetornoAPI.ReceberRetorno(ref apiConfig, httpResponse, ref stream);
-                    RetornoStream = stream;
+                    RetornoServicoStream = stream;
                 }
                 catch (XmlException)
                 {
