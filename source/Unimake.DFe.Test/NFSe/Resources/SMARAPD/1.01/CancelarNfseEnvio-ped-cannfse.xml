@@ -1,16 +1,16 @@
-<evento xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.00">
+<evento xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
 	<infEvento Id="EVT00000001000000000000154000000000311425120000026171101101001">
 		<verAplic>SilTecnologia_v1.00</verAplic>
 		<ambGer>1</ambGer>
 		<nSeqEvento>0</nSeqEvento>
 		<dhProc>2025-12-07T00:00:00-03:00</dhProc>
 		<nDFe>0</nDFe>
-		<pedRegEvento versao="1.00">
+		<pedRegEvento versao="1.01">
 			<infPedReg Id="PRE00000001000000000000154000000000311425120000026171101101001">
 				<tpAmb>1</tpAmb>
 				<verAplic>SilTecnologia_v1.00</verAplic>
 				<dhEvento>2025-12-07T00:00:00-03:00</dhEvento>
-				<CNPJAutor>00000000000000</CNPJAutor>
+				<CNPJAutor>06117473000150</CNPJAutor>
 				<chNFSe>00000001000000000000154000000000311425120000026171</chNFSe>
 				<nPedRegEvento>1</nPedRegEvento>
 				<e101101>
