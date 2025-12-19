@@ -1,0 +1,14 @@
+﻿<Consnfserecebida_in xmlns="NFe">
+	<Login>
+		<CodigoUsuario>9999999999</CodigoUsuario>
+		<CodigoContribuinte>99999999999</CodigoContribuinte>
+	</Login>
+	<Pagina>1</Pagina>
+	<Filtro>
+		<CpfCnpjPrestador>99999999999999</CpfCnpjPrestador>
+		<DtEmissaoDe>11-11-25</DtEmissaoDe>
+		<DtEmissaoAte>11-11-25</DtEmissaoAte>
+		<NumeroNotaDe>11-11-25</NumeroNotaDe>
+		<NumeroNotaAte>11-11-25</NumeroNotaAte>
+	</Filtro>
+</Consnfserecebida_in>
