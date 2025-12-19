@@ -64,7 +64,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 case PadraoNFSe.IPM:
                     IPM();
                     break;
-                
+
                 case PadraoNFSe.NACIONAL:
                     NACIONAL();
                     break;
@@ -110,6 +110,15 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 case PadraoNFSe.GIF:
                     GIF();
                     break;
+
+                case PadraoNFSe.SIMPLISS:
+                    if (Configuracoes.SchemaVersao == "1.01")
+                    {
+                        SIMPLISS();
+                        break;
+                    }
+                    break;
+
             }
             Configuracoes.Definida = true;
             base.DefinirConfiguracao();
@@ -608,7 +617,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// Definindo configurações padrão GIF
         /// </summary>
         public void GIF()
-        { 
+        {
             var URI = Configuracoes.RequestURI;
 
             if (URI != null)
@@ -620,6 +629,17 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             }
         }
         #endregion
+
+        #region SIMPLISS
+
+        private void SIMPLISS()
+        {
+            var Chave = GetXMLElementInnertext("chNFSe");
+            Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", Chave);
+
+        }
+
+        #endregion SIMPLISS
 
 
         #endregion Configurações separadas por PadrãoNFSe
@@ -952,6 +972,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             stream.Close();
         }
 
-        
+
     }
 }

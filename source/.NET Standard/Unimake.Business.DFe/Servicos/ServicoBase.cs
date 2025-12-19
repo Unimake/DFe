@@ -349,7 +349,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Stream retornada pelo Webservice. Para consumo de serviços que retornam .pdf
         /// </summary>
-        public Stream RetornoStream { get; set; }
+        public Stream RetornoWSStream { get; set; }
 
         static ServicoBase() => AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolver.AssemblyResolve;
 
@@ -401,10 +401,23 @@ namespace Unimake.Business.DFe.Servicos
 
                 RetornoWSString = consumirAPI.RetornoServicoString;
                 RetornoWSXML = consumirAPI.RetornoServicoXML;
-                RetornoStream = consumirAPI.RetornoStream;  //Retorno específico para criação de .pdf para os casos em que a String corrompe o conteúdo. Mauricio 27/09/2023 #157859
                 HttpStatusCode = consumirAPI.HttpStatusCode;
 
+                // Copiar o stream para um MemoryStream antes do Dispose
+                if (consumirAPI.RetornoServicoStream != null)
+                {
+                    var memoryStream = new MemoryStream();
+                    consumirAPI.RetornoServicoStream.CopyTo(memoryStream);
+                    memoryStream.Position = 0;
+                    RetornoWSStream = memoryStream;
+                }
+                else
+                {
+                    RetornoWSStream = null;
+                }
+
                 apiConfig.Dispose();
+                consumirAPI.Dispose();
             }
             else
             {
@@ -477,10 +490,10 @@ namespace Unimake.Business.DFe.Servicos
             if (disposing)
             {
                 // Liberar recursos gerenciados
-                if (RetornoStream != null)
+                if (RetornoWSStream != null)
                 {
-                    RetornoStream.Dispose();
-                    RetornoStream = null;
+                    RetornoWSStream.Dispose();
+                    RetornoWSStream = null;
                 }
             }
 

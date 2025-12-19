@@ -202,7 +202,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
 
             RetornoWSString = consumirAPI.RetornoServicoString;
             RetornoWSXML = consumirAPI.RetornoServicoXML;
-            RetornoStream = consumirAPI.RetornoStream;  //Retorno específico para criação de .pdf para os casos em que a String corrompe o conteúdo. Mauricio 27/09/2023 #157859
+            RetornoWSStream = consumirAPI.RetornoServicoStream;  //Retorno específico para criação de .pdf para os casos em que a String corrompe o conteúdo. Mauricio 27/09/2023 #157859
 
             apiConfig.Dispose();
             consumirAPI.Dispose();
