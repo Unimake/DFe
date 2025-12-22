@@ -1,0 +1,21 @@
+﻿<ConsultarNfseServicoTomadoEnvio xmlns="http://www.sped.fazenda.gov.br/nfse" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#">
+	<Consulente>
+		<CNPJ>99999999999999</CNPJ>
+		<IM>1234567</IM>
+	</Consulente>
+	<NumeroNfse>1</NumeroNfse>
+	<!-- CHOICE. (NumeroNfse OU PeriodoEmissao OU PeriodoCompetencia) 
+  <PeriodoEmissao>
+    <DataInicial>2025-11-18</DataInicial>
+    <DataFinal>2025-11-20</DataFinal>
+  </PeriodoEmissao>
+  <PeriodoCompetencia>
+    <DataInicial>2025-11-18</DataInicial>
+    <DataFinal>2025-11-20</DataFinal>
+  </PeriodoCompetencia> -->
+	<Tomador>
+		<CNPJ>12345678901234</CNPJ>
+		<IM>7654321</IM>
+	</Tomador>
+	<Pagina>0000001</Pagina>
+</ConsultarNfseServicoTomadoEnvio>
