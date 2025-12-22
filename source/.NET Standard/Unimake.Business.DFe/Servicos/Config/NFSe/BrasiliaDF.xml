@@ -250,5 +250,234 @@
 			<SchemaVersao>2.04</SchemaVersao>
 			<TargetNS></TargetNS>
 		</ConsultarNfseFaixa>
+		<!-- Versão 1.01 -->
+		<RecepcionarLoteRps versao="1.01">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDps</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteDpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteDps><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:RecepcionarLoteDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="1.01">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDpsSincrono</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteDpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteDpsSincrono><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:RecepcionarLoteDpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<GerarNfse versao="1.01">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/GerarNfse</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:GerarNfse><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse"><versaoDados>1.01</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="1.01">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/CancelarNfse</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura>pedRegEvento</TagAssinatura>
+			<TagAtributoID>infPedReg</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:CancelarNfse><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="1.01">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarLoteDps</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteDps><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarLoteDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.01">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseDps</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseDps><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfseDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="1.01">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseServicoPrestado</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestado><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="1.01">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseServicoTomado</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomado><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseServicoTomado>
+		<ConsultarNfseFaixa versao="1.01">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfsePorFaixa</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorFaixa><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseFaixa>
+		<ConsultarDadosCadastrais versao="1.01">
+			<Descricao>Consulta os dados cadastrais</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarDadosCadastrais</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarDadosCadastrais><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarDadosCadastrais></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarDadosCadastrais>
+		<ConsultarRpsDisponivel versao="1.01">
+			<Descricao>Consulta os dados cadastrais</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarDpsDisponivel</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarDpsDisponivel><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarDpsDisponivel></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarRpsDisponivel>
+		<ConsultarUrlNfse versao="1.01">
+			<Descricao>Consulta os dados cadastrais</Descricao>
+			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarUrlNfse</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarUrlNfse><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarUrlNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarUrlNfse>
 	</Servicos>
 </Configuracoes>
