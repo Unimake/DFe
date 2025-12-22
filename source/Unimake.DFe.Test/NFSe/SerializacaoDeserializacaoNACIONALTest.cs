@@ -543,7 +543,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                         {
                             TribMun = new TribMun
                             {
-                                TribISSQN = TribISSQN.OperacaoIntributavel,
+                                TribISSQN = TribISSQN.OperacaoTributavel,
                                 TpRetISSQN = TipoRetencaoISSQN.NaoRetido
                             },
                             TotTrib = new TotTrib

@@ -1,0 +1,212 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="NFe" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="SDTRPS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:short" name="Ano"/>
+				<xs:element type="xs:string" name="Mes"/>
+				<xs:element type="xs:long" name="CPFCNPJ"/>
+				<xs:element type="xs:string" name="DTIni"/>
+				<xs:element type="xs:string" name="DTFin"/>
+				<xs:element type="xs:byte" name="TipoTrib"/>
+				<xs:element type="xs:string" name="DtAdeSN"/>
+				<xs:element type="xs:string" name="AlqIssSN_IP"/>
+				<xs:element type="xs:string" name="RegApTribSN"/>
+				<xs:element type="xs:string" name="TribTpSusp"/>
+				<xs:element type="xs:string" name="TribProcSusp"/>
+				<xs:element type="xs:string" name="Versao"/>
+				<xs:element name="Reg20">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Reg20Item" maxOccurs="unbounded" minOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="TipoNFS"/>
+										<xs:element type="xs:int" name="NumRps"/>
+										<xs:element type="xs:string" name="SerRps"/>
+										<xs:element type="xs:string" name="DtEmi"/>
+										<xs:element type="xs:string" name="RetFonte"/>
+										<xs:element type="xs:string" name="CodSrv"/>
+										<xs:element type="xs:string" name="DiscrSrv"/>
+										<xs:element type="xs:string" name="VlNFS"/>
+										<xs:element type="xs:string" name="VlDed"/>
+										<xs:element type="xs:string" name="DiscrDed"/>
+										<xs:element type="xs:string" name="VlBasCalc"/>
+										<xs:element type="xs:string" name="AlqIss"/>
+										<xs:element type="xs:string" name="VlIss"/>
+										<xs:element type="xs:string" name="VlIssRet"/>
+										<xs:element type="xs:string" name="CpfCnpTom"/>
+										<xs:element type="xs:string" name="RazSocTom"/>
+										<xs:element type="xs:string" name="TipoLogtom"/>
+										<xs:element type="xs:string" name="LogTom"/>
+										<xs:element type="xs:string" name="NumEndTom"/>
+										<xs:element type="xs:string" name="ComplEndTom"/>
+										<xs:element type="xs:string" name="BairroTom"/>
+										<xs:element type="xs:string" name="MunTom"/>
+										<xs:element type="xs:string" name="SiglaUFTom"/>
+										<xs:element type="xs:string" name="CepTom"/>
+										<xs:element type="xs:string" name="Telefone"/>
+										<xs:element type="xs:string" name="InscricaoMunicipal"/>
+										<xs:element type="xs:string" name="TipoLogLocPre"/>
+										<xs:element type="xs:string" name="LogLocPre"/>
+										<xs:element type="xs:string" name="NumEndLocPre"/>
+										<xs:element type="xs:string" name="ComplEndLocPre"/>
+										<xs:element type="xs:string" name="BairroLocPre"/>
+										<xs:element type="xs:string" name="MunLocPre"/>
+										<xs:element type="xs:string" name="SiglaUFLocpre"/>
+										<xs:element type="xs:string" name="CepLocPre"/>
+										<xs:element type="xs:string" name="Email1"/>
+										<xs:element type="xs:string" name="Email2" minOccurs="0"/>
+										<xs:element type="xs:string" name="Email3" minOccurs="0"/>
+										<xs:element type="xs:string" name="MoedaTrnExt" minOccurs="0"/>
+										<xs:element type="xs:string" name="ValTrnExt" minOccurs="0"/>
+										<xs:element name="Reg30" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Reg30Item" maxOccurs="unbounded" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="TributoSigla" minOccurs="0"/>
+																<xs:element type="xs:string" name="TributoCST" minOccurs="0"/>
+																<xs:element type="xs:string" name="TributoIdRet" minOccurs="0"/>
+																<xs:element type="xs:string" name="TributoBaseCalc" minOccurs="0"/>
+																<xs:element type="xs:string" name="TributoAliquota" minOccurs="0"/>
+																<xs:element type="xs:string" name="TributoValor" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Reg40" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Reg40Item" maxOccurs="unbounded" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="SiglaCpoAdc" minOccurs="0"/>
+																<xs:element type="xs:string" name="ConteudoCpoAdc" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Reg50" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Reg50Item" maxOccurs="unbounded" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:byte" name="TipoEnd"/>
+																<xs:element name="Destinatario" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="DestTipPes"/>
+																			<xs:element type="xs:string" name="DestCpfCnpj"/>
+																			<xs:element type="xs:string" name="DestNIF"/>
+																			<xs:element type="xs:string" name="DestNaoNIF"/>
+																			<xs:element type="xs:string" name="DestNome"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Obra" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="ObraIdLocal"/>
+																			<xs:element type="xs:string" name="ObraDtInicio"/>
+																			<xs:element type="xs:string" name="ObraCEICNO"/>
+																			<xs:element type="xs:string" name="ObraCodPre"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="BensImov" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="BensImobCIB"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Endereco" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="EndCEP"/>
+																			<xs:element type="xs:string" name="EndExtPais"/>
+																			<xs:element type="xs:string" name="EndExtCodPost"/>
+																			<xs:element type="xs:string" name="EndExtCidade"/>
+																			<xs:element type="xs:string" name="EndExtEstProvReg"/>
+																			<xs:element type="xs:string" name="EndLog"/>
+																			<xs:element type="xs:string" name="EndNum"/>
+																			<xs:element type="xs:string" name="EndCompl"/>
+																			<xs:element type="xs:string" name="EndBairro"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Reg60_RTC">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:string" name="Finalidade"/>
+													<xs:element type="xs:string" name="IndConsFin"/>
+													<xs:element type="xs:string" name="IndDest"/>
+													<xs:element type="xs:string" name="IndOpeOne"/>
+													<xs:element type="xs:string" name="IndCodOpe"/>
+													<xs:element type="xs:string" name="VlReeRepRes"/>
+													<xs:element name="gIBSCBS" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="CST"/>
+																<xs:element type="xs:string" name="CClassTrib"/>
+																<xs:element type="xs:string" name="CCodCredPres"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="gTribReg" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="CST"/>
+																<xs:element type="xs:string" name="CClassTrib"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="gDif" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="PDifUF"/>
+																<xs:element type="xs:string" name="PDifMun"/>
+																<xs:element type="xs:string" name="PDifCBS"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>										
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Reg90" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:int" name="QtdRegNormal"/>
+							<xs:element type="xs:string" name="ValorNFS"/>
+							<xs:element type="xs:string" name="ValorISS"/>
+							<xs:element type="xs:string" name="ValorDed"/>
+							<xs:element type="xs:string" name="ValorIssRetTom"/>
+							<xs:element type="xs:string" name="QtdReg30"/>
+							<xs:element type="xs:string" name="ValorTributos"/>
+							<xs:element type="xs:string" name="QtdReg40"  minOccurs="0"/>
+							<xs:element type="xs:string" name="QtdReg50"  minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
