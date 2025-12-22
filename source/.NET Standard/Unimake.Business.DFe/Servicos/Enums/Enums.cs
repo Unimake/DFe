@@ -559,6 +559,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consultar Benefícios Municipais da NFSe NACIONAL")]
         NFSeConsultarBeneficioMunicipal = 90,
 
+        ///<summary>
+        ///91 - Recepcionar Eventos Diversos da NFSe NACIONAL
+        /// </summary>
+        [Description("Recepcionar Eventos Diversos da NFSe NACIONAL")]
+        NFSeRecepcionarEventosDiversos = 91,
+
         #endregion
 
         #region Gerais
@@ -16318,35 +16324,40 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoImunidadeISSQN
     {
         /// <summary>
-        /// 0 - Tipo não informado
+        /// 0 - Imunidade (tipo não informado na nota de origem);
         /// </summary>
         [XmlEnum("0")]
-        Nenhum = 0,
+        Imunidade = 0,
 
         /// <summary>
-        /// 1 - Patrimônio, renda ou serviço
+        /// 1 - Patrimônio, renda ou serviços, uns dos outros (CF88, Art 150, VI, a);
         /// </summary>
         [XmlEnum("1")]
         PatrimonioRendaServico = 1,
 
         /// <summary>
-        /// 2 - Templos de qualquer culto
+        /// 2 - Templos de qualquer culto (CF88, Art 150, VI, b); Entidades religiosas e templos de qualquer culto, inclusive suas organizações assistenciais e beneficentes (CF88, Art 150, VI, b);
         /// </summary>
         [XmlEnum("2")]
         Templo = 2,
 
         /// <summary>
-        /// 3 - Patrimônio, renda ou serviço político
+        /// 3 - Patrimônio, renda ou serviços dos partidos políticos, inclusive suas fundações, das entidades sindicais dos trabalhadores, das instituições de educação e de assistência social, sem fins lucrativos, atendidos os requisitos da lei (CF88, Art 150, VI, c);
         /// </summary>
         [XmlEnum("3")]
         PatrimonioRendaServicoPolitico = 3,
 
         /// <summary>
-        /// 4 - Livros, jornais, periódicos e o papel destinado a sua impressão
+        /// 4 - Livros, jornais, periódicos e o papel destinado a sua impressão (CF88, Art 150, VI, d);
         /// </summary>
         [XmlEnum("4")]
-        DestinadosImpresao = 4,
+        LivrosJornaisPeriodicosPapelImpressao = 4,
 
+        /// <summary>
+        /// 5 - Fonogramas e videofonogramas musicais produzidos no Brasil contendo obras musicais ou literomusicais de autores brasileiros e/ou obras em geral interpretadas por artistas brasileiros bem como os suportes materiais ou arquivos digitais que os contenham, salvo na etapa de replicação industrial de mídias ópticas de leitura a laser. (CF88, Art 150, VI, e);
+        /// </summary>
+        [XmlEnum("5")]
+        FonogramasVideofonogramas = 5
     }
     #endregion Tipo Imunidade ISSQN NFS-e NACIONAL
 
@@ -16877,28 +16888,28 @@ namespace Unimake.Business.DFe.Servicos
     public enum TribISSQN
     {
         /// <summary>
-        /// 1 - OperacaoIntributavel
+        /// 1 - Operação Tributável
         /// </summary>
         [XmlEnum("1")]
-        OperacaoIntributavel = 1,
+        OperacaoTributavel = 1,
 
         /// <summary>
-        /// 2 - Exportação de Serviço
+        /// 2 - Imunidade
         /// </summary>
         [XmlEnum("2")]
-        ExportacaoServico = 2,
+        Imunidade = 2,
 
         /// <summary>
-        /// 3 - Não Incidencia
+        /// 3 - Exportação de Serviço
         /// </summary>
         [XmlEnum("3")]
-        NaoIncidencia = 3,
+        ExportacaoServico = 3,
 
         /// <summary>
-        /// 4 - Imunidade
+        /// 4 - Não incidência
         /// </summary>
         [XmlEnum("4")]
-        Imunidade = 4,
+        NaoIncidencia = 4,
     }
     #endregion Tributação ISSQN sobre serviço prestado NFS-e NACIONAL
 

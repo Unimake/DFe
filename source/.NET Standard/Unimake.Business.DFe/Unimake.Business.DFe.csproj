@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2025.12.18.1130</AssemblyVersion>
-		<FileVersion>2025.12.18.1130</FileVersion>
+		<AssemblyVersion>2025.12.22.1444</AssemblyVersion>
+		<FileVersion>2025.12.22.1444</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -3704,6 +3704,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\INTERSOL\enviar_lote_rps_resposta_v1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\INTERSOL\tipos_v1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\INTERSOL\xmldsig-core-schema20020212_v1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\schema_v101.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\LEXSOM\NFSE.xsd" />

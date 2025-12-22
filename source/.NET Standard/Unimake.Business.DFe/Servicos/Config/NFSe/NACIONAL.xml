@@ -83,6 +83,23 @@
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarNfsePDF>
+		<RecepcionarEventosNfse versao="1.00">
+			<Descricao>Recepcionar Eventos Diversos da NFSe NACIONAL</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}/eventos</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}/eventos</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
+			<SchemaArquivo>evento_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura>pedRegEvento</TagAssinatura>
+			<TagAtributoID>infPedReg</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</RecepcionarEventosNfse>
 		<!-- Novos serviços de consulta de parâmetros municipais -->
 		<ConsultarConvenioMunicipal versao="1.00">
 			<Descricao>Consultar Convênio Municipal</Descricao>
@@ -264,6 +281,23 @@
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarNfsePDF>
+		<RecepcionarEventosNfse versao="1.01">
+			<Descricao>Recepcionar Eventos Diversos da NFSe NACIONAL</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}/eventos</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}/eventos</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
+			<SchemaArquivo>evento_v1.01.xsd</SchemaArquivo>
+			<TagAssinatura>pedRegEvento</TagAssinatura>
+			<TagAtributoID>infPedReg</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</RecepcionarEventosNfse>
 		<!-- Novos serviços de consulta de parâmetros municipais -->
 		<ConsultarConvenioMunicipal versao="1.01">
 			<Descricao>Consultar Convênio Municipal</Descricao>
@@ -362,5 +396,5 @@
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarBeneficioMunicipal>
 		<!-- FIM: Versão schema 1.01 -->
-	</Servicos>
+</Servicos>
 </Configuracoes>

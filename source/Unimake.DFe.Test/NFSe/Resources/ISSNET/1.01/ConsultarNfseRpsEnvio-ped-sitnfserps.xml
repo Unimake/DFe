@@ -1,0 +1,10 @@
+﻿<ConsultarNfseDpsEnvio xmlns="http://www.sped.fazenda.gov.br/nfse" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#">
+  <IdentificacaoDps>
+    <NumDPS>1</NumDPS>
+    <SerieDPS>1</SerieDPS>
+  </IdentificacaoDps>
+  <Prestador>
+    <CNPJ>99999999999999</CNPJ>
+    <IM>1234567</IM>
+  </Prestador>
+</ConsultarNfseDpsEnvio>
