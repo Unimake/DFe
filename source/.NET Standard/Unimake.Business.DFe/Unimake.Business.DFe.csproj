@@ -1568,6 +1568,7 @@
 		<None Remove="Xml\Schemas\NFSe\VERSATEC\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\VITORIA_ES\nfse v2 01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\VITORIA_ES\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\WEBISS\nfse_v2_02-IBSCBS.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\procCCeNFe_v1.00.xsd" />
@@ -3900,6 +3901,7 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFSe\VITORIA_ES\nfse v2 01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\VITORIA_ES\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02-IBSCBS.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SALVADOR_BA\nfse_salvador.xsd" />

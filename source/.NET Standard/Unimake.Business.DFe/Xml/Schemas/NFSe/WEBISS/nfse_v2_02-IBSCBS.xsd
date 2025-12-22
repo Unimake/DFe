@@ -1,0 +1,2331 @@
+<?xml version="1.0"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.abrasf.org.br/nfse.xsd" xmlns="http://www.abrasf.org.br/nfse.xsd" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema20020212.xsd"/>
+	<!-- definition of simple elements -->
+	<xsd:simpleType name="tsNumeroNfse">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="15"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCodigoVerificacao">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="9"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsStatusRps">
+		<xsd:restriction base="xsd:byte">
+			<xsd:pattern value="1|2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsStatusNfse">
+		<xsd:restriction base="xsd:byte">
+			<xsd:pattern value="1|2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsExigibilidadeISS">
+		<xsd:restriction base="xsd:byte">
+			<xsd:pattern value="1|2|3|4|5|6|7"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsNumeroProcesso">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="30"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsRegimeEspecialTributacao">
+		<xsd:restriction base="xsd:byte">
+			<xsd:pattern value="1|2|3|4|5|6"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsSimNao">
+		<xsd:restriction base="xsd:byte">
+			<xsd:pattern value="1|2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsResponsavelRetencao">
+		<xsd:restriction base="xsd:byte">
+			<xsd:pattern value="1|2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsPagina">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="999999"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsNumeroRps">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="15"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsSerieRps">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="5"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsTipoRps">
+		<xsd:restriction base="xsd:byte">
+			<xsd:pattern value="1|2|3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsOutrasInformacoes">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="255"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsValor">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:totalDigits value="15"/>
+			<xsd:fractionDigits fixed="true" value="2"/>
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsItemListaServico">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="5"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCodigoCnae">
+		<xsd:restriction base="xsd:int">
+			<xsd:totalDigits value="7"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCodigoTributacao">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCodigoNbs">
+		<xsd:annotation>
+			<xsd:documentation>
+				Código da lista de Nomenclatura Brasileira de Serviços (NBS), obrigatório para reforma tributária (IBS/CBS).
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="[0-9]{9}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsAliquota">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:totalDigits value="6"/>
+			<xsd:fractionDigits value="4"/>
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsDiscriminacao">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2000"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCodigoMunicipioIbge">
+		<xsd:restriction base="xsd:int">
+			<xsd:totalDigits value="7"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsInscricaoMunicipal">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="15"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsInscricaoEstadual">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsRazaoSocial">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="150"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsNomeFantasia">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="60"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCnpj">
+		<xsd:restriction base="xsd:string">
+			<xsd:length fixed="true" value="14"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsEndereco">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="125"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsNumeroEndereco">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsComplementoEndereco">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="60"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsBairro">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="60"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsUf">
+		<xsd:restriction base="xsd:string">
+			<xsd:length fixed="true" value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCodigoPaisBacen">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="4"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCep">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsEmail">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="80"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsTelefone">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCpf">
+		<xsd:restriction base="xsd:string">
+			<xsd:length fixed="true" value="11"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCodigoObra">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="15"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsArt">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="15"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsNumeroLote">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="15"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsNumeroProtocolo">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsSituacaoLoteRps">
+		<xsd:restriction base="xsd:byte">
+			<xsd:pattern value="1|2|3|4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsQuantidadeRps">
+		<xsd:restriction base="xsd:int"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCodigoMensagemAlerta">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="4"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsDescricaoMensagemAlerta">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="200"/>
+			<xsd:minLength value="1"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsCodigoCancelamentoNfse">
+		<xsd:restriction base="xsd:byte">
+			<xsd:pattern value="1|2|3|4|5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsIdTag">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsVersao">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[1-9]{1}[0-9]{0,1}\.[0-9]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- definition of complex elements -->
+	<xsd:complexType name="tcCpfCnpj">
+		<xsd:choice>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Cpf" type="tsCpf"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Cnpj" type="tsCnpj"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="tcEndereco">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Endereco" type="tsEndereco"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Numero" type="tsNumeroEndereco"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Complemento" type="tsComplementoEndereco"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Bairro" type="tsBairro"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="CodigoMunicipio" type="tsCodigoMunicipioIbge"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Uf" type="tsUf"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="CodigoPais" type="tsCodigoPaisBacen"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Cep" type="tsCep"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcContato">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Telefone" type="tsTelefone"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Email" type="tsEmail"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcIdentificacaoOrgaoGerador">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="CodigoMunicipio" type="tsCodigoMunicipioIbge"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Uf" type="tsUf"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcIdentificacaoRps">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Numero" type="tsNumeroRps"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Serie" type="tsSerieRps"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Tipo" type="tsTipoRps"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcIdentificacaoPrestador">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="CpfCnpj" type="tcCpfCnpj"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="InscricaoMunicipal" type="tsInscricaoMunicipal"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="InscricaoEstadual" type="tsInscricaoEstadual"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcIdentificacaoTomador">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="CpfCnpj" type="tcCpfCnpj"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="InscricaoMunicipal" type="tsInscricaoMunicipal"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="InscricaoEstadual" type="tsInscricaoEstadual"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcIdentificacaoConsulente">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="CpfCnpj" type="tcCpfCnpj"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="InscricaoMunicipal" type="tsInscricaoMunicipal"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcIdentificacaoIntermediario">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="CpfCnpj" type="tcCpfCnpj"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="InscricaoMunicipal" type="tsInscricaoMunicipal"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="InscricaoEstadual" type="tsInscricaoEstadual"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcDadosTomador">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="IdentificacaoTomador" type="tcIdentificacaoTomador"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="RazaoSocial" type="tsRazaoSocial"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Endereco" type="tcEndereco"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Contato" type="tcContato"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcDadosIntermediario">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="IdentificacaoIntermediario" type="tcIdentificacaoIntermediario"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="RazaoSocial" type="tsRazaoSocial"/>
+			<xsd:element minOccurs="1" maxOccurs="1" name="CodigoMunicipio" type="tsCodigoMunicipioIbge"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcValoresDeclaracaoServico">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="ValorServicos" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="ValorDeducoes" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="ValorPis" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="ValorCofins" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="ValorInss" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="ValorIr" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="ValorCsll" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="OutrasRetencoes" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="ValorIss" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Aliquota" type="tsAliquota"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="DescontoIncondicionado" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="DescontoCondicionado" type="tsValor"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcValoresNfse">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="BaseCalculo" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Aliquota" type="tsAliquota"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="ValorIss" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="ValorLiquidoNfse" type="tsValor"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcDadosServico">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Valores" type="tcValoresDeclaracaoServico"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="IssRetido" type="tsSimNao"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="ResponsavelRetencao" type="tsResponsavelRetencao"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="ItemListaServico" type="tsItemListaServico"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="CodigoCnae" type="tsCodigoCnae"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="CodigoTributacaoMunicipio" type="tsCodigoTributacao"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="CodigoNbs" type="tsCodigoNbs" />
+			<xsd:element maxOccurs="1" minOccurs="1" name="Discriminacao" type="tsDiscriminacao"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="CodigoMunicipio" type="tsCodigoMunicipioIbge"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="CodigoPais" type="tsCodigoPaisBacen"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="ExigibilidadeISS" type="tsExigibilidadeISS"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="MunicipioIncidencia" type="tsCodigoMunicipioIbge"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="NumeroProcesso" type="tsNumeroProcesso"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcDadosConstrucaoCivil">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="CodigoObra" type="tsCodigoObra"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Art" type="tsArt"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcDadosPrestador">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="IdentificacaoPrestador" type="tcIdentificacaoPrestador"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="RazaoSocial" type="tsRazaoSocial"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="NomeFantasia" type="tsNomeFantasia"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Endereco" type="tcEndereco"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Contato" type="tcContato"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcInfRps">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="IdentificacaoRps" type="tcIdentificacaoRps"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="DataEmissao" type="xsd:date"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Status" type="tsStatusRps"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="RpsSubstituido" type="tcIdentificacaoRps"/>
+		</xsd:sequence>
+		<xsd:attribute name="Id" type="tsIdTag"/>
+	</xsd:complexType>
+	<xsd:complexType name="tcInfDeclaracaoPrestacaoServico">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Rps" type="tcInfRps"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Competencia" type="xsd:date"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Servico" type="tcDadosServico"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Prestador" type="tcIdentificacaoPrestador"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Tomador" type="tcDadosTomador"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Intermediario" type="tcDadosIntermediario"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="ConstrucaoCivil" type="tcDadosConstrucaoCivil"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="RegimeEspecialTributacao" type="tsRegimeEspecialTributacao"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="OptanteSimplesNacional" type="tsSimNao"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="IncentivoFiscal" type="tsSimNao"/>
+			<!-- Complementos: IBSCBS -->
+			<xsd:element maxOccurs="1" minOccurs="0" name="IBSCBS" type="TCRTCInfoIBSCBS">
+				<xsd:annotation>
+					<xsd:documentation>
+						Grupo de informações declaradas pelo emitente referentes ao IBS e à CBS (LC 214/2025).
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="Id" type="tsIdTag"/>
+	</xsd:complexType>
+	<xsd:complexType name="tcDeclaracaoPrestacaoServico">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="InfDeclaracaoPrestacaoServico" type="tcInfDeclaracaoPrestacaoServico"/>
+			<xsd:element maxOccurs="1" minOccurs="0" ref="dsig:Signature"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcIdentificacaoNfse">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Numero" type="tsNumeroNfse"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="CpfCnpj" type="tcCpfCnpj"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="InscricaoMunicipal" type="tsInscricaoMunicipal"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="CodigoMunicipio" type="tsCodigoMunicipioIbge"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcInfNfse">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Numero" type="tsNumeroNfse"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="CodigoVerificacao" type="tsCodigoVerificacao"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="DataEmissao" type="xsd:dateTime"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="NfseSubstituida" type="tsNumeroNfse"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="OutrasInformacoes" type="tsOutrasInformacoes"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="ValoresNfse" type="tcValoresNfse"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="ValorCredito" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="PrestadorServico" type="tcDadosPrestador"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="OrgaoGerador" type="tcIdentificacaoOrgaoGerador"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="DeclaracaoPrestacaoServico" type="tcDeclaracaoPrestacaoServico"/>
+			<!-- Complementos: IBSCBS -->
+			<xsd:element maxOccurs="1" minOccurs="1" name="ChaveAcesso" type="TSChaveAcesso"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="IBSCBS" type="TCRTCIBSCBS">
+				<xsd:annotation>
+					<xsd:documentation>
+						Grupo de informações geradas pelo sistema referentes ao IBS e à CBS (LC 214/2025).
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="Id" type="tsIdTag"/>
+	</xsd:complexType>
+	<xsd:complexType name="tcNfse">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="InfNfse" type="tcInfNfse"/>
+			<xsd:element maxOccurs="1" minOccurs="0" ref="dsig:Signature"/>
+		</xsd:sequence>
+		<xsd:attribute name="versao" type="tsVersao" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="tcInfPedidoCancelamento">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="IdentificacaoNfse" type="tcIdentificacaoNfse"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="CodigoCancelamento" type="tsCodigoCancelamentoNfse"/>
+		</xsd:sequence>
+		<xsd:attribute name="Id" type="tsIdTag"/>
+	</xsd:complexType>
+	<xsd:complexType name="tcPedidoCancelamento">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="InfPedidoCancelamento" type="tcInfPedidoCancelamento"/>
+			<xsd:element maxOccurs="1" minOccurs="0" ref="dsig:Signature"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcConfirmacaoCancelamento">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Pedido" type="tcPedidoCancelamento"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="DataHora" type="xsd:dateTime"/>
+		</xsd:sequence>
+		<xsd:attribute name="Id" type="tsIdTag"/>
+	</xsd:complexType>
+	<xsd:complexType name="tcCancelamentoNfse">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Confirmacao" type="tcConfirmacaoCancelamento"/>
+			<xsd:element maxOccurs="1" minOccurs="0" ref="dsig:Signature"/>
+		</xsd:sequence>
+		<xsd:attribute name="versao" type="tsVersao" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="tcRetCancelamento">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="NfseCancelamento" type="tcCancelamentoNfse"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcInfSubstituicaoNfse">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="NfseSubstituidora" type="tsNumeroNfse"/>
+		</xsd:sequence>
+		<xsd:attribute name="Id" type="tsIdTag"/>
+	</xsd:complexType>
+	<xsd:complexType name="tcSubstituicaoNfse">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="SubstituicaoNfse" type="tcInfSubstituicaoNfse"/>
+			<xsd:element maxOccurs="2" minOccurs="0" ref="dsig:Signature"/>
+		</xsd:sequence>
+		<xsd:attribute name="versao" type="tsVersao" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="tcCompNfse">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Nfse" type="tcNfse"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="NfseCancelamento" type="tcCancelamentoNfse"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="NfseSubstituicao" type="tcSubstituicaoNfse"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcMensagemRetorno">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Codigo" type="tsCodigoMensagemAlerta"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Mensagem" type="tsDescricaoMensagemAlerta"/>
+			<xsd:element minOccurs="0" name="Correcao" type="tsDescricaoMensagemAlerta"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcMensagemRetornoLote">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="IdentificacaoRps" type="tcIdentificacaoRps"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Codigo" type="tsCodigoMensagemAlerta"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="Mensagem" type="tsDescricaoMensagemAlerta"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcLoteRps">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="NumeroLote" type="tsNumeroLote"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="CpfCnpj" type="tcCpfCnpj"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="InscricaoMunicipal" type="tsInscricaoMunicipal"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="QuantidadeRps" type="tsQuantidadeRps"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="ListaRps">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="1" name="Rps" type="tcDeclaracaoPrestacaoServico"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="Id" type="tsIdTag"/>
+		<xsd:attribute name="versao" type="tsVersao" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="ListaMensagemRetornoLote">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="1" name="MensagemRetorno" type="tcMensagemRetornoLote"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ListaMensagemRetorno">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="1" name="MensagemRetorno" type="tcMensagemRetorno"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ListaMensagemAlertaRetorno">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="1" name="MensagemRetorno" type="tcMensagemRetorno"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="cabecalho">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="versaoDados" type="tsVersao"/>
+			</xsd:sequence>
+			<xsd:attribute name="versao" type="tsVersao" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CompNfse" type="tcCompNfse"/>
+	<xsd:element name="EnviarLoteRpsEnvio">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="LoteRps" type="tcLoteRps"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="dsig:Signature"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="EnviarLoteRpsResposta">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="NumeroLote" type="tsNumeroLote"/>
+					<xsd:element maxOccurs="1" minOccurs="1" name="DataRecebimento" type="xsd:dateTime"/>
+					<xsd:element maxOccurs="1" minOccurs="1" name="Protocolo" type="tsNumeroProtocolo"/>
+				</xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetorno"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="EnviarLoteRpsSincronoEnvio">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="LoteRps" type="tcLoteRps"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="dsig:Signature"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="EnviarLoteRpsSincronoResposta">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="NumeroLote" type="tsNumeroLote"/>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DataRecebimento" type="xsd:dateTime"/>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Protocolo" type="tsNumeroProtocolo"/>
+				<xsd:choice>
+					<xsd:element maxOccurs="1" minOccurs="1" name="ListaNfse">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="unbounded" minOccurs="1" ref="CompNfse"/>
+								<xsd:element maxOccurs="1" minOccurs="0" ref="ListaMensagemAlertaRetorno"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetorno"/>
+					<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetornoLote"/>
+				</xsd:choice>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="GerarNfseEnvio">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Rps" type="tcDeclaracaoPrestacaoServico"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="GerarNfseResposta">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:choice>
+					<xsd:element maxOccurs="1" minOccurs="1" name="ListaNfse">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="1" minOccurs="1" ref="CompNfse"/>
+								<xsd:element maxOccurs="1" minOccurs="0" ref="ListaMensagemAlertaRetorno"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetorno"/>
+				</xsd:choice>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CancelarNfseEnvio">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Pedido" type="tcPedidoCancelamento"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CancelarNfseResposta">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element maxOccurs="1" minOccurs="1" name="RetCancelamento" type="tcRetCancelamento"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetorno"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SubstituirNfseEnvio">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="SubstituicaoNfse">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Pedido" type="tcPedidoCancelamento"/>
+							<xsd:element name="Rps" type="tcDeclaracaoPrestacaoServico"/>
+						</xsd:sequence>
+						<xsd:attribute name="Id" type="tsIdTag"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="dsig:Signature"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SubstituirNfseResposta">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element name="RetSubstituicao">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="NfseSubstituida">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="1" minOccurs="1" ref="CompNfse"/>
+										<xsd:element maxOccurs="1" minOccurs="0" ref="ListaMensagemAlertaRetorno"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="NfseSubstituidora">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="1" minOccurs="1" ref="CompNfse"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetorno"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultarLoteRpsEnvio">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="Prestador" type="tcIdentificacaoPrestador"/>
+				<xsd:element maxOccurs="1" minOccurs="1" name="Protocolo" type="tsNumeroProtocolo"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultarLoteRpsResposta">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="Situacao" type="tsSituacaoLoteRps"/>
+				<xsd:choice>
+					<xsd:element maxOccurs="1" minOccurs="1" name="ListaNfse">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="50" minOccurs="1" ref="CompNfse"/>
+								<xsd:element maxOccurs="1" minOccurs="0" ref="ListaMensagemAlertaRetorno"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetorno"/>
+					<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetornoLote"/>
+				</xsd:choice>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultarNfseRpsEnvio">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdentificacaoRps" type="tcIdentificacaoRps"/>
+				<xsd:element maxOccurs="1" minOccurs="1" name="Prestador" type="tcIdentificacaoPrestador"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultarNfseRpsResposta">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="CompNfse"/>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetorno"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultarNfseServicoPrestadoEnvio">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="Prestador" type="tcIdentificacaoPrestador"/>
+				<xsd:element maxOccurs="1" minOccurs="0" name="NumeroNfse" type="tsNumeroNfse"/>
+				<xsd:choice>
+					<xsd:element maxOccurs="1" minOccurs="0" name="PeriodoEmissao">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="1" minOccurs="1" name="DataInicial" type="xsd:date"/>
+								<xsd:element maxOccurs="1" minOccurs="1" name="DataFinal" type="xsd:date"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0" name="PeriodoCompetencia">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="1" minOccurs="1" name="DataInicial" type="xsd:date"/>
+								<xsd:element maxOccurs="1" minOccurs="1" name="DataFinal" type="xsd:date"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Tomador" type="tcIdentificacaoTomador"/>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Intermediario" type="tcIdentificacaoIntermediario"/>
+				<xsd:element maxOccurs="1" minOccurs="1" name="Pagina" type="tsPagina"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultarNfseServicoPrestadoResposta">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element maxOccurs="1" minOccurs="1" name="ListaNfse">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="50" minOccurs="1" ref="CompNfse"/>
+							<xsd:element maxOccurs="1" minOccurs="0" name="ProximaPagina" type="tsPagina"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetorno"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultarNfseServicoTomadoEnvio">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="Consulente" type="tcIdentificacaoConsulente"/>
+				<xsd:element maxOccurs="1" minOccurs="0" name="NumeroNfse" type="tsNumeroNfse"/>
+				<xsd:choice>
+					<xsd:element maxOccurs="1" minOccurs="0" name="PeriodoEmissao">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="1" minOccurs="1" name="DataInicial" type="xsd:date"/>
+								<xsd:element maxOccurs="1" minOccurs="1" name="DataFinal" type="xsd:date"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0" name="PeriodoCompetencia">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="1" minOccurs="1" name="DataInicial" type="xsd:date"/>
+								<xsd:element maxOccurs="1" minOccurs="1" name="DataFinal" type="xsd:date"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Prestador" type="tcIdentificacaoPrestador"/>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Tomador" type="tcIdentificacaoTomador"/>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Intermediario" type="tcIdentificacaoIntermediario"/>
+				<xsd:element maxOccurs="1" minOccurs="1" name="Pagina" type="tsPagina"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultarNfseServicoTomadoResposta">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element maxOccurs="1" minOccurs="1" name="ListaNfse">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="50" minOccurs="1" ref="CompNfse"/>
+							<xsd:element maxOccurs="1" minOccurs="0" name="ProximaPagina" type="tsPagina"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetorno"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultarNfseFaixaEnvio">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="Prestador" type="tcIdentificacaoPrestador"/>
+				<xsd:element maxOccurs="1" minOccurs="1" name="Faixa">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="1" minOccurs="1" name="NumeroNfseInicial" type="tsNumeroNfse"/>
+							<xsd:element maxOccurs="1" minOccurs="0" name="NumeroNfseFinal" type="tsNumeroNfse"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="Pagina" type="tsPagina"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultarNfseFaixaResposta">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element maxOccurs="1" minOccurs="1" name="ListaNfse">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="50" minOccurs="1" ref="CompNfse"/>
+							<xsd:element maxOccurs="1" minOccurs="0" name="ProximaPagina" type="tsPagina"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="ListaMensagemRetorno"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<!--TIPO COMPLEXO IBSCBS-->
+	<xsd:complexType name="TCRTCIBSCBS">
+		<xsd:sequence>
+			<xsd:element name="cLocalidadeIncid" type="TSCodMunIBGE">
+				<xsd:annotation>
+					<xsd:documentation>Código IBGE da localidade de incidência do IBS/CBS (local da operação).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="xLocalidadeIncid" type="TSDesc600">
+				<xsd:annotation>
+					<xsd:documentation>Nome da localidade de incidência do IBS/CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="pRedutor" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>Percentual de redução de aliquota em compra governamental.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="valores" type="TCRTCValoresIBSCBS">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de valores brutos referentes ao IBS/CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="totCIBS" type="TCRTCTotalCIBS">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de Totalizadores.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO DOS VALORES BRUTOS IBSCBS-->
+	<xsd:complexType name="TCRTCValoresIBSCBS">
+		<xsd:sequence>
+			<xsd:element name="vBC" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Valor da base de cálculo (BC) do IBS/CBS antes das reduções para cálculo do tributo bruto:
+						[vBC = vServ - descIncond – vCalcReeRepRes – vISSQN – vPIS - vCOFINS] (até 2026) ou
+						[vBC = vServ - descIncond – vCalcReeRepRes – vISSQN] (até 2032).
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="vCalcReeRepRes" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Valor monetário (R$) total relativo ao fornecimento próprio de bens materiais ou relacionados a operações de terceiros, objeto de reembolso, repasse ou ressarcimento pelo recebedor, já tributados e aqui referenciados e que não integram da base de cálculo (BC) do ISSQN, do IBS e da CBS.
+
+						Obs: É a soma dos valores dos fornecimento próprio de bens materiais ou relacionados a operações de terceiros, objeto de reembolso, repasse ou ressarcimento pelo recebedor que não integram da base de cálculo (BC) do ISSQN, do IBS e da CBS, quando um ou mais documentos são informados pelo emitente na DPS. Neste caso, o resultado do somatório é o valor deste campo do leiaute NFS-e.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="uf" type="TCRTCValoresIBSCBSUF">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de Informações relativas aos valores do IBS Estadual.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="mun" type="TCRTCValoresIBSCBSMun">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de Informações relativas aos valores do IBS Municipal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="fed" type="TCRTCValoresIBSCBSFed">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de Informações relativas aos valores da CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO IBS ESTADUAL-->
+	<xsd:complexType name="TCRTCValoresIBSCBSUF">
+		<xsd:sequence>
+			<xsd:element name="pIBSUF" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>Alíquota da UF para IBS da localidade de incidência parametrizada no sistema.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="pRedAliqUF" type="TSDec3V2">
+				<xsd:annotation>
+					<xsd:documentation>Percentual de redução de alíquota estadual.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="pAliqEfetUF" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Fórmula: [pAliqEfetUF = pIBSUF x (1 = pRedAliqUF) x (1 = pRedutor)]
+						Se pRedAliqUF não for informado na DPS, então pAliqEfetUF é a própria pIBSUF.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO IBS MUNICIPAL-->
+	<xsd:complexType name="TCRTCValoresIBSCBSMun">
+		<xsd:sequence>
+			<xsd:element name="pIBSMun" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Alíquota do Município para IBS da localidade de incidência parametrizada no sistema.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="pRedAliqMun" type="TSDec3V2" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						Percentual de redução de alíquota municipal.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="pAliqEfetMun" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Fórmula: [pAliqEfetMun = pIBSMun x (1 = pRedAliqMun) x (1 = pRedutor)]
+						Se pRedAliqMun não for informado na DPS, então pAliqEfetMun é a própria pIBSMun.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO CBS-->
+	<xsd:complexType name="TCRTCValoresIBSCBSFed">
+		<xsd:sequence>
+			<xsd:element name="pCBS" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>Alíquota da União para CBS parametrizada no sistema.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="pRedAliqCBS" type="TSDec3V2">
+				<xsd:annotation>
+					<xsd:documentation>Percentual da redução de alíquota da CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="pAliqEfetCBS" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Fórmula: [pAliqEfetCBS = pCBS x (1 = pRedAliqCBS) x (1 = pRedutor)]
+						Se pRedAliqCBS não for informado na DPS, então pAliqEfetCBS é a própria pCBS.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO DE TOTALIZADORES IBSCBS-->
+	<xsd:complexType name="TCRTCTotalCIBS">
+		<xsd:sequence>
+			<xsd:element name="vTotNF" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Valor Total da NF considerando os impostos por fora IBS e CBS é calculado a partir dos valores informados na NFS-e (O IBS e a CBS são por fora, por isso seus valores devem ser adicionados ao valor total da NF):
+
+						[vTotNF = vLiq] (em 2026) e
+						[vTotNF = vLiq + vCBS + vIBSTot] (a partir de 2027).
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="gIBS" type="TCRTCTotalIBS">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de valores referentes ao IBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="gCBS" type="TCRTCTotalCBS">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de valores referentes à CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="gTribRegular" type="TCRTCTotalTribRegular">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de informações de tributação regular.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="gTribCompraGov" type="TCRTCTotalTribCompraGov">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de informações da composição do valor do IBS e da CBS em compras governamentais.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO DE TOTALIZADORES DOS VALORES IBS-->
+	<xsd:complexType name="TCRTCTotalIBS">
+		<xsd:sequence>
+			<xsd:element name="vIBSTot" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Valor total do IBS: 
+						[vIBSTot = vIBSUF + vIBSMun].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="gIBSCredPres" type="TCRTCTotalIBSCredPres">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de valores referentes ao crédito presumido para IBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="gIBSUFTot" type="TCRTCTotalIBSUF">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de valores referentes ao IBS Estadual.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="gIBSMunTot" type="TCRTCTotalIBSMun">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de valores referentes ao IBS Municipal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO DE TOTALIZADORES DOS VALORES CREDITO PRESUMIDO IBS-->
+	<xsd:complexType name="TCRTCTotalIBSCredPres">
+		<xsd:sequence>
+			<xsd:element name="pCredPresIBS" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>Alíquota do crédito presumido para o IBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vCredPresIBS" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Valor do Crédito Presumido para o IBS.
+
+						vCredPresIBS = vBC x pCredPresIBS.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO DE TOTALIZADORES DOS VALORES IBS ESTADUAL-->
+	<xsd:complexType name="TCRTCTotalIBSUF">
+		<xsd:sequence>
+			<xsd:element name="vDifUF" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Total do Diferimento do IBS estadual.
+						[vDifUF = vIBSUF x pDifUF].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vIBSUF" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Total valor do IBS estadual.
+						[vIBSUF = vBC x (pIBSUF ou pAliqEfetUF)].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO DE TOTALIZADORES DOS VALORES IBS MUNICIPAL-->
+	<xsd:complexType name="TCRTCTotalIBSMun">
+		<xsd:sequence>
+			<xsd:element name="vDifMun" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Total do Diferimento do IBS municipal.
+						[vDifMun = vIBSMun x pDifMun].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vIBSMun" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Total valor do IBS municipal.
+						[vIBSMun = vBC x (pIBSMun ou pAliqEfetMun)].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO DE TOTALIZADORES DOS VALORES CBS-->
+	<xsd:complexType name="TCRTCTotalCBS">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="gCBSCredPres" type="TCRTCTotalCBSCredPres">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de valores referentes ao crédito presumido para CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vDifCBS" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Total do Diferimento CBS.
+						[vDifCBS = vCBS x pDifCBS].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vCBS" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Total valor da CBS da União.
+						[vCBS = vBC x (pCBS ou pAliqEfetCBS)].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO DE TOTALIZADORES DOS VALORES CREDITO PRESUMIDO CBS-->
+	<xsd:complexType name="TCRTCTotalCBSCredPres">
+		<xsd:sequence>
+			<xsd:element name="pCredPresCBS" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>Alíquota do crédito presumido para a CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vCredPresCBS" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Valor do Crédito Presumido da CBS.
+						[vCredPresCBS = vBC x pCredPresCBS].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO DE TOTALIZADORES DOS VALORES TRIBUTAÇÃO REGULAR-->
+	<xsd:complexType name="TCRTCTotalTribRegular">
+		<xsd:sequence>
+			<xsd:element name="pAliqEfeRegIBSUF" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>Alíquota efetiva de tributação regular do IBS estadual.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vTribRegIBSUF" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Valor da tributação regular do IBS estadual.
+						[vTribRegIBSUF = vBC x pAliqEfeRegIBSUF].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="pAliqEfeRegIBSMun" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>Alíquota efetiva de tributação regular do IBS municipal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vTribRegIBSMun" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Valor da tributação regular do IBS municipal.
+						[vTribRegIBSMun = vBC x pAliqEfeRegIBSMun].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="pAliqEfeRegCBS" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>Alíquota efetiva de tributação regular da CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vTribRegCBS" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>
+						Valor da tributação regular da CBS.
+						[vTribRegCBS = vBC x pAliqEfeRegCBS].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO DE TOTALIZADORES DOS VALORES IBSCBS EM COMPRAS GOVERNAMENTAIS-->
+	<xsd:complexType name="TCRTCTotalTribCompraGov">
+		<xsd:sequence>
+			<xsd:element name="pIBSUF" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>Alíquota do IBS de competência do Estado.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vIBSUF" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>Valor do Tributo do IBS da UF calculado.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="pIBSMun" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>Alíquota do IBS de competência do Município.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vIBSMun" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>Valor do Tributo do IBS do Município calculado.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="pCBS" type="TSDec2V2">
+				<xsd:annotation>
+					<xsd:documentation>Alíquota da CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vCBS" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>Valor do Tributo da CBS calculado.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO PARA INFORMAÇÕES DECLARADAS REFERENTES A IBS/CBS-->
+	<xsd:complexType name="TCRTCInfoIBSCBS">
+		<xsd:sequence>
+			<xsd:element name="finNFSe" type="TSRTCFinNFSe">
+				<xsd:annotation>
+					<xsd:documentation>
+						Indicador da finalidade da emissão de NFS-e:
+
+						0 = NFS-e regular;
+						1 = NFS-e de crédito;
+						2 = NFS-e de débito.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="indFinal" type="TSRTCIndFinal">
+				<xsd:annotation>
+					<xsd:documentation>
+						Indica operação de uso ou consumo pessoal (art. 57):
+
+						0 = Não;
+						1 = Sim.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="cIndOp" type="TSRTCCodIndOp">
+				<xsd:annotation>
+					<xsd:documentation>
+						Código indicador da operação de fornecimento, conforme tabela código indicador de operação.
+
+						Obs: Deve possuir relação com o código do serviço (cTribNac) e com a NBS informada (cNBS).
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="tpOper" type="TSRTCTpOper">
+				<xsd:annotation>
+					<xsd:documentation>
+						Tipo de Operação com Entes Governamentais ou outros serviços sobre bens imóveis.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="gRefNFSe" type="TCInfoRefNFSe">
+				<xsd:annotation>
+					<xsd:documentation>
+						Grupo de NFS-e referenciadas.
+						
+						Obs: O grupo de documentos referenciados deve ser informado quando [tpOper = 2 ou 3] e não ser informado quando [tpOper = 1, 4 ou 5].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="tpEnteGov" type="TSRTCTpEnteGov">
+				<xsd:annotation>
+					<xsd:documentation>Tipo de ente governamental.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="indDest" type="TSRTCIndDest">
+				<xsd:annotation>
+					<xsd:documentation>A respeito do Destinatário dos serviços.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="dest" type="TCRTCInfoDest">
+				<xsd:annotation>
+					<xsd:documentation>
+						Grupo de informações relativas ao Destinatário.
+
+						Obs: O destinatário só deve ser informado quando [indDest = 1].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="imovel" type="TCRTCInfoImovel">
+				<xsd:annotation>
+					<xsd:documentation>
+						Grupo de informações de operações relacionadas a bens imóveis, exceto obras.
+
+						Obs: Obrigatório para [cIndOp = 020101, 020201 ou 020301] exceto obras [cTribNac = 07.02.xx ou 07.05.xx].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="valores" type="TCRTCInfoValoresIBSCBS">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de informações relativas aos valores do serviço prestado para IBS e CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO PARA GRUPO DE NFS-E REFERENCIADAS-->
+	<xsd:complexType name="TCInfoRefNFSe">
+		<xsd:sequence>
+			<xsd:element maxOccurs="99" name="refNFSe" type="TSChaveNFSe">
+				<xsd:annotation>
+					<xsd:documentation>Chave da NFS-e referenciada.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES RELATIVAS AO DESTINATÁRIO DO SERVIÇO IBSCBS-->
+	<xsd:complexType name="TCRTCInfoDest">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element name="CNPJ" type="TSCNPJ">
+					<xsd:annotation>
+						<xsd:documentation>Número da inscrição no Cadastro Nacional de Pessoa Jurídica (CNPJ) do Destinatário do serviço.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="CPF" type="TSCPF">
+					<xsd:annotation>
+						<xsd:documentation>Número da inscrição no Cadastro de Pessoa Física (CPF) do Destinatário do serviço.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="NIF" type="TSNIF">
+					<xsd:annotation>
+						<xsd:documentation>Número de Identificação Fiscal fornecido por órgão de administração tributária no exterior.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="cNaoNIF" type="TSCodNaoNIF">
+					<xsd:annotation>
+						<xsd:documentation>
+							Motivo para não informação do NIF:
+
+							0 = Não informado na nota de origem;
+							1 = Dispensado do NIF;
+							2 = Não exigência do NIF.
+
+							Obs: O valor 0 deve ser utilizado como opção de preenchimento do campo somente no compartilhamento de NFS-e pelo municipio com o ADN NFS-e.
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+			<xsd:element name="xNome" type="TSDesc150">
+				<xsd:annotation>
+					<xsd:documentation>Nome / Nome Empresarial do do Destinatário do serviço.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="end" type="TCEndereco">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de informações do endereço do Destinatário do serviço.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="fone" type="TSTelefone">
+				<xsd:annotation>
+					<xsd:documentation>
+						Número do telefone do Destinatário do serviço.
+						Preencher com: [Código DDD + número do telefone].
+						Nas operações com exterior é permitido informar: [código do país + código da localidade + número do telefone].
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="email" type="TSEmail">
+				<xsd:annotation>
+					<xsd:documentation>E-mail do Destinatário do serviço.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES RELATIVAS A BENS IMÓVEIS IBSCBS-->
+	<xsd:complexType name="TCRTCInfoImovel">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="inscImobFisc" type="TSInscImobFisc">
+				<xsd:annotation>
+					<xsd:documentation>Inscrição imobiliária fiscal (código fornecido pela Prefeitura Municipal para a identificação da obra ou para fins de recolhimento do IPTU).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:choice minOccurs="1">
+				<xsd:element name="cCIB" type="TSCodCIB">
+					<xsd:annotation>
+						<xsd:documentation>Código do Cadastro Imobiliário Brasileiro - CIB.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="end" type="TCEnderObraEvento">
+					<xsd:annotation>
+						<xsd:documentation>Grupo de informações do endereço da obra do serviço prestado.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES RELATIVAS AOS VALORES DO SERVIÇO PRESTADO IBSCBS-->
+	<xsd:complexType name="TCRTCInfoValoresIBSCBS">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="gReeRepRes" type="TCRTCInfoReeRepRes">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de informações relativas a valores incluídos neste documento e recebidos por motivo de estarem relacionadas a operações de terceiros, objeto de reembolso, repasse ou ressarcimento pelo recebedor, já tributados e aqui referenciados.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="trib" type="TCRTCInfoTributosIBSCBS">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de informações relacionados aos tributos IBS e CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES RELATIVAS AOS VALORES DE REEMBOLSO REPASSE OU RESSARCIMENTO IBSCBS-->
+	<xsd:complexType name="TCRTCInfoReeRepRes">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1000" minOccurs="1" name="documentos" type="TCRTCListaDoc">
+				<xsd:annotation>
+					<xsd:documentation>Grupo relativo aos documentos referenciados nos casos de reembolso, repasse e ressarcimento que serão considerados na base de cálculo do ISSQN, do IBS e da CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES RELACIONADOS AOS TRIBUTOS IBSCBS-->
+	<xsd:complexType name="TCRTCInfoTributosIBSCBS">
+		<xsd:sequence>
+			<xsd:element name="gIBSCBS" type="TCRTCInfoTributosSitClas">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de informações relacionadas ao IBS e à CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- ****************** CONFERIDO ATÉ AQUI ************************* -->
+
+	<!--TIPO COMPLEXO INFORMAÇÕES RELATIVAS AOS DOCUMENTOS REFERENCIADOS NO REEMBOLSO REPASSE OU RESSARCIMENTO IBSCBS-->
+	<xsd:complexType name="TCRTCListaDoc">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element name="dFeNacional" type="TCRTCListaDocDFe">
+					<xsd:annotation>
+						<xsd:documentation>Grupo de informações de documentos fiscais eletrônicos que se encontram no repositório nacional.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="docFiscalOutro" type="TCRTCListaDocFiscalOutro">
+					<xsd:annotation>
+						<xsd:documentation>Grupo de informações de documento fiscais, eletrônicos ou não, que não se encontram no repositório nacional.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="docOutro" type="TCRTCListaDocOutro">
+					<xsd:annotation>
+						<xsd:documentation>Grupo de informações de documento não fiscal.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+			<xsd:element minOccurs="0" name="fornec" type="TCRTCListaDocFornec">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de informações do fornecedor do documento referenciado.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="dtEmiDoc" type="TSData">
+				<xsd:annotation>
+					<xsd:documentation>Data da emissão do documento dedutível Ano, mês e dia (AAAA-MM-DD).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="dtCompDoc" type="TSData">
+				<xsd:annotation>
+					<xsd:documentation>Data da competência do documento dedutível Ano, mês e dia (AAAA-MM-DD).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="tpReeRepRes" type="TSRTCTpReeRepRes">
+				<xsd:annotation>
+					<xsd:documentation>Tipo de valor incluído neste documento, recebido por motivo de estarem relacionadas a operações de terceiros, objeto de reembolso, repasse ou ressarcimento pelo recebedor, já tributados e aqui referenciados.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="xTpReeRepRes" type="TSDesc150">
+				<xsd:annotation>
+					<xsd:documentation>
+						Descrição do reembolso ou ressarcimento quando a opção é: 99 – Outros reembolsos ou ressarcimentos recebidos por valores pagos relativos a operações por conta e ordem de terceiro.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vlrReeRepRes" type="TSDec15V2">
+				<xsd:annotation>
+					<xsd:documentation>Valor monetário (total ou parcial, conforme documento informado) utilizado para não inclusão na base de cálculo do ISS e do IBS e da CBS da NFS-e que está sendo emitida (R$).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES DE DOCUMENTOS FISCAIS ELETRÔNICOS QUE SE ENCONTRAM NO REPOSITÓRIO NACIONAL-->
+	<xsd:complexType name="TCRTCListaDocDFe">
+		<xsd:sequence>
+			<xsd:element name="tipoChaveDFe" type="TSRTCTipoChaveDFe">
+				<xsd:annotation>
+					<xsd:documentation>Documento fiscal a que se refere a chaveDfe que seja um dos documentos do Repositório Nacional.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="xTipoChaveDFe" type="TSDesc255">
+				<xsd:annotation>
+					<xsd:documentation>Descrição da DF-e a que se refere a chaveDfe que seja um dos documentos do Repositório Nacional. Deve ser preenchido apenas quando &quot;tipoChaveDFe = 9 (Outro)&quot;</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="chaveDFe" type="TSRTCChaveDFe">
+				<xsd:annotation>
+					<xsd:documentation>Chave do Documento Fiscal eletrônico do repositório nacional referenciado para os casos de operações já tributadas.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES DE DOCUMENTO FISCAIS, ELETRÔNICOS OU NÃO, QUE NÃO SE ENCONTRAM NO REPOSITÓRIO NACIONAL-->
+	<xsd:complexType name="TCRTCListaDocFiscalOutro">
+		<xsd:sequence>
+			<xsd:element name="cMunDocFiscal" type="TSNum7Dig">
+				<xsd:annotation>
+					<xsd:documentation>Código do município emissor do documento fiscal que não se encontra no repositório nacional.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="nDocFiscal" type="TSDesc255">
+				<xsd:annotation>
+					<xsd:documentation>Número do documento fiscal que não se encontra no repositório nacional.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="xDocFiscal" type="TSDesc255">
+				<xsd:annotation>
+					<xsd:documentation>Descrição do documento fiscal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES DE DOCUMENTO NÃO FISCAL-->
+	<xsd:complexType name="TCRTCListaDocOutro">
+		<xsd:sequence>
+			<xsd:element name="nDoc" type="TSDesc255">
+				<xsd:annotation>
+					<xsd:documentation>Número do documento não fiscal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="xDoc" type="TSDesc255">
+				<xsd:annotation>
+					<xsd:documentation>Descrição do documento não fiscal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES DO FORNECEDOR DO DOCUMENTO REFERENCIADO-->
+	<xsd:complexType name="TCRTCListaDocFornec">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element name="CNPJ" type="TSCNPJ">
+					<xsd:annotation>
+						<xsd:documentation>Número da inscrição no Cadastro Nacional de Pessoa Jurídica (CNPJ) do Fornecedor do serviço.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="CPF" type="TSCPF">
+					<xsd:annotation>
+						<xsd:documentation>Número da inscrição no Cadastro de Pessoa Física (CPF) do Fornecedor do serviço.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="NIF" type="TSNIF">
+					<xsd:annotation>
+						<xsd:documentation>Este elemento só deverá ser preenchido para fornecedores não residentes no Brasil.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="cNaoNIF" type="TSCodNaoNIF">
+					<xsd:annotation>
+						<xsd:documentation>
+							Motivo para não informação do NIF:
+
+							0 = Não informado na nota de origem;
+							1 = Dispensado do NIF;
+							2 = Não exigência do NIF.
+
+							Obs: O valor 0 deve ser utilizado como opção de preenchimento do campo somente no compartilhamento de NFS-e pelo municipio com o ADN NFS-e.
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+			<xsd:element name="xNome" type="TSDesc150">
+				<xsd:annotation>
+					<xsd:documentation>Nome / Razão Social do do Fornecedor do serviço.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES RELACIONADOS AOS TRIBUTOS SITUACAO E CLASSIFICACAO IBSCBS-->
+	<xsd:complexType name="TCRTCInfoTributosSitClas">
+		<xsd:sequence>
+			<xsd:element name="CST" type="TSRTCCodSitTrib">
+				<xsd:annotation>
+					<xsd:documentation>Código de Situação Tributária do IBS e da CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="cClassTrib" type="TSRTCCodClassTrib">
+				<xsd:annotation>
+					<xsd:documentation>Código de Classificação Tributária do IBS e da CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="cCredPres" type="TSRTCCodCredPres">
+				<xsd:annotation>
+					<xsd:documentation>Código e Classificação do Crédito Presumido: IBS e CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="gTribRegular" type="TCRTCInfoTributosTribRegular">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de informações da Tributação Regular.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="gDif" type="TCRTCInfoTributosDif">
+				<xsd:annotation>
+					<xsd:documentation>Grupo de informações relacionadas ao diferimento para IBS e CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES DA TRIBUTAÇÃO REGULAR-->
+	<xsd:complexType name="TCRTCInfoTributosTribRegular">
+		<xsd:sequence>
+			<xsd:element name="CSTReg" type="TSRTCCodSitTrib">
+				<xsd:annotation>
+					<xsd:documentation>Código de Situação Tributária do IBS e da CBS de tributação regular.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="cClassTribReg" type="TSRTCCodClassTrib">
+				<xsd:annotation>
+					<xsd:documentation>Código da Classificação Tributária do IBS e da CBS de tributação regular.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO INFORMAÇÕES RELACIONADAS AO DIFERIMENTO PARA IBS E CBS-->
+	<xsd:complexType name="TCRTCInfoTributosDif">
+		<xsd:sequence>
+			<xsd:element name="pDifUF" type="TSDec3V2">
+				<xsd:annotation>
+					<xsd:documentation>Percentual de diferimento para o IBS estadual.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="pDifMun" type="TSDec3V2">
+				<xsd:annotation>
+					<xsd:documentation>Percentual de diferimento para o IBS municipal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="pDifCBS" type="TSDec3V2">
+				<xsd:annotation>
+					<xsd:documentation>Percentual de diferimento para a CBS.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO PARA ENDEREÇO DE OBRA-->
+	<xsd:complexType name="TCEnderObraEvento">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element minOccurs="1" name="CEP" type="TSCEP">
+					<xsd:annotation>
+						<xsd:documentation>Número do CEP.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element minOccurs="1" name="endExt" type="TCEnderExtSimples">
+					<xsd:annotation>
+						<xsd:documentation>Grupo de informações específicas de endereço no exterior.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+			<xsd:element name="xLgr" type="TSLogradouro">
+				<xsd:annotation>
+					<xsd:documentation>Tipo e nome do logradouro da localização do imóvel.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="nro" type="TSNumeroEndereco">
+				<xsd:annotation>
+					<xsd:documentation>Número do imóvel.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="xCpl" type="TSComplementoEndereco">
+				<xsd:annotation>
+					<xsd:documentation>Complemento do endereço.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="xBairro" type="TSBairro">
+				<xsd:annotation>
+					<xsd:documentation>Nome do Bairro.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO ENDEREÇO EXTERIOR SIMPLES -->
+	<xsd:complexType name="TCEnderExtSimples">
+		<xsd:sequence>
+			<xsd:element name="cEndPost" type="TSCodigoEndPostal">
+				<xsd:annotation>
+					<xsd:documentation>Código alfanumérico do Endereçamento Postal no exterior do prestador do serviço.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="xCidade" type="TSCidade">
+				<xsd:annotation>
+					<xsd:documentation>Nome da cidade no exterior do prestador do serviço.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="xEstProvReg" type="TSEstadoProvRegiao">
+				<xsd:annotation>
+					<xsd:documentation>Estado, província ou região da cidade no exterior do prestador do serviço.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO PARA ENDEREÇO -->
+	<xsd:complexType name="TCEndereco">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element name="endNac" type="TCEnderNac">
+					<xsd:annotation>
+						<xsd:documentation>Grupo de informações específicas de endereço nacional.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="endExt" type="TCEnderExt">
+					<xsd:annotation>
+						<xsd:documentation>Grupo de informações específicas de endereço no exterior.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+			<xsd:element name="xLgr" type="TSLogradouro">
+				<xsd:annotation>
+					<xsd:documentation>Tipo e nome do logradouro da localização do imóvel.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="nro" type="TSNumeroEndereco">
+				<xsd:annotation>
+					<xsd:documentation>Número do imóvel;</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="xCpl" type="TSComplementoEndereco">
+				<xsd:annotation>
+					<xsd:documentation>Complemento do endereço;</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="xBairro" type="TSBairro">
+				<xsd:annotation>
+					<xsd:documentation>Nome do Bairro.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO PARA OS CAMPOS ESPECÍFICOS DE ENDEREÇO NO EXTERIOR-->
+	<xsd:complexType name="TCEnderExt">
+		<xsd:sequence>
+			<xsd:element name="cPais" type="TSCodPaisISO">
+				<xsd:annotation>
+					<xsd:documentation>Código do país (Tabela de Países ISO).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="cEndPost" type="TSCodigoEndPostal">
+				<xsd:annotation>
+					<xsd:documentation>Código alfanumérico do Endereçamento Postal no exterior do prestador do serviço.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="xCidade" type="TSCidade">
+				<xsd:annotation>
+					<xsd:documentation>Nome da cidade no exterior do prestador do serviço.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="xEstProvReg" type="TSEstadoProvRegiao">
+				<xsd:annotation>
+					<xsd:documentation>Estado, província ou região da cidade no exterior do prestador do serviço.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO COMPLEXO PARA OS CAMPOS ESPECÍFICOS DE ENDEREÇO NACIONAL-->
+	<xsd:complexType name="TCEnderNac">
+		<xsd:sequence>
+			<xsd:element name="cMun" type="TSCodMunIBGE">
+				<xsd:annotation>
+					<xsd:documentation>Código do município, conforme Tabela do IBGE.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CEP" type="TSCEP">
+				<xsd:annotation>
+					<xsd:documentation>Número do CEP.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--TIPO SIMPLES IBSCBS-->
+	<xsd:simpleType name="TSCodMunIBGE">
+		<xsd:annotation>
+			<xsd:documentation>Tipo Código do Município segundo tabela IBGE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="[0-9]{7}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSDec3V2">
+		<xsd:annotation>
+			<xsd:documentation>Valor decimal com 1 a 3 dígitos mais 2 casas decimais.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2})?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSDec15V2">
+		<xsd:annotation>
+			<xsd:documentation>Valor decimal com 1 a 15 dígitos mais 2 casas decimais.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,14}(\.[0-9]{2})?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSDesc600">
+		<xsd:restriction base="TSString">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="600"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSDec2V2">
+		<xsd:annotation>
+			<xsd:documentation>Valor decimal com 1 ou 2 dígitos mais 2 casas decimais.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,1}(\.[0-9]{2})?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSChaveNFSe">
+		<xsd:annotation>
+			<xsd:documentation>Tipo Chave da Nota Fiscal de Serviço Eletrônica.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:maxLength value="50"/>
+			<xsd:pattern value="[0-9]{50}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSTelefone">
+		<xsd:annotation>
+			<xsd:documentation>
+				Número do telefone do prestador:
+				Preencher com: [Código DDD + número do telefone].
+				Nas operações com exterior é permitido informar: [código do país + código da localidade + número do telefone].
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="[0-9]{6,20}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSDesc150">
+		<xsd:restriction base="TSString">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="150"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSCNPJ">
+		<xsd:annotation>
+			<xsd:documentation>Tipo Número do CNPJ.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:maxLength value="14"/>
+			<xsd:pattern value="[0-9]{14}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCCodClassTrib">
+		<xsd:annotation>
+			<xsd:documentation>Código de Classificação Tributária.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="[0-9]{6}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSString">
+		<xsd:annotation>
+			<xsd:documentation>Tipo string genérico.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="[!-ÿ]{1}[ -ÿ]{0,}[!-ÿ]{1}|[!-ÿ]{1}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCIndFinal">
+		<xsd:annotation>
+			<xsd:documentation>
+				Indica operação de uso ou consumo pessoal (art. 57):
+
+				0 = Não;
+				1 = Sim.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="0"/>
+			<xsd:enumeration value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSCPF">
+		<xsd:annotation>
+			<xsd:documentation>Tipo Número do CPF.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:maxLength value="11"/>
+			<xsd:pattern value="[0-9]{11}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCCodSitTrib">
+		<xsd:annotation>
+			<xsd:documentation>Código de Situação Tributária.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="[0-9]{3}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSBairro">
+		<xsd:annotation>
+			<xsd:documentation>Nome do Bairro.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="TSString">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="60"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSDesc255">
+		<xsd:restriction base="TSString">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSCodNaoNIF">
+		<xsd:annotation>
+			<xsd:documentation>
+				Motivo para não informação do NIF:
+
+				0 = Não informado na nota de origem;
+				1 = Dispensado do NIF;
+				2 = Não exigência do NIF.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="0"/>
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSComplementoEndereco">
+		<xsd:annotation>
+			<xsd:documentation>Complemento</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="TSString">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="156"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCFinNFSe">
+		<xsd:annotation>
+			<xsd:documentation>
+				Indicador da finalidade da emissão de NFS-e:
+
+				0 = NFS-e regular.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCCodIndOp">
+		<xsd:annotation>
+			<xsd:documentation>Código indicador da operação de fornecimento, conforme tabela &quot;código indicador de operação&quot;.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="[0-9]{6}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSNum7Dig">
+		<xsd:annotation>
+			<xsd:documentation>Número com 7 dígitos.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:maxLength value="7"/>
+			<xsd:pattern value="[0-9]{7}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSNumeroEndereco">
+		<xsd:annotation>
+			<xsd:documentation>Número.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="TSString">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="60"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSCEP">
+		<xsd:annotation>
+			<xsd:documentation>CEP (Código de Endereçamento Postal).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="[0-9]{8}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSLogradouro">
+		<xsd:annotation>
+			<xsd:documentation>Logradouro.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="TSString">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCTpOper">
+		<xsd:annotation>
+			<xsd:documentation>
+				Tipo de Operação com Entes Governamentais ou outros serviços sobre bens imóveis:
+				
+				1 = Fornecimento com pagamento posterior;
+				2 = Recebimento do pagamento com fornecimento já realizado;
+				3 = Fornecimento com pagamento já realizado;
+				4 = Recebimento do pagamento com fornecimento posterior;
+				5 = Fornecimento e recebimento do pagamento concomitantes.
+
+				Campo deve ser informado para as seguintes situações previstas na LC 214/2025:
+
+				- Aquisição de serviços pela administração pública direta, por autarquias e por fundações públicas: Art. 10 §2º (Qualquer serviço);
+				- Cessão onerosa de bem imóvel: Art. 254 III (Serviço 25.05 da LC 116/2003);
+				- Arrendamento de bem imóvel: Art. 254 III (Serviço 15.09 da LC 116/2003);
+				- Administração de bem imóvel: Art. 254 IV (Serviço 17.12 da LC 116/2003);
+				- Intermediação de bem imóvel: Art. 254 IV (Serviço 10.05 da LC 116/2003).
+
+				Obs: tpOper Deve ser informado se tpEnteGov for informado ou se o serviço prestado (cTribNac) corresponder aos serviços listados da LC 116/2003 (e seus correspondentes na NBS):
+				- 25.05;
+				- 15.09;
+				- 17.12;
+				- 10.05.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSNIF">
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="40"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCTpEnteGov">
+		<xsd:annotation>
+			<xsd:documentation>
+				Tipo de ente governamental.
+				Para administração pública direta e suas autarquias e fundações:
+
+				1 = União;
+				2 = Estado;
+				3 = Distrito Federal;
+				4 = Município.
+
+				Obs: Esse campo só deve ser informado no caso de compras governamentais.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCIndDest">
+		<xsd:annotation>
+			<xsd:documentation>
+				A respeito do Destinatário dos serviços:
+
+				0 = o destinatário é o próprio tomador/adquirente identificado na NFS-e (tomador=adquirente=destinatário);
+				1 = o destinatário não é o próprio adquirente, podendo ser outra pessoa, física ou jurídica (ou equiparada), ou um estabelecimento diferente do indicado como tomador (tomador=adquirente≠destinatário).
+
+				O Tomador de Serviços (conceito da Lei Complementar nº 116/2003) e o Adquirente (conceito da Lei Complementar nº 214/2025) são identificados como a mesma pessoa, pois é quem:
+				
+				a) se obriga ao pagamento ou outra forma de contraprestação pelo fornecimento; ou;
+				b) nos casos de pagamento ou de qualquer outra forma de contraprestação por conta e ordem ou em nome de terceiros, aquele por conta de quem ou em nome de quem decorre a obrigação de pagamento ou de qualquer outra forma de contraprestação pelo fornecimento do bem ou do serviço. 
+
+				Pode ser também o próprio destinatário.
+				O Destinatário é a pessoa a quem é fornecido o bem ou o serviço.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="0"/>
+			<xsd:enumeration value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSEstadoProvRegiao">
+		<xsd:annotation>
+			<xsd:documentation>Estado, província ou região.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="60"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSEmail">
+		<xsd:annotation>
+			<xsd:documentation>E-mail.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="TSString">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="80"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSCidade">
+		<xsd:annotation>
+			<xsd:documentation>Cidade.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="60"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSCodCIB">
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:length value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSCodigoEndPostal">
+		<xsd:annotation>
+			<xsd:documentation>Código de enderaçamento postal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="11"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSInscImobFisc">
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="30"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCCodCredPres">
+		<xsd:annotation>
+			<xsd:documentation>Código e Classificação do Crédito Presumido.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="[0-9]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCChaveDFe">
+		<xsd:annotation>
+			<xsd:documentation>Chave do Documento Fiscal Eletrônico.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSData">
+		<xsd:annotation>
+			<xsd:documentation>Tipo data no formato: AAAA-MM-DD.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="(((20(([02468][048])|([13579][26]))-02-29))|(20[0-9][0-9])-((((0[1-9])|(1[0-2]))-((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))-31)|(((0[1,3-9])|(1[0-2]))-(29|30)))))"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSCodPaisISO">
+		<xsd:annotation>
+			<xsd:documentation>Tipo Código do País segundo tabela ISO.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:pattern value="[A-Z]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCTipoChaveDFe">
+		<xsd:annotation>
+			<xsd:documentation>
+				Documento fiscal a que se refere a chaveDfe que seja um dos documentos do Repositório Nacional:
+
+				1 = NFS-e;
+				2 = NF-e;
+				3 = CT-e;
+				9 = Outro.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="9"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSRTCTpReeRepRes">
+		<xsd:annotation>
+			<xsd:documentation>
+				Tipo de valor incluído neste documento, recebido por motivo de estarem relacionadas a operações de terceiros, objeto de reembolso, repasse ou ressarcimento pelo recebedor, já tributados e aqui referenciados:
+
+				01 = Repasse de remuneração por intermediação de imóveis a demais corretores envolvidos na operação;
+				02 = Repasse de valores a fornecedor relativo a fornecimento intermediado por agência de turismo;
+				03 = Reembolso ou ressarcimento recebido por agência de propaganda e publicidade por valores pagos relativos a serviços de produção externa por conta e ordem de terceiro;
+				04 = Reembolso ou ressarcimento recebido por agência de propaganda e publicidade por valores pagos relativos a serviços de mídia por conta e ordem de terceiro;
+				99 = Outros reembolsos ou ressarcimentos recebidos por valores pagos relativos a operações por conta e ordem de terceiro.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="01"/>
+			<xsd:enumeration value="02"/>
+			<xsd:enumeration value="03"/>
+			<xsd:enumeration value="04"/>
+			<xsd:enumeration value="99"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSChaveAcesso">
+		<xsd:annotation>
+			<xsd:documentation>Chave de Acesso da NFS-e (Padrão Nacional)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:maxLength value="50"/>
+			<xsd:pattern value="[0-9]{50}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>
