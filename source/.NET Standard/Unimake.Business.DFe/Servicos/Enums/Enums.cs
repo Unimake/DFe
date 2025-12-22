@@ -16883,28 +16883,28 @@ namespace Unimake.Business.DFe.Servicos
     public enum TribISSQN
     {
         /// <summary>
-        /// 1 - OperacaoIntributavel
+        /// 1 - Operação Tributável
         /// </summary>
         [XmlEnum("1")]
-        OperacaoIntributavel = 1,
+        OperacaoTributavel = 1,
 
         /// <summary>
-        /// 2 - Exportação de Serviço
+        /// 2 - Imunidade
         /// </summary>
         [XmlEnum("2")]
-        ExportacaoServico = 2,
+        Imunidade = 2,
 
         /// <summary>
-        /// 3 - Não Incidencia
+        /// 3 - Exportação de Serviço
         /// </summary>
         [XmlEnum("3")]
-        NaoIncidencia = 3,
+        ExportacaoServico = 3,
 
         /// <summary>
-        /// 4 - Imunidade
+        /// 4 - Não incidência
         /// </summary>
         [XmlEnum("4")]
-        Imunidade = 4,
+        NaoIncidencia = 4,
     }
     #endregion Tributação ISSQN sobre serviço prestado NFS-e NACIONAL
 
