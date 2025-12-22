@@ -559,6 +559,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consultar Benefícios Municipais da NFSe NACIONAL")]
         NFSeConsultarBeneficioMunicipal = 90,
 
+        ///<summary>
+        ///91 - Recepcionar Eventos Diversos da NFSe NACIONAL
+        /// </summary>
+        [Description("Recepcionar Eventos Diversos da NFSe NACIONAL")]
+        NFSeRecepcionarEventosDiversos = 91,
+
         #endregion
 
         #region Gerais
