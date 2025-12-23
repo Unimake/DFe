@@ -1314,7 +1314,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public TipoExigibilidadeSuspensa TpSusp { get; set; }
 
         [XmlElement("nProcesso")]
-        public int NProcesso { get; set; }
+        public string NProcesso { get; set; }
     }
 
 #if INTEROP
