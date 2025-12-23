@@ -1,0 +1,66 @@
+﻿<EnvNfeRequest>
+	<!-- HOMOLOGAÇÃO: NÃO ENVIAR usuario/pass -->
+	<!-- <usuario></usuario> -->
+	<!-- <pass></pass> -->
+	<prf>00.000.000/0000-00</prf>
+	<usr>12.345.678/0001-90</usr>
+	<ctr>999999</ctr>
+	<dataemissao>01/01/2026</dataemissao>
+	<!-- Estabelecimento -->
+	<localestab>BR</localestab>
+	<nifinf/>
+	<nifmotivo/>
+	<!-- Prestador -->
+	<cnpjcpfnif>12.345.678/0001-90</cnpjcpfnif>
+	<cnpjcpfnifnome>EMPRESA TESTE HOMOLOGACAO LTDA</cnpjcpfnifnome>
+	<im>123456</im>
+	<ie/>
+	<!-- Tomador (Brasil) -->
+	<lgr>RUA DE TESTE</lgr>
+	<num>100</num>
+	<cpl/>
+	<bai>CENTRO</bai>
+	<cep>14840000</cep>
+	<cid>3510</cid>
+	<est>SP</est>
+	<pais/>
+	<epr/>
+	<fone/>
+	<mail/>
+	<!-- Local da prestação -->
+	<paisloc>BR</paisloc>
+	<loc>3510</loc>
+	<!-- Descrição -->
+	<txt>TESTE DE EMISSAO NFSE - HOMOLOGACAO - SIMPLES NACIONAL</txt>
+	<!-- Simples Nacional / Transparência (se aplicável no seu caso) -->
+	<!-- Se seu emissor sempre envia esses campos, mantenha. Se não usa, pode deixar vazio/0.00 conforme regra -->
+	<impfederal>0.00</impfederal>
+	<impestadual>0.00</impestadual>
+	<impmunicipal>0.00</impmunicipal>
+	<!-- Serviço (Nota comum) -->
+	<item1>01.01.01</item1>
+	<aliq1>2.00</aliq1>
+	<impret>NAO</impret>
+	<val1>100.00</val1>
+	<!-- Reforma Tributária (RTC compatibilizado) -->
+	<codnbs>115021000</codnbs>
+	<clatribscbs>000001</clatribscbs>
+	<!-- PIS/COFINS / Retenções federais (se não usa, manter vazio/0.00) -->
+	<sittribpiscofins>00</sittribpiscofins>
+	<tipretpiscofins>0</tipretpiscofins>
+	<bpis/>
+	<apis/>
+	<pis/>
+	<bcofins/>
+	<acofins/>
+	<cofins/>
+	<birrf/>
+	<airrf/>
+	<irrf/>
+	<bcsll/>
+	<acsll/>
+	<csll/>
+	<binss/>
+	<ainss/>
+	<inss/>
+</EnvNfeRequest>
