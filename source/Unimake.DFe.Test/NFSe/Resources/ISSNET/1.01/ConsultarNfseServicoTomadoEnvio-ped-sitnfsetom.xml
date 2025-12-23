@@ -1,4 +1,4 @@
-﻿<ConsultarNfseServicoTomadoEnvio xmlns="http://www.sped.fazenda.gov.br/nfse" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#">
+﻿<ConsultarNfseServicoTomadoEnvio versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#">
 	<Consulente>
 		<CNPJ>99999999999999</CNPJ>
 		<IM>1234567</IM>
