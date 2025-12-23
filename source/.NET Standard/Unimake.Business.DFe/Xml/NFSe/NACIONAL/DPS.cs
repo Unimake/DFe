@@ -1434,7 +1434,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #region Should Serialize
         public bool ShouldSerializeVBCPisCofinsField() => VBCPisCofins > 0;
         public bool ShouldSerializePAliqPisField() => PAliqPis > 0;
-        public bool ShouldSerializePAlisCofinsField() => PAliqCofins > 0;
+        public bool ShouldSerializePAliqCofinsField() => PAliqCofins > 0;
         public bool ShouldSerializeVPisField() => VPis > 0;
         public bool ShouldSerializeVCofinsField() => VCofins > 0;
 
