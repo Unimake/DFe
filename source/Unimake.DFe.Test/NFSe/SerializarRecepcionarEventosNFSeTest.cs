@@ -74,31 +74,25 @@ namespace Unimake.DFe.Test.NFSe
             var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
             recepcaoEvento.Executar();
 
-            // Pega o retorno e tenta deserializar
-            var xmlRetorno = recepcaoEvento.RetornoWSXML;
-            Assert.NotNull(xmlRetorno);
+            // Usa a propriedade Result para obter o retorno
+            var resultado = recepcaoEvento.Result;
+            Assert.NotNull(resultado);
 
-            // Tenta deserializar como retorno de erro
-            var retornoErro = new Retorno().LerXML<Retorno>(xmlRetorno);
-            Assert.NotNull(retornoErro);
-
-            if (retornoErro.Erro != null)
+            // Verifica o tipo de retorno usando pattern matching
+            if (resultado is Evento eventoSucesso)
             {
-                // Tratamento de erro
-                var codigoErro = retornoErro.Erro.Codigo;
-                var descricaoErro = retornoErro.Erro.Descricao;
-
-                // Validação do erro
-                Assert.False(string.IsNullOrWhiteSpace(codigoErro), "Código de erro não pode ser vazio.");
-                Assert.False(string.IsNullOrWhiteSpace(descricaoErro), "Descrição de erro não pode ser vazia.");
-
-                // Log para debug
-                System.Diagnostics.Debug.WriteLine($"Erro recebido - Código: {codigoErro}, Descrição: {descricaoErro}");
+                // Sucesso! Valida os dados
+                Assert.NotNull(eventoSucesso.InfEvento);
+                Assert.False(string.IsNullOrWhiteSpace(eventoSucesso.InfEvento.Id));
+                System.Diagnostics.Debug.WriteLine($"Evento registrado com sucesso - ID: {eventoSucesso.InfEvento.Id}");
             }
-            else
+            else if (resultado is Temp retornoErro)
             {
-                // Se não tem erro, assume sucesso
-                Assert.True(true, "Evento recepcionado com sucesso.");
+                // Erro! Valida e exibe
+                Assert.NotNull(retornoErro.Erro);
+                Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Codigo));
+                Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Descricao));
+                System.Diagnostics.Debug.WriteLine($"Erro - Código: {retornoErro.Erro.Codigo}, Descrição: {retornoErro.Erro.Descricao}");
             }
         }
 
@@ -133,7 +127,7 @@ namespace Unimake.DFe.Test.NFSe
             Assert.NotNull(retornoSucesso.InfEvento.PedRegEvento);
             Assert.Equal("1.01", retornoSucesso.InfEvento.PedRegEvento.Versao);
             Assert.NotNull(retornoSucesso.InfEvento.PedRegEvento.InfPedReg);
-            
+
             // Validações do <infPedReg>
             var infPedReg = retornoSucesso.InfEvento.PedRegEvento.InfPedReg;
             Assert.Equal("PRE41069022248211664000126000000000003925126775998403101101001", infPedReg.Id);
@@ -152,10 +146,6 @@ namespace Unimake.DFe.Test.NFSe
             // Validação de data/hora
             Assert.True(retornoSucesso.InfEvento.DhProc > DateTimeOffset.MinValue);
             Assert.True(infPedReg.DhEvento > DateTimeOffset.MinValue);
-
-            // Log para debug
-            System.Diagnostics.Debug.WriteLine($"Evento processado com sucesso - ID: {retornoSucesso.InfEvento.Id}");
-            System.Diagnostics.Debug.WriteLine($"Data de processamento: {retornoSucesso.InfEvento.DhProc}");
         }
     }
 }
