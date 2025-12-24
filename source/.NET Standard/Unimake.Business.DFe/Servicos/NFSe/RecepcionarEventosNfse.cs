@@ -6,6 +6,8 @@ using System.Text;
 using System.Runtime.InteropServices;
 #endif
 using System.Xml;
+using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -56,6 +58,52 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             }
         }
 
+        /// <summary>
+        /// Resultado do processamento do evento.
+        /// Retorna Evento (sucesso) ou Temp (erro) dependendo da resposta do servidor.
+        /// </summary>
+        public object Result
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
+                {
+                    try
+                    {
+                        return XMLUtility.Deserializar<Evento>(RetornoWSXML);
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            return XMLUtility.Deserializar<Temp>(RetornoWSXML);
+                        }
+                        catch
+                        {
+                            // Se ambos falharem, retorna erro genérico
+                            return new Temp
+                            {
+                                Erro = new Erro
+                                {
+                                    Codigo = "0",
+                                    Descricao = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
+                                }
+                            };
+                        }
+                    }
+                }
+
+                return new Temp
+                {
+                    Erro = new Erro
+                    {
+                        Codigo = "0",
+                        Descricao = "Não há retorno do servidor para processar."
+                    }
+                };
+            }
+        }
+
 #if INTEROP
 
         /// <summary>
@@ -63,7 +111,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
         /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
-                [ComVisible(true)]
+        [ComVisible(true)]
         public override void Executar(string conteudoXML, Configuracao configuracao)
             => base.Executar(conteudoXML, configuracao);
 
