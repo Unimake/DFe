@@ -7,6 +7,7 @@ using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
 using Xunit;
 using ConsultarNfse = Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfse;
 using ConsultarNfsePorRps = Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfsePorRps;
+using Unimake.Business.DFe.Xml.NFSe.NACIONAL.Eventos;
 
 namespace Unimake.DFe.Test.NFSe.NACIONAL
 {
