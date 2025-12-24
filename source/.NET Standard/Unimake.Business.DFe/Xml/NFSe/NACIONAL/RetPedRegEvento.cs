@@ -15,12 +15,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Retorno")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Temp")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlRoot("temp")]
-    public class Retorno : XMLBase
+    public class Temp : XMLBase
     {
         /// <summary>
         /// Tipo de Ambiente.
