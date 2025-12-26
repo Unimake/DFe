@@ -39,7 +39,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var criado = new ConsultarNfse
             {
                 Versao = "1.00",
-                InfNFSe = new InfNFSe { Id = lido.InfNFSe.Id }
+                InfNFSe = new InfNFSeConsulta { Id = lido.InfNFSe.Id }
             };
             var docCriado = criado.GerarXML();
 
@@ -102,7 +102,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var criado = new ConsultarNfsePDFEnvio
             {
                 Versao = "1.00",
-                InfNFSe = new InfNFSe { Id = lido.InfNFSe.Id }
+                InfNFSe = new InfNFSeConsulta { Id = lido.InfNFSe.Id }
             };
 
             var docCriado = criado.GerarXML();

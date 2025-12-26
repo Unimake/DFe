@@ -14,7 +14,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfsePorRps")]
     [ComVisible(true)]
 #endif
     [Serializable]
@@ -40,7 +40,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.InfDPSConsulta")]
     [ComVisible(true)]
 #endif
     [Serializable]
