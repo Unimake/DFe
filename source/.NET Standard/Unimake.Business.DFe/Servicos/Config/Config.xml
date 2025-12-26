@@ -3077,4 +3077,10 @@
 		<ArqConfig>GuararaMG.xml</ArqConfig>
 		<PadraoNFSe>FUTURIZE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2411056">
+		<Nome>Tibau - RN</Nome>
+		<UF>RN</UF>
+		<ArqConfig>TibauRN.xml</ArqConfig>
+		<PadraoNFSe>AGILI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
