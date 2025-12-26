@@ -234,6 +234,11 @@ namespace Unimake.Business.DFe
             httpWebRequest.Timeout = soap.TimeOutWebServiceConnect;
             httpWebRequest.ContentType = (string.IsNullOrEmpty(soap.ContentType) ? "application/soap+xml; charset=utf-8;" : soap.ContentType);
             httpWebRequest.Method = "POST";
+            
+            if(soap.PadraoNFSe == PadraoNFSe.FUTURIZE)
+            {
+                httpWebRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
+            }
             if (soap.UsaCertificadoDigital)
             {
                 httpWebRequest.ClientCertificates.Add(certificado);
