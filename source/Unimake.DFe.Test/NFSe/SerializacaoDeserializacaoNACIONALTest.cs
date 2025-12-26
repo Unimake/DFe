@@ -74,7 +74,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var criado = new ConsultarNfsePorRps
             {
                 Versao = lido.Versao,
-                InfDPS = new InfDPS { Id = lido.InfDPS.Id }
+                InfDPS = new InfDPSConsulta { Id = lido.InfDPS.Id }
             };
             var docCriado = criado.GerarXML();
 
@@ -174,7 +174,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             // Teste de deserialização
             var lido = new DPS().LerXML<DPS>(docFixture);
             Assert.Equal("1.00", lido.Versao);
-            Assert.NotNull(lido.infDPS);
+            Assert.NotNull(lido.InfDPS);
 
             // Teste de serialização
             var docRoundTrip = lido.GerarXML();
@@ -209,11 +209,11 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
 
             // Verificações básicas v1.01
             Assert.Equal("1.01", lido.Versao);
-            Assert.NotNull(lido.infDPS);
-            Assert.Equal("DPS410690211234567800019500001000000000000001", lido.infDPS.Id);
+            Assert.NotNull(lido.InfDPS);
+            Assert.Equal("DPS410690211234567800019500001000000000000001", lido.InfDPS.Id);
 
             // Verificações específicas do IBSCBS v1.01
-            var ibscbs = lido.infDPS.IBSCBS;
+            var ibscbs = lido.InfDPS.IBSCBS;
             Assert.NotNull(ibscbs);
 
             // Novos campos obrigatórios v1.01
@@ -267,24 +267,24 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var criado = new DPS
             {
                 Versao = "1.01",
-                infDPS = new infDPS
+                InfDPS = new InfDPS
                 {
-                    Id = lido.infDPS.Id,
-                    TpAmb = lido.infDPS.TpAmb,
-                    DhEmi = lido.infDPS.DhEmi,
-                    VerAplic = lido.infDPS.VerAplic,
-                    Serie = lido.infDPS.Serie,
-                    NDPS = lido.infDPS.NDPS,
-                    DCompet = lido.infDPS.DCompet,
-                    TpEmit = lido.infDPS.TpEmit,
-                    CLocEmi = lido.infDPS.CLocEmi,
-                    Prest = lido.infDPS.Prest,
-                    Toma = lido.infDPS.Toma,
-                    Serv = lido.infDPS.Serv,
+                    Id = lido.InfDPS.Id,
+                    TpAmb = lido.InfDPS.TpAmb,
+                    DhEmi = lido.InfDPS.DhEmi,
+                    VerAplic = lido.InfDPS.VerAplic,
+                    Serie = lido.InfDPS.Serie,
+                    NDPS = lido.InfDPS.NDPS,
+                    DCompet = lido.InfDPS.DCompet,
+                    TpEmit = lido.InfDPS.TpEmit,
+                    CLocEmi = lido.InfDPS.CLocEmi,
+                    Prest = lido.InfDPS.Prest,
+                    Toma = lido.InfDPS.Toma,
+                    Serv = lido.InfDPS.Serv,
                     Valores = new Valores
                     {
-                        VServPrest = lido.infDPS.Valores.VServPrest,
-                        Trib = lido.infDPS.Valores.Trib
+                        VServPrest = lido.InfDPS.Valores.VServPrest,
+                        Trib = lido.InfDPS.Valores.Trib
                     },
                     IBSCBS = new IBSCBS
                     {
@@ -336,7 +336,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var dps = new DPS
             {
                 Versao = "1.01",
-                infDPS = new infDPS
+                InfDPS = new InfDPS
                 {
                     Id = "DPS_TESTE_V101",
                     TpAmb = TipoAmbiente.Homologacao,
@@ -442,7 +442,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var dps = new DPS
             {
                 Versao = "1.00",
-                infDPS = new infDPS
+                InfDPS = new InfDPS
                 {
                     // ID não informado - será gerado automaticamente
                     CLocEmi = 4314902,              // Porto Alegre/RS
@@ -456,7 +456,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             };
 
             // Act - Acessa a propriedade Id para forçar a geração
-            var idGerado = dps.infDPS.Id;
+            var idGerado = dps.InfDPS.Id;
 
             // Assert - Valida o ID esperado: DPS + 4314902 + 2 + 01878890000100 + 00010 + 000000000009147
             var idEsperado = "DPS431490220187889000010000010000000000009147";
@@ -491,7 +491,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var dps = new DPS
             {
                 Versao = "1.00",
-                infDPS = new infDPS
+                InfDPS = new InfDPS
                 {
 
                     TpAmb = TipoAmbiente.Homologacao,
@@ -556,7 +556,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                 }
             };
 
-            var idGerado = dps.infDPS.Id;
+            var idGerado = dps.InfDPS.Id;
             var xmlGerado = dps.GerarXML();
 
             var idEsperado = "DPS140015920176113500013200900000000000000006";
@@ -574,7 +574,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             Assert.Equal(idEsperado, infDPSNode.Attributes["Id"]?.Value);
 
             var dpsDeserializado = new DPS().LerXML<DPS>(xmlGerado);
-            Assert.Equal(idEsperado, dpsDeserializado.infDPS.Id);
+            Assert.Equal(idEsperado, dpsDeserializado.InfDPS.Id);
 
             var gerarNfse = new GerarNfse(xmlGerado, configuracao);
             gerarNfse.Executar();
