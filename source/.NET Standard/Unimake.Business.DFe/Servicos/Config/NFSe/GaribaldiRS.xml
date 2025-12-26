@@ -209,7 +209,7 @@
 		<ConsultarNfse versao="1.01">
 			<Descricao>Consultar NFSe</Descricao>
 			<RequestURIProducao>https://sefin.garibaldi.rs.gov.br/sefinnacional/nfse/{Chave}</RequestURIProducao>
-			<RequestURIHomologacao>https://sefin.garibaldi-homol.infisc.com.br/sefinnacional/nfseão/{Chave}</RequestURIHomologacao>
+			<RequestURIHomologacao>https://sefin.garibaldi-homol.infisc.com.br/sefinnacional/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
