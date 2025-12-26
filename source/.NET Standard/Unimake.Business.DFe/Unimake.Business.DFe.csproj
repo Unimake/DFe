@@ -746,6 +746,7 @@
 		<None Remove="Servicos\Config\NFSe\TeresopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\TerraBoaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\TerraDeAreiaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\TibauRN.XML" />
 		<None Remove="Servicos\Config\NFSe\TimboSC.xml" />
 		<None Remove="Servicos\Config\NFSe\TramandaiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TremembeSP.xml" />
@@ -1608,6 +1609,10 @@
 		<None Remove="Xml\Schemas\tiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\tiposDistDFe_v1.01.xsd" />
 		<None Remove="Xml\Schemas\xmldsig-core-schema_v1.01.xsd" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TibauRN.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
