@@ -40,7 +40,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// Informações da NFS-e a ser gerada.
         /// </summary>
         [XmlElement("infDPS", Namespace = Nfse.Ns)]
-        public infDPS infDPS { get; set; } = new infDPS();
+        public InfDPS InfDPS { get; set; } = new InfDPS();
 
         /// <summary>
         /// Assinatura digital.
@@ -51,12 +51,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.infDPS")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.InfDPS")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlType("infDPS", Namespace = Nfse.Ns)]
-    public class infDPS
+    public class InfDPS
     {
         private string IdField;
 
@@ -300,7 +300,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Subst")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Subst")]
     [ComVisible(true)]
 #endif
     public class Subst
@@ -323,7 +323,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Prest")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Prest")]
     [ComVisible(true)]
 #endif
     public class Prest
@@ -399,7 +399,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.End")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.End")]
     [ComVisible(true)]
 #endif
     public class End
@@ -437,7 +437,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.EndNac")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.EndNac")]
     [ComVisible(true)]
 #endif
     public class EndNac
@@ -451,7 +451,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.EndExt")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.EndExt")]
     [ComVisible(true)]
 #endif
     public class EndExt
@@ -471,7 +471,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.RegTrib")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.RegTrib")]
     [ComVisible(true)]
 #endif
     public class RegTrib
@@ -492,7 +492,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Toma")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Toma")]
     [ComVisible(true)]
 #endif
     public class Toma
@@ -564,14 +564,14 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Interm")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Interm")]
     [ComVisible(true)]
 #endif
     public class Interm : Toma { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Serv")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Serv")]
     [ComVisible(true)]
 #endif
     public class Serv
@@ -604,7 +604,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.LocPrest")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.LocPrest")]
     [ComVisible(true)]
 #endif
     public class LocPrest
@@ -631,7 +631,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.CServ")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.CServ")]
     [ComVisible(true)]
 #endif
     public class CServ
@@ -661,7 +661,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.ComExt")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ComExt")]
     [ComVisible(true)]
 #endif
     public class ComExt
@@ -713,7 +713,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.LSAPPU")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.LSAPPU")]
     [ComVisible(true)]
 #endif
     public class LSADPPU
@@ -738,7 +738,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Obra")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Obra")]
     [ComVisible(true)]
 #endif
     public class Obra
@@ -774,7 +774,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.AtvEvento")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.AtvEvento")]
     [ComVisible(true)]
 #endif
     public class AtvEvento
@@ -834,7 +834,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.ServEnd")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ServEnd")]
     [ComVisible(true)]
 #endif
     public class ServEnd
@@ -873,7 +873,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.ExplRod")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ExplRod")]
     [ComVisible(true)]
 #endif
     public class ExplRod
@@ -902,7 +902,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.InfoCompl")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.InfoCompl")]
     [ComVisible(true)]
 #endif
     public class InfoCompl
@@ -932,7 +932,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.GItemPed")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GItemPed")]
     [ComVisible(true)]
 #endif
     public class GItemPed
@@ -943,7 +943,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Valores")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Valores")]
     [ComVisible(true)]
 #endif
     public class Valores
@@ -964,7 +964,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.VServPrest")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.VServPrest")]
     [ComVisible(true)]
 #endif
     public class VServPrest
@@ -996,7 +996,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.VDescCondIncond")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.VDescCondIncond")]
     [ComVisible(true)]
 #endif
     public class VDescCondIncond
@@ -1029,7 +1029,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.VDedRed")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.VDedRed")]
     [ComVisible(true)]
 #endif
     public class VDedRed
@@ -1060,7 +1060,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Documentos")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Documentos")]
     [ComVisible(true)]
 #endif
     public class Documentos
@@ -1071,7 +1071,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.DocDedRed")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.DocDedRed")]
     [ComVisible(true)]
 #endif
     public class DocDedRed
@@ -1166,7 +1166,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.NFSeMun")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSeMun")]
     [ComVisible(true)]
 #endif
     public class NFSeMun
@@ -1183,7 +1183,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.NFNFS")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFNFS")]
     [ComVisible(true)]
 #endif
     public class NFNFS
@@ -1200,14 +1200,14 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Fornec")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Fornec")]
     [ComVisible(true)]
 #endif
     public class Fornec : Toma { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Trib")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Trib")]
     [ComVisible(true)]
 #endif
     public class Trib
@@ -1225,7 +1225,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.TribMun")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.TribMun")]
     [ComVisible(true)]
 #endif
     public class TribMun
@@ -1271,7 +1271,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.BM")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.BM")]
     [ComVisible(true)]
 #endif
     public class BM
@@ -1305,7 +1305,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.ExigSusp")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ExigSusp")]
     [ComVisible(true)]
 #endif
     public class ExigSusp
@@ -1319,7 +1319,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.TribFed")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.TribFed")]
     [ComVisible(true)]
 #endif
     public class TribFed
@@ -1366,7 +1366,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.PISCOFINS")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.PISCOFINS")]
     [ComVisible(true)]
 #endif
     public class PISCOFINS
@@ -1449,7 +1449,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.TotTrib")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.TotTrib")]
     [ComVisible(true)]
 #endif
     public class TotTrib
@@ -1503,7 +1503,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.VTotTrib")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.VTotTrib")]
     [ComVisible(true)]
 #endif
     public class VTotTrib
@@ -1541,7 +1541,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.PTotTrib")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.PTotTrib")]
     [ComVisible(true)]
 #endif
     public class PTotTrib
@@ -1579,7 +1579,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.IBSCBS")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBS")]
     [ComVisible(true)]
 #endif
     public class IBSCBS
@@ -1626,7 +1626,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.GRefNFSe")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GRefNFSe")]
     [ComVisible(true)]
 #endif
     public class GRefNFSe
@@ -1671,14 +1671,14 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Dest")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Dest")]
     [ComVisible(true)]
 #endif
     public class Dest : Toma { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.Imovel")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Imovel")]
     [ComVisible(true)]
 #endif
     public class Imovel
@@ -1699,7 +1699,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.ImovelEnd")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ImovelEnd")]
     [ComVisible(true)]
 #endif
     public class ImovelEnd
@@ -1739,7 +1739,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.ValoresValores")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ValoresValores")]
     [ComVisible(true)]
 #endif
     public class ValoresValores
@@ -1753,7 +1753,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.GReeRepRes")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GReeRepRes")]
     [ComVisible(true)]
 #endif
     public class GReeRepRes
@@ -1799,7 +1799,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.GReeRepResDocumentos")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GReeRepResDocumentos")]
     [ComVisible(true)]
 #endif
     public class GReeRepResDocumentos
@@ -1819,7 +1819,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.DfeNacional")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.DfeNacional")]
     [ComVisible(true)]
 #endif
     public class DfeNacional
@@ -1840,7 +1840,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.DocFiscalOutro")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.DocFiscalOutro")]
     [ComVisible(true)]
 #endif
     public class DocFiscalOutro
@@ -1857,7 +1857,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.DocOutro")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.DocOutro")]
     [ComVisible(true)]
 #endif
     public class DocOutro
@@ -1871,7 +1871,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.GReeRepResFornec")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GReeRepResFornec")]
     [ComVisible(true)]
 #endif
     public class GReeRepResFornec
@@ -1978,7 +1978,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.ValoresValoresTrib")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ValoresValoresTrib")]
     [ComVisible(true)]
 #endif
     public class ValoresValoresTrib
@@ -1989,7 +1989,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.GIBSCBS")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GIBSCBS")]
     [ComVisible(true)]
 #endif
     public class GIBSCBS
@@ -2017,7 +2017,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.GTribRegular")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GTribRegular")]
     [ComVisible(true)]
 #endif
     public class GTribRegular
@@ -2031,7 +2031,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GerarNfse.GDif")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GDif")]
     [ComVisible(true)]
 #endif
     public class GDif

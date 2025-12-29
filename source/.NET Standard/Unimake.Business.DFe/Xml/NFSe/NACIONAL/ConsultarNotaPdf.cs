@@ -18,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </remarks>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.Nacional.ConsultarNfsePDF")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.Nacional.ConsultarNfsePDFEnvio")]
     [ComVisible(true)]
 #endif
     [Serializable]

@@ -32,7 +32,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// Informações da NFS-e a ser consultada.
         /// </summary>
         [XmlElement("infNFSe")]
-        public InfNFSe InfNFSe { get; set; } = new InfNFSe();
+        public InfNFSeConsulta InfNFSe { get; set; } = new InfNFSeConsulta();
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     [Serializable]
     [XmlType(Namespace = "http://www.sped.fazenda.gov.br/nfse")]
-    public class InfNFSe
+    public class InfNFSeConsulta
     {
         /// <summary>
         /// ID da NFS-e a ser consultada. Fornecido externamente (não é calculado aqui).

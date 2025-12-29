@@ -622,6 +622,11 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
             if (URI != null)
             {
+                if (Configuracoes.Servico == Servico.NFSeCancelarNfse)
+                {
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", GetXMLElementInnertext("chNFSe"));
+                    return;
+                };
                 var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
                 var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
                 var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));

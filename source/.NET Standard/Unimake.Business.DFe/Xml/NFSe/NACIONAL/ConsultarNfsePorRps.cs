@@ -32,7 +32,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// Informações do DPS a ser consultado.
         /// </summary>
         [XmlElement("infDPS")]
-        public InfDPS InfDPS { get; set; } = new InfDPS();
+        public InfDPSConsulta InfDPS { get; set; } = new InfDPSConsulta();
     }
 
     /// <summary>
@@ -40,12 +40,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.InfDPS")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.InfDPSConsulta")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlType(Namespace = "http://www.sped.fazenda.gov.br/nfse")]
-    public class InfDPS
+    public class InfDPSConsulta
     {
         /// <summary>
         /// Id do DPS (fornecido externamente; não é calculado aqui).
