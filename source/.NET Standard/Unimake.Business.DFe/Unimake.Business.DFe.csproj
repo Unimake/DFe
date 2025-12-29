@@ -1314,7 +1314,10 @@
 		<None Remove="Xml\Schemas\NFSe\DSF\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DSF\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ELOTECH\nfse_v2_03.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EL\CNC_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EL\tiposCnc_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EL\xmldsig-core-schema.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseEnvio_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseResposta_v01.xsd" />
@@ -2773,6 +2776,26 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\nfse_v2-03_ima.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ELOTECH\nfse_v2_03.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\CNC_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\DPS_v1.01.xsd">
+	    <SubType>Designer</SubType>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\NFSe_v1.01.xsd">
+	    <SubType>Designer</SubType>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\pedRegEvento_v1.01.xsd">
+	    <SubType>Designer</SubType>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposCnc_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposComplexos_v1.01.xsd">
+	    <SubType>Designer</SubType>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposEventos_v1.01.xsd">
+	    <SubType>Designer</SubType>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposSimples_v1.01.xsd">
+	    <SubType>Designer</SubType>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseEnvio_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseResposta_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsEnvio_v01.xsd" />
@@ -3950,6 +3973,10 @@
 	<ItemGroup>
 	  <Folder Include="Servicos\MFE\" />
 	  <Folder Include="Xml\Schemas\NFSe\FINTEL\2.02\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\xmldsig-core-schema.xsd" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
