@@ -1,6 +1,6 @@
 ﻿<ServicosValidacao>
 	<!--NFe -->
-    <Servico tagRaiz="consStatServ" versao="4.00" padraoNFSe ="" versaoPadrao ="">
+	<Servico tagRaiz="consStatServ" versao="4.00" padraoNFSe ="" versaoPadrao ="">
 		<SchemaArquivo>consStatServ_v4.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
@@ -9,9 +9,9 @@
 		<TagExtraAssinatura></TagExtraAssinatura>
 		<TagExtraAtributoID></TagExtraAtributoID>
 		<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
-    </Servico>
+	</Servico>
 	<Servico tagRaiz ="consSitNFe" versao ="4.00" padraoNFSe="" versaoPadrao ="">
-		<SchemaArquivo>consSitNFe_v4.00.xsd</SchemaArquivo> 
+		<SchemaArquivo>consSitNFe_v4.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
 		<TagLoteAssinatura></TagLoteAssinatura>
@@ -54,6 +54,7 @@
 		<SchemaArquivo></SchemaArquivo>
 		<TagAssinatura>evento</TagAssinatura>
 		<TagAtributoID>infEvento</TagAtributoID>
+		<TagEvento>evento</TagEvento>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -272,7 +273,7 @@
 		<TagExtraAtributoID></TagExtraAtributoID>
 		<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 	</Servico>
-	
+
 	<!--CTe -->
 
 	<Servico tagRaiz ="distDFeInt" versao ="1.00" padraoNFSe="" versaoPadrao ="">
@@ -299,6 +300,7 @@
 		<SchemaArquivo></SchemaArquivo>
 		<TagAssinatura>eventoCTe</TagAssinatura>
 		<TagAtributoID>infEvento</TagAtributoID>
+		<TagEvento>eventoCTe</TagEvento>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -419,37 +421,37 @@
 		<TagExtraAtributoID></TagExtraAtributoID>
 		<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 		<SchemasEspecificos>
-		<Tipo>
-			<ID>1</ID>
-			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
-			<SchemaArquivoEspecifico>cteModalRodoviario_v3.00.xsd</SchemaArquivoEspecifico>
-		</Tipo>
-		<Tipo>
-			<ID>2</ID>
-			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
-			<SchemaArquivoEspecifico>cteModalAereo_v3.00.xsd</SchemaArquivoEspecifico>
-		</Tipo>
-		<Tipo>
-			<ID>3</ID>
-			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
-			<SchemaArquivoEspecifico>cteModalAquaviario_v3.00.xsd</SchemaArquivoEspecifico>
-		</Tipo>
-		<Tipo>
-			<ID>4</ID>
-			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
-			<SchemaArquivoEspecifico>cteModalFerroviario_v3.00.xsd</SchemaArquivoEspecifico>
-		</Tipo>
-		<Tipo>
-			<ID>5</ID>
-			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
-			<SchemaArquivoEspecifico>cteModalDutoviario_v3.00.xsd</SchemaArquivoEspecifico>
-		</Tipo>
-		<Tipo>
-			<ID>6</ID>
-			<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
-			<SchemaArquivoEspecifico>cteMultiModal_v3.00.xsd</SchemaArquivoEspecifico>
-		</Tipo>
-	</SchemasEspecificos>
+			<Tipo>
+				<ID>1</ID>
+				<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalRodoviario_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>2</ID>
+				<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalAereo_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>3</ID>
+				<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalAquaviario_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>4</ID>
+				<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalFerroviario_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>5</ID>
+				<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteModalDutoviario_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+			<Tipo>
+				<ID>6</ID>
+				<SchemaArquivo>cte_v3.00.xsd</SchemaArquivo>
+				<SchemaArquivoEspecifico>cteMultiModal_v3.00.xsd</SchemaArquivoEspecifico>
+			</Tipo>
+		</SchemasEspecificos>
 	</Servico>
 	<Servico tagRaiz ="consStatServCTe" versao ="4.00" padraoNFSe="" versaoPadrao ="">
 		<SchemaArquivo>consStatServCTe_v4.00.xsd</SchemaArquivo>
@@ -475,6 +477,7 @@
 		<SchemaArquivo></SchemaArquivo>
 		<TagAssinatura>eventoCTe</TagAssinatura>
 		<TagAtributoID>infEvento</TagAtributoID>
+		<TagEvento>eventoCTe</TagEvento>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
