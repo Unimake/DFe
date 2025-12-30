@@ -193,5 +193,70 @@
 			<SchemaVersao>2.04</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarNfseFaixa>
+		<GerarNfse versao="1.01">
+			<Descricao>Envio do DPS - Sincrono</Descricao>
+			<RequestURIProducao></RequestURIProducao>
+			<RequestURIHomologacao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/homologacao/nfse</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</GerarNfse>
+		<CancelarNfse versao="1.01">
+			<Descricao>Envio do cancelamento de NFSe</Descricao>
+			<RequestURIProducao></RequestURIProducao>
+			<RequestURIHomologacao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/homologacao/nfse/{chaveAcesso}/eventos</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
+			<TagAssinatura>pedRegEvento</TagAssinatura>
+			<TagAtributoID>infPedReg</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</CancelarNfse>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao></RequestURIProducao>
+			<RequestURIHomologacao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/homologacao/nfse/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfse>
+		<ConsultarNfsePorRps versao="1.01">
+			<Descricao>Consultar NFSe por DPS</Descricao>
+			<RequestURIProducao></RequestURIProducao>
+			<RequestURIHomologacao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/homologacao/dps/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>chaveAcesso</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>
