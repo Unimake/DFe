@@ -4,7 +4,7 @@
 		<GerarNfse versao="2.04">
 			<Descricao>Gerar NFSe</Descricao>
 			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
+			<RequestURIHomologacao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -19,7 +19,7 @@
 		<RecepcionarLoteRpsSincrono versao="2.04">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
+			<RequestURIHomologacao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -34,7 +34,7 @@
 		<RecepcionarLoteRps versao="2.04">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
+			<RequestURIHomologacao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -49,7 +49,7 @@
 		<SubstituirNfse versao="2.04">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
 			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
+			<RequestURIHomologacao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -64,7 +64,7 @@
 		<ConsultarLoteRps versao="2.04">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
+			<RequestURIHomologacao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -79,7 +79,7 @@
 		<ConsultarNfseServicoPrestado versao="2.04">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
 			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
+			<RequestURIHomologacao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -94,7 +94,7 @@
 		<ConsultarNfseFaixa versao="2.04">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
 			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
+			<RequestURIHomologacao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -109,7 +109,7 @@
 		<CancelarNfse versao="2.04">
 			<Descricao>Cancelar NFSe</Descricao>
 			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
+			<RequestURIHomologacao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -124,7 +124,7 @@
 		<ConsultarNfsePorRps versao="2.04">
 			<Descricao>Consulta NFSe por Rps</Descricao>
 			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao></RequestURIHomologacao>
+			<RequestURIHomologacao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
