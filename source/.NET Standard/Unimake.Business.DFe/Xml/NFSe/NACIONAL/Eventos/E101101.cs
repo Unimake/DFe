@@ -1,5 +1,7 @@
-﻿using System;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
 using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Eventos

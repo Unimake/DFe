@@ -118,7 +118,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Utility\TesteValidacao\Dicionario.cs">
+	  <Compile Update="Utility\TesteValidacao\ValidarXML.cs">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Compile>
 	</ItemGroup>
