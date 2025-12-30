@@ -9,7 +9,10 @@ using Unimake.Business.DFe.Xml.NFSe.NACIONAL.Eventos;
 
 namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 {
-    internal static class NfseNs
+    /// <summary>
+    /// Namespace da NFSe Ambiente Nacional
+    /// </summary>
+    public static class NfseNs
     {
         public const string Ns = "http://www.sped.fazenda.gov.br/nfse";
     }
@@ -145,8 +148,5 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
                 throw new Exception("Informe exatamente um identificador do autor: CNPJAutor OU CPFAutor.");
             }
         }
-
     }
-
-    
 }
