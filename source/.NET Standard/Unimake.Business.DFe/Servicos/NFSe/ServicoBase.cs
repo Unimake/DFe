@@ -119,6 +119,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     }
                     break;
 
+                case PadraoNFSe.SMARAPD:
+                    SMARAPD();
+                    break;
+
             }
             Configuracoes.Definida = true;
             base.DefinirConfiguracao();
@@ -312,6 +316,26 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #endregion Bauhaus
+
+        #region SMARAPD
+
+        private void SMARAPD()
+        {
+            // Verificar se é um evento de consulta
+            bool isConsulta = Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps ||
+                              Configuracoes.Servico == Servico.NFSeConsultarNfse ||
+                              Configuracoes.Servico == Servico.NFSeConsultarNfsePDF;
+            if (isConsulta) {
+                var URI = Configuracoes.RequestURI;
+
+                var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+                var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+                var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+            }
+        }
+
+        #endregion SMARAPD
 
         #region NACIONAL
 
