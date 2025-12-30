@@ -3811,7 +3811,15 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v0301.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\DPS_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\evento_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\NFSe_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\nfse_v2_01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\pedRegEvento_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\tiposComplexos_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\tiposEventos_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\tiposSimples_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\XSDRLZ_Informatica_02.xsd" />
