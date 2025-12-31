@@ -22,7 +22,7 @@
 		</RecepcionarLoteRps>
 		<CancelarNfse versao="2.04">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://v2-ws-homologacao.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://ws-homologacao-rtc.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://ws-jundiai.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
@@ -41,7 +41,7 @@
 		</CancelarNfse>
 		<ConsultarLoteRps versao="2.04">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://v2-ws-homologacao.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://ws-homologacao-rtc.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://ws-jundiai.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
@@ -60,7 +60,7 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.04">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>https://v2-ws-homologacao.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://ws-homologacao-rtc.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://ws-jundiai.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
@@ -79,7 +79,7 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoPrestado versao="2.04">
 			<Descricao>Consulta NFSe por serviço prestado</Descricao>
-			<WebEnderecoHomologacao>https://v2-ws-homologacao.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://ws-homologacao-rtc.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://ws-jundiai.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
