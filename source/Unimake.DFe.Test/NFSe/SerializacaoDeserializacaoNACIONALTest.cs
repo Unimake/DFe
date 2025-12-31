@@ -1,13 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
-using Unimake.Business.DFe.Servicos.NFSe;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.NFSe;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
+using Unimake.Business.DFe.Xml.NFSe.NACIONAL.Eventos;
 using Xunit;
 using ConsultarNfse = Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfse;
 using ConsultarNfsePorRps = Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfsePorRps;
-using Unimake.Business.DFe.Xml.NFSe.NACIONAL.Eventos;
 
 namespace Unimake.DFe.Test.NFSe.NACIONAL
 {
@@ -578,6 +579,158 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
 
             var gerarNfse = new GerarNfse(xmlGerado, configuracao);
             gerarNfse.Executar();
+        }
+
+        /// <summary>
+        /// Testa a deserialização do XML de retorno da NFSe (versão 1.01)
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [Trait("Versao", "1.01")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.01\RetornoNACIONAL.xml")]
+        public void DeserializarRetornoNFSe_V101_Completo(string caminhoXml)
+        {
+            // Arrange
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+            docFixture.Load(caminhoXml);
+
+            // Act - Deserialização
+            var nfse = new Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe().LerXML<Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe>(docFixture);
+
+
+            // Assert - Validações da estrutura principal
+            Assert.NotNull(nfse);
+            Assert.Equal("1.01", nfse.Versao);
+            Assert.NotNull(nfse.Signature);
+            Assert.NotNull(nfse.InfNFSe);
+
+            // Validações do InfNFSe
+            var infNFSe = nfse.InfNFSe;
+            Assert.Equal("NFS43149022226263261000198000000000000225120787292537", infNFSe.Id);
+            Assert.Equal("Porto Alegre", infNFSe.XLocEmi);
+            Assert.Equal("Porto Alegre", infNFSe.XLocPrestacao);
+            Assert.Equal(2, infNFSe.NNFSe);
+            Assert.Equal(4314902, infNFSe.CLocIncid);
+            Assert.Equal("Porto Alegre", infNFSe.XLocIncid);
+            Assert.Equal("Outros serviços de transporte de natureza municipal.", infNFSe.XTribNac);
+            Assert.Equal("Serviços de transporte rodoviário de cargas sólidas a granel", infNFSe.XNBS);
+            Assert.Equal("SefinNac_Pre_1.4.0", infNFSe.VerAplic);
+            Assert.Equal(2, infNFSe.AmbGer); // Homologação
+            Assert.Equal(1, infNFSe.TpEmis); // Normal
+            Assert.Equal(1, infNFSe.ProcEmi); // Aplicativo do contribuinte
+            Assert.Equal(100, infNFSe.CStat); // Autorizada
+            Assert.NotEqual(default(DateTimeOffset), infNFSe.DhProc);
+            Assert.Equal(151689, infNFSe.NDFSe);
+
+            // Validações do Emitente
+            var emit = infNFSe.Emit;
+            Assert.NotNull(emit);
+            Assert.Equal("26263261000198", emit.CNPJ);
+            Assert.Equal("HPP COMERCIO E DISTRIBUICAO DE ALIMENTOS PARA ANIMAIS LTDA", emit.XNome);
+            Assert.Null(emit.XFant);
+            Assert.NotNull(emit.EnderNac);
+            Assert.Equal("MARQUES DO MARICA", emit.EnderNac.XLgr);
+            Assert.Equal("273", emit.EnderNac.Nro);
+            Assert.Equal("VILA NOVA", emit.EnderNac.XBairro);
+            Assert.Equal(4314902, emit.EnderNac.CMun);
+            Assert.Equal("RS", emit.EnderNac.UF);
+            Assert.Equal("91750460", emit.EnderNac.CEP);
+            Assert.Equal("5132093097", emit.Fone);
+            Assert.Equal("FISCAL@HPPDISTRIBUIDORA.COM.BR", emit.Email);
+
+            // Validações dos Valores 
+            var valores = infNFSe.Valores;
+            Assert.NotNull(valores);
+            Assert.Equal(1500.00, valores.VBC, 2); // 2 casas decimais de precisão
+            Assert.Equal(5.00, valores.PAliqAplic, 2);
+            Assert.Equal(75.00, valores.VISSQN, 2);
+            Assert.Equal(1500.00, valores.VLiq, 2);
+
+            // Validações do IBSCBS
+            var ibscbs = infNFSe.IBSCBS;
+            Assert.NotNull(ibscbs);
+            Assert.Equal(4314902, ibscbs.CLocalidadeIncid);
+            Assert.Equal("Porto Alegre", ibscbs.XLocalidadeIncid);
+
+            // Validações dos Valores IBSCBS 
+            var valoresIBSCBS = ibscbs.Valores;
+            Assert.NotNull(valoresIBSCBS);
+            Assert.Equal(1425.00, valoresIBSCBS.VBC, 2);
+            Assert.Equal(0.00, valoresIBSCBS.VCalcReeRepRes, 2);
+
+            // Validações UF 
+            Assert.NotNull(valoresIBSCBS.UF);
+            Assert.Equal(0.10, valoresIBSCBS.UF.PIBSUF, 2);
+            Assert.Equal(0.10, valoresIBSCBS.UF.PAliqEfetUF, 2);
+
+            // Validações Município 
+            Assert.NotNull(valoresIBSCBS.Mun);
+            Assert.Equal(0.00, valoresIBSCBS.Mun.PIBSMun, 2);
+            Assert.Equal(0.00, valoresIBSCBS.Mun.PAliqEfetMun, 2);
+
+            // Validações Federal (CBS)
+            Assert.NotNull(valoresIBSCBS.Fed);
+            Assert.Equal(0.90, valoresIBSCBS.Fed.PCBS, 2);
+            Assert.Equal(0.90, valoresIBSCBS.Fed.PAliqEfetCBS, 2);
+
+            // Validações dos Totalizadores
+            var totCIBS = ibscbs.TotCIBS;
+            Assert.NotNull(totCIBS);
+            Assert.Equal(1500.00, totCIBS.VTotNF, 2);
+
+            // Validações IBS 
+            var gIBS = totCIBS.GIBS;
+            Assert.NotNull(gIBS);
+            Assert.Equal(1.43, gIBS.VIBSTot, 2);
+            Assert.NotNull(gIBS.GIBSUFTot);
+            Assert.Equal(1.43, gIBS.GIBSUFTot.VIBSUF, 2);
+            Assert.NotNull(gIBS.GIBSMunTot);
+            Assert.Equal(0.00, gIBS.GIBSMunTot.VIBSMun, 2);
+
+            // Validações CBS
+            var gCBS = totCIBS.GCBS;
+            Assert.NotNull(gCBS);
+            Assert.Equal(12.83, gCBS.VCBS, 2);
+
+            // Validações da DPS dentro da NFSe
+            var dps = infNFSe.DPS;
+            Assert.NotNull(dps);
+            Assert.Equal("1.01", dps.Versao);
+            Assert.NotNull(dps.InfDPS);
+            Assert.Equal("DPS431490222626326100019800001000000000000002", dps.InfDPS.Id);
+            Assert.Equal(TipoAmbiente.Homologacao, dps.InfDPS.TpAmb); // Homologação
+            Assert.NotNull(dps.Signature);
+
+            // Act - Serialização (Round-trip)
+            var docRoundTrip = nfse.GerarXML();
+            Assert.NotNull(docRoundTrip);
+
+            // Validação da estrutura XML gerada
+            var nsmgr = CreateNamespaceManager(docRoundTrip);
+            
+            var nfseNode = docRoundTrip.SelectSingleNode("//ns:NFSe", nsmgr);
+            Assert.NotNull(nfseNode);
+            Assert.Equal("1.01", nfseNode.Attributes["versao"]?.Value);
+
+            var infNFSeNode = docRoundTrip.SelectSingleNode("//ns:infNFSe", nsmgr);
+            Assert.NotNull(infNFSeNode);
+            Assert.Equal(infNFSe.Id, infNFSeNode.Attributes["Id"]?.Value);
+
+            // Valida presença de elementos essenciais
+            Assert.NotNull(docRoundTrip.SelectSingleNode("//ns:emit", nsmgr));
+            Assert.NotNull(docRoundTrip.SelectSingleNode("//ns:valores", nsmgr));
+            Assert.NotNull(docRoundTrip.SelectSingleNode("//ns:IBSCBS", nsmgr));
+            Assert.NotNull(docRoundTrip.SelectSingleNode("//ns:totCIBS", nsmgr));
+            Assert.NotNull(docRoundTrip.SelectSingleNode("//ns:DPS", nsmgr));
+
+            // Validação de valores específicos no XML gerado
+            Assert.Equal("100", docRoundTrip.SelectSingleNode("//ns:cStat", nsmgr)?.InnerText);
+            Assert.Equal("1500.00", docRoundTrip.SelectSingleNode("//ns:valores/ns:vLiq", nsmgr)?.InnerText);
+            Assert.Equal("1.43", docRoundTrip.SelectSingleNode("//ns:gIBS/ns:vIBSTot", nsmgr)?.InnerText);
+            Assert.Equal("12.83", docRoundTrip.SelectSingleNode("//ns:gCBS/ns:vCBS", nsmgr)?.InnerText);
         }
     }
 }
