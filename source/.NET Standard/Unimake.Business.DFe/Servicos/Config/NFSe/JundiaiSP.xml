@@ -3,7 +3,7 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="2.04">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://v2-ws-homologacao.giss.com.br/service-ws/nf/nfse-ws</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://ws-homologacao-rtc.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://ws-jundiai.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
