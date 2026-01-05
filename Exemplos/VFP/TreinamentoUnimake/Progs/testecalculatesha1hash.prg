@@ -1,0 +1,1 @@
+MESSAGEBOX(CalculateSHA1Hash("123456"))
