@@ -176,7 +176,7 @@
 		</ConsultarNfseFaixa>
 		<GerarNfse versao="1.01">
 			<Descricao>Envio do DPS - Sincrono</Descricao>
-			<RequestURIProducao></RequestURIProducao>
+			<RequestURIProducao>https://nfseblumenau.simplissweb.com.br/nfse</RequestURIProducao>
 			<RequestURIHomologacao>https://producaorestrita.simplissweb.com.br/nfse</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
@@ -194,7 +194,7 @@
 		</GerarNfse>
 		<CancelarNfse versao="1.01">
 			<Descricao>Envio do cancelamento de NFSe</Descricao>
-			<RequestURIProducao></RequestURIProducao>
+			<RequestURIProducao>https://nfseblumenau.simplissweb.com.br/nfse/{Chave}/eventos/</RequestURIProducao>
 			<RequestURIHomologacao>https://producaorestrita.simplissweb.com.br/nfse/{Chave}/eventos</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
