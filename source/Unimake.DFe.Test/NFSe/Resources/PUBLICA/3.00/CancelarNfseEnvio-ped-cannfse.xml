@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<CancelarNfseEnvio xmlns="http://www.publica.inf.br" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.publica.inf.br schema_nfse_v03.xsd">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CancelarNfseEnvio xmlns="http://www.publica.inf.br">
 	<Pedido>
 		<InfPedidoCancelamento id="assinar">
 			<IdentificacaoNfse>
-				<Numero>999999999999990</Numero>
-				<Cnpj>99999999999999</Cnpj>
-				<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+				<Numero>201200000000060</Numero>
+				<Cnpj>95836771000120</Cnpj>
+				<InscricaoMunicipal>56</InscricaoMunicipal>
 				<CodigoMunicipio>15</CodigoMunicipio>
 			</IdentificacaoNfse>
 			<CodigoCancelamento>C001</CodigoCancelamento>
