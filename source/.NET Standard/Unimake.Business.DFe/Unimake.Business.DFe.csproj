@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2025.12.30.1002</AssemblyVersion>
-		<FileVersion>2025.12.30.1002</FileVersion>
+		<AssemblyVersion>2026.01.06.1602</AssemblyVersion>
+		<FileVersion>2026.01.06.1602</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1490,8 +1490,6 @@
 		<None Remove="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\nfse_v2_04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v03.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v0301-rtc.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v0301.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PUBLICA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\QUASAR\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
@@ -3833,8 +3831,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\nfse_v2_04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v03.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v0301-rtc.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v0301.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v03-rtc.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\DPS_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\evento_v1.01.xsd" />
@@ -3959,7 +3956,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.0" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.1" />
 		<PackageReference Include="Unimake.Cryptography" Version="20251119.239.8" />
 		<PackageReference Include="Unimake.Extensions" Version="20251119.239.8" />
 		<PackageReference Include="Unimake.Utils" Version="20251119.239.8" />

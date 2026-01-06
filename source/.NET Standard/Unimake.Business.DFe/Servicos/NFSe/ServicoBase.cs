@@ -191,11 +191,22 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         {
             AuthorizationBasic();
 
-            if (Configuracoes.SchemaVersao == "2.80")
+            switch (Configuracoes.SchemaVersao)
             {
-                CriarHttpContentIPM();
-            }
+                case "2.80":
+                    CriarHttpContentIPM();
+                    break;
 
+                case "2.04":
+                    //Remover a linha <?xml version="1.0" encoding="utf-8"?> do XML, pois o webservice do IPM 2.04 não aceita esta linha no corpo do XML.
+                    var xmlBody = ConteudoXML.OuterXml;
+                    if (xmlBody.IndexOf("?>") >= 0)
+                    {
+                        xmlBody = xmlBody.Substring(xmlBody.IndexOf("?>") + 2);
+                        ConteudoXML.LoadXml(xmlBody);
+                    }
+                    break;
+            }
         }
 
         private void CriarHttpContentIPM()
@@ -688,7 +699,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void AuthorizationBasic()
         {
-            // HM2SOLUCOES homologação:  11222333000181:S3nh@
             Configuracoes.MunicipioToken = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Configuracoes.MunicipioUsuario}:{Configuracoes.MunicipioSenha}"));
         }
 

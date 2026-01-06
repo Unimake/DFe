@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ConsultarSituacaoLoteRpsEnvio xmlns="http://www.publica.inf.br">
 	<Prestador id="assinar">
-		<Cnpj>99999999999999</Cnpj>
-		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+		<Cnpj>95836771000120</Cnpj>
+		<InscricaoMunicipal>56</InscricaoMunicipal>
 	</Prestador>
-	<Protocolo>99999999999999999999999999999999999999999999999999999999</Protocolo>
+	<Protocolo>NzsyNTswMzExMjQwMjAwMDE3NjsyMTA7NzsyNTswMzExMjQwMj</Protocolo>
 </ConsultarSituacaoLoteRpsEnvio>

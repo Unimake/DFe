@@ -136,7 +136,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #region ShouldSerialize
         public bool ShouldSerializeCNPJAutor() => !string.IsNullOrWhiteSpace(CNPJAutor);
         public bool ShouldSerializeCPFAutor() => !string.IsNullOrWhiteSpace(CPFAutor);
-        public bool ShouldSerializeNPedRegevento() => !string.IsNullOrWhiteSpace(NPedRegEvento);
+        public bool ShouldSerializeNPedRegEvento() => !string.IsNullOrWhiteSpace(NPedRegEvento);
         #endregion
 
         public void ValidarRegrasAutor()
