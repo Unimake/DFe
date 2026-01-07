@@ -194,7 +194,7 @@
 		</GerarNfse>
 		<CancelarNfse versao="1.01">
 			<Descricao>Envio do cancelamento de NFSe</Descricao>
-			<RequestURIProducao>https://nfseblumenau.simplissweb.com.br/nfse/{Chave}/eventos/</RequestURIProducao>
+			<RequestURIProducao>https://nfseblumenau.simplissweb.com.br/nfse/{Chave}/eventos</RequestURIProducao>
 			<RequestURIHomologacao>https://producaorestrita.simplissweb.com.br/nfse/{Chave}/eventos</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
@@ -208,5 +208,21 @@
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</CancelarNfse>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao>https://nfseblumenau.simplissweb.com.br/nfse/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://producaorestrita.simplissweb.com.br/nfse/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>
