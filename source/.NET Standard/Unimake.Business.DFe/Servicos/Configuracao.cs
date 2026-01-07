@@ -362,9 +362,18 @@ namespace Unimake.Business.DFe.Servicos
                                 EncriptaTagAssinatura = XMLUtility.TagRead(elementPropriedades, "EncriptaTagAssinatura").ToLower() == "true" ? true : false;
                             }
 
-                            if (XMLUtility.TagExist(elementPropriedades, "TemCDATA"))
+                            if (XMLUtility.TagExist(elementPropriedades, "EncriptaTagAssinatura"))
                             {
-                                TemCDATA = XMLUtility.TagRead(elementPropriedades, "TemCDATA").ToLower() == "true" ? true : false;
+                                EncriptaTagAssinatura = XMLUtility.TagRead(elementPropriedades, "EncriptaTagAssinatura").ToLower() == "true" ? true : false;
+                            }
+
+                            if (XMLUtility.TagExist(elementPropriedades, "TimeOutWebServiceConnect"))
+                            {
+                                var timeOut = Convert.ToInt32(XMLUtility.TagRead(elementPropriedades, "TimeOutWebServiceConnect"));
+                                if (timeOut > 0)
+                                {
+                                    TimeOutWebServiceConnect = timeOut;
+                                }
                             }
 
                             //Verificar se existem schemas específicos de validação
