@@ -223,5 +223,21 @@
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarNfse>
+		<ConsultarNfsePDF versao="1.01">
+			<Descricao>Consultar NFSe PDF</Descricao>
+			<RequestURIProducao>https://sefin.caxias.rs.gov.br/sefinnacional/nfse/pdf/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://sefinhomol.caxias.rs.gov.br/sefinnacional/nfse/pdf/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/pdf</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfsePDF>
 	</Servicos>
 </Configuracoes>

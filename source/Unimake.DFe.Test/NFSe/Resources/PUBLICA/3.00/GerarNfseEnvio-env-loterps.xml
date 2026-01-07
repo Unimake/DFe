@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <GerarNfseEnvio xmlns="http://www.publica.inf.br">
 	<Rps>
-		<InfRps id="RPS1">
+		<InfRps id="assinar">
 			<IdentificacaoRps>
 				<Numero>8</Numero>
 				<Serie>A1</Serie>
@@ -33,20 +33,20 @@
 				<CodigoMunicipio>3106200</CodigoMunicipio>
 			</Servico>
 			<Prestador>
-				<Cnpj>99999999999999</Cnpj>
+				<Cnpj>95836771000120</Cnpj>
 				<InscricaoMunicipal>56</InscricaoMunicipal>
 			</Prestador>
 			<Tomador>
 				<IdentificacaoTomador>
 					<CpfCnpj>
-						<Cpf>99999999999</Cpf>
+						<Cpf>04823071964</Cpf>
 					</CpfCnpj>
 				</IdentificacaoTomador>
-				<RazaoSocial>xxxxxxxxxxxx</RazaoSocial>
+				<RazaoSocial>HUGO HAROLDO</RazaoSocial>
 				<Endereco>
-					<Endereco>xxxxxxxxxxxxx</Endereco>
+					<Endereco>DA BAHIA</Endereco>
 					<Numero>200</Numero>
-					<Complemento>xxxxxxxxxx</Complemento>
+					<Complemento>ANDAR 14</Complemento>
 					<Bairro>CENTRO</Bairro>
 					<CodigoMunicipio>3106200</CodigoMunicipio>
 					<Uf>MG</Uf>

@@ -1,59 +1,62 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <EnviarLoteRpsEnvio xmlns="http://www.publica.inf.br" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.publica.inf.br schema_nfse_v03.xsd">
-	<LoteRps versao="1.00">
-		<NumeroLote>1</NumeroLote>
-		<Cnpj>99999999999999</Cnpj>
-		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+	<LoteRps versao="3.01">
+		<NumeroLote>25</NumeroLote>
+		<Cnpj>95836771000120</Cnpj>
+		<InscricaoMunicipal>56</InscricaoMunicipal>
 		<QuantidadeRps>1</QuantidadeRps>
 		<ListaRps>
 			<Rps>
-				<InfRps id="RPS1">
+				<InfRps id="assinar">
 					<IdentificacaoRps>
-						<Numero>1</Numero>
-						<Serie>RP1</Serie>
+						<Numero>8</Numero>
+						<Serie>1</Serie>
 						<Tipo>1</Tipo>
 					</IdentificacaoRps>
-					<DataEmissao>2022-03-15T10:10:58</DataEmissao>
-					<NaturezaOperacao>501</NaturezaOperacao>
+					<DataEmissao>2012-01-01T21:00:00</DataEmissao>
+					<NaturezaOperacao>16</NaturezaOperacao>
 					<OptanteSimplesNacional>1</OptanteSimplesNacional>
 					<IncentivadorCultural>2</IncentivadorCultural>
 					<Status>1</Status>
 					<Servico>
 						<Valores>
-							<ValorServicos>3.95</ValorServicos>
-							<ValorDeducoes>0.00</ValorDeducoes>
-							<ValorPis>0.00</ValorPis>
-							<ValorCofins>0.00</ValorCofins>
-							<ValorInss>0.00</ValorInss>
-							<ValorIr>0.00</ValorIr>
-							<ValorCsll>0.00</ValorCsll>
-							<IssRetido>2</IssRetido>
-							<ValorIss>0.00</ValorIss>
-							<OutrasRetencoes>0.00</OutrasRetencoes>
-							<Aliquota>0.00</Aliquota>
+							<ValorServicos>1000.00</ValorServicos>
+							<ValorDeducoes>10.00</ValorDeducoes>
+							<ValorPis>10.00</ValorPis>
+							<ValorCofins>10.00</ValorCofins>
+							<ValorInss>10.00</ValorInss>
+							<ValorIr>10.00</ValorIr>
+							<ValorCsll>10.00</ValorCsll>
+							<IssRetido>1</IssRetido>
+							<ValorIss>10.00</ValorIss>
+							<OutrasRetencoes>10.00</OutrasRetencoes>
+							<Aliquota>5.00</Aliquota>
+							<DescontoIncondicionado>10.00</DescontoIncondicionado>
+							<DescontoCondicionado>10.00</DescontoCondicionado>
 						</Valores>
-						<ItemListaServico>14.01</ItemListaServico>
-						<Discriminacao>NOTA FISCAL DE SERVICO TESTE</Discriminacao>
-						<CodigoMunicipio>4208203</CodigoMunicipio>
+						<ItemListaServico>11.01</ItemListaServico>
+						<Discriminacao>Teste.</Discriminacao>
+						<CodigoMunicipio>3106200</CodigoMunicipio>
 					</Servico>
 					<Prestador>
-						<Cnpj>99999999999999</Cnpj>
-						<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+						<Cnpj>95836771000120</Cnpj>
+						<InscricaoMunicipal>56</InscricaoMunicipal>
 					</Prestador>
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>99999999999</Cpf>
+								<Cpf>04823071964</Cpf>
 							</CpfCnpj>
 						</IdentificacaoTomador>
-						<RazaoSocial>TESTE TESTE</RazaoSocial>
+						<RazaoSocial>HUGO HAROLDO</RazaoSocial>
 						<Endereco>
-							<Endereco>xxxxxxxxx</Endereco>
-							<Numero>12</Numero>
+							<Endereco>DA BAHIA</Endereco>
+							<Numero>200</Numero>
+							<Complemento>ANDAR 14</Complemento>
 							<Bairro>CENTRO</Bairro>
-							<CodigoMunicipio>1111111</CodigoMunicipio>
-							<Uf>SC</Uf>
-							<Cep>12345678</Cep>
+							<CodigoMunicipio>3106200</CodigoMunicipio>
+							<Uf>MG</Uf>
+							<Cep>30160010</Cep>
 						</Endereco>
 					</Tomador>
 				</InfRps>
