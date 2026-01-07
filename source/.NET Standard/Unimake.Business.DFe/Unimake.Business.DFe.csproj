@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.01.06.1602</AssemblyVersion>
-		<FileVersion>2026.01.06.1602</FileVersion>
+		<AssemblyVersion>2026.01.07.1628</AssemblyVersion>
+		<FileVersion>2026.01.07.1628</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1358,9 +1358,11 @@
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_consultar_situacao_lote_rps_resposta_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_enviar_lote_rps_envio_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_enviar_lote_rps_resposta_v03.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GINFES\serviço_enviar_lote_rps_envio_v04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\tipos_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\tipos_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema20020212_v03.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema20020212_v04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GISSONLINE\cabecalho-v2_04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GISSONLINE\cancelar-nfse-envio-v2_04.xsd" />
@@ -3663,9 +3665,11 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\servico_consultar_situacao_lote_rps_resposta_v03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\servico_enviar_lote_rps_envio_v03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\servico_enviar_lote_rps_resposta_v03.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\serviço_enviar_lote_rps_envio_v04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\tipos_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\tipos_v03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema20020212_v03.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema20020212_v04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\cabecalho-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\cabecalho-v2_04.xsd" />
