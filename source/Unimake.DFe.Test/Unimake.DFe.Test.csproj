@@ -29,6 +29,7 @@
 		<None Remove="NFSe\Resources\MANAUS_AM\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
 		<None Remove="NFSe\Resources\MANAUS_AM\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
 		<None Remove="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
+		<None Remove="NFSe\Resources\SMARAPD\1.01\SubstituirNfseEnvio-ped-substnfse.xml" />
 		<None Remove="NFSe\Resources\THEMA\1.00\CancelarNfseEnvio-ped-cannfse.xml" />
 		<None Remove="NFSe\Resources\THEMA\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml" />
 		<None Remove="NFSe\Resources\THEMA\1.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
@@ -65,6 +66,7 @@
 		<EmbeddedResource Include="NFSe\Resources\NATALENSE\1.00\Exemplo-env-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\NATALENSE\1.00\EnviarLoteRpsEnvio-env-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\SMARAPD\1.01\SubstituirNfseEnvio-ped-substnfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\THEMA\1.00\CancelarNfseEnvio-ped-cannfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\THEMA\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\THEMA\1.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
