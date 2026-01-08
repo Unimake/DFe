@@ -135,27 +135,8 @@
 			<SchemaVersao>4.00</SchemaVersao>
 			<TargetNS></TargetNS>
 		</RecepcionarLoteRps>
-		<ConsultarSituacaoLoteRps versao="4.00">
-			<Descricao>Consultar Situação Lote Rps</Descricao>
-			<WebEnderecoHomologacao>https://isshomo.sefin.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>servico_consultar_situacao_lote_rps_envio_v03.xsd</SchemaArquivo>
-			<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>Protocolo</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRpsV4 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="4" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v04.xsd"&gt;&lt;versaoDados&gt;4&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarSituacaoLoteRpsEnvio xmlns="">{xmlBodyScape}</ConsultarSituacaoLoteRpsEnvio></ConsultarSituacaoLoteRpsV4></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>4.00</SchemaVersao>
-			<TargetNS></TargetNS>
-		</ConsultarSituacaoLoteRps>
 		<ConsultarNfse versao="4.00">
-			<Descricao>Consulta de NFSe por Data</Descricao>
+			<Descricao>Consulta da NFSe</Descricao>
 			<WebEnderecoHomologacao>https://isshomo.sefin.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
@@ -185,31 +166,31 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsV4 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="4" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v04.xsd"&gt;&lt;versaoDados&gt;4&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarNfseRpsEnvio xmlns="">{xmlBodyScape}</ConsultarNfseRpsEnvio></ConsultarNfsePorRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsV4 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="4" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v04.xsd"&gt;&lt;versaoDados&gt;4&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarNfseRpsEnvio xmlns="">{xmlBodyScape}</ConsultarNfseRpsEnvio></ConsultarNfsePorRpsV4></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>soap:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>4.00</SchemaVersao>
 			<TargetNS></TargetNS>
 		</ConsultarNfsePorRps>
-		<ConsultarSituacaoLoteRps versao="4.00">
-			<Descricao>Consultar Situação Lote Rps</Descricao>
+		<ConsultarLoteRps versao="4.00">
+			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://isshomo.sefin.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>servico_consultar_situacao_lote_rps_envio_v03.xsd</SchemaArquivo>
-			<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
 			<TagAtributoID>Protocolo</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRpsV4 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="4" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v04.xsd"&gt;&lt;versaoDados&gt;4&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarSituacaoLoteRpsEnvio xmlns="">{xmlBodyScape}</ConsultarSituacaoLoteRpsEnvio></ConsultarSituacaoLoteRpsV4></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsV4 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="4" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v04.xsd"&gt;&lt;versaoDados&gt;4&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarLoteRpsEnvio xmlns="">{xmlBodyScape}</ConsultarLoteRpsEnvio></ConsultarLoteRpsV4></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>soap:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>4.00</SchemaVersao>
 			<TargetNS></TargetNS>
-		</ConsultarSituacaoLoteRps>
+		</ConsultarLoteRps>
 	</Servicos>
 </Configuracoes>
