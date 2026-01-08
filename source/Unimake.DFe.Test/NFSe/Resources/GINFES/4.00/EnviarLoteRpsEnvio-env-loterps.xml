@@ -7,7 +7,7 @@
 		<ns3:QuantidadeRps>1</ns3:QuantidadeRps>
 		<ns3:ListaRps>
 			<ns3:Rps>
-				<ns3:InfRps>
+				<ns3:InfRps versao="4.00">
 					<ns3:IdentificacaoRps>
 						<ns3:Numero>2</ns3:Numero>
 						<ns3:Serie>1</ns3:Serie>
