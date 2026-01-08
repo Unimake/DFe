@@ -93,13 +93,13 @@
 			<RequestURIProducao></RequestURIProducao>
 			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
-			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
+			<WebActionProducao>loteXmlGZipB64:[]</WebActionProducao>
 			<TagAssinatura>DPS</TagAssinatura>
 			<TagAtributoID>infDPS</TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
 			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>true</GZIPCompress>
