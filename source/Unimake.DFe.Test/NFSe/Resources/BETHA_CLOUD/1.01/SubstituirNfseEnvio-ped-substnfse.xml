@@ -1,0 +1,25 @@
+﻿<e:RecepcionarEventoSubstituicaoEnvio xmlns:e="http://www.betha.com.br/e-nota-dps">
+	<e:evento versao="1.01">
+		<e:infEvento id="EVT12345612345612345612345612345612345612345612345612345612345">
+			<e:verAplic>Teste_0.1.0</e:verAplic>
+			<e:ambGer>1</e:ambGer>
+			<e:nSeqEvento>1</e:nSeqEvento>
+			<e:dhProc>2026-01-05T13:50:29</e:dhProc>
+			<e:nDFe>14001591201761135000132000000000000022096100197260</e:nDFe>
+			<e:pedRegEvento versao="PRE12345678920902312312320325824321321320331231221312321321">
+				<e:infPedReg id="PRE14001591201761135000132000000000000022096100197260101101001">
+					<e:chNFSe>14001591201761135000132000000000000022096100197260</e:chNFSe>
+					<e:dhEvento>2022-09-28T13:50:29-03:00</e:dhEvento>
+					<e:tpAmb>1</e:tpAmb>
+					<e:verAplic>Teste_0.1.0</e:verAplic>
+					<e:e105102>
+						<e:xDesc>Cancelamento de NFS-e</e:xDesc>
+						<e:cMotivo>1</e:cMotivo>
+						<e:xMotivo>Erro na emissão</e:xMotivo>
+						<e:chSubstituta>01234567890123456789012345678901234567890123456789</e:chSubstituta>
+					</e:e105102>
+				</e:infPedReg>
+			</e:pedRegEvento>
+		</e:infEvento>
+	</e:evento>
+</e:RecepcionarEventoSubstituicaoEnvio>

@@ -196,9 +196,9 @@
 		<GerarNfse versao="1.01">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao>https://homologtributacao.cariacica.es.gov.br/tbw/services/NotaFiscalNacional?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/NotaFiscalNacional?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://webservices.sil.com/NotaFiscalNacional/NotaFiscalNacionalGerarRequest</WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
+			<WebActionProducao>http://webservices.sil.com/NotaFiscalNacional/NotaFiscalNacionalGerarRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>NFSe</TagAssinatura>
 			<TagAtributoID>infNFSe</TagAtributoID>
@@ -215,9 +215,9 @@
 		<CancelarNfse versao="1.01">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao>https://homologtributacao.cariacica.es.gov.br/tbw/services/NotaFiscalNacional?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/NotaFiscalNacional?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://webservices.sil.com/NotaFiscalNacional/NotaFiscalNacionalCancelarRequest</WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
+			<WebActionProducao>http://webservices.sil.com/NotaFiscalNacional/NotaFiscalNacionalCancelarRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>evento</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>

@@ -36,7 +36,7 @@
 					<e:cLocPrestacao>4105508</e:cLocPrestacao>
 				</e:locPrest>
 				<e:cServ>
-					<e:cTribNac>0101010</e:cTribNac>
+					<e:cTribNac>010101</e:cTribNac>
 					<e:xDescServ>PRESTACAO DE SERVICOS DE SOFTWARE MANUTENCAO</e:xDescServ>
 					<e:cNBS>115022000</e:cNBS>
 				</e:cServ>
