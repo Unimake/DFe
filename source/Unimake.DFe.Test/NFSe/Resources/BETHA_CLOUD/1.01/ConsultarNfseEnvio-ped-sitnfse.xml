@@ -1,3 +1,7 @@
-<e:ConsultarDpsEnvio xmlns:e="http://www.betha.com.br/e-nota-dps">
-	<e:protocolo>DPS410550821234567890123400003000000000000051</e:protocolo>
-</e:ConsultarDpsEnvio>
+<e:ConsultarStatusDpsEnvio xmlns:e="http://www.betha.com.br/e-nota-dps">
+	<e:tpAmb>1</e:tpAmb>
+	<e:codigoIbge>4205407</e:codigoIbge>
+	<e:cpfCnpjPrestador>00456865000167</e:cpfCnpjPrestador>
+	<e:protocolo>123456789013245</e:protocolo>
+	<e:tipoIntegracao>EMISSAO</e:tipoIntegracao>
+</e:ConsultarStatusDpsEnvio>

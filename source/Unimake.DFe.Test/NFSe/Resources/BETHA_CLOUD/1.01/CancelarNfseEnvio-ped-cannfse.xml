@@ -1,25 +1,25 @@
-﻿<evt:RecepcionarEventoCancelamentoEnvio xmlns:evt="http://www.betha.com.br/e-nota-evento">
-	<evt:evento versao="1.01">
-		<evt:infEvento id="EVT_PRE14001591201761135000132000000000000022096100197260101101001">
-			<evt:verAplic>Teste_0.1.0</evt:verAplic>
-			<evt:ambGer>2</evt:ambGer>
-			<evt:nSeqEvento>1</evt:nSeqEvento>
-			<evt:dhProc>2022-09-28T13:50:29-03:00</evt:dhProc>
-			<evt:nDFe>14001591201761135000132000000000000022096100197260</evt:nDFe>
-			<evt:pedRegEvento versao="1.01">
-				<evt:infPedReg id="PRE14001591201761135000132000000000000022096100197260101101001">
-					<evt:chNFSe>14001591201761135000132000000000000022096100197260</evt:chNFSe>
-					<evt:CNPJAutor>01761135000132</evt:CNPJAutor>
-					<evt:dhEvento>2022-09-28T13:50:29-03:00</evt:dhEvento>
-					<evt:tpAmb>2</evt:tpAmb>
-					<evt:verAplic>Teste_0.1.0</evt:verAplic>
-					<evt:e105101>
-						<evt:xDesc>Cancelamento de NFS-e</evt:xDesc>
-						<evt:cMotivo>1</evt:cMotivo>
-						<evt:xMotivo>xMotivo___teste____1</evt:xMotivo>
-					</evt:e105101>
-				</evt:infPedReg>
-			</evt:pedRegEvento>
-		</evt:infEvento>
-	</evt:evento>
-</evt:RecepcionarEventoCancelamentoEnvio>
+﻿<e:RecepcionarEventoCancelamentoEnvio xmlns:e="http://www.betha.com.br/e-nota-dps">
+	<e:evento versao="1.0">
+		<e:infEvento id="EVT12345612345612345612345612345612345612345612345612345612345">
+			<e:verAplic>1.0</e:verAplic>
+			<e:ambGer>1</e:ambGer>
+			<e:nSeqEvento>1</e:nSeqEvento>
+			<e:dhProc>2026-01-05T10:30:00-03:00</e:dhProc>
+			<e:nDFe>2025000000011</e:nDFe>
+			<e:pedRegEvento versao="PRE12345678920902312312320325824321321320331231221312321321">
+				<e:infPedReg id="PRE45612345612345612345612345612345612345612345612345612345">
+					<e:chNFSe>01234567890123456789012345678901234567890123456789</e:chNFSe>
+					<e:CNPJAutor>11985661000130</e:CNPJAutor>
+					<e:dhEvento>2025-01-20T10:30:00-03:00</e:dhEvento>
+					<e:tpAmb>1</e:tpAmb>
+					<e:verAplic>1.0</e:verAplic>
+					<e:e101101>
+						<e:xDesc>Cancelamento de NFS-e</e:xDesc>
+						<e:cMotivo>1</e:cMotivo>
+						<e:xMotivo>Erro nos dados do serviço prestado</e:xMotivo>
+					</e:e101101>
+				</e:infPedReg>
+			</e:pedRegEvento>
+		</e:infEvento>
+	</e:evento>
+</e:RecepcionarEventoCancelamentoEnvio>
