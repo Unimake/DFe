@@ -198,9 +198,16 @@ namespace Unimake.Business.Security
                     x509Cert = new X509Certificate2(buffer, senha);
                 }
             }
-            catch (CryptographicException)
+            catch (CryptographicException ex)
             {
-                throw new CertificadoDigitalException("Senha do certificado digital está incorreta.", ErrorCodes.SenhaCertificadoIncorreta);
+                if (ex.HResult == unchecked((int)0x80070056))
+                {
+                    throw new CertificadoDigitalException("Senha do certificado digital está incorreta.", ErrorCodes.SenhaCertificadoIncorreta);
+                }
+                else
+                {
+                    throw new CertificadoDigitalException("Não foi possível carregar o certificado digital A1 a partir do arquivo informado. O certificado pode estar inválido, corrompido ou o sistema não possui permissão para acessá-lo.", ErrorCodes.CertificadoDigitalCorrompido);
+                }
             }
             catch (Exception)
             {
