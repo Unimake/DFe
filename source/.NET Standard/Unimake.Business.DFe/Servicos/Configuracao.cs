@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
 using System.Net.Http;
+using Unimake.Business.Security;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -61,15 +62,7 @@ namespace Unimake.Business.DFe.Servicos
 
             if (!string.IsNullOrWhiteSpace(CertificadoArquivo) && !string.IsNullOrWhiteSpace(CertificadoSenha))
             {
-                var fi = new FileInfo(CertificadoArquivo);
-                _certificadoDigital = new X509Certificate2();
-
-                using (var fs = fi.OpenRead())
-                {
-                    var buffer = new byte[fs.Length];
-                    fs.Read(buffer, 0, buffer.Length);
-                    _certificadoDigital = new X509Certificate2(buffer, CertificadoSenha);
-                }
+                _certificadoDigital = new CertificadoDigital().CarregarCertificadoDigitalA1(CertificadoArquivo, CertificadoSenha);
             }
 
             #endregion
@@ -1203,7 +1196,7 @@ namespace Unimake.Business.DFe.Servicos
         /// Endereco para consumo de API - no ambiente de producao
         /// </summary>
         public string RequestURIProducao { get; set; }
-        
+
         /// <summary>
         /// Endereço para login na API - produção
         /// </summary>
