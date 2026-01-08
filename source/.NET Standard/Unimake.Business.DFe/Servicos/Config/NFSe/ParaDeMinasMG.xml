@@ -187,26 +187,27 @@
 		<GerarNfse versao="1.01">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoProducao></WebEnderecoProducao>
-			<WebEnderecoHomologacao>https://parademinas.mg.hml.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://parademinas.mg.des.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>DPS</TagAssinatura>
 			<TagAtributoID>infDPS</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.supernova.com.br/"><soapenv:Header/><soapenv:Body><ws:RecepcionarDps><xml>{xmlBodyScapeRetorno}</xml></ws:RecepcionarDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.supernova.com.br/"><soapenv:Header/><soapenv:Body><ws:RecepcionarDps><xml>{xmlBodyScape}</xml></ws:RecepcionarDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:RecepcionarDpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
 			<TargetNS>http://ws.supernova.com.br/</TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</GerarNfse>
 		<CancelarNfse versao="1.01">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoProducao></WebEnderecoProducao>
-			<WebEnderecoHomologacao>https://parademinas.mg.hml.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://parademinas.mg.des.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -225,7 +226,7 @@
 		<ConsultarNfsePorRps versao="1.01">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoProducao></WebEnderecoProducao>
-			<WebEnderecoHomologacao>https://parademinas.mg.hml.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://parademinas.mg.des.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -234,7 +235,7 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.supernova.com.br/"><soapenv:Header/><soapenv:Body><ws:ConsultarDps><xml>{xmlBodyScapeRetorno}</xml></ws:ConsultarDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.supernova.com.br/"><soapenv:Header/><soapenv:Body><ws:ConsultarDps><xml>{xmlBodyScape}</xml></ws:ConsultarDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:ConsultarDpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
