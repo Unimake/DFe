@@ -3,11 +3,11 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="2.02">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
@@ -22,11 +22,11 @@
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.02">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
@@ -41,11 +41,11 @@
 		</RecepcionarLoteRpsSincrono>
 		<GerarNfse versao="2.02">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -60,11 +60,11 @@
 		</GerarNfse>
 		<CancelarNfse versao="2.02">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -79,11 +79,11 @@
 		</CancelarNfse>
 		<SubstituirNfse versao="2.02">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura>Rps</TagLoteAssinatura>
@@ -100,11 +100,11 @@
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="2.02">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -119,11 +119,11 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.02">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -138,11 +138,11 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoTomado versao="2.02">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -157,11 +157,11 @@
 		</ConsultarNfseServicoTomado>
 		<ConsultarNfseServicoPrestado versao="2.02">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -176,11 +176,11 @@
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseFaixa versao="2.02">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
-			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
