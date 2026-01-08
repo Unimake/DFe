@@ -227,7 +227,6 @@ namespace Unimake.DFe.Test.NFSe
 
                 throw new Exception(message);
             }
-
         }
 
         #region Private Methods
