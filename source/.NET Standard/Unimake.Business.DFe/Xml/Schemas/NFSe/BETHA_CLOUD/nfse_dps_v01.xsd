@@ -6,9 +6,6 @@
            elementFormDefault="qualified">
 
     <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_v01.xsd"/>
-    <xs:include schemaLocation="consulta_status.xsd"/>
-
-    <!-- Mensagens SOAP -->
     <xs:element name="RecepcionarDpsEnvio">
         <xs:complexType>
             <xs:sequence>
@@ -42,8 +39,8 @@
                 <xs:element name="protocolo" type="xs:string"/>
                 <xs:element name="dhRecebimento" type="xs:dateTime"/>
                 <xs:element name="status" type="xs:string"/>
-                <xs:element name="idDps" type="xs:string" minOccurs="0"/>
                 <xs:element name="listaMensagens" type="dps:TListaMensagens" minOccurs="0"/>
+                <xs:element name="idDps" type="xs:string" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -52,7 +49,7 @@
     <xs:complexType name="TDPS">
         <xs:sequence>
             <xs:element name="infDPS" type="dps:TInfDPS"/>
-            <xs:element ref="ds:Signature"/>
+            <xs:element ref="ds:Signature" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="versao" type="xs:string" use="required"/>
     </xs:complexType>
@@ -99,6 +96,7 @@
             <xs:element name="CAEPF" type="xs:string" minOccurs="0"/>
             <xs:element name="IM" type="xs:string" minOccurs="0"/>
             <xs:element name="xNome" type="xs:string" minOccurs="0"/>
+            <xs:element name="xFant" type="xs:string" minOccurs="0"/>
             <xs:element name="end" type="dps:TEndereco" minOccurs="0"/>
             <xs:element name="fone" type="xs:string" minOccurs="0"/>
             <xs:element name="email" type="xs:string" minOccurs="0"/>
@@ -163,7 +161,14 @@
     <xs:complexType name="TEnderecoExterior">
         <xs:sequence>
             <xs:element name="cPais" type="xs:string"/>
-            <xs:element name="cEndPost" type="xs:string"/>
+            <xs:element name="cEndPost">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="11"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element name="xCidade" type="xs:string"/>
             <xs:element name="xEstProvReg" type="xs:string"/>
         </xs:sequence>
@@ -211,9 +216,30 @@
             <xs:element name="vincPrest" type="xs:int"/>
             <xs:element name="tpMoeda" type="xs:string"/>
             <xs:element name="vServMoeda" type="xs:decimal"/>
-            <xs:element name="mecAFComexP" type="xs:int"/>
-            <xs:element name="mecAFComexT" type="xs:int"/>
-            <xs:element name="movTempBens" type="xs:int"/>
+            <xs:element name="mecAFComexP">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="8"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="mecAFComexT">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="26"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="movTempBens">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="3"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element name="nDI" type="xs:string" minOccurs="0"/>
             <xs:element name="nRE" type="xs:string" minOccurs="0"/>
             <xs:element name="mdic" type="xs:int"/>
@@ -543,41 +569,330 @@
         </xs:restriction>
     </xs:simpleType>
     
+    <xs:simpleType name="TCNaoNIF">
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:simpleType name="TCnpj">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9]{14}"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:simpleType name="TCpf">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9]{11}"/>
         </xs:restriction>
     </xs:simpleType>
-    
-    
+
     <xs:simpleType name="TCodigoTribNac">
         <xs:restriction base="xs:string">
-            <xs:pattern value="[0-9]{7}"/>
+            <xs:pattern value="[0-9]{6}"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:simpleType name="TCodigoNBS">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9]{9}"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:simpleType name="TNumeroDPS">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9]{1,15}"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:simpleType name="TSerie">
         <xs:restriction base="xs:string">
             <xs:maxLength value="5"/>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:simpleType name="TInscImobFisc">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TEndPostal">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="11"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TCidade">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TEstProvReg">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TNumeroObra">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TComplementoObra">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="156"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TMecAFComexP">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="0[0-8]"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TMecAFComexT">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="0[0-9]|1[0-9]|2[0-6]"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TCodigoIbge">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{7}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TCpfCnpj">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{11}|[0-9]{14}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TTipoIntegracao">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EMISSAO"/>
+            <xs:enumeration value="CANCELAMENTO"/>
+            <xs:enumeration value="CANCELAMENTO_POR_SUBSTITUICAO"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ========================================= -->
+    <!-- CONSULTA STATUS DPS                       -->
+    <!-- ========================================= -->
+
+    <xs:element name="ConsultarStatusDpsEnvio">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tpAmb" type="dps:TTipoAmbiente"/>
+                <xs:element name="codigoIbge" type="dps:TCodigoIbge"/>
+                <xs:element name="cpfCnpjPrestador" type="dps:TCpfCnpj"/>
+                <xs:element name="protocolo" type="xs:string"/>
+                <xs:element name="tipoIntegracao" type="dps:TTipoIntegracao"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ConsultarStatusDpsResposta">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="statusProcessamento" type="xs:string"/>
+                <xs:element name="dataHoraRecebimento" type="xs:dateTime"/>
+                <xs:element name="protocolo" type="xs:string"/>
+                <xs:element name="listaMensagens" type="dps:TListaMensagens" minOccurs="0"/>
+                <xs:element name="emissao" type="dps:TDadosEmissao" minOccurs="0"/>
+                <xs:element name="cancelamento" type="dps:TDadosCancelamento" minOccurs="0"/>
+                <xs:element name="cancelamentoSubstituicao" type="dps:TDadosCancelamentoSubstituicao" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TDadosEmissao">
+        <xs:sequence>
+            <xs:element name="idDps" type="xs:string"/>
+            <xs:element name="chaveAcesso" type="xs:string" minOccurs="0"/>
+            <xs:element name="numeroDps" type="xs:string" minOccurs="0"/>
+            <xs:element name="serieDps" type="xs:string" minOccurs="0"/>
+            <xs:element name="numeroNotaFiscal" type="xs:string" minOccurs="0"/>
+            <xs:element name="linkPdf" type="xs:anyURI" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TDadosCancelamento">
+        <xs:sequence>
+            <xs:element name="idCancelamento" type="xs:string"/>
+            <xs:element name="chaveAcesso" type="xs:string" minOccurs="0"/>
+            <xs:element name="numeroNotaFiscal" type="xs:string" minOccurs="0"/>
+            <xs:element name="linkPdf" type="xs:anyURI" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TDadosCancelamentoSubstituicao">
+        <xs:sequence>
+            <xs:element name="idCancelamentoSubstituicao" type="xs:string"/>
+            <xs:element name="chaveAcessoSubstituida" type="xs:string" minOccurs="0"/>
+            <xs:element name="numeroNotaFiscalSubstituida" type="xs:string" minOccurs="0"/>
+            <xs:element name="linkPdfSubstituida" type="xs:anyURI" minOccurs="0"/>
+            <xs:element name="chaveAcessoSubstituta" type="xs:string" minOccurs="0"/>
+            <xs:element name="numeroNotaFiscalSubstituta" type="xs:string" minOccurs="0"/>
+            <xs:element name="linkPdfSubstituta" type="xs:anyURI" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ========================================= -->
+    <!-- EVENTO CANCELAMENTO                       -->
+    <!-- ========================================= -->
+
+    <xs:element name="RecepcionarEventoCancelamentoEnvio">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="evento" type="dps:TEventoCancelamento"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="RecepcionarEventoCancelamentoResposta">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="protocolo" type="xs:string"/>
+                <xs:element name="dhRecebimento" type="xs:dateTime"/>
+                <xs:element name="status" type="xs:string"/>
+                <xs:element name="idEvento" type="xs:string" minOccurs="0"/>
+                <xs:element name="listaMensagens" type="dps:TListaMensagens" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TEventoCancelamento">
+        <xs:sequence>
+            <xs:element name="infEvento" type="dps:TInfEventoCancelamento"/>
+            <xs:element ref="ds:Signature" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="versao" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TInfEventoCancelamento">
+        <xs:sequence>
+            <xs:element name="verAplic" type="xs:string" minOccurs="0"/>
+            <xs:element name="ambGer" type="xs:int" minOccurs="0"/>
+            <xs:element name="nSeqEvento" type="xs:int" minOccurs="0"/>
+            <xs:element name="dhProc" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="nDFe" type="xs:string" minOccurs="0"/>
+            <xs:element name="pedRegEvento" type="dps:TPedRegEventoCancelamento"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TPedRegEventoCancelamento">
+        <xs:sequence>
+            <xs:element name="infPedReg" type="dps:TInfPedRegCancelamento"/>
+        </xs:sequence>
+        <xs:attribute name="versao" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TInfPedRegCancelamento">
+        <xs:sequence>
+            <xs:element name="chNFSe" type="dps:TChNFSe"/>
+            <xs:element name="CNPJAutor" type="dps:TCnpj" minOccurs="0"/>
+            <xs:element name="CPFAutor" type="dps:TCpf" minOccurs="0"/>
+            <xs:element name="dhEvento" type="xs:dateTime"/>
+            <xs:element name="tpAmb" type="xs:int"/>
+            <xs:element name="verAplic" type="xs:string"/>
+            <xs:element name="e101101" type="dps:TE101101"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TE101101">
+        <xs:sequence>
+            <xs:element name="xDesc" type="xs:string"/>
+            <xs:element name="cMotivo" type="xs:int"/>
+            <xs:element name="xMotivo" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="TChNFSe">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{50}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ========================================= -->
+    <!-- EVENTO SUBSTITUICAO                       -->
+    <!-- ========================================= -->
+
+    <xs:element name="RecepcionarEventoSubstituicaoEnvio">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="evento" type="dps:TEventoSubstituicao"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="RecepcionarEventoSubstituicaoResposta">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="protocolo" type="xs:string"/>
+                <xs:element name="dhRecebimento" type="xs:dateTime"/>
+                <xs:element name="status" type="xs:string"/>
+                <xs:element name="idEvento" type="xs:string" minOccurs="0"/>
+                <xs:element name="listaMensagens" type="dps:TListaMensagens" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TEventoSubstituicao">
+        <xs:sequence>
+            <xs:element name="infEvento" type="dps:TInfEventoSubstituicao"/>
+            <xs:element ref="ds:Signature" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="versao" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TInfEventoSubstituicao">
+        <xs:sequence>
+            <xs:element name="verAplic" type="xs:string" minOccurs="0"/>
+            <xs:element name="ambGer" type="xs:int" minOccurs="0"/>
+            <xs:element name="nSeqEvento" type="xs:int" minOccurs="0"/>
+            <xs:element name="dhProc" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="nDFe" type="xs:string" minOccurs="0"/>
+            <xs:element name="pedRegEvento" type="dps:TPedRegEventoSubstituicao"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TPedRegEventoSubstituicao">
+        <xs:sequence>
+            <xs:element name="infPedReg" type="dps:TInfPedRegSubstituicao"/>
+        </xs:sequence>
+        <xs:attribute name="versao" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TInfPedRegSubstituicao">
+        <xs:sequence>
+            <xs:element name="chNFSe" type="dps:TChNFSe"/>
+            <xs:element name="CNPJAutor" type="dps:TCnpj" minOccurs="0"/>
+            <xs:element name="CPFAutor" type="dps:TCpf" minOccurs="0"/>
+            <xs:element name="dhEvento" type="xs:dateTime"/>
+            <xs:element name="tpAmb" type="xs:int"/>
+            <xs:element name="verAplic" type="xs:string"/>
+            <xs:element name="e105102" type="dps:TE105102"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TE105102">
+        <xs:sequence>
+            <xs:element name="xDesc" type="xs:string"/>
+            <xs:element name="cMotivo" type="xs:int"/>
+            <xs:element name="xMotivo" type="xs:string" minOccurs="0"/>
+            <xs:element name="chSubstituta" type="dps:TChNFSe"/>
+        </xs:sequence>
+    </xs:complexType>
 
 </xs:schema>
