@@ -56,6 +56,21 @@
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarNfse>
+		<ConsultarNfsePorRps versao="1.01">
+			<Descricao>Consultar NFSe por DPS</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/dps/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/dps/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>chaveAcesso</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+		</ConsultarNfsePorRps>
 		<ConsultarNfsePDF versao="1.01">
 			<Descricao>Consultar NFSe PDF</Descricao>
 			<RequestURIProducao>https://adn.nfse.gov.br/danfse/{Chave}</RequestURIProducao>
