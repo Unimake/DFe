@@ -7,13 +7,13 @@
 			<WebEnderecoProducao>https://speedgov.com.br/wseus/Nfes?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>enviar_lote_rps_envio_v1.xsd</SchemaArquivo>
-			<TagAssinatura>p1:Rps</TagAssinatura>
-			<TagAtributoID>p1:InfRps</TagAtributoID>
-			<TagLoteAssinatura>p:EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>p:LoteRps</TagLoteAtributoID>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRps xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"><header xmlns="">&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;p:cabecalho versao="1" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ws.speedgov.com.br/cabecalho_v1.xsd" xmlns:p1="http://ws.speedgov.com.br/tipos_v1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ws.speedgov.com.br/cabecalho_v1.xsd cabecalho_v1.xsd "&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/p:cabecalho&gt;</header><parameters xmlns="">{xmlBodyScape}</parameters></RecepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRps><header>&lt;cabecalho xmlns=&quot;http://ws.speedgov.com.br/cabecalho_v1.xsd&quot; versao=&quot;1&quot;&gt;&lt;versaoDados xmlns=&quot;&quot;&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</header><parameters xmlns="">{xmlBodyScape}</parameters></nfse:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:RecepcionarLoteRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
