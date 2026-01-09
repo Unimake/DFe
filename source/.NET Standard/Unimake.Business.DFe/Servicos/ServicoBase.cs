@@ -145,7 +145,7 @@ namespace Unimake.Business.DFe.Servicos
 
             if (Configuracoes.WebContentType == "application/json")
             {
-                var dicionario = new Dictionary<string, string>();
+                var dicionario = new Dictionary<string, object>();
 
                 if (Configuracoes.LoginConexao)
                 {
@@ -153,7 +153,25 @@ namespace Unimake.Business.DFe.Servicos
                     dicionario.Add("senha", Configuracoes.MunicipioSenha);
                 }
 
-                dicionario.Add((string.IsNullOrWhiteSpace(Configuracoes.WebActionProducao) ? "xml" : Configuracoes.WebActionProducao), xmlBody);
+                var action = "xml";
+                if (!string.IsNullOrWhiteSpace(Configuracoes.WebActionProducao))
+                {
+                    if (Configuracoes.WebActionProducao.IndexOf(":[]") > 0)
+                    {
+                        action = Configuracoes.WebActionProducao.Replace(":[]", "");
+                        var valor = new List<string> { xmlBody }; // array real
+                        dicionario.Add(action, valor);
+                    }
+                    else
+                    {
+                        action = Configuracoes.WebActionProducao;
+                        dicionario.Add(action, xmlBody);
+                    }
+                }
+                else
+                {
+                    dicionario.Add(action, xmlBody);
+                }
 
                 var Json = JsonConvert.SerializeObject(dicionario);
 
