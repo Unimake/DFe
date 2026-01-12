@@ -1,11 +1,13 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.EFDReinf;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -228,7 +230,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
             if ((Exame?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
+            ;
 
             return Exame[index];
         }
