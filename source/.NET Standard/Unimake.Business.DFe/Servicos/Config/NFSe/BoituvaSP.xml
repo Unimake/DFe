@@ -90,7 +90,7 @@
 		</ConsultarNfsePorRps>
 		<GerarNfse versao="1.01">
 			<Descricao>Envio do DPS - Sincrono</Descricao>
-			<RequestURIProducao></RequestURIProducao>
+			<RequestURIProducao>https://boituva.govbr.cloud/NFSe.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
 			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>loteXmlGZipB64:[]</WebActionProducao>
@@ -108,7 +108,7 @@
 		</GerarNfse>
 		<ConsultarNfse versao="1.01">
 			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao></RequestURIProducao>
+			<RequestURIProducao>https://boituva.govbr.cloud/NFSe.Api/NotaNacional/ConsultarNFSe/{Chave}</RequestURIProducao>
 			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/ConsultarNFSe/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -124,7 +124,7 @@
 		</ConsultarNfse>
 		<ConsultarNfsePorRps versao="1.01">
 			<Descricao>Consultar NFSe por DPS</Descricao>
-			<RequestURIProducao></RequestURIProducao>
+			<RequestURIProducao>https://boituva.govbr.cloud/NFSe.Api/NotaNacional/ConsultarDPS/{documento}/{serie}/{numero}</RequestURIProducao>
 			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/ConsultarDPS/{documento}/{serie}/{numero}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
