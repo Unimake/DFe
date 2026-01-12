@@ -112,11 +112,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     break;
 
                 case PadraoNFSe.SIMPLISS:
-                    if (Configuracoes.SchemaVersao == "1.01")
-                    {
-                        SIMPLISS();
-                        break;
-                    }
+                    SIMPLISS();
                     break;
 
                 case PadraoNFSe.SMARAPD:
@@ -336,7 +332,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             bool isConsulta = Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps ||
                               Configuracoes.Servico == Servico.NFSeConsultarNfse ||
                               Configuracoes.Servico == Servico.NFSeConsultarNfsePDF;
-            if (isConsulta) {
+            if (isConsulta)
+            {
                 var URI = Configuracoes.RequestURI;
 
                 var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
@@ -661,7 +658,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 {
                     Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", GetXMLElementInnertext("chNFSe"));
                     return;
-                };
+                }
+
                 var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
                 var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
                 var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
@@ -674,8 +672,16 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void SIMPLISS()
         {
-            var Chave = GetXMLElementInnertext("chNFSe");
-            Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", Chave);
+            if (Configuracoes.Servico == Servico.NFSeCancelarNfse)
+            {
+                var Chave = GetXMLElementInnertext("chNFSe");
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", Chave);
+            }
+
+            var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+            var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+            var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+            Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
 
         }
 
