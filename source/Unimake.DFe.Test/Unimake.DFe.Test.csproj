@@ -20,6 +20,7 @@
 	<ItemGroup>
 		<None Remove="NFSe\Resources\CONAM\4.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<None Remove="NFSe\Resources\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml" />
+		<None Remove="NFSe\Resources\GIF\1.00\enviarLoteNotas-RTC-env-loterps.xml" />
 		<None Remove="NFSe\Resources\MANAUS_AM\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml" />
 		<None Remove="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<None Remove="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
@@ -52,6 +53,7 @@
 		<EmbeddedResource Include="NFSe\Resources\CONAM\4.00\CancelarNfseEnvio-ped-cannfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\CONAM\4.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\GIF\1.00\enviarLoteNotas-RTC-env-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />

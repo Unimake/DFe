@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<envioLote versao="1.0">
+	<CNPJ>06117473000150</CNPJ>
+	<dhTrans>2026-01-12 14:30:00</dhTrans>
+	<NFS-e>
+		<infNFSe versao="1.1">
+			<Id>
+				<cNFS-e>218736215</cNFS-e>
+				<mod>90</mod>
+				<serie>S</serie>
+				<nNFS-e>976</nNFS-e>
+				<dEmi>2026-01-12</dEmi>
+				<hEmi>06:15</hEmi>
+				<tpNF>1</tpNF>
+				<refNF>061174730001500611747300015006117473000</refNF>
+				<tpImp>1</tpImp>
+				<tpEmis>N</tpEmis>
+				<cancelada>N</cancelada>
+				<canhoto>1</canhoto>
+			</Id>
+			<prest>
+				<CNPJ>06117473000150</CNPJ>
+				<xNome>Silva e Silva Ltda</xNome>
+				<xFant>Silva e Silva</xFant>
+				<IM>23231</IM>
+				<xEmail>teste@teste.com</xEmail>
+				<xSite>www.sitedaempresa.com.br</xSite>
+				<end>
+					<xLgr>Rua Alfredo Chaves</xLgr>
+					<nro>1750</nro>
+					<xCpl>Sala</xCpl>
+					<xBairro>Centro</xBairro>
+					<cMun>4303905</cMun>
+					<xMun>Campo Bom</xMun>
+					<UF>RS</UF>
+					<CEP>95020460</CEP>
+					<cPais>01058</cPais>
+					<xPais>Brasil</xPais>
+				</end>
+				<fone>5421091919</fone>
+				<fone2>5499999999</fone2>
+				<IE>0291234567</IE>
+				<regimeTrib>3</regimeTrib>
+			</prest>
+			<TomS>
+				<CNPJ>06117473000150</CNPJ>
+				<xNome>Empresa Tomadora</xNome>
+				<ender>
+					<xLgr>Av Silva</xLgr>
+					<nro>131</nro>
+					<xCpl>Sala</xCpl>
+					<xBairro>Centro</xBairro>
+					<cMun>4303905</cMun>
+					<xMun>Campo Bom</xMun>
+					<UF>RS</UF>
+					<CEP>95020000</CEP>
+					<cPais>01058</cPais>
+					<xPais>Brasil</xPais>
+				</ender>
+				<xEmail>tomador@tomador.com.br</xEmail>
+				<IE>2132365544</IE>
+				<IM>64889</IM>
+				<fone>12345678</fone>
+				<fone2>5499999999</fone2>
+			</TomS>
+			<dadosDaObra>
+				<xLogObra>Av Santos</xLogObra>
+				<xComplObra>Sala</xComplObra>
+				<vNumeroObra>320</vNumeroObra>
+				<xBairroObra>Centro</xBairroObra>
+				<xCepObra>95020460</xCepObra>
+				<cCidadeObra>4303905</cCidadeObra>
+				<xCidadeObra>Campo Bom</xCidadeObra>
+				<xUfObra>RS</xUfObra>
+				<cPaisObra>01058</cPaisObra>
+				<xPaisObra>Brasil</xPaisObra>
+				<numeroArt>123456789012</numeroArt>
+				<numeroCei>123456789012</numeroCei>
+				<numeroProj>846548</numeroProj>
+				<numeroMatri>8494546</numeroMatri>
+			</dadosDaObra>
+			<transportadora>
+				<xNomeTrans>Transportadora Ficticia LTDA</xNomeTrans>
+				<xCpfCnpjTrans>06117473000150</xCpfCnpjTrans>
+				<xInscEstTrans>123456789</xInscEstTrans>
+				<xPlacaTrans>IBB6962</xPlacaTrans>
+				<xEndTrans>Av. Carlos Gomes</xEndTrans>
+				<cMunTrans>4303905 </cMunTrans>
+				<xMunTrans>Campo Bom </xMunTrans>
+				<xUfTrans>RS</xUfTrans>
+				<cPaisTrans>01058</cPaisTrans>
+				<xPaisTrans>Brasil</xPaisTrans>
+				<vTipoFreteTrans>0</vTipoFreteTrans>
+			</transportadora>
+			<det>
+				<nItem>1</nItem>
+				<serv>
+					<cServ>1505</cServ>
+					<cLCServ>1405</cLCServ>
+					<xServ>Pintura</xServ>
+					<localTributacao>4305108</localTributacao>
+					<localVerifResServ>1</localVerifResServ>
+					<uTrib>m2</uTrib>
+					<qTrib>30</qTrib>
+					<vUnit>100.00</vUnit>
+					<vServ>3000.00</vServ>
+					<vDesc>0.00</vDesc>
+					<vBCISS>3000.00</vBCISS>
+					<pISS>4.00</pISS>
+					<vISS>120.00</vISS>
+					<vBCINSS>0.00</vBCINSS>
+					<pRetINSS>0.00</pRetINSS>
+					<vRetINSS>0.00</vRetINSS>
+					<vRed>0.00</vRed>
+					<vBCRetIR>0.00</vBCRetIR>
+					<pRetIR>0.00</pRetIR>
+					<vRetIR>0.00</vRetIR>
+					<vBCCOFINS>0.00</vBCCOFINS>
+					<pRetCOFINS>0.00</pRetCOFINS>
+					<vRetCOFINS>0.00</vRetCOFINS>
+					<vBCCSLL>0.00</vBCCSLL>
+					<pRetCSLL>0.00</pRetCSLL>
+					<vRetCSLL>0.00</vRetCSLL>
+					<vBCPISPASEP>0.00</vBCPISPASEP>
+					<pRetPISPASEP>0.00</pRetPISPASEP>
+					<vRetPISPASEP>0.00</vRetPISPASEP>
+					<vRetOutrasRet>0.00</vRetOutrasRet>
+					<totalAproxTribServ>0.00</totalAproxTribServ>
+					<CSTPisCofins>08</CSTPisCofins>
+					<cNBS>101011000</cNBS>
+				</serv>
+				<IBSCBS>
+					<finNFSe>0</finNFSe>
+					<indFinal>0</indFinal>
+					<cIndOp>000010</cIndOp>
+					<indDest>0</indDest>
+					<valores>
+						<trib>
+							<gIBSCBS>
+								<CST>099</CST>
+								<cClassTrib>999999</cClassTrib>
+							</gIBSCBS>
+						</trib>
+					</valores>
+				</IBSCBS>
+			</det>
+			<total>
+				<vServ>3000.00</vServ>
+				<vDesc>0.00</vDesc>
+				<vtNF>3000.00</vtNF>
+				<vtLiq>3000.00</vtLiq>
+				<Ret>
+					<vRetIR>0.00</vRetIR>
+					<vRetPISPASEP>0.00</vRetPISPASEP>
+					<vRetCOFINS>0.00</vRetCOFINS>
+					<vRetCSLL>0.00</vRetCSLL>
+					<vRetINSS>0.00</vRetINSS>
+				</Ret>
+				<vtLiqFaturas>3000.00</vtLiqFaturas>
+				<ISS>
+					<vBCISS>3000.00</vBCISS>
+					<vISS>120.00</vISS>
+				</ISS>
+			</total>
+			<faturas>
+				<fat>
+					<nItem>1</nItem>
+					<nFat>1</nFat>
+					<dVenc>2013-04-30</dVenc>
+					<vFat>3000.00</vFat>
+				</fat>
+			</faturas>
+			<infAdicLT>4305108</infAdicLT>
+			<infAdic>Esta nota é apenas um exemplo.</infAdic>
+		</infNFSe>
+	</NFS-e>
+</envioLote>
