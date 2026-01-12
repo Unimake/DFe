@@ -1548,6 +1548,8 @@
 		<None Remove="Xml\Schemas\NFSe\THEMA\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\THEMA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TINUS\nfsetempuri.xsd" />
+		<None Remove="Xml\Schemas\NFSe\TINUS\WSNFSE203.IBSCBS.Service.Tinus.xsd" />
+		<None Remove="Xml\Schemas\NFSe\TINUS\xmldsig.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\nfse v2 03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\nfse_municipal_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v01.xsd" />
@@ -3899,6 +3901,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\THEMA\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\THEMA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\nfsetempuri.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\WSNFSE203.IBSCBS.Service.Tinus.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\xmldsig.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\nfse v2 03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\nfse_municipal_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v01.xsd" />
