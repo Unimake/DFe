@@ -1,8 +1,11 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -79,7 +82,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2220")]
     [ComVisible(true)]
 #endif
-    public class IdeVinculo2220 : IdeVinculo2206 { }
+    public class IdeVinculo2220
+    {
+        /// <summary>
+        /// Preencher com o número do CPF do trabalhador.
+        /// </summary>
+        [XmlElement("cpfTrab")]
+        public string CpfTrab { get; set; }
+
+        /// <summary>
+        /// Matrícula atribuída ao trabalhador pela empresa ou, no caso de servidor público, a matrícula constante no Sistema de Administração de Recursos Humanos do órgão.
+        /// </summary>
+        [XmlElement("matricula")]
+        public string Matricula { get; set; }
+
+        /// <summary>
+        /// Preencher com o código da categoria do trabalhador. Informar somente no caso de TSVE sem informação de matrícula no evento S-2300.
+        /// </summary>
+        [XmlElement("codCateg")]
+        public string CodCateg { get; set; }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
+
+        public bool ShouldSerializeCodCateg() => !string.IsNullOrEmpty(CodCateg);
+
+        #endregion ShouldSerialize
+    }
 
     /// <summary>
     /// Informações de identificação do evento
@@ -201,7 +230,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
             if ((Exame?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
+            ;
 
             return Exame[index];
         }
