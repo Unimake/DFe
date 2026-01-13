@@ -20,17 +20,24 @@ def is_estado(id): return len(id) == 2 and id.isdigit()
 def get_dados_xml(caminho):
     try:
         root = ET.parse(caminho).getroot()
-        versao = ""
+        versoes = set()
+        
         servicos = root.find("Servicos")
         if servicos is not None:
             for s in servicos:
-                versao = s.get("versao") or s.findtext("SchemaVersao", "")
-                if versao: break
-        if not versao: return "", False, False
+                v = s.get("versao") or s.findtext("SchemaVersao", "")
+                if v:
+                    versoes.add(v)
+        
+        if not versoes: 
+            return "", False, False
+
+        versao_final = ", ".join(sorted(list(versoes)))
 
         prod = any(root.findtext(f".//{t}") for t in ["WebEnderecoProducao", "RequestURIProducao"])
         homo = any(root.findtext(f".//{t}") for t in ["WebEnderecoHomologacao", "RequestURIHomologacao"])
-        return versao, prod, homo
+        
+        return versao_final, prod, homo
     except:
         return "", False, False
 
@@ -65,16 +72,31 @@ def main():
         if not versao:
             continue
 
-        # Substitui EL por E&L no texto
         padrao_exibido = "E&L" if padrao == "EL" else padrao
 
         entradas.append((nome, uf, ibge, padrao, padrao_exibido, versao, prod, homo))
 
-    # Ordena com acentos
     entradas.sort(key=lambda x: locale.strxfrm(x[0]))
 
-    # Gera Wiki
-    lines = [
+    header_text = """__NOTITLE__
+==<big><font color="#008000">'''Municípios implementados no UniNFe e DLL'''</font></big>==
+
+Unificamos as antigas listas de municípios implementados no UniNFe e na DLL Unimake.DFe. Confira abaixo como ficou o novo formato:
+
+====<font color="#008000">Observações</font>====
+* Em caso de dúvidas sobre o padrão do município, clique no nome do padrão para visualizar os serviços disponíveis e exemplos de XML de envio.
+
+===<font color="#008000">'''ATENÇÃO aos padrões BETHA, BETHA_CLOUD, GINFES, MEMORY, ABASE, WEBFISCO, EQUIPLANO, FISCO e NACIONAL'''</font>===
+
+* No '''UniNFe''':
+** Veja como configurar a [[Manuais:UniNFe/MunicipiosMonitor/ConfigTodosPadroesUnico|NFSe para padrões com um único WSDL para todos os municípios]] no monitor UniNFe.
+* Na '''DLL Unimake.DFe''':
+** Veja como configurar a [[Manuais:Unimake.DFe/MunicipiosDLL/ConfigTodosPadroesUnico|NFSe para padrões com um único WSDL para todos os municípios]] na DLL Unimake.DFe.
+"""
+
+    lines = [header_text]
+
+    lines += [
         '{| class="wikitable" style="width: 100%;"',
         "|-",
         "! Município",
@@ -88,7 +110,6 @@ def main():
     ]
 
     for n, u, i, p, p_exib, v, pr, h in entradas:
-        # Usa p_exib no texto, mas p no link (mantém compatibilidade)
         link = f"[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_{p}|{p_exib}]]"
         lines += [
             f"||{escape_wiki(n)}||{u}||{i}||{link}||"
@@ -97,7 +118,14 @@ def main():
             f"<div style=\"text-align: center;\">{'Sim' if h else 'Não'}</div>",
             "|-"
         ]
+
     lines.append("|}")
+
+    footer_text = """
+* [[Manuais:UniNFe|📘 UniNFe]]
+* [[Manuais:Unimake.DFe|⚙️ Unimake.DFe]]
+"""
+    lines.append(footer_text)
 
     Path(OUTPUT_FILE).write_text("\n".join(lines), encoding="utf-8")
     print(f"Gerado: {OUTPUT_FILE} ({len(entradas)} entradas)")
