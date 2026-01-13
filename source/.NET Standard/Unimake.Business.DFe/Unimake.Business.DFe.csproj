@@ -417,6 +417,7 @@
 		<None Remove="Servicos\Config\NFSe\ColomboPR.xml" />
 		<None Remove="Servicos\Config\NFSe\ConcordiaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
+		<None Remove="Servicos\Config\NFSe\ContagemMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CorumbaMS.xml" />
 		<None Remove="Servicos\Config\NFSe\CorupaSC.xml" />
@@ -1604,6 +1605,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TibauRN.xml" />
 	</ItemGroup>
 

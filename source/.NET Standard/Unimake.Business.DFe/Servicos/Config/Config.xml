@@ -3083,4 +3083,10 @@
 		<ArqConfig>TibauRN.xml</ArqConfig>
 		<PadraoNFSe>AGILI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3118601">
+		<Nome>Contagem - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ContagemMG.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
