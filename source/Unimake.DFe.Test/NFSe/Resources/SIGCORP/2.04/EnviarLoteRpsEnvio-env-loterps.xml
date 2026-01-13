@@ -47,6 +47,8 @@
 						<CodigoPais>1058</CodigoPais>
 						<ExigibilidadeISS>1</ExigibilidadeISS>
 						<MunicipioIncidencia>2925808</MunicipioIncidencia>
+						<!-- Campo: cNBS -->
+						<cNBS>123456789</cNBS>
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
@@ -79,6 +81,42 @@
 					<OptanteSimplesNacional>2</OptanteSimplesNacional>
 					<IncentivoFiscal>2</IncentivoFiscal>
 					<InformacoesComplementares>81</InformacoesComplementares>
+					<!-- Grupo: IBSCBS -->
+					<IBSCBS>
+						<cLocalidadeIncid>2925808</cLocalidadeIncid>
+						<xLocalidadeIncid>Nome do Municipio</xLocalidadeIncid>
+						<valores>
+							<vBC>500.72</vBC>
+							<uf>
+								<pIBSUF>1.00</pIBSUF>
+								<pAliqEfetUF>1.00</pAliqEfetUF>
+							</uf>
+							<mun>
+								<pIBSMun>1.00</pIBSMun>
+								<pAliqEfetMun>1.00</pAliqEfetMun>
+							</mun>
+							<fed>
+								<pCBS>1.00</pCBS>
+								<pAliqEfetCBS>1.00</pAliqEfetCBS>
+							</fed>
+						</valores>
+						<totCIBS>
+							<vTotNF>515.75</vTotNF>
+							<gIBS>
+								<vIBSTot>10.02</vIBSTot>
+								<gIBSUFTot>
+									<vIBSUF>5.01</vIBSUF>
+								</gIBSUFTot>
+								<gIBSMunTot>
+									<vIBSMun>5.01</vIBSMun>
+								</gIBSMunTot>
+							</gIBS>
+							<gCBS>
+								<vCBS>5.01</vCBS>
+							</gCBS>
+						</totCIBS>
+					</IBSCBS>
+					<!-- Fim do Grupo: IBSCBS -->
 				</InfDeclaracaoPrestacaoServico>
 			</Rps>
 		</ListaRps>
