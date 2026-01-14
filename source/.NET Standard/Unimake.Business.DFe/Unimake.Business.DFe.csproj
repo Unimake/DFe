@@ -762,6 +762,7 @@
 		<None Remove="Servicos\Config\NFSe\UruguaianaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\VacariaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ValencaBA.xml" />
+		<None Remove="Servicos\Config\NFSe\ValinhosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\VargemGrandeDoSulSP.xml" />
 		<None Remove="Servicos\Config\NFSe\VargemGrandePaulistaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\VarginhaMG.xml" />
@@ -1517,6 +1518,7 @@
 		<None Remove="Xml\Schemas\NFSe\SISPMJP\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SMARAPD\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SONNER\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SUPERNOVA\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SUPERNOVA\xmldsig-core-schema20020212.xsd" />
@@ -2011,6 +2013,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\UmuaramaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VacariaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ValencaBA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ValinhosSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VargemGrandeDoSulSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VargemGrandePaulistaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VarzeaGrandeMT.xml">
@@ -3875,6 +3878,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\tiposSimples_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SUPERNOVA\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SUPERNOVA\xmldsig-core-schema20020212.xsd" />

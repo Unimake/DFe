@@ -3089,4 +3089,10 @@
 		<ArqConfig>ContagemMG.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3556206">
+		<Nome>Valinhos - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ValinhosSP.xml</ArqConfig>
+		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

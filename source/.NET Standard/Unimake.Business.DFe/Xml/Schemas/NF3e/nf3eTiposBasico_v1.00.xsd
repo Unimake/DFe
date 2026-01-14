@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2014 rel. 2 (http://www.altova.com) by private (private) -->
+<!-- edited with XMLSpy v2025 rel. 2 (x64) (https://www.altova.com) by PROCERGS (Procergs - Centro de Tecnologia da Informação e Comunicação do Estado do Rio Grande do Sul S.A.) -->
 <xs:schema xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nf3e" targetNamespace="http://www.portalfiscal.inf.br/nf3e" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_v1.01.xsd"/>
 	<xs:include schemaLocation="tiposGeralNF3e_v1.00.xsd"/>
@@ -433,7 +433,7 @@ Nota: No caso de Contribuinte Isento de Inscrição (indIEDest=2) informar a tag
  14 - Semáforos, radares e câmeras de monitoramento de trânsito, solicitados por quem detenha concessão ou autorização para controle de trânsito;
 
  15 - Outros serviços e outras atividades da classe comercial;
-16=Agropecuária rural; 
+16 - Agropecuária rural; 
 
 17 - Agropecuária urbana;
 
@@ -458,6 +458,7 @@ Nota: No caso de Contribuinte Isento de Inscrição (indIEDest=2) informar a tag
  27 - Tração Elétrica;
 
 28 - Água esgoto ou saneamento;
+29 - Residencial Desconto Social;
 
  99 - Outros.</xs:documentation>
 										</xs:annotation>
@@ -3687,6 +3688,7 @@ Observação: 28 caracteres são representados no schema como 20 bytes do tipo b
 			<xs:enumeration value="26"/>
 			<xs:enumeration value="27"/>
 			<xs:enumeration value="28"/>
+			<xs:enumeration value="29"/>
 			<xs:enumeration value="99"/>
 		</xs:restriction>
 	</xs:simpleType>
