@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SubstituirNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
-	<SubstituicaoNfse Id="SUBST1">
+	<SubstituicaoNfse Id="Id1">
 		<Pedido>
-			<InfPedidoCancelamento Id="CANC1">
+			<InfPedidoCancelamento Id="Id1">
 				<IdentificacaoNfse>
-					<Numero>1</Numero>
+					<Numero>0</Numero>
 					<CpfCnpj>
-						<Cnpj>99999999999999</Cnpj>
+						<Cpf>Cpf_______1</Cpf>
 					</CpfCnpj>
-					<InscricaoMunicipal>18715</InscricaoMunicipal>
+					<InscricaoMunicipal>InscricaoMunic1</InscricaoMunicipal>
 					<CodigoMunicipio>1</CodigoMunicipio>
 				</IdentificacaoNfse>
 				<CodigoCancelamento>1</CodigoCancelamento>
@@ -68,7 +68,7 @@
 				<Tomador>
 					<IdentificacaoTomador>
 						<CpfCnpj>
-							<Cpf>99999999999</Cpf>
+							<Cpf>00000000000</Cpf>
 						</CpfCnpj>
 						<InscricaoMunicipal>1</InscricaoMunicipal>
 					</IdentificacaoTomador>
