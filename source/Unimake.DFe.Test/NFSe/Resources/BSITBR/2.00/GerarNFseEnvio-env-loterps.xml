@@ -35,6 +35,7 @@
         <p:Discriminacao>SERVIÇOS PRESTADOS ADEQUADAMENTE</p:Discriminacao>
         <p:CodigoMunicipio>1</p:CodigoMunicipio>
         <p:ExigibilidadeISS>01</p:ExigibilidadeISS>
+		<p:cNBS>123456789</p:cNBS>
       </p:Servico>
       <p:Prestador>
         <p:CpfCnpj>
