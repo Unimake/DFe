@@ -1425,6 +1425,7 @@
 		<None Remove="Xml\Schemas\NFSe\NACIONAL\xmldsig-core-schema.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NACIONAL\xmldsig-core-schema_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NATALENSE\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\NATALENSE\nfse_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NATALENSE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
@@ -3750,6 +3751,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\tiposSimples_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\nfse_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
