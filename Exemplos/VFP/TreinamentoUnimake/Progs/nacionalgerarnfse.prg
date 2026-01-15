@@ -16,15 +16,15 @@ FUNCTION NACIONALGerarNFSe()
     * Criar objeto de configuração mínima
       oConfiguracao = CreateObject( "Unimake.Business.DFe.Servicos.Configuracao" )
       oConfiguracao.TipoDFe            = 5          && 5 = NFSe
-      oConfiguracao.CertificadoArquivo = "D:\projetos\certificados\DosClientes\nfse_nacional_d29m05sa.pfx"
-      oConfiguracao.CertificadoSenha   = "d29m05sa"
+      oConfiguracao.CertificadoArquivo = "D:\projetos\certificados\DosClientes\Melo - Cliente Francisco - 12345678.pfx"
+      oConfiguracao.CertificadoSenha   = "12345678"
       oConfiguracao.CodigoMunicipio    = 1001058    && Padrão Nacional
-      oConfiguracao.TipoAmbiente       = 2          && Homologacao
+      oConfiguracao.TipoAmbiente       = 2          && Homologação
       oConfiguracao.Servico            = 27         && NFSeGerarNFSe
-      oConfiguracao.SchemaVersao       = "1.00"
+      oConfiguracao.SchemaVersao       = "1.01"
 		
     * Ler a string do XML	
-      cArqXML = "D:\testenfe\nfse_envio_95664.xml"		
+      cArqXML = "C:\Users\Wandrey\OneDrive\Downloads\meuXML (1).XML"		
       cXML    = STRTRAN( ;
                     STRTRAN( ;
                       STRTRAN(FILETOSTR(cArqXML), CHR(13), ""), ; && remove CR

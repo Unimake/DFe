@@ -1288,8 +1288,10 @@
 		<None Remove="Xml\Schemas\NFSe\BHISS\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BHISS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\CONAM\XML_RPS_V4.xsd" />
+		<None Remove="Xml\Schemas\NFSe\COPLAN\Coplan_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\nfse_v2_02.xsd" />
+		<None Remove="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DESENVOLVECIDADE\nfsev203.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DESENVOLVECIDADE\xmldsig-core-schema20020212.xsd" />
@@ -1517,6 +1519,7 @@
 		<None Remove="Xml\Schemas\NFSe\SISPMJP\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SMARAPD\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SONNER\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SUPERNOVA\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SUPERNOVA\xmldsig-core-schema20020212.xsd" />
@@ -2734,6 +2737,10 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDNotaTomador.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDRetorno.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\CONAM\XML_RPS_V4.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\Coplan_v1.01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\tiposComplexos_v1.01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\tiposSimples_v1.01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\cabecalho-v2_04.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\cancelar-nfse-envio-v2_04.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-lote-rps-envio-v2_04.xsd" />
@@ -3873,6 +3880,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\tiposSimples_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SUPERNOVA\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SUPERNOVA\xmldsig-core-schema20020212.xsd" />

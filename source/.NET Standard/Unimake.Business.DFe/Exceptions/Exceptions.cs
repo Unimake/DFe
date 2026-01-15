@@ -107,7 +107,12 @@ namespace Unimake.Exceptions
         /// <summary>
         /// Certificado digital corrompido
         /// </summary>
-        CertificadoDigitalCorrompido = 6
+        CertificadoDigitalCorrompido = 6,
+
+        /// <summary>
+        /// Certificado digital vencido
+        /// </summary>
+        CertificadoVencido = 7
     }
 
     /// <summary>

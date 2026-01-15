@@ -15029,11 +15029,16 @@ namespace Unimake.Business.DFe.Servicos
         AguaEsgotoOuSaneamento = 28,
 
         /// <summary>
+        /// 29 - Residencial Desconto Social.
+        /// </summary>
+        [XmlEnum("29")]
+        ResidencialDescontoSocial = 29,
+
+        /// <summary>
         /// 99 - Outros.
         /// </summary>
         [XmlEnum("99")]
         Outros = 99,
-
     }
 
     #endregion TipoSubClasseConsumidora
@@ -17172,7 +17177,7 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("5")]
         FornecimentoRecebimentoPagamentoConcomitante = 5,
     }
-# endregion Tipo de Operação com Entes Governamentais ou outros serviços sobre bens imóveis
+    #endregion Tipo de Operação com Entes Governamentais ou outros serviços sobre bens imóveis
 
     #endregion NFS-e NACIONAL
 

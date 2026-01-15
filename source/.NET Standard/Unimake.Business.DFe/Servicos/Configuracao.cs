@@ -4,12 +4,13 @@ using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
-using System.Net.Http;
 using Unimake.Business.Security;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -103,6 +104,14 @@ namespace Unimake.Business.DFe.Servicos
                     {
                         _certificadoDigital = collection3[0];
                     }
+                }
+            }
+
+            if (_certificadoDigital != null)
+            {
+                if (DateTime.Now > _certificadoDigital.NotAfter)
+                {
+                    throw new CertificadoDigitalException("Certificado digital está vencido. Data expiração: " + _certificadoDigital.NotAfter.ToString("G"), ErrorCodes.CertificadoVencido);
                 }
             }
 

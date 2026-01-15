@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio xmlns="http://www.sped.fazenda.gov.br/nfse">
+  <IdentificacaoRps>
+    <Numero>133</Numero>
+    <Serie>1</Serie>
+    <Tipo>1</Tipo>
+  </IdentificacaoRps>
+  <Prestador>
+    <CpfCnpj>
+      <Cnpj>06117473000150</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>233333</InscricaoMunicipal>
+  </Prestador>
+</ConsultarNfseRpsEnvio>
