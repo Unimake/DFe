@@ -1,50 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<GerarNfse versao="1.20">
-			<Descricao>Envio de lote RPS - Sincrono</Descricao>
-			<RequestURIProducao>https://camboriu.atende.net/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
-			<RequestURIHomologacao>https://camboriu.atende.net/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIHomologacao>
+		<GerarNfse versao="2.04">
+			<Descricao>Gerar NFSe</Descricao>
+			<RequestURIProducao>https://camboriu.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura>nfse</TagAssinatura>
-			<TagAtributoID>nfse</TagAtributoID>
-			<WebSoapString></WebSoapString>
-			<WebContentType>multipart/form-data</WebContentType>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<SchemaVersao>1.20</SchemaVersao>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>GerarNfseResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>true</LoginConexao>
 		</GerarNfse>
-		<CancelarNfse versao="1.20">
-			<Descricao>Evento de cancelamento da NFSe</Descricao>
-			<RequestURIProducao>https://camboriu.atende.net/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
-			<RequestURIHomologacao>https://camboriu.atende.net/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIHomologacao>
+		<RecepcionarLoteRpsSincrono versao="2.04">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<RequestURIProducao>https://camboriu.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura>nfse</TagAssinatura>
-			<TagAtributoID>nfse</TagAtributoID>
-			<WebSoapString></WebSoapString>
-			<WebContentType>multipart/form-data</WebContentType>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<SchemaVersao>1.20</SchemaVersao>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>EnviarLoteRpsSincronoResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>true</LoginConexao>
-		</CancelarNfse>
-		<ConsultarNfse versao="1.20">
-			<Descricao>Consulta da NFSe</Descricao>
-			<RequestURIProducao>https://camboriu.atende.net/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
-			<RequestURIHomologacao>https://camboriu.atende.net/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIHomologacao>
+		</RecepcionarLoteRpsSincrono>
+		<RecepcionarLoteRps versao="2.04">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<RequestURIProducao>https://camboriu.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>EnviarLoteRpsResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</RecepcionarLoteRps>
+		<SubstituirNfse versao="2.04">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<RequestURIProducao>https://camboriu.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString></WebSoapString>
-			<WebContentType>multipart/form-data</WebContentType>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<SchemaVersao>1.20</SchemaVersao>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>SubstituirNfseResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>true</LoginConexao>
-		</ConsultarNfse>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.04">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<RequestURIProducao>https://camboriu.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>ConsultarLoteRpsResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarLoteRps>
+		<ConsultarNfseServicoPrestado versao="2.04">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<RequestURIProducao>https://camboriu.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>ConsultarNfseServicoPrestadoResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseFaixa versao="2.04">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<RequestURIProducao>https://camboriu.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>ConsultarNfseFaixaResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfseFaixa>
+		<CancelarNfse versao="2.04">
+			<Descricao>Cancelar NFSe</Descricao>
+			<RequestURIProducao>https://camboriu.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>CancelarNfseResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</CancelarNfse>
+		<ConsultarNfsePorRps versao="2.04">
+			<Descricao>Consulta NFSe por Rps</Descricao>
+			<RequestURIProducao>https://camboriu.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>ConsultarNfseRpsResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>

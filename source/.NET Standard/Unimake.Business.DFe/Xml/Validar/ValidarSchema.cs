@@ -41,9 +41,9 @@ namespace Unimake.Business.DFe
         }
 
         /// <summary>
-        /// Extrair recursos (XSD) da DLL para efetuar a validação do XML
+        /// Extrai recursos (XSD) da DLL para efetuar a validação do XML, resolvendo recursivamente todos os includes/imports.
         /// </summary>
-        /// <param name="arqSchema">Arquivo XSD a ser extraido</param>
+        /// <param name="arqSchema">Arquivo XSD a ser extraído</param>
         /// <param name="padraoNFSe">Padrão da NFSe (Necessário para determinar a subpasta de onde vai pegar o pacote de schemas)</param>
         /// <returns>Retorna os schemas a serem utilizados na validação</returns>
         private IEnumerable<XmlSchema> ExtractSchemasResource(string arqSchema, Servicos.PadraoNFSe padraoNFSe = Servicos.PadraoNFSe.None)
@@ -99,7 +99,7 @@ namespace Unimake.Business.DFe
             });
 
             while ((attrib = getAttrib()) != null)
-            {
+                {
                 var schemaFile = attrib.Value;
 
                 var schemaInterno = arquivoResource.Replace(schemaPrincipal, schemaFile);
@@ -108,7 +108,7 @@ namespace Unimake.Business.DFe
                 {
                     if (stm != null)
                     {
-                        var reader = new StreamReader(stm);
+                    var reader = new StreamReader(stm);
                         conteudoSchemaInterno = reader.ReadToEnd();
                         files.Add(conteudoSchemaInterno);
                     }
@@ -117,9 +117,9 @@ namespace Unimake.Business.DFe
                 keys.Add(schemaFile);
 
                 if (getAttrib() == null)
-                {
-                    if (!string.IsNullOrWhiteSpace(conteudoSchemaInterno))
                     {
+                    if (!string.IsNullOrWhiteSpace(conteudoSchemaInterno))
+                        {
                         doc.LoadXml(conteudoSchemaInterno);
                     }
                 }
@@ -201,6 +201,8 @@ namespace Unimake.Business.DFe
 #endif
         public void Validar(XmlDocument conteudoXML, string arqSchema, string targetNS = "", Servicos.PadraoNFSe padraoNFSe = Servicos.PadraoNFSe.None)
         {
+            ErroValidacao = "";
+
             if (string.IsNullOrEmpty(arqSchema))
             {
                 throw new Exception("Arquivo de schema (XSD), necessário para validação do XML, não foi informado.");
@@ -220,11 +222,19 @@ namespace Unimake.Business.DFe
                 var schemas = new XmlSchemaSet();
                 settings.Schemas = schemas;
 
-                var resolver = new XmlUrlResolver
+                if (padraoNFSe == Servicos.PadraoNFSe.NACIONAL)
                 {
-                    Credentials = System.Net.CredentialCache.DefaultCredentials
-                };
-                settings.XmlResolver = resolver;
+                    settings.XmlResolver = null;
+                }
+                else
+                {
+                    var resolver = new XmlUrlResolver
+                    {
+                        Credentials = System.Net.CredentialCache.DefaultCredentials
+                    };
+
+                    settings.XmlResolver = resolver;
+                }
 
                 if (!string.IsNullOrWhiteSpace(targetNS))
                 {

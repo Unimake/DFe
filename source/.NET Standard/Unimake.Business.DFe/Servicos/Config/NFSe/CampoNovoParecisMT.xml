@@ -212,6 +212,7 @@
 		  <WebSoapVersion>soap11</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		  <TimeOutWebServiceConnect>120000</TimeOutWebServiceConnect>
 	  </RecepcionarLoteRps>
 	  <RecepcionarLoteRpsSincrono versao="1.01">
 		  <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
@@ -231,6 +232,7 @@
 		  <WebSoapVersion>soap11</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		  <TimeOutWebServiceConnect>120000</TimeOutWebServiceConnect>
 	  </RecepcionarLoteRpsSincrono>
 	  <GerarNfse versao="1.01">
 		  <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
@@ -250,6 +252,7 @@
 		  <WebSoapVersion>soap11</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		  <TimeOutWebServiceConnect>120000</TimeOutWebServiceConnect>
 	  </GerarNfse>
 	  <CancelarNfse versao="1.01">
 		  <Descricao>Cancelar nota fiscal de serviço</Descricao>
@@ -269,6 +272,7 @@
 		  <WebSoapVersion>soap11</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		  <TimeOutWebServiceConnect>120000</TimeOutWebServiceConnect>
 	  </CancelarNfse>
 	  <SubstituirNfse versao="1.01">
 		  <Descricao>Substituir nota fiscal de Serviço</Descricao>
@@ -290,6 +294,7 @@
 		  <WebSoapVersion>soap11</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		  <TimeOutWebServiceConnect>120000</TimeOutWebServiceConnect>
 	  </SubstituirNfse>
 	  <ConsultarLoteRps versao="1.01">
 		  <Descricao>Consulta lote RPS</Descricao>
@@ -309,6 +314,7 @@
 		  <WebSoapVersion>soap11</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		  <TimeOutWebServiceConnect>120000</TimeOutWebServiceConnect>
 	  </ConsultarLoteRps>
 	  <ConsultarNfsePorRps versao="1.01">
 		  <Descricao>Consulta NFSe por RPS</Descricao>
@@ -328,6 +334,7 @@
 		  <WebSoapVersion>soap11</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		  <TimeOutWebServiceConnect>120000</TimeOutWebServiceConnect>
 	  </ConsultarNfsePorRps>
 	  <ConsultarNfseServicoPrestado versao="1.01">
 		  <Descricao>Consulta NFSe de serviços prestados</Descricao>
@@ -347,6 +354,7 @@
 		  <WebSoapVersion>soap11</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		  <TimeOutWebServiceConnect>120000</TimeOutWebServiceConnect>
 	  </ConsultarNfseServicoPrestado>
 	  <ConsultarNfseServicoTomado versao="1.01">
 		  <Descricao>Consulta NFSe de serviços tomados</Descricao>
@@ -366,6 +374,7 @@
 		  <WebSoapVersion>soap11</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		  <TimeOutWebServiceConnect>120000</TimeOutWebServiceConnect>
 	  </ConsultarNfseServicoTomado>
 	  <ConsultarNfseFaixa versao="1.01">
 		  <Descricao>Consulta NFSe por Faixa</Descricao>
@@ -385,6 +394,7 @@
 		  <WebSoapVersion>soap11</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		  <TimeOutWebServiceConnect>120000</TimeOutWebServiceConnect>
 	  </ConsultarNfseFaixa>
   </Servicos>
 </Configuracoes>
