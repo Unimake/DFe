@@ -208,9 +208,12 @@ namespace Unimake.Business.DFe
                     node = nodes[0];
                     if (node != null && config.TagRetorno != "chaveAcesso")
                     {
-                        var temp = Compress.GZIPDecompress(node.InnerText);
-                        config.TagRetorno = "prop:innertext";
-                        return temp;
+                        if (!string.IsNullOrWhiteSpace(node.InnerXml))
+                        {
+                            var temp = Compress.GZIPDecompress(node.InnerText);
+                            config.TagRetorno = "prop:innertext";
+                            return temp;
+                        }
                     }
                 }
             }
