@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ConsultarLoteRpsEnvio xmlns="http://www.tinus.com.br">
-  <Prestador>
-    <Cnpj>99999999999999</Cnpj>
-    <InscricaoMunicipal>9999999</InscricaoMunicipal>
-  </Prestador>
-  <Protocolo>99999999999</Protocolo>
-</ConsultarLoteRpsEnvio>

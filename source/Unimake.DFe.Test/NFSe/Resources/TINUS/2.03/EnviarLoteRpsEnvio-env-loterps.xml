@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+<EnviarLoteRpsEnvio>
 	<LoteRps Id="LOTE_1" versao="2.03">
 		<NumeroLote>1</NumeroLote>
 		<CpfCnpj>
@@ -9,7 +9,7 @@
 		<QuantidadeRps>1</QuantidadeRps>
 		<ListaRps>
 			<Rps>
-				<InfDeclaracaoPrestacaoServico Id="ID1">
+				<InfDeclaracaoPrestacaoServico Id="RPS_1_RTC1_1">
 					<Rps>
 						<IdentificacaoRps>
 							<Numero>202583</Numero>
@@ -31,9 +31,8 @@
 						<CodigoTributacaoMunicipio>749010400</CodigoTributacaoMunicipio>
 						<CodigoNbs>115021000</CodigoNbs>
 						<Discriminacao>SERVICO TESTE</Discriminacao>
-						<CodigoMunicipio>1234567</CodigoMunicipio>
 						<ExigibilidadeISS>1</ExigibilidadeISS>
-						<MunicipioIncidencia>9999999</MunicipioIncidencia>
+						<MunicipioIncidencia>XXXXXXX</MunicipioIncidencia>
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
@@ -80,8 +79,8 @@
 					</IBSCBS>
 				</InfDeclaracaoPrestacaoServico>
 				<IBSCBS>
-					<cLocalidadeIncid>1234567</cLocalidadeIncid>
-					<xLocalidadeIncid>OLINDA</xLocalidadeIncid>
+					<cLocalidadeIncid>XXXXXXX</cLocalidadeIncid>
+					<xLocalidadeIncid>Olinda</xLocalidadeIncid>
 					<valores>
 						<vBC>0.10</vBC>
 						<uf>
