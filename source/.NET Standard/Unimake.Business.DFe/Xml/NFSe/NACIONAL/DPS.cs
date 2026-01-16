@@ -743,14 +743,14 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class Obra
     {
+        [XmlElement("inscImobFisc")]
+        public int InscImobFisc { get; set; }
+
         [XmlElement("cObra")]
         public int CObra { get; set; }
 
         [XmlElement("cCIB")]
         public int CCIB { get; set; }
-
-        [XmlElement("inscImobFisc")]
-        public int InscImobFisc { get; set; }
 
         [XmlElement("end")]
         public ServEnd End { get; set; }
