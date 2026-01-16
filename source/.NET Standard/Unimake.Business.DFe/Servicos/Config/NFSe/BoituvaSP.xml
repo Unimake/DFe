@@ -99,7 +99,7 @@
 			<WebSoapString></WebSoapString>
 			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
 			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebTagRetorno>xmlGZipB64</WebTagRetorno>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>true</GZIPCompress>
@@ -116,7 +116,7 @@
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<WebTagRetorno>xmlGZipB64</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
@@ -136,6 +136,7 @@
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>
