@@ -2,13 +2,14 @@
 <EnviarLoteDpsSincronoEnvio xmlns="http://www.sped.fazenda.gov.br/nfse">
 	<LoteDps Id="Id1" versao="1.01">
 		<NumeroLote>124</NumeroLote>
-		<CpfCnpj>
-			<Cnpj>99999999999999</Cnpj>
-		</CpfCnpj>
+		<Prestador>
+			<CNPJ>99999999999999</CNPJ>
+			<IM>1234</IM>
+		</Prestador>
 		<InscricaoMunicipal>318360468</InscricaoMunicipal>
 		<QuantidadeRps>1</QuantidadeRps>
 		<ListaDps>
-			<DPS versao="1.01">
+			<DPS xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
 				<infDPS Id="DPS410690211234567800019500001000000000000001">
 					<tpAmb>2</tpAmb>
 					<dhEmi>2025-11-18T15:23:56-03:00</dhEmi>
@@ -20,6 +21,9 @@
 					<cLocEmi>4202909</cLocEmi>
 					<prest>
 						<CNPJ>99999999999999</CNPJ>
+						<IM>1234</IM>
+						<fone>1234567890</fone>
+						<email>teste@tese.com</email>
 						<regTrib>
 							<opSimpNac>3</opSimpNac>
 							<regApTribSN>1</regApTribSN>
