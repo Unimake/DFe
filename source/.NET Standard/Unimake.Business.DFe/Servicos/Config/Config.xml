@@ -3095,4 +3095,10 @@
 		<ArqConfig>ValinhosSP.xml</ArqConfig>
 		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3524709">
+		<Nome>Jaguariúna - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>JaguariunaSP.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
