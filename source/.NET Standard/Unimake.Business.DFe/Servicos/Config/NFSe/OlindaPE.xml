@@ -116,54 +116,35 @@
 		<!--Versão 2.03 com RTC-->
 		<RecepcionarLoteRps versao="2.03">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeoli/WSNFSE.RecepcionarLoteRps.CLS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://www.tinus.com.br/csp/olinda/WSNFSE203.Service2.nfseSOAP.cls?wsdl=1</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
+			<WebEnderecoHomologacao>https://www2.tinus.com.br/csp/testeoli/WSNFSE203.Service2.nfseSOAP.cls</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.tinus.com.br/csp/olinda/WSNFSE203.Service2.nfseSOAP.cls</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/WSNFSE203.Service2.nfseSOAP.EnviarLoteRpsEnvio</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/WSNFSE203.Service2.nfseSOAP.EnviarLoteRpsEnvio</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br" xmlns:nfse1="http://www.abrasf.org.br/nfse.xsd"><soap:Body>{xmlBody}</soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br" xmlns:nfse1="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Body><EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">{xmlBody}</EnviarLoteRpsEnvio></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>http://www.tinus.com.br</TargetNS>
 		</RecepcionarLoteRps>
-		<ConsultarSituacaoLoteRps versao="2.03">
-			<Descricao>Consultar Situação Lote Rps</Descricao>
-			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeoli/WSNFSE.ConsultarSituacaoLoteRps.CLS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://www.tinus.com.br/csp/olinda/WSNFSE.ConsultarSituacaoLoteRps.CLS</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>WSNFSE203.IBSCBS.Service.Tinus.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><ConsultarSituacaoLoteRps><Arg>{xmlBody}</Arg></ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-			<TargetNS>http://www.tinus.com.br</TargetNS>
-		</ConsultarSituacaoLoteRps>
 		<ConsultarLoteRps versao="2.03">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeoli/WSNFSE.ConsultarLoteRps.CLS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://www.tinus.com.br/csp/olinda/WSNFSE.ConsultarLoteRps.CLS</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
+			<WebEnderecoHomologacao>https://www2.tinus.com.br/csp/testeoli/WSNFSE203.Service2.nfseSOAP.cls</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.tinus.com.br/csp/olinda/WSNFSE203.Service2.nfseSOAP.cls</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/WSNFSE203.Service2.nfseSOAP.ConsultarLoteRpsEnvio</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/WSNFSE203.Service2.nfseSOAP.ConsultarLoteRpsEnvio</WebActionProducao>
 			<SchemaArquivo>WSNFSE203.IBSCBS.Service.Tinus.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><ConsultarLoteRps><Arg>{xmlBody}</Arg></ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br" xmlns:nfse1="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ConsultarLoteRpsEnvio xmlns="http://www.tinus.com.br">{xmlBody}</ConsultarLoteRpsEnvio></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Envelope</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
@@ -171,17 +152,17 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.03">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeoli/WSNFSE.ConsultarNfsePorRps.CLS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://www.tinus.com.br/csp/olinda/WSNFSE.ConsultarNfsePorRps.CLS</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
+			<WebEnderecoHomologacao>https://www2.tinus.com.br/csp/testeoli/WSNFSE203.Service2.nfseSOAP.cls</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.tinus.com.br/csp/olinda/WSNFSE203.Service2.nfseSOAP.cls</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/WSNFSE203.Service2.nfseSOAP.ConsultarNfseRpsEnvio</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/WSNFSE203.Service2.nfseSOAP.ConsultarNfseRpsEnvio</WebActionProducao>
 			<SchemaArquivo>WSNFSE203.IBSCBS.Service.Tinus.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><ConsultarNfsePorRps><Arg>{xmlBody}</Arg></ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br" xmlns:nfse1="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ConsultarNfseRpsEnvio>{xmlBody}</ConsultarNfseRpsEnvio></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -190,18 +171,18 @@
 		</ConsultarNfsePorRps>
 		<CancelarNfse versao="2.03">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeoli/WSNFSE.CancelarNfse.CLS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://www.tinus.com.br/csp/olinda/WSNFSE.CancelarNfse.CLS</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
+			<WebEnderecoHomologacao>https://www2.tinus.com.br/csp/testeoli/WSNFSE203.Service2.nfseSOAP.cls</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.tinus.com.br/csp/olinda/WSNFSE203.Service2.nfseSOAP.cls</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/WSNFSE203.Service2.nfseSOAP.CancelarNfseEnvio</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/WSNFSE203.Service2.nfseSOAP.CancelarNfseEnvio</WebActionProducao>
 			<SchemaArquivo>WSNFSE203.IBSCBS.Service.Tinus.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><CancelarNfse><Arg>{xmlBody}</Arg></CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>CancelarNfseResponse</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br" xmlns:nfse1="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><CancelarNfseEnvio>{xmlBody}</CancelarNfseEnvio></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
