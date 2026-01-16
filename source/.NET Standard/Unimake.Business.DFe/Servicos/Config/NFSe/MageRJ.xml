@@ -194,5 +194,24 @@
 			<SchemaVersao>2.02</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarNfseFaixa>
+		<GerarNfse versao="3.02">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>http://sis-nfs-e.mage.rj.gov.br:8013/homologacao/ReceberDPS.rule?sys=NFE</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfs-e.mage.rj.gov.br/nfe/ReceberDPS.rule?sys=NFE</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:def="http://DefaultNamespace"><soapenv:Header/><soapenv:Body><def:GerarNfse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><Nfsecabecmsg xsi:type="xsd:string">&lt;cabecalho xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot; versao=&quot;3.02&quot;&gt; &lt;versaoDados&gt;3.02&lt;/versaoDados&gt; &lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></def:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:GerarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.02</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</GerarNfse>
 	</Servicos>
 </Configuracoes>

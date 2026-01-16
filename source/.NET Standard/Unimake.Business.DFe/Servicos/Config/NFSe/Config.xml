@@ -112,6 +112,14 @@
 		<SchemaVersao>3.01</SchemaVersao>
 		<TargetNS></TargetNS>
 	</Versao>
+	<Versao ID="3.02">
+		<WebContentType></WebContentType>
+		<WebSoapString></WebSoapString>
+		<WebTagRetorno></WebTagRetorno>
+		<WebSoapVersion></WebSoapVersion>
+		<SchemaVersao>3.02</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
 	<Versao ID="4.00">
 		<WebContentType></WebContentType>
 		<WebSoapString></WebSoapString>
