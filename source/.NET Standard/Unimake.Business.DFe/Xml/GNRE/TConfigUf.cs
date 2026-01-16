@@ -47,6 +47,9 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("tiposGnreDaUF")]
         public TiposGnreDaUF TiposGnreDaUF { get; set; }
 
+        [XmlElement("enderecoObr")]
+        public EnderecoObr EnderecoObr { get; set; }
+
 #if INTEROP
 
         /// <summary>
@@ -236,7 +239,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public VersoesXmlDocOrigem VersoesXmlDocOrigem { get; set; }
 
         [XmlElement("exigeContribuinteDestinatario")]
-        public SimNaoLetra ExigeContribuinteDestinatario { get; set; }
+        public SimNaoOpcionalLetra ExigeContribuinteDestinatario { get; set; }
 
         [XmlElement("exigeDataVencimento")]
         public ExigeDataVencimento ExigeDataVencimento { get; set; }
@@ -258,6 +261,9 @@ namespace Unimake.Business.DFe.Xml.GNRE
 
         [XmlElement("tiposGnre")]
         public TiposGnre TiposGnre { get; set; }
+
+        [XmlElement("aceitaPgPix")]
+        public SimNaoLetra AceitaPgPix { get; set; }
 
         #region ShouldSerialize
 
@@ -951,5 +957,21 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public int GetReceitasCount => (TipoGnre != null ? TipoGnre.Count : 0);
 
 #endif
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.EnderecoObr")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
+    public class EnderecoObr
+    {
+        [XmlElement("emitCpf")]
+        public SimNaoLetra EmitCpf { get; set; }
+
+        [XmlElement("emitCnpj")]
+        public SimNaoLetra EmitCnpj { get; set; }
     }
 }

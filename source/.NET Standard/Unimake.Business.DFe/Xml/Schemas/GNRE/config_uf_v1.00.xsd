@@ -2,6 +2,7 @@
 <schema targetNamespace="http://www.gnre.pe.gov.br"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:tns="http://www.gnre.pe.gov.br">
+	<!-- Atualizado em 04/2025 -->
 	<include schemaLocation="tiposBasicoGNRE_v1.00.xsd"></include>
 	<include schemaLocation="tiposBasicoGNRE_v2.00.xsd"></include>
 	<simpleType name="TTipoValor">
@@ -345,8 +346,15 @@
 											</complexType>
 										</element>
 										<element
-											name="exigeContribuinteDestinatario" type="tns:TSimNao"
+											name="exigeContribuinteDestinatario" type="tns:TSimNaoOpcional"
 											maxOccurs="1" minOccurs="1">
+                                            <annotation>
+                                            	<documentation>
+                                            		N - Não exibe
+													S - Sim (obrigatório)
+													O - Opcional (exibe)
+												</documentation>
+                                            </annotation>
 										</element>
 										<element
 											name="exigeDataVencimento" default="S" maxOccurs="1"
@@ -511,6 +519,13 @@
 												</sequence>
 											</complexType>
 										</element>
+										<element name="aceitaPgPix" maxOccurs="1" minOccurs="1">
+											<complexType>
+												<simpleContent>
+													<extension base="tns:TSimNao" />														
+												</simpleContent>
+											</complexType>
+										</element>
 									</sequence>
 									<attribute name="codigo"
 										use="required">
@@ -575,6 +590,17 @@
 									</restriction>
 								</simpleType>
 							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="enderecoObr" minOccurs="1" maxOccurs="1">
+                    <annotation>
+                    	<documentation>Indicador de obrigatoriedade de preenchimento do campo Endereco quando o Emitente for identificado por CNPJ ou CPF.</documentation>
+                    </annotation>
+                    <complexType>
+						<sequence>
+							<element name="emitCpf" minOccurs="1" maxOccurs="1" type="tns:TSimNao" />
+							<element name="emitCnpj" minOccurs="1" maxOccurs="1" type="tns:TSimNao" />
 						</sequence>
 					</complexType>
 				</element>
