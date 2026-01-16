@@ -11,13 +11,16 @@
 			<Servico>
 				<Valores>
 					<ValorServicos>100.00</ValorServicos>
+					<ValorDeducoes>0.00</ValorDeducoes>
 					<ValorPis>1</ValorPis>
 					<ValorCofins>2</ValorCofins>
 					<ValorInss>3</ValorInss>
 					<ValorIr>5</ValorIr>
 					<ValorCsll>4</ValorCsll>
+					<OutrasRetencoes>0.00</OutrasRetencoes>
 					<Aliquota>5.00</Aliquota>
 					<DescontoIncondicionado>0</DescontoIncondicionado>
+					<DescontoCondicionado>0</DescontoCondicionado>
 				</Valores>
 				<IssRetido>1</IssRetido>
 				<CodigoMunicipio>5208707</CodigoMunicipio>
