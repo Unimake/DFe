@@ -520,6 +520,7 @@
 		<None Remove="Servicos\Config\NFSe\JaciSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JacobinaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\JaguapitaPR.xml" />
+		<None Remove="Servicos\Config\NFSe\JaguariunaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JardinopolisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JataiGO.xml" />
 		<None Remove="Servicos\Config\NFSe\JauSP.xml" />
@@ -1611,6 +1612,7 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguariunaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TibauRN.xml" />
 	</ItemGroup>
 
