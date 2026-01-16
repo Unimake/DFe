@@ -4,7 +4,7 @@
 	<xsd:import namespace="http://www.w3.org/2000/09/xmldsig#"
 		schemaLocation="xmldsig-core-schema20020212.xsd" />
 
-  <!-- definition of simple elements -->
+	<!-- definition of simple elements -->
 	<xsd:simpleType name="tsNumeroNfse">
 		<xsd:restriction base="xsd:nonNegativeInteger">
 			<xsd:totalDigits value="15" />
@@ -391,6 +391,8 @@
 		<xsd:sequence>
 			<xsd:element name="ValorServicos" type="tsValor"
 				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="ValorDeducoes" type="tsValor"
+				minOccurs="0" maxOccurs="1" />
 			<xsd:element name="ValorPis" type="tsValor" minOccurs="0"
 				maxOccurs="1" />
 			<xsd:element name="ValorCofins" type="tsValor" minOccurs="0"
@@ -401,10 +403,14 @@
 				maxOccurs="1" />
 			<xsd:element name="ValorCsll" type="tsValor" minOccurs="0"
 				maxOccurs="1" />
+			<xsd:element name="OutrasRetencoes" type="tsValor"
+				minOccurs="0" maxOccurs="1" />
 			<xsd:element name="Aliquota" type="tsAliquota" minOccurs="0"
 				maxOccurs="1" />
 			<xsd:element name="DescontoIncondicionado" type="tsValor"
 				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="DescontoCondicionado" type="tsValor"
+				minOccurs="0" maxOccurs="1" />			
 		</xsd:sequence>
 	</xsd:complexType>
 
@@ -768,7 +774,7 @@
 	<xsd:simpleType name="tsInscricaoEstadual">
 		<xsd:restriction base="xsd:string"></xsd:restriction>
 	</xsd:simpleType>
-	
+
 	<xsd:element name="NfseGerada" type="tcGeraNfseMega"></xsd:element>
 
 	<xsd:complexType name="tcGeraNfseMega">
@@ -801,6 +807,5 @@
 			<xsd:element name="Nfse" type="tcNfseMega" maxOccurs="unbounded" minOccurs="1"></xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
-	
 </xsd:schema>
 
