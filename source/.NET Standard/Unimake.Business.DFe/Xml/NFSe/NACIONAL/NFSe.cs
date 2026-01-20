@@ -9,32 +9,31 @@ using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 
-namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
+namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
 {
     /// <summary>
-    /// Retorno da NFS-e – Padrão Nacional
+    /// Nota Fiscal de Serviços Eletrônica - NFS-e (Padrão Nacional).
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.NFSe")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType(Namespace = Nfse.Ns)]
     [XmlRoot("NFSe", Namespace = Nfse.Ns, IsNullable = false)]
     public class NFSe : XMLBase
     {
         /// <summary>
-        /// Versão do schema do XML de retorno da NFS-e.
+        /// Versão do schema do XML da NFS-e.
         /// </summary>
         [XmlAttribute("versao", DataType = "token")]
         public string Versao { get; set; }
 
         /// <summary>
-        /// Informações da NFS-e gerada.
+        /// Informações da NFS-e.
         /// </summary>
-        [XmlElement("infNFSe", Namespace = Nfse.Ns)]
-        public InfNFSeRet InfNFSe { get; set; }
+        [XmlElement("infNFSe")]
+        public InfNFSe InfNFSe { get; set; }
 
         /// <summary>
         /// Assinatura digital.
@@ -43,99 +42,119 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public Signature Signature { get; set; }
     }
 
-    #region InfNFSeRet
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.InfNFSeRet")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.InfNFSe")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("infNFSe", Namespace = Nfse.Ns)]
-    public class InfNFSeRet
+    public class InfNFSe
     {
-        /// <summary>
-        /// Identificador da NFS-e
-        /// </summary>
-        [XmlAttribute("Id", DataType = "token")]
-        public string Id { get; set; }
+        private string IdField;
 
         /// <summary>
-        /// Município de localização do emitente.
+        /// Id da NFS-e.
+        /// Informar o identificador precedido do literal 'NFS' (53 posições) conforme manual técnico.
+        /// Gerado automaticamente se não for informado (quando possível) usando dados do DPS e do emitente.
         /// </summary>
-        [XmlElement("xLocEmi", Namespace = Nfse.Ns)]
+        [XmlAttribute("Id", DataType = "token")]
+        public string Id
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(IdField))
+                {
+                    try
+                    {
+                        IdField = MontarIdNFSe();
+                    }
+                    catch
+                    {
+                        return IdField;
+                    }
+                }
+                return IdField;
+            }
+            set => IdField = value;
+        }
+
+        /// <summary>
+        /// Descrição do código do IBGE do município emissor da NFS-e.
+        /// </summary>
+        [XmlElement("xLocEmi")]
         public string XLocEmi { get; set; }
 
         /// <summary>
-        /// Município de localização da prestação.
+        /// Descrição do local da prestação do serviço.
         /// </summary>
-        [XmlElement("xLocPrestacao", Namespace = Nfse.Ns)]
+        [XmlElement("xLocPrestacao")]
         public string XLocPrestacao { get; set; }
 
         /// <summary>
         /// Número da NFS-e.
         /// </summary>
-        [XmlElement("nNFSe", Namespace = Nfse.Ns)]
-        public long NNFSe { get; set; }
+        [XmlElement("nNFSe")]
+        public string NNFSe { get; set; }
 
         /// <summary>
-        /// Código do município de incidência do imposto.
+        /// Código IBGE do município de incidência do ISSQN (quando aplicável).
         /// </summary>
-        [XmlElement("cLocIncid", Namespace = Nfse.Ns)]
-        public long CLocIncid { get; set; }
+        [XmlElement("cLocIncid")]
+        public int CLocIncid { get; set; }
 
         /// <summary>
-        /// Descrição do município de incidência.
+        /// Descrição do município de incidência do ISSQN (quando aplicável).
         /// </summary>
-        [XmlElement("xLocIncid", Namespace = Nfse.Ns)]
+        [XmlElement("xLocIncid")]
         public string XLocIncid { get; set; }
 
         /// <summary>
-        /// Tributação nacional.
+        /// Descrição do código de tributação nacional.
         /// </summary>
-        [XmlElement("xTribNac", Namespace = Nfse.Ns)]
+        [XmlElement("xTribNac")]
         public string XTribNac { get; set; }
 
         /// <summary>
-        /// Tributação municipal.
+        /// Descrição do código de tributação municipal.
         /// </summary>
-        [XmlElement("xTribMun", Namespace = Nfse.Ns)]
+        [XmlElement("xTribMun")]
         public string XTribMun { get; set; }
 
         /// <summary>
-        /// Nomenclatura Brasileira de Serviços.
+        /// Descrição do código NBS.
         /// </summary>
-        [XmlElement("xNBS", Namespace = Nfse.Ns)]
+        [XmlElement("xNBS")]
         public string XNBS { get; set; }
 
         /// <summary>
-        /// Versão do aplicativo que gerou a NFS-e.
+        /// Versão do aplicativo emissor.
         /// </summary>
-        [XmlElement("verAplic", Namespace = Nfse.Ns)]
+        [XmlElement("verAplic")]
         public string VerAplic { get; set; }
 
         /// <summary>
-        /// Ambiente de geração: 1=Produção, 2=Homologação.
+        /// Ambiente gerador da NFS-e.
         /// </summary>
-        [XmlElement("ambGer", Namespace = Nfse.Ns)]
-        public int AmbGer { get; set; }
+        [XmlElement("ambGer")]
+        public TipoAmbiente AmbGer { get; set; }
 
         /// <summary>
-        /// Tipo de emissão: 1=Normal.
+        /// Tipo de emissão da NFS-e.
         /// </summary>
-        [XmlElement("tpEmis", Namespace = Nfse.Ns)]
+        [XmlElement("tpEmis")]
         public int TpEmis { get; set; }
 
         /// <summary>
         /// Processo de emissão: 1=Aplicativo do contribuinte.
         /// </summary>
-        [XmlElement("procEmi", Namespace = Nfse.Ns)]
+        [XmlElement("procEmi")]
         public int ProcEmi { get; set; }
 
         /// <summary>
-        /// Código do status da NFS-e.
+        /// Situação (status) da NFS-e.
         /// </summary>
-        [XmlElement("cStat", Namespace = Nfse.Ns)]
+        [XmlElement("cStat")]
         public int CStat { get; set; }
 
         /// <summary>
@@ -148,7 +167,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public DateTimeOffset DhProc { get; set; }
 #endif
 
-        [XmlElement("dhProc", Namespace = Nfse.Ns)]
+        [XmlElement("dhProc")]
         public string DhProcField
         {
             get => DhProc.ToString("yyyy-MM-ddTHH:mm:sszzz");
@@ -160,34 +179,156 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         }
 
         /// <summary>
-        /// Número do Documento Fiscal de Serviços Eletrônico.
+        /// Número do DFS-e.
         /// </summary>
-        [XmlElement("nDFSe", Namespace = Nfse.Ns)]
-        public long NDFSe { get; set; }
+        [XmlElement("nDFSe")]
+        public string NDFSe { get; set; }
 
         /// <summary>
-        /// Dados do emitente.
+        /// Dados do emitente da NFS-e.
         /// </summary>
-        [XmlElement("emit", Namespace = Nfse.Ns)]
-        public EmitNFSe Emit { get; set; }
+        [XmlElement("emit")]
+        public Emit Emit { get; set; }
 
         /// <summary>
-        /// Valores da NFS-e.
+        /// Valores/tributos da NFS-e.
         /// </summary>
-        [XmlElement("valores", Namespace = Nfse.Ns)]
-        public ValoresNFSe Valores { get; set; }
+        [XmlElement("valores")]
+        public Valores Valores { get; set; }
 
         /// <summary>
-        /// Informações do IBS/CBS (Reforma Tributária).
+        /// Informações IBS/CBS (quando aplicável).
         /// </summary>
-        [XmlElement("IBSCBS", Namespace = Nfse.Ns)]
-        public IBSCBSNFSe IBSCBS { get; set; }
+        [XmlElement("IBSCBS")]
+        public IBSCBS IBSCBS { get; set; }
 
         /// <summary>
-        /// DPS que gerou a NFS-e.
+        /// DPS vinculado (conteúdo do DPS utilizado na geração da NFS-e).
         /// </summary>
-        [XmlElement("DPS", Namespace = Nfse.Ns)]
-        public DPS DPS { get; set; }
+        [XmlElement("DPS")]
+        public Unimake.Business.DFe.Xml.NFSe.NACIONAL.DPS DPS { get; set; } = new DPS();
+
+        #region Gerar ID
+
+        private void ValidarDadosParaGerarId()
+        {
+            if (DPS?.InfDPS == null)
+            {
+                throw new Exception("Informe o DPS (DPS.InfDPS) antes de gerar o Id da NFS-e.");
+            }
+
+            if (DPS.InfDPS.CLocEmi == 0)
+            {
+                throw new Exception("Informe o código IBGE do município de emissão (DPS.InfDPS.CLocEmi) antes de gerar o Id da NFS-e.");
+            }
+
+            if (Emit == null)
+            {
+                throw new Exception("Informe o emitente (emit) antes de gerar o Id da NFS-e.");
+            }
+
+            if (string.IsNullOrWhiteSpace(Emit.CNPJ) && string.IsNullOrWhiteSpace(Emit.CPF))
+            {
+                throw new Exception("Informe o CNPJ ou CPF do emitente (emit.CNPJ/emit.CPF) antes de gerar o Id da NFS-e.");
+            }
+
+            if (string.IsNullOrWhiteSpace(NNFSe))
+            {
+                throw new Exception("Informe o número da NFS-e (nNFSe) antes de gerar o Id da NFS-e.");
+            }
+
+            // DhProc é obrigatório no schema, mas, por segurança, valida aqui para geração do AnoMes.
+#if INTEROP
+            if (DhProc == default)
+#else
+            if (DhProc == default)
+#endif
+            {
+                throw new Exception("Informe a data/hora de processamento (dhProc) antes de gerar o Id da NFS-e.");
+            }
+        }
+
+        /// <summary>
+        /// Monta o Id da NFS-e no padrão: "NFS" + cMun(7) + ambGer(1) + tpInsc(1) + inscrFed(14) + nNFSe(13) + anoMes(4) + cNum(9) + DV(1)
+        /// </summary>
+        private string MontarIdNFSe()
+        {
+            ValidarDadosParaGerarId();
+
+            // Partes (49 dígitos numéricos)
+            var cMun = DPS.InfDPS.CLocEmi.ToString("0000000");
+
+            var ambGer = ((int)AmbGer).ToString(CultureInfo.InvariantCulture);
+
+            var tpInsc = !string.IsNullOrWhiteSpace(Emit.CPF) ? "1" : "2";
+
+            var inscrFed = !string.IsNullOrWhiteSpace(Emit.CPF)
+                ? Emit.CPF.PadLeft(14, '0')
+                : Emit.CNPJ.PadLeft(14, '0');
+
+            var nNFSe = NNFSe.PadLeft(13, '0');
+
+            var anoMes = $"{(DhProc.Year % 100):00}{DhProc.Month:00}";
+
+            // Código numérico (9 dígitos) – gerado uma única vez por instância
+            if (string.IsNullOrWhiteSpace(CNum))
+            {
+                // 9 dígitos (1..999999999)
+                var rnd = new Random();
+                CNum = rnd.Next(1, 1000000000).ToString("000000000");
+            }
+
+            var corpo = cMun + ambGer + tpInsc + inscrFed + nNFSe + anoMes + CNum;
+
+            var dv = CalcularDVModulo11(corpo);
+            return "NFS" + corpo + dv.ToString(CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Código numérico (9 dígitos) usado na composição do Id.
+        /// É gerado automaticamente caso não seja informado.
+        /// </summary>
+        [XmlIgnore]
+        public string CNum { get; set; }
+
+        private static int CalcularDVModulo11(string chaveNumerica)
+        {
+            if (string.IsNullOrWhiteSpace(chaveNumerica))
+            {
+                throw new ArgumentException("Chave numérica inválida para cálculo do DV.", nameof(chaveNumerica));
+            }
+
+            // Módulo 11 (pesos 2..9 da direita para a esquerda)
+            var soma = 0;
+            var peso = 2;
+
+            for (var i = chaveNumerica.Length - 1; i >= 0; i--)
+            {
+                var c = chaveNumerica[i];
+                if (c < '0' || c > '9')
+                {
+                    throw new ArgumentException("A chave deve conter apenas dígitos.", nameof(chaveNumerica));
+                }
+
+                soma += (c - '0') * peso;
+
+                peso++;
+                if (peso > 9)
+                {
+                    peso = 2;
+                }
+            }
+
+            var mod = soma % 11;
+            var dv = 11 - mod;
+            if (dv == 10 || dv == 11)
+            {
+                dv = 0;
+            }
+            return dv;
+        }
+
+        #endregion Gerar ID
 
         #region Should Serialize
         public bool ShouldSerializeCLocIncid() => CLocIncid > 0;
@@ -198,65 +339,61 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #endregion
     }
 
-    #endregion
-
-    #region Emitente
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.EmitNFSe")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.Emit")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("emit", Namespace = Nfse.Ns)]
-    public class EmitNFSe
+    public class Emit
     {
         /// <summary>
         /// CNPJ do emitente.
         /// </summary>
-        [XmlElement("CNPJ", Namespace = Nfse.Ns)]
+        [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
         /// <summary>
         /// CPF do emitente.
         /// </summary>
-        [XmlElement("CPF", Namespace = Nfse.Ns)]
+        [XmlElement("CPF")]
         public string CPF { get; set; }
 
         /// <summary>
         /// Inscrição Municipal.
         /// </summary>
-        [XmlElement("IM", Namespace = Nfse.Ns)]
+        [XmlElement("IM")]
         public string IM { get; set; }
 
         /// <summary>
         /// Razão social ou nome empresarial.
         /// </summary>
-        [XmlElement("xNome", Namespace = Nfse.Ns)]
+        [XmlElement("xNome")]
         public string XNome { get; set; }
 
         /// <summary>
         /// Nome fantasia.
         /// </summary>
-        [XmlElement("xFant", Namespace = Nfse.Ns)]
+        [XmlElement("xFant")]
         public string XFant { get; set; }
 
         /// <summary>
         /// Endereço nacional do emitente.
         /// </summary>
-        [XmlElement("enderNac", Namespace = Nfse.Ns)]
+        [XmlElement("enderNac")]
         public EnderNac EnderNac { get; set; }
 
         /// <summary>
         /// Telefone.
         /// </summary>
-        [XmlElement("fone", Namespace = Nfse.Ns)]
+        [XmlElement("fone")]
         public string Fone { get; set; }
 
         /// <summary>
         /// E-mail.
         /// </summary>
-        [XmlElement("email", Namespace = Nfse.Ns)]
+        [XmlElement("email")]
         public string Email { get; set; }
 
         #region Should Serialize
@@ -266,58 +403,78 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public bool ShouldSerializeXFant() => !string.IsNullOrWhiteSpace(XFant);
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
-        #endregion
+
+        /// <summary>
+        /// Valida se foi informado exatamente um documento (CNPJ ou CPF).
+        /// </summary>
+        public void ValidarDocUnico()
+        {
+            var count = 0;
+            if (!string.IsNullOrWhiteSpace(CNPJ))
+            {
+                count++;
+            }
+            if (!string.IsNullOrWhiteSpace(CPF))
+            {
+                count++;
+            }
+            if (count != 1)
+            {
+                throw new Exception("Emitente: informe exatamente um documento: CNPJ ou CPF.");
+            }
+        }
+
+        #endregion Should Serialize
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.EnderNac")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.EnderNac")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("enderNac", Namespace = Nfse.Ns)]
     public class EnderNac
     {
         /// <summary>
         /// Logradouro.
         /// </summary>
-        [XmlElement("xLgr", Namespace = Nfse.Ns)]
+        [XmlElement("xLgr")]
         public string XLgr { get; set; }
 
         /// <summary>
         /// Número.
         /// </summary>
-        [XmlElement("nro", Namespace = Nfse.Ns)]
+        [XmlElement("nro")]
         public string Nro { get; set; }
 
         /// <summary>
         /// Complemento.
         /// </summary>
-        [XmlElement("xCpl", Namespace = Nfse.Ns)]
+        [XmlElement("xCpl")]
         public string XCpl { get; set; }
 
         /// <summary>
         /// Bairro.
         /// </summary>
-        [XmlElement("xBairro", Namespace = Nfse.Ns)]
+        [XmlElement("xBairro")]
         public string XBairro { get; set; }
 
         /// <summary>
         /// Código do município (IBGE).
         /// </summary>
-        [XmlElement("cMun", Namespace = Nfse.Ns)]
+        [XmlElement("cMun")]
         public long CMun { get; set; }
 
         /// <summary>
         /// Sigla da UF.
         /// </summary>
-        [XmlElement("UF", Namespace = Nfse.Ns)]
+        [XmlElement("UF")]
         public string UF { get; set; }
 
         /// <summary>
         /// CEP.
         /// </summary>
-        [XmlElement("CEP", Namespace = Nfse.Ns)]
+        [XmlElement("CEP")]
         public string CEP { get; set; }
 
         #region Should Serialize
@@ -325,17 +482,14 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #endregion
     }
 
-    #endregion
-
-    #region Valores
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ValoresNFSe")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.Valores")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    public class ValoresNFSe
+    public class Valores
     {
         [XmlIgnore]
         public double VCalcDR { get; set; }
@@ -343,7 +497,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor de dedução/redução da BC do ISSQN.
         /// </summary>
-        [XmlElement("vCalcDR", Namespace = Nfse.Ns)]
+        [XmlElement("vCalcDR")]
         public string VCalcDRField
         {
             get => VCalcDR.ToString("F2", CultureInfo.InvariantCulture);
@@ -353,7 +507,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Tipo Benefício Municipal.
         /// </summary>
-        [XmlElement("tpBM", Namespace = Nfse.Ns)]
+        [XmlElement("tpBM")]
         public int TpBM { get; set; }
 
         [XmlIgnore]
@@ -362,7 +516,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor do cálculo do benefício municipal.
         /// </summary>
-        [XmlElement("vCalcBM", Namespace = Nfse.Ns)]
+        [XmlElement("vCalcBM")]
         public string VCalcBMField
         {
             get => VCalcBM.ToString("F2", CultureInfo.InvariantCulture);
@@ -375,7 +529,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Base de cálculo.
         /// </summary>
-        [XmlElement("vBC", Namespace = Nfse.Ns)]
+        [XmlElement("vBC")]
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
@@ -388,7 +542,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Alíquota aplicada.
         /// </summary>
-        [XmlElement("pAliqAplic", Namespace = Nfse.Ns)]
+        [XmlElement("pAliqAplic")]
         public string PAliqAplicField
         {
             get => PAliqAplic.ToString("F2", CultureInfo.InvariantCulture);
@@ -401,7 +555,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor do ISSQN.
         /// </summary>
-        [XmlElement("vISSQN", Namespace = Nfse.Ns)]
+        [XmlElement("vISSQN")]
         public string VISSQNField
         {
             get => VISSQN.ToString("F2", CultureInfo.InvariantCulture);
@@ -414,7 +568,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor total de retenções.
         /// </summary>
-        [XmlElement("vTotalRet", Namespace = Nfse.Ns)]
+        [XmlElement("vTotalRet")]
         public string VTotalRetField
         {
             get => VTotalRet.ToString("F2", CultureInfo.InvariantCulture);
@@ -427,7 +581,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor líquido da NFS-e.
         /// </summary>
-        [XmlElement("vLiq", Namespace = Nfse.Ns)]
+        [XmlElement("vLiq")]
         public string VLiqField
         {
             get => VLiq.ToString("F2", CultureInfo.InvariantCulture);
@@ -437,7 +591,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Outras informações (uso da Administração Tributária Municipal).
         /// </summary>
-        [XmlElement("xOutInf", Namespace = Nfse.Ns)]
+        [XmlElement("xOutInf")]
         public string XOutInf { get; set; }
 
         #region Should Serialize
@@ -452,28 +606,25 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #endregion
     }
 
-    #endregion
-
-    #region IBSCBS
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBSNFSe")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.IBSCBS")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    public class IBSCBSNFSe
+    public class IBSCBS
     {
         /// <summary>
         /// Código da localidade de incidência.
         /// </summary>
-        [XmlElement("cLocalidadeIncid", Namespace = Nfse.Ns)]
+        [XmlElement("cLocalidadeIncid")]
         public long CLocalidadeIncid { get; set; }
 
         /// <summary>
         /// Descrição da localidade de incidência.
         /// </summary>
-        [XmlElement("xLocalidadeIncid", Namespace = Nfse.Ns)]
+        [XmlElement("xLocalidadeIncid")]
         public string XLocalidadeIncid { get; set; }
 
         [XmlIgnore]
@@ -482,7 +633,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Percentual de redução em compra governamental.
         /// </summary>
-        [XmlElement("pRedutor", Namespace = Nfse.Ns)]
+        [XmlElement("pRedutor")]
         public string PRedutorField
         {
             get => PRedutor.ToString("F2", CultureInfo.InvariantCulture);
@@ -492,23 +643,22 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valores calculados de IBS/CBS.
         /// </summary>
-        [XmlElement("valores", Namespace = Nfse.Ns)]
+        [XmlElement("valores")]
         public ValoresIBSCBS Valores { get; set; }
 
         /// <summary>
         /// Totalizadores de IBS/CBS.
         /// </summary>
-        [XmlElement("totCIBS", Namespace = Nfse.Ns)]
+        [XmlElement("totCIBS")]
         public TotCIBS TotCIBS { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ValoresIBSCBS")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.ValoresIBSCBS")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("valores", Namespace = Nfse.Ns)]
     public class ValoresIBSCBS
     {
         [XmlIgnore]
@@ -517,7 +667,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Base de cálculo.
         /// </summary>
-        [XmlElement("vBC", Namespace = Nfse.Ns)]
+        [XmlElement("vBC")]
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
@@ -530,7 +680,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor de reembolso/repasse/ressarcimento.
         /// </summary>
-        [XmlElement("vCalcReeRepRes", Namespace = Nfse.Ns)]
+        [XmlElement("vCalcReeRepRes")]
         public string VCalcReeRepResField
         {
             get => VCalcReeRepRes.ToString("F2", CultureInfo.InvariantCulture);
@@ -540,20 +690,20 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valores da UF.
         /// </summary>
-        [XmlElement("uf", Namespace = Nfse.Ns)]
-        public IBSCBSUF UF { get; set; }
+        [XmlElement("uf")]
+        public UF UF { get; set; }
 
         /// <summary>
         /// Valores do município.
         /// </summary>
-        [XmlElement("mun", Namespace = Nfse.Ns)]
-        public IBSCBSMun Mun { get; set; }
+        [XmlElement("mun")]
+        public Mun Mun { get; set; }
 
         /// <summary>
         /// Valores federais.
         /// </summary>
-        [XmlElement("fed", Namespace = Nfse.Ns)]
-        public IBSCBSFed Fed { get; set; }
+        [XmlElement("fed")]
+        public Fed Fed { get; set; }
 
         #region Should Serialize
         public bool ShouldSerializeVCalcReeRepResField() => VCalcReeRepRes > 0;
@@ -562,12 +712,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBSUF")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.UF")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("uf", Namespace = Nfse.Ns)]
-    public class IBSCBSUF
+    public class UF
     {
         [XmlIgnore]
         public double PIBSUF { get; set; }
@@ -575,7 +724,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Percentual IBS UF.
         /// </summary>
-        [XmlElement("pIBSUF", Namespace = Nfse.Ns)]
+        [XmlElement("pIBSUF")]
         public string PIBSUFField
         {
             get => PIBSUF.ToString("F2", CultureInfo.InvariantCulture);
@@ -588,7 +737,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Percentual de redução de alíquota UF.
         /// </summary>
-        [XmlElement("pRedAliqUF", Namespace = Nfse.Ns)]
+        [XmlElement("pRedAliqUF")]
         public string PRedAliqUFField
         {
             get => PRedAliqUF.ToString("F2", CultureInfo.InvariantCulture);
@@ -601,7 +750,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Percentual alíquota efetiva UF.
         /// </summary>
-        [XmlElement("pAliqEfetUF", Namespace = Nfse.Ns)]
+        [XmlElement("pAliqEfetUF")]
         public string PAliqEfetUFField
         {
             get => PAliqEfetUF.ToString("F2", CultureInfo.InvariantCulture);
@@ -615,12 +764,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBSMun")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.Mun")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("mun", Namespace = Nfse.Ns)]
-    public class IBSCBSMun
+    public class Mun
     {
         [XmlIgnore]
         public double PIBSMun { get; set; }
@@ -628,7 +776,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Percentual IBS Municipal.
         /// </summary>
-        [XmlElement("pIBSMun", Namespace = Nfse.Ns)]
+        [XmlElement("pIBSMun")]
         public string PIBSMunField
         {
             get => PIBSMun.ToString("F2", CultureInfo.InvariantCulture);
@@ -641,7 +789,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Percentual de redução de alíquota municipal.
         /// </summary>
-        [XmlElement("pRedAliqMun", Namespace = Nfse.Ns)]
+        [XmlElement("pRedAliqMun")]
         public string PRedAliqMunField
         {
             get => PRedAliqMun.ToString("F2", CultureInfo.InvariantCulture);
@@ -654,7 +802,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Percentual alíquota efetiva municipal.
         /// </summary>
-        [XmlElement("pAliqEfetMun", Namespace = Nfse.Ns)]
+        [XmlElement("pAliqEfetMun")]
         public string PAliqEfetMunField
         {
             get => PAliqEfetMun.ToString("F2", CultureInfo.InvariantCulture);
@@ -668,12 +816,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBSFed")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.Fed")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("fed", Namespace = Nfse.Ns)]
-    public class IBSCBSFed
+    public class Fed
     {
         [XmlIgnore]
         public double PCBS { get; set; }
@@ -681,7 +828,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Percentual CBS.
         /// </summary>
-        [XmlElement("pCBS", Namespace = Nfse.Ns)]
+        [XmlElement("pCBS")]
         public string PCBSField
         {
             get => PCBS.ToString("F2", CultureInfo.InvariantCulture);
@@ -694,7 +841,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Percentual de redução de alíquota CBS.
         /// </summary>
-        [XmlElement("pRedAliqCBS", Namespace = Nfse.Ns)]
+        [XmlElement("pRedAliqCBS")]
         public string PRedAliqCBSField
         {
             get => PRedAliqCBS.ToString("F2", CultureInfo.InvariantCulture);
@@ -707,7 +854,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Percentual alíquota efetiva CBS.
         /// </summary>
-        [XmlElement("pAliqEfetCBS", Namespace = Nfse.Ns)]
+        [XmlElement("pAliqEfetCBS")]
         public string PAliqEfetCBSField
         {
             get => PAliqEfetCBS.ToString("F2", CultureInfo.InvariantCulture);
@@ -719,17 +866,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #endregion
     }
 
-    #endregion
-
-    #region Totalizadores
-
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.TotCIBS")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.TotCIBS")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("totCIBS", Namespace = Nfse.Ns)]
     public class TotCIBS
     {
         [XmlIgnore]
@@ -738,7 +880,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor total da nota fiscal.
         /// </summary>
-        [XmlElement("vTotNF", Namespace = Nfse.Ns)]
+        [XmlElement("vTotNF")]
         public string VTotNFField
         {
             get => VTotNF.ToString("F2", CultureInfo.InvariantCulture);
@@ -748,40 +890,34 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Grupo de totalizadores do IBS.
         /// </summary>
-        [XmlElement("gIBS", Namespace = Nfse.Ns)]
+        [XmlElement("gIBS")]
         public GIBS GIBS { get; set; }
 
         /// <summary>
         /// Grupo de totalizadores do CBS.
         /// </summary>
-        [XmlElement("gCBS", Namespace = Nfse.Ns)]
+        [XmlElement("gCBS")]
         public GCBS GCBS { get; set; }
 
         /// <summary>
         /// Grupo de tributação regular (opcional).
         /// </summary>
-        [XmlElement("gTribRegular", Namespace = Nfse.Ns)]
-        public GTribRegularRet GTribRegular { get; set; }
+        [XmlElement("gTribRegular")]
+        public GTribRegular GTribRegular { get; set; }
 
         /// <summary>
         /// Grupo de compra governamental (opcional).
         /// </summary>
-        [XmlElement("gTribCompraGov", Namespace = Nfse.Ns)]
+        [XmlElement("gTribCompraGov")]
         public GTribCompraGov GTribCompraGov { get; set; }
-
-        #region Should Serialize
-        public bool ShouldSerializeGTribRegular() => GTribRegular != null;
-        public bool ShouldSerializeGTribCompraGov() => GTribCompraGov != null;
-        #endregion
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GIBS")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.GIBS")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("gIBS", Namespace = Nfse.Ns)]
     public class GIBS
     {
         [XmlIgnore]
@@ -790,7 +926,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor total do IBS.
         /// </summary>
-        [XmlElement("vIBSTot", Namespace = Nfse.Ns)]
+        [XmlElement("vIBSTot")]
         public string VIBSTotField
         {
             get => VIBSTot.ToString("F2", CultureInfo.InvariantCulture);
@@ -800,33 +936,28 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Grupo de crédito presumido IBS (opcional).
         /// </summary>
-        [XmlElement("gIBSCredPres", Namespace = Nfse.Ns)]
+        [XmlElement("gIBSCredPres")]
         public GIBSCredPres GIBSCredPres { get; set; }
 
         /// <summary>
         /// Grupo de totalização IBS UF.
         /// </summary>
-        [XmlElement("gIBSUFTot", Namespace = Nfse.Ns)]
+        [XmlElement("gIBSUFTot")]
         public GIBSUFTot GIBSUFTot { get; set; }
 
         /// <summary>
         /// Grupo de totalização IBS Municipal.
         /// </summary>
-        [XmlElement("gIBSMunTot", Namespace = Nfse.Ns)]
+        [XmlElement("gIBSMunTot")]
         public GIBSMunTot GIBSMunTot { get; set; }
-
-        #region Should Serialize
-        public bool ShouldSerializeGIBSCredPres() => GIBSCredPres != null;
-        #endregion
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GIBSCredPres")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.GIBSCredPres")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("gIBSCredPres", Namespace = Nfse.Ns)]
     public class GIBSCredPres
     {
         [XmlIgnore]
@@ -835,7 +966,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Alíquota do crédito presumido para IBS.
         /// </summary>
-        [XmlElement("pCredPresIBS", Namespace = Nfse.Ns)]
+        [XmlElement("pCredPresIBS")]
         public string PCredPresIBSField
         {
             get => PCredPresIBS.ToString("F2", CultureInfo.InvariantCulture);
@@ -848,7 +979,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor do crédito presumido para IBS.
         /// </summary>
-        [XmlElement("vCredPresIBS", Namespace = Nfse.Ns)]
+        [XmlElement("vCredPresIBS")]
         public string VCredPresIBSField
         {
             get => VCredPresIBS.ToString("F2", CultureInfo.InvariantCulture);
@@ -858,11 +989,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GIBSUFTot")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.GIBSUFTot")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("gIBSUFTot", Namespace = Nfse.Ns)]
     public class GIBSUFTot
     {
         [XmlIgnore]
@@ -871,7 +1001,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor de diferimento UF.
         /// </summary>
-        [XmlElement("vDifUF", Namespace = Nfse.Ns)]
+        [XmlElement("vDifUF")]
         public string VDifUFField
         {
             get => VDifUF.ToString("F2", CultureInfo.InvariantCulture);
@@ -884,7 +1014,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor IBS UF.
         /// </summary>
-        [XmlElement("vIBSUF", Namespace = Nfse.Ns)]
+        [XmlElement("vIBSUF")]
         public string VIBSUFField
         {
             get => VIBSUF.ToString("F2", CultureInfo.InvariantCulture);
@@ -894,11 +1024,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GIBSMunTot")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.GIBSMunTot")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("gIBSMunTot", Namespace = Nfse.Ns)]
     public class GIBSMunTot
     {
         [XmlIgnore]
@@ -907,7 +1036,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor de diferimento Municipal.
         /// </summary>
-        [XmlElement("vDifMun", Namespace = Nfse.Ns)]
+        [XmlElement("vDifMun")]
         public string VDifMunField
         {
             get => VDifMun.ToString("F2", CultureInfo.InvariantCulture);
@@ -920,7 +1049,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor IBS Municipal.
         /// </summary>
-        [XmlElement("vIBSMun", Namespace = Nfse.Ns)]
+        [XmlElement("vIBSMun")]
         public string VIBSMunField
         {
             get => VIBSMun.ToString("F2", CultureInfo.InvariantCulture);
@@ -930,17 +1059,16 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GCBS")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.GCBS")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("gCBS", Namespace = Nfse.Ns)]
     public class GCBS
     {
         /// <summary>
         /// Grupo de crédito presumido CBS (opcional).
         /// </summary>
-        [XmlElement("gCBSCredPres", Namespace = Nfse.Ns)]
+        [XmlElement("gCBSCredPres")]
         public GCBSCredPres GCBSCredPres { get; set; }
 
         [XmlIgnore]
@@ -949,7 +1077,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor de diferimento CBS.
         /// </summary>
-        [XmlElement("vDifCBS", Namespace = Nfse.Ns)]
+        [XmlElement("vDifCBS")]
         public string VDifCBSField
         {
             get => VDifCBS.ToString("F2", CultureInfo.InvariantCulture);
@@ -962,25 +1090,20 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor CBS.
         /// </summary>
-        [XmlElement("vCBS", Namespace = Nfse.Ns)]
+        [XmlElement("vCBS")]
         public string VCBSField
         {
             get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VCBS = Converter.ToDouble(value);
         }
-
-        #region Should Serialize
-        public bool ShouldSerializeGCBSCredPres() => GCBSCredPres != null;
-        #endregion
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GCBSCredPres")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.GCBSCredPres")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("gCBSCredPres", Namespace = Nfse.Ns)]
     public class GCBSCredPres
     {
         [XmlIgnore]
@@ -989,7 +1112,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Alíquota do crédito presumido para CBS.
         /// </summary>
-        [XmlElement("pCredPresCBS", Namespace = Nfse.Ns)]
+        [XmlElement("pCredPresCBS")]
         public string PCredPresCBSField
         {
             get => PCredPresCBS.ToString("F2", CultureInfo.InvariantCulture);
@@ -1002,7 +1125,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor do crédito presumido para CBS.
         /// </summary>
-        [XmlElement("vCredPresCBS", Namespace = Nfse.Ns)]
+        [XmlElement("vCredPresCBS")]
         public string VCredPresCBSField
         {
             get => VCredPresCBS.ToString("F2", CultureInfo.InvariantCulture);
@@ -1012,12 +1135,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GTribRegularRet")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.GTribRegular")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("gTribRegular", Namespace = Nfse.Ns)]
-    public class GTribRegularRet
+    public class GTribRegular
     {
         [XmlIgnore]
         public double PAliqEfeRegIBSUF { get; set; }
@@ -1025,7 +1147,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Alíquota efetiva de tributação regular do IBS estadual.
         /// </summary>
-        [XmlElement("pAliqEfeRegIBSUF", Namespace = Nfse.Ns)]
+        [XmlElement("pAliqEfeRegIBSUF")]
         public string PAliqEfeRegIBSUFField
         {
             get => PAliqEfeRegIBSUF.ToString("F2", CultureInfo.InvariantCulture);
@@ -1038,7 +1160,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor da tributação regular do IBS estadual.
         /// </summary>
-        [XmlElement("vTribRegIBSUF", Namespace = Nfse.Ns)]
+        [XmlElement("vTribRegIBSUF")]
         public string VTribRegIBSUFField
         {
             get => VTribRegIBSUF.ToString("F2", CultureInfo.InvariantCulture);
@@ -1051,7 +1173,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Alíquota efetiva de tributação regular do IBS municipal.
         /// </summary>
-        [XmlElement("pAliqEfeRegIBSMun", Namespace = Nfse.Ns)]
+        [XmlElement("pAliqEfeRegIBSMun")]
         public string PAliqEfeRegIBSMunField
         {
             get => PAliqEfeRegIBSMun.ToString("F2", CultureInfo.InvariantCulture);
@@ -1064,7 +1186,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor da tributação regular do IBS municipal.
         /// </summary>
-        [XmlElement("vTribRegIBSMun", Namespace = Nfse.Ns)]
+        [XmlElement("vTribRegIBSMun")]
         public string VTribRegIBSMunField
         {
             get => VTribRegIBSMun.ToString("F2", CultureInfo.InvariantCulture);
@@ -1077,7 +1199,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Alíquota efetiva de tributação regular da CBS.
         /// </summary>
-        [XmlElement("pAliqEfeRegCBS", Namespace = Nfse.Ns)]
+        [XmlElement("pAliqEfeRegCBS")]
         public string PAliqEfeRegCBSField
         {
             get => PAliqEfeRegCBS.ToString("F2", CultureInfo.InvariantCulture);
@@ -1090,7 +1212,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor da tributação regular da CBS.
         /// </summary>
-        [XmlElement("vTribRegCBS", Namespace = Nfse.Ns)]
+        [XmlElement("vTribRegCBS")]
         public string VTribRegCBSField
         {
             get => VTribRegCBS.ToString("F2", CultureInfo.InvariantCulture);
@@ -1100,11 +1222,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GTribCompraGov")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.NFSeGTribCompraGov")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlType("gTribCompraGov", Namespace = Nfse.Ns)]
     public class GTribCompraGov
     {
         [XmlIgnore]
@@ -1113,7 +1234,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Alíquota do IBS de competência do Estado.
         /// </summary>
-        [XmlElement("pIBSUF", Namespace = Nfse.Ns)]
+        [XmlElement("pIBSUF")]
         public string PIBSUFField
         {
             get => PIBSUF.ToString("F2", CultureInfo.InvariantCulture);
@@ -1126,7 +1247,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor do Tributo do IBS da UF calculado.
         /// </summary>
-        [XmlElement("vIBSUF", Namespace = Nfse.Ns)]
+        [XmlElement("vIBSUF")]
         public string VIBSUFField
         {
             get => VIBSUF.ToString("F2", CultureInfo.InvariantCulture);
@@ -1139,7 +1260,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Alíquota do IBS de competência do Município.
         /// </summary>
-        [XmlElement("pIBSMun", Namespace = Nfse.Ns)]
+        [XmlElement("pIBSMun")]
         public string PIBSMunField
         {
             get => PIBSMun.ToString("F2", CultureInfo.InvariantCulture);
@@ -1152,7 +1273,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor do Tributo do IBS do Município calculado.
         /// </summary>
-        [XmlElement("vIBSMun", Namespace = Nfse.Ns)]
+        [XmlElement("vIBSMun")]
         public string VIBSMunField
         {
             get => VIBSMun.ToString("F2", CultureInfo.InvariantCulture);
@@ -1165,7 +1286,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Alíquota da CBS.
         /// </summary>
-        [XmlElement("pCBS", Namespace = Nfse.Ns)]
+        [XmlElement("pCBS")]
         public string PCBSField
         {
             get => PCBS.ToString("F2", CultureInfo.InvariantCulture);
@@ -1178,13 +1299,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>
         /// Valor do Tributo da CBS calculado.
         /// </summary>
-        [XmlElement("vCBS", Namespace = Nfse.Ns)]
+        [XmlElement("vCBS")]
         public string VCBSField
         {
             get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VCBS = Converter.ToDouble(value);
         }
     }
-
-    #endregion
 }
