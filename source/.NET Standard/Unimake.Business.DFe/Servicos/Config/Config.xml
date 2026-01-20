@@ -3101,10 +3101,4 @@
 		<ArqConfig>JaguariunaSP.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="2603454">
-		<Nome>Camaragibe - PE</Nome>
-		<UF>PE</UF>
-		<ArqConfig>CamaragibePE.xml</ArqConfig>
-		<PadraoNFSe>TINUS</PadraoNFSe>
-	</Arquivo>
 </Configuracoes>

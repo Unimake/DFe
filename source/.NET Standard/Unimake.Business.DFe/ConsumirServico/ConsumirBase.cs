@@ -410,6 +410,12 @@ namespace Unimake.Business.DFe
                             RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
                         }
 
+                        //COPLAN retorna o XML danificado, veja o espaço no nome da tag <ComoNfse  > e veja que ela coloca, no meio do XML um <?xml..., que tbm é um erro. Se estiver desta forma vamos substituir.
+                        if (soap.PadraoNFSe == PadraoNFSe.COPLAN)
+                        {
+                            RetornoServicoString = RetornoServicoString.Replace("<CompNfse  ><?xml version=\"1.0\" encoding=\"UTF-8\"?>", "<CompNfse>");
+                        }
+
                         //Remover quebras de linhas
                         RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
                     }
