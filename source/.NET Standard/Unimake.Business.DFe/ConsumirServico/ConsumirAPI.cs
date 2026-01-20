@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe
@@ -78,7 +79,15 @@ namespace Unimake.Business.DFe
                             retornoXml.InnerXml);
                     }
 
-                    RetornoServicoString = retornoXml.GetElementsByTagName(apiConfig.TagRetorno)[0].OuterXml;
+                    if (apiConfig.PadraoNFSe == PadraoNFSe.PRONIM && string.IsNullOrWhiteSpace(retornoXml.GetElementsByTagName(apiConfig.TagRetorno)[0].InnerXml))
+                    {
+                        RetornoServicoString = retornoXml.OuterXml;
+                    }
+                    else
+                    {
+                        RetornoServicoString = retornoXml.GetElementsByTagName(apiConfig.TagRetorno)[0].OuterXml;
+                    }
+
                 }
                 else
                 {
