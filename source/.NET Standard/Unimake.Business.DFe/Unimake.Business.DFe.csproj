@@ -380,6 +380,7 @@
 		<None Remove="Servicos\Config\NFSe\CaieirasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CajuruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CamacariBA.xml" />
+		<None Remove="Servicos\Config\NFSe\CamaragibePE.xml" />
 		<None Remove="Servicos\Config\NFSe\CambaraPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CamboriuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
@@ -1611,6 +1612,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CamaragibePE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguariunaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TibauRN.xml" />
