@@ -7,7 +7,7 @@
 			<WebEnderecoProducao>https://ws.nfe-cidades.com.br/ws/pocos?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
@@ -26,7 +26,7 @@
 			<WebEnderecoProducao>https://ws.nfe-cidades.com.br/ws/pocos?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
 			<WebEnderecoProducao>https://ws.nfe-cidades.com.br/ws/pocos?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -64,7 +64,7 @@
 			<WebEnderecoProducao>https://ws.nfe-cidades.com.br/ws/pocos?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura>Rps</TagLoteAssinatura>
@@ -83,7 +83,7 @@
 			<WebEnderecoProducao>https://ws.nfe-cidades.com.br/ws/pocos?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRpsRequest><nfseCabecMsg>&lt;ns2:cabecalho xmlns=&quot;http://www.w3.org/2000/09/xmldsig#&quot; xmlns:ns2=&quot;http://www.abrasf.org.br/nfse.xsd&quot; versao=&quot;2.01&quot;&gt;&lt;ns2:versaoDados&gt;2.01&lt;/ns2:versaoDados&gt;&lt;/ns2:cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:ConsultarNfsePorRpsResponse</WebTagRetorno>
@@ -98,7 +98,7 @@
 			<WebEnderecoProducao>https://ws.nfe-cidades.com.br/ws/pocos?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomadoRequest><nfseCabecMsg>&lt;ns2:cabecalho xmlns=&quot;http://www.w3.org/2000/09/xmldsig#&quot; xmlns:ns2=&quot;http://www.abrasf.org.br/nfse.xsd&quot; versao=&quot;2.01&quot;&gt;&lt;ns2:versaoDados&gt;2.01&lt;/ns2:versaoDados&gt;&lt;/ns2:cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarNfseServicoTomadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:ConsultarNfseServicoTomadoResponse</WebTagRetorno>
