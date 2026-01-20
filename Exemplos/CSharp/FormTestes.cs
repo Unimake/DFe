@@ -6373,6 +6373,9 @@ namespace TreinamentoDLL
             var gerarNFSe = new ServicoNFSe.GerarNfse(conteudoXML, configuracao);
             gerarNFSe.Executar();
 
+            //Salvar o XML da NFSe gerado pela Receita Federal autorizado
+            gerarNFSe.GravarXmlDistribuicao(@"d:\testenfe", "nome_arquivo_xml-procnfse.xml", gerarNFSe.RetornoWSString);
+
             MessageBox.Show(gerarNFSe.RetornoWSString);
         }
 
