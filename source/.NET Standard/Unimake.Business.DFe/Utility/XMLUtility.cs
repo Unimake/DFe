@@ -6,15 +6,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Validator;
 using Unimake.Exceptions;
-using Unimake.Business.DFe.Security;
-using System.Security.Cryptography.X509Certificates;
+using static Unimake.Business.DFe.Utility.XMLUtility;
 
 namespace Unimake.Business.DFe.Utility
 {
@@ -107,6 +108,61 @@ namespace Unimake.Business.DFe.Utility
             #endregion Public Properties
         }
 
+        /// <summary>
+        /// Estrutura para recuperar o conteúdo separadamente da chave da NFSe
+        /// </summary>
+#if INTEROP
+        public class ConteudoChaveNFSe
+#else
+        public struct ConteudoChaveNFSe
+#endif
+        {
+            /// <summary>
+            /// Código do município do emissor do documento fiscal
+            /// </summary>
+            public string CodigoMunicipio { get; set; }
+
+            /// <summary>
+            /// Tipo do ambiente gerador do documento fiscal
+            /// </summary>
+            public TipoAmbiente TipoAmbiente { get; set; }
+
+            /// <summary>
+            /// Tipo da inscrição federal do emissor do documento fiscal 1-CPF 2-CNPJ
+            /// </summary>
+            public string TipoInscricaoFederal { get; set; }
+
+            /// <summary>
+            /// Inscrição Federal (CNPJ ou CPF do emissor)
+            /// </summary>
+            public string InscricaoFederal { get; set; }
+
+            /// <summary>
+            /// Numero da NFSe
+            /// </summary>
+            public long NumeroDoctoFiscal { get; set; }
+
+            /// <summary>
+            /// Ano de emissão do documento fiscal
+            /// </summary>
+            public string AnoEmissao { get; set; }
+
+            /// <summary>
+            /// Mês da emissão do documento fiscal
+            /// </summary>
+            public string MesEmissao { get; set; }
+
+            /// <summary>
+            /// Código numérico do documento fiscal
+            /// </summary>
+            public string CodigoNumerico { get; set; }
+
+            /// <summary>
+            /// Digito verificador da chave do documento fiscal
+            /// </summary>
+            public int DigitoVerificador { get; set; }
+        }
+
         #endregion Public Structs
 
         #region Public Classes
@@ -155,6 +211,88 @@ namespace Unimake.Business.DFe.Utility
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Gerar o dígito da chave da NFSe Nacional
+        /// </summary>
+        /// <param name="chave">Chave da NFSe (sem o dígito) que deve ser calculado o dígito verificador.</param>
+        /// <returns>Dígito verificador</returns>
+        public static int CalcularDVChaveNFSe(string chave)
+        {
+            if (chave is null)
+            {
+                throw new ArgumentNullException(nameof(chave));
+            }
+
+            var tamanhoChaveSemDV = 49; // Tamanho da chave de acesso sem o dígito verificador
+            var tipoCNPJ = TipoCNPJ(chave.Substring(10, 14));
+            int soma = 0;
+            int peso = 2;
+
+            if (tipoCNPJ == "N") //CNPJ numérico
+            {                
+                chave = chave.Replace("NFS", "");
+
+                if (chave.Length != tamanhoChaveSemDV)
+                {
+                    throw new Exception($"Erro na composição da chave [{chave}] para obter o dígito verificador.");
+                }
+                else
+                {
+                    for (int i = tamanhoChaveSemDV - 1; i >= 0; i--)
+                    {
+                        char c = chave[i];
+                        if (c < '0' || c > '9')
+                            throw new Exception($"Chave contém caractere inválido na posição {i}: '{c}'.");
+
+                        soma += (c - '0') * peso;
+
+                        peso++;
+                        if (peso > 9) peso = 2;
+                    }
+
+                    int mod = soma % 11;
+                    int dv = 11 - mod;
+
+                    if (dv >= 10) dv = 0; 
+
+                    return dv;
+                }
+            }
+            else if (tipoCNPJ == "A") //CNPJ alfanumérico
+            {
+                // Converte a string em um array de bytes, onde cada byte representa o código ASCII do caractere subtraído de 48
+                var chAcessoBytes = new byte[tamanhoChaveSemDV];
+                for (var i = 0; i < tamanhoChaveSemDV; i++)
+                {
+                    chAcessoBytes[i] = (byte)(chave[i] - 48);
+                }
+
+                for (var i = tamanhoChaveSemDV - 1; i >= 0; i--) // Começa do final para o inicio
+                {
+                    soma += Convert.ToInt32(chAcessoBytes[i]) * peso;
+                    peso++;
+
+                    if (peso > 9)
+                    {
+                        peso = 2;
+                    }
+                }
+
+                var digito = 11 - (soma % 11);
+                if (digito >= 10)
+                {
+                    digito = 0;
+                }
+
+                return digito;
+            }
+            else
+            {
+                throw new Exception("CNPJ ou CPF que compõe a chave é inválido.");
+            }
+        }
+
 
         /// <summary>
         /// Gerar o dígito da chave da NFe, CTe, MDFe ou NFCe
@@ -1245,6 +1383,29 @@ namespace Unimake.Business.DFe.Utility
         public static string MontarChaveNFCom(ref ConteudoChaveDFe conteudoChaveDFe) => MontarChaveNF3e(ref conteudoChaveDFe);
 
         /// <summary>
+        /// Montar chave da NFSe Nacional com base nos valores informados
+        /// </summary>
+        /// <param name="conteudoChaveDFe">Conteúdos da NFSe necessários para montagem da chave</param>
+        /// <returns></returns>
+        public static string MontarChaveNFSe(ref ConteudoChaveNFSe conteudoChaveNFSe)
+        {
+            var chave = (conteudoChaveNFSe.CodigoMunicipio).ToString() +
+                ((int)conteudoChaveNFSe.TipoAmbiente).ToString() +
+                conteudoChaveNFSe.TipoInscricaoFederal + 
+                conteudoChaveNFSe.InscricaoFederal.PadLeft(14, '0') + 
+                conteudoChaveNFSe.NumeroDoctoFiscal.ToString().PadLeft(13, '0') +
+                conteudoChaveNFSe.AnoEmissao +
+                conteudoChaveNFSe.MesEmissao +
+                conteudoChaveNFSe.CodigoNumerico.PadLeft(9, '0');
+
+            conteudoChaveNFSe.DigitoVerificador = XMLUtility.CalcularDVChaveNFSe(chave);
+
+            chave += conteudoChaveNFSe.DigitoVerificador.ToString();
+
+            return chave;
+        }
+
+        /// <summary>
         /// Monta a chave do NF3e com base nos valores informados
         /// </summary>
         /// <param name="conteudoChaveDFe">Conteúdos do NF3e necessários para montagem da chave</param>
@@ -1291,7 +1452,7 @@ namespace Unimake.Business.DFe.Utility
             chave += conteudoChaveDFe.DigitoVerificador.ToString();
 
             return chave;
-        }        
+        }
 
         /// <summary>
         /// Gera um número randômico para ser utilizado no Código Numérico da NFe, NFCe, CTe, MDFe, etc...

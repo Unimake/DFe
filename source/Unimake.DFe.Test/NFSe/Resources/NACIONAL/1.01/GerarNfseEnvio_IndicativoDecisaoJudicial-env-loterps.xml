@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NFSe versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse">
+  <infNFSe Id="NFS41055082299999999999999000000000000126013568215637">
+    <xLocEmi>Cianorte</xLocEmi>
+    <xLocPrestacao>Cianorte</xLocPrestacao>
+    <nNFSe>1</nNFSe>
+    <cLocIncid>4105508</cLocIncid>
+    <xLocIncid>Cianorte</xLocIncid>
+    <xTribNac>Agenciamento, corretagem ou intermediação de bens móveis ou imóveis, não abrangidos em outros itens ou subitens, por quaisquer meios.</xTribNac>
+    <xNBS>Serviços de concessão de crédito não classificados em subposições anteriores</xNBS>
+    <verAplic>EmissorWeb_1.5.0.0</verAplic>
+    <ambGer>2</ambGer>
+    <tpEmis>1</tpEmis>
+    <cStat>102</cStat>
+    <dhProc>2026-01-20T16:38:00-03:00</dhProc>
+    <nDFSe>1</nDFSe>
+    <emit>
+      <CNPJ>99999999999999</CNPJ>
+      <xNome>XXXXXXXXXXXXXXXXXXXXXXXXXXXX LTDA</xNome>
+      <enderNac>
+        <xLgr>XXXXXXXXXXX</xLgr>
+        <nro>1111</nro>
+        <xBairro>ZONA 02</xBairro>
+        <cMun>4105508</cMun>
+        <UF>PR</UF>
+        <CEP>87200000</CEP>
+      </enderNac>
+    </emit>
+    <valores>
+      <vCalcDR>0.00</vCalcDR>
+      <vBC>0.00</vBC>
+      <pAliqAplic>5.00</pAliqAplic>
+      <vISSQN>0.00</vISSQN>
+      <vTotalRet>0.00</vTotalRet>
+      <vLiq>723.90</vLiq>
+    </valores>
+    <DPS versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse">
+      <infDPS Id="DPS410550829999999999999900901000000000000001">
+        <tpAmb>2</tpAmb>
+        <dhEmi>2026-01-20T16:38:00-03:00</dhEmi>
+        <verAplic>EmissorWeb_1.4.0.26</verAplic>
+        <serie>901</serie>
+        <nDPS>1</nDPS>
+        <dCompet>2026-01-20</dCompet>
+        <tpEmit>1</tpEmit>
+        <cLocEmi>4105508</cLocEmi>
+        <prest>
+          <CNPJ>99999999999999</CNPJ>
+          <regTrib>
+            <opSimpNac>1</opSimpNac>
+            <regEspTrib>0</regEspTrib>
+          </regTrib>
+        </prest>
+        <toma>
+          <CNPJ>11111111111111</CNPJ>
+          <xNome>XXXXXXXXXXXXXXXXXXXXXXXX LTDA</xNome>
+          <end>
+            <endNac>
+              <cMun>4115200</cMun>
+              <CEP>87000000</CEP>
+            </endNac>
+            <xLgr>XXXXXXX</xLgr>
+            <nro>1111</nro>
+            <xBairro>XXXXXXXXXXXXX</xBairro>
+          </end>
+        </toma>
+        <serv>
+          <locPrest>
+            <cLocPrestacao>4105508</cLocPrestacao>
+          </locPrest>
+          <cServ>
+            <cTribNac>100501</cTribNac>
+            <xDescServ>SERVIÇOS NÃO TRIBUTADO MH - RECARGA BENEFÍCIO</xDescServ>
+            <cNBS>109013900</cNBS>
+          </cServ>
+        </serv>
+        <valores>
+          <vServPrest>
+            <vServ>723.90</vServ>
+          </vServPrest>
+          <trib>
+            <tribMun>
+              <tribISSQN>1</tribISSQN>
+              <exigSusp>
+                <tpSusp>2</tpSusp>
+                <nProcesso>000000000000000000000011111111</nProcesso>
+              </exigSusp>
+              <tpRetISSQN>1</tpRetISSQN>
+            </tribMun>
+            <tribFed>
+              <piscofins>
+                <CST>08</CST>
+              </piscofins>
+            </tribFed>
+            <totTrib>
+              <vTotTrib>
+                <vTotTribFed>0.00</vTotTribFed>
+                <vTotTribEst>0.00</vTotTribEst>
+                <vTotTribMun>30.76</vTotTribMun>
+              </vTotTrib>
+            </totTrib>
+          </trib>
+        </valores>
+      </infDPS>
+    </DPS>
+  </infNFSe>
+</NFSe>
