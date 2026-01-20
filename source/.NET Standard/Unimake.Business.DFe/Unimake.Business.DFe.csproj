@@ -664,6 +664,7 @@
 		<None Remove="Servicos\Config\NFSe\RibasDoRioPardoMS.xml" />
 		<None Remove="Servicos\Config\NFSe\RibeiraoDasNevesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\RibeiraoPretoSP.xml" />
+		<None Remove="Servicos\Config\NFSe\RioDasOstrasRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDasPedrasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDeJaneiroRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDosCedrosSC.xml" />
@@ -1560,8 +1561,10 @@
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\nfse v2 03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\nfse_municipal_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v2.03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema_v2.03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\nfse v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\VERSATEC\nfse_v202.xsd" />
@@ -1613,6 +1616,7 @@
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguariunaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDasOstrasRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TibauRN.xml" />
 	</ItemGroup>
 
@@ -3919,11 +3923,21 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\nfsetempuri.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\WSNFSE203.IBSCBS.Service.Tinus.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\xmldsig.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\DPS_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\evento_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\nfse v2 03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\nfse_municipal_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\NFSe_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\pedRegEvento_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\tiposComplexos_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\tiposEventos_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\tiposSimples_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v2.03.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema_v2.03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\nfse v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\VERSATEC\nfse_v202.xsd" />
