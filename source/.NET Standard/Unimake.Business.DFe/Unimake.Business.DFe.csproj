@@ -1298,8 +1298,6 @@
 		<None Remove="Xml\Schemas\NFSe\DESENVOLVECIDADE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DIGIFRED\nfse_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DIGIFRED\xmldsig-core-schema_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\DSF\2.03\nfse_v2-03_ima.xsd" />
-		<None Remove="Xml\Schemas\NFSe\DSF\2.03\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DSF\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DSF\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ELOTECH\nfse_v2_03.xsd" />
@@ -2756,8 +2754,6 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DESENVOLVECIDADE\nfsev203.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DESENVOLVECIDADE\xmldsig-core-schema20020212.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\nfse_v2-03_ima.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ELOTECH\nfse_v2_03.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\CNC_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\DPS_v1.01.xsd">
