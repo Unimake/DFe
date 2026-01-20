@@ -3101,10 +3101,4 @@
 		<ArqConfig>JaguariunaSP.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3304524">
-		<Nome>Rio das Ostras - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>RioDasOstrasRJ.xml</ArqConfig>
-		<PadraoNFSe>TIPLAN</PadraoNFSe>
-	</Arquivo>
 </Configuracoes>
