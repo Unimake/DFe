@@ -40,6 +40,8 @@ namespace Unimake.Business.DFe
             return stream;
         }
 
+        //private static Stream GenerateStreamFromString(string s) => new MemoryStream(System.Text.Encoding.UTF8.GetBytes(s ?? ""));
+
         /// <summary>
         /// Extrai recursos (XSD) da DLL para efetuar a validação do XML, resolvendo recursivamente todos os includes/imports.
         /// </summary>
@@ -48,80 +50,175 @@ namespace Unimake.Business.DFe
         /// <returns>Retorna os schemas a serem utilizados na validação</returns>
         private IEnumerable<XmlSchema> ExtractSchemasResource(string arqSchema, Servicos.PadraoNFSe padraoNFSe = Servicos.PadraoNFSe.None)
         {
-            var files = new List<string>();
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            var resources = assembly.GetManifestResourceNames();
-            var arquivoResource = Configuration.NamespaceSchema + arqSchema;
-            var stringXSD = "";
-            using (var stm = assembly.GetManifestResourceStream(arquivoResource))
+            if (string.IsNullOrWhiteSpace(arqSchema))
             {
-                if (stm != null)
-                {
-                    var reader = new StreamReader(stm);
-                    stringXSD = reader.ReadToEnd();
-                    files.Add(stringXSD);
-                }
-                else
-                {
-                    throw new Exception("Arquivo de schema informado (" + arqSchema + ") não foi localizado nos recursos da DLL.");
-                }
+                throw new Exception("Arquivo de schema (XSD) não foi informado.");
             }
 
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var resources = new HashSet<string>(assembly.GetManifestResourceNames(), StringComparer.Ordinal);
+
+            // Ex.: Configuration.NamespaceSchema + "NFSe.NACIONAL.DPS_v1.01.xsd"
+            var arquivoResource = Configuration.NamespaceSchema + arqSchema;
+
+            // Descobre o "nome do arquivo" (parte final) para calcular o base path do resource
             var pesquisar = ".";
             if (padraoNFSe != Servicos.PadraoNFSe.None)
             {
                 pesquisar += padraoNFSe.ToString() + ".";
             }
-            var schemaPrincipal = arqSchema.Substring(arqSchema.IndexOf(pesquisar) + pesquisar.Length);
-            var doc = new XmlDocument();
 
-            var keys = new HashSet<string>
-            {
-                schemaPrincipal
-            };
+            var idx = arqSchema.IndexOf(pesquisar, StringComparison.Ordinal);
+            var schemaPrincipal = (idx >= 0)
+                ? arqSchema.Substring(idx + pesquisar.Length)
+                : arqSchema; // fallback
 
-            XmlAttribute attrib;
-            doc.LoadXml(stringXSD);
+            // Base do resource (prefixo até antes do nome do arquivo)
+            var resourceBase = arquivoResource.EndsWith(schemaPrincipal, StringComparison.Ordinal)
+                ? arquivoResource.Substring(0, arquivoResource.Length - schemaPrincipal.Length)
+                : (Configuration.NamespaceSchema + arqSchema.Substring(0, Math.Max(0, arqSchema.Length - schemaPrincipal.Length)));
 
-            var getAttrib = new Func<XmlAttribute>(() =>
-            {
-                XmlAttribute retorna = null;
-                try
+            // Controle do que já foi carregado (por resourceName) e do que já foi referenciado (por schemaLocation)
+            var loadedResources = new HashSet<string>(StringComparer.Ordinal);
+            var referencedLocations = new HashSet<string>(StringComparer.Ordinal);
+
+            // Fila de processamento: (resourceName, logicalNameQueFechaORoot)
+            var queue = new Queue<(string ResourceName, string LogicalName)>();
+            queue.Enqueue((arquivoResource, schemaPrincipal));
+            referencedLocations.Add(schemaPrincipal);
+
+            var files = new List<string>();
+
+            string ResolveResourceName(string schemaLocation, string currentResourceName, string currentLogicalName)
                 {
-                    retorna = doc.DocumentElement.ChildNodes.OfType<XmlNode>()
-                    .Where(wNode => wNode.Attributes.OfType<XmlAttribute>().Any(wAttrib => wAttrib.Name == "schemaLocation" && !keys.Contains(wAttrib.Value)))
-                    .Select(s => s.Attributes.OfType<XmlAttribute>().First(w => w.Name == "schemaLocation"))
-                    .FirstOrDefault();
+                // Normalizações básicas
+                var loc = (schemaLocation ?? "").Trim();
+                if (string.IsNullOrWhiteSpace(loc))
+                {
+                    return null;
                 }
-                catch { }
 
-                return retorna;
-            });
+                var locNormalized = loc.Replace("\\", "/").TrimStart('.', '/');
+                var fileOnly = Path.GetFileName(locNormalized);
 
-            while ((attrib = getAttrib()) != null)
+                // Base do schema atual (prefixo até antes do nome do arquivo atual)
+                var currentBase = (!string.IsNullOrWhiteSpace(currentLogicalName) &&
+                                   currentResourceName.EndsWith(currentLogicalName, StringComparison.Ordinal))
+                    ? currentResourceName.Substring(0, currentResourceName.Length - currentLogicalName.Length)
+                    : resourceBase;
+
+                // Candidatos (tenta mais de uma forma para suportar schemaLocation com pastas/paths)
+                var candidates = new List<string>
                 {
-                var schemaFile = attrib.Value;
+                    // relativo ao schema atual
+                    currentBase + loc,
+                    currentBase + loc.Replace("/", "."),
+                    currentBase + fileOnly,
+                    
+                    // relativo ao schema principal
+                    resourceBase + loc,
+                    resourceBase + loc.Replace("/", "."),
+                    resourceBase + fileOnly
+                };
 
-                var schemaInterno = arquivoResource.Replace(schemaPrincipal, schemaFile);
-                var conteudoSchemaInterno = "";
-                using (var stm = assembly.GetManifestResourceStream(schemaInterno))
+                foreach (var c in candidates.Distinct(StringComparer.Ordinal))
                 {
-                    if (stm != null)
-                    {
-                    var reader = new StreamReader(stm);
-                        conteudoSchemaInterno = reader.ReadToEnd();
-                        files.Add(conteudoSchemaInterno);
+                    if (resources.Contains(c))
+                {
+                        return c;
+                }
+            }
+
+                // Fallback: procura por "qualquer resource que termine com .<arquivo>"
+                // (ajuda se schemaLocation vier com subpasta mas o resource estiver "achatado")
+                var suffix = "." + fileOnly;
+                var bySuffix = resources.FirstOrDefault(r => r.EndsWith(suffix, StringComparison.Ordinal));
+                if (!string.IsNullOrWhiteSpace(bySuffix))
+            {
+                    return bySuffix;
+                }
+
+                return null;
+            }
+
+            while (queue.Count > 0)
+            {
+                var (resourceName, logicalName) = queue.Dequeue();
+
+                if (loadedResources.Contains(resourceName))
+                {
+                    continue;
+                }
+
+                loadedResources.Add(resourceName);
+
+                // Carregar o XSD do resource
+                string xsdText;
+                using (var stm = assembly.GetManifestResourceStream(resourceName))
+            {
+                    if (stm == null)
+                {
+                        throw new Exception(
+                            "Arquivo de schema referenciado não foi localizado nos recursos da DLL.\r\n" +
+                            "Schema principal: " + arqSchema + "\r\n" +
+                            "Resource buscado: " + resourceName + "\r\n" +
+                            "Referência (schemaLocation): " + logicalName);
+                }
+
+                    using (var reader = new StreamReader(stm))
+                {
+                        xsdText = reader.ReadToEnd();
                     }
                 }
 
-                keys.Add(schemaFile);
+                files.Add(xsdText);
 
-                if (getAttrib() == null)
+                // Parse do XSD para achar includes/imports/redefine
+                var doc = new XmlDocument
+                {
+                    XmlResolver = null
+                };
+                doc.LoadXml(xsdText);
+
+                // Pega schemaLocation em include/import/redefine (filhos diretos do schema)
+                var nodes = doc.SelectNodes(
+                    "/*[local-name()='schema']/*[(local-name()='include' or local-name()='import' or local-name()='redefine') and @schemaLocation]");
+
+                if (nodes == null || nodes.Count == 0)
                     {
-                    if (!string.IsNullOrWhiteSpace(conteudoSchemaInterno))
+                    continue;
+                    }
+
+                foreach (XmlNode node in nodes)
+                {
+                    var schemaLocation = node.Attributes?["schemaLocation"]?.Value?.Trim();
+                    if (string.IsNullOrWhiteSpace(schemaLocation))
+                    {
+                        continue;
+                }
+
+                    // Evita loop por schemaLocation (mesmo texto)
+                    if (!referencedLocations.Add(schemaLocation))
+                    {
+                        continue;
+                    }
+
+                    var resolved = ResolveResourceName(schemaLocation, resourceName, logicalName);
+                    if (string.IsNullOrWhiteSpace(resolved))
                         {
-                        doc.LoadXml(conteudoSchemaInterno);
+                        throw new Exception(
+                            "Arquivo de schema referenciado via schemaLocation não foi localizado nos recursos da DLL.\r\n" +
+                            "Schema principal: " + arqSchema + "\r\n" +
+                            "Schema atual: " + logicalName + "\r\n" +
+                            "schemaLocation: " + schemaLocation + "\r\n" +
+                            "Dica: verifique se este XSD existe como Embedded Resource no mesmo pacote/pasta do schema principal.");
                     }
+
+                    // logicalName aqui a gente passa o "nome do arquivo" que o resource termina
+                    // (ajuda a recalcular currentBase corretamente)
+                    var nextLogical = Path.GetFileName(schemaLocation.Replace("\\", "/"));
+
+                    queue.Enqueue((resolved, nextLogical));
                 }
             }
 
@@ -157,6 +254,9 @@ namespace Unimake.Business.DFe
                 }
                 catch (Exception ex)
                 {
+                    if (!string.IsNullOrWhiteSpace(ErroValidacao))
+                        ErroValidacao += ex.Message;
+                    else
                     ErroValidacao = ex.Message;
                 }
 
@@ -214,37 +314,40 @@ namespace Unimake.Business.DFe
 
             var settings = new XmlReaderSettings
             {
-                ValidationType = ValidationType.Schema
+                ValidationType = ValidationType.Schema,
+                // Não habilitar ProcessSchemaLocation/ProcessInlineSchema para evitar buscar/usar schema do XML.
+                // Não habilitar ReportValidationWarnings, ou gera erro na validação de alguns XMLs de eventos da NFe/NFCe.
+                ValidationFlags = XmlSchemaValidationFlags.ProcessIdentityConstraints,
+                DtdProcessing = DtdProcessing.Prohibit,
+                XmlResolver = null
             };
 
             try
             {
-                var schemas = new XmlSchemaSet();
-                settings.Schemas = schemas;
-
-                if (padraoNFSe == Servicos.PadraoNFSe.NACIONAL)
-                {
-                    settings.XmlResolver = null;
-                }
-                else
-                {
-                    var resolver = new XmlUrlResolver
+                var schemas = new XmlSchemaSet
                     {
-                        Credentials = System.Net.CredentialCache.DefaultCredentials
+                    XmlResolver = null // reforço: schemaSet também não resolve nada externo
                     };
 
-                    settings.XmlResolver = resolver;
-                }
+                settings.Schemas = schemas;
 
-                if (!string.IsNullOrWhiteSpace(targetNS))
-                {
+                //var resolver = new XmlUrlResolver
+                //{
+                //    Credentials = System.Net.CredentialCache.DefaultCredentials
+                //};
+                //settings.XmlResolver = resolver;
+
+                //if (!string.IsNullOrWhiteSpace(targetNS))
+                //{
                     foreach (var schema in ExtractSchemasResource(arqSchema, padraoNFSe))
                     {
                         settings.Schemas.Add(schema);
                     }
-                }
+                //}
 
-                settings.ValidationEventHandler += new ValidationEventHandler(Reader_ValidationEventHandler);
+                schemas.Compile(); //Pegar erros dos schemas aqui para não perder falhas na validação do XML
+
+                settings.ValidationEventHandler += Reader_ValidationEventHandler;
 
                 ValidateXMLAgainstSchema(conteudoXML.OuterXml, settings);
             }

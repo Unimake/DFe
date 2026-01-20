@@ -1259,8 +1259,6 @@
 		<None Remove="Xml\Schemas\NFe\retEventoEPEC_v0.01.xsd" />
 		<None Remove="Xml\Schemas\NFe\retEventoInsucessoNFe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\nfe_v4.00.xsd" />
-		<None Remove="Xml\Schemas\NFSe\ABACO\2.04\schema nfse v2-04.xsd" />
-		<None Remove="Xml\Schemas\NFSe\ABACO\2.04\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\nfse v2 03.xsd" />
@@ -2710,8 +2708,8 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoCancInsucessoNFe_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoEConf_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoInsucessoNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\2.04\schema nfse v2-04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\2.04\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\nfse_v2-04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\nfse v2 03.xsd" />

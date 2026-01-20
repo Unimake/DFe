@@ -7,7 +7,7 @@
 			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_recepcionarloterps?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_RECEPCIONARLOTERPS.Execute</WebActionHomologacao>
 			<WebActionProducao>http://www.e-nfs.com.braction/AA24_RECEPCIONARLOTERPS.Execute</WebActionProducao>
-			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
@@ -26,7 +26,7 @@
 			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_recepcionarloterpssincrono?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_RECEPCIONARLOTERPSSINCRONO.Execute</WebActionHomologacao>
 			<WebActionProducao>http://www.e-nfs.com.braction/AA24_RECEPCIONARLOTERPSSINCRONO.Execute</WebActionProducao>
-			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
@@ -45,7 +45,7 @@
 			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_gerarnfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_GERARNFSE.Execute</WebActionHomologacao>
 			<WebActionProducao>http://www.e-nfs.com.braction/AA24_GERARNFSE.Execute</WebActionProducao>
-			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -64,7 +64,7 @@
 			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_substituirnfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_SUBSTITUIRNFSE.Execute</WebActionHomologacao>
 			<WebActionProducao>http://www.e-nfs.com.braction/AA24_SUBSTITUIRNFSE.Execute</WebActionProducao>
-			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -85,7 +85,7 @@
 			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_consultarloterps?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_CONSULTARLOTERPS.Execute</WebActionHomologacao>
 			<WebActionProducao>http://www.e-nfs.com.braction/AA24_CONSULTARLOTERPS.Execute</WebActionProducao>
-			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -104,7 +104,7 @@
 			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_consultarnfseporrps?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_CONSULTARNFSEPORRPS.Execute</WebActionHomologacao>
 			<WebActionProducao>http://www.e-nfs.com.braction/AA24_CONSULTARNFSEPORRPS.Execute</WebActionProducao>
-			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -123,7 +123,7 @@
 			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_consultarnfsefaixa?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_CONSULTARNFSEFAIXA.Execute</WebActionHomologacao>
 			<WebActionProducao>http://www.e-nfs.com.braction/AA24_CONSULTARNFSEFAIXA.Execute</WebActionProducao>
-			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
