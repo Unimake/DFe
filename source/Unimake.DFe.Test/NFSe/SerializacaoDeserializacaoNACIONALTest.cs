@@ -582,7 +582,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
         }
 
         /// <summary>
-        /// Testa a deserialização do XML de retorno da NFSe (versão 1.01)
+        /// Testa a desserialização do XML de retorno da NFSe (versão 1.01)
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
@@ -597,9 +597,8 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var docFixture = new XmlDocument();
             docFixture.Load(caminhoXml);
 
-            // Act - Deserialização
-            var nfse = new Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe().LerXML<Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe>(docFixture);
-
+            // Act - Desserialização
+            var nfse = new Business.DFe.Xml.NFSe.NACIONAL.NFSe.NFSe().LerXML<Business.DFe.Xml.NFSe.NACIONAL.NFSe.NFSe>(docFixture);
 
             // Assert - Validações da estrutura principal
             Assert.NotNull(nfse);
@@ -612,18 +611,18 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             Assert.Equal("NFS43149022226263261000198000000000000225120787292537", infNFSe.Id);
             Assert.Equal("Porto Alegre", infNFSe.XLocEmi);
             Assert.Equal("Porto Alegre", infNFSe.XLocPrestacao);
-            Assert.Equal(2, infNFSe.NNFSe);
+            Assert.Equal("2", infNFSe.NNFSe);
             Assert.Equal(4314902, infNFSe.CLocIncid);
             Assert.Equal("Porto Alegre", infNFSe.XLocIncid);
             Assert.Equal("Outros serviços de transporte de natureza municipal.", infNFSe.XTribNac);
             Assert.Equal("Serviços de transporte rodoviário de cargas sólidas a granel", infNFSe.XNBS);
             Assert.Equal("SefinNac_Pre_1.4.0", infNFSe.VerAplic);
-            Assert.Equal(2, infNFSe.AmbGer); // Homologação
+            Assert.Equal(2, (int)infNFSe.AmbGer); // Homologação
             Assert.Equal(1, infNFSe.TpEmis); // Normal
             Assert.Equal(1, infNFSe.ProcEmi); // Aplicativo do contribuinte
             Assert.Equal(100, infNFSe.CStat); // Autorizada
             Assert.NotEqual(default(DateTimeOffset), infNFSe.DhProc);
-            Assert.Equal(151689, infNFSe.NDFSe);
+            Assert.Equal("151689", infNFSe.NDFSe);
 
             // Validações do Emitente
             var emit = infNFSe.Emit;

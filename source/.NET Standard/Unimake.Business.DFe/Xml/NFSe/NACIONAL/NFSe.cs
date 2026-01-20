@@ -193,20 +193,20 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// <summary>
         /// Valores/tributos da NFS-e.
         /// </summary>
-        [XmlElement("valores")]
-        public Valores Valores { get; set; }
+        [XmlElement("valores", Type = typeof(ValoresInfNFSe))]
+        public ValoresInfNFSe Valores { get; set; }
 
         /// <summary>
         /// Informações IBS/CBS (quando aplicável).
         /// </summary>
-        [XmlElement("IBSCBS")]
-        public IBSCBS IBSCBS { get; set; }
+        [XmlElement("IBSCBS", Type = typeof(IBSCBSNFSe))]
+        public IBSCBSNFSe IBSCBS { get; set; }
 
         /// <summary>
         /// DPS vinculado (conteúdo do DPS utilizado na geração da NFS-e).
         /// </summary>
         [XmlElement("DPS")]
-        public Unimake.Business.DFe.Xml.NFSe.NACIONAL.DPS DPS { get; set; } = new DPS();
+        public DPS DPS { get; set; } = new DPS();
 
         #region Gerar ID
 
@@ -485,11 +485,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.Valores")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.ValoresInfNFSe")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    public class Valores
+    public class ValoresInfNFSe
     {
         [XmlIgnore]
         public double VCalcDR { get; set; }
@@ -609,11 +609,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.IBSCBS")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.IBSCBSNFSe")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    public class IBSCBS
+    public class IBSCBSNFSe
     {
         /// <summary>
         /// Código da localidade de incidência.
@@ -903,7 +903,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// Grupo de tributação regular (opcional).
         /// </summary>
         [XmlElement("gTribRegular")]
-        public GTribRegular GTribRegular { get; set; }
+        public GTribRegularTotCIBS GTribRegular { get; set; }
 
         /// <summary>
         /// Grupo de compra governamental (opcional).
@@ -1135,11 +1135,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.GTribRegular")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.GTribRegularTotCIBS")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    public class GTribRegular
+    public class GTribRegularTotCIBS
     {
         [XmlIgnore]
         public double PAliqEfeRegIBSUF { get; set; }
