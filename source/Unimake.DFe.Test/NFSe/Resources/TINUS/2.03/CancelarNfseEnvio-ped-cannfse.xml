@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CancelarNfseEnvio xmlns="http://www.tinus.com.br">
-	<Pedido versao="2.03">
-		<InfPedidoCancelamento id="ID49">
+<CancelarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Pedido>
+		<InfPedidoCancelamento Id="Id1">
 			<IdentificacaoNfse>
-				<Numero>49</Numero>
-				<Cnpj>99999999999999</Cnpj>
-				<InscricaoMunicipal>9999999</InscricaoMunicipal>
+				<Numero>0</Numero>
+				<CpfCnpj>
+					<Cpf>Cpf_______1</Cpf>
+					<Cnpj>Cnpj_________1</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>InscricaoMunic1</InscricaoMunicipal>
 				<CodigoMunicipio>9999999</CodigoMunicipio>
 			</IdentificacaoNfse>
 			<CodigoCancelamento>1</CodigoCancelamento>
+			<ADNCodMotivo>1</ADNCodMotivo>
+			<ADNMotivo>Erro identificado na validacao do XML enviado ao servidor</ADNMotivo>
 		</InfPedidoCancelamento>
 	</Pedido>
 </CancelarNfseEnvio>
