@@ -2,7 +2,7 @@
 <GerarNfseEnvio xmlns="http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd">
   <Rps>
     <InfDeclaracaoPrestacaoServico Id="Id1">
-      <Rps Id="Id1">
+      <Rps Id="rps1">
         <IdentificacaoRps>
           <Numero>0</Numero>
           <Serie>Seri1</Serie>

@@ -257,7 +257,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDps</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd.xsd</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura>DPS</TagAssinatura>
 			<TagAtributoID>infDPS</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteDpsEnvio</TagLoteAssinatura>
