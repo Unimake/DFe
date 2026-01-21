@@ -1609,6 +1609,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AraruamaSP.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CamaragibePE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguariunaSP.xml" />

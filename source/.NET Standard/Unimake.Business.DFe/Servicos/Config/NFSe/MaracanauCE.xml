@@ -45,7 +45,7 @@
 			<WebEnderecoProducao>https://speedgov.com.br/wsmar/Nfes?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>consultar_lote_rps_envio_v1.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>p:ConsultarLoteRpsEnvio</TagAssinatura>
 			<TagAtributoID>p:Protocolo</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
