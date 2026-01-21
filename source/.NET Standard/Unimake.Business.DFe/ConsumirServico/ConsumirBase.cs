@@ -405,15 +405,12 @@ namespace Unimake.Business.DFe
                         RetornoServicoString = retornoXml.InnerText;
 
                         //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
-                        if (RetornoServicoString.IndexOf("?>") >= 0)
+                        if(RetornoServicoString.ToLower().IndexOf("<?xml") <= 1)
                         {
-                            RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
-                        }
-
-                        //COPLAN retorna o XML danificado, veja o espaço no nome da tag <ComoNfse  > e veja que ela coloca, no meio do XML um <?xml..., que tbm é um erro. Se estiver desta forma vamos substituir.
-                        if (soap.PadraoNFSe == PadraoNFSe.COPLAN)
-                        {
-                            RetornoServicoString = RetornoServicoString.Replace("<CompNfse  ><?xml version=\"1.0\" encoding=\"UTF-8\"?>", "<CompNfse>");
+                            if (RetornoServicoString.IndexOf("?>") >= 0)
+                            {
+                                RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
+                            }
                         }
 
                         //Remover quebras de linhas
@@ -431,6 +428,12 @@ namespace Unimake.Business.DFe
                     else if (soap.PadraoNFSe == PadraoNFSe.SIMPLE)
                     {
                         RetornoServicoString = RetornoServicoString.Replace("m:", string.Empty);
+                    }
+                    else if (soap.PadraoNFSe == PadraoNFSe.COPLAN)
+                    {
+                        RetornoServicoString = RetornoServicoString.Replace("<CompNfse  ><?xml version=\"1.0\" encoding=\"UTF-8\"?>", "<CompNfse>");
+
+                        RetornoServicoString = RetornoServicoString.Replace("<CompNfse><?xml version=\"1.0\" encoding=\"UTF-8\"?>", "<CompNfse>");
                     }
 
                     RetornoServicoXML = new XmlDocument
