@@ -1483,6 +1483,7 @@
 		<None Remove="Xml\Schemas\NFSe\SH3\nfse_v202.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SH3\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\DPS_v1.01.xsd" />
@@ -3826,6 +3827,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SH3\nfse_v202.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SH3\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse_v2-03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\DPS_v1.00.xsd" />
