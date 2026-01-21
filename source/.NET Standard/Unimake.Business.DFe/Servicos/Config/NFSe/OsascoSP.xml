@@ -7,7 +7,7 @@
 			<WebEnderecoProducao>https://nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/Cancelar</WebActionProducao>
-			<SchemaArquivo>1.00</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -26,7 +26,7 @@
 			<WebEnderecoProducao>https://nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/ConsultarLote</WebActionProducao>
-			<SchemaArquivo>1.00</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
 			<WebEnderecoProducao>https://nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/Consultar</WebActionProducao>
-			<SchemaArquivo>1.00</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -63,7 +63,7 @@
 			<WebEnderecoProducao>https://nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/EmitirEmLote</WebActionProducao>
-			<SchemaArquivo>1.00</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -82,7 +82,7 @@
 			<WebEnderecoProducao>https://nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/Emitir</WebActionProducao>
-			<SchemaArquivo>1.00</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
