@@ -539,7 +539,7 @@
 		<xsd:sequence>
 			<xsd:element name="InfDeclaracaoPrestacaoServico" type="tcInfDeclaracaoPrestacaoServico" minOccurs="1"
 				maxOccurs="1" />
-			<xsd:element ref="dsig:Signature" minOccurs="1"
+			<xsd:element ref="dsig:Signature" minOccurs="0"
 				maxOccurs="1" />
 		</xsd:sequence>
 	</xsd:complexType>
@@ -606,7 +606,7 @@
 		<xsd:sequence>
 			<xsd:element name="InfPedidoCancelamento" type="tcInfPedidoCancelamento"
 				minOccurs="1" maxOccurs="1" />
-			<xsd:element ref="dsig:Signature" minOccurs="1"
+			<xsd:element ref="dsig:Signature" minOccurs="0"
 				maxOccurs="1" />
 		</xsd:sequence>
 	</xsd:complexType>
@@ -757,7 +757,7 @@
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="LoteRps" type="tcLoteRps" />
-				<xsd:element ref="dsig:Signature" minOccurs="1"
+				<xsd:element ref="dsig:Signature" minOccurs="0"
 					maxOccurs="1" />
 			</xsd:sequence>
 		</xsd:complexType>
@@ -784,7 +784,7 @@
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="LoteRps" type="tcLoteRps" />
-				<xsd:element ref="dsig:Signature" minOccurs="1"
+				<xsd:element ref="dsig:Signature" minOccurs="0"
 					maxOccurs="1" />
 			</xsd:sequence>
 		</xsd:complexType>
