@@ -1322,6 +1322,10 @@
 		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\xmldsig-core-schema_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\E_RECEITA\nfse v2 02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\E_RECEITA\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\FINTEL\cfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\FINTEL\nfse v2 02.xsd" />
+		<None Remove="Xml\Schemas\NFSe\FINTEL\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\FINTEL\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\FIORILLI\nfse_v201.xsd" />
 		<None Remove="Xml\Schemas\NFSe\FIORILLI\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\FUTURIZE\xmldsig-core-schema20020212.xsd" />
@@ -1483,6 +1487,7 @@
 		<None Remove="Xml\Schemas\NFSe\SH3\nfse_v202.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SH3\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\DPS_v1.01.xsd" />
@@ -2791,6 +2796,10 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\xmldsig-core-schema_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\E_RECEITA\nfse v2 02.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\E_RECEITA\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\cfse.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\nfse v2 02.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\nfse.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\FIORILLI\nfse_v201.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\FIORILLI\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\FUTURIZE\nfse_v2_02.xsd" />
@@ -3826,6 +3835,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SH3\nfse_v202.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SH3\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse_v2-03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\DPS_v1.00.xsd" />
@@ -3970,7 +3980,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Servicos\MFE\" />
-	  <Folder Include="Xml\Schemas\NFSe\FINTEL\2.02\" />
 	</ItemGroup>
 
 	<ItemGroup>

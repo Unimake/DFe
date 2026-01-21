@@ -27,6 +27,11 @@ namespace Unimake.DFe.Test.NFSe
         public void GerarNfse(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
         {
             var nomeXMLEnvio = "GerarNfseEnvio-env-loterps.xml";
+
+            if(padraoNFSe ==PadraoNFSe.SONNER && (codMunicipio == 3524709 || codMunicipio == 3556453))
+            {
+                nomeXMLEnvio = "GerarNfseEnvio-ComRTC-env-loterps.XML";
+            }
             var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
 
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");

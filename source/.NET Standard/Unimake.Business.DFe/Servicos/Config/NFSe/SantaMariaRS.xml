@@ -257,7 +257,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDps</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura>DPS</TagAssinatura>
 			<TagAtributoID>infDPS</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteDpsEnvio</TagLoteAssinatura>
@@ -276,7 +276,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDpsSincrono</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura>DPS</TagAssinatura>
 			<TagAtributoID>infDPS</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteDpsSincronoEnvio</TagLoteAssinatura>
@@ -295,7 +295,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/GerarNfse</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura>DPS</TagAssinatura>
 			<TagAtributoID>infDPS</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -314,7 +314,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura>pedRegEvento</TagAssinatura>
 			<TagAtributoID>infPedReg</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -333,7 +333,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarLoteDps</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -352,7 +352,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseDps</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -371,7 +371,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseServicoPrestado</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -390,7 +390,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseServicoTomado</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -409,7 +409,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfsePorFaixa</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -428,7 +428,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarDadosCadastrais</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -447,7 +447,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarDpsDisponivel</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -466,7 +466,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarUrlNfse</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101</SchemaArquivo>
+			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
