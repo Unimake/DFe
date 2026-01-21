@@ -2,18 +2,15 @@
 <GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Rps>
 		<InfDeclaracaoPrestacaoServico Id="0000013165">
+			<Competencia>2014-02-13</Competencia>
 			<Servico>
 				<Valores>
 					<ValorServicos>55.00</ValorServicos>
 					<ValorDeducoes>0.00</ValorDeducoes>
 					<ValorIss>1.65</ValorIss>
 					<Aliquota>3.00</Aliquota>
-					<BaseCalculo>55.00</BaseCalculo>
-					<ValorPis>0.00</ValorPis>
-					<ValorCofins>0.00</ValorCofins>
-					<ValorInss>0.00</ValorInss>
-					<ValorIr>0.00</ValorIr>
-					<ValorCsll>0.00</ValorCsll>
+					<DescontoIncondicionado>1.00</DescontoIncondicionado>
+					<DescontoCondicionado>1.00</DescontoCondicionado>
 				</Valores>
 				<IssRetido>2</IssRetido>
 				<ItemListaServico>01.03</ItemListaServico>
@@ -22,7 +19,6 @@
 				<ExigibilidadeISS>1</ExigibilidadeISS>
 				<MunicipioIncidencia>4307005</MunicipioIncidencia>
 			</Servico>
-			<Competencia>2014-02-13</Competencia>
 			<Prestador>
 				<CpfCnpj>
 					<Cnpj>99999999999999</Cnpj>
