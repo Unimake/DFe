@@ -75,25 +75,6 @@
 			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://www.tinus.com.br</TargetNS>
 		</ConsultarNfsePorRps>
-		<ConsultarNfse versao="1.00">
-			<Descricao>Consultar NFSe</Descricao>
-			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeoli/WSNFSE.ConsultarNfse.CLS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://www.tinus.com.br/csp/olinda/WSNFSE.ConsultarNfse.CLS</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><tin:ConsultarNfse><tin:Arg>{xmlBody}</tin:Arg></tin:ConsultarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>1.00</SchemaVersao>
-			<TargetNS>http://www.tinus.com.br</TargetNS>
-		</ConsultarNfse>
 		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testeoli/WSNFSE.CancelarNfse.CLS</WebEnderecoHomologacao>

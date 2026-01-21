@@ -3113,4 +3113,10 @@
 		<ArqConfig>RioDasOstrasRJ.xml</ArqConfig>
 		<PadraoNFSe>TIPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3300209">
+		<Nome>Araruama - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>AraruamaSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
