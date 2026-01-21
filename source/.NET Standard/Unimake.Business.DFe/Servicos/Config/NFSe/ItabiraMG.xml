@@ -156,5 +156,21 @@
       <LoginConexao>false</LoginConexao>
       <UsaCertificadoDigital>true</UsaCertificadoDigital>
     </ConsultarNfsePorRps>
+    <CancelarNfse versao="1.01">
+      <Descricao>Envio do cancelamento de NFSe</Descricao>
+      <RequestURIProducao>https://itabira.govbr.cloud/NFSe.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
+      <RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
+      <MetodoAPI>post</MetodoAPI>
+      <WebActionProducao>loteXmlGZipB64:[]</WebActionProducao>
+      <TagAssinatura>pedRegEvento</TagAssinatura>
+      <TagAtributoID>infPedReg</TagAtributoID>
+      <WebSoapString></WebSoapString>
+      <WebContentType>application/json</WebContentType>
+      <WebTagRetorno>xmlGZipB64</WebTagRetorno>
+      <SchemaVersao>1.01</SchemaVersao>
+      <GZIPCompress>true</GZIPCompress>
+      <LoginConexao>false</LoginConexao>
+      <UsaCertificadoDigital>true</UsaCertificadoDigital>
+    </CancelarNfse>
 	</Servicos>
 </Configuracoes>
