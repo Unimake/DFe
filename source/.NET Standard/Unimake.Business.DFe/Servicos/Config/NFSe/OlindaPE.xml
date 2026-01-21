@@ -175,7 +175,7 @@
 			<WebEnderecoProducao>https://www.tinus.com.br/csp/olinda/WSNFSE203.Service2.nfseSOAP.cls</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/WSNFSE203.Service2.nfseSOAP.CancelarNfseEnvio</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/WSNFSE203.Service2.nfseSOAP.CancelarNfseEnvio</WebActionProducao>
-			<SchemaArquivo>WSNFSE203.IBSCBS.Service.Tinus.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
