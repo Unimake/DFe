@@ -1,20 +1,19 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using System;
-using System.IO;
-using System.Text;
-using System.Xml;
-using Unimake.Business.DFe.Security;
-using Unimake.Exceptions;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Collections.Generic;
-using System.Xml.Linq;
-using System.Net;
-using Unimake.Business.DFe.Utility;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml;
+using System.Xml.Linq;
+using Unimake.Business.DFe.Security;
+using Unimake.Business.DFe.Utility;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -39,10 +38,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            //Esta linha irá carregar as informações referêntes ao município.
+            //Esta linha irá carregar as informações referentes ao município.
             Configuracoes.Load(GetType().Name);
 
-
+            //Depois de carregar as configurações
             switch (Configuracoes.PadraoNFSe)
             {
                 case PadraoNFSe.MEMORY:

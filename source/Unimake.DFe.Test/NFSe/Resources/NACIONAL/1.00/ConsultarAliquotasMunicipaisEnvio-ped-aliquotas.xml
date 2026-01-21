@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ConsultaParametros versao="1.00" xmlns="http://www.sped.fazenda.gov.br/nfse">
-	<infConsulta>
-		<codigoMunicipio>4204608</codigoMunicipio>
-		<codigoServico>99.99.99.999</codigoServico>
-		<competencia>2025-11-15</competencia>
-		<tipoParametro>aliquotas</tipoParametro>
-	</infConsulta>
-</ConsultaParametros>

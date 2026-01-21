@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using static Unimake.Business.DFe.Utility.XMLUtility;
 
 namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
 {
@@ -65,15 +66,9 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
             {
                 if (string.IsNullOrWhiteSpace(IdField))
                 {
-                    try
-                    {
-                        IdField = MontarIdNFSe();
-                    }
-                    catch
-                    {
-                        return IdField;
-                    }
+                    IdField = MontarIdNFSe(); 
                 }
+
                 return IdField;
             }
             set => IdField = value;
@@ -95,7 +90,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// Número da NFS-e.
         /// </summary>
         [XmlElement("nNFSe")]
-        public string NNFSe { get; set; }
+        public long NNFSe { get; set; }
 
         /// <summary>
         /// Código IBGE do município de incidência do ISSQN (quando aplicável).
@@ -232,7 +227,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
                 throw new Exception("Informe o CNPJ ou CPF do emitente (emit.CNPJ/emit.CPF) antes de gerar o Id da NFS-e.");
             }
 
-            if (string.IsNullOrWhiteSpace(NNFSe))
+            if (NNFSe == 0)
             {
                 throw new Exception("Informe o número da NFS-e (nNFSe) antes de gerar o Id da NFS-e.");
             }
@@ -255,33 +250,21 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         {
             ValidarDadosParaGerarId();
 
-            // Partes (49 dígitos numéricos)
-            var cMun = DPS.InfDPS.CLocEmi.ToString("0000000");
-
-            var ambGer = ((int)AmbGer).ToString(CultureInfo.InvariantCulture);
-
-            var tpInsc = !string.IsNullOrWhiteSpace(Emit.CPF) ? "1" : "2";
-
-            var inscrFed = !string.IsNullOrWhiteSpace(Emit.CPF)
-                ? Emit.CPF.PadLeft(14, '0')
-                : Emit.CNPJ.PadLeft(14, '0');
-
-            var nNFSe = NNFSe.PadLeft(13, '0');
-
-            var anoMes = $"{(DhProc.Year % 100):00}{DhProc.Month:00}";
-
-            // Código numérico (9 dígitos) – gerado uma única vez por instância
-            if (string.IsNullOrWhiteSpace(CNum))
+            var conteudoChaveNFSe = new ConteudoChaveNFSe
             {
-                // 9 dígitos (1..999999999)
-                var rnd = new Random();
-                CNum = rnd.Next(1, 1000000000).ToString("000000000");
-            }
+                CodigoMunicipio = DPS.InfDPS.CLocEmi.ToString("0000000"),
+                TipoAmbiente = AmbGer,
+                TipoInscricaoFederal = !string.IsNullOrWhiteSpace(Emit.CPF) ? "1" : "2",
+                InscricaoFederal = !string.IsNullOrWhiteSpace(Emit.CPF) ? Emit.CPF : Emit.CNPJ,
+                NumeroDoctoFiscal = NNFSe,
+                AnoEmissao = DhProc.Year.ToString("yy"),
+                MesEmissao = DhProc.Month.ToString("00"),
+                CodigoNumerico = XMLUtility.GerarCodigoNumerico((int)NNFSe, 9).ToString("000000000")
+            };
 
-            var corpo = cMun + ambGer + tpInsc + inscrFed + nNFSe + anoMes + CNum;
+            var chaveNFSe = MontarChaveNFSe(ref conteudoChaveNFSe);
 
-            var dv = CalcularDVModulo11(corpo);
-            return "NFS" + corpo + dv.ToString(CultureInfo.InvariantCulture);
+            return "NFS" + chaveNFSe;
         }
 
         /// <summary>

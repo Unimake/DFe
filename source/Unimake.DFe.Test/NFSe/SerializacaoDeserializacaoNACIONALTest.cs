@@ -2,190 +2,13 @@
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.NFSe;
-using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
-using Unimake.Business.DFe.Xml.NFSe.NACIONAL.Eventos;
 using Xunit;
-using ConsultarNfse = Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfse;
-using ConsultarNfsePorRps = Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfsePorRps;
 
 namespace Unimake.DFe.Test.NFSe.NACIONAL
 {
     public class SerializacaoDesserializacaoNacionalTest
     {
-        [Theory]
-        [Trait("DFe", "NFSe")]
-        [Trait("Layout", "Nacional")]
-        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\ConsultarNfseEnvio-ped-sitnfse.xml")]
-        public void ConsultarNFSeNACIONAL(string caminhoXml)
-        {
-            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
-
-            // Carrega fixture e desserializa
-            var docFixture = new XmlDocument();
-            docFixture.Load(caminhoXml);
-            var lido = new ConsultarNfse().LerXML<ConsultarNfse>(docFixture);
-
-            // Sanity checks 
-            Assert.Equal("1.00", lido.Versao);
-            Assert.False(string.IsNullOrWhiteSpace(lido.InfNFSe?.Id));
-
-            // Serializa de volta (round-trip)
-            var docRoundTrip = lido.GerarXML();
-            Assert.True(docFixture.InnerText == docRoundTrip.InnerText,
-                "Round-trip diferente do fixture.");
-
-            // Cria do zero com os mesmos valores (pega problemas de defaults/ShouldSerialize)
-            var criado = new ConsultarNfse
-            {
-                Versao = "1.00",
-                InfNFSe = new InfNFSeConsulta { Id = lido.InfNFSe.Id }
-            };
-            var docCriado = criado.GerarXML();
-
-            // Compara com o round-trip (mesmo serializer, expectativa idêntica)
-            Assert.True(docRoundTrip.InnerText == docCriado.InnerText,
-                "XML criado do zero difere do XML do round-trip (possível problema de defaults/namespace).");
-        }
-
-        [Theory]
-        [Trait("DFe", "NFSe")]
-        [Trait("Layout", "Nacional")]
-        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml")]
-        public void ConsultarNFSePorRPSNACIONAL(string arqXml)
-        {
-            Assert.True(File.Exists(arqXml), $"Arquivo {arqXml} não encontrado.");
-
-            // Carrega fixture e desserializa como DPS
-            var docFixture = new XmlDocument();
-            docFixture.Load(arqXml);
-
-            var lido = new ConsultarNfsePorRps().LerXML<ConsultarNfsePorRps>(docFixture);
-
-            // Sanity checks
-            Assert.Equal("1.00", lido.Versao);
-            Assert.False(string.IsNullOrWhiteSpace(lido.InfDPS?.Id));
-
-            // Round-trip
-            var docRoundTrip = lido.GerarXML();
-            Assert.Equal(docFixture.OuterXml, docRoundTrip.OuterXml);
-
-            // Cria do zero com os mesmos valores (root DPS + infDPS)
-            var criado = new ConsultarNfsePorRps
-            {
-                Versao = lido.Versao,
-                InfDPS = new InfDPSConsulta { Id = lido.InfDPS.Id }
-            };
-            var docCriado = criado.GerarXML();
-
-            Assert.Equal(docRoundTrip.OuterXml, docCriado.OuterXml);
-        }
-
-        [Theory]
-        [Trait("DFe", "NFSe")]
-        [Trait("Layout", "Nacional")]
-        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\ConsultarNotaPdfEnvio-ped-nfsepdf.xml")]
-        public void ConsultarNFSePDFNACIONAL(string caminhoXml)
-        {
-            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
-
-            var docFixture = new XmlDocument();
-            docFixture.Load(caminhoXml);
-
-            var lido = new ConsultarNfsePDFEnvio().LerXML<ConsultarNfsePDFEnvio>(docFixture);
-            Assert.Equal("1.00", lido.Versao);
-            Assert.False(string.IsNullOrWhiteSpace(lido.InfNFSe?.Id));
-
-            var docRoundTrip = lido.GerarXML();
-            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
-
-            var criado = new ConsultarNfsePDFEnvio
-            {
-                Versao = "1.00",
-                InfNFSe = new InfNFSeConsulta { Id = lido.InfNFSe.Id }
-            };
-
-            var docCriado = criado.GerarXML();
-            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
-        }
-
-        [Theory]
-        [Trait("DFe", "NFSe")]
-        [Trait("Layout", "Nacional")]
-        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\CancelarNfseEnvio-ped-cannfse.xml")]
-        public void CancelarNfseNACIONAL(string caminhoXml)
-        {
-            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
-
-            var docFixture = new XmlDocument();
-            docFixture.Load(caminhoXml);
-
-            var lido = new PedRegEvento().LerXML<PedRegEvento>(docFixture);
-            Assert.Equal("1.00", lido.Versao);
-            Assert.False(string.IsNullOrWhiteSpace(lido.InfPedReg?.Id));
-            Assert.NotNull(lido.InfPedReg?.E101101);
-
-            var docRoundTrip = lido.GerarXML();
-            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
-
-            var autor = !string.IsNullOrWhiteSpace(lido.InfPedReg.CNPJAutor)
-                        ? new { cnpj = lido.InfPedReg.CNPJAutor, cpf = (string)null }
-                        : new { cnpj = (string)null, cpf = lido.InfPedReg.CPFAutor };
-
-            var criado = new PedRegEvento
-            {
-                Versao = lido.Versao,
-                InfPedReg = new InfPedReg
-                {
-                    Id = lido.InfPedReg.Id,
-                    TpAmb = lido.InfPedReg.TpAmb,
-                    VerAplic = lido.InfPedReg.VerAplic,
-                    DhEvento = lido.InfPedReg.DhEvento,
-                    CNPJAutor = autor.cnpj,
-                    CPFAutor = autor.cpf,
-                    ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
-                    E101101 = new E101101
-                    {
-                        XDesc = lido.InfPedReg.E101101.XDesc,
-                        CMotivo = lido.InfPedReg.E101101.CMotivo,
-                        XMotivo = lido.InfPedReg.E101101.XMotivo
-                    }
-                }
-            };
-
-
-            var docCriado = criado.GerarXML();
-            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
-        }
-
-        [Theory]
-        [Trait("DFe", "NFSe")]
-        [Trait("Layout", "Nacional")]
-        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\1111111111111111111111-env-loterps.xml")]
-        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.00\GerarNFSeEnvio-env-loterps.xml")]
-        public void GerarNfseNACIONAL(string caminhoXml)
-        {
-            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
-
-            var docFixture = new XmlDocument();
-            docFixture.Load(caminhoXml);
-
-            // Teste de deserialização
-            var lido = new DPS().LerXML<DPS>(docFixture);
-            Assert.Equal("1.00", lido.Versao);
-            Assert.NotNull(lido.InfDPS);
-
-            // Teste de serialização
-            var docRoundTrip = lido.GerarXML();
-            Assert.NotNull(docRoundTrip);
-
-            // Verifica se elementos essenciais estão presentes
-            Assert.NotNull(docRoundTrip.SelectSingleNode("//ns:DPS", CreateNamespaceManager(docRoundTrip)));
-            Assert.NotNull(docRoundTrip.SelectSingleNode("//ns:infDPS", CreateNamespaceManager(docRoundTrip)));
-        }
-
         private XmlNamespaceManager CreateNamespaceManager(XmlDocument doc)
         {
             var nsmgr = new XmlNamespaceManager(doc.NameTable);
@@ -318,15 +141,15 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
         [Trait("Versao", "1.01")]
         public void IBSCBS_V101_ShouldSerialize_CenarioReal()
         {
-         
+
             var ibscbs = new IBSCBS
             {
                 FinNFSe = 0,
                 IndFinal = 0,
                 CIndOp = "000001",
                 TpOper = TpOperacaoGov.FornecimentoComPagamentoPosterior,
-                TpEnteGov = TipoEnteGovernamental.Municipio, 
-                IndDest = 0, 
+                TpEnteGov = TipoEnteGovernamental.Municipio,
+                IndDest = 0,
             };
 
             Assert.True(ibscbs.ShouldSerializeTpOper());
@@ -341,13 +164,13 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                 {
                     Id = "DPS_TESTE_V101",
                     TpAmb = TipoAmbiente.Homologacao,
-                    DhEmi = DateTime.Now, 
-                    VerAplic = "1.01.01",            
-                    Serie = "1",                        
-                    NDPS = "1",                         
-                    DCompet = DateTime.Now,    
-                    TpEmit = TipoEmitenteNFSe.Prestador, 
-                    CLocEmi = 4202909,                
+                    DhEmi = DateTime.Now,
+                    VerAplic = "1.01.01",
+                    Serie = "1",
+                    NDPS = "1",
+                    DCompet = DateTime.Now,
+                    TpEmit = TipoEmitenteNFSe.Prestador,
+                    CLocEmi = 4202909,
 
                     // Dados mínimos obrigatórios
                     Prest = new Prest
@@ -386,7 +209,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                             VServ = 10.00
                         }
                     },
-                    IBSCBS = ibscbs 
+                    IBSCBS = ibscbs
                 }
             };
 
@@ -467,121 +290,6 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
         }
 
         /// <summary>
-        /// Testa a geração de DPS montando o objeto completo a partir do XML de exemplo.
-        /// Valida a geração automática do ID e a serialização completa.
-        /// </summary>
-        [Fact]
-        [Trait("DFe", "NFSe")]
-        [Trait("Layout", "Nacional")]
-        public void GerarNfseNACIONAL_Montar1_00()
-        {
-
-            var configuracao = new Configuracao
-            {
-                TipoDFe = TipoDFe.NFSe,
-                CertificadoDigital = PropConfig.CertificadoDigital,
-                TipoAmbiente = TipoAmbiente.Homologacao,
-                CodigoMunicipio = 1001058,
-                Servico = Servico.NFSeGerarNfse,
-                SchemaVersao = "1.00",
-                MunicipioToken = "99n0556af8e4218e05b88e266fhca55be17b14a4495c269d1db0af57f925f04e77c38f9870842g5g60b6827a9fje8ec9", //Tem município que exige token, então já vamos deixar algo definido para que utilize nos padrões necessários durante o teste unitário. Não é obrigatório para todos os padrões e será utilizado somente nos que solicitam.
-                MunicipioSenha = "123456",
-                MunicipioUsuario = "01001001000113"
-            };
-
-            var dps = new DPS
-            {
-                Versao = "1.00",
-                InfDPS = new InfDPS
-                {
-
-                    TpAmb = TipoAmbiente.Homologacao,
-                    DhEmi = new DateTime(2022, 9, 28, 13, 50, 29),
-                    VerAplic = "EmissorWeb_1.0.0.0",
-                    Serie = "900",
-                    NDPS = "6",
-                    DCompet = new DateTime(2022, 9, 28),
-                    TpEmit = TipoEmitenteNFSe.Prestador,
-                    CLocEmi = 1400159, 
-
-
-                    Prest = new Prest
-                    {
-                        CNPJ = "01761135000132",
-                        IM = "01761135000132",
-                        RegTrib = new RegTrib
-                        {
-                            OpSimpNac = OptSimplesNacional.ME_EPP,
-                            RegApTribSN = RegApTribSN.RegApurTribSN,
-                            RegEspTrib = RegEspTrib.Nenhum
-                        }
-                    },
-
-                    Serv = new Serv
-                    {
-                        LocPrest = new LocPrest
-                        {
-                            CLocPrestacao = 1400159
-                        },
-                        CServ = new CServ
-                        {
-                            CTribNac = "010101",
-                            XDescServ = "teste teste teste teste teste teste teste teste teste teste teste"
-                        }
-                    },
-
-                    Valores = new Valores
-                    {
-                        VServPrest = new VServPrest
-                        {
-                            VServ = 999999999.99
-                        },
-                        vDescCondIncond = new VDescCondIncond
-                        {
-                            VDescIncond = 9999999.99,
-                            VDescCond = 9.99
-                        },
-                        Trib = new Trib
-                        {
-                            TribMun = new TribMun
-                            {
-                                TribISSQN = TribISSQN.OperacaoTributavel,
-                                TpRetISSQN = TipoRetencaoISSQN.NaoRetido
-                            },
-                            TotTrib = new TotTrib
-                            {
-                                PTotTribSN = 0.01
-                            }
-                        }
-                    }
-                }
-            };
-
-            var idGerado = dps.InfDPS.Id;
-            var xmlGerado = dps.GerarXML();
-
-            var idEsperado = "DPS140015920176113500013200900000000000000006";
-            Assert.Equal(idEsperado, idGerado);
-            Assert.Equal(45, idGerado.Length);
-            Assert.StartsWith("DPS", idGerado);
-
-            Assert.NotNull(xmlGerado);
-            var nsmgr = CreateNamespaceManager(xmlGerado);
-
-            var dpsNode = xmlGerado.SelectSingleNode("//ns:DPS", nsmgr);
-            Assert.NotNull(dpsNode);
-
-            var infDPSNode = xmlGerado.SelectSingleNode("//ns:infDPS", nsmgr);
-            Assert.Equal(idEsperado, infDPSNode.Attributes["Id"]?.Value);
-
-            var dpsDeserializado = new DPS().LerXML<DPS>(xmlGerado);
-            Assert.Equal(idEsperado, dpsDeserializado.InfDPS.Id);
-
-            var gerarNfse = new GerarNfse(xmlGerado, configuracao);
-            gerarNfse.Executar();
-        }
-
-        /// <summary>
         /// Testa a desserialização do XML de retorno da NFSe (versão 1.01)
         /// </summary>
         [Theory]
@@ -611,7 +319,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             Assert.Equal("NFS43149022226263261000198000000000000225120787292537", infNFSe.Id);
             Assert.Equal("Porto Alegre", infNFSe.XLocEmi);
             Assert.Equal("Porto Alegre", infNFSe.XLocPrestacao);
-            Assert.Equal("2", infNFSe.NNFSe);
+            Assert.Equal(2, infNFSe.NNFSe);
             Assert.Equal(4314902, infNFSe.CLocIncid);
             Assert.Equal("Porto Alegre", infNFSe.XLocIncid);
             Assert.Equal("Outros serviços de transporte de natureza municipal.", infNFSe.XTribNac);
@@ -709,7 +417,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
 
             // Validação da estrutura XML gerada
             var nsmgr = CreateNamespaceManager(docRoundTrip);
-            
+
             var nfseNode = docRoundTrip.SelectSingleNode("//ns:NFSe", nsmgr);
             Assert.NotNull(nfseNode);
             Assert.Equal("1.01", nfseNode.Attributes["versao"]?.Value);

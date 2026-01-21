@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://www.abrasf.org.br/nfse.xsd" xmlns="http://www.abrasf.org.br/nfse.xsd"
 	xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" attributeFormDefault="unqualified"
 	elementFormDefault="qualified">
 	<xsd:import namespace="http://www.w3.org/2000/09/xmldsig#"
@@ -349,7 +348,7 @@
 	</xsd:simpleType>
 	<xsd:simpleType name="tsCodigoCnae">
 		<xsd:restriction base="xsd:int">
-			<xsd:totalDigits value="7" />
+            <xsd:totalDigits value="9"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="tsCodigoTributacao">
@@ -413,7 +412,8 @@
 		</xsd:restriction>
 	</xsd:simpleType>
         <xsd:simpleType name="tsNif">
-               xsd:restriction base="xsd:string">
+
+        <xsd:restriction base="xsd:string">
                         <xsd:maxLength value="40"/>
                         <xsd:minLength value="0"/>
                         <xsd:whiteSpace value="collapse"/>
@@ -784,10 +784,10 @@
 				maxOccurs="1" />
 			<xsd:element name="ResponsavelRetencao" type="tsResponsavelRetencao" minOccurs="0"
 				maxOccurs="1" />
-			<xsd:element name="ItemListaServico" type="tsItemListaServico"
-				minOccurs="1" maxOccurs="1" />
-			<xsd:element name="CodigoCnae" type="tsCodigoCnae"
-				minOccurs="0" maxOccurs="1" />
+
+            <xsd:element name="ItemListaServico" type="tsItemListaServico" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="CodigoCnae" type="tsCodigoCnae" minOccurs="1" maxOccurs="1"/>
+
 			<xsd:element name="CodigoTributacaoMunicipio" type="tsCodigoTributacao"
 				minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CodigoNbs" type="tsCodigoNbs"
@@ -838,7 +838,7 @@
 				minOccurs="1" maxOccurs="1" />
 			<xsd:element name="DataEmissao" type="xsd:date"
 				minOccurs="1" maxOccurs="1" />
-			<xsd:element name="Status" type="tsStatusRps" minOccurs="1"
+            <xsd:element name="Status" type="tsStatusRps" minOccurs="0"
 				maxOccurs="1" />
 			<xsd:element name="RpsSubstituido" type="tcIdentificacaoRps"
 				minOccurs="0" maxOccurs="1" />
@@ -865,7 +865,7 @@
 			<xsd:element name="RegimeEspecialTributacao" type="tsRegimeEspecialTributacao"
 				minOccurs="0" maxOccurs="1" />
 			<xsd:element name="OptanteSimplesNacional" type="tsSimNao"
-				minOccurs="1" maxOccurs="1" />
+                         minOccurs="0" maxOccurs="1"/>
 			<xsd:element name="IncentivoFiscal" type="tsSimNao"
 				minOccurs="1" maxOccurs="1" />
 		</xsd:sequence>
@@ -1258,6 +1258,8 @@
 					minOccurs="1" maxOccurs="1" />
 				<xsd:element name="Protocolo" type="tsNumeroProtocolo"
 					minOccurs="1" maxOccurs="1" />
+                <xsd:element ref="dsig:Signature" minOccurs="1"
+                             maxOccurs="1"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -1292,6 +1294,8 @@
 					minOccurs="1" maxOccurs="1" />
 				<xsd:element name="Prestador" type="tcIdentificacaoPrestador"
 					minOccurs="1" maxOccurs="1" />
+                <xsd:element ref="dsig:Signature" minOccurs="1"
+                             maxOccurs="1"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -1342,6 +1346,8 @@
 				<xsd:element name="Intermediario" type="tcIdentificacaoIntermediario"
 					minOccurs="0" maxOccurs="1" />
 				<xsd:element name="Pagina" type="tsPagina" minOccurs="1" maxOccurs="1"/>
+                <xsd:element ref="dsig:Signature" minOccurs="1"
+                             maxOccurs="1"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -1401,6 +1407,8 @@
 				<xsd:element name="Intermediario" type="tcIdentificacaoIntermediario"
 					minOccurs="0" maxOccurs="1" />
 				<xsd:element name="Pagina" type="tsPagina" minOccurs="1" maxOccurs="1"/>
+                <xsd:element ref="dsig:Signature" minOccurs="1"
+                             maxOccurs="1"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -1438,6 +1446,8 @@
 					</xsd:complexType>
 				</xsd:element>
 				<xsd:element name="Pagina" type="tsPagina" minOccurs="1" maxOccurs="1"/>
+                <xsd:element ref="dsig:Signature" minOccurs="1"
+                             maxOccurs="1"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>

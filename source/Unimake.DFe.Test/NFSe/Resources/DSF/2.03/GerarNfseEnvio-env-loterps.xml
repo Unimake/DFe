@@ -26,6 +26,7 @@
 				<IssRetido>1</IssRetido>
 				<ResponsavelRetencao>1</ResponsavelRetencao>
 				<ItemListaServico>14.01</ItemListaServico>
+        <CodigoCnae>6201500</CodigoCnae>
 				<CodigoTributacaoMunicipio>1</CodigoTributacaoMunicipio>
 				<Discriminacao>Servico de Manutencao em Software</Discriminacao>
 				<CodigoMunicipio>5208707</CodigoMunicipio>
