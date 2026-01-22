@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFSe;
+using Unimake.Business.DFe.Utility;
 using Xunit;
-using static Unimake.Business.DFe.Utility.XMLUtility;
 
 namespace Unimake.DFe.Test.NFSe
 {
@@ -50,6 +51,6 @@ namespace Unimake.DFe.Test.NFSe
 
             var gerarNfseIndicativoDecisaoJudicial = new GerarNfseIndicativoDecisaoJudicial(conteudoXML, configuracao);
             Assert.Multiple(() => TestUtility.AnalisaResultado(gerarNfseIndicativoDecisaoJudicial));
-        }
+        }        
     }
 }

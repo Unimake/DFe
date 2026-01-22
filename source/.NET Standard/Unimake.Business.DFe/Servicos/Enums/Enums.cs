@@ -15802,7 +15802,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 00 – Não tributada pelo PIS
         /// </summary>
         [XmlEnum("00")]
-        Nnehum = 00,
+        Nenhum = 00,
 
         /// <summary>
         /// 01 – Tributável com alíquota básica

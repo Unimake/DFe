@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Globalization;
+using System.Reflection;
+using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -41,6 +43,19 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// </summary>
         [XmlElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
+
+        public override XmlDocument GerarXML()
+        {
+            var xmlDocument = base.GerarXML();
+
+            var attribute = GetType().GetCustomAttribute<XmlRootAttribute>();
+            var xmlElementNFSe = (XmlElement)xmlDocument.GetElementsByTagName("NFSe")[0];
+            xmlElementNFSe.SetAttribute("xmlns", attribute.Namespace);
+            var xmlElementDPS = (XmlElement)xmlDocument.GetElementsByTagName("DPS")[0];
+            xmlElementDPS.SetAttribute("xmlns", attribute.Namespace);
+
+            return xmlDocument;
+        }
     }
 
 
@@ -200,8 +215,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// <summary>
         /// DPS vinculado (conteúdo do DPS utilizado na geração da NFS-e).
         /// </summary>
-        [XmlElement("DPS")]
-        public DPS DPS { get; set; } = new DPS();
+        [XmlElement("DPS", Namespace = Nfse.Ns)]
+        public DPS DPS { get; set; }
 
         #region Gerar ID
 
@@ -578,13 +593,9 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         public string XOutInf { get; set; }
 
         #region Should Serialize
-        public bool ShouldSerializeVCalcDRField() => VCalcDR > 0;
         public bool ShouldSerializeTpBM() => TpBM > 0;
         public bool ShouldSerializeVCalcBMField() => VCalcBM > 0;
-        public bool ShouldSerializeVBCField() => VBC > 0;
         public bool ShouldSerializePAliqAplicField() => PAliqAplic > 0;
-        public bool ShouldSerializeVISSQNField() => VISSQN > 0;
-        public bool ShouldSerializeVTotalRetField() => VTotalRet > 0;
         public bool ShouldSerializeXOutInf() => !string.IsNullOrWhiteSpace(XOutInf);
         #endregion
     }

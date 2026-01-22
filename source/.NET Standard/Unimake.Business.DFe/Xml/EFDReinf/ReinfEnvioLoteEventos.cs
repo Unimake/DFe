@@ -131,7 +131,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Evento")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EventoReinf")]
     [ComVisible(true)]
 #endif
     public class EventoReinf

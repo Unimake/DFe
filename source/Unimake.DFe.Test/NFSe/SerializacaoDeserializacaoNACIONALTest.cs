@@ -439,5 +439,28 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             Assert.Equal("1.43", docRoundTrip.SelectSingleNode("//ns:gIBS/ns:vIBSTot", nsmgr)?.InnerText);
             Assert.Equal("12.83", docRoundTrip.SelectSingleNode("//ns:gCBS/ns:vCBS", nsmgr)?.InnerText);
         }
+
+
+        /// <summary>
+        /// Testar a desserialização do XML de NFSe com indicativo de decisão judicial
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFSe")]
+        public void DesserializarNfseIndicativoDecisaoJudicial()
+        {
+            var arqXML = @"..\..\..\NFSe\Resources\NACIONAL\1.01\GerarNfseEnvio_IndicativoDecisaoJudicial-env-loterps.xml";
+
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
+
+            var xmlOriginal = new XmlDocument();
+            xmlOriginal.Load(arqXML);
+
+            var xml = new Business.DFe.Xml.NFSe.NACIONAL.NFSe.NFSe();
+            xml = xml.LerXML<Business.DFe.Xml.NFSe.NACIONAL.NFSe.NFSe>(xmlOriginal);
+
+            var xmlGeradado = xml.GerarXML();
+
+            Assert.True(xmlOriginal.InnerText == xmlGeradado.InnerText, "XML gerado pela DLL está diferente do XML criado manualmente.");
+        }
     }
 }

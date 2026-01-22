@@ -646,7 +646,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public string XDescServ { get; set; }
 
         [XmlElement("cNBS")]
-        public int CNBS { get; set; }
+        public string CNBS { get; set; }
 
         [XmlElement("cIntContrib")]
         public string CIntContrib { get; set; }
@@ -655,7 +655,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #region Should Serialize
         public bool ShouldSerializeCTribMun() => CTribMun > 0;
         public bool ShouldSerializeCIntContrib() => !string.IsNullOrWhiteSpace(CIntContrib);
-        public bool ShouldSerializeCNBS() => CNBS > 0;
+        public bool ShouldSerializeCNBS() => !string.IsNullOrWhiteSpace(CNBS);
         #endregion Should Serialize
     }
 
@@ -1372,7 +1372,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     public class PISCOFINS
     {
         [XmlElement("CST")]
-        public CSTPisCofins CST { get; set; }
+        public string CST { get; set; }
 
         [XmlIgnore]
         public double VBCPisCofins { get; set; }
