@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Eventos
 {
@@ -28,7 +29,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Eventos
         /// Código do motivo do cancelamento.
         /// </summary>
         [XmlElement("cMotivo", Namespace = NfseNs.Ns)]
-        public string CMotivo { get; set; }
+        public CodigoJustificativaCancelamento CMotivo { get; set; }
 
         /// <summary>
         /// Descrição do motivo do cancelamento.
