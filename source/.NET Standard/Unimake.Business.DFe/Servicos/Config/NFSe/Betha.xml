@@ -7,7 +7,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/recepcionarLoteRps</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/recepcionarLoteRps#RecepcionarLoteRpsService</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/recepcionarLoteRps#RecepcionarLoteRpsService</WebActionProducao>
-      <SchemaArquivo>servico_enviar_lote_rps_envio_v01.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfRps</TagAtributoID>
       <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
@@ -26,7 +26,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/cancelarNfse</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/cancelarNfse#CancelarNEV01Service</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/cancelarNfse#CancelarNEV01Service</WebActionProducao>
-      <SchemaArquivo>servico_cancelar_nfse_envio_v01.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Pedido</TagAssinatura>
       <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/consultarLoteRps</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/consultarLoteRps#ConsultarLoteRpsService</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/consultarLoteRps#ConsultarLoteRpsService</WebActionProducao>
-      <SchemaArquivo>servico_consultar_lote_rps_envio_v01.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -64,7 +64,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/consultarNfsePorRps</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/consultarNfsePorRps#ConsultarNfsePorRpsService</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/consultarNfsePorRps#ConsultarNfsePorRpsService</WebActionProducao>
-      <SchemaArquivo>servico_consultar_nfse_rps_envio_v01.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -83,7 +83,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/consultarNfse</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/consultarNfse#ConsultarNfseService</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/consultarNfse#ConsultarNfseService</WebActionProducao>
-      <SchemaArquivo>servico_consultar_nfse_envio_v01.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -102,7 +102,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/consultarSituacaoLoteRps</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/consultarSituacaoLoteRps#consultarSituacaoLoteRpsEnvioService</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/consultarSituacaoLoteRps#consultarSituacaoLoteRpsEnvioService</WebActionProducao>
-      <SchemaArquivo>servico_consultar_situacao_lote_rps_envio_v01.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -121,7 +121,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/nfseWS:RecepcionarLoteRpsEnvio</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS#RecepcionarLoteRpsEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
@@ -140,7 +140,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/nfseWS:RecepcionarLoteRpsSincronoEnvio</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS#RecepcionarLoteRpsSincronoEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
@@ -159,7 +159,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/nfseWS:GerarNfseEnvio</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS#GerarNfseEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -178,7 +178,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/nfseWS:CancelarNfseEnvio</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS#CancelarNfseEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Pedido</TagAssinatura>
       <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -197,7 +197,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/nfseWS:ConsultarLoteRpsEnvio</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS#ConsultarLoteRpsEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -216,7 +216,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/nfseWS:ConsultarNfseFaixaEnvio</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS#ConsultarNfseFaixaEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -235,7 +235,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/nfseWS:ConsultarNfseRpsEnvio</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS#ConsultarNfseRpsEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -254,7 +254,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/nfseWS:ConsultarNfseServicoPrestadoEnvio</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS#ConsultarNfseServicoPrestadoEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -273,7 +273,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/nfseWS:ConsultarNfseServicoTomadoEnvio</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS#ConsultarNfseServicoTomadoEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -292,7 +292,7 @@
       <WebEnderecoProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS</WebEnderecoProducao>
       <WebActionHomologacao>http://e-gov.betha.com.br/e-nota-contribuinte-test-ws/nfseWS:SubstituirNfseEnvio</WebActionHomologacao>
       <WebActionProducao>http://e-gov.betha.com.br/e-nota-contribuinte-ws/nfseWS#SubstituirNfseEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Pedido</TagAssinatura>
       <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
       <TagLoteAssinatura>Rps</TagLoteAssinatura>
