@@ -7,7 +7,7 @@
 			<WebEnderecoProducao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl#GerarNota</WebActionHomologacao>
 			<WebActionProducao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl#GerarNota</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -26,7 +26,7 @@
 			<WebEnderecoProducao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl#CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl#CancelarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
 			<WebEnderecoProducao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl#ConsultarNotaValida</WebActionHomologacao>
 			<WebActionProducao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl#ConsultarNotaValida</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -64,7 +64,7 @@
 			<WebEnderecoProducao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl#ConsultarNotaPrestador</WebActionHomologacao>
 			<WebActionProducao>https://riogrande.sigiss.com.br/riogrande/ws/sigiss_ws.php?wsdl#ConsultarNotaPrestador</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>

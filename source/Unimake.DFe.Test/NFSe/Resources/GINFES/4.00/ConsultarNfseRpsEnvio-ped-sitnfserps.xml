@@ -5,7 +5,7 @@
 		<Serie xmlns="http://www.ginfes.com.br/tipos_v03.xsd">1</Serie>
 		<Tipo xmlns="http://www.ginfes.com.br/tipos_v03.xsd">1</Tipo>
 	</IdentificacaoRps>
-	<Prestador versao="4.00">
+	<Prestador>
 		<Cnpj xmlns="http://www.ginfes.com.br/tipos_v03.xsd">06117473000150</Cnpj>
 		<InscricaoMunicipal xmlns="http://www.ginfes.com.br/tipos_v03.xsd">3246001</InscricaoMunicipal>
 	</Prestador>

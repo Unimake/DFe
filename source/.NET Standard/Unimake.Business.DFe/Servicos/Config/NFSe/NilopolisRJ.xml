@@ -7,7 +7,7 @@
       <WebEnderecoProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php</WebEnderecoProducao>
       <WebActionHomologacao>https://testenilopolis.sigiss.com.br/testenilopolis/ws/sigiss_ws.php#GerarNota</WebActionHomologacao>
       <WebActionProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php#GerarNota</WebActionProducao>
-      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -26,7 +26,7 @@
       <WebEnderecoProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php</WebEnderecoProducao>
       <WebActionHomologacao>https://testenilopolis.sigiss.com.br/testenilopolis/ws/sigiss_ws.php#CancelarNfse</WebActionHomologacao>
       <WebActionProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php#CancelarNfse</WebActionProducao>
-      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
       <WebEnderecoProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php</WebEnderecoProducao>
       <WebActionHomologacao>https://testenilopolis.sigiss.com.br/testenilopolis/ws/sigiss_ws.php#ConsultarNotaValida</WebActionHomologacao>
       <WebActionProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php#ConsultarNotaValida</WebActionProducao>
-      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -64,7 +64,7 @@
       <WebEnderecoProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php</WebEnderecoProducao>
       <WebActionHomologacao>https://testenilopolis.sigiss.com.br/testenilopolis/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionHomologacao>
       <WebActionProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionProducao>
-      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>

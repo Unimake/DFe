@@ -11,21 +11,21 @@
 		<DataInicial>2022-04-04</DataInicial>
 		<DataFinal>2022-04-04</DataFinal>
 	</PeriodoEmissao>
-	<PeriodoCompetencia>
+	<!--<PeriodoCompetencia>
 		<DataInicial>2022-04-03</DataInicial>
 		<DataFinal>2022-04-04</DataFinal>
-	</PeriodoCompetencia>
+	</PeriodoCompetencia>-->
 	<Prestador>
 		<CpfCnpj>
 			<Cnpj>12345678901234</Cnpj>
 		</CpfCnpj>
 		<InscricaoMunicipal>12345</InscricaoMunicipal>
 	</Prestador>
-	<Tomador>
+	<!--<Tomador>
 		<CpfCnpj>
 			<Cnpj>?</Cnpj>
 		</CpfCnpj>
 		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
-	</Tomador>
+	</Tomador>-->
 	<Pagina>1</Pagina>
 </ConsultarNfseServicoTomadoEnvio>

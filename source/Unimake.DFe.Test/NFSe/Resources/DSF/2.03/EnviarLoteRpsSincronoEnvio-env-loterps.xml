@@ -39,7 +39,7 @@
 						<CodigoTributacaoMunicipio>6943</CodigoTributacaoMunicipio>
 						<Discriminacao>MAO DE OBRA PARA INSTALACAO DE COLETORES SOLAR</Discriminacao>
 						<CodigoMunicipio>3536703</CodigoMunicipio>
-						<CodigoPais>01058</CodigoPais>
+						<CodigoPais>1058</CodigoPais>
 						<ExigibilidadeISS>1</ExigibilidadeISS>
 						<MunicipioIncidencia>3536703</MunicipioIncidencia>
 					</Servico>
@@ -62,7 +62,7 @@
 							<Bairro>JD. TESTE</Bairro>
 							<CodigoMunicipio>3536703</CodigoMunicipio>
 							<Uf>SP</Uf>
-							<CodigoPais>01058</CodigoPais>
+							<CodigoPais>1058</CodigoPais>
 							<Cep>00000000</Cep>
 						</Endereco>
 						<Contato>

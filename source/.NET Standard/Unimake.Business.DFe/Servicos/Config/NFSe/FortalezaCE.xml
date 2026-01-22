@@ -122,7 +122,7 @@
 			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>serviço_enviar_lote_rps_envio_v04.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
 			<TagAtributoID>LoteRps</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
