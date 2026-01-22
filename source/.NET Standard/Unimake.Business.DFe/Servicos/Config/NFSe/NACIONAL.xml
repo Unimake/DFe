@@ -108,7 +108,7 @@
       <RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}/eventos</RequestURIHomologacao>
       <MetodoAPI>post</MetodoAPI>
       <WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
-      <SchemaArquivo>evento_v1.01.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>pedRegEvento</TagAssinatura>
       <TagAtributoID>infPedReg</TagAtributoID>
       <WebSoapString></WebSoapString>
