@@ -140,12 +140,99 @@ namespace Unimake.DFe.Test.NFSe
             // Validações do evento E101101 (Cancelamento)
             Assert.NotNull(infPedReg.E101101);
             Assert.Equal("Cancelamento de NFS-e", infPedReg.E101101.XDesc);
-            Assert.Equal("1", infPedReg.E101101.CMotivo);
+            Assert.Equal(CodigoJustificativaCancelamento.ErroNaEmissao, infPedReg.E101101.CMotivo);
             Assert.Equal("(SUPERVISOR-18/12/2025-17:23:54)", infPedReg.E101101.XMotivo);
 
             // Validação de data/hora
             Assert.True(retornoSucesso.InfEvento.DhProc > DateTimeOffset.MinValue);
             Assert.True(infPedReg.DhEvento > DateTimeOffset.MinValue);
+        }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.01\EventoCancelarSubstituicao-ped-regev.xml")]
+        public void EventoCancelarPorSubstituicaoNFSeNACIONAL(string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+
+            docFixture.Load(caminhoXml);
+
+            var lido = new PedRegEvento().LerXML<PedRegEvento>(docFixture);
+            Assert.Equal("1.01", lido.Versao);
+            Assert.False(string.IsNullOrWhiteSpace(lido.InfPedReg?.Id));
+            Assert.NotNull(lido.InfPedReg?.E105102);
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+
+            var autor = !string.IsNullOrWhiteSpace(lido.InfPedReg.CNPJAutor)
+                        ? new { cnpj = lido.InfPedReg.CNPJAutor, cpf = (string)null }
+                        : new { cnpj = (string)null, cpf = lido.InfPedReg.CPFAutor };
+
+            var criado = new PedRegEvento
+            {
+                Versao = lido.Versao,
+                InfPedReg = new InfPedReg
+                {
+                    Id = lido.InfPedReg.Id,
+                    TpAmb = lido.InfPedReg.TpAmb,
+                    VerAplic = lido.InfPedReg.VerAplic,
+                    DhEvento = lido.InfPedReg.DhEvento,
+                    CNPJAutor = autor.cnpj,
+                    CPFAutor = autor.cpf,
+                    ChNFSe = lido.InfPedReg.ChNFSe,
+                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
+                    E105102 = new E105102
+                    {
+                        XDesc = lido.InfPedReg.E105102.XDesc,
+                        CMotivo = lido.InfPedReg.E105102.CMotivo,
+                        XMotivo = lido.InfPedReg.E105102.XMotivo,
+                        ChSubstituta = lido.InfPedReg.E105102.ChSubstituta
+                    }
+                }
+            };
+
+            var docCriado = criado.GerarXML();
+            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+
+            // Configuração para execução do serviço
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = lido.InfPedReg.TpAmb,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeRecepcionarEventosDiversos,
+                SchemaVersao = lido.Versao
+            };
+
+            // Executa o serviço
+            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            recepcaoEvento.Executar();
+
+            // Usa a propriedade Result para obter o retorno
+            var resultado = recepcaoEvento.Result;
+            Assert.NotNull(resultado);
+
+            // Verifica o tipo de retorno usando pattern matching
+            if (resultado is Evento eventoSucesso)
+            {
+                // Sucesso! Valida os dados
+                Assert.NotNull(eventoSucesso.InfEvento);
+                Assert.False(string.IsNullOrWhiteSpace(eventoSucesso.InfEvento.Id));
+                System.Diagnostics.Debug.WriteLine($"Evento registrado com sucesso - ID: {eventoSucesso.InfEvento.Id}");
+            }
+            else if (resultado is Temp retornoErro)
+            {
+                // Erro! Valida e exibe
+                Assert.NotNull(retornoErro.Erro);
+                Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Codigo));
+                Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Descricao));
+                System.Diagnostics.Debug.WriteLine($"Erro - Código: {retornoErro.Erro.Codigo}, Descrição: {retornoErro.Erro.Descricao}");
+            }
         }
     }
 }
