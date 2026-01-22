@@ -4749,6 +4749,7 @@
         </xsd:element>
         <xsd:element name="Pagina" type="TSNum7Dig" minOccurs="1" maxOccurs="1"/>
       </xsd:sequence>
+      <xsd:attribute name="versao" type="TVerNFSe" use="required"/>    
     </xsd:complexType>
   </xsd:element>
   <!--  50 registros por página  -->
@@ -4774,6 +4775,7 @@
         <xsd:element name="IdentificacaoDps" type="tcIdentificacaoDps" minOccurs="1" maxOccurs="1"/>
         <xsd:element name="Prestador" type="tcIdentificacaoPessoaEmpresaComIM" minOccurs="1" maxOccurs="1"/>
       </xsd:sequence>
+      <xsd:attribute name="versao" type="TVerNFSe" use="required"/>    
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="ConsultarNfseDpsResposta">
@@ -4812,6 +4814,7 @@
         <xsd:element name="Intermediario" type="tcIdentificacaoPessoaEmpresa" minOccurs="0" maxOccurs="1"/>
         <xsd:element name="Pagina" type="TSNum7Dig" minOccurs="1" maxOccurs="1"/>
       </xsd:sequence>
+      <xsd:attribute name="versao" type="TVerNFSe" use="required"/>
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="ConsultarNfseServicoPrestadoResposta">
@@ -4884,6 +4887,7 @@
       <xsd:sequence>
         <xsd:element name="Prestador" type="tcIdentificacaoPessoaEmpresaComIM" minOccurs="1" maxOccurs="1"/>
       </xsd:sequence>
+      <xsd:attribute name="versao" type="TVerNFSe" use="required"/>
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="ConsultarDadosCadastraisResposta">

@@ -1385,7 +1385,7 @@ namespace Unimake.Business.DFe.Utility
         /// <summary>
         /// Montar chave da NFSe Nacional com base nos valores informados
         /// </summary>
-        /// <param name="conteudoChaveDFe">Conteúdos da NFSe necessários para montagem da chave</param>
+        /// <param name="conteudoChaveNFSe">Conteúdos da NFSe necessários para montagem da chave</param>
         /// <returns></returns>
         public static string MontarChaveNFSe(ref ConteudoChaveNFSe conteudoChaveNFSe)
         {

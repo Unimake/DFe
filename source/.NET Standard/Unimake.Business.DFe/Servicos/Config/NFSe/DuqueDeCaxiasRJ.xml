@@ -124,7 +124,7 @@
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/duquedecaxias/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -143,7 +143,7 @@
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/duquedecaxias/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
 			<TagAtributoID>Pedido</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -181,7 +181,7 @@
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/duquedecaxias/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
 			<TagAtributoID>Pedido</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -200,7 +200,7 @@
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/duquedecaxias/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarDadosCadastrais</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarDadosCadastrais</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarDadosCadastraisEnvio</TagAssinatura>
 			<TagAtributoID>Pedido</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
