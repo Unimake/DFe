@@ -131,7 +131,13 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// Evento de Cancelamento (código 101101).
         /// </summary>
         [XmlElement("e101101", Namespace = NfseNs.Ns)]
-        public E101101 E101101 { get; set; } = new E101101();
+        public E101101 E101101 { get; set; }
+
+        /// <summary>
+        /// Evento de Cancelamento por Substituição (código 105102).
+        /// </summary>
+        [XmlElement("e105102", Namespace = NfseNs.Ns)]
+        public E105102 E105102 { get; set; }
 
         #region ShouldSerialize
         public bool ShouldSerializeCNPJAutor() => !string.IsNullOrWhiteSpace(CNPJAutor);
