@@ -7,7 +7,7 @@
 			<WebEnderecoProducao/>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/RecepcionarLoteRpsRequest</WebActionHomologacao>
 			<WebActionProducao/>
-			<SchemaArquivo>schema_nfse_v0301.xsd</SchemaArquivo>
+			<SchemaArquivo>schema_nfse_v03.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfRps</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
@@ -26,7 +26,7 @@
 			<WebEnderecoProducao/>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/CancelarNfseRequest</WebActionHomologacao>
 			<WebActionProducao/>
-			<SchemaArquivo>schema_nfse_v0301.xsd</SchemaArquivo>
+			<SchemaArquivo>schema_nfse_v03.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura/>
@@ -64,7 +64,7 @@
 			<WebEnderecoProducao/>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfsePorRpsRequest</WebActionHomologacao>
 			<WebActionProducao/>
-			<SchemaArquivo>schema_nfse_v0301.xsd</SchemaArquivo>
+			<SchemaArquivo>schema_nfse_v03.xsd</SchemaArquivo>
 			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura/>
