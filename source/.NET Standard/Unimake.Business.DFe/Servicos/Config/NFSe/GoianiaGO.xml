@@ -121,7 +121,7 @@
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/goiania/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
 			<TagAtributoID>Pedido</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -140,7 +140,7 @@
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/goiania/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarRpsDisponivelEnvio</TagAssinatura>
 			<TagAtributoID>Pedido</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -159,7 +159,7 @@
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/goiania/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarUrlNfseEnvio</TagAssinatura>
 			<TagAtributoID>Pedido</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>

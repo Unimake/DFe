@@ -3730,6 +3730,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\INTERSOL\xmldsig-core-schema20020212_v1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\schema_v101.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\LEXSOM\NFSE.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\LEXSOM\xmldsig-core-schema20020212.xsd" />

@@ -90,7 +90,7 @@ namespace Unimake.Business.DFe
             var files = new List<string>();
 
             string ResolveResourceName(string schemaLocation, string currentResourceName, string currentLogicalName)
-                {
+            {
                 // Normalizações básicas
                 var loc = (schemaLocation ?? "").Trim();
                 if (string.IsNullOrWhiteSpace(loc))
@@ -124,17 +124,17 @@ namespace Unimake.Business.DFe
                 foreach (var c in candidates.Distinct(StringComparer.Ordinal))
                 {
                     if (resources.Contains(c))
-                {
+                    {
                         return c;
+                    }
                 }
-            }
 
                 // Fallback: procura por "qualquer resource que termine com .<arquivo>"
                 // (ajuda se schemaLocation vier com subpasta mas o resource estiver "achatado")
                 var suffix = "." + fileOnly;
                 var bySuffix = resources.FirstOrDefault(r => r.EndsWith(suffix, StringComparison.Ordinal));
                 if (!string.IsNullOrWhiteSpace(bySuffix))
-            {
+                {
                     return bySuffix;
                 }
 
@@ -155,18 +155,18 @@ namespace Unimake.Business.DFe
                 // Carregar o XSD do resource
                 string xsdText;
                 using (var stm = assembly.GetManifestResourceStream(resourceName))
-            {
-                    if (stm == null)
                 {
+                    if (stm == null)
+                    {
                         throw new Exception(
                             "Arquivo de schema referenciado não foi localizado nos recursos da DLL.\r\n" +
                             "Schema principal: " + arqSchema + "\r\n" +
                             "Resource buscado: " + resourceName + "\r\n" +
                             "Referência (schemaLocation): " + logicalName);
-                }
+                    }
 
                     using (var reader = new StreamReader(stm))
-                {
+                    {
                         xsdText = reader.ReadToEnd();
                     }
                 }
@@ -185,9 +185,9 @@ namespace Unimake.Business.DFe
                     "/*[local-name()='schema']/*[(local-name()='include' or local-name()='import' or local-name()='redefine') and @schemaLocation]");
 
                 if (nodes == null || nodes.Count == 0)
-                    {
+                {
                     continue;
-                    }
+                }
 
                 foreach (XmlNode node in nodes)
                 {
@@ -195,7 +195,7 @@ namespace Unimake.Business.DFe
                     if (string.IsNullOrWhiteSpace(schemaLocation))
                     {
                         continue;
-                }
+                    }
 
                     // Evita loop por schemaLocation (mesmo texto)
                     if (!referencedLocations.Add(schemaLocation))
@@ -205,7 +205,7 @@ namespace Unimake.Business.DFe
 
                     var resolved = ResolveResourceName(schemaLocation, resourceName, logicalName);
                     if (string.IsNullOrWhiteSpace(resolved))
-                        {
+                    {
                         throw new Exception(
                             "Arquivo de schema referenciado via schemaLocation não foi localizado nos recursos da DLL.\r\n" +
                             "Schema principal: " + arqSchema + "\r\n" +
@@ -257,7 +257,7 @@ namespace Unimake.Business.DFe
                     if (!string.IsNullOrWhiteSpace(ErroValidacao))
                         ErroValidacao += ex.Message;
                     else
-                    ErroValidacao = ex.Message;
+                        ErroValidacao = ex.Message;
                 }
 
                 xmlReader.Close();
@@ -312,6 +312,8 @@ namespace Unimake.Business.DFe
             ErrorCode = 0;
             ErrorMessage = "";
 
+            //if (padraoNFSe == Servicos.PadraoNFSe.None)
+            //{
             var settings = new XmlReaderSettings
             {
                 ValidationType = ValidationType.Schema,
@@ -325,9 +327,9 @@ namespace Unimake.Business.DFe
             try
             {
                 var schemas = new XmlSchemaSet
-                    {
+                {
                     XmlResolver = null // reforço: schemaSet também não resolve nada externo
-                    };
+                };
 
                 settings.Schemas = schemas;
 
@@ -339,10 +341,10 @@ namespace Unimake.Business.DFe
 
                 //if (!string.IsNullOrWhiteSpace(targetNS))
                 //{
-                    foreach (var schema in ExtractSchemasResource(arqSchema, padraoNFSe))
-                    {
-                        settings.Schemas.Add(schema);
-                    }
+                foreach (var schema in ExtractSchemasResource(arqSchema, padraoNFSe))
+                {
+                    settings.Schemas.Add(schema);
+                }
                 //}
 
                 schemas.Compile(); //Pegar erros dos schemas aqui para não perder falhas na validação do XML
@@ -364,6 +366,7 @@ namespace Unimake.Business.DFe
                 ErrorMessage += ErroValidacao;
                 ErrorMessage += "\r\n...Final da validação";
             }
+            //}
         }
 
 #if INTEROP

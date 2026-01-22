@@ -161,7 +161,7 @@
       <WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/ribeiraopreto/nfse.asmx?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionProducao>
-      <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>ConsultarUrlNfseEnvio</TagAssinatura>
       <TagAtributoID>Pedido</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>

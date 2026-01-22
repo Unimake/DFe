@@ -180,7 +180,7 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarRpsDisponivelEnvio</TagAssinatura>
 			<TagAtributoID>Pedido</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -199,7 +199,7 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarUrlNfseEnvio</TagAssinatura>
 			<TagAtributoID>Pedido</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
