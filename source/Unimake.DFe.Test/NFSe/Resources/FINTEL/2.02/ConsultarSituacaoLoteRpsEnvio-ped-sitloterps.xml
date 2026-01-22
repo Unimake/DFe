@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ConsultarSituacaoLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+<ConsultarSituacaoLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd:ConsultarSituacaoLoteRpsEnvio">
 	<Prestador>
 		<Cnpj>99999999999999</Cnpj>
 		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
