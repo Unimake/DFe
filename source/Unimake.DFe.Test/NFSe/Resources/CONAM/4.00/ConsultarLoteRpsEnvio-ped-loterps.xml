@@ -1,8 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Sdt_consultaprotocoloin xmlns="NFe">
-	<Protocolo>123456789012345678901234567890</Protocolo>
+﻿<Sdt_consultanotasprotocoloin xmlns="NFe">
+	<Protocolo>99999999999</Protocolo>
 	<Login>
-		<CodigoUsuario>9999999999</CodigoUsuario>
-		<CodigoContribuinte>99999999</CodigoContribuinte>
+		<CodigoUsuario>999999999999</CodigoUsuario>
+		<CodigoContribuinte>9999999999</CodigoContribuinte>
 	</Login>
-</Sdt_consultaprotocoloin>
+</Sdt_consultanotasprotocoloin>
