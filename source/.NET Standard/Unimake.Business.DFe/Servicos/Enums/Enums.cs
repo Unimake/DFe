@@ -16300,6 +16300,7 @@ namespace Unimake.Business.DFe.Servicos
     #endregion TipoEventoNFCom
 
     #endregion NFCom
+
     #region NFS-e NACIONAL
 
     #region Tipo de Exigibilidade Suspensa NFS-e NACIONAL
@@ -17178,6 +17179,76 @@ namespace Unimake.Business.DFe.Servicos
         FornecimentoRecebimentoPagamentoConcomitante = 5,
     }
     #endregion Tipo de Operação com Entes Governamentais ou outros serviços sobre bens imóveis
+
+    #region Código Motivo Cancelamento NFS-e NACIONAL
+    /// <summary>
+    /// Códigos de Motivo de Cancelamento da NFS-e NACIONAL
+    /// </summary>
+    public enum CodigoJustificativaCancelamento
+    {
+        /// <summary>
+        /// 1 - Erro na emissão
+        /// </summary>
+        [XmlEnum("1")]
+        ErroNaEmissao = 1,
+
+        /// <summary>
+        /// 2 - Serviço não prestado
+        /// </summary>
+        [XmlEnum("2")]
+        ServicoNaoPrestado = 2,
+
+        /// <summary>
+        /// 9 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9
+    }
+    #endregion Código Motivo Cancelamento NFS-e NACIONAL
+
+    #region Código Motivo Cancelamento Por substituição NFS-e NACIONAL
+    /// <summary>
+    /// Código de Motivo de Cancelamento por Substituição da NFS-e NACIONAL
+    /// </summary>
+    public enum CodigoJustificativaSubstituicaoSubstituicao
+    {
+        /// <summary>
+        /// 01 - Desenquadramento de NFS-e do Simples Nacional
+        /// </summary>
+        [XmlEnum("01")]
+        DesenquadramentoDeNFSeDoSimplesNacional = 01,
+
+        /// <summary>
+        /// 02 - Enquadramento de NFS-e do Simples Nacional
+        /// </summary>
+        [XmlEnum("02")]
+        EnquadramentoDeNFSeDoSimplesNacional = 02,
+
+        /// <summary>
+        /// 03 - Inclusão retroativa de imunidade/isenção para NFS-e
+        /// </summary>
+        [XmlEnum("03")]
+        InclusaoRetroativaDeImunidadeIsencaoParaNFSe = 03,
+
+        /// <summary>
+        /// 04 - Exclusão retroativa de imunidade/isenção para NFS-e
+        /// </summary>
+        [XmlEnum("04")]
+        ExclusaoRetroativaDeImunidadeIsencaoParaNFSe = 04,
+
+        /// <summary>
+        /// 05 - Rejeição de NFS-e pelo tomador ou pelo intermediário, se responsável pelo recolhimento do tributo
+        /// </summary>
+        [XmlEnum("05")]
+        RejeicaoDeNFSePeloTomadorOuPeloIntermediarioSeResponsavelPeloRecolhimentoDoTributo = 05,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99
+    }
+    #endregion Código Motivo Cancelamento Por substituição NFS-e NACIONAL
 
     #endregion NFS-e NACIONAL
 
