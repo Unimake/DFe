@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConsultarNfseEnvio xmlns="http://www.ginfes.com.br/servico_consultar_nfse_envio_v03.xsd">
-	<Prestador versao="4.00">
+	<Prestador>
 		<Cnpj xmlns="http://www.ginfes.com.br/tipos_v03.xsd">01234567890123</Cnpj>
 		<InscricaoMunicipal xmlns="http://www.ginfes.com.br/tipos_v03.xsd">3246001</InscricaoMunicipal>
 	</Prestador>

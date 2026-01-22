@@ -7,7 +7,7 @@
 			<WebEnderecoProducao>https://mogiguacu.sigiss.com.br/mogiguacu/ws/sigiss_ws.php</WebEnderecoProducao>
 			<WebActionHomologacao>https://testemogiguacu.sigiss.com.br/testemogiguacu/ws/sigiss_ws.php#GerarNota</WebActionHomologacao>
 			<WebActionProducao>https://mogiguacu.sigiss.com.br/mogiguacu/ws/sigiss_ws.php#GerarNota</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -26,7 +26,7 @@
 			<WebEnderecoProducao>https://mogiguacu.sigiss.com.br/mogiguacu/ws/sigiss_ws.php</WebEnderecoProducao>
 			<WebActionHomologacao>https://testemogiguacu.sigiss.com.br/testemogiguacu/ws/sigiss_ws.php#CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>https://mogiguacu.sigiss.com.br/mogiguacu/ws/sigiss_ws.php#CancelarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
 			<WebEnderecoProducao>https://mogiguacu.sigiss.com.br/mogiguacu/ws/sigiss_ws.php</WebEnderecoProducao>
 			<WebActionHomologacao>https://testemogiguacu.sigiss.com.br/testemogiguacu/ws/sigiss_ws.php#ConsultarNotaValida</WebActionHomologacao>
 			<WebActionProducao>https://mogiguacu.sigiss.com.br/mogiguacu/ws/sigiss_ws.php#ConsultarNotaValida</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -64,7 +64,7 @@
 			<WebEnderecoProducao>https://mogiguacu.sigiss.com.br/mogiguacu/ws/sigiss_ws.php</WebEnderecoProducao>
 			<WebActionHomologacao>https://testemogiguacu.sigiss.com.br/testemogiguacu/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionHomologacao>
 			<WebActionProducao>https://mogiguacu.sigiss.com.br/mogiguacu/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>

@@ -142,7 +142,7 @@
       <WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/ribeiraopreto/nfse.asmx?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
-      <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
       <TagAtributoID>Pedido</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -161,7 +161,7 @@
       <WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/ribeiraopreto/nfse.asmx?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionProducao>
-      <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>ConsultarUrlNfseEnvio</TagAssinatura>
       <TagAtributoID>Pedido</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -180,7 +180,7 @@
       <WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/ribeiraopreto/nfse.asmx?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
-      <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
       <TagAtributoID>Pedido</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -199,7 +199,7 @@
       <WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/ribeiraopreto/nfse.asmx?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
-      <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
       <TagAtributoID>Pedido</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -390,7 +390,7 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarDadosCadastrais</WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
