@@ -3119,4 +3119,10 @@
 		<ArqConfig>AraruamaSP.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1600303">
+		<Nome>Macapá - AP</Nome>
+		<UF>AP</UF>
+		<ArqConfig>MacapaAP.xml</ArqConfig>
+		<PadraoNFSe>ISSNET</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

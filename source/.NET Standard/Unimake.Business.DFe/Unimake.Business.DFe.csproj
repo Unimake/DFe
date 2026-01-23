@@ -547,6 +547,7 @@
 		<None Remove="Servicos\Config\NFSe\LorenaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml" />
 		<None Remove="Servicos\Config\NFSe\MacaeRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\MacapaAP.xml" />
 		<None Remove="Servicos\Config\NFSe\MafraSC.xml" />
 		<None Remove="Servicos\Config\NFSe\MageRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\MairiporaSP.xml" />
@@ -1616,6 +1617,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CamaragibePE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguariunaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MacapaAP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDasOstrasRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TibauRN.xml" />
 	</ItemGroup>
