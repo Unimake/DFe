@@ -38,7 +38,7 @@ namespace Unimake.DFe.Test.NFSe
         [Trait("DFe", "NFSe")]
         public void GerarNfseIndicativoDecisaoJudicialXMLObjeto()
         {
-            var emissao = DateTimeOffset.Now;
+            var emissao = DateTimeOffset.Now.DateTime;
             var nfse = new Business.DFe.Xml.NFSe.NACIONAL.NFSe.NFSe
             {
                 Versao = "1.01",

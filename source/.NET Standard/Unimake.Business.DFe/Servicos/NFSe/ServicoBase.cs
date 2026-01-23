@@ -640,6 +640,33 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     .Replace("{serie}", serieDps)
                     .Replace("{numero}", numeroDps);
             }
+
+            if (Configuracoes.Servico == Servico.NFSeConsultarNfse) 
+            {
+                Console.WriteLine(ConteudoXMLAssinado.OuterXml);
+
+                var idNodeList =
+                 ConteudoXMLAssinado.GetElementsByTagName(
+                     "infNFSe",
+                     "http://www.sped.fazenda.gov.br/nfse"
+                 );
+
+                if (idNodeList == null || idNodeList.Count == 0)
+                    throw new Exception("Elemento infNFSe não encontrado no XML da NFSe.");
+
+                var infNFSe = (XmlElement)idNodeList[0];
+
+                string id = infNFSe.GetAttribute("Id");
+
+                if (string.IsNullOrWhiteSpace(id))
+                    throw new Exception("Atributo Id da NFSe não encontrado.");
+
+                string chave = id;
+
+                // 4 — Substituir placeholders
+                Configuracoes.RequestURI = Configuracoes.RequestURI
+                    .Replace("{Chave}", id);
+            }
         }
         #endregion PRONIM
 

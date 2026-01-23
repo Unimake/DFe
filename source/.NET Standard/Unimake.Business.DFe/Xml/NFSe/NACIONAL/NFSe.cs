@@ -272,7 +272,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
                 TipoInscricaoFederal = !string.IsNullOrWhiteSpace(Emit.CPF) ? "1" : "2",
                 InscricaoFederal = !string.IsNullOrWhiteSpace(Emit.CPF) ? Emit.CPF : Emit.CNPJ,
                 NumeroDoctoFiscal = NNFSe,
-                AnoEmissao = DhProc.Year.ToString("yy"),
+                AnoEmissao = (DhProc.Year % 100).ToString("D2"),
                 MesEmissao = DhProc.Month.ToString("00"),
                 CodigoNumerico = XMLUtility.GerarCodigoNumerico((int)NNFSe, 9).ToString("000000000")
             };
