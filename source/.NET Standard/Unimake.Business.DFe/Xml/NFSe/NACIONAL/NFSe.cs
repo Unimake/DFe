@@ -147,7 +147,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// Ambiente gerador da NFS-e.
         /// </summary>
         [XmlElement("ambGer")]
-        public TipoAmbiente AmbGer { get; set; }
+        public AmbienteGeradorNFSe AmbGer { get; set; }
 
         /// <summary>
         /// Tipo de emissão da NFS-e.
@@ -268,7 +268,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
             var conteudoChaveNFSe = new ConteudoChaveNFSe
             {
                 CodigoMunicipio = DPS.InfDPS.CLocEmi.ToString("0000000"),
-                TipoAmbiente = AmbGer,
+                AmbienteGerador = AmbGer,
                 TipoInscricaoFederal = !string.IsNullOrWhiteSpace(Emit.CPF) ? "1" : "2",
                 InscricaoFederal = !string.IsNullOrWhiteSpace(Emit.CPF) ? Emit.CPF : Emit.CNPJ,
                 NumeroDoctoFiscal = NNFSe,
