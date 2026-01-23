@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
