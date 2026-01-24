@@ -156,14 +156,14 @@ Function EFDReinf2055()
       MESSAGEBOX("Terminou")   
 	  
     Catch To oErro
-    * Exceção do FOXPRO
-	* Mais sobre exceção em FOXPRO
+    * ExceÃ§Ã£o do FOXPRO
+	* Mais sobre exceÃ§Ã£o em FOXPRO
 	* http://www.yaldex.com/fox_pro_tutorial/html/2344b71b-14c0-4125-b001-b5fbb7bd1f05.htm
 	
 	  MessageBox(oErro.ErrorNo)
-	  MessageBox("Exceção foxpro: " + oErro.Message)
+	  MessageBox("ExceÃ§Ã£o foxpro: " + oErro.Message)
 	  
-    * Exceção do CSHARP
+    * ExceÃ§Ã£o do CSHARP
       MessageBox(oExceptionInterop.GetMessage())
       MessageBox(oExceptionInterop.GetErrorCode())
    EndTry   
