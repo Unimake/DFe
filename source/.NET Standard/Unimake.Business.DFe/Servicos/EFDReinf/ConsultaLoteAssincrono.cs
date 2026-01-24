@@ -175,6 +175,8 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
+                configuracao.NumeroProtocolo = reinfConsultaLoteAssinc.ConsultaLoteAssincrono.NumeroProtocolo;
+
                 Inicializar(reinfConsultaLoteAssinc?.GerarXML() ?? throw new ArgumentNullException(nameof(reinfConsultaLoteAssinc)), configuracao);
                 Executar();
             }
