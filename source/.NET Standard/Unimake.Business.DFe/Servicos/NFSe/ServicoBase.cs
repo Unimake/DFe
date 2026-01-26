@@ -118,6 +118,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     SMARAPD();
                     break;
 
+                case PadraoNFSe.BETHA_CLOUD:
+                    BETHA_CLOUD();
+                    break;
+
             }
             Configuracoes.Definida = true;
             base.DefinirConfiguracao();
@@ -712,6 +716,30 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #endregion SIMPLISS
+
+        #region BETHA_CLOUD
+
+        private void BETHA_CLOUD()
+        {
+            bool isServicosNacional = Configuracoes.Servico == Servico.NFSeConsultarNfse ||
+                                      Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps;
+
+            if (!isServicosNacional)
+            {
+                return;
+            }
+            else
+            {
+                var URI = Configuracoes.RequestURI;
+
+                var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+                var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+                var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+            }
+            
+        }
+        #endregion BETHA_CLOUD
 
 
         #endregion Configurações separadas por PadrãoNFSe

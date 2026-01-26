@@ -74,21 +74,19 @@ namespace Unimake.DFe.Test.NFSe
             var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
             recepcaoEvento.Executar();
 
-            // Usa a propriedade Result para obter o retorno
-            var resultado = recepcaoEvento.Result;
-            Assert.NotNull(resultado);
-
-            // Verifica o tipo de retorno usando pattern matching
-            if (resultado is Evento eventoSucesso)
+            // Usa as propriedades tipadas para obter o retorno
+            if (recepcaoEvento.Sucesso)
             {
-                // Sucesso! Valida os dados
+                var eventoSucesso = recepcaoEvento.ResultEvento;
+                Assert.NotNull(eventoSucesso);
                 Assert.NotNull(eventoSucesso.InfEvento);
                 Assert.False(string.IsNullOrWhiteSpace(eventoSucesso.InfEvento.Id));
                 System.Diagnostics.Debug.WriteLine($"Evento registrado com sucesso - ID: {eventoSucesso.InfEvento.Id}");
             }
-            else if (resultado is Temp retornoErro)
+            else
             {
-                // Erro! Valida e exibe
+                var retornoErro = recepcaoEvento.ResultTemp;
+                Assert.NotNull(retornoErro);
                 Assert.NotNull(retornoErro.Erro);
                 Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Codigo));
                 Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Descricao));
@@ -213,21 +211,19 @@ namespace Unimake.DFe.Test.NFSe
             var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
             recepcaoEvento.Executar();
 
-            // Usa a propriedade Result para obter o retorno
-            var resultado = recepcaoEvento.Result;
-            Assert.NotNull(resultado);
-
-            // Verifica o tipo de retorno usando pattern matching
-            if (resultado is Evento eventoSucesso)
+            // Usa as propriedades tipadas para obter o retorno
+            if (recepcaoEvento.Sucesso)
             {
-                // Sucesso! Valida os dados
+                var eventoSucesso = recepcaoEvento.ResultEvento;
+                Assert.NotNull(eventoSucesso);
                 Assert.NotNull(eventoSucesso.InfEvento);
                 Assert.False(string.IsNullOrWhiteSpace(eventoSucesso.InfEvento.Id));
                 System.Diagnostics.Debug.WriteLine($"Evento registrado com sucesso - ID: {eventoSucesso.InfEvento.Id}");
             }
-            else if (resultado is Temp retornoErro)
+            else
             {
-                // Erro! Valida e exibe
+                var retornoErro = recepcaoEvento.ResultTemp;
+                Assert.NotNull(retornoErro);
                 Assert.NotNull(retornoErro.Erro);
                 Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Codigo));
                 Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Descricao));

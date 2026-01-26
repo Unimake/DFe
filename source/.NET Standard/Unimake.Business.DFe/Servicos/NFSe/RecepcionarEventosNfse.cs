@@ -59,10 +59,33 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         /// <summary>
-        /// Resultado do processamento do evento.
-        /// Retorna Evento (sucesso) ou Temp (erro) dependendo da resposta do servidor.
+        /// Indica se o processamento foi bem-sucedido (retornou Evento) ou ocorreu erro (retornou Temp)
         /// </summary>
-        public object Result
+        public bool Sucesso
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
+                {
+                    try
+                    {
+                        XMLUtility.Deserializar<Evento>(RetornoWSXML);
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Resultado do processamento quando bem-sucedido.
+        /// Verificar propriedade Sucesso antes de acessar.
+        /// </summary>
+        public Evento ResultEvento
         {
             get
             {
@@ -74,22 +97,38 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     }
                     catch
                     {
-                        try
+                        return null;
+                    }
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Resultado do processamento quando ocorreu erro.
+        /// Verificar propriedade Sucesso antes de acessar.
+        /// </summary>
+        public Temp ResultTemp
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
+                {
+                    try
+                    {
+                        return XMLUtility.Deserializar<Temp>(RetornoWSXML);
+                    }
+                    catch
+                    {
+                        // Se falhar ao deserializar, retorna erro genérico
+                        return new Temp
                         {
-                            return XMLUtility.Deserializar<Temp>(RetornoWSXML);
-                        }
-                        catch
-                        {
-                            // Se ambos falharem, retorna erro genérico
-                            return new Temp
+                            Erro = new Erro
                             {
-                                Erro = new Erro
-                                {
-                                    Codigo = "0",
-                                    Descricao = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
-                                }
-                            };
-                        }
+                                Codigo = "0",
+                                Descricao = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
+                            }
+                        };
                     }
                 }
 
@@ -101,6 +140,20 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                         Descricao = "Não há retorno do servidor para processar."
                     }
                 };
+            }
+        }
+
+        /// <summary>
+        /// Resultado do processamento do evento.
+        /// [OBSOLETO] Use as propriedades Sucesso, ResultEvento e ResultTemp para melhor compatibilidade COM.
+        /// Retorna Evento (sucesso) ou Temp (erro) dependendo da resposta do servidor.
+        /// </summary>
+        [Obsolete("Use as propriedades Sucesso, ResultEvento e ResultTemp para melhor compatibilidade COM Interop.")]
+        public object Result
+        {
+            get
+            {
+                return Sucesso ? (object)ResultEvento : (object)ResultTemp;
             }
         }
 
