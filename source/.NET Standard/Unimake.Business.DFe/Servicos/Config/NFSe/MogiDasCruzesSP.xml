@@ -186,7 +186,6 @@
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.sil.com/"><soapenv:Header/><soapenv:Body><web:NotaFiscalNacionalGerar><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></web:NotaFiscalNacionalGerar></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
@@ -205,7 +204,6 @@
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.sil.com/"><soapenv:Header/><soapenv:Body><web:NotaFiscalNacionalCancelar><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></web:NotaFiscalNacionalCancelar></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>

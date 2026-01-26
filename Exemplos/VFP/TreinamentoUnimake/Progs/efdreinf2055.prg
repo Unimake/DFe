@@ -7,13 +7,13 @@ Function EFDReinf2055()
    LOCAL oReinfEnvioLoteEventos, oEventoReinf, oDetAquis, oInfoProcJud
    LOCAL oRecepcionarLoteAssincrono, stringXML
    
- * Criar configuraÃ§Ã£o bÃ¡sica para consumir o serviÃ§o
+ * Criar configuração básica para consumir o serviço
    oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
    oConfig.TipoDFe = 11 && 11=EFDReinf
    oConfig.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig.CertificadoSenha = "12345678"
    oConfig.TipoAmbiente = 2 && Homologação
-   oConfig.Servico = 67 && Servico.EFDReinfRecepcionarLoteAssincrono,
+   oConfig.Servico = 67 && Servico.EFDReinfRecepcionarLoteAssincrono
 
  * Criar XML   
    oReinfEnvioLoteEventos = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos")
@@ -119,7 +119,7 @@ Function EFDReinf2055()
    
    oReinfEnvioLoteEventos.EnvioLoteEventos.Eventos.AddEvento(oEventoReinf)  
    
- * Criar objeto para pegar exceÃ§Ã£o do lado do CSHARP
+ * Criar objeto para pegar exceção do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
    
    TRY   
@@ -156,14 +156,14 @@ Function EFDReinf2055()
       MESSAGEBOX("Terminou")   
 	  
     Catch To oErro
-    * ExceÃ§Ã£o do FOXPRO
-	* Mais sobre exceÃ§Ã£o em FOXPRO
+    * Exceção do FOXPRO
+	* Mais sobre exceção em FOXPRO
 	* http://www.yaldex.com/fox_pro_tutorial/html/2344b71b-14c0-4125-b001-b5fbb7bd1f05.htm
 	
 	  MessageBox(oErro.ErrorNo)
-	  MessageBox("ExceÃ§Ã£o foxpro: " + oErro.Message)
+	  MessageBox("Exceção foxpro: " + oErro.Message)
 	  
-    * ExceÃ§Ã£o do CSHARP
+    * Exceção do CSHARP
       MessageBox(oExceptionInterop.GetMessage())
       MessageBox(oExceptionInterop.GetErrorCode())
    EndTry   

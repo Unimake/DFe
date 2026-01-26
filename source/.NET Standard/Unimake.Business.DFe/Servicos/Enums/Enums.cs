@@ -865,6 +865,28 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region AmbienteGeradorNFSe
+
+    /// <summary>
+    /// Ambiente gerador da NFS-e
+    /// </summary>
+    public enum AmbienteGeradorNFSe
+    {
+        /// <summary>
+        /// 1 - Sistema Próprio do Município
+        /// </summary>
+        [XmlEnum("1")]
+        SistemaProprioMunicipio = 1,
+
+        /// <summary>
+        /// 2 - Sefin Nacional NFS-e
+        /// </summary>
+        [XmlEnum("2")]
+        SefinNacionalNfse = 2
+    }
+
+    #endregion
+
     #region ModeloDFe
 
     /// <summary>
