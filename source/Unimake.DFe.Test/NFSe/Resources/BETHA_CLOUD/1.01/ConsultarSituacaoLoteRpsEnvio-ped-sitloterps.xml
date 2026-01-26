@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <e:ConsultarStatusDpsEnvio xmlns:e="http://www.betha.com.br/e-nota-dps">
 	<e:tpAmb>1</e:tpAmb>
 	<e:codigoIbge>4205407</e:codigoIbge>

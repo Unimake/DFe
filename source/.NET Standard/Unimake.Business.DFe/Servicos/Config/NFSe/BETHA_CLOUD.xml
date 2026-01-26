@@ -53,6 +53,10 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
 			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
@@ -69,6 +73,10 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
 			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
