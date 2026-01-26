@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<e:ConsultarStatusDpsEnvio xmlns:e="http://www.betha.com.br/e-nota-dps">
-	<e:tpAmb>1</e:tpAmb>
-	<e:codigoIbge>4100400</e:codigoIbge>
-	<e:cpfCnpjPrestador>00571847000126</e:cpfCnpjPrestador>
-	<e:protocolo>385311327546200</e:protocolo>
-	<e:tipoIntegracao>EMISSAO</e:tipoIntegracao>
-</e:ConsultarStatusDpsEnvio>

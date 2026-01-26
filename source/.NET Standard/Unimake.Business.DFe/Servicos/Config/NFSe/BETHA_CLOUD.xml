@@ -41,6 +41,26 @@
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
 		</CancelarNfse>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Serviço de Consulta de NFSe</Descricao>
+			<WebEnderecoHomologacao>https://nota-eletronica.betha.cloud/dps/ws/service.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/dps/ws/service.wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>ConsultarStatusDps</WebActionHomologacao>
+			<WebActionProducao>ConsultarStatusDps</WebActionProducao>
+			<SchemaArquivo>nfse_dps_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
+			<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
+		</ConsultarNfse>
 		<SubstituirNfse versao="1.01">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao>https://nota-eletronica.betha.cloud/dps/ws/service.wsdl</WebEnderecoHomologacao>
@@ -61,56 +81,5 @@
 			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
 		</SubstituirNfse>
-		<ConsultarSituacaoLoteRps versao="1.01">
-			<Descricao>Serviço de Consulta de NFSe</Descricao>
-			<WebEnderecoHomologacao>https://nota-eletronica.betha.cloud/dps/ws/service.wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/dps/ws/service.wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>ConsultarStatusDps</WebActionHomologacao>
-			<WebActionProducao>ConsultarStatusDps</WebActionProducao>
-			<SchemaArquivo>nfse_dps_v01.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>env:Body</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>1.01</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
-			<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
-		</ConsultarSituacaoLoteRps>
-		<ConsultarNfsePorRps versao="1.01">
-			<Descricao>Consultar NFSe por DPS</Descricao>
-			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/dps/{Chave}</RequestURIProducao>
-			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/dps/{Chave}</RequestURIHomologacao>
-			<MetodoAPI>get</MetodoAPI>
-			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<WebSoapString></WebSoapString>
-			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno>chaveAcesso</WebTagRetorno>
-			<SchemaVersao></SchemaVersao>
-			<GZIPCompress>false</GZIPCompress>
-			<LoginConexao>false</LoginConexao>
-		</ConsultarNfsePorRps>
-		<ConsultarNfse versao="1.01">
-			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}</RequestURIProducao>
-			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}</RequestURIHomologacao>
-			<MetodoAPI>get</MetodoAPI>
-			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<WebSoapString></WebSoapString>
-			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
-			<SchemaVersao></SchemaVersao>
-			<GZIPCompress>false</GZIPCompress>
-			<LoginConexao>false</LoginConexao>
-			<UsaCertificadoDigital>true</UsaCertificadoDigital>
-		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>
