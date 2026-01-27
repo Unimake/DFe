@@ -234,8 +234,8 @@ namespace Unimake.Business.DFe
             httpWebRequest.Timeout = soap.TimeOutWebServiceConnect;
             httpWebRequest.ContentType = (string.IsNullOrEmpty(soap.ContentType) ? "application/soap+xml; charset=utf-8;" : soap.ContentType);
             httpWebRequest.Method = "POST";
-            
-            if(soap.PadraoNFSe == PadraoNFSe.FUTURIZE)
+
+            if (soap.PadraoNFSe == PadraoNFSe.FUTURIZE)
             {
                 httpWebRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
             }
@@ -405,7 +405,7 @@ namespace Unimake.Business.DFe
                         RetornoServicoString = retornoXml.InnerText;
 
                         //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
-                        if(RetornoServicoString.ToLower().IndexOf("<?xml") <= 1)
+                        if (RetornoServicoString.ToLower().IndexOf("<?xml") <= 1)
                         {
                             if (RetornoServicoString.IndexOf("?>") >= 0)
                             {
@@ -434,6 +434,11 @@ namespace Unimake.Business.DFe
                         RetornoServicoString = RetornoServicoString.Replace("<CompNfse  ><?xml version=\"1.0\" encoding=\"UTF-8\"?>", "<CompNfse>");
 
                         RetornoServicoString = RetornoServicoString.Replace("<CompNfse><?xml version=\"1.0\" encoding=\"UTF-8\"?>", "<CompNfse>");
+                    }
+                    else if (soap.PadraoNFSe == PadraoNFSe.GINFES && RetornoServicoString.IndexOf("<p1:MensagemRetorno>") > 1)
+                    {
+                        RetornoServicoString = RetornoServicoString.Replace("</MensagemRetorno>", "</p1:MensagemRetorno>");
+
                     }
 
                     RetornoServicoXML = new XmlDocument
