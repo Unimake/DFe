@@ -645,7 +645,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     .Replace("{numero}", numeroDps);
             }
 
-            if (Configuracoes.Servico == Servico.NFSeConsultarNfse) 
+            if (Configuracoes.Servico == Servico.NFSeConsultarNfse)
             {
                 Console.WriteLine(ConteudoXMLAssinado.OuterXml);
 
@@ -1070,6 +1070,65 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             stream.Close();
         }
 
+        #region Propriedades de Retorno - Padrão NACIONAL
 
+        /// <summary>
+        /// Valida se o padrão é NACIONAL antes de acessar propriedades específicas.
+        /// </summary>
+        private void ValidarPadraoNacional()
+        {
+            if (Configuracoes.PadraoNFSe != PadraoNFSe.NACIONAL)
+            {
+                throw new InvalidOperationException(
+                    $"As propriedades Result e ResultErro estão disponíveis apenas para o padrão NACIONAL. " +
+                    $"Padrão atual: {Configuracoes.PadraoNFSe}"
+                );
+            }
+        }
+
+        /// <summary>
+        /// Resultado quando ocorreu erro (apenas para padrão NACIONAL).
+        /// Retorna null se processamento foi bem-sucedido.
+        /// </summary>
+#if INTEROP
+[ComVisible(true)]
+#endif
+        public Xml.NFSe.NACIONAL.Temp ResultErro
+        {
+            get
+            {
+                ValidarPadraoNacional();
+
+                if (string.IsNullOrWhiteSpace(RetornoWSString))
+                {
+                    return new Xml.NFSe.NACIONAL.Temp
+                    {
+                        Erro = new Xml.NFSe.NACIONAL.Erro
+                        {
+                            Codigo = "0",
+                            Descricao = "Não há retorno do servidor para processar."
+                        }
+                    };
+                }
+
+                try
+                {
+                    return XMLUtility.Deserializar<Xml.NFSe.NACIONAL.Temp>(RetornoWSXML);
+                }
+                catch
+                {
+                    return new Xml.NFSe.NACIONAL.Temp
+                    {
+                        Erro = new Xml.NFSe.NACIONAL.Erro
+                        {
+                            Codigo = "0",
+                            Descricao = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
+                        }
+                    };
+                }
+            }
+        }
+
+        #endregion
     }
 }
