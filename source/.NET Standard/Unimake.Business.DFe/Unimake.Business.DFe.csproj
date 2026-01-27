@@ -325,6 +325,7 @@
 		<None Remove="Servicos\Config\NFSe\AraguariMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AraquariSC.xml" />
 		<None Remove="Servicos\Config\NFSe\ArarasSP.xml" />
+		<None Remove="Servicos\Config\NFSe\AraucariaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\ArcosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AriquemesRO.xml" />
 		<None Remove="Servicos\Config\NFSe\ArroioDoMeioRS.xml" />
@@ -1610,6 +1611,7 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraruamaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AraucariaPR.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
