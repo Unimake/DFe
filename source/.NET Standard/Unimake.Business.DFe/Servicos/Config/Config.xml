@@ -3125,4 +3125,10 @@
 		<ArqConfig>MacapaAP.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4101804">
+		<Nome>Araucária - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>AraucariaPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
