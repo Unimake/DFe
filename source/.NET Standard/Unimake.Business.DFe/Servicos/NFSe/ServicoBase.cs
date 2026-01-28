@@ -13,6 +13,7 @@ using System.Xml;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.GNRE;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
@@ -78,12 +79,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     break;
 
                 case PadraoNFSe.EL:
-
-                    if (Configuracoes.SchemaVersao == "1.00")
-                    {
-                        EL();
-                    }
-
+                    EL();
                     break;
 
                 case PadraoNFSe.EGOVERNEISS:
@@ -407,6 +403,16 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             var cnpjCpfIntermediario = string.Empty;
             var dataInicial = string.Empty;
             var dataFinal = string.Empty;
+
+            if (ConteudoXML.GetElementsByTagName("infDPS").Count > 0 || ConteudoXML.GetElementsByTagName("infNFSe").Count > 0 || ConteudoXML.GetElementsByTagName("infPedReg").Count > 0)
+            {
+                if (Configuracoes.RequestURI.Contains("{token}"))
+                {
+                    var token = Configuracoes.MunicipioToken;
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{token}", token);
+                }
+            }
+
 
             if (Configuracoes.Servico == Servico.NFSeConsultarNfse)
             {
