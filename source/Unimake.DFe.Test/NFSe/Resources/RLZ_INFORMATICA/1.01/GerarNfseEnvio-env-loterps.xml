@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DPS xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
+	<infDPS Id="DPS410690226254937400011800900000000000001053">
+		<tpAmb>2</tpAmb>
+		<dhEmi>2026-01-20T16:47:15-03:00</dhEmi>
+		<verAplic>1</verAplic>
+		<serie>900</serie>
+		<nDPS>1053</nDPS>
+		<dCompet>2026-01-20</dCompet>
+		<tpEmit>1</tpEmit>
+		<cLocEmi>4106902</cLocEmi>
+		<prest>
+			<CNPJ>62549374000118</CNPJ>
+			<fone>4140421810</fone>
+			<email>TECNICO@FKN.COM.BR</email>
+			<regTrib>
+				<opSimpNac>3</opSimpNac>
+				<regApTribSN>1</regApTribSN>
+				<regEspTrib>0</regEspTrib>
+			</regTrib>
+		</prest>
+		<toma>
+			<CNPJ>49550265000152</CNPJ>
+			<xNome>COSMOS TAMOIOS SPE LTDA</xNome>
+			<end>
+				<endNac>
+					<cMun>4106902</cMun>
+					<CEP>80310430</CEP>
+				</endNac>
+				<xLgr>JORNALISTA CAIO MACHADO</xLgr>
+				<nro>404</nro>
+				<xCpl>CASA  02                  BLOCO LUZ DO SOL CD RES</xCpl>
+				<xBairro>SANTA QUITERIA</xBairro>
+			</end>
+		</toma>
+		<serv>
+			<locPrest>
+				<cLocPrestacao>4106902</cLocPrestacao>
+			</locPrest>
+			<cServ>
+				<cTribNac>010101</cTribNac>
+				<xDescServ>2 SERVICO de EXECUCAO DE FUNDACOES EM ESTACA</xDescServ>
+				<cNBS>115022000</cNBS>
+			</cServ>
+			<infoCompl>
+				<xInfComp>LOCAL DE ENTREGA: ENDERECO DE ENTREGA ENT:RUA JORNALISTA CAIO MACHADO 404 CASA 02SANTA QUITERIA CURITIBA /PR Vencimento 17/02/2026 Valor total do servico : 200,00 Valor liquido a pagar : 178,00</xInfComp>
+			</infoCompl>
+		</serv>
+		<valores>
+			<vServPrest>
+				<vServ>200.00</vServ>
+			</vServPrest>
+			<trib>
+				<tribMun>
+					<tribISSQN>1</tribISSQN>
+					<tpRetISSQN>1</tpRetISSQN>
+				</tribMun>
+				<tribFed/>
+				<totTrib>
+					<vTotTrib>
+						<vTotTribFed>6.00</vTotTribFed>
+						<vTotTribEst>60.00</vTotTribEst>
+						<vTotTribMun>6.00</vTotTribMun>
+					</vTotTrib>
+				</totTrib>
+			</trib>
+		</valores>
+	</infDPS>
+</DPS>
