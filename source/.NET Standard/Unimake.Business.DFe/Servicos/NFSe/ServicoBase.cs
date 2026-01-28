@@ -118,6 +118,14 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     SMARAPD();
                     break;
 
+                case PadraoNFSe.RLZ_INFORMATICA:
+
+                    if (Configuracoes.SchemaVersao == "1.01")
+                    {
+                        RLZ_INFORMATICA();
+                    }
+
+                    break;
             }
             Configuracoes.Definida = true;
             base.DefinirConfiguracao();
@@ -343,6 +351,20 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #endregion SMARAPD
+
+        #region RLZ_INFORMATICA
+
+        private void RLZ_INFORMATICA()
+        {
+            var URI = Configuracoes.RequestURI;
+
+            var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+            var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+            var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+            Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+        }
+
+        #endregion RLZ_INFORMATICA
 
         #region NACIONAL
 
