@@ -117,11 +117,24 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 case PadraoNFSe.SMARAPD:
                     SMARAPD();
                     break;
-					
+
+                case PadraoNFSe.RLZ_INFORMATICA:
+
+                    if (Configuracoes.SchemaVersao == "1.01")
+                    {
+                        RLZ_INFORMATICA();
+                    }
+
+                    break;
+
+                case PadraoNFSe.BETHA_CLOUD:
+                    BETHA_CLOUD();
+                    break;
+
+            }
             Configuracoes.Definida = true;
             base.DefinirConfiguracao();
         }
-
 
         private void HM2SOLUCOES()
         {
