@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarLoteRpsEnvio Id="Id1" xmlns="http://www.ginfes.com.br/servico_consultar_lote_rps_envio_v03.xsd" xmlns:ns1="http://www.ginfes.com.br/tipos_v03.xsd">
+	<Prestador>
+		<ns1:Cnpj>00000000000000</ns1:Cnpj>
+		<ns1:InscricaoMunicipal>1234</ns1:InscricaoMunicipal>
+	</Prestador>
+	<Protocolo>Protocolo1</Protocolo>
+</ConsultarLoteRpsEnvio>

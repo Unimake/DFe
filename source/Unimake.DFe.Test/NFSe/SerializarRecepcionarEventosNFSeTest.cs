@@ -74,25 +74,21 @@ namespace Unimake.DFe.Test.NFSe
             var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
             recepcaoEvento.Executar();
 
-            // Usa a propriedade Result para obter o retorno
-            var resultado = recepcaoEvento.Result;
-            Assert.NotNull(resultado);
-
-            // Verifica o tipo de retorno usando pattern matching
-            if (resultado is Evento eventoSucesso)
+            // Usa as propriedades tipadas para obter o retorno
+            if (recepcaoEvento.Result != null)
             {
-                // Sucesso! Valida os dados
-                Assert.NotNull(eventoSucesso.InfEvento);
-                Assert.False(string.IsNullOrWhiteSpace(eventoSucesso.InfEvento.Id));
-                System.Diagnostics.Debug.WriteLine($"Evento registrado com sucesso - ID: {eventoSucesso.InfEvento.Id}");
+                // Sucesso - Cast para Evento
+                var evento = (Evento)recepcaoEvento.Result;
+                Assert.NotNull(evento.InfEvento);
+                Assert.False(string.IsNullOrWhiteSpace(evento.InfEvento.Id));
+                System.Diagnostics.Debug.WriteLine($"Evento registrado - ID: {evento.InfEvento.Id}");
             }
-            else if (resultado is Temp retornoErro)
+            else
             {
-                // Erro! Valida e exibe
-                Assert.NotNull(retornoErro.Erro);
-                Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Codigo));
-                Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Descricao));
-                System.Diagnostics.Debug.WriteLine($"Erro - Código: {retornoErro.Erro.Codigo}, Descrição: {retornoErro.Erro.Descricao}");
+                // Erro
+                var erro = recepcaoEvento.ResultErro;
+                Assert.NotNull(erro?.Erro);
+                System.Diagnostics.Debug.WriteLine($"Erro: {erro.Erro.Codigo} - {erro.Erro.Descricao}");
             }
         }
 
@@ -213,25 +209,80 @@ namespace Unimake.DFe.Test.NFSe
             var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
             recepcaoEvento.Executar();
 
-            // Usa a propriedade Result para obter o retorno
-            var resultado = recepcaoEvento.Result;
-            Assert.NotNull(resultado);
-
-            // Verifica o tipo de retorno usando pattern matching
-            if (resultado is Evento eventoSucesso)
+            // Usa as propriedades tipadas para obter o retorno
+            if (recepcaoEvento.Result != null)
             {
-                // Sucesso! Valida os dados
-                Assert.NotNull(eventoSucesso.InfEvento);
-                Assert.False(string.IsNullOrWhiteSpace(eventoSucesso.InfEvento.Id));
-                System.Diagnostics.Debug.WriteLine($"Evento registrado com sucesso - ID: {eventoSucesso.InfEvento.Id}");
+                // Sucesso - Cast para Evento
+                var evento = (Evento)recepcaoEvento.Result;
+                Assert.NotNull(evento.InfEvento);
+                Assert.False(string.IsNullOrWhiteSpace(evento.InfEvento.Id));
+                System.Diagnostics.Debug.WriteLine($"Evento registrado - ID: {evento.InfEvento.Id}");
             }
-            else if (resultado is Temp retornoErro)
+            else
             {
-                // Erro! Valida e exibe
-                Assert.NotNull(retornoErro.Erro);
-                Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Codigo));
-                Assert.False(string.IsNullOrWhiteSpace(retornoErro.Erro.Descricao));
-                System.Diagnostics.Debug.WriteLine($"Erro - Código: {retornoErro.Erro.Codigo}, Descrição: {retornoErro.Erro.Descricao}");
+                // Erro
+                var erro = recepcaoEvento.ResultErro;
+                Assert.NotNull(erro?.Erro);
+                System.Diagnostics.Debug.WriteLine($"Erro: {erro.Erro.Codigo} - {erro.Erro.Descricao}");
+            }
+        }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.01\GerarNfseEnvio-env-loterps.xml")]
+        public void GerarNfseNACIONAL(string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(caminhoXml);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeGerarNfse,
+                SchemaVersao = "1.01"
+            };
+
+            var gerarNfse = new GerarNfse(conteudoXML, configuracao);
+            gerarNfse.Executar();
+
+            Assert.False(string.IsNullOrWhiteSpace(gerarNfse.RetornoWSString));
+
+            var nfse = gerarNfse.Result;
+            if (nfse != null)
+            {
+                // Sucesso - NFSe gerada
+                Assert.NotNull(nfse.InfNFSe);
+                Assert.True(nfse.InfNFSe.NNFSe > 0);
+                System.Diagnostics.Debug.WriteLine($"NFSe gerada com sucesso - Número: {nfse.InfNFSe.NNFSe}");
+            }
+            else
+            {
+                // Erro
+                var retornoErro = gerarNfse.ResultErro;
+                Assert.NotNull(retornoErro);
+
+                var erro = retornoErro.Erros;
+
+                Assert.NotNull(erro);
+                Assert.False(string.IsNullOrWhiteSpace(erro.Codigo));
+                Assert.False(string.IsNullOrWhiteSpace(erro.Descricao));
+
+                Assert.Equal(TipoAmbiente.Homologacao, retornoErro.TipoAmbiente);
+                Assert.False(string.IsNullOrWhiteSpace(retornoErro.VersaoAplicativo));
+
+                System.Diagnostics.Debug.WriteLine($"Erro capturado corretamente - Código: {erro.Codigo}, Descrição: {erro.Descricao}");
+
+                if (!string.IsNullOrWhiteSpace(retornoErro.IdDPS))
+                {
+                    Assert.StartsWith("DPS", retornoErro.IdDPS);
+                    System.Diagnostics.Debug.WriteLine($"IdDPS: {retornoErro.IdDPS}");
+                }
             }
         }
     }

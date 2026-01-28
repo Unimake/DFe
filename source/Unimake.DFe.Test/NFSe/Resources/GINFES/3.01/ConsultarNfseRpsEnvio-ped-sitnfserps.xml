@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio xmlns="http://www.ginfes.com.br/servico_consultar_nfse_rps_envio_v03.xsd" xmlns:ns1="http://www.ginfes.com.br/tipos_v03.xsd">
+	<IdentificacaoRps>
+		<ns1:Numero>2</ns1:Numero>
+		<ns1:Serie>22</ns1:Serie>
+		<ns1:Tipo>1</ns1:Tipo>
+	</IdentificacaoRps>
+	<Prestador>
+		<ns1:Cnpj>00000000000000</ns1:Cnpj>
+		<ns1:InscricaoMunicipal>12345</ns1:InscricaoMunicipal>
+	</Prestador>
+</ConsultarNfseRpsEnvio>

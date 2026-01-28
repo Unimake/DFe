@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.01.22.1001</AssemblyVersion>
-		<FileVersion>2026.01.22.1001</FileVersion>
+		<AssemblyVersion>2026.01.23.1911</AssemblyVersion>
+		<FileVersion>2026.01.23.1911</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -325,6 +325,7 @@
 		<None Remove="Servicos\Config\NFSe\AraguariMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AraquariSC.xml" />
 		<None Remove="Servicos\Config\NFSe\ArarasSP.xml" />
+		<None Remove="Servicos\Config\NFSe\AraucariaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\ArcosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AriquemesRO.xml" />
 		<None Remove="Servicos\Config\NFSe\ArroioDoMeioRS.xml" />
@@ -1338,21 +1339,20 @@
 		<None Remove="Xml\Schemas\NFSe\GIF\xmldsig-core-schema_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\cabecalho_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_cancelar_nfse_envio_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\GINFES\servico_cancelar_nfse_envio_v03.xsd" />
-		<None Remove="Xml\Schemas\NFSe\GINFES\servico_cancelar_nfse_resposta_v03.xsd" />
-		<None Remove="Xml\Schemas\NFSe\GINFES\servico_consultar_lote_rps_envio_v03.xsd" />
-		<None Remove="Xml\Schemas\NFSe\GINFES\servico_consultar_lote_rps_resposta_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_consultar_nfse_envio_v03.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GINFES\servico_consultar_nfse_envio_v0301.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_consultar_nfse_resposta_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_consultar_nfse_rps_envio_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_consultar_nfse_rps_resposta_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_consultar_situacao_lote_rps_envio_v03.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GINFES\servico_consultar_situacao_lote_rps_envio_v0301.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_consultar_situacao_lote_rps_resposta_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_enviar_lote_rps_envio_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_enviar_lote_rps_resposta_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\serviço_enviar_lote_rps_envio_v04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\tipos_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\tipos_v03.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GINFES\tipos_v0301.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema20020212_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema20020212_v04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema_v02.xsd" />
@@ -1621,6 +1621,7 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraruamaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AraucariaPR.xml" />
 	</ItemGroup>
 
 	<ItemGroup>

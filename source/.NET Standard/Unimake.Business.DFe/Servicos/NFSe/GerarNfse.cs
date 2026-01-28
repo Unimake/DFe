@@ -2,6 +2,8 @@
 using System.Runtime.InteropServices;
 #endif
 using System.Xml;
+using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -48,6 +50,36 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             if (!Configuracoes.Definida)
             {
                 base.DefinirConfiguracao();
+            }
+        }
+
+        /// <summary>
+        /// Resultado quando GerarNfse foi bem-sucedido (apenas para padrão NACIONAL).
+        /// Retorna null se houve erro (usar ResultErro).
+        /// </summary>
+#if INTEROP
+[ComVisible(true)]
+#endif
+        public Xml.NFSe.NACIONAL.NFSe.NFSe Result
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(RetornoWSString))
+                    return null;
+
+                try
+                {
+                    var tagRaiz = RetornoWSXML.DocumentElement?.Name;
+                    if (tagRaiz == "NFSe")
+                    {
+                        return XMLUtility.Deserializar<Xml.NFSe.NACIONAL.NFSe.NFSe>(RetornoWSXML);
+                    }
+                    return null;
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
 

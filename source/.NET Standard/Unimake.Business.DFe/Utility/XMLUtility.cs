@@ -125,7 +125,7 @@ namespace Unimake.Business.DFe.Utility
             /// <summary>
             /// Tipo do ambiente gerador do documento fiscal
             /// </summary>
-            public TipoAmbiente TipoAmbiente { get; set; }
+            public AmbienteGeradorNFSe AmbienteGerador { get; set; }
 
             /// <summary>
             /// Tipo da inscrição federal do emissor do documento fiscal 1-CPF 2-CNPJ
@@ -1390,7 +1390,7 @@ namespace Unimake.Business.DFe.Utility
         public static string MontarChaveNFSe(ref ConteudoChaveNFSe conteudoChaveNFSe)
         {
             var chave = (conteudoChaveNFSe.CodigoMunicipio).ToString() +
-                ((int)conteudoChaveNFSe.TipoAmbiente).ToString() +
+                ((int)conteudoChaveNFSe.AmbienteGerador).ToString() +
                 conteudoChaveNFSe.TipoInscricaoFederal + 
                 conteudoChaveNFSe.InscricaoFederal.PadLeft(14, '0') + 
                 conteudoChaveNFSe.NumeroDoctoFiscal.ToString().PadLeft(13, '0') +

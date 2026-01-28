@@ -1,0 +1,170 @@
+* ---------------------------------------------------------------------------------
+* EFD-Reinf 2055
+* ---------------------------------------------------------------------------------
+Function EFDReinf2055()
+   LOCAL oConfig
+   LOCAL oErro, oExceptionInterop
+   LOCAL oReinfEnvioLoteEventos, oEventoReinf, oDetAquis, oInfoProcJud
+   LOCAL oRecepcionarLoteAssincrono, stringXML
+   
+ * Criar configuração básica para consumir o serviço
+   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig.TipoDFe = 11 && 11=EFDReinf
+   oConfig.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
+   oConfig.CertificadoSenha = "12345678"
+   oConfig.TipoAmbiente = 2 && Homologação
+   oConfig.Servico = 67 && Servico.EFDReinfRecepcionarLoteAssincrono
+
+ * Criar XML   
+   oReinfEnvioLoteEventos = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos")
+   
+   oReinfEnvioLoteEventos.EnvioLoteEventos = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.EnvioLoteEventos")
+   oReinfEnvioLoteEventos.EnvioLoteEventos.IdeContribuinte = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.IdeContribuinte")
+   oReinfEnvioLoteEventos.EnvioLoteEventos.IdeContribuinte.TpInsc = 1 &&CNPJ
+   oReinfEnvioLoteEventos.EnvioLoteEventos.IdeContribuinte.NrInsc = "12345678901234"
+   
+   oReinfEnvioLoteEventos.EnvioLoteEventos.Eventos = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.EventosReinf")
+   
+   oEventoReinf = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.EventoReinf")
+   oEventoReinf.ID = "ID1000000000000002021052608080800001"
+   
+   oEventoReinf.Reinf2055 = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.Reinf2055")
+   
+   oEventoReinf.Reinf2055.EvtAqProd = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.EvtAqProd")
+   oEventoReinf.Reinf2055.EvtAqProd.ID = "ID1000000000000002021052608080800001"
+   
+   oEventoReinf.Reinf2055.EvtAqProd.IdeEvento = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento2055")
+   oEventoReinf.Reinf2055.EvtAqProd.IdeEvento.IndRetif = 1 && 1=Arquivo Original
+   oEventoReinf.Reinf2055.EvtAqProd.IdeEvento.PerApur = DATETIME()   
+   oEventoReinf.Reinf2055.EvtAqProd.IdeEvento.TpAmb = 2 && Homologacao
+   oEventoReinf.Reinf2055.EvtAqProd.IdeEvento.ProcEmi = 1 && AplicativoContribuinte
+   oEventoReinf.Reinf2055.EvtAqProd.IdeEvento.VerProc = "1.00"
+
+   oEventoReinf.Reinf2055.EvtAqProd.IdeContri = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.IdeContri")
+   oEventoReinf.Reinf2055.EvtAqProd.IdeContri.TpInsc = 1 && CNPJ
+   oEventoReinf.Reinf2055.EvtAqProd.IdeContri.NrInsc = "12345678901234"
+
+   oEventoReinf.Reinf2055.EvtAqProd.InfoAquisProd = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.InfoAquisProd")
+   
+   oEventoReinf.Reinf2055.EvtAqProd.InfoAquisProd.IdeEstabAdquir = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.IdeEstabAdquir")
+   oEventoReinf.Reinf2055.EvtAqProd.InfoAquisProd.IdeEstabAdquir.TpInscAdq = 1 && CNPJ
+   oEventoReinf.Reinf2055.EvtAqProd.InfoAquisProd.IdeEstabAdquir.NrInscAdq = "12345678901234"
+   
+   oEventoReinf.Reinf2055.EvtAqProd.InfoAquisProd.IdeEstabAdquir.IdeProdutor = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.IdeProdutor")   
+   oEventoReinf.Reinf2055.EvtAqProd.InfoAquisProd.IdeEstabAdquir.IdeProdutor.TpInscProd = 1 && CNPJ
+   oEventoReinf.Reinf2055.EvtAqProd.InfoAquisProd.IdeEstabAdquir.IdeProdutor.NrInscProd = "12345678901234"
+   oEventoReinf.Reinf2055.EvtAqProd.InfoAquisProd.IdeEstabAdquir.IdeProdutor.IndOpcCP = "S"
+
+ * DetAquis é uma lista, ou seja, é um grupo de tag que pode se repetir várias vezes, abaixo exemplo repetindo 2x
+ * Primeiro DetAquis
+   oDetAquis = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.DetAquis")
+   oDetAquis.IndAquis = 1 && Aquisição de produção de produtor rural pessoa física ou segurado especial em geral
+   oDetAquis.VlrBruto = 1000.00
+   oDetAquis.VlrCPDescPR = 100.00
+   oDetAquis.VlrRatDescPR = 50.00
+   oDetAquis.VlrSenarDesc = 2500
+
+    * InfoProcJud é uma lista, ou seja, é um grupo de tag que pode se repetir várias vezes, abaixo exemplo repetindo 2x
+    * Primeiro InfoProcJud
+      oInfoProcJud = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.InfoProcJud")
+      oInfoProcJud.NrProcJud = "123456789012345678901"
+      oInfoProcJud.CodSusp = "12345678901234"
+      oInfoProcJud.VlrCPNRet = 0.00
+      oInfoProcJud.VlrRatNRet = 0.00
+      oInfoProcJud.VlrSenarNRet = 0.00
+   
+      oDetAquis.AddInfoProcJud(oInfoProcJud)
+   
+    * Segundo InfoProcJud
+      oInfoProcJud = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.InfoProcJud")
+      oInfoProcJud.NrProcJud = "123456789012345678901"
+      oInfoProcJud.CodSusp = "12345678901234"
+      oInfoProcJud.VlrCPNRet = 0.00
+      oInfoProcJud.VlrRatNRet = 0.00
+      oInfoProcJud.VlrSenarNRet = 0.00
+   
+      oDetAquis.AddInfoProcJud(oInfoProcJud)   
+      
+   oEventoReinf.Reinf2055.EvtAqProd.InfoAquisProd.IdeEstabAdquir.IdeProdutor.AddDetAquis(oDetAquis)
+   
+ * Segundo DetAquis
+   oDetAquis = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.DetAquis")
+   oDetAquis.IndAquis = 1 && Aquisição de produção de produtor rural pessoa física ou segurado especial em geral
+   oDetAquis.VlrBruto = 1000.00
+   oDetAquis.VlrCPDescPR = 100.00
+   oDetAquis.VlrRatDescPR = 50.00
+   oDetAquis.VlrSenarDesc = 2500
+   
+    * Primeiro InfoProcJud
+      oInfoProcJud = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.InfoProcJud")
+      oInfoProcJud.NrProcJud = "123456789012345678901"
+      oInfoProcJud.CodSusp = "12345678901234"
+      oInfoProcJud.VlrCPNRet = 0.00
+      oInfoProcJud.VlrRatNRet = 0.00
+      oInfoProcJud.VlrSenarNRet = 0.00
+   
+      oDetAquis.AddInfoProcJud(oInfoProcJud)
+   
+    * Segundo InfoProcJud
+      oInfoProcJud = CREATEOBJECT("Unimake.Business.DFe.Xml.EFDReinf.InfoProcJud")
+      oInfoProcJud.NrProcJud = "123456789012345678901"
+      oInfoProcJud.CodSusp = "12345678901234"
+      oInfoProcJud.VlrCPNRet = 0.00
+      oInfoProcJud.VlrRatNRet = 0.00
+      oInfoProcJud.VlrSenarNRet = 0.00
+   
+      oDetAquis.AddInfoProcJud(oInfoProcJud)   
+      
+   oEventoReinf.Reinf2055.EvtAqProd.InfoAquisProd.IdeEstabAdquir.IdeProdutor.AddDetAquis(oDetAquis)   
+   
+   oReinfEnvioLoteEventos.EnvioLoteEventos.Eventos.AddEvento(oEventoReinf)  
+   
+ * Criar objeto para pegar exceção do lado do CSHARP
+   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
+   
+   TRY   
+    * Consumir o serviço
+      oRecepcionarLoteAssincrono = CREATEOBJECT("Unimake.Business.DFe.Servicos.EFDReinf.RecepcionarLoteAssincrono")
+      oRecepcionarLoteAssincrono.Executar(oReinfEnvioLoteEventos, oConfig)
+
+    * Salvar o conteúdo do XML assinado
+      DELETE FILE 'd:\testenfe\EFDReinf2055.xml'
+      StrToFile(oRecepcionarLoteAssincrono.GetConteudoXMLAssinado(), 'd:\testenfe\EFDReinf2055.xml', 0)   
+	
+	* String do XML retornado pela receita
+	  MESSAGEBOX(oRecepcionarLoteAssincrono.RetornoWSString)   
+
+    * Salvar o conteúdo do XML retornado da receita
+      DELETE FILE 'd:\testenfe\EFDReinf2055_retorno.xml'
+      StrToFile(oRecepcionarLoteAssincrono.RetornoWSString, 'd:\testenfe\EFDReinf2055_retorno.xml', 0)   	  
+	 
+	* Exempo de como resgatar o retorno da receita com o objeto, só ir usando os nomes das tags do XML como propriedade, conforma baixo.
+	  IF .NOT. ISNULL(oRecepcionarLoteAssincrono.Result)
+	     MESSAGEBOX(oRecepcionarLoteAssincrono.Result.RetornoLoteEventosAssincrono.Status.CdResposta)  
+	     MESSAGEBOX(oRecepcionarLoteAssincrono.Result.RetornoLoteEventosAssincrono.Status.DescResposta)
+	  
+	     IF .NOT. ISNULL(oRecepcionarLoteAssincrono.Result.RetornoLoteEventosAssincrono.DadosProcessamentoLote)
+   	         MESSAGEBOX(oRecepcionarLoteAssincrono.Result.RetornoLoteEventosAssincrono.DadosProcessamentoLote.VersaoAplicativoProcessamentoLote)
+         ENDIF
+         
+	     IF .NOT. ISNULL(oRecepcionarLoteAssincrono.Result.RetornoLoteEventosAssincrono.DadosRecepcaoLote)
+            MESSAGEBOX(oRecepcionarLoteAssincrono.Result.RetornoLoteEventosAssincrono.DadosRecepcaoLote.DhRecepcaoField)
+            MESSAGEBOX(oRecepcionarLoteAssincrono.Result.RetornoLoteEventosAssincrono.DadosRecepcaoLote.ProtocoloEnvio)
+         ENDIF
+      ENDIF
+
+      MESSAGEBOX("Terminou")   
+	  
+    Catch To oErro
+    * ExceÃ§Ã£o do FOXPRO
+	* Mais sobre exceÃ§Ã£o em FOXPRO
+	* http://www.yaldex.com/fox_pro_tutorial/html/2344b71b-14c0-4125-b001-b5fbb7bd1f05.htm
+	
+	  MessageBox(oErro.ErrorNo)
+	  MessageBox("ExceÃ§Ã£o foxpro: " + oErro.Message)
+	  
+    * ExceÃ§Ã£o do CSHARP
+      MessageBox(oExceptionInterop.GetMessage())
+      MessageBox(oExceptionInterop.GetErrorCode())
+   EndTry   
+Return

@@ -38,7 +38,7 @@ namespace Unimake.DFe.Test.NFSe
         [Trait("DFe", "NFSe")]
         public void GerarNfseIndicativoDecisaoJudicialXMLObjeto()
         {
-            var emissao = DateTimeOffset.Now;
+            var emissao = DateTimeOffset.Now.DateTime;
             var nfse = new Business.DFe.Xml.NFSe.NACIONAL.NFSe.NFSe
             {
                 Versao = "1.01",
@@ -53,7 +53,7 @@ namespace Unimake.DFe.Test.NFSe
                     XTribNac = "Agenciamento, corretagem ou intermediação de bens móveis ou imóveis, não abrangidos em outros itens ou subitens, por quaisquer meios.",
                     XNBS = "Serviços de concessão de crédito não classificados em subposições anteriores",
                     VerAplic = "EmissorWeb_1.5.0.0",
-                    AmbGer = TipoAmbiente.Homologacao,
+                    AmbGer = AmbienteGeradorNFSe.SefinNacionalNfse,
                     TpEmis = 1,
                     CStat = 102,
                     DhProc = emissao,

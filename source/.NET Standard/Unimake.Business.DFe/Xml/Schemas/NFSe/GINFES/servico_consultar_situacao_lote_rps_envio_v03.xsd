@@ -11,6 +11,7 @@
 				<xsd:element name="Protocolo" type="tipos:tsNumeroProtocolo" minOccurs="1" maxOccurs="1"/>
 				<xsd:element ref="dsig:Signature" minOccurs="0" maxOccurs="1"/>
 			</xsd:sequence>
+			<xsd:attribute name="Id" type="tipos:tsIdTag"/>
 		</xsd:complexType>
 	</xsd:element>
 </xsd:schema>

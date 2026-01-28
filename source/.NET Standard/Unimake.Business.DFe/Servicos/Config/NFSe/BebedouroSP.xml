@@ -3,7 +3,7 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="4.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -22,7 +22,7 @@
 		</RecepcionarLoteRps>
 		<CancelarNfse versao="4.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -41,7 +41,7 @@
 		</CancelarNfse>
 		<ConsultarNfsePDF versao="4.00">
 			<Descricao>Consulta o link de download da nota fiscal de Serviço</Descricao>
-			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -62,7 +62,7 @@
 		</ConsultarNfsePDF>
 		<ConsultarLoteRps versao="4.00">
 			<Descricao>Consulta lote por RPS</Descricao>
-			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -81,8 +81,8 @@
 		</ConsultarLoteRps>
 		<ConsultarNfse versao="4.00">
 			<Descricao>Consultar NFSe</Descricao>
-			<WebEnderecoHomologacao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -99,5 +99,25 @@
 			<TargetNS></TargetNS>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfse>
+		<ConsultarNfsePorRps versao="4.00">
+			<Descricao>Consultar NFSe</Descricao>
+			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><ws_nfe.CONSULTAPROTOCOLO>{xmlBody}</ws_nfe.CONSULTAPROTOCOLO></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ws_nfe.CONSULTAPROTOCOLOResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>4.00</SchemaVersao>
+			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>

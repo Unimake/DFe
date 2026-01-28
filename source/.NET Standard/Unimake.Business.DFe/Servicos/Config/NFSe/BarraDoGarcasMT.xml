@@ -193,5 +193,198 @@
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarNfseFaixa>
+		<!--Versão 1.01-->
+		<RecepcionarLoteRps versao="1.01">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://coplan.inf.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://gp.srv.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTEDPS</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTEDPS</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteDpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.RECEPCIONARLOTEDPS><trib:Recepcionarlotedpsrequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01"><versaoDados>1.01</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Recepcionarlotedpsrequest></trib:nfse_web_service.RECEPCIONARLOTEDPS></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="1.01">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://coplan.inf.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://gp.srv.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTEDPSSINCRONO</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTEDPSSINCRONO</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteDpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.RECEPCIONARLOTEDPSSINCRONO><trib:Recepcionarlotedpssincronorequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01"><versaoDados>1.01</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Recepcionarlotedpssincronorequest></trib:nfse_web_service.RECEPCIONARLOTEDPSSINCRONO></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<GerarNfse versao="1.01">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://coplan.inf.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://gp.srv.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.GERARNFSE</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.GERARNFSE</WebActionProducao>
+			<SchemaArquivo>Coplan_v1.01.xsd</SchemaArquivo>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.GERARNFSE><trib:Gerarnfserequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01"><versaoDados>1.01</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Gerarnfserequest></trib:nfse_web_service.GERARNFSE></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="1.01">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://coplan.inf.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://gp.srv.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CANCELARNFSE</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CANCELARNFSE</WebActionProducao>
+			<SchemaArquivo>Coplan_v1.01.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CANCELARNFSE><trib:Cancelarnfserequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01"><versaoDados>1.01</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Cancelarnfserequest></trib:nfse_web_service.CANCELARNFSE></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</CancelarNfse>
+		<SubstituirNfse versao="1.01">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://coplan.inf.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://gp.srv.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.SUBSTITUIRNFSE</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.SUBSTITUIRNFSE</WebActionProducao>
+			<SchemaArquivo>Coplan_v1.01.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura>DPS</TagLoteAssinatura>
+			<TagLoteAtributoID>infDPS</TagLoteAtributoID>
+			<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
+			<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.SUBSTITUIRNFSE><trib:Substituirnfserequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01"><versaoDados>1.01</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Substituirnfserequest></trib:nfse_web_service.SUBSTITUIRNFSE></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="1.01">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://coplan.inf.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://gp.srv.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARLOTEDPS</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARLOTEDPS</WebActionProducao>
+			<SchemaArquivo>Coplan_v1.01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CONSULTARLOTEDPS><trib:Consultarlotedpsrequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01"><versaoDados>1.01</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Consultarlotedpsrequest></trib:nfse_web_service.CONSULTARLOTEDPS></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.01">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://coplan.inf.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://gp.srv.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEPORDPS</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEPORDPS</WebActionProducao>
+			<SchemaArquivo>Coplan_v1.01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CONSULTARNFSEPORDPS><trib:Consultarnfsepordpsrequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01"><versaoDados>1.01</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Consultarnfsepordpsrequest></trib:nfse_web_service.CONSULTARNFSEPORDPS></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="1.01">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<WebEnderecoHomologacao>https://coplan.inf.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://gp.srv.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOPRESTADO</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOPRESTADO</WebActionProducao>
+			<SchemaArquivo>Coplan_v1.01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CONSULTARNFSESERVICOPRESTADO><trib:Consultarnfseservicoprestadorequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01"><versaoDados>1.01</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Consultarnfseservicoprestadorequest></trib:nfse_web_service.CONSULTARNFSESERVICOPRESTADO></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="1.01">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>https://coplan.inf.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://gp.srv.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOTOMADO</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOTOMADO</WebActionProducao>
+			<SchemaArquivo>Coplan_v1.01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CONSULTARNFSESERVICOTOMADO><trib:Consultarnfseservicotomadorequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01"><versaoDados>1.01</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Consultarnfseservicotomadorequest></trib:nfse_web_service.CONSULTARNFSESERVICOTOMADO></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoTomado>
+		<ConsultarNfseFaixa versao="1.01">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>https://coplan.inf.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://gp.srv.br/tributario/barradogarcas/anfse_ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEFAIXA</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEFAIXA</WebActionProducao>
+			<SchemaArquivo>Coplan_v1.01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CONSULTARNFSEFAIXA><trib:Consultarnfseporfaixarequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01"><versaoDados>1.01</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Consultarnfseporfaixarequest></trib:nfse_web_service.CONSULTARNFSEFAIXA></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseFaixa>
 	</Servicos>
 </Configuracoes>

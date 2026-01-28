@@ -59,48 +59,32 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         /// <summary>
-        /// Resultado do processamento do evento.
-        /// Retorna Evento (sucesso) ou Temp (erro) dependendo da resposta do servidor.
+        /// Resultado quando RecepcionarEventosNfse foi bem-sucedido (apenas para padrão NACIONAL).
+        /// Retorna null se houve erro (usar ResultErro).
         /// </summary>
-        public object Result
+#if INTEROP
+[ComVisible(true)]
+#endif
+        public Xml.NFSe.NACIONAL.Evento Result
         {
             get
             {
-                if (!string.IsNullOrWhiteSpace(RetornoWSString))
-                {
-                    try
-                    {
-                        return XMLUtility.Deserializar<Evento>(RetornoWSXML);
-                    }
-                    catch
-                    {
-                        try
-                        {
-                            return XMLUtility.Deserializar<Temp>(RetornoWSXML);
-                        }
-                        catch
-                        {
-                            // Se ambos falharem, retorna erro genérico
-                            return new Temp
-                            {
-                                Erro = new Erro
-                                {
-                                    Codigo = "0",
-                                    Descricao = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
-                                }
-                            };
-                        }
-                    }
-                }
+                if (string.IsNullOrWhiteSpace(RetornoWSString))
+                    return null;
 
-                return new Temp
+                try
                 {
-                    Erro = new Erro
+                    var tagRaiz = RetornoWSXML.DocumentElement?.Name;
+                    if (tagRaiz == "evento")
                     {
-                        Codigo = "0",
-                        Descricao = "Não há retorno do servidor para processar."
+                        return XMLUtility.Deserializar<Xml.NFSe.NACIONAL.Evento>(RetornoWSXML);
                     }
-                };
+                    return null;
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
 
