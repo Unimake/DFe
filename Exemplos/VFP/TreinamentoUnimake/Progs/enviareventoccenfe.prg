@@ -128,6 +128,9 @@ Function EnviarEventoCCeNFe()
                    * Como pegar o nome do arquivo de distribuição
                      oProcEventoNFe = oRecepcaoEvento.GetProcEventoNFeResult(0)
                      MESSAGEBOX(oProcEventoNFe.NomeArquivoDistribuicao)
+					
+                   * Protocolo de autorizacao do Evento					
+							MESSAGEBOX(oRetEvento.InfEvento.NProt)
    		  
                OTHERWISE    
                     * Evento rejeitado
