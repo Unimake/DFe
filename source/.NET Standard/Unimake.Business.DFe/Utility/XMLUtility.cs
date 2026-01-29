@@ -15,7 +15,6 @@ using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Validator;
 using Unimake.Exceptions;
-using static Unimake.Business.DFe.Utility.XMLUtility;
 
 namespace Unimake.Business.DFe.Utility
 {
@@ -225,7 +224,7 @@ namespace Unimake.Business.DFe.Utility
             int peso = 2;
 
             if (tipoCNPJ == "N") //CNPJ numérico
-            {                
+            {
                 chave = chave.Replace("NFS", "");
 
                 if (chave.Length != tamanhoChaveSemDV)
@@ -249,7 +248,7 @@ namespace Unimake.Business.DFe.Utility
                     int mod = soma % 11;
                     int dv = 11 - mod;
 
-                    if (dv >= 10) dv = 0; 
+                    if (dv >= 10) dv = 0;
 
                     return dv;
                 }
@@ -1386,8 +1385,8 @@ namespace Unimake.Business.DFe.Utility
         {
             var chave = (conteudoChaveNFSe.CodigoMunicipio).ToString() +
                 ((int)conteudoChaveNFSe.AmbienteGerador).ToString() +
-                conteudoChaveNFSe.TipoInscricaoFederal + 
-                conteudoChaveNFSe.InscricaoFederal.PadLeft(14, '0') + 
+                conteudoChaveNFSe.TipoInscricaoFederal +
+                conteudoChaveNFSe.InscricaoFederal.PadLeft(14, '0') +
                 conteudoChaveNFSe.NumeroDoctoFiscal.ToString().PadLeft(13, '0') +
                 conteudoChaveNFSe.AnoEmissao +
                 conteudoChaveNFSe.MesEmissao +
@@ -2044,7 +2043,11 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>true=validado com sucesso, ou uma exceção com o erro de validação.</returns>
         /// <exception cref="ArgumentNullException">Quando o XML está nulo</exception>
         /// <exception cref="Exception">Quando o validador encontra algum erro no XML</exception>
-        public bool Validate(string xml) => ValidatorFactory.BuidValidator(xml)?.Validate() ?? true;
+        public bool Validate(string xml)
+        {
+            var validatorFactory = new ValidatorFactory();
+            return validatorFactory.BuidValidator(xml)?.Validate() ?? true;
+        }
 
         /// <summary>
         /// Executa uma verificação simples para garantir que a chave do DFe (NFe, CTe, MDfe, NFCe, CTeOS) é valida, se tiver erros retorna exceção.
