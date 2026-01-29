@@ -284,7 +284,10 @@ namespace Unimake.Business.DFe.Servicos
             Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
             ConteudoXML = conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML));
 
-            var validator = (XmlValidatorBase)(ValidatorFactory.BuidValidator(ConteudoXML.InnerXml));
+            Warnings.Clear();
+
+            var validatorFactory = new ValidatorFactory();
+            var validator = (XmlValidatorBase)(validatorFactory.BuidValidator(ConteudoXML.InnerXml));
             var validou = (validator?.Validate() ?? true);
 
             Warnings = validator?.Warnings;

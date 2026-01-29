@@ -1,4 +1,6 @@
-﻿using System.Xml.Linq;
+﻿using System.Collections.Generic;
+using System.Xml.Linq;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Validator.Contract
 {
@@ -7,16 +9,10 @@ namespace Unimake.Business.DFe.Validator.Contract
     /// </summary>
     public interface IXmlValidator
     {
-        #region Public Properties
-
         /// <summary>
         /// Xml associado ao validador
         /// </summary>
         string Xml { get; set; }
-
-        #endregion Public Properties
-
-        #region Public Methods
 
         /// <summary>
         /// Retorna verdadeiro se o validador pode validar o xml informado em <see cref="Xml"/>
@@ -31,6 +27,9 @@ namespace Unimake.Business.DFe.Validator.Contract
         /// <returns>Retorna verdadeiro se tudo OK. Pode lançar erros de validação</returns>
         bool Validate();
 
-        #endregion Public Methods
+        /// <summary>
+        /// Warnings gerados durante a validação do XML
+        /// </summary>
+        List<ValidatorDFeException> Warnings { get; set; }
     }
 }
