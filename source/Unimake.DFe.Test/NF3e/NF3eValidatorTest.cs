@@ -26,7 +26,8 @@ namespace Unimake.DFe.Test.NF3e
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            Assert.True(ValidatorFactory.BuidValidator(doc.InnerXml)?.Validate());
+            var validatorFactory = new ValidatorFactory();
+            Assert.True(validatorFactory.BuidValidator(doc.InnerXml)?.Validate());
         }
     }
 }

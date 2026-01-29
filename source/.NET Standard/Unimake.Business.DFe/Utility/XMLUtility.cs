@@ -204,11 +204,6 @@ namespace Unimake.Business.DFe.Utility
 
         #endregion Public Classes
 
-        #region Private Methods
-
-        private static bool Validate(string xml) => ValidatorFactory.BuidValidator(xml)?.Validate() ?? true;
-
-        #endregion
 
         #region Public Methods
 

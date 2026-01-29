@@ -163,8 +163,9 @@ namespace Unimake.Business.DFe.Servicos.DARE
             AjustarXMLAposAssinado();
 
             XmlValidar();
+            var validatorFactory = new ValidatorFactory();
 
-            if (!(ValidatorFactory.BuidValidator(ConteudoXML.InnerXml)?.Validate() ?? true))
+            if (!(validatorFactory.BuidValidator(ConteudoXML.InnerXml)?.Validate() ?? true))
             {
                 return;
             }
