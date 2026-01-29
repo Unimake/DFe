@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<consPedRegEvento versao="1.00" xmlns="http://www.sped.fazenda.gov.br/nfse">
+  <infConsPedRegEvento>
+    <chNFSe>12345678901234567890123456789012345678901234567890</chNFSe>
+    <tipoEvento>101101</tipoEvento>
+    <numSeqEvento>001</numSeqEvento>
+  </infConsPedRegEvento>
+</consPedRegEvento>

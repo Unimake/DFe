@@ -3,7 +3,7 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="2.02">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl </WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://formigamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
@@ -22,7 +22,7 @@
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.02">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl </WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://formigamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
@@ -41,7 +41,7 @@
 		</RecepcionarLoteRpsSincrono>
 		<GerarNfse versao="2.02">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl </WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://formigamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
@@ -60,7 +60,7 @@
 		</GerarNfse>
 		<CancelarNfse versao="2.02">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl </WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://formigamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
@@ -79,7 +79,7 @@
 		</CancelarNfse>
 		<SubstituirNfse versao="2.02">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl </WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://formigamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
@@ -100,7 +100,7 @@
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="2.02">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl </WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://formigamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
@@ -119,7 +119,7 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.02">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl </WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://formigamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
@@ -138,7 +138,7 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoTomado versao="2.02">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl </WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://formigamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
@@ -157,7 +157,7 @@
 		</ConsultarNfseServicoTomado>
 		<ConsultarNfseServicoPrestado versao="2.02">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl </WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://formigamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
@@ -176,7 +176,7 @@
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseFaixa versao="2.02">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.wsdl?</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl </WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://formigamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>

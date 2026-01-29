@@ -1,219 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
-  <Servicos ID="NFSe">
-    <GerarNfse versao="1.01">
-      <Descricao>Envio do DPS - Síncrono</Descricao>
-      <RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse</RequestURIProducao>
-      <RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse</RequestURIHomologacao>
-      <MetodoAPI>post</MetodoAPI>
-      <WebActionProducao>dpsXmlGZipB64</WebActionProducao>
-      <TagAssinatura>DPS</TagAssinatura>
-      <TagAtributoID>infDPS</TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
-      <TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-      <SchemaVersao></SchemaVersao>
-      <GZIPCompress>true</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>true</UsaCertificadoDigital>
-    </GerarNfse>
-    <GerarNfseIndicativoDecisaoJudicial versao="1.01">
-      <Descricao>Envio NFS-e com indicativo de decisão judicial - Síncrono</Descricao>
-      <RequestURIProducao>https://sefin.nfse.gov.br/SefinNacional/decisao-judicial/nfse</RequestURIProducao>
-      <RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/decisao-judicial/nfse</RequestURIHomologacao>
-      <MetodoAPI>post</MetodoAPI>
-      <WebActionProducao>xmlGZipB64</WebActionProducao>
-      <TagLoteAssinatura>NFSe</TagLoteAssinatura>
-      <TagLoteAtributoID>infNFSe</TagLoteAtributoID>
-      <TagAssinatura>DPS</TagAssinatura>
-      <TagAtributoID>infDPS</TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <SchemaArquivo>NFSe_v1.01.xsd</SchemaArquivo>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
-      <TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-      <SchemaVersao>1.01</SchemaVersao>
-      <GZIPCompress>true</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>true</UsaCertificadoDigital>
-    </GerarNfseIndicativoDecisaoJudicial>
-    <CancelarNfse versao="1.01">
-      <Descricao>Envio do cancelamento de NFSe</Descricao>
-      <RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}/eventos</RequestURIProducao>
-      <RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}/eventos</RequestURIHomologacao>
-      <MetodoAPI>post</MetodoAPI>
-      <WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
-      <TagAssinatura>pedRegEvento</TagAssinatura>
-      <TagAtributoID>infPedReg</TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
-      <SchemaVersao></SchemaVersao>
-      <GZIPCompress>true</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>true</UsaCertificadoDigital>
-    </CancelarNfse>
-    <ConsultarNfsePorRps versao="1.01">
-      <Descricao>Consultar NFSe por DPS</Descricao>
-      <RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/dps/{Chave}</RequestURIProducao>
-      <RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/dps/{Chave}</RequestURIHomologacao>
-      <MetodoAPI>get</MetodoAPI>
-      <WebActionProducao></WebActionProducao>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>chaveAcesso</WebTagRetorno>
-      <SchemaVersao></SchemaVersao>
-      <GZIPCompress>false</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-    </ConsultarNfsePorRps>
-    <ConsultarNfse versao="1.01">
-      <Descricao>Consultar NFSe</Descricao>
-      <RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}</RequestURIProducao>
-      <RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}</RequestURIHomologacao>
-      <MetodoAPI>get</MetodoAPI>
-      <WebActionProducao></WebActionProducao>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
-      <SchemaVersao></SchemaVersao>
-      <GZIPCompress>false</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>true</UsaCertificadoDigital>
-    </ConsultarNfse>
-    <ConsultarNfsePDF versao="1.01">
-      <Descricao>Consultar NFSe PDF</Descricao>
-      <RequestURIProducao>https://adn.nfse.gov.br/danfse/{Chave}</RequestURIProducao>
-      <RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/danfse/{Chave}</RequestURIHomologacao>
-      <MetodoAPI>get</MetodoAPI>
-      <WebActionProducao></WebActionProducao>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <WebContentType>application/pdf</WebContentType>
-      <WebTagRetorno>prop:innertext</WebTagRetorno>
-      <SchemaVersao></SchemaVersao>
-      <GZIPCompress>false</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>true</UsaCertificadoDigital>
-    </ConsultarNfsePDF>
-    <RecepcionarEventosNfse versao="1.01">
-      <Descricao>Recepcionar Eventos Diversos da NFSe NACIONAL</Descricao>
-      <RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}/eventos</RequestURIProducao>
-      <RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}/eventos</RequestURIHomologacao>
-      <MetodoAPI>post</MetodoAPI>
-      <WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura>pedRegEvento</TagAssinatura>
-      <TagAtributoID>infPedReg</TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
-      <SchemaVersao></SchemaVersao>
-      <GZIPCompress>true</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>true</UsaCertificadoDigital>
-    </RecepcionarEventosNfse>
-    <ConsultarConvenioMunicipal versao="1.01">
-      <Descricao>Consultar Convênio Municipal</Descricao>
-      <RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/convenio</RequestURIProducao>
-      <RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/convenio</RequestURIHomologacao>
-      <MetodoAPI>get</MetodoAPI>
-      <WebActionProducao></WebActionProducao>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>prop:innertext</WebTagRetorno>
-      <SchemaVersao>1.01</SchemaVersao>
-      <GZIPCompress>false</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>false</UsaCertificadoDigital>
-    </ConsultarConvenioMunicipal>
-    <ConsultarAliquotasMunicipais versao="1.01">
-      <Descricao>Consultar Alíquotas Municipais</Descricao>
-      <RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/aliquota</RequestURIProducao>
-      <RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/aliquota</RequestURIHomologacao>
-      <MetodoAPI>get</MetodoAPI>
-      <WebActionProducao></WebActionProducao>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>prop:innertext</WebTagRetorno>
-      <SchemaVersao>1.01</SchemaVersao>
-      <GZIPCompress>false</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>false</UsaCertificadoDigital>
-    </ConsultarAliquotasMunicipais>
-    <ConsultarHistoricoAliquotasMunicipais versao="1.01">
-      <Descricao>Consultar Histórico de Alíquotas Municipais</Descricao>
-      <RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/historicoaliquotas</RequestURIProducao>
-      <RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/historicoaliquotas</RequestURIHomologacao>
-      <MetodoAPI>get</MetodoAPI>
-      <WebActionProducao></WebActionProducao>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>prop:innertext</WebTagRetorno>
-      <SchemaVersao>1.01</SchemaVersao>
-      <GZIPCompress>false</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>false</UsaCertificadoDigital>
-    </ConsultarHistoricoAliquotasMunicipais>
-    <ConsultarRegimesEspeciaisMunicipais versao="1.01">
-      <Descricao>Consultar Regimes Especiais Municipais</Descricao>
-      <RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/regimes_especiais</RequestURIProducao>
-      <RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/regimes_especiais</RequestURIHomologacao>
-      <MetodoAPI>get</MetodoAPI>
-      <WebActionProducao></WebActionProducao>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>prop:innertext</WebTagRetorno>
-      <SchemaVersao>1.01</SchemaVersao>
-      <GZIPCompress>false</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>false</UsaCertificadoDigital>
-    </ConsultarRegimesEspeciaisMunicipais>
-    <ConsultarRetencoesMunicipais versao="1.01">
-      <Descricao>Consultar Retenções Municipais</Descricao>
-      <RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{competencia}/retencoes</RequestURIProducao>
-      <RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{competencia}/retencoes</RequestURIHomologacao>
-      <MetodoAPI>get</MetodoAPI>
-      <WebActionProducao></WebActionProducao>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>prop:innertext</WebTagRetorno>
-      <SchemaVersao>1.01</SchemaVersao>
-      <GZIPCompress>false</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>false</UsaCertificadoDigital>
-    </ConsultarRetencoesMunicipais>
-    <ConsultarBeneficioMunicipal versao="1.01">
-      <Descricao>Consultar Benefícios Municipais</Descricao>
-      <RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{numeroBeneficio}/{competencia}/beneficio</RequestURIProducao>
-      <RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{numeroBeneficio}/{competencia}/beneficio</RequestURIHomologacao>
-      <MetodoAPI>get</MetodoAPI>
-      <WebActionProducao></WebActionProducao>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <WebSoapString></WebSoapString>
-      <WebContentType>application/json</WebContentType>
-      <WebTagRetorno>prop:innertext</WebTagRetorno>
-      <SchemaVersao>1.01</SchemaVersao>
-      <GZIPCompress>false</GZIPCompress>
-      <LoginConexao>false</LoginConexao>
-      <UsaCertificadoDigital>false</UsaCertificadoDigital>
-    </ConsultarBeneficioMunicipal>
-  </Servicos>
+	<Servicos ID="NFSe">
+		<GerarNfse versao="1.01">
+			<Descricao>Envio do DPS - Síncrono</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</GerarNfse>
+		<GerarNfseIndicativoDecisaoJudicial versao="1.01">
+			<Descricao>Envio NFS-e com indicativo de decisão judicial - Síncrono</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/SefinNacional/decisao-judicial/nfse</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/decisao-judicial/nfse</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>xmlGZipB64</WebActionProducao>
+			<TagLoteAssinatura>NFSe</TagLoteAssinatura>
+			<TagLoteAtributoID>infNFSe</TagLoteAtributoID>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<SchemaArquivo>NFSe_v1.01.xsd</SchemaArquivo>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</GerarNfseIndicativoDecisaoJudicial>
+		<CancelarNfse versao="1.01">
+			<Descricao>Envio do cancelamento de NFSe</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}/eventos</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}/eventos</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
+			<TagAssinatura>pedRegEvento</TagAssinatura>
+			<TagAtributoID>infPedReg</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</CancelarNfse>
+		<ConsultarNfsePorRps versao="1.01">
+			<Descricao>Consultar NFSe por DPS</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/dps/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/dps/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>chaveAcesso</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfse>
+		<ConsultarNfsePDF versao="1.01">
+			<Descricao>Consultar NFSe PDF</Descricao>
+			<RequestURIProducao>https://adn.nfse.gov.br/danfse/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/danfse/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/pdf</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfsePDF>
+		<RecepcionarEventosNfse versao="1.01">
+			<Descricao>Recepcionar Eventos Diversos da NFSe NACIONAL</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}/eventos</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}/eventos</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>pedRegEvento</TagAssinatura>
+			<TagAtributoID>infPedReg</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</RecepcionarEventosNfse>
+		<ConsultarEventosNfse versao="1.01">
+			<Descricao>Consultar Eventos Diversos da NFSe NACIONAL</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{chNFSe}/eventos/{tipoEvento}/{numSeqEvento}</RequestURIProducao>
+			<RequestURIHomologacao>http://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{chNFSe}/eventos/{tipoEvento}/{numSeqEvento}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarEventosNfse>
+		<ConsultarConvenioMunicipal versao="1.01">
+			<Descricao>Consultar Convênio Municipal</Descricao>
+			<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/convenio</RequestURIProducao>
+			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/convenio</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarConvenioMunicipal>
+		<ConsultarAliquotasMunicipais versao="1.01">
+			<Descricao>Consultar Alíquotas Municipais</Descricao>
+			<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/aliquota</RequestURIProducao>
+			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/aliquota</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarAliquotasMunicipais>
+		<ConsultarHistoricoAliquotasMunicipais versao="1.01">
+			<Descricao>Consultar Histórico de Alíquotas Municipais</Descricao>
+			<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/historicoaliquotas</RequestURIProducao>
+			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/historicoaliquotas</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarHistoricoAliquotasMunicipais>
+		<ConsultarRegimesEspeciaisMunicipais versao="1.01">
+			<Descricao>Consultar Regimes Especiais Municipais</Descricao>
+			<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/regimes_especiais</RequestURIProducao>
+			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/regimes_especiais</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarRegimesEspeciaisMunicipais>
+		<ConsultarRetencoesMunicipais versao="1.01">
+			<Descricao>Consultar Retenções Municipais</Descricao>
+			<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{competencia}/retencoes</RequestURIProducao>
+			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{competencia}/retencoes</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarRetencoesMunicipais>
+		<ConsultarBeneficioMunicipal versao="1.01">
+			<Descricao>Consultar Benefícios Municipais</Descricao>
+			<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{numeroBeneficio}/{competencia}/beneficio</RequestURIProducao>
+			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{numeroBeneficio}/{competencia}/beneficio</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarBeneficioMunicipal>
+	</Servicos>
 </Configuracoes>

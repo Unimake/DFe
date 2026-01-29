@@ -1,10 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using System.Xml;
-using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Validator;
-using Unimake.Exceptions;
 using Xunit;
 
 namespace Unimake.DFe.Test.NFe
@@ -28,7 +25,9 @@ namespace Unimake.DFe.Test.NFe
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            Assert.True(ValidatorFactory.BuidValidator(doc.InnerXml)?.Validate());
+            var validatorFactory = new ValidatorFactory();
+
+            Assert.True(validatorFactory.BuidValidator(doc.InnerXml)?.Validate());
         }
 
         /// <summary>
@@ -46,7 +45,7 @@ namespace Unimake.DFe.Test.NFe
             var doc = new XmlDocument();
             doc.Load(arqXml);
 
-            var validator = new Unimake.Business.DFe.Validator.NFe.NFeValidator
+            var validator = new Business.DFe.Validator.NFe.NFeValidator
             {
                 Xml = doc.InnerXml
             };
@@ -54,11 +53,7 @@ namespace Unimake.DFe.Test.NFe
             // Valida (não deve lançar exceção nos dois cenários)
             Assert.True(validator!.Validate());
 
-            // Warnings é protegido em XmlValidatorBase → usar reflection pra ler
-            var prop = validator.GetType().GetProperty("Warnings",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var getter = prop!.GetGetMethod(nonPublic: true);
-            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+            var warnings = validator.Warnings;
 
             if (arqXml.Contains("sem_base_legal", StringComparison.OrdinalIgnoreCase))
             {
@@ -86,7 +81,7 @@ namespace Unimake.DFe.Test.NFe
             var doc = new XmlDocument();
             doc.Load(arqXml);
 
-            var validator = new Unimake.Business.DFe.Validator.NFe.NFeValidator
+            var validator = new Business.DFe.Validator.NFe.NFeValidator
             {
                 Xml = doc.InnerXml
             };
@@ -94,11 +89,7 @@ namespace Unimake.DFe.Test.NFe
             // Valida (não deve lançar exceção nos dois cenários)
             Assert.True(validator!.Validate());
 
-            // Warnings é protegido em XmlValidatorBase → usar reflection pra ler
-            var prop = validator.GetType().GetProperty("Warnings",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var getter = prop!.GetGetMethod(nonPublic: true);
-            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+            var warnings = validator.Warnings;
 
             if (arqXml.Contains("sem_base_legal", StringComparison.OrdinalIgnoreCase))
             {
@@ -126,7 +117,7 @@ namespace Unimake.DFe.Test.NFe
             var doc = new XmlDocument();
             doc.Load(arqXml);
 
-            var validator = new Unimake.Business.DFe.Validator.NFe.NFeValidator
+            var validator = new Business.DFe.Validator.NFe.NFeValidator
             {
                 Xml = doc.InnerXml
             };
@@ -134,11 +125,7 @@ namespace Unimake.DFe.Test.NFe
             // Valida (não deve lançar exceção nos dois cenários)
             Assert.True(validator!.Validate());
 
-            // Warnings é protegido em XmlValidatorBase → usar reflection pra ler
-            var prop = validator.GetType().GetProperty("Warnings",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var getter = prop!.GetGetMethod(nonPublic: true);
-            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+            var warnings = validator.Warnings;
 
             if (arqXml.Contains("sem_base_legal", StringComparison.OrdinalIgnoreCase))
             {
@@ -174,13 +161,7 @@ namespace Unimake.DFe.Test.NFe
             // validação deve passar (aviso é não-impeditivo)
             Assert.True(validator!.Validate());
 
-            // Warnings é protegido em XmlValidatorBase → reflection
-            var prop = validator.GetType().GetProperty(
-                "Warnings",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
-            );
-            var getter = prop!.GetGetMethod(nonPublic: true);
-            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+            var warnings = validator.Warnings;
 
             var deveAvisar = arqXml.Contains("CST00", StringComparison.OrdinalIgnoreCase);
 
@@ -219,13 +200,7 @@ namespace Unimake.DFe.Test.NFe
             // validação deve passar (aviso é não-impeditivo)
             Assert.True(validator!.Validate());
 
-            // Warnings é protegido em XmlValidatorBase → reflection
-            var prop = validator.GetType().GetProperty(
-                "Warnings",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
-            );
-            var getter = prop!.GetGetMethod(nonPublic: true);
-            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+            var warnings = validator.Warnings;
 
             if (deveAvisar)
             {
@@ -260,11 +235,7 @@ namespace Unimake.DFe.Test.NFe
             // aviso não impede
             Assert.True(validator.Validate());
 
-            // ler Warnings (reflection)
-            var prop = validator.GetType().GetProperty("Warnings",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var getter = prop!.GetGetMethod(nonPublic: true);
-            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+            var warnings = validator.Warnings;
 
             if (deveAvisar)
             {
@@ -294,11 +265,7 @@ namespace Unimake.DFe.Test.NFe
             // aviso não impede
             Assert.True(validator.Validate());
 
-            // ler Warnings (reflection)
-            var prop = validator.GetType().GetProperty("Warnings",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var getter = prop!.GetGetMethod(nonPublic: true);
-            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+            var warnings = validator.Warnings;
 
             if (deveAvisar)
             {
@@ -329,11 +296,7 @@ namespace Unimake.DFe.Test.NFe
             // aviso não impede
             Assert.True(validator.Validate());
 
-            // ler Warnings (reflection)
-            var prop = validator.GetType().GetProperty("Warnings",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var getter = prop!.GetGetMethod(nonPublic: true);
-            var warnings = (System.Collections.Generic.List<ValidatorDFeException>)getter!.Invoke(validator, null)!;
+            var warnings = validator.Warnings;
 
             if (deveAvisar)
             {
@@ -346,6 +309,5 @@ namespace Unimake.DFe.Test.NFe
                 Assert.Empty(warnings);
             }
         }
-
     }
 }

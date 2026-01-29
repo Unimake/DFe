@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Xml;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Validator.Contract;
@@ -15,23 +14,9 @@ namespace Unimake.Business.DFe.Validator
     /// </summary>
     public class ValidatorFactory
     {
-        #region Private Fields
+        private Dictionary<string, IXmlValidator> xmlsValidators;
 
-        private static Dictionary<string, IXmlValidator> xmlsValidators;
-
-        #endregion Private Fields
-
-        #region Private Constructors
-
-        private ValidatorFactory()
-        {
-        }
-
-        #endregion Private Constructors
-
-        #region Private Methods
-
-        private static Dictionary<string, IXmlValidator> LoadXmlValidators()
+        private Dictionary<string, IXmlValidator> LoadXmlValidators()
         {
             if (xmlsValidators != null)
             {
@@ -56,17 +41,12 @@ namespace Unimake.Business.DFe.Validator
             return xmlsValidators;
         }
 
-        #endregion Private Methods
-
-        #region Public Constructors
-
-        static ValidatorFactory()
+        /// <summary>
+        /// Construtor padrão
+        /// </summary>
+        public ValidatorFactory()
         {
         }
-
-        #endregion Public Constructors
-
-        #region Public Methods
 
         /// <summary>
         /// Cria uma instância do validador de acordo com o xml definido em <paramref name="xml"/>
@@ -74,7 +54,7 @@ namespace Unimake.Business.DFe.Validator
         /// <param name="xml">XML utilizado para validação</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">Quando o XML está nulo</exception>
-        public static IXmlValidator BuidValidator(string xml)
+        public IXmlValidator BuidValidator(string xml)
         {
             if (xml is null)
             {
@@ -92,6 +72,7 @@ namespace Unimake.Business.DFe.Validator
                     return default;
                 }
 
+                validator.Warnings.Clear(); //Sempre antes de validar vamos limpar para não correr o risco de ter Warnings de outras notas.
                 validator.Xml = xml;
 
                 return validator;
@@ -109,7 +90,5 @@ namespace Unimake.Business.DFe.Validator
                 throw;
             }
         }
-
-        #endregion Public Methods        
     }
 }

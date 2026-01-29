@@ -12,13 +12,7 @@ namespace Unimake.Business.DFe.Validator.Abstractions
     /// </summary>
     public abstract class XmlValidatorBase : IXmlValidator
     {
-        #region Private Fields
-
         private readonly HashSet<(Func<XElement, bool> Predicate, Action<XElement> Validate)> validators = new HashSet<(Func<XElement, bool> Predicate, Action<XElement> Validate)>();
-
-        #endregion Private Fields
-
-        #region Private Methods
 
         private Action<XElement> FindMap(XElement element) =>
                     validators.FirstOrDefault(w => w.Predicate(element)).Validate;
@@ -26,7 +20,7 @@ namespace Unimake.Business.DFe.Validator.Abstractions
         private bool Validate(IEnumerable<XElement> elements)
         {
             //faz um loop pelas tags do XML
-            foreach(var tag in elements)
+            foreach (var tag in elements)
             {
                 var validate = FindMap(tag);
                 validate?.Invoke(tag);
@@ -34,10 +28,6 @@ namespace Unimake.Business.DFe.Validator.Abstractions
 
             return true;
         }
-
-        #endregion Private Methods
-
-        #region Public Properties
 
         /// <summary>
         /// <inheritdoc cref="IXmlValidator.Xml"/>
@@ -47,23 +37,17 @@ namespace Unimake.Business.DFe.Validator.Abstractions
         /// <summary>
         /// Exceções que não interrompem o fluxo do sistema, sendo registradas apenas como avisos ou alertas.
         /// </summary>
-        public List<ValidatorDFeException> Warnings { get; protected set; } = new List<ValidatorDFeException>();
-
-        #endregion Public Properties
-
-        #region Public Constructors
+        public List<ValidatorDFeException> Warnings
+        {
+            get => _warnings;
+            set => _warnings = value;
+        }
+        private List<ValidatorDFeException> _warnings = new List<ValidatorDFeException>();
 
         /// <summary>
         /// Inicia o objeto de validação
         /// </summary>
-        public XmlValidatorBase()
-        { 
-            Warnings.Clear();
-        }
-
-        #endregion Public Constructors
-
-        #region Public Methods
+        public XmlValidatorBase() { }
 
         /// <summary>
         /// <inheritdoc cref="IXmlValidator.CanValidate(XElement)"/>
@@ -94,7 +78,5 @@ namespace Unimake.Business.DFe.Validator.Abstractions
             _ = validators.Add((predicate, validate));
             return this;
         }
-
-        #endregion Public Methods
     }
 }
