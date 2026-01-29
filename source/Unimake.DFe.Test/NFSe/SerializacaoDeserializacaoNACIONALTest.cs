@@ -462,5 +462,76 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
 
             Assert.True(xmlOriginal.InnerText == xmlGeradado.InnerText, "XML gerado pela DLL está diferente do XML criado manualmente.");
         }
+
+        ///<summary>
+        ///Testar serialização do XML de consulta de eventos
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [InlineData(TipoAmbiente.Homologacao, "1.01", 1001058)]
+        [InlineData(TipoAmbiente.Producao, "1.01", 1001058)]
+        public void SerializarConsultaEventosNFSe(TipoAmbiente tipoAmbiente, string versaoSchema, int codMunicipio)
+        {
+            var consulta = new ConsPedRegEvento
+            {
+                Versao = "1.01",
+                InfConsPedRegEvento = new InfConsPedRegEvento
+                {
+                    ChNFSe = "12345678901234567890123456789012345678901234567890",
+                    TipoEvento = "101101",
+                    NumSeqEvento = "001"
+                }
+            };
+
+            var xmlDoc = consulta.GerarXML();
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = tipoAmbiente,
+                CodigoMunicipio = codMunicipio,
+                Servico = Servico.NFSeConsultarEventosDiversos,
+                SchemaVersao = versaoSchema
+            };
+
+            var servico = new Unimake.Business.DFe.Servicos.NFSe.ConsultarEventosNfse(xmlDoc, configuracao);
+            servico.Executar();
+
+            Assert.NotNull(servico.RetornoWSString);
+
+            var resultado = servico.Result;
+            Assert.NotNull(resultado);
+
+            Assert.NotNull(resultado.DataHoraProcessamento);
+            Assert.NotNull(resultado.VersaoAplicativo);
+            Assert.InRange(resultado.TipoAmbiente, 1, 2);
+
+            if (resultado.Eventos != null)
+            {
+                Assert.NotNull(resultado.Eventos.ChaveAcesso);
+                Assert.NotNull(resultado.Eventos.TipoEvento);
+                Assert.NotNull(resultado.Eventos.ArquivoXml);
+                Assert.NotNull(resultado.Eventos.ArquivoXml.Evento);
+
+                var evento = resultado.Eventos.ArquivoXml.Evento;
+                Assert.NotNull(evento.InfEvento);
+                Assert.NotNull(evento.InfEvento.Id);
+                Assert.NotNull(evento.InfEvento.PedRegEvento);
+
+                Assert.Equal(consulta.InfConsPedRegEvento.ChNFSe, resultado.Eventos.ChaveAcesso);
+                Assert.Equal(consulta.InfConsPedRegEvento.TipoEvento, resultado.Eventos.TipoEvento);
+            }
+            else if (resultado.Erro != null)
+            {
+                Assert.NotNull(resultado.Erro.Codigo);
+                Assert.NotNull(resultado.Erro.Descricao);
+            }
+            else
+            {
+                Assert.Fail("Retorno não contém eventos nem erro");
+            }
+        }
     }
 }

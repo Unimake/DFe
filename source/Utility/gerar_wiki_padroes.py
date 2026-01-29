@@ -160,7 +160,7 @@ def gerar_tabela_dll_wiki(padrao: str, versoes_dict: dict, enum_valor: dict[str,
     lines = ['{| class="wikitable" style="width:80%; border:1px solid #ccc; border-collapse:collapse; font-size:95%;"']
     header = "! '''Descrição do serviço''' ||"
     for v in versoes:
-        link = f"[https://www.unimake.com.br/uninfe/modelos.php?p=nfse%2F{padrao.upper()}%2F{v} Exemplos versão {v}]"
+        link = f"[https://www.unimake.com.br/uninfe/modelos.php?p=NFSe%2F{padrao.upper()}%2F{v} Exemplos versão {v}]"
         header += f'<div style="text-align: center;">\'\'\'{link}\'\'\'</div> ||'
     header += '<div style="text-align: center;">\'\'\'[https://www.unimake.com.br/uninfe/docdll/api/Unimake.Business.DFe.Servicos.Servico.html Enum do serviço]\'\'\'</div>'
     lines.append(header)
