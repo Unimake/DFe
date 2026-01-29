@@ -565,6 +565,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Recepcionar Eventos Diversos da NFSe NACIONAL")]
         NFSeRecepcionarEventosDiversos = 91,
 
+        ///<summary>
+        ///92 - Consultar Eventos Diversos da NFSe NACIONAL
+        /// </summary>
+        [Description("Consultar Eventos Diversos da NFSe NACIONAL")]
+        NFSeConsultarEventosDiversos = 92,
+
         #endregion
 
         #region Gerais
