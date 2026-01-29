@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfse:ConsultarLoteDpsEnvio xmlns:nfse="http://www.fiorilli.com.br/nfse-nacional" xmlns:nfse1="http://www.sped.fazenda.gov.br/nfse" versao="1.00">
+	<nfse:CNPJ>99999999999999</nfse:CNPJ>
+	<nfse:IM>999999</nfse:IM>
+	<nfse:Protocolo>1234567890</nfse:Protocolo>
+</nfse:ConsultarLoteDpsEnvio>

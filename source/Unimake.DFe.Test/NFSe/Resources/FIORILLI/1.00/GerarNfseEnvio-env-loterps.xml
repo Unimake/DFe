@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfse:RecepcionarDpsEnvio xmlns:nfse="http://www.fiorilli.com.br/nfse-nacional" xmlns:nfse1="http://www.sped.fazenda.gov.br/nfse">
+	<nfse:DPS versao="1.00">
+		<nfse1:infDPS Id="DPS420290929999999999999900001000000000000001">
+			<nfse1:tpAmb>2</nfse1:tpAmb>
+			<nfse1:dhEmi>2025-11-18T15:23:56-03:00</nfse1:dhEmi>
+			<nfse1:verAplic>1.01.01</nfse1:verAplic>
+			<nfse1:serie>1</nfse1:serie>
+			<nfse1:nDPS>1</nfse1:nDPS>
+			<nfse1:dCompet>2025-11-18</nfse1:dCompet>
+			<nfse1:tpEmit>1</nfse1:tpEmit>
+			<nfse1:cLocEmi>4202909</nfse1:cLocEmi>
+			<nfse1:prest>
+				<nfse1:CNPJ>99999999999999</nfse1:CNPJ>
+				<nfse1:regTrib>
+					<nfse1:opSimpNac>3</nfse1:opSimpNac>
+					<nfse1:regApTribSN>1</nfse1:regApTribSN>
+					<nfse1:regEspTrib>0</nfse1:regEspTrib>
+				</nfse1:regTrib>
+			</nfse1:prest>
+			<nfse1:toma>
+				<nfse1:CNPJ>00000000000000</nfse1:CNPJ>
+				<nfse1:xNome>COMERCIO E XXXXXXXXXXX XXXXXXXX LTDA</nfse1:xNome>
+				<nfse1:end>
+					<nfse1:endNac>
+						<nfse1:cMun>1111111</nfse1:cMun>
+						<nfse1:CEP>11111000</nfse1:CEP>
+					</nfse1:endNac>
+					<nfse1:xLgr>RUA XX XXXX</nfse1:xLgr>
+					<nfse1:nro>800</nfse1:nro>
+					<nfse1:xBairro>XXX XXXXXX</nfse1:xBairro>
+				</nfse1:end>
+				<nfse1:email>teste@teste.com</nfse1:email>
+			</nfse1:toma>
+			<nfse1:serv>
+				<nfse1:locPrest>
+					<nfse1:cLocPrestacao>4202909</nfse1:cLocPrestacao>
+				</nfse1:locPrest>
+				<nfse1:cServ>
+					<nfse1:cTribNac>140101</nfse1:cTribNac>
+					<nfse1:xDescServ>CALAFETACAO PARABRISA VEICULO PASSEIO 1.00 10.00   Valor dos tributos R$:0,00 (18,14%)</nfse1:xDescServ>
+					<nfse1:cNBS>115029000</nfse1:cNBS>
+					<nfse1:cIntContrib>00001</nfse1:cIntContrib>
+				</nfse1:cServ>
+			</nfse1:serv>
+			<nfse1:valores>
+				<nfse1:vServPrest>
+					<nfse1:vServ>1.00</nfse1:vServ>
+				</nfse1:vServPrest>
+				<nfse1:trib>
+					<nfse1:tribMun>
+						<nfse1:tribISSQN>1</nfse1:tribISSQN>
+						<nfse1:tpRetISSQN>1</nfse1:tpRetISSQN>
+					</nfse1:tribMun>
+					<nfse1:totTrib>
+						<nfse1:vTotTrib>
+							<nfse1:vTotTribFed>1.35</nfse1:vTotTribFed>
+							<nfse1:vTotTribEst>0.00</nfse1:vTotTribEst>
+							<nfse1:vTotTribMun>0.47</nfse1:vTotTribMun>
+						</nfse1:vTotTrib>
+					</nfse1:totTrib>
+				</nfse1:trib>
+			</nfse1:valores>
+		</nfse1:infDPS>
+	</nfse:DPS>
+</nfse:RecepcionarDpsEnvio>
