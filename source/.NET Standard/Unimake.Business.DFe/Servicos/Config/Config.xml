@@ -3131,10 +3131,16 @@
 		<ArqConfig>AraucariaPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
-<Arquivo ID="3518206">
+	<Arquivo ID="3518206">
 		<Nome>Guararapes - SP</Nome>
 		<UF>SP</UF>
 		<ArqConfig>GuararapesSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="1100155">
+		<Nome>Ouro Preto do Oeste - RO</Nome>
+		<UF>RO</UF>
+		<ArqConfig>OuroPretoDoOesteRO.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>

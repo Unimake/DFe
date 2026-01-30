@@ -253,7 +253,7 @@
                 <xs:element name="cObra" type="xs:string"/>
                 <xs:element name="cCIB" type="xs:string"/>
             </xs:choice>
-            <xs:element name="end" type="dps:TEnderecoObra"/>
+            <xs:element name="end" type="dps:TEnderecoObra" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
