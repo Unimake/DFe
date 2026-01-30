@@ -479,6 +479,7 @@
 		<None Remove="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarapariES.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarapuavaPR.xml" />
+		<None Remove="Servicos\Config\NFSe\GuararapesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaratinguetaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaribaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaxupeMG.xml" />
@@ -1627,6 +1628,7 @@
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CamaragibePE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuararapesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguariunaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MacapaAP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDasOstrasRJ.xml" />
