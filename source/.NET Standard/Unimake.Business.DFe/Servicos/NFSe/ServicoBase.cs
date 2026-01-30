@@ -107,7 +107,11 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     break;
 
                 case PadraoNFSe.SIMPLISS:
-                    SIMPLISS();
+                    if (Configuracoes.SchemaVersao == "1.01")
+                    {
+                        SIMPLISS();
+                        break;
+                    }
                     break;
 
                 case PadraoNFSe.SMARAPD:
