@@ -601,6 +601,7 @@
 		<None Remove="Servicos\Config\NFSe\OsascoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\OsorioRS.xml" />
 		<None Remove="Servicos\Config\NFSe\OuroFinoMG.xml" />
+		<None Remove="Servicos\Config\NFSe\OuroPretoDoOesteRO.xml" />
 		<None Remove="Servicos\Config\NFSe\OuroSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PadreBernardoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PalhocaSC.xml" />
@@ -1631,6 +1632,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuararapesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguariunaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MacapaAP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\OuroPretoDoOesteRO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDasOstrasRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TibauRN.xml" />
 	</ItemGroup>
