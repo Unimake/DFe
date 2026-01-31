@@ -392,3 +392,4 @@ MigrationBackup/
 /source/Unimake.DFe.Test/EFDReinf/Resources/ID1000000000000002021052608080800003-reinfproc.xml
 /source/Unimake.DFe.Test/EFDReinf/Resources/ID1061174730000002024052915244400001-reinfproc.xml
 /Exemplos/Windev/TreinamentoUnimakeDFe/Bkp_V29_20260114_1807
+*.BAK

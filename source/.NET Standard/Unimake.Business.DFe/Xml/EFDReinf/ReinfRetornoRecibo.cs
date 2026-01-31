@@ -23,6 +23,23 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("ideStatus")]
         public IdeStatusRetorno IdeStatus { get; set; }
 
+        [XmlElement("retornoEventos")]
+        public RetornoEventos RetornoEventos { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeStatusRetorno")]
+    [ComVisible(true)]
+#endif
+    public class IdeStatusRetorno
+    {
+        [XmlElement("cdRetorno")]
+        public string CdRetorno { get; set; }
+
+        [XmlElement("descRetorno")]
+        public string DescRetorno { get; set; }
+
         [XmlElement("regOcorrs")]
         public List<RegOcorrsRetorno> RegOcorrs { get; set; }
 
@@ -52,7 +69,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             if ((RegOcorrs?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return RegOcorrs[index];
         }
@@ -62,24 +79,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         public int GetRegOcorrsCount => (RegOcorrs != null ? RegOcorrs.Count : 0);
 #endif
-
-        [XmlElement("retornoEventos")]
-        public RetornoEventos RetornoEventos { get; set; }
-
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeStatusRetorno")]
-    [ComVisible(true)]
-#endif
-    public class IdeStatusRetorno
-    {
-        [XmlElement("cdRetorno")]
-        public string CdRetorno { get; set; }
-
-        [XmlElement("descRetorno")]
-        public string DescRetorno { get; set; }
     }
 
 #if INTEROP
@@ -142,7 +141,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             if ((Evento?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Evento[index];
         }
