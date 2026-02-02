@@ -369,6 +369,11 @@ namespace Unimake.Business.DFe.Servicos
                                 EncriptaTagAssinatura = XMLUtility.TagRead(elementPropriedades, "EncriptaTagAssinatura").ToLower() == "true" ? true : false;
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "TemCDATA"))
+                            {
+                                TemCDATA = XMLUtility.TagRead(elementPropriedades, "TemCDATA").ToLower() == "true" ? true : false;
+                            }
+
                             if (XMLUtility.TagExist(elementPropriedades, "TimeOutWebServiceConnect"))
                             {
                                 var timeOut = Convert.ToInt32(XMLUtility.TagRead(elementPropriedades, "TimeOutWebServiceConnect"));
