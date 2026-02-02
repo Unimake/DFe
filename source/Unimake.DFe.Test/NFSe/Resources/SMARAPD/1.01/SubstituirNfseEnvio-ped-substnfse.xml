@@ -1,0 +1,25 @@
+﻿<evento xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
+	<infEvento Id="EVT14001591201761135000132000000000000022096100197260105102">
+		<verAplic>SilTecnologia_v1.00</verAplic>
+		<ambGer>1</ambGer>
+		<nSeqEvento>0</nSeqEvento>
+		<dhProc>2025-12-07T00:00:00-03:00</dhProc>
+		<nDFe>0</nDFe>
+		<pedRegEvento versao="1.01">
+			<infPedReg Id="PRE14001591201761135000132000000000000022096100197260105102">
+				<tpAmb>2</tpAmb>
+				<verAplic>Teste_0.1.0</verAplic>
+				<dhEvento>2022-09-28T13:50:29-03:00</dhEvento>
+				<CNPJAutor>01761135000132</CNPJAutor>
+				<chNFSe>14001591201761135000132000000000000022096100197260</chNFSe>
+				<e105102>
+					<xDesc>Cancelamento de NFS-e por Substituição</xDesc>
+					<cMotivo>99</cMotivo>
+					<xMotivo>Cancelamento de NFS-e por Substituicao</xMotivo>
+					<chSubstituta>43149022226263261000198000000000000225120787292537</chSubstituta>
+				</e105102>
+			</infPedReg>
+		</pedRegEvento>
+	</infEvento>
+	<!-- Assinar o XML -->
+</evento>
