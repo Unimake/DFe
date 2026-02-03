@@ -151,6 +151,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("e203202", Namespace = NfseNs.Ns)]
         public E203202 E203202 { get; set; }
 
+        /// <summary>
+        /// Evento de Confirmação Tácita (código 205204).
+        /// </summary>
+        [XmlElement("e205204", Namespace = NfseNs.Ns)]
+        public E205204 E205204 { get; set; }
+
         #region ShouldSerialize
         public bool ShouldSerializeCNPJAutor() => !string.IsNullOrWhiteSpace(CNPJAutor);
         public bool ShouldSerializeCPFAutor() => !string.IsNullOrWhiteSpace(CPFAutor);
