@@ -139,6 +139,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("e105102", Namespace = NfseNs.Ns)]
         public E105102 E105102 { get; set; }
 
+        /// <summary>
+        /// Evento de Confirmação do Prestador (código 202201).
+        /// </summary>
+        [XmlElement("e202201", Namespace = NfseNs.Ns)]
+        public E202201 E202201 { get; set; }
+
         #region ShouldSerialize
         public bool ShouldSerializeCNPJAutor() => !string.IsNullOrWhiteSpace(CNPJAutor);
         public bool ShouldSerializeCPFAutor() => !string.IsNullOrWhiteSpace(CPFAutor);
