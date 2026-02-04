@@ -151,6 +151,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("e203202", Namespace = NfseNs.Ns)]
         public E203202 E203202 { get; set; }
 
+        ///<summary>
+        ///Evento de Confirmação do Intermediário (código 204203). 
+        /// </summary>
+        [XmlElement("e204203", Namespace = NfseNs.Ns)]
+        public E204203 E204203 { get; set; }
+
         /// <summary>
         /// Evento de Confirmação Tácita (código 205204).
         /// </summary>
