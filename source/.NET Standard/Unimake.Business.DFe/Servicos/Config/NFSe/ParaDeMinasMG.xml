@@ -186,7 +186,7 @@
 		<!--Versão 1.01 da RTC-->
 		<GerarNfse versao="1.01">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://parademinas.mg.des.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
@@ -206,7 +206,7 @@
 		</GerarNfse>
 		<CancelarNfse versao="1.01">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://parademinas.mg.des.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
@@ -225,13 +225,13 @@
 		</CancelarNfse>
 		<ConsultarNfsePorRps versao="1.01">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://parademinas.mg.des.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>ConsultarDps</TagAssinatura>
+			<TagAtributoID>ConsultarDps</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
@@ -242,5 +242,24 @@
 			<SchemaVersao>1.01</SchemaVersao>
 			<TargetNS>http://ws.supernova.com.br/</TargetNS>
 		</ConsultarNfsePorRps>
+		<ConsultarSituacaoLoteRps versao="1.01">
+			<Descricao>Consulta Situuação do Lote por RPS</Descricao>
+			<WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://parademinas.mg.des.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarStatusDps</TagAssinatura>
+			<TagAtributoID>ConsultarStatusDps</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType></WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.supernova.com.br/"><soapenv:Header/><soapenv:Body><ws:ConsultarStatusDps><xml>{xmlBodyScape}</xml></ws:ConsultarStatusDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarStatusDpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://ws.supernova.com.br/</TargetNS>
+		</ConsultarSituacaoLoteRps>
 	</Servicos>
 </Configuracoes>
