@@ -17278,6 +17278,50 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion Código Motivo Cancelamento Por substituição NFS-e NACIONAL
 
+    #region Código Motivo Rejeição NFS-e NACIONAL
+    /// <summary>
+    /// Código de Motivo de Rejeição NFS-e NACIONAL
+    /// </summary>
+    public enum CodigoMotivoRejeicao
+    {
+        /// <summary>
+        /// 1 - NFS-e em duplicidade
+        /// </summary>
+        [XmlEnum("1")]
+        NFSeEmDuplicidadae = 1,
+
+        /// <summary>
+        /// 2 - NFS-e Já emitida pelo tomador
+        /// </summary>
+        [XmlEnum("2")]
+        NFSeJaEmitidaPeloTomador = 2,
+
+        /// <summary>
+        /// 3 - Não ocorrência do fato gerador
+        /// </summary>
+        [XmlEnum("3")]
+        NaoOcorrenciaDoFatoGerador = 3,
+
+        /// <summary>
+        /// 4 - Erro quanto a responsabilidade tributária 
+        /// </summary>
+        [XmlEnum("4")]
+        ErroQuantoAResponsabilidadeTributaria = 4,
+
+        /// <summary>
+        /// 5 - Erro quanto ao valor do serviço, valor das deduções ou serviço prestado ou data do fato gerador
+        /// </summary>
+        [XmlEnum("5")]
+        ErroQuantoAoValorDoServicoValorDasDeducoesOuServicoPrestadoOuDataDoFatoGerador = 5,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9
+    }
+    #endregion Código Motivo Rejeição NFS-e NACIONAL
+
     #endregion NFS-e NACIONAL
 
 
