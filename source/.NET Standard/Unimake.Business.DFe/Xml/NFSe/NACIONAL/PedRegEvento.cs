@@ -146,6 +146,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public E202201 E202201 { get; set; }
 
         /// <summary>
+        /// Evento de Rejeição do Prestador (código 202205).
+        /// </summary>
+        [XmlElement("e202205", Namespace = NfseNs.Ns)]
+        public E202205 E202205 { get; set; }
+
+        /// <summary>
         /// Evento de Confirmação do Tomador (código 203202).
         /// </summary>
         [XmlElement("e203202", Namespace = NfseNs.Ns)]
