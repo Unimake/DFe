@@ -36,11 +36,11 @@ begin
     oConfiguracao.CodigoMunicipio := 1001058; //Padrão Nacional
     oConfiguracao.TipoAmbiente := 2; // Homologação
     oConfiguracao.Servico := 32; // NFSeConsultarNfse
-    oConfiguracao.SchemaVersao := '1.00';
+    oConfiguracao.SchemaVersao := '1.01';
 
     XML :=
        '<?xml version="1.0" encoding="utf-8"?>' +
-       '<NFSe versao="1.00" xmlns="http://www.sped.fazenda.gov.br/nfse">' +
+       '<NFSe versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse">' +
        '	<infNFSe Id="NFS99999999999999999999999999999999999999999999999999"/>' +
        '</NFSe>';
 

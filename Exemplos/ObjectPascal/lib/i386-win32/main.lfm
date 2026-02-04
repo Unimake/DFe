@@ -596,4 +596,13 @@ object frmPrincipal: TfrmPrincipal
       OnClick = Btn_ConsultaResultadoLoteGNREClick
     end
   end
+  object BtnNACIONALGerarNFSeObjeto: TButton
+    Left = 1144
+    Height = 38
+    Top = 504
+    Width = 328
+    Caption = 'NACIONAL - Gerar NFSe com Objeto'
+    TabOrder = 10
+    OnClick = BtnNACIONALGerarNFSeObjetoClick
+  end
 end
