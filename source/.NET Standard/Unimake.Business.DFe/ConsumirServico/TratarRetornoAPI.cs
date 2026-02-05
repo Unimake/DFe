@@ -35,7 +35,24 @@ namespace Unimake.Business.DFe
             else if (Response.StatusCode == System.Net.HttpStatusCode.NotFound && Config.PadraoNFSe == PadraoNFSe.NACIONAL)
             {
                 var naoEncontradoErro = new XmlDocument();
-                naoEncontradoErro.LoadXml(StringToXml("O servidor da Receita Federal retornou um erro (404) pois não encontrou a determinada nota no ambiente. " + responseString));
+
+                if (Config.Servico == Servico.NFSeConsultarNfsePorRps)
+                {
+                    try
+                    {
+                        var xmlErro = BuscarXML(ref Config, responseString);
+                        naoEncontradoErro.LoadXml(xmlErro);
+                    }
+                    catch
+                    {
+                        naoEncontradoErro.LoadXml(StringToXml("O servidor da Receita Federal retornou um erro (404) pois não encontrou a determinada nota no ambiente. " + responseString));
+                    }
+                }
+                else
+                {
+                    naoEncontradoErro.LoadXml(StringToXml("O servidor da Receita Federal retornou um erro (404) pois não encontrou a determinada nota no ambiente. " + responseString));
+                }
+
                 return naoEncontradoErro;
             }
             else if (Response.StatusCode == System.Net.HttpStatusCode.Unauthorized && Config.PadraoNFSe == PadraoNFSe.GIAP)
