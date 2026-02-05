@@ -105,7 +105,7 @@ begin
     begin
       if oGerarNFSe.Result.InfNFSe.CStat = 100 then
       begin
-        oGerarNFSe.GravarXmlDistribuicao('d:\testenfe', DPS.InfDPS.Id + '-procNFSe', oGerarNFSe.RetornoWSString);
+        oGerarNFSe.GravarXmlDistribuicao('d:\testenfe', oGerarNFSe.Result.InfNFSe.Id + '-procNFSe', oGerarNFSe.RetornoWSString);
       end;
     end
     else
