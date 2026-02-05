@@ -480,13 +480,22 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public OptSimplesNacional OpSimpNac { get; set; }
 
         [XmlElement("regApTribSN")]
+#if INTEROP        
+        public RegApTribSN RegApTribSN { get; set; } = (RegApTribSN)(-1);
+#else
         public RegApTribSN? RegApTribSN { get; set; }
+#endif
 
         [XmlElement("regEspTrib")]
         public RegEspTrib RegEspTrib { get; set; }
 
         #region Should Serialize
+#if INTEROP        
+        public bool ShouldSerializeRegApTribSN() => RegApTribSN != (RegApTribSN)(-1);
+#else
         public bool ShouldSerializeRegApTribSN() => RegApTribSN.HasValue;
+#endif
+
         #endregion Should Serialize
     }
 
@@ -640,7 +649,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public string CTribNac { get; set; }
 
         [XmlElement("cTribMun")]
-        public int CTribMun { get; set; }
+        public string CTribMun { get; set; }
 
         [XmlElement("xDescServ")]
         public string XDescServ { get; set; }
@@ -653,7 +662,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 
         #region Should Serialize
-        public bool ShouldSerializeCTribMun() => CTribMun > 0;
+        public bool ShouldSerializeCTribMun() => !string.IsNullOrWhiteSpace(CTribMun);
         public bool ShouldSerializeCIntContrib() => !string.IsNullOrWhiteSpace(CIntContrib);
         public bool ShouldSerializeCNBS() => !string.IsNullOrWhiteSpace(CNBS);
         #endregion Should Serialize

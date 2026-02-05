@@ -40,12 +40,12 @@ begin
     oConfiguracao.CodigoMunicipio := 1001058; //Padrão Nacional
     oConfiguracao.TipoAmbiente := 2; //Homologacao;
     oConfiguracao.Servico := 27; //NFSeGerarNFSe;
-    oConfiguracao.SchemaVersao := '1.00';
+    oConfiguracao.SchemaVersao := '1.01';
 
     // XML montado manualmente (você pode gerar via string ou ler de arquivo também)
     XML :=
       '<?xml version="1.0" encoding="utf-8"?>' + 
-      '<DPS versao="1.00" xmlns="http://www.sped.fazenda.gov.br/nfse">' + 
+      '<DPS versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse">' +
       '	<infDPS Id="DPS420240420000000000000000007000000000000002">' + 
       '		<tpAmb>1</tpAmb>' + 
       '		<dhEmi>2023-09-09T09:42:06-03:00</dhEmi>' + 

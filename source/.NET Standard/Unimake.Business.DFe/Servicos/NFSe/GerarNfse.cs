@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System.Xml;
-using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
@@ -58,7 +57,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// Retorna null se houve erro (usar ResultErro).
         /// </summary>
 #if INTEROP
-[ComVisible(true)]
+        [ComVisible(true)]
 #endif
         public Xml.NFSe.NACIONAL.NFSe.NFSe Result
         {
