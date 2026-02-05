@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DPS xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
-	<infDPS Id="DPS410690226254937400011800900000000000001053">
+	<infDPS Id="DPS410690211234567800019500001000000000000001">
 		<tpAmb>2</tpAmb>
 		<dhEmi>2026-01-20T16:47:15-03:00</dhEmi>
 		<verAplic>1</verAplic>
@@ -65,5 +65,22 @@
 				</totTrib>
 			</trib>
 		</valores>
+		<IBSCBS>
+			<finNFSe>0</finNFSe>
+			<indFinal>0</indFinal>
+			<cIndOp>000001</cIndOp>
+			<tpOper>1</tpOper>
+			<tpEnteGov>1</tpEnteGov>
+			<indDest>0</indDest>
+			<valores>
+				<trib>
+					<gIBSCBS>
+						<CST>101</CST>
+						<cClassTrib>000001</cClassTrib>
+						<cCredPres>01</cCredPres>
+					</gIBSCBS>
+				</trib>
+			</valores>
+		</IBSCBS>
 	</infDPS>
 </DPS>
