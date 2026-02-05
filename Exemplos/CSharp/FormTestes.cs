@@ -2152,7 +2152,7 @@ namespace TreinamentoDLL
                 Imprimir = false,
                 EnviaEmail = false,
                 Configuracao = "PAISAGEM",
-                PastaConfiguracao = @"d:\testenfe\unidanfe_teste"
+                //PastaConfiguracao = @"d:\testenfe\unidanfe_teste"
             };
 
             DANFe.UnidanfeServices.Execute(config);
