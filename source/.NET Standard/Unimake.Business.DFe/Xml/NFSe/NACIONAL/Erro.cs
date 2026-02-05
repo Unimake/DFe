@@ -56,6 +56,9 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("idDPS")]
         public string IdDPS { get; set; }
 
+        [XmlElement("chaveAcesso")]
+        public string ChaveAcesso { get; set; }
+
         /// <summary>
         /// Informações de erro.
         /// </summary>
@@ -70,6 +73,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
         #region ShoudlSerialize
         public bool ShouldSerializeIdDPS() => IdDPS != null;
+        public bool ShouldSerializeChaveAcesso() => ChaveAcesso != null;
         #endregion ShoudlSerialize
     }
 
