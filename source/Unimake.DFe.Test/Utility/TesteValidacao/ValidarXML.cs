@@ -1,4 +1,6 @@
-﻿using Org.BouncyCastle.X509;
+﻿using Newtonsoft.Json;
+using Org.BouncyCastle.Asn1.X509;
+using Org.BouncyCastle.X509;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,16 +8,18 @@ using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.Security;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Validator;
 using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Business.Security;
+using Unimake.DFe.Test.Utility.TesteValidacao.Vinculadores;
+using Unimake.DFe.Test.Utility.TesteValidacao.Extractors;
 using Xunit;
 using Xunit.Abstractions;
-using Org.BouncyCastle.Asn1.X509;
-using Newtonsoft.Json;
+using Unimake.DFe.Test.Utility.TesteValidacao.Isoladores;
 
 
 namespace Unimake.DFe.Test.Utility.TesteValidacao
@@ -65,26 +69,21 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
 
         [Theory]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\distDFeInt.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\consReciCTe.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\eventoCTe_110180.xml")]
         //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\eventoCTe_610111.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\enviCTe_ModalDutoviario.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\distDFeInt.xml")]
-        [InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\CteModal.xml")]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\CTe_ModalRodoviarioValido.xml")]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\consSitCTe.xml")]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\4_00_CTe_ModalRodoviario.xml")]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\CTeOS-nfe.xml")]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\CTeSimp.xml")]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\MDFe\EventoMDFePagamentoOperacaoMDFe.xml")]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\MDFe\enviMDFe_ModalFerroviario.xml")]
 
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\4_00_CTe_ModalAereo.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFe\envEvento_211110.xml")]
+        [InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFe\envEvento_211110.xml")]
 
-
-        // TODO:
-        // verificar a identificação de evento pela nova tag evento e verificar se outras mudanças no fluxoi são
-        // necessárias ou se facilitam
 
         public static void CaregarServicoValidar(string caminhoServicoValidacao, string caminhoArquivo)
         {
-
-            // Carregar certificado
+            #region VaiSerApagada
             var CertificadoCaminho = @"C:\Projetos\Unimake_PV.pfx";
             var CertificadoSenha = "12345678";
             var certificado = new CertificadoDigital().CarregarCertificadoDigitalA1(CertificadoCaminho, CertificadoSenha);
@@ -102,9 +101,18 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             XmlDocument xml = new(); // passar direto o XmlDocument  quando esse metodo for chamado no UniNFe
             xml.Load(caminhoArquivo);
 
-            var tagRaiz = xml.DocumentElement.Name;
-            var versao = ObterVersao(xml);
+            #endregion
+
             var tipoDFe = DetectarTipoDFe(xml);
+
+            if (tipoDFe == TipoDFe.CTeOS) 
+            {
+                ValidarCTeOS(xml, certificado);
+                return;
+            }
+
+            var tagRaiz = xml.DocumentElement.Name;
+            var versao = ObterVersao(xml, xmlConfig);
 
             XmlNodeList servicos = xmlConfig.GetElementsByTagName("Servico");
 
@@ -124,20 +132,22 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 if (tagRaizServico != tagRaiz || versaoServico != versao)
                     continue;
 
-                var schemasEspecificosservico = servico.SelectSingleNode("//*[local-name()='SchemasEspecificos']");
+             
                 var inform = MontarInformacaoGeral(servico);
                 AssinarSeNecessario(xml, inform, certificado);
 
-                if (schemasEspecificosservico == null) // Serviço sem schema específico então não precisa de validação Específica
+                try { 
+                if (servico.SelectSingleNode(".//*[local-name()='SchemasEspecificos']") is null) // Serviço sem schema específico então não precisa de validação Específica
                 {
                     ValidarSchemaGeral(xml, inform, tipoDFe);
                     Console.WriteLine(inform);
                     return;
                 }
 
-                if (servico.SelectSingleNode("//*[local-name()='TagEvento']") == null)
+                else if (!(servico.SelectSingleNode(".//*[local-name()='TagEvento']") is null))
                 {
-                    var eventos = VincularEventoSchema(servico, xml);
+                    var vinculador = VinculadorFactory.CriarVinculadorEvento();
+                    var eventos = VincularEventoSchema(servico, xml); // utilizar o metodo correto
 
                     foreach (var (tipoCorreto, eventoNode) in eventos)
                     {
@@ -150,29 +160,31 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 }
 
 
-                else if (xml.SelectNodes("//*[local-name()='CTe']").Count > 0) // possui tag CTe (tag raiz = CTe ou enviCTe) mesmo tratamento
+                else 
                 {
-                    var CTeVinculados = VincularCTeSchema(servico, xml);
-                    foreach (var (tipoCorreto, cteNode) in CTeVinculados)
-                    {
-                        MontarInformacaoEspecifica(servico, tipoCorreto, inform);
-                        ValidarSchemaGeral(xml, inform, tipoDFe);
-                        ValidarSchemaEspecifico(cteNode, inform, tipoDFe);
-                        Console.WriteLine(inform);
-                    }
-                    break;
-
-                }
-
-                else
-                {
-                    throw new Exception("Erro ao validar XML: Não foi possível encontrar schemas específicos para validação.");
+                        var vinculador = VinculadorFactory.CriarVinculadorModal(tipoDFe);
+                        var nodeVinculado = VincularEventoSchema(servico, xml);
+                        foreach (var (tipoCorreto, cteNode) in nodeVinculado)
+                        {
+                            MontarInformacaoEspecifica(servico, tipoCorreto, inform);
+                            ValidarSchemaGeral(xml, inform, tipoDFe);
+                            ValidarSchemaEspecifico(cteNode, inform, tipoDFe);
+                            Console.WriteLine(inform);
+                        }
+                        break;
                 }
             }
-            return;
-        }
 
-        // salvar tag evento no inform para poder fazer verificações futuras
+        catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao validar schema específico: {ex.Message}");
+                throw;
+            }
+        }
+        return;
+    }
+
+
 
         private static InformacaoXML MontarInformacaoGeral(XmlNode servico)
         {
@@ -184,7 +196,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 TargetNS = servico.SelectSingleNode("*[local-name()='TargetNS']")?.InnerText,
                 TagAssinatura = servico.SelectSingleNode("*[local-name()='TagAssinatura']")?.InnerText,
                 TagAtributoID = servico.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText,
-                TagEvento = servico.SelectSingleNode("*[local-name()='TagEvento']")?.InnerText,
+                TagEvento = servico.SelectSingleNode("*[local-name()='TagEvento']")?.InnerText, // salvar tag evento no inform para poder fazer verificações futuras
                 TagLoteAssinatura = servico.SelectSingleNode("*[local-name()='TagLoteAssinatura']")?.InnerText,
                 TagLoteAtributoID = servico.SelectSingleNode("*[local-name()='TagLoteAtributoID']")?.InnerText,
                 TagExtraAssinatura = servico.SelectSingleNode("*[local-name()='TagExtraAssinatura']")?.InnerText,
@@ -244,7 +256,8 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         private static void ValidarSchemaEspecifico(XmlNode eventoNode, InformacaoXML info, TipoDFe tipoDFe)
         {
 
-            var xmlEspecifico = IsolarXMLEspecifico(eventoNode, tipoDFe);
+            var isolador = IsoladorFactory.CriarIsolador(tipoDFe);
+            var xmlEspecifico = isolador.Isolar(eventoNode);
 
             var validarEspecifico = new ValidarSchema();
             string schemaEspecifico = $"{tipoDFe.ToString()}.{info.SchemaArquivoEspecifico}";
@@ -258,170 +271,68 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
 
 
-        private static XmlDocument IsolarXMLEspecifico(XmlNode node, TipoDFe tipoDFe)
-        {
-            switch (tipoDFe)
-            {
-
-                case TipoDFe.NFe:
-                case TipoDFe.NFCe:
-                    var infEvento = node.SelectSingleNode("*[local-name()='infEvento']");
-                    var detEvento = infEvento.SelectSingleNode("*[local-name()='detEvento']");
-
-                    XmlDocument xmlEspecificoNFe = new();
-                    xmlEspecificoNFe.LoadXml(detEvento.OuterXml);
-
-                    return xmlEspecificoNFe;
-
-
-                case TipoDFe.CTe:
-
-                    if (node.SelectNodes(".//*[local-name()='infModal']").Count == 0)
-                    {
-
-                        var elementEvento = (XmlElement)node;
-
-                        var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
-                        var xmlEspecificoCTe = new XmlDocument();
-                        xmlEspecificoCTe.LoadXml(elementInfEvento.GetElementsByTagName(elementInfEvento.GetElementsByTagName("detEvento")[0].FirstChild.Name)[0].OuterXml);
-
-                        return xmlEspecificoCTe;
-                    }
-                    else
-                    {
-                        var elementCTe = (XmlElement)node;
-
-                        var elementInfModal = (XmlElement)elementCTe.GetElementsByTagName("infModal")[0];
-                        var xmlEspecificoCTe = new XmlDocument();
-                        xmlEspecificoCTe.LoadXml(elementInfModal.InnerXml);
-
-                        return xmlEspecificoCTe;
-                    }
-
-                default:
-
-                    return null;
-
-            }
-
-
-        }
-
-
-
-
         private static List<(XmlNode NodeIdCorreto, XmlNode eventoNode)> VincularEventoSchema(XmlNode servico, XmlDocument xml)
         {
             var lista = new List<(XmlNode NodeIdCorreto, XmlNode eventoNode)>();
-            XmlNodeList eventoXML = xml.CreateElement("tmp").ChildNodes;
 
             var tagEvento = servico.SelectSingleNode("*[local-name()='TagEvento']")?.InnerText;
+            if (string.IsNullOrWhiteSpace(tagEvento))
+                throw new Exception("Tag de evento não configurada no serviço");
 
+            XmlNodeList eventoXML = xml.GetElementsByTagName(tagEvento);
+            if (eventoXML.Count == 0)
+                throw new Exception($"Tag de evento '{tagEvento}' não encontrada no XML");
 
-            if (xml.GetElementsByTagName(tagEvento).Count > 0)
-            {
-                eventoXML = xml.GetElementsByTagName(tagEvento);
-            }
-            else
-            {
-                throw new Exception("Tag de evento não encontrada no XML");
-            }
+            XmlNode schemasEspecificos = servico.SelectSingleNode("*[local-name()='SchemasEspecificos']");
 
             foreach (XmlNode eventoNode in eventoXML)
             {
                 var tpEventoNode = eventoNode.SelectSingleNode("*[local-name()='infEvento']/*[local-name()='tpEvento']");
                 string tpEvento = tpEventoNode?.InnerText;
 
-                if (String.IsNullOrWhiteSpace(tpEvento))
+                if (string.IsNullOrWhiteSpace(tpEvento))
                     throw new Exception("Tag <tpEvento> não encontrada");
 
-                // Procura schema pelo ID específico
-                XmlNode schemasEspecificos = servico.SelectSingleNode("*[local-name()='SchemasEspecificos']");
-                if (schemasEspecificos == null)
-                {
-                    throw new Exception("Configuração de SchemasEspecificos não encontrada");
-                }
+                XmlNode NodetipoCorreto = EncontrarTipoSchemaPorId(schemasEspecificos, tpEvento);
 
-                XmlNode NodetipoCorreto = null;
-
-                foreach (XmlNode tipo in schemasEspecificos.SelectNodes("*[local-name()='Tipo']"))
-                {
-                    string id = tipo.SelectSingleNode("*[local-name()='ID']")?.InnerText;
-
-                    if (id == tpEvento)
-                    {
-                        NodetipoCorreto = tipo;
-                        break;
-                    }
-                }
-
-                if (NodetipoCorreto == null)
+                if (NodetipoCorreto is null)
                     throw new Exception($"Não existe Schema Específico configurado para o evento {tpEvento}");
 
                 lista.Add((NodetipoCorreto, eventoNode));
-
             }
+
             return lista;
         }
 
 
 
-        private static List<string> ObterListaTagId()
+        private static string ObterVersao(XmlDocument xml, XmlDocument xmlConfig)
         {
-            List<string> tagsId = new List<string>();
+            // Versão como atributo da raiz
+            var versao = xml.DocumentElement.GetAttribute("versao");
+            if (!string.IsNullOrEmpty(versao))
+                return versao;
 
-            // so para poder utilizar o config também  --> depois ver como fazer isso melhor
-            var caminhoConfig = @"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml";
-            XmlDocument xmlDocument = new();
-            xmlDocument.Load(caminhoConfig);
-
-
-            XmlNodeList servicos = xmlDocument.GetElementsByTagName("Servico");
+            // Buscar em cada Servico configurado pela TagVersao
+            XmlNodeList servicos = xmlConfig.GetElementsByTagName("Servico");
 
             foreach (XmlNode servico in servicos)
             {
-                var tagAtributoID = servico.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText;
-                if (!String.IsNullOrEmpty(tagAtributoID) && !tagsId.Contains(tagAtributoID))
+                var tagVersao = servico.SelectSingleNode("*[local-name()='TagVersao']")?.InnerText;
+
+                if (string.IsNullOrWhiteSpace(tagVersao))
+                    continue;
+
+                var nodeVersao = xml.GetElementsByTagName(tagVersao);
+
+                if (nodeVersao.Count > 0)
                 {
-                    tagsId.Add(tagAtributoID);
-
-                }
-            }
-
-            return tagsId;
-
-        }
-
-
-
-
-        private static string ObterVersao(XmlDocument xml)
-        {
-
-            var versao = xml.DocumentElement.GetAttribute("versao");
-            if (!string.IsNullOrEmpty(versao))
-            {
-                return versao;
-            }
-
-            var tags = ObterListaTagId();
-
-            foreach (var tag in tags)
-            {
-                var node = xml.GetElementsByTagName(tag);
-
-                if (node.Count > 0)
-                {
-                    versao = ((XmlElement)node[0]).GetAttribute("versao");
-
+                    versao = ((XmlElement)nodeVersao[0]).GetAttribute("versao");
                     if (!string.IsNullOrEmpty(versao))
-                    {
                         return versao;
-                    }
-
                 }
-
             }
+
             return string.Empty;
         }
 
@@ -445,47 +356,62 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
         private static List<(XmlNode NodeIdCorreto, XmlNode NodeInfCTe)> VincularCTeSchema(XmlNode servico, XmlDocument xml)
         {
-            var lista = new List<(XmlNode NodeIdCorreto, XmlNode NodeCTe)>();
+            var lista = new List<(XmlNode NodeIdCorreto, XmlNode NodeInfCTe)>();
+            var schemasEspecificos = servico.SelectSingleNode("*[local-name()='SchemasEspecificos']");
+
+            if (schemasEspecificos is null)
+                throw new Exception("Configuração de SchemasEspecificos não encontrada para CTe");
+
             var nodeCTe = xml.GetElementsByTagName("CTe");
+
+            if (nodeCTe is null)
+                throw new Exception("tag CTe não encontrada");
 
             foreach (XmlElement node in nodeCTe)
             {
-
                 foreach (XmlElement nodeInfCte in node.GetElementsByTagName("infCte"))
                 {
-                    var modal = string.Empty;
-
                     foreach (XmlElement ideNode in nodeInfCte.GetElementsByTagName("ide"))
                     {
-                        modal = ideNode.GetElementsByTagName("modal")[0].InnerText.Substring(1, 1);
+                        var modal = ideNode.GetElementsByTagName("modal")[0]?.InnerText;
 
-                        var SchemaEspecificoNode = servico.SelectSingleNode("*[local-name()='SchemasEspecificos']");
+                        if (string.IsNullOrWhiteSpace(modal))
+                            throw new Exception("Tag <modal> não encontrada ou está vazia");
 
-                        XmlNode nodeTipoCorreto = null;
+                        // Extrai apenas o segundo caractere do modal
+                        string modalCorreto = modal.Substring(1, 1);
 
-                        foreach (XmlNode tipo in SchemaEspecificoNode.SelectNodes("*[local-name()='Tipo']"))
-                        {
-                            string id = tipo.SelectSingleNode("*[local-name()='ID']")?.InnerText;
-                            if (id == modal)
-                            {
-                                nodeTipoCorreto = tipo;
-                                break;
-                            }
-                        }
+                        XmlNode nodeTipoCorreto = EncontrarTipoSchemaPorId(schemasEspecificos, modalCorreto);
 
-
-                        if (nodeTipoCorreto.IsNullOrEmpty())
-                        {
-                            throw new Exception($"Não existe Schema Específico configurado para o modal {modal}");
-                        }
+                        if (nodeTipoCorreto is null)
+                            throw new Exception($"Não existe Schema Específico configurado para o modal {modalCorreto}");
 
                         lista.Add((nodeTipoCorreto, nodeInfCte));
-
                     }
-
                 }
             }
+
             return lista;
+        }
+
+
+
+        private static XmlNode EncontrarTipoSchemaPorId(XmlNode schemasEspecificos, string id)
+        {
+            if (schemasEspecificos is null)
+                throw new Exception("Configuração de SchemasEspecificos não encontrada");
+
+            if (string.IsNullOrWhiteSpace(id))
+                throw new ArgumentException("ID não pode ser nulo ou vazio", nameof(id));
+
+            foreach (XmlNode tipo in schemasEspecificos.SelectNodes("*[local-name()='Tipo']"))
+            {
+                string tipoId = tipo.SelectSingleNode("*[local-name()='ID']")?.InnerText;
+                if (tipoId == id)
+                    return tipo;
+            }
+
+            return null;
         }
 
 
@@ -533,10 +459,13 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 case "eventoCTe":
                 case "CTe":
                 case "enviCTe":
-                case "CTeOS":
-                case "cteProc": // verificar como fazer a validação depois de documento com a tag raiz.
-                case "CTeSimp":
+                case "cteProc": 
+                case "CTeSimp": 
                     tipoDFe = TipoDFe.CTe;
+                    break;
+
+                case "CTeOS":
+                    tipoDFe = TipoDFe.CTeOS;
                     break;
 
                 #endregion
@@ -587,6 +516,37 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             return tipoDFe;
         }
 
+
+
+        private static void ValidarCTeOS(XmlDocument xml, X509Certificate2 certificado)
+        {
+            try
+            {
+                // 1️ Converter XmlDocument para string para ValidatorFactory
+                string xmlString = xml.OuterXml;
+
+                // 2️ Usar ValidatorFactory para encontrar e executar CTeOSValidator
+                var validatorFactory = new ValidatorFactory();
+                var validator = validatorFactory.BuidValidator(xmlString);
+
+                if (validator is null)
+                {
+                    throw new Exception("Nenhum validador encontrado para CTeOS. Verifique se o XML tem a estrutura correta.");
+                }
+
+                // 3️ Executar validações de negócio do CTeOS
+                if (!validator.Validate())
+                {
+                    throw new Exception("Validação de negócio do CTeOS falhou. Verifique as regras de CPF/CNPJ, códigos de município, etc.");
+                }
+
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao validar CTeOS: {ex.Message}", ex);
+            }
+        }
 
     }
 }

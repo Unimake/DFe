@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<procEventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+	<eventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<infEvento Id="ID11011899999999999999999999999999999999999999999999003">
+			<cOrgao>41</cOrgao>
+			<tpAmb>2</tpAmb>
+			<CNPJ>11111111111111</CNPJ>
+			<chMDFe>99999999999999999999999999999999999999999999</chMDFe>
+			<dhEvento>2024-09-30T13:52:24-03:00</dhEvento>
+			<tpEvento>110118</tpEvento>
+			<nSeqEvento>3</nSeqEvento>
+			<detEvento versaoEvento="3.00">
+				<evAlteracaoPagtoServMDFe>
+					<descEvento>Alteracao Pagamento Servico MDFe</descEvento>
+					<nProt>111111111111111</nProt>
+					<infPag>
+						<xNome>XXXXXX AAAAAA</xNome>
+						<CPF>22222222222</CPF>
+						<Comp>
+							<tpComp>01</tpComp>
+							<vComp>10.00</vComp>
+						</Comp>
+						<vContrato>10.00</vContrato>
+						<indPag>1</indPag>
+						<vAdiant>0.00</vAdiant>
+						<infPrazo>
+							<nParcela>001</nParcela>
+							<dVenc>2024-10-05</dVenc>
+							<vParcela>10.00</vParcela>
+						</infPrazo>
+						<infBanc>
+							<PIX>33333333333</PIX>
+						</infBanc>
+					</infPag>
+				</evAlteracaoPagtoServMDFe>
+			</detEvento>
+		</infEvento>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+				<Reference URI="#ID11011899999999999999999999999999999999999999999999003">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>fCae7cy8UpeghynJ6H3UAdFr1BU=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>P9jwo5G3wRP4B8XGHzyjFasJHADUMzY2V5Kw7asf64iH4kmOoNqaJvXlA1ciajNowWwGbvT4/p8mymYWuD3nvYRtNcvO3sbWEEPQOAaL4d44bvppNZRt/3nEGI6T/xudX1CAX2TgyfuullilcFwilzQH8V3aFQJZxtfz1HsdW0j0zXGreNI3KPGK97/W6LrsZZXZgb2AP1/ADc1svJGtv88atZex0QYdvJw479cRZHycgVvW+r5MHhH2yDjtKmV02PRyK20fX+oX34T85VW3Olo4OxylNECTkiTfT1cautyPi3vUWFVaUm8Yjlj2IcgKM74ugbBiE4nzdQ+z/FTh/g==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>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</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</eventoMDFe>
+	<retEventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<infEvento Id="ID333333333334444" xmlns="http://www.portalfiscal.inf.br/mdfe">
+			<tpAmb>2</tpAmb>
+			<verAplic>RS20240709143541</verAplic>
+			<cOrgao>41</cOrgao>
+			<cStat>135</cStat>
+			<xMotivo>Evento registrado e vinculado ao MDF-e</xMotivo>
+			<chMDFe>99999999999999999999999999999999999999999999</chMDFe>
+			<tpEvento>110118</tpEvento>
+			<xEvento>Alteração do Pagamento do Servico Transporte</xEvento>
+			<nSeqEvento>3</nSeqEvento>
+			<dhRegEvento>2024-09-30T13:52:43-03:00</dhRegEvento>
+			<nProt>333333334444444</nProt>
+		</infEvento>
+	</retEventoMDFe>
+</procEventoMDFe>

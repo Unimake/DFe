@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mdfeProc versao="3.00" nPortaCon="0" dhConexao="0001-01-01T00:00:00-02:00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+	<MDFe xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<infMDFe versao="3.00" Id="MDFe41201299999999999999580010000099991999999992">
+			<ide>
+				<cUF>41</cUF>
+				<tpAmb>1</tpAmb>
+				<tpEmit>1</tpEmit>
+				<mod>58</mod>
+				<serie>1</serie>
+				<nMDF>9999</nMDF>
+				<cMDF>99999999</cMDF>
+				<cDV>2</cDV>
+				<modal>1</modal>
+				<dhEmi>2020-12-10T07:22:18-03:00</dhEmi>
+				<tpEmis>1</tpEmis>
+				<procEmi>0</procEmi>
+				<verProc>UNICO V8.0</verProc>
+				<UFIni>PR</UFIni>
+				<UFFim>SP</UFFim>
+				<infMunCarrega>
+					<cMunCarrega>4118402</cMunCarrega>
+					<xMunCarrega>PARANAVAI</xMunCarrega>
+				</infMunCarrega>
+				<dhIniViagem>2020-12-10T07:19:00-03:00</dhIniViagem>
+			</ide>
+			<emit>
+				<CNPJ>99999999999999</CNPJ>
+				<IE>9999999999</IE>
+				<xNome>XXXXXXXXXXXXXXXXXX</xNome>
+				<xFant>XXXXXXXXXXXXXXXXXX</xFant>
+				<enderEmit>
+					<xLgr>XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</xLgr>
+					<nro>99999</nro>
+					<xBairro>XXXXXXXXXXXXXXXX</xBairro>
+					<cMun>4118402</cMun>
+					<xMun>PARANAVAI</xMun>
+					<CEP>99999999</CEP>
+					<UF>PR</UF>
+					<fone>99999999999</fone>
+				</enderEmit>
+			</emit>
+			<infModal versaoModal="3.00">
+				<rodo>
+					<infANTT>
+						<RNTRC>99999999</RNTRC>
+						<infContratante>
+							<CNPJ>99999999999999</CNPJ>
+						</infContratante>
+						<infContratante>
+							<CNPJ>99999999999999</CNPJ>
+						</infContratante>
+						<infContratante>
+							<CNPJ>99999999999999</CNPJ>
+						</infContratante>
+						<infContratante>
+							<CNPJ>99999999999999</CNPJ>
+						</infContratante>
+						<infContratante>
+							<CNPJ>99999999999999</CNPJ>
+						</infContratante>
+						<infPag>
+							<xNome>XXXXXXXXX</xNome>
+							<CNPJ>99999999999999</CNPJ>
+							<Comp>
+								<tpComp>99</tpComp>
+								<vComp>1055.66</vComp>
+								<xComp>Outros</xComp>
+							</Comp>
+							<vContrato>1055.66</vContrato>
+							<indPag>1</indPag>
+							<infPrazo>
+								<nParcela>001</nParcela>
+								<dVenc>2021-01-10</dVenc>
+								<vParcela>1055.66</vParcela>
+							</infPrazo>
+							<infBanc>
+								<codBanco>999</codBanco>
+								<codAgencia>99999</codAgencia>
+							</infBanc>
+						</infPag>
+					</infANTT>
+					<veicTracao>
+						<cInt>XXXXXXX</cInt>
+						<placa>XXXXXXX</placa>
+						<tara>0</tara>
+						<capKG>4800</capKG>
+						<prop>
+							<CNPJ>99999999999999</CNPJ>
+							<RNTRC>99999999</RNTRC>
+							<xNome>XXXXXXXXXXXXXXXXXX</xNome>
+							<IE>9999999999</IE>
+							<UF>PR</UF>
+							<tpProp>2</tpProp>
+						</prop>
+						<condutor>
+							<xNome>XXXXXXXXXXXXXXXXXXXXXXXX</xNome>
+							<CPF>99999999999</CPF>
+						</condutor>
+						<tpRod>02</tpRod>
+						<tpCar>02</tpCar>
+						<UF>PR</UF>
+					</veicTracao>
+				</rodo>
+			</infModal>
+			<infDoc>
+				<infMunDescarga>
+					<cMunDescarga>3501301</cMunDescarga>
+					<xMunDescarga>ALVARES MACHADO</xMunDescarga>
+					<infCTe>
+						<chCTe>99999999999999999999999999999999999999999999</chCTe>
+					</infCTe>
+				</infMunDescarga>
+				<infMunDescarga>
+					<cMunDescarga>3547908</cMunDescarga>
+					<xMunDescarga>SANTO ANTONIO DA ALEGRIA</xMunDescarga>
+					<infCTe>
+						<chCTe>99999999999999999999999999999999999999999999</chCTe>
+					</infCTe>
+					<infCTe>
+						<chCTe>99999999999999999999999999999999999999999999</chCTe>
+					</infCTe>
+				</infMunDescarga>
+				<infMunDescarga>
+					<cMunDescarga>3551702</cMunDescarga>
+					<xMunDescarga>SERTAOZINHO</xMunDescarga>
+					<infCTe>
+						<chCTe>99999999999999999999999999999999999999999999</chCTe>
+					</infCTe>
+					<infCTe>
+						<chCTe>99999999999999999999999999999999999999999999</chCTe>
+					</infCTe>
+				</infMunDescarga>
+			</infDoc>
+			<seg>
+				<infResp>
+					<respSeg>1</respSeg>
+					<CNPJ>99999999999999</CNPJ>
+				</infResp>
+				<infSeg>
+					<xSeg>PORTO SEGURO</xSeg>
+					<CNPJ>99999999999999</CNPJ>
+				</infSeg>
+				<nApol>999999999999</nApol>
+				<nAver>0000000000000000000000000000000000000000</nAver>
+			</seg>
+			<prodPred>
+				<tpCarga>05</tpCarga>
+				<xProd>XXXXXX</xProd>
+			</prodPred>
+			<tot>
+				<qCTe>5</qCTe>
+				<vCarga>76195.26</vCarga>
+				<cUnid>01</cUnid>
+				<qCarga>4253.0000</qCarga>
+			</tot>
+			<infAdic>
+				<infCpl>DATA/HORA PREVISTA PARA O INICO DA VIAGEM: 10/12/2020 as 07:19</infCpl>
+			</infAdic>
+			<infRespTec>
+				<CNPJ>99999999999999</CNPJ>
+				<xContato>XXXXXXXXXXXXXXXXXXXXXXX</xContato>
+				<email>xxxxxxx@xxxxxxx.xxx.xx</email>
+				<fone>99999999999</fone>
+			</infRespTec>
+		</infMDFe>
+		<infMDFeSupl>
+			<qrCodMDFe>https://dfe-portal.svrs.rs.gov.br/mdfe/QRCode?chMDFe=99999999999999999999999999999999999999999999&amp;tpAmb=1</qrCodMDFe>
+		</infMDFeSupl>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+				<Reference URI="#MDFe99999999999999999999999999999999999999999999">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+					<DigestValue>1otTG8wDv0/jrdaKMIr6wBBb4ew=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>LUKDja03yyyZ7YFM3ZEYTTEHPBXAld3XzBdtnW1WU32uMou4AgD0RSwVB/QOxL27PKBhp0YLdwRkYusB/IEX9kOPQql9yG4uK5xnl9SsUeIzeP0j0ZddGTJI8fbtRgu+JzEn7LdJBJot9UTP+rj9rUQXl4TUJDKhM34oA83CdIKsTqvqTUvR2kN1HU/O5wseQCejpn+8Gy8aCdlA+BOYGBwCG+twgl0VhA7myxnxbyURXrQtxzHPvF12yH0BFHTgocFOg7VmdfwY/vbLYoe9cfXEEwAWkvMcRIiNtpZ9yPV+ovsfdUtBDOpp2uSLXquGpgqapswqfutkHejGo2FHqg==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>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</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</MDFe>
+	<protMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<infProt Id="MDFe999999999999999">
+			<tpAmb>1</tpAmb>
+			<verAplic>RS20200915181452</verAplic>
+			<chMDFe>99999999999999999999999999999999999999999999</chMDFe>
+			<dhRecbto>2020-12-10T07:22:29-03:00</dhRecbto>
+			<nProt>999999999999999</nProt>
+			<digVal>1otTG8wDv0/jrdaKMIr6wBBb4ew=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso do MDF-e</xMotivo>
+		</infProt>
+	</protMDFe>
+</mdfeProc>

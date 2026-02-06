@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+	<infEvento Id="ID11011899999999999999999999999999999999999999999999003">
+		<cOrgao>41</cOrgao>
+		<tpAmb>2</tpAmb>
+		<CNPJ>99999999999999</CNPJ>
+		<chMDFe>99999999999999999999999999999999999999999999</chMDFe>
+		<dhEvento>2024-09-30T13:52:24-03:00</dhEvento>
+		<tpEvento>110118</tpEvento>
+		<nSeqEvento>3</nSeqEvento>
+		<detEvento versaoEvento="3.00">
+			<evAlteracaoPagtoServMDFe>
+				<descEvento>Alteracao Pagamento Servico MDFe</descEvento>
+				<nProt>111111111111111</nProt>
+				<infPag>
+					<xNome>AAAAAA BBBBBB</xNome>
+					<CPF>22222222222</CPF>
+					<Comp>
+						<tpComp>01</tpComp>
+						<vComp>10.00</vComp>
+					</Comp>
+					<vContrato>10.00</vContrato>
+					<indPag>1</indPag>
+					<vAdiant>0.00</vAdiant>
+					<infPrazo>
+						<nParcela>001</nParcela>
+						<dVenc>2024-10-05</dVenc>
+						<vParcela>10.00</vParcela>
+					</infPrazo>
+					<infBanc>
+						<PIX>33333333333</PIX>
+					</infBanc>
+				</infPag>
+			</evAlteracaoPagtoServMDFe>
+		</detEvento>
+	</infEvento>
+</eventoMDFe>

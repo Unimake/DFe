@@ -1,0 +1,76 @@
+<retConsSitMDFe xmlns="http://www.portalfiscal.inf.br/mdfe" versao="3.00">
+	<tpAmb>2</tpAmb>
+	<verAplic>RS20210422122629</verAplic>
+	<cStat>132</cStat>
+	<xMotivo>Encerramento de MDF-e homologado</xMotivo>
+	<cUF>31</cUF>
+	<protMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<infProt Id="MDFe939999999999999">
+			<tpAmb>2</tpAmb>
+			<verAplic>RS20220602170014</verAplic>
+			<chMDFe>31999999999999999999999999999999999999999999</chMDFe>
+			<dhRecbto>2022-06-22T11:30:03-03:00</dhRecbto>
+			<nProt>939999999999999</nProt>
+			<digVal>csadasEasdasQaMsdkasdsaYas0=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso do MDF-e</xMotivo>
+		</infProt>
+	</protMDFe>
+	<procEventoMDFe versao="1.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<eventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+			<infEvento Id="ID1101123199999999999999999999999999999999999999999901">
+				<cOrgao>31</cOrgao>
+				<tpAmb>2</tpAmb>
+				<CNPJ>99999999999999</CNPJ>
+				<chMDFe>31999999999999999999999999999999999999999999</chMDFe>
+				<dhEvento>2022-06-22T11:47:33-03:00</dhEvento>
+				<tpEvento>110112</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<detEvento versaoEvento="3.00">
+					<evEncMDFe>
+						<descEvento>Encerramento</descEvento>
+						<nProt>939999999999999</nProt>
+						<dtEnc>2022-06-22</dtEnc>
+						<cUF>31</cUF>
+						<cMun>3170701</cMun>
+					</evEncMDFe>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID1101123199999999999999999999999999999999999999999901">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>eCm/Y+Mw1231232dAddmdddPfex=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>Q9EbHOulKkmPh/OiNfmZ9C5AZ29q23fsf48I5s6F7E8O89ZWHMYS1lInhTLxuoYLOfpOx67z/Jwz+4ggss9yGboxPL76JMgGJDpyEkwm+aFThWZg-Z-h=w=K0A9S8U87n6+5674y4+303m3fdfyfdCfCrfdE3L4C555R5rZ8gv8M+BA90OX/H/ZUeLyetI35CqeS6kg2Cisd8itLXajouj4Ps29PPKEqVsWJJHQElEKa0lZWfVrWX6zzuSDKaM8pOBq6x4zOX9s+PcrRpGGECdkTw6G/xJmv8IBrE3HMqHWAQd+D7jBt7evVqrZqrWyz0XkVjT3Ltrfe2LplLP2A==</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>MIIHzTCCBbWgAwIBAgIIe/+nvdEnz4UwDQYJKo22h2c2A2E2B2A2d2E2M2k2A2UEB4M4Q5I6E7A8B9N09A-0C-l4UC17c8F9a0w-N--0BgNVBAsTLVNlY3JldGFyaWEgZGEgUmVjZWl0YSBGZWRlcmFsIGRvI5J56X6ptCdfIfdGdsEdsBdGdsUdsxdsQdsgd04G5V6F67B7RkIgdjUwHhcNMjExMDA0MTcyMDM1WhcNMjIxMDA0MTcyMDM1WjCCAQsxCzAJBgNVBAYTAkJSMRMwEQYDVQQKEwpJQ1AtQnJhc2lsMQswCQYDVQQIEwJNRzERMA8GA1UEBxMIVkFSR0lOSEExNjA0BgNVBAsTLVNlY3JldGFyaWEgZGEgUmVjZWl0YSBGZWRlcmFsIGRvIEJyYXNpbCAtIFJGQjEWMBQGA1UECxMNUkZCIGUtQ05QSiBBMTEXMBUGA1UECxMOMjA1MzM2ODQwMDAxMDIxEzARBgNVBAsTCnByZXNlbmNpYWwxSTBHBgNVBAMTQFZJVkFDSVRZIERJU1RSSUJVSUNBTyBFIE9QRVJBQ09FUyBDT01FUkNJQUlTIExUREE6Mzc5MjA4MzMwMDAxODAwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCrQogLQg2fSjcpMvm+aViFd7HlVhnbrySNyBeqqlzByhDiP8bhHmPZ2BgIs/GVXGfH+06XugbkVROWVBGIhdkTyMcQxjDWvOMTqWhdv8oXFsXegTuFnE8W7Kwt2ou4+zRjRRdHcoT3UbHN8FnOs/3lN1PxcHOKmSDRqp/v5ljYNb4jN0w5ZAqW4keq+99cN0ZW8aI+LP2xEBuR5v6en2uynXHpqTIJO9+FQLsNCsc6gSGrN5n/ErmmNUiwKHWj0Ks1HcVl3f1YJl+DG1ZvFzayLfJWWTx4wfcJEmMlZZ90XegMEPK+qo2hyz+70yNLpxjIH8AQc42GESMcolMkoqzhAgMBAAGjggLGMIICwjAfBgNVHSMEGDAWgBQpXkvVRky7/hanY8EdxCby3djzBTAOBgNVHQ8BAf8EBAMCBeAwbQYDVR0gBGYwZDBiBgZgTAECATMwWDBWBggrBgEFBQcCARZKaHR0cDovL3JlcG9zaXRvcmlvLmFjc2FmZXdlYi5jb20uYnIvYWMtc2FmZXdlYnJmYi9hYy1zYWZld2ViLXJmYi1wYy1hMS5wZGYwga4GA1UdHwSBpjCBozBPoE2gS4ZJaHR0cDovL3JlcG9zaXRvcmlvLmFjc2FmZXdlYi5jb20uYnIvYWMtc2FmZXdlYnJmYi9sY3ItYWMtc2FmZXdlYnJmYnY1LmNybDBQoE6gTIZKaHR0cDovL3JlcG9zaXRvcmlvMi5hY3NhZmV3ZWIuY29tLmJyL2FjLXNhZmV3ZWJyZmIvbGNyLWFjLXNhZmV3ZWJyZmJ2NS5jcmwwgYsGCCsGAQUFBwEBBH8wfTBRBggrBgEFBQcwAoZFaHR0cDovL3JlcG9zaXRvcmlvLmFjc2FmZXdlYi5jb20uYnIvYWMtc2FmZXdlYnJmYi9hYy1zYWZld2VicmZidjUucDdiMCgGCCsGAQUFBzABhhxodHRwOi8vb2NzcC5hY3NhZmV3ZWIuY29tLmJyMIG2BgNVHREEga4wgauBFElVTkVTX01GQEhPVE1BSUwuQ09NoCUGBWBMAQMCoBwTGkZBQklPIFBJTkhFSVJPIERFIE9MSVZFSVJBoBkGBWBMAQMDoBATDjM3OTIwODMzMDAwMTgwoDgGBWBMAQMEoC8TLTI1MDcxOTc1MDUxNDMxNDc3MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMKAXBgVgTAEDB6AOEwwwMDAwMDAwMDAwMDAwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMEMAkGA1UdEwQCMAAwDQYJKoZIhvcNAQELBQADggIBAHBJ/hb5XfyPU/P71jNAhf7+Wvd8WRLEy7dptu5L6eNiO/mRuGjLaEIoT//DBp8jQL7fzFNUG1lLE3U71nciF5gHzhbHxGBh33cCAOgoNPhXH6MDz+2NiesHlWbF5IiGJbBv8YEqU3IthldPCOiApw5dr8cjJXcek43V82aGk77ahhAhUHAJcXxRyfo4bpHofPLoBZb1y3oaNhTJE55u8hV1pl6GJqg2gpE7Et3XZm3eIYhcwavVtzuNsiUnZ4e10ayxvdZ6hq34LT4XjKUU9uGy03/Dj92pdEvg8ramQ2FfwT7Mu06rAHRniEFvEKKzWEXkedwZeTtWUWfOamOWY9kceC2GEK6StKfmxoPnj00ECz0AmCw7fw6KembA2iF8OvEReBV7f8Uwvs51B/xyMIbdc+EKZZhJYFyCOFoimwbYszrwdrlAhY3o79UR59MpzHn0kmxodkvJRvm+ppcJcGKTQL64j9y+Gj82CutawZl1R22iif7L+Sa2vIIohW2gVfMmRvfdsI0s4f59XG1+l4lflS6vh0/eAVQZnE1yRMZtvs/a4Dw+/mdWnyWe7r+cWSsBAE7kFK61vZ3f8ogPsiM++Y+qkTGQQxCnGH2BtAP2XT8MGNYCWKEWbaYmvk6pxhuHKymWoyK86KffyMbgNqzf6NGErzmK76zGmjfxk/9s</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</eventoMDFe>
+		<retEventoMDFe xmlns="http://www.portalfiscal.inf.br/mdfe" versao="3.00">
+			<infEvento Id="ID939999999999999">
+				<tpAmb>2</tpAmb>
+				<verAplic>RS20210506134413</verAplic>
+				<cOrgao>31</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado ao MDF-e</xMotivo>
+				<chMDFe>31999999999999999999999999999999999999999999</chMDFe>
+				<tpEvento>110112</tpEvento>
+				<xEvento>Encerramento</xEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<dhRegEvento>2022-06-22T11:47:34-03:00</dhRegEvento>
+				<nProt>939999999999999</nProt>
+			</infEvento>
+		</retEventoMDFe>
+	</procEventoMDFe>
+</retConsSitMDFe>
