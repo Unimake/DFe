@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DPS versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse">
-	<infDPS Id="DPS999999999999999999999999999999999999999999"/>
-</DPS>
+<ConsultarDps Id="DPS20260016252" xmlns="http://www.sped.fazenda.gov.br/nfse">
+	<Protocolo>12345678901</Protocolo>
+	<CNPJ>12345678901234</CNPJ>
+	<IM>1234567890</IM>
+</ConsultarDps>

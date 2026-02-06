@@ -4,6 +4,7 @@
 		<SchemaArquivo>consStatServ_v4.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>consStatServ</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -14,6 +15,7 @@
 		<SchemaArquivo>consSitNFe_v4.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>consSitNFe</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -24,6 +26,7 @@
 		<SchemaArquivo>consReciNFe_v4.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>consReciNFe</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -34,6 +37,7 @@
 		<SchemaArquivo>inutNFe_v4.00.xsd</SchemaArquivo>
 		<TagAssinatura>inutNFe</TagAssinatura>
 		<TagAtributoID>infInut</TagAtributoID>
+		<TagVersao>inutNFe</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -44,6 +48,7 @@
 		<SchemaArquivo>consCad_v2.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>ConsCad</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -55,6 +60,7 @@
 		<TagAssinatura>evento</TagAssinatura>
 		<TagAtributoID>infEvento</TagAtributoID>
 		<TagEvento>evento</TagEvento>
+		<TagVersao>envEvento</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -257,6 +263,7 @@
 		<SchemaArquivo>distDFeInt_v1.01.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>distDFeInt</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -267,6 +274,7 @@
 		<SchemaArquivo>distDFeInt_v1.35.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>distDFeInt</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -280,6 +288,7 @@
 		<SchemaArquivo>distDFeInt_v1.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>distDFeInt</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -290,6 +299,7 @@
 		<SchemaArquivo>consReciCTe_v3.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>consReciCTe</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -300,6 +310,7 @@
 		<SchemaArquivo></SchemaArquivo>
 		<TagAssinatura>eventoCTe</TagAssinatura>
 		<TagAtributoID>infEvento</TagAtributoID>
+		<TagVersao>eventoCTe</TagVersao>
 		<TagEvento>eventoCTe</TagEvento>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
@@ -353,6 +364,7 @@
 		<SchemaArquivo></SchemaArquivo>
 		<TagAssinatura>CTe</TagAssinatura>
 		<TagAtributoID>infCte</TagAtributoID>
+		<TagVersao>enviCTe</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -395,6 +407,7 @@
 		<SchemaArquivo>consStatServCTe_v3.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>consStatServCTe</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -405,6 +418,7 @@
 		<SchemaArquivo>consSitCTe_v3.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>consSitCTe</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -415,6 +429,7 @@
 		<SchemaArquivo></SchemaArquivo>
 		<TagAssinatura>CTe</TagAssinatura>
 		<TagAtributoID>infCte</TagAtributoID>
+		<TagVersao>infCte</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -457,6 +472,7 @@
 		<SchemaArquivo>consStatServCTe_v4.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>consStatServCTe</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -467,6 +483,7 @@
 		<SchemaArquivo>consSitCTe_v4.00.xsd</SchemaArquivo>
 		<TagAssinatura></TagAssinatura>
 		<TagAtributoID></TagAtributoID>
+		<TagVersao>consSitCTe</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -478,6 +495,7 @@
 		<TagAssinatura>eventoCTe</TagAssinatura>
 		<TagAtributoID>infEvento</TagAtributoID>
 		<TagEvento>eventoCTe</TagEvento>
+		<TagVersao>eventoCTe</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -501,7 +519,7 @@
 			</Tipo>
 			<Tipo>
 				<ID>110180</ID>
-				<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+				<SchemaArquivo>eventoCTeOS_v4.00.xsd</SchemaArquivo>
 				<SchemaArquivoEspecifico>evCECTe_v4.00.xsd</SchemaArquivoEspecifico>
 			</Tipo>
 			<Tipo>
@@ -535,6 +553,7 @@
 		<SchemaArquivo></SchemaArquivo>
 		<TagAssinatura>CTe</TagAssinatura>
 		<TagAtributoID>infCte</TagAtributoID>
+		<TagVersao>infCte</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -577,6 +596,7 @@
 		<SchemaArquivo></SchemaArquivo>
 		<TagAssinatura>CTeSimp</TagAssinatura>
 		<TagAtributoID>infCte</TagAtributoID>
+		<TagVersao>infCte</TagVersao>
 		<TagLoteAssinatura></TagLoteAssinatura>
 		<TagLoteAtributoID></TagLoteAtributoID>
 		<TagExtraAssinatura></TagExtraAssinatura>
@@ -615,4 +635,175 @@
 			</Tipo>
 		</SchemasEspecificos>
 	</Servico>
+	<!--MDFe -->
+		<Servico tagRaiz ="consStatServMDFe" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+			<SchemaArquivo>consStatServMDFe_v3.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consStatServMDFe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="consSitMDFe" versao ="3.00" padraoNFSe="" versaoPadrao ="">			
+			<SchemaArquivo>consSitMDFe_v3.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consSitMDFe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="consCad" versao ="2.00" padraoNFSe="" versaoPadrao ="">
+			<SchemaArquivo>consCad_v3.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consCad</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="eventoMDFe" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>eventoMDFe</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagEvento>eventoMDFe</TagEvento>
+			<TagVersao>eventoMDFe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoMDFe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancMDFe_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110112</ID>
+					<SchemaArquivo>eventoMDFe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evEncMDFe_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110114</ID>
+					<SchemaArquivo>eventoMDFe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evIncCondutorMDFe_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110115</ID>
+					<SchemaArquivo>eventoMDFe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evInclusaoDFeMDFe_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110116</ID>
+					<SchemaArquivo>eventoMDFe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evPagtoOperMDFe_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110117</ID>
+					<SchemaArquivo>eventoMDFe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evConfirmaServMDFe_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110118</ID>
+					<SchemaArquivo>eventoMDFe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evAlteracaoPagtoServMDFe_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+		</Servico>
+		<Servico tagRaiz ="enviMDFe" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>MDFe</TagAssinatura>
+			<TagAtributoID>infMDFe</TagAtributoID>
+			<TagVersao>infMDFe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>1</ID>
+					<SchemaArquivo>enviMDFe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>mdfeModalRodoviario_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>2</ID>
+					<SchemaArquivo>enviMDFe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>mdfeModalAereo_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>3</ID>
+					<SchemaArquivo>enviMDFe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>mdfeModalAquaviario_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>4</ID>
+					<SchemaArquivo>enviMDFe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>mdfeModalFerroviario_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+		</Servico>
+		<Servico tagRaiz ="consReciMDFe" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+			<SchemaArquivo>consReciMDFe_v3.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consReciMDFe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="consMDFeNaoEnc" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+			<SchemaArquivo>consMDFeNaoEnc_v3.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consMDFeNaoEnc</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="MDFe" versao ="3.00" padraoNFSe="" versaoPadrao ="">
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>MDFe</TagAssinatura>
+			<TagAtributoID>infMDFe</TagAtributoID>
+			<TagVersao>infMDFe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>1</ID>
+					<SchemaArquivo>mdfe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>mdfeModalRodoviario_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>2</ID>
+					<SchemaArquivo>mdfe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>mdfeModalAereo_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>3</ID>
+					<SchemaArquivo>mdfe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>mdfeModalAquaviario_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>4</ID>
+					<SchemaArquivo>mdfe_v3.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>mdfeModalFerroviario_v3.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+		</Servico>
 </ServicosValidacao>

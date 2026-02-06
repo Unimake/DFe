@@ -533,5 +533,74 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                 Assert.Fail("Retorno não contém eventos nem erro");
             }
         }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [Trait("Versao", "1.01")]
+        [InlineData(TipoAmbiente.Homologacao, "1.01", 1001058, @"..\..\..\NFSe\Resources\NACIONAL\1.01\ConsultarNfseRpsEnvio-ped-sitnfserps.xml")]
+        public void SerializarConsultarNfsePorRpsNACIONAL(TipoAmbiente tipoAmbiente, string versaoSchema, int codMunicipio, string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+            docFixture.Load(caminhoXml);
+
+            var lido = new ConsultarNfsePorRps().LerXML<ConsultarNfsePorRps>(docFixture);
+
+            Assert.Equal("1.01", lido.Versao);
+            Assert.NotNull(lido.InfDPS);
+            Assert.NotNull(lido.InfDPS.Id);
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+
+            var criado = new ConsultarNfsePorRps
+            {
+                Versao = lido.Versao,
+                InfDPS = lido.InfDPS
+            };
+
+            var docCriado = criado.GerarXML();
+            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = tipoAmbiente,
+                CodigoMunicipio = codMunicipio,
+                Servico = Servico.NFSeConsultarNfsePorRps,
+                SchemaVersao = versaoSchema
+            };
+
+            var servico = new Unimake.Business.DFe.Servicos.NFSe.ConsultarNfsePorRps(docCriado, configuracao);
+            servico.Executar();
+
+            Assert.NotNull(servico.RetornoWSString);
+
+            var resultado = servico.Result;
+            Assert.NotNull(resultado);
+
+            Assert.NotEqual(default(DateTimeOffset), resultado.DataHoraProcessamento);
+
+            if (!string.IsNullOrWhiteSpace(resultado.ChaveAcesso))
+            {
+                Assert.NotNull(resultado.VersaoAplicativo);
+                Assert.Equal(50, resultado.ChaveAcesso.Length);
+                Assert.Null(resultado.Erro);
+            }
+            else if (resultado.Erro != null)
+            {
+
+                Assert.NotNull(resultado.Erro.Codigo);
+                Assert.NotNull(resultado.Erro.Descricao);
+
+            }
+            else
+            {
+                Assert.Fail("Retorno não contém chave de acesso nem erro");
+            }
+        }
     }
 }

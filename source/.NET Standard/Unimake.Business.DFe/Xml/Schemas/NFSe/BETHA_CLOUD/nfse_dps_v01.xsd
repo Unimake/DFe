@@ -205,7 +205,7 @@
             <xs:element name="cTribNac" type="dps:TCodigoTribNac"/>
             <xs:element name="cTribMun" type="xs:string" minOccurs="0"/>
             <xs:element name="xDescServ" type="xs:string"/>
-            <xs:element name="cNBS" type="dps:TCodigoNBS"/>
+            <xs:element name="cNBS" type="dps:TCodigoNBS" minOccurs="0"/>
             <xs:element name="cIntContrib" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
@@ -597,7 +597,7 @@
 
     <xs:simpleType name="TCodigoNBS">
         <xs:restriction base="xs:string">
-            <xs:pattern value="[0-9]{9}"/>
+            <xs:pattern value="(^$|[0-9]{9})"/>
         </xs:restriction>
     </xs:simpleType>
 

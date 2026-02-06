@@ -56,6 +56,9 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("idDPS")]
         public string IdDPS { get; set; }
 
+        [XmlElement("chaveAcesso")]
+        public string ChaveAcesso { get; set; }
+
         /// <summary>
         /// Informações de erro.
         /// </summary>
@@ -70,6 +73,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
         #region ShoudlSerialize
         public bool ShouldSerializeIdDPS() => IdDPS != null;
+        public bool ShouldSerializeChaveAcesso() => ChaveAcesso != null;
         #endregion ShoudlSerialize
     }
 
@@ -95,6 +99,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// </summary>
         [XmlElement("descricao")]
         public string Descricao { get; set; }
+
+        /// <summary>
+        /// Complemento do erro.
+        /// </summary>
+        [XmlElement("complemento")]
+        public string Complemento { get; set; }
     }
 
     /// <summary>
@@ -119,5 +129,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// </summary>
         [XmlElement("Descricao")]
         public string Descricao { get; set; }
+
+        /// <summary>
+        /// Complemento do erro.
+        /// </summary>
+        [XmlElement("Complemento")]
+        public string Complemento { get; set; }
     }
 }
