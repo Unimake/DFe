@@ -459,6 +459,83 @@ namespace Unimake.DFe.Test.NFSe
         [Theory]
         [Trait("DFe", "NFSe")]
         [Trait("Layout", "Nacional")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.01\EventoRejeicaoIntermediario-ped-regev.xml")]
+        public void EventoRejeicaoIntermediarioNFSeNACIONAL(string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+
+            docFixture.Load(caminhoXml);
+
+            var lido = new PedRegEvento().LerXML<PedRegEvento>(docFixture);
+            Assert.Equal("1.01", lido.Versao);
+            Assert.False(string.IsNullOrWhiteSpace(lido.InfPedReg?.Id));
+            Assert.NotNull(lido.InfPedReg?.E204207);
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+
+            var autor = !string.IsNullOrWhiteSpace(lido.InfPedReg.CNPJAutor)
+                        ? new { cnpj = lido.InfPedReg.CNPJAutor, cpf = (string)null }
+                        : new { cnpj = (string)null, cpf = lido.InfPedReg.CPFAutor };
+
+            var criado = new PedRegEvento
+            {
+                Versao = lido.Versao,
+                InfPedReg = new InfPedReg
+                {
+                    Id = lido.InfPedReg.Id,
+                    TpAmb = lido.InfPedReg.TpAmb,
+                    VerAplic = lido.InfPedReg.VerAplic,
+                    DhEvento = lido.InfPedReg.DhEvento,
+                    CNPJAutor = autor.cnpj,
+                    CPFAutor = autor.cpf,
+                    ChNFSe = lido.InfPedReg.ChNFSe,
+                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
+                    E204207 = new E204207
+                    {
+                        XDesc = lido.InfPedReg.E204207.XDesc,
+                        CMotivo = lido.InfPedReg.E204207.CMotivo,
+                        XMotivo = lido.InfPedReg.E204207.XMotivo
+                    }
+                }
+            };
+
+            var docCriado = criado.GerarXML();
+            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = lido.InfPedReg.TpAmb,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeRecepcionarEventosDiversos,
+                SchemaVersao = lido.Versao
+            };
+
+            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            recepcaoEvento.Executar();
+
+            if (recepcaoEvento.Result != null)
+            {
+                var evento = (Evento)recepcaoEvento.Result;
+                Assert.NotNull(evento.InfEvento);
+                Assert.False(string.IsNullOrWhiteSpace(evento.InfEvento.Id));
+                System.Diagnostics.Debug.WriteLine($"Evento registrado - ID: {evento.InfEvento.Id}");
+            }
+            else
+            {
+                var erro = recepcaoEvento.ResultErro;
+                Assert.NotNull(erro?.Erro);
+                System.Diagnostics.Debug.WriteLine($"Erro: {erro.Erro.Codigo} - {erro.Erro.Descricao}");
+            }
+        }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
         [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.01\EventoConfirmacaoTomador-ped-regev.xml")]
         public void EventoConfirmacaoTomadorNFSeNACIONAL(string caminhoXml)
         {
@@ -684,6 +761,85 @@ namespace Unimake.DFe.Test.NFSe
         [Theory]
         [Trait("DFe", "NFSe")]
         [Trait("Layout", "Nacional")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.01\EventoCancelamentoAnaliseFiscal-ped-regev.xml")]
+        public void EventoCancelamentoIndeferidoAnaliseFiscalNFSeNACIONAL(string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+
+            docFixture.Load(caminhoXml);
+
+            var lido = new PedRegEvento().LerXML<PedRegEvento>(docFixture);
+            Assert.Equal("1.01", lido.Versao);
+            Assert.False(string.IsNullOrWhiteSpace(lido.InfPedReg?.Id));
+            Assert.NotNull(lido.InfPedReg?.E105105);
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+
+            var autor = !string.IsNullOrWhiteSpace(lido.InfPedReg.CNPJAutor)
+                        ? new { cnpj = lido.InfPedReg.CNPJAutor, cpf = (string)null }
+                        : new { cnpj = (string)null, cpf = lido.InfPedReg.CPFAutor };
+
+            var criado = new PedRegEvento
+            {
+                Versao = lido.Versao,
+                InfPedReg = new InfPedReg
+                {
+                    Id = lido.InfPedReg.Id,
+                    TpAmb = lido.InfPedReg.TpAmb,
+                    VerAplic = lido.InfPedReg.VerAplic,
+                    DhEvento = lido.InfPedReg.DhEvento,
+                    CNPJAutor = autor.cnpj,
+                    CPFAutor = autor.cpf,
+                    ChNFSe = lido.InfPedReg.ChNFSe,
+                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
+                    E105105 = new E105105
+                    {
+                        XDesc = lido.InfPedReg.E105105.XDesc,
+                        CPFAgTrib = lido.InfPedReg.E105105.CPFAgTrib,
+                        NProcAdm = lido.InfPedReg.E105105.NProcAdm,
+                        CMotivo = lido.InfPedReg.E105105.CMotivo,
+                        XMotivo = lido.InfPedReg.E105105.XMotivo
+                    }
+                }
+            };
+
+            var docCriado = criado.GerarXML();
+            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = lido.InfPedReg.TpAmb,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeRecepcionarEventosDiversos,
+                SchemaVersao = lido.Versao
+            };
+
+            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            recepcaoEvento.Executar();
+
+            if (recepcaoEvento.Result != null)
+            {
+                var evento = (Evento)recepcaoEvento.Result;
+                Assert.NotNull(evento.InfEvento);
+                Assert.False(string.IsNullOrWhiteSpace(evento.InfEvento.Id));
+                System.Diagnostics.Debug.WriteLine($"Evento registrado - ID: {evento.InfEvento.Id}");
+            }
+            else
+            {
+                var erro = recepcaoEvento.ResultErro;
+                Assert.NotNull(erro?.Erro);
+                System.Diagnostics.Debug.WriteLine($"Erro: {erro.Erro.Codigo} - {erro.Erro.Descricao}");
+            }
+        }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
         [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.01\GerarNfseEnvio-env-loterps.xml")]
         public void GerarNfseNACIONAL(string caminhoXml)
         {
@@ -737,6 +893,322 @@ namespace Unimake.DFe.Test.NFSe
                     Assert.StartsWith("DPS", retornoErro.IdDPS);
                     System.Diagnostics.Debug.WriteLine($"IdDPS: {retornoErro.IdDPS}");
                 }
+            }
+        }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.01\EventoSolicitacaoAnaliseFiscalCancelamento-ped-regev.xml")]
+        public void EventoSolicitacaoAnaliseFiscalCancelamentoNFSeNACIONAL(string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+
+            docFixture.Load(caminhoXml);
+
+            var lido = new PedRegEvento().LerXML<PedRegEvento>(docFixture);
+            Assert.Equal("1.01", lido.Versao);
+            Assert.False(string.IsNullOrWhiteSpace(lido.InfPedReg?.Id));
+            Assert.NotNull(lido.InfPedReg?.E101103);
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+
+            var autor = !string.IsNullOrWhiteSpace(lido.InfPedReg.CNPJAutor)
+                        ? new { cnpj = lido.InfPedReg.CNPJAutor, cpf = (string)null }
+                        : new { cnpj = (string)null, cpf = lido.InfPedReg.CPFAutor };
+
+            var criado = new PedRegEvento
+            {
+                Versao = lido.Versao,
+                InfPedReg = new InfPedReg
+                {
+                    Id = lido.InfPedReg.Id,
+                    TpAmb = lido.InfPedReg.TpAmb,
+                    VerAplic = lido.InfPedReg.VerAplic,
+                    DhEvento = lido.InfPedReg.DhEvento,
+                    CNPJAutor = autor.cnpj,
+                    CPFAutor = autor.cpf,
+                    ChNFSe = lido.InfPedReg.ChNFSe,
+                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
+                    E101103 = new E101103
+                    {
+                        XDesc = lido.InfPedReg.E101103.XDesc,
+                        CMotivo = lido.InfPedReg.E101103.CMotivo,
+                        XMotivo = lido.InfPedReg.E101103.XMotivo,
+                    }
+                }
+            };
+
+            var docCriado = criado.GerarXML();
+            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+
+            // Configuração para execução do serviço
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = lido.InfPedReg.TpAmb,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeRecepcionarEventosDiversos,
+                SchemaVersao = lido.Versao
+            };
+
+            // Executa o serviço
+            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            recepcaoEvento.Executar();
+
+            // Usa as propriedades tipadas para obter o retorno
+            if (recepcaoEvento.Result != null)
+            {
+                // Sucesso - Cast para Evento
+                var evento = (Evento)recepcaoEvento.Result;
+                Assert.NotNull(evento.InfEvento);
+                Assert.False(string.IsNullOrWhiteSpace(evento.InfEvento.Id));
+                System.Diagnostics.Debug.WriteLine($"Evento registrado - ID: {evento.InfEvento.Id}");
+            }
+            else
+            {
+                // Erro
+                var erro = recepcaoEvento.ResultErro;
+                Assert.NotNull(erro?.Erro);
+                System.Diagnostics.Debug.WriteLine($"Erro: {erro.Erro.Codigo} - {erro.Erro.Descricao}");
+            }
+        }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.01\EventoAnulacaoRejeicao-ped-regev.xml")]
+        public void EventoAnulacaoRejeicaoNFSeNACIONAL(string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+
+            docFixture.Load(caminhoXml);
+
+            var lido = new PedRegEvento().LerXML<PedRegEvento>(docFixture);
+            Assert.Equal("1.01", lido.Versao);
+            Assert.False(string.IsNullOrWhiteSpace(lido.InfPedReg?.Id));
+            Assert.NotNull(lido.InfPedReg?.E205208);
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+
+            var autor = !string.IsNullOrWhiteSpace(lido.InfPedReg.CNPJAutor)
+                        ? new { cnpj = lido.InfPedReg.CNPJAutor, cpf = (string)null }
+                        : new { cnpj = (string)null, cpf = lido.InfPedReg.CPFAutor };
+
+            var criado = new PedRegEvento
+            {
+                Versao = lido.Versao,
+                InfPedReg = new InfPedReg
+                {
+                    Id = lido.InfPedReg.Id,
+                    TpAmb = lido.InfPedReg.TpAmb,
+                    VerAplic = lido.InfPedReg.VerAplic,
+                    DhEvento = lido.InfPedReg.DhEvento,
+                    CNPJAutor = autor.cnpj,
+                    CPFAutor = autor.cpf,
+                    ChNFSe = lido.InfPedReg.ChNFSe,
+                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
+                    E205208 = new E205208
+                    {
+                        XDesc = lido.InfPedReg.E205208.XDesc,
+                        CPFAgTrib = lido.InfPedReg.E205208.CPFAgTrib,
+                        IdEvManifRej = lido.InfPedReg.E205208.IdEvManifRej,
+                        XMotivo = lido.InfPedReg.E205208.XMotivo
+                    }
+                }
+            };
+
+            var docCriado = criado.GerarXML();
+            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = lido.InfPedReg.TpAmb,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeRecepcionarEventosDiversos,
+                SchemaVersao = lido.Versao
+            };
+
+            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            recepcaoEvento.Executar();
+
+            if (recepcaoEvento.Result != null)
+            {
+                var evento = (Evento)recepcaoEvento.Result;
+                Assert.NotNull(evento.InfEvento);
+                Assert.False(string.IsNullOrWhiteSpace(evento.InfEvento.Id));
+                System.Diagnostics.Debug.WriteLine($"Evento registrado - ID: {evento.InfEvento.Id}");
+            }
+            else
+            {
+                var erro = recepcaoEvento.ResultErro;
+                Assert.NotNull(erro?.Erro);
+                System.Diagnostics.Debug.WriteLine($"Erro: {erro.Erro.Codigo} - {erro.Erro.Descricao}");
+            }
+        }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.01\EventoCancelamentoPorOficio-ped-regev.xml")]
+        public void EventoCancelamentoPorOficioNFSeNACIONAL(string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+
+            docFixture.Load(caminhoXml);
+
+            var lido = new PedRegEvento().LerXML<PedRegEvento>(docFixture);
+            Assert.Equal("1.01", lido.Versao);
+            Assert.False(string.IsNullOrWhiteSpace(lido.InfPedReg?.Id));
+            Assert.NotNull(lido.InfPedReg? .E305101);
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+
+            var autor = !string.IsNullOrWhiteSpace(lido.InfPedReg.CNPJAutor)
+                        ? new { cnpj = lido.InfPedReg.CNPJAutor, cpf = (string)null }
+                        : new { cnpj = (string)null, cpf = lido.InfPedReg.CPFAutor };
+
+            var criado = new PedRegEvento
+            {
+                Versao = lido.Versao,
+                InfPedReg = new InfPedReg
+                {
+                    Id = lido.InfPedReg.Id,
+                    TpAmb = lido.InfPedReg.TpAmb,
+                    VerAplic = lido.InfPedReg.VerAplic,
+                    DhEvento = lido.InfPedReg.DhEvento,
+                    CNPJAutor = autor.cnpj,
+                    CPFAutor = autor.cpf,
+                    ChNFSe = lido.InfPedReg.ChNFSe,
+                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
+                    E305101 = new E305101
+                    {
+                        XDesc = lido.InfPedReg.E305101.XDesc,
+                        CPFAgTrib = lido.InfPedReg.E305101.CPFAgTrib,
+                        NProcAdm = lido.InfPedReg.E305101.NProcAdm,
+                        XProcAdm = lido.InfPedReg.E305101.XProcAdm,
+                    }
+                }
+            };
+
+            var docCriado = criado.GerarXML();
+            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = lido.InfPedReg.TpAmb,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeRecepcionarEventosDiversos,
+                SchemaVersao = lido.Versao
+            };
+
+            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            recepcaoEvento.Executar();
+
+            if (recepcaoEvento.Result != null)
+            {
+                var evento = (Evento)recepcaoEvento.Result;
+                Assert.NotNull(evento.InfEvento);
+                Assert.False(string.IsNullOrWhiteSpace(evento.InfEvento.Id));
+                System.Diagnostics.Debug.WriteLine($"Evento registrado - ID: {evento.InfEvento.Id}");
+            }
+            else
+            {
+                var erro = recepcaoEvento.ResultErro;
+                Assert.NotNull(erro?.Erro);
+                System.Diagnostics.Debug.WriteLine($"Erro: {erro.Erro.Codigo} - {erro.Erro.Descricao}");
+            }
+        }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [InlineData(@"..\..\..\NFSe\Resources\NACIONAL\1.01\EventoBloqueioPorOficio-ped-regev.xml")]
+        public void EventoBloqueioPorOficioNFSeNACIONAL(string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+
+            docFixture.Load(caminhoXml);
+
+            var lido = new PedRegEvento().LerXML<PedRegEvento>(docFixture);
+            Assert.Equal("1.01", lido.Versao);
+            Assert.False(string.IsNullOrWhiteSpace(lido.InfPedReg?.Id));
+            Assert.NotNull(lido.InfPedReg?.E305102);
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+
+            var autor = !string.IsNullOrWhiteSpace(lido.InfPedReg.CNPJAutor)
+                        ? new { cnpj = lido.InfPedReg.CNPJAutor, cpf = (string)null }
+                        : new { cnpj = (string)null, cpf = lido.InfPedReg.CPFAutor };
+
+            var criado = new PedRegEvento
+            {
+                Versao = lido.Versao,
+                InfPedReg = new InfPedReg
+                {
+                    Id = lido.InfPedReg.Id,
+                    TpAmb = lido.InfPedReg.TpAmb,
+                    VerAplic = lido.InfPedReg.VerAplic,
+                    DhEvento = lido.InfPedReg.DhEvento,
+                    CNPJAutor = autor.cnpj,
+                    CPFAutor = autor.cpf,
+                    ChNFSe = lido.InfPedReg.ChNFSe,
+                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
+                    E305102 = new E305102
+                    {
+                        XDesc = lido.InfPedReg.E305102.XDesc,
+                        CPFAgTrib = lido.InfPedReg.E305102.CPFAgTrib,
+                        CodEvento = lido.InfPedReg.E305102.CodEvento,
+                        XMotivo = lido.InfPedReg.E305102.XMotivo,
+                    }
+                }
+            };
+
+            var docCriado = criado.GerarXML();
+            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = lido.InfPedReg.TpAmb,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeRecepcionarEventosDiversos,
+                SchemaVersao = lido.Versao
+            };
+
+            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            recepcaoEvento.Executar();
+
+            if (recepcaoEvento.Result != null)
+            {
+                var evento = (Evento)recepcaoEvento.Result;
+                Assert.NotNull(evento.InfEvento);
+                Assert.False(string.IsNullOrWhiteSpace(evento.InfEvento.Id));
+                System.Diagnostics.Debug.WriteLine($"Evento registrado - ID: {evento.InfEvento.Id}");
+            }
+            else
+            {
+                var erro = recepcaoEvento.ResultErro;
+                Assert.NotNull(erro?.Erro);
+                System.Diagnostics.Debug.WriteLine($"Erro: {erro.Erro.Codigo} - {erro.Erro.Descricao}");
             }
         }
     }
