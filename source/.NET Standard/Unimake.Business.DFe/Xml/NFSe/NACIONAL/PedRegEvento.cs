@@ -204,6 +204,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("e305101", Namespace = NfseNs.Ns)]
         public E305101 E305101 { get; set; }
 
+        /// <summary>
+        /// Evento de Bloqueio por Ofício (código 305102).
+        /// </summary>
+        [XmlElement("e305102", Namespace = NfseNs.Ns)]
+        public E305102 E305102 { get; set; }
+
         #region ShouldSerialize
         public bool ShouldSerializeCNPJAutor() => !string.IsNullOrWhiteSpace(CNPJAutor);
         public bool ShouldSerializeCPFAutor() => !string.IsNullOrWhiteSpace(CPFAutor);

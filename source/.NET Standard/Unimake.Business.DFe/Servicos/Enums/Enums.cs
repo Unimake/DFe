@@ -17369,5 +17369,43 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion Código de Justificativa da Análise Fiscal para Cancelamento Indeferido por Análise Fiscal NFS-e NACIONAL
 
+    #region Código do Evento da NFS-e NACIONAL
+    /// <summary>
+    /// Código do Evento da NFS-e NACIONAL
+    /// </summary>
+    public enum CodigoEventoNFSe
+    {
+        /// <summary>
+        /// 1 - Cancelamento
+        /// </summary>
+        [XmlEnum("e101101")]
+        CancelamentoDeNFSe = 101101,
+
+        /// <summary>
+        /// 2 - Substituição
+        /// </summary>
+        [XmlEnum("e105102")]
+        CancelamentoDeNFSePorSubstituicao = 105102,
+
+        /// <summary>
+        /// 3 - Rejeição
+        /// </summary>
+        [XmlEnum("e105104")]
+        CancelamentoDeNFSeDeferidoPorAnaliseFiscal = 105104,
+
+        /// <summary>
+        /// 4 - Análise Fiscal para Cancelamento Extemporâneo
+        /// </summary>
+        [XmlEnum("e105105")]
+        CancelamentoDeNFSeIndeferidoPorAnaliseFiscal = 105105,
+
+        /// <summary>
+        /// 4 - Análise Fiscal para Cancelamento Extemporâneo
+        /// </summary>
+        [XmlEnum("e305101")]
+        CancelamentoDeNFSePorOficio = 305101,
+    }
+    #endregion Código do Evento da NFS-e NACIONAL
+
     #endregion NFS-e NACIONAL
 }
