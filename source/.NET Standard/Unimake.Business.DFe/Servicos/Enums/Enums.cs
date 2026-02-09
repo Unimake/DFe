@@ -17322,6 +17322,26 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion Código Motivo Rejeição NFS-e NACIONAL
 
+    #region Código de Justificativa da Análise Fiscal para Cancelamento Indeferido por Análise Fiscal NFS-e NACIONAL
+    /// <summary>
+    /// Resposta da análise da solicitação do cancelamento extemporâneo de NFS-e
+    /// </summary>
+    public enum CodJustAnaliseFiscalCancIndef
+    {
+        /// <summary>
+        /// 1 - Cancelamento Extemporâneo Indeferido
+        /// </summary>
+        [XmlEnum("1")]
+        CancelamentoExtemporaneoIndeferido = 1,
+
+        /// <summary>
+        /// 2 - Cancelamento Extemporâneo Indeferido Sem Análise de Mérito
+        /// </summary>
+        [XmlEnum("2")]
+        CancelamentoExtemporaneoIndeferidoSemAnaliseDeMerito = 2,
+    }
+    #endregion Código de Justificativa da Análise Fiscal para Cancelamento Indeferido por Análise Fiscal NFS-e NACIONAL
+
     #endregion NFS-e NACIONAL
 
 
