@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -17322,6 +17323,32 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion Código Motivo Rejeição NFS-e NACIONAL
 
+    #region Código do motivo da solicitação de análise fiscal para cancelamento de NFS-e
+    /// <summary>
+    /// Código do motivo da solicitação de análise fiscal para cancelamento de NFS-e
+    /// </summary>
+    public enum CodigoMotivoSolicitacaoAnaliseFiscalCancelamento
+    {
+        /// <summary>
+        /// 1 - Erro na Emissão
+        /// </summary>
+        [XmlEnum("1")]
+        ErroNaEmissao = 1,
+
+        /// <summary>
+        /// 2 - Serviço não Prestado
+        /// </summary>
+        [XmlEnum("2")]
+        ServicoNaoPrestado = 2,
+
+        /// <summary>
+        /// 3 - Outros
+        /// </summary>
+        [XmlEnum("3")]
+        Outros = 3,
+    }
+    #endregion Código do motivo da solicitação de análise fiscal para cancelamento de NFS-e
+
     #region Código de Justificativa da Análise Fiscal para Cancelamento Indeferido por Análise Fiscal NFS-e NACIONAL
     /// <summary>
     /// Resposta da análise da solicitação do cancelamento extemporâneo de NFS-e
@@ -17343,6 +17370,4 @@ namespace Unimake.Business.DFe.Servicos
     #endregion Código de Justificativa da Análise Fiscal para Cancelamento Indeferido por Análise Fiscal NFS-e NACIONAL
 
     #endregion NFS-e NACIONAL
-
-
 }
