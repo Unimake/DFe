@@ -198,6 +198,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("e205208", Namespace = NfseNs.Ns)]
         public E205208 E205208 { get; set; }
 
+        /// <summary>
+        /// Evento de Cancelamento por Ofício (código 305101).
+        /// </summary>
+        [XmlElement("e305101", Namespace = NfseNs.Ns)]
+        public E305101 E305101 { get; set; }
+
         #region ShouldSerialize
         public bool ShouldSerializeCNPJAutor() => !string.IsNullOrWhiteSpace(CNPJAutor);
         public bool ShouldSerializeCPFAutor() => !string.IsNullOrWhiteSpace(CPFAutor);
