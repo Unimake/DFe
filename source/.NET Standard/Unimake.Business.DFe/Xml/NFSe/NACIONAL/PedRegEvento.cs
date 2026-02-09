@@ -192,6 +192,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("e205204", Namespace = NfseNs.Ns)]
         public E205204 E205204 { get; set; }
 
+        /// <summary>
+        /// Evento de Anulação de Manifestação de Rejeição (código 205208).
+        /// </summary>
+        [XmlElement("e205208", Namespace = NfseNs.Ns)]
+        public E205208 E205208 { get; set; }
+
         #region ShouldSerialize
         public bool ShouldSerializeCNPJAutor() => !string.IsNullOrWhiteSpace(CNPJAutor);
         public bool ShouldSerializeCPFAutor() => !string.IsNullOrWhiteSpace(CPFAutor);
