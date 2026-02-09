@@ -1,0 +1,119 @@
+<CTeOS xmlns="http://www.portalfiscal.inf.br/cte" versao="4.00">
+<infCte Id="CTe41170999999999999999670010000000131000000041" versao="4.00">
+	<ide>
+		<cUF>41</cUF>
+		<cCT>00000004</cCT>
+		<CFOP>5353</CFOP>
+		<natOp>PRESTACAO DE SERVICO DE TRANSPORTE A ESTABELECIMENTO COMERCI</natOp>
+		<mod>67</mod>
+		<serie>1</serie>
+		<nCT>13</nCT>
+		<dhEmi>2017-08-24T18:19:08-02:00</dhEmi>
+		<tpImp>1</tpImp>
+		<tpEmis>1</tpEmis>
+		<cDV>1</cDV>
+		<tpAmb>2</tpAmb>
+		<tpCTe>0</tpCTe>
+		<procEmi>0</procEmi>
+		<verProc>4.00</verProc>
+		<cMunEnv>4106902</cMunEnv>
+		<xMunEnv>CURITIBA</xMunEnv>
+		<UFEnv>PR</UFEnv>
+		<modal>01</modal>
+		<tpServ>6</tpServ>
+		<indIEToma>1</indIEToma>
+		<cMunIni>4106902</cMunIni>
+		<xMunIni>CURITIBA</xMunIni>
+		<UFIni>PR</UFIni>
+		<cMunFim>4106902</cMunFim>
+		<xMunFim>CURITIBA</xMunFim>
+		<UFFim>PR</UFFim>
+	</ide>
+	<compl>
+		<xObs>Itin.: 5; TAF: 99999999;</xObs>
+		<ObsCont xCampo="LEI DA TRANSPARENCIA">
+			<xTexto>O valor aproximado de tributos incidentes sobre o preco deste servico e de R$ 40.88 (3.65) Fonte: IBPT</xTexto>
+		</ObsCont>
+	</compl>
+	<emit>
+		<CNPJ>99999999999999</CNPJ>
+		<IE>9999999999</IE>
+		<xNome>CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+		<xFant>XXXXXXXXXXXXXXXXX</xFant>
+		<enderEmit>
+			<xLgr>XXXXXXXXXXXXXXX</xLgr>
+			<nro>91</nro>
+			<xBairro>XXXXX</xBairro>
+			<cMun>4106902</cMun>
+			<xMun>CURITIBA</xMun>
+			<CEP>99999999</CEP>
+			<UF>PR</UF>
+			<fone>9999999999</fone>
+		</enderEmit>
+	</emit>
+	<toma>
+		<CNPJ>99999999999999</CNPJ>
+		<IE>9999999999</IE>
+		<xNome>CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+		<xFant>XXXXXXXXXXXXXXXX</xFant>
+		<fone>99999999</fone>
+		<enderToma>
+			<xLgr>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</xLgr>
+			<nro>777</nro>
+			<xBairro>CENTRO</xBairro>
+			<cMun>4101804</cMun>
+			<xMun>ARAUCARIA</xMun>
+			<CEP>99999999</CEP>
+			<UF>PR</UF>
+			<cPais>1058</cPais>
+			<xPais>BRASIL</xPais>
+		</enderToma>
+	</toma>
+	<vPrest>
+		<vTPrest>1120.00</vTPrest>
+		<vRec>1120.00</vRec>
+		<Comp>
+			<xNome>FRETAMENTO</xNome>
+			<vComp>1120.00</vComp>
+		</Comp>
+	</vPrest>
+	<imp>
+		<ICMS>
+			<ICMS00>
+				<CST>00</CST>
+				<vBC>1120.00</vBC>
+				<pICMS>12.00</pICMS>
+				<vICMS>134.40</vICMS>
+			</ICMS00>
+		</ICMS>
+		<vTotTrib>40.88</vTotTrib>
+		<infTribFed>
+			<vINSS>0.01</vINSS>
+		</infTribFed>
+	</imp>
+	<infCTeNorm>
+		<infServico>
+			<xDescServ>TRANSPORTE</xDescServ>
+			<infQ>
+				<qCarga>1.0000</qCarga>
+			</infQ>
+		</infServico>
+		<seg>
+			<respSeg>4</respSeg>
+			<xSeg>XXXXXXXXXXXXXXXX</xSeg>
+			<nApol>XXXXX</nApol>
+		</seg>
+		<infModal versaoModal="4.00">
+			<rodoOS>
+				<TAF>999999999999</TAF>
+			</rodoOS>
+		</infModal>
+	</infCTeNorm>
+	<autXML>
+		<CNPJ>99999999999999</CNPJ>
+	</autXML>
+	<autXML>
+		<CNPJ>99999999999999</CNPJ>
+	</autXML>
+</infCte>
+</CTeOS>
