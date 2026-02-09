@@ -182,6 +182,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public E204203 E204203 { get; set; }
 
         /// <summary>
+        /// Evento da Rejeição do Intermediário (código 204207).
+        /// </summary>
+        [XmlElement("e204207", Namespace = NfseNs.Ns)]
+        public E204207 E204207 { get; set; }
+        /// <summary>
         /// Evento de Confirmação Tácita (código 205204).
         /// </summary>
         [XmlElement("e205204", Namespace = NfseNs.Ns)]
