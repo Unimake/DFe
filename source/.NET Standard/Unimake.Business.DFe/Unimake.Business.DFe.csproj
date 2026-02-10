@@ -763,6 +763,7 @@
 		<None Remove="Servicos\Config\NFSe\TresLagoasMS.xml" />
 		<None Remove="Servicos\Config\NFSe\TriunfoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TubaraoSC.xml" />
+		<None Remove="Servicos\Config\NFSe\TupandiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\UberabaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\UberlandiaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\UmuaramaPR.xml" />
@@ -2034,6 +2035,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaioSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TresArroiosRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TimboSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TupandiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\UmuaramaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VacariaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ValencaBA.xml" />
