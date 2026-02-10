@@ -140,6 +140,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public E101103 E101103 { get; set; }
 
         /// <summary>
+        /// Evento de Cancelamento Deferido por Análise Fiscal (código 105104).
+        /// </summary>
+        [XmlElement("e105104", Namespace = NfseNs.Ns)]
+        public E105104 E105104 { get; set; }
+
+        /// <summary>
         /// Evento de Cancelamento por Substituição (código 105102).
         /// </summary>
         [XmlElement("e105102", Namespace = NfseNs.Ns)]

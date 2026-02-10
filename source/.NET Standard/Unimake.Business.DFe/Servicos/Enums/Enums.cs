@@ -17369,5 +17369,20 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion Código de Justificativa da Análise Fiscal para Cancelamento Indeferido por Análise Fiscal NFS-e NACIONAL
 
+    #region Código da Resposta da solicitação de análise fiscal para cancelamento de NFS-e
+    /// <summary>
+    /// Código da Resposta da solicitação de análise fiscal para cancelamento de NFS-e
+    /// </summary>
+    public enum CodJustAnaliseFiscalCancDef
+    {
+        /// <summary>
+        /// 1 - Cancelamento Extemporâneo Deferido
+        /// </summary>
+        [XmlEnum("1")]
+        CancelamentoExtemporaneoDeferido = 1,
+    }
+    #endregion Código da Resposta da solicitação de análise fiscal para cancelamento de NFS-e
+
+
     #endregion NFS-e NACIONAL
 }
