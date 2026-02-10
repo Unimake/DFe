@@ -134,6 +134,18 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public E101101 E101101 { get; set; }
 
         /// <summary>
+        /// Solicitação de Análise Fiscal para Cancelamento (código 101103).
+        /// </summary>
+        [XmlElement("e101103", Namespace = NfseNs.Ns)]
+        public E101103 E101103 { get; set; }
+
+        /// <summary>
+        /// Evento de Cancelamento Deferido por Análise Fiscal (código 105104).
+        /// </summary>
+        [XmlElement("e105104", Namespace = NfseNs.Ns)]
+        public E105104 E105104 { get; set; }
+
+        /// <summary>
         /// Evento de Cancelamento por Substituição (código 105102).
         /// </summary>
         [XmlElement("e105102", Namespace = NfseNs.Ns)]
@@ -176,10 +188,33 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public E204203 E204203 { get; set; }
 
         /// <summary>
+        /// Evento da Rejeição do Intermediário (código 204207).
+        /// </summary>
+        [XmlElement("e204207", Namespace = NfseNs.Ns)]
+        public E204207 E204207 { get; set; }
+        /// <summary>
         /// Evento de Confirmação Tácita (código 205204).
         /// </summary>
         [XmlElement("e205204", Namespace = NfseNs.Ns)]
         public E205204 E205204 { get; set; }
+
+        /// <summary>
+        /// Evento de Anulação de Manifestação de Rejeição (código 205208).
+        /// </summary>
+        [XmlElement("e205208", Namespace = NfseNs.Ns)]
+        public E205208 E205208 { get; set; }
+
+        /// <summary>
+        /// Evento de Cancelamento por Ofício (código 305101).
+        /// </summary>
+        [XmlElement("e305101", Namespace = NfseNs.Ns)]
+        public E305101 E305101 { get; set; }
+
+        /// <summary>
+        /// Evento de Bloqueio por Ofício (código 305102).
+        /// </summary>
+        [XmlElement("e305102", Namespace = NfseNs.Ns)]
+        public E305102 E305102 { get; set; }
 
         #region ShouldSerialize
         public bool ShouldSerializeCNPJAutor() => !string.IsNullOrWhiteSpace(CNPJAutor);

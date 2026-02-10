@@ -25,6 +25,7 @@
 				<IssRetido>1</IssRetido>
 				<CodigoMunicipio>5208707</CodigoMunicipio>
 				<CodigoTributacaoMunicipio>1</CodigoTributacaoMunicipio>
+				<NumeroNbs>123456</NumeroNbs>
 				<Discriminacao>Servico de Manutencao em Software</Discriminacao>
 				<InfAdicional>Banco do Brasil AG: 1111-1 CC: 10000-1</InfAdicional>
 			</Servico>

@@ -26,7 +26,7 @@ namespace Unimake.Business.DFe
         {
             var responseString = Response.Content.ReadAsStringAsync().Result;
 
-            if (Response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+            if (Response.StatusCode == System.Net.HttpStatusCode.InternalServerError && !(Config.PadraoNFSe == PadraoNFSe.NACIONAL))
             {
                 var InternalServerError = new XmlDocument();
                 InternalServerError.LoadXml(StringToXml("O servidor retornou um erro (500) || Mensagem retornada:  " + responseString));
