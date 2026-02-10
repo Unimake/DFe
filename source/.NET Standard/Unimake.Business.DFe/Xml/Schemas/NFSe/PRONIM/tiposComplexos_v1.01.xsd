@@ -1354,7 +1354,7 @@
           <xs:documentation>Descrição completa do serviço prestado</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="cNBS" type="TSCodNBS">
+      <xs:element name="cNBS" type="TSCodNBS" minOccurs="0">
         <xs:annotation>
           <xs:documentation>Código NBS correspondente ao serviço prestado, seguindo a versão 2.0, conforme Anexo B</xs:documentation>
         </xs:annotation>
