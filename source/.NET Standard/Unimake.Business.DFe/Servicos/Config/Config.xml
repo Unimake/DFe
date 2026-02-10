@@ -3143,4 +3143,10 @@
 		<ArqConfig>OuroPretoDoOesteRO.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4322251">
+		<Nome>Tupandi - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>TupandiRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
