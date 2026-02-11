@@ -64,11 +64,27 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     [XmlType("infPedReg", Namespace = NfseNs.Ns)]
     public class InfPedReg
     {
+        private string IdField;
+
         /// <summary>
         /// Identificador do Pedido de Cancelamento da NFS-e.
+        /// Formato:
+        /// "PRE" + "chNFSe (50)" + "Código do Evento (6)"
         /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
-        public string Id { get; set; }
+        public string Id
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(IdField))
+                {
+                    IdField = MontarIdPedRegEvento();
+                }
+                return IdField;
+            }
+
+            set => IdField = value;
+        }
 
         /// <summary>
         /// Tipo de Ambiente - Produção ou Homologação.
@@ -231,5 +247,57 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
                 throw new Exception("Informe exatamente um identificador do autor: CNPJAutor OU CPFAutor.");
             }
         }
+
+        #region Geração de ID
+
+        private void ValidacaoDeDados()
+        {
+            if(string.IsNullOrWhiteSpace(ChNFSe))
+            {
+                throw new Exception("A Chave da NFS-e (chNFSe) é obrigatória para gerar o ID do Pedido de Registro de Evento.");
+            }
+
+            if(ChNFSe.Length != 50)
+            {
+                throw new Exception("A chave da NFS-e (chNFSe) deve conter exatamente 50 caracteres.");
+            }
+
+            var codigoEvento = ObterCodigoEvento();
+            if (string.IsNullOrWhiteSpace(codigoEvento))
+            {
+                throw new Exception("Nenhum evento foi informado. Informe um dos eventos disponíveis (e101101, e101103, etc.) antes de gerar o Id.");
+            }
+        }
+
+        private string ObterCodigoEvento()
+        {
+            if (E101101 != null) return "101101";
+            if (E101103 != null) return "101103";
+            if (E105104 != null) return "105104";
+            if (E105102 != null) return "105102";
+            if (E105105 != null) return "105105";
+            if (E202201 != null) return "202201";
+            if (E202205 != null) return "202205";
+            if (E203206 != null) return "203206";
+            if (E203202 != null) return "203202";
+            if (E204203 != null) return "204203";
+            if (E204207 != null) return "204207";
+            if (E205204 != null) return "205204";
+            if (E205208 != null) return "205208";
+            if (E305101 != null) return "305101";
+            if (E305102 != null) return "305102";
+            return null;
+        }
+
+        private string MontarIdPedRegEvento()
+        {
+            ValidacaoDeDados();
+
+            var codigoEvento = ObterCodigoEvento();
+
+            return $"PRE{ChNFSe}{codigoEvento}{NPedRegEvento}";
+        }
+
+        #endregion Geração de ID
     }
 }
