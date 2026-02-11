@@ -1163,7 +1163,6 @@ namespace Unimake.DFe.Test.NFSe
                 Versao = lido.Versao,
                 InfPedReg = new InfPedReg
                 {
-                    Id = lido.InfPedReg.Id,
                     TpAmb = lido.InfPedReg.TpAmb,
                     VerAplic = lido.InfPedReg.VerAplic,
                     DhEvento = lido.InfPedReg.DhEvento,
@@ -1183,6 +1182,7 @@ namespace Unimake.DFe.Test.NFSe
 
             var docCriado = criado.GerarXML();
             Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+            Assert.Equal(lido.InfPedReg.Id, criado.InfPedReg.Id);
 
             var configuracao = new Configuracao
             {
