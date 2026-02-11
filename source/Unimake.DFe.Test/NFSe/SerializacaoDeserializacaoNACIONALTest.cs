@@ -496,7 +496,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                 SchemaVersao = versaoSchema
             };
 
-            var servico = new Unimake.Business.DFe.Servicos.NFSe.ConsultarEventosNfse(xmlDoc, configuracao);
+            var servico = new Unimake.Business.DFe.Servicos.NFSe.ConsultarEvento(xmlDoc, configuracao);
             servico.Executar();
 
             Assert.NotNull(servico.RetornoWSString);
