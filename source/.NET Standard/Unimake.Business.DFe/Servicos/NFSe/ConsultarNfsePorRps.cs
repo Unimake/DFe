@@ -14,7 +14,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     [ProgId("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfsePorRps")]
     [ComVisible(true)]
 #endif
-    public class ConsultarNfsePorRps: ConsultarNfse
+    public class ConsultarNfsePorRps : ConsultarNfse
     {
         /// <summary>
         /// Construtor
@@ -51,16 +51,16 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #if INTEROP
         [ComVisible(true)]
 #endif
-        public Xml.NFSe.NACIONAL.RetConsultarNfsePorRps Result
+        public Xml.NFSe.NACIONAL.Consulta.RetDPS Result
         {
             get
             {
                 try
                 {
                     var tagRaiz = RetornoWSXML.DocumentElement?.Name;
-                    if(tagRaiz == "temp")
+                    if (tagRaiz == "temp")
                     {
-                        return XMLUtility.Deserializar<Xml.NFSe.NACIONAL.RetConsultarNfsePorRps>(RetornoWSXML);
+                        return XMLUtility.Deserializar<Xml.NFSe.NACIONAL.Consulta.RetDPS>(RetornoWSXML);
                     }
                     return null;
                 }

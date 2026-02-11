@@ -6,24 +6,23 @@ using System.Runtime.InteropServices;
 
 using System;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
 
-namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
+namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta
 {
     /// <inheritdoc/>
     /// <remarks>
-    /// Estrutura idêntica a <see cref="ConsultarNfse"/>, 
+    /// Estrutura idêntica a <see cref="NFSe"/>, 
     /// utilizada especificamente para a **consulta de PDF da NFS-e** 
     /// no padrão NACIONAL.
     /// </remarks>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.Nacional.ConsultarNfsePDFEnvio")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta.NFSePDF")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlRoot("NFSe", Namespace = "http://www.sped.fazenda.gov.br/nfse", IsNullable = false)]
-    public class ConsultarNfsePDFEnvio : ConsultarNfse
+    public class NFSePDF : NFSe
     {
     }
 }

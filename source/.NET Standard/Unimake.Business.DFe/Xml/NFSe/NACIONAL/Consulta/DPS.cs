@@ -7,20 +7,20 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml.Serialization;
 
-namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
+namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta
 {
     /// <summary>
     /// Consulta de NFS-e por RPS (Padrão Nacional – DPS).
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ConsultarNfsePorRps")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta.DPS")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlType(Namespace = "http://www.sped.fazenda.gov.br/nfse")]
     [XmlRoot("DPS", Namespace = "http://www.sped.fazenda.gov.br/nfse", IsNullable = false)]
-    public class ConsultarNfsePorRps : XMLBase
+    public class DPS : XMLBase
     {
         /// <summary>
         /// Versão do schema do XML de consulta por RPS (DPS).
@@ -32,7 +32,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// Informações do DPS a ser consultado.
         /// </summary>
         [XmlElement("infDPS")]
-        public InfDPSConsulta InfDPS { get; set; } = new InfDPSConsulta();
+        public InfDPS InfDPS { get; set; } = new InfDPS();
     }
 
     /// <summary>
@@ -40,12 +40,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.InfDPSConsulta")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta.InfDPS")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlType(Namespace = "http://www.sped.fazenda.gov.br/nfse")]
-    public class InfDPSConsulta
+    public class InfDPS
     {
         /// <summary>
         /// Id do DPS (fornecido externamente; não é calculado aqui).

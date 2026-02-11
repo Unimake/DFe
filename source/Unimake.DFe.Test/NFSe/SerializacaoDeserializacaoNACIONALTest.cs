@@ -546,7 +546,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var docFixture = new XmlDocument();
             docFixture.Load(caminhoXml);
 
-            var lido = new ConsultarNfsePorRps().LerXML<ConsultarNfsePorRps>(docFixture);
+            var lido = new Business.DFe.Xml.NFSe.NACIONAL.Consulta.DPS().LerXML<Business.DFe.Xml.NFSe.NACIONAL.Consulta.DPS>(docFixture);
 
             Assert.Equal("1.01", lido.Versao);
             Assert.NotNull(lido.InfDPS);
@@ -555,7 +555,7 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
             var docRoundTrip = lido.GerarXML();
             Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
 
-            var criado = new ConsultarNfsePorRps
+            var criado = new Business.DFe.Xml.NFSe.NACIONAL.Consulta.DPS
             {
                 Versao = lido.Versao,
                 InfDPS = lido.InfDPS

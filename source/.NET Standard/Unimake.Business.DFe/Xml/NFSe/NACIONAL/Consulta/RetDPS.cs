@@ -6,7 +6,7 @@ using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
-namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
+namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta
 {
     /// <summary>
     /// Retorno da Consulta de NFSe por RPS - Padrão NACIONAL
@@ -14,12 +14,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.RetConsultarNfsePorRps")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta.RetDPS")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlRoot("temp")]
-    public class RetConsultarNfsePorRps : XMLBase
+    public class RetDPS : XMLBase
     {
         /// <summary>
         /// Tipo de Ambiente
