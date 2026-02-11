@@ -225,15 +225,11 @@ begin
     oNFCom.InfNFCom.Total.IBSCBSTot.gIBSTot.gIBSMunTot.vIBSMun := olevariant(0.00);
 
     oNFCom.InfNFCom.Total.IBSCBSTot.gIBSTot.vIBS := 0.10;
-    oNFCom.InfNFCom.Total.IBSCBSTot.gIBSTot.vCredPres := olevariant(0.00);
-    oNFCom.InfNFCom.Total.IBSCBSTot.gIBSTot.vCredPresCondSus := olevariant(0.00);
 
     oNFCom.InfNFCom.Total.IBSCBSTot.gCBSTot := CreateOleObject('Unimake.Business.DFe.Xml.NFCom.gCBSTot');
     oNFCom.InfNFCom.Total.IBSCBSTot.gCBSTot.vDif := olevariant(0.00);
     oNFCom.InfNFCom.Total.IBSCBSTot.gCBSTot.vDevTrib := olevariant(0.00);
     oNFCom.InfNFCom.Total.IBSCBSTot.gCBSTot.vCBS := 0.94;
-    oNFCom.InfNFCom.Total.IBSCBSTot.gCBSTot.vCredPres := olevariant(0.00);
-    oNFCom.InfNFCom.Total.IBSCBSTot.gCBSTot.vCredPresCondSus := olevariant(0.00);
 
     oNFCom.InfNFCom.Total.vTotDFe := 105.95;
 
@@ -254,6 +250,9 @@ begin
     oNFCom.InfNFCom.gRespTec.xContato := 'XXXXXXX XXXXXX XXXXXXXX';
     oNFCom.InfNFCom.gRespTec.email := 'teste@teste.com.br';
     oNFCom.InfNFCom.gRespTec.fone := '99999999999';
+
+    ShowMessage(oNFCom.InfNFCom.Id);
+    ShowMessage(oNFCom.InfNFCom.Chave);
 
     //Consumir o serviço
     oAutorizacaoSinc := CreateOleObject('Unimake.Business.DFe.Servicos.NFCom.AutorizacaoSinc');
