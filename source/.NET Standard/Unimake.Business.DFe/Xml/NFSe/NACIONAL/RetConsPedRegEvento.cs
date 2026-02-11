@@ -12,12 +12,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.RetornoConsultaEventoNfse")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.RetConsPedRegEvento")]
     [ComVisible(true)]
 #endif
     [Serializable]
     [XmlRoot("temp")]
-    public class RetornoConsultaEventoNfse : XMLBase
+    public class RetConsPedRegEvento : XMLBase
     {
         /// <summary>
         /// Data e hora do processamento

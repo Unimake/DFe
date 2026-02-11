@@ -63,7 +63,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #if INTEROP
         [ComVisible(true)]
 #endif
-        public RetornoConsultaEventoNfse Result
+        public RetConsPedRegEvento Result
         {
             get
             {
@@ -72,7 +72,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
                 try
                 {
-                    return XMLUtility.Deserializar<RetornoConsultaEventoNfse>(RetornoWSXML);
+                    return XMLUtility.Deserializar<RetConsPedRegEvento>(RetornoWSXML);
                 }
                 catch
                 {
