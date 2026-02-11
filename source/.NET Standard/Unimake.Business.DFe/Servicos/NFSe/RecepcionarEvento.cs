@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-#if INTEROP
+﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
 using System.Xml;
-using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
@@ -16,22 +11,22 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Servicos.NFSe.RecepcionarEventos")]
+    [ProgId("Unimake.Business.DFe.Servicos.NFSe.RecepcionarEvento")]
     [ComVisible(true)]
 #endif
-    public class RecepcionarEventosNfse : ServicoBase
+    public class RecepcionarEvento : ServicoBase
     {
         /// <summary>
         /// Construtor
         /// </summary>
-        public RecepcionarEventosNfse() : base() { }
+        public RecepcionarEvento() : base() { }
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
         /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
-        public RecepcionarEventosNfse(string conteudoXML, Configuracao configuracao) : this()
+        public RecepcionarEvento(string conteudoXML, Configuracao configuracao) : this()
         {
             var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(conteudoXML);
@@ -44,7 +39,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
         /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
-        public RecepcionarEventosNfse(XmlDocument conteudoXML, Configuracao configuracao) : this()
+        public RecepcionarEvento(XmlDocument conteudoXML, Configuracao configuracao) : this()
             => Inicializar(conteudoXML, configuracao);
 
         /// <summary>
@@ -63,7 +58,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// Retorna null se houve erro (usar ResultErro).
         /// </summary>
 #if INTEROP
-[ComVisible(true)]
+        [ComVisible(true)]
 #endif
         public Xml.NFSe.NACIONAL.Evento Result
         {

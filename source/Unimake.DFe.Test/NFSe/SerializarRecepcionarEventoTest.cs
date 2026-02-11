@@ -9,7 +9,7 @@ using Unimake.Business.DFe.Xml.NFSe.NACIONAL.Eventos;
 
 namespace Unimake.DFe.Test.NFSe
 {
-    public class SerializarRecepcionarEventosNFSeTest
+    public class SerializarRecepcionarEventoTest
     {
         [Theory]
         [Trait("DFe", "NFSe")]
@@ -71,7 +71,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             // Executa o serviço
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             // Usa as propriedades tipadas para obter o retorno
@@ -206,7 +206,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             // Executa o serviço
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             // Usa as propriedades tipadas para obter o retorno
@@ -284,7 +284,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = lido.Versao
             };
 
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result != null)
@@ -361,7 +361,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = lido.Versao
             };
 
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result != null)
@@ -438,7 +438,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = lido.Versao
             };
 
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result != null)
@@ -515,7 +515,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = lido.Versao
             };
 
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result != null)
@@ -590,7 +590,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = lido.Versao
             };
 
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result != null)
@@ -665,7 +665,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = lido.Versao
             };
 
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result != null)
@@ -740,7 +740,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = lido.Versao
             };
 
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result != null)
@@ -819,7 +819,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = lido.Versao
             };
 
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result != null)
@@ -957,7 +957,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             // Executa o serviço
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             // Usa as propriedades tipadas para obter o retorno
@@ -1038,7 +1038,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = lido.Versao
             };
 
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result != null)
@@ -1116,7 +1116,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = lido.Versao
             };
 
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result != null)
@@ -1194,7 +1194,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = lido.Versao
             };
 
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result != null)
@@ -1275,7 +1275,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             // Executa o serviço
-            var recepcaoEvento = new RecepcionarEventosNfse(docCriado, configuracao);
+            var recepcaoEvento = new RecepcionarEvento(docCriado, configuracao);
             recepcaoEvento.Executar();
 
             // Usa as propriedades tipadas para obter o retorno
