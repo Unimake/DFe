@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 #if INTEROP
@@ -16,22 +15,22 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Servicos.NFSe.ConsultarEventosNfse")]
+    [ProgId("Unimake.Business.DFe.Servicos.NFSe.ConsultarEvento")]
     [ComVisible(true)]
 #endif
-    public class ConsultarEventosNfse : ServicoBase
+    public class ConsultarEvento : ServicoBase
     {
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsultarEventosNfse() : base() { }
+        public ConsultarEvento() : base() { }
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
         /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
-        public ConsultarEventosNfse(string conteudoXML, Configuracao configuracao) : this()
+        public ConsultarEvento(string conteudoXML, Configuracao configuracao) : this()
         {
             var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(conteudoXML);
@@ -44,7 +43,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
         /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
-        public ConsultarEventosNfse(XmlDocument conteudoXML, Configuracao configuracao) : this()
+        public ConsultarEvento(XmlDocument conteudoXML, Configuracao configuracao) : this()
             => Inicializar(conteudoXML, configuracao);
 
         /// <summary>
@@ -62,7 +61,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// Resultado da consulta de eventos (sucesso ou erro)
         /// </summary>
 #if INTEROP
-[ComVisible(true)]
+        [ComVisible(true)]
 #endif
         public RetornoConsultaEventoNfse Result
         {
@@ -190,7 +189,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 var xmlTemp = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(jsonParte, "temp");
 
                 var erroNode = xmlTemp.CreateElement("erro");
-                
+
                 var codigoNode = xmlTemp.CreateElement("codigo");
                 codigoNode.InnerText = ((int)HttpStatusCode).ToString();
                 erroNode.AppendChild(codigoNode);
@@ -207,7 +206,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 return true;
             }
             catch
-            {   
+            {
                 return false;
             }
         }

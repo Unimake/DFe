@@ -10,7 +10,7 @@
 			<TagAssinatura>DPS</TagAssinatura>
 			<TagAtributoID>infDPS</TagAtributoID>
 			<WebSoapString></WebSoapString>
-			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
@@ -102,7 +102,7 @@
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarNfsePDF>
-		<RecepcionarEventosNfse versao="1.01">
+		<RecepcionarEvento versao="1.01">
 			<Descricao>Recepcionar Eventos Diversos da NFSe NACIONAL</Descricao>
 			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}/eventos</RequestURIProducao>
 			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}/eventos</RequestURIHomologacao>
@@ -118,8 +118,8 @@
 			<GZIPCompress>true</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
-		</RecepcionarEventosNfse>
-		<ConsultarEventosNfse versao="1.01">
+		</RecepcionarEvento>
+		<ConsultarEvento versao="1.01">
 			<Descricao>Consultar Eventos Diversos da NFSe NACIONAL</Descricao>
 			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{chNFSe}/eventos/{tipoEvento}/{numSeqEvento}</RequestURIProducao>
 			<RequestURIHomologacao>http://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{chNFSe}/eventos/{tipoEvento}/{numSeqEvento}</RequestURIHomologacao>
@@ -134,7 +134,7 @@
 			<GZIPCompress>true</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
-		</ConsultarEventosNfse>
+		</ConsultarEvento>
 		<ConsultarConvenioMunicipal versao="1.01">
 			<Descricao>Consultar Convênio Municipal</Descricao>
 			<RequestURIProducao>https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/convenio</RequestURIProducao>

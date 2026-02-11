@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Unimake.DFe.Test.NFSe
 {
-    public class RecepcionarEventosNfseTest
+    public class RecepcionarEventoTest
     {
         /// <summary>
         /// Parâmetros para os testes
@@ -42,9 +42,9 @@ namespace Unimake.DFe.Test.NFSe
                 PadraoNFSe = padraoNFSe
             };
 
-            var recepcionarEventos = new RecepcionarEventosNfse(conteudoXML, configuracao);
+            var recepcionarEvento = new RecepcionarEvento(conteudoXML, configuracao);
 
-            Assert.Multiple(() => TestUtility.AnalisaResultado(recepcionarEventos));
+            Assert.Multiple(() => TestUtility.AnalisaResultado(recepcionarEvento));
         }
     }
 }

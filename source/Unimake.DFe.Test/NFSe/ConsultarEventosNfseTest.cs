@@ -40,7 +40,7 @@ namespace Unimake.DFe.Test.NFSe
                 SchemaVersao = versaoSchema
             };
 
-            var consultarEventos = new ConsultarEventosNfse(conteudoXML, configuracao);
+            var consultarEventos = new ConsultarEvento(conteudoXML, configuracao);
             Assert.Multiple(() => TestUtility.AnalisaResultado(consultarEventos));
 
             var resultado = consultarEventos.Result;
