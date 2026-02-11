@@ -293,6 +293,23 @@
         <Filename Value="EnviarNFeSincronoContingenciaSVC.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="NACIONALGerarNfseObjeto.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="NACIONALGerarNFSeObjeto"/>
+      </Unit>
+      <Unit>
+        <Filename Value="NACIONALCancelarNFSeObjeto.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="NACIONALConsultarNFSeRPSObjeto.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="NACIONALConsultarNFSeObjeto.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

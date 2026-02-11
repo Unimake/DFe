@@ -22,7 +22,8 @@ uses
   ConsultarStatusCte, ConsultarSituacaoCTe, EnviarCteSincrono, EnviarCteOsSincrono,EventoCancelamentoCTe,
   EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe,CancelamentoInsucessoEntregaCTe, DesserializandoXmlCTeOS,
   EventoCTeDesacordo, EventoEpecCte, ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE,
-  EnviarNFCeOffline, EnviarNFeSincronoContingenciaSVC, NACIONALGerarNFSeObjeto;
+  EnviarNFCeOffline, EnviarNFeSincronoContingenciaSVC, NACIONALGerarNFSeObjeto,
+  NACIONALCancelarNFSeObjeto, NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto;
 
 type
 
@@ -76,6 +77,8 @@ type
     Btn_ConsultaResultadoLoteGNRE: TButton;
     btnEnviarNFCeOffline: TButton;
     btnEnviarNFeSincronoContingenciaSVC: TButton;
+    BtnNACIONALConsultarNFSePorRPSObjeto: TButton;
+    BtnNACIONALConsultarNFSeObjeto: TButton;
     EnviarXmlGNRe: TButton;
     ConsultaConfigGNRE: TButton;
     GroupBox1: TGroupBox;
@@ -94,6 +97,7 @@ type
     BtnEnviarEventoCancelamentoMDFe: TToggleBox;
     GroupBox7: TGroupBox;
     GroupBox8: TGroupBox;
+    BtnNACIONALCancelarNFSeObjeto: TToggleBox;
     procedure BtnBETHACancelarNFSeClick(Sender: TObject);
     procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
     procedure BtnBETHAConsultarNFSeRPSClick(Sender: TObject);
@@ -124,8 +128,11 @@ type
     procedure btnImprimirDANFEcomUniDANFEClick(Sender: TObject);
     procedure btnInutilizacaoNumeroNFeClick(Sender: TObject);
     procedure BtnNACIONALCancelarNFSeClick(Sender: TObject);
+    procedure BtnNACIONALCancelarNFSeObjetoClick(Sender: TObject);
     procedure BtnNACIONALConsultarNFSeClick(Sender: TObject);
+    procedure BtnNACIONALConsultarNFSeObjetoClick(Sender: TObject);
     procedure BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
+    procedure BtnNACIONALConsultarNFSePorRPSObjetoClick(Sender: TObject);
     procedure BtnNACIONALConsultarPDFNFSeClick(Sender: TObject);
     procedure BtnNACIONALGerarNFSeClick(Sender: TObject);
     procedure BtnNACIONALGerarNFSeObjetoClick(Sender: TObject);
@@ -506,6 +513,17 @@ begin
     end;
 end;
 
+procedure TfrmPrincipal.BtnNACIONALCancelarNFSeObjetoClick(Sender: TObject);
+var
+  oServico: TNACIONALCancelarNFSeObjeto;
+begin
+  oServico := TNACIONALCancelarNFSeObjeto.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
 procedure TfrmPrincipal.BtnNACIONALConsultarNFSeClick(Sender: TObject);
 var
   oServico: TNACIONALConsultarNFSe;
@@ -517,11 +535,34 @@ begin
     end;
 end;
 
+procedure TfrmPrincipal.BtnNACIONALConsultarNFSeObjetoClick(Sender: TObject);
+var
+  oServico: TNACIONALConsultarNFSeObjeto;
+begin
+  oServico := TNACIONALConsultarNFSeObjeto.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
 procedure TfrmPrincipal.BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
 var
   oServico: TNACIONALConsultarNFSeRPS;
 begin
   oServico := TNACIONALConsultarNFSeRPS.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.BtnNACIONALConsultarNFSePorRPSObjetoClick(
+  Sender: TObject);
+var
+  oServico: TNACIONALConsultarNFSeRPSObjeto;
+begin
+  oServico := TNACIONALConsultarNFSeRPSObjeto.Create;
   try
       oServico.Executar();
     finally

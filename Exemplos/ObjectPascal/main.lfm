@@ -147,18 +147,18 @@ object frmPrincipal: TfrmPrincipal
   end
   object GroupBox2: TGroupBox
     Left = 384
-    Height = 628
-    Top = 0
+    Height = 614
+    Top = 2
     Width = 344
     Caption = 'NFC-e'
-    ClientHeight = 598
+    ClientHeight = 584
     ClientWidth = 340
     TabOrder = 1
     OnClick = GroupBox2Click
     object btnEventoCancelamentoNFCe: TToggleBox
       Left = 8
       Height = 38
-      Top = 232
+      Top = 189
       Width = 320
       Caption = 'Enviar Evento de Cancelamento'
       TabOrder = 0
@@ -214,11 +214,11 @@ object frmPrincipal: TfrmPrincipal
   end
   object GroupBox4: TGroupBox
     Left = 1136
-    Height = 618
+    Height = 1032
     Top = 0
     Width = 350
     Caption = 'NFS-e'
-    ClientHeight = 588
+    ClientHeight = 1002
     ClientWidth = 346
     TabOrder = 5
     object BtnBETHAGerarNFSe: TButton
@@ -287,7 +287,7 @@ object frmPrincipal: TfrmPrincipal
     object BtnNACIONALConsultarNFSe: TButton
       Left = 8
       Height = 38
-      Top = 334
+      Top = 333
       Width = 328
       Caption = 'NACIONAL - Consultar NFSe'
       TabOrder = 7
@@ -298,7 +298,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 38
       Top = 384
       Width = 328
-      Caption = 'NACIONAL - Consultar NFSe p/RPS'
+      Caption = 'NACIONAL - Consultar DPS'
       TabOrder = 8
       OnClick = BtnNACIONALConsultarNFSePorRPSClick
     end
@@ -310,6 +310,33 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'NACIONAL - Consultar PDF NFSe'
       TabOrder = 9
       OnClick = BtnNACIONALConsultarPDFNFSeClick
+    end
+    object BtnNACIONALCancelarNFSeObjeto: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 521
+      Width = 328
+      Caption = 'NACIONAL - Cancelar NFSe c/Objeto'
+      TabOrder = 10
+      OnClick = BtnNACIONALCancelarNFSeObjetoClick
+    end
+    object BtnNACIONALConsultarNFSePorRPSObjeto: TButton
+      Left = 8
+      Height = 38
+      Top = 568
+      Width = 328
+      Caption = 'NACIONAL - Consultar DPS c/Objeto'
+      TabOrder = 11
+      OnClick = BtnNACIONALConsultarNFSePorRPSObjetoClick
+    end
+    object BtnNACIONALConsultarNFSeObjeto: TButton
+      Left = 9
+      Height = 38
+      Top = 616
+      Width = 327
+      Caption = 'NACIONAL - Consultar NFSe c/Objeto'
+      TabOrder = 12
+      OnClick = BtnNACIONALConsultarNFSeObjetoClick
     end
   end
   object GroupBox5: TGroupBox
@@ -441,7 +468,7 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object GroupBox7: TGroupBox
-    Left = 749
+    Left = 376
     Height = 413
     Top = 624
     Width = 737
@@ -559,9 +586,9 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object GroupBox8: TGroupBox
-    Left = 384
+    Left = 16
     Height = 157
-    Top = 634
+    Top = 752
     Width = 344
     Caption = 'GNRE'
     ClientHeight = 127
@@ -601,7 +628,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 38
     Top = 504
     Width = 328
-    Caption = 'NACIONAL - Gerar NFSe com Objeto'
+    Caption = 'NACIONAL - Gerar NFSe c/Objeto'
     TabOrder = 10
     OnClick = BtnNACIONALGerarNFSeObjetoClick
   end
