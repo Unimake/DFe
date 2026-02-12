@@ -55,7 +55,6 @@ begin
     oPedRegEvento.InfPedReg.E101101.CMotivo := 1; //CodigoJustificativaCancelamento.ErroNaEmissao
     oPedRegEvento.InfPedReg.E101101.XMotivo := 'Teste de cancelamento da NFSe Nacional';
 
-    // Montar o XML como string (evita problema com namespace ns0)
     XML := oPedRegEvento.GerarXMLString();
     ShowMessage(XML);
 

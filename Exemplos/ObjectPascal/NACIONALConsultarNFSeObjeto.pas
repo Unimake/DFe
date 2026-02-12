@@ -39,13 +39,6 @@ begin
     oConfiguracao.Servico := 32; // NFSeConsultarNfse
     oConfiguracao.SchemaVersao := '1.01';
 
-    oNFSe := CreateOleObject('Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta.NFSe');
-    oNFSe.Versao := '1.01';
-    oNFSe.InfNFSe := CreateOleObject('Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta.InfNFSe');
-    oNFSe.InfNFSe.Id := 'NFS99999999999999999999999999999999999999999999999999';
-
-    XML := oNFSe.GerarXMLString();
-
     oConsultarNfse := CreateOleObject('Unimake.Business.DFe.Servicos.NFSe.ConsultarNfse');
     oConsultarNfse.Executar(XML, IUnknown(oConfiguracao));
 
