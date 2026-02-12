@@ -13,7 +13,6 @@ using System.Xml;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
@@ -661,34 +660,31 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         {
             if (Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps)
             {
-                Console.WriteLine(ConteudoXMLAssinado.OuterXml);
-
-                var idNodeList =
-                 ConteudoXMLAssinado.GetElementsByTagName(
-                     "infDPS",
-                     "http://www.sped.fazenda.gov.br/nfse"
-                 );
+                var idNodeList = ConteudoXMLAssinado.GetElementsByTagName("infDPS", "http://www.sped.fazenda.gov.br/nfse");
 
                 if (idNodeList == null || idNodeList.Count == 0)
+                {
                     throw new Exception("Elemento infDPS não encontrado no XML da DPS.");
+                }
 
                 var infDps = (XmlElement)idNodeList[0];
 
-                string id = infDps.GetAttribute("Id");
+                var id = infDps.GetAttribute("Id");
 
                 if (string.IsNullOrWhiteSpace(id))
+                {
                     throw new Exception("Atributo Id da DPS não encontrado.");
+                }
 
                 if (!id.StartsWith("DPS"))
+                {
                     throw new Exception("Atributo Id não inicia com 'DPS'.");
+                }
 
-                string chave = id.Substring(3);
-
-
-                string documentoDps = chave.Substring(0, 14);
-                string municipioDps = chave.Substring(14, 7);
-                string serieDps = chave.Substring(21, 3);
-                string numeroDps = chave.Substring(24, 9);
+                var chave = id.Substring(3);
+                var documentoDps = chave.Substring(8, 14);
+                var serieDps = chave.Substring(22, 5);
+                var numeroDps = Convert.ToInt64(chave.Substring(27, 15)).ToString();
 
                 // 4 — Substituir placeholders
                 Configuracoes.RequestURI = Configuracoes.RequestURI
@@ -701,27 +697,26 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             {
                 Console.WriteLine(ConteudoXMLAssinado.OuterXml);
 
-                var idNodeList =
-                 ConteudoXMLAssinado.GetElementsByTagName(
-                     "infNFSe",
-                     "http://www.sped.fazenda.gov.br/nfse"
-                 );
+                var idNodeList = ConteudoXMLAssinado.GetElementsByTagName("infNFSe", "http://www.sped.fazenda.gov.br/nfse");
 
                 if (idNodeList == null || idNodeList.Count == 0)
+                {
                     throw new Exception("Elemento infNFSe não encontrado no XML da NFSe.");
+                }
 
                 var infNFSe = (XmlElement)idNodeList[0];
 
                 string id = infNFSe.GetAttribute("Id");
 
                 if (string.IsNullOrWhiteSpace(id))
+                {
                     throw new Exception("Atributo Id da NFSe não encontrado.");
+                }
 
                 string chave = id;
 
                 // 4 — Substituir placeholders
-                Configuracoes.RequestURI = Configuracoes.RequestURI
-                    .Replace("{Chave}", id);
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", id);
             }
         }
         #endregion PRONIM
