@@ -7475,6 +7475,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("FUTURIZE")]
         FUTURIZE = 89,
+
+        /// <summary>
+        /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
+        /// </summary>
+        [Description("PROPRIOFORTALEZACE")]
+        PROPRIOFORTALEZACE = 90
     }
 
     #endregion

@@ -1347,7 +1347,7 @@
 		<Nome>Fortaleza - CE</Nome>
 		<UF>CE</UF>
 		<ArqConfig>FortalezaCE.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
+		<PadraoNFSe>PROPRIOFORTALEZACE</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3507506">
 		<Nome>Botucatu - SP</Nome>
