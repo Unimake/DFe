@@ -7475,6 +7475,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("FUTURIZE")]
         FUTURIZE = 89,
+
+        /// <summary>
+        /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
+        /// </summary>
+        [Description("PROPRIOFORTALEZACE")]
+        PROPRIOFORTALEZACE = 90
     }
 
     #endregion
@@ -16423,23 +16429,73 @@ namespace Unimake.Business.DFe.Servicos
     #endregion Tipo de Retenção ISSQN NFS-e NACIONAL
 
     #region Tipo de Retenção PIS/COFINS NFS-e NACIONAL
+
     /// <summary>
     /// Tipo de Retenção PIS/COFINS NFS-e NACIONAL
     /// </summary>
     public enum TipoRetPisCofins
     {
         /// <summary>
-        /// 1 - Retido
+        /// 0 - PIS/COFINS/CSLL Não Retidos
         /// </summary>
-        [XmlEnum("1")]
-        Retido = 1,
+        [XmlEnum("0")]
+        PISCOFINSCSLLNaoRetidos = 0,
 
         /// <summary>
-        /// 2 - Não Retido
+        /// 1 - PIS/COFINS Retidos
+        /// </summary>
+        [XmlEnum("1")]
+        PISCOFINSRetidos = 1,
+
+        /// <summary>
+        /// 2 - PIS/COFINS Não Retidos
         /// </summary>
         [XmlEnum("2")]
-        NaoRetido = 2,
+        PISCOFINSNaoRetidos = 2,
+
+        /// <summary>
+        /// 3 - PIS/COFINS/CSLL Retidos
+        /// </summary>
+        [XmlEnum("3")]
+        PISCOFINSCSLLRetidos = 3,
+
+        /// <summary>
+        /// 4 - PIS/COFINS Retidos, CSLL Não Retido
+        /// </summary>
+        [XmlEnum("4")]
+        PISCOFINSRetidosCSLLNaoRetido = 4,
+
+        /// <summary>
+        /// 5 - PIS Retido, COFINS/CSLL Não Retido;
+        /// </summary>
+        [XmlEnum("5")]
+        PISRetidoCOFINSCSLLNaoRetido = 5,
+
+        /// <summary>
+        /// 6 - COFINS Retido, PIS/CSLL Não Retido;
+        /// </summary>
+        [XmlEnum("6")]
+        COFINSRetidoPISCSLLNaoRetido = 6,
+
+        /// <summary>
+        /// 7 - PIS Não Retido, COFINS/CSLL Retidos;
+        /// </summary>
+        [XmlEnum("7")]
+        PISNaoRetidoCOFINSCSLLRetidos = 7,
+
+        /// <summary>
+        /// 8 - PIS/COFINS Não Retidos, CSLL Retido;
+        /// </summary>
+        [XmlEnum("8")]
+        PISCOFINSNaoRetidosCSLLRetido = 8,
+
+        /// <summary>
+        /// 9 - COFINS Não Retido, PIS/CSLL Retidos
+        /// </summary>
+        [XmlEnum("9")]
+        COFINSNaoRetidoPISCSLLRetidos = 9
     }
+
     #endregion Tipo de Retenção PIS/COFINS NFS-e NACIONAL
 
     #region Tipo Chave DFe NACIONAL

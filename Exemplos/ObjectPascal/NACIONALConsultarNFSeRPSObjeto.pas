@@ -67,6 +67,7 @@ begin
        ShowMessage('Chave de acesso da NFSe: ' + ChaveAcesso);
       end;
     end;
+
   except
     on E: Exception do
     begin

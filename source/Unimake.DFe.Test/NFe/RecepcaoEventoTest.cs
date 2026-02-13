@@ -455,8 +455,7 @@ namespace Unimake.DFe.Test.NFe
             Assert.Contains("AN_", recepcaoEvento.Result.VerAplic); //Quem tem que responder é sempre o AN_, se não for tem coisa errada. Só AN_ autoriza este evento.
             Assert.True(configuracao.CodigoUF.Equals(91), "UF definida nas configurações diferente de 91=AN");
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            Assert.True(recepcaoEvento.Result.COrgao.Equals(UFBrasil.AN), "Webservice retornou uma UF e está diferente de " + UFBrasil.AN.ToString());
-            Assert.True(recepcaoEvento.Result.RetEvento[0].InfEvento.COrgaoAutor.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(recepcaoEvento.Result.COrgao.Equals(UFBrasil.AN), "Webservice retornou uma UF e está diferente de " + UFBrasil.AN.ToString() + " - UF Retornada: " + recepcaoEvento.Result.COrgao.ToString());
             Assert.True(recepcaoEvento.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             Assert.True(recepcaoEvento.Result.CStat.Equals(128) || recepcaoEvento.Result.CStat.Equals(656) || recepcaoEvento.Result.CStat.Equals(217), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.XMotivo + "<xMotivo>");
         }

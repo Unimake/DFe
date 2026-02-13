@@ -10,7 +10,7 @@ namespace Unimake.DFe.Test.NFSe
     /// <summary>
     /// Testar o serviço: ConsultarNFse
     /// </summary>
-    public class ConsultarNseTest
+    public class ConsultarNfseTest
     {
         /// <summary>
         /// Monta o parâmetros, de forma dinâmica, para o cenário de testes
