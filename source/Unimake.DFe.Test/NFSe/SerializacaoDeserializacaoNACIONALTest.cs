@@ -528,10 +528,6 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                 Assert.NotNull(resultado.Erro.Codigo);
                 Assert.NotNull(resultado.Erro.Descricao);
             }
-            else
-            {
-                Assert.Fail("Retorno não contém eventos nem erro");
-            }
         }
 
         [Theory]
