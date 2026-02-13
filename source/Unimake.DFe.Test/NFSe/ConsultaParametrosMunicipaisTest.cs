@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
@@ -13,11 +12,6 @@ namespace Unimake.DFe.Test.NFSe
     /// </summary>
     public class ConsultaParametrosMunicipaisTest
     {
-        /// <summary>
-        /// Monta os parâmetros para o cenário de testes
-        /// </summary>
-        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("ConsultarConvenioMunicipal");
-
         #region Testes de Convênio Municipal
 
         /// <summary>
@@ -25,17 +19,15 @@ namespace Unimake.DFe.Test.NFSe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [MemberData(nameof(Parametros))]
-        public void ConsultarConvenioMunicipal(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
+        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
+        public void ConsultarConvenioMunicipal(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
 
-            if (codMunicipio != 1001058)
-                return;
-
             var nomeXMLEnvio = "ConsultarConvenioMunicipalEnvio-ped-convenio.xml";
-            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\1.01\\" + nomeXMLEnvio;
 
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
 
@@ -49,13 +41,12 @@ namespace Unimake.DFe.Test.NFSe
                 TipoAmbiente = tipoAmbiente,
                 CodigoMunicipio = 1001058,
                 Servico = Servico.NFSeConsultarConvenioMunicipal,
-                SchemaVersao = versaoSchema
+                SchemaVersao = "1.01"
             };
 
             var consultarConvenio = new ConsultarConvenioMunicipal(conteudoXML, configuracao);
             Assert.Multiple(() => TestUtility.AnalisaResultado(consultarConvenio));
         }
-
 
         #endregion
 
@@ -66,17 +57,15 @@ namespace Unimake.DFe.Test.NFSe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [MemberData(nameof(Parametros))]
-        public void ConsultarAliquotasMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
+        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
+        public void ConsultarAliquotasMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
 
-            if (codMunicipio != 1001058)
-                return;
-
             var nomeXMLEnvio = "ConsultarAliquotasMunicipaisEnvio-ped-aliquotas.xml";
-            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\1.01\\" + nomeXMLEnvio;
 
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
 
@@ -90,7 +79,7 @@ namespace Unimake.DFe.Test.NFSe
                 TipoAmbiente = tipoAmbiente,
                 CodigoMunicipio = 1001058,
                 Servico = Servico.NFSeConsultarAliquotasMunicipais,
-                SchemaVersao = versaoSchema
+                SchemaVersao = "1.01"
             };
 
             var consultarAliquotas = new ConsultarAliquotasMunicipais(conteudoXML, configuracao);
@@ -106,17 +95,15 @@ namespace Unimake.DFe.Test.NFSe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [MemberData(nameof(Parametros))]
-        public void ConsultarHistoricoAliquotasMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
+        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
+        public void ConsultarHistoricoAliquotasMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
 
-            if (codMunicipio != 1001058)
-                return;
-
             var nomeXMLEnvio = "ConsultarHistoricoAliquotasMunicipaisEnvio-ped-historico.xml";
-            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\1.01\\" + nomeXMLEnvio;
 
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
 
@@ -130,7 +117,7 @@ namespace Unimake.DFe.Test.NFSe
                 TipoAmbiente = tipoAmbiente,
                 CodigoMunicipio = 1001058,
                 Servico = Servico.NFSeConsultarHistoricoAliquotasMunicipais,
-                SchemaVersao = versaoSchema
+                SchemaVersao = "1.01"
             };
 
             var consultarHistorico = new ConsultarHistoricoAliquotasMunicipais(conteudoXML, configuracao);
@@ -146,17 +133,15 @@ namespace Unimake.DFe.Test.NFSe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [MemberData(nameof(Parametros))]
-        public void ConsultarRegimesEspeciaisMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
+        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
+        public void ConsultarRegimesEspeciaisMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
 
-            if (codMunicipio != 1001058)
-                return;
-
             var nomeXMLEnvio = "ConsultarRegimesEspeciaisMunicipaisEnvio-ped-regimes.xml";
-            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\1.01\\" + nomeXMLEnvio;
 
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
 
@@ -170,7 +155,7 @@ namespace Unimake.DFe.Test.NFSe
                 TipoAmbiente = tipoAmbiente,
                 CodigoMunicipio = 1001058,
                 Servico = Servico.NFSeConsultarRegimesEspeciaisMunicipais,
-                SchemaVersao = versaoSchema
+                SchemaVersao = "1.01"
             };
 
             var consultarRegimes = new ConsultarRegimesEspeciaisMunicipais(conteudoXML, configuracao);
@@ -186,17 +171,15 @@ namespace Unimake.DFe.Test.NFSe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [MemberData(nameof(Parametros))]
-        public void ConsultarRetencoesMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
+        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
+        public void ConsultarRetencoesMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
 
-            if (codMunicipio != 1001058)
-                return;
-
             var nomeXMLEnvio = "ConsultarRetencoesMunicipaisEnvio-ped-retencoes.xml";
-            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\1.01\\" + nomeXMLEnvio;
 
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
 
@@ -210,7 +193,7 @@ namespace Unimake.DFe.Test.NFSe
                 TipoAmbiente = tipoAmbiente,
                 CodigoMunicipio = 1001058,
                 Servico = Servico.NFSeConsultarRetencoesMunicipais,
-                SchemaVersao = versaoSchema
+                SchemaVersao = "1.01"
             };
 
             var consultarRetencoes = new ConsultarRetencoesMunicipais(conteudoXML, configuracao);
@@ -226,17 +209,15 @@ namespace Unimake.DFe.Test.NFSe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [MemberData(nameof(Parametros))]
-        public void ConsultarBeneficioMunicipal(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
+        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
+        public void ConsultarBeneficioMunicipal(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
 
-            if (codMunicipio != 1001058)
-                return;
-
             var nomeXMLEnvio = "ConsultarBeneficioMunicipalEnvio-ped-beneficio.xml";
-            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\1.01\\" + nomeXMLEnvio;
 
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
 
@@ -250,7 +231,7 @@ namespace Unimake.DFe.Test.NFSe
                 TipoAmbiente = tipoAmbiente,
                 CodigoMunicipio = 1001058,
                 Servico = Servico.NFSeConsultarBeneficioMunicipal,
-                SchemaVersao = versaoSchema
+                SchemaVersao = "1.01"
             };
 
             var consultarBeneficio = new ConsultarBeneficioMunicipal(conteudoXML, configuracao);
@@ -262,13 +243,11 @@ namespace Unimake.DFe.Test.NFSe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [MemberData(nameof(Parametros))]
-        public void ConsultarBeneficioMunicipalDireto(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
+        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
+        public void ConsultarBeneficioMunicipalDireto(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
-                return;
-
-            if (codMunicipio != 1001058)
                 return;
 
             var configuracao = new Configuracao
@@ -278,7 +257,7 @@ namespace Unimake.DFe.Test.NFSe
                 TipoAmbiente = tipoAmbiente,
                 CodigoMunicipio = 1001058,
                 Servico = Servico.NFSeConsultarBeneficioMunicipal,
-                SchemaVersao = versaoSchema
+                SchemaVersao = "1.01"
             };
 
             var consultarBeneficio = new ConsultarBeneficioMunicipal(4204608, "99.99.99.999", DateTime.Now, configuracao);
@@ -302,12 +281,12 @@ namespace Unimake.DFe.Test.NFSe
                 CertificadoDigital = PropConfig.CertificadoDigital,
                 TipoAmbiente = TipoAmbiente.Homologacao,
                 Servico = Servico.NFSeConsultarConvenioMunicipal,
-                SchemaVersao = "1.00"
+                SchemaVersao = "1.01"
             };
 
             var xmlSemMunicipio = new XmlDocument();
             xmlSemMunicipio.LoadXml(@"<?xml version=""1.0"" encoding=""utf-8""?>
-<ConsultaParametros versao=""1.00"" xmlns=""http://www.sped.fazenda.gov.br/nfse"">
+<ConsultaParametros versao=""1.01"" xmlns=""http://www.sped.fazenda.gov.br/nfse"">
     <infConsulta>
         <tipoParametro>convenio</tipoParametro>
     </infConsulta>
@@ -333,7 +312,7 @@ namespace Unimake.DFe.Test.NFSe
                 CertificadoDigital = PropConfig.CertificadoDigital,
                 TipoAmbiente = TipoAmbiente.Homologacao,
                 CodigoMunicipio = 1001058,
-                SchemaVersao = "1.00"
+                SchemaVersao = "1.01"
             };
 
             // Teste Convênio
