@@ -122,7 +122,7 @@
 		<ConsultarEvento versao="1.01">
 			<Descricao>Consultar Eventos Diversos da NFSe NACIONAL</Descricao>
 			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{chNFSe}/eventos/{tipoEvento}/{numSeqEvento}</RequestURIProducao>
-			<RequestURIHomologacao>http://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{chNFSe}/eventos/{tipoEvento}/{numSeqEvento}</RequestURIHomologacao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/API/SefinNacional/nfse/{chNFSe}/eventos/{tipoEvento}/{numSeqEvento}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
