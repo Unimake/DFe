@@ -268,16 +268,16 @@
       <xs:element name="vTotalRet" type="TSDec15V2" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
-            Valor total de retenções = Σ(CP + IRRF + CSLL  + ISSQN* +  (PIS + COFINS)**)
-            vTotalRet (R$) = (vRetCP + vRetIRRF + vRetCSLL) + vISSQN* + (vPIS + vCOFINS)**
+            Valor total das retenções de tributos da NFS-e.
+            Valor total de retenções (R$) = Σ(vRetCP + vRetIRRF+ vRetCSLL + ISSQN*)
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="vLiq" type="TSDec15V2">
         <xs:annotation>
           <xs:documentation>
-            Valor líquido = Valor do serviço - Desconto condicionado - Desconto incondicionado - Valores retidos (CP, IRRF, CSLL)* - Valores, se retidos (ISSQN, PIS, COFINS)**
-            Valor Líquido (R$) = vServ – vDescIncond – vDescCond – (vRetCP + vRetIRRF + vRetCSLL)* – (vISSQN - vPIS + vCOFINS)**
+            Valor líquido da NFS-e.
+            Valor líquido (R$) = Valor do serviço - Desconto condicionado - Desconto incondicionado - Valores retidos
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -965,11 +965,11 @@
       <xs:element name="regApTribSN" type="TSRegimeApuracaoSimpNac" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
-			  Opção para que o contribuinte optante pelo Simples Nacional ME/EPP (opSimpNac = 3) possa indicar, ao emitir o documento fiscal, em qual regime de apuração os tributos federais e municipal estão inseridos, caso tenha ultrapassado algum sublimite ou limite definido para o Simples Nacional.
-			  1 – Regime de apuração dos tributos federais e municipal pelo SN;
-			  2 – Regime de apuração dos tributos federais pelo SN e ISSQN  por fora do SN conforme respectiva legislação municipal do tributo;
-			  3 – Regime de apuração dos tributos federais e municipal por fora do SN conforme respectivas legislações federal e municipal de cada tributo;
-		  </xs:documentation>
+            Opção para que o contribuinte optante pelo Simples Nacional ME/EPP (opSimpNac = 3) possa indicar, ao emitir o documento fiscal, em qual regime de apuração os tributos federais e municipal estão inseridos, caso tenha ultrapassado algum sublimite ou limite definido para o Simples Nacional.
+            1 – Regime de apuração dos tributos federais e municipal pelo SN;
+            2 – Regime de apuração dos tributos federais pelo SN e ISSQN  por fora do SN conforme respectiva legislação municipal do tributo;
+            3 – Regime de apuração dos tributos federais e municipal por fora do SN conforme respectivas legislações federal e municipal de cada tributo;
+          </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="regEspTrib" type="TSRegEspTrib">
@@ -1769,13 +1769,13 @@
             Identificação da Dedução/Redução:
             1 – Alimentação e bebidas/frigobar;
             2 – Materiais;
-			3 - Produção Externa;
-		    4 - Reembolso de despesas;
+            3 - Produção Externa;
+            4 - Reembolso de despesas;
             5 – Repasse consorciado;
             6 – Repasse plano de saúde;
             7 – Serviços;
             8 – Subempreitada de mão de obra;
-			9 - Profissional parceiro;
+            9 - Profissional parceiro;
             99 – Outras deduções;
           </xs:documentation>
         </xs:annotation>
@@ -2023,7 +2023,7 @@
         <xs:annotation>
           <xs:documentation>
             Código de Situação Tributária do PIS/COFINS (CST):
-            00 - Nenhum;      
+            00 - Nenhum;
             01 - Operação Tributável com Alíquota Básica;
             02 - Operação Tributável com Alíquota Diferenciada;
             03 - Operação Tributável com Alíquota por Unidade de Medida de Produto;
@@ -2033,50 +2033,82 @@
             07 - Operação Isenta da Contribuição;
             08 - Operação sem Incidência da Contribuição;
             09 - Operação com Suspensão da Contribuição;
+            49 - Outras Operações de Saída;
+            50 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Tributada no Mercado Interno;
+            51 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno;
+            52 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação;
+            53 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno;
+            54 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas no Mercado Interno e de Exportação;
+            55 - Operação com Direito a Crédito – Vinculada a Receitas Não Tributadas no Mercado Interno e de Exportação;
+            56 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação;
+            60 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno;
+            61 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno;
+            62 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação;
+            63 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno;
+            64 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação;
+            65 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação;
+            66 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação;
+            67 - Crédito Presumido – Outras Operações;
+            70 - Operação de Aquisição sem Direito a Crédito;
+            71 - Operação de Aquisição com Isenção;
+            72 - Operação de Aquisição com Suspensão;
+            73 - Operação de Aquisição a Alíquota Zero;
+            74 - Operação de Aquisição sem Incidência da Contribuição;
+            75 - Operação de Aquisição por Substituição Tributária;
+            98 - Outras Operações de Entrada;
+            99 - Outras Operações;
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="vBCPisCofins" type="TSDec15V2" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
-            Valor da Base de Cálculo do PIS/COFINS (R$).
+            Valor da Base de Cálculo do PIS/COFINS, relativo à apuração própria (R$).
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="pAliqPis" type="TSDec2V2" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
-            Valor da Alíquota do PIS (%).
+            Alíquota do PIS, relativa à apuração própria (%).
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="pAliqCofins" type="TSDec2V2" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
-            Valor da Alíquota da COFINS (%).
+            Alíquota da COFINS, relativa à apuração própria (%).
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="vPis" type="TSDec15V2" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
-            Valor monetário do PIS (R$).
+            Valor do débito de PIS apuração própria (R$).
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="vCofins" type="TSDec15V2" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
-            Valor monetário do COFINS (R$).
+            Valor do débito de COFINS apuração própria (R$).
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="tpRetPisCofins" type="TSTipoRetPISCofins" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
-            Tipo de retencao do Pis/Cofins:
-            1 - Retido;
-            2 - Não Retido;
+            Tipo de retenção do PIS/COFINS:
+            0 - PIS/COFINS/CSLL Não Retidos;
+            1 - PIS/COFINS Retidos;
+            2 - PIS/COFINS Não Retidos;
+            3 - PIS/COFINS/CSLL Retidos;
+            4 - PIS/COFINS Retidos, CSLL Não Retido;
+            5 - PIS Retido, COFINS/CSLL Não Retido;
+            6 - COFINS Retido, PIS/CSLL Não Retido;
+            7 - PIS Não Retido, COFINS/CSLL Retidos;
+            8 - PIS/COFINS Não Retidos, CSLL Retido;
+            9 - COFINS Não Retido, PIS/CSLL Retidos;
           </xs:documentation>
         </xs:annotation>
       </xs:element>
