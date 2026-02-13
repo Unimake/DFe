@@ -114,8 +114,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.NFSeConsultarBeneficioMunicipal;
-                Configuracoes.CodigoMunicipio = 1001058;
-                Configuracoes.SchemaVersao = "1.00";
 
                 base.DefinirConfiguracao();
             }
