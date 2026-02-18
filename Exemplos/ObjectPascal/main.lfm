@@ -338,6 +338,15 @@ object frmPrincipal: TfrmPrincipal
       TabOrder = 12
       OnClick = BtnNACIONALConsultarNFSeObjetoClick
     end
+    object BtnNACIONALConsultarEventoNFSe: TToggleBox
+      Left = 9
+      Height = 38
+      Top = 661
+      Width = 327
+      Caption = 'NACIONAL - Consultar Eventos NFSe'
+      TabOrder = 13
+      OnClick = BtnNACIONALConsultarEventoNFSeClick
+    end
   end
   object GroupBox5: TGroupBox
     Left = 1489

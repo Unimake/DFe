@@ -30,7 +30,8 @@ uses
   ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE,
   EnviarNFCeOffline, EnviarNFeSincronoContingenciaSVC,
   NACIONALCancelarNFSeObjeto, NACIONALGerarNFSeObjeto,
-  NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto
+  NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto,
+  NACIONALConsultarEventoNFSe
   { you can add units after this };
 
 {$R *.res}

@@ -23,7 +23,8 @@ uses
   EnviarEventoCancelamentoCTeOS, EventoCCeCTe,InsucessoEntregaCTe,CancelamentoInsucessoEntregaCTe, DesserializandoXmlCTeOS,
   EventoCTeDesacordo, EventoEpecCte, ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE,
   EnviarNFCeOffline, EnviarNFeSincronoContingenciaSVC, NACIONALGerarNFSeObjeto,
-  NACIONALCancelarNFSeObjeto, NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto;
+  NACIONALCancelarNFSeObjeto, NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto,
+  NACIONALConsultarEventoNFSe;
 
 type
 
@@ -98,6 +99,7 @@ type
     GroupBox7: TGroupBox;
     GroupBox8: TGroupBox;
     BtnNACIONALCancelarNFSeObjeto: TToggleBox;
+    BtnNACIONALConsultarEventoNFSe: TToggleBox;
     procedure BtnBETHACancelarNFSeClick(Sender: TObject);
     procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
     procedure BtnBETHAConsultarNFSeRPSClick(Sender: TObject);
@@ -129,6 +131,7 @@ type
     procedure btnInutilizacaoNumeroNFeClick(Sender: TObject);
     procedure BtnNACIONALCancelarNFSeClick(Sender: TObject);
     procedure BtnNACIONALCancelarNFSeObjetoClick(Sender: TObject);
+    procedure BtnNACIONALConsultarEventoNFSeClick(Sender: TObject);
     procedure BtnNACIONALConsultarNFSeClick(Sender: TObject);
     procedure BtnNACIONALConsultarNFSeObjetoClick(Sender: TObject);
     procedure BtnNACIONALConsultarNFSePorRPSClick(Sender: TObject);
@@ -518,6 +521,17 @@ var
   oServico: TNACIONALCancelarNFSeObjeto;
 begin
   oServico := TNACIONALCancelarNFSeObjeto.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
+procedure TfrmPrincipal.BtnNACIONALConsultarEventoNFSeClick(Sender: TObject);
+var
+  oServico: TNACIONALConsultarEventoNFSe;
+begin
+  oServico := TNACIONALConsultarEventoNFSe.Create;
   try
       oServico.Executar();
     finally
