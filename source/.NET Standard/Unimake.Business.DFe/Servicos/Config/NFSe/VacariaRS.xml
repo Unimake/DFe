@@ -137,7 +137,7 @@
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno>chaveAcesso</WebTagRetorno>
+			<WebTagRetorno>xmlGZipB64</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
