@@ -598,5 +598,71 @@ namespace Unimake.DFe.Test.NFSe.NACIONAL
                 Assert.Fail("Retorno não contém chave de acesso nem erro");
             }
         }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Layout", "Nacional")]
+        [Trait("Versao", "1.01")]
+        [InlineData(TipoAmbiente.Homologacao, "1.01", 1001058, @"..\..\..\NFSe\Resources\NACIONAL\1.01\ConsultarNfseEnvio-ped-sitnfse.xml")]
+        public void SerializarConsultarNfseNACIONAL(TipoAmbiente tipoAmbiente, string versaoSchema, int codMunicipio, string caminhoXml)
+        {
+            Assert.True(File.Exists(caminhoXml), $"Arquivo {caminhoXml} não encontrado.");
+
+            var docFixture = new XmlDocument();
+            docFixture.Load(caminhoXml);
+
+            var lido = new Business.DFe.Xml.NFSe.NACIONAL.Consulta.NFSe().LerXML<Business.DFe.Xml.NFSe.NACIONAL.Consulta.NFSe>(docFixture);
+
+            Assert.Equal("1.01", lido.Versao);
+            Assert.NotNull(lido.InfNFSe);
+            Assert.NotNull(lido.InfNFSe.Id);
+
+            var docRoundTrip = lido.GerarXML();
+            Assert.True(docFixture.InnerText == docRoundTrip.InnerText, "Round-trip diferente do fixture.");
+
+            var criado = new Business.DFe.Xml.NFSe.NACIONAL.Consulta.NFSe
+            {
+                Versao = lido.Versao,
+                InfNFSe = lido.InfNFSe
+                
+            };
+
+            var docCriado = criado.GerarXML();
+            Assert.True(docRoundTrip.InnerText == docCriado.InnerText, "XML criado do zero difere do XML do round-trip.");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = tipoAmbiente,
+                CodigoMunicipio = codMunicipio,
+                Servico = Servico.NFSeConsultarNfse, 
+                SchemaVersao = versaoSchema
+            };
+
+            var servico = new Unimake.Business.DFe.Servicos.NFSe.ConsultarNfse(docCriado, configuracao);
+            servico.Executar();
+
+            Assert.NotNull(servico.RetornoWSString);
+
+            if (servico.Result != null)
+            {
+                var nfse = servico.Result;
+                Assert.NotNull(nfse.InfNFSe);
+                Assert.NotNull(nfse.InfNFSe.Id);
+                Assert.Equal("1.01", nfse.Versao);
+            }
+            else if (servico.ResultErro != null)
+            {
+                var erro = servico.ResultErro;
+                Assert.NotNull(erro.Erro);
+                Assert.NotNull(erro.Erro.Codigo);
+                Assert.NotNull(erro.Erro.Descricao);
+            }
+            else
+            {
+                Assert.Fail("Retorno não contém NFSe nem erro");
+            }
+        }
     }
 }
