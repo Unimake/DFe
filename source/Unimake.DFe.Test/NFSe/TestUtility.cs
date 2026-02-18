@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Xml;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using Unimake.Business.DFe.Servicos;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Unimake.DFe.Test.NFSe
 {
@@ -273,7 +269,7 @@ namespace Unimake.DFe.Test.NFSe
                     break;
 
                 default:
-                    
+
                     if (padraoNFSe == PadraoNFSe.SONNER && tipoAmbiente == TipoAmbiente.Producao && mensagemExcecao.Contains("vazio"))
                     {
                         comunicacaoFuncionou = true;
