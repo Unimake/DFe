@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using System.Xml;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -65,6 +66,35 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             base.Executar();
         }
 
+        /// <summary>
+        /// Resultado da consulta NFSe (apenas para padrão NACIONAL).
+        /// Retorna a NFSe completa em caso de sucesso.
+        /// Retorna null se não houver retorno ou se a tag raiz não for NFSe.
+        /// </summary>
+#if INTEROP
+        [ComVisible(true)]
+#endif
+        public Xml.NFSe.NACIONAL.Consulta.RetNFSe Result
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(RetornoWSString))
+                    return null;
 
+                try
+                {
+                    var tagRaiz = RetornoWSXML.DocumentElement?.Name;
+                    if (tagRaiz == "NFSe")
+                    {
+                        return XMLUtility.Deserializar<Xml.NFSe.NACIONAL.Consulta.RetNFSe>(RetornoWSXML);
+                    }
+                    return null;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace Unimake.Business.DFe
             {
                 var naoEncontradoErro = new XmlDocument();
 
-                if (Config.Servico == Servico.NFSeConsultarNfsePorRps)
+                if ((Config.Servico == Servico.NFSeConsultarNfsePorRps) || (Config.Servico == Servico.NFSeConsultarNfse))
                 {
                     try
                     {
