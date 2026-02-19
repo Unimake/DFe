@@ -48,7 +48,6 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// </summary>
         [XmlElement("erro")]
         public Erro Erro { get; set; }
-
     }
 
     /// <summary>

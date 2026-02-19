@@ -88,7 +88,7 @@
 			<SchemaVersao>2.02</SchemaVersao>
 			<TargetNS></TargetNS>
 		</ConsultarNfsePorRps>
-		<!-- VERSÃO 1.01-->
+		<!-- versão 1.01-->
 		<GerarNfse versao="1.01">
 			<Descricao>Envio do DPS - Sincrono</Descricao>
 			<RequestURIProducao>https://agudo.govbr.cloud/NFSe.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
@@ -133,7 +133,7 @@
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno>chaveAcesso</WebTagRetorno>
+			<WebTagRetorno>xmlGZipB64</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
