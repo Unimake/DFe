@@ -302,6 +302,34 @@ Function EnviarNfeSincrono()
 	   
      * adicionar a tag ICMS dentro da tag Imposto
        oImposto.Icms = oICMS
+       
+     * adicionar o grupod e tag de IPI
+       oIPI = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.IPI") 
+       oIPI.CNPJProd
+       oIPI.CSelo = ""
+       oIPI.QSelo = 0
+       oIPI.CEnq = ""
+       
+       && Se for IPI não tributado, crie o grupo IPINT, caso contrário crie o IPITrib, demonstrado mais adiante no código.
+       oIPI.IPINT = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.IPINT")
+       oIPI.IPINT.CST = "52" && 01, 02, 03, 04, 51, 52, 53
+       
+       && Se for IPI tributado crie o grupo a seguir, caso contrário crie o grupo acima que é o IPINT
+       oIPI.IPITrib = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.IPITrib")
+       oIPI.IPITrib.CST = "50" && 00, 49, 50 e 99
+
+       && Ou gera as duas tags VBC e PIPI, ou gera a QUnid e VUnid. Não pode gerar os 2 subgrupos ao mesmo tempo.
+       oIPI.IPITrib.VBC = 0.00
+       oIPI.IPITrib.PIPI = 0.0000
+       
+       && Se gerar a QUnid e VUnid não gere a VBC e PIPI, é a regra da SEFAZ.
+       oIPI.IPITrib.QUnid = 0.0000
+       oIPI.IPITrib.VUnid = 0.0000
+       
+       && Valor do IPI, obrigatório.
+       oIPI.IPITrib.VIPI = 0.00
+       
+       oImposto.IPI = oIPI
 	   
      * criar tag PIS
        oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
