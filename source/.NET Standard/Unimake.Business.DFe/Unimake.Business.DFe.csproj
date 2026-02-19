@@ -334,6 +334,7 @@
 		<None Remove="Servicos\Config\NFSe\AssisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AssuRN.xml" />
 		<None Remove="Servicos\Config\NFSe\AstorgaPR.xml" />
+		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BageRS.xml" />
 		<None Remove="Servicos\Config\NFSe\BalnearioCamboriuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
@@ -1625,6 +1626,7 @@
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraruamaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraucariaPR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AvareSP.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
