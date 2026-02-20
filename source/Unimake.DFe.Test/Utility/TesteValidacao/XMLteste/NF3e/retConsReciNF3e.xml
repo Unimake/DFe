@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsReciNF3e versao="versao1" xmlns="http://www.portalfiscal.inf.br/nf3e">
+	<tpAmb>1</tpAmb>
+	<verAplic>verAplic1</verAplic>
+	<nRec>nRec1</nRec>
+	<cStat>100</cStat>
+	<xMotivo>xMotivo1</xMotivo>
+	<cUF>11</cUF>
+	<protNF3e versao="1.00">
+		<infProt Id="ID1">
+			<tpAmb>1</tpAmb>
+			<verAplic>verAplic1</verAplic>
+			<chNF3e>chNF3e1</chNF3e>
+			<dhRecbto>2022-08-17T21:51:41-03:00</dhRecbto>
+			<nProt>nProt1</nProt>
+			<digVal>AAECAwQFBgcICQoLDA0ODw==</digVal>
+			<cStat>100</cStat>
+			<xMotivo>xMotivo1</xMotivo>
+		</infProt>
+		<infFisco>
+			<cMsg>cMsg1</cMsg>
+			<xMsg>xMsg1</xMsg>
+		</infFisco>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+				<Reference URI="http://uri1">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>AAECAwQFBgcICQoLDA0ODw==</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>AAECAwQFBgcICQoLDA0ODw==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>AAECAwQFBgcICQoLDA0ODw==</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</protNF3e>
+	<protNF3e versao="1.00">
+		<infProt Id="ID1">
+			<tpAmb>1</tpAmb>
+			<verAplic>verAplic1</verAplic>
+			<chNF3e>chNF3e1</chNF3e>
+			<dhRecbto>2022-08-17T21:51:41-03:00</dhRecbto>
+			<nProt>nProt1</nProt>
+			<digVal>AAECAwQFBgcICQoLDA0ODw==</digVal>
+			<cStat>100</cStat>
+			<xMotivo>xMotivo1</xMotivo>
+		</infProt>
+		<infFisco>
+			<cMsg>cMsg1</cMsg>
+			<xMsg>xMsg1</xMsg>
+		</infFisco>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+				<Reference URI="http://uri1">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>AAECAwQFBgcICQoLDA0ODw==</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>AAECAwQFBgcICQoLDA0ODw==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>AAECAwQFBgcICQoLDA0ODw==</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</protNF3e>
+</retConsReciNF3e>

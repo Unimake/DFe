@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsStatServNFCom versao="versao1" xmlns="http://www.portalfiscal.inf.br/nfcom">
+	<tpAmb>1</tpAmb>
+	<verAplic>verAplic1</verAplic>
+	<cStat>100</cStat>
+	<xMotivo>xMotivo1</xMotivo>
+	<cUF>11</cUF>
+	<dhRecbto>2025-01-15T15:00:22-03:00</dhRecbto>
+	<tMed>1</tMed>
+	<dhRetorno>2025-01-15T15:00:30-03:00</dhRetorno>
+	<xObs>xObs1</xObs>
+</retConsStatServNFCom>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retEventoNF3e versao="versao1" xmlns="http://www.portalfiscal.inf.br/nf3e">
+	<infEvento Id="ID1">
+		<tpAmb>1</tpAmb>
+		<verAplic>verAplic1</verAplic>
+		<cOrgao>11</cOrgao>
+		<cStat>2</cStat>
+		<xMotivo>xMotivo1</xMotivo>
+		<chNF3e>chNF3e1</chNF3e>
+		<tpEvento>110111</tpEvento>
+		<xEvento>xEvento1</xEvento>
+		<nSeqEvento>nSeqEvento1</nSeqEvento>
+		<dhRegEvento>2024-12-01T00:00:00-03:00</dhRegEvento>
+		<nProt>nProt1</nProt>
+	</infEvento>
+</retEventoNF3e>

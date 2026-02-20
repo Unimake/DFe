@@ -9,7 +9,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao.Extractors
         public XmlDocument Isolar(XmlNode node)
         {
             var xmlEspecifico = new XmlDocument();
-            var infModal = node.SelectSingleNode(".//*[local-name()='infMDFe']/*[local-name()='infModal']");
+            var infModal = node.SelectSingleNode(".//*[local-name()='infModal']");
             if (infModal is null)
             {
                 IsoladorEventoMDFe(node, xmlEspecifico);

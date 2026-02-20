@@ -18,6 +18,8 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao.Isoladores
                 TipoDFe.NFe or TipoDFe.NFCe => new IsoladorNFe(),
                 TipoDFe.CTe => new IsoladorCTe(),
                 TipoDFe.MDFe => new IsoladorMDFe(),
+                TipoDFe.NFCom => new IsoladorNFCom(),
+                TipoDFe.NF3e => new IsoladorNF3e(),
                 _ => throw new InvalidOperationException($"Tipo de DFe não suportado: {tipoDFe}"),
             };
         }

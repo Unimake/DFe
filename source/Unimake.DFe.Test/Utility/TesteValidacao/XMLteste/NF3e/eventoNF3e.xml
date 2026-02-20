@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eventoNF3e versao="1.00" xmlns="http://www.portalfiscal.inf.br/nf3e">
+	<infEvento Id="ID11011112345678901234567890123456789012345678901234001">
+		<cOrgao>41</cOrgao>
+		<tpAmb>2</tpAmb>
+		<CNPJ>12345678901234</CNPJ>
+		<chNF3e>12345678901234567890123456789012345678901234</chNF3e>
+		<dhEvento>2024-12-03T15:30:00-03:00</dhEvento>
+		<tpEvento>110111</tpEvento>
+		<nSeqEvento>1</nSeqEvento>
+		<detEvento versaoEvento="1.00">
+			 <evCancNF3e>
+				<descEvento>Cancelamento</descEvento>
+				<nProt>1234567890123456</nProt>
+				<xJust>Erro na descricao dos produtos</xJust>
+            </evCancNF3e>
+		</detEvento>
+	</infEvento>
+</eventoNF3e>
