@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsSitNFCom versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfcom">
+	<tpAmb>1</tpAmb>
+	<verAplic>verAplic1</verAplic>
+	<cStat>100</cStat>
+	<xMotivo>xMotivo1</xMotivo>
+	<cUF>11</cUF>
+	<protNFCom versao="1.00" ipTransmissor="192.168.0.1" nPortaCon="1" dhConexao="2024-01-15T00:15:20" xmlns="http://www.portalfiscal.inf.br/nfcom">
+		<infProt Id="ID7">
+			<tpAmb>1</tpAmb>
+			<verAplic>verAplic1</verAplic>
+			<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
+			<dhRecbto>2025-01-15T15:00:22-03:00</dhRecbto>
+			<nProt>123456789012345</nProt>
+			<digVal>AAECAwQFBgcICQoLDA0ODw==</digVal>
+			<cStat>100</cStat>
+			<xMotivo>xMotivo1</xMotivo>
+		</infProt>
+		<infFisco>
+			<cMsg>100</cMsg>
+			<xMsg>xMsg1</xMsg>
+		</infFisco>
+	</protNFCom>
+	<procEventoNFCom versao="1.00" ipTransmissor="ipTransmissor1" nPortaCon="nPortaCon1" dhConexao="2025-01-15T15:00:22-03:00" xmlns="http://www.portalfiscal.inf.br/nfcom">
+		<eventoNFCom versao="1.00">
+			<infEvento Id="ID1">
+				<cOrgao>11</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>06117473000150</CNPJ>
+				<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
+				<dhEvento>2025-01-15T15:00:22-03:00</dhEvento>
+				<tpEvento>110111</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<detEvento versaoEvento="1.00">
+					<evCancNFCom>
+						<descEvento>Cancelamento</descEvento>
+						<nProt>nProt1</nProt>
+						<xJust>xJust_________1</xJust>
+					</evCancNFCom>
+				</detEvento>
+			</infEvento>
+		</eventoNFCom>
+		<retEventoNFCom versao="1.00">
+			<infEvento Id="ID7">
+				<tpAmb>1</tpAmb>
+				<verAplic>verAplic1</verAplic>
+				<cOrgao>11</cOrgao>
+				<cStat>100</cStat>
+				<xMotivo>xMotivo1</xMotivo>
+				<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
+				<tpEvento>110111</tpEvento>
+				<xEvento>xEvento1</xEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<dhRegEvento>2025-01-15T15:00:22-03:00</dhRegEvento>
+				<nProt>nProt1</nProt>
+			</infEvento>
+		</retEventoNFCom>
+	</procEventoNFCom>
+</retConsSitNFCom>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<evCancNF3e xmlns="http://www.portalfiscal.inf.br/nf3e">
+	<descEvento>Cancelamento</descEvento>
+	<nProt>nProt1</nProt>
+	<xJust>xJust_________1</xJust>
+</evCancNF3e>

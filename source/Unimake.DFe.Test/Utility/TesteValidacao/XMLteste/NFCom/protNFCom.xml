@@ -1,0 +1,16 @@
+<protNFCom versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfcom">
+	<infProt Id="ID7">
+		<tpAmb>1</tpAmb>
+		<verAplic>verAplic1</verAplic>
+		<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
+		<dhRecbto>2025-01-15T15:00:22-03:00</dhRecbto>
+		<nProt>123456789012345</nProt>
+		<digVal>AAECAwQFBgcICQoLDA0ODw==</digVal>
+		<cStat>100</cStat>
+		<xMotivo>xMotivo1</xMotivo>
+	</infProt>
+	<infFisco>
+		<cMsg>100</cMsg>
+		<xMsg>xMsg1</xMsg>
+	</infFisco>
+</protNFCom>

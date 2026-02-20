@@ -16,36 +16,32 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao.Matchers
                 throw new Exception("Configuração de SchemasEspecificos não encontrada para MDFe");
 
             // Procura por infMDFe em qualquer nível (funciona para MDFe, enviMDFe)
-            var nodosInfMDFe = xml.GetElementsByTagName("infMDFe");
+            var nodeInfMDFe = xml.GetElementsByTagName("infMDFe");
 
-            if (nodosInfMDFe.Count == 0)
-                throw new Exception("Tag 'infMDFe' não encontrada no XML");
+            if (nodeInfMDFe is null)
+                throw new Exception("Tag infMDFe não encontrada");
 
-            foreach (XmlElement nodeInfMDFe in nodosInfMDFe)
+            foreach (XmlElement node in nodeInfMDFe)
             {
-                var infModals = nodeInfMDFe.GetElementsByTagName("infModal");
 
-                if (infModals.Count == 0)
-                    throw new Exception("Tag <infModal> não encontrada em infMDFe");
+               foreach (XmlElement ideNode in node.GetElementsByTagName("ide"))
+                { 
+                    var modal = ideNode.GetElementsByTagName("modal")[0]?.InnerText;
 
-                foreach (XmlElement infModalNode in infModals)
-                {
-                    var modal = infModalNode.GetElementsByTagName("modal")[0]?.InnerText;
+                    if (string.IsNullOrEmpty(modal)) 
+                    throw new Exception("Tag <modal> não encontrada ou está vazia");
 
-                    if (string.IsNullOrWhiteSpace(modal))
-                        throw new Exception("Tag <modal> não encontrada ou está vazia em infModal");
-
-                    // MDFe usa modal simples (1-4), não precisa substring
-                    string modalCorreto = modal.Substring(0, 1);
-
-                    XmlNode nodeTipoCorreto = EncontrarTipoSchemaPorId(schemasEspecificos, modalCorreto);
+                    XmlNode nodeTipoCorreto = EncontrarTipoSchemaPorId(schemasEspecificos, modal);
 
                     if (nodeTipoCorreto is null)
-                        throw new Exception($"Não existe Schema Específico configurado para o modal {modalCorreto}");
+                        throw new Exception($"Não foi encontrado o Schema Específico para o modal {modal}");
 
-                    lista.Add((nodeTipoCorreto, nodeInfMDFe));
+                    lista.Add((nodeTipoCorreto, node));
+
                 }
+
             }
+
 
             return lista;
         }

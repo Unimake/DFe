@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retNFCom versao="versao1" xmlns="http://www.portalfiscal.inf.br/nfcom">
+	<tpAmb>1</tpAmb>
+	<cUF>11</cUF>
+	<verAplic>verAplic1</verAplic>
+	<cStat>100</cStat>
+	<xMotivo>xMotivo1</xMotivo>
+	<protNFCom versao="1.00">
+		<infProt Id="ID7">
+			<tpAmb>1</tpAmb>
+			<verAplic>verAplic1</verAplic>
+			<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
+			<dhRecbto>2025-01-15T15:00:22-03:00</dhRecbto>
+			<nProt>123456789012345</nProt>
+			<digVal>AAECAwQFBgcICQoLDA0ODw==</digVal>
+			<cStat>100</cStat>
+			<xMotivo>xMotivo1</xMotivo>
+		</infProt>
+		<infFisco>
+			<cMsg>100</cMsg>
+			<xMsg>xMsg1</xMsg>
+		</infFisco>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+				<Reference URI="http://uri1">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>AAECAwQFBgcICQoLDA0ODw==</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>AAECAwQFBgcICQoLDA0ODw==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>AAECAwQFBgcICQoLDA0ODw==</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</protNFCom>
+</retNFCom>

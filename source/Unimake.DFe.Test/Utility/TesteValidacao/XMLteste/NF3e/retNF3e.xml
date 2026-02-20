@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retNF3e versao="1.00" xmlns="http://www.portalfiscal.inf.br/nf3e">
+	<tpAmb>1</tpAmb>
+	<cUF>1</cUF>
+	<verAplic>verAplic1</verAplic>
+	<cStat>1</cStat>
+	<xMotivo>xMotivo1</xMotivo>
+	<protNF3e versao="versao1">
+		<infProt Id="ID1">
+			<tpAmb>1</tpAmb>
+			<verAplic>verAplic1</verAplic>
+			<chNF3e>chNF3e1</chNF3e>
+			<dhRecbto>2024-12-01T00:00:00-03:00</dhRecbto>
+			<nProt>nProt1</nProt>
+			<digVal>AAECAwQFBgcICQoLDA0ODw==</digVal>
+			<cStat>1</cStat>
+			<xMotivo>xMotivo1</xMotivo>
+		</infProt>
+		<infFisco>
+			<cMsg>cMsg1</cMsg>
+			<xMsg>xMsg1</xMsg>
+		</infFisco>
+	</protNF3e>
+</retNF3e>

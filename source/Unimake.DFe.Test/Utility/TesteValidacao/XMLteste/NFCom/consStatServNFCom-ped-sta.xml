@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<consStatServNFCom versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfcom">
+	<tpAmb>1</tpAmb>
+	<xServ>STATUS</xServ>
+</consStatServNFCom>
