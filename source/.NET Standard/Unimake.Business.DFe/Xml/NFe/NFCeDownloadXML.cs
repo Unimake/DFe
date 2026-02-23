@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -17,7 +17,6 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("nfceDownloadXML", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class NFCeDownloadXML : XMLBase
     {
-
         /// <summary>
         /// Versão do leiaute
         /// </summary>
@@ -25,10 +24,10 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string Versao { get; set; }
 
         /// <summary>
-        /// Tipo do ambiente serializado
+        /// Tipo do ambiente
         /// </summary>
         [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set;  }
+        public TipoAmbiente TpAmb { get; set; }
 
         /// <summary>
         /// Chave de acesso da NFCe
@@ -36,5 +35,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("chNFCe")]
         public string ChNFCe { get; set; }
 
+        /// <summary>
+        /// Deserializar a string do XML no objeto NFCeDownloadXML
+        /// </summary>
+        /// <param name="xml">String do XML</param>
+        /// <returns>Objeto NFCeDownloadXML</returns>
+        public NFCeDownloadXML LoadFromXML(string xml) => XMLUtility.Deserializar<NFCeDownloadXML>(xml);
     }
 }
