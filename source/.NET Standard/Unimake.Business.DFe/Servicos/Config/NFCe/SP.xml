@@ -251,5 +251,19 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</RetAutorizacao>
+		<DownloadXML versao="1.00">
+			<Descricao>Download de XML de NFCe autorizada</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.nfce.fazenda.sp.gov.br/ws/NFCeDownloadXML.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfce.fazenda.sp.gov.br/ws/NFCeDownloadXML.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFCeDownloadXML/nfceDownloadXML</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFCeDownloadXML/nfceDownloadXML</WebActionProducao>
+			<WebSoapString><![CDATA[<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"><soap12:Body><nfeDadosMsg xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/NFCeDownloadXML">{xmlBody}</nfeDadosMsg></soap12:Body></soap12:Envelope>]]></WebSoapString>
+			<WebTagRetorno>nfceDownloadXMLResult</WebTagRetorno>
+			<SchemaArquivo>nfceDownloadXML_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</DownloadXML>
 	</Servicos>
 </Configuracoes>
