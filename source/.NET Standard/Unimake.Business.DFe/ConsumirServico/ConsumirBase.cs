@@ -440,11 +440,15 @@ namespace Unimake.Business.DFe
                         RetornoServicoString = RetornoServicoString.Replace("</MensagemRetorno>", "</p1:MensagemRetorno>");
 
                     }
+                    else if (soap.PadraoNFSe == PadraoNFSe.QUASAR && !RetornoServicoString.TrimStart().StartsWith("<"))
+                    {
+                        RetornoServicoString = $"<?xml version=\"1.0\" encoding=\"utf-8\"?><Retorno><Mensagem>{RetornoServicoString}</Mensagem></Retorno>";
+                    }
 
                     RetornoServicoXML = new XmlDocument
                     {
                         PreserveWhitespace = false
-                    };
+                    }; 
                     RetornoServicoXML.LoadXml(RetornoServicoString);
                 }
             }
