@@ -56,7 +56,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public List<string> ChNFCe { get; set; } = new List<string>();
 
         /// <summary>
-        /// Data e Hora de emissão da última NFCe listada (AAAA-MM-DDThh:mm:ssTZD)
+        /// Data e Hora de emissão da última NFCe listada
         /// </summary>
         [XmlIgnore]
 #if INTEROP
@@ -71,7 +71,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("dhEmisUltNfce")]
         public string DhEmisUltNfceField
         {
-            get => DhEmisUltNfce.ToString("yyyy-MM-ddTHH:mm:sszzz");
+            get => DhEmisUltNfce.ToString("yyyy-MM-ddTHH:mm");
 #if INTEROP
             set => DhEmisUltNfce = DateTime.Parse(value);
 #else
@@ -81,16 +81,16 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
         /// <summary>
-        /// Método auxiliar para adicionar chaves via INTEROP (List não é amigável em COM)
+        /// Método auxiliar para adicionar chaves via INTEROP
         /// </summary>
         public void AddChNFCe(string chave) => ChNFCe.Add(chave);
 #endif
 
         /// <summary>
-        /// Desserializar a string do XML RetNfceDownloadXML
+        /// Desserializar a string do XML RetNFCeListagemChaves
         /// </summary>
         /// <param name="xml">String do XML</param>
-        /// <returns>Objeto do RetNfceDownloadXML</returns>
+        /// <returns>Objeto do RetNFCeListagemChaves</returns>
         public RetNFCeListagemChaves LoadFromXML(string xml) => XMLUtility.Deserializar<RetNFCeListagemChaves>(xml);
     }
 }

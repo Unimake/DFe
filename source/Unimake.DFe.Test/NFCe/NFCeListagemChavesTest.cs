@@ -53,8 +53,8 @@ namespace Unimake.DFe.Test.NFCe
             {
                 Versao = "1.00",
                 TpAmb = tipoAmbiente,
-                DataHoraInicial = new DateTime(2025, 10, 27, 08, 30, 00),
-                DataHoraFinal = new DateTime(2025, 10, 27, 18, 00, 00)
+                DataHoraInicial = new DateTime(2026, 01, 10, 08, 30, 00),
+                DataHoraFinal = new DateTime(2026, 02, 20, 18, 00, 00)
             };
 
             var configuracao = new Configuracao
@@ -65,7 +65,7 @@ namespace Unimake.DFe.Test.NFCe
                 CodigoUF = (int)ufBrasil
             };
 
-            var servico = new ListagemChaves(xml, configuracao);
+            var servico = new ConsultaChaves(xml, configuracao);
             servico.Executar();
 
             Assert.NotNull(servico.Result);
@@ -89,8 +89,8 @@ namespace Unimake.DFe.Test.NFCe
             {
                 Versao = "1.00",
                 TpAmb = tipoAmbiente,
-                DataHoraInicialField = "2025-10-27T08:30:00-03:00",
-                DataHoraFinalField = "2025-10-27T18:00:00-03:00"
+                DataHoraInicialField = "2026-01-10T08:30",
+                DataHoraFinalField = "2026-02-20T18:00"
             };
 
             var xmlString = xmlReq.GerarXML().OuterXml;
@@ -103,7 +103,7 @@ namespace Unimake.DFe.Test.NFCe
                 CodigoUF = (int)ufBrasil
             };
 
-            var servico = new ListagemChaves(xmlString, configuracao);
+            var servico = new ConsultaChaves(xmlString, configuracao);
             servico.Executar();
 
             Assert.NotNull(servico.Result);

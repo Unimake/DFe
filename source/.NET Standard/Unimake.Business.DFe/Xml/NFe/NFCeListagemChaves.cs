@@ -52,7 +52,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("dataHoraInicial")]
         public string DataHoraInicialField
         {
-            get => DataHoraInicial.ToString("yyyy-MM-ddTHH:mm:sszzz");
+            get => DataHoraInicial.ToString("yyyy-MM-ddTHH:mm");
 #if INTEROP
             set => DataHoraInicial = DateTime.Parse(value);
 #else
@@ -76,7 +76,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("dataHoraFinal")]
         public string DataHoraFinalField
         {
-            get => DataHoraFinal.ToString("yyyy-MM-ddTHH:mm:sszzz");
+            get => DataHoraFinal.ToString("yyyy-MM-ddTHH:mm");
 #if INTEROP
             set => DataHoraFinal = DateTime.Parse(value);
 #else
@@ -85,10 +85,10 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
-        /// Desserializar a string do XML NfceDownloadXML
+        /// Desserializar a string do XML NFCeListagemChaves
         /// </summary>
         /// <param name="xml">String do XML</param>
-        /// <returns>Objeto do NfceDownloadXML</returns>
+        /// <returns>Objeto do NFCeListagemChaves</returns>
         public NFCeListagemChaves LoadFromXML(string xml) => XMLUtility.Deserializar<NFCeListagemChaves>(xml);
     }
 }
