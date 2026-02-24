@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nfceListagemChaves xmlns="http://www.portalfiscal.inf.br/nfe" versao="1.00">
+    <tpAmb>2</tpAmb>
+    <dataHoraInicial>2025-10-27T08:30</dataHoraInicial>
+    <dataHoraFinal>2026-01-27T08:30</dataHoraFinal>
+</nfceListagemChaves>
