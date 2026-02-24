@@ -577,6 +577,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Download de XML da NFCe")]
         NFCeDownloadXML = 93,
 
+        ///<summary>
+        ///94 - Consultar Lista de Chaves de NFCe
+        /// </summary>
+        [Description("Consultar Lista de Chaves de NFCe")]
+        NFCeConsultaChaves = 94,
+
         #endregion
 
         #region Gerais
