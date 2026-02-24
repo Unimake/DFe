@@ -202,7 +202,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
 			<TargetNS>http://ws.supernova.com.br/</TargetNS>
-			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</GerarNfse>
 		<CancelarNfse versao="1.01">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
