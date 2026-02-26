@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<evento xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
+	<infEvento Id="EVT43100091276077080000145000000000001426012205619530101101001">
+		<verAplic>1.0.0.0</verAplic>
+		<ambGer>1</ambGer>
+		<nSeqEvento>1</nSeqEvento>
+		<dhProc>2026-02-26T10:00:00-03:00</dhProc>
+		<nDFSe>1</nDFSe>
+		<pedRegEvento versao="1.01">
+			<infPedReg Id="PRE43100091276077080000145000000000001426012205619530101101">
+				<tpAmb>1</tpAmb>
+				<verAplic>1.0.0.0</verAplic>
+				<dhEvento>2026-02-26T10:00:00-03:00</dhEvento>
+				<CNPJAutor>DIGITE_AQUI_CNPJ_REAL</CNPJAutor>
+				<chNFSe>43100091276077080000145000000000001426012205619530</chNFSe>
+				<e101101>
+					<xDesc>Cancelamento de NFS-e</xDesc>
+					<cMotivo>1</cMotivo>
+					<xMotivo>ERRO DE DIGITACAO NA EMISSAO DA NOTA FISCAL</xMotivo>
+				</e101101>
+			</infPedReg>
+		</pedRegEvento>
+	</infEvento>
+</evento>
