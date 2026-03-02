@@ -3155,4 +3155,10 @@
 		<ArqConfig>AvareSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3530102">
+		<Nome>Mirandopolis - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>MirandopolisSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

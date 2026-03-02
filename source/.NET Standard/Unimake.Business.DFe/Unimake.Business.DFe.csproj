@@ -1628,6 +1628,7 @@
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraruamaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraucariaPR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MirandopolisSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AvareSP.xml" />
 	</ItemGroup>
 
