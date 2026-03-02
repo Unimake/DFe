@@ -115,7 +115,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
                 Configuracoes = configuracao;
                 ConteudoXML = nfceListagemChaves.GerarXML();
                 Configuracoes.SchemaArquivo = nfceListagemChaves.GetType().Name + "-" + nfceListagemChaves.Versao.Replace(".", "") + ".xsd";
-                Configuracoes.Servico = Servico.NFCeListagemChaves;
+                Configuracoes.Servico = Servico.NFCeConsultaChaves;
 
                 Executar();
             }
