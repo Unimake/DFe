@@ -29,8 +29,8 @@ namespace Unimake.DFe.Test.NFCe
             Assert.NotNull(xml);
             Assert.Equal("1.00", xml.Versao);
             Assert.Equal(TipoAmbiente.Homologacao, xml.TpAmb);
-            Assert.Contains("2025-10-27T08:30", xml.DataHoraInicialField);
-            Assert.Contains("2026-01-27T08:30", xml.DataHoraFinalField);
+            Assert.Contains("2026-01-10T08:30", xml.DataHoraInicialField);
+            Assert.Contains("2026-02-20T08:30", xml.DataHoraFinalField);
 
             var xmlDoc = xml.GerarXML();
             Assert.NotNull(xmlDoc);
