@@ -20,6 +20,7 @@
 	<ItemGroup>
 		<None Remove="NFSe\Resources\CONAM\4.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<None Remove="NFSe\Resources\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml" />
+		<None Remove="NFSe\Resources\DIGIFRED\1.01\CancelarNfseEnvio-ped-cannfse.xml" />
 		<None Remove="NFSe\Resources\GIF\1.00\enviarLoteNotas-RTC-env-loterps.xml" />
 		<None Remove="NFSe\Resources\GINFES\3.01\CancelarNfseEnvio-ped-cannfse.xml" />
 		<None Remove="NFSe\Resources\GINFES\3.01\ConsultarLoteRpsEnvio-ped-loterps.xml" />
@@ -59,6 +60,7 @@
 		<EmbeddedResource Include="NFSe\Resources\CONAM\4.00\CancelarNfseEnvio-ped-cannfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\CONAM\4.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\DIGIFRED\1.01\CancelarNfseEnvio-ped-cannfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\GIF\1.00\enviarLoteNotas-RTC-env-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\GINFES\3.01\CancelarNfseEnvio-ped-cannfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\GINFES\3.01\ConsultarLoteRpsEnvio-ped-loterps.xml" />
