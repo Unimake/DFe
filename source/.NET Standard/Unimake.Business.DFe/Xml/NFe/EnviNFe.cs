@@ -7632,13 +7632,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Origem da mercadoria
         /// </summary>
-        [XmlElement("orig")]
+        [XmlElement("orig", Order = 1)]
         public OrigemMercadoria Orig { get; set; }
 
         /// <summary>
         /// 500 – ICMS cobrado anterirmente por substituição tributária (substituído) ou por antecipação
         /// </summary>
-        [XmlElement("CSOSN")]
+        [XmlElement("CSOSN", Order = 2)]
         public string CSOSN { get; set; } = "500";
 
         /// <summary>
@@ -7650,7 +7650,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VBCSTRet para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vBCSTRet")]
+        [XmlElement("vBCSTRet", Order = 3)]
         public string VBCSTRetField
         {
             get => VBCSTRet?.ToString("F2", CultureInfo.InvariantCulture);
@@ -7666,7 +7666,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PST para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("pST")]
+        [XmlElement("pST", Order = 4)]
         public string PSTField
         {
             get => PST?.ToString("F4", CultureInfo.InvariantCulture);
@@ -7682,7 +7682,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VICMSSubstituto para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vICMSSubstituto")]
+        [XmlElement("vICMSSubstituto", Order = 5)]
         public string VICMSSubstitutoField
         {
             get => VICMSSubstituto?.ToString("F2", CultureInfo.InvariantCulture);
@@ -7698,7 +7698,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VICMSSTRet para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vICMSSTRet")]
+        [XmlElement("vICMSSTRet", Order = 6)]
         public string VICMSSTRetField
         {
             get => VICMSSTRet?.ToString("F2", CultureInfo.InvariantCulture);
@@ -7714,7 +7714,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VBCFCPSTRet para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vBCFCPSTRet")]
+        [XmlElement("vBCFCPSTRet", Order = 7)]
         public string VBCFCPSTRetField
         {
             get => VBCFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
@@ -7730,7 +7730,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PFCPSTRet para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("pFCPSTRet")]
+        [XmlElement("pFCPSTRet", Order = 8)]
         public string PFCPSTRetField
         {
             get => PFCPSTRet.ToString("F4", CultureInfo.InvariantCulture);
@@ -7746,7 +7746,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VFCPSTRet para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vFCPSTRet")]
+        [XmlElement("vFCPSTRet", Order = 9)]
         public string VFCPSTRetField
         {
             get => VFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
@@ -7762,7 +7762,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PRedBCEfet para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("pRedBCEfet")]
+        [XmlElement("pRedBCEfet", Order = 10)]
         public string PRedBCEfetField
         {
             get => PRedBCEfet.ToString("F4", CultureInfo.InvariantCulture);
@@ -7778,7 +7778,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VBCEfet para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vBCEfet")]
+        [XmlElement("vBCEfet", Order = 11)]
         public string VBCEfetField
         {
             get => VBCEfet.ToString("F2", CultureInfo.InvariantCulture);
@@ -7794,7 +7794,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PICMSEfet para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("pICMSEfet")]
+        [XmlElement("pICMSEfet", Order = 12)]
         public string PICMSEfetField
         {
             get => PICMSEfet.ToString("F4", CultureInfo.InvariantCulture);
@@ -7810,7 +7810,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VICMSEfet para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vICMSEfet")]
+        [XmlElement("vICMSEfet", Order = 13)]
         public string VICMSEfetField
         {
             get => VICMSEfet.ToString("F2", CultureInfo.InvariantCulture);
