@@ -3155,4 +3155,10 @@
 		<ArqConfig>AvareSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4205803">
+		<Nome>Garuva - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>GaruvaSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

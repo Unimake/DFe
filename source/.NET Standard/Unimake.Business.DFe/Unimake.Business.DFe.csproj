@@ -1626,6 +1626,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GaruvaSC.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraruamaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraucariaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AvareSP.xml" />
