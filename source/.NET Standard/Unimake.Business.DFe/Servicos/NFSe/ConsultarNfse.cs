@@ -74,20 +74,23 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #if INTEROP
         [ComVisible(true)]
 #endif
-        public Xml.NFSe.NACIONAL.Consulta.RetNFSe Result
+        public Xml.NFSe.NACIONAL.NFSe.NFSe Result
         {
             get
             {
                 if (string.IsNullOrWhiteSpace(RetornoWSString))
+                {
                     return null;
+                }
 
                 try
                 {
                     var tagRaiz = RetornoWSXML.DocumentElement?.Name;
                     if (tagRaiz == "NFSe")
                     {
-                        return XMLUtility.Deserializar<Xml.NFSe.NACIONAL.Consulta.RetNFSe>(RetornoWSXML);
+                        return XMLUtility.Deserializar<Xml.NFSe.NACIONAL.NFSe.NFSe>(RetornoWSXML);
                     }
+
                     return null;
                 }
                 catch
