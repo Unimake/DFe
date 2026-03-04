@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarUrlNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Pedido>
+		<Prestador>
+			<CpfCnpj>
+				<Cnpj>06117473000150</Cnpj>
+			</CpfCnpj>
+			<InscricaoMunicipal>06117473000150</InscricaoMunicipal>
+		</Prestador>
+		<IdentificacaoRps>
+			<Numero>65</Numero>
+			<Serie>2</Serie>
+			<Tipo>1</Tipo>
+		</IdentificacaoRps>
+		<Pagina>1</Pagina>
+	</Pedido>
+</ConsultarUrlNfseEnvio>

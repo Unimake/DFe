@@ -1,0 +1,16 @@
+﻿<ns4:ConsultarNfseServicoPrestadoEnvio xmlns:ns4="http://www.giss.com.br/consultar-nfse-servico-prestado-envio-v2_04.xsd" xmlns:ns2="http://www.giss.com.br/tipos-v2_04.xsd">
+	<ns4:Prestador>
+		<ns2:CpfCnpj>
+			<ns2:Cnpj>06117473000150</ns2:Cnpj>
+		</ns2:CpfCnpj>
+		<ns2:InscricaoMunicipal>123456</ns2:InscricaoMunicipal>
+	</ns4:Prestador>
+	<ns4:NumeroNfse>0</ns4:NumeroNfse>
+	<ns4:Tomador>
+		<ns2:CpfCnpj>
+			<ns2:Cpf>12345678901</ns2:Cpf>
+		</ns2:CpfCnpj>
+		<ns2:InscricaoMunicipal>1234</ns2:InscricaoMunicipal>
+	</ns4:Tomador>
+	<ns4:Pagina>1</ns4:Pagina>
+</ns4:ConsultarNfseServicoPrestadoEnvio>

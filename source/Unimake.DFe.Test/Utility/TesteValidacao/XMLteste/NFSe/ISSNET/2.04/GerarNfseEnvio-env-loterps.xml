@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Rps >
+		<InfDeclaracaoPrestacaoServico Id="ID1">
+			<Rps Id="RPS1">
+				<IdentificacaoRps>
+					<Numero>5255</Numero>
+					<Serie>1</Serie>
+					<Tipo>1</Tipo>
+				</IdentificacaoRps>
+				<DataEmissao>2026-02-25</DataEmissao>
+				<Status>1</Status>
+			</Rps>
+			<Competencia>2026-02-25</Competencia>
+			<Servico>
+				<Valores>
+					<ValorServicos>22000.00</ValorServicos>
+					<ValorDeducoes>0.00</ValorDeducoes>
+					<ValorPis>143.00</ValorPis>
+					<ValorCofins>660.00</ValorCofins>
+					<ValorIr>0.00</ValorIr>
+					<ValorCsll>220.00</ValorCsll>
+					<OutrasRetencoes>0.00</OutrasRetencoes>
+					<DescontoIncondicionado>0.00</DescontoIncondicionado>
+					<DescontoCondicionado>0.00</DescontoCondicionado>
+				</Valores>
+				<IssRetido>2</IssRetido>
+				<ItemListaServico>14.01</ItemListaServico>
+				<CodigoCnae>4520001</CodigoCnae>
+				<CodigoTributacaoMunicipio>140128</CodigoTributacaoMunicipio>
+				<CodigoNbs>120013110</CodigoNbs>
+				<Discriminacao>MANUTENCAO E REPARACAO DE EQUIPAMENTOS E PRODUTOS servico executado em: SR-BS-TQ marca: RANDON placa: DJR-0604 chassi: 9ADV100234M196303 ano: 2003  ordem de servico nr: 73442 Val Aprox Tributos R$7,059.80 (32.09%) Fonte: IBPT/FECOMERCIO DUPL: 1 27/03/2026    20.977,00  Servicos realizados nas dependencias da Rodorib. Faturamento parcial pedido 1167733. Chassi 9ADV100234M196303 - Placa DJR 0604 - Frota 2343</Discriminacao>
+				<CodigoMunicipio>3543402</CodigoMunicipio>
+				<ExigibilidadeISS>1</ExigibilidadeISS>
+				<MunicipioIncidencia>3543402</MunicipioIncidencia>
+			</Servico>
+			<Prestador>
+				<CpfCnpj>
+					<Cnpj>00921048000132</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>8431401</InscricaoMunicipal>
+			</Prestador>
+			<TomadorServico>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cnpj>53009825000133</Cnpj>
+					</CpfCnpj>
+				</IdentificacaoTomador>
+				<RazaoSocial>USINA ALTA MOGIANA S/A ACUCAR E ALCOOL</RazaoSocial>
+				<Endereco>
+					<Endereco>FAZENDA SANTANA - RODOVIA PREFEITO FABIO TALARICO</Endereco>
+					<Numero>S/N</Numero>
+					<Bairro>ZONA RURAL</Bairro>
+					<CodigoMunicipio>3549409</CodigoMunicipio>
+					<Uf>SP</Uf>
+					<Cep>14608899</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>1638101000</Telefone>
+					<Email>nfservicos@altamogiana.com.br</Email>
+				</Contato>
+			</TomadorServico>
+			<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+			<OptanteSimplesNacional>2</OptanteSimplesNacional>
+			<IncentivoFiscal>2</IncentivoFiscal>
+		</InfDeclaracaoPrestacaoServico>
+	</Rps>
+</GerarNfseEnvio>

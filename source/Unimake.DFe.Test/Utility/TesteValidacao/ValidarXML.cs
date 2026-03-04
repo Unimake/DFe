@@ -1,26 +1,16 @@
-﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Asn1.X509;
-using Org.BouncyCastle.X509;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
-using System.Xml.Serialization;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Validator;
-using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Business.DFe.Xml.EFDReinf;
 using Unimake.Business.Security;
-using Unimake.DFe.Test.Utility.TesteValidacao.Extractors;
 using Unimake.DFe.Test.Utility.TesteValidacao.Isoladores;
 using Unimake.DFe.Test.Utility.TesteValidacao.Vinculadores;
 using Xunit;
-using Xunit.Abstractions;
 
 
 namespace Unimake.DFe.Test.Utility.TesteValidacao
@@ -34,19 +24,10 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         // (CertificadoDigital = Empresas.Configuracoes[emp].X509Certificado) e o padrão por meio do metodo BuscaPadraoNFSe(UFCod)
 
         [Theory]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NF3e\eventoNF3e.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFe\NFe.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\CTe_ModalRodoviarioValido.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFe\inutNFe.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\CTeOS-nfe.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\CTeOS-nfe.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\CTeOS.xml")]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\CTe\4_00_CTeOS_ModalRodoOS.xml")]
-        [InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\ISSNET\CancelarNfse-ped-cannfse.xml", PadraoNFSe.ISSNET)]
-        [InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\ISSNET\CancelarNfse-101-ped-cannfse.xml", PadraoNFSe.ISSNET)]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\GISSONLINE\2.04\EnviarLoteRpsEnvio-env-loterps.xml", PadraoNFSe.GISSONLINE)]
+        [InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml", PadraoNFSe.CONAM)]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\GISSONLINE\2.04\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml", PadraoNFSe.GISSONLINE)]
 
-
-        // todo: colocar CTeOS de forma correta no Config e testar novos serviços do mesmo padrão
         public static void ValidarServico(string caminhoServicoValidacao, string caminhoArquivo, PadraoNFSe padraoNFSe = PadraoNFSe.None)
         {
             #region VaiSerApagada
@@ -69,7 +50,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 : DetectarTipoDFe(xml);
 
             string tagRaiz = xml.DocumentElement.Name;
-            string versao = ObterVersao(xml, xmlConfig);
+            string versao = ObterVersao(xml, xmlConfig, tipoDFe);
             XmlNode servico = ObterServico(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
 
             var inform = MontarInformacaoGeral(servico);
@@ -79,7 +60,6 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             if (servico.SelectSingleNode(".//*[local-name()='SchemasEspecificos']") is null)
             {
                 ValidarSchemaGeral(xml, inform, tipoDFe, padraoNFSe);
-                Console.WriteLine(inform);
                 return;
             }
 
@@ -94,9 +74,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 MontarInformacaoEspecifica(servico, tipoCorreto, inform);
                 ValidarSchemaGeral(xml, inform, tipoDFe);
                 ValidarSchemaEspecifico(node, inform, tipoDFe);
-                Console.WriteLine(inform);
             }
-
         }
 
 
@@ -115,7 +93,6 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
             string pathServicosNFSe = string.Empty;
             XmlNode servicoNFSe = null;
-            tipoDFe = TipoDFe.NFSe;
 
             if (versao.IsNullOrEmpty())
             {
@@ -146,7 +123,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             }
             if (servicoNFSe is null)
             {
-                throw new Exception($"Serviço '{tagRaiz}' não encontrado para NFSe de padrão {padraoNFSe}.");
+                throw new Exception($"Serviço não encontrado para NFSe de padrão {padraoNFSe}.");
             }
 
             return servicoNFSe;
@@ -179,7 +156,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 TargetNS = servico.SelectSingleNode("*[local-name()='TargetNS']")?.InnerText,
                 TagAssinatura = servico.SelectSingleNode("*[local-name()='TagAssinatura']")?.InnerText,
                 TagAtributoID = servico.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText,
-                TagEvento = servico.SelectSingleNode("*[local-name()='TagEvento']")?.InnerText, // salvar tag evento no inform para poder fazer verificações futuras
+                TagEvento = servico.SelectSingleNode("*[local-name()='TagEvento']")?.InnerText,
                 TagLoteAssinatura = servico.SelectSingleNode("*[local-name()='TagLoteAssinatura']")?.InnerText,
                 TagLoteAtributoID = servico.SelectSingleNode("*[local-name()='TagLoteAtributoID']")?.InnerText,
                 TagExtraAssinatura = servico.SelectSingleNode("*[local-name()='TagExtraAssinatura']")?.InnerText,
@@ -257,7 +234,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
 
 
-        private static string ObterVersao(XmlDocument xml, XmlDocument xmlConfig)
+        private static string ObterVersao(XmlDocument xml, XmlDocument xmlConfig, TipoDFe tipoDFe)
         {
             // Versão como atributo da raiz
             var versao = xml.DocumentElement.GetAttribute("versao");
@@ -280,7 +257,16 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 {
                     versao = ((XmlElement)nodeVersao[0]).GetAttribute("versao");
                     if (!string.IsNullOrEmpty(versao))
+                    {
                         return versao;
+                    }
+
+                    else 
+                    { 
+                        versao = nodeVersao[0].InnerText;
+                        if (!string.IsNullOrEmpty(versao))
+                            return versao;
+                    }
                 }
             }
 

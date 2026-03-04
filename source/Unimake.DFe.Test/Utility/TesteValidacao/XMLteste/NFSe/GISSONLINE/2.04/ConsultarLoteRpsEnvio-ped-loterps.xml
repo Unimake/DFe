@@ -1,0 +1,9 @@
+<ns4:ConsultarLoteRpsEnvio xmlns:ns4="http://www.giss.com.br/consultar-lote-rps-envio-v2_04.xsd" xmlns:ns2="http://www.giss.com.br/tipos-v2_04.xsd">
+	<ns4:Prestador>
+		<ns2:CpfCnpj>
+			<ns2:Cnpj>06117473000150</ns2:Cnpj>
+		</ns2:CpfCnpj>
+		<ns2:InscricaoMunicipal>123456</ns2:InscricaoMunicipal>
+	</ns4:Prestador>
+	<ns4:Protocolo>12345678901234567890</ns4:Protocolo>
+</ns4:ConsultarLoteRpsEnvio>

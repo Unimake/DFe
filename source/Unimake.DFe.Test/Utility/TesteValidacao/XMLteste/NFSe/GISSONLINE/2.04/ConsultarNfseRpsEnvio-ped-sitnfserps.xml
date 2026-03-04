@@ -1,0 +1,13 @@
+<ns4:ConsultarNfseRpsEnvio xmlns:ns4="http://www.giss.com.br/consultar-nfse-rps-envio-v2_04.xsd" xmlns:ns2="http://www.giss.com.br/tipos-v2_04.xsd">
+	<ns4:IdentificacaoRps>
+		<ns2:Numero>101</ns2:Numero>
+		<ns2:Serie>NF</ns2:Serie>
+		<ns2:Tipo>1</ns2:Tipo>
+	</ns4:IdentificacaoRps>
+	<ns4:Prestador>
+		<ns2:CpfCnpj>
+			<ns2:Cnpj>06117473000150</ns2:Cnpj>
+		</ns2:CpfCnpj>
+		<ns2:InscricaoMunicipal>54117</ns2:InscricaoMunicipal>
+	</ns4:Prestador>
+</ns4:ConsultarNfseRpsEnvio>

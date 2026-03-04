@@ -1,0 +1,207 @@
+<NFSe versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse">
+	<infNFSe Id="NFS43149022226263261000198000000000000225120787292537">
+		<xLocEmi>Porto Alegre</xLocEmi>
+		<xLocPrestacao>Porto Alegre</xLocPrestacao>
+		<nNFSe>2</nNFSe>
+		<cLocIncid>4314902</cLocIncid>
+		<xLocIncid>Porto Alegre</xLocIncid>
+		<xTribNac>Outros serviços de transporte de natureza municipal.</xTribNac>
+		<xNBS>Serviços de transporte rodoviário de cargas sólidas a granel</xNBS>
+		<verAplic>SefinNac_Pre_1.4.0</verAplic>
+		<ambGer>2</ambGer>
+		<tpEmis>1</tpEmis>
+		<procEmi>1</procEmi>
+		<cStat>100</cStat>
+		<dhProc>2025-12-11T16:32:13-03:00</dhProc>
+		<nDFSe>151689</nDFSe>
+		<emit>
+			<CNPJ>26263261000198</CNPJ>
+			<xNome>HPP COMERCIO E DISTRIBUICAO DE ALIMENTOS PARA ANIMAIS LTDA</xNome>
+			<enderNac>
+				<xLgr>MARQUES DO MARICA</xLgr>
+				<nro>273</nro>
+				<xBairro>VILA NOVA</xBairro>
+				<cMun>4314902</cMun>
+				<UF>RS</UF>
+				<CEP>91750460</CEP>
+			</enderNac>
+			<fone>5132093097</fone>
+			<email>FISCAL@HPPDISTRIBUIDORA.COM.BR</email>
+		</emit>
+		<valores>
+			<vBC>1500.00</vBC>
+			<pAliqAplic>5.00</pAliqAplic>
+			<vISSQN>75.00</vISSQN>
+			<vLiq>1500.00</vLiq>
+		</valores>
+		<IBSCBS>
+			<cLocalidadeIncid>4314902</cLocalidadeIncid>
+			<xLocalidadeIncid>Porto Alegre</xLocalidadeIncid>
+			<valores>
+				<vBC>1425.00</vBC>
+				<vCalcReeRepRes>0.00</vCalcReeRepRes>
+				<uf>
+					<pIBSUF>0.10</pIBSUF>
+					<pAliqEfetUF>0.10</pAliqEfetUF>
+				</uf>
+				<mun>
+					<pIBSMun>0.00</pIBSMun>
+					<pAliqEfetMun>0.00</pAliqEfetMun>
+				</mun>
+				<fed>
+					<pCBS>0.90</pCBS>
+					<pAliqEfetCBS>0.90</pAliqEfetCBS>
+				</fed>
+			</valores>
+			<totCIBS>
+				<vTotNF>1500.00</vTotNF>
+				<gIBS>
+					<vIBSTot>1.43</vIBSTot>
+					<gIBSUFTot>
+						<vIBSUF>1.43</vIBSUF>
+					</gIBSUFTot>
+					<gIBSMunTot>
+						<vIBSMun>0.00</vIBSMun>
+					</gIBSMunTot>
+				</gIBS>
+				<gCBS>
+					<vCBS>12.83</vCBS>
+				</gCBS>
+			</totCIBS>
+		</IBSCBS>
+		<DPS versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse">
+			<infDPS Id="DPS431490222626326100019800001000000000000002">
+				<tpAmb>2</tpAmb>
+				<dhEmi>2025-12-11T16:32:09-03:00</dhEmi>
+				<verAplic>JASDPro v1.0.274</verAplic>
+				<serie>001</serie>
+				<nDPS>2</nDPS>
+				<dCompet>2025-12-11</dCompet>
+				<tpEmit>1</tpEmit>
+				<cLocEmi>4314902</cLocEmi>
+				<prest>
+					<CNPJ>26263261000198</CNPJ>
+					<regTrib>
+						<opSimpNac>1</opSimpNac>
+						<regEspTrib>0</regEspTrib>
+					</regTrib>
+				</prest>
+				<toma>
+					<CNPJ>04632445000307</CNPJ>
+					<xNome>PIAN ALIMENTOS LTDA - FILIAL</xNome>
+					<end>
+						<endNac>
+							<cMun>4314902</cMun>
+							<CEP>91750460</CEP>
+						</endNac>
+						<xLgr>RUA MARQUES DO MARICA</xLgr>
+						<nro>273</nro>
+						<xCpl>SALA 202</xCpl>
+						<xBairro>VILA NOVA</xBairro>
+					</end>
+					<fone>5132453300</fone>
+					<email>irmaospian@gmail.com</email>
+				</toma>
+				<serv>
+					<locPrest>
+						<cLocPrestacao>4314902</cLocPrestacao>
+					</locPrest>
+					<cServ>
+						<cTribNac>160201</cTribNac>
+						<xDescServ>SERVICO DE FRETE NO MESMO MUNICIPIO</xDescServ>
+						<cNBS>105011110</cNBS>
+					</cServ>
+				</serv>
+				<valores>
+					<vServPrest>
+						<vServ>1500.00</vServ>
+					</vServPrest>
+					<trib>
+						<tribMun>
+							<tribISSQN>1</tribISSQN>
+							<tpRetISSQN>1</tpRetISSQN>
+						</tribMun>
+						<tribFed>
+							<piscofins>
+								<CST>00</CST>
+							</piscofins>
+						</tribFed>
+						<totTrib>
+							<indTotTrib>0</indTotTrib>
+						</totTrib>
+					</trib>
+				</valores>
+				<IBSCBS>
+					<finNFSe>0</finNFSe>
+					<indFinal>0</indFinal>
+					<cIndOp>070101</cIndOp>
+					<indDest>1</indDest>
+					<dest>
+						<CNPJ>04632445000307</CNPJ>
+						<xNome>PIAN ALIMENTOS LTDA - FILIAL</xNome>
+						<end>
+							<endNac>
+								<cMun>4314902</cMun>
+								<CEP>91750460</CEP>
+							</endNac>
+							<xLgr>RUA MARQUES DO MARICA</xLgr>
+							<nro>273</nro>
+							<xCpl>SALA 202</xCpl>
+							<xBairro>VILA NOVA</xBairro>
+						</end>
+						<fone>5132453300</fone>
+						<email>irmaospian@gmail.com</email>
+					</dest>
+					<valores>
+						<trib>
+							<gIBSCBS>
+								<CST>000</CST>
+								<cClassTrib>000001</cClassTrib>
+							</gIBSCBS>
+						</trib>
+					</valores>
+				</IBSCBS>
+			</infDPS>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#DPS431490222626326100019800001000000000000002">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>wZwR9jrenay/W7yoqZNZe88whmU=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>mYycjqMWSxqwuUw94NCK+T/vjldlxJCD3IpiAOnq+eyzR4geD9PhY/qS5Zx9jNVV92EUipD8Srvfnzo5uExIcYt18vYhNoL5JbLNbD1QAxc6FujXUSFq7+djs2HSYtpbgevZVIH11rbHu1RLB+q6Q8Nmh/Af28CBwLEvUC8VPDYlGyCw7GgSYo4OhUTpKPDNFAjgAGdgVTG3+q+3nWHiYipxQqZhmiSE0zAxYn61U4RIwCMBOzQOgUUMc94C4Vfyh3qE6Kb8rTNGl0WH4FrLzbSOyKke8cLcRy1041tOvttauaaG1ZwuKCrd5TxFJn+vjmAu/Jmf7vCkguKXKw//QQ==</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>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</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</DPS>
+	</infNFSe>
+	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<SignedInfo>
+			<CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#WithComments"/>
+			<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+			<Reference URI="#NFS43149022226263261000198000000000000225120787292537">
+				<Transforms>
+					<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+					<Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#WithComments"/>
+				</Transforms>
+				<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+				<DigestValue>lIUK3Alngz8S5+wUmBh0tTsoT4NKDxN9dDnWzyxONQo=</DigestValue>
+			</Reference>
+		</SignedInfo>
+		<SignatureValue>kjg0F9VOcpON7QvnxtnL15pzvQVBjspqqJPQkI3kXRWalolzhw3mqN8VlZW2/DNF1lzK12NBccBlMbkZ2jmsv8rXcQ4BANXifHHvdIlw9lG6QFNEcvA03HAN3zh5dfEW5o5XWxR5eK2acgWZUNWLwR+M8BhZILyrEoBgL5GGRilYlm1xSjuFHEefHY2dJcwilU7kc1oiZwjho+FOBQMgwb+yIBDrzU9FomA7j5Jt1PluXBSnejDLVg0srFyLSF7YwdDtFNa3eDb+vybk4H2zPZdys/XUzvYz0d2mkazCCEIyASCideoUrvL+Is9os0ujMhn2ZTpXjyS5f92+6peY1Q==</SignatureValue>
+		<KeyInfo>
+			<X509Data>
+				<X509Certificate>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</X509Certificate>
+			</X509Data>
+		</KeyInfo>
+	</Signature>
+</NFSe>

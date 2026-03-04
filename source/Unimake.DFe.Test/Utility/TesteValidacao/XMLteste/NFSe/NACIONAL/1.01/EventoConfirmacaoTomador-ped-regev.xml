@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pedRegEvento xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
+	<infPedReg xmlns="http://www.sped.fazenda.gov.br/nfse" Id="PRE14001591211761135000132000000000000022096100197259203202">
+		<tpAmb>2</tpAmb>
+		<verAplic>Teste_0.1.0</verAplic>
+		<dhEvento>2022-09-28T13:50:29-03:00</dhEvento>
+		<CNPJAutor>01761135000132</CNPJAutor>
+		<chNFSe>14001591211761135000132000000000000022096100197259</chNFSe>
+		<e203202>
+			<xDesc>Manifestação de NFS-e - Confirmação do Tomador</xDesc>
+		</e203202>
+	</infPedReg>
+</pedRegEvento>
