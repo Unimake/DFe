@@ -1,86 +1,162 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<DPS xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
-	<infDPS Id="DPS410690211234567800019500001000000000000001">
-		<tpAmb>2</tpAmb>
-		<dhEmi>2026-01-20T16:47:15-03:00</dhEmi>
-		<verAplic>1</verAplic>
-		<serie>900</serie>
-		<nDPS>1053</nDPS>
-		<dCompet>2026-01-20</dCompet>
-		<tpEmit>1</tpEmit>
-		<cLocEmi>4106902</cLocEmi>
-		<prest>
-			<CNPJ>62549374000118</CNPJ>
-			<fone>4140421810</fone>
-			<email>TECNICO@FKN.COM.BR</email>
-			<regTrib>
-				<opSimpNac>3</opSimpNac>
-				<regApTribSN>1</regApTribSN>
-				<regEspTrib>0</regEspTrib>
-			</regTrib>
-		</prest>
-		<toma>
-			<CNPJ>49550265000152</CNPJ>
-			<xNome>COSMOS TAMOIOS SPE LTDA</xNome>
-			<end>
-				<endNac>
-					<cMun>4106902</cMun>
-					<CEP>80310430</CEP>
-				</endNac>
-				<xLgr>JORNALISTA CAIO MACHADO</xLgr>
-				<nro>404</nro>
-				<xCpl>CASA  02                  BLOCO LUZ DO SOL CD RES</xCpl>
-				<xBairro>SANTA QUITERIA</xBairro>
-			</end>
-		</toma>
-		<serv>
-			<locPrest>
-				<cLocPrestacao>4106902</cLocPrestacao>
-			</locPrest>
-			<cServ>
-				<cTribNac>010101</cTribNac>
-				<xDescServ>2 SERVICO de EXECUCAO DE FUNDACOES EM ESTACA</xDescServ>
-				<cNBS>115022000</cNBS>
-			</cServ>
-			<infoCompl>
-				<xInfComp>LOCAL DE ENTREGA: ENDERECO DE ENTREGA ENT:RUA JORNALISTA CAIO MACHADO 404 CASA 02SANTA QUITERIA CURITIBA /PR Vencimento 17/02/2026 Valor total do servico : 200,00 Valor liquido a pagar : 178,00</xInfComp>
-			</infoCompl>
-		</serv>
+<NFSe xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
+	<infNFSe Id="">
+		<xLocEmi>Ibiruba</xLocEmi>
+		<xLocPrestacao>Ibiruba</xLocPrestacao>
+		<nNFSe>123456</nNFSe>
+		<cLocIncid>4310009</cLocIncid>
+		<xLocIncid>Ibiruba</xLocIncid>
+		<xTribNac>Ensino regular pré-escolar, fundamental e médio.</xTribNac>
+		<xNBS>Serviços de ensino fundamental</xNBS>
+		<verAplic>1.0.0.0</verAplic>
+		<ambGer>1</ambGer>
+		<tpEmis>2</tpEmis>
+		<cStat>100</cStat>
+		<dhProc>2025-12-03T19:55:33-03:00</dhProc>
+		<nDFSe>123456</nDFSe>
+		<emit>
+			<CNPJ>54981008000105</CNPJ>
+			<xNome>TESTE LTDA</xNome>
+			<enderNac>
+				<xLgr>Rua Teste</xLgr>
+				<nro>644</nro>
+				<xBairro>Santo Antonio</xBairro>
+				<cMun>4310009</cMun>
+				<UF>RS</UF>
+				<CEP>98200000</CEP>
+			</enderNac>
+			<fone>4933661621</fone>
+			<email>teste@email.teste</email>
+		</emit>
 		<valores>
-			<vServPrest>
-				<vServ>200.00</vServ>
-			</vServPrest>
-			<trib>
-				<tribMun>
-					<tribISSQN>1</tribISSQN>
-					<tpRetISSQN>1</tpRetISSQN>
-				</tribMun>
-				<tribFed/>
-				<totTrib>
-					<vTotTrib>
-						<vTotTribFed>6.00</vTotTribFed>
-						<vTotTribEst>60.00</vTotTribEst>
-						<vTotTribMun>6.00</vTotTribMun>
-					</vTotTrib>
-				</totTrib>
-			</trib>
+			<vBC>988.33</vBC>
+			<pAliqAplic>2.00</pAliqAplic>
+			<vISSQN>19.77</vISSQN>
+			<vLiq>988.33</vLiq>
 		</valores>
 		<IBSCBS>
-			<finNFSe>0</finNFSe>
-			<indFinal>0</indFinal>
-			<cIndOp>000001</cIndOp>
-			<tpOper>1</tpOper>
-			<tpEnteGov>1</tpEnteGov>
-			<indDest>0</indDest>
+			<cLocalidadeIncid>4212908</cLocalidadeIncid>
+			<xLocalidadeIncid>Ibiruba</xLocalidadeIncid>
 			<valores>
-				<trib>
-					<gIBSCBS>
-						<CST>101</CST>
-						<cClassTrib>000001</cClassTrib>
-						<cCredPres>01</cCredPres>
-					</gIBSCBS>
-				</trib>
+				<vBC>877.14</vBC>
+				<uf>
+					<pIBSUF>0.10</pIBSUF>
+					<pRedAliqUF>60.00</pRedAliqUF>
+					<pAliqEfetUF>0.04</pAliqEfetUF>
+				</uf>
+				<mun>
+					<pIBSMun>0.00</pIBSMun>
+					<pRedAliqMun>60.00</pRedAliqMun>
+					<pAliqEfetMun>0.00</pAliqEfetMun>
+				</mun>
+				<fed>
+					<pCBS>0.90</pCBS>
+					<pRedAliqCBS>60.00</pRedAliqCBS>
+					<pAliqEfetCBS>0.36</pAliqEfetCBS>
+				</fed>
 			</valores>
+			<totCIBS>
+				<vTotNF>988.33</vTotNF>
+				<gIBS>
+					<vIBSTot>0.35</vIBSTot>
+					<gIBSUFTot>
+						<vIBSUF>0.35</vIBSUF>
+					</gIBSUFTot>
+					<gIBSMunTot>
+						<vIBSMun>0.00</vIBSMun>
+					</gIBSMunTot>
+				</gIBS>
+				<gCBS>
+					<vCBS>3.16</vCBS>
+				</gCBS>
+			</totCIBS>
 		</IBSCBS>
-	</infDPS>
-</DPS>
+		<DPS xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
+			<infDPS Id="">
+				<tpAmb>1</tpAmb>
+				<dhEmi>2025-12-03T07:00:00-03:00</dhEmi>
+				<verAplic>1.0.0</verAplic>
+				<serie>1</serie>
+				<nDPS>111331</nDPS>
+				<dCompet>2025-12-03</dCompet>
+				<tpEmit>1</tpEmit>
+				<cLocEmi>4310009</cLocEmi>
+				<prest>
+					<CNPJ>57437229000105</CNPJ>
+					<email>teste@teste.com.br</email>
+					<regTrib>
+						<opSimpNac>1</opSimpNac>
+						<regEspTrib>0</regEspTrib>
+					</regTrib>
+				</prest>
+				<toma>
+					<CNPJ>54981008000105</CNPJ>
+					<xNome>Teste LTDA</xNome>
+					<end>
+						<endNac>
+							<cMun>4212908</cMun>
+							<CEP>89870000</CEP>
+						</endNac>
+						<xLgr>Av Belem</xLgr>
+						<nro>1325</nro>
+						<xBairro>JARDIM AMERICA</xBairro>
+					</end>
+					<fone>2199998888</fone>
+					<email>teste@teste.com.br</email>
+				</toma>
+				<serv>
+					<locPrest>
+						<cLocPrestacao>4314902</cLocPrestacao>
+					</locPrest>
+					<cServ>
+						<cTribNac>080101</cTribNac>
+						<xDescServ>Ensino regular pré-escolar, fundamental e médio.</xDescServ>
+						<cNBS>122012000</cNBS>
+					</cServ>
+				</serv>
+				<valores>
+					<vServPrest>
+						<vServ>988.33</vServ>
+					</vServPrest>
+					<trib>
+						<tribMun>
+							<tribISSQN>1</tribISSQN>
+							<tpRetISSQN>1</tpRetISSQN>
+						</tribMun>
+						<tribFed>
+							<piscofins>
+								<CST>01</CST>
+								<vBCPisCofins>988.33</vBCPisCofins>
+								<pAliqPis>1.65</pAliqPis>
+								<pAliqCofins>7.60</pAliqCofins>
+								<vPis>16.31</vPis>
+								<vCofins>75.11</vCofins>
+								<tpRetPisCofins>2</tpRetPisCofins>
+							</piscofins>
+						</tribFed>
+						<totTrib>
+							<pTotTrib>
+								<pTotTribFed>15.00</pTotTribFed>
+								<pTotTribEst>0.00</pTotTribEst>
+								<pTotTribMun>2.00</pTotTribMun>
+							</pTotTrib>
+						</totTrib>
+					</trib>
+				</valores>
+				<IBSCBS>
+					<finNFSe>0</finNFSe>
+					<indFinal>0</indFinal>
+					<cIndOp>100301</cIndOp>
+					<indDest>0</indDest>
+					<valores>
+						<trib>
+							<gIBSCBS>
+								<CST>200</CST>
+								<cClassTrib>200028</cClassTrib>
+							</gIBSCBS>
+						</trib>
+					</valores>
+				</IBSCBS>
+			</infDPS>
+		</DPS>
+	</infNFSe>
+</NFSe>

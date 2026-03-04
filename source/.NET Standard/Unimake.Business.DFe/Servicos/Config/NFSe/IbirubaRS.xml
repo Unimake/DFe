@@ -206,12 +206,13 @@
 		 <TagLoteAssinatura></TagLoteAssinatura>
 		 <TagLoteAtributoID></TagLoteAtributoID>
 		 <WebContentType>text/xml;charset=UTF-8</WebContentType>
-		 <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsdl="http://www.sped.fazenda.gov.br/nfse/wsdl"><soap:Header/><soap:Body><wsdl:GerarNfse><wsdl:param>{xmlBody}</wsdl:param></wsdl:GerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+		 <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsdl="http://www.sped.fazenda.gov.br/nfse/wsdl"><soap:Header/><soap:Body><wsdl:GerarNfse><wsdl:param>{xmlBodyScape}</wsdl:param></wsdl:GerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
 		 <WebTagRetorno>GerarNfseResponse</WebTagRetorno>
 		 <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 	     <WebSoapVersion>soap11</WebSoapVersion>
 		 <SchemaVersao>1.01</SchemaVersao>
 		 <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		 <NaoAssina>produção</NaoAssina>
 	 </GerarNfse>
 	  <CancelarNfse versao="1.01">
 		  <Descricao>Cancelar nota fiscal de serviço</Descricao>
@@ -231,27 +232,7 @@
 		  <WebSoapVersion>soap11</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		  <NaoAssina>produção</NaoAssina>
 	  </CancelarNfse>
-	  <SubstituirNfse versao="1.01">
-		  <Descricao>Substituir nota fiscal de Serviço</Descricao>
-		  <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal?wsdl</WebEnderecoHomologacao>
-		  <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal?wsdl</WebEnderecoProducao>
-		  <WebActionHomologacao></WebActionHomologacao>
-		  <WebActionProducao></WebActionProducao>
-		  <SchemaArquivo></SchemaArquivo>
-		  <TagAssinatura></TagAssinatura>
-		  <TagAtributoID></TagAtributoID>
-		  <TagLoteAssinatura></TagLoteAssinatura>
-		  <TagLoteAtributoID></TagLoteAtributoID>
-		  <TagExtraAssinatura></TagExtraAssinatura>
-		  <TagExtraAtributoID></TagExtraAtributoID>
-		  <WebContentType>text/xml;charset=UTF-8</WebContentType>
-		  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsdl="http://www.sped.fazenda.gov.br/nfse/wsdl"><soap:Header/><soap:Body><wsdl:SubstituirNfse/><wsdl:param>{xmlBodyScape}</wsdl:param></wsdl:SubstituirNfse/></soap:Body></soap:Envelope>]]></WebSoapString>
-		  <WebTagRetorno>SubstituirNfseResponse</WebTagRetorno>
-		  <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-		  <WebSoapVersion>soap11</WebSoapVersion>
-		  <SchemaVersao>1.01</SchemaVersao>
-		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-	  </SubstituirNfse>
 </Servicos>
 </Configuracoes>
