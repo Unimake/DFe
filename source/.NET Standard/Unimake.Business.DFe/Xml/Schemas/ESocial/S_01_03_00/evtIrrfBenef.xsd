@@ -589,18 +589,12 @@
                                                                         <xs:documentation>OBS.: Se o campo {indApurIR} vinculado à rubrica for igual a [1], considerar {vrRubr} = [0].</xs:documentation>
                                                                     </xs:annotation>
                                                                 </xs:element>
-                                                                <xs:element name="descRendimento" minOccurs="0">
-                                                                    <xs:simpleType>
-                                                                        <xs:annotation>
-                                                                            <xs:documentation>Descrição do rendimento não tributável ou isento do IRRF.</xs:documentation>
-                                                                            <xs:documentation>Validação: Informação obrigatória e exclusiva para eventos S-1210 com {}(1210_ideEvento_perApur) posterior ou igual ao início da DIRF e se {}(./tpInfoIR) = [79].</xs:documentation>
-                                                                            <xs:documentation>Origem: campo {}(1010_infoRubrica_inclusao_dadosRubrica_dscRubr) em S-1010.</xs:documentation>
-                                                                        </xs:annotation>
-                                                                        <xs:restriction base="xs:string">
-                                                                            <xs:minLength value="1" />
-                                                                            <xs:maxLength value="100" />
-                                                                        </xs:restriction>
-                                                                    </xs:simpleType>
+                                                                <xs:element name="descRendimento" minOccurs="0" type="TS_texto_100">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Descrição do rendimento não tributável ou isento do IRRF.</xs:documentation>
+                                                                        <xs:documentation>Validação: Informação obrigatória e exclusiva para eventos S-1210 com {}(1210_ideEvento_perApur) posterior ou igual ao início da DIRF e se {}(./tpInfoIR) = [79].</xs:documentation>
+                                                                        <xs:documentation>Origem: campo {}(1010_infoRubrica_inclusao_dadosRubrica_dscRubr) em S-1010.</xs:documentation>
+                                                                    </xs:annotation>
                                                                 </xs:element>
                                                                 <xs:element name="infoProcJudRub" minOccurs="0" maxOccurs="unbounded">
                                                                     <xs:annotation>
@@ -891,18 +885,12 @@
                                                                         <xs:documentation>{}(./CRMen) = [353301]: se {indApurIR} = [0] e os campos {paisResidExt}(1210_ideBenef_infoPgto_paisResidExt) e {indRRA} não forem informados, efetuar o somatório de {valor}(../infoIR_valor) cujo {tpInfoIR}(../infoIR_tpInfoIR) = [79].</xs:documentation>
                                                                     </xs:annotation>
                                                                 </xs:element>
-                                                                <xs:element name="descRendimento" minOccurs="0">
-                                                                    <xs:simpleType>
-                                                                        <xs:annotation>
-                                                                            <xs:documentation>Descrição do rendimento não tributável ou isento do IRRF.</xs:documentation>
-                                                                            <xs:documentation>Validação: Informação obrigatória e exclusiva para eventos S-1210 com {}(1210_ideEvento_perApur) posterior ou igual ao início da DIRF e se {tpInfoIR}(../infoIR_tpInfoIR) = [79].</xs:documentation>
-                                                                            <xs:documentation>Origem: campo {}(1010_infoRubrica_inclusao_dadosRubrica_dscRubr) em S-1010.</xs:documentation>
-                                                                        </xs:annotation>
-                                                                        <xs:restriction base="xs:string">
-                                                                            <xs:minLength value="1" />
-                                                                            <xs:maxLength value="255" />
-                                                                        </xs:restriction>
-                                                                    </xs:simpleType>
+                                                                <xs:element name="descRendimento" minOccurs="0" type="TS_texto_255">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Descrição do rendimento não tributável ou isento do IRRF.</xs:documentation>
+                                                                        <xs:documentation>Validação: Informação obrigatória e exclusiva para eventos S-1210 com {}(1210_ideEvento_perApur) posterior ou igual ao início da DIRF e se {tpInfoIR}(../infoIR_tpInfoIR) = [79].</xs:documentation>
+                                                                        <xs:documentation>Origem: campo {}(1010_infoRubrica_inclusao_dadosRubrica_dscRubr) em S-1010.</xs:documentation>
+                                                                    </xs:annotation>
                                                                 </xs:element>
                                                             </xs:sequence>
                                                         </xs:complexType>
@@ -912,7 +900,6 @@
                                                             <xs:documentation>Totalizador de rendimentos tributáveis e tributos com período de apuração diário.</xs:documentation>
                                                             <xs:documentation>CHAVE_GRUPO: {perApurDia}, {CRDia}, {frmTribut}, {paisResidExt}</xs:documentation>
                                                             <xs:documentation>CONDICAO_GRUPO: OC</xs:documentation>
-                                                            <xs:documentation>Validação: Em uma mesma ocorrência deste grupo, se {perApur}(5002_ideEvento_perApur) for igual ou posterior ao início da DIRF, deve haver compatibilidade entre a forma de tributação e o tipo de rendimento (tributável ou isento/não tributável).</xs:documentation>
                                                         </xs:annotation>
                                                         <xs:complexType>
                                                             <xs:sequence>
@@ -1300,17 +1287,11 @@
                                                                         <xs:documentation>Origem: valores consolidados do campo {totApurMen/vlrIsenOutros}(5002_ideTrabalhador_dmDev_totApurMen_vlrIsenOutros).</xs:documentation>
                                                                     </xs:annotation>
                                                                 </xs:element>
-                                                                <xs:element name="descRendimento" minOccurs="0">
-                                                                    <xs:simpleType>    
-                                                                        <xs:annotation>
-                                                                            <xs:documentation>Descrição do rendimento não tributável ou isento do IRRF.</xs:documentation>
-                                                                            <xs:documentation>Origem: {totApurMen/descRendimento}(5002_ideTrabalhador_dmDev_totApurMen_descRendimento). Concatenar os campos encontrados com separador ';' e truncar o conteúdo que ultrapassar o tamanho do campo.</xs:documentation>
-                                                                        </xs:annotation>
-                                                                        <xs:restriction base="xs:string">
-                                                                            <xs:minLength value="1" />
-                                                                            <xs:maxLength value="999" />
-                                                                        </xs:restriction>
-                                                                    </xs:simpleType>
+                                                                <xs:element name="descRendimento" minOccurs="0" type="TS_texto_999">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Descrição do rendimento não tributável ou isento do IRRF.</xs:documentation>
+                                                                        <xs:documentation>Origem: {totApurMen/descRendimento}(5002_ideTrabalhador_dmDev_totApurMen_descRendimento). Concatenar os campos encontrados com separador ';' e truncar o conteúdo que ultrapassar o tamanho do campo.</xs:documentation>
+                                                                    </xs:annotation>
                                                                 </xs:element>
                                                             </xs:sequence>
                                                         </xs:complexType>

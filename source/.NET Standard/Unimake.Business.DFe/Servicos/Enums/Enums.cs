@@ -13780,34 +13780,6 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
-    #region sitHomolog - eSocial
-
-    /// <summary>
-    /// Informar se o benefício requer ou não homologação pelo Tribunal de Contas.
-    /// </summary>
-    public enum SitHomolog
-    {
-        /// <summary>
-        /// 0 - Não homologado
-        /// </summary>
-        [XmlEnum("0")]
-        NaoHomologado = 0,
-
-        /// <summary>
-        /// 1 - Homologado
-        /// </summary>
-        [XmlEnum("1")]
-        Homologado = 1,
-
-        /// <summary>
-        /// 2 - Não requer homologação
-        /// </summary>
-        [XmlEnum("2")]
-        NaoRequerHomologacao = 2
-    }
-
-    #endregion
-
     #region tpPenMorte - eSocial
 
     /// <summary>
