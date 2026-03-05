@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -111,16 +112,16 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class RetNfceDownloadXMLProc
     {
         /// <summary>
-        /// NFCe processada (NfeProc completo)
+        /// NFCe processada retornada no download
         /// </summary>
         [XmlElement("nfeProc")]
-        public NfeProc NfeProc { get; set; }
+        public NfeProcDownload NfeProc { get; set; }
 
         /// <summary>
         /// Eventos da NFCe processados
         /// </summary>
         [XmlElement("procEventoNFe")]
-        public List<ProcEventoNFe> ProcEventoNFe { get; set; }
+        public List<ProcEventoNFeDownload> ProcEventoNFe { get; set; }
 
 #if INTEROP
 
@@ -128,11 +129,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Adicionar novo evento da NFCe
         /// </summary>
         /// <param name="procEventoNFe">Objeto do evento</param>
-        public void AddProcEventoNFe(ProcEventoNFe procEventoNFe)
+        public void AddProcEventoNFe(ProcEventoNFeDownload procEventoNFe)
         {
             if (ProcEventoNFe == null)
             {
-                ProcEventoNFe = new List<ProcEventoNFe>();
+                ProcEventoNFe = new List<ProcEventoNFeDownload>();
             }
 
             ProcEventoNFe.Add(procEventoNFe);
@@ -143,7 +144,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         /// <param name="index">Índice da lista (começa com 0)</param>
         /// <returns>Conteúdo do index da ProcEventoNFe</returns>
-        public ProcEventoNFe GetProcEventoNFe(int index)
+        public ProcEventoNFeDownload GetProcEventoNFe(int index)
         {
             if ((ProcEventoNFe?.Count ?? 0) == 0)
             {
@@ -159,5 +160,169 @@ namespace Unimake.Business.DFe.Xml.NFe
         public int GetProcEventoNFeCount => (ProcEventoNFe != null ? ProcEventoNFe.Count : 0);
 
 #endif
+    }
+
+    /// <summary>
+    /// NFCe processada retornada no serviço de download
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.NfeProcDownload")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class NfeProcDownload
+    {
+        /// <summary>
+        /// Versão do leiaute
+        /// </summary>
+        [XmlAttribute(AttributeName = "versao", DataType = "token")]
+        public string Versao { get; set; }
+
+        /// <summary>
+        /// Data e hora de inclusão no banco de dados da SEFAZ
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhInc { get; set; }
+#else
+        public DateTimeOffset DhInc { get; set; }
+#endif
+
+        /// <summary>
+        /// Data e hora de inclusão (campo serializado)
+        /// </summary>
+        [XmlElement("dhInc")]
+        public string DhIncField
+        {
+            get => DhInc.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhInc = DateTime.Parse(value);
+#else
+            set => DhInc = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        /// <summary>
+        /// Número do protocolo de autorização
+        /// </summary>
+        [XmlElement("nProt")]
+        public string NProt { get; set; }
+
+        /// <summary>
+        /// XML completo da NFe como XmlNode
+        /// </summary>
+        [XmlAnyElement]
+        public XmlNode[] NFeXMLNode { get; set; }
+
+        /// <summary>
+        /// Retorna o XML da NFe como string
+        /// </summary>
+        [XmlIgnore]
+        public string NFeXML
+        {
+            get
+            {
+                if (NFeXMLNode != null && NFeXMLNode.Length > 0)
+                {
+                    return NFeXMLNode[0].OuterXml;
+                }
+                return null;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Evento da NFCe processado retornado no serviço de download
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ProcEventoNFeDownload")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class ProcEventoNFeDownload
+    {
+        /// <summary>
+        /// Versão do schema do XML
+        /// </summary>
+        [XmlAttribute(AttributeName = "versao", DataType = "token")]
+        public string Versao { get; set; }
+
+        /// <summary>
+        /// Data e hora de inclusão no banco de dados da SEFAZ
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhInc { get; set; }
+#else
+        public DateTimeOffset DhInc { get; set; }
+#endif
+
+        /// <summary>
+        /// Data e hora de inclusão (campo serializado)
+        /// </summary>
+        [XmlElement("dhInc")]
+        public string DhIncField
+        {
+            get => DhInc.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhInc = DateTime.Parse(value);
+#else
+            set => DhInc = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        /// <summary>
+        /// Número do protocolo de registro do evento
+        /// </summary>
+        [XmlElement("nProt")]
+        public string NProt { get; set; }
+
+        /// <summary>
+        /// XML completo do evento como XmlNode
+        /// </summary>
+        [XmlAnyElement]
+        public XmlNode[] EventoXMLNode { get; set; }
+
+        /// <summary>
+        /// Retorna o XML do evento como string
+        /// </summary>
+        [XmlIgnore]
+        public string EventoXML
+        {
+            get
+            {
+                if (EventoXMLNode != null && EventoXMLNode.Length > 0)
+                {
+                    return EventoXMLNode[0].OuterXml;
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Objeto Evento deserializado (lazy load)
+        /// </summary>
+        [XmlIgnore]
+        private Evento _evento;
+
+        /// <summary>
+        /// Evento da NFCe
+        /// </summary>
+        [XmlIgnore]
+        public Evento Evento
+        {
+            get
+            {
+                if (_evento == null && !string.IsNullOrEmpty(EventoXML))
+                {
+                    _evento = XMLUtility.Deserializar<Evento>(EventoXML);
+                }
+                return _evento;
+            }
+        }
     }
 }
