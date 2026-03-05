@@ -808,6 +808,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         /// <summary>
+        /// Número da notificação de FGTS que deu origem à confissão
+        /// </summary>
+        [XmlElement("notAFT")]
+        public string NotAFT { get; set; }
+
+        /// <summary>
+        /// Informar o código de classificação da rubrica
+        /// </summary>
+        [XmlElement("natRubr")]
+        public string NatRubr { get; set; }
+
+        /// <summary>
         /// Detalhamento da(s) rubrica(s) com incidência de FGTS suspensa em decorrência de decisão judicial
         /// </summary>
         [XmlElement("detRubrSusp")]
@@ -853,6 +865,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeDpsFGTSField() => DpsFGTS > 0;
+
+        public bool ShouldSerializeNotAFT() => !string.IsNullOrEmpty(NotAFT);
+
+        public bool ShouldSerializeNatRubr() => !string.IsNullOrEmpty(NatRubr);
 
         #endregion ShouldSerialize
     }
