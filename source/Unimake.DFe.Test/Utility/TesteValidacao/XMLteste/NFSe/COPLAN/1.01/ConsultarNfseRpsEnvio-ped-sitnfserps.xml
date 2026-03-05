@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseDpsEnvio xmlns="http://www.sped.fazenda.gov.br/nfse">
+  <IdentificacaoDPS>DPS410690211234567800019500001000000000000001</IdentificacaoDPS>
+  <Prestador>
+    <CpfCnpj>
+      <Cnpj>06117473000150</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>233333</InscricaoMunicipal>
+  </Prestador>
+</ConsultarNfseDpsEnvio>

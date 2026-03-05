@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns4:EnviarLoteRpsEnvio xmlns:ns2="http://www.giss.com.br/tipos-v2_04.xsd" xmlns:ns4="http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd" xmlns:nss03="http://www.w3.org/2000/09/xmldsig#">
+	<ns4:LoteRps Id="LOTE1" versao="2.04">
+		<ns2:NumeroLote>12691</ns2:NumeroLote>
+		<ns2:Prestador>
+			<ns2:CpfCnpj>
+				<ns2:Cnpj>06117473000150</ns2:Cnpj>
+			</ns2:CpfCnpj>
+			<ns2:InscricaoMunicipal>123456</ns2:InscricaoMunicipal>
+		</ns2:Prestador>
+		<ns2:QuantidadeRps>1</ns2:QuantidadeRps>
+		<ns2:ListaRps>
+			<ns2:Rps>
+				<ns2:InfDeclaracaoPrestacaoServico Id="ID1">
+					<ns2:Rps Id="RPS1">
+						<ns2:IdentificacaoRps>
+							<ns2:Numero>10</ns2:Numero>
+							<ns2:Serie>NFT</ns2:Serie>
+							<ns2:Tipo>1</ns2:Tipo>
+						</ns2:IdentificacaoRps>
+						<ns2:DataEmissao>2024-06-01</ns2:DataEmissao>
+						<ns2:Status>1</ns2:Status>
+					</ns2:Rps>
+					<ns2:Competencia>2024-06-01</ns2:Competencia>
+					<ns2:Servico>
+						<ns2:Valores>
+							<ns2:ValorServicos>100.00</ns2:ValorServicos>
+							<ns2:ValorDeducoes>0.00</ns2:ValorDeducoes>
+							<ns2:ValorPis>0.00</ns2:ValorPis>
+							<ns2:ValorCofins>0.00</ns2:ValorCofins>
+							<ns2:ValorInss>0.00</ns2:ValorInss>
+							<ns2:ValorIr>0.00</ns2:ValorIr>
+							<ns2:ValorCsll>0.00</ns2:ValorCsll>
+							<ns2:OutrasRetencoes>0.0</ns2:OutrasRetencoes>
+							<ns2:ValTotTributos>0.0</ns2:ValTotTributos>
+							<ns2:ValorIss>3.00</ns2:ValorIss>
+							<ns2:Aliquota>0.0300</ns2:Aliquota>
+							<ns2:DescontoIncondicionado>0.0</ns2:DescontoIncondicionado>
+							<ns2:DescontoCondicionado>0.0</ns2:DescontoCondicionado>
+					</ns2:Valores>
+						<ns2:IssRetido>2</ns2:IssRetido>
+						<ns2:ResponsavelRetencao>1</ns2:ResponsavelRetencao>
+						<ns2:ItemListaServico>11.02</ns2:ItemListaServico>
+						<ns2:CodigoTributacaoMunicipio>8020001</ns2:CodigoTributacaoMunicipio>
+						<ns2:Discriminacao>teste</ns2:Discriminacao>
+						<ns2:CodigoMunicipio>3541000</ns2:CodigoMunicipio>
+						<ns2:CodigoPais>0076</ns2:CodigoPais>
+						<ns2:ExigibilidadeISS>1</ns2:ExigibilidadeISS>
+						<ns2:IdentifNaoExigibilidade>1</ns2:IdentifNaoExigibilidade>
+						<ns2:MunicipioIncidencia>3541000</ns2:MunicipioIncidencia>
+					</ns2:Servico>
+					<ns2:Prestador>
+						<ns2:CpfCnpj>
+							<ns2:Cnpj>12345678901234</ns2:Cnpj>
+						</ns2:CpfCnpj>
+						<ns2:InscricaoMunicipal>77761</ns2:InscricaoMunicipal>
+					</ns2:Prestador>
+					<ns2:TomadorServico>
+						<ns2:IdentificacaoTomador>
+							<ns2:CpfCnpj>
+								<ns2:Cnpj>12345678901234</ns2:Cnpj>
+							</ns2:CpfCnpj>
+							<ns2:InscricaoMunicipal>InscricaoMunic1</ns2:InscricaoMunicipal>
+						</ns2:IdentificacaoTomador>
+						<ns2:RazaoSocial>Tomador Pessoa Juridica</ns2:RazaoSocial>
+						<ns2:Endereco>
+							<ns2:Endereco>Avenida Santo Antônio</ns2:Endereco>
+							<ns2:Numero>1</ns2:Numero>
+							<ns2:Bairro>CENTRO</ns2:Bairro>
+							<ns2:CodigoMunicipio>3529302</ns2:CodigoMunicipio>
+							<ns2:Uf>SP</ns2:Uf>
+							<ns2:Cep>15990110</ns2:Cep>
+						</ns2:Endereco>
+						<ns2:Contato>
+							<ns2:Telefone>1135358241</ns2:Telefone>
+						</ns2:Contato>
+					</ns2:TomadorServico>
+					<ns2:RegimeEspecialTributacao>1</ns2:RegimeEspecialTributacao>
+					<ns2:OptanteSimplesNacional>2</ns2:OptanteSimplesNacional>
+					<ns2:IncentivoFiscal>2</ns2:IncentivoFiscal>
+				</ns2:InfDeclaracaoPrestacaoServico>
+			</ns2:Rps>
+		</ns2:ListaRps>
+	</ns4:LoteRps>
+</ns4:EnviarLoteRpsEnvio>

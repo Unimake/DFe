@@ -844,7 +844,7 @@
 			</SchemasEspecificos>
 		</Servico>
 	</MDFe>
-	<!--NFCe-->
+	<!--NFCom-->
 	<NFCe>
 		<Servico tagRaiz ="consStatServ" versao ="4.00">
 			<SchemaArquivo>consStatServ_v4.00.xsd</SchemaArquivo>
@@ -1201,8 +1201,417 @@
 	</NF3e>
 	<!--NFSe-->
 	<NFSe>
+		<Padrao nome="BETHA_CLOUD">
+			<Servico tagRaiz="e:RecepcionarDpsEnvio" versao="1.01" tagIdentificadora="infDPS">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo>nfse_dps_v01.xsd</SchemaArquivo>
+				<TagAssinatura>e:DPS</TagAssinatura>
+				<TagAtributoID>e:infDPS</TagAtributoID>
+				<TagVersao>e:DPS</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
+			</Servico>
+			<Servico tagRaiz="e:RecepcionarEventoCancelamentoEnvio" versao="1.01" tagIdentificadora="pedRegEvento">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo>nfse_dps_v01.xsd</SchemaArquivo>
+				<TagAssinatura>e:evento</TagAssinatura>
+				<TagAtributoID>e:infEvento</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
+			</Servico>
+			<Servico tagRaiz="e:RecepcionarEventoSubstituicaoEnvio" versao="1.01" tagIdentificadora="pedRegEvento">
+				<Descricao>Substituir nota fiscal de Serviço</Descricao>
+				<SchemaArquivo>nfse_dps_v01.xsd</SchemaArquivo>
+				<TagAssinatura>e:evento</TagAssinatura>
+				<TagAtributoID>e:infEvento</TagAtributoID>
+				<TagVersao>e:evento</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
+			</Servico>
+			<Servico tagRaiz="e:ConsultarStatusDpsEnvio" versao="1.01" tagIdentificadora="protocolo">
+				<Descricao>Serviço de Consulta de NFSe</Descricao>
+				<SchemaArquivo>nfse_dps_v01.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
+			</Servico>
+			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="infDPS">
+				<Descricao>Consultar NFSe por DPS</Descricao>
+				<SchemaArquivo>nfse_dps_v01.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
+			</Servico>
+			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
+				<Descricao>Consultar NFSe</Descricao>
+				<SchemaArquivo>nfse_dps_v01.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.betha.com.br/e-nota-dps-service</TargetNS>
+			</Servico>
+		</Padrao>
+		<Padrao nome="CONAM">
+			<Servico tagRaiz="Sdt_processarpsin" versao="4.00" tagIdentificadora="">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao>Versao</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>NFe</TargetNS>
+			</Servico>
+		</Padrao>
+		<Padrao nome="COPLAN">
+			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.03" tagIdentificadora="">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao>LoteRps</TagVersao>
+				<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<!--Versão 2.02-->
+			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.04" tagIdentificadora="">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao>LoteRps</TagVersao>
+				<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="EnviarLoteDpsEnvio" versao="1.01" tagIdentificadora="LoteDps">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo>Coplan_v1.01_validacao.xsd</SchemaArquivo>
+				<TagAssinatura>DPS</TagAssinatura>
+				<TagAtributoID>infDPS</TagAtributoID>
+				<TagVersao>LoteDps</TagVersao>
+				<TagLoteAssinatura>EnviarLoteDpsEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.03" tagIdentificadora="">
+				<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+				<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao>LoteRps</TagVersao>
+				<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<!--Versão 2.02-->
+			<Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.04" tagIdentificadora="">
+				<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+				<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao>LoteRps</TagVersao>
+				<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="EnviarLoteDpsSincronoEnvio" versao="1.01" tagIdentificadora="IM">
+				<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+				<SchemaArquivo>Coplan_v1.01_validacao.xsd</SchemaArquivo>
+				<TagAssinatura>DPS</TagAssinatura>
+				<TagAtributoID>infDPS</TagAtributoID>
+				<TagVersao>LoteRps</TagVersao>
+				<TagLoteAssinatura>EnviarLoteDpsSincronoEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="GerarNfseEnvio" versao="2.03" tagIdentificadora="IdentificacaoRps">
+				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+				<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="GerarNfseEnvio" versao="1.01" tagIdentificadora="infDPS">
+				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+				<SchemaArquivo>Coplan_v1.01_validacao.xsd</SchemaArquivo>
+				<TagAssinatura>DPS</TagAssinatura>
+				<TagAtributoID>infDPS</TagAtributoID>
+				<TagVersao>DPS</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<!--Validando somente o serviço de cancelamente versão 1.01, levando em conta
+			que 1.01 é a versão mais atual RTC e todas as versões (1.01, 2.03. 2.02) são identicas e não tem distinção de estrutura-->
+			<Servico tagRaiz="CancelarNfseEnvio" versao="1.01" tagIdentificadora="Pedido">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo>Coplan_v1.01_validacao.xsd</SchemaArquivo>
+				<TagAssinatura>Pedido</TagAssinatura>
+				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="SubstituirNfseEnvio" versao="2.03" tagIdentificadora="Rps">
+				<Descricao>Substituir nota fiscal de Serviço</Descricao>
+				<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+				<TagAssinatura>Pedido</TagAssinatura>
+				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura>Rps</TagLoteAssinatura>
+				<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+				<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
+				<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="SubstituirNfseEnvio" versao="1.01" tagIdentificadora="DPS">
+				<Descricao>Substituir nota fiscal de Serviço</Descricao>
+				<SchemaArquivo>Coplan_v1.01_validacao.xsd</SchemaArquivo>
+				<TagAssinatura>Pedido</TagAssinatura>
+				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+				<TagVersao>DPS</TagVersao>
+				<TagLoteAssinatura>DPS</TagLoteAssinatura>
+				<TagLoteAtributoID>infDPS</TagLoteAtributoID>
+				<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
+				<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.03" tagIdentificadora="Prestador">
+				<Descricao>Consulta lote RPS</Descricao>
+				<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarLoteDpsEnvio" versao="1.01" tagIdentificadora="Prestador">
+				<Descricao>Consulta lote RPS</Descricao>
+				<SchemaArquivo>Coplan_v1.01_validacao.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.03" tagIdentificadora="IdentificacaoRps">
+				<Descricao>Consulta NFSe por RPS</Descricao>
+				<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseDpsEnvio" versao="1.01" tagIdentificadora="IdentificacaoDPS">
+				<Descricao>Consulta NFSe por RPS</Descricao>
+				<SchemaArquivo>Coplan_v1.01_validacao.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="1.01" tagIdentificadora="Prestador">
+				<Descricao>Consulta NFSe de serviços prestados</Descricao>
+				<SchemaArquivo>Coplan_v1.01_validacao.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="2.03" tagIdentificadora="NumeroNfse">
+				<Descricao>Consulta NFSe de serviços tomados</Descricao>
+				<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="1.01" tagIdentificadora="PeriodoCompetencia">
+				<Descricao>Consulta NFSe de serviços tomados</Descricao>
+				<SchemaArquivo>Coplan_v1.01_validacao.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="1.01" tagIdentificadora="Faixa">
+				<Descricao>Consulta NFSe por Faixa</Descricao>
+				<SchemaArquivo>Coplan_v1.01_validacao.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+		</Padrao>
+		<Padrao nome ="GISSONLINE">
+			<Servico tagRaiz="ns4:EnviarLoteRpsEnvio" versao="2.05" tagIdentificadora="IBSCBS">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo>enviar-lote-rps-envio-v2_04-RTC.xsd</SchemaArquivo>
+				<TagAssinatura>ns2:Rps</TagAssinatura>
+				<TagAtributoID>ns2:InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura>ns2:InfDeclaracaoPrestacaoServico</TagLoteAssinatura>
+				<TagLoteAtributoID>ns4:LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ns4:EnviarLoteRpsEnvio" versao="2.04" tagIdentificadora="LoteRps">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo>enviar-lote-rps-envio-v2_04.xsd</SchemaArquivo>
+				<TagAssinatura>ns2:Rps</TagAssinatura>
+				<TagAtributoID>ns2:InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao>LoteRps</TagVersao>
+				<TagLoteAssinatura>ns4:EnviarLoteRpsEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>ns4:LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ns4:CancelarNfseEnvio" versao="2.04" tagIdentificadora="InfPedidoCancelamento">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo>cancelar-nfse-envio-v2_04-RTC.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura>ns4:Pedido</TagLoteAssinatura>
+				<TagLoteAtributoID>ns2:InfPedidoCancelamento</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.giss.com.br/cancelar-nfse-envio-v2_04.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ns4:ConsultarLoteRpsEnvio" versao="2.04" tagIdentificadora="Protocolo">
+				<Descricao>Consulta lote RPS</Descricao>
+				<SchemaArquivo>consultar-lote-rps-envio-v2_04-RTC.xsd</SchemaArquivo>
+				<TagAssinatura>ns4:ConsultarLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>ns4:Protocolo</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.giss.com.br/consultar-nfse-rps-envio-v2_04.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ns4:ConsultarNfseServicoPrestadoEnvio" versao="2.04" tagIdentificadora="Prestador">
+				<Descricao>Consulta NFSe por serviço prestado</Descricao>
+				<SchemaArquivo>consultar-nfse-servico-prestado-envio-v2_04-RTC.xsd</SchemaArquivo>
+				<TagAssinatura>ns4:ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
+				<TagAtributoID>ns4:Prestador</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.giss.com.br/consultar-nfse-servico-prestado-envio-v2_04.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ns4:ConsultarNfseRpsEnvio" versao="2.04" tagIdentificadora="IdentificacaoRps">
+				<Descricao>Consulta NFSe por RPS</Descricao>
+				<SchemaArquivo>consultar-nfse-rps-envio-v2_04-RTC.xsd</SchemaArquivo>
+				<TagAssinatura>ns4:ConsultarNfseRpsEnvio</TagAssinatura>
+				<TagAtributoID>ns4:Prestador</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.giss.com.br/consultar-nfse-rps-envio-v2_04.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ns4:ConsultarNfseServicoTomadoEnvio" versao="2.04" tagIdentificadora="Consulente">
+				<Descricao>Consulta NFSe por serviço tomado</Descricao>
+				<SchemaArquivo>consultar-nfse-servico-tomado-envio-v2_04-RTC.xsd</SchemaArquivo>
+				<TagAssinatura>ns4:ConsultarNfseServicoTomadoEnvio</TagAssinatura>
+				<TagAtributoID>ns4:Consulente</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.giss.com.br/consultar-nfse-servico-tomado-envio-v2_04.xsd</TargetNS>
+			</Servico>
+		</Padrao>
 		<Padrao nome="ISSNET">
 			<Servico tagRaiz="CancelarNfseEnvio" versao="2.04" tagIdentificadora="Pedido">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>Pedido</TagAssinatura>
 				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -1214,6 +1623,7 @@
 				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="CancelarNfseEnvio" versao="1.01" tagIdentificadora="pedRegEvento">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 				<TagAssinatura>pedRegEvento</TagAssinatura>
 				<TagAtributoID>infPedReg</TagAtributoID>
@@ -1225,7 +1635,8 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarDadosCadastraisEnvio" versao="2.04" tagIdentificadora="Pedido">
-				<SchemaArquivo>nfse_v2-04.xsdd</SchemaArquivo>
+				<Descricao>Consulta os dados cadastrais</Descricao>
+				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
 				<TagVersao></TagVersao>
@@ -1236,6 +1647,7 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarDadosCadastraisEnvio" versao="1.01" tagIdentificadora="Prestador">
+				<Descricao>Consulta os dados cadastrais</Descricao>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
@@ -1247,6 +1659,7 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.04" tagIdentificadora="InscricaoMunicipal">
+				<Descricao>Consulta lote RPS</Descricao>
 				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
@@ -1255,9 +1668,10 @@
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarLoteDpsEnvio" versao="1.01" tagIdentificadora="IM">
+				<Descricao>Consulta lote RPS</Descricao>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
@@ -1269,6 +1683,7 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="2.04" tagIdentificadora="InscricaoMunicipal">
+				<Descricao>Consulta NFSe por Faixa</Descricao>
 				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
 				<TagAtributoID>Pedido</TagAtributoID>
@@ -1277,9 +1692,10 @@
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="1.01" tagIdentificadora="IM">
+				<Descricao>Consulta NFSe por Faixa</Descricao>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
@@ -1291,6 +1707,7 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.04" tagIdentificadora="Pedido">
+				<Descricao>Consulta NFSe por RPS</Descricao>
 				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
 				<TagAtributoID>Pedido</TagAtributoID>
@@ -1299,9 +1716,10 @@
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarNfseDpsEnvio" versao="1.01" tagIdentificadora="IM">
+				<Descricao>Consulta NFSe por RPS</Descricao>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
@@ -1313,6 +1731,7 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="2.04" tagIdentificadora="Pedido">
+				<Descricao>Consulta NFSe de serviços prestados</Descricao>
 				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
 				<TagAtributoID>Pedido</TagAtributoID>
@@ -1321,9 +1740,10 @@
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="1.01" tagIdentificadora="IM">
+				<Descricao>Consulta NFSe de serviços prestados</Descricao>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
@@ -1335,6 +1755,7 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="2.04" tagIdentificadora="Pedido">
+				<Descricao>Consulta NFSe de serviços tomados</Descricao>
 				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
 				<TagAtributoID>Pedido</TagAtributoID>
@@ -1343,9 +1764,10 @@
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="1.01" tagIdentificadora="IM">
+				<Descricao>Consulta NFSe de serviços tomados</Descricao>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
@@ -1357,6 +1779,7 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarRpsDisponivelEnvio" versao="2.04" tagIdentificadora="Pedido">
+				<Descricao>Consulta os dados cadastrais</Descricao>
 				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>ConsultarRpsDisponivelEnvio</TagAssinatura>
 				<TagAtributoID>Pedido</TagAtributoID>
@@ -1365,9 +1788,10 @@
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarDpsDisponivelEnvio" versao="1.01" tagIdentificadora="IM">
+				<Descricao>Consulta os dados cadastrais</Descricao>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
@@ -1379,6 +1803,7 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarUrlNfseEnvio" versao="2.04" tagIdentificadora="Pedido">
+				<Descricao>Consulta os dados cadastrais</Descricao>
 				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>ConsultarUrlNfseEnvio</TagAssinatura>
 				<TagAtributoID>Pedido</TagAtributoID>
@@ -1387,9 +1812,10 @@
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarUrlNfseEnvio" versao="1.01" tagIdentificadora="IM">
+				<Descricao>Consulta os dados cadastrais</Descricao>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
@@ -1401,6 +1827,7 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.04" tagIdentificadora="LoteRps">
+				<Descricao>Recepcionar Lote RPS</Descricao>
 				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
 				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -1409,9 +1836,10 @@
 				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="EnviarLoteDpsEnvio" versao="1.01" tagIdentificadora="LoteDps">
+				<Descricao>Recepcionar Lote RPS</Descricao>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 				<TagAssinatura>DPS</TagAssinatura>
 				<TagAtributoID>infDPS</TagAtributoID>
@@ -1423,6 +1851,7 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 			<Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.04" tagIdentificadora="LoteRps">
+				<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
 				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -1431,9 +1860,10 @@
 				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="EnviarLoteDpsSincronoEnvio" versao="1.01" tagIdentificadora="LoteDps">
+				<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
 				<TagAssinatura>DPS</TagAssinatura>
 				<TagAtributoID>infDPS</TagAtributoID>
@@ -1444,8 +1874,97 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
-			<Servico tagRaiz="GerarNfseEnvio" versao="2.04" tagIdentificadora="LoteRps">
+			<Servico tagRaiz="GerarNfseEnvio" versao="2.04" tagIdentificadora="Rps">
+				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="GerarNfseEnvio" versao="1.01" tagIdentificadora="LoteDps">
+				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
+				<TagAssinatura>DPS</TagAssinatura>
+				<TagAtributoID>infDPS</TagAtributoID>
+				<TagVersao>DPS</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="SubstituirNfseEnvio" versao="2.04" tagIdentificadora="SubstituicaoNfse">
+				<Descricao>Substituir nota fiscal de Serviço</Descricao>
+				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
+				<TagAssinatura>Pedido</TagAssinatura>
+				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura>Rps</TagLoteAssinatura>
+				<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+				<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
+				<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+		</Padrao>
+		<Padrao nome="NACIONAL">
+			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="nDPS">
+				<Descricao>Envio do DPS - Síncrono</Descricao>
+				<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+				<TagAssinatura>DPS</TagAssinatura>
+				<TagAtributoID>infDPS</TagAtributoID>
+				<TagVersao>DPS</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="nNFSe">
+				<Descricao>Envio NFS-e com indicativo de decisão judicial - Síncrono</Descricao>
+				<SchemaArquivo>NFSe_v1.01.xsd</SchemaArquivo>
+				<TagAssinatura>DPS</TagAssinatura>
+				<TagAtributoID>infDPS</TagAtributoID>
+				<TagVersao>NFSe</TagVersao>
+				<TagLoteAssinatura>NFSe</TagLoteAssinatura>
+				<TagLoteAtributoID>infNFSe</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="infPedReg">
+				<Descricao>Recepcionar Eventos Diversos da NFSe NACIONAL</Descricao>
+				<SchemaArquivo>pedRegEvento_v1.01.xsd</SchemaArquivo>
+				<TagAssinatura>pedRegEvento</TagAssinatura>
+				<TagAtributoID>infPedReg</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+		</Padrao>
+		<Padrao nome="WEBISS">
+			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.02" tagIdentificadora="LoteRps">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao>LoteRps</TagVersao>
+				<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			</Servico>
+			<Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.02" tagIdentificadora="LoteRps">
+				<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+				<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
 				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 				<TagVersao>LoteRps</TagVersao>
@@ -1453,18 +1972,91 @@
 				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<TargetNS>http://nfse.abrasf.org.br</TargetNS>
 			</Servico>
-			<Servico tagRaiz="GerarNfseEnvio" versao="1.01" tagIdentificadora="LoteDps">
-				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-				<TagAssinatura>DPS</TagAssinatura>
-				<TagAtributoID>infDPS</TagAtributoID>
-				<TagVersao>LoteDps</TagVersao>
-				<TagLoteAssinatura>EnviarLoteDpsSincronoEnvio</TagLoteAssinatura>
-				<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
+			<Servico tagRaiz="GerarNfseEnvio" versao="2.02" tagIdentificadora="Rps">
+				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+				<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			</Servico>
+			<Servico tagRaiz="SubstituirNfseEnvio" versao="2.02" tagIdentificadora="SubstituicaoNfse">
+				<Descricao>Substituir nota fiscal de Serviço</Descricao>
+				<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
+				<TagExtraAssinatura>Pedido</TagExtraAssinatura>
+				<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
+				<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.02" tagIdentificadora="InscricaoMunicipal">
+				<Descricao>Consulta lote RPS</Descricao>
+				<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.02" tagIdentificadora="IdentificacaoRps">
+				<Descricao>Consulta NFSe por RPS</Descricao>
+				<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="2.02" tagIdentificadora="Consulente">
+				<Descricao>Consulta NFSe de serviços tomados</Descricao>
+				<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="2.02" tagIdentificadora="Prestador">
+				<Descricao>Consulta NFSe de serviços prestados</Descricao>
+				<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="2.02" tagIdentificadora="Faixa">
+				<Descricao>Consulta NFSe por Faixa</Descricao>
+				<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abrasf.org.br</TargetNS>
 			</Servico>
 		</Padrao>
 	</NFSe>

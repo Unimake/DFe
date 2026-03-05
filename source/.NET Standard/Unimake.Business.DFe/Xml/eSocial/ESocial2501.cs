@@ -449,7 +449,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Código de Receita - CR relativo a Imposto de Renda Retido na Fonte
         /// </summary>
         [XmlAttribute(AttributeName = "tpCR")]
-        public string TpCR { get; set; }
+        public TpCRIRRF2501 TpCR { get; set; }
 
         /// <summary>
         /// Valor correspondente ao Código de Receita - CR.
@@ -1440,6 +1440,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => DtLaudo = DateTimeOffset.Parse(value);
 #endif
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeDtLaudoField() => DtLaudo > DateTime.MinValue;
+
+        #endregion ShouldSerialize
 
         /// <summary>
         /// Informações de dependentes não cadastrados pelo S-2200/S-2205/S-2300

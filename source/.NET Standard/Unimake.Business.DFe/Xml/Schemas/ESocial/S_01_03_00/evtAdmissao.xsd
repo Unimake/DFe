@@ -312,8 +312,8 @@
                                                                     <xs:element name="cnpjSindCategProf" type="TS_cnpjSindCategProf" />
                                                                     <xs:element name="matAnotJud" type="TS_codigo_esocial" minOccurs="0">
                                                                         <xs:annotation>
-                                                                            <xs:documentation>Matrícula informada no evento S-8200.</xs:documentation>
-                                                                            <xs:documentation>Validação: Deve corresponder à matrícula cadastrada no evento S-8200 para o CPF informado em {cpfTrab}(2200_trabalhador_cpfTrab).</xs:documentation>
+                                                                            <xs:documentation>Matrícula informada no evento S-2500 (com {indContr}(2500_ideTrab_infoContr_indContr) em S-2500 = [N]) ou S-8200.</xs:documentation>
+                                                                            <xs:documentation>Validação: Deve corresponder à matrícula cadastrada no evento S-2500 (com {indContr}(2500_ideTrab_infoContr_indContr) em S-2500 = [N]) ou S-8200 para o CPF informado em {cpfTrab}(2200_trabalhador_cpfTrab).</xs:documentation>
                                                                         </xs:annotation>
                                                                     </xs:element>
                                                                     <xs:element name="FGTS" minOccurs="0">
@@ -694,7 +694,7 @@
                                                             <xs:annotation>
                                                                 <xs:documentation>Informar o número de inscrição do empregador anterior, de acordo com o tipo de inscrição indicado no campo {sucessaoVinc/tpInsc}(./tpInsc).</xs:documentation>
                                                                 <xs:documentation>Validação: Deve ser um número de inscrição válido e diferente da inscrição do declarante, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000.</xs:documentation>
-                                                                <xs:documentation>Se {sucessaoVinc/tpInsc}(./tpInsc) = [1], deve possuir 14 (catorze) algarismos e ser diferente do CNPJ base do empregador (exceto se {ideEmpregador/nrInsc}(2200_ideEmpregador_nrInsc) tiver 14 (catorze) algarismos) e dos estabelecimentos informados através do evento S-1005.</xs:documentation>
+                                                                <xs:documentation>Se {sucessaoVinc/tpInsc}(./tpInsc) = [1], deve possuir 14 (catorze) algarismos e ser diferente do CNPJ base do empregador (exceto se {ideEmpregador/nrInsc}(2200_ideEmpregador_nrInsc) tiver 14 (catorze) algarismos). Também deve ser diferente dos estabelecimentos informados através do evento S-1005, exceto se a natureza jurídica do declarante for Administração Pública (grupo [1]).</xs:documentation>
                                                                 <xs:documentation>Se {sucessaoVinc/tpInsc}(./tpInsc) = [2], deve possuir 11 (onze) algarismos.</xs:documentation>
                                                                 <xs:documentation>Se {sucessaoVinc/tpInsc}(./tpInsc) = [5], deve possuir somente algarismos.</xs:documentation>
                                                                 <xs:documentation>Se {sucessaoVinc/tpInsc}(./tpInsc) = [6], deve possuir 12 (doze) algarismos.</xs:documentation>
