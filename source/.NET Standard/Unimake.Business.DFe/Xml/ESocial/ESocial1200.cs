@@ -707,6 +707,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         /// <summary>
+        /// Número da notificação de FGTS que deu origem à confissão
+        /// </summary>
+        [XmlElement("notAFT")]
+        public string NotAFT { get; set; }
+
+        /// <summary>
         /// Informações complementares de RRA
         /// </summary>
         [XmlElement("infoRRA")]
@@ -737,6 +743,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public bool ShouldSerializeIndRRA() => IndRRA != null;
 #endif
+
+        public bool ShouldSerializeNotAFT() => !string.IsNullOrEmpty(NotAFT);
 
         #endregion ShouldSerialize
 
@@ -1160,7 +1168,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// ser informado[E, H, I].
         /// </summary>
         [XmlElement("tpAcConv")]
-        public string TpAcConv { get; set; }
+        public TpAcConv TpAcConv { get; set; }
 
         /// <summary>
         /// Descrição do instrumento ou situação que originou o
