@@ -13684,6 +13684,92 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region indRemunTSVTermino - eSocial
+
+    /// <summary>
+    /// Indicativo de situação de remuneração após o término.
+    /// </summary>
+    public enum IndRemunTSVTermino
+    {
+        /// <summary>
+        /// 1 - Quarentena
+        /// </summary>
+        [XmlEnum("1")]
+        Quarentena = 1,
+
+        /// <summary>
+        /// 2 - Término reconhecido judicialmente com data anterior a competências com remunerações já informadas no eSocial
+        /// </summary>
+        [XmlEnum("2")]
+        TerminoReconhecidoJudicialmente = 2
+    }
+
+    #endregion
+
+    #region tpAcConv - eSocial
+
+    /// <summary>
+    /// Tipo do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores.
+    /// </summary>
+    public enum TpAcConv
+    {
+        /// <summary>
+        /// A - Acordo Coletivo de Trabalho
+        /// </summary>
+        [XmlEnum("A")]
+        AcordoColetivoTrabalho = 0,
+
+        /// <summary>
+        /// B - Legislação federal, estadual, municipal ou distrital
+        /// </summary>
+        [XmlEnum("B")]
+        LegislacaoFederalEstadualMunicipalDistrital = 1,
+
+        /// <summary>
+        /// C - Convenção Coletiva de Trabalho
+        /// </summary>
+        [XmlEnum("C")]
+        ConvencaoColetivaTrabalho = 2,
+
+        /// <summary>
+        /// D - Sentença normativa - Dissídio
+        /// </summary>
+        [XmlEnum("D")]
+        SentencaNormativaDissidio = 3,
+
+        /// <summary>
+        /// E - Conversão de licença saúde em acidente de trabalho
+        /// </summary>
+        [XmlEnum("E")]
+        ConversaoLicencaSaudeAcidenteTrabalho = 4,
+
+        /// <summary>
+        /// G - Antecipação de diferenças de acordo, convenção ou dissídio coletivo
+        /// </summary>
+        [XmlEnum("G")]
+        AntecipacaoDiferencasAcordoConvencaoDissidio = 5,
+
+        /// <summary>
+        /// H - Declaração de base de cálculo de FGTS anterior ao início do FGTS Digital
+        /// </summary>
+        [XmlEnum("H")]
+        DeclaracaoBaseCalculoFgtsAnteriorInicioFgtsDigital = 6,
+
+        /// <summary>
+        /// I - Sentença judicial (exceto reclamatória trabalhista)
+        /// </summary>
+        [XmlEnum("I")]
+        SentencaJudicial = 7,
+
+        /// <summary>
+        /// J - Parcelas complementares conhecidas após o fechamento da folha
+        /// </summary>
+        [XmlEnum("J")]
+        ParcelasComplementaresAposFechamentoFolha = 8
+    }
+
+    #endregion
+
     #region natEstagio - eSocial
 
     /// <summary>
@@ -14126,6 +14212,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("06")]
         ExoneracaoDiretorNaoEmpregadoFalencia = 06,
+
+        /// <summary>
+        /// 07 - Mudança de CPF
+        /// </summary>
+        [XmlEnum("07")]
+        MudancaCpf = 07,
 
         /// <summary>
         /// 99 - Outros

@@ -710,6 +710,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         /// <summary>
+        /// Número da notificação de FGTS que deu origem à confissão
+        /// </summary>
+        [XmlElement("notAFT")]
+        public string NotAFT { get; set; }
+
+        /// <summary>
         /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA
         /// </summary>
         [XmlElement("infoRRA")]
@@ -735,6 +741,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public bool ShouldSerializeIndRRA() => IndRRA != null;
 #endif
+
+        public bool ShouldSerializeNotAFT() => !string.IsNullOrEmpty(NotAFT);
 
 #endregion
     }
@@ -890,6 +898,92 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     /// <summary>
+    /// Identificação do estabelecimento e da lotação aos quais se referem as diferenças de remuneração do mês identificado no grupo superior
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLotInfoPerAnt2299")]
+    [ComVisible(true)]
+#endif
+    public class IdeEstabLotInfoPerAnt2299
+    {
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de inscrição do estabelecimento, de acordo com as opções da Tabela 05
+        /// </summary>
+        [XmlElement("tpInsc")]
+        public TpInsc TpInsc { get; set; }
+
+        /// <summary>
+        /// Informar o número de inscrição do estabelecimento do contribuinte de acordo com o tipo de inscrição indicado no campo ideEstabLot/tpInsc
+        /// </summary>
+        [XmlElement("nrInsc")]
+        public string NrInsc { get; set; }
+
+        /// <summary>
+        /// Informar o código atribuído pelo empregador para a lotação tributária
+        /// </summary>
+        [XmlElement("codLotacao")]
+        public string Codlotacao { get; set; }
+
+        /// <summary>
+        /// Detalhamento das verbas rescisórias devidas ao trabalhador. Deve haver pelo menos uma rubrica de folha, mesmo que o valor
+        /// líquido a ser pago ao trabalhador seja 0 (zero) em função de descontos
+        /// </summary>
+        [XmlElement("detVerbas")]
+        public List<DetVerbasInfoPerAnt2299> DetVerbas { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddDetVerbas(DetVerbasInfoPerAnt2299 item)
+        {
+            if (DetVerbas == null)
+            {
+                DetVerbas = new List<DetVerbasInfoPerAnt2299>();
+            }
+
+            DetVerbas.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista DetVerbas (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da DetVerbas</returns>
+        public DetVerbasInfoPerAnt2299 GetDetVerbas(int index)
+        {
+            if ((DetVerbas?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return DetVerbas[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista DetVerbas
+        /// </summary>
+        public int GetDetVerbasCount => (DetVerbas != null ? DetVerbas.Count : 0);
+#endif
+
+        /// <summary>
+        /// Grupo referente ao detalhamento do grau de exposição do trabalhador aos agentes nocivos que ensejam a cobrança da
+        /// contribuição adicional para financiamento dos benefícios de aposentadoria especial
+        /// </summary>
+        [XmlElement("infoAgNocivo")]
+        public InfoAgNocivo2299 InfoAgNocivo { get; set; }
+
+        /// <summary>
+        /// Informação relativa a empresas enquadradas no regime de tributação Simples Nacional
+        /// </summary>
+        [XmlElement("infoSimples")]
+        public InfoSimples InfoSimples { get; set; }
+    }
+
+    /// <summary>
     /// Detalhamento das verbas rescisórias devidas ao trabalhador
     /// </summary>
 #if INTEROP
@@ -974,6 +1068,101 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("descFolha")]
         public DescFolha DescFolha { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeQtdRubrField() => QtdRubr > 0;
+        public bool ShouldSerializeFatorRubrField() => FatorRubr > 0;
+
+#if INTEROP
+        public bool ShouldSerializeIndApurIR() => IndApurIR != (IndApurIR)(-1);
+#else
+        public bool ShouldSerializeIndApurIR() => IndApurIR != null;
+#endif
+
+        #endregion ShouldSerialize
+
+    }
+
+    /// <summary>
+    /// Detalhamento das verbas rescisórias devidas ao trabalhador
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DetVerbasInfoPerAnt2299")]
+    [ComVisible(true)]
+#endif
+    public class DetVerbasInfoPerAnt2299
+    {
+        /// <summary>
+        /// Informar o código atribuído pelo empregador que identifica a rubrica em sua folha de pagamento ou
+        /// o código da rubrica constante da Tabela de Rubricas Padrão
+        /// </summary>
+        [XmlElement("codRubr")]
+        public string CodRubr { get; set; }
+
+        /// <summary>
+        /// Preencher com o identificador da Tabela de Rubricas para a rubrica definida em codRubr
+        /// </summary>
+        [XmlElement("ideTabRubr")]
+        public string IdeTabRubr { get; set; }
+
+        /// <summary>
+        /// Informar a quantidade de referência para apuração (em horas, cotas, meses, etc.).
+        /// Ex.: Quantidade de horas extras trabalhadas relacionada com uma rubrica de hora extra,
+        /// quantidade de dias trabalhados relacionada com uma rubrica de salário, etc.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
+        public double QtdRubr { get; set; }
+
+        [XmlElement("qtdRubr")]
+        public string QtdRubrField
+        {
+            get => QtdRubr.ToString("F2", CultureInfo.InvariantCulture);
+            set => QtdRubr = Converter.ToDouble(value);
+
+        }
+
+        /// <summary>
+        /// Informar o fator, percentual, etc. da rubrica, quando necessário.
+        /// Ex.: Adicional de horas extras 50%, relacionado a uma rubrica de horas extras: Fator = 50.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
+        public double FatorRubr { get; set; }
+
+        [XmlElement("fatorRubr")]
+        public string FatorRubrField
+        {
+            get => FatorRubr.ToString("F2", CultureInfo.InvariantCulture);
+            set => FatorRubr = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor total da rubrica.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
+        public double VrRubr { get; set; }
+
+        [XmlElement("vrRubr")]
+        public string VrRubrField
+        {
+            get => VrRubr.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrRubr = Converter.ToDouble(value);
+
+        }
+
+        /// <summary>
+        /// Indicativo de tipo de apuração de IR
+        /// </summary>
+        [XmlElement("indApurIR")]
+#if INTEROP
+        public IndApurIR IndApurIR { get; set; } = (IndApurIR)(-1);
+#else
+        public IndApurIR? IndApurIR { get; set; }
+#endif
 
         #region ShouldSerialize
 
@@ -1153,7 +1342,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Tipo do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores
         /// </summary>
         [XmlElement("tpAcConv")]
-        public string TpAcConv { get; set; }
+        public TpAcConv TpAcConv { get; set; }
 
         /// <summary>
         /// Descrição do instrumento ou situação que originou o pagamento das verbas relativas a períodos anteriores
@@ -1246,7 +1435,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação do estabelecimento e da lotação aos quais se referem as diferenças de remuneração do mês identificado no grupo superior
         /// </summary>
         [XmlElement("ideEstabLot")]
-        public List<IdeEstabLot2299> IdeEstabLot { get; set; }
+        public List<IdeEstabLotInfoPerAnt2299> IdeEstabLot { get; set; }
 
 #if INTEROP
 
@@ -1254,11 +1443,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeEstabLot(IdeEstabLot2299 item)
+        public void AddIdeEstabLot(IdeEstabLotInfoPerAnt2299 item)
         {
             if (IdeEstabLot == null)
             {
-                IdeEstabLot = new List<IdeEstabLot2299>();
+                IdeEstabLot = new List<IdeEstabLotInfoPerAnt2299>();
             }
 
             IdeEstabLot.Add(item);
@@ -1269,7 +1458,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeEstabLot</returns>
-        public IdeEstabLot2299 GetIdeEstabLot(int index)
+        public IdeEstabLotInfoPerAnt2299 GetIdeEstabLot(int index)
         {
             if ((IdeEstabLot?.Count ?? 0) == 0)
             {

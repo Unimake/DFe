@@ -377,6 +377,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         /// <summary>
+        /// Número da notificação de FGTS que deu origem à confissão
+        /// </summary>
+        [XmlElement("notAFT")]
+        public string NotAFT { get; set; }
+
+        /// <summary>
         /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA
         /// </summary>
         [XmlElement("infoRRA")]
@@ -431,6 +437,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public bool ShouldSerializeIndRRA() => IndRRA != null;
 #endif
+
+        public bool ShouldSerializeNotAFT() => !string.IsNullOrEmpty(NotAFT);
         #endregion ShouldSerialize
     }
 
@@ -452,7 +460,76 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLot2399")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabLot2399 : IdeEstabLot2299 { }
+    public class IdeEstabLot2399
+    {
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de inscrição do estabelecimento, de acordo com as opções da Tabela 05
+        /// </summary>
+        [XmlElement("tpInsc")]
+        public TipoInscricaoEstabelecimento TpInsc { get; set; }
+
+        /// <summary>
+        /// Informar o número de inscrição do estabelecimento do contribuinte de acordo com o tipo de inscrição indicado no campo ideEstabLot/tpInsc
+        /// </summary>
+        [XmlElement("nrInsc")]
+        public string NrInsc { get; set; }
+
+        /// <summary>
+        /// Informar o código atribuído pelo empregador para a lotação tributária
+        /// </summary>
+        [XmlElement("codLotacao")]
+        public string Codlotacao { get; set; }
+
+        /// <summary>
+        /// Detalhamento das verbas rescisórias devidas ao trabalhador. Deve haver pelo menos uma rubrica de folha, mesmo que o valor 
+        /// líquido a ser pago ao trabalhador seja 0 (zero) em função de descontos
+        /// </summary>
+        [XmlElement("detVerbas")]
+        public List<DetVerbas> DetVerbas { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddDetVerbas(DetVerbas item)
+        {
+            if (DetVerbas == null)
+            {
+                DetVerbas = new List<DetVerbas>();
+            }
+
+            DetVerbas.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista DetVerbas (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da DetVerbas</returns>
+        public DetVerbas GetDetVerbas(int index)
+        {
+            if ((DetVerbas?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return DetVerbas[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista DetVerbas
+        /// </summary>
+        public int GetDetVerbasCount => (DetVerbas != null ? DetVerbas.Count : 0);
+#endif
+
+        /// <summary>
+        /// Informação relativa a empresas enquadradas no regime de tributação Simples Nacional
+        /// </summary>
+        [XmlElement("infoSimples")]
+        public InfoSimples InfoSimples { get; set; }
+    }
 
     /// <summary>
     /// Informações sobre a existência de processos judiciais do trabalhador com decisão favorável 
@@ -484,6 +561,48 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunAposTerm2399")]
     [ComVisible(true)]
 #endif
-    public class RemunAposTerm2399 : RemunAposDeslig2299 { }
+    public class RemunAposTerm2399
+    {
+        /// <summary>
+        /// Indicativo de situação de remuneração após o término
+        /// </summary>
+        [XmlElement("indRemun")]
+#if INTEROP
+        public IndRemunTSVTermino IndRemun { get; set; } = (IndRemunTSVTermino)(-1);
+#else
+        public IndRemunTSVTermino? IndRemun { get; set; }
+#endif
+
+        /// <summary>
+        /// Preencher com a data final da quarentena a que está sujeito o trabalhador
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtFimRemun { get; set; }
+#else
+        public DateTimeOffset DtFimRemun { get; set; }
+#endif
+
+        [XmlElement("dtFimRemun")]
+        public string DtFimRemunField
+        {
+            get => DtFimRemun.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DtFimRemun = DateTime.Parse(value);
+#else
+            set => DtFimRemun = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        #region ShouldSerialize
+
+#if INTEROP
+        public bool ShouldSerializeIndRemun() => IndRemun != (IndRemunTSVTermino)(-1);
+#else
+        public bool ShouldSerializeIndRemun() => IndRemun != null;
+#endif
+
+        #endregion ShouldSerialize
+    }
 
 }
