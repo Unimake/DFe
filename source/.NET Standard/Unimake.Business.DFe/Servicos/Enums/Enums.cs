@@ -14333,6 +14333,32 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 
+    #region tpCRIRRF2501 - eSocial
+    /// <summary>
+    /// Código de Receita - CR relativo a Imposto sobre a renda retido na fonte.
+    /// </summary>
+    public enum TpCRIRRF2501
+    {
+        /// <summary>
+        /// 593656 - IRRF - Decisão da Justiça do Trabalho
+        /// </summary>
+        [XmlEnum("593656")]
+        IrrfDecisaoJusticaTrabalho = 593656,
+
+        /// <summary>
+        /// 056152 - IRRF - CCP/NINTER
+        /// </summary>
+        [XmlEnum("056152")]
+        IrrfCcpNinter = 056152,
+
+        /// <summary>
+        /// 188951 - IRRF - RRA
+        /// </summary>
+        [XmlEnum("188951")]
+        IrrfRra = 188951
+    }
+    #endregion
+
 
     #region indSubstPatr - eSocial
 
