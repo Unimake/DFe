@@ -6,6 +6,7 @@ using Unimake.Business.DFe.Servicos.NFCe;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Business.DFe.Utility;
 using Xunit;
+using Xunit.Sdk;
 
 namespace Unimake.DFe.Test.NFCe
 {
@@ -109,6 +110,65 @@ namespace Unimake.DFe.Test.NFCe
             Assert.Equal(tipoAmbiente, downloadXML.Result.TpAmb);
             
             Console.WriteLine($"Status: {downloadXML.Result.CStat} - {downloadXML.Result.XMotivo}");
+        }
+
+        /// <summary>
+        /// Testar a gravação dos XMLs de distribuição (NFCe e eventos)
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "NFCe")]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao, "12345678904038000178650030000002661234567890")]
+        public void ConsultarDownloadXMLNFCeEGravarXMLs(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string chaveNFCe)
+        {
+            var xml = new NFCeDownloadXML
+            {
+                Versao = "1.00",
+                TpAmb = tipoAmbiente,
+                ChNFCe = chaveNFCe
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                CodigoUF = (int)ufBrasil
+            };
+
+            var downloadXML = new DownloadXML(xml, configuracao);
+            downloadXML.Executar();
+
+            Assert.NotNull(downloadXML.Result);
+            Assert.Equal(tipoAmbiente, downloadXML.Result.TpAmb);
+
+            Console.WriteLine($"Status: {downloadXML.Result.CStat} - {downloadXML.Result.XMotivo}");
+
+            if (downloadXML.Result.CStat == "200")
+            {
+                var pastaTemp = Path.Combine(Path.GetTempPath(), "NFCeDownloadXML_" + Guid.NewGuid().ToString("N"));
+
+                try
+                {
+                    Directory.CreateDirectory(pastaTemp);
+                    downloadXML.GravarXMLProc(pastaTemp);
+                    Console.WriteLine($"\n✓ XMLs gravados em: {pastaTemp}");
+                }
+                finally
+                {
+                    if (Directory.Exists(pastaTemp))
+                    {
+                        try
+                        {
+                            Directory.Delete(pastaTemp, true);
+                            Console.WriteLine($"✓ Pasta temporária removida");
+                        }
+                        catch
+                        {
+                            // Ignora erro na limpeza
+                        }
+                    }
+                }
+            }
         }
     }
 }
