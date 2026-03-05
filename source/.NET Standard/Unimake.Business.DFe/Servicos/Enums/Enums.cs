@@ -13802,6 +13802,152 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region tpDepInst - eSocial
+
+    /// <summary>
+    /// Tipo de dependente do instituidor da pensão por morte.
+    /// </summary>
+    public enum TpDepInst
+    {
+        /// <summary>
+        /// 01 - Cônjuge
+        /// </summary>
+        [XmlEnum("01")]
+        Conjuge = 01,
+
+        /// <summary>
+        /// 02 - Companheiro(a)
+        /// </summary>
+        [XmlEnum("02")]
+        Companheiro = 02,
+
+        /// <summary>
+        /// 03 - Filho(a) até 21 anos
+        /// </summary>
+        [XmlEnum("03")]
+        FilhoAte21Anos = 03,
+
+        /// <summary>
+        /// 04 - Enteado(a)
+        /// </summary>
+        [XmlEnum("04")]
+        Enteado = 04,
+
+        /// <summary>
+        /// 05 - Ex-companheiro(a)
+        /// </summary>
+        [XmlEnum("05")]
+        ExCompanheiro = 05,
+
+        /// <summary>
+        /// 06 - Irmão(a)
+        /// </summary>
+        [XmlEnum("06")]
+        Irmao = 06,
+
+        /// <summary>
+        /// 07 - Neto(a)
+        /// </summary>
+        [XmlEnum("07")]
+        Neto = 07,
+
+        /// <summary>
+        /// 08 - Filha maior solteira
+        /// </summary>
+        [XmlEnum("08")]
+        FilhaMaiorSolteira = 08,
+
+        /// <summary>
+        /// 09 - Pais
+        /// </summary>
+        [XmlEnum("09")]
+        Pais = 09,
+
+        /// <summary>
+        /// 10 - Menor sob guarda ou tutela
+        /// </summary>
+        [XmlEnum("10")]
+        MenorSobGuardaOuTutela = 10,
+
+        /// <summary>
+        /// 11 - Filho(a) maior inválido ou com deficiência
+        /// </summary>
+        [XmlEnum("11")]
+        FilhoMaiorInvalidoOuComDeficiencia = 11,
+
+        /// <summary>
+        /// 12 - Ex-cônjuge
+        /// </summary>
+        [XmlEnum("12")]
+        ExConjuge = 12,
+
+        /// <summary>
+        /// 13 - Avós
+        /// </summary>
+        [XmlEnum("13")]
+        Avos = 13,
+
+        /// <summary>
+        /// 14 - Bisavós
+        /// </summary>
+        [XmlEnum("14")]
+        Bisavos = 14,
+
+        /// <summary>
+        /// 15 - Bisneto(a)
+        /// </summary>
+        [XmlEnum("15")]
+        Bisneto = 15,
+
+        /// <summary>
+        /// 16 - Curatelado(a)
+        /// </summary>
+        [XmlEnum("16")]
+        Curatelado = 16,
+
+        /// <summary>
+        /// 17 - Designado(a)
+        /// </summary>
+        [XmlEnum("17")]
+        Designado = 17,
+
+        /// <summary>
+        /// 99 - Agregados/Outros
+        /// </summary>
+        [XmlEnum("99")]
+        AgregadosOuOutros = 99
+    }
+
+    #endregion
+
+    #region sitHomolog - eSocial
+
+    /// <summary>
+    /// Informar se o benefício requer ou não homologação pelo Tribunal de Contas.
+    /// </summary>
+    public enum SitHomolog
+    {
+        /// <summary>
+        /// 0 - Não homologado
+        /// </summary>
+        [XmlEnum("0")]
+        NaoHomologado = 0,
+
+        /// <summary>
+        /// 1 - Homologado
+        /// </summary>
+        [XmlEnum("1")]
+        Homologado = 1,
+
+        /// <summary>
+        /// 2 - Não requer homologação
+        /// </summary>
+        [XmlEnum("2")]
+        NaoRequerHomologacao = 2
+    }
+
+    #endregion
+
     #region mtvSuspensao - eSocial
 
     /// <summary>

@@ -167,9 +167,52 @@
                                                                                     <xs:documentation>Data de óbito do instituidor da pensão por morte.</xs:documentation>
                                                                                 </xs:annotation>
                                                                             </xs:element>
+                                                                            <xs:element name="tpDepInst" minOccurs="0" type="TS_tpDepInst"/>
+                                                                            <xs:element name="descrDepInst" minOccurs="0" type="TS_descrDepInst"/>
                                                                         </xs:sequence>
                                                                     </xs:complexType>
                                                                 </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="infoHomolog" minOccurs="0">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Informações relativas à homologação do benefício pelo Tribunal de Contas.</xs:documentation>
+                                                            <xs:documentation>CONDICAO_GRUPO: OC</xs:documentation>
+                                                            <xs:documentation>Validação: Se o grupo não for informado e {dtIniBeneficio}(2410_infoBenInicio_dtIniBeneficio) >= [2025-11-24], retornar alerta.</xs:documentation>
+                                                        </xs:annotation>
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="sitHomolog">
+                                                                    <xs:simpleType>
+                                                                        <xs:annotation>
+                                                                            <xs:documentation>Informar se o benefício requer ou não homologação pelo Tribunal de Contas.</xs:documentation>
+                                                                        </xs:annotation>
+                                                                        <xs:restriction base="xs:byte">
+                                                                            <xs:enumeration value="0">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Não homologado</xs:documentation>
+                                                                                </xs:annotation>
+                                                                            </xs:enumeration>
+                                                                            <xs:enumeration value="1">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Homologado</xs:documentation>
+                                                                                </xs:annotation>
+                                                                            </xs:enumeration>
+                                                                            <xs:enumeration value="2">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Não requer homologação</xs:documentation>
+                                                                                </xs:annotation>
+                                                                            </xs:enumeration>
+                                                                        </xs:restriction>
+                                                                    </xs:simpleType>
+                                                                </xs:element>
+                                                                <xs:element name="dtHomolog" minOccurs="0" type="xs:date">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Informar a data da homologação do benefício pelo Tribunal de Contas competente.</xs:documentation>
+                                                                        <xs:documentation>Validação: Informação obrigatória e exclusiva se {sitHomolog}(./sitHomolog) = [1].</xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:element>                                                                
                                                             </xs:sequence>
                                                         </xs:complexType>
                                                     </xs:element>
