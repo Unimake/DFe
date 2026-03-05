@@ -10842,6 +10842,46 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 
+    #region eSocial - Código de incidência da rubrica para o PIS/PASEP
+
+    /// <summary>
+    /// Código de incidência da rubrica para o PIS/PASEP sobre a folha de salários.
+    /// </summary>
+    public enum CodigoIncidenciaPisPasep
+    {
+        /// <summary>
+        /// 00 - Não é base de cálculo do PIS/PASEP
+        /// </summary>
+        [XmlEnum("00")]
+        NaoBaseCalculo = 0,
+
+        /// <summary>
+        /// 11 - Base de cálculo do PIS/PASEP mensal
+        /// </summary>
+        [XmlEnum("11")]
+        BaseCalculoMensal = 11,
+
+        /// <summary>
+        /// 12 - Base de cálculo do PIS/PASEP 13º salário
+        /// </summary>
+        [XmlEnum("12")]
+        BaseCalculoDecimoTerceiro = 12,
+
+        /// <summary>
+        /// 91 - Incidência suspensa em decorrência de decisão judicial - PIS/PASEP mensal
+        /// </summary>
+        [XmlEnum("91")]
+        SuspensaoDecisaoJudicialMensal = 91,
+
+        /// <summary>
+        /// 92 - Incidência suspensa em decorrência de decisão judicial - PIS/PASEP 13º salário
+        /// </summary>
+        [XmlEnum("92")]
+        SuspensaoDecisaoJudicialDecimoTerceiro = 92
+    }
+
+    #endregion
+
     #region eSocial - Extensão da decisão/sentença.
 
     /// <summary>

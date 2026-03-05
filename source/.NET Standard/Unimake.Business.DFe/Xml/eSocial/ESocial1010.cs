@@ -262,9 +262,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("codIncPisPasep")]
 #if INTEROP
-        public CodigoIncidenciaDaRubrica? CodIncPisPasep { get; set; } = (CodigoIncidenciaDaRubrica)(-1);
+        public CodigoIncidenciaPisPasep? CodIncPisPasep { get; set; } = (CodigoIncidenciaPisPasep)(-1);
 #else
-        public CodigoIncidenciaDaRubrica? CodIncPisPasep { get; set; }
+        public CodigoIncidenciaPisPasep? CodIncPisPasep { get; set; }
 #endif
 
         /// <summary>
@@ -471,7 +471,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
 #if INTEROP
-        public bool ShouldSerializeCodIncPisPasep() => CodIncPisPasep != (CodigoIncidenciaDaRubrica)(-1);
+        public bool ShouldSerializeCodIncPisPasep() => CodIncPisPasep != (CodigoIncidenciaPisPasep)(-1);
 #else
         public bool ShouldSerializeCodIncPisPasep() => CodIncPisPasep != null;
 #endif
