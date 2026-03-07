@@ -2931,10 +2931,10 @@ namespace Unimake.Business.DFe.Servicos
         PagamentoInstantaneo = 17,
 
         /// <summary>
-        /// 18 - Transferência bancária, Carteira Digital
+        /// TED (Transferência Eletrônica Disponível) - Transferência entre contas de diferentes bancos.
         /// </summary> 
         [XmlEnum("18")]
-        TransferenciaBancaria = 18,
+        TED = 18,
 
         /// <summary>
         /// 19 - Programa de fidelidade, Cashback, Crédito Virtual
@@ -2959,6 +2959,18 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("22")]
         PagamentoEletronicoNaoInformado = 22,
+
+        /// <summary>
+        /// Pagamentos recorrentes configurados para serem debitados automaticamente via Pix, a partir de autorização do pagador.
+        /// </summary>
+        [XmlEnum("23")]
+        PagamentoInstantaneoAutomatico = 23,
+
+        /// <summary>
+        /// Transferência entre contas do mesmo banco.
+        /// </summary>
+        [XmlEnum("24")]
+        TEFBookTransfer = 24, 
 
         /// <summary>
         /// 90 - Sem pagamento
