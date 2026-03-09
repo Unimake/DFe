@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe;
@@ -19,61 +20,74 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
     {
 
 
+        string nome;
+
         // Esse metodo irá ser chamado pelo UniNFe, onde ele passará o documento XML a ser validado e 
         // o certificado digital para assinar o XML caso necessário e o padrão caso NFSe. Será utilizando o mesmo formato que o UniNFe faz para pegar o certificado
         // (CertificadoDigital = Empresas.Configuracoes[emp].X509Certificado) e o padrão por meio do metodo BuscaPadraoNFSe(UFCod)
 
         [Theory]
         //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\GISSONLINE\2.04\EnviarLoteRpsEnvio-env-loterps.xml", PadraoNFSe.GISSONLINE)]
-        [InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml", PadraoNFSe.CONAM)]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\GISSONLINE\2.04\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml", PadraoNFSe.GISSONLINE)]
+        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\PRONIM\1.01\ConsultarNfseEnvio-ped-sitnfse.xml", PadraoNFSe.PRONIM)]
+        [InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\NACIONAL\1.01\GerarNfseEnvio_IndicativoDecisaoJudicial-env-loterps.xml", PadraoNFSe.NACIONAL)]
+
 
         public static void ValidarServico(string caminhoServicoValidacao, string caminhoArquivo, PadraoNFSe padraoNFSe = PadraoNFSe.None)
         {
-            #region VaiSerApagada
-            var CertificadoCaminho = @"C:\Projetos\Unimake_PV.pfx";
-            var CertificadoSenha = "12345678";
-            var certificado = new CertificadoDigital().CarregarCertificadoDigitalA1(CertificadoCaminho, CertificadoSenha);
-
-            XmlDocument xmlConfig = new();
-            xmlConfig.Load(caminhoServicoValidacao);
-
-            if (!File.Exists(caminhoArquivo))
-                throw new Exception("Arquivo XML não encontrado");
-
-            XmlDocument xml = new();
-            xml.Load(caminhoArquivo);
-            #endregion
-
-            TipoDFe tipoDFe = padraoNFSe != PadraoNFSe.None
-                ? TipoDFe.NFSe
-                : DetectarTipoDFe(xml);
-
-            string tagRaiz = xml.DocumentElement.Name;
-            string versao = ObterVersao(xml, xmlConfig, tipoDFe);
-            XmlNode servico = ObterServico(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
-
-            var inform = MontarInformacaoGeral(servico);
-            AssinarSeNecessario(xml, inform, certificado);
-
-            // Se não tem schemas específicos, valida só o geral mesmo
-            if (servico.SelectSingleNode(".//*[local-name()='SchemasEspecificos']") is null)
+            try
             {
-                ValidarSchemaGeral(xml, inform, tipoDFe, padraoNFSe);
-                return;
+                #region VaiSerApagada
+                var CertificadoCaminho = @"C:\Projetos\Unimake_PV.pfx";
+                var CertificadoSenha = "12345678";
+                var certificado = new CertificadoDigital().CarregarCertificadoDigitalA1(CertificadoCaminho, CertificadoSenha);
+
+                XmlDocument xmlConfig = new();
+                xmlConfig.Load(caminhoServicoValidacao);
+
+                if (!File.Exists(caminhoArquivo))
+                    throw new Exception("Arquivo XML não encontrado");
+
+                XmlDocument xml = new();
+                xml.Load(caminhoArquivo);
+                #endregion
+
+                TipoDFe tipoDFe = padraoNFSe != PadraoNFSe.None
+                    ? TipoDFe.NFSe
+                    : DetectarTipoDFe(xml);
+
+                string tagRaiz = xml.DocumentElement.Name;
+                string versao = ObterVersao(xml, xmlConfig, tipoDFe);
+                XmlNode servico = ObterServico(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
+
+                if (servico is null)
+                    return;
+
+                var inform = MontarInformacaoGeral(servico);
+                AssinarSeNecessario(xml, inform, certificado);
+
+                // Se não tem schemas específicos, valida só o geral mesmo
+                if (servico.SelectSingleNode(".//*[local-name()='SchemasEspecificos']") is null)
+                {
+                    ValidarSchemaGeral(xml, inform, tipoDFe, padraoNFSe);
+                    return;
+                }
+
+                // Se chegou aqui, tem schemas específicos para validar, então precisa vincular o XML geral com os específicos para depois validar cada um
+                bool isEvento = servico.SelectSingleNode(".//*[local-name()='TagEvento']") != null;
+
+                var vinculador = VinculadorFactory.Criar(tipoDFe, isEvento);
+                var nodes = vinculador.Vincular(servico, xml);
+
+                foreach (var (tipoCorreto, node) in nodes)
+                {
+                    MontarInformacaoEspecifica(servico, tipoCorreto, inform);
+                    ValidarSchemaGeral(xml, inform, tipoDFe);
+                    ValidarSchemaEspecifico(node, inform, tipoDFe);
+                }
             }
-
-            // Se chegou aqui, tem schemas específicos para validar, então precisa vincular o XML geral com os específicos para depois validar cada um
-            bool isEvento = servico.SelectSingleNode(".//*[local-name()='TagEvento']") != null;
-
-            var vinculador = VinculadorFactory.Criar(tipoDFe, isEvento);
-            var nodes = vinculador.Vincular(servico, xml);
-
-            foreach (var (tipoCorreto, node) in nodes)
+            catch (Exception ex)
             {
-                MontarInformacaoEspecifica(servico, tipoCorreto, inform);
-                ValidarSchemaGeral(xml, inform, tipoDFe);
-                ValidarSchemaEspecifico(node, inform, tipoDFe);
+                throw new Exception($"Erro ao validar o arquivo: {ex.Message}");
             }
         }
 
@@ -121,10 +135,6 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 servicoNFSe = xmlConfig.SelectSingleNode(pathServicosNFSe);
 
             }
-            if (servicoNFSe is null)
-            {
-                throw new Exception($"Serviço não encontrado para NFSe de padrão {padraoNFSe}.");
-            }
 
             return servicoNFSe;
         }
@@ -132,14 +142,11 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
 
 
-        private static XmlNode TratarDFe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe = PadraoNFSe.None)
+        private static XmlNode TratarDFe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig)
         {
 
             string pathServico = $"//{tipoDFe}/Servico[@tagRaiz='{tagRaiz}' and @versao='{versao}']";
             XmlNode servico = xmlConfig.SelectSingleNode(pathServico);
-
-            if (servico is null)
-                throw new Exception($"Serviço '{tagRaiz}' com versão '{versao}' não encontrado para o tipo de DFe '{tipoDFe}'.");
 
             return servico;
 
@@ -175,32 +182,60 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
         private static void AssinarSeNecessario(XmlDocument xml, InformacaoXML info, X509Certificate2 cert)
         {
-            if (String.IsNullOrWhiteSpace(info.TagAssinatura))
+            if (!string.IsNullOrEmpty(info.TagAssinatura))
+            {
+                Assinar(xml, info.TagAssinatura, info.TagAtributoID, cert);
+            }
+
+            if (!string.IsNullOrEmpty(info.TagLoteAssinatura))
+            {
+                Assinar(xml, info.TagLoteAssinatura, info.TagLoteAtributoID, cert);
+            }
+
+            if (!string.IsNullOrEmpty(info.TagExtraAssinatura)) 
+            {
+                Assinar(xml, info.TagExtraAssinatura, info.TagExtraAtributoID, cert);
+            }
+
+        }
+
+
+        private static void Assinar(XmlDocument xml, string tagAssinatura, string tagID, X509Certificate2 cert)
+        {
+
+            var usarCertificado = true; 
+
+            if (string.IsNullOrWhiteSpace(tagAssinatura))
                 return;
 
-            //| TipoDFe         | Algoritmo |
-            //| --------------- | --------- | 
-            //| NFe             | SHA1      | 
-            //| CTe  CTeOS      | SHA1      | 
-            //| MDFe            | SHA1      | 
-            //| NFSe            | SHA1      | 
-            //| Reinf           | SHA256    |
-            //| eSocial         | SHA256    | 
-            //| DARE            | SHA256    |
+            if (usarCertificado)
+            {
 
-            try
-            {
-                AssinaturaDigital.Assinar(xml, info.TagAssinatura, info.TagAtributoID, cert, AlgorithmType.Sha1);
+                if (!AssinaturaDigital.EstaAssinado(xml, tagAssinatura))
+                {
+                    AssinaturaDigital.Assinar(xml, tagAssinatura, tagID, cert, AlgorithmType.Sha1);
+
+                    //| TipoDFe         | Algoritmo |
+                    //| --------------- | --------- | 
+                    //| NFe             | SHA1      | 
+                    //| CTe  CTeOS      | SHA1      | 
+                    //| MDFe            | SHA1      | 
+                    //| NFSe            | SHA1      | 
+                    //| Reinf           | SHA256    |
+                    //| eSocial         | SHA256    | 
+                    //| DARE            | SHA256    |
+
+                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro ao assinar XML: {ex.Message}");
-            }
+           
         }
 
 
         private static void ValidarSchemaGeral(XmlDocument xml, InformacaoXML info, TipoDFe tipoDFe, PadraoNFSe padraoNFSe = PadraoNFSe.None)
         {
+            if (string.IsNullOrEmpty(info.SchemaArquivo))
+                return;
+
             string schema = padraoNFSe == PadraoNFSe.None
                 ? $"{tipoDFe.ToString()}.{info.SchemaArquivo}"
                 : $"{tipoDFe.ToString()}.{padraoNFSe.ToString()}.{info.SchemaArquivo}";
@@ -210,13 +245,15 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
             if (!validar.Success)
             {
-                throw new Exception($"Erro ao validar schema geral {validar.ErrorMessage}");
+                throw new Exception($"Erro ao validar schema geral {validar.ErrorMessage}. Verifique se esteja utilizando o layout mais recente para o XML.");
             }
         }
 
 
         private static void ValidarSchemaEspecifico(XmlNode eventoNode, InformacaoXML info, TipoDFe tipoDFe)
         {
+            if (string.IsNullOrEmpty(info.SchemaArquivo))
+                return;
 
             //Isolando cada XML dependendo do tipoDFe
             var isolador = IsoladorFactory.CriarIsolador(tipoDFe);
@@ -236,12 +273,6 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
         private static string ObterVersao(XmlDocument xml, XmlDocument xmlConfig, TipoDFe tipoDFe)
         {
-            // Versão como atributo da raiz
-            var versao = xml.DocumentElement.GetAttribute("versao");
-            if (!string.IsNullOrEmpty(versao))
-                return versao;
-
-            // Buscar em cada Servico configurado pela TagVersao
             XmlNodeList servicos = xmlConfig.GetElementsByTagName("Servico");
 
             foreach (XmlNode servico in servicos)
@@ -255,18 +286,15 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
                 if (nodeVersao.Count > 0)
                 {
-                    versao = ((XmlElement)nodeVersao[0]).GetAttribute("versao");
-                    if (!string.IsNullOrEmpty(versao))
-                    {
-                        return versao;
-                    }
+                    var versaoAtributo = ((XmlElement)nodeVersao[0]).GetAttribute("versao");
+                    var versaoValor = nodeVersao[0].InnerText; // Em alguns casos a versão pode estar no valor do nó ao invés de um atributo, então verificamos os dois
 
-                    else 
-                    { 
-                        versao = nodeVersao[0].InnerText;
-                        if (!string.IsNullOrEmpty(versao))
-                            return versao;
-                    }
+                    if (!string.IsNullOrEmpty(versaoAtributo))
+                        return versaoAtributo;
+
+                    if (!string.IsNullOrEmpty(versaoValor))
+                        return versaoValor;
+
                 }
             }
 
@@ -365,8 +393,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 #endregion
 
                 default:
-                    tipoDFe = TipoDFe.Desconhecido;
-                    break;
+                    throw new Exception("Tipo do DFe não identificado");
             }
 
             return tipoDFe;

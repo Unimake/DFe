@@ -103,6 +103,15 @@
 		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\EnviarLoteRpsSincronoEnvio-env-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\GerarNfseEnvio-env-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\SubstituirNfseEnvio-ped-substnfse.xml" />
+		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\CONAM\4.00\CancelarNfseEnvio-ped-cannfse.xml" />
+		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\CONAM\4.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
+		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml" />
+		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\CancelarNfseEnvio-ped-cannfse.xml" />
+		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\ConsultarLoteRpsEnvio-ped-loterps.xml" />
+		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\ConsultarNfseEnvio-ped-sitnfse.xml" />
+		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
+		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
+		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\EnviarLoteRpsEnvio-env-loterps.xml" />
 	</ItemGroup>
 
 	<ItemGroup>

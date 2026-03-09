@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Sdt_cancelanfe xmlns="NFe">
+	<Login>
+		<CodigoUsuario>99999999999999</CodigoUsuario>
+		<CodigoContribuinte>99999999999999</CodigoContribuinte>
+	</Login>
+	<Nota>
+		<SerieNota>1A</SerieNota>
+		<NumeroNota>235</NumeroNota>
+		<SerieRPS>69659</SerieRPS>
+		<NumeroRps>55884</NumeroRps>
+		<ValorNota>1000.00</ValorNota>
+		<MotivoCancelamento>motivo</MotivoCancelamento>
+		<PodeCancelarGuia>S</PodeCancelarGuia>
+		<PodeSubstituirNFSE>S</PodeSubstituirNFSE>
+		<ReaproveitaNumRPS>S</ReaproveitaNumRPS>
+	</Nota>
+</Sdt_cancelanfe>
