@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Sdt_processarpsin xmlns="NFe">
+	<Login>
+		<CodigoUsuario>9999999999999</CodigoUsuario>
+		<CodigoContribuinte>9999999999</CodigoContribuinte>
+	</Login>
+	<SDTRPS xmlns="NFe">
+		<Ano>2025</Ano>
+		<Mes>11</Mes>
+		<CPFCNPJ>07645081000126</CPFCNPJ>
+		<DTIni>27/11/2025</DTIni>
+		<DTFin>27/11/2025</DTFin>
+		<TipoTrib>5</TipoTrib>
+		<DtAdeSN>27/11/2025</DtAdeSN>
+		<AlqIssSN_IP>4.1</AlqIssSN_IP>
+		<RegApTribSN>2</RegApTribSN>
+		<TribTpSusp>1</TribTpSusp>
+		<TribProcSusp>189502604</TribProcSusp>
+		<Versao>4.00</Versao>
+		<Reg20>
+			<Reg20Item>
+				<TipoNFS>DPS</TipoNFS>
+				<NumRps>10000001</NumRps>
+				<SerRps>A1</SerRps>
+				<DtEmi>27/11/2025</DtEmi>
+				<RetFonte>NAO</RetFonte>
+				<CodSrv>01.01</CodSrv>
+				<DiscrSrv>Exemplo de RPS</DiscrSrv>
+				<VlNFS>1100.22</VlNFS>
+				<VlDed>100.00</VlDed>
+				<DiscrDed>Teste Dedução</DiscrDed>
+				<VlBasCalc>1000.22</VlBasCalc>
+				<AlqIss>5.5</AlqIss>
+				<VlIss>55.01</VlIss>
+				<VlIssRet>0.00</VlIssRet>
+				<CpfCnpTom>67868941000112</CpfCnpTom>
+				<RazSocTom>Raz Soc Tomador</RazSocTom>
+				<TipoLogtom>J</TipoLogtom>
+				<LogTom>Rua Joao Antonio Lofredo</LogTom>
+				<NumEndTom>551</NumEndTom>
+				<ComplEndTom>Compl End</ComplEndTom>
+				<BairroTom>JARDIM SENADOR VERGUEIRO</BairroTom>
+				<MunTom>TAUBATE</MunTom>
+				<SiglaUFTom>SP</SiglaUFTom>
+				<CepTom>12080-170</CepTom>
+				<Telefone>(99)123.456.789</Telefone>
+				<InscricaoMunicipal>IM123456</InscricaoMunicipal>
+				<TipoLogLocPre>Rua</TipoLogLocPre>
+				<LogLocPre>Laguna</LogLocPre>
+				<NumEndLocPre>231</NumEndLocPre>
+				<ComplEndLocPre>Comp End Loc Pre</ComplEndLocPre>
+				<BairroLocPre>Jardim Paulista</BairroLocPre>
+				<MunLocPre>RIBEIRAO PRETO</MunLocPre>
+				<SiglaUFLocpre>SP</SiglaUFLocpre>
+				<CepLocPre>14090-060</CepLocPre>
+				<Email1>email1@gmail.com</Email1>
+				<Email2>email2@gmail.com</Email2>
+				<Email3>email3@gmail.com</Email3>
+				<Reg30>
+					<Reg30Item>
+						<TributoSigla>INSS</TributoSigla>
+						<TributoCST/>
+						<TributoIdRet/>
+						<TributoBaseCalc/>
+						<TributoAliquota>5.00</TributoAliquota>
+						<TributoValor>50.05</TributoValor>
+					</Reg30Item>
+					<Reg30Item>
+						<TributoSigla>CLL</TributoSigla>
+						<TributoCST/>
+						<TributoIdRet/>
+						<TributoBaseCalc/>
+						<TributoAliquota>3.00</TributoAliquota>
+						<TributoValor>10.01</TributoValor>
+					</Reg30Item>
+				</Reg30>
+				<Reg40>
+					<Reg40Item>
+						<SiglaCpoAdc>DescIncond</SiglaCpoAdc>
+						<ConteudoCpoAdc>8.00</ConteudoCpoAdc>
+					</Reg40Item>
+					<Reg40Item>
+						<SiglaCpoAdc>DadosAdicionais</SiglaCpoAdc>
+						<ConteudoCpoAdc>Teste de Dados Adicionais</ConteudoCpoAdc>
+					</Reg40Item>
+				</Reg40>
+				<Reg50>
+					<Reg50Item>
+						<TipoEnd>1</TipoEnd>
+						<Destinatario>
+							<DestTipPes>J</DestTipPes>
+							<DestCpfCnpj>07645081000126</DestCpfCnpj>
+							<DestNIF/>
+							<DestNaoNIF>0</DestNaoNIF>
+							<DestNome>Nome do Destinatário</DestNome>
+						</Destinatario>
+						<Obra>
+							<ObraIdLocal>1</ObraIdLocal>
+							<ObraDtInicio>27/11/2025</ObraDtInicio>
+							<ObraCEICNO>COD_CEI</ObraCEICNO>
+							<ObraCodPre>COD_PRE</ObraCodPre>
+						</Obra>
+						<BensImov>
+							<BensImobCIB>12345678</BensImobCIB>
+						</BensImov>
+						<Endereco>
+							<EndCEP>12080-170</EndCEP>
+							<EndExtPais>MX</EndExtPais>
+							<EndExtCodPost>145526</EndExtCodPost>
+							<EndExtCidade>Tijuana</EndExtCidade>
+							<EndExtEstProvReg>Baja California</EndExtEstProvReg>
+							<EndLog>Rua B</EndLog>
+							<EndNum>4</EndNum>
+							<EndCompl>Complemento</EndCompl>
+							<EndBairro>Centro</EndBairro>
+						</Endereco>
+					</Reg50Item>
+				</Reg50>
+				<Reg60_RTC>
+					<Finalidade>1</Finalidade>
+					<IndConsFin>NAO</IndConsFin>
+					<IndDest>SIM</IndDest>
+					<IndOpeOne>030101</IndOpeOne>
+					<VlReeRepRes>8.85</VlReeRepRes>
+					<gIBSCBS>
+						<CST>200</CST>
+						<CClassTrib>200002</CClassTrib>
+						<CCodCredPres>12</CCodCredPres>
+					</gIBSCBS>
+					<gTribReg>
+						<CST>010</CST>
+						<CClassTrib>010001</CClassTrib>
+					</gTribReg>
+					<gDif>
+						<PDifUF>SP</PDifUF>
+						<PDifMun>3.25</PDifMun>
+						<PDifCBS>2.86</PDifCBS>
+					</gDif>
+				</Reg60_RTC>
+			</Reg20Item>
+		</Reg20>
+		<Reg90>
+			<QtdRegNormal>1</QtdRegNormal>
+			<ValorNFS>1100.22</ValorNFS>
+			<ValorISS>55.01</ValorISS>
+			<ValorDed>0.00</ValorDed>
+			<ValorIssRetTom>0.00</ValorIssRetTom>
+			<QtdReg30>2</QtdReg30>
+			<ValorTributos>0.00</ValorTributos>
+			<QtdReg40>2</QtdReg40>
+			<QtdReg50>2</QtdReg50>
+		</Reg90>
+	</SDTRPS>
+</Sdt_processarpsin>

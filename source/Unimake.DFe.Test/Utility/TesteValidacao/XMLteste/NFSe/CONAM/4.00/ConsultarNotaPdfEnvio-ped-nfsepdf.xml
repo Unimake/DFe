@@ -1,0 +1,15 @@
+﻿<SDT_IMPRESSAO_IN xmlns="NFe">
+	<Login>
+		<CodigoUsuario>99999999999</CodigoUsuario>
+		<CodigoContribuinte>9999999999</CodigoContribuinte>
+		<Versao>4.0</Versao>
+	</Login>
+	<Nota>
+		<Competencia_Mes>05</Competencia_Mes>
+		<Competencia_Ano>2025</Competencia_Ano>
+		<RPS_Serie></RPS_Serie>
+		<RPS_Numero></RPS_Numero>
+		<Nota_Serie>NFE</Nota_Serie>
+		<Nota_Numero>12345</Nota_Numero>
+	</Nota>
+</SDT_IMPRESSAO_IN>
