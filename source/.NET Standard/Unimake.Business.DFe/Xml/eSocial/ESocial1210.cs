@@ -1120,9 +1120,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeVlrPatrocFunp13Field() => VlrPatrocFunp13 > 0;
 
-        public bool ShouldSerializeVlrDedPCFieldField() => VlrDedPC > 0;
+        public bool ShouldSerializeVlrDedPCField() => VlrDedPC > 0;
 
-        public bool ShouldSerializeVlrDedPC13FieldField() => VlrDedPC13 > 0;
+        public bool ShouldSerializeVlrDedPC13Field() => VlrDedPC13 > 0;
 
         #endregion ShouldSerialize
     }
