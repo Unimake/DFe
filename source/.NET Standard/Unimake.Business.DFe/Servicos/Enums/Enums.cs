@@ -7464,35 +7464,29 @@ namespace Unimake.Business.DFe.Servicos
         [Description("PUBLICENTER")]
         PUBLICENTER = 83,
 
-        /// <summary>
-        /// LEXSOM
-        /// </summary>
-        [Description("LEXSOM")]
-        LEXSOM = 84,
-
         ///<summary>
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 85,
+        SIGISSWEB = 84,
 
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 86,
+        BETHA_CLOUD = 85,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 87,
+        FUTURIZE = 86,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 88
+        PROPRIOFORTALEZACE = 87
     }
 
     #endregion
