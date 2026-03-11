@@ -7483,28 +7483,22 @@ namespace Unimake.Business.DFe.Servicos
         SIGISSWEB = 86,
 
         /// <summary>
-        /// SOFTPLAN
-        /// </summary>
-        [Description("SOFTPLAN")]
-        SOFTPLAN = 87,
-
-        /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 88,
+        BETHA_CLOUD = 87,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 89,
+        FUTURIZE = 88,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 90
+        PROPRIOFORTALEZACE = 89
     }
 
     #endregion
