@@ -492,7 +492,6 @@
 		<None Remove="Servicos\Config\NFSe\ImbeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ImperatrizMA.xml" />
 		<None Remove="Servicos\Config\NFSe\IndaialSC.xml" />
-		<None Remove="Servicos\Config\NFSe\IndaiatubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\IpojucaPE.xml" />
 		<None Remove="Servicos\Config\NFSe\IratiPR.xml" />
@@ -1381,8 +1380,6 @@
 		<None Remove="Xml\Schemas\NFSe\GISSONLINE\substituir-nfse-resposta-v2_04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GISSONLINE\tipos-v2_04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GISSONLINE\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\INDAIATUBA_SP\nfse_v2-03 2016.xsd" />
-		<None Remove="Xml\Schemas\NFSe\INDAIATUBA_SP\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\cabecalho_v1.xsd" />
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\cancelar_nfse_envio_v1.xsd" />
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\cancelar_nfse_resposta_v1.xsd" />
@@ -1402,8 +1399,6 @@
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\xmldsig-core-schema20020212_v1.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\LEXSOM\NFSE.xsd" />
-		<None Remove="Xml\Schemas\NFSe\LEXSOM\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MEGASOFT\nfse_v01.xsd" />
@@ -1529,8 +1524,6 @@
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\SUPERNOVA\nfse.xsd" />
-		<None Remove="Xml\Schemas\NFSe\SUPERNOVA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SYSTEMPRO\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SYSTEMPRO\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarCupomFiscalEnvio.xsd" />
@@ -1746,7 +1739,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IcaraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImbeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IndaialSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\IndaiatubaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IpojucaPE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IratiPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItanhangaMT.xml" />
@@ -3732,8 +3724,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\tipos-v2_04-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\tipos-v2_04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\INDAIATUBA_SP\nfse_v2-03 2016.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\INDAIATUBA_SP\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\INTERSOL\cabecalho_v1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\INTERSOL\cancelar_nfse_envio_v1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\INTERSOL\cancelar_nfse_resposta_v1.xsd" />
@@ -3755,8 +3745,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\LEXSOM\NFSE.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\LEXSOM\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MEGASOFT\nfse_v01.xsd" />
@@ -3917,8 +3905,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\SUPERNOVA\nfse.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\SUPERNOVA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SYSTEMPRO\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SYSTEMPRO\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarCupomFiscalEnvio.xsd" />
