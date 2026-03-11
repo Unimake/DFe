@@ -2099,12 +2099,6 @@
 		<ArqConfig>TapejaraRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="1505502">
-		<Nome>Paragominas - PA</Nome>
-		<UF>PA</UF>
-		<ArqConfig>ParagominasPA.xml</ArqConfig>
-		<PadraoNFSe>DESENVOLVECIDADE</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5201108">
 		<Nome>Anápolis - GO</Nome>
 		<UF>GO</UF>
@@ -2200,12 +2194,6 @@
 		<UF>MT</UF>
 		<ArqConfig>TangaraDaSerraMT.xml</ArqConfig>
 		<PadraoNFSe>CENTI</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3520509">
-		<Nome>Indaiatuba - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>IndaiatubaSP.xml</ArqConfig>
-		<PadraoNFSe>INDAIATUBA_SP</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2931350">
 		<Nome>Teixeira de Freitas - BA</Nome>

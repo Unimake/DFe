@@ -7440,40 +7440,34 @@ namespace Unimake.Business.DFe.Servicos
         EGOVERNEISS = 79,
 
         ///<summary>
-        ///DESENVOLVECIDADE
-        /// </summary>
-        [Description("DESENVOLVECIDADE")]
-        DESENVOLVECIDADE = 80,
-
-        ///<summary>
         ///INTERSOL
         /// </summary>
         [Description("INTERSOL")]
-        INTERSOL = 81,
+        INTERSOL = 80,
 
         ///<summary>
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 82,
+        SIGISSWEB = 81,
 
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 83,
+        BETHA_CLOUD = 82,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 84,
+        FUTURIZE = 83,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 85
+        PROPRIOFORTALEZACE = 84
     }
 
     #endregion

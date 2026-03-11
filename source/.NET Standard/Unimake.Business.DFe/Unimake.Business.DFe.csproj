@@ -610,7 +610,6 @@
 		<None Remove="Servicos\Config\NFSe\ParacambiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\ParacatuMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaDeMinasMG.xml" />
-		<None Remove="Servicos\Config\NFSe\ParagominasPA.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaguacuPaulistaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaisoDoNortePR.xml" />
 		<None Remove="Servicos\Config\NFSe\ParanaguaPR.xml" />
@@ -1296,8 +1295,6 @@
 		<None Remove="Xml\Schemas\NFSe\COPLAN\nfse_v2_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\DESENVOLVECIDADE\nfsev203.xsd" />
-		<None Remove="Xml\Schemas\NFSe\DESENVOLVECIDADE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DIGIFRED\nfse_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DIGIFRED\xmldsig-core-schema_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DSF\nfse.xsd" />
@@ -1774,7 +1771,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmeiraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PanambiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParacatuMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ParagominasPA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParaguacuPaulistaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParaisoDoNortePR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanaguaPR.xml" />
@@ -2776,8 +2772,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\substituir-nfse-envio-v2_04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\tipos-v2_04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\DESENVOLVECIDADE\nfsev203.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\DESENVOLVECIDADE\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ELOTECH\nfse_v2_03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\CNC_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\DPS_v1.01.xsd">
