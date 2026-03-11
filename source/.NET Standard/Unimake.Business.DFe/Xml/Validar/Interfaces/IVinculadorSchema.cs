@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using System.Xml;
 
-namespace Unimake.DFe.Test.Utility.TesteValidacao.Interfaces
+namespace Unimake.Business.DFe.Interfaces
 {
     /// <summary>
     /// Interface que define o contrato para vinculadores de schema específicos para cada tipo de DFe.

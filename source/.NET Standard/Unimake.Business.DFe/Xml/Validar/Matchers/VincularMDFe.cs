@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unimake.Business.DFe.Interfaces;
 using System.Xml;
-using Unimake.DFe.Test.Utility.TesteValidacao.Interfaces;
 
-namespace Unimake.DFe.Test.Utility.TesteValidacao.Matchers
+
+namespace Unimake.Business.DFe.Matchers
 {
     internal class VincularMDFe : IVinculadorSchema
     {
