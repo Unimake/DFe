@@ -41,13 +41,13 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-	  <WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
+		<WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Xml\Schemas\NFSe\AGILI\**" />
-	  <EmbeddedResource Remove="Xml\Schemas\NFSe\AGILI\**" />
-	  <None Remove="Xml\Schemas\NFSe\AGILI\**" />
+		<Compile Remove="Xml\Schemas\NFSe\AGILI\**" />
+		<EmbeddedResource Remove="Xml\Schemas\NFSe\AGILI\**" />
+		<None Remove="Xml\Schemas\NFSe\AGILI\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -1622,31 +1622,35 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GaruvaSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AraruamaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AraucariaPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MirandopolisSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AvareSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\GaruvaSC.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CamaragibePE.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GuararapesSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguariunaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MacapaAP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\OuroPretoDoOesteRO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDasOstrasRJ.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TibauRN.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AraruamaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AraucariaPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MirandopolisSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AvareSP.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BETHA_CLOUD.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CambaraPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CapitaoRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CamaragibePE.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\GuararapesSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\JaguariunaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MacapaAP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\OuroPretoDoOesteRO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\RioDasOstrasRJ.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TibauRN.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BETHA_CLOUD.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CambaraPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CapitaoRS.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -1868,984 +1872,984 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Servicos\Config\DARE\AN.xml" />
-	  <EmbeddedResource Include="Servicos\Config\DARE\Config.xml" />
-	  <EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
-	  <EmbeddedResource Include="Servicos\Config\EFDReinf\Config.xml" />
-	  <EmbeddedResource Include="Servicos\Config\ESocial\AN.xml" />
-	  <EmbeddedResource Include="Servicos\Config\ESocial\Config.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NF3e\AC.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\AL.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\AM.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\AP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\BA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\CE.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\Config.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NF3e\DF.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\ES.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\GO.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\MA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NF3e\PA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\PB.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\PE.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\PI.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\PR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NF3e\MG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NF3e\RJ.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\RN.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\RO.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\RR.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\RS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\SC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NF3e\SE.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NF3e\SVRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NF3e\TO.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CamacariBA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BrusqueSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CedralSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CubataoSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\EloiMendesMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JaboticabalSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JoaoPessoaPB.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JuazeiroBA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ManausAM.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MarcolandiaPI.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AraripinaPE.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\NatalRN.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaBassanoRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BomPrincipioRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\OrizonaGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MontesClarosMG.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ParobeRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PontalinaGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ProfessorJamilGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\RibeiraoDasNevesMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoCapibaribePE.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SantanaDoLivramentoRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPlatinaPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoCarlosSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDelReiMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoLeopoldoRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoLuisMA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoPedroDaAldeiaRJ.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoSebastiaoDoParaisoMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SapirangaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SeberiRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SeteLagoasMG.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\RecifePE.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoRoqueSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SobralCE.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SorrisoMT.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TaboaoDaSerraSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TaiobeirasMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TangaraDaSerraMT.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TapejaraRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquaraRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquaritingaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquarivaiSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TeodoroSampaioSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresopolisRJ.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TerraBoaPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TramandaiRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TresCoroasRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TriunfoRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AgudoRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AlegreteRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDeSaoFranciscoES.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoLargoPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CarlosBarbosaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\EstrelaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CodoMA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ConcordiaSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\FrancaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GetulioVargasRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GramadoRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaramirimSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GurupiTO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItuSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JundiaiSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MassarandubaSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MataoSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PomerodeSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SantosSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDoRioPretoSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosCamposSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TaioSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TresArroiosRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TimboSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TupandiRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\UmuaramaPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VacariaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ValencaBA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ValinhosSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VargemGrandeDoSulSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VargemGrandePaulistaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VarzeaGrandeMT.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JacobinaBA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BotucatuSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\FISCO.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SalvadorBA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\IbicoaraBA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\IjuiRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaquaquecetubaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SenhorDoBonfimBA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ColomboPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MaringaPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CachoeiraDoSulRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TaperaRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MonteBeloMG.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDeJaneiroRJ.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\UberlandiaMG.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBorjaRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BoituvaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JoaoMonlevadeMG.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CaratingaMG.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\LimeiraSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BiguacuSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\RibeiraoPretoSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDeRibamarMA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinasSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CarazinhoRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzAltaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaratinguetaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CanoinhasSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PortoAlegreRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarapariES.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GuairaPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PaulistaPE.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GaranhunsPE.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CanoasRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CotiaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CristalinaGO.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AraquariSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GoianaPE.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JabotaoDosGuararapesPE.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MossoroRN.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BarreirasBA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItapemaSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\LorenaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoMarcosRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoSebastiaoDoCaiRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PortoVelhoRO.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\OlindaPE.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraMansaRJ.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoGrandeMS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BoaVistaRR.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PauloBentoRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TerraDeAreiaRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDoSulRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PorangatuGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MarataRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CuiabaMT.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\RedencaoPA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CaboDeSantoAgostinhoPE.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MirassolandiaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MontenegroRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CacapavaDoSulRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\IgarapeMG.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\UruguaianaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VarginhaMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AmambaiMS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VenancioAiresRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VeranopolisRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PiracicabaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VianaES.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VilhenaRO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ViscondeDoRioBrancoMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VitoriaDeSantoAntaoPE.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VitoriaES.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VotorantimSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VotuporangaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\Webfisco.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TubaraoSC.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\RolanteRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaibaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\EstanciaVelhaRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\HarmoniaRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\IvotiRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaPrataRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SalvadorDoSulRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PaveramaRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PortaoRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaribaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PresidenteLucenaRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaMariaRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PetropolisRJ.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\FortalezaCE.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\FarroupilhaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoMouraoPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BrumadoBA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDeJesusBA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JiParanaRO.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JaciSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaporangaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaitubaPA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GarcaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MonteAltoSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\OuroFinoMG.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\NovoHamburgoRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanavaiPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CosmoramaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\DuartinaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\FernandopolisSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AssisSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BiriguiSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabunaBA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PiratiningaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PareciNovoRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CabedeloPB.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PousoAltoMG.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JataiGO.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CamboriuSC.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PantanoGrandeRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BarueriSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SerraES.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TresCachoeirasRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VeraCruzRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BaririSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\XangriLaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TresLagoasMS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquaritubaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SerafinaCorreaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDasPedrasSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PotirendabaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SertaozinhoSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SimoesFilhoBA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\VilaVelhaES.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CorumbaMS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CanaaDosCarajasPA.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CatanduvaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ArujaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CariacicaES.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ChapecoSC.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CaxiasDoSulRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\Memory.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\Equiplano.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\Abase.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GravataPE.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AguasDeLindoiaSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\RibasDoRioPardoMS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\UberabaMG.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDoGarcasMT.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CarapicuibaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\NACIONAL.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\EdeiaGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\FormosaGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosPinhaisPR.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItumbiaraGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaSerranaMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaMutumMT.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\LondrinaPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoBomRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoNovoParecisMT.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguainaTO.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CaboFrioRJ.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AguaBoaMT.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MogiDasCruzesSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\TremembeSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\RioGrandeRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GaribaldiRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ErnestinaRS.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BrasiliaDF.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BlumenauSC.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Xml\Schemas\CTe\consSitCTeTiposBasico_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\consSitCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\consStatServCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\consStatServTiposBasico_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\cteModalAereo_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\cteModalAquaviario_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\cteModalDutoviario_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\cteModalFerroviario_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\cteModalRodoviarioOS_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\cteModalRodoviario_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\cteMultiModal_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\cteOS_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\cteSimp_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\cteTiposBasico_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\cte_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\DFeTiposBasicos_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\evCancCECTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\evCancCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\evCancIECTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\evCancPrestDesacordo_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\evCCeCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\evCECTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\eventoCTeTiposBasico_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\eventoCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\evEPECCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\evGTV_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\evIECTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\evPrestDesacordo_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\evRegMultimodal_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\GTVe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\inutCTeTiposBasico_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\inutCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\procCTeOS_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\procCTeSimp_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\procCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\procEventoCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\procGTVe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\procInutCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\retConsSitCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\retConsStatServCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\retCTeOS_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\retCTeSimp_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\retCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\retEventoCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\retGTVe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\retInutCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\tiposGeralCTe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\envioLoteEventos-v1_05_01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\envioLoteEventosAssincrono-v1_00_00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-1000-evtInfoContribuinte-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-1050-evt1050TabLig-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-1070-evtTabProcesso-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2010-evtTomadorServicos-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2020-evtPrestadorServicos-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2030-evtRecursoRecebidoAssociacao-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2040-evtRecursoRepassadoAssociacao-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2050-evtInfoProdRural-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2055-evt2055AquisicaoProdRural-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2060-evtInfoCPRB-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2098-evtReabreEvPer-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2099-evtFechamento-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-3010-evtEspDesportivo-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-4010-evt4010PagtoBeneficiarioPF-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-4020-evt4020PagtoBeneficiarioPJ-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-4040-evt4040PagtoBenefNaoIdentificado-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-4080-evt4080RetencaoRecebimento-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-4099-evt4099FechamentoDirf-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9000-evtExclusao-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9001-evtTotal-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9005-evtRet-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9011-evtTotalContrib-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9015-evtRetCons-v2_01_02-.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoLoteEventos-v1_05_01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoLoteEventosAssincrono-v1_00_00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoRecibosChaveEvento-v1_05_01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoTotalizadorContribuinte-v1_05_01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoTotalizadorEvento-v1_05_01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\xmldsig-core-schema.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\ConsultaIdentificadoresEventosEmpregador-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\ConsultaIdentificadoresEventosTabela-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\ConsultaIdentificadoresEventosTrabalhador-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\ConsultaLoteEventos-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\EnvioLoteEventos-v1_1_1.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtAdmissao.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtAdmPrelim.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtAfastTemp.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtAltCadastral.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtAltContratual.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtAnotJud.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtBaixa.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtBasesFGTS.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtBasesTrab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtBenPrRP.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtCAT.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtCdBenAlt.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtCdBenefAlt.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtCdBenefIn.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtCdBenIn.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtCdBenTerm.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtCessao.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtComProd.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtContProc.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtContratAvNP.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtCS.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtDeslig.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtExclusao.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtExcProcTrab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtExpRisco.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtFechaEvPer.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtFGTS.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtFGTSProcTrab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtInfoComplPer.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtInfoEmpregador.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtIrrf.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtIrrfBenef.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtMonit.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtPgtos.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtProcTrab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtReabreEvPer.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtReativBen.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtReintegr.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtRemun.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtRmnRPPS.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtTabEstab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtTabLotacao.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtTabProcesso.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtTabRubrica.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtToxic.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtTribProcTrab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtTSVAltContr.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtTSVInicio.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\evtTSVTermino.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\RetornoConsultaIdentificadoresEventos-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorId-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\ConsultaIdentificadoresEventosEmpregador-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\ConsultaIdentificadoresEventosTabela-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\ConsultaIdentificadoresEventosTrabalhador-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\ConsultaLoteEventos-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\EnvioLoteEventos-v1_1_1.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAdmissao.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAdmPrelim.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAfastTemp.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAltCadastral.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAltContratual.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAnotJud.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtBaixa.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtBasesFGTS.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtBasesTrab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtBenPrRP.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCAT.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCdBenAlt.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCdBenefAlt.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCdBenefIn.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCdBenIn.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCdBenTerm.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCessao.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtComProd.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtConsolidContProc.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtContProc.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtContratAvNP.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCS.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtDeslig.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtExclusao.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtExcProcTrab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtExpRisco.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtFechaEvPer.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtFGTS.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtFGTSProcTrab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtInfoComplPer.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtInfoEmpregador.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtIrrf.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtIrrfBenef.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtMonit.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtPgtos.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtProcTrab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtReabreEvPer.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtReativBen.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtReintegr.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtRemun.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtRmnRPPS.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTabEstab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTabLotacao.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTabProcesso.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTabRubrica.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtToxic.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTribProcTrab.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTSVAltContr.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTSVInicio.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTSVTermino.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\RetornoConsultaIdentificadoresEventos-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\SolicitacaoDownloadEventosPorId-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\tipos.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\xmldsig-core-schema.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\tipos.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\ESocial\xmldsig-core-schema.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\GNRE\retorno_gnre_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\GNRE\retorno_gnre_v2.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\consReciNF3eTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\consReciNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\consSitNF3eTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\consSitNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\consStatServNF3eTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\consStatServNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\DFeTiposBasicos_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\enviNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\evCancNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\eventoNF3eTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\eventoNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\nf3eTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\nf3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\procEventoNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\procNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retConsReciNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retConsSitNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retConsStatServNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retEnviNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retEventoNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\tiposGeralNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\xmldsig-core-schema_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\consSitNFComTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\consSitNFCom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\consStatServNFComTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\consStatServNFCom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\DFeTiposBasicos_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\evCancNFCom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\eventoNFComTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\eventoNFCom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\nfcomTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\nfcom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\procEventoNFCom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\procNFCom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\retConsSitNFCom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\retConsStatServNFCom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\retEventoNFCom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\retNFCom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\tiposGeralNFCom_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFCom\xmldsig-core-schema_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\110150_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\Averb_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\DFeTiposBasicos_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e110001_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e110192_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e110193_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e110750_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e110751_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e112110_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e112120_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e112130_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e112140_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e112150_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e211110_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e211120_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e211124_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e211128_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e211130_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e211140_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e211150_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e212110_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e212120_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e412120_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e412130_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\e790700_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\envAverb_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\envEventoAtorInteressado_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancInsucessoNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\envEventoEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\envEventoInsucessoNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\eventoAtorInteressado_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\EventoCancEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\EventoCancInsucessoNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\EventoEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\Evento_DVS_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\EventoInsucessoNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteAverb_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoAtorInteressado_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancInsucessoNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEvento_DVS_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoInsucessoNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\nfceDownloadXML_100.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\procAverbNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\procEventoAtorInteressado_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancInsucessoNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\procEventoEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\procEventoInsucessoNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\retEnvAverb_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\retEnvEventoAtorInteressado_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoCancEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoCancInsucessoNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoEConf_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoInsucessoNFe_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFe\retNfceDownloadXML_100.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\nfse_v2-04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\xmldsig-core-schema20020212.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\nfse v2 03.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\xmldsig-core-schema20020212.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\nfse_dps_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\xmldsig-core-schema_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDCadastroContasContabeis.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDCadastroContasContabeisRetorno.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDConsultaContasPendentes.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDConsultaContasPendentesRetorno.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDConsultaItensAtividade.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraConsulta.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraConsultaRetorno.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraLancamento.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraLancamentoRetorno.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSECancelaNFe.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSECancelaNFeRetorno.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEConsultaNota.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEConsultaNotaRetorno.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEletronico.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEletronicoArquivo.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDNFEletronica.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDNFEletronicaArquivo.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDNotaTomador.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDRetorno.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\CONAM\XML_RPS_V4.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\Coplan_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\tiposComplexos_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\tiposSimples_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\cabecalho-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\cancelar-nfse-envio-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-lote-rps-envio-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-faixa-envio-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-rps-envio-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-servico-prestado-envio-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-servico-tomado-envio-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\enviar-lote-rps-envio-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\enviar-lote-rps-sincrono-envio-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\gerar-nfse-envio-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\nfse_v2-04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\substituir-nfse-envio-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\tipos-v2_04.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\xmldsig-core-schema20020212.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DESENVOLVECIDADE\nfsev203.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\DESENVOLVECIDADE\xmldsig-core-schema20020212.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\ELOTECH\nfse_v2_03.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\CNC_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\DPS_v1.01.xsd">
-	    <SubType>Designer</SubType>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\NFSe_v1.01.xsd">
-	    <SubType>Designer</SubType>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\pedRegEvento_v1.01.xsd">
-	    <SubType>Designer</SubType>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposCnc_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposComplexos_v1.01.xsd">
-	    <SubType>Designer</SubType>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposEventos_v1.01.xsd">
-	    <SubType>Designer</SubType>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposSimples_v1.01.xsd">
-	    <SubType>Designer</SubType>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseEnvio_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseResposta_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsEnvio_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsResposta_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfseEnvio_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfsePorRpsEnvio_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfsePorRpsResposta_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfseResposta_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarSituacaoLoteRpsEnvio_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarSituacaoLoteRpsResposta_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esRecepcionarLoteRpsEnvio_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esRecepcionarLoteRpsResposta_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\TiposEsnfs_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\xmldsig-core-schema_v01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\E_RECEITA\nfse v2 02.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\E_RECEITA\xmldsig-core-schema20020212.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\cfse.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\nfse v2 02.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\nfse.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\xmldsig-core-schema20020212.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\FIORILLI\nfse_v201.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\FIORILLI\xmldsig-core-schema20020212.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\FUTURIZE\nfse_v2_02.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\FUTURIZE\xmldsig-core-schema20020212.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\DPS_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\evento_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\pedRegEvento_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\tiposComplexos_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\tiposEventos_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\tiposSimples_v1.01.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\xmldsig-core-schema.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\xmldsig-core-schema_v1.01.xsd" />
+		<EmbeddedResource Include="Servicos\Config\DARE\AN.xml" />
+		<EmbeddedResource Include="Servicos\Config\DARE\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
+		<EmbeddedResource Include="Servicos\Config\EFDReinf\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\ESocial\AN.xml" />
+		<EmbeddedResource Include="Servicos\Config\ESocial\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\NF3e\AC.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\AL.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\AM.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\AP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\BA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\CE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\NF3e\DF.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\ES.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\GO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\MA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NF3e\PA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\PB.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\PE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\PI.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\PR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NF3e\MG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NF3e\RJ.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\RN.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\RO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\RR.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\RS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\SC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NF3e\SE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NF3e\SVRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NF3e\TO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CamacariBA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\BrusqueSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CedralSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CubataoSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\EloiMendesMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\JaboticabalSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\JoaoPessoaPB.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\JuazeiroBA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ManausAM.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MarcolandiaPI.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AraripinaPE.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\NatalRN.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\NovaBassanoRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BomPrincipioRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\OrizonaGO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MontesClarosMG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ParobeRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\PontalinaGO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ProfessorJamilGO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\RibeiraoDasNevesMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoCapibaribePE.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SantanaDoLivramentoRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPlatinaPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCarlosSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDelReiMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoLeopoldoRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoLuisMA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoPedroDaAldeiaRJ.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSebastiaoDoParaisoMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SapirangaRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SeberiRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SeteLagoasMG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\RecifePE.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoRoqueSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SobralCE.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SorrisoMT.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TaboaoDaSerraSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TaiobeirasMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TangaraDaSerraMT.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TapejaraRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TaquaraRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TaquaritingaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TaquarivaiSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TeodoroSampaioSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TeresopolisRJ.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TerraBoaPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TramandaiRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TresCoroasRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TriunfoRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AgudoRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AlegreteRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\BarraDeSaoFranciscoES.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CampoLargoPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CarlosBarbosaRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\EstrelaRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CodoMA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ConcordiaSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\FrancaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\GetulioVargasRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\GramadoRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\GuaramirimSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\GurupiTO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ItuSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\JundiaiSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MassarandubaSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MataoSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\PomerodeSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SantosSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDoRioPretoSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosCamposSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\TaioSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TresArroiosRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TimboSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TupandiRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\UmuaramaPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VacariaRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ValencaBA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ValinhosSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VargemGrandeDoSulSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VargemGrandePaulistaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VarzeaGrandeMT.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\JacobinaBA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BotucatuSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\FISCO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SalvadorBA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\IbicoaraBA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\IjuiRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ItaquaquecetubaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SenhorDoBonfimBA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ColomboPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MaringaPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CachoeiraDoSulRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\TaperaRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\MonteBeloMG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\RioDeJaneiroRJ.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\UberlandiaMG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoBorjaRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BoituvaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\JoaoMonlevadeMG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CaratingaMG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\LimeiraSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\BiguacuSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\RibeiraoPretoSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDeRibamarMA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CampinasSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CarazinhoRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CruzAltaRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\GuaratinguetaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CanoinhasSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\PortoAlegreRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\GuarapariES.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\GuairaPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\PaulistaPE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\GaranhunsPE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CanoasRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CotiaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CristalinaGO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\AraquariSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\GoianaPE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\JabotaoDosGuararapesPE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\MossoroRN.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BarreirasBA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ItapemaSC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\LorenaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoMarcosRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSebastiaoDoCaiRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PortoVelhoRO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\OlindaPE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BarraMansaRJ.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CampoGrandeMS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BoaVistaRR.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PauloBentoRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\TerraDeAreiaRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDoSulRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PorangatuGO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MarataRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CuiabaMT.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\RedencaoPA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CaboDeSantoAgostinhoPE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\MirassolandiaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MontenegroRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CacapavaDoSulRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\IgarapeMG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\UruguaianaRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VarginhaMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AmambaiMS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\VenancioAiresRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VeranopolisRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PiracicabaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VianaES.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VilhenaRO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ViscondeDoRioBrancoMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VitoriaDeSantoAntaoPE.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VitoriaES.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VotorantimSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VotuporangaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\Webfisco.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\TubaraoSC.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\RolanteRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\GuaibaRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\EstanciaVelhaRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\HarmoniaRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\IvotiRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\NovaPrataRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SalvadorDoSulRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PaveramaRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PortaoRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\GuaribaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PresidenteLucenaRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SantaMariaRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PetropolisRJ.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\FortalezaCE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\FarroupilhaRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CampoMouraoPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\BrumadoBA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDeJesusBA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\JiParanaRO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\JaciSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ItaporangaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ItaitubaPA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\GarcaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\MonteAltoSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\OuroFinoMG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\NovoHamburgoRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ParanavaiPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CosmoramaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\DuartinaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\FernandopolisSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\AssisSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BiriguiSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ItabunaBA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PiratiningaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PareciNovoRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CabedeloPB.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PousoAltoMG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\JataiGO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CamboriuSC.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PantanoGrandeRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BarueriSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SerraES.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\TresCachoeirasRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\VeraCruzRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\BaririSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\XangriLaRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TresLagoasMS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TaquaritubaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SerafinaCorreaRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\RioDasPedrasSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\PotirendabaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SertaozinhoSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SimoesFilhoBA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\VilaVelhaES.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CorumbaMS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CanaaDosCarajasPA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CatanduvaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ArujaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CariacicaES.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ChapecoSC.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CaxiasDoSulRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\Memory.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\Equiplano.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\Abase.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\GravataPE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\AguasDeLindoiaSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\RibasDoRioPardoMS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\UberabaMG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BarraDoGarcasMT.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CarapicuibaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\NACIONAL.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\EdeiaGO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\FormosaGO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosPinhaisPR.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ItumbiaraGO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\NovaSerranaMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\NovaMutumMT.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\LondrinaPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CampoBomRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CampoNovoParecisMT.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\AraguainaTO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CaboFrioRJ.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AguaBoaMT.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MogiDasCruzesSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\TremembeSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\RioGrandeRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\GaribaldiRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ErnestinaRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BrasiliaDF.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\BlumenauSC.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\CTe\consSitCTeTiposBasico_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\consSitCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\consStatServCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\consStatServTiposBasico_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalAereo_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalAquaviario_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalDutoviario_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalFerroviario_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalRodoviarioOS_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalRodoviario_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteMultiModal_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteOS_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteSimp_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteTiposBasico_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cte_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\DFeTiposBasicos_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCancCECTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCancCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCancIECTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCancPrestDesacordo_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCCeCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCECTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\eventoCTeTiposBasico_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\eventoCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evEPECCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evGTV_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evIECTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evPrestDesacordo_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evRegMultimodal_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\GTVe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\inutCTeTiposBasico_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\inutCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\procCTeOS_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\procCTeSimp_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\procCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\procEventoCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\procGTVe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\procInutCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retConsSitCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retConsStatServCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retCTeOS_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retCTeSimp_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retEventoCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retGTVe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retInutCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\tiposGeralCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\envioLoteEventos-v1_05_01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\envioLoteEventosAssincrono-v1_00_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-1000-evtInfoContribuinte-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-1050-evt1050TabLig-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-1070-evtTabProcesso-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2010-evtTomadorServicos-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2020-evtPrestadorServicos-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2030-evtRecursoRecebidoAssociacao-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2040-evtRecursoRepassadoAssociacao-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2050-evtInfoProdRural-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2055-evt2055AquisicaoProdRural-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2060-evtInfoCPRB-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2098-evtReabreEvPer-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-2099-evtFechamento-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-3010-evtEspDesportivo-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-4010-evt4010PagtoBeneficiarioPF-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-4020-evt4020PagtoBeneficiarioPJ-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-4040-evt4040PagtoBenefNaoIdentificado-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-4080-evt4080RetencaoRecebimento-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-4099-evt4099FechamentoDirf-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9000-evtExclusao-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9001-evtTotal-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9005-evtRet-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9011-evtTotalContrib-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9015-evtRetCons-v2_01_02-.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoLoteEventos-v1_05_01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoLoteEventosAssincrono-v1_00_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoRecibosChaveEvento-v1_05_01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoTotalizadorContribuinte-v1_05_01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoTotalizadorEvento-v1_05_01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EFDReinf\xmldsig-core-schema.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\ConsultaIdentificadoresEventosEmpregador-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\ConsultaIdentificadoresEventosTabela-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\ConsultaIdentificadoresEventosTrabalhador-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\ConsultaLoteEventos-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\EnvioLoteEventos-v1_1_1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtAdmissao.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtAdmPrelim.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtAfastTemp.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtAltCadastral.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtAltContratual.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtAnotJud.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtBaixa.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtBasesFGTS.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtBasesTrab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtBenPrRP.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtCAT.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtCdBenAlt.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtCdBenefAlt.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtCdBenefIn.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtCdBenIn.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtCdBenTerm.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtCessao.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtComProd.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtContProc.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtContratAvNP.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtCS.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtDeslig.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtExclusao.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtExcProcTrab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtExpRisco.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtFechaEvPer.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtFGTS.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtFGTSProcTrab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtInfoComplPer.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtInfoEmpregador.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtIrrf.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtIrrfBenef.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtMonit.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtPgtos.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtProcTrab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtReabreEvPer.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtReativBen.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtReintegr.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtRemun.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtRmnRPPS.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtTabEstab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtTabLotacao.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtTabProcesso.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtTabRubrica.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtToxic.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtTribProcTrab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtTSVAltContr.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtTSVInicio.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\evtTSVTermino.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\RetornoConsultaIdentificadoresEventos-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorId-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\ConsultaIdentificadoresEventosEmpregador-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\ConsultaIdentificadoresEventosTabela-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\ConsultaIdentificadoresEventosTrabalhador-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\ConsultaLoteEventos-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\EnvioLoteEventos-v1_1_1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAdmissao.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAdmPrelim.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAfastTemp.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAltCadastral.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAltContratual.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtAnotJud.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtBaixa.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtBasesFGTS.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtBasesTrab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtBenPrRP.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCAT.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCdBenAlt.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCdBenefAlt.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCdBenefIn.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCdBenIn.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCdBenTerm.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCessao.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtComProd.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtConsolidContProc.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtContProc.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtContratAvNP.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCS.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtDeslig.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtExclusao.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtExcProcTrab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtExpRisco.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtFechaEvPer.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtFGTS.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtFGTSProcTrab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtInfoComplPer.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtInfoEmpregador.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtIrrf.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtIrrfBenef.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtMonit.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtPgtos.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtProcTrab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtReabreEvPer.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtReativBen.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtReintegr.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtRemun.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtRmnRPPS.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTabEstab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTabLotacao.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTabProcesso.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTabRubrica.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtToxic.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTribProcTrab.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTSVAltContr.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTSVInicio.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtTSVTermino.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\RetornoConsultaIdentificadoresEventos-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\SolicitacaoDownloadEventosPorId-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\tipos.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\xmldsig-core-schema.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\tipos.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\xmldsig-core-schema.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\retorno_gnre_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\retorno_gnre_v2.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\consReciNF3eTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\consReciNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\consSitNF3eTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\consSitNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\consStatServNF3eTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\consStatServNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\DFeTiposBasicos_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\enviNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\evCancNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\eventoNF3eTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\eventoNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\nf3eTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\nf3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\procEventoNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\procNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\retConsReciNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\retConsSitNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\retConsStatServNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\retEnviNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\retEventoNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\retNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\tiposGeralNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\xmldsig-core-schema_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\consSitNFComTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\consSitNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\consStatServNFComTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\consStatServNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\DFeTiposBasicos_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\evCancNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\eventoNFComTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\eventoNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\nfcomTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\nfcom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\procEventoNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\procNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\retConsSitNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\retConsStatServNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\retEventoNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\retNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\tiposGeralNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\xmldsig-core-schema_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\110150_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\Averb_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\DFeTiposBasicos_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110001_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110192_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110193_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110750_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110751_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e112110_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e112120_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e112130_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e112140_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e112150_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e211110_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e211120_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e211124_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e211128_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e211130_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e211140_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e211150_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e212110_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e212120_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e412120_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e412130_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e790700_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\envAverb_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoAtorInteressado_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancEConf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoEConf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\eventoAtorInteressado_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\EventoCancEConf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\EventoCancInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\EventoEConf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\Evento_DVS_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\EventoInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteAverb_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoAtorInteressado_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancEConf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoEConf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEvento_DVS_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\nfceDownloadXML_100.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procAverbNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoAtorInteressado_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancEConf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoEConf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvAverb_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvEventoAtorInteressado_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoCancEConf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoCancInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoEConf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retNfceDownloadXML_100.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\nfse_v2-04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\nfse v2 03.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\nfse_dps_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\xmldsig-core-schema_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDCadastroContasContabeis.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDCadastroContasContabeisRetorno.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDConsultaContasPendentes.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDConsultaContasPendentesRetorno.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDConsultaItensAtividade.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraConsulta.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraConsultaRetorno.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraLancamento.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraLancamentoRetorno.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSECancelaNFe.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSECancelaNFeRetorno.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEConsultaNota.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEConsultaNotaRetorno.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEletronico.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEletronicoArquivo.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDNFEletronica.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDNFEletronicaArquivo.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDNotaTomador.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDRetorno.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\CONAM\XML_RPS_V4.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\Coplan_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\tiposComplexos_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\tiposSimples_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\cabecalho-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\cancelar-nfse-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-lote-rps-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-faixa-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-rps-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-servico-prestado-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-servico-tomado-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\enviar-lote-rps-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\enviar-lote-rps-sincrono-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\gerar-nfse-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\nfse_v2-04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\substituir-nfse-envio-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\tipos-v2_04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DESENVOLVECIDADE\nfsev203.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DESENVOLVECIDADE\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ELOTECH\nfse_v2_03.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\CNC_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\DPS_v1.01.xsd">
+			<SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\NFSe_v1.01.xsd">
+			<SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\pedRegEvento_v1.01.xsd">
+			<SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposCnc_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposComplexos_v1.01.xsd">
+			<SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposEventos_v1.01.xsd">
+			<SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\tiposSimples_v1.01.xsd">
+			<SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseEnvio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseResposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsEnvio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsResposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfseEnvio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfsePorRpsEnvio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfsePorRpsResposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfseResposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarSituacaoLoteRpsEnvio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarSituacaoLoteRpsResposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esRecepcionarLoteRpsEnvio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esRecepcionarLoteRpsResposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\TiposEsnfs_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\xmldsig-core-schema_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\E_RECEITA\nfse v2 02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\E_RECEITA\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\cfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\nfse v2 02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\FIORILLI\nfse_v201.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\FIORILLI\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\FUTURIZE\nfse_v2_02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\FUTURIZE\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GIF\DPS_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GIF\evento_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GIF\pedRegEvento_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GIF\tiposComplexos_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GIF\tiposEventos_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GIF\tiposSimples_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GIF\xmldsig-core-schema.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GIF\xmldsig-core-schema_v1.01.xsd" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\CCG\RS.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\CCG\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\CTeOS\AC.xml" />
@@ -3048,7 +3052,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFCe\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFCe\MA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFCe\PA.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFCe\RJ.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -3195,121 +3199,121 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFe\TO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\FeiraDeSantanaBA.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaubateSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MariliaSP.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\BarretosSP.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\PassosMG.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\Ginfes.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\GovernadorValadaresMG.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CataguasesMG.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\RondonopolisMT.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ParaDeMinasMG.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\GoianiaGO.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\JuscimeiraMT.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeofiloOtoniMG.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\MogiGuacuSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MogiMirimSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MorrinhosGO.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\PelotasRS.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CatalaoGO.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\NilopolisRJ.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItambacuriMG.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItabaianaSE.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\MatupaMT.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\SinopMT.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\JoinvilleSC.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItajubaMG.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\BauruSP.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\PortoSeguroBA.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\PalmaresPE.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\BeloHorizonteMG.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoPauloSP.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\SorocabaSP.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\IbirubaRS.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\NovaFriburgoRJ.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\VoltaRedondaRJ.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\Template.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\Betha.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\SNCM\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\SNCM\SNCM.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\CCG\consGTIN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CCG\leiauteCcgConsGTIN_v1.00.xsd" />
@@ -3971,7 +3975,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\VERSATEC\nfse_v202.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\VERSATEC\xmldsig-core-schema20020212.xsd">
-		  <SubType>Designer</SubType>
+			<SubType>Designer</SubType>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFSe\VITORIA_ES\nfse v2 01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\VITORIA_ES\xmldsig-core-schema20020212.xsd" />
@@ -4001,30 +4005,33 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Properties\Resources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Resources.resx</DependentUpon>
-	  </Compile>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Xml\Validar\ValidarXMLSchema.cs">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Properties\Resources.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Servicos\MFE\" />
+		<Folder Include="Servicos\MFE\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Xml\Schemas\NFSe\EL\xmldsig-core-schema.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\xmldsig-core-schema.xsd" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="$(SolutionDir)Build.bat $(TargetPath) $(SolutionDir) $(OutputPath)" IgnoreExitCode="true" />
+		<Exec Command="$(SolutionDir)Build.bat $(TargetPath) $(SolutionDir) $(OutputPath)" IgnoreExitCode="true" />
 	</Target>
 
 </Project>

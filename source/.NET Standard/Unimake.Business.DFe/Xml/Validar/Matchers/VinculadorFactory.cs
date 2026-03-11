@@ -1,9 +1,9 @@
 ﻿using System;
 using Unimake.Business.DFe.Servicos;
-using Unimake.DFe.Test.Utility.TesteValidacao.Interfaces;
-using Unimake.DFe.Test.Utility.TesteValidacao.Matchers;
+using Unimake.Business.DFe.Interfaces;
+using Unimake.Business.DFe.Matchers;
 
-namespace Unimake.DFe.Test.Utility.TesteValidacao.Vinculadores
+namespace Unimake.Business.DFe.Vinculadores
 {
     /// <summary>
     /// Factory para criar vinculadores apropriados baseado no tipo de DFe.
@@ -21,12 +21,15 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao.Vinculadores
         /// </summary>
         public static IVinculadorSchema CriarVinculadorModal(TipoDFe tipoDFe)
         {
-            return tipoDFe switch
+            switch (tipoDFe)
             {
-                TipoDFe.CTe => new VincularCTe(),
-                TipoDFe.MDFe => new VincularMDFe(),
-                _ => throw new InvalidOperationException($"Tipo de DFe {tipoDFe} não suporta vinculação de modal."),
-            };
+                case TipoDFe.CTe:
+                    return new VincularCTe();
+                case TipoDFe.MDFe:
+                    return new VincularMDFe();
+                default:
+                    throw new InvalidOperationException($"Tipo de DFe {tipoDFe} não suporta vinculação de modal.");
+            }
         }
 
         /// <summary>

@@ -1,6 +1,5 @@
 ﻿using System.Xml;
-
-namespace Unimake.DFe.Test.Utility.TesteValidacao.Interfaces
+namespace Unimake.Business.DFe.Interfaces
 {
     /// <summary>
     /// Interface que define o contrato para isoladores XML específicos de cada tipo de DFe.

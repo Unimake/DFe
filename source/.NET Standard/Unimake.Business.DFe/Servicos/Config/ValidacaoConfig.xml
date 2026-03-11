@@ -2,6 +2,7 @@
 	<!--NFe -->
 	<NFe>
 		<Servico tagRaiz="consStatServ" versao="4.00">
+			<Descricao>Consulta situação do serviço da nota fiscal eletrônica</Descricao>
 			<SchemaArquivo>consStatServ_v4.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>

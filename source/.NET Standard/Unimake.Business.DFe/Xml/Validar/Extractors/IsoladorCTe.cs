@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Xml;
-using Unimake.DFe.Test.Utility.TesteValidacao.Interfaces;
+using Unimake.Business.DFe.Interfaces;
 
-namespace Unimake.DFe.Test.Utility.TesteValidacao.Isoladores
+namespace Unimake.Business.DFe.Isoladores
 {
     /// <summary>
     /// Isolador para CTe (modais e eventos).

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using Unimake.DFe.Test.Utility.TesteValidacao.Interfaces;
+using Unimake.Business.DFe.Interfaces;
 
-namespace Unimake.DFe.Test.Utility.TesteValidacao.Matchers
+namespace Unimake.Business.DFe.Matchers
 {
     internal class VincularEvento : IVinculadorSchema
     {

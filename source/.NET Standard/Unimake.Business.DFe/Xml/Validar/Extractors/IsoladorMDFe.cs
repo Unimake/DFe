@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Xml;
-using Unimake.DFe.Test.Utility.TesteValidacao.Interfaces;
+using Unimake.Business.DFe.Interfaces;
 
-namespace Unimake.DFe.Test.Utility.TesteValidacao.Extractors
+namespace Unimake.Business.DFe.Isoladores
 {
     internal class IsoladorMDFe : IXmlEspecificoIsolador
     {

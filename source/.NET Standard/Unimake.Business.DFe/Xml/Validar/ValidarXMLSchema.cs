@@ -1,56 +1,179 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
-using Unimake.Business.DFe;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.EFDReinf;
-using Unimake.Business.Security;
-using Unimake.DFe.Test.Utility.TesteValidacao.Isoladores;
-using Unimake.DFe.Test.Utility.TesteValidacao.Vinculadores;
-using Xunit;
+using Unimake.Business.DFe.Isoladores;
+using Unimake.Business.DFe.Vinculadores;
 
 
-namespace Unimake.DFe.Test.Utility.TesteValidacao
+
+namespace Unimake.Business.DFe
 {
-    public class ValidarXML
+    /// <summary>
+    /// Nova classe de validação de XML que centraliza toda a lógica de validação.
+    /// </summary>
+    public class ValidarEstruturaXML
     {
+        /// <summary>
+        /// Atributo de condiguracao
+        /// </summary>
+        private Configuracao _configuracao;
 
 
-        string nome;
-
-        // Esse metodo irá ser chamado pelo UniNFe, onde ele passará o documento XML a ser validado e 
-        // o certificado digital para assinar o XML caso necessário e o padrão caso NFSe. Será utilizando o mesmo formato que o UniNFe faz para pegar o certificado
-        // (CertificadoDigital = Empresas.Configuracoes[emp].X509Certificado) e o padrão por meio do metodo BuscaPadraoNFSe(UFCod)
-
-        [Theory]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\GISSONLINE\2.04\EnviarLoteRpsEnvio-env-loterps.xml", PadraoNFSe.GISSONLINE)]
-        //[InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\PRONIM\1.01\ConsultarNfseEnvio-ped-sitnfse.xml", PadraoNFSe.PRONIM)]
-        [InlineData(@"..\..\..\Utility\TesteValidacao\ConfigValidacao.xml", @"..\..\..\Utility\TesteValidacao\XMLteste\NFSe\NACIONAL\1.01\GerarNfseEnvio_IndicativoDecisaoJudicial-env-loterps.xml", PadraoNFSe.NACIONAL)]
+        /// <summary>
+        /// Construtor que recebe as configurações necessárias para a validação do XML.
+        /// </summary>
+        /// <param name="configuracao"></param>
+        public ValidarEstruturaXML(Configuracao configuracao) 
+        {
+            _configuracao = configuracao;
+        }
 
 
-        public static void ValidarServico(string caminhoServicoValidacao, string caminhoArquivo, PadraoNFSe padraoNFSe = PadraoNFSe.None)
+        /// <summary>
+        /// Classe de resultado da validação, contendo um boolean para indicar se a validação foi bem-sucedida 
+        /// e um objeto de informação para retornar detalhes sobre o serviço e os schemas utilizados na validação.
+        /// </summary>
+        public class ResultadoValidacao 
+        {
+            /// <summary>
+            /// Boolean retornado para informar a situação da validação.
+            /// </summary>
+            public bool Validado { get; set; }
+
+            /// <summary>
+            /// Objeto de informação para retornar a descrição 
+            /// </summary>
+            public string Descricao { get; set; }
+        }
+
+        
+
+        /// <summary>
+        /// Guarda as configurações do XML para facilitar o acesso durante a validação, evitando múltiplas consultas ao XML de configuração.
+        /// </summary>
+
+        public struct InformacaoXML
+        {
+            /// <summary>
+            /// Tag raiz do XML, utilizada para identificar o tipo de documento e 
+            /// buscar a configuração correta no XML de serviços.
+            /// </summary>
+            public string TagRaiz { get; set; }
+
+            /// <summary>
+            /// Tag que guarda a descrição do serviço do XML de Configuracao.
+            /// </summary>
+            public string Descricao { get; set; }
+
+            /// <summary>
+            /// Tag ou atributo que contém a versão do layout do XML. 
+            /// A versão é crucial para validar contra o schema correto.
+            /// </summary>
+            public string Versao { get; set; }
+
+            /// <summary>
+            /// Schema que deve ser utilizado para validar o XML geral.
+            /// </summary>
+            public string SchemaArquivo { get; set; }
+
+            /// <summary>
+            /// Caso o XML contenha partes específicas que exigem validação 
+            /// contra schemas diferentes (ex: eventos, modais)
+            /// </summary>
+            public string SchemasEspecifico { get; set; }
+
+            /// <summary>
+            /// </summary>
+            public string SchemaArquivoEspecifico { get; set; }
+
+            /// <summary>
+            /// Tag que caso não seja null no arquivo de configuração, indica que o XML 
+            /// possui eventos e que deve ser feita a vinculação do XML geral 
+            /// com os específicos de cada evento para validação.
+            /// </summary>
+            public string TagEvento { get; set; }
+
+            /// <summary>
+            /// Tag que contem a Target Namespace do XML, utilizada para 
+            /// validar o XML contra o schema correto.
+            /// </summary>
+            public string TargetNS { get; set; }
+
+            /// <summary>
+            /// Tag que indica o local onde deve ser feita a assinatura digital no XML.
+            /// </summary>
+            public string TagAssinatura { get; set; }
+
+            /// <summary>
+            /// Tag que indica o atributo ID que deve ser utilizado para 
+            /// referenciar a assinatura digital no XML.
+            /// </summary>
+            public string TagAtributoID { get; set; }
+
+            /// <summary>
+            /// Tag que indica o local onde deve ser feita a assinatura digital 
+            /// do lote no XML, caso o serviço trabalhe com lotes.
+            /// </summary>
+            public string TagLoteAssinatura { get; set; }
+
+            /// <summary>
+            /// Tag que indica o atributo ID que deve ser utilizado para referenciar a 
+            /// assinatura digital do lote no XML, caso o serviço trabalhe com lotes.
+            /// </summary>
+            public string TagLoteAtributoID { get; set; }
+
+            /// <summary>
+            /// Tag que indica o local onde deve ser feita uma assinatura digital extra no XML, 
+            /// caso o serviço exija mais de uma assinatura.
+            /// </summary>
+            public string TagExtraAssinatura { get; set; }
+
+            /// <summary>
+            /// Tag que indica o atributo ID que deve ser utilizado para referenciar 
+            /// a assinatura digital extra no XML,
+            /// </summary>
+            public string TagExtraAtributoID { get; set; }
+        }
+
+        /// <summary>
+        /// Configurações diversas para consumir os serviços
+        /// </summary>
+        public Configuracao Configuracoes { get; set; }
+
+        private static XmlDocument CarregarConfigValidacao()
+        {
+            var assembly = typeof(ValidarEstruturaXML).Assembly;
+            var resourceName = "Unimake.Business.DFe.Servicos.Config.ValidacaoConfig.xml";
+
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream == null)
+                    throw new Exception($"Recurso não encontrado: {resourceName}");
+
+                var xmlConfig = new XmlDocument();
+                xmlConfig.Load(stream);
+                return xmlConfig;
+            }
+        }
+
+        /// <summary>
+        /// Valida o XML de acordo com as regras definidas no XML de configuração de serviços.
+        /// </summary>
+        /// <param name="xml">Documento XML para a validação</param>
+        /// <param name="certificado">Certificado Digital A1 para assinatura</param>
+        /// <param name="padraoNFSe">Padrão para documentos NFSe</param>
+        /// <exception cref="Exception"></exception>
+        public ResultadoValidacao ValidarServico(XmlDocument xml, X509Certificate2 certificado, PadraoNFSe padraoNFSe = PadraoNFSe.None)
         {
             try
             {
-                #region VaiSerApagada
-                var CertificadoCaminho = @"C:\Projetos\Unimake_PV.pfx";
-                var CertificadoSenha = "12345678";
-                var certificado = new CertificadoDigital().CarregarCertificadoDigitalA1(CertificadoCaminho, CertificadoSenha);
-
-                XmlDocument xmlConfig = new();
-                xmlConfig.Load(caminhoServicoValidacao);
-
-                if (!File.Exists(caminhoArquivo))
-                    throw new Exception("Arquivo XML não encontrado");
-
-                XmlDocument xml = new();
-                xml.Load(caminhoArquivo);
-                #endregion
-
+            
+               var xmlConfig = CarregarConfigValidacao();
+               
                 TipoDFe tipoDFe = padraoNFSe != PadraoNFSe.None
                     ? TipoDFe.NFSe
                     : DetectarTipoDFe(xml);
@@ -59,8 +182,16 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 string versao = ObterVersao(xml, xmlConfig, tipoDFe);
                 XmlNode servico = ObterServico(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
 
+                //Caso o node servico venha vazio retorna por padrão que a validação deu certo pois significa que o serviço especidico não
+                // está implementado no arquivo xml de validação, podendo ser uma versão antiga que ainda é utilizada mas não esta no arquivo de 
+                // de configuração dessa forma retorna como validado.
                 if (servico is null)
-                    return;
+                    return new ResultadoValidacao
+                    {
+                        Validado = true,
+                        Descricao = "Arquivo não validado: Possível versão antiga que ainda é utilizado porém não validada."
+                    };
+
 
                 var inform = MontarInformacaoGeral(servico);
                 AssinarSeNecessario(xml, inform, certificado);
@@ -69,10 +200,14 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 if (servico.SelectSingleNode(".//*[local-name()='SchemasEspecificos']") is null)
                 {
                     ValidarSchemaGeral(xml, inform, tipoDFe, padraoNFSe);
-                    return;
+                    return new ResultadoValidacao
+                    {
+                        Validado = true,
+                        Descricao = inform.Descricao
+                    };
                 }
 
-                // Se chegou aqui, tem schemas específicos para validar, então precisa vincular o XML geral com os específicos para depois validar cada um
+                // Se chegou aqui, tem schemas específicos para validar, então precisa vincular o XML especifico com os schema para depois validar cada um
                 bool isEvento = servico.SelectSingleNode(".//*[local-name()='TagEvento']") != null;
 
                 var vinculador = VinculadorFactory.Criar(tipoDFe, isEvento);
@@ -84,6 +219,12 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                     ValidarSchemaGeral(xml, inform, tipoDFe);
                     ValidarSchemaEspecifico(node, inform, tipoDFe);
                 }
+
+                return new ResultadoValidacao
+                {
+                    Validado = true,
+                    Descricao = inform.Descricao
+                };
             }
             catch (Exception ex)
             {
@@ -99,6 +240,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                 ? TratarDFe(xml, versao, tipoDFe, tagRaiz, xmlConfig)
                 : TratarNFSe(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
         }
+
 
 
 
@@ -159,6 +301,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             {
                 TagRaiz = servico.Attributes["tagRaiz"]?.Value,
                 Versao = servico.Attributes["versao"]?.Value,
+                Descricao = servico.SelectSingleNode("*[local-name()='Descricao']")?.InnerText,
                 SchemaArquivo = servico.SelectSingleNode("*[local-name()='SchemaArquivo']")?.InnerText,
                 TargetNS = servico.SelectSingleNode("*[local-name()='TargetNS']")?.InnerText,
                 TagAssinatura = servico.SelectSingleNode("*[local-name()='TagAssinatura']")?.InnerText,
@@ -245,7 +388,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
             if (!validar.Success)
             {
-                throw new Exception($"Erro ao validar schema geral {validar.ErrorMessage}. Verifique se esteja utilizando o layout mais recente para o XML.");
+                throw new Exception($"Erro ao validar schema geral {validar.ErrorMessage}. XML foi identificado como ");
             }
         }
 
