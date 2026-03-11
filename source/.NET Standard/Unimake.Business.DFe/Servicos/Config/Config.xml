@@ -2051,12 +2051,6 @@
 		<ArqConfig>ProfessorJamilGO.xml</ArqConfig>
 		<PadraoNFSe>MEGASOFT</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5215603">
-		<Nome>Padre Bernardo - GO</Nome>
-		<UF>GO</UF>
-		<ArqConfig>PadreBernardoGO.xml</ArqConfig>
-		<PadraoNFSe>MEGASOFT</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4306403">
 		<Nome>Dois Irmãos - RS</Nome>
 		<UF>RS</UF>

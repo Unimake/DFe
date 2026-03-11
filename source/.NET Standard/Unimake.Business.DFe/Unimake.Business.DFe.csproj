@@ -425,7 +425,6 @@
 		<None Remove="Servicos\Config\NFSe\CotiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CriciumaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CristalinaGO.xml" />
-		<None Remove="Servicos\Config\NFSe\CrominiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CruzAltaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
@@ -598,7 +597,6 @@
 		<None Remove="Servicos\Config\NFSe\OuroFinoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\OuroPretoDoOesteRO.xml" />
 		<None Remove="Servicos\Config\NFSe\OuroSC.xml" />
-		<None Remove="Servicos\Config\NFSe\PadreBernardoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PalhocaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PalmaresPE.xml" />
 		<None Remove="Servicos\Config\NFSe\PalmasTO.xml" />
@@ -1814,7 +1812,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColatinaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColiderMT.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CrominiaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CuritibaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImperatrizMA.xml" />
@@ -1834,7 +1831,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaLimaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaSantaRitaRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PadreBernardoGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParacambiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PauliniaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PoaSP.xml" />
