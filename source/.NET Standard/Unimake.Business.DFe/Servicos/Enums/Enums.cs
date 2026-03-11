@@ -7414,12 +7414,6 @@ namespace Unimake.Business.DFe.Servicos
         [Description("MEGASOFT")]
         MEGASOFT = 75,
 
-        ///<summary>
-        ///ISSONLINE_ASSESSORPUBLICO
-        /// </summary>
-        [Description("ISSONLINE_ASSESSORPUBLICO")]
-        ISSONLINE_ASSESSORPUBLICO = 76,
-
         /// <summary>
         /// PRIMAX
         /// </summary>

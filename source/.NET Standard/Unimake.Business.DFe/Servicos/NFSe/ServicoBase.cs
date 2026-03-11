@@ -89,10 +89,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     SIGISSWEB();
                     break;
 
-                case PadraoNFSe.ISSONLINE_ASSESSORPUBLICO:
-                    ISSONLINE_ASSESSORPUBLICO();
-                    break;
-
                 case PadraoNFSe.PRONIM:
                     PRONIM();
                     break;
@@ -594,24 +590,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #endregion SIGISSWEB
-
-
-        #region ISSONLINE_ASSESSORPUBLICO
-
-        private void ISSONLINE_ASSESSORPUBLICO()
-        {
-            var senhaCriptografada = Criptografia.GetMD5Hash(Configuracoes.MunicipioSenha);
-
-            Configuracoes.MunicipioSenha = senhaCriptografada;
-
-            var soap = Configuracoes.WebSoapString;
-
-            var substuicao = Regex.Replace(soap, @"<nfse:Senha>.*?</nfse:Senha>", $"<nfse:Senha>{Configuracoes.MunicipioSenha}</nfse:Senha>");
-
-            Configuracoes.WebSoapString = substuicao;
-        }
-
-        #endregion ISSONLINE_ASSESSORPUBLICO
 
         #region PRONIM
 
