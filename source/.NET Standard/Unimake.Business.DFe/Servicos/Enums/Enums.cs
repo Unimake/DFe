@@ -7471,34 +7471,28 @@ namespace Unimake.Business.DFe.Servicos
         LEXSOM = 84,
 
         ///<summary>
-        ///SUPERNOVA
-        /// </summary>
-        [Description("SUPERNOVA")]
-        SUPERNOVA = 85,
-
-        ///<summary>
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 86,
+        SIGISSWEB = 85,
 
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 87,
+        BETHA_CLOUD = 86,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 88,
+        FUTURIZE = 87,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 89
+        PROPRIOFORTALEZACE = 88
     }
 
     #endregion

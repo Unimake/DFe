@@ -2327,12 +2327,6 @@
 		<ArqConfig>IpojucaPE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3156700">
-		<Nome>Sabará - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>SabaraMG.xml</ArqConfig>
-		<PadraoNFSe>SUPERNOVA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3526704">
 		<Nome>Leme - SP</Nome>
 		<UF>SP</UF>
