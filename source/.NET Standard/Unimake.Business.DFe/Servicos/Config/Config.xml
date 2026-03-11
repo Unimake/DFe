@@ -2285,12 +2285,6 @@
 		<ArqConfig>CriciumaSC.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3148004">
-		<Nome>Patos de Minas - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>PatosDeMinasMG.xml</ArqConfig>
-		<PadraoNFSe>PUBLICENTER</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4108304">
 		<Nome>Foz do Iguaçu - PR</Nome>
 		<UF>PR</UF>

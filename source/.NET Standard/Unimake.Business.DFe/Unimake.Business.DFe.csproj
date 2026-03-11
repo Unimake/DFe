@@ -622,7 +622,6 @@
 		<None Remove="Servicos\Config\NFSe\PassoFundoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PassosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PatoBrancoPR.xml" />
-		<None Remove="Servicos\Config\NFSe\PatosDeMinasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PatrocinioMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PauliniaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PaulistaPE.xml" />
@@ -1790,7 +1789,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanapanemaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PassoFundoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatoBrancoPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PatosDeMinasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatrocinioMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PedroLeopoldoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PenhaSC.xml" />
