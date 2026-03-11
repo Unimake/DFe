@@ -1814,7 +1814,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoPedroSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoSebastiaoDaGramaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoValentimRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmargosaBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AssuRN.xml" />

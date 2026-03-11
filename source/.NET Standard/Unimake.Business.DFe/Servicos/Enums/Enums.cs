@@ -7420,54 +7420,47 @@ namespace Unimake.Business.DFe.Servicos
         [Description("ISSONLINE_ASSESSORPUBLICO")]
         ISSONLINE_ASSESSORPUBLICO = 76,
 
-
-        ///<summary>
-        ///SINSOFT
-        /// </summary>
-        [Description("SINSOFT")]
-        SINSOFT = 77,
-
         /// <summary>
         /// PRIMAX
         /// </summary>
         [Description("PRIMAX")]
-        PRIMAX = 78,
+        PRIMAX = 77,
 
         ///<summary>
         ///EGOVERNEISS
         /// </summary>
         [Description("EGOVERNEISS")]
-        EGOVERNEISS = 79,
+        EGOVERNEISS = 78,
 
         ///<summary>
         ///INTERSOL
         /// </summary>
         [Description("INTERSOL")]
-        INTERSOL = 80,
+        INTERSOL = 79,
 
         ///<summary>
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 81,
+        SIGISSWEB = 80,
 
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 82,
+        BETHA_CLOUD = 81,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 83,
+        FUTURIZE = 82,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 84
+        PROPRIOFORTALEZACE = 83
     }
 
     #endregion
