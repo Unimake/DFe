@@ -336,7 +336,6 @@
 		<None Remove="Servicos\Config\NFSe\AstorgaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BageRS.xml" />
-		<None Remove="Servicos\Config\NFSe\BalnearioCamboriuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BaraoDeCotegipeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\BarbacenaMG.xml" />
@@ -373,7 +372,6 @@
 		<None Remove="Servicos\Config\NFSe\CabedeloPB.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboDeSantoAgostinhoPE.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
-		<None Remove="Servicos\Config\NFSe\CacadorSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CacapavaDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CaceresMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeiraDoSulRS.xml" />
@@ -1485,7 +1483,6 @@
 		<None Remove="Xml\Schemas\NFSe\PROPRIOGOIANIA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\nfse_v2_04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PUBLICA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\QUASAR\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
@@ -1835,11 +1832,9 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmargosaBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AssuRN.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BalnearioCamboriuSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraVelhaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarrosoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BelemPA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CacadorSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColatinaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColiderMT.xml" />
@@ -3853,7 +3848,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\nfse_v2_04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v03.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v03-rtc.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\DPS_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\evento_v1.01.xsd" />
