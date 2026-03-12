@@ -416,7 +416,6 @@
 		<None Remove="Servicos\Config\NFSe\CriciumaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CristalinaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CruzAltaRS.xml" />
-		<None Remove="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CuritibaPR.xml" />
@@ -546,11 +545,9 @@
 		<None Remove="Servicos\Config\NFSe\NACIONAL.xml" />
 		<None Remove="Servicos\Config\NFSe\NaviraiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
-		<None Remove="Servicos\Config\NFSe\NovaBassanoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaMutumMT.xml" />
-		<None Remove="Servicos\Config\NFSe\NovaPrataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaSantaRitaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaSerranaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\NovoHamburgoRS.xml" />
@@ -1557,7 +1554,6 @@
 	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\NFSe\BETHA_CLOUD.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\CambaraPR.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\CapitaoRS.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -1629,7 +1625,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CastroPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CorupaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CriciumaSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DracenaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
@@ -1823,9 +1818,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MarcolandiaPI.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\AraripinaPE.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\NovaBassanoRS.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\BomPrincipioRS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -2048,9 +2040,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\IvotiRS.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\NovaPrataRS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\SalvadorDoSulRS.xml">

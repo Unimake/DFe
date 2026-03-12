@@ -899,12 +899,6 @@
 		<ArqConfig>SalvadorDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4313300">
-		<Nome>Nova Prata - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>NovaPrataRS.xml</ArqConfig>
-		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4310801">
 		<Nome>Ivoti - RS</Nome>
 		<UF>RS</UF>
@@ -1457,12 +1451,6 @@
 		<ArqConfig>LontrasSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4312906">
-		<Nome>Nova Bassano - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>NovaBassanoRS.xml</ArqConfig>
-		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2905701">
 		<Nome>Camaçari - BA</Nome>
 		<UF>BA</UF>
@@ -1803,12 +1791,6 @@
 		<Nome>Arroio do Meio - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>ArroioDoMeioRS.xml</ArqConfig>
-		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4306205">
-		<Nome>Cruzeiro do Sul - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>CruzeiroDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4320909">
@@ -2548,12 +2530,6 @@
 		<UF>PR</UF>
 		<ArqConfig>JaguapitaPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4304697">
-		<Nome>Capitão - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>CapitaoRS.xml</ArqConfig>
-		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4216354">
 		<Nome>São João do Itaperiú - SC</Nome>
