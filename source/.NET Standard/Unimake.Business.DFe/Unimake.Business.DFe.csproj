@@ -499,7 +499,6 @@
 		<None Remove="Servicos\Config\NFSe\ItajaiSC.xml" />
 		<None Remove="Servicos\Config\NFSe\ItajubaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
-		<None Remove="Servicos\Config\NFSe\ItamogiMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItanhangaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\ItapecericaDaSerraSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItapemaSC.xml" />
@@ -567,7 +566,6 @@
 		<None Remove="Servicos\Config\NFSe\MogiMirimSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MonteAltoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MonteBeloMG.xml" />
-		<None Remove="Servicos\Config\NFSe\MonteCarmeloMG.xml" />
 		<None Remove="Servicos\Config\NFSe\MontenegroRS.xml" />
 		<None Remove="Servicos\Config\NFSe\MontesClarosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
@@ -1303,8 +1301,6 @@
 		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esRecepcionarLoteRpsResposta_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\TiposEsnfs_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\xmldsig-core-schema_v01.xsd" />
-		<None Remove="Xml\Schemas\NFSe\E_RECEITA\nfse v2 02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\E_RECEITA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\FINTEL\cfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\FINTEL\nfse v2 02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\FINTEL\nfse.xsd" />
@@ -1806,13 +1802,11 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaberabaBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItajaiSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItamogiMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MafraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MageRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MairipotabaGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MonteCarmeloMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaLimaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaSantaRitaRS.xml" />
@@ -1937,7 +1931,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoLeopoldoRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoLuisMA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoPedroDaAldeiaRJ.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSebastiaoDoParaisoMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SapirangaRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SeberiRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SeteLagoasMG.xml">
@@ -2752,8 +2745,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esRecepcionarLoteRpsResposta_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\TiposEsnfs_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\xmldsig-core-schema_v01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\E_RECEITA\nfse v2 02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\E_RECEITA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\cfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\nfse v2 02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\FINTEL\nfse.xsd" />

@@ -7366,77 +7366,71 @@ namespace Unimake.Business.DFe.Servicos
         [Description("PORTAL_FACIL")]
         PORTAL_FACIL = 67,
 
-        /// <summary>
-        /// E_RECEITA
-        /// </summary>
-        [Description("E_RECEITA")]
-        E_RECEITA = 68,
-
         ///<summary>
         ///DBSELLER
         /// </summary>
         [Description("DBSELLER")]
-        DBSELLER = 69,
+        DBSELLER = 68,
 
         ///<summary>
         ///MODERNIZACAO_PUBLICA
         /// </summary>
         [Description("MODERNIZACAO_PUBLICA")]
-        MODERNIZACAO_PUBLICA = 70,
+        MODERNIZACAO_PUBLICA = 69,
 
         ///<summary>
         ///METROPOLIS
         /// </summary>
         [Description("METROPOLIS")]
-        METROPOLIS = 71,
+        METROPOLIS = 70,
 
         ///<summary>
         ///MEGASOFT
         /// </summary>
         [Description("MEGASOFT")]
-        MEGASOFT = 72,
+        MEGASOFT = 71,
 
         /// <summary>
         /// PRIMAX
         /// </summary>
         [Description("PRIMAX")]
-        PRIMAX = 73,
+        PRIMAX = 72,
 
         ///<summary>
         ///EGOVERNEISS
         /// </summary>
         [Description("EGOVERNEISS")]
-        EGOVERNEISS = 74,
+        EGOVERNEISS = 73,
 
         ///<summary>
         ///INTERSOL
         /// </summary>
         [Description("INTERSOL")]
-        INTERSOL = 75,
+        INTERSOL = 74,
 
         ///<summary>
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 76,
+        SIGISSWEB = 75,
 
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 77,
+        BETHA_CLOUD = 76,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 78,
+        FUTURIZE = 77,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 79
+        PROPRIOFORTALEZACE = 78
     }
 
     #endregion
