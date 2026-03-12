@@ -1481,12 +1481,6 @@
 		<ArqConfig>BomPrincipioRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3548906">
-		<Nome>São Carlos - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>SaoCarlosSP.xml</ArqConfig>
-		<PadraoNFSe>GIAP</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5215306">
 		<Nome>Orizona - GO</Nome>
 		<UF>GO</UF>
@@ -1943,12 +1937,6 @@
 		<ArqConfig>EmbuDasArtesSP.xml</ArqConfig>
 		<PadraoNFSe>GIAP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3549102">
-		<Nome>São João da Boa Vista - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>SaoJoaoDaBoaVistaSP.xml</ArqConfig>
-		<PadraoNFSe>GIAP</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2607208">
 		<Nome>Ipojuca - PE</Nome>
 		<UF>PE</UF>
@@ -2332,12 +2320,6 @@
 		<UF>SP</UF>
 		<ArqConfig>JauSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3522208">
-		<Nome>Itapecerica da Serra - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>ItapecericaDaSerraSP.xml</ArqConfig>
-		<PadraoNFSe>GIAP</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4313904">
 		<Nome>Panambi - RS</Nome>

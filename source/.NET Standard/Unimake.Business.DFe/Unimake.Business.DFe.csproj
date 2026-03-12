@@ -481,7 +481,6 @@
 		<None Remove="Servicos\Config\NFSe\ItajubaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItanhangaMT.xml" />
-		<None Remove="Servicos\Config\NFSe\ItapecericaDaSerraSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItapemaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaperunaRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaporangaSP.xml" />
@@ -636,12 +635,10 @@
 		<None Remove="Servicos\Config\NFSe\SantosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoBentoDoSulSC.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoBorjaRS.xml" />
-		<None Remove="Servicos\Config\NFSe\SaoCarlosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGabrielRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoParaMG.xml" />
-		<None Remove="Servicos\Config\NFSe\SaoJoaoDaBoaVistaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDoItaperiuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDoParaisoMG.xml" />
@@ -1641,7 +1638,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IpojucaPE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IratiPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItanhangaMT.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItapecericaDaSerraSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaperunaRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguapitaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JardinopolisSP.xml" />
@@ -1697,7 +1693,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBentoDoSulSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGabrielRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloDoParaMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDaBoaVistaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDoItaperiuSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDoParaisoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDeBicasMG.xml" />
@@ -1830,7 +1825,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoCapibaribePE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantanaDoLivramentoRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPlatinaPR.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCarlosSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoLuisMA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoPedroDaAldeiaRJ.xml" />
