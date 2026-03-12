@@ -857,12 +857,6 @@
 		<ArqConfig>GuaibaRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3152600">
-		<Nome>Pouso Alto - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>PousoAltoMG.xml</ArqConfig>
-		<PadraoNFSe>EMBRAS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2602902">
 		<Nome>Cabo de Santo Agostinho - PE</Nome>
 		<UF>PE</UF>
@@ -1144,18 +1138,6 @@
 		<UF>RS</UF>
 		<ArqConfig>PortoAlegreRS.xml</ArqConfig>
 		<PadraoNFSe>BHISS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3527207">
-		<Nome>Lorena - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>LorenaSP.xml</ArqConfig>
-		<PadraoNFSe>EMBRAS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3518404">
-		<Nome>Guaratinguetá - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>GuaratinguetaSP.xml</ArqConfig>
-		<PadraoNFSe>EMBRAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4203808">
 		<Nome>Canoinhas - SC</Nome>
@@ -1888,12 +1870,6 @@
 		<UF>GO</UF>
 		<ArqConfig>AnapolisGO.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3524402">
-		<Nome>Jacareí - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>JacareiSP.xml</ArqConfig>
-		<PadraoNFSe>EMBRAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3302403">
 		<Nome>Macaé - RJ</Nome>

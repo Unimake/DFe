@@ -7181,12 +7181,6 @@ namespace Unimake.Business.DFe.Servicos
         TINUS = 36,
 
         /// <summary>
-        /// EMBRAS
-        /// </summary>
-        [Description("EMBRAS")]
-        EMBRAS = 37,
-
-        /// <summary>
         /// BSITBR
         /// </summary>
         [Description("BSITBR")]
