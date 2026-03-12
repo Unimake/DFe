@@ -48,10 +48,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     MEMORY();
                     break;
 
-                case PadraoNFSe.BAUHAUS:
-                    BAUHAUS();
-                    break;
-
                 case PadraoNFSe.ABASE:
                 case PadraoNFSe.BETHA:
                 case PadraoNFSe.GINFES:
@@ -292,39 +288,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #endregion IPM
-
-        #region Bauhaus
-
-        private void BAUHAUS()  //Authorization Homologação: apiConfig.Token = "9f16d93554dc1d93656e23bd4fc9d4566a4d76848517634d7bcabd5dasdasde4948f";
-        {
-            GerarContentBauhaus();
-            AjusteLinkBauhaus();
-        }
-
-        private void GerarContentBauhaus()
-        {
-            var json = JsonConvert.SerializeObject(ConteudoXML);
-            Configuracoes.HttpContent = new StringContent(json, Encoding.UTF8, Configuracoes.WebContentType);
-        }
-
-        private void AjusteLinkBauhaus()
-        {
-            Configuracoes.RequestURI = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURIProducao : Configuracoes.RequestURIHomologacao);
-
-            var chave = default(string);
-            if (Configuracoes.RequestURI.IndexOf("NumeroRps") > 0)
-            {
-                chave = ConteudoXML.GetElementsByTagName("NumeroRps")[0].InnerText;
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
-            }
-            else if (Configuracoes.RequestURI.IndexOf("NumeroNfse") > 0)
-            {
-                chave = ConteudoXML.GetElementsByTagName("NumeroNfse")[0].InnerText;
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
-            }
-        }
-
-        #endregion Bauhaus
 
         #region SMARAPD
 

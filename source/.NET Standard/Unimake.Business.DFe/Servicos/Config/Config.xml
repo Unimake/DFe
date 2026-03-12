@@ -227,12 +227,6 @@
 		<ArqConfig>ItambacuriMG.xml</ArqConfig>
 		<PadraoNFSe>NOTAINTELIGENTE</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4218707">
-		<Nome>Tubarão - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>TubaraoSC.xml</ArqConfig>
-		<PadraoNFSe>BAUHAUS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5205109">
 		<Nome>Catalão - GO</Nome>
 		<UF>GO</UF>
@@ -827,12 +821,6 @@
 		<ArqConfig>PareciNovoRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3303906">
-		<Nome>Petrópolis - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>PetropolisRJ.xml</ArqConfig>
-		<PadraoNFSe>BAUHAUS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2503209">
 		<Nome>Cabedelo - PB</Nome>
 		<UF>PB</UF>
@@ -1007,12 +995,6 @@
 		<ArqConfig>SaoJoseDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="1506138">
-		<Nome>Redenção - PA</Nome>
-		<UF>PA</UF>
-		<ArqConfig>RedencaoPA.xml</ArqConfig>
-		<PadraoNFSe>BAUHAUS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4201307">
 		<Nome>Araquari - SC</Nome>
 		<UF>SC</UF>
@@ -1078,12 +1060,6 @@
 		<UF>PE</UF>
 		<ArqConfig>GoianaPE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4208302">
-		<Nome>Itapema - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>ItapemaSC.xml</ArqConfig>
-		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2606002">
 		<Nome>Garanhuns - PE</Nome>
@@ -1174,12 +1150,6 @@
 		<UF>RS</UF>
 		<ArqConfig>CarazinhoRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2111201">
-		<Nome>São José de Ribamar - MA</Nome>
-		<UF>MA</UF>
-		<ArqConfig>SaoJoseDeRibamarMA.xml</ArqConfig>
-		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3526902">
 		<Nome>Limeira - SP</Nome>
@@ -1306,12 +1276,6 @@
 		<UF>GO</UF>
 		<ArqConfig>AparecidaDeGoianiaGO.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3143005">
-		<Nome>Monte Belo - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>MonteBeloMG.xml</ArqConfig>
-		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2912202">
 		<Nome>Ibicoara - BA</Nome>
@@ -1613,12 +1577,6 @@
 		<ArqConfig>MarcolandiaPI.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3123601">
-		<Nome>Elói Mendes - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>EloiMendesMG.xml</ArqConfig>
-		<PadraoNFSe>BAUHAUS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4202909">
 		<Nome>Brusque - SC</Nome>
 		<UF>SC</UF>
@@ -1654,12 +1612,6 @@
 		<UF>SP</UF>
 		<ArqConfig>PoaSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2105302">
-		<Nome>Imperatriz - MA</Nome>
-		<UF>MA</UF>
-		<ArqConfig>ImperatrizMA.xml</ArqConfig>
-		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="1501402">
 		<Nome>Belém - PA</Nome>
@@ -2200,12 +2152,6 @@
 		<UF>RO</UF>
 		<ArqConfig>VilhenaRO.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4207007">
-		<Nome>Içara - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>IcaraSC.xml</ArqConfig>
-		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3535507">
 		<Nome>Paraguaçu Paulista - SP</Nome>

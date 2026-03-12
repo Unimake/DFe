@@ -7169,196 +7169,190 @@ namespace Unimake.Business.DFe.Servicos
         TECNOSISTEMAS = 34,
 
         /// <summary>
-        /// BAUHAUS - Prefeitura Moderna
-        /// </summary>
-        [Description("BAUHAUS")]
-        BAUHAUS = 35,
-
-        /// <summary>
         /// TINUS
         /// </summary>
         [Description("TINUS")]
-        TINUS = 36,
+        TINUS = 35,
 
         /// <summary>
         /// BSITBR
         /// </summary>
         [Description("BSITBR")]
-        BSITBR = 38,
+        BSITBR = 36,
 
         /// <summary>
         /// PRONIM
         /// </summary>
         [Description("PRONIM")]
-        PRONIM = 39,
+        PRONIM = 37,
 
         /// <summary>
         /// PROPRIOBARUERISP
         /// </summary>
         [Description("PROPRIOBARUERISP")]
-        PROPRIOBARUERISP = 40,
+        PROPRIOBARUERISP = 38,
 
         /// <summary>
         /// AGILI
         /// </summary>
         [Description("AGILI")]
-        AGILI = 41,
+        AGILI = 39,
 
         /// <summary>
         /// WEBFISCO_TECNOLOGIA
         /// </summary>
         [Description("WEBFISCO")]
-        WEBFISCO = 42,
+        WEBFISCO = 40,
 
         /// <summary>
         /// IIBRASIL
         /// </summary>
         [Description("IIBRASIL")]
-        IIBRASIL = 43,
+        IIBRASIL = 41,
 
         /// <summary>
         /// ADM_SISTEMAS
         /// </summary>
         [Description("ADM_SISTEMAS")]
-        ADM_SISTEMAS = 44,
+        ADM_SISTEMAS = 42,
 
         /// <summary>
         /// FINTEL
         /// </summary>
         [Description("FINTEL")]
-        FINTEL = 45,
+        FINTEL = 43,
 
         /// <summary>
         /// SALVADOR_BA
         /// </summary>
         [Description("SALVADOR_BA")]
-        SALVADOR_BA = 46,
+        SALVADOR_BA = 44,
 
         /// <summary>
         /// FISCO
         /// </summary>
         [Description("FISCO")]
-        FISCO = 47,
+        FISCO = 45,
 
         /// <summary>
         /// GISSONLINE (Antigo GINFES)
         /// </summary>
         [Description("GISSONLINE")]
-        GISSONLINE = 48,
+        GISSONLINE = 46,
 
         /// <summary>
         /// PUBLICA
         /// </summary>
         [Description("PUBLICA")]
-        PUBLICA = 49,
+        PUBLICA = 47,
 
         /// <summary>
         /// TIPLAN
         /// </summary>
         [Description("TIPLAN")]
-        TIPLAN = 50,
+        TIPLAN = 48,
 
         /// <summary>
         /// PRODEB
         /// </summary>
         [Description("PRODEB")]
-        PRODEB = 51,
+        PRODEB = 49,
 
         /// <summary>
         /// RLZ_INFORMATICA
         /// </summary>
         [Description("RLZ_INFORMATICA")]
-        RLZ_INFORMATICA = 52,
+        RLZ_INFORMATICA = 50,
 
         /// <summary>
         /// HM2SOLUCOES
         /// </summary>
         [Description("HM2SOLUCOES")]
-        HM2SOLUCOES = 53,
+        HM2SOLUCOES = 51,
 
         /// <summary>
         /// ELOTECH
         /// </summary>
         [Description("ELOTECH")]
-        ELOTECH = 54,
+        ELOTECH = 52,
 
         /// <summary>
         /// CONAM
         /// </summary>
         [Description("CONAM")]
-        CONAM = 55,
+        CONAM = 53,
 
         /// <summary>
         /// PORTAL_FACIL
         /// </summary>
         [Description("PORTAL_FACIL")]
-        PORTAL_FACIL = 56,
+        PORTAL_FACIL = 54,
 
         ///<summary>
         ///DBSELLER
         /// </summary>
         [Description("DBSELLER")]
-        DBSELLER = 57,
+        DBSELLER = 55,
 
         ///<summary>
         ///MODERNIZACAO_PUBLICA
         /// </summary>
         [Description("MODERNIZACAO_PUBLICA")]
-        MODERNIZACAO_PUBLICA = 58,
+        MODERNIZACAO_PUBLICA = 56,
 
         ///<summary>
         ///METROPOLIS
         /// </summary>
         [Description("METROPOLIS")]
-        METROPOLIS = 59,
+        METROPOLIS = 57,
 
         ///<summary>
         ///MEGASOFT
         /// </summary>
         [Description("MEGASOFT")]
-        MEGASOFT = 60,
+        MEGASOFT = 58,
 
         /// <summary>
         /// PRIMAX
         /// </summary>
         [Description("PRIMAX")]
-        PRIMAX = 61,
+        PRIMAX = 59,
 
         ///<summary>
         ///EGOVERNEISS
         /// </summary>
         [Description("EGOVERNEISS")]
-        EGOVERNEISS = 62,
+        EGOVERNEISS = 60,
 
         ///<summary>
         ///INTERSOL
         /// </summary>
         [Description("INTERSOL")]
-        INTERSOL = 63,
+        INTERSOL = 61,
 
         ///<summary>
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 64,
+        SIGISSWEB = 62,
 
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 65,
+        BETHA_CLOUD = 63,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 66,
+        FUTURIZE = 64,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 67
+        PROPRIOFORTALEZACE = 65
     }
 
     #endregion

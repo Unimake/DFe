@@ -291,8 +291,6 @@ namespace Unimake.DFe.Test.NFSe
                     message += "Este contexto necessita de um certificado digital autorizado para consumir o Webservice\n";
                     break;
 
-                case (PadraoNFSe.BAUHAUS, TipoAmbiente.Homologacao):
-                case (PadraoNFSe.BAUHAUS, TipoAmbiente.Producao):
                 case (PadraoNFSe.ADM_SISTEMAS, TipoAmbiente.Homologacao):
                 case (PadraoNFSe.AVMB, TipoAmbiente.Producao):
                     message += "Este contexto necessita de uma autenticação válida\n";

@@ -128,11 +128,7 @@ namespace Unimake.Business.DFe
                     }
                     catch
                     {
-                        if (Config.PadraoNFSe == PadraoNFSe.BAUHAUS)
-                        {
-                            resultadoRetorno.LoadXml(StringToXml(responseString));
-                        }
-                        else if (Config.Servico == Servico.DAREReceita)
+                        if (Config.Servico == Servico.DAREReceita)
                         {
                             List<ReceitaDARE> dare = null;
                             try
