@@ -1409,12 +1409,6 @@
 		<ArqConfig>JacobinaBA.xml</ArqConfig>
 		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5108402">
-		<Nome>Várzea Grande - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>VarzeaGrandeMT.xml</ArqConfig>
-		<PadraoNFSe>ABACO</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3549904">
 		<Nome>São José dos Campos - SP</Nome>
 		<UF>SP</UF>
@@ -1846,12 +1840,6 @@
 		<UF>SC</UF>
 		<ArqConfig>MafraSC.xml</ArqConfig>
 		<PadraoNFSe>PUBLICA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3144805">
-		<Nome>Nova Lima - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>NovaLimaMG.xml</ArqConfig>
-		<PadraoNFSe>ABACO</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2901007">
 		<Nome>Amargosa - BA</Nome>

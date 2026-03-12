@@ -571,7 +571,6 @@
 		<None Remove="Servicos\Config\NFSe\NovaBassanoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
-		<None Remove="Servicos\Config\NFSe\NovaLimaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaMutumMT.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaPrataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaSantaRitaRS.xml" />
@@ -743,7 +742,6 @@
 		<None Remove="Servicos\Config\NFSe\VargemGrandeDoSulSP.xml" />
 		<None Remove="Servicos\Config\NFSe\VargemGrandePaulistaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\VarginhaMG.xml" />
-		<None Remove="Servicos\Config\NFSe\VarzeaGrandeMT.xml" />
 		<None Remove="Servicos\Config\NFSe\VenancioAiresRS.xml" />
 		<None Remove="Servicos\Config\NFSe\VeraCruzRS.xml" />
 		<None Remove="Servicos\Config\NFSe\VeranopolisRS.xml" />
@@ -1781,7 +1779,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MageRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MairipotabaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaLimaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaSantaRitaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParacambiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PauliniaSP.xml" />
@@ -1957,9 +1954,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\ValinhosSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\VargemGrandeDoSulSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\VargemGrandePaulistaSP.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\VarzeaGrandeMT.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\JacobinaBA.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -2647,8 +2641,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoEConf_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoInsucessoNFe_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\retNfceDownloadXML_100.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\nfse_v2-04.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\nfse v2 03.xsd" />
