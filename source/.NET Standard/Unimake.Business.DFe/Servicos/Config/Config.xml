@@ -341,12 +341,6 @@
 		<ArqConfig>IpatingaMG.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3106200">
-		<Nome>Belo Horizonte - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>BeloHorizonteMG.xml</ArqConfig>
-		<PadraoNFSe>BHISS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3550308">
 		<Nome>São Paulo - SP</Nome>
 		<UF>SP</UF>
@@ -1096,12 +1090,6 @@
 		<UF>ES</UF>
 		<ArqConfig>GuarapariES.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4314902">
-		<Nome>Porto Alegre - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>PortoAlegreRS.xml</ArqConfig>
-		<PadraoNFSe>BHISS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4203808">
 		<Nome>Canoinhas - SC</Nome>

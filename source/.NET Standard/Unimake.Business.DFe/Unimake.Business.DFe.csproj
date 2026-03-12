@@ -349,7 +349,6 @@
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BebedouroSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BelemPA.xml" />
-		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
 		<None Remove="Servicos\Config\NFSe\BETHA_CLOUD.xml" />
 		<None Remove="Servicos\Config\NFSe\BiguacuSC.xml" />
@@ -597,7 +596,6 @@
 		<None Remove="Servicos\Config\NFSe\PontalinaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PorangatuGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PortaoRS.xml" />
-		<None Remove="Servicos\Config\NFSe\PortoAlegreRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoBeloSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoVelhoRO.xml" />
@@ -1219,8 +1217,6 @@
 		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\nfse_betha_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\nfse_dps_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA_CLOUD\xmldsig-core-schema_v01.xsd" />
-		<None Remove="Xml\Schemas\NFSe\BHISS\nfse.xsd" />
-		<None Remove="Xml\Schemas\NFSe\BHISS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\CONAM\XML_RPS_V4.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\Coplan_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\nfse_v2-03.xsd" />
@@ -1927,9 +1923,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\CruzAltaRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\CanoinhasSC.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\PortoAlegreRS.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\GuarapariES.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -3033,9 +3026,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\PalmaresPE.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\BeloHorizonteMG.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoPauloSP.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -3408,8 +3398,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\TiposNFe_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema_v01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\BHISS\nfse.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\BHISS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\nfse_v2-03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\nfse_v2_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema20020212.xsd" />
