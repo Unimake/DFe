@@ -971,12 +971,6 @@
 		<ArqConfig>SerraES.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4302808">
-		<Nome>Caçapava do Sul - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>CacapavaDoSulRS.xml</ArqConfig>
-		<PadraoNFSe>PRONIM</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2412005">
 		<Nome>São Gonçalo do Amarante - RN</Nome>
 		<UF>RN</UF>
@@ -1331,12 +1325,6 @@
 		<ArqConfig>AparecidaDeGoianiaGO.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4310207">
-		<Nome>Ijuí - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>IjuiRS.xml</ArqConfig>
-		<PadraoNFSe>PRONIM</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3143005">
 		<Nome>Monte Belo - MG</Nome>
 		<UF>MG</UF>
@@ -1583,12 +1571,6 @@
 		<ArqConfig>JuazeiroBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3143302">
-		<Nome>Montes Claros - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>MontesClarosMG.xml</ArqConfig>
-		<PadraoNFSe>PRONIM</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3549409">
 		<Nome>São Joaquim da Barra - SP</Nome>
 		<UF>SP</UF>
@@ -1690,12 +1672,6 @@
 		<UF>SP</UF>
 		<ArqConfig>PoaSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3131703">
-		<Nome>Itabira - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>ItabiraMG.xml</ArqConfig>
-		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2105302">
 		<Nome>Imperatriz - MA</Nome>
@@ -2692,12 +2668,6 @@
 		<UF>RN</UF>
 		<ArqConfig>TibauRN.xml</ArqConfig>
 		<PadraoNFSe>AGILI</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3118601">
-		<Nome>Contagem - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>ContagemMG.xml</ArqConfig>
-		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3556206">
 		<Nome>Valinhos - SP</Nome>

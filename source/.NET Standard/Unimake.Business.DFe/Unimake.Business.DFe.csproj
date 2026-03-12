@@ -366,7 +366,6 @@
 		<None Remove="Servicos\Config\NFSe\CabedeloPB.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboDeSantoAgostinhoPE.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
-		<None Remove="Servicos\Config\NFSe\CacapavaDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CaceresMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeiraDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirinhaRS.xml" />
@@ -409,7 +408,6 @@
 		<None Remove="Servicos\Config\NFSe\ColomboPR.xml" />
 		<None Remove="Servicos\Config\NFSe\ConcordiaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
-		<None Remove="Servicos\Config\NFSe\ContagemMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CorumbaMS.xml" />
 		<None Remove="Servicos\Config\NFSe\CorupaSC.xml" />
@@ -474,7 +472,6 @@
 		<None Remove="Servicos\Config\NFSe\IbirubaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\IcaraSC.xml" />
 		<None Remove="Servicos\Config\NFSe\IgarapeMG.xml" />
-		<None Remove="Servicos\Config\NFSe\IjuiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ImbeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ImperatrizMA.xml" />
 		<None Remove="Servicos\Config\NFSe\IndaialSC.xml" />
@@ -483,7 +480,6 @@
 		<None Remove="Servicos\Config\NFSe\IratiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabaianaSE.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaberabaBA.xml" />
-		<None Remove="Servicos\Config\NFSe\ItabiraMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabunaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaitubaPA.xml" />
 		<None Remove="Servicos\Config\NFSe\ItajaiSC.xml" />
@@ -552,7 +548,6 @@
 		<None Remove="Servicos\Config\NFSe\MonteAltoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MonteBeloMG.xml" />
 		<None Remove="Servicos\Config\NFSe\MontenegroRS.xml" />
-		<None Remove="Servicos\Config\NFSe\MontesClarosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
 		<None Remove="Servicos\Config\NFSe\MossoroRN.xml" />
 		<None Remove="Servicos\Config\NFSe\NACIONAL.xml" />
@@ -1563,7 +1558,6 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CamaragibePE.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\GuararapesSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\JaguariunaSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MacapaAP.xml" />
@@ -1742,7 +1736,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImperatrizMA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaberabaBA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItajaiSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
@@ -1853,9 +1846,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\OrizonaGO.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\MontesClarosMG.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ParobeRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PontalinaGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
@@ -1934,7 +1924,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\IbicoaraBA.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\IjuiRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItaquaquecetubaSP.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -2058,9 +2047,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\MirassolandiaSP.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\CacapavaDoSulRS.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\IgarapeMG.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
