@@ -541,7 +541,6 @@
 		<None Remove="Servicos\Config\NFSe\MageRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\MairiporaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MairipotabaGO.xml" />
-		<None Remove="Servicos\Config\NFSe\ManausAM.xml" />
 		<None Remove="Servicos\Config\NFSe\ManhuacuMG.xml" />
 		<None Remove="Servicos\Config\NFSe\MaracaiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MaracanauCE.xml" />
@@ -567,7 +566,6 @@
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
 		<None Remove="Servicos\Config\NFSe\MossoroRN.xml" />
 		<None Remove="Servicos\Config\NFSe\NACIONAL.xml" />
-		<None Remove="Servicos\Config\NFSe\NatalRN.xml" />
 		<None Remove="Servicos\Config\NFSe\NaviraiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NiteroiRJ.xml" />
@@ -1370,8 +1368,6 @@
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\xmldsig-core-schema20020212_v1.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
-		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MEGASOFT\nfse_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MEGASOFT\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\METROPOLIS\nfse.xsd" />
@@ -1388,9 +1384,6 @@
 		<None Remove="Xml\Schemas\NFSe\NACIONAL\tiposSimples_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NACIONAL\xmldsig-core-schema.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NACIONAL\xmldsig-core-schema_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFSe\NATALENSE\nfse.xsd" />
-		<None Remove="Xml\Schemas\NFSe\NATALENSE\nfse_v02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\NATALENSE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />
@@ -1889,10 +1882,8 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\JoaoPessoaPB.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\JuazeiroBA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\ManausAM.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MarcolandiaPI.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\AraripinaPE.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\NatalRN.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\NovaBassanoRS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -3658,8 +3649,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MEGASOFT\nfse_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MEGASOFT\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\METROPOLIS\nfse.xsd" />
@@ -3676,9 +3665,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\tiposSimples_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\xmldsig-core-schema.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\nfse.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\nfse_v02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />

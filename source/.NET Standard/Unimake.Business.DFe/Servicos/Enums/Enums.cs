@@ -7307,112 +7307,100 @@ namespace Unimake.Business.DFe.Servicos
         LIBRE = 57,
 
         /// <summary>
-        /// MANAUS_AM
-        /// </summary>
-        [Description("MANAUS_AM")]
-        MANAUS_AM = 58,
-
-        /// <summary>
-        /// NATALENSE
-        /// </summary>
-        [Description("NATALENSE")]
-        NATALENSE = 59,
-
-        /// <summary>
         /// RLZ_INFORMATICA
         /// </summary>
         [Description("RLZ_INFORMATICA")]
-        RLZ_INFORMATICA = 60,
+        RLZ_INFORMATICA = 58,
 
         /// <summary>
         /// HM2SOLUCOES
         /// </summary>
         [Description("HM2SOLUCOES")]
-        HM2SOLUCOES = 61,
+        HM2SOLUCOES = 59,
 
         /// <summary>
         /// ELOTECH
         /// </summary>
         [Description("ELOTECH")]
-        ELOTECH = 62,
+        ELOTECH = 60,
 
         /// <summary>
         /// CONAM
         /// </summary>
         [Description("CONAM")]
-        CONAM = 63,
+        CONAM = 61,
 
         /// <summary>
         /// PORTAL_FACIL
         /// </summary>
         [Description("PORTAL_FACIL")]
-        PORTAL_FACIL = 64,
+        PORTAL_FACIL = 62,
 
         ///<summary>
         ///DBSELLER
         /// </summary>
         [Description("DBSELLER")]
-        DBSELLER = 65,
+        DBSELLER = 63,
 
         ///<summary>
         ///MODERNIZACAO_PUBLICA
         /// </summary>
         [Description("MODERNIZACAO_PUBLICA")]
-        MODERNIZACAO_PUBLICA = 66,
+        MODERNIZACAO_PUBLICA = 64,
 
         ///<summary>
         ///METROPOLIS
         /// </summary>
         [Description("METROPOLIS")]
-        METROPOLIS = 67,
+        METROPOLIS = 65,
 
         ///<summary>
         ///MEGASOFT
         /// </summary>
         [Description("MEGASOFT")]
-        MEGASOFT = 68,
+        MEGASOFT = 66,
 
         /// <summary>
         /// PRIMAX
         /// </summary>
         [Description("PRIMAX")]
-        PRIMAX = 69,
+        PRIMAX = 67,
 
         ///<summary>
         ///EGOVERNEISS
         /// </summary>
         [Description("EGOVERNEISS")]
-        EGOVERNEISS = 70,
+        EGOVERNEISS = 68,
 
         ///<summary>
         ///INTERSOL
         /// </summary>
         [Description("INTERSOL")]
-        INTERSOL = 71,
+        INTERSOL = 69,
 
         ///<summary>
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 72,
+        SIGISSWEB = 70,
 
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 73,
+        BETHA_CLOUD = 71,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 74,
+        FUTURIZE = 72,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 75
+        PROPRIOFORTALEZACE = 73
     }
 
     #endregion

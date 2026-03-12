@@ -1631,23 +1631,11 @@
 		<ArqConfig>OrizonaGO.xml</ArqConfig>
 		<PadraoNFSe>BSITBR</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="1302603">
-		<Nome>Manaus - AM</Nome>
-		<UF>AM</UF>
-		<ArqConfig>ManausAM.xml</ArqConfig>
-		<PadraoNFSe>MANAUS_AM</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4308201">
 		<Nome>Flores da Cunha - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>FloresDaCunhaRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2408102">
-		<Nome>Natal - RN</Nome>
-		<UF>RN</UF>
-		<ArqConfig>NatalRN.xml</ArqConfig>
-		<PadraoNFSe>NATALENSE</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2918407">
 		<Nome>Juazeiro - BA</Nome>
