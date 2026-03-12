@@ -1488,8 +1488,6 @@
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\tiposEventos_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\tiposSimples_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\SISPMJP\nfse v2 02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\SISPMJP\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SMARAPD\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse.xsd" />
@@ -3808,8 +3806,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\tiposSimples_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\SISPMJP\nfse v2 02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\SISPMJP\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\DPS_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\evento_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\NFSe_v1.01.xsd" />
