@@ -7379,82 +7379,64 @@ namespace Unimake.Business.DFe.Servicos
         DBSELLER = 69,
 
         ///<summary>
-        ///CECAM
-        /// </summary>
-        [Description("CECAM")]
-        CECAM = 70,
-
-        ///<summary>
-        ///JLSOFT
-        /// </summary>
-        [Description("JLSOFT")]
-        JLSOFT = 71,
-
-        ///<summary>
-        ///SH3
-        /// </summary>
-        [Description("SH3")]
-        SH3 = 72,
-
-        ///<summary>
         ///MODERNIZACAO_PUBLICA
         /// </summary>
         [Description("MODERNIZACAO_PUBLICA")]
-        MODERNIZACAO_PUBLICA = 73,
+        MODERNIZACAO_PUBLICA = 70,
 
         ///<summary>
         ///METROPOLIS
         /// </summary>
         [Description("METROPOLIS")]
-        METROPOLIS = 74,
+        METROPOLIS = 71,
 
         ///<summary>
         ///MEGASOFT
         /// </summary>
         [Description("MEGASOFT")]
-        MEGASOFT = 75,
+        MEGASOFT = 72,
 
         /// <summary>
         /// PRIMAX
         /// </summary>
         [Description("PRIMAX")]
-        PRIMAX = 77,
+        PRIMAX = 73,
 
         ///<summary>
         ///EGOVERNEISS
         /// </summary>
         [Description("EGOVERNEISS")]
-        EGOVERNEISS = 78,
+        EGOVERNEISS = 74,
 
         ///<summary>
         ///INTERSOL
         /// </summary>
         [Description("INTERSOL")]
-        INTERSOL = 79,
+        INTERSOL = 75,
 
         ///<summary>
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 80,
+        SIGISSWEB = 76,
 
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 81,
+        BETHA_CLOUD = 77,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 82,
+        FUTURIZE = 78,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 83
+        PROPRIOFORTALEZACE = 79
     }
 
     #endregion

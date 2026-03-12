@@ -346,7 +346,6 @@
 		<None Remove="Servicos\Config\NFSe\BarraVelhaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BarreirasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\BarretosSP.xml" />
-		<None Remove="Servicos\Config\NFSe\BarrosoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\BarueriSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BastosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
@@ -445,7 +444,6 @@
 		<None Remove="Servicos\Config\NFSe\EstanciaVelhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EsteioRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EstrelaRS.xml" />
-		<None Remove="Servicos\Config\NFSe\EunapolisBA.xml" />
 		<None Remove="Servicos\Config\NFSe\EusebioCE.xml" />
 		<None Remove="Servicos\Config\NFSe\FarroupilhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\FeiraDeSantanaBA.xml" />
@@ -508,7 +506,6 @@
 		<None Remove="Servicos\Config\NFSe\ItaperunaRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaporangaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaquaquecetubaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\ItatingaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItumbiaraGO.xml" />
 		<None Remove="Servicos\Config\NFSe\ItuSP.xml" />
 		<None Remove="Servicos\Config\NFSe\IvotiRS.xml" />
@@ -529,7 +526,6 @@
 		<None Remove="Servicos\Config\NFSe\JuazeiroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\JundiaiSP.xml" />
-		<None Remove="Servicos\Config\NFSe\JuquiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
 		<None Remove="Servicos\Config\NFSe\LajeadoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
@@ -687,7 +683,6 @@
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoParaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDaBoaVistaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\SaoJoaoDelReiMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDoItaperiuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDoParaisoMG.xml" />
@@ -730,7 +725,6 @@
 		<None Remove="Servicos\Config\NFSe\TaperaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TaquaraRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TaquaritubaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\TaquarivaiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaubateSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
@@ -769,7 +763,6 @@
 		<None Remove="Servicos\Config\NFSe\VianaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VilaVelhaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VilhenaRO.xml" />
-		<None Remove="Servicos\Config\NFSe\ViscondeDoRioBrancoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaDeSantoAntaoPE.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaES.xml" />
@@ -1479,8 +1472,6 @@
 		<None Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema.xsd" />
 		<None Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\XSDRLZ_Informatica_02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\SH3\nfse_v202.xsd" />
-		<None Remove="Xml\Schemas\NFSe\SH3\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
@@ -1714,7 +1705,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ErechimRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EstacaoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EsteioRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\EunapolisBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EusebioCE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FormigaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
@@ -1807,7 +1797,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmargosaBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AssuRN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraVelhaSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BarrosoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BelemPA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColatinaES.xml" />
@@ -1819,10 +1808,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItajaiSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItamogiMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItapetiningaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItatingaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuizDeForaMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\JuquiaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MafraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MageRJ.xml" />
@@ -1948,7 +1934,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantanaDoLivramentoRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPlatinaPR.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCarlosSP.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDelReiMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoLeopoldoRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoLuisMA.xml" />
@@ -1969,7 +1954,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\TangaraDaSerraMT.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TapejaraRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaquaraRS.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\TaquarivaiSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeodoroSampaioSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
@@ -2191,7 +2175,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\VianaES.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\VilhenaRO.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\ViscondeDoRioBrancoMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\VitoriaDeSantoAntaoPE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\VitoriaES.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\VotuporangaSP.xml" />
@@ -2717,25 +2700,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\nfse_dps_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA_CLOUD\xmldsig-core-schema_v01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDCadastroContasContabeis.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDCadastroContasContabeisRetorno.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDConsultaContasPendentes.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDConsultaContasPendentesRetorno.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDConsultaItensAtividade.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraConsulta.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraConsultaRetorno.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraLancamento.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDInstituicaoFinanceiraLancamentoRetorno.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSECancelaNFe.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSECancelaNFeRetorno.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEConsultaNota.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEConsultaNotaRetorno.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEletronico.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDISSEletronicoArquivo.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDNFEletronica.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDNFEletronicaArquivo.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDNotaTomador.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\CECAM\XSDRetorno.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\CONAM\XML_RPS_V4.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\Coplan_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\tiposComplexos_v1.01.xsd" />
@@ -3834,8 +3798,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\XSDRLZ_Informatica_02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\SH3\nfse_v202.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\SH3\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse_v2-03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />

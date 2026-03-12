@@ -1937,29 +1937,11 @@
 		<ArqConfig>ParacambiRJ.xml</ArqConfig>
 		<PadraoNFSe>FINTEL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3526100">
-		<Nome>Juquiá - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>JuquiaSP.xml</ArqConfig>
-		<PadraoNFSe>CECAM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3523503">
-		<Nome>Itatinga - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>ItatingaSP.xml</ArqConfig>
-		<PadraoNFSe>CECAM</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4313375">
 		<Nome>Nova Santa Rita - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>NovaSantaRitaRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3522307">
-		<Nome>Itapetininga - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>ItapetiningaSP.xml</ArqConfig>
-		<PadraoNFSe>JLSOFT</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4320206">
 		<Nome>Seberi - RS</Nome>
@@ -1990,24 +1972,6 @@
 		<UF>RJ</UF>
 		<ArqConfig>DuqueDeCaxiasRJ.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3162500">
-		<Nome>São João del Rei - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>SaoJoaoDelReiMG.xml</ArqConfig>
-		<PadraoNFSe>SH3</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3172004">
-		<Nome>Visconde do Rio Branco - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>ViscondeDoRioBrancoMG.xml</ArqConfig>
-		<PadraoNFSe>SH3</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3105905">
-		<Nome>Barroso - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>BarrosoMG.xml</ArqConfig>
-		<PadraoNFSe>SH3</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3302502">
 		<Nome>Magé - RJ</Nome>
@@ -2181,12 +2145,6 @@
 		<Nome>Teixeira de Freitas - BA</Nome>
 		<UF>BA</UF>
 		<ArqConfig>TeixeiraDeFreitasBA.xml</ArqConfig>
-		<PadraoNFSe>MODERNIZACAO_PUBLICA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2910727">
-		<Nome>Eunápolis - BA</Nome>
-		<UF>BA</UF>
-		<ArqConfig>EunapolisBA.xml</ArqConfig>
 		<PadraoNFSe>MODERNIZACAO_PUBLICA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5107305">
@@ -2722,12 +2680,6 @@
 		<UF>SP</UF>
 		<ArqConfig>ItapecericaDaSerraSP.xml</ArqConfig>
 		<PadraoNFSe>GIAP</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3553856">
-		<Nome>Taquarivaí - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>TaquarivaiSP.xml</ArqConfig>
-		<PadraoNFSe>JLSOFT</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4313904">
 		<Nome>Panambi - RS</Nome>
