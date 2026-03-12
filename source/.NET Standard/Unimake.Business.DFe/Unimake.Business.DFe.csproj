@@ -758,7 +758,6 @@
 		<None Remove="Servicos\Config\NFSe\VilhenaRO.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaDeSantoAntaoPE.xml" />
-		<None Remove="Servicos\Config\NFSe\VitoriaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VoltaRedondaRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\Webfisco.xml" />
 		<None Remove="Servicos\Config\NFSe\XangriLaRS.xml" />
@@ -1535,8 +1534,6 @@
 		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\VERSATEC\nfse_v202.xsd" />
 		<None Remove="Xml\Schemas\NFSe\VERSATEC\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\VITORIA_ES\nfse v2 01.xsd" />
-		<None Remove="Xml\Schemas\NFSe\VITORIA_ES\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\nfse_v2_02-IBSCBS.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
@@ -2155,7 +2152,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\VianaES.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\VilhenaRO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\VitoriaDeSantoAntaoPE.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\VitoriaES.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\Webfisco.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -3871,8 +3867,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\VERSATEC\xmldsig-core-schema20020212.xsd">
 			<SubType>Designer</SubType>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFSe\VITORIA_ES\nfse v2 01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\VITORIA_ES\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02-IBSCBS.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />

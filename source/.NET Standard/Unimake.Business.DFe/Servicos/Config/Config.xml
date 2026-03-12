@@ -1655,12 +1655,6 @@
 		<ArqConfig>JuazeiroBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3205309">
-		<Nome>Vitória - ES</Nome>
-		<UF>ES</UF>
-		<ArqConfig>VitoriaES.xml</ArqConfig>
-		<PadraoNFSe>VITORIA_ES</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3143302">
 		<Nome>Montes Claros - MG</Nome>
 		<UF>MG</UF>

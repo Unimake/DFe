@@ -42,11 +42,6 @@
 		<None Remove="NFSe\Resources\THEMA\1.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<None Remove="NFSe\Resources\THEMA\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
 		<None Remove="NFSe\Resources\THEMA\1.00\EnviarLoteRpsEnvio-env-loterps.xml" />
-		<None Remove="NFSe\Resources\VITORIA_ES\2.01\ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml" />
-		<None Remove="NFSe\Resources\VITORIA_ES\2.01\ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml" />
-		<None Remove="NFSe\Resources\VITORIA_ES\2.01\EnviarLoteRpsSincronoEnvio-env-loterps.xml" />
-		<None Remove="NFSe\Resources\VITORIA_ES\2.01\GerarNfseEnvio-env-loterps.xml" />
-		<None Remove="NFSe\Resources\VITORIA_ES\2.01\SubstituirNfseEnvio-ped-substnfse.xml" />
 		<None Remove="Utility\TesteValidacao\XMLteste\CTe\consReciCTe .xml" />
 	</ItemGroup>
 
@@ -87,16 +82,6 @@
 		<EmbeddedResource Include="NFSe\Resources\THEMA\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\THEMA\1.00\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\THEMA\1.00\EnviarLoteRpsEnvio-env-loterps.xml" />
-		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\CancelarNfseEnvio-ped-cannfse.xml" />
-		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\ConsultarLoteRpsEnvio-ped-loterps.xml" />
-		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\ConsultarNfseFaixaEnvio-ped-sitnfse.xml" />
-		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
-		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml" />
-		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml" />
-		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\EnviarLoteRpsEnvio-env-loterps.xml" />
-		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\EnviarLoteRpsSincronoEnvio-env-loterps.xml" />
-		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\GerarNfseEnvio-env-loterps.xml" />
-		<EmbeddedResource Include="NFSe\Resources\VITORIA_ES\2.01\SubstituirNfseEnvio-ped-substnfse.xml" />
 		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\CONAM\4.00\CancelarNfseEnvio-ped-cannfse.xml" />
 		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\CONAM\4.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml" />
