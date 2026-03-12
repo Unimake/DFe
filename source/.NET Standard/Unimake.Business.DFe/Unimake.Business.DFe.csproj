@@ -336,7 +336,6 @@
 		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BageRS.xml" />
 		<None Remove="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
-		<None Remove="Servicos\Config\NFSe\BaraoDeCotegipeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\BarbacenaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\BaririSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BarraDeSaoFranciscoES.xml" />
@@ -382,7 +381,6 @@
 		<None Remove="Servicos\Config\NFSe\CamboriuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinaGrandePB.xml" />
-		<None Remove="Servicos\Config\NFSe\CampinasDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoBomRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoGrandeMS.xml" />
@@ -391,7 +389,6 @@
 		<None Remove="Servicos\Config\NFSe\CampoNovoParecisMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CanaaDosCarajasPA.xml" />
 		<None Remove="Servicos\Config\NFSe\CandeiasBA.xml" />
-		<None Remove="Servicos\Config\NFSe\CanelaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CangucuRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoinhasSC.xml" />
@@ -436,9 +433,7 @@
 		<None Remove="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\EntreIjuisRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Equiplano.xml" />
-		<None Remove="Servicos\Config\NFSe\ErechimRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ErnestinaRS.xml" />
-		<None Remove="Servicos\Config\NFSe\EstacaoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EstanciaVelhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EsteioRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EstrelaRS.xml" />
@@ -604,7 +599,6 @@
 		<None Remove="Servicos\Config\NFSe\PatrocinioMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PauliniaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PaulistaPE.xml" />
-		<None Remove="Servicos\Config\NFSe\PauloBentoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PaveramaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PederneirasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PedroLeopoldoMG.xml" />
@@ -1476,8 +1470,6 @@
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\SYSTEMPRO\nfse_v2_01.xsd" />
-		<None Remove="Xml\Schemas\NFSe\SYSTEMPRO\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarCupomFiscalEnvio.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarCupomFiscalResposta.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarNfseEnvio.xsd" />
@@ -1644,7 +1636,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArroioDoSalRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AstorgaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BageRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BaraoDeCotegipeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarbacenaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDoPiraiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BastosSP.xml" />
@@ -1656,9 +1647,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaieirasSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CajuruSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandePB.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinasDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CandeiasBA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CanelaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CangucuRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CascavelPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CastroPR.xml" />
@@ -1669,8 +1658,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DracenaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EntreIjuisRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ErechimRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\EstacaoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EsteioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EusebioCE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FormigaMG.xml" />
@@ -2070,9 +2057,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\BoaVistaRR.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\PauloBentoRS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\TerraDeAreiaRS.xml">
@@ -3775,8 +3759,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\SYSTEMPRO\nfse_v2_01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\SYSTEMPRO\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarCupomFiscalEnvio.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarCupomFiscalResposta.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TECNOSISTEMAS\CancelarNfseEnvio.xsd" />

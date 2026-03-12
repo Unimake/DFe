@@ -1289,12 +1289,6 @@
 		<ArqConfig>SaoBorjaRS.xml</ArqConfig>
 		<PadraoNFSe>GIF</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4314134">
-		<Nome>Paulo Bento - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>PauloBentoRS.xml</ArqConfig>
-		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4321006">
 		<Nome>Tapera - RS</Nome>
 		<UF>RS</UF>
@@ -2698,36 +2692,6 @@
 		<UF>SP</UF>
 		<ArqConfig>CajuruSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4307005">
-		<Nome>Erechim - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>ErechimRS.xml</ArqConfig>
-		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4301701">
-		<Nome>Barão de Cotegipe - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>BaraoDeCotegipeRS.xml</ArqConfig>
-		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4307559">
-		<Nome>Estação - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>EstacaoRS.xml</ArqConfig>
-		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4303806">
-		<Nome>Campinas do Sul - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>CampinasDoSulRS.xml</ArqConfig>
-		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4304408">
-		<Nome>Canela - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>CanelaRS.xml</ArqConfig>
-		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2616407">
 		<Nome>Vitória de Santo Antão - PE</Nome>
