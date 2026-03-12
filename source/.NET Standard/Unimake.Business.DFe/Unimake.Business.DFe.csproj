@@ -568,7 +568,6 @@
 		<None Remove="Servicos\Config\NFSe\NACIONAL.xml" />
 		<None Remove="Servicos\Config\NFSe\NaviraiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
-		<None Remove="Servicos\Config\NFSe\NiteroiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaBassanoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
@@ -640,7 +639,6 @@
 		<None Remove="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
 		<None Remove="Servicos\Config\NFSe\ProfessorJamilGO.xml" />
 		<None Remove="Servicos\Config\NFSe\Quatro BarrasPR.xml" />
-		<None Remove="Servicos\Config\NFSe\RecifePE.xml" />
 		<None Remove="Servicos\Config\NFSe\RedencaoPA.xml" />
 		<None Remove="Servicos\Config\NFSe\RegenteFeijoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RibasDoRioPardoMS.xml" />
@@ -1517,10 +1515,8 @@
 		<None Remove="Xml\Schemas\NFSe\TINUS\xmldsig.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\nfse v2 03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\nfse_municipal_v01.xsd" />
-		<None Remove="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v2.03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema_v2.03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\nfse v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
@@ -1715,7 +1711,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MedianeiraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MirassolSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NaviraiMS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\NiteroiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsascoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OsorioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OuroSC.xml" />
@@ -1908,7 +1903,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoPedroDaAldeiaRJ.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SapirangaRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SeberiRS.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\RecifePE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoRoqueSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SobralCE.xml" />
@@ -3837,11 +3831,9 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\tiposComplexos_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\tiposEventos_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\tiposSimples_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v2.03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema_v2.03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\nfse v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />

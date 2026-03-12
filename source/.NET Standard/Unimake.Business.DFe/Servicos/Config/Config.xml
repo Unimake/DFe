@@ -1577,12 +1577,6 @@
 		<ArqConfig>NovaBassanoRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="2611606">
-		<Nome>Recife - PE</Nome>
-		<UF>PE</UF>
-		<ArqConfig>RecifePE.xml</ArqConfig>
-		<PadraoNFSe>TIPLAN</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2905701">
 		<Nome>Camaçari - BA</Nome>
 		<UF>BA</UF>
@@ -2025,12 +2019,6 @@
 		<Nome>Angra dos Reis - RJ</Nome>
 		<UF>RJ</UF>
 		<ArqConfig>AngraDosReisRJ.xml</ArqConfig>
-		<PadraoNFSe>TIPLAN</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3303302">
-		<Nome>Niterói - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>NiteroiRJ.xml</ArqConfig>
 		<PadraoNFSe>TIPLAN</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3203205">
