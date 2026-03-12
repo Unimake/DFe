@@ -645,7 +645,6 @@
 		<None Remove="Servicos\Config\NFSe\RibeiraoPretoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDasOstrasRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDasPedrasSP.xml" />
-		<None Remove="Servicos\Config\NFSe\RioDeJaneiroRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDosCedrosSC.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDoSulSC.xml" />
 		<None Remove="Servicos\Config\NFSe\RioGrandeRS.xml" />
@@ -1981,9 +1980,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\MonteBeloMG.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\RioDeJaneiroRJ.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\UberlandiaMG.xml">
