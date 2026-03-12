@@ -352,7 +352,6 @@
 		<None Remove="Servicos\Config\NFSe\BebedouroSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BelemPA.xml" />
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
-		<None Remove="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
 		<None Remove="Servicos\Config\NFSe\BETHA_CLOUD.xml" />
 		<None Remove="Servicos\Config\NFSe\BiguacuSC.xml" />
@@ -409,7 +408,6 @@
 		<None Remove="Servicos\Config\NFSe\CaxiasDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CedralSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ChapecoSC.xml" />
-		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
 		<None Remove="Servicos\Config\NFSe\CodoMA.xml" />
 		<None Remove="Servicos\Config\NFSe\ColatinaES.xml" />
 		<None Remove="Servicos\Config\NFSe\ColiderMT.xml" />
@@ -550,8 +548,6 @@
 		<None Remove="Servicos\Config\NFSe\MarataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\MarcolandiaPI.xml" />
 		<None Remove="Servicos\Config\NFSe\MarechalCandidoRondonPR.xml" />
-		<None Remove="Servicos\Config\NFSe\MarialvaPR.xml" />
-		<None Remove="Servicos\Config\NFSe\MarilenaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\MariliaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MaringaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\MassarandubaSC.xml" />
@@ -1688,7 +1684,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CangucuRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CascavelPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CastroPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CianortePR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CorupaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CriciumaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzeiroDoSulRS.xml" />
@@ -1731,8 +1726,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MaracaiSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MaracanauCE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarechalCandidoRondonPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MarialvaPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MarilenaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MedianeiraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MirassolSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NaviraiMS.xml" />
@@ -1814,7 +1807,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PoaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AracajuSE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AriquemesRO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CacoalRO.xml" />
 	</ItemGroup>
 
