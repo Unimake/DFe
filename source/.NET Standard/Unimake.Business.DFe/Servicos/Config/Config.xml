@@ -1697,12 +1697,6 @@
 		<ArqConfig>AraripinaPE.xml</ArqConfig>
 		<PadraoNFSe>HM2SOLUCOES</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4302105">
-		<Nome>Bento Gonçalves - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>BentoGoncalvesRS.xml</ArqConfig>
-		<PadraoNFSe>ELOTECH</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3539806">
 		<Nome>Poá - SP</Nome>
 		<UF>SP</UF>
@@ -1877,12 +1871,6 @@
 		<ArqConfig>LauroDeFreitasBA.xml</ArqConfig>
 		<PadraoNFSe>METROPOLIS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5206503">
-		<Nome>Cromínia - GO</Nome>
-		<UF>GO</UF>
-		<ArqConfig>CrominiaGO.xml</ArqConfig>
-		<PadraoNFSe>MEGASOFT</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5217708">
 		<Nome>Pontalina - GO</Nome>
 		<UF>GO</UF>
@@ -2003,12 +1991,6 @@
 		<ArqConfig>VianaES.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3557105">
-		<Nome>Votuporanga - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>VotuporangaSP.xml</ArqConfig>
-		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5102504">
 		<Nome>Cáceres - MT</Nome>
 		<UF>MT</UF>
@@ -2111,12 +2093,6 @@
 		<ArqConfig>ArarasSP.xml</ArqConfig>
 		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4105508">
-		<Nome>Cianorte - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>CianortePR.xml</ArqConfig>
-		<PadraoNFSe>ELOTECH</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4110706">
 		<Nome>Irati - PR</Nome>
 		<UF>PR</UF>
@@ -2127,18 +2103,6 @@
 		<Nome>Loanda - PR</Nome>
 		<UF>PR</UF>
 		<ArqConfig>LoandaPR.xml</ArqConfig>
-		<PadraoNFSe>ELOTECH</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4114807">
-		<Nome>Marialva - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>MarialvaPR.xml</ArqConfig>
-		<PadraoNFSe>ELOTECH</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4115002">
-		<Nome>Marilena - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>MarilenaPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4117701">
