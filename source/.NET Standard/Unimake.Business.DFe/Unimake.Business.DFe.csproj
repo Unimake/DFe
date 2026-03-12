@@ -438,7 +438,6 @@
 		<None Remove="Servicos\Config\NFSe\FISCO.xml" />
 		<None Remove="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\FormigaMG.xml" />
-		<None Remove="Servicos\Config\NFSe\FormosaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\FortalezaCE.xml" />
 		<None Remove="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
 		<None Remove="Servicos\Config\NFSe\FrancaSP.xml" />
@@ -2190,7 +2189,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\CarapicuibaSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\NACIONAL.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\EdeiaGO.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\FormosaGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosPinhaisPR.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
