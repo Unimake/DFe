@@ -420,10 +420,6 @@ namespace Unimake.Business.DFe
                         RetornoServicoString = RetornoServicoString.Replace("ns4:", string.Empty);
                         RetornoServicoString = RetornoServicoString.Replace("ns0:", string.Empty);
                     }
-                    else if (soap.PadraoNFSe == PadraoNFSe.SIMPLE)
-                    {
-                        RetornoServicoString = RetornoServicoString.Replace("m:", string.Empty);
-                    }
                     else if (soap.PadraoNFSe == PadraoNFSe.COPLAN)
                     {
                         RetornoServicoString = RetornoServicoString.Replace("<CompNfse  ><?xml version=\"1.0\" encoding=\"UTF-8\"?>", "<CompNfse>");
