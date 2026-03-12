@@ -7391,70 +7391,64 @@ namespace Unimake.Business.DFe.Servicos
         JLSOFT = 71,
 
         ///<summary>
-        ///SH3
-        /// </summary>
-        [Description("SH3")]
-        SH3 = 72,
-
-        ///<summary>
         ///MODERNIZACAO_PUBLICA
         /// </summary>
         [Description("MODERNIZACAO_PUBLICA")]
-        MODERNIZACAO_PUBLICA = 73,
+        MODERNIZACAO_PUBLICA = 72,
 
         ///<summary>
         ///METROPOLIS
         /// </summary>
         [Description("METROPOLIS")]
-        METROPOLIS = 74,
+        METROPOLIS = 73,
 
         ///<summary>
         ///MEGASOFT
         /// </summary>
         [Description("MEGASOFT")]
-        MEGASOFT = 75,
+        MEGASOFT = 74,
 
         /// <summary>
         /// PRIMAX
         /// </summary>
         [Description("PRIMAX")]
-        PRIMAX = 77,
+        PRIMAX = 75,
 
         ///<summary>
         ///EGOVERNEISS
         /// </summary>
         [Description("EGOVERNEISS")]
-        EGOVERNEISS = 78,
+        EGOVERNEISS = 76,
 
         ///<summary>
         ///INTERSOL
         /// </summary>
         [Description("INTERSOL")]
-        INTERSOL = 79,
+        INTERSOL = 77,
 
         ///<summary>
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 80,
+        SIGISSWEB = 78,
 
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 81,
+        BETHA_CLOUD = 79,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 82,
+        FUTURIZE = 80,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 83
+        PROPRIOFORTALEZACE = 81
     }
 
     #endregion
