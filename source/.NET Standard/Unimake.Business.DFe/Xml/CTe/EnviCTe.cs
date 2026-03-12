@@ -2808,7 +2808,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeVTotTribField() => VTotTrib > 0;
         public bool ShouldSerializeInfAdFisco() => !string.IsNullOrWhiteSpace(InfAdFisco);
-        public bool ShouldSerializeVTotDFeField() => VTotDFe > 0;
+        public bool ShouldSerializeVTotDFeField() => VTotDFe > 0 || IBSCBS != null;
 
         #endregion
     }
