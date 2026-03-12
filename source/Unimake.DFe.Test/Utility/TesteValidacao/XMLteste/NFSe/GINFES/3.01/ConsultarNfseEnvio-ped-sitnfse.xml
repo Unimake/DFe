@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseEnvio Id="Id1" xmlns="http://www.ginfes.com.br/servico_consultar_nfse_envio_v03.xsd" xmlns:ns1="http://www.ginfes.com.br/tipos_v03.xsd">
+	<Prestador>
+		<ns1:Cnpj>Cnpj_________1</ns1:Cnpj>
+		<ns1:InscricaoMunicipal>InscricaoMunic1</ns1:InscricaoMunicipal>
+	</Prestador>
+	<NumeroNfse>0</NumeroNfse>
+	<PeriodoEmissao>
+		<DataInicial>1900-01-01</DataInicial>
+		<DataFinal>1900-01-01</DataFinal>
+	</PeriodoEmissao>
+</ConsultarNfseEnvio>

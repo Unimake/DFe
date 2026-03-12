@@ -422,9 +422,25 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => VrFGTS = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Número da notificação de FGTS que deu origem à confissão
+        /// </summary>
+        [XmlElement("notAFT")]
+        public string NotAFT { get; set; }
+
+        /// <summary>
+        /// Informar o código de classificação da rubrica
+        /// </summary>
+        [XmlElement("natRubr")]
+        public string NatRubr { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeVrFGTSField() => VrFGTS > 0;
+
+        public bool ShouldSerializeNotAFT() => !string.IsNullOrEmpty(NotAFT);
+
+        public bool ShouldSerializeNatRubr() => !string.IsNullOrEmpty(NatRubr);
 
         #endregion ShouldSerialize
     }
@@ -464,7 +480,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Tipo do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores
         /// </summary>
         [XmlElement("tpAcConv")]
-        public string TpAcConv { get; set; }
+        public TpAcConvFGTS TpAcConv { get; set; }
 
         /// <summary>
         /// Informações consolidadas das bases de cálculo e valores do FGTS de períodos anteriores quando tpAcConv = [E, H, I]

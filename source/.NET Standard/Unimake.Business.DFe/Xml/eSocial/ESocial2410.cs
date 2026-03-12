@@ -273,6 +273,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("infoPenMorte")]
         public InfoPenMorte InfoPenMorte { get; set; }
 
+        /// <summary>
+        /// Informações relativas à homologação do benefício pelo Tribunal de Contas
+        /// </summary>
+        [XmlElement("infoHomolog")]
+        public InfoHomolog InfoHomolog { get; set; }
+
         #region ShouldSeriaize
 
         public bool ShouldSerializeDsc() => !string.IsNullOrEmpty(Dsc);
@@ -345,6 +351,78 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => DtInst = DateTimeOffset.Parse(value);
 #endif
         }
+
+        /// <summary>
+        /// Tipo de dependente do instituidor da pensão por morte
+        /// </summary>
+        [XmlElement("tpDepInst")]
+#if INTEROP
+        public TpDepInst TpDepInst { get; set; } = (TpDepInst)(-1);
+#else
+        public TpDepInst? TpDepInst { get; set; }
+#endif
+
+        /// <summary>
+        /// Descrição do dependente do instituidor da pensão por morte
+        /// </summary>
+        [XmlElement("descrDepInst")]
+        public string DescrDepInst { get; set; }
+
+        #region ShouldSerialize
+
+#if INTEROP
+        public bool ShouldSerializeTpDepInst() => TpDepInst != (TpDepInst)(-1);
+#else
+        public bool ShouldSerializeTpDepInst() => TpDepInst != null;
+#endif
+
+        public bool ShouldSerializeDescrDepInst() => !string.IsNullOrEmpty(DescrDepInst);
+
+        #endregion ShouldSerialize
+    }
+
+    /// <summary>
+    /// Informações relativas à homologação do benefício pelo Tribunal de Contas
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoHomolog")]
+    [ComVisible(true)]
+#endif
+    public class InfoHomolog
+    {
+        /// <summary>
+        /// Informar se o benefício requer ou não homologação pelo Tribunal de Contas
+        /// </summary>
+        [XmlElement("sitHomolog")]
+        public SitHomolog SitHomolog { get; set; }
+
+        /// <summary>
+        /// Informar a data da homologação do benefício pelo Tribunal de Contas competente
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtHomolog { get; set; }
+#else
+        public DateTimeOffset DtHomolog { get; set; }
+#endif
+
+        [XmlElement("dtHomolog")]
+        public string DtHomologField
+        {
+            get => DtHomolog.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DtHomolog = DateTime.Parse(value);
+#else
+            set => DtHomolog = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeDtHomologField() => DtHomolog > DateTime.MinValue;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>

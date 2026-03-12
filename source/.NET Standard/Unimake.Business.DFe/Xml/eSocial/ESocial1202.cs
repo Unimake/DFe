@@ -111,6 +111,72 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     /// <summary>
+    /// Identificação da unidade do órgão público na qual o servidor possui remuneração
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabPerAnt1202")]
+    [ComVisible(true)]
+#endif
+    public class IdeEstabPerAnt1202
+    {
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05
+        /// </summary>
+        [XmlElement("tpInsc")]
+        public TipoInscricaoEstabelecimento TpInsc { get; set; }
+
+        /// <summary>
+        /// Informar o número de inscrição da unidade do órgão público ou do estabelecimento, de acordo com o tipo de inscrição indicado no campo ideEstab/tpInsc
+        /// </summary>
+        [XmlElement("nrInsc")]
+        public string NrInsc { get; set; }
+
+        /// <summary>
+        /// Remuneração do trabalhador
+        /// </summary>
+        [XmlElement("remunPerAnt")]
+        public List<RemunPerAnt> RemunPerAnt { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddRemunPerAnt(RemunPerAnt item)
+        {
+            if (RemunPerAnt == null)
+            {
+                RemunPerAnt = new List<RemunPerAnt>();
+            }
+
+            RemunPerAnt.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista RemunPerAnt (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da RemunPerAnt</returns>
+        public RemunPerAnt GetRemunPerAnt(int index)
+        {
+            if ((RemunPerAnt?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return RemunPerAnt[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista RemunPerAnt
+        /// </summary>
+        public int GetRemunPerAntCount => (RemunPerAnt != null ? RemunPerAnt.Count : 0);
+#endif
+    }
+
+    /// <summary>
     /// Informações de identificação do evento
     /// </summary>
 #if INTEROP
@@ -545,7 +611,44 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação da unidade do órgão público	
         /// </summary>
         [XmlElement("ideEstab")]
-        public IdeEstab1202 IdeEstab { get; set; }
+        public List<IdeEstabPerAnt1202> IdeEstab { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddIdeEstab(IdeEstabPerAnt1202 item)
+        {
+            if (IdeEstab == null)
+            {
+                IdeEstab = new List<IdeEstabPerAnt1202>();
+            }
+
+            IdeEstab.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista IdeEstab1202 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da IdeEstab1202</returns>
+        public IdeEstabPerAnt1202 GetIdeEstab(int index)
+        {
+            if ((IdeEstab?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return IdeEstab[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista IdeEstab1202
+        /// </summary>
+        public int GetIdeEstabCount => (IdeEstab != null ? IdeEstab.Count : 0);
+#endif
     }
 
     /// <summary>
@@ -556,7 +659,57 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunPerApur1202")]
     [ComVisible(true)]
 #endif
-    public class RemunPerApur1202 : RemunPerApur1200 { }
+    public class RemunPerApur1202
+    {
+        /// <summary>
+        /// Matrícula atribuída ao trabalhador pela empresa ou, no caso de servidor público, a matrícula constante no Sistema de Administração de Recursos Humanos do órgão
+        /// </summary>
+        [XmlElement("matricula")]
+        public string Matricula { get; set; }
+
+        /// <summary>
+        /// Itens da remuneração do trabalhador
+        /// </summary>
+        [XmlElement("itensRemun")]
+        public List<ItensRemun1202> ItensRemun { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddItensRemun(ItensRemun1202 item)
+        {
+            if (ItensRemun == null)
+            {
+                ItensRemun = new List<ItensRemun1202>();
+            }
+
+            ItensRemun.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ItensRemun (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ItensRemun</returns>
+        public ItensRemun1202 GetItensRemun(int index)
+        {
+            if ((ItensRemun?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ItensRemun[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ItensRemun1202
+        /// </summary>
+        public int GetItensRemunCount => (ItensRemun != null ? ItensRemun.Count : 0);
+#endif
+    }
 
     /// <summary>
     /// Rubricas que compõem a remuneração do trabalhador
@@ -727,14 +880,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Remuneração do trabalhador
         /// </summary>
-        [XmlElement("remunPerAnt")]
-        public List<RemunPerAnt> RemunPerAnt { get; set; }
-
-        /// <summary>
-        /// Informações relativas à remuneração do trabalhador no período de apuração
-        /// </summary>
         [XmlElement("remunPerApur")]
-        public RemunPerApur1202 RemunPerApur { get; set; }
+        public List<RemunPerApur1202> RemunPerApur { get; set; }
 
 #if INTEROP
 
@@ -742,14 +889,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddRemunPerAnt(RemunPerAnt item)
+        public void AddRemunPerApur(RemunPerApur1202 item)
         {
-            if (RemunPerAnt == null)
+            if (RemunPerApur == null)
             {
-                RemunPerAnt = new List<RemunPerAnt>();
+                RemunPerApur = new List<RemunPerApur1202>();
             }
 
-            RemunPerAnt.Add(item);
+            RemunPerApur.Add(item);
         }
 
         /// <summary>
@@ -757,20 +904,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da RemunPerAnt</returns>
-        public RemunPerAnt GetRemunPerAnt(int index)
+        public RemunPerApur1202 GetRemunPerApur(int index)
         {
-            if ((RemunPerAnt?.Count ?? 0) == 0)
+            if ((RemunPerApur?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return RemunPerAnt[index];
+            return RemunPerApur[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista RemunPerAnt
         /// </summary>
-        public int GetRemunPerAntCount => (RemunPerAnt != null ? RemunPerAnt.Count : 0);
+        public int GetRemunPerApurCount => (RemunPerApur != null ? RemunPerApur.Count : 0);
 #endif
     }
 

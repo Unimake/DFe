@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarLoteRpsEnvio Id="consultar" xmlns="http://nfe.sjp.pr.gov.br/servico_consultar_lote_rps_envio_v03.xsd">
+  <Prestador xmlns:tipos="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">
+    <tipos:Cnpj>012345678901234</tipos:Cnpj>
+    <tipos:InscricaoMunicipal>12345</tipos:InscricaoMunicipal>
+  </Prestador>
+  <Protocolo>12345</Protocolo>
+</ConsultarLoteRpsEnvio>

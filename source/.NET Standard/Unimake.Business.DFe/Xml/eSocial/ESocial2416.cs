@@ -209,6 +209,41 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("tpPenMorte")]
         public TpPenMorte TpPenMorte { get; set; }
+
+        /// <summary>
+        /// Informações do instituidor da pensão por morte
+        /// </summary>
+        [XmlElement("instPenMorte")]
+        public InstPenMorte2416 InstPenMorte { get; set; }
+    }
+
+    /// <summary>
+    /// Informações do instituidor da pensão por morte
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InstPenMorte2416")]
+    [ComVisible(true)]
+#endif
+    public class InstPenMorte2416
+    {
+        /// <summary>
+        /// Tipo de dependente do instituidor da pensão por morte
+        /// </summary>
+        [XmlElement("tpDepInst")]
+        public string TpDepInst { get; set; }
+
+        /// <summary>
+        /// Descrição do dependente do instituidor da pensão por morte
+        /// </summary>
+        [XmlElement("descrDepInst")]
+        public string DescrDepInst { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeDescrDepInst() => !string.IsNullOrEmpty(DescrDepInst);
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>

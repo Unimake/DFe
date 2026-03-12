@@ -2931,10 +2931,10 @@ namespace Unimake.Business.DFe.Servicos
         PagamentoInstantaneo = 17,
 
         /// <summary>
-        /// 18 - Transferência bancária, Carteira Digital
+        /// TED (Transferência Eletrônica Disponível) - Transferência entre contas de diferentes bancos.
         /// </summary> 
         [XmlEnum("18")]
-        TransferenciaBancaria = 18,
+        TED = 18,
 
         /// <summary>
         /// 19 - Programa de fidelidade, Cashback, Crédito Virtual
@@ -2959,6 +2959,18 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("22")]
         PagamentoEletronicoNaoInformado = 22,
+
+        /// <summary>
+        /// Pagamentos recorrentes configurados para serem debitados automaticamente via Pix, a partir de autorização do pagador.
+        /// </summary>
+        [XmlEnum("23")]
+        PagamentoInstantaneoAutomatico = 23,
+
+        /// <summary>
+        /// Transferência entre contas do mesmo banco.
+        /// </summary>
+        [XmlEnum("24")]
+        TEFBookTransfer = 24, 
 
         /// <summary>
         /// 90 - Sem pagamento
@@ -7289,210 +7301,100 @@ namespace Unimake.Business.DFe.Servicos
         PRODEB = 56,
 
         /// <summary>
-        /// LIBRE
-        /// </summary>
-        [Description("LIBRE")]
-        LIBRE = 57,
-
-        /// <summary>
-        /// MANAUS_AM
-        /// </summary>
-        [Description("MANAUS_AM")]
-        MANAUS_AM = 58,
-
-        /// <summary>
-        /// NATALENSE
-        /// </summary>
-        [Description("NATALENSE")]
-        NATALENSE = 59,
-
-        /// <summary>
-        /// VITORIAS_ES
-        /// </summary>
-        [Description("VITORIA_ES")]
-        VITORIA_ES = 60,
-
-        /// <summary>
         /// RLZ_INFORMATICA
         /// </summary>
         [Description("RLZ_INFORMATICA")]
-        RLZ_INFORMATICA = 61,
-
-        /// <summary>
-        /// SISPMJP
-        /// </summary>
-        [Description("SISPMJP")]
-        SISPMJP = 62,
+        RLZ_INFORMATICA = 57,
 
         /// <summary>
         /// HM2SOLUCOES
         /// </summary>
         [Description("HM2SOLUCOES")]
-        HM2SOLUCOES = 63,
+        HM2SOLUCOES = 58,
 
         /// <summary>
         /// ELOTECH
         /// </summary>
         [Description("ELOTECH")]
-        ELOTECH = 64,
+        ELOTECH = 59,
 
         /// <summary>
         /// CONAM
         /// </summary>
         [Description("CONAM")]
-        CONAM = 65,
-
-        /// <summary>
-        /// EGOVERNE
-        /// </summary>
-        [Description("EGOVERNE")]
-        EGOVERNE = 66,
+        CONAM = 60,
 
         /// <summary>
         /// PORTAL_FACIL
         /// </summary>
         [Description("PORTAL_FACIL")]
-        PORTAL_FACIL = 67,
-
-        /// <summary>
-        /// E_RECEITA
-        /// </summary>
-        [Description("E_RECEITA")]
-        E_RECEITA = 68,
+        PORTAL_FACIL = 61,
 
         ///<summary>
         ///DBSELLER
         /// </summary>
         [Description("DBSELLER")]
-        DBSELLER = 69,
-
-        ///<summary>
-        ///CECAM
-        /// </summary>
-        [Description("CECAM")]
-        CECAM = 70,
-
-        ///<summary>
-        ///JLSOFT
-        /// </summary>
-        [Description("JLSOFT")]
-        JLSOFT = 71,
-
-        ///<summary>
-        ///SH3
-        /// </summary>
-        [Description("SH3")]
-        SH3 = 72,
+        DBSELLER = 62,
 
         ///<summary>
         ///MODERNIZACAO_PUBLICA
         /// </summary>
         [Description("MODERNIZACAO_PUBLICA")]
-        MODERNIZACAO_PUBLICA = 73,
+        MODERNIZACAO_PUBLICA = 63,
 
         ///<summary>
         ///METROPOLIS
         /// </summary>
         [Description("METROPOLIS")]
-        METROPOLIS = 74,
+        METROPOLIS = 64,
 
         ///<summary>
         ///MEGASOFT
         /// </summary>
         [Description("MEGASOFT")]
-        MEGASOFT = 75,
-
-        ///<summary>
-        ///ISSONLINE_ASSESSORPUBLICO
-        /// </summary>
-        [Description("ISSONLINE_ASSESSORPUBLICO")]
-        ISSONLINE_ASSESSORPUBLICO = 76,
-
-
-        ///<summary>
-        ///SINSOFT
-        /// </summary>
-        [Description("SINSOFT")]
-        SINSOFT = 77,
+        MEGASOFT = 65,
 
         /// <summary>
         /// PRIMAX
         /// </summary>
         [Description("PRIMAX")]
-        PRIMAX = 78,
+        PRIMAX = 66,
 
         ///<summary>
         ///EGOVERNEISS
         /// </summary>
         [Description("EGOVERNEISS")]
-        EGOVERNEISS = 79,
-
-        ///<summary>
-        ///DESENVOLVECIDADE
-        /// </summary>
-        [Description("DESENVOLVECIDADE")]
-        DESENVOLVECIDADE = 80,
-
-
-        ///<summary>
-        ///INDAIATUBA_SP
-        /// </summary>
-        [Description("INDAIATUBA_SP")]
-        INDAIATUBA_SP = 81,
+        EGOVERNEISS = 67,
 
         ///<summary>
         ///INTERSOL
         /// </summary>
         [Description("INTERSOL")]
-        INTERSOL = 82,
-
-        ///<summary>
-        ///PUBLICENTER
-        /// </summary>
-        [Description("PUBLICENTER")]
-        PUBLICENTER = 83,
-
-        /// <summary>
-        /// LEXSOM
-        /// </summary>
-        [Description("LEXSOM")]
-        LEXSOM = 84,
-
-        ///<summary>
-        ///SUPERNOVA
-        /// </summary>
-        [Description("SUPERNOVA")]
-        SUPERNOVA = 85,
+        INTERSOL = 68,
 
         ///<summary>
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 86,
-
-        /// <summary>
-        /// SOFTPLAN
-        /// </summary>
-        [Description("SOFTPLAN")]
-        SOFTPLAN = 87,
+        SIGISSWEB = 69,
 
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 88,
+        BETHA_CLOUD = 70,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 89,
+        FUTURIZE = 71,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 90
+        PROPRIOFORTALEZACE = 72
     }
 
     #endregion
@@ -10842,6 +10744,46 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 
+    #region eSocial - Código de incidência da rubrica para o PIS/PASEP
+
+    /// <summary>
+    /// Código de incidência da rubrica para o PIS/PASEP sobre a folha de salários.
+    /// </summary>
+    public enum CodigoIncidenciaPisPasep
+    {
+        /// <summary>
+        /// 00 - Não é base de cálculo do PIS/PASEP
+        /// </summary>
+        [XmlEnum("00")]
+        NaoBaseCalculo = 0,
+
+        /// <summary>
+        /// 11 - Base de cálculo do PIS/PASEP mensal
+        /// </summary>
+        [XmlEnum("11")]
+        BaseCalculoMensal = 11,
+
+        /// <summary>
+        /// 12 - Base de cálculo do PIS/PASEP 13º salário
+        /// </summary>
+        [XmlEnum("12")]
+        BaseCalculoDecimoTerceiro = 12,
+
+        /// <summary>
+        /// 91 - Incidência suspensa em decorrência de decisão judicial - PIS/PASEP mensal
+        /// </summary>
+        [XmlEnum("91")]
+        SuspensaoDecisaoJudicialMensal = 91,
+
+        /// <summary>
+        /// 92 - Incidência suspensa em decorrência de decisão judicial - PIS/PASEP 13º salário
+        /// </summary>
+        [XmlEnum("92")]
+        SuspensaoDecisaoJudicialDecimoTerceiro = 92
+    }
+
+    #endregion
+
     #region eSocial - Extensão da decisão/sentença.
 
     /// <summary>
@@ -13684,6 +13626,120 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region indRemunTSVTermino - eSocial
+
+    /// <summary>
+    /// Indicativo de situação de remuneração após o término.
+    /// </summary>
+    public enum IndRemunTSVTermino
+    {
+        /// <summary>
+        /// 1 - Quarentena
+        /// </summary>
+        [XmlEnum("1")]
+        Quarentena = 1,
+
+        /// <summary>
+        /// 2 - Término reconhecido judicialmente com data anterior a competências com remunerações já informadas no eSocial
+        /// </summary>
+        [XmlEnum("2")]
+        TerminoReconhecidoJudicialmente = 2
+    }
+
+    #endregion
+
+    #region tpAcConv - eSocial
+
+    /// <summary>
+    /// Tipo do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores.
+    /// </summary>
+    public enum TpAcConv
+    {
+        /// <summary>
+        /// A - Acordo Coletivo de Trabalho
+        /// </summary>
+        [XmlEnum("A")]
+        AcordoColetivoTrabalho = 0,
+
+        /// <summary>
+        /// B - Legislação federal, estadual, municipal ou distrital
+        /// </summary>
+        [XmlEnum("B")]
+        LegislacaoFederalEstadualMunicipalDistrital = 1,
+
+        /// <summary>
+        /// C - Convenção Coletiva de Trabalho
+        /// </summary>
+        [XmlEnum("C")]
+        ConvencaoColetivaTrabalho = 2,
+
+        /// <summary>
+        /// D - Sentença normativa - Dissídio
+        /// </summary>
+        [XmlEnum("D")]
+        SentencaNormativaDissidio = 3,
+
+        /// <summary>
+        /// E - Conversão de licença saúde em acidente de trabalho
+        /// </summary>
+        [XmlEnum("E")]
+        ConversaoLicencaSaudeAcidenteTrabalho = 4,
+
+        /// <summary>
+        /// G - Antecipação de diferenças de acordo, convenção ou dissídio coletivo
+        /// </summary>
+        [XmlEnum("G")]
+        AntecipacaoDiferencasAcordoConvencaoDissidio = 5,
+
+        /// <summary>
+        /// H - Declaração de base de cálculo de FGTS anterior ao início do FGTS Digital
+        /// </summary>
+        [XmlEnum("H")]
+        DeclaracaoBaseCalculoFgtsAnteriorInicioFgtsDigital = 6,
+
+        /// <summary>
+        /// I - Sentença judicial (exceto reclamatória trabalhista)
+        /// </summary>
+        [XmlEnum("I")]
+        SentencaJudicial = 7,
+
+        /// <summary>
+        /// J - Parcelas complementares conhecidas após o fechamento da folha
+        /// </summary>
+        [XmlEnum("J")]
+        ParcelasComplementaresAposFechamentoFolha = 8
+    }
+
+    #endregion
+
+    #region tpAcConvFGTS - eSocial
+
+    /// <summary>
+    /// Tipo do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores para FGTS.
+    /// </summary>
+    public enum TpAcConvFGTS
+    {
+        /// <summary>
+        /// E - Conversão de licença saúde em acidente de trabalho
+        /// </summary>
+        [XmlEnum("E")]
+        ConversaoLicencaSaudeAcidenteTrabalho = 0,
+
+        /// <summary>
+        /// H - Declaração de base de cálculo de FGTS anterior ao início do FGTS Digital
+        /// </summary>
+        [XmlEnum("H")]
+        DeclaracaoBaseCalculoFgtsAnteriorInicioFgtsDigital = 1,
+
+        /// <summary>
+        /// I - Sentença judicial (exceto reclamatória trabalhista)
+        /// </summary>
+        [XmlEnum("I")]
+        SentencaJudicial = 2
+    }
+
+    #endregion
+
     #region natEstagio - eSocial
 
     /// <summary>
@@ -13798,6 +13854,152 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("2")]
         Temporaria = 2
+    }
+
+    #endregion
+
+    #region tpDepInst - eSocial
+
+    /// <summary>
+    /// Tipo de dependente do instituidor da pensão por morte.
+    /// </summary>
+    public enum TpDepInst
+    {
+        /// <summary>
+        /// 01 - Cônjuge
+        /// </summary>
+        [XmlEnum("01")]
+        Conjuge = 01,
+
+        /// <summary>
+        /// 02 - Companheiro(a)
+        /// </summary>
+        [XmlEnum("02")]
+        Companheiro = 02,
+
+        /// <summary>
+        /// 03 - Filho(a) até 21 anos
+        /// </summary>
+        [XmlEnum("03")]
+        FilhoAte21Anos = 03,
+
+        /// <summary>
+        /// 04 - Enteado(a)
+        /// </summary>
+        [XmlEnum("04")]
+        Enteado = 04,
+
+        /// <summary>
+        /// 05 - Ex-companheiro(a)
+        /// </summary>
+        [XmlEnum("05")]
+        ExCompanheiro = 05,
+
+        /// <summary>
+        /// 06 - Irmão(a)
+        /// </summary>
+        [XmlEnum("06")]
+        Irmao = 06,
+
+        /// <summary>
+        /// 07 - Neto(a)
+        /// </summary>
+        [XmlEnum("07")]
+        Neto = 07,
+
+        /// <summary>
+        /// 08 - Filha maior solteira
+        /// </summary>
+        [XmlEnum("08")]
+        FilhaMaiorSolteira = 08,
+
+        /// <summary>
+        /// 09 - Pais
+        /// </summary>
+        [XmlEnum("09")]
+        Pais = 09,
+
+        /// <summary>
+        /// 10 - Menor sob guarda ou tutela
+        /// </summary>
+        [XmlEnum("10")]
+        MenorSobGuardaOuTutela = 10,
+
+        /// <summary>
+        /// 11 - Filho(a) maior inválido ou com deficiência
+        /// </summary>
+        [XmlEnum("11")]
+        FilhoMaiorInvalidoOuComDeficiencia = 11,
+
+        /// <summary>
+        /// 12 - Ex-cônjuge
+        /// </summary>
+        [XmlEnum("12")]
+        ExConjuge = 12,
+
+        /// <summary>
+        /// 13 - Avós
+        /// </summary>
+        [XmlEnum("13")]
+        Avos = 13,
+
+        /// <summary>
+        /// 14 - Bisavós
+        /// </summary>
+        [XmlEnum("14")]
+        Bisavos = 14,
+
+        /// <summary>
+        /// 15 - Bisneto(a)
+        /// </summary>
+        [XmlEnum("15")]
+        Bisneto = 15,
+
+        /// <summary>
+        /// 16 - Curatelado(a)
+        /// </summary>
+        [XmlEnum("16")]
+        Curatelado = 16,
+
+        /// <summary>
+        /// 17 - Designado(a)
+        /// </summary>
+        [XmlEnum("17")]
+        Designado = 17,
+
+        /// <summary>
+        /// 99 - Agregados/Outros
+        /// </summary>
+        [XmlEnum("99")]
+        AgregadosOuOutros = 99
+    }
+
+    #endregion
+
+    #region sitHomolog - eSocial
+
+    /// <summary>
+    /// Informar se o benefício requer ou não homologação pelo Tribunal de Contas.
+    /// </summary>
+    public enum SitHomolog
+    {
+        /// <summary>
+        /// 0 - Não homologado
+        /// </summary>
+        [XmlEnum("0")]
+        NaoHomologado = 0,
+
+        /// <summary>
+        /// 1 - Homologado
+        /// </summary>
+        [XmlEnum("1")]
+        Homologado = 1,
+
+        /// <summary>
+        /// 2 - Não requer homologação
+        /// </summary>
+        [XmlEnum("2")]
+        NaoRequerHomologacao = 2
     }
 
     #endregion
@@ -13980,6 +14182,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("06")]
         ExoneracaoDiretorNaoEmpregadoFalencia = 06,
+
+        /// <summary>
+        /// 07 - Mudança de CPF
+        /// </summary>
+        [XmlEnum("07")]
+        MudancaCpf = 07,
 
         /// <summary>
         /// 99 - Outros
@@ -14184,6 +14392,32 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("047301")]
         IrrfResidentesExteriorFinsFiscais = 047301
 
+    }
+    #endregion
+
+    #region tpCRIRRF2501 - eSocial
+    /// <summary>
+    /// Código de Receita - CR relativo a Imposto sobre a renda retido na fonte.
+    /// </summary>
+    public enum TpCRIRRF2501
+    {
+        /// <summary>
+        /// 593656 - IRRF - Decisão da Justiça do Trabalho
+        /// </summary>
+        [XmlEnum("593656")]
+        IrrfDecisaoJusticaTrabalho = 593656,
+
+        /// <summary>
+        /// 056152 - IRRF - CCP/NINTER
+        /// </summary>
+        [XmlEnum("056152")]
+        IrrfCcpNinter = 056152,
+
+        /// <summary>
+        /// 188951 - IRRF - RRA
+        /// </summary>
+        [XmlEnum("188951")]
+        IrrfRra = 188951
     }
     #endregion
 

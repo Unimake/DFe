@@ -17,8 +17,10 @@
                         <xs:documentation>REGRA:REGRA_ENVIO_PROC_FECHAMENTO</xs:documentation>
                         <xs:documentation>REGRA:REGRA_EVENTOS_EXTEMP</xs:documentation>
                         <xs:documentation>REGRA:REGRA_EXISTE_INFO_EMPREGADOR</xs:documentation>
+                        <xs:documentation>REGRA:REGRA_INFO_IDESEQTRAB</xs:documentation>
                         <xs:documentation>REGRA:REGRA_MESMO_PROCEMI</xs:documentation>
                         <xs:documentation>REGRA:REGRA_MUDANCA_CATEG_NAT_ATIV</xs:documentation>
+                        <xs:documentation>REGRA:REGRA_RETIFICA_IDENTIFICADOR</xs:documentation>
                         <xs:documentation>REGRA:REGRA_RETIFICA_MESMO_VINCULO</xs:documentation>
                         <xs:documentation>REGRA:REGRA_UNICIDADE_CONTRATUAL</xs:documentation>
                         <xs:documentation>REGRA:REGRA_VALIDA_EMPREGADOR</xs:documentation>

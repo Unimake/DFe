@@ -4,6 +4,8 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Xml;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 
@@ -144,6 +146,71 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         }
 
 #endif
+
+        /// <summary>
+        /// Grava os XMLs de distribuição (NFCe e eventos) em uma pasta no HD
+        /// </summary>
+        /// <param name="folder">Pasta onde os XMLs serão gravados</param>
+        public void GravarXMLProc(string folder)
+        {
+            try
+            {
+                if (Result.Proc == null)
+                {
+                    return;
+                }
+
+                if (Result.Proc.NfeProc != null && !string.IsNullOrEmpty(Result.Proc.NfeProc.NFeXML))
+                {
+                    var xmlNFCe = new XmlDocument();
+                    xmlNFCe.LoadXml(Result.Proc.NfeProc.NFeXML);
+
+                    var infNFe = xmlNFCe.GetElementsByTagName("infNFe");
+                    if (infNFe.Count > 0)
+                    {
+                        var elementInfNFe = (XmlElement)infNFe[0];
+                        var chave = elementInfNFe.GetAttribute("Id")?.Replace("NFe", "");
+
+                        if (!string.IsNullOrEmpty(chave))
+                        {
+                            var nomeArquivo = chave + "-nfce.xml";
+                            base.GravarXmlDistribuicao(folder, nomeArquivo, Result.Proc.NfeProc.NFeXML);
+                        }
+                    }
+                }
+
+                if (Result.Proc.ProcEventoNFe != null && Result.Proc.ProcEventoNFe.Count > 0)
+                {
+                    foreach (var procEvento in Result.Proc.ProcEventoNFe)
+                    {
+                        if (!string.IsNullOrEmpty(procEvento.EventoXML))
+                        {
+                            var xmlEvento = new XmlDocument();
+                            xmlEvento.LoadXml(procEvento.EventoXML);
+
+                            var infEvento = xmlEvento.GetElementsByTagName("infEvento");
+                            if (infEvento.Count > 0)
+                            {
+                                var elementInfEvento = (XmlElement)infEvento[0];
+                                var chNFe = XMLUtility.TagRead(elementInfEvento, "chNFe");
+                                var tpEvento = XMLUtility.TagRead(elementInfEvento, "tpEvento");
+                                var nSeqEvento = XMLUtility.TagRead(elementInfEvento, "nSeqEvento");
+
+                                if (!string.IsNullOrEmpty(chNFe) && !string.IsNullOrEmpty(tpEvento) && !string.IsNullOrEmpty(nSeqEvento))
+                                {
+                                    var nomeArquivo = chNFe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-evento.xml";
+                                    base.GravarXmlDistribuicao(folder, nomeArquivo, procEvento.EventoXML);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
 
         #endregion Public Methods
     }

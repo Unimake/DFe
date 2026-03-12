@@ -263,23 +263,5 @@ namespace Unimake.Business.DFe.Security
             }
         }
 
-        /// <summary>
-        /// Criptografia de senha MD5 para o padrão ISSONLINE_ASSESSORPUBLICO de NFSe
-        /// </summary>
-        /// <param name="senha"></param>
-        /// <returns></returns>
-        public static string GetMD5Hash(string senha)
-        {
-            var md5Hasher = MD5.Create();
-            var data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(senha));
-            var sBuilder = new StringBuilder();
-
-            for (var i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-
-            return sBuilder.ToString();
-        }
     }
 }

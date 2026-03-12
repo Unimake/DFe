@@ -89,14 +89,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     SIGISSWEB();
                     break;
 
-                case PadraoNFSe.SOFTPLAN:
-                    SOFTPLAN();
-                    break;
-
-                case PadraoNFSe.ISSONLINE_ASSESSORPUBLICO:
-                    ISSONLINE_ASSESSORPUBLICO();
-                    break;
-
                 case PadraoNFSe.PRONIM:
                     PRONIM();
                     break;
@@ -619,58 +611,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #endregion SIGISSWEB
-
-        #region SOFTPLAN
-
-        private void SOFTPLAN()
-        {
-            if (Configuracoes.RequestURI.Contains("{codigoVerificacao}"))
-            {
-                var cv = GetXMLElementInnertext("CodigoVerificacao");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{codigoVerificacao}", cv);
-            }
-            if (Configuracoes.RequestURI.Contains("{cmc}"))
-            {
-                var cmc = GetXMLElementInnertext("CMC");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{cmc}", cmc);
-            }
-            if (Configuracoes.RequestURI.Contains("numero"))
-            {
-                var numero = GetXMLElementInnertext("numero");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numero}", numero);
-            }
-
-            var tokenTemp = Configuracoes.MunicipioToken;
-
-            if (!Token.TokenEhValido(Configuracoes.MunicipioTokenValidade, tokenTemp))
-            {
-                var token = Token.GerarTokenSOFTPLAN(Configuracoes);
-
-                Configuracoes.MunicipioTokenValidade = DateTime.Now.AddSeconds(token.ExpiresIn);
-                tokenTemp = token.AccessToken;
-            }
-
-            Configuracoes.MunicipioToken = $"Bearer {tokenTemp}";
-        }
-
-        #endregion SOFTPLAN
-
-        #region ISSONLINE_ASSESSORPUBLICO
-
-        private void ISSONLINE_ASSESSORPUBLICO()
-        {
-            var senhaCriptografada = Criptografia.GetMD5Hash(Configuracoes.MunicipioSenha);
-
-            Configuracoes.MunicipioSenha = senhaCriptografada;
-
-            var soap = Configuracoes.WebSoapString;
-
-            var substuicao = Regex.Replace(soap, @"<nfse:Senha>.*?</nfse:Senha>", $"<nfse:Senha>{Configuracoes.MunicipioSenha}</nfse:Senha>");
-
-            Configuracoes.WebSoapString = substuicao;
-        }
-
-        #endregion ISSONLINE_ASSESSORPUBLICO
 
         #region PRONIM
 

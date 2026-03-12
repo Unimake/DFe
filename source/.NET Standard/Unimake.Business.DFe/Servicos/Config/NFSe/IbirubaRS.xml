@@ -199,40 +199,73 @@
 		 <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal?wsdl</WebEnderecoHomologacao>
 		 <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal?wsdl</WebEnderecoProducao>
 		 <WebActionHomologacao></WebActionHomologacao>
-		 <WebActionProducao></WebActionProducao>
+		 <WebActionProducao>GerarNfse</WebActionProducao>
 		 <SchemaArquivo></SchemaArquivo>
 		 <TagAssinatura>DPS</TagAssinatura>
 		 <TagAtributoID>infDPS</TagAtributoID>
 		 <TagLoteAssinatura></TagLoteAssinatura>
 		 <TagLoteAtributoID></TagLoteAtributoID>
-		 <WebContentType>text/xml;charset=UTF-8</WebContentType>
-		 <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsdl="http://www.sped.fazenda.gov.br/nfse/wsdl"><soap:Header/><soap:Body><wsdl:GerarNfse><wsdl:param>{xmlBodyScape}</wsdl:param></wsdl:GerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
-		 <WebTagRetorno>GerarNfseResponse</WebTagRetorno>
+		 <WebContentType>application/soap+xml;charset=UTF-8</WebContentType>
+		 <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsdl="http://www.sped.fazenda.gov.br/nfse/wsdl"><soap:Header/><soap:Body><wsdl:GerarNfse><wsdl:param>{oCDATA}<?xml version="1.0" encoding="utf-8"?>{xmlBody}{cCDATA}</wsdl:param></wsdl:GerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+		 <WebTagRetorno>GerarNfseResposta</WebTagRetorno>
 		 <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-	     <WebSoapVersion>soap11</WebSoapVersion>
+	     <WebSoapVersion>soap12</WebSoapVersion>
 		 <SchemaVersao>1.01</SchemaVersao>
 		 <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		 <NaoAssina>produção</NaoAssina>
+		 <TemCDATA>true</TemCDATA>
 	 </GerarNfse>
 	  <CancelarNfse versao="1.01">
 		  <Descricao>Cancelar nota fiscal de serviço</Descricao>
 		  <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal?wsdl</WebEnderecoHomologacao>
 		  <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal?wsdl</WebEnderecoProducao>
 		  <WebActionHomologacao></WebActionHomologacao>
-		  <WebActionProducao></WebActionProducao>
+		  <WebActionProducao>CancelarNfse</WebActionProducao>
 		  <SchemaArquivo></SchemaArquivo>
 		  <TagAssinatura>evento</TagAssinatura>
 		  <TagAtributoID>infEvento</TagAtributoID>
 		  <TagLoteAssinatura></TagLoteAssinatura>
 		  <TagLoteAtributoID></TagLoteAtributoID>
-		  <WebContentType>text/xml;charset=UTF-8</WebContentType>
-		  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsdl="http://www.sped.fazenda.gov.br/nfse/wsdl"><soap:Header/><soap:Body><wsdl:CancelarNfse><wsdl:param>{xmlBodyScape}</wsdl:param></wsdl:CancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
-		  <WebTagRetorno>CancelarNfseResponse</WebTagRetorno>
+		  <WebContentType>application/soap+xml;charset=UTF-8</WebContentType>
+		  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsdl="http://www.sped.fazenda.gov.br/nfse/wsdl"><soap:Header/><soap:Body><wsdl:CancelarNfse><wsdl:param>{oCDATA}<?xml version="1.0" encoding="utf-8"?>{xmlBody}{cCDATA}</wsdl:param></wsdl:CancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+		  <WebTagRetorno>CancelarNfseResposta</WebTagRetorno>
 		  <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-		  <WebSoapVersion>soap11</WebSoapVersion>
+		  <WebSoapVersion>soap12</WebSoapVersion>
 		  <SchemaVersao>1.01</SchemaVersao>
 		  <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		  <NaoAssina>produção</NaoAssina>
+		  <TemCDATA>true</TemCDATA>
 	  </CancelarNfse>
+	  <ConsultarNfsePorRps versao="1.01">
+		  <Descricao>Consultar NFSe por DPS</Descricao>
+		  <RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/dps/{Chave}</RequestURIProducao>
+		  <RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/dps/{Chave}</RequestURIHomologacao>
+		  <MetodoAPI>get</MetodoAPI>
+		  <WebActionProducao></WebActionProducao>
+		  <TagAssinatura></TagAssinatura>
+		  <TagAtributoID></TagAtributoID>
+		  <WebSoapString></WebSoapString>
+		  <WebContentType>application/json</WebContentType>
+		  <WebTagRetorno>chaveAcesso</WebTagRetorno>
+		  <SchemaVersao></SchemaVersao>
+		  <GZIPCompress>false</GZIPCompress>
+		  <LoginConexao>false</LoginConexao>
+	  </ConsultarNfsePorRps>
+	  <ConsultarNfse versao="1.01">
+		  <Descricao>Consultar NFSe</Descricao>
+		  <RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}</RequestURIProducao>
+		  <RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}</RequestURIHomologacao>
+		  <MetodoAPI>get</MetodoAPI>
+		  <WebActionProducao></WebActionProducao>
+		  <TagAssinatura></TagAssinatura>
+		  <TagAtributoID></TagAtributoID>
+		  <WebSoapString></WebSoapString>
+		  <WebContentType>application/json</WebContentType>
+		  <WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+		  <SchemaVersao></SchemaVersao>
+		  <GZIPCompress>false</GZIPCompress>
+		  <LoginConexao>false</LoginConexao>
+		  <UsaCertificadoDigital>true</UsaCertificadoDigital>
+	  </ConsultarNfse>
 </Servicos>
 </Configuracoes>
