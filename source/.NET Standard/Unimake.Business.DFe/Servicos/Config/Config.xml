@@ -1781,12 +1781,6 @@
 		<ArqConfig>PoaSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4106902">
-		<Nome>Curitiba - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>CuritibaPR.xml</ArqConfig>
-		<PadraoNFSe>EGOVERNE</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3131703">
 		<Nome>Itabira - MG</Nome>
 		<UF>MG</UF>
