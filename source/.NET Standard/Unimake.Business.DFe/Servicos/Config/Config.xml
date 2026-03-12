@@ -1937,18 +1937,6 @@
 		<ArqConfig>ParacambiRJ.xml</ArqConfig>
 		<PadraoNFSe>FINTEL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3526100">
-		<Nome>Juquiá - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>JuquiaSP.xml</ArqConfig>
-		<PadraoNFSe>CECAM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3523503">
-		<Nome>Itatinga - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>ItatingaSP.xml</ArqConfig>
-		<PadraoNFSe>CECAM</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4313375">
 		<Nome>Nova Santa Rita - RS</Nome>
 		<UF>RS</UF>
