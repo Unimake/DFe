@@ -330,10 +330,13 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void SMARAPD()
         {
-            // Verificar se é um evento de consulta
             bool isConsulta = Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps ||
                               Configuracoes.Servico == Servico.NFSeConsultarNfse ||
+                              Configuracoes.Servico == Servico.NFSeConsultarNfsePDF ||
                               Configuracoes.Servico == Servico.NFSeConsultarNfsePDF;
+
+            bool isConsultaEventosNfse = Configuracoes.Servico == Servico.NFSeConsultarEventosDiversos;
+
             if (isConsulta)
             {
                 var URI = Configuracoes.RequestURI;
@@ -342,6 +345,24 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
                 var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
                 Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+            }
+            else if (isConsultaEventosNfse)
+            {
+                if (Configuracoes.RequestURI.Contains("{chNFSe}"))
+                {
+                    var chNFSe = GetXMLElementInnertext("chNFSe");
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{chNFSe}", chNFSe);
+                }
+                if (Configuracoes.RequestURI.Contains("{tipoEvento}"))
+                {
+                    var tipoEvento = GetXMLElementInnertext("tipoEvento");
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{tipoEvento}", tipoEvento);
+                }
+                if (Configuracoes.RequestURI.Contains("{numSeqEvento}"))
+                {
+                    var numSeqEvento = GetXMLElementInnertext("numSeqEvento");
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numSeqEvento}", numSeqEvento);
+                }
             }
         }
 
