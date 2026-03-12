@@ -610,7 +610,6 @@
 		<None Remove="Servicos\Config\NFSe\Quatro BarrasPR.xml" />
 		<None Remove="Servicos\Config\NFSe\RegenteFeijoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RibasDoRioPardoMS.xml" />
-		<None Remove="Servicos\Config\NFSe\RibeiraoDasNevesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\RibeiraoPretoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDasOstrasRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDasPedrasSP.xml" />
@@ -1818,7 +1817,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\PontalinaGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ProfessorJamilGO.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\RibeiraoDasNevesMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoCapibaribePE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantanaDoLivramentoRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPlatinaPR.xml" />
