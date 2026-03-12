@@ -1443,7 +1443,6 @@
 		<None Remove="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PORTAL_FACIL\nfse_v204.xsd" />
-		<None Remove="Xml\Schemas\NFSe\PORTAL_FACIL\schema nfse v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODEB\nfse_v2_01.xsd" />
@@ -3742,7 +3741,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PORTAL_FACIL\nfse_v202.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PORTAL_FACIL\schema nfse v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PORTAL_FACIL\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
