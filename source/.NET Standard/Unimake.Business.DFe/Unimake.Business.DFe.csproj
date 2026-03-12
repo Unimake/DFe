@@ -445,7 +445,6 @@
 		<None Remove="Servicos\Config\NFSe\EstanciaVelhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EsteioRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EstrelaRS.xml" />
-		<None Remove="Servicos\Config\NFSe\EunapolisBA.xml" />
 		<None Remove="Servicos\Config\NFSe\EusebioCE.xml" />
 		<None Remove="Servicos\Config\NFSe\FarroupilhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\FeiraDeSantanaBA.xml" />
@@ -1714,7 +1713,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ErechimRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EstacaoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EsteioRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\EunapolisBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EusebioCE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FormigaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
