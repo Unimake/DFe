@@ -1955,12 +1955,6 @@
 		<ArqConfig>NovaSantaRitaRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3522307">
-		<Nome>Itapetininga - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>ItapetiningaSP.xml</ArqConfig>
-		<PadraoNFSe>JLSOFT</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4320206">
 		<Nome>Seberi - RS</Nome>
 		<UF>RS</UF>
@@ -2698,12 +2692,6 @@
 		<UF>SP</UF>
 		<ArqConfig>ItapecericaDaSerraSP.xml</ArqConfig>
 		<PadraoNFSe>GIAP</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3553856">
-		<Nome>Taquarivaí - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>TaquarivaiSP.xml</ArqConfig>
-		<PadraoNFSe>JLSOFT</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4313904">
 		<Nome>Panambi - RS</Nome>

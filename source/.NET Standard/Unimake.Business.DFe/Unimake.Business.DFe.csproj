@@ -727,7 +727,6 @@
 		<None Remove="Servicos\Config\NFSe\TaperaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TaquaraRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TaquaritubaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\TaquarivaiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaubateSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
@@ -1811,7 +1810,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItajaiSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItamogiMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ItapetiningaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItatingaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuquiaSP.xml" />
@@ -1960,7 +1958,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\TangaraDaSerraMT.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TapejaraRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaquaraRS.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\TaquarivaiSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeodoroSampaioSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
