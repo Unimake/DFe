@@ -312,7 +312,6 @@
 		<None Remove="Servicos\Config\NFSe\AlvaresMachadoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AlvoradaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AmambaiMS.xml" />
-		<None Remove="Servicos\Config\NFSe\AmargosaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\AmericanaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AnapolisGO.xml" />
 		<None Remove="Servicos\Config\NFSe\AndradasMG.xml" />
@@ -356,7 +355,6 @@
 		<None Remove="Servicos\Config\NFSe\BiguacuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BiriguiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
-		<None Remove="Servicos\Config\NFSe\BoaVistaRR.xml" />
 		<None Remove="Servicos\Config\NFSe\BoituvaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BomDespachoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\BomPrincipioRS.xml" />
@@ -529,7 +527,6 @@
 		<None Remove="Servicos\Config\NFSe\LondrinaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\LontrasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\LorenaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml" />
 		<None Remove="Servicos\Config\NFSe\MacaeRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\MacapaAP.xml" />
 		<None Remove="Servicos\Config\NFSe\MafraSC.xml" />
@@ -1745,7 +1742,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoPedroSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoSebastiaoDaGramaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AmargosaBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AssuRN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraVelhaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BelemPA.xml" />
@@ -1973,9 +1969,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoBorjaRS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\BoituvaSP.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -2054,9 +2047,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CampoGrandeMS.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\BoaVistaRR.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\TerraDeAreiaRS.xml">

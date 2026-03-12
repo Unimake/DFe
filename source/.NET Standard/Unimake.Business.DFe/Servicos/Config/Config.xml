@@ -1265,18 +1265,6 @@
 		<ArqConfig>JoaoMonlevadeMG.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="1400100">
-		<Nome>Boa Vista - RR</Nome>
-		<UF>RR</UF>
-		<ArqConfig>BoaVistaRR.xml</ArqConfig>
-		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2919553">
-		<Nome>Luís Eduardo Magalhães - BA</Nome>
-		<UF>BA</UF>
-		<ArqConfig>LuisEduardoMagalhaesBA.xml</ArqConfig>
-		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4300406">
 		<Nome>Alegrete - RS</Nome>
 		<UF>RS</UF>
@@ -1822,12 +1810,6 @@
 		<UF>SC</UF>
 		<ArqConfig>MafraSC.xml</ArqConfig>
 		<PadraoNFSe>PUBLICA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2901007">
-		<Nome>Amargosa - BA</Nome>
-		<UF>BA</UF>
-		<ArqConfig>AmargosaBA.xml</ArqConfig>
-		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4317103">
 		<Nome>Santana do Livramento - RS</Nome>
