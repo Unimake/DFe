@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFSe;
@@ -12,14 +13,17 @@ namespace Unimake.DFe.Test.NFSe
     public class ConsultarEventosNfseTest
     {
         /// <summary>
+        /// Monta o parâmetros, de forma dinâmica, para o cenário de testes
+        /// </summary>
+        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("ConsultarEvento");
+
+        /// <summary>
         /// Consultar Eventos NFSe para saber se a conexão com o webservice está ocorrendo corretamente.
         /// </summary>
         /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado o XML</param>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [Trait("Layout", "Nacional")]
-        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL, "1.01", 1001058)]
-        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL, "1.01", 1001058)]
+        [MemberData(nameof(Parametros))]
         public void ConsultarEventosNfse(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
         {
             var nomeXMLEnvio = "ConsultarEventosNfse-ped-consevennfse.xml";
@@ -36,8 +40,11 @@ namespace Unimake.DFe.Test.NFSe
                 CertificadoDigital = PropConfig.CertificadoDigital,
                 TipoAmbiente = tipoAmbiente,
                 CodigoMunicipio = codMunicipio,
-                Servico = Servico.NFSeConsultarEventosDiversos,
-                SchemaVersao = versaoSchema
+                Servico = Servico.NFSeConsultarNfsePorRps,
+                SchemaVersao = versaoSchema,
+                MunicipioToken = "99n0556af8e4218e05b88e266fhca55be17b14a4495c269d1db0af57f925f04e77c38f9870842g5g60b6827a9fje8ec9", //Tem município que exige token, então já vamos deixar algo definido para que utilize nos padrões necessários durante o teste unitário. Não é obrigatório para todos os padrões e será utilizado somente nos que solicitam.
+                MunicipioSenha = "123456",
+                MunicipioUsuario = "01001001000113"
             };
 
             var consultarEventos = new ConsultarEvento(conteudoXML, configuracao);
