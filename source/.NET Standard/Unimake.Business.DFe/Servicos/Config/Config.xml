@@ -977,12 +977,6 @@
 		<ArqConfig>CacapavaDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4312401">
-		<Nome>Montenegro - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>MontenegroRS.xml</ArqConfig>
-		<PadraoNFSe>THEMA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2412005">
 		<Nome>São Gonçalo do Amarante - RN</Nome>
 		<UF>RN</UF>
@@ -1673,12 +1667,6 @@
 		<ArqConfig>TeresopolisRJ.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4318705">
-		<Nome>São Leopoldo - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>SaoLeopoldoRS.xml</ArqConfig>
-		<PadraoNFSe>THEMA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2932903">
 		<Nome>Valença - BA</Nome>
 		<UF>BA</UF>
@@ -2188,60 +2176,6 @@
 		<UF>SP</UF>
 		<ArqConfig>VargemGrandePaulistaSP.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4307708">
-		<Nome>Esteio - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>EsteioRS.xml</ArqConfig>
-		<PadraoNFSe>THEMA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4205902">
-		<Nome>Gaspar - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>GasparSC.xml</ArqConfig>
-		<PadraoNFSe>THEMA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4310330">
-		<Nome>Imbé - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>ImbeRS.xml</ArqConfig>
-		<PadraoNFSe>THEMA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4311403">
-		<Nome>Lajeado - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>LajeadoRS.xml</ArqConfig>
-		<PadraoNFSe>THEMA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4314100">
-		<Nome>Passo Fundo - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>PassoFundoRS.xml</ArqConfig>
-		<PadraoNFSe>THEMA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4316808">
-		<Nome>Santa Cruz do Sul - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>SantaCruzDoSulRS.xml</ArqConfig>
-		<PadraoNFSe>THEMA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4317608">
-		<Nome>Santo Antônio da Patrulha - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>SantoAntonioDaPatrulhaRS.xml</ArqConfig>
-		<PadraoNFSe>THEMA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4321204">
-		<Nome>Taquara - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>TaquaraRS.xml</ArqConfig>
-		<PadraoNFSe>THEMA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4322608">
-		<Nome>Venâncio Aires - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>VenancioAiresRS.xml</ArqConfig>
-		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3104205">
 		<Nome>Arcos - MG</Nome>

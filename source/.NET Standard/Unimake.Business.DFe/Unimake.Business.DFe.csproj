@@ -1492,8 +1492,6 @@
 		<None Remove="Xml\Schemas\NFSe\TECNOSISTEMAS\GeracaoNFSe.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TECNOSISTEMAS\GeracaoNFSeResposta.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TECNOSISTEMAS\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\THEMA\nfse.xsd" />
-		<None Remove="Xml\Schemas\NFSe\THEMA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TINUS\nfsetempuri.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TINUS\WSNFSE203.IBSCBS.Service.Tinus.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TINUS\xmldsig.xsd" />
@@ -1654,18 +1652,15 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DracenaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EntreIjuisRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\EsteioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EusebioCE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FormigaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GasparSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GravataiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarapuavaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaxupeMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuararaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\HorizontinaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IcaraSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ImbeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IndaialSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IpojucaPE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IratiPR.xml" />
@@ -1676,7 +1671,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguapitaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JardinopolisSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JauSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\LajeadoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LavrasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LemeSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LinharesES.xml" />
@@ -1702,7 +1696,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParaisoDoNortePR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanaguaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanapanemaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PassoFundoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatoBrancoPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatrocinioMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PedroLeopoldoMG.xml" />
@@ -1723,11 +1716,9 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDoSulSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioNegrinhoSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RolandiaPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaGertrudesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaRosaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaTerezinhaDeItaipuPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPatrulhaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBentoDoSulSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGabrielRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloDoParaMG.xml" />
@@ -1875,7 +1866,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDaPlatinaPR.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCarlosSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\SaoLeopoldoRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoLuisMA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoPedroDaAldeiaRJ.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SapirangaRS.xml" />
@@ -1888,7 +1878,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaiobeirasMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TangaraDaSerraMT.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TapejaraRS.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\TaquaraRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeodoroSampaioSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
@@ -2069,9 +2058,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\MirassolandiaSP.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\MontenegroRS.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CacapavaDoSulRS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -2083,7 +2069,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\AmambaiMS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\VenancioAiresRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\VeranopolisRS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -3773,8 +3758,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TECNOSISTEMAS\GeracaoNFSe.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TECNOSISTEMAS\GeracaoNFSeResposta.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TECNOSISTEMAS\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\THEMA\nfse.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\THEMA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\nfsetempuri.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\WSNFSE203.IBSCBS.Service.Tinus.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\xmldsig.xsd" />
