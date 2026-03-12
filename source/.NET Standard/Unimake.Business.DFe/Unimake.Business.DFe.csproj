@@ -461,7 +461,6 @@
 		<None Remove="Servicos\Config\NFSe\GuaibaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\GuairaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaramirimSC.xml" />
-		<None Remove="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarapariES.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarapuavaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\GuararapesSP.xml" />
@@ -2295,7 +2294,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\AguaBoaMT.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MogiDasCruzesSP.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
