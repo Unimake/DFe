@@ -1307,12 +1307,6 @@
 		<ArqConfig>UberlandiaMG.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4115200">
-		<Nome>Maringá - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>MaringaPR.xml</ArqConfig>
-		<PadraoNFSe>FINTEL</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4105805">
 		<Nome>Colombo - PR</Nome>
 		<UF>PR</UF>
