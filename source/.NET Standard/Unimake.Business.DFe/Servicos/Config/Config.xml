@@ -221,12 +221,6 @@
 		<ArqConfig>SaoJoaoDeMeritiRJ.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3132701">
-		<Nome>Itambacuri - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>ItambacuriMG.xml</ArqConfig>
-		<PadraoNFSe>NOTAINTELIGENTE</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5205109">
 		<Nome>Catalão - GO</Nome>
 		<UF>GO</UF>

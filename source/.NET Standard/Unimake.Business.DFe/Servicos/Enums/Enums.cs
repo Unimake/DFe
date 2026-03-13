@@ -6989,346 +6989,340 @@ namespace Unimake.Business.DFe.Servicos
         EL = 4,
 
         /// <summary>
-        /// NOTAINTELIGENTE
-        /// </summary>
-        [Description("Nota Inteligente")]
-        NOTAINTELIGENTE = 5,
-
-        /// <summary>
         /// AVMB Soluções em TI
         /// </summary>
         [Description("AVMB Soluções em TI")]
-        AVMB = 6,
+        AVMB = 5,
 
         /// <summary>
         /// WebISS
         /// </summary>
         [Description("WebISS")]
-        WEBISS = 7,
+        WEBISS = 6,
 
         /// <summary>
         /// SIMPLISS Sistema de Informação LTDA
         /// </summary>
         [Description("SIMPLISS Sistema de Informação LTDA")]
-        SIMPLISS = 8,
+        SIMPLISS = 7,
 
         /// <summary>
         /// COPLAN
         /// </summary>
         [Description("Coplan")]
-        COPLAN = 9,
+        COPLAN = 8,
 
         /// <summary>
         /// Sonner - Sistemas integrados, governos inteligentes (Antigo GOVDIGITAL)
         /// </summary>
         [Description("SONNER - Sistemas integrados")]
-        SONNER = 10,
+        SONNER = 9,
 
         /// <summary>
         /// SMARAPD
         /// </summary>
         [Description("SMARAPD")]
-        SMARAPD = 11,
+        SMARAPD = 10,
 
         /// <summary>
         /// NobeSistemas - Software de gestão integrada
         /// </summary>
         [Description("NOBESISTEMAS")]
-        NOBESISTEMAS = 12,
+        NOBESISTEMAS = 11,
 
         /// <summary>
         /// TRIBUTUS - Gestão integrada
         /// </summary>
         [Description("TRIBUTUS")]
-        TRIBUTUS = 13,
+        TRIBUTUS = 12,
 
         /// <summary>
         /// PAULISTANA
         /// </summary>
         [Description("PAULISTANA")]
-        PAULISTANA = 14,
+        PAULISTANA = 13,
 
         /// <summary>
         /// DSF - Desenvolvimento de Sistemas Fiscais Ltda
         /// </summary>
         [Description("DSF")]
-        DSF = 15,
+        DSF = 14,
 
         /// <summary>
         /// Digifred - Soluções em Tecnologia para a Gestão Pública
         /// </summary>
         [Description("DIGIFRED")]
-        DIGIFRED = 16,
+        DIGIFRED = 15,
 
         /// <summary>
         /// VersaTEC – Tecnologia, Educação e Comunicação
         /// </summary>
         [Description("VERSATEC")]
-        VERSATEC = 17,
+        VERSATEC = 16,
 
         /// <summary>
         /// GINFES – Gestão Inteligente da Nota Fiscal de Serviço Eletrônica
         /// </summary>
         [Description("GINFES")]
-        GINFES = 18,
+        GINFES = 17,
 
         /// <summary>
         /// QUASAR - Sistemas Inteligentes de Gestão
         /// </summary>
         [Description("QUASAR")]
-        QUASAR = 19,
+        QUASAR = 18,
 
         /// <summary>
         /// GIF
         /// </summary>
         [Description("GIF")]
-        GIF = 20,
+        GIF = 19,
 
         /// <summary>
         /// ISSNET
         /// </summary>
         [Description("ISSNET")]
-        ISSNET = 21,
+        ISSNET = 20,
 
         /// <summary>
         /// CENTI
         /// </summary>
         [Description("CENTI")]
-        CENTI = 22,
+        CENTI = 21,
 
         /// <summary>
         /// NACIONAL
         /// </summary>
         [Description("NACIONAL")]
-        NACIONAL = 23,
+        NACIONAL = 22,
 
         /// <summary>
         /// GIAP
         /// </summary>
         [Description("GIAP")]
-        GIAP = 24,
+        GIAP = 23,
 
         /// <summary>
         /// EQUIPLANO 
         /// </summary>
         [Description("EQUIPLANO")]
-        EQUIPLANO = 25,
+        EQUIPLANO = 24,
 
         /// <summary>
         /// MEMORY 
         /// </summary>
         [Description("MEMORY")]
-        MEMORY = 26,
+        MEMORY = 25,
 
         /// <summary>
         /// ABASE Sistemas
         /// </summary>
         [Description("ABASE")]
-        ABASE = 27,
+        ABASE = 26,
 
         /// <summary>
         /// FIORILLI
         /// </summary>
         [Description("FIORILLI")]
-        FIORILLI = 28,
+        FIORILLI = 27,
 
         /// <summary>
         /// IPM
         /// </summary>
         [Description("IPM")]
-        IPM = 29,
+        IPM = 28,
 
         /// <summary>
         /// TECNOSISTEMAS
         /// </summary>
         [Description("TECNOSISTEMAS")]
-        TECNOSISTEMAS = 30,
+        TECNOSISTEMAS = 29,
 
         /// <summary>
         /// TINUS
         /// </summary>
         [Description("TINUS")]
-        TINUS = 31,
+        TINUS = 30,
 
         /// <summary>
         /// BSITBR
         /// </summary>
         [Description("BSITBR")]
-        BSITBR = 32,
+        BSITBR = 31,
 
         /// <summary>
         /// PRONIM
         /// </summary>
         [Description("PRONIM")]
-        PRONIM = 33,
+        PRONIM = 32,
 
         /// <summary>
         /// PROPRIOBARUERISP
         /// </summary>
         [Description("PROPRIOBARUERISP")]
-        PROPRIOBARUERISP = 34,
+        PROPRIOBARUERISP = 33,
 
         /// <summary>
         /// AGILI
         /// </summary>
         [Description("AGILI")]
-        AGILI = 35,
+        AGILI = 34,
 
         /// <summary>
         /// WEBFISCO_TECNOLOGIA
         /// </summary>
         [Description("WEBFISCO")]
-        WEBFISCO = 36,
+        WEBFISCO = 35,
 
         /// <summary>
         /// IIBRASIL
         /// </summary>
         [Description("IIBRASIL")]
-        IIBRASIL = 37,
+        IIBRASIL = 36,
 
         /// <summary>
         /// ADM_SISTEMAS
         /// </summary>
         [Description("ADM_SISTEMAS")]
-        ADM_SISTEMAS = 38,
+        ADM_SISTEMAS = 37,
 
         /// <summary>
         /// FINTEL
         /// </summary>
         [Description("FINTEL")]
-        FINTEL = 39,
+        FINTEL = 38,
 
         /// <summary>
         /// SALVADOR_BA
         /// </summary>
         [Description("SALVADOR_BA")]
-        SALVADOR_BA = 40,
+        SALVADOR_BA = 39,
 
         /// <summary>
         /// FISCO
         /// </summary>
         [Description("FISCO")]
-        FISCO = 41,
+        FISCO = 40,
 
         /// <summary>
         /// GISSONLINE (Antigo GINFES)
         /// </summary>
         [Description("GISSONLINE")]
-        GISSONLINE = 42,
+        GISSONLINE = 41,
 
         /// <summary>
         /// PUBLICA
         /// </summary>
         [Description("PUBLICA")]
-        PUBLICA = 43,
+        PUBLICA = 42,
 
         /// <summary>
         /// TIPLAN
         /// </summary>
         [Description("TIPLAN")]
-        TIPLAN = 44,
+        TIPLAN = 43,
 
         /// <summary>
         /// PRODEB
         /// </summary>
         [Description("PRODEB")]
-        PRODEB = 45,
+        PRODEB = 44,
 
         /// <summary>
         /// RLZ_INFORMATICA
         /// </summary>
         [Description("RLZ_INFORMATICA")]
-        RLZ_INFORMATICA = 46,
+        RLZ_INFORMATICA = 45,
 
         /// <summary>
         /// HM2SOLUCOES
         /// </summary>
         [Description("HM2SOLUCOES")]
-        HM2SOLUCOES = 47,
+        HM2SOLUCOES = 46,
 
         /// <summary>
         /// ELOTECH
         /// </summary>
         [Description("ELOTECH")]
-        ELOTECH = 48,
+        ELOTECH = 47,
 
         /// <summary>
         /// CONAM
         /// </summary>
         [Description("CONAM")]
-        CONAM = 49,
+        CONAM = 48,
 
         /// <summary>
         /// PORTAL_FACIL
         /// </summary>
         [Description("PORTAL_FACIL")]
-        PORTAL_FACIL = 50,
+        PORTAL_FACIL = 49,
 
         ///<summary>
         ///DBSELLER
         /// </summary>
         [Description("DBSELLER")]
-        DBSELLER = 51,
+        DBSELLER = 50,
 
         ///<summary>
         ///MODERNIZACAO_PUBLICA
         /// </summary>
         [Description("MODERNIZACAO_PUBLICA")]
-        MODERNIZACAO_PUBLICA = 52,
+        MODERNIZACAO_PUBLICA = 51,
 
         ///<summary>
         ///METROPOLIS
         /// </summary>
         [Description("METROPOLIS")]
-        METROPOLIS = 53,
+        METROPOLIS = 52,
 
         ///<summary>
         ///MEGASOFT
         /// </summary>
         [Description("MEGASOFT")]
-        MEGASOFT = 54,
+        MEGASOFT = 53,
 
         /// <summary>
         /// PRIMAX
         /// </summary>
         [Description("PRIMAX")]
-        PRIMAX = 55,
+        PRIMAX = 54,
 
         ///<summary>
         ///EGOVERNEISS
         /// </summary>
         [Description("EGOVERNEISS")]
-        EGOVERNEISS = 56,
+        EGOVERNEISS = 55,
 
         ///<summary>
         ///INTERSOL
         /// </summary>
         [Description("INTERSOL")]
-        INTERSOL = 57,
+        INTERSOL = 56,
 
         ///<summary>
         ///SIGISSWEB
         /// </summary>
         [Description("SIGISSWEB")]
-        SIGISSWEB = 58,
+        SIGISSWEB = 57,
 
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
         [Description("BETHA_CLOUD")]
-        BETHA_CLOUD = 59,
+        BETHA_CLOUD = 58,
 
         /// <summary>
         /// FUTURIZE
         /// </summary>
         [Description("FUTURIZE")]
-        FUTURIZE = 60,
+        FUTURIZE = 59,
 
         /// <summary>
         /// PADRÃO PROPRIO DE FORTALEZA-CE MAS É BASEADO NO GINFES
         /// </summary>
         [Description("PROPRIOFORTALEZACE")]
-        PROPRIOFORTALEZACE = 61
+        PROPRIOFORTALEZACE = 60
     }
 
     #endregion
