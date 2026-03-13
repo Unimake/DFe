@@ -39,7 +39,7 @@ namespace Unimake.DFe.Test.NFCe
             var xmlString = xmlDoc.OuterXml;
             Assert.Contains("nfceDownloadXML", xmlString);
             Assert.Contains("versao=\"1.00\"", xmlString);
-            Assert.Contains("<tpAmb>2</tpAmb>", xmlString); 
+            Assert.Contains("<tpAmb>2</tpAmb>", xmlString);
             Assert.Contains("<chNFCe>12345678901234567890123456789012345678901234", xmlString);
         }
 
@@ -48,6 +48,7 @@ namespace Unimake.DFe.Test.NFCe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFCe")]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Producao, "35240906117473000150650010000000011000000001")]
         [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao, "35240906117473000150650010000000011000000001")]
         public void ConsultarDownloadXMLNFCe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string chaveNFCe)
         {
@@ -73,7 +74,7 @@ namespace Unimake.DFe.Test.NFCe
             Assert.NotNull(downloadXML.Result.CStat);
             Assert.NotNull(downloadXML.Result.XMotivo);
             Assert.Equal(tipoAmbiente, downloadXML.Result.TpAmb);
-            
+
             Console.WriteLine($"Status: {downloadXML.Result.CStat} - {downloadXML.Result.XMotivo}");
         }
 
@@ -82,6 +83,7 @@ namespace Unimake.DFe.Test.NFCe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFCe")]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Producao, "35240906117473000150650010000000011000000001")]
         [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao, "35240906117473000150650010000000011000000001")]
         public void ConsultarDownloadXMLNFCeComString(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string chaveNFCe)
         {
@@ -108,7 +110,7 @@ namespace Unimake.DFe.Test.NFCe
             Assert.NotNull(downloadXML.Result);
             Assert.NotNull(downloadXML.Result.CStat);
             Assert.Equal(tipoAmbiente, downloadXML.Result.TpAmb);
-            
+
             Console.WriteLine($"Status: {downloadXML.Result.CStat} - {downloadXML.Result.XMotivo}");
         }
 
@@ -117,6 +119,7 @@ namespace Unimake.DFe.Test.NFCe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFCe")]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Producao, "35240906117473000150650010000000011000000001")]
         [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao, "12345678904038000178650030000002661234567890")]
         public void ConsultarDownloadXMLNFCeEGravarXMLs(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string chaveNFCe)
         {
@@ -160,7 +163,7 @@ namespace Unimake.DFe.Test.NFCe
                         try
                         {
                             Directory.Delete(pastaTemp, true);
-                            Console.WriteLine($"✓ Pasta temporária removida");
+                            Console.WriteLine("✓ Pasta temporária removida");
                         }
                         catch
                         {
