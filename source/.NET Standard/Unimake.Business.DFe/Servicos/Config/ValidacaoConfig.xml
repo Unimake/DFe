@@ -36,6 +36,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="inutNFe" versao ="4.00">
+			<Descricao>NFe de inutilização</Descricao>
 			<SchemaArquivo>inutNFe_v4.00.xsd</SchemaArquivo>
 			<TagAssinatura>inutNFe</TagAssinatura>
 			<TagAtributoID>infInut</TagAtributoID>
@@ -2025,6 +2026,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="nNFSe">
 				<Descricao>Envio NFS-e com indicativo de decisão judicial - Síncrono</Descricao>
@@ -2037,6 +2039,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="infPedReg">
 				<Descricao>Recepcionar Eventos Diversos da NFSe NACIONAL</Descricao>
@@ -2049,6 +2052,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 		</Padrao>
 		<Padrao nome="PRONIM">
@@ -2063,6 +2067,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
 				<Descricao>Consultar NFSe</Descricao>
@@ -2075,6 +2080,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="infDPS">
 				<Descricao>Consultar NFSe por DPS</Descricao>
@@ -2087,6 +2093,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="infPedReg">
 				<Descricao>Envio do cancelamento de NFSe</Descricao>
@@ -2099,6 +2106,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 		</Padrao>
 		<Padrao nome="WEBISS">

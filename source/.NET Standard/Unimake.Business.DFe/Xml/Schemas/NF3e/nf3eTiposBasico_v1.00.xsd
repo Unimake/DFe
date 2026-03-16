@@ -405,62 +405,35 @@ Nota: No caso de Contribuinte Isento de Inscrição (indIEDest=2) informar a tag
 										<xs:annotation>
 											<xs:documentation>Subclasse de Consumo da Unidade Consumidora</xs:documentation>
 											<xs:documentation>01 - Residencial;
-
 02 - Residencial baixa renda;
-
 03 - Residencial baixa renda indígena;
-
 04 - Residencial baixa renda quilombola;
-
 05 - Residencial baixa renda benefício de prestação continuada da assistência social;
-
 06 - Residencial baixa renda multifamiliar; 
-
 07 - Comercial; 
-
 08 - Serviços de transporte, exceto tração elétrica; 
-
 09 - Serviços de comunicação e telecomunicação;
-
 10 - Associação e entidades filantrópicas; 
-
 11 - Templos religiosos; 
-
 12 - Administração condominial: iluminação e instalações de uso comum de prédio ou conjunto de edificações;
-
- 13 - Iluminação em rodovias solicitada por quem detenha concessão ou autorização para administração em rodovias;
-
- 14 - Semáforos, radares e câmeras de monitoramento de trânsito, solicitados por quem detenha concessão ou autorização para controle de trânsito;
-
- 15 - Outros serviços e outras atividades da classe comercial;
+13 - Iluminação em rodovias solicitada por quem detenha concessão ou autorização para administração em rodovias;
+14 - Semáforos, radares e câmeras de monitoramento de trânsito, solicitados por quem detenha concessão ou autorização para controle de trânsito;
+15 - Outros serviços e outras atividades da classe comercial;
 16 - Agropecuária rural; 
-
 17 - Agropecuária urbana;
-
- 18 - Residencial rural; 
-
+18 - Residencial rural; 
 19 - Cooperativa de eletrificação rural;
-
 20 - Agroindustrial; 
-
 21 - Serviço público de irrigação rural; 
-
 22 - Escola agrotécnica;
-
- 23 - Aquicultura; 
-
+23 - Aquicultura; 
 24 - Poder público Federal;
-
 25 - Poder Público Estadual ou Distrital;
-
- 26 - Poder público Municipal;
-
- 27 - Tração Elétrica;
-
+26 - Poder público Municipal;
+27 - Tração Elétrica;
 28 - Água esgoto ou saneamento;
 29 - Residencial Desconto Social;
-
- 99 - Outros.</xs:documentation>
+99 - Outros.</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="tpFase" type="TFase">

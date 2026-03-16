@@ -124,7 +124,8 @@ namespace Unimake.DFe.Test.NF3e
                         GCompraGov = new GCompraGov
                         {
                             TpEnteGov = TipoEnteGovernamental.Uniao,
-                            PRedutor = 1.00
+                            PRedutor = 1.00,
+                            TpOperGov = TipoOperacaoEnteGovernamental.FornecimentoPagamentoPosterior
                         }
                     },
                     Emit = new Emit
@@ -208,18 +209,18 @@ namespace Unimake.DFe.Test.NF3e
                                 IdAcessGer = "AB1234",
                                 VPotInst = 12789.014,
                                 TpFonteEnergia = TipoFonteEnergia.Hidraulica,
-                                EnerAloc = 14.19,
-                                TpPosTar = TipoPostoTarifario.Unico,
-                                EnerInjet = 117.45,
-                                TpPosTarInjet = TipoPostoTarifario.Intermediario
+                                EnerAloc = new List<double> { 14.19 },
+                                TpPosTar = new List<TipoPostoTarifario> { TipoPostoTarifario.Unico },
+                                EnerInjet = new List<double> { 117.45 },
+                                TpPosTarInjet = new List<TipoPostoTarifario> { TipoPostoTarifario.Intermediario }
                             },
                             new GConsumidor
                             {
                                 IdAcessGer = "FVD9785",
                                 VPotInst = 174.17,
                                 TpFonteEnergia = TipoFonteEnergia.Eolica,
-                                EnerAloc = 189.256,
-                                TpPosTar = TipoPostoTarifario.ForaPonta
+                                EnerAloc = new List<double> { 189.256 },
+                                TpPosTar = new List<TipoPostoTarifario> { TipoPostoTarifario.ForaPonta }
                             }
                         },
                         GSaldoCred = new List<GSaldoCred>
@@ -275,26 +276,32 @@ namespace Unimake.DFe.Test.NF3e
                                     DetItem = new DetItem
                                     {
                                         NItemAnt = "1",
-                                        GTarif = new GTarif
+                                        GTarif = new List<GTarif>
                                         {
-                                            DIniTarif = DateTime.Now,
-                                            DFimTarif = DateTime.Now,
-                                            TpAto = TipoAto.Despacho,
-                                            NAto = "1342",
-                                            AnoAto = "2024",
-                                            TpTarif = TipoTarifa.TUSD,
-                                            CPosTarif = TipoPostoTarifario.Intermediario,
-                                            UMed = UnidadeMedidaEnergia.KW,
-                                            VTarifHom = 0
+                                            new GTarif
+                                            {
+                                                DIniTarif = DateTime.Now,
+                                                DFimTarif = DateTime.Now,
+                                                TpAto = TipoAto.Despacho,
+                                                NAto = "1342",
+                                                AnoAto = "2024",
+                                                TpTarif = TipoTarifa.TUSD,
+                                                CPosTarif = TipoPostoTarifario.Intermediario,
+                                                UMed = UnidadeMedidaEnergia.KW,
+                                                VTarifHom = 0
+                                            }
                                         },
-                                        GAdBand = new GAdBand
+                                        GAdBand = new List<GAdBand>
                                         {
-                                            DIniAdBand = DateTime.Now,
-                                            DFimAdBand = DateTime.Now,
-                                            TpBand = TipoBandeira.EscassezHidrica,
-                                            VAdBand = 33.44M,
-                                            VAdBandAplic = 2.11,
-                                            MotDifBand = MotivoTarifaDiferente.DescontoTarifario
+                                            new GAdBand
+                                            {
+                                                DIniAdBand = DateTime.Now,
+                                                DFimAdBand = DateTime.Now,
+                                                TpBand = TipoBandeira.EscassezHidrica,
+                                                VAdBand = 33.44M,
+                                                VAdBandAplic = 2.11,
+                                                MotDifBand = MotivoTarifaDiferente.DescontoTarifario
+                                            }
                                         },
                                         Prod = new Prod
                                         {
@@ -740,6 +747,8 @@ namespace Unimake.DFe.Test.NF3e
 
             var nf3eSincrono = new Business.DFe.Xml.NF3e.NF3e();
             var nf3eSincronoObjeto = nf3eSincrono.LerXML<Business.DFe.Xml.NF3e.NF3e>(doc);
+
+            var xml = nf3eSincronoObjeto.GerarXML();
 
             var autorizarNf3eSincrono = new AutorizacaoSinc(nf3eSincronoObjeto, configuracao);
         }
