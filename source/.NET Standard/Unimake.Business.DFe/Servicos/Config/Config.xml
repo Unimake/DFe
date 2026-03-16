@@ -1187,12 +1187,6 @@
 		<ArqConfig>UberlandiaMG.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4105805">
-		<Nome>Colombo - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>ColomboPR.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4303004">
 		<Nome>Cachoeira do Sul - RS</Nome>
 		<UF>RS</UF>
@@ -1289,12 +1283,6 @@
 		<ArqConfig>PomerodeSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4206504">
-		<Nome>Guaramirim - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>GuaramirimSC.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4212809">
 		<Nome>Balneário Piçarras - SC</Nome>
 		<UF>SC</UF>
@@ -1330,12 +1318,6 @@
 		<UF>MA</UF>
 		<ArqConfig>CodoMA.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4307807">
-		<Nome>Estrela - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>EstrelaRS.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3516200">
 		<Nome>Franca - SP</Nome>
@@ -1511,12 +1493,6 @@
 		<ArqConfig>CedralSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4314050">
-		<Nome>Parobé - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>ParobeRS.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="1100023">
 		<Nome>Ariquemes - RO</Nome>
 		<UF>RO</UF>
@@ -1528,12 +1504,6 @@
 		<UF>PI</UF>
 		<ArqConfig>MarcolandiaPI.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4202909">
-		<Nome>Brusque - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>BrusqueSC.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3305802">
 		<Nome>Teresópolis - RJ</Nome>
@@ -1665,12 +1635,6 @@
 		<Nome>Nova Santa Rita - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>NovaSantaRitaRS.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4320206">
-		<Nome>Seberi - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>SeberiRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2914703">
@@ -2140,12 +2104,6 @@
 		<UF>PR</UF>
 		<ArqConfig>Quatro BarrasPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4101408">
-		<Nome>Apucarana - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>ApucaranaPR.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4104808">
 		<Nome>Cascavel - PR</Nome>
