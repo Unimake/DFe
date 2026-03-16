@@ -1511,12 +1511,6 @@
 		<ArqConfig>CedralSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4314050">
-		<Nome>Parobé - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>ParobeRS.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="1100023">
 		<Nome>Ariquemes - RO</Nome>
 		<UF>RO</UF>
@@ -1665,12 +1659,6 @@
 		<Nome>Nova Santa Rita - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>NovaSantaRitaRS.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4320206">
-		<Nome>Seberi - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>SeberiRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2914703">

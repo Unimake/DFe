@@ -568,7 +568,6 @@
 		<None Remove="Servicos\Config\NFSe\ParanapanemaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ParanavaiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PareciNovoRS.xml" />
-		<None Remove="Servicos\Config\NFSe\ParobeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PassoFundoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PassosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PatoBrancoPR.xml" />
@@ -655,7 +654,6 @@
 		<None Remove="Servicos\Config\NFSe\SaoSebastiaoDoCaiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SapirangaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
-		<None Remove="Servicos\Config\NFSe\SeberiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\SenhorDoBonfimBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SerafinaCorreaRS.xml" />
@@ -1803,7 +1801,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\OrizonaGO.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\ParobeRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PontalinaGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ProfessorJamilGO.xml" />
@@ -1814,7 +1811,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoLuisMA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoPedroDaAldeiaRJ.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SapirangaRS.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\SeberiRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoRoqueSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SobralCE.xml" />
