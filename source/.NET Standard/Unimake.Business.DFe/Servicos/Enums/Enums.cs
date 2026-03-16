@@ -1961,7 +1961,19 @@ namespace Unimake.Business.DFe.Servicos
         /// 4 - Município
         /// </summary>
         [XmlEnum("4")]
-        Municipio = 4
+        Municipio = 4,
+
+        /// <summary>
+        /// 5=Consórcio Público
+        /// </summary>
+        [XmlEnum("5")]
+        ConsorcioPublico = 5,
+
+        /// <summary>
+        /// 6=Comitê Gestor do IBS
+        /// </summary>
+        [XmlEnum("6")]
+        ComiteGestorIBS = 6
     }
 
     #endregion
@@ -2014,16 +2026,28 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoOperacaoEnteGovernamental
     {
         /// <summary>
-        /// 1 - Fornecimento
+        /// 1 -  Fornecimento com pagamento posterior;
         /// </summary>
         [XmlEnum("1")]
-        Fornecimento = 1,
+        FornecimentoPagamentoPosterior = 1,
 
         /// <summary>
-        /// 2 - Recebimento do pagamento, conforme fato gerador do IBS/CBS definido no Art. 10 § 2º
+        ///  Recebimento do pagamento com fornecimento já realizado;
         /// </summary>
         [XmlEnum("2")]
-        RecebimentoPagamento = 2,
+        RecebimentoPagamentoFornecimentoJaRealizado = 2,
+
+        /// <summary>
+        /// 3 – Fornecimento com pagamento já realizado;
+        /// </summary>
+        [XmlEnum("3")]
+        FornecimentoPagamentoJaRealizado = 3,
+
+        /// <summary>
+        /// 4 – Recebimento do pagamento com fornecimento posterior
+        /// </summary>
+        [XmlEnum("4")]
+        RecebimentoPagamentoFornecimentoPosterior = 4
     }
 
     #endregion
@@ -2970,7 +2994,7 @@ namespace Unimake.Business.DFe.Servicos
         /// Transferência entre contas do mesmo banco.
         /// </summary>
         [XmlEnum("24")]
-        TEFBookTransfer = 24, 
+        TEFBookTransfer = 24,
 
         /// <summary>
         /// 90 - Sem pagamento
