@@ -3706,9 +3706,6 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Resources.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Xml\Validar\ValidarXMLSchema.cs">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
