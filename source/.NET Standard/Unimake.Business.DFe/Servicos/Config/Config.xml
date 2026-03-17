@@ -287,12 +287,6 @@
 		<ArqConfig>VitoriaDaConquistaBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3201209">
-		<Nome>Cachoeiro de Itapemirim - ES</Nome>
-		<UF>ES</UF>
-		<ArqConfig>CachoeirodeItapemirimES.xml</ArqConfig>
-		<PadraoNFSe>EL</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3506003">
 		<Nome>Bauru - SP</Nome>
 		<UF>SP</UF>
@@ -376,12 +370,6 @@
 		<UF>MG</UF>
 		<ArqConfig>ParaDeMinasMG.xml</ArqConfig>
 		<PadraoNFSe>QUASAR</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3303401">
-		<Nome>Nova Friburgo - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>NovaFriburgoRJ.xml</ArqConfig>
-		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3529005">
 		<Nome>Marília - SP</Nome>
@@ -1307,12 +1295,6 @@
 		<ArqConfig>GurupiTO.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3200904">
-		<Nome>Barra de São Francisco - ES</Nome>
-		<UF>ES</UF>
-		<ArqConfig>BarraDeSaoFranciscoES.xml</ArqConfig>
-		<PadraoNFSe>EL</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2103307">
 		<Nome>Codó - MA</Nome>
 		<UF>MA</UF>
@@ -1540,12 +1522,6 @@
 		<UF>PR</UF>
 		<ArqConfig>SantoAntonioDaPlatinaPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3201506">
-		<Nome>Colatina - ES</Nome>
-		<UF>ES</UF>
-		<ArqConfig>ColatinaES.xml</ArqConfig>
-		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3101102">
 		<Nome>Aimorés - MG</Nome>
