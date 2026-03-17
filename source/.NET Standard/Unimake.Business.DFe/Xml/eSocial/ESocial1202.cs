@@ -821,7 +821,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Remuneração do trabalhador anterior
         /// </summary>
         [XmlElement("remunPerAnt")]
-        public List<RemunPerAnt> RenunPerAnt { get; set; }
+        public List<RemunPerAnt> RemunPerAnt { get; set; }
 
 #if INTEROP
 
