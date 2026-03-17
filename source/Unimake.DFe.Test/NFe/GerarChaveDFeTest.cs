@@ -2,57 +2,36 @@
 using Unimake.Business.DFe.Servicos;
 using Xunit;
 
-namespace Unimake.DFe.Test.NFe
+namespace Unimake.DFe.Test;
+
+/// <summary>
+/// Testa a geração da chave dos DFe´s
+/// </summary>
+public class GerarChaveDFeTest
 {
     /// <summary>
-    /// Testa 
+    /// Testar gerar a chave da NFe com CNPJ Alfanumérico e numérico
     /// </summary>
-    public class GerarChaveDFeTest
+    /// <param name="cnpj"></param>
+    [Theory]
+    [Trait("DFe", "NFe")]
+    [InlineData("ABC123DEF45612", "412603ABC123DEF45612550200000001111135489250", ModeloDFe.NFe, TipoEmissao.Normal)]
+    [InlineData("06117473000150", "41260306117473000150550200000001111135489253", ModeloDFe.NFe, TipoEmissao.Normal)]
+    [InlineData("67157681021", "41260300067157681021550200000001111135489251", ModeloDFe.NFe, TipoEmissao.Normal)] 
+    [InlineData("06117473000150", "41260306117473000150550200000001117135489252", ModeloDFe.NFe, TipoEmissao.ContingenciaSVCRS)] 
+    public void MontarChaveDFeTest(string cnpj, string chaveCorreta, ModeloDFe modelo, TipoEmissao tipoEmissao)
     {
-        /// <summary>
-        /// Testar o método que monta a chave da NFe
-        /// </summary>
-        [Fact]
-        [Trait("DFe", "NFe")]
-        public void MontarChaveNFe()
-        {
-            var cUF = UFBrasil.PR;
-            var dhEmi = DateTime.Parse("2025-01-01");
-            var cnpjOrCpf = "06117473000150";
-            var mod = ModeloDFe.NFe;
-            var serie = 1;
-            var nNF = 123;
-            var tpEmis = TipoEmissao.Normal;
-            var cNF = "12345678";
+        var cUF = UFBrasil.PR;
+        var dhEmi = DateTime.Parse("2026-03-17");
+        var cnpjOrCpf = cnpj;
+        var mod = modelo;
+        var serie = 20;
+        var nNF = 111;
+        var tpEmis = tipoEmissao;
+        var cNF = "13548925";
 
-            var chaveNFe = Unimake.Business.DFe.Utility.XMLUtility.MontarChaveDFe(cUF, dhEmi, cnpjOrCpf, mod, serie, nNF, tpEmis, cNF);
+        var chaveNFe = Business.DFe.Utility.XMLUtility.MontarChaveDFe(cUF, dhEmi, cnpjOrCpf, mod, serie, nNF, tpEmis, cNF);
 
-            var chaveCorreta = "41250106117473000150550010000001231123456786";
-
-            Assert.True(chaveNFe.Equals(chaveCorreta), "Chave da NFe gerada está diferente! [Chave gerada: " + chaveNFe + "] [Como deveria ser a chave: " + chaveCorreta + "]");
-        }
-
-        /// <summary>
-        /// Testar calculo da chave da NFe de produtor rural, onde o CNPJ é substituído pelo CPF do produtor rural
-        /// </summary>
-        [Fact]
-        [Trait("DFe", "NFe")]
-        public void MontarChaveNFeProdutor()
-        {
-            var cUF = UFBrasil.SC;
-            var dhEmi = DateTime.Parse("2026-02-12");
-            var cnpjOrCpf = "67157681021"; //CPF Fake
-            var mod = ModeloDFe.NFe;
-            var serie = 20;
-            var nNF = 111;
-            var tpEmis = TipoEmissao.Normal;
-            var cNF = "13548925";
-
-            var chaveNFe = Unimake.Business.DFe.Utility.XMLUtility.MontarChaveDFe(cUF, dhEmi, cnpjOrCpf, mod, serie, nNF, tpEmis, cNF);
-
-            var chaveCorreta = "42260200067157681021550200000001111135489255";
-
-            Assert.True(chaveNFe.Equals(chaveCorreta), "Chave da NFe gerada está diferente! [Chave gerada: " + chaveNFe + "] [Como deveria ser a chave: " + chaveCorreta + "]");
-        }
+        Assert.True(chaveNFe.Equals(chaveCorreta), "Chave da NFe gerada está diferente! [Chave gerada: " + chaveNFe + "] [Como deveria ser a chave: " + chaveCorreta + "]");
     }
 }
