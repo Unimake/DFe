@@ -155,7 +155,8 @@ namespace Unimake.DFe.Test.NFCom
                         GCompraGov = new GCompraGov
                         {
                             TpEnteGov = TipoEnteGovernamental.Estado,
-                            PRedutor = 5.0000
+                            PRedutor = 5.0000,
+                            TpOperGov = TipoOperacaoEnteGovernamental.FornecimentoPagamentoPosterior
                         },
                         DhCont = (tpEmis == TipoEmissao.ContingenciaFSIA ? DateTime.Now : DateTime.MinValue),
                         XJust = (tpEmis == TipoEmissao.ContingenciaFSIA ? "Teste de contingência com a NFCom" : string.Empty)

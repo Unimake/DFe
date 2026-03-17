@@ -24,6 +24,7 @@
         <gCompraGov>
           <tpEnteGov>1</tpEnteGov>
           <pRedutor>5.0000</pRedutor>
+          <tpOperGov>1</tpOperGov>
         </gCompraGov>
       </ide>
       <emit>
@@ -92,7 +93,7 @@
           <mod>21</mod>
           <serie>1</serie>
           <nNF>3</nNF>
-          <competEmis>202401</competEmis>
+          <CompetEmis>202401</CompetEmis>
           <hash115>123456789efrrfgrfrwfegwergwe</hash115>
         </gNF>
         <motSub>01</motSub>
@@ -104,7 +105,7 @@
           <mod>21</mod>
           <serie>1</serie>
           <nNF>3</nNF>
-          <competEmis>202401</competEmis>
+          <CompetEmis>202401</CompetEmis>
           <hash115>123456789efrrfgrfrwfegwergwe</hash115>
         </gNF>
       </gCofat>
