@@ -1902,18 +1902,20 @@ namespace Unimake.Business.DFe.Utility
                 cNF = XMLUtility.GerarCodigoNumerico(nNF).ToString("00000000");
             }
 
-            var chaveDFe = ((int)cUF).ToString() +
-                dhEmi.ToString("yyMM") +
-                cnpjcpf.PadLeft(14, '0') +
-                ((int)mod).ToString().PadLeft(2, '0') +
-                serie.ToString().PadLeft(3, '0') +
-                nNF.ToString().PadLeft(9, '0') +
-                ((int)tpEmis).ToString() +
-                cNF.PadLeft(8, '0');
+            var conteudoChaveDFe = new ConteudoChaveDFe
+            {
+                UFEmissor = cUF,
+                AnoEmissao = dhEmi.ToString("yy"),
+                MesEmissao = dhEmi.ToString("MM"),
+                CNPJCPFEmissor = cnpjcpf.PadLeft(14, '0'),
+                Modelo = mod,
+                Serie = serie,
+                NumeroDoctoFiscal = nNF,
+                TipoEmissao = (TipoEmissao)(int)tpEmis,
+                CodigoNumerico = cNF
+            };
 
-            var cDV = XMLUtility.CalcularDVChave(chaveDFe);
-
-            chaveDFe += cDV.ToString();
+            var chaveDFe = MontarChaveDFe(ref conteudoChaveDFe);
 
             return chaveDFe;
         }
