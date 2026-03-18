@@ -2525,4 +2525,16 @@
 		<ArqConfig>GaruvaSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3118601">
+		<Nome>Contagem - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ContagemMG.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3131703">
+		<Nome>Itabira - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ItabiraMG.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

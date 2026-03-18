@@ -30,7 +30,7 @@ Function InutilizarNumeroNfe()
    InutNfe:InfInut = InutNFeInfInut
 
  * Consumir o serviço
-   inutilizacao = CreateObject("Unimake.Business.DFe.Servicos.NFCe.Inutilizacao")
+   inutilizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Inutilizacao")
    inutilizacao:Executar(InutNFe,InicializarConfiguracao)
 
    ? "XML Retornado pela SEFAZ"
