@@ -1,64 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRps versao="2.03">
-			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoProducao>http://uruguaiana.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
-			<WebActionProducao>http://tempuri.org/INFSEGeracao/RecepcionarLoteRps</WebActionProducao>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.03"><tem:versaoDados>2.03</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:RecepcionarLoteRps><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>RecepcionarLoteRpsResult</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-		</RecepcionarLoteRps>
-		<CancelarNfse versao="2.03">
-			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoProducao>http://uruguaiana.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
-			<WebActionProducao>http://tempuri.org/INFSEGeracao/CancelarNfse</WebActionProducao>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.03"><tem:versaoDados>2.03</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:CancelarNfse><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>CancelarNfseResult</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-		</CancelarNfse>
-		<SubstituirNfse versao="2.03">
-			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoProducao>http://uruguaiana.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
-			<WebActionProducao>http://tempuri.org/INFSEGeracao/SubstituirNfse</WebActionProducao>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.03"><tem:versaoDados>2.03</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:SubstituirNfse><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>SubstituirNfseResult</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-		</SubstituirNfse>
-		<ConsultarLoteRps versao="2.03">
-			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoProducao>http://uruguaiana.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
-			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarLoteRps</WebActionProducao>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.03"><tem:versaoDados>2.03</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:ConsultarLoteRps><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarLoteRpsResult</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-		</ConsultarLoteRps>
-		<ConsultarNfsePorRps versao="2.03">
-			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoProducao>http://uruguaiana.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
-			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarNfsePorRps</WebActionProducao>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.03"><tem:versaoDados>2.03</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:ConsultarNfsePorRps><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarNfsePorRpsResult</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-		</ConsultarNfsePorRps>
 		<GerarNfse versao="1.01">
 			<Descricao>Envio do DPS - Sincrono</Descricao>
-			<RequestURIProducao>https://uruguaiana.govbr.cloud/NFSe.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
+			<RequestURIProducao>https://webapp1-uruguaiana.cidade360.cloud/Nfse.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
 			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>loteXmlGZipB64:[]</WebActionProducao>
@@ -76,7 +21,7 @@
 		</GerarNfse>
 		<ConsultarNfse versao="1.01">
 			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao>https://uruguaiana.govbr.cloud/NFSe.Api/NotaNacional/ConsultarNFSe/{Chave}</RequestURIProducao>
+			<RequestURIProducao>https://webapp1-uruguaiana.cidade360.cloud/Nfse.Api/NotaNacional/ConsultarNFSe/{Chave}</RequestURIProducao>
 			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/ConsultarNFSe/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -92,7 +37,7 @@
 		</ConsultarNfse>
 		<ConsultarNfsePorRps versao="1.01">
 			<Descricao>Consultar NFSe por DPS</Descricao>
-			<RequestURIProducao>https://uruguaiana.govbr.cloud/NFSe.Api/NotaNacional/ConsultarDPS/{documento}/{serie}/{numero}</RequestURIProducao>
+			<RequestURIProducao>https://webapp1-uruguaiana.cidade360.cloud/Nfse.Api/NotaNacional/{documento}/{serie}/{numero}</RequestURIProducao>
 			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/ConsultarDPS/{documento}/{serie}/{numero}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -108,7 +53,7 @@
 		</ConsultarNfsePorRps>
 		<CancelarNfse versao="1.01">
 			<Descricao>Envio do cancelamento de NFSe</Descricao>
-			<RequestURIProducao>https://uruguaiana.govbr.cloud/NFSe.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
+			<RequestURIProducao>https://webapp1-uruguaiana.cidade360.cloud/Nfse.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
 			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>loteXmlGZipB64:[]</WebActionProducao>

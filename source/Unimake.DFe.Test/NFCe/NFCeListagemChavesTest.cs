@@ -46,6 +46,7 @@ namespace Unimake.DFe.Test.NFCe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFCe")]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
         public void ConsultarListagemChavesNFCe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
@@ -82,6 +83,7 @@ namespace Unimake.DFe.Test.NFCe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFCe")]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
         public void ConsultarListagemChavesNFCeComString(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {

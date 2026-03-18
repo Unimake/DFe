@@ -415,6 +415,55 @@ namespace Unimake.Business.DFe.Xml.NFCom
             get => PRedutor.ToString("F4", CultureInfo.InvariantCulture);
             set => PRedutor = Converter.ToDouble(value);
         }
+
+        [XmlElement("tpOperGov")]
+        public TipoOperacaoEnteGovernamental TpOperGov { get; set; } = TipoOperacaoEnteGovernamental.FornecimentoPagamentoPosterior;
+
+        [XmlElement("refDFeAnt")]
+        public List<string> RefDFeAnt { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddRefDFeAnt(string item)
+        {
+            if (RefDFeAnt == null)
+            {
+                RefDFeAnt = new List<string>();
+            }
+
+            RefDFeAnt.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista RefDFeAnt (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da RefDFeAnt</returns>
+        public string GetRefDFeAnt(int index)
+        {
+            if ((RefDFeAnt?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return RefDFeAnt[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista RefDFeAnt
+        /// </summary>
+        public int GetRefDFeAntCount => (RefDFeAnt != null ? RefDFeAnt.Count : 0);
+#endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeRefDFeAnt() => RefDFeAnt?.Count > 0;
+
+        #endregion ShouldSerialize
     }
 
 
@@ -801,7 +850,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
         [XmlElement("nNF")]
         public string NNF { get; set; }
 
-        [XmlElement("competEmis")]
+        [XmlElement("CompetEmis")]
         public string CompetEmis { get; set; }
 
         [XmlElement("hash115")]

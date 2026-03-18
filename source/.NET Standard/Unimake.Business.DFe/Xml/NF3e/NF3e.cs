@@ -6,6 +6,8 @@ using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -417,6 +419,61 @@ namespace Unimake.Business.DFe.Xml.NF3e
             get => PRedutor.ToString("F4", CultureInfo.InvariantCulture);
             set => PRedutor = Converter.ToDouble(value);
         }
+
+        /// <summary>
+        /// Tipo da operação com ente governamental
+        /// </summary>
+        [XmlElement("tpOperGov")]
+        public TipoOperacaoEnteGovernamental TpOperGov { get; set; }
+
+        /// <summary>
+        /// Chave de acesso do documento fiscal anterior
+        /// </summary>
+        [XmlElement("refDFeAnt")]
+        public List<string> RefDFeAnt { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddRefDFeAnt(string item)
+        {
+            if (RefDFeAnt == null)
+            {
+                RefDFeAnt = new List<string>();
+            }
+
+            RefDFeAnt.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista RefDFeAnt (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da RefDFeAnt</returns>
+        public string GetRefDFeAnt(int index)
+        {
+            if ((RefDFeAnt?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return RefDFeAnt[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista RefDFeAnt
+        /// </summary>
+        public int GetRefDFeAntCount => (RefDFeAnt != null ? RefDFeAnt.Count : 0);
+#endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeRefDFeAnt() => RefDFeAnt?.Count > 0;
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -535,11 +592,11 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public bool ShouldSerializeIE() => !string.IsNullOrEmpty(IE);
 
         public bool ShouldSerializeIM() => !string.IsNullOrEmpty(IM);
-        
+
         public bool ShouldSerializeCNIS() => !string.IsNullOrEmpty(CNIS);
-        
+
         public bool ShouldSerializeNB() => !string.IsNullOrEmpty(NB);
-        
+
         public bool ShouldSerializeXNomeAdicional() => !string.IsNullOrEmpty(XNomeAdicional);
 
         #endregion ShouldSerialize
@@ -660,10 +717,10 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("nNF")]
         public string NNF { get; set; }
 
-        [XmlElement("competEmis")]
+        [XmlElement("CompetEmis")]
         public string CompetEmis { get; set; }
 
-        [XmlElement("competApur")]
+        [XmlElement("CompetApur")]
         public string CompetApur { get; set; }
 
         [XmlElement("hash115")]
@@ -913,44 +970,255 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public TipoFonteEnergia TpFonteEnergia { get; set; }
 
         [XmlIgnore]
-        public double EnerAloc { get; set; }
-
-        [XmlElement("enerAloc")]
-        public string EnerAlocField
-        {
-            get => EnerAloc.ToString("F3", CultureInfo.InvariantCulture);
-            set => EnerAloc = Converter.ToDouble(value);
-                }
-
-        [XmlElement("tpPosTar")]
-        public TipoPostoTarifario TpPosTar { get; set; }
+        public List<double> EnerAloc { get; set; }
 
         [XmlIgnore]
-        public double EnerInjet { get; set; }
-
-        [XmlElement("enerInjet")]
-        public string EnerInjetField
+        public List<string> EnerAlocField
         {
-            get => EnerInjet.ToString("F3", CultureInfo.InvariantCulture);
-            set => EnerInjet = Converter.ToDouble(value);
+            get => EnerAloc?.Select(o => o.ToString("F3", CultureInfo.InvariantCulture)).ToList();
+            set => EnerAloc = value?.Select(Converter.ToDouble).ToList();
         }
 
-        [XmlElement("tpPosTarInjet")]
+        [XmlIgnore]
+        public List<TipoPostoTarifario> TpPosTar { get; set; }
+
+        [XmlIgnore]
+        public List<double> EnerInjet { get; set; }
+
+        [XmlIgnore]
+        public List<string> EnerInjetField
+        {
+            get => EnerInjet?.Select(o => o.ToString("F3", CultureInfo.InvariantCulture)).ToList();
+            set => EnerInjet = value?.Select(Converter.ToDouble).ToList();
+        }
+
+        [XmlIgnore]
+        public List<TipoPostoTarifario> TpPosTarInjet { get; set; }
+
+        [XmlAnyElement]
+        public XmlElement[] EnergiaPostoTarifarioField
+        {
+            get
+            {
+                var elementos = new List<XmlElement>();
+                var xmlDoc = new XmlDocument();
+                const string namespaceURI = "http://www.portalfiscal.inf.br/nf3e";
+
+                var qtdEnerAloc = EnerAloc?.Count ?? 0;
+                var qtdTpPosTar = TpPosTar?.Count ?? 0;
+                var qtdParEnerAloc = Math.Min(qtdEnerAloc, qtdTpPosTar);
+
+                for (var i = 0; i < qtdParEnerAloc; i++)
+                {
+                    var enerAloc = xmlDoc.CreateElement("enerAloc", namespaceURI);
+                    enerAloc.InnerText = EnerAloc[i].ToString("F3", CultureInfo.InvariantCulture);
+                    elementos.Add(enerAloc);
+
+                    var tpPosTar = xmlDoc.CreateElement("tpPosTar", namespaceURI);
+                    tpPosTar.InnerText = ((int)TpPosTar[i]).ToString();
+                    elementos.Add(tpPosTar);
+                }
+
+                var qtdEnerInjet = EnerInjet?.Count ?? 0;
+                var qtdTpPosTarInjet = TpPosTarInjet?.Count ?? 0;
+                var qtdParEnerInjet = Math.Min(qtdEnerInjet, qtdTpPosTarInjet);
+
+                for (var i = 0; i < qtdParEnerInjet; i++)
+                {
+                    var enerInjet = xmlDoc.CreateElement("enerInjet", namespaceURI);
+                    enerInjet.InnerText = EnerInjet[i].ToString("F3", CultureInfo.InvariantCulture);
+                    elementos.Add(enerInjet);
+
+                    var tpPosTarInjet = xmlDoc.CreateElement("tpPosTarInjet", namespaceURI);
+                    tpPosTarInjet.InnerText = ((int)TpPosTarInjet[i]).ToString();
+                    elementos.Add(tpPosTarInjet);
+                }
+
+                return elementos.Count > 0 ? elementos.ToArray() : null;
+            }
+            set
+            {
+                var enerAloc = new List<double>();
+                var tpPosTar = new List<TipoPostoTarifario>();
+                var enerInjet = new List<double>();
+                var tpPosTarInjet = new List<TipoPostoTarifario>();
+
+                if (value != null)
+                {
+                    foreach (var elemento in value)
+                    {
+                        switch (elemento.LocalName)
+                        {
+                            case "enerAloc":
+                                enerAloc.Add(Converter.ToDouble(elemento.InnerText));
+                                break;
+
+                            case "tpPosTar":
+                                tpPosTar.Add((TipoPostoTarifario)Enum.Parse(typeof(TipoPostoTarifario), elemento.InnerText));
+                                break;
+
+                            case "enerInjet":
+                                enerInjet.Add(Converter.ToDouble(elemento.InnerText));
+                                break;
+
+                            case "tpPosTarInjet":
+                                tpPosTarInjet.Add((TipoPostoTarifario)Enum.Parse(typeof(TipoPostoTarifario), elemento.InnerText));
+                                break;
+                        }
+                    }
+                }
+
+                EnerAloc = enerAloc.Count > 0 ? enerAloc : null;
+                TpPosTar = tpPosTar.Count > 0 ? tpPosTar : null;
+                EnerInjet = enerInjet.Count > 0 ? enerInjet : null;
+                TpPosTarInjet = tpPosTarInjet.Count > 0 ? tpPosTarInjet : null;
+            }
+        }
+
 #if INTEROP
-        public TipoPostoTarifario TpPosTarInjet { get; set; } = (TipoPostoTarifario)(-1);
-#else
-        public TipoPostoTarifario? TpPosTarInjet { get; set; }
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddEnerAloc(double item)
+        {
+            if (EnerAloc == null)
+            {
+                EnerAloc = new List<double>();
+            }
+
+            EnerAloc.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista EnerAloc (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da EnerAloc</returns>
+        public double GetEnerAloc(int index)
+        {
+            if ((EnerAloc?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return EnerAloc[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista EnerAloc
+        /// </summary>
+        public int GetEnerAlocCount => (EnerAloc != null ? EnerAloc.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddTpPosTar(TipoPostoTarifario item)
+        {
+            if (TpPosTar == null)
+            {
+                TpPosTar = new List<TipoPostoTarifario>();
+            }
+
+            TpPosTar.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista TpPosTar (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da TpPosTar</returns>
+        public TipoPostoTarifario GetTpPosTar(int index)
+        {
+            if ((TpPosTar?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return TpPosTar[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista TpPosTar
+        /// </summary>
+        public int GetTpPosTarCount => (TpPosTar != null ? TpPosTar.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddEnerInjet(double item)
+        {
+            if (EnerInjet == null)
+            {
+                EnerInjet = new List<double>();
+            }
+
+            EnerInjet.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista EnerInjet (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da EnerInjet</returns>
+        public double GetEnerInjet(int index)
+        {
+            if ((EnerInjet?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return EnerInjet[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista EnerInjet
+        /// </summary>
+        public int GetEnerInjetCount => (EnerInjet != null ? EnerInjet.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddTpPosTarInjet(TipoPostoTarifario item)
+        {
+            if (TpPosTarInjet == null)
+            {
+                TpPosTarInjet = new List<TipoPostoTarifario>();
+            }
+
+            TpPosTarInjet.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista TpPosTarInjet (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da TpPosTarInjet</returns>
+        public TipoPostoTarifario GetTpPosTarInjet(int index)
+        {
+            if ((TpPosTarInjet?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return TpPosTarInjet[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista TpPosTarInjet
+        /// </summary>
+        public int GetTpPosTarInjetCount => (TpPosTarInjet != null ? TpPosTarInjet.Count : 0);
 #endif
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeEnerInjetField() => EnerInjet > 0;
+        public bool ShouldSerializeEnerInjetField() => EnerInjet?.Count > 0;
 
-#if INTEROP
-        public bool ShouldSerializeTpPosTarInjet() => TpPosTarInjet != (TipoPostoTarifario)(-1);
-#else
-        public bool ShouldSerializeTpPosTarInjet() => TpPosTarInjet != null;
-#endif
+        public bool ShouldSerializeTpPosTarInjet() => TpPosTarInjet?.Count > 0;
 
         #endregion ShouldSerialize
     }
@@ -1336,13 +1604,87 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Grupo de Tarifas por Período
         /// </summary>
         [XmlElement("gTarif")]
-        public GTarif GTarif { get; set; }
+        public List<GTarif> GTarif { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddGTarif(GTarif item)
+        {
+            if (GTarif == null)
+            {
+                GTarif = new List<GTarif>();
+            }
+
+            GTarif.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista GTarif (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da GTarif</returns>
+        public GTarif GetGTarif(int index)
+        {
+            if ((GTarif?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return GTarif[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista GTarif
+        /// </summary>
+        public int GetGTarifCount => (GTarif != null ? GTarif.Count : 0);
+#endif
 
         /// <summary>
         /// Grupo de Adicional de Bandeira
         /// </summary>
         [XmlElement("gAdBand")]
-        public GAdBand GAdBand { get; set; }
+        public List<GAdBand> GAdBand { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddGAdBand(GAdBand item)
+        {
+            if (GAdBand == null)
+            {
+                GAdBand = new List<GAdBand>();
+            }
+
+            GAdBand.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista GAdBand (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da GAdBand</returns>
+        public GAdBand GetGAdBand(int index)
+        {
+            if ((GAdBand?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return GAdBand[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista GAdBand
+        /// </summary>
+        public int GetGAdBandCount => (GAdBand != null ? GAdBand.Count : 0);
+#endif
 
         [XmlElement("prod")]
         public Prod Prod { get; set; }
@@ -2016,12 +2358,12 @@ namespace Unimake.Business.DFe.Xml.NF3e
         #region ShouldSerialize
 
         public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
-        
+
         public bool ShouldSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
         public bool ShouldSerializePFCPField() => PFCP > 0;
 
         public bool ShouldSerializeVFCPField() => VFCP > 0;
-        
+
         #endregion ShouldSerialize
     }
 
@@ -2296,7 +2638,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public bool ShouldSerializeVICMSField() => VICMS > 0;
 
         public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
-        
+
         public bool ShouldSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
 
         public bool ShouldSerializePFCPField() => PFCP > 0;
@@ -2593,7 +2935,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Valor da Base de cálculo comum a IBS/CBS
         /// </summary>
         [XmlIgnore]
-        public double VBC {  get; set; }
+        public double VBC { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VBC para atribuir ou resgatar o valor)
@@ -2609,7 +2951,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Grupo de informações do IBS/CBS de competência das Unidades Federadas
         /// </summary>
         [XmlElement("gIBSUF")]
-        public GIBSUF GIBSUF {  get; set; }
+        public GIBSUF GIBSUF { get; set; }
 
         /// <summary>
         /// Grupo de informações do IBS/CBS de competência do municipio
@@ -2667,7 +3009,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Alíquota do IBS Estadual 
         /// </summary>
         [XmlIgnore]
-        public double PIBSUF {  get; set; }
+        public double PIBSUF { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PIBSUF para atribuir ou resgatar o valor)
@@ -2689,7 +3031,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Grupo de informações da devolução de tributos
         /// </summary>
         [XmlElement("gDevTrib")]
-        public GDevTrib GDevTrib {  get; set; }
+        public GDevTrib GDevTrib { get; set; }
 
         /// <summary>
         /// Grupo de informações da redução de Alíquota
@@ -2701,7 +3043,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Valor do IBS de competência da UF
         /// </summary>
         [XmlIgnore]
-        public double VIBSUF {  get; set; }
+        public double VIBSUF { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VIBSUF para atribuir ou resgatar o valor)
@@ -2728,7 +3070,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Percentual de diferimento
         /// </summary>
         [XmlIgnore]
-        public double PDif {  get; set; }
+        public double PDif { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PDif para atribuir ou resgatar o valor)
@@ -2939,7 +3281,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Valor da CBS 
         /// </summary>
         [XmlIgnore]
-        public double VCBS {  get; set; }
+        public double VCBS { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCBS para atribuir ou resgatar o valor)
@@ -2968,14 +3310,14 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Informado como seria o CST caso não cumprida a condição resolutória/suspensiva
         /// </summary>
         [XmlElement("CSTReg")]
-        public string CSTReg {  get; set; }
+        public string CSTReg { get; set; }
 
         /// <summary>
         /// Código de Classificação Tributária.
         /// Informado como seria o cClassTrib caso não cumprida a condição resolutória/suspensiva
         /// </summary>
         [XmlElement("cClassTribReg")]
-        public string CClassTribReg {  get; set; }
+        public string CClassTribReg { get; set; }
 
         /// <summary>
         /// Alíquota efetiva da UF.
@@ -3015,7 +3357,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Informado a Alíquota caso não cumprida a condição resolutória/suspensiva
         /// </summary>
         [XmlIgnore]
-        public double PAliqEfetRegIBSMun {  get; set; }
+        public double PAliqEfetRegIBSMun { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqEfetRegIBSMun para atribuir ou resgatar o valor)
@@ -3048,7 +3390,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Informado a Alíquota caso não cumprida a condição resolutória/suspensiva
         /// </summary>
         [XmlIgnore]
-        public double PAliqEfetRegCBS {  get; set; }
+        public double PAliqEfetRegCBS { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqEfetRegCBS para atribuir ou resgatar o valor)
@@ -3064,7 +3406,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Informado como seria o valor do Tributo CBS caso não cumprida a condição resolutória/suspensiva
         /// </summary>
         [XmlIgnore]
-        public double VTribRegCBS {  get; set; }
+        public double VTribRegCBS { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribRegCBS para atribuir ou resgatar o valor)
@@ -3075,7 +3417,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
             get => VTribRegCBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VTribRegCBS = Converter.ToDouble(value);
         }
-    }       
+    }
 
     /// <summary>
     /// Grupo de informações da composição do valor do IBS e da CBS em compras governamental
@@ -3123,7 +3465,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Alíquota IBS do Município utilizada
         /// </summary>
         [XmlIgnore]
-        public double PAliqIBSMun {  get; set; }
+        public double PAliqIBSMun { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqIBSMun para atribuir ou resgatar o valor)
@@ -3261,14 +3603,14 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Grupo de informações para apuração do IBS e CBS declarado pelo contribuinte
         /// </summary>
         [XmlElement("IBSCBSTot")]
-        public IBSCBSTot IBSCBSTot {  get; set; }
+        public IBSCBSTot IBSCBSTot { get; set; }
 
         /// <summary>
         /// Valor total do documento fiscal 
         /// vNF + total do IBS + total da CBS
         /// </summary>
         [XmlIgnore]
-        public double VTotDFe {  get; set; }
+        public double VTotDFe { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTotDFe para atribuir ou resgatar o valor)
@@ -3415,7 +3757,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Total da Base de cálculo do IBS/CBS
         /// </summary>
         [XmlIgnore]
-        public double VBCIBSCBS {  get; set; }
+        public double VBCIBSCBS { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VBCIBSCBS para atribuir ou resgatar o valor)
@@ -4339,6 +4681,6 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public string QrCodNF3e { get; set; }
     }
 
-#endregion
+    #endregion
 
 }

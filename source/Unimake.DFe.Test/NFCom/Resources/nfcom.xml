@@ -22,6 +22,7 @@
 			<gCompraGov>
 				<tpEnteGov>1</tpEnteGov>
 				<pRedutor>5.0000</pRedutor>
+        <tpOperGov>1</tpOperGov>
 			</gCompraGov>
 		</ide>
 		<emit>

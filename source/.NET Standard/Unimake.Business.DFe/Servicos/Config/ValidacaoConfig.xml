@@ -14,6 +14,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="consSitNFe" versao ="4.00">
+			<Descricao>Consulta situação da nota fiscal eletrônica</Descricao>
 			<SchemaArquivo>consSitNFe_v4.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -25,6 +26,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="consReciNFe" versao="4.00">
+			<Descricao>Consulta recibo da nota fiscal eletrônica</Descricao>
 			<SchemaArquivo>consReciNFe_v4.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -36,6 +38,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="inutNFe" versao ="4.00">
+			<Descricao>Inutilização de números da nota fiscal eletrônica</Descricao>
 			<SchemaArquivo>inutNFe_v4.00.xsd</SchemaArquivo>
 			<TagAssinatura>inutNFe</TagAssinatura>
 			<TagAtributoID>infInut</TagAtributoID>
@@ -47,6 +50,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="ConsCad" versao ="2.00">
+			<Descricao>Consulta cadastro do contribuinte</Descricao>
 			<SchemaArquivo>consCad_v2.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -58,6 +62,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="envEvento" versao ="1.00">
+			<Descricao>Recepção de eventos</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>evento</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
@@ -252,6 +257,7 @@
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz ="enviNFe" versao ="4.00">
+			<Descricao>Autorização da NFe</Descricao>
 			<SchemaArquivo>enviNFe_v4.00.xsd</SchemaArquivo>
 			<TagAssinatura>NFe</TagAssinatura>
 			<TagAtributoID>infNFe</TagAtributoID>
@@ -263,6 +269,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="NFe" versao ="4.00">
+			<Descricao>Autorização da NFe</Descricao>
 			<SchemaArquivo>nfe_v4.00.xsd</SchemaArquivo>
 			<TagAssinatura>NFe</TagAssinatura>
 			<TagAtributoID>infNFe</TagAtributoID>
@@ -274,6 +281,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="distDFeInt" versao ="1.01">
+			<Descricao>Consulta da relação de documentos fiscais eletrônicos destinados - NFe</Descricao>
 			<SchemaArquivo>distDFeInt_v1.01.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -285,6 +293,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="distDFeInt" versao ="1.35">
+			<Descricao>Consulta da relação de documentos fiscais eletrônicos destinados - NFe</Descricao>
 			<SchemaArquivo>distDFeInt_v1.35.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -299,6 +308,7 @@
 	<!--CTe -->
 	<CTe>
 		<Servico tagRaiz ="distDFeInt" versao ="1.00">
+			<Descricao>Consulta da relação de documentos fiscais eletrônicos destinados - CTe</Descricao>
 			<SchemaArquivo>distDFeInt_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -310,6 +320,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="consReciCTe" versao ="3.00">
+			<Descricao>Consulta recibo do conhecimento de transporte eletrônico</Descricao>
 			<SchemaArquivo>consReciCTe_v3.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -321,6 +332,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="eventoCTe" versao ="3.00">
+			<Descricao>Recepção de eventos - CTe</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>eventoCTe</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
@@ -375,6 +387,7 @@
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz ="enviCTe" versao ="3.00">
+			<Descricao>Autorização do CTe</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>CTe</TagAssinatura>
 			<TagAtributoID>infCte</TagAtributoID>
@@ -418,6 +431,7 @@
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz ="consStatServCTe" versao ="3.00">
+			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
 			<SchemaArquivo>consStatServCTe_v3.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -429,6 +443,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="consSitCTe" versao ="3.00">
+			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
 			<SchemaArquivo>consSitCTe_v3.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -440,6 +455,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="CTe" versao ="3.00">
+			<Descricao>Autorização do CTe</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>CTe</TagAssinatura>
 			<TagAtributoID>infCte</TagAtributoID>
@@ -483,6 +499,7 @@
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz ="consStatServCTe" versao ="4.00">
+			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
 			<SchemaArquivo>consStatServCTe_v4.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -494,6 +511,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="consSitCTe" versao ="4.00">
+			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
 			<SchemaArquivo>consSitCTe_v4.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -505,6 +523,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="eventoCTe" versao ="4.00">
+			<Descricao>Recepção de eventos - CTe</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>eventoCTe</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
@@ -564,6 +583,7 @@
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz ="CTe" versao ="4.00">
+			<Descricao>Autorização do CTe</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>CTe</TagAssinatura>
 			<TagAtributoID>infCte</TagAtributoID>
@@ -607,6 +627,7 @@
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz ="CTeSimp" versao ="4.00">
+			<Descricao>Autorização do CTe Simplificado - Síncrono</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>CTeSimp</TagAssinatura>
 			<TagAtributoID>infCte</TagAtributoID>
@@ -650,6 +671,7 @@
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz ="CTeOS" versao ="3.00">
+			<Descricao>Autorização do CTeOS</Descricao>
 			<SchemaArquivo>cteOS_v3.00.xsd</SchemaArquivo>
 			<TagAssinatura>CTeOS</TagAssinatura>
 			<TagAtributoID>infCte</TagAtributoID>
@@ -661,6 +683,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="CTeOS" versao ="4.00">
+			<Descricao>Autorização do CTeOS</Descricao>
 			<SchemaArquivo>cteOS_v4.00.xsd</SchemaArquivo>
 			<TagAssinatura>CTeOS</TagAssinatura>
 			<TagAtributoID>infCte</TagAtributoID>
@@ -675,6 +698,7 @@
 	<!--MDFe -->
 	<MDFe>
 		<Servico tagRaiz ="consStatServMDFe" versao ="3.00">
+			<Descricao>Consulta situação do serviço de manifesto eletrônico de documentos fiscais</Descricao>
 			<SchemaArquivo>consStatServMDFe_v3.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -686,6 +710,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="consSitMDFe" versao ="3.00">
+			<Descricao>Consulta situação do manifesto eletrônico de documentos fiscais</Descricao>
 			<SchemaArquivo>consSitMDFe_v3.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -697,6 +722,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="consCad" versao ="3.00">
+			<Descricao>Consulta cadastro do contribuinte</Descricao>
 			<SchemaArquivo>consCad_v3.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -708,6 +734,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="eventoMDFe" versao ="3.00">
+			<Descricao>Recepcao de eventos - MDFe</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>eventoMDFe</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
@@ -757,6 +784,7 @@
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz ="enviMDFe" versao ="3.00">
+			<Descricao>Autorização do MDFe em Lote (Assíncrono)</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>MDFe</TagAssinatura>
 			<TagAtributoID>infMDFe</TagAtributoID>
@@ -790,6 +818,7 @@
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz ="consReciMDFe" versao ="3.00">
+			<Descricao>Consulta recibo do manifesto eletrônico de documentos fiscais</Descricao>
 			<SchemaArquivo>consReciMDFe_v3.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -801,6 +830,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="consMDFeNaoEnc" versao ="3.00">
+			<Descricao>Consulta de manifesto eletrônico de documentos fiscais não encerrados</Descricao>
 			<SchemaArquivo>consMDFeNaoEnc_v3.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -812,6 +842,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
 		</Servico>
 		<Servico tagRaiz ="MDFe" versao ="3.00">
+			<Descricao>Autorização do MDFe Síncrono</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>MDFe</TagAssinatura>
 			<TagAtributoID>infMDFe</TagAtributoID>
@@ -846,231 +877,9 @@
 		</Servico>
 	</MDFe>
 	<!--NFCom-->
-	<NFCe>
-		<Servico tagRaiz ="consStatServ" versao ="4.00">
-			<SchemaArquivo>consStatServ_v4.00.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagVersao>consStatServ</TagVersao>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<TagExtraAssinatura></TagExtraAssinatura>
-			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
-		</Servico>
-		<Servico tagRaiz ="consSitNFe" versao ="4.00">
-			<SchemaArquivo>consReciNFe_v4.00.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagVersao>consSitNFe</TagVersao>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<TagExtraAssinatura></TagExtraAssinatura>
-			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
-		</Servico>
-		<Servico tagRaiz ="inutNFe" versao ="4.00">
-			<SchemaArquivo>inutNFe_v4.00.xsd</SchemaArquivo>
-			<TagAssinatura>inutNFe</TagAssinatura>
-			<TagAtributoID>infInut</TagAtributoID>
-			<TagVersao>inutNFe</TagVersao>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<TagExtraAssinatura></TagExtraAssinatura>
-			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
-		</Servico>
-		<Servico tagRaiz ="ConsCad" versao ="2.00">
-			<SchemaArquivo>consCad_v2.00.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagVersao>ConsCad</TagVersao>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<TagExtraAssinatura></TagExtraAssinatura>
-			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
-		</Servico>
-		<Servico tagRaiz ="envEvento" versao ="1.00">
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>evento</TagAssinatura>
-			<TagAtributoID>infEvento</TagAtributoID>
-			<TagEvento>evento</TagEvento>
-			<TagVersao>envEvento</TagVersao>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<TagExtraAssinatura></TagExtraAssinatura>
-			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
-			<SchemasEspecificos>
-				<Tipo>
-					<ID>110111</ID>
-					<SchemaArquivo>envEventoCancNFe_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110111_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110112</ID>
-					<SchemaArquivo>envEventoCancSubst_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110112_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110110</ID>
-					<SchemaArquivo>envCCe_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110110_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110192</ID>
-					<SchemaArquivo>envEventoInsucessoNFe_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110192_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110193</ID>
-					<SchemaArquivo>envEventoCancInsucessoNFe_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110193_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>111500</ID>
-					<SchemaArquivo>envRemIndus_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e111500_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>111501</ID>
-					<SchemaArquivo>envRemIndus_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e111501_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>111502</ID>
-					<SchemaArquivo>envRemIndus_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e111502_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>111503</ID>
-					<SchemaArquivo>envRemIndus_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e111503_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110750</ID>
-					<SchemaArquivo>envEventoEConf_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110750_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110751</ID>
-					<SchemaArquivo>envEventoCancEConf_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110751_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110001</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e110001_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>112110</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e112110_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>112120</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e112120_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>112130</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e112130_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>112140</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e112140_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>112150</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e112150_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>211110</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e211110_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>211120</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e211120_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>211124</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e211124_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>211130</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e211130_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>211140</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e211140_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>211150</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e211150_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>211128</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e211128_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>212110</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e212110_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>212120</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e212120_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>412120</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e412120_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>412130</ID>
-					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e412130_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-			</SchemasEspecificos>
-		</Servico>
-		<Servico tagRaiz ="enviNFe" versao ="4.00">
-			<SchemaArquivo>enviNFe_v4.00.xsd</SchemaArquivo>
-			<TagAssinatura>NFe</TagAssinatura>
-			<TagAtributoID>infNFe</TagAtributoID>
-			<TagVersao>infNFe</TagVersao>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<TagExtraAssinatura></TagExtraAssinatura>
-			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
-		</Servico>
-		<Servico tagRaiz ="consReciNFe" versao="4.00">
-			<SchemaArquivo>consSitNFe_v4.00.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagVersao>consReciNFe</TagVersao>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<TagExtraAssinatura></TagExtraAssinatura>
-			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
-		</Servico>
-	</NFCe>
-	<!--NFCom-->
 	<NFCom>
 		<Servico tagRaiz="consStatServNFCom" versao="1.00">
+			<Descricao>Consulta situação do serviço da nota fisca fatura de serviço de comunicação eletrônica</Descricao>
 			<SchemaArquivo>consStatServNFCom_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -1082,6 +891,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfcom</TargetNS>
 		</Servico>
 		<Servico tagRaiz="consSitNFCom" versao="1.00">
+			<Descricao>Consulta situação da nota fisca fatura de serviço de comunicação eletrônica</Descricao>
 			<SchemaArquivo>consSitNFCom_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -1093,6 +903,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfcom</TargetNS>
 		</Servico>
 		<Servico tagRaiz="eventoNFCom" versao="1.00">
+			<Descricao>Recepção de eventos  - NFCom</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>eventoNFCom</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
@@ -1112,6 +923,7 @@
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz="NFCom" versao="1.00">
+			<Descricao>Autorização síncrona da NFCom</Descricao>
 			<SchemaArquivo>nfcom_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura>NFCom</TagAssinatura>
 			<TagAtributoID>infNFCom</TagAtributoID>
@@ -1126,6 +938,7 @@
 	<!--NF3e-->
 	<NF3e>
 		<Servico tagRaiz="consStatServNF3e" versao="1.00">
+			<Descricao>Consulta situação do serviço da nota fiscal de energia eletrônica</Descricao>
 			<SchemaArquivo>consStatServNF3e_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -1137,6 +950,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nf3e</TargetNS>
 		</Servico>
 		<Servico tagRaiz="consSitNF3e" versao="1.00">
+			<Descricao>Consulta situação da nota fiscal de energia eletrônica</Descricao>
 			<SchemaArquivo>consSitNF3e_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -1148,6 +962,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nf3e</TargetNS>
 		</Servico>
 		<Servico tagRaiz="eventoNF3e" versao="1.00">
+			<Descricao>Recepção de eventos - NF3e</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>eventoNF3e</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
@@ -1167,6 +982,7 @@
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz="NF3e" versao="1.00">
+			<Descricao>Autorização síncrona da NF3e</Descricao>
 			<SchemaArquivo>nf3e_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura>NF3e</TagAssinatura>
 			<TagAtributoID>infNF3e</TagAtributoID>
@@ -1177,18 +993,8 @@
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/nf3e</TargetNS>
 		</Servico>
-		<Servico tagRaiz="consSitNF3e" versao="1.00">
-			<SchemaArquivo>consSitNF3e_v1.00.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagVersao>consSitNF3e</TagVersao>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<TagExtraAssinatura></TagExtraAssinatura>
-			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS>http://www.portalfiscal.inf.br/nf3e</TargetNS>
-		</Servico>
 		<Servico tagRaiz="consReciNF3e" versao="1.00">
+			<Descricao>Consulta recibo da nota fiscal de energia eletrônica</Descricao>
 			<SchemaArquivo>consReciNF3e_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -2025,6 +1831,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="nNFSe">
 				<Descricao>Envio NFS-e com indicativo de decisão judicial - Síncrono</Descricao>
@@ -2037,6 +1844,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="infPedReg">
 				<Descricao>Recepcionar Eventos Diversos da NFSe NACIONAL</Descricao>
@@ -2049,6 +1857,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 		</Padrao>
 		<Padrao nome="PRONIM">
@@ -2063,6 +1872,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
 				<Descricao>Consultar NFSe</Descricao>
@@ -2075,6 +1885,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="infDPS">
 				<Descricao>Consultar NFSe por DPS</Descricao>
@@ -2087,6 +1898,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="infPedReg">
 				<Descricao>Envio do cancelamento de NFSe</Descricao>
@@ -2099,6 +1911,7 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 		</Padrao>
 		<Padrao nome="WEBISS">
