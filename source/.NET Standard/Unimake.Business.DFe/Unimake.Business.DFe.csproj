@@ -401,6 +401,7 @@
 		<None Remove="Servicos\Config\NFSe\ColiderMT.xml" />
 		<None Remove="Servicos\Config\NFSe\ConcordiaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
+		<None Remove="Servicos\Config\NFSe\ContagemMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CorumbaMS.xml" />
 		<None Remove="Servicos\Config\NFSe\CorupaSC.xml" />
@@ -464,6 +465,7 @@
 		<None Remove="Servicos\Config\NFSe\IratiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabaianaSE.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaberabaBA.xml" />
+		<None Remove="Servicos\Config\NFSe\ItabiraMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabunaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaitubaPA.xml" />
 		<None Remove="Servicos\Config\NFSe\ItajaiSC.xml" />
@@ -1499,6 +1501,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
 	</ItemGroup>
 
