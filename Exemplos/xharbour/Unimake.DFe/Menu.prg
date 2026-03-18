@@ -8,380 +8,133 @@ Autores:
 - Wandrey Mundin Ferreira
 
 */
-Function Main()
-   Local aOpcoes, nOpcao
-   
+FUNCTION Main()
+   Local aOpcoes, aAcoes, nOpcao
+
    aOpcoes := {}
-   AAdd(aOpcoes, "Consultar Status NFe")
-   AAdd(aOpcoes, "Consultar Situacao NFe")
-   AAdd(aOpcoes, "Enviar NFe - Modo sincrono")   
-   AAdd(aOpcoes, "Enviar NFe - Modo assincrono")   
-   AAdd(aOpcoes, "Enviar NFe - Desserializando o XML")                               
-   AAdd(aOpcoes, "Testes diversos com certificado digital no xHarbour pago ou free (BBC)")  
-   AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFe")
-   AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFe - Desserializando o XML")
-   Aadd(aOpcoes, "Gerar XML de distribuicao com um nome diferente do padrao da DLL")
-   Aadd(aOpcoes, "Consultar Status MDFe")
-   Aadd(aOpcoes, "Enviar MDFe - Modo assincrono")
-   Aadd(aOpcoes, "Enviar MDFe - Modo assincrono - Desserializando o XML")
-   Aadd(aOpcoes, "Enviar NFCe - Modo sincrono")
-   Aadd(aOpcoes, "Enviar NFCe - Modo sincrono - Desserializando o XML")
-   Aadd(aOpcoes, "Enviar MDFe - Modo sincrono")
-   Aadd(aOpcoes, "Validar XML")
-   AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFCe")     
-   Aadd(aOpcoes, "Consultar GTIN")
-   Aadd(aOpcoes, "Imprimir DANFe/DACTe/DAMDFe via DLL UniDANFE")
-   Aadd(aOpcoes, "Executar telas do UniDANFE")                              
-   AAdd(aOpcoes, "Enviar Evento de cancelamento do MDFe")   
-   AAdd(aOpcoes, "Enviar Evento de encerramento do MDFe")   
-   Aadd(aOpcoes, "Finalizar a nota pela consulta situacao da NFe") 
-   AAdd(aOpcoes, "Gerando a NFCe em contingencia OffLine")
-   AAdd(aOpcoes, "Enviar CTe - Modo Assincrono") 
-   AAdd(aOpcoes, "NFSe - PM Sao Paulo - Enviar Lote RPS - Assincrono")
-   AAdd(aOpcoes, "NFSe - PM Sao Paulo - Enviar Consulta Lote RPS")
-   AAdd(aOpcoes, "NFSe - PM Sao Paulo - Enviar Cancelamento da NFSe")
-   AAdd(aOpcoes, "Enviar NFe em contingencia SVC-AN e SVC-RS")
-   AAdd(aOpcoes, "Enviar CTe em contingencia SVC-SP e SVC-RS")
-   AAdd(aOpcoes, "Como encriptar a tag <Assinatura> NFSe Sao Paulo")
-   AAdd(aOpcoes, "EPEC NFe - Gerar XML NFe em contingencia EPEC")
-   AAdd(aOpcoes, "EPEC NFe - Enviar Evento de EPEC da NFe")     
-   AAdd(aOpcoes, "EPEC NFe - Enviar o XML da NFe")
-   Aadd(aOpcoes, "Enviar CTe - Modo Assincrono - Desserializando o XML")
-   Aadd(aOpcoes, "Enviar MDFe - Modo sincrono - Desserializando o XML")
-   Aadd(aOpcoes, "Gerar XML da NFSe") 
-   AAdd(aOpcoes, "Enviar Evento de Cancelamento do CTe")
-   AAdd(aOpcoes, "Enviar Evento de Cancelamento do CTe - Desserializando XML")   
-   AAdd(aOpcoes, "Desserializar XML NFe compra p/dar entrada no ERP (B2B)")
-   AAdd(aOpcoes, "Testes diversos com certificado digital no Harbour 3.x")  
-   AAdd(aOpcoes, "Enviar XML de Inutilizacao do CTe")  
-   AAdd(aOpcoes, "Enviar XML de Inutilizacao do CTe - Com Desserializacao")  
-   AAdd(aOpcoes, "Enviar Evento de CCE da NFe")  
-   Aadd(aOpcoes, "Enviar CTe - Modo Assincrono - Desserializando o XML")
-   
-   Aadd(aOpcoes, "Consulta de documentos fiscais eletronicos destinados")
-   AAdd(aOpcoes, "Consultar Status CTe")
-   
-   AAdd(aOpcoes, "Consultar URL NFSe")
-   
-   AAdd(aOpcoes, "Gerando XML de distribuicao Evento Canc NFe via consulta situacao")
-   AAdd(aOpcoes, "Consulta MDFes nao encerrados")
-   
-   AAdd(aOpcoes, "Obter a versao da DLL Unimake.DFe")
-   
-   Aadd(aOpcoes, "Extrair eventos retornados na consulta situacao da NFe/NFCe")
-   
-   Aadd(aOpcoes, "Verificar se a DLL esta instalada no PC")
-   
-   Aadd(aOpcoes, "eSocial - Consultar lote assincrono")   
-   Aadd(aOpcoes, "eSocial - Evento 2210 - Enviar lote")
-   Aadd(aOpcoes, "eSocial - Evento 2210 - Enviar lote - XML desserializado")
-   Aadd(aOpcoes, "eSocial - Evento 2221 - Enviar lote")
-   Aadd(aOpcoes, "eSocial - Evento 1010 - Enviar lote")
-   Aadd(aOpcoes, "eSocial - Evento 2220 - Enviar lote")
-   Aadd(aOpcoes, "eSocial - Evento 1200 - Enviar lote")   
-   Aadd(aOpcoes, "eSocial - Evento 2240 - Enviar lote")   
-   Aadd(aOpcoes, "eSocial - Evento 1210 - Enviar lote")   
-   Aadd(aOpcoes, "eSocial - Evento 2220 - Enviar lote - XML desserializado")
-   Aadd(aOpcoes, "eSocial - Evento 2200 - Enviar lote")   
-   Aadd(aOpcoes, "eSocial - Evento 2230 - Enviar lote")
-   Aadd(aOpcoes, "eSocial - Evento 2299 - Enviar lote")
-   Aadd(aOpcoes, "eSocial - Download Eventos Por ID")
-   Aadd(aOpcoes, "eSocial - Download Eventos Por Nr Recibo")
-   Aadd(aOpcoes, "eSocial - Consultar Eventos - Tabela")
-   Aadd(aOpcoes, "eSocial - Consultar Eventos - Trabalhador")
-   Aadd(aOpcoes, "eSocial - Consultar Eventos - Empregador")
-   Aadd(aOpcoes, "eSocial - Evento 1200 - Enviar lote - XML desserializado")
-   Aadd(aOpcoes, "eSocial - Evento 1000 - Enviar lote")
-   Aadd(aOpcoes, "eSocial - Evento 1000 - Enviar lote - XML desserializado")
-   
-   Aadd(aOpcoes, "Assinar XML")   
-   
-   Aadd(aOpcoes, "eSocial - Evento 2206 - Enviar lote")
-   
-	AAdd(aOpcoes, "NFSe - Nacional - Enviar NFSe")
-	AAdd(aOpcoes, "NFSe - Nacional - Consultar DPS")
-	AAdd(aOpcoes, "NFSe - Nacional - Consultar NFSe")
-	AAdd(aOpcoes, "NFSe - Nacional - Consultar PDF")
-	
-	Aadd(aOpcoes, "Inutilizar Numero NF-e")
-	Aadd(aOpcoes, "Inutilizar Numero NFC-e")
-	
-	Aadd(aOpcoes, "Imprimir NFS-e com UniDANFE")
-	Aadd(aOpcoes, "Executar tela de configuracao do UniDANFE")
-	
-   
+   aAcoes := {}
+
+   AddOpcaoMenu(aOpcoes, aAcoes, "Consultar Status NFe", {|| ConsultaStatusNfe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Consultar Situacao NFe", {|| ConsultaSituacaoNfe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar NFe - Modo sincrono", {|| EnviarNfeSincrono()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar NFe - Modo assincrono", {|| EnviarNfeAssincrono()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar NFe - Desserializando o XML", {|| EnviarNfeDeserializando()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Testes diversos com certificado digital no xHarbour pago ou free (BBC)", {|| TesteDiversoCertificado()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar Evento de Cancelamento da NFe", {|| CancelarNFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar Evento de Cancelamento da NFe - Desserializando o XML", {|| CancelarNFeDesserializando()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Gerar XML de distribuicao com um nome diferente do padrao da DLL", {|| GerarXmlDistribuicaoNomeDif()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Consultar Status MDFe", {|| ConsultaStatusMDFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar MDFe - Modo assincrono", {|| EnviarMDFeAssincrono()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar MDFe - Modo assincrono - Desserializando o XML", {|| EnviarMDFeAssincronoDesserializando()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar NFCe - Modo sincrono", {|| EnviarNfceSincrono()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar NFCe - Modo sincrono - Desserializando o XML", {|| EnviarNFCeSincronoDesserializando()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar MDFe - Modo sincrono", {|| EnviarMDFeSincrono()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Validar XML", {|| ValidarXML()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar Evento de Cancelamento da NFCe", {|| CancelarNFCe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Consultar GTIN", {|| ConsultarGTIN()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Imprimir DANFe/DACTe/DAMDFe via DLL UniDANFE", {|| ImprimirDANFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Executar telas do UniDANFE", {|| ExecutarTelaUniDANFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar Evento de cancelamento do MDFe", {|| CancelarMDFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar Evento de encerramento do MDFe", {|| EncerramentoMDFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Finalizar a nota pela consulta situacao da NFe", {|| FinalizarNFePelaConsultaSituacao()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Gerando a NFCe em contingencia OffLine", {|| EnviarNFCeSincronoOffline()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar CTe - Modo Assincrono", {|| EnviarCTeAssincrono()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "NFSe - PM Sao Paulo - Enviar Lote RPS - Assincrono", {|| EnviarLoteRPSAssincrono()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "NFSe - PM Sao Paulo - Enviar Consulta Lote RPS", {|| EnviarConsultaLoteRPS()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "NFSe - PM Sao Paulo - Enviar Cancelamento da NFSe", {|| EnviarCancelamentoNFSe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar NFe em contingencia SVC-AN e SVC-RS", {|| EnviarNFeContigenciaSVC()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar CTe em contingencia SVC-SP e SVC-RS", {|| EnviarCTeContigenciaSVC()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Como encriptar a tag <Assinatura> NFSe Sao Paulo", {|| EncriptarAssinaturaSP()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "EPEC NFe - Gerar XML NFe em contingencia EPEC", {|| EPECGerarXMLNFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "EPEC NFe - Enviar Evento de EPEC da NFe", {|| EPECEnviarEventoEPEC()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "EPEC NFe - Enviar o XML da NFe", {|| EPECEnviarXMLNFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar CTe - Modo Assincrono - Desserializando o XML", {|| EnviarCTeAssincronoDesserializando()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar MDFe - Modo sincrono - Desserializando o XML", {|| EnviarMDFeSincronoDesserializando()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Gerar XML da NFSe", {|| GerarXmlNFSe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar Evento de Cancelamento do CTe", {|| EnviarCancCTe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar Evento de Cancelamento do CTe - Desserializando XML", {|| EnviarCancCTeDesserializando()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Desserializar XML NFe compra p/dar entrada no ERP (B2B)", {|| DesserializarXMLNFeCompra()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Testes diversos com certificado digital no Harbour 3.x", {|| TesteDiversoCertificadoHarbour3x()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar XML de Inutilizacao do CTe", {|| EnviarInutCTe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar XML de Inutilizacao do CTe - Com Desserializacao", {|| EnviarInutCTeDesserializacao()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar Evento de CCE da NFe", {|| EnviarEventoCCeNFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Enviar CTe - Modo Assincrono - Desserializando o XML", {|| EnviarCTeAssincronoDesserializando2()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Consulta de documentos fiscais eletronicos destinados", {|| ConsultaDFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Consultar Status CTe", {|| ConsultaStatusCTe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Consultar URL NFSe", {|| ConsultarURLNfse()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Gerando XML de distribuicao Evento Canc NFe via consulta situacao", {|| GerarXmlDistribuicaoEvento()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Consulta MDFes nao encerrados", {|| ConsultaMDFeNaoEnc()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Obter a versao da DLL Unimake.DFe", {|| ExibirVersaoDLL()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Extrair eventos retornados na consulta situacao da NFe/NFCe", {|| ExtrairEventoPedSitNFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Verificar se a DLL esta instalada no PC", {|| VerificarDLLInstalada()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Consultar lote assincrono", {|| eSocialConsultaLoteAssincrono()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 2210 - Enviar lote", {|| EnviarEsocial2210()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 2210 - Enviar lote - XML desserializado", {|| EnviarEsocial2210Desserializando()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 2221 - Enviar lote", {|| EnviarEsocial2221()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 1010 - Enviar lote", {|| EnviarEsocial1010()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 2220 - Enviar lote", {|| EnviarEsocial2220()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 1200 - Enviar lote", {|| EnviarEsocial1200()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 2240 - Enviar lote", {|| EnviarEsocial2240()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 1210 - Enviar lote", {|| EnviarEsocial1210()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 2220 - Enviar lote - XML desserializado", {|| EnviarEsocial2220Desserializando()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 2200 - Enviar lote", {|| EnviarEsocial2200()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 2230 - Enviar lote", {|| EnviarEsocial2230()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 2299 - Enviar lote", {|| EnviarEsocial2299()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Download Eventos Por ID", {|| DownloadEventoESocialPorID()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Download Eventos Por Nr Recibo", {|| DownloadEventoESocialPorNRRec()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Consultar Eventos - Tabela", {|| ConsultarEvtsTabelaESocial()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Consultar Eventos - Trabalhador", {|| ConsultarEvtsTrabalhadorESocial()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Consultar Eventos - Empregador", {|| ConsultarEvtsEmpregadorESocial()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 1200 - Enviar lote - XML desserializado", {|| EnviarEsocial1200Desserializando()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 1000 - Enviar lote", {|| EnviarEsocial1000()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 1000 - Enviar lote - XML desserializado", {|| EnviarEsocial1000Desserializando()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Assinar XML", {|| AssinarXML()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 2206 - Enviar lote", {|| EnviarEsocial2206()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "NFSe - Nacional - Enviar NFSe", {|| NACIONALGerarNFSe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "NFSe - Nacional - Consultar DPS", {|| NACIONALConsultarNFSeDPS()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "NFSe - Nacional - Consultar NFSe", {|| NACIONALConsultarNFSe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "NFSe - Nacional - Consultar PDF", {|| NACIONALConsultarNFSePDF()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Inutilizar Numero NF-e", {|| InutilizarNumeroNfe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Inutilizar Numero NFC-e", {|| InutilizarNumeroNfce()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Imprimir NFS-e com UniDANFE", {|| ImprimirNFSeUniDANFe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Executar tela de configuracao do UniDANFE", {|| UniDANFEConfiguracao()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "Executar tela de configuracao do UniDANFE", {|| UniDANFEConfiguracao()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 3000 - Enviar lote", {|| EnviarEsocial3000()})
+
    Do While .T.
       Cls
-      
+
       @ 1,2 Say "Unimake.Dfe DLL for " + Version()
-	  
-      nOpcao := Achoice( 3, 2, 30, 80, aOpcoes)
+
+      nOpcao := AChoice(3, 2, 30, 80, aOpcoes)
 
       Cls
 
-      do case
-         case LastKey() = 27
-              Exit
-
-         case nOpcao = 1
-              ConsultaStatusNfe()
-
-         case nOpcao = 2
-              ConsultaSituacaoNfe()
-
-         case nOpcao = 3
-              EnviarNfeSincrono()			  
-
-         case nOpcao = 4
-              EnviarNfeAssincrono()
-
-         case nOpcao = 5
-              EnviarNfeDeserializando()			  			  
-
-         case nOpcao = 6
-              TesteDiversoCertificado()
-
-         case nOpcao = 7
-              CancelarNFe()
-
-         case nOpcao = 8
-              CancelarNFeDesserializando()
-
-         case nOpcao = 9
-              GerarXmlDistribuicaoNomeDif()
-
-         case nOpcao = 10
-              ConsultaStatusMDFe()
-
-         case nOpcao = 11
-              EnviarMDFeAssincrono()
-
-         case nOpcao = 12
-              EnviarMDFeAssincronoDesserializando()
-
-         case nOpcao = 13
-              EnviarNfceSincrono()			  
-
-         case nOpcao = 14
-              EnviarNFCeSincronoDesserializando()
-
-         case nOpcao = 15
-              EnviarMDFeSincrono()
-
-         case nOpcao = 16
-              ValidarXML()
-
-         case nOpcao = 17
-              CancelarNFCe()
-
-         case nOpcao = 18
-              ConsultarGTIN()
-
-         case nOpcao = 19
-              ImprimirDANFe()
-
-         case nOpcao = 20
-              ExecutarTelaUniDANFe()
-
-         case nOpcao = 21
-              CancelarMDFe()		 
-
-         case nOpcao = 22
-              EncerramentoMDFe()
-
-         case nOpcao = 23
-              FinalizarNFePelaConsultaSituacao()
-
-         case nOpcao = 24
-              EnviarNFCeSincronoOffline()
-
-         case nOpcao = 25
-              EnviarCTeAssincrono()
-
-         case nOpcao = 26
-              EnviarLoteRPSAssincrono() 		 
-
-         case nOpcao = 27
-              EnviarConsultaLoteRPS() 		 
-
-         case nOpcao = 28
-              EnviarCancelamentoNFSe() 	
-
-         case nOpcao = 29
-              EnviarNFeContigenciaSVC()
-
-         case nOpcao = 30
-              EnviarCTeContigenciaSVC()
-
-         case nOpcao = 31	  
-              EncriptarAssinaturaSP()
-
-         case nOpcao = 32
-              EPECGerarXMLNFe()
-
-         case nOpcao = 33	  
-              EPECEnviarEventoEPEC()
-
-         case nOpcao = 34	  
-              EPECEnviarXMLNFe()
-
-         case nOpcao = 35
-              EnviarCTeAssincronoDesserializando()
-
-         case nOpcao = 36
-              EnviarMDFeSincronoDesserializando()
-
-         case nOpcao = 37
-              GerarXmlNFSe()
-
-         case nOpcao = 38
-              EnviarCancCTe()
-
-         case nOpcao = 39
-              EnviarCancCTeDesserializando()
-
-         case nOpcao = 40
-              DesserializarXMLNFeCompra()
-
-         case nOpcao = 41
-              TesteDiversoCertificadoHarbour3x()
-
-         case nOpcao = 42
-              EnviarInutCTe()
-
-         case nOpcao = 43
-              EnviarInutCTeDesserializacao()	  
-
-         case nOpcao = 44
-              EnviarEventoCCeNFe()	  
-
-         case nOpcao = 45
-              EnviarCTeAssincronoDesserializando2()
-
-         case nOpcao = 46
-              ConsultaDFe()
-
-         case nOpcao = 47
-              ConsultaStatusCTe()
-
-         case nOpcao = 48
-              ConsultarURLNfse()
-
-         case nOpcao = 49
-              GerarXmlDistribuicaoEvento()
-
-         case nOpcao = 50
-              ConsultaMDFeNaoEnc()
-
-         case nOpcao = 51
-              oInfoInterop = CreateObject("Unimake.Business.DFe.Utility.InfoInterop")
-              Cls
-
-              ? oInfoInterop:VersaoDLL
-              ?
-              ?
-              Wait
-
-              Cls		
-
-         case nOpcao = 52			  
-              ExtrairEventoPedSitNFe()
-
-         case nOpcao = 53
-              VerificarDLLInstalada()
-
-         case nOpcao = 54
-              eSocialConsultaLoteAssincrono()		 
-
-         case nOpcao = 55
-              EnviarEsocial2210()
-
-         case nOpcao = 56
-              EnviarEsocial2210Desserializando()
-
-         case nOpcao = 57
-              EnviarEsocial2221()			  
-
-         case nOpcao = 58
-              EnviarEsocial1010()			  
-
-         case nOpcao = 59
-              EnviarEsocial2220()			  
-
-         case nOpcao = 60
-              EnviarEsocial1200()			  
-
-         case nOpcao = 61
-              EnviarEsocial2240()			  
-
-         case nOpcao = 62
-              EnviarEsocial1210()			  
-
-         case nOpcao = 63
-              EnviarEsocial2220Desserializando()			  
-
-         case nOpcao = 64
-              EnviarEsocial2200()		 
-
-         case nOpcao = 65
-              EnviarEsocial2230()		 
-
-         case nOpcao = 66
-              EnviarEsocial2299()		 
-
-         case nOpcao = 67
-              DownloadEventoESocialPorID()		 
-
-         case nOpcao = 68
-              DownloadEventoESocialPorNRRec()
-
-         case nOpcao = 69			
-              ConsultarEvtsTabelaESocial()
-
-         case nOpcao = 70
-              ConsultarEvtsTrabalhadorESocial()
-
-         case nOpcao = 71
-              ConsultarEvtsEmpregadorESocial()		 
-
-         case nOpcao = 72
-              EnviarEsocial1200Desserializando()
-
-         case nOpcao = 73
-              EnviarEsocial1000()
-
-         case nOpcao = 74
-              EnviarEsocial1000Desserializando()
-
-         case nOpcao = 75
-              AssinarXML()
-			  
-         case nOpcao = 76
-              EnviarEsocial2206()			  
-				  
-         case nOpcao = 77
-              NACIONALGerarNFSe()
-				  
-         case nOpcao = 78
-              NACIONALConsultarNFSeDPS()
-				  
-         case nOpcao = 79
-              NACIONALConsultarNFSe()
-				  
-         case nOpcao = 80
-              NACIONALConsultarNFSePDF()
-				  
-         case nOpcao = 81
-              InutilizarNumeroNfe()
-				  
-         case nOpcao = 82
-              InutilizarNumeroNfce()
-				  
-         case nOpcao = 83
-              ImprimirNFSeUniDANFe()
-
-         case nOpcao = 84
-              UniDANFEConfiguracao()
-      endcase
+      if LastKey() = 27
+         Exit
+      endif
+
+      if nOpcao > 0 .and. nOpcao <= Len(aAcoes)
+         Eval(aAcoes[nOpcao])
+      endif
    EndDo
-Return       
+Return
+
+Static Procedure AddOpcaoMenu(aOpcoes, aAcoes, cDescricao, bAcao)
+   AAdd(aOpcoes, cDescricao)
+   AAdd(aAcoes, bAcao)
+Return
+
+Static Procedure ExibirVersaoDLL()
+   Local oInfoInterop
+
+   oInfoInterop = CreateObject("Unimake.Business.DFe.Utility.InfoInterop")
+   Cls
+
+   ? oInfoInterop:VersaoDLL
+   ?
+   ?
+   Wait
+
+   Cls
+Return

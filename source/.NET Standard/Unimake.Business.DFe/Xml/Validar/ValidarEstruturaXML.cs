@@ -180,7 +180,7 @@ namespace Unimake.Business.DFe
             string versao = ObterVersao(xml, xmlConfig, tipoDFe);
             XmlNode servico = ObterServico(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
 
-            //Caso o node servico venha vazio retorna por padrão que a validação deu certo pois significa que o serviço especidico não
+            // Caso o node servico venha vazio retorna por padrão que a validação deu certo pois significa que o serviço específico não
             // está implementado no arquivo xml de validação, podendo ser uma versão antiga que ainda é utilizada mas não esta no arquivo de 
             // de configuração dessa forma retorna como validado.
             if (servico is null)
