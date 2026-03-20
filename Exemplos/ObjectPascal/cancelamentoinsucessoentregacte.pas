@@ -76,7 +76,7 @@ begin
 
       eventoAssinado := oRecepcaoEvento.GetConteudoXMLAssinado();
 
-      nomeArquivoEvento := 'c:\testenfe\CancelamentoInsucessoCTe-env.xml';
+      nomeArquivoEvento := 'd:\testenfe\CancelamentoInsucessoCTe-env.xml';
       nHandle := TFileStream.Create(nomeArquivoEvento, fmCreate);
       try
         nHandle.WriteBuffer(Pointer(eventoAssinado)^, Length(eventoAssinado));
