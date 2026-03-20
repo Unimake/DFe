@@ -344,6 +344,11 @@ namespace Unimake.Business.DFe.Servicos
                                 CodigoTom = XMLUtility.TagRead(elementPropriedades, "CodigoTom");
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "AssinaCanonicalizacaoExclusiva"))
+                            {
+                                AssinaCanonicalizacaoExclusiva = XMLUtility.TagRead(elementPropriedades, "AssinaCanonicalizacaoExclusiva").ToLower() == "true";
+                            }
+
                             if (XMLUtility.TagExist(elementPropriedades, "UsaCertificadoDigital"))
                             {
                                 UsaCertificadoDigital = XMLUtility.TagRead(elementPropriedades, "UsaCertificadoDigital").ToLower() == "true" ? true : false;
@@ -1261,6 +1266,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Propriedade para habilitar o uso de usuário e senha para consumo pela API
         /// </summary>
         public bool LoginConexao { get; set; }
+
+        /// <summary>
+        /// Utilizar canonicalização exclusiva (Exclusive C14N) na assinatura digital. Use true para web services que trafegam o XML dentro de um envelope SOAP, como o IssWebWSNacional (Fiorilli). (default == False)
+        /// </summary>
+        public bool AssinaCanonicalizacaoExclusiva { get; set; } = false;
 
         /// <summary>
         /// Propriedade para habilitar o uso de certificado digital (default == True)

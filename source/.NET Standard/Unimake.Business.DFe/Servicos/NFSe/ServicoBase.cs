@@ -34,6 +34,30 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
 
         /// <summary>
+        /// Verificar e assinar o XML respeitando a configuração de canonicalização do município
+        /// </summary>
+        protected override void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
+        {
+            if (Configuracoes.UsaCertificadoDigital)
+            {
+                if (!string.IsNullOrWhiteSpace(tagAssinatura) && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
+                {
+                    if (AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
+                    {
+                        AjustarXMLAposAssinado();
+                    }
+                    else
+                    {
+                        var algorithmType = Configuracoes.AssinaCanonicalizacaoExclusiva ? AlgorithmType.Sha256 : AlgorithmType.Sha1;
+                        AssinaturaDigital.Assinar(ConteudoXML, tagAssinatura, tagAtributoID, Configuracoes.CertificadoDigital, algorithmType, true, "", true, Configuracoes.AssinaCanonicalizacaoExclusiva);
+
+                        AjustarXMLAposAssinado();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Definir configurações específicas da NFSe
         /// </summary>
         protected override void DefinirConfiguracao()

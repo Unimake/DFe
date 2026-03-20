@@ -8,8 +8,8 @@
 			<WebActionHomologacao>recepcionarDPS</WebActionHomologacao>
 			<WebActionProducao>recepcionarDPS</WebActionProducao>
 			<SchemaArquivo/>
-			<TagAssinatura>nfse:DPS</TagAssinatura>
-			<TagAtributoID>nfse1:infDPS</TagAtributoID>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
 			<TagLoteAssinatura/>
 			<TagLoteAtributoID/>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -18,7 +18,7 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
-			<TargetNS/>
+			<AssinaCanonicalizacaoExclusiva>true</AssinaCanonicalizacaoExclusiva>
 		</GerarNfse>
 		<RecepcionarLoteRps versao="1.00">
 			<Descricao>Recepcionar Lote DPS</Descricao>
@@ -36,9 +36,7 @@
 			<WebTagRetorno>ns3:RecepcionarLoteDpsResposta</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao></SchemaVersao>
-			<TargetNS></TargetNS>
-			<NaoAssina></NaoAssina>
+			<AssinaCanonicalizacaoExclusiva>true</AssinaCanonicalizacaoExclusiva>
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="1.00">
 			<Descricao>Recepcionar Lote DPS Sincrono</Descricao>
@@ -56,9 +54,7 @@
 			<WebTagRetorno>soap:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao></SchemaVersao>
-			<TargetNS></TargetNS>
-			<NaoAssina></NaoAssina>
+			<AssinaCanonicalizacaoExclusiva>true</AssinaCanonicalizacaoExclusiva>
 		</RecepcionarLoteRpsSincrono>
 		<ConsultarLoteRps versao="1.00">
 			<Descricao>Consulta lote DPS</Descricao>
@@ -76,9 +72,6 @@
 			<WebTagRetorno>soap:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao></SchemaVersao>
-			<TargetNS></TargetNS>
-			<NaoAssina></NaoAssina>
 		</ConsultarLoteRps>
 	</Servicos>
 </Configuracoes>
