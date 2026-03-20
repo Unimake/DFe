@@ -200,6 +200,12 @@ Begin VB.Form frmMain
          Caption         =   "Emitir uma NFCom"
       End
    End
+   Begin VB.Menu mnuNFSe 
+      Caption         =   "NFSe"
+      Begin VB.Menu mnuNFNFSe_NACIONALConsultarEventoNFSe 
+         Caption         =   "NACIONAL - Consultar eventos NFSe"
+      End
+   End
    Begin VB.Menu mnuCertificado 
       Caption         =   "Certificado"
       Begin VB.Menu mnuCertificadoSelecionar 
@@ -401,4 +407,8 @@ End Sub
 
 Private Sub mnuNFeValidarXML_Click()
 ValidarXML
+End Sub
+
+Private Sub mnuNFNFSe_NACIONALConsultarEventoNFSe_Click()
+ConsultarEventoNFSeNacional
 End Sub
