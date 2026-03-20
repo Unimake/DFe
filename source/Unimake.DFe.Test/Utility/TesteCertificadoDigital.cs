@@ -2,7 +2,6 @@
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.Security;
 using Xunit;
-using Xunit.Abstractions;
 
 public class TesteCertificadoDigital
 {
