@@ -3,8 +3,8 @@
 	<Servicos ID="NFSe">
 		<GerarNfse versao="1.01">
 			<Descricao>Envio do DPS - Sincrono</Descricao>
-			<RequestURIProducao>https://webapp1-agudo.cidade360.cloud/Nfse.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
-			<RequestURIHomologacao>https://webapp1-triunfo.cidade360.cloud/Nfse.Api/NotaNacional/EnviarSincrono</RequestURIHomologacao>
+			<RequestURIProducao>https://webapp1-triunfo.cidade360.cloud/Nfse.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
+			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>loteXmlGZipB64:[]</WebActionProducao>
 			<TagAssinatura>DPS</TagAssinatura>
@@ -21,7 +21,7 @@
 		</GerarNfse>
 		<ConsultarNfse versao="1.01">
 			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao>https://webapp1-agudo.cidade360.cloud/Nfse.Api/NotaNacional/ConsultarNFSe/{Chave}</RequestURIProducao>
+			<RequestURIProducao>https://webapp1-triunfo.cidade360.cloud/Nfse.Api/NotaNacional/ConsultarNFSe/{Chave}</RequestURIProducao>
 			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/ConsultarNFSe/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -37,7 +37,7 @@
 		</ConsultarNfse>
 		<ConsultarNfsePorRps versao="1.01">
 			<Descricao>Consultar NFSe por DPS</Descricao>
-			<RequestURIProducao>https://webapp1-agudo.cidade360.cloud/Nfse.Api/NotaNacional/ConsultarDPS/{documento}/{serie}/{numero}</RequestURIProducao>
+			<RequestURIProducao>https://webapp1-triunfo.cidade360.cloud/Nfse.Api/NotaNacional/ConsultarDPS/{documento}/{serie}/{numero}</RequestURIProducao>
 			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/ConsultarDPS/{documento}/{serie}/{numero}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -53,7 +53,7 @@
 		</ConsultarNfsePorRps>
 		<CancelarNfse versao="1.01">
 			<Descricao>Envio do cancelamento de NFSe</Descricao>
-			<RequestURIProducao>https://webapp1-agudo.cidade360.cloud/Nfse.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
+			<RequestURIProducao>https://webapp1-triunfo.cidade360.cloud/Nfse.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
 			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>loteXmlGZipB64:[]</WebActionProducao>
