@@ -77,12 +77,12 @@ Public Sub ConsultarEventoNFSeNacional()
                    " - " & _
                    CStr(oConsultarEvento.result.erro.Codigo)
         Else
-            MsgBox "Chave de acesso da NFSe: " & CStr(oConsultarEvento.result.Eventos.ChaveAcesso)
+            MsgBox "Chave de acesso da NFSe: " & oConsultarEvento.result.Eventos.ChaveAcesso
             MsgBox "Tipo Evento: " & CStr(oConsultarEvento.result.Eventos.TipoEvento)
-            MsgBox "VerAplic: " & CStr(oConsultarEvento.result.Eventos.ArquivoXml.Evento.InfEvento.VerAplic)
-            MsgBox "Id Evento: " & CStr(oConsultarEvento.result.Eventos.ArquivoXml.Evento.InfEvento.id)
+            MsgBox "VerAplic: " & oConsultarEvento.result.Eventos.ArquivoXml.Evento.InfEvento.VerAplic
+            MsgBox "Id Evento: " & oConsultarEvento.result.Eventos.ArquivoXml.Evento.InfEvento.id
             MsgBox "Id Pedido de registro do Evento: " & _
-                   CStr(oConsultarEvento.result.Eventos.ArquivoXml.Evento.InfEvento.PedRegEvento.InfPedReg.id)
+                   oConsultarEvento.result.Eventos.ArquivoXml.Evento.InfEvento.PedRegEvento.InfPedReg.id
         End If
     End If
     
