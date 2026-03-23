@@ -9,9 +9,9 @@
 Function EPECEnviarXMLNFe()
    Local oInicializarConfiguracao
    Local oXml, oNfe
-   Local oAutorizacao, oRetAutorizacao, oXmlRec, oConfigRec
-   Local I, oErro, notaAssinada
-   Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
+   Local oAutorizacao
+   Local oErro, notaAssinada, oExceptionInterop
+   Local oConteudoNFe, oConteudoInfNFe, chaveNFe
 
  * Criar configuraçao básica para consumir o serviço
    oInicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
@@ -22,6 +22,7 @@ Function EPECEnviarXMLNFe()
    oInicializarConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oInicializarConfiguracao:CertificadoSenha = "12345678"
 
+
  * Criar XML (Tag EnviNFe)  
    oXml = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
    oXml:Versao = "4.00"
@@ -29,7 +30,7 @@ Function EPECEnviarXMLNFe()
    oXml:IndSinc = 1 // 1=Sim 0=Nao
    
  * Criar a tag NFe e deserializar o XML já gravado no HD para já preencher o objeto para envio
-   onfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+   oNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
    oXml:AddNFe(oNFe:LoadFromFile("D:\testenfe\41220906117473000150550010000580154230845951-nfe.xml"))
    
  * Recuperar a chave da NFe:
@@ -49,59 +50,59 @@ Function EPECEnviarXMLNFe()
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
 
    Try
-      oAutorizacao:SetXMLConfiguracao(oXml, oInicializarConfiguracao)      
-	  
+      oAutorizacao:SetXMLConfiguracao(oXml, oInicializarConfiguracao)
+
       // Pode-se gravar o conteudo do XML assinado na base de dados antes do envio, caso queira recuperar para futuro tratamento, isso da garantias
-	  notaAssinada = oAutorizacao:GetConteudoNFeAssinada(0)
+      notaAssinada = oAutorizacao:GetConteudoNFeAssinada(0)
       ? notaAssinada //Demonstrar o XML da nota assinada na tela
-	  
+
       Wait
-	  cls
-	  
-	  oAutorizacao:Executar(oXml, oInicializarConfiguracao) 
-	  
-	  ? "XML Retornado pela SEFAZ"
+      Cls
+
+      oAutorizacao:Executar(oXml, oInicializarConfiguracao)
+
+      ? "XML Retornado pela SEFAZ"
       ? "========================"
       ? oAutorizacao:RetornoWSString
       ?
       ? "Codigo de Status e Motivo"
       ? "========================="
       ? AllTrim(Str(oAutorizacao:Result:CStat,5)), oAutorizacao:Result:XMotivo
-	  ?
-	  ?
-	  Wait
-	  cls
-	  
-	  if oAutorizacao:Result:ProtNFe <> NIL
-         if oAutorizacao:Result:ProtNFe:InfProt:CStat == 100 //100 = Autorizado o uso da NF-e
+      ?
+      ?
+      Wait
+      Cls
+
+      If oAutorizacao:Result:ProtNFe <> NIL
+         If oAutorizacao:Result:ProtNFe:InfProt:CStat == 100 //100 = Autorizado o uso da NF-e
             // Gravar XML de distribuição em uma pasta (NFe com o protocolo de autorização anexado)
             oAutorizacao:GravarXmlDistribuicao("d:\testenfe")
 
             //Como pegar o numero do protocolo de autorização para gravar na base
-		    ? oAutorizacao:Result:ProtNFe:InfProt:NProt
-		 else
+            ? oAutorizacao:Result:ProtNFe:InfProt:NProt
+         Else
             //Rejeitada ou Denegada - Fazer devidos tratamentos		 
-         End		 
-		 
-		 Wait
-		 Cls	  
-	  endif
-	  
+         EndIf
+
+         Wait
+         Cls
+      EndIf
+
    Catch oErro
       //Demonstrar exceções geradas no proprio Harbour, se existir.
-	  ? "ERRO"
-	  ? "===="
-	  ? "Falha ao tentar consultar o status do servico."
+      ? "ERRO"
+      ? "===="
+      ? "Falha ao tentar consultar o status do servico."
       ? oErro:Description
       ? oErro:Operation
-	  
+
       //Demonstrar a exceção do CSHARP
-	  ?
+      ?
       ? "Excecao do CSHARP - Message: ", oExceptionInterop:GetMessage()
       ? "Excecao do CSHARP - Codigo: ", oExceptionInterop:GetErrorCode()
-      ?     
-	  
-	  Wait
-	  cls   
+      ?
+
+      Wait
+      Cls
    End
 Return
