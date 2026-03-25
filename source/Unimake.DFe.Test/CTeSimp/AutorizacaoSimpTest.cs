@@ -314,7 +314,7 @@ namespace Unimake.DFe.Test.CTe
                             }
                         }
                     },
-                    Imp = new Business.DFe.Xml.CTe.Imp
+                    Imp = new Business.DFe.Xml.CTeSimp.Imp
                     {
                         ICMS = new Business.DFe.Xml.CTe.ICMS
                         {
