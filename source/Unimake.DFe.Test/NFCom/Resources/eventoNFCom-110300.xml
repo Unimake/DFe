@@ -11,11 +11,11 @@
     <detEvento versaoEvento="1.00">
       <evVincPgto xmlns="http://www.portalfiscal.inf.br/nfcom">
         <descEvento>Vinculação do Pagamento</descEvento>
-        <nProt>nProt1</nProt>
+        <nProt>1234567890123456</nProt>
         <pgto nPag="1" idTransacao="idTransacao1">
           <tpMeioPgto>01</tpMeioPgto>
           <CNPJReceb>11111111111111</CNPJReceb>
-          <CNPJBasePSP>00000000000000</CNPJBasePSP>
+          <CNPJBasePSP>12345678</CNPJBasePSP>
         </pgto>
       </evVincPgto>
     </detEvento>

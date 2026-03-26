@@ -120,7 +120,8 @@ namespace Unimake.DFe.Test.NFCom
 
         [Theory]
         [Trait("DFe", "NFCom")]
-        [InlineData(@"..\..\..\NFCom\Resources\eventoNFCom.xml")]
+        [InlineData(@"..\..\..\NFCom\Resources\eventoNFCom-110111.xml")]
+        [InlineData(@"..\..\..\NFCom\Resources\eventoNFCom-110300.xml")]
         public void RecepcaoEventoEstadosXml(string arqXML)
         {
             var xml = new XmlDocument();
