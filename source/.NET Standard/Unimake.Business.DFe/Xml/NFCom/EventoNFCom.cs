@@ -141,6 +141,10 @@ namespace Unimake.Business.DFe.Xml.NFCom
                         _detEvento = new DetEventoVincPgto();
                         break;
 
+                    case TipoEventoNFCom.CancelamentoVinculacaoPagamento:
+                        _detEvento = new DetEventoCancVincPgto();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -388,6 +392,38 @@ namespace Unimake.Business.DFe.Xml.NFCom
         }
 
         #endregion Public Methods
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.DetEventoCancVincPgto")]
+    [ComVisible(true)]
+#endif
+    public class DetEventoCancVincPgto : EventoDetalhe
+    {
+        [XmlAttribute("versaoEvento", DataType = "string")]
+        public override string VersaoEvento { get; set; }
+
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Cancelamento da vinculacao do pagamento";
+
+        [XmlElement("nProt")]
+        public string NProt { get; set; }
+
+        [XmlElement("nProtVincPgto")]
+        public string NProtVincPgto { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteRaw($@"
+            <evCancVincPgto>
+            <descEvento>{DescEvento}</descEvento>
+            <nProt>{NProt}</nProt>
+            <nProtVincPgto>{NProtVincPgto}</nProtVincPgto>
+            </evCancVincPgto>");
+        }
     }
 }
 
