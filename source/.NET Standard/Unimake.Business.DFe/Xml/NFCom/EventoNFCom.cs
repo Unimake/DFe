@@ -12,6 +12,7 @@ using Unimake.Business.DFe.Utility;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Xml.Schema;
+using System.Xml.Linq;
 
 namespace Unimake.Business.DFe.Xml.NFCom
 {
@@ -134,6 +135,10 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
                     case TipoEventoNFCom.Cancelamento:
                         _detEvento = new DetEventoCanc();
+                        break;
+
+                    case TipoEventoNFCom.VinculacaoPagamento:
+                        _detEvento = new DetEventoVincPgto();
                         break;
 
                     default:
@@ -280,4 +285,109 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         #endregion Public Methods
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.DetEventoVincPgto")]
+    [ComVisible(true)]
+#endif
+    public class DetEventoVincPgto : EventoDetalhe
+    {
+        [XmlAttribute("versaoEvento", DataType = "string")]
+        public override string VersaoEvento { get; set; }
+
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Vinculacao do Pagamento";
+
+        [XmlElement("nProt")]
+        public string NProt { get; set; }
+
+        [XmlElement("pgto")]
+        public Pgto Pgto { get; set; }
+
+        #region Internal Methods
+
+        internal override void ProcessReader()
+        {
+            if (XmlReader == null)
+            {
+                return;
+            }
+
+            if (XmlReader.HasAttributes && XmlReader.GetAttribute("versaoEvento") != "")
+            {
+                VersaoEvento = XmlReader.GetAttribute("versaoEvento");
+            }
+
+            while (XmlReader.Read())
+            {
+                if (XmlReader.NodeType != XmlNodeType.Element)
+                {
+                    continue;
+                }
+
+                switch (XmlReader.Name)
+                {
+                    case "descEvento":
+                        DescEvento = XmlReader.GetValue<string>(XmlReader.Name);
+                        break;
+
+                    case "nProt":
+                        NProt = XmlReader.GetValue<string>(XmlReader.Name);
+                        break;
+
+                    case "pgto":
+                        var pgtoElement = XElement.Parse(XmlReader.ReadOuterXml());
+
+                        Pgto = new Pgto
+                        {
+                            NPag = pgtoElement.Attribute("nPag")?.Value,
+                            IdTransacao = pgtoElement.Attribute("idTransacao")?.Value
+                        };
+
+                        foreach (var child in pgtoElement.Elements())
+                        {
+                            switch (child.Name.LocalName)
+                            {
+                                case "tpMeioPgto":
+                                    Pgto.TpMeioPgto = (MeioPagamento)int.Parse(child.Value);
+                                    break;
+
+                                case "CNPJReceb":
+                                    Pgto.CNPJReceb = child.Value;
+                                    break;
+
+                                case "CNPJBasePSP":
+                                    Pgto.CNPJBasePSP = child.Value;
+                                    break;
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+
+        #endregion Internal Methods
+
+        #region Public Methods
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteRaw($@"
+            <evVincPgto>
+            <descEvento>{DescEvento}</descEvento>
+            <nProt>{NProt}</nProt>
+            <pgto nPag=""{Pgto?.NPag}"" idTransacao=""{Pgto?.IdTransacao}"">
+            <tpMeioPgto>{(Pgto != null ? ((int)Pgto.TpMeioPgto).ToString("00") : "")}</tpMeioPgto>
+            <CNPJReceb>{Pgto?.CNPJReceb}</CNPJReceb>
+            <CNPJBasePSP>{Pgto?.CNPJBasePSP}</CNPJBasePSP>
+            </pgto>
+            </evVincPgto>");
+        }
+
+        #endregion Public Methods
+    }
 }
+

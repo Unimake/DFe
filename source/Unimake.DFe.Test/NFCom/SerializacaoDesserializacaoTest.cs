@@ -23,7 +23,7 @@ namespace Unimake.DFe.Test.NFCom
 
             var doc2 = xml.GerarXML();
 
-            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == doc2.InnerText, $"XML gerado pela DLL está diferente do conteúdo do arquivo serializado.\nOriginal: {doc.InnerText}\nGerado: {doc2.InnerText}");
         }
 
         [Theory]
@@ -41,7 +41,7 @@ namespace Unimake.DFe.Test.NFCom
 
             var doc2 = xml.GerarXML();
 
-            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == doc2.InnerText, $"XML gerado pela DLL está diferente do conteúdo do arquivo serializado.\nOriginal: {doc.InnerText}\nGerado: {doc2.InnerText}");
         }
 
         [Theory]
@@ -64,7 +64,8 @@ namespace Unimake.DFe.Test.NFCom
 
         [Theory]
         [Trait("DFe", "NFCom")]
-        [InlineData(@"..\..\..\NFCom\Resources\eventoNFCom.xml")]
+        //[InlineData(@"..\..\..\NFCom\Resources\eventoNFCom-110111.xml")]
+        [InlineData(@"..\..\..\NFCom\Resources\eventoNFCom-110300.xml")]
         public void SerializacaoDesserializacaoEventoNFCom(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
