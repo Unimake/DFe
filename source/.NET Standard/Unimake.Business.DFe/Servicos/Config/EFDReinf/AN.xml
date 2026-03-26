@@ -3,7 +3,6 @@
 	<Servicos ID="EFDReinf">
 		<ConsultaReciboEvento versao="1.05.01">
 			<Descricao>Consulta Recibo Evento Reinf</Descricao>
-			<Descricao>Consulta Recibo Evento Reinf</Descricao>
 			<RequestURIHomologacao>https://pre-reinf.receita.economia.gov.br/consulta/reciboevento/</RequestURIHomologacao>
 			<RequestURIProducao>https://reinf.receita.economia.gov.br/consulta/reciboevento/</RequestURIProducao>
 			<MetodoAPI>get</MetodoAPI>
