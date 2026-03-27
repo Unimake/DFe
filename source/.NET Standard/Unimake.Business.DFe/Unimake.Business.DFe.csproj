@@ -1501,6 +1501,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ChuiRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
