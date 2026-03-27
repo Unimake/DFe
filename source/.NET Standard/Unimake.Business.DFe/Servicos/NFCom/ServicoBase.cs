@@ -90,6 +90,18 @@ namespace Unimake.Business.DFe.Servicos.NFCom
             }
         }
 
+#if INTEROP
+
+        /// <summary>
+        /// Gravar o XML de distribuição em uma pasta no HD
+        /// </summary>
+        /// <param name="pasta">Pasta onde deve ser gravado o XML no HD</param>
+        /// <param name="nomeArquivo">Nome do arquivo a ser gravado no HD</param>
+        /// <param name="conteudoXML">String contendo o conteúdo do XML a ser gravado no HD</param>
+        public void GravarXmlDistribuicaoComConteudo(string pasta, string nomeArquivo, string conteudoXML) => GravarXmlDistribuicao(pasta, nomeArquivo, conteudoXML);
+
+#endif
+
         /// <summary>
         /// Gravar o XML de distribuição em um stream
         /// </summary>
