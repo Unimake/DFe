@@ -102,5 +102,55 @@
 			<TargetNS>http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd</TargetNS>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarSituacaoLoteRps>
+		<GerarNfse versao="1.01">
+			<Descricao>Envio do DPS - Sincrono</Descricao>
+			<RequestURIProducao>https://issprudente.sp.gov.br/nfsenacional/nfse/</RequestURIProducao>
+			<RequestURIHomologacao>https://producaorestrita.simplissweb.com.br/nfse</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</GerarNfse>
+		<CancelarNfse versao="1.01">
+			<Descricao>Envio do cancelamento de NFSe</Descricao>
+			<RequestURIProducao>https://issprudente.sp.gov.br/nfsenacional/nfse/{Chave}/eventos</RequestURIProducao>
+			<RequestURIHomologacao>https://producaorestrita.simplissweb.com.br/nfse/{Chave}/eventos</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
+			<TagAssinatura>pedRegEvento</TagAssinatura>
+			<TagAtributoID>infPedReg</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</CancelarNfse>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao>https://issprudente.sp.gov.br/nfsenacional/nfse/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://producaorestrita.simplissweb.com.br/nfse/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>

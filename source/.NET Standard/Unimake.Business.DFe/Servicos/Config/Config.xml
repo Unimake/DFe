@@ -2537,4 +2537,10 @@
 		<ArqConfig>ItabiraMG.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4305439">
+		<Nome>Chuí - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>ChuiRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
