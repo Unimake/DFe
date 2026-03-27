@@ -44,6 +44,16 @@
 					<SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evCancNFCom_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
+				<Tipo>
+					<ID>110300</ID>
+					<SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evVincPgto_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110301</ID>
+					<SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancVincPgto_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>        
 			</SchemasEspecificos>
 			<TagAssinatura>eventoNFCom</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
