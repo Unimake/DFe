@@ -95,7 +95,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         public InfCteSub InfCteSub { get; set; }
 
         [XmlElement("imp")]
-        public CTe.Imp Imp { get; set; }
+        public Imp Imp { get; set; }
 
         [XmlElement("total")]
         public Total Total { get; set; }
@@ -1039,6 +1039,66 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         #region ShouldSerialize
 
         public bool ShouldSerializeVTotDFeField() => VTotDFe > 0;
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Informações dos impostos do CTe.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.Imp")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class Imp
+    {
+        /// <summary>
+        /// Informações do ICMS.
+        /// </summary>
+        [XmlElement("ICMS")]
+        public CTe.ICMS ICMS { get; set; }
+
+        /// <summary>
+        /// Valor total dos tributos.
+        /// </summary>
+        [XmlIgnore]
+        public double VTotTrib { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VTotTrib" para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTotTrib")]
+        public string VTotTribField
+        {
+            get => VTotTrib.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTotTrib = Utility.Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Informações adicionais do fisco.
+        /// </summary>
+        [XmlElement("infAdFisco")]
+        public string InfAdFisco { get; set; }
+
+        /// <summary>
+        /// Informações do ICMS para a UF de destino.
+        /// </summary>
+        [XmlElement("ICMSUFFim")]
+        public CTe.ICMSUFFim ICMSUFFim { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da Tributação IBS/CBS
+        /// </summary>
+        [XmlElement("IBSCBS")]
+        public CTe.IBSCBS IBSCBS { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVTotTribField() => VTotTrib > 0;
+        public bool ShouldSerializeInfAdFisco() => !string.IsNullOrWhiteSpace(InfAdFisco);
 
         #endregion
     }

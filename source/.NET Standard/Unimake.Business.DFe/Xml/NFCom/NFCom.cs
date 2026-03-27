@@ -152,6 +152,9 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public int GetDetCount => (Det != null ? Det.Count : 0);
 #endif
 
+        [XmlElement("pgtoVinc")]
+        public PgtoVinc PgtoVinc { get; set; }
+
         [XmlElement("total")]
         public Total Total { get; set; }
 
@@ -920,6 +923,77 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public bool ShouldSerializeIndNFComAntPapelFatCentral() => !string.IsNullOrEmpty(IndNFComAntPapelFatCentral);
 
         #endregion ShouldSerialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.PgtoVinc")]
+    [ComVisible(true)]
+#endif
+    public class PgtoVinc
+    {
+        [XmlElement("pgto")]
+        public List<Pgto> Pgto { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddPgto(Pgto item)
+        {
+            if (Pgto == null)
+            {
+                Pgto = new List<Pgto>();
+            }
+
+            Pgto.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Pgto (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Pgto</returns>
+        public Pgto GetPgto(int index)
+        {
+            if ((Pgto?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return Pgto[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Pgto
+        /// </summary>
+        public int GetPgtoCount => (Pgto != null ? Pgto.Count : 0);
+#endif
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.Pgto")]
+    [ComVisible(true)]
+#endif
+    public class Pgto
+    {
+        [XmlAttribute(AttributeName = "nPag", DataType = "token")]
+        public string NPag { get; set; }
+
+        [XmlAttribute(AttributeName = "idTransacao", DataType = "token")]
+        public string IdTransacao { get; set; }
+
+        [XmlElement("tpMeioPgto")]
+        public MeioPagamento TpMeioPgto { get; set; }
+
+        [XmlElement("CNPJReceb")]
+        public string CNPJReceb { get; set; }
+
+        [XmlElement("CNPJBasePSP")]
+        public string CNPJBasePSP { get; set; }
     }
 
 #if INTEROP

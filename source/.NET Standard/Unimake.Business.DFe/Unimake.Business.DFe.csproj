@@ -1087,8 +1087,10 @@
 		<None Remove="Xml\Schemas\NFCom\consStatServNFCom_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\evCancNFCom_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFCom\evCancVincPgto_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\eventoNFComTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\eventoNFCom_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFCom\evVincPgto_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\nfcomTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\nfcom_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\procEventoNFCom_v1.00.xsd" />
@@ -2419,8 +2421,10 @@
 		<EmbeddedResource Include="Xml\Schemas\NFCom\consStatServNFCom_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\DFeTiposBasicos_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\evCancNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\evCancVincPgto_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\eventoNFComTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\eventoNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\evVincPgto_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\nfcomTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\nfcom_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\procEventoNFCom_v1.00.xsd" />
