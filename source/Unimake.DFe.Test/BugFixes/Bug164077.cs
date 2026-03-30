@@ -21,8 +21,7 @@ namespace Unimake.DFe.Test.BugFixes
             var nfe = XMLUtility.Deserializar<NfeProc>(xmlDoc.InnerXml);
             Assert.NotNull(nfe);
             Assert.NotNull(nfe.NFe);
-            Assert.NotNull(nfe.NFe.InfNFe);
-            Assert.NotNull(nfe.NFe.InfNFe?.FirstOrDefault());
+            Assert.NotNull(nfe.NFe.InfNFeField);
             Assert.NotNull(nfe.ProtNFe);
             Assert.NotNull(nfe.ProtNFe.InfProt);
             Assert.NotNull(nfe.ProtNFe.InfProt.NProt);

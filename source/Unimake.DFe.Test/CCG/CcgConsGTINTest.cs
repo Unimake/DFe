@@ -97,7 +97,7 @@ namespace Unimake.DFe.Test.CCG
             doc.Load(@"..\..\..\NFe\Resources\35240411111111111111550010000011111000001119-Nfe.xml");
             var nfe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.NFe>(doc);
 
-            foreach (var det in nfe.InfNFe[0].Det)
+            foreach (var det in nfe.InfNFeField.Det)
             {
                 var cEan = det.Prod.CEAN;
                 var cNCM = det.Prod.NCM;

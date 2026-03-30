@@ -146,8 +146,19 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Informações da NFe/NFCe
         /// </summary>
-        [XmlElement("infNFe")]
+        [XmlIgnore]
+        [Obsolete("Utilize a propriedade InfNFeField para acessar as informações da NFe/NFCe. A propriedade InfNFe é uma lista para manter a compatibilidade com o schema, mas a NFe/NFCe só pode conter um elemento InfNFe, logo, o conteúdo da lista InfNFe deve ser sempre 0 (zero) ou 1 (um).", false)]
         public List<InfNFe> InfNFe { get; set; }
+
+        /// <summary>
+        /// Informações da NFe/NFCe
+        /// </summary>
+        [XmlElement("infNFe")]
+        public InfNFe InfNFeField
+        {
+            get => (InfNFe != null && InfNFe.Count > 0 ? InfNFe[0] : null);
+            set => InfNFe = (value == null ? null : new List<InfNFe> { value });
+        }
 
         /// <summary>
         /// Informações suplementares da NFe/NFCe

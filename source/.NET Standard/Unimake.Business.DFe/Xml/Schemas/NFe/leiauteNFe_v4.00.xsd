@@ -221,7 +221,14 @@
                   </xs:element>
                   <xs:element name="tpNFDebito" type="TTpNFDebito" minOccurs="0">
                     <xs:annotation>
-                      <xs:documentation>Tipo de Nota de Débito</xs:documentation>
+                      <xs:documentation>
+                        Tipo de Nota de Débito:
+                        01=Transferência de créditos para Cooperativas;
+                        02=Anulação de Crédito por Saídas Imunes/Isentas;
+                        03=Débitos de notas fiscais não processadas na apuração;
+                        04=Multa e juros;
+                        05=Transferência de crédito de sucessão.
+                      </xs:documentation>
                     </xs:annotation>
                   </xs:element>
                   <xs:element name="tpNFCredito" type="TTpNFCredito" minOccurs="0">
@@ -525,7 +532,7 @@
                     </xs:annotation>
                     <xs:complexType>
                       <xs:sequence>
-                        <xs:element name="refNFe" type="TChNFe" minOccurs="1" maxOccurs="99">
+                        <xs:element name="refNFe" type="TChNFe" maxOccurs="99">
                           <xs:annotation>
                             <xs:documentation>Chave de acesso da NF-e de antecipação de pagamento</xs:documentation>
                           </xs:annotation>
@@ -2630,13 +2637,15 @@
                                           </xs:element>
                                           <xs:element name="motDesICMS">
                                             <xs:annotation>
-                                              <xs:documentation>Motivo da desoneração do ICMS:3-Uso na agropecuária;9-Outros;12-Fomento agropecuário</xs:documentation>
+                                              <xs:documentation>Motivo da desoneração do ICMS:3-Uso na agropecuária;9-Outros; 10=Deficiente Condutor (Convênio ICMS 38/12); 11=Deficiente Não Condutor (Convênio ICMS 38/12);  12-Fomento agropecuário</xs:documentation>
                                             </xs:annotation>
                                             <xs:simpleType>
                                               <xs:restriction base="xs:string">
                                                 <xs:whiteSpace value="preserve"/>
                                                 <xs:enumeration value="3"/>
                                                 <xs:enumeration value="9"/>
+                                                <xs:enumeration value="10"/>
+                                                <xs:enumeration value="11"/>
                                                 <xs:enumeration value="12"/>
                                               </xs:restriction>
                                             </xs:simpleType>
@@ -3526,11 +3535,39 @@
                                               <xs:documentation>Percentual de redução da BC</xs:documentation>
                                             </xs:annotation>
                                           </xs:element>
+                                          <xs:element name="cBenefRBC" minOccurs="0">
+                                            <xs:annotation>
+                                              <xs:documentation>Código de Benefício Fiscal na UF aplicado ao item quando houver RBC.</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                              <xs:restriction base="xs:string">
+                                                <xs:whiteSpace value="preserve"/>
+                                                <xs:pattern value="[!-ÿ]{8}|[!-ÿ]{10}"/>
+                                              </xs:restriction>
+                                            </xs:simpleType>
+                                          </xs:element>
                                           <xs:element name="pICMS" type="TDec_0302a04">
                                             <xs:annotation>
                                               <xs:documentation>Alíquota do ICMS</xs:documentation>
                                             </xs:annotation>
                                           </xs:element>
+                                          <xs:sequence minOccurs="0">
+                                            <xs:element name="vICMSOp" type="TDec_1302">
+                                              <xs:annotation>
+                                                <xs:documentation>Valor do ICMS da Operação</xs:documentation>
+                                              </xs:annotation>
+                                            </xs:element>
+                                            <xs:element name="pDif" type="TDec_0302a04Max100">
+                                              <xs:annotation>
+                                                <xs:documentation>Percentual do diferemento</xs:documentation>
+                                              </xs:annotation>
+                                            </xs:element>
+                                            <xs:element name="vICMSDif" type="TDec_1302">
+                                              <xs:annotation>
+                                                <xs:documentation>Valor do ICMS da diferido</xs:documentation>
+                                              </xs:annotation>
+                                            </xs:element>
+                                          </xs:sequence>
                                           <xs:element name="vICMS" type="TDec_1302">
                                             <xs:annotation>
                                               <xs:documentation>Valor do ICMS</xs:documentation>
@@ -3550,6 +3587,23 @@
                                             <xs:element name="vFCP" type="TDec_1302">
                                               <xs:annotation>
                                                 <xs:documentation>Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
+                                              </xs:annotation>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:sequence minOccurs="0">
+                                            <xs:element name="pFCPDif" type="TDec_0302a04Opc">
+                                              <xs:annotation>
+                                                <xs:documentation>Percentual do diferimento do ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
+                                              </xs:annotation>
+                                            </xs:element>
+                                            <xs:element name="vFCPDif" type="TDec_1302">
+                                              <xs:annotation>
+                                                <xs:documentation>Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP) diferido.</xs:documentation>
+                                              </xs:annotation>
+                                            </xs:element>
+                                            <xs:element name="vFCPEfet" type="TDec_1302" minOccurs="0">
+                                              <xs:annotation>
+                                                <xs:documentation>Valor efetivo do ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
                                               </xs:annotation>
                                             </xs:element>
                                           </xs:sequence>
@@ -3709,6 +3763,7 @@
                                             <xs:documentation>
                                               Tributação pelo ICMS
                                               10 - Tributada e com cobrança do ICMS por substituição tributária;
+                                              20 – Redução de base de cálculo
                                               90 – Outros.
                                             </xs:documentation>
                                           </xs:annotation>
@@ -3716,6 +3771,7 @@
                                             <xs:restriction base="xs:string">
                                               <xs:whiteSpace value="preserve"/>
                                               <xs:enumeration value="10"/>
+                                              <xs:enumeration value="20"/>
                                               <xs:enumeration value="90"/>
                                             </xs:restriction>
                                           </xs:simpleType>
@@ -3838,6 +3894,45 @@
                                             <xs:documentation>Sigla da UF para qual é devido o ICMS ST da operação.</xs:documentation>
                                           </xs:annotation>
                                         </xs:element>
+                                        <xs:sequence minOccurs="0">
+                                          <xs:annotation>
+                                            <xs:documentation>Grupo desoneração</xs:documentation>
+                                          </xs:annotation>
+                                          <xs:element name="vICMSDeson" type="TDec_1302">
+                                            <xs:annotation>
+                                              <xs:documentation>Valor do ICMS de desoneração</xs:documentation>
+                                            </xs:annotation>
+                                          </xs:element>
+                                          <xs:element name="motDesICMS">
+                                            <xs:annotation>
+                                              <xs:documentation>Motivo da desoneração do ICMS:9-Outros;10=Deficiente Condutor (Convênio ICMS 38/12) 11=Deficiente Não Condutor (Convênio ICMS 38/12)</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                              <xs:restriction base="xs:string">
+                                                <xs:whiteSpace value="preserve"/>
+                                                <xs:enumeration value="9"/>
+                                                <xs:enumeration value="10"/>
+                                                <xs:enumeration value="11"/>
+                                              </xs:restriction>
+                                            </xs:simpleType>
+                                          </xs:element>
+                                          <xs:element name="indDeduzDeson" minOccurs="0">
+                                            <xs:annotation>
+                                              <xs:documentation>
+                                                Indica se o valor do ICMS desonerado (vICMSDeson) deduz do valor do item (vProd):
+                                                0=Valor do ICMS desonerado (vICMSDeson) não deduz do valor do item (vProd) / total da NF-e;
+                                                1=Valor do ICMS desonerado (vICMSDeson) deduz do valor do item (vProd) / total da NF-e.
+                                              </xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                              <xs:restriction base="xs:string">
+                                                <xs:whiteSpace value="preserve"/>
+                                                <xs:enumeration value="0"/>
+                                                <xs:enumeration value="1"/>
+                                              </xs:restriction>
+                                            </xs:simpleType>
+                                          </xs:element>
+                                        </xs:sequence>
                                       </xs:sequence>
                                     </xs:complexType>
                                   </xs:element>
