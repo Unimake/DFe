@@ -4,6 +4,9 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
+using Unimake.Business.DFe.ConsumirServico.Compatibility;
+using Unimake.Business.DFe.ConsumirServico.Contracts;
+using Unimake.Business.DFe.ConsumirServico.Transport;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Exceptions;
 
@@ -26,10 +29,10 @@ namespace Unimake.Business.DFe
                 throw new CertificadoDigitalException();
             }
 
-            using (var httpClient = CriarAPIRequest(apiConfig, certificado))
-            using (var httpResponse = string.Equals(apiConfig.MetodoAPI, "get", StringComparison.CurrentCultureIgnoreCase)
-                ? httpClient.GetAsync("").GetAwaiter().GetResult()
-                : httpClient.PostAsync(apiConfig.RequestURI, apiConfig.HttpContent).GetAwaiter().GetResult())
+            var request = new ApiConfigTransportRequestMapper().Map(apiConfig, certificado);
+
+            using (var transportResponse = new ApiTransportExecutor().Execute(request))
+            using (var httpResponse = transportResponse.HttpResponseMessage)
             {
                 WebException webException = null;
                 string responseContent = null;
@@ -52,7 +55,7 @@ namespace Unimake.Business.DFe
                 var retornoXml = new XmlDocument();
                 try
                 {
-                    HttpStatusCode = httpResponse.StatusCode;
+                    HttpStatusCode = transportResponse.StatusCode;
                     Stream stream = null;
                     retornoXml = TratarRetornoAPI.ReceberRetorno(ref apiConfig, httpResponse, ref stream);
                     RetornoServicoStream = stream;
@@ -115,59 +118,6 @@ namespace Unimake.Business.DFe
 
                 RetornoServicoXML.LoadXml(retornoXml.InnerXml);
             }
-        }
-
-        /// <summary>
-        /// Cria e configura uma instância de HttpClient para requisições à API, incluindo certificado digital e headers necessários.
-        /// </summary>
-        /// <param name="configuracoes">Configurações da API, incluindo URI, headers e opções de autenticação.</param>
-        /// <param name="certificado">Certificado digital a ser utilizado na conexão, se necessário.</param>
-        /// <returns>Instância de HttpClient pronta para uso na requisição.</returns>
-        private HttpClient CriarAPIRequest(APIConfig configuracoes, X509Certificate2 certificado)
-        {
-            var httpClientHandler = new HttpClientHandler();
-
-            if (!configuracoes.UsaCertificadoDigital)
-            {
-                httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Automatic;
-                httpClientHandler.Credentials = CredentialCache.DefaultCredentials;
-            }
-            else
-            {
-                httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Manual;
-                httpClientHandler.ClientCertificates.Add(certificado);
-            }
-
-            var client = new HttpClient(httpClientHandler)
-            {
-                BaseAddress = new Uri(configuracoes.RequestURI)
-            };
-
-            if (!string.IsNullOrEmpty(configuracoes.Token))
-            {
-                client.DefaultRequestHeaders.Add("Authorization", configuracoes.Token);
-            }
-
-            if (!string.IsNullOrEmpty(configuracoes.Host))
-            {
-                client.DefaultRequestHeaders.Add("Host", configuracoes.Host);
-            }
-
-            if (!string.IsNullOrEmpty(configuracoes.ApiKey))
-            {
-                client.DefaultRequestHeaders.Add("api-key", $"{configuracoes.ApiKey}");
-            }
-
-            if (!string.IsNullOrEmpty(configuracoes.Cookie))
-            {
-                client.DefaultRequestHeaders.Add("Cookie: ", configuracoes.Cookie);
-            }
-
-            ServicePointManager.Expect100Continue = false;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(RetornoValidacao);
-
-            return client;
         }
     }
 }

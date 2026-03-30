@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Security;
+using Unimake.Business.DFe.ConsumirServico.Compatibility;
 using Unimake.Business.DFe.Validator;
 using Unimake.Exceptions;
 
@@ -179,24 +180,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
                 }
             }
 
-            var apiConfig = new APIConfig
-            {
-                ContentType = Configuracoes.WebContentType,
-                RequestURI = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURIProducao : Configuracoes.RequestURIHomologacao),
-                TagRetorno = Configuracoes.WebTagRetorno,
-                WebSoapString = Configuracoes.WebSoapString,
-                MetodoAPI = Configuracoes.MetodoAPI,
-                Token = Configuracoes.MunicipioToken,
-                WebAction = Configuracoes.WebActionProducao,
-                MunicipioSenha = Configuracoes.MunicipioSenha,
-                MunicipioUsuario = Configuracoes.MunicipioUsuario,
-                ResponseMediaType = Configuracoes.ResponseMediaType,
-                Servico = Configuracoes.Servico,
-                UsaCertificadoDigital = Configuracoes.UsaCertificadoDigital,
-                Host = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.HostProducao : Configuracoes.HostHomologacao),
-                ApiKey = Configuracoes.ApiKey,
-                HttpContent = Configuracoes.HttpContent,
-            };
+            var apiConfig = new ConfiguracaoApiConfigMapper().MapExplicitEnvironment(Configuracoes);
 
             var consumirAPI = new ConsumirAPI();
             consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);

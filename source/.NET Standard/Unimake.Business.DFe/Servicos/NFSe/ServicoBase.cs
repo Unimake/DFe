@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
+using Unimake.Business.DFe.ConsumirServico.Builders;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
 using Unimake.Exceptions;
@@ -149,29 +150,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void HM2SOLUCOES()
         {
-            if (!ConteudoXML.GetElementsByTagName("EnviarLoteRpsEnvio").IsNullOrEmpty())
-            {
-                _ = ConteudoXMLAssinado;
-
-                var parameters = new Dictionary<string, string>
-                {
-                    { "xml", ConteudoXMLAssinado.OuterXml }
-                };
-
-                Configuracoes.HttpContent = new FormUrlEncodedContent(parameters);
-            }
-            else
-            {
-                XDocument document = XDocument.Parse(ConteudoXML.OuterXml);
-                var dictionary = new Dictionary<string, string>();
-
-                foreach (var parameters in document.Descendants())
-                {
-                    dictionary.Add(parameters.Name.ToString(), parameters.Value);
-                }
-
-                Configuracoes.HttpContent = new FormUrlEncodedContent(dictionary);
-            }
+            Configuracoes.HttpContent = new NfsePayloadBuilder().BuildHm2SolucoesContent(ConteudoXML, ConteudoXMLAssinado);
         }
 
         #region Configurações separadas por PadrãoNFSe
@@ -229,86 +208,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void CriarHttpContentIPM()
         {
-            var path = string.Empty;
-
-            var xml = ConteudoXML.OuterXml.Replace("<", "&lt;")
-                                          .Replace(">", "&gt;")
-                                          .Replace("/", "")
-                                          .Replace("&", "&amp;")
-                                          .Replace("'", "&apos;")
-                                          .Replace("\"", "&quot;");
-
-            if (string.IsNullOrWhiteSpace(ConteudoXML.BaseURI))
-            {
-                path = "arquivo.xml";
-            }
-            else
-            {
-                path = ConteudoXML.BaseURI.Substring(8, ConteudoXML.BaseURI.Length - 8);
-            }
-
-            var boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
-
-            #region ENVIO EM BYTES
-            var xmlBytes = Encoding.UTF8.GetBytes(xml);
-            var xmlContent = new ByteArrayContent(xmlBytes);
-            xmlContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-            xmlContent.Headers.ContentEncoding.Add("ISO-8859-1");
-            xmlContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-            {
-                Name = "f1",
-                FileName = path,
-
-            };
-            #endregion ENVIO EM BYTES
-
-            HttpContent MultiPartContent = new MultipartContent("form-data", boundary)
-                {
-                    xmlContent,
-
-                };
-
-            if (!string.IsNullOrWhiteSpace(Configuracoes.CodigoTom))               //SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
-            {
-                var usuario = new StringContent(Configuracoes.MunicipioUsuario);
-                usuario.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                usuario.Headers.ContentEncoding.Add("UTF-8");
-                usuario.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                {
-                    Name = "login",
-                };
-                var senha = new StringContent(Configuracoes.MunicipioSenha);
-                senha.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                senha.Headers.ContentEncoding.Add("UTF-8");
-                senha.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                {
-                    Name = "senha",
-                };
-                var codigoTom = new StringContent(Configuracoes.CodigoTom);
-                codigoTom.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                codigoTom.Headers.ContentEncoding.Add("UTF-8");
-                codigoTom.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                {
-                    Name = "cidade",
-                };
-                var f1 = new StringContent(path);
-                f1.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                f1.Headers.ContentEncoding.Add("ISO-8859-1");
-                f1.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                {
-                    Name = "f1",
-                };
-                HttpContent content = new MultipartContent("form-data", boundary)
-                    {
-                        usuario,
-                        senha,
-                        codigoTom,
-                        f1,
-                        xmlContent
-                    };
-
-                Configuracoes.HttpContent = content;
-            }
+            Configuracoes.HttpContent = new NfsePayloadBuilder().BuildIpm280Content(Configuracoes, ConteudoXML);
         }
 
         #endregion IPM
@@ -1108,7 +1008,23 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
                 try
                 {
-                    return XMLUtility.Deserializar<Xml.NFSe.NACIONAL.Temp>(RetornoWSXML);
+                    var retorno = XMLUtility.Deserializar<Xml.NFSe.NACIONAL.Temp>(RetornoWSXML);
+                    if (retorno?.Erro != null)
+                    {
+                        return retorno;
+                    }
+
+                    return new Xml.NFSe.NACIONAL.Temp
+                    {
+                        TipoAmbiente = retorno?.TipoAmbiente ?? Configuracoes.TipoAmbiente,
+                        VersaoAplicativo = retorno?.VersaoAplicativo,
+                        DataHoraProcessamento = retorno?.DataHoraProcessamento ?? default,
+                        Erro = new Xml.NFSe.NACIONAL.Erro
+                        {
+                            Codigo = "0",
+                            Descricao = "O retorno do servidor não contém o evento processado nem os detalhes do erro."
+                        }
+                    };
                 }
                 catch
                 {

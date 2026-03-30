@@ -6,6 +6,8 @@ using System.IO;
 using System.Net;
 using System.Xml;
 using Unimake.Business.DFe.Security;
+using Unimake.Business.DFe.ConsumirServico.Builders;
+using Unimake.Business.DFe.ConsumirServico.Compatibility;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Validator;
 using Unimake.Business.DFe.Xml;
@@ -119,147 +121,18 @@ namespace Unimake.Business.DFe.Servicos
 
             if (Configuracoes.HttpContent == null && Configuracoes.RequestURI != null && Configuracoes.MetodoAPI != "get")  //Esta verificação é para API. WebSOAP ainda não foi alterado e está percocorrendo o caminho original dentro do ConsumirBase.cs
             {
-                Configuracoes.HttpContent = EnveloparXML();
+                Configuracoes.HttpContent = CriarHttpContentPadrao();
             }
 
             Configuracoes.Definida = true;
         }
 
-        private HttpContent EnveloparXML()
-        {
-            var xmlBody = ConteudoXMLAssinado.OuterXml;
-
-            if (Configuracoes.GZIPCompress)
-            {
-                xmlBody = Convert.ToBase64String(Encoding.UTF8.GetBytes(xmlBody));
-                xmlBody = Compress.GZIPCompress(ConteudoXML);
-            }
-
-            //No momento, somente IPM 2.04 está utilizando WebSoapString em comunicação API, ele precisa o login acima
-            if (!string.IsNullOrWhiteSpace(Configuracoes.WebSoapString))
-            {
-                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{xml}", xmlBody);
-                HttpContent temp = new StringContent(Configuracoes.WebSoapString, Encoding.UTF8, Configuracoes.WebContentType);
-                return temp;
-            }
-
-            if (Configuracoes.WebContentType == "application/json")
-            {
-                var dicionario = new Dictionary<string, object>();
-
-                if (Configuracoes.LoginConexao)
-                {
-                    dicionario.Add("usuario", Configuracoes.MunicipioUsuario);
-                    dicionario.Add("senha", Configuracoes.MunicipioSenha);
-                }
-
-                var action = "xml";
-                if (!string.IsNullOrWhiteSpace(Configuracoes.WebActionProducao))
-                {
-                    if (Configuracoes.WebActionProducao.IndexOf(":[]") > 0)
-                    {
-                        action = Configuracoes.WebActionProducao.Replace(":[]", "");
-                        var valor = new List<string> { xmlBody }; // array real
-                        dicionario.Add(action, valor);
-                    }
-                    else
-                    {
-                        action = Configuracoes.WebActionProducao;
-                        dicionario.Add(action, xmlBody);
-                    }
-                }
-                else
-                {
-                    dicionario.Add(action, xmlBody);
-                }
-
-                var Json = JsonConvert.SerializeObject(dicionario);
-
-                HttpContent temp = new StringContent(Json, Encoding.UTF8, Configuracoes.WebContentType);
-
-                return temp;
-            }
-            else if (Configuracoes.WebContentType == "multipart/form-data")
-            {
-                var path = string.Empty;
-
-                if (string.IsNullOrWhiteSpace(ConteudoXML.BaseURI))
-                {
-                    path = "arquivo.xml";
-                }
-                else
-                {
-                    path = ConteudoXML.BaseURI.Substring(8, ConteudoXML.BaseURI.Length - 8);
-                }
-
-                var boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
-
-                #region ENVIO EM BYTES
-                var xmlBytes = Encoding.UTF8.GetBytes(xmlBody);
-                var xmlContent = new ByteArrayContent(xmlBytes);
-                xmlContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                xmlContent.Headers.ContentEncoding.Add("ISO-8859-1");
-                xmlContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                {
-                    Name = "f1",
-                    FileName = path,
-
-                };
-                #endregion ENVIO EM BYTES
-
-                HttpContent MultiPartContent = new MultipartContent("form-data", boundary)
-                {
-                    xmlContent,
-
-                };
-
-                if (!string.IsNullOrWhiteSpace(Configuracoes.CodigoTom))               //SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
-                {
-                    var usuario = new StringContent(Configuracoes.MunicipioUsuario);
-                    usuario.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                    usuario.Headers.ContentEncoding.Add("UTF-8");
-                    usuario.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                    {
-                        Name = "login",
-                    };
-                    var senha = new StringContent(Configuracoes.MunicipioSenha);
-                    senha.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                    senha.Headers.ContentEncoding.Add("UTF-8");
-                    senha.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                    {
-                        Name = "senha",
-                    };
-                    var codigoTom = new StringContent(Configuracoes.CodigoTom);
-                    codigoTom.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                    codigoTom.Headers.ContentEncoding.Add("UTF-8");
-                    codigoTom.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                    {
-                        Name = "cidade",
-                    };
-                    var f1 = new StringContent(path);
-                    f1.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                    f1.Headers.ContentEncoding.Add("ISO-8859-1");
-                    f1.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                    {
-                        Name = "f1",
-                    };
-                    HttpContent MultiPartContent2 = new MultipartContent("form-data", boundary)
-                    {
-                        usuario,
-                        senha,
-                        codigoTom,
-                        f1,
-                        xmlContent
-                    };
-
-                    return MultiPartContent2;
-                }
-
-                return MultiPartContent;
-            }
-
-            return new StringContent(xmlBody, Encoding.UTF8, Configuracoes.WebContentType);
-        }
+        /// <summary>
+        /// Cria o <see cref="HttpContent"/> padrão para os serviços que consomem API e não possuem tratamento específico.
+        /// </summary>
+        /// <returns>Conteúdo HTTP pronto para envio.</returns>
+        protected virtual HttpContent CriarHttpContentPadrao() =>
+            new CommonApiPayloadBuilder().Build(Configuracoes, ConteudoXMLAssinado, ConteudoXML);
 
         /// <summary>
         /// Validar o schema do XML
@@ -393,29 +266,7 @@ namespace Unimake.Business.DFe.Servicos
 
             if (Configuracoes.IsAPI)
             {
-                var apiConfig = new APIConfig
-                {
-                    ContentType = Configuracoes.WebContentType,
-                    RequestURI = (Configuracoes.RequestURI),
-                    RequestURILogin = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURILoginProducao : Configuracoes.RequestURILoginHomologacao),
-                    TagRetorno = Configuracoes.WebTagRetorno,
-                    GZipCompress = Configuracoes.GZIPCompress,
-                    WebSoapString = Configuracoes.WebSoapString,
-                    MetodoAPI = Configuracoes.MetodoAPI,
-                    Token = Configuracoes.MunicipioToken,
-                    WebAction = Configuracoes.WebActionProducao,
-                    MunicipioSenha = Configuracoes.MunicipioSenha,
-                    MunicipioUsuario = Configuracoes.MunicipioUsuario,
-                    PadraoNFSe = Configuracoes.PadraoNFSe,
-                    LoginConexao = Configuracoes.LoginConexao,
-                    ResponseMediaType = Configuracoes.ResponseMediaType,
-                    CodigoTom = Configuracoes.CodigoTom,
-                    Servico = Configuracoes.Servico,
-                    UsaCertificadoDigital = Configuracoes.UsaCertificadoDigital,
-                    Host = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.HostProducao : Configuracoes.HostHomologacao),
-                    ApiKey = Configuracoes.ApiKey,
-                    HttpContent = Configuracoes.HttpContent,
-                };
+                var apiConfig = new ConfiguracaoApiConfigMapper().Map(Configuracoes);
 
                 var consumirAPI = new ConsumirAPI();
                 consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
@@ -442,31 +293,7 @@ namespace Unimake.Business.DFe.Servicos
             }
             else
             {
-                var soap = new WSSoap
-                {
-                    EnderecoWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebEnderecoProducao : Configuracoes.WebEnderecoHomologacao),
-                    ActionWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebActionProducao : Configuracoes.WebActionHomologacao),
-                    TagRetorno = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao && !string.IsNullOrEmpty(Configuracoes.WebTagRetornoHomologacao)) ? Configuracoes.WebTagRetornoHomologacao : Configuracoes.WebTagRetorno,
-                    EncodingRetorno = Configuracoes.WebEncodingRetorno,
-                    GZIPCompress = Configuracoes.GZIPCompress,
-                    VersaoSoap = Configuracoes.WebSoapVersion,
-                    SoapString = Configuracoes.WebSoapString,
-                    ContentType = Configuracoes.WebContentType,
-                    TimeOutWebServiceConnect = Configuracoes.TimeOutWebServiceConnect,
-                    PadraoNFSe = Configuracoes.PadraoNFSe,
-                    UsaCertificadoDigital = Configuracoes.UsaCertificadoDigital,
-                    TipoAmbiente = Configuracoes.TipoAmbiente,
-                    ConverteSenhaBase64 = Configuracoes.ConverteSenhaBase64,
-                    MunicipioSenha = Configuracoes.ConverteSenhaBase64 ? Configuracoes.MunicipioSenha.Base64Encode() : Configuracoes.MunicipioSenha,
-                    MunicipioUsuario = Configuracoes.MunicipioUsuario,
-                    Token = Configuracoes.MunicipioToken,
-                    EncriptaTagAssinatura = Configuracoes.EncriptaTagAssinatura,
-                    Servico = Configuracoes.Servico,
-                    TemCDATA = Configuracoes.TemCDATA,
-                    Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
-                                                                            Configuracoes.ProxyUser,
-                                                                            Configuracoes.ProxyPassword) : null)
-                };
+                var soap = new ConfiguracaoWSSoapMapper().Map(Configuracoes);
 
                 var consumirWS = new ConsumirWS();
                 consumirWS.ExecutarServico(ConteudoXML, soap, Configuracoes.CertificadoDigital);
