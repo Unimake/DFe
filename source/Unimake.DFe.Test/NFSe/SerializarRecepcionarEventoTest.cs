@@ -46,7 +46,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E101101 = new E101101
                     {
                         XDesc = lido.InfPedReg.E101101.XDesc,
@@ -131,7 +130,6 @@ namespace Unimake.DFe.Test.NFSe
             Assert.Equal("UNICO V8.01.04", infPedReg.VerAplic);
             Assert.Equal("48211664000126", infPedReg.CNPJAutor);
             Assert.Equal("41069022248211664000126000000000003925126775998403", infPedReg.ChNFSe);
-            Assert.Equal("001", infPedReg.NPedRegEvento);
 
             // Validações do evento E101101 (Cancelamento)
             Assert.NotNull(infPedReg.E101101);
@@ -180,7 +178,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E105102 = new E105102
                     {
                         XDesc = lido.InfPedReg.E105102.XDesc,
@@ -263,7 +260,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E202201 = new E202201
                     {
                         XDesc = lido.InfPedReg.E202201.XDesc
@@ -338,7 +334,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E202205 = new E202205
                     {
                         XDesc = lido.InfPedReg.E202205.XDesc,
@@ -415,7 +410,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E203206 = new E203206
                     {
                         XDesc = lido.InfPedReg.E203206.XDesc,
@@ -492,7 +486,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E204207 = new E204207
                     {
                         XDesc = lido.InfPedReg.E204207.XDesc,
@@ -569,7 +562,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E203202 = new E203202
                     {
                         XDesc = lido.InfPedReg.E203202.XDesc
@@ -644,7 +636,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E204203 = new E204203
                     {
                         XDesc = lido.InfPedReg.E204203.XDesc
@@ -719,7 +710,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E205204 = new E205204
                     {
                         XDesc = lido.InfPedReg.E205204.XDesc
@@ -794,7 +784,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E105105 = new E105105
                     {
                         XDesc = lido.InfPedReg.E105105.XDesc,
@@ -932,7 +921,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E101103 = new E101103
                     {
                         XDesc = lido.InfPedReg.E101103.XDesc,
@@ -1014,7 +1002,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E205208 = new E205208
                     {
                         XDesc = lido.InfPedReg.E205208.XDesc,
@@ -1092,7 +1079,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E305101 = new E305101
                     {
                         XDesc = lido.InfPedReg.E305101.XDesc,
@@ -1169,7 +1155,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E305102 = new E305102
                     {
                         XDesc = lido.InfPedReg.E305102.XDesc,
@@ -1248,7 +1233,6 @@ namespace Unimake.DFe.Test.NFSe
                     CNPJAutor = autor.cnpj,
                     CPFAutor = autor.cpf,
                     ChNFSe = lido.InfPedReg.ChNFSe,
-                    //NPedRegEvento = lido.InfPedReg.NPedRegEvento,
                     E105104 = new E105104
                     {
                         XDesc = lido.InfPedReg.E105104.XDesc,

@@ -53,10 +53,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                 if (int.TryParse(nItemString, out var nItem) && nItem > 0)
                                 {
                                     if (EnviNFe.NFe.Count > 0 &&
-                                        EnviNFe.NFe[0].InfNFe.Count > 0 &&
-                                        (nItem - 1) < EnviNFe.NFe[0].InfNFe[0].Det.Count)
+                                        EnviNFe.NFe[0].InfNFeField != null &&
+                                        (nItem - 1) < EnviNFe.NFe[0].InfNFeField.Det.Count)
                                     {
-                                        var det = EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1];
+                                        var det = EnviNFe.NFe[0].InfNFeField.Det[nItem - 1];
                                         if (det?.Prod != null)
                                         {
                                             var cProd = det.Prod.CProd;
@@ -221,13 +221,13 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                 case 301: //Uso Denegado: Irregularidade fiscal do emitente
                                 case 302: //Uso Denegado: Irregularidade fiscal do destinatário
                                 case 303: //Uso Denegado: Destinatário não habilitado a operar na UF
-                                    if (NfeProcs.ContainsKey(EnviNFe.NFe[0].InfNFe[0].Chave))
+                                    if (NfeProcs.ContainsKey(EnviNFe.NFe[0].InfNFeField.Chave))
                                     {
-                                        NfeProcs[EnviNFe.NFe[0].InfNFe[0].Chave].ProtNFe = Result.ProtNFe;
+                                        NfeProcs[EnviNFe.NFe[0].InfNFeField.Chave].ProtNFe = Result.ProtNFe;
                                     }
                                     else
                                     {
-                                        NfeProcs.Add(EnviNFe.NFe[0].InfNFe[0].Chave,
+                                        NfeProcs.Add(EnviNFe.NFe[0].InfNFeField.Chave,
                                             new NfeProc
                                             {
                                                 Versao = EnviNFe.Versao,
@@ -278,7 +278,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                 {
                                     foreach (var item in RetConsReciNFe.ProtNFe)
                                     {
-                                        if (item.InfProt.ChNFe == EnviNFe.NFe[i].InfNFe[0].Chave)
+                                        if (item.InfProt.ChNFe == EnviNFe.NFe[i].InfNFeField.Chave)
                                         {
                                             switch (item.InfProt.CStat)
                                             {
@@ -307,7 +307,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                 {
                                     if (item != null && item.ProtNFe != null)
                                     {
-                                        if (item.ProtNFe.InfProt.ChNFe == EnviNFe.NFe[i].InfNFe[0].Chave)
+                                        if (item.ProtNFe.InfProt.ChNFe == EnviNFe.NFe[i].InfNFeField.Chave)
                                         {
                                             switch (item.ProtNFe.InfProt.CStat)
                                             {
@@ -328,9 +328,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                 #endregion
                             }
 
-                            if (NfeProcs.ContainsKey(EnviNFe.NFe[i].InfNFe[0].Chave))
+                            if (NfeProcs.ContainsKey(EnviNFe.NFe[i].InfNFeField.Chave))
                             {
-                                NfeProcs[EnviNFe.NFe[i].InfNFe[0].Chave].ProtNFe = protNFe;
+                                NfeProcs[EnviNFe.NFe[i].InfNFeField.Chave].ProtNFe = protNFe;
                             }
                             else
                             {
@@ -341,7 +341,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                     AjustarXMLAposAssinado();
                                 }
 
-                                NfeProcs.Add(EnviNFe.NFe[i].InfNFe[0].Chave,
+                                NfeProcs.Add(EnviNFe.NFe[i].InfNFeField.Chave,
                                     new NfeProc
                                     {
                                         Versao = EnviNFe.Versao,

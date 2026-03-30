@@ -141,6 +141,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// Número do pedido/registro do evento.
         /// </summary>
         [XmlElement("nPedRegEvento", Namespace = NfseNs.Ns)]
+        [Obsolete("O nPedRegEvento não é mais necessário, Receita Federal desativou a obrigação do envio, futuramente vamos excluir essa propriedade.")]
         public string NPedRegEvento { get; set; }
 
         /// <summary>
@@ -235,7 +236,6 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #region ShouldSerialize
         public bool ShouldSerializeCNPJAutor() => !string.IsNullOrWhiteSpace(CNPJAutor);
         public bool ShouldSerializeCPFAutor() => !string.IsNullOrWhiteSpace(CPFAutor);
-        public bool ShouldSerializeNPedRegEvento() => !string.IsNullOrWhiteSpace(NPedRegEvento);
         #endregion
 
         public void ValidarRegrasAutor()
@@ -295,7 +295,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
             var codigoEvento = ObterCodigoEvento();
 
-            return $"PRE{ChNFSe}{codigoEvento}{NPedRegEvento}";
+            return $"PRE{ChNFSe}{codigoEvento}";
         }
 
         #endregion Geração de ID
