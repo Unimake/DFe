@@ -618,7 +618,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 37
       Top = 38
       Width = 336
-      Caption = 'Enviar XML GNRe'
+      Caption = 'Enviar XML GNRE'
       TabOrder = 1
       OnClick = EnviarXmlGNReClick
     end
