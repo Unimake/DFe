@@ -157,6 +157,7 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(@"..\..\..\CTe\Resources\eventoCTe_110190.xml")]
         [InlineData(@"..\..\..\CTe\Resources\eventoCTe_110191.xml")]
         [InlineData(@"..\..\..\CTe\Resources\eventoCTe_110300.xml")]
+        [InlineData(@"..\..\..\CTe\Resources\eventoCTe_110301.xml")]
         [InlineData(@"..\..\..\CTe\Resources\eventoCTe_610111.xml")]
         public void SerializacaoDesserializacaoEventoCTe(string arqXML)
         {

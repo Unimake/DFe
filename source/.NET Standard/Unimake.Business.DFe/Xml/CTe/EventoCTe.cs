@@ -160,6 +160,37 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoCancVincPgto")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoCancVincPgto : EventoDetalhe
+    {
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Cancelamento da vinculacao do pagamento";
+
+        [XmlElement("nProt", Order = 1)]
+        public string NProt { get; set; }
+
+        [XmlElement("nProtVincPgto", Order = 2)]
+        public string NProtVincPgto { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteRaw($@"
+            <evCancVincPgto>
+            <descEvento>{DescEvento}</descEvento>
+            <nProt>{NProt}</nProt>
+            <nProtVincPgto>{NProtVincPgto}</nProtVincPgto>
+            </evCancVincPgto>");
+        }
+    }
+
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1580,6 +1611,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
     [XmlInclude(typeof(DetEventoCanc))]
     [XmlInclude(typeof(DetEventoVincPgto))]
+    [XmlInclude(typeof(DetEventoCancVincPgto))]
     [XmlInclude(typeof(DetEventoCCE))]
     [XmlInclude(typeof(DetEventoCancCompEntrega))]
     [XmlInclude(typeof(DetEventoCompEntrega))]
@@ -1972,6 +2004,10 @@ namespace Unimake.Business.DFe.Xml.CTe
 
                     case TipoEventoCTe.VinculacaoPagamento:
                         _detEvento = new DetEventoVincPgto();
+                        break;
+
+                    case TipoEventoCTe.CancelamentoVinculacaoPagamento:
+                        _detEvento = new DetEventoCancVincPgto();
                         break;
 
                     case TipoEventoCTe.RegistroPassagem:

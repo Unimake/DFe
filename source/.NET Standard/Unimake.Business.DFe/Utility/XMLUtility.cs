@@ -868,6 +868,10 @@ namespace Unimake.Business.DFe.Utility
             {
                 tipoEventoCTe = TipoEventoCTe.VinculacaoPagamento;
             }
+            else if (xml.Contains("<tpEvento>110301</tpEvento>"))
+            {
+                tipoEventoCTe = TipoEventoCTe.CancelamentoVinculacaoPagamento;
+            }
             else if (xml.Contains("<tpEvento>610110</tpEvento>"))
             {
                 tipoEventoCTe = TipoEventoCTe.PrestDesacordo;
