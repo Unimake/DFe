@@ -225,8 +225,8 @@
 		</ConsultarNfse>
 		<ConsultarNfsePorRps versao="1.01">
 			<Descricao>Consultar NFSe por DPS</Descricao>
-			<RequestURIProducao>https://sefin.caxias.rs.gov.br/sefinnacional/nfse/{Chave}</RequestURIProducao>
-			<RequestURIHomologacao>https://sefinhomol.caxias.rs.gov.br/sefinnacional/nfse/{Chave}</RequestURIHomologacao>o>
+			<RequestURIProducao>https://sefin.caxias.rs.gov.br/sefinnacional/dps/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://sefinhomol.caxias.rs.gov.br/sefinnacional/dps/{Chave}</RequestURIHomologacao>o>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
