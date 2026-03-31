@@ -771,11 +771,11 @@
           <vCBSEstCred>1.00</vCBSEstCred>
         </gEstornoCred>
       </IBSCBS>
-      <vTotDFe>1.00</vTotDFe>
     </imp>
     <total>
       <vTPrest>1.00</vTPrest>
       <vTRec>0.00</vTRec>
+      <vTotDFe>1.00</vTotDFe>
     </total>
     <autXML>
       <CNPJ>CNPJ1</CNPJ>

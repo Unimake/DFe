@@ -238,6 +238,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         public Imp Imp { get; set; }
 
         /// <summary>
+        /// Grupo de informações da vinculação com a transação de pagamento.
+        /// </summary>
+        [XmlElement("pgtoVinc")]
+        public PgtoVinc PgtoVinc { get; set; }
+
+        /// <summary>
         /// Informações do CTe normal.
         /// </summary>
         [XmlElement("infCTeNorm")]
@@ -272,6 +278,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// </summary>
         [XmlElement("infSolicNFF")]
         public InfSolicNFF InfSolicNFF { get; set; }
+
+        /// <summary>
+        /// Grupo de informação do Provedor de Assinatura e Autorização.
+        /// </summary>
+        [XmlElement("infPAA")]
+        public InfPAA InfPAA { get; set; }
 
         /// <summary>
         /// ID: "CTe" + Chave.
@@ -2811,6 +2823,110 @@ namespace Unimake.Business.DFe.Xml.CTe
         public bool ShouldSerializeVTotDFeField() => VTotDFe > 0 || IBSCBS != null;
 
         #endregion
+    }
+
+    /// <summary>
+    /// Grupo de informações da vinculação com a transação de pagamento.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.PgtoVinc")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class PgtoVinc
+    {
+        /// <summary>
+        /// Dados de cada pagamento previsto.
+        /// </summary>
+        [XmlElement("pgto")]
+        public List<Pgto> Pgto { get; set; }
+
+        #region Add (List - Interop)
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista Pgto.
+        /// </summary>
+        /// <param name="pgto">Elemento Pgto a ser adicionado.</param>
+        public void AddPgto(Pgto pgto)
+        {
+            if (Pgto == null)
+            {
+                Pgto = new List<Pgto>();
+            }
+
+            Pgto.Add(pgto);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Pgto (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista).
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero)).</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Pgto.</returns>
+        public Pgto GetPgto(int index)
+        {
+            if ((Pgto?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return Pgto[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Pgto.
+        /// </summary>
+        public int GetPgtoCount => (Pgto != null ? Pgto.Count : 0);
+
+#endif
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Dados de cada pagamento previsto.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Pgto")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class Pgto
+    {
+        /// <summary>
+        /// Meio de pagamento utilizado.
+        /// </summary>
+        [XmlElement("tpMeioPgto")]
+        public MeioPagamento TpMeioPgto { get; set; }
+
+        /// <summary>
+        /// CNPJ do recebedor do pagamento.
+        /// </summary>
+        [XmlElement("CNPJReceb")]
+        public string CNPJReceb { get; set; }
+
+        /// <summary>
+        /// CNPJ base da instituição financeira.
+        /// </summary>
+        [XmlElement("CNPJBasePSP")]
+        public string CNPJBasePSP { get; set; }
+
+        /// <summary>
+        /// Número sequencial do pagamento.
+        /// </summary>
+        [XmlAttribute(AttributeName = "nPag")]
+        public string NPag { get; set; }
+
+        /// <summary>
+        /// ID específico da transação financeira conforme o meio de pagamento.
+        /// </summary>
+        [XmlAttribute(AttributeName = "idTransacao")]
+        public string IdTransacao { get; set; }
     }
 
     /// <summary>
