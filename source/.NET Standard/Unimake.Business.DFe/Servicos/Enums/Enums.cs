@@ -1431,6 +1431,12 @@ namespace Unimake.Business.DFe.Servicos
         CancelamentoInsucessoEntrega = 110191,
 
         /// <summary>
+        /// 110300 - Vinculação do Pagamento
+        /// </summary>
+        [XmlEnum("110300")]
+        VinculacaoPagamento = 110300,
+
+        /// <summary>
         /// 240130 - Autorizado CT-e Complementar
         /// </summary>
         [XmlEnum("240130")]

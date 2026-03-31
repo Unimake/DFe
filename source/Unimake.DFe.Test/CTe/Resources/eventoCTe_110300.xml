@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eventoCTe xmlns="http://www.portalfiscal.inf.br/cte" versao="4.00">
+	<infEvento Id="ID11030041131080568835000181570040000001081211931324001">
+		<cOrgao>41</cOrgao>
+		<tpAmb>2</tpAmb>
+		<CNPJ>80568835000181</CNPJ>
+		<chCTe>41131080568835000181570040000001081211931324</chCTe>
+		<dhEvento>2025-01-15T15:00:22-03:00</dhEvento>
+		<tpEvento>110300</tpEvento>
+		<nSeqEvento>1</nSeqEvento>
+		<detEvento versaoEvento="4.00">
+			<evVincPgto>
+				<descEvento>Vinculacao do Pagamento</descEvento>
+				<nProt>nProt1</nProt>
+				<pgto nPag="1" idTransacao="idTransacao1">
+					<tpMeioPgto>01</tpMeioPgto>
+					<CNPJReceb>11111111111111</CNPJReceb>
+					<CNPJBasePSP>00000000000000</CNPJBasePSP>
+				</pgto>
+			</evVincPgto>
+		</detEvento>
+	</infEvento>
+</eventoCTe>
