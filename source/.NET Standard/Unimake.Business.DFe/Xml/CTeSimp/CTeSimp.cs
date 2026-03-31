@@ -97,6 +97,12 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         [XmlElement("imp")]
         public Imp Imp { get; set; }
 
+        /// <summary>
+        /// Grupo de informações da vinculação com a transação de pagamento
+        /// </summary>
+        [XmlElement("pgtoVinc")]
+        public CTe.PgtoVinc PgtoVinc { get; set; }
+
         [XmlElement("total")]
         public Total Total { get; set; }
 
@@ -294,11 +300,10 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             {
                 if (value == TipoEmissao.ContingenciaFSIA ||
                    value == TipoEmissao.ContingenciaOffLine ||
-                   value == TipoEmissao.RegimeEspecialNFF ||
                    value == TipoEmissao.ContingenciaSVCAN ||
                    value == TipoEmissao.ContingenciaFSDA)
                 {
-                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos: 1, 4, 5, 7 ou 8.");
+                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos: 1, 3, 4, 7 ou 8.");
                 }
 
                 TpEmisField = value;
