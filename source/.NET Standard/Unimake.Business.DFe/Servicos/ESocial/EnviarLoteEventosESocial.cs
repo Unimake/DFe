@@ -136,8 +136,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                     eventoEspecifico = esocialEvento.FirstChild.Name;
                     schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
 
-                    //Vamos avaliar depois como será feito essa validação de eventos do eSocial - Wesley: 20/08/2024
-                    //ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
+                    ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
                 }
             }
 

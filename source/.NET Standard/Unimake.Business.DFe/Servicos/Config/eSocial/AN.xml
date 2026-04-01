@@ -15,343 +15,343 @@
 			<TiposEventosEspecificos>
 				<Tipo>
 					<Evento>evtInfoEmpregador</Evento>
-					<SchemaArquivoEvento>evtInfoEmpregador.xsd</SchemaArquivoEvento>
+					<SchemaArquivoEvento>{0}.evtInfoEmpregador.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtInfoEmpregador</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtInfoEmpregador/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtTabEstab</Evento>
-					<SchemaArquivoEvento>evtTabEstab.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtTabEstab.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtTabEstab</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtTabEstab/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtTabRubrica</Evento>
-					<SchemaArquivoEvento>evtTabRubrica.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtTabRubrica.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtTabRubrica</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtTabRubrica/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtTabLotacao</Evento>
-					<SchemaArquivoEvento>evtTabLotacao.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtTabLotacao.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtTabLotacao</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtTabLotacao/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtTabProcesso</Evento>
-					<SchemaArquivoEvento>evtTabProcesso.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtTabProcesso.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtTabProcesso</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtTabProcesso/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtRemun</Evento>
-					<SchemaArquivoEvento>evtRemun.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtRemun.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtRemun</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtRemun/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtRmnRPPS</Evento>
-					<SchemaArquivoEvento>evtRmnRPPS.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtRmnRPPS.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtRmnRPPS</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtRmnRPPS/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtBenPrRP</Evento>
-					<SchemaArquivoEvento>evtBenPrRP.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtBenPrRP.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtBenPrRP</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtBenPrRP/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtPgtos</Evento>
-					<SchemaArquivoEvento>evtPgtos.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtPgtos.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtPgtos</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtPgtos/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtComProd</Evento>
-					<SchemaArquivoEvento>evtComProd.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtComProd.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtComProd</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtComProd/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtContratAvNP</Evento>
-					<SchemaArquivoEvento>evtContratAvNP.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtContratAvNP.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtContratAvNP</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtContratAvNP/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtInfoComplPer</Evento>
-					<SchemaArquivoEvento>evtInfoComplPer.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtInfoComplPer.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtInfoComplPer</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtInfoComplPer/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtReabreEvPer</Evento>
-					<SchemaArquivoEvento>evtReabreEvPer.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtReabreEvPer.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtReabreEvPer</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtReabreEvPer/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtFechaEvPer</Evento>
-					<SchemaArquivoEvento>evtFechaEvPer.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtFechaEvPer.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtFechaEvPer</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtFechaEvPer/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtAdmPrelim</Evento>
-					<SchemaArquivoEvento>evtAdmPrelim.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtAdmPrelim.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtAdmPrelim</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtAdmPrelim/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtAdmissao</Evento>
-					<SchemaArquivoEvento>evtAdmissao.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtAdmissao.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtAdmissao</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtAdmissao/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtAltCadastral</Evento>
-					<SchemaArquivoEvento>evtAltCadastral.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtAltCadastral.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtAltCadastral</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtAltCadastral/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtAltContratual</Evento>
-					<SchemaArquivoEvento>evtAltContratual.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtAltContratual.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtAltContratual</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtAltContratual/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtCAT</Evento>
-					<SchemaArquivoEvento>evtCAT.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtCAT.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtCAT</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtCAT/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtMonit</Evento>
-					<SchemaArquivoEvento>evtMonit.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtMonit.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtMonit</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtMonit/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtToxic</Evento>
-					<SchemaArquivoEvento>evtToxic.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtToxic.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtToxic</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtToxic/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtAfastTemp</Evento>
-					<SchemaArquivoEvento>evtAfastTemp.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtAfastTemp.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtAfastTemp</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtAfastTemp/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtCessao</Evento>
-					<SchemaArquivoEvento>evtCessao.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtCessao.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtCessao</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtCessao/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtExpRisco</Evento>
-					<SchemaArquivoEvento>evtExpRisco.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtExpRisco.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtExpRisco</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtExpRisco/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtReintegr</Evento>
-					<SchemaArquivoEvento>evtReintegr.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtReintegr.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtReintegr</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtReintegr/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtDeslig</Evento>
-					<SchemaArquivoEvento>evtDeslig.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtDeslig.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtDeslig</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtDeslig/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtTSVInicio</Evento>
-					<SchemaArquivoEvento>evtTSVInicio.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtTSVInicio.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtTSVInicio</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtTSVInicio/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtTSVAltContr</Evento>
-					<SchemaArquivoEvento>evtTSVAltContr.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtTSVAltContr.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtTSVAltContr</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtTSVAltContr/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtTSVTermino</Evento>
-					<SchemaArquivoEvento>evtTSVTermino.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtTSVTermino.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtTSVTermino</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtTSVTermino/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtCdBenefIn</Evento>
-					<SchemaArquivoEvento>evtCdBenefIn.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtCdBenefIn.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtCdBenefIn</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtCdBenefIn/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtCdBenefAlt</Evento>
-					<SchemaArquivoEvento>evtCdBenefAlt.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtCdBenefAlt.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtCdBenefAlt</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtCdBenefAlt/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtCdBenIn</Evento>
-					<SchemaArquivoEvento>evtCdBenIn.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtCdBenIn.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtCdBenIn</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtCdBenIn/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtCdBenAlt</Evento>
-					<SchemaArquivoEvento>evtCdBenAlt.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtCdBenAlt.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtCdBenAlt</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtCdBenAlt/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtReativBen</Evento>
-					<SchemaArquivoEvento>evtReativBen.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtReativBen.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtReativBen</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtReativBen/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtCdBenTerm</Evento>
-					<SchemaArquivoEvento>evtCdBenTerm.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtCdBenTerm.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtCdBenTerm</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtCdBenTerm/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtProcTrab</Evento>
-					<SchemaArquivoEvento>evtProcTrab.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtProcTrab.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtProcTrab</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtProcTrab/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtContProc</Evento>
-					<SchemaArquivoEvento>evtContProc.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtContProc.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtContProc</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtContProc/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtExclusao</Evento>
-					<SchemaArquivoEvento>evtExclusao.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtExclusao.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtExclusao</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtExclusao/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtBasesTrab</Evento>
-					<SchemaArquivoEvento>evtBasesTrab.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtBasesTrab.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtBasesTrab</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtIrrfBenef</Evento>
-					<SchemaArquivoEvento>evtIrrfBenef.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtIrrfBenef.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtIrrfBenef</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtBasesFGTS</Evento>
-					<SchemaArquivoEvento>evtBasesFGTS.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtBasesFGTS.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtBasesFGTS</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtBasesFGTS/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtCS</Evento>
-					<SchemaArquivoEvento>evtCS.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtCS.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtCS</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtCS/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtIrrf</Evento>
-					<SchemaArquivoEvento>evtIrrf.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtIrrf.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtIrrf</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtIrrf/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtFGTS</Evento>
-					<SchemaArquivoEvento>evtFGTS.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtFGTS.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtFGTS</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtFGTS/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtTribProcTrab</Evento>
-					<SchemaArquivoEvento>evtTribProcTrab.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtTribProcTrab.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtTribProcTrab</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtTribProcTrab/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtFGTSProcTrab</Evento>
-					<SchemaArquivoEvento>evtFGTSProcTrab.xsd</SchemaArquivoEvento>
+          <SchemaArquivoEvento>{0}.evtFGTSProcTrab.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtFGTSProcTrab</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtFGTSProcTrab/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtAnotJud</Evento>
-					<SchemaArquivoEvento>evtAnotJud.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtAnotJud.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtAnotJud</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtAnotJud/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtBaixa</Evento>
-					<SchemaArquivoEvento>evtBaixa.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtBaixa.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtBaixa</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtBaixa/v_{0}</TargetNS>
 				</Tipo>
 				<Tipo>
 					<Evento>evtExcProcTrab</Evento>
-					<SchemaArquivoEvento>evtExcProcTrab.xsd</SchemaArquivoEvento>
+         <SchemaArquivoEvento>{0}.evtExcProcTrab.xsd</SchemaArquivoEvento>
 					<TagAssinatura>eSocial</TagAssinatura>
 					<TagAtributoID>evtExcProcTrab</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtExcProcTrab/v_{0}</TargetNS>

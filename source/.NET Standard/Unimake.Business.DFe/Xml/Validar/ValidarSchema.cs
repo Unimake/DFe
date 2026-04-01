@@ -82,9 +82,10 @@ namespace Unimake.Business.DFe
             var loadedResources = new HashSet<string>(StringComparer.Ordinal);
             var referencedLocations = new HashSet<string>(StringComparer.Ordinal);
 
-            // Fila de processamento: (resourceName, logicalNameQueFechaORoot)
-            var queue = new Queue<(string ResourceName, string LogicalName)>();
-            queue.Enqueue((arquivoResource, schemaPrincipal));
+            // Fila de processamento: (resourceName, logicalNameQueFechaORoot, inheritedTargetNamespace)
+            // inheritedTargetNamespace é usado para xs:include/redefine "chameleon" (schema sem targetNamespace).
+            var queue = new Queue<(string ResourceName, string LogicalName, string InheritedTargetNamespace)>();
+            queue.Enqueue((arquivoResource, schemaPrincipal, null));
             referencedLocations.Add(schemaPrincipal);
 
             var files = new List<string>();
@@ -143,7 +144,7 @@ namespace Unimake.Business.DFe
 
             while (queue.Count > 0)
             {
-                var (resourceName, logicalName) = queue.Dequeue();
+                var (resourceName, logicalName, inheritedTargetNamespace) = queue.Dequeue();
 
                 if (loadedResources.Contains(resourceName))
                 {
@@ -171,14 +172,34 @@ namespace Unimake.Business.DFe
                     }
                 }
 
-                files.Add(xsdText);
-
                 // Parse do XSD para achar includes/imports/redefine
                 var doc = new XmlDocument
                 {
                     XmlResolver = null
                 };
                 doc.LoadXml(xsdText);
+
+                var schemaElement = doc.DocumentElement;
+                var effectiveTargetNamespace = schemaElement?.GetAttribute("targetNamespace");
+
+                // Trata xs:include/redefine "chameleon": se o XSD incluído não tem targetNamespace,
+                // ele herda o targetNamespace do schema que incluiu.
+                if (!string.IsNullOrWhiteSpace(inheritedTargetNamespace) &&
+                    schemaElement != null &&
+                    string.IsNullOrWhiteSpace(effectiveTargetNamespace))
+                {
+                    schemaElement.SetAttribute("targetNamespace", inheritedTargetNamespace);
+
+                    if (string.IsNullOrWhiteSpace(schemaElement.GetAttribute("xmlns")))
+                    {
+                        schemaElement.SetAttribute("xmlns", inheritedTargetNamespace);
+                    }
+
+                    effectiveTargetNamespace = inheritedTargetNamespace;
+                    xsdText = doc.OuterXml;
+                }
+
+                files.Add(xsdText);
 
                 // Pega schemaLocation em include/import/redefine (filhos diretos do schema)
                 var nodes = doc.SelectNodes(
@@ -218,7 +239,14 @@ namespace Unimake.Business.DFe
                     // (ajuda a recalcular currentBase corretamente)
                     var nextLogical = Path.GetFileName(schemaLocation.Replace("\\", "/"));
 
-                    queue.Enqueue((resolved, nextLogical));
+                    string nextInheritedTargetNamespace = null;
+                    var relationType = node.LocalName;
+                    if ((relationType == "include" || relationType == "redefine") && !string.IsNullOrWhiteSpace(effectiveTargetNamespace))
+                    {
+                        nextInheritedTargetNamespace = effectiveTargetNamespace;
+                    }
+
+                    queue.Enqueue((resolved, nextLogical, nextInheritedTargetNamespace));
                 }
             }
 
