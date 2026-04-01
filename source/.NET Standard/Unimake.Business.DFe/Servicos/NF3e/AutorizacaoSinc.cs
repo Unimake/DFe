@@ -115,102 +115,11 @@ namespace Unimake.Business.DFe.Servicos.NF3e
         }
 
         /// <summary>
-        /// Montar o QRCode da NF3e
-        /// </summary>
-        private void MontarQrCode()
-        {
-            if (ConteudoXML.GetElementsByTagName("NF3e").Count <= 0)
-            {
-                throw new Exception("A tag obrigatória <NF3e> não foi localizada no XML.");
-            }
-
-            var elementNF3e = (XmlElement)ConteudoXML.GetElementsByTagName("NF3e")[0];
-
-            if (elementNF3e.GetElementsByTagName("infNF3eSupl").Count <= 0)
-            {
-                if (elementNF3e.GetElementsByTagName("infNF3e").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <infNF3e>, do grupo de tag <NF3e>, não foi localizada no XML.");
-                }
-
-                var elementInfNF3e = (XmlElement)elementNF3e.GetElementsByTagName("infNF3e")[0];
-
-                if (elementInfNF3e.GetElementsByTagName("ide").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <NF3e><infNF3e>, não foi localizada no XML.");
-                }
-
-                var elementIde = (XmlElement)elementInfNF3e.GetElementsByTagName("ide")[0];
-
-                var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
-                var cUF = (UFBrasil)Convert.ToInt32(elementIde.GetElementsByTagName("cUF")[0].InnerText);
-                var dhEmi = DateTimeOffset.Parse(elementIde.GetElementsByTagName("dhEmi")[0].InnerText);
-                var serie = elementIde.GetElementsByTagName("serie")[0].InnerText;
-                var nNF = elementIde.GetElementsByTagName("nNF")[0].InnerText;
-                var tpEmis = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
-                var nSiteAutoriz = elementIde.GetElementsByTagName("nSiteAutoriz")[0].InnerText;
-                var cNF = elementIde.GetElementsByTagName("cNF")[0].InnerText;
-                var mod = elementIde.GetElementsByTagName("mod")[0].InnerText;
-
-                if (elementInfNF3e.GetElementsByTagName("emit").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <emit>, do grupo de tag <NF3e><infNF3e>, não foi localizada no XML.");
-                }
-
-                var elementEmit = (XmlElement)elementInfNF3e.GetElementsByTagName("emit")[0];
-
-                var cnpjEmit = string.Empty;
-
-                if (elementEmit.GetElementsByTagName("CNPJ").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <CNPJ>, do grupo de tag <NF3e><infNF3e><emit>, não foi localizada no XML.");
-                }
-
-                cnpjEmit = elementEmit.GetElementsByTagName("CNPJ")[0].InnerText;
-
-                var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
-                {
-                    UFEmissor = (UFBrasil)Convert.ToInt32(cUF),
-                    AnoEmissao = dhEmi.ToString("yy"),
-                    MesEmissao = dhEmi.ToString("MM"),
-                    CNPJCPFEmissor = cnpjEmit.PadLeft(14, '0'),
-                    Modelo = (ModeloDFe)Convert.ToInt32(mod),
-                    Serie = Convert.ToInt32(serie),
-                    NumeroDoctoFiscal = Convert.ToInt32(nNF),
-                    TipoEmissao = (TipoEmissao)(int)tpEmis,
-                    NSiteAutoriz = nSiteAutoriz,
-                    CodigoNumerico = cNF
-                };
-
-                var chave = XMLUtility.MontarChaveNF3e(ref conteudoChaveDFe);
-
-                var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
-                var paramLinkQRCode = urlQrCode + "?chNF3e=" + chave + "&tpAmb=" + ((int)tpAmb).ToString();
-
-                if (tpEmis == TipoEmissao.ContingenciaOffLine)
-                {
-                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, chave);
-                }
-
-                var nodeNF3e = ConteudoXML.GetElementsByTagName("NF3e")[0];
-
-                var namespaceURI = nodeNF3e.GetNamespaceOfPrefix("");
-                XmlNode infNF3eSuplNode = ConteudoXML.CreateElement("infNF3eSupl", namespaceURI);
-                XmlNode qrCodeNF3eNode = ConteudoXML.CreateElement("qrCodNF3e", namespaceURI);
-                qrCodeNF3eNode.InnerText = paramLinkQRCode.Trim();
-                infNF3eSuplNode.AppendChild(qrCodeNF3eNode);
-                nodeNF3e.AppendChild(infNF3eSuplNode);
-                var nodeInfNF3e = (XmlNode)elementInfNF3e;
-                nodeNF3e.InsertAfter(infNF3eSuplNode, nodeInfNF3e);
-            }
-        }
-
-        /// <summary>
         /// Efetuar um Ajustse no XML da NF3e logo depois de assinado
         /// </summary>
         protected override void AjustarXMLAposAssinado()
         {
-            MontarQrCode();
+            QrCodeXmlHelper.MontarQrCodeNF3e(ConteudoXML, Configuracoes);
             base.AjustarXMLAposAssinado();
         }
 

@@ -26,99 +26,6 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
         private readonly Dictionary<string, MdfeProc> MdfeProcs = new Dictionary<string, MdfeProc>();
 
-        private void MontarQrCode()
-        {
-            if (ConteudoXML.GetElementsByTagName("MDFe").Count <= 0)
-            {
-                throw new Exception("A tag obrigatória <MDFe> não foi localizada no XML.");
-            }
-            var elementMDFe = (XmlElement)ConteudoXML.GetElementsByTagName("MDFe")[0];
-
-            if (elementMDFe.GetElementsByTagName("infMDFeSupl").Count <= 0)
-            {
-                if (elementMDFe.GetElementsByTagName("infMDFe").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <infMDFe>, do grupo de tag <MDFe>, não foi localizada no XML.");
-                }
-                var elementInfMDFe = (XmlElement)elementMDFe.GetElementsByTagName("infMDFe")[0];
-
-                if (elementInfMDFe.GetElementsByTagName("ide").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <MDFe><infMDFe>, não foi localizada no XML.");
-                }
-                var elementIde = (XmlElement)elementInfMDFe.GetElementsByTagName("ide")[0];
-
-                var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
-                var cUF = elementIde.GetElementsByTagName("cUF")[0].InnerText;
-                var dhEmi = DateTimeOffset.Parse(elementIde.GetElementsByTagName("dhEmi")[0].InnerText);
-                var serie = elementIde.GetElementsByTagName("serie")[0].InnerText;
-                var nMDF = elementIde.GetElementsByTagName("nMDF")[0].InnerText;
-                var cMDF = elementIde.GetElementsByTagName("cMDF")[0].InnerText;
-                var tpEmis = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
-                var mod = elementIde.GetElementsByTagName("mod")[0].InnerText;
-
-                if (elementInfMDFe.GetElementsByTagName("emit").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <emit>, do grupo de tag <MDFe><infNFe>, não foi localizada no XML.");
-                }
-                var elementEmit = (XmlElement)elementMDFe.GetElementsByTagName("emit")[0];
-
-                var CNPJEmit = string.Empty;
-                var CPFEmit = string.Empty;
-                if (elementEmit.GetElementsByTagName("CNPJ").Count <= 0)
-                {
-                    if (elementEmit.GetElementsByTagName("CPF").Count <= 0)
-                    {
-                        throw new Exception("A tag obrigatória <CNPJ> ou <CPF>, do grupo de tag <MDFe><infMDFe><emit>, não foi localizada no XML.");
-                    }
-                    else
-                    {
-                        CPFEmit = elementEmit.GetElementsByTagName("CPF")[0].InnerText;
-                    }
-                }
-                else
-                {
-                    CNPJEmit = elementEmit.GetElementsByTagName("CNPJ")[0].InnerText;
-                }
-
-                var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
-                {
-                    UFEmissor = (UFBrasil)Convert.ToInt32(cUF),
-                    AnoEmissao = dhEmi.ToString("yy"),
-                    MesEmissao = dhEmi.ToString("MM"),
-                    CNPJCPFEmissor = (string.IsNullOrWhiteSpace(CNPJEmit) ? CPFEmit : CNPJEmit).PadLeft(14, '0'),
-                    Modelo = (ModeloDFe)Convert.ToInt32(mod),
-                    Serie = Convert.ToInt32(serie),
-                    NumeroDoctoFiscal = Convert.ToInt32(nMDF),
-                    TipoEmissao = (TipoEmissao)(int)tpEmis,
-                    CodigoNumerico = cMDF
-                };
-
-                var chave = XMLUtility.MontarChaveMDFe(ref conteudoChaveDFe);
-
-                var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
-                var paramLinkQRCode = urlQrCode +
-                    "?chMDFe=" + chave +
-                    "&tpAmb=" + ((int)tpAmb).ToString();
-
-                if (tpEmis == TipoEmissao.ContingenciaFSIA)
-                {
-                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, chave);
-                }
-
-                var nodeMDFe = ConteudoXML.GetElementsByTagName("MDFe")[0];
-
-                var namespaceURI = nodeMDFe.GetNamespaceOfPrefix("");
-                XmlNode infMDFeSuplNode = ConteudoXML.CreateElement("infMDFeSupl", namespaceURI);
-                XmlNode qrCodMDFeNode = ConteudoXML.CreateElement("qrCodMDFe", namespaceURI);
-                qrCodMDFeNode.InnerText = paramLinkQRCode.Trim();
-                infMDFeSuplNode.AppendChild(qrCodMDFeNode);
-                nodeMDFe.AppendChild(infMDFeSuplNode);
-                var nodeInfMDFe = (XmlNode)elementInfMDFe;
-                nodeMDFe.InsertAfter(infMDFeSuplNode, nodeInfMDFe);
-            }
-        }
-
         /// <summary>
         /// Validar o XML do MDFe e também o Modal específico
         /// </summary>
@@ -141,7 +48,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         protected override void AjustarXMLAposAssinado()
         {
-            MontarQrCode();
+            QrCodeXmlHelper.MontarQrCodeMDFe(ConteudoXML, Configuracoes);
             base.AjustarXMLAposAssinado();
         }
 

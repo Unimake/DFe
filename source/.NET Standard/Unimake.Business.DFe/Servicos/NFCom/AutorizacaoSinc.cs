@@ -113,102 +113,12 @@ namespace Unimake.Business.DFe.Servicos.NFCom
                 base.DefinirConfiguracao();
             }
         }
-
-        /// <summary>
-        /// Montar o QRCode da NFCom
-        /// </summary>
-        private void MontarQrCode()
-        {
-            if (ConteudoXML.GetElementsByTagName("NFCom").Count <= 0)
-            {
-                throw new Exception("A tag obrigatória <NFCom> não foi localizada no XML.");
-            }
-
-            var elementNFCom = (XmlElement)ConteudoXML.GetElementsByTagName("NFCom")[0];
-
-            if (elementNFCom.GetElementsByTagName("infNFComSupl").Count <= 0)
-            {
-                if (elementNFCom.GetElementsByTagName("infNFCom").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <infNFCom>, do grupo de tag <NFCom>, não foi localizada no XML.");
-                }
-
-                var elementInfNFCom = (XmlElement)elementNFCom.GetElementsByTagName("infNFCom")[0];
-
-                if (elementInfNFCom.GetElementsByTagName("ide").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <NFCom><infNFCom>, não foi localizada no XML.");
-                }
-
-                var elementIde = (XmlElement)elementInfNFCom.GetElementsByTagName("ide")[0];
-
-                var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
-                var cUF = (UFBrasil)Convert.ToInt32(elementIde.GetElementsByTagName("cUF")[0].InnerText);
-                var dhEmi = DateTimeOffset.Parse(elementIde.GetElementsByTagName("dhEmi")[0].InnerText);
-                var serie = elementIde.GetElementsByTagName("serie")[0].InnerText;
-                var nNF = elementIde.GetElementsByTagName("nNF")[0].InnerText;
-                var tpEmis = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
-                var nSiteAutoriz = elementIde.GetElementsByTagName("nSiteAutoriz")[0].InnerText;
-                var cNF = elementIde.GetElementsByTagName("cNF")[0].InnerText;
-                var mod = elementIde.GetElementsByTagName("mod")[0].InnerText;
-
-                if (elementInfNFCom.GetElementsByTagName("emit").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <emit>, do grupo de tag <NFCom><infNFCom>, não foi localizada no XML.");
-                }
-
-                var elementEmit = (XmlElement)elementInfNFCom.GetElementsByTagName("emit")[0];
-
-                if (elementEmit.GetElementsByTagName("CNPJ").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <CNPJ>, do grupo de tag <NFCom><infNFCom><emit>, não foi localizada no XML.");
-                }
-
-                var cnpjEmit = elementEmit.GetElementsByTagName("CNPJ")[0].InnerText;
-
-                var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
-                {
-                    UFEmissor = (UFBrasil)Convert.ToInt32(cUF),
-                    AnoEmissao = dhEmi.ToString("yy"),
-                    MesEmissao = dhEmi.ToString("MM"),
-                    CNPJCPFEmissor = cnpjEmit.PadLeft(14, '0'),
-                    Modelo = (ModeloDFe)Convert.ToInt32(mod),
-                    Serie = Convert.ToInt32(serie),
-                    NumeroDoctoFiscal = Convert.ToInt32(nNF),
-                    TipoEmissao = (TipoEmissao)(int)tpEmis,
-                    NSiteAutoriz = nSiteAutoriz,
-                    CodigoNumerico = cNF
-                };
-
-                var chave = XMLUtility.MontarChaveNFCom(ref conteudoChaveDFe);
-
-                var urlQrCode = Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao;
-                var paramLinkQRCode = urlQrCode + "?chNFCom=" + chave + "&tpAmb=" + ((int)tpAmb).ToString();
-
-                if ((int)tpEmis == 2)
-                {
-                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, chave);
-                }
-
-                var nodeNFCom = ConteudoXML.GetElementsByTagName("NFCom")[0];
-
-                var namespaceURI = nodeNFCom.GetNamespaceOfPrefix("");
-                XmlNode infNFComSuplNode = ConteudoXML.CreateElement("infNFComSupl", namespaceURI);
-                XmlNode qrCodeNFComNode = ConteudoXML.CreateElement("qrCodNFCom", namespaceURI);
-                qrCodeNFComNode.InnerText = paramLinkQRCode.Trim();
-                infNFComSuplNode.AppendChild(qrCodeNFComNode);
-                nodeNFCom.AppendChild(infNFComSuplNode);
-                var nodeInfNFCom = (XmlNode)elementInfNFCom;
-                nodeNFCom.InsertAfter(infNFComSuplNode, nodeInfNFCom);
-            }
-        }
-
         /// <summary>
         /// Efetuar um Ajustse no XML da NFCom logo depois de assinado
         /// </summary>
         protected override void AjustarXMLAposAssinado()
         {
-            MontarQrCode();
+            QrCodeXmlHelper.MontarQrCodeNFCom(ConteudoXML, Configuracoes);
             base.AjustarXMLAposAssinado();
         }
 
@@ -528,3 +438,4 @@ namespace Unimake.Business.DFe.Servicos.NFCom
 
     }
 }
+
