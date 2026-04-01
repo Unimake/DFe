@@ -583,6 +583,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consultar Lista de Chaves de NFCe")]
         NFCeConsultaChaves = 94,
 
+        /// <summary>
+        /// 95 - Consultar NSU da NFSe NACIONAL
+        /// </summary>
+        [Description("Consultar NSU da NFSe NACIONAL")]
+        NFSeConsultarDistribuicaoNFSeNSU = 95,
+
         #endregion
 
         #region Gerais

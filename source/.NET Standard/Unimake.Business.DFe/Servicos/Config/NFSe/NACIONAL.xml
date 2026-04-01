@@ -231,5 +231,16 @@
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarBeneficioMunicipal>
+		<ConsultarDistribuicaoNFSeNSU versao="1.01">
+			<Descricao>Consultar Distribuição de NFSe por NSU</Descricao>
+			<RequestURIProducao>https://adn.nfse.gov.br/contribuintes/DFe/{NSU}</RequestURIProducao>
+			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/contribuintes/DFe/{NSU}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+		</ConsultarDistribuicaoNFSeNSU>
 	</Servicos>
 </Configuracoes>

@@ -283,6 +283,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
             bool isConsultaEventosNfse = Configuracoes.Servico == Servico.NFSeConsultarEventosDiversos;
 
+            bool isConsultaNSU = Configuracoes.Servico == Servico.NFSeConsultarDistribuicaoNFSeNSU;
+
             if (isParametrosMunicipais)
             {
                 // Para serviços de parâmetros municipais, fazer substituições na URL conforme o XML
@@ -307,7 +309,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numeroBeneficio}", numeroBeneficio);
                 }
             }
-            if (isConsultaEventosNfse)
+            else if (isConsultaEventosNfse)
             {
                 if (Configuracoes.RequestURI.Contains("{chNFSe}"))
                 {
@@ -323,6 +325,35 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 {
                     var numSeqEvento = GetXMLElementInnertext("numSeqEvento");
                     Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numSeqEvento}", numSeqEvento);
+                }
+            }
+            else if (isConsultaNSU)
+            {
+                // Serviço: /contribuintes/DFe/{NSU}?tipoNSU={tipoNSU}&lote={lote}
+                if (Configuracoes.RequestURI.Contains("{NSU}"))
+                {
+                    var nsu = GetXMLElementInnertext("NSU");
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{NSU}", nsu);
+                }
+
+                // Adicionar query strings do XML
+                var queryParams = new List<string>();
+
+                var tipoNSU = GetXMLElementInnertext("tipoNSU");
+                if (!string.IsNullOrWhiteSpace(tipoNSU))
+                {
+                    queryParams.Add($"tipoNSU={Uri.EscapeDataString(tipoNSU)}");
+                }
+
+                var lote = GetXMLElementInnertext("lote");
+                if (!string.IsNullOrWhiteSpace(lote))
+                {
+                    queryParams.Add($"lote={Uri.EscapeDataString(lote)}");
+                }
+
+                if (queryParams.Count > 0)
+                {
+                    Configuracoes.RequestURI += "?" + string.Join("&", queryParams);
                 }
             }
             else
