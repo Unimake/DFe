@@ -362,6 +362,21 @@ Function EnviarNfeSincrono()
 
      * adicionar a tag COFINS dentro da tag Imposto
        oImposto.COFINS = oCOFINS
+		 
+     * criar tag ICMSUFDest
+       oICMSUFDest         = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSUFDest")
+		 oICMSUFDest.vBCUFDest = 1.00
+		 oICMSUFDest.vBCFCPUFDest = 1.00
+		 oICMSUFDest.pFCPUFDest = 1.0000
+		 oICMSUFDest.pICMSUFDest = 1.0000
+		 oICMSUFDest.pICMSInter = 4.00
+		 oICMSUFDest.pICMSInterPart = 1.0000
+		 oICMSUFDest.vFCPUFDest = 1.00
+		 oICMSUFDest.vICMSUFDest = 1.00
+		 oICMSUFDest.vICMSUFRemet = 1.00
+
+     * adicionar a tag COFINS dentro da tag Imposto
+       oImposto.ICMSUFDest = oICMSUFDest
 	   
      * adicionar a tag Imposto dentro da tag Det
        oDet.Imposto = oImposto

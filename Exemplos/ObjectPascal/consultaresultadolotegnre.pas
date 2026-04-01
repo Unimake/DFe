@@ -24,10 +24,10 @@ procedure TConsultaResultadoLoteGNRE.Executar;
 var
   // Declarar objetos
   oConfiguracao: olevariant;
-  oXml: olevariant;
+  oTConsLoteGNRE: olevariant;
   oConsultaLote: olevariant;
   oExceptionInterop: olevariant;
-  sSituacaoProcess:olevariant;
+  situacaoProcess: olevariant;
 
 begin
   try
@@ -39,31 +39,32 @@ begin
   oConfiguracao.TipoEmissao := 1;
   oConfiguracao.TipoAmbiente := 2;
   oConfiguracao.CodigoUF:= 41;
+  oConfiguracao.Servico := 22; //Servico.GNREConsultaResultadoLote
 
   //Criar objeto do XML
-  oXml := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.TConsLoteGNRE');
-  oXml.Ambiente := 2;
-  oXml.NumeroRecibo := '1234567890';
-  oXml.IncluirPDFGuias := 1;
-  oXml.IncluirArquivoPagamento := 0;
-  oXml.IncluirNoticias := 0;
+  oTConsLoteGNRE := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.TConsLoteGNRE');
+  oTConsLoteGNRE.Ambiente := 2;
+  oTConsLoteGNRE.NumeroRecibo := '1234567890';
+  oTConsLoteGNRE.IncluirPDFGuias := 1;
+  oTConsLoteGNRE.IncluirArquivoPagamento := 0;
+  oTConsLoteGNRE.IncluirNoticias := 0;
 
   oExceptionInterop := CreateOleObject('Unimake.Exceptions.ThrowHelper');
 
   oConsultaLote := CreateOleObject('Unimake.Business.DFe.Servicos.GNRE.ConsultaResultadoLote');
-  oConsultaLote.Executar(IUnknown(oXml), IUnknown(oConfiguracao));
+  oConsultaLote.Executar(IUnknown(oTConsLoteGNRE), IUnknown(oConfiguracao));
 
-  sSituacaoProcess := oConsultaLote.Result.SituacaoProcess.Codigo;
-  ShowMessage('Situação Processamento: ' + sSituacaoProcess);
+  situacaoProcess := oConsultaLote.Result.SituacaoProcess.Codigo;
+  ShowMessage('Situação Processamento: ' + situacaoProcess);
 
-    if (sSituacaoProcess = '400') or (sSituacaoProcess = '401') then
+    if (situacaoProcess = '400') or (situacaoProcess = '401') then
     begin
       ShowMessage('O lote ainda está sendo processado. Tente novamente em alguns segundos.');
     end
-    else if (sSituacaoProcess = '402') then
+    else if (situacaoProcess = '402') then
     begin
       try
-        oConsultaLote.GravarXmlRetorno('D:\testenfe', oXml.NumeroRecibo + '-ret-gnre.xml');
+        oConsultaLote.GravarXmlRetorno('D:\testenfe', oTConsLoteGNRE.NumeroRecibo + '-ret-gnre.xml');
 
         oConsultaLote.GravarPDFGuia('D:\testenfe', 'GuiaGNRE.pdf');
 
@@ -73,14 +74,14 @@ begin
           ShowMessage('Lote processado (402), mas erro ao salvar arquivos: ' + E.Message);
       end;
     end
-    else if (sSituacaoProcess = '403') then
+    else if (situacaoProcess = '403') then
     begin
        ShowMessage('Lote processado com pendências (403). Verifique o XML de retorno.');
-       oConsultaLote.GravarXmlRetorno('D:\testenfe', oXml.NumeroRecibo + '-ret-gnre.xml');
+       oConsultaLote.GravarXmlRetorno('D:\testenfe', oTConsLoteGNRE.NumeroRecibo + '-ret-gnre.xml');
     end
     else
     begin
-      ShowMessage('Processamento concluído com situação: ' + sSituacaoProcess);
+      ShowMessage('Processamento concluído com situação: ' + situacaoProcess);
     end;
 
   except
