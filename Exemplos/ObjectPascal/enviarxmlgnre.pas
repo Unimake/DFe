@@ -22,7 +22,7 @@ var
   oConfiguracao: OleVariant;
   oExceptionInterop: OleVariant;
   oTLoteGNRE: OleVariant;
-  oDadosGNRE: OleVariant;
+  oTDadosGNRE: OleVariant;
   oItem: OleVariant;
   oValor: OleVariant;
   oLoteRecepcao: OleVariant;
@@ -50,23 +50,23 @@ begin
     oTLoteGNRE := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.TLoteGNRE');
     oTLoteGNRE.Guias := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.Guias');
 
-    oDadosGNRE := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.TDadosGNRE');
-    oDadosGNRE.Versao := '2.00';
-    oDadosGNRE.UfFavorecida := 41; // PR (Paraná)
-    oDadosGNRE.TipoGNRE := 0;
+    oTDadosGNRE := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.TDadosGNRE');
+    oTDadosGNRE.Versao := '2.00';
+    oTDadosGNRE.UfFavorecida := 41; // PR (Paraná)
+    oTDadosGNRE.TipoGNRE := 0;
 
-    oDadosGNRE.ContribuinteEmitente := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.ContribuinteEmitente');
-    oDadosGNRE.ContribuinteEmitente.Identificacao := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.Identificacao');
-    oDadosGNRE.ContribuinteEmitente.Identificacao.CNPJ := '07666666000166';
-    oDadosGNRE.ContribuinteEmitente.Identificacao.IE := '9335665656';
-    oDadosGNRE.ContribuinteEmitente.RazaoSocial := 'TESTE EMPRESA PARA ENVIO DA GNRE';
-    oDadosGNRE.ContribuinteEmitente.Endereco := 'XXX XXXXXXX XXXXX';
-    oDadosGNRE.ContribuinteEmitente.Municipio := '04808'; // Código IBGE do Município
-    oDadosGNRE.ContribuinteEmitente.UF := 41; // PR
-    oDadosGNRE.ContribuinteEmitente.CEP := '90399899';
-    oDadosGNRE.ContribuinteEmitente.Telefone := '04456566566';
+    oTDadosGNRE.ContribuinteEmitente := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.ContribuinteEmitente');
+    oTDadosGNRE.ContribuinteEmitente.Identificacao := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.Identificacao');
+    oTDadosGNRE.ContribuinteEmitente.Identificacao.CNPJ := '07666666000166';
+    oTDadosGNRE.ContribuinteEmitente.Identificacao.IE := '9335665656';
+    oTDadosGNRE.ContribuinteEmitente.RazaoSocial := 'TESTE EMPRESA PARA ENVIO DA GNRE';
+    oTDadosGNRE.ContribuinteEmitente.Endereco := 'XXX XXXXXXX XXXXX';
+    oTDadosGNRE.ContribuinteEmitente.Municipio := '04808'; // Código IBGE do Município
+    oTDadosGNRE.ContribuinteEmitente.UF := 41; // PR
+    oTDadosGNRE.ContribuinteEmitente.CEP := '90399899';
+    oTDadosGNRE.ContribuinteEmitente.Telefone := '04456566566';
 
-    oDadosGNRE.ItensGNRE := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.ItensGNRE');
+    oTDadosGNRE.ItensGNRE := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.ItensGNRE');
 
     oItem := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.Item');
     oItem.Receita := '100099';
@@ -84,11 +84,11 @@ begin
     oItem.ContribuinteDestinatario.Identificacao := CreateOleObject('Unimake.Business.DFe.Xml.GNRE.Identificacao');
     oItem.ContribuinteDestinatario.Identificacao.IE := '1236566556';
 
-    oDadosGNRE.ItensGNRE.AddItem(IUnknown(oItem));
+    oTDadosGNRE.ItensGNRE.AddItem(IUnknown(oItem));
 
-    oDadosGNRE.ValorGNRE := 30.00;
-    oDadosGNRE.DataPagamento := Now;
-    oTLoteGNRE.Guias.AddTDadosGNRE(IUnknown(oDadosGNRE));
+    oTDadosGNRE.ValorGNRE := 30.00;
+    oTDadosGNRE.DataPagamento := Now;
+    oTLoteGNRE.Guias.AddTDadosGNRE(IUnknown(oTDadosGNRE));
 
     //Consumir o serviço
     oLoteRecepcao := CreateOleObject('Unimake.Business.DFe.Servicos.GNRE.LoteRecepcao');

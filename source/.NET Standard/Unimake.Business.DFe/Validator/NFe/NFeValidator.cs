@@ -477,9 +477,9 @@ namespace Unimake.Business.DFe.Validator.NFe
                 var xProd = Tag.Parent.Parent.Parent.Parent.GetValue("xProd");
                 var nItem = Tag.Parent.Parent.Parent.Parent.GetAttributeValue("nItem");
 
-                if (value != "01" && value != "02")
+                if (value != "01" && value != "02" && value != "06")
                 {
-                    ThrowHelper.Instance.Throw(new ValidatorDFeException("O CST do grupo de tributação do PIS tributado pela alíquota está incorreto. Valor informado: " + Tag.Value + " - Valores aceitos: 01 ou 02." +
+                    ThrowHelper.Instance.Throw(new ValidatorDFeException("O CST do grupo de tributação do PIS tributado pela alíquota está incorreto. Valor informado: " + Tag.Value + " - Valores aceitos: 01, 02 ou 06." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><PIS><PISAliq>]"));
                 }
             }).ValidateTag(element => element.NameEquals(nameof(PISQtde.CST)) && element.Parent.NameEquals(nameof(PISQtde)), Tag =>
@@ -529,9 +529,9 @@ namespace Unimake.Business.DFe.Validator.NFe
                 var xProd = Tag.Parent.Parent.Parent.Parent.GetValue("xProd");
                 var nItem = Tag.Parent.Parent.Parent.Parent.GetAttributeValue("nItem");
 
-                if (value != "01" && value != "02")
+                if (value != "01" && value != "02" && value != "06")
                 {
-                    ThrowHelper.Instance.Throw(new ValidatorDFeException("O CST do grupo de tributação do COFINS tributado pela alíquota está incorreto. Valor informado: " + Tag.Value + " - Valores aceitos: 01 ou 02." +
+                    ThrowHelper.Instance.Throw(new ValidatorDFeException("O CST do grupo de tributação do COFINS tributado pela alíquota está incorreto. Valor informado: " + Tag.Value + " - Valores aceitos: 01, 02 ou 06." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><COFINS><COFINSAliq>]"));
                 }
             }).ValidateTag(element => element.NameEquals(nameof(COFINSQtde.CST)) && element.Parent.NameEquals(nameof(COFINSQtde)), Tag =>
