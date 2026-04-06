@@ -589,7 +589,7 @@
                                     <xs:restriction base="xs:string">
                                       <xs:minLength value="4"/>
                                       <xs:maxLength value="6"/>
-                                      <xs:pattern value="165601|165602|165603|165604|164603|164604|164607|164608|121306|121307"/>
+                                      <xs:pattern value="165601|165602|165603|165604|164603|164604|164607|164608|121306|121307|121308|121309"/>
                                     </xs:restriction>
                                   </xs:simpleType>
                                 </xs:element>
