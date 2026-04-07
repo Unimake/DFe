@@ -143,6 +143,10 @@ namespace Unimake.Business.DFe.Xml.NF3e
                         _detEvento = new DetEventoVincPgto();
                         break;
 
+                    case TipoEventoNF3e.CancelamentoVinculacaoPagamento:
+                        _detEvento = new DetEventoCancVincPgto();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -408,6 +412,57 @@ namespace Unimake.Business.DFe.Xml.NF3e
             <CNPJBasePSP>{Pgto?.CNPJBasePSP}</CNPJBasePSP>
             </pgto>
             </evVincPgto>");
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.DetEventoCancVincPgto")]
+    [ComVisible(true)]
+#endif
+    /// <summary>
+    /// Detalhamento do evento de cancelamento da vinculação do pagamento da NF3e.
+    /// </summary>
+    public class DetEventoCancVincPgto : EventoDetalhe
+    {
+        /// <summary>
+        /// Versão do leiaute do detalhamento do evento.
+        /// </summary>
+        [XmlAttribute("versaoEvento", DataType = "string")]
+        public override string VersaoEvento { get; set; }
+
+        /// <summary>
+        /// Descrição do evento de cancelamento da vinculação do pagamento.
+        /// </summary>
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Cancelamento da vinculacao do pagamento";
+
+        /// <summary>
+        /// Número do protocolo de autorização do DFe.
+        /// </summary>
+        [XmlElement("nProt")]
+        public string NProt { get; set; }
+
+        /// <summary>
+        /// Número do protocolo do evento de vinculação de pagamento a ser cancelado.
+        /// </summary>
+        [XmlElement("nProtVincPgto")]
+        public string NProtVincPgto { get; set; }
+
+        /// <summary>
+        /// Serializa o detalhamento de cancelamento da vinculação de pagamento no XML do evento.
+        /// </summary>
+        /// <param name="writer">Escritor XML utilizado na serialização.</param>
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteRaw($@"
+            <evCancVincPgto>
+            <descEvento>{DescEvento}</descEvento>
+            <nProt>{NProt}</nProt>
+            <nProtVincPgto>{NProtVincPgto}</nProtVincPgto>
+            </evCancVincPgto>");
         }
     }
 
