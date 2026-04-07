@@ -1061,8 +1061,10 @@
 		<None Remove="Xml\Schemas\NF3e\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\enviNF3e_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\evCancNF3e_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NF3e\evCancVincPgto_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\eventoNF3eTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\eventoNF3e_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NF3e\evVincPgto_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\nf3eTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\nf3e_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\procEventoNF3e_v1.00.xsd" />
@@ -2390,8 +2392,10 @@
 		<EmbeddedResource Include="Xml\Schemas\NF3e\DFeTiposBasicos_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\enviNF3e_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\evCancNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\evCancVincPgto_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\eventoNF3eTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\eventoNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\evVincPgto_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\nf3eTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\nf3e_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\procEventoNF3e_v1.00.xsd" />

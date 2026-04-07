@@ -12,6 +12,7 @@ using Unimake.Business.DFe.Utility;
 using System.Collections.Generic;
 using System.Xml.Schema;
 using System.Text;
+using System.Xml.Linq;
 
 namespace Unimake.Business.DFe.Xml.NF3e
 {
@@ -136,6 +137,10 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
                     case TipoEventoNF3e.Cancelamento:
                         _detEvento = new DetEventoCanc();
+                        break;
+
+                    case TipoEventoNF3e.VinculacaoPagamento:
+                        _detEvento = new DetEventoVincPgto();
                         break;
 
                     default:
@@ -286,5 +291,164 @@ namespace Unimake.Business.DFe.Xml.NF3e
         }
 
         #endregion Public Methods
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.DetEventoVincPgto")]
+    [ComVisible(true)]
+#endif
+    /// <summary>
+    /// Detalhamento do evento de vinculação do pagamento da NF3e.
+    /// </summary>
+    public class DetEventoVincPgto : EventoDetalhe
+    {
+        /// <summary>
+        /// Versão do leiaute do detalhamento do evento.
+        /// </summary>
+        [XmlAttribute("versaoEvento", DataType = "string")]
+        public override string VersaoEvento { get; set; }
+
+        /// <summary>
+        /// Descrição do evento de vinculação do pagamento.
+        /// </summary>
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Vinculacao do Pagamento";
+
+        /// <summary>
+        /// Número do protocolo de autorização do DFe.
+        /// </summary>
+        [XmlElement("nProt")]
+        public string NProt { get; set; }
+
+        /// <summary>
+        /// Dados da transação de pagamento vinculada.
+        /// </summary>
+        [XmlElement("pgto")]
+        public Pgto Pgto { get; set; }
+
+        /// <summary>
+        /// Processa o leitor XML para desserialização do detalhamento de vinculação de pagamento.
+        /// </summary>
+        internal override void ProcessReader()
+        {
+            if (XmlReader == null)
+            {
+                return;
+            }
+
+            if (XmlReader.HasAttributes && XmlReader.GetAttribute("versaoEvento") != "")
+            {
+                VersaoEvento = XmlReader.GetAttribute("versaoEvento");
+            }
+
+            while (XmlReader.Read())
+            {
+                if (XmlReader.NodeType != XmlNodeType.Element)
+                {
+                    continue;
+                }
+
+                switch (XmlReader.Name)
+                {
+                    case "descEvento":
+                        DescEvento = XmlReader.GetValue<string>(XmlReader.Name);
+                        break;
+
+                    case "nProt":
+                        NProt = XmlReader.GetValue<string>(XmlReader.Name);
+                        break;
+
+                    case "pgto":
+                        var pgtoElement = XElement.Parse(XmlReader.ReadOuterXml());
+
+                        Pgto = new Pgto
+                        {
+                            NPag = pgtoElement.Attribute("nPag")?.Value,
+                            IdTransacao = pgtoElement.Attribute("idTransacao")?.Value
+                        };
+
+                        foreach (var child in pgtoElement.Elements())
+                        {
+                            switch (child.Name.LocalName)
+                            {
+                                case "tpMeioPgto":
+                                    Pgto.TpMeioPgto = (MeioPagamento)int.Parse(child.Value);
+                                    break;
+
+                                case "CNPJReceb":
+                                    Pgto.CNPJReceb = child.Value;
+                                    break;
+
+                                case "CNPJBasePSP":
+                                    Pgto.CNPJBasePSP = child.Value;
+                                    break;
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Serializa o detalhamento de vinculação de pagamento no XML do evento.
+        /// </summary>
+        /// <param name="writer">Escritor XML utilizado na serialização.</param>
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteRaw($@"
+            <evVincPgto>
+            <descEvento>{DescEvento}</descEvento>
+            <nProt>{NProt}</nProt>
+            <pgto nPag=""{Pgto?.NPag}"" idTransacao=""{Pgto?.IdTransacao}"">
+            <tpMeioPgto>{(Pgto != null ? ((int)Pgto.TpMeioPgto).ToString("00") : "")}</tpMeioPgto>
+            <CNPJReceb>{Pgto?.CNPJReceb}</CNPJReceb>
+            <CNPJBasePSP>{Pgto?.CNPJBasePSP}</CNPJBasePSP>
+            </pgto>
+            </evVincPgto>");
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.Pgto")]
+    [ComVisible(true)]
+#endif
+    /// <summary>
+    /// Dados do pagamento vinculados ao evento da NF3e.
+    /// </summary>
+    public class Pgto
+    {
+        /// <summary>
+        /// Número sequencial do pagamento.
+        /// </summary>
+        [XmlAttribute(AttributeName = "nPag", DataType = "token")]
+        public string NPag { get; set; }
+
+        /// <summary>
+        /// Identificador da transação do pagamento.
+        /// </summary>
+        [XmlAttribute(AttributeName = "idTransacao", DataType = "token")]
+        public string IdTransacao { get; set; }
+
+        /// <summary>
+        /// Meio de pagamento utilizado.
+        /// </summary>
+        [XmlElement("tpMeioPgto")]
+        public MeioPagamento TpMeioPgto { get; set; }
+
+        /// <summary>
+        /// CNPJ do recebedor do pagamento.
+        /// </summary>
+        [XmlElement("CNPJReceb")]
+        public string CNPJReceb { get; set; }
+
+        /// <summary>
+        /// CNPJ base do provedor de serviço de pagamento.
+        /// </summary>
+        [XmlElement("CNPJBasePSP")]
+        public string CNPJBasePSP { get; set; }
     }
 }
