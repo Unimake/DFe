@@ -219,10 +219,25 @@
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
-			<SchemaVersao></SchemaVersao>
+			<SchemaVersao>1.01</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarNfse>
+		<ConsultarNfsePorRps versao="1.01">
+			<Descricao>Consultar NFSe por DPS</Descricao>
+			<RequestURIProducao>https://nfseblumenau.simplissweb.com.br/dps/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://producaorestrita.simplissweb.com.br/dps/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>chaveAcesso</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>

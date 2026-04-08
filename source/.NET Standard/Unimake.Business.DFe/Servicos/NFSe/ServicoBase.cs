@@ -634,6 +634,15 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", Chave);
             }
 
+            if (Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps)
+            {
+                var comeco = ConteudoXML.OuterXml.IndexOf("Id=\"DPS") + 4;
+                var final = ConteudoXML.OuterXml.IndexOf("\"", comeco);
+                var chaveDps = ConteudoXML.OuterXml.Substring(comeco, (final - comeco));
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chaveDps);
+                return;
+            }
+
             var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
             var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
             var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
