@@ -353,12 +353,6 @@
 		<ArqConfig>TresCachoeirasRS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3115300">
-		<Nome>Cataguases - MG</Nome>
-		<UF>SP</UF>
-		<ArqConfig>CataguasesMG.xml</ArqConfig>
-		<PadraoNFSe>VERSATEC</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3147907">
 		<Nome>Passos - MG</Nome>
 		<UF>MG</UF>
