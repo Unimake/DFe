@@ -63,8 +63,8 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
 			<GZIPCompress>true</GZIPCompress>
-			<UrlQrCodeHomologacao></UrlQrCodeHomologacao>
-			<UrlQrCodeProducao></UrlQrCodeProducao>
+			<UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/nf3e/qrcode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://www.sefaz.mt.gov.br/nf3e/qrcode</UrlQrCodeProducao>
 			<UrlChaveHomologacao></UrlChaveHomologacao>
 			<UrlChaveProducao></UrlChaveProducao>
 		</AutorizacaoSinc>

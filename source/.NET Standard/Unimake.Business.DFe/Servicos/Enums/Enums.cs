@@ -16183,6 +16183,18 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("110111")]
         Cancelamento = 110111,
+
+        /// <summary>
+        /// Evento de vinculação do pagamento
+        /// </summary>
+        [XmlEnum("110300")]
+        VinculacaoPagamento = 110300,
+
+        /// <summary>
+        /// Evento de cancelamento da vinculação do pagamento
+        /// </summary>
+        [XmlEnum("110301")]
+        CancelamentoVinculacaoPagamento = 110301,
     }
 
     #endregion TipoEventoNF3e

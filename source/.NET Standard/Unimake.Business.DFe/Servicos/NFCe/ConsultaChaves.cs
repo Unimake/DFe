@@ -103,7 +103,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// <param name="nfceListagemChaves">Objeto do XML de listagem de NFCe</param>
         /// <param name="configuracao">Configuração para conexão e envio do XML</param>
         [ComVisible(true)]
-        public void Executar(NFCeListagemChaves nfceListagemChaves, Configuracao configuracao)
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] NFCeListagemChaves nfceListagemChaves, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
             {

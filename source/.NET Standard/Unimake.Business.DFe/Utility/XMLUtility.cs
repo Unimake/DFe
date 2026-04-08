@@ -1038,6 +1038,14 @@ namespace Unimake.Business.DFe.Utility
             {
                 tipoEventoNF3e = TipoEventoNF3e.Cancelamento;
             }
+            else if (xml.Contains("<tpEvento>110300</tpEvento>"))
+            {
+                tipoEventoNF3e = TipoEventoNF3e.VinculacaoPagamento;
+            }
+            else if (xml.Contains("<tpEvento>110301</tpEvento>"))
+            {
+                tipoEventoNF3e = TipoEventoNF3e.CancelamentoVinculacaoPagamento;
+            }
 
             return tipoEventoNF3e;
         }
@@ -1728,6 +1736,14 @@ namespace Unimake.Business.DFe.Utility
             {
                 case TipoEventoNF3e.Cancelamento:
                     typeString = "110111";
+                    break;
+
+                case TipoEventoNF3e.VinculacaoPagamento:
+                    typeString = "110300";
+                    break;
+
+                case TipoEventoNF3e.CancelamentoVinculacaoPagamento:
+                    typeString = "110301";
                     break;
             }
 

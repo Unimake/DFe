@@ -63,7 +63,8 @@ namespace Unimake.DFe.Test.NFCe
                 TipoDFe = TipoDFe.NFCe,
                 TipoEmissao = TipoEmissao.Normal,
                 CertificadoDigital = PropConfig.CertificadoDigital,
-                CodigoUF = (int)ufBrasil
+                CodigoUF = (int)ufBrasil,
+                TipoAmbiente = tipoAmbiente,
             };
 
             var servico = new ConsultaChaves(xml, configuracao);
@@ -102,7 +103,8 @@ namespace Unimake.DFe.Test.NFCe
                 TipoDFe = TipoDFe.NFCe,
                 TipoEmissao = TipoEmissao.Normal,
                 CertificadoDigital = PropConfig.CertificadoDigital,
-                CodigoUF = (int)ufBrasil
+                CodigoUF = (int)ufBrasil,
+                TipoAmbiente = tipoAmbiente,
             };
 
             var servico = new ConsultaChaves(xmlString, configuracao);
