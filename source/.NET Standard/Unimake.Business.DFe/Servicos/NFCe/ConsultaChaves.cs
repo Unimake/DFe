@@ -57,17 +57,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public ConsultaChaves(NFCeListagemChaves nfceListagemChaves, Configuracao configuracao) : base()
         {
-            if (configuracao is null)
-            {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
-
-            Configuracoes = configuracao;
-            ConteudoXML = nfceListagemChaves.GerarXML();
-            Configuracoes.SchemaArquivo = nfceListagemChaves.GetType().Name + "-" + nfceListagemChaves.Versao.Replace(".", "") + ".xsd";
-            Configuracoes.SchemaVersao = nfceListagemChaves.Versao;
-            Configuracoes.Servico = Servico.NFCeConsultaChaves;
-            DefinirConfiguracao();
+            this.Configurar(nfceListagemChaves, configuracao);
         }
 
         /// <summary>
@@ -77,18 +67,8 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// <param name="configuracao">Configurações para conexão e envio do XML</param>
         public ConsultaChaves(string conteudoXML, Configuracao configuracao) : base()
         {
-            if (configuracao is null)
-            {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
-
             var nfceListagemChaves = new NFCeListagemChaves().LoadFromXML(conteudoXML);
-            Configuracoes = configuracao;
-            ConteudoXML = nfceListagemChaves.GerarXML();
-            Configuracoes.SchemaArquivo = nfceListagemChaves.GetType().Name + "-" + nfceListagemChaves.Versao.Replace(".", "") + ".xsd";
-            Configuracoes.SchemaVersao = nfceListagemChaves.Versao;
-            Configuracoes.Servico = Servico.NFCeConsultaChaves;
-            DefinirConfiguracao();
+            this.Configurar(nfceListagemChaves, configuracao);
         }
 
         #endregion Public Constructors
@@ -107,16 +87,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         {
             try
             {
-                if (configuracao is null)
-                {
-                    throw new ArgumentNullException(nameof(configuracao));
-                }
-
-                Configuracoes = configuracao;
-                ConteudoXML = nfceListagemChaves.GerarXML();
-                Configuracoes.SchemaArquivo = nfceListagemChaves.GetType().Name + "-" + nfceListagemChaves.Versao.Replace(".", "") + ".xsd";
-                Configuracoes.Servico = Servico.NFCeConsultaChaves;
-
+                this.Configurar(nfceListagemChaves, configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)
@@ -148,5 +119,24 @@ namespace Unimake.Business.DFe.Servicos.NFCe
 #endif
 
         #endregion Public Methods
+
+        /// <summary>
+        /// Faz a configuração do serviço de consulta de chaves de NFCe a partir do XML e da configuração passada
+        /// </summary>
+        private void Configurar(NFCeListagemChaves nfceListagemChaves, Configuracao configuracao)
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Configuracoes = configuracao;
+            ConteudoXML = nfceListagemChaves.GerarXML();
+            Configuracoes.SchemaArquivo = nfceListagemChaves.GetType().Name + "-" + nfceListagemChaves.Versao.Replace(".", "") + ".xsd";
+            Configuracoes.SchemaVersao = nfceListagemChaves.Versao;
+            Configuracoes.Servico = Servico.NFCeConsultaChaves;
+            DefinirConfiguracao();
+        }
+
     }
 }
