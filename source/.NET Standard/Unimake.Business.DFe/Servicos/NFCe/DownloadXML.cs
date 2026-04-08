@@ -59,17 +59,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public DownloadXML(NFCeDownloadXML nfceDownloadXML, Configuracao configuracao) : base()
         {
-            if (configuracao is null)
-            {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
-
-            Configuracoes = configuracao;
-            ConteudoXML = nfceDownloadXML.GerarXML();
-            Configuracoes.SchemaArquivo = nfceDownloadXML.GetType().Name + "-" + nfceDownloadXML.Versao.Replace(".", "") + ".xsd";
-            Configuracoes.SchemaVersao = nfceDownloadXML.Versao;
-            Configuracoes.Servico = Servico.NFCeDownloadXML;
-            DefinirConfiguracao();
+            this.Configurar(nfceDownloadXML, configuracao);
         }
 
         /// <summary>
@@ -79,18 +69,8 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public DownloadXML(string conteudoXML, Configuracao configuracao) : base()
         {
-            if (configuracao is null)
-            {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
-
             var nfceDownloadXML = new NFCeDownloadXML().LoadFromXML(conteudoXML);
-            Configuracoes = configuracao;
-            ConteudoXML = nfceDownloadXML.GerarXML();
-            Configuracoes.SchemaArquivo = nfceDownloadXML.GetType().Name + "-" + nfceDownloadXML.Versao.Replace(".", "") + ".xsd";
-            Configuracoes.SchemaVersao = nfceDownloadXML.Versao;
-            Configuracoes.Servico = Servico.NFCeDownloadXML;
-            DefinirConfiguracao();
+            this.Configurar(nfceDownloadXML, configuracao);
         }
 
         #endregion Public Constructors
@@ -109,16 +89,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         {
             try
             {
-                if (configuracao is null)
-                {
-                    throw new ArgumentNullException(nameof(configuracao));
-                }
-
-                Configuracoes = configuracao;
-                ConteudoXML = nfceDownloadXML.GerarXML();
-                Configuracoes.SchemaArquivo = nfceDownloadXML.GetType().Name + "-" + nfceDownloadXML.Versao.Replace(".", "") + ".xsd";
-                Configuracoes.Servico = Servico.NFCeDownloadXML;
-
+                this.Configurar(nfceDownloadXML, configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)
@@ -213,5 +184,21 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         }
 
         #endregion Public Methods
+
+        private void Configurar(NFCeDownloadXML nfceDownloadXML, Configuracao configuracao)
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Configuracoes = configuracao;
+            ConteudoXML = nfceDownloadXML.GerarXML();
+            Configuracoes.SchemaArquivo = nfceDownloadXML.GetType().Name + "-" + nfceDownloadXML.Versao.Replace(".", "") + ".xsd";
+            Configuracoes.SchemaVersao = nfceDownloadXML.Versao;
+            Configuracoes.Servico = Servico.NFCeDownloadXML;
+            DefinirConfiguracao();
+        }
+
     }
 }
