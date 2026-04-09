@@ -203,23 +203,11 @@
 		<PadraoNFSe>BETHA_CLOUD</PadraoNFSe>
 	</Arquivo>
 	<!-- **** Fim dos padrões com apenas um XML de configuração **** -->
-	<Arquivo ID="3303203">
-		<Nome>Nilópolis - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>NilopolisRJ.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3505500">
 		<Nome>Barretos - SP</Nome>
 		<UF>SP</UF>
 		<ArqConfig>BarretosSP.xml</ArqConfig>
 		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3305109">
-		<Nome>São João de Meriti - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>SaoJoaoDeMeritiRJ.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5205109">
 		<Nome>Catalão - GO</Nome>
@@ -257,12 +245,6 @@
 		<ArqConfig>JoinvilleSC.xml</ArqConfig>
 		<PadraoNFSe>PUBLICA</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3132404">
-		<Nome>Itajubá - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>ItajubaMG.xml</ArqConfig>
-		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3306305">
 		<Nome>Volta Redonda - RJ</Nome>
 		<UF>RJ</UF>
@@ -292,12 +274,6 @@
 		<UF>SP</UF>
 		<ArqConfig>BauruSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2925303">
-		<Nome>Porto Seguro - BA</Nome>
-		<UF>BA</UF>
-		<ArqConfig>PortoSeguroBA.xml</ArqConfig>
-		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4202305">
 		<Nome>Biguaçu - SC</Nome>
@@ -353,12 +329,6 @@
 		<ArqConfig>TresCachoeirasRS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3115300">
-		<Nome>Cataguases - MG</Nome>
-		<UF>SP</UF>
-		<ArqConfig>CataguasesMG.xml</ArqConfig>
-		<PadraoNFSe>VERSATEC</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3147907">
 		<Nome>Passos - MG</Nome>
 		<UF>MG</UF>
@@ -383,12 +353,6 @@
 		<ArqConfig>GoianiaGO.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5105200">
-		<Nome>Juscimeira - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>JuscimeiraMT.xml</ArqConfig>
-		<PadraoNFSe>COPLAN</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3554102">
 		<Nome>Taubaté - SP</Nome>
 		<UF>SP</UF>
@@ -412,12 +376,6 @@
 		<UF>MT</UF>
 		<ArqConfig>CampoNovoParecisMT.xml</ArqConfig>
 		<PadraoNFSe>COPLAN</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4307054">
-		<Nome>Ernestina - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>ErnestinaRS.xml</ArqConfig>
-		<PadraoNFSe>DIGIFRED</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="1702109">
 		<Nome>Araguaína - TO</Nome>
@@ -461,29 +419,11 @@
 		<ArqConfig>TremembeSP.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5100201">
-		<Nome>Água Boa - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>AguaBoaMT.xml</ArqConfig>
-		<PadraoNFSe>COPLAN</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4113700">
 		<Nome>Londrina - PR</Nome>
 		<UF>PR</UF>
 		<ArqConfig>LondrinaPR.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5106422">
-		<Nome>Peixoto de Azevedo - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>PeixotodeAzevedoMT.xml</ArqConfig>
-		<PadraoNFSe>COPLAN</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5106224">
-		<Nome>Nova Mutum - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>NovaMutumMT.xml</ArqConfig>
-		<PadraoNFSe>COPLAN</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3145208">
 		<Nome>Nova Serrana - MG</Nome>
@@ -623,12 +563,6 @@
 		<ArqConfig>SertaozinhoSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3506508">
-		<Nome>Birigui - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>BiriguiSP.xml</ArqConfig>
-		<PadraoNFSe>SMARAPD</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3515509">
 		<Nome>Fernandópolis - SP</Nome>
 		<UF>SP</UF>
@@ -657,12 +591,6 @@
 		<Nome>Garça - SP</Nome>
 		<UF>SP</UF>
 		<ArqConfig>GarcaSP.xml</ArqConfig>
-		<PadraoNFSe>FIORILLI</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="1503606">
-		<Nome>Itaituba - PA</Nome>
-		<UF>PA</UF>
-		<ArqConfig>ItaitubaPA.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4118402">

@@ -1506,7 +1506,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 2 = Versão 2 do QRCode NFCe (Padrão Nacional)
         /// 3 = Versão 3 do QRCode NFCe (Padrão Nacional)
         /// </summary>
-        public int VersaoQRCodeNFCe { get; set; } = 2;
+        public int VersaoQRCodeNFCe { get; set; } = 3;
 
         /// <summary>
         /// Cookie (caso exista)

@@ -7097,12 +7097,6 @@ namespace Unimake.Business.DFe.Servicos
         DIGIFRED = 15,
 
         /// <summary>
-        /// VersaTEC – Tecnologia, Educação e Comunicação
-        /// </summary>
-        [Description("VERSATEC")]
-        VERSATEC = 16,
-
-        /// <summary>
         /// GINFES – Gestão Inteligente da Nota Fiscal de Serviço Eletrônica
         /// </summary>
         [Description("GINFES")]
