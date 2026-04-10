@@ -632,7 +632,7 @@
 			<xsd:element name="Uf" type="tsUf" minOccurs="1"
 						 maxOccurs="1" />
 			<xsd:element name="CodigoPais" type="tsCodigoPaisBacen"
-						 minOccurs="1" maxOccurs="1" />
+						 minOccurs="0" maxOccurs="1" />
 			<xsd:element name="Cep" type="tsCep" minOccurs="1"
 						 maxOccurs="1" />
 			<xsd:element name="EnderecoExt" type="tcEnderecoExt" minOccurs="0"
