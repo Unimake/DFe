@@ -721,7 +721,7 @@
 						 minOccurs="0" maxOccurs="1" />
 			<xsd:element name="RazaoSocial" type="tsRazaoSocial"
 						 minOccurs="0" maxOccurs="1" />
-			<xsd:element name="Endereco" type="tcEndereco" minOccurs="1"
+			<xsd:element name="Endereco" type="tcEndereco" minOccurs="0"
 						 maxOccurs="1" />
 			<xsd:element name="Contato" type="tcContato" minOccurs="0"
 						 maxOccurs="1" />
