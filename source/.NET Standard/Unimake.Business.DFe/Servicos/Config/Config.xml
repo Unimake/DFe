@@ -2483,4 +2483,10 @@
 		<ArqConfig>JaguaraoRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3547809">
+		<Nome>Santo André - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SantoAndreSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
