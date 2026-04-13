@@ -494,6 +494,7 @@
 		<None Remove="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\JundiaiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
+		<None Remove="Servicos\Config\NFSe\JutiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\LajeadoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\LavrasMG.xml" />
@@ -1499,6 +1500,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\ChuiRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\JutiMS.xml" />
 		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
 	</ItemGroup>
 

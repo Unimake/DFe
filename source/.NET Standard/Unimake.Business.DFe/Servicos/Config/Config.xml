@@ -2471,4 +2471,10 @@
 		<ArqConfig>ChuiRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5005152">
+		<Nome>Juti - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>JutiMS.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
