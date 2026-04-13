@@ -8,6 +8,7 @@
 			<MetodoAPI>post</MetodoAPI>
 			<WebContentType>application/xml</WebContentType>
 			<LoginConexao>true</LoginConexao>
+			<WebTagRetorno>notafiscal</WebTagRetorno>
 			<RequestURILoginProducao>https://wsvalinhos.sigissweb.com/rest/login</RequestURILoginProducao>
 			<RequestURILoginHomologacao>https://wshml2.sigissweb.com/rest/login</RequestURILoginHomologacao>
 		</GerarNfse>
@@ -28,6 +29,7 @@
 			<MetodoAPI>get</MetodoAPI>
 			<WebContentType>application/xml</WebContentType>
 			<LoginConexao>true</LoginConexao>
+			<WebTagRetorno>notafiscal</WebTagRetorno>
 			<RequestURILoginProducao>https://wsvalinhos.sigissweb.com/rest/login</RequestURILoginProducao>
 			<RequestURILoginHomologacao>https://wshml2.sigissweb.com/rest/login</RequestURILoginHomologacao>
 		</ConsultarNfse>

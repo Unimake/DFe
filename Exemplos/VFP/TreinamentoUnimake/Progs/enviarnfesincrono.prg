@@ -435,6 +435,11 @@ Function EnviarNfeSincrono()
    oTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
    oTransp.ModFrete = 0 && ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
    
+   oTransp.VeicTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.VeicTransp")
+   oTransp.VeicTransp.Placa = ""
+   oTransp.VeicTransp.UF = 41 && 41 = Paraná
+   oTransp.VeicTransp.RTNC = ""
+   
    FOR I = 1 TO 3
     * Criar a tag Vol
       oVol       = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")

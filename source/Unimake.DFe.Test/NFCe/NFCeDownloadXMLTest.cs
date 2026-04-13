@@ -64,7 +64,8 @@ namespace Unimake.DFe.Test.NFCe
                 TipoDFe = TipoDFe.NFCe,
                 TipoEmissao = TipoEmissao.Normal,
                 CertificadoDigital = PropConfig.CertificadoDigital,
-                CodigoUF = (int)ufBrasil
+                CodigoUF = (int)ufBrasil,
+                TipoAmbiente = tipoAmbiente,
             };
 
             var downloadXML = new DownloadXML(xml, configuracao);
@@ -101,7 +102,8 @@ namespace Unimake.DFe.Test.NFCe
                 TipoDFe = TipoDFe.NFCe,
                 TipoEmissao = TipoEmissao.Normal,
                 CertificadoDigital = PropConfig.CertificadoDigital,
-                CodigoUF = (int)ufBrasil
+                CodigoUF = (int)ufBrasil,
+                TipoAmbiente = tipoAmbiente,
             };
 
             var downloadXML = new DownloadXML(xmlString, configuracao);
@@ -135,7 +137,8 @@ namespace Unimake.DFe.Test.NFCe
                 TipoDFe = TipoDFe.NFCe,
                 TipoEmissao = TipoEmissao.Normal,
                 CertificadoDigital = PropConfig.CertificadoDigital,
-                CodigoUF = (int)ufBrasil
+                CodigoUF = (int)ufBrasil,
+                TipoAmbiente = tipoAmbiente,
             };
 
             var downloadXML = new DownloadXML(xml, configuracao);

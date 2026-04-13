@@ -7,7 +7,7 @@
 			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/RecepcionarLoteRpsRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
-			<SchemaArquivo>schema_nfse_v03-rtc.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfRps</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
@@ -26,7 +26,7 @@
 			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
-			<SchemaArquivo>schema_nfse_v03-rtc.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfRps</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
 			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/CancelarNfseRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
-			<SchemaArquivo>schema_nfse_v03-rtc.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -83,7 +83,7 @@
 			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfsePorRpsRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
-			<SchemaArquivo>schema_nfse_v03-rtc.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>

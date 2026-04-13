@@ -105,7 +105,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// <param name="nfceDownloadXML">Objeto do XML de download de NFCe</param>
         /// <param name="configuracao">Configuração para conexão e envio do XML</param>
         [ComVisible(true)]
-        public void Executar(NFCeDownloadXML nfceDownloadXML, Configuracao configuracao)
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] NFCeDownloadXML nfceDownloadXML, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
             {

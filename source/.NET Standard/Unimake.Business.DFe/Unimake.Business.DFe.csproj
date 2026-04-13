@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.03.31.1002</AssemblyVersion>
-		<FileVersion>2026.03.31.1002</FileVersion>
+		<AssemblyVersion>2026.04.09.1006</AssemblyVersion>
+		<FileVersion>2026.04.09.1006</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -391,7 +391,6 @@
 		<None Remove="Servicos\Config\NFSe\CarlosBarbosaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CascavelPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CastroPR.xml" />
-		<None Remove="Servicos\Config\NFSe\CataguasesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CatalaoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CatanduvaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CaxiasDoSulRS.xml" />
@@ -495,6 +494,7 @@
 		<None Remove="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\JundiaiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
+		<None Remove="Servicos\Config\NFSe\JutiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\LajeadoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\LavrasMG.xml" />
@@ -1061,8 +1061,10 @@
 		<None Remove="Xml\Schemas\NF3e\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\enviNF3e_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\evCancNF3e_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NF3e\evCancVincPgto_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\eventoNF3eTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\eventoNF3e_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NF3e\evVincPgto_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\nf3eTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\nf3e_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\procEventoNF3e_v1.00.xsd" />
@@ -1452,8 +1454,6 @@
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema_v2.03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\nfse v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\VERSATEC\nfse_v202.xsd" />
-		<None Remove="Xml\Schemas\NFSe\VERSATEC\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\nfse_v2_02-IBSCBS.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
@@ -1504,6 +1504,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\ChuiRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\JutiMS.xml" />
 		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
 	</ItemGroup>
 
@@ -2394,8 +2395,10 @@
 		<EmbeddedResource Include="Xml\Schemas\NF3e\DFeTiposBasicos_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\enviNF3e_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\evCancNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\evCancVincPgto_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\eventoNF3eTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\eventoNF3e_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NF3e\evVincPgto_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\nf3eTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\nf3e_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NF3e\procEventoNF3e_v1.00.xsd" />
@@ -2931,9 +2934,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\Ginfes.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\CataguasesMG.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\RondonopolisMT.xml">
@@ -3647,10 +3647,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\xmldsig-core-schema_v2.03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\nfse v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\VERSATEC\nfse_v202.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\VERSATEC\xmldsig-core-schema20020212.xsd">
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02-IBSCBS.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
