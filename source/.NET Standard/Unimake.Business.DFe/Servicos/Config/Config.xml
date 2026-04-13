@@ -2543,4 +2543,10 @@
 		<ArqConfig>ChuiRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="431100">
+		<Nome>Jaguarão - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>JaguaraoRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
