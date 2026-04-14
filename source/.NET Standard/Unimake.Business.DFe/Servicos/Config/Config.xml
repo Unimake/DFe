@@ -2501,4 +2501,10 @@
 		<ArqConfig>SaoCaetanoDoSulSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3513801">
+		<Nome>Diadema - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>DiademaSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

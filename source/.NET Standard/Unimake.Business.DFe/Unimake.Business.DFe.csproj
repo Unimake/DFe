@@ -412,6 +412,7 @@
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CuritibaPR.xml" />
+		<None Remove="Servicos\Config\NFSe\DiademaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
 		<None Remove="Servicos\Config\NFSe\DracenaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DuartinaSP.xml" />
@@ -1499,6 +1500,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\DiademaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBernardoDoCampoSP.xml" />
 	</ItemGroup>
 
