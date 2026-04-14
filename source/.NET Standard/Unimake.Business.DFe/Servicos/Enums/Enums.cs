@@ -589,6 +589,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consultar NSU da NFSe NACIONAL")]
         NFSeConsultarDistribuicaoNFSeNSU = 95,
 
+        /// <summary>
+        /// 96 - Consultar Eventos da NFSe por Chave de Acesso da NFSe NACIONAL
+        /// </summary>
+        [Description("Consultar Eventos da NFSe por Chave de Acesso da NFSe NACIONAL")]
+        NFSeConsultarEventosNFSeChaveAcesso = 96,
+
         #endregion
 
         #region Gerais

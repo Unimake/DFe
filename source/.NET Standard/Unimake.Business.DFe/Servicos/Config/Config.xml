@@ -2489,4 +2489,16 @@
 		<ArqConfig>SantoAndreSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3548708">
+		<Nome>São Bernardo do Campo - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoBernardoDoCampoSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3548807">
+		<Nome>São Caetano do Sul - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoCaetanoDoSulSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
