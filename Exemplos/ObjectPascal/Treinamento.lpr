@@ -31,7 +31,7 @@ uses
   EnviarNFCeOffline, EnviarNFeSincronoContingenciaSVC,
   NACIONALCancelarNFSeObjeto, NACIONALGerarNFSeObjeto,
   NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto,
-  NACIONALConsultarEventoNFSe
+  NACIONALConsultarEventoNFSe, NACIONALConsultarDistribuicaoNFSeNSU
   { you can add units after this };
 
 {$R *.res}
