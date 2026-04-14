@@ -1,5 +1,3 @@
-#pragma warning disable CS1591
-
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -8,7 +6,6 @@ using System.Collections.Generic;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta;
 using NFSeNacional = Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.NFSe;
 using Unimake.Exceptions;
@@ -140,54 +137,9 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         #region Public Methods
 
         /// <summary>
-        /// Executa o serviço: valida e envia para o web-service
+        /// Gravar os XMLs de NFSe recebidos do web-service em uma pasta local, utilizando a chave de acesso como nome do arquivo
         /// </summary>
-#if INTEROP
-        [ComVisible(false)]
-#endif
-        public override void Executar()
-        {
-            base.Executar();
-
-            try
-            {
-                if (Result?.LoteDFe == null)
-                {
-                    return;
-                }
-
-                NFSesRecebidas = new List<LoteDFe>();
-                NFSesDesserializadas = new List<NFSeNacional>();
-
-                foreach (var item in Result.LoteDFe)
-                {
-                    try
-                    {
-                        NFSesRecebidas.Add(item);
-
-                        var nfse = item.ArquivoXml;
-
-                        if (nfse == null && !string.IsNullOrWhiteSpace(item.ConteudoXML))
-                        {
-                            nfse = XMLUtility.Deserializar<NFSeNacional>(item.ConteudoXML);
-                            item.ArquivoXml = nfse;
-                        }
-
-                        if (nfse != null)
-                        {
-                            NFSesDesserializadas.Add(nfse);
-                        }
-                    }
-                    catch
-                    {
-                    }
-                }
-            }
-            catch
-            {
-            }
-        }
-
+        /// <param name="pasta">Caminho da pasta onde os arquivos serão gravados</param>
         public void GravarXMLNFSe(string pasta)
         {
             try
@@ -239,20 +191,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
 #if INTEROP
-        /// <summary>
-        /// Adiciona uma NFSe à lista de desserializadas (para COM Interop)
-        /// </summary>
-        /// <param name="nfse">NFSe a ser adicionada</param>
-        [ComVisible(true)]
-        public void AddNFSeDesserializada(NFSeNacional nfse)
-        {
-            if (NFSesDesserializadas == null)
-            {
-                NFSesDesserializadas = new List<NFSeNacional>();
-            }
-
-            NFSesDesserializadas.Add(nfse);
-        }
 
         /// <summary>
         /// Obtém uma NFSe desserializada da lista (para COM Interop)
@@ -285,7 +223,9 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         /// <param name="distribuicaoNFSe">Objeto contendo os parâmetros de consulta</param>
         /// <param name="configuracao">Configurações a serem utilizadas</param>
-        [ComVisible(true)]
+#if INTEROP
+        [ComVisible(false)]
+#endif
         public void Executar(DistribuicaoNFSe distribuicaoNFSe, Configuracao configuracao)
         {
             try
@@ -311,7 +251,57 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 ThrowHelper.Instance.Throw(ex);
             }
         }
+
 #endif
+
+        /// <summary>
+        /// Executa o serviço: valida e envia para o web-service
+        /// </summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public override void Executar()
+        {
+            base.Executar();
+
+            try
+            {
+                if (Result?.LoteDFe == null)
+                {
+                    return;
+                }
+
+                NFSesRecebidas = new List<LoteDFe>();
+                NFSesDesserializadas = new List<NFSeNacional>();
+
+                foreach (var item in Result.LoteDFe)
+                {
+                    try
+                    {
+                        NFSesRecebidas.Add(item);
+
+                        var nfse = item.ArquivoXml;
+
+                        if (nfse == null && !string.IsNullOrWhiteSpace(item.ConteudoXML))
+                        {
+                            nfse = XMLUtility.Deserializar<NFSeNacional>(item.ConteudoXML);
+                            item.ArquivoXml = nfse;
+                        }
+
+                        if (nfse != null)
+                        {
+                            NFSesDesserializadas.Add(nfse);
+                        }
+                    }
+                    catch
+                    {
+                    }
+                }
+            }
+            catch
+            {
+            }
+        }
 
         #endregion Public Methods
     }
