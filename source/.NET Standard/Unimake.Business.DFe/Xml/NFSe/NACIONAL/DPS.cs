@@ -1484,8 +1484,6 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 
         #region Should Serialize
-        public bool ShouldSerializeIndTotTrib() => IndTotTrib > 0;
-
         public bool ShouldSerializePTotTribSNField() => PTotTribSN > 0;
         public void ValidarTotaisTributacao()
         {
