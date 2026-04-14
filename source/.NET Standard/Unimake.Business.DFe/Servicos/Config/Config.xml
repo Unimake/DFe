@@ -2477,4 +2477,28 @@
 		<ArqConfig>JutiMS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="431100">
+		<Nome>Jaguarão - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>JaguaraoRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3547809">
+		<Nome>Santo André - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SantoAndreSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3548708">
+		<Nome>São Bernardo do Campo - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoBernardoDoCampoSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3548807">
+		<Nome>São Caetano do Sul - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoCaetanoDoSulSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

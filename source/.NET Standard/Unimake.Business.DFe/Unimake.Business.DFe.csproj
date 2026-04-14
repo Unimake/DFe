@@ -615,12 +615,14 @@
 		<None Remove="Servicos\Config\NFSe\SantaMariaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaRosaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaTerezinhaDeItaipuPR.xml" />
+		<None Remove="Servicos\Config\NFSe\SantoAndreSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SantoAntonioDaPatrulhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantoAntonioDaPlatinaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SantoAntonioDeJesusBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SantosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoBentoDoSulSC.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoBorjaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGabrielRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml" />
@@ -1497,10 +1499,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBernardoDoCampoSP.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguaraoRS.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ChuiRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\JutiMS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAndreSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
 	</ItemGroup>
 
