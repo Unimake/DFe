@@ -280,13 +280,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     {
                         NFSesRecebidas.Add(item);
 
-                        var nfse = item.ArquivoXml;
-
-                        if (nfse == null && !string.IsNullOrWhiteSpace(item.ConteudoXML))
-                        {
-                            nfse = XMLUtility.Deserializar<NFSeNacional>(item.ConteudoXML);
-                            item.ArquivoXml = nfse;
-                        }
+                        var nfse = item.ArquivoXml?.NFSe;
 
                         if (nfse != null)
                         {
