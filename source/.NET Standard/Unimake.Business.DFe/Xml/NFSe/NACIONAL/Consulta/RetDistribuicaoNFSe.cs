@@ -232,7 +232,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta
         /// Arquivo XML da NFSe ou evento, descomprimido e estruturado
         /// </summary>
         [XmlElement("ArquivoXml")]
-        public ArquivoXmlWrapper ArquivoXml { get; set; }
+        public ArquivoXml ArquivoXml { get; set; }
 
         /// <summary>
         /// Data e hora de geração do documento
@@ -285,7 +285,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta
     [ComVisible(true)]
 #endif
     [XmlType("ArquivoXml")]
-    public class ArquivoXmlWrapper
+    public class ArquivoXml
     {
         private const string NfseNs = "http://www.sped.fazenda.gov.br/nfse";
 
