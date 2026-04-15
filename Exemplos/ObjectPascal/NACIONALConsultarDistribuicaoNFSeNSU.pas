@@ -32,6 +32,7 @@ var
   caminhoArquivo: string;
   proximoNSU: string;
   retorno: string;
+  xmlNFSeString: string;
   I: integer;
 begin
   //Criar objeto para pegar exceção do lado do CSHARP
@@ -94,15 +95,46 @@ begin
 
     ShowMessage('XML retornado pela prefeitura:' + sLineBreak + oConsultarDistribuicaoNFSeNSU.RetornoWSString);
 
+    //Se não retornar "DOCUMENTOS_LOCALIZADOS" mantem o NSU que está sendo consultado para consultar mais tarde, ou seja, não mudar.
     if oConsultarDistribuicaoNFSeNSU.Result.StatusProcessamento = 'DOCUMENTOS_LOCALIZADOS' then
     begin
       if oConsultarDistribuicaoNFSeNSU.Result.GetLoteDFeCount > 0 then
       begin
-        oLoteDFe := oConsultarDistribuicaoNFSeNSU.Result.GetLoteDFe(0);
-        ShowMessage(oLoteDFe.ChaveAcesso);
+        //Pegar o conteúdo direto do XML retornado
+        for I := 1 to oConsultarDistribuicaoNFSeNSU.Result.GetLoteDFeCount do
+        begin
+          oLoteDFe := oConsultarDistribuicaoNFSeNSU.Result.GetLoteDFe(I-1);
+          ShowMessage(oLoteDFe.ChaveAcesso);
+          ShowMessage(oLoteDFe.ArquivoXml.NFSe.Versao);
+          ShowMessage(oLoteDFe.ArquivoXml.NFSe.InfNFSe.Id);
+          ShowMessage(oLoteDFe.ArquivoXml.NFSe.InfNFSe.NNFSe);
 
-        proximoNSU := oLoteDFe.NSU; //Proximo NSU a ser consultado
-        ShowMessage(proximoNSU);
+          //Pegar o proximo NSU a ser consultado
+          proximoNSU := oLoteDFe.NSU;
+          ShowMessage(proximoNSU);
+        end;
+
+        //Forma de pegar o proximoNSU a ser consultado direto, sem o FOR
+        oLoteDFe := oConsultarDistribuicaoNFSeNSU.Result.GetLoteDFe(oConsultarDistribuicaoNFSeNSU.Result.GetLoteDFeCount - 1);
+        proximoNSU := oLoteDFe.NSU;
+        ShowMessage('NSU: ' + VarToStr(proximoNSU));
+
+        //Pegar conteúdo de propriedades auxiliares para facilitar
+        for I := 1 to oConsultarDistribuicaoNFSeNSU.GetNFSeDesserializadaCount do
+        begin
+          oNFSe := oConsultarDistribuicaoNFSeNSU.GetNFSeDesserializada(I-1);
+
+          ShowMessage(oNFSe.Versao);
+          ShowMessage(oNFSe.InfNFSe.Id);
+          ShowMessage(oNFSe.InfNFSe.NNFSe);
+
+          //Pegar a string do XML da NFSe para gravar em banco de dados
+          xmlNFSeString := oNFSe.GerarXmlString();
+
+          ShowMessage(xmlNFSeString);
+        end;
+
+        //Gravar XMLs retornados em uma pasta específica
         oConsultarDistribuicaoNFSeNSU.GravarXMLNFSe('d:\testenfe');
       end;
     end;
