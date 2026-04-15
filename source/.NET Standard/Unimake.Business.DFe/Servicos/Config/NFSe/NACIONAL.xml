@@ -244,8 +244,8 @@
 		</ConsultarDistribuicaoNFSeNSU>
 		<ConsultaEventosNFSeChaveAcesso versao="1.01">
 			<Descricao>Consultar Eventos da NFSe por Chave de Acesso</Descricao>
-			<RequestURIProducao>https://sefin.nfse.gov.br/contribuintes/nfse/{ChaveNFSe}/eventos</RequestURIProducao>
-			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/contribuintes/nfse/{ChaveNFSe}/eventos</RequestURIHomologacao>
+			<RequestURIProducao>https://adn.nfse.gov.br/contribuintes/NFSe/{ChaveNFSe}/Eventos</RequestURIProducao>
+			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/contribuintes/NFSe/{ChaveNFSe}/Eventos</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
