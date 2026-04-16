@@ -387,7 +387,8 @@ namespace Unimake.Business.DFe
                 (servico.SelectSingleNode("*[local-name()='NaoAssina']")?.InnerText.ToLower() == "produção" ? TipoAmbiente.Producao : (TipoAmbiente?)null),
 
                 UsaCertificadoDigital = servico.SelectSingleNode("*[local-name()='UsaCertificadoDigital']")?.InnerText?.Trim() != "false",
-                GerarQRCode = servico.SelectSingleNode("*[local-name()='GerarQrCode']")?.InnerText?.Trim() != "true"
+
+                GerarQRCode = servico.SelectSingleNode("*[local-name()='GerarQrCode']")?.InnerText?.Trim() == "true"
 
             };
         }
@@ -480,7 +481,7 @@ namespace Unimake.Business.DFe
 
         private static void AtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao)
         {
-            foreach (XmlNode grupoUF in servico.SelectNodes("GrupoUrl/GrupoUF"))
+            foreach (XmlNode grupoUF in servico.SelectNodes("GrupoUrl/Grupo"))
             {
                 foreach (XmlNode uf in grupoUF.SelectNodes("UF"))
                 {

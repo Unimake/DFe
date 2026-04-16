@@ -593,7 +593,7 @@
 					</Urls>
 				</Grupo>
 				<Grupo>
-					<UF>BA</UF>>
+					<UF>BA</UF>
 					<Urls>
 						<UrlChaveHomologacao>http://hinternet.sefaz.ba.gov.br/nfce/consulta</UrlChaveHomologacao>
 						<UrlChaveProducao>www.sefaz.ba.gov.br/nfce/consulta</UrlChaveProducao>
@@ -791,7 +791,7 @@
 					</Urls>
 				</Grupo>
 				<Grupo>
-					<UF>SP</UF>
+					<UF>TO</UF>
 					<Urls>
 						<UrlChaveHomologacao>http://homologacao.sefaz.to.gov.br/nfce/consulta</UrlChaveHomologacao>
 						<UrlChaveProducao>http://www.sefaz.to.gov.br/nfce/consulta</UrlChaveProducao>
