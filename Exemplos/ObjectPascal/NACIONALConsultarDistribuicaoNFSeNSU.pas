@@ -52,9 +52,9 @@ begin
 
     // Montar o XML de consulta
     oDistribuicaoNFSe := CreateOleObject('Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta.DistribuicaoNFSe');
-    oDistribuicaoNFSe.NSU := '000000000000001';
+    oDistribuicaoNFSe.NSU := '000000000000000';
     oDistribuicaoNFSe.TipoNSU := 'DISTRIBUICAO';
-    oDistribuicaoNFSe.Lote := 'false';
+   oDistribuicaoNFSe.Lote := 'true';
 
     XML := oDistribuicaoNFSe.GerarXMLString();
 
@@ -93,7 +93,7 @@ begin
       Free;
     end;
 
-    ShowMessage('XML retornado pela prefeitura:' + sLineBreak + oConsultarDistribuicaoNFSeNSU.RetornoWSString);
+    ShowMessage('XML retornado pela Receita Federal:' + sLineBreak + oConsultarDistribuicaoNFSeNSU.RetornoWSString);
 
     //Se não retornar "DOCUMENTOS_LOCALIZADOS" mantem o NSU que está sendo consultado para consultar mais tarde, ou seja, não mudar.
     if oConsultarDistribuicaoNFSeNSU.Result.StatusProcessamento = 'DOCUMENTOS_LOCALIZADOS' then
