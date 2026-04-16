@@ -1,16 +1,13 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
-using System.Xml.Linq;
 using Unimake.Business.DFe.ConsumirServico.Builders;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
@@ -278,7 +275,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             foreach (Match match in Regex.Matches(Configuracoes.RequestURI, @"\{(\w+)\}"))
             {
                 var tagName = match.Groups[1].Value;
-                var value = GetXMLElementInnertext(tagName);    
+                var value = GetXMLElementInnertext(tagName);
                 if (value != null)
                     Configuracoes.RequestURI = Configuracoes.RequestURI.Replace(match.Value, value);
             }
@@ -558,11 +555,21 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", GetXMLElementInnertext("chNFSe"));
                     return;
                 }
-
-                var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
-                var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
-                var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+                else if (Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps)
+                {
+                    var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 4;
+                    var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+                    var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+                    return;
+                }
+                else
+                {
+                    var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+                    var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+                    var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+                }
             }
         }
         #endregion
