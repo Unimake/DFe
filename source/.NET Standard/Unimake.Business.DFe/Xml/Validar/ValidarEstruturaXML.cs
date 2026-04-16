@@ -1,13 +1,18 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.X509;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
+using Unimake.Business.DFe.Isoladores;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Isoladores;
-using Unimake.Business.DFe.Vinculadores;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Vinculadores;
+using Unimake.Business.DFe.Xml.Validar.QRCode;
+using Unimake.Exceptions;
+using Unimake.Formatters;
+
 
 
 
@@ -19,9 +24,10 @@ namespace Unimake.Business.DFe
     public class ValidarEstruturaXML
     {
 
+
         /// <summary>
-        /// Classe de resultado da validação, contendo um boolean para indicar se a validação foi bem-sucedida 
-        /// e um objeto de informação para retornar detalhes sobre o serviço e os schemas utilizados na validação.
+        /// Classe de resultado da validação, contendo um boolean para indicar se a validação foi bem-sucedida,
+        /// Descriação da validação, mensagem de retorno sobre a validação, status da valiação e o xml assinado.
         /// </summary>
         public class ResultadoValidacao
         {
@@ -31,23 +37,34 @@ namespace Unimake.Business.DFe
             public bool Validado { get; set; }
 
             /// <summary>
-            /// Descrição do serviço validado, com o tipo e o serviço
+            /// Descrição do serviço validado, com o tipo e o serviço.
             /// </summary>
             public string Descricao { get; set; }
 
             /// <summary>
-            /// Mensagem de erro caso ocorra uma exceção 
+            /// Mensagem de retorno da validação, caso a validação tenha retornado false, para informar o motivo do erro.
             /// </summary>
-            public string MensagemErro { get; set; }
+            public string MensagemRetorno { get; set; }
+
+            /// <summary>
+            /// Status da validação
+            /// </summary>
+            public string StatusValidacao { get; set; }
+
+            /// <summary>
+            /// Xml após a assinatura 
+            /// </summary>
+            public XmlDocument XmlAssinado { get; set; }
+
+
         }
 
 
-
         /// <summary>
-        /// Guarda as configurações do XML de configuracção para o acesso durante a validação, evitando múltiplas consultas ao XML.
+        /// Guarda as configurações do XML de configuracção para o acesso durante a validação, evitando múltiplas consultas ao XML de configuração.
         /// </summary>
 
-        public struct InformacaoXML
+        public class InformacaoXML
         {
             /// <summary>
             /// Tag raiz do XML, utilizada para identificar o tipo de documento e 
@@ -135,6 +152,11 @@ namespace Unimake.Business.DFe
             /// Tag que indica se o serviço deve ser assinado ou não dependendo do Tipo Ambiente
             /// </summary>
             public TipoAmbiente? NaoAssina { get; set; }
+
+            /// <summary>
+            /// Tag que indica se o serviço utiliza QRcode
+            /// </summary>
+            public bool GerarQRCode { get; set; }
         }
 
 
@@ -163,79 +185,121 @@ namespace Unimake.Business.DFe
         /// Valida o XML de acordo com as regras definidas no XML de configuração de serviços.
         /// </summary>
         /// <param name="xml">Documento XML para a validação</param>
-        /// <param name="certificado">Certificado Digital A1 para assinatura</param>
-        /// <param name="tipoAmbiente">Tipo de ambiente (produção ou homologação) para considerar regras de assinatura</param>
-        /// <param name="padraoNFSe">Padrão para documentos NFSe</param>
+        /// <param name="configuracao">Configurações com as informações de vcalidação do DFe</param>
         /// <exception cref="Exception"></exception>
-        public ResultadoValidacao ValidarServico(XmlDocument xml, X509Certificate2 certificado, TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe = PadraoNFSe.None)
+        public ResultadoValidacao ValidarServico(XmlDocument xml, Configuracao configuracao)
         {
+            var certificado = configuracao.CertificadoDigital;
+            var tipoAmbiente = configuracao.TipoAmbiente;
+            var padraoNFSe = configuracao.PadraoNFSe;
+            var codigoUF = (UFBrasil)configuracao.CodigoUF;
 
-            var xmlConfig = CarregarConfigValidacao();
+            var tipoDFe = padraoNFSe != PadraoNFSe.None
+            ? TipoDFe.NFSe
+            : DetectarTipoDFe(xml);
 
-            TipoDFe tipoDFe = padraoNFSe != PadraoNFSe.None
-                ? TipoDFe.NFSe
-                : DetectarTipoDFe(xml);
-
-            string tagRaiz = xml.DocumentElement.Name;
-            string versao = ObterVersao(xml, xmlConfig, tipoDFe);
-            XmlNode servico = ObterServico(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
-
-            // Caso o node servico venha vazio retorna por padrão que a validação deu certo pois significa que o serviço específico não
-            // está implementado no arquivo xml de validação, podendo ser uma versão antiga que ainda é utilizada mas não esta no arquivo de 
-            // de configuração dessa forma retorna como validado.
-            if (servico is null)
-                return new ResultadoValidacao
-                {
-                    Validado = true,
-                    Descricao = "Arquivo não validado: Possível versão antiga que ainda é utilizado porém não validada."
-                };
-
-
-            var inform = MontarInformacaoGeral(servico);
-            AssinarSeNecessario(xml, inform, certificado, tipoAmbiente);
             try
             {
-                // Se não tem schemas específicos, valida só o geral mesmo
-                if (servico.SelectSingleNode(".//*[local-name()='SchemasEspecificos']") is null)
+                configuracao.TipoDFe = tipoDFe;
+                var xmlConfig = CarregarConfigValidacao();
+                var tagRaiz = xml.DocumentElement.Name;
+                var versao = ObterVersao(xml, xmlConfig, tipoDFe);
+                var envelopar = tagRaiz.Equals("NFe");
+
+                if (envelopar)
                 {
-                    ValidarSchemaGeral(xml, inform, tipoDFe, padraoNFSe);
+                    // Caso não venha envelopado, envelopar para a criação do QRcode que necessita das tags especificas 
+                    tagRaiz = "enviNFe";
+                    xml = MontarNFeEnvio(xml, versao);
+                }
+
+
+                var servico = ObterServico(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
+                AtribuirUrl(servico, codigoUF, configuracao);
+
+                // Caso o padão de NFSe ainda não tenha sido implementado na rotina de validação
+                if (servico is null && tipoDFe == TipoDFe.NFSe)
+                    return new ResultadoValidacao
+                    {
+                        Validado = false,
+                        Descricao = $"Arquivo não validado: Rotina de validação não suporta o padrão '{padraoNFSe}'."
+                    };
+
+                var inform = MontarInformacaoGeral(servico);
+
+                try
+                {
+                    AssinarSeNecessario(xml, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
+
+                    // Se não tem schemas específicos, valida só o geral mesmo
+                    if (servico.SelectSingleNode(".//*[local-name()='SchemasEspecificos']") is null)
+                    {
+                        ValidarSchemaGeral(xml, inform, tipoDFe, padraoNFSe);
+
+                        if (envelopar)
+                        {
+                            // Caso O XML não venho envelopado, remover o envelope para devolver
+                            xml.LoadXml(xml.GetElementsByTagName("NFe")[0].OuterXml);
+                        }
+
+                        return new ResultadoValidacao
+                        {
+                            Validado = true,
+                            Descricao = inform.Descricao,
+                            MensagemRetorno = "XML assinado e validado com sucesso.",
+                            StatusValidacao = "1",
+                            XmlAssinado = xml
+                        };
+                    }
+
+                    // Se chegou aqui, tem schemas específicos para validar, então precisa vincular o XML especifico com os schema para depois validar cada um
+                    bool isEvento = servico.SelectSingleNode(".//*[local-name()='TagEvento']") != null;
+
+                    var vinculador = VinculadorFactory.Criar(tipoDFe, isEvento);
+                    var nodes = vinculador.Vincular(servico, xml);
+
+                    foreach (var (tipoCorreto, node) in nodes)
+                    {
+                        MontarInformacaoEspecifica(servico, tipoCorreto, inform);
+                        ValidarSchemaGeral(xml, inform, tipoDFe);
+                        ValidarSchemaEspecifico(node, inform, tipoDFe);
+                    }
+
                     return new ResultadoValidacao
                     {
                         Validado = true,
-                        Descricao = inform.Descricao
+                        Descricao = inform.Descricao,
+                        MensagemRetorno = "XML assinado e validado com sucesso.",
+                        StatusValidacao = "1",
+                        XmlAssinado = xml
                     };
                 }
 
-                // Se chegou aqui, tem schemas específicos para validar, então precisa vincular o XML especifico com os schema para depois validar cada um
-                bool isEvento = servico.SelectSingleNode(".//*[local-name()='TagEvento']") != null;
-
-                var vinculador = VinculadorFactory.Criar(tipoDFe, isEvento);
-                var nodes = vinculador.Vincular(servico, xml);
-
-                foreach (var (tipoCorreto, node) in nodes)
+                catch (Exception ex)
                 {
-                    MontarInformacaoEspecifica(servico, tipoCorreto, inform);
-                    ValidarSchemaGeral(xml, inform, tipoDFe);
-                    ValidarSchemaEspecifico(node, inform, tipoDFe);
+                    var status = ObterStatus(ex);
+
+                    return new ResultadoValidacao
+                    {
+                        Validado = false,
+                        Descricao = inform.Descricao,
+                        MensagemRetorno = ex.Message,
+                        StatusValidacao = status,
+                        XmlAssinado = xml,
+                    };
                 }
-
-                return new ResultadoValidacao
-                {
-                    Validado = true,
-                    Descricao = inform.Descricao
-                };
             }
             catch (Exception ex)
             {
                 return new ResultadoValidacao
                 {
                     Validado = false,
-                    Descricao = inform.Descricao,
-                    MensagemErro = ex.Message
+                    MensagemRetorno = ex.Message,
+                    StatusValidacao = "5",
+                    XmlAssinado = xml,
+
                 };
-
             }
-
         }
 
 
@@ -317,8 +381,14 @@ namespace Unimake.Business.DFe
                 TagLoteAtributoID = servico.SelectSingleNode("*[local-name()='TagLoteAtributoID']")?.InnerText,
                 TagExtraAssinatura = servico.SelectSingleNode("*[local-name()='TagExtraAssinatura']")?.InnerText,
                 TagExtraAtributoID = servico.SelectSingleNode("*[local-name()='TagExtraAtributoID']")?.InnerText,
-                NaoAssina = servico.SelectSingleNode("*[local-name()='NaoAssina']")?.InnerText.ToLower() == "homologação" ? TipoAmbiente.Homologacao : TipoAmbiente.Producao,
-                UsaCertificadoDigital = servico.SelectSingleNode("*[local-name()='UsaCertificadoDigital']")?.InnerText?.Trim() != "false"
+
+                //Criando a possibilidade de ser null para evitar o problema de atribuir o ambiente como produção caso a tag não exista.
+                NaoAssina = servico.SelectSingleNode("*[local-name()='NaoAssina']")?.InnerText.ToLower() == "homologação" ? TipoAmbiente.Homologacao :
+                (servico.SelectSingleNode("*[local-name()='NaoAssina']")?.InnerText.ToLower() == "produção" ? TipoAmbiente.Producao : (TipoAmbiente?)null),
+
+                UsaCertificadoDigital = servico.SelectSingleNode("*[local-name()='UsaCertificadoDigital']")?.InnerText?.Trim() != "false",
+                GerarQRCode = servico.SelectSingleNode("*[local-name()='GerarQrCode']")?.InnerText?.Trim() != "true"
+
             };
         }
 
@@ -331,27 +401,36 @@ namespace Unimake.Business.DFe
         }
 
 
-        private static void AssinarSeNecessario(XmlDocument xml, InformacaoXML info, X509Certificate2 cert, TipoAmbiente tipoAmbiente)
+        private void AssinarSeNecessario(XmlDocument xml, InformacaoXML inform, X509Certificate2 cert, Configuracao configuracao, TipoAmbiente tipoAmbiente, TipoDFe tipoDFe)
         {
-            if (!string.IsNullOrEmpty(info.TagAssinatura))
+            if (!string.IsNullOrEmpty(inform.TagAssinatura))
             {
-                Assinar(xml, info.TagAssinatura, info.TagAtributoID, info.NaoAssina, info.UsaCertificadoDigital, cert, tipoAmbiente);
+                Assinar(xml, inform.TagAssinatura, inform.TagAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
             }
 
-            if (!string.IsNullOrEmpty(info.TagLoteAssinatura))
+            if (!string.IsNullOrEmpty(inform.TagLoteAssinatura))
             {
-                Assinar(xml, info.TagLoteAssinatura, info.TagLoteAtributoID, info.NaoAssina, info.UsaCertificadoDigital, cert, tipoAmbiente);
+                Assinar(xml, inform.TagLoteAssinatura, inform.TagLoteAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
             }
 
-            if (!string.IsNullOrEmpty(info.TagExtraAssinatura))
+            if (!string.IsNullOrEmpty(inform.TagExtraAssinatura))
             {
-                Assinar(xml, info.TagExtraAssinatura, info.TagExtraAtributoID, info.NaoAssina, info.UsaCertificadoDigital, cert, tipoAmbiente);
+                Assinar(xml, inform.TagExtraAssinatura, inform.TagExtraAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
             }
 
         }
 
 
-        private static void Assinar(XmlDocument xml, string tagAssinatura, string tagID, TipoAmbiente? tagNaoAssina, bool usaCertificado, X509Certificate2 cert, TipoAmbiente tipoAmbiente)
+        private void Assinar(XmlDocument xml,
+            string tagAssinatura,
+            string tagID,
+            TipoAmbiente? tagNaoAssina,
+            bool usaCertificado,
+            bool gerarQrCode,
+            X509Certificate2 cert,
+            TipoAmbiente tipoAmbiente,
+            TipoDFe tipoDFe,
+            Configuracao configuracao)
         {
 
             if (string.IsNullOrWhiteSpace(tagAssinatura))
@@ -361,10 +440,14 @@ namespace Unimake.Business.DFe
             {
                 if (tagNaoAssina is null || tagNaoAssina != tipoAmbiente)
                 {
-
-                    if (!AssinaturaDigital.EstaAssinado(xml, tagAssinatura))
+                    try
                     {
-                        AssinaturaDigital.Assinar(xml, tagAssinatura, tagID, cert, AlgorithmType.Sha1);
+                        if (!AssinaturaDigital.EstaAssinado(xml, tagAssinatura))
+                        {
+                            AssinaturaDigital.Assinar(xml, tagAssinatura, tagID, cert, AlgorithmType.Sha1);
+
+
+                        }
 
                         //| TipoDFe         | Algoritmo |
                         //| --------------- | --------- | 
@@ -375,7 +458,45 @@ namespace Unimake.Business.DFe
                         //| Reinf           | SHA256    |
                         //| eSocial         | SHA256    | 
                         //| DARE            | SHA256    |
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new AssinaturaException("Ocorreu um erro ao assinar o XML: ", ex);
+                    }
 
+                    MontarQRCode(xml, gerarQrCode, tipoDFe, configuracao);
+                }
+            }
+        }
+
+
+        private void MontarQRCode(XmlDocument xml, bool gerarQrCode, TipoDFe tipoDFe, Configuracao configuracao)
+        {
+            var geradorQrCode = QrCodeFactory.Criar(configuracao, gerarQrCode, tipoDFe);
+            geradorQrCode?.GerarQrCode(xml, configuracao);
+        }
+
+
+
+        private static void AtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao)
+        {
+            foreach (XmlNode grupoUF in servico.SelectNodes("GrupoUrl/GrupoUF"))
+            {
+                foreach (XmlNode uf in grupoUF.SelectNodes("UF"))
+                {
+                    if (uf.InnerText.Equals(codigoUF.ToString(), StringComparison.OrdinalIgnoreCase))
+                    {
+                        var urls = grupoUF.SelectSingleNode("Urls");
+
+                        if (urls != null)
+                        {
+                            configuracao.UrlChaveHomologacao = urls["UrlChaveHomologacao"]?.InnerText;
+                            configuracao.UrlChaveProducao = urls["UrlChaveProducao"]?.InnerText;
+                            configuracao.UrlQrCodeHomologacao = urls["UrlQrCodeHomologacao"]?.InnerText;
+                            configuracao.UrlQrCodeProducao = urls["UrlQrCodeProducao"]?.InnerText;
+                        }
+
+                        return;
                     }
                 }
             }
@@ -385,26 +506,33 @@ namespace Unimake.Business.DFe
         private static void ValidarSchemaGeral(XmlDocument xml, InformacaoXML info, TipoDFe tipoDFe, PadraoNFSe padraoNFSe = PadraoNFSe.None)
         {
             if (string.IsNullOrEmpty(info.SchemaArquivo))
-                return;
+            {
+                throw new SemSchemaException("XML não validado: não foi possível realizar a validação por ausência de schema configurado para este tipo de documento.");
+
+            }
+
+            var tipoBusca = tipoDFe == TipoDFe.NFCe ? TipoDFe.NFe : tipoDFe;
 
             string schema = padraoNFSe == PadraoNFSe.None
-                ? $"{tipoDFe.ToString()}.{info.SchemaArquivo}"
-                : $"{tipoDFe.ToString()}.{padraoNFSe.ToString()}.{info.SchemaArquivo}";
+                ? $"{tipoBusca.ToString()}.{info.SchemaArquivo}"
+                : $"{tipoBusca.ToString()}.{padraoNFSe.ToString()}.{info.SchemaArquivo}";
 
             var validar = new ValidarSchema();
             validar.Validar(xml, schema, info.TargetNS, padraoNFSe);
 
             if (!validar.Success)
             {
-                throw new Exception($"Erro ao validar schema geral {validar.ErrorMessage}. XML foi identificado como ");
+                throw new ValidarXMLException($"Erro ao validar schema geral: {validar.ErrorMessage}.");
             }
         }
 
 
         private static void ValidarSchemaEspecifico(XmlNode eventoNode, InformacaoXML info, TipoDFe tipoDFe)
         {
-            if (string.IsNullOrEmpty(info.SchemaArquivo))
-                return;
+            if (string.IsNullOrEmpty(info.SchemaArquivoEspecifico))
+            {
+                throw new SemSchemaException("XML não validado: não foi possível realizar a validação por ausência de schema configurado para este tipo de documento.");
+            }
 
             //Isolando cada XML dependendo do tipoDFe
             var isolador = IsoladorFactory.CriarIsolador(tipoDFe);
@@ -416,7 +544,7 @@ namespace Unimake.Business.DFe
 
             if (!validarEspecifico.Success)
             {
-                throw new Exception($"Erro ao validar schema específico {validarEspecifico.ErrorMessage}");
+                throw new ValidarXMLException($"Erro ao validar schema específico: {validarEspecifico.ErrorMessage}.");
             }
         }
 
@@ -424,32 +552,69 @@ namespace Unimake.Business.DFe
 
         private static string ObterVersao(XmlDocument xml, XmlDocument xmlConfig, TipoDFe tipoDFe)
         {
-            XmlNodeList servicos = xmlConfig.GetElementsByTagName("Servico");
+            XmlNode servicoValidacao = xmlConfig.SelectSingleNode("ServicosValidacao");
 
-            foreach (XmlNode servico in servicos)
+            foreach (XmlNode nodeDFe in servicoValidacao.SelectNodes(tipoDFe.ToString()))
             {
-                var tagVersao = servico.SelectSingleNode("*[local-name()='TagVersao']")?.InnerText;
+                var servicos = nodeDFe.SelectNodes("Servico");
 
-                if (string.IsNullOrWhiteSpace(tagVersao))
-                    continue;
-
-                var nodeVersao = xml.GetElementsByTagName(tagVersao);
-
-                if (nodeVersao.Count > 0)
+                foreach (XmlNode servico in servicos)
                 {
-                    var versaoAtributo = ((XmlElement)nodeVersao[0]).GetAttribute("versao");
-                    var versaoValor = nodeVersao[0].InnerText; // Em alguns casos a versão pode estar no valor do nó ao invés de um atributo, então verificamos os dois
 
-                    if (!string.IsNullOrEmpty(versaoAtributo))
-                        return versaoAtributo;
+                    var tagVersao = servico.SelectSingleNode("*[local-name()='TagVersao']")?.InnerText;
 
-                    if (!string.IsNullOrEmpty(versaoValor))
-                        return versaoValor;
+                    if (string.IsNullOrWhiteSpace(tagVersao))
+                        continue;
 
+                    var nodeVersao = xml.GetElementsByTagName(tagVersao);
+
+                    if (nodeVersao.Count > 0)
+                    {
+                        var versaoAtributo = ((XmlElement)nodeVersao[0]).GetAttribute("versao");
+                        var versaoValor = nodeVersao[0].InnerText; // Em alguns casos a versão pode estar no valor do nó ao invés de um atributo, então verificamos os dois
+
+                        if (!string.IsNullOrEmpty(versaoAtributo))
+                            return versaoAtributo;
+
+                        if (!string.IsNullOrEmpty(versaoValor))
+                            return versaoValor;
+
+                    }
                 }
             }
-
             return string.Empty;
+        }
+
+
+        private static XmlDocument MontarNFeEnvio(XmlDocument xml, string versao)
+        {
+            var nfeNode = xml.GetElementsByTagName("NFe")[0];
+
+            var xmlNFe = $"<enviNFe versao=\"{versao}\" xmlns=\"http://www.portalfiscal.inf.br/nfe\">" + "<idLote>000000000000001</idLote>"
+                         + "<indSinc>0</indSinc>" + nfeNode.OuterXml +
+                         "</enviNFe>";
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xmlNFe);
+
+            return doc;
+
+        }
+
+
+
+        private string ObterStatus(Exception ex)
+        {
+            if (ex is AssinaturaException)
+                return "4";
+
+            if (ex is SemSchemaException)
+                return "6";
+
+            if (ex is ValidarXMLException)
+                return "2";
+
+            return "3";
         }
 
 
@@ -471,6 +636,14 @@ namespace Unimake.Business.DFe
                 case "NFe":
                 case "enviNFe":
                 case "nfeProc":
+                    var modeloDoc = xml.GetElementsByTagName("mod")[0].InnerText;
+
+                    if (modeloDoc == ((int)ModeloDFe.NFCe).ToString())
+                    {
+                        tipoDFe = TipoDFe.NFCe;
+                        break;
+                    }
+
                     tipoDFe = TipoDFe.NFe;
                     break;
 
@@ -549,6 +722,7 @@ namespace Unimake.Business.DFe
 
             return tipoDFe;
         }
+
 
     }
 }
