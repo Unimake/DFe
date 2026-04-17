@@ -1944,13 +1944,13 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 04 - Redução de valores
         /// </summary>
-        [XmlEnum("4")]
+        [XmlEnum("04")]
         ReducaoValores = 4,
 
         /// <summary>
         /// 05 - Transferência de crédito na sucessão
         /// </summary>
-        [XmlEnum("5")]
+        [XmlEnum("05")]
         TransferenciaDeCreditoNaSucessao = 5
     }
 
