@@ -1821,6 +1821,44 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>AP</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>MG</UF>
+					<UF>MS</UF>
+					<UF>MT</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PE</UF>
+					<UF>PI</UF>
+					<UF>PR</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RR</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>SP</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/mdfe/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/mdfe/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
 			<SchemasEspecificos>
 				<Tipo>
 					<ID>1</ID>
