@@ -1500,6 +1500,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaporeRS.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DiademaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBernardoDoCampoSP.xml" />
 	</ItemGroup>
@@ -1515,6 +1519,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\JutiMS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAndreSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloRJ.xml" />
 		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
 	</ItemGroup>
 

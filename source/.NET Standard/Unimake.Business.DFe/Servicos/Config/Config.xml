@@ -2507,4 +2507,16 @@
 		<ArqConfig>DiademaSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4309407">
+		<Nome>Guaporé - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>GuaporeRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3304904">
+		<Nome>São Gonçalo - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>SaoGoncaloRJ.xml</ArqConfig>
+		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
