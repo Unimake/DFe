@@ -1484,6 +1484,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 
         #region Should Serialize
+
+        /// <summary>
+        /// Caso o cliente seja "Não Optante" do Simples Nacional, o campo "indTotTrib" é opcional, podendo ser omitida
+        /// Nos outros casos, a tag "indTotTrib" deve ser declarada
+        /// </summary>
+        public bool ShouldSerializeIndTotTrib() => IndTotTrib > 0;
         public bool ShouldSerializePTotTribSNField() => PTotTribSN > 0;
         public void ValidarTotaisTributacao()
         {

@@ -6042,7 +6042,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeQBCMonoRet() => QBCMonoRet > 0;
+        //public bool ShouldSerializeQBCMonoRet() => QBCMonoRet > 0;
 
         #endregion
     }
