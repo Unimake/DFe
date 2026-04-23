@@ -22,12 +22,17 @@ namespace Unimake.Business.DFe.Utility
     internal static class QrCodeXmlHelper
     {
         /// <summary>
-        /// Monta e inclui o grupo suplementar <c>infNFeSupl</c> com as tags de QRCode para NFC-e.
+        /// Monta e inclui o grupo suplementar <c>infNFeSupl</c> com as tags de QRCode para NFC-e,
+        /// aceitando XML no formato de lote (<c>enviNFe</c>) ou XML contendo diretamente a tag <c>NFe</c>.
         /// </summary>
-        /// <param name="conteudoXml">Documento XML da NFC-e já carregado em memória.</param>
+        /// <param name="conteudoXml">
+        /// Documento XML da NFC-e já carregado em memória, podendo iniciar com <c>enviNFe</c>
+        /// (com uma ou mais <c>NFe</c>) ou com a própria tag <c>NFe</c>.
+        /// </param>
         /// <param name="configuracoes">Configurações do serviço (ambiente, URLs, CSC, token e certificado).</param>
         /// <remarks>
-        /// O método processa todas as tags <c>NFe</c> dentro do lote <c>enviNFe</c>.
+        /// Quando o XML estiver no formato de lote, o método processa todas as tags <c>NFe</c> do <c>enviNFe</c>.
+        /// Quando o XML contiver somente <c>NFe</c>, processa o(s) documento(s) localizado(s) diretamente.
         /// Caso o grupo suplementar já exista em determinada nota, ele não é recriado.
         /// </remarks>
         /// <exception cref="Exception">
@@ -36,17 +41,26 @@ namespace Unimake.Business.DFe.Utility
         /// </exception>
         public static void MontarQrCodeNFCe(XmlDocument conteudoXml, Configuracao configuracoes)
         {
-            if (conteudoXml.GetElementsByTagName("enviNFe").Count <= 0)
-            {
-                throw new Exception("A tag obrigatória <enviNFe> não foi localizada no XML.");
-            }
-            var elementEnviNFe = (XmlElement)conteudoXml.GetElementsByTagName("enviNFe")[0];
+            XmlNodeList nodeListNFe;
 
-            if (conteudoXml.GetElementsByTagName("NFe").Count <= 0)
+            if (conteudoXml.GetElementsByTagName("enviNFe").Count > 0)
             {
-                throw new Exception("A tag obrigatória <NFe>, do grupo de tag <enviNFe>, não foi localizada no XML.");
+                var elementEnviNFe = (XmlElement)conteudoXml.GetElementsByTagName("enviNFe")[0];
+                nodeListNFe = elementEnviNFe.GetElementsByTagName("NFe");
             }
-            var nodeListNFe = elementEnviNFe.GetElementsByTagName("NFe");
+            else if (conteudoXml.GetElementsByTagName("NFe").Count > 0)
+            {
+                nodeListNFe = conteudoXml.GetElementsByTagName("NFe");
+            }
+            else
+            {
+                throw new Exception("A tag obrigatória <enviNFe> ou <NFe> não foi localizada no XML.");
+            }
+
+            if (nodeListNFe.Count <= 0)
+            {
+                throw new Exception("A tag obrigatória <NFe> não foi localizada no XML.");
+            }
 
             foreach (XmlNode nodeNFe in nodeListNFe)
             {

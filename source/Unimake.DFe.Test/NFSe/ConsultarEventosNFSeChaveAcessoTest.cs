@@ -139,18 +139,28 @@ namespace Unimake.DFe.Test.NFSe
 
             if (servico.Result?.LoteDFe?.Count > 0)
             {
-                Assert.NotEmpty(servico.Result.LoteDFe);
-
-                foreach (var evento in servico.Result.LoteDFe)
+                foreach (var documento in servico.Result.LoteDFe)
                 {
-                    Assert.NotNull(evento);
-                    Assert.NotEmpty(evento.ChaveAcesso);
+                    Assert.NotEmpty(documento.ChaveAcesso);
+                    Assert.NotEmpty(documento.TipoDocumento);
+
+                    if (documento.TipoDocumento == "EVENTO")
+                    {
+                        Assert.NotEmpty(documento.TipoEvento);
+                        Assert.NotNull(documento.ArquivoXml?.Evento);
+                    }
+                    else
+                    {
+                        Assert.NotNull(documento.ArquivoXml?.NFSe);
+                    }
                 }
             }
 
             if (servico.Result?.Erros?.Count > 0)
             {
-                Assert.NotEmpty(servico.Result.Erros);
+                var primeiroErro = servico.Result.Erros[0];
+                Assert.NotEmpty(primeiroErro.Codigo);
+                Assert.NotEmpty(primeiroErro.Descricao);
             }
         }
     }

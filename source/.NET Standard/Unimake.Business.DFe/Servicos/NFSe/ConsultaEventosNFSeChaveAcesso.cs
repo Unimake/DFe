@@ -198,6 +198,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     try
                     {
                         var chave = XMLUtility.TagRead(loteXml, "ChaveAcesso");
+                        var tipoDocumento = XMLUtility.TagRead(loteXml, "TipoDocumento");
                         var arquivoXmlNodes = loteXml.GetElementsByTagName("ArquivoXml");
 
                         if (arquivoXmlNodes.Count == 0)
@@ -214,7 +215,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                             continue;
                         }
 
-                        var nomeArquivo = $"{chave}-nfse.xml";
+                        var sufixo = string.Equals(tipoDocumento, "EVENTO", StringComparison.OrdinalIgnoreCase) ? "evento" : "nfse";
+                        var nomeArquivo = $"{chave}-{sufixo}.xml";
                         base.GravarXmlDistribuicao(pasta, nomeArquivo, xml);
                     }
                     catch
