@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.03.31.1002</AssemblyVersion>
-		<FileVersion>2026.03.31.1002</FileVersion>
+		<AssemblyVersion>2026.04.24.1334</AssemblyVersion>
+		<FileVersion>2026.04.24.1334</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -412,6 +412,7 @@
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CuritibaPR.xml" />
+		<None Remove="Servicos\Config\NFSe\DiademaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
 		<None Remove="Servicos\Config\NFSe\DracenaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DuartinaSP.xml" />
@@ -494,6 +495,7 @@
 		<None Remove="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\JundiaiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
+		<None Remove="Servicos\Config\NFSe\JutiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\LajeadoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\LavrasMG.xml" />
@@ -614,12 +616,14 @@
 		<None Remove="Servicos\Config\NFSe\SantaMariaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaRosaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaTerezinhaDeItaipuPR.xml" />
+		<None Remove="Servicos\Config\NFSe\SantoAndreSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SantoAntonioDaPatrulhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantoAntonioDaPlatinaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SantoAntonioDeJesusBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SantosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoBentoDoSulSC.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoBorjaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGabrielRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml" />
@@ -1496,10 +1500,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaporeRS.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\DiademaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBernardoDoCampoSP.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\JaguaraoRS.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ChuiRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\QuatroBarrasPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\JutiMS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAndreSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloRJ.xml" />
 		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
 	</ItemGroup>
 
@@ -3660,10 +3681,10 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.5" />
-		<PackageReference Include="Unimake.Cryptography" Version="20260323.1046.36" />
-		<PackageReference Include="Unimake.Extensions" Version="20260323.1046.36" />
-		<PackageReference Include="Unimake.Utils" Version="20260323.1046.36" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.7" />
+		<PackageReference Include="Unimake.Cryptography" Version="20260416.712.52" />
+		<PackageReference Include="Unimake.Extensions" Version="20260416.712.52" />
+		<PackageReference Include="Unimake.Utils" Version="20260416.712.52" />
 	</ItemGroup>
 
 	<ItemGroup>

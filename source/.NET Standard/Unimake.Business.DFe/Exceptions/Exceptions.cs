@@ -60,6 +60,42 @@ namespace Unimake.Exceptions
             : base(message) => HResult = (int)ErrorCodes.ValidacaoSchemaXML;
     }
 
+
+    /// <summary>
+    /// Classe de exceção quando ocorre erros na assinatura dos XMLs (NFe, CTe, MDFe, NFCe, etc...)
+    /// </summary>
+    public class AssinaturaException : Exception
+    {
+        /// <summary>
+        /// Exceção quando ocorre erros na assinatura dos XMLs
+        /// </summary>
+        /// <param name="message">Mensagem para exceção</param>
+        public AssinaturaException(string message) : base(message) { }
+
+        /// <summary>
+        /// Inicializa uma nova instância de AssinaturaException com a mensagem de erro especificada e a exceção interna
+        /// que a originou.
+        /// </summary>
+        /// <param name="message">Mensagem que descreve o erro ocorrido.</param>
+        /// <param name="innerException">Exceção interna que originou o erro.</param>
+        public AssinaturaException(string message, Exception innerException)
+            : base(message, innerException) { }
+    }
+
+
+    /// <summary>
+    /// Exceção lançada quando não há schema disponível para validação.
+    /// Usada principalmente para NFSe (status 6).
+    /// </summary>
+    public class SemSchemaException : Exception
+    {
+        /// <summary>
+        /// Inicializa uma nova instância de SemSchemaException com a mensagem de erro especificada.
+        /// </summary>
+        /// <param name="message">Mensagem que descreve o erro.</param>
+        public SemSchemaException(string message) : base(message) { }
+    }
+
     /// <summary>
     /// Classe de exceção quando ocorre erros no XML de retorno da NFSe. Sem retorno, inválido e etc
     /// </summary>

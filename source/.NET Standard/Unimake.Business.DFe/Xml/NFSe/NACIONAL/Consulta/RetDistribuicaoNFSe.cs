@@ -11,6 +11,7 @@ using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml;
 using System.Text;
 using NFSeNacional = Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe.NFSe;
+using EventoNacional = Unimake.Business.DFe.Xml.NFSe.NACIONAL.Evento;
 
 namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta
 {
@@ -222,47 +223,83 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta
         public string TipoDocumento { get; set; }
 
         /// <summary>
-        /// Tipo de evento (ex: CANCELAMENTO)
+        /// Tipo de evento (ex: CANCELAMENTO). Presente apenas quando TipoDocumento = "EVENTO".
         /// </summary>
         [XmlElement("TipoEvento")]
         public string TipoEvento { get; set; }
 
         /// <summary>
-        /// Arquivo XML comprimido em Base64 (GZIP)
+        /// Arquivo XML da NFSe ou evento, descomprimido e estruturado
         /// </summary>
         [XmlElement("ArquivoXml")]
-        public NFSeNacional ArquivoXml { get; set; }
+        public ArquivoXml ArquivoXml { get; set; }
 
         /// <summary>
         /// Data e hora de geração do documento
         /// </summary>
         [XmlElement("DataHoraGeracao")]
-        public DateTime DataHoraGeracao { get; set; }
+        public DateTime? DataHoraGeracao { get; set; }
 
         /// <summary>
-        /// Conteúdo do XML descompactado (propriedade derivada)
+        /// Conteúdo do XML da NFSe ou evento como string (propriedade derivada)
         /// </summary>
         [XmlIgnore]
-        public string ConteudoXML => ArquivoXml?.GerarXML().OuterXml ?? string.Empty;
+        public string ConteudoXML =>
+            ArquivoXml?.NFSe?.GerarXML().OuterXml ??
+            ArquivoXml?.Evento?.GerarXML().OuterXml ??
+            string.Empty;
 
         /// <summary>
-        /// Conteúdo do XML em XmlDocument (propriedade derivada)
+        /// Conteúdo do XML da NFSe ou evento em XmlDocument (propriedade derivada)
         /// </summary>
         [XmlIgnore]
         public XmlDocument DocXML
         {
             get
             {
-                if (ArquivoXml == null)
+                var doc = ArquivoXml?.NFSe?.GerarXML() ?? ArquivoXml?.Evento?.GerarXML();
+                if (doc == null)
                 {
                     return null;
                 }
 
-                var doc = ArquivoXml.GerarXML();
                 doc.PreserveWhitespace = true;
                 return doc;
             }
         }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeTipoEvento() => !string.IsNullOrWhiteSpace(TipoEvento);
+        public bool ShouldSerializeDataHoraGeracao() => DataHoraGeracao.HasValue;
+        #endregion ShouldSerialize
+
+    }
+
+    /// <summary>
+    /// Wrapper para o elemento ArquivoXml retornado pela API NACIONAL.
+    /// Após descompressão GZIP, o conteúdo pode ser uma NFSe ou um evento.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta.ArquivoXmlWrapper")]
+    [ComVisible(true)]
+#endif
+    [XmlType("ArquivoXml")]
+    public class ArquivoXml
+    {
+        private const string NfseNs = "http://www.sped.fazenda.gov.br/nfse";
+
+        /// <summary>
+        /// NFSe contida no arquivo XML. Populado quando TipoDocumento = "NFSE".
+        /// </summary>
+        [XmlElement("NFSe", Namespace = NfseNs)]
+        public NFSeNacional NFSe { get; set; }
+
+        /// <summary>
+        /// Evento contido no arquivo XML. Populado quando TipoDocumento = "EVENTO".
+        /// </summary>
+        [XmlElement("evento", Namespace = NfseNs)]
+        public EventoNacional Evento { get; set; }
     }
 
     /// <summary>

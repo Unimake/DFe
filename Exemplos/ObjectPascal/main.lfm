@@ -347,6 +347,15 @@ object frmPrincipal: TfrmPrincipal
       TabOrder = 13
       OnClick = BtnNACIONALConsultarEventoNFSeClick
     end
+    object BtnNACIONALConsultarDistribuicaoNFSeNSU: TToggleBox
+      Left = 9
+      Height = 62
+      Top = 704
+      Width = 321
+      Caption = 'NACIONAL - Consultar Chaves/NFSe´s por NSU e fazer download'
+      TabOrder = 14
+      OnClick = BtnNACIONALConsultarDistribuicaoNFSeNSUClick
+    end
   end
   object GroupBox5: TGroupBox
     Left = 1489

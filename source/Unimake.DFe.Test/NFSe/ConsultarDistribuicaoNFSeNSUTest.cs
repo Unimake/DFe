@@ -79,7 +79,7 @@ namespace Unimake.DFe.Test.NFSe
                 Assert.NotEmpty(primeiroDocumento.ChaveAcesso);
                 Assert.NotEmpty(primeiroDocumento.TipoDocumento);
                 Assert.NotNull(primeiroDocumento.ArquivoXml);
-                Assert.NotNull(primeiroDocumento.ArquivoXml.InfNFSe);
+                Assert.True(primeiroDocumento.ArquivoXml.NFSe != null || primeiroDocumento.ArquivoXml.Evento != null);
                 
                 var conteudoDescompactado = primeiroDocumento.ConteudoXML;
                 Assert.NotEmpty(conteudoDescompactado);

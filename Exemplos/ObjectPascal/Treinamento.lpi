@@ -314,6 +314,10 @@
         <Filename Value="NACIONALConsultarEventoNFSe.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="NACIONALConsultarDistribuicaoNFSeNSU.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

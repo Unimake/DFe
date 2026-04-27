@@ -2471,4 +2471,52 @@
 		<ArqConfig>ChuiRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5005152">
+		<Nome>Juti - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>JutiMS.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4311007">
+		<Nome>Jaguarão - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>JaguaraoRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3547809">
+		<Nome>Santo André - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SantoAndreSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3548708">
+		<Nome>São Bernardo do Campo - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoBernardoDoCampoSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3548807">
+		<Nome>São Caetano do Sul - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoCaetanoDoSulSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3513801">
+		<Nome>Diadema - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>DiademaSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4309407">
+		<Nome>Guaporé - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>GuaporeRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3304904">
+		<Nome>São Gonçalo - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>SaoGoncaloRJ.xml</ArqConfig>
+		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -589,6 +589,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consultar NSU da NFSe NACIONAL")]
         NFSeConsultarDistribuicaoNFSeNSU = 95,
 
+        /// <summary>
+        /// 96 - Consultar Eventos da NFSe por Chave de Acesso da NFSe NACIONAL
+        /// </summary>
+        [Description("Consultar Eventos da NFSe por Chave de Acesso da NFSe NACIONAL")]
+        NFSeConsultarEventosNFSeChaveAcesso = 96,
+
         #endregion
 
         #region Gerais
@@ -1938,13 +1944,13 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 04 - Redução de valores
         /// </summary>
-        [XmlEnum("4")]
+        [XmlEnum("04")]
         ReducaoValores = 4,
 
         /// <summary>
         /// 05 - Transferência de crédito na sucessão
         /// </summary>
-        [XmlEnum("5")]
+        [XmlEnum("05")]
         TransferenciaDeCreditoNaSucessao = 5
     }
 

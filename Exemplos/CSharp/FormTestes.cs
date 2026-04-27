@@ -7751,5 +7751,220 @@ namespace TreinamentoDLL
 
             DANFe.UnidanfeServices.Execute(config2);
         }
+
+        private void btnImpDANFESemValorFiscal_Click(object sender, EventArgs e)
+        {
+            #region Motar o XML
+
+            var xml = new XmlNFe.EnviNFe
+            {
+                Versao = "4.00",
+                IdLote = "000000000000001",
+                IndSinc = SimNao.Sim,
+                NFe = new List<XmlNFe.NFe>
+                {
+                    new XmlNFe.NFe
+                    {
+                        InfNFe = new List<XmlNFe.InfNFe>
+                        {
+                            new XmlNFe.InfNFe
+                            {
+                                Versao = "4.00",
+                                Ide = new XmlNFe.Ide
+                                {
+                                    CUF = UFBrasil.PR,
+                                    NatOp = "VENDA PRODUC.DO ESTABELEC",
+                                    Mod = ModeloDFe.NFe,
+                                    Serie = 1,
+                                    NNF = 0, //SEMVALOR
+                                    DhEmi = DateTime.Now,
+                                    DhSaiEnt = DateTime.Now,
+                                    TpNF = TipoOperacao.Saida,
+                                    IdDest = DestinoOperacao.OperacaoInterna,
+                                    CMunFG = 4118402,
+                                    TpImp = FormatoImpressaoDANFE.NFCe,
+                                    TpEmis = TipoEmissao.ContingenciaOffLine,
+                                    TpAmb = TipoAmbiente.Producao,
+                                    FinNFe = FinalidadeNFe.Normal,
+                                    IndFinal = SimNao.Sim,
+                                    IndPres = IndicadorPresenca.OperacaoPresencial,
+                                    ProcEmi = ProcessoEmissao.AplicativoContribuinte,
+                                    VerProc = "TESTE 1.00",
+                                    DhCont = DateTime.Now,
+                                    XJust = "Emitido em contingência devido a problemas técnicos."
+                                },
+                                Emit = new XmlNFe.Emit
+                                {
+                                    CNPJ = "06117473000150",
+                                    XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA",
+                                    XFant = "UNIMAKE - PARANAVAI",
+                                    EnderEmit = new XmlNFe.EnderEmit
+                                    {
+                                        XLgr = "RUA ANTONIO FELIPE",
+                                        Nro = "1500",
+                                        XBairro = "CENTRO",
+                                        CMun = 4118402,
+                                        XMun = "PARANAVAI",
+                                        UF = UFBrasil.PR,
+                                        CEP = "87704030",
+                                        Fone = "04431414900"
+                                    },
+                                    IE = "9032000301",
+                                    IM = "14018",
+                                    CNAE = "6202300",
+                                    CRT = CRT.SimplesNacional
+                                },
+                                Det = new List<XmlNFe.Det> {
+                                    new XmlNFe.Det
+                                    {
+                                        NItem = 1,
+                                        Prod = new XmlNFe.Prod
+                                        {
+                                            CProd = "01042",
+                                            CEAN = "SEM GTIN",
+                                            XProd = "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
+                                            NCM = "84714900",
+                                            CFOP = "5101",
+                                            UCom = "LU",
+                                            QCom = 1.00m,
+                                            VUnCom = 84.9000000000M,
+                                            VProd = 84.90,
+                                            CEANTrib = "SEM GTIN",
+                                            UTrib = "LU",
+                                            QTrib = 1.00m,
+                                            VUnTrib = 84.9000000000M,
+                                            IndTot = SimNao.Sim,
+                                            XPed = "300474",
+                                            NItemPed = "1"
+                                        },
+                                        Imposto = new XmlNFe.Imposto
+                                        {
+                                            VTotTrib = 12.63,
+                                            ICMS = new XmlNFe.ICMS
+                                            {
+                                                ICMSSN102 = new XmlNFe.ICMSSN102
+                                                {
+                                                    Orig = OrigemMercadoria.Nacional,
+                                                    CSOSN = "102"
+                                                }
+                                            },
+                                            PIS = new XmlNFe.PIS
+                                            {
+                                                PISOutr = new XmlNFe.PISOutr
+                                                {
+                                                    CST = "99",
+                                                    VBC = 0.00,
+                                                    PPIS = 0.00,
+                                                    VPIS = 0.00
+                                                }
+                                            },
+                                            COFINS = new XmlNFe.COFINS
+                                            {
+                                                COFINSOutr = new XmlNFe.COFINSOutr
+                                                {
+                                                    CST = "99",
+                                                    VBC = 0.00,
+                                                    PCOFINS = 0.00,
+                                                    VCOFINS = 0.00
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                Total = new XmlNFe.Total
+                                {
+                                    ICMSTot = new XmlNFe.ICMSTot
+                                    {
+                                        VBC = 0,
+                                        VICMS = 0,
+                                        VICMSDeson = 0,
+                                        VFCP = 0,
+                                        VBCST = 0,
+                                        VST = 0,
+                                        VFCPST = 0,
+                                        VFCPSTRet = 0,
+                                        VProd = 84.90,
+                                        VFrete = 0,
+                                        VSeg = 0,
+                                        VDesc = 0,
+                                        VII = 0,
+                                        VIPI = 0,
+                                        VIPIDevol = 0,
+                                        VPIS = 0,
+                                        VCOFINS = 0,
+                                        VOutro = 0,
+                                        VNF = 84.90,
+                                        VTotTrib = 12.63
+                                    }
+                                },
+                                Transp = new XmlNFe.Transp
+                                {
+                                    ModFrete = ModalidadeFrete.SemOcorrenciaTransporte
+                                },
+                                Cobr = new XmlNFe.Cobr()
+                                {
+                                    Fat = new XmlNFe.Fat
+                                    {
+                                        NFat = "057910",
+                                        VOrig = 84.90,
+                                        VDesc = 0,
+                                        VLiq = 84.90
+                                    },
+                                    Dup = new List<XmlNFe.Dup>
+                                    {
+                                        new XmlNFe.Dup
+                                        {
+                                            NDup = "001",
+                                            DVenc = DateTime.Now,
+                                            VDup = 84.90
+                                        }
+                                    }
+                                },
+                                Pag = new XmlNFe.Pag
+                                {
+                                    DetPag = new List<XmlNFe.DetPag>
+                                    {
+                                            new XmlNFe.DetPag
+                                            {
+                                                IndPag = IndicadorPagamento.PagamentoVista,
+                                                TPag = MeioPagamento.Dinheiro,
+                                                VPag = 84.90,
+                                            }
+                                    }
+                                },
+                                InfAdic = new XmlNFe.InfAdic
+                                {
+                                    InfCpl = ";CONTROLE: 0000241197;PEDIDO(S) ATENDIDO(S): 300474;Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008;Permite o aproveitamento do credito de ICMS no valor de R$ 2,40, correspondente ao percentual de 2,83% . Nos termos do Art. 23 - LC 123/2006 (Resolucoes CGSN n. 10/2007 e 53/2008);Voce pagou aproximadamente: R$ 6,69 trib. federais / R$ 5,94 trib. estaduais / R$ 0,00 trib. municipais. Fonte: IBPT/empresometro.com.br 18.2.B A3S28F;",
+                                },
+                                InfRespTec = new XmlNFe.InfRespTec
+                                {
+                                    CNPJ = "06117473000150",
+                                    XContato = "Wandrey Mundin Ferreira",
+                                    Email = "wandrey@unimake.com.br",
+                                    Fone = "04431414900"
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            #endregion Motar o XML
+
+            DANFe.UnidanfeServices.ShowConfigurationScreen();
+
+            #region Disparar o DANFE a partir do XML acima
+
+            var config = new DANFe.Configurations.UnidanfeConfiguration
+            {
+                Arquivo = xml.GerarXML().GetElementsByTagName("NFe")[0].OuterXml,
+                Visualizar = true,
+                Imprimir = false
+            };
+
+            DANFe.UnidanfeServices.Execute(config);
+
+            #endregion
+        }
     }
 }

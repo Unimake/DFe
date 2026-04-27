@@ -24,7 +24,7 @@ uses
   EventoCTeDesacordo, EventoEpecCte, ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE,
   EnviarNFCeOffline, EnviarNFeSincronoContingenciaSVC, NACIONALGerarNFSeObjeto,
   NACIONALCancelarNFSeObjeto, NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto,
-  NACIONALConsultarEventoNFSe;
+  NACIONALConsultarEventoNFSe, NACIONALConsultarDistribuicaoNFSeNSU;
 
 type
 
@@ -100,6 +100,7 @@ type
     GroupBox8: TGroupBox;
     BtnNACIONALCancelarNFSeObjeto: TToggleBox;
     BtnNACIONALConsultarEventoNFSe: TToggleBox;
+    BtnNACIONALConsultarDistribuicaoNFSeNSU: TToggleBox;
     procedure BtnBETHACancelarNFSeClick(Sender: TObject);
     procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
     procedure BtnBETHAConsultarNFSeRPSClick(Sender: TObject);
@@ -131,6 +132,7 @@ type
     procedure btnInutilizacaoNumeroNFeClick(Sender: TObject);
     procedure BtnNACIONALCancelarNFSeClick(Sender: TObject);
     procedure BtnNACIONALCancelarNFSeObjetoClick(Sender: TObject);
+    procedure BtnNACIONALConsultarDistribuicaoNFSeNSUClick(Sender: TObject);
     procedure BtnNACIONALConsultarEventoNFSeClick(Sender: TObject);
     procedure BtnNACIONALConsultarNFSeClick(Sender: TObject);
     procedure BtnNACIONALConsultarNFSeObjetoClick(Sender: TObject);
@@ -526,6 +528,18 @@ begin
     finally
     end;
 end;
+
+procedure TfrmPrincipal.BtnNACIONALConsultarDistribuicaoNFSeNSUClick(Sender: TObject);
+var
+  oServico: TNACIONALConsultarDistribuicaoNFSeNSU;
+begin
+  oServico := TNACIONALConsultarDistribuicaoNFSeNSU.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
 
 procedure TfrmPrincipal.BtnNACIONALConsultarEventoNFSeClick(Sender: TObject);
 var

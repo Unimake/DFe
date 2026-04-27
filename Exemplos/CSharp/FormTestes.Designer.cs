@@ -135,8 +135,9 @@ namespace TreinamentoDLL
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.tabPage12 = new System.Windows.Forms.TabPage();
-            this.btnImprimirNFeCancelada = new System.Windows.Forms.Button();
             this.btnImprimirEventos = new System.Windows.Forms.Button();
+            this.btnImprimirNFeCancelada = new System.Windows.Forms.Button();
+            this.btnImpDANFESemValorFiscal = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1213,6 +1214,7 @@ namespace TreinamentoDLL
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnImpDANFESemValorFiscal);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.BtnAbrirTeleConfigUnidanfe);
             this.tabPage1.Controls.Add(this.BtnConsultaStatusNFe);
@@ -1447,6 +1449,17 @@ namespace TreinamentoDLL
             this.tabPage12.Text = "Diversos";
             this.tabPage12.UseVisualStyleBackColor = true;
             // 
+            // btnImprimirEventos
+            // 
+            this.btnImprimirEventos.Location = new System.Drawing.Point(311, 53);
+            this.btnImprimirEventos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnImprimirEventos.Name = "btnImprimirEventos";
+            this.btnImprimirEventos.Size = new System.Drawing.Size(296, 35);
+            this.btnImprimirEventos.TabIndex = 35;
+            this.btnImprimirEventos.Text = "Imprimir Eventos de NFe, NFCe, etc";
+            this.btnImprimirEventos.UseVisualStyleBackColor = true;
+            this.btnImprimirEventos.Click += new System.EventHandler(this.btnImprimirEventos_Click);
+            // 
             // btnImprimirNFeCancelada
             // 
             this.btnImprimirNFeCancelada.Location = new System.Drawing.Point(311, 8);
@@ -1458,16 +1471,17 @@ namespace TreinamentoDLL
             this.btnImprimirNFeCancelada.UseVisualStyleBackColor = true;
             this.btnImprimirNFeCancelada.Click += new System.EventHandler(this.btnImprimirNFeCancelada_Click);
             // 
-            // btnImprimirEventos
+            // btnImpDANFESemValorFiscal
             // 
-            this.btnImprimirEventos.Location = new System.Drawing.Point(311, 53);
-            this.btnImprimirEventos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnImprimirEventos.Name = "btnImprimirEventos";
-            this.btnImprimirEventos.Size = new System.Drawing.Size(296, 35);
-            this.btnImprimirEventos.TabIndex = 35;
-            this.btnImprimirEventos.Text = "Imprimir Eventos de NFe, NFCe, etc";
-            this.btnImprimirEventos.UseVisualStyleBackColor = true;
-            this.btnImprimirEventos.Click += new System.EventHandler(this.btnImprimirEventos_Click);
+            this.btnImpDANFESemValorFiscal.CausesValidation = false;
+            this.btnImpDANFESemValorFiscal.Location = new System.Drawing.Point(331, 476);
+            this.btnImpDANFESemValorFiscal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnImpDANFESemValorFiscal.Name = "btnImpDANFESemValorFiscal";
+            this.btnImpDANFESemValorFiscal.Size = new System.Drawing.Size(296, 35);
+            this.btnImpDANFESemValorFiscal.TabIndex = 38;
+            this.btnImpDANFESemValorFiscal.Text = "Imprimir DANFe sem valor fiscal";
+            this.btnImpDANFESemValorFiscal.UseVisualStyleBackColor = true;
+            this.btnImpDANFESemValorFiscal.Click += new System.EventHandler(this.btnImpDANFESemValorFiscal_Click);
             // 
             // FormTestes
             // 
@@ -1607,6 +1621,7 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnEnviarNFeSincronoRTC;
         private System.Windows.Forms.Button btnImprimirNFeCancelada;
         private System.Windows.Forms.Button btnImprimirEventos;
+        private System.Windows.Forms.Button btnImpDANFESemValorFiscal;
     }
 }
 

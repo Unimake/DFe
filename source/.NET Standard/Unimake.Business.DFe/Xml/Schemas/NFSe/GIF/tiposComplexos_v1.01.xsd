@@ -1190,7 +1190,7 @@
   <!--TIPO COMPLEXO PARA OS CAMPOS ESPECÍFICOS DE ENDEREÇO NO EXTERIOR-->
   <xs:complexType name="TCEnderExt">
     <xs:sequence>
-      <xs:element name="cPais" type="TSCodPaisISO">
+      <xs:element name="cPais" type="TSCodPaisAceito">
         <xs:annotation>
           <xs:documentation>Código do país (Tabela de Países ISO)</xs:documentation>
         </xs:annotation>
@@ -1318,7 +1318,7 @@
           <xs:documentation>Código do município onde o serviço foi prestado (tabela do IBGE)</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="cPaisPrestacao" type="TSCodPaisISO">
+      <xs:element name="cPaisPrestacao" type="TSCodPaisAceito">
         <xs:annotation>
           <xs:documentation>Código do país onde o serviço foi prestado (Tabela de Países ISO)</xs:documentation>
         </xs:annotation>
@@ -1867,7 +1867,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="cPaisResult" type="TSCodPaisISO" minOccurs="0">
+      <xs:element name="cPaisResult" type="TSCodPaisAceito" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
             Código do país onde se verficou o resultado da prestação do serviço para o caso de Exportação de Serviço.(Tabela de Países ISO)
