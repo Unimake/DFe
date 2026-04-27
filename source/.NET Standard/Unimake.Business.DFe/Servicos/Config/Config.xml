@@ -1446,7 +1446,7 @@
 		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4124103">
-		<Nome>Santo Antônio da Platina - PR </Nome>
+		<Nome>Santo Antônio da Platina - PR</Nome>
 		<UF>PR</UF>
 		<ArqConfig>SantoAntonioDaPlatinaPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
@@ -2004,9 +2004,9 @@
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4120804">
-		<Nome>Quatro Barras - PR</Nome>
+		<Nome>QuatroBarras - PR</Nome>
 		<UF>PR</UF>
-		<ArqConfig>Quatro BarrasPR.xml</ArqConfig>
+		<ArqConfig>QuatroBarrasPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4104808">

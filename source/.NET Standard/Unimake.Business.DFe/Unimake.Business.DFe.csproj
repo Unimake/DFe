@@ -594,7 +594,7 @@
 		<None Remove="Servicos\Config\NFSe\PresidentePrudenteSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
 		<None Remove="Servicos\Config\NFSe\ProfessorJamilGO.xml" />
-		<None Remove="Servicos\Config\NFSe\Quatro BarrasPR.xml" />
+		<None Remove="Servicos\Config\NFSe\QuatroBarrasPR.xml" />
 		<None Remove="Servicos\Config\NFSe\RegenteFeijoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RibasDoRioPardoMS.xml" />
 		<None Remove="Servicos\Config\NFSe\RibeiraoPretoSP.xml" />
@@ -1499,6 +1499,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\ChuiRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ContagemMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\QuatroBarrasPR.xml" />
 		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
 	</ItemGroup>
 
@@ -1655,7 +1656,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PortoBeloSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PrataMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PresidentePrudenteSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\Quatro BarrasPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RegenteFeijoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDosCedrosSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDoSulSC.xml" />
