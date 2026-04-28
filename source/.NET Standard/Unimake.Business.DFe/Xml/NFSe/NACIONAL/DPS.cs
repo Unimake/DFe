@@ -342,7 +342,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public string CNaoNIF { get; set; }
 
         [XmlElement("CAEPF")]
-        public int CAEPF { get; set; }
+        public string CAEPF { get; set; }
 
         [XmlElement("IM")]
         public string IM { get; set; }
@@ -367,7 +367,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeNIF() => !string.IsNullOrWhiteSpace(NIF);
         public bool ShouldSerializeCNaoNIF() => !string.IsNullOrWhiteSpace(CNaoNIF);
-        public bool ShouldSerializeCAEPF() => CAEPF > 0;
+        public bool ShouldSerializeCAEPF() => !string.IsNullOrWhiteSpace(CAEPF);
         public bool ShouldSerializexNome() => !string.IsNullOrWhiteSpace(XNome);
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
@@ -519,10 +519,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public string CNaoNIF { get; set; }
 
         [XmlElement("CAEPF")]
-        public int CAEPF { get; set; }
+        public string CAEPF { get; set; }
 
         [XmlElement("IM")]
-        public int IM { get; set; }
+        public string IM { get; set; }
 
         [XmlElement("xNome")]
         public string XNome { get; set; }
@@ -541,11 +541,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeNIF() => !string.IsNullOrWhiteSpace(NIF);
         public bool ShouldSerializeCNaoNIF() => !string.IsNullOrWhiteSpace(CNaoNIF);
-        public bool ShouldSerializeCAEPF() => CAEPF > 0;
+        public bool ShouldSerializeCAEPF() => !string.IsNullOrWhiteSpace(CAEPF);
         public bool ShouldSerializexNome() => !string.IsNullOrWhiteSpace(XNome);
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
-        public bool ShouldSerializeIM() => IM > 0;
+        public bool ShouldSerializeIM() => !string.IsNullOrWhiteSpace(IM);
 
         public void ValidarDocUnico()
         {
