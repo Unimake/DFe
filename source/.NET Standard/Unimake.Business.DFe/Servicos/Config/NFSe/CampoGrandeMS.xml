@@ -3,8 +3,8 @@
 	<Servicos ID="NFSe">
 		<CancelarNfse versao="2.03">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -22,8 +22,8 @@
 		</CancelarNfse>
 		<ConsultarLoteRps versao="2.03">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -41,8 +41,8 @@
 		</ConsultarLoteRps>
 		<ConsultarNfseFaixa versao="2.03">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -60,8 +60,8 @@
 		</ConsultarNfseFaixa>
 		<ConsultarNfsePorRps versao="2.03">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -79,8 +79,8 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoPrestado versao="2.03">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<WebEnderecoHomologacao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -98,8 +98,8 @@
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseServicoTomado versao="2.03">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
-			<WebEnderecoHomologacao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -117,8 +117,8 @@
 		</ConsultarNfseServicoTomado>
 		<GerarNfse versao="2.03">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -136,8 +136,8 @@
 		</GerarNfse>
 		<RecepcionarLoteRps versao="2.03">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -155,8 +155,8 @@
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.03">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -174,8 +174,8 @@
 		</RecepcionarLoteRpsSincrono>
 		<SubstituirNfse versao="2.03">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://nfselote-r.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfselote.campogrande.ms.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse.xsd</SchemaArquivo>
