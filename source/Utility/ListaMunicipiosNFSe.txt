@@ -1,0 +1,743 @@
+__NOTITLE__
+==<big><font color="#008000">'''Municípios implementados no UniNFe e DLL'''</font></big>==
+
+Unificamos as antigas listas de municípios implementados no UniNFe e na DLL Unimake.DFe. Confira abaixo como ficou o novo formato:
+
+====<font color="#008000">Observações</font>====
+* Em caso de dúvidas sobre o padrão do município, clique no nome do padrão para visualizar os serviços disponíveis e exemplos de XML de envio.
+
+===<font color="#008000">'''ATENÇÃO aos padrões BETHA, BETHA_CLOUD, GINFES, MEMORY, ABASE, WEBFISCO, EQUIPLANO, FISCO e NACIONAL'''</font>===
+
+* No '''UniNFe''':
+** Veja como configurar a [[Manuais:UniNFe/MunicipiosMonitor/ConfigTodosPadroesUnico|NFSe para padrões com um único WSDL para todos os municípios]] no monitor UniNFe.
+* Na '''DLL Unimake.DFe''':
+** Veja como configurar a [[Manuais:Unimake.DFe/MunicipiosDLL/ConfigTodosPadroesUnico|NFSe para padrões com um único WSDL para todos os municípios]] na DLL Unimake.DFe.
+
+{| class="wikitable" style="width: 100%;"
+|-
+! Município
+! UF
+! Código IBGE
+! Padrão
+! Versão SCHEMA
+! Ambiente Produção
+! Ambiente Homologação
+|-
+||ABASE||BR||9999902||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ABASE|ABASE]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Águas de Lindóia||SP||3500501||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Agudo||RS||4300109||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Aimorés||MG||3101102||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PORTAL_FACIL|PORTAL_FACIL]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Alagoinhas||BA||2900702||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Alegrete||RS||4300406||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Além Paraíba||MG||3101508||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PORTAL_FACIL|PORTAL_FACIL]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Alvorada||RS||4300604||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Amambaí||MS||5000609||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Americana||SP||3501608||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TIPLAN|TIPLAN]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Anápolis||GO||5201108||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ISSNET|ISSNET]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Andradas||MG||3102605||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Angra dos Reis||RJ||3300100||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TIPLAN|TIPLAN]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Aparecida de Goiânia||GO||5201405||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ISSNET|ISSNET]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Aracaju||SE||2800308||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Araguaína||TO||1702109||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Araguari||MG||3103504||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Araquari||SC||4201307||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Araras||SP||3503307||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGISSWEB|SIGISSWEB]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Araripina||PE||2601102||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_HM2SOLUCOES|HM2SOLUCOES]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Araucária||PR||4101804||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Arcos||MG||3104205||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Ariquemes||RO||1100023||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Arroio do Meio||RS||4301008||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Arujá||SP||3503901||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SMARAPD|SMARAPD]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Assis||SP||3504008||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">1.00, 2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Assú||RN||2400208||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PUBLICA|PUBLICA]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Astorga||PR||4102109||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Avaré||SP||3504503||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Bagé||RS||4301602||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Balneário Piçarras||SC||4212809||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Barbacena||MG||3105608||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Bariri||SP||3505203||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Barra do Garças||MT||5101803||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_COPLAN|COPLAN]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Barra do Piraí||RJ||3300308||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Barra Mansa||RJ||3300407||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_COPLAN|COPLAN]]||<div style="text-align: center;">1.01, 2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Barra Velha||SC||4202107||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Barreiras||BA||2903201||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Barretos||SP||3505500||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_RLZ_INFORMATICA|RLZ_INFORMATICA]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Barueri||SP||3505708||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PROPRIOBARUERISP|PROPRIOBARUERISP]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Bastos||SP||3505807||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Bauru||SP||3506003||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SMARAPD|SMARAPD]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Bebedouro||SP||3506102||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_CONAM|CONAM]]||<div style="text-align: center;">4.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Belém||PA||1501402||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DSF|DSF]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||BETHA||BR||9999903||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_BETHA|BETHA]]||<div style="text-align: center;">1.00, 2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||BETHA_CLOUD||BR||9999907||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_BETHA_CLOUD|BETHA_CLOUD]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Biguaçu||SC||4202305||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Blumenau||SC||4202404||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIMPLISS|SIMPLISS]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Boituva||SP||3507001||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Bom Despacho||MG||3107406||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Bom Princípio||RS||4302352||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Botucatu||SP||3507506||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Bragança Paulista||SP||3507605||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_CONAM|CONAM]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Brasília||DF||5300108||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ISSNET|ISSNET]]||<div style="text-align: center;">1.01, 2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Brumado||BA||2904605||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cabedelo||PB||2503209||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TINUS|TINUS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Cabo de Santo Agostinho||PE||2602902||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TINUS|TINUS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cabo Frio||RJ||3300704||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_NOBESISTEMAS|NOBESISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cáceres||MT||5102504||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_RLZ_INFORMATICA|RLZ_INFORMATICA]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cachoeira do Sul||RS||4303004||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cachoeirinha||RS||4303103||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Cacoal||RO||1100049||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Caieiras||SP||3509007||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_CONAM|CONAM]]||<div style="text-align: center;">4.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cajuru||SP||3509403||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_CONAM|CONAM]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Camaçari||BA||2905701||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRODEB|PRODEB]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Camaragibe||PE||2603454||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TINUS|TINUS]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cambará||PR||4103602||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Camboriú||SC||4203204||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Campina Grande||PB||2504009||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Campina Grande do Sul||PR||4104006||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Campinas||SP||3509502||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DSF|DSF]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Campo Bom||RS||4303905||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GIF|GIF]]||<div style="text-align: center;">1.00, 1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Campo Grande||MS||5002704||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DSF|DSF]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Campo Largo||PR||4104204||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Campo Mourão||PR||4104303||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Campo Novo do Parecis||MT||5102637||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_COPLAN|COPLAN]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Canaã dos Carajás||PA||1502152||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Candeias||BA||2906501||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Canoas||RS||4304606||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GIF|GIF]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Canoinhas||SC||4203808||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Carapicuíba||SP||3510609||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GIAP|GIAP]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Carazinho||RS||4304705||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Cariacica||ES||3201308||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SMARAPD|SMARAPD]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Carlos Barbosa||RS||4304804||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GIF|GIF]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cascavel||PR||4104808||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Castro||PR||4104907||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Catalão||GO||5205109||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRODATA|PRODATA]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Catanduva||SP||3511102||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_RLZ_INFORMATICA|RLZ_INFORMATICA]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Caxias do Sul||RS||4305108||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GIF|GIF]]||<div style="text-align: center;">1.00, 1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cedral||SP||3511300||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Chapecó||SC||4204202||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGCORP|SIGCORP]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Chuí||RS||4305439||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Codó||MA||2103307||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Concórdia||SC||4204301||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Contagem||MG||3118601||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Coronel Fabriciano||MG||3119401||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Corumbá||MS||5003207||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Corupá||SC||4204509||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Cosmorama||SP||3512902||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cotia||SP||3513009||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GIAP|GIAP]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cruz Alta||RS||4306106||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ISSNET|ISSNET]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Cuiabá||MT||5103403||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ISSNET|ISSNET]]||<div style="text-align: center;">1.01, 2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Diadema||SP||3513801||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04, 2.05</div>||<div style="text-align: center;">Não</div>||<div style="text-align: center;">Sim</div>
+|-
+||Dois Irmãos||RS||4306403||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Dracena||SP||3514403||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ISSNET|ISSNET]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Duartina||SP||3514502||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Duque de Caxias||RJ||3301702||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ISSNET|ISSNET]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Edéia||GO||5207402||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_CENTI|CENTI]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Embu das Artes||SP||3515004||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GIAP|GIAP]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||EQUIPLANO||BR||9999905||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EQUIPLANO|EQUIPLANO]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Estância Velha||RS||4307609||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Eusébio||CE||2304285||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_INTERSOL|INTERSOL]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Farroupilha||RS||4307906||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GIF|GIF]]||<div style="text-align: center;">1.00, 1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Feira de Santana||BA||2910800||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Fernandópolis||SP||3515509||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||FISCO||BR||9999906||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FISCO|FISCO]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Flores da Cunha||RS||4308201||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Formiga||MG||3126109||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Fortaleza||CE||2304400||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PROPRIOFORTALEZACE|PROPRIOFORTALEZACE]]||<div style="text-align: center;">4.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Foz do Iguaçu||PR||4108304||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Franca||SP||3516200||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SMARAPD|SMARAPD]]||<div style="text-align: center;">1.01, 2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Garanhuns||PE||2606002||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TINUS|TINUS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Garça||SP||3516705||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Garibaldi||RS||4308607||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GIF|GIF]]||<div style="text-align: center;">1.00, 1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Garuva||SC||4205803||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Getúlio Vargas||RS||4308904||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||GINFES||BR||9999900||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GINFES|GINFES]]||<div style="text-align: center;">2.00, 3.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Goiana||PE||2606200||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TINUS|TINUS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Goiânia||GO||5208707||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ISSNET|ISSNET]]||<div style="text-align: center;">1.01, 2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Gramado||RS||4309100||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Gravatá||PE||2606408||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TRIBUTUS|TRIBUTUS]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Gravataí||RS||4309209||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Guaíra||PR||4108809||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Guaporé||RS||4309407||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Guarapari||ES||3202405||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SMARAPD|SMARAPD]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Guarapuava||PR||4109401||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Guarará||MG||3128501||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FUTURIZE|FUTURIZE]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Guariba||SP||3518602||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRIMAX|PRIMAX]]||<div style="text-align: center;">1.00, 1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Guaxupé||MG||3128709||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Gurupi||TO||1709500||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Harmonia||RS||4309555||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Horizontina||RS||4309605||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Ibicoara||BA||2912202||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Ibirubá||RS||4310009||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DIGIFRED|DIGIFRED]]||<div style="text-align: center;">1.01, 2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Indaial||SC||4207502||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Ipatinga||MG||3131307||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGCORP|SIGCORP]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Irati||PR||4110706||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Itabaiana||SE||2802908||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Itaberaba||BA||2914703||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ADM_SISTEMAS|ADM_SISTEMAS]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Itabira||MG||3131703||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Itabuna||BA||2914802||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Itajaí||SC||4208203||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PUBLICA|PUBLICA]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Itanhangá||MT||5104542||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Itaporanga||SP||3522802||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Itaquaquecetuba||SP||3523107||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SMARAPD|SMARAPD]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Itu||SP||3523909||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Itumbiara||GO||5211503||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_CENTI|CENTI]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Ivoti||RS||4310801||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Jaboatão dos Guararapes||PE||2607901||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TINUS|TINUS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Jaboticabal||SP||3524303||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04, 2.05</div>||<div style="text-align: center;">Não</div>||<div style="text-align: center;">Sim</div>
+|-
+||Jaci||SP||3524501||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Jacobina||BA||2917508||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ADM_SISTEMAS|ADM_SISTEMAS]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Jaguapitã||PR||4111902||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Jaguarão||RS||4311007||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Jaguariúna||SP||3524709||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Jardinópolis - SP||SC||3525102||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Jataí||GO||5211909||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_BSITBR|BSITBR]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Jaú||SP||3525300||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Ji-Paraná||RO||1100122||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||João Monlevade||MG||3136207||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||João Pessoa||PB||2507507||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DSF|DSF]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Joinville||SC||4209102||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PUBLICA|PUBLICA]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Juazeiro||BA||2918407||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Juiz de Fora||MG||3136702||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FINTEL|FINTEL]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Jundiaí||SP||3525904||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Juti||MS||5005152||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">1.00, 2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Lauro de Freitas||BA||2919207||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_METROPOLIS|METROPOLIS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Lavras||MG||3138203||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Leme||SP||3526704||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGISSWEB|SIGISSWEB]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Linhares||ES||3203205||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Loanda||PR||4113502||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Londrina||PR||4113700||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGCORP|SIGCORP]]||<div style="text-align: center;">1.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Lontras||SC||4209904||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Macaé||RJ||3302403||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TIPLAN|TIPLAN]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Macapá||AP||1600303||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ISSNET|ISSNET]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Mafra||SC||4210100||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PUBLICA|PUBLICA]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Magé||RJ||3302502||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_MODERNIZACAO_PUBLICA|MODERNIZACAO_PUBLICA]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Mairiporã||SP||3528502||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_CONAM|CONAM]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Mairipotaba||GO||5212600||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_MEGASOFT|MEGASOFT]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Manhuaçu||MG||3139409||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Maracaí||SP||3528809||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Maracanaú||CE||2307650||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_INTERSOL|INTERSOL]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Maratá||RS||4311791||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Marcolândia||PI||2205953||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Marechal Cândido Rondon||PR||4114609||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Marília||SP||3529005||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGCORP|SIGCORP]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Massaranduba||SC||4210605||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Matão||SP||3529302||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Matupá||MT||5105606||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_COPLAN|COPLAN]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Medianeira||PR||4115804||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||MEMORY||BR||9999901||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_MEMORY|MEMORY]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Mirandopolis||SP||3530102||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Mirassolândia||SP||3530409||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Mogi das Cruzes||SP||3530607||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SMARAPD|SMARAPD]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Mogi Guaçu||SP||3530706||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGCORP|SIGCORP]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Mogi Mirim||SP||3530805||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGCORP|SIGCORP]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Monte Alto||SP||3531308||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">1.00, 2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Morrinhos||GO||5213806||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRODATA|PRODATA]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Mossoró||RN||2408003||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TINUS|TINUS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||NACIONAL||BR||1001058||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_NACIONAL|NACIONAL]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Naviraí||MS||5005707||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Nova Iguaçu||RJ||3303500||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DSF|DSF]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Nova Santa Rita||RS||4313375||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Nova Serrana||MG||3145208||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGCORP|SIGCORP]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Novo Hamburgo||RS||4313409||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Olinda||PE||2609600||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TINUS|TINUS]]||<div style="text-align: center;">1.00, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Orizona||GO||5215306||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_BSITBR|BSITBR]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Osasco||SP||3534401||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EGOVERNEISS|EGOVERNEISS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Osório||RS||4313508||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Ouro||SC||4211801||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Ouro Fino||MG||3146008||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Ouro Preto do Oeste||RO||1100155||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Palhoça||SC||4211900||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Palmares||PE||2610004||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TRIBUTUS|TRIBUTUS]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Palmas||TO||1721000||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Palmeira||PR||4117701||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Panambi||RS||4313904||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Pará de Minas||MG||3147105||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_QUASAR|QUASAR]]||<div style="text-align: center;">1.01, 2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Paracambi||RJ||3303609||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FINTEL|FINTEL]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Paracatu||MG||3147006||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Paraguaçu Paulista||SP||3535507||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIMPLISS|SIMPLISS]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Paraíso do Norte||PR||4118006||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Paranaguá||PR||4118204||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Paranavaí||PR||4118402||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Pareci Novo||RS||4314035||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Passos||MG||3147907||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Patrocínio||MG||3148103||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIMPLISS|SIMPLISS]]||<div style="text-align: center;">1.01, 3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Paulínia||SP||3536505||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04, 2.05</div>||<div style="text-align: center;">Não</div>||<div style="text-align: center;">Sim</div>
+|-
+||Paulista||PE||2610707||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04, 2.05</div>||<div style="text-align: center;">Não</div>||<div style="text-align: center;">Sim</div>
+|-
+||Paverama||RS||4314159||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Pedro Leopoldo||MG||3149309||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Pelotas||RS||4314407||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_AVMB|AVMB]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Penha||SC||4212502||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Pinhais||PR||4119152||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Piracicaba||SP||3538709||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIMPLISS|SIMPLISS]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Piraí||RJ||3304003||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TIPLAN|TIPLAN]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Piraquara||PR||4119509||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Piratininga||SP||3539400||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Piuma||ES||3204203||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Poá||SP||3539806||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_CONAM|CONAM]]||<div style="text-align: center;">4.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Poços de Caldas||MG||3151800||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Pomerode||SC||4213203||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Ponta Grossa||PR||4119905||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Pontalina||GO||5217708||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_MEGASOFT|MEGASOFT]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Porangatu||GO||5218003||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_CENTI|CENTI]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Portão||RS||4314803||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Porto Belo||SC||4213500||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Porto Velho||RO||1100205||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Prata||MG||3152808||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Presidente Lucena||RS||4315149||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Presidente Prudente||SP||3541406||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIMPLISS|SIMPLISS]]||<div style="text-align: center;">1.01, 3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Primavera do Leste||MT||5107040||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_RLZ_INFORMATICA|RLZ_INFORMATICA]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Professor Jamil||GO||5218391||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_MEGASOFT|MEGASOFT]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||QuatroBarras||PR||4120804||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Ribas do Rio Pardo||MS||5007109||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Ribeirão Preto||SP||3543402||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ISSNET|ISSNET]]||<div style="text-align: center;">1.01, 2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Rio das Ostras||RJ||3304524||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TIPLAN|TIPLAN]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Rio do Sul||SC||4214805||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Rio dos Cedros||SC||4214706||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Rio Grande||RS||4315602||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGCORP|SIGCORP]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Rio Negrinho||SC||4215000||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Rolândia||PR||4122404||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Rondonópolis||MT||5107602||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_AGILI|AGILI]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Salvador||BA||2927408||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SALVADOR_BA|SALVADOR_BA]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Salvador do Sul||RS||4316501||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Santa Cruz do Capibaribe||PE||2612505||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TINUS|TINUS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Santa Maria||RS||4316907||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ISSNET|ISSNET]]||<div style="text-align: center;">1.01, 2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Santa Rosa||RS||4317202||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Santana do Livramento||RS||4317103||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DBSELLER|DBSELLER]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Santo André||SP||3547809||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04, 2.05</div>||<div style="text-align: center;">Não</div>||<div style="text-align: center;">Sim</div>
+|-
+||Santo Antônio da Platina||PR||4124103||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Santo Antônio de Jesus||BA||2928703||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Santos||SP||3548500||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04, 2.05</div>||<div style="text-align: center;">Não</div>||<div style="text-align: center;">Sim</div>
+|-
+||São Bento do Sul||SC||4215802||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||São Bernardo do Campo||SP||3548708||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04, 2.05</div>||<div style="text-align: center;">Não</div>||<div style="text-align: center;">Sim</div>
+|-
+||São Borja||RS||4318002||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GIF|GIF]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São Caetano do Sul||SP||3548807||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04, 2.05</div>||<div style="text-align: center;">Não</div>||<div style="text-align: center;">Sim</div>
+|-
+||São Cristóvão||SE||2806701||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São Gabriel||RS||4318309||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||São Gonçalo||RJ||3304904||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_NOBESISTEMAS|NOBESISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São Gonçalo do Amarante||RN||2412005||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TINUS|TINUS]]||<div style="text-align: center;">1.00, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São Gonçalo do Pará||MG||3161809||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São João do Itaperiú||SC||4216354||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||São João do Paraíso||MG||3162708||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||São Joaquim da Barra||SP||3549409||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São Joaquim de Bicas||MG||3162922||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São José||SC||4216602||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||São José da Lapa||MG||3162955||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São José do Rio Claro||MT||5107305||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_COPLAN|COPLAN]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São José do Rio Preto||SP||3549805||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04, 2.05</div>||<div style="text-align: center;">Não</div>||<div style="text-align: center;">Sim</div>
+|-
+||São José do Sul||RS||4318614||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São José dos Campos||SP||3549904||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DSF|DSF]]||<div style="text-align: center;">2.03, 3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São José dos Pinhais||PR||4125506||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GINFES|GINFES]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São Luís||MA||2111300||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DSF|DSF]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São Marcos||RS||4319000||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||São Paulo||SP||3550308||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PAULISTANA|PAULISTANA]]||<div style="text-align: center;">1.00, 2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||São Pedro da Aldeia||RJ||3305208||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_MODERNIZACAO_PUBLICA|MODERNIZACAO_PUBLICA]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||São Sebastião do Caí||RS||4319505||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Sapiranga||RS||4319901||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DBSELLER|DBSELLER]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Sapucaia do Sul||RS||4320008||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GIF|GIF]]||<div style="text-align: center;">1.00, 1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Senador Canedo||GO||5220454||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">1.00, 2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Senhor do Bonfim||BA||2930105||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Serafina Corrêa||RS||4320404||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Serra||ES||3205002||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SMARAPD|SMARAPD]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Sertãozinho||SP||3551702||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SMARAPD|SMARAPD]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Simões Filho||BA||2930709||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Sinop||MT||5107909||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_COPLAN|COPLAN]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Sobral||CE||2312908||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_INTERSOL|INTERSOL]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Sorocaba||SP||3552205||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DSF|DSF]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Sorriso||MT||5107925||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_AGILI|AGILI]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Taboão da Serra||SP||3552809||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_CONAM|CONAM]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Taió||SC||4217808||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Taiobeiras||MG||3168002||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Tangará da Serra||MT||5107958||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_CENTI|CENTI]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Tapejara||RS||4320909||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Taubaté||SP||3554102||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGCORP|SIGCORP]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Teixeira de Freitas||BA||2931350||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_MODERNIZACAO_PUBLICA|MODERNIZACAO_PUBLICA]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Teófilo Otoni||MG||3168606||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Teresina||PI||2211001||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DSF|DSF]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Teresópolis||RJ||3305802||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Terra Boa||PR||4127205||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_ELOTECH|ELOTECH]]||<div style="text-align: center;">2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Terra de Areia||RS||4321436||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Timbó||SC||4218202||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Tremembé||SP||3554805||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGCORP|SIGCORP]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Três Cachoeiras||RS||4321667||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Três Lagoas||MS||5008305||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Triunfo||RS||4322004||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Tupandi||RS||4322251||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TECNOSISTEMAS|TECNOSISTEMAS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Uberaba||MG||3170107||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Uberlândia||MG||3170206||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_DSF|DSF]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Umuarama||PR||4128104||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_GISSONLINE|GISSONLINE]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Uruguaiana||RS||4322400||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Vacaria||RS||4322509||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_PRONIM|PRONIM]]||<div style="text-align: center;">1.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Valença||BA||2932903||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Valinhos||SP||3556206||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIGISSWEB|SIGISSWEB]]||<div style="text-align: center;">2.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Vargem Grande do Sul||SP||3556404||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIMPLISS|SIMPLISS]]||<div style="text-align: center;">3.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Vargem Grande Paulista||SP||3556453||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SONNER|SONNER]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Vera Cruz||RS||4322707||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_IPM|IPM]]||<div style="text-align: center;">1.20</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Veranópolis||RS||4322806||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Viana||ES||3205101||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Vila Velha||ES||3205200||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SMARAPD|SMARAPD]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Vilhena||RO||1100304||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBISS|WEBISS]]||<div style="text-align: center;">2.02</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Vitória da Conquista||BA||2933307||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_EL|E&L]]||<div style="text-align: center;">1.01, 2.04</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Vitória de Santo Antão||PE||2616407||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_TINUS|TINUS]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||Volta Redonda||RJ||3306305||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_SIMPLISS|SIMPLISS]]||<div style="text-align: center;">1.01, 2.03</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+||WEBFISCO||BR||9999904||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_WEBFISCO|WEBFISCO]]||<div style="text-align: center;">1.00</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Não</div>
+|-
+||Xangri-lá||RS||4323804||[[Manuais:UniNFe/MunicipiosDesenvolvidos/PadroesDesenvolvidos#Padr.C3.A3o_FIORILLI|FIORILLI]]||<div style="text-align: center;">2.01</div>||<div style="text-align: center;">Sim</div>||<div style="text-align: center;">Sim</div>
+|-
+|}
+
+* [[Manuais:UniNFe|📘 UniNFe]]
+* [[Manuais:Unimake.DFe|⚙️ Unimake.DFe]]

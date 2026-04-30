@@ -397,7 +397,7 @@
 	</Arquivo>
 	<Arquivo ID="5300108">
 		<Nome>Brasília - DF</Nome>
-		<UF>TO</UF>
+		<UF>DF</UF>
 		<ArqConfig>BrasiliaDF.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
@@ -1896,7 +1896,7 @@
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4120804">
-		<Nome>QuatroBarras - PR</Nome>
+		<Nome>Quatro Barras - PR</Nome>
 		<UF>PR</UF>
 		<ArqConfig>QuatroBarrasPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
