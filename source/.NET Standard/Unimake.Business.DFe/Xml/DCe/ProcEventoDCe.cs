@@ -48,6 +48,9 @@ namespace Unimake.Business.DFe.Xml.DCe
         [XmlElement("retEventoDCe")]
         public RetEventoDCe RetEventoDCe { get; set; }
 
+        [XmlIgnore]
+        public string NomeArquivoDistribuicao => RetEventoDCe.InfEvento.ChDCe + "-procEventoDCe.xml";
+
         public bool ShouldSerializeIpTransmissor() => !string.IsNullOrEmpty(IpTransmissor);
         public bool ShouldSerializeDhConexaoField() => DhConexao > DateTime.MinValue;
     }

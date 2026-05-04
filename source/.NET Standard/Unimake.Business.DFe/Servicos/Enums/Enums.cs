@@ -595,6 +595,31 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consultar Eventos da NFSe por Chave de Acesso da NFSe NACIONAL")]
         NFSeConsultarEventosNFSeChaveAcesso = 96,
 
+        /// <summary>
+        /// 97 - Consulta status serviço DCe
+        /// </summary>
+        [Description("Consulta status do serviço da DCe")]
+        DCeStatusServico = 97,
+
+        /// <summary>
+        /// 98 - Consulta protocolo da DCe
+        /// </summary>
+        [Description("Consulta situação da DCe")]
+        DCeConsultaProtocolo = 98,
+
+        /// <summary>
+        /// 99 - Envio de Eventos da DCe
+        /// </summary>
+        [Description("Envio de eventos da DCe")]
+        DCeRecepcaoEvento = 99,
+
+        /// <summary>
+        /// 100 - Envio do XML de DCe
+        /// </summary>
+        [Description("Autorização síncrona de DCe")]
+        DCeAutorizacaoSinc = 100,
+
+
         #endregion
 
         #region Gerais
@@ -684,6 +709,10 @@ namespace Unimake.Business.DFe.Servicos
         /// 15 - NFCom - Nota fiscal fatura de serviço de comunicação eletrônica
         /// </summary>
         NFCom = 15,
+        /// <summary>
+        /// 16 - DCe - Declaração de Conteúdo eletrônica
+        /// </summary>
+        DCe = 16,
 
     }
 

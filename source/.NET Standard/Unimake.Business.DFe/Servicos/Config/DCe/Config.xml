@@ -1,0 +1,9 @@
+<ConfigPadrao>
+	<Versao ID="1.00">
+		<WebContentType>application/soap+xml; charset=utf-8;</WebContentType>
+		<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:dce="{ActionWeb}"><soap:Header/><soap:Body><dce:dceDadosMsg>{xmlBody}</dce:dceDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+		<WebSoapVersion>soap12</WebSoapVersion>
+		<SchemaVersao>1.00</SchemaVersao>
+		<TargetNS>http://www.portalfiscal.inf.br/dce</TargetNS>
+	</Versao>
+</ConfigPadrao>

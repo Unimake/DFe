@@ -1,0 +1,72 @@
+<Configuracoes>
+	<Servicos ID="DCe">
+		<StatusServico versao="1.00">
+			<Descricao>DCeStatusServico</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.dce.fazenda.pr.gov.br/dce/DCeStatusServico?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://dce.fazenda.pr.gov.br/dce/DCeStatusServico?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/dce/wsdl/DCeStatusServico</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/dce/wsdl/DCeStatusServico</WebActionProducao>
+			<SchemaArquivo>consStatServDCe_v{0}.xsd</SchemaArquivo>
+			<WebTagRetorno>dceResultMsg</WebTagRetorno>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString></WebSoapString>
+		</StatusServico>
+		<ConsultaProtocolo versao="1.00">
+			<Descricao>DCeConsulta</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.dce.fazenda.pr.gov.br/dce/DCeConsulta?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://dce.fazenda.pr.gov.br/dce/DCeConsulta?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/dce/wsdl/DCeConsulta</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/dce/wsdl/DCeConsulta</WebActionProducao>
+			<SchemaArquivo>consSitDCe_v{0}.xsd</SchemaArquivo>
+			<WebTagRetorno>dceResultMsg</WebTagRetorno>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString></WebSoapString>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="1.00">
+			<Descricao>DCeRecepcaoEvento</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.dce.fazenda.pr.gov.br/dce/DCeRecepcaoEvento?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://dce.fazenda.pr.gov.br/dce/DCeRecepcaoEvento?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/dce/wsdl/DCeRecepcaoEvento</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/dce/wsdl/DCeRecepcaoEvento</WebActionProducao>
+			<SchemaArquivo>eventoDCe_v{0}.xsd</SchemaArquivo>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoDCe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancDCe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<WebTagRetorno>dceResultMsg</WebTagRetorno>
+			<TagAssinatura>eventoDCe</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString></WebSoapString>
+		</RecepcaoEvento>
+		<AutorizacaoSinc versao="1.00">
+			<Descricao>DCeAutorizacao</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.dce.fazenda.pr.gov.br/dce/DCeAutorizacao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://dce.fazenda.pr.gov.br/dce/DCeAutorizacao?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/dce/wsdl/DCeAutorizacao</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/dce/wsdl/DCeAutorizacao</WebActionProducao>
+			<SchemaArquivo>dce_v{0}.xsd</SchemaArquivo>
+			<WebTagRetorno>dceResultMsg</WebTagRetorno>
+			<TagAssinatura>DCe</TagAssinatura>
+			<TagAtributoID>infDCe</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString></WebSoapString>
+			<GZIPCompress>true</GZIPCompress>
+			<UrlQrCodeHomologacao>https://www.fazenda.pr.gov.br/dce/qrcode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://www.fazenda.pr.gov.br/dce/qrcode</UrlQrCodeProducao>
+			<UrlChaveHomologacao>https://www.fazenda.pr.gov.br/dce/qrcode</UrlChaveHomologacao>
+			<UrlChaveProducao>https://www.fazenda.pr.gov.br/dce/qrcode</UrlChaveProducao>
+		</AutorizacaoSinc>
+	</Servicos>
+</Configuracoes>
