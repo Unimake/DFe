@@ -1,0 +1,78 @@
+<DCe xmlns="http://www.portalfiscal.inf.br/dce">
+  <infDCe versao="1.00" Id="DCe3526050000000000019959900000000011000001234567">
+    <ide>
+      <cUF>35</cUF>
+      <cDC>000123</cDC>
+      <mod>99</mod>
+      <serie>0</serie>
+      <nDC>1</nDC>
+      <dhEmi>2026-05-04T10:00:00-03:00</dhEmi>
+      <tpEmis>1</tpEmis>
+      <tpEmit>2</tpEmit>
+      <nSiteAutoriz>0</nSiteAutoriz>
+      <cDV>7</cDV>
+      <tpAmb>2</tpAmb>
+      <verProc>Unimake-Test</verProc>
+    </ide>
+    <emit>
+      <CNPJ>00000000000199</CNPJ>
+      <xNome>Emitente Teste</xNome>
+      <enderEmit>
+        <xLgr>Rua Teste</xLgr>
+        <nro>100</nro>
+        <xBairro>Centro</xBairro>
+        <cMun>3550308</cMun>
+        <xMun>Sao Paulo</xMun>
+        <UF>SP</UF>
+        <CEP>01001000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderEmit>
+    </emit>
+    <dest>
+      <CPF>12345678909</CPF>
+      <xNome>Destinatario Teste</xNome>
+      <enderDest>
+        <xLgr>Rua Destino</xLgr>
+        <nro>200</nro>
+        <xBairro>Centro</xBairro>
+        <cMun>3550308</cMun>
+        <xMun>Sao Paulo</xMun>
+        <UF>SP</UF>
+        <CEP>01001000</CEP>
+        <email>destino@teste.com</email>
+      </enderDest>
+    </dest>
+    <autXML>
+      <CPF>12345678909</CPF>
+    </autXML>
+    <det nItem="1">
+      <prod>
+        <xProd>Produto teste</xProd>
+        <NCM>99</NCM>
+        <qCom>1.0000</qCom>
+        <vUnCom>10.00</vUnCom>
+        <vProd>10.00</vProd>
+      </prod>
+      <infAdProd>Item preservado</infAdProd>
+    </det>
+    <total>
+      <vDC>10.00</vDC>
+    </total>
+    <transp>
+      <modTrans>0</modTrans>
+      <CNPJTransp>00000000000199</CNPJTransp>
+    </transp>
+    <infAdic>
+      <infCpl>Informacao complementar</infCpl>
+    </infAdic>
+    <infDec>
+      <xObs1>Declaracao 1</xObs1>
+      <xObs2>Declaracao 2</xObs2>
+    </infDec>
+  </infDCe>
+  <infDCeSupl>
+    <qrCodDCe>https://dce.test/qr</qrCodDCe>
+    <urlChave>https://dce.test/chave</urlChave>
+  </infDCeSupl>
+</DCe>

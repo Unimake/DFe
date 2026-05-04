@@ -965,6 +965,34 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("62")]
         NFCom = 62,
+
+        /// <summary>
+        /// DCe (Modelo: 99)
+        /// </summary>
+        [XmlEnum("99")]
+        DCe = 99,
+    }
+
+    #endregion
+
+    #region TipoEventoDCe
+
+    /// <summary>
+    /// Tipos de eventos da DCe
+    /// </summary>
+    public enum TipoEventoDCe
+    {
+        /// <summary>
+        /// 0 - Evento desconhecido
+        /// </summary>
+        [XmlEnum("0")]
+        Desconhecido = 0,
+
+        /// <summary>
+        /// 110111 - Cancelamento DCe
+        /// </summary>
+        [XmlEnum("110111")]
+        Cancelamento = 110111,
     }
 
     #endregion

@@ -1,0 +1,20 @@
+<retConsSitDCe versao="1.00" xmlns="http://www.portalfiscal.inf.br/dce">
+  <tpAmb>2</tpAmb>
+  <verAplic>DCe1.00</verAplic>
+  <cStat>100</cStat>
+  <xMotivo>Autorizado o uso da DCe</xMotivo>
+  <cUF>35</cUF>
+  <dhRecbto>2026-05-04T10:01:00-03:00</dhRecbto>
+  <chDCe>3526050000000000019959900000000011000001234567</chDCe>
+  <protDCe versao="1.00">
+    <infProt>
+      <tpAmb>2</tpAmb>
+      <verAplic>DCe1.00</verAplic>
+      <chDCe>3526050000000000019959900000000011000001234567</chDCe>
+      <dhRecbto>2026-05-04T10:01:00-03:00</dhRecbto>
+      <nProt>1352600000000001</nProt>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da DCe</xMotivo>
+    </infProt>
+  </protDCe>
+</retConsSitDCe>
