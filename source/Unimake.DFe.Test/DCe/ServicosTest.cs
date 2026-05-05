@@ -47,7 +47,7 @@ namespace Unimake.DFe.Test.DCe
                     Mod = ModeloDFe.DCe,
                     Serie = 0,
                     NDC = 1,
-                    DhEmi = DateTimeOffset.Parse("2026-05-04T10:00:00-03:00"),
+                    DhEmi = DateTime.Now,
                     TpEmis = TipoEmissao.Normal,
                     TpEmit = "2",
                     NSiteAutoriz = "0",
@@ -138,7 +138,7 @@ namespace Unimake.DFe.Test.DCe
                 TpAmb = TipoAmbiente.Homologacao,
                 CNPJ = "00000000000199",
                 ChDCe = ChaveDCe,
-                DhEvento = DateTimeOffset.Parse("2026-05-04T10:02:00-03:00"),
+                DhEvento = DateTime.Now,
                 TpEvento = TipoEventoDCe.Cancelamento,
                 NSeqEvento = 1,
                 DetEvento = new DetEventoCanc()
