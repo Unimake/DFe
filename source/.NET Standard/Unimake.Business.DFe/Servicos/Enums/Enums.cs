@@ -5416,6 +5416,40 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region Tipo de Emitente DCe
+
+    /// <summary>
+    /// Tipo de emitente do DCe
+    /// </summary>
+    public enum TipoEmitenteDCe
+    {
+        /// <summary>
+        /// 0 - APP do Fisco
+        /// </summary>
+        [XmlEnum("0")]
+        AppFisco = 0,
+
+        /// <summary>
+        /// 1 - Marketplace
+        /// </summary>
+        [XmlEnum("1")]
+        Marketplace = 1,
+
+        /// <summary>
+        /// 2 - Emissor Próprio
+        /// </summary>
+        [XmlEnum("2")]
+        EmissorProprio = 2,
+
+        /// <summary>
+        /// 3 - Transportadora
+        /// </summary>
+        [XmlEnum("3")]
+        Transportadora = 3
+    }
+
+    #endregion
+
     #region Tipo do Transportador para o MDFe
 
     /// <summary>

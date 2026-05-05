@@ -96,38 +96,28 @@ namespace Unimake.Business.DFe.Xml.DCe
 
                 if (string.IsNullOrWhiteSpace(cnpjCpf)) throw new NullReferenceException("Emit.CNPJ, Emit.CPF ou Emit.IdOutros não foi informado.");
 
-                var chaveSemDV = ((int)Ide.CUF).ToString() +
-                    Ide.DhEmi.ToString("yy") +
-                    Ide.DhEmi.ToString("MM") +
-                    cnpjCpf.PadLeft(12, '0') +
-                    ((int)Ide.Mod).ToString().PadLeft(2, '0') +
-                    Ide.Serie.ToString().PadLeft(3, '0') +
-                    Ide.NDC.ToString().PadLeft(9, '0') +
-                    ((int)Ide.TpEmis).ToString() +
-                    Ide.NSiteAutoriz +
-                    Ide.CDC;
+                var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
+                {
+                    UFEmissor = (UFBrasil)(int)Ide.CUF,
+                    AnoEmissao = Ide.DhEmi.ToString("yy"),
+                    MesEmissao = Ide.DhEmi.ToString("MM"),
+                    CNPJCPFEmissor = Emit.CNPJ.PadLeft(14, '0'),
+                    Modelo = (ModeloDFe)(int)Ide.Mod,
+                    Serie = Ide.Serie,
+                    NumeroDoctoFiscal = Ide.NDC,
+                    TipoEmissao = Ide.TpEmis,
+                    TipoEmitenteDCe = Ide.TpEmit,
+                    NSiteAutoriz = Ide.NSiteAutoriz,
+                    CodigoNumerico = Ide.CDC
+                };
 
-                Ide.CDV = CalcularDVChaveDCe(chaveSemDV);
-                chaveField = chaveSemDV + Ide.CDV.ToString();
+                chaveField = XMLUtility.MontarChaveDCe(ref conteudoChaveDFe);
+                Ide.CDV = conteudoChaveDFe.DigitoVerificador;
 
                 return chaveField;
             }
 
             set => chaveField = value;
-        }
-
-        private static int CalcularDVChaveDCe(string chave)
-        {
-            const string peso = "4329876543298765432987654329876543298765432";
-            var soma = 0;
-
-            for (var i = 0; i < chave.Length; i++)
-            {
-                soma += (chave[i] - 48) * (peso[i] - 48);
-            }
-
-            var resto = soma % 11;
-            return resto < 2 ? 0 : 11 - resto;
         }
 
         [XmlElement("ide")]
@@ -263,7 +253,7 @@ namespace Unimake.Business.DFe.Xml.DCe
         public TipoEmissao TpEmis { get; set; } = TipoEmissao.Normal;
 
         [XmlElement("tpEmit")]
-        public string TpEmit { get; set; }
+        public TipoEmitenteDCe TpEmit { get; set; } = TipoEmitenteDCe.EmissorProprio;
 
         [XmlElement("nSiteAutoriz")]
         public string NSiteAutoriz

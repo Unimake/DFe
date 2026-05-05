@@ -39,7 +39,6 @@ namespace Unimake.DFe.Test.DCe
             InfDCe = new InfDCe
             {
                 Versao = "1.00",
-                Chave = ChaveDCe,
                 Ide = new Ide
                 {
                     CUF = UFBrasil.PR,
@@ -49,7 +48,7 @@ namespace Unimake.DFe.Test.DCe
                     NDC = 1,
                     DhEmi = DateTime.Now,
                     TpEmis = TipoEmissao.Normal,
-                    TpEmit = "2",
+                    TpEmit = TipoEmitenteDCe.EmissorProprio,
                     NSiteAutoriz = "0",
                     CDV = 6,
                     TpAmb = TipoAmbiente.Homologacao,
