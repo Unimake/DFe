@@ -1,5 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
+using Unimake.Business.DFe.Validator;
 #endif
 
 using System;
