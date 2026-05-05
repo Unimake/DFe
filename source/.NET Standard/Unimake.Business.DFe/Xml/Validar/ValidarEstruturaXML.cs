@@ -201,9 +201,9 @@ namespace Unimake.Business.DFe
             try
             {
                 configuracao.TipoDFe = tipoDFe;
-                var xmlConfig = CarregarConfigValidacao();
+                var xmlConfig = CarregarConfigValidacao(); 
                 var tagRaiz = xml.DocumentElement.Name;
-                var versao = ObterVersao(xml, xmlConfig, tipoDFe);
+                var versao = ObterVersao(xml, xmlConfig, tipoDFe, padraoNFSe);
 
 
                 var servico = ObterServico(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
@@ -217,7 +217,7 @@ namespace Unimake.Business.DFe
                         Descricao = $"Arquivo não validado: Rotina de validação não suporta o padrão '{padraoNFSe}'."
                     };
 
-                var inform = MontarInformacaoGeral(servico, configuracao.CodigoUF.ToString());
+                var inform = MontarInformacaoGeral(servico, codigoUF);
 
                 try
                 {
@@ -244,10 +244,16 @@ namespace Unimake.Business.DFe
                     var vinculador = VinculadorFactory.Criar(tipoDFe, isEvento);
                     var nodes = vinculador.Vincular(servico, xml);
 
+                    var xmlGeralValidado = false;
+
                     foreach (var (tipoCorreto, node) in nodes)
                     {
                         MontarInformacaoEspecifica(servico, tipoCorreto, inform);
-                        ValidarSchemaGeral(xml, inform, tipoDFe);
+                        if (!xmlGeralValidado)
+                        {
+                            ValidarSchemaGeral(xml, inform, tipoDFe);
+                            xmlGeralValidado = true;
+                        }
                         ValidarSchemaEspecifico(node, inform, tipoDFe);
                     }
 
@@ -290,7 +296,7 @@ namespace Unimake.Business.DFe
 
 
 
-        private static XmlNode ObterServico(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe = PadraoNFSe.None)
+        private static XmlNode ObterServico(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe)
         {
             return padraoNFSe == PadraoNFSe.None
                 ? TratarDFe(xml, versao, tipoDFe, tagRaiz, xmlConfig)
@@ -298,9 +304,7 @@ namespace Unimake.Business.DFe
         }
 
 
-
-
-        private static XmlNode TratarNFSe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe = PadraoNFSe.None)
+        private static XmlNode TratarNFSe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe)
         {
 
             string pathServicosNFSe = string.Empty;
@@ -349,7 +353,7 @@ namespace Unimake.Business.DFe
         }
 
 
-        private static InformacaoXML MontarInformacaoGeral(XmlNode servico, string codigoMunicipio)
+        private static InformacaoXML MontarInformacaoGeral(XmlNode servico, UFBrasil codigoMunicipio)
         {
 
             #region verifica se municipio usa certificado digital
@@ -384,7 +388,7 @@ namespace Unimake.Business.DFe
             };
         }
 
-        private static bool VerificarUitlizacaoCertificadoDigital(XmlNode servico, string codigoMunicipio)
+        private static bool VerificarUitlizacaoCertificadoDigital(XmlNode servico, UFBrasil codigoMunicipio)
         {
             var nodeCert = servico.SelectSingleNode("*[local-name()='UsaCertificadoDigital']");
 
@@ -392,20 +396,20 @@ namespace Unimake.Business.DFe
 
             if (nodeCert != null)
             {
-                var overrideNode = nodeCert.SelectSingleNode(
+                var nodeExcecao = nodeCert.SelectSingleNode(
                     $"*[local-name()='Excecao' and @codMunicipio='{codigoMunicipio}']"
                 );
 
-                if (overrideNode != null)
+                if (nodeExcecao != null)
                 {
-                    valorCert = overrideNode.InnerText;
+                    valorCert = nodeExcecao.InnerText;
                 }
             }
 
             return valorCert?.Trim() != "false";
         }
 
-        
+
 
         private static void MontarInformacaoEspecifica(XmlNode servico, XmlNode tipo, InformacaoXML inform)
         {
@@ -475,7 +479,9 @@ namespace Unimake.Business.DFe
                     }
                     catch (Exception ex)
                     {
-                        throw new AssinaturaException("Ocorreu um erro ao assinar o XML: ", ex);
+
+                        throw new AssinaturaException(
+                            $"Ocorreu um erro ao assinar o XML: {ex.Message}");
                     }
 
                     MontarQRCode(xml, gerarQrCode, tipoDFe, configuracao);
@@ -519,6 +525,7 @@ namespace Unimake.Business.DFe
 
         private static void ValidarSchemaGeral(XmlDocument xml, InformacaoXML info, TipoDFe tipoDFe, PadraoNFSe padraoNFSe = PadraoNFSe.None)
         {
+            // Caso não possua Schema para a validação retornar sem validar e deixar a validação por conta da prefeitura ao enviar
             if (string.IsNullOrEmpty(info.SchemaArquivo))
             {
                 return;
@@ -542,6 +549,7 @@ namespace Unimake.Business.DFe
 
         private static void ValidarSchemaEspecifico(XmlNode eventoNode, InformacaoXML info, TipoDFe tipoDFe)
         {
+            // Caso não possua Schema para a validação retornar sem validar e deixar a validação por conta da prefeitura ao enviar
             if (string.IsNullOrEmpty(info.SchemaArquivoEspecifico))
             {
                 return;
@@ -563,13 +571,13 @@ namespace Unimake.Business.DFe
 
 
 
-        private static string ObterVersao(XmlDocument xml, XmlDocument xmlConfig, TipoDFe tipoDFe, PadraoNFSe padraoNFSe = PadraoNFSe.None)
+        private static string ObterVersao(XmlDocument xml, XmlDocument xmlConfig, TipoDFe tipoDFe, PadraoNFSe padraoNFSe)
         {
             var servicoValidacao = xmlConfig.SelectSingleNode("ServicosValidacao");
 
-            var nodeDFe = padraoNFSe == PadraoNFSe.None ?
-                servicoValidacao.SelectSingleNode(tipoDFe.ToString()) :
-                servicoValidacao.SelectSingleNode($"{tipoDFe.ToString()}/{padraoNFSe.ToString()}");
+            var nodeDFe = padraoNFSe == PadraoNFSe.None
+            ? servicoValidacao.SelectSingleNode(tipoDFe.ToString())
+            : servicoValidacao.SelectSingleNode($"{tipoDFe}/Padrao[@nome='{padraoNFSe}']");
 
             foreach (XmlNode nodeServico in nodeDFe.SelectNodes("Servico"))
             {
@@ -579,11 +587,6 @@ namespace Unimake.Business.DFe
                     continue;
 
                 var nodeVersao = xml.GetElementsByTagName(tagVersao);
-
-                if (nodeVersao.Count > 1)
-                {
-                    throw new Exception($"O XML possui mais de um nó com a tag '{tagVersao}', não é possível determinar a versão do layout.");
-                }
 
                 if (nodeVersao.Count > 0)
                 {
@@ -631,7 +634,7 @@ namespace Unimake.Business.DFe
                 case "NFe":
                 case "enviNFe":
                 case "nfeProc":
-                    var modeloDoc = xml.GetElementsByTagName("mod")[0].InnerText;
+                    var modeloDoc = xml.GetElementsByTagName("mod")[0]?.InnerText;
 
                     if (modeloDoc == ((int)ModeloDFe.NFCe).ToString())
                     {
