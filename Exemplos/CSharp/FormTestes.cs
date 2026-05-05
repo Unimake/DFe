@@ -9,6 +9,7 @@ using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
+using Unimake.Business.DFe.Xml.DCe;
 using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Business.DFe.Xml.NF3e;
 using Unimake.Business.DFe.Xml.NFe;
@@ -21,6 +22,7 @@ using DFe = Unimake.Business.DFe;
 using ServicoCCG = Unimake.Business.DFe.Servicos.CCG;
 using ServicoCTe = Unimake.Business.DFe.Servicos.CTe;
 using ServicoCTeOS = Unimake.Business.DFe.Servicos.CTeOS;
+using ServicoDCe = Unimake.Business.DFe.Servicos.DCe;
 using ServicoEFDReinf = Unimake.Business.DFe.Servicos.EFDReinf;
 using ServicoESocial = Unimake.Business.DFe.Servicos.ESocial;
 using ServicoGNRe = Unimake.Business.DFe.Servicos.GNRE;
@@ -33,6 +35,7 @@ using ServicoNFSe = Unimake.Business.DFe.Servicos.NFSe;
 using XmlCCG = Unimake.Business.DFe.Xml.CCG;
 using XmlCTe = Unimake.Business.DFe.Xml.CTe;
 using XmlCTeOS = Unimake.Business.DFe.Xml.CTeOS;
+using XmlDCe = Unimake.Business.DFe.Xml.DCe;
 using XmlEFDReinf = Unimake.Business.DFe.Xml.EFDReinf;
 using XmlESocial = Unimake.Business.DFe.Xml.ESocial;
 using XmlGNRe = Unimake.Business.DFe.Xml.GNRE;
@@ -981,7 +984,7 @@ namespace TreinamentoDLL
                 IndSinc = SimNao.Nao,
                 NFe = new List<XmlNFe.NFe>
                 {
-                    new XmlNFe.NFe 
+                    new XmlNFe.NFe
                     {
                         InfNFeField = new XmlNFe.InfNFe
                         {
@@ -6471,6 +6474,28 @@ namespace TreinamentoDLL
             MessageBox.Show(statusServico.RetornoWSString);
         }
 
+        private void BtnConsultaStatusDCe_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlDCe.ConsStatServDCe
+            {
+                TpAmb = TipoAmbiente.Homologacao,
+                CUF = UFBrasil.PR,
+                Versao = "1.00"
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.DCe,
+                CertificadoDigital = CertificadoSelecionado,
+                CodigoUF = (int)UFBrasil.PR
+            };
+
+            var statusServico = new ServicoDCe.StatusServico(xml, configuracao);
+            statusServico.Executar();
+
+            MessageBox.Show(statusServico.RetornoWSString);
+        }
+
         private void BtnEnviarNFComSincrono_Click(object sender, EventArgs e)
         {
             var xml = new XmlNFCom.NFCom
@@ -6752,6 +6777,133 @@ namespace TreinamentoDLL
 
         }
 
+        private void BtnEnviarDCeSincrono_Click(object sender, EventArgs e)
+        {
+            var xml = CriarDCe();
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.DCe,
+                TipoEmissao = TipoEmissao.Normal,
+                CodigoUF = (int)UFBrasil.PR,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var autorizacaoSincDCe = new ServicoDCe.AutorizacaoSinc(xml, configuracao);
+            autorizacaoSincDCe.Executar();
+
+            MessageBox.Show(autorizacaoSincDCe.RetornoWSString);
+
+            if (autorizacaoSincDCe.Result.CStat == 100 &&
+                autorizacaoSincDCe.Result.ProtDCe != null &&
+                autorizacaoSincDCe.Result.ProtDCe.InfProt.CStat == 100)
+            {
+                MessageBox.Show(autorizacaoSincDCe.Result.ProtDCe.InfProt.NProt);
+                var teste = autorizacaoSincDCe.DCeProcResults[xml.InfDCe.Chave].GerarXML();
+            }
+        }
+
+        /// <summary>
+        /// Cria o XML da DCe para testes de autorização
+        /// </summary>
+        /// <returns>XML da DCe</returns>
+        private static XmlDCe.DCe CriarDCe()
+        {
+            var xml = new XmlDCe.DCe
+            {
+                InfDCe = new XmlDCe.InfDCe
+                {
+                    Versao = "1.00",
+                    Ide = new XmlDCe.Ide
+                    {
+                        CUF = UFBrasil.PR,
+                        CDC = "123456",
+                        Mod = ModeloDFe.DCe,
+                        Serie = 0,
+                        NDC = 1,
+                        DhEmi = DateTime.Now,
+                        TpEmis = TipoEmissao.Normal,
+                        TpEmit = TipoEmitenteDCe.EmissorProprio,
+                        NSiteAutoriz = "0",
+                        CDV = 6,
+                        TpAmb = TipoAmbiente.Homologacao,
+                        VerProc = "Unimake-Test"
+                    },
+                    Emit = new XmlDCe.Emit
+                    {
+                        CNPJ = "00000000000199",
+                        XNome = "Emitente Teste",
+                        EnderEmit = new XmlDCe.EnderEmit
+                        {
+                            XLgr = "Rua Teste",
+                            Nro = "100",
+                            XBairro = "Centro",
+                            CMun = "4106902",
+                            XMun = "Curitiba",
+                            UF = UFBrasil.PR,
+                            CEP = "80010000",
+                            CPais = "1058",
+                            XPais = "Brasil"
+                        }
+                    },
+                    Dest = new XmlDCe.Dest
+                    {
+                        CPF = "12345678909",
+                        XNome = "Destinatario Teste",
+                        EnderDest = new XmlDCe.EnderDest
+                        {
+                            XLgr = "Rua Destino",
+                            Nro = "200",
+                            XBairro = "Centro",
+                            CMun = "4106902",
+                            XMun = "Curitiba",
+                            UF = UFBrasil.PR,
+                            CEP = "80010000",
+                            Email = "destino@teste.com"
+                        }
+                    },
+                    AutXML = new List<XmlDCe.AutXML>
+                {
+                    new XmlDCe.AutXML { CPF = "12345678909" }
+                },
+                    Det = new List<XmlDCe.Det>
+                {
+                    new XmlDCe.Det
+                    {
+                        NItem = 1,
+                        Prod = new XmlDCe.Prod
+                        {
+                            XProd = "Produto teste",
+                            NCM = "99",
+                            QCom = 1,
+                            VUnCom = 10,
+                            VProd = 10
+                        },
+                        InfAdProd = "Item preservado"
+                    }
+                },
+                    Total = new XmlDCe.Total { VDC = 10 },
+                    Transp = new XmlDCe.Transp
+                    {
+                        ModTrans = "0",
+                        CNPJTransp = "00000000000199"
+                    },
+                    InfAdic = new XmlDCe.InfAdic
+                    {
+                        InfCpl = "Informacao complementar"
+                    },
+                    InfDec = new XmlDCe.InfDec
+                    {
+                        XObs1 = "Declaracao 1",
+                        XObs2 = "Declaracao 2"
+                    }
+                }
+            };
+
+            return xml;
+        }
+
         private void BtnConsultaSituacaoNFCom_Click(object sender, EventArgs e)
         {
             var xml = new XmlNFCom.ConsSitNFCom
@@ -6769,6 +6921,28 @@ namespace TreinamentoDLL
             };
 
             var consultaProtocolo = new ServicoNFCom.ConsultaProtocolo(xml, configuracao);
+            consultaProtocolo.Executar();
+
+            MessageBox.Show(consultaProtocolo.RetornoWSString);
+        }
+
+        private void BtnConsultaSituacaoDCe_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlDCe.ConsSitDCe
+            {
+                ChDCe = "41260500000000000199990000000000110000123456",
+                TpAmb = TipoAmbiente.Homologacao,
+                Versao = "1.00"
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.DCe,
+                CodigoUF = (int)UFBrasil.PR,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var consultaProtocolo = new ServicoDCe.ConsultaProtocolo(xml, configuracao);
             consultaProtocolo.Executar();
 
             MessageBox.Show(consultaProtocolo.RetornoWSString);
@@ -6823,6 +6997,67 @@ namespace TreinamentoDLL
                     // Evento rejeitado, fazer os devidos tratamentos.
                     break;
             }
+        }
+
+        private void BtnEnviarEventoCancelamentoDCe_Click(object sender, EventArgs e)
+        {
+            var xml = CriarEventoDCe();
+
+            var xmlstring = xml.GerarXML();
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.DCe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = CertificadoSelecionado,
+            };
+
+            var recepcaoEvento = new ServicoDCe.RecepcaoEvento(xml, configuracao);
+            recepcaoEvento.Executar();
+
+            MessageBox.Show(recepcaoEvento.RetornoWSString);
+            MessageBox.Show(recepcaoEvento.Result.InfEvento.CStat + " - " + recepcaoEvento.Result.InfEvento.XMotivo);
+
+            switch (recepcaoEvento.Result.InfEvento.CStat)
+            {
+                case 134:
+                case 135:
+                case 136:
+                    recepcaoEvento.GravarXmlDistribuicao(@"d:\testenfe");
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Cria o XML de evento da DCe para testes de recepção
+        /// </summary>
+        /// <returns>XML de evento da DCe</returns>
+        private static EventoDCe CriarEventoDCe()
+        {
+            var xml = new EventoDCe
+            {
+                Versao = "1.00",
+                InfEvento = new XmlDCe.InfEvento( new XmlDCe.DetEventoCanc
+                {
+                    VersaoEvento = "1.00",
+                    NProt = "1352600000000001",
+                    XJust = "Justificativa de teste valida"
+                })
+                {
+                    COrgao = UFBrasil.PR,
+                    TpAmb = TipoAmbiente.Homologacao,
+                    CNPJ = "00000000000199",
+                    ChDCe = "41260500000000000199990000000000110000123456",
+                    DhEvento = DateTime.Now,
+                    TpEvento = TipoEventoDCe.Cancelamento,
+                    NSeqEvento = 1
+                }
+            };
+
+            return xml;
         }
 
         private void BtnConsultaStatusNF3e_Click(object sender, EventArgs e)
