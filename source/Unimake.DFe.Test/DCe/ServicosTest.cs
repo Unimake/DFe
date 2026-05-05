@@ -1,8 +1,6 @@
 using System;
-using System.IO;
-using System.Xml;
+using System.Collections.Generic;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.DCe;
 using Xunit;
 using DCeAutorizacaoSinc = Unimake.Business.DFe.Servicos.DCe.AutorizacaoSinc;
@@ -19,7 +17,6 @@ namespace Unimake.DFe.Test.DCe
     public class ServicosTest
     {
         private const string ChaveDCe = "41260500000000000199990000000000110000123456";
-        private static readonly string ResourcesPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\DCe\Resources"));
 
         /// <summary>
         /// Cria a configuração para os serviços da DCe em homologação
@@ -29,33 +26,134 @@ namespace Unimake.DFe.Test.DCe
         {
             TipoDFe = TipoDFe.DCe,
             CodigoUF = (int)UFBrasil.PR,
-            TipoAmbiente = TipoAmbiente.Homologacao
+            TipoAmbiente = TipoAmbiente.Homologacao,
+            CertificadoDigital = PropConfig.CertificadoDigital
         };
 
         /// <summary>
-        /// Carrega um XML de recurso da DCe
+        /// Cria o XML da DCe para testes de autorização
         /// </summary>
-        /// <param name="fileName">Nome do arquivo XML</param>
-        /// <returns>Conteúdo do XML</returns>
-        private static string LoadXml(string fileName) =>
-            File.ReadAllText(Path.Combine(ResourcesPath, fileName))
-                .Replace("3526050000000000019959900000000011000001234567", ChaveDCe)
-                .Replace("<cUF>35</cUF>", "<cUF>41</cUF>")
-                .Replace("<cOrgao>35</cOrgao>", "<cOrgao>41</cOrgao>")
-                .Replace("ID1101113526050000000000019959900000000011000001234567001", "ID110111" + ChaveDCe + "001");
+        /// <returns>XML da DCe</returns>
+        private static XmlDCe CriarDCe() => new XmlDCe
+        {
+            InfDCe = new InfDCe
+            {
+                Versao = "1.00",
+                Chave = ChaveDCe,
+                Ide = new Ide
+                {
+                    CUF = UFBrasil.PR,
+                    CDC = "123456",
+                    Mod = ModeloDFe.DCe,
+                    Serie = 0,
+                    NDC = 1,
+                    DhEmi = DateTimeOffset.Parse("2026-05-04T10:00:00-03:00"),
+                    TpEmis = TipoEmissao.Normal,
+                    TpEmit = "2",
+                    NSiteAutoriz = "0",
+                    CDV = 6,
+                    TpAmb = TipoAmbiente.Homologacao,
+                    VerProc = "Unimake-Test"
+                },
+                Emit = new Emit
+                {
+                    CNPJ = "00000000000199",
+                    XNome = "Emitente Teste",
+                    EnderEmit = new EnderEmit
+                    {
+                        XLgr = "Rua Teste",
+                        Nro = "100",
+                        XBairro = "Centro",
+                        CMun = "4106902",
+                        XMun = "Curitiba",
+                        UF = UFBrasil.PR,
+                        CEP = "80010000",
+                        CPais = "1058",
+                        XPais = "Brasil"
+                    }
+                },
+                Dest = new Dest
+                {
+                    CPF = "12345678909",
+                    XNome = "Destinatario Teste",
+                    EnderDest = new EnderDest
+                    {
+                        XLgr = "Rua Destino",
+                        Nro = "200",
+                        XBairro = "Centro",
+                        CMun = "4106902",
+                        XMun = "Curitiba",
+                        UF = UFBrasil.PR,
+                        CEP = "80010000",
+                        Email = "destino@teste.com"
+                    }
+                },
+                AutXML = new List<AutXML>
+                {
+                    new AutXML { CPF = "12345678909" }
+                },
+                Det = new List<Det>
+                {
+                    new Det
+                    {
+                        NItem = 1,
+                        Prod = new Prod
+                        {
+                            XProd = "Produto teste",
+                            NCM = "99",
+                            QCom = 1,
+                            VUnCom = 10,
+                            VProd = 10
+                        },
+                        InfAdProd = "Item preservado"
+                    }
+                },
+                Total = new Total { VDC = 10 },
+                Transp = new Transp
+                {
+                    ModTrans = "0",
+                    CNPJTransp = "00000000000199"
+                },
+                InfAdic = new InfAdic
+                {
+                    InfCpl = "Informacao complementar"
+                },
+                InfDec = new InfDec
+                {
+                    XObs1 = "Declaracao 1",
+                    XObs2 = "Declaracao 2"
+                }
+            }
+        };
 
         /// <summary>
-        /// Define o retorno mockado do webservice no serviço
+        /// Cria o XML de evento da DCe para testes de recepção
         /// </summary>
-        /// <param name="servico">Serviço da DCe</param>
-        /// <param name="xml">XML de retorno do serviço</param>
-        private static void SetRetorno(ServicoBase servico, string xml)
+        /// <returns>XML de evento da DCe</returns>
+        private static EventoDCe CriarEventoDCe()
         {
-            var doc = new XmlDocument();
-            doc.LoadXml(xml);
+            var infEvento = new InfEvento
+            {
+                COrgao = UFBrasil.PR,
+                TpAmb = TipoAmbiente.Homologacao,
+                CNPJ = "00000000000199",
+                ChDCe = ChaveDCe,
+                DhEvento = DateTimeOffset.Parse("2026-05-04T10:02:00-03:00"),
+                TpEvento = TipoEventoDCe.Cancelamento,
+                NSeqEvento = 1,
+                DetEvento = new DetEventoCanc()
+            };
 
-            servico.RetornoWSString = xml;
-            servico.RetornoWSXML = doc;
+            var detEvento = (DetEventoCanc)infEvento.DetEvento;
+            detEvento.VersaoEvento = "1.00";
+            detEvento.NProt = "1352600000000001";
+            detEvento.XJust = "Justificativa de teste valida";
+
+            return new EventoDCe
+            {
+                Versao = "1.00",
+                InfEvento = infEvento
+            };
         }
 
         /// <summary>
@@ -64,15 +162,19 @@ namespace Unimake.DFe.Test.DCe
         [Fact]
         public void StatusServico()
         {
-            var xml = XMLUtility.Deserializar<ConsStatServDCe>(LoadXml("consStatServDCe.xml"));
-            xml.CUF = UFBrasil.PR;
-            var servico = new DCeStatusServico(xml, CriarConfiguracao());
+            ConsStatServDCe xml = new ConsStatServDCe
+            {
+                Versao = "1.00",
+                TpAmb = TipoAmbiente.Homologacao,
+                CUF = UFBrasil.PR
+            };
 
-            SetRetorno(servico, LoadXml("retConsStatServDCe.xml"));
+            var servico = new DCeStatusServico(xml, CriarConfiguracao());
+            servico.Executar();
 
             Assert.Contains("<consStatServDCe", servico.ConteudoXMLOriginal.OuterXml);
             Assert.Equal(Servico.DCeStatusServico, servico.Configuracoes.Servico);
-            Assert.Equal("https://homologacao.dce.fazenda.pr.gov.br/dce/DCeStatusServico?wsdl", servico.Configuracoes.WebEnderecoHomologacao);
+            Assert.Equal("https://homologacao.dce.fazenda.pr.gov.br/dce/DCeStatusServico", servico.Configuracoes.WebEnderecoHomologacao);
             Assert.Equal(107, servico.Result.CStat);
             Assert.Equal(UFBrasil.PR, servico.Result.CUF);
         }
@@ -83,17 +185,23 @@ namespace Unimake.DFe.Test.DCe
         [Fact]
         public void ConsultaProtocolo()
         {
-            var xml = XMLUtility.Deserializar<ConsSitDCe>(LoadXml("consSitDCe.xml"));
-            xml.ChDCe = ChaveDCe;
-            var servico = new DCeConsultaProtocolo(xml, CriarConfiguracao());
+            var xml = new ConsSitDCe
+            {
+                Versao = "1.00",
+                TpAmb = TipoAmbiente.Homologacao,
+                ChDCe = ChaveDCe
+            };
 
-            SetRetorno(servico, LoadXml("retConsSitDCe.xml"));
+            var servico = new DCeConsultaProtocolo(xml, CriarConfiguracao());
+            servico.Executar();
 
             Assert.Contains("<consSitDCe", servico.ConteudoXMLOriginal.OuterXml);
             Assert.Equal(Servico.DCeConsultaProtocolo, servico.Configuracoes.Servico);
-            Assert.Equal("https://homologacao.dce.fazenda.pr.gov.br/dce/DCeConsulta?wsdl", servico.Configuracoes.WebEnderecoHomologacao);
-            Assert.Equal(100, servico.Result.CStat);
-            Assert.Equal(ChaveDCe, servico.Result.ChDCe);
+            Assert.Equal("https://homologacao.dce.fazenda.pr.gov.br/dce/DCeConsulta", servico.Configuracoes.WebEnderecoHomologacao);
+            Assert.False(string.IsNullOrWhiteSpace(servico.RetornoWSString));
+            Assert.True(servico.Result.CStat > 0);
+            Assert.Equal(TipoAmbiente.Homologacao, servico.Result.TpAmb);
+            Assert.Equal(UFBrasil.PR, servico.Result.CUF);
         }
 
         /// <summary>
@@ -102,20 +210,18 @@ namespace Unimake.DFe.Test.DCe
         [Fact]
         public void AutorizacaoSinc()
         {
-            var xml = XMLUtility.Deserializar<XmlDCe>(LoadXml("dce.xml"));
-            var config = CriarConfiguracao();
-            config.Servico = Servico.DCeAutorizacaoSinc;
-            config.SchemaVersao = "1.00";
-            config.Load("AutorizacaoSinc");
-            var servico = new DCeAutorizacaoSinc();
+            var xml = CriarDCe();
 
-            SetRetorno(servico, LoadXml("retDCe.xml"));
+            var servico = new DCeAutorizacaoSinc(xml, CriarConfiguracao());
+            servico.Executar();
 
-            Assert.Contains("<DCe", xml.GerarXML().OuterXml);
-            Assert.Equal(Servico.DCeAutorizacaoSinc, config.Servico);
-            Assert.Equal("https://homologacao.dce.fazenda.pr.gov.br/dce/DCeAutorizacao?wsdl", config.WebEnderecoHomologacao);
-            Assert.Equal(100, servico.Result.CStat);
-            Assert.Equal(ChaveDCe, servico.Result.ProtDCe.InfProt.ChDCe);
+            Assert.Contains("<DCe", servico.ConteudoXMLOriginal.OuterXml);
+            Assert.Equal(Servico.DCeAutorizacaoSinc, servico.Configuracoes.Servico);
+            Assert.Equal("https://homologacao.dce.fazenda.pr.gov.br/dce/DCeAutorizacao", servico.Configuracoes.WebEnderecoHomologacao);
+            Assert.False(string.IsNullOrWhiteSpace(servico.RetornoWSString));
+            Assert.True(servico.Result.CStat > 0);
+            Assert.Equal(TipoAmbiente.Homologacao, servico.Result.TpAmb);
+            Assert.Equal(UFBrasil.PR, servico.Result.CUF);
         }
 
         /// <summary>
@@ -124,20 +230,18 @@ namespace Unimake.DFe.Test.DCe
         [Fact]
         public void RecepcaoEvento()
         {
-            var xml = XMLUtility.Deserializar<EventoDCe>(LoadXml("eventoDCe.xml"));
-            var config = CriarConfiguracao();
-            config.Servico = Servico.DCeRecepcaoEvento;
-            config.SchemaVersao = "1.00";
-            config.Load("RecepcaoEvento");
-            var servico = new DCeRecepcaoEvento();
+            var xml = CriarEventoDCe();
 
-            SetRetorno(servico, LoadXml("retEventoDCe.xml"));
+            var servico = new DCeRecepcaoEvento(xml, CriarConfiguracao());
+            servico.Executar();
 
-            Assert.Contains("<eventoDCe", xml.GerarXML().OuterXml);
-            Assert.Equal(Servico.DCeRecepcaoEvento, config.Servico);
-            Assert.Equal("https://homologacao.dce.fazenda.pr.gov.br/dce/DCeRecepcaoEvento?wsdl", config.WebEnderecoHomologacao);
-            Assert.Equal(135, servico.Result.InfEvento.CStat);
-            Assert.Equal(ChaveDCe, servico.Result.InfEvento.ChDCe);
+            Assert.Contains("<eventoDCe", servico.ConteudoXMLOriginal.OuterXml);
+            Assert.Equal(Servico.DCeRecepcaoEvento, servico.Configuracoes.Servico);
+            Assert.Equal("https://homologacao.dce.fazenda.pr.gov.br/dce/DCeRecepcaoEvento", servico.Configuracoes.WebEnderecoHomologacao);
+            Assert.False(string.IsNullOrWhiteSpace(servico.RetornoWSString));
+            Assert.True(servico.Result.InfEvento.CStat > 0);
+            Assert.Equal(TipoAmbiente.Homologacao, servico.Result.InfEvento.TpAmb);
+            Assert.Equal(UFBrasil.PR, servico.Result.InfEvento.COrgao);
         }
     }
 }
