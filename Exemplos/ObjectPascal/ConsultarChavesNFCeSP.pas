@@ -29,6 +29,9 @@ var
   oExceptionInterop: olevariant;
   caminhoArquivo: string;
   retorno: string;
+  I: Integer;
+  ChaveNFCe: string;
+
 
 begin
   // Criar objeto de configuração mínima
@@ -70,6 +73,14 @@ begin
       finally
         Free;
       end;
+
+    //Abrir um FOR nas chaves retornadas.
+    for I := 1 to oConsultaChaves.Result.GetChNFCeCount do
+    begin
+       chaveNFCe := oConsultaChaves.Result.GetChNFCe(I-1);
+       //Aqui já poderia disparar o serviço para fazer downlod da NFCe.
+       //Veja botão de Download para aprender o código
+    end;
 
     //Código de Status e Motivo
     ShowMessage(IntToStr(oConsultaChaves.Result.CStat) + ' - ' + oConsultaChaves.Result.XMotivo);

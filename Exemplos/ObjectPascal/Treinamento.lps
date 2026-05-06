@@ -74,10 +74,11 @@
         <Filename Value="consultardistribuicaodfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarDistribuicaoDFe"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="62"/>
-        <CursorPos Y="100"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="63"/>
+        <CursorPos X="22" Y="107"/>
         <UsageCount Value="210"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="enviareventomanifestacaonfe.pas"/>
@@ -93,7 +94,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFCeSincrono"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="279"/>
+        <TopLine Value="261"/>
         <CursorPos X="67" Y="289"/>
         <UsageCount Value="210"/>
         <Loaded Value="True"/>
@@ -522,6 +523,24 @@
         <UsageCount Value="40"/>
       </Unit>
       <Unit>
+        <Filename Value="ConsultarChavesNFCeSP.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="30"/>
+        <CursorPos Y="82"/>
+        <UsageCount Value="28"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="58" Y="23"/>
+        <UsageCount Value="27"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
         <Filename Value="consultarmdfenaoencerrada.pas"/>
         <UnitName Value="ConsultarMDFeNaoEncerrada"/>
         <EditorIndex Value="-1"/>
@@ -553,7 +572,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="165"/>
         <CursorPos X="49" Y="191"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit>
       <Unit>
         <Filename Value="eventocancelamentonfe.pas"/>
@@ -585,28 +604,8 @@
         <CursorPos X="10" Y="86"/>
         <UsageCount Value="5"/>
       </Unit>
-      <Unit>
-        <Filename Value="ConsultarChavesNFCeSP.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
-        <CursorPos X="28" Y="21"/>
-        <UsageCount Value="28"/>
-        <Loaded Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
-        <CursorPos X="58" Y="23"/>
-        <UsageCount Value="27"/>
-        <Loaded Value="True"/>
-      </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="ConsultarChavesNFCeSP.pas"/>
-        <Caret Line="33" TopLine="8"/>
-      </Position>
       <Position>
         <Filename Value="ConsultarChavesNFCeSP.pas"/>
         <Caret Line="34" TopLine="8"/>
@@ -722,6 +721,10 @@
       <Position>
         <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
         <Caret Line="23" Column="58"/>
+      </Position>
+      <Position>
+        <Filename Value="ConsultarChavesNFCeSP.pas"/>
+        <Caret Line="84" Column="19" TopLine="35"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -967,7 +970,7 @@
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="ConsultarChavesNFCeSP.pas"/>
-        <Line Value="35"/>
+        <Line Value="38"/>
       </Item>
     </BreakPoints>
     <Watches>
