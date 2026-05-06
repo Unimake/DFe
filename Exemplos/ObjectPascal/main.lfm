@@ -146,9 +146,9 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object GroupBox2: TGroupBox
-    Left = 384
+    Left = 376
     Height = 614
-    Top = 2
+    Top = 0
     Width = 344
     Caption = 'NFC-e'
     ClientHeight = 584
@@ -173,9 +173,27 @@ object frmPrincipal: TfrmPrincipal
       TabOrder = 1
       OnClick = btnEnviarNFCeOfflineClick
     end
+    object btnConsultaChaves: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 336
+      Width = 320
+      Caption = 'Consultar Chaves NFCe SEFAZ SP'
+      TabOrder = 2
+      OnClick = btnConsultaChavesClick
+    end
+    object btnDownloadXMLNFCeSEFAZSP: TButton
+      Left = 8
+      Height = 38
+      Top = 392
+      Width = 316
+      Caption = 'Download XML NFCe SEFAZ SP'
+      TabOrder = 3
+      OnClick = btnDownloadXMLNFCeSEFAZSPClick
+    end
   end
   object btnEnviarNFCeSincrono: TButton
-    Left = 392
+    Left = 384
     Height = 38
     Top = 80
     Width = 324
@@ -184,7 +202,7 @@ object frmPrincipal: TfrmPrincipal
     OnClick = btnEnviarNFCeSincronoClick
   end
   object btnEnviarNFCeSincronoDesserializacao: TButton
-    Left = 392
+    Left = 384
     Height = 38
     Top = 128
     Width = 324
@@ -195,7 +213,7 @@ object frmPrincipal: TfrmPrincipal
   object GroupBox3: TGroupBox
     Left = 760
     Height = 624
-    Top = -8
+    Top = 0
     Width = 374
     Caption = 'Diversos'
     ClientHeight = 594
