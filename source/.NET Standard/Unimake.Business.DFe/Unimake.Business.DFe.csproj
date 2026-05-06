@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.04.24.1334</AssemblyVersion>
-		<FileVersion>2026.04.24.1334</FileVersion>
+		<AssemblyVersion>2026.05.05.1856</AssemblyVersion>
+		<FileVersion>2026.05.05.1856</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -238,6 +238,35 @@
 		<None Remove="Servicos\Config\NFCe\SP.xml" />
 		<None Remove="Servicos\Config\NFCe\SVRS.xml" />
 		<None Remove="Servicos\Config\NFCe\TO.xml" />
+		<None Remove="Servicos\Config\DCe\AC.xml" />
+		<None Remove="Servicos\Config\DCe\AL.xml" />
+		<None Remove="Servicos\Config\DCe\AM.xml" />
+		<None Remove="Servicos\Config\DCe\AP.xml" />
+		<None Remove="Servicos\Config\DCe\BA.xml" />
+		<None Remove="Servicos\Config\DCe\CE.xml" />
+		<None Remove="Servicos\Config\DCe\Config.xml" />
+		<None Remove="Servicos\Config\DCe\DF.xml" />
+		<None Remove="Servicos\Config\DCe\ES.xml" />
+		<None Remove="Servicos\Config\DCe\GO.xml" />
+		<None Remove="Servicos\Config\DCe\MA.xml" />
+		<None Remove="Servicos\Config\DCe\MG.xml" />
+		<None Remove="Servicos\Config\DCe\MS.xml" />
+		<None Remove="Servicos\Config\DCe\MT.xml" />
+		<None Remove="Servicos\Config\DCe\PA.xml" />
+		<None Remove="Servicos\Config\DCe\PB.xml" />
+		<None Remove="Servicos\Config\DCe\PE.xml" />
+		<None Remove="Servicos\Config\DCe\PI.xml" />
+		<None Remove="Servicos\Config\DCe\PR.xml" />
+		<None Remove="Servicos\Config\DCe\RJ.xml" />
+		<None Remove="Servicos\Config\DCe\RN.xml" />
+		<None Remove="Servicos\Config\DCe\RO.xml" />
+		<None Remove="Servicos\Config\DCe\RR.xml" />
+		<None Remove="Servicos\Config\DCe\RS.xml" />
+		<None Remove="Servicos\Config\DCe\SC.xml" />
+		<None Remove="Servicos\Config\DCe\SE.xml" />
+		<None Remove="Servicos\Config\DCe\SP.xml" />
+		<None Remove="Servicos\Config\DCe\SVRS.xml" />
+		<None Remove="Servicos\Config\DCe\TO.xml" />
 		<None Remove="Servicos\Config\NFCom\AC.xml" />
 		<None Remove="Servicos\Config\NFCom\AL.xml" />
 		<None Remove="Servicos\Config\NFCom\AM.xml" />
@@ -729,6 +758,28 @@
 		<None Remove="Xml\Schemas\CTe\retGTVe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retInutCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\tiposGeralCTe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\consSitDCeTiposBasico_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\consSitDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\consStatServDCeTiposBasico_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\consStatServDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\dceTiposBasico_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\dce_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\distDCeAut_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\distDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\evCancDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\eventoDCeTiposBasico_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\eventoDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\leiauteDistDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\procDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\procEventoDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\retConsSitDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\retConsStatServDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\retDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\retDistDCeAut_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\retDistDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\retEventoDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\tiposGeralDCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\DCe\xmldsig-core-schema_v1.01.xsd" />
 		<None Remove="Xml\Schemas\EFDReinf\envioLoteEventos-v1_05_01.xsd" />
 		<None Remove="Xml\Schemas\EFDReinf\envioLoteEventosAssincrono-v1_00_00.xsd" />
 		<None Remove="Xml\Schemas\EFDReinf\R-1000-evtInfoContribuinte-v2_01_02-.xsd" />
@@ -1463,6 +1514,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\EldouradoDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaporeRS.xml" />
 	</ItemGroup>
 
@@ -1518,6 +1570,35 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NF3e\SP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\AC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\AL.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\AM.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\AP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\BA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\CE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\Config.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\DF.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\ES.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\GO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\MA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\MG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\MS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\MT.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\PA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\PB.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\PE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\PI.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\PR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\RJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\RN.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\RO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\RR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\RS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\SC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\SE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\SP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\SVRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\DCe\TO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\AC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\AL.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\AM.xml" />
@@ -2169,6 +2250,28 @@
 		<EmbeddedResource Include="Xml\Schemas\CTe\retGTVe_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\retInutCTe_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\tiposGeralCTe_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\consSitDCeTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\consSitDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\consStatServDCeTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\consStatServDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\dceTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\dce_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\distDCeAut_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\distDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\evCancDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\eventoDCeTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\eventoDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\leiauteDistDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\procDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\procEventoDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\retConsSitDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\retConsStatServDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\retDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\retDistDCeAut_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\retDistDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\retEventoDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\tiposGeralDCe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\DCe\xmldsig-core-schema_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\EFDReinf\envioLoteEventos-v1_05_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\EFDReinf\envioLoteEventosAssincrono-v1_00_00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\EFDReinf\R-1000-evtInfoContribuinte-v2_01_02-.xsd" />

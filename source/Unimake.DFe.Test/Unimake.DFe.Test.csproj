@@ -57,7 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.4.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.5.1" />
 		<PackageReference Include="coverlet.collector" Version="10.0.0">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
@@ -86,6 +86,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="DCe\Resources\" />
 		<Folder Include="NFSe\Resources\PORTAL_FACIL\2.02\" />
 	</ItemGroup>
 
