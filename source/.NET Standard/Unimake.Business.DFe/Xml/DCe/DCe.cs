@@ -101,7 +101,7 @@ namespace Unimake.Business.DFe.Xml.DCe
                     UFEmissor = (UFBrasil)(int)Ide.CUF,
                     AnoEmissao = Ide.DhEmi.ToString("yy"),
                     MesEmissao = Ide.DhEmi.ToString("MM"),
-                    CNPJCPFEmissor = Emit.CNPJ.PadLeft(14, '0'),
+                    CNPJCPFEmissor = cnpjCpf.PadLeft(14, '0'),
                     Modelo = (ModeloDFe)(int)Ide.Mod,
                     Serie = Ide.Serie,
                     NumeroDoctoFiscal = Ide.NDC,
