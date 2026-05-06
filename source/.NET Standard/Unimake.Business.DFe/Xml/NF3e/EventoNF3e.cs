@@ -297,14 +297,14 @@ namespace Unimake.Business.DFe.Xml.NF3e
         #endregion Public Methods
     }
 
+    /// <summary>
+    /// Detalhamento do evento de vinculação do pagamento da NF3e.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NF3e.DetEventoVincPgto")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Detalhamento do evento de vinculação do pagamento da NF3e.
-    /// </summary>
     public class DetEventoVincPgto : EventoDetalhe
     {
         /// <summary>
@@ -415,14 +415,14 @@ namespace Unimake.Business.DFe.Xml.NF3e
         }
     }
 
+    /// <summary>
+    /// Detalhamento do evento de cancelamento da vinculação do pagamento da NF3e.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NF3e.DetEventoCancVincPgto")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Detalhamento do evento de cancelamento da vinculação do pagamento da NF3e.
-    /// </summary>
     public class DetEventoCancVincPgto : EventoDetalhe
     {
         /// <summary>
@@ -466,14 +466,14 @@ namespace Unimake.Business.DFe.Xml.NF3e
         }
     }
 
+    /// <summary>
+    /// Dados do pagamento vinculados ao evento da NF3e.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NF3e.Pgto")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Dados do pagamento vinculados ao evento da NF3e.
-    /// </summary>
     public class Pgto
     {
         /// <summary>
