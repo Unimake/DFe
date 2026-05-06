@@ -386,6 +386,67 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
+        /// Monta e inclui o grupo suplementar <c>infDCeSupl</c> com a tag de QRCode para DCe.
+        /// </summary>
+        /// <param name="conteudoXml">Documento XML da DCe.</param>
+        /// <param name="configuracoes">Configurações do serviço (ambiente, URLs e certificado digital).</param>
+        /// <exception cref="Exception">Lançada quando alguma tag obrigatória para cálculo da chave/QRCode não é localizada.</exception>
+        public static void MontarQrCodeDCe(XmlDocument conteudoXml, Configuracao configuracoes)
+        {
+            if (conteudoXml.GetElementsByTagName("DCe").Count <= 0)
+            {
+                throw new Exception("A tag obrigatória <DCe> não foi localizada no XML.");
+            }
+
+            var elementDCe = (XmlElement)conteudoXml.GetElementsByTagName("DCe")[0];
+
+            if (elementDCe.GetElementsByTagName("infDCeSupl").Count <= 0)
+            {
+                if (elementDCe.GetElementsByTagName("infDCe").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <infDCe>, do grupo de tag <DCe>, não foi localizada no XML.");
+                }
+
+                var elementInfDCe = (XmlElement)elementDCe.GetElementsByTagName("infDCe")[0];
+
+                if (elementInfDCe.GetElementsByTagName("ide").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <DCe><infDCe>, não foi localizada no XML.");
+                }
+
+                var elementIde = (XmlElement)elementInfDCe.GetElementsByTagName("ide")[0];
+                var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
+                var tpEmis = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
+                var chave = elementInfDCe.GetAttribute("Id")?.Replace("DCe", "");
+
+                if (string.IsNullOrWhiteSpace(chave))
+                {
+                    throw new Exception("O atributo obrigatório \"Id\" da tag <infDCe>, do grupo de tag <DCe>, não foi localizado no XML.");
+                }
+
+                var urlQrCode = configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? configuracoes.UrlQrCodeHomologacao : configuracoes.UrlQrCodeProducao;
+                var urlChave = configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? configuracoes.UrlChaveHomologacao : configuracoes.UrlChaveProducao;
+                var paramLinkQRCode = urlQrCode + "?chDCe=" + chave + "&tpAmb=" + ((int)tpAmb).ToString();
+
+                if ((int)tpEmis == 2)
+                {
+                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(configuracoes.CertificadoDigital, chave);
+                }
+
+                var nodeDCe = conteudoXml.GetElementsByTagName("DCe")[0];
+                var nodeInfDCe = (XmlNode)elementInfDCe;
+
+                AdicionarGrupoSuplementar(
+                    conteudoXml,
+                    nodeDCe,
+                    nodeInfDCe,
+                    "infDCeSupl",
+                    new KeyValuePair<string, string>("qrCodDCe", paramLinkQRCode.Trim()),
+                    new KeyValuePair<string, string>("urlChave", urlChave));
+            }
+        }
+
+        /// <summary>
         /// Monta e inclui o grupo suplementar <c>infCTeSupl</c> para CT-e (modelo tradicional).
         /// </summary>
         /// <param name="conteudoXml">Documento XML do CT-e.</param>

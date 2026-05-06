@@ -120,6 +120,10 @@ namespace TreinamentoDLL
             this.BtnConsultaSituacaoNF3e = new System.Windows.Forms.Button();
             this.BtnEnviarNF3eSinc = new System.Windows.Forms.Button();
             this.BtnConsultaStatusNF3e = new System.Windows.Forms.Button();
+            this.BtnEnviarEventoCancelamentoDCe = new System.Windows.Forms.Button();
+            this.BtnConsultaSituacaoDCe = new System.Windows.Forms.Button();
+            this.BtnEnviarDCeSincrono = new System.Windows.Forms.Button();
+            this.BtnConsultaStatusDCe = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -135,6 +139,7 @@ namespace TreinamentoDLL
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
             this.btnImprimirEventos = new System.Windows.Forms.Button();
             this.btnImprimirNFeCancelada = new System.Windows.Forms.Button();
             this.btnImpDANFESemValorFiscal = new System.Windows.Forms.Button();
@@ -152,6 +157,7 @@ namespace TreinamentoDLL
             this.tabPage10.SuspendLayout();
             this.tabPage11.SuspendLayout();
             this.tabPage12.SuspendLayout();
+            this.tabPage13.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnConsultaStatusNFe
@@ -1189,6 +1195,50 @@ namespace TreinamentoDLL
             this.BtnConsultaStatusNF3e.UseVisualStyleBackColor = true;
             this.BtnConsultaStatusNF3e.Click += new System.EventHandler(this.BtnConsultaStatusNF3e_Click);
             // 
+            // BtnEnviarEventoCancelamentoDCe
+            // 
+            this.BtnEnviarEventoCancelamentoDCe.Location = new System.Drawing.Point(8, 142);
+            this.BtnEnviarEventoCancelamentoDCe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarEventoCancelamentoDCe.Name = "BtnEnviarEventoCancelamentoDCe";
+            this.BtnEnviarEventoCancelamentoDCe.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarEventoCancelamentoDCe.TabIndex = 3;
+            this.BtnEnviarEventoCancelamentoDCe.Text = "Enviar o Evento de Cancelamento";
+            this.BtnEnviarEventoCancelamentoDCe.UseVisualStyleBackColor = true;
+            this.BtnEnviarEventoCancelamentoDCe.Click += new System.EventHandler(this.BtnEnviarEventoCancelamentoDCe_Click);
+            // 
+            // BtnConsultaSituacaoDCe
+            // 
+            this.BtnConsultaSituacaoDCe.Location = new System.Drawing.Point(7, 98);
+            this.BtnConsultaSituacaoDCe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultaSituacaoDCe.Name = "BtnConsultaSituacaoDCe";
+            this.BtnConsultaSituacaoDCe.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultaSituacaoDCe.TabIndex = 2;
+            this.BtnConsultaSituacaoDCe.Text = "Consulta Situação";
+            this.BtnConsultaSituacaoDCe.UseVisualStyleBackColor = true;
+            this.BtnConsultaSituacaoDCe.Click += new System.EventHandler(this.BtnConsultaSituacaoDCe_Click);
+            // 
+            // BtnEnviarDCeSincrono
+            // 
+            this.BtnEnviarDCeSincrono.Location = new System.Drawing.Point(8, 53);
+            this.BtnEnviarDCeSincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarDCeSincrono.Name = "BtnEnviarDCeSincrono";
+            this.BtnEnviarDCeSincrono.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarDCeSincrono.TabIndex = 1;
+            this.BtnEnviarDCeSincrono.Text = "Enviar DCe Sincrono";
+            this.BtnEnviarDCeSincrono.UseVisualStyleBackColor = true;
+            this.BtnEnviarDCeSincrono.Click += new System.EventHandler(this.BtnEnviarDCeSincrono_Click);
+            // 
+            // BtnConsultaStatusDCe
+            // 
+            this.BtnConsultaStatusDCe.Location = new System.Drawing.Point(7, 8);
+            this.BtnConsultaStatusDCe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultaStatusDCe.Name = "BtnConsultaStatusDCe";
+            this.BtnConsultaStatusDCe.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultaStatusDCe.TabIndex = 0;
+            this.BtnConsultaStatusDCe.Text = "Consulta Status";
+            this.BtnConsultaStatusDCe.UseVisualStyleBackColor = true;
+            this.BtnConsultaStatusDCe.Click += new System.EventHandler(this.BtnConsultaStatusDCe_Click);
+            // 
             // tabControl1
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1206,6 +1256,7 @@ namespace TreinamentoDLL
             this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Controls.Add(this.tabPage12);
+            this.tabControl1.Controls.Add(this.tabPage13);
             this.tabControl1.Location = new System.Drawing.Point(12, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1449,6 +1500,20 @@ namespace TreinamentoDLL
             this.tabPage12.Text = "Diversos";
             this.tabPage12.UseVisualStyleBackColor = true;
             // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.BtnEnviarEventoCancelamentoDCe);
+            this.tabPage13.Controls.Add(this.BtnConsultaStatusDCe);
+            this.tabPage13.Controls.Add(this.BtnConsultaSituacaoDCe);
+            this.tabPage13.Controls.Add(this.BtnEnviarDCeSincrono);
+            this.tabPage13.Location = new System.Drawing.Point(4, 29);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage13.Size = new System.Drawing.Size(1694, 997);
+            this.tabPage13.TabIndex = 12;
+            this.tabPage13.Text = "DCe";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
             // btnImprimirEventos
             // 
             this.btnImprimirEventos.Location = new System.Drawing.Point(311, 53);
@@ -1507,6 +1572,7 @@ namespace TreinamentoDLL
             this.tabPage10.ResumeLayout(false);
             this.tabPage11.ResumeLayout(false);
             this.tabPage12.ResumeLayout(false);
+            this.tabPage13.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1600,6 +1666,10 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnEnviarNFComSincrono;
         private System.Windows.Forms.Button BtnEnviarEventoCancelamentoNFCom;
         private System.Windows.Forms.Button BtnConsultaSituacaoNFCom;
+        private System.Windows.Forms.Button BtnEnviarEventoCancelamentoDCe;
+        private System.Windows.Forms.Button BtnConsultaSituacaoDCe;
+        private System.Windows.Forms.Button BtnEnviarDCeSincrono;
+        private System.Windows.Forms.Button BtnConsultaStatusDCe;
         private System.Windows.Forms.Button BtnEnviarEventoCancelamentoNF3e;
         private System.Windows.Forms.Button BtnConsultaSituacaoNF3e;
         private System.Windows.Forms.Button BtnEnviarNF3eSinc;
@@ -1617,6 +1687,7 @@ namespace TreinamentoDLL
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.TabPage tabPage11;
         private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.TabPage tabPage13;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button BtnEnviarNFeSincronoRTC;
         private System.Windows.Forms.Button btnImprimirNFeCancelada;
