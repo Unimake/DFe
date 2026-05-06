@@ -2291,4 +2291,10 @@
 		<ArqConfig>SaoGoncaloRJ.xml</ArqConfig>
 		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4306767">
+		<Nome>Eldourado do Sul - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>EldouradoDoSulRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
