@@ -418,6 +418,7 @@ namespace Unimake.Business.DFe.Utility
                 var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
                 var tpEmis = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
                 var chave = elementInfDCe.GetAttribute("Id")?.Replace("DCe", "");
+                var idDCe = elementInfDCe.GetAttribute("Id");
 
                 if (string.IsNullOrWhiteSpace(chave))
                 {
@@ -425,7 +426,7 @@ namespace Unimake.Business.DFe.Utility
                 }
 
                 var urlQrCode = configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? configuracoes.UrlQrCodeHomologacao : configuracoes.UrlQrCodeProducao;
-                var urlChave = configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? configuracoes.UrlChaveHomologacao : configuracoes.UrlChaveProducao;
+                var urlChave = idDCe; //configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? configuracoes.UrlChaveHomologacao : configuracoes.UrlChaveProducao;
                 var paramLinkQRCode = urlQrCode + "?chDCe=" + chave + "&tpAmb=" + ((int)tpAmb).ToString();
 
                 if ((int)tpEmis == 2)
