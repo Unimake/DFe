@@ -81,9 +81,39 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
         /// <summary>
-        /// Método auxiliar para adicionar chaves via INTEROP
+        /// Adicionar novo elemento a lista
         /// </summary>
-        public void AddChNFCe(string chave) => ChNFCe.Add(chave);
+        /// <param name="item">Elemento</param>
+        public void AddChNFCe(string item)
+        {
+            if (ChNFCe == null)
+            {
+                ChNFCe = new List<string>();
+            }
+
+            ChNFCe.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ChNFCe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ChNFCe</returns>
+        public string GetChNFCe(int index)
+        {
+            if ((ChNFCe?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return ChNFCe[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista AutXML
+        /// </summary>
+        public int GetChNFCeCount => (ChNFCe != null ? ChNFCe.Count : 0);
+
 #endif
 
         /// <summary>

@@ -318,6 +318,14 @@
         <Filename Value="NACIONALConsultarDistribuicaoNFSeNSU.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="ConsultarChavesNFCeSP.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

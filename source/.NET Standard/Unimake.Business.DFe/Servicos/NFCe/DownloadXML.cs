@@ -117,7 +117,9 @@ namespace Unimake.Business.DFe.Servicos.NFCe
                 Configuracoes = configuracao;
                 ConteudoXML = nfceDownloadXML.GerarXML();
                 Configuracoes.SchemaArquivo = nfceDownloadXML.GetType().Name + "-" + nfceDownloadXML.Versao.Replace(".", "") + ".xsd";
+                Configuracoes.SchemaVersao = nfceDownloadXML.Versao;
                 Configuracoes.Servico = Servico.NFCeDownloadXML;
+                DefinirConfiguracao();
 
                 Executar();
             }

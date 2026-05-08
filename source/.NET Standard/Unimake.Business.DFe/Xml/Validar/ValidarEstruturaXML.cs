@@ -201,21 +201,17 @@ namespace Unimake.Business.DFe
             try
             {
                 configuracao.TipoDFe = tipoDFe;
-                var xmlConfig = CarregarConfigValidacao(); 
+                var xmlConfig = CarregarConfigValidacao();
                 var tagRaiz = xml.DocumentElement.Name;
                 var versao = ObterVersao(xml, xmlConfig, tipoDFe, padraoNFSe);
-
-
                 var servico = ObterServico(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
-                AtribuirUrl(servico, codigoUF, configuracao);
 
-                // Caso o padão de NFSe ainda não tenha sido implementado na rotina de validação
-                if (servico is null && tipoDFe == TipoDFe.NFSe)
-                    return new ResultadoValidacao
-                    {
-                        Validado = false,
-                        Descricao = $"Arquivo não validado: Rotina de validação não suporta o padrão '{padraoNFSe}'."
-                    };
+                if (servico is null)
+                {
+                    throw new Exception($"Não foi possível encontrar a configuração para o tipo de DFe com tag raiz: {tagRaiz} ou versão: {versao}. Verfique se a versão e/ou tag raiz estão corretas paraa validação");
+                }
+
+                AtribuirUrl(servico, codigoUF, configuracao);
 
                 var inform = MontarInformacaoGeral(servico, codigoUF);
 
@@ -283,11 +279,12 @@ namespace Unimake.Business.DFe
             }
             catch (Exception ex)
             {
+                var status = ObterStatus(ex);
                 return new ResultadoValidacao
                 {
                     Validado = false,
                     MensagemRetorno = ex.Message,
-                    StatusValidacao = "5",
+                    StatusValidacao = status,
                     XmlAssinado = xml,
 
                 };
@@ -500,7 +497,7 @@ namespace Unimake.Business.DFe
 
         private static void AtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao)
         {
-            foreach (XmlNode grupoUF in servico.SelectNodes("GrupoUrl/Grupo"))
+            foreach (XmlNode grupoUF in servico?.SelectNodes("GrupoUrl/Grupo"))
             {
                 foreach (XmlNode uf in grupoUF.SelectNodes("UF"))
                 {
@@ -579,6 +576,16 @@ namespace Unimake.Business.DFe
             ? servicoValidacao.SelectSingleNode(tipoDFe.ToString())
             : servicoValidacao.SelectSingleNode($"{tipoDFe}/Padrao[@nome='{padraoNFSe}']");
 
+            if (nodeDFe is null && padraoNFSe != PadraoNFSe.None)
+            {
+                throw new PadraoNaoImplementadoException($"Não foi possível encontrar a configuração para o padrão: {padraoNFSe}");
+            }
+
+            if (nodeDFe is null)
+            {
+                throw new Exception($"Não foi possível encontrar a configuração para o tipo de DFe: {tipoDFe}");
+            }
+
             foreach (XmlNode nodeServico in nodeDFe.SelectNodes("Servico"))
             {
                 var tagVersao = nodeServico.SelectSingleNode("*[local-name()='TagVersao']")?.InnerText;
@@ -611,6 +618,9 @@ namespace Unimake.Business.DFe
 
             if (ex is ValidarXMLException)
                 return "2";
+
+            if (ex is PadraoNaoImplementadoException)
+                return "5";
 
             return "3";
         }

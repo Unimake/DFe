@@ -4292,14 +4292,14 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public string NProcesso { get; set; }
     }
 
+    /// <summary>
+    /// Grupo de informações da vinculação com a transação de pagamento.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NF3e.PgtoVinc")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Grupo de informações da vinculação com a transação de pagamento.
-    /// </summary>
     public class PgtoVinc
     {
         /// <summary>

@@ -97,6 +97,18 @@ namespace Unimake.Exceptions
     }
 
     /// <summary>
+    /// Exceção lançada quando um padrão não está implementado.
+    /// </summary>
+    public class PadraoNaoImplementadoException : Exception
+    {
+        /// <summary>
+        /// Inicializa uma nova instância de PadraoNaoImplementadoException com a mensagem de erro especificada.
+        /// </summary>
+        /// <param name="message">Mensagem que descreve o erro.</param>
+        public PadraoNaoImplementadoException(string message) : base(message) { }
+    }
+
+    /// <summary>
     /// Classe de exceção quando ocorre erros no XML de retorno da NFSe. Sem retorno, inválido e etc
     /// </summary>
     public class ValidarXMLRetornoException : Exception
