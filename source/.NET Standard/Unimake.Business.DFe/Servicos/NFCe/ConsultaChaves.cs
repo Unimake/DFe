@@ -57,7 +57,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public ConsultaChaves(NFCeListagemChaves nfceListagemChaves, Configuracao configuracao) : base()
         {
-            this.Configurar(nfceListagemChaves, configuracao);
+            Configurar(nfceListagemChaves, configuracao);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         public ConsultaChaves(string conteudoXML, Configuracao configuracao) : base()
         {
             var nfceListagemChaves = new NFCeListagemChaves().LoadFromXML(conteudoXML);
-            this.Configurar(nfceListagemChaves, configuracao);
+            Configurar(nfceListagemChaves, configuracao);
         }
 
         #endregion Public Constructors
@@ -87,7 +87,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         {
             try
             {
-                this.Configurar(nfceListagemChaves, configuracao);
+                Configurar(nfceListagemChaves, configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)

@@ -59,7 +59,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public DownloadXML(NFCeDownloadXML nfceDownloadXML, Configuracao configuracao) : base()
         {
-            this.Configurar(nfceDownloadXML, configuracao);
+            Configurar(nfceDownloadXML, configuracao);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         public DownloadXML(string conteudoXML, Configuracao configuracao) : base()
         {
             var nfceDownloadXML = new NFCeDownloadXML().LoadFromXML(conteudoXML);
-            this.Configurar(nfceDownloadXML, configuracao);
+            Configurar(nfceDownloadXML, configuracao);
         }
 
         #endregion Public Constructors
@@ -89,7 +89,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         {
             try
             {
-                this.Configurar(nfceDownloadXML, configuracao);
+                Configurar(nfceDownloadXML, configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)
