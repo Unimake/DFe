@@ -589,6 +589,37 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consultar NSU da NFSe NACIONAL")]
         NFSeConsultarDistribuicaoNFSeNSU = 95,
 
+        /// <summary>
+        /// 96 - Consultar Eventos da NFSe por Chave de Acesso da NFSe NACIONAL
+        /// </summary>
+        [Description("Consultar Eventos da NFSe por Chave de Acesso da NFSe NACIONAL")]
+        NFSeConsultarEventosNFSeChaveAcesso = 96,
+
+        /// <summary>
+        /// 97 - Consulta status serviço DCe
+        /// </summary>
+        [Description("Consulta status do serviço da DCe")]
+        DCeStatusServico = 97,
+
+        /// <summary>
+        /// 98 - Consulta protocolo da DCe
+        /// </summary>
+        [Description("Consulta situação da DCe")]
+        DCeConsultaProtocolo = 98,
+
+        /// <summary>
+        /// 99 - Envio de Eventos da DCe
+        /// </summary>
+        [Description("Envio de eventos da DCe")]
+        DCeRecepcaoEvento = 99,
+
+        /// <summary>
+        /// 100 - Envio do XML de DCe
+        /// </summary>
+        [Description("Autorização síncrona de DCe")]
+        DCeAutorizacaoSinc = 100,
+
+
         #endregion
 
         #region Gerais
@@ -678,6 +709,10 @@ namespace Unimake.Business.DFe.Servicos
         /// 15 - NFCom - Nota fiscal fatura de serviço de comunicação eletrônica
         /// </summary>
         NFCom = 15,
+        /// <summary>
+        /// 16 - DCe - Declaração de Conteúdo eletrônica
+        /// </summary>
+        DCe = 16,
 
     }
 
@@ -959,6 +994,34 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("62")]
         NFCom = 62,
+
+        /// <summary>
+        /// DCe (Modelo: 99)
+        /// </summary>
+        [XmlEnum("99")]
+        DCe = 99,
+    }
+
+    #endregion
+
+    #region TipoEventoDCe
+
+    /// <summary>
+    /// Tipos de eventos da DCe
+    /// </summary>
+    public enum TipoEventoDCe
+    {
+        /// <summary>
+        /// 0 - Evento desconhecido
+        /// </summary>
+        [XmlEnum("0")]
+        Desconhecido = 0,
+
+        /// <summary>
+        /// 110111 - Cancelamento DCe
+        /// </summary>
+        [XmlEnum("110111")]
+        Cancelamento = 110111,
     }
 
     #endregion
@@ -1938,13 +2001,13 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 04 - Redução de valores
         /// </summary>
-        [XmlEnum("4")]
+        [XmlEnum("04")]
         ReducaoValores = 4,
 
         /// <summary>
         /// 05 - Transferência de crédito na sucessão
         /// </summary>
-        [XmlEnum("5")]
+        [XmlEnum("05")]
         TransferenciaDeCreditoNaSucessao = 5
     }
 
@@ -5353,6 +5416,40 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region Tipo de Emitente DCe
+
+    /// <summary>
+    /// Tipo de emitente do DCe
+    /// </summary>
+    public enum TipoEmitenteDCe
+    {
+        /// <summary>
+        /// 0 - APP do Fisco
+        /// </summary>
+        [XmlEnum("0")]
+        AppFisco = 0,
+
+        /// <summary>
+        /// 1 - Marketplace
+        /// </summary>
+        [XmlEnum("1")]
+        Marketplace = 1,
+
+        /// <summary>
+        /// 2 - Emissor Próprio
+        /// </summary>
+        [XmlEnum("2")]
+        EmissorProprio = 2,
+
+        /// <summary>
+        /// 3 - Transportadora
+        /// </summary>
+        [XmlEnum("3")]
+        Transportadora = 3
+    }
+
+    #endregion
+
     #region Tipo do Transportador para o MDFe
 
     /// <summary>
@@ -7095,12 +7192,6 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("DIGIFRED")]
         DIGIFRED = 15,
-
-        /// <summary>
-        /// VersaTEC – Tecnologia, Educação e Comunicação
-        /// </summary>
-        [Description("VERSATEC")]
-        VERSATEC = 16,
 
         /// <summary>
         /// GINFES – Gestão Inteligente da Nota Fiscal de Serviço Eletrônica

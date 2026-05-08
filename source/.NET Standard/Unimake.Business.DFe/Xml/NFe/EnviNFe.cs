@@ -6039,12 +6039,6 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VICMSMonoRet.ToString("F2", CultureInfo.InvariantCulture);
             set => VICMSMonoRet = Converter.ToDouble(value);
         }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeQBCMonoRet() => QBCMonoRet > 0;
-
-        #endregion
     }
 
     /// <summary>

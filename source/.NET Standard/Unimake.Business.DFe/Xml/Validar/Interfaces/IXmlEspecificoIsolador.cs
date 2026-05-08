@@ -8,7 +8,7 @@ namespace Unimake.Business.DFe.Interfaces
     internal interface IXmlEspecificoIsolador
     {
         /// <summary>
-        /// Isola o XML específico (schema) de um nó de evento ou modal.
+        /// Isola o XML específico de um nó de evento ou modal.
         /// </summary>
         /// <param name="node">Nó XML contendo evento ou modal</param>
         /// <returns>XmlDocument contendo apenas o XML específico para validação</returns>

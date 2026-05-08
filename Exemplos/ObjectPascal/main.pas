@@ -24,7 +24,8 @@ uses
   EventoCTeDesacordo, EventoEpecCte, ConsultaConfigGNRE, EnviarXmlGNRe, ConsultaResultadoLoteGNRE,
   EnviarNFCeOffline, EnviarNFeSincronoContingenciaSVC, NACIONALGerarNFSeObjeto,
   NACIONALCancelarNFSeObjeto, NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto,
-  NACIONALConsultarEventoNFSe;
+  NACIONALConsultarEventoNFSe, NACIONALConsultarDistribuicaoNFSeNSU, ConsultarChavesNFCeSP,
+  DownloadXMLNFCeSEFAZSP;
 
 type
 
@@ -80,6 +81,7 @@ type
     btnEnviarNFeSincronoContingenciaSVC: TButton;
     BtnNACIONALConsultarNFSePorRPSObjeto: TButton;
     BtnNACIONALConsultarNFSeObjeto: TButton;
+    btnDownloadXMLNFCeSEFAZSP: TButton;
     EnviarXmlGNRe: TButton;
     ConsultaConfigGNRE: TButton;
     GroupBox1: TGroupBox;
@@ -100,17 +102,21 @@ type
     GroupBox8: TGroupBox;
     BtnNACIONALCancelarNFSeObjeto: TToggleBox;
     BtnNACIONALConsultarEventoNFSe: TToggleBox;
+    BtnNACIONALConsultarDistribuicaoNFSeNSU: TToggleBox;
+    btnConsultaChaves: TToggleBox;
     procedure BtnBETHACancelarNFSeClick(Sender: TObject);
     procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
     procedure BtnBETHAConsultarNFSeRPSClick(Sender: TObject);
     procedure BtnBETHAEnviarLoteRPSSincronoClick(Sender: TObject);
     procedure BtnBETHAGerarNFSeClick(Sender: TObject);
     procedure BtnCertificadoDigitalClick(Sender: TObject);
+    procedure btnConsultaChavesClick(Sender: TObject);
     procedure btnConsultarDistribuicaoDFeOnClick(Sender: TObject);
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
     procedure BtnConsultarStatusNFComClick(Sender: TObject);
     procedure btnConsultaStatusNFeClick(Sender: TObject);
     procedure btnDesserializarRetornoConsultaDFeClick(Sender: TObject);
+    procedure btnDownloadXMLNFCeSEFAZSPClick(Sender: TObject);
     procedure BtnEnviarEventoCancelamentoMDFeClick(Sender: TObject);
     procedure BtnEnviarEventoEncerramentoMDFeClick(Sender: TObject);
     procedure btnEnviarEventoManifestacaoNFeClick(Sender: TObject);
@@ -131,6 +137,7 @@ type
     procedure btnInutilizacaoNumeroNFeClick(Sender: TObject);
     procedure BtnNACIONALCancelarNFSeClick(Sender: TObject);
     procedure BtnNACIONALCancelarNFSeObjetoClick(Sender: TObject);
+    procedure BtnNACIONALConsultarDistribuicaoNFSeNSUClick(Sender: TObject);
     procedure BtnNACIONALConsultarEventoNFSeClick(Sender: TObject);
     procedure BtnNACIONALConsultarNFSeClick(Sender: TObject);
     procedure BtnNACIONALConsultarNFSeObjetoClick(Sender: TObject);
@@ -201,6 +208,17 @@ begin
   oServico := TDesserializarRetornoConsultaDFe.Create;
   try
     oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.btnDownloadXMLNFCeSEFAZSPClick(Sender: TObject);
+var
+  oServico: TDownloadXMLNFCeSEFAZSP;
+begin
+  oServico := TDownloadXMLNFCeSEFAZSP.Create;
+  try
+    oServico.Executar('11111111111111111111111111111111111111111111');
   finally
   end;
 end;
@@ -334,6 +352,17 @@ var
   oServico: TCertificadoDigital;
 begin
   oServico := TCertificadoDigital.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.btnConsultaChavesClick(Sender: TObject);
+var
+  oServico: TConsultarChavesNFCeSP;
+begin
+  oServico := TConsultarChavesNFCeSP.Create;
   try
     oServico.Executar();
   finally
@@ -526,6 +555,18 @@ begin
     finally
     end;
 end;
+
+procedure TfrmPrincipal.BtnNACIONALConsultarDistribuicaoNFSeNSUClick(Sender: TObject);
+var
+  oServico: TNACIONALConsultarDistribuicaoNFSeNSU;
+begin
+  oServico := TNACIONALConsultarDistribuicaoNFSeNSU.Create;
+  try
+      oServico.Executar();
+    finally
+    end;
+end;
+
 
 procedure TfrmPrincipal.BtnNACIONALConsultarEventoNFSeClick(Sender: TObject);
 var

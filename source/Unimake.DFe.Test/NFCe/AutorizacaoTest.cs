@@ -339,14 +339,11 @@ namespace Unimake.DFe.Test.NFCe
                 CertificadoDigital = PropConfig.CertificadoDigital,
             };
 
+            // VersaoQRCodeNFCe por padrão, é 3
             if (versaoQRCodeNFCe <= 2)
             {
                 configuracao.CSC = "HCJBIRTWGCQ3HVQN7DCA0ZY0P2NYT6FVLPJG";
                 configuracao.CSCIDToken = 2;
-                //Para versão 2 não vou definir a propriedade VersaoQRCodeNFCe, pois ela já tem como padrão 2 e quero testar isso.
-            }
-            else
-            {
                 configuracao.VersaoQRCodeNFCe = versaoQRCodeNFCe;
             }
 

@@ -305,6 +305,767 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 		</Servico>
 	</NFe>
+	<NFCe>
+		<Servico tagRaiz="consStatServ" versao="4.00">
+			<Descricao>Consulta situação do serviço da nota fiscal eletrônica</Descricao>
+			<SchemaArquivo>consStatServ_v4.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consStatServ</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="consSitNFe" versao ="4.00">
+			<Descricao>Consulta situação da nota fiscal eletrônica</Descricao>
+			<SchemaArquivo>consSitNFe_v4.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consSitNFe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="consReciNFe" versao="4.00">
+			<Descricao>Consulta recibo da nota fiscal eletrônica</Descricao>
+			<SchemaArquivo>consReciNFe_v4.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consReciNFe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="inutNFe" versao ="4.00">
+			<Descricao>Inutilização de números da nota fiscal eletrônica</Descricao>
+			<SchemaArquivo>inutNFe_v4.00.xsd</SchemaArquivo>
+			<TagAssinatura>inutNFe</TagAssinatura>
+			<TagAtributoID>infInut</TagAtributoID>
+			<TagVersao>inutNFe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="ConsCad" versao ="2.00">
+			<Descricao>Consulta cadastro do contribuinte</Descricao>
+			<SchemaArquivo>consCad_v2.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>ConsCad</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="envEvento" versao ="1.00">
+			<Descricao>Recepção de eventos</Descricao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>evento</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagEvento>evento</TagEvento>
+			<TagVersao>envEvento</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>envEventoCancNFe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110111_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110112</ID>
+					<SchemaArquivo>envEventoCancSubst_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110112_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110110</ID>
+					<SchemaArquivo>envCCe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110110_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>111500</ID>
+					<SchemaArquivo>envRemIndus_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e111500_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>111501</ID>
+					<SchemaArquivo>envRemIndus_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e111501_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>111502</ID>
+					<SchemaArquivo>envRemIndus_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e111502_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>111503</ID>
+					<SchemaArquivo>envRemIndus_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e111503_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110750</ID>
+					<SchemaArquivo>envEventoEConf_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110750_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110751</ID>
+					<SchemaArquivo>envEventoCancEConf_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110751_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110001</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110001_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>112110</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e112110_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>112120</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e112120_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>112130</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e112130_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>112140</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e112140_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>112150</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e112150_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>211128</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e211128_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>212110</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e212110_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>212120</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e212120_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>412120</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e412120_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>412130</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e412130_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>211110</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e211110_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>211120</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e211120_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>211124</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e211124_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>211130</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e211130_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>211140</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e211140_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>211150</ID>
+					<SchemaArquivo>Evento_DVS_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e211150_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110192</ID>
+					<SchemaArquivo>envEventoInsucessoNFe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110192_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110193</ID>
+					<SchemaArquivo>envEventoCancInsucessoNFe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110193_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>210200</ID>
+					<SchemaArquivo>envConfRecebto_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e210200_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>210210</ID>
+					<SchemaArquivo>envConfRecebto_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e210210_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>210220</ID>
+					<SchemaArquivo>envConfRecebto_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e210220_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>210240</ID>
+					<SchemaArquivo>envConfRecebto_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e210240_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110140</ID>
+					<SchemaArquivo>envEPEC_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110140_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110150</ID>
+					<SchemaArquivo>envEventoAtorInteressado_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>110150_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110130</ID>
+					<SchemaArquivo>envEventoEntregaNFe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110130_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110131</ID>
+					<SchemaArquivo>envEventoCancEntregaNFe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110131_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+		</Servico>
+		<Servico tagRaiz ="enviNFe" versao ="4.00">
+			<Descricao>Autorização da NFe</Descricao>
+			<SchemaArquivo>enviNFe_v4.00.xsd</SchemaArquivo>
+			<TagAssinatura>NFe</TagAssinatura>
+			<TagAtributoID>infNFe</TagAtributoID>
+			<TagVersao>infNFe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AM</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.am.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.am.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://sistemas.sefaz.am.gov.br/nfceweb-hom/consultarNFCe.jsp</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>AP</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.ap.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.ap.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://www.sefaz.ap.gov.br/nfcehml/nfce.php</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.ap.gov.br/nfce/nfcep.php</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>BA</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://hinternet.sefaz.ba.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.ba.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://hnfe.sefaz.ba.gov.br/servicos/nfce/qrcode.aspx</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://nfe.sefaz.ba.gov.br/servicos/nfce/qrcode.aspx</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>CE</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.ce.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.ce.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://nfceh.sefaz.ce.gov.br/pages/ShowNFCe.html</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://nfce.sefaz.ce.gov.br/pages/ShowNFCe.html</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>DF</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.fazenda.df.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.fazenda.df.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.fazenda.df.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.fazenda.df.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>ES</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.es.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.es.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://homologacao.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://app.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>GO</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.go.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.go.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://nfewebhomolog.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfeweb.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MA</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.ma.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.ma.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.hom.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MG</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://hportalsped.fazenda.mg.gov.br/portalnfce</UrlChaveHomologacao>
+						<UrlChaveProducao>https://portalsped.fazenda.mg.gov.br/portalnfce</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MS</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://www.dfe.ms.gov.br/nfce/</UrlChaveHomologacao>
+						<UrlChaveProducao>http://www.dfe.ms.gov.br/nfce/</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.dfe.ms.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.dfe.ms.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MT</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://homologacao.sefaz.mt.gov.br/nfce/consultanfce</UrlChaveHomologacao>
+						<UrlChaveProducao>http://www.sefaz.mt.gov.br/nfce/consultanfce</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://homologacao.sefaz.mt.gov.br/nfce/consultanfce</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaz.mt.gov.br/nfce/consultanfce</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PA</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefa.pa.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefa.pa.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://appnfc.sefa.pa.gov.br/portal/view/consultas/nfce/nfceForm.seam</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PB</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.pb.gov.br/nfcehom</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.pb.gov.br/nfce</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.sefaz.pb.gov.br/nfcehom</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaz.pb.gov.br/nfce</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PE</UF>
+					<Urls>
+						<UrlChaveHomologacao>nfce.sefaz.pe.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>nfce.sefaz.pe.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://nfcehomolog.sefaz.pe.gov.br/nfce/consulta</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://nfce.sefaz.pe.gov.br/nfce/consulta</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PI</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.pi.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.pi.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.sefaz.pi.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaz.pi.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PR</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://www.fazenda.pr.gov.br</UrlChaveHomologacao>
+						<UrlChaveProducao>http://www.fazenda.pr.gov.br</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>RJ</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.fazenda.rj.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.fazenda.rj.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://consultadfe.fazenda.rj.gov.br/consultaNFCe/QRCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://consultadfe.fazenda.rj.gov.br/consultaNFCe/QRCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>RN</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.set.rn.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.set.rn.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://hom.nfce.set.rn.gov.br/consultarNFCe.aspx</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://nfce.set.rn.gov.br/consultarNFCe.aspx</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>RO</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefin.ro.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefin.ro.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>RR</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.rr.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.rr.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://200.174.88.103:8080/nfce/servlet/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.rr.gov.br/nfce/servlet/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>RS</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.rs.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.rs.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>SC</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://hom.sat.sef.sc.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>https://sat.sef.sc.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://hom.sat.sef.sc.gov.br/nfce/consulta</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://sat.sef.sc.gov.br/nfce/consulta</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>SE</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://www.hom.nfe.se.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>http://www.nfce.se.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.hom.nfe.se.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.nfce.se.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>SP</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://www.homologacao.nfce.fazenda.sp.gov.br/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>https://www.nfce.fazenda.sp.gov.br/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://homologacao.sefaz.to.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>http://www.sefaz.to.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://homologacao.sefaz.to.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaz.to.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
+		</Servico>
+		<Servico tagRaiz ="NFe" versao ="4.00">
+			<Descricao>Autorização da NFe</Descricao>
+			<SchemaArquivo>nfe_v4.00.xsd</SchemaArquivo>
+			<TagAssinatura>NFe</TagAssinatura>
+			<TagAtributoID>infNFe</TagAtributoID>
+			<TagVersao>infNFe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AM</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.am.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.am.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://sistemas.sefaz.am.gov.br/nfceweb-hom/consultarNFCe.jsp</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>AP</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.ap.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.ap.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://www.sefaz.ap.gov.br/nfcehml/nfce.php</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.ap.gov.br/nfce/nfcep.php</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>BA</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://hinternet.sefaz.ba.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.ba.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://hnfe.sefaz.ba.gov.br/servicos/nfce/qrcode.aspx</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://nfe.sefaz.ba.gov.br/servicos/nfce/qrcode.aspx</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>CE</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.ce.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.ce.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://nfceh.sefaz.ce.gov.br/pages/ShowNFCe.html</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://nfce.sefaz.ce.gov.br/pages/ShowNFCe.html</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>DF</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.fazenda.df.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.fazenda.df.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.fazenda.df.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.fazenda.df.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>ES</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.es.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.es.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://homologacao.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://app.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>GO</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.go.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.go.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://nfewebhomolog.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfeweb.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MA</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.ma.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.ma.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.hom.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MG</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://hportalsped.fazenda.mg.gov.br/portalnfce</UrlChaveHomologacao>
+						<UrlChaveProducao>https://portalsped.fazenda.mg.gov.br/portalnfce</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MS</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://www.dfe.ms.gov.br/nfce/</UrlChaveHomologacao>
+						<UrlChaveProducao>http://www.dfe.ms.gov.br/nfce/</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.dfe.ms.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.dfe.ms.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MT</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://homologacao.sefaz.mt.gov.br/nfce/consultanfce</UrlChaveHomologacao>
+						<UrlChaveProducao>http://www.sefaz.mt.gov.br/nfce/consultanfce</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://homologacao.sefaz.mt.gov.br/nfce/consultanfce</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaz.mt.gov.br/nfce/consultanfce</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PA</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefa.pa.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefa.pa.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://appnfc.sefa.pa.gov.br/portal/view/consultas/nfce/nfceForm.seam</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PB</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.pb.gov.br/nfcehom</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.pb.gov.br/nfce</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.sefaz.pb.gov.br/nfcehom</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaz.pb.gov.br/nfce</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PE</UF>
+					<Urls>
+						<UrlChaveHomologacao>nfce.sefaz.pe.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>nfce.sefaz.pe.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://nfcehomolog.sefaz.pe.gov.br/nfce/consulta</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://nfce.sefaz.pe.gov.br/nfce/consulta</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PI</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.pi.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.pi.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.sefaz.pi.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaz.pi.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PR</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://www.fazenda.pr.gov.br</UrlChaveHomologacao>
+						<UrlChaveProducao>http://www.fazenda.pr.gov.br</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>RJ</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.fazenda.rj.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.fazenda.rj.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://consultadfe.fazenda.rj.gov.br/consultaNFCe/QRCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://consultadfe.fazenda.rj.gov.br/consultaNFCe/QRCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>RN</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.set.rn.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.set.rn.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://hom.nfce.set.rn.gov.br/consultarNFCe.aspx</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://nfce.set.rn.gov.br/consultarNFCe.aspx</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>RO</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefin.ro.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefin.ro.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>RR</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.rr.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.rr.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://200.174.88.103:8080/nfce/servlet/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.rr.gov.br/nfce/servlet/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>RS</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaz.rs.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaz.rs.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>SC</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://hom.sat.sef.sc.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>https://sat.sef.sc.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://hom.sat.sef.sc.gov.br/nfce/consulta</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://sat.sef.sc.gov.br/nfce/consulta</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>SE</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://www.hom.nfe.se.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>http://www.nfce.se.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.hom.nfe.se.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.nfce.se.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>SP</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://www.homologacao.nfce.fazenda.sp.gov.br/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>https://www.nfce.fazenda.sp.gov.br/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://homologacao.sefaz.to.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>http://www.sefaz.to.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://homologacao.sefaz.to.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaz.to.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
+		</Servico>
+		<Servico tagRaiz ="distDFeInt" versao ="1.01">
+			<Descricao>Consulta da relação de documentos fiscais eletrônicos destinados - NFe</Descricao>
+			<SchemaArquivo>distDFeInt_v1.01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>distDFeInt</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="distDFeInt" versao ="1.35">
+			<Descricao>Consulta da relação de documentos fiscais eletrônicos destinados - NFe</Descricao>
+			<SchemaArquivo>distDFeInt_v1.35.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>distDFeInt</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+		</Servico>
+	</NFCe>
 	<!--CTe -->
 	<CTe>
 		<Servico tagRaiz ="distDFeInt" versao ="1.00">
@@ -397,6 +1158,96 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AP</UF>
+					<UF>PE</UF>
+					<UF>RR</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PI</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+
+				<Grupo>
+					<UF>MG</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+
+				<Grupo>
+					<UF>MS</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+
+				<Grupo>
+					<UF>MT</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+
+				<Grupo>
+					<UF>PR</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>SP</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
 			<SchemasEspecificos>
 				<Tipo>
 					<ID>1</ID>
@@ -465,6 +1316,63 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PI</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MS</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MT</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PR</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
 			<SchemasEspecificos>
 				<Tipo>
 					<ID>1</ID>
@@ -593,6 +1501,95 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AP</UF>
+					<UF>PE</UF>
+					<UF>RR</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PI</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MG</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+
+				<Grupo>
+					<UF>MS</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+
+				<Grupo>
+					<UF>MT</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PR</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+
+				<Grupo>
+					<UF>SP</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
 			<SchemasEspecificos>
 				<Tipo>
 					<ID>1</ID>
@@ -637,6 +1634,92 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AP</UF>
+					<UF>PE</UF>
+					<UF>RR</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PI</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MG</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MS</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MT</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PR</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>SP</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
 			<SchemasEspecificos>
 				<Tipo>
 					<ID>1</ID>
@@ -681,6 +1764,92 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PI</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>AP</UF>
+					<UF>PE</UF>
+					<UF>RR</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MG</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MS</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MT</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PR</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>SP</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
 		</Servico>
 		<Servico tagRaiz ="CTeOS" versao ="4.00">
 			<Descricao>Autorização do CTeOS</Descricao>
@@ -693,6 +1862,92 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PI</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>AP</UF>
+					<UF>PE</UF>
+					<UF>RR</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MG</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MS</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MT</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PR</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>SP</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
 		</Servico>
 	</CTe>
 	<!--MDFe -->
@@ -794,6 +2049,44 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>AP</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>MG</UF>
+					<UF>MS</UF>
+					<UF>MT</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PE</UF>
+					<UF>PI</UF>
+					<UF>PR</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RR</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>SP</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/mdfe/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/mdfe/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
 			<SchemasEspecificos>
 				<Tipo>
 					<ID>1</ID>
@@ -852,6 +2145,44 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>AP</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>MG</UF>
+					<UF>MS</UF>
+					<UF>MT</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PE</UF>
+					<UF>PI</UF>
+					<UF>PR</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RR</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>SP</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/mdfe/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/mdfe/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
 			<SchemasEspecificos>
 				<Tipo>
 					<ID>1</ID>
@@ -933,6 +2264,68 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/nfcom</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>AP</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PE</UF>
+					<UF>PI</UF>
+					<UF>PR</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RR</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>SP</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://dfe-portal.svrs.rs.gov.br/NFCom/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>https://dfe-portal.svrs.rs.gov.br/NFCom/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/NFCom/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/NFCom/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MG</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://portalnfcom.fazenda.mg.gov.br</UrlChaveHomologacao>
+						<UrlChaveProducao>https://portalnfcom.fazenda.mg.gov.br</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://portalnfcom.fazenda.mg.gov.br/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://portalnfcom.fazenda.mg.gov.br/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MS</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://www.dfe.ms.gov.br/nfcom/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>https://www.dfe.ms.gov.br/nfcom/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://www.dfe.ms.gov.br/nfcom/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.dfe.ms.gov.br/nfcom/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MT</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/nfcom-ext-fe/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.mt.gov.br/nfcom-ext-fe/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
 		</Servico>
 	</NFCom>
 	<!--NF3e-->
@@ -992,6 +2385,84 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/nf3e</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>AP</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PE</UF>
+					<UF>PI</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RR</UF>
+					<UF>RS</UF>
+					<UF>SE</UF>
+					<UF>SP</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://dfe-portal.svrs.rs.gov.br/nf3e/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>https://dfe-portal.svrs.rs.gov.br/nf3e/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/nf3e/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/nf3e/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MG</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://hportalsped.fazenda.mg.gov.br/portalnf3e</UrlChaveHomologacao>
+						<UrlChaveProducao>https://portalsped.fazenda.mg.gov.br/portalnf3e</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://portalsped.fazenda.mg.gov.br/portalnf3e/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://portalsped.fazenda.mg.gov.br/portalnf3e/sistema/qrcode.xhtml</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MS</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://www.dfe.ms.gov.br/nf3e/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>https://www.dfe.ms.gov.br/nf3e/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://www.dfe.ms.gov.br/nf3e/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.dfe.ms.gov.br/nf3e/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>MT</UF>
+					<Urls>
+						<UrlChaveHomologacao></UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/nf3e/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://www.sefaz.mt.gov.br/nf3e/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>PR</UF>
+					<Urls>
+						<UrlChaveHomologacao>http://www.fazenda.pr.gov.br</UrlChaveHomologacao>
+						<UrlChaveProducao>http://www.fazenda.pr.gov.br</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/nf3e/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/nf3e/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
+					<UF>SC</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://sathomologa.sef.sc.gov.br/nf3e/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>https://sat.sef.sc.gov.br/nf3e/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://sathomologa.sef.sc.gov.br/nf3e/consulta</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://sat.sef.sc.gov.br/nf3e/consulta</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
 		</Servico>
 		<Servico tagRaiz="consReciNF3e" versao="1.00">
 			<Descricao>Consulta recibo da nota fiscal de energia eletrônica</Descricao>
@@ -1008,6 +2479,208 @@
 	</NF3e>
 	<!--NFSe-->
 	<NFSe>
+		<Padrao nome="ABASE">
+			<Servico tagRaiz="CancelarNfseEnvio" versao="2.01" tagIdentificadora="InfPedidoCancelamento">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>Pedido</TagAssinatura>
+				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.01" tagIdentificadora="Protocolo">
+				<Descricao>Consulta lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.01" tagIdentificadora="IdentificacaoRps">
+				<Descricao>Consulta NFSe por RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.01" tagIdentificadora="LoteRps">
+				<Descricao>Serviço de Consulta de NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao>LoteRps</TagVersao>
+				<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+			</Servico>
+		</Padrao>
+		<Padrao nome="ADM_SISTEMAS">
+			<Servico tagRaiz="CancelarNfseEnvio" versao="2.03" tagIdentificadora="InfPedidoCancelamento">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>Pedido</TagAssinatura>
+				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="2917508">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.01" tagIdentificadora="Protocolo">
+				<Descricao>Consulta lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="2917508">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="2.03" tagIdentificadora="Faixa">
+				<Descricao>Consulta NFSe por Faixa</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="2917508">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.03" tagIdentificadora="IdentificacaoRps">
+				<Descricao>Consulta NFSe por RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="2917508">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="2.03" tagIdentificadora="Prestador">
+				<Descricao>Consulta NFSe de serviços prestados</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="2917508">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="2.03" tagIdentificadora="Consulente">
+				<Descricao>Consulta NFSe de serviços tomados</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="2917508">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.03" tagIdentificadora="LoteRps">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="2917508">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.03" tagIdentificadora="LoteRps">
+				<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="2917508">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="GerarNfseEnvio" versao="2.03" tagIdentificadora="Rps">
+				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="2917508">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="SubstituirNfseEnvio" versao="2.03" tagIdentificadora="SubstituicaoNfse">
+				<Descricao>Substituir nota fiscal de Serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
+				<TagExtraAssinatura>Pedido</TagExtraAssinatura>
+				<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
+				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="2917508">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+		</Padrao>
 		<Padrao nome="BETHA_CLOUD">
 			<Servico tagRaiz="e:RecepcionarDpsEnvio" versao="1.01" tagIdentificadora="infDPS">
 				<Descricao>Recepcionar Lote RPS</Descricao>
@@ -1831,7 +3504,6 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="nNFSe">
 				<Descricao>Envio NFS-e com indicativo de decisão judicial - Síncrono</Descricao>
@@ -1844,7 +3516,6 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="infPedReg">
 				<Descricao>Recepcionar Eventos Diversos da NFSe NACIONAL</Descricao>
@@ -1857,7 +3528,6 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 		</Padrao>
 		<Padrao nome="PRONIM">
@@ -1872,7 +3542,6 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
 				<Descricao>Consultar NFSe</Descricao>
@@ -1885,7 +3554,6 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="infDPS">
 				<Descricao>Consultar NFSe por DPS</Descricao>
@@ -1898,7 +3566,6 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="infPedReg">
 				<Descricao>Envio do cancelamento de NFSe</Descricao>
@@ -1911,7 +3578,6 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-				<UsaCertificadoDigital>true</UsaCertificadoDigital>
 			</Servico>
 		</Padrao>
 		<Padrao nome="WEBISS">

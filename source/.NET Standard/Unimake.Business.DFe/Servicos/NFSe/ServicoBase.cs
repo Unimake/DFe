@@ -1,16 +1,13 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
-using System.Xml.Linq;
 using Unimake.Business.DFe.ConsumirServico.Builders;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
@@ -273,97 +270,40 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void NACIONAL()
         {
-            // Verificar se é um dos novos serviços de parâmetros municipais
-            bool isParametrosMunicipais = Configuracoes.Servico == Servico.NFSeConsultarConvenioMunicipal ||
-                                          Configuracoes.Servico == Servico.NFSeConsultarAliquotasMunicipais ||
-                                          Configuracoes.Servico == Servico.NFSeConsultarHistoricoAliquotasMunicipais ||
-                                          Configuracoes.Servico == Servico.NFSeConsultarRegimesEspeciaisMunicipais ||
-                                          Configuracoes.Servico == Servico.NFSeConsultarRetencoesMunicipais ||
-                                          Configuracoes.Servico == Servico.NFSeConsultarBeneficioMunicipal;
-
-            bool isConsultaEventosNfse = Configuracoes.Servico == Servico.NFSeConsultarEventosDiversos;
-
-            bool isConsultaNSU = Configuracoes.Servico == Servico.NFSeConsultarDistribuicaoNFSeNSU;
-
-            if (isParametrosMunicipais)
+            // Substitui todos os placeholders {tag} na URL pelo valor do elemento XML de mesmo nome.
+            // Novos serviços com placeholders na URL são suportados automaticamente sem alteração aqui.
+            foreach (Match match in Regex.Matches(Configuracoes.RequestURI, @"\{(\w+)\}"))
             {
-                // Para serviços de parâmetros municipais, fazer substituições na URL conforme o XML
-                if (Configuracoes.RequestURI.Contains("{codigoMunicipio}"))
-                {
-                    var codigoMunicipio = GetXMLElementInnertext("codigoMunicipio");
-                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{codigoMunicipio}", codigoMunicipio);
-                }
-                if (Configuracoes.RequestURI.Contains("{codigoServico}"))
-                {
-                    var codigoServico = GetXMLElementInnertext("codigoServico");
-                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{codigoServico}", codigoServico);
-                }
-                if (Configuracoes.RequestURI.Contains("{competencia}"))
-                {
-                    var competencia = GetXMLElementInnertext("competencia");
-                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{competencia}", competencia);
-                }
-                if (Configuracoes.RequestURI.Contains("{numeroBeneficio}"))
-                {
-                    var numeroBeneficio = GetXMLElementInnertext("numeroBeneficio");
-                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numeroBeneficio}", numeroBeneficio);
-                }
+                var tagName = match.Groups[1].Value;
+                var value = GetXMLElementInnertext(tagName);
+                if (value != null)
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace(match.Value, value);
             }
-            else if (isConsultaEventosNfse)
-            {
-                if (Configuracoes.RequestURI.Contains("{chNFSe}"))
-                {
-                    var chNFSe = GetXMLElementInnertext("chNFSe");
-                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{chNFSe}", chNFSe);
-                }
-                if (Configuracoes.RequestURI.Contains("{tipoEvento}"))
-                {
-                    var tipoEvento = GetXMLElementInnertext("tipoEvento");
-                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{tipoEvento}", tipoEvento);
-                }
-                if (Configuracoes.RequestURI.Contains("{numSeqEvento}"))
-                {
-                    var numSeqEvento = GetXMLElementInnertext("numSeqEvento");
-                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numSeqEvento}", numSeqEvento);
-                }
-            }
-            else if (isConsultaNSU)
-            {
-                // Serviço: /contribuintes/DFe/{NSU}?tipoNSU={tipoNSU}&lote={lote}
-                if (Configuracoes.RequestURI.Contains("{NSU}"))
-                {
-                    var nsu = GetXMLElementInnertext("NSU");
-                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{NSU}", nsu);
-                }
 
-                // Adicionar query strings do XML
+            // Fallback: se {Chave} não foi resolvido por elemento XML, extrai do atributo Id do XML
+            if (Configuracoes.RequestURI.Contains("{Chave}"))
+            {
+                var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+                var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+                var chave = ConteudoXML.OuterXml.Substring(startIndex, endIndex - startIndex);
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+            }
+
+            // Serviço NSU: parâmetros opcionais adicionados como query string ao final da URL
+            if (Configuracoes.Servico == Servico.NFSeConsultarDistribuicaoNFSeNSU)
+            {
                 var queryParams = new List<string>();
 
                 var tipoNSU = GetXMLElementInnertext("tipoNSU");
                 if (!string.IsNullOrWhiteSpace(tipoNSU))
-                {
                     queryParams.Add($"tipoNSU={Uri.EscapeDataString(tipoNSU)}");
-                }
 
                 var lote = GetXMLElementInnertext("lote");
                 if (!string.IsNullOrWhiteSpace(lote))
-                {
                     queryParams.Add($"lote={Uri.EscapeDataString(lote)}");
-                }
 
                 if (queryParams.Count > 0)
-                {
                     Configuracoes.RequestURI += "?" + string.Join("&", queryParams);
-                }
-            }
-            else
-            {
-                var URI = Configuracoes.RequestURI;
-
-                var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
-                var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
-                var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
             }
         }
 
@@ -615,11 +555,21 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", GetXMLElementInnertext("chNFSe"));
                     return;
                 }
-
-                var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
-                var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
-                var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+                else if (Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps)
+                {
+                    var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 4;
+                    var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+                    var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+                    return;
+                }
+                else
+                {
+                    var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+                    var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+                    var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+                }
             }
         }
         #endregion
@@ -682,10 +632,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         {
             //Municípios pontuais com configuração diferente:
             //São José dos Pinhais - PR     |GINFES
-            //Varginha - MG                 |BETHA
             //Fortaleza - CE                |GINFES
-            //Criciúma - SC                 |BETHA
-            if (Configuracoes.CodigoMunicipio != 4125506 || Configuracoes.CodigoMunicipio != 3170701 || Configuracoes.CodigoMunicipio != 2304400 || Configuracoes.CodigoMunicipio != 4204608)
+            if (Configuracoes.CodigoMunicipio != 4125506 || Configuracoes.CodigoMunicipio != 2304400)
             {
                 Configuracoes.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), Configuracoes.PadraoNFSe.ToString());
             }

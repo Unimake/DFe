@@ -31,7 +31,8 @@ uses
   EnviarNFCeOffline, EnviarNFeSincronoContingenciaSVC,
   NACIONALCancelarNFSeObjeto, NACIONALGerarNFSeObjeto,
   NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto,
-  NACIONALConsultarEventoNFSe
+  NACIONALConsultarEventoNFSe, NACIONALConsultarDistribuicaoNFSeNSU,
+  ConsultarChavesNFCeSP, DownloadXMLNFCeSEFAZSP
   { you can add units after this };
 
 {$R *.res}

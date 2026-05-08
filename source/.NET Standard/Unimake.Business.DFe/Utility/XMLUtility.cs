@@ -1,5 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
+using Unimake.Business.DFe.Validator;
 #endif
 
 using System;
@@ -13,7 +14,6 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Validator;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Utility
@@ -100,9 +100,14 @@ namespace Unimake.Business.DFe.Utility
             public UFBrasil UFEmissor { get; set; }
 
             /// <summary>
-            /// Site do Autorizador que recepcionou a NF3e 
+            /// Site do Autorizador que recepcionou a NF3e ou NFCom
             /// </summary>
             public string NSiteAutoriz { get; set; }
+
+            /// <summary>
+            /// Tipo do emitente do DCe
+            /// </summary>
+            public TipoEmitenteDCe TipoEmitenteDCe { get; set; }
 
             #endregion Public Properties
         }
@@ -1386,11 +1391,38 @@ namespace Unimake.Business.DFe.Utility
         public static string MontarChaveCTe(ref ConteudoChaveDFe conteudoChaveDFe) => MontarChaveDFe(ref conteudoChaveDFe);
 
         /// <summary>
-        /// Monta a chave do CTe com base nos valores informados
+        /// Monta a chave do NFCom com base nos valores informados
+        /// </summary>
+        /// <param name="conteudoChaveDFe">Conteúdos do NFCom necessários para montagem da chave</param>
+        /// <returns>Chave do CTe</returns>
+        public static string MontarChaveNFCom(ref ConteudoChaveDFe conteudoChaveDFe) => MontarChaveNF3e(ref conteudoChaveDFe);
+
+        /// <summary>
+        /// Monta a chave do DCe com base nos valores informados
         /// </summary>
         /// <param name="conteudoChaveDFe">Conteúdos do CTe necessários para montagem da chave</param>
         /// <returns>Chave do CTe</returns>
-        public static string MontarChaveNFCom(ref ConteudoChaveDFe conteudoChaveDFe) => MontarChaveNF3e(ref conteudoChaveDFe);
+        public static string MontarChaveDCe(ref ConteudoChaveDFe conteudoChaveDFe)
+        {
+            var chave = ((int)conteudoChaveDFe.UFEmissor).ToString() +
+                conteudoChaveDFe.AnoEmissao +
+                conteudoChaveDFe.MesEmissao +
+                conteudoChaveDFe.CNPJCPFEmissor +
+                ((int)conteudoChaveDFe.Modelo).ToString().PadLeft(2, '0') +
+                conteudoChaveDFe.Serie.ToString().PadLeft(3, '0') +
+                conteudoChaveDFe.NumeroDoctoFiscal.ToString().PadLeft(9, '0') +
+                ((int)conteudoChaveDFe.TipoEmissao).ToString() +
+                ((int)conteudoChaveDFe.TipoEmitenteDCe).ToString() +
+                conteudoChaveDFe.NSiteAutoriz.ToString() +
+                conteudoChaveDFe.CodigoNumerico.PadLeft(6, '0');
+
+            conteudoChaveDFe.DigitoVerificador = XMLUtility.CalcularDVChave(chave);
+
+            chave += conteudoChaveDFe.DigitoVerificador.ToString();
+
+            return chave;
+
+        }
 
         /// <summary>
         /// Montar chave da NFSe Nacional com base nos valores informados

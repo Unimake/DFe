@@ -31,7 +31,7 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
         private XmlDocument ParseNotFound(ref ApiResponseContext context)
         {
             if (context.Config.Servico == Servico.NFSeConsultarNfsePorRps || context.Config.Servico == Servico.NFSeConsultarNfse || 
-                context.Config.Servico == Servico.NFSeConsultarDistribuicaoNFSeNSU)
+                context.Config.Servico == Servico.NFSeConsultarDistribuicaoNFSeNSU || context.Config.Servico == Servico.NFSeConsultarEventosNFSeChaveAcesso)
             {
                 try
                 {

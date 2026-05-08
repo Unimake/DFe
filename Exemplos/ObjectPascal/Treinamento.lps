@@ -19,8 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <TopLine Value="828"/>
-        <CursorPos X="43" Y="850"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="193"/>
+        <CursorPos X="68" Y="221"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -39,8 +40,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFeSincrono"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="315"/>
-        <CursorPos X="27" Y="341"/>
+        <TopLine Value="319"/>
+        <CursorPos X="29" Y="319"/>
         <UsageCount Value="208"/>
       </Unit>
       <Unit>
@@ -74,8 +75,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarDistribuicaoDFe"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="4"/>
-        <CursorPos Y="31"/>
+        <TopLine Value="63"/>
+        <CursorPos X="22" Y="107"/>
         <UsageCount Value="210"/>
       </Unit>
       <Unit>
@@ -83,8 +84,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarEventoManifestacaoNFe"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="45"/>
-        <CursorPos X="26" Y="73"/>
+        <TopLine Value="5"/>
+        <CursorPos X="36" Y="40"/>
         <UsageCount Value="210"/>
       </Unit>
       <Unit>
@@ -92,8 +93,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFCeSincrono"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="282"/>
-        <CursorPos X="30" Y="292"/>
+        <TopLine Value="261"/>
+        <CursorPos X="67" Y="289"/>
         <UsageCount Value="210"/>
       </Unit>
       <Unit>
@@ -128,23 +129,23 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="BETHAGerarNFSe"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="35"/>
-        <CursorPos X="45" Y="42"/>
+        <TopLine Value="74"/>
+        <CursorPos X="75" Y="91"/>
         <UsageCount Value="201"/>
       </Unit>
       <Unit>
         <Filename Value="BETHACancelarNFSe.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="15"/>
-        <CursorPos X="57" Y="50"/>
+        <TopLine Value="12"/>
+        <CursorPos X="29" Y="42"/>
         <UsageCount Value="200"/>
       </Unit>
       <Unit>
         <Filename Value="BETHAEnviarLoteRPSSincrono.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="71"/>
+        <TopLine Value="16"/>
         <CursorPos X="25" Y="101"/>
         <UsageCount Value="200"/>
       </Unit>
@@ -169,15 +170,16 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="NACIONALGerarNFSe"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="93" Y="111"/>
+        <TopLine Value="10"/>
+        <CursorPos X="51" Y="91"/>
         <UsageCount Value="208"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALCancelarNFSe.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="13"/>
-        <CursorPos X="86" Y="61"/>
+        <TopLine Value="14"/>
+        <CursorPos X="68" Y="41"/>
         <UsageCount Value="206"/>
       </Unit>
       <Unit>
@@ -191,7 +193,7 @@
         <Filename Value="NACIONALConsultarNFSeRPS.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="101" Y="50"/>
+        <CursorPos X="41" Y="18"/>
         <UsageCount Value="203"/>
       </Unit>
       <Unit>
@@ -234,8 +236,6 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFComSincrono"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="228"/>
-        <CursorPos X="113" Y="246"/>
         <UsageCount Value="201"/>
       </Unit>
       <Unit>
@@ -296,7 +296,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="8"/>
         <CursorPos Y="35"/>
-        <UsageCount Value="185"/>
+        <UsageCount Value="205"/>
       </Unit>
       <Unit>
         <Filename Value="consultarsituacaonfcom.pas"/>
@@ -304,7 +304,7 @@
         <UnitName Value="ConsultarSituacaoNFCom"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="68" Y="49"/>
-        <UsageCount Value="172"/>
+        <UsageCount Value="195"/>
       </Unit>
       <Unit>
         <Filename Value="enviareventocancelamentonfcom.pas"/>
@@ -313,7 +313,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="48"/>
         <CursorPos Y="63"/>
-        <UsageCount Value="169"/>
+        <UsageCount Value="192"/>
       </Unit>
       <Unit>
         <Filename Value="consultarstatuscte.pas"/>
@@ -322,7 +322,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="5"/>
         <CursorPos Y="33"/>
-        <UsageCount Value="168"/>
+        <UsageCount Value="191"/>
       </Unit>
       <Unit>
         <Filename Value="consultarmdfenaoencerrado.pas"/>
@@ -330,7 +330,7 @@
         <UnitName Value="ConsultarMDFeNaoEncerrado"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="45" Y="8"/>
-        <UsageCount Value="166"/>
+        <UsageCount Value="189"/>
       </Unit>
       <Unit>
         <Filename Value="consultarsituacaocte.pas"/>
@@ -338,7 +338,7 @@
         <UnitName Value="ConsultarSituacaoCTe"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="80" Y="34"/>
-        <UsageCount Value="166"/>
+        <UsageCount Value="189"/>
       </Unit>
       <Unit>
         <Filename Value="enviarctesincrono.pas"/>
@@ -346,7 +346,7 @@
         <UnitName Value="EnviarCteSincrono"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="278"/>
-        <UsageCount Value="165"/>
+        <UsageCount Value="188"/>
       </Unit>
       <Unit>
         <Filename Value="enviarcteossincrono.pas"/>
@@ -355,7 +355,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="68"/>
         <CursorPos X="42" Y="262"/>
-        <UsageCount Value="164"/>
+        <UsageCount Value="187"/>
       </Unit>
       <Unit>
         <Filename Value="eventocancelamentocte.pas"/>
@@ -364,7 +364,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="47"/>
         <CursorPos X="19" Y="49"/>
-        <UsageCount Value="155"/>
+        <UsageCount Value="178"/>
       </Unit>
       <Unit>
         <Filename Value="enviareventocancelamentocteos.pas"/>
@@ -373,7 +373,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="40"/>
         <CursorPos X="50" Y="80"/>
-        <UsageCount Value="153"/>
+        <UsageCount Value="176"/>
       </Unit>
       <Unit>
         <Filename Value="eventoccecte.pas"/>
@@ -382,7 +382,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="95"/>
         <CursorPos Y="102"/>
-        <UsageCount Value="139"/>
+        <UsageCount Value="162"/>
       </Unit>
       <Unit>
         <Filename Value="insucessoentregacte.pas"/>
@@ -391,7 +391,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="65"/>
         <CursorPos Y="83"/>
-        <UsageCount Value="135"/>
+        <UsageCount Value="158"/>
       </Unit>
       <Unit>
         <Filename Value="cancelamentoinsucessoentregacte.pas"/>
@@ -400,7 +400,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="51"/>
         <CursorPos X="29" Y="87"/>
-        <UsageCount Value="123"/>
+        <UsageCount Value="146"/>
       </Unit>
       <Unit>
         <Filename Value="desserializandoxmlcteos.pas"/>
@@ -409,7 +409,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="18"/>
         <CursorPos Y="39"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="144"/>
       </Unit>
       <Unit>
         <Filename Value="eventoctedesacordo.pas"/>
@@ -418,7 +418,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos Y="32"/>
-        <UsageCount Value="102"/>
+        <UsageCount Value="125"/>
       </Unit>
       <Unit>
         <Filename Value="eventoepeccte.pas"/>
@@ -427,7 +427,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="54"/>
         <CursorPos X="38" Y="77"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="95"/>
       </Unit>
       <Unit>
         <Filename Value="consultaconfiggnre.pas"/>
@@ -436,18 +436,16 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="35"/>
         <CursorPos Y="58"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="94"/>
       </Unit>
       <Unit>
         <Filename Value="enviarxmlgnre.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarXmlGNRe"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="128"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="119"/>
         <CursorPos X="32" Y="147"/>
-        <UsageCount Value="70"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="93"/>
       </Unit>
       <Unit>
         <Filename Value="consultaresultadolotegnre.pas"/>
@@ -456,7 +454,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="33"/>
         <CursorPos Y="86"/>
-        <UsageCount Value="54"/>
+        <UsageCount Value="77"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfceoffline.pas"/>
@@ -465,7 +463,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="291"/>
         <CursorPos X="37" Y="307"/>
-        <UsageCount Value="46"/>
+        <UsageCount Value="69"/>
       </Unit>
       <Unit>
         <Filename Value="EnviarNFeSincronoContingenciaSVC.pas"/>
@@ -473,7 +471,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="305"/>
         <CursorPos Y="345"/>
-        <UsageCount Value="40"/>
+        <UsageCount Value="63"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALGerarNfseObjeto.pas"/>
@@ -482,7 +480,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="65"/>
         <CursorPos X="38" Y="120"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="57"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALCancelarNFSeObjeto.pas"/>
@@ -490,7 +488,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="50"/>
         <CursorPos Y="76"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="57"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALConsultarNFSeRPSObjeto.pas"/>
@@ -498,15 +496,15 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <CursorPos X="86" Y="42"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="55"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALConsultarNFSeObjeto.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="20"/>
-        <CursorPos X="79" Y="45"/>
-        <UsageCount Value="31"/>
+        <TopLine Value="35"/>
+        <CursorPos X="62" Y="68"/>
+        <UsageCount Value="54"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALConsultarEventoNFSe.pas"/>
@@ -514,7 +512,27 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="26"/>
         <CursorPos X="33" Y="54"/>
-        <UsageCount Value="28"/>
+        <UsageCount Value="51"/>
+      </Unit>
+      <Unit>
+        <Filename Value="NACIONALConsultarDistribuicaoNFSeNSU.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="42"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ConsultarChavesNFCeSP.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="30"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="2"/>
+        <UsageCount Value="29"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="consultarmdfenaoencerrada.pas"/>
@@ -522,7 +540,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="39"/>
         <CursorPos X="119" Y="66"/>
-        <UsageCount Value="64"/>
+        <UsageCount Value="63"/>
       </Unit>
       <Unit>
         <Filename Value="unimake_business_dfe_2023_7_tlb.pas"/>
@@ -530,7 +548,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="26597"/>
         <CursorPos X="37" Y="26598"/>
-        <UsageCount Value="101"/>
+        <UsageCount Value="100"/>
       </Unit>
       <Unit>
         <Filename Value="main.lfm"/>
@@ -539,7 +557,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="26" Y="6"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
@@ -548,7 +566,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="165"/>
         <CursorPos X="49" Y="191"/>
-        <UsageCount Value="1"/>
+        <UsageCount Value="10"/>
       </Unit>
       <Unit>
         <Filename Value="eventocancelamentonfe.pas"/>
@@ -556,21 +574,21 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="74"/>
         <CursorPos X="57" Y="103"/>
-        <UsageCount Value="18"/>
+        <UsageCount Value="17"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\inc\objpash.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="243"/>
         <CursorPos X="8" Y="259"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\objpas\classes\classesh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="56"/>
         <CursorPos X="3" Y="72"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\rtl-objpas\src\inc\variants.pp"/>
@@ -578,125 +596,129 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="70"/>
         <CursorPos X="10" Y="86"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="28">
+    <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="97" TopLine="44"/>
+        <Filename Value="ConsultarChavesNFCeSP.pas"/>
+        <Caret Line="77" TopLine="60"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="99" TopLine="46"/>
+        <Filename Value="ConsultarChavesNFCeSP.pas"/>
+        <Caret Line="79" TopLine="60"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="101" TopLine="60"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="35" TopLine="18"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="103" TopLine="60"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="36" TopLine="18"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="106" TopLine="66"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="37" TopLine="18"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="107" TopLine="66"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="38" TopLine="18"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="108" TopLine="66"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="39" TopLine="18"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="109" TopLine="66"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="40" TopLine="18"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="110" TopLine="66"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="43" TopLine="28"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="111" TopLine="66"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="44" TopLine="28"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="114" TopLine="72"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="45" TopLine="28"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="115" TopLine="72"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="46" TopLine="28"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="116" TopLine="72"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="49" TopLine="34"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="117" TopLine="72"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="51" TopLine="34"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="118" TopLine="72"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="53" TopLine="34"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="121" TopLine="78"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="54" Column="26" TopLine="42"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="124" TopLine="107"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="60" TopLine="42"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="157" Column="33" TopLine="118"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="63" TopLine="42"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="123" Column="11" TopLine="93"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="66" TopLine="51"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="126" Column="58" TopLine="93"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="67" TopLine="51"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="24" Column="54"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="68" TopLine="51"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="149" Column="62" TopLine="95"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="67" TopLine="51"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="50" TopLine="19"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="70" TopLine="51"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="44" Column="58" TopLine="18"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="71" TopLine="51"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="51" TopLine="18"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="73" TopLine="54"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="112" Column="61" TopLine="98"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="76" TopLine="54"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="139" Column="68" TopLine="120"/>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="47" Column="53" TopLine="35"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="11" Column="45"/>
+        <Filename Value="ConsultarChavesNFCeSP.pas"/>
+        <Caret Line="69" Column="42" TopLine="60"/>
       </Position>
       <Position>
-        <Filename Value="enviarxmlgnre.pas"/>
-        <Caret Line="148" Column="39" TopLine="138"/>
+        <Filename Value="ConsultarChavesNFCeSP.pas"/>
+        <Caret Line="95" Column="5" TopLine="63"/>
+      </Position>
+      <Position>
+        <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Caret Line="64" Column="61" TopLine="54"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -929,6 +951,27 @@
         <WatchKind Value="wpkWrite"/>
         <Source Value="insucessoentregacte.pas"/>
         <Line Value="87"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="NACIONALConsultarDistribuicaoNFSeNSU.pas"/>
+        <Line Value="43"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="ConsultarChavesNFCeSP.pas"/>
+        <Line Value="1"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="DownloadXMLNFCeSEFAZSP.pas"/>
+        <Line Value="1"/>
       </Item>
     </BreakPoints>
     <Watches>

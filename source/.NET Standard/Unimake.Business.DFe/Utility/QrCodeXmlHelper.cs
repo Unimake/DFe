@@ -22,12 +22,17 @@ namespace Unimake.Business.DFe.Utility
     internal static class QrCodeXmlHelper
     {
         /// <summary>
-        /// Monta e inclui o grupo suplementar <c>infNFeSupl</c> com as tags de QRCode para NFC-e.
+        /// Monta e inclui o grupo suplementar <c>infNFeSupl</c> com as tags de QRCode para NFC-e,
+        /// aceitando XML no formato de lote (<c>enviNFe</c>) ou XML contendo diretamente a tag <c>NFe</c>.
         /// </summary>
-        /// <param name="conteudoXml">Documento XML da NFC-e já carregado em memória.</param>
+        /// <param name="conteudoXml">
+        /// Documento XML da NFC-e já carregado em memória, podendo iniciar com <c>enviNFe</c>
+        /// (com uma ou mais <c>NFe</c>) ou com a própria tag <c>NFe</c>.
+        /// </param>
         /// <param name="configuracoes">Configurações do serviço (ambiente, URLs, CSC, token e certificado).</param>
         /// <remarks>
-        /// O método processa todas as tags <c>NFe</c> dentro do lote <c>enviNFe</c>.
+        /// Quando o XML estiver no formato de lote, o método processa todas as tags <c>NFe</c> do <c>enviNFe</c>.
+        /// Quando o XML contiver somente <c>NFe</c>, processa o(s) documento(s) localizado(s) diretamente.
         /// Caso o grupo suplementar já exista em determinada nota, ele não é recriado.
         /// </remarks>
         /// <exception cref="Exception">
@@ -36,17 +41,26 @@ namespace Unimake.Business.DFe.Utility
         /// </exception>
         public static void MontarQrCodeNFCe(XmlDocument conteudoXml, Configuracao configuracoes)
         {
-            if (conteudoXml.GetElementsByTagName("enviNFe").Count <= 0)
-            {
-                throw new Exception("A tag obrigatória <enviNFe> não foi localizada no XML.");
-            }
-            var elementEnviNFe = (XmlElement)conteudoXml.GetElementsByTagName("enviNFe")[0];
+            XmlNodeList nodeListNFe;
 
-            if (conteudoXml.GetElementsByTagName("NFe").Count <= 0)
+            if (conteudoXml.GetElementsByTagName("enviNFe").Count > 0)
             {
-                throw new Exception("A tag obrigatória <NFe>, do grupo de tag <enviNFe>, não foi localizada no XML.");
+                var elementEnviNFe = (XmlElement)conteudoXml.GetElementsByTagName("enviNFe")[0];
+                nodeListNFe = elementEnviNFe.GetElementsByTagName("NFe");
             }
-            var nodeListNFe = elementEnviNFe.GetElementsByTagName("NFe");
+            else if (conteudoXml.GetElementsByTagName("NFe").Count > 0)
+            {
+                nodeListNFe = conteudoXml.GetElementsByTagName("NFe");
+            }
+            else
+            {
+                throw new Exception("A tag obrigatória <enviNFe> ou <NFe> não foi localizada no XML.");
+            }
+
+            if (nodeListNFe.Count <= 0)
+            {
+                throw new Exception("A tag obrigatória <NFe> não foi localizada no XML.");
+            }
 
             foreach (XmlNode nodeNFe in nodeListNFe)
             {
@@ -368,6 +382,68 @@ namespace Unimake.Business.DFe.Utility
                     nodeInfNFCom,
                     "infNFComSupl",
                     new KeyValuePair<string, string>("qrCodNFCom", paramLinkQRCode.Trim()));
+            }
+        }
+
+        /// <summary>
+        /// Monta e inclui o grupo suplementar <c>infDCeSupl</c> com a tag de QRCode para DCe.
+        /// </summary>
+        /// <param name="conteudoXml">Documento XML da DCe.</param>
+        /// <param name="configuracoes">Configurações do serviço (ambiente, URLs e certificado digital).</param>
+        /// <exception cref="Exception">Lançada quando alguma tag obrigatória para cálculo da chave/QRCode não é localizada.</exception>
+        public static void MontarQrCodeDCe(XmlDocument conteudoXml, Configuracao configuracoes)
+        {
+            if (conteudoXml.GetElementsByTagName("DCe").Count <= 0)
+            {
+                throw new Exception("A tag obrigatória <DCe> não foi localizada no XML.");
+            }
+
+            var elementDCe = (XmlElement)conteudoXml.GetElementsByTagName("DCe")[0];
+
+            if (elementDCe.GetElementsByTagName("infDCeSupl").Count <= 0)
+            {
+                if (elementDCe.GetElementsByTagName("infDCe").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <infDCe>, do grupo de tag <DCe>, não foi localizada no XML.");
+                }
+
+                var elementInfDCe = (XmlElement)elementDCe.GetElementsByTagName("infDCe")[0];
+
+                if (elementInfDCe.GetElementsByTagName("ide").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <DCe><infDCe>, não foi localizada no XML.");
+                }
+
+                var elementIde = (XmlElement)elementInfDCe.GetElementsByTagName("ide")[0];
+                var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
+                var tpEmis = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
+                var chave = elementInfDCe.GetAttribute("Id")?.Replace("DCe", "");
+                var idDCe = elementInfDCe.GetAttribute("Id");
+
+                if (string.IsNullOrWhiteSpace(chave))
+                {
+                    throw new Exception("O atributo obrigatório \"Id\" da tag <infDCe>, do grupo de tag <DCe>, não foi localizado no XML.");
+                }
+
+                var urlQrCode = configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? configuracoes.UrlQrCodeHomologacao : configuracoes.UrlQrCodeProducao;
+                var urlChave = idDCe; //configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? configuracoes.UrlChaveHomologacao : configuracoes.UrlChaveProducao;
+                var paramLinkQRCode = urlQrCode + "?chDCe=" + chave + "&tpAmb=" + ((int)tpAmb).ToString();
+
+                if ((int)tpEmis == 2)
+                {
+                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(configuracoes.CertificadoDigital, chave);
+                }
+
+                var nodeDCe = conteudoXml.GetElementsByTagName("DCe")[0];
+                var nodeInfDCe = (XmlNode)elementInfDCe;
+
+                AdicionarGrupoSuplementar(
+                    conteudoXml,
+                    nodeDCe,
+                    nodeInfDCe,
+                    "infDCeSupl",
+                    new KeyValuePair<string, string>("qrCodDCe", paramLinkQRCode.Trim()),
+                    new KeyValuePair<string, string>("urlChave", urlChave));
             }
         }
 
