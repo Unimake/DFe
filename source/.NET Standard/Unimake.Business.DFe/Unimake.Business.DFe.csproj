@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.05.05.1856</AssemblyVersion>
-		<FileVersion>2026.05.05.1856</FileVersion>
+		<AssemblyVersion>2026.05.07.1832</AssemblyVersion>
+		<FileVersion>2026.05.07.1832</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -440,6 +440,7 @@
 		<None Remove="Servicos\Config\NFSe\DuartinaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\EdeiaGO.xml" />
+		<None Remove="Servicos\Config\NFSe\EldouradoDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\Equiplano.xml" />
 		<None Remove="Servicos\Config\NFSe\ErnestinaRS.xml" />
@@ -1517,6 +1518,7 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BuritisRO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\EldouradoDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaporeRS.xml" />
 	</ItemGroup>
 
