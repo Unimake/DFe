@@ -440,6 +440,7 @@
 		<None Remove="Servicos\Config\NFSe\DuartinaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\EdeiaGO.xml" />
+		<None Remove="Servicos\Config\NFSe\EldouradoDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\Equiplano.xml" />
 		<None Remove="Servicos\Config\NFSe\ErnestinaRS.xml" />
@@ -469,7 +470,6 @@
 		<None Remove="Servicos\Config\NFSe\GuairaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarapariES.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarapuavaPR.xml" />
-		<None Remove="Servicos\Config\NFSe\GuararapesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaribaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaxupeMG.xml" />
 		<None Remove="Servicos\Config\NFSe\GurupiTO.xml" />
@@ -1517,12 +1517,12 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BuritisRO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\EldouradoDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaporeRS.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DiademaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\GuararapesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBernardoDoCampoSP.xml" />
 	</ItemGroup>
 
