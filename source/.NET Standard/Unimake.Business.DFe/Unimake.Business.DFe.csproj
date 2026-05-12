@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.05.05.1856</AssemblyVersion>
-		<FileVersion>2026.05.05.1856</FileVersion>
+		<AssemblyVersion>2026.05.07.1832</AssemblyVersion>
+		<FileVersion>2026.05.07.1832</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -470,6 +470,7 @@
 		<None Remove="Servicos\Config\NFSe\GuairaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarapariES.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarapuavaPR.xml" />
+		<None Remove="Servicos\Config\NFSe\GuararapesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaribaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaxupeMG.xml" />
 		<None Remove="Servicos\Config\NFSe\GurupiTO.xml" />
@@ -1523,6 +1524,7 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DiademaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuararapesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBernardoDoCampoSP.xml" />
 	</ItemGroup>
 
