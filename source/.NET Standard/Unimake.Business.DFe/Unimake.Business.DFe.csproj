@@ -469,6 +469,7 @@
 		<None Remove="Servicos\Config\NFSe\GuairaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarapariES.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarapuavaPR.xml" />
+		<None Remove="Servicos\Config\NFSe\GuararapesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaribaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaxupeMG.xml" />
 		<None Remove="Servicos\Config\NFSe\GurupiTO.xml" />
@@ -1521,6 +1522,7 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DiademaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuararapesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBernardoDoCampoSP.xml" />
 	</ItemGroup>
 
