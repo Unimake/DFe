@@ -679,6 +679,7 @@
 		<None Remove="Servicos\Config\NFSe\TremembeSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TresCachoeirasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TresLagoasMS.xml" />
+		<None Remove="Servicos\Config\NFSe\TrindadeGO.xml" />
 		<None Remove="Servicos\Config\NFSe\TriunfoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TupandiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\UberabaMG.xml" />
@@ -1539,6 +1540,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAndreSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloRJ.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
 	</ItemGroup>
 

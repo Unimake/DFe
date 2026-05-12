@@ -2309,4 +2309,10 @@
 		<ArqConfig>GuararapesSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5221403">
+		<Nome> Trindade - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>TrindadeGO.xml</ArqConfig>
+		<PadraoNFSe>CENTI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
