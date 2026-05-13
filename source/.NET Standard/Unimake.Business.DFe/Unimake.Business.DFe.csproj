@@ -426,7 +426,6 @@
 		<None Remove="Servicos\Config\NFSe\ConcordiaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\ContagemMG.xml" />
-		<None Remove="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CorumbaMS.xml" />
 		<None Remove="Servicos\Config\NFSe\CorupaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CosmoramaSP.xml" />
@@ -1932,7 +1931,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CarazinhoRS.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\CruzAltaRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\CanoinhasSC.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\GuarapariES.xml">

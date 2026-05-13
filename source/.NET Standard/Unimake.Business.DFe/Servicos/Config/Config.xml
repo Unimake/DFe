@@ -953,12 +953,6 @@
 		<ArqConfig>PiracicabaSP.xml</ArqConfig>
 		<PadraoNFSe>SIMPLISS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3119401">
-		<Nome>Coronel Fabriciano - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>CoronelFabricianoMG.xml</ArqConfig>
-		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3509502">
 		<Nome>Campinas - SP</Nome>
 		<UF>SP</UF>
