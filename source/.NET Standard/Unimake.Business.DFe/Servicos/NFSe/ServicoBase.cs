@@ -46,7 +46,11 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     }
                     else
                     {
-                        var algorithmType = Configuracoes.AssinaCanonicalizacaoExclusiva ? AlgorithmType.Sha256 : AlgorithmType.Sha1;
+                        var algorithmType = Configuracoes.SignatureAlgorithmType;
+                        if (Configuracoes.AssinaCanonicalizacaoExclusiva)
+                        {
+                            algorithmType = AlgorithmType.Sha256;
+                        }
                         AssinaturaDigital.Assinar(ConteudoXML, tagAssinatura, tagAtributoID, Configuracoes.CertificadoDigital, algorithmType, true, "", true, Configuracoes.AssinaCanonicalizacaoExclusiva);
 
                         AjustarXMLAposAssinado();
@@ -874,12 +878,12 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             {
                 if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
                 {
-                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
+                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, Configuracoes.SignatureAlgorithmType, true, "Id");
                 }
 
                 if (!string.IsNullOrWhiteSpace(Configuracoes.TagLoteAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagLoteAssinatura))
                 {
-                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagLoteAssinatura, Configuracoes.TagLoteAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
+                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagLoteAssinatura, Configuracoes.TagLoteAtributoID, Configuracoes.CertificadoDigital, Configuracoes.SignatureAlgorithmType, true, "Id");
                 }
             }
 

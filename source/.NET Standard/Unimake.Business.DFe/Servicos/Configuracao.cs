@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
+using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.Security;
 using Unimake.Exceptions;
@@ -361,7 +362,16 @@ namespace Unimake.Business.DFe.Servicos
 
                             if (XMLUtility.TagExist(elementPropriedades, "NaoAssina"))
                             {
-                                NaoAssina = XMLUtility.TagRead(elementPropriedades, "NaoAssina").ToLower() == "homologação" ? TipoAmbiente.Homologacao : TipoAmbiente.Producao;
+                                var naoAssina = XMLUtility.TagRead(elementPropriedades, "NaoAssina").ToLower();
+                                if (!string.IsNullOrWhiteSpace(naoAssina))
+                                {
+                                    NaoAssina = naoAssina == "homologação" ? TipoAmbiente.Homologacao : TipoAmbiente.Producao;
+                                }
+                            }
+
+                            if (XMLUtility.TagExist(elementPropriedades, "SignatureAlgorithmType"))
+                            {
+                                SignatureAlgorithmType = XMLUtility.TagRead(elementPropriedades, "SignatureAlgorithmType").ToLower() == "sha256" ? AlgorithmType.Sha256 : AlgorithmType.Sha1;
                             }
 
                             if (XMLUtility.TagExist(elementPropriedades, "EncriptaTagAssinatura"))
@@ -1281,6 +1291,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Propriedade para habilitar a conversao de alguma configuração para Base64 antes do envio (default == True)
         /// </summary>
         public bool ConverteSenhaBase64 { get; set; } = false;
+
+        /// <summary>
+        /// Tipo de Algorítimo que deve ser utilizado na assinatura do XML. O padrão é SHA1, mas tem web-services que exigem SHA256.
+        /// </summary>
+        public AlgorithmType SignatureAlgorithmType { get; set; } = AlgorithmType.Sha1;
 
         /// <summary>
         /// Método de solicitação da API
