@@ -1355,12 +1355,6 @@
 		<ArqConfig>SantoAntonioDaPlatinaPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3101102">
-		<Nome>Aimorés - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>AimoresMG.xml</ArqConfig>
-		<PadraoNFSe>PORTAL_FACIL</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3536505">
 		<Nome>Paulínia - SP</Nome>
 		<UF>SP</UF>
