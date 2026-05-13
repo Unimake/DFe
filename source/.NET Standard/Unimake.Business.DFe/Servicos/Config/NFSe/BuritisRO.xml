@@ -4,7 +4,7 @@
 		<GerarNfse versao="1.00">
 			<Descricao>Envio do DPS - Síncrono</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfse.buritis.ro.gov.br/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -24,7 +24,7 @@
 		<ConsultarLoteRps versao="1.00">
 			<Descricao>Consulta lote DPS</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfse.buritis.ro.gov.br/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
