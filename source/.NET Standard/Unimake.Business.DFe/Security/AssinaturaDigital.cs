@@ -74,11 +74,35 @@ namespace Unimake.Business.DFe.Security
                             {
                                 foreach (XmlNode childNodes in nodes.ChildNodes)
                                 {
+                                    var nodeAtributoId = childNodes;
+
                                     if (!tagEhAMesma)
                                     {
                                         if (!childNodes.Name.Equals(tagAtributoId))
                                         {
                                             continue;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        var nodeAssinatura = (XmlElement)nodes;
+                                        var attributeName = idAttributeName;
+
+                                        if (string.IsNullOrEmpty(attributeName))
+                                        {
+                                            if (nodeAssinatura.GetAttributeNode("Id") != null)
+                                            {
+                                                attributeName = "Id";
+                                            }
+                                            else if (nodeAssinatura.GetAttributeNode("id") != null)
+                                            {
+                                                attributeName = "id";
+                                            }
+                                        }
+
+                                        if (!string.IsNullOrEmpty(attributeName) && nodeAssinatura.GetAttributeNode(attributeName) != null)
+                                        {
+                                            nodeAtributoId = nodes;
                                         }
                                     }
 
@@ -89,7 +113,7 @@ namespace Unimake.Business.DFe.Security
                                     };
 
                                     // pega o uri que deve ser assinada
-                                    var childElemen = (XmlElement)childNodes;
+                                    var childElemen = (XmlElement)nodeAtributoId;
 
                                     if (definirURI)
                                     {
