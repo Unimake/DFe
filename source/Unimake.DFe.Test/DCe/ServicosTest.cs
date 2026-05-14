@@ -298,6 +298,36 @@ namespace Unimake.DFe.Test.DCe
         }
 
         /// <summary>
+        /// Validar se a mensagem de exceção orienta corretamente o grupo obrigatório conforme o valor de <c>TpEmit</c>
+        /// quando não houver identificador para composição da chave da DCe.
+        /// </summary>
+        /// <param name="tipoEmitente">Tipo de emitente informado na DCe.</param>
+        /// <param name="mensagemEsperada">Mensagem esperada para diagnóstico do campo ausente.</param>
+        [Theory]
+        [InlineData(TipoEmitenteDCe.AppFisco, "Fisco.CNPJ não foi informado para montar a chave da DCe quando Ide.TpEmit = AppFisco.")]
+        [InlineData(TipoEmitenteDCe.Marketplace, "Marketplace.CNPJ não foi informado para montar a chave da DCe quando Ide.TpEmit = Marketplace.")]
+        [InlineData(TipoEmitenteDCe.EmissorProprio, "Emit.CNPJ, Emit.CPF ou Emit.IdOutros não foi informado para montar a chave da DCe quando Ide.TpEmit = EmissorProprio.")]
+        [InlineData(TipoEmitenteDCe.Transportadora, "Transportadora.CNPJ não foi informado para montar a chave da DCe quando Ide.TpEmit = Transportadora.")]
+        public void GerarChaveDCeSemIdentificadorDeveRetornarMensagemCorreta(TipoEmitenteDCe tipoEmitente, string mensagemEsperada)
+        {
+            var xml = CriarDCeParaTesteChave(tipoEmitente);
+
+            xml.InfDCe.Fisco = null;
+            xml.InfDCe.Marketplace = null;
+            xml.InfDCe.Transportadora = null;
+            xml.InfDCe.Emit.CNPJ = null;
+            xml.InfDCe.Emit.CPF = null;
+            xml.InfDCe.Emit.IdOutros = null;
+
+            var exception = Assert.Throws<NullReferenceException>(() =>
+            {
+                var chave = xml.InfDCe.Chave;
+            });
+
+            Assert.Equal(mensagemEsperada, exception.Message);
+        }
+
+        /// <summary>
         /// Testar o serviço de autorização síncrona da DCe
         /// </summary>
         [Fact]
