@@ -376,10 +376,12 @@ object frmPrincipal: TfrmPrincipal
     end
     object BtnNACIONALConsultarDistribuicaoEventosNFSe: TButton
       Left = 8
-      Height = 70
+      Height = 72
       Top = 768
-      Width = 320
+      Width = 317
       Caption = 'NACIONAL - Consultar eventos NFSe e fazer download'
+      ParentFont = False
+      ParentShowHint = False
       TabOrder = 15
       OnClick = BtnNACIONALConsultarDistribuicaoEventosNFSeClick
     end
