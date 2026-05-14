@@ -113,8 +113,31 @@ namespace Unimake.Business.DFe.Xml.DCe
                         break;
                 }
 
+                if (string.IsNullOrWhiteSpace(cnpjCpf))
+                {
+                    var mensagemErro = "Não foi possível identificar o CNPJ/CPF para montagem da chave da DCe conforme o tipo de emitente informado.";
 
-                if (string.IsNullOrWhiteSpace(cnpjCpf)) throw new NullReferenceException("Emit.CNPJ, Emit.CPF ou Emit.IdOutros não foi informado.");
+                    switch (Ide.TpEmit)
+                    {
+                        case TipoEmitenteDCe.AppFisco:
+                            mensagemErro = "Fisco.CNPJ não foi informado para montar a chave da DCe quando Ide.TpEmit = AppFisco.";
+                            break;
+
+                        case TipoEmitenteDCe.Marketplace:
+                            mensagemErro = "Marketplace.CNPJ não foi informado para montar a chave da DCe quando Ide.TpEmit = Marketplace.";
+                            break;
+
+                        case TipoEmitenteDCe.EmissorProprio:
+                            mensagemErro = "Emit.CNPJ, Emit.CPF ou Emit.IdOutros não foi informado para montar a chave da DCe quando Ide.TpEmit = EmissorProprio.";
+                            break;
+
+                        case TipoEmitenteDCe.Transportadora:
+                            mensagemErro = "Transportadora.CNPJ não foi informado para montar a chave da DCe quando Ide.TpEmit = Transportadora.";
+                            break;
+                    }
+
+                    throw new NullReferenceException(mensagemErro);
+                }
 
                 var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
                 {
