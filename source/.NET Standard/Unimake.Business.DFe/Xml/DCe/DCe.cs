@@ -83,16 +83,36 @@ namespace Unimake.Business.DFe.Xml.DCe
                 if (Ide == null) throw new NullReferenceException("A propriedade 'Ide' está nula.");
                 if (Emit == null) throw new NullReferenceException("A propriedade 'Emit' está nula.");
 
-                var cnpjCpf = Emit.CNPJ;
-                if (string.IsNullOrWhiteSpace(cnpjCpf))
+                var cnpjCpf = "";
+                switch (Ide.TpEmit)
                 {
-                    cnpjCpf = Emit.CPF;
+                    case TipoEmitenteDCe.AppFisco:
+                        cnpjCpf = Fisco?.CNPJ;
+                        break;
+
+                    case TipoEmitenteDCe.Marketplace:
+                        cnpjCpf = Marketplace?.CNPJ;
+                        break;
+
+                    case TipoEmitenteDCe.EmissorProprio:
+                        cnpjCpf = Emit.CNPJ;
+
+                        if (string.IsNullOrWhiteSpace(cnpjCpf))
+                        {
+                            cnpjCpf = Emit.CPF;
+                        }
+
+                        if (string.IsNullOrWhiteSpace(cnpjCpf))
+                        {
+                            cnpjCpf = Emit.IdOutros;
+                        }
+                        break;
+
+                    case TipoEmitenteDCe.Transportadora:
+                        cnpjCpf = Transportadora?.CNPJ;
+                        break;
                 }
 
-                if (string.IsNullOrWhiteSpace(cnpjCpf))
-                {
-                    cnpjCpf = Emit.IdOutros;
-                }
 
                 if (string.IsNullOrWhiteSpace(cnpjCpf)) throw new NullReferenceException("Emit.CNPJ, Emit.CPF ou Emit.IdOutros não foi informado.");
 
