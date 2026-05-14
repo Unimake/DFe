@@ -28,6 +28,12 @@ namespace Unimake.Business.DFe.Xml.DCe
         [XmlAttribute(AttributeName = "ipTransmissor", DataType = "token")]
         public string IpTransmissor { get; set; }
 
+        /// <summary>
+        /// Porta de origem utilizada na conexão.
+        /// </summary>
+        [XmlAttribute(AttributeName = "nPortaCon")]
+        public int NPortaCon { get; set; }
+
         [XmlIgnore]
 #if INTEROP
         public DateTime DhConexao { get; set; }
@@ -56,6 +62,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         public string NomeArquivoDistribuicao => ProtDCe.InfProt.ChDCe + "-procDCe.xml";
 
         public bool ShouldSerializeIpTransmissor() => !string.IsNullOrEmpty(IpTransmissor);
+        /// <summary>
+        /// Verifica se a porta de conexão foi informada para serialização.
+        /// </summary>
+        /// <returns>True quando a porta for maior que zero.</returns>
+        public bool ShouldSerializeNPortaCon() => NPortaCon > 0;
         public bool ShouldSerializeDhConexaoField() => DhConexao > DateTime.MinValue;
 
         public override XmlDocument GerarXML()

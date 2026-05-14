@@ -110,6 +110,11 @@ namespace Unimake.Business.DFe.Xml.DCe
 
                     case TipoEmitenteDCe.Transportadora:
                         cnpjCpf = Transportadora?.CNPJ;
+
+                        if (string.IsNullOrWhiteSpace(cnpjCpf))
+                        {
+                            cnpjCpf = EmpEmisProp?.CNPJ;
+                        }
                         break;
                 }
 
@@ -178,7 +183,10 @@ namespace Unimake.Business.DFe.Xml.DCe
         [XmlElement("Transportadora")]
         public Transportadora Transportadora { get; set; }
 
-        [XmlElement("EmpEmisProp")]
+        /// <summary>
+        /// Identificação da ECT (Correios).
+        /// </summary>
+        [XmlElement("ECT")]
         public EmpEmisProp EmpEmisProp { get; set; }
 
         [XmlElement("dest")]
@@ -211,13 +219,38 @@ namespace Unimake.Business.DFe.Xml.DCe
         [XmlElement("infAdic")]
         public InfAdic InfAdic { get; set; }
 
-        [XmlElement("obsCont")]
-        public List<ObsCont> ObsCont { get; set; }
+        /// <summary>
+        /// Observações de uso livre do emitente.
+        /// </summary>
+        [XmlElement("obsEmit")]
+        public List<ObsCont> ObsEmit { get; set; }
+
+        /// <summary>
+        /// Campo mantido por compatibilidade, representando as observações do emitente.
+        /// </summary>
+        [XmlIgnore]
+        public List<ObsCont> ObsCont
+        {
+            get => ObsEmit;
+            set => ObsEmit = value;
+        }
 
 #if INTEROP
-        public void AddObsCont(ObsCont item) => (ObsCont ?? (ObsCont = new List<ObsCont>())).Add(item);
-        public ObsCont GetObsCont(int index) => (ObsCont?.Count ?? 0) == 0 ? default : ObsCont[index];
-        public int GetObsContCount => ObsCont != null ? ObsCont.Count : 0;
+        public void AddObsCont(ObsCont item) => (ObsEmit ?? (ObsEmit = new List<ObsCont>())).Add(item);
+        public ObsCont GetObsCont(int index) => (ObsEmit?.Count ?? 0) == 0 ? default : ObsEmit[index];
+        public int GetObsContCount => ObsEmit != null ? ObsEmit.Count : 0;
+#endif
+
+        /// <summary>
+        /// Observações de uso livre do fisco.
+        /// </summary>
+        [XmlElement("obsFisco")]
+        public List<ObsCont> ObsFisco { get; set; }
+
+#if INTEROP
+        public void AddObsFisco(ObsCont item) => (ObsFisco ?? (ObsFisco = new List<ObsCont>())).Add(item);
+        public ObsCont GetObsFisco(int index) => (ObsFisco?.Count ?? 0) == 0 ? default : ObsFisco[index];
+        public int GetObsFiscoCount => ObsFisco != null ? ObsFisco.Count : 0;
 #endif
 
         [XmlElement("obsMarketplace")]
@@ -229,13 +262,46 @@ namespace Unimake.Business.DFe.Xml.DCe
         public int GetObsMarketplaceCount => ObsMarketplace != null ? ObsMarketplace.Count : 0;
 #endif
 
+        /// <summary>
+        /// Observações de uso livre da ECT (Correios).
+        /// </summary>
+        [XmlElement("obsECT")]
+        public List<ObsCont> ObsECT { get; set; }
+
+#if INTEROP
+        public void AddObsECT(ObsCont item) => (ObsECT ?? (ObsECT = new List<ObsCont>())).Add(item);
+        public ObsCont GetObsECT(int index) => (ObsECT?.Count ?? 0) == 0 ? default : ObsECT[index];
+        public int GetObsECTCount => ObsECT != null ? ObsECT.Count : 0;
+#endif
+
         [XmlElement("infDec")]
         public InfDec InfDec { get; set; }
 
         public bool ShouldSerializeAutXML() => AutXML?.Count > 0;
         public bool ShouldSerializeDet() => Det?.Count > 0;
-        public bool ShouldSerializeObsCont() => ObsCont?.Count > 0;
+        /// <summary>
+        /// Verifica se existem observações do emitente para serializar.
+        /// </summary>
+        /// <returns>True quando houver observações de emitente.</returns>
+        public bool ShouldSerializeObsEmit() => ObsEmit?.Count > 0;
+
+        /// <summary>
+        /// Verifica se existem observações do fisco para serializar.
+        /// </summary>
+        /// <returns>True quando houver observações do fisco.</returns>
+        public bool ShouldSerializeObsFisco() => ObsFisco?.Count > 0;
+
+        /// <summary>
+        /// Verifica se existem observações do marketplace para serializar.
+        /// </summary>
+        /// <returns>True quando houver observações do marketplace.</returns>
         public bool ShouldSerializeObsMarketplace() => ObsMarketplace?.Count > 0;
+
+        /// <summary>
+        /// Verifica se existem observações da ECT para serializar.
+        /// </summary>
+        /// <returns>True quando houver observações da ECT.</returns>
+        public bool ShouldSerializeObsECT() => ObsECT?.Count > 0;
     }
 
 #if INTEROP
@@ -437,7 +503,15 @@ namespace Unimake.Business.DFe.Xml.DCe
         public string XNome { get; set; }
     }
 
-    public class EmpEmisProp : Transportadora { }
+    /// <summary>
+    /// Identificação da ECT (Correios).
+    /// </summary>
+    public class ECT : Transportadora { }
+
+    /// <summary>
+    /// Classe mantida para compatibilidade e mapeada para o grupo ECT.
+    /// </summary>
+    public class EmpEmisProp : ECT { }
 
     public class Dest
     {
@@ -556,17 +630,30 @@ namespace Unimake.Business.DFe.Xml.DCe
         [XmlElement("infCpl")]
         public string InfCpl { get; set; }
 
-        [XmlElement("infAdMarketPlace")]
+        /// <summary>
+        /// Informações adicionais do marketplace.
+        /// </summary>
+        [XmlElement("infAdMarketplace")]
         public string InfAdMarketPlace { get; set; }
+
+        /// <summary>
+        /// Informações adicionais da ECT (Correios).
+        /// </summary>
+        [XmlElement("infAdECT")]
+        public string InfAdECT { get; set; }
 
         public bool ShouldSerializeInfAdFisco() => !string.IsNullOrEmpty(InfAdFisco);
         public bool ShouldSerializeInfCpl() => !string.IsNullOrEmpty(InfCpl);
         public bool ShouldSerializeInfAdMarketPlace() => !string.IsNullOrEmpty(InfAdMarketPlace);
+        public bool ShouldSerializeInfAdECT() => !string.IsNullOrEmpty(InfAdECT);
     }
 
     public class ObsCont
     {
-        [XmlElement("xCampo")]
+        /// <summary>
+        /// Identificação do campo de observação.
+        /// </summary>
+        [XmlAttribute(AttributeName = "xCampo")]
         public string XCampo { get; set; }
 
         [XmlElement("xTexto")]
