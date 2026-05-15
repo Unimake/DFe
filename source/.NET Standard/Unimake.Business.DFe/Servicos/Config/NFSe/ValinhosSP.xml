@@ -22,8 +22,8 @@
 			<RequestURILoginProducao>https://wsvalinhos.sigissweb.com/rest/login</RequestURILoginProducao>
 			<RequestURILoginHomologacao>https://wshml2.sigissweb.com/rest/login</RequestURILoginHomologacao>
 		</CancelarNfse>
-		<ConsultarNfse versao="2.00">
-			<Descricao>Consulta XML da NFSe</Descricao>
+		<ObterNotaFiscalXml versao="2.00">
+			<Descricao>Obter Nota Fiscal Xml</Descricao>
 			<RequestURIProducao>https://wsvalinhos.sigissweb.com/rest/nfes/pegaxml/{numerorps}/serierps/{serierps}</RequestURIProducao>
 			<RequestURIHomologacao>https://wshml2.sigissweb.com/rest/nfes/pegaxml/{numerorps}/serierps/{serierps}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
@@ -32,7 +32,7 @@
 			<WebTagRetorno>notafiscal</WebTagRetorno>
 			<RequestURILoginProducao>https://wsvalinhos.sigissweb.com/rest/login</RequestURILoginProducao>
 			<RequestURILoginHomologacao>https://wshml2.sigissweb.com/rest/login</RequestURILoginHomologacao>
-		</ConsultarNfse>
+		</ObterNotaFiscalXml>
 		<ConsultarNfsePDF versao="2.00">
 			<Descricao>Consulta PDF da NFSe</Descricao>
 			<RequestURIProducao>https://wsvalinhos.sigissweb.com/rest/nfes/nfimpressa/{numeronf}/serie/{serie}</RequestURIProducao>
