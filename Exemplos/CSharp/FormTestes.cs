@@ -2171,6 +2171,9 @@ namespace TreinamentoDLL
             var inutilizacao = new ServicoNFe.Inutilizacao(xml, configuracao);
             inutilizacao.Executar();
 
+            var id = inutilizacao.ProcInutNFeResult.InutNFe.InfInut.Id;
+            var uriSignature = inutilizacao.ProcInutNFeResult.InutNFe.Signature.SignedInfo.Reference.URI;
+
             switch (inutilizacao.Result.InfInut.CStat)
             {
                 case 102: //102 = Inutilização homologada

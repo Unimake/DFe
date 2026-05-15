@@ -374,6 +374,17 @@ object frmPrincipal: TfrmPrincipal
       TabOrder = 14
       OnClick = BtnNACIONALConsultarDistribuicaoNFSeNSUClick
     end
+    object BtnNACIONALConsultarDistribuicaoEventosNFSe: TButton
+      Left = 8
+      Height = 72
+      Top = 768
+      Width = 317
+      Caption = 'NACIONAL - Consultar eventos NFSe e fazer download'
+      ParentFont = False
+      ParentShowHint = False
+      TabOrder = 15
+      OnClick = BtnNACIONALConsultarDistribuicaoEventosNFSeClick
+    end
   end
   object GroupBox5: TGroupBox
     Left = 1489

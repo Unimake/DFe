@@ -31,6 +31,8 @@ var
   xmlAssinado: string;
   nHandle: TFileStream;
   nomeArquivoXML: string;
+  idXML: string;
+  uriSignature: string;
 
 begin
   // Criar objeto de configuração mínima
@@ -68,6 +70,12 @@ begin
 
       xmlAssinado := oInutilizacao.GetConteudoXMLAssinado();
 
+      // Como pegar o contepudo do atributi Id do XML da Inutilização
+      idXML := oInutilizacao.ProcInutNFeResult.InutNFe.InfInut.Id;
+
+      // Como pegar o conteúdo do atributo URI da assinatura do XML
+      uriSignature := oInutilizacao.ProcInutNFeResult.InutNFe.Signature.SignedInfo.Reference.URI;
+
       // Criar e salvar o arquivo do XML assinado
       nomeArquivoXML := 'd:\testenfe\InutilizacaoNFe.xml';
       nHandle := TFileStream.Create(nomeArquivoXML, fmCreate);
@@ -83,6 +91,12 @@ begin
 
       if oInutilizacao.Result.InfInut.CStat = 102 then // Inutilização homologada/autorizada
       begin
+         // Como pegar o contepudo do atributi Id do XML de distribuição da Inutilização
+         idXML := oInutilizacao.ProcInutNFeResult.InutNFe.InfInut.Id;
+
+         // Como pegar o conteúdo do atributo URI da assinatura do XML de distribuição da Inutilização
+         uriSignature := oInutilizacao.ProcInutNFeResult.InutNFe.Signature.SignedInfo.Reference.URI;
+
          oInutilizacao.GravarXmlDistribuicao('d:\testenfe\');
       end;
     end;

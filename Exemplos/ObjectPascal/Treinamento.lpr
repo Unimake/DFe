@@ -32,7 +32,8 @@ uses
   NACIONALCancelarNFSeObjeto, NACIONALGerarNFSeObjeto,
   NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto,
   NACIONALConsultarEventoNFSe, NACIONALConsultarDistribuicaoNFSeNSU,
-  ConsultarChavesNFCeSP, DownloadXMLNFCeSEFAZSP
+  ConsultarChavesNFCeSP, DownloadXMLNFCeSEFAZSP,
+  NACIONALConsultarDistribuicaoEventosNFSe
   { you can add units after this };
 
 {$R *.res}

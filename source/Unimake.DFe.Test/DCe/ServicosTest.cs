@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.DCe;
 using Xunit;
 using DCeAutorizacaoSinc = Unimake.Business.DFe.Servicos.DCe.AutorizacaoSinc;
@@ -135,7 +136,9 @@ namespace Unimake.DFe.Test.DCe
             {
                 COrgao = UFBrasil.PR,
                 TpAmb = TipoAmbiente.Homologacao,
-                CNPJ = "00000000000199",
+                TpEmit = TipoEmitenteDCe.EmissorProprio,
+                CNPJAutor = "00000000000199",
+                CNPJUsEmit = "00000000000199",
                 ChDCe = ChaveDCe,
                 DhEvento = DateTime.Now,
                 TpEvento = TipoEventoDCe.Cancelamento,
@@ -153,6 +156,78 @@ namespace Unimake.DFe.Test.DCe
                 Versao = "1.00",
                 InfEvento = infEvento
             };
+        }
+
+        /// <summary>
+        /// Cria um XML da DCe com dados determinísticos para validação da montagem da chave
+        /// conforme o tipo de emitente informado.
+        /// </summary>
+        /// <param name="tipoEmitente">Tipo de emitente que define qual identificador será utilizado na chave.</param>
+        /// <returns>Instância de DCe pronta para validação de geração da chave.</returns>
+        private static XmlDCe CriarDCeParaTesteChave(TipoEmitenteDCe tipoEmitente)
+        {
+            var dce = CriarDCe();
+
+            dce.InfDCe.Ide.CUF = UFBrasil.PR;
+            dce.InfDCe.Ide.CDC = "123456";
+            dce.InfDCe.Ide.Mod = ModeloDFe.DCe;
+            dce.InfDCe.Ide.Serie = 0;
+            dce.InfDCe.Ide.NDC = 1;
+            dce.InfDCe.Ide.DhEmi = new DateTime(2026, 05, 01, 10, 20, 30);
+            dce.InfDCe.Ide.TpEmis = TipoEmissao.Normal;
+            dce.InfDCe.Ide.TpEmit = tipoEmitente;
+            dce.InfDCe.Ide.NSiteAutoriz = "0";
+
+            dce.InfDCe.Fisco = new Fisco
+            {
+                CNPJ = "11111111000111",
+                XOrgao = "SEFAZ PR",
+                UF = UFBrasil.PR
+            };
+
+            dce.InfDCe.Marketplace = new Marketplace
+            {
+                CNPJ = "22222222000122",
+                XNome = "Marketplace Teste",
+                Site = "https://marketplace.teste"
+            };
+
+            dce.InfDCe.Transportadora = new Transportadora
+            {
+                CNPJ = "33333333000133",
+                XNome = "Transportadora Teste"
+            };
+
+            dce.InfDCe.Emit.CNPJ = "00000000000199";
+
+            return dce;
+        }
+
+        /// <summary>
+        /// Monta a chave esperada da DCe com base no identificador informado para validar a regra
+        /// de seleção do CNPJ/CPF durante a composição da chave.
+        /// </summary>
+        /// <param name="dce">Documento DCe com os dados estruturais da chave.</param>
+        /// <param name="identificador">CNPJ/CPF esperado para ocupar a posição do emitente na chave.</param>
+        /// <returns>Chave da DCe calculada para comparação no teste.</returns>
+        private static string MontarChaveEsperada(XmlDCe dce, string identificador)
+        {
+            var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
+            {
+                UFEmissor = dce.InfDCe.Ide.CUF,
+                AnoEmissao = dce.InfDCe.Ide.DhEmi.ToString("yy"),
+                MesEmissao = dce.InfDCe.Ide.DhEmi.ToString("MM"),
+                CNPJCPFEmissor = identificador.PadLeft(14, '0'),
+                Modelo = dce.InfDCe.Ide.Mod,
+                Serie = dce.InfDCe.Ide.Serie,
+                NumeroDoctoFiscal = dce.InfDCe.Ide.NDC,
+                TipoEmissao = dce.InfDCe.Ide.TpEmis,
+                TipoEmitenteDCe = dce.InfDCe.Ide.TpEmit,
+                NSiteAutoriz = dce.InfDCe.Ide.NSiteAutoriz,
+                CodigoNumerico = dce.InfDCe.Ide.CDC
+            };
+
+            return XMLUtility.MontarChaveDCe(ref conteudoChaveDFe);
         }
 
         /// <summary>
@@ -201,6 +276,57 @@ namespace Unimake.DFe.Test.DCe
             Assert.True(servico.Result.CStat > 0);
             Assert.Equal(TipoAmbiente.Homologacao, servico.Result.TpAmb);
             Assert.Equal(UFBrasil.PR, servico.Result.CUF);
+        }
+
+        /// <summary>
+        /// Validar se a chave da DCe utiliza o identificador correto na composição conforme o valor de <c>TpEmit</c>.
+        /// </summary>
+        /// <param name="tipoEmitente">Tipo de emitente informado na DCe.</param>
+        /// <param name="identificadorEsperado">Identificador esperado para composição da chave (CNPJ do participante).</param>
+        [Theory]
+        [InlineData(TipoEmitenteDCe.AppFisco, "11111111000111")]
+        [InlineData(TipoEmitenteDCe.Marketplace, "22222222000122")]
+        [InlineData(TipoEmitenteDCe.EmissorProprio, "00000000000199")]
+        [InlineData(TipoEmitenteDCe.Transportadora, "33333333000133")]
+        public void GerarChaveDCeConformeTipoEmitente(TipoEmitenteDCe tipoEmitente, string identificadorEsperado)
+        {
+            var xml = CriarDCeParaTesteChave(tipoEmitente);
+
+            var chaveGerada = xml.InfDCe.Chave;
+            var chaveEsperada = MontarChaveEsperada(xml, identificadorEsperado);
+
+            Assert.Equal(chaveEsperada, chaveGerada);
+            Assert.Equal(identificadorEsperado.PadLeft(14, '0'), chaveGerada.Substring(6, 14));
+        }
+
+        /// <summary>
+        /// Validar se a mensagem de exceção orienta corretamente o grupo obrigatório conforme o valor de <c>TpEmit</c>
+        /// quando não houver identificador para composição da chave da DCe.
+        /// </summary>
+        /// <param name="tipoEmitente">Tipo de emitente informado na DCe.</param>
+        /// <param name="mensagemEsperada">Mensagem esperada para diagnóstico do campo ausente.</param>
+        [Theory]
+        [InlineData(TipoEmitenteDCe.AppFisco, "Fisco.CNPJ não foi informado para montar a chave da DCe quando Ide.TpEmit = AppFisco.")]
+        [InlineData(TipoEmitenteDCe.Marketplace, "Marketplace.CNPJ não foi informado para montar a chave da DCe quando Ide.TpEmit = Marketplace.")]
+        [InlineData(TipoEmitenteDCe.EmissorProprio, "Emit.CNPJ, Emit.CPF ou Emit.IdOutros não foi informado para montar a chave da DCe quando Ide.TpEmit = EmissorProprio.")]
+        [InlineData(TipoEmitenteDCe.Transportadora, "Transportadora.CNPJ não foi informado para montar a chave da DCe quando Ide.TpEmit = Transportadora.")]
+        public void GerarChaveDCeSemIdentificadorDeveRetornarMensagemCorreta(TipoEmitenteDCe tipoEmitente, string mensagemEsperada)
+        {
+            var xml = CriarDCeParaTesteChave(tipoEmitente);
+
+            xml.InfDCe.Fisco = null;
+            xml.InfDCe.Marketplace = null;
+            xml.InfDCe.Transportadora = null;
+            xml.InfDCe.Emit.CNPJ = null;
+            xml.InfDCe.Emit.CPF = null;
+            xml.InfDCe.Emit.IdOutros = null;
+
+            var exception = Assert.Throws<NullReferenceException>(() =>
+            {
+                var chave = xml.InfDCe.Chave;
+            });
+
+            Assert.Equal(mensagemEsperada, exception.Message);
         }
 
         /// <summary>
