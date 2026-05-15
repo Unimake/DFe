@@ -67,11 +67,55 @@ namespace Unimake.Business.DFe.Xml.DCe
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
-        [XmlElement("CNPJ")]
-        public string CNPJ { get; set; }
+        /// <summary>
+        /// Tipo do emitente da DCe vinculada ao evento.
+        /// </summary>
+        [XmlElement("tpEmit")]
+        public TipoEmitenteDCe TpEmit { get; set; }
 
-        [XmlElement("CPF")]
-        public string CPF { get; set; }
+        /// <summary>
+        /// CNPJ do autor do evento.
+        /// </summary>
+        [XmlElement("CNPJAutor")]
+        public string CNPJAutor { get; set; }
+
+        /// <summary>
+        /// Campo mantido por compatibilidade para o CNPJ do autor do evento.
+        /// </summary>
+        [XmlIgnore]
+        public string CNPJ
+        {
+            get => CNPJAutor;
+            set => CNPJAutor = value;
+        }
+
+        /// <summary>
+        /// CNPJ do usuário emitente da DCe vinculada ao evento.
+        /// </summary>
+        [XmlElement("CNPJUsEmit")]
+        public string CNPJUsEmit { get; set; }
+
+        /// <summary>
+        /// CPF do usuário emitente da DCe vinculada ao evento.
+        /// </summary>
+        [XmlElement("CPFUsEmit")]
+        public string CPFUsEmit { get; set; }
+
+        /// <summary>
+        /// Identificação alternativa do usuário emitente da DCe vinculada ao evento.
+        /// </summary>
+        [XmlElement("IdOutrosUsEmit")]
+        public string IdOutrosUsEmit { get; set; }
+
+        /// <summary>
+        /// Campo mantido por compatibilidade para o CPF do usuário emitente.
+        /// </summary>
+        [XmlIgnore]
+        public string CPF
+        {
+            get => CPFUsEmit;
+            set => CPFUsEmit = value;
+        }
 
         [XmlElement("chDCe")]
         public string ChDCe { get; set; }
@@ -130,8 +174,9 @@ namespace Unimake.Business.DFe.Xml.DCe
 
         public InfEvento(EventoDetalhe detEvento) => DetEvento = detEvento ?? throw new ArgumentNullException(nameof(detEvento));
 
-        public bool ShouldSerializeCNPJ() => !string.IsNullOrEmpty(CNPJ);
-        public bool ShouldSerializeCPF() => !string.IsNullOrEmpty(CPF);
+        public bool ShouldSerializeCNPJUsEmit() => !string.IsNullOrEmpty(CNPJUsEmit);
+        public bool ShouldSerializeCPFUsEmit() => !string.IsNullOrEmpty(CPFUsEmit);
+        public bool ShouldSerializeIdOutrosUsEmit() => !string.IsNullOrEmpty(IdOutrosUsEmit);
     }
 
     public class EventoDetalhe : IXmlSerializable

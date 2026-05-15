@@ -136,7 +136,9 @@ namespace Unimake.DFe.Test.DCe
             {
                 COrgao = UFBrasil.PR,
                 TpAmb = TipoAmbiente.Homologacao,
-                CNPJ = "00000000000199",
+                TpEmit = TipoEmitenteDCe.EmissorProprio,
+                CNPJAutor = "00000000000199",
+                CNPJUsEmit = "00000000000199",
                 ChDCe = ChaveDCe,
                 DhEvento = DateTime.Now,
                 TpEvento = TipoEventoDCe.Cancelamento,
