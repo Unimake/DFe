@@ -591,6 +591,46 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
         }
 
+#if INTEROP
+
+        /// <summary>
+        /// Gravar o XML de distribuição em uma pasta no HD com o nome de arquivo definido pelo usuário.
+        /// </summary>
+        /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
+        /// <param name="nomeArquivo">Nome do arquivo para gravação do XML de distribuição</param>
+        [ComVisible(true)]
+        public void GravarXmlDistribuicao(string pasta, string nomeArquivo)
+        {
+            try
+            {
+                if (EnviNFe.IndSinc == SimNao.Sim)
+                {
+                    GravarXmlDistribuicao(pasta, nomeArquivo, NfeProcResult.GerarXML().OuterXml);
+                    return;
+                }
+
+                if (NfeProcResults.Count == 1)
+                {
+                    foreach (var item in NfeProcResults)
+                    {
+                        if (item.Value.ProtNFe != null)
+                        {
+                            GravarXmlDistribuicao(pasta, nomeArquivo, item.Value.GerarXML().OuterXml);
+                            return;
+                        }
+                    }
+                }
+
+                throw new Exception("Para envio assíncrono com múltiplas NF-e, utilize o método GravarXmlDistribuicao(string pasta) para que cada XML seja gravado com seu nome de distribuição.");
+            }
+            catch (Exception ex)
+            {
+                Exceptions.ThrowHelper.Instance.Throw(ex);
+            }
+        }
+
+#endif
+
         /// <summary>
         /// Grava o XML de distribuição no stream
         /// </summary>
