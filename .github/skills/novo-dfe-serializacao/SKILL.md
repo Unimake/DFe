@@ -1,22 +1,30 @@
 ---
 name: novo-dfe-serializacao
-description: Implementar classes C# de serialização/desserialização para um novo documento fiscal eletrônico na DLL Unimake.DFe, a partir apenas do nome da subpasta do documento, seguindo schemas, XMLs de recurso, padrões NFCom/NFe/DCe, INTEROP e testes filtrados do projeto.
+description: Implementar classes C# de serialização/desserialização para um novo documento fiscal eletrônico na DLL Unimake.DFe, a partir do nome da subpasta do documento e da pasta de documentação oficial com PDFs/arquivos técnicos, seguindo documentação, schemas, XMLs de recurso, padrões NFCom/NFe/DCe, INTEROP e testes filtrados do projeto.
 ---
 
 # Novo DF-e - Serialização/Desserialização
 
 ## Objetivo
 
-Implementar classes C# de serialização/desserialização para um novo documento fiscal eletrônico na DLL `Unimake.DFe`, seguindo o padrão existente do projeto.
+Implementar classes C# de serialização/desserialização para um novo documento fiscal eletrônico na DLL `Unimake.DFe`, seguindo a documentação oficial informada pelo usuário e o padrão existente do projeto.
 
-A entrada obrigatória do usuário é somente o nome da subpasta/documento.
+A entrada obrigatória do usuário deve conter:
+
+1. o nome da subpasta/documento;
+2. o caminho da pasta onde ficam PDFs, schemas, manuais, exemplos XML e demais arquivos técnicos da documentação do novo documento.
 
 Exemplos:
 
 ```text
-DCe
-NFCom
-MDFe
+Documento: DCe
+Documentação: C:\docs\DCe
+
+Documento: NFCom
+Documentação: C:\docs\NFCom
+
+Documento: MDFe
+Documentação: C:\docs\MDFe
 ```
 
 Com `{Documento}` informado, trabalhar principalmente em:
@@ -26,7 +34,7 @@ C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\{Do
 C:\projetos\github\Unimake.DFe\source\Unimake.DFe.Test\{Documento}
 ```
 
-Se o nome da subpasta não for informado, solicite somente essa informação antes de alterar arquivos.
+Se o nome da subpasta ou a pasta de documentação não forem informados, solicite somente as informações faltantes antes de alterar arquivos.
 
 ## Princípio central
 
@@ -39,20 +47,38 @@ Não invente um modelo novo. Gere ou ajuste as classes para que os XMLs reais do
 
 ## Antes de implementar
 
-1. Localize a pasta do documento em `Xml/{Documento}` e `Unimake.DFe.Test/{Documento}`.
-2. Verifique se já existem classes parciais, recursos XML, schemas XSD ou testes do documento.
-3. Analise as referências obrigatórias:
+1. Localize e leia a pasta de documentação informada pelo usuário.
+2. Identifique PDFs, notas técnicas, manuais, schemas XSD, exemplos XML, tabelas, leiautes e arquivos auxiliares.
+3. Use a documentação informada como fonte principal para tags, grupos, atributos, tipos, cardinalidade, namespaces, versões, regras de assinatura e exemplos.
+4. Localize a pasta do documento em `Xml/{Documento}` e `Unimake.DFe.Test/{Documento}`.
+5. Verifique se já existem classes parciais, recursos XML, schemas XSD ou testes do documento.
+6. Analise as referências obrigatórias:
    - `source/.NET Standard/Unimake.Business.DFe/Xml/NFCom`;
    - `source/.NET Standard/Unimake.Business.DFe/Xml/NFe`;
    - `source/.NET Standard/Unimake.Business.DFe/Xml/DCe`, quando existir no checkout;
    - `source/Unimake.DFe.Test/NFCom/SerializacaoDesserializacaoTest.cs`;
    - testes de serialização do DFe mais parecido.
-4. Procure tipos reaproveitáveis antes de criar novos:
+7. Procure tipos reaproveitáveis antes de criar novos:
    - enums em `Servicos`;
    - classes comuns em outros `Xml/<DFe>`;
    - `Signature`;
    - utilitários em `Utility`.
-5. Se não houver schema, XML de exemplo ou classe existente suficiente para inferir a estrutura com segurança, pare e peça o material faltante. Não adivinhe layout fiscal.
+8. Se a documentação estiver incompleta, ilegível, inacessível ou contraditória, pare e peça esclarecimento ou arquivo complementar. Não adivinhe layout fiscal.
+
+## Documentação obrigatória
+
+A pasta de documentação é obrigatória e deve orientar a implementação.
+
+Ao analisá-la:
+
+- prefira schemas XSD e exemplos XML reais para definir a estrutura das classes;
+- use PDFs, manuais e notas técnicas para confirmar cardinalidade, obrigatoriedade, descrições e regras de negócio;
+- preserve nomes oficiais de tags, atributos, grupos e namespaces;
+- identifique versões do leiaute e diferenças entre homologação/produção quando existirem;
+- não implemente campos ausentes na documentação apenas por analogia com outro DFe;
+- quando documentação e padrão do projeto divergirem, preserve o padrão técnico do projeto sem violar o leiaute oficial.
+
+Se houver múltiplas versões do leiaute, implemente somente a versão solicitada ou a versão indicada pelos XMLs/schemas da pasta. Se não for possível identificar a versão correta, pergunte antes de codificar.
 
 ## Padrões do projeto
 
@@ -216,10 +242,13 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - Não atualizar versão de pacote, framework, linguagem ou dependência.
 - Não executar toda a suíte de testes se for possível executar apenas os testes criados.
 - Não fazer refatoração ampla junto da implementação.
+- Não implementar estrutura baseada apenas em suposição quando a documentação oficial não confirmar o leiaute.
 
 ## Checklist antes de finalizar
 
 - [ ] A entrada `{Documento}` foi usada para namespace, pasta e testes.
+- [ ] A pasta de documentação informada foi analisada.
+- [ ] PDFs/manuais, schemas e exemplos XML relevantes foram considerados quando disponíveis.
 - [ ] Classes seguem os padrões de `NFCom`, `NFe` e DFe semelhante.
 - [ ] Código do projeto principal continua compatível com C# 7.3 e `netstandard2.0`.
 - [ ] Estrutura reflete fielmente schemas/XMLs de referência.
