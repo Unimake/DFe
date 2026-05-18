@@ -1,6 +1,6 @@
 ---
 name: novo-dfe-serializacao
-description: Implementar classes C# de serialização/desserialização para um novo documento fiscal eletrônico na DLL Unimake.DFe, a partir do nome da subpasta do documento e da pasta de documentação oficial com PDFs/arquivos técnicos, seguindo documentação, schemas, XMLs de recurso, padrões NFCom/NFe/DCe, INTEROP e testes filtrados do projeto.
+description: Implementar classes C# de serialização/desserialização para um novo documento fiscal eletrônico na DLL Unimake.DFe, a partir do nome da subpasta do documento e da pasta de documentação oficial com PDFs/arquivos técnicos, cobrindo todos os XSDs aplicáveis da pasta, seguindo documentação, XMLs de recurso, padrões NFCom/NFe/DCe, INTEROP e testes filtrados do projeto.
 ---
 
 # Novo DF-e - Serialização/Desserialização
@@ -48,22 +48,23 @@ Não invente um modelo novo. Gere ou ajuste as classes para que os XMLs reais do
 ## Antes de implementar
 
 1. Localize e leia a pasta de documentação informada pelo usuário.
-2. Identifique PDFs, notas técnicas, manuais, schemas XSD, exemplos XML, tabelas, leiautes e arquivos auxiliares.
-3. Use a documentação informada como fonte principal para tags, grupos, atributos, tipos, cardinalidade, namespaces, versões, regras de assinatura e exemplos.
-4. Localize a pasta do documento em `Xml/{Documento}` e `Unimake.DFe.Test/{Documento}`.
-5. Verifique se já existem classes parciais, recursos XML, schemas XSD ou testes do documento.
-6. Analise as referências obrigatórias:
+2. Faça uma varredura recursiva da pasta de documentação e inventarie todos os arquivos `.xsd`.
+3. Identifique PDFs, notas técnicas, manuais, exemplos XML, tabelas, leiautes e arquivos auxiliares.
+4. Use a documentação informada como fonte principal para tags, grupos, atributos, tipos, cardinalidade, namespaces, versões, regras de assinatura e exemplos.
+5. Localize a pasta do documento em `Xml/{Documento}` e `Unimake.DFe.Test/{Documento}`.
+6. Verifique se já existem classes parciais, recursos XML, schemas XSD ou testes do documento.
+7. Analise as referências obrigatórias:
    - `source/.NET Standard/Unimake.Business.DFe/Xml/NFCom`;
    - `source/.NET Standard/Unimake.Business.DFe/Xml/NFe`;
    - `source/.NET Standard/Unimake.Business.DFe/Xml/DCe`, quando existir no checkout;
    - `source/Unimake.DFe.Test/NFCom/SerializacaoDesserializacaoTest.cs`;
    - testes de serialização do DFe mais parecido.
-7. Procure tipos reaproveitáveis antes de criar novos:
+8. Procure tipos reaproveitáveis antes de criar novos:
    - enums em `Servicos`;
    - classes comuns em outros `Xml/<DFe>`;
    - `Signature`;
    - utilitários em `Utility`.
-8. Se a documentação estiver incompleta, ilegível, inacessível ou contraditória, pare e peça esclarecimento ou arquivo complementar. Não adivinhe layout fiscal.
+9. Se a documentação estiver incompleta, ilegível, inacessível ou contraditória, pare e peça esclarecimento ou arquivo complementar. Não adivinhe layout fiscal.
 
 ## Documentação obrigatória
 
@@ -71,6 +72,9 @@ A pasta de documentação é obrigatória e deve orientar a implementação.
 
 Ao analisá-la:
 
+- inventarie todos os XSDs da pasta de documentação antes de implementar;
+- implemente a serialização/desserialização para todos os XSDs aplicáveis ao novo documento, não somente para o primeiro schema encontrado;
+- considere também XSDs importados, incluídos ou referenciados por outros XSDs;
 - prefira schemas XSD e exemplos XML reais para definir a estrutura das classes;
 - use PDFs, manuais e notas técnicas para confirmar cardinalidade, obrigatoriedade, descrições e regras de negócio;
 - preserve nomes oficiais de tags, atributos, grupos e namespaces;
@@ -79,6 +83,27 @@ Ao analisá-la:
 - quando documentação e padrão do projeto divergirem, preserve o padrão técnico do projeto sem violar o leiaute oficial.
 
 Se houver múltiplas versões do leiaute, implemente somente a versão solicitada ou a versão indicada pelos XMLs/schemas da pasta. Se não for possível identificar a versão correta, pergunte antes de codificar.
+
+## Cobertura obrigatória dos XSDs
+
+A implementação deve cobrir todos os schemas `.xsd` aplicáveis encontrados na pasta de documentação.
+
+Antes de codificar:
+
+- liste recursivamente todos os `.xsd`;
+- agrupe schemas por mensagem/documento quando houver arquivos principais e arquivos auxiliares;
+- identifique imports/includes/dependências entre XSDs;
+- identifique quais schemas representam XMLs de entrada, retorno, processamento, evento, protocolo, consulta, inutilização, distribuição ou outros artefatos do novo DFe;
+- descarte somente XSD claramente genérico, duplicado, legado ou não aplicável, e registre o motivo no relatório final.
+
+Durante a implementação:
+
+- crie classes raiz para cada XML principal descrito pelos XSDs aplicáveis;
+- crie classes auxiliares necessárias para grupos complexos reutilizados;
+- reaproveite classes existentes quando a semântica for igual;
+- garanta que cada schema aplicável tenha pelo menos um caminho de serialização/desserialização representado por classe e teste, quando houver XML de exemplo ou for possível criar exemplo confiável a partir da documentação.
+
+Se algum XSD aplicável não puder ser implementado por falta de informação, não ignore silenciosamente. Informe o bloqueio e peça o arquivo, exemplo ou regra faltante.
 
 ## Padrões do projeto
 
@@ -200,6 +225,8 @@ Cada XML de recurso relevante deve ter teste que:
 - compara `InnerText` do original com o gerado;
 - usa `[Trait("DFe", "{Documento}")]`.
 
+Cada XSD aplicável deve ter cobertura por teste de serialização/desserialização quando existir XML de exemplo ou quando for possível montar exemplo confiável a partir da documentação. Não deixe schema aplicável sem teste e sem justificativa.
+
 Use caminhos relativos no padrão:
 
 ```csharp
@@ -243,11 +270,15 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - Não executar toda a suíte de testes se for possível executar apenas os testes criados.
 - Não fazer refatoração ampla junto da implementação.
 - Não implementar estrutura baseada apenas em suposição quando a documentação oficial não confirmar o leiaute.
+- Não implementar apenas um XSD quando a pasta de documentação contiver vários schemas aplicáveis.
+- Não ignorar XSD aplicável sem registrar o motivo no relatório final.
 
 ## Checklist antes de finalizar
 
 - [ ] A entrada `{Documento}` foi usada para namespace, pasta e testes.
 - [ ] A pasta de documentação informada foi analisada.
+- [ ] Todos os XSDs da pasta de documentação foram inventariados.
+- [ ] Todos os XSDs aplicáveis foram implementados ou tiveram bloqueio/justificativa registrado.
 - [ ] PDFs/manuais, schemas e exemplos XML relevantes foram considerados quando disponíveis.
 - [ ] Classes seguem os padrões de `NFCom`, `NFe` e DFe semelhante.
 - [ ] Código do projeto principal continua compatível com C# 7.3 e `netstandard2.0`.
@@ -278,6 +309,15 @@ Estruturas implementadas:
 - ...
 
 Reaproveitamento de código:
+- ...
+
+XSDs analisados:
+- ...
+
+XSDs implementados:
+- ...
+
+XSDs não implementados e motivo:
 - ...
 
 Testes executados:
