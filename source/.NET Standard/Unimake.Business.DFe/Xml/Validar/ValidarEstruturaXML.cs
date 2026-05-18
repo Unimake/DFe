@@ -310,7 +310,7 @@ namespace Unimake.Business.DFe
             if (versao.IsNullOrEmpty())
             {
                 pathServicosNFSe = $"//NFSe/Padrao[@nome='{padraoNFSe.ToString()}']/Servico[@tagRaiz='{tagRaiz}']";
-                XmlNodeList servicosNFSe = xmlConfig.SelectNodes(pathServicosNFSe);
+                var servicosNFSe = xmlConfig.SelectNodes(pathServicosNFSe);
 
                 foreach (XmlNode servico in servicosNFSe)
                 {
