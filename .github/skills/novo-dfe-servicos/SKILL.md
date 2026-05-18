@@ -1,6 +1,6 @@
 ---
 name: novo-dfe-servicos
-description: Implementar serviços de consumo de webservices/APIs para um novo documento fiscal eletrônico na DLL Unimake.DFe, a partir do nome da subpasta do documento, usando classes XML já existentes, padrões NFCom/NFe/CTe, configurações por UF e testes reais com Executar().
+description: Implementar serviços de consumo de webservices/APIs para um novo documento fiscal eletrônico na DLL Unimake.DFe, a partir do nome da subpasta do documento e da pasta de documentação oficial com PDFs/arquivos técnicos, usando classes XML já existentes, padrões NFCom/NFe/CTe, configurações por UF e testes reais com Executar().
 ---
 
 # Novo DF-e - Serviços
@@ -11,16 +11,22 @@ Implementar os serviços de consumo de webservices/APIs para um novo documento f
 
 Esta skill deve ser usada depois da implementação das classes XML do documento.
 
-A entrada obrigatória do usuário é somente o nome da subpasta/documento.
+A entrada obrigatória do usuário deve conter:
+
+1. o nome da subpasta/documento;
+2. o caminho da pasta onde ficam PDFs, manuais, WSDLs, URLs, exemplos XML, notas técnicas, tabelas e demais arquivos técnicos da documentação do novo documento.
 
 Exemplos:
 
 ```text
 Documento: DCe
+Documentação: C:\docs\DCe
 
 Documento: NFGas
+Documentação: C:\docs\NFGas
 
 Documento: NFCom
+Documentação: C:\docs\NFCom
 ```
 
 Com `{Documento}` informado, trabalhar principalmente em:
@@ -31,7 +37,7 @@ C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Servico
 C:\projetos\github\Unimake.DFe\source\Unimake.DFe.Test\{Documento}
 ```
 
-Se o nome da subpasta/documento não for informado, solicite somente essa informação antes de alterar arquivos.
+Se o nome da subpasta/documento ou a pasta de documentação não forem informados, solicite somente as informações faltantes antes de alterar arquivos.
 
 ## Exemplo de uso
 
@@ -41,6 +47,7 @@ Exemplo de mensagem do usuário para acionar a skill:
 Use a skill novo-dfe-servicos.
 
 Documento: DCe
+Documentação: C:\projetos\docs\DCe
 ```
 
 ## Princípio central
@@ -60,15 +67,16 @@ Os testes não devem apenas instanciar classes ou simular chamadas. Sempre que o
 
 Antes de implementar serviços, valide:
 
-1. A pasta abaixo existe:
+1. A pasta de documentação informada existe e pode ser lida.
+2. A pasta abaixo existe:
 
 ```text
 C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\{Documento}
 ```
 
-2. Existem classes XML suficientes para os serviços que serão implementados.
-3. Existem classes de retorno correspondentes aos serviços.
-4. Existem exemplos, configs ou documentação técnica suficientes para identificar endpoints, versões, métodos e mensagens.
+3. Existem classes XML suficientes para os serviços que serão implementados.
+4. Existem classes de retorno correspondentes aos serviços.
+5. Existem exemplos, configs ou documentação técnica suficientes para identificar endpoints, versões, métodos e mensagens.
 
 Se as classes XML ainda não existirem ou estiverem incompletas, pare e informe que a skill de serialização/desserialização do documento deve ser executada primeiro.
 
@@ -119,23 +127,42 @@ Use também testes de `NFe`, `CTe` ou do DFe mais semelhante quando forem mais p
 
 ## Antes de implementar
 
-1. Localize a pasta `Servicos\{Documento}`.
-2. Localize a pasta `Servicos\Config\{Documento}`.
-3. Localize a pasta `Xml\{Documento}`.
-4. Localize a pasta `Unimake.DFe.Test\{Documento}`.
-5. Verifique se já existem serviços, configs ou testes parciais.
-6. Inventarie todos os serviços possíveis a partir de:
+1. Localize e leia a pasta de documentação informada pelo usuário.
+2. Identifique PDFs, notas técnicas, manuais, WSDLs, URLs, exemplos XML, tabelas de serviços, leiautes, ambientes e arquivos auxiliares.
+3. Use a documentação informada como fonte principal para endpoints, web actions, versões, métodos SOAP/API, ambientes, UFs, mensagens de envio/retorno, certificado e regras de execução.
+4. Localize a pasta `Servicos\{Documento}`.
+5. Localize a pasta `Servicos\Config\{Documento}`.
+6. Localize a pasta `Xml\{Documento}`.
+7. Localize a pasta `Unimake.DFe.Test\{Documento}`.
+8. Verifique se já existem serviços, configs ou testes parciais.
+9. Inventarie todos os serviços possíveis a partir de:
    - classes XML de envio;
    - classes XML de retorno;
    - arquivos de configuração existentes;
    - WSDLs/URLs já presentes em configs;
    - exemplos XML;
+   - documentação técnica informada na pasta obrigatória;
    - documentação técnica presente no repositório ou informada no contexto da tarefa;
    - padrões de NFCom/NFe/CTe.
-7. Implemente todos os serviços aplicáveis identificados.
-8. Não implemente apenas `StatusServico` se houver classes/configs para autorização, consulta, recepção de evento, distribuição, inutilização ou outros serviços aplicáveis.
+10. Implemente todos os serviços aplicáveis identificados.
+11. Não implemente apenas `StatusServico` se houver classes/configs para autorização, consulta, recepção de evento, distribuição, inutilização ou outros serviços aplicáveis.
 
 Se houver dúvida real sobre endpoint, método SOAP, versão ou mensagem, pare e solicite o dado faltante. Não adivinhe integração fiscal.
+
+## Documentação obrigatória
+
+A pasta de documentação é obrigatória e deve orientar a implementação dos serviços.
+
+Ao analisá-la:
+
+- procure recursivamente PDFs, notas técnicas, manuais, WSDLs, arquivos `.wsdl`, `.xml`, `.json`, `.txt`, exemplos de requisição/retorno e tabelas de endpoints;
+- identifique todos os serviços descritos para o documento;
+- identifique ambiente de homologação/produção, UF, web action, URL, método HTTP/SOAP, versão, namespace, envelope, headers, timeout, certificado, assinatura e formato de retorno;
+- compare a documentação com os padrões existentes de `NFCom`, `NFe` e `CTe`;
+- não implemente endpoint, método ou versão por suposição se a documentação não confirmar;
+- quando documentação e padrão do projeto divergirem, preserve o padrão técnico do projeto sem violar a especificação oficial.
+
+Se a documentação estiver incompleta, ilegível, inacessível ou contraditória, pare e peça esclarecimento ou arquivo complementar. Não adivinhe integração fiscal.
 
 ## Padrões técnicos do projeto
 
@@ -448,10 +475,13 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - Não fazer refatoração ampla junto da implementação.
 - Não executar toda a suíte de testes se for possível executar apenas os testes criados/alterados.
 - Não ignorar serviço aplicável sem registrar motivo no relatório final.
+- Não implementar endpoint, WSDL, URL, web action, versão ou método por suposição quando a documentação não confirmar.
 
 ## Checklist antes de finalizar
 
 - [ ] A entrada `{Documento}` foi usada para namespace, pasta, configs e testes.
+- [ ] A pasta de documentação informada foi analisada.
+- [ ] PDFs/manuais/WSDLs/URLs/exemplos XML relevantes foram considerados quando disponíveis.
 - [ ] As classes XML em `Xml\{Documento}` foram localizadas e usadas.
 - [ ] Serviços existentes em NFCom/NFe/CTe foram analisados.
 - [ ] Configuração de NFCom foi analisada como padrão.
@@ -482,6 +512,9 @@ Ao finalizar, responda somente com um relatório objetivo:
 Documento implementado:
 - {Documento}
 
+Pasta de documentação:
+- ...
+
 Arquivos criados/modificados:
 - ...
 
@@ -498,6 +531,9 @@ Arquivo base usado para configurações por UF:
 - ...
 
 WSDLs/URLs aplicados:
+- ...
+
+Arquivos de documentação consultados:
 - ...
 
 Estruturas reutilizadas:
