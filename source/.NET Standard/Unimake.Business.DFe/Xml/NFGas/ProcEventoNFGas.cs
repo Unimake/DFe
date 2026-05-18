@@ -39,5 +39,8 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
         [XmlElement("retEventoNFGas")]
         public RetEventoNFGas RetEventoNFGas { get; set; }
+
+        [XmlIgnore]
+        public string NomeArquivoDistribuicao => EventoNFGas.InfEvento.ChNFGas + "_" + ((int)EventoNFGas.InfEvento.TpEvento).ToString("000000") + "_" + EventoNFGas.InfEvento.NSeqEvento + "-proceventoNFGas.xml";
     }
 }

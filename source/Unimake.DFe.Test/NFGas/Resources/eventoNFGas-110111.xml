@@ -11,9 +11,9 @@
     <detEvento versaoEvento="1.00">
       <evCancNFGas>
         <descEvento>Cancelamento</descEvento>
-        <nProt>135260000000001</nProt>
+        <nProt>1352600000000001</nProt>
         <xJust>Cancelamento de teste da NFGas para validacao de serializacao</xJust>
       </evCancNFGas>
     </detEvento>
-  </infEvento>
+  </infEvento>  
 </eventoNFGas>

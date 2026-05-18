@@ -619,6 +619,30 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização síncrona de DCe")]
         DCeAutorizacaoSinc = 100,
 
+        /// <summary>
+        /// 101 - Consulta status serviço NFGas
+        /// </summary>
+        [Description("Consulta status do serviço da NFGas")]
+        NFGasStatusServico = 101,
+
+        /// <summary>
+        /// 102 - Consulta protocolo da NFGas
+        /// </summary>
+        [Description("Consulta situação da NFGas")]
+        NFGasConsultaProtocolo = 102,
+
+        /// <summary>
+        /// 103 - Envio de Eventos da NFGas
+        /// </summary>
+        [Description("Envio de eventos da NFGas")]
+        NFGasRecepcaoEvento = 103,
+
+        /// <summary>
+        /// 104 - Envio do XML de NFGas
+        /// </summary>
+        [Description("Autorização síncrona de NFGas")]
+        NFGasAutorizacaoSinc = 104,
+
 
         #endregion
 
@@ -7812,6 +7836,34 @@ namespace Unimake.Business.DFe.Servicos
         NFCom = 36,
 
         #endregion NFCom
+
+        #region NFGas
+
+        /// <summary>
+        /// XML de consulta status do serviço da NFGas
+        /// </summary>
+        [Description("XML de consulta status do serviço da NFGas")]
+        NFGasStatusServico = 100,
+
+        /// <summary>
+        /// XML de consulta situação da NFGas
+        /// </summary>
+        [Description("XML de consulta situação da NFGas")]
+        NFGasConsultaSituacao = 101,
+
+        /// <summary>
+        /// XML de envio de evento da NFGas
+        /// </summary>
+        [Description("XML de envio de evento da NFGas")]
+        NFGasEnvioEvento = 102,
+
+        /// <summary>
+        /// XML individual da NFGas
+        /// </summary>
+        [Description("XML individual da NFGas")]
+        NFGas = 103,
+
+        #endregion NFGas
 
         #region eSocial
 
@@ -17820,4 +17872,446 @@ namespace Unimake.Business.DFe.Servicos
 
 
     #endregion NFS-e NACIONAL
+
+    #region NFGas
+
+    /// <summary>
+    /// Tipo de emissão da NFGas
+    /// </summary>
+    public enum TipoEmissaoNFGas
+    {
+        /// <summary>
+        /// 1 - Normal
+        /// </summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>
+        /// 2 - Contingência Off Line
+        /// </summary>
+        [XmlEnum("2")]
+        ContingenciaOffLine = 2
+    }
+
+    /// <summary>
+    /// Finalidade de emissão da NFGas
+    /// </summary>
+    public enum FinalidadeNFGas
+    {
+        /// <summary>
+        /// 0 - NFGas normal
+        /// </summary>
+        [XmlEnum("0")]
+        Normal = 0,
+
+        /// <summary>
+        /// 3 - NFGas substituição
+        /// </summary>
+        [XmlEnum("3")]
+        Substituicao = 3
+    }
+
+    /// <summary>
+    /// Tipo de faturamento da NFGas
+    /// </summary>
+    public enum TipoFaturamentoNFGas
+    {
+        /// <summary>
+        /// 1 - Faturamento Normal
+        /// </summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>
+        /// 2 - Faturamento Agregado
+        /// </summary>
+        [XmlEnum("2")]
+        Agregado = 2,
+
+        /// <summary>
+        /// 3 - Faturamento Agregador
+        /// </summary>
+        [XmlEnum("3")]
+        Agregador = 3
+    }
+
+    /// <summary>
+    /// Tipo de operação governamental da NFGas
+    /// </summary>
+    public enum TipoOperacaoGovernamentalNFGas
+    {
+        /// <summary>
+        /// 1 - Fornecimento com pagamento posterior
+        /// </summary>
+        [XmlEnum("1")]
+        FornecimentoComPagamentoPosterior = 1,
+
+        /// <summary>
+        /// 2 - Recebimento do pagamento com fornecimento já realizado
+        /// </summary>
+        [XmlEnum("2")]
+        RecebimentoPagamentoFornecimentoRealizado = 2,
+
+        /// <summary>
+        /// 3 - Fornecimento com pagamento já realizado
+        /// </summary>
+        [XmlEnum("3")]
+        FornecimentoPagamentoRealizado = 3,
+
+        /// <summary>
+        /// 4 - Recebimento do pagamento com fornecimento posterior
+        /// </summary>
+        [XmlEnum("4")]
+        RecebimentoPagamentoPosterior = 4
+    }
+
+    /// <summary>
+    /// Tipo de ente governamental da NFGas
+    /// </summary>
+    public enum TipoEnteGovernamentalNFGas
+    {
+        /// <summary>
+        /// 1 - União
+        /// </summary>
+        [XmlEnum("1")]
+        Uniao = 1,
+
+        /// <summary>
+        /// 2 - Estados
+        /// </summary>
+        [XmlEnum("2")]
+        Estado = 2,
+
+        /// <summary>
+        /// 3 - Distrito Federal
+        /// </summary>
+        [XmlEnum("3")]
+        DistritoFederal = 3,
+
+        /// <summary>
+        /// 4 - Municípios
+        /// </summary>
+        [XmlEnum("4")]
+        Municipio = 4,
+
+        /// <summary>
+        /// 5 - Consórcio Público
+        /// </summary>
+        [XmlEnum("5")]
+        ConsorcioPublico = 5,
+
+        /// <summary>
+        /// 6 - Comitê Gestor do IBS
+        /// </summary>
+        [XmlEnum("6")]
+        ComiteGestorIBS = 6
+    }
+
+    /// <summary>
+    /// Tipo de instalação da NFGas
+    /// </summary>
+    public enum TipoInstalacaoNFGas
+    {
+        /// <summary>
+        /// 1 - Cativo
+        /// </summary>
+        [XmlEnum("1")]
+        Cativo = 1,
+
+        /// <summary>
+        /// 2 - Livre
+        /// </summary>
+        [XmlEnum("2")]
+        Livre = 2,
+
+        /// <summary>
+        /// 3 - Parcialmente Livre
+        /// </summary>
+        [XmlEnum("3")]
+        ParcialmenteLivre = 3
+    }
+
+    /// <summary>
+    /// Classe de consumo da NFGas
+    /// </summary>
+    public enum ClasseConsumoNFGas
+    {
+        /// <summary>
+        /// 01 - Comercial
+        /// </summary>
+        [XmlEnum("01")]
+        Comercial = 1,
+
+        /// <summary>
+        /// 02 - Industrial
+        /// </summary>
+        [XmlEnum("02")]
+        Industrial = 2,
+
+        /// <summary>
+        /// 03 - Residencial
+        /// </summary>
+        [XmlEnum("03")]
+        Residencial = 3,
+
+        /// <summary>
+        /// 04 - Termico
+        /// </summary>
+        [XmlEnum("04")]
+        Termico = 4,
+
+        /// <summary>
+        /// 05 - Veicular Posto
+        /// </summary>
+        [XmlEnum("05")]
+        VeicularPosto = 5,
+
+        /// <summary>
+        /// 06 - Veicular Frota
+        /// </summary>
+        [XmlEnum("06")]
+        VeicularFrota = 6,
+
+        /// <summary>
+        /// 07 - GNC
+        /// </summary>
+        [XmlEnum("07")]
+        GNC = 7,
+
+        /// <summary>
+        /// 08 - GNL
+        /// </summary>
+        [XmlEnum("08")]
+        GNL = 8,
+
+        /// <summary>
+        /// 09 - Cogeracao
+        /// </summary>
+        [XmlEnum("09")]
+        Cogeracao = 9,
+
+        /// <summary>
+        /// 10 - Refinaria
+        /// </summary>
+        [XmlEnum("10")]
+        Refinaria = 10,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99
+    }
+
+    /// <summary>
+    /// Motivo de substituição da NFGas
+    /// </summary>
+    public enum MotivoSubstituicaoNFGas
+    {
+        /// <summary>
+        /// 01 - Erro de Leitura
+        /// </summary>
+        [XmlEnum("01")]
+        ErroLeitura = 1,
+
+        /// <summary>
+        /// 02 - Erro de Preço ou Erro de Tarifa
+        /// </summary>
+        [XmlEnum("02")]
+        ErroPrecoOuTarifa = 2,
+
+        /// <summary>
+        /// 03 - Decisão Judicial
+        /// </summary>
+        [XmlEnum("03")]
+        DecisaoJudicial = 3,
+
+        /// <summary>
+        /// 04 - Erro Cadastral
+        /// </summary>
+        [XmlEnum("04")]
+        ErroCadastral = 4,
+
+        /// <summary>
+        /// 05 - Erro de Tributação
+        /// </summary>
+        [XmlEnum("05")]
+        ErroTributacao = 5,
+
+        /// <summary>
+        /// 06 - Decisão da Reguladora
+        /// </summary>
+        [XmlEnum("06")]
+        DecisaoReguladora = 6
+    }
+
+    /// <summary>
+    /// Grandeza contratada da NFGas
+    /// </summary>
+    public enum GrandezaContratadaNFGas
+    {
+        /// <summary>
+        /// 1 - Demanda mínima
+        /// </summary>
+        [XmlEnum("1")]
+        DemandaMinima = 1,
+
+        /// <summary>
+        /// 2 - Montante de Uso do Sistema de Distribuição
+        /// </summary>
+        [XmlEnum("2")]
+        MontanteUsoSistemaDistribuicao = 2,
+
+        /// <summary>
+        /// 3 - Encargo de Capacidade
+        /// </summary>
+        [XmlEnum("3")]
+        EncargoCapacidade = 3,
+
+        /// <summary>
+        /// 4 - Volume Contratado
+        /// </summary>
+        [XmlEnum("4")]
+        VolumeContratado = 4
+    }
+
+    /// <summary>
+    /// Grupo de medida de gás da NFGas
+    /// </summary>
+    public enum GrupoMedidaGasNFGas
+    {
+        /// <summary>
+        /// 01 - Grupo Medida 01
+        /// </summary>
+        [XmlEnum("01")]
+        GrupoMedida01 = 1,
+
+        /// <summary>
+        /// 02 - Grupo Medida 02
+        /// </summary>
+        [XmlEnum("02")]
+        GrupoMedida02 = 2,
+
+        /// <summary>
+        /// 03 - Grupo Medida 03
+        /// </summary>
+        [XmlEnum("03")]
+        GrupoMedida03 = 3,
+
+        /// <summary>
+        /// 04 - Grupo Medida 04
+        /// </summary>
+        [XmlEnum("04")]
+        GrupoMedida04 = 4,
+
+        /// <summary>
+        /// 05 - Grupo Medida 05
+        /// </summary>
+        [XmlEnum("05")]
+        GrupoMedida05 = 5,
+
+        /// <summary>
+        /// 06 - Grupo Medida 06
+        /// </summary>
+        [XmlEnum("06")]
+        GrupoMedida06 = 6,
+
+        /// <summary>
+        /// 07 - Grupo Medida 07
+        /// </summary>
+        [XmlEnum("07")]
+        GrupoMedida07 = 7,
+
+        /// <summary>
+        /// 08 - Grupo Medida 08
+        /// </summary>
+        [XmlEnum("08")]
+        GrupoMedida08 = 8,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99
+    }
+
+    /// <summary>
+    /// Unidade básica de medida da NFGas
+    /// </summary>
+    public enum UnidadeMedidaNFGas
+    {
+        /// <summary>
+        /// 1 - m3
+        /// </summary>
+        [XmlEnum("1")]
+        M3 = 1,
+
+        /// <summary>
+        /// 2 - Unidade
+        /// </summary>
+        [XmlEnum("2")]
+        Unidade = 2
+    }
+
+    /// <summary>
+    /// Origem da quantidade faturada da NFGas
+    /// </summary>
+    public enum OrigemQuantidadeFaturadaNFGas
+    {
+        /// <summary>
+        /// 1 - Média
+        /// </summary>
+        [XmlEnum("1")]
+        Media = 1,
+
+        /// <summary>
+        /// 2 - Medido
+        /// </summary>
+        [XmlEnum("2")]
+        Medido = 2,
+
+        /// <summary>
+        /// 3 - Contratada
+        /// </summary>
+        [XmlEnum("3")]
+        Contratada = 3,
+
+        /// <summary>
+        /// 4 - Residual estimado
+        /// </summary>
+        [XmlEnum("4")]
+        ResidualEstimado = 4,
+
+        /// <summary>
+        /// 5 - Residual medido
+        /// </summary>
+        [XmlEnum("5")]
+        ResidualMedido = 5,
+
+        /// <summary>
+        /// 6 - Sem quantidade
+        /// </summary>
+        [XmlEnum("6")]
+        SemQuantidade = 6,
+
+        /// <summary>
+        /// 7 - Por Faixa
+        /// </summary>
+        [XmlEnum("7")]
+        PorFaixa = 7
+    }    
+
+    /// <summary>
+    /// Tipo de evento da NFGas
+    /// </summary>
+    public enum TipoEventoNFGas
+    {
+        /// <summary>
+        /// 110111 - Cancelamento
+        /// </summary>
+        [XmlEnum("110111")]
+        Cancelamento = 110111
+    }
+
+    #endregion NFGas
 }

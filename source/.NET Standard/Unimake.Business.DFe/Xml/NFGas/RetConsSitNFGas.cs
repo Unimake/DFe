@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFGas
 {
@@ -29,7 +30,7 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public string Versao { get; set; }
 
         [XmlElement("tpAmb")]
-        public int TpAmb { get; set; }
+        public TipoAmbiente TpAmb { get; set; }
 
         [XmlElement("verAplic")]
         public string VerAplic { get; set; }
@@ -40,8 +41,15 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("xMotivo")]
         public string XMotivo { get; set; }
 
+        [XmlIgnore]
+        public UFBrasil CUF { get; set; }
+
         [XmlElement("cUF")]
-        public int CUF { get; set; }
+        public int CUFField
+        {
+            get => (int)CUF;
+            set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
+        }
 
         [XmlElement("protNFGas")]
         public ProtNFGas ProtNFGas { get; set; }

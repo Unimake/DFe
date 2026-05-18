@@ -1,5 +1,6 @@
 using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.NFGas;
 using Xunit;
@@ -104,13 +105,13 @@ namespace Unimake.DFe.Test.NFGas
             {
                 Ide = new Ide
                 {
-                    CUF = 35,
-                    Mod = 76,
+                    CUF = UFBrasil.SP,
+                    Mod = ModeloDFe.NFGas,
                     Serie = 1,
                     NNF = 1,
                     CNF = "0000010",
                     DhEmi = "2026-05-18T10:00:00-03:00",
-                    TpEmis = 1,
+                    TpEmis = TipoEmissaoNFGas.Normal,
                     NSiteAutoriz = "0"
                 },
                 Emit = new Emit

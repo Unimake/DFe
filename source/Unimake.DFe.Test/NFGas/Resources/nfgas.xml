@@ -34,7 +34,6 @@
     <dest>
       <xNome>Destinatario NFGas</xNome>
       <CPF>12345678909</CPF>
-      <indIEDest>9</indIEDest>
       <enderDest>
         <xLgr>Rua Consumidor</xLgr>
         <nro>200</nro>
@@ -43,41 +42,108 @@
         <xMun>Sao Paulo</xMun>
         <CEP>01002000</CEP>
         <UF>SP</UF>
-        <cPais>1058</cPais>
-        <xPais>Brasil</xPais>
       </enderDest>
     </dest>
     <det nItem="1">
-      <prod>
-        <cProd>GAS001</cProd>
-        <xProd>Gas canalizado</xProd>
-        <cClass>0000001</cClass>
-        <CFOP>5303</CFOP>
-        <uMed>1</uMed>
-        <vItem>10.0000</vItem>
-        <qFaturada>10.0000</qFaturada>
-        <vProd>100.00</vProd>
-      </prod>
-      <imposto>
-        <ICMS00>
-          <CST>00</CST>
-          <vBC>100.00</vBC>
-          <pICMS>18.0000</pICMS>
-          <vICMS>18.00</vICMS>
-        </ICMS00>
-        <PIS>
-          <CST>01</CST>
-          <vBC>100.00</vBC>
-          <pPIS>1.6500</pPIS>
-          <vPIS>1.65</vPIS>
-        </PIS>
-        <COFINS>
-          <CST>01</CST>
-          <vBC>100.00</vBC>
-          <pCOFINS>7.6000</pCOFINS>
-          <vCOFINS>7.60</vCOFINS>
-        </COFINS>
-      </imposto>
+      <gNormal>
+        <gTarif>
+          <dIniTarif>2026-05-18</dIniTarif>
+          <dFimTarif>2026-05-18</dFimTarif>
+          <nAto>0011</nAto>
+          <anoAto>2026</anoAto>
+          <tpFaixaCons>1</tpFaixaCons>
+          <vTarifAplic>10.00000000</vTarifAplic>
+        </gTarif>
+        <gTarif>
+          <dIniTarif>2026-05-18</dIniTarif>
+          <dFimTarif>2026-05-18</dFimTarif>
+          <nAto>0002</nAto>
+          <anoAto>2026</anoAto>
+          <tpFaixaCons>2</tpFaixaCons>
+          <vTarifAplic>10.00000000</vTarifAplic>
+        </gTarif>
+        <gTarif>
+          <dIniTarif>2026-05-18</dIniTarif>
+          <dFimTarif>2026-05-18</dFimTarif>
+          <nAto>0003</nAto>
+          <anoAto>2026</anoAto>
+          <tpFaixaCons>3</tpFaixaCons>
+          <vTarifAplic>10.00000000</vTarifAplic>
+        </gTarif>
+        <prod>
+          <indOrigemQtd>1</indOrigemQtd>
+          <gMedicao>
+            <nMed>01</nMed>
+            <nContrat>01</nContrat>
+            <gMedida>
+              <uMed>1</uMed>
+              <vMed>1</vMed>
+            </gMedida>
+          </gMedicao>
+          <cProd>cProd1</cProd>
+          <xProd>xProd1</xProd>
+          <cClass>0010000</cClass>
+          <CFOP>5102</CFOP>
+          <uMed>1</uMed>
+          <qFaturada>10.0000</qFaturada>
+          <vItem>10.00</vItem>
+          <fatorPCS>1.0000</fatorPCS>
+          <fatorPTZ>1.0000</fatorPTZ>
+          <fatorP>1.0000</fatorP>
+          <fatorT>1.0000</fatorT>
+          <vProd>100.00</vProd>
+          <indDevolucao>1</indDevolucao>
+        </prod>
+        <imposto>
+          <orig>0</orig>
+          <ICMS00>
+            <CST>00</CST>
+            <vBC>10.00</vBC>
+            <pICMS>10.00</pICMS>
+            <vICMS>10.00</vICMS>
+            <pFCP>10.00</pFCP>
+            <vFCP>10.00</vFCP>
+          </ICMS00>
+          <IBSCBS>
+            <CST>000</CST>
+            <cClassTrib>000000</cClassTrib>
+            <indDoacao>1</indDoacao>
+            <gIBSCBS>
+              <vBC>10.00</vBC>
+              <gIBSUF>
+                <pIBSUF>10.00</pIBSUF>
+                <gDif>
+                  <pDif>10.00</pDif>
+                  <vDif>10.00</vDif>
+                </gDif>
+                <vIBSUF>10.00</vIBSUF>
+              </gIBSUF>
+              <gIBSMun>
+                <pIBSMun>10.00</pIBSMun>
+                <vIBSMun>10.00</vIBSMun>
+              </gIBSMun>
+              <vIBS>10.00</vIBS>
+              <gCBS>
+                <pCBS>10.00</pCBS>
+                <vCBS>10.00</vCBS>
+              </gCBS>
+            </gIBSCBS>
+          </IBSCBS>
+          <PIS>
+            <CST>01</CST>
+            <vBC>10.00</vBC>
+            <pPIS>10.00</pPIS>
+            <vPIS>10.00</vPIS>
+          </PIS>
+          <COFINS>
+            <CST>01</CST>
+            <vBC>10.00</vBC>
+            <pCOFINS>10.00</pCOFINS>
+            <vCOFINS>10.00</vCOFINS>
+          </COFINS>
+        </imposto>
+        <infAdProd>infAdProd1</infAdProd>
+      </gNormal>
     </det>
     <total>
       <vProd>100.00</vProd>
@@ -90,6 +156,12 @@
         <vST>0.00</vST>
         <vFCPST>0.00</vFCPST>
       </ICMSTot>
+      <vRetTribTot>
+        <vRetPIS>0.00</vRetPIS>
+        <vRetCofins>0.00</vRetCofins>
+        <vRetCSLL>0.00</vRetCSLL>
+        <vIRRF>0.00</vIRRF>
+      </vRetTribTot>
       <vCOFINS>7.60</vCOFINS>
       <vPIS>1.65</vPIS>
       <vTxReg>0.00</vTxReg>
@@ -122,6 +194,7 @@
       <dVencFat>2026-06-10</dVencFat>
       <dProxLeitura>2026-06-18</dProxLeitura>
       <codBarras>00190500954014481606906809350314337370000000100</codBarras>
+      <codDebAuto>1</codDebAuto>
       <gPIX>
         <urlQRCodePIX>https://example.com/pix</urlQRCodePIX>
       </gPIX>
@@ -153,7 +226,4 @@
       <fone>4430264606</fone>
     </gRespTec>
   </infNFGas>
-  <infNFGasSupl>
-    <qrCodNFGas>https://example.com/consulta?chNFGas=35260512345678000195576000100000011000000010&amp;tpAmb=2</qrCodNFGas>
-  </infNFGasSupl>
 </NFGas>

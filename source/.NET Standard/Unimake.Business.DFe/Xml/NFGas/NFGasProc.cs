@@ -40,5 +40,8 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
         [XmlElement("protNFGas")]
         public ProtNFGas ProtNFGas { get; set; }
+
+        [XmlIgnore]
+        public string NomeArquivoDistribuicao => ProtNFGas.InfProt.ChNFGas + "-procNFGas.xml";
     }
 }

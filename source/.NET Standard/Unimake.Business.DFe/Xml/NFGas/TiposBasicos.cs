@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFGas
 {
@@ -31,7 +32,7 @@ namespace Unimake.Business.DFe.Xml.NFGas
     public class InfProtNFGas
     {
         [XmlElement("tpAmb")]
-        public int TpAmb { get; set; }
+        public TipoAmbiente TpAmb { get; set; }
 
         [XmlElement("verAplic")]
         public string VerAplic { get; set; }
@@ -69,7 +70,7 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public int COrgao { get; set; }
 
         [XmlElement("tpAmb")]
-        public int TpAmb { get; set; }
+        public TipoAmbiente TpAmb { get; set; }
 
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
@@ -81,7 +82,7 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public string DhEvento { get; set; }
 
         [XmlElement("tpEvento")]
-        public string TpEvento { get; set; }
+        public TipoEventoNFGas TpEvento { get; set; }
 
         [XmlElement("nSeqEvento")]
         public int NSeqEvento { get; set; }
@@ -115,7 +116,7 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public string Id { get; set; }
 
         [XmlElement("tpAmb")]
-        public int TpAmb { get; set; }
+        public TipoAmbiente TpAmb { get; set; }
 
         [XmlElement("verAplic")]
         public string VerAplic { get; set; }
@@ -133,7 +134,7 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public string ChNFGas { get; set; }
 
         [XmlElement("tpEvento")]
-        public string TpEvento { get; set; }
+        public TipoEventoNFGas TpEvento { get; set; }
 
         [XmlElement("xEvento")]
         public string XEvento { get; set; }

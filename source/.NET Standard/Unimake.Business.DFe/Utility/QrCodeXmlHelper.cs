@@ -386,6 +386,96 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
+        /// Monta e inclui o grupo suplementar <c>infNFGasSupl</c> com a tag de QRCode para NFGas.
+        /// </summary>
+        /// <param name="conteudoXml">Documento XML da NFGas já carregado em memória.</param>
+        /// <param name="configuracoes">Configurações do serviço (ambiente, URLs e certificado digital).</param>
+        /// <exception cref="Exception">Lançada quando alguma tag obrigatória para cálculo da chave/QRCode não é localizada.</exception>
+        public static void MontarQrCodeNFGas(XmlDocument conteudoXml, Configuracao configuracoes)
+        {
+            if (conteudoXml.GetElementsByTagName("NFGas").Count <= 0)
+            {
+                throw new Exception("A tag obrigatória <NFGas> não foi localizada no XML.");
+            }
+
+            var elementNFGas = (XmlElement)conteudoXml.GetElementsByTagName("NFGas")[0];
+
+            if (elementNFGas.GetElementsByTagName("infNFGasSupl").Count <= 0)
+            {
+                if (elementNFGas.GetElementsByTagName("infNFGas").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <infNFGas>, do grupo de tag <NFGas>, não foi localizada no XML.");
+                }
+
+                var elementInfNFGas = (XmlElement)elementNFGas.GetElementsByTagName("infNFGas")[0];
+
+                if (elementInfNFGas.GetElementsByTagName("ide").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <NFGas><infNFGas>, não foi localizada no XML.");
+                }
+
+                var elementIde = (XmlElement)elementInfNFGas.GetElementsByTagName("ide")[0];
+
+                var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
+                var cUF = (UFBrasil)Convert.ToInt32(elementIde.GetElementsByTagName("cUF")[0].InnerText);
+                var dhEmi = DateTimeOffset.Parse(elementIde.GetElementsByTagName("dhEmi")[0].InnerText);
+                var serie = elementIde.GetElementsByTagName("serie")[0].InnerText;
+                var nNF = elementIde.GetElementsByTagName("nNF")[0].InnerText;
+                var tpEmis = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
+                var nSiteAutoriz = elementIde.GetElementsByTagName("nSiteAutoriz")[0].InnerText;
+                var cNF = elementIde.GetElementsByTagName("cNF")[0].InnerText;
+                var mod = elementIde.GetElementsByTagName("mod")[0].InnerText;
+
+                if (elementInfNFGas.GetElementsByTagName("emit").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <emit>, do grupo de tag <NFGas><infNFGas>, não foi localizada no XML.");
+                }
+
+                var elementEmit = (XmlElement)elementInfNFGas.GetElementsByTagName("emit")[0];
+
+                if (elementEmit.GetElementsByTagName("CNPJ").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <CNPJ>, do grupo de tag <NFGas><infNFGas><emit>, não foi localizada no XML.");
+                }
+
+                var cnpjEmit = elementEmit.GetElementsByTagName("CNPJ")[0].InnerText;
+
+                var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
+                {
+                    UFEmissor = (UFBrasil)Convert.ToInt32(cUF),
+                    AnoEmissao = dhEmi.ToString("yy"),
+                    MesEmissao = dhEmi.ToString("MM"),
+                    CNPJCPFEmissor = cnpjEmit.PadLeft(14, '0'),
+                    Modelo = (ModeloDFe)Convert.ToInt32(mod),
+                    Serie = Convert.ToInt32(serie),
+                    NumeroDoctoFiscal = Convert.ToInt32(nNF),
+                    TipoEmissao = (TipoEmissao)(int)tpEmis,
+                    NSiteAutoriz = nSiteAutoriz,
+                    CodigoNumerico = cNF
+                };
+
+                var chave = XMLUtility.MontarChaveNFGas(ref conteudoChaveDFe);
+                var urlQrCode = configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? configuracoes.UrlQrCodeHomologacao : configuracoes.UrlQrCodeProducao;
+                var paramLinkQRCode = urlQrCode + "?chNFGas=" + chave + "&tpAmb=" + ((int)tpAmb).ToString();
+
+                if ((int)tpEmis == 2)
+                {
+                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(configuracoes.CertificadoDigital, chave);
+                }
+
+                var nodeNFGas = conteudoXml.GetElementsByTagName("NFGas")[0];
+                var nodeInfNFGas = (XmlNode)elementInfNFGas;
+
+                AdicionarGrupoSuplementar(
+                    conteudoXml,
+                    nodeNFGas,
+                    nodeInfNFGas,
+                    "infNFGasSupl",
+                    new KeyValuePair<string, string>("qrCodNFGas", paramLinkQRCode.Trim()));
+            }
+        }
+
+        /// <summary>
         /// Monta e inclui o grupo suplementar <c>infDCeSupl</c> com a tag de QRCode para DCe.
         /// </summary>
         /// <param name="conteudoXml">Documento XML da DCe.</param>

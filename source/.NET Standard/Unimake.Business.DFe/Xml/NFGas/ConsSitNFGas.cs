@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFGas
 {
@@ -26,7 +27,7 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public string Versao { get; set; }
 
         [XmlElement("tpAmb")]
-        public int TpAmb { get; set; }
+        public TipoAmbiente TpAmb { get; set; }
 
         [XmlElement("xServ")]
         public string XServ { get; set; }

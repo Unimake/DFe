@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFGas">
+		<StatusServico versao="1.00">
+			<Descricao>Consulta situação do serviço da nota fiscal eletrônica do gás</Descricao>
+			<WebEnderecoHomologacao>https://nfgas-homologacao.svrs.rs.gov.br/WS/NFGasStatusServico/NFGasStatusServico.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfgas.svrs.rs.gov.br/WS/NFGasStatusServico/NFGasStatusServico.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasStatusServico/nfgasStatusServicoNF</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasStatusServico/nfgasStatusServicoNF</WebActionProducao>
+			<SchemaArquivo>consStatServNFGas_v{0}.xsd</SchemaArquivo>
+			<WebTagRetorno>nfgasResultMsg</WebTagRetorno>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfg="http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasStatusServico"><soap:Header/><soap:Body><nfg:nfgasDadosMsg>{xmlBody}</nfg:nfgasDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+		</StatusServico>
+		<ConsultaProtocolo versao="1.00">
+			<Descricao>Consulta situação da nota fiscal eletrônica do gás</Descricao>
+			<WebEnderecoHomologacao>https://nfgas-homologacao.svrs.rs.gov.br/WS/NFGasConsulta/NFGasConsulta.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfgas.svrs.rs.gov.br/WS/NFGasConsulta/NFGasConsulta.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasConsulta/nfgasConsultaNF</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasConsulta/nfgasConsultaNF</WebActionProducao>
+			<SchemaArquivo>consSitNFGas_v{0}.xsd</SchemaArquivo>
+			<WebTagRetorno>nfgasResultMsg</WebTagRetorno>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfg="http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasConsulta"><soap:Header/><soap:Body><nfg:nfgasDadosMsg>{xmlBody}</nfg:nfgasDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="1.00">
+			<Descricao>Recepção de eventos</Descricao>
+			<WebEnderecoHomologacao>https://nfgas-homologacao.svrs.rs.gov.br/WS/NFGasRecepcaoEvento/NFGasRecepcaoEvento.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfgas.svrs.rs.gov.br/WS/NFGasRecepcaoEvento/NFGasRecepcaoEvento.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasRecepcaoEvento/nfgasRecepcaoEvento</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasRecepcaoEvento/nfgasRecepcaoEvento</WebActionProducao>
+			<WebTagRetorno>nfgasResultMsg</WebTagRetorno>
+			<SchemaArquivo></SchemaArquivo>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoNFGas_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancNFGas_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>eventoNFGas</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfg="http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasRecepcaoEvento"><soap:Header/><soap:Body><nfg:nfgasDadosMsg>{xmlBody}</nfg:nfgasDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+		</RecepcaoEvento>
+		<AutorizacaoSinc versao="1.00">
+			<Descricao>Autorização síncrona da NFGas</Descricao>
+			<WebEnderecoHomologacao>https://nfgas-homologacao.svrs.rs.gov.br/WS/NFGasRecepcao/NFGasRecepcao.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfgas.svrs.rs.gov.br/WS/NFGasRecepcao/NFGasRecepcao.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasRecepcao/nfgasRecepcao</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasRecepcao/nfgasRecepcao</WebActionProducao>
+			<SchemaArquivo>nfgas_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura>NFGas</TagAssinatura>
+			<TagAtributoID>infNFGas</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebTagRetorno>nfgasResultMsg</WebTagRetorno>
+			<GZIPCompress>true</GZIPCompress>
+			<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/nfgas/qrCode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/nfgas/qrCode</UrlQrCodeProducao>
+			<UrlChaveHomologacao>https://dfe-portal.svrs.rs.gov.br/nfgas/qrCode</UrlChaveHomologacao>
+			<UrlChaveProducao>https://dfe-portal.svrs.rs.gov.br/nfgas/qrCode</UrlChaveProducao>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfg="http://www.portalfiscal.inf.br/nfgas/wsdl/NFGasRecepcao"><soap:Header/><soap:Body><nfg:nfgasDadosMsg>{xmlBody}</nfg:nfgasDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+		</AutorizacaoSinc>
+	</Servicos>
+</Configuracoes>

@@ -1236,6 +1236,26 @@ namespace Unimake.Business.DFe.Utility
 
                 #endregion XML da NFCom
 
+                #region XML da NFGas
+
+                case "consStatServNFGas":
+                    tipoXML = TipoXML.NFGasStatusServico;
+                    break;
+
+                case "consSitNFGas":
+                    tipoXML = TipoXML.NFGasConsultaSituacao;
+                    break;
+
+                case "eventoNFGas":
+                    tipoXML = TipoXML.NFGasEnvioEvento;
+                    break;
+
+                case "NFGas":
+                    tipoXML = TipoXML.NFGas;
+                    break;
+
+                #endregion XML da NFGas
+
                 case "eSocial":
                     tipoXML = ObterTipoXmlESocial(xmlDoc, primeiraTagFilha);
                     break;

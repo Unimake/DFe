@@ -12,14 +12,34 @@
       <detEvento versaoEvento="1.00">
         <evCancNFGas>
           <descEvento>Cancelamento</descEvento>
-          <nProt>135260000000001</nProt>
+          <nProt>1352600000000001</nProt>
           <xJust>Cancelamento de teste da NFGas para validacao de serializacao</xJust>
         </evCancNFGas>
       </detEvento>
     </infEvento>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#ID1101113526051234567800019576001000000010000000100001">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>YWJjZA==</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>YWJjZA==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>YWJjZA==</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
   </eventoNFGas>
   <retEventoNFGas versao="1.00">
-    <infEvento Id="ID1101113526051234567800019576001000000010000000100001">
+    <infEvento Id="ID1352600000000002">
       <tpAmb>2</tpAmb>
       <verAplic>Unimake.DFe</verAplic>
       <cOrgao>35</cOrgao>
@@ -30,7 +50,27 @@
       <xEvento>Cancelamento</xEvento>
       <nSeqEvento>1</nSeqEvento>
       <dhRegEvento>2026-05-18T10:00:00-03:00</dhRegEvento>
-      <nProt>135260000000002</nProt>
+      <nProt>1352600000000002</nProt>
     </infEvento>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#ID1352600000000002">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>YWJjZA==</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>YWJjZA==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>YWJjZA==</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
   </retEventoNFGas>
 </procEventoNFGas>
