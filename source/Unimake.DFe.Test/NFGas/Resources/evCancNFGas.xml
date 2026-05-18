@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<evCancNFGas xmlns="http://www.portalfiscal.inf.br/nfgas">
+  <descEvento>Cancelamento</descEvento>
+  <nProt>135260000000001</nProt>
+  <xJust>Cancelamento de teste da NFGas para validacao de serializacao</xJust>
+</evCancNFGas>

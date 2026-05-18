@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsStatServNFGas versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfgas">
+  <tpAmb>2</tpAmb>
+  <verAplic>Unimake.DFe</verAplic>
+  <cStat>107</cStat>
+  <xMotivo>Servico em operacao</xMotivo>
+  <cUF>35</cUF>
+  <dhRecbto>2026-05-18T10:00:00-03:00</dhRecbto>
+  <tMed>1</tMed>
+</retConsStatServNFGas>

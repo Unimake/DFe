@@ -714,6 +714,11 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         DCe = 16,
 
+        /// <summary>
+        /// 17 - NFGas - Nota Fiscal Eletrônica do Gás
+        /// </summary>
+        NFGas = 17,
+
     }
 
     #endregion       
@@ -1000,6 +1005,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("99")]
         DCe = 99,
+
+        /// <summary>
+        /// NFGas (Modelo: 76)
+        /// </summary>
+        [XmlEnum("76")]
+        NFGas = 76,
     }
 
     #endregion

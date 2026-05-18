@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retNFGas versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfgas">
+  <tpAmb>2</tpAmb>
+  <verAplic>Unimake.DFe</verAplic>
+  <cStat>100</cStat>
+  <xMotivo>Autorizado o uso da NFGas</xMotivo>
+  <cUF>35</cUF>
+  <dhRecbto>2026-05-18T10:00:00-03:00</dhRecbto>
+  <chNFGas>35260512345678000195760010000000100000001000</chNFGas>
+  <nProt>135260000000001</nProt>
+</retNFGas>

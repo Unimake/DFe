@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nfgasProc versao="1.00" ipTransmissor="127.0.0.1" nPortaCon="443" dhConexao="2026-05-18T10:00:00-03:00" xmlns="http://www.portalfiscal.inf.br/nfgas">
+  <NFGas>
+    <infNFGas versao="1.00" Id="NFGas35260512345678000195760010000000100000001000">
+      <ide>
+        <cUF>35</cUF>
+        <tpAmb>2</tpAmb>
+        <mod>76</mod>
+        <serie>1</serie>
+        <nNF>1</nNF>
+        <cNF>0000010</cNF>
+        <cDV>0</cDV>
+        <dhEmi>2026-05-18T10:00:00-03:00</dhEmi>
+        <tpEmis>1</tpEmis>
+        <nSiteAutoriz>0</nSiteAutoriz>
+        <cMunFG>3550308</cMunFG>
+        <finNFGas>0</finNFGas>
+        <tpFat>1</tpFat>
+        <verProc>Unimake.DFe</verProc>
+      </ide>
+    </infNFGas>
+  </NFGas>
+  <protNFGas versao="1.00">
+    <infProt>
+      <tpAmb>2</tpAmb>
+      <verAplic>Unimake.DFe</verAplic>
+      <chNFGas>35260512345678000195760010000000100000001000</chNFGas>
+      <dhRecbto>2026-05-18T10:00:00-03:00</dhRecbto>
+      <nProt>135260000000001</nProt>
+      <digVal>YWJj</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NFGas</xMotivo>
+    </infProt>
+  </protNFGas>
+</nfgasProc>

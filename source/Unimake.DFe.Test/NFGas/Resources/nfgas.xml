@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NFGas xmlns="http://www.portalfiscal.inf.br/nfgas">
+  <infNFGas versao="1.00" Id="NFGas35260512345678000195576000100000011000000010">
+    <ide>
+      <cUF>35</cUF>
+      <tpAmb>2</tpAmb>
+      <mod>76</mod>
+      <serie>1</serie>
+      <nNF>1</nNF>
+      <cNF>0000010</cNF>
+      <cDV>0</cDV>
+      <dhEmi>2026-05-18T10:00:00-03:00</dhEmi>
+      <tpEmis>1</tpEmis>
+      <nSiteAutoriz>0</nSiteAutoriz>
+      <cMunFG>3550308</cMunFG>
+      <finNFGas>0</finNFGas>
+      <tpFat>1</tpFat>
+      <verProc>Unimake.DFe</verProc>
+    </ide>
+    <emit>
+      <CNPJ>12345678000195</CNPJ>
+      <IE>123456789110</IE>
+      <xNome>Empresa Emitente NFGas</xNome>
+      <enderEmit>
+        <xLgr>Rua Teste</xLgr>
+        <nro>100</nro>
+        <xBairro>Centro</xBairro>
+        <cMun>3550308</cMun>
+        <xMun>Sao Paulo</xMun>
+        <CEP>01001000</CEP>
+        <UF>SP</UF>
+      </enderEmit>
+    </emit>
+    <dest>
+      <xNome>Destinatario NFGas</xNome>
+      <CPF>12345678909</CPF>
+      <indIEDest>9</indIEDest>
+      <enderDest>
+        <xLgr>Rua Consumidor</xLgr>
+        <nro>200</nro>
+        <xBairro>Centro</xBairro>
+        <cMun>3550308</cMun>
+        <xMun>Sao Paulo</xMun>
+        <CEP>01002000</CEP>
+        <UF>SP</UF>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>GAS001</cProd>
+        <xProd>Gas canalizado</xProd>
+        <cClass>0000001</cClass>
+        <CFOP>5303</CFOP>
+        <uMed>1</uMed>
+        <vItem>10.0000</vItem>
+        <qFaturada>10.0000</qFaturada>
+        <vProd>100.00</vProd>
+      </prod>
+      <imposto>
+        <ICMS00>
+          <CST>00</CST>
+          <vBC>100.00</vBC>
+          <pICMS>18.0000</pICMS>
+          <vICMS>18.00</vICMS>
+        </ICMS00>
+        <PIS>
+          <CST>01</CST>
+          <vBC>100.00</vBC>
+          <pPIS>1.6500</pPIS>
+          <vPIS>1.65</vPIS>
+        </PIS>
+        <COFINS>
+          <CST>01</CST>
+          <vBC>100.00</vBC>
+          <pCOFINS>7.6000</pCOFINS>
+          <vCOFINS>7.60</vCOFINS>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <vProd>100.00</vProd>
+      <ICMSTot>
+        <vBC>100.00</vBC>
+        <vICMS>18.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+      </ICMSTot>
+      <vCOFINS>7.60</vCOFINS>
+      <vPIS>1.65</vPIS>
+      <vTxReg>0.00</vTxReg>
+      <vNF>100.00</vNF>
+      <IBSCBSTot>
+        <vBCIBSCBS>0.00</vBCIBSCBS>
+        <gIBS>
+          <gIBSUF>
+            <vDif>0.00</vDif>
+            <vDevTrib>0.00</vDevTrib>
+            <vIBSUF>0.00</vIBSUF>
+          </gIBSUF>
+          <gIBSMun>
+            <vDif>0.00</vDif>
+            <vDevTrib>0.00</vDevTrib>
+            <vIBSMun>0.00</vIBSMun>
+          </gIBSMun>
+          <vIBS>0.00</vIBS>
+        </gIBS>
+        <gCBS>
+          <vDif>0.00</vDif>
+          <vDevTrib>0.00</vDevTrib>
+          <vCBS>0.00</vCBS>
+        </gCBS>
+      </IBSCBSTot>
+      <vTotDFe>100.00</vTotDFe>
+    </total>
+    <gFat>
+      <CompetFat>202605</CompetFat>
+      <dVencFat>2026-06-10</dVencFat>
+      <dProxLeitura>2026-06-18</dProxLeitura>
+      <codBarras>00190500954014481606906809350314337370000000100</codBarras>
+      <gPIX>
+        <urlQRCodePIX>https://example.com/pix</urlQRCodePIX>
+      </gPIX>
+      <infAdFat>Fatura de teste NFGas</infAdFat>
+    </gFat>
+    <gAgencia>
+      <nomeAgenciaAtend>Agencia reguladora</nomeAgenciaAtend>
+      <gHistCons>
+        <xHistorico>Consumo meses anteriores</xHistorico>
+        <gCons>
+          <CompetFat>202604</CompetFat>
+          <uMed>1</uMed>
+          <qtdDias>30</qtdDias>
+          <medDiaria>1.0000</medDiaria>
+          <consumo>30.0000</consumo>
+          <vFat>100.0000</vFat>
+        </gCons>
+        <medMensal>30.0000</medMensal>
+      </gHistCons>
+    </gAgencia>
+    <infAdic>
+      <infAdFisco>Informacoes adicionais do fisco</infAdFisco>
+      <infCpl>Informacoes complementares</infCpl>
+    </infAdic>
+    <gRespTec>
+      <CNPJ>06117473000150</CNPJ>
+      <xContato>Unimake</xContato>
+      <email>suporte@unimake.com.br</email>
+      <fone>4430264606</fone>
+    </gRespTec>
+  </infNFGas>
+  <infNFGasSupl>
+    <qrCodNFGas>https://example.com/consulta?chNFGas=35260512345678000195576000100000011000000010&amp;tpAmb=2</qrCodNFGas>
+  </infNFGasSupl>
+</NFGas>
