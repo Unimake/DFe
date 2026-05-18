@@ -599,7 +599,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
         /// <param name="nomeArquivo">Nome do arquivo para gravação do XML de distribuição</param>
         [ComVisible(true)]
-        public void GravarXmlDistribuicao(string pasta, string nomeArquivo)
+        public void GravarXmlDistribuicaoComNomeArquivo(string pasta, string nomeArquivo)
         {
             try
             {
