@@ -80,10 +80,12 @@ O round-trip não pode ser obtido por serialização genérica. As classes devem
    - testes de serialização do DFe mais parecido.
 9. Procure tipos reaproveitáveis antes de criar novos:
    - enums em `Servicos`;
+   - especialmente `source/.NET Standard/Unimake.Business.DFe/Servicos/Enums/Enums.cs`;
    - classes comuns em outros `Xml/<DFe>`;
    - `Signature`;
    - utilitários em `Utility`.
-10. Se a documentação ou a pasta de XSDs estiver incompleta, ilegível, inacessível ou contraditória, pare e peça esclarecimento ou arquivo complementar. Não adivinhe layout fiscal.
+10. Para cada tag/propriedade que será implementada, verifique no XSD e na documentação se há domínio fechado de valores, lista de códigos, `xs:enumeration`, tabela de domínio ou valores predefinidos.
+11. Se a documentação ou a pasta de XSDs estiver incompleta, ilegível, inacessível ou contraditória, pare e peça esclarecimento ou arquivo complementar. Não adivinhe layout fiscal.
 
 ## Documentação obrigatória
 
@@ -208,6 +210,35 @@ Exemplos típicos:
 - decimal com cultura invariável;
 - chave calculada a partir de dados do documento.
 
+### Enumeradores obrigatórios
+
+Para cada propriedade/tag implementada, analise se o valor possui domínio fechado.
+
+Crie ou reutilize enum quando houver:
+
+- `xs:enumeration` no XSD;
+- tipo simples restrito por lista de valores;
+- tabela de códigos no manual/PDF/nota técnica;
+- valores predefinidos como ambiente, modelo, emissão, status, tipo de evento, indicador, finalidade, modalidade, UF, município/provedor quando aplicável;
+- propriedade que no projeto equivalente já usa enum em outro DFe.
+
+Antes de criar enum novo:
+
+- procure enum compatível em `source/.NET Standard/Unimake.Business.DFe/Servicos/Enums/Enums.cs`;
+- procure também em outros arquivos existentes sob `Servicos` e `Xml`;
+- reutilize enum existente quando a semântica e os valores forem iguais;
+- não crie enum duplicado com outro nome para o mesmo domínio.
+
+Quando criar enum novo:
+
+- coloque no local já usado pelo projeto para enums de DFe, preferencialmente `Servicos/Enums/Enums.cs` quando o padrão local indicar;
+- use nomes claros e alinhados ao domínio fiscal;
+- mantenha valores numéricos/string serializados por propriedade auxiliar quando necessário;
+- preserve compatibilidade de serialização usando `[XmlIgnore]` na propriedade enum e uma propriedade `...Field` com `[XmlElement]`/`[XmlAttribute]` quando o XML exigir número ou string;
+- documente os membros quando o padrão do arquivo exigir.
+
+Não deixe como `int`, `string` ou `double` uma tag com valores predefinidos se for possível modelar com enum sem quebrar a serialização. Use tipo primitivo apenas quando o valor for realmente aberto, texto livre, número sem domínio fechado ou quando o schema permitir ampla variação.
+
 ### Listas e INTEROP
 
 Para listas públicas, siga o padrão COM quando a classe equivalente tiver `INTEROP`:
@@ -319,6 +350,8 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - Não colocar todas as classes raiz de XSDs diferentes em um único arquivo.
 - Não seguir XSDs encontrados fora da pasta de XSDs informada sem confirmação do usuário.
 - Não usar `XmlElement[]`, `XmlAnyElement`, `XmlAnyAttribute`, `object`, `dynamic` ou XML bruto como substituto de propriedades explícitas para tags conhecidas no XSD.
+- Não deixar tag com valores predefinidos como `string`, `int` ou outro primitivo sem antes verificar e justificar se enum existente ou novo enum deveria ser usado.
+- Não criar enum novo sem antes pesquisar enum compatível em `Enums.cs` e nos tipos existentes do projeto.
 
 ## Checklist antes de finalizar
 
@@ -332,6 +365,10 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - [ ] Cada XSD principal aplicável tem classe raiz e arquivo `.cs` próprios.
 - [ ] As tags dos XSDs foram modeladas com propriedades explícitas, não com conteúdo XML genérico.
 - [ ] Não há uso de `XmlElement[]`, `XmlAnyElement`, `XmlAnyAttribute`, `object`, `dynamic` ou XML bruto para tags conhecidas.
+- [ ] Cada propriedade/tag foi analisada para identificar valores predefinidos.
+- [ ] Enums existentes em `Enums.cs` e no projeto foram reaproveitados quando compatíveis.
+- [ ] Novos enums foram criados para domínios fechados ainda inexistentes.
+- [ ] Tags com domínio fechado não ficaram como primitivo sem justificativa.
 - [ ] Código do projeto principal continua compatível com C# 7.3 e `netstandard2.0`.
 - [ ] Estrutura reflete fielmente schemas/XMLs de referência.
 - [ ] Atributos XML foram aplicados corretamente.
@@ -366,6 +403,9 @@ Estruturas implementadas:
 - ...
 
 Reaproveitamento de código:
+- ...
+
+Enums reutilizados/criados:
 - ...
 
 XSDs analisados:
