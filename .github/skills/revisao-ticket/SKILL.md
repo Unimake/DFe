@@ -35,6 +35,7 @@ Se o número do ticket não for informado, peça somente essa informação.
 4. Levante arquivos, métodos, classes, XMLs, schemas e testes alterados pelo ticket.
 5. Compare achados intermediários com o estado final após todos os commits do ticket.
 6. Reporte somente problemas que ainda permanecem no resultado final.
+7. Se não houver nenhum arquivo de código alterado pelo ticket, responda com o aviso específico definido em "Sem código alterado".
 
 Comandos de referência:
 
@@ -205,6 +206,14 @@ Se nenhum problema concreto permanecer após a análise consolidada, responda so
 
 ```text
 Não encontramos falhas.
+```
+
+### Sem código alterado
+
+Se o ticket não tiver nenhum código alterado associado aos commits encontrados, responda somente:
+
+```text
+Não encontramos códigos alterados para o ticket informado.
 ```
 
 ### Com problemas
