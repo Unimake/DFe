@@ -6752,6 +6752,22 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region IndicativoSimLetra
+
+    /// <summary>
+    /// Indicativo Sim (S)
+    /// </summary>
+    public enum IndicativoSimLetra
+    {
+        /// <summary>
+        /// Sim
+        /// </summary>
+        [XmlEnum("S")]
+        Sim = 1
+    }
+
+    #endregion
+
     #region SimNaoOpcionalLetra
 
     /// <summary>
