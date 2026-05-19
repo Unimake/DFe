@@ -29,15 +29,6 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
-        [XmlElement("verAplic")]
-        public string VerAplic { get; set; }
-
-        [XmlElement("cStat")]
-        public int CStat { get; set; }
-
-        [XmlElement("xMotivo")]
-        public string XMotivo { get; set; }
-
         [XmlIgnore]
         public UFBrasil CUF { get; set; }
 
@@ -48,14 +39,14 @@ namespace Unimake.Business.DFe.Xml.NFGas
             set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
-        [XmlElement("dhRecbto")]
-        public string DhRecbto { get; set; }
+        [XmlElement("verAplic")]
+        public string VerAplic { get; set; }
 
-        [XmlElement("chNFGas")]
-        public string ChNFGas { get; set; }
+        [XmlElement("cStat")]
+        public int CStat { get; set; }
 
-        [XmlElement("nProt")]
-        public string NProt { get; set; }
+        [XmlElement("xMotivo")]
+        public string XMotivo { get; set; }
 
         [XmlElement("protNFGas")]
         public ProtNFGas ProtNFGas { get; set; }
