@@ -1,6 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<nfse:ConsultarLoteDpsEnvio xmlns:nfse="http://www.fiorilli.com.br/nfse-nacional" xmlns:nfse1="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
-	<nfse:CNPJ>99999999999999</nfse:CNPJ>
-	<nfse:IM>999999</nfse:IM>
-	<nfse:Protocolo>1234567890</nfse:Protocolo>
-</nfse:ConsultarLoteDpsEnvio>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.fiorilli.com.br/nfse-nacional">
+	<soapenv:Header/>
+	<soapenv:Body>
+		<nfse:ConsultarNfseEnvio>
+			<!--Optional:-->
+			<nfse:CNPJ>?</nfse:CNPJ>
+			<!--Optional:-->
+			<nfse:CPF>?</nfse:CPF>
+			<!--Optional:-->
+			<nfse:IM>?</nfse:IM>
+			<!--Optional:-->
+			<nfse:ChaveNFSe>?</nfse:ChaveNFSe>
+			<!--Optional:-->
+			<nfse:IdDPS>?</nfse:IdDPS>
+			<!--Optional:-->
+			<nfse:NumeroDPS>?</nfse:NumeroDPS>
+			<!--Optional:-->
+			<nfse:SerieDPS>?</nfse:SerieDPS>
+		</nfse:ConsultarNfseEnvio>
+	</soapenv:Body>
+</soapenv:Envelope>

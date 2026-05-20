@@ -47,10 +47,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     else
                     {
                         var algorithmType = Configuracoes.SignatureAlgorithmType;
-                        if (Configuracoes.AssinaCanonicalizacaoExclusiva)
-                        {
-                            algorithmType = AlgorithmType.Sha256;
-                        }
+                        
                         AssinaturaDigital.Assinar(ConteudoXML, tagAssinatura, tagAtributoID, Configuracoes.CertificadoDigital, algorithmType, true, "", true, Configuracoes.AssinaCanonicalizacaoExclusiva);
 
                         AjustarXMLAposAssinado();
