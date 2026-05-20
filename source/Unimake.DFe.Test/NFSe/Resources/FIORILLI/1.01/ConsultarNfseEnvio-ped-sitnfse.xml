@@ -1,0 +1,16 @@
+<ConsultarNfseEnvio>
+	<!--Optional:-->
+	<CNPJ>?</CNPJ>
+	<!--Optional:-->
+	<CPF>?</CPF>
+	<!--Optional:-->
+	<IM>?</IM>
+	<!--Optional:-->
+	<ChaveNFSe>?</ChaveNFSe>
+	<!--Optional:-->
+	<IdDPS>?</IdDPS>
+	<!--Optional:-->
+	<NumeroDPS>?</NumeroDPS>
+	<!--Optional:-->
+	<SerieDPS>?</SerieDPS>
+</ConsultarNfseEnvio>
