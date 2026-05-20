@@ -439,6 +439,7 @@
 		<None Remove="Servicos\Config\NFSe\CandeiasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoinhasSC.xml" />
+		<None Remove="Servicos\Config\NFSe\CapelaDeSantanaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CarapicuibaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CarazinhoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CariacicaES.xml" />
@@ -1564,6 +1565,7 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BuritisRO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CapelaDeSantanaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EldouradoDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaporeRS.xml" />
 	</ItemGroup>
