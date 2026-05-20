@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.05.18.1618</AssemblyVersion>
-		<FileVersion>2026.05.18.1618</FileVersion>
+		<AssemblyVersion>2026.05.20.1126</AssemblyVersion>
+		<FileVersion>2026.05.20.1126</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -439,6 +439,7 @@
 		<None Remove="Servicos\Config\NFSe\CandeiasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoinhasSC.xml" />
+		<None Remove="Servicos\Config\NFSe\CapelaDeSantanaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CarapicuibaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CarazinhoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CariacicaES.xml" />
@@ -1564,6 +1565,7 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BuritisRO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CapelaDeSantanaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EldouradoDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaporeRS.xml" />
 	</ItemGroup>

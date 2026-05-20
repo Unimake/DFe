@@ -2303,4 +2303,10 @@
 		<ArqConfig>TrindadeGO.xml</ArqConfig>
 		<PadraoNFSe>CENTI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4304689">
+		<Nome>Capela de Santana - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CapelaDeSantanaRS.xml</ArqConfig>
+		<PadraoNFSe>DBSELLER</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
