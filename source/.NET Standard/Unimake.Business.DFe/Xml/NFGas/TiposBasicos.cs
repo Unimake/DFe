@@ -22,6 +22,12 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
         [XmlElement("infProt")]
         public InfProtNFGas InfProt { get; set; }
+
+        [XmlElement("infFisco")]
+        public InfFisco InfFisco { get; set; }
+
+        [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public Signature Signature { get; set; }
     }
 
 #if INTEROP
@@ -31,6 +37,9 @@ namespace Unimake.Business.DFe.Xml.NFGas
 #endif
     public class InfProtNFGas
     {
+        [XmlAttribute(AttributeName = "Id", DataType = "ID")]
+        public string Id { get; set; }
+
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
@@ -147,5 +156,9 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
         [XmlElement("nProt")]
         public string NProt { get; set; }
+
+        public bool ShouldSerializeTpEvento() => TpEvento != (TipoEventoNFGas)0;
+
+        public bool ShouldSerializeNSeqEvento() => NSeqEvento > 0;
     }
 }

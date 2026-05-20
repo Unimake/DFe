@@ -356,7 +356,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string CompFP { get; set; }
 
         [XmlElement("indDecTerc")]
-        public string IndDecTerc { get; set; }
+#if INTEROP
+        public IndicativoSimLetra IndDecTerc { get; set; } = (IndicativoSimLetra)(-1);
+#else
+        public IndicativoSimLetra? IndDecTerc { get; set; }
+#endif
 
         [XmlIgnore]
         public double VlrRendBruto { get; set; }
@@ -390,9 +394,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         [XmlElement("indRRA")]
 #if INTEROP
-        public SimNaoLetra IndRRA { get; set; } = (SimNaoLetra)(-1);
+        public IndicativoSimLetra IndRRA { get; set; } = (IndicativoSimLetra)(-1);
 #else
-        public SimNaoLetra? IndRRA { get; set; }
+        public IndicativoSimLetra? IndRRA { get; set; }
 #endif
 
         [XmlElement("indFciScp")]
@@ -579,7 +583,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeCompFP() => !string.IsNullOrEmpty(CompFP);
 
-        public bool ShouldSerializeIndDecTerc() => !string.IsNullOrEmpty(IndDecTerc);
+#if INTEROP
+        public bool ShouldSerializeIndDecTerc() => IndDecTerc != (IndicativoSimLetra)(-1);
+#else
+        public bool ShouldSerializeIndDecTerc() => IndDecTerc != null;
+#endif
 
         public bool ShouldSerializeVlrRendBrutoField() => VlrRendBruto > 0;
 
@@ -588,7 +596,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSerializeVlrIRField() => VlrIR > 0;
 
 #if INTEROP
-        public bool ShouldSerializeIndRRA() => IndRRA != (SimNaoLetra)(-1);
+        public bool ShouldSerializeIndRRA() => IndRRA != (IndicativoSimLetra)(-1);
 #else
         public bool ShouldSerializeIndRRA() => IndRRA != null;
 #endif
@@ -626,7 +634,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class DetDed
     {
         [XmlElement("indTpDeducao")]
-        public IndicativoTipoDeducao IndTpDeducao { get; set; }
+        public int IndTpDeducao { get; set; }
 
         [XmlIgnore]
         public double VlrDeducao { get; set; }
@@ -763,7 +771,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class RendIsento
     {
         [XmlElement("tpIsencao")]
-        public TipoIsencao TpIsencao { get; set; }
+        public int TpIsencao { get; set; }
 
         [XmlIgnore]
         public double VlrIsento { get; set; }
@@ -935,7 +943,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class DedSusp
     {
         [XmlElement("indTpDeducao")]
-        public IndicativoTipoDeducao IndTpDeducao { get; set; }
+        public int IndTpDeducao { get; set; }
 
         [XmlIgnore]
         public double VlrDedSusp { get; set; }
@@ -1176,7 +1184,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string NifBenef { get; set; }
 
         [XmlElement("frmTribut")]
-        public string FrmTribut { get; set; }
+        public FormaDeTributacao FrmTribut { get; set; }
 
         /// <summary>
         /// Endereço do beneficiário residente ou domiciliado no exterior

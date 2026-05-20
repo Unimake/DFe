@@ -63,6 +63,17 @@ Não invente um modelo novo. Gere ou ajuste as classes para que os XMLs reais do
 
 O round-trip não pode ser obtido por serialização genérica. As classes devem modelar explicitamente as tags dos XSDs, como é feito em `NFCom`.
 
+## Regra de ouro: XSD é contrato
+
+Use o XSD como contrato técnico principal da serialização. Exemplos XML, recursos de teste e classes de outros DF-e ajudam a entender o padrão, mas podem estar incompletos, antigos ou inválidos.
+
+Quando houver divergência:
+
+- se o XML de exemplo contrariar o XSD, não deforme a classe para aceitar o exemplo inválido;
+- se uma classe parecida de outro DF-e tiver estrutura diferente, siga o XSD do documento atual;
+- se um teste existente falhar porque o recurso XML não obedece ao XSD, registre o problema do recurso separadamente e corrija a classe conforme o schema;
+- não copie campos de protocolos, retornos, eventos ou grupos por analogia sem confirmar a posição exata no XSD.
+
 ## Antes de implementar
 
 1. Localize e leia a pasta de documentação informada pelo usuário.
@@ -131,6 +142,36 @@ Durante a implementação:
 
 Se algum XSD aplicável não puder ser implementado por falta de informação, não ignore silenciosamente. Informe o bloqueio e peça o arquivo, exemplo ou regra faltante.
 
+## Extração obrigatória da árvore XSD
+
+Antes de criar ou alterar classes, extraia a estrutura real dos XSDs aplicáveis, seguindo `xs:include`, `xs:import`, tipos globais e tipos locais. Prefira análise estruturada do XML/XSD a leitura por aproximação textual.
+
+Monte uma tabela de conferência para cada schema principal:
+
+```text
+XSD raiz:
+Classe raiz:
+Tipo raiz:
+Namespace:
+Filhos em xs:sequence/xs:choice, na ordem:
+Atributos:
+Tipos complexos reutilizados:
+Tipos simples/enumerations:
+Classe/propriedade C# correspondente:
+```
+
+Ao preencher essa tabela, confira obrigatoriamente:
+
+- ordem exata de `xs:sequence`;
+- alternativas de `xs:choice`;
+- `minOccurs` e `maxOccurs`;
+- atributos `use="required"` e opcionais;
+- elementos que são grupos diretos versus elementos dentro de subgrupos;
+- elementos de retorno que pertencem ao protocolo interno, e não ao XML raiz;
+- elementos de assinatura e conteúdo aberto declarado com `xs:any`.
+
+Não comece a codificar uma classe raiz enquanto a árvore do XSD correspondente não estiver clara. Essa etapa deve evitar erros como criar wrapper inexistente, achatar grupo aninhado, transformar atributo em elemento ou colocar campo de protocolo no retorno raiz.
+
 ## Padrões do projeto
 
 ### Compatibilidade
@@ -178,6 +219,15 @@ Use os atributos de serialização conforme o schema:
 
 Preserve nomes, case, ordem lógica e hierarquia do XML. Não traduza tag fiscal.
 
+Além disso:
+
+- propriedades C# devem aparecer na mesma ordem dos filhos em `xs:sequence`;
+- atributos do XSD devem ser `[XmlAttribute]`, nunca `[XmlElement]`;
+- elementos do XSD devem ser `[XmlElement]`, nunca `[XmlAttribute]`;
+- `xs:choice` deve ser modelado como alternativas reais, sem criar wrapper inexistente;
+- grupos aninhados devem permanecer aninhados na classe, sem achatar propriedades para o nível errado;
+- não invente grupos por analogia com outro documento quando o XSD atual não declarar o grupo.
+
 ### Proibição de serialização genérica
 
 Não use atalhos genéricos para representar conteúdo que está definido no XSD.
@@ -209,6 +259,17 @@ Exemplos típicos:
 - data/hora serializada em string com formato específico;
 - decimal com cultura invariável;
 - chave calculada a partir de dados do documento.
+
+Para campos opcionais (`minOccurs="0"`) com tipo valor, enum ou número:
+
+- não serialize valor default como se fosse informado;
+- use `ShouldSerialize...()` quando o padrão local permitir omitir o campo com segurança;
+- use propriedade `...Specified` quando o valor default também puder ser válido;
+- para enum opcional, use sentinela existente do projeto ou `ShouldSerialize...()` coerente com o domínio;
+- para inteiro opcional em que `0` não é valor válido, `ShouldSerialize...() => Campo > 0` é aceitável quando seguir o padrão local;
+- strings opcionais podem ser omitidas por `null`, mas use `ShouldSerialize...()` se string vazia não deve sair no XML.
+
+Não adicione `ShouldSerialize...()` em campo obrigatório. A omissão condicional deve refletir o XSD.
 
 ### Enumeradores obrigatórios
 
@@ -310,6 +371,13 @@ Use caminhos relativos no padrão:
 
 Inclua recursos XML realistas em `Resources` somente quando necessário e quando houver material confiável.
 
+Quando um teste de round-trip falhar, valide a causa contra o XSD antes de ajustar a classe:
+
+- se a classe serializa fora da ordem, com nível errado, atributo como elemento ou opcional indevido, corrija a classe;
+- se o recurso XML tiver campos inexistentes no XSD, campos no nível errado ou estrutura antiga, reporte o recurso inválido;
+- não aceite `InnerText` igual como prova suficiente se a estrutura XML estiver errada;
+- quando possível, valide o XML gerado contra o XSD do schema principal.
+
 ## Execução de testes
 
 Não rode toda a suíte por padrão.
@@ -349,6 +417,10 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - Não ignorar XSD aplicável sem registrar o motivo no relatório final.
 - Não colocar todas as classes raiz de XSDs diferentes em um único arquivo.
 - Não seguir XSDs encontrados fora da pasta de XSDs informada sem confirmação do usuário.
+- Não criar wrapper, grupo intermediário ou propriedade achatada sem correspondência direta no XSD.
+- Não transformar atributo do XSD em elemento XML, ou elemento do XSD em atributo XML.
+- Não serializar campo opcional de tipo valor apenas porque o default do C# existe.
+- Não mover para o XML raiz campos que pertencem a protocolo, evento interno, `infProt`, `infEvento` ou outro grupo aninhado.
 - Não usar `XmlElement[]`, `XmlAnyElement`, `XmlAnyAttribute`, `object`, `dynamic` ou XML bruto como substituto de propriedades explícitas para tags conhecidas no XSD.
 - Não deixar tag com valores predefinidos como `string`, `int` ou outro primitivo sem antes verificar e justificar se enum existente ou novo enum deveria ser usado.
 - Não criar enum novo sem antes pesquisar enum compatível em `Enums.cs` e nos tipos existentes do projeto.
@@ -360,11 +432,19 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - [ ] A pasta de XSDs informada foi analisada.
 - [ ] Todos os XSDs da pasta de XSDs foram inventariados.
 - [ ] Todos os XSDs aplicáveis foram implementados ou tiveram bloqueio/justificativa registrado.
+- [ ] Includes/imports/tipos globais dos XSDs aplicáveis foram seguidos.
+- [ ] Foi montada conferência de XSD raiz, tipo raiz, filhos, atributos, cardinalidade e classe/propriedade C#.
 - [ ] PDFs/manuais, schemas e exemplos XML relevantes foram considerados quando disponíveis.
 - [ ] Classes seguem os padrões de `NFCom`, `NFe` e DFe semelhante.
 - [ ] Cada XSD principal aplicável tem classe raiz e arquivo `.cs` próprios.
 - [ ] As tags dos XSDs foram modeladas com propriedades explícitas, não com conteúdo XML genérico.
 - [ ] Não há uso de `XmlElement[]`, `XmlAnyElement`, `XmlAnyAttribute`, `object`, `dynamic` ou XML bruto para tags conhecidas.
+- [ ] A ordem das propriedades segue `xs:sequence`.
+- [ ] `xs:choice` foi modelado como alternativas reais.
+- [ ] Atributos do XSD foram implementados com `[XmlAttribute]`.
+- [ ] Grupos aninhados não foram achatados no nível errado.
+- [ ] Campos opcionais de tipo valor/enum/número não serializam default indevido.
+- [ ] Campos de protocolo/retorno/evento foram conferidos no grupo correto do XSD.
 - [ ] Cada propriedade/tag foi analisada para identificar valores predefinidos.
 - [ ] Enums existentes em `Enums.cs` e no projeto foram reaproveitados quando compatíveis.
 - [ ] Novos enums foram criados para domínios fechados ainda inexistentes.
