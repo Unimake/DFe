@@ -29,6 +29,7 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 EncriptaTagAssinatura = configuracoes.EncriptaTagAssinatura,
                 Servico = configuracoes.Servico,
                 TemCDATA = configuracoes.TemCDATA,
+                PrepararConexaoTLSAntesDoEnvio = configuracoes.PrepararConexaoTLSAntesDoEnvio,
                 Proxy = configuracoes.HasProxy
                     ? Proxy.DefinirServidor(configuracoes.ProxyAutoDetect, configuracoes.ProxyUser, configuracoes.ProxyPassword)
                     : null

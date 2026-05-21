@@ -25,6 +25,8 @@ namespace Unimake.Business.DFe.ConsumirServico.Contracts
 
         public bool Expect100Continue { get; set; }
 
+        public bool PrepararConexaoTLSAntesDoEnvio { get; set; }
+
         public X509Certificate2 Certificate { get; set; }
 
         public IWebProxy Proxy { get; set; }

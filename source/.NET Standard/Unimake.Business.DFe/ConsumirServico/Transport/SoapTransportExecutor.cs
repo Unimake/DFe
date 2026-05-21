@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Security;
-using System.Net.Sockets;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -13,7 +12,7 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
     internal sealed class SoapTransportExecutor
     {
         /// <summary>
-        /// Executa uma requisição SOAP com suporte a uma nova tentativa automática em falhas transitórias de handshake SSL/TLS.
+        /// Executa uma requisição SOAP.
         /// </summary>
         /// <param name="request">Configuração completa da requisição de transporte SOAP.</param>
         /// <returns>Retorno do transporte com status HTTP, conteúdo de resposta e exceção de rede quando aplicável.</returns>
@@ -23,16 +22,20 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(RetornoValidacao);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-            return ExecuteInternal(request, allowRetryOnSslHandshakeFailure: true);
+            if (request.PrepararConexaoTLSAntesDoEnvio)
+            {
+                PrepararConexaoTLS(request, allowRetryOnSslHandshakeFailure: true);
+            }
+
+            return ExecuteInternal(request);
         }
 
         /// <summary>
-        /// Executa internamente a chamada SOAP e realiza uma única nova tentativa quando a primeira falha por handshake SSL/TLS transitório.
+        /// Executa internamente a chamada SOAP.
         /// </summary>
         /// <param name="request">Configuração completa da requisição de transporte SOAP.</param>
-        /// <param name="allowRetryOnSslHandshakeFailure">Indica se uma nova tentativa pode ser realizada ao detectar falha de handshake SSL/TLS.</param>
         /// <returns>Retorno do transporte com status HTTP, conteúdo de resposta e exceção de rede quando aplicável.</returns>
-        private TransportResponse ExecuteInternal(TransportRequest request, bool allowRetryOnSslHandshakeFailure)
+        private TransportResponse ExecuteInternal(TransportRequest request)
         {
             var httpWebRequest = CreateHttpWebRequest(request);
 
@@ -50,10 +53,6 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
             try
             {
                 responsePost = (HttpWebResponse)httpWebRequest.GetResponse();
-            }
-            catch (WebException ex) when (allowRetryOnSslHandshakeFailure && IsSslHandshakeFailure(ex))
-            {
-                return ExecuteInternal(request, allowRetryOnSslHandshakeFailure: false);
             }
             catch (WebException ex)
             {
@@ -112,7 +111,40 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
         }
 
         /// <summary>
-        /// Verifica se a exceção de rede corresponde a uma falha de handshake SSL/TLS potencialmente transitória.
+        /// Prepara a conexão TLS com o mesmo certificado antes do envio SOAP real, sem transmitir o XML fiscal.
+        /// </summary>
+        /// <param name="request">Configuração completa da requisição de transporte SOAP.</param>
+        /// <param name="allowRetryOnSslHandshakeFailure">Indica se uma nova tentativa de preparação pode ser realizada ao detectar falha de handshake SSL/TLS.</param>
+        private void PrepararConexaoTLS(TransportRequest request, bool allowRetryOnSslHandshakeFailure)
+        {
+            var httpWebRequest = CreateHttpWebRequest(request);
+            httpWebRequest.Method = "HEAD";
+            httpWebRequest.ContentLength = 0;
+
+            try
+            {
+                using (var response = (HttpWebResponse)httpWebRequest.GetResponse())
+                {
+                }
+            }
+            catch (WebException ex) when (allowRetryOnSslHandshakeFailure && IsSslHandshakeFailure(ex))
+            {
+                PrepararConexaoTLS(request, allowRetryOnSslHandshakeFailure: false);
+            }
+            catch (WebException ex)
+            {
+                if (ex.Response != null)
+                {
+                    ex.Response.Dispose();
+                    return;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Verifica se a exceção de rede corresponde a uma falha de handshake SSL/TLS.
         /// </summary>
         /// <param name="webException">Exceção de rede retornada na tentativa de comunicação.</param>
         /// <returns>Retorna <c>true</c> quando o erro indica handshake SSL/TLS; caso contrário, <c>false</c>.</returns>
@@ -138,21 +170,6 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
                 return true;
             }
 
-            if (HasSslHandshakeMessage(webException))
-            {
-                return true;
-            }
-
-            if (webException.Response == null &&
-                (webException.Status == WebExceptionStatus.ReceiveFailure ||
-                 webException.Status == WebExceptionStatus.SendFailure ||
-                 webException.Status == WebExceptionStatus.ConnectFailure) &&
-                HasExceptionType<IOException>(webException) &&
-                HasExceptionType<SocketException>(webException))
-            {
-                return true;
-            }
-
             return false;
         }
 
@@ -167,29 +184,6 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
             while (exception != null)
             {
                 if (exception is TException)
-                {
-                    return true;
-                }
-
-                exception = exception.InnerException;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Verifica se a mensagem da exceção ou de qualquer exceção interna indica falha de handshake SSL/TLS.
-        /// </summary>
-        /// <param name="exception">Exceção raiz para análise textual da cadeia de mensagens.</param>
-        /// <returns>Retorna <c>true</c> quando encontrar mensagens típicas de falha SSL/TLS; caso contrário, <c>false</c>.</returns>
-        private bool HasSslHandshakeMessage(Exception exception)
-        {
-            while (exception != null)
-            {
-                if (!string.IsNullOrWhiteSpace(exception.Message) &&
-                    (exception.Message.IndexOf("SSL connection could not be established", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                     exception.Message.IndexOf("SSL", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                     exception.Message.IndexOf("TLS", StringComparison.OrdinalIgnoreCase) >= 0))
                 {
                     return true;
                 }

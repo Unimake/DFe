@@ -30,6 +30,7 @@ namespace Unimake.Business.DFe
         private string _Token;
         private Servico _Servico;
         private bool _TemCDATA;
+        private bool _PrepararConexaoTLSAntesDoEnvio;
 
         #endregion Private Fields
 
@@ -43,6 +44,15 @@ namespace Unimake.Business.DFe
         {
             get => _TemCDATA;
             set => _TemCDATA = value;
+        }
+
+        /// <summary>
+        /// Prepara a conexão TLS com o certificado digital antes do envio SOAP real, sem transmitir o XML fiscal.
+        /// </summary>
+        public bool PrepararConexaoTLSAntesDoEnvio
+        {
+            get => _PrepararConexaoTLSAntesDoEnvio;
+            set => _PrepararConexaoTLSAntesDoEnvio = value;
         }
 
 

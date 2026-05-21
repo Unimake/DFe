@@ -989,11 +989,17 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Define os sinalizadores de armazenamento utilizados ao importar certificados A1 a partir de arquivo PFX ou Base64,
         /// controlando onde a chave privada será persistida e como ela poderá ser reutilizada durante a comunicação TLS.
-        /// O valor padrão é <see cref="X509KeyStorageFlags.MachineKeySet"/> | <see cref="X509KeyStorageFlags.PersistKeySet"/> | <see cref="X509KeyStorageFlags.Exportable"/>,
-        /// podendo ser alterado pelo desenvolvedor para atender restrições de ambiente, permissões ou estratégia de segurança.
+        /// O valor padrão preserva o comportamento anterior, deixando o runtime definir o armazenamento da chave.
+        /// Pode ser alterado pelo desenvolvedor para atender restrições de ambiente, permissões ou estratégia de segurança.
         /// </summary>
         public X509KeyStorageFlags CertificadoKeyStorageFlags { get; set; } =
-            X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.Exportable;
+            X509KeyStorageFlags.DefaultKeySet;
+
+        /// <summary>
+        /// Prepara a conexão TLS com o certificado digital antes do envio SOAP real, sem transmitir o XML fiscal.
+        /// Útil para ambientes em que o primeiro handshake TLS do processo falha ao utilizar certificados específicos.
+        /// </summary>
+        public bool PrepararConexaoTLSAntesDoEnvio { get; set; } = false;
 
         /// <summary>
         /// Certificado digital

@@ -21,7 +21,8 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 Certificate = certificado,
                 UseCertificate = soap.UsaCertificadoDigital,
                 ResponseEncoding = soap.EncodingRetorno,
-                Expect100Continue = false
+                Expect100Continue = false,
+                PrepararConexaoTLSAntesDoEnvio = soap.PrepararConexaoTLSAntesDoEnvio
             };
 
             request.Headers.Add("SOAPAction", soap.ActionWeb);
