@@ -37,7 +37,7 @@ FUNCTION NACIONALConsultarNFSe()
 	  
 	  IF oConsultarNfse.Result.InfNFSe.CStat == 100 &&NFSe Autorizada
 	     MESSAGEBOX(oConsultarNfse.Result.InfNFSe.Id)
-  	     MESSAGEBOX(oConsultarNfse.Result.InfNFSe.NDFSe)
+  	     MESSAGEBOX(oConsultarNfse.Result.InfNFSe.NNFSe)
   	     MESSAGEBOX(oConsultarNfse.Result.InfNFSe.DPS.InfDPS.Id)  	     
 	  ENDIF  
     
