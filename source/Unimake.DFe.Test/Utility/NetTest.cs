@@ -39,7 +39,7 @@ namespace Unimake.DFe.Test.Utility
             }
 
             testUrls = new string[] {
-                "http://www.unimake.com",
+                "4.4.4.4",
                 "3.3.3.3",
             };
 
