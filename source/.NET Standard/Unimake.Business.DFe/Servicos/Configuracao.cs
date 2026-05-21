@@ -64,7 +64,10 @@ namespace Unimake.Business.DFe.Servicos
 
             if (!string.IsNullOrWhiteSpace(CertificadoArquivo) && !string.IsNullOrWhiteSpace(CertificadoSenha))
             {
-                _certificadoDigital = new CertificadoDigital().CarregarCertificadoDigitalA1(CertificadoArquivo, CertificadoSenha);
+                _certificadoDigital = new CertificadoDigital().CarregarCertificadoDigitalA1(
+                    CertificadoArquivo,
+                    CertificadoSenha,
+                    CertificadoKeyStorageFlags);
             }
 
             #endregion
@@ -75,7 +78,10 @@ namespace Unimake.Business.DFe.Servicos
             {
                 var buffer = Convert.FromBase64String(CertificadoBase64);
 
-                _certificadoDigital = new X509Certificate2(buffer, CertificadoSenha);
+                _certificadoDigital = new X509Certificate2(
+                    buffer,
+                    CertificadoSenha,
+                    CertificadoKeyStorageFlags);
             }
 
             #endregion
@@ -979,6 +985,15 @@ namespace Unimake.Business.DFe.Servicos
         /// Senha de instalação/uso do certificado digital A1
         /// </summary>
         public string CertificadoSenha { get; set; }
+
+        /// <summary>
+        /// Define os sinalizadores de armazenamento utilizados ao importar certificados A1 a partir de arquivo PFX ou Base64,
+        /// controlando onde a chave privada será persistida e como ela poderá ser reutilizada durante a comunicação TLS.
+        /// O valor padrão é <see cref="X509KeyStorageFlags.MachineKeySet"/> | <see cref="X509KeyStorageFlags.PersistKeySet"/> | <see cref="X509KeyStorageFlags.Exportable"/>,
+        /// podendo ser alterado pelo desenvolvedor para atender restrições de ambiente, permissões ou estratégia de segurança.
+        /// </summary>
+        public X509KeyStorageFlags CertificadoKeyStorageFlags { get; set; } =
+            X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.Exportable;
 
         /// <summary>
         /// Certificado digital
