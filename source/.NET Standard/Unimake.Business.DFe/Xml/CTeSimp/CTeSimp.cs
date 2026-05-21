@@ -363,10 +363,10 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         public string RetiraField { get; set; }
 
         [XmlIgnore]
-        public SimNao Retira
+        public SimNao01 Retira
         {
-            get => (RetiraField.Equals("0") ? SimNao.Sim : SimNao.Nao);
-            set => RetiraField = (value == SimNao.Sim ? "0" : "1");
+            get => (RetiraField.Equals("0") ? SimNao01.Sim : SimNao01.Nao);
+            set => RetiraField = (value == SimNao01.Sim ? "0" : "1");
         }
 
         [XmlElement("xDetRetira")]

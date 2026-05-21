@@ -157,7 +157,7 @@ namespace Unimake.DFe.Test.CTe
                         TpServ = TipoServicoCTe.Normal,
                         UFIni = ufBrasil,
                         UFFim = ufBrasil,
-                        Retira = SimNao.Nao,
+                        Retira = SimNao01.Nao,
                         XDetRetira = "xDetRetira1"                        
                     },
                     Compl = new Compl
