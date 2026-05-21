@@ -1722,6 +1722,29 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region SimNao
+
+    /// <summary>
+    /// Sim ou Não (0 ou 1)
+    /// </summary>
+    public enum SimNao01
+    {
+        /// <summary>
+        /// 0 - Sim
+        /// </summary>
+        [XmlEnum("0")]
+        Sim = 0,
+
+        /// <summary>
+        /// 0 - Não
+        /// </summary>
+        [XmlEnum("1")]
+        Nao = 1
+    }
+
+    #endregion
+
+
     #region TipoOperacao
 
     /// <summary>
@@ -18321,7 +18344,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("7")]
         PorFaixa = 7
-    }    
+    }
 
     /// <summary>
     /// Tipo de evento da NFGas
