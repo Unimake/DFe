@@ -4,9 +4,9 @@
   <Servicos ID="NFCe">
     <Autorizacao versao="4.00">
       <UrlQrCodeHomologacao>http://hom.nfce.set.rn.gov.br/consultarNFCe.aspx</UrlQrCodeHomologacao>
-      <UrlQrCodeProducao>http://nfce.set.rn.gov.br/consultarNFCe.aspx</UrlQrCodeProducao>
-      <UrlChaveHomologacao>www.set.rn.gov.br/nfce/consulta</UrlChaveHomologacao>
-      <UrlChaveProducao>www.set.rn.gov.br/nfce/consulta</UrlChaveProducao>
+      <UrlQrCodeProducao>https://nfce.sefaz.rn.gov.br/consultarNFCe.aspx</UrlQrCodeProducao>
+      <UrlChaveHomologacao>www.set.rn.gov.br/nfce/consulta</UrlChaveHomologacao>      
+      <UrlChaveProducao>https://nfce.sefaz.rn.gov.br/portalDFE/NFCe/ConsultaNFCe.aspx</UrlChaveProducao>
     </Autorizacao>
   </Servicos>
 </Configuracoes>
