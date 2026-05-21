@@ -17539,6 +17539,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("6")]
         SociedadeProfissionais = 6,
+
+        /// <summary>
+        /// 9 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9,
     }
     #endregion Tipo de regimes especiais de tributação NFS-e NACIONAL
 

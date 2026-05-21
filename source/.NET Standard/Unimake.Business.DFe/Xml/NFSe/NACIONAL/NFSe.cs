@@ -105,7 +105,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// Número da NFS-e.
         /// </summary>
         [XmlElement("nNFSe")]
+#if INTEROP
+        public int NNFSe { get; set; }
+#else
         public long NNFSe { get; set; }
+#endif
 
         /// <summary>
         /// Código IBGE do município de incidência do ISSQN (quando aplicável).
@@ -461,7 +465,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// Código do município (IBGE).
         /// </summary>
         [XmlElement("cMun")]
+#if INTEROP
+        public int CMun { get; set; }
+#else
         public long CMun { get; set; }
+#endif
 
         /// <summary>
         /// Sigla da UF.
@@ -613,7 +621,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// Código da localidade de incidência.
         /// </summary>
         [XmlElement("cLocalidadeIncid")]
+#if INTEROP
+        public int CLocalidadeIncid { get; set; }
+#else
         public long CLocalidadeIncid { get; set; }
+#endif
 
         /// <summary>
         /// Descrição da localidade de incidência.
