@@ -319,6 +319,436 @@ namespace TreinamentoDLL
             }
         }
 
+        private void EnviarEventoNFePorDetalhamento(XmlNFe.EventoDetalhe detEvento, TipoEventoNFe tipoEvento, string descricaoEvento)
+        {
+            var xml = new XmlNFe.EnvEvento
+            {
+                Versao = "1.00",
+                IdLote = "000000000000001",
+                Evento = new List<XmlNFe.Evento>
+                {
+                    new XmlNFe.Evento
+                    {
+                        Versao = "1.00",
+                        InfEvento = new XmlNFe.InfEvento(detEvento)
+                        {
+                            COrgao = UFBrasil.SVRS,
+                            ChNFe = "41190806117473000150550010000579131943463890",
+                            CNPJ = "06117473000150",
+                            DhEvento = DateTime.Now,
+                            TpEvento = tipoEvento,
+                            NSeqEvento = 1,
+                            VerEvento = "1.00",
+                            TpAmb = TipoAmbiente.Homologacao
+                        }
+                    }
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFe,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            try
+            {
+                var recepcaoEvento = new ServicoNFe.RecepcaoEvento(xml, configuracao);
+                recepcaoEvento.Executar();
+
+                if (recepcaoEvento.Result.CStat == 128)
+                {
+                    switch (recepcaoEvento.Result.RetEvento[0].InfEvento.CStat)
+                    {
+                        case 135:
+                        case 155:
+                            recepcaoEvento.GravarXmlDistribuicao(@"d:\testenfe");
+                            MessageBox.Show(descricaoEvento + " enviado com sucesso.");
+                            break;
+
+                        default:
+                            MessageBox.Show(descricaoEvento + ": " + recepcaoEvento.Result.RetEvento[0].InfEvento.XMotivo);
+                            break;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(descricaoEvento + ": " + recepcaoEvento.Result.XMotivo);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(descricaoEvento + ": " + ex.Message);
+            }
+        }
+
+        private void BtnEventoCancelamentoDeEvento_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoCancelamentoDeEvento
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                VerAplic = "1.00",
+                TpEventoAut = TipoEventoNFe.InformacaoEfetivoPagamentoIntegral,
+                NProtEvento = "141190000660363"
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.CancelamentoDeEvento, "Cancelamento de Evento");
+        }
+
+        private void BtnEventoInformacaoEfetivoPagamentoIntegral_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoInformacaoEfetivoPagamentoIntegral
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaEmitente,
+                VerAplic = "1.00",
+                IndQuitacao = 1
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.InformacaoEfetivoPagamentoIntegral, "Informação de efetivo pagamento integral");
+        }
+
+        private void BtnEventoImportacaoALCZFMNaoConvertidaIsencao_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoImportacaoALCZFMNaoConvertidaIsencao
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaEmitente,
+                VerAplic = "1.00",
+                GConsumo = new List<XmlNFe.GConsumo>
+                {
+                    new XmlNFe.GConsumo
+                    {
+                        NItem = 1,
+                        VIBS = 10.00,
+                        VCBS = 5.00,
+                        GControleEstoque = new XmlNFe.GControleEstoque
+                        {
+                            Qtde = 1.0000,
+                            Unidade = "UN"
+                        }
+                    }
+                }
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.ImportacaoALCZFMNaoConvertidaIsencao, "Importação ALC/ZFM não convertida em isenção");
+        }
+
+        private void BtnEventoAtualizacaoDataPrevisaoEntrega_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoAtualizacaoDataPrevisaoEntrega
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaEmitente,
+                VerAplic = "1.00",
+                DPrevEntrega = DateTime.Now.AddDays(5)
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.AtualizacaoDataPrevisaoEntrega, "Atualização da data de previsão de entrega");
+        }
+
+        private void BtnEventoAceiteDebitoApuracaoEmissaoNotaCredito_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoAceiteDebitoApuracaoEmissaoNotaCredito
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaEmitente,
+                VerAplic = "1.00",
+                IndAceitacao = SimNao.Sim
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.AceiteDebitoApuracaoEmissaoNotaCredito, "Aceite de débito na apuração por emissão de nota de crédito");
+        }
+
+        private void BtnEventoManifestacaoPedidoTransferenciaCreditoIBSOperacaoSucessao_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoManifestacaoPedidoTransferenciaCreditoIBSOperacaoSucessao
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaSucessora,
+                VerAplic = "1.00",
+                IndAceitacao = SimNao.Sim
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.ManifestacaoPedidoTransferenciaCreditoIBSOperacaoSucessao, "Manifestação sobre pedido de transferência de crédito IBS");
+        }
+
+        private void BtnEventoManifestacaoPedidoTransferenciaCreditoCBSOperacaoSucessao_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoManifestacaoPedidoTransferenciaCreditoCBSOperacaoSucessao
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaSucessora,
+                VerAplic = "1.00",
+                IndAceitacao = SimNao.Sim
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.ManifestacaoPedidoTransferenciaCreditoCBSOperacaoSucessao, "Manifestação sobre pedido de transferência de crédito CBS");
+        }
+
+        private void BtnEventoManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.Fisco,
+                VerAplic = "1.00",
+                IndDeferimento = SimNao.Sim,
+                CMotivo = MotivoManifestacaoFisco.Outros,
+                XMotivo = "Manifestação de exemplo"
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.ManifestacaoFiscoPedidoTransferenciaCreditoIBSOperacaoSucessao, "Manifestação do fisco sobre pedido de transferência de crédito IBS");
+        }
+
+        private void BtnEventoManifestacaoFiscoPedidoTransferenciaCreditoCBSOperacaoSucessao_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoManifestacaoFiscoPedidoTransferenciaCreditoCBSOperacaoSucessao
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.Fisco,
+                VerAplic = "1.00",
+                IndDeferimento = SimNao.Sim,
+                CMotivo = MotivoManifestacaoFisco.Outros,
+                XMotivo = "Manifestação de exemplo"
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.ManifestacaoFiscoPedidoTransferenciaCreditoCBSOperacaoSucessao, "Manifestação do fisco sobre pedido de transferência de crédito CBS");
+        }
+
+        private void BtnEventoPerecimentoDuranteTransporteContratadoFornecedor_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoPerecimentoDuranteTransporteContratadoFornecedor
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaEmitente,
+                VerAplic = "1.00",
+                GPerecimento = new List<XmlNFe.GPerecimento>
+                {
+                    new XmlNFe.GPerecimento
+                    {
+                        NItem = 1,
+                        VIBS = 10.00,
+                        VCBS = 5.00,
+                        GControleEstoque = new XmlNFe.GControleEstoquePerecimento
+                        {
+                            QPerecimento = 1.0000,
+                            UPerecimento = "UN",
+                            VIBS = 10.00,
+                            VCBS = 5.00
+                        }
+                    }
+                }
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.PerecimentoDuranteTransporteContratadoFornecedor, "Perecimento durante transporte contratado pelo fornecedor");
+        }
+
+        private void BtnEventoFornecimentoNaoRealizadoComPagamentoAntecipado_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoFornecimentoNaoRealizadoComPagamentoAntecipado
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaEmitente,
+                VerAplic = "1.00",
+                GItemNaoFornecido = new List<XmlNFe.GItemNaoFornecido>
+                {
+                    new XmlNFe.GItemNaoFornecido
+                    {
+                        NItem = 1,
+                        VIBS = 10.00,
+                        VCBS = 5.00,
+                        GControleEstoque = new XmlNFe.GControleEstoqueFornecimento
+                        {
+                            QNaoFornecida = 1.0000,
+                            UNaoFornecida = "UN"
+                        }
+                    }
+                }
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.FornecimentoNaoRealizadoComPagamentoAntecipado, "Fornecimento não realizado com pagamento antecipado");
+        }
+
+        private void BtnEventoSolicitacaoApropriacaoCreditoPresumido_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoSolicitacaoApropriacaoCreditoPresumido
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaEmitente,
+                VerAplic = "1.00",
+                GCredPres = new List<XmlNFe.GCredPres>
+                {
+                    new XmlNFe.GCredPres
+                    {
+                        NItem = 1,
+                        VBC = 100.00,
+                        GIBS = new XmlNFe.GIBSGCredPres
+                        {
+                            CCredPres = "001",
+                            PCredPres = 10.00,
+                            VCredPres = 10.00
+                        },
+                        GCBS = new XmlNFe.GCBSGCredPres
+                        {
+                            CCredPres = "001",
+                            PCredPres = 5.00,
+                            VCredPres = 5.00
+                        }
+                    }
+                }
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.SolicitacaoApropriacaoCreditoPresumido, "Solicitação de apropriação de crédito presumido");
+        }
+
+        private void BtnEventoDestinacaoItemParaConsumoPessoal_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoDestinacaoItemParaConsumoPessoal
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaEmitente,
+                VerAplic = "1.00",
+                GConsumo = new List<XmlNFe.GConsumoAquisicao>
+                {
+                    new XmlNFe.GConsumoAquisicao
+                    {
+                        NItem = 1,
+                        VIBS = 10.00,
+                        VCBS = 5.00,
+                        GControleEstoque = new XmlNFe.GControleEstoqueAquisicao
+                        {
+                            QConsumo = 1.0000,
+                            UConsumo = "UN"
+                        },
+                        DFeReferenciado = new XmlNFe.DFeReferenciado
+                        {
+                            ChaveAcesso = "41190806117473000150550010000579131943463890",
+                            NItem = "1"
+                        }
+                    }
+                }
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.DestinacaoItemParaConsumoPessoal, "Destinação de item para consumo pessoal");
+        }
+
+        private void BtnEventoPerecimentoDuranteTransporteContratadoAdquirente_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoPerecimentoDuranteTransporteContratadoAdquirente
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaDestinataria,
+                VerAplic = "1.00",
+                GPerecimento = new List<XmlNFe.GPerecimentoAdquirente>
+                {
+                    new XmlNFe.GPerecimentoAdquirente
+                    {
+                        NItem = 1,
+                        VIBS = 10.00,
+                        VCBS = 5.00,
+                        GControleEstoque = new XmlNFe.GControleEstoquePerecimentoAdquirente
+                        {
+                            QPerecimento = 1.0000,
+                            UPerecimento = "UN"
+                        }
+                    }
+                }
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.PerecimentoDuranteTransporteContratadoAdquirente, "Perecimento durante transporte contratado pelo adquirente");
+        }
+
+        private void BtnEventoImobilizacaoItem_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoImobilizacaoItem
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaEmitente,
+                VerAplic = "1.00",
+                GImobilizacao = new List<XmlNFe.GImobilizacao>
+                {
+                    new XmlNFe.GImobilizacao
+                    {
+                        NItem = 1,
+                        VIBS = 10.00,
+                        VCBS = 5.00,
+                        GControleEstoque = new XmlNFe.GControleEstoqueImobilizacao
+                        {
+                            QImobilizado = 1.0000,
+                            UImobilizado = "UN"
+                        }
+                    }
+                }
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.ImobilizacaoItem, "Imobilização de item");
+        }
+
+        private void BtnEventoSolicitacaoApropriacaoCreditoCombustivel_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoSolicitacaoApropriacaoCreditoCombustivel
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaEmitente,
+                VerAplic = "1.00",
+                GConsumoComb = new List<XmlNFe.GConsumoComb>
+                {
+                    new XmlNFe.GConsumoComb
+                    {
+                        NItem = 1,
+                        VIBS = 10.00,
+                        VCBS = 5.00,
+                        GControleEstoque = new XmlNFe.GControleEstoqueConsumoComb
+                        {
+                            QComb = 1.0000,
+                            UComb = "LT"
+                        }
+                    }
+                }
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.SolicitacaoApropriacaoCreditoCombustivel, "Solicitação de apropriação de crédito de combustível");
+        }
+
+        private void BtnEventoSolicitacaoApropriacaoCreditoBensServicosAdquirente_Click(object sender, EventArgs e)
+        {
+            var detEvento = new XmlNFe.DetEventoSolicitacaoApropriacaoCreditoBensServicosAdquirente
+            {
+                Versao = "1.00",
+                COrgaoAutor = UFBrasil.PR,
+                TpAutor = TipoAutor.EmpresaDestinataria,
+                VerAplic = "1.00",
+                GCredito = new List<XmlNFe.GCredito>
+                {
+                    new XmlNFe.GCredito
+                    {
+                        NItem = 1,
+                        VCredIBS = 10.00,
+                        VCredCBS = 5.00
+                    }
+                }
+            };
+
+            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.SolicitacaoApropriacaoCreditoBensServicosAdquirente, "Solicitação de apropriação de crédito para bens e serviços do adquirente");
+        }
+
         private void BtnEnviarEventoCCe_Click(object sender, EventArgs e)
         {
             #region Exemplo de como criar o objeto do XML desserializando um XML já existente
