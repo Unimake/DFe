@@ -23,13 +23,16 @@
 
   <xs:element name="RetCancelamentoOperacaoTransporte">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
-        <xs:element name="DataCancelamento" type="TDataHora"/>
-        <xs:element name="Protocolo" type="TProtocolo"/>
-        <xs:element name="Codigo" type="TCodigoRetorno"/>
-        <xs:element name="Mensagem" type="xs:string"/>
-      </xs:sequence>
+      <xs:choice>
+        <xs:element name="temp" type="TTempErro"/>
+        <xs:sequence>
+          <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
+          <xs:element name="DataCancelamento" type="TDataHora"/>
+          <xs:element name="Protocolo" type="TProtocolo"/>
+          <xs:element name="Codigo" type="TCodigoRetorno"/>
+          <xs:element name="Mensagem" type="xs:string"/>
+        </xs:sequence>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
 </xs:schema>

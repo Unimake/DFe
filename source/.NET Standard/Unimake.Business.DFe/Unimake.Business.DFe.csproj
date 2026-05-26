@@ -3845,6 +3845,13 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\xmldsig-core-schema.xsd" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Remove="Servicos\Config\CIOT\AN.xml" />
+		<None Remove="Servicos\Config\CIOT\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\CIOT\AN.xml" />
+		<EmbeddedResource Include="Servicos\Config\CIOT\Config.xml" />
+	</ItemGroup>
+
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command="$(SolutionDir)Build.bat $(TargetPath) $(SolutionDir) $(OutputPath)" IgnoreExitCode="true" />
 	</Target>

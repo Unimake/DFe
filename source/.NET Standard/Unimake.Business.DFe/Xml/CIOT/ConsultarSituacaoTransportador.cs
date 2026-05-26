@@ -40,6 +40,9 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [XmlRoot("RetConsultarSituacaoTransportador", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
     public class RetConsultarSituacaoTransportador : XMLBase
     {
+        [XmlElement("temp")]
+        public TempCIOT Temp { get; set; }
+
         [XmlElement("CpfCnpjTransportador")]
         public string CpfCnpjTransportador { get; set; }
 
@@ -66,5 +69,10 @@ namespace Unimake.Business.DFe.Xml.CIOT
 
         [XmlElement("Codigo")]
         public string Codigo { get; set; }
+
+        public bool ShouldSerializeTemp() => Temp != null;
+        public bool ShouldSerializeRNTRCAtivo() => Temp == null;
+        public bool ShouldSerializeTipoTransportador() => Temp == null;
+        public bool ShouldSerializeEquiparadoTAC() => Temp == null;
     }
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuracoes>
+	<Servicos ID="CIOT">
+		<ConsultarSituacaoTransportador versao="1.00">
+			<Descricao>CIOT - Consultar situação do transportador</Descricao>
+			<RequestURIHomologacao>https://appservices-hml.antt.gov.br/pefServices/api/ConsultarSituacaoTransportador</RequestURIHomologacao>
+			<RequestURIProducao>https://appservices.antt.gov.br/pefServices/api/ConsultarSituacaoTransportador</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<SchemaArquivo>consultarSituacaoTransportador_v1.00.xsd</SchemaArquivo>
+		</ConsultarSituacaoTransportador>
+		<ConsultarFrotaTransportador versao="1.00">
+			<Descricao>CIOT - Consultar frota do transportador</Descricao>
+			<RequestURIHomologacao>https://appservices-hml.antt.gov.br/pefServices/api/ConsultarFrotaTransportador</RequestURIHomologacao>
+			<RequestURIProducao>https://appservices.antt.gov.br/pefServices/api/ConsultarFrotaTransportador</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<SchemaArquivo>consultarFrotaTransportador_v1.00.xsd</SchemaArquivo>
+		</ConsultarFrotaTransportador>
+		<DeclaracaoOperacaoTransporte versao="1.00">
+			<Descricao>CIOT - Declaração da operação de transporte</Descricao>
+			<RequestURIHomologacao>https://appservices-hml.antt.gov.br/pefServices/api/DeclaracaoOperacaoTransporte</RequestURIHomologacao>
+			<RequestURIProducao>https://appservices.antt.gov.br/pefServices/api/DeclaracaoOperacaoTransporte</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<SchemaArquivo>declaracaoOperacaoTransporte_v1.00.xsd</SchemaArquivo>
+		</DeclaracaoOperacaoTransporte>
+		<CancelamentoOperacaoTransporte versao="1.00">
+			<Descricao>CIOT - Cancelamento da operação de transporte</Descricao>
+			<RequestURIHomologacao>https://appservices-hml.antt.gov.br/pefServices/api/CancelamentoOperacaoTransporte</RequestURIHomologacao>
+			<RequestURIProducao>https://appservices.antt.gov.br/pefServices/api/CancelamentoOperacaoTransporte</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<SchemaArquivo>cancelamentoOperacaoTransporte_v1.00.xsd</SchemaArquivo>
+		</CancelamentoOperacaoTransporte>
+		<RetificacaoOperacaoTransporte versao="1.00">
+			<Descricao>CIOT - Retificação da operação de transporte</Descricao>
+			<RequestURIHomologacao>https://appservices-hml.antt.gov.br/pefServices/api/RetificacaoOperacaoTransporte</RequestURIHomologacao>
+			<RequestURIProducao>https://appservices.antt.gov.br/pefServices/api/RetificacaoOperacaoTransporte</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<SchemaArquivo>retificacaoOperacaoTransporte_v1.00.xsd</SchemaArquivo>
+		</RetificacaoOperacaoTransporte>
+		<EncerramentoOperacaoTransporte versao="1.00">
+			<Descricao>CIOT - Encerramento da operação de transporte</Descricao>
+			<RequestURIHomologacao>https://appservices-hml.antt.gov.br/pefServices/api/EncerramentoOperacaoTransporte</RequestURIHomologacao>
+			<RequestURIProducao>https://appservices.antt.gov.br/pefServices/api/EncerramentoOperacaoTransporte</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<SchemaArquivo>encerramentoOperacaoTransporte_v1.00.xsd</SchemaArquivo>
+		</EncerramentoOperacaoTransporte>
+		<ConsultarExcecao versao="1.00">
+			<Descricao>CIOT - Consultar exceção</Descricao>
+			<RequestURIHomologacao>https://appservices-hml.antt.gov.br/pefServices/api/ConsultarExcecao?CPFCNPJTransportador={CpfCnpjTransportador}</RequestURIHomologacao>
+			<RequestURIProducao>https://appservices.antt.gov.br/pefServices/api/ConsultarExcecao?CPFCNPJTransportador={CpfCnpjTransportador}</RequestURIProducao>
+			<MetodoAPI>get</MetodoAPI>
+			<SchemaArquivo>consultarExcecao_v1.00.xsd</SchemaArquivo>
+		</ConsultarExcecao>
+		<ConsultarCIOTGerado versao="1.00">
+			<Descricao>CIOT - Consultar CIOT gerado</Descricao>
+			<RequestURIHomologacao>https://appservices-hml.antt.gov.br/pefServices/api/ConsultarCIOTGerado</RequestURIHomologacao>
+			<RequestURIProducao>https://appservices.antt.gov.br/pefServices/api/ConsultarCIOTGerado</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<SchemaArquivo>consultarCIOTGerado_v1.00.xsd</SchemaArquivo>
+		</ConsultarCIOTGerado>
+	</Servicos>
+</Configuracoes>

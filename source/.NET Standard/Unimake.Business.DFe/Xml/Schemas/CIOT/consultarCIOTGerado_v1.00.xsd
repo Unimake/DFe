@@ -22,23 +22,26 @@
 
   <xs:element name="RetConsultarCIOTGerado">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
-        <xs:element name="Codigo">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Item" type="TCodigoRetorno" maxOccurs="unbounded"/>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Mensagem">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Item" type="xs:string" maxOccurs="unbounded"/>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-      </xs:sequence>
+      <xs:choice>
+        <xs:element name="temp" type="TTempErro"/>
+        <xs:sequence>
+          <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
+          <xs:element name="Codigo">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Item" type="TCodigoRetorno" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Mensagem">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Item" type="xs:string" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
 </xs:schema>

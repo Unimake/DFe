@@ -326,4 +326,14 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="TTempErro">
+    <xs:sequence>
+      <xs:element name="error" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="timestamp" type="TDataHora" minOccurs="0"/>
+      <xs:element name="correlationId" type="xs:string" minOccurs="0"/>
+      <xs:element name="path" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
 </xs:schema>

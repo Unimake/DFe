@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetRetificacaoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+  <temp>
+    <error>USUARIO_NAO_AUTORIZADO</error>
+    <message>Rejeição: O CPF/CNPJ do certificado digital não corresponde a nenhum transportador cadastrado no RNTRC</message>
+    <timestamp>2026-05-26T20:34:17.2862302Z</timestamp>
+    <correlationId>ee174fab-71e7-4c1f-97e8-3029216bf457</correlationId>
+    <path>/pefServices/api/RetificacaoOperacaoTransporte</path>
+  </temp>
+</RetRetificacaoOperacaoTransporte>

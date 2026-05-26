@@ -19,6 +19,7 @@ namespace Unimake.DFe.Test.CIOT
         [Theory]
         [Trait("DFe", "CIOT")]
         [InlineData(@"..\..\..\CIOT\Resources\retConsultarSituacaoTransportador.xml")]
+        [InlineData(@"..\..\..\CIOT\Resources\retConsultarSituacaoTransportadorErro.xml")]
         public void SerializacaoDesserializacaoRetConsultarSituacaoTransportador(string arqXML)
         {
             SerializarDesserializar<RetConsultarSituacaoTransportador>(arqXML);
@@ -35,6 +36,7 @@ namespace Unimake.DFe.Test.CIOT
         [Theory]
         [Trait("DFe", "CIOT")]
         [InlineData(@"..\..\..\CIOT\Resources\retConsultarFrotaTransportador.xml")]
+        [InlineData(@"..\..\..\CIOT\Resources\retConsultarFrotaTransportadorErro.xml")]
         public void SerializacaoDesserializacaoRetConsultarFrotaTransportador(string arqXML)
         {
             SerializarDesserializar<RetConsultarFrotaTransportador>(arqXML);
@@ -51,6 +53,7 @@ namespace Unimake.DFe.Test.CIOT
         [Theory]
         [Trait("DFe", "CIOT")]
         [InlineData(@"..\..\..\CIOT\Resources\retDeclaracaoOperacaoTransporte.xml")]
+        [InlineData(@"..\..\..\CIOT\Resources\retDeclaracaoOperacaoTransporteErro.xml")]
         public void SerializacaoDesserializacaoRetDeclaracaoOperacaoTransporte(string arqXML)
         {
             SerializarDesserializar<RetDeclaracaoOperacaoTransporte>(arqXML);
@@ -67,6 +70,7 @@ namespace Unimake.DFe.Test.CIOT
         [Theory]
         [Trait("DFe", "CIOT")]
         [InlineData(@"..\..\..\CIOT\Resources\retCancelamentoOperacaoTransporte.xml")]
+        [InlineData(@"..\..\..\CIOT\Resources\retCancelamentoOperacaoTransporteErro.xml")]
         public void SerializacaoDesserializacaoRetCancelamentoOperacaoTransporte(string arqXML)
         {
             SerializarDesserializar<RetCancelamentoOperacaoTransporte>(arqXML);
@@ -83,6 +87,7 @@ namespace Unimake.DFe.Test.CIOT
         [Theory]
         [Trait("DFe", "CIOT")]
         [InlineData(@"..\..\..\CIOT\Resources\retRetificacaoOperacaoTransporte.xml")]
+        [InlineData(@"..\..\..\CIOT\Resources\retRetificacaoOperacaoTransporteErro.xml")]
         public void SerializacaoDesserializacaoRetRetificacaoOperacaoTransporte(string arqXML)
         {
             SerializarDesserializar<RetRetificacaoOperacaoTransporte>(arqXML);
@@ -99,6 +104,7 @@ namespace Unimake.DFe.Test.CIOT
         [Theory]
         [Trait("DFe", "CIOT")]
         [InlineData(@"..\..\..\CIOT\Resources\retEncerramentoOperacaoTransporte.xml")]
+        [InlineData(@"..\..\..\CIOT\Resources\retEncerramentoOperacaoTransporteErro.xml")]
         public void SerializacaoDesserializacaoRetEncerramentoOperacaoTransporte(string arqXML)
         {
             SerializarDesserializar<RetEncerramentoOperacaoTransporte>(arqXML);
@@ -115,6 +121,7 @@ namespace Unimake.DFe.Test.CIOT
         [Theory]
         [Trait("DFe", "CIOT")]
         [InlineData(@"..\..\..\CIOT\Resources\retConsultarExcecao.xml")]
+        [InlineData(@"..\..\..\CIOT\Resources\retConsultarExcecaoErro.xml")]
         public void SerializacaoDesserializacaoRetConsultarExcecao(string arqXML)
         {
             SerializarDesserializar<RetConsultarExcecao>(arqXML);
@@ -131,6 +138,7 @@ namespace Unimake.DFe.Test.CIOT
         [Theory]
         [Trait("DFe", "CIOT")]
         [InlineData(@"..\..\..\CIOT\Resources\retConsultarCIOTGerado.xml")]
+        [InlineData(@"..\..\..\CIOT\Resources\retConsultarCIOTGeradoErro.xml")]
         public void SerializacaoDesserializacaoRetConsultarCIOTGerado(string arqXML)
         {
             SerializarDesserializar<RetConsultarCIOTGerado>(arqXML);

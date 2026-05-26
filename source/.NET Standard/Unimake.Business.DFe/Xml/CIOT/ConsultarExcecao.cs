@@ -34,6 +34,9 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [XmlRoot("RetConsultarExcecao", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
     public class RetConsultarExcecao : XMLBase
     {
+        [XmlElement("temp")]
+        public TempCIOT Temp { get; set; }
+
         [XmlElement("Retorno")]
         public RetornoExcecaoCIOT Retorno { get; set; }
 
@@ -42,5 +45,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
 
         [XmlElement("Mensagem")]
         public string Mensagem { get; set; }
+
+        public bool ShouldSerializeTemp() => Temp != null;
     }
 }

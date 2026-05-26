@@ -17,17 +17,20 @@
 
   <xs:element name="RetConsultarSituacaoTransportador">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element name="CpfCnpjTransportador" type="TCpfCnpj"/>
-        <xs:element name="RNTRCTransportador" type="TRNTRC"/>
-        <xs:element name="NomeRazaoSocialTransportador" type="xs:string"/>
-        <xs:element name="RNTRCAtivo" type="xs:boolean"/>
-        <xs:element name="TipoTransportador" type="TTipoTransportador"/>
-        <xs:element name="EquiparadoTAC" type="xs:boolean"/>
-        <xs:element name="Mensagem" type="xs:string"/>
-        <xs:element name="Protocolo" type="TProtocolo"/>
-        <xs:element name="Codigo" type="TCodigoRetorno"/>
-      </xs:sequence>
+      <xs:choice>
+        <xs:element name="temp" type="TTempErro"/>
+        <xs:sequence>
+          <xs:element name="CpfCnpjTransportador" type="TCpfCnpj"/>
+          <xs:element name="RNTRCTransportador" type="TRNTRC"/>
+          <xs:element name="NomeRazaoSocialTransportador" type="xs:string"/>
+          <xs:element name="RNTRCAtivo" type="xs:boolean"/>
+          <xs:element name="TipoTransportador" type="TTipoTransportador"/>
+          <xs:element name="EquiparadoTAC" type="xs:boolean"/>
+          <xs:element name="Mensagem" type="xs:string"/>
+          <xs:element name="Protocolo" type="TProtocolo"/>
+          <xs:element name="Codigo" type="TCodigoRetorno"/>
+        </xs:sequence>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
 </xs:schema>

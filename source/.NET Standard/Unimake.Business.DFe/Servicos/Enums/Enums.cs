@@ -649,6 +649,54 @@ namespace Unimake.Business.DFe.Servicos
         [Description("uMessenger Publicar Mensagem")]
         UMessengerPublish = 105,
 
+        /// <summary>
+        /// 106 - CIOT - Consultar situação do transportador
+        /// </summary>
+        [Description("CIOT - Consultar situação do transportador")]
+        CIOTConsultarSituacaoTransportador = 106,
+
+        /// <summary>
+        /// 107 - CIOT - Consultar frota do transportador
+        /// </summary>
+        [Description("CIOT - Consultar frota do transportador")]
+        CIOTConsultarFrotaTransportador = 107,
+
+        /// <summary>
+        /// 108 - CIOT - Declaração da operação de transporte
+        /// </summary>
+        [Description("CIOT - Declaração da operação de transporte")]
+        CIOTDeclaracaoOperacaoTransporte = 108,
+
+        /// <summary>
+        /// 109 - CIOT - Cancelamento da operação de transporte
+        /// </summary>
+        [Description("CIOT - Cancelamento da operação de transporte")]
+        CIOTCancelamentoOperacaoTransporte = 109,
+
+        /// <summary>
+        /// 110 - CIOT - Retificação da operação de transporte
+        /// </summary>
+        [Description("CIOT - Retificação da operação de transporte")]
+        CIOTRetificacaoOperacaoTransporte = 110,
+
+        /// <summary>
+        /// 111 - CIOT - Encerramento da operação de transporte
+        /// </summary>
+        [Description("CIOT - Encerramento da operação de transporte")]
+        CIOTEncerramentoOperacaoTransporte = 111,
+
+        /// <summary>
+        /// 112 - CIOT - Consultar exceção
+        /// </summary>
+        [Description("CIOT - Consultar exceção")]
+        CIOTConsultarExcecao = 112,
+
+        /// <summary>
+        /// 113 - CIOT - Consultar CIOT gerado
+        /// </summary>
+        [Description("CIOT - Consultar CIOT gerado")]
+        CIOTConsultarCIOTGerado = 113,
+
         #endregion
 
         #region Gerais
@@ -752,6 +800,11 @@ namespace Unimake.Business.DFe.Servicos
         /// 18 - uMessenger - Serviço de mensageria da Unimake
         /// </summary>
         UMessenger = 18,
+
+        /// <summary>
+        /// 19 - CIOT - Código Identificador da Operação de Transporte
+        /// </summary>
+        CIOT = 19,
 
     }
 

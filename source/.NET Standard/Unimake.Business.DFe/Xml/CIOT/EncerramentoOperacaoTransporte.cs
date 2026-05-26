@@ -47,6 +47,9 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [XmlRoot("RetEncerramentoOperacaoTransporte", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
     public class RetEncerramentoOperacaoTransporte : XMLBase
     {
+        [XmlElement("temp")]
+        public TempCIOT Temp { get; set; }
+
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }
 
@@ -61,5 +64,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
 
         [XmlElement("Mensagem")]
         public string Mensagem { get; set; }
+
+        public bool ShouldSerializeTemp() => Temp != null;
     }
 }

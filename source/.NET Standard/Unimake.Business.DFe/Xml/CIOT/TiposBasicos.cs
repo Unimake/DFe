@@ -193,4 +193,22 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("Flag")]
         public bool Flag { get; set; }
     }
+
+    public class TempCIOT
+    {
+        [XmlElement("error")]
+        public string Error { get; set; }
+
+        [XmlElement("message")]
+        public string Message { get; set; }
+
+        [XmlElement("timestamp")]
+        public string Timestamp { get; set; }
+
+        [XmlElement("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [XmlElement("path")]
+        public string Path { get; set; }
+    }
 }

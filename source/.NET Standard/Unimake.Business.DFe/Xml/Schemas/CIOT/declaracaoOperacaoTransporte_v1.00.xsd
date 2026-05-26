@@ -57,26 +57,29 @@
 
   <xs:element name="RetDeclaracaoOperacaoTransporte">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
-        <xs:element name="CodigoVerificador">
-          <xs:simpleType>
-            <xs:restriction base="xs:string">
-              <xs:pattern value="[0-9]{4}"/>
-            </xs:restriction>
-          </xs:simpleType>
-        </xs:element>
-        <xs:element name="Protocolo" type="TProtocolo"/>
-        <xs:element name="Codigo" type="TCodigoRetorno"/>
-        <xs:element name="Mensagem" type="xs:string"/>
-        <xs:element name="AvisoTransportador" minOccurs="0">
-          <xs:simpleType>
-            <xs:restriction base="xs:string">
-              <xs:maxLength value="300"/>
-            </xs:restriction>
-          </xs:simpleType>
-        </xs:element>
-      </xs:sequence>
+      <xs:choice>
+        <xs:element name="temp" type="TTempErro"/>
+        <xs:sequence>
+          <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
+          <xs:element name="CodigoVerificador">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[0-9]{4}"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="Protocolo" type="TProtocolo"/>
+          <xs:element name="Codigo" type="TCodigoRetorno"/>
+          <xs:element name="Mensagem" type="xs:string"/>
+          <xs:element name="AvisoTransportador" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="300"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
 </xs:schema>

@@ -42,6 +42,9 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [XmlRoot("RetConsultarCIOTGerado", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
     public class RetConsultarCIOTGerado : XMLBase
     {
+        [XmlElement("temp")]
+        public TempCIOT Temp { get; set; }
+
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }
 
@@ -52,5 +55,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlArray("Mensagem")]
         [XmlArrayItem("Item")]
         public List<string> Mensagem { get; set; }
+
+        public bool ShouldSerializeTemp() => Temp != null;
     }
 }
