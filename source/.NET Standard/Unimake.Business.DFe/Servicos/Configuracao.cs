@@ -1078,6 +1078,21 @@ namespace Unimake.Business.DFe.Servicos
         public string ApiKey { get; set; }
 
         /// <summary>
+        /// AppId para autenticação via Bearer token (uMessenger, eBank, etc.)
+        /// </summary>
+        public string AppId { get; set; }
+
+        /// <summary>
+        /// Secret para autenticação via Bearer token (uMessenger, eBank, etc.)
+        /// </summary>
+        public string Secret { get; set; }
+
+        /// <summary>
+        /// Nome da instância do uMessenger a ser utilizada no envio
+        /// </summary>
+        public string UMessengerInstanceName { get; set; }
+
+        /// <summary>
         /// Modelo do documento fiscal que é para consultar o status do serviço
         /// </summary>
         public ModeloDFe Modelo { get; set; }

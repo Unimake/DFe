@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xsd:element name="uMessenger">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="SendTextMessage" minOccurs="1" maxOccurs="50">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="InstanceName">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:minLength value="10"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="To">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:minLength value="1"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="Text">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:minLength value="1"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="Testing" type="xsd:boolean"/>
+							<xsd:element name="UseHomologServer" type="xsd:boolean" minOccurs="0"/>
+
+							<!-- Grupo Files opcional -->
+							<xsd:element name="Files" minOccurs="0">
+								<xsd:complexType>
+									<xsd:sequence>
+										<!-- Grupo File com até 10 ocorrências -->
+										<xsd:element name="File" maxOccurs="10">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="FullPath" minOccurs="1" maxOccurs="1">
+														<xsd:simpleType>
+															<xsd:restriction base="xsd:string">
+																<xsd:minLength value="3"/>
+															</xsd:restriction>
+														</xsd:simpleType>
+													</xsd:element>
+													<xsd:element name="Description" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+													<xsd:element name="MediaType" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="Id" type="xsd:string"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="versao" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

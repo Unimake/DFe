@@ -11,9 +11,13 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
         {
             using (var httpClient = CreateClient(request))
             {
-                var httpResponse = string.Equals(request.Method, "get", StringComparison.CurrentCultureIgnoreCase)
-                    ? httpClient.GetAsync("").GetAwaiter().GetResult()
-                    : httpClient.PostAsync(request.RequestUri, request.HttpContent).GetAwaiter().GetResult();
+                HttpResponseMessage httpResponse;
+                if (string.Equals(request.Method, "get", StringComparison.OrdinalIgnoreCase))
+                    httpResponse = httpClient.GetAsync("").GetAwaiter().GetResult();
+                else if (string.Equals(request.Method, "delete", StringComparison.OrdinalIgnoreCase))
+                    httpResponse = httpClient.DeleteAsync("").GetAwaiter().GetResult();
+                else
+                    httpResponse = httpClient.PostAsync(request.RequestUri, request.HttpContent).GetAwaiter().GetResult();
 
                 return new TransportResponse
                 {

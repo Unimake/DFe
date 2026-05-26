@@ -103,6 +103,18 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
                     }
                 }
 
+                if (context.Config.Servico == Servico.UMessengerPublish)
+                {
+                    var dto = JsonConvert.DeserializeAnonymousType(context.ResponseContent, new { messageId = "", localId = "" });
+                    var ret = new Xml.UMessenger.retUMessengerPublish
+                    {
+                        MessageId = dto?.messageId,
+                        LocalId = dto?.localId,
+                        RawResponse = context.ResponseContent
+                    };
+                    return ret.GerarXML();
+                }
+
                 return resultadoRetorno;
             }
             catch

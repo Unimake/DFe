@@ -643,6 +643,11 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização síncrona de NFGas")]
         NFGasAutorizacaoSinc = 104,
 
+        /// <summary>
+        /// 105 - uMessenger - Publicar mensagem de texto via WhatsApp
+        /// </summary>
+        [Description("uMessenger Publicar Mensagem")]
+        UMessengerPublish = 105,
 
         #endregion
 
@@ -742,6 +747,11 @@ namespace Unimake.Business.DFe.Servicos
         /// 17 - NFGas - Nota Fiscal Eletrônica do Gás
         /// </summary>
         NFGas = 17,
+
+        /// <summary>
+        /// 18 - uMessenger - Serviço de mensageria da Unimake
+        /// </summary>
+        UMessenger = 18,
 
     }
 

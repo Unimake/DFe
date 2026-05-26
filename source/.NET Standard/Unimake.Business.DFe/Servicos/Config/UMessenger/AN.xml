@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuracoes>
+	<Servicos ID="UMessenger">
+		<PublishUMessenger versao="1.00">
+			<Descricao>uMessenger - Publicar mensagem de texto via WhatsApp</Descricao>
+			<RequestURIHomologacao>https://umessenger.sandbox.unimake.software/api/v1/Messages/Publish/</RequestURIHomologacao>
+			<RequestURIProducao>https://unimake.app/umessenger/api/v1/Messages/Publish/</RequestURIProducao>
+			<RequestURILoginHomologacao>https://auth.sandbox.unimake.software/api/auth</RequestURILoginHomologacao>
+			<RequestURILoginProducao>https://unimake.app/auth/api/auth</RequestURILoginProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<MetodoAPI>post</MetodoAPI>
+		</PublishUMessenger>
+	</Servicos>
+</Configuracoes>
