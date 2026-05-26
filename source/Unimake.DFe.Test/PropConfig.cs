@@ -43,5 +43,17 @@ namespace Unimake.DFe.Test
 
         public static string CNPJEmpresaCertificado { get; set; } = "06117473000150";
         public static UFBrasil UFEmpresaCertificado { get; set; } = UFBrasil.PR;
+
+        /// <summary>AppId do uMessenger</summary>
+        public static string UMessengerAppId { get; set; } = "Seu_AppId";
+
+        /// <summary>Secret do uMessenger</summary>
+        public static string UMessengerSecret { get; set; } = "Seu_Secret";
+
+        /// <summary>Nome da instância do uMessenger</summary>
+        public static string UMessengerInstanceName { get; set; } = "Seu_InstanceName";
+
+        /// <summary>Número de destino para testes de envio via uMessenger (formato: 55DDNNNNNNNNN)</summary>
+        public static string UMessengerDestinoTeste { get; set; } = "55DDNNNNNNNNN";
     }
 }
