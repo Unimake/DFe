@@ -45,11 +45,40 @@ namespace Unimake.DFe.Test.CTeSimp
             var xml = new Business.DFe.Xml.CTeSimp.CTeSimp();
             xml = xml.LerXML<Business.DFe.Xml.CTeSimp.CTeSimp>(doc);
 
-            var doc2 = xml.GerarXML();
-
-            doc2.Save(@"C:\Users\Wandrey\OneDrive\Downloads\qqqq1.xml");
-
             Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização do XML cteSimpProc
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "CTeSimp")]
+        [InlineData(@"..\..\..\CTeSimp\Resources\CTeSimp.xml", @"..\..\..\CTeSimp\Resources\retCteSimp.xml")]
+        public void SerializacaoCteSimpProc(string arqCTeSimp, string arqRetCteSimp)
+        {
+            Assert.True(File.Exists(arqCTeSimp), "Arquivo " + arqCTeSimp + " não foi localizado para a realização da serialização.");
+            Assert.True(File.Exists(arqRetCteSimp), "Arquivo " + arqRetCteSimp + " não foi localizado para a realização da serialização.");
+
+            var docCTeSimp = new XmlDocument();
+            docCTeSimp.Load(arqCTeSimp);
+
+            var docRetCteSimp = new XmlDocument();
+            docRetCteSimp.Load(arqRetCteSimp);
+
+            var cteSimp = new Business.DFe.Xml.CTeSimp.CTeSimp().LerXML<Business.DFe.Xml.CTeSimp.CTeSimp>(docCTeSimp);
+            var retCteSimp = new RetCTeSimp().LerXML<RetCTeSimp>(docRetCteSimp);
+            var cteSimpProc = new CteSimpProc
+            {
+                Versao = cteSimp.InfCTe.Versao,
+                CTeSimp = cteSimp,
+                ProtCTe = retCteSimp.ProtCTe
+            };
+
+            var xml = cteSimpProc.GerarXML();
+
+            Assert.Equal(1, xml.GetElementsByTagName("cteSimpProc").Count);
+            Assert.Equal(1, xml.GetElementsByTagName("CTeSimp").Count);
+            Assert.Equal(1, xml.GetElementsByTagName("protCTe").Count);
         }
     }
 }

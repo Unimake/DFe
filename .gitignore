@@ -394,3 +394,4 @@ MigrationBackup/
 /Exemplos/Windev/TreinamentoUnimakeDFe/Bkp_V29_20260114_1807
 *.BAK
 /.dotnet/.dotnet
+/source/.review

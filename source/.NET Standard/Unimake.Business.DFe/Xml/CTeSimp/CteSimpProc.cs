@@ -84,8 +84,8 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             var xmlDocument = base.GerarXML();
 
             var attribute = GetType().GetCustomAttribute<XmlRootAttribute>();
-            var xmlElementCTe = (XmlElement)xmlDocument.GetElementsByTagName("CTe")[0];
-            xmlElementCTe.SetAttribute("xmlns", attribute.Namespace);
+            var xmlElementCTeSimp = (XmlElement)xmlDocument.GetElementsByTagName("CTeSimp")[0];
+            xmlElementCTeSimp.SetAttribute("xmlns", attribute.Namespace);
             var xmlElementProtCTe = (XmlElement)xmlDocument.GetElementsByTagName("protCTe")[0];
             xmlElementProtCTe.SetAttribute("xmlns", attribute.Namespace);
 
@@ -97,11 +97,11 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// </summary>
         /// <param name="filename">Localização do arquivo XML de distribuição do CTe</param>
         /// <returns>Objeto do XML de distribuição do CTe</returns>
-        public CTe.CteProc LoadFromFile(string filename)
+        public CteSimpProc LoadFromFile(string filename)
         {
             var doc = new XmlDocument();
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
-            return XMLUtility.Deserializar<CTe.CteProc>(doc);
+            return XMLUtility.Deserializar<CteSimpProc>(doc);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// </summary>
         /// <param name="xml">string do XML NfeProc</param>
         /// <returns>Objeto da NfeProc</returns>
-        public CTe.CteProc LoadFromXML(string xml) => XMLUtility.Deserializar<CTe.CteProc>(xml);
+        public CteSimpProc LoadFromXML(string xml) => XMLUtility.Deserializar<CteSimpProc>(xml);
 
         #region ShouldSerialize
 
