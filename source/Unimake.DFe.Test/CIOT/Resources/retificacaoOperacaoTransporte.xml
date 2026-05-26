@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetificacaoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+  <CodigoIdentificacaoOperacao>1234567890123456</CodigoIdentificacaoOperacao>
+  <ValorFrete>1550.75</ValorFrete>
+  <DataFimViagem>2026-05-27</DataFimViagem>
+  <OrigemDestino>
+    <ParOrigemDestino>
+      <Origem>
+        <CodigoMunicipioOrigem>4118402</CodigoMunicipioOrigem>
+        <CepOrigem>87700000</CepOrigem>
+      </Origem>
+      <Destino>
+        <CodigoMunicipioDestino>4106902</CodigoMunicipioDestino>
+        <CepDestino>80000000</CepDestino>
+      </Destino>
+    </ParOrigemDestino>
+  </OrigemDestino>
+  <DadosCarga>
+    <CodigoNaturezaCarga>0001</CodigoNaturezaCarga>
+    <PesoCarga>1100.00</PesoCarga>
+    <CodigoTipoCarga>5</CodigoTipoCarga>
+  </DadosCarga>
+</RetificacaoOperacaoTransporte>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetEncerramentoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+  <CodigoIdentificacaoOperacao>1234567890123456</CodigoIdentificacaoOperacao>
+  <DataEncerramento>2026-05-26T19:30:38Z</DataEncerramento>
+  <Protocolo>1234567890123456</Protocolo>
+  <Codigo>000000</Codigo>
+  <Mensagem>Operacao encerrada com sucesso</Mensagem>
+</RetEncerramentoOperacaoTransporte>

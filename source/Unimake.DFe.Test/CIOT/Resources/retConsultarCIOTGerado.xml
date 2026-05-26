@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetConsultarCIOTGerado xmlns="http://www.antt.gov.br/ciot">
+  <CodigoIdentificacaoOperacao>1234567890123456</CodigoIdentificacaoOperacao>
+  <Codigo>
+    <Item>000000</Item>
+  </Codigo>
+  <Mensagem>
+    <Item>Operacao realizada com sucesso</Item>
+  </Mensagem>
+</RetConsultarCIOTGerado>

@@ -18369,4 +18369,194 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion NFGas
+
+    #region CIOT
+
+    /// <summary>
+    /// Tipo da operação de transporte do CIOT
+    /// </summary>
+    public enum TipoOperacaoTransporteCIOT
+    {
+        /// <summary>
+        /// 1 - Operação carga lotação
+        /// </summary>
+        [XmlEnum("1")]
+        CargaLotacao = 1,
+
+        /// <summary>
+        /// 2 - Operação carga fracionada
+        /// </summary>
+        [XmlEnum("2")]
+        CargaFracionada = 2,
+
+        /// <summary>
+        /// 3 - Operação TAC-agregado
+        /// </summary>
+        [XmlEnum("3")]
+        TACAgregado = 3
+    }
+
+    /// <summary>
+    /// Tipo de pagamento do frete do CIOT
+    /// </summary>
+    public enum TipoPagamentoFreteCIOT
+    {
+        /// <summary>
+        /// 1 - Instituição de pagamento
+        /// </summary>
+        [XmlEnum("1")]
+        InstituicaoPagamento = 1,
+
+        /// <summary>
+        /// 2 - Conta corrente
+        /// </summary>
+        [XmlEnum("2")]
+        ContaCorrente = 2,
+
+        /// <summary>
+        /// 3 - Conta poupança
+        /// </summary>
+        [XmlEnum("3")]
+        ContaPoupanca = 3,
+
+        /// <summary>
+        /// 4 - Conta pagamento
+        /// </summary>
+        [XmlEnum("4")]
+        ContaPagamento = 4,
+
+        /// <summary>
+        /// 5 - Outros
+        /// </summary>
+        [XmlEnum("5")]
+        Outros = 5,
+
+        /// <summary>
+        /// 6 - Pix
+        /// </summary>
+        [XmlEnum("6")]
+        Pix = 6
+    }
+
+    /// <summary>
+    /// Indicador da forma de pagamento do CIOT
+    /// </summary>
+    public enum IndicadorPagamentoCIOT
+    {
+        /// <summary>
+        /// 0 - A vista
+        /// </summary>
+        [XmlEnum("0")]
+        AVista = 0,
+
+        /// <summary>
+        /// 1 - A prazo
+        /// </summary>
+        [XmlEnum("1")]
+        APrazo = 1
+    }
+
+    /// <summary>
+    /// Tipo de carga do CIOT
+    /// </summary>
+    public enum TipoCargaCIOT
+    {
+        /// <summary>
+        /// 1 - Granel sólido
+        /// </summary>
+        [XmlEnum("1")]
+        GranelSolido = 1,
+
+        /// <summary>
+        /// 2 - Granel líquido
+        /// </summary>
+        [XmlEnum("2")]
+        GranelLiquido = 2,
+
+        /// <summary>
+        /// 3 - Frigorificada ou aquecida
+        /// </summary>
+        [XmlEnum("3")]
+        FrigorificadaOuAquecida = 3,
+
+        /// <summary>
+        /// 4 - Conteinerizada
+        /// </summary>
+        [XmlEnum("4")]
+        Conteinerizada = 4,
+
+        /// <summary>
+        /// 5 - Carga geral
+        /// </summary>
+        [XmlEnum("5")]
+        CargaGeral = 5,
+
+        /// <summary>
+        /// 6 - Neogranel
+        /// </summary>
+        [XmlEnum("6")]
+        Neogranel = 6,
+
+        /// <summary>
+        /// 7 - Perigosa granel sólido
+        /// </summary>
+        [XmlEnum("7")]
+        PerigosaGranelSolido = 7,
+
+        /// <summary>
+        /// 8 - Perigosa granel líquido
+        /// </summary>
+        [XmlEnum("8")]
+        PerigosaGranelLiquido = 8,
+
+        /// <summary>
+        /// 9 - Perigosa frigorificada ou aquecida
+        /// </summary>
+        [XmlEnum("9")]
+        PerigosaFrigorificadaOuAquecida = 9,
+
+        /// <summary>
+        /// 10 - Perigosa conteinerizada
+        /// </summary>
+        [XmlEnum("10")]
+        PerigosaConteinerizada = 10,
+
+        /// <summary>
+        /// 11 - Perigosa carga geral
+        /// </summary>
+        [XmlEnum("11")]
+        PerigosaCargaGeral = 11,
+
+        /// <summary>
+        /// 12 - Carga granel pressurizada
+        /// </summary>
+        [XmlEnum("12")]
+        CargaGranelPressurizada = 12
+    }
+
+    /// <summary>
+    /// Tipo de transportador retornado pelo CIOT
+    /// </summary>
+    public enum TipoTransportadorCIOT
+    {
+        /// <summary>
+        /// TAC - Transportador Autônomo de Cargas
+        /// </summary>
+        [XmlEnum("TAC")]
+        TAC,
+
+        /// <summary>
+        /// ETC - Empresa de Transporte Rodoviário de Cargas
+        /// </summary>
+        [XmlEnum("ETC")]
+        ETC,
+
+        /// <summary>
+        /// CTC - Cooperativa de Transporte Rodoviário de Cargas
+        /// </summary>
+        [XmlEnum("CTC")]
+        CTC
+    }
+
+    #endregion CIOT
 }

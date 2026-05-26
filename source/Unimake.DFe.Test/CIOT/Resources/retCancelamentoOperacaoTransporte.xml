@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetCancelamentoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+  <CodigoIdentificacaoOperacao>1234567890123456</CodigoIdentificacaoOperacao>
+  <DataCancelamento>2026-05-25T12:20:42Z</DataCancelamento>
+  <Protocolo>1234567890123456</Protocolo>
+  <Codigo>000000</Codigo>
+  <Mensagem>Operacao cancelada com sucesso</Mensagem>
+</RetCancelamentoOperacaoTransporte>

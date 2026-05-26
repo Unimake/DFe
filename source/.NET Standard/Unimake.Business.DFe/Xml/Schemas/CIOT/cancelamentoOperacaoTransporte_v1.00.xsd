@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.antt.gov.br/ciot"
+           xmlns="http://www.antt.gov.br/ciot"
+           elementFormDefault="qualified">
+  <xs:include schemaLocation="tiposBasicosCIOT_v1.00.xsd"/>
+
+  <xs:element name="CancelamentoOperacaoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
+        <xs:element name="MotivoCancelamento">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:minLength value="1"/>
+              <xs:maxLength value="500"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RetCancelamentoOperacaoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
+        <xs:element name="DataCancelamento" type="TDataHora"/>
+        <xs:element name="Protocolo" type="TProtocolo"/>
+        <xs:element name="Codigo" type="TCodigoRetorno"/>
+        <xs:element name="Mensagem" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

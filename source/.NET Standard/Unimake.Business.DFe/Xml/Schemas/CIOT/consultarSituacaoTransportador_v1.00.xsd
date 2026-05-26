@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.antt.gov.br/ciot"
+           xmlns="http://www.antt.gov.br/ciot"
+           elementFormDefault="qualified">
+  <xs:include schemaLocation="tiposBasicosCIOT_v1.00.xsd"/>
+
+  <xs:element name="ConsultarSituacaoTransportador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CpfCnpjInteressado" type="TCpfCnpj"/>
+        <xs:element name="CpfCnpjTransportador" type="TCpfCnpj"/>
+        <xs:element name="RNTRCTransportador" type="TRNTRC"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RetConsultarSituacaoTransportador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CpfCnpjTransportador" type="TCpfCnpj"/>
+        <xs:element name="RNTRCTransportador" type="TRNTRC"/>
+        <xs:element name="NomeRazaoSocialTransportador" type="xs:string"/>
+        <xs:element name="RNTRCAtivo" type="xs:boolean"/>
+        <xs:element name="TipoTransportador" type="TTipoTransportador"/>
+        <xs:element name="EquiparadoTAC" type="xs:boolean"/>
+        <xs:element name="Mensagem" type="xs:string"/>
+        <xs:element name="Protocolo" type="TProtocolo"/>
+        <xs:element name="Codigo" type="TCodigoRetorno"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

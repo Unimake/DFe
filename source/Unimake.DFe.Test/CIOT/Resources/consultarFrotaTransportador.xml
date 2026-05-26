@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarFrotaTransportador xmlns="http://www.antt.gov.br/ciot">
+  <CpfCnpjInteressado>12345678000195</CpfCnpjInteressado>
+  <CpfCnpjTransportador>12345678901</CpfCnpjTransportador>
+  <RNTRCTransportador>012345678</RNTRCTransportador>
+  <Placas>
+    <Placa>ABC1D23</Placa>
+  </Placas>
+</ConsultarFrotaTransportador>

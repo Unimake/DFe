@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.antt.gov.br/ciot"
+           xmlns="http://www.antt.gov.br/ciot"
+           elementFormDefault="qualified">
+  <xs:include schemaLocation="tiposBasicosCIOT_v1.00.xsd"/>
+
+  <xs:element name="ConsultarCIOTGerado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao12"/>
+        <xs:element name="AnoDeclaracao" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:gYear">
+              <xs:minInclusive value="2026"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RetConsultarCIOTGerado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
+        <xs:element name="Codigo">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item" type="TCodigoRetorno" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Mensagem">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item" type="xs:string" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

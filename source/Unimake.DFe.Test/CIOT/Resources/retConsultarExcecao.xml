@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetConsultarExcecao xmlns="http://www.antt.gov.br/ciot">
+  <Retorno>
+    <CpfCnpjTransportador>12345678901</CpfCnpjTransportador>
+    <Flag>true</Flag>
+  </Retorno>
+  <Codigo>000000</Codigo>
+  <Mensagem>Operacao realizada com sucesso</Mensagem>
+</RetConsultarExcecao>

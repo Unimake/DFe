@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.antt.gov.br/ciot"
+           xmlns="http://www.antt.gov.br/ciot"
+           elementFormDefault="qualified">
+  <xs:include schemaLocation="tiposBasicosCIOT_v1.00.xsd"/>
+
+  <xs:element name="RetificacaoOperacaoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
+        <xs:element name="ValorFrete" type="TValor10v2" minOccurs="0"/>
+        <xs:element name="DataFimViagem" type="TData" minOccurs="0"/>
+        <xs:element name="OrigemDestino" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ParOrigemDestino" type="TParOrigemDestino" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DadosCarga" type="TDadosCarga" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RetRetificacaoOperacaoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
+        <xs:element name="DataRetificacao" type="TDataHora"/>
+        <xs:element name="Protocolo" type="TProtocolo"/>
+        <xs:element name="Codigo" type="TCodigoRetorno"/>
+        <xs:element name="Mensagem" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

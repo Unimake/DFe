@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.antt.gov.br/ciot"
+           xmlns="http://www.antt.gov.br/ciot"
+           elementFormDefault="qualified">
+  <xs:include schemaLocation="tiposBasicosCIOT_v1.00.xsd"/>
+
+  <xs:element name="ConsultarExcecao">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CpfCnpjTransportador" type="TCpfCnpj"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RetConsultarExcecao">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Retorno">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CpfCnpjTransportador" type="TCpfCnpj"/>
+              <xs:element name="Flag" type="xs:boolean"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Codigo" type="TCodigoRetorno"/>
+        <xs:element name="Mensagem" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

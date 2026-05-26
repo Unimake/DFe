@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EncerramentoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+  <CodigoIdentificacaoOperacao>1234567890123456</CodigoIdentificacaoOperacao>
+  <OrigemDestino>
+    <ParOrigemDestino>
+      <Origem>
+        <CodigoMunicipioOrigem>4118402</CodigoMunicipioOrigem>
+        <CepOrigem>87700000</CepOrigem>
+      </Origem>
+      <Destino>
+        <CodigoMunicipioDestino>4106902</CodigoMunicipioDestino>
+        <CepDestino>80000000</CepDestino>
+      </Destino>
+      <DistanciaPercorrida>500</DistanciaPercorrida>
+      <QtdViagens>1</QtdViagens>
+    </ParOrigemDestino>
+  </OrigemDestino>
+  <DadosCarga>
+    <PesoTotalCarga>1000.00</PesoTotalCarga>
+  </DadosCarga>
+</EncerramentoOperacaoTransporte>

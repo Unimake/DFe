@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.antt.gov.br/ciot"
+           xmlns="http://www.antt.gov.br/ciot"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+  <xs:simpleType name="TCpfCnpj">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{11}|[0-9]{14}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TRNTRC">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{9}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TPlaca">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{3}[0-9][A-Z0-9][0-9]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TCep">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{8}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TCodigoMunicipio">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{7}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TLatitude">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="-90"/>
+      <xs:maxInclusive value="90"/>
+      <xs:fractionDigits value="6"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TLongitude">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="-180"/>
+      <xs:maxInclusive value="180"/>
+      <xs:fractionDigits value="6"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TData">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TDataHora">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]{1,7})?(Z|[+-][0-9]{2}:[0-9]{2})?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TValor10v2">
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0"/>
+      <xs:totalDigits value="10"/>
+      <xs:fractionDigits value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TValor12v2">
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0"/>
+      <xs:totalDigits value="12"/>
+      <xs:fractionDigits value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TCodigoRetorno">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="6"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TProtocolo">
+    <xs:restriction base="xs:string">
+      <xs:length value="16"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TCodigoOperacao12">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="12"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TCodigoOperacao16">
+    <xs:restriction base="xs:string">
+      <xs:length value="16"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TTipoOperacao">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TTipoTransportador">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TAC"/>
+      <xs:enumeration value="ETC"/>
+      <xs:enumeration value="CTC"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TTipoCarga">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+      <xs:enumeration value="5"/>
+      <xs:enumeration value="6"/>
+      <xs:enumeration value="7"/>
+      <xs:enumeration value="8"/>
+      <xs:enumeration value="9"/>
+      <xs:enumeration value="10"/>
+      <xs:enumeration value="11"/>
+      <xs:enumeration value="12"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TTipoPagamento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+      <xs:enumeration value="5"/>
+      <xs:enumeration value="6"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TIndPagamento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="0"/>
+      <xs:enumeration value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TNumeroEixos">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-4]"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TCodigoNaturezaCarga">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="TOrigem">
+    <xs:sequence>
+      <xs:element name="CodigoMunicipioOrigem" type="TCodigoMunicipio" minOccurs="0"/>
+      <xs:element name="CepOrigem" type="TCep" minOccurs="0"/>
+      <xs:element name="LatitudeOrigem" type="TLatitude" minOccurs="0"/>
+      <xs:element name="LongitudeOrigem" type="TLongitude" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TDestino">
+    <xs:sequence>
+      <xs:element name="CodigoMunicipioDestino" type="TCodigoMunicipio" minOccurs="0"/>
+      <xs:element name="CepDestino" type="TCep" minOccurs="0"/>
+      <xs:element name="LatitudeDestino" type="TLatitude" minOccurs="0"/>
+      <xs:element name="LongitudeDestino" type="TLongitude" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TParOrigemDestino">
+    <xs:sequence>
+      <xs:element name="Origem" type="TOrigem"/>
+      <xs:element name="Destino" type="TDestino"/>
+      <xs:element name="DistanciaPercorrida" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:totalDigits value="8"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="QtdViagens" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:totalDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TDadosCarga">
+    <xs:sequence>
+      <xs:element name="CodigoNaturezaCarga" type="TCodigoNaturezaCarga" minOccurs="0"/>
+      <xs:element name="PesoCarga" type="TValor10v2" minOccurs="0"/>
+      <xs:element name="CodigoTipoCarga" type="TTipoCarga" minOccurs="0"/>
+      <xs:element name="ContratantesCargaFrac" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CpfCnpjContratante" type="TCpfCnpj" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TVeiculo">
+    <xs:sequence>
+      <xs:element name="Placa" type="TPlaca"/>
+      <xs:element name="RNTRCVeiculo" type="TRNTRC" minOccurs="0"/>
+      <xs:element name="NumeroEixos" type="TNumeroEixos"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TPagamento">
+    <xs:sequence>
+      <xs:element name="TipoPagamento" type="TTipoPagamento"/>
+      <xs:element name="CodigoInstituicaoFinanceira" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{3}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="NumeroAgencia" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="NumeroConta" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ChavePix" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="77"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CpfCnpjCreditado" type="TCpfCnpj"/>
+      <xs:element name="CodigoPagamento" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="IdentificadorPix" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="32"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="IndPagamento" type="TIndPagamento"/>
+      <xs:element name="Parcelas" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Parcela" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="NumeroParcela">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:totalDigits value="3"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="DataVencimento" type="TData"/>
+                  <xs:element name="ValorParcela" type="TValor12v2"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TIndicadoresOperacionais">
+    <xs:sequence>
+      <xs:element name="IndAltoDesempenho" type="xs:boolean"/>
+      <xs:element name="IndRetornoVazio" type="xs:boolean"/>
+      <xs:element name="ComposicaoVeicular" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TRetornoOperacao">
+    <xs:sequence>
+      <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
+      <xs:element name="Protocolo" type="TProtocolo"/>
+      <xs:element name="Codigo" type="TCodigoRetorno"/>
+      <xs:element name="Mensagem" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
