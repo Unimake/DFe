@@ -108,6 +108,12 @@ namespace Unimake.Business.DFe
             public string TargetNS { get; set; }
 
             /// <summary>
+            /// Tag que contem a Target Namespace Específico (se tiver) do XML, utilizada para 
+            /// validar o XML contra o schema correto.
+            /// </summary>
+            public string TargetNSEspecifico { get; set; }
+
+            /// <summary>
             /// Tag que indica o local onde deve ser feita a assinatura digital no XML.
             /// </summary>
             public string TagAssinatura { get; set; }
@@ -217,11 +223,14 @@ namespace Unimake.Business.DFe
 
                 try
                 {
-                    AssinarSeNecessario(xml, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
+                    //AssinarSeNecessario(xml, inform, certificado, configuracao, tipoAmbiente, tipoDFe); antes era aqui
 
                     // Se não tem schemas específicos, valida só o geral mesmo
                     if (servico.SelectSingleNode(".//*[local-name()='SchemasEspecificos']") is null)
                     {
+
+                        AssinarSeNecessario(xml, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
+
                         ValidarSchemaGeral(xml, inform, tipoDFe, padraoNFSe);
 
                         return new ResultadoValidacao
@@ -236,7 +245,6 @@ namespace Unimake.Business.DFe
 
                     // Se chegou aqui, tem schemas específicos para validar, então precisa vincular o XML especifico com os schema para depois validar cada um
                     bool isEvento = servico.SelectSingleNode(".//*[local-name()='TagEvento']") != null;
-
                     var vinculador = VinculadorFactory.Criar(tipoDFe, isEvento);
                     var nodes = vinculador.Vincular(servico, xml);
 
@@ -244,7 +252,10 @@ namespace Unimake.Business.DFe
 
                     foreach (var (tipoCorreto, node) in nodes)
                     {
-                        MontarInformacaoEspecifica(servico, tipoCorreto, inform);
+                        MontarInformacaoEspecifica(servico, tipoCorreto, inform); // sempre troca as tags assinatura
+
+                        AssinarSeNecessario(xml, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
+
                         if (!xmlGeralValidado)
                         {
                             ValidarSchemaGeral(xml, inform, tipoDFe);
@@ -295,9 +306,44 @@ namespace Unimake.Business.DFe
 
         private static XmlNode ObterServico(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe)
         {
-            return padraoNFSe == PadraoNFSe.None
-                ? TratarDFe(xml, versao, tipoDFe, tagRaiz, xmlConfig)
-                : TratarNFSe(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
+            if (tipoDFe == TipoDFe.NFSe)
+            {
+                return TratarNFSe(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
+            }
+
+            if (tipoDFe == TipoDFe.ESocial || tipoDFe == TipoDFe.EFDReinf)
+            {
+                return TratarESocialEFDReinf(xml, versao, tipoDFe, tagRaiz, xmlConfig);
+            }
+
+            return TratarDFe(xml, versao, tipoDFe, tagRaiz, xmlConfig);
+        }
+
+
+        private static XmlNode TratarESocialEFDReinf(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig)
+        {
+
+            XmlNodeList nodeListDFe = xmlConfig.SelectNodes($"//{tipoDFe}/Servico");
+            XmlNode nodeServicoCorreto = null;
+
+            foreach (XmlNode nodeServico in nodeListDFe)
+            {
+                var tagIdentificadora = nodeServico.Attributes["tagIdentificadora"]?.Value;
+
+                if (!tagIdentificadora.IsNullOrEmpty())
+                {
+                    var nodeServicoESocial = xml.DocumentElement.SelectSingleNode($"//*[local-name()='{tagIdentificadora}']");
+
+                    if (!(nodeServicoESocial is null))
+                    {
+                        nodeServicoCorreto = nodeServico;
+                        break;
+                    }
+                }
+            }
+
+            return nodeServicoCorreto;
+
         }
 
 
@@ -412,7 +458,8 @@ namespace Unimake.Business.DFe
         {
             inform.SchemaArquivo = tipo.SelectSingleNode("*[local-name()='SchemaArquivo']")?.InnerText;
             inform.SchemaArquivoEspecifico = tipo.SelectSingleNode("*[local-name()='SchemaArquivoEspecifico']")?.InnerText;
-
+            inform.TargetNSEspecifico = tipo.SelectSingleNode("*[local-name()='TargetNS']")?.InnerText ?? inform.TargetNS; // Caso o nó específico tenha uma TargetNS diferente da geral, utiliza a específica, caso contrário, mantém a geral
+            inform.TagAtributoID = tipo.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText ?? inform.TagAtributoID; // Caso o nó específico tenha um atributo ID diferente da geral, utiliza o específico, caso contrário, mantém o geral
         }
 
 
@@ -450,6 +497,7 @@ namespace Unimake.Business.DFe
 
             if (string.IsNullOrWhiteSpace(tagAssinatura))
                 return;
+            var algoritmoAssinatura = AlgoritmoAssinatura(tipoDFe);
 
             if (usaCertificado)
             {
@@ -459,7 +507,7 @@ namespace Unimake.Business.DFe
                     {
                         if (!AssinaturaDigital.EstaAssinado(xml, tagAssinatura))
                         {
-                            AssinaturaDigital.Assinar(xml, tagAssinatura, tagID, cert, AlgorithmType.Sha1);
+                            AssinaturaDigital.Assinar(xml, tagAssinatura, tagID, cert, algoritmoAssinatura);
 
 
                         }
@@ -487,7 +535,21 @@ namespace Unimake.Business.DFe
         }
 
 
-        private void MontarQRCode(XmlDocument xml, bool gerarQrCode, TipoDFe tipoDFe, Configuracao configuracao)
+        private static AlgorithmType AlgoritmoAssinatura(TipoDFe tipoDFe)
+        {
+            switch (tipoDFe)
+            {
+                case TipoDFe.ESocial:
+                case TipoDFe.EFDReinf:
+                    return AlgorithmType.Sha256;
+                default:
+                    return AlgorithmType.Sha1;
+
+            }
+        }
+
+
+        private static void MontarQRCode(XmlDocument xml, bool gerarQrCode, TipoDFe tipoDFe, Configuracao configuracao)
         {
             var geradorQrCode = QrCodeFactory.Criar(configuracao, gerarQrCode, tipoDFe);
             geradorQrCode?.GerarQrCode(xml, configuracao);
@@ -558,7 +620,7 @@ namespace Unimake.Business.DFe
 
             var validarEspecifico = new ValidarSchema();
             string schemaEspecifico = $"{tipoDFe.ToString()}.{info.SchemaArquivoEspecifico}";
-            validarEspecifico.Validar(xmlEspecifico, schemaEspecifico, info.TargetNS);
+            validarEspecifico.Validar(xmlEspecifico, schemaEspecifico, info.TargetNSEspecifico);
 
             if (!validarEspecifico.Success)
             {
@@ -723,6 +785,13 @@ namespace Unimake.Business.DFe
                     break;
 
                 #endregion
+
+                case "eSocial":
+                    tipoDFe = TipoDFe.ESocial;
+                    break;
+                case "Reinf":
+                    tipoDFe = TipoDFe.EFDReinf;
+                    break;
 
                 default:
                     throw new Exception($"Não foi possível identificar o tipo do DFe pela tag raiz '{xml.DocumentElement.Name}'. " +

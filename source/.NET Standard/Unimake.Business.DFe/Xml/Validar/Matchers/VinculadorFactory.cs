@@ -1,7 +1,8 @@
 ﻿using System;
-using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Interfaces;
 using Unimake.Business.DFe.Matchers;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.Validar.Matchers;
 
 namespace Unimake.Business.DFe.Vinculadores
 {
@@ -17,30 +18,6 @@ namespace Unimake.Business.DFe.Vinculadores
     internal static class VinculadorFactory
     {
         /// <summary>
-        /// Cria um vinculador para modais baseado no tipo de DFe.
-        /// </summary>
-        public static IVinculadorSchema CriarVinculadorModal(TipoDFe tipoDFe)
-        {
-            switch (tipoDFe)
-            {
-                case TipoDFe.CTe:
-                    return new VincularCTe();
-                case TipoDFe.MDFe:
-                    return new VincularMDFe();
-                default:
-                    throw new InvalidOperationException($"Tipo de DFe {tipoDFe} não suporta vinculação de modal.");
-            }
-        }
-
-        /// <summary>
-        /// Cria um vinculador para eventos (funciona para todos os DFe).
-        /// </summary>
-        public static IVinculadorSchema CriarVinculadorEvento()
-        {
-            return new VincularEvento();
-        }
-
-        /// <summary>
         /// Cria um vinculador apropriado baseado no tipo de DFe e se é modal ou evento.
         /// </summary>
         /// <remarks>
@@ -49,9 +26,31 @@ namespace Unimake.Business.DFe.Vinculadores
         /// </remarks>
         public static IVinculadorSchema Criar(TipoDFe tipoDFe, bool isEvento)
         {
-            return isEvento
-                ? CriarVinculadorEvento()
-                : CriarVinculadorModal(tipoDFe);
+            switch (tipoDFe)
+            {
+                case TipoDFe.CTe:
+                    if (isEvento)
+                    {
+                        return new VincularEvento();
+                    }
+                    return new VincularCTe();
+
+                case TipoDFe.MDFe:
+                    if (isEvento)
+                    {
+                        return new VincularEvento();
+                    }
+                    return new VincularMDFe();
+
+                case TipoDFe.ESocial:
+                    return new VincularEventoESocial();
+
+                case TipoDFe.EFDReinf:
+                    return new VincularEventoEFDReinf();
+
+                default:
+                    return new VincularEvento(); // Para NFe e outros, o vinculador de evento é genérico
+            }
         }
     }
 }

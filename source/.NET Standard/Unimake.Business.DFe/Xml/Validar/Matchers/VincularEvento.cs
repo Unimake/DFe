@@ -7,9 +7,9 @@ namespace Unimake.Business.DFe.Matchers
 {
     internal class VincularEvento : IVinculadorSchema
     {
-        public List<(XmlNode TipoSchema, XmlNode Node)> Vincular(XmlNode servico, XmlDocument xml)
+        public List<(XmlNode TipoSchema, XmlNode NodeXml)> Vincular(XmlNode servico, XmlDocument xml)
         {
-            var lista = new List<(XmlNode NodeIdCorreto, XmlNode eventoNode)>();
+            var lista = new List<(XmlNode TipoSchema, XmlNode NodeXml)>();
 
             var tagEvento = servico.SelectSingleNode("*[local-name()='TagEvento']")?.InnerText;
             if (string.IsNullOrWhiteSpace(tagEvento))

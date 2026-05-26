@@ -18,6 +18,6 @@ namespace Unimake.Business.DFe.Interfaces
         /// <param name="xml">Documento XML a ser validado</param>
         /// <returns>Lista de tuplas contendo (TipoSchema, Node) vinculados</returns>
         /// <exception cref="Exception">Quando configuração ou estrutura XML é inválida</exception>
-        List<(XmlNode TipoSchema, XmlNode Node)> Vincular(XmlNode servico, XmlDocument xml);
+        List<(XmlNode TipoSchema, XmlNode NodeXml)> Vincular(XmlNode servico, XmlDocument xml);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
-using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Interfaces;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.Validar.Extractors;
 
 namespace Unimake.Business.DFe.Isoladores
 {
@@ -25,9 +26,12 @@ namespace Unimake.Business.DFe.Isoladores
                     return new IsoladorNFCom();
                 case TipoDFe.NF3e:
                     return new IsoladorNF3e();
-
+                case TipoDFe.ESocial:
+                    return new IsoladorESocial();
+                case TipoDFe.EFDReinf:
+                    return new IsoladorEFDReinf();
                 default:
-                    throw new InvalidOperationException($"Tipo de DFe não suportado: {tipoDFe}");
+                    throw new InvalidOperationException($"Não existe um isolador de XML configurado para o tipo de DFe '{tipoDFe}'.");
 
 
             }

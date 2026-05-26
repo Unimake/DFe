@@ -7,9 +7,9 @@ namespace Unimake.Business.DFe.Matchers
 {
     internal class VincularCTe : IVinculadorSchema
     {
-        public List<(XmlNode TipoSchema, XmlNode Node)> Vincular(XmlNode servico, XmlDocument xml)
+        public List<(XmlNode TipoSchema, XmlNode NodeXml)> Vincular(XmlNode servico, XmlDocument xml)
         {
-            var lista = new List<(XmlNode NodeIdCorreto, XmlNode NodeInfCTe)>();
+            var lista = new List<(XmlNode TipoSchema, XmlNode NodeXml)>();
             var schemasEspecificos = servico.SelectSingleNode("*[local-name()='SchemasEspecificos']");
 
             if (schemasEspecificos is null)
