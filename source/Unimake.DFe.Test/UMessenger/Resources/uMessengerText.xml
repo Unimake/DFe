@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<uMessenger versao="1.00">
+  <SendTextMessage>
+    <InstanceName>MinhaInstancia123</InstanceName>
+    <To>5541999999999</To>
+    <Text>Olá! Esta é uma mensagem de teste enviada via uMessenger.\nAtenciosamente, Equipe Unimake.</Text>
+    <Testing>true</Testing>
+  </SendTextMessage>
+</uMessenger>

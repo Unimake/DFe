@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<uMessenger versao="1.00">
+  <SendTextMessage Id="MSG001">
+    <InstanceName>MinhaInstancia123</InstanceName>
+    <To>5541999999999</To>
+    <Text>Primeira mensagem de teste.</Text>
+    <Testing>true</Testing>
+  </SendTextMessage>
+  <SendTextMessage Id="MSG002">
+    <InstanceName>MinhaInstancia123</InstanceName>
+    <To>5541988888888</To>
+    <Text>Segunda mensagem de teste.</Text>
+    <Testing>true</Testing>
+  </SendTextMessage>
+</uMessenger>
