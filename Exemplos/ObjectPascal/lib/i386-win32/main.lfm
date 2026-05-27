@@ -212,11 +212,11 @@ object frmPrincipal: TfrmPrincipal
   end
   object GroupBox3: TGroupBox
     Left = 760
-    Height = 624
+    Height = 144
     Top = 0
     Width = 374
     Caption = 'Diversos'
-    ClientHeight = 594
+    ClientHeight = 114
     ClientWidth = 370
     TabOrder = 4
     OnClick = GroupBox3Click
@@ -678,5 +678,33 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'NACIONAL - Gerar NFSe c/Objeto'
     TabOrder = 10
     OnClick = BtnNACIONALGerarNFSeObjetoClick
+  end
+  object GroupBox9: TGroupBox
+    Left = 735
+    Height = 437
+    Top = 165
+    Width = 381
+    Caption = 'DC-e'
+    ClientHeight = 407
+    ClientWidth = 377
+    TabOrder = 11
+    object BtnConsultarStatusDCe: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 8
+      Width = 360
+      Caption = 'Consultar Status'
+      TabOrder = 0
+      OnClick = BtnConsultarStatusDCeClick
+    end
+    object BtnEnviarDCe: TButton
+      Left = 8
+      Height = 38
+      Top = 48
+      Width = 357
+      Caption = 'EnviarDCe'
+      TabOrder = 1
+      OnClick = BtnEnviarDCeClick
+    end
   end
 end

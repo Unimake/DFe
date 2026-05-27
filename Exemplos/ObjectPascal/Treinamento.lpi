@@ -330,6 +330,15 @@
         <Filename Value="NACIONALConsultarDistribuicaoEventosNFSe.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="consultarstatusdce.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarStatusDCe"/>
+      </Unit>
+      <Unit>
+        <Filename Value="EnviarDCe.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

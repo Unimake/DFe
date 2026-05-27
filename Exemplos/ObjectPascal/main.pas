@@ -25,7 +25,8 @@ uses
   EnviarNFCeOffline, EnviarNFeSincronoContingenciaSVC, NACIONALGerarNFSeObjeto,
   NACIONALCancelarNFSeObjeto, NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto,
   NACIONALConsultarEventoNFSe, NACIONALConsultarDistribuicaoNFSeNSU, ConsultarChavesNFCeSP,
-  DownloadXMLNFCeSEFAZSP, NACIONALConsultarDistribuicaoEventosNFSe;
+  DownloadXMLNFCeSEFAZSP, NACIONALConsultarDistribuicaoEventosNFSe,
+  ConsultarStatusDCe, EnviarDCe;
 
 type
 
@@ -83,6 +84,7 @@ type
     BtnNACIONALConsultarNFSeObjeto: TButton;
     btnDownloadXMLNFCeSEFAZSP: TButton;
     BtnNACIONALConsultarDistribuicaoEventosNFSe: TButton;
+    BtnEnviarDCe: TButton;
     EnviarXmlGNRe: TButton;
     ConsultaConfigGNRE: TButton;
     GroupBox1: TGroupBox;
@@ -105,6 +107,8 @@ type
     BtnNACIONALConsultarEventoNFSe: TToggleBox;
     BtnNACIONALConsultarDistribuicaoNFSeNSU: TToggleBox;
     btnConsultaChaves: TToggleBox;
+    GroupBox9: TGroupBox;
+    BtnConsultarStatusDCe: TToggleBox;
     procedure BtnBETHACancelarNFSeClick(Sender: TObject);
     procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
     procedure BtnBETHAConsultarNFSeRPSClick(Sender: TObject);
@@ -114,10 +118,12 @@ type
     procedure btnConsultaChavesClick(Sender: TObject);
     procedure btnConsultarDistribuicaoDFeOnClick(Sender: TObject);
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
+    procedure BtnConsultarStatusDCeClick(Sender: TObject);
     procedure BtnConsultarStatusNFComClick(Sender: TObject);
     procedure btnConsultaStatusNFeClick(Sender: TObject);
     procedure btnDesserializarRetornoConsultaDFeClick(Sender: TObject);
     procedure btnDownloadXMLNFCeSEFAZSPClick(Sender: TObject);
+    procedure BtnEnviarDCeClick(Sender: TObject);
     procedure BtnEnviarEventoCancelamentoMDFeClick(Sender: TObject);
     procedure BtnEnviarEventoEncerramentoMDFeClick(Sender: TObject);
     procedure btnEnviarEventoManifestacaoNFeClick(Sender: TObject);
@@ -225,6 +231,17 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.BtnEnviarDCeClick(Sender: TObject);
+var
+  oServico: TEnviarDCe;
+begin
+  oServico := TEnviarDCe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
 procedure TfrmPrincipal.BtnEnviarEventoCancelamentoMDFeClick(Sender: TObject);
 var
   oServico: TEnviarEventoCancelamentoMDFe;
@@ -321,6 +338,17 @@ var
   oServico: TConsultarSituacaoNFe;
 begin
   oServico := TConsultarSituacaoNFe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnConsultarStatusDCeClick(Sender: TObject);
+var
+  oServico: TConsultarStatusDCe;
+begin
+  oServico := TConsultarStatusDCe.Create;
   try
     oServico.Executar();
   finally
