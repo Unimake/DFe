@@ -3174,47 +3174,40 @@
 			<TagAtributoID>evtExcProcTrab</TagAtributoID>
 			<TargetNS>http://www.esocial.gov.br/schema/evt/evtExcProcTrab/v_S_01_03_00</TargetNS>
 		</Servico>
-		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="consultaIdentificadoresEvts">
+		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="consultaEvtsEmpregador">
 			<Descricao>Consultar Eventos pelo Empregador eSocial</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>eSocial</TagAssinatura>
 			<TagAtributoID>consultaIdentificadoresEvts</TagAtributoID>
 			<TargetNS>http://www.esocial.gov.br/schema/consulta/identificadores-eventos/empregador/v1_0_0</TargetNS>
 		</Servico>
-		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="consultaIdentificadoresEvts">
+		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="consultaEvtsTrabalhador">
 			<Descricao>Consultar Eventos pelo Trabalhador eSocial</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>eSocial</TagAssinatura>
 			<TagAtributoID>consultaIdentificadoresEvts</TagAtributoID>
 			<TargetNS>http://www.esocial.gov.br/schema/consulta/identificadores-eventos/trabalhador/v1_0_0</TargetNS>
 		</Servico>
-		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="consultaIdentificadoresEvts">
+		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="consultaEvtsTabela">
 			<Descricao>Consultar Eventos da Tabela eSocial</Descricao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>eSocial</TagAssinatura>
 			<TagAtributoID>consultaIdentificadoresEvts</TagAtributoID>
 			<TargetNS>http://www.esocial.gov.br/schema/consulta/identificadores-eventos/tabela/v1_0_0</TargetNS>
 		</Servico>
-		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="download">
+		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="solicDownloadEventosPorNrRecibo">
 			<Descricao>Download Eventos por Número do Recibo</Descricao>
 			<SchemaArquivo>SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd</SchemaArquivo>
 			<TagAssinatura>eSocial</TagAssinatura>
 			<TagAtributoID>download</TagAtributoID>
 			<TargetNS>http://www.esocial.gov.br/servicos/empregador/download/solicitacao/v1_0_0</TargetNS>
 		</Servico>
-		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="download">
+		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="solicDownloadEvtsPorId">
 			<Descricao>Download Eventos por ID</Descricao>
 			<SchemaArquivo>SolicitacaoDownloadEventosPorId-v1_0_0.xsd</SchemaArquivo>
 			<TagAssinatura>eSocial</TagAssinatura>
 			<TagAtributoID>download</TagAtributoID>
 			<TargetNS>http://www.esocial.gov.br/servicos/empregador/download/solicitacao/v1_0_0</TargetNS>
-		</Servico>
-		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="">
-			<Descricao>Consulta Lote Eventos Assincrono</Descricao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TargetNS>http://www.esocial.gov.br/servicos/empregador/lote/eventos/envio/consulta/retornoProcessamento/v1_1_0</TargetNS>
 		</Servico>
 	</ESocial>
 	<!--EFDReinf-->
