@@ -60,7 +60,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string Id
         {
-            get => string.IsNullOrWhiteSpace(idField) ? "DCe" + Chave : idField;
+            get
+            {
+                idField = "DCe" + Chave;
+                return idField;
+            }
             set => idField = value;
         }
 
@@ -69,11 +73,6 @@ namespace Unimake.Business.DFe.Xml.DCe
         {
             get
             {
-                if (!string.IsNullOrWhiteSpace(chaveField))
-                {
-                    return chaveField;
-                }
-
                 if (!string.IsNullOrWhiteSpace(idField) && idField.StartsWith("DCe", StringComparison.OrdinalIgnoreCase))
                 {
                     chaveField = idField.Substring(3);
@@ -460,6 +459,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         public bool ShouldSerializeFone() => !string.IsNullOrEmpty(Fone);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.EnderDest")]
+    [ComVisible(true)]
+#endif
     public class EnderDest : EnderEmit
     {
         [XmlElement("email")]
@@ -470,6 +474,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         public bool ShouldSerializeXPais() => !string.IsNullOrEmpty(XPais);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.Fisco")]
+    [ComVisible(true)]
+#endif
     public class Fisco
     {
         [XmlElement("CNPJ")]
@@ -482,6 +491,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         public UFBrasil UF { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.Marketplace")]
+    [ComVisible(true)]
+#endif
     public class Marketplace
     {
         [XmlElement("CNPJ")]
@@ -494,6 +508,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         public string Site { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.Transportadora")]
+    [ComVisible(true)]
+#endif
     public class Transportadora
     {
         [XmlElement("CNPJ")]
@@ -506,13 +525,28 @@ namespace Unimake.Business.DFe.Xml.DCe
     /// <summary>
     /// Identificação da ECT (Correios).
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.ECT")]
+    [ComVisible(true)]
+#endif
     public class ECT : Transportadora { }
 
     /// <summary>
     /// Classe mantida para compatibilidade e mapeada para o grupo ECT.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.EmpEmisProp")]
+    [ComVisible(true)]
+#endif
     public class EmpEmisProp : ECT { }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.Dest")]
+    [ComVisible(true)]
+#endif
     public class Dest
     {
         [XmlElement("CNPJ")]
@@ -535,6 +569,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         public bool ShouldSerializeIdOutros() => !string.IsNullOrEmpty(IdOutros);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.AutXML")]
+    [ComVisible(true)]
+#endif
     public class AutXML
     {
         [XmlElement("CNPJ")]
@@ -547,6 +586,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         public bool ShouldSerializeCPF() => !string.IsNullOrEmpty(CPF);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.Det")]
+    [ComVisible(true)]
+#endif
     public class Det
     {
         [XmlAttribute(AttributeName = "nItem")]
@@ -561,6 +605,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         public bool ShouldSerializeInfAdProd() => !string.IsNullOrEmpty(InfAdProd);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.Prod")]
+    [ComVisible(true)]
+#endif
     public class Prod
     {
         [XmlElement("xProd")]
@@ -600,6 +649,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.Total")]
+    [ComVisible(true)]
+#endif
     public class Total
     {
         [XmlIgnore]
@@ -613,15 +667,25 @@ namespace Unimake.Business.DFe.Xml.DCe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.Transp")]
+    [ComVisible(true)]
+#endif
     public class Transp
     {
         [XmlElement("modTrans")]
-        public string ModTrans { get; set; }
+        public ModalidadeTransporteDCe ModTrans { get; set; }
 
         [XmlElement("CNPJTransp")]
         public string CNPJTransp { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.InfAdic")]
+    [ComVisible(true)]
+#endif
     public class InfAdic
     {
         [XmlElement("infAdFisco")]
@@ -648,6 +712,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         public bool ShouldSerializeInfAdECT() => !string.IsNullOrEmpty(InfAdECT);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.ObsCont")]
+    [ComVisible(true)]
+#endif
     public class ObsCont
     {
         /// <summary>
@@ -663,8 +732,18 @@ namespace Unimake.Business.DFe.Xml.DCe
         public bool ShouldSerializeXTexto() => !string.IsNullOrEmpty(XTexto);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.ObsMarketplace")]
+    [ComVisible(true)]
+#endif
     public class ObsMarketplace : ObsCont { }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.InfDec")]
+    [ComVisible(true)]
+#endif
     public class InfDec
     {
         [XmlElement("xObs1")]
@@ -674,6 +753,11 @@ namespace Unimake.Business.DFe.Xml.DCe
         public string XObs2 { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.InfDCeSupl")]
+    [ComVisible(true)]
+#endif
     public class InfDCeSupl
     {
         [XmlElement("qrCodDCe")]

@@ -111,7 +111,7 @@ namespace Unimake.DFe.Test.DCe
                 Total = new Total { VDC = 10 },
                 Transp = new Transp
                 {
-                    ModTrans = "0",
+                    ModTrans = ModalidadeTransporteDCe.Correios,
                     CNPJTransp = "00000000000199"
                 },
                 InfAdic = new InfAdic

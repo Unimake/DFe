@@ -297,7 +297,16 @@ namespace Unimake.Business.DFe.Servicos.DCe
         {
             try
             {
-                Inicializar(DCe?.GerarXML() ?? throw new ArgumentNullException(nameof(DCe)), configuracao);
+
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
+
+                if (ConteudoXML == null)
+                {
+                    Inicializar(DCe?.GerarXML() ?? throw new ArgumentNullException(nameof(DCe)), configuracao);
+                }
 
                 Executar();
             }

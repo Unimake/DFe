@@ -5571,6 +5571,34 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region ModalidadeTransporteDCe
+
+    /// <summary>
+    /// Modalidade do transporte da DCe
+    /// </summary>
+    public enum ModalidadeTransporteDCe
+    {
+        /// <summary>
+        /// 0 - Transporte pelos correios
+        /// </summary>
+        [XmlEnum("0")]
+        Correios = 0,
+
+        /// <summary>
+        /// 1 - Transporte por conta própria
+        /// </summary>
+        [XmlEnum("1")]
+        ContaPropria = 1,
+
+        /// <summary>
+        /// 2 - Transporte por empresa transportadora
+        /// </summary>
+        [XmlEnum("2")]
+        EmpresaTransportadora = 2
+    }
+
+    #endregion
+
     #region Tipo do Transportador para o MDFe
 
     /// <summary>
