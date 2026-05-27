@@ -5123,6 +5123,44 @@
 				<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
 			</Servico>
 		</Padrao>
+		<Padrao nome="GIAP">
+			<Servico tagRaiz="nfe" versao="2.00" tagIdentificadora="cancelaNota">
+				<Descricao>Evento de cancelamento da NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="consulta" versao="2.00" tagIdentificadora="inscricaoMunicipal">
+				<Descricao>Consulta da NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="nfe" versao="2.00" tagIdentificadora="notaFiscal">
+				<Descricao>Envio de lote RPS - Sincrono</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+		</Padrao>
 		<Padrao nome="GINFES">
 			<Servico tagRaiz="CancelarNfseEnvio" versao="2.00" tagIdentificadora="Prestador">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
