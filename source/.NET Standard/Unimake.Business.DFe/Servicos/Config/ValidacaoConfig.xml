@@ -5584,6 +5584,200 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 		</Padrao>
+		<Padrao nome="PAULISTANA">
+			<Servico tagRaiz="PedidoEnvioLoteRPS" versao="2" tagIdentificadora="IBSCBS">
+				<Descricao>Consulta NFSe</Descricao>
+				<SchemaArquivo>PedidoConsultaNFe_v02.xsd</SchemaArquivo>
+				<TagAssinatura>p1:PedidoConsultaNFe</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="PedidoEnvioRPS" versao="2" tagIdentificadora="IBSCBS">
+				<Descricao>Envio Rps</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>PedidoEnvioRPS</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="PedidoCancelamentoNFe" versao="1" tagIdentificadora="Cabecalho">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo>PedidoCancelamentoNFe_v01.xsd</SchemaArquivo>
+				<TagAssinatura>PedidoCancelamentoNFe</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="PedidoConsultaLote" versao="1" tagIdentificadora="Cabecalho">
+				<Descricao>Consulta lote</Descricao>
+				<SchemaArquivo>PedidoConsultaLote_v01.xsd</SchemaArquivo>co
+				<TagAssinatura>PedidoConsultaLote</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p1:PedidoConsultaNFePeriodo" versao="1" tagIdentificadora="Cabecalho">
+				<Descricao>Consulta NFSe Emitidas</Descricao>
+				<SchemaArquivo>PedidoConsultaNFePeriodo_v01.xsd</SchemaArquivo>
+				<TagAssinatura>p1:PedidoConsultaNFePeriodo</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p1:PedidoConsultaNFePeriodo" versao="1" tagIdentificadora="Cabecalho">
+				<Descricao>Consulta NFSe Recebidas</Descricao>
+				<SchemaArquivo>PedidoConsultaNFePeriodo_v02.xsd</SchemaArquivo>
+				<TagAssinatura>p1:PedidoConsultaNFePeriodo</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p1:PedidoConsultaNFe" versao="1" tagIdentificadora="Cabecalho">
+				<Descricao>Consultar Nfse</Descricao>
+				<SchemaArquivo>PedidoConsultaNFe_v01.xsd</SchemaArquivo>
+				<TagAssinatura>p1:PedidoConsultaNFe</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="PedidoEnvioLoteRPS" versao="1" tagIdentificadora="RPS">
+				<Descricao>Envio Lote Rps</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>PedidoEnvioLoteRPS</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="PedidoEnvioRPS" versao="1" tagIdentificadora="RPS">
+				<Descricao>Envio Rps</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>PedidoEnvioRPS</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="PedidoEnvioLoteRPS" versao="1" tagIdentificadora="RPS">
+				<Descricao>Envio Lote RPS Teste</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>PedidoEnvioLoteRPS</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="PedidoCancelamentoNFe" versao="2" tagIdentificadora="Cabecalho">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo>PedidoCancelamentoNFe_v02.xsd</SchemaArquivo>
+				<TagAssinatura>PedidoCancelamentoNFe</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p1:PedidoInformacoesLote" versao="2" tagIdentificadora="Cabecalho">
+				<Descricao>Consulta Informações Lote</Descricao>
+				<SchemaArquivo>PedidoInformacoesLote_v02.xsd</SchemaArquivo>
+				<TagAssinatura>p1:PedidoInformacoesLote</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="PedidoConsultaLote" versao="2" tagIdentificadora="Cabecalho">
+				<Descricao>Consulta Informações Lote</Descricao>
+				<SchemaArquivo>PedidoConsultaLote_v02.xsd</SchemaArquivo>
+				<TagAssinatura>PedidoConsultaLote</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p1:PedidoConsultaNFePeriodo" versao="2" tagIdentificadora="Cabecalho">
+				<Descricao>Consulta NFSe Emitidas</Descricao>
+				<SchemaArquivo>PedidoConsultaNFePeriodo_v02.xsd</SchemaArquivo>
+				<TagAssinatura>p1:PedidoConsultaNFePeriodo</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p1:PedidoConsultaNFePeriodo" versao="2" tagIdentificadora="Cabecalho">
+				<Descricao>Consulta NFSe Recebidas</Descricao>
+				<SchemaArquivo>PedidoConsultaNFePeriodo_v02.xsd</SchemaArquivo>
+				<TagAssinatura>p1:PedidoConsultaNFePeriodo</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p1:PedidoConsultaNFe" versao="2" tagIdentificadora="Cabecalho">
+				<Descricao>Envio Lote Rps</Descricao>
+				<SchemaArquivo>PedidoConsultaNFe_v02.xsd</SchemaArquivo>
+				<TagAssinatura>p1:PedidoConsultaNFe</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+		</Padrao>
 		<Padrao nome="PRONIM">
 			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="tpAmb">
 				<Descricao>Envio do DPS - Sincrono</Descricao>
