@@ -2309,4 +2309,10 @@
 		<ArqConfig>CapelaDeSantanaRS.xml</ArqConfig>
 		<PadraoNFSe>DBSELLER</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4314605">
+		<Nome>Piratini - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>PiratiniRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
