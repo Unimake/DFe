@@ -1422,7 +1422,7 @@
 		<PadraoNFSe>FINTEL</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3303609">
-		<Nome>Paracambi - RJ</Nome>
+		<Nome> - RJ</Nome>
 		<UF>RJ</UF>
 		<ArqConfig>ParacambiRJ.xml</ArqConfig>
 		<PadraoNFSe>FINTEL</PadraoNFSe>
@@ -2308,5 +2308,11 @@
 		<UF>RS</UF>
 		<ArqConfig>CapelaDeSantanaRS.xml</ArqConfig>
 		<PadraoNFSe>DBSELLER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3523404">
+		<Nome>Itatiba - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ItatibaSP.xml</ArqConfig>
+		<PadraoNFSe>FINTEL</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
