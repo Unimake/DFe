@@ -208,7 +208,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta
         /// Número de Sequência Único (NSU)
         /// </summary>
         [XmlElement("NSU")]
-        public long NSU { get; set; }
+        public string NSU { get; set; }
 
         /// <summary>
         /// Chave de acesso do documento

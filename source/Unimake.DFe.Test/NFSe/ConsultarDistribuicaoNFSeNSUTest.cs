@@ -75,7 +75,7 @@ namespace Unimake.DFe.Test.NFSe
             if (consultarNSU.Result.LoteDFe?.Count > 0)
             {
                 var primeiroDocumento = consultarNSU.Result.LoteDFe[0];
-                Assert.True(primeiroDocumento.NSU > 0);
+                Assert.True(Convert.ToInt64(primeiroDocumento.NSU) > 0);
                 Assert.NotEmpty(primeiroDocumento.ChaveAcesso);
                 Assert.NotEmpty(primeiroDocumento.TipoDocumento);
                 Assert.NotNull(primeiroDocumento.ArquivoXml);

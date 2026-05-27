@@ -117,6 +117,7 @@
 		<None Remove="Servicos\Config\CTe\TO.xml" />
 		<None Remove="Servicos\Config\DARE\AN.xml" />
 		<None Remove="Servicos\Config\DARE\Config.xml" />
+		<None Remove="Servicos\Config\NFSe\PiratiniRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ItatibaSP.xml" />
 		<None Remove="Servicos\Config\UMessenger\AN.xml" />
 		<None Remove="Servicos\Config\UMessenger\Config.xml" />
@@ -1586,6 +1587,7 @@
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DiademaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuararapesSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PiratiniRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItatibaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBernardoDoCampoSP.xml" />
 	</ItemGroup>
