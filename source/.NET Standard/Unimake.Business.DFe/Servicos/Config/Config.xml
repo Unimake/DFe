@@ -1589,12 +1589,6 @@
 		<ArqConfig>TeixeiraDeFreitasBA.xml</ArqConfig>
 		<PadraoNFSe>MODERNIZACAO_PUBLICA</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5107305">
-		<Nome>São José do Rio Claro - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>SaoJoseDoRioClaroMT.xml</ArqConfig>
-		<PadraoNFSe>COPLAN</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3514403">
 		<Nome>Dracena - SP</Nome>
 		<UF>SP</UF>
