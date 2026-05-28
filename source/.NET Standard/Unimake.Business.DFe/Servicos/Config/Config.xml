@@ -1553,12 +1553,6 @@
 		<ArqConfig>ManhuacuMG.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3204203">
-		<Nome>Piuma - ES</Nome>
-		<UF>ES</UF>
-		<ArqConfig>PiumaES.xml</ArqConfig>
-		<PadraoNFSe>EL</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3162708">
 		<Nome>São João do Paraíso - MG</Nome>
 		<UF>MG</UF>
@@ -1594,12 +1588,6 @@
 		<UF>BA</UF>
 		<ArqConfig>TeixeiraDeFreitasBA.xml</ArqConfig>
 		<PadraoNFSe>MODERNIZACAO_PUBLICA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5107305">
-		<Nome>São José do Rio Claro - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>SaoJoseDoRioClaroMT.xml</ArqConfig>
-		<PadraoNFSe>COPLAN</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3514403">
 		<Nome>Dracena - SP</Nome>
@@ -1649,18 +1637,6 @@
 		<ArqConfig>EmbuDasArtesSP.xml</ArqConfig>
 		<PadraoNFSe>GIAP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3526704">
-		<Nome>Leme - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>LemeSP.xml</ArqConfig>
-		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3503307">
-		<Nome>Araras - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>ArarasSP.xml</ArqConfig>
-		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4110706">
 		<Nome>Irati - PR</Nome>
 		<UF>PR</UF>
@@ -1707,18 +1683,6 @@
 		<Nome>Guaxupé - MG</Nome>
 		<UF>MG</UF>
 		<ArqConfig>GuaxupeMG.xml</ArqConfig>
-		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3138203">
-		<Nome>Lavras - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>LavrasMG.xml</ArqConfig>
-		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3147006">
-		<Nome>Paracatu - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>ParacatuMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3149309">
@@ -2140,12 +2104,6 @@
 		<UF>MG</UF>
 		<ArqConfig>GuararaMG.xml</ArqConfig>
 		<PadraoNFSe>FUTURIZE</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3556206">
-		<Nome>Valinhos - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>ValinhosSP.xml</ArqConfig>
-		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3524709">
 		<Nome>Jaguariúna - SP</Nome>
