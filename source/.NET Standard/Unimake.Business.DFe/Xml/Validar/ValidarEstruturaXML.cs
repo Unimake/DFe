@@ -1,17 +1,15 @@
-﻿using Org.BouncyCastle.Asn1.X509;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe.Isoladores;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Vinculadores;
 using Unimake.Business.DFe.Xml.Validar.QRCode;
 using Unimake.Exceptions;
-using Unimake.Formatters;
+using System.Linq;
+
 
 
 
@@ -659,14 +657,21 @@ namespace Unimake.Business.DFe
 
                 if (nodeVersao.Count > 0)
                 {
-                    var versaoAtributo = ((XmlElement)nodeVersao[0]).GetAttribute("versao");
-                    var versaoValor = nodeVersao[0].InnerText; // Em alguns casos a versão pode estar no valor do nó ao invés de um atributo, então verificamos os dois
+
+                    var elemento = (XmlElement)nodeVersao[0];
+
+                    var versaoAtributo = elemento.GetAttribute("versao");
+
+                    versaoAtributo = string.IsNullOrWhiteSpace(versaoAtributo) ? elemento.GetAttribute("Versao") : versaoAtributo; // caso tenha atributo com primeira letra em uppercase
 
                     if (!string.IsNullOrEmpty(versaoAtributo))
                         return versaoAtributo;
 
+                    var versaoValor = elemento.ChildNodes.Cast<XmlNode>().FirstOrDefault(x => x.NodeType == XmlNodeType.Text)?.Value; // pegando somente o valor direto do node para evitar erros
+
                     if (!string.IsNullOrEmpty(versaoValor))
                         return versaoValor;
+
                 }
             }
             return string.Empty;
