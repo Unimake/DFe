@@ -1,4 +1,6 @@
+using System;
 using System.Xml;
+using System.IO;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.CIOT;
 using Xunit;
@@ -76,6 +78,112 @@ namespace Unimake.DFe.Test.CIOT
             Assert.Equal((int)UFBrasil.AN, configuracao.CodigoUF);
             Assert.Equal(TipoAmbiente.Homologacao, configuracao.TipoAmbiente);
             Assert.IsType<RetDeclaracaoOperacaoTransporte>(servico.Result);
+        }
+
+        /// <summary>
+        /// Gerar XML de distribuição da declaração de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "DeclaracaoOperacaoTransporte")]
+        public void DeclaracaoOperacaoTransporteProcResult()
+        {
+            var envio = LerXML<DeclaracaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\declaracaoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retDeclaracaoOperacaoTransporte.xml");
+
+            var servico = new CIOTDeclaracaoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            var proc = servico.DeclaracaoOperacaoTransporteProcResult;
+
+            Assert.NotNull(proc);
+            Assert.Equal("1234567890123456", proc.RetDeclaracaoOperacaoTransporte.CodigoIdentificacaoOperacao);
+            Assert.Equal("1234567890123456-procCIOT.xml", proc.NomeArquivoDistribuicao);
+            Assert.Equal("DeclaracaoOperacaoTransporteProc", proc.GerarXML().DocumentElement.Name);
+        }
+
+        /// <summary>
+        /// Gravar XML de distribuição em pasta para declaração de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "DeclaracaoOperacaoTransporte")]
+        public void GravarXmlDistribuicaoDeclaracaoOperacaoTransportePasta()
+        {
+            var envio = LerXML<DeclaracaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\declaracaoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retDeclaracaoOperacaoTransporte.xml");
+
+            var servico = new CIOTDeclaracaoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            var pasta = Path.Combine(Path.GetTempPath(), "Unimake.DFe.Test", "CIOT", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(pasta);
+
+            try
+            {
+                servico.GravarXmlDistribuicao(pasta);
+
+                var arquivo = Path.Combine(pasta, "1234567890123456-procCIOT.xml");
+                Assert.True(File.Exists(arquivo));
+
+                var conteudo = File.ReadAllText(arquivo);
+                Assert.Contains("<DeclaracaoOperacaoTransporteProc", conteudo);
+                Assert.Contains("<CodigoIdentificacaoOperacao>1234567890123456</CodigoIdentificacaoOperacao>", conteudo);
+            }
+            finally
+            {
+                if (Directory.Exists(pasta))
+                {
+                    Directory.Delete(pasta, true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gravar XML de distribuição em stream para declaração de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "DeclaracaoOperacaoTransporte")]
+        public void GravarXmlDistribuicaoDeclaracaoOperacaoTransporteStream()
+        {
+            var envio = LerXML<DeclaracaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\declaracaoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retDeclaracaoOperacaoTransporte.xml");
+
+            var servico = new CIOTDeclaracaoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            var pasta = Path.Combine(Path.GetTempPath(), "Unimake.DFe.Test", "CIOT", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(pasta);
+            var arquivo = Path.Combine(pasta, "stream-procCIOT.xml");
+
+            try
+            {
+                using (var stream = new FileStream(arquivo, FileMode.Create, FileAccess.ReadWrite, FileShare.Read))
+                {
+                    servico.GravarXmlDistribuicao(stream);
+                }
+
+                var conteudo = File.ReadAllText(arquivo);
+                Assert.Contains("<DeclaracaoOperacaoTransporteProc", conteudo);
+                Assert.Contains("<CodigoVerificador>1234</CodigoVerificador>", conteudo);
+            }
+            finally
+            {
+                if (Directory.Exists(pasta))
+                {
+                    Directory.Delete(pasta, true);
+                }
+            }
         }
 
         /// <summary>
@@ -196,7 +304,7 @@ namespace Unimake.DFe.Test.CIOT
 
             Assert.Equal("USUARIO_NAO_AUTORIZADO", servico.Result.Temp.Error);
             Assert.Equal("Rejeição: O CPF/CNPJ do certificado digital não corresponde a nenhum transportador cadastrado no RNTRC", servico.Result.Temp.Message);
-            Assert.Equal("2026-05-26T20:34:17.2862302Z", servico.Result.Temp.Timestamp);
+            Assert.Equal(System.DateTimeOffset.Parse("2026-05-26T20:34:17.2862302Z"), servico.Result.Temp.Timestamp);
             Assert.Equal("ee174fab-71e7-4c1f-97e8-3029216bf457", servico.Result.Temp.CorrelationId);
             Assert.Equal("/pefServices/api/CancelamentoOperacaoTransporte", servico.Result.Temp.Path);
             Assert.Equal("RetCancelamentoOperacaoTransporte", servico.RetornoWSXML.DocumentElement.Name);
@@ -272,7 +380,7 @@ namespace Unimake.DFe.Test.CIOT
             Assert.NotNull(result);
             Assert.Equal("USUARIO_NAO_AUTORIZADO", result.Temp.Error);
             Assert.Equal("Rejeição: O CPF/CNPJ do certificado digital não corresponde a nenhum transportador cadastrado no RNTRC", result.Temp.Message);
-            Assert.Equal("2026-05-26T20:34:17.2862302Z", result.Temp.Timestamp);
+            Assert.Equal(System.DateTimeOffset.Parse("2026-05-26T20:34:17.2862302Z"), result.Temp.Timestamp);
             Assert.Equal("ee174fab-71e7-4c1f-97e8-3029216bf457", result.Temp.CorrelationId);
             Assert.Equal(path, result.Temp.Path);
             Assert.Equal(result.GetType().Name, servico.RetornoWSXML.DocumentElement.Name);

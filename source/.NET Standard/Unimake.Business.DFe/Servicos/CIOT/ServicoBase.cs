@@ -2,11 +2,17 @@
 using System.Runtime.InteropServices;
 #endif
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Xml;
+using System.Xml.Serialization;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml;
@@ -85,10 +91,14 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// </summary>
         protected override HttpContent CriarHttpContentPadrao()
         {
-            var json = JsonConvert.SerializeObject(Envio, new JsonSerializerSettings
+            var settings = new JsonSerializerSettings
             {
-                NullValueHandling = NullValueHandling.Ignore
-            });
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CIOTContractResolver()
+            };
+            var jsonObject = JObject.FromObject(Envio, JsonSerializer.Create(settings));
+            NormalizarCamposDateTime(jsonObject);
+            var json = jsonObject.ToString(Newtonsoft.Json.Formatting.None);
 
             return new StringContent(json, Encoding.UTF8, Configuracoes.WebContentType);
         }
@@ -231,6 +241,61 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             }
 
             return doc.ImportNode(origem, true);
+        }
+
+        private static void NormalizarCamposDateTime(JToken token)
+        {
+            if (token is JObject objeto)
+            {
+                var propriedades = new List<JProperty>(objeto.Properties());
+
+                foreach (var propriedade in propriedades)
+                {
+                    NormalizarCamposDateTime(propriedade.Value);
+
+                    if (!propriedade.Name.EndsWith("Field", StringComparison.Ordinal))
+                    {
+                        continue;
+                    }
+
+                    var nomeOriginal = propriedade.Name.Substring(0, propriedade.Name.Length - "Field".Length);
+                    foreach (var existente in new List<JProperty>(objeto.Properties().Where(p => p.Name == nomeOriginal)))
+                    {
+                        existente.Remove();
+                    }
+
+                    objeto.Add(new JProperty(nomeOriginal, propriedade.Value));
+                    propriedade.Remove();
+                }
+            }
+            else if (token is JArray array)
+            {
+                foreach (var item in array)
+                {
+                    NormalizarCamposDateTime(item);
+                }
+            }
+        }
+
+        private sealed class CIOTContractResolver : DefaultContractResolver
+        {
+            protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
+            {
+                var property = base.CreateProperty(member, memberSerialization);
+                var xmlIgnore = member.GetCustomAttributes(typeof(XmlIgnoreAttribute), true);
+
+                if (xmlIgnore?.Length > 0)
+                {
+                    property.Ignored = true;
+                }
+
+                if (member.Name.EndsWith("Field", StringComparison.Ordinal))
+                {
+                    property.PropertyName = member.Name;
+                }
+
+                return property;
+            }
         }
     }
 }

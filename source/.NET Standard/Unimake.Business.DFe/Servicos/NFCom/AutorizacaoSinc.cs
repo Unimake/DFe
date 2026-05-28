@@ -129,7 +129,7 @@ namespace Unimake.Business.DFe.Servicos.NFCom
         /// <summary>
         /// Lista com o conteúdo retornado das consultas situação do NFComs enviadas
         /// </summary>
-        public List<RetConsSitNFCom> RetConsSitNF3 = new List<RetConsSitNFCom>();
+        public List<RetConsSitNFCom> RetConsSitNFCom = new List<RetConsSitNFCom>();
 
         /// <summary>
         /// Propriedade contendo o XML da NFCom com o protocolo de autorização anexado - Funciona para envio Assíncrono ou Síncrono
@@ -156,16 +156,16 @@ namespace Unimake.Business.DFe.Servicos.NFCom
                 }
                 else
                 {
-                    if (RetConsSitNF3.Count <= 0)
+                    if (RetConsSitNFCom.Count <= 0)
                     {
-                        throw new Exception("Defina o conteúdo da Propriedade RetConsSitNF3, sem a definição dela não é possível obter o conteúdo da NFComProcResults.");
+                        throw new Exception("Defina o conteúdo da Propriedade RetConsSitNFCom, sem a definição dela não é possível obter o conteúdo da NFComProcResults.");
                     }
 
                     ProtNFCom protNFCom = null;
 
                     #region Resultado do envio do NFCom através da consulta situação
 
-                    foreach (var item in RetConsSitNF3)
+                    foreach (var item in RetConsSitNFCom)
                     {
                         if (item != null && item.ProtNFCom != null)
                         {
