@@ -597,7 +597,6 @@
 		<None Remove="Servicos\Config\NFSe\PalmeiraPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PanambiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ParacambiRJ.xml" />
-		<None Remove="Servicos\Config\NFSe\ParacatuMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaDeMinasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaguacuPaulistaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaisoDoNortePR.xml" />
@@ -1780,7 +1779,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmasTO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmeiraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PanambiRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ParacatuMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParaguacuPaulistaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParaisoDoNortePR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanaguaPR.xml" />

@@ -1685,12 +1685,6 @@
 		<ArqConfig>GuaxupeMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3147006">
-		<Nome>Paracatu - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>ParacatuMG.xml</ArqConfig>
-		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3149309">
 		<Nome>Pedro Leopoldo - MG</Nome>
 		<UF>MG</UF>
