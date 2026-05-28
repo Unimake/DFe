@@ -2129,12 +2129,6 @@
 		<ArqConfig>GuararaMG.xml</ArqConfig>
 		<PadraoNFSe>FUTURIZE</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3556206">
-		<Nome>Valinhos - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>ValinhosSP.xml</ArqConfig>
-		<PadraoNFSe>SIGISSWEB</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3524709">
 		<Nome>Jaguariúna - SP</Nome>
 		<UF>SP</UF>
