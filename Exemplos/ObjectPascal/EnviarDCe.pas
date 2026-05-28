@@ -54,11 +54,11 @@ begin
   try
     // Criar a tag <DCe>
     oDCe := CreateOleObject('Unimake.Business.DFe.Xml.DCe.DCe');
-    
+
     // Criar a tag <infDCe>
     oDCe.InfDCe := CreateOleObject('Unimake.Business.DFe.Xml.DCe.InfDCe');
     oDCe.InfDCe.Versao := '1.00';
-    
+
     // Criar tag Ide
     oDCe.InfDCe.Ide := CreateOleObject('Unimake.Business.DFe.Xml.DCe.Ide');
     oDCe.InfDCe.Ide.CUF := 41; // UFBrasil.PR
@@ -73,12 +73,12 @@ begin
     oDCe.InfDCe.Ide.CDV := 6;
     oDCe.InfDCe.Ide.TpAmb := 2; // TipoAmbiente.Homologacao
     oDCe.InfDCe.Ide.VerProc := 'Unimake-Test';
-    
+
     // Criar tag Emit
     oDCe.InfDCe.Emit := CreateOleObject('Unimake.Business.DFe.Xml.DCe.Emit');
     oDCe.InfDCe.Emit.CNPJ := '00000000000199';
     oDCe.InfDCe.Emit.XNome := 'Emitente Teste';
-    
+
     oDCe.InfDCe.Emit.EnderEmit := CreateOleObject('Unimake.Business.DFe.Xml.DCe.EnderEmit');
     oDCe.InfDCe.Emit.EnderEmit.XLgr := 'Rua Teste';
     oDCe.InfDCe.Emit.EnderEmit.Nro := '100';
@@ -89,12 +89,12 @@ begin
     oDCe.InfDCe.Emit.EnderEmit.CEP := '80010000';
     oDCe.InfDCe.Emit.EnderEmit.CPais := '1058';
     oDCe.InfDCe.Emit.EnderEmit.XPais := 'Brasil';
-    
+
     // Criar tag Dest
     oDCe.InfDCe.Dest := CreateOleObject('Unimake.Business.DFe.Xml.DCe.Dest');
     oDCe.InfDCe.Dest.CPF := '12345678909';
     oDCe.InfDCe.Dest.XNome := 'Destinatario Teste';
-    
+
     oDCe.InfDCe.Dest.EnderDest := CreateOleObject('Unimake.Business.DFe.Xml.DCe.EnderDest');
     oDCe.InfDCe.Dest.EnderDest.XLgr := 'Rua Destino';
     oDCe.InfDCe.Dest.EnderDest.Nro := '200';
@@ -104,40 +104,40 @@ begin
     oDCe.InfDCe.Dest.EnderDest.UF := 41; // UFBrasil.PR
     oDCe.InfDCe.Dest.EnderDest.CEP := '80010000';
     oDCe.InfDCe.Dest.EnderDest.Email := 'destino@teste.com';
-    
+
     // Criar tag AutXML
     oAutXML := CreateOleObject('Unimake.Business.DFe.Xml.DCe.AutXML');
     oAutXML.CPF := '12345678909';
     oDCe.InfDCe.AddAutXML(IUnknown(oAutXML));
-    
+
     // Criar tag Det
     oDet := CreateOleObject('Unimake.Business.DFe.Xml.DCe.Det');
     oDet.NItem := 1;
-    
+
     oDet.Prod := CreateOleObject('Unimake.Business.DFe.Xml.DCe.Prod');
     oDet.Prod.XProd := 'Produto teste';
     oDet.Prod.NCM := '99';
     oDet.Prod.QCom := 1;
     oDet.Prod.VUnCom := 10;
     oDet.Prod.VProd := 10;
-    
+
     oDet.InfAdProd := 'Item preservado';
-    
+
     oDCe.InfDCe.AddDet(IUnknown(oDet));
-    
+
     // Criar tag Total
     oDCe.InfDCe.Total := CreateOleObject('Unimake.Business.DFe.Xml.DCe.Total');
     oDCe.InfDCe.Total.VDC := 10;
-    
+
     // Criar tag Transp
     oDCe.InfDCe.Transp := CreateOleObject('Unimake.Business.DFe.Xml.DCe.Transp');
     oDCe.InfDCe.Transp.ModTrans := 1;
     oDCe.InfDCe.Transp.CNPJTransp := '00000000000199';
-    
+
     // Criar tag InfAdic
     oDCe.InfDCe.InfAdic := CreateOleObject('Unimake.Business.DFe.Xml.DCe.InfAdic');
     oDCe.InfDCe.InfAdic.InfCpl := 'Informacao complementar';
-    
+
     // Criar tag InfDec
     oDCe.InfDCe.InfDec := CreateOleObject('Unimake.Business.DFe.Xml.DCe.InfDec');
     oDCe.InfDCe.InfDec.XObs1 := 'Declaracao 1';

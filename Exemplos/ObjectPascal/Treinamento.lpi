@@ -333,7 +333,7 @@
       <Unit>
         <Filename Value="consultarstatusdce.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="ConsultarStatusDCe"/>
+        <UnitName Value="EnviarDCe"/>
       </Unit>
       <Unit>
         <Filename Value="EnviarDCe.pas"/>
