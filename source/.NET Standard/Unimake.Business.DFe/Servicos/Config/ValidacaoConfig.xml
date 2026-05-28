@@ -5887,7 +5887,7 @@
 			<Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="3.00" tagIdentificadora="Faixa">
 				<Descricao>Consultar NFSe por faixa de numeração</Descricao>
 				<SchemaArquivo></SchemaArquivo>
-				<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+				<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
 				<TagAtributoID>Prestador</TagAtributoID>
 				<TagVersao></TagVersao>
 				<TagLoteAssinatura></TagLoteAssinatura>
@@ -5938,8 +5938,8 @@
 				<TagAssinatura>Rps</TagAssinatura>
 				<TagAtributoID>InfRps</TagAtributoID>
 				<TagVersao></TagVersao>
-				<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.publica.inf.br</TargetNS>
