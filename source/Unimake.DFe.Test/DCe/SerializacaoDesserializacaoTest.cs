@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Schema;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml;
 using Xunit;
@@ -24,6 +25,7 @@ namespace Unimake.DFe.Test.DCe
             Assert.Equal("Emitente Teste", xml.InfDCe.Emit.XNome);
             Assert.Equal("Produto teste", xml.InfDCe.Det[0].Prod.XProd);
             Assert.Equal(10.00, xml.InfDCe.Total.VDC);
+            Assert.Equal(ModalidadeTransporteDCe.Correios, xml.InfDCe.Transp.ModTrans);
             Assert.Equal("https://dce.test/qr", xml.InfDCeSupl?.QrCodDCe);
 
             var doc2 = xml.GerarXML();

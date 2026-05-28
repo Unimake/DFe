@@ -33,7 +33,7 @@ uses
   NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto,
   NACIONALConsultarEventoNFSe, NACIONALConsultarDistribuicaoNFSeNSU,
   ConsultarChavesNFCeSP, DownloadXMLNFCeSEFAZSP,
-  NACIONALConsultarDistribuicaoEventosNFSe
+  NACIONALConsultarDistribuicaoEventosNFSe, ConsultarStatusDCe, EnviarDCe
   { you can add units after this };
 
 {$R *.res}
