@@ -599,7 +599,6 @@
 		<None Remove="Servicos\Config\NFSe\ParacambiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaDeMinasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaguacuPaulistaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\ParaisoDoNortePR.xml" />
 		<None Remove="Servicos\Config\NFSe\ParanaguaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\ParanavaiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PareciNovoRS.xml" />
@@ -618,7 +617,6 @@
 		<None Remove="Servicos\Config\NFSe\PiraiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PiraquaraPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PiratiningaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\PocosDeCaldasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PomerodeSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PontaGrossaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PontalinaGO.xml" />
@@ -627,7 +625,6 @@
 		<None Remove="Servicos\Config\NFSe\PortoBeloSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoVelhoRO.xml" />
-		<None Remove="Servicos\Config\NFSe\PrataMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PresidenteLucenaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PresidentePrudenteSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
@@ -686,7 +683,6 @@
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SobralCE.xml" />
 		<None Remove="Servicos\Config\NFSe\SorocabaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\SorrisoMT.xml" />
 		<None Remove="Servicos\Config\NFSe\TaboaoDaSerraSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaiobeirasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\TaioSC.xml" />
@@ -1779,17 +1775,14 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PalmeiraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PanambiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParaguacuPaulistaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ParaisoDoNortePR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanaguaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatrocinioMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PenhaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PinhaisPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiraiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiraquaraPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PocosDeCaldasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PontaGrossaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PortoBeloSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PrataMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PresidentePrudenteSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDosCedrosSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDoSulSC.xml" />
@@ -1926,7 +1919,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SapirangaRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SobralCE.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\SorrisoMT.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaboaoDaSerraSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaiobeirasMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TangaraDaSerraMT.xml" />

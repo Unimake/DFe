@@ -1685,18 +1685,6 @@
 		<ArqConfig>GuaxupeMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3151800">
-		<Nome>Poços de Caldas - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>PocosDeCaldasMG.xml</ArqConfig>
-		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3152808">
-		<Nome>Prata - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>PrataMG.xml</ArqConfig>
-		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3162922">
 		<Nome>São Joaquim de Bicas - MG</Nome>
 		<UF>MG</UF>
@@ -1811,12 +1799,6 @@
 		<ArqConfig>VargemGrandeDoSulSP.xml</ArqConfig>
 		<PadraoNFSe>SIMPLISS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5107925">
-		<Nome>Sorriso - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>SorrisoMT.xml</ArqConfig>
-		<PadraoNFSe>AGILI</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4127205">
 		<Nome>Terra Boa - PR</Nome>
 		<UF>PR</UF>
@@ -1869,12 +1851,6 @@
 		<Nome>Paranaguá - PR</Nome>
 		<UF>PR</UF>
 		<ArqConfig>ParanaguaPR.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4118006">
-		<Nome>Paraíso do Norte - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>ParaisoDoNortePR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4119152">
