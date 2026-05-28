@@ -1,8 +1,11 @@
 using System.IO;
+using System.Threading.Tasks;
 using System.Xml;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 using Xunit;
+using CIOTDeclaracaoOperacaoTransporte = Unimake.Business.DFe.Servicos.CIOT.DeclaracaoOperacaoTransporte;
 
 namespace Unimake.DFe.Test.CIOT
 {
@@ -142,6 +145,31 @@ namespace Unimake.DFe.Test.CIOT
         public void SerializacaoDesserializacaoRetConsultarCIOTGerado(string arqXML)
         {
             SerializarDesserializar<RetConsultarCIOTGerado>(arqXML);
+        }
+
+        [Theory]
+        [Trait("DFe", "CIOT")]
+        [InlineData(@"..\..\..\CIOT\Resources\declaracaoOperacaoTransporte.xml")]
+        public async Task SerializacaoJsonDatasDeclaracaoOperacaoTransporte(string arqXML)
+        {
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = new DeclaracaoOperacaoTransporte().LerXML<DeclaracaoOperacaoTransporte>(doc);
+            var servico = new CIOTDeclaracaoOperacaoTransporte(xml, new Configuracao
+            {
+                TipoDFe = TipoDFe.CIOT,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CodigoUF = (int)UFBrasil.AN
+            });
+            var jsonText = await servico.Configuracoes.HttpContent.ReadAsStringAsync(TestContext.Current.CancellationToken);
+            Assert.Contains("\"DataDeclaracao\":\"2026-05-25T10:00:00-03:00\"", jsonText);
+            Assert.Contains("\"DataInicioViagem\":\"2026-05-25\"", jsonText);
+            Assert.Contains("\"DataFimViagem\":\"2026-05-26\"", jsonText);
+            Assert.DoesNotContain("DataDeclaracaoField", jsonText);
+            Assert.DoesNotContain("DataInicioViagemField", jsonText);
+            Assert.DoesNotContain("DataFimViagemField", jsonText);
         }
 
         private static void SerializarDesserializar<T>(string arqXML) where T : XMLBase, new()
