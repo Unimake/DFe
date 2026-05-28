@@ -549,7 +549,6 @@
 		<None Remove="Servicos\Config\NFSe\LajeadoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\LavrasMG.xml" />
-		<None Remove="Servicos\Config\NFSe\LemeSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LinharesES.xml" />
 		<None Remove="Servicos\Config\NFSe\LoandaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\LondrinaPR.xml" />
@@ -1768,7 +1767,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JardinopolisSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JauSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LavrasMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\LemeSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LinharesES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LoandaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MacaeRJ.xml" />
