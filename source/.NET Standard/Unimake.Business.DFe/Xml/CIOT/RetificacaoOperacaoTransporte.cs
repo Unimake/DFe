@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 using System;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CIOT
@@ -29,8 +30,25 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("ValorFrete")]
         public string ValorFrete { get; set; }
 
+        [XmlIgnore]
+        [JsonIgnore]
+#if INTEROP
+        public DateTime DataFimViagem { get; set; }
+#else
+        public DateTimeOffset DataFimViagem { get; set; }
+#endif
+
         [XmlElement("DataFimViagem")]
-        public string DataFimViagem { get; set; }
+        [JsonProperty("DataFimViagem")]
+        public string DataFimViagemField
+        {
+            get => DataFimViagem.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DataFimViagem = DateTime.Parse(value);
+#else
+            set => DataFimViagem = DateTimeOffset.Parse(value);
+#endif
+        }
 
         [XmlArray("OrigemDestino")]
         [XmlArrayItem("ParOrigemDestino")]
@@ -40,7 +58,12 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public DadosCargaCIOT DadosCarga { get; set; }
 
         public bool ShouldSerializeValorFrete() => !string.IsNullOrEmpty(ValorFrete);
-        public bool ShouldSerializeDataFimViagem() => !string.IsNullOrEmpty(DataFimViagem);
+        public bool ShouldSerializeDataFimViagem() => false;
+#if INTEROP
+        public bool ShouldSerializeDataFimViagemField() => DataFimViagem > DateTime.MinValue;
+#else
+        public bool ShouldSerializeDataFimViagemField() => DataFimViagem > DateTimeOffset.MinValue;
+#endif
         public bool ShouldSerializeOrigemDestino() => OrigemDestino?.Count > 0;
         public bool ShouldSerializeDadosCarga() => DadosCarga != null;
     }
@@ -61,8 +84,25 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }
 
+        [XmlIgnore]
+        [JsonIgnore]
+#if INTEROP
+        public DateTime DataRetificacao { get; set; }
+#else
+        public DateTimeOffset DataRetificacao { get; set; }
+#endif
+
         [XmlElement("DataRetificacao")]
-        public string DataRetificacao { get; set; }
+        [JsonProperty("DataRetificacao")]
+        public string DataRetificacaoField
+        {
+            get => CIOTDateTimeFormat.DateTime(DataRetificacao);
+#if INTEROP
+            set => DataRetificacao = DateTime.Parse(value);
+#else
+            set => DataRetificacao = DateTimeOffset.Parse(value);
+#endif
+        }
 
         [XmlElement("Protocolo")]
         public string Protocolo { get; set; }
@@ -74,5 +114,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public string Mensagem { get; set; }
 
         public bool ShouldSerializeTemp() => Temp != null;
+        public bool ShouldSerializeDataRetificacao() => false;
+        public bool ShouldSerializeDataRetificacaoField() => Temp == null;
     }
 }

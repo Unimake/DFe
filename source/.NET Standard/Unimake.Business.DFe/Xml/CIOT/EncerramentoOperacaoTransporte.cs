@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 using System;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CIOT
@@ -53,8 +54,25 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }
 
+        [XmlIgnore]
+        [JsonIgnore]
+#if INTEROP
+        public DateTime DataEncerramento { get; set; }
+#else
+        public DateTimeOffset DataEncerramento { get; set; }
+#endif
+
         [XmlElement("DataEncerramento")]
-        public string DataEncerramento { get; set; }
+        [JsonProperty("DataEncerramento")]
+        public string DataEncerramentoField
+        {
+            get => CIOTDateTimeFormat.DateTime(DataEncerramento);
+#if INTEROP
+            set => DataEncerramento = DateTime.Parse(value);
+#else
+            set => DataEncerramento = DateTimeOffset.Parse(value);
+#endif
+        }
 
         [XmlElement("Protocolo")]
         public string Protocolo { get; set; }
@@ -66,5 +84,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public string Mensagem { get; set; }
 
         public bool ShouldSerializeTemp() => Temp != null;
+        public bool ShouldSerializeDataEncerramento() => false;
+        public bool ShouldSerializeDataEncerramentoField() => Temp == null;
     }
 }

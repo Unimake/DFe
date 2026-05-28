@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 
 using System;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CIOT
@@ -43,8 +44,25 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }
 
+        [XmlIgnore]
+        [JsonIgnore]
+#if INTEROP
+        public DateTime DataCancelamento { get; set; }
+#else
+        public DateTimeOffset DataCancelamento { get; set; }
+#endif
+
         [XmlElement("DataCancelamento")]
-        public string DataCancelamento { get; set; }
+        [JsonProperty("DataCancelamento")]
+        public string DataCancelamentoField
+        {
+            get => CIOTDateTimeFormat.DateTime(DataCancelamento);
+#if INTEROP
+            set => DataCancelamento = DateTime.Parse(value);
+#else
+            set => DataCancelamento = DateTimeOffset.Parse(value);
+#endif
+        }
 
         [XmlElement("Protocolo")]
         public string Protocolo { get; set; }
@@ -56,5 +74,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public string Mensagem { get; set; }
 
         public bool ShouldSerializeTemp() => Temp != null;
+        public bool ShouldSerializeDataCancelamento() => false;
+        public bool ShouldSerializeDataCancelamentoField() => Temp == null;
     }
 }

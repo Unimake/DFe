@@ -1,14 +1,13 @@
 #pragma warning disable CS1591
 
 #if INTEROP
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-#else
-using System.Collections.Generic;
 #endif
 
 using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CIOT
@@ -47,8 +46,25 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("ValorFrete")]
         public string ValorFrete { get; set; }
 
+        [XmlIgnore]
+        [JsonIgnore]
+#if INTEROP
+        public DateTime DataDeclaracao { get; set; }
+#else
+        public DateTimeOffset DataDeclaracao { get; set; }
+#endif
+
         [XmlElement("DataDeclaracao")]
-        public string DataDeclaracao { get; set; }
+        [JsonProperty("DataDeclaracao")]
+        public string DataDeclaracaoField
+        {
+            get => CIOTDateTimeFormat.DateTime(DataDeclaracao);
+#if INTEROP
+            set => DataDeclaracao = DateTime.Parse(value);
+#else
+            set => DataDeclaracao = DateTimeOffset.Parse(value);
+#endif
+        }
 
         [XmlElement("IndContingencia")]
         public bool IndContingencia { get; set; }
@@ -56,11 +72,45 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("JustificativaContingencia")]
         public string JustificativaContingencia { get; set; }
 
+        [XmlIgnore]
+        [JsonIgnore]
+#if INTEROP
+        public DateTime DataInicioViagem { get; set; }
+#else
+        public DateTimeOffset DataInicioViagem { get; set; }
+#endif
+
         [XmlElement("DataInicioViagem")]
-        public string DataInicioViagem { get; set; }
+        [JsonProperty("DataInicioViagem")]
+        public string DataInicioViagemField
+        {
+            get => DataInicioViagem.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DataInicioViagem = DateTime.Parse(value);
+#else
+            set => DataInicioViagem = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlIgnore]
+        [JsonIgnore]
+#if INTEROP
+        public DateTime DataFimViagem { get; set; }
+#else
+        public DateTimeOffset DataFimViagem { get; set; }
+#endif
 
         [XmlElement("DataFimViagem")]
-        public string DataFimViagem { get; set; }
+        [JsonProperty("DataFimViagem")]
+        public string DataFimViagemField
+        {
+            get => DataFimViagem.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DataFimViagem = DateTime.Parse(value);
+#else
+            set => DataFimViagem = DateTimeOffset.Parse(value);
+#endif
+        }
 
         [XmlArray("Veiculos")]
         [XmlArrayItem("Veiculo")]
@@ -83,7 +133,14 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeRNTRCContratante() => !string.IsNullOrEmpty(RNTRCContratante);
         public bool ShouldSerializeCpfCnpjDestinatario() => !string.IsNullOrEmpty(CpfCnpjDestinatario);
         public bool ShouldSerializeJustificativaContingencia() => !string.IsNullOrEmpty(JustificativaContingencia);
-        public bool ShouldSerializeDataFimViagem() => !string.IsNullOrEmpty(DataFimViagem);
+        public bool ShouldSerializeDataDeclaracao() => false;
+        public bool ShouldSerializeDataInicioViagem() => false;
+        public bool ShouldSerializeDataFimViagem() => false;
+#if INTEROP
+        public bool ShouldSerializeDataFimViagemField() => DataFimViagem > DateTime.MinValue;
+#else
+        public bool ShouldSerializeDataFimViagemField() => DataFimViagem > DateTimeOffset.MinValue;
+#endif
         public bool ShouldSerializeOrigemDestino() => OrigemDestino?.Count > 0;
         public bool ShouldSerializeDadosCarga() => DadosCarga != null;
         public bool ShouldSerializeInfIndicadoresOperacionais() => InfIndicadoresOperacionais != null;

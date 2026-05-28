@@ -6,11 +6,22 @@ using System.Collections.Generic;
 using System.Collections.Generic;
 #endif
 
+using System;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CIOT
 {
+    internal static class CIOTDateTimeFormat
+    {
+#if INTEROP
+        public static string DateTime(DateTime value) => value.Kind == DateTimeKind.Utc ? value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFF") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz");
+#else
+        public static string DateTime(DateTimeOffset value) => value.Offset == TimeSpan.Zero ? value.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFF") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz");
+#endif
+    }
+
     public class VeiculoFrotaCIOT
     {
         [XmlElement("PlacaVeiculo")]
@@ -166,11 +177,30 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("NumeroParcela")]
         public string NumeroParcela { get; set; }
 
+        [XmlIgnore]
+        [JsonIgnore]
+#if INTEROP
+        public DateTime DataVencimento { get; set; }
+#else
+        public DateTimeOffset DataVencimento { get; set; }
+#endif
+
         [XmlElement("DataVencimento")]
-        public string DataVencimento { get; set; }
+        [JsonProperty("DataVencimento")]
+        public string DataVencimentoField
+        {
+            get => DataVencimento.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DataVencimento = DateTime.Parse(value);
+#else
+            set => DataVencimento = DateTimeOffset.Parse(value);
+#endif
+        }
 
         [XmlElement("ValorParcela")]
         public string ValorParcela { get; set; }
+
+        public bool ShouldSerializeDataVencimento() => false;
     }
 
     public class IndicadoresOperacionaisCIOT
@@ -202,13 +232,38 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("message")]
         public string Message { get; set; }
 
+        [XmlIgnore]
+        [JsonIgnore]
+#if INTEROP
+        public DateTime Timestamp { get; set; }
+#else
+        public DateTimeOffset Timestamp { get; set; }
+#endif
+
         [XmlElement("timestamp")]
-        public string Timestamp { get; set; }
+        [JsonProperty("timestamp")]
+        public string TimestampField
+        {
+            get => CIOTDateTimeFormat.DateTime(Timestamp);
+#if INTEROP
+            set => Timestamp = DateTime.Parse(value);
+#else
+            set => Timestamp = DateTimeOffset.Parse(value);
+#endif
+        }
 
         [XmlElement("correlationId")]
         public string CorrelationId { get; set; }
 
         [XmlElement("path")]
         public string Path { get; set; }
+
+#if INTEROP
+        public bool ShouldSerializeTimestamp() => false;
+        public bool ShouldSerializeTimestampField() => Timestamp > DateTime.MinValue;
+#else
+        public bool ShouldSerializeTimestamp() => false;
+        public bool ShouldSerializeTimestampField() => Timestamp > DateTimeOffset.MinValue;
+#endif
     }
 }
