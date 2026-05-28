@@ -684,7 +684,6 @@
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SobralCE.xml" />
 		<None Remove="Servicos\Config\NFSe\SorocabaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\SorrisoMT.xml" />
 		<None Remove="Servicos\Config\NFSe\TaboaoDaSerraSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaiobeirasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\TaioSC.xml" />
@@ -1922,7 +1921,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SapirangaRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SobralCE.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\SorrisoMT.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaboaoDaSerraSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaiobeirasMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TangaraDaSerraMT.xml" />

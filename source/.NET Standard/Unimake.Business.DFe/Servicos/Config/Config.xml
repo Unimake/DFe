@@ -1799,12 +1799,6 @@
 		<ArqConfig>VargemGrandeDoSulSP.xml</ArqConfig>
 		<PadraoNFSe>SIMPLISS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5107925">
-		<Nome>Sorriso - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>SorrisoMT.xml</ArqConfig>
-		<PadraoNFSe>AGILI</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4127205">
 		<Nome>Terra Boa - PR</Nome>
 		<UF>PR</UF>
