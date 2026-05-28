@@ -583,7 +583,6 @@
 		<None Remove="Servicos\Config\NFSe\NACIONAL.xml" />
 		<None Remove="Servicos\Config\NFSe\NaviraiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
-		<None Remove="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaMutumMT.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaSantaRitaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaSerranaMG.xml" />
@@ -1833,7 +1832,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MafraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MageRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MairipotabaGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaSantaRitaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParacambiRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PauliniaSP.xml" />
