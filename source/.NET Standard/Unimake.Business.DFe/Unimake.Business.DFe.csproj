@@ -610,7 +610,6 @@
 		<None Remove="Servicos\Config\NFSe\PaulistaPE.xml" />
 		<None Remove="Servicos\Config\NFSe\PaveramaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PederneirasSP.xml" />
-		<None Remove="Servicos\Config\NFSe\PedroLeopoldoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PenhaSC.xml" />
@@ -1783,7 +1782,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParaisoDoNortePR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanaguaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatrocinioMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PedroLeopoldoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PenhaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PinhaisPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiraiRJ.xml" />
