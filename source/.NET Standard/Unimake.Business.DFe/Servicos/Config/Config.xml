@@ -1553,12 +1553,6 @@
 		<ArqConfig>ManhuacuMG.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3204203">
-		<Nome>Piuma - ES</Nome>
-		<UF>ES</UF>
-		<ArqConfig>PiumaES.xml</ArqConfig>
-		<PadraoNFSe>EL</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3162708">
 		<Nome>São João do Paraíso - MG</Nome>
 		<UF>MG</UF>
