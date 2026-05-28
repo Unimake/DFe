@@ -626,7 +626,6 @@
 		<None Remove="Servicos\Config\NFSe\PortoBeloSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoVelhoRO.xml" />
-		<None Remove="Servicos\Config\NFSe\PrataMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PresidenteLucenaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PresidentePrudenteSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
@@ -1787,7 +1786,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiraquaraPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PontaGrossaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PortoBeloSC.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\PrataMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PresidentePrudenteSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDosCedrosSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDoSulSC.xml" />

@@ -1685,12 +1685,6 @@
 		<ArqConfig>GuaxupeMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3152808">
-		<Nome>Prata - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>PrataMG.xml</ArqConfig>
-		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3162922">
 		<Nome>São Joaquim de Bicas - MG</Nome>
 		<UF>MG</UF>
