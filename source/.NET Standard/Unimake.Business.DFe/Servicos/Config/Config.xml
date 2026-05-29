@@ -2243,4 +2243,10 @@
 		<ArqConfig>ItatibaSP.xml</ArqConfig>
 		<PadraoNFSe>FINTEL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4319604">
+		<Nome>São Sepe - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SaoSepeRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
