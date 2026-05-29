@@ -33,7 +33,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public RetRetificacaoOperacaoTransporte RetRetificacaoOperacaoTransporte { get; set; }
 
         [XmlIgnore]
-        public string NomeArquivoDistribuicao => RetRetificacaoOperacaoTransporte.CodigoIdentificacaoOperacao + "-procCIOT.xml";
+        public string NomeArquivoDistribuicao => RetRetificacaoOperacaoTransporte.CodigoIdentificacaoOperacao + "-procEventoCIOT.xml";
 
         public override XmlDocument GerarXML()
         {
