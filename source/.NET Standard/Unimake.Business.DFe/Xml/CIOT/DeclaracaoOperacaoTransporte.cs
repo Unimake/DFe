@@ -159,8 +159,8 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("temp")]
         public TempCIOT Temp { get; set; }
 
-        [XmlElement("CodigoIdentificacaoOperacao")]
-        public string CodigoIdentificacaoOperacao { get; set; }
+        [XmlElement("IdOperacaoTransporte")]
+        public string IdOperacaoTransporte { get; set; }
 
         [XmlElement("CodigoVerificador")]
         public string CodigoVerificador { get; set; }
