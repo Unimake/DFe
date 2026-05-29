@@ -28,7 +28,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 
         /// <summary>
         /// Propriedade contendo o XML da declaração de operação de transporte com o retorno da API anexado para geração do arquivo de distribuição.
-        /// A chave do dicionário é o código de identificação da operação retornado no campo <c>CodigoIdentificacaoOperacao</c>.
+        /// A chave do dicionário é o identificador da operação retornado no campo <c>IdOperacaoTransporte</c>.
         /// </summary>
         public System.Collections.Generic.Dictionary<string, DeclaracaoOperacaoTransporteProc> DeclaracaoOperacaoTransporteProcResults
         {
@@ -39,20 +39,20 @@ namespace Unimake.Business.DFe.Servicos.CIOT
                     throw new Exception($"Não é possível gerar o XML de distribuição porque o serviço retornou erro: {Result.Temp.Error} - {Result.Temp.Message}");
                 }
 
-                if (string.IsNullOrWhiteSpace(Result?.CodigoIdentificacaoOperacao))
+                if (string.IsNullOrWhiteSpace(Result?.IdOperacaoTransporte))
                 {
-                    throw new Exception("Não foi localizado o CódigoIdentificacaoOperacao no retorno do serviço para elaboração do arquivo de distribuição.");
+                    throw new Exception("Não foi localizado o IdOperacaoTransporte no retorno do serviço para elaboração do arquivo de distribuição.");
                 }
 
-                var codigoIdentificacaoOperacao = Result.CodigoIdentificacaoOperacao;
+                var idOperacaoTransporte = Result.IdOperacaoTransporte;
 
-                if (DeclaracaoOperacaoTransporteProcs.ContainsKey(codigoIdentificacaoOperacao))
+                if (DeclaracaoOperacaoTransporteProcs.ContainsKey(idOperacaoTransporte))
                 {
-                    DeclaracaoOperacaoTransporteProcs[codigoIdentificacaoOperacao].RetDeclaracaoOperacaoTransporte = Result;
+                    DeclaracaoOperacaoTransporteProcs[idOperacaoTransporte].RetDeclaracaoOperacaoTransporte = Result;
                 }
                 else
                 {
-                    DeclaracaoOperacaoTransporteProcs.Add(codigoIdentificacaoOperacao, new DeclaracaoOperacaoTransporteProc
+                    DeclaracaoOperacaoTransporteProcs.Add(idOperacaoTransporte, new DeclaracaoOperacaoTransporteProc
                     {
                         Versao = Configuracoes.SchemaVersao,
                         DeclaracaoOperacaoTransporte = Envio,
@@ -71,15 +71,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         {
             get
             {
-                var codigoIdentificacaoOperacao = Result?.CodigoIdentificacaoOperacao;
+                var idOperacaoTransporte = Result?.IdOperacaoTransporte;
 
-                if (string.IsNullOrWhiteSpace(codigoIdentificacaoOperacao))
+                if (string.IsNullOrWhiteSpace(idOperacaoTransporte))
                 {
                     _ = DeclaracaoOperacaoTransporteProcResults;
-                    codigoIdentificacaoOperacao = Result.CodigoIdentificacaoOperacao;
+                    idOperacaoTransporte = Result.IdOperacaoTransporte;
                 }
 
-                return DeclaracaoOperacaoTransporteProcResults[codigoIdentificacaoOperacao];
+                return DeclaracaoOperacaoTransporteProcResults[idOperacaoTransporte];
             }
         }
 
@@ -130,16 +130,16 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// <summary>
         /// Recupera o XML de distribuição da declaração de operação de transporte no formato string a partir do código de identificação da operação, permitindo acesso por linguagens que utilizam COM/Interop.
         /// </summary>
-        /// <param name="codigoIdentificacaoOperacao">Código de identificação da operação de transporte para retornar o XML de distribuição correspondente.</param>
+        /// <param name="idOperacaoTransporte">Identificador da operação de transporte para retornar o XML de distribuição correspondente.</param>
         /// <returns>XML de distribuição da declaração no formato DeclaracaoOperacaoTransporteProc.</returns>
         [ComVisible(true)]
-        public string GetDeclaracaoOperacaoTransporteProcResults(string codigoIdentificacaoOperacao)
+        public string GetDeclaracaoOperacaoTransporteProcResults(string idOperacaoTransporte)
         {
             var retornar = "";
 
             if (DeclaracaoOperacaoTransporteProcResults.Count > 0)
             {
-                retornar = DeclaracaoOperacaoTransporteProcResults[codigoIdentificacaoOperacao].GerarXML().OuterXml;
+                retornar = DeclaracaoOperacaoTransporteProcResults[idOperacaoTransporte].GerarXML().OuterXml;
             }
 
             return retornar;

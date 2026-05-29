@@ -61,7 +61,7 @@
             </xs:attribute>
           </xs:complexType>
         </xs:element>
-        <xs:element name="RPS" type="tipos:tpRPS" minOccurs="1" maxOccurs="50">
+        <xs:element name="RPS" type="tipos:tpRPS" minOccurs="1" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>Informe os RPS a serem substituidos por NFS-e.</xs:documentation>
           </xs:annotation>

@@ -166,7 +166,7 @@
       <xs:documentation>Tipo padrão referente a inscrição municipal.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:long">
-      <xs:pattern value="[0-9]{8,8}" />
+      <xs:pattern value="[0-9]{1,8}" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="tpLogradouro">
@@ -220,6 +220,16 @@
       <xs:enumeration value="3">
         <xs:annotation>
           <xs:documentation>Optante pelo Simples Municipal.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation>
+          <xs:documentation>Optante pelo Simples Nacional - DAS.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>Optante pelo Simples Nacional - DAMSP.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -379,6 +389,53 @@
       <xs:maxLength value="10" />
       <xs:whiteSpace value="collapse" />
     </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tpRetencaoPisCofins">
+	<xs:annotation>
+		<xs:documentation>Tipo de retenção para os tributos federais conforme numerados.</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="0">
+			<xs:annotation>
+				<xs:documentation>PIS/COFINS/CSLL Não Retidos.</xs:documentation>
+			</xs:annotation>
+		</xs:enumeration>
+		<xs:enumeration value="3">
+			<xs:annotation>
+				<xs:documentation>PIS/COFINS/CSLL Retidos.</xs:documentation>
+			</xs:annotation>
+		</xs:enumeration>
+		<xs:enumeration value="4">
+			<xs:annotation>
+				<xs:documentation>PIS/COFINS Retidos, CSLL Não Retido.</xs:documentation>
+			</xs:annotation>
+		</xs:enumeration>
+		<xs:enumeration value="5">
+			<xs:annotation>
+				<xs:documentation>PIS Retido, COFINS/CSLL Não Retido.</xs:documentation>
+			</xs:annotation>
+		</xs:enumeration>
+		<xs:enumeration value="6">
+			<xs:annotation>
+				<xs:documentation>COFINS Retido, PIS/CSLL Não Retidos.</xs:documentation>
+			</xs:annotation>
+		</xs:enumeration>
+		<xs:enumeration value="7">
+			<xs:annotation>
+				<xs:documentation>PIS Não Retido, COFINS/CSLL Retidos.</xs:documentation>
+			</xs:annotation>
+		</xs:enumeration>
+		<xs:enumeration value="8">
+			<xs:annotation>
+				<xs:documentation>PIS/COFINS Não Retidos, CSLL Retido.</xs:documentation>
+			</xs:annotation>
+		</xs:enumeration>
+		<xs:enumeration value="9">
+			<xs:annotation>
+				<xs:documentation>COFINS Não Retido, PIS/CSLL Retidos.</xs:documentation>
+			</xs:annotation>
+		</xs:enumeration>
+	</xs:restriction>
   </xs:simpleType>
 
     <!-- Tipos Complexos -->
@@ -561,6 +618,11 @@
       <xs:element name="DataEmissaoNFe" type="xs:dateTime" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Data de emissão da NFS-e</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DataFatoGeradorNFe" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data do fato gerador da NFS-e.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="NumeroLote" type="tipos:tpNumero" minOccurs ="0" maxOccurs ="1">
@@ -788,6 +850,11 @@
           <xs:documentation>Informe o valor total recebido.</xs:documentation>
         </xs:annotation>
       </xs:element>
+	  <xs:element name="RetencaoPisCofins" type="tipos:tpRetencaoPisCofins" minOccurs="0" maxOccurs="1">
+		<xs:annotation>
+			<xs:documentation>Tipo de retenção para os tributos federais PIS/COFINS e CSLL</xs:documentation>
+		</xs:annotation>
+	  </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="tpRPS">
@@ -970,6 +1037,11 @@
           <xs:documentation>Informe o valor total recebido.</xs:documentation>
         </xs:annotation>
       </xs:element>
+	  <xs:element name="RetencaoPisCofins" type="tipos:tpRetencaoPisCofins" minOccurs="0" maxOccurs="1">
+		<xs:annotation>
+			<xs:documentation>Tipo de retenção para os tributos federais PIS/COFINS e CSLL</xs:documentation>
+		</xs:annotation>
+	  </xs:element>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

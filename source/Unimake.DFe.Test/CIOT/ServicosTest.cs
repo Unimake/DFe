@@ -100,8 +100,8 @@ namespace Unimake.DFe.Test.CIOT
             var proc = servico.DeclaracaoOperacaoTransporteProcResult;
 
             Assert.NotNull(proc);
-            Assert.Equal("1234567890123456", proc.RetDeclaracaoOperacaoTransporte.CodigoIdentificacaoOperacao);
-            Assert.Equal("1234567890123456-procCIOT.xml", proc.NomeArquivoDistribuicao);
+            Assert.Equal("123456789012", proc.RetDeclaracaoOperacaoTransporte.IdOperacaoTransporte);
+            Assert.Equal("123456789012-procCIOT.xml", proc.NomeArquivoDistribuicao);
             Assert.Equal("DeclaracaoOperacaoTransporteProc", proc.GerarXML().DocumentElement.Name);
         }
 
@@ -129,12 +129,12 @@ namespace Unimake.DFe.Test.CIOT
             {
                 servico.GravarXmlDistribuicao(pasta);
 
-                var arquivo = Path.Combine(pasta, "1234567890123456-procCIOT.xml");
+                var arquivo = Path.Combine(pasta, "123456789012-procCIOT.xml");
                 Assert.True(File.Exists(arquivo));
 
                 var conteudo = File.ReadAllText(arquivo);
                 Assert.Contains("<DeclaracaoOperacaoTransporteProc", conteudo);
-                Assert.Contains("<CodigoIdentificacaoOperacao>1234567890123456</CodigoIdentificacaoOperacao>", conteudo);
+                Assert.Contains("<IdOperacaoTransporte>123456789012</IdOperacaoTransporte>", conteudo);
             }
             finally
             {
@@ -184,6 +184,264 @@ namespace Unimake.DFe.Test.CIOT
                     Directory.Delete(pasta, true);
                 }
             }
+        }
+
+        /// <summary>
+        /// Gerar XML de distribuição do cancelamento de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "CancelamentoOperacaoTransporte")]
+        public void CancelamentoOperacaoTransporteProcResult()
+        {
+            var envio = LerXML<CancelamentoOperacaoTransporte>(@"..\..\..\CIOT\Resources\cancelamentoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retCancelamentoOperacaoTransporte.xml");
+
+            var servico = new CIOTCancelamentoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            var proc = servico.CancelamentoOperacaoTransporteProcResult;
+
+            Assert.NotNull(proc);
+            Assert.Equal("1234567890123456", proc.RetCancelamentoOperacaoTransporte.CodigoIdentificacaoOperacao);
+            Assert.Equal("1234567890123456-procCIOT.xml", proc.NomeArquivoDistribuicao);
+            Assert.Equal("CancelamentoOperacaoTransporteProc", proc.GerarXML().DocumentElement.Name);
+            Assert.NotNull(new CancelamentoOperacaoTransporteProc().LoadFromXML(proc.GerarXML().OuterXml));
+        }
+
+        /// <summary>
+        /// Gravar XML de distribuição em pasta para cancelamento de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "CancelamentoOperacaoTransporte")]
+        public void GravarXmlDistribuicaoCancelamentoOperacaoTransportePasta()
+        {
+            var envio = LerXML<CancelamentoOperacaoTransporte>(@"..\..\..\CIOT\Resources\cancelamentoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retCancelamentoOperacaoTransporte.xml");
+
+            var servico = new CIOTCancelamentoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            var pasta = Path.Combine(Path.GetTempPath(), "Unimake.DFe.Test", "CIOT", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(pasta);
+
+            try
+            {
+                servico.GravarXmlDistribuicao(pasta);
+
+                var arquivo = Path.Combine(pasta, "1234567890123456-procCIOT.xml");
+                Assert.True(File.Exists(arquivo));
+
+                var conteudo = File.ReadAllText(arquivo);
+                Assert.Contains("<CancelamentoOperacaoTransporteProc", conteudo);
+                Assert.Contains("<RetCancelamentoOperacaoTransporte", conteudo);
+            }
+            finally
+            {
+                if (Directory.Exists(pasta))
+                {
+                    Directory.Delete(pasta, true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gravar XML de distribuição em stream para cancelamento de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "CancelamentoOperacaoTransporte")]
+        public void GravarXmlDistribuicaoCancelamentoOperacaoTransporteStream()
+        {
+            var envio = LerXML<CancelamentoOperacaoTransporte>(@"..\..\..\CIOT\Resources\cancelamentoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retCancelamentoOperacaoTransporte.xml");
+
+            var servico = new CIOTCancelamentoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            GravarXmlDistribuicaoStream(servico, "<CancelamentoOperacaoTransporteProc", "<DataCancelamento>2026-05-25T12:20:42Z</DataCancelamento>");
+        }
+
+        /// <summary>
+        /// Gerar XML de distribuição da retificação de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "RetificacaoOperacaoTransporte")]
+        public void RetificacaoOperacaoTransporteProcResult()
+        {
+            var envio = LerXML<RetificacaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\retificacaoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retRetificacaoOperacaoTransporte.xml");
+
+            var servico = new CIOTRetificacaoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            var proc = servico.RetificacaoOperacaoTransporteProcResult;
+
+            Assert.NotNull(proc);
+            Assert.Equal("1234567890123456", proc.RetRetificacaoOperacaoTransporte.CodigoIdentificacaoOperacao);
+            Assert.Equal("1234567890123456-procCIOT.xml", proc.NomeArquivoDistribuicao);
+            Assert.Equal("RetificacaoOperacaoTransporteProc", proc.GerarXML().DocumentElement.Name);
+            Assert.NotNull(new RetificacaoOperacaoTransporteProc().LoadFromXML(proc.GerarXML().OuterXml));
+        }
+
+        /// <summary>
+        /// Gravar XML de distribuição em pasta para retificação de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "RetificacaoOperacaoTransporte")]
+        public void GravarXmlDistribuicaoRetificacaoOperacaoTransportePasta()
+        {
+            var envio = LerXML<RetificacaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\retificacaoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retRetificacaoOperacaoTransporte.xml");
+
+            var servico = new CIOTRetificacaoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            var pasta = Path.Combine(Path.GetTempPath(), "Unimake.DFe.Test", "CIOT", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(pasta);
+
+            try
+            {
+                servico.GravarXmlDistribuicao(pasta);
+
+                var arquivo = Path.Combine(pasta, "1234567890123456-procCIOT.xml");
+                Assert.True(File.Exists(arquivo));
+
+                var conteudo = File.ReadAllText(arquivo);
+                Assert.Contains("<RetificacaoOperacaoTransporteProc", conteudo);
+                Assert.Contains("<RetRetificacaoOperacaoTransporte", conteudo);
+            }
+            finally
+            {
+                if (Directory.Exists(pasta))
+                {
+                    Directory.Delete(pasta, true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gravar XML de distribuição em stream para retificação de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "RetificacaoOperacaoTransporte")]
+        public void GravarXmlDistribuicaoRetificacaoOperacaoTransporteStream()
+        {
+            var envio = LerXML<RetificacaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\retificacaoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retRetificacaoOperacaoTransporte.xml");
+
+            var servico = new CIOTRetificacaoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            GravarXmlDistribuicaoStream(servico, "<RetificacaoOperacaoTransporteProc", "<DataRetificacao>2026-05-25T12:20:42Z</DataRetificacao>");
+        }
+
+        /// <summary>
+        /// Gerar XML de distribuição do encerramento de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "EncerramentoOperacaoTransporte")]
+        public void EncerramentoOperacaoTransporteProcResult()
+        {
+            var envio = LerXML<EncerramentoOperacaoTransporte>(@"..\..\..\CIOT\Resources\encerramentoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retEncerramentoOperacaoTransporte.xml");
+
+            var servico = new CIOTEncerramentoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            var proc = servico.EncerramentoOperacaoTransporteProcResult;
+
+            Assert.NotNull(proc);
+            Assert.Equal("1234567890123456", proc.RetEncerramentoOperacaoTransporte.CodigoIdentificacaoOperacao);
+            Assert.Equal("1234567890123456-procCIOT.xml", proc.NomeArquivoDistribuicao);
+            Assert.Equal("EncerramentoOperacaoTransporteProc", proc.GerarXML().DocumentElement.Name);
+            Assert.NotNull(new EncerramentoOperacaoTransporteProc().LoadFromXML(proc.GerarXML().OuterXml));
+        }
+
+        /// <summary>
+        /// Gravar XML de distribuição em pasta para encerramento de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "EncerramentoOperacaoTransporte")]
+        public void GravarXmlDistribuicaoEncerramentoOperacaoTransportePasta()
+        {
+            var envio = LerXML<EncerramentoOperacaoTransporte>(@"..\..\..\CIOT\Resources\encerramentoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retEncerramentoOperacaoTransporte.xml");
+
+            var servico = new CIOTEncerramentoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            var pasta = Path.Combine(Path.GetTempPath(), "Unimake.DFe.Test", "CIOT", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(pasta);
+
+            try
+            {
+                servico.GravarXmlDistribuicao(pasta);
+
+                var arquivo = Path.Combine(pasta, "1234567890123456-procCIOT.xml");
+                Assert.True(File.Exists(arquivo));
+
+                var conteudo = File.ReadAllText(arquivo);
+                Assert.Contains("<EncerramentoOperacaoTransporteProc", conteudo);
+                Assert.Contains("<RetEncerramentoOperacaoTransporte", conteudo);
+            }
+            finally
+            {
+                if (Directory.Exists(pasta))
+                {
+                    Directory.Delete(pasta, true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gravar XML de distribuição em stream para encerramento de operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "EncerramentoOperacaoTransporte")]
+        public void GravarXmlDistribuicaoEncerramentoOperacaoTransporteStream()
+        {
+            var envio = LerXML<EncerramentoOperacaoTransporte>(@"..\..\..\CIOT\Resources\encerramentoOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retEncerramentoOperacaoTransporte.xml");
+
+            var servico = new CIOTEncerramentoOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            GravarXmlDistribuicaoStream(servico, "<EncerramentoOperacaoTransporteProc", "<DataEncerramento>2026-05-26T19:30:38Z</DataEncerramento>");
         }
 
         /// <summary>
@@ -386,6 +644,32 @@ namespace Unimake.DFe.Test.CIOT
             Assert.Equal(result.GetType().Name, servico.RetornoWSXML.DocumentElement.Name);
             Assert.Equal(servico.RetornoWSXML.OuterXml, servico.RetornoWSString);
             Assert.Contains("<temp>", servico.RetornoWSString);
+        }
+
+        private static void GravarXmlDistribuicaoStream(dynamic servico, string root, string conteudoEsperado)
+        {
+            var pasta = Path.Combine(Path.GetTempPath(), "Unimake.DFe.Test", "CIOT", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(pasta);
+            var arquivo = Path.Combine(pasta, "stream-procCIOT.xml");
+
+            try
+            {
+                using (var stream = new FileStream(arquivo, FileMode.Create, FileAccess.ReadWrite, FileShare.Read))
+                {
+                    servico.GravarXmlDistribuicao(stream);
+                }
+
+                var conteudo = File.ReadAllText(arquivo);
+                Assert.Contains(root, conteudo);
+                Assert.Contains(conteudoEsperado, conteudo);
+            }
+            finally
+            {
+                if (Directory.Exists(pasta))
+                {
+                    Directory.Delete(pasta, true);
+                }
+            }
         }
 
         private static Configuracao CriarConfiguracao()

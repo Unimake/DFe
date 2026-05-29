@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema id="PedidoConsultaSituacaoLote_v01"
-            targetNamespace="http://www.prefeitura.sp.gov.br/nfe"
+<xsd:schema targetNamespace="http://www.prefeitura.sp.gov.br/nfe"
             xmlns:tipos="http://www.prefeitura.sp.gov.br/nfe/tipos"
             xmlns:async="http://www.prefeitura.sp.gov.br/nfe/tipos"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"

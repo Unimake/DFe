@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.05.26.1909</AssemblyVersion>
-		<FileVersion>2026.05.26.1909</FileVersion>
+		<AssemblyVersion>2026.05.28.1711</AssemblyVersion>
+		<FileVersion>2026.05.28.1711</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -119,6 +119,7 @@
 		<None Remove="Servicos\Config\DARE\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\PiratiniRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ItatibaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<None Remove="Servicos\Config\UMessenger\AN.xml" />
 		<None Remove="Servicos\Config\UMessenger\Config.xml" />
 		<None Remove="Servicos\Config\EFDReinf\AN.xml" />
@@ -1592,6 +1593,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAndreSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloRJ.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
 	</ItemGroup>
