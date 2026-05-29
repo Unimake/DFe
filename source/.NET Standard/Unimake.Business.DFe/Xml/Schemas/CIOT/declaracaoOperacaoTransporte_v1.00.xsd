@@ -60,7 +60,7 @@
       <xs:choice>
         <xs:element name="temp" type="TTempErro"/>
         <xs:sequence>
-          <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
+          <xs:element name="IdOperacaoTransporte" type="TCodigoOperacao12"/>
           <xs:element name="CodigoVerificador">
             <xs:simpleType>
               <xs:restriction base="xs:string">
