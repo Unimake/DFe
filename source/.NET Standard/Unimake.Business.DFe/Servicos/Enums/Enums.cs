@@ -7473,12 +7473,6 @@ namespace Unimake.Business.DFe.Servicos
         WEBFISCO = 35,
 
         /// <summary>
-        /// IIBRASIL
-        /// </summary>
-        [Description("IIBRASIL")]
-        IIBRASIL = 36,
-
-        /// <summary>
         /// ADM_SISTEMAS
         /// </summary>
         [Description("ADM_SISTEMAS")]
