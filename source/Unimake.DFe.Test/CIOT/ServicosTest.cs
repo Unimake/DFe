@@ -11,6 +11,7 @@ using CIOTConsultarFrotaTransportador = Unimake.Business.DFe.Servicos.CIOT.Consu
 using CIOTConsultarSituacaoTransportador = Unimake.Business.DFe.Servicos.CIOT.ConsultarSituacaoTransportador;
 using CIOTDeclaracaoOperacaoTransporte = Unimake.Business.DFe.Servicos.CIOT.DeclaracaoOperacaoTransporte;
 using CIOTEncerramentoOperacaoTransporte = Unimake.Business.DFe.Servicos.CIOT.EncerramentoOperacaoTransporte;
+using CIOTGerarIdOperacaoTransporte = Unimake.Business.DFe.Servicos.CIOT.GerarIdOperacaoTransporte;
 using CIOTRetificacaoOperacaoTransporte = Unimake.Business.DFe.Servicos.CIOT.RetificacaoOperacaoTransporte;
 
 namespace Unimake.DFe.Test.CIOT
@@ -545,6 +546,26 @@ namespace Unimake.DFe.Test.CIOT
         }
 
         /// <summary>
+        /// Gerar identificador da operação de transporte.
+        /// </summary>
+        [Theory()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "GerarIdOperacaoTransporte")]
+        [InlineData(@"..\..\..\CIOT\Resources\gerarIdOperacaoTransporte.xml")]
+        public void GerarIdOperacaoTransporte(string arqXML)
+        {
+            var objeto = LerXML<GerarIdOperacaoTransporte>(arqXML);
+            var configuracao = CriarConfiguracao();
+
+            var servico = new CIOTGerarIdOperacaoTransporte(objeto, configuracao);
+            servico.Executar();
+
+            Assert.Equal((int)UFBrasil.AN, configuracao.CodigoUF);
+            Assert.Equal(TipoAmbiente.Homologacao, configuracao.TipoAmbiente);
+            Assert.IsType<RetGerarIdOperacaoTransporte>(servico.Result);
+        }
+
+        /// <summary>
         /// Desserializar retorno de erro da API dentro do retorno tipado.
         /// </summary>
         [Fact()]
@@ -584,6 +605,7 @@ namespace Unimake.DFe.Test.CIOT
             ValidarResultOK(new CIOTEncerramentoOperacaoTransporte(), @"..\..\..\CIOT\Resources\retEncerramentoOperacaoTransporte.xml");
             ValidarResultOK(new CIOTConsultarExcecao(), @"..\..\..\CIOT\Resources\retConsultarExcecao.xml");
             ValidarResultOK(new CIOTConsultarCIOTGerado(), @"..\..\..\CIOT\Resources\retConsultarCIOTGerado.xml");
+            ValidarResultOK(new CIOTGerarIdOperacaoTransporte(), @"..\..\..\CIOT\Resources\retGerarIdOperacaoTransporte.xml");
         }
 
         /// <summary>
@@ -601,6 +623,7 @@ namespace Unimake.DFe.Test.CIOT
             ValidarResultErro(new CIOTEncerramentoOperacaoTransporte(), "/pefServices/api/EncerramentoOperacaoTransporte");
             ValidarResultErro(new CIOTConsultarExcecao(), "/pefServices/api/ConsultarExcecao");
             ValidarResultErro(new CIOTConsultarCIOTGerado(), "/pefServices/api/ConsultarCIOTGerado");
+            ValidarResultErro(new CIOTGerarIdOperacaoTransporte(), "/pefServices/api/gerar");
         }
 
         private static T LerXML<T>(string arqXML) where T : Unimake.Business.DFe.Xml.XMLBase, new()

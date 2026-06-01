@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetGerarIdOperacaoTransporte xmlns="http://www.antt.gov.br/ciot" versao="1.00">
+  <IdOperacaoTransporte>560000088376</IdOperacaoTransporte>
+  <Codigo>110</Codigo>
+  <Mensagem>IdOperacaoTransporte gerado com sucesso.</Mensagem>
+</RetGerarIdOperacaoTransporte>

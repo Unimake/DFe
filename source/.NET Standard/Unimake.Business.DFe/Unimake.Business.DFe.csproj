@@ -739,6 +739,7 @@
 		<None Remove="Xml\Schemas\CIOT\consultarSituacaoTransportador_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\declaracaoOperacaoTransporte_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\encerramentoOperacaoTransporte_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\gerarIdOperacaoTransporte_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\retificacaoOperacaoTransporte_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\tiposBasicosCIOT_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\consSitCTeTiposBasico_v4.00.xsd" />
@@ -2297,6 +2298,7 @@
 		<EmbeddedResource Include="Xml\Schemas\CIOT\consultarSituacaoTransportador_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\declaracaoOperacaoTransporte_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\encerramentoOperacaoTransporte_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\gerarIdOperacaoTransporte_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\retificacaoOperacaoTransporte_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\tiposBasicosCIOT_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\consSitCTeTiposBasico_v4.00.xsd" />
