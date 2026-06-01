@@ -73,5 +73,35 @@ namespace Unimake.DFe.Test
 
         /// <summary>Nome do pagador usado nos testes do eBoleto</summary>
         public static string EBoletoPagadorNome { get; set; } = "Pagador Teste";
+
+        /// <summary>AppId do PIX</summary>
+        public static string PIXAppId { get; set; } = "Seu_AppId";
+
+        /// <summary>Secret do PIX</summary>
+        public static string PIXSecret { get; set; } = "Seu_Secret";
+
+        /// <summary>Identificador da configuração de integração do PIX</summary>
+        public static string PIXConfigurationId { get; set; } = "Seu_ConfigurationId";
+
+        /// <summary>Chave PIX usada nos testes</summary>
+        public static string PIXChave { get; set; } = "teste@unimake.com.br";
+
+        /// <summary>TxId usado nos testes</summary>
+        public static string PIXTxId { get; set; } = "ABCDEF12345678901234567890";
+
+        /// <summary>CPF/CNPJ do beneficiário usado nos testes do PIX</summary>
+        public static string PIXBeneficiarioInscricao { get; set; } = "99999999999";
+
+        /// <summary>Nome do beneficiário usado nos testes do PIX</summary>
+        public static string PIXBeneficiarioNome { get; set; } = "Beneficiario Teste";
+
+        /// <summary>Agência do beneficiário usada nos testes do PIX</summary>
+        public static string PIXBeneficiarioAgencia { get; set; } = "1234";
+
+        /// <summary>Conta do beneficiário usada nos testes do PIX</summary>
+        public static string PIXBeneficiarioConta { get; set; } = "123456";
+
+        /// <summary>Banco do beneficiário usado nos testes do PIX</summary>
+        public static string PIXBeneficiarioBanco { get; set; } = "123";
     }
 }
