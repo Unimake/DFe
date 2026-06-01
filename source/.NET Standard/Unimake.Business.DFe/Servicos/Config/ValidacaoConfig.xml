@@ -5271,6 +5271,56 @@
 				<TargetNS></TargetNS>
 			</Servico>
 		</Padrao>
+		<Padrao nome="GIF">
+			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="tpAmb">
+				<Descricao>Envio do DPS - Sincrono</Descricao>
+				<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+				<TagAssinatura>DPS</TagAssinatura>
+				<TagAtributoID>infDPS</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="e101101">
+				<Descricao>Envio do cancelamento de NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedRegEvento</TagAssinatura>
+				<TagAtributoID>infPedReg</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
+				<Descricao>Consultar NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="infDPS">
+				<Descricao>Consultar NFSe por DPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+		</Padrao>
 		<Padrao nome="GINFES">
 			<Servico tagRaiz="CancelarNfseEnvio" versao="2.00" tagIdentificadora="Prestador">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
