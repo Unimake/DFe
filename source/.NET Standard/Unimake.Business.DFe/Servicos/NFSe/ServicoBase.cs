@@ -104,10 +104,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     EGOVERNEISS();
                     break;
 
-                case PadraoNFSe.SIGISSWEB:
-                    SIGISSWEB();
-                    break;
-
                 case PadraoNFSe.PRONIM:
                     PRONIM();
                     break;
@@ -419,57 +415,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #endregion GIAP
-
-        #region SIGISSWEB
-        private void SIGISSWEB()
-        {
-            // Substituições de placeholders na URL
-            if (Configuracoes.RequestURI.Contains("{numeronf}"))
-            {
-                var numeroNf = GetXMLElementInnertext("numeronf");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numeronf}", numeroNf);
-            }
-            if (Configuracoes.RequestURI.Contains("{serie}"))
-            {
-                var serie = GetXMLElementInnertext("serie");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{serie}", serie);
-            }
-            if (Configuracoes.RequestURI.Contains("{motivo}"))
-            {
-                var motivo = GetXMLElementInnertext("motivo");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{motivo}", motivo);
-            }
-            if (Configuracoes.RequestURI.Contains("{numerorps}"))
-            {
-                var numeroRps = GetXMLElementInnertext("NumeroRPS");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{numerorps}", numeroRps);
-            }
-            if (Configuracoes.RequestURI.Contains("{serierps}"))
-            {
-                var serieRps = GetXMLElementInnertext("Serie");
-                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{serierps}", serieRps);
-            }
-
-            // ─────────── Monta o corpo do POST só para emissão de NFSe ───────────
-            if (Configuracoes.Servico == Servico.NFSeGerarNfse)
-            {
-                Configuracoes.HttpContent = new StringContent(
-                    ConteudoXMLAssinado.OuterXml,
-                    Encoding.UTF8,
-                    Configuracoes.WebContentType
-                );
-            }
-            else
-            {
-                Configuracoes.HttpContent = null;
-            }
-
-            var token = Token.GerarTokenSIGISSWEB(Configuracoes);
-
-            Configuracoes.MunicipioToken = token;
-        }
-
-        #endregion SIGISSWEB
 
         #region PRONIM
 
