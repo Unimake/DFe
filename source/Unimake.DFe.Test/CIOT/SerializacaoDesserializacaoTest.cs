@@ -1,6 +1,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
+using Newtonsoft.Json.Linq;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
@@ -50,7 +51,11 @@ namespace Unimake.DFe.Test.CIOT
         [InlineData(@"..\..\..\CIOT\Resources\declaracaoOperacaoTransporte.xml")]
         public void SerializacaoDesserializacaoDeclaracaoOperacaoTransporte(string arqXML)
         {
-            SerializarDesserializar<DeclaracaoOperacaoTransporte>(arqXML);
+            var xml = SerializarDesserializar<DeclaracaoOperacaoTransporte>(arqXML);
+            Assert.Equal(2, xml.DadosCarga.ContratantesCargFrac.Count);
+            Assert.Equal("12345678000195", xml.DadosCarga.ContratantesCargFrac[0]);
+            Assert.Equal("98765432000110", xml.DadosCarga.ContratantesCargFrac[1]);
+            Assert.Equal(2, xml.GerarXML().SelectNodes("/*[local-name()='DeclaracaoOperacaoTransporte']/*[local-name()='DadosCarga']/*[local-name()='ContratantesCargFrac']").Count);
         }
 
         [Theory]
@@ -170,9 +175,13 @@ namespace Unimake.DFe.Test.CIOT
             Assert.DoesNotContain("DataDeclaracaoField", jsonText);
             Assert.DoesNotContain("DataInicioViagemField", jsonText);
             Assert.DoesNotContain("DataFimViagemField", jsonText);
+            var contratantesCargFrac = (JArray)JObject.Parse(jsonText)["DadosCarga"]["ContratantesCargFrac"];
+            Assert.Equal(2, contratantesCargFrac.Count);
+            Assert.Equal("12345678000195", contratantesCargFrac[0]);
+            Assert.Equal("98765432000110", contratantesCargFrac[1]);
         }
 
-        private static void SerializarDesserializar<T>(string arqXML) where T : XMLBase, new()
+        private static T SerializarDesserializar<T>(string arqXML) where T : XMLBase, new()
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -183,6 +192,7 @@ namespace Unimake.DFe.Test.CIOT
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, $"XML gerado pela DLL está diferente do conteúdo do arquivo serializado.\nOriginal: {doc.InnerText}\nGerado: {doc2.InnerText}");
+            return xml;
         }
     }
 }
