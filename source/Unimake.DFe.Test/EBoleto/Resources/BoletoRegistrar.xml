@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BoletoRegistrar versao="1.00">
+	<ConfigurationId>CONFIG_TESTE</ConfigurationId>
+	<Aceite>false</Aceite>
+	<Emissao>2026-06-01</Emissao>
+	<Especie>2</Especie>
+	<NumeroNaEmpresa>TESTE000001</NumeroNaEmpresa>
+	<NumeroNoBanco>000000001</NumeroNoBanco>
+	<NumeroParcela>1</NumeroParcela>
+	<Pagador>
+		<Nome>Pagador Teste</Nome>
+		<Inscricao>99999999999</Inscricao>
+		<TipoInscricao>1</TipoInscricao>
+		<Endereco>
+			<Logradouro>Rua Teste</Logradouro>
+			<Numero>100</Numero>
+			<Complemento>Sala 1</Complemento>
+			<Bairro>Centro</Bairro>
+			<Cidade>Paranavai</Cidade>
+			<UF>PR</UF>
+			<CEP>87700-000</CEP>
+		</Endereco>
+	</Pagador>
+	<PDFConfig>
+		<TryGeneratePDF>false</TryGeneratePDF>
+	</PDFConfig>
+	<Testing>true</Testing>
+	<ValorNominal>10.50</ValorNominal>
+	<Vencimento>2026-06-06</Vencimento>
+</BoletoRegistrar>

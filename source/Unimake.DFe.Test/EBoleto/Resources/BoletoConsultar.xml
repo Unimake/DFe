@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BoletoConsultar versao="1.00">
+	<ConfigurationId>CONFIG_TESTE</ConfigurationId>
+	<DataEmissaoInicial>2026-06-01</DataEmissaoInicial>
+	<DataEmissaoFinal>2026-06-01</DataEmissaoFinal>
+	<NumerosNoBanco>
+		<NumeroNoBanco>000000001</NumeroNoBanco>
+	</NumerosNoBanco>
+	<PageNumber>1</PageNumber>
+	<PageSize>10</PageSize>
+	<Testing>true</Testing>
+</BoletoConsultar>

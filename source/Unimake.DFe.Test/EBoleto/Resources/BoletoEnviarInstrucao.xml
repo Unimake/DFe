@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BoletoEnviarInstrucao versao="1.00">
+	<ConfigurationId>CONFIG_TESTE</ConfigurationId>
+	<Data>2026-06-01</Data>
+	<Instrucao>3</Instrucao>
+	<NumeroNoBanco>000000001</NumeroNoBanco>
+	<Valor>0</Valor>
+	<Testing>true</Testing>
+</BoletoEnviarInstrucao>
