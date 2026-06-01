@@ -88,24 +88,6 @@ namespace Unimake.Business.DFe.ConsumirServico.Builders
                 return doc.OuterXml;
             }
 
-            if (soap.PadraoNFSe == PadraoNFSe.IIBRASIL)
-            {
-                soap.SoapString = soap.SoapString.Replace("{cCDATA}", "]]>").Replace("{oCDATA}", "<![CDATA[");
-
-                var doc = new XmlDocument();
-                doc.LoadXml(xmlBody);
-
-                if (!xmlBody.Contains("Integridade"))
-                {
-                    var integridade = IIBRASIL.GerarIntegridade(xmlBody, soap.Token);
-                    var noIntegridade = doc.CreateNode(XmlNodeType.Element, "Integridade", null);
-                    noIntegridade.InnerText = integridade;
-                    doc.FirstChild.FirstChild.AppendChild(noIntegridade);
-                }
-
-                return doc.OuterXml;
-            }
-
             if (soap.PadraoNFSe == PadraoNFSe.ELOTECH)
             {
                 if (xmlBody.Contains("SOAP-ENV:Envelope"))
