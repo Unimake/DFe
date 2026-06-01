@@ -207,7 +207,7 @@ namespace Unimake.DFe.Test.CIOT
 
             Assert.NotNull(proc);
             Assert.Equal("1234567890123456", proc.RetCancelamentoOperacaoTransporte.CodigoIdentificacaoOperacao);
-            Assert.Equal("1234567890123456-procCIOT.xml", proc.NomeArquivoDistribuicao);
+            Assert.Equal("1234567890123456-procEventoCIOT.xml", proc.NomeArquivoDistribuicao);
             Assert.Equal("CancelamentoOperacaoTransporteProc", proc.GerarXML().DocumentElement.Name);
             Assert.NotNull(new CancelamentoOperacaoTransporteProc().LoadFromXML(proc.GerarXML().OuterXml));
         }
@@ -236,7 +236,7 @@ namespace Unimake.DFe.Test.CIOT
             {
                 servico.GravarXmlDistribuicao(pasta);
 
-                var arquivo = Path.Combine(pasta, "1234567890123456-procCIOT.xml");
+                var arquivo = Path.Combine(pasta, "1234567890123456-procEventoCIOT.xml");
                 Assert.True(File.Exists(arquivo));
 
                 var conteudo = File.ReadAllText(arquivo);
@@ -293,7 +293,7 @@ namespace Unimake.DFe.Test.CIOT
 
             Assert.NotNull(proc);
             Assert.Equal("1234567890123456", proc.RetRetificacaoOperacaoTransporte.CodigoIdentificacaoOperacao);
-            Assert.Equal("1234567890123456-procCIOT.xml", proc.NomeArquivoDistribuicao);
+            Assert.Equal("1234567890123456-procEventoCIOT.xml", proc.NomeArquivoDistribuicao);
             Assert.Equal("RetificacaoOperacaoTransporteProc", proc.GerarXML().DocumentElement.Name);
             Assert.NotNull(new RetificacaoOperacaoTransporteProc().LoadFromXML(proc.GerarXML().OuterXml));
         }
@@ -322,7 +322,7 @@ namespace Unimake.DFe.Test.CIOT
             {
                 servico.GravarXmlDistribuicao(pasta);
 
-                var arquivo = Path.Combine(pasta, "1234567890123456-procCIOT.xml");
+                var arquivo = Path.Combine(pasta, "1234567890123456-procEventoCIOT.xml");
                 Assert.True(File.Exists(arquivo));
 
                 var conteudo = File.ReadAllText(arquivo);
@@ -379,7 +379,7 @@ namespace Unimake.DFe.Test.CIOT
 
             Assert.NotNull(proc);
             Assert.Equal("1234567890123456", proc.RetEncerramentoOperacaoTransporte.CodigoIdentificacaoOperacao);
-            Assert.Equal("1234567890123456-procCIOT.xml", proc.NomeArquivoDistribuicao);
+            Assert.Equal("1234567890123456-procEventoCIOT.xml", proc.NomeArquivoDistribuicao);
             Assert.Equal("EncerramentoOperacaoTransporteProc", proc.GerarXML().DocumentElement.Name);
             Assert.NotNull(new EncerramentoOperacaoTransporteProc().LoadFromXML(proc.GerarXML().OuterXml));
         }
@@ -408,7 +408,7 @@ namespace Unimake.DFe.Test.CIOT
             {
                 servico.GravarXmlDistribuicao(pasta);
 
-                var arquivo = Path.Combine(pasta, "1234567890123456-procCIOT.xml");
+                var arquivo = Path.Combine(pasta, "1234567890123456-procEventoCIOT.xml");
                 Assert.True(File.Exists(arquivo));
 
                 var conteudo = File.ReadAllText(arquivo);

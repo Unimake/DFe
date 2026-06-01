@@ -214,13 +214,7 @@
       <xs:element name="CodigoNaturezaCarga" type="TCodigoNaturezaCarga" minOccurs="0"/>
       <xs:element name="PesoCarga" type="TValor10v2" minOccurs="0"/>
       <xs:element name="CodigoTipoCarga" type="TTipoCarga" minOccurs="0"/>
-      <xs:element name="ContratantesCargaFrac" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="CpfCnpjContratante" type="TCpfCnpj" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
+      <xs:element name="ContratantesCargFrac" type="TCpfCnpj" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
