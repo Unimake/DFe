@@ -386,7 +386,6 @@
 		<None Remove="Servicos\Config\NFSe\ArcosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AriquemesRO.xml" />
 		<None Remove="Servicos\Config\NFSe\ArroioDoMeioRS.xml" />
-		<None Remove="Servicos\Config\NFSe\ArujaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AssisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AssuRN.xml" />
 		<None Remove="Servicos\Config\NFSe\AstorgaPR.xml" />
@@ -2207,9 +2206,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CatanduvaSP.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\ArujaSP.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CariacicaES.xml">
