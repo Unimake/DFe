@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BoletoCancelar versao="1.00">
+	<ConfigurationId>CONFIG_TESTE</ConfigurationId>
+	<NumeroNoBanco>000000001</NumeroNoBanco>
+	<Testing>true</Testing>
+</BoletoCancelar>

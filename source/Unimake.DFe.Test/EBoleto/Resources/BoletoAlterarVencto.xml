@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BoletoAlterarVencto versao="1.00">
+	<ConfigurationId>CONFIG_TESTE</ConfigurationId>
+	<DataVencimento>2026-06-10</DataVencimento>
+	<NumeroNoBanco>000000001</NumeroNoBanco>
+	<Testing>true</Testing>
+</BoletoAlterarVencto>

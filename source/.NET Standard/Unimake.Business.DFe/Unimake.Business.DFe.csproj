@@ -120,6 +120,8 @@
 		<None Remove="Servicos\Config\NFSe\PiratiniRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ItatibaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoSepeRS.xml" />
+		<None Remove="Servicos\Config\EBoleto\AN.xml" />
+		<None Remove="Servicos\Config\EBoleto\Config.xml" />
 		<None Remove="Servicos\Config\UMessenger\AN.xml" />
 		<None Remove="Servicos\Config\UMessenger\Config.xml" />
 		<None Remove="Servicos\Config\EFDReinf\AN.xml" />
@@ -1394,6 +1396,7 @@
 		<None Remove="Xml\Schemas\NFSe\NACIONAL\xmldsig-core-schema_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\ConsultaGuia_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PAULISTANA\ConsultaGuia_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PAULISTANA\ConsultaSituacaoGuiaAsync_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PAULISTANA\ConsultaSituacaoLoteAsync_v02.xsd" />
@@ -1560,6 +1563,12 @@
 		<None Remove="Xml\Schemas\tiposBasico_v1.03.xsd" />
 		<None Remove="Xml\Schemas\tiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\tiposDistDFe_v1.01.xsd" />
+		<None Remove="Xml\Schemas\EBoleto\BoletoAlterarVencto_1_00.xsd" />
+		<None Remove="Xml\Schemas\EBoleto\BoletoCancelar_1_00.xsd" />
+		<None Remove="Xml\Schemas\EBoleto\BoletoConsultar_1_00.xsd" />
+		<None Remove="Xml\Schemas\EBoleto\BoletoEnviarInstrucao_1_00.xsd" />
+		<None Remove="Xml\Schemas\EBoleto\BoletoInformarPagto_1_00.xsd" />
+		<None Remove="Xml\Schemas\EBoleto\BoletoRegistrar_1_00.xsd" />
 		<None Remove="Xml\Schemas\UMessenger\uMessengerText_1_00.xsd" />
 		<None Remove="Xml\Schemas\xmldsig-core-schema_v1.01.xsd" />
 	</ItemGroup>
@@ -1823,6 +1832,8 @@
 	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\DARE\AN.xml" />
 		<EmbeddedResource Include="Servicos\Config\DARE\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\EBoleto\AN.xml" />
+		<EmbeddedResource Include="Servicos\Config\EBoleto\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\UMessenger\AN.xml" />
 		<EmbeddedResource Include="Servicos\Config\UMessenger\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
@@ -3606,6 +3617,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\ConsultaGuia_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\ConsultaGuia_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\ConsultaSituacaoGuiaAsync_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\ConsultaSituacaoLoteAsync_v02.xsd" />
@@ -3790,6 +3802,12 @@
 		<EmbeddedResource Include="Xml\Schemas\SNCM\retmdatamah_ver_0-01-r1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\retparam_ver_0-01-r1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\sncmtypes.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoAlterarVencto_1_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoCancelar_1_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoConsultar_1_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoEnviarInstrucao_1_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoInformarPagto_1_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoRegistrar_1_00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\UMessenger\uMessengerText_1_00.xsd" />
 	</ItemGroup>
 
