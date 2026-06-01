@@ -5,18 +5,8 @@ using Xunit;
 
 namespace Unimake.DFe.Test.UMessenger
 {
-    public class PublishUMessengerTest
+    public class PublishUMessengerTest : UMessengerTestBase
     {
-        private static Configuracao CriarConfiguracao() => new Configuracao
-        {
-            TipoDFe = TipoDFe.UMessenger,
-            TipoAmbiente = TipoAmbiente.Homologacao,
-            Servico = Servico.UMessengerPublish,
-            AppId = PropConfig.UMessengerAppId,
-            Secret = PropConfig.UMessengerSecret,
-            UMessengerInstanceName = PropConfig.UMessengerInstanceName
-        };
-
         /// <summary>
         /// Testar envio de mensagem de texto simples via uMessenger (sandbox)
         /// </summary>
@@ -38,11 +28,14 @@ namespace Unimake.DFe.Test.UMessenger
                 }
             };
 
-            var servico = new Business.DFe.Servicos.UMessenger.PublishUMessenger(xml, CriarConfiguracao());
-            servico.Executar();
-
-            Assert.NotNull(servico.Result);
-            Assert.NotEmpty(servico.Result.RawResponse);
+            ExecutarTesteServico(
+                () => new Business.DFe.Servicos.UMessenger.PublishUMessenger(xml, CriarConfiguracao(Servico.UMessengerPublish)),
+                TemConfiguracaoUMessengerValida(),
+                servico =>
+                {
+                    Assert.NotNull(servico.Result);
+                    Assert.NotEmpty(servico.Result.RawResponse);
+                });
         }
 
         /// <summary>
@@ -75,11 +68,14 @@ namespace Unimake.DFe.Test.UMessenger
                 }
             };
 
-            var servico = new Business.DFe.Servicos.UMessenger.PublishUMessenger(xml, CriarConfiguracao());
-            servico.Executar();
-
-            Assert.Equal(2, servico.Results.Count);
-            Assert.All(servico.Results, r => Assert.NotEmpty(r.RawResponse));
+            ExecutarTesteServico(
+                () => new Business.DFe.Servicos.UMessenger.PublishUMessenger(xml, CriarConfiguracao(Servico.UMessengerPublish)),
+                TemConfiguracaoUMessengerValida(),
+                servico =>
+                {
+                    Assert.Equal(2, servico.Results.Count);
+                    Assert.All(servico.Results, r => Assert.NotEmpty(r.RawResponse));
+                });
         }
     }
 }
