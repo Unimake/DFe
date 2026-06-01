@@ -40,6 +40,8 @@
     <CodigoNaturezaCarga>0001</CodigoNaturezaCarga>
     <PesoCarga>1000.00</PesoCarga>
     <CodigoTipoCarga>5</CodigoTipoCarga>
+    <ContratantesCargFrac>12345678000195</ContratantesCargFrac>
+    <ContratantesCargFrac>98765432000110</ContratantesCargFrac>
   </DadosCarga>
   <InfPagamento>
     <Pagamento>

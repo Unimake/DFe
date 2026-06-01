@@ -114,14 +114,13 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("CodigoTipoCarga")]
         public TipoCargaCIOT CodigoTipoCarga { get; set; }
 
-        [XmlArray("ContratantesCargaFrac")]
-        [XmlArrayItem("CpfCnpjContratante")]
-        public List<string> ContratantesCargaFrac { get; set; }
+        [XmlElement("ContratantesCargFrac")]
+        public List<string> ContratantesCargFrac { get; set; }
 
         public bool ShouldSerializeCodigoNaturezaCarga() => !string.IsNullOrEmpty(CodigoNaturezaCarga);
         public bool ShouldSerializePesoCarga() => !string.IsNullOrEmpty(PesoCarga);
         public bool ShouldSerializeCodigoTipoCarga() => CodigoTipoCarga != 0;
-        public bool ShouldSerializeContratantesCargaFrac() => ContratantesCargaFrac?.Count > 0;
+        public bool ShouldSerializeContratantesCargFrac() => ContratantesCargFrac?.Count > 0;
     }
 
     public class DadosCargaEncerramentoCIOT
