@@ -697,6 +697,42 @@ namespace Unimake.Business.DFe.Servicos
         [Description("CIOT - Consultar CIOT gerado")]
         CIOTConsultarCIOTGerado = 113,
 
+        /// <summary>
+        /// 114 - EBoleto - Registrar boleto
+        /// </summary>
+        [Description("EBoleto - Registrar boleto")]
+        EBoletoRegistrar = 114,
+
+        /// <summary>
+        /// 115 - EBoleto - Cancelar boleto
+        /// </summary>
+        [Description("EBoleto - Cancelar boleto")]
+        EBoletoCancelar = 115,
+
+        /// <summary>
+        /// 116 - EBoleto - Consultar boleto
+        /// </summary>
+        [Description("EBoleto - Consultar boleto")]
+        EBoletoConsultar = 116,
+
+        /// <summary>
+        /// 117 - EBoleto - Alterar vencimento
+        /// </summary>
+        [Description("EBoleto - Alterar vencimento")]
+        EBoletoAlterarVencto = 117,
+
+        /// <summary>
+        /// 118 - EBoleto - Enviar instrução
+        /// </summary>
+        [Description("EBoleto - Enviar instrução")]
+        EBoletoEnviarInstrucao = 118,
+
+        /// <summary>
+        /// 119 - EBoleto - Informar pagamento
+        /// </summary>
+        [Description("EBoleto - Informar pagamento")]
+        EBoletoInformarPagt = 119,
+
         #endregion
 
         #region Gerais
@@ -805,6 +841,11 @@ namespace Unimake.Business.DFe.Servicos
         /// 19 - CIOT - Código Identificador da Operação de Transporte
         /// </summary>
         CIOT = 19,
+
+        /// <summary>
+        /// 20 - EBoleto - Serviço de boletos eletrônicos
+        /// </summary>
+        EBoleto = 20,
 
     }
 
@@ -18640,4 +18681,728 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion CIOT
+
+    #region EBoleto
+
+    /// <summary>
+    /// Tipo de inscricao (EBoleto)
+    /// </summary>
+    public enum EBoletoTipoInscricao
+    {
+        /// <summary>
+        /// 0 - Nao informado
+        /// </summary>
+        [XmlEnum("0")]
+        NaoInformado = 0,
+
+        /// <summary>
+        /// 1 - CPF
+        /// </summary>
+        [XmlEnum("1")]
+        CPF = 1,
+
+        /// <summary>
+        /// 2 - CNPJ
+        /// </summary>
+        [XmlEnum("2")]
+        CNPJ = 2,
+
+        /// <summary>
+        /// 3 - CNPJ com mais de 14 digitos
+        /// </summary>
+        [XmlEnum("3")]
+        CNPJMais14 = 3,
+
+        /// <summary>
+        /// 9 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9
+    }
+
+    /// <summary>
+    /// Especie do titulo (EBoleto)
+    /// </summary>
+    public enum EBoletoEspecieTitulo
+    {
+        /// <summary>
+        /// 0 - Codigo 0
+        /// </summary>
+        [XmlEnum("0")]
+        Codigo0 = 0,
+
+        /// <summary>
+        /// 1 - Codigo 1
+        /// </summary>
+        [XmlEnum("1")]
+        Codigo1 = 1,
+
+        /// <summary>
+        /// 2 - Codigo 2
+        /// </summary>
+        [XmlEnum("2")]
+        Codigo2 = 2,
+
+        /// <summary>
+        /// 3 - Codigo 3
+        /// </summary>
+        [XmlEnum("3")]
+        Codigo3 = 3,
+
+        /// <summary>
+        /// 4 - Codigo 4
+        /// </summary>
+        [XmlEnum("4")]
+        Codigo4 = 4,
+
+        /// <summary>
+        /// 5 - Codigo 5
+        /// </summary>
+        [XmlEnum("5")]
+        Codigo5 = 5,
+
+        /// <summary>
+        /// 6 - Codigo 6
+        /// </summary>
+        [XmlEnum("6")]
+        Codigo6 = 6,
+
+        /// <summary>
+        /// 7 - Codigo 7
+        /// </summary>
+        [XmlEnum("7")]
+        Codigo7 = 7,
+
+        /// <summary>
+        /// 8 - Codigo 8
+        /// </summary>
+        [XmlEnum("8")]
+        Codigo8 = 8,
+
+        /// <summary>
+        /// 9 - Codigo 9
+        /// </summary>
+        [XmlEnum("9")]
+        Codigo9 = 9,
+
+        /// <summary>
+        /// 10 - Codigo 10
+        /// </summary>
+        [XmlEnum("10")]
+        Codigo10 = 10,
+
+        /// <summary>
+        /// 11 - Codigo 11
+        /// </summary>
+        [XmlEnum("11")]
+        Codigo11 = 11,
+
+        /// <summary>
+        /// 12 - Codigo 12
+        /// </summary>
+        [XmlEnum("12")]
+        Codigo12 = 12,
+
+        /// <summary>
+        /// 13 - Codigo 13
+        /// </summary>
+        [XmlEnum("13")]
+        Codigo13 = 13,
+
+        /// <summary>
+        /// 14 - Codigo 14
+        /// </summary>
+        [XmlEnum("14")]
+        Codigo14 = 14,
+
+        /// <summary>
+        /// 15 - Codigo 15
+        /// </summary>
+        [XmlEnum("15")]
+        Codigo15 = 15,
+
+        /// <summary>
+        /// 16 - Codigo 16
+        /// </summary>
+        [XmlEnum("16")]
+        Codigo16 = 16,
+
+        /// <summary>
+        /// 17 - Codigo 17
+        /// </summary>
+        [XmlEnum("17")]
+        Codigo17 = 17,
+
+        /// <summary>
+        /// 18 - Codigo 18
+        /// </summary>
+        [XmlEnum("18")]
+        Codigo18 = 18,
+
+        /// <summary>
+        /// 19 - Codigo 19
+        /// </summary>
+        [XmlEnum("19")]
+        Codigo19 = 19,
+
+        /// <summary>
+        /// 20 - Codigo 20
+        /// </summary>
+        [XmlEnum("20")]
+        Codigo20 = 20,
+
+        /// <summary>
+        /// 21 - Codigo 21
+        /// </summary>
+        [XmlEnum("21")]
+        Codigo21 = 21,
+
+        /// <summary>
+        /// 22 - Codigo 22
+        /// </summary>
+        [XmlEnum("22")]
+        Codigo22 = 22,
+
+        /// <summary>
+        /// 23 - Codigo 23
+        /// </summary>
+        [XmlEnum("23")]
+        Codigo23 = 23,
+
+        /// <summary>
+        /// 24 - Codigo 24
+        /// </summary>
+        [XmlEnum("24")]
+        Codigo24 = 24,
+
+        /// <summary>
+        /// 25 - Codigo 25
+        /// </summary>
+        [XmlEnum("25")]
+        Codigo25 = 25,
+
+        /// <summary>
+        /// 26 - Codigo 26
+        /// </summary>
+        [XmlEnum("26")]
+        Codigo26 = 26,
+
+        /// <summary>
+        /// 27 - Codigo 27
+        /// </summary>
+        [XmlEnum("27")]
+        Codigo27 = 27,
+
+        /// <summary>
+        /// 28 - Codigo 28
+        /// </summary>
+        [XmlEnum("28")]
+        Codigo28 = 28,
+
+        /// <summary>
+        /// 29 - Codigo 29
+        /// </summary>
+        [XmlEnum("29")]
+        Codigo29 = 29,
+
+        /// <summary>
+        /// 30 - Codigo 30
+        /// </summary>
+        [XmlEnum("30")]
+        Codigo30 = 30,
+
+        /// <summary>
+        /// 31 - Codigo 31
+        /// </summary>
+        [XmlEnum("31")]
+        Codigo31 = 31,
+
+        /// <summary>
+        /// 32 - Codigo 32
+        /// </summary>
+        [XmlEnum("32")]
+        Codigo32 = 32,
+
+        /// <summary>
+        /// 43 - Codigo 43
+        /// </summary>
+        [XmlEnum("43")]
+        Codigo43 = 43,
+
+        /// <summary>
+        /// 44 - Codigo 44
+        /// </summary>
+        [XmlEnum("44")]
+        Codigo44 = 44,
+
+        /// <summary>
+        /// 47 - Codigo 47
+        /// </summary>
+        [XmlEnum("47")]
+        Codigo47 = 47,
+
+        /// <summary>
+        /// 50 - Codigo 50
+        /// </summary>
+        [XmlEnum("50")]
+        Codigo50 = 50,
+
+        /// <summary>
+        /// 54 - Codigo 54
+        /// </summary>
+        [XmlEnum("54")]
+        Codigo54 = 54,
+
+        /// <summary>
+        /// 55 - Codigo 55
+        /// </summary>
+        [XmlEnum("55")]
+        Codigo55 = 55,
+
+        /// <summary>
+        /// 56 - Codigo 56
+        /// </summary>
+        [XmlEnum("56")]
+        Codigo56 = 56,
+
+        /// <summary>
+        /// 99 - Codigo 99
+        /// </summary>
+        [XmlEnum("99")]
+        Codigo99 = 99
+    }
+
+    /// <summary>
+    /// Identificacao de distribuicao (EBoleto)
+    /// </summary>
+    public enum EBoletoIdentificacaoDistribuicao
+    {
+        /// <summary>
+        /// 0 - Codigo 0
+        /// </summary>
+        [XmlEnum("0")]
+        Codigo0 = 0,
+
+        /// <summary>
+        /// 1 - Codigo 1
+        /// </summary>
+        [XmlEnum("1")]
+        Codigo1 = 1
+    }
+
+    /// <summary>
+    /// Identificacao de emissao (EBoleto)
+    /// </summary>
+    public enum EBoletoIdentificacaoEmissao
+    {
+        /// <summary>
+        /// 0 - Codigo 0
+        /// </summary>
+        [XmlEnum("0")]
+        Codigo0 = 0,
+
+        /// <summary>
+        /// 1 - Codigo 1
+        /// </summary>
+        [XmlEnum("1")]
+        Codigo1 = 1
+    }
+
+    /// <summary>
+    /// Tipo de baixa/devolucao (EBoleto)
+    /// </summary>
+    public enum EBoletoTipoBaixaDevolucao
+    {
+        /// <summary>
+        /// 1 - Codigo 1
+        /// </summary>
+        [XmlEnum("1")]
+        Codigo1 = 1,
+
+        /// <summary>
+        /// 2 - Codigo 2
+        /// </summary>
+        [XmlEnum("2")]
+        Codigo2 = 2,
+
+        /// <summary>
+        /// 3 - Codigo 3
+        /// </summary>
+        [XmlEnum("3")]
+        Codigo3 = 3,
+
+        /// <summary>
+        /// 9 - Codigo 9
+        /// </summary>
+        [XmlEnum("9")]
+        Codigo9 = 9
+    }
+
+    /// <summary>
+    /// Tipo de desconto (EBoleto)
+    /// </summary>
+    public enum EBoletoTipoDesconto
+    {
+        /// <summary>
+        /// 0 - Codigo 0
+        /// </summary>
+        [XmlEnum("0")]
+        Codigo0 = 0,
+
+        /// <summary>
+        /// 1 - Codigo 1
+        /// </summary>
+        [XmlEnum("1")]
+        Codigo1 = 1,
+
+        /// <summary>
+        /// 2 - Codigo 2
+        /// </summary>
+        [XmlEnum("2")]
+        Codigo2 = 2,
+
+        /// <summary>
+        /// 3 - Codigo 3
+        /// </summary>
+        [XmlEnum("3")]
+        Codigo3 = 3,
+
+        /// <summary>
+        /// 4 - Codigo 4
+        /// </summary>
+        [XmlEnum("4")]
+        Codigo4 = 4,
+
+        /// <summary>
+        /// 5 - Codigo 5
+        /// </summary>
+        [XmlEnum("5")]
+        Codigo5 = 5,
+
+        /// <summary>
+        /// 6 - Codigo 6
+        /// </summary>
+        [XmlEnum("6")]
+        Codigo6 = 6,
+
+        /// <summary>
+        /// 7 - Codigo 7
+        /// </summary>
+        [XmlEnum("7")]
+        Codigo7 = 7,
+
+        /// <summary>
+        /// 8 - Codigo 8
+        /// </summary>
+        [XmlEnum("8")]
+        Codigo8 = 8,
+
+        /// <summary>
+        /// 9 - Codigo 9
+        /// </summary>
+        [XmlEnum("9")]
+        Codigo9 = 9,
+
+        /// <summary>
+        /// 10 - Codigo 10
+        /// </summary>
+        [XmlEnum("10")]
+        Codigo10 = 10,
+
+        /// <summary>
+        /// 11 - Codigo 11
+        /// </summary>
+        [XmlEnum("11")]
+        Codigo11 = 11,
+
+        /// <summary>
+        /// 12 - Codigo 12
+        /// </summary>
+        [XmlEnum("12")]
+        Codigo12 = 12,
+
+        /// <summary>
+        /// 13 - Codigo 13
+        /// </summary>
+        [XmlEnum("13")]
+        Codigo13 = 13
+    }
+
+    /// <summary>
+    /// Tipo de juros (EBoleto)
+    /// </summary>
+    public enum EBoletoTipoJuros
+    {
+        /// <summary>
+        /// 0 - Codigo 0
+        /// </summary>
+        [XmlEnum("0")]
+        Codigo0 = 0,
+
+        /// <summary>
+        /// 1 - Codigo 1
+        /// </summary>
+        [XmlEnum("1")]
+        Codigo1 = 1,
+
+        /// <summary>
+        /// 2 - Codigo 2
+        /// </summary>
+        [XmlEnum("2")]
+        Codigo2 = 2,
+
+        /// <summary>
+        /// 3 - Codigo 3
+        /// </summary>
+        [XmlEnum("3")]
+        Codigo3 = 3,
+
+        /// <summary>
+        /// 4 - Codigo 4
+        /// </summary>
+        [XmlEnum("4")]
+        Codigo4 = 4,
+
+        /// <summary>
+        /// 5 - Codigo 5
+        /// </summary>
+        [XmlEnum("5")]
+        Codigo5 = 5,
+
+        /// <summary>
+        /// 6 - Codigo 6
+        /// </summary>
+        [XmlEnum("6")]
+        Codigo6 = 6
+    }
+
+    /// <summary>
+    /// Tipo de multa (EBoleto)
+    /// </summary>
+    public enum EBoletoTipoMulta
+    {
+        /// <summary>
+        /// 0 - Codigo 0
+        /// </summary>
+        [XmlEnum("0")]
+        Codigo0 = 0,
+
+        /// <summary>
+        /// 1 - Codigo 1
+        /// </summary>
+        [XmlEnum("1")]
+        Codigo1 = 1,
+
+        /// <summary>
+        /// 2 - Codigo 2
+        /// </summary>
+        [XmlEnum("2")]
+        Codigo2 = 2,
+
+        /// <summary>
+        /// 3 - Codigo 3
+        /// </summary>
+        [XmlEnum("3")]
+        Codigo3 = 3
+    }
+
+    /// <summary>
+    /// Tipo de protesto (EBoleto)
+    /// </summary>
+    public enum EBoletoTipoProtesto
+    {
+        /// <summary>
+        /// 1 - Codigo 1
+        /// </summary>
+        [XmlEnum("1")]
+        Codigo1 = 1,
+
+        /// <summary>
+        /// 2 - Codigo 2
+        /// </summary>
+        [XmlEnum("2")]
+        Codigo2 = 2,
+
+        /// <summary>
+        /// 3 - Codigo 3
+        /// </summary>
+        [XmlEnum("3")]
+        Codigo3 = 3,
+
+        /// <summary>
+        /// 4 - Codigo 4
+        /// </summary>
+        [XmlEnum("4")]
+        Codigo4 = 4,
+
+        /// <summary>
+        /// 5 - Codigo 5
+        /// </summary>
+        [XmlEnum("5")]
+        Codigo5 = 5,
+
+        /// <summary>
+        /// 6 - Codigo 6
+        /// </summary>
+        [XmlEnum("6")]
+        Codigo6 = 6,
+
+        /// <summary>
+        /// 7 - Codigo 7
+        /// </summary>
+        [XmlEnum("7")]
+        Codigo7 = 7,
+
+        /// <summary>
+        /// 8 - Codigo 8
+        /// </summary>
+        [XmlEnum("8")]
+        Codigo8 = 8,
+
+        /// <summary>
+        /// 9 - Codigo 9
+        /// </summary>
+        [XmlEnum("9")]
+        Codigo9 = 9
+    }
+
+    /// <summary>
+    /// Instrucao (EBoleto)
+    /// </summary>
+    public enum EBoletoInstrucao
+    {
+        /// <summary>
+        /// 0 - Codigo 0
+        /// </summary>
+        [XmlEnum("0")]
+        Codigo0 = 0,
+
+        /// <summary>
+        /// 1 - Codigo 1
+        /// </summary>
+        [XmlEnum("1")]
+        Codigo1 = 1,
+
+        /// <summary>
+        /// 2 - Codigo 2
+        /// </summary>
+        [XmlEnum("2")]
+        Codigo2 = 2,
+
+        /// <summary>
+        /// 3 - Codigo 3
+        /// </summary>
+        [XmlEnum("3")]
+        Codigo3 = 3,
+
+        /// <summary>
+        /// 4 - Codigo 4
+        /// </summary>
+        [XmlEnum("4")]
+        Codigo4 = 4,
+
+        /// <summary>
+        /// 5 - Codigo 5
+        /// </summary>
+        [XmlEnum("5")]
+        Codigo5 = 5,
+
+        /// <summary>
+        /// 6 - Codigo 6
+        /// </summary>
+        [XmlEnum("6")]
+        Codigo6 = 6,
+
+        /// <summary>
+        /// 7 - Codigo 7
+        /// </summary>
+        [XmlEnum("7")]
+        Codigo7 = 7,
+
+        /// <summary>
+        /// 8 - Codigo 8
+        /// </summary>
+        [XmlEnum("8")]
+        Codigo8 = 8,
+
+        /// <summary>
+        /// 9 - Codigo 9
+        /// </summary>
+        [XmlEnum("9")]
+        Codigo9 = 9,
+
+        /// <summary>
+        /// 10 - Codigo 10
+        /// </summary>
+        [XmlEnum("10")]
+        Codigo10 = 10
+    }
+
+    /// <summary>
+    /// Instrucao adicional (EBoleto)
+    /// </summary>
+    public enum EBoletoInstrucaoAdicional
+    {
+        /// <summary>
+        /// 0 - Codigo 0
+        /// </summary>
+        [XmlEnum("0")]
+        Codigo0 = 0,
+
+        /// <summary>
+        /// 1 - Codigo 1
+        /// </summary>
+        [XmlEnum("1")]
+        Codigo1 = 1,
+
+        /// <summary>
+        /// 2 - Codigo 2
+        /// </summary>
+        [XmlEnum("2")]
+        Codigo2 = 2,
+
+        /// <summary>
+        /// 3 - Codigo 3
+        /// </summary>
+        [XmlEnum("3")]
+        Codigo3 = 3,
+
+        /// <summary>
+        /// 4 - Codigo 4
+        /// </summary>
+        [XmlEnum("4")]
+        Codigo4 = 4
+    }
+
+    /// <summary>
+    /// Formato de imagem do QRCode (EBoleto)
+    /// </summary>
+    public enum EBoletoQrCodeImageFormat
+    {
+        /// <summary>
+        /// 0 - Codigo 0
+        /// </summary>
+        [XmlEnum("0")]
+        Codigo0 = 0,
+
+        /// <summary>
+        /// 1 - Codigo 1
+        /// </summary>
+        [XmlEnum("1")]
+        Codigo1 = 1,
+
+        /// <summary>
+        /// 2 - Codigo 2
+        /// </summary>
+        [XmlEnum("2")]
+        Codigo2 = 2,
+
+        /// <summary>
+        /// 3 - Codigo 3
+        /// </summary>
+        [XmlEnum("3")]
+        Codigo3 = 3
+    }
+
+    #endregion EBoleto
 }

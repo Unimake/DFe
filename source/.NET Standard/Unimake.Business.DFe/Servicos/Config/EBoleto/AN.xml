@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuracoes>
+	<Servicos ID="EBoleto">
+		<BoletoRegistrar versao="1.00">
+			<Descricao>eBoleto - Registrar boleto</Descricao>
+			<RequestURIHomologacao>https://ebank.sandbox.unimake.software/api/v1/boleto/registrar</RequestURIHomologacao>
+			<RequestURIProducao>https://unimake.app/ebank/api/v1/boleto/registrar</RequestURIProducao>
+			<RequestURILoginHomologacao>https://auth.sandbox.unimake.software/api/auth</RequestURILoginHomologacao>
+			<RequestURILoginProducao>https://unimake.app/auth/api/auth</RequestURILoginProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<MetodoAPI>post</MetodoAPI>
+		</BoletoRegistrar>
+		<BoletoCancelar versao="1.00">
+			<Descricao>eBoleto - Cancelar/baixar boleto</Descricao>
+			<RequestURIHomologacao>https://ebank.sandbox.unimake.software/api/v1/boleto/baixar</RequestURIHomologacao>
+			<RequestURIProducao>https://unimake.app/ebank/api/v1/boleto/baixar</RequestURIProducao>
+			<RequestURILoginHomologacao>https://auth.sandbox.unimake.software/api/auth</RequestURILoginHomologacao>
+			<RequestURILoginProducao>https://unimake.app/auth/api/auth</RequestURILoginProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<MetodoAPI>post</MetodoAPI>
+		</BoletoCancelar>
+		<BoletoConsultar versao="1.00">
+			<Descricao>eBoleto - Consultar boleto</Descricao>
+			<RequestURIHomologacao>https://ebank.sandbox.unimake.software/api/v1/boleto/consultar</RequestURIHomologacao>
+			<RequestURIProducao>https://unimake.app/ebank/api/v1/boleto/consultar</RequestURIProducao>
+			<RequestURILoginHomologacao>https://auth.sandbox.unimake.software/api/auth</RequestURILoginHomologacao>
+			<RequestURILoginProducao>https://unimake.app/auth/api/auth</RequestURILoginProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<MetodoAPI>post</MetodoAPI>
+		</BoletoConsultar>
+		<BoletoAlterarVencto versao="1.00">
+			<Descricao>eBoleto - Alterar vencimento</Descricao>
+			<RequestURIHomologacao>https://ebank.sandbox.unimake.software/api/v1/boleto/alterarvencimento</RequestURIHomologacao>
+			<RequestURIProducao>https://unimake.app/ebank/api/v1/boleto/alterarvencimento</RequestURIProducao>
+			<RequestURILoginHomologacao>https://auth.sandbox.unimake.software/api/auth</RequestURILoginHomologacao>
+			<RequestURILoginProducao>https://unimake.app/auth/api/auth</RequestURILoginProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<MetodoAPI>post</MetodoAPI>
+		</BoletoAlterarVencto>
+		<BoletoEnviarInstrucao versao="1.00">
+			<Descricao>eBoleto - Enviar instrução</Descricao>
+			<RequestURIHomologacao>https://ebank.sandbox.unimake.software/api/v1/boleto/enviarinstrucao</RequestURIHomologacao>
+			<RequestURIProducao>https://unimake.app/ebank/api/v1/boleto/enviarinstrucao</RequestURIProducao>
+			<RequestURILoginHomologacao>https://auth.sandbox.unimake.software/api/auth</RequestURILoginHomologacao>
+			<RequestURILoginProducao>https://unimake.app/auth/api/auth</RequestURILoginProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<MetodoAPI>post</MetodoAPI>
+		</BoletoEnviarInstrucao>
+		<BoletoInformarPagto versao="1.00">
+			<Descricao>eBoleto - Informar pagamento</Descricao>
+			<RequestURIHomologacao>https://ebank.sandbox.unimake.software/api/v1/boleto/baixar</RequestURIHomologacao>
+			<RequestURIProducao>https://unimake.app/ebank/api/v1/boleto/baixar</RequestURIProducao>
+			<RequestURILoginHomologacao>https://auth.sandbox.unimake.software/api/auth</RequestURILoginHomologacao>
+			<RequestURILoginProducao>https://unimake.app/auth/api/auth</RequestURILoginProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<MetodoAPI>post</MetodoAPI>
+		</BoletoInformarPagto>
+	</Servicos>
+</Configuracoes>

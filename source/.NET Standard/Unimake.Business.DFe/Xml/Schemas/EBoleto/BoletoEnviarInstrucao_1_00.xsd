@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="BoletoEnviarInstrucao">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ConfigurationId" type="xs:string"/>
+				<xs:element name="Data" type="xs:date"/>
+				<xs:element name="Instrucao">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="0"/>
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+							<xs:enumeration value="3"/>
+							<xs:enumeration value="4"/>
+							<xs:enumeration value="5"/>
+							<xs:enumeration value="6"/>
+							<xs:enumeration value="7"/>
+							<xs:enumeration value="8"/>
+							<xs:enumeration value="9"/>
+							<xs:enumeration value="10"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="InstrucaoAdicional" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="0"/>
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+							<xs:enumeration value="3"/>
+							<xs:enumeration value="4"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="NossoNumero" type="xs:string" minOccurs="0"/>
+				<xs:element name="NumeroNoBanco" type="xs:string" minOccurs="0"/>
+				<xs:element name="QuantidadeDiasDesconto" type="xs:nonNegativeInteger" minOccurs="0"/>
+				<xs:element name="SeuNumero" type="xs:string" minOccurs="0"/>
+				<xs:element name="TipoDesconto" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="0"/>
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+							<xs:enumeration value="3"/>
+							<xs:enumeration value="4"/>
+							<xs:enumeration value="5"/>
+							<xs:enumeration value="6"/>
+							<xs:enumeration value="7"/>
+							<xs:enumeration value="8"/>
+							<xs:enumeration value="9"/>
+							<xs:enumeration value="10"/>
+							<xs:enumeration value="11"/>
+							<xs:enumeration value="12"/>
+							<xs:enumeration value="13"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Valor" type="xs:decimal" minOccurs="0"/>
+				<xs:element name="Testing" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="UseHomologServer" type="xs:boolean" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="versao">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="1.00"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
