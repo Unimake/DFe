@@ -175,51 +175,5 @@ namespace Unimake.Business.DFe.Security
             // retorna o valor criptografado como string
             return strBuilder.ToString();
         }
-
-        /// <summary>
-        /// Gera um token para o SIGISSWEB, utilizado para autenticação em serviços de NFSe.
-        /// </summary>
-        /// <param name="configuracoes">Objeto do município que está sendo utilizado</param>
-        /// <returns>Token para autenticação</returns>
-        /// <exception cref="InvalidOperationException"></exception>
-        public static string GerarTokenSIGISSWEB(Configuracao configuracoes)
-        {
-            var loginUrl = string.Empty;
-
-            switch (configuracoes.TipoAmbiente)
-            {
-                case (TipoAmbiente.Producao):
-                    loginUrl = configuracoes.RequestURILoginProducao;
-                    break;
-
-                case TipoAmbiente.Homologacao:
-                    loginUrl = configuracoes.RequestURILoginHomologacao;
-                    break;
-            }
-
-            var payload = new { login = configuracoes.MunicipioUsuario, senha = configuracoes.MunicipioSenha };
-            var json = JsonConvert.SerializeObject(payload);
-
-            using (var client = new HttpClient())
-            using (var content = new StringContent(json, Encoding.UTF8, "application/json"))
-            {
-                var response = client.PostAsync(loginUrl, content).GetAwaiter().GetResult();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    var error = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    throw new InvalidOperationException($"Falha ao gerar token no município. Mensagem: {error}");
-                }
-
-                var token = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-
-                token.Trim('\"');
-
-                return token;
-                
-            }
-
-        }
-
     }
 }

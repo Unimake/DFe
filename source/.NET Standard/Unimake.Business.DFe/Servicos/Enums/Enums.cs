@@ -7633,12 +7633,6 @@ namespace Unimake.Business.DFe.Servicos
         [Description("INTERSOL")]
         INTERSOL = 56,
 
-        ///<summary>
-        ///SIGISSWEB
-        /// </summary>
-        [Description("SIGISSWEB")]
-        SIGISSWEB = 57,
-
         /// <summary>
         /// BETHA_CLOUD
         /// </summary>
