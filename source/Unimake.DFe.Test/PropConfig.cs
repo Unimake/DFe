@@ -55,5 +55,23 @@ namespace Unimake.DFe.Test
 
         /// <summary>Número de destino para testes de envio via uMessenger (formato: 55DDNNNNNNNNN)</summary>
         public static string UMessengerDestinoTeste { get; set; } = "55DDNNNNNNNNN";
+
+        /// <summary>AppId do eBoleto</summary>
+        public static string EBoletoAppId { get; set; } = "Seu_AppId";
+
+        /// <summary>Secret do eBoleto</summary>
+        public static string EBoletoSecret { get; set; } = "Seu_Secret";
+
+        /// <summary>Identificador da configuração de integração do eBoleto</summary>
+        public static string EBoletoConfigurationId { get; set; } = "Seu_ConfigurationId";
+
+        /// <summary>Número no banco para testes de consulta, cancelamento, alteração de vencimento e instrução</summary>
+        public static string EBoletoNumeroNoBancoTeste { get; set; } = "Seu_NumeroNoBanco";
+
+        /// <summary>CPF/CNPJ do pagador usado nos testes do eBoleto</summary>
+        public static string EBoletoPagadorInscricao { get; set; } = "99999999999";
+
+        /// <summary>Nome do pagador usado nos testes do eBoleto</summary>
+        public static string EBoletoPagadorNome { get; set; } = "Pagador Teste";
     }
 }
