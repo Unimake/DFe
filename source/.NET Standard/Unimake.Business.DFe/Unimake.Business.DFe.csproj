@@ -122,6 +122,8 @@
 		<None Remove="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<None Remove="Servicos\Config\EBoleto\AN.xml" />
 		<None Remove="Servicos\Config\EBoleto\Config.xml" />
+		<None Remove="Servicos\Config\PIX\AN.xml" />
+		<None Remove="Servicos\Config\PIX\Config.xml" />
 		<None Remove="Servicos\Config\UMessenger\AN.xml" />
 		<None Remove="Servicos\Config\UMessenger\Config.xml" />
 		<None Remove="Servicos\Config\EFDReinf\AN.xml" />
@@ -1569,6 +1571,9 @@
 		<None Remove="Xml\Schemas\EBoleto\BoletoEnviarInstrucao_1_00.xsd" />
 		<None Remove="Xml\Schemas\EBoleto\BoletoInformarPagto_1_00.xsd" />
 		<None Remove="Xml\Schemas\EBoleto\BoletoRegistrar_1_00.xsd" />
+		<None Remove="Xml\Schemas\PIX\PIXCobrancaCreateRequest_1_00.xsd" />
+		<None Remove="Xml\Schemas\PIX\PIXConsultaRequest_1_00.xsd" />
+		<None Remove="Xml\Schemas\PIX\PIXGetRequest_1_00.xsd" />
 		<None Remove="Xml\Schemas\UMessenger\uMessengerText_1_00.xsd" />
 		<None Remove="Xml\Schemas\xmldsig-core-schema_v1.01.xsd" />
 	</ItemGroup>
@@ -1834,6 +1839,8 @@
 		<EmbeddedResource Include="Servicos\Config\DARE\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\EBoleto\AN.xml" />
 		<EmbeddedResource Include="Servicos\Config\EBoleto\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\PIX\AN.xml" />
+		<EmbeddedResource Include="Servicos\Config\PIX\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\UMessenger\AN.xml" />
 		<EmbeddedResource Include="Servicos\Config\UMessenger\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
@@ -3808,6 +3815,9 @@
 		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoEnviarInstrucao_1_00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoInformarPagto_1_00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoRegistrar_1_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\PIX\PIXCobrancaCreateRequest_1_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\PIX\PIXConsultaRequest_1_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\PIX\PIXGetRequest_1_00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\UMessenger\uMessengerText_1_00.xsd" />
 	</ItemGroup>
 

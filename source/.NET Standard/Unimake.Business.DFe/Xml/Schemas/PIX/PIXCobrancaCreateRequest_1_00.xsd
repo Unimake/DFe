@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="PIXCobrancaCreateRequest">
+		<xs:complexType>
+			<xs:sequence>
+        <xs:element name="ConfigurationId" type="xs:string" minOccurs="0"/>
+				<xs:element name="SolicitacaoPagador">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="140"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TipoCobranca">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="0"/>
+							<xs:enumeration value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Valor">
+					<xs:simpleType>
+						<xs:restriction base="xs:decimal">
+							<xs:minExclusive value="0"/>
+							<xs:fractionDigits value="2"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Chave" type="xs:string"/>
+				<xs:element name="TxId">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="[a-zA-Z0-9]{26,35}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="GerarQRCode" type="xs:boolean"/>
+				<xs:element name="Testing" type="xs:boolean"/>
+				<xs:element name="Beneficiario">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Inscricao">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="[0-9]{11}|[0-9]{14}"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Nome">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="100"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Conta">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Agencia" type="xs:string"/>
+										<xs:element name="Numero" type="xs:string"/>
+										<xs:element name="Banco" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Calendario" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Criacao" type="xs:dateTime"/>
+							<xs:element name="Expiracao" type="xs:integer" minOccurs="0"/>
+							<xs:element name="DataDeVencimento" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="ValidadeAposVencimento" type="xs:integer" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="QRCodeConfig" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Width" type="xs:integer"/>
+							<xs:element name="Height" type="xs:integer"/>
+							<xs:element name="Quality">
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:minInclusive value="1"/>
+										<xs:maxInclusive value="100"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ImageFormat" type="xs:integer"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Devedor" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Nome" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="100"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Inscricao">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="[0-9]{11}|[0-9]{14}"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CEP" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Logradouro" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="200"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Cidade" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="200"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="UF" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="2"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="UseHomologServer" type="xs:boolean" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="versao">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="1.00"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

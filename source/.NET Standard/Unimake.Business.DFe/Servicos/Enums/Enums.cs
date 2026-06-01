@@ -735,6 +735,28 @@ namespace Unimake.Business.DFe.Servicos
 
         #endregion
 
+        #region PIX
+
+        /// <summary>
+        /// 120 - PIX - Criar cobrança
+        /// </summary>
+        [Description("PIX - Criar cobrança")]
+        PIXCobrancaCriar = 120,
+
+        /// <summary>
+        /// 121 - PIX - Consultar cobrança
+        /// </summary>
+        [Description("PIX - Consultar cobrança")]
+        PIXCobrancaConsultar = 121,
+
+        /// <summary>
+        /// 122 - PIX - Consultar
+        /// </summary>
+        [Description("PIX - Consultar")]
+        PIXConsultar = 122,
+
+        #endregion
+
         #region Gerais
 
         /// <summary>
@@ -846,6 +868,11 @@ namespace Unimake.Business.DFe.Servicos
         /// 20 - EBoleto - Serviço de boletos eletrônicos
         /// </summary>
         EBoleto = 20,
+
+        /// <summary>
+        /// 21 - PIX - Serviço de PIX
+        /// </summary>
+        PIX = 21,
 
     }
 
@@ -19399,4 +19426,56 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion EBoleto
+
+    #region PIX
+
+    /// <summary>
+    /// Tipo de cobrança (PIX)
+    /// </summary>
+    public enum PixTipoCobranca
+    {
+        /// <summary>
+        /// 0 - Cobrança imediata
+        /// </summary>
+        [XmlEnum("0")]
+        Cob = 0,
+
+        /// <summary>
+        /// 1 - Cobrança com vencimento
+        /// </summary>
+        [XmlEnum("1")]
+        CobV = 1
+    }
+
+    /// <summary>
+    /// Formato de imagem do QRCode (PIX)
+    /// </summary>
+    public enum PixQrCodeImageFormat
+    {
+        /// <summary>
+        /// 0 - PNG
+        /// </summary>
+        [XmlEnum("0")]
+        PNG = 0,
+
+        /// <summary>
+        /// 1 - JPEG
+        /// </summary>
+        [XmlEnum("1")]
+        JPEG = 1,
+
+        /// <summary>
+        /// 2 - BMP
+        /// </summary>
+        [XmlEnum("2")]
+        BMP = 2,
+
+        /// <summary>
+        /// 3 - GIF
+        /// </summary>
+        [XmlEnum("3")]
+        GIF = 3
+    }
+
+    #endregion PIX
 }
