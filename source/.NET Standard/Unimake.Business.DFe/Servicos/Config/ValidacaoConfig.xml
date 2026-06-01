@@ -6296,6 +6296,80 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 		</Padrao>
+		<Padrao nome="SMARAPD">
+			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="nNFSe">
+				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>NFSe</TagAssinatura>
+				<TagAtributoID>infNFSe</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
+				<Descricao>Consultar NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="infDPS">
+				<Descricao>Consultar NFSe por DPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="evento" versao="1.01" tagIdentificadora="e101101">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>evento</TagAssinatura>
+				<TagAtributoID>infEvento</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="evento" versao="1.01" tagIdentificadora="e105102">
+				<Descricao>Substituir nota fiscal de Serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>evento</TagAssinatura>
+				<TagAtributoID>infEvento</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="consPedRegEvento" versao="1.01" tagIdentificadora="infConsPedRegEvento">
+				<Descricao>Consultar Eventos Diversos da NFSe NACIONAL</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+		</Padrao>
 		<Padrao nome="TIPLAN">
 			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="infDPS">
 				<Descricao>Envio do DPS - Sincrono</Descricao>
