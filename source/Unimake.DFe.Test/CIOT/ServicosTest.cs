@@ -446,6 +446,92 @@ namespace Unimake.DFe.Test.CIOT
         }
 
         /// <summary>
+        /// Gerar XML de distribuição da geração do identificador da operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "GerarIdOperacaoTransporte")]
+        public void GerarIdOperacaoTransporteProcResult()
+        {
+            var envio = LerXML<GerarIdOperacaoTransporte>(@"..\..\..\CIOT\Resources\gerarIdOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retGerarIdOperacaoTransporte.xml");
+
+            var servico = new CIOTGerarIdOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            var proc = servico.GerarIdOperacaoTransporteProcResult;
+
+            Assert.NotNull(proc);
+            Assert.Equal("560000088376", proc.RetGerarIdOperacaoTransporte.IdOperacaoTransporte);
+            Assert.Equal("560000088376-procIdOpTransp.xml", proc.NomeArquivoDistribuicao);
+            Assert.Equal("GerarIdOperacaoTransporteProc", proc.GerarXML().DocumentElement.Name);
+            Assert.NotNull(new GerarIdOperacaoTransporteProc().LoadFromXML(proc.GerarXML().OuterXml));
+        }
+
+        /// <summary>
+        /// Gravar XML de distribuição em pasta para geração do identificador da operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "GerarIdOperacaoTransporte")]
+        public void GravarXmlDistribuicaoGerarIdOperacaoTransportePasta()
+        {
+            var envio = LerXML<GerarIdOperacaoTransporte>(@"..\..\..\CIOT\Resources\gerarIdOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retGerarIdOperacaoTransporte.xml");
+
+            var servico = new CIOTGerarIdOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            var pasta = Path.Combine(Path.GetTempPath(), "Unimake.DFe.Test", "CIOT", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(pasta);
+
+            try
+            {
+                servico.GravarXmlDistribuicao(pasta);
+
+                var arquivo = Path.Combine(pasta, "560000088376-procIdOpTransp.xml");
+                Assert.True(File.Exists(arquivo));
+
+                var conteudo = File.ReadAllText(arquivo);
+                Assert.Contains("<GerarIdOperacaoTransporteProc", conteudo);
+                Assert.Contains("<RetGerarIdOperacaoTransporte", conteudo);
+            }
+            finally
+            {
+                if (Directory.Exists(pasta))
+                {
+                    Directory.Delete(pasta, true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gravar XML de distribuição em stream para geração do identificador da operação de transporte.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "GerarIdOperacaoTransporte")]
+        public void GravarXmlDistribuicaoGerarIdOperacaoTransporteStream()
+        {
+            var envio = LerXML<GerarIdOperacaoTransporte>(@"..\..\..\CIOT\Resources\gerarIdOperacaoTransporte.xml");
+            var retorno = new XmlDocument();
+            retorno.Load(@"..\..\..\CIOT\Resources\retGerarIdOperacaoTransporte.xml");
+
+            var servico = new CIOTGerarIdOperacaoTransporte(envio, CriarConfiguracao())
+            {
+                RetornoWSXML = retorno
+            };
+
+            GravarXmlDistribuicaoStream(servico, "<GerarIdOperacaoTransporteProc", "<IdOperacaoTransporte>560000088376</IdOperacaoTransporte>");
+        }
+
+        /// <summary>
         /// Cancelar operação de transporte.
         /// </summary>
         [Theory()]

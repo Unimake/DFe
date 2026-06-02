@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Xml.CIOT;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CIOT
 {
@@ -20,6 +21,73 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 #endif
     public class GerarIdOperacaoTransporte : ServicoBase<Xml.CIOT.GerarIdOperacaoTransporte, RetGerarIdOperacaoTransporte>, IInteropService<Xml.CIOT.GerarIdOperacaoTransporte>
     {
+        #region Private Fields
+
+        private readonly System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc> GerarIdOperacaoTransporteProcs = new System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc>();
+
+        #endregion Private Fields
+
+        #region Public Properties
+
+        /// <summary>
+        /// Propriedade contendo o XML da geração do identificador da operação de transporte com o retorno da API anexado para geração do arquivo de distribuição.
+        /// A chave do dicionário é o identificador da operação retornado no campo <c>IdOperacaoTransporte</c>.
+        /// </summary>
+        public System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc> GerarIdOperacaoTransporteProcResults
+        {
+            get
+            {
+                if (Result?.Temp != null)
+                {
+                    throw new Exception($"Não é possível gerar o XML de distribuição porque o serviço retornou erro: {Result.Temp.Error} - {Result.Temp.Message}");
+                }
+
+                if (string.IsNullOrWhiteSpace(Result?.IdOperacaoTransporte))
+                {
+                    throw new Exception("Não foi localizado o IdOperacaoTransporte no retorno do serviço para elaboração do arquivo de distribuição.");
+                }
+
+                var idOperacaoTransporte = Result.IdOperacaoTransporte;
+
+                if (GerarIdOperacaoTransporteProcs.ContainsKey(idOperacaoTransporte))
+                {
+                    GerarIdOperacaoTransporteProcs[idOperacaoTransporte].RetGerarIdOperacaoTransporte = Result;
+                }
+                else
+                {
+                    GerarIdOperacaoTransporteProcs.Add(idOperacaoTransporte, new GerarIdOperacaoTransporteProc
+                    {
+                        Versao = Configuracoes.SchemaVersao,
+                        GerarIdOperacaoTransporte = Envio,
+                        RetGerarIdOperacaoTransporte = Result
+                    });
+                }
+
+                return GerarIdOperacaoTransporteProcs;
+            }
+        }
+
+        /// <summary>
+        /// Recupera o conteúdo processado da geração do identificador da operação de transporte, combinando o XML de envio com o XML de retorno para geração do arquivo de distribuição.
+        /// </summary>
+        public GerarIdOperacaoTransporteProc GerarIdOperacaoTransporteProcResult
+        {
+            get
+            {
+                var idOperacaoTransporte = Result?.IdOperacaoTransporte;
+
+                if (string.IsNullOrWhiteSpace(idOperacaoTransporte))
+                {
+                    _ = GerarIdOperacaoTransporteProcResults;
+                    idOperacaoTransporte = Result.IdOperacaoTransporte;
+                }
+
+                return GerarIdOperacaoTransporteProcResults[idOperacaoTransporte];
+            }
+        }
+
+        #endregion Public Properties
+
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTGerarIdOperacaoTransporte;
 
@@ -156,7 +224,80 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             InicializarServico(NormalizarEnvio(xml), configuracao);
             Executar();
         }
+
+        /// <summary>
+        /// Recupera o XML processado da geração do identificador da operação de transporte no formato string para consumo por linguagens que acessam a biblioteca via COM/Interop.
+        /// </summary>
+        /// <returns>XML de distribuição no formato GerarIdOperacaoTransporteProc.</returns>
+        [ComVisible(true)]
+        public string GetGerarIdOperacaoTransporteProcResult() => GerarIdOperacaoTransporteProcResult.GerarXML().OuterXml;
+
+        /// <summary>
+        /// Recupera o XML de distribuição da geração do identificador da operação de transporte no formato string a partir do identificador da operação, permitindo acesso por linguagens que utilizam COM/Interop.
+        /// </summary>
+        /// <param name="idOperacaoTransporte">Identificador da operação de transporte para retornar o XML de distribuição correspondente.</param>
+        /// <returns>XML de distribuição no formato GerarIdOperacaoTransporteProc.</returns>
+        [ComVisible(true)]
+        public string GetGerarIdOperacaoTransporteProcResults(string idOperacaoTransporte)
+        {
+            var retornar = "";
+
+            if (GerarIdOperacaoTransporteProcResults.Count > 0)
+            {
+                retornar = GerarIdOperacaoTransporteProcResults[idOperacaoTransporte].GerarXML().OuterXml;
+            }
+
+            return retornar;
+        }
 #endif
+
+        #region Public Methods
+
+        /// <summary>
+        /// Grava o XML de distribuição da geração do identificador da operação de transporte em uma pasta do disco, gerando automaticamente o nome do arquivo com base no conteúdo retornado pela API.
+        /// </summary>
+        /// <param name="pasta">Pasta onde o XML de distribuição será gravado.</param>
+        public void GravarXmlDistribuicao(string pasta)
+        {
+            try
+            {
+                var gerarIdOperacaoTransporteProc = GerarIdOperacaoTransporteProcResult;
+                GravarXmlDistribuicao(pasta, gerarIdOperacaoTransporteProc.NomeArquivoDistribuicao, gerarIdOperacaoTransporteProc.GerarXML().OuterXml);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
+
+        /// <summary>
+        /// Grava o XML de distribuição da geração do identificador da operação de transporte em um stream informado pelo consumidor, permitindo manipulação em memória ou persistência customizada.
+        /// </summary>
+        /// <param name="stream">Stream de destino que receberá o conteúdo do XML de distribuição.</param>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public void GravarXmlDistribuicao(System.IO.Stream stream)
+        {
+            try
+            {
+                if (stream is null)
+                {
+                    throw new ArgumentNullException(nameof(stream));
+                }
+
+                var value = GerarIdOperacaoTransporteProcResult.GerarXML().OuterXml;
+                var byteData = System.Text.Encoding.UTF8.GetBytes(value);
+                stream.Write(byteData, 0, byteData.Length);
+                stream.Close();
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
+
+        #endregion Public Methods
 
         private static Xml.CIOT.GerarIdOperacaoTransporte NormalizarEnvio(Xml.CIOT.GerarIdOperacaoTransporte xml)
         {
