@@ -32,9 +32,18 @@
       <xs:choice>
         <xs:element name="temp" type="TTempErro"/>
         <xs:sequence>
-          <xs:element name="IdOperacaoTransporte" type="TIdOperacaoTransporte" minOccurs="0"/>
-          <xs:element name="Codigo" type="TCodigoRetorno"/>
+          <xs:element name="Sucesso" type="xs:boolean"/>
           <xs:element name="Mensagem" type="xs:string"/>
+          <xs:element name="Dados">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CIOT" type="TIdOperacaoTransporte"/>
+                <xs:element name="CpfCnpj" type="xs:string"/>
+                <xs:element name="DataGeracao" type="xs:dateTime"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Erros" type="xs:string"/>
         </xs:sequence>
       </xs:choice>
       <xs:attribute name="versao" type="TVersaoGerarIdOperacaoTransporte" use="required"/>

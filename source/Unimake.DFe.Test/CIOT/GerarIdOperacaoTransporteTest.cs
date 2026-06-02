@@ -69,14 +69,21 @@ namespace Unimake.DFe.Test.CIOT
         {
             var xml = new RetGerarIdOperacaoTransporte
             {
-                IdOperacaoTransporte = "560000088376",
-                Codigo = "110",
-                Mensagem = "IdOperacaoTransporte gerado com sucesso."
+                Sucesso = true,
+                Mensagem = "CIOT gerado com sucesso",
+                Dados = new DadosGerarIdOperacaoTransporte
+                {
+                    CIOT = "560000142776",
+                    CpfCnpj = "41.942.626/0001-02",
+                    DataGeracao = "2026-06-02T13:56:15.1898189"
+                },
+                Erros = string.Empty
             }.GerarXML();
 
             Assert.Equal("RetGerarIdOperacaoTransporte", xml.DocumentElement.Name);
             Assert.Equal("1.00", xml.DocumentElement.GetAttribute("versao"));
-            Assert.Equal("560000088376", xml.DocumentElement["IdOperacaoTransporte", "http://www.antt.gov.br/ciot"].InnerText);
+            Assert.Equal("560000142776", xml.DocumentElement["Dados", "http://www.antt.gov.br/ciot"]["CIOT", "http://www.antt.gov.br/ciot"].InnerText);
+            ValidarSchema(xml, true);
         }
 
         /// <summary>
@@ -89,7 +96,11 @@ namespace Unimake.DFe.Test.CIOT
             var xml = LerXML<RetGerarIdOperacaoTransporte>(ArquivoRetorno);
 
             Assert.Equal("1.00", xml.Versao);
-            Assert.Equal("560000088376", xml.IdOperacaoTransporte);
+            Assert.True(xml.Sucesso);
+            Assert.Equal("CIOT gerado com sucesso", xml.Mensagem);
+            Assert.Equal("560000142776", xml.Dados.CIOT);
+            Assert.Equal("41.942.626/0001-02", xml.Dados.CpfCnpj);
+            Assert.Equal("2026-06-02T13:56:15.1898189", xml.Dados.DataGeracao);
             Assert.Equal("110", xml.Codigo);
         }
 
@@ -120,7 +131,7 @@ namespace Unimake.DFe.Test.CIOT
         [Trait("DFe", "CIOT")]
         public void RejeitarIdOperacaoTransporteInvalidoNoSchema()
         {
-            ValidarSchemaInvalido("<RetGerarIdOperacaoTransporte xmlns=\"http://www.antt.gov.br/ciot\" versao=\"1.00\"><IdOperacaoTransporte>123</IdOperacaoTransporte><Codigo>110</Codigo><Mensagem>Erro</Mensagem></RetGerarIdOperacaoTransporte>");
+            ValidarSchemaInvalido("<RetGerarIdOperacaoTransporte xmlns=\"http://www.antt.gov.br/ciot\" versao=\"1.00\"><Sucesso>true</Sucesso><Mensagem>CIOT gerado com sucesso</Mensagem><Dados><CIOT>123</CIOT><CpfCnpj>41.942.626/0001-02</CpfCnpj><DataGeracao>2026-06-02T13:56:15.1898189</DataGeracao></Dados><Erros /></RetGerarIdOperacaoTransporte>");
         }
 
         /// <summary>
@@ -138,8 +149,8 @@ namespace Unimake.DFe.Test.CIOT
             var json = JObject.Parse(await servico.Configuracoes.HttpContent.ReadAsStringAsync(TestContext.Current.CancellationToken));
 
             Assert.Single(json.Properties());
-            Assert.Equal("41942626000102", json["CpfCnpj"]);
-            Assert.Equal("https://appservices-hml.antt.gov.br/pefServices/api/gerar", servico.Configuracoes.RequestURI);
+            Assert.Equal("41942626000102", json["cpfCnpj"]);
+            Assert.Equal("https://appservices-hml.antt.gov.br/pefServices/Gerar", servico.Configuracoes.RequestURI);
         }
 
         /// <summary>
@@ -168,6 +179,40 @@ namespace Unimake.DFe.Test.CIOT
         public void ProcessarJsonIdOperacaoTransporte()
         {
             ValidarSucesso(new CIOTGerarIdOperacaoTransporte().ProcessarRetornoANTT(@"{""IdOperacaoTransporte"":""560000088376""}"));
+        }
+
+        /// <summary>
+        /// Processar o retorno JSON efetivamente devolvido pela API ANTT.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void ProcessarJsonRetornoANTT()
+        {
+            var retorno = new CIOTGerarIdOperacaoTransporte().ProcessarRetornoANTT(@"{""Sucesso"":true,""Mensagem"":""CIOT gerado com sucesso"",""Dados"":{""CIOT"":""560000142776"",""CpfCnpj"":""41.942.626/0001-02"",""DataGeracao"":""2026-06-02T13:56:15.1898189""},""Erros"":[]}");
+
+            ValidarSucesso(retorno, "560000142776");
+            Assert.Equal("41.942.626/0001-02", retorno.Dados.CpfCnpj);
+            Assert.Equal("2026-06-02T13:56:15.1898189", retorno.Dados.DataGeracao);
+            Assert.Equal(string.Empty, retorno.Erros);
+        }
+
+        /// <summary>
+        /// Processar o XML intermediário efetivamente devolvido pelo transporte HTTP.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void ProcessarXmlRetornoANTT()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml("<temp><Sucesso>true</Sucesso><Mensagem>CIOT gerado com sucesso</Mensagem><Dados><CIOT>560000142776</CIOT><CpfCnpj>41.942.626/0001-02</CpfCnpj><DataGeracao>2026-06-02T13:56:15.1898189</DataGeracao></Dados><Erros /></temp>");
+
+            var servico = new CIOTGerarIdOperacaoTransporte
+            {
+                RetornoWSXML = xml
+            };
+
+            ValidarSucesso(servico.Result, "560000142776");
+            Assert.Equal("RetGerarIdOperacaoTransporte", servico.RetornoWSXML.DocumentElement.Name);
         }
 
         /// <summary>
@@ -290,12 +335,13 @@ namespace Unimake.DFe.Test.CIOT
             Assert.Equal(sucessoEsperado, validar.Success);
         }
 
-        private static void ValidarSucesso(RetGerarIdOperacaoTransporte retorno)
+        private static void ValidarSucesso(RetGerarIdOperacaoTransporte retorno, string ciot = "560000088376")
         {
             Assert.Equal("1.00", retorno.Versao);
-            Assert.Equal("560000088376", retorno.IdOperacaoTransporte);
+            Assert.True(retorno.Sucesso);
+            Assert.Equal(ciot, retorno.IdOperacaoTransporte);
             Assert.Equal("110", retorno.Codigo);
-            Assert.Equal("IdOperacaoTransporte gerado com sucesso.", retorno.Mensagem);
+            Assert.Equal("CIOT gerado com sucesso", retorno.Mensagem);
         }
     }
 }

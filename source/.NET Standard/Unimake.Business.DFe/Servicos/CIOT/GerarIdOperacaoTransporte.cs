@@ -177,16 +177,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
                 return new RetGerarIdOperacaoTransporte().LerXML<RetGerarIdOperacaoTransporte>(retornoErro).GerarXML();
             }
 
+            if (root.LocalName == "temp" && ObterValor(root, "Sucesso") != null)
+            {
+                return CriarRetornoANTT(root).GerarXML();
+            }
+
             var idOperacaoTransporte = ObterValor(root, "IdOperacaoTransporte") ?? ObterValor(root, "idOperacaoTransporte");
             if (Regex.IsMatch(idOperacaoTransporte ?? "", @"^[0-9]{12}$"))
             {
-                return new RetGerarIdOperacaoTransporte
-                {
-                    Versao = "1.00",
-                    IdOperacaoTransporte = idOperacaoTransporte,
-                    Codigo = "110",
-                    Mensagem = "IdOperacaoTransporte gerado com sucesso."
-                }.GerarXML();
+                return CriarRetornoSucesso(idOperacaoTransporte).GerarXML();
             }
 
             var mensagem = ObterValor(root, "Message") ?? ObterValor(root, "message");
@@ -195,20 +194,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
                 return new RetGerarIdOperacaoTransporte
                 {
                     Versao = "1.00",
-                    Codigo = "999",
-                    Mensagem = mensagem
+                    Sucesso = false,
+                    Mensagem = mensagem,
+                    Erros = string.Empty
                 }.GerarXML();
             }
 
             if (Regex.IsMatch(root.InnerText?.Trim() ?? "", @"^[0-9]{12}$"))
             {
-                return new RetGerarIdOperacaoTransporte
-                {
-                    Versao = "1.00",
-                    IdOperacaoTransporte = root.InnerText.Trim(),
-                    Codigo = "110",
-                    Mensagem = "IdOperacaoTransporte gerado com sucesso."
-                }.GerarXML();
+                return CriarRetornoSucesso(root.InnerText.Trim()).GerarXML();
             }
 
             throw new InvalidOperationException("A API ANTT retornou conteúdo inesperado ao gerar o IdOperacaoTransporte: " + retorno.OuterXml);
@@ -330,6 +324,40 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 
             var nodes = root.GetElementsByTagName(nome);
             return nodes.Count > 0 ? nodes[0].InnerText : null;
+        }
+
+        private static RetGerarIdOperacaoTransporte CriarRetornoSucesso(string ciot)
+        {
+            return new RetGerarIdOperacaoTransporte
+            {
+                Versao = "1.00",
+                Sucesso = true,
+                Mensagem = "CIOT gerado com sucesso",
+                Dados = new DadosGerarIdOperacaoTransporte
+                {
+                    CIOT = ciot
+                },
+                Erros = string.Empty
+            };
+        }
+
+        private static RetGerarIdOperacaoTransporte CriarRetornoANTT(XmlElement root)
+        {
+            bool.TryParse(ObterValor(root, "Sucesso"), out var sucesso);
+
+            return new RetGerarIdOperacaoTransporte
+            {
+                Versao = "1.00",
+                Sucesso = sucesso,
+                Mensagem = ObterValor(root, "Mensagem"),
+                Dados = new DadosGerarIdOperacaoTransporte
+                {
+                    CIOT = ObterValor(root, "CIOT"),
+                    CpfCnpj = ObterValor(root, "CpfCnpj"),
+                    DataGeracao = ObterValor(root, "DataGeracao")
+                },
+                Erros = ObterValor(root, "Erros") ?? string.Empty
+            };
         }
     }
 }
