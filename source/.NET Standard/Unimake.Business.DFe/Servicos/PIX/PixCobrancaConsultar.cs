@@ -41,16 +41,16 @@ namespace Unimake.Business.DFe.Servicos.PIX
         {
             AdicionarQueryString(new Dictionary<string, string>
             {
-                { "StartDate", GetPropertyString("StartDate") },
-                { "EndDate", GetPropertyString("EndDate") },
+                { "StartDate", Envio.StartDateField },
+                { "EndDate", Envio.EndDateField },
                 { "Beneficiario.Inscricao", Envio.Beneficiario?.Inscricao },
                 { "Beneficiario.Nome", Envio.Beneficiario?.Nome },
                 { "Beneficiario.Conta.Agencia", Envio.Beneficiario?.Conta?.Agencia },
                 { "Beneficiario.Conta.Numero", Envio.Beneficiario?.Conta?.Numero },
                 { "Beneficiario.Conta.Banco", Envio.Beneficiario?.Conta?.Banco },
-                { "ConfigurationId", GetPropertyString("ConfigurationId") },
-                { "Testing", GetPropertyString("Testing") },
-                { "configurationId", GetPropertyString("ConfigurationId") }
+                { "ConfigurationId", Envio.ConfigurationId },
+                { "Testing", Envio.Testing.ToString().ToLowerInvariant() },
+                { "configurationId", Envio.ConfigurationId }
             });
         }
     }
