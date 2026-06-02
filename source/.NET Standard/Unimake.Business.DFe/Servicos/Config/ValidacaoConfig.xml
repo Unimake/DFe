@@ -5493,6 +5493,68 @@
 				<TargetNS>http://www.giss.com.br/consultar-nfse-servico-tomado-envio-v2_04.xsd</TargetNS>
 			</Servico>
 		</Padrao>
+		<Padrao nome="INTERSOL">
+			<Servico tagRaiz="p:CancelarNfseEnvio" versao="1.00" tagIdentificadora="Pedido">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>Pedido</TagAssinatura>
+				<TagAtributoID>p1:InfPedidoCancelamento</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p:ConsultarLoteRpsEnvio" versao="1.00" tagIdentificadora="Prestador">
+				<Descricao>Consulta lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>p:ConsultarLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>p:Protocolo</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p:ConsultarNfseRpsEnvio" versao="1.00" tagIdentificadora="IdentificacaoRps">
+				<Descricao>Consulta NFSe por RPS</Descricao>
+				<SchemaArquivo>consultar_nfse_rps_envio_v1.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p:ConsultarSituacaoLoteRpsEnvio" versao="1.00" tagIdentificadora="Prestador">
+				<Descricao>Consulta de Nota Fiscal de Serviço</Descricao>
+				<SchemaArquivo>consultar_situacao_lote_rps_envio_v1.xsd</SchemaArquivo>
+				<TagAssinatura>p:ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>p:Protocolo</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="1.00" tagIdentificadora="LoteRps">
+				<Descricao>Consulta de Nota Fiscal de Serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfRps</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+			</Servico>
+		</Padrao>
 		<Padrao nome="IPM">
 			<Servico tagRaiz="GerarNfseEnvio" versao="2.04" tagIdentificadora="EnvioTeste">
 				<Descricao>Gerar NFSe</Descricao>
