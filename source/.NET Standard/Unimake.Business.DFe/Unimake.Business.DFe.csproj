@@ -3826,10 +3826,19 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.8" />
 		<PackageReference Include="Unimake.Cryptography" Version="20260416.712.52" />
 		<PackageReference Include="Unimake.Extensions" Version="20260416.712.52" />
 		<PackageReference Include="Unimake.Utils" Version="20260416.712.52" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="GeradorCIOTShared">
+			<HintPath>ThirdParty\GeradorCIOTShared\GeradorCIOTShared.dll</HintPath>
+			<Private>true</Private>
+		</Reference>
+		<None Include="ThirdParty\GeradorCIOTShared\GeradorCIOTShared.deps.json" />
 	</ItemGroup>
 
 	<ItemGroup>
