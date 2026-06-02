@@ -698,6 +698,12 @@ namespace Unimake.Business.DFe.Servicos
         CIOTConsultarCIOTGerado = 113,
 
         /// <summary>
+        /// 123 - CIOT - Gerar identificador da operação de transporte
+        /// </summary>
+        [Description("CIOT - Gerar identificador da operação de transporte")]
+        CIOTGerarIdOperacaoTransporte = 123,
+
+        /// <summary>
         /// 114 - EBoleto - Registrar boleto
         /// </summary>
         [Description("EBoleto - Registrar boleto")]
