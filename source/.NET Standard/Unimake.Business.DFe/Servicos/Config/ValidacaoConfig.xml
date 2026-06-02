@@ -6507,6 +6507,56 @@
 				<TargetNS>http://www.publica.inf.br</TargetNS>
 			</Servico>
 		</Padrao>
+		<Padrao nome="QUASAR">
+			<Servico tagRaiz="ConsultarDps" versao="1.01" tagIdentificadora="Protocolo">
+				<Descricao>Consulta NFSe por RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarDps</TagAssinatura>
+				<TagAtributoID>ConsultarDps</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarStatusDps" versao="1.01" tagIdentificadora="Protocolo">
+				<Descricao>Consulta Situação do Lote por RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarStatusDps</TagAssinatura>
+				<TagAtributoID>ConsultarStatusDps</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="tpAmb">
+				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+				<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+				<TagAssinatura>DPS</TagAssinatura>
+				<TagAtributoID>infDPS</TagAtributoID>
+				<TagVersao>DPS</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="e101101">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo>pedRegEvento_v1.01.xsd</SchemaArquivo>
+				<TagAssinatura>pedRegEvento</TagAssinatura>
+				<TagAtributoID>infPedReg</TagAtributoID>
+				<TagVersao>pedRegEvento</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+		</Padrao>
 		<Padrao nome="SIMPLISS">
 			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="tpAmb">
 				<Descricao>Envio do DPS - Sincrono</Descricao>
