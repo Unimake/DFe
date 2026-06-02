@@ -6484,7 +6484,7 @@
 			</Servico>
 		</Padrao>
 		<Padrao nome="PROPRIOBARUERISP">
-			<Servico tagRaiz="GerarNfse" versao="1.00" tagIdentificadora="ArquivoRPSBase64">
+			<Servico tagRaiz="NFeLoteEnviarArquivo" versao="1.00" tagIdentificadora="ArquivoRPSBase64">
 				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6496,7 +6496,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS></TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarLoteRps" versao="1.00" tagIdentificadora="NFeLoteStatusArquivo">
+			<Servico tagRaiz="NFeLoteStatusArquivo" versao="1.00" tagIdentificadora="NFeLoteStatusArquivo">
 				<Descricao>Consulta lote RPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6508,7 +6508,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS></TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNfsePDF" versao="1.00" tagIdentificadora="NomeArqRetorno">
+			<Servico tagRaiz="NFeLoteBaixarArquivo" versao="1.00" tagIdentificadora="NomeArqRetorno">
 				<Descricao>Consulta/Download do PDF da NFSe</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6520,11 +6520,73 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS></TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNfseFaixa" versao="1.00" tagIdentificadora="NFeLoteListarArquivos">
+			<Servico tagRaiz="NFeLoteListarArquivos" versao="1.00" tagIdentificadora="NFeLoteListarArquivos">
 				<Descricao>Consulta NFSe por Faixa</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+		</Padrao>
+		<Padrao nome="PROPRIOFORTALEZACE">
+			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="4.00" tagIdentificadora="LoteRps">
+				<Descricao>Recepcionar Lote RPSo</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>LoteRps</TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="CancelarNfseEnvio" versao="4.00" tagIdentificadora="NumeroNfse">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>CancelarNfseEnvio</TagAssinatura>
+				<TagAtributoID>NumeroNfse</TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="4.00" tagIdentificadora="Protocolo">
+				<Descricao>Consulta lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>Protocolo</TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseEnvio" versao="4.00" tagIdentificadora="IntermediarioServico">
+				<Descricao>Consulta da NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
+				<TagAtributoID>Prestador</TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="4.00" tagIdentificadora="IdentificacaoRps">
+				<Descricao>Consulta da NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+				<TagAtributoID>Prestador</TagAtributoID>
 				<TagLoteAssinatura></TagLoteAssinatura>
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagLoteAtributoID></TagLoteAtributoID>
