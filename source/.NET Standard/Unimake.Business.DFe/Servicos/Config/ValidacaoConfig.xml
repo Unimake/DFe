@@ -6483,6 +6483,56 @@
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
 		</Padrao>
+		<Padrao nome="PROPRIOBARUERISP">
+			<Servico tagRaiz="GerarNfse" versao="1.00" tagIdentificadora="ArquivoRPSBase64">
+				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarLoteRps" versao="1.00" tagIdentificadora="NFeLoteStatusArquivo">
+				<Descricao>Consulta lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfsePDF" versao="1.00" tagIdentificadora="NomeArqRetorno">
+				<Descricao>Consulta/Download do PDF da NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseFaixa" versao="1.00" tagIdentificadora="NFeLoteListarArquivos">
+				<Descricao>Consulta NFSe por Faixa</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+		</Padrao>
 		<Padrao nome="PUBLICA">
 			<Servico tagRaiz="CancelarNfseEnvio" versao="3.00" tagIdentificadora="InfPedidoCancelamento">
 				<Descricao>Cancelar NFSe</Descricao>
