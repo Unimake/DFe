@@ -6866,6 +6866,56 @@
 				<TargetNS>http://nfse.abrasf.org.br/</TargetNS>
 			</Servico>
 		</Padrao>
+		<Padrao nome="WEBFISCO">
+			<Servico tagRaiz="CancelaNfe" versao="1.00" tagIdentificadora="prf">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://144.22.133.90/issqn/wservice/wsnfecancela.php</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultaNfe" versao="1.00" tagIdentificadora="prf">
+				<Descricao>Consultar NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://144.22.133.90/issqn/wservice/wsnfecancela.php</TargetNS>
+			</Servico>
+			<Servico tagRaiz="EnvNfe" versao="1.00" tagIdentificadora="prf">
+				<Descricao>Obter Nota Fiscal Xml</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://144.22.133.90/issqn/wservice/wsnfecancela.php</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultaNfe" versao="1.00" tagIdentificadora="pass">
+				<Descricao>Envio Lote Rps</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://144.22.133.90/issqn/wservice/wsnfecancela.php</TargetNS>
+			</Servico>
+		</Padrao>
 		<Padrao nome="WEBISS">
 			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.02" tagIdentificadora="LoteRps">
 				<Descricao>Recepcionar Lote RPS</Descricao>
