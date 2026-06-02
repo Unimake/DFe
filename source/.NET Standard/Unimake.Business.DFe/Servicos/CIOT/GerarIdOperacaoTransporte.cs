@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Text.RegularExpressions;
 using System.Xml;
+using GeradorCIOTShared;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Xml.CIOT;
 using Unimake.Exceptions;
@@ -153,6 +154,18 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 
             RetornoWSXML = doc;
             return Result;
+        }
+
+        /// <inheritdoc />
+        public override void Executar()
+        {
+            if (Configuracoes.TipoAmbiente == TipoAmbiente.Producao)
+            {
+                ProcessarRetornoANTT(GerarCIOTProducao(Envio.CpfCnpj));
+                return;
+            }
+
+            base.Executar();
         }
 
         /// <inheritdoc />
@@ -325,6 +338,13 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             var nodes = root.GetElementsByTagName(nome);
             return nodes.Count > 0 ? nodes[0].InnerText : null;
         }
+
+        /// <summary>
+        /// Gerar CIOT em produção utilizando a biblioteca disponibilizada pela ANTT.
+        /// </summary>
+        /// <param name="cpfCnpj">CPF ou CNPJ sem máscara.</param>
+        /// <returns>Retorno bruto disponibilizado pela biblioteca da ANTT.</returns>
+        protected virtual string GerarCIOTProducao(string cpfCnpj) => new GeradorCIOTService_v3().GerarCIOT(cpfCnpj);
 
         private static RetGerarIdOperacaoTransporte CriarRetornoSucesso(string ciot)
         {

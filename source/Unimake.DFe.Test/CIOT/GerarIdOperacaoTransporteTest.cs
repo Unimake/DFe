@@ -172,6 +172,30 @@ namespace Unimake.DFe.Test.CIOT
         }
 
         /// <summary>
+        /// Utilizar a biblioteca da ANTT em produção e normalizar seu retorno.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void ExecutarProducaoComBibliotecaANTT()
+        {
+            var configuracao = CriarConfiguracao();
+            configuracao.TipoAmbiente = TipoAmbiente.Producao;
+            configuracao.Definida = true;
+
+            var servico = new GerarIdOperacaoTransporteProducaoFake(new GerarIdOperacaoTransporte
+            {
+                CpfCnpj = "41.942.626/0001-02"
+            }, configuracao);
+
+            servico.Executar();
+
+            Assert.Equal("41942626000102", servico.CpfCnpjRecebido);
+            Assert.Equal("560000142776", servico.Result.IdOperacaoTransporte);
+            Assert.Equal("41.942.626/0001-02", servico.Result.Dados.CpfCnpj);
+            Assert.Equal("RetGerarIdOperacaoTransporte", servico.RetornoWSXML.DocumentElement.Name);
+        }
+
+        /// <summary>
         /// Processar retorno JSON com o campo IdOperacaoTransporte.
         /// </summary>
         [Fact]
@@ -342,6 +366,19 @@ namespace Unimake.DFe.Test.CIOT
             Assert.Equal(ciot, retorno.IdOperacaoTransporte);
             Assert.Equal("110", retorno.Codigo);
             Assert.Equal("CIOT gerado com sucesso", retorno.Mensagem);
+        }
+
+        private sealed class GerarIdOperacaoTransporteProducaoFake : CIOTGerarIdOperacaoTransporte
+        {
+            public GerarIdOperacaoTransporteProducaoFake(GerarIdOperacaoTransporte xml, Configuracao configuracao) : base(xml, configuracao) { }
+
+            public string CpfCnpjRecebido { get; private set; }
+
+            protected override string GerarCIOTProducao(string cpfCnpj)
+            {
+                CpfCnpjRecebido = cpfCnpj;
+                return @"{""Sucesso"":true,""Mensagem"":""CIOT gerado com sucesso"",""Dados"":{""CIOT"":""560000142776"",""CpfCnpj"":""41.942.626/0001-02"",""DataGeracao"":""2026-06-02T13:56:15.1898189""},""Erros"":[]}";
+            }
         }
     }
 }
