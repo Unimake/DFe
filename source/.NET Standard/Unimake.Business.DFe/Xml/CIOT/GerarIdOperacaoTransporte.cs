@@ -25,6 +25,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public string Versao { get; set; } = "1.00";
 
         [XmlElement("CpfCnpj")]
+        [JsonProperty("cpfCnpj")]
         public string CpfCnpj { get; set; }
     }
 
@@ -44,16 +45,41 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("temp")]
         public TempCIOT Temp { get; set; }
 
-        [XmlElement("IdOperacaoTransporte")]
-        public string IdOperacaoTransporte { get; set; }
-
-        [XmlElement("Codigo")]
-        public string Codigo { get; set; }
+        [XmlElement("Sucesso")]
+        public bool? Sucesso { get; set; }
 
         [XmlElement("Mensagem")]
         public string Mensagem { get; set; }
 
+        [XmlElement("Dados")]
+        public DadosGerarIdOperacaoTransporte Dados { get; set; }
+
+        [XmlElement("Erros")]
+        public string Erros { get; set; }
+
+        [XmlIgnore]
+        public string IdOperacaoTransporte => Dados?.CIOT;
+
+        [XmlIgnore]
+        public string Codigo => Sucesso == true ? "110" : "999";
+
         public bool ShouldSerializeTemp() => Temp != null;
-        public bool ShouldSerializeIdOperacaoTransporte() => !string.IsNullOrWhiteSpace(IdOperacaoTransporte);
+        public bool ShouldSerializeSucesso() => Sucesso.HasValue;
+        public bool ShouldSerializeDados() => Dados != null;
+        public bool ShouldSerializeErros() => Erros != null;
+    }
+
+    [Serializable()]
+    [XmlType(Namespace = CIOTNamespace.PortalANTT)]
+    public class DadosGerarIdOperacaoTransporte
+    {
+        [XmlElement("CIOT")]
+        public string CIOT { get; set; }
+
+        [XmlElement("CpfCnpj")]
+        public string CpfCnpj { get; set; }
+
+        [XmlElement("DataGeracao")]
+        public string DataGeracao { get; set; }
     }
 }

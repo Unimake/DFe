@@ -465,8 +465,8 @@ namespace Unimake.DFe.Test.CIOT
             var proc = servico.GerarIdOperacaoTransporteProcResult;
 
             Assert.NotNull(proc);
-            Assert.Equal("560000088376", proc.RetGerarIdOperacaoTransporte.IdOperacaoTransporte);
-            Assert.Equal("560000088376-procIdOpTransp.xml", proc.NomeArquivoDistribuicao);
+            Assert.Equal("560000142776", proc.RetGerarIdOperacaoTransporte.IdOperacaoTransporte);
+            Assert.Equal("560000142776-procIdOpTransp.xml", proc.NomeArquivoDistribuicao);
             Assert.Equal("GerarIdOperacaoTransporteProc", proc.GerarXML().DocumentElement.Name);
             Assert.NotNull(new GerarIdOperacaoTransporteProc().LoadFromXML(proc.GerarXML().OuterXml));
         }
@@ -495,7 +495,7 @@ namespace Unimake.DFe.Test.CIOT
             {
                 servico.GravarXmlDistribuicao(pasta);
 
-                var arquivo = Path.Combine(pasta, "560000088376-procIdOpTransp.xml");
+                var arquivo = Path.Combine(pasta, "560000142776-procIdOpTransp.xml");
                 Assert.True(File.Exists(arquivo));
 
                 var conteudo = File.ReadAllText(arquivo);
@@ -528,7 +528,7 @@ namespace Unimake.DFe.Test.CIOT
                 RetornoWSXML = retorno
             };
 
-            GravarXmlDistribuicaoStream(servico, "<GerarIdOperacaoTransporteProc", "<IdOperacaoTransporte>560000088376</IdOperacaoTransporte>");
+            GravarXmlDistribuicaoStream(servico, "<GerarIdOperacaoTransporteProc", "<CIOT>560000142776</CIOT>");
         }
 
         /// <summary>
@@ -709,7 +709,7 @@ namespace Unimake.DFe.Test.CIOT
             ValidarResultErro(new CIOTEncerramentoOperacaoTransporte(), "/pefServices/api/EncerramentoOperacaoTransporte");
             ValidarResultErro(new CIOTConsultarExcecao(), "/pefServices/api/ConsultarExcecao");
             ValidarResultErro(new CIOTConsultarCIOTGerado(), "/pefServices/api/ConsultarCIOTGerado");
-            ValidarResultErro(new CIOTGerarIdOperacaoTransporte(), "/pefServices/api/gerar");
+            ValidarResultErro(new CIOTGerarIdOperacaoTransporte(), "/pefServices/Gerar");
         }
 
         private static T LerXML<T>(string arqXML) where T : Unimake.Business.DFe.Xml.XMLBase, new()

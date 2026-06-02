@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RetGerarIdOperacaoTransporte xmlns="http://www.antt.gov.br/ciot" versao="1.00">
-  <IdOperacaoTransporte>560000088376</IdOperacaoTransporte>
-  <Codigo>110</Codigo>
-  <Mensagem>IdOperacaoTransporte gerado com sucesso.</Mensagem>
+  <Sucesso>true</Sucesso>
+  <Mensagem>CIOT gerado com sucesso</Mensagem>
+  <Dados>
+    <CIOT>560000142776</CIOT>
+    <CpfCnpj>41.942.626/0001-02</CpfCnpj>
+    <DataGeracao>2026-06-02T13:56:15.1898189</DataGeracao>
+  </Dados>
+  <Erros />
 </RetGerarIdOperacaoTransporte>
