@@ -1,0 +1,9 @@
+﻿<ConsultarLoteDpsEnvio versao="1.01" xmlns="http://www.fiorilli.com.br/nfse-nacional">
+	<!--Optional:-->
+	<CNPJ>?</CNPJ>
+	<!--Optional:-->
+	<CPF>?</CPF>
+	<!--Optional:-->
+	<IM>?</IM>
+	<Protocolo>?</Protocolo>
+</ConsultarLoteDpsEnvio>
