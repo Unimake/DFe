@@ -57,11 +57,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public string DataCancelamentoField
         {
             get => CIOTDateTimeFormat.DateTime(DataCancelamento);
-#if INTEROP
-            set => DataCancelamento = DateTime.Parse(value);
-#else
-            set => DataCancelamento = DateTimeOffset.Parse(value);
-#endif
+            set => DataCancelamento = CIOTDateTimeFormat.ParseDateTimeOrMinValue(value);
         }
 
         [XmlElement("Protocolo")]
@@ -75,6 +71,10 @@ namespace Unimake.Business.DFe.Xml.CIOT
 
         public bool ShouldSerializeTemp() => Temp != null;
         public bool ShouldSerializeDataCancelamento() => false;
-        public bool ShouldSerializeDataCancelamentoField() => Temp == null;
+#if INTEROP
+        public bool ShouldSerializeDataCancelamentoField() => Temp == null && DataCancelamento > DateTime.MinValue;
+#else
+        public bool ShouldSerializeDataCancelamentoField() => Temp == null && DataCancelamento > DateTimeOffset.MinValue;
+#endif
     }
 }

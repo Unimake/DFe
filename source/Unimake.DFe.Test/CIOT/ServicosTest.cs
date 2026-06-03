@@ -702,6 +702,56 @@ namespace Unimake.DFe.Test.CIOT
         }
 
         /// <summary>
+        /// Desserializar retorno do cancelamento com DataCancelamento sem valor.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "CancelamentoOperacaoTransporte")]
+        public void RetornoCancelamentoOperacaoTransporteDataCancelamentoVazia()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml("<RetCancelamentoOperacaoTransporte xmlns=\"http://www.antt.gov.br/ciot\"><CodigoIdentificacaoOperacao>5200016526700301</CodigoIdentificacaoOperacao><DataCancelamento></DataCancelamento><Codigo>000000</Codigo><Mensagem>Operação cancelada sem data informada pela ANTT</Mensagem></RetCancelamentoOperacaoTransporte>");
+
+            var servico = new CIOTCancelamentoOperacaoTransporte
+            {
+                RetornoWSXML = xml
+            };
+
+            var result = servico.Result;
+
+            Assert.NotNull(result);
+            Assert.Equal("5200016526700301", result.CodigoIdentificacaoOperacao);
+            Assert.Equal(DateTimeOffset.MinValue, result.DataCancelamento);
+            Assert.DoesNotContain("<DataCancelamento>", result.GerarXML().OuterXml);
+            Assert.Equal("RetCancelamentoOperacaoTransporte", servico.RetornoWSXML.DocumentElement.Name);
+        }
+
+        /// <summary>
+        /// Desserializar retorno da retificação com DataRetificacao sem valor.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "RetificacaoOperacaoTransporte")]
+        public void RetornoRetificacaoOperacaoTransporteDataRetificacaoVazia()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml("<RetRetificacaoOperacaoTransporte xmlns=\"http://www.antt.gov.br/ciot\"><CodigoIdentificacaoOperacao>5200016526700301</CodigoIdentificacaoOperacao><DataRetificacao></DataRetificacao><Codigo>000000</Codigo><Mensagem>Operação retificada sem data informada pela ANTT</Mensagem></RetRetificacaoOperacaoTransporte>");
+
+            var servico = new CIOTRetificacaoOperacaoTransporte
+            {
+                RetornoWSXML = xml
+            };
+
+            var result = servico.Result;
+
+            Assert.NotNull(result);
+            Assert.Equal("5200016526700301", result.CodigoIdentificacaoOperacao);
+            Assert.Equal(DateTimeOffset.MinValue, result.DataRetificacao);
+            Assert.DoesNotContain("<DataRetificacao>", result.GerarXML().OuterXml);
+            Assert.Equal("RetRetificacaoOperacaoTransporte", servico.RetornoWSXML.DocumentElement.Name);
+        }
+
+        /// <summary>
         /// Desserializar retorno OK na propriedade Result dos serviços.
         /// </summary>
         [Fact()]
