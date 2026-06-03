@@ -395,3 +395,6 @@ MigrationBackup/
 *.BAK
 /.dotnet/.dotnet
 /source/.review
+/Exemplos/ObjectPascal/lib
+/Exemplos/ObjectPascal/lib/x86_64-win64
+/Exemplos/ObjectPascal/lib/x86_64-win64
