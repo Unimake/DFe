@@ -5806,7 +5806,7 @@
 		</Padrao>
 		<Padrao nome="MEGASOFT">
 			<Servico tagRaiz="GerarNfseEnvio" versao="2.02" tagIdentificadora="Rps">
-				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
 				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -5818,7 +5818,7 @@
 				<TargetNS>http://megasoftarrecadanet.com.br/xsd/nfse_v01.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.02" tagIdentificadora="IdentificacaoRps">
-				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<Descricao>Consulta NFSe por RPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
