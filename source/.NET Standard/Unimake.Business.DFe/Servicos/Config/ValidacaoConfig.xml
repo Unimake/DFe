@@ -5547,7 +5547,7 @@
 				<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
 			</Servico>
 			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="1.00" tagIdentificadora="LoteRps">
-				<Descricao>Consulta de Nota Fiscal de Serviço</Descricao>
+				<Descricao>Recepcionar Lote RPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
 				<TagAtributoID>InfRps</TagAtributoID>
