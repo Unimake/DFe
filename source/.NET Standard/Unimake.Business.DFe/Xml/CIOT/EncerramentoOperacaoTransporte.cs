@@ -67,11 +67,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public string DataEncerramentoField
         {
             get => CIOTDateTimeFormat.DateTime(DataEncerramento);
-#if INTEROP
-            set => DataEncerramento = DateTime.Parse(value);
-#else
-            set => DataEncerramento = DateTimeOffset.Parse(value);
-#endif
+            set => DataEncerramento = CIOTDateTimeFormat.ParseDateTimeOrMinValue(value);
         }
 
         [XmlElement("Protocolo")]
@@ -85,6 +81,10 @@ namespace Unimake.Business.DFe.Xml.CIOT
 
         public bool ShouldSerializeTemp() => Temp != null;
         public bool ShouldSerializeDataEncerramento() => false;
-        public bool ShouldSerializeDataEncerramentoField() => Temp == null;
+#if INTEROP
+        public bool ShouldSerializeDataEncerramentoField() => Temp == null && DataEncerramento > DateTime.MinValue;
+#else
+        public bool ShouldSerializeDataEncerramentoField() => Temp == null && DataEncerramento > DateTimeOffset.MinValue;
+#endif
     }
 }

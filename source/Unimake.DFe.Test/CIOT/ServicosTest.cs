@@ -677,6 +677,31 @@ namespace Unimake.DFe.Test.CIOT
         }
 
         /// <summary>
+        /// Desserializar retorno do encerramento com DataEncerramento sem valor.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "EncerramentoOperacaoTransporte")]
+        public void RetornoEncerramentoOperacaoTransporteDataEncerramentoVazia()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml("<RetEncerramentoOperacaoTransporte xmlns=\"http://www.antt.gov.br/ciot\"><CodigoIdentificacaoOperacao>5200016526700301</CodigoIdentificacaoOperacao><DataEncerramento></DataEncerramento><Codigo>000000</Codigo><Mensagem>Operação encerrada sem data informada pela ANTT</Mensagem></RetEncerramentoOperacaoTransporte>");
+
+            var servico = new CIOTEncerramentoOperacaoTransporte
+            {
+                RetornoWSXML = xml
+            };
+
+            var result = servico.Result;
+
+            Assert.NotNull(result);
+            Assert.Equal("5200016526700301", result.CodigoIdentificacaoOperacao);
+            Assert.Equal(DateTimeOffset.MinValue, result.DataEncerramento);
+            Assert.DoesNotContain("<DataEncerramento>", result.GerarXML().OuterXml);
+            Assert.Equal("RetEncerramentoOperacaoTransporte", servico.RetornoWSXML.DocumentElement.Name);
+        }
+
+        /// <summary>
         /// Desserializar retorno OK na propriedade Result dos serviços.
         /// </summary>
         [Fact()]
