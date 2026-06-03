@@ -102,12 +102,31 @@
 			<AssinaCanonicalizacaoExclusiva>true</AssinaCanonicalizacaoExclusiva>
 			<SignatureAlgorithmType>Sha1</SignatureAlgorithmType>
 		</GerarNfse>
-		<ConsultarNfse versao="1.01">
-			<Descricao>Consulta lote DPS</Descricao>
+		<ConsultarLoteRps versao="1.01">
+			<Descricao>Consultar lote DPS</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://iss.ouropretodooeste.ro.gov.br/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://138.97.36.146:5657/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>consultarLoteDps</WebActionHomologacao>
 			<WebActionProducao>consultarLoteDps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.fiorilli.com.br/nfse-nacional"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao></SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consultar NFSe</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>consultarNfse</WebActionHomologacao>
+			<WebActionProducao>consultarNfse</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
