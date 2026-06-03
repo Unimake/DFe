@@ -1,0 +1,7 @@
+interface:
+  display_name: "Novo DF-e Servicos"
+  short_description: "Servicos para novo DF-e"
+  default_prompt: "Use $novo-dfe-servicos para implementar servicos de webservice/API de um novo DF-e."
+
+policy:
+  allow_implicit_invocation: true
