@@ -6437,6 +6437,68 @@
 				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
 		</Padrao>
+		<Padrao nome="PRIMAX">
+			<Servico tagRaiz="EnvNfeRequest" versao="1.01" tagIdentificadora="dataemissao">
+				<Descricao>EnvNFe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3518602">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="CancelaNfe" versao="1.01" tagIdentificadora="pass">
+				<Descricao>>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3518602">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="ConsultaNfe" versao="1.01" tagIdentificadora="tipo">
+				<Descricao>Consulta/Download do PDF da NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3518602">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="ConsultaNfe" versao="1.01" tagIdentificadora="usr">
+				<Descricao>Obter Nota Fiscal Xml</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3518602">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+		</Padrao>
 		<Padrao nome="PRONIM">
 			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="tpAmb">
 				<Descricao>Envio do DPS - Sincrono</Descricao>
