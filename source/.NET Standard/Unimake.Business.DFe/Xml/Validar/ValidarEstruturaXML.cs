@@ -25,7 +25,7 @@ namespace Unimake.Business.DFe
 
         /// <summary>
         /// Classe de resultado da validação, contendo um boolean para indicar se a validação foi bem-sucedida,
-        /// Descriação da validação, mensagem de retorno sobre a validação, status da valiação e o xml assinado.
+        /// Descrição da validação, mensagem de retorno sobre a validação, status da valiação e o xml assinado.
         /// </summary>
         public class ResultadoValidacao
         {
@@ -189,7 +189,7 @@ namespace Unimake.Business.DFe
         /// Valida o XML de acordo com as regras definidas no XML de configuração de serviços.
         /// </summary>
         /// <param name="xml">Documento XML para a validação</param>
-        /// <param name="configuracao">Configurações com as informações de vcalidação do DFe</param>
+        /// <param name="configuracao">Configurações com as informações de validação do DFe</param>
         /// <exception cref="Exception"></exception>
         public ResultadoValidacao ValidarServico(XmlDocument xml, Configuracao configuracao)
         {
@@ -399,7 +399,8 @@ namespace Unimake.Business.DFe
 
             #region verifica se municipio usa certificado digital
 
-            bool usaCertificado = VerificarUitlizacaoCertificadoDigital(servico, codigoMunicipio);
+            var usaCertificado = VerificarUtilizacaoCertificadoDigital(servico, codigoMunicipio);
+            var ambiente = VerificarAmbienteAssinatura(servico, codigoMunicipio);
 
             #endregion
 
@@ -417,37 +418,55 @@ namespace Unimake.Business.DFe
                 TagLoteAtributoID = servico.SelectSingleNode("*[local-name()='TagLoteAtributoID']")?.InnerText,
                 TagExtraAssinatura = servico.SelectSingleNode("*[local-name()='TagExtraAssinatura']")?.InnerText,
                 TagExtraAtributoID = servico.SelectSingleNode("*[local-name()='TagExtraAtributoID']")?.InnerText,
-
-                //Criando a possibilidade de ser null para evitar o problema de atribuir o ambiente como produção caso a tag não exista.
-                NaoAssina = servico.SelectSingleNode("*[local-name()='NaoAssina']")?.InnerText.ToLower() == "homologação" ? TipoAmbiente.Homologacao :
-                (servico.SelectSingleNode("*[local-name()='NaoAssina']")?.InnerText.ToLower() == "produção" ? TipoAmbiente.Producao : (TipoAmbiente?)null),
-
+                NaoAssina = ambiente,
                 UsaCertificadoDigital = usaCertificado,
-
                 GerarQRCode = servico.SelectSingleNode("*[local-name()='GerarQrCode']")?.InnerText?.Trim() == "true"
 
             };
         }
 
-        private static bool VerificarUitlizacaoCertificadoDigital(XmlNode servico, UFBrasil codigoMunicipio)
+        private static bool VerificarUtilizacaoCertificadoDigital(XmlNode servico, UFBrasil codigoMunicipio)
         {
-            var nodeCert = servico.SelectSingleNode("*[local-name()='UsaCertificadoDigital']");
-
             string valorCert = null;
+            var nodeExcecao = VerificarExcecao(servico, codigoMunicipio, "UsaCertificadoDigital");
 
-            if (nodeCert != null)
+            if (nodeExcecao != null)
             {
-                var nodeExcecao = nodeCert.SelectSingleNode(
-                    $"*[local-name()='Excecao' and @codMunicipio='{codigoMunicipio}']"
-                );
+                valorCert = nodeExcecao.InnerText;
+            }
+            
+            return valorCert?.Trim() != "false";
+        }
 
-                if (nodeExcecao != null)
-                {
-                    valorCert = nodeExcecao.InnerText;
-                }
+
+        private static TipoAmbiente? VerificarAmbienteAssinatura(XmlNode servico, UFBrasil codigoMunicipio) 
+        { 
+            string ambiente = null;
+            var nodeExcecao = VerificarExcecao(servico, codigoMunicipio, "NaoAssina");
+
+            if (nodeExcecao != null) 
+            {
+                ambiente = nodeExcecao.InnerText?.Trim().ToLower();
             }
 
-            return valorCert?.Trim() != "false";
+            return ambiente?.ToLower() == "homologação" ? TipoAmbiente.Homologacao : (ambiente?.ToLower() == "produção" ? TipoAmbiente.Producao : (TipoAmbiente?)null);
+        }
+
+
+        private static XmlNode VerificarExcecao(XmlNode servico, UFBrasil codigoMunicipio, string nomeTag) 
+        { 
+            var nodeTag = servico.SelectSingleNode($"*[local-name()='{nomeTag}']");
+            XmlNode nodeExcecao = null;
+
+            if (nodeTag != null) 
+            {
+                nodeExcecao = nodeTag.SelectSingleNode(
+                    $"*[local-name()='Excecao' and @codMunicipio='{codigoMunicipio}']"
+                );
+            }
+
+            return nodeExcecao;
+
         }
 
 
@@ -510,15 +529,7 @@ namespace Unimake.Business.DFe
 
                         }
 
-                        //| TipoDFe         | Algoritmo |
-                        //| --------------- | --------- | 
-                        //| NFe             | SHA1      | 
-                        //| CTe  CTeOS      | SHA1      | 
-                        //| MDFe            | SHA1      | 
-                        //| NFSe            | SHA1      | 
-                        //| Reinf           | SHA256    |
-                        //| eSocial         | SHA256    | 
-                        //| DARE            | SHA256    |
+                      
                     }
                     catch (Exception ex)
                     {
@@ -535,6 +546,16 @@ namespace Unimake.Business.DFe
 
         private static AlgorithmType AlgoritmoAssinatura(TipoDFe tipoDFe)
         {
+            //| TipoDFe         | Algoritmo |
+            //| --------------- | --------- | 
+            //| NFe             | SHA1      | 
+            //| CTe  CTeOS      | SHA1      | 
+            //| MDFe            | SHA1      | 
+            //| NFSe            | SHA1      | 
+            //| Reinf           | SHA256    |
+            //| eSocial         | SHA256    | 
+            //| DARE            | SHA256    |
+
             switch (tipoDFe)
             {
                 case TipoDFe.ESocial:
@@ -542,6 +563,7 @@ namespace Unimake.Business.DFe
                     return AlgorithmType.Sha256;
                 default:
                     return AlgorithmType.Sha1;
+
 
             }
         }
@@ -800,7 +822,7 @@ namespace Unimake.Business.DFe
 
                 default:
                     throw new Exception($"Não foi possível identificar o tipo do DFe pela tag raiz '{xml.DocumentElement.Name}'. " +
-                        "Verifique se o XML está correto ou se o padrão da NFSe foi devidamente configurado.");
+                        "Verifique se o XML está correto ou se o padrão caso seja NFSe foi devidamente configurado.");
             }
 
             return tipoDFe;

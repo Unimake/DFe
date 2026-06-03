@@ -122,6 +122,8 @@
 		<None Remove="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<None Remove="Servicos\Config\EBoleto\AN.xml" />
 		<None Remove="Servicos\Config\EBoleto\Config.xml" />
+		<None Remove="Servicos\Config\PIX\AN.xml" />
+		<None Remove="Servicos\Config\PIX\Config.xml" />
 		<None Remove="Servicos\Config\UMessenger\AN.xml" />
 		<None Remove="Servicos\Config\UMessenger\Config.xml" />
 		<None Remove="Servicos\Config\EFDReinf\AN.xml" />
@@ -737,6 +739,7 @@
 		<None Remove="Xml\Schemas\CIOT\consultarSituacaoTransportador_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\declaracaoOperacaoTransporte_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\encerramentoOperacaoTransporte_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\gerarIdOperacaoTransporte_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\retificacaoOperacaoTransporte_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\tiposBasicosCIOT_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\consSitCTeTiposBasico_v4.00.xsd" />
@@ -1569,6 +1572,9 @@
 		<None Remove="Xml\Schemas\EBoleto\BoletoEnviarInstrucao_1_00.xsd" />
 		<None Remove="Xml\Schemas\EBoleto\BoletoInformarPagto_1_00.xsd" />
 		<None Remove="Xml\Schemas\EBoleto\BoletoRegistrar_1_00.xsd" />
+		<None Remove="Xml\Schemas\PIX\PIXCobrancaCreateRequest_1_00.xsd" />
+		<None Remove="Xml\Schemas\PIX\PIXConsultaRequest_1_00.xsd" />
+		<None Remove="Xml\Schemas\PIX\PIXGetRequest_1_00.xsd" />
 		<None Remove="Xml\Schemas\UMessenger\uMessengerText_1_00.xsd" />
 		<None Remove="Xml\Schemas\xmldsig-core-schema_v1.01.xsd" />
 	</ItemGroup>
@@ -1834,6 +1840,8 @@
 		<EmbeddedResource Include="Servicos\Config\DARE\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\EBoleto\AN.xml" />
 		<EmbeddedResource Include="Servicos\Config\EBoleto\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\PIX\AN.xml" />
+		<EmbeddedResource Include="Servicos\Config\PIX\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\UMessenger\AN.xml" />
 		<EmbeddedResource Include="Servicos\Config\UMessenger\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
@@ -2290,6 +2298,7 @@
 		<EmbeddedResource Include="Xml\Schemas\CIOT\consultarSituacaoTransportador_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\declaracaoOperacaoTransporte_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\encerramentoOperacaoTransporte_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\gerarIdOperacaoTransporte_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\retificacaoOperacaoTransporte_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\tiposBasicosCIOT_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\consSitCTeTiposBasico_v4.00.xsd" />
@@ -3808,16 +3817,28 @@
 		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoEnviarInstrucao_1_00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoInformarPagto_1_00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\EBoleto\BoletoRegistrar_1_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\PIX\PIXCobrancaCreateRequest_1_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\PIX\PIXConsultaRequest_1_00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\PIX\PIXGetRequest_1_00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\UMessenger\uMessengerText_1_00.xsd" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.8" />
 		<PackageReference Include="Unimake.Cryptography" Version="20260416.712.52" />
 		<PackageReference Include="Unimake.Extensions" Version="20260416.712.52" />
 		<PackageReference Include="Unimake.Utils" Version="20260416.712.52" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="GeradorCIOTShared">
+			<HintPath>ThirdParty\GeradorCIOTShared\GeradorCIOTShared.dll</HintPath>
+			<Private>true</Private>
+		</Reference>
+		<None Include="ThirdParty\GeradorCIOTShared\GeradorCIOTShared.deps.json" />
 	</ItemGroup>
 
 	<ItemGroup>

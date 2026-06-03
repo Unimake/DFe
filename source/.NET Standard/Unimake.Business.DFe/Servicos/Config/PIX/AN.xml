@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuracoes>
+	<Servicos ID="PIX">
+		<PixCobrancaCriar versao="1.00">
+			<Descricao>PIX - Criar cobrança</Descricao>
+			<RequestURIHomologacao>https://ebank.sandbox.unimake.software/api/v1/pix/Cobranca</RequestURIHomologacao>
+			<RequestURIProducao>https://unimake.app/ebank/api/v1/pix/Cobranca</RequestURIProducao>
+			<RequestURILoginHomologacao>https://auth.sandbox.unimake.software/api/auth</RequestURILoginHomologacao>
+			<RequestURILoginProducao>https://unimake.app/auth/api/auth</RequestURILoginProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<MetodoAPI>post</MetodoAPI>
+		</PixCobrancaCriar>
+		<PixCobrancaConsultar versao="1.00">
+			<Descricao>PIX - Consultar cobrança</Descricao>
+			<RequestURIHomologacao>https://ebank.sandbox.unimake.software/api/v1/pix/Cobranca</RequestURIHomologacao>
+			<RequestURIProducao>https://unimake.app/ebank/api/v1/pix/Cobranca</RequestURIProducao>
+			<RequestURILoginHomologacao>https://auth.sandbox.unimake.software/api/auth</RequestURILoginHomologacao>
+			<RequestURILoginProducao>https://unimake.app/auth/api/auth</RequestURILoginProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<MetodoAPI>get</MetodoAPI>
+		</PixCobrancaConsultar>
+		<PixConsultar versao="1.00">
+			<Descricao>PIX - Consultar</Descricao>
+			<RequestURIHomologacao>https://ebank.sandbox.unimake.software/api/v1/pix/Consultar</RequestURIHomologacao>
+			<RequestURIProducao>https://unimake.app/ebank/api/v1/pix/Consultar</RequestURIProducao>
+			<RequestURILoginHomologacao>https://auth.sandbox.unimake.software/api/auth</RequestURILoginHomologacao>
+			<RequestURILoginProducao>https://unimake.app/auth/api/auth</RequestURILoginProducao>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<MetodoAPI>post</MetodoAPI>
+		</PixConsultar>
+	</Servicos>
+</Configuracoes>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.antt.gov.br/ciot"
+           xmlns="http://www.antt.gov.br/ciot"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+  <xs:include schemaLocation="tiposBasicosCIOT_v1.00.xsd"/>
+
+  <xs:simpleType name="TIdOperacaoTransporte">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TVersaoGerarIdOperacaoTransporte">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1.00"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="GerarIdOperacaoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CpfCnpj" type="TCpfCnpj"/>
+      </xs:sequence>
+      <xs:attribute name="versao" type="TVersaoGerarIdOperacaoTransporte" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RetGerarIdOperacaoTransporte">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element name="temp" type="TTempErro"/>
+        <xs:sequence>
+          <xs:element name="Sucesso" type="xs:boolean"/>
+          <xs:element name="Mensagem" type="xs:string"/>
+          <xs:element name="Dados">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CIOT" type="TIdOperacaoTransporte"/>
+                <xs:element name="CpfCnpj" type="xs:string"/>
+                <xs:element name="DataGeracao" type="xs:dateTime"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Erros" type="xs:string"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attribute name="versao" type="TVersaoGerarIdOperacaoTransporte" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

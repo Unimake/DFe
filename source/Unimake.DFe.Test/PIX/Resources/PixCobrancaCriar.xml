@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PIXCobrancaCreateRequest versao="1.00">
+	<ConfigurationId>Seu_ConfigurationId</ConfigurationId>
+	<SolicitacaoPagador>Teste de cobranca PIX</SolicitacaoPagador>
+	<TipoCobranca>0</TipoCobranca>
+	<Valor>10.50</Valor>
+	<Chave>teste@unimake.com.br</Chave>
+	<TxId>ABCDEF12345678901234567890</TxId>
+	<GerarQRCode>true</GerarQRCode>
+	<Testing>true</Testing>
+	<Beneficiario>
+		<Inscricao>99999999999</Inscricao>
+		<Nome>Beneficiario Teste</Nome>
+		<Conta>
+			<Agencia>1234</Agencia>
+			<Numero>123456</Numero>
+			<Banco>341</Banco>
+		</Conta>
+	</Beneficiario>
+</PIXCobrancaCreateRequest>

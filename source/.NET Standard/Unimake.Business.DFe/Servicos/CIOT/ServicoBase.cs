@@ -182,7 +182,10 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             }
         }
 
-        private XmlDocument CriarXMLRetornoTipado()
+        /// <summary>
+        /// Criar XML de retorno tipado
+        /// </summary>
+        protected virtual XmlDocument CriarXMLRetornoTipado()
         {
             var doc = new XmlDocument();
             var rootName = typeof(TRetorno).Name;
@@ -210,7 +213,10 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             return doc;
         }
 
-        private void NormalizarRetorno()
+        /// <summary>
+        /// Normalizar XML de retorno
+        /// </summary>
+        protected void NormalizarRetorno()
         {
             if (RetornoWSXML?.DocumentElement == null)
             {

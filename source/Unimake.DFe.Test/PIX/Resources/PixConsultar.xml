@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PIXGetRequest versao="1.00">
+	<ConfigurationId>Seu_ConfigurationId</ConfigurationId>
+	<StartDate>2026-06-01</StartDate>
+	<EndDate>2026-06-01</EndDate>
+	<TxId>ABCDEF12345678901234567890</TxId>
+	<Testing>true</Testing>
+	<Beneficiario>
+		<Inscricao>99999999999</Inscricao>
+		<Nome>Beneficiario Teste</Nome>
+		<Conta>
+			<Agencia>1234</Agencia>
+			<Numero>123456</Numero>
+			<Banco>341</Banco>
+		</Conta>
+	</Beneficiario>
+</PIXGetRequest>

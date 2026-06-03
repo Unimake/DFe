@@ -57,5 +57,12 @@
 			<MetodoAPI>post</MetodoAPI>
 			<SchemaArquivo>consultarCIOTGerado_v1.00.xsd</SchemaArquivo>
 		</ConsultarCIOTGerado>
+		<GerarIdOperacaoTransporte versao="1.00">
+			<Descricao>CIOT - Gerar identificador da operação de transporte</Descricao>
+			<RequestURIHomologacao>https://appservices-hml.antt.gov.br/pefServices/Gerar</RequestURIHomologacao>
+			<RequestURIProducao>https://appservices.antt.gov.br/pefServices/api/gerar</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<SchemaArquivo>gerarIdOperacaoTransporte_v1.00.xsd</SchemaArquivo>
+		</GerarIdOperacaoTransporte>
 	</Servicos>
 </Configuracoes>
