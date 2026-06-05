@@ -1,0 +1,7 @@
+interface:
+  display_name: "Revisao de Ticket"
+  short_description: "Revisao tecnica por ticket"
+  default_prompt: "Use $revisao-ticket para revisar commits vinculados a um ticket Redmine pelo padrao ID #000000."
+
+policy:
+  allow_implicit_invocation: true

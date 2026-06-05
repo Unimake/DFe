@@ -17,8 +17,18 @@ namespace Unimake.Business.DFe.Xml.CIOT
     {
 #if INTEROP
         public static string DateTime(DateTime value) => value.Kind == DateTimeKind.Utc ? value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFF") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz");
+
+        public static DateTime ParseDateTimeOrMinValue(string value)
+        {
+            return string.IsNullOrWhiteSpace(value) ? DateTime.MinValue : DateTime.Parse(value);
+        }
 #else
         public static string DateTime(DateTimeOffset value) => value.Offset == TimeSpan.Zero ? value.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFF") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz");
+
+        public static DateTimeOffset ParseDateTimeOrMinValue(string value)
+        {
+            return string.IsNullOrWhiteSpace(value) ? DateTimeOffset.MinValue : DateTimeOffset.Parse(value);
+        }
 #endif
     }
 

@@ -295,7 +295,7 @@
 		<ConsultarLoteRps versao="1.01">
 			<Descricao>Consultar lote DPS</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://138.97.36.146:5657/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://177.73.104.87:8080/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>consultarLoteDps</WebActionHomologacao>
 			<WebActionProducao>consultarLoteDps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -314,7 +314,7 @@
 		<ConsultarNfse versao="1.01">
 			<Descricao>Consultar NFSe</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://177.73.104.87:8080/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>consultarNfse</WebActionHomologacao>
 			<WebActionProducao>consultarNfse</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
