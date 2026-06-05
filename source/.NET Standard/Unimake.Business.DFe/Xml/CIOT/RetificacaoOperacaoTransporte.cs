@@ -97,11 +97,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public string DataRetificacaoField
         {
             get => CIOTDateTimeFormat.DateTime(DataRetificacao);
-#if INTEROP
-            set => DataRetificacao = DateTime.Parse(value);
-#else
-            set => DataRetificacao = DateTimeOffset.Parse(value);
-#endif
+            set => DataRetificacao = CIOTDateTimeFormat.ParseDateTimeOrMinValue(value);
         }
 
         [XmlElement("Protocolo")]
@@ -115,6 +111,10 @@ namespace Unimake.Business.DFe.Xml.CIOT
 
         public bool ShouldSerializeTemp() => Temp != null;
         public bool ShouldSerializeDataRetificacao() => false;
-        public bool ShouldSerializeDataRetificacaoField() => Temp == null;
+#if INTEROP
+        public bool ShouldSerializeDataRetificacaoField() => Temp == null && DataRetificacao > DateTime.MinValue;
+#else
+        public bool ShouldSerializeDataRetificacaoField() => Temp == null && DataRetificacao > DateTimeOffset.MinValue;
+#endif
     }
 }

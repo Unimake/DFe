@@ -1,0 +1,7 @@
+interface:
+  display_name: "Novo DF-e Serializacao"
+  short_description: "Classes XML para novo DF-e"
+  default_prompt: "Use $novo-dfe-serializacao para implementar classes XML de serializacao/desserializacao de um novo DF-e."
+
+policy:
+  allow_implicit_invocation: true
