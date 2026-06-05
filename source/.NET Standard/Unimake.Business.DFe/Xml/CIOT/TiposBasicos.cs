@@ -1,14 +1,9 @@
 #pragma warning disable CS1591
 
-#if INTEROP
-using System.Collections.Generic;
-#else
-using System.Collections.Generic;
-#endif
-
-using System;
-using System.Xml.Serialization;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CIOT
@@ -16,11 +11,11 @@ namespace Unimake.Business.DFe.Xml.CIOT
     internal static class CIOTDateTimeFormat
     {
 #if INTEROP
-        public static string DateTime(DateTime value) => value.Kind == DateTimeKind.Utc ? value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFF") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz");
+        public static string DateTime(System.DateTime value) => value.Kind == DateTimeKind.Utc ? value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFF") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz");
 
-        public static DateTime ParseDateTimeOrMinValue(string value)
+        public static System.DateTime ParseDateTimeOrMinValue(string value)
         {
-            return string.IsNullOrWhiteSpace(value) ? DateTime.MinValue : DateTime.Parse(value);
+            return string.IsNullOrWhiteSpace(value) ? System.DateTime.MinValue : System.DateTime.Parse(value);
         }
 #else
         public static string DateTime(DateTimeOffset value) => value.Offset == TimeSpan.Zero ? value.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFF") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz");
