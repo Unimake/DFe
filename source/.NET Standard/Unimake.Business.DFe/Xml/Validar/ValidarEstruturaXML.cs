@@ -142,9 +142,15 @@ namespace Unimake.Business.DFe
 
             /// <summary>
             /// Tag que indica o atributo ID que deve ser utilizado para referenciar 
-            /// a assinatura digital extra no XML,
+            /// a assinatura digital extra no XML.
             /// </summary>
             public string TagExtraAtributoID { get; set; }
+
+            /// <summary>
+            /// Tag que indica se o serviço deve ser assinado utilizando a 
+            /// canonicalização exclusiva, padrão é false.
+            /// </summary>
+            public bool AssinaCanonicalizacaoExclusiva { get; set;}
 
             /// <summary>
             /// Tag que indica se o serviço utiliza certificado digital para assinatura, padrão é true, ou seja, se a tag estiver 
@@ -153,12 +159,12 @@ namespace Unimake.Business.DFe
             public bool UsaCertificadoDigital { get; set; }
 
             /// <summary>
-            /// Tag que indica se o serviço deve ser assinado ou não dependendo do Tipo Ambiente
+            /// Tag que indica se o serviço deve ser assinado ou não dependendo do Tipo Ambiente.
             /// </summary>
             public TipoAmbiente? NaoAssina { get; set; }
 
             /// <summary>
-            /// Tag que indica se o serviço utiliza QRcode
+            /// Tag que indica se o serviço utiliza QRcode.
             /// </summary>
             public bool GerarQRCode { get; set; }
         }
@@ -358,7 +364,8 @@ namespace Unimake.Business.DFe
 
                 foreach (XmlNode servico in servicosNFSe)
                 {
-                    var identificador = servico.Attributes["tagIdentificadora"]?.Value;
+                    // Aceita tag identificadora com ou sem namespace (Ex: "ns:tagIdentificadora" ou "tagIdentificadora")
+                    var identificador = servico.Attributes["tagIdentificadora"]?.Value?.Split(':').Last();
 
                     if (!string.IsNullOrEmpty(identificador))
                     {
@@ -401,6 +408,7 @@ namespace Unimake.Business.DFe
 
             var usaCertificado = VerificarUtilizacaoCertificadoDigital(servico, codigoMunicipio);
             var ambiente = VerificarAmbienteAssinatura(servico, codigoMunicipio);
+            var canonizalizacaoExclusiva = VerificarAssinaCanonicalizacaoExclusiva(servico, codigoMunicipio);
 
             #endregion
 
@@ -420,6 +428,7 @@ namespace Unimake.Business.DFe
                 TagExtraAtributoID = servico.SelectSingleNode("*[local-name()='TagExtraAtributoID']")?.InnerText,
                 NaoAssina = ambiente,
                 UsaCertificadoDigital = usaCertificado,
+                AssinaCanonicalizacaoExclusiva = canonizalizacaoExclusiva,
                 GerarQRCode = servico.SelectSingleNode("*[local-name()='GerarQrCode']")?.InnerText?.Trim() == "true"
 
             };
@@ -450,6 +459,20 @@ namespace Unimake.Business.DFe
             }
 
             return ambiente?.ToLower() == "homologação" ? TipoAmbiente.Homologacao : (ambiente?.ToLower() == "produção" ? TipoAmbiente.Producao : (TipoAmbiente?)null);
+        }
+
+
+        private static bool VerificarAssinaCanonicalizacaoExclusiva(XmlNode servico, UFBrasil codigoMunicipio)
+        {
+            string valorCanonicalizacao = null;
+            var nodeExcecao = VerificarExcecao(servico, codigoMunicipio, "AssinaCanonicalizacaoExclusiva");
+
+            if (nodeExcecao != null)
+            {
+                valorCanonicalizacao = nodeExcecao.InnerText;
+            }
+
+            return valorCanonicalizacao?.Trim() == "true";
         }
 
 
@@ -484,17 +507,17 @@ namespace Unimake.Business.DFe
         {
             if (!string.IsNullOrEmpty(inform.TagAssinatura))
             {
-                Assinar(xml, inform.TagAssinatura, inform.TagAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
+                Assinar(xml, inform.TagAssinatura, inform.TagAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
             }
 
             if (!string.IsNullOrEmpty(inform.TagLoteAssinatura))
             {
-                Assinar(xml, inform.TagLoteAssinatura, inform.TagLoteAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
+                Assinar(xml, inform.TagLoteAssinatura, inform.TagLoteAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
             }
 
             if (!string.IsNullOrEmpty(inform.TagExtraAssinatura))
             {
-                Assinar(xml, inform.TagExtraAssinatura, inform.TagExtraAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
+                Assinar(xml, inform.TagExtraAssinatura, inform.TagExtraAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
             }
 
         }
@@ -505,6 +528,7 @@ namespace Unimake.Business.DFe
             string tagID,
             TipoAmbiente? tagNaoAssina,
             bool usaCertificado,
+            bool assinaCanonicalizacaoExclusiva,
             bool gerarQrCode,
             X509Certificate2 cert,
             TipoAmbiente tipoAmbiente,
@@ -514,6 +538,7 @@ namespace Unimake.Business.DFe
 
             if (string.IsNullOrWhiteSpace(tagAssinatura))
                 return;
+
             var algoritmoAssinatura = AlgoritmoAssinatura(tipoDFe);
 
             if (usaCertificado)
@@ -524,7 +549,7 @@ namespace Unimake.Business.DFe
                     {
                         if (!AssinaturaDigital.EstaAssinado(xml, tagAssinatura))
                         {
-                            AssinaturaDigital.Assinar(xml, tagAssinatura, tagID, cert, algoritmoAssinatura);
+                            AssinaturaDigital.Assinar(xml, tagAssinatura, tagID, cert, algoritmoAssinatura, exclusiveC14N: assinaCanonicalizacaoExclusiva);
 
 
                         }
