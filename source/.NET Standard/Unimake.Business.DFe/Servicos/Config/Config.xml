@@ -2243,4 +2243,10 @@
 		<ArqConfig>SaoSepeRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3543907">
+		<Nome>Rio Claro - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>RioClaroSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
