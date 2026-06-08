@@ -359,7 +359,8 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             set
             {
                 if (value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
-                    value == ProcessoEmissao.AvulsaPeloFisco)
+                    value == ProcessoEmissao.AvulsaPeloFisco ||
+                    value == ProcessoEmissao.ProvedorAutorizacaoAssinatura)
                 {
                     throw new Exception("Conteúdo da TAG <procEmi> inválido! Valores aceitos: 0 e 3.");
                 }

@@ -764,6 +764,8 @@
 		<None Remove="Xml\Schemas\CTe\evCancIECTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCancPrestDesacordo_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCancVincPgto_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evCancVincPgto_v4.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evCancVincPgto_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCCeCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCECTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCTeCanceladoMDFe_v3.00.xsd" />
@@ -775,6 +777,8 @@
 		<None Remove="Xml\Schemas\CTe\evPrestDesacordo_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evRegMultimodal_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evVincPgto_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evVincPgto_v4.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evVincPgto_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\GTVe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\GTVe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\inutCTeTiposBasico_v4.00.xsd" />
@@ -2324,6 +2328,7 @@
 		<EmbeddedResource Include="Xml\Schemas\CTe\evCancIECTe_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evCancPrestDesacordo_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evCancVincPgto_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCancVincPgto_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evCCeCTe_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evCECTe_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\eventoCTeTiposBasico_v4.00.xsd" />
@@ -2334,6 +2339,7 @@
 		<EmbeddedResource Include="Xml\Schemas\CTe\evPrestDesacordo_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evRegMultimodal_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evVincPgto_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evVincPgto_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\GTVe_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\inutCTeTiposBasico_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\inutCTe_v4.00.xsd" />

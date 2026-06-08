@@ -2410,7 +2410,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 3 - Emissão NF-e pelo contribuinte com aplicativo fornecido pelo Fisco.
         /// </summary>
         [XmlEnum("3")]
-        AplicativoFisco = 3
+        AplicativoFisco = 3,
+
+        /// <summary>
+        /// 4 - Emissão de CT-e pelo Provedor de Autorização e Assinatura - PAA.
+        /// </summary>
+        [XmlEnum("4")]
+        ProvedorAutorizacaoAssinatura = 4
     }
 
     #endregion

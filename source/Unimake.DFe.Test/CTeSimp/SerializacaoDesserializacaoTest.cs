@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.CTeSimp;
 using Xunit;
 
@@ -45,6 +46,27 @@ namespace Unimake.DFe.Test.CTeSimp
             var xml = new Business.DFe.Xml.CTeSimp.CTeSimp();
             xml = xml.LerXML<Business.DFe.Xml.CTeSimp.CTeSimp>(doc);
 
+            Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização e desserialização do XML CTeSimp com emissão pelo PAA.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "CTeSimp")]
+        public void SerializacaoDesserializacaoCTeSimpProcEmiPAA()
+        {
+            const string arqXML = @"..\..\..\CTeSimp\Resources\CTeSimp.xml";
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+            doc.GetElementsByTagName("procEmi")[0].InnerText = "4";
+
+            var xml = new Business.DFe.Xml.CTeSimp.CTeSimp();
+            xml = xml.LerXML<Business.DFe.Xml.CTeSimp.CTeSimp>(doc);
+
+            Assert.Equal(ProcessoEmissao.ProvedorAutorizacaoAssinatura, xml.InfCTe.Ide.ProcEmi);
             Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 

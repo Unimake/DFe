@@ -552,7 +552,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                 if (value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
                     value == ProcessoEmissao.AvulsaPeloFisco)
                 {
-                    throw new Exception("Conteúdo da TAG <procEmi> inválido! Valores aceitos: 0 e 3.");
+                    throw new Exception("Conteúdo da TAG <procEmi> inválido! Valores aceitos: 0, 3 e 4.");
                 }
 
                 ProcEmiField = value;
