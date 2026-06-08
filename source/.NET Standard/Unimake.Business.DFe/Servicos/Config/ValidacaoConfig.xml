@@ -6454,7 +6454,7 @@
 				</UsaCertificadoDigital>
 			</Servico>
 			<Servico tagRaiz="CancelaNfe" versao="1.01" tagIdentificadora="pass">
-				<Descricao>>Cancelar nota fiscal de serviço</Descricao>
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
@@ -6601,7 +6601,7 @@
 		</Padrao>
 		<Padrao nome="PROPRIOFORTALEZACE">
 			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="4.00" tagIdentificadora="LoteRps">
-				<Descricao>Recepcionar Lote RPSo</Descricao>
+				<Descricao>Recepcionar Lote RPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
 				<TagAtributoID>LoteRps</TagAtributoID>
