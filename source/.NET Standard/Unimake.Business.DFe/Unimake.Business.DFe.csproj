@@ -1157,7 +1157,6 @@
 		<None Remove="Xml\Schemas\NFCom\tiposGeralNFCom_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\xmldsig-core-schema_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFe\110150_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\Averb_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\distDFeInt_v1.35.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110001_v1.00.xsd" />
@@ -1184,56 +1183,13 @@
 		<None Remove="Xml\Schemas\NFe\e412120_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e412130_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e790700_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\envAverb_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\envEPEC_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\envEventoAtorInteressado_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\envEventoCancEConf_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\envEventoCancEntregaNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\envEventoCancInsucessoNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\envEventoEConf_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\envEventoEntregaNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\envEventoInsucessoNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\EPEC_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\eventoAtorInteressado_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\EventoCancEConf_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\EventoCancEntregaNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\EventoCancInsucessoNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\EventoEConf_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\EventoEntregaNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\eventoEPEC_v0.01.xsd" />
-		<None Remove="Xml\Schemas\NFe\EventoInsucessoNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\leiauteAverb_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\leiauteEPEC_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\leiauteEventoAtorInteressado_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\leiauteEventoCancEConf_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\leiauteEventoCancEntregaNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\leiauteEventoCancInsucessoNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\leiauteEventoEConf_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\leiauteEventoEntregaNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\leiauteEventoInsucessoNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\envEvento_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\leiauteEvento_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\nfceDownloadXML_100.xsd" />
-		<None Remove="Xml\Schemas\NFe\procAverbNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\procEPEC_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\procEventoAtorInteressado_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\procEventoCancEConf_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\procEventoCancEntregaNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\procEventoCancInsucessoNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\procEventoEConf_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\procEventoEntregaNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\procEventoInsucessoNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\procEventoNFe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\resEvento_v1.35.xsd" />
 		<None Remove="Xml\Schemas\NFe\resNFe_v1.35.xsd" />
 		<None Remove="Xml\Schemas\NFe\retDistDFeInt_v1.35.xsd" />
-		<None Remove="Xml\Schemas\NFe\retEnvAverb_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\retEnvEPEC_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\retEnvEventoAtorInteressado_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\retEventoCancEConf_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\retEventoCancEntregaNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\retEventoCancInsucessoNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\retEventoEConf_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\retEventoEntregaNFe_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NFe\retEventoEPEC_v0.01.xsd" />
-		<None Remove="Xml\Schemas\NFe\retEventoInsucessoNFe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\retNfceDownloadXML_100.xsd" />
 		<None Remove="Xml\Schemas\nfe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\consSitNFGasTiposBasico_v1.00.xsd" />
@@ -2571,7 +2527,6 @@
 		<EmbeddedResource Include="Xml\Schemas\NFCom\tiposGeralNFCom_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\xmldsig-core-schema_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\110150_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\Averb_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\DFeTiposBasicos_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\e110001_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\e110192_v1.00.xsd" />
@@ -2595,38 +2550,10 @@
 		<EmbeddedResource Include="Xml\Schemas\NFe\e412120_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\e412130_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\e790700_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\envAverb_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoAtorInteressado_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancEConf_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancInsucessoNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoEConf_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoInsucessoNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\eventoAtorInteressado_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\EventoCancEConf_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\EventoCancInsucessoNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\EventoEConf_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\Evento_DVS_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\EventoInsucessoNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteAverb_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoAtorInteressado_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancEConf_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancInsucessoNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoEConf_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEvento_DVS_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\envEvento_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEvento_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\nfceDownloadXML_100.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\procAverbNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoAtorInteressado_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancEConf_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancInsucessoNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoEConf_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoInsucessoNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvAverb_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvEventoAtorInteressado_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoCancEConf_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoCancInsucessoNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoEConf_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoInsucessoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoNFe_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\retNfceDownloadXML_100.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\consSitNFGasTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\consSitNFGas_v1.00.xsd" />
@@ -3295,10 +3222,6 @@
 		<EmbeddedResource Include="Xml\Schemas\MDFe\retMDFe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\MDFe\tiposGeralMDFe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\MDFe\xmldsig-core-schema_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\CCe_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\confRecebto_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\consCad_v2.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -3353,45 +3276,12 @@
 		<EmbeddedResource Include="Xml\Schemas\NFe\e411503_v1.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\envCCe_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\envConfRecebto_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\envEPEC_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancEntregaNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancNFe_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancSubst_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoEntregaNFe_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\enviNFe_v4.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\envRemIndus_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\EPEC_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\EventoCancEntregaNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\eventoCancNFe_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\eventoCancSubst_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\EventoEntregaNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\eventoEPEC_v0.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\eventoRemIndus_v1.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFe\inutNFe_v4.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteCCe_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteConfRecebto_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteConsSitNFe_v4.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -3401,50 +3291,19 @@
 		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteConsultaCadastro_v2.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEPEC_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancEntregaNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancNFe_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancSubst_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoEntregaNFe_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteInutNFe_v4.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteNFe_v4.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteRemIndus_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFe\nfe_v4.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\procCCeNFe_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\procConfRecebtoNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\procEPEC_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancEntregaNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancNFe_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancSubst_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoEntregaNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoNFe_v99.99.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFe\procInutNFe_v4.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFe\procNFe_v4.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\procRemIndus_v1.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFe\resEvento_v1.01.xsd" />
@@ -3468,26 +3327,9 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFe\retDistDFeInt_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\retDistDFeInt_v1.35.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvCCe_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvConfRecebto_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvEPEC_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvEventoCancNFe_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvEventoCancSubst_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFe\retEnviNFe_v4.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvRemIndus_v1.00.xsd">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoCancEntregaNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoEntregaNFe_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoEPEC_v0.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\retInutNFe_v4.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>

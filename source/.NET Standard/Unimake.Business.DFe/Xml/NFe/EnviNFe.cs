@@ -447,6 +447,16 @@ namespace Unimake.Business.DFe.Xml.NFe
         public Agropecuario Agropecuario { get; set; }
 
         /// <summary>
+        /// Grupo de Informação do Provedor de Assinatura e Autorização
+        /// </summary>
+#if INTEROP
+        [XmlElement("infPAA", Order = 21)]
+#else
+        [XmlElement("infPAA")]
+#endif
+        public InfPAA InfPAA { get; set; }
+
+        /// <summary>
         /// ID da NFe/NFCe. Composição: NFe + chave
         /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "ID")]
@@ -12858,6 +12868,81 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeSerieGuia() => !string.IsNullOrWhiteSpace(SerieGuia);
 
         #endregion
+    }
+
+    /// <summary>
+    /// Grupo de Informação do Provedor de Assinatura e Autorização
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.InfPAA")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class InfPAA
+    {
+        /// <summary>
+        /// CNPJ do Provedor de Assinatura e Autorização
+        /// </summary>
+        [XmlElement("CNPJPAA")]
+        public string CNPJPAA { get; set; }
+
+        /// <summary>
+        /// Assinatura RSA do Emitente para DFe gerados por PAA
+        /// </summary>
+        [XmlElement("PAASignature")]
+        public PAASignature PAASignature { get; set; }
+    }
+
+    /// <summary>
+    /// Assinatura RSA do Emitente para DFe gerados por PAA
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.PAASignature")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class PAASignature
+    {
+        /// <summary>
+        /// Assinatura digital padrão RSA
+        /// </summary>
+        [XmlElement("SignatureValue", DataType = "base64Binary")]
+        public byte[] SignatureValue { get; set; }
+
+        /// <summary>
+        /// Chave Publica no padrão XML RSA Key
+        /// </summary>
+        [XmlElement("RSAKeyValue")]
+        public RSAKeyValue RSAKeyValue { get; set; }
+    }
+
+    /// <summary>
+    /// Chave Publica no padrão XML RSA Key
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.RSAKeyValue")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class RSAKeyValue
+    {
+        /// <summary>
+        /// Modulus
+        /// </summary>
+        [XmlElement("Modulus", DataType = "base64Binary")]
+        public byte[] Modulus { get; set; }
+
+        /// <summary>
+        /// Exponent
+        /// </summary>
+        [XmlElement("Exponent", DataType = "base64Binary")]
+        public byte[] Exponent { get; set; }
     }
 
     /// <summary>

@@ -2162,7 +2162,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 08 - Desenquadramento do Simples Nacional
         /// </summary>
-        [XmlEnum("8")]
+        [XmlEnum("08")]
         DesenquadramentoSN = 8
     }
 
