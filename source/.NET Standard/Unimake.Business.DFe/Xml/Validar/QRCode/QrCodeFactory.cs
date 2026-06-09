@@ -36,6 +36,14 @@ namespace Unimake.Business.DFe.Xml.Validar.QRCode
                         return new QrCodeCTeProcessor();
                     }
                     return null;
+
+                case TipoDFe.DCe:
+                    if (gerarQrCode)
+                    {
+                        return new QrCodeDCeProcessor();
+                    }
+                    return null;
+
                 case TipoDFe.NF3e:
                     if (gerarQrCode) 
                     {

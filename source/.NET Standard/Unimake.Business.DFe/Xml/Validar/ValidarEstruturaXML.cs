@@ -800,6 +800,17 @@ namespace Unimake.Business.DFe
 
                 #endregion
 
+                #region DCe
+
+                case "consStatServDCe": 
+                case "consSitDCe":
+                case "eventoDCe":
+                case "DCe":
+                    tipoDFe = TipoDFe.DCe;
+                    break;
+
+                #endregion
+
                 #region MDFe
 
                 case "consStatServMDFe":
