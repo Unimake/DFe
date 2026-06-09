@@ -1842,7 +1842,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (value.Length != 44)
                 {
-                    throw new Exception("Conteúdo da tag <chNFe> filha da tag <infEntrega> inválido! O conteúdo da tag deve ter 44 dígitos.");
+                    throw new Exception("Conteúdo da tag <chNFe> filha da tag <infEntrega> inválido! O conteúdo da tag deve ter 44 caracteres.");
                 }
 
                 ChNFeField = value;
