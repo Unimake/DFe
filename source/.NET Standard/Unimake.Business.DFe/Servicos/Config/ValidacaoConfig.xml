@@ -2574,6 +2574,104 @@
 			</GrupoUrl>
 		</Servico>
 	</NFGas>
+	<!--DCe-->
+	<DCe>
+		<Servico tagRaiz="consStatServDCe" versao="1.00">
+			<Descricao>DCeStatusServico</Descricao>
+			<SchemaArquivo>consStatServDCe_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consStatServDCe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/dce</TargetNS>
+		</Servico>
+		<Servico tagRaiz="consSitDCe" versao="1.00">
+			<Descricao>DCeConsulta</Descricao>
+			<SchemaArquivo>consSitDCe_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consSitDCe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/dce</TargetNS>
+		</Servico>
+		<Servico tagRaiz="eventoDCe" versao="1.00">
+			<Descricao>DCeRecepcaoEvento</Descricao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>eventoDCe</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagEvento>eventoDCe</TagEvento>
+			<TagVersao>eventoDCe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/dce</TargetNS>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoDCe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancDCe_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+		</Servico>
+		<Servico tagRaiz="DCe" versao="1.00">
+			<Descricao>Autorização síncrona da DCe</Descricao>
+			<SchemaArquivo>dce_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura>DCe</TagAssinatura>
+			<TagAtributoID>infDCe</TagAtributoID>
+			<TagVersao>infDCe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/dce</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>AP</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>MG</UF>
+					<UF>MS</UF>
+					<UF>MT</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PE</UF>
+					<UF>PI</UF>
+					<UF>PR</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RR</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>SP</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://dfe-portal.svrs.rs.gov.br/dce/qrCode</UrlChaveHomologacao>
+						<UrlChaveProducao>https://dfe-portal.svrs.rs.gov.br/dce/qrCode</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/dce/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/dce/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
+		</Servico>
+	</DCe>
+
 	<!--eSocial-->
 	<ESocial>
 		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="envioLoteEventos">

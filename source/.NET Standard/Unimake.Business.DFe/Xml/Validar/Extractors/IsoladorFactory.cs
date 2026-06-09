@@ -20,6 +20,8 @@ namespace Unimake.Business.DFe.Isoladores
                     return new IsoladorNFe();
                 case TipoDFe.CTe:
                     return new IsoladorCTe();
+                case TipoDFe.DCe:
+                    return new IsoladorDCe();
                 case TipoDFe.MDFe:
                     return new IsoladorMDFe();
                 case TipoDFe.NFCom:
