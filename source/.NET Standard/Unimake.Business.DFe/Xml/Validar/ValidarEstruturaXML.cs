@@ -827,6 +827,17 @@ namespace Unimake.Business.DFe
 
                 #endregion
 
+                #region NFGas
+
+                case "consStatServNFGas":
+                case "consSitNFGas":
+                case "eventoNFGas":
+                case "NFGas":
+                    tipoDFe = TipoDFe.NFGas;
+                    break;
+
+                #endregion
+
                 #region NFCom
 
                 case "consStatServNFCom":
