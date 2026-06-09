@@ -47,6 +47,9 @@
                                             <xs:annotation>
                                                 <xs:documentation>Data do término.</xs:documentation>
                                                 <xs:documentation>Validação: Deve ser uma data igual ou anterior à data atual acrescida de 10 (dez) dias.</xs:documentation>
+                                                <xs:documentation>Se {mtvDesligTSV}(./mtvDesligTSV) = [05]:</xs:documentation>
+                                                <xs:documentation>a) Caso a situação no cadastro do CPF na RFB seja diferente de "Titular Falecido", retornar erro até o 7º (sétimo) dia de {dtTerm}(./dtTerm) e retornar alerta a partir do 8º (oitavo) dia de {dtTerm}(./dtTerm);</xs:documentation>
+                                                <xs:documentation>b) Caso a situação no cadastro do CPF na RFB seja igual a "Titular Falecido", {dtTerm}(./dtTerm) deve ser igual à data de óbito no cadastro do CPF da RFB (se não for possível obter a data do óbito, o ano de {dtTerm}(./dtTerm) deve ser igual ao ano do óbito; se não for possível obter a data e o ano do óbito, o evento deve ser recebido mediante alerta).</xs:documentation>
                                             </xs:annotation>
                                         </xs:element>
                                         <xs:element name="mtvDesligTSV" minOccurs="0">
@@ -166,8 +169,7 @@
                                                                         <xs:documentation>Número da notificação de FGTS que deu origem à confissão.</xs:documentation>
                                                                         <xs:documentation>Validação: Se o campo for preenchido:</xs:documentation>
                                                                         <xs:documentation>a) O mês/ano de {}(2399_infoTSVTermino_dtTerm) deve ser igual ou posterior ao início do FGTS Digital;</xs:documentation>
-                                                                        <xs:documentation>b) Todas as rubricas de vencimento ({}(1010_infoRubrica_inclusao_dadosRubrica_tpRubr) em S-1010 = [1]) informadas no demonstrativo devem possuir {}(1010_infoRubrica_inclusao_dadosRubrica_codIncFGTS) em S-1010 = [71];</xs:documentation>
-                                                                        <xs:documentation>c) Devem ser informados apenas caracteres alfanuméricos, com 9 (nove) posições.</xs:documentation>
+                                                                        <xs:documentation>b) Devem ser informados apenas caracteres alfanuméricos, com 9 (nove) posições.</xs:documentation>
                                                                     </xs:annotation>
                                                                 </xs:element>
                                                                 <xs:element name="infoRRA" minOccurs="0" type="T_infoRRA" />
@@ -238,7 +240,7 @@
                                                                                     </xs:sequence>
                                                                                 </xs:complexType>
                                                                             </xs:element>
-                                                                            <xs:element name="infoSimples" minOccurs="0" type="T_infoSimples" />
+                                                                            <xs:element name="infoSimples" minOccurs="0" type="T_infoSimples_S-2399" />
                                                                         </xs:sequence>
                                                                     </xs:complexType>
                                                                 </xs:element>

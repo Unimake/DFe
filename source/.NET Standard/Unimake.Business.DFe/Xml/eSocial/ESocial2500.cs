@@ -260,6 +260,25 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("idVara")]
         public string IdVara { get; set; }
+
+        /// <summary>
+        /// Valor total da cota patronal incidente sobre a remuneração paga ao trabalhador, que será objeto de requisição autônoma.
+        /// </summary>
+        [XmlIgnore]
+        public decimal InfoPatPrec { get; set; }
+
+        [XmlElement("infoPatPrec")]
+        public string InfoPatPrecField
+        {
+            get => InfoPatPrec.ToString("F2", CultureInfo.InvariantCulture);
+            set => InfoPatPrec = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeInfoPatPrecField() => InfoPatPrec > 0;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
