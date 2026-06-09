@@ -214,7 +214,7 @@
 			<SchemasEspecificos>
 				<Tipo>
 					<ID>110140</ID>
-					<SchemaArquivo>envEPEC_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivo>envEvento_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e110140_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 			</SchemasEspecificos>
