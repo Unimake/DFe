@@ -2477,6 +2477,103 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nf3e</TargetNS>
 		</Servico>
 	</NF3e>
+	<!--NFGas-->
+	<NFGas>
+		<Servico tagRaiz="consStatServNFGas" versao="1.00">
+			<Descricao>Consulta situação do serviço da nota fiscal eletrônica do gás</Descricao>
+			<SchemaArquivo>consStatServNFGas_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consStatServNFGas</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfgas</TargetNS>
+		</Servico>
+		<Servico tagRaiz="consSitNFGas" versao="1.00">
+			<Descricao>Consulta situação da nota fiscal eletrônica do gás</Descricao>
+			<SchemaArquivo>consSitNFGas_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consSitNFGas</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfgas</TargetNS>
+		</Servico>
+		<Servico tagRaiz="eventoNFGas" versao="1.00">
+			<Descricao>Recepção de eventos</Descricao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>eventoNFGas</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagEvento>eventoNFGas</TagEvento>
+			<TagVersao>eventoNFGas</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfgas</TargetNS>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoNFGas_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancNFGas_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+		</Servico>
+		<Servico tagRaiz="NFGas" versao="1.00">
+			<Descricao>Autorização síncrona da NFGas</Descricao>
+			<SchemaArquivo>nfgas_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura>NFGas</TagAssinatura>
+			<TagAtributoID>infNFGas</TagAtributoID>
+			<TagVersao>infNFGas</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfgas</TargetNS>
+			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<UF>AL</UF>
+					<UF>AM</UF>
+					<UF>AP</UF>
+					<UF>BA</UF>
+					<UF>CE</UF>
+					<UF>DF</UF>
+					<UF>ES</UF>
+					<UF>GO</UF>
+					<UF>MA</UF>
+					<UF>MG</UF>
+					<UF>MS</UF>
+					<UF>MT</UF>
+					<UF>PA</UF>
+					<UF>PB</UF>
+					<UF>PE</UF>
+					<UF>PI</UF>
+					<UF>PR</UF>
+					<UF>RJ</UF>
+					<UF>RN</UF>
+					<UF>RO</UF>
+					<UF>RR</UF>
+					<UF>RS</UF>
+					<UF>SC</UF>
+					<UF>SE</UF>
+					<UF>SP</UF>
+					<UF>TO</UF>
+					<Urls>
+						<UrlChaveHomologacao>https://dfe-portal.svrs.rs.gov.br/nfgas/qrCode</UrlChaveHomologacao>
+						<UrlChaveProducao>https://dfe-portal.svrs.rs.gov.br/nfgas/qrCode</UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/nfgas/qrCode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/nfgas/qrCode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+			</GrupoUrl>
+		</Servico>
+	</NFGas>
 	<!--eSocial-->
 	<ESocial>
 		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="envioLoteEventos">

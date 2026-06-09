@@ -26,6 +26,8 @@ namespace Unimake.Business.DFe.Isoladores
                     return new IsoladorNFCom();
                 case TipoDFe.NF3e:
                     return new IsoladorNF3e();
+                case TipoDFe.NFGas:
+                    return new IsoladorNFGas();
                 case TipoDFe.ESocial:
                     return new IsoladorESocial();
                 case TipoDFe.EFDReinf:
