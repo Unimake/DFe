@@ -1235,7 +1235,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Preencher com o código que representa o grau de exposição a agentes nocivos, conforme Tabela 02
         /// </summary>
         [XmlElement("grauExp")]
-        public string GrauExp { get; set; }
+        public GrauExposicaoAgentesNocivos GrauExp { get; set; }
     }
 
     /// <summary>

@@ -15305,6 +15305,40 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion TpDesc - eSocial
 
+    #region grauExp - eSocial
+
+    /// <summary>
+    /// Grau de exposição a agentes nocivos.
+    /// </summary>
+    public enum GrauExposicaoAgentesNocivos
+    {
+        /// <summary>
+        /// 1 - Não ensejador de aposentadoria especial
+        /// </summary>
+        [XmlEnum("1")]
+        NaoEnsejadorAposentadoriaEspecial = 1,
+
+        /// <summary>
+        /// 2 - Ensejador de aposentadoria especial - FAE15_12% (15 anos de contribuição e alíquota de 12%)
+        /// </summary>
+        [XmlEnum("2")]
+        EnsejadorAposentadoriaEspecial15Anos = 2,
+
+        /// <summary>
+        /// 3 - Ensejador de aposentadoria especial - FAE20_09% (20 anos de contribuição e alíquota de 9%)
+        /// </summary>
+        [XmlEnum("3")]
+        EnsejadorAposentadoriaEspecial20Anos = 3,
+
+        /// <summary>
+        /// 4 - Ensejador de aposentadoria especial - FAE25_06% (25 anos de contribuição e alíquota de 6%)
+        /// </summary>
+        [XmlEnum("4")]
+        EnsejadorAposentadoriaEspecial25Anos = 4,
+    }
+
+    #endregion grauExp - eSocial
+
     #endregion ESocial
 
     #region NF3e

@@ -143,18 +143,21 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         {
             get
             {
-                ChaveField = ((int)Ide.CUF).ToString() +
-                    Ide.DhEmi.ToString("yyMM") +
-                    Emit.CNPJ.PadLeft(14, '0') +
-                    ((int)Ide.Mod).ToString().PadLeft(2, '0') +
-                    Ide.Serie.ToString().PadLeft(3, '0') +
-                    Ide.NCT.ToString().PadLeft(9, '0') +
-                    ((int)Ide.TpEmis).ToString() +
-                    Ide.CCT.PadLeft(8, '0');
+                var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
+                {
+                    UFEmissor = (UFBrasil)(int)Ide.CUF,
+                    AnoEmissao = Ide.DhEmi.ToString("yy"),
+                    MesEmissao = Ide.DhEmi.ToString("MM"),
+                    CNPJCPFEmissor = Emit.CNPJ.PadLeft(14, '0'),
+                    Modelo = (ModeloDFe)(int)Ide.Mod,
+                    Serie = Ide.Serie,
+                    NumeroDoctoFiscal = Ide.NCT,
+                    TipoEmissao = (TipoEmissao)(int)Ide.TpEmis,
+                    CodigoNumerico = Ide.CCT
+                };
 
-                Ide.CDV = Utility.XMLUtility.CalcularDVChave(ChaveField);
-
-                ChaveField += Ide.CDV.ToString();
+                ChaveField = XMLUtility.MontarChaveCTe(ref conteudoChaveDFe);
+                Ide.CDV = conteudoChaveDFe.DigitoVerificador;
 
                 return ChaveField;
             }

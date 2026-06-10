@@ -14,7 +14,7 @@ public class GerarChaveDFeTest
     /// </summary>
     /// <param name="cnpj"></param>
     [Theory]
-    [Trait("DFe", "NFe")]
+    [Trait("Utility", "ChaveDFe")]
     [InlineData("ABC123DEF45612", "412603ABC123DEF45612550200000001111135489250", ModeloDFe.NFe, TipoEmissao.Normal)]
     [InlineData("06117473000150", "41260306117473000150550200000001111135489253", ModeloDFe.NFe, TipoEmissao.Normal)]
     [InlineData("67157681021", "41260300067157681021550200000001111135489251", ModeloDFe.NFe, TipoEmissao.Normal)] 

@@ -4,6 +4,7 @@ using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTeOS;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTeOS;
 using Xunit;
 
@@ -96,6 +97,20 @@ namespace Unimake.DFe.Test.CTeOS
             //Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             Assert.True(autorizacao.Result.CStat.Equals(753) || autorizacao.Result.CStat.Equals(213) || autorizacao.Result.CStat.Equals(539) || autorizacao.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacao.Result.XMotivo);
+        }
+
+        [Fact]
+        [Trait("DFe", "CTeOS")]
+        public void MontarChave_CNPJAlfanumericoMascarado_GeraChaveUppercase()
+        {
+            var xml = MontarXML(UFBrasil.PR, TipoAmbiente.Homologacao);
+            xml.InfCTe.Emit.CNPJ = "12.abc.345/01de-35";
+
+            var chave = xml.InfCTe.Chave;
+
+            Assert.Equal(44, chave.Length);
+            Assert.Equal("12ABC34501DE35", chave.Substring(6, 14));
+            XMLUtility.ChecarChaveDFe(chave);
         }
 
         private Business.DFe.Xml.CTeOS.CTeOS MontarXML(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
