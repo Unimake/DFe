@@ -860,6 +860,20 @@ namespace Unimake.Business.DFe
 
                 #endregion
 
+                #region DARE
+                case "DARE":
+                    tipoDFe = TipoDFe.DARE;
+                    break;
+                #endregion
+
+                #region GNRE
+                case "TConsultaConfigUf":
+                case "TConsLote_GNRE":
+                case "TLote_GNRE":
+                    tipoDFe = TipoDFe.GNRE;
+                    break;
+                #endregion
+
                 case "eSocial":
                     tipoDFe = TipoDFe.ESocial;
                     break;
