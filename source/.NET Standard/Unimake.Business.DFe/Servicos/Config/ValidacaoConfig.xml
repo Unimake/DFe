@@ -3798,6 +3798,18 @@
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS></TargetNS>
 		</Servico>
+			<Servico tagRaiz="TResultLote_GNRE" versao="2.00">
+			<Descricao>Envio de Lote da GNRE</Descricao>
+			<SchemaArquivo>lote_gnre_result_v2.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>guia</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS></TargetNS>
+		</Servico>
 	</GNRE>
 	<!--NFSe-->
 	<NFSe>
