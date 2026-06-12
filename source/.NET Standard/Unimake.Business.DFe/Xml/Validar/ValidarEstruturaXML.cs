@@ -870,6 +870,7 @@ namespace Unimake.Business.DFe
                 case "TConsultaConfigUf":
                 case "TConsLote_GNRE":
                 case "TLote_GNRE":
+                case "TResultLote_GNRE":
                     tipoDFe = TipoDFe.GNRE;
                     break;
                 #endregion
