@@ -276,16 +276,7 @@
         </xs:annotation>
         <xs:sequence>
             <xs:element name="tpInsc" type="TS_tpInsc_1" />
-            <xs:element name="nrInsc">
-                <xs:simpleType>
-                    <xs:annotation>
-                        <xs:documentation>Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo {ideEmpregador/tpInsc}(./tpInsc) e conforme informado em S-1000.</xs:documentation>
-                    </xs:annotation>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{8}|\d{14}" />
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
+            <xs:element name="nrInsc" type="TS_nrInsc_8_14" />
         </xs:sequence>
     </xs:complexType>
 
@@ -1227,7 +1218,7 @@
         </xs:annotation>
         <xs:restriction base="xs:ID">
             <xs:length value="36" />
-            <xs:pattern value="ID\d{34}" />
+            <xs:pattern value="ID\d{1}[A-Z0-9]{12}\d{21}" />
         </xs:restriction>
     </xs:simpleType>
 
@@ -1660,34 +1651,44 @@
 
     <xs:simpleType name="TS_nrInsc_8_11_14">
         <xs:restriction base="xs:string">
-            <xs:pattern value="\d{8}|\d{11}|\d{14}" />
+            <xs:pattern value="[A-Z0-9]{8}|\d{11}|[A-Z0-9]{12}\d{2}" />
         </xs:restriction>
     </xs:simpleType>
 
     <xs:simpleType name="TS_nrInsc_12_14">
         <xs:restriction base="xs:string">
-            <xs:pattern value="\d{12}|\d{14}" />
+            <xs:pattern value="\d{12}|[A-Z0-9]{12}\d{2}" />
         </xs:restriction>
     </xs:simpleType>
 
     <xs:simpleType name="TS_nrInsc_11_12_14">
         <xs:restriction base="xs:string">
-            <xs:pattern value="\d{11}|\d{12}|\d{14}" />
+            <xs:pattern value="\d{11}|\d{12}|[A-Z0-9]{12}\d{2}" />
         </xs:restriction>
     </xs:simpleType>
 
     <xs:simpleType name="TS_nrInsc_11_14">
         <xs:restriction base="xs:string">
-            <xs:pattern value="\d{11}|\d{14}" />
+            <xs:pattern value="\d{11}|[A-Z0-9]{12}\d{2}" />
         </xs:restriction>
     </xs:simpleType>
 
     <xs:simpleType name="TS_cnpj">
         <xs:restriction base="xs:string">
-            <xs:pattern value="\d{14}" />
+            <xs:length value="14" />
+            <xs:pattern value="[A-Z0-9]{12}\d{2}" />
         </xs:restriction>
     </xs:simpleType>
-    
+
+    <xs:simpleType name="TS_nrInsc_8_14">
+        <xs:annotation>
+            <xs:documentation>Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo {ideEmpregador/tpInsc}(./tpInsc) e conforme informado em S-1000.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{8}|[A-Z0-9]{12}\d{2}" />
+        </xs:restriction>
+    </xs:simpleType>
+
     <!-- Campo {iniValid} -->
 
     <xs:simpleType name="TS_iniValid">

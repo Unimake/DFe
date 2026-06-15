@@ -215,9 +215,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
 #if INTEROP
-        public bool ShouldSerializeInfoMesmoMtvEstCiv() => EstCiv != (EstadoCivil)(-1);
+        public bool ShouldSerializeEstCiv() => EstCiv != (EstadoCivil)(-1);
 #else
-        public bool ShouldSerializeInfoMesmoMtvEstCiv() => EstCiv != null;
+        public bool ShouldSerializeEstCiv() => EstCiv != null;
 #endif
         public bool ShouldSerializeNmSoc() => !string.IsNullOrEmpty(NmSoc);
 

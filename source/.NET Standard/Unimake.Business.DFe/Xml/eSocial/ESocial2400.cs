@@ -56,7 +56,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de identificação do empregador
         /// </summary>
         [XmlElement("ideEmpregador")]
-        public IdeEmpregador IdeEmpregador { get; set; }
+        public IdeEmpregador2400 IdeEmpregador { get; set; }
 
         /// <summary>
         /// Grupo de informações do beneficiário
@@ -73,7 +73,67 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2400")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento2400 : IdeEvento2205 { }
+    public class IdeEvento2400
+    {
+        /// <summary>
+        /// Informe [1] para arquivo original ou [2] para arquivo de retificação.
+        /// </summary>
+        [XmlElement("indRetif")]
+        public IndicativoRetificacao IndRetif { get; set; }
+
+        /// <summary>
+        /// Preencher com o número do recibo do arquivo a ser retificado.
+        /// </summary>
+        [XmlElement("nrRecibo")]
+        public string NrRecibo { get; set; }
+
+        /// <summary>
+        /// Identificação do ambiente.
+        /// </summary>
+        [XmlElement("tpAmb")]
+        public TipoAmbiente TpAmb { get; set; }
+
+        /// <summary>
+        /// Processo de emissão do evento.
+        /// </summary>
+        [XmlElement("procEmi")]
+        public ProcEmiESocialPJ ProcEmi { get; set; }
+
+        /// <summary>
+        /// Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento.
+        /// </summary>
+        [XmlElement("verProc")]
+        public string VerProc { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
+
+        #endregion ShouldSerialize
+    }
+
+    /// <summary>
+    /// Informações de identificação do empregador
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador2400")]
+    [ComVisible(true)]
+#endif
+    public class IdeEmpregador2400
+    {
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+        /// </summary>
+        [XmlElement("tpInsc")]
+        public TipoInscricaoCNPJ TpInsc { get; set; }
+
+        /// <summary>
+        /// Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000.
+        /// </summary>
+        [XmlElement("nrInsc")]
+        public string NrInsc { get; set; }
+    }
 
     /// <summary>
     /// Grupo de informações do beneficiário
@@ -154,7 +214,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Etnia e raça do beneficiário
         /// </summary>
         [XmlElement("racaCor")]
-        public RacaCor RacaCor { get; set; }
+        public RacaCorBeneficiario RacaCor { get; set; }
 
         /// <summary>
         /// Estado civil do beneficiário

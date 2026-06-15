@@ -8528,6 +8528,22 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region Tipo de Inscrição CNPJ
+
+    /// <summary>
+    /// Tipo de inscrição CNPJ
+    /// </summary>
+    public enum TipoInscricaoCNPJ
+    {
+        /// <summary>
+        /// 1 - CNPJ
+        /// </summary>
+        [XmlEnum("1")]
+        CNPJ = 1
+    }
+
+    #endregion
+
     #region Indicativo escrituração
 
     /// <summary>
@@ -10266,6 +10282,520 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region CodigoReceitaContribuicaoDescontadaTrabalhador
+
+    /// <summary>
+    /// Código de Receita - CR da contribuição descontada do trabalhador
+    /// </summary>
+    public enum CodigoReceitaContribuicaoDescontadaTrabalhador
+    {
+        /// <summary>
+        /// 108201 - Contribuição Previdenciária - CP descontada do segurado empregado/avulso
+        /// </summary>
+        [XmlEnum("108201")]
+        CPDescontadaSeguradoEmpregadoAvulso = 108201,
+
+        /// <summary>
+        /// 108202 - CP descontada do segurado empregado rural curto prazo - Lei 11.718/2008
+        /// </summary>
+        [XmlEnum("108202")]
+        CPDescontadaSeguradoEmpregadoRuralCurtoPrazo = 108202,
+
+        /// <summary>
+        /// 108203 - CP descontada do segurado empregado doméstico
+        /// </summary>
+        [XmlEnum("108203")]
+        CPDescontadaSeguradoEmpregadoDomestico = 108203,
+
+        /// <summary>
+        /// 108204 - CP descontada do segurado especial curto prazo - Lei 11.718/2008
+        /// </summary>
+        [XmlEnum("108204")]
+        CPDescontadaSeguradoEspecialCurtoPrazo = 108204,
+
+        /// <summary>
+        /// 108205 - CP descontada do segurado empregado do segurado especial
+        /// </summary>
+        [XmlEnum("108205")]
+        CPDescontadaSeguradoEmpregadoSeguradoEspecial = 108205,
+
+        /// <summary>
+        /// 108207 - CP descontada do segurado empregado do MEI
+        /// </summary>
+        [XmlEnum("108207")]
+        CPDescontadaSeguradoEmpregadoMEI = 108207,
+
+        /// <summary>
+        /// 108221 - CP descontada do segurado empregado/avulso 13° salário
+        /// </summary>
+        [XmlEnum("108221")]
+        CPDescontadaSeguradoEmpregadoAvulsoDecimoTerceiro = 108221,
+
+        /// <summary>
+        /// 108222 - CP descontada do segurado empregado rural curto prazo 13° salário - Lei 11.718/2008
+        /// </summary>
+        [XmlEnum("108222")]
+        CPDescontadaSeguradoEmpregadoRuralCurtoPrazoDecimoTerceiro = 108222,
+
+        /// <summary>
+        /// 108223 - CP descontada do segurado empregado doméstico 13° salário
+        /// </summary>
+        [XmlEnum("108223")]
+        CPDescontadaSeguradoEmpregadoDomesticoDecimoTerceiro = 108223,
+
+        /// <summary>
+        /// 108224 - CP descontada do segurado especial curto prazo 13° salário - Lei 11.718/2008
+        /// </summary>
+        [XmlEnum("108224")]
+        CPDescontadaSeguradoEspecialCurtoPrazoDecimoTerceiro = 108224,
+
+        /// <summary>
+        /// 108225 - CP descontada do segurado empregado do segurado especial 13° salário
+        /// </summary>
+        [XmlEnum("108225")]
+        CPDescontadaSeguradoEmpregadoSeguradoEspecialDecimoTerceiro = 108225,
+
+        /// <summary>
+        /// 109901 - CP descontada do contribuinte individual, alíquota de 11%
+        /// </summary>
+        [XmlEnum("109901")]
+        CPDescontadaContribuinteIndividualAliquota11 = 109901,
+
+        /// <summary>
+        /// 109902 - CP descontada do contribuinte individual, alíquota de 20%
+        /// </summary>
+        [XmlEnum("109902")]
+        CPDescontadaContribuinteIndividualAliquota20 = 109902,
+
+        /// <summary>
+        /// 109921 - CP descontada do contribuinte individual, alíquota de 11% - 13º salário
+        /// </summary>
+        [XmlEnum("109921")]
+        CPDescontadaContribuinteIndividualAliquota11DecimoTerceiro = 109921,
+
+        /// <summary>
+        /// 109922 - CP descontada do contribuinte individual, alíquota de 20% - 13º salário
+        /// </summary>
+        [XmlEnum("109922")]
+        CPDescontadaContribuinteIndividualAliquota20DecimoTerceiro = 109922,
+
+        /// <summary>
+        /// 160601 - Empréstimo Consignado do Trabalhador, Lei nº 10.820/2003
+        /// </summary>
+        [XmlEnum("160601")]
+        EmprestimoConsignadoTrabalhador = 160601
+    }
+
+    #endregion
+
+    #region CodigoReceitaContribuicaoTerceiros
+
+    /// <summary>
+    /// Código de Receita - CR da contribuição descontada do trabalhador para terceiros
+    /// </summary>
+    public enum CodigoReceitaContribuicaoTerceiros
+    {
+        /// <summary>
+        /// 121802 - Contribuição ao SEST, descontada do transportador autônomo
+        /// </summary>
+        [XmlEnum("121802")]
+        ContribuicaoSESTTransportadorAutonomo = 121802,
+
+        /// <summary>
+        /// 122102 - Contribuição ao SENAT, descontada do transportador autônomo
+        /// </summary>
+        [XmlEnum("122102")]
+        ContribuicaoSENATTransportadorAutonomo = 122102
+    }
+
+    #endregion
+
+    #region TipoValorInfoBaseCS
+
+    /// <summary>
+    /// Tipo de valor que influi na apuração da contribuição social devida
+    /// </summary>
+    public enum TipoValorInfoBaseCS
+    {
+        /// <summary>
+        /// 11 - Base de cálculo da contribuição previdenciária normal
+        /// </summary>
+        [XmlEnum("11")]
+        BaseCalculoContribuicaoPrevidenciariaNormal = 11,
+
+        /// <summary>
+        /// 12 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 15 anos
+        /// </summary>
+        [XmlEnum("12")]
+        BaseCalculoAposentadoriaEspecial15Anos = 12,
+
+        /// <summary>
+        /// 13 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 20 anos
+        /// </summary>
+        [XmlEnum("13")]
+        BaseCalculoAposentadoriaEspecial20Anos = 13,
+
+        /// <summary>
+        /// 14 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 25 anos
+        /// </summary>
+        [XmlEnum("14")]
+        BaseCalculoAposentadoriaEspecial25Anos = 14,
+
+        /// <summary>
+        /// 15 - Base de cálculo da contribuição previdenciária adicional normal - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("15")]
+        BaseCalculoAdicionalNormalExclusivaEmpregador = 15,
+
+        /// <summary>
+        /// 16 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 15 anos - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("16")]
+        BaseCalculoAposentadoriaEspecial15AnosExclusivaEmpregador = 16,
+
+        /// <summary>
+        /// 17 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 20 anos - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("17")]
+        BaseCalculoAposentadoriaEspecial20AnosExclusivaEmpregador = 17,
+
+        /// <summary>
+        /// 18 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 25 anos - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("18")]
+        BaseCalculoAposentadoriaEspecial25AnosExclusivaEmpregador = 18,
+
+        /// <summary>
+        /// 19 - Base de cálculo da contribuição previdenciária exclusiva do empregado
+        /// </summary>
+        [XmlEnum("19")]
+        BaseCalculoExclusivaEmpregado = 19,
+
+        /// <summary>
+        /// 21 - Valor total descontado do trabalhador para recolhimento à Previdência Social
+        /// </summary>
+        [XmlEnum("21")]
+        ValorTotalDescontadoTrabalhadorPrevidenciaSocial = 21,
+
+        /// <summary>
+        /// 22 - Valor descontado do trabalhador para recolhimento ao SEST
+        /// </summary>
+        [XmlEnum("22")]
+        ValorDescontadoTrabalhadorSEST = 22,
+
+        /// <summary>
+        /// 23 - Valor descontado do trabalhador para recolhimento ao SENAT
+        /// </summary>
+        [XmlEnum("23")]
+        ValorDescontadoTrabalhadorSENAT = 23,
+
+        /// <summary>
+        /// 31 - Valor pago ao trabalhador a título de salário-família
+        /// </summary>
+        [XmlEnum("31")]
+        ValorSalarioFamilia = 31,
+
+        /// <summary>
+        /// 32 - Valor pago ao trabalhador a título de salário-maternidade
+        /// </summary>
+        [XmlEnum("32")]
+        ValorSalarioMaternidade = 32,
+
+        /// <summary>
+        /// 41 - Base de cálculo da contribuição previdenciária normal - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("41")]
+        BaseCalculoNormalCategorias107108 = 41,
+
+        /// <summary>
+        /// 42 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 15 anos - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("42")]
+        BaseCalculoAposentadoriaEspecial15AnosCategorias107108 = 42,
+
+        /// <summary>
+        /// 43 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 20 anos - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("43")]
+        BaseCalculoAposentadoriaEspecial20AnosCategorias107108 = 43,
+
+        /// <summary>
+        /// 44 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 25 anos - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("44")]
+        BaseCalculoAposentadoriaEspecial25AnosCategorias107108 = 44,
+
+        /// <summary>
+        /// 45 - Base de cálculo da contribuição previdenciária adicional normal - Exclusiva do empregador - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("45")]
+        BaseCalculoAdicionalNormalExclusivaEmpregadorCategorias107108 = 45,
+
+        /// <summary>
+        /// 46 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 15 anos - Exclusiva do empregador - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("46")]
+        BaseCalculoAposentadoriaEspecial15AnosExclusivaEmpregadorCategorias107108 = 46,
+
+        /// <summary>
+        /// 47 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 20 anos - Exclusiva do empregador - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("47")]
+        BaseCalculoAposentadoriaEspecial20AnosExclusivaEmpregadorCategorias107108 = 47,
+
+        /// <summary>
+        /// 48 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 25 anos - Exclusiva do empregador - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("48")]
+        BaseCalculoAposentadoriaEspecial25AnosExclusivaEmpregadorCategorias107108 = 48,
+
+        /// <summary>
+        /// 49 - Base de cálculo da contribuição previdenciária exclusiva do empregado - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("49")]
+        BaseCalculoExclusivaEmpregadoCategorias107108 = 49,
+
+        /// <summary>
+        /// 51 - Base de cálculo da contribuição previdenciária normal - 13º salário - Lei 14.973/2024
+        /// </summary>
+        [XmlEnum("51")]
+        BaseCalculoNormalDecimoTerceiroLei14973 = 51,
+
+        /// <summary>
+        /// 52 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 15 anos - 13º salário - Lei 14.973/2024
+        /// </summary>
+        [XmlEnum("52")]
+        BaseCalculoAposentadoriaEspecial15AnosDecimoTerceiroLei14973 = 52,
+
+        /// <summary>
+        /// 53 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 20 anos - 13º salário - Lei 14.973/2024
+        /// </summary>
+        [XmlEnum("53")]
+        BaseCalculoAposentadoriaEspecial20AnosDecimoTerceiroLei14973 = 53,
+
+        /// <summary>
+        /// 54 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 25 anos - 13º salário - Lei 14.973/2024
+        /// </summary>
+        [XmlEnum("54")]
+        BaseCalculoAposentadoriaEspecial25AnosDecimoTerceiroLei14973 = 54,
+
+        /// <summary>
+        /// 71 - Incidência suspensa em decorrência de decisão judicial - BC CP normal - 13º salário - Lei 14.973/2024
+        /// </summary>
+        [XmlEnum("71")]
+        IncidenciaSuspensaBCNormalDecimoTerceiroLei14973 = 71,
+
+        /// <summary>
+        /// 72 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 15 anos - 13º salário - Lei 14.973/2024
+        /// </summary>
+        [XmlEnum("72")]
+        IncidenciaSuspensaBCAposentadoriaEspecial15AnosDecimoTerceiroLei14973 = 72,
+
+        /// <summary>
+        /// 73 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 20 anos - 13º salário - Lei 14.973/2024
+        /// </summary>
+        [XmlEnum("73")]
+        IncidenciaSuspensaBCAposentadoriaEspecial20AnosDecimoTerceiroLei14973 = 73,
+
+        /// <summary>
+        /// 74 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 25 anos - 13º salário - Lei 14.973/2024
+        /// </summary>
+        [XmlEnum("74")]
+        IncidenciaSuspensaBCAposentadoriaEspecial25AnosDecimoTerceiroLei14973 = 74,
+
+        /// <summary>
+        /// 81 - Incidência suspensa em decorrência de decisão judicial - BC CP normal - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("81")]
+        IncidenciaSuspensaBCNormalCategorias107108 = 81,
+
+        /// <summary>
+        /// 82 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 15 anos - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("82")]
+        IncidenciaSuspensaBCAposentadoriaEspecial15AnosCategorias107108 = 82,
+
+        /// <summary>
+        /// 83 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 20 anos - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("83")]
+        IncidenciaSuspensaBCAposentadoriaEspecial20AnosCategorias107108 = 83,
+
+        /// <summary>
+        /// 84 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 25 anos - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("84")]
+        IncidenciaSuspensaBCAposentadoriaEspecial25AnosCategorias107108 = 84,
+
+        /// <summary>
+        /// 85 - Incidência suspensa em decorrência de decisão judicial - BC CP normal - Exclusiva do empregador - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("85")]
+        IncidenciaSuspensaBCNormalExclusivaEmpregadorCategorias107108 = 85,
+
+        /// <summary>
+        /// 86 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 15 anos - Exclusiva do empregador - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("86")]
+        IncidenciaSuspensaBCAposentadoriaEspecial15AnosExclusivaEmpregadorCategorias107108 = 86,
+
+        /// <summary>
+        /// 87 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 20 anos - Exclusiva do empregador - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("87")]
+        IncidenciaSuspensaBCAposentadoriaEspecial20AnosExclusivaEmpregadorCategorias107108 = 87,
+
+        /// <summary>
+        /// 88 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 25 anos - Exclusiva do empregador - Categorias 107 e 108
+        /// </summary>
+        [XmlEnum("88")]
+        IncidenciaSuspensaBCAposentadoriaEspecial25AnosExclusivaEmpregadorCategorias107108 = 88,
+
+        /// <summary>
+        /// 91 - Incidência suspensa em decorrência de decisão judicial - BC CP normal
+        /// </summary>
+        [XmlEnum("91")]
+        IncidenciaSuspensaBCNormal = 91,
+
+        /// <summary>
+        /// 92 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 15 anos
+        /// </summary>
+        [XmlEnum("92")]
+        IncidenciaSuspensaBCAposentadoriaEspecial15Anos = 92,
+
+        /// <summary>
+        /// 93 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 20 anos
+        /// </summary>
+        [XmlEnum("93")]
+        IncidenciaSuspensaBCAposentadoriaEspecial20Anos = 93,
+
+        /// <summary>
+        /// 94 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 25 anos
+        /// </summary>
+        [XmlEnum("94")]
+        IncidenciaSuspensaBCAposentadoriaEspecial25Anos = 94,
+
+        /// <summary>
+        /// 95 - Incidência suspensa em decorrência de decisão judicial - BC CP normal - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("95")]
+        IncidenciaSuspensaBCNormalExclusivaEmpregador = 95,
+
+        /// <summary>
+        /// 96 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 15 anos - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("96")]
+        IncidenciaSuspensaBCAposentadoriaEspecial15AnosExclusivaEmpregador = 96,
+
+        /// <summary>
+        /// 97 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 20 anos - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("97")]
+        IncidenciaSuspensaBCAposentadoriaEspecial20AnosExclusivaEmpregador = 97,
+
+        /// <summary>
+        /// 98 - Incidência suspensa em decorrência de decisão judicial - BC CP aposentadoria especial aos 25 anos - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("98")]
+        IncidenciaSuspensaBCAposentadoriaEspecial25AnosExclusivaEmpregador = 98
+    }
+
+    #endregion
+
+    #region TipoValorPerRef
+
+    /// <summary>
+    /// Tipo de valor que influi na apuração da contribuição devida por período de referência
+    /// </summary>
+    public enum TipoValorPerRef
+    {
+        /// <summary>
+        /// 11 - Base de cálculo da contribuição previdenciária normal
+        /// </summary>
+        [XmlEnum("11")]
+        BaseCalculoContribuicaoPrevidenciariaNormal = 11,
+
+        /// <summary>
+        /// 12 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 15 anos
+        /// </summary>
+        [XmlEnum("12")]
+        BaseCalculoAposentadoriaEspecial15Anos = 12,
+
+        /// <summary>
+        /// 13 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 20 anos
+        /// </summary>
+        [XmlEnum("13")]
+        BaseCalculoAposentadoriaEspecial20Anos = 13,
+
+        /// <summary>
+        /// 14 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 25 anos
+        /// </summary>
+        [XmlEnum("14")]
+        BaseCalculoAposentadoriaEspecial25Anos = 14,
+
+        /// <summary>
+        /// 15 - Base de cálculo da contribuição previdenciária adicional normal - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("15")]
+        BaseCalculoAdicionalNormalExclusivaEmpregador = 15,
+
+        /// <summary>
+        /// 16 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 15 anos - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("16")]
+        BaseCalculoAposentadoriaEspecial15AnosExclusivaEmpregador = 16,
+
+        /// <summary>
+        /// 17 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 20 anos - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("17")]
+        BaseCalculoAposentadoriaEspecial20AnosExclusivaEmpregador = 17,
+
+        /// <summary>
+        /// 18 - Base de cálculo da contribuição previdenciária adicional para aposentadoria especial após 25 anos - Exclusiva do empregador
+        /// </summary>
+        [XmlEnum("18")]
+        BaseCalculoAposentadoriaEspecial25AnosExclusivaEmpregador = 18,
+
+        /// <summary>
+        /// 19 - Base de cálculo da contribuição previdenciária exclusiva do empregado
+        /// </summary>
+        [XmlEnum("19")]
+        BaseCalculoExclusivaEmpregado = 19,
+
+        /// <summary>
+        /// 21 - Valor total descontado do trabalhador para recolhimento à Previdência Social
+        /// </summary>
+        [XmlEnum("21")]
+        ValorTotalDescontadoTrabalhadorPrevidenciaSocial = 21,
+
+        /// <summary>
+        /// 22 - Valor descontado do trabalhador para recolhimento ao SEST
+        /// </summary>
+        [XmlEnum("22")]
+        ValorDescontadoTrabalhadorSEST = 22,
+
+        /// <summary>
+        /// 23 - Valor descontado do trabalhador para recolhimento ao SENAT
+        /// </summary>
+        [XmlEnum("23")]
+        ValorDescontadoTrabalhadorSENAT = 23,
+
+        /// <summary>
+        /// 31 - Valor pago ao trabalhador a título de salário-família
+        /// </summary>
+        [XmlEnum("31")]
+        ValorSalarioFamilia = 31,
+
+        /// <summary>
+        /// 32 - Valor pago ao trabalhador a título de salário-maternidade
+        /// </summary>
+        [XmlEnum("32")]
+        ValorSalarioMaternidade = 32
+    }
+
+    #endregion
+
     #region IndicativoDecimoTerceiro
 
     /// <summary>
@@ -10517,6 +11047,34 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion Processo de emissão do evento eSocial 
+
+    #region Processo de emissão do evento eSocial Pessoa Jurídica
+
+    /// <summary>
+    /// Processo de emissão do evento eSocial Pessoa Jurídica.
+    /// </summary>
+    public enum ProcEmiESocialPJ
+    {
+        /// <summary>
+        /// 1 - Aplicativo do empregador.
+        /// </summary>
+        [XmlEnum("1")]
+        AppDoEmpregador = 1,
+
+        /// <summary>
+        /// 3 - Aplicativo governamental - Web Geral.
+        /// </summary>
+        [XmlEnum("3")]
+        AppGovernamentalWebGeral = 3,
+
+        /// <summary>
+        /// 4 - Aplicativo governamental - Simplificado Pessoa Jurídica.
+        /// </summary>
+        [XmlEnum("4")]
+        AppGovernamentalPJ = 4
+    }
+
+    #endregion Processo de emissão do evento eSocial Pessoa Jurídica
 
     #region Tipo Processo eSocial
 
@@ -12224,6 +12782,44 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("6")]
         NaoInformado = 6
+    }
+    #endregion
+
+    #region Etnia e raça do beneficiário, conforme sua autoclassificação(art. 39, § 8º, da Lei 12.288/2010). - eSocial
+    /// <summary>
+    /// Etnia e raça do beneficiário, conforme sua autoclassificação(art. 39, § 8º, da Lei 12.288/2010).
+    /// </summary>
+    public enum RacaCorBeneficiario
+    {
+        /// <summary>
+        /// 1 - Branca
+        /// </summary>
+        [XmlEnum("1")]
+        Branca = 1,
+
+        /// <summary>
+        /// 2 - Preta
+        /// </summary>
+        [XmlEnum("2")]
+        Preta = 2,
+
+        /// <summary>
+        /// 3 - Parda
+        /// </summary>
+        [XmlEnum("3")]
+        Parda = 3,
+
+        /// <summary>
+        /// 4 - Amarela
+        /// </summary>
+        [XmlEnum("4")]
+        Amarela = 4,
+
+        /// <summary>
+        /// 5 - Indígena
+        /// </summary>
+        [XmlEnum("5")]
+        Indigena = 5
     }
     #endregion
 

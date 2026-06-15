@@ -1663,7 +1663,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddAbono(InfoInterm item)
+        public void AddInfoInterm(InfoInterm item)
         {
             if (InfoInterm == null)
             {
