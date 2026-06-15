@@ -1199,6 +1199,8 @@
 		<None Remove="Xml\Schemas\NFGas\consStatServNFGas_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\evCancNFGas_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFGas\evCancVincPgto_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFGas\evVincPgto_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\eventoNFGasTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\eventoNFGas_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\nfgasTiposBasico_v1.00.xsd" />
@@ -2563,6 +2565,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFGas\consStatServNFGas_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\DFeTiposBasicos_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\evCancNFGas_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFGas\evCancVincPgto_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFGas\evVincPgto_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\eventoNFGasTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\eventoNFGas_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\nfgasTiposBasico_v1.00.xsd" />

@@ -112,6 +112,12 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
         [XmlElement("evCancNFGas")]
         public EvCancNFGas EvCancNFGas { get; set; }
+
+        [XmlElement("evVincPgto")]
+        public EvVincPgto EvVincPgto { get; set; }
+
+        [XmlElement("evCancVincPgto")]
+        public EvCancVincPgto EvCancVincPgto { get; set; }
     }
 
 #if INTEROP

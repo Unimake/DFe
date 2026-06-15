@@ -148,6 +148,9 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("total")]
         public Total Total { get; set; }
 
+        [XmlElement("pgtoVinc")]
+        public PgtoVinc PgtoVinc { get; set; }
+
         [XmlElement("gFat")]
         public GFat GFat { get; set; }
 
@@ -247,9 +250,14 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("gCompraGov")]
         public GCompraGov GCompraGov { get; set; }
 
+        [XmlElement("tpPagAnt")]
+        public TipoPagamentoAntecipadoNFCom TpPagAnt { get; set; }
+
         public bool ShouldSerializeDhCont() => !string.IsNullOrEmpty(DhCont);
 
         public bool ShouldSerializeXJust() => !string.IsNullOrEmpty(XJust);
+
+        public bool ShouldSerializeTpPagAnt() => TpPagAnt != (TipoPagamentoAntecipadoNFCom)0;
     }
 
     public class GCompraGov
@@ -286,7 +294,12 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("enderEmit")]
         public EnderEmit EnderEmit { get; set; }
 
+        [XmlElement("ISUFEmit")]
+        public string ISUFEmit { get; set; }
+
         public bool ShouldSerializeXFant() => !string.IsNullOrEmpty(XFant);
+
+        public bool ShouldSerializeISUFEmit() => !string.IsNullOrEmpty(ISUFEmit);
     }
 
     public class Dest
@@ -627,6 +640,9 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("indDevolucao")]
         public string IndDevolucao { get; set; }
 
+        [XmlElement("gPagAntecipado")]
+        public GPagAntecipado GPagAntecipado { get; set; }
+
         public bool ShouldSerializeCFOP() => !string.IsNullOrEmpty(CFOP);
 
         public bool ShouldSerializeGMedicao() => GMedicao != null;
@@ -640,6 +656,17 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public bool ShouldSerializeFatorT() => !string.IsNullOrEmpty(FatorT);
 
         public bool ShouldSerializeIndDevolucao() => !string.IsNullOrEmpty(IndDevolucao);
+    }
+
+    public class GPagAntecipado
+    {
+        [XmlElement("chDFePagAnt")]
+        public string ChDFePagAnt { get; set; }
+
+        [XmlElement("nItemPagAnt")]
+        public int NItemPagAnt { get; set; }
+
+        public bool ShouldSerializeNItemPagAnt() => NItemPagAnt > 0;
     }
 
     public class Imposto
@@ -723,8 +750,29 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public bool ShouldSerializeOrig() => Orig != (OrigemMercadoria)(-1);
     }
 
-    public class ICMS10 : ICMS00
+    public class ICMS10
     {
+        [XmlElement("CST")]
+        public string CST { get; set; }
+
+        [XmlElement("modBC")]
+        public string ModBC { get; set; }
+
+        [XmlElement("vBC")]
+        public string VBC { get; set; }
+
+        [XmlElement("pICMS")]
+        public string PICMS { get; set; }
+
+        [XmlElement("vICMS")]
+        public string VICMS { get; set; }
+
+        [XmlElement("pFCP")]
+        public string PFCP { get; set; }
+
+        [XmlElement("vFCP")]
+        public string VFCP { get; set; }
+
         [XmlElement("modBCST")]
         public string ModBCST { get; set; }
 
@@ -780,13 +828,10 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public string IndDeduzDeson { get; set; }
     }
 
-    public class ICMS51 : ICMS40
+    public class ICMS51
     {
-        [XmlElement("modBC")]
-        public string ModBC { get; set; }
-
-        [XmlElement("pRedBC")]
-        public string PRedBC { get; set; }
+        [XmlElement("CST")]
+        public string CST { get; set; }
 
         [XmlElement("vBC")]
         public string VBC { get; set; }
@@ -796,6 +841,20 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
         [XmlElement("vICMS")]
         public string VICMS { get; set; }
+
+        [XmlElement("pDif")]
+        public string PDif { get; set; }
+
+        [XmlElement("vICMSOp")]
+        public string VICMSOp { get; set; }
+
+        [XmlElement("vICMSDif")]
+        public string VICMSDif { get; set; }
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
+        public bool ShouldSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
     }
 
     public class ICMS60
@@ -837,25 +896,103 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public string VICMSEfet { get; set; }
     }
 
-    public class ICMS70 : ICMS10
+    public class ICMS70
     {
+        [XmlElement("CST")]
+        public string CST { get; set; }
+
         [XmlElement("modBC")]
         public string ModBC { get; set; }
 
         [XmlElement("pRedBC")]
         public string PRedBC { get; set; }
-    }
 
-    public class ICMS90 : ICMS70
-    {
-        [XmlElement("indSemCST")]
-        public string IndSemCST { get; set; }
+        [XmlElement("vBC")]
+        public string VBC { get; set; }
+
+        [XmlElement("pICMS")]
+        public string PICMS { get; set; }
+
+        [XmlElement("vICMS")]
+        public string VICMS { get; set; }
+
+        [XmlElement("vBCFCP")]
+        public string VBCFCP { get; set; }
+
+        [XmlElement("pFCP")]
+        public string PFCP { get; set; }
+
+        [XmlElement("vFCP")]
+        public string VFCP { get; set; }
+
+        [XmlElement("modBCST")]
+        public string ModBCST { get; set; }
+
+        [XmlElement("pMVAST")]
+        public string PMVAST { get; set; }
+
+        [XmlElement("pRedBCST")]
+        public string PRedBCST { get; set; }
+
+        [XmlElement("vBCST")]
+        public string VBCST { get; set; }
+
+        [XmlElement("pICMSST")]
+        public string PICMSST { get; set; }
+
+        [XmlElement("vICMSST")]
+        public string VICMSST { get; set; }
+
+        [XmlElement("vBCFCPST")]
+        public string VBCFCPST { get; set; }
+
+        [XmlElement("pFCPST")]
+        public string PFCPST { get; set; }
+
+        [XmlElement("vFCPST")]
+        public string VFCPST { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDeson { get; set; }
+
+        [XmlElement("motDesICMS")]
+        public string MotDesICMS { get; set; }
+
+        [XmlElement("indDeduzDeson")]
+        public string IndDeduzDeson { get; set; }
 
         [XmlElement("vICMSSTDeson")]
         public string VICMSSTDeson { get; set; }
 
         [XmlElement("motDesICMSST")]
         public string MotDesICMSST { get; set; }
+    }
+
+    public class ICMS90
+    {
+        [XmlElement("CST")]
+        public string CST { get; set; }
+
+        [XmlElement("vBC")]
+        public string VBC { get; set; }
+
+        [XmlElement("pICMS")]
+        public string PICMS { get; set; }
+
+        [XmlElement("vICMS")]
+        public string VICMS { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDeson { get; set; }
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
+        [XmlElement("pFCP")]
+        public string PFCP { get; set; }
+
+        [XmlElement("vFCP")]
+        public string VFCP { get; set; }
     }
 
     public class PIS
@@ -1036,6 +1173,9 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("gRed")]
         public GRed GRed { get; set; }
 
+        [XmlElement("gALCZFMCBS")]
+        public GALCZFMCBS GALCZFMCBS { get; set; }
+
         [XmlElement("vCBS")]
         public string VCBS { get; set; }
     }
@@ -1051,8 +1191,13 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
     public class GDevTrib
     {
+        [XmlElement("pDevTrib")]
+        public string PDevTrib { get; set; }
+
         [XmlElement("vDevTrib")]
         public string VDevTrib { get; set; }
+
+        public bool ShouldSerializePDevTrib() => !string.IsNullOrEmpty(PDevTrib);
     }
 
     public class GRed
@@ -1062,6 +1207,15 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
         [XmlElement("pAliqEfet")]
         public string PAliqEfet { get; set; }
+    }
+
+    public class GALCZFMCBS
+    {
+        [XmlElement("pAliqEfetRegCBS")]
+        public string PAliqEfetRegCBS { get; set; }
+
+        [XmlElement("vTribRegCBS")]
+        public string VTribRegCBS { get; set; }
     }
 
     public class GTribRegular
@@ -1422,6 +1576,14 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
         [XmlElement("vCBSEstCred")]
         public string VCBSEstCred { get; set; }
+    }
+
+    public class PgtoVinc
+    {
+        [XmlElement("pgto")]
+        public List<Pgto> Pgto { get; set; }
+
+        public bool ShouldSerializePgto() => Pgto?.Count > 0;
     }
 
     public class RetTrib
