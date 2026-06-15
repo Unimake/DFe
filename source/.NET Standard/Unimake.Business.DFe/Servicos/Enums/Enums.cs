@@ -17291,6 +17291,34 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region TipoPagamentoAntecipadoNFCom
+
+    /// <summary>
+    /// Tipo pagamento ou pagamento antecipado da NFCom
+    /// </summary>
+    public enum TipoPagamentoAntecipadoNFCom
+    {
+        /// <summary>
+        /// 1 - Pagamento antecipado de serviços não continuados
+        /// </summary>
+        [XmlEnum("1")]
+        PagamentoAntecipadoServicosNaoContinuados = 1,
+
+        /// <summary>
+        /// 2 - Pagamento de serviços continuados antes da prestação
+        /// </summary>
+        [XmlEnum("2")]
+        PagamentoServicosContinuadosAntesPrestacao = 2,
+
+        /// <summary>
+        /// 3 - Fornecimento com pagamento realizado anteriormente
+        /// </summary>
+        [XmlEnum("3")]
+        FornecimentoPagamentoRealizadoAnteriormente = 3
+    }
+
+    #endregion TipoPagamentoAntecipadoNFCom
+
     #region TipoAssinante
 
     /// <summary>
@@ -17444,7 +17472,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 05 - Descontinuidade do serviço
         /// </summary>
         [XmlEnum("05")]
-        DescontinuidadeServico = 5
+        DescontinuidadeServico = 5,
+
+        /// <summary>
+        /// 06 - Regime especial
+        /// </summary>
+        [XmlEnum("06")]
+        RegimeEspecial = 6
 
     }
 

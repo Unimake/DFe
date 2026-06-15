@@ -23,6 +23,7 @@
 				<tpEnteGov>1</tpEnteGov>
 				<pRedutor>5.0000</pRedutor>
 			</gCompraGov>
+			<tpPagAnt>3</tpPagAnt>
 		</ide>
 		<emit>
 			<CNPJ>06117473000150</CNPJ>
@@ -42,6 +43,7 @@
 				<fone>12345678</fone>
 				<email>teste@test.com</email>
 			</enderEmit>
+			<ISUFEmit>12345678</ISUFEmit>
 		</emit>
 		<dest>
 			<xNome>Unifake Software</xNome>
@@ -95,6 +97,11 @@
 				<vProd>1234.10</vProd>
 				<dExpiracao>2025-03-06</dExpiracao>
 				<indDevolucao>1</indDevolucao>
+				<CNPJCobrTerc>06117473000150</CNPJCobrTerc>
+				<gPagAntecipado>
+					<chDFePagAnt>12345678901234567890123456789012345678901234</chDFePagAnt>
+					<nItemPagAnt>1</nItemPagAnt>
+				</gPagAntecipado>
 			</prod>
 			<imposto>
 				<ICMS00>
@@ -155,6 +162,7 @@
 								<vDif>4.12</vDif>
 							</gDif>
 							<gDevTrib>
+								<pDevTrib>4.1234</pDevTrib>
 								<vDevTrib>5.12</vDevTrib>
 							</gDevTrib>
 							<gRed>
@@ -170,6 +178,7 @@
 								<vDif>4.12</vDif>
 							</gDif>
 							<gDevTrib>
+								<pDevTrib>4.1234</pDevTrib>
 								<vDevTrib>5.12</vDevTrib>
 							</gDevTrib>
 							<gRed>
@@ -186,12 +195,17 @@
 								<vDif>4.12</vDif>
 							</gDif>
 							<gDevTrib>
+								<pDevTrib>4.1234</pDevTrib>
 								<vDevTrib>5.12</vDevTrib>
 							</gDevTrib>
 							<gRed>
 								<pRedAliq>6.1234</pRedAliq>
 								<pAliqEfet>7.1234</pAliqEfet>
 							</gRed>
+							<gALCZFMCBS>
+								<pAliqEfetRegCBS>7.1234</pAliqEfetRegCBS>
+								<vTribRegCBS>8.12</vTribRegCBS>
+							</gALCZFMCBS>
 							<vCBS>8.12</vCBS>
 						</gCBS>
 						<gTribRegular>
@@ -251,6 +265,13 @@
 				<xObs>Teste total da NFCom</xObs>
 			</gRessarc>
 		</det>
+		<pgtoVinc>
+			<pgto nPag="1" idTransacao="ABC123">
+				<tpMeioPgto>03</tpMeioPgto>
+				<CNPJReceb>06117473000150</CNPJReceb>
+				<CNPJBasePSP>06117473</CNPJBasePSP>
+			</pgto>
+		</pgtoVinc>
 		<total>
 			<vProd>111.54</vProd>
 			<ICMSTot>
