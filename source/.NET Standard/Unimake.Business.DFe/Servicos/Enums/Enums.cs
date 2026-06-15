@@ -8813,27 +8813,27 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoEntidadeLigada
     {
         /// <summary>
-        /// 01 - Fundo de investimento.
+        /// 1 - Fundo de investimento.
         /// </summary>
-        [XmlEnum("01")]
+        [XmlEnum("1")]
         FundoDeInvestimento = 1,
 
         /// <summary>
-        /// 02 - Fundo de investimento imobiliário.
+        /// 2 - Fundo de investimento imobiliário.
         /// </summary>
-        [XmlEnum("02")]
+        [XmlEnum("2")]
         FundoDeInvestimentoImobiliario = 2,
 
         /// <summary>
-        /// 03 - Clube de Investimento.
+        /// 3 - Clube de Investimento.
         /// </summary>
-        [XmlEnum("03")]
+        [XmlEnum("3")]
         ClubeDeInvestimento = 3,
 
         /// <summary>
-        /// 04 - Sociedade em conta de participação.
+        /// 4 - Sociedade em conta de participação.
         /// </summary>
-        [XmlEnum("04")]
+        [XmlEnum("4")]
         SociedadeEmContaDeParticipacao = 4,
     }
     #endregion
