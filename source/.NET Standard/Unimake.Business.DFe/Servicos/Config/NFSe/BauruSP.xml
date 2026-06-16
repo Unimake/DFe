@@ -18,6 +18,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<AssinaCanonicalizacaoExclusiva>true</AssinaCanonicalizacaoExclusiva>
 		</GerarNfse>
 		<CancelarNfse versao="1.01">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
@@ -36,6 +37,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<AssinaCanonicalizacaoExclusiva>true</AssinaCanonicalizacaoExclusiva>
 		</CancelarNfse>
 		<!-- Eventos de consulta do padrão NACIONAL de versão 1.01 -->
 		<ConsultarNfse versao="1.01">
