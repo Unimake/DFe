@@ -17754,6 +17754,84 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion Tipo de Retenção PIS/COFINS NFS-e NACIONAL
 
+    #region Tipo de emissão NFS-e NACIONAL
+    /// <summary>
+    /// Tipo de emissão da NFS-e NACIONAL
+    /// </summary>
+    public enum TipoEmissaoNFSe
+    {
+        /// <summary>
+        /// 1 - Emissão normal no modelo da NFS-e Nacional
+        /// </summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>
+        /// 2 - Emissão original em leiaute próprio do município com transcrição para o modelo da NFS-e Nacional
+        /// </summary>
+        [XmlEnum("2")]
+        TranscricaoLeiauteProprioMunicipio = 2,
+    }
+    #endregion Tipo de emissão NFS-e NACIONAL
+
+    #region Processo de emissão NFS-e NACIONAL
+    /// <summary>
+    /// Processo de emissão da NFS-e NACIONAL
+    /// </summary>
+    public enum ProcessoEmissaoNFSe
+    {
+        /// <summary>
+        /// 1 - Emissão com aplicativo do contribuinte (via Web Service)
+        /// </summary>
+        [XmlEnum("1")]
+        AplicativoContribuinte = 1,
+
+        /// <summary>
+        /// 2 - Emissão com aplicativo disponibilizado pelo fisco (Web)
+        /// </summary>
+        [XmlEnum("2")]
+        AplicativoFiscoWeb = 2,
+
+        /// <summary>
+        /// 3 - Emissão com aplicativo disponibilizado pelo fisco (App)
+        /// </summary>
+        [XmlEnum("3")]
+        AplicativoFiscoApp = 3,
+    }
+    #endregion Processo de emissão NFS-e NACIONAL
+
+    #region Tipo Benefício Municipal NFS-e NACIONAL
+    /// <summary>
+    /// Tipo Benefício Municipal NFS-e NACIONAL
+    /// </summary>
+    public enum TipoBeneficioMunicipalNFSe
+    {
+        /// <summary>
+        /// 1 - Isenção
+        /// </summary>
+        [XmlEnum("1")]
+        Isencao = 1,
+
+        /// <summary>
+        /// 2 - Redução da BC em percentual
+        /// </summary>
+        [XmlEnum("2")]
+        ReducaoBCPercentual = 2,
+
+        /// <summary>
+        /// 3 - Redução da BC em valor
+        /// </summary>
+        [XmlEnum("3")]
+        ReducaoBCValor = 3,
+
+        /// <summary>
+        /// 4 - Alíquota diferenciada
+        /// </summary>
+        [XmlEnum("4")]
+        AliquotaDiferenciada = 4,
+    }
+    #endregion Tipo Benefício Municipal NFS-e NACIONAL
+
     #region Tipo Chave DFe NACIONAL
     /// <summary>
     /// Tipos de Chave DFe para padrão NACIONAL

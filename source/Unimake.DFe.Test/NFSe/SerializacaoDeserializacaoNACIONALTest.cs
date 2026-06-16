@@ -321,8 +321,8 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.Equal("Serviços de transporte rodoviário de cargas sólidas a granel", infNFSe.XNBS);
         Assert.Equal("SefinNac_Pre_1.4.0", infNFSe.VerAplic);
         Assert.Equal(2, (int)infNFSe.AmbGer); // Homologação
-        Assert.Equal(1, infNFSe.TpEmis); // Normal
-        Assert.Equal(1, infNFSe.ProcEmi); // Aplicativo do contribuinte
+        Assert.Equal(TipoEmissaoNFSe.Normal, infNFSe.TpEmis); // Normal
+        Assert.Equal(ProcessoEmissaoNFSe.AplicativoContribuinte, infNFSe.ProcEmi); // Aplicativo do contribuinte
         Assert.Equal(100, infNFSe.CStat); // Autorizada
         Assert.NotEqual(default, infNFSe.DhProc);
         Assert.Equal("151689", infNFSe.NDFSe);
