@@ -866,7 +866,7 @@ namespace Unimake.DFe.Test.NFSe
                 var retornoErro = gerarNfse.ResultErro;
                 Assert.NotNull(retornoErro);
 
-                var erro = retornoErro.Erros;
+                var erro = retornoErro.Erro;
 
                 Assert.NotNull(erro);
                 Assert.False(string.IsNullOrWhiteSpace(erro.Codigo));

@@ -17783,6 +17783,130 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion Tipo Chave DFe NACIONAL
 
+    #region Tipo de reembolso, repasse ou ressarcimento NFS-e NACIONAL
+    /// <summary>
+    /// Tipo de reembolso, repasse ou ressarcimento NFS-e NACIONAL
+    /// </summary>
+    public enum TipoReembolsoRepasseRessarcimentoNFSe
+    {
+        /// <summary>
+        /// 01 - Repasse de remuneração por intermediação de imóveis a demais corretores envolvidos na operação
+        /// </summary>
+        [XmlEnum("01")]
+        RepasseRemuneracaoIntermediacaoImoveis = 1,
+
+        /// <summary>
+        /// 02 - Repasse de valores a fornecedor relativo a fornecimento intermediado por agência de turismo
+        /// </summary>
+        [XmlEnum("02")]
+        RepasseValoresFornecedorAgenciaTurismo = 2,
+
+        /// <summary>
+        /// 03 - Reembolso ou ressarcimento recebido por agência de propaganda e publicidade por serviços de produção externa
+        /// </summary>
+        [XmlEnum("03")]
+        ReembolsoRessarcimentoProducaoExterna = 3,
+
+        /// <summary>
+        /// 04 - Reembolso ou ressarcimento recebido por agência de propaganda e publicidade por serviços de mídia
+        /// </summary>
+        [XmlEnum("04")]
+        ReembolsoRessarcimentoMidia = 4,
+
+        /// <summary>
+        /// 99 - Outros reembolsos ou ressarcimentos recebidos por valores pagos relativos a operações por conta e ordem de terceiro
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99,
+    }
+    #endregion Tipo de reembolso, repasse ou ressarcimento NFS-e NACIONAL
+
+    #region Finalidade da emissão NFS-e RTC
+    /// <summary>
+    /// Indicador da finalidade da emissão de NFS-e RTC
+    /// </summary>
+    public enum FinalidadeNFSeRTC
+    {
+        /// <summary>
+        /// 0 - NFS-e regular
+        /// </summary>
+        [XmlEnum("0")]
+        Regular = 0,
+    }
+    #endregion Finalidade da emissão NFS-e RTC
+
+    #region Indicador de operação final NFS-e RTC
+    /// <summary>
+    /// Indicador de operação de uso ou consumo pessoal NFS-e RTC
+    /// </summary>
+    public enum IndicadorFinalNFSeRTC
+    {
+        /// <summary>
+        /// 0 - Não
+        /// </summary>
+        [XmlEnum("0")]
+        Nao = 0,
+
+        /// <summary>
+        /// 1 - Sim
+        /// </summary>
+        [XmlEnum("1")]
+        Sim = 1,
+    }
+    #endregion Indicador de operação final NFS-e RTC
+
+    #region Tipo de ente governamental NFS-e RTC
+    /// <summary>
+    /// Tipo de ente governamental NFS-e RTC
+    /// </summary>
+    public enum TipoEnteGovernamentalNFSeRTC
+    {
+        /// <summary>
+        /// 1 - União
+        /// </summary>
+        [XmlEnum("1")]
+        Uniao = 1,
+
+        /// <summary>
+        /// 2 - Estado
+        /// </summary>
+        [XmlEnum("2")]
+        Estado = 2,
+
+        /// <summary>
+        /// 3 - Distrito Federal
+        /// </summary>
+        [XmlEnum("3")]
+        DistritoFederal = 3,
+
+        /// <summary>
+        /// 4 - Município
+        /// </summary>
+        [XmlEnum("4")]
+        Municipio = 4,
+    }
+    #endregion Tipo de ente governamental NFS-e RTC
+
+    #region Indicador de destinatário NFS-e RTC
+    /// <summary>
+    /// Indicador de destinatário dos serviços NFS-e RTC
+    /// </summary>
+    public enum IndicadorDestinatarioNFSeRTC
+    {
+        /// <summary>
+        /// 0 - O destinatário é o próprio tomador/adquirente identificado na NFS-e
+        /// </summary>
+        [XmlEnum("0")]
+        ProprioTomadorAdquirente = 0,
+
+        /// <summary>
+        /// 1 - O destinatário não é o próprio adquirente
+        /// </summary>
+        [XmlEnum("1")]
+        DestinatarioDiferenteAdquirente = 1,
+    }
+    #endregion Indicador de destinatário NFS-e RTC
+
     #region Código de justificativa para substituição de NFS-e NACIONAL
     /// <summary>
     /// Código de justificativa para substituição de NFS-e NACIONAL
@@ -17792,31 +17916,31 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 1 -  Desenquandramento Simples NACIONAL
         /// </summary>
-        [XmlEnum("1")]
+        [XmlEnum("01")]
         DesenquadaSimplesNacional = 1,
 
         /// <summary>
         /// 2 - Enquadramento Simples NACIONAL
         /// </summary>
-        [XmlEnum("2")]
+        [XmlEnum("02")]
         EnquadraSimplesNacional = 2,
 
         /// <summary>
         /// 3 - Inclusão Retroativa Imunidade
         /// </summary>
-        [XmlEnum("3")]
+        [XmlEnum("03")]
         InclusaoRetroImunidade = 3,
 
         /// <summary>
         /// 4 - Exclusão Retroativa Imunidade
         /// </summary>
-        [XmlEnum("4")]
+        [XmlEnum("04")]
         ExclusaoRetroImunidade = 4,
 
         /// <summary>
         /// 5 - Rejeição tomador ou intermediário
         /// </summary>
-        [XmlEnum("5")]
+        [XmlEnum("05")]
         RejeicaoTomadorIntermediario = 5,
 
         /// <summary>
