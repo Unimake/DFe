@@ -361,9 +361,6 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("verProc")]
         public string VerProc { get; set; }
 
-        [XmlElement("gCompraGov")]
-        public GCompraGov GCompraGov { get; set; }
-
         [XmlIgnore]
 #if INTEROP
         public DateTime DhCont { get; set; }
@@ -385,11 +382,27 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("xJust")]
         public string XJust { get; set; }
 
+        [XmlElement("gCompraGov")]
+        public GCompraGov GCompraGov { get; set; }
+
+        [XmlElement("tpPagAnt")]
+#if INTEROP
+        public TipoPagamentoAntecipadoNFCom TpPagAnt { get; set; } = (TipoPagamentoAntecipadoNFCom)(-1);
+#else
+        public TipoPagamentoAntecipadoNFCom? TpPagAnt { get; set; }
+#endif
+
         #region ShouldSerialize
 
         public bool ShouldSerializeDhContField() => TpEmis != (TipoEmissao)1;
 
         public bool ShouldSerializeXJust() => TpEmis != (TipoEmissao)1;
+
+#if INTEROP
+        public bool ShouldSerializeTpPagAnt() => TpPagAnt != (TipoPagamentoAntecipadoNFCom)(-1);
+#else
+        public bool ShouldSerializeTpPagAnt() => TpPagAnt != null;
+#endif
 
         #endregion ShouldSerialize
     }
@@ -503,6 +516,15 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         [XmlElement("enderEmit")]
         public EnderEmit EnderEmit { get; set; }
+
+        [XmlElement("ISUFEmit")]
+        public string ISUFEmit { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeISUFEmit() => !string.IsNullOrEmpty(ISUFEmit);
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -1932,6 +1954,9 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public SimNao? IndPrecoACL { get; set; }
 #endif
 
+        [XmlElement("gPagAntecipado")]
+        public GPagAntecipado GPagAntecipado { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeCFOP() => !string.IsNullOrEmpty(CFOP);
@@ -1947,6 +1972,26 @@ namespace Unimake.Business.DFe.Xml.NF3e
 #else
         public bool ShouldSerializeIndPrecoACL() => IndPrecoACL != null;
 #endif
+
+        #endregion ShouldSerialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GPagAntecipado")]
+    [ComVisible(true)]
+#endif
+    public class GPagAntecipado
+    {
+        [XmlElement("chDFePagAnt")]
+        public string ChDFePagAnt { get; set; }
+
+        [XmlElement("nItemPagAnt")]
+        public string NItemPagAnt { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeNItemPagAnt() => !string.IsNullOrEmpty(NItemPagAnt);
 
         #endregion ShouldSerialize
     }
@@ -3116,6 +3161,22 @@ namespace Unimake.Business.DFe.Xml.NF3e
     public class GDevTrib
     {
         /// <summary>
+        /// Percentual de devolução do tributo
+        /// </summary>
+        [XmlIgnore]
+        public double? PDevTrib { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PDevTrib para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pDevTrib")]
+        public string PDevTribField
+        {
+            get => PDevTrib?.ToString("F4", CultureInfo.InvariantCulture);
+            set => PDevTrib = Converter.ToDouble(value);
+        }
+
+        /// <summary>
         /// Valor do tributo devolvido. No fornecimento de energia elétrica, água, esgoto e gás natural e em outras hipóteses
         /// definidas no regulamento
         /// </summary>
@@ -3131,6 +3192,12 @@ namespace Unimake.Business.DFe.Xml.NF3e
             get => VDevTrib.ToString("F2", CultureInfo.InvariantCulture);
             set => VDevTrib = Converter.ToDouble(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializePDevTribField() => PDevTrib != null;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -3284,6 +3351,12 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public GRed GRed { get; set; }
 
         /// <summary>
+        /// Grupo de operações em áreas incentivadas (ALC/ZFM) - CBS (alíquota zero)
+        /// </summary>
+        [XmlElement("gALCZFMCBS")]
+        public GALCZFMCBS GALCZFMCBS { get; set; }
+
+        /// <summary>
         /// Valor da CBS 
         /// </summary>
         [XmlIgnore]
@@ -3297,6 +3370,49 @@ namespace Unimake.Business.DFe.Xml.NF3e
         {
             get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VCBS = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>
+    /// Grupo de operações em áreas incentivadas (ALC/ZFM) - CBS (alíquota zero)
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GALCZFMCBS")]
+    [ComVisible(true)]
+#endif
+    public class GALCZFMCBS
+    {
+        /// <summary>
+        /// Alíquota efetiva de referência da CBS aplicável à operação fora de áreas ou regimes incentivados
+        /// </summary>
+        [XmlIgnore]
+        public double PAliqEfetRegCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqEfetRegCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pAliqEfetRegCBS")]
+        public string PAliqEfetRegCBSField
+        {
+            get => PAliqEfetRegCBS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqEfetRegCBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da CBS calculado para a operação fora de áreas ou regimes incentivado
+        /// </summary>
+        [XmlIgnore]
+        public double VTribRegCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribRegCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTribRegCBS")]
+        public string VTribRegCBSField
+        {
+            get => VTribRegCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribRegCBS = Converter.ToDouble(value);
         }
     }
 

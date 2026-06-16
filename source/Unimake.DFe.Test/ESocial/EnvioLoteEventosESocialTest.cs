@@ -243,7 +243,7 @@ namespace Unimake.DFe.Test.ESocial
                                                                     },
                                                                     InfoAgNocivo = new InfoAgNocivo1200
                                                                     {
-                                                                        GrauExp = "1"
+                                                                        GrauExp = GrauExposicaoAgentesNocivos.NaoEnsejadorAposentadoriaEspecial
                                                                     }
                                                                 }
                                                             }
@@ -270,7 +270,7 @@ namespace Unimake.DFe.Test.ESocial
                                                                     },
                                                                     InfoAgNocivo = new InfoAgNocivo1200
                                                                     {
-                                                                        GrauExp = "1"
+                                                                        GrauExp = GrauExposicaoAgentesNocivos.NaoEnsejadorAposentadoriaEspecial
                                                                     }
                                                                 }
                                                             }
@@ -406,12 +406,12 @@ namespace Unimake.DFe.Test.ESocial
                                             IndRetif = IndicativoRetificacao.ArquivoOriginal,
                                             NrRecibo = "1.0.1234567890123456789",
                                             TpAmb = tipoAmbiente,
-                                            ProcEmi = ProcEmiESocial.AppDoEmpregador,
+                                            ProcEmi = ProcEmiESocialPJ.AppDoEmpregador,
                                             VerProc = "Versao Teste"
                                         },
-                                        IdeEmpregador = new IdeEmpregador
+                                        IdeEmpregador = new IdeEmpregador2400
                                         {
-                                            TpInsc = TiposInscricao.CNPJ,
+                                            TpInsc = TipoInscricaoCNPJ.CNPJ,
                                             NrInsc = "06117473000150"
                                         },
                                         Beneficiario = new Beneficiario
@@ -421,7 +421,7 @@ namespace Unimake.DFe.Test.ESocial
                                             DtNascto = DateTime.ParseExact("1990-02-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
                                             DtInicio = DateTime.ParseExact("2025-01-01", "yyyy-MM-dd", CultureInfo.InvariantCulture),
                                             Sexo = TipoSexo.Masculino,
-                                            RacaCor = RacaCor.Branca,
+                                            RacaCor = RacaCorBeneficiario.Branca,
                                             EstCiv = EstadoCivil.Viuvo,
                                             IncFisMen = SimNaoLetra.Nao,
                                             DtIncFisMen = DateTime.Now,
@@ -487,12 +487,12 @@ namespace Unimake.DFe.Test.ESocial
                                             IndRetif = IndicativoRetificacao.ArquivoOriginal,
                                             NrRecibo = "1.0.1234567890123456789",
                                             TpAmb = tipoAmbiente,
-                                            ProcEmi = ProcEmiESocial.AppDoEmpregador,
+                                            ProcEmi = ProcEmiESocialPJ.AppDoEmpregador,
                                             VerProc = "Versao Teste"
                                         },
-                                        IdeEmpregador = new IdeEmpregador
+                                        IdeEmpregador = new IdeEmpregador2400
                                         {
-                                            TpInsc = TiposInscricao.CNPJ,
+                                            TpInsc = TipoInscricaoCNPJ.CNPJ,
                                             NrInsc = "06117473000150"
                                         },
                                         Beneficiario = new Beneficiario
@@ -502,7 +502,7 @@ namespace Unimake.DFe.Test.ESocial
                                             DtNascto = DateTime.ParseExact("1990-02-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
                                             DtInicio = DateTime.ParseExact("2025-01-01", "yyyy-MM-dd", CultureInfo.InvariantCulture),
                                             Sexo = TipoSexo.Masculino,
-                                            RacaCor = RacaCor.Branca,
+                                            RacaCor = RacaCorBeneficiario.Branca,
                                             EstCiv = EstadoCivil.Viuvo,
                                             IncFisMen = SimNaoLetra.Nao,
                                             DtIncFisMen = DateTime.Now,

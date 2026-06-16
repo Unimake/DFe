@@ -1036,7 +1036,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// {categOrig} em S-2300 = [1XX,2XX, 3XX, 731, 734, 738]); N(nos demais casos)
         /// </summary>
         [XmlElement("grauExp")]
-        public string GrauExp { get; set; }
+        public GrauExposicaoAgentesNocivos GrauExp { get; set; }
 
     }
 

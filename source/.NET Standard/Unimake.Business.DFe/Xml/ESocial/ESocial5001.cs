@@ -515,7 +515,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Código de Receita - CR da contribuição descontada do trabalhador.
         /// </summary>
         [XmlElement("tpCR")]
-        public string TpCR { get; set; }
+        public CodigoReceitaContribuicaoDescontadaTrabalhador TpCR { get; set; }
 
         /// <summary>
         /// Valor da contribuição do segurado, devida à Previdência Social,
@@ -898,13 +898,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Validação: Se indApuracao = [2], preencher com[1].
         /// </summary>
         [XmlElement("ind13")]
-        public string Ind13 { get; set; }
+        public IndicativoDecimoTerceiro Ind13 { get; set; }
 
         /// <summary>
         /// Tipo de valor que influi na apuração da devida.
         /// </summary>
         [XmlElement("tpValor")]
-        public string TpValor { get; set; }
+        public TipoValorInfoBaseCS TpValor { get; set; }
 
         /// <summary>
         /// Valor da base de cálculo, dedução ou desconto da contribuição
@@ -940,7 +940,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 122102 - Contribuição ao SENAT, descontada do transportador autônomo
         /// </summary>
         [XmlElement("tpCR")]
-        public string TpCR { get; set; }
+        public CodigoReceitaContribuicaoTerceiros TpCR { get; set; }
 
         /// <summary>
         /// Valor da contribuição social devida a Outras Entidades ou
@@ -1235,13 +1235,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Validação: Se indApuracao = [2], preencher com[1].
         /// </summary>
         [XmlElement("ind13")]
-        public string Ind13 { get; set; }
+        public IndicativoDecimoTerceiro Ind13 { get; set; }
 
         /// <summary>
         /// Tipo de valor que influi na apuração da contribuição devida.
         /// </summary>
         [XmlElement("tpVrPerRef")]
-        public string TpVrPerRef { get; set; }
+        public TipoValorPerRef TpVrPerRef { get; set; }
 
         /// <summary>
         /// Valor da base de cálculo, dedução ou desconto da contribuição

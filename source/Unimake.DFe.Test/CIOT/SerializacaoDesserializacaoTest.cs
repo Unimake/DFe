@@ -2,6 +2,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
 using Newtonsoft.Json.Linq;
+using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
@@ -52,10 +53,25 @@ namespace Unimake.DFe.Test.CIOT
         public void SerializacaoDesserializacaoDeclaracaoOperacaoTransporte(string arqXML)
         {
             var xml = SerializarDesserializar<DeclaracaoOperacaoTransporte>(arqXML);
+            Assert.Equal("0001", xml.DadosCarga.CodigoNaturezaCarga);
             Assert.Equal(2, xml.DadosCarga.ContratantesCargFrac.Count);
             Assert.Equal("12345678000195", xml.DadosCarga.ContratantesCargFrac[0]);
             Assert.Equal("98765432000110", xml.DadosCarga.ContratantesCargFrac[1]);
             Assert.Equal(2, xml.GerarXML().SelectNodes("/*[local-name()='DeclaracaoOperacaoTransporte']/*[local-name()='DadosCarga']/*[local-name()='ContratantesCargFrac']").Count);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void ValidarSchemaCodigoNaturezaCargaComUmDigito()
+        {
+            ValidarSchema(CriarXmlDeclaracaoOperacaoTransporte("1"), true);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void RejeitarCodigoNaturezaCargaComMaisDeQuatroDigitos()
+        {
+            ValidarSchema(CriarXmlDeclaracaoOperacaoTransporte("12345"), false);
         }
 
         [Theory]
@@ -193,6 +209,23 @@ namespace Unimake.DFe.Test.CIOT
 
             Assert.True(doc.InnerText == doc2.InnerText, $"XML gerado pela DLL está diferente do conteúdo do arquivo serializado.\nOriginal: {doc.InnerText}\nGerado: {doc2.InnerText}");
             return xml;
+        }
+
+        private static XmlDocument CriarXmlDeclaracaoOperacaoTransporte(string codigoNaturezaCarga)
+        {
+            var doc = new XmlDocument();
+            doc.Load(@"..\..\..\CIOT\Resources\declaracaoOperacaoTransporte.xml");
+            doc.GetElementsByTagName("CodigoNaturezaCarga")[0].InnerText = codigoNaturezaCarga;
+
+            return doc;
+        }
+
+        private static void ValidarSchema(XmlDocument doc, bool sucessoEsperado)
+        {
+            var validar = new ValidarSchema();
+            validar.Validar(doc, "CIOT.declaracaoOperacaoTransporte_v1.00.xsd", "http://www.antt.gov.br/ciot");
+
+            Assert.Equal(sucessoEsperado, validar.Success);
         }
     }
 }

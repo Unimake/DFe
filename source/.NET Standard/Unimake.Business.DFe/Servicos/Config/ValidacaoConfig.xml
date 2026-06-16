@@ -2536,6 +2536,16 @@
 					<SchemaArquivo>eventoNFGas_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evCancNFGas_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
+				<Tipo>
+					<ID>110300</ID>
+					<SchemaArquivo>eventoNFGas_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evVincPgto_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110301</ID>
+					<SchemaArquivo>eventoNFGas_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancVincPgto_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz="NFGas" versao="1.00">
@@ -3762,7 +3772,7 @@
 	</EFDReinf>
 	<!--GNRE-->
 	<GNRE>
-		<Servico tagRaiz="TConsultaConfigUf " versao="2.00">
+		<Servico tagRaiz="TConsultaConfigUf" versao="2.00">
 			<Descricao>Consulta configurações da UF para GNRE</Descricao>
 			<SchemaArquivo>consulta_config_uf_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
@@ -3774,7 +3784,7 @@
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS></TargetNS>
 		</Servico>
-		<Servico tagRaiz="TConsLote_GNRE  " versao="2.00">
+		<Servico tagRaiz="TConsLote_GNRE" versao="2.00">
 			<Descricao>Consulta Resultado do Lote da GNRE</Descricao>
 			<SchemaArquivo>lote_gnre_consulta_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
@@ -3786,12 +3796,24 @@
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS></TargetNS>
 		</Servico>
-		<Servico tagRaiz="TLote_GNRE  " versao="2.00">
+		<Servico tagRaiz="TLote_GNRE" versao="2.00">
 			<Descricao>Envio de Lote da GNRE</Descricao>
 			<SchemaArquivo>lote_gnre_v2.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagVersao>TLote_GNRE </TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS></TargetNS>
+		</Servico>
+			<Servico tagRaiz="TResultLote_GNRE" versao="2.00">
+			<Descricao>Envio de Lote da GNRE</Descricao>
+			<SchemaArquivo>lote_gnre_result_v2.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>guia</TagVersao>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<TagExtraAssinatura></TagExtraAssinatura>

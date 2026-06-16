@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eventoNFGas versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfgas">
+  <infEvento Id="ID1103013526051234567800019576001000000010000000100001">
+    <cOrgao>35</cOrgao>
+    <tpAmb>1</tpAmb>
+    <CNPJ>12345678000195</CNPJ>
+    <chNFGas>35260512345678000195760010000000100000001000</chNFGas>
+    <dhEvento>2026-05-18T10:00:00-03:00</dhEvento>
+    <tpEvento>110301</tpEvento>
+    <nSeqEvento>1</nSeqEvento>
+    <detEvento versaoEvento="1.00">
+      <evCancVincPgto>
+        <descEvento>Cancelamento da vinculacao do pagamento</descEvento>
+        <nProt>1352600000000002</nProt>
+        <nProtVincPgto>1352600000000001</nProtVincPgto>
+      </evCancVincPgto>
+    </detEvento>
+  </infEvento>
+</eventoNFGas>

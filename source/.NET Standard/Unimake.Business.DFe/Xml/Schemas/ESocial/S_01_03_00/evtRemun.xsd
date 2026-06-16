@@ -42,6 +42,7 @@
                         <xs:documentation>REGRA:REGRA_VALIDA_CODINCCP_EXC_SEGURADO</xs:documentation>
                         <xs:documentation>REGRA:REGRA_VALIDA_EMPREGADOR</xs:documentation>
                         <xs:documentation>REGRA:REGRA_VALIDA_PERIODO_APURACAO</xs:documentation>
+                        <xs:documentation>REGRA:REGRA_VALIDA_REMUN_CONTRATO</xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
                         <xs:sequence>

@@ -75,7 +75,7 @@
                       </xs:annotation>
                       <xs:simpleType>
                         <xs:restriction base="xs:string">
-                          <xs:pattern value="[0-9]{8}|[0-9]{11}|[0-9]{14}"/>
+                          <xs:pattern value="[0-9A-Z]{8}|[0-9]{11}|[0-9A-Z]{14}"/>
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
@@ -211,7 +211,7 @@
                                   </xs:element>
                                   <xs:element name="indPertIRRF" minOccurs="0" maxOccurs="1">
                                     <xs:annotation>
-                                      <xs:documentation>Indicador de pertencimento do IRRF</xs:documentation>
+										<xs:documentation>Indicador de Pertencimento do IRRF</xs:documentation>
                                     </xs:annotation>
                                     <xs:simpleType>
                                       <xs:restriction base="xs:string">
@@ -253,7 +253,6 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:minLength value="10"/>
                                               <xs:maxLength value="13"/>
                                               <xs:whiteSpace value="preserve"/>
                                             </xs:restriction>
@@ -265,7 +264,6 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:minLength value="10"/>
                                               <xs:maxLength value="13"/>
                                               <xs:whiteSpace value="preserve"/>
                                             </xs:restriction>
@@ -277,7 +275,6 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:minLength value="6"/>
                                               <xs:maxLength value="60"/>
                                             </xs:restriction>
                                           </xs:simpleType>
@@ -297,7 +294,7 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:pattern value="\d{14}"/>
+                                              <xs:pattern value="[0-9A-Z]{14}"/>
                                             </xs:restriction>
                                           </xs:simpleType>
                                         </xs:element>
@@ -331,7 +328,6 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:minLength value="10"/>
                                               <xs:maxLength value="13"/>
                                               <xs:whiteSpace value="preserve"/>
                                             </xs:restriction>
@@ -343,7 +339,6 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:minLength value="6"/>
                                               <xs:maxLength value="60"/>
                                             </xs:restriction>
                                           </xs:simpleType>
@@ -373,7 +368,7 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:pattern value="\d{14}"/>
+                                              <xs:pattern value="[0-9A-Z]{14}"/>
                                             </xs:restriction>
                                           </xs:simpleType>
                                         </xs:element>
@@ -508,7 +503,7 @@
                                   </xs:element>
                                   <xs:element name="indPertIRRF" minOccurs="0" maxOccurs="1">
                                     <xs:annotation>
-                                      <xs:documentation>Indicador de pertencimento do IRRF</xs:documentation>
+											<xs:documentation>Indicador de Pertencimento do IRRF</xs:documentation>
                                     </xs:annotation>
                                     <xs:simpleType>
                                       <xs:restriction base="xs:string">
@@ -550,7 +545,6 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:minLength value="10"/>
                                               <xs:maxLength value="13"/>
                                               <xs:whiteSpace value="preserve"/>
                                             </xs:restriction>
@@ -562,7 +556,6 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:minLength value="10"/>
                                               <xs:maxLength value="13"/>
                                               <xs:whiteSpace value="preserve"/>
                                             </xs:restriction>
@@ -574,7 +567,6 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:minLength value="6"/>
                                               <xs:maxLength value="60"/>
                                             </xs:restriction>
                                           </xs:simpleType>
@@ -594,7 +586,7 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:pattern value="\d{14}"/>
+                                              <xs:pattern value="[0-9A-Z]{14}"/>
                                             </xs:restriction>
                                           </xs:simpleType>
                                         </xs:element>
@@ -628,7 +620,6 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:minLength value="10"/>
                                               <xs:maxLength value="13"/>
                                               <xs:whiteSpace value="preserve"/>
                                             </xs:restriction>
@@ -640,7 +631,6 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:minLength value="6"/>
                                               <xs:maxLength value="60"/>
                                             </xs:restriction>
                                           </xs:simpleType>
@@ -670,7 +660,7 @@
                                           </xs:annotation>
                                           <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                              <xs:pattern value="\d{14}"/>
+                                              <xs:pattern value="[0-9A-Z]{14}"/>
                                             </xs:restriction>
                                           </xs:simpleType>
                                         </xs:element>
@@ -762,7 +752,7 @@
               <xs:simpleType>
                 <xs:restriction base="xs:ID">
                   <xs:length value="36"/>
-                  <xs:pattern value="I{1}D{1}[0-9]{34}"/>
+                  <xs:pattern value="I{1}D{1}[0-9]{1}[0-9A-Z]{12}[0-9]{21}"/>
                 </xs:restriction>
               </xs:simpleType>
             </xs:attribute>

@@ -546,7 +546,7 @@
                                                                                                     <xs:documentation>Se {sucessaoVinc/tpInsc}(./tpInsc) = [6], deve possuir 12 (doze) algarismos.</xs:documentation>
                                                                                                 </xs:annotation>
                                                                                                 <xs:restriction base="xs:string">
-                                                                                                    <xs:pattern value="\d{8,14}" />
+                                                                                                    <xs:pattern value="\d{8,14}|[A-Z0-9]{12}\d{2}" />
                                                                                                 </xs:restriction>
                                                                                             </xs:simpleType>
                                                                                         </xs:element>
@@ -568,7 +568,7 @@
                                                                             <xs:element name="infoDeslig" minOccurs="0">
                                                                                 <xs:annotation>
                                                                                     <xs:documentation>Informações do desligamento.</xs:documentation>
-                                                                                    <xs:documentation>CONDICAO_GRUPO: O (se {infoContr/tpContr}(2500_ideTrab_infoContr_tpContr) for diferente [8]); OC (nos demais casos)</xs:documentation>
+                                                                                    <xs:documentation>CONDICAO_GRUPO: O (se {infoContr/tpContr}(2500_ideTrab_infoContr_tpContr) for diferente de [8]); OC (nos demais casos)</xs:documentation>
                                                                                 </xs:annotation>
                                                                                 <xs:complexType>
                                                                                     <xs:sequence>
@@ -793,7 +793,7 @@
                                                                             <xs:element name="compFim" type="TS_periodo_mensal">
                                                                                 <xs:annotation>
                                                                                     <xs:documentation>Competência final a que se refere o processo ou conciliação, no formato AAAA-MM.</xs:documentation>
-                                                                                    <xs:documentation>Validação: Deve ser igual ou posterior a {compIni}(./compIni). Se for posterior ao mês/ano de {dtSent}(2500_infoProcesso_dadosCompl_infoProcJud_dtSent) ou {dtCCP}(2500_infoProcesso_dadosCompl_infoCCP_dtCCP), retornar alerta.</xs:documentation>
+                                                                                    <xs:documentation>Validação: Deve ser igual ou posterior a {compIni}(./compIni) e igual ou anterior ao mês/ano da data atual. Se for posterior ao mês/ano de {dtSent}(2500_infoProcesso_dadosCompl_infoProcJud_dtSent) ou {dtCCP}(2500_infoProcesso_dadosCompl_infoCCP_dtCCP), retornar alerta.</xs:documentation>
                                                                                 </xs:annotation>
                                                                             </xs:element>
                                                                             <xs:element name="indReperc">
@@ -929,7 +929,8 @@
                                                                                                     <xs:element name="vrBcFGTSSefip" type="TS_valorMonetario_positivo" minOccurs="0">
                                                                                                         <xs:annotation>
                                                                                                             <xs:documentation>Valor da base de cálculo de FGTS declarada apenas em SEFIP (não informada no eSocial) e ainda não recolhida.</xs:documentation>
-                                                                                                            <xs:documentation>Validação: Deve ser maior que 0 (zero).</xs:documentation>
+                                                                                                            <xs:documentation>Validação: Somente pode ser informado se {perRef}(../perRef) for anterior ao início do FGTS Digital.</xs:documentation>
+                                                                                                            <xs:documentation>Deve ser maior que 0 (zero).</xs:documentation>
                                                                                                         </xs:annotation>
                                                                                                     </xs:element>
                                                                                                     <xs:element name="vrBcFGTSDecAnt" type="TS_valorMonetario_positivo" minOccurs="0">

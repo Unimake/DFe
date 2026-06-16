@@ -247,6 +247,16 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
         }
 
+        [XmlElement("tpEntLig")]
+#if INTEROP
+        public TipoEntidadeLigada TpEntLig { get; set; } = (TipoEntidadeLigada)(-1);
+#else
+        public TipoEntidadeLigada? TpEntLig { get; set; }
+#endif
+
+        [XmlElement("cnpjLig")]
+        public string CnpjLig { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeDtHoraRecebimentoField() => DtHoraRecebimento > DateTime.MinValue;
@@ -260,6 +270,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSerializeIniValidField() => IniValid > DateTime.MinValue;
 
         public bool ShouldSerializeFimValidField() => FimValid > DateTime.MinValue;
+
+        public bool ShouldSerializeCnpjLig() => !string.IsNullOrEmpty(CnpjLig);
 
         #endregion
 

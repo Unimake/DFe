@@ -157,13 +157,13 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// Tipo de emissão da NFS-e.
         /// </summary>
         [XmlElement("tpEmis")]
-        public int TpEmis { get; set; }
+        public TipoEmissaoNFSe TpEmis { get; set; }
 
         /// <summary>
         /// Processo de emissão: 1=Aplicativo do contribuinte.
         /// </summary>
         [XmlElement("procEmi")]
-        public int ProcEmi { get; set; }
+        public ProcessoEmissaoNFSe ProcEmi { get; set; }
 
         /// <summary>
         /// Situação (status) da NFS-e.
@@ -209,6 +209,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// </summary>
         [XmlElement("valores", Type = typeof(ValoresInfNFSe))]
         public ValoresInfNFSe Valores { get; set; }
+
+        /// <summary>
+        /// Outras informações (uso da Administração Tributária Municipal).
+        /// </summary>
+        [XmlElement("xOutInf")]
+        public string XOutInf { get; set; }
 
         /// <summary>
         /// Informações IBS/CBS (quando aplicável).
@@ -337,7 +343,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         public bool ShouldSerializeXLocIncid() => !string.IsNullOrWhiteSpace(XLocIncid);
         public bool ShouldSerializeXTribMun() => !string.IsNullOrWhiteSpace(XTribMun);
         public bool ShouldSerializeXNBS() => !string.IsNullOrWhiteSpace(XNBS);
-        public bool ShouldSerializeProcEmi() => ProcEmi > 0;
+        public bool ShouldSerializeProcEmi() => (int)ProcEmi > 0;
+        public bool ShouldSerializeXOutInf() => !string.IsNullOrWhiteSpace(XOutInf);
         #endregion
     }
 
@@ -514,7 +521,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// Tipo Benefício Municipal.
         /// </summary>
         [XmlElement("tpBM")]
-        public int TpBM { get; set; }
+        public TipoBeneficioMunicipalNFSe TpBM { get; set; }
 
         [XmlIgnore]
         public double VCalcBM { get; set; }
@@ -594,17 +601,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
             set => VLiq = Converter.ToDouble(value);
         }
 
-        /// <summary>
-        /// Outras informações (uso da Administração Tributária Municipal).
-        /// </summary>
-        [XmlElement("xOutInf")]
-        public string XOutInf { get; set; }
-
         #region Should Serialize
-        public bool ShouldSerializeTpBM() => TpBM > 0;
+        public bool ShouldSerializeTpBM() => (int)TpBM > 0;
         public bool ShouldSerializeVCalcBMField() => VCalcBM > 0;
         public bool ShouldSerializePAliqAplicField() => PAliqAplic > 0;
-        public bool ShouldSerializeXOutInf() => !string.IsNullOrWhiteSpace(XOutInf);
         #endregion
     }
 

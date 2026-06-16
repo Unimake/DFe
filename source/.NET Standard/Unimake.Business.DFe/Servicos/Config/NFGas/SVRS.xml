@@ -43,6 +43,16 @@
 					<SchemaArquivo>eventoNFGas_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evCancNFGas_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
+				<Tipo>
+					<ID>110300</ID>
+					<SchemaArquivo>eventoNFGas_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evVincPgto_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110301</ID>
+					<SchemaArquivo>eventoNFGas_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancVincPgto_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
 			</SchemasEspecificos>
 			<TagAssinatura>eventoNFGas</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
