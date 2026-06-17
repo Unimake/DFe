@@ -20,6 +20,45 @@ namespace Unimake.Business.DFe.Xml.UMessenger
     {
         [XmlElement("Mensagem")]
         public List<retUMessengerMensagem> Mensagem { get; set; } = new List<retUMessengerMensagem>();
+
+        [XmlIgnore]
+        public string MessageId
+        {
+            get => PrimeiraMensagem?.MessageID;
+            set => ObterOuCriarPrimeiraMensagem().MessageID = value;
+        }
+
+        [XmlIgnore]
+        public string LocalId
+        {
+            get => PrimeiraMensagem?.LocalId;
+            set => ObterOuCriarPrimeiraMensagem().LocalId = value;
+        }
+
+        [XmlIgnore]
+        public string RawResponse
+        {
+            get => PrimeiraMensagem?.RawResponse;
+            set => ObterOuCriarPrimeiraMensagem().RawResponse = value;
+        }
+
+        [XmlIgnore]
+        private retUMessengerMensagem PrimeiraMensagem => Mensagem != null && Mensagem.Count > 0 ? Mensagem[0] : null;
+
+        private retUMessengerMensagem ObterOuCriarPrimeiraMensagem()
+        {
+            if (Mensagem == null)
+            {
+                Mensagem = new List<retUMessengerMensagem>();
+            }
+
+            if (Mensagem.Count == 0)
+            {
+                Mensagem.Add(new retUMessengerMensagem());
+            }
+
+            return Mensagem[0];
+        }
     }
 
 #if INTEROP
@@ -41,6 +80,12 @@ namespace Unimake.Business.DFe.Xml.UMessenger
 
         [XmlElement("messageID")]
         public string MessageID { get; set; }
+
+        [XmlIgnore]
+        public string LocalId { get; set; }
+
+        [XmlIgnore]
+        public string RawResponse { get; set; }
 
         [XmlElement("TraceId")]
         public string TraceId { get; set; }

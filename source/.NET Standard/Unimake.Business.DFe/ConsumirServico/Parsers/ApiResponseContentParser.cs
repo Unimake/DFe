@@ -119,6 +119,11 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
                     return ParseDareReceitas(context.ResponseContent);
                 }
 
+                if (context.Config.Servico == Servico.UMessengerPublish)
+                {
+                    return CriarXmlRetornoUMessenger(ref context);
+                }
+
                 var xml = new XmlDocument();
                 xml.LoadXml(context.ResponseContent);
                 return xml;
