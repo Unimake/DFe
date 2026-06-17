@@ -10,6 +10,7 @@ using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.DARE;
+using Unimake.Business.DFe.Xml.EBoleto;
 using Unimake.Business.DFe.Xml.PIX;
 using Unimake.Business.DFe.Xml.UMessenger;
 
@@ -111,6 +112,11 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
                     return CriarXmlRetornoUMessenger(ref context);
                 }
 
+                if (EhServicoEBoleto(context.Config.Servico))
+                {
+                    return CriarXmlRetornoEBoleto(ref context);
+                }
+
                 if (EhServicoPIX(context.Config.Servico))
                 {
                     return CriarXmlRetornoPIX(ref context);
@@ -128,6 +134,11 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
                 if (context.Config.Servico == Servico.UMessengerPublish)
                 {
                     return CriarXmlRetornoUMessenger(ref context);
+                }
+
+                if (EhServicoEBoleto(context.Config.Servico))
+                {
+                    return CriarXmlRetornoEBoleto(ref context);
                 }
 
                 if (EhServicoPIX(context.Config.Servico))
@@ -243,6 +254,155 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
             var ret = new retUMessengerPublish();
             ret.Mensagem.Add(mensagem);
             return ret.GerarXML();
+        }
+
+        private bool EhServicoEBoleto(Servico servico)
+        {
+            switch (servico)
+            {
+                case Servico.EBoletoRegistrar:
+                case Servico.EBoletoCancelar:
+                case Servico.EBoletoConsultar:
+                case Servico.EBoletoAlterarVencto:
+                case Servico.EBoletoEnviarInstrucao:
+                case Servico.EBoletoInformarPagt:
+                    return true;
+            }
+
+            return false;
+        }
+
+        private XmlDocument CriarXmlRetornoEBoleto(ref ApiResponseContext context)
+        {
+            switch (context.Config.Servico)
+            {
+                case Servico.EBoletoRegistrar:
+                    return CriarXmlRetornoBoletoRegistrar(ref context);
+
+                case Servico.EBoletoConsultar:
+                    return CriarXmlRetornoBoletoConsultar(ref context);
+
+                case Servico.EBoletoCancelar:
+                    return CriarXmlRetornoBoletoCancelar(ref context);
+
+                case Servico.EBoletoAlterarVencto:
+                    return CriarXmlRetornoBoletoAlterarVencto(ref context);
+
+                case Servico.EBoletoEnviarInstrucao:
+                    return CriarXmlRetornoBoletoEnviarInstrucao(ref context);
+
+                case Servico.EBoletoInformarPagt:
+                    return CriarXmlRetornoBoletoInformarPagto(ref context);
+            }
+
+            return _xmlSupport.StringToSerializedXml(context.ResponseContent);
+        }
+
+        private XmlDocument CriarXmlRetornoBoletoRegistrar(ref ApiResponseContext context)
+        {
+            var root = TryParseJsonObject(context.ResponseContent);
+            var retorno = new retBoletoRegistrar
+            {
+                DLLVersao = Info.VersaoDLL,
+                QRCodeContent = new retBoletoRegistrarQRCodeContent()
+            };
+
+            if (!context.Response.IsSuccessStatusCode)
+            {
+                retorno.Status = 999;
+                retorno.Motivo = ExtrairMotivoErroApi(root, "Falha ao registrar boleto.");
+                return retorno.GerarXML();
+            }
+
+            retorno.Status = ResolverStatusEBoleto(root, 0, 1);
+            retorno.Motivo = ResolverMotivoEBoleto(root, retorno.Status, "Boleto registrado", "Falha ao registrar boleto.");
+            retorno.CodigoBarraNumerico = ObterPrimeiroValorTexto(root, "codigoBarraNumerico", "codigoBarrasNumerico", "barcodeNumeric");
+            retorno.NumeroNoBanco = ObterPrimeiroValorTexto(root, "numeroNoBanco");
+            retorno.LinhaDigitavel = ObterPrimeiroValorTexto(root, "linhaDigitavel");
+            retorno.PdfContentSuccess = ObterPrimeiroValorBooleano(root, "pdfContentSuccess", "successPdf")
+                ?? ObterPrimeiroValorBooleanoPorCaminhos(root, new[] { "pdfContent", "success" })
+                ?? false;
+            retorno.PdfContentMessage = ObterPrimeiroValorTexto(root, "pdfContentMessage")
+                ?? ObterPrimeiroValorTextoPorCaminhos(root, new[] { "pdfContent", "message" });
+            retorno.PdfContentBase64 = ObterPrimeiroValorTexto(root, "pdfContentBase64")
+                ?? ObterPrimeiroValorTextoPorCaminhos(root, new[] { "pdfContent", "content" }, new[] { "pdfContent", "base64" });
+            retorno.PdfPath = ObterPrimeiroValorTexto(root, "pdfPath", "caminhoPdf");
+            retorno.QRCodeContent.Image = ObterPrimeiroValorTextoPorCaminhos(root, new[] { "qrCodeContent", "image" })
+                ?? ObterPrimeiroValorTexto(root, "qrCodeImage");
+            retorno.QRCodeContent.Success = ObterPrimeiroValorBooleanoPorCaminhos(root, new[] { "qrCodeContent", "success" })
+                ?? ObterPrimeiroValorBooleano(root, "qrCodeSuccess")
+                ?? false;
+            retorno.QRCodeContent.Text = ObterPrimeiroValorTextoPorCaminhos(root, new[] { "qrCodeContent", "text" })
+                ?? ObterPrimeiroValorTexto(root, "qrCodeText", "pixCopiaECola");
+
+            return retorno.GerarXML();
+        }
+
+        private XmlDocument CriarXmlRetornoBoletoConsultar(ref ApiResponseContext context)
+        {
+            var root = TryParseJsonObject(context.ResponseContent);
+            var retorno = new retBoletoConsultar
+            {
+                DLLVersao = Info.VersaoDLL
+            };
+
+            if (!context.Response.IsSuccessStatusCode)
+            {
+                retorno.Status = 999;
+                retorno.Motivo = ExtrairMotivoErroApi(root, "Falha ao consultar boleto.");
+                return retorno.GerarXML();
+            }
+
+            retorno.BoletoResponse.AddRange(CriarListaItensEBoleto(root));
+            retorno.Status = ResolverStatusEBoleto(root, 0, 1);
+            retorno.Motivo = ResolverMotivoEBoleto(root,
+                retorno.Status,
+                retorno.BoletoResponse.Count > 0 ? "Boletos encontrados" : "Consulta realizada com sucesso",
+                "Falha ao consultar boleto.");
+
+            return retorno.GerarXML();
+        }
+
+        private XmlDocument CriarXmlRetornoBoletoCancelar(ref ApiResponseContext context)
+        {
+            return CriarXmlRetornoEBoletoBasico<retBoletoCancelar>(ref context, "Boleto cancelado com sucesso", "Falha ao cancelar boleto.", 0, 1);
+        }
+
+        private XmlDocument CriarXmlRetornoBoletoAlterarVencto(ref ApiResponseContext context)
+        {
+            return CriarXmlRetornoEBoletoBasico<retBoletoAlterarVencto>(ref context, "Vencimento alterado com sucesso", "Falha ao alterar vencimento do boleto.", 0, 1);
+        }
+
+        private XmlDocument CriarXmlRetornoBoletoEnviarInstrucao(ref ApiResponseContext context)
+        {
+            return CriarXmlRetornoEBoletoBasico<retBoletoEnviarInstrucao>(ref context, "Instruções do boleto enviado com sucesso", "Falha ao enviar instruções do boleto.", 0, 1);
+        }
+
+        private XmlDocument CriarXmlRetornoBoletoInformarPagto(ref ApiResponseContext context)
+        {
+            return CriarXmlRetornoEBoletoBasico<retBoletoInformarPagto>(ref context, "Boleto foi marcado como pago com sucesso", "Falha ao informar pagamento do boleto.", 0, 1);
+        }
+
+        private XmlDocument CriarXmlRetornoEBoletoBasico<TRetorno>(ref ApiResponseContext context, string motivoSucesso, string motivoErro, int statusSucesso, int statusErroSemHttp)
+            where TRetorno : retEBoletoRetornoBasico, new()
+        {
+            var root = TryParseJsonObject(context.ResponseContent);
+            var retorno = new TRetorno
+            {
+                DLLVersao = Info.VersaoDLL
+            };
+
+            if (!context.Response.IsSuccessStatusCode)
+            {
+                retorno.Status = 999;
+                retorno.Motivo = ExtrairMotivoErroApi(root, motivoErro);
+                return retorno.GerarXML();
+            }
+
+            retorno.Status = ResolverStatusEBoleto(root, statusSucesso, statusErroSemHttp);
+            retorno.Motivo = ResolverMotivoEBoleto(root, retorno.Status, motivoSucesso, motivoErro);
+
+            return retorno.GerarXML();
         }
 
         private bool EhServicoPIX(Servico servico)
@@ -523,6 +683,212 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
             return retorno;
         }
 
+        private int ResolverStatusEBoleto(JObject root, int statusSucesso, int statusErroSemHttp)
+        {
+            var statusTexto = ObterValorTextoDireto(root, "status");
+            if (int.TryParse(statusTexto, out var statusNumerico))
+            {
+                return statusNumerico;
+            }
+
+            var success = ObterValorBooleanoDireto(root, "success", "sucesso");
+            if (success.HasValue)
+            {
+                return success.Value ? statusSucesso : statusErroSemHttp;
+            }
+
+            return statusSucesso;
+        }
+
+        private string ResolverMotivoEBoleto(JObject root, int status, string motivoSucesso, string motivoErro)
+        {
+            var motivoExplicito = ObterValorTextoDireto(root, "motivo", "message", "mensagem", "detail");
+            if (!string.IsNullOrWhiteSpace(motivoExplicito))
+            {
+                return motivoExplicito;
+            }
+
+            return status == 999 || status > 0
+                ? motivoErro.TrimEnd('.')
+                : motivoSucesso;
+        }
+
+        private List<retBoletoConsultarItem> CriarListaItensEBoleto(JObject root)
+        {
+            var lista = new List<retBoletoConsultarItem>();
+            var boletosToken = LocalizarTokenPorNome(root, "boletos", "boletoResponse", "items", "data");
+
+            if (boletosToken is JArray boletosArray)
+            {
+                foreach (var item in boletosArray)
+                {
+                    var retornoItem = CriarItemEBoleto(item);
+                    if (retornoItem != null)
+                    {
+                        lista.Add(retornoItem);
+                    }
+                }
+
+                return lista;
+            }
+
+            var itemUnico = CriarItemEBoleto(root);
+            if (itemUnico != null)
+            {
+                lista.Add(itemUnico);
+            }
+
+            return lista;
+        }
+
+        private retBoletoConsultarItem CriarItemEBoleto(JToken token)
+        {
+            if (token == null || token.Type == JTokenType.Null)
+            {
+                return null;
+            }
+
+            var item = new retBoletoConsultarItem
+            {
+                CodigoBarras = ObterPrimeiroValorTexto(token, "codigoBarras", "codigoBarra", "barcode"),
+                DataEmissao = ObterPrimeiroValorTexto(token, "dataEmissao", "emissao"),
+                DataLiquidacao = ObterPrimeiroValorTexto(token, "dataLiquidacao"),
+                DataVencimento = ObterPrimeiroValorTexto(token, "dataVencimento", "vencimento"),
+                NumeroNaEmpresa = ObterPrimeiroValorTexto(token, "numeroNaEmpresa", "numeroEmpresa", "seuNumero"),
+                NumeroNoBanco = ObterPrimeiroValorTexto(token, "numeroNoBanco", "nossoNumero"),
+                Pagador = CriarPagadorEBoleto(LocalizarTokenPorNome(token, "pagador", "payer")),
+                PdfContent = CriarPdfContentEBoleto(LocalizarTokenPorNome(token, "pdfContent")),
+                QrCodeContent = CriarQrCodeContentEBoleto(LocalizarTokenPorNome(token, "qrCodeContent")),
+                Situacao = ObterPrimeiroValorInteiro(token, "situacao", "statusBoleto").GetValueOrDefault(),
+                TipoLiquidacao = ObterPrimeiroValorInteiro(token, "tipoLiquidacao").GetValueOrDefault(),
+                Valor = ObterPrimeiroValorTexto(token, "valor"),
+                ValorAbatimento = ObterPrimeiroValorTexto(token, "valorAbatimento"),
+                ValorDesconto = ObterPrimeiroValorTexto(token, "valorDesconto"),
+                ValorJuros = ObterPrimeiroValorTexto(token, "valorJuros"),
+                ValorLiquidado = ObterPrimeiroValorTexto(token, "valorLiquidado"),
+                ValorMulta = ObterPrimeiroValorTexto(token, "valorMulta")
+            };
+
+            if (string.IsNullOrWhiteSpace(item.NumeroNoBanco) &&
+                string.IsNullOrWhiteSpace(item.NumeroNaEmpresa) &&
+                string.IsNullOrWhiteSpace(item.CodigoBarras) &&
+                string.IsNullOrWhiteSpace(item.Valor) &&
+                string.IsNullOrWhiteSpace(item.DataVencimento) &&
+                item.Pagador == null &&
+                item.PdfContent == null &&
+                item.QrCodeContent == null)
+            {
+                return null;
+            }
+
+            return item;
+        }
+
+        private retBoletoConsultarPagador CriarPagadorEBoleto(JToken token)
+        {
+            if (token == null || token.Type == JTokenType.Null)
+            {
+                return null;
+            }
+
+            var retorno = new retBoletoConsultarPagador
+            {
+                Codigo = ObterPrimeiroValorTexto(token, "codigo"),
+                Nome = ObterPrimeiroValorTexto(token, "nome", "name"),
+                Inscricao = ObterPrimeiroValorTexto(token, "inscricao", "cpf", "cnpj", "documento"),
+                Telefone = ObterPrimeiroValorTexto(token, "telefone", "phone"),
+                Email = ObterPrimeiroValorTexto(token, "email", "mail"),
+                TipoInscricao = ObterPrimeiroValorInteiro(token, "tipoInscricao").GetValueOrDefault(),
+                Endereco = CriarEnderecoEBoleto(LocalizarTokenPorNome(token, "endereco", "address"))
+            };
+
+            if (string.IsNullOrWhiteSpace(retorno.Nome) &&
+                string.IsNullOrWhiteSpace(retorno.Inscricao) &&
+                string.IsNullOrWhiteSpace(retorno.Email) &&
+                retorno.Endereco == null)
+            {
+                return null;
+            }
+
+            return retorno;
+        }
+
+        private retBoletoConsultarEndereco CriarEnderecoEBoleto(JToken token)
+        {
+            if (token == null || token.Type == JTokenType.Null)
+            {
+                return null;
+            }
+
+            var retorno = new retBoletoConsultarEndereco
+            {
+                Logradouro = ObterPrimeiroValorTexto(token, "logradouro", "street"),
+                Numero = ObterPrimeiroValorTexto(token, "numero", "number"),
+                Complemento = ObterPrimeiroValorTexto(token, "complemento", "complement"),
+                Bairro = ObterPrimeiroValorTexto(token, "bairro", "district"),
+                Cidade = ObterPrimeiroValorTexto(token, "cidade", "city"),
+                UF = ObterPrimeiroValorTexto(token, "uf", "state"),
+                CEP = ObterPrimeiroValorTexto(token, "cep", "zipCode")
+            };
+
+            if (string.IsNullOrWhiteSpace(retorno.Logradouro) &&
+                string.IsNullOrWhiteSpace(retorno.Cidade) &&
+                string.IsNullOrWhiteSpace(retorno.CEP))
+            {
+                return null;
+            }
+
+            return retorno;
+        }
+
+        private retBoletoConsultarPdfContent CriarPdfContentEBoleto(JToken token)
+        {
+            if (token == null || token.Type == JTokenType.Null)
+            {
+                return null;
+            }
+
+            var retorno = new retBoletoConsultarPdfContent
+            {
+                Content = ObterPrimeiroValorTexto(token, "content", "base64"),
+                Success = ObterPrimeiroValorBooleano(token, "success").GetValueOrDefault(),
+                Message = ObterPrimeiroValorTexto(token, "message", "mensagem")
+            };
+
+            if (string.IsNullOrWhiteSpace(retorno.Content) &&
+                string.IsNullOrWhiteSpace(retorno.Message) &&
+                !retorno.Success)
+            {
+                return null;
+            }
+
+            return retorno;
+        }
+
+        private retBoletoConsultarQrCodeContent CriarQrCodeContentEBoleto(JToken token)
+        {
+            if (token == null || token.Type == JTokenType.Null)
+            {
+                return null;
+            }
+
+            var retorno = new retBoletoConsultarQrCodeContent
+            {
+                Text = ObterPrimeiroValorTexto(token, "text", "texto"),
+                Image = ObterPrimeiroValorTexto(token, "image", "imagem"),
+                Success = ObterPrimeiroValorBooleano(token, "success").GetValueOrDefault()
+            };
+
+            if (string.IsNullOrWhiteSpace(retorno.Text) &&
+                string.IsNullOrWhiteSpace(retorno.Image) &&
+                !retorno.Success)
+            {
+                return null;
+            }
+
+            return retorno;
+        }
+
         private string ExtrairMotivoErroApi(JObject root, string mensagemPadrao)
         {
             var mensagemErro = ExtrairPrimeiraMensagemErro(root["errors"]);
@@ -573,6 +939,87 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
             return null;
         }
 
+        private int? ObterPrimeiroValorInteiro(JToken token, params string[] nomes)
+        {
+            var valor = ObterPrimeiroValorTexto(token, nomes);
+            if (int.TryParse(valor, out var retorno))
+            {
+                return retorno;
+            }
+
+            return null;
+        }
+
+        private string ObterValorTextoDireto(JObject token, params string[] nomes)
+        {
+            if (token == null || nomes == null)
+            {
+                return null;
+            }
+
+            foreach (var nome in nomes)
+            {
+                var valor = ObterFilhoPorNome(token, nome);
+                if (valor == null || valor.Type == JTokenType.Null)
+                {
+                    continue;
+                }
+
+                if (valor.Type == JTokenType.String ||
+                    valor.Type == JTokenType.Integer ||
+                    valor.Type == JTokenType.Float ||
+                    valor.Type == JTokenType.Boolean ||
+                    valor.Type == JTokenType.Date)
+                {
+                    return valor.ToString();
+                }
+            }
+
+            return null;
+        }
+
+        private bool? ObterPrimeiroValorBooleano(JToken token, params string[] nomes)
+        {
+            var valor = ObterPrimeiroValorTexto(token, nomes);
+            if (bool.TryParse(valor, out var retorno))
+            {
+                return retorno;
+            }
+
+            if (string.Equals(valor, "1", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            if (string.Equals(valor, "0", StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
+            return null;
+        }
+
+        private bool? ObterValorBooleanoDireto(JObject token, params string[] nomes)
+        {
+            var valor = ObterValorTextoDireto(token, nomes);
+            if (bool.TryParse(valor, out var retorno))
+            {
+                return retorno;
+            }
+
+            if (string.Equals(valor, "1", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            if (string.Equals(valor, "0", StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
+            return null;
+        }
+
         private string ObterPrimeiroValorTextoPorCaminhos(JToken token, params string[][] caminhos)
         {
             if (caminhos == null)
@@ -596,6 +1043,27 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
                 {
                     return encontrado.ToString();
                 }
+            }
+
+            return null;
+        }
+
+        private bool? ObterPrimeiroValorBooleanoPorCaminhos(JToken token, params string[][] caminhos)
+        {
+            var valor = ObterPrimeiroValorTextoPorCaminhos(token, caminhos);
+            if (bool.TryParse(valor, out var retorno))
+            {
+                return retorno;
+            }
+
+            if (string.Equals(valor, "1", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            if (string.Equals(valor, "0", StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
             }
 
             return null;

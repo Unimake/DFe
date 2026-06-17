@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BoletoEnviarInstrucaoResponse>
+  <Status>0</Status>
+  <Motivo>Instruções do boleto enviado com sucesso</Motivo>
+  <DLLVersao>20260617.1001</DLLVersao>
+</BoletoEnviarInstrucaoResponse>

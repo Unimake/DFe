@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BoletoInformarPagtoResponse>
+  <Status>1</Status>
+  <Motivo>Não foi possível marcar o boleto como pago. Tente novamente mais tarde. (Status Code: 202)</Motivo>
+  <DLLVersao>20260617.1001</DLLVersao>
+</BoletoInformarPagtoResponse>
