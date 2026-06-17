@@ -236,6 +236,11 @@ namespace Unimake.Business.DFe.Servicos
         public string RetornoWSString { get; set; }
 
         /// <summary>
+        /// Conteúdo bruto retornado pelo serviço antes da transformação para XML.
+        /// </summary>
+        public string RetornoWSRawString { get; set; }
+
+        /// <summary>
         /// XML retornado pelo Web-service
         /// </summary>
         public XmlDocument RetornoWSXML { get; set; }
@@ -272,6 +277,7 @@ namespace Unimake.Business.DFe.Servicos
                 consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
 
                 RetornoWSString = consumirAPI.RetornoServicoString;
+                RetornoWSRawString = consumirAPI.RetornoServicoRawString;
                 RetornoWSXML = consumirAPI.RetornoServicoXML;
                 HttpStatusCode = consumirAPI.HttpStatusCode;
 

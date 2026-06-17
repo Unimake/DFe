@@ -39,6 +39,7 @@ namespace Unimake.Business.DFe
                 try
                 {
                     responseContent = httpResponse.Content.ReadAsStringAsync().Result;
+                    RetornoServicoRawString = responseContent;
                 }
                 catch (WebException ex)
                 {

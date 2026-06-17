@@ -155,6 +155,7 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
             consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
 
             RetornoWSString = consumirAPI.RetornoServicoString;
+            RetornoWSRawString = consumirAPI.RetornoServicoRawString;
             RetornoWSXML = consumirAPI.RetornoServicoXML;
             RetornoWSStream = consumirAPI.RetornoServicoStream;
 

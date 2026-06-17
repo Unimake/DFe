@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
@@ -149,7 +150,7 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
                 Configuracoes.HttpContent = GerarJSONTextMessage(msgData);
                 base.Executar();
 
-                var retorno = XMLUtility.Deserializar<retUMessengerPublish>(RetornoWSXML);
+                var retorno = CriarRetornoCompativel(RetornoWSXML, RetornoWSRawString);
                 var mensagem = retorno?.Mensagem != null && retorno.Mensagem.Count > 0
                     ? retorno.Mensagem[0]
                     : new retUMessengerMensagem();
@@ -196,6 +197,34 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
             }
 
             throw new Exception("InstanceName não informado. Informe no XML (tag InstanceName) ou em Configuracao.UMessengerInstanceName.");
+        }
+
+        private static retUMessengerPublish CriarRetornoCompativel(XmlDocument retornoXml, string rawResponse)
+        {
+            var retorno = retornoXml != null
+                ? XMLUtility.Deserializar<retUMessengerPublish>(retornoXml)
+                : new retUMessengerPublish();
+
+            retorno.RawResponse = rawResponse;
+
+            if (!string.IsNullOrWhiteSpace(rawResponse))
+            {
+                try
+                {
+                    var root = JObject.Parse(rawResponse);
+                    retorno.LocalId = root.Value<string>("localId");
+
+                    if (string.IsNullOrWhiteSpace(retorno.MessageId))
+                    {
+                        retorno.MessageId = root.Value<string>("messageId");
+                    }
+                }
+                catch (JsonException)
+                {
+                }
+            }
+
+            return retorno;
         }
 
         private HttpContent GerarJSONTextMessage(SendTextMessageContent msg)

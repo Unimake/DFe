@@ -45,6 +45,11 @@ namespace Unimake.Business.DFe
         public string RetornoServicoString { get; protected set; }
 
         /// <summary>
+        /// Conteúdo bruto retornado pelo serviço antes de qualquer normalização para XML.
+        /// </summary>
+        public string RetornoServicoRawString { get; protected set; }
+
+        /// <summary>
         /// Conteudo retornado pelo WebService consumido (formato XmlDocument)
         /// </summary>
         public XmlDocument RetornoServicoXML { get; protected set; }
