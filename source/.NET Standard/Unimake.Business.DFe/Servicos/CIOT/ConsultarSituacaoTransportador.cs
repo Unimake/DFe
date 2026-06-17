@@ -1,7 +1,6 @@
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Xml.CIOT;
 
