@@ -1,11 +1,11 @@
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
+using GeradorCIOTShared;
 using Newtonsoft.Json;
 using System;
 using System.Text.RegularExpressions;
 using System.Xml;
-using GeradorCIOTShared;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Xml.CIOT;
 using Unimake.Exceptions;

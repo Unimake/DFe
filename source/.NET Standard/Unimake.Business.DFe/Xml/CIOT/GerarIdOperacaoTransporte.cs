@@ -43,7 +43,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public string Versao { get; set; } = "1.00";
 
         [XmlElement("temp")]
-        public TempCIOT Temp { get; set; }
+        public Temp Temp { get; set; }
 
         [XmlElement("Sucesso")]
         public bool? Sucesso { get; set; }

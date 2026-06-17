@@ -13,8 +13,6 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Security;
-using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml;
 using Unimake.Exceptions;
 

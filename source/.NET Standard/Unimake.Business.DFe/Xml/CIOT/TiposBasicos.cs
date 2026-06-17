@@ -3,8 +3,10 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CIOT
 {
@@ -27,7 +29,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
 #endif
     }
 
-    public class VeiculoFrotaCIOT
+    public class VeiculoFrota
     {
         [XmlElement("PlacaVeiculo")]
         public string PlacaVeiculo { get; set; }
@@ -36,7 +38,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool SituacaoVeiculoFrotaTransportador { get; set; }
     }
 
-    public class VeiculoCIOT
+    public class Veiculo
     {
         [XmlElement("Placa")]
         public string Placa { get; set; }
@@ -50,13 +52,13 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeRNTRCVeiculo() => !string.IsNullOrEmpty(RNTRCVeiculo);
     }
 
-    public class ParOrigemDestinoCIOT
+    public class OrigemDestino
     {
         [XmlElement("Origem")]
-        public OrigemCIOT Origem { get; set; }
+        public Origem Origem { get; set; }
 
         [XmlElement("Destino")]
-        public DestinoCIOT Destino { get; set; }
+        public Destino Destino { get; set; }
 
         [XmlElement("DistanciaPercorrida")]
         public string DistanciaPercorrida { get; set; }
@@ -68,7 +70,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeQtdViagens() => !string.IsNullOrEmpty(QtdViagens);
     }
 
-    public class OrigemCIOT
+    public class Origem
     {
         [XmlElement("CodigoMunicipioOrigem")]
         public string CodigoMunicipioOrigem { get; set; }
@@ -88,7 +90,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeLongitudeOrigem() => !string.IsNullOrEmpty(LongitudeOrigem);
     }
 
-    public class DestinoCIOT
+    public class Destino
     {
         [XmlElement("CodigoMunicipioDestino")]
         public string CodigoMunicipioDestino { get; set; }
@@ -108,7 +110,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeLongitudeDestino() => !string.IsNullOrEmpty(LongitudeDestino);
     }
 
-    public class DadosCargaCIOT
+    public class DadosCarga
     {
         [XmlElement("CodigoNaturezaCarga")]
         public string CodigoNaturezaCarga { get; set; }
@@ -128,13 +130,13 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeContratantesCargFrac() => ContratantesCargFrac?.Count > 0;
     }
 
-    public class DadosCargaEncerramentoCIOT
+    public class DadosCargaEncerramento
     {
         [XmlElement("PesoTotalCarga")]
         public string PesoTotalCarga { get; set; }
     }
 
-    public class PagamentoCIOT
+    public class InfPagamento
     {
         [XmlElement("TipoPagamento")]
         public TipoPagamentoFreteCIOT TipoPagamento { get; set; }
@@ -163,21 +165,6 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("IndPagamento")]
         public IndicadorPagamentoCIOT IndPagamento { get; set; }
 
-        [XmlArray("Parcelas")]
-        [XmlArrayItem("Parcela")]
-        public List<ParcelaCIOT> Parcelas { get; set; }
-
-        public bool ShouldSerializeCodigoInstituicaoFinanceira() => !string.IsNullOrEmpty(CodigoInstituicaoFinanceira);
-        public bool ShouldSerializeNumeroAgencia() => !string.IsNullOrEmpty(NumeroAgencia);
-        public bool ShouldSerializeNumeroConta() => !string.IsNullOrEmpty(NumeroConta);
-        public bool ShouldSerializeChavePix() => !string.IsNullOrEmpty(ChavePix);
-        public bool ShouldSerializeCodigoPagamento() => !string.IsNullOrEmpty(CodigoPagamento);
-        public bool ShouldSerializeIdentificadorPix() => !string.IsNullOrEmpty(IdentificadorPix);
-        public bool ShouldSerializeParcelas() => Parcelas?.Count > 0;
-    }
-
-    public class ParcelaCIOT
-    {
         [XmlElement("NumeroParcela")]
         public string NumeroParcela { get; set; }
 
@@ -201,13 +188,37 @@ namespace Unimake.Business.DFe.Xml.CIOT
 #endif
         }
 
+        [XmlIgnore]
+        public double ValorParcela { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade ValorParcela para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("ValorParcela")]
-        public string ValorParcela { get; set; }
+        public string ValorParcelaField
+        {
+            get => ValorParcela.ToString("F2", CultureInfo.InvariantCulture);
+            set => ValorParcela = Converter.ToDouble(value);
+        }
 
         public bool ShouldSerializeDataVencimento() => false;
+        public bool ShouldSerializeDataVencimentoField() =>
+#if INTEROP
+            DataVencimento > DateTime.MinValue;
+#else
+            DataVencimento > DateTimeOffset.MinValue;
+#endif
+        public bool ShouldSerializeValorParcelaField() => ValorParcela > 0;
+        public bool ShouldSerializeCodigoInstituicaoFinanceira() => !string.IsNullOrEmpty(CodigoInstituicaoFinanceira);
+        public bool ShouldSerializeNumeroAgencia() => !string.IsNullOrEmpty(NumeroAgencia);
+        public bool ShouldSerializeNumeroConta() => !string.IsNullOrEmpty(NumeroConta);
+        public bool ShouldSerializeChavePix() => !string.IsNullOrEmpty(ChavePix);
+        public bool ShouldSerializeCodigoPagamento() => !string.IsNullOrEmpty(CodigoPagamento);
+        public bool ShouldSerializeIdentificadorPix() => !string.IsNullOrEmpty(IdentificadorPix);
+        public bool ShouldSerializeNumeroParcela() => !string.IsNullOrEmpty(NumeroParcela);
     }
 
-    public class IndicadoresOperacionaisCIOT
+    public class IndicadoresOperacionais
     {
         [XmlElement("IndAltoDesempenho")]
         public bool IndAltoDesempenho { get; set; }
@@ -219,7 +230,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ComposicaoVeicular { get; set; }
     }
 
-    public class RetornoExcecaoCIOT
+    public class Retorno
     {
         [XmlElement("CpfCnpjTransportador")]
         public string CpfCnpjTransportador { get; set; }
@@ -228,7 +239,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool Flag { get; set; }
     }
 
-    public class TempCIOT
+    public class Temp
     {
         [XmlElement("error")]
         public string Error { get; set; }
