@@ -38,6 +38,7 @@ namespace Unimake.DFe.Test.UMessenger
                     Assert.True(servico.Result.Mensagem[0].Status == 0 || servico.Result.Mensagem[0].Status == 1);
                     Assert.NotEmpty(servico.Result.Mensagem[0].DLLVersao);
                     Assert.Equal(servico.Result.Mensagem[0].MessageID, servico.Result.MessageId);
+                    Assert.NotEmpty(servico.Result.RawResponse);
                 });
         }
 

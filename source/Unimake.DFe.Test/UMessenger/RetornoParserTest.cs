@@ -37,6 +37,27 @@ namespace Unimake.DFe.Test.UMessenger
 
         [Fact]
         [Trait("DFe", "UMessenger")]
+        public void DevePreservarRawResponseELocalIdNoRetornoCompativel()
+        {
+            const string json = @"{
+    ""messageId"": ""MSG-LOCAL-001"",
+    ""localId"": ""LOCAL-123"",
+    ""messagingService"": 0
+}";
+
+            var xml = new XmlDocument();
+            xml.LoadXml(@"<uMessengerResponse><Mensagem><Status>1</Status><Motivo>Mensagem enviada com sucesso.</Motivo><messageID>MSG-LOCAL-001</messageID><DLLVersao>20260616.1001</DLLVersao></Mensagem></uMessengerResponse>");
+
+            var metodo = typeof(Business.DFe.Servicos.UMessenger.PublishUMessenger).GetMethod("CriarRetornoCompativel", BindingFlags.Static | BindingFlags.NonPublic);
+            var retorno = (retUMessengerPublish)metodo.Invoke(null, new object[] { xml, json });
+
+            Assert.Equal("MSG-LOCAL-001", retorno.MessageId);
+            Assert.Equal("LOCAL-123", retorno.LocalId);
+            Assert.Equal(json, retorno.RawResponse);
+        }
+
+        [Fact]
+        [Trait("DFe", "UMessenger")]
         public void DeveMapearRetornoDeErroComErrorsComoArray()
         {
             const string json = @"{
