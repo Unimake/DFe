@@ -10,6 +10,7 @@ using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.DARE;
+using Unimake.Business.DFe.Xml.PIX;
 using Unimake.Business.DFe.Xml.UMessenger;
 
 namespace Unimake.Business.DFe.ConsumirServico.Parsers
@@ -110,6 +111,11 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
                     return CriarXmlRetornoUMessenger(ref context);
                 }
 
+                if (EhServicoPIX(context.Config.Servico))
+                {
+                    return CriarXmlRetornoPIX(ref context);
+                }
+
                 return resultadoRetorno;
             }
             catch
@@ -122,6 +128,11 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
                 if (context.Config.Servico == Servico.UMessengerPublish)
                 {
                     return CriarXmlRetornoUMessenger(ref context);
+                }
+
+                if (EhServicoPIX(context.Config.Servico))
+                {
+                    return CriarXmlRetornoPIX(ref context);
                 }
 
                 var xml = new XmlDocument();
@@ -234,7 +245,285 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
             return ret.GerarXML();
         }
 
-        private string ExtrairMotivoErroUMessenger(JObject root)
+        private bool EhServicoPIX(Servico servico)
+        {
+            switch (servico)
+            {
+                case Servico.PIXCobrancaCriar:
+                case Servico.PIXCobrancaConsultar:
+                case Servico.PIXConsultar:
+                    return true;
+            }
+
+            return false;
+        }
+
+        private XmlDocument CriarXmlRetornoPIX(ref ApiResponseContext context)
+        {
+            switch (context.Config.Servico)
+            {
+                case Servico.PIXCobrancaCriar:
+                    return CriarXmlRetornoPIXCobrancaCriar(ref context);
+
+                case Servico.PIXCobrancaConsultar:
+                    return CriarXmlRetornoPIXCobrancaConsultar(ref context);
+
+                case Servico.PIXConsultar:
+                    return CriarXmlRetornoPIXConsultar(ref context);
+            }
+
+            return _xmlSupport.StringToSerializedXml(context.ResponseContent);
+        }
+
+        private XmlDocument CriarXmlRetornoPIXCobrancaCriar(ref ApiResponseContext context)
+        {
+            var root = TryParseJsonObject(context.ResponseContent);
+            var retorno = new retPIXCobrancaCriar
+            {
+                DLLVersao = Info.VersaoDLL
+            };
+
+            if (!context.Response.IsSuccessStatusCode)
+            {
+                retorno.Status = 999;
+                retorno.Motivo = ExtrairMotivoErroApi(root, "Falha ao criar cobrança PIX.");
+                return retorno.GerarXML();
+            }
+
+            retorno.Status = ResolverStatusPIXCobrancaCriar(root);
+            retorno.Motivo = ResolverMotivoPIXCobrancaCriar(root, retorno.Status);
+            retorno.PixCopiaECola = ObterPrimeiroValorTexto(root, "PixCopiaECola", "pixCopiaECola", "copiaECola", "pixCopiaCola", "emv");
+            retorno.ImageQRCode = ObterPrimeiroValorTexto(root, "ImageQRCode", "imageQRCode", "qrCodeImagePath", "qrCodeImage", "imagemQRCode");
+
+            return retorno.GerarXML();
+        }
+
+        private XmlDocument CriarXmlRetornoPIXCobrancaConsultar(ref ApiResponseContext context)
+        {
+            var root = TryParseJsonObject(context.ResponseContent);
+            var retorno = new retPIXCobrancaConsultar
+            {
+                DLLVersao = Info.VersaoDLL
+            };
+
+            if (!context.Response.IsSuccessStatusCode)
+            {
+                retorno.Status = 999;
+                retorno.Motivo = ExtrairMotivoErroApi(root, "Falha ao consultar cobrança PIX.");
+                return retorno.GerarXML();
+            }
+
+            var itens = CriarListaItensPIX(root);
+            retorno.Items.AddRange(itens);
+            retorno.Status = retorno.Items.Count > 0 ? 1 : 2;
+            retorno.Motivo = retorno.Items.Count > 0
+                ? "Movimentos PIX localizados."
+                : "Nenhum Movimento PIX foi localizado.";
+
+            return retorno.GerarXML();
+        }
+
+        private XmlDocument CriarXmlRetornoPIXConsultar(ref ApiResponseContext context)
+        {
+            var root = TryParseJsonObject(context.ResponseContent);
+            var retorno = new retPIXConsultar
+            {
+                DLLVersao = Info.VersaoDLL
+            };
+
+            if (!context.Response.IsSuccessStatusCode)
+            {
+                retorno.Status = 999;
+                retorno.Motivo = ExtrairMotivoErroApi(root, "Falha ao consultar PIX.");
+                return retorno.GerarXML();
+            }
+
+            var item = CriarItemPIX(root);
+
+            if (item != null && !string.IsNullOrWhiteSpace(item.TxId))
+            {
+                retorno.Status = 1;
+                retorno.Motivo = "Movimento PIX Localizado.";
+                retorno.TxId = item.TxId;
+                retorno.Valor = item.Valor;
+                retorno.Horario = item.Horario;
+                retorno.Pagador = item.Pagador;
+            }
+            else
+            {
+                retorno.Status = 2;
+                retorno.Motivo = "Nenhum Movimento PIX foi localizado.";
+            }
+
+            return retorno.GerarXML();
+        }
+
+        private JObject TryParseJsonObject(string responseContent)
+        {
+            if (string.IsNullOrWhiteSpace(responseContent))
+            {
+                return new JObject();
+            }
+
+            try
+            {
+                return JObject.Parse(responseContent);
+            }
+            catch
+            {
+                return new JObject();
+            }
+        }
+
+        private int ResolverStatusPIXCobrancaCriar(JObject root)
+        {
+            var status = ObterPrimeiroValorTexto(root, "status");
+            if (int.TryParse(status, out var statusNumerico))
+            {
+                return statusNumerico;
+            }
+
+            switch (NormalizarChave(status))
+            {
+                case "ATIVA":
+                case "ACTIVE":
+                    return 0;
+
+                case "CONCLUIDA":
+                case "CONCLUIDO":
+                case "COMPLETED":
+                    return 1;
+
+                case "REMOVIDAPELOUSUARIORECEBEDOR":
+                case "REMOVIDOPELOUSUARIORECEBEDOR":
+                    return 2;
+
+                case "REMOVIDAPELOPSP":
+                case "REMOVIDOPELOPSP":
+                    return 3;
+            }
+
+            return 0;
+        }
+
+        private string ResolverMotivoPIXCobrancaCriar(JObject root, int status)
+        {
+            var motivoExplicito = ObterPrimeiroValorTexto(root, "motivo", "message", "mensagem");
+            if (!string.IsNullOrWhiteSpace(motivoExplicito))
+            {
+                return motivoExplicito;
+            }
+
+            switch (status)
+            {
+                case 0:
+                    return "PIX Ativo (Cobrança gerada)";
+
+                case 1:
+                    return "PIX Concluído.";
+
+                case 2:
+                    return "PIX removido pelo usuário recebedor.";
+
+                case 3:
+                    return "PIX removido pelo PSP.";
+            }
+
+            return "PIX processado com sucesso.";
+        }
+
+        private List<retPIXItem> CriarListaItensPIX(JObject root)
+        {
+            var lista = new List<retPIXItem>();
+            var pixToken = LocalizarTokenPorNome(root, "pix");
+
+            if (pixToken is JArray pixArray)
+            {
+                var indice = 1;
+                foreach (var item in pixArray)
+                {
+                    var retornoItem = CriarItemPIX(item);
+                    if (retornoItem == null)
+                    {
+                        continue;
+                    }
+
+                    retornoItem.Id = indice.ToString();
+                    lista.Add(retornoItem);
+                    indice++;
+                }
+
+                return lista;
+            }
+
+            var itemUnico = CriarItemPIX(root);
+            if (itemUnico != null && !string.IsNullOrWhiteSpace(itemUnico.TxId))
+            {
+                itemUnico.Id = "1";
+                lista.Add(itemUnico);
+            }
+
+            return lista;
+        }
+
+        private retPIXItem CriarItemPIX(JToken token)
+        {
+            if (token == null || token.Type == JTokenType.Null)
+            {
+                return null;
+            }
+
+            var pagadorToken = LocalizarTokenPorNome(token, "pagador", "devedor");
+            var item = new retPIXItem
+            {
+                TxId = ObterPrimeiroValorTexto(token, "txId", "txid"),
+                Valor = ObterPrimeiroValorTextoPorCaminhos(token,
+                    new[] { "valor", "original" },
+                    new[] { "valor" },
+                    new[] { "value", "original" },
+                    new[] { "value" }),
+                Horario = ObterPrimeiroValorTextoPorCaminhos(token,
+                    new[] { "horario", "liquidacao" },
+                    new[] { "horario" },
+                    new[] { "horarioLiquidacao" },
+                    new[] { "dataHora" },
+                    new[] { "dataHoraLiquidacao" }),
+                Pagador = CriarPagadorPIX(pagadorToken ?? token)
+            };
+
+            if (string.IsNullOrWhiteSpace(item.TxId) &&
+                string.IsNullOrWhiteSpace(item.Valor) &&
+                string.IsNullOrWhiteSpace(item.Horario) &&
+                item.Pagador == null)
+            {
+                return null;
+            }
+
+            return item;
+        }
+
+        private retPIXPagador CriarPagadorPIX(JToken token)
+        {
+            if (token == null || token.Type == JTokenType.Null)
+            {
+                return null;
+            }
+
+            var retorno = new retPIXPagador
+            {
+                Nome = ObterPrimeiroValorTexto(token, "nome", "name"),
+                Inscricao = ObterPrimeiroValorTexto(token, "inscricao", "cpf", "cnpj", "document", "documento")
+            };
+
+            if (string.IsNullOrWhiteSpace(retorno.Nome) && string.IsNullOrWhiteSpace(retorno.Inscricao))
+            {
+                return null;
+            }
+
+            return retorno;
+        }
+
+        private string ExtrairMotivoErroApi(JObject root, string mensagemPadrao)
         {
             var mensagemErro = ExtrairPrimeiraMensagemErro(root["errors"]);
 
@@ -258,10 +547,161 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
             var status = root.Value<int?>("status");
             if (status.GetValueOrDefault() > 0)
             {
-                return "Falha ao publicar mensagem. HTTP " + status + ".";
+                return mensagemPadrao.TrimEnd('.') + " HTTP " + status + ".";
             }
 
-            return "Falha ao publicar mensagem.";
+            return mensagemPadrao;
+        }
+
+        private string ObterPrimeiroValorTexto(JToken token, params string[] nomes)
+        {
+            var encontrado = LocalizarTokenPorNome(token, nomes);
+            if (encontrado == null || encontrado.Type == JTokenType.Null)
+            {
+                return null;
+            }
+
+            if (encontrado.Type == JTokenType.String ||
+                encontrado.Type == JTokenType.Integer ||
+                encontrado.Type == JTokenType.Float ||
+                encontrado.Type == JTokenType.Boolean ||
+                encontrado.Type == JTokenType.Date)
+            {
+                return encontrado.ToString();
+            }
+
+            return null;
+        }
+
+        private string ObterPrimeiroValorTextoPorCaminhos(JToken token, params string[][] caminhos)
+        {
+            if (caminhos == null)
+            {
+                return null;
+            }
+
+            foreach (var caminho in caminhos)
+            {
+                var encontrado = LocalizarTokenPorCaminho(token, caminho);
+                if (encontrado == null || encontrado.Type == JTokenType.Null)
+                {
+                    continue;
+                }
+
+                if (encontrado.Type == JTokenType.String ||
+                    encontrado.Type == JTokenType.Integer ||
+                    encontrado.Type == JTokenType.Float ||
+                    encontrado.Type == JTokenType.Boolean ||
+                    encontrado.Type == JTokenType.Date)
+                {
+                    return encontrado.ToString();
+                }
+            }
+
+            return null;
+        }
+
+        private JToken LocalizarTokenPorCaminho(JToken token, string[] caminho)
+        {
+            if (token == null || caminho == null || caminho.Length == 0)
+            {
+                return null;
+            }
+
+            var atual = LocalizarTokenPorNome(token, caminho[0]);
+            if (atual == null)
+            {
+                return null;
+            }
+
+            for (var i = 1; i < caminho.Length; i++)
+            {
+                atual = ObterFilhoPorNome(atual, caminho[i]);
+                if (atual == null)
+                {
+                    return null;
+                }
+            }
+
+            return atual;
+        }
+
+        private JToken ObterFilhoPorNome(JToken token, string nome)
+        {
+            if (token == null || string.IsNullOrWhiteSpace(nome))
+            {
+                return null;
+            }
+
+            if (token.Type == JTokenType.Object)
+            {
+                foreach (var propriedade in token.Children<JProperty>())
+                {
+                    if (string.Equals(propriedade.Name, nome, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return propriedade.Value;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private JToken LocalizarTokenPorNome(JToken token, params string[] nomes)
+        {
+            if (token == null)
+            {
+                return null;
+            }
+
+            if (token.Type == JTokenType.Object)
+            {
+                foreach (var propriedade in token.Children<JProperty>())
+                {
+                    foreach (var nome in nomes)
+                    {
+                        if (string.Equals(propriedade.Name, nome, StringComparison.OrdinalIgnoreCase))
+                        {
+                            return propriedade.Value;
+                        }
+                    }
+
+                    var encontrado = LocalizarTokenPorNome(propriedade.Value, nomes);
+                    if (encontrado != null)
+                    {
+                        return encontrado;
+                    }
+                }
+            }
+
+            if (token.Type == JTokenType.Array)
+            {
+                foreach (var item in token.Children())
+                {
+                    var encontrado = LocalizarTokenPorNome(item, nomes);
+                    if (encontrado != null)
+                    {
+                        return encontrado;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private string NormalizarChave(string valor)
+        {
+            return (valor ?? string.Empty)
+                .Replace("_", string.Empty)
+                .Replace("-", string.Empty)
+                .Replace(" ", string.Empty)
+                .Trim()
+                .ToUpperInvariant();
+        }
+
+        private string ExtrairMotivoErroUMessenger(JObject root)
+        {
+            return ExtrairMotivoErroApi(root, "Falha ao publicar mensagem.");
         }
 
         private string ExtrairPrimeiraMensagemErro(JToken errorsToken)
