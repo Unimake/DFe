@@ -5,10 +5,8 @@
   <NomeRazaoSocialTransportador>TRANSPORTADOR TESTE</NomeRazaoSocialTransportador>
   <RNTRCAtivo>true</RNTRCAtivo>
   <Frota>
-    <VeiculoFrota>
-      <PlacaVeiculo>ABC1D23</PlacaVeiculo>
-      <SituacaoVeiculoFrotaTransportador>true</SituacaoVeiculoFrotaTransportador>
-    </VeiculoFrota>
+    <PlacaVeiculo>ABC1D23</PlacaVeiculo>
+    <SituacaoVeiculoFrotaTransportador>true</SituacaoVeiculoFrotaTransportador>
   </Frota>
   <Mensagem>Operacao realizada com sucesso</Mensagem>
   <Protocolo>1234567890123456</Protocolo>

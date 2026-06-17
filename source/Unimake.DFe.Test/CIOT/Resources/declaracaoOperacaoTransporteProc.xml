@@ -45,13 +45,11 @@
       <ContratantesCargFrac>98765432000110</ContratantesCargFrac>
     </DadosCarga>
     <InfPagamento>
-      <Pagamento>
-        <TipoPagamento>6</TipoPagamento>
-        <ChavePix>financeiro@example.com</ChavePix>
-        <CpfCnpjCreditado>12345678901</CpfCnpjCreditado>
-        <IdentificadorPix>PIX123456789</IdentificadorPix>
-        <IndPagamento>0</IndPagamento>
-      </Pagamento>
+      <TipoPagamento>6</TipoPagamento>
+      <ChavePix>financeiro@example.com</ChavePix>
+      <CpfCnpjCreditado>12345678901</CpfCnpjCreditado>
+      <IdentificadorPix>PIX123456789</IdentificadorPix>
+      <IndPagamento>0</IndPagamento>
     </InfPagamento>
     <InfIndicadoresOperacionais>
       <IndAltoDesempenho>false</IndAltoDesempenho>

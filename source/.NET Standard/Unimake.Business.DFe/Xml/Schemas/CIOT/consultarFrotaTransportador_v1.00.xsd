@@ -31,17 +31,11 @@
           <xs:element name="RNTRCTransportador" type="TRNTRC"/>
           <xs:element name="NomeRazaoSocialTransportador" type="xs:string"/>
           <xs:element name="RNTRCAtivo" type="xs:boolean"/>
-          <xs:element name="Frota">
+          <xs:element name="Frota" maxOccurs="unbounded">
             <xs:complexType>
               <xs:sequence>
-                <xs:element name="VeiculoFrota" maxOccurs="unbounded">
-                  <xs:complexType>
-                    <xs:sequence>
-                      <xs:element name="PlacaVeiculo" type="TPlaca"/>
-                      <xs:element name="SituacaoVeiculoFrotaTransportador" type="xs:boolean"/>
-                    </xs:sequence>
-                  </xs:complexType>
-                </xs:element>
+                <xs:element name="PlacaVeiculo" type="TPlaca"/>
+                <xs:element name="SituacaoVeiculoFrotaTransportador" type="xs:boolean"/>
               </xs:sequence>
             </xs:complexType>
           </xs:element>
