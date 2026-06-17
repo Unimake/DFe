@@ -56,5 +56,31 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public List<string> Mensagem { get; set; }
 
         public bool ShouldSerializeTemp() => Temp != null;
+
+#if INTEROP
+        public string GetCodigo(int index)
+        {
+            if ((Codigo?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return Codigo[index];
+        }
+
+        public int GetCodigoCount => (Codigo != null ? Codigo.Count : 0);
+
+        public string GetMensagem(int index)
+        {
+            if ((Mensagem?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return Mensagem[index];
+        }
+
+        public int GetMensagemCount => (Mensagem != null ? Mensagem.Count : 0);
+#endif
     }
 }
