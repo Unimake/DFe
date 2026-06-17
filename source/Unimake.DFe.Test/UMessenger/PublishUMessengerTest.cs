@@ -37,6 +37,7 @@ namespace Unimake.DFe.Test.UMessenger
                     Assert.Single(servico.Result.Mensagem);
                     Assert.True(servico.Result.Mensagem[0].Status == 0 || servico.Result.Mensagem[0].Status == 1);
                     Assert.NotEmpty(servico.Result.Mensagem[0].DLLVersao);
+                    Assert.Equal(servico.Result.Mensagem[0].MessageID, servico.Result.MessageId);
                 });
         }
 
@@ -76,10 +77,12 @@ namespace Unimake.DFe.Test.UMessenger
                 servico =>
                 {
                     Assert.Equal(2, servico.Results.Count);
+                    Assert.Equal(2, servico.MessageResults.Count);
                     Assert.All(servico.Results, r =>
                     {
-                        Assert.True(r.Status == 0 || r.Status == 1);
-                        Assert.NotEmpty(r.DLLVersao);
+                        Assert.Single(r.Mensagem);
+                        Assert.True(r.Mensagem[0].Status == 0 || r.Mensagem[0].Status == 1);
+                        Assert.NotEmpty(r.Mensagem[0].DLLVersao);
                     });
                 });
         }
