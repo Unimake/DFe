@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BoletoConsultarResponse>
+  <Status>0</Status>
+  <Motivo>Boletos encontrados</Motivo>
+  <BoletoResponse>
+    <CodigoBarras />
+    <DataEmissao>20-09-2018</DataEmissao>
+    <DataLiquidacao />
+    <DataVencimento>20-09-2018</DataVencimento>
+    <NumeroNaEmpresa>1235512</NumeroNaEmpresa>
+    <NumeroNoBanco>-2147483648</NumeroNoBanco>
+    <Pagador>
+      <Codigo />
+      <Nome />
+      <Inscricao />
+      <Telefone />
+      <Email>pagador@dominio.com.br</Email>
+      <TipoInscricao>0</TipoInscricao>
+      <Endereco>
+        <Logradouro>Rua 87 Quadra 1 Lote 1 casa 1</Logradouro>
+        <Numero />
+        <Complemento />
+        <Bairro>Santa Rosa</Bairro>
+        <Cidade>Luziânia</Cidade>
+        <UF>DF</UF>
+        <CEP>72320000</CEP>
+      </Endereco>
+    </Pagador>
+    <PdfContent>
+      <Content />
+      <Success>false</Success>
+      <Message />
+    </PdfContent>
+    <QrCodeContent>
+      <Text>00020101021226950014br.gov.bcb.pix2573pix.sicoob.com.br</Text>
+      <Image />
+      <Success>false</Success>
+    </QrCodeContent>
+    <Situacao>9</Situacao>
+    <TipoLiquidacao>0</TipoLiquidacao>
+    <Valor>156.23</Valor>
+    <ValorAbatimento>0.00</ValorAbatimento>
+    <ValorDesconto>0.00</ValorDesconto>
+    <ValorJuros>0.00</ValorJuros>
+    <ValorLiquidado>156.23</ValorLiquidado>
+    <ValorMulta>0.00</ValorMulta>
+  </BoletoResponse>
+  <DLLVersao>20260617.1001</DLLVersao>
+</BoletoConsultarResponse>
