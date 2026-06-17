@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PIXCobrancaCreateResponse>
+  <Status>0</Status>
+  <Motivo>PIX Ativo (Cobrança gerada)</Motivo>
+  <PixCopiaECola>000201010212pix-copia-cola</PixCopiaECola>
+  <ImageQRCode>C:\Retorno\pix.png</ImageQRCode>
+  <DLLVersao>20260617.1001</DLLVersao>
+</PIXCobrancaCreateResponse>

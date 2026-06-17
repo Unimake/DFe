@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PIXGetResponse>
+  <Status>1</Status>
+  <Motivo>Movimento PIX Localizado.</Motivo>
+  <TxId>12345678901234567890123456</TxId>
+  <Valor>0.00</Valor>
+  <Horario>2023-05-23T10:42:05</Horario>
+  <Pagador>
+    <Nome>Teste nome pagador</Nome>
+    <Inscricao>12345678901234</Inscricao>
+  </Pagador>
+  <DLLVersao>20260617.1001</DLLVersao>
+</PIXGetResponse>

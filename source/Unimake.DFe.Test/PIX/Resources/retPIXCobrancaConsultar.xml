@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PIXConsultaResponse>
+  <Status>1</Status>
+  <Motivo>Movimentos PIX localizados.</Motivo>
+  <Items>
+    <Item Id="1">
+      <TxId>TX-001</TxId>
+      <Valor>75.36</Valor>
+      <Horario>2023-10-31T16:29:41</Horario>
+      <Pagador>
+        <Nome>Teste nome pagador 1</Nome>
+        <Inscricao>12345678901234</Inscricao>
+      </Pagador>
+    </Item>
+    <Item Id="2">
+      <TxId>TX-002</TxId>
+      <Valor>66.22</Valor>
+      <Horario>2023-10-31T16:29:41</Horario>
+      <Pagador>
+        <Nome>Teste nome pagador 2</Nome>
+        <Inscricao>11111111111</Inscricao>
+      </Pagador>
+    </Item>
+  </Items>
+  <DLLVersao>20260617.1001</DLLVersao>
+</PIXConsultaResponse>
