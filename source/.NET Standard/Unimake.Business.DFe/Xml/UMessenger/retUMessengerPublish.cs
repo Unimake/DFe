@@ -42,6 +42,18 @@ namespace Unimake.Business.DFe.Xml.UMessenger
         [XmlElement("messageID")]
         public string MessageID { get; set; }
 
+        [XmlElement("TraceId")]
+        public string TraceId { get; set; }
+
+        [XmlElement("HelpLink")]
+        public string HelpLink { get; set; }
+
+        [XmlElement("ErrorType")]
+        public string ErrorType { get; set; }
+
+        [XmlElement("ErrorTitle")]
+        public string ErrorTitle { get; set; }
+
         [XmlElement("DLLVersao")]
         public string DLLVersao { get; set; }
     }

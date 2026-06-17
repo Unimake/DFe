@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -200,12 +201,13 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
 
         private XmlDocument CriarXmlRetornoUMessenger(ref ApiResponseContext context)
         {
+            var root = JObject.Parse(context.ResponseContent);
             var mensagem = new retUMessengerMensagem
             {
                 Status = context.Response.IsSuccessStatusCode ? 1 : 0,
                 Motivo = context.Response.IsSuccessStatusCode
                     ? "Mensagem enviada com sucesso."
-                    : ExtrairMotivoErroUMessenger(context.ResponseContent),
+                    : ExtrairMotivoErroUMessenger(root),
                 DLLVersao = Info.VersaoDLL
             };
 
@@ -214,43 +216,86 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
                 var dto = JsonConvert.DeserializeAnonymousType(context.ResponseContent, new { messageId = "" });
                 mensagem.MessageID = dto?.messageId;
             }
+            else
+            {
+                mensagem.TraceId = root.Value<string>("traceId");
+                mensagem.HelpLink = root.Value<string>("helpLink");
+                mensagem.ErrorType = root.Value<string>("type");
+                mensagem.ErrorTitle = root.Value<string>("title");
+            }
 
             var ret = new retUMessengerPublish();
             ret.Mensagem.Add(mensagem);
             return ret.GerarXML();
         }
 
-        private string ExtrairMotivoErroUMessenger(string responseContent)
+        private string ExtrairMotivoErroUMessenger(JObject root)
         {
-            var dto = JsonConvert.DeserializeAnonymousType(responseContent, new
-            {
-                errors = new string[0],
-                title = "",
-                type = "",
-                status = 0
-            });
+            var mensagemErro = ExtrairPrimeiraMensagemErro(root["errors"]);
 
-            if (dto?.errors != null && dto.errors.Length > 0 && !string.IsNullOrWhiteSpace(dto.errors[0]))
+            if (!string.IsNullOrWhiteSpace(mensagemErro))
             {
-                return dto.errors[0];
+                return mensagemErro;
             }
 
-            if (!string.IsNullOrWhiteSpace(dto?.title))
+            var title = root.Value<string>("title");
+            if (!string.IsNullOrWhiteSpace(title))
             {
-                return dto.title;
+                return title;
             }
 
-            if (!string.IsNullOrWhiteSpace(dto?.type))
+            var type = root.Value<string>("type");
+            if (!string.IsNullOrWhiteSpace(type))
             {
-                return dto.type;
+                return type;
             }
 
-            if (dto != null && dto.status > 0)
+            var status = root.Value<int?>("status");
+            if (status.GetValueOrDefault() > 0)
             {
-                return "Falha ao publicar mensagem. HTTP " + dto.status + ".";
+                return "Falha ao publicar mensagem. HTTP " + status + ".";
             }
 
             return "Falha ao publicar mensagem.";
+        }
+
+        private string ExtrairPrimeiraMensagemErro(JToken errorsToken)
+        {
+            if (errorsToken == null || errorsToken.Type == JTokenType.Null)
+            {
+                return null;
+            }
+
+            switch (errorsToken.Type)
+            {
+                case JTokenType.String:
+                    var valor = errorsToken.Value<string>();
+                    return string.IsNullOrWhiteSpace(valor) ? null : valor;
+
+                case JTokenType.Array:
+                    foreach (var item in errorsToken.Children())
+                    {
+                        var mensagemArray = ExtrairPrimeiraMensagemErro(item);
+                        if (!string.IsNullOrWhiteSpace(mensagemArray))
+                        {
+                            return mensagemArray;
+                        }
+                    }
+                    break;
+
+                case JTokenType.Object:
+                    foreach (var propriedade in errorsToken.Children<JProperty>())
+                    {
+                        var mensagemObjeto = ExtrairPrimeiraMensagemErro(propriedade.Value);
+                        if (!string.IsNullOrWhiteSpace(mensagemObjeto))
+                        {
+                            return mensagemObjeto;
+                        }
+                    }
+                    break;
+            }
+
+            return null;
         }
 
         private XmlDocument ProcessXmlWithSafeEncoding(HttpResponseMessage response)
