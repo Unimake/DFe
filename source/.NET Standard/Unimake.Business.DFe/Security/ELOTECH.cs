@@ -1,10 +1,17 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
+using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Xml;
 
 namespace Unimake.Business.DFe.Security
 {
+#if INTEROP
+    [ComVisible(false)]
+#endif
     internal static class ELOTECH
     {
         #region Public Methods

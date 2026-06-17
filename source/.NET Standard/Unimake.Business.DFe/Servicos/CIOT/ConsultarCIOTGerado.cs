@@ -10,11 +10,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Consultar CIOT gerado
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ClassInterface(ClassInterfaceType.None)]
+    [ComDefaultInterface(typeof(IConsultarCIOTGeradoInterop))]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.ConsultarCIOTGerado")]
     [ComVisible(true)]
 #endif
     public class ConsultarCIOTGerado : ServicoBase<Xml.CIOT.ConsultarCIOTGerado, RetConsultarCIOTGerado>, IInteropService<Xml.CIOT.ConsultarCIOTGerado>
+#if INTEROP
+        , IConsultarCIOTGeradoInterop
+#endif
     {
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTConsultarCIOTGerado;
@@ -45,7 +49,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.ConsultarCIOTGerado xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.ConsultarCIOTGerado xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

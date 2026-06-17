@@ -12,11 +12,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Declarar operação de transporte
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ClassInterface(ClassInterfaceType.None)]
+    [ComDefaultInterface(typeof(IDeclaracaoOperacaoTransporteInterop))]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.DeclaracaoOperacaoTransporte")]
     [ComVisible(true)]
 #endif
     public class DeclaracaoOperacaoTransporte : ServicoBase<Xml.CIOT.DeclaracaoOperacaoTransporte, RetDeclaracaoOperacaoTransporte>, IInteropService<Xml.CIOT.DeclaracaoOperacaoTransporte>
+#if INTEROP
+        , IDeclaracaoOperacaoTransporteInterop
+#endif
     {
         #region Private Fields
 
@@ -114,7 +118,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço de declaração de operação de transporte via COM, inicializando os dados de envio e configurações antes de transmitir a requisição para a API.
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.DeclaracaoOperacaoTransporte xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.DeclaracaoOperacaoTransporte xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

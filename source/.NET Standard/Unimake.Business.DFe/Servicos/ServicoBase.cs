@@ -8,14 +8,10 @@ using System.Xml;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.ConsumirServico.Builders;
 using Unimake.Business.DFe.ConsumirServico.Compatibility;
-using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Validator;
 using Unimake.Business.DFe.Xml;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
 using System.Net.Http;
-using System.Text;
 using Unimake.Exceptions;
 using Unimake.Business.DFe.Validator.Abstractions;
 

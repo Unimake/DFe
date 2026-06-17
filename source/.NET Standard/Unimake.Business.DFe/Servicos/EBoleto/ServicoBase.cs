@@ -14,7 +14,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Security;
-using Unimake.Business.DFe.Validator;
 using Unimake.Business.DFe.Xml;
 using Unimake.Exceptions;
 
@@ -24,9 +23,7 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
     /// Classe base para os serviços do eBoleto
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Servicos.EBoleto.ServicoBase")]
-    [ComVisible(true)]
+    [ComVisible(false)]
 #endif
     public abstract class ServicoBase<TEnvio> : Servicos.ServicoBase
         where TEnvio : XMLBase, new()

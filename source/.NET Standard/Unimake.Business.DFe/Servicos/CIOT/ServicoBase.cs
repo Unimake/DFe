@@ -22,9 +22,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Classe base para os serviços do CIOT
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Servicos.CIOT.ServicoBase")]
-    [ComVisible(true)]
+    [ComVisible(false)]
 #endif
     public abstract class ServicoBase<TEnvio, TRetorno> : Servicos.ServicoBase
         where TEnvio : XMLBase, new()
@@ -126,6 +124,9 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         protected override void XmlValidarConteudo() { }
 
         /// <inheritdoc />
+#if INTEROP
+        [ComVisible(false)]
+#endif
         public override void Executar()
         {
             base.Executar();

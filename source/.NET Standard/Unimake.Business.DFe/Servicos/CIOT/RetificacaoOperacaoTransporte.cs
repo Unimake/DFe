@@ -12,11 +12,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Retificar operação de transporte
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ClassInterface(ClassInterfaceType.None)]
+    [ComDefaultInterface(typeof(IRetificacaoOperacaoTransporteInterop))]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.RetificacaoOperacaoTransporte")]
     [ComVisible(true)]
 #endif
     public class RetificacaoOperacaoTransporte : ServicoBase<Xml.CIOT.RetificacaoOperacaoTransporte, RetRetificacaoOperacaoTransporte>, IInteropService<Xml.CIOT.RetificacaoOperacaoTransporte>
+#if INTEROP
+        , IRetificacaoOperacaoTransporteInterop
+#endif
     {
         #region Private Fields
 
@@ -114,7 +118,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.RetificacaoOperacaoTransporte xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.RetificacaoOperacaoTransporte xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

@@ -10,6 +10,9 @@ namespace Unimake.Business.DFe.Servicos.Interop
     /// pois a mesma expõe os métodos necessários para a comunicação via interop.
     /// </summary>
     /// <typeparam name="TInteropType">Objeto que irá expor seus métodos para o interop</typeparam>
+#if INTEROP
+        [ComVisible(false)]
+#endif
     public interface IInteropService<TInteropType>
          where TInteropType : XMLBase
     {
