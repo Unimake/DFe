@@ -26,7 +26,11 @@ uses
   NACIONALCancelarNFSeObjeto, NACIONALConsultarNFSeRPSObjeto, NACIONALConsultarNFSeObjeto,
   NACIONALConsultarEventoNFSe, NACIONALConsultarDistribuicaoNFSeNSU, ConsultarChavesNFCeSP,
   DownloadXMLNFCeSEFAZSP, NACIONALConsultarDistribuicaoEventosNFSe,
-  ConsultarStatusDCe, EnviarDCe;
+  ConsultarStatusDCe, EnviarDCe, CIOTGerarIdOperacaoTransporte,
+  CIOTDeclaracaoOperacaoTransporte, CIOTConsultarCIOTGerado, CIOTConsultarExcecao,
+  CIOTConsultarFrotaTransportador, CIOTConsultarSituacaoTransportador,
+  CIOTEncerramentoOperacaoTransporte, CIOTCancelamentoOperacaoTransporte,
+  CIOTRetificacaoOperacaoTransporte;
 
 type
 
@@ -85,6 +89,15 @@ type
     btnDownloadXMLNFCeSEFAZSP: TButton;
     BtnNACIONALConsultarDistribuicaoEventosNFSe: TButton;
     BtnEnviarDCe: TButton;
+    BtnCIOTGerarIdOperacaoTransporte: TButton;
+    BtnCIOTDeclaracaoOperacaoTransporte: TButton;
+    BtnCIOTConsultarCIOTGerado: TButton;
+    BtnCIOTConsultarExcecao: TButton;
+    BtnCIOTConsultarFrotaTransportador: TButton;
+    BtnCIOTConsultarSituacaoTransportador: TButton;
+    BtnCIOTEncerramentoOperacaoTransporte: TButton;
+    BtnCIOTCancelamentoOperacaoTransporte: TButton;
+    BtnCIOTRetificacaoOperacaoTransporte: TButton;
     EnviarXmlGNRe: TButton;
     ConsultaConfigGNRE: TButton;
     GroupBox1: TGroupBox;
@@ -108,6 +121,7 @@ type
     BtnNACIONALConsultarDistribuicaoNFSeNSU: TToggleBox;
     btnConsultaChaves: TToggleBox;
     GroupBox9: TGroupBox;
+    GroupBox10: TGroupBox;
     BtnConsultarStatusDCe: TToggleBox;
     procedure BtnBETHACancelarNFSeClick(Sender: TObject);
     procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
@@ -116,6 +130,15 @@ type
     procedure BtnBETHAGerarNFSeClick(Sender: TObject);
     procedure BtnCertificadoDigitalClick(Sender: TObject);
     procedure btnConsultaChavesClick(Sender: TObject);
+    procedure BtnCIOTCancelamentoOperacaoTransporteClick(Sender: TObject);
+    procedure BtnCIOTConsultarCIOTGeradoClick(Sender: TObject);
+    procedure BtnCIOTConsultarExcecaoClick(Sender: TObject);
+    procedure BtnCIOTConsultarFrotaTransportadorClick(Sender: TObject);
+    procedure BtnCIOTConsultarSituacaoTransportadorClick(Sender: TObject);
+    procedure BtnCIOTDeclaracaoOperacaoTransporteClick(Sender: TObject);
+    procedure BtnCIOTEncerramentoOperacaoTransporteClick(Sender: TObject);
+    procedure BtnCIOTGerarIdOperacaoTransporteClick(Sender: TObject);
+    procedure BtnCIOTRetificacaoOperacaoTransporteClick(Sender: TObject);
     procedure btnConsultarDistribuicaoDFeOnClick(Sender: TObject);
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
     procedure BtnConsultarStatusDCeClick(Sender: TObject);
@@ -196,6 +219,105 @@ implementation
 {$R *.lfm}
 
 { TfrmPrincipal }
+
+procedure TfrmPrincipal.BtnCIOTGerarIdOperacaoTransporteClick(Sender: TObject);
+var
+  oServico: TCIOTGerarIdOperacaoTransporte;
+begin
+  oServico := TCIOTGerarIdOperacaoTransporte.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnCIOTDeclaracaoOperacaoTransporteClick(Sender: TObject);
+var
+  oServico: TCIOTDeclaracaoOperacaoTransporte;
+begin
+  oServico := TCIOTDeclaracaoOperacaoTransporte.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnCIOTConsultarCIOTGeradoClick(Sender: TObject);
+var
+  oServico: TCIOTConsultarCIOTGerado;
+begin
+  oServico := TCIOTConsultarCIOTGerado.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnCIOTConsultarExcecaoClick(Sender: TObject);
+var
+  oServico: TCIOTConsultarExcecao;
+begin
+  oServico := TCIOTConsultarExcecao.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnCIOTConsultarFrotaTransportadorClick(Sender: TObject);
+var
+  oServico: TCIOTConsultarFrotaTransportador;
+begin
+  oServico := TCIOTConsultarFrotaTransportador.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnCIOTConsultarSituacaoTransportadorClick(Sender: TObject);
+var
+  oServico: TCIOTConsultarSituacaoTransportador;
+begin
+  oServico := TCIOTConsultarSituacaoTransportador.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnCIOTEncerramentoOperacaoTransporteClick(Sender: TObject);
+var
+  oServico: TCIOTEncerramentoOperacaoTransporte;
+begin
+  oServico := TCIOTEncerramentoOperacaoTransporte.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnCIOTCancelamentoOperacaoTransporteClick(Sender: TObject);
+var
+  oServico: TCIOTCancelamentoOperacaoTransporte;
+begin
+  oServico := TCIOTCancelamentoOperacaoTransporte.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnCIOTRetificacaoOperacaoTransporteClick(Sender: TObject);
+var
+  oServico: TCIOTRetificacaoOperacaoTransporte;
+begin
+  oServico := TCIOTRetificacaoOperacaoTransporte.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
 
 procedure TfrmPrincipal.btnConsultaStatusNFeClick(Sender: TObject);
 var

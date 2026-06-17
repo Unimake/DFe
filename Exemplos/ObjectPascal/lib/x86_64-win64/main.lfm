@@ -1,21 +1,21 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 5098
-  Height = 656
-  Top = 472
-  Width = 1234
+  Left = 1078
+  Height = 1061
+  Top = 404
+  Width = 2370
   Caption = 'Como utilizar a DLL Unimake.DFe para envio de NFe, NFCe, CTe, etc.'
-  ClientHeight = 656
-  ClientWidth = 1234
+  ClientHeight = 1061
+  ClientWidth = 2370
   DesignTimePPI = 144
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
-  LCLVersion = '2.2.6.0'
   object GroupBox1: TGroupBox
     Left = 12
-    Height = 624
-    Top = 12
+    Height = 744
+    Top = 0
     Width = 358
     Caption = 'NF-e'
-    ClientHeight = 594
+    ClientHeight = 714
     ClientWidth = 354
     TabOrder = 0
     OnClick = GroupBox1Click
@@ -25,8 +25,8 @@ object frmPrincipal: TfrmPrincipal
       Top = 0
       Width = 324
       Caption = 'Consultar Status'
-      OnClick = btnConsultaStatusNFeClick
       TabOrder = 0
+      OnClick = btnConsultaStatusNFeClick
     end
     object btnEnviarNFeSincrono: TButton
       Left = 12
@@ -34,8 +34,8 @@ object frmPrincipal: TfrmPrincipal
       Top = 48
       Width = 324
       Caption = 'Enviar NFe modo Síncrono'
-      OnClick = btnEnviarNFeSincronoClick
       TabOrder = 1
+      OnClick = btnEnviarNFeSincronoClick
     end
     object btnEnviarNFeSincronoDesserializacao: TButton
       Left = 12
@@ -43,8 +43,8 @@ object frmPrincipal: TfrmPrincipal
       Top = 96
       Width = 324
       Caption = 'Enviar NFe Síncrono c/Desserialização'
-      OnClick = btnEnviarNFeSincronoDesserializacaoClick
       TabOrder = 2
+      OnClick = btnEnviarNFeSincronoDesserializacaoClick
     end
     object btnEnviarNFeSincronoDuplicidade: TButton
       Left = 12
@@ -52,8 +52,8 @@ object frmPrincipal: TfrmPrincipal
       Top = 144
       Width = 324
       Caption = 'Enviar NFe Síncrono - Duplicidade'
-      OnClick = btnEnviarNFeSincronoDuplicidadeClick
       TabOrder = 3
+      OnClick = btnEnviarNFeSincronoDuplicidadeClick
     end
     object btnConsultarSituacaoNFe: TButton
       Left = 12
@@ -61,8 +61,8 @@ object frmPrincipal: TfrmPrincipal
       Top = 191
       Width = 324
       Caption = 'Consulta Situação da NFe'
-      OnClick = btnConsultarSituacaoNFeClick
       TabOrder = 4
+      OnClick = btnConsultarSituacaoNFeClick
     end
     object btnEventoCancelamentoNFe: TButton
       Left = 12
@@ -70,8 +70,8 @@ object frmPrincipal: TfrmPrincipal
       Top = 240
       Width = 324
       Caption = 'Enviar o Evento de Cancelamento'
-      OnClick = btnEventoCancelamentoNFeClick
       TabOrder = 5
+      OnClick = btnEventoCancelamentoNFeClick
     end
     object btnImprimirDANFEcomUniDANFE: TButton
       Left = 8
@@ -79,8 +79,8 @@ object frmPrincipal: TfrmPrincipal
       Top = 288
       Width = 328
       Caption = 'Imprimir DANFE com UniDANFE'
-      OnClick = btnImprimirDANFEcomUniDANFEClick
       TabOrder = 6
+      OnClick = btnImprimirDANFEcomUniDANFEClick
     end
     object btnConsultarDistribuicaoDFe: TToggleBox
       Left = 12
@@ -88,8 +88,8 @@ object frmPrincipal: TfrmPrincipal
       Top = 334
       Width = 324
       Caption = 'Consultar Distribuição DFe'
-      OnChange = btnConsultarDistribuicaoDFeChange
       TabOrder = 7
+      OnClick = btnConsultarDistribuicaoDFeOnClick
     end
     object btnEnviarEventoManifestacaoNFe: TToggleBox
       Left = 12
@@ -97,8 +97,706 @@ object frmPrincipal: TfrmPrincipal
       Top = 374
       Width = 324
       Caption = 'Enviar Evento de Manifestação da NFe'
-      OnChange = btnEnviarEventoManifestacaoNFeChange
       TabOrder = 8
+      OnClick = btnEnviarEventoManifestacaoNFeClick
+    end
+    object btnEnviarNFeSincronoRTC: TButton
+      Left = 12
+      Height = 38
+      Top = 416
+      Width = 322
+      Caption = '(RTC) Enviar NFe modo Síncrono '
+      TabOrder = 9
+      OnClick = btnEnviarNFeSincronoRTCClick
+    end
+    object btnDesserializarRetornoConsultaDFe: TToggleBox
+      Left = 13
+      Height = 38
+      Top = 464
+      Width = 322
+      Caption = 'Desserializar retorno Consulta DFe'
+      TabOrder = 10
+      OnClick = btnDesserializarRetornoConsultaDFeClick
+    end
+    object btnEventoCCENFe: TButton
+      Left = 13
+      Height = 38
+      Top = 512
+      Width = 324
+      Caption = 'Enviar o Evento de CCE'
+      TabOrder = 11
+      OnClick = btnEventoCCENFeClick
+    end
+    object btnInutilizacaoNumeroNFe: TButton
+      Left = 14
+      Height = 38
+      Top = 559
+      Width = 323
+      Caption = 'Inutilização de Números da NFe'
+      TabOrder = 12
+      OnClick = btnInutilizacaoNumeroNFeClick
+    end
+    object btnEnviarNFeSincronoContingenciaSVC: TButton
+      Left = 12
+      Height = 38
+      Top = 603
+      Width = 324
+      Caption = 'Enviar NFe Contingência SVC'
+      TabOrder = 13
+      OnClick = btnEnviarNFeSincronoContingenciaSVCClick
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 376
+    Height = 614
+    Top = 0
+    Width = 344
+    Caption = 'NFC-e'
+    ClientHeight = 584
+    ClientWidth = 340
+    TabOrder = 1
+    OnClick = GroupBox2Click
+    object btnEventoCancelamentoNFCe: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 189
+      Width = 320
+      Caption = 'Enviar Evento de Cancelamento'
+      TabOrder = 0
+      OnClick = btnEventoCancelamentoNFCeClick
+    end
+    object btnEnviarNFCeOffline: TButton
+      Left = 8
+      Height = 38
+      Top = 147
+      Width = 320
+      Caption = 'Enviar NFCe - Contingência OffLine'
+      TabOrder = 1
+      OnClick = btnEnviarNFCeOfflineClick
+    end
+    object btnConsultaChaves: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 336
+      Width = 320
+      Caption = 'Consultar Chaves NFCe SEFAZ SP'
+      TabOrder = 2
+      OnClick = btnConsultaChavesClick
+    end
+    object btnDownloadXMLNFCeSEFAZSP: TButton
+      Left = 8
+      Height = 38
+      Top = 392
+      Width = 316
+      Caption = 'Download XML NFCe SEFAZ SP'
+      TabOrder = 3
+      OnClick = btnDownloadXMLNFCeSEFAZSPClick
+    end
+  end
+  object btnEnviarNFCeSincrono: TButton
+    Left = 384
+    Height = 38
+    Top = 80
+    Width = 324
+    Caption = 'Enviar NFCe modo Síncrono'
+    TabOrder = 2
+    OnClick = btnEnviarNFCeSincronoClick
+  end
+  object btnEnviarNFCeSincronoDesserializacao: TButton
+    Left = 384
+    Height = 38
+    Top = 128
+    Width = 324
+    Caption = 'Enviar NFCe Síncrono c/Desserialização'
+    TabOrder = 3
+    OnClick = btnEnviarNFCeSincronoDesserializacaoClick
+  end
+  object GroupBox3: TGroupBox
+    Left = 760
+    Height = 144
+    Top = 0
+    Width = 374
+    Caption = 'Diversos'
+    ClientHeight = 114
+    ClientWidth = 370
+    TabOrder = 4
+    OnClick = GroupBox3Click
+    object BtnCertificadoDigital: TButton
+      Left = 8
+      Height = 38
+      Top = 0
+      Width = 352
+      Caption = 'Exemplos Diversos Certificado Digital'
+      TabOrder = 0
+      OnClick = BtnCertificadoDigitalClick
+    end
+  end
+  object GroupBox4: TGroupBox
+    Left = 1136
+    Height = 1032
+    Top = 0
+    Width = 350
+    Caption = 'NFS-e'
+    ClientHeight = 1002
+    ClientWidth = 346
+    TabOrder = 5
+    object BtnBETHAGerarNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 0
+      Width = 328
+      Caption = 'Padrão BETHA - Gerar NFSe'
+      TabOrder = 0
+      OnClick = BtnBETHAGerarNFSeClick
+    end
+    object BtnBETHACancelarNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 48
+      Width = 328
+      Caption = 'Padrão BETHA - Cancelar NFSe'
+      TabOrder = 1
+      OnClick = BtnBETHACancelarNFSeClick
+    end
+    object BtnBETHAEnviarLoteRPSSincrono: TButton
+      Left = 8
+      Height = 38
+      Top = 95
+      Width = 328
+      Caption = 'Padrão BETHA - Enviar Lote RPS Sinc'
+      TabOrder = 2
+      OnClick = BtnBETHAEnviarLoteRPSSincronoClick
+    end
+    object BtnBETHAConsultarNfseRps: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 144
+      Width = 328
+      Caption = 'Padrão BETHA - Consultar NFSe p/RPS'
+      TabOrder = 3
+      OnClick = BtnBETHAConsultarNfseRpsClick
+    end
+    object BtnBETHAConsultarLoteRPS: TButton
+      Left = 8
+      Height = 38
+      Top = 193
+      Width = 328
+      Caption = 'Padrão BETHA - Consultar Lote RPS'
+      TabOrder = 4
+      OnClick = BtnBETHAConsultarLoteRPSClick
+    end
+    object BtnNACIONALGerarNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 240
+      Width = 328
+      Caption = 'NACIONAL - Gerar NFSe'
+      TabOrder = 5
+      OnClick = BtnNACIONALGerarNFSeClick
+    end
+    object BtnNACIONALCancelarNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 288
+      Width = 328
+      Caption = 'NACIONAL - Cancelar NFSe'
+      TabOrder = 6
+      OnClick = BtnNACIONALCancelarNFSeClick
+    end
+    object BtnNACIONALConsultarNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 333
+      Width = 328
+      Caption = 'NACIONAL - Consultar NFSe'
+      TabOrder = 7
+      OnClick = BtnNACIONALConsultarNFSeClick
+    end
+    object BtnNACIONALConsultarNFSePorRPS: TButton
+      Left = 8
+      Height = 38
+      Top = 384
+      Width = 328
+      Caption = 'NACIONAL - Consultar DPS'
+      TabOrder = 8
+      OnClick = BtnNACIONALConsultarNFSePorRPSClick
+    end
+    object BtnNACIONALConsultarPDFNFSe: TButton
+      Left = 8
+      Height = 38
+      Top = 432
+      Width = 328
+      Caption = 'NACIONAL - Consultar PDF NFSe'
+      TabOrder = 9
+      OnClick = BtnNACIONALConsultarPDFNFSeClick
+    end
+    object BtnNACIONALCancelarNFSeObjeto: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 521
+      Width = 328
+      Caption = 'NACIONAL - Cancelar NFSe c/Objeto'
+      TabOrder = 10
+      OnClick = BtnNACIONALCancelarNFSeObjetoClick
+    end
+    object BtnNACIONALConsultarNFSePorRPSObjeto: TButton
+      Left = 8
+      Height = 38
+      Top = 568
+      Width = 328
+      Caption = 'NACIONAL - Consultar DPS c/Objeto'
+      TabOrder = 11
+      OnClick = BtnNACIONALConsultarNFSePorRPSObjetoClick
+    end
+    object BtnNACIONALConsultarNFSeObjeto: TButton
+      Left = 9
+      Height = 38
+      Top = 616
+      Width = 327
+      Caption = 'NACIONAL - Consultar NFSe c/Objeto'
+      TabOrder = 12
+      OnClick = BtnNACIONALConsultarNFSeObjetoClick
+    end
+    object BtnNACIONALConsultarEventoNFSe: TToggleBox
+      Left = 9
+      Height = 38
+      Top = 661
+      Width = 327
+      Caption = 'NACIONAL - Consultar Eventos NFSe'
+      TabOrder = 13
+      OnClick = BtnNACIONALConsultarEventoNFSeClick
+    end
+    object BtnNACIONALConsultarDistribuicaoNFSeNSU: TToggleBox
+      Left = 9
+      Height = 62
+      Top = 704
+      Width = 321
+      Caption = 'NACIONAL - Consultar Chaves/NFSe´s por NSU e fazer download'
+      TabOrder = 14
+      OnClick = BtnNACIONALConsultarDistribuicaoNFSeNSUClick
+    end
+    object BtnNACIONALConsultarDistribuicaoEventosNFSe: TButton
+      Left = 8
+      Height = 72
+      Top = 768
+      Width = 317
+      Caption = 'NACIONAL - Consultar eventos NFSe e fazer download'
+      ParentFont = False
+      ParentShowHint = False
+      TabOrder = 15
+      OnClick = BtnNACIONALConsultarDistribuicaoEventosNFSeClick
+    end
+  end
+  object GroupBox5: TGroupBox
+    Left = 1489
+    Height = 468
+    Top = 0
+    Width = 376
+    Caption = 'NFCom'
+    ClientHeight = 438
+    ClientWidth = 372
+    TabOrder = 6
+    object BtnConsultarStatusNFCom: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 0
+      Width = 360
+      Caption = 'Consultar Status'
+      TabOrder = 0
+      OnClick = BtnConsultarStatusNFComClick
+    end
+    object BtnEnviarNFComSincrono: TButton
+      Left = 10
+      Height = 38
+      Top = 48
+      Width = 355
+      Caption = 'Enviar NFCom Síncrono'
+      TabOrder = 1
+      OnClick = BtnEnviarNFComSincronoClick
+    end
+    object Btn_ConsultaSituacaoNFCom: TButton
+      Left = 8
+      Height = 37
+      Top = 95
+      Width = 356
+      Caption = 'Consultar Situação'
+      TabOrder = 2
+      OnClick = Btn_ConsultaSituacaoNFComClick
+    end
+    object Btn_EnviarEventoCancelamentoNFCom: TButton
+      Left = 10
+      Height = 37
+      Top = 144
+      Width = 355
+      Caption = 'Enviar o Evento de Cancelamento'
+      TabOrder = 3
+      OnClick = Btn_EnviarEventoCancelamentoNFComClick
+    end
+  end
+  object GroupBox6: TGroupBox
+    Left = 1872
+    Height = 566
+    Top = 0
+    Width = 374
+    Caption = 'MDF-e'
+    ClientHeight = 536
+    ClientWidth = 370
+    TabOrder = 7
+    object BtnEnviarMDFeSincrono: TToggleBox
+      Left = 10
+      Height = 38
+      Top = 0
+      Width = 355
+      Caption = 'Enviar MDFe modo síncrono'
+      TabOrder = 0
+      OnClick = BtnEnviarMDFeSincronoClick
+    end
+    object BtnEnviarEventoCancelamentoMDFe: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 48
+      Width = 356
+      Caption = 'Enviar evento de cancelamento'
+      TabOrder = 1
+      OnClick = BtnEnviarEventoCancelamentoMDFeClick
+    end
+    object BtnEnviarEventoEncerramentoMDFe: TButton
+      Left = 10
+      Height = 38
+      Top = 92
+      Width = 355
+      Caption = 'Enviar evento de encerramento'
+      TabOrder = 2
+      OnClick = BtnEnviarEventoEncerramentoMDFeClick
+    end
+    object Btn_ConsultarStatusMDFe: TButton
+      Left = 10
+      Height = 37
+      Top = 134
+      Width = 354
+      Caption = 'Consulta Status'
+      TabOrder = 3
+      OnClick = Btn_ConsultarStatusMDFeClick
+    end
+    object Btn_ConsultarSituacaoMDFe: TButton
+      Left = 10
+      Height = 37
+      Top = 173
+      Width = 355
+      Caption = 'Consulta Situação'
+      TabOrder = 4
+      OnClick = Btn_ConsultarSituacaoMDFeClick
+    end
+    object Btn_ConsultaMdfeNaoEncerrado: TButton
+      Left = 7
+      Height = 37
+      Top = 211
+      Width = 356
+      Caption = 'Consultar MDFe''s não Encerrados'
+      TabOrder = 5
+      OnClick = Btn_ConsultaMdfeNaoEncerradoClick
+    end
+    object Btn_EventoPagamentoMDFe: TButton
+      Left = 10
+      Height = 37
+      Top = 250
+      Width = 354
+      Caption = 'Evento de pagamento MDFe'
+      TabOrder = 6
+      OnClick = Btn_EventoPagamentoMDFeClick
+    end
+    object Btn_EnviarEventoAlteracaoPagamentoMDFe: TButton
+      Left = 10
+      Height = 37
+      Top = 288
+      Width = 358
+      Caption = 'Enviar Evento Alteração Pagamento MDFe'
+      TabOrder = 7
+      OnClick = Btn_EnviarEventoAlteracaoPagamentoMDFeClick
+    end
+  end
+  object GroupBox7: TGroupBox
+    Left = 376
+    Height = 413
+    Top = 624
+    Width = 737
+    Caption = 'CTe e CTeOS'
+    ClientHeight = 383
+    ClientWidth = 733
+    TabOrder = 8
+    object Btn_ConsultaStatusCte: TButton
+      Left = 0
+      Height = 37
+      Top = 0
+      Width = 397
+      Caption = 'Consulta Status'
+      TabOrder = 0
+      OnClick = Btn_ConsultaStatusCteClick
+    end
+    object Btn_ConsultaSituacaoCTe: TButton
+      Left = 0
+      Height = 37
+      Top = 38
+      Width = 397
+      Caption = 'Consulta Situção'
+      TabOrder = 1
+      OnClick = Btn_ConsultaSituacaoCTeClick
+    end
+    object Btn_EnviarCteSincrono: TButton
+      Left = 0
+      Height = 37
+      Top = 77
+      Width = 397
+      Caption = 'Enviar CTe Sincrono'
+      TabOrder = 2
+      OnClick = Btn_EnviarCteSincronoClick
+    end
+    object Btn_EnviarCteOsSincrono: TButton
+      Left = 0
+      Height = 37
+      Top = 115
+      Width = 397
+      Caption = 'EnviarCTeOS Sincrono'
+      TabOrder = 3
+      OnClick = Btn_EnviarCteOsSincronoClick
+    end
+    object Btn_EventoCancelamentoCTe: TButton
+      Left = 0
+      Height = 37
+      Top = 154
+      Width = 397
+      Caption = 'Enviar Evento Cancelamento CTe'
+      TabOrder = 4
+      OnClick = Btn_EventoCancelamentoCTeClick
+    end
+    object Btn_EnviarEventoCancelamentoCTeOS: TButton
+      Left = 0
+      Height = 37
+      Top = 192
+      Width = 397
+      Caption = 'Enviar Evento Cancelamento CTeOS'
+      TabOrder = 5
+      OnClick = Btn_EnviarEventoCancelamentoCTeOSClick
+    end
+    object Btn_EventoCCeCTe: TButton
+      Left = 0
+      Height = 37
+      Top = 230
+      Width = 397
+      Caption = 'Evento de CC e CTe'
+      TabOrder = 6
+      OnClick = Btn_EventoCCeCTeClick
+    end
+    object Btn_InsucessoEntregaCTe: TButton
+      Left = 0
+      Height = 37
+      Top = 269
+      Width = 397
+      Caption = 'Evento do Insucesso na Entrega do CTe'
+      TabOrder = 7
+      OnClick = Btn_InsucessoEntregaCTeClick
+    end
+    object Btn_CancelamentoInsucessoEntregaCTe: TButton
+      Left = 0
+      Height = 38
+      Top = 307
+      Width = 397
+      Caption = 'Evento de Cancelamento do Insucesso do CTe'
+      TabOrder = 8
+      OnClick = Btn_CancelamentoInsucessoEntregaCTeClick
+    end
+    object Btn_DesserializandoXmlCTeOS: TButton
+      Left = 0
+      Height = 37
+      Top = 346
+      Width = 397
+      Caption = 'Desserializando XML do CTeOS'
+      TabOrder = 9
+      OnClick = Btn_DesserializandoXmlCTeOSClick
+    end
+    object Btn_EventoCteDesacordo: TButton
+      Left = 396
+      Height = 37
+      Top = 0
+      Width = 328
+      Caption = 'Evento de CTe em desacordo'
+      TabOrder = 10
+      OnClick = Btn_EventoCteDesacordoClick
+    end
+    object Btn_EventoEpecCte: TButton
+      Left = 396
+      Height = 37
+      Top = 38
+      Width = 328
+      Caption = 'Evento de EPEC CTe'
+      TabOrder = 11
+      OnClick = Btn_EventoEpecCteClick
+    end
+  end
+  object GroupBox8: TGroupBox
+    Left = 16
+    Height = 157
+    Top = 752
+    Width = 344
+    Caption = 'GNRE'
+    ClientHeight = 127
+    ClientWidth = 340
+    TabOrder = 9
+    OnClick = GroupBox8Click
+    object ConsultaConfigGNRE: TButton
+      Left = 0
+      Height = 37
+      Top = 0
+      Width = 336
+      Caption = 'Consultar Config UF'
+      TabOrder = 0
+      OnClick = ConsultaConfigGNREClick
+    end
+    object EnviarXmlGNRe: TButton
+      Left = 0
+      Height = 37
+      Top = 38
+      Width = 336
+      Caption = 'Enviar XML GNRE'
+      TabOrder = 1
+      OnClick = EnviarXmlGNReClick
+    end
+    object Btn_ConsultaResultadoLoteGNRE: TButton
+      Left = 0
+      Height = 37
+      Top = 77
+      Width = 336
+      Caption = 'Consultar Resultado Lote GNRE'
+      TabOrder = 2
+      OnClick = Btn_ConsultaResultadoLoteGNREClick
+    end
+  end
+  object BtnNACIONALGerarNFSeObjeto: TButton
+    Left = 1144
+    Height = 38
+    Top = 504
+    Width = 328
+    Caption = 'NACIONAL - Gerar NFSe c/Objeto'
+    TabOrder = 10
+    OnClick = BtnNACIONALGerarNFSeObjetoClick
+  end
+  object GroupBox9: TGroupBox
+    Left = 735
+    Height = 437
+    Top = 165
+    Width = 381
+    Caption = 'DC-e'
+    ClientHeight = 407
+    ClientWidth = 377
+    TabOrder = 11
+    object BtnConsultarStatusDCe: TToggleBox
+      Left = 8
+      Height = 38
+      Top = 8
+      Width = 360
+      Caption = 'Consultar Status'
+      TabOrder = 0
+      OnClick = BtnConsultarStatusDCeClick
+    end
+    object BtnEnviarDCe: TButton
+      Left = 8
+      Height = 38
+      Top = 48
+      Width = 357
+      Caption = 'EnviarDCe'
+      TabOrder = 1
+      OnClick = BtnEnviarDCeClick
+    end
+  end
+  object GroupBox10: TGroupBox
+    Left = 1489
+    Height = 470
+    Top = 480
+    Width = 381
+    Caption = 'CIOT'
+    ClientHeight = 440
+    ClientWidth = 377
+    TabOrder = 12
+    object BtnCIOTGerarIdOperacaoTransporte: TButton
+      Left = 8
+      Height = 38
+      Top = 8
+      Width = 360
+      Caption = 'Gerar ID Operação Transporte'
+      TabOrder = 0
+      OnClick = BtnCIOTGerarIdOperacaoTransporteClick
+    end
+    object BtnCIOTDeclaracaoOperacaoTransporte: TButton
+      Left = 8
+      Height = 38
+      Top = 48
+      Width = 360
+      Caption = 'Declaração Operação Transporte'
+      TabOrder = 1
+      OnClick = BtnCIOTDeclaracaoOperacaoTransporteClick
+    end
+    object BtnCIOTConsultarCIOTGerado: TButton
+      Left = 8
+      Height = 38
+      Top = 88
+      Width = 360
+      Caption = 'Consultar CIOT Gerado'
+      TabOrder = 2
+      OnClick = BtnCIOTConsultarCIOTGeradoClick
+    end
+    object BtnCIOTConsultarExcecao: TButton
+      Left = 8
+      Height = 38
+      Top = 128
+      Width = 360
+      Caption = 'Consultar Exceção'
+      TabOrder = 3
+      OnClick = BtnCIOTConsultarExcecaoClick
+    end
+    object BtnCIOTConsultarFrotaTransportador: TButton
+      Left = 8
+      Height = 38
+      Top = 168
+      Width = 360
+      Caption = 'Consultar Frota Transportador'
+      TabOrder = 4
+      OnClick = BtnCIOTConsultarFrotaTransportadorClick
+    end
+    object BtnCIOTConsultarSituacaoTransportador: TButton
+      Left = 8
+      Height = 38
+      Top = 208
+      Width = 360
+      Caption = 'Consultar Situação Transportador'
+      TabOrder = 5
+      OnClick = BtnCIOTConsultarSituacaoTransportadorClick
+    end
+    object BtnCIOTEncerramentoOperacaoTransporte: TButton
+      Left = 8
+      Height = 38
+      Top = 248
+      Width = 360
+      Caption = 'Encerramento Operação Transporte'
+      TabOrder = 6
+      OnClick = BtnCIOTEncerramentoOperacaoTransporteClick
+    end
+    object BtnCIOTCancelamentoOperacaoTransporte: TButton
+      Left = 8
+      Height = 38
+      Top = 288
+      Width = 360
+      Caption = 'Cancelamento Operação Transporte'
+      TabOrder = 7
+      OnClick = BtnCIOTCancelamentoOperacaoTransporteClick
+    end
+    object BtnCIOTRetificacaoOperacaoTransporte: TButton
+      Left = 8
+      Height = 38
+      Top = 328
+      Width = 360
+      Caption = 'Retificação Operação Transporte'
+      TabOrder = 8
+      OnClick = BtnCIOTRetificacaoOperacaoTransporteClick
     end
   end
 end
