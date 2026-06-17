@@ -4,6 +4,7 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.UMessenger
@@ -14,19 +15,34 @@ namespace Unimake.Business.DFe.Xml.UMessenger
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlRoot("retUMessenger", IsNullable = false)]
+    [XmlRoot("uMessengerResponse", IsNullable = false)]
     public class retUMessengerPublish : XMLBase
     {
-        [XmlAttribute("versao")]
-        public string Versao { get; set; } = "1.00";
+        [XmlElement("Mensagem")]
+        public List<retUMessengerMensagem> Mensagem { get; set; } = new List<retUMessengerMensagem>();
+    }
 
-        [XmlElement("MessageId")]
-        public string MessageId { get; set; }
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.UMessenger.retUMessengerMensagem")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    public class retUMessengerMensagem
+    {
+        [XmlAttribute("Id")]
+        public string Id { get; set; }
 
-        [XmlElement("LocalId")]
-        public string LocalId { get; set; }
+        [XmlElement("Status")]
+        public int Status { get; set; }
 
-        [XmlElement("RawResponse")]
-        public string RawResponse { get; set; }
+        [XmlElement("Motivo")]
+        public string Motivo { get; set; }
+
+        [XmlElement("messageID")]
+        public string MessageID { get; set; }
+
+        [XmlElement("DLLVersao")]
+        public string DLLVersao { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.DARE;
+using Unimake.Business.DFe.Xml.UMessenger;
 
 namespace Unimake.Business.DFe.ConsumirServico.Parsers
 {
@@ -105,14 +106,7 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
 
                 if (context.Config.Servico == Servico.UMessengerPublish)
                 {
-                    var dto = JsonConvert.DeserializeAnonymousType(context.ResponseContent, new { messageId = "", localId = "" });
-                    var ret = new Xml.UMessenger.retUMessengerPublish
-                    {
-                        MessageId = dto?.messageId,
-                        LocalId = dto?.localId,
-                        RawResponse = context.ResponseContent
-                    };
-                    return ret.GerarXML();
+                    return CriarXmlRetornoUMessenger(ref context);
                 }
 
                 return resultadoRetorno;
@@ -202,6 +196,61 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
             };
 
             return XMLUtility.Serializar<DARERetorno>(dareRetorno);
+        }
+
+        private XmlDocument CriarXmlRetornoUMessenger(ref ApiResponseContext context)
+        {
+            var mensagem = new retUMessengerMensagem
+            {
+                Status = context.Response.IsSuccessStatusCode ? 1 : 0,
+                Motivo = context.Response.IsSuccessStatusCode
+                    ? "Mensagem enviada com sucesso."
+                    : ExtrairMotivoErroUMessenger(context.ResponseContent),
+                DLLVersao = Info.VersaoDLL
+            };
+
+            if (context.Response.IsSuccessStatusCode)
+            {
+                var dto = JsonConvert.DeserializeAnonymousType(context.ResponseContent, new { messageId = "" });
+                mensagem.MessageID = dto?.messageId;
+            }
+
+            var ret = new retUMessengerPublish();
+            ret.Mensagem.Add(mensagem);
+            return ret.GerarXML();
+        }
+
+        private string ExtrairMotivoErroUMessenger(string responseContent)
+        {
+            var dto = JsonConvert.DeserializeAnonymousType(responseContent, new
+            {
+                errors = new string[0],
+                title = "",
+                type = "",
+                status = 0
+            });
+
+            if (dto?.errors != null && dto.errors.Length > 0 && !string.IsNullOrWhiteSpace(dto.errors[0]))
+            {
+                return dto.errors[0];
+            }
+
+            if (!string.IsNullOrWhiteSpace(dto?.title))
+            {
+                return dto.title;
+            }
+
+            if (!string.IsNullOrWhiteSpace(dto?.type))
+            {
+                return dto.type;
+            }
+
+            if (dto != null && dto.status > 0)
+            {
+                return "Falha ao publicar mensagem. HTTP " + dto.status + ".";
+            }
+
+            return "Falha ao publicar mensagem.";
         }
 
         private XmlDocument ProcessXmlWithSafeEncoding(HttpResponseMessage response)

@@ -29,7 +29,7 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
     {
         #region Private Fields
 
-        private List<retUMessengerPublish> _results;
+        private List<retUMessengerMensagem> _results;
 
         private static readonly JsonSerializerSettings JsonSettings = new JsonSerializerSettings
         {
@@ -44,7 +44,7 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
         /// <summary>
         /// Lista de resultados do envio (uma entrada por mensagem enviada)
         /// </summary>
-        public IReadOnlyList<retUMessengerPublish> Results => _results ?? new List<retUMessengerPublish>();
+        public IReadOnlyList<retUMessengerMensagem> Results => _results ?? new List<retUMessengerMensagem>();
 
         /// <summary>
         /// Resultado do primeiro (ou único) envio, desserializado de RetornoWSXML
@@ -129,7 +129,7 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
 #endif
         public override void Executar()
         {
-            _results = new List<retUMessengerPublish>();
+            _results = new List<retUMessengerMensagem>();
 
             var sendTextXml = new uMessengerSendTextMessage().LerXML<uMessengerSendTextMessage>(ConteudoXML);
             var nodes = ConteudoXML.GetElementsByTagName("SendTextMessage");
@@ -141,7 +141,13 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
                 Configuracoes.HttpContent = GerarJSONTextMessage(msgData);
                 base.Executar();
 
-                _results.Add(XMLUtility.Deserializar<retUMessengerPublish>(RetornoWSXML));
+                var retorno = XMLUtility.Deserializar<retUMessengerPublish>(RetornoWSXML);
+                var mensagem = retorno?.Mensagem != null && retorno.Mensagem.Count > 0
+                    ? retorno.Mensagem[0]
+                    : new retUMessengerMensagem();
+
+                mensagem.Id = !string.IsNullOrWhiteSpace(msgData.Id) ? msgData.Id : (i + 1).ToString("00");
+                _results.Add(mensagem);
 
                 if (i < nodes.Count - 1)
                 {
@@ -149,6 +155,14 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
                     Thread.Sleep(3000);
                 }
             }
+
+            var retornoFinal = new retUMessengerPublish
+            {
+                Mensagem = _results
+            };
+
+            RetornoWSXML = retornoFinal.GerarXML();
+            RetornoWSString = RetornoWSXML.OuterXml;
         }
 
         #endregion Public Methods
