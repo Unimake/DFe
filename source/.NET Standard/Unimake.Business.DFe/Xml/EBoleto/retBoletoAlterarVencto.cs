@@ -20,5 +20,10 @@ namespace Unimake.Business.DFe.Xml.EBoleto
     [XmlRoot("BoletoAlterarVenctoResponse", IsNullable = false)]
     public class retBoletoAlterarVencto : retEBoletoRetornoBasico
     {
+        /// <summary>
+        /// Versão da DLL
+        /// </summary>
+        [XmlElement]
+        public string DLLVersao { get; set; }
     }
 }

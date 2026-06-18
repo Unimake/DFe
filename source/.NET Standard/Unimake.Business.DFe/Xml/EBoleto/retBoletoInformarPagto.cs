@@ -20,5 +20,10 @@ namespace Unimake.Business.DFe.Xml.EBoleto
     [XmlRoot("BoletoInformarPagtoResponse", IsNullable = false)]
     public class retBoletoInformarPagto : retEBoletoRetornoBasico
     {
+        /// <summary>
+        /// Versão da DLL
+        /// </summary>
+        [XmlElement]
+        public string DLLVersao { get; set; }
     }
 }

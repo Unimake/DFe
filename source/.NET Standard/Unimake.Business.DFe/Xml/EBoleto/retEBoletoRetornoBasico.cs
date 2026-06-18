@@ -22,19 +22,14 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         /// <summary>
         /// Status do retorno
         /// </summary>
-        [XmlElement(Order = 0)]
+        [XmlElement]
         public int Status { get; set; }
 
         /// <summary>
         /// Motivo do retorno
         /// </summary>
-        [XmlElement(Order = 1)]
+        [XmlElement]
         public string Motivo { get; set; }
 
-        /// <summary>
-        /// Versão da DLL
-        /// </summary>
-        [XmlElement(Order = 99)]
-        public string DLLVersao { get; set; }
     }
 }

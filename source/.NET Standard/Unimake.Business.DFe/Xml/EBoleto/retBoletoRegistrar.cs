@@ -23,50 +23,56 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         /// <summary>
         /// Código de barras numérico
         /// </summary>
-        [XmlElement(Order = 2)]
+        [XmlElement]
         public string CodigoBarraNumerico { get; set; }
 
         /// <summary>
         /// Número do boleto no banco
         /// </summary>
-        [XmlElement(Order = 3)]
+        [XmlElement]
         public string NumeroNoBanco { get; set; }
 
         /// <summary>
         /// Linha digitável
         /// </summary>
-        [XmlElement(Order = 4)]
+        [XmlElement]
         public string LinhaDigitavel { get; set; }
 
         /// <summary>
         /// Indica se o PDF foi gerado com sucesso
         /// </summary>
-        [XmlElement(Order = 5)]
+        [XmlElement]
         public bool PdfContentSuccess { get; set; }
 
         /// <summary>
         /// Mensagem referente à geração do PDF
         /// </summary>
-        [XmlElement(Order = 6)]
+        [XmlElement]
         public string PdfContentMessage { get; set; }
 
         /// <summary>
         /// Conteúdo do PDF em base64
         /// </summary>
-        [XmlElement(Order = 7)]
+        [XmlElement]
         public string PdfContentBase64 { get; set; }
 
         /// <summary>
         /// Caminho do PDF gerado
         /// </summary>
-        [XmlElement(Order = 8)]
+        [XmlElement]
         public string PdfPath { get; set; }
 
         /// <summary>
         /// Conteúdo do QRCode
         /// </summary>
-        [XmlElement(Order = 9)]
+        [XmlElement]
         public retBoletoRegistrarQRCodeContent QRCodeContent { get; set; }
+
+        /// <summary>
+        /// Versão da DLL
+        /// </summary>
+        [XmlElement]
+        public string DLLVersao { get; set; }
     }
 
     /// <summary>
@@ -83,19 +89,19 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         /// <summary>
         /// Caminho ou conteúdo da imagem do QRCode
         /// </summary>
-        [XmlElement(Order = 0)]
+        [XmlElement]
         public string Image { get; set; }
 
         /// <summary>
         /// Indica se o QRCode foi gerado com sucesso
         /// </summary>
-        [XmlElement(Order = 1)]
+        [XmlElement]
         public bool Success { get; set; }
 
         /// <summary>
         /// Texto do QRCode
         /// </summary>
-        [XmlElement(Order = 2)]
+        [XmlElement]
         public string Text { get; set; }
     }
 }
