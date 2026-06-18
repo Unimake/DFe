@@ -450,3 +450,48 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[CIOTGerarIdOperacaoTransporte.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[CIOTDeclaracaoOperacaoTransporte.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[CIOTConsultarCIOTGerado.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[CIOTConsultarExcecao.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[CIOTConsultarFrotaTransportador.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[CIOTConsultarSituacaoTransportador.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[CIOTEncerramentoOperacaoTransporte.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[CIOTCancelamentoOperacaoTransporte.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[CIOTRetificacaoOperacaoTransporte.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
