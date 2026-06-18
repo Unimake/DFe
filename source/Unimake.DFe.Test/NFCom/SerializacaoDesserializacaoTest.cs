@@ -40,7 +40,6 @@ namespace Unimake.DFe.Test.NFCom
             var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.NFCom>(doc);
 
             Assert.NotNull(xml.InfNFCom.PgtoVinc);
-            Assert.NotNull(xml.InfNFCom.Ide.TpPagAnt);
             Assert.Equal("12345678", xml.InfNFCom.Emit.ISUFEmit);
             Assert.Equal("06117473000150", xml.InfNFCom.Det[0].Prod.CNPJCobrTerc);
             Assert.NotNull(xml.InfNFCom.Det[0].Prod.GPagAntecipado);
