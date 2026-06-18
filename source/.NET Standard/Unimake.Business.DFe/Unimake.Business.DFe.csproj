@@ -909,6 +909,8 @@
 		<None Remove="Xml\Schemas\ESocial\evtTSVInicio.xsd" />
 		<None Remove="Xml\Schemas\ESocial\evtTSVTermino.xsd" />
 		<None Remove="Xml\Schemas\ESocial\RetornoConsultaIdentificadoresEventos-v1_0_0.xsd" />
+		<None Remove="Xml\Schemas\ESocial\RetornoEnvioLoteEventos-v1_1_0.xsd" />
+		<None Remove="Xml\Schemas\ESocial\RetornoProcessamentoLote-v1_3_0.xsd" />
 		<None Remove="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorId-v1_0_0.xsd" />
 		<None Remove="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd" />
 		<None Remove="Xml\Schemas\ESocial\S_01_03_00\evtAdmissao.xsd" />
@@ -2379,6 +2381,8 @@
 		<EmbeddedResource Include="Xml\Schemas\ESocial\ConsultaLoteEventos-v1_0_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\EnvioLoteEventos-v1_1_1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\RetornoConsultaIdentificadoresEventos-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\RetornoEnvioLoteEventos-v1_1_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\RetornoProcessamentoLote-v1_3_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorId-v1_0_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_02_00\evtAdmissao.xsd" />
