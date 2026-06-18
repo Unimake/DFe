@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 
 namespace Unimake.Business.DFe.Servicos.CIOT
@@ -10,18 +11,32 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Consultar CIOT gerado
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.None)]
-    [ComDefaultInterface(typeof(IConsultarCIOTGeradoInterop))]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.ConsultarCIOTGerado")]
     [ComVisible(true)]
 #endif
-    public class ConsultarCIOTGerado : ServicoBase<Xml.CIOT.ConsultarCIOTGerado, RetConsultarCIOTGerado>, IInteropService<Xml.CIOT.ConsultarCIOTGerado>
-#if INTEROP
-        , IConsultarCIOTGeradoInterop
-#endif
+    public class ConsultarCIOTGerado : ServicoBase, IInteropService<Xml.CIOT.ConsultarCIOTGerado>
     {
+        private Xml.CIOT.ConsultarCIOTGerado envio;
+
+        /// <summary>
+        /// Objeto do XML de envio
+        /// </summary>
+        public Xml.CIOT.ConsultarCIOTGerado Envio => ObterEnvio(ref envio);
+
+        /// <summary>
+        /// Resultado do serviço
+        /// </summary>
+        public RetConsultarCIOTGerado Result => ObterResult<RetConsultarCIOTGerado>();
+
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTConsultarCIOTGerado;
+
+        /// <inheritdoc />
+        protected override string NomeRootRetorno => nameof(RetConsultarCIOTGerado);
+
+        /// <inheritdoc />
+        protected override XMLBase XmlEnvio => Envio;
 
         /// <summary>
         /// Construtor

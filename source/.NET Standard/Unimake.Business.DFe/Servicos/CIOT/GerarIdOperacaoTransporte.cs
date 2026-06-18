@@ -7,6 +7,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 using Unimake.Exceptions;
 
@@ -16,18 +17,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Gerar identificador da operação de transporte
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.None)]
-    [ComDefaultInterface(typeof(IGerarIdOperacaoTransporteInterop))]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.GerarIdOperacaoTransporte")]
     [ComVisible(true)]
 #endif
-    public class GerarIdOperacaoTransporte : ServicoBase<Xml.CIOT.GerarIdOperacaoTransporte, RetGerarIdOperacaoTransporte>, IInteropService<Xml.CIOT.GerarIdOperacaoTransporte>
-#if INTEROP
-        , IGerarIdOperacaoTransporteInterop
-#endif
+    public class GerarIdOperacaoTransporte : ServicoBase, IInteropService<Xml.CIOT.GerarIdOperacaoTransporte>
     {
         #region Private Fields
 
+        private Xml.CIOT.GerarIdOperacaoTransporte envio;
         private readonly System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc> GerarIdOperacaoTransporteProcs = new System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc>();
 
         #endregion Private Fields
@@ -35,9 +33,20 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         #region Public Properties
 
         /// <summary>
+        /// Objeto do XML de envio
+        /// </summary>
+        public Xml.CIOT.GerarIdOperacaoTransporte Envio => ObterEnvio(ref envio);
+
+        /// <summary>
+        /// Resultado do serviço
+        /// </summary>
+        public RetGerarIdOperacaoTransporte Result => ObterResult<RetGerarIdOperacaoTransporte>();
+
+        /// <summary>
         /// Propriedade contendo o XML da geração do identificador da operação de transporte com o retorno da API anexado para geração do arquivo de distribuição.
         /// A chave do dicionário é o identificador da operação retornado no campo <c>IdOperacaoTransporte</c>.
         /// </summary>
+        [System.Runtime.InteropServices.ComVisible(false)]
         public System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc> GerarIdOperacaoTransporteProcResults
         {
             get
@@ -95,6 +104,12 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTGerarIdOperacaoTransporte;
+
+        /// <inheritdoc />
+        protected override string NomeRootRetorno => nameof(RetGerarIdOperacaoTransporte);
+
+        /// <inheritdoc />
+        protected override XMLBase XmlEnvio => Envio;
 
         /// <summary>
         /// Construtor

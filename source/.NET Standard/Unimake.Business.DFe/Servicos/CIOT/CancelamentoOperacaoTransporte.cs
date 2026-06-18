@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 using Unimake.Exceptions;
 
@@ -12,18 +13,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Cancelar operação de transporte
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.None)]
-    [ComDefaultInterface(typeof(ICancelamentoOperacaoTransporteInterop))]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.CancelamentoOperacaoTransporte")]
     [ComVisible(true)]
 #endif
-    public class CancelamentoOperacaoTransporte : ServicoBase<Xml.CIOT.CancelamentoOperacaoTransporte, RetCancelamentoOperacaoTransporte>, IInteropService<Xml.CIOT.CancelamentoOperacaoTransporte>
-#if INTEROP
-        , ICancelamentoOperacaoTransporteInterop
-#endif
+    public class CancelamentoOperacaoTransporte : ServicoBase, IInteropService<Xml.CIOT.CancelamentoOperacaoTransporte>
     {
         #region Private Fields
 
+        private Xml.CIOT.CancelamentoOperacaoTransporte envio;
         private readonly System.Collections.Generic.Dictionary<string, CancelamentoOperacaoTransporteProc> CancelamentoOperacaoTransporteProcs = new System.Collections.Generic.Dictionary<string, CancelamentoOperacaoTransporteProc>();
 
         #endregion Private Fields
@@ -31,9 +29,20 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         #region Public Properties
 
         /// <summary>
+        /// Objeto do XML de envio
+        /// </summary>
+        public Xml.CIOT.CancelamentoOperacaoTransporte Envio => ObterEnvio(ref envio);
+
+        /// <summary>
+        /// Resultado do serviço
+        /// </summary>
+        public RetCancelamentoOperacaoTransporte Result => ObterResult<RetCancelamentoOperacaoTransporte>();
+
+        /// <summary>
         /// Propriedade contendo o XML do cancelamento de operação de transporte com o retorno da API anexado para geração do arquivo de distribuição.
         /// A chave do dicionário é o código de identificação da operação retornado no campo <c>CodigoIdentificacaoOperacao</c>.
         /// </summary>
+        [System.Runtime.InteropServices.ComVisible(false)]
         public System.Collections.Generic.Dictionary<string, CancelamentoOperacaoTransporteProc> CancelamentoOperacaoTransporteProcResults
         {
             get
@@ -91,6 +100,12 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTCancelamentoOperacaoTransporte;
+
+        /// <inheritdoc />
+        protected override string NomeRootRetorno => nameof(RetCancelamentoOperacaoTransporte);
+
+        /// <inheritdoc />
+        protected override XMLBase XmlEnvio => Envio;
 
         /// <summary>
         /// Construtor

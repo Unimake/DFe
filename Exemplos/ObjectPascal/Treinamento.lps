@@ -362,7 +362,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="47"/>
         <CursorPos X="19" Y="49"/>
-        <UsageCount Value="198"/>
+        <UsageCount Value="199"/>
       </Unit>
       <Unit>
         <Filename Value="enviareventocancelamentocteos.pas"/>
@@ -371,7 +371,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="35"/>
         <CursorPos X="50" Y="80"/>
-        <UsageCount Value="196"/>
+        <UsageCount Value="197"/>
       </Unit>
       <Unit>
         <Filename Value="eventoccecte.pas"/>
@@ -380,7 +380,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="95"/>
         <CursorPos Y="102"/>
-        <UsageCount Value="182"/>
+        <UsageCount Value="183"/>
       </Unit>
       <Unit>
         <Filename Value="insucessoentregacte.pas"/>
@@ -389,7 +389,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="65"/>
         <CursorPos Y="83"/>
-        <UsageCount Value="178"/>
+        <UsageCount Value="179"/>
       </Unit>
       <Unit>
         <Filename Value="cancelamentoinsucessoentregacte.pas"/>
@@ -398,7 +398,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="51"/>
         <CursorPos X="29" Y="87"/>
-        <UsageCount Value="166"/>
+        <UsageCount Value="167"/>
       </Unit>
       <Unit>
         <Filename Value="desserializandoxmlcteos.pas"/>
@@ -407,7 +407,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="18"/>
         <CursorPos Y="39"/>
-        <UsageCount Value="164"/>
+        <UsageCount Value="165"/>
       </Unit>
       <Unit>
         <Filename Value="eventoctedesacordo.pas"/>
@@ -416,7 +416,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos Y="32"/>
-        <UsageCount Value="145"/>
+        <UsageCount Value="146"/>
       </Unit>
       <Unit>
         <Filename Value="eventoepeccte.pas"/>
@@ -425,7 +425,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="54"/>
         <CursorPos X="38" Y="77"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="116"/>
       </Unit>
       <Unit>
         <Filename Value="consultaconfiggnre.pas"/>
@@ -434,7 +434,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="35"/>
         <CursorPos Y="58"/>
-        <UsageCount Value="114"/>
+        <UsageCount Value="115"/>
       </Unit>
       <Unit>
         <Filename Value="enviarxmlgnre.pas"/>
@@ -443,7 +443,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="119"/>
         <CursorPos X="32" Y="147"/>
-        <UsageCount Value="113"/>
+        <UsageCount Value="114"/>
       </Unit>
       <Unit>
         <Filename Value="consultaresultadolotegnre.pas"/>
@@ -452,7 +452,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="33"/>
         <CursorPos Y="86"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="98"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfceoffline.pas"/>
@@ -461,7 +461,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="291"/>
         <CursorPos X="37" Y="307"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="90"/>
       </Unit>
       <Unit>
         <Filename Value="EnviarNFeSincronoContingenciaSVC.pas"/>
@@ -469,7 +469,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="305"/>
         <CursorPos Y="345"/>
-        <UsageCount Value="83"/>
+        <UsageCount Value="84"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALGerarNfseObjeto.pas"/>
@@ -478,7 +478,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="65"/>
         <CursorPos X="38" Y="120"/>
-        <UsageCount Value="77"/>
+        <UsageCount Value="78"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALCancelarNFSeObjeto.pas"/>
@@ -486,7 +486,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="50"/>
         <CursorPos Y="76"/>
-        <UsageCount Value="77"/>
+        <UsageCount Value="78"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALConsultarNFSeRPSObjeto.pas"/>
@@ -494,7 +494,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <CursorPos X="86" Y="42"/>
-        <UsageCount Value="75"/>
+        <UsageCount Value="76"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALConsultarNFSeObjeto.pas"/>
@@ -502,7 +502,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="35"/>
         <CursorPos X="62" Y="68"/>
-        <UsageCount Value="74"/>
+        <UsageCount Value="75"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALConsultarEventoNFSe.pas"/>
@@ -510,7 +510,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="26"/>
         <CursorPos X="33" Y="54"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="72"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALConsultarDistribuicaoNFSeNSU.pas"/>
@@ -518,20 +518,20 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="93"/>
         <CursorPos X="55" Y="110"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
       </Unit>
       <Unit>
         <Filename Value="ConsultarChavesNFCeSP.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="19" Y="7"/>
-        <UsageCount Value="50"/>
+        <UsageCount Value="51"/>
       </Unit>
       <Unit>
         <Filename Value="DownloadXMLNFCeSEFAZSP.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="49"/>
+        <UsageCount Value="50"/>
       </Unit>
       <Unit>
         <Filename Value="NACIONALConsultarDistribuicaoEventosNFSe.pas"/>
@@ -539,7 +539,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="18"/>
         <CursorPos X="33" Y="43"/>
-        <UsageCount Value="37"/>
+        <UsageCount Value="38"/>
       </Unit>
       <Unit>
         <Filename Value="consultarstatusdce.pas"/>
@@ -548,7 +548,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="182"/>
         <CursorPos Y="212"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="33"/>
       </Unit>
       <Unit>
         <Filename Value="EnviarDCe.pas"/>
@@ -556,25 +556,24 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="182"/>
         <CursorPos Y="212"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="33"/>
       </Unit>
       <Unit>
         <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="5"/>
-        <CursorPos X="27" Y="47"/>
-        <UsageCount Value="26"/>
+        <TopLine Value="3"/>
+        <CursorPos Y="47"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="65"/>
-        <CursorPos X="41" Y="119"/>
-        <UsageCount Value="26"/>
+        <TopLine Value="29"/>
+        <CursorPos Y="55"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -583,7 +582,7 @@
         <EditorIndex Value="9"/>
         <TopLine Value="20"/>
         <CursorPos Y="30"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -592,7 +591,7 @@
         <EditorIndex Value="6"/>
         <TopLine Value="9"/>
         <CursorPos Y="28"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -601,7 +600,7 @@
         <EditorIndex Value="7"/>
         <TopLine Value="17"/>
         <CursorPos Y="31"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -610,16 +609,16 @@
         <EditorIndex Value="4"/>
         <TopLine Value="14"/>
         <CursorPos Y="28"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="CIOTEncerramentoOperacaoTransporte.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="34"/>
-        <CursorPos Y="66"/>
-        <UsageCount Value="26"/>
+        <TopLine Value="3"/>
+        <CursorPos Y="30"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -628,16 +627,17 @@
         <EditorIndex Value="8"/>
         <TopLine Value="15"/>
         <CursorPos Y="28"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="CIOTRetificacaoOperacaoTransporte.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
         <TopLine Value="21"/>
         <CursorPos Y="30"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -707,124 +707,124 @@
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="94" TopLine="49"/>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="32" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="33" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="34" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="36" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="37" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="39" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="41" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="42" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="28" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="29" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="30" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="31" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="32" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="33" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="34" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="36" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="37" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="39" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="41" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="42" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="43" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="45" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <Caret Line="47" TopLine="3"/>
       </Position>
       <Position>
         <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="95" TopLine="50"/>
+        <Caret Line="55" TopLine="29"/>
       </Position>
       <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="97" TopLine="52"/>
+        <Filename Value="CIOTConsultarCIOTGerado.pas"/>
+        <Caret Line="30" TopLine="20"/>
       </Position>
       <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="98" TopLine="53"/>
+        <Filename Value="CIOTConsultarExcecao.pas"/>
+        <Caret Line="28" TopLine="9"/>
       </Position>
       <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="99" TopLine="54"/>
+        <Filename Value="CIOTConsultarFrotaTransportador.pas"/>
+        <Caret Line="31" TopLine="17"/>
       </Position>
       <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="100" TopLine="79"/>
+        <Filename Value="CIOTConsultarSituacaoTransportador.pas"/>
+        <Caret Line="28" TopLine="14"/>
       </Position>
       <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="101" TopLine="79"/>
+        <Filename Value="CIOTEncerramentoOperacaoTransporte.pas"/>
+        <Caret Line="30" TopLine="3"/>
       </Position>
       <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="102" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="103" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="105" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="106" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="107" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="108" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="109" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="110" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="111" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="113" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="114" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="115" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="116" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="117" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="119" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="120" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="122" TopLine="100"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="124" TopLine="100"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="125" TopLine="100"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="126" TopLine="100"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="128" TopLine="100"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="145" TopLine="100"/>
-      </Position>
-      <Position>
-        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
-        <Caret Line="147" TopLine="102"/>
+        <Filename Value="CIOTCancelamentoOperacaoTransporte.pas"/>
+        <Caret Line="28" TopLine="15"/>
       </Position>
     </JumpHistory>
     <RunParams>
