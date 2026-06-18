@@ -848,21 +848,9 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #endif
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
         {
-            StreamWriter streamWriter = null;
-
-            try
+            using (var fileStream = new FileStream(Path.Combine(pasta, nomeArquivo), FileMode.Create, FileAccess.Write, FileShare.Read))
             {
-                var conteudoXmlDistribuicao = conteudoXML;
-
-                streamWriter = File.CreateText(Path.Combine(pasta, nomeArquivo));
-                streamWriter.Write(conteudoXmlDistribuicao);
-            }
-            finally
-            {
-                if (streamWriter != null)
-                {
-                    streamWriter.Close();
-                }
+                GravarXmlDistribuicao(fileStream, conteudoXML, Encoding.UTF8);
             }
         }
 
