@@ -10,11 +10,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Consultar exceção do transportador
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ClassInterface(ClassInterfaceType.None)]
+    [ComDefaultInterface(typeof(IConsultarExcecaoInterop))]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.ConsultarExcecao")]
     [ComVisible(true)]
 #endif
     public class ConsultarExcecao : ServicoBase<Xml.CIOT.ConsultarExcecao, RetConsultarExcecao>, IInteropService<Xml.CIOT.ConsultarExcecao>
+#if INTEROP
+        , IConsultarExcecaoInterop
+#endif
     {
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTConsultarExcecao;
@@ -55,7 +59,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.ConsultarExcecao xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.ConsultarExcecao xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

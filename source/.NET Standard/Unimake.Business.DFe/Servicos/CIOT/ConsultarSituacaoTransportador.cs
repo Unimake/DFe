@@ -10,11 +10,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Consultar situação do transportador no RNTRC
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ClassInterface(ClassInterfaceType.None)]
+    [ComDefaultInterface(typeof(IConsultarSituacaoTransportadorInterop))]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.ConsultarSituacaoTransportador")]
     [ComVisible(true)]
 #endif
     public class ConsultarSituacaoTransportador : ServicoBase<Xml.CIOT.ConsultarSituacaoTransportador, RetConsultarSituacaoTransportador>, IInteropService<Xml.CIOT.ConsultarSituacaoTransportador>
+#if INTEROP
+        , IConsultarSituacaoTransportadorInterop
+#endif
     {
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTConsultarSituacaoTransportador;
@@ -45,7 +49,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.ConsultarSituacaoTransportador xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.ConsultarSituacaoTransportador xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

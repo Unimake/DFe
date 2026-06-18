@@ -161,6 +161,16 @@ namespace TreinamentoDLL
             this.btnImprimirEventos = new System.Windows.Forms.Button();
             this.btnImprimirNFeCancelada = new System.Windows.Forms.Button();
             this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.btnRetificacaoOperacaoTransporte = new System.Windows.Forms.Button();
+            this.btnCancelamentoOperacaoTransporte = new System.Windows.Forms.Button();
+            this.btnEncerramentoOperacaoTransporte = new System.Windows.Forms.Button();
+            this.btnConsultarSituacaoTransportador = new System.Windows.Forms.Button();
+            this.btnConsultarFrotaTransportador = new System.Windows.Forms.Button();
+            this.btnConsultarExcecao = new System.Windows.Forms.Button();
+            this.btnConsultarCIOTGerado = new System.Windows.Forms.Button();
+            this.btnDeclaracaoOperacaoTransporte = new System.Windows.Forms.Button();
+            this.btnGerarIdOperacaoTransporte = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -177,6 +187,7 @@ namespace TreinamentoDLL
             this.tabPage11.SuspendLayout();
             this.tabPage12.SuspendLayout();
             this.tabPage13.SuspendLayout();
+            this.tabPage14.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnConsultaStatusNFe
@@ -1276,6 +1287,7 @@ namespace TreinamentoDLL
             this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Controls.Add(this.tabPage12);
             this.tabControl1.Controls.Add(this.tabPage13);
+            this.tabControl1.Controls.Add(this.tabPage14);
             this.tabControl1.Location = new System.Drawing.Point(12, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1798,6 +1810,124 @@ namespace TreinamentoDLL
             this.tabPage13.Text = "DCe";
             this.tabPage13.UseVisualStyleBackColor = true;
             // 
+            // tabPage14
+            // 
+            this.tabPage14.Controls.Add(this.btnRetificacaoOperacaoTransporte);
+            this.tabPage14.Controls.Add(this.btnCancelamentoOperacaoTransporte);
+            this.tabPage14.Controls.Add(this.btnEncerramentoOperacaoTransporte);
+            this.tabPage14.Controls.Add(this.btnConsultarSituacaoTransportador);
+            this.tabPage14.Controls.Add(this.btnConsultarFrotaTransportador);
+            this.tabPage14.Controls.Add(this.btnConsultarExcecao);
+            this.tabPage14.Controls.Add(this.btnConsultarCIOTGerado);
+            this.tabPage14.Controls.Add(this.btnDeclaracaoOperacaoTransporte);
+            this.tabPage14.Controls.Add(this.btnGerarIdOperacaoTransporte);
+            this.tabPage14.Location = new System.Drawing.Point(4, 29);
+            this.tabPage14.Name = "tabPage14";
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage14.Size = new System.Drawing.Size(1694, 997);
+            this.tabPage14.TabIndex = 13;
+            this.tabPage14.Text = "CIOT";
+            this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // btnRetificacaoOperacaoTransporte
+            // 
+            this.btnRetificacaoOperacaoTransporte.Location = new System.Drawing.Point(7, 368);
+            this.btnRetificacaoOperacaoTransporte.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnRetificacaoOperacaoTransporte.Name = "btnRetificacaoOperacaoTransporte";
+            this.btnRetificacaoOperacaoTransporte.Size = new System.Drawing.Size(296, 35);
+            this.btnRetificacaoOperacaoTransporte.TabIndex = 9;
+            this.btnRetificacaoOperacaoTransporte.Text = "Retificacao Operacao Transporte";
+            this.btnRetificacaoOperacaoTransporte.UseVisualStyleBackColor = true;
+            this.btnRetificacaoOperacaoTransporte.Click += new System.EventHandler(this.btnRetificacaoOperacaoTransporte_Click);
+            // 
+            // btnCancelamentoOperacaoTransporte
+            // 
+            this.btnCancelamentoOperacaoTransporte.Location = new System.Drawing.Point(7, 323);
+            this.btnCancelamentoOperacaoTransporte.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancelamentoOperacaoTransporte.Name = "btnCancelamentoOperacaoTransporte";
+            this.btnCancelamentoOperacaoTransporte.Size = new System.Drawing.Size(296, 35);
+            this.btnCancelamentoOperacaoTransporte.TabIndex = 8;
+            this.btnCancelamentoOperacaoTransporte.Text = "Cancelamento Operacao Transporte";
+            this.btnCancelamentoOperacaoTransporte.UseVisualStyleBackColor = true;
+            this.btnCancelamentoOperacaoTransporte.Click += new System.EventHandler(this.btnCancelamentoOperacaoTransporte_Click);
+            // 
+            // btnEncerramentoOperacaoTransporte
+            // 
+            this.btnEncerramentoOperacaoTransporte.Location = new System.Drawing.Point(7, 278);
+            this.btnEncerramentoOperacaoTransporte.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEncerramentoOperacaoTransporte.Name = "btnEncerramentoOperacaoTransporte";
+            this.btnEncerramentoOperacaoTransporte.Size = new System.Drawing.Size(296, 35);
+            this.btnEncerramentoOperacaoTransporte.TabIndex = 7;
+            this.btnEncerramentoOperacaoTransporte.Text = "Encerramento Operação Transporte";
+            this.btnEncerramentoOperacaoTransporte.UseVisualStyleBackColor = true;
+            this.btnEncerramentoOperacaoTransporte.Click += new System.EventHandler(this.btnEncerramentoOperacaoTransporte_Click);
+            // 
+            // btnConsultarSituacaoTransportador
+            // 
+            this.btnConsultarSituacaoTransportador.Location = new System.Drawing.Point(7, 233);
+            this.btnConsultarSituacaoTransportador.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnConsultarSituacaoTransportador.Name = "btnConsultarSituacaoTransportador";
+            this.btnConsultarSituacaoTransportador.Size = new System.Drawing.Size(296, 35);
+            this.btnConsultarSituacaoTransportador.TabIndex = 6;
+            this.btnConsultarSituacaoTransportador.Text = "Consultar Situacao Transportador";
+            this.btnConsultarSituacaoTransportador.UseVisualStyleBackColor = true;
+            this.btnConsultarSituacaoTransportador.Click += new System.EventHandler(this.btnConsultarSituacaoTransportador_Click);
+            // 
+            // btnConsultarFrotaTransportador
+            // 
+            this.btnConsultarFrotaTransportador.Location = new System.Drawing.Point(7, 188);
+            this.btnConsultarFrotaTransportador.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnConsultarFrotaTransportador.Name = "btnConsultarFrotaTransportador";
+            this.btnConsultarFrotaTransportador.Size = new System.Drawing.Size(296, 35);
+            this.btnConsultarFrotaTransportador.TabIndex = 5;
+            this.btnConsultarFrotaTransportador.Text = "Consultar Frota Transportador";
+            this.btnConsultarFrotaTransportador.UseVisualStyleBackColor = true;
+            this.btnConsultarFrotaTransportador.Click += new System.EventHandler(this.btnConsultarFrotaTransportador_Click);
+            // 
+            // btnConsultarExcecao
+            // 
+            this.btnConsultarExcecao.Location = new System.Drawing.Point(7, 143);
+            this.btnConsultarExcecao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnConsultarExcecao.Name = "btnConsultarExcecao";
+            this.btnConsultarExcecao.Size = new System.Drawing.Size(296, 35);
+            this.btnConsultarExcecao.TabIndex = 4;
+            this.btnConsultarExcecao.Text = "Consultar Excecao";
+            this.btnConsultarExcecao.UseVisualStyleBackColor = true;
+            this.btnConsultarExcecao.Click += new System.EventHandler(this.btnConsultarExcecao_Click);
+            // 
+            // btnConsultarCIOTGerado
+            // 
+            this.btnConsultarCIOTGerado.Location = new System.Drawing.Point(7, 98);
+            this.btnConsultarCIOTGerado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnConsultarCIOTGerado.Name = "btnConsultarCIOTGerado";
+            this.btnConsultarCIOTGerado.Size = new System.Drawing.Size(296, 35);
+            this.btnConsultarCIOTGerado.TabIndex = 3;
+            this.btnConsultarCIOTGerado.Text = "Consultar CIOT Gerado";
+            this.btnConsultarCIOTGerado.UseVisualStyleBackColor = true;
+            this.btnConsultarCIOTGerado.Click += new System.EventHandler(this.btnConsultarCIOTGerado_Click);
+            // 
+            // btnDeclaracaoOperacaoTransporte
+            // 
+            this.btnDeclaracaoOperacaoTransporte.Location = new System.Drawing.Point(7, 53);
+            this.btnDeclaracaoOperacaoTransporte.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDeclaracaoOperacaoTransporte.Name = "btnDeclaracaoOperacaoTransporte";
+            this.btnDeclaracaoOperacaoTransporte.Size = new System.Drawing.Size(296, 35);
+            this.btnDeclaracaoOperacaoTransporte.TabIndex = 2;
+            this.btnDeclaracaoOperacaoTransporte.Text = "Declaracao Operação Transporte";
+            this.btnDeclaracaoOperacaoTransporte.UseVisualStyleBackColor = true;
+            this.btnDeclaracaoOperacaoTransporte.Click += new System.EventHandler(this.btnDeclaracaoOperacaoTransporte_Click);
+            // 
+            // btnGerarIdOperacaoTransporte
+            // 
+            this.btnGerarIdOperacaoTransporte.Location = new System.Drawing.Point(7, 8);
+            this.btnGerarIdOperacaoTransporte.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnGerarIdOperacaoTransporte.Name = "btnGerarIdOperacaoTransporte";
+            this.btnGerarIdOperacaoTransporte.Size = new System.Drawing.Size(296, 35);
+            this.btnGerarIdOperacaoTransporte.TabIndex = 1;
+            this.btnGerarIdOperacaoTransporte.Text = "Gerar ID Operacao Transporte";
+            this.btnGerarIdOperacaoTransporte.UseVisualStyleBackColor = true;
+            this.btnGerarIdOperacaoTransporte.Click += new System.EventHandler(this.btnGerarIdOperacaoTransporte_Click);
+            // 
             // FormTestes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1824,6 +1954,7 @@ namespace TreinamentoDLL
             this.tabPage11.ResumeLayout(false);
             this.tabPage12.ResumeLayout(false);
             this.tabPage13.ResumeLayout(false);
+            this.tabPage14.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1962,6 +2093,16 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button btnImprimirNFeCancelada;
         private System.Windows.Forms.Button btnImprimirEventos;
         private System.Windows.Forms.Button btnImpDANFESemValorFiscal;
+        private System.Windows.Forms.TabPage tabPage14;
+        private System.Windows.Forms.Button btnDeclaracaoOperacaoTransporte;
+        private System.Windows.Forms.Button btnGerarIdOperacaoTransporte;
+        private System.Windows.Forms.Button btnRetificacaoOperacaoTransporte;
+        private System.Windows.Forms.Button btnCancelamentoOperacaoTransporte;
+        private System.Windows.Forms.Button btnEncerramentoOperacaoTransporte;
+        private System.Windows.Forms.Button btnConsultarSituacaoTransportador;
+        private System.Windows.Forms.Button btnConsultarFrotaTransportador;
+        private System.Windows.Forms.Button btnConsultarExcecao;
+        private System.Windows.Forms.Button btnConsultarCIOTGerado;
     }
 }
 

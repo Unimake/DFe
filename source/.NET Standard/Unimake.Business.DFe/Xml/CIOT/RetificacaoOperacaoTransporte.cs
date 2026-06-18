@@ -77,6 +77,30 @@ namespace Unimake.Business.DFe.Xml.CIOT
 #endif
         public bool ShouldSerializeOrigemDestino() => OrigemDestino?.Count > 0;
         public bool ShouldSerializeDadosCarga() => DadosCarga != null;
+
+#if INTEROP
+        public void AddOrigemDestino(OrigemDestino origemDestino)
+        {
+            if (OrigemDestino == null)
+            {
+                OrigemDestino = new List<OrigemDestino>();
+            }
+
+            OrigemDestino.Add(origemDestino);
+        }
+
+        public OrigemDestino GetOrigemDestino(int index)
+        {
+            if ((OrigemDestino?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return OrigemDestino[index];
+        }
+
+        public int GetOrigemDestinoCount => (OrigemDestino != null ? OrigemDestino.Count : 0);
+#endif
     }
 
 #if INTEROP

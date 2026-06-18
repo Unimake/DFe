@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -29,6 +32,11 @@ namespace Unimake.Business.DFe.Xml.CIOT
 #endif
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.VeiculoFrota")]
+    [ComVisible(true)]
+#endif
     public class VeiculoFrota
     {
         [XmlElement("PlacaVeiculo")]
@@ -38,6 +46,11 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool SituacaoVeiculoFrotaTransportador { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.Veiculo")]
+    [ComVisible(true)]
+#endif
     public class Veiculo
     {
         [XmlElement("Placa")]
@@ -52,6 +65,11 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeRNTRCVeiculo() => !string.IsNullOrEmpty(RNTRCVeiculo);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.OrigemDestino")]
+    [ComVisible(true)]
+#endif
     public class OrigemDestino
     {
         [XmlElement("Origem")]
@@ -70,6 +88,11 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeQtdViagens() => !string.IsNullOrEmpty(QtdViagens);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.Origem")]
+    [ComVisible(true)]
+#endif
     public class Origem
     {
         [XmlElement("CodigoMunicipioOrigem")]
@@ -90,6 +113,11 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeLongitudeOrigem() => !string.IsNullOrEmpty(LongitudeOrigem);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.Destino")]
+    [ComVisible(true)]
+#endif
     public class Destino
     {
         [XmlElement("CodigoMunicipioDestino")]
@@ -110,6 +138,11 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeLongitudeDestino() => !string.IsNullOrEmpty(LongitudeDestino);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.DadosCarga")]
+    [ComVisible(true)]
+#endif
     public class DadosCarga
     {
         [XmlElement("CodigoNaturezaCarga")]
@@ -128,14 +161,48 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializePesoCarga() => !string.IsNullOrEmpty(PesoCarga);
         public bool ShouldSerializeCodigoTipoCarga() => CodigoTipoCarga != 0;
         public bool ShouldSerializeContratantesCargFrac() => ContratantesCargFrac?.Count > 0;
+
+#if INTEROP
+        public void AddContratantesCargFrac(string contratante)
+        {
+            if (ContratantesCargFrac == null)
+            {
+                ContratantesCargFrac = new List<string>();
+            }
+
+            ContratantesCargFrac.Add(contratante);
+        }
+
+        public string GetContratantesCargFrac(int index)
+        {
+            if ((ContratantesCargFrac?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return ContratantesCargFrac[index];
+        }
+
+        public int GetContratantesCargFracCount => (ContratantesCargFrac != null ? ContratantesCargFrac.Count : 0);
+#endif
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.DadosCargaEncerramento")]
+    [ComVisible(true)]
+#endif
     public class DadosCargaEncerramento
     {
         [XmlElement("PesoTotalCarga")]
         public string PesoTotalCarga { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.InfPagamento")]
+    [ComVisible(true)]
+#endif
     public class InfPagamento
     {
         [XmlElement("TipoPagamento")]
@@ -218,6 +285,11 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeNumeroParcela() => !string.IsNullOrEmpty(NumeroParcela);
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.IndicadoresOperacionais")]
+    [ComVisible(true)]
+#endif
     public class IndicadoresOperacionais
     {
         [XmlElement("IndAltoDesempenho")]
@@ -230,6 +302,11 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ComposicaoVeicular { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.Retorno")]
+    [ComVisible(true)]
+#endif
     public class Retorno
     {
         [XmlElement("CpfCnpjTransportador")]
@@ -239,6 +316,11 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool Flag { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.Temp")]
+    [ComVisible(true)]
+#endif
     public class Temp
     {
         [XmlElement("error")]

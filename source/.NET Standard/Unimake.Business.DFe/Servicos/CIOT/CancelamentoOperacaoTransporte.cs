@@ -12,11 +12,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Cancelar operação de transporte
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ClassInterface(ClassInterfaceType.None)]
+    [ComDefaultInterface(typeof(ICancelamentoOperacaoTransporteInterop))]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.CancelamentoOperacaoTransporte")]
     [ComVisible(true)]
 #endif
     public class CancelamentoOperacaoTransporte : ServicoBase<Xml.CIOT.CancelamentoOperacaoTransporte, RetCancelamentoOperacaoTransporte>, IInteropService<Xml.CIOT.CancelamentoOperacaoTransporte>
+#if INTEROP
+        , ICancelamentoOperacaoTransporteInterop
+#endif
     {
         #region Private Fields
 
@@ -114,7 +118,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.CancelamentoOperacaoTransporte xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.CancelamentoOperacaoTransporte xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

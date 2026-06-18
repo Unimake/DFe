@@ -12,11 +12,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Encerrar operação de transporte
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ClassInterface(ClassInterfaceType.None)]
+    [ComDefaultInterface(typeof(IEncerramentoOperacaoTransporteInterop))]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.EncerramentoOperacaoTransporte")]
     [ComVisible(true)]
 #endif
     public class EncerramentoOperacaoTransporte : ServicoBase<Xml.CIOT.EncerramentoOperacaoTransporte, RetEncerramentoOperacaoTransporte>, IInteropService<Xml.CIOT.EncerramentoOperacaoTransporte>
+#if INTEROP
+        , IEncerramentoOperacaoTransporteInterop
+#endif
     {
         #region Private Fields
 
@@ -114,7 +118,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.EncerramentoOperacaoTransporte xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.EncerramentoOperacaoTransporte xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

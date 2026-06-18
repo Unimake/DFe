@@ -2,11 +2,12 @@ object frmPrincipal: TfrmPrincipal
   Left = 1078
   Height = 1061
   Top = 404
-  Width = 1906
+  Width = 2370
   Caption = 'Como utilizar a DLL Unimake.DFe para envio de NFe, NFCe, CTe, etc.'
   ClientHeight = 1061
-  ClientWidth = 1906
+  ClientWidth = 2370
   DesignTimePPI = 144
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   object GroupBox1: TGroupBox
     Left = 12
@@ -433,9 +434,9 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object GroupBox6: TGroupBox
-    Left = 1490
+    Left = 1872
     Height = 566
-    Top = 466
+    Top = 0
     Width = 374
     Caption = 'MDF-e'
     ClientHeight = 536
@@ -705,6 +706,97 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'EnviarDCe'
       TabOrder = 1
       OnClick = BtnEnviarDCeClick
+    end
+  end
+  object GroupBox10: TGroupBox
+    Left = 1489
+    Height = 470
+    Top = 480
+    Width = 381
+    Caption = 'CIOT'
+    ClientHeight = 440
+    ClientWidth = 377
+    TabOrder = 12
+    object BtnCIOTGerarIdOperacaoTransporte: TButton
+      Left = 8
+      Height = 38
+      Top = 8
+      Width = 360
+      Caption = 'Gerar ID Operação Transporte'
+      TabOrder = 0
+      OnClick = BtnCIOTGerarIdOperacaoTransporteClick
+    end
+    object BtnCIOTDeclaracaoOperacaoTransporte: TButton
+      Left = 8
+      Height = 38
+      Top = 48
+      Width = 360
+      Caption = 'Declaração Operação Transporte'
+      TabOrder = 1
+      OnClick = BtnCIOTDeclaracaoOperacaoTransporteClick
+    end
+    object BtnCIOTConsultarCIOTGerado: TButton
+      Left = 8
+      Height = 38
+      Top = 88
+      Width = 360
+      Caption = 'Consultar CIOT Gerado'
+      TabOrder = 2
+      OnClick = BtnCIOTConsultarCIOTGeradoClick
+    end
+    object BtnCIOTConsultarExcecao: TButton
+      Left = 8
+      Height = 38
+      Top = 128
+      Width = 360
+      Caption = 'Consultar Exceção'
+      TabOrder = 3
+      OnClick = BtnCIOTConsultarExcecaoClick
+    end
+    object BtnCIOTConsultarFrotaTransportador: TButton
+      Left = 8
+      Height = 38
+      Top = 168
+      Width = 360
+      Caption = 'Consultar Frota Transportador'
+      TabOrder = 4
+      OnClick = BtnCIOTConsultarFrotaTransportadorClick
+    end
+    object BtnCIOTConsultarSituacaoTransportador: TButton
+      Left = 8
+      Height = 38
+      Top = 208
+      Width = 360
+      Caption = 'Consultar Situação Transportador'
+      TabOrder = 5
+      OnClick = BtnCIOTConsultarSituacaoTransportadorClick
+    end
+    object BtnCIOTEncerramentoOperacaoTransporte: TButton
+      Left = 8
+      Height = 38
+      Top = 248
+      Width = 360
+      Caption = 'Encerramento Operação Transporte'
+      TabOrder = 6
+      OnClick = BtnCIOTEncerramentoOperacaoTransporteClick
+    end
+    object BtnCIOTCancelamentoOperacaoTransporte: TButton
+      Left = 8
+      Height = 38
+      Top = 288
+      Width = 360
+      Caption = 'Cancelamento Operação Transporte'
+      TabOrder = 7
+      OnClick = BtnCIOTCancelamentoOperacaoTransporteClick
+    end
+    object BtnCIOTRetificacaoOperacaoTransporte: TButton
+      Left = 8
+      Height = 38
+      Top = 328
+      Width = 360
+      Caption = 'Retificação Operação Transporte'
+      TabOrder = 8
+      OnClick = BtnCIOTRetificacaoOperacaoTransporteClick
     end
   end
 end

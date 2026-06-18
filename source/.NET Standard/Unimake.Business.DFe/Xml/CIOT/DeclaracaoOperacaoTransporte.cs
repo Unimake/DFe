@@ -156,6 +156,74 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeOrigemDestino() => OrigemDestino?.Count > 0;
         public bool ShouldSerializeDadosCarga() => DadosCarga != null;
         public bool ShouldSerializeInfIndicadoresOperacionais() => InfIndicadoresOperacionais != null;
+
+#if INTEROP
+        public void AddVeiculos(Veiculo veiculo)
+        {
+            if (Veiculos == null)
+            {
+                Veiculos = new List<Veiculo>();
+            }
+
+            Veiculos.Add(veiculo);
+        }
+
+        public Veiculo GetVeiculos(int index)
+        {
+            if ((Veiculos?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return Veiculos[index];
+        }
+
+        public int GetVeiculosCount => (Veiculos != null ? Veiculos.Count : 0);
+
+        public void AddOrigemDestino(OrigemDestino origemDestino)
+        {
+            if (OrigemDestino == null)
+            {
+                OrigemDestino = new List<OrigemDestino>();
+            }
+
+            OrigemDestino.Add(origemDestino);
+        }
+
+        public OrigemDestino GetOrigemDestino(int index)
+        {
+            if ((OrigemDestino?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return OrigemDestino[index];
+        }
+
+        public int GetOrigemDestinoCount => (OrigemDestino != null ? OrigemDestino.Count : 0);
+
+        public void AddInfPagamento(InfPagamento infPagamento)
+        {
+            if (InfPagamento == null)
+            {
+                InfPagamento = new List<InfPagamento>();
+            }
+
+            InfPagamento.Add(infPagamento);
+        }
+
+        public InfPagamento GetInfPagamento(int index)
+        {
+            if ((InfPagamento?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return InfPagamento[index];
+        }
+
+        public int GetInfPagamentoCount => (InfPagamento != null ? InfPagamento.Count : 0);
+#endif
     }
 
 #if INTEROP

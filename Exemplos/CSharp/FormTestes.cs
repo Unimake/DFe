@@ -20,6 +20,7 @@ using Unimake.Unidanfe.Configurations;
 using DANFe = Unimake.Unidanfe;
 using DFe = Unimake.Business.DFe;
 using ServicoCCG = Unimake.Business.DFe.Servicos.CCG;
+using ServicoCIOT = Unimake.Business.DFe.Servicos.CIOT;
 using ServicoCTe = Unimake.Business.DFe.Servicos.CTe;
 using ServicoCTeOS = Unimake.Business.DFe.Servicos.CTeOS;
 using ServicoDCe = Unimake.Business.DFe.Servicos.DCe;
@@ -33,6 +34,7 @@ using ServicoNFCom = Unimake.Business.DFe.Servicos.NFCom;
 using ServicoNFe = Unimake.Business.DFe.Servicos.NFe;
 using ServicoNFSe = Unimake.Business.DFe.Servicos.NFSe;
 using XmlCCG = Unimake.Business.DFe.Xml.CCG;
+using XmlCIOT = Unimake.Business.DFe.Xml.CIOT;
 using XmlCTe = Unimake.Business.DFe.Xml.CTe;
 using XmlCTeOS = Unimake.Business.DFe.Xml.CTeOS;
 using XmlDCe = Unimake.Business.DFe.Xml.DCe;
@@ -7319,7 +7321,7 @@ namespace TreinamentoDLL
                     Total = new XmlDCe.Total { VDC = 10 },
                     Transp = new XmlDCe.Transp
                     {
-                        ModTrans = "0",
+                        ModTrans = ModalidadeTransporteDCe.ContaPropria,
                         CNPJTransp = "00000000000199"
                     },
                     InfAdic = new XmlDCe.InfAdic
@@ -7473,7 +7475,7 @@ namespace TreinamentoDLL
             var xml = new EventoDCe
             {
                 Versao = "1.00",
-                InfEvento = new XmlDCe.InfEvento( new XmlDCe.DetEventoCanc
+                InfEvento = new XmlDCe.InfEvento(new XmlDCe.DetEventoCanc
                 {
                     VersaoEvento = "1.00",
                     NProt = "1352600000000001",
@@ -8129,7 +8131,7 @@ namespace TreinamentoDLL
                                     TpEnteGov = TipoEnteGovernamental.Municipio,
                                     TpOperGov = TipoOperacaoEnteGovernamental.FornecimentoPagamentoJaRealizado
                                 },
-                                GPagAntecipado = new GPagAntecipado //RTC
+                                GPagAntecipado = new XmlNFe.GPagAntecipado //RTC
                                 {
                                     RefNFe = new List<string>
                                     {
@@ -8604,6 +8606,444 @@ namespace TreinamentoDLL
             DANFe.UnidanfeServices.Execute(config);
 
             #endregion
+        }
+
+        private void btnGerarIdOperacaoTransporte_Click(object sender, EventArgs e)
+        {
+            var configuracao = CriarConfiguracaoCIOT();
+
+            var xml = new XmlCIOT.GerarIdOperacaoTransporte
+            {
+                CpfCnpj = "06117473000150"
+            };
+
+            var servico = new ServicoCIOT.GerarIdOperacaoTransporte(xml, configuracao);
+            servico.Executar();
+
+            //Gerar o idOperacaoTransporte para colocar no XML da Declaração
+            var idOperacaoTransporte = servico.Result.IdOperacaoTransporte;
+
+            MessageBox.Show(idOperacaoTransporte);
+        }
+
+        private void btnDeclaracaoOperacaoTransporte_Click(object sender, EventArgs e)
+        {
+            var configIdOperacao = CriarConfiguracaoCIOT();
+
+            var xmlIdOperacao = new XmlCIOT.GerarIdOperacaoTransporte
+            {
+                CpfCnpj = "06117473000150"
+            };
+
+            var servico = new ServicoCIOT.GerarIdOperacaoTransporte(xmlIdOperacao, configIdOperacao);
+            servico.Executar();
+
+            //Gerar o idOperacaoTransporte para colocar no XML da Declaração
+            var idOperacaoTransporte = servico.Result.IdOperacaoTransporte;
+
+            //Gerar a Declaração de Operação de Transporte e enviar
+            var configuracao = CriarConfiguracaoCIOT();
+
+            var xmlCIOT = new XmlCIOT.DeclaracaoOperacaoTransporte
+            {
+                IdOperacaoTransporte = idOperacaoTransporte,
+                TipoOperacao = TipoOperacaoTransporteCIOT.CargaLotacao,
+                CpfCnpjContratado = "12345678901",
+                RNTRCContratado = "012345678",
+                CpfCnpjContratante = "12345678000195",
+                RNTRCContratante = "987654321",
+                CpfCnpjDestinatario = "98765432000110",
+                ValorFrete = 1500.50,
+                DataDeclaracao = DateTimeOffset.Parse("2026-05-25T10:00:00-03:00"),
+                IndContingencia = false,
+                DataInicioViagem = new DateTime(2026, 05, 25),
+                DataFimViagem = new DateTime(2026, 05, 26),
+
+                Veiculos = new List<XmlCIOT.Veiculo>
+                {
+                    new XmlCIOT.Veiculo
+                    {
+                        Placa = "ABC1D23",
+                        RNTRCVeiculo = "012345678",
+                        NumeroEixos = "1"
+                    }
+                },
+
+                OrigemDestino = new List<XmlCIOT.OrigemDestino>
+                {
+                    new XmlCIOT.OrigemDestino
+                    {
+                        Origem= new XmlCIOT.Origem
+                        {
+                            CodigoMunicipioOrigem = "4118402",
+                            CepOrigem = "87700000",
+                            LatitudeOrigem = "-23.073300",
+                            LongitudeOrigem = "-52.465300"
+                        },
+                        Destino = new XmlCIOT.Destino
+                        {
+                            CodigoMunicipioDestino = "4106902",
+                            CepDestino = "80000000",
+                            LatitudeDestino = "-25.428400",
+                            LongitudeDestino = "-49.273300"
+                        },
+                        DistanciaPercorrida = "500"
+                    },
+                },
+
+                DadosCarga = new XmlCIOT.DadosCarga
+                {
+                    CodigoNaturezaCarga = "0001",
+                    PesoCarga = "1000.00",
+                    CodigoTipoCarga = TipoCargaCIOT.CargaGeral,
+                    ContratantesCargFrac = new List<string>
+                    {
+                        "12345678000195",
+                        "98765432000110"
+                    }
+                },
+
+                InfPagamento = new List<XmlCIOT.InfPagamento>
+                {
+                    new XmlCIOT.InfPagamento
+                    {
+                        TipoPagamento = TipoPagamentoFreteCIOT.ContaCorrente,
+                        ChavePix = "financeiro@example.com",
+                        CpfCnpjCreditado = "12345678901",
+                        IdentificadorPix = "PIX123456789",
+                        IndPagamento = 0
+                    }
+                },
+                InfIndicadoresOperacionais = new XmlCIOT.IndicadoresOperacionais
+                {
+                    IndAltoDesempenho = false,
+                    IndRetornoVazio = false,
+                    ComposicaoVeicular = false
+                }
+            };
+
+            var declaracaoOperacaoTransporte = new ServicoCIOT.DeclaracaoOperacaoTransporte(xmlCIOT, configuracao);
+            declaracaoOperacaoTransporte.Executar();
+
+            if (declaracaoOperacaoTransporte.Result.Codigo == "110") //110=Dados inseridos com sucesso
+            {
+                //Alguns dados retornados
+                MessageBox.Show("Protocolo: " + declaracaoOperacaoTransporte.Result.Protocolo + "\r\n" +
+                                "Aviso Transportador: " + declaracaoOperacaoTransporte.Result.AvisoTransportador + "\r\n" +
+                                "Código Verificador: " + declaracaoOperacaoTransporte.Result.CodigoVerificador + "\r\n" +
+                                "Id Operação Transporte: " + declaracaoOperacaoTransporte.Result.IdOperacaoTransporte);
+
+                //Gerar o XML de Distribuição para gravar em uma pasta qualquer para ter em segurança. Pode-se também gravar na base de dados. Fica a critério de cada um.
+                declaracaoOperacaoTransporte.GravarXmlDistribuicao(@"d:\testenfe\xmlciot");
+
+                //Pegar a string do XML de distribuição para gravar em banco de dados
+                var xmlDistribuicao = declaracaoOperacaoTransporte.DeclaracaoOperacaoTransporteProcResults[declaracaoOperacaoTransporte.Result.IdOperacaoTransporte].GerarXML().OuterXml;
+
+                //Para INTEROP, outras linguagens, utilize o método a seguir para pegar a string do XML
+                //var xmlDistribuicao = declaracaoOperacaoTransporte.DeclaracaoOperacaoTransporteProcResults[declaracaoOperacaoTransporte.Result.IdOperacaoTransporte].GerarXMLString();
+            }
+            else
+            {
+                if (declaracaoOperacaoTransporte.Result.Temp != null)
+                {
+                    MessageBox.Show(declaracaoOperacaoTransporte.Result.Temp.Error + " - " + declaracaoOperacaoTransporte.Result.Temp.Message);
+                }
+                else
+                {
+                    MessageBox.Show(declaracaoOperacaoTransporte.Result.Codigo + " - " + declaracaoOperacaoTransporte.Result.Mensagem);
+                }
+            }
+        }
+
+        private void btnConsultarCIOTGerado_Click(object sender, EventArgs e)
+        {
+            var configuracao = CriarConfiguracaoCIOT();
+
+            var xmlCIOT = new XmlCIOT.ConsultarCIOTGerado
+            {
+                CodigoIdentificacaoOperacao = "123456789012",
+                AnoDeclaracao = 2026
+            };
+
+            var consultarCIOTGerado = new ServicoCIOT.ConsultarCIOTGerado(xmlCIOT, configuracao);
+            consultarCIOTGerado.Executar();
+
+            if (consultarCIOTGerado.Result.Temp != null)
+            {
+                MessageBox.Show(consultarCIOTGerado.Result.Temp.Error + " - " + consultarCIOTGerado.Result.Temp.Message);
+            }
+            else
+            {
+                MessageBox.Show("Código Identificação Operação: " + consultarCIOTGerado.Result.CodigoIdentificacaoOperacao + "\r\n" +
+                                "Código: " + string.Join(", ", consultarCIOTGerado.Result.Codigo ?? new List<string>()) + "\r\n" +
+                                "Mensagem: " + string.Join(", ", consultarCIOTGerado.Result.Mensagem ?? new List<string>()));
+            }
+        }
+
+        private void btnConsultarExcecao_Click(object sender, EventArgs e)
+        {
+            var configuracao = CriarConfiguracaoCIOT();
+
+            var xmlCIOT = new XmlCIOT.ConsultarExcecao
+            {
+                CpfCnpjTransportador = "12345678901"
+            };
+
+            var consultarExcecao = new ServicoCIOT.ConsultarExcecao(xmlCIOT, configuracao);
+            consultarExcecao.Executar();
+
+            if (consultarExcecao.Result.Temp != null)
+            {
+                MessageBox.Show(consultarExcecao.Result.Temp.Error + " - " + consultarExcecao.Result.Temp.Message);
+            }
+            else if (consultarExcecao.Result.Retorno != null)
+            {
+                MessageBox.Show("CPF/CNPJ Transportador: " + consultarExcecao.Result.Retorno.CpfCnpjTransportador + "\r\n" +
+                                "Flag: " + consultarExcecao.Result.Retorno.Flag);
+            }
+            else
+            {
+                MessageBox.Show(consultarExcecao.Result.Codigo + " - " + consultarExcecao.Result.Mensagem);
+            }
+        }
+
+        private void btnConsultarFrotaTransportador_Click(object sender, EventArgs e)
+        {
+            var configuracao = CriarConfiguracaoCIOT();
+
+            var xmlCIOT = new XmlCIOT.ConsultarFrotaTransportador
+            {
+                CpfCnpjInteressado = "12345678000195",
+                CpfCnpjTransportador = "12345678901",
+                RNTRCTransportador = "012345678",
+                Placas = new List<string>
+                {
+                    "ABC1D23"
+                }
+            };
+
+            var consultarFrotaTransportador = new ServicoCIOT.ConsultarFrotaTransportador(xmlCIOT, configuracao);
+            consultarFrotaTransportador.Executar();
+
+            if (consultarFrotaTransportador.Result.Temp != null)
+            {
+                MessageBox.Show(consultarFrotaTransportador.Result.Temp.Error + " - " + consultarFrotaTransportador.Result.Temp.Message);
+            }
+            else
+            {
+                var frota = "";
+
+                if (consultarFrotaTransportador.Result.Frota != null)
+                {
+                    foreach (var veiculoFrota in consultarFrotaTransportador.Result.Frota)
+                    {
+                        frota += veiculoFrota.PlacaVeiculo + " - " + veiculoFrota.SituacaoVeiculoFrotaTransportador + "\r\n";
+                    }
+                }
+
+                MessageBox.Show("CPF/CNPJ Transportador: " + consultarFrotaTransportador.Result.CpfCnpjTransportador + "\r\n" +
+                                "RNTRC Transportador: " + consultarFrotaTransportador.Result.RNTRCTransportador + "\r\n" +
+                                "Nome/Razão Social Transportador: " + consultarFrotaTransportador.Result.NomeRazaoSocialTransportador + "\r\n" +
+                                "RNTRC Ativo: " + consultarFrotaTransportador.Result.RNTRCAtivo + "\r\n" +
+                                "Frota: \r\n" + frota);
+            }
+        }
+
+        private void btnConsultarSituacaoTransportador_Click(object sender, EventArgs e)
+        {
+            var configuracao = CriarConfiguracaoCIOT();
+
+            var xmlCIOT = new XmlCIOT.ConsultarSituacaoTransportador
+            {
+                CpfCnpjInteressado = "12345678000195",
+                CpfCnpjTransportador = "12345678901",
+                RNTRCTransportador = "012345678"
+            };
+
+            var consultarSituacaoTransportador = new ServicoCIOT.ConsultarSituacaoTransportador(xmlCIOT, configuracao);
+            consultarSituacaoTransportador.Executar();
+
+            if (consultarSituacaoTransportador.Result.Temp != null)
+            {
+                MessageBox.Show(consultarSituacaoTransportador.Result.Temp.Error + " - " + consultarSituacaoTransportador.Result.Temp.Message);
+            }
+            else
+            {
+                MessageBox.Show("CPF/CNPJ Transportador: " + consultarSituacaoTransportador.Result.CpfCnpjTransportador + "\r\n" +
+                                "RNTRC Transportador: " + consultarSituacaoTransportador.Result.RNTRCTransportador + "\r\n" +
+                                "Nome/Razão Social Transportador: " + consultarSituacaoTransportador.Result.NomeRazaoSocialTransportador + "\r\n" +
+                                "RNTRC Ativo: " + consultarSituacaoTransportador.Result.RNTRCAtivo + "\r\n" +
+                                "Tipo Transportador: " + consultarSituacaoTransportador.Result.TipoTransportador + "\r\n" +
+                                "Equiparado TAC: " + consultarSituacaoTransportador.Result.EquiparadoTAC);
+            }
+        }
+
+        private void btnEncerramentoOperacaoTransporte_Click(object sender, EventArgs e)
+        {
+            var configuracao = CriarConfiguracaoCIOT();
+
+            var xmlCIOT = new XmlCIOT.EncerramentoOperacaoTransporte
+            {
+                CodigoIdentificacaoOperacao = "1234567890123456",
+
+                OrigemDestino = new List<XmlCIOT.OrigemDestino>
+                {
+                    new XmlCIOT.OrigemDestino
+                    {
+                        Origem = new XmlCIOT.Origem
+                        {
+                            CodigoMunicipioOrigem = "4118402",
+                            CepOrigem = "87700000"
+                        },
+                        Destino = new XmlCIOT.Destino
+                        {
+                            CodigoMunicipioDestino = "4106902",
+                            CepDestino = "80000000"
+                        },
+                        DistanciaPercorrida = "500",
+                        QtdViagens = "1"
+                    }
+                },
+
+                DadosCarga = new XmlCIOT.DadosCargaEncerramento
+                {
+                    PesoTotalCarga = "1000.00"
+                }
+            };
+
+            var encerramentoOperacaoTransporte = new ServicoCIOT.EncerramentoOperacaoTransporte(xmlCIOT, configuracao);
+            encerramentoOperacaoTransporte.Executar();
+
+            if (encerramentoOperacaoTransporte.Result.Temp != null)
+            {
+                MessageBox.Show(encerramentoOperacaoTransporte.Result.Temp.Error + " - " + encerramentoOperacaoTransporte.Result.Temp.Message);
+            }
+            else
+            {
+                MessageBox.Show("Protocolo: " + encerramentoOperacaoTransporte.Result.Protocolo + "\r\n" +
+                                "Código Identificação Operação: " + encerramentoOperacaoTransporte.Result.CodigoIdentificacaoOperacao + "\r\n" +
+                                "Data Encerramento: " + encerramentoOperacaoTransporte.Result.DataEncerramento + "\r\n" +
+                                "Código: " + encerramentoOperacaoTransporte.Result.Codigo + "\r\n" +
+                                "Mensagem: " + encerramentoOperacaoTransporte.Result.Mensagem);
+
+                //Gerar o XML de Distribuição para gravar em uma pasta qualquer para ter em segurança. Pode-se também gravar na base de dados. Fica a critério de cada um.
+                encerramentoOperacaoTransporte.GravarXmlDistribuicao(@"d:\testenfe\xmlciot");
+
+                //Pegar a string do XML de distribuição para gravar em banco de dados
+                var xmlDistribuicao = encerramentoOperacaoTransporte.EncerramentoOperacaoTransporteProcResult.GerarXML().OuterXml;
+
+                //Para INTEROP, outras linguagens, utilize o método a seguir para pegar a string do XML
+                //var xmlDistribuicao = encerramentoOperacaoTransporte.EncerramentoOperacaoTransporteProcResult.GerarXMLString();
+            }
+        }
+
+        private void btnCancelamentoOperacaoTransporte_Click(object sender, EventArgs e)
+        {
+            var configuracao = CriarConfiguracaoCIOT();
+
+            var xmlCIOT = new XmlCIOT.CancelamentoOperacaoTransporte
+            {
+                CodigoIdentificacaoOperacao = "1234567890123456",
+                MotivoCancelamento = "Operacao nao realizada"
+            };
+
+            var cancelamentoOperacaoTransporte = new ServicoCIOT.CancelamentoOperacaoTransporte(xmlCIOT, configuracao);
+            cancelamentoOperacaoTransporte.Executar();
+
+            if (cancelamentoOperacaoTransporte.Result.Temp != null)
+            {
+                MessageBox.Show(cancelamentoOperacaoTransporte.Result.Temp.Error + " - " + cancelamentoOperacaoTransporte.Result.Temp.Message);
+            }
+            else
+            {
+                MessageBox.Show("Protocolo: " + cancelamentoOperacaoTransporte.Result.Protocolo + "\r\n" +
+                                "Código Identificação Operação: " + cancelamentoOperacaoTransporte.Result.CodigoIdentificacaoOperacao + "\r\n" +
+                                "Data Cancelamento: " + cancelamentoOperacaoTransporte.Result.DataCancelamento + "\r\n" +
+                                "Código: " + cancelamentoOperacaoTransporte.Result.Codigo + "\r\n" +
+                                "Mensagem: " + cancelamentoOperacaoTransporte.Result.Mensagem);
+
+                //Gerar o XML de Distribuição para gravar em uma pasta qualquer para ter em segurança. Pode-se também gravar na base de dados. Fica a critério de cada um.
+                cancelamentoOperacaoTransporte.GravarXmlDistribuicao(@"d:\testenfe\xmlciot");
+
+                //Pegar a string do XML de distribuição para gravar em banco de dados
+                var xmlDistribuicao = cancelamentoOperacaoTransporte.CancelamentoOperacaoTransporteProcResult.GerarXML().OuterXml;
+
+                //Para INTEROP, outras linguagens, utilize o método a seguir para pegar a string do XML
+                //var xmlDistribuicao = cancelamentoOperacaoTransporte.CancelamentoOperacaoTransporteProcResult.GerarXMLString();
+            }
+        }
+
+        private void btnRetificacaoOperacaoTransporte_Click(object sender, EventArgs e)
+        {
+            var configuracao = CriarConfiguracaoCIOT();
+
+            var xmlCIOT = new XmlCIOT.RetificacaoOperacaoTransporte
+            {
+                CodigoIdentificacaoOperacao = "1234567890123456",
+                ValorFrete = 1550.75,
+                DataFimViagem = new DateTime(2026, 05, 27),
+
+                OrigemDestino = new List<XmlCIOT.OrigemDestino>
+                {
+                    new XmlCIOT.OrigemDestino
+                    {
+                        Origem = new XmlCIOT.Origem
+                        {
+                            CodigoMunicipioOrigem = "4118402",
+                            CepOrigem = "87700000"
+                        },
+                        Destino = new XmlCIOT.Destino
+                        {
+                            CodigoMunicipioDestino = "4106902",
+                            CepDestino = "80000000"
+                        }
+                    }
+                },
+
+                DadosCarga = new XmlCIOT.DadosCarga
+                {
+                    CodigoNaturezaCarga = "0001",
+                    PesoCarga = "1100.00",
+                    CodigoTipoCarga = TipoCargaCIOT.CargaGeral
+                }
+            };
+
+            var retificacaoOperacaoTransporte = new ServicoCIOT.RetificacaoOperacaoTransporte(xmlCIOT, configuracao);
+            retificacaoOperacaoTransporte.Executar();
+
+            if (retificacaoOperacaoTransporte.Result.Temp != null)
+            {
+                MessageBox.Show(retificacaoOperacaoTransporte.Result.Temp.Error + " - " + retificacaoOperacaoTransporte.Result.Temp.Message);
+            }
+            else
+            {
+                MessageBox.Show("Protocolo: " + retificacaoOperacaoTransporte.Result.Protocolo + "\r\n" +
+                                "Código Identificação Operação: " + retificacaoOperacaoTransporte.Result.CodigoIdentificacaoOperacao + "\r\n" +
+                                "Data Retificação: " + retificacaoOperacaoTransporte.Result.DataRetificacao + "\r\n" +
+                                "Código: " + retificacaoOperacaoTransporte.Result.Codigo + "\r\n" +
+                                "Mensagem: " + retificacaoOperacaoTransporte.Result.Mensagem);
+
+                //Gerar o XML de Distribuição para gravar em uma pasta qualquer para ter em segurança. Pode-se também gravar na base de dados. Fica a critério de cada um.
+                retificacaoOperacaoTransporte.GravarXmlDistribuicao(@"d:\testenfe\xmlciot");
+
+                //Pegar a string do XML de distribuição para gravar em banco de dados
+                var xmlDistribuicao = retificacaoOperacaoTransporte.RetificacaoOperacaoTransporteProcResult.GerarXML().OuterXml;
+
+                //Para INTEROP, outras linguagens, utilize o método a seguir para pegar a string do XML
+                //var xmlDistribuicao = retificacaoOperacaoTransporte.RetificacaoOperacaoTransporteProcResult.GerarXMLString();
+            }
+        }
+
+        private Configuracao CriarConfiguracaoCIOT()
+        {
+            return new Configuracao
+            {
+                TipoDFe = TipoDFe.CIOT,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CodigoUF = (int)UFBrasil.AN,
+                CertificadoDigital = CertificadoSelecionado
+            };
         }
     }
 }

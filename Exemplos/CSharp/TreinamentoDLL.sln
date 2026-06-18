@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36401.2 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.8.11904.113 insiders
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreinamentoDLL", "TreinamentoDLL.csproj", "{B7454909-E931-4CA0-9E71-6DF758B4B7FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unimake.Business.DFe", "..\..\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj", "{1D1B538A-E5C7-E611-E541-1ABC9F906A0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B7454909-E931-4CA0-9E71-6DF758B4B7FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7454909-E931-4CA0-9E71-6DF758B4B7FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7454909-E931-4CA0-9E71-6DF758B4B7FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D1B538A-E5C7-E611-E541-1ABC9F906A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D1B538A-E5C7-E611-E541-1ABC9F906A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D1B538A-E5C7-E611-E541-1ABC9F906A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D1B538A-E5C7-E611-E541-1ABC9F906A0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

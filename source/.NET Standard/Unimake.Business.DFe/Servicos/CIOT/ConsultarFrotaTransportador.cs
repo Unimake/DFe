@@ -10,11 +10,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Consultar frota do transportador
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ClassInterface(ClassInterfaceType.None)]
+    [ComDefaultInterface(typeof(IConsultarFrotaTransportadorInterop))]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.ConsultarFrotaTransportador")]
     [ComVisible(true)]
 #endif
     public class ConsultarFrotaTransportador : ServicoBase<Xml.CIOT.ConsultarFrotaTransportador, RetConsultarFrotaTransportador>, IInteropService<Xml.CIOT.ConsultarFrotaTransportador>
+#if INTEROP
+        , IConsultarFrotaTransportadorInterop
+#endif
     {
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTConsultarFrotaTransportador;
@@ -45,7 +49,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.ConsultarFrotaTransportador xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.ConsultarFrotaTransportador xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

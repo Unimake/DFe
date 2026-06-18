@@ -25,6 +25,30 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlArray("Placas")]
         [XmlArrayItem("Placa")]
         public List<string> Placas { get; set; }
+
+#if INTEROP
+        public void AddPlacas(string placa)
+        {
+            if (Placas == null)
+            {
+                Placas = new List<string>();
+            }
+
+            Placas.Add(placa);
+        }
+
+        public string GetPlacas(int index)
+        {
+            if ((Placas?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return Placas[index];
+        }
+
+        public int GetPlacasCount => (Placas != null ? Placas.Count : 0);
+#endif
     }
 
 #if INTEROP
@@ -66,5 +90,19 @@ namespace Unimake.Business.DFe.Xml.CIOT
 
         public bool ShouldSerializeTemp() => Temp != null;
         public bool ShouldSerializeRNTRCAtivo() => Temp == null;
+
+#if INTEROP
+        public VeiculoFrota GetFrota(int index)
+        {
+            if ((Frota?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return Frota[index];
+        }
+
+        public int GetFrotaCount => (Frota != null ? Frota.Count : 0);
+#endif
     }
 }
