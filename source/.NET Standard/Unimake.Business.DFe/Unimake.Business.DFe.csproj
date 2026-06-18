@@ -1410,6 +1410,8 @@
 		<None Remove="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODEB\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODEB\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PRONIM\CNC_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PRONIM\tiposCnc_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PUBLICA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\QUASAR\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
@@ -3530,16 +3532,38 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODEB\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODEB\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\DPS_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\evento_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\CNC_v1.00.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\DPS_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\evento_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\nfse.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\NFSe_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\NFSe_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\nfse_v2-03.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\pedRegEvento_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposComplexos_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposEventos_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposSimples_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\xmldsig-core-schema.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\pedRegEvento_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposCnc_v1.00.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposComplexos_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposEventos_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposSimples_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\xmldsig-core-schema.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\xmldsig-core-schema20020212.xsd" />
