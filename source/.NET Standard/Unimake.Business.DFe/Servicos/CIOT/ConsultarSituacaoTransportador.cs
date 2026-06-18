@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 
 namespace Unimake.Business.DFe.Servicos.CIOT
@@ -10,18 +11,32 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Consultar situação do transportador no RNTRC
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.None)]
-    [ComDefaultInterface(typeof(IConsultarSituacaoTransportadorInterop))]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.ConsultarSituacaoTransportador")]
     [ComVisible(true)]
 #endif
-    public class ConsultarSituacaoTransportador : ServicoBase<Xml.CIOT.ConsultarSituacaoTransportador, RetConsultarSituacaoTransportador>, IInteropService<Xml.CIOT.ConsultarSituacaoTransportador>
-#if INTEROP
-        , IConsultarSituacaoTransportadorInterop
-#endif
+    public class ConsultarSituacaoTransportador : ServicoBase, IInteropService<Xml.CIOT.ConsultarSituacaoTransportador>
     {
+        private Xml.CIOT.ConsultarSituacaoTransportador envio;
+
+        /// <summary>
+        /// Objeto do XML de envio
+        /// </summary>
+        public Xml.CIOT.ConsultarSituacaoTransportador Envio => ObterEnvio(ref envio);
+
+        /// <summary>
+        /// Resultado do serviço
+        /// </summary>
+        public RetConsultarSituacaoTransportador Result => ObterResult<RetConsultarSituacaoTransportador>();
+
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTConsultarSituacaoTransportador;
+
+        /// <inheritdoc />
+        protected override string NomeRootRetorno => nameof(RetConsultarSituacaoTransportador);
+
+        /// <inheritdoc />
+        protected override XMLBase XmlEnvio => Envio;
 
         /// <summary>
         /// Construtor

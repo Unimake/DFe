@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.06.16.1001</AssemblyVersion>
-		<FileVersion>2026.06.16.1001</FileVersion>
+		<AssemblyVersion>2026.06.18.1041</AssemblyVersion>
+		<FileVersion>2026.06.18.1041</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -909,6 +909,8 @@
 		<None Remove="Xml\Schemas\ESocial\evtTSVInicio.xsd" />
 		<None Remove="Xml\Schemas\ESocial\evtTSVTermino.xsd" />
 		<None Remove="Xml\Schemas\ESocial\RetornoConsultaIdentificadoresEventos-v1_0_0.xsd" />
+		<None Remove="Xml\Schemas\ESocial\RetornoEnvioLoteEventos-v1_1_0.xsd" />
+		<None Remove="Xml\Schemas\ESocial\RetornoProcessamentoLote-v1_3_0.xsd" />
 		<None Remove="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorId-v1_0_0.xsd" />
 		<None Remove="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd" />
 		<None Remove="Xml\Schemas\ESocial\S_01_03_00\evtAdmissao.xsd" />
@@ -2379,6 +2381,8 @@
 		<EmbeddedResource Include="Xml\Schemas\ESocial\ConsultaLoteEventos-v1_0_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\EnvioLoteEventos-v1_1_1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\RetornoConsultaIdentificadoresEventos-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\RetornoEnvioLoteEventos-v1_1_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\RetornoProcessamentoLote-v1_3_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorId-v1_0_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_02_00\evtAdmissao.xsd" />

@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 using Unimake.Exceptions;
 
@@ -12,18 +13,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     /// Encerrar operação de transporte
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.None)]
-    [ComDefaultInterface(typeof(IEncerramentoOperacaoTransporteInterop))]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.EncerramentoOperacaoTransporte")]
     [ComVisible(true)]
 #endif
-    public class EncerramentoOperacaoTransporte : ServicoBase<Xml.CIOT.EncerramentoOperacaoTransporte, RetEncerramentoOperacaoTransporte>, IInteropService<Xml.CIOT.EncerramentoOperacaoTransporte>
-#if INTEROP
-        , IEncerramentoOperacaoTransporteInterop
-#endif
+    public class EncerramentoOperacaoTransporte : ServicoBase, IInteropService<Xml.CIOT.EncerramentoOperacaoTransporte>
     {
         #region Private Fields
 
+        private Xml.CIOT.EncerramentoOperacaoTransporte envio;
         private readonly System.Collections.Generic.Dictionary<string, EncerramentoOperacaoTransporteProc> EncerramentoOperacaoTransporteProcs = new System.Collections.Generic.Dictionary<string, EncerramentoOperacaoTransporteProc>();
 
         #endregion Private Fields
@@ -31,9 +29,20 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         #region Public Properties
 
         /// <summary>
+        /// Objeto do XML de envio
+        /// </summary>
+        public Xml.CIOT.EncerramentoOperacaoTransporte Envio => ObterEnvio(ref envio);
+
+        /// <summary>
+        /// Resultado do serviço
+        /// </summary>
+        public RetEncerramentoOperacaoTransporte Result => ObterResult<RetEncerramentoOperacaoTransporte>();
+
+        /// <summary>
         /// Propriedade contendo o XML do encerramento de operação de transporte com o retorno da API anexado para geração do arquivo de distribuição.
         /// A chave do dicionário é o código de identificação da operação retornado no campo <c>CodigoIdentificacaoOperacao</c>.
         /// </summary>
+        [System.Runtime.InteropServices.ComVisible(false)]
         public System.Collections.Generic.Dictionary<string, EncerramentoOperacaoTransporteProc> EncerramentoOperacaoTransporteProcResults
         {
             get
@@ -91,6 +100,12 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTEncerramentoOperacaoTransporte;
+
+        /// <inheritdoc />
+        protected override string NomeRootRetorno => nameof(RetEncerramentoOperacaoTransporte);
+
+        /// <inheritdoc />
+        protected override XMLBase XmlEnvio => Envio;
 
         /// <summary>
         /// Construtor

@@ -96,7 +96,7 @@
             <xs:documentation>Número de Inscrição</xs:documentation>
           </xs:annotation>
           <xs:restriction base="xs:string">
-            <xs:pattern value="\d{8,15}" />
+            <xs:pattern value="[A-Z0-9]{8}|\d{11}|[A-Z0-9]{12}\d{2}" />
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
