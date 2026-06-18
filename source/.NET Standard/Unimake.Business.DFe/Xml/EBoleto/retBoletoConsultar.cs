@@ -24,8 +24,14 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         /// <summary>
         /// Lista de boletos retornados
         /// </summary>
-        [XmlElement("BoletoResponse", Order = 2)]
+        [XmlElement("BoletoResponse")]
         public List<retBoletoConsultarItem> BoletoResponse { get; set; } = new List<retBoletoConsultarItem>();
+
+        /// <summary>
+        /// Versão da DLL
+        /// </summary>
+        [XmlElement]
+        public string DLLVersao { get; set; }
     }
 
     /// <summary>
@@ -39,55 +45,55 @@ namespace Unimake.Business.DFe.Xml.EBoleto
     [Serializable()]
     public class retBoletoConsultarItem
     {
-        [XmlElement(Order = 0)]
+        [XmlElement]
         public string CodigoBarras { get; set; }
 
-        [XmlElement(Order = 1)]
+        [XmlElement]
         public string DataEmissao { get; set; }
 
-        [XmlElement(Order = 2)]
+        [XmlElement]
         public string DataLiquidacao { get; set; }
 
-        [XmlElement(Order = 3)]
+        [XmlElement]
         public string DataVencimento { get; set; }
 
-        [XmlElement(Order = 4)]
+        [XmlElement]
         public string NumeroNaEmpresa { get; set; }
 
-        [XmlElement(Order = 5)]
+        [XmlElement]
         public string NumeroNoBanco { get; set; }
 
-        [XmlElement(Order = 6)]
+        [XmlElement]
         public retBoletoConsultarPagador Pagador { get; set; }
 
-        [XmlElement(Order = 7)]
+        [XmlElement]
         public retBoletoConsultarPdfContent PdfContent { get; set; }
 
-        [XmlElement(Order = 8)]
+        [XmlElement]
         public retBoletoConsultarQrCodeContent QrCodeContent { get; set; }
 
-        [XmlElement(Order = 9)]
+        [XmlElement]
         public int Situacao { get; set; }
 
-        [XmlElement(Order = 10)]
+        [XmlElement]
         public int TipoLiquidacao { get; set; }
 
-        [XmlElement(Order = 11)]
+        [XmlElement]
         public string Valor { get; set; }
 
-        [XmlElement(Order = 12)]
+        [XmlElement]
         public string ValorAbatimento { get; set; }
 
-        [XmlElement(Order = 13)]
+        [XmlElement]
         public string ValorDesconto { get; set; }
 
-        [XmlElement(Order = 14)]
+        [XmlElement]
         public string ValorJuros { get; set; }
 
-        [XmlElement(Order = 15)]
+        [XmlElement]
         public string ValorLiquidado { get; set; }
 
-        [XmlElement(Order = 16)]
+        [XmlElement]
         public string ValorMulta { get; set; }
     }
 
@@ -102,25 +108,25 @@ namespace Unimake.Business.DFe.Xml.EBoleto
     [Serializable()]
     public class retBoletoConsultarPagador
     {
-        [XmlElement(Order = 0)]
+        [XmlElement]
         public string Codigo { get; set; }
 
-        [XmlElement(Order = 1)]
+        [XmlElement]
         public string Nome { get; set; }
 
-        [XmlElement(Order = 2)]
+        [XmlElement]
         public string Inscricao { get; set; }
 
-        [XmlElement(Order = 3)]
+        [XmlElement]
         public string Telefone { get; set; }
 
-        [XmlElement(Order = 4)]
+        [XmlElement]
         public string Email { get; set; }
 
-        [XmlElement(Order = 5)]
+        [XmlElement]
         public int TipoInscricao { get; set; }
 
-        [XmlElement(Order = 6)]
+        [XmlElement]
         public retBoletoConsultarEndereco Endereco { get; set; }
     }
 
@@ -135,25 +141,25 @@ namespace Unimake.Business.DFe.Xml.EBoleto
     [Serializable()]
     public class retBoletoConsultarEndereco
     {
-        [XmlElement(Order = 0)]
+        [XmlElement]
         public string Logradouro { get; set; }
 
-        [XmlElement(Order = 1)]
+        [XmlElement]
         public string Numero { get; set; }
 
-        [XmlElement(Order = 2)]
+        [XmlElement]
         public string Complemento { get; set; }
 
-        [XmlElement(Order = 3)]
+        [XmlElement]
         public string Bairro { get; set; }
 
-        [XmlElement(Order = 4)]
+        [XmlElement]
         public string Cidade { get; set; }
 
-        [XmlElement(Order = 5)]
+        [XmlElement]
         public string UF { get; set; }
 
-        [XmlElement(Order = 6)]
+        [XmlElement]
         public string CEP { get; set; }
     }
 
@@ -168,13 +174,13 @@ namespace Unimake.Business.DFe.Xml.EBoleto
     [Serializable()]
     public class retBoletoConsultarPdfContent
     {
-        [XmlElement(Order = 0)]
+        [XmlElement]
         public string Content { get; set; }
 
-        [XmlElement(Order = 1)]
+        [XmlElement]
         public bool Success { get; set; }
 
-        [XmlElement(Order = 2)]
+        [XmlElement]
         public string Message { get; set; }
     }
 
@@ -189,13 +195,13 @@ namespace Unimake.Business.DFe.Xml.EBoleto
     [Serializable()]
     public class retBoletoConsultarQrCodeContent
     {
-        [XmlElement(Order = 0)]
+        [XmlElement]
         public string Text { get; set; }
 
-        [XmlElement(Order = 1)]
+        [XmlElement]
         public string Image { get; set; }
 
-        [XmlElement(Order = 2)]
+        [XmlElement]
         public bool Success { get; set; }
     }
 }

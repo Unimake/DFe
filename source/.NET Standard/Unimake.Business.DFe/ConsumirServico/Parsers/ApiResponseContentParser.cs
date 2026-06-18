@@ -365,44 +365,63 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
 
         private XmlDocument CriarXmlRetornoBoletoCancelar(ref ApiResponseContext context)
         {
-            return CriarXmlRetornoEBoletoBasico<retBoletoCancelar>(ref context, "Boleto cancelado com sucesso", "Falha ao cancelar boleto.", 0, 1);
-        }
-
-        private XmlDocument CriarXmlRetornoBoletoAlterarVencto(ref ApiResponseContext context)
-        {
-            return CriarXmlRetornoEBoletoBasico<retBoletoAlterarVencto>(ref context, "Vencimento alterado com sucesso", "Falha ao alterar vencimento do boleto.", 0, 1);
-        }
-
-        private XmlDocument CriarXmlRetornoBoletoEnviarInstrucao(ref ApiResponseContext context)
-        {
-            return CriarXmlRetornoEBoletoBasico<retBoletoEnviarInstrucao>(ref context, "Instruções do boleto enviado com sucesso", "Falha ao enviar instruções do boleto.", 0, 1);
-        }
-
-        private XmlDocument CriarXmlRetornoBoletoInformarPagto(ref ApiResponseContext context)
-        {
-            return CriarXmlRetornoEBoletoBasico<retBoletoInformarPagto>(ref context, "Boleto foi marcado como pago com sucesso", "Falha ao informar pagamento do boleto.", 0, 1);
-        }
-
-        private XmlDocument CriarXmlRetornoEBoletoBasico<TRetorno>(ref ApiResponseContext context, string motivoSucesso, string motivoErro, int statusSucesso, int statusErroSemHttp)
-            where TRetorno : retEBoletoRetornoBasico, new()
-        {
             var root = TryParseJsonObject(context.ResponseContent);
-            var retorno = new TRetorno
+            var retorno = new retBoletoCancelar
             {
                 DLLVersao = Info.VersaoDLL
             };
 
-            if (!context.Response.IsSuccessStatusCode)
+            PreencherRetornoEBoletoBasico(retorno, root, context.Response.IsSuccessStatusCode, "Boleto cancelado com sucesso", "Falha ao cancelar boleto.", 0, 1);
+            return retorno.GerarXML();
+        }
+
+        private XmlDocument CriarXmlRetornoBoletoAlterarVencto(ref ApiResponseContext context)
+        {
+            var root = TryParseJsonObject(context.ResponseContent);
+            var retorno = new retBoletoAlterarVencto
+            {
+                DLLVersao = Info.VersaoDLL
+            };
+
+            PreencherRetornoEBoletoBasico(retorno, root, context.Response.IsSuccessStatusCode, "Vencimento alterado com sucesso", "Falha ao alterar vencimento do boleto.", 0, 1);
+            return retorno.GerarXML();
+        }
+
+        private XmlDocument CriarXmlRetornoBoletoEnviarInstrucao(ref ApiResponseContext context)
+        {
+            var root = TryParseJsonObject(context.ResponseContent);
+            var retorno = new retBoletoEnviarInstrucao
+            {
+                DLLVersao = Info.VersaoDLL
+            };
+
+            PreencherRetornoEBoletoBasico(retorno, root, context.Response.IsSuccessStatusCode, "Instruções do boleto enviado com sucesso", "Falha ao enviar instruções do boleto.", 0, 1);
+            return retorno.GerarXML();
+        }
+
+        private XmlDocument CriarXmlRetornoBoletoInformarPagto(ref ApiResponseContext context)
+        {
+            var root = TryParseJsonObject(context.ResponseContent);
+            var retorno = new retBoletoInformarPagto
+            {
+                DLLVersao = Info.VersaoDLL
+            };
+
+            PreencherRetornoEBoletoBasico(retorno, root, context.Response.IsSuccessStatusCode, "Boleto foi marcado como pago com sucesso", "Falha ao informar pagamento do boleto.", 0, 1);
+            return retorno.GerarXML();
+        }
+
+        private void PreencherRetornoEBoletoBasico(retEBoletoRetornoBasico retorno, JObject root, bool sucessoHttp, string motivoSucesso, string motivoErro, int statusSucesso, int statusErroSemHttp)
+        {
+            if (!sucessoHttp)
             {
                 retorno.Status = 999;
                 retorno.Motivo = ExtrairMotivoErroApi(root, motivoErro);
-                return retorno.GerarXML();
+                return;
             }
 
             retorno.Status = ResolverStatusEBoleto(root, statusSucesso, statusErroSemHttp);
             retorno.Motivo = ResolverMotivoEBoleto(root, retorno.Status, motivoSucesso, motivoErro);
-
-            return retorno.GerarXML();
         }
 
         private bool EhServicoPIX(Servico servico)
