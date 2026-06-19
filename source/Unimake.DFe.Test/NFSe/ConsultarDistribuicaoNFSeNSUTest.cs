@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFSe;
@@ -141,9 +142,9 @@ namespace Unimake.DFe.Test.NFSe
 
                     foreach (var arquivo in arquivosGravados)
                     {
-                        var conteudo = File.ReadAllText(arquivo);
+                        var conteudo = File.ReadAllText(arquivo, Encoding.UTF8);
                         Assert.NotEmpty(conteudo);
-                        Assert.Contains("NFSe", conteudo); 
+                        Assert.Contains("NFSe", conteudo);
                     }
                 }
 
@@ -168,6 +169,43 @@ namespace Unimake.DFe.Test.NFSe
         }
 
         #endregion Testes de Integração
+
+        /// <summary>
+        /// Teste unitário para validar a gravação do XML de distribuição em UTF-8
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFSe")]
+        public void TesteGravarXmlDistribuicaoDeveManterUtf8()
+        {
+            var servico = new ConsultarDistribuicaoNFSeNSU();
+            var pastaTemp = Path.Combine(Path.GetTempPath(), "ConsultarDistribuicaoNFSeNSU_UTF8", Guid.NewGuid().ToString("N"));
+            var nomeArquivo = "nfse-utf8.xml";
+            var conteudoXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><NFSe><Descricao>Suporte técnico em informática, instalação e configuração</Descricao></NFSe>";
+
+            Directory.CreateDirectory(pastaTemp);
+
+            try
+            {
+                servico.GravarXmlDistribuicao(pastaTemp, nomeArquivo, conteudoXml);
+
+                var caminhoArquivo = Path.Combine(pastaTemp, nomeArquivo);
+                Assert.True(File.Exists(caminhoArquivo));
+
+                var bytesGravados = File.ReadAllBytes(caminhoArquivo);
+                var bytesEsperados = Encoding.UTF8.GetBytes(conteudoXml);
+
+                Assert.Equal(bytesEsperados, bytesGravados);
+                Assert.Equal(conteudoXml, File.ReadAllText(caminhoArquivo, Encoding.UTF8));
+            }
+            finally
+            {
+                try
+                {
+                    Directory.Delete(pastaTemp, true);
+                }
+                catch { }
+            }
+        }
 
         [Theory]
         [Trait("DFe", "NFSe")]
