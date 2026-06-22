@@ -294,57 +294,64 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         protected override void XmlValidar()
         {
-            var schemaArquivo = string.Empty;
-            var schemaArquivoEspecifico = string.Empty;
+            var resultadoValidacao = ValidarXMLCentralizado();
 
-            if (Configuracoes.SchemasEspecificos.Count > 0)
+            if (!resultadoValidacao.Validado)
             {
-                if (ConteudoXML.GetElementsByTagName("MDFe").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <MDFe> não foi localizada no XML.");
-                }
-                var elementMDFe = (XmlElement)ConteudoXML.GetElementsByTagName("MDFe")[0];
-
-                if (elementMDFe.GetElementsByTagName("infMDFe").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <infMDFe>, do grupo de tag <MDFe>, não foi localizada no XML.");
-                }
-                var elementInfMDFe = (XmlElement)elementMDFe.GetElementsByTagName("infMDFe")[0];
-
-                if (elementInfMDFe.GetElementsByTagName("ide").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <MDFe><infMDFe>, não foi localizada no XML.");
-                }
-                var elementIde = (XmlElement)elementInfMDFe.GetElementsByTagName("ide")[0];
-
-                if (elementIde.GetElementsByTagName("modal").Count <= 0)
-                {
-                    throw new Exception("A tag obrigatória <modal>, do grupo de tag <MDFe><infMDFe><ide>, não foi localizada no XML.");
-
-                }
-
-                var modal = Convert.ToInt32(elementIde.GetElementsByTagName("modal")[0].InnerText);
-
-                schemaArquivo = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivo;
-                schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivoEspecifico;
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
 
-            #region Validar o XML geral
+            //var schemaArquivo = string.Empty;
+            //var schemaArquivoEspecifico = string.Empty;
 
-            ValidarXMLMDFe(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
+            //if (Configuracoes.SchemasEspecificos.Count > 0)
+            //{
+            //    if (ConteudoXML.GetElementsByTagName("MDFe").Count <= 0)
+            //    {
+            //        throw new Exception("A tag obrigatória <MDFe> não foi localizada no XML.");
+            //    }
+            //    var elementMDFe = (XmlElement)ConteudoXML.GetElementsByTagName("MDFe")[0];
 
-            #endregion Validar o XML geral
+            //    if (elementMDFe.GetElementsByTagName("infMDFe").Count <= 0)
+            //    {
+            //        throw new Exception("A tag obrigatória <infMDFe>, do grupo de tag <MDFe>, não foi localizada no XML.");
+            //    }
+            //    var elementInfMDFe = (XmlElement)elementMDFe.GetElementsByTagName("infMDFe")[0];
 
-            #region Validar a parte específica de modal do MDFe
+            //    if (elementInfMDFe.GetElementsByTagName("ide").Count <= 0)
+            //    {
+            //        throw new Exception("A tag obrigatória <ide>, do grupo de tag <MDFe><infMDFe>, não foi localizada no XML.");
+            //    }
+            //    var elementIde = (XmlElement)elementInfMDFe.GetElementsByTagName("ide")[0];
 
-            var xmlEspecifico = new XmlDocument();
-            foreach (XmlElement item in ConteudoXMLAssinado.GetElementsByTagName("infModal"))
-            {
-                xmlEspecifico.LoadXml(item.InnerXml);
-            }
-            ValidarXMLMDFe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
+            //    if (elementIde.GetElementsByTagName("modal").Count <= 0)
+            //    {
+            //        throw new Exception("A tag obrigatória <modal>, do grupo de tag <MDFe><infMDFe><ide>, não foi localizada no XML.");
 
-            #endregion Validar a parte específica de modal do MDFe
+            //    }
+
+            //    var modal = Convert.ToInt32(elementIde.GetElementsByTagName("modal")[0].InnerText);
+
+            //    schemaArquivo = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivo;
+            //    schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivoEspecifico;
+            //}
+
+            //#region Validar o XML geral
+
+            //ValidarXMLMDFe(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
+
+            //#endregion Validar o XML geral
+
+            //#region Validar a parte específica de modal do MDFe
+
+            //var xmlEspecifico = new XmlDocument();
+            //foreach (XmlElement item in ConteudoXMLAssinado.GetElementsByTagName("infModal"))
+            //{
+            //    xmlEspecifico.LoadXml(item.InnerXml);
+            //}
+            //ValidarXMLMDFe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
+
+            //#endregion Validar a parte específica de modal do MDFe
         }
 
 #if INTEROP
