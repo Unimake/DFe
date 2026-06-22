@@ -109,39 +109,48 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         protected override void XmlValidar()
         {
-            if (Configuracoes.SchemasEspecificos.Count > 0)
+
+            var resultadoValidacao = ValidarXMLCentralizado();
+
+            if (!resultadoValidacao.Validado)
             {
-                var schemaArquivo = Configuracoes.SchemasEspecificos["1"].SchemaArquivo; //De qualquer modal o xml de validação da parte geral é o mesmo, então vou pegar do número 1, pq tanto faz.
-
-                #region Validar o XML geral
-
-                ValidarXMLCTe(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
-
-                #endregion Validar o XML geral
-
-                #region Validar a parte específica de modal do CTe
-
-                foreach (XmlElement itemCTe in ConteudoXMLAssinado.GetElementsByTagName("CTe"))
-                {
-                    var modal = string.Empty;
-
-                    foreach (XmlElement itemIde in itemCTe.GetElementsByTagName("ide"))
-                    {
-                        modal = itemIde.GetElementsByTagName("modal")[0].InnerText;
-                    }
-
-                    foreach (XmlElement itemInfModal in itemCTe.GetElementsByTagName("infModal"))
-                    {
-                        var xmlEspecifico = new XmlDocument();
-                        xmlEspecifico.LoadXml(itemInfModal.InnerXml);
-                        var schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[modal.Substring(1, 1)].SchemaArquivoEspecifico;
-
-                        ValidarXMLCTe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
-                    }
-                }
-
-                #endregion Validar a parte específica de cada evento
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
+         
+
+            //if (Configuracoes.SchemasEspecificos.Count > 0)
+            //{
+            //    var schemaArquivo = Configuracoes.SchemasEspecificos["1"].SchemaArquivo; //De qualquer modal o xml de validação da parte geral é o mesmo, então vou pegar do número 1, pq tanto faz.
+
+            //    #region Validar o XML geral
+
+            //    ValidarXMLCTe(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
+
+            //    #endregion Validar o XML geral
+
+            //    #region Validar a parte específica de modal do CTe
+
+            //    foreach (XmlElement itemCTe in ConteudoXMLAssinado.GetElementsByTagName("CTe"))
+            //    {
+            //        var modal = string.Empty;
+
+            //        foreach (XmlElement itemIde in itemCTe.GetElementsByTagName("ide"))
+            //        {
+            //            modal = itemIde.GetElementsByTagName("modal")[0].InnerText;
+            //        }
+
+            //        foreach (XmlElement itemInfModal in itemCTe.GetElementsByTagName("infModal"))
+            //        {
+            //            var xmlEspecifico = new XmlDocument();
+            //            xmlEspecifico.LoadXml(itemInfModal.InnerXml);
+            //            var schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[modal.Substring(1, 1)].SchemaArquivoEspecifico;
+
+            //            ValidarXMLCTe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
+            //        }
+            //    }
+
+            //    #endregion Validar a parte específica de cada evento
+            //}
         }
 
         /// <summary>
