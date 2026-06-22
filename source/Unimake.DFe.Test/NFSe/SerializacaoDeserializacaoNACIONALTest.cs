@@ -41,17 +41,17 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.NotNull(ibscbs);
 
         // Novos campos obrigatórios v1.01
-        Assert.Equal(0, ibscbs.IndDest); // Novo campo obrigatório
+        Assert.Equal(IndicadorDestinatarioNFSeRTC.ProprioTomadorAdquirente, ibscbs.IndDest); // Novo campo obrigatório
 
         // Novos campos opcionais v1.01 (presentes neste XML)
         Assert.NotNull(ibscbs.TpOper);
         Assert.Equal(TpOperacaoGov.FornecimentoComPagamentoPosterior, ibscbs.TpOper); // tpOper=1
 
         // Campos existentes
-        Assert.Equal(0, ibscbs.FinNFSe);
-        Assert.Equal(0, ibscbs.IndFinal);
+        Assert.Equal(FinalidadeNFSeRTC.Regular, ibscbs.FinNFSe);
+        Assert.Equal(IndicadorFinalNFSeRTC.Nao, ibscbs.IndFinal);
         Assert.Equal("000001", ibscbs.CIndOp); // cIndOp="000001"
-        Assert.Equal(TipoEnteGovernamental.Uniao, ibscbs.TpEnteGov); // tpEnteGov=1
+        Assert.Equal(TipoEnteGovernamentalNFSeRTC.Uniao, ibscbs.TpEnteGov); // tpEnteGov=1
 
         // Campo opcional não presente neste XML
         Assert.Null(ibscbs.GRefNFSe); // Não informado neste caso
@@ -144,18 +144,16 @@ public class SerializacaoDesserializacaoNacionalTest
 
         var ibscbs = new IBSCBS
         {
-            FinNFSe = 0,
-            IndFinal = 0,
+            FinNFSe = FinalidadeNFSeRTC.Regular,
+            IndFinal = IndicadorFinalNFSeRTC.Nao,
             CIndOp = "000001",
             TpOper = TpOperacaoGov.FornecimentoComPagamentoPosterior,
-            TpEnteGov = TipoEnteGovernamental.Municipio,
-            IndDest = 0,
+            TpEnteGov = TipoEnteGovernamentalNFSeRTC.Municipio,
+            IndDest = IndicadorDestinatarioNFSeRTC.ProprioTomadorAdquirente,
         };
 
         Assert.True(ibscbs.ShouldSerializeTpOper());
         Assert.True(ibscbs.ShouldSerializeTpEnteGov());
-
-        Assert.False(ibscbs.ShouldSerializeXTpEnteGov());
 
         var dps = new DPS
         {
@@ -240,17 +238,14 @@ public class SerializacaoDesserializacaoNacionalTest
         // Testa ShouldSerialize para campos opcionais v1.01 (valores padrão)
         Assert.False(ibscbs.ShouldSerializeTpOper()); // null
         Assert.False(ibscbs.ShouldSerializeTpEnteGov()); // null
-        Assert.False(ibscbs.ShouldSerializeXTpEnteGov()); // null/empty
 
         // Define valores
         ibscbs.TpOper = TpOperacaoGov.FornecimentoComPagamentoPosterior;
-        ibscbs.TpEnteGov = TipoEnteGovernamental.Municipio;
-        ibscbs.XTpEnteGov = "Descrição";
+        ibscbs.TpEnteGov = TipoEnteGovernamentalNFSeRTC.Municipio;
 
         // Testa ShouldSerialize com valores informados
         Assert.True(ibscbs.ShouldSerializeTpOper());
         Assert.True(ibscbs.ShouldSerializeTpEnteGov());
-        Assert.True(ibscbs.ShouldSerializeXTpEnteGov());
     }
 
     /// <summary>
@@ -326,8 +321,8 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.Equal("Serviços de transporte rodoviário de cargas sólidas a granel", infNFSe.XNBS);
         Assert.Equal("SefinNac_Pre_1.4.0", infNFSe.VerAplic);
         Assert.Equal(2, (int)infNFSe.AmbGer); // Homologação
-        Assert.Equal(1, infNFSe.TpEmis); // Normal
-        Assert.Equal(1, infNFSe.ProcEmi); // Aplicativo do contribuinte
+        Assert.Equal(TipoEmissaoNFSe.Normal, infNFSe.TpEmis); // Normal
+        Assert.Equal(ProcessoEmissaoNFSe.AplicativoContribuinte, infNFSe.ProcEmi); // Aplicativo do contribuinte
         Assert.Equal(100, infNFSe.CStat); // Autorizada
         Assert.NotEqual(default, infNFSe.DhProc);
         Assert.Equal("151689", infNFSe.NDFSe);

@@ -2536,6 +2536,16 @@
 					<SchemaArquivo>eventoNFGas_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evCancNFGas_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
+				<Tipo>
+					<ID>110300</ID>
+					<SchemaArquivo>eventoNFGas_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evVincPgto_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110301</ID>
+					<SchemaArquivo>eventoNFGas_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancVincPgto_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz="NFGas" versao="1.00">

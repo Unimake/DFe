@@ -65,54 +65,61 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         protected override void XmlValidar()
         {
-            var xml = EventoMDFe;
+            var resultadoValidacao = ValidarXMLCentralizado();
 
-            var schemaArquivo = string.Empty;
-            var schemaArquivoEspecifico = string.Empty;
-
-            if (Configuracoes.SchemasEspecificos.Count > 0)
+            if (!resultadoValidacao.Validado)
             {
-                int tpEvento;
-                if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
-                {
-                    tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
-                }
-                else
-                {
-                    throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
-                }
-
-                schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
-                schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
 
-            #region Validar o XML geral
+            //var xml = EventoMDFe;
 
-            ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
+            //var schemaArquivo = string.Empty;
+            //var schemaArquivoEspecifico = string.Empty;
 
-            #endregion Validar o XML geral
+            //if (Configuracoes.SchemasEspecificos.Count > 0)
+            //{
+            //    int tpEvento;
+            //    if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
+            //    {
+            //        tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
+            //    }
+            //    else
+            //    {
+            //        throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
+            //    }
 
-            #region Validar a parte específica de cada evento
+            //    schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
+            //    schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
+            //}
 
-            var listEvento = ConteudoXML.GetElementsByTagName("eventoMDFe");
-            for (var i = 0; i < listEvento.Count; i++)
-            {
-                var elementEvento = (XmlElement)listEvento[i];
+            //#region Validar o XML geral
 
-                if (elementEvento.GetElementsByTagName("infEvento")[0] != null)
-                {
-                    var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
-                    if (elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
-                    {
-                        var xmlEspecifico = new XmlDocument();
-                        xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName(elementInfEvento.GetElementsByTagName("detEvento")[0].FirstChild.Name)[0].OuterXml);
+            //ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
 
-                        ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
-                    }
-                }
-            }
+            //#endregion Validar o XML geral
 
-            #endregion Validar a parte específica de cada evento
+            //#region Validar a parte específica de cada evento
+
+            //var listEvento = ConteudoXML.GetElementsByTagName("eventoMDFe");
+            //for (var i = 0; i < listEvento.Count; i++)
+            //{
+            //    var elementEvento = (XmlElement)listEvento[i];
+
+            //    if (elementEvento.GetElementsByTagName("infEvento")[0] != null)
+            //    {
+            //        var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
+            //        if (elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
+            //        {
+            //            var xmlEspecifico = new XmlDocument();
+            //            xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName(elementInfEvento.GetElementsByTagName("detEvento")[0].FirstChild.Name)[0].OuterXml);
+
+            //            ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
+            //        }
+            //    }
+            //}
+
+            //#endregion Validar a parte específica de cada evento
         }
 
         /// <summary>

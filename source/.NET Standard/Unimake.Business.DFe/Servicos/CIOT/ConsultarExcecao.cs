@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 
 namespace Unimake.Business.DFe.Servicos.CIOT
@@ -14,10 +15,28 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.ConsultarExcecao")]
     [ComVisible(true)]
 #endif
-    public class ConsultarExcecao : ServicoBase<Xml.CIOT.ConsultarExcecao, RetConsultarExcecao>, IInteropService<Xml.CIOT.ConsultarExcecao>
+    public class ConsultarExcecao : ServicoBase, IInteropService<Xml.CIOT.ConsultarExcecao>
     {
+        private Xml.CIOT.ConsultarExcecao envio;
+
+        /// <summary>
+        /// Objeto do XML de envio
+        /// </summary>
+        public Xml.CIOT.ConsultarExcecao Envio => ObterEnvio(ref envio);
+
+        /// <summary>
+        /// Resultado do serviço
+        /// </summary>
+        public RetConsultarExcecao Result => ObterResult<RetConsultarExcecao>();
+
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTConsultarExcecao;
+
+        /// <inheritdoc />
+        protected override string NomeRootRetorno => nameof(RetConsultarExcecao);
+
+        /// <inheritdoc />
+        protected override XMLBase XmlEnvio => Envio;
 
         /// <summary>
         /// Construtor
@@ -55,7 +74,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.ConsultarExcecao xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.ConsultarExcecao xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

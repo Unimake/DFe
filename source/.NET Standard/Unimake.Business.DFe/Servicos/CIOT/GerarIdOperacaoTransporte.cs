@@ -1,12 +1,13 @@
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
+using GeradorCIOTShared;
 using Newtonsoft.Json;
 using System;
 using System.Text.RegularExpressions;
 using System.Xml;
-using GeradorCIOTShared;
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 using Unimake.Exceptions;
 
@@ -20,10 +21,11 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.GerarIdOperacaoTransporte")]
     [ComVisible(true)]
 #endif
-    public class GerarIdOperacaoTransporte : ServicoBase<Xml.CIOT.GerarIdOperacaoTransporte, RetGerarIdOperacaoTransporte>, IInteropService<Xml.CIOT.GerarIdOperacaoTransporte>
+    public class GerarIdOperacaoTransporte : ServicoBase, IInteropService<Xml.CIOT.GerarIdOperacaoTransporte>
     {
         #region Private Fields
 
+        private Xml.CIOT.GerarIdOperacaoTransporte envio;
         private readonly System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc> GerarIdOperacaoTransporteProcs = new System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc>();
 
         #endregion Private Fields
@@ -31,9 +33,20 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         #region Public Properties
 
         /// <summary>
+        /// Objeto do XML de envio
+        /// </summary>
+        public Xml.CIOT.GerarIdOperacaoTransporte Envio => ObterEnvio(ref envio);
+
+        /// <summary>
+        /// Resultado do serviço
+        /// </summary>
+        public RetGerarIdOperacaoTransporte Result => ObterResult<RetGerarIdOperacaoTransporte>();
+
+        /// <summary>
         /// Propriedade contendo o XML da geração do identificador da operação de transporte com o retorno da API anexado para geração do arquivo de distribuição.
         /// A chave do dicionário é o identificador da operação retornado no campo <c>IdOperacaoTransporte</c>.
         /// </summary>
+        [System.Runtime.InteropServices.ComVisible(false)]
         public System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc> GerarIdOperacaoTransporteProcResults
         {
             get
@@ -91,6 +104,12 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTGerarIdOperacaoTransporte;
+
+        /// <inheritdoc />
+        protected override string NomeRootRetorno => nameof(RetGerarIdOperacaoTransporte);
+
+        /// <inheritdoc />
+        protected override XMLBase XmlEnvio => Envio;
 
         /// <summary>
         /// Construtor
@@ -157,18 +176,6 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         }
 
         /// <inheritdoc />
-        public override void Executar()
-        {
-            if (Configuracoes.TipoAmbiente == TipoAmbiente.Producao)
-            {
-                ProcessarRetornoANTT(GerarCIOTProducao(Envio.CpfCnpj));
-                return;
-            }
-
-            base.Executar();
-        }
-
-        /// <inheritdoc />
         protected override XmlDocument CriarXMLRetornoTipado()
         {
             var retorno = RetornoWSXML;
@@ -226,10 +233,25 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.GerarIdOperacaoTransporte xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.GerarIdOperacaoTransporte xml, Configuracao configuracao)
         {
-            InicializarServico(NormalizarEnvio(xml), configuracao);
-            Executar();
+            try
+            {
+                InicializarServico(NormalizarEnvio(xml), configuracao);
+                Executar();
+            }
+            catch (ValidarXMLException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
         /// <summary>
@@ -257,6 +279,22 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             return retornar;
         }
 #endif
+
+
+        /// <inheritdoc />
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public override void Executar()
+        {
+            if (Configuracoes.TipoAmbiente == TipoAmbiente.Producao)
+            {
+                ProcessarRetornoANTT(GerarCIOTProducao(Envio.CpfCnpj));
+                return;
+            }
+
+            base.Executar();
+        }
 
         #region Public Methods
 

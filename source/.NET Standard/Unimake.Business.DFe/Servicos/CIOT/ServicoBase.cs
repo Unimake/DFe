@@ -13,8 +13,6 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Security;
-using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml;
 using Unimake.Exceptions;
 
@@ -28,47 +26,51 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.ServicoBase")]
     [ComVisible(true)]
 #endif
-    public abstract class ServicoBase<TEnvio, TRetorno> : Servicos.ServicoBase
-        where TEnvio : XMLBase, new()
-        where TRetorno : XMLBase, new()
+    public abstract class ServicoBase : Servicos.ServicoBase
     {
-        private TEnvio envio;
-
-        /// <summary>
-        /// Objeto do XML de envio
-        /// </summary>
-        public TEnvio Envio
-        {
-            get => envio ?? (envio = new TEnvio().LerXML<TEnvio>(ConteudoXML));
-            protected set => envio = value;
-        }
-
         /// <summary>
         /// Serviço executado
         /// </summary>
         protected abstract Servico ServicoCIOT { get; }
 
         /// <summary>
-        /// Resultado do serviço
+        /// Nome da tag raiz do XML de retorno
         /// </summary>
-        public TRetorno Result
-        {
-            get
-            {
-                if (RetornoWSXML?.DocumentElement != null)
-                {
-                    NormalizarRetorno();
-                    return new TRetorno().LerXML<TRetorno>(RetornoWSXML);
-                }
+        protected abstract string NomeRootRetorno { get; }
 
-                return new TRetorno();
-            }
-        }
+        /// <summary>
+        /// Objeto do XML de envio
+        /// </summary>
+        protected abstract XMLBase XmlEnvio { get; }
 
         /// <summary>
         /// Construtor
         /// </summary>
         protected ServicoBase() : base() { }
+
+        /// <summary>
+        /// Obter o XML de envio tipado
+        /// </summary>
+        protected TEnvio ObterEnvio<TEnvio>(ref TEnvio envio)
+            where TEnvio : XMLBase, new()
+        {
+            return envio ?? (envio = new TEnvio().LerXML<TEnvio>(ConteudoXML));
+        }
+
+        /// <summary>
+        /// Obter o resultado tipado do serviço
+        /// </summary>
+        protected TRetorno ObterResult<TRetorno>()
+            where TRetorno : XMLBase, new()
+        {
+            if (RetornoWSXML?.DocumentElement != null)
+            {
+                NormalizarRetorno();
+                return new TRetorno().LerXML<TRetorno>(RetornoWSXML);
+            }
+
+            return new TRetorno();
+        }
 
         /// <summary>
         /// Definir configurações
@@ -96,7 +98,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
                 NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new CIOTContractResolver()
             };
-            var jsonObject = JObject.FromObject(Envio, JsonSerializer.Create(settings));
+            var jsonObject = JObject.FromObject(XmlEnvio, JsonSerializer.Create(settings));
             NormalizarCamposDateTime(jsonObject);
             var json = jsonObject.ToString(Newtonsoft.Json.Formatting.None);
 
@@ -128,6 +130,9 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         protected override void XmlValidarConteudo() { }
 
         /// <inheritdoc />
+#if INTEROP
+        [ComVisible(false)]
+#endif
         public override void Executar()
         {
             base.Executar();
@@ -137,7 +142,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// <summary>
         /// Inicializar serviço
         /// </summary>
-        protected void InicializarServico(TEnvio xml, Configuracao configuracao)
+        protected void InicializarServico<TEnvio>(TEnvio xml, Configuracao configuracao)
+            where TEnvio : XMLBase, new()
         {
             if (configuracao is null)
             {
@@ -188,7 +194,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         protected virtual XmlDocument CriarXMLRetornoTipado()
         {
             var doc = new XmlDocument();
-            var rootName = typeof(TRetorno).Name;
+            var rootName = NomeRootRetorno;
 
             if (RetornoWSXML.DocumentElement.Name == rootName)
             {

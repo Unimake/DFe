@@ -55,6 +55,54 @@ namespace Unimake.DFe.Test.EBoleto
         public void SerializacaoDeserializacaoBoletoInformarPagto() =>
             SerializarDeserializar<Business.DFe.Xml.EBoleto.BoletoInformarPagto>(@"..\..\..\EBoleto\Resources\BoletoInformarPagto.xml");
 
+        /// <summary>
+        /// Testar serializacao e desserializacao do XML de retorno do registro de boleto
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void SerializacaoDeserializacaoRetBoletoRegistrar() =>
+            SerializarDeserializar<Business.DFe.Xml.EBoleto.retBoletoRegistrar>(@"..\..\..\EBoleto\Resources\retBoletoRegistrar.xml");
+
+        /// <summary>
+        /// Testar serializacao e desserializacao do XML de retorno da consulta de boleto
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void SerializacaoDeserializacaoRetBoletoConsultar() =>
+            SerializarDeserializar<Business.DFe.Xml.EBoleto.retBoletoConsultar>(@"..\..\..\EBoleto\Resources\retBoletoConsultar.xml");
+
+        /// <summary>
+        /// Testar serializacao e desserializacao do XML de retorno do cancelamento de boleto
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void SerializacaoDeserializacaoRetBoletoCancelar() =>
+            SerializarDeserializar<Business.DFe.Xml.EBoleto.retBoletoCancelar>(@"..\..\..\EBoleto\Resources\retBoletoCancelar.xml");
+
+        /// <summary>
+        /// Testar serializacao e desserializacao do XML de retorno da alteracao de vencimento de boleto
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void SerializacaoDeserializacaoRetBoletoAlterarVencto() =>
+            SerializarDeserializar<Business.DFe.Xml.EBoleto.retBoletoAlterarVencto>(@"..\..\..\EBoleto\Resources\retBoletoAlterarVencto.xml");
+
+        /// <summary>
+        /// Testar serializacao e desserializacao do XML de retorno do envio de instrucao de boleto
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void SerializacaoDeserializacaoRetBoletoEnviarInstrucao() =>
+            SerializarDeserializar<Business.DFe.Xml.EBoleto.retBoletoEnviarInstrucao>(@"..\..\..\EBoleto\Resources\retBoletoEnviarInstrucao.xml");
+
+        /// <summary>
+        /// Testar serializacao e desserializacao do XML de retorno da informacao de pagamento de boleto
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void SerializacaoDeserializacaoRetBoletoInformarPagto() =>
+            SerializarDeserializar<Business.DFe.Xml.EBoleto.retBoletoInformarPagto>(@"..\..\..\EBoleto\Resources\retBoletoInformarPagto.xml");
+
         private static void SerializarDeserializar<T>(string arqXML) where T : Business.DFe.Xml.XMLBase, new()
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " nao foi localizado para a realizacao da serializacao/desserializacao.");

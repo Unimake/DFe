@@ -1,12 +1,13 @@
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.ConsumirServico.Compatibility;
 using Unimake.Business.DFe.ConsumirServico.Transport;
 using Unimake.Business.DFe.Security;
-using Unimake.Business.DFe.Validator;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.UMessenger
@@ -15,9 +16,7 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
     /// Classe base para os serviços do uMessenger
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Servicos.UMessenger.ServicoBase")]
-    [ComVisible(true)]
+    [ComVisible(false)]
 #endif
     public abstract class ServicoBase : Servicos.ServicoBase
     {
@@ -155,6 +154,7 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
             consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
 
             RetornoWSString = consumirAPI.RetornoServicoString;
+            RetornoWSRawString = consumirAPI.RetornoServicoRawString;
             RetornoWSXML = consumirAPI.RetornoServicoXML;
             RetornoWSStream = consumirAPI.RetornoServicoStream;
 

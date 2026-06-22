@@ -41,7 +41,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     public class RetConsultarSituacaoTransportador : XMLBase
     {
         [XmlElement("temp")]
-        public TempCIOT Temp { get; set; }
+        public Temp Temp { get; set; }
 
         [XmlElement("CpfCnpjTransportador")]
         public string CpfCnpjTransportador { get; set; }

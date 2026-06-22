@@ -100,6 +100,15 @@ FUNCTION Main()
    AddOpcaoMenu(aOpcoes, aAcoes, "Executar tela de configuracao do UniDANFE", {|| UniDANFEConfiguracao()})
    AddOpcaoMenu(aOpcoes, aAcoes, "Executar tela de configuracao do UniDANFE", {|| UniDANFEConfiguracao()})
    AddOpcaoMenu(aOpcoes, aAcoes, "eSocial - Evento 3000 - Enviar lote", {|| EnviarEsocial3000()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Gerar identificador da operacao de transporte", {|| CIOTGerarIdOperacaoTransporte()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Declaracao da operacao de transporte", {|| CIOTDeclaracaoOperacaoTransporte()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Consultar CIOT gerado", {|| CIOTConsultarCIOTGerado()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Consultar excecao", {|| CIOTConsultarExcecao()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Consultar frota do transportador", {|| CIOTConsultarFrotaTransportador()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Consultar situacao do transportador", {|| CIOTConsultarSituacaoTransportador()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Encerramento da operacao de transporte", {|| CIOTEncerramentoOperacaoTransporte()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Cancelamento da operacao de transporte", {|| CIOTCancelamentoOperacaoTransporte()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Retificacao da operacao de transporte", {|| CIOTRetificacaoOperacaoTransporte()})
 
    Do While .T.
       Cls

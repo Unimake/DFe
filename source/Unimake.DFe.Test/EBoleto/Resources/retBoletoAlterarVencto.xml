@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BoletoAlterarVenctoResponse>
+  <Status>999</Status>
+  <Motivo>Not Found | No resources match requested URI</Motivo>
+  <DLLVersao>20260617.1001</DLLVersao>
+</BoletoAlterarVenctoResponse>

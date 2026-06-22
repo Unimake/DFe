@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
@@ -68,6 +69,8 @@ namespace Unimake.DFe.Test.NFGas
         [Theory]
         [Trait("DFe", "NFGas")]
         [InlineData(@"..\..\..\NFGas\Resources\eventoNFGas-110111.xml")]
+        [InlineData(@"..\..\..\NFGas\Resources\eventoNFGas-110300.xml")]
+        [InlineData(@"..\..\..\NFGas\Resources\eventoNFGas-110301.xml")]
         public void SerializacaoDesserializacaoEventoNFGas(string arqXML)
         {
             SerializarDesserializar<EventoNFGas>(arqXML);
@@ -125,6 +128,102 @@ namespace Unimake.DFe.Test.NFGas
             Assert.Equal("NFGas" + infNFGas.Chave, infNFGas.Id);
             Assert.Equal(49, infNFGas.Id.Length);
             Assert.Equal(infNFGas.Chave[43].ToString(), infNFGas.Ide.CDV.ToString());
+        }
+
+        [Fact]
+        [Trait("DFe", "NFGas")]
+        public void DeveSerializarNovosCamposDosSchemasNFGas()
+        {
+            var nfgas = new Unimake.Business.DFe.Xml.NFGas.NFGas
+            {
+                InfNFGas = new InfNFGas
+                {
+                    Id = "NFGas35260512345678000195760010000000011000000109",
+                    Versao = "1.00",
+                    Ide = new Ide
+                    {
+                        CUF = UFBrasil.SP,
+                        TpAmb = TipoAmbiente.Homologacao,
+                        Mod = ModeloDFe.NFGas,
+                        TpEmis = TipoEmissaoNFGas.Normal,
+                        FinNFGas = FinalidadeNFGas.Normal,
+                        TpFat = TipoFaturamentoNFGas.Normal,
+                        TpPagAnt = TipoPagamentoAntecipadoNFCom.PagamentoAntecipadoServicosNaoContinuados
+                    },
+                    Emit = new Emit
+                    {
+                        ISUFEmit = "12345678"
+                    },
+                    PgtoVinc = new PgtoVinc
+                    {
+                        Pgto = new List<Pgto>
+                        {
+                            new Pgto
+                            {
+                                NPag = "1",
+                                IdTransacao = "TRANSACAO01",
+                                TpMeioPgto = MeioPagamento.Dinheiro,
+                                CNPJReceb = "12345678000195",
+                                CNPJBasePSP = "12345678"
+                            }
+                        }
+                    },
+                    Det = new List<Det>
+                    {
+                        new Det
+                        {
+                            NItem = 1,
+                            GNormal = new GNormal
+                            {
+                                Prod = new Prod
+                                {
+                                    IndOrigemQtd = OrigemQuantidadeFaturadaNFGas.Media,
+                                    UMed = UnidadeMedidaNFGas.M3,
+                                    GPagAntecipado = new GPagAntecipado
+                                    {
+                                        ChDFePagAnt = "35260512345678000195760010000000011000000109",
+                                        NItemPagAnt = 1
+                                    }
+                                },
+                                Imposto = new Imposto
+                                {
+                                    IBSCBS = new IBSCBS
+                                    {
+                                        GIBSCBS = new GIBSCBS
+                                        {
+                                            GCBS = new GCBS
+                                            {
+                                                GDevTrib = new GDevTrib
+                                                {
+                                                    PDevTrib = "10.00",
+                                                    VDevTrib = "1.00"
+                                                },
+                                                GALCZFMCBS = new GALCZFMCBS
+                                                {
+                                                    PAliqEfetRegCBS = "10.00",
+                                                    VTribRegCBS = "1.00"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            var doc = nfgas.GerarXML();
+            var ns = new XmlNamespaceManager(doc.NameTable);
+            ns.AddNamespace("nfgas", "http://www.portalfiscal.inf.br/nfgas");
+
+            Assert.Equal("1", doc.SelectSingleNode("//nfgas:tpPagAnt", ns)?.InnerText);
+            Assert.Equal("12345678", doc.SelectSingleNode("//nfgas:ISUFEmit", ns)?.InnerText);
+            Assert.Equal("35260512345678000195760010000000011000000109", doc.SelectSingleNode("//nfgas:gPagAntecipado/nfgas:chDFePagAnt", ns)?.InnerText);
+            Assert.Equal("1", doc.SelectSingleNode("//nfgas:gPagAntecipado/nfgas:nItemPagAnt", ns)?.InnerText);
+            Assert.Equal("10.00", doc.SelectSingleNode("//nfgas:gDevTrib/nfgas:pDevTrib", ns)?.InnerText);
+            Assert.Equal("1.00", doc.SelectSingleNode("//nfgas:gALCZFMCBS/nfgas:vTribRegCBS", ns)?.InnerText);
+            Assert.Equal("TRANSACAO01", doc.SelectSingleNode("//nfgas:pgtoVinc/nfgas:pgto/@idTransacao", ns)?.InnerText);
         }
 
         private static void SerializarDesserializar<T>(string arqXML) where T : XMLBase, new()

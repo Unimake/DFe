@@ -332,6 +332,31 @@ namespace Unimake.DFe.Test.ESocial
         }
 
         /// <summary>
+        /// Testar se o evento 2200 eSocial não serializa estCiv quando não informado
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "ESocial")]
+        public void SerializacaoESocial2200NaoGeraEstCivQuandoNaoInformado()
+        {
+            var eSocial = new Business.DFe.Xml.ESocial.ESocial2200
+            {
+                EvtAdmissao = new Business.DFe.Xml.ESocial.EvtAdmissao
+                {
+                    Trabalhador = new Business.DFe.Xml.ESocial.Trabalhador2200
+                    {
+                        Sexo = Business.DFe.Servicos.TipoSexo.Masculino,
+                        RacaCor = Business.DFe.Servicos.RacaCor.Branca,
+                        GrauInstr = Business.DFe.Servicos.GrauDeInstrucao.FundamentalCompleto
+                    }
+                }
+            };
+
+            var doc = eSocial.GerarXML();
+
+            Assert.DoesNotContain("<estCiv>", doc.OuterXml);
+        }
+
+        /// <summary>
         /// Testar a serialização e desserialização do Evento 2205 eSocial
         /// </summary>
         [Theory]

@@ -10,7 +10,8 @@ using System.Collections.Generic;
 using System;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
-using Unimake.Business.DFe.Servicos;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CIOT
 {
@@ -27,8 +28,18 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }
 
+        [XmlIgnore]
+        public double ValorFrete { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade ValorFrete para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("ValorFrete")]
-        public string ValorFrete { get; set; }
+        public string ValorFreteField
+        {
+            get => ValorFrete.ToString("F2", CultureInfo.InvariantCulture);
+            set => ValorFrete = Converter.ToDouble(value);
+        }
 
         [XmlIgnore]
         [JsonIgnore]
@@ -52,12 +63,12 @@ namespace Unimake.Business.DFe.Xml.CIOT
 
         [XmlArray("OrigemDestino")]
         [XmlArrayItem("ParOrigemDestino")]
-        public List<ParOrigemDestinoCIOT> OrigemDestino { get; set; }
+        public List<OrigemDestino> OrigemDestino { get; set; }
 
         [XmlElement("DadosCarga")]
-        public DadosCargaCIOT DadosCarga { get; set; }
+        public DadosCarga DadosCarga { get; set; }
 
-        public bool ShouldSerializeValorFrete() => !string.IsNullOrEmpty(ValorFrete);
+        public bool ShouldSerializeValorFreteField() => ValorFrete > 0;
         public bool ShouldSerializeDataFimViagem() => false;
 #if INTEROP
         public bool ShouldSerializeDataFimViagemField() => DataFimViagem > DateTime.MinValue;
@@ -66,6 +77,30 @@ namespace Unimake.Business.DFe.Xml.CIOT
 #endif
         public bool ShouldSerializeOrigemDestino() => OrigemDestino?.Count > 0;
         public bool ShouldSerializeDadosCarga() => DadosCarga != null;
+
+#if INTEROP
+        public void AddOrigemDestino(OrigemDestino origemDestino)
+        {
+            if (OrigemDestino == null)
+            {
+                OrigemDestino = new List<OrigemDestino>();
+            }
+
+            OrigemDestino.Add(origemDestino);
+        }
+
+        public OrigemDestino GetOrigemDestino(int index)
+        {
+            if ((OrigemDestino?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return OrigemDestino[index];
+        }
+
+        public int GetOrigemDestinoCount => (OrigemDestino != null ? OrigemDestino.Count : 0);
+#endif
     }
 
 #if INTEROP
@@ -79,7 +114,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     public class RetRetificacaoOperacaoTransporte : XMLBase
     {
         [XmlElement("temp")]
-        public TempCIOT Temp { get; set; }
+        public Temp Temp { get; set; }
 
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }

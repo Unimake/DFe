@@ -1,13 +1,22 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 using Xunit;
+using CIOTCancelamentoOperacaoTransporte = Unimake.Business.DFe.Servicos.CIOT.CancelamentoOperacaoTransporte;
+using CIOTConsultarCIOTGerado = Unimake.Business.DFe.Servicos.CIOT.ConsultarCIOTGerado;
+using CIOTConsultarExcecao = Unimake.Business.DFe.Servicos.CIOT.ConsultarExcecao;
+using CIOTConsultarFrotaTransportador = Unimake.Business.DFe.Servicos.CIOT.ConsultarFrotaTransportador;
+using CIOTConsultarSituacaoTransportador = Unimake.Business.DFe.Servicos.CIOT.ConsultarSituacaoTransportador;
 using CIOTDeclaracaoOperacaoTransporte = Unimake.Business.DFe.Servicos.CIOT.DeclaracaoOperacaoTransporte;
+using CIOTEncerramentoOperacaoTransporte = Unimake.Business.DFe.Servicos.CIOT.EncerramentoOperacaoTransporte;
+using CIOTGerarIdOperacaoTransporte = Unimake.Business.DFe.Servicos.CIOT.GerarIdOperacaoTransporte;
+using CIOTRetificacaoOperacaoTransporte = Unimake.Business.DFe.Servicos.CIOT.RetificacaoOperacaoTransporte;
 
 namespace Unimake.DFe.Test.CIOT
 {
@@ -44,7 +53,17 @@ namespace Unimake.DFe.Test.CIOT
         [InlineData(@"..\..\..\CIOT\Resources\retConsultarFrotaTransportadorErro.xml")]
         public void SerializacaoDesserializacaoRetConsultarFrotaTransportador(string arqXML)
         {
-            SerializarDesserializar<RetConsultarFrotaTransportador>(arqXML);
+            var xml = SerializarDesserializar<RetConsultarFrotaTransportador>(arqXML);
+
+            if (xml.Temp == null)
+            {
+                Assert.Single(xml.Frota);
+                Assert.Equal("ABC1D23", xml.Frota[0].PlacaVeiculo);
+
+                var json = JsonConvert.SerializeObject(xml);
+                Assert.Contains("\"Frota\":", json);
+                Assert.DoesNotContain("\"VeiculoFrota\":", json);
+            }
         }
 
         [Theory]
@@ -191,24 +210,126 @@ namespace Unimake.DFe.Test.CIOT
             Assert.DoesNotContain("DataDeclaracaoField", jsonText);
             Assert.DoesNotContain("DataInicioViagemField", jsonText);
             Assert.DoesNotContain("DataFimViagemField", jsonText);
-            var contratantesCargFrac = (JArray)JObject.Parse(jsonText)["DadosCarga"]["ContratantesCargFrac"];
+            Assert.DoesNotContain("ValorFreteField", jsonText);
+            var json = LerJson(jsonText);
+            Assert.Equal("1500.50", (string)json["ValorFrete"]);
+            Assert.Null(json["InfPagamento"][0]["Parcelas"]);
+            Assert.Null(json["InfPagamento"][0]["Parcela"]);
+            Assert.Equal("1", (string)json["InfPagamento"][0]["NumeroParcela"]);
+            Assert.Equal("2026-05-30", (string)json["InfPagamento"][0]["DataVencimento"]);
+            Assert.Equal("1500.50", (string)json["InfPagamento"][0]["ValorParcela"]);
+            var contratantesCargFrac = (JArray)json["DadosCarga"]["ContratantesCargFrac"];
             Assert.Equal(2, contratantesCargFrac.Count);
             Assert.Equal("12345678000195", contratantesCargFrac[0]);
             Assert.Equal("98765432000110", contratantesCargFrac[1]);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public async Task SerializacaoJsonEnvioServicosCIOT()
+        {
+            var consultarSituacaoTransportador = new CIOTConsultarSituacaoTransportador(LerXmlArquivo<ConsultarSituacaoTransportador>(@"..\..\..\CIOT\Resources\consultarSituacaoTransportador.xml"), CriarConfiguracao());
+            var consultarSituacaoTransportadorJson = await LerJsonServico(consultarSituacaoTransportador);
+            Assert.Equal("12345678901", (string)consultarSituacaoTransportadorJson["CpfCnpjTransportador"]);
+
+            var consultarFrotaTransportador = new CIOTConsultarFrotaTransportador(LerXmlArquivo<ConsultarFrotaTransportador>(@"..\..\..\CIOT\Resources\consultarFrotaTransportador.xml"), CriarConfiguracao());
+            var consultarFrotaTransportadorJson = await LerJsonServico(consultarFrotaTransportador);
+            Assert.Equal("12345678901", (string)consultarFrotaTransportadorJson["CpfCnpjTransportador"]);
+
+            var declaracaoOperacaoTransporte = new CIOTDeclaracaoOperacaoTransporte(LerXmlArquivo<DeclaracaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\declaracaoOperacaoTransporte.xml"), CriarConfiguracao());
+            var declaracaoOperacaoTransporteJson = await LerJsonServico(declaracaoOperacaoTransporte);
+            Assert.Equal("OP1234567890", (string)declaracaoOperacaoTransporteJson["IdOperacaoTransporte"]);
+            Assert.Equal("1500.50", (string)declaracaoOperacaoTransporteJson["ValorFrete"]);
+            Assert.Equal("2026-05-25T10:00:00-03:00", (string)declaracaoOperacaoTransporteJson["DataDeclaracao"]);
+            Assert.Equal("ABC1D23", (string)declaracaoOperacaoTransporteJson["Veiculos"][0]["Placa"]);
+            Assert.Equal("4118402", (string)declaracaoOperacaoTransporteJson["OrigemDestino"][0]["Origem"]["CodigoMunicipioOrigem"]);
+            Assert.Null(declaracaoOperacaoTransporteJson["ValorFreteField"]);
+            Assert.Null(declaracaoOperacaoTransporteJson["DataDeclaracaoField"]);
+
+            var cancelamentoOperacaoTransporte = new CIOTCancelamentoOperacaoTransporte(LerXmlArquivo<CancelamentoOperacaoTransporte>(@"..\..\..\CIOT\Resources\cancelamentoOperacaoTransporte.xml"), CriarConfiguracao());
+            var cancelamentoOperacaoTransporteJson = await LerJsonServico(cancelamentoOperacaoTransporte);
+            Assert.Equal("1234567890123456", (string)cancelamentoOperacaoTransporteJson["CodigoIdentificacaoOperacao"]);
+            Assert.Equal("Operacao nao realizada", (string)cancelamentoOperacaoTransporteJson["MotivoCancelamento"]);
+
+            var retificacaoOperacaoTransporte = new CIOTRetificacaoOperacaoTransporte(LerXmlArquivo<RetificacaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\retificacaoOperacaoTransporte.xml"), CriarConfiguracao());
+            var retificacaoOperacaoTransporteJson = await LerJsonServico(retificacaoOperacaoTransporte);
+            Assert.Equal("1550.75", (string)retificacaoOperacaoTransporteJson["ValorFrete"]);
+            Assert.Equal("2026-05-27", (string)retificacaoOperacaoTransporteJson["DataFimViagem"]);
+            Assert.Equal("4118402", (string)retificacaoOperacaoTransporteJson["OrigemDestino"][0]["Origem"]["CodigoMunicipioOrigem"]);
+            Assert.Null(retificacaoOperacaoTransporteJson["ValorFreteField"]);
+            Assert.Null(retificacaoOperacaoTransporteJson["DataFimViagemField"]);
+
+            var encerramentoOperacaoTransporte = new CIOTEncerramentoOperacaoTransporte(LerXmlArquivo<EncerramentoOperacaoTransporte>(@"..\..\..\CIOT\Resources\encerramentoOperacaoTransporte.xml"), CriarConfiguracao());
+            var encerramentoOperacaoTransporteJson = await LerJsonServico(encerramentoOperacaoTransporte);
+            Assert.Equal("1234567890123456", (string)encerramentoOperacaoTransporteJson["CodigoIdentificacaoOperacao"]);
+            Assert.Equal("1", (string)encerramentoOperacaoTransporteJson["OrigemDestino"][0]["QtdViagens"]);
+            Assert.Equal("1000.00", (string)encerramentoOperacaoTransporteJson["DadosCarga"]["PesoTotalCarga"]);
+
+            var consultarCIOTGerado = new CIOTConsultarCIOTGerado(LerXmlArquivo<ConsultarCIOTGerado>(@"..\..\..\CIOT\Resources\consultarCIOTGerado.xml"), CriarConfiguracao());
+            var consultarCIOTGeradoJson = await LerJsonServico(consultarCIOTGerado);
+            Assert.Equal("123456789012", (string)consultarCIOTGeradoJson["CodigoIdentificacaoOperacao"]);
+            Assert.Equal("2026", (string)consultarCIOTGeradoJson["AnoDeclaracao"]);
+
+            var gerarIdOperacaoTransporte = new CIOTGerarIdOperacaoTransporte(LerXmlArquivo<GerarIdOperacaoTransporte>(@"..\..\..\CIOT\Resources\gerarIdOperacaoTransporte.xml"), CriarConfiguracao());
+            var gerarIdOperacaoTransporteJson = await LerJsonServico(gerarIdOperacaoTransporte);
+            Assert.Equal("41942626000102", (string)gerarIdOperacaoTransporteJson["cpfCnpj"]);
+            Assert.Null(gerarIdOperacaoTransporteJson["Versao"]);
+
+            var consultarExcecao = new CIOTConsultarExcecao(LerXmlArquivo<ConsultarExcecao>(@"..\..\..\CIOT\Resources\consultarExcecao.xml"), CriarConfiguracao());
+            Assert.Null(consultarExcecao.Configuracoes.HttpContent);
+            Assert.Contains("CPFCNPJTransportador=12345678901", consultarExcecao.Configuracoes.RequestURI);
         }
 
         private static T SerializarDesserializar<T>(string arqXML) where T : XMLBase, new()
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
+            var xml = LerXmlArquivo<T>(arqXML);
             var doc = new XmlDocument();
             doc.Load(arqXML);
-
-            var xml = new T().LerXML<T>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, $"XML gerado pela DLL está diferente do conteúdo do arquivo serializado.\nOriginal: {doc.InnerText}\nGerado: {doc2.InnerText}");
             return xml;
+        }
+
+        private static T LerXmlArquivo<T>(string arqXML) where T : XMLBase, new()
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            return new T().LerXML<T>(doc);
+        }
+
+        private static async Task<JObject> LerJsonServico(dynamic servico)
+        {
+            Assert.NotNull(servico.Configuracoes.HttpContent);
+
+            var jsonText = await servico.Configuracoes.HttpContent.ReadAsStringAsync(TestContext.Current.CancellationToken);
+
+            Assert.DoesNotContain("Field", jsonText);
+            return LerJson(jsonText);
+        }
+
+        private static JObject LerJson(string jsonText)
+        {
+            using (var reader = new JsonTextReader(new StringReader(jsonText)) { DateParseHandling = DateParseHandling.None })
+            {
+                return JObject.Load(reader);
+            }
+        }
+
+        private static Configuracao CriarConfiguracao()
+        {
+            return new Configuracao
+            {
+                TipoDFe = TipoDFe.CIOT,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CodigoUF = (int)UFBrasil.AN
+            };
         }
 
         private static XmlDocument CriarXmlDeclaracaoOperacaoTransporte(string codigoNaturezaCarga)

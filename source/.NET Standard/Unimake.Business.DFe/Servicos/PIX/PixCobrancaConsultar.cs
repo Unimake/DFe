@@ -2,6 +2,8 @@
 using System.Runtime.InteropServices;
 #endif
 using System.Collections.Generic;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.PIX;
 
 namespace Unimake.Business.DFe.Servicos.PIX
 {
@@ -15,6 +17,18 @@ namespace Unimake.Business.DFe.Servicos.PIX
 #endif
     public class PixCobrancaConsultar : ServicoBase<Xml.PIX.PixCobrancaConsultar>
     {
+        /// <summary>
+        /// Resultado do retorno da consulta de cobrança PIX
+        /// </summary>
+        public retPIXCobrancaConsultar Result => RetornoWSXML != null
+            ? XMLUtility.Deserializar<retPIXCobrancaConsultar>(RetornoWSXML)
+            : new retPIXCobrancaConsultar
+            {
+                Status = 999,
+                Motivo = "Ocorreu um erro ao tentar obter o objeto no retorno da API",
+                DLLVersao = Info.VersaoDLL
+            };
+
         /// <inheritdoc />
         protected override Servico ServicoPIX => Servico.PIXCobrancaConsultar;
 

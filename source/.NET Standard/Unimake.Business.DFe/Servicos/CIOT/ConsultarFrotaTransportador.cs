@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 
 namespace Unimake.Business.DFe.Servicos.CIOT
@@ -14,10 +15,28 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.ConsultarFrotaTransportador")]
     [ComVisible(true)]
 #endif
-    public class ConsultarFrotaTransportador : ServicoBase<Xml.CIOT.ConsultarFrotaTransportador, RetConsultarFrotaTransportador>, IInteropService<Xml.CIOT.ConsultarFrotaTransportador>
+    public class ConsultarFrotaTransportador : ServicoBase, IInteropService<Xml.CIOT.ConsultarFrotaTransportador>
     {
+        private Xml.CIOT.ConsultarFrotaTransportador envio;
+
+        /// <summary>
+        /// Objeto do XML de envio
+        /// </summary>
+        public Xml.CIOT.ConsultarFrotaTransportador Envio => ObterEnvio(ref envio);
+
+        /// <summary>
+        /// Resultado do serviço
+        /// </summary>
+        public RetConsultarFrotaTransportador Result => ObterResult<RetConsultarFrotaTransportador>();
+
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTConsultarFrotaTransportador;
+
+        /// <inheritdoc />
+        protected override string NomeRootRetorno => nameof(RetConsultarFrotaTransportador);
+
+        /// <inheritdoc />
+        protected override XMLBase XmlEnvio => Envio;
 
         /// <summary>
         /// Construtor
@@ -45,7 +64,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.ConsultarFrotaTransportador xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.ConsultarFrotaTransportador xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

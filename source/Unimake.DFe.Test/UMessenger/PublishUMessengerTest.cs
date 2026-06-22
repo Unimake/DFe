@@ -34,6 +34,10 @@ namespace Unimake.DFe.Test.UMessenger
                 servico =>
                 {
                     Assert.NotNull(servico.Result);
+                    Assert.Single(servico.Result.Mensagem);
+                    Assert.True(servico.Result.Mensagem[0].Status == 0 || servico.Result.Mensagem[0].Status == 1);
+                    Assert.NotEmpty(servico.Result.Mensagem[0].DLLVersao);
+                    Assert.Equal(servico.Result.Mensagem[0].MessageID, servico.Result.MessageId);
                     Assert.NotEmpty(servico.Result.RawResponse);
                 });
         }
@@ -74,7 +78,13 @@ namespace Unimake.DFe.Test.UMessenger
                 servico =>
                 {
                     Assert.Equal(2, servico.Results.Count);
-                    Assert.All(servico.Results, r => Assert.NotEmpty(r.RawResponse));
+                    Assert.Equal(2, servico.MessageResults.Count);
+                    Assert.All(servico.Results, r =>
+                    {
+                        Assert.Single(r.Mensagem);
+                        Assert.True(r.Mensagem[0].Status == 0 || r.Mensagem[0].Status == 1);
+                        Assert.NotEmpty(r.Mensagem[0].DLLVersao);
+                    });
                 });
         }
     }

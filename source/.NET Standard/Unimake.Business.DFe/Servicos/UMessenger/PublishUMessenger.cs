@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
         #region Private Fields
 
         private List<retUMessengerPublish> _results;
+        private retUMessengerPublish _result;
 
         private static readonly JsonSerializerSettings JsonSettings = new JsonSerializerSettings
         {
@@ -47,11 +49,16 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
         public IReadOnlyList<retUMessengerPublish> Results => _results ?? new List<retUMessengerPublish>();
 
         /// <summary>
+        /// Lista de mensagens de retorno no formato novo do uMessenger
+        /// </summary>
+        public IReadOnlyList<retUMessengerMensagem> MessageResults => _result?.Mensagem ?? new List<retUMessengerMensagem>();
+
+        /// <summary>
         /// Resultado do primeiro (ou único) envio, desserializado de RetornoWSXML
         /// </summary>
-        public retUMessengerPublish Result => RetornoWSXML != null
+        public retUMessengerPublish Result => _result ?? (RetornoWSXML != null
             ? XMLUtility.Deserializar<retUMessengerPublish>(RetornoWSXML)
-            : null;
+            : null);
 
         #endregion Public Properties
 
@@ -130,9 +137,11 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
         public override void Executar()
         {
             _results = new List<retUMessengerPublish>();
+            _result = null;
 
             var sendTextXml = new uMessengerSendTextMessage().LerXML<uMessengerSendTextMessage>(ConteudoXML);
             var nodes = ConteudoXML.GetElementsByTagName("SendTextMessage");
+            var mensagensRetorno = new List<retUMessengerMensagem>();
 
             for (var i = 0; i < nodes.Count; i++)
             {
@@ -141,7 +150,17 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
                 Configuracoes.HttpContent = GerarJSONTextMessage(msgData);
                 base.Executar();
 
-                _results.Add(XMLUtility.Deserializar<retUMessengerPublish>(RetornoWSXML));
+                var retorno = CriarRetornoCompativel(RetornoWSXML, RetornoWSRawString);
+                var mensagem = retorno?.Mensagem != null && retorno.Mensagem.Count > 0
+                    ? retorno.Mensagem[0]
+                    : new retUMessengerMensagem();
+
+                mensagem.Id = !string.IsNullOrWhiteSpace(msgData.Id) ? msgData.Id : (i + 1).ToString("00");
+                mensagensRetorno.Add(mensagem);
+
+                var retornoIndividual = new retUMessengerPublish();
+                retornoIndividual.Mensagem.Add(mensagem);
+                _results.Add(retornoIndividual);
 
                 if (i < nodes.Count - 1)
                 {
@@ -149,6 +168,14 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
                     Thread.Sleep(3000);
                 }
             }
+
+            _result = new retUMessengerPublish
+            {
+                Mensagem = mensagensRetorno
+            };
+
+            RetornoWSXML = _result.GerarXML();
+            RetornoWSString = RetornoWSXML.OuterXml;
         }
 
         #endregion Public Methods
@@ -170,6 +197,34 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
             }
 
             throw new Exception("InstanceName não informado. Informe no XML (tag InstanceName) ou em Configuracao.UMessengerInstanceName.");
+        }
+
+        private static retUMessengerPublish CriarRetornoCompativel(XmlDocument retornoXml, string rawResponse)
+        {
+            var retorno = retornoXml != null
+                ? XMLUtility.Deserializar<retUMessengerPublish>(retornoXml)
+                : new retUMessengerPublish();
+
+            retorno.RawResponse = rawResponse;
+
+            if (!string.IsNullOrWhiteSpace(rawResponse))
+            {
+                try
+                {
+                    var root = JObject.Parse(rawResponse);
+                    retorno.LocalId = root.Value<string>("localId");
+
+                    if (string.IsNullOrWhiteSpace(retorno.MessageId))
+                    {
+                        retorno.MessageId = root.Value<string>("messageId");
+                    }
+                }
+                catch (JsonException)
+                {
+                }
+            }
+
+            return retorno;
         }
 
         private HttpContent GerarJSONTextMessage(SendTextMessageContent msg)

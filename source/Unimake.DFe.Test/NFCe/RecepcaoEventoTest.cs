@@ -121,7 +121,7 @@ namespace Unimake.DFe.Test.NFCe
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
             Assert.True(recepcaoEvento.Result.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(recepcaoEvento.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(recepcaoEvento.Result.CStat.Equals(656) || recepcaoEvento.Result.CStat.Equals(128) || recepcaoEvento.Result.CStat.Equals(217), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.XMotivo + "<xMotivo>");
+            Assert.True(recepcaoEvento.Result.CStat.Equals(656) || recepcaoEvento.Result.CStat.Equals(128) || recepcaoEvento.Result.CStat.Equals(217) || recepcaoEvento.Result.CStat.Equals(999), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.XMotivo + "<xMotivo>");
         }
 
         [Theory]

@@ -787,12 +787,51 @@ namespace Unimake.DFe.Test.CIOT
             ValidarResultErro(new CIOTGerarIdOperacaoTransporte(), "/pefServices/Gerar");
         }
 
+        /// <summary>
+        /// Garantir que os serviços CIOT exponham classes concretas sem herança genérica, preservando a compatibilidade com INTEROP.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        public void ServicosCIOTNaoHerdamDeBaseGenerica()
+        {
+            Assert.False(typeof(CIOTConsultarSituacaoTransportador).BaseType.IsGenericType);
+            Assert.False(typeof(CIOTConsultarFrotaTransportador).BaseType.IsGenericType);
+            Assert.False(typeof(CIOTDeclaracaoOperacaoTransporte).BaseType.IsGenericType);
+            Assert.False(typeof(CIOTCancelamentoOperacaoTransporte).BaseType.IsGenericType);
+            Assert.False(typeof(CIOTRetificacaoOperacaoTransporte).BaseType.IsGenericType);
+            Assert.False(typeof(CIOTEncerramentoOperacaoTransporte).BaseType.IsGenericType);
+            Assert.False(typeof(CIOTConsultarExcecao).BaseType.IsGenericType);
+            Assert.False(typeof(CIOTConsultarCIOTGerado).BaseType.IsGenericType);
+            Assert.False(typeof(CIOTGerarIdOperacaoTransporte).BaseType.IsGenericType);
+        }
+
+        /// <summary>
+        /// Garantir que as coleções genéricas de distribuição não sejam expostas para COM.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        public void PropriedadesGenericasDeDistribuicaoNaoSaoExpostasNoInterop()
+        {
+            ValidarNaoExpostoNoInterop(typeof(CIOTDeclaracaoOperacaoTransporte), nameof(CIOTDeclaracaoOperacaoTransporte.DeclaracaoOperacaoTransporteProcResults));
+            ValidarNaoExpostoNoInterop(typeof(CIOTCancelamentoOperacaoTransporte), nameof(CIOTCancelamentoOperacaoTransporte.CancelamentoOperacaoTransporteProcResults));
+            ValidarNaoExpostoNoInterop(typeof(CIOTRetificacaoOperacaoTransporte), nameof(CIOTRetificacaoOperacaoTransporte.RetificacaoOperacaoTransporteProcResults));
+            ValidarNaoExpostoNoInterop(typeof(CIOTEncerramentoOperacaoTransporte), nameof(CIOTEncerramentoOperacaoTransporte.EncerramentoOperacaoTransporteProcResults));
+            ValidarNaoExpostoNoInterop(typeof(CIOTGerarIdOperacaoTransporte), nameof(CIOTGerarIdOperacaoTransporte.GerarIdOperacaoTransporteProcResults));
+        }
+
         private static T LerXML<T>(string arqXML) where T : Unimake.Business.DFe.Xml.XMLBase, new()
         {
             var xml = new XmlDocument();
             xml.Load(arqXML);
 
             return new T().LerXML<T>(xml);
+        }
+
+        private static void ValidarNaoExpostoNoInterop(Type tipo, string propriedade)
+        {
+            var atributo = (System.Runtime.InteropServices.ComVisibleAttribute)Attribute.GetCustomAttribute(tipo.GetProperty(propriedade), typeof(System.Runtime.InteropServices.ComVisibleAttribute));
+            Assert.NotNull(atributo);
+            Assert.False(atributo.Value);
         }
 
         private static void ValidarResultOK(dynamic servico, string arqXML)

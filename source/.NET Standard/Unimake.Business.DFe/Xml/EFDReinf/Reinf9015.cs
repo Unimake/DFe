@@ -152,7 +152,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string Hash { get; set; }
 
         [XmlElement("fechRet")]
-        public IndicativoFinalidadeEvento FechRet { get; set; }
+        public string FechRet { get; set; }
 
         #region ShouldSerialize
         public bool ShouldSerializeNrProtLote() => !string.IsNullOrEmpty(NrProtLote);

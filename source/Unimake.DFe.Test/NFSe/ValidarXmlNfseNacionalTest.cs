@@ -37,7 +37,7 @@ namespace Unimake.DFe.Test.NFSe
                     XNBS = "Serviços de concessão de crédito não classificados em subposições anteriores",
                     VerAplic = "EmissorWeb_1.5.0.0",
                     AmbGer = AmbienteGeradorNFSe.SefinNacionalNfse,
-                    TpEmis = 1,
+                    TpEmis = TipoEmissaoNFSe.Normal,
                     CStat = 102,
                     DhProc = emissao,
                     NDFSe = "1",

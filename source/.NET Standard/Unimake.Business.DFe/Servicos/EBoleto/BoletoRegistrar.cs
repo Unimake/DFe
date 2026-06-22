@@ -1,6 +1,7 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.EBoleto;
 
 namespace Unimake.Business.DFe.Servicos.EBoleto
@@ -15,6 +16,18 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
 #endif
     public class BoletoRegistrar : ServicoBase<Xml.EBoleto.BoletoRegistrar>
     {
+        /// <summary>
+        /// Resultado do retorno do registro de boleto
+        /// </summary>
+        public retBoletoRegistrar Result => RetornoWSXML != null
+            ? XMLUtility.Deserializar<retBoletoRegistrar>(RetornoWSXML)
+            : new retBoletoRegistrar
+            {
+                Status = 999,
+                Motivo = "Ocorreu um erro ao tentar obter o objeto no retorno da API",
+                DLLVersao = Info.VersaoDLL
+            };
+
         /// <inheritdoc />
         protected override Servico ServicoEBoleto => Servico.EBoletoRegistrar;
 

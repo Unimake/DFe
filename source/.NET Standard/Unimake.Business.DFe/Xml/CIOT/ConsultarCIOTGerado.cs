@@ -9,7 +9,6 @@ using System.Collections.Generic;
 
 using System;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CIOT
 {
@@ -43,7 +42,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     public class RetConsultarCIOTGerado : XMLBase
     {
         [XmlElement("temp")]
-        public TempCIOT Temp { get; set; }
+        public Temp Temp { get; set; }
 
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }
@@ -57,5 +56,31 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public List<string> Mensagem { get; set; }
 
         public bool ShouldSerializeTemp() => Temp != null;
+
+#if INTEROP
+        public string GetCodigo(int index)
+        {
+            if ((Codigo?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return Codigo[index];
+        }
+
+        public int GetCodigoCount => (Codigo != null ? Codigo.Count : 0);
+
+        public string GetMensagem(int index)
+        {
+            if ((Mensagem?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return Mensagem[index];
+        }
+
+        public int GetMensagemCount => (Mensagem != null ? Mensagem.Count : 0);
+#endif
     }
 }

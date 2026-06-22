@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 
 namespace Unimake.Business.DFe.Servicos.CIOT
@@ -14,10 +15,28 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.ConsultarCIOTGerado")]
     [ComVisible(true)]
 #endif
-    public class ConsultarCIOTGerado : ServicoBase<Xml.CIOT.ConsultarCIOTGerado, RetConsultarCIOTGerado>, IInteropService<Xml.CIOT.ConsultarCIOTGerado>
+    public class ConsultarCIOTGerado : ServicoBase, IInteropService<Xml.CIOT.ConsultarCIOTGerado>
     {
+        private Xml.CIOT.ConsultarCIOTGerado envio;
+
+        /// <summary>
+        /// Objeto do XML de envio
+        /// </summary>
+        public Xml.CIOT.ConsultarCIOTGerado Envio => ObterEnvio(ref envio);
+
+        /// <summary>
+        /// Resultado do serviço
+        /// </summary>
+        public RetConsultarCIOTGerado Result => ObterResult<RetConsultarCIOTGerado>();
+
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTConsultarCIOTGerado;
+
+        /// <inheritdoc />
+        protected override string NomeRootRetorno => nameof(RetConsultarCIOTGerado);
+
+        /// <inheritdoc />
+        protected override XMLBase XmlEnvio => Envio;
 
         /// <summary>
         /// Construtor
@@ -45,7 +64,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.ConsultarCIOTGerado xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.ConsultarCIOTGerado xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
 using Unimake.Exceptions;
 
@@ -16,10 +17,11 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     [ProgId("Unimake.Business.DFe.Servicos.CIOT.DeclaracaoOperacaoTransporte")]
     [ComVisible(true)]
 #endif
-    public class DeclaracaoOperacaoTransporte : ServicoBase<Xml.CIOT.DeclaracaoOperacaoTransporte, RetDeclaracaoOperacaoTransporte>, IInteropService<Xml.CIOT.DeclaracaoOperacaoTransporte>
+    public class DeclaracaoOperacaoTransporte : ServicoBase, IInteropService<Xml.CIOT.DeclaracaoOperacaoTransporte>
     {
         #region Private Fields
 
+        private Xml.CIOT.DeclaracaoOperacaoTransporte envio;
         private readonly System.Collections.Generic.Dictionary<string, DeclaracaoOperacaoTransporteProc> DeclaracaoOperacaoTransporteProcs = new System.Collections.Generic.Dictionary<string, DeclaracaoOperacaoTransporteProc>();
 
         #endregion Private Fields
@@ -27,9 +29,20 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         #region Public Properties
 
         /// <summary>
+        /// Objeto do XML de envio
+        /// </summary>
+        public Xml.CIOT.DeclaracaoOperacaoTransporte Envio => ObterEnvio(ref envio);
+
+        /// <summary>
+        /// Resultado do serviço
+        /// </summary>
+        public RetDeclaracaoOperacaoTransporte Result => ObterResult<RetDeclaracaoOperacaoTransporte>();
+
+        /// <summary>
         /// Propriedade contendo o XML da declaração de operação de transporte com o retorno da API anexado para geração do arquivo de distribuição.
         /// A chave do dicionário é o identificador da operação retornado no campo <c>IdOperacaoTransporte</c>.
         /// </summary>
+        [System.Runtime.InteropServices.ComVisible(false)]
         public System.Collections.Generic.Dictionary<string, DeclaracaoOperacaoTransporteProc> DeclaracaoOperacaoTransporteProcResults
         {
             get
@@ -88,6 +101,12 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// <inheritdoc />
         protected override Servico ServicoCIOT => Servico.CIOTDeclaracaoOperacaoTransporte;
 
+        /// <inheritdoc />
+        protected override string NomeRootRetorno => nameof(RetDeclaracaoOperacaoTransporte);
+
+        /// <inheritdoc />
+        protected override XMLBase XmlEnvio => Envio;
+
         /// <summary>
         /// Construtor
         /// </summary>
@@ -114,7 +133,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// Executa o serviço de declaração de operação de transporte via COM, inicializando os dados de envio e configurações antes de transmitir a requisição para a API.
         /// </summary>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Xml.CIOT.DeclaracaoOperacaoTransporte xml, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(Xml.CIOT.DeclaracaoOperacaoTransporte xml, Configuracao configuracao)
         {
             InicializarServico(xml, configuracao);
             Executar();

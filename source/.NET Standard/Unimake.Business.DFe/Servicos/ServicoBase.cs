@@ -8,14 +8,10 @@ using System.Xml;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.ConsumirServico.Builders;
 using Unimake.Business.DFe.ConsumirServico.Compatibility;
-using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Validator;
 using Unimake.Business.DFe.Xml;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
 using System.Net.Http;
-using System.Text;
 using Unimake.Exceptions;
 using Unimake.Business.DFe.Validator.Abstractions;
 
@@ -203,6 +199,21 @@ namespace Unimake.Business.DFe.Servicos
             }
         }
 
+
+        /// <summary>
+        /// Helper que delega a validação para a implementação centralizada ValidarEstruturaXML.
+        /// Retorna o resultado sem lançar exceção — o chamador decide como tratar o resultado e quando chamar AjustarXMLAposAssinado().
+        /// </summary>
+        protected Unimake.Business.DFe.ValidarEstruturaXML.ResultadoValidacao ValidarXMLCentralizado()
+        {
+            var validator = new Unimake.Business.DFe.ValidarEstruturaXML();
+            var resultado = validator.ValidarServico(ConteudoXML, Configuracoes);
+            return resultado;
+        }
+
+
+
+
 #if INTEROP
 
         /// <summary>
@@ -234,6 +245,11 @@ namespace Unimake.Business.DFe.Servicos
         /// String do XML retornado pelo WebService
         /// </summary>
         public string RetornoWSString { get; set; }
+
+        /// <summary>
+        /// Conteúdo bruto retornado pelo serviço antes da transformação para XML.
+        /// </summary>
+        public string RetornoWSRawString { get; set; }
 
         /// <summary>
         /// XML retornado pelo Web-service
@@ -272,6 +288,7 @@ namespace Unimake.Business.DFe.Servicos
                 consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
 
                 RetornoWSString = consumirAPI.RetornoServicoString;
+                RetornoWSRawString = consumirAPI.RetornoServicoRawString;
                 RetornoWSXML = consumirAPI.RetornoServicoXML;
                 HttpStatusCode = consumirAPI.HttpStatusCode;
 

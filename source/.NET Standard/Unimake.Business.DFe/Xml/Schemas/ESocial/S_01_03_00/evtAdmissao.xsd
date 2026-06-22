@@ -700,7 +700,7 @@
                                                                 <xs:documentation>Se {sucessaoVinc/tpInsc}(./tpInsc) = [6], deve possuir 12 (doze) algarismos.</xs:documentation>
                                                             </xs:annotation>
                                                             <xs:restriction base="xs:string">
-                                                                <xs:pattern value="\d{8,14}" />
+                                                                <xs:pattern value="\d{8,14}|[A-Z0-9]{12}\d{2}" />
                                                             </xs:restriction>
                                                         </xs:simpleType>
                                                     </xs:element>

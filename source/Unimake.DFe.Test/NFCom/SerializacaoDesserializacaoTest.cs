@@ -28,6 +28,36 @@ namespace Unimake.DFe.Test.NFCom
 
         [Theory]
         [Trait("DFe", "NFCom")]
+        [InlineData(@"..\..\..\NFCom\Resources\nfcom_completa_rtc.xml")]
+        public void SerializacaoDesserializacaoNFComRTCNovosCampos(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var nfCom = new Unimake.Business.DFe.Xml.NFCom.NFCom();
+            var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.NFCom>(doc);
+
+            Assert.NotNull(xml.InfNFCom.PgtoVinc);
+            Assert.Equal("12345678", xml.InfNFCom.Emit.ISUFEmit);
+            Assert.Equal("06117473000150", xml.InfNFCom.Det[0].Prod.CNPJCobrTerc);
+            Assert.NotNull(xml.InfNFCom.Det[0].Prod.GPagAntecipado);
+            Assert.NotNull(xml.InfNFCom.Det[0].Imposto.IBSCBS.GIBSCBS.GCBS.GALCZFMCBS);
+
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc2.GetElementsByTagName("tpPagAnt").Count > 0);
+            Assert.True(doc2.GetElementsByTagName("ISUFEmit").Count > 0);
+            Assert.True(doc2.GetElementsByTagName("CNPJCobrTerc").Count > 0);
+            Assert.True(doc2.GetElementsByTagName("gPagAntecipado").Count > 0);
+            Assert.True(doc2.GetElementsByTagName("pDevTrib").Count > 0);
+            Assert.True(doc2.GetElementsByTagName("gALCZFMCBS").Count > 0);
+            Assert.True(doc2.GetElementsByTagName("pgtoVinc").Count > 0);
+        }
+
+        [Theory]
+        [Trait("DFe", "NFCom")]
         [InlineData(@"..\..\..\NFCom\Resources\retNFCom.xml")]
         public void SerializacaoDesserializacaoRetNFCom(string arqXML)
         {

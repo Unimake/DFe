@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.06.09.1826</AssemblyVersion>
-		<FileVersion>2026.06.09.1826</FileVersion>
+		<AssemblyVersion>2026.06.18.1041</AssemblyVersion>
+		<FileVersion>2026.06.18.1041</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -909,6 +909,8 @@
 		<None Remove="Xml\Schemas\ESocial\evtTSVInicio.xsd" />
 		<None Remove="Xml\Schemas\ESocial\evtTSVTermino.xsd" />
 		<None Remove="Xml\Schemas\ESocial\RetornoConsultaIdentificadoresEventos-v1_0_0.xsd" />
+		<None Remove="Xml\Schemas\ESocial\RetornoEnvioLoteEventos-v1_1_0.xsd" />
+		<None Remove="Xml\Schemas\ESocial\RetornoProcessamentoLote-v1_3_0.xsd" />
 		<None Remove="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorId-v1_0_0.xsd" />
 		<None Remove="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd" />
 		<None Remove="Xml\Schemas\ESocial\S_01_03_00\evtAdmissao.xsd" />
@@ -1199,6 +1201,8 @@
 		<None Remove="Xml\Schemas\NFGas\consStatServNFGas_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\evCancNFGas_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFGas\evCancVincPgto_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFGas\evVincPgto_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\eventoNFGasTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\eventoNFGas_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\nfgasTiposBasico_v1.00.xsd" />
@@ -1408,6 +1412,8 @@
 		<None Remove="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODEB\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODEB\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PRONIM\CNC_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PRONIM\tiposCnc_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PUBLICA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\QUASAR\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
@@ -2375,6 +2381,8 @@
 		<EmbeddedResource Include="Xml\Schemas\ESocial\ConsultaLoteEventos-v1_0_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\EnvioLoteEventos-v1_1_1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\RetornoConsultaIdentificadoresEventos-v1_0_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\RetornoEnvioLoteEventos-v1_1_0.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\ESocial\RetornoProcessamentoLote-v1_3_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorId-v1_0_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\ESocial\S_01_02_00\evtAdmissao.xsd" />
@@ -2563,6 +2571,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFGas\consStatServNFGas_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\DFeTiposBasicos_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\evCancNFGas_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFGas\evCancVincPgto_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFGas\evVincPgto_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\eventoNFGasTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\eventoNFGas_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\nfgasTiposBasico_v1.00.xsd" />
@@ -3526,16 +3536,38 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODEB\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODEB\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\DPS_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\evento_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\CNC_v1.00.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\DPS_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\evento_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\nfse.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\NFSe_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\NFSe_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\nfse_v2-03.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\pedRegEvento_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposComplexos_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposEventos_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposSimples_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\xmldsig-core-schema.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\pedRegEvento_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposCnc_v1.00.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposComplexos_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposEventos_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\tiposSimples_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\xmldsig-core-schema.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\schema_nfse_v03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PUBLICA\xmldsig-core-schema20020212.xsd" />
@@ -3678,8 +3710,8 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.8" />
+		<PackageReference Include="System.Net.Http.Json" Version="10.0.9" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.9" />
 		<PackageReference Include="Unimake.Cryptography" Version="20260416.712.52" />
 		<PackageReference Include="Unimake.Extensions" Version="20260416.712.52" />
 		<PackageReference Include="Unimake.Utils" Version="20260416.712.52" />

@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
-using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CIOT
 {
@@ -29,13 +28,37 @@ namespace Unimake.Business.DFe.Xml.CIOT
 
         [XmlArray("OrigemDestino")]
         [XmlArrayItem("ParOrigemDestino")]
-        public List<ParOrigemDestinoCIOT> OrigemDestino { get; set; }
+        public List<OrigemDestino> OrigemDestino { get; set; }
 
         [XmlElement("DadosCarga")]
-        public DadosCargaEncerramentoCIOT DadosCarga { get; set; }
+        public DadosCargaEncerramento DadosCarga { get; set; }
 
         public bool ShouldSerializeOrigemDestino() => OrigemDestino?.Count > 0;
         public bool ShouldSerializeDadosCarga() => DadosCarga != null;
+
+#if INTEROP
+        public void AddOrigemDestino(OrigemDestino origemDestino)
+        {
+            if (OrigemDestino == null)
+            {
+                OrigemDestino = new List<OrigemDestino>();
+            }
+
+            OrigemDestino.Add(origemDestino);
+        }
+
+        public OrigemDestino GetOrigemDestino(int index)
+        {
+            if ((OrigemDestino?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return OrigemDestino[index];
+        }
+
+        public int GetOrigemDestinoCount => (OrigemDestino != null ? OrigemDestino.Count : 0);
+#endif
     }
 
 #if INTEROP
@@ -49,7 +72,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     public class RetEncerramentoOperacaoTransporte : XMLBase
     {
         [XmlElement("temp")]
-        public TempCIOT Temp { get; set; }
+        public Temp Temp { get; set; }
 
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }

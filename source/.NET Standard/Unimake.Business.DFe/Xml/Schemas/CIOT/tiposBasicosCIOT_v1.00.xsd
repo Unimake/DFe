@@ -226,7 +226,7 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="TPagamento">
+  <xs:complexType name="TInfPagamento">
     <xs:sequence>
       <xs:element name="TipoPagamento" type="TTipoPagamento"/>
       <xs:element name="CodigoInstituicaoFinanceira" minOccurs="0">
@@ -278,28 +278,16 @@
         </xs:simpleType>
       </xs:element>
       <xs:element name="IndPagamento" type="TIndPagamento"/>
-      <xs:element name="Parcelas" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Parcela" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="NumeroParcela">
-                    <xs:simpleType>
-                      <xs:restriction base="xs:integer">
-                        <xs:minInclusive value="1"/>
-                        <xs:totalDigits value="3"/>
-                      </xs:restriction>
-                    </xs:simpleType>
-                  </xs:element>
-                  <xs:element name="DataVencimento" type="TData"/>
-                  <xs:element name="ValorParcela" type="TValor12v2"/>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="NumeroParcela" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:totalDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
       </xs:element>
+      <xs:element name="DataVencimento" type="TData" minOccurs="0"/>
+      <xs:element name="ValorParcela" type="TValor12v2" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 

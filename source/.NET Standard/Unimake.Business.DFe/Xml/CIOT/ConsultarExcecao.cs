@@ -6,7 +6,6 @@ using System.Runtime.InteropServices;
 
 using System;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CIOT
 {
@@ -35,10 +34,10 @@ namespace Unimake.Business.DFe.Xml.CIOT
     public class RetConsultarExcecao : XMLBase
     {
         [XmlElement("temp")]
-        public TempCIOT Temp { get; set; }
+        public Temp Temp { get; set; }
 
         [XmlElement("Retorno")]
-        public RetornoExcecaoCIOT Retorno { get; set; }
+        public Retorno Retorno { get; set; }
 
         [XmlElement("Codigo")]
         public string Codigo { get; set; }

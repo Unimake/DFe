@@ -339,6 +339,42 @@
         <Filename Value="EnviarDCe.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="CIOTGerarIdOperacaoTransporte.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CIOTDeclaracaoOperacaoTransporte.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CIOTConsultarCIOTGerado.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CIOTConsultarExcecao.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CIOTConsultarFrotaTransportador.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CIOTConsultarSituacaoTransportador.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CIOTEncerramentoOperacaoTransporte.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CIOTCancelamentoOperacaoTransporte.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CIOTRetificacaoOperacaoTransporte.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -378,6 +414,9 @@
       </Item>
       <Item>
         <Name Value="EOleException"/>
+      </Item>
+      <Item>
+        <Name Value="EOleError"/>
       </Item>
     </Exceptions>
   </Debugging>

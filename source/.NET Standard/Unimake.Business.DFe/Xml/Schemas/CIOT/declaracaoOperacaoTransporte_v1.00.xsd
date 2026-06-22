@@ -43,13 +43,7 @@
           </xs:complexType>
         </xs:element>
         <xs:element name="DadosCarga" type="TDadosCarga" minOccurs="0"/>
-        <xs:element name="InfPagamento">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Pagamento" type="TPagamento" maxOccurs="unbounded"/>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
+        <xs:element name="InfPagamento" type="TInfPagamento" maxOccurs="unbounded"/>
         <xs:element name="InfIndicadoresOperacionais" type="TIndicadoresOperacionais" minOccurs="0"/>
       </xs:sequence>
     </xs:complexType>

@@ -4,10 +4,9 @@
 using System.Runtime.InteropServices;
 #endif
 
+using Newtonsoft.Json;
 using System;
 using System.Xml.Serialization;
-using Newtonsoft.Json;
-using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CIOT
 {
@@ -39,7 +38,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     public class RetCancelamentoOperacaoTransporte : XMLBase
     {
         [XmlElement("temp")]
-        public TempCIOT Temp { get; set; }
+        public Temp Temp { get; set; }
 
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }

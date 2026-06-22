@@ -4,11 +4,13 @@
 using System.Runtime.InteropServices;
 #endif
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Xml.Serialization;
-using Newtonsoft.Json;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CIOT
 {
@@ -43,8 +45,18 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("CpfCnpjDestinatario")]
         public string CpfCnpjDestinatario { get; set; }
 
+        [XmlIgnore]
+        public double ValorFrete { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade ValorFrete para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("ValorFrete")]
-        public string ValorFrete { get; set; }
+        public string ValorFreteField
+        {
+            get => ValorFrete.ToString("F2", CultureInfo.InvariantCulture);
+            set => ValorFrete = Converter.ToDouble(value);
+        }
 
         [XmlIgnore]
         [JsonIgnore]
@@ -114,21 +126,20 @@ namespace Unimake.Business.DFe.Xml.CIOT
 
         [XmlArray("Veiculos")]
         [XmlArrayItem("Veiculo")]
-        public List<VeiculoCIOT> Veiculos { get; set; }
+        public List<Veiculo> Veiculos { get; set; }
 
         [XmlArray("OrigemDestino")]
         [XmlArrayItem("ParOrigemDestino")]
-        public List<ParOrigemDestinoCIOT> OrigemDestino { get; set; }
+        public List<OrigemDestino> OrigemDestino { get; set; }
 
         [XmlElement("DadosCarga")]
-        public DadosCargaCIOT DadosCarga { get; set; }
+        public DadosCarga DadosCarga { get; set; }
 
-        [XmlArray("InfPagamento")]
-        [XmlArrayItem("Pagamento")]
-        public List<PagamentoCIOT> InfPagamento { get; set; }
+        [XmlElement("InfPagamento")]
+        public List<InfPagamento> InfPagamento { get; set; }
 
         [XmlElement("InfIndicadoresOperacionais")]
-        public IndicadoresOperacionaisCIOT InfIndicadoresOperacionais { get; set; }
+        public IndicadoresOperacionais InfIndicadoresOperacionais { get; set; }
 
         public bool ShouldSerializeRNTRCContratante() => !string.IsNullOrEmpty(RNTRCContratante);
         public bool ShouldSerializeCpfCnpjDestinatario() => !string.IsNullOrEmpty(CpfCnpjDestinatario);
@@ -136,6 +147,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeDataDeclaracao() => false;
         public bool ShouldSerializeDataInicioViagem() => false;
         public bool ShouldSerializeDataFimViagem() => false;
+        public bool ShouldSerializeValorFreteField() => ValorFrete > 0;
 #if INTEROP
         public bool ShouldSerializeDataFimViagemField() => DataFimViagem > DateTime.MinValue;
 #else
@@ -144,6 +156,74 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeOrigemDestino() => OrigemDestino?.Count > 0;
         public bool ShouldSerializeDadosCarga() => DadosCarga != null;
         public bool ShouldSerializeInfIndicadoresOperacionais() => InfIndicadoresOperacionais != null;
+
+#if INTEROP
+        public void AddVeiculos(Veiculo veiculo)
+        {
+            if (Veiculos == null)
+            {
+                Veiculos = new List<Veiculo>();
+            }
+
+            Veiculos.Add(veiculo);
+        }
+
+        public Veiculo GetVeiculos(int index)
+        {
+            if ((Veiculos?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return Veiculos[index];
+        }
+
+        public int GetVeiculosCount => (Veiculos != null ? Veiculos.Count : 0);
+
+        public void AddOrigemDestino(OrigemDestino origemDestino)
+        {
+            if (OrigemDestino == null)
+            {
+                OrigemDestino = new List<OrigemDestino>();
+            }
+
+            OrigemDestino.Add(origemDestino);
+        }
+
+        public OrigemDestino GetOrigemDestino(int index)
+        {
+            if ((OrigemDestino?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return OrigemDestino[index];
+        }
+
+        public int GetOrigemDestinoCount => (OrigemDestino != null ? OrigemDestino.Count : 0);
+
+        public void AddInfPagamento(InfPagamento infPagamento)
+        {
+            if (InfPagamento == null)
+            {
+                InfPagamento = new List<InfPagamento>();
+            }
+
+            InfPagamento.Add(infPagamento);
+        }
+
+        public InfPagamento GetInfPagamento(int index)
+        {
+            if ((InfPagamento?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return InfPagamento[index];
+        }
+
+        public int GetInfPagamentoCount => (InfPagamento != null ? InfPagamento.Count : 0);
+#endif
     }
 
 #if INTEROP
@@ -157,7 +237,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     public class RetDeclaracaoOperacaoTransporte : XMLBase
     {
         [XmlElement("temp")]
-        public TempCIOT Temp { get; set; }
+        public Temp Temp { get; set; }
 
         [XmlElement("IdOperacaoTransporte")]
         public string IdOperacaoTransporte { get; set; }

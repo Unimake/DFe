@@ -16,7 +16,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Security;
-using Unimake.Business.DFe.Validator;
 using Unimake.Business.DFe.Xml;
 using Unimake.Exceptions;
 
@@ -26,9 +25,7 @@ namespace Unimake.Business.DFe.Servicos.PIX
     /// Classe base para os serviços de PIX
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Servicos.PIX.ServicoBase")]
-    [ComVisible(true)]
+    [ComVisible(false)]
 #endif
     public abstract class ServicoBase<TEnvio> : Servicos.ServicoBase
         where TEnvio : XMLBase, new()
@@ -70,7 +67,7 @@ namespace Unimake.Business.DFe.Servicos.PIX
             Configuracoes.SchemaVersao = "1.00";
             Configuracoes.UsaCertificadoDigital = false;
 
-            if(GetBoolTag("Testing") || GetBoolTag("UseHomologServer"))
+            if (GetBoolTag("Testing") || GetBoolTag("UseHomologServer"))
             {
                 Configuracoes.TipoAmbiente = TipoAmbiente.Homologacao;
             }
@@ -80,7 +77,7 @@ namespace Unimake.Business.DFe.Servicos.PIX
             ConfigureAuth();
             ConfigurarRequestURI();
 
-            if(Configuracoes.MetodoAPI != "get")
+            if (Configuracoes.MetodoAPI != "get")
             {
                 Configuracoes.HttpContent = CriarHttpContentPadrao();
             }
@@ -95,7 +92,7 @@ namespace Unimake.Business.DFe.Servicos.PIX
         {
             var configurationId = GetPropertyString("ConfigurationId");
 
-            if(!string.IsNullOrWhiteSpace(configurationId))
+            if (!string.IsNullOrWhiteSpace(configurationId))
             {
                 AdicionarQueryString(new Dictionary<string, string>
                 {
@@ -132,12 +129,12 @@ namespace Unimake.Business.DFe.Servicos.PIX
         {
             XmlValidarConteudo();
 
-            if(!string.IsNullOrWhiteSpace(Configuracoes.SchemaArquivo))
+            if (!string.IsNullOrWhiteSpace(Configuracoes.SchemaArquivo))
             {
                 var validar = new ValidarSchema();
                 validar.Validar(ConteudoXML, Configuracoes.TipoDFe + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-                if(!validar.Success)
+                if (!validar.Success)
                 {
                     throw new ValidarXMLException(validar.ErrorMessage);
                 }
@@ -159,7 +156,7 @@ namespace Unimake.Business.DFe.Servicos.PIX
         /// </summary>
         protected void InicializarServico(TEnvio xml, Configuracao configuracao)
         {
-            if(configuracao is null)
+            if (configuracao is null)
             {
                 throw new ArgumentNullException(nameof(configuracao));
             }
@@ -172,7 +169,7 @@ namespace Unimake.Business.DFe.Servicos.PIX
         /// </summary>
         protected void InicializarServico(string conteudoXML, Configuracao configuracao)
         {
-            if(configuracao is null)
+            if (configuracao is null)
             {
                 throw new ArgumentNullException(nameof(configuracao));
             }
@@ -210,7 +207,7 @@ namespace Unimake.Business.DFe.Servicos.PIX
                 .Where(p => !string.IsNullOrWhiteSpace(p.Value))
                 .Select(p => WebUtility.UrlEncode(p.Key) + "=" + WebUtility.UrlEncode(p.Value)));
 
-            if(string.IsNullOrWhiteSpace(queryString))
+            if (string.IsNullOrWhiteSpace(queryString))
             {
                 return;
             }
@@ -228,17 +225,17 @@ namespace Unimake.Business.DFe.Servicos.PIX
             var property = Envio.GetType().GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public);
             var value = property?.GetValue(Envio, null);
 
-            if(value is null)
+            if (value is null)
             {
                 return null;
             }
 
-            if(value is DateTimeOffset dateTimeOffset)
+            if (value is DateTimeOffset dateTimeOffset)
             {
                 return dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:sszzz");
             }
 
-            if(value is DateTime dateTime)
+            if (value is DateTime dateTime)
             {
                 return dateTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
             }
@@ -266,7 +263,7 @@ namespace Unimake.Business.DFe.Servicos.PIX
 
         private static string AdicionarQueryString(string uri, string queryString)
         {
-            if(string.IsNullOrWhiteSpace(uri))
+            if (string.IsNullOrWhiteSpace(uri))
             {
                 return uri;
             }
@@ -281,7 +278,7 @@ namespace Unimake.Business.DFe.Servicos.PIX
 
         private static void RemoverPropriedade(JObject jsonObject, string propertyName)
         {
-            if(jsonObject.Property(propertyName) != null)
+            if (jsonObject.Property(propertyName) != null)
             {
                 jsonObject.Remove(propertyName);
             }
@@ -293,21 +290,21 @@ namespace Unimake.Business.DFe.Servicos.PIX
             {
                 var property = base.CreateProperty(member, memberSerialization);
 
-                if(member.GetCustomAttributes(typeof(XmlIgnoreAttribute), true)?.Length > 0 ||
+                if (member.GetCustomAttributes(typeof(XmlIgnoreAttribute), true)?.Length > 0 ||
                    member.GetCustomAttributes(typeof(XmlAttributeAttribute), true)?.Length > 0)
                 {
                     property.Ignored = true;
                     return property;
                 }
 
-                if(member.Name.EndsWith("Field", StringComparison.Ordinal))
+                if (member.Name.EndsWith("Field", StringComparison.Ordinal))
                 {
                     var originalName = member.Name.Substring(0, member.Name.Length - "Field".Length);
                     property.PropertyName = char.ToLowerInvariant(originalName[0]) + originalName.Substring(1);
                 }
 
                 var specifiedProperty = member.DeclaringType?.GetProperty(member.Name + "Specified", BindingFlags.Instance | BindingFlags.Public);
-                if(specifiedProperty?.PropertyType == typeof(bool))
+                if (specifiedProperty?.PropertyType == typeof(bool))
                 {
                     property.ShouldSerialize = instance => (bool)specifiedProperty.GetValue(instance, null);
                 }

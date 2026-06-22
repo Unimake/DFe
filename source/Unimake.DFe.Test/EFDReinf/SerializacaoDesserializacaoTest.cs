@@ -704,6 +704,45 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
+        /// Testar a serialização e desserialização do retorno de recibos por chave de evento EFDReinf.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "EFDReinf")]
+        public void SerializacaoDesserializacaoRetornoReciboComEntidadeLigada()
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(@"<Reinf xmlns=""http://www.reinf.esocial.gov.br/schemas/retornoRecibosChaveEvento/v1_05_01"">
+  <ideStatus>
+    <cdRetorno>1</cdRetorno>
+    <descRetorno>Um ou mais eventos encontrados</descRetorno>
+  </ideStatus>
+  <retornoEventos>
+    <evento id=""ID1000000000000000000000000000000000"">
+      <nrRecibo>1-11-1111-1111-1</nrRecibo>
+      <situacaoEvento>1</situacaoEvento>
+      <aplicacaoRecepcao>1</aplicacaoRecepcao>
+      <tpProc>1</tpProc>
+      <nrProc>123456</nrProc>
+      <iniValid>2026-01</iniValid>
+      <fimValid>2026-12</fimValid>
+      <tpEntLig>1</tpEntLig>
+      <cnpjLig>12ABC34501DE35</cnpjLig>
+    </evento>
+  </retornoEventos>
+</Reinf>");
+
+            var xml = XMLUtility.Deserializar<ReinfRetornoRecibo>(doc);
+            var evento = xml.RetornoEventos.Evento[0];
+
+            Assert.Equal(TipoEntidadeLigada.FundoDeInvestimento, evento.TpEntLig);
+            Assert.Equal("12ABC34501DE35", evento.CnpjLig);
+
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
         /// Testar a serialização e desserialização para o Envio lote Assincrono EFDReinf.
         /// </summary>
         [Theory]

@@ -471,6 +471,23 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.EndExtSimples")]
+    [ComVisible(true)]
+#endif
+    public class EndExtSimples
+    {
+        [XmlElement("cEndPost")]
+        public string CEndPost { get; set; }
+
+        [XmlElement("xCidade")]
+        public string XCidade { get; set; }
+
+        [XmlElement("xEstProvReg")]
+        public string XEstProvReg { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.RegTrib")]
     [ComVisible(true)]
 #endif
@@ -594,17 +611,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("comExt")]
         public ComExt ComExt { get; set; }
 
-        [XmlElement("lsadppu")]
-        public LSADPPU LSADPPU { get; set; }
-
         [XmlElement("obra")]
         public Obra Obra { get; set; }
 
         [XmlElement("atvEvento")]
         public AtvEvento AtvEvento { get; set; }
-
-        [XmlElement("explRod")]
-        public ExplRod ExplRod { get; set; }
 
         [XmlElement("infoCompl")]
         public InfoCompl InfoCompl { get; set; }
@@ -709,7 +720,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("nRE")]
         public int NRE { get; set; }
 
-        [XmlElement("mDic")]
+        [XmlElement("mdic")]
         public int MDic { get; set; }
 
         #region Should Serialize
@@ -756,24 +767,24 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public int InscImobFisc { get; set; }
 
         [XmlElement("cObra")]
-        public int CObra { get; set; }
+        public string CObra { get; set; }
 
         [XmlElement("cCIB")]
-        public int CCIB { get; set; }
+        public string CCIB { get; set; }
 
         [XmlElement("end")]
         public ServEnd End { get; set; }
 
         #region Should Serialize
         public bool ShouldSerializeInscImobFisc() => InscImobFisc > 0;
-        public bool ShouldSerializeCObra() => CObra > 0;
-        public bool ShouldSerializeCCIB() => CCIB > 0;
+        public bool ShouldSerializeCObra() => !string.IsNullOrWhiteSpace(CObra);
+        public bool ShouldSerializeCCIB() => !string.IsNullOrWhiteSpace(CCIB);
 
         public void ValidarEscolhaCObraCCIBEnd()
         {
             int count = 0;
-            if (CObra > 0) count++;
-            if (CCIB > 0) count++;
+            if (!string.IsNullOrWhiteSpace(CObra)) count++;
+            if (!string.IsNullOrWhiteSpace(CCIB)) count++;
             if (End != null) count++;
             if (count != 1)
                 throw new Exception("Obra: informe exatamente um dos campos: cObra, cCIB ou end.");
@@ -834,7 +845,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         }
 
         [XmlElement("idAtvEvt")]
-        public int IdAtvEvt { get; set; }
+        public string IdAtvEvt { get; set; }
 
         [XmlElement("end")]
         public ServEnd End { get; set; }
@@ -852,7 +863,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public string CEP { get; set; }
 
         [XmlElement("endExt")]
-        public EndExt EndExt { get; set; }
+        public EndExtSimples EndExt { get; set; }
 
         [XmlElement("xLgr")]
         public string XLgr { get; set; }
@@ -917,7 +928,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     public class InfoCompl
     {
         [XmlElement("idDocTec")]
-        public int IdDocTec { get; set; }
+        public string IdDocTec { get; set; }
 
         [XmlElement("docRef")]
         public string DocRef { get; set; }
@@ -932,7 +943,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public string XInfComp { get; set; }
 
         #region Should Serialize
-        public bool ShouldSerializeIdDocTec() => IdDocTec > 0;
+        public bool ShouldSerializeIdDocTec() => !string.IsNullOrWhiteSpace(IdDocTec);
         public bool ShouldSerializeDocRef() => !string.IsNullOrWhiteSpace(DocRef);
         public bool ShouldSerializeXInfComp() => !string.IsNullOrWhiteSpace(XInfComp);
         public bool ShouldSerializeXPed() => !string.IsNullOrWhiteSpace(XPed);
@@ -947,7 +958,41 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     public class GItemPed
     {
         [XmlElement("xItemPed")]
-        public string XItemPed { get; set; }
+        public List<string> XItemPed { get; set; }
+
+#if INTEROP
+        /// <summary>
+        /// Adiciona um novo item do pedido à lista
+        /// </summary>
+        /// <param name="item">Item do pedido</param>
+        public void AddXItemPed(string item)
+        {
+            if (XItemPed == null)
+            {
+                XItemPed = new List<string>();
+            }
+            XItemPed.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna um item do pedido da lista pelo index informado
+        /// </summary>
+        /// <param name="index">Index da lista a ser retornado</param>
+        /// <returns>Item do pedido no index passado por parâmetro</returns>
+        public string GetXItemPed(int index)
+        {
+            if ((XItemPed?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+            return XItemPed[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos na lista
+        /// </summary>
+        public int GetXItemPedCount => (XItemPed != null ? XItemPed.Count : 0);
+#endif
     }
 
 #if INTEROP
@@ -1075,7 +1120,41 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     public class Documentos
     {
         [XmlElement("docDedRed")]
-        public DocDedRed DocDedRed { get; set; }
+        public List<DocDedRed> DocDedRed { get; set; }
+
+#if INTEROP
+        /// <summary>
+        /// Adiciona um novo documento de dedução/redução à lista
+        /// </summary>
+        /// <param name="item">Documento de dedução/redução</param>
+        public void AddDocDedRed(DocDedRed item)
+        {
+            if (DocDedRed == null)
+            {
+                DocDedRed = new List<DocDedRed>();
+            }
+            DocDedRed.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna um documento de dedução/redução da lista pelo index informado
+        /// </summary>
+        /// <param name="index">Index da lista a ser retornado</param>
+        /// <returns>Documento de dedução/redução no index passado por parâmetro</returns>
+        public DocDedRed GetDocDedRed(int index)
+        {
+            if ((DocDedRed?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+            return DocDedRed[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos na lista
+        /// </summary>
+        public int GetDocDedRedCount => (DocDedRed != null ? DocDedRed.Count : 0);
+#endif
     }
 
 #if INTEROP
@@ -1101,7 +1180,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public string NDocFisc { get; set; }
 
         [XmlElement("nDoc")]
-        public int NDoc { get; set; }
+        public string NDoc { get; set; }
 
         [XmlElement("tpDedRed")]
         public TipoDeducaoReducao TpDedRed { get; set; }
@@ -1184,10 +1263,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public int CMunNFSeMun { get; set; }
 
         [XmlElement("nNFSeMun")]
-        public int NNFSeMun { get; set; }
+        public string NNFSeMun { get; set; }
 
         [XmlElement("cVerifNFSeMun")]
-        public int CVerifNFSeMun { get; set; }
+        public string CVerifNFSeMun { get; set; }
     }
 
 #if INTEROP
@@ -1198,13 +1277,13 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     public class NFNFS
     {
         [XmlElement("nNFS")]
-        public int NNFS { get; set; }
+        public string NNFS { get; set; }
 
         [XmlElement("modNFS")]
-        public int ModNFS { get; set; }
+        public string ModNFS { get; set; }
 
         [XmlElement("serieNFS")]
-        public int SerieNFS { get; set; }
+        public string SerieNFS { get; set; }
     }
 
 #if INTEROP
@@ -1245,14 +1324,14 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("cPaisResult")]
         public string CPaisResult { get; set; }
 
-        [XmlElement("BM")]
-        public BM BM { get; set; }
+        [XmlElement("tpImunidade")]
+        public TipoImunidadeISSQN? TpImunidade { get; set; }
 
         [XmlElement("exigSusp")]
         public ExigSusp ExigSusp { get; set; }
 
-        [XmlElement("tpImunidade")]
-        public TipoImunidadeISSQN? TpImunidade { get; set; }
+        [XmlElement("BM")]
+        public BM BM { get; set; }
 
         [XmlElement("tpRetISSQN")]
         public TipoRetencaoISSQN TpRetISSQN { get; set; }
@@ -1285,11 +1364,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class BM
     {
-        [XmlElement("tpBM")]
-        public int TpBM { get; set; }
-
         [XmlElement("nBM")]
-        public int NBM { get; set; }
+        public string NBM { get; set; }
 
         [XmlIgnore]
         public double VRedBCBM { get; set; }
@@ -1598,10 +1674,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     public class IBSCBS
     {
         [XmlElement("finNFSe")]
-        public int FinNFSe { get; set; }
+        public FinalidadeNFSeRTC FinNFSe { get; set; }
 
         [XmlElement("indFinal")]
-        public int IndFinal { get; set; }
+        public IndicadorFinalNFSeRTC? IndFinal { get; set; }
 
         [XmlElement("cIndOp")]
         public string CIndOp { get; set; }
@@ -1613,13 +1689,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public GRefNFSe GRefNFSe { get; set; }
 
         [XmlElement("tpEnteGov")]
-        public TipoEnteGovernamental? TpEnteGov { get; set; }
-
-        [XmlElement("xTpEnteGov")]
-        public string XTpEnteGov { get; set; }
+        public TipoEnteGovernamentalNFSeRTC? TpEnteGov { get; set; }
 
         [XmlElement("indDest")]
-        public int IndDest { get; set; }
+        public IndicadorDestinatarioNFSeRTC IndDest { get; set; }
 
         [XmlElement("dest")]
         public Dest Dest { get; set; }
@@ -1631,9 +1704,9 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public ValoresValores Valores { get; set; }
 
         #region Should Serialize
+        public bool ShouldSerializeIndFinal() => IndFinal.HasValue;
         public bool ShouldSerializeTpOper() => TpOper.HasValue;
         public bool ShouldSerializeTpEnteGov() => TpEnteGov.HasValue;
-        public bool ShouldSerializeXTpEnteGov() => !string.IsNullOrWhiteSpace(XTpEnteGov);
         #endregion Should Serialize
     }
 
@@ -1700,13 +1773,14 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public int InscImobFisc { get; set; }
 
         [XmlElement("cCIB")]
-        public int CCIB { get; set; }
+        public string CCIB { get; set; }
 
         [XmlElement("end")]
         public ImovelEnd End { get; set; }
 
         #region Should Serialize
         public bool ShouldSerializeInscImobFisc() => InscImobFisc > 0;
+        public bool ShouldSerializeCCIB() => !string.IsNullOrWhiteSpace(CCIB);
         #endregion Should Serialize
     }
 
@@ -1721,7 +1795,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public string CEP { get; set; }
 
         [XmlElement("endExt")]
-        public EndExt EndExt { get; set; }
+        public EndExtSimples EndExt { get; set; }
 
         [XmlElement("xLgr")]
         public string XLgr { get; set; }
@@ -1817,7 +1891,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class GReeRepResDocumentos
     {
-        [XmlElement("dfeNacional")]
+        [XmlElement("dFeNacional")]
         public DfeNacional DfeNacional { get; set; }
 
         [XmlElement("docFiscalOutro")]
@@ -1828,81 +1902,6 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
         [XmlElement("fornec")]
         public GReeRepResFornec GReeRepResFornec { get; set; }
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.DfeNacional")]
-    [ComVisible(true)]
-#endif
-    public class DfeNacional
-    {
-        [XmlElement("tipoChaveDFe")]
-        public TipoChaveDFe TipoChaveDFe { get; set; }
-
-        [XmlElement("xTipoChaveDFe")]
-        public string XTipoChaveDFe { get; set; }
-
-        [XmlElement("chaveDFe")]
-        public string Chave { get; set; }
-
-        #region Should Serialize
-        public bool ShouldSerializeXTipoChaveDFe() => !string.IsNullOrWhiteSpace(XTipoChaveDFe);
-        #endregion
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.DocFiscalOutro")]
-    [ComVisible(true)]
-#endif
-    public class DocFiscalOutro
-    {
-        [XmlElement("cMunDocFiscal")]
-        public int CMunDocFiscal { get; set; }
-
-        [XmlElement("ndocFiscal")]
-        public int NDocFiscal { get; set; }
-
-        [XmlElement("xDocFiscal")]
-        public string XDocFiscal { get; set; }
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.DocOutro")]
-    [ComVisible(true)]
-#endif
-    public class DocOutro
-    {
-        [XmlElement("nDoc")]
-        public int NDoc { get; set; }
-
-        [XmlElement("xDoc")]
-        public string XDoc { get; set; }
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GReeRepResFornec")]
-    [ComVisible(true)]
-#endif
-    public class GReeRepResFornec
-    {
-        [XmlElement("CNPJ")]
-        public string CNPJ { get; set; }
-
-        [XmlElement("CPF")]
-        public string CPF { get; set; }
-
-        [XmlElement("NIF")]
-        public string NIF { get; set; }
-
-        [XmlElement("cNaoNIF")]
-        public string CNaoNIF { get; set; }
-
-        [XmlElement("xNome")]
-        public string XNome { get; set; }
 
         [XmlIgnore]
 #if INTEROP
@@ -1946,6 +1945,9 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
         }
 
+        [XmlElement("tpReeRepRes")]
+        public TipoReembolsoRepasseRessarcimentoNFSe TpReeRepRes { get; set; }
+
         [XmlElement("xTpReeRepRes")]
         public string XTpReeRepRes { get; set; }
 
@@ -1953,6 +1955,140 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public double VlrReeRepRes { get; set; }
 
         [XmlElement("vlrReeRepRes")]
+        public string VlrReeRepResField
+        {
+            get => VlrReeRepRes.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrReeRepRes = Converter.ToDouble(value);
+        }
+
+        #region Should Serialize
+        public bool ShouldSerializeXTpReeRepRes() => !string.IsNullOrWhiteSpace(XTpReeRepRes);
+        #endregion Should Serialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.DfeNacional")]
+    [ComVisible(true)]
+#endif
+    public class DfeNacional
+    {
+        [XmlElement("tipoChaveDFe")]
+        public TipoChaveDFe TipoChaveDFe { get; set; }
+
+        [XmlElement("xTipoChaveDFe")]
+        public string XTipoChaveDFe { get; set; }
+
+        [XmlElement("chaveDFe")]
+        public string Chave { get; set; }
+
+        #region Should Serialize
+        public bool ShouldSerializeXTipoChaveDFe() => !string.IsNullOrWhiteSpace(XTipoChaveDFe);
+        #endregion
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.DocFiscalOutro")]
+    [ComVisible(true)]
+#endif
+    public class DocFiscalOutro
+    {
+        [XmlElement("cMunDocFiscal")]
+        public int CMunDocFiscal { get; set; }
+
+        [XmlElement("nDocFiscal")]
+        public string NDocFiscal { get; set; }
+
+        [XmlElement("xDocFiscal")]
+        public string XDocFiscal { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.DocOutro")]
+    [ComVisible(true)]
+#endif
+    public class DocOutro
+    {
+        [XmlElement("nDoc")]
+        public string NDoc { get; set; }
+
+        [XmlElement("xDoc")]
+        public string XDoc { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.GReeRepResFornec")]
+    [ComVisible(true)]
+#endif
+    public class GReeRepResFornec
+    {
+        [XmlElement("CNPJ")]
+        public string CNPJ { get; set; }
+
+        [XmlElement("CPF")]
+        public string CPF { get; set; }
+
+        [XmlElement("NIF")]
+        public string NIF { get; set; }
+
+        [XmlElement("cNaoNIF")]
+        public string CNaoNIF { get; set; }
+
+        [XmlElement("xNome")]
+        public string XNome { get; set; }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtEmiDoc { get; set; }
+#else
+        public DateTimeOffset DtEmiDoc { get; set; }
+#endif
+        /// <summary>
+        /// Data em que se iniciou a prestação do serviço
+        /// </summary>
+        [XmlIgnore]
+        public string DtEmiDocField
+        {
+#if INTEROP
+            get => DtEmiDoc.ToString("yyyy-MM-dd");
+            set => DtEmiDoc = DateTime.ParseExact(value, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+#else
+            get => DtEmiDoc.ToString("yyyy-MM-dd");
+            set => DtEmiDoc = DateTimeOffset.ParseExact(value, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+#endif
+        }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtCompDoc { get; set; }
+#else
+        public DateTimeOffset DtCompDoc { get; set; }
+#endif
+        /// <summary>
+        /// Data em que se iniciou a prestação do serviço
+        /// </summary>
+        [XmlIgnore]
+        public string DtCompDocField
+        {
+#if INTEROP
+            get => DtCompDoc.ToString("yyyy-MM-dd");
+            set => DtCompDoc = DateTime.ParseExact(value, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+#else
+            get => DtCompDoc.ToString("yyyy-MM-dd");
+            set => DtCompDoc = DateTimeOffset.ParseExact(value, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+#endif
+        }
+
+        [XmlIgnore]
+        public string XTpReeRepRes { get; set; }
+
+        [XmlIgnore]
+        public double VlrReeRepRes { get; set; }
+
+        [XmlIgnore]
         public string VlrReeRepResField
         {
             get => VlrReeRepRes.ToString("F2", CultureInfo.InvariantCulture);

@@ -65,55 +65,63 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         protected override void XmlValidar()
         {
-            var xml = EventoCTe;
 
-            var schemaArquivo = string.Empty;
-            var schemaArquivoEspecifico = string.Empty;
+            var resultadoValidacao = ValidarXMLCentralizado();
 
-            if (Configuracoes.SchemasEspecificos.Count > 0)
+            if (!resultadoValidacao.Validado)
             {
-                int tpEvento;
-                if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
-                {
-                    tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
-                }
-                else
-                {
-                    throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
-                }
-
-                try
-                {
-                    schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
-                    schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
-                }
-                catch
-                {
-                    throw new Exception("Não foi possível localizar no arquivo de configuração a definição do schema do modal específico do evento " + tpEvento.ToString() + ".");
-                }
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
 
-            #region Validar o XML geral
+            //var xml = EventoCTe;
 
-            ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
+            //var schemaArquivo = string.Empty;
+            //var schemaArquivoEspecifico = string.Empty;
 
-            #endregion Validar o XML geral
+            //if (Configuracoes.SchemasEspecificos.Count > 0)
+            //{
+            //    int tpEvento;
+            //    if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
+            //    {
+            //        tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
+            //    }
+            //    else
+            //    {
+            //        throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
+            //    }
 
-            #region Validar a parte específica de cada evento
+            //    try
+            //    {
+            //        schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
+            //        schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
+            //    }
+            //    catch
+            //    {
+            //        throw new Exception("Não foi possível localizar no arquivo de configuração a definição do schema do modal específico do evento " + tpEvento.ToString() + ".");
+            //    }
+            //}
 
-            if (ConteudoXML.GetElementsByTagName("detEvento")[0] != null)
-            {
-                var xmlEspecifico = new XmlDocument();
-                xmlEspecifico.LoadXml(ConteudoXML.GetElementsByTagName(ConteudoXML.GetElementsByTagName("detEvento")[0].FirstChild.Name)[0].OuterXml);
+            //#region Validar o XML geral
 
-                ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
-            }
-            else
-            {
-                throw new Exception("Não foi possível localizar o detalhamento do evento. Tag (detEvento).");
-            }
+            //ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
 
-            #endregion Validar a parte específica de cada evento
+            //#endregion Validar o XML geral
+
+            //#region Validar a parte específica de cada evento
+
+            //if (ConteudoXML.GetElementsByTagName("detEvento")[0] != null)
+            //{
+            //    var xmlEspecifico = new XmlDocument();
+            //    xmlEspecifico.LoadXml(ConteudoXML.GetElementsByTagName(ConteudoXML.GetElementsByTagName("detEvento")[0].FirstChild.Name)[0].OuterXml);
+
+            //    ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
+            //}
+            //else
+            //{
+            //    throw new Exception("Não foi possível localizar o detalhamento do evento. Tag (detEvento).");
+            //}
+
+            //#endregion Validar a parte específica de cada evento
         }
 
         /// <summary>
