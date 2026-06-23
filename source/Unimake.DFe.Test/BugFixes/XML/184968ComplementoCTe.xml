@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CTe xmlns="http://www.portalfiscal.inf.br/cte">
+	<infCte versao="4.00" Id="CTe31260600296847000246570040000539081032306265">
+		<ide>
+			<cUF>31</cUF>
+			<cCT>03230626</cCT>
+			<CFOP>5353</CFOP>
+			<natOp>P.S.T Est.Comerc.</natOp>
+			<mod>57</mod>
+			<serie>4</serie>
+			<nCT>53908</nCT>
+			<dhEmi>2026-06-23T07:57:17-03:00</dhEmi>
+			<tpImp>1</tpImp>
+			<tpEmis>1</tpEmis>
+			<cDV>5</cDV>
+			<tpAmb>1</tpAmb>
+			<tpCTe>1</tpCTe>
+			<procEmi>0</procEmi>
+			<verProc>SD-FROTA(34)32116656</verProc>
+			<cMunEnv>3170206</cMunEnv>
+			<xMunEnv>UBERLANDIA</xMunEnv>
+			<UFEnv>MG</UFEnv>
+			<modal>01</modal>
+			<tpServ>0</tpServ>
+			<cMunIni>3148004</cMunIni>
+			<xMunIni>PATOS DE MINAS</xMunIni>
+			<UFIni>MG</UFIni>
+			<cMunFim>3118601</cMunFim>
+			<xMunFim>CONTAGEM</xMunFim>
+			<UFFim>MG</UFFim>
+			<retira>1</retira>
+			<indIEToma>1</indIEToma>
+			<toma3>
+				<toma>0</toma>
+			</toma3>
+		</ide>
+		<compl>
+			<xCaracAd>COMP.VALOR</xCaracAd>
+			<xEmi>CARLOS</xEmi>
+			<origCalc>PATOS DE MINAS</origCalc>
+			<destCalc>CONTAGEM</destCalc>
+			<xObs>ICMS ISENTO CONFORME ISENCAO ITEM 199 PARTE 1 DO ANEXO I, REGULAMENTO DO ICMS-DECRETO 43.080/2002. - LOAD NUMBER: 103140 FLD: 3 OP. Isenta de ICMS Conforme Anexo I Item 144 do RICMS/MG.Load: 103140 Transporte Subcontratado com ETC - NOVA ROTA TRANSPORTES E ARMAZENAGEM LTDA(86679917000180), proprietario(a) do veiculo marca VOLVO, placa NLR1919, UF MG, conforme disposto no Art. 86 do RICMS/MG dec. 43.080/2002 ANEXO V MOTORISTA: 855.934.006-87 - SILVANO DE SOUZA NUNES. VEICULOS: NLR1919 - RENAVAM: 00980228468 - KEQ8793 - RENAVAM: 00776217852 Seguradora RCTR-C: TOKIA MARINE SEGURADORA S.A - CNPJ: 33.164.021/0001-00 - Apolice RCTR-C: 54000028300 Seguradora RCF-DC: TOKIA MARINE SEGURADORA S.A - CNPJ: 33.164.021/0001-00 - Apolice RCF-DC: 55000014304 Seguradora RC-V: AKAD SEGUROS S.A - CNPJ: 14.868.712/0001-31 - Apolice RC-V: 1541464939920251 OP. Isenta de ICMS Conforme Anexo I Item 144 do RICMS MG. CT-e complementar ao CT-e 53472 Transporte Subcontratado com TAC - NOVA ROTA TRANSPORTES E ARMAZENAGEM LTDA 86679917000180 , proprietario a do veiculo marca VOLVO, placa NLR1919, UF MG, conforme disposto no Art. 86 do RICMS MG dec. 43.080 2002 ANEXO V MOTORISTA: 855.934.006-87 - SILVANO DE SOUZA NUNES. VEICULOS: NLR1919 - RENAVAM: 00980228468 Seguradora RCTR-C: TOKIA MARINE SEGURADORA S.A - CNPJ: 33.164.021 0001-00 - Apolice RCTR-C: 54000028300 Seguradora RCF-DC: TOKIA MARINE SEGURADORA S.A - CNPJ: 33.164.021 0001-00 - Apolice RCF-DC: 55000014304 Seguradora RC-V: AKAD SEGUROS S.A - CNPJ: 14.868.712 0001-31 - Apolice RC-V: 1541464939920251</xObs>
+			<ObsCont xCampo="TARIFA">
+				<xTexto>0.00000</xTexto>
+			</ObsCont>
+			<ObsCont xCampo="PLACA">
+				<xTexto>NLR1919</xTexto>
+			</ObsCont>
+		</compl>
+		<emit>
+			<CNPJ>00296847000246</CNPJ>
+			<IE>0024884540085</IE>
+			<xNome>PRIMA TRANSPORTADORA LOG LTDA</xNome>
+			<xFant>PRIMA - UBERLANDIA</xFant>
+			<enderEmit>
+				<xLgr>ROD BR 050 KM 66 3</xLgr>
+				<nro>SN</nro>
+				<xCpl>ANEXO POSTO CAXUXA TAP</xCpl>
+				<xBairro>MINAS GERAIS</xBairro>
+				<cMun>3170206</cMun>
+				<xMun>UBERLANDIA</xMun>
+				<CEP>38402019</CEP>
+				<UF>MG</UF>
+				<fone>32321632</fone>
+			</enderEmit>
+			<CRT>3</CRT>
+		</emit>
+		<rem>
+			<CNPJ>11701319000160</CNPJ>
+			<IE>0021452150087</IE>
+			<xNome>MINAS MAIS ALIMENTOS LTDA</xNome>
+			<fone>1633832130</fone>
+			<enderReme>
+				<xLgr>R JULIA FERNANDES CAIXETA</xLgr>
+				<nro>1000</nro>
+				<xCpl>GALPAO INDUSTRIAL</xCpl>
+				<xBairro>CIDADE NOVA</xBairro>
+				<cMun>3148004</cMun>
+				<xMun>PATOS DE MINAS</xMun>
+				<CEP>38706420</CEP>
+				<UF>MG</UF>
+				<cPais>1058</cPais>
+				<xPais>BRASIL</xPais>
+			</enderReme>
+		</rem>
+		<dest>
+			<CNPJ>04737552006926</CNPJ>
+			<IE>2231523816709</IE>
+			<xNome>MART MINAS DISTRIBUICAO LTDA</xNome>
+			<fone>3133704101</fone>
+			<enderDest>
+				<xLgr>AVENIDA GERALDO ROCHA</xLgr>
+				<nro>800</nro>
+				<xCpl>SALA 01</xCpl>
+				<xBairro>CHACARAS COTIA</xBairro>
+				<cMun>3118601</cMun>
+				<xMun>CONTAGEM</xMun>
+				<CEP>32183054</CEP>
+				<UF>MG</UF>
+				<cPais>1058</cPais>
+				<xPais>BRASIL</xPais>
+			</enderDest>
+		</dest>
+		<vPrest>
+			<vTPrest>2900.80</vTPrest>
+			<vRec>2900.80</vRec>
+			<Comp>
+				<xNome>FRETEVALOR</xNome>
+				<vComp>2900.80</vComp>
+			</Comp>
+		</vPrest>
+		<imp>
+			<ICMS>
+				<ICMS45>
+					<CST>40</CST>
+				</ICMS45>
+			</ICMS>
+			<infAdFisco>40</infAdFisco>
+			<vTotDFe>2900.80</vTotDFe>
+		</imp>
+		<infCteComp>
+			<chCTe>31260500296847000246570040000534721030905269</chCTe>
+		</infCteComp>
+		<autXML>
+			<CNPJ>04898488000177</CNPJ>
+		</autXML>
+		<autXML>
+			<CNPJ>29617399000136</CNPJ>
+		</autXML>
+	</infCte>
+</CTe>
