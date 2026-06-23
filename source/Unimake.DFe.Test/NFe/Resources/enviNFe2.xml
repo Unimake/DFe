@@ -72,19 +72,6 @@
         <CNAE>CNAE1</CNAE>
         <CRT>1</CRT>
       </emit>
-      <avulsa>
-        <CNPJ>CNPJ1</CNPJ>
-        <xOrgao>xOrgao1</xOrgao>
-        <matr>matr1</matr>
-        <xAgente>xAgente1</xAgente>
-        <fone>fone1</fone>
-        <UF>AC</UF>
-        <nDAR>nDAR1</nDAR>
-        <dEmi>2021-11-11</dEmi>
-        <vDAR>vDAR1</vDAR>
-        <repEmi>repEmi1</repEmi>
-        <dPag>2021-11-11</dPag>
-      </avulsa>
       <dest>
         <CNPJ>CNPJ1</CNPJ>
         <xNome>xNome1</xNome>
