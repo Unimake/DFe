@@ -236,6 +236,9 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [XmlRoot("RetDeclaracaoOperacaoTransporte", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
     public class RetDeclaracaoOperacaoTransporte : XMLBase
     {
+        private string codigo;
+        private string mensagem;
+
         [XmlElement("temp")]
         public Temp Temp { get; set; }
 
@@ -249,15 +252,249 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public string Protocolo { get; set; }
 
         [XmlElement("Codigo")]
-        public string Codigo { get; set; }
+        public string Codigo
+        {
+            get
+            {
+                if (Mensagens == null || Mensagens.Count == 0)
+                {
+                    return codigo;
+                }
+
+                return MensagemDeclaracaoOperacaoTransporteHelper.ObterPrimeiroCodigo(Mensagens) ?? codigo;
+            }
+            set => codigo = MensagemDeclaracaoOperacaoTransporteHelper.ObterPrimeiroCodigo(value);
+        }
 
         [XmlElement("Mensagem")]
-        public string Mensagem { get; set; }
+        public string Mensagem
+        {
+            get
+            {
+                if (Mensagens == null || Mensagens.Count == 0)
+                {
+                    return mensagem;
+                }
+
+                return MensagemDeclaracaoOperacaoTransporteHelper.ObterPrimeiraDescricao(Mensagens) ?? mensagem;
+            }
+            set => mensagem = MensagemDeclaracaoOperacaoTransporteHelper.ObterPrimeiraDescricao(value);
+        }
+
+        [XmlArray("Mensagens")]
+        [XmlArrayItem("Mensagem")]
+        public List<MensagemDeclaracaoOperacaoTransporte> Mensagens { get; set; }
 
         [XmlElement("AvisoTransportador")]
         public string AvisoTransportador { get; set; }
 
         public bool ShouldSerializeTemp() => Temp != null;
+        public bool ShouldSerializeIdOperacaoTransporte() => !string.IsNullOrWhiteSpace(IdOperacaoTransporte);
+        public bool ShouldSerializeCodigoVerificador() => !string.IsNullOrWhiteSpace(CodigoVerificador);
+        public bool ShouldSerializeProtocolo() => !string.IsNullOrWhiteSpace(Protocolo);
+        public bool ShouldSerializeCodigo() => !string.IsNullOrWhiteSpace(Codigo);
+        public bool ShouldSerializeMensagem() => !string.IsNullOrWhiteSpace(Mensagem);
+        public bool ShouldSerializeMensagens() => Mensagens != null && Mensagens.Count > 0;
         public bool ShouldSerializeAvisoTransportador() => !string.IsNullOrEmpty(AvisoTransportador);
+
+#if INTEROP
+        public void AddMensagens(MensagemDeclaracaoOperacaoTransporte mensagem)
+        {
+            if (Mensagens == null)
+            {
+                Mensagens = new List<MensagemDeclaracaoOperacaoTransporte>();
+            }
+
+            Mensagens.Add(mensagem);
+        }
+
+        public MensagemDeclaracaoOperacaoTransporte GetMensagens(int index)
+        {
+            if ((Mensagens?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return Mensagens[index];
+        }
+
+        public int GetMensagensCount => (Mensagens != null ? Mensagens.Count : 0);
+#endif
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.MensagemDeclaracaoOperacaoTransporte")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = CIOTNamespace.PortalANTT)]
+    public class MensagemDeclaracaoOperacaoTransporte
+    {
+        [XmlElement("Codigo")]
+        public string Codigo { get; set; }
+
+        [XmlElement("Descricao")]
+        public string Descricao { get; set; }
+
+        public bool ShouldSerializeCodigo() => !string.IsNullOrWhiteSpace(Codigo);
+    }
+
+    internal static class MensagemDeclaracaoOperacaoTransporteHelper
+    {
+        internal static List<MensagemDeclaracaoOperacaoTransporte> CriarMensagens(string codigo, string mensagem)
+        {
+            var codigos = SepararCodigos(codigo);
+            var descricoes = SepararDescricoes(mensagem);
+            return CriarMensagens(codigos, descricoes);
+        }
+
+        internal static List<MensagemDeclaracaoOperacaoTransporte> CriarMensagens(List<string> codigos, List<string> descricoes)
+        {
+            var mensagens = new List<MensagemDeclaracaoOperacaoTransporte>();
+            var quantidade = Math.Max(codigos.Count, descricoes.Count);
+
+            for (var i = 0; i < quantidade; i++)
+            {
+                var descricao = i < descricoes.Count ? descricoes[i] : string.Empty;
+                var codigo = i < codigos.Count ? codigos[i] : null;
+
+                AplicarCodigoEmbutido(ref codigo, ref descricao);
+
+                mensagens.Add(new MensagemDeclaracaoOperacaoTransporte
+                {
+                    Codigo = codigo,
+                    Descricao = descricao
+                });
+            }
+
+            return mensagens;
+        }
+
+        internal static string ObterPrimeiroCodigo(string value)
+        {
+            var codigos = SepararCodigos(value);
+            return codigos.Count > 0 ? codigos[0] : null;
+        }
+
+        internal static string ObterPrimeiraDescricao(string value)
+        {
+            var descricoes = SepararDescricoes(value);
+            return descricoes.Count > 0 ? descricoes[0] : null;
+        }
+
+        internal static string ObterPrimeiroCodigo(List<MensagemDeclaracaoOperacaoTransporte> mensagens)
+        {
+            if (mensagens == null)
+            {
+                return null;
+            }
+
+            foreach (var mensagem in mensagens)
+            {
+                if (!string.IsNullOrWhiteSpace(mensagem?.Codigo))
+                {
+                    return mensagem.Codigo;
+                }
+            }
+
+            return null;
+        }
+
+        internal static string ObterPrimeiraDescricao(List<MensagemDeclaracaoOperacaoTransporte> mensagens)
+        {
+            if (mensagens == null)
+            {
+                return null;
+            }
+
+            foreach (var mensagem in mensagens)
+            {
+                if (!string.IsNullOrWhiteSpace(mensagem?.Descricao))
+                {
+                    return mensagem.Descricao;
+                }
+            }
+
+            return null;
+        }
+
+        private static List<string> SepararCodigos(string codigo)
+        {
+            var codigos = new List<string>();
+            if (string.IsNullOrWhiteSpace(codigo))
+            {
+                return codigos;
+            }
+
+            foreach (var item in codigo.Split(','))
+            {
+                codigos.Add(item.Trim());
+            }
+
+            return codigos;
+        }
+
+        internal static List<string> SepararDescricoes(string mensagem)
+        {
+            var descricoes = new List<string>();
+            if (string.IsNullOrWhiteSpace(mensagem))
+            {
+                return descricoes;
+            }
+
+            var texto = mensagem.Trim();
+            if (texto.StartsWith("[", StringComparison.Ordinal))
+            {
+                try
+                {
+                    var mensagens = JsonConvert.DeserializeObject<List<string>>(texto);
+                    if (mensagens != null)
+                    {
+                        foreach (var item in mensagens)
+                        {
+                            descricoes.Add(item);
+                        }
+
+                        return descricoes;
+                    }
+                }
+                catch (JsonException)
+                {
+                }
+            }
+
+            descricoes.Add(mensagem);
+            return descricoes;
+        }
+
+        private static void AplicarCodigoEmbutido(ref string codigo, ref string descricao)
+        {
+            if (!string.IsNullOrWhiteSpace(codigo) || string.IsNullOrWhiteSpace(descricao))
+            {
+                return;
+            }
+
+            var texto = descricao.Trim();
+            if (!texto.StartsWith("Código:", StringComparison.OrdinalIgnoreCase))
+            {
+                return;
+            }
+
+            var separador = texto.IndexOf(" - ", StringComparison.Ordinal);
+            if (separador < 0)
+            {
+                return;
+            }
+
+            var codigoTexto = texto.Substring("Código:".Length, separador - "Código:".Length).Trim();
+            if (string.IsNullOrWhiteSpace(codigoTexto))
+            {
+                return;
+            }
+
+            codigo = codigoTexto;
+            descricao = texto.Substring(separador + 3).Trim();
+        }
     }
 }

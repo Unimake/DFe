@@ -93,13 +93,32 @@ namespace Unimake.DFe.Test.CIOT
             ValidarSchema(CriarXmlDeclaracaoOperacaoTransporte("12345"), false);
         }
 
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void ValidarSchemaRetDeclaracaoOperacaoTransporteComMensagensMultiplas()
+        {
+            var doc = new XmlDocument();
+            doc.Load(@"..\..\..\CIOT\Resources\retDeclaracaoOperacaoTransporteMensagensMultiplas.xml");
+
+            ValidarSchema(doc, true);
+        }
+
         [Theory]
         [Trait("DFe", "CIOT")]
         [InlineData(@"..\..\..\CIOT\Resources\retDeclaracaoOperacaoTransporte.xml")]
         [InlineData(@"..\..\..\CIOT\Resources\retDeclaracaoOperacaoTransporteErro.xml")]
         public void SerializacaoDesserializacaoRetDeclaracaoOperacaoTransporte(string arqXML)
         {
-            SerializarDesserializar<RetDeclaracaoOperacaoTransporte>(arqXML);
+            var xml = SerializarDesserializar<RetDeclaracaoOperacaoTransporte>(arqXML);
+
+            if (xml.Temp == null)
+            {
+                Assert.Single(xml.Mensagens);
+                Assert.Equal("000000", xml.Mensagens[0].Codigo);
+                Assert.Equal("Operacao realizada com sucesso", xml.Mensagens[0].Descricao);
+                Assert.Equal("000000", xml.Codigo);
+                Assert.Equal("Operacao realizada com sucesso", xml.Mensagem);
+            }
         }
 
         [Theory]

@@ -1,6 +1,7 @@
 using System;
 using System.Xml;
 using System.IO;
+using Newtonsoft.Json;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.CIOT;
 using Xunit;
@@ -674,6 +675,78 @@ namespace Unimake.DFe.Test.CIOT
             Assert.Equal("/pefServices/api/CancelamentoOperacaoTransporte", servico.Result.Temp.Path);
             Assert.Equal("RetCancelamentoOperacaoTransporte", servico.RetornoWSXML.DocumentElement.Name);
             Assert.Contains("<temp>", servico.RetornoWSString);
+        }
+
+        /// <summary>
+        /// Desserializar retorno da declaração com múltiplos códigos/mensagens retornados pela API da ANTT.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "DeclaracaoOperacaoTransporte")]
+        public void RetornoDeclaracaoOperacaoTransporteMensagensMultiplas()
+        {
+            var json = "{"
+                + "\"IdOperacaoTransporte\":null,"
+                + "\"CodigoVerificador\":null,"
+                + "\"Protocolo\":\"E98000000088800\","
+                + "\"Codigo\":\"208,219,269\","
+                + "\"Mensagem\":\"[\\\"Código de identificação da operação já cadastrado.\\\",\\\"Rejeição: A data e hora da declaração está fora do intervalo de tolerância permitido para esta operação.\\\",\\\"Rejeição: A data de início da viagem não pode ser inferior à data atual.\\\"]\","
+                + "\"AvisoTransportador\":null"
+                + "}";
+
+            var servico = new CIOTDeclaracaoOperacaoTransporte
+            {
+                RetornoWSXML = JsonConvert.DeserializeXmlNode(json, "temp")
+            };
+
+            var result = servico.Result;
+
+            Assert.NotNull(result);
+            Assert.Null(result.IdOperacaoTransporte);
+            Assert.Null(result.CodigoVerificador);
+            Assert.Equal("E98000000088800", result.Protocolo);
+            Assert.Equal("208", result.Codigo);
+            Assert.Equal("Código de identificação da operação já cadastrado.", result.Mensagem);
+            Assert.Equal(3, result.Mensagens.Count);
+            Assert.Equal("208", result.Mensagens[0].Codigo);
+            Assert.Equal("Código de identificação da operação já cadastrado.", result.Mensagens[0].Descricao);
+            Assert.Equal("219", result.Mensagens[1].Codigo);
+            Assert.Equal("Rejeição: A data e hora da declaração está fora do intervalo de tolerância permitido para esta operação.", result.Mensagens[1].Descricao);
+            Assert.Equal("269", result.Mensagens[2].Codigo);
+            Assert.Equal("Rejeição: A data de início da viagem não pode ser inferior à data atual.", result.Mensagens[2].Descricao);
+            Assert.Contains("<Codigo>208</Codigo><Mensagem>Código de identificação da operação já cadastrado.</Mensagem><Mensagens>", servico.RetornoWSString);
+            Assert.Contains("<Mensagens>", servico.RetornoWSString);
+            Assert.DoesNotContain("<Mensagem>[", servico.RetornoWSString);
+        }
+
+        /// <summary>
+        /// Normalizar retorno da declaração quando a API retorna várias tags Mensagem diretamente na raiz.
+        /// </summary>
+        [Fact()]
+        [Trait("DFe", "CIOT")]
+        [Trait("Servico", "DeclaracaoOperacaoTransporte")]
+        public void RetornoDeclaracaoOperacaoTransporteMensagensDiretas()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml("<RetDeclaracaoOperacaoTransporte xmlns=\"http://www.antt.gov.br/ciot\"><Mensagem>Código: 205 - Rejeição: O campo IdOperacaoTransporte é inválido.</Mensagem><Mensagens><Mensagem><Descricao>Código: 205 - Rejeição: O campo IdOperacaoTransporte é inválido.</Descricao></Mensagem></Mensagens><Mensagem>Rejeição: O campo CpfCnpjContratado é inválido.</Mensagem><Mensagem>Rejeição: O campo CpfCnpjDestinatario é inválido.</Mensagem></RetDeclaracaoOperacaoTransporte>");
+
+            var servico = new CIOTDeclaracaoOperacaoTransporte
+            {
+                RetornoWSXML = xml
+            };
+
+            var result = servico.Result;
+
+            Assert.Equal("205", result.Codigo);
+            Assert.Equal("Rejeição: O campo IdOperacaoTransporte é inválido.", result.Mensagem);
+            Assert.Equal(3, result.Mensagens.Count);
+            Assert.Equal("205", result.Mensagens[0].Codigo);
+            Assert.Equal("Rejeição: O campo IdOperacaoTransporte é inválido.", result.Mensagens[0].Descricao);
+            Assert.Equal("Rejeição: O campo CpfCnpjContratado é inválido.", result.Mensagens[1].Descricao);
+            Assert.Equal("Rejeição: O campo CpfCnpjDestinatario é inválido.", result.Mensagens[2].Descricao);
+            Assert.Equal(1, servico.RetornoWSXML.DocumentElement.SelectNodes("./*[local-name()='Codigo']").Count);
+            Assert.Equal(1, servico.RetornoWSXML.DocumentElement.SelectNodes("./*[local-name()='Mensagem']").Count);
+            Assert.Contains("<Codigo>205</Codigo><Mensagem>Rejeição: O campo IdOperacaoTransporte é inválido.</Mensagem><Mensagens>", servico.RetornoWSString);
         }
 
         /// <summary>
