@@ -1836,7 +1836,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public double VrBcFGTSDecAnt { get; set; }
 
         [XmlElement("vrBcFGTSDecAnt")]
-        public string VrBcFGTSDeAntField
+        public string VrBcFGTSDecAntField
         {
             get => VrBcFGTSDecAnt.ToString("F2", CultureInfo.InvariantCulture);
             set => VrBcFGTSDecAnt = Converter.ToDouble(value);
