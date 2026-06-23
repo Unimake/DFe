@@ -3,7 +3,7 @@
 	<Servicos ID="NFSe">
 		<GerarNfse versao="2.04">
 			<Descricao>Gerar NFSe</Descricao>
-			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;wsdl</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -17,7 +17,7 @@
 		</GerarNfse>
 		<RecepcionarLoteRpsSincrono versao="2.04">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;wsdl</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -31,7 +31,7 @@
 		</RecepcionarLoteRpsSincrono>
 		<RecepcionarLoteRps versao="2.04">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;wsdl</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -45,7 +45,7 @@
 		</RecepcionarLoteRps>
 		<SubstituirNfse versao="2.04">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;wsdl</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -59,7 +59,7 @@
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="2.04">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;wsdl</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -73,7 +73,7 @@
 		</ConsultarLoteRps>
 		<ConsultarNfseServicoPrestado versao="2.04">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;wsdl</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -87,7 +87,7 @@
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseFaixa versao="2.04">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;wsdl</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -101,7 +101,7 @@
 		</ConsultarNfseFaixa>
 		<CancelarNfse versao="2.04">
 			<Descricao>Cancelar NFSe</Descricao>
-			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;wsdl</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -115,7 +115,7 @@
 		</CancelarNfse>
 		<ConsultarNfsePorRps versao="2.04">
 			<Descricao>Consulta NFSe por Rps</Descricao>
-			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIProducao>https://bigua.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;wsdl</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
