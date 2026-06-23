@@ -265,7 +265,7 @@ namespace Unimake.Business.DFe
                             ValidarSchemaGeral(xml, inform, tipoDFe);
                             xmlGeralValidado = true;
                         }
-                        ValidarSchemaEspecifico(node, inform, tipoDFe);
+                        ValidarSchemaEspecifico(node, isEvento, inform, tipoDFe);
                     }
 
                     return new ResultadoValidacao
@@ -404,7 +404,7 @@ namespace Unimake.Business.DFe
         private static InformacaoXML MontarInformacaoGeral(XmlNode servico, UFBrasil codigoMunicipio)
         {
 
-            #region verifica se municipio usa certificado digital
+            #region verifica variáveis para a assinatura
 
             var usaCertificado = VerificarUtilizacaoCertificadoDigital(servico, codigoMunicipio);
             var ambiente = VerificarAmbienteAssinatura(servico, codigoMunicipio);
@@ -651,7 +651,7 @@ namespace Unimake.Business.DFe
         }
 
 
-        private static void ValidarSchemaEspecifico(XmlNode eventoNode, InformacaoXML info, TipoDFe tipoDFe)
+        private static void ValidarSchemaEspecifico(XmlNode node, bool isEvento, InformacaoXML info, TipoDFe tipoDFe)
         {
             // Caso não possua Schema para a validação retornar sem validar e deixar a validação por conta da prefeitura ao enviar
             if (string.IsNullOrEmpty(info.SchemaArquivoEspecifico))
@@ -660,8 +660,14 @@ namespace Unimake.Business.DFe
             }
 
             //Isolando cada XML dependendo do tipoDFe
-            var isolador = IsoladorFactory.CriarIsolador(tipoDFe);
-            var xmlEspecifico = isolador.Isolar(eventoNode);
+            var isolador = IsoladorFactory.CriarIsolador(tipoDFe, isEvento);
+            var xmlEspecifico = isolador.Isolar(node);
+
+            // Em casos que não possuir o xml especifico  Ex: CTe de complemento
+            if (xmlEspecifico is null) 
+            {
+                return;
+            }
 
             var validarEspecifico = new ValidarSchema();
             string schemaEspecifico = $"{tipoDFe.ToString()}.{info.SchemaArquivoEspecifico}";
