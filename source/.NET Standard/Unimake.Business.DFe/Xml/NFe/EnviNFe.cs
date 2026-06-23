@@ -480,12 +480,20 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             get
             {
+                var cnpjcpfEmissor = (string.IsNullOrWhiteSpace(Emit.CNPJ) ? Emit.CPF?.PadLeft(14, '0') : Emit.CNPJ.PadLeft(14, '0'));
+
+                //Nota fiscal emitida, normalmente, pelo site da SEFAZ. Neste caso, o CNPJ/CPF do emitente será buscado na tag Avulsa.
+                if (Avulsa != null && !string.IsNullOrWhiteSpace(Avulsa.CNPJ))
+                {
+                    cnpjcpfEmissor = Avulsa.CNPJ.PadLeft(14, '0');
+                }
+
                 var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
                 {
                     UFEmissor = (UFBrasil)(int)Ide.CUF,
                     AnoEmissao = Ide.DhEmi.ToString("yy"),
                     MesEmissao = Ide.DhEmi.ToString("MM"),
-                    CNPJCPFEmissor = (string.IsNullOrWhiteSpace(Emit.CNPJ) ? Emit.CPF?.PadLeft(14, '0') : Emit.CNPJ.PadLeft(14, '0')),
+                    CNPJCPFEmissor = cnpjcpfEmissor,
                     Modelo = (ModeloDFe)(int)Ide.Mod,
                     Serie = Ide.Serie,
                     NumeroDoctoFiscal = Ide.NNF,
