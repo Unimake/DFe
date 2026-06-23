@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
@@ -106,6 +107,14 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 
         /// <inheritdoc />
         protected override XMLBase XmlEnvio => Envio;
+
+        /// <inheritdoc />
+        protected override XmlDocument CriarXMLRetornoTipado()
+        {
+            var doc = base.CriarXMLRetornoTipado();
+            RetDeclaracaoOperacaoTransporteNormalizer.Normalizar(doc);
+            return doc;
+        }
 
         /// <summary>
         /// Construtor

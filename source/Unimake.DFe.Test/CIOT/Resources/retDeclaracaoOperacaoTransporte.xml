@@ -5,5 +5,11 @@
   <Protocolo>1234567890123456</Protocolo>
   <Codigo>000000</Codigo>
   <Mensagem>Operacao realizada com sucesso</Mensagem>
+  <Mensagens>
+    <Mensagem>
+      <Codigo>000000</Codigo>
+      <Descricao>Operacao realizada com sucesso</Descricao>
+    </Mensagem>
+  </Mensagens>
   <AvisoTransportador>Apresentar aviso ao transportador quando retornado.</AvisoTransportador>
 </RetDeclaracaoOperacaoTransporte>
