@@ -380,6 +380,13 @@ namespace Unimake.Business.DFe
                     tagRaiz == "TLote_ConsultaGNRE";
             }
 
+            if (tipoDFe == TipoDFe.DARE)
+            {
+                return tagRaiz == "Dare" ||
+                    tagRaiz == "DareLote" ||
+                    tagRaiz == "Receitas";
+            }
+
             return false;
         }
 
@@ -417,6 +424,9 @@ namespace Unimake.Business.DFe
 
                 case TipoDFe.GNRE:
                     return NormalizarGNREPeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.DARE:
+                    return NormalizarDAREPeloObjeto(xml, tagRaiz);
 
                 default:
                     return xml;
@@ -809,6 +819,29 @@ namespace Unimake.Business.DFe
             {
                 var loteConsultaGNRE = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.GNRE.TLoteConsultaGNRE>(xml);
                 return loteConsultaGNRE.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static XmlDocument NormalizarDAREPeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "Dare")
+            {
+                var dare = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.DARE.DARE>(xml);
+                return dare.GerarXML();
+            }
+
+            if (tagRaiz == "DareLote")
+            {
+                var dareLote = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.DARE.DARELote>(xml);
+                return dareLote.GerarXML();
+            }
+
+            if (tagRaiz == "Receitas")
+            {
+                var receitas = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.DARE.Receitas>(xml);
+                return receitas.GerarXML();
             }
 
             return xml;
@@ -1523,6 +1556,9 @@ namespace Unimake.Business.DFe
                 #endregion
 
                 #region DARE
+                case "Dare":
+                case "DareLote":
+                case "Receitas":
                 case "DARE":
                     tipoDFe = TipoDFe.DARE;
                     break;

@@ -2841,6 +2841,45 @@
 			</GrupoUrl>
 		</Servico>
 	</DCe>
+	<!--DARE-->
+	<DARE>
+		<Servico tagRaiz="Dare" versao="">
+			<Descricao>Envio DARE Unitário</Descricao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>Dare</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>https://portal.fazenda.sp.gov.br/servicos/dare</TargetNS>
+		</Servico>
+		<Servico tagRaiz="DareLote" versao="">
+			<Descricao>Envio DARE Lote</Descricao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>DareLote</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>https://portal.fazenda.sp.gov.br/servicos/dare</TargetNS>
+		</Servico>
+		<Servico tagRaiz="Receitas" versao="">
+			<Descricao>Receitas DARE</Descricao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>Receitas</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS></TargetNS>
+		</Servico>
+	</DARE>
 	<!--eSocial-->
 	<ESocial>
 		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="envioLoteEventos">
