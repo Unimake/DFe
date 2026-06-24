@@ -2882,6 +2882,7 @@
 	</DARE>
 	<!--eSocial-->
 	<ESocial>
+		<SignatureAlgorithmType>Sha256</SignatureAlgorithmType>
 		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="envioLoteEventos">
 			<Descricao>Enviar Lote Eventos eSocial</Descricao>
 			<SchemaArquivo></SchemaArquivo>
@@ -3620,6 +3621,7 @@
 	</ESocial>
 	<!--EFDReinf-->
 	<EFDReinf>
+		<SignatureAlgorithmType>Sha256</SignatureAlgorithmType>
 		<Servico tagRaiz="Reinf" versao="1.00.00" tagIdentificadora="envioLoteEventos">
 			<Descricao>Recepcionar Lote Assincrono EFDReinf</Descricao>
 			<SchemaArquivo></SchemaArquivo>
