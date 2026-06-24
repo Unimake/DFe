@@ -245,7 +245,6 @@ namespace Unimake.Business.DFe.Servicos.NFGas
 
         #endregion Public Properties
 
-
         #region Public Constructors
 
         /// <summary>

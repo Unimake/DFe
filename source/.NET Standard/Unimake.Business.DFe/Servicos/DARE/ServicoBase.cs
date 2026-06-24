@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Net.Http;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
-using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.ConsumirServico.Compatibility;
+using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Validator;
 using Unimake.Exceptions;
 
@@ -124,37 +123,9 @@ namespace Unimake.Business.DFe.Servicos.DARE
                 DefinirConfiguracao();
             }
 
-            // 
-            /* Retirado a linha especial do Wandrey; ID #170137
-
-                ¯\_(ツ)_/¯
-
-                 There is always a solution
-
-                         ,;~;,
-                            /\_
-                           (  /
-                           ((),     ;,;
-                           |  \\  ,;;'(
-                       __ _(  )'~;;'   \
-                     /'  '\'()/~' \ /'\.)
-                  ,;(      )||     |
-                 ,;' \    /-(.;,   )
-                      ) /       ) /
-                     //         ||
-                    (_\         (_\
-
-                 go horse <3
-
-            */
-
             System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
 
-            //Forçar criar a tag QrCode bem como assinatura para que o usuário possa acessar o conteúdo no objeto do XML antes de enviar
-            _ = ConteudoXMLAssinado;
-
             XmlValidar();
-
         }
         #endregion Protected Methods
 

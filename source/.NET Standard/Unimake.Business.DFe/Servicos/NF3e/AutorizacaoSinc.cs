@@ -246,7 +246,6 @@ namespace Unimake.Business.DFe.Servicos.NF3e
 
         #endregion Public Properties
 
-
         #region Public Constructors
 
         /// <summary>

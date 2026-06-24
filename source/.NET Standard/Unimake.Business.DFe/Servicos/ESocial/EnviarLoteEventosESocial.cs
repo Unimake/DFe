@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Linq.Expressions;
-using System.Runtime.InteropServices;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.ESocial;
-using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.ESocial
 {
@@ -37,59 +34,6 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         }
 
         #endregion Public Properties
-
-        #region Private Methods
-
-        private void ValidarXMLEvento(XmlDocument xml, string schemaArquivo, string targetNS)
-        {
-            var validar = new ValidarSchema();
-            validar.Validar(xml, (Configuracoes.TipoDFe).ToString() + "." + schemaArquivo, targetNS);
-
-            if (!validar.Success)
-            {
-                throw new ValidarXMLException(validar.ErrorMessage);
-            }
-        }
-
-        /// <summary>
-        /// Remove a assinatura do objeto para ser assinado novamente evitando problemas
-        /// </summary>
-        private void RemoverAssinaturaDoERP()
-        {
-            #region Autor: Wesley - Data: 03/04/25 - Ticket: #172039 - Atualizado: #173848
-
-            ESocialEnvioLoteEventos = ESocialEnvioLoteEventos.LerXML<ESocialEnvioLoteEventos>(ConteudoXML);
-
-            foreach (var evento in ESocialEnvioLoteEventos.EnvioLoteEventos.Eventos.Evento)
-            {
-                var propriedades = evento.GetType().GetProperties();
-
-                foreach (var propriedade in propriedades)
-                {
-                    var valorEvento = propriedade.GetValue(evento);
-
-                    if (valorEvento != null)
-                    {
-                        var propriedadeAssinatura = valorEvento.GetType().GetProperty("Signature");
-
-                        propriedadeAssinatura?.SetValue(valorEvento, null);
-                    }
-                }
-            }
-
-            // Atualiza o ConteudoXML sem as assinaturas que vieram no XML
-            ConteudoXML = ESocialEnvioLoteEventos.GerarXML();
-
-            // Força a assinatura agora da DLL
-            _ = ConteudoXMLAssinado;
-
-            // Atualiza o objeto ESocialEnvioLoteEventos com o novo ConteudoXML
-            ESocialEnvioLoteEventos = ESocialEnvioLoteEventos.LerXML<ESocialEnvioLoteEventos>(ConteudoXML);
-
-            #endregion Autor: Wesley - Data: 03/04/25 - Ticket: #172039 - Atualizado: #173848
-        }
-
-        #endregion Private Methods
 
         #region Protected Methods
 
@@ -290,7 +234,5 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         }
 
         #endregion Result
-
     }
 }
-

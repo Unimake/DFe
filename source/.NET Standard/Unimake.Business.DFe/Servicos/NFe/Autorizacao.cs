@@ -212,7 +212,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                         if (Result.ProtNFe != null)
                         {
                             var autorizado = false;
-                            switch (Result.ProtNFe.InfProt.CStat)                                                                  
+                            switch (Result.ProtNFe.InfProt.CStat)
                             {
                                 case 100: //Autorizado o uso da NF-e
                                 case 110: //Uso Denegado
@@ -334,13 +334,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
                             }
                             else
                             {
-                                //Se por algum motivo não tiver assinado, só vou forçar atualizar o ConteudoXML para ficar correto na hora de gerar o arquivo de distribuição. Pode estar sem assinar no caso do desenvolvedor estar forçando gerar o XML já autorizado a partir de uma consulta situação da NFe, caso tenha perdido na tentativa do primeiro envio.
-                                if (EnviNFe.NFe[i].Signature == null)
-                                {
-                                    ConteudoXML = ConteudoXMLAssinado;
-                                    AjustarXMLAposAssinado();
-                                }
-
                                 NfeProcs.Add(EnviNFe.NFe[i].InfNFeField.Chave,
                                     new NfeProc
                                     {
@@ -350,7 +343,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                     });
                             }
                         }
-
                         break;
                 }
 
