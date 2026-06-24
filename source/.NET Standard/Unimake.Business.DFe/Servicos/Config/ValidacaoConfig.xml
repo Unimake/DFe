@@ -3917,41 +3917,65 @@
 	</EFDReinf>
 	<!--GNRE-->
 	<GNRE>
-		<Servico tagRaiz="TConsultaConfigUf" versao="2.00">
+		<Servico tagRaiz="TConsultaConfigUf" versao="">
 			<Descricao>Consulta configurações da UF para GNRE</Descricao>
 			<SchemaArquivo>consulta_config_uf_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<TagVersao>TConsultaConfigUf </TagVersao>
+			<TagVersao>TConsultaConfigUf</TagVersao>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS></TargetNS>
+			<TargetNS>http://www.gnre.pe.gov.br</TargetNS>
 		</Servico>
-		<Servico tagRaiz="TConsLote_GNRE" versao="2.00">
+		<Servico tagRaiz="TConsLote_GNRE" versao="">
 			<Descricao>Consulta Resultado do Lote da GNRE</Descricao>
 			<SchemaArquivo>lote_gnre_consulta_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<TagVersao>TConsLote_GNRE </TagVersao>
+			<TagVersao>TConsLote_GNRE</TagVersao>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS></TargetNS>
+			<TargetNS>http://www.gnre.pe.gov.br</TargetNS>
+		</Servico>
+		<Servico tagRaiz="TLote_GNRE" versao="1.00">
+			<Descricao>Envio de Lote da GNRE</Descricao>
+			<SchemaArquivo>lote_gnre_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>TLote_GNRE</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.gnre.pe.gov.br</TargetNS>
 		</Servico>
 		<Servico tagRaiz="TLote_GNRE" versao="2.00">
 			<Descricao>Envio de Lote da GNRE</Descricao>
 			<SchemaArquivo>lote_gnre_v2.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<TagVersao>TLote_GNRE </TagVersao>
+			<TagVersao>TLote_GNRE</TagVersao>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS></TargetNS>
+			<TargetNS>http://www.gnre.pe.gov.br</TargetNS>
+		</Servico>
+		<Servico tagRaiz="TLote_ConsultaGNRE" versao="2.00">
+			<Descricao>Consulta Lote Recepção da GNRE</Descricao>
+			<SchemaArquivo>lote_consulta_guia_v2.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>TLote_ConsultaGNRE</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.gnre.pe.gov.br</TargetNS>
 		</Servico>
 		<Servico tagRaiz="TResultLote_GNRE" versao="2.00">
 			<Descricao>Envio de Lote da GNRE</Descricao>
@@ -3963,7 +3987,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
-			<TargetNS></TargetNS>
+			<TargetNS>http://www.gnre.pe.gov.br</TargetNS>
 		</Servico>
 	</GNRE>
 	<!--NFSe-->

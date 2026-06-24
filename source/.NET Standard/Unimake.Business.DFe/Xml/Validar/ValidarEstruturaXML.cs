@@ -364,6 +364,14 @@ namespace Unimake.Business.DFe
                     tagRaiz == "GerarIdOperacaoTransporte";
             }
 
+            if (tipoDFe == TipoDFe.GNRE)
+            {
+                return tagRaiz == "TConsultaConfigUf" ||
+                    tagRaiz == "TConsLote_GNRE" ||
+                    tagRaiz == "TLote_GNRE" ||
+                    tagRaiz == "TLote_ConsultaGNRE";
+            }
+
             return false;
         }
 
@@ -395,6 +403,9 @@ namespace Unimake.Business.DFe
 
                 case TipoDFe.CIOT:
                     return NormalizarCIOTPeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.GNRE:
+                    return NormalizarGNREPeloObjeto(xml, tagRaiz);
 
                 default:
                     return xml;
@@ -718,6 +729,43 @@ namespace Unimake.Business.DFe
             {
                 var gerarIdOperacaoTransporte = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CIOT.GerarIdOperacaoTransporte>(xml);
                 return gerarIdOperacaoTransporte.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static XmlDocument NormalizarGNREPeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "TConsultaConfigUf")
+            {
+                var consultaConfigUf = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.GNRE.TConsultaConfigUf>(xml);
+                return consultaConfigUf.GerarXML();
+            }
+
+            if (tagRaiz == "TConsLote_GNRE")
+            {
+                if (xml.GetElementsByTagName("incluirPDFGuias").Count == 0 &&
+                    xml.GetElementsByTagName("incluirArquivoPagamento").Count == 0 &&
+                    xml.GetElementsByTagName("incluirNoticias").Count == 0)
+                {
+                    var consLoteConsGNRE = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.GNRE.TConsLoteConsGNRE>(xml);
+                    return consLoteConsGNRE.GerarXML();
+                }
+
+                var consLoteGNRE = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.GNRE.TConsLoteGNRE>(xml);
+                return consLoteGNRE.GerarXML();
+            }
+
+            if (tagRaiz == "TLote_GNRE")
+            {
+                var loteGNRE = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.GNRE.TLoteGNRE>(xml);
+                return loteGNRE.GerarXML();
+            }
+
+            if (tagRaiz == "TLote_ConsultaGNRE")
+            {
+                var loteConsultaGNRE = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.GNRE.TLoteConsultaGNRE>(xml);
+                return loteConsultaGNRE.GerarXML();
             }
 
             return xml;
@@ -1441,6 +1489,7 @@ namespace Unimake.Business.DFe
                 case "TConsultaConfigUf":
                 case "TConsLote_GNRE":
                 case "TLote_GNRE":
+                case "TLote_ConsultaGNRE":
                 case "TResultLote_GNRE":
                     tipoDFe = TipoDFe.GNRE;
                     break;
