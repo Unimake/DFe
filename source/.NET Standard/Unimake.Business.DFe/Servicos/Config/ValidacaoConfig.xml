@@ -3598,6 +3598,13 @@
 			<TagAtributoID>consultaIdentificadoresEvts</TagAtributoID>
 			<TargetNS>http://www.esocial.gov.br/schema/consulta/identificadores-eventos/tabela/v1_0_0</TargetNS>
 		</Servico>
+		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="consultaLoteEventos">
+			<Descricao>Consultar Lote Eventos eSocial</Descricao>
+			<SchemaArquivo>ConsultaLoteEventos-v1_0_0.xsd</SchemaArquivo>
+			<TagAssinatura>eSocial</TagAssinatura>
+			<TagAtributoID>consultaLoteEventos</TagAtributoID>
+			<TargetNS>http://www.esocial.gov.br/schema/lote/eventos/envio/consulta/retornoProcessamento/v1_0_0</TargetNS>
+		</Servico>
 		<Servico tagRaiz="eSocial" versao="1.1.0" tagIdentificadora="solicDownloadEventosPorNrRecibo">
 			<Descricao>Download Eventos por Número do Recibo</Descricao>
 			<SchemaArquivo>SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd</SchemaArquivo>

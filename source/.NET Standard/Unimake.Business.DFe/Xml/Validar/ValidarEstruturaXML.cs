@@ -392,6 +392,11 @@ namespace Unimake.Business.DFe
                 return tagRaiz == "Reinf";
             }
 
+            if (tipoDFe == TipoDFe.ESocial)
+            {
+                return tagRaiz == "eSocial";
+            }
+
             return false;
         }
 
@@ -435,6 +440,9 @@ namespace Unimake.Business.DFe
 
                 case TipoDFe.EFDReinf:
                     return NormalizarEFDReinfPeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.ESocial:
+                    return NormalizarESocialPeloObjeto(xml, tagRaiz);
 
                 default:
                     return xml;
@@ -910,6 +918,87 @@ namespace Unimake.Business.DFe
             }
         }
 
+        private static XmlDocument NormalizarESocialPeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz != "eSocial")
+            {
+                return xml;
+            }
+
+            if (xml.GetElementsByTagName("envioLoteEventos").Count > 0)
+            {
+                var eSocialEnvioLoteEventos = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos>(xml);
+                RemoverAssinaturasEventosESocial(eSocialEnvioLoteEventos);
+                return eSocialEnvioLoteEventos.GerarXML();
+            }
+
+            if (xml.GetElementsByTagName("consultaLoteEventos").Count > 0)
+            {
+                var consultaLoteEventos = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ConsultarLoteEventos>(xml);
+                return consultaLoteEventos.GerarXML();
+            }
+
+            if (xml.GetElementsByTagName("consultaEvtsEmpregador").Count > 0)
+            {
+                var consultaEvtsEmpregador = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ConsultarEvtsEmpregadorESocial>(xml);
+                return consultaEvtsEmpregador.GerarXML();
+            }
+
+            if (xml.GetElementsByTagName("consultaEvtsTabela").Count > 0)
+            {
+                var consultaEvtsTabela = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ConsultarEvtsTabelaESocial>(xml);
+                return consultaEvtsTabela.GerarXML();
+            }
+
+            if (xml.GetElementsByTagName("consultaEvtsTrabalhador").Count > 0)
+            {
+                var consultaEvtsTrabalhador = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ConsultarEvtsTrabalhadorESocial>(xml);
+                return consultaEvtsTrabalhador.GerarXML();
+            }
+
+            if (xml.GetElementsByTagName("solicDownloadEvtsPorId").Count > 0)
+            {
+                var downloadEventosPorID = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.DownloadEventosPorID>(xml);
+                downloadEventosPorID.Signature = null;
+                return downloadEventosPorID.GerarXML();
+            }
+
+            if (xml.GetElementsByTagName("solicDownloadEventosPorNrRecibo").Count > 0)
+            {
+                var downloadEventosPorNrRec = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.DownloadEventosPorNrRec>(xml);
+                downloadEventosPorNrRec.Signature = null;
+                return downloadEventosPorNrRec.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static void RemoverAssinaturasEventosESocial(Unimake.Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos eSocialEnvioLoteEventos)
+        {
+            var eventos = eSocialEnvioLoteEventos?.EnvioLoteEventos?.Eventos?.Evento;
+
+            if (eventos == null)
+            {
+                return;
+            }
+
+            foreach (var evento in eventos)
+            {
+                var propriedades = evento.GetType().GetProperties();
+
+                foreach (var propriedade in propriedades)
+                {
+                    var valorEvento = propriedade.GetValue(evento);
+
+                    if (valorEvento != null)
+                    {
+                        var propriedadeAssinatura = valorEvento.GetType().GetProperty("Signature");
+                        propriedadeAssinatura?.SetValue(valorEvento, null);
+                    }
+                }
+            }
+        }
+
         private static XmlDocument NormalizarCTePeloObjeto(XmlDocument xml, string tagRaiz)
         {
             if (tagRaiz == "CTe")
@@ -1236,6 +1325,12 @@ namespace Unimake.Business.DFe
                 return;
             }
 
+            if (tipoDFe == TipoDFe.ESocial && xml.GetElementsByTagName("envioLoteEventos").Count > 0)
+            {
+                AssinarEventosESocial(xml, servico, inform.NaoAssina, cert, tipoAmbiente);
+                return;
+            }
+
             if (!string.IsNullOrEmpty(inform.TagAssinatura))
             {
                 Assinar(xml, inform.TagAssinatura, inform.TagAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
@@ -1317,6 +1412,73 @@ namespace Unimake.Business.DFe
             }
 
             throw new AssinaturaException($"Não existe configuração de assinatura para o evento EFDReinf '{eventoEspecifico}'.");
+        }
+
+        private static void AssinarEventosESocial(XmlDocument xml, XmlNode servico, TipoAmbiente? tagNaoAssina, X509Certificate2 cert, TipoAmbiente tipoAmbiente)
+        {
+            if (tagNaoAssina != null && tagNaoAssina == tipoAmbiente)
+            {
+                return;
+            }
+
+            var eventos = xml.SelectNodes("/*[local-name()='eSocial']/*[local-name()='envioLoteEventos']/*[local-name()='eventos']/*[local-name()='evento']");
+
+            foreach (XmlNode evento in eventos)
+            {
+                var eSocialEvento = evento.SelectSingleNode("*[local-name()='eSocial']");
+
+                if (eSocialEvento is null)
+                {
+                    throw new AssinaturaException("Não foi encontrado o evento eSocial para assinatura em lote.");
+                }
+
+                var eventoEspecifico = eSocialEvento.ChildNodes
+                    .Cast<XmlNode>()
+                    .FirstOrDefault(x => x.NodeType == XmlNodeType.Element && x.LocalName != "Signature")?.LocalName;
+
+                if (string.IsNullOrWhiteSpace(eventoEspecifico))
+                {
+                    throw new AssinaturaException("Não foi possível identificar o evento eSocial para assinatura em lote.");
+                }
+
+                var tipoEvento = EncontrarTipoEventoESocial(servico, eventoEspecifico);
+                var tagAtributoID = tipoEvento.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText;
+
+                var xmlEventoEspecifico = new XmlDocument();
+                xmlEventoEspecifico.LoadXml(eSocialEvento.OuterXml);
+
+                if (!AssinaturaDigital.EstaAssinado(xmlEventoEspecifico, "eSocial"))
+                {
+                    try
+                    {
+                        AssinaturaDigital.Assinar(xmlEventoEspecifico, "eSocial", tagAtributoID, cert, AlgorithmType.Sha256, true, "Id");
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new AssinaturaException($"Ocorreu um erro ao assinar o evento eSocial '{eventoEspecifico}': {ex.Message}");
+                    }
+
+                    evento.RemoveChild(eSocialEvento);
+                    evento.AppendChild(xml.ImportNode(xmlEventoEspecifico.DocumentElement, true));
+                }
+            }
+        }
+
+        private static XmlNode EncontrarTipoEventoESocial(XmlNode servico, string eventoEspecifico)
+        {
+            var tipos = servico.SelectNodes("*[local-name()='SchemasEspecificos']/*[local-name()='Tipo']");
+
+            foreach (XmlNode tipo in tipos)
+            {
+                var evento = tipo.SelectSingleNode("*[local-name()='Evento']")?.InnerText;
+
+                if (evento == eventoEspecifico)
+                {
+                    return tipo;
+                }
+            }
+
+            throw new AssinaturaException($"Não existe configuração de assinatura para o evento eSocial '{eventoEspecifico}'.");
         }
 
         private void Assinar(XmlDocument xml,
