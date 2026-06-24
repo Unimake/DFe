@@ -262,23 +262,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura e QRCode para forçar criar novamente
             MDFe = MDFe.LerXML<Xml.MDFe.MDFe>(ConteudoXML);
-            MDFe.Signature = null;
-            MDFe.InfMDFeSupl = null;
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = MDFe.GerarXML();
-
-            //Forçar assinar e criar QRCode novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado e com QRCode
-            MDFe = MDFe.LerXML<Xml.MDFe.MDFe>(ConteudoXML);
-
-            #endregion
         }
 
         /// <summary>

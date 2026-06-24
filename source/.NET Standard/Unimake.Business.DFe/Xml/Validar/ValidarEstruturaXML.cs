@@ -6,6 +6,7 @@ using System.Xml;
 using Unimake.Business.DFe.Isoladores;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Vinculadores;
 using Unimake.Business.DFe.Xml.Validar.QRCode;
 using Unimake.Exceptions;
@@ -216,46 +217,29 @@ namespace Unimake.Business.DFe
 
                 try
                 {
-                    //AssinarSeNecessario(xml, inform, certificado, configuracao, tipoAmbiente, tipoDFe); antes era aqui
-
-                    // Se não tem schemas específicos, valida só o geral mesmo
-                    if (servico.SelectSingleNode(".//*[local-name()='SchemasEspecificos']") is null)
+                    if (DeveNormalizarXmlPeloObjeto(tipoDFe, tagRaiz))
                     {
-
                         AssinarSeNecessario(xml, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
+                        ValidarSchemas(xml, servico, inform, tipoDFe, padraoNFSe);
 
-                        ValidarSchemaGeral(xml, inform, tipoDFe, padraoNFSe);
+                        var xmlNormalizado = NormalizarXmlPeloObjeto(xml, tipoDFe, tagRaiz);
+                        AssinarSeNecessario(xmlNormalizado, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
+                        ValidarSchemas(xmlNormalizado, servico, inform, tipoDFe, padraoNFSe);
+
+                        SubstituirConteudoXml(xml, xmlNormalizado);
 
                         return new ResultadoValidacao
                         {
                             Validado = true,
                             Descricao = inform.Descricao,
-                            MensagemRetorno = "XML assinado e validado com sucesso.",
+                            MensagemRetorno = "XML normalizado, assinado e validado com sucesso.",
                             StatusValidacao = "1",
                             XmlAssinado = xml
                         };
                     }
 
-                    // Se chegou aqui, tem schemas específicos para validar, então precisa vincular o XML especifico com os schema para depois validar cada um
-                    bool isEvento = servico.SelectSingleNode(".//*[local-name()='TagEvento']") != null;
-                    var vinculador = VinculadorFactory.Criar(tipoDFe, isEvento);
-                    var nodes = vinculador.Vincular(servico, xml);
-
-                    var xmlGeralValidado = false;
-
-                    foreach (var (tipoCorreto, node) in nodes)
-                    {
-                        MontarInformacaoEspecifica(servico, tipoCorreto, inform); // sempre troca as tags assinatura
-
-                        AssinarSeNecessario(xml, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
-
-                        if (!xmlGeralValidado)
-                        {
-                            ValidarSchemaGeral(xml, inform, tipoDFe);
-                            xmlGeralValidado = true;
-                        }
-                        ValidarSchemaEspecifico(node, isEvento, inform, tipoDFe);
-                    }
+                    AssinarSeNecessario(xml, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
+                    ValidarSchemas(xml, servico, inform, tipoDFe, padraoNFSe);
 
                     return new ResultadoValidacao
                     {
@@ -294,6 +278,111 @@ namespace Unimake.Business.DFe
                 };
             }
         }
+
+        private static bool DeveNormalizarXmlPeloObjeto(TipoDFe tipoDFe, string tagRaiz)
+        {
+            if (tipoDFe == TipoDFe.MDFe)
+            {
+                return tagRaiz == "MDFe" || tagRaiz == "enviMDFe";
+            }
+
+            return false;
+        }
+
+        private static XmlDocument NormalizarXmlPeloObjeto(XmlDocument xml, TipoDFe tipoDFe, string tagRaiz)
+        {
+            switch (tipoDFe)
+            {
+                case TipoDFe.MDFe:
+                    return NormalizarMDFePeloObjeto(xml, tagRaiz);
+
+                default:
+                    return xml;
+            }
+        }
+
+        private static XmlDocument NormalizarMDFePeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "MDFe")
+            {
+                var mdfe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.MDFe.MDFe>(xml);
+                mdfe.Signature = null;
+                mdfe.InfMDFeSupl = null;
+                return mdfe.GerarXML();
+            }
+
+            if (tagRaiz == "enviMDFe")
+            {
+                var enviMDFe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.MDFe.EnviMDFe>(xml);
+
+                if (enviMDFe.MDFe != null)
+                {
+                    enviMDFe.MDFe.Signature = null;
+                    enviMDFe.MDFe.InfMDFeSupl = null;
+                }
+
+                return enviMDFe.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static void SubstituirConteudoXml(XmlDocument destino, XmlDocument origem)
+        {
+            destino.LoadXml(origem.OuterXml);
+        }
+
+        private void ValidarSchemas(XmlDocument xml, XmlNode servico, InformacaoXML inform, TipoDFe tipoDFe, PadraoNFSe padraoNFSe)
+        {
+            if (servico.SelectSingleNode(".//*[local-name()='SchemasEspecificos']") is null)
+            {
+                ValidarSchemaGeral(xml, inform, tipoDFe, padraoNFSe);
+                return;
+            }
+
+            bool isEvento = servico.SelectSingleNode(".//*[local-name()='TagEvento']") != null;
+            var vinculador = VinculadorFactory.Criar(tipoDFe, isEvento);
+            var nodes = vinculador.Vincular(servico, xml);
+
+            var xmlGeralValidado = false;
+
+            foreach (var (tipoCorreto, node) in nodes)
+            {
+                var informEspecifica = CopiarInformacao(inform);
+                MontarInformacaoEspecifica(servico, tipoCorreto, informEspecifica);
+
+                if (!xmlGeralValidado)
+                {
+                    ValidarSchemaGeral(xml, informEspecifica, tipoDFe, padraoNFSe);
+                    xmlGeralValidado = true;
+                }
+
+                ValidarSchemaEspecifico(node, isEvento, informEspecifica, tipoDFe);
+            }
+        }
+
+        private static InformacaoXML CopiarInformacao(InformacaoXML origem) =>
+            new InformacaoXML
+            {
+                TagRaiz = origem.TagRaiz,
+                Descricao = origem.Descricao,
+                Versao = origem.Versao,
+                SchemaArquivo = origem.SchemaArquivo,
+                SchemaArquivoEspecifico = origem.SchemaArquivoEspecifico,
+                TagEvento = origem.TagEvento,
+                TargetNS = origem.TargetNS,
+                TargetNSEspecifico = origem.TargetNSEspecifico,
+                TagAssinatura = origem.TagAssinatura,
+                TagAtributoID = origem.TagAtributoID,
+                TagLoteAssinatura = origem.TagLoteAssinatura,
+                TagLoteAtributoID = origem.TagLoteAtributoID,
+                TagExtraAssinatura = origem.TagExtraAssinatura,
+                TagExtraAtributoID = origem.TagExtraAtributoID,
+                AssinaCanonicalizacaoExclusiva = origem.AssinaCanonicalizacaoExclusiva,
+                UsaCertificadoDigital = origem.UsaCertificadoDigital,
+                NaoAssina = origem.NaoAssina,
+                GerarQRCode = origem.GerarQRCode
+            };
 
         private static XmlNode ObterServico(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe)
         {
