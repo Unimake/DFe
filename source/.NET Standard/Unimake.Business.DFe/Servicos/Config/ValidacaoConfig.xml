@@ -1105,6 +1105,117 @@
 			<TargetNS></TargetNS>
 		</Servico>
 	</CCG>
+	<!--CIOT-->
+	<CIOT>
+		<Servico tagRaiz="ConsultarSituacaoTransportador" versao="1.00">
+			<Descricao>CIOT - Consultar situação do transportador</Descricao>
+			<SchemaArquivo>consultarSituacaoTransportador_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>ConsultarSituacaoTransportador</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="ConsultarFrotaTransportador" versao="1.00">
+			<Descricao>CIOT - Consultar frota do transportador</Descricao>
+			<SchemaArquivo>consultarFrotaTransportador_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>ConsultarFrotaTransportador</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="DeclaracaoOperacaoTransporte" versao="1.00">
+			<Descricao>CIOT - Declaração da operação de transporte</Descricao>
+			<SchemaArquivo>declaracaoOperacaoTransporte_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>DeclaracaoOperacaoTransporte</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="CancelamentoOperacaoTransporte" versao="1.00">
+			<Descricao>CIOT - Cancelamento da operação de transporte</Descricao>
+			<SchemaArquivo>cancelamentoOperacaoTransporte_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>CancelamentoOperacaoTransporte</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="RetificacaoOperacaoTransporte" versao="1.00">
+			<Descricao>CIOT - Retificação da operação de transporte</Descricao>
+			<SchemaArquivo>retificacaoOperacaoTransporte_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>RetificacaoOperacaoTransporte</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="EncerramentoOperacaoTransporte" versao="1.00">
+			<Descricao>CIOT - Encerramento da operação de transporte</Descricao>
+			<SchemaArquivo>encerramentoOperacaoTransporte_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>EncerramentoOperacaoTransporte</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="ConsultarExcecao" versao="1.00">
+			<Descricao>CIOT - Consultar exceção</Descricao>
+			<SchemaArquivo>consultarExcecao_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>ConsultarExcecao</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="ConsultarCIOTGerado" versao="1.00">
+			<Descricao>CIOT - Consultar CIOT gerado</Descricao>
+			<SchemaArquivo>consultarCIOTGerado_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>ConsultarCIOTGerado</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="GerarIdOperacaoTransporte" versao="1.00">
+			<Descricao>CIOT - Gerar identificador da operação de transporte</Descricao>
+			<SchemaArquivo>gerarIdOperacaoTransporte_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>GerarIdOperacaoTransporte</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+	</CIOT>
 	<!--CTe -->
 	<CTe>
 		<Servico tagRaiz ="distDFeInt" versao ="1.00">

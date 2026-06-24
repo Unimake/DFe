@@ -351,6 +351,19 @@ namespace Unimake.Business.DFe
                 return tagRaiz == "consGTIN";
             }
 
+            if (tipoDFe == TipoDFe.CIOT)
+            {
+                return tagRaiz == "ConsultarSituacaoTransportador" ||
+                    tagRaiz == "ConsultarFrotaTransportador" ||
+                    tagRaiz == "DeclaracaoOperacaoTransporte" ||
+                    tagRaiz == "CancelamentoOperacaoTransporte" ||
+                    tagRaiz == "RetificacaoOperacaoTransporte" ||
+                    tagRaiz == "EncerramentoOperacaoTransporte" ||
+                    tagRaiz == "ConsultarExcecao" ||
+                    tagRaiz == "ConsultarCIOTGerado" ||
+                    tagRaiz == "GerarIdOperacaoTransporte";
+            }
+
             return false;
         }
 
@@ -379,6 +392,9 @@ namespace Unimake.Business.DFe
 
                 case TipoDFe.CCG:
                     return NormalizarCCGPeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.CIOT:
+                    return NormalizarCIOTPeloObjeto(xml, tagRaiz);
 
                 default:
                     return xml;
@@ -643,6 +659,65 @@ namespace Unimake.Business.DFe
             {
                 var consGTIN = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CCG.ConsGTIN>(xml);
                 return consGTIN.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static XmlDocument NormalizarCIOTPeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "ConsultarSituacaoTransportador")
+            {
+                var consultarSituacaoTransportador = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CIOT.ConsultarSituacaoTransportador>(xml);
+                return consultarSituacaoTransportador.GerarXML();
+            }
+
+            if (tagRaiz == "ConsultarFrotaTransportador")
+            {
+                var consultarFrotaTransportador = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CIOT.ConsultarFrotaTransportador>(xml);
+                return consultarFrotaTransportador.GerarXML();
+            }
+
+            if (tagRaiz == "DeclaracaoOperacaoTransporte")
+            {
+                var declaracaoOperacaoTransporte = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CIOT.DeclaracaoOperacaoTransporte>(xml);
+                return declaracaoOperacaoTransporte.GerarXML();
+            }
+
+            if (tagRaiz == "CancelamentoOperacaoTransporte")
+            {
+                var cancelamentoOperacaoTransporte = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CIOT.CancelamentoOperacaoTransporte>(xml);
+                return cancelamentoOperacaoTransporte.GerarXML();
+            }
+
+            if (tagRaiz == "RetificacaoOperacaoTransporte")
+            {
+                var retificacaoOperacaoTransporte = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CIOT.RetificacaoOperacaoTransporte>(xml);
+                return retificacaoOperacaoTransporte.GerarXML();
+            }
+
+            if (tagRaiz == "EncerramentoOperacaoTransporte")
+            {
+                var encerramentoOperacaoTransporte = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CIOT.EncerramentoOperacaoTransporte>(xml);
+                return encerramentoOperacaoTransporte.GerarXML();
+            }
+
+            if (tagRaiz == "ConsultarExcecao")
+            {
+                var consultarExcecao = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CIOT.ConsultarExcecao>(xml);
+                return consultarExcecao.GerarXML();
+            }
+
+            if (tagRaiz == "ConsultarCIOTGerado")
+            {
+                var consultarCIOTGerado = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CIOT.ConsultarCIOTGerado>(xml);
+                return consultarCIOTGerado.GerarXML();
+            }
+
+            if (tagRaiz == "GerarIdOperacaoTransporte")
+            {
+                var gerarIdOperacaoTransporte = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CIOT.GerarIdOperacaoTransporte>(xml);
+                return gerarIdOperacaoTransporte.GerarXML();
             }
 
             return xml;
@@ -1302,6 +1377,22 @@ namespace Unimake.Business.DFe
 
                 case "consGTIN":
                     tipoDFe = TipoDFe.CCG;
+                    break;
+
+                #endregion
+
+                #region CIOT
+
+                case "ConsultarSituacaoTransportador":
+                case "ConsultarFrotaTransportador":
+                case "DeclaracaoOperacaoTransporte":
+                case "CancelamentoOperacaoTransporte":
+                case "RetificacaoOperacaoTransporte":
+                case "EncerramentoOperacaoTransporte":
+                case "ConsultarExcecao":
+                case "ConsultarCIOTGerado":
+                case "GerarIdOperacaoTransporte":
+                    tipoDFe = TipoDFe.CIOT;
                     break;
 
                 #endregion
