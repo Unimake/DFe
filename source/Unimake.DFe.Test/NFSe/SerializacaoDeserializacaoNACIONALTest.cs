@@ -314,7 +314,7 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.Equal("NFS43149022226263261000198000000000000225120787292537", infNFSe.Id);
         Assert.Equal("Porto Alegre", infNFSe.XLocEmi);
         Assert.Equal("Porto Alegre", infNFSe.XLocPrestacao);
-        Assert.Equal(2, infNFSe.NNFSe);
+        Assert.Equal("2", infNFSe.NNFSe);
         Assert.Equal(4314902, infNFSe.CLocIncid);
         Assert.Equal("Porto Alegre", infNFSe.XLocIncid);
         Assert.Equal("Outros serviços de transporte de natureza municipal.", infNFSe.XTribNac);

@@ -65,6 +65,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         protected override void XmlValidar()
         {
+            XmlValidarConteudo();
 
             var resultadoValidacao = ValidarXMLCentralizado();
 
@@ -196,22 +197,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura para forçar criar novamente
             EventoCTe = EventoCTe.LerXML<EventoCTe>(ConteudoXML);
-            EventoCTe.Signature = null;
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = EventoCTe.GerarXML();
-
-            //Forçar assinar novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado
-            EventoCTe = EventoCTe.LerXML<EventoCTe>(ConteudoXML);
-
-            #endregion
         }
 
         /// <summary>

@@ -241,6 +241,13 @@ namespace Unimake.Business.DFe.Servicos.NF3e
         /// <exception cref="NotImplementedException"></exception>
         protected override void XmlValidar()
         {
+            var resultadoValidacao = ValidarXMLCentralizado();
+
+            if (!resultadoValidacao.Validado)
+            {
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
+            }
+
             //throw new NotImplementedException();
         }
 

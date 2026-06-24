@@ -1,6 +1,7 @@
-﻿#if INTEROP
+#if INTEROP
 using System.Runtime.InteropServices;
 #endif
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CTe
 {
@@ -22,5 +23,20 @@ namespace Unimake.Business.DFe.Servicos.CTe
         public ServicoBase() : base() { }
 
         #endregion Public Constructors
+
+        /// <summary>
+        /// Validar o XML
+        /// </summary>
+        protected override void XmlValidar()
+        {
+            XmlValidarConteudo();
+
+            var resultadoValidacao = ValidarXMLCentralizado();
+
+            if (!resultadoValidacao.Validado)
+            {
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
+            }
+        }
     }
 }

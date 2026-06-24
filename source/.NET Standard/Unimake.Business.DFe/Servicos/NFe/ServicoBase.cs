@@ -38,12 +38,11 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             XmlValidarConteudo(); // Efetuar a validação antes de validar schema para evitar alguns erros que não ficam claros para o desenvolvedor.
 
-            var validar = new ValidarSchema();
-            validar.Validar(ConteudoXML, Configuracoes.TipoDFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+            var resultadoValidacao = ValidarXMLCentralizado();
 
-            if (!validar.Success)
+            if (!resultadoValidacao.Validado)
             {
-                throw new ValidarXMLException(validar.ErrorMessage);
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
         }
 

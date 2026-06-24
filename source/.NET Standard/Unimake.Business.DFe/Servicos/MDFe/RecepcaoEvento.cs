@@ -195,22 +195,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura para forçar criar novamente
             EventoMDFe = EventoMDFe.LerXML<EventoMDFe>(ConteudoXML);
-            EventoMDFe.Signature = null;
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = EventoMDFe.GerarXML();
-
-            //Forçar assinar novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado
-            EventoMDFe = EventoMDFe.LerXML<EventoMDFe>(ConteudoXML);
-
-            #endregion
         }
 
         /// <summary>

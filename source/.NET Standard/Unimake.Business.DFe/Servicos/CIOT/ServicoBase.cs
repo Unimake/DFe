@@ -114,13 +114,20 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 
             if (!string.IsNullOrWhiteSpace(Configuracoes.SchemaArquivo))
             {
-                var validar = new ValidarSchema();
-                validar.Validar(ConteudoXML, Configuracoes.TipoDFe + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+                var resultadoValidacao = ValidarXMLCentralizado();
 
-                if (!validar.Success)
+                if (!resultadoValidacao.Validado)
                 {
-                    throw new ValidarXMLException(validar.ErrorMessage);
+                    throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
                 }
+
+                //var validar = new ValidarSchema();
+                //validar.Validar(ConteudoXML, Configuracoes.TipoDFe + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+
+                //if (!validar.Success)
+                //{
+                //    throw new ValidarXMLException(validar.ErrorMessage);
+                //}
             }
         }
 

@@ -138,7 +138,7 @@ namespace Unimake.DFe.Test.NF3e
                 {
                     VersaoEvento = "1.00",
                     DescEvento = "Cancelamento",
-                    NProt = "12345678",
+                    NProt = "1234567890123456",
                     XJust = "Erro no valor do item 3"
                 })
                 {

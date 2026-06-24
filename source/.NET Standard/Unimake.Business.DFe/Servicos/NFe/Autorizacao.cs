@@ -212,7 +212,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                         if (Result.ProtNFe != null)
                         {
                             var autorizado = false;
-                            switch (Result.ProtNFe.InfProt.CStat)                                                                  
+                            switch (Result.ProtNFe.InfProt.CStat)
                             {
                                 case 100: //Autorizado o uso da NF-e
                                 case 110: //Uso Denegado
@@ -334,13 +334,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
                             }
                             else
                             {
-                                //Se por algum motivo não tiver assinado, só vou forçar atualizar o ConteudoXML para ficar correto na hora de gerar o arquivo de distribuição. Pode estar sem assinar no caso do desenvolvedor estar forçando gerar o XML já autorizado a partir de uma consulta situação da NFe, caso tenha perdido na tentativa do primeiro envio.
-                                if (EnviNFe.NFe[i].Signature == null)
-                                {
-                                    ConteudoXML = ConteudoXMLAssinado;
-                                    AjustarXMLAposAssinado();
-                                }
-
                                 NfeProcs.Add(EnviNFe.NFe[i].InfNFeField.Chave,
                                     new NfeProc
                                     {
@@ -350,7 +343,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                     });
                             }
                         }
-
                         break;
                 }
 
@@ -470,26 +462,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura e QRCode para forçar criar novamente
             EnviNFe = EnviNFe.LerXML<EnviNFe>(ConteudoXML);
-            foreach (var nfe in EnviNFe.NFe)
-            {
-                nfe.Signature = null;
-                nfe.InfNFeSupl = null;
-            }
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = EnviNFe.GerarXML();
-
-            //Forçar assinar e criar QRCode novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado e com QRCode
-            EnviNFe = EnviNFe.LerXML<EnviNFe>(ConteudoXML);
-
-            #endregion
         }
 
         #endregion Public Constructors

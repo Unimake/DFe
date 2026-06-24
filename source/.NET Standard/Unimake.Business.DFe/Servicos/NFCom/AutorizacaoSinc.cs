@@ -245,7 +245,6 @@ namespace Unimake.Business.DFe.Servicos.NFCom
 
         #endregion Public Properties
 
-
         #region Public Constructors
 
         /// <summary>
@@ -288,23 +287,7 @@ namespace Unimake.Business.DFe.Servicos.NFCom
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura e QRCode para forçar criar novamente
             NFCom = NFCom.LerXML<Xml.NFCom.NFCom>(ConteudoXML);
-            NFCom.Signature = null;
-            NFCom.InfNFComSupl = null;
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = NFCom.GerarXML();
-
-            //Forçar assinar e criar o QRCode novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado e com QRCode
-            NFCom = NFCom.LerXML<Xml.NFCom.NFCom>(ConteudoXML);
-
-            #endregion Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
         }
 
         #endregion Public Constructors

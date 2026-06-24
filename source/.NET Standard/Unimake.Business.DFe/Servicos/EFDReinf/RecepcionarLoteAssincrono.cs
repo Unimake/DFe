@@ -2,11 +2,11 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.EFDReinf;
 using Unimake.Exceptions;
-using Unimake.Business.DFe.Utility;
-using System.Xml;
 
 namespace Unimake.Business.DFe.Servicos.EFDReinf
 {
@@ -27,7 +27,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         /// Objeto do XML do lote eventos REINF
         /// </summary>
         public ReinfEnvioLoteEventos ReinfEnvioLoteEventos
-        { 
+        {
             get => _ReinfEnvioLoteEventos ?? (_ReinfEnvioLoteEventos = new ReinfEnvioLoteEventos().LerXML<ReinfEnvioLoteEventos>(ConteudoXML));
             protected set => _ReinfEnvioLoteEventos = value;
         }
@@ -37,8 +37,8 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             var validar = new ValidarSchema();
             validar.Validar(xml, (Configuracoes.TipoDFe).ToString() + "." + schemaArquivo, targetNS);
 
-            if (!validar.Success) 
-            { 
+            if (!validar.Success)
+            {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
         }
@@ -68,68 +68,35 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         /// </summary>
         protected override void XmlValidar()
         {
-            var xml = ReinfEnvioLoteEventos;
-            var schemaArquivoEvento = string.Empty;
+            base.XmlValidar();
 
-            ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+            //var xml = ReinfEnvioLoteEventos;
+            //var schemaArquivoEvento = string.Empty;
 
-            if (Configuracoes.TiposEventosEspecificos.Count > 0)
-            {
-                string eventoEspecifico;
-                var listEventos = ConteudoXML.GetElementsByTagName("evento");
+            //ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-                foreach (var nodeEvento in listEventos)
-                {
-                    var elementEvento = (XmlElement)nodeEvento;
-                    var reinfEvento = elementEvento.GetElementsByTagName("Reinf")[0];
+            //if (Configuracoes.TiposEventosEspecificos.Count > 0)
+            //{
+            //    string eventoEspecifico;
+            //    var listEventos = ConteudoXML.GetElementsByTagName("evento");
 
-                    var xmlEventoEspecifico = new XmlDocument();
-                    xmlEventoEspecifico.LoadXml(reinfEvento.OuterXml);
+            //    foreach (var nodeEvento in listEventos)
+            //    {
+            //        var elementEvento = (XmlElement)nodeEvento;
+            //        var reinfEvento = elementEvento.GetElementsByTagName("Reinf")[0];
 
-                    eventoEspecifico = reinfEvento.FirstChild.Name;
-                    schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
+            //        var xmlEventoEspecifico = new XmlDocument();
+            //        xmlEventoEspecifico.LoadXml(reinfEvento.OuterXml);
 
-                    ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
-                }
-            }
+            //        eventoEspecifico = reinfEvento.FirstChild.Name;
+            //        schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
+
+            //        ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
+            //    }
+            //}
         }
 
         #endregion Protected Methods
-
-        #region Private Methods
-
-        /// <summary>
-        /// Remove a assinatura do objeto para ser assinado novamente evitando problemas
-        /// </summary>
-        private void RemoverAssinaturaDoERP()
-        {
-            ReinfEnvioLoteEventos = ReinfEnvioLoteEventos.LerXML<ReinfEnvioLoteEventos>(ConteudoXML);
-
-            foreach (var evento in ReinfEnvioLoteEventos.EnvioLoteEventos.Eventos.Evento)
-            {
-                var propriedades = evento.GetType().GetProperties();
-
-                foreach (var propriedade in propriedades)
-                {
-                    var valorEvento = propriedade.GetValue(evento);
-
-                    if (valorEvento!= null)
-                    {
-                        var propriedadeAssinatura = valorEvento.GetType().GetProperty("Signature");
-                        
-                        propriedadeAssinatura?.SetValue(valorEvento, null);
-                    }
-                }
-            }
-
-            ConteudoXML = ReinfEnvioLoteEventos.GerarXML();
-
-            _ = ConteudoXMLAssinado;
-
-            ReinfEnvioLoteEventos = ReinfEnvioLoteEventos.LerXML<ReinfEnvioLoteEventos>(ConteudoXML);
-        }
-
-        #endregion Private Methods
 
         #region Public Constructors
 
@@ -152,7 +119,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
             Inicializar(reinfRecepcionarLoteAssinc?.GerarXML() ?? throw new ArgumentNullException(nameof(reinfRecepcionarLoteAssinc)), configuracao);
 
-            RemoverAssinaturaDoERP();
+            //RemoverAssinaturaDoERP();
         }
 
         /// <summary>
@@ -172,7 +139,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
             Inicializar(doc, configuracao);
 
-            RemoverAssinaturaDoERP();
+            //RemoverAssinaturaDoERP();
         }
 
         /// <summary>
@@ -238,7 +205,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             {
                 ThrowHelper.Instance.Throw(ex);
             }
-        }
+        }kd
 
 #endif
 

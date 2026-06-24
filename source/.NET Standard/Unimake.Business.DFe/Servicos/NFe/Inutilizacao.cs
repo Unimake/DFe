@@ -150,22 +150,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura para forçar criar novamente
             InutNFe = InutNFe.LerXML<InutNFe>(ConteudoXML);
-            InutNFe.Signature = null;
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = InutNFe.GerarXML();
-
-            //Forçar assinar novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado
-            InutNFe = InutNFe.LerXML<InutNFe>(ConteudoXML);
-
-            #endregion
         }
 
         /// <summary>

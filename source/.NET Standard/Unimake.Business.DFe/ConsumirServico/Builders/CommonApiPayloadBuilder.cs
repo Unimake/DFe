@@ -12,14 +12,14 @@ namespace Unimake.Business.DFe.ConsumirServico.Builders
 {
     internal sealed class CommonApiPayloadBuilder
     {
-        public HttpContent Build(Configuracao configuracoes, XmlDocument conteudoXmlAssinado, XmlDocument conteudoXmlOriginal)
+        public HttpContent Build(Configuracao configuracoes, XmlDocument conteudoXml)
         {
-            var xmlBody = conteudoXmlAssinado.OuterXml;
+            var xmlBody = conteudoXml.OuterXml;
 
             if (configuracoes.GZIPCompress)
             {
                 xmlBody = Convert.ToBase64String(Encoding.UTF8.GetBytes(xmlBody));
-                xmlBody = Compress.GZIPCompress(conteudoXmlAssinado);
+                xmlBody = Compress.GZIPCompress(conteudoXml);
             }
 
             if (!string.IsNullOrWhiteSpace(configuracoes.WebSoapString))
@@ -35,7 +35,7 @@ namespace Unimake.Business.DFe.ConsumirServico.Builders
 
             if (configuracoes.WebContentType == "multipart/form-data")
             {
-                return BuildMultipartContent(configuracoes, conteudoXmlOriginal, xmlBody);
+                return BuildMultipartContent(configuracoes, conteudoXml, xmlBody);
             }
 
             return new StringContent(xmlBody, Encoding.UTF8, configuracoes.WebContentType);

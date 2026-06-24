@@ -267,12 +267,6 @@ namespace Unimake.Business.DFe.Servicos.DCe
             Inicializar(doc, configuracao);
 
             DCe = DCe.LerXML<Xml.DCe.DCe>(ConteudoXML);
-            DCe.Signature = null;
-            DCe.InfDCeSupl = null;
-
-            ConteudoXML = DCe.GerarXML();
-            _ = ConteudoXMLAssinado;
-            DCe = DCe.LerXML<Xml.DCe.DCe>(ConteudoXML);
         }
 
         /// <summary>

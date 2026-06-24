@@ -12,13 +12,13 @@ namespace Unimake.Business.DFe.ConsumirServico.Builders
 {
     internal sealed class NfsePayloadBuilder
     {
-        public HttpContent BuildHm2SolucoesContent(XmlDocument conteudoXml, XmlDocument conteudoXmlAssinado)
+        public HttpContent BuildHm2SolucoesContent(XmlDocument conteudoXml)
         {
             if (!conteudoXml.GetElementsByTagName("EnviarLoteRpsEnvio").IsNullOrEmpty())
             {
                 return new FormUrlEncodedContent(new Dictionary<string, string>
                 {
-                    { "xml", conteudoXmlAssinado.OuterXml }
+                    { "xml", conteudoXml.OuterXml }
                 });
             }
 

@@ -857,7 +857,7 @@ namespace Unimake.DFe.Test.NFSe
             {
                 // Sucesso - NFSe gerada
                 Assert.NotNull(nfse.InfNFSe);
-                Assert.True(nfse.InfNFSe.NNFSe > 0);
+                Assert.True(Convert.ToInt32(nfse.InfNFSe.NNFSe) > 0);
                 System.Diagnostics.Debug.WriteLine($"NFSe gerada com sucesso - Número: {nfse.InfNFSe.NNFSe}");
             }
             else
