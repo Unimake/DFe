@@ -283,7 +283,13 @@ namespace Unimake.Business.DFe
         {
             if (tipoDFe == TipoDFe.MDFe)
             {
-                return tagRaiz == "MDFe" || tagRaiz == "enviMDFe";
+                return tagRaiz == "MDFe" ||
+                    tagRaiz == "enviMDFe" ||
+                    tagRaiz == "eventoMDFe" ||
+                    tagRaiz == "consStatServMDFe" ||
+                    tagRaiz == "consSitMDFe" ||
+                    tagRaiz == "consReciMDFe" ||
+                    tagRaiz == "consMDFeNaoEnc";
             }
 
             return false;
@@ -322,6 +328,37 @@ namespace Unimake.Business.DFe
                 }
 
                 return enviMDFe.GerarXML();
+            }
+
+            if (tagRaiz == "eventoMDFe")
+            {
+                var eventoMDFe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.MDFe.EventoMDFe>(xml);
+                eventoMDFe.Signature = null;
+                return eventoMDFe.GerarXML();
+            }
+
+            if (tagRaiz == "consStatServMDFe")
+            {
+                var consStatServMDFe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.MDFe.ConsStatServMDFe>(xml);
+                return consStatServMDFe.GerarXML();
+            }
+
+            if (tagRaiz == "consSitMDFe")
+            {
+                var consSitMDFe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.MDFe.ConsSitMDFe>(xml);
+                return consSitMDFe.GerarXML();
+            }
+
+            if (tagRaiz == "consReciMDFe")
+            {
+                var consReciMDFe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.MDFe.ConsReciMDFe>(xml);
+                return consReciMDFe.GerarXML();
+            }
+
+            if (tagRaiz == "consMDFeNaoEnc")
+            {
+                var consMDFeNaoEnc = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.MDFe.ConsMDFeNaoEnc>(xml);
+                return consMDFeNaoEnc.GerarXML();
             }
 
             return xml;
