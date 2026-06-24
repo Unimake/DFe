@@ -69,54 +69,61 @@ namespace Unimake.Business.DFe.Servicos.NFGas
         {
             XmlValidarConteudo();
 
-            var schemaArquivo = string.Empty;
-            var schemaArquivoEspecifico = string.Empty;
+            var resultadoValidacao = ValidarXMLCentralizado();
 
-            if (Configuracoes.SchemasEspecificos.Count > 0)
+            if (!resultadoValidacao.Validado)
             {
-                int tpEvento;
-                if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
-                {
-                    tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
-                }
-                else
-                {
-                    throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
-                }
-
-                schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
-                schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
 
-            #region Validar o XML geral
+            //var schemaArquivo = string.Empty;
+            //var schemaArquivoEspecifico = string.Empty;
 
-            ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
+            //if (Configuracoes.SchemasEspecificos.Count > 0)
+            //{
+            //    int tpEvento;
+            //    if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
+            //    {
+            //        tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
+            //    }
+            //    else
+            //    {
+            //        throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
+            //    }
 
-            #endregion Validar o XML geral
+            //    schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
+            //    schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
+            //}
 
-            #region Validar a parte específica de cada evento
+            //#region Validar o XML geral
 
-            var listEvento = ConteudoXML.GetElementsByTagName("eventoNFGas");
+            //ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
 
-            for (var i = 0; i < listEvento.Count; i++)
-            {
-                var elementEvento = (XmlElement)listEvento[i];
+            //#endregion Validar o XML geral
 
-                if (elementEvento.GetElementsByTagName("infEvento")[0] != null)
-                {
-                    var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
+            //#region Validar a parte específica de cada evento
 
-                    if (elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
-                    {
-                        var xmlEspecifico = new XmlDocument();
-                        xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName("detEvento")[0].FirstChild.OuterXml);
+            //var listEvento = ConteudoXML.GetElementsByTagName("eventoNFGas");
 
-                        ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
-                    }
-                }
-            }
+            //for (var i = 0; i < listEvento.Count; i++)
+            //{
+            //    var elementEvento = (XmlElement)listEvento[i];
 
-            #endregion Validar a parte específica de cada evento
+            //    if (elementEvento.GetElementsByTagName("infEvento")[0] != null)
+            //    {
+            //        var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
+
+            //        if (elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
+            //        {
+            //            var xmlEspecifico = new XmlDocument();
+            //            xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName("detEvento")[0].FirstChild.OuterXml);
+
+            //            ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
+            //        }
+            //    }
+            //}
+
+            //#endregion Validar a parte específica de cada evento
         }
 
         /// <summary>
@@ -199,22 +206,7 @@ namespace Unimake.Business.DFe.Servicos.NFGas
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura para forçar criar novamente
             EventoNFGas = EventoNFGas.LerXML<EventoNFGas>(ConteudoXML);
-            EventoNFGas.Signature = null;
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = EventoNFGas.GerarXML();
-
-            //Forçar assinar novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado
-            EventoNFGas = EventoNFGas.LerXML<EventoNFGas>(ConteudoXML);
-
-            #endregion Limpar a assinatura do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
         }
 
         /// <summary>

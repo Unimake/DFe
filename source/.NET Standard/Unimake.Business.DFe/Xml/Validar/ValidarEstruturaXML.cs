@@ -329,6 +329,14 @@ namespace Unimake.Business.DFe
                     tagRaiz == "consSitNFCom";
             }
 
+            if (tipoDFe == TipoDFe.NFGas)
+            {
+                return tagRaiz == "NFGas" ||
+                    tagRaiz == "eventoNFGas" ||
+                    tagRaiz == "consStatServNFGas" ||
+                    tagRaiz == "consSitNFGas";
+            }
+
             return false;
         }
 
@@ -348,6 +356,9 @@ namespace Unimake.Business.DFe
 
                 case TipoDFe.NFCom:
                     return NormalizarNFComPeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.NFGas:
+                    return NormalizarNFGasPeloObjeto(xml, tagRaiz);
 
                 default:
                     return xml;
@@ -531,6 +542,38 @@ namespace Unimake.Business.DFe
             {
                 var consSitNFCom = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFCom.ConsSitNFCom>(xml);
                 return consSitNFCom.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static XmlDocument NormalizarNFGasPeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "NFGas")
+            {
+                var nfGas = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFGas.NFGas>(xml);
+                nfGas.Signature = null;
+                nfGas.InfNFGasSupl = null;
+                return nfGas.GerarXML();
+            }
+
+            if (tagRaiz == "eventoNFGas")
+            {
+                var eventoNFGas = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFGas.EventoNFGas>(xml);
+                eventoNFGas.Signature = null;
+                return eventoNFGas.GerarXML();
+            }
+
+            if (tagRaiz == "consStatServNFGas")
+            {
+                var consStatServNFGas = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFGas.ConsStatServNFGas>(xml);
+                return consStatServNFGas.GerarXML();
+            }
+
+            if (tagRaiz == "consSitNFGas")
+            {
+                var consSitNFGas = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFGas.ConsSitNFGas>(xml);
+                return consSitNFGas.GerarXML();
             }
 
             return xml;
