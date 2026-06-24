@@ -337,6 +337,15 @@ namespace Unimake.Business.DFe
                     tagRaiz == "consSitNFGas";
             }
 
+            if (tipoDFe == TipoDFe.NF3e)
+            {
+                return tagRaiz == "NF3e" ||
+                    tagRaiz == "eventoNF3e" ||
+                    tagRaiz == "consStatServNF3e" ||
+                    tagRaiz == "consSitNF3e" ||
+                    tagRaiz == "consReciNF3e";
+            }
+
             return false;
         }
 
@@ -359,6 +368,9 @@ namespace Unimake.Business.DFe
 
                 case TipoDFe.NFGas:
                     return NormalizarNFGasPeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.NF3e:
+                    return NormalizarNF3ePeloObjeto(xml, tagRaiz);
 
                 default:
                     return xml;
@@ -574,6 +586,44 @@ namespace Unimake.Business.DFe
             {
                 var consSitNFGas = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFGas.ConsSitNFGas>(xml);
                 return consSitNFGas.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static XmlDocument NormalizarNF3ePeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "NF3e")
+            {
+                var nf3e = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NF3e.NF3e>(xml);
+                nf3e.Signature = null;
+                nf3e.InfNF3eSupl = null;
+                return nf3e.GerarXML();
+            }
+
+            if (tagRaiz == "eventoNF3e")
+            {
+                var eventoNF3e = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NF3e.EventoNF3e>(xml);
+                eventoNF3e.Signature = null;
+                return eventoNF3e.GerarXML();
+            }
+
+            if (tagRaiz == "consStatServNF3e")
+            {
+                var consStatServNF3e = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NF3e.ConsStatServNF3e>(xml);
+                return consStatServNF3e.GerarXML();
+            }
+
+            if (tagRaiz == "consSitNF3e")
+            {
+                var consSitNF3e = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NF3e.ConsSitNF3e>(xml);
+                return consSitNF3e.GerarXML();
+            }
+
+            if (tagRaiz == "consReciNF3e")
+            {
+                var consReciNF3e = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NF3e.ConsReciNF3e>(xml);
+                return consReciNF3e.GerarXML();
             }
 
             return xml;
