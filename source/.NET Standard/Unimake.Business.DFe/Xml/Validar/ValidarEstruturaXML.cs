@@ -150,6 +150,11 @@ namespace Unimake.Business.DFe
             public bool UsaCertificadoDigital { get; set; }
 
             /// <summary>
+            /// Algoritmo utilizado para assinar o XML. O padrão é SHA1.
+            /// </summary>
+            public AlgorithmType SignatureAlgorithmType { get; set; } = AlgorithmType.Sha1;
+
+            /// <summary>
             /// Tag que indica se o serviço deve ser assinado ou não dependendo do Tipo Ambiente.
             /// </summary>
             public TipoAmbiente? NaoAssina { get; set; }
@@ -197,6 +202,9 @@ namespace Unimake.Business.DFe
             var tipoDFe = padraoNFSe != PadraoNFSe.None
             ? TipoDFe.NFSe
             : DetectarTipoDFe(xml);
+            var codigoConfiguracao = tipoDFe == TipoDFe.NFSe
+                ? configuracao.CodigoMunicipio
+                : configuracao.CodigoUF;
 
             try
             {
@@ -213,7 +221,7 @@ namespace Unimake.Business.DFe
 
                 AtribuirUrl(servico, codigoUF, configuracao);
 
-                var inform = MontarInformacaoGeral(servico, codigoUF);
+                var inform = MontarInformacaoGeral(servico, codigoConfiguracao);
 
                 try
                 {
@@ -852,6 +860,7 @@ namespace Unimake.Business.DFe
                 TagExtraAtributoID = origem.TagExtraAtributoID,
                 AssinaCanonicalizacaoExclusiva = origem.AssinaCanonicalizacaoExclusiva,
                 UsaCertificadoDigital = origem.UsaCertificadoDigital,
+                SignatureAlgorithmType = origem.SignatureAlgorithmType,
                 NaoAssina = origem.NaoAssina,
                 GerarQRCode = origem.GerarQRCode
             };
@@ -947,13 +956,14 @@ namespace Unimake.Business.DFe
             return servico;
         }
 
-        private static InformacaoXML MontarInformacaoGeral(XmlNode servico, UFBrasil codigoMunicipio)
+        private static InformacaoXML MontarInformacaoGeral(XmlNode servico, int codigoConfiguracao)
         {
             #region verifica variáveis para a assinatura
 
-            var usaCertificado = VerificarUtilizacaoCertificadoDigital(servico, codigoMunicipio);
-            var ambiente = VerificarAmbienteAssinatura(servico, codigoMunicipio);
-            var canonizalizacaoExclusiva = VerificarAssinaCanonicalizacaoExclusiva(servico, codigoMunicipio);
+            var usaCertificado = VerificarUtilizacaoCertificadoDigital(servico, codigoConfiguracao);
+            var ambiente = VerificarAmbienteAssinatura(servico, codigoConfiguracao);
+            var canonizalizacaoExclusiva = VerificarAssinaCanonicalizacaoExclusiva(servico, codigoConfiguracao);
+            var signatureAlgorithmType = VerificarAlgoritmoAssinatura(servico, codigoConfiguracao);
 
             #endregion
 
@@ -974,15 +984,16 @@ namespace Unimake.Business.DFe
                 NaoAssina = ambiente,
                 UsaCertificadoDigital = usaCertificado,
                 AssinaCanonicalizacaoExclusiva = canonizalizacaoExclusiva,
+                SignatureAlgorithmType = signatureAlgorithmType,
                 GerarQRCode = servico.SelectSingleNode("*[local-name()='GerarQrCode']")?.InnerText?.Trim() == "true"
 
             };
         }
 
-        private static bool VerificarUtilizacaoCertificadoDigital(XmlNode servico, UFBrasil codigoMunicipio)
+        private static bool VerificarUtilizacaoCertificadoDigital(XmlNode servico, int codigoConfiguracao)
         {
             string valorCert = null;
-            var nodeExcecao = VerificarExcecao(servico, codigoMunicipio, "UsaCertificadoDigital");
+            var nodeExcecao = VerificarExcecao(servico, codigoConfiguracao, "UsaCertificadoDigital");
 
             if (nodeExcecao != null)
             {
@@ -992,10 +1003,10 @@ namespace Unimake.Business.DFe
             return valorCert?.Trim() != "false";
         }
 
-        private static TipoAmbiente? VerificarAmbienteAssinatura(XmlNode servico, UFBrasil codigoMunicipio)
+        private static TipoAmbiente? VerificarAmbienteAssinatura(XmlNode servico, int codigoConfiguracao)
         {
             string ambiente = null;
-            var nodeExcecao = VerificarExcecao(servico, codigoMunicipio, "NaoAssina");
+            var nodeExcecao = VerificarExcecao(servico, codigoConfiguracao, "NaoAssina");
 
             if (nodeExcecao != null)
             {
@@ -1005,10 +1016,10 @@ namespace Unimake.Business.DFe
             return ambiente?.ToLower() == "homologação" ? TipoAmbiente.Homologacao : (ambiente?.ToLower() == "produção" ? TipoAmbiente.Producao : (TipoAmbiente?)null);
         }
 
-        private static bool VerificarAssinaCanonicalizacaoExclusiva(XmlNode servico, UFBrasil codigoMunicipio)
+        private static bool VerificarAssinaCanonicalizacaoExclusiva(XmlNode servico, int codigoConfiguracao)
         {
             string valorCanonicalizacao = null;
-            var nodeExcecao = VerificarExcecao(servico, codigoMunicipio, "AssinaCanonicalizacaoExclusiva");
+            var nodeExcecao = VerificarExcecao(servico, codigoConfiguracao, "AssinaCanonicalizacaoExclusiva");
 
             if (nodeExcecao != null)
             {
@@ -1018,7 +1029,51 @@ namespace Unimake.Business.DFe
             return valorCanonicalizacao?.Trim() == "true";
         }
 
-        private static XmlNode VerificarExcecao(XmlNode servico, UFBrasil codigoMunicipio, string nomeTag)
+        private static AlgorithmType VerificarAlgoritmoAssinatura(XmlNode servico, int codigoConfiguracao)
+        {
+            var valorAlgoritmo = ObterValorConfiguracao(servico, codigoConfiguracao, "SignatureAlgorithmType")
+                ?? ObterValorConfiguracao(servico?.ParentNode, codigoConfiguracao, "SignatureAlgorithmType");
+
+            if (string.IsNullOrWhiteSpace(valorAlgoritmo))
+            {
+                return AlgorithmType.Sha1;
+            }
+
+            if (Enum.TryParse(valorAlgoritmo, true, out AlgorithmType algoritmo) &&
+                Enum.IsDefined(typeof(AlgorithmType), algoritmo))
+            {
+                return algoritmo;
+            }
+
+            throw new Exception($"Valor inválido para SignatureAlgorithmType: {valorAlgoritmo}.");
+        }
+
+        private static string ObterValorConfiguracao(XmlNode node, int codigoConfiguracao, string nomeTag)
+        {
+            var nodeTag = node?.SelectSingleNode($"*[local-name()='{nomeTag}']");
+
+            if (nodeTag is null)
+            {
+                return null;
+            }
+
+            var nodeExcecao = nodeTag.SelectSingleNode(
+                $"*[local-name()='Excecao' and @codMunicipio='{codigoConfiguracao}']"
+            );
+
+            if (nodeExcecao != null)
+            {
+                return nodeExcecao.InnerText?.Trim();
+            }
+
+            var possuiElementosFilhos = nodeTag.ChildNodes
+                .Cast<XmlNode>()
+                .Any(x => x.NodeType == XmlNodeType.Element);
+
+            return possuiElementosFilhos ? null : nodeTag.InnerText?.Trim();
+        }
+
+        private static XmlNode VerificarExcecao(XmlNode servico, int codigoConfiguracao, string nomeTag)
         {
             var nodeTag = servico.SelectSingleNode($"*[local-name()='{nomeTag}']");
             XmlNode nodeExcecao = null;
@@ -1026,7 +1081,7 @@ namespace Unimake.Business.DFe
             if (nodeTag != null)
             {
                 nodeExcecao = nodeTag.SelectSingleNode(
-                    $"*[local-name()='Excecao' and @codMunicipio='{codigoMunicipio}']"
+                    $"*[local-name()='Excecao' and @codMunicipio='{codigoConfiguracao}']"
                 );
             }
 
@@ -1045,17 +1100,17 @@ namespace Unimake.Business.DFe
         {
             if (!string.IsNullOrEmpty(inform.TagAssinatura))
             {
-                Assinar(xml, inform.TagAssinatura, inform.TagAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
+                Assinar(xml, inform.TagAssinatura, inform.TagAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.SignatureAlgorithmType, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
             }
 
             if (!string.IsNullOrEmpty(inform.TagLoteAssinatura))
             {
-                Assinar(xml, inform.TagLoteAssinatura, inform.TagLoteAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
+                Assinar(xml, inform.TagLoteAssinatura, inform.TagLoteAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.SignatureAlgorithmType, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
             }
 
             if (!string.IsNullOrEmpty(inform.TagExtraAssinatura))
             {
-                Assinar(xml, inform.TagExtraAssinatura, inform.TagExtraAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
+                Assinar(xml, inform.TagExtraAssinatura, inform.TagExtraAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.SignatureAlgorithmType, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
             }
         }
 
@@ -1065,6 +1120,7 @@ namespace Unimake.Business.DFe
             TipoAmbiente? tagNaoAssina,
             bool usaCertificado,
             bool assinaCanonicalizacaoExclusiva,
+            AlgorithmType signatureAlgorithmType,
             bool gerarQrCode,
             X509Certificate2 cert,
             TipoAmbiente tipoAmbiente,
@@ -1075,8 +1131,6 @@ namespace Unimake.Business.DFe
             if (string.IsNullOrWhiteSpace(tagAssinatura))
                 return;
 
-            var algoritmoAssinatura = AlgoritmoAssinatura(tipoDFe);
-
             if (usaCertificado)
             {
                 if (tagNaoAssina is null || tagNaoAssina != tipoAmbiente)
@@ -1085,7 +1139,7 @@ namespace Unimake.Business.DFe
                     {
                         if (!AssinaturaDigital.EstaAssinado(xml, tagAssinatura))
                         {
-                            AssinaturaDigital.Assinar(xml, tagAssinatura, tagID, cert, algoritmoAssinatura, exclusiveC14N: assinaCanonicalizacaoExclusiva);
+                            AssinaturaDigital.Assinar(xml, tagAssinatura, tagID, cert, signatureAlgorithmType, exclusiveC14N: assinaCanonicalizacaoExclusiva);
 
 
                         }
@@ -1101,30 +1155,6 @@ namespace Unimake.Business.DFe
 
                     MontarQRCode(xml, gerarQrCode, tipoDFe, configuracao);
                 }
-            }
-        }
-
-        private static AlgorithmType AlgoritmoAssinatura(TipoDFe tipoDFe)
-        {
-            //| TipoDFe         | Algoritmo |
-            //| --------------- | --------- | 
-            //| NFe             | SHA1      | 
-            //| CTe  CTeOS      | SHA1      | 
-            //| MDFe            | SHA1      | 
-            //| NFSe            | SHA1      | 
-            //| Reinf           | SHA256    |
-            //| eSocial         | SHA256    | 
-            //| DARE            | SHA256    |
-
-            switch (tipoDFe)
-            {
-                case TipoDFe.ESocial:
-                case TipoDFe.EFDReinf:
-                    return AlgorithmType.Sha256;
-
-                default:
-                    return AlgorithmType.Sha1;
-
             }
         }
 
