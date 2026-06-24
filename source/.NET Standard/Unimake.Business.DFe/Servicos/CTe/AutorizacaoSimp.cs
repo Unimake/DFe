@@ -261,23 +261,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura e QRCode para forçar criar novamente
             CTeSimp = CTeSimp.LerXML<CTeSimp>(ConteudoXML);
-            CTeSimp.Signature = null;
-            CTeSimp.InfCTeSupl = null;
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = CTeSimp.GerarXML();
-
-            //Forçar assinar e criar QRCode novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado e com QRCode
-            CTeSimp = CTeSimp.LerXML<CTeSimp>(ConteudoXML);
-
-            #endregion
         }
 
         /// <summary>

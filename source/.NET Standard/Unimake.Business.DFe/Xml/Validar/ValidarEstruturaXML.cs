@@ -292,6 +292,19 @@ namespace Unimake.Business.DFe
                     tagRaiz == "consMDFeNaoEnc";
             }
 
+            if (tipoDFe == TipoDFe.CTe)
+            {
+                return tagRaiz == "CTe" ||
+                    tagRaiz == "enviCTe" ||
+                    tagRaiz == "CTeSimp" ||
+                    tagRaiz == "eventoCTe" ||
+                    tagRaiz == "consStatServCte" ||
+                    tagRaiz == "consStatServCTe" ||
+                    tagRaiz == "consSitCTe" ||
+                    tagRaiz == "consReciCTe" ||
+                    tagRaiz == "distDFeInt";
+            }
+
             return false;
         }
 
@@ -301,6 +314,9 @@ namespace Unimake.Business.DFe
             {
                 case TipoDFe.MDFe:
                     return NormalizarMDFePeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.CTe:
+                    return NormalizarCTePeloObjeto(xml, tagRaiz);
 
                 default:
                     return xml;
@@ -359,6 +375,74 @@ namespace Unimake.Business.DFe
             {
                 var consMDFeNaoEnc = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.MDFe.ConsMDFeNaoEnc>(xml);
                 return consMDFeNaoEnc.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static XmlDocument NormalizarCTePeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "CTe")
+            {
+                var cte = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTe.CTe>(xml);
+                cte.Signature = null;
+                cte.InfCTeSupl = null;
+                return cte.GerarXML();
+            }
+
+            if (tagRaiz == "enviCTe")
+            {
+                var enviCTe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTe.EnviCTe>(xml);
+
+                if (enviCTe.CTe != null)
+                {
+                    foreach (var cte in enviCTe.CTe)
+                    {
+                        cte.Signature = null;
+                        cte.InfCTeSupl = null;
+                    }
+                }
+
+                return enviCTe.GerarXML();
+            }
+
+            if (tagRaiz == "CTeSimp")
+            {
+                var cteSimp = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTeSimp.CTeSimp>(xml);
+                cteSimp.Signature = null;
+                cteSimp.InfCTeSupl = null;
+                return cteSimp.GerarXML();
+            }
+
+            if (tagRaiz == "eventoCTe")
+            {
+                var eventoCTe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTe.EventoCTe>(xml);
+                eventoCTe.Signature = null;
+                return eventoCTe.GerarXML();
+            }
+
+            if (tagRaiz == "consStatServCte" || tagRaiz == "consStatServCTe")
+            {
+                var consStatServCte = new Unimake.Business.DFe.Xml.CTe.ConsStatServCte().LerXML<Unimake.Business.DFe.Xml.CTe.ConsStatServCte>(xml);
+                return consStatServCte.GerarXML();
+            }
+
+            if (tagRaiz == "consSitCTe")
+            {
+                var consSitCTe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTe.ConsSitCTe>(xml);
+                return consSitCTe.GerarXML();
+            }
+
+            if (tagRaiz == "consReciCTe")
+            {
+                var consReciCTe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTe.ConsReciCTe>(xml);
+                return consReciCTe.GerarXML();
+            }
+
+            if (tagRaiz == "distDFeInt")
+            {
+                var distDFeInt = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTe.DistDFeInt>(xml);
+                return distDFeInt.GerarXML();
             }
 
             return xml;
@@ -502,6 +586,12 @@ namespace Unimake.Business.DFe
 
             string pathServico = $"//{tipoDFe}/Servico[@tagRaiz='{tagRaiz}' and @versao='{versao}']";
             XmlNode servico = xmlConfig.SelectSingleNode(pathServico);
+
+            if (servico is null && tipoDFe == TipoDFe.CTe && tagRaiz == "consStatServCte")
+            {
+                pathServico = $"//{tipoDFe}/Servico[@tagRaiz='consStatServCTe' and @versao='{versao}']";
+                servico = xmlConfig.SelectSingleNode(pathServico);
+            }
 
             return servico;
         }
@@ -795,6 +885,11 @@ namespace Unimake.Business.DFe
 
                 var nodeVersao = xml.GetElementsByTagName(tagVersao);
 
+                if (nodeVersao.Count == 0 && tipoDFe == TipoDFe.CTe && tagVersao == "consStatServCTe")
+                {
+                    nodeVersao = xml.GetElementsByTagName("consStatServCte");
+                }
+
                 if (nodeVersao.Count > 0)
                 {
 
@@ -882,6 +977,7 @@ namespace Unimake.Business.DFe
                 #region CTe
 
                 case "consStatServCte":
+                case "consStatServCTe":
                 case "consSitCTe":
                 case "consReciCTe":
                 case "eventoCTe":
