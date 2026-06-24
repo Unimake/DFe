@@ -321,6 +321,14 @@ namespace Unimake.Business.DFe
                     tagRaiz == "distDFeInt";
             }
 
+            if (tipoDFe == TipoDFe.NFCom)
+            {
+                return tagRaiz == "NFCom" ||
+                    tagRaiz == "eventoNFCom" ||
+                    tagRaiz == "consStatServNFCom" ||
+                    tagRaiz == "consSitNFCom";
+            }
+
             return false;
         }
 
@@ -337,6 +345,9 @@ namespace Unimake.Business.DFe
                 case TipoDFe.NFe:
                 case TipoDFe.NFCe:
                     return NormalizarNFePeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.NFCom:
+                    return NormalizarNFComPeloObjeto(xml, tagRaiz);
 
                 default:
                     return xml;
@@ -488,6 +499,38 @@ namespace Unimake.Business.DFe
             {
                 var nfceListagemChaves = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.NFCeListagemChaves>(xml);
                 return nfceListagemChaves.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static XmlDocument NormalizarNFComPeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "NFCom")
+            {
+                var nfCom = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFCom.NFCom>(xml);
+                nfCom.Signature = null;
+                nfCom.InfNFComSupl = null;
+                return nfCom.GerarXML();
+            }
+
+            if (tagRaiz == "eventoNFCom")
+            {
+                var eventoNFCom = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFCom.EventoNFCom>(xml);
+                eventoNFCom.Signature = null;
+                return eventoNFCom.GerarXML();
+            }
+
+            if (tagRaiz == "consStatServNFCom")
+            {
+                var consStatServNFCom = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFCom.ConsStatServNFCom>(xml);
+                return consStatServNFCom.GerarXML();
+            }
+
+            if (tagRaiz == "consSitNFCom")
+            {
+                var consSitNFCom = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFCom.ConsSitNFCom>(xml);
+                return consSitNFCom.GerarXML();
             }
 
             return xml;
