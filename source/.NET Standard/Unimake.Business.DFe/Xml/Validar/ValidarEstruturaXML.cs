@@ -346,6 +346,14 @@ namespace Unimake.Business.DFe
                     tagRaiz == "consReciNF3e";
             }
 
+            if (tipoDFe == TipoDFe.DCe)
+            {
+                return tagRaiz == "DCe" ||
+                    tagRaiz == "eventoDCe" ||
+                    tagRaiz == "consStatServDCe" ||
+                    tagRaiz == "consSitDCe";
+            }
+
             if (tipoDFe == TipoDFe.CCG)
             {
                 return tagRaiz == "consGTIN";
@@ -397,6 +405,9 @@ namespace Unimake.Business.DFe
 
                 case TipoDFe.NF3e:
                     return NormalizarNF3ePeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.DCe:
+                    return NormalizarDCePeloObjeto(xml, tagRaiz);
 
                 case TipoDFe.CCG:
                     return NormalizarCCGPeloObjeto(xml, tagRaiz);
@@ -659,6 +670,38 @@ namespace Unimake.Business.DFe
             {
                 var consReciNF3e = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NF3e.ConsReciNF3e>(xml);
                 return consReciNF3e.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static XmlDocument NormalizarDCePeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "DCe")
+            {
+                var dce = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.DCe.DCe>(xml);
+                dce.Signature = null;
+                dce.InfDCeSupl = null;
+                return dce.GerarXML();
+            }
+
+            if (tagRaiz == "eventoDCe")
+            {
+                var eventoDCe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.DCe.EventoDCe>(xml);
+                eventoDCe.Signature = null;
+                return eventoDCe.GerarXML();
+            }
+
+            if (tagRaiz == "consStatServDCe")
+            {
+                var consStatServDCe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.DCe.ConsStatServDCe>(xml);
+                return consStatServDCe.GerarXML();
+            }
+
+            if (tagRaiz == "consSitDCe")
+            {
+                var consSitDCe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.DCe.ConsSitDCe>(xml);
+                return consSitDCe.GerarXML();
             }
 
             return xml;

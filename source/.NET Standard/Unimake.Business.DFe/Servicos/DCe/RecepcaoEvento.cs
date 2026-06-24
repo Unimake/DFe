@@ -71,46 +71,53 @@ namespace Unimake.Business.DFe.Servicos.DCe
         {
             XmlValidarConteudo();
 
-            var schemaArquivo = string.Empty;
-            var schemaArquivoEspecifico = string.Empty;
+            var resultadoValidacao = ValidarXMLCentralizado();
 
-            if (Configuracoes.SchemasEspecificos.Count > 0)
+            if (!resultadoValidacao.Validado)
             {
-                int tpEvento;
-                if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
-                {
-                    tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
-                }
-                else
-                {
-                    throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
-                }
-
-                schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
-                schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
 
-            ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
+            //var schemaArquivo = string.Empty;
+            //var schemaArquivoEspecifico = string.Empty;
 
-            var listEvento = ConteudoXML.GetElementsByTagName("eventoDCe");
+            //if (Configuracoes.SchemasEspecificos.Count > 0)
+            //{
+            //    int tpEvento;
+            //    if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
+            //    {
+            //        tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
+            //    }
+            //    else
+            //    {
+            //        throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
+            //    }
 
-            for (var i = 0; i < listEvento.Count; i++)
-            {
-                var elementEvento = (XmlElement)listEvento[i];
+            //    schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
+            //    schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
+            //}
 
-                if (elementEvento.GetElementsByTagName("infEvento")[0] != null)
-                {
-                    var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
+            //ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
 
-                    if (elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
-                    {
-                        var xmlEspecifico = new XmlDocument();
-                        xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName("detEvento")[0].FirstChild.OuterXml);
+            //var listEvento = ConteudoXML.GetElementsByTagName("eventoDCe");
 
-                        ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
-                    }
-                }
-            }
+            //for (var i = 0; i < listEvento.Count; i++)
+            //{
+            //    var elementEvento = (XmlElement)listEvento[i];
+
+            //    if (elementEvento.GetElementsByTagName("infEvento")[0] != null)
+            //    {
+            //        var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
+
+            //        if (elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
+            //        {
+            //            var xmlEspecifico = new XmlDocument();
+            //            xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName("detEvento")[0].FirstChild.OuterXml);
+
+            //            ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
+            //        }
+            //    }
+            //}
         }
 
         /// <summary>
@@ -193,11 +200,6 @@ namespace Unimake.Business.DFe.Servicos.DCe
 
             Inicializar(doc, configuracao);
 
-            EventoDCe = EventoDCe.LerXML<EventoDCe>(ConteudoXML);
-            EventoDCe.Signature = null;
-
-            ConteudoXML = EventoDCe.GerarXML();
-            _ = ConteudoXMLAssinado;
             EventoDCe = EventoDCe.LerXML<EventoDCe>(ConteudoXML);
         }
 
