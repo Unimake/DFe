@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe.Isoladores;
@@ -8,11 +9,6 @@ using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Vinculadores;
 using Unimake.Business.DFe.Xml.Validar.QRCode;
 using Unimake.Exceptions;
-using System.Linq;
-
-
-
-
 
 namespace Unimake.Business.DFe
 {
@@ -21,7 +17,6 @@ namespace Unimake.Business.DFe
     /// </summary>
     public class ValidarEstruturaXML
     {
-
 
         /// <summary>
         /// Classe de resultado da validação, contendo um boolean para indicar se a validação foi bem-sucedida,
@@ -53,15 +48,12 @@ namespace Unimake.Business.DFe
             /// Xml após a assinatura 
             /// </summary>
             public XmlDocument XmlAssinado { get; set; }
-
-
         }
 
 
         /// <summary>
         /// Guarda as configurações do XML de configuracção para o acesso durante a validação, evitando múltiplas consultas ao XML de configuração.
         /// </summary>
-
         public class InformacaoXML
         {
             /// <summary>
@@ -150,7 +142,7 @@ namespace Unimake.Business.DFe
             /// Tag que indica se o serviço deve ser assinado utilizando a 
             /// canonicalização exclusiva, padrão é false.
             /// </summary>
-            public bool AssinaCanonicalizacaoExclusiva { get; set;}
+            public bool AssinaCanonicalizacaoExclusiva { get; set; }
 
             /// <summary>
             /// Tag que indica se o serviço utiliza certificado digital para assinatura, padrão é true, ou seja, se a tag estiver 
@@ -168,7 +160,6 @@ namespace Unimake.Business.DFe
             /// </summary>
             public bool GerarQRCode { get; set; }
         }
-
 
         /// <summary>
         /// Retorna o XML de configuração de serviços, que contém as regras de validação para cada tipo de documento e serviço.
@@ -306,8 +297,6 @@ namespace Unimake.Business.DFe
             }
         }
 
-
-
         private static XmlNode ObterServico(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe)
         {
             if (tipoDFe == TipoDFe.NFSe)
@@ -323,10 +312,8 @@ namespace Unimake.Business.DFe
             return TratarDFe(xml, versao, tipoDFe, tagRaiz, xmlConfig);
         }
 
-
         private static XmlNode TratarESocialEFDReinf(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig)
         {
-
             XmlNodeList nodeListDFe = xmlConfig.SelectNodes($"//{tipoDFe}/Servico");
             XmlNode nodeServicoCorreto = null;
 
@@ -347,13 +334,11 @@ namespace Unimake.Business.DFe
             }
 
             return nodeServicoCorreto;
-
         }
 
 
         private static XmlNode TratarNFSe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe)
         {
-
             string pathServicosNFSe = string.Empty;
             XmlNode servicoNFSe = null;
 
@@ -397,13 +382,11 @@ namespace Unimake.Business.DFe
             XmlNode servico = xmlConfig.SelectSingleNode(pathServico);
 
             return servico;
-
         }
 
 
         private static InformacaoXML MontarInformacaoGeral(XmlNode servico, UFBrasil codigoMunicipio)
         {
-
             #region verifica variáveis para a assinatura
 
             var usaCertificado = VerificarUtilizacaoCertificadoDigital(servico, codigoMunicipio);
@@ -443,24 +426,23 @@ namespace Unimake.Business.DFe
             {
                 valorCert = nodeExcecao.InnerText;
             }
-            
+
             return valorCert?.Trim() != "false";
         }
 
 
-        private static TipoAmbiente? VerificarAmbienteAssinatura(XmlNode servico, UFBrasil codigoMunicipio) 
-        { 
+        private static TipoAmbiente? VerificarAmbienteAssinatura(XmlNode servico, UFBrasil codigoMunicipio)
+        {
             string ambiente = null;
             var nodeExcecao = VerificarExcecao(servico, codigoMunicipio, "NaoAssina");
 
-            if (nodeExcecao != null) 
+            if (nodeExcecao != null)
             {
                 ambiente = nodeExcecao.InnerText?.Trim().ToLower();
             }
 
             return ambiente?.ToLower() == "homologação" ? TipoAmbiente.Homologacao : (ambiente?.ToLower() == "produção" ? TipoAmbiente.Producao : (TipoAmbiente?)null);
         }
-
 
         private static bool VerificarAssinaCanonicalizacaoExclusiva(XmlNode servico, UFBrasil codigoMunicipio)
         {
@@ -475,13 +457,12 @@ namespace Unimake.Business.DFe
             return valorCanonicalizacao?.Trim() == "true";
         }
 
-
-        private static XmlNode VerificarExcecao(XmlNode servico, UFBrasil codigoMunicipio, string nomeTag) 
-        { 
+        private static XmlNode VerificarExcecao(XmlNode servico, UFBrasil codigoMunicipio, string nomeTag)
+        {
             var nodeTag = servico.SelectSingleNode($"*[local-name()='{nomeTag}']");
             XmlNode nodeExcecao = null;
 
-            if (nodeTag != null) 
+            if (nodeTag != null)
             {
                 nodeExcecao = nodeTag.SelectSingleNode(
                     $"*[local-name()='Excecao' and @codMunicipio='{codigoMunicipio}']"
@@ -489,10 +470,7 @@ namespace Unimake.Business.DFe
             }
 
             return nodeExcecao;
-
         }
-
-
 
         private static void MontarInformacaoEspecifica(XmlNode servico, XmlNode tipo, InformacaoXML inform)
         {
@@ -501,7 +479,6 @@ namespace Unimake.Business.DFe
             inform.TargetNSEspecifico = tipo.SelectSingleNode("*[local-name()='TargetNS']")?.InnerText ?? inform.TargetNS; // Caso o nó específico tenha uma TargetNS diferente da geral, utiliza a específica, caso contrário, mantém a geral
             inform.TagAtributoID = tipo.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText ?? inform.TagAtributoID; // Caso o nó específico tenha um atributo ID diferente da geral, utiliza o específico, caso contrário, mantém o geral
         }
-
 
         private void AssinarSeNecessario(XmlDocument xml, InformacaoXML inform, X509Certificate2 cert, Configuracao configuracao, TipoAmbiente tipoAmbiente, TipoDFe tipoDFe)
         {
@@ -519,9 +496,7 @@ namespace Unimake.Business.DFe
             {
                 Assinar(xml, inform.TagExtraAssinatura, inform.TagExtraAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
             }
-
         }
-
 
         private void Assinar(XmlDocument xml,
             string tagAssinatura,
@@ -554,7 +529,7 @@ namespace Unimake.Business.DFe
 
                         }
 
-                      
+
                     }
                     catch (Exception ex)
                     {
@@ -567,7 +542,6 @@ namespace Unimake.Business.DFe
                 }
             }
         }
-
 
         private static AlgorithmType AlgoritmoAssinatura(TipoDFe tipoDFe)
         {
@@ -586,21 +560,18 @@ namespace Unimake.Business.DFe
                 case TipoDFe.ESocial:
                 case TipoDFe.EFDReinf:
                     return AlgorithmType.Sha256;
+
                 default:
                     return AlgorithmType.Sha1;
 
-
             }
         }
-
 
         private static void MontarQRCode(XmlDocument xml, bool gerarQrCode, TipoDFe tipoDFe, Configuracao configuracao)
         {
             var geradorQrCode = QrCodeFactory.Criar(configuracao, gerarQrCode, tipoDFe);
             geradorQrCode?.GerarQrCode(xml, configuracao);
         }
-
-
 
         private static void AtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao)
         {
@@ -626,7 +597,6 @@ namespace Unimake.Business.DFe
             }
         }
 
-
         private static void ValidarSchemaGeral(XmlDocument xml, InformacaoXML info, TipoDFe tipoDFe, PadraoNFSe padraoNFSe = PadraoNFSe.None)
         {
             // Caso não possua Schema para a validação retornar sem validar e deixar a validação por conta da prefeitura ao enviar
@@ -650,7 +620,6 @@ namespace Unimake.Business.DFe
             }
         }
 
-
         private static void ValidarSchemaEspecifico(XmlNode node, bool isEvento, InformacaoXML info, TipoDFe tipoDFe)
         {
             // Caso não possua Schema para a validação retornar sem validar e deixar a validação por conta da prefeitura ao enviar
@@ -664,7 +633,7 @@ namespace Unimake.Business.DFe
             var xmlEspecifico = isolador.Isolar(node);
 
             // Em casos que não possuir o xml especifico  Ex: CTe de complemento
-            if (xmlEspecifico is null) 
+            if (xmlEspecifico is null)
             {
                 return;
             }
@@ -678,8 +647,6 @@ namespace Unimake.Business.DFe
                 throw new ValidarXMLException($"Erro ao validar schema específico: {validarEspecifico.ErrorMessage}.");
             }
         }
-
-
 
         private static string ObterVersao(XmlDocument xml, XmlDocument xmlConfig, TipoDFe tipoDFe, PadraoNFSe padraoNFSe)
         {
@@ -727,24 +694,27 @@ namespace Unimake.Business.DFe
 
                 }
             }
+
             return string.Empty;
         }
 
-
         private string ObterStatus(Exception ex)
         {
-            if (ex is AssinaturaException)
-                return "4";
+            switch (ex)
+            {
+                case AssinaturaException _:
+                    return "4";
 
-            if (ex is ValidarXMLException)
-                return "2";
+                case ValidarXMLException _:
+                    return "2";
 
-            if (ex is PadraoNaoImplementadoException)
-                return "5";
+                case PadraoNaoImplementadoException _:
+                    return "5";
 
-            return "3";
+                default:
+                    return "3";
+            }
         }
-
 
 
         private static TipoDFe DetectarTipoDFe(XmlDocument xml)
@@ -808,7 +778,7 @@ namespace Unimake.Business.DFe
 
                 #region DCe
 
-                case "consStatServDCe": 
+                case "consStatServDCe":
                 case "consSitDCe":
                 case "eventoDCe":
                 case "DCe":
@@ -895,8 +865,6 @@ namespace Unimake.Business.DFe
 
             return tipoDFe;
         }
-
-
     }
 }
 
