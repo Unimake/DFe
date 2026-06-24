@@ -212,6 +212,12 @@ namespace Unimake.Business.DFe
                 var xmlConfig = CarregarConfigValidacao();
                 var tagRaiz = xml.DocumentElement.Name;
                 var versao = ObterVersao(xml, xmlConfig, tipoDFe, padraoNFSe);
+
+                if (string.IsNullOrWhiteSpace(versao) && !string.IsNullOrWhiteSpace(configuracao.SchemaVersao))
+                {
+                    versao = configuracao.SchemaVersao;
+                }
+
                 var servico = ObterServico(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
 
                 if (servico is null)
@@ -1222,6 +1228,12 @@ namespace Unimake.Business.DFe
 
             string pathServico = $"//{tipoDFe}/Servico[@tagRaiz='{tagRaiz}' and @versao='{versao}']";
             XmlNode servico = xmlConfig.SelectSingleNode(pathServico);
+
+            if (servico is null && !string.IsNullOrWhiteSpace(versao))
+            {
+                pathServico = $"//{tipoDFe}/Servico[@tagRaiz='{tagRaiz}' and @versao='']";
+                servico = xmlConfig.SelectSingleNode(pathServico);
+            }
 
             if (servico is null && tipoDFe == TipoDFe.CTe && tagRaiz == "consStatServCte")
             {

@@ -82,6 +82,8 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         {
             var xml = new XmlDocument();
             xml.LoadXml("<root><inf Id=\"ID1\" /></root>");
+            var servicoDocument = new XmlDocument();
+            servicoDocument.LoadXml("<Servico />");
 
             using (var rsa = RSA.Create(2048))
             {
@@ -114,6 +116,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                         new object[]
                         {
                             xml,
+                            servicoDocument.DocumentElement,
                             informacao,
                             certificate,
                             new Configuracao(),
