@@ -3792,6 +3792,13 @@
 			<TagAtributoID></TagAtributoID>
 			<TargetNS></TargetNS>
 		</Servico>
+		<Servico tagRaiz="Reinf" versao="1.05.01" tagIdentificadora="ConsultaReciboEvento">
+			<Descricao>Consulta Recibo Evento Reinf</Descricao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TargetNS></TargetNS>
+		</Servico>
 		<Servico tagRaiz="Reinf" versao="2.01.02" tagIdentificadora="evtInfoContri">
 			<Descricao>Evento EFDReinf</Descricao>
 			<SchemaArquivo>R-1000-evtInfoContribuinte-v2_01_02-.xsd</SchemaArquivo>

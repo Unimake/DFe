@@ -219,11 +219,11 @@ namespace Unimake.Business.DFe
                 {
                     if (DeveNormalizarXmlPeloObjeto(tipoDFe, tagRaiz))
                     {
-                        AssinarSeNecessario(xml, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
+                        AssinarSeNecessario(xml, servico, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
                         ValidarSchemas(xml, servico, inform, tipoDFe, padraoNFSe);
 
                         var xmlNormalizado = NormalizarXmlPeloObjeto(xml, tipoDFe, tagRaiz);
-                        AssinarSeNecessario(xmlNormalizado, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
+                        AssinarSeNecessario(xmlNormalizado, servico, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
                         ValidarSchemas(xmlNormalizado, servico, inform, tipoDFe, padraoNFSe);
 
                         SubstituirConteudoXml(xml, xmlNormalizado);
@@ -238,7 +238,7 @@ namespace Unimake.Business.DFe
                         };
                     }
 
-                    AssinarSeNecessario(xml, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
+                    AssinarSeNecessario(xml, servico, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
                     ValidarSchemas(xml, servico, inform, tipoDFe, padraoNFSe);
 
                     return new ResultadoValidacao
@@ -387,6 +387,11 @@ namespace Unimake.Business.DFe
                     tagRaiz == "Receitas";
             }
 
+            if (tipoDFe == TipoDFe.EFDReinf)
+            {
+                return tagRaiz == "Reinf";
+            }
+
             return false;
         }
 
@@ -427,6 +432,9 @@ namespace Unimake.Business.DFe
 
                 case TipoDFe.DARE:
                     return NormalizarDAREPeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.EFDReinf:
+                    return NormalizarEFDReinfPeloObjeto(xml, tagRaiz);
 
                 default:
                     return xml;
@@ -847,6 +855,61 @@ namespace Unimake.Business.DFe
             return xml;
         }
 
+        private static XmlDocument NormalizarEFDReinfPeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz != "Reinf")
+            {
+                return xml;
+            }
+
+            if (xml.GetElementsByTagName("envioLoteEventos").Count > 0)
+            {
+                var reinfEnvioLoteEventos = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos>(xml);
+                RemoverAssinaturasEventosEFDReinf(reinfEnvioLoteEventos);
+                return reinfEnvioLoteEventos.GerarXML();
+            }
+
+            if (xml.GetElementsByTagName("ConsultaLoteAssincrono").Count > 0)
+            {
+                var reinfConsultaLoteAssincrono = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.EFDReinf.ReinfConsultaLoteAssincrono>(xml);
+                return reinfConsultaLoteAssincrono.GerarXML();
+            }
+
+            if (xml.GetElementsByTagName("ConsultaReciboEvento").Count > 0)
+            {
+                var reinfConsulta = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.EFDReinf.ReinfConsulta>(xml);
+                return reinfConsulta.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static void RemoverAssinaturasEventosEFDReinf(Unimake.Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos reinfEnvioLoteEventos)
+        {
+            var eventos = reinfEnvioLoteEventos?.EnvioLoteEventos?.Eventos?.Evento;
+
+            if (eventos == null)
+            {
+                return;
+            }
+
+            foreach (var evento in eventos)
+            {
+                var propriedades = evento.GetType().GetProperties();
+
+                foreach (var propriedade in propriedades)
+                {
+                    var valorEvento = propriedade.GetValue(evento);
+
+                    if (valorEvento != null)
+                    {
+                        var propriedadeAssinatura = valorEvento.GetType().GetProperty("Signature");
+                        propriedadeAssinatura?.SetValue(valorEvento, null);
+                    }
+                }
+            }
+        }
+
         private static XmlDocument NormalizarCTePeloObjeto(XmlDocument xml, string tagRaiz)
         {
             if (tagRaiz == "CTe")
@@ -1165,8 +1228,14 @@ namespace Unimake.Business.DFe
             inform.TagAtributoID = tipo.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText ?? inform.TagAtributoID; // Caso o nó específico tenha um atributo ID diferente da geral, utiliza o específico, caso contrário, mantém o geral
         }
 
-        private void AssinarSeNecessario(XmlDocument xml, InformacaoXML inform, X509Certificate2 cert, Configuracao configuracao, TipoAmbiente tipoAmbiente, TipoDFe tipoDFe)
+        private void AssinarSeNecessario(XmlDocument xml, XmlNode servico, InformacaoXML inform, X509Certificate2 cert, Configuracao configuracao, TipoAmbiente tipoAmbiente, TipoDFe tipoDFe)
         {
+            if (tipoDFe == TipoDFe.EFDReinf && xml.GetElementsByTagName("envioLoteEventos").Count > 0)
+            {
+                AssinarEventosEFDReinf(xml, servico, inform.NaoAssina, cert, tipoAmbiente);
+                return;
+            }
+
             if (!string.IsNullOrEmpty(inform.TagAssinatura))
             {
                 Assinar(xml, inform.TagAssinatura, inform.TagAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
@@ -1181,6 +1250,73 @@ namespace Unimake.Business.DFe
             {
                 Assinar(xml, inform.TagExtraAssinatura, inform.TagExtraAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
             }
+        }
+
+        private static void AssinarEventosEFDReinf(XmlDocument xml, XmlNode servico, TipoAmbiente? tagNaoAssina, X509Certificate2 cert, TipoAmbiente tipoAmbiente)
+        {
+            if (tagNaoAssina != null && tagNaoAssina == tipoAmbiente)
+            {
+                return;
+            }
+
+            var eventos = xml.SelectNodes("/*[local-name()='Reinf']/*[local-name()='envioLoteEventos']/*[local-name()='eventos']/*[local-name()='evento']");
+
+            foreach (XmlNode evento in eventos)
+            {
+                var reinfEvento = evento.SelectSingleNode("*[local-name()='Reinf']");
+
+                if (reinfEvento is null)
+                {
+                    throw new AssinaturaException("Não foi encontrado o evento EFDReinf para assinatura em lote.");
+                }
+
+                var eventoEspecifico = reinfEvento.ChildNodes
+                    .Cast<XmlNode>()
+                    .FirstOrDefault(x => x.NodeType == XmlNodeType.Element && x.LocalName != "Signature")?.LocalName;
+
+                if (string.IsNullOrWhiteSpace(eventoEspecifico))
+                {
+                    throw new AssinaturaException("Não foi possível identificar o evento EFDReinf para assinatura em lote.");
+                }
+
+                var tipoEvento = EncontrarTipoEventoEFDReinf(servico, eventoEspecifico);
+                var tagAtributoID = tipoEvento.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText;
+
+                var xmlEventoEspecifico = new XmlDocument();
+                xmlEventoEspecifico.LoadXml(reinfEvento.OuterXml);
+
+                if (!AssinaturaDigital.EstaAssinado(xmlEventoEspecifico, "Reinf"))
+                {
+                    try
+                    {
+                        AssinaturaDigital.Assinar(xmlEventoEspecifico, "Reinf", tagAtributoID, cert, AlgorithmType.Sha256, true, "id");
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new AssinaturaException($"Ocorreu um erro ao assinar o evento EFDReinf '{eventoEspecifico}': {ex.Message}");
+                    }
+
+                    evento.RemoveChild(reinfEvento);
+                    evento.AppendChild(xml.ImportNode(xmlEventoEspecifico.DocumentElement, true));
+                }
+            }
+        }
+
+        private static XmlNode EncontrarTipoEventoEFDReinf(XmlNode servico, string eventoEspecifico)
+        {
+            var tipos = servico.SelectNodes("*[local-name()='SchemasEspecificos']/*[local-name()='Tipo']");
+
+            foreach (XmlNode tipo in tipos)
+            {
+                var evento = tipo.SelectSingleNode("*[local-name()='Evento']")?.InnerText;
+
+                if (evento == eventoEspecifico)
+                {
+                    return tipo;
+                }
+            }
+
+            throw new AssinaturaException($"Não existe configuração de assinatura para o evento EFDReinf '{eventoEspecifico}'.");
         }
 
         private void Assinar(XmlDocument xml,
