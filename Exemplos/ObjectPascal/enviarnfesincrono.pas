@@ -29,6 +29,7 @@ var
   oEnviNFe: olevariant;
   oNfe: olevariant;
   oInfNFe: olevariant;
+  oAutXml: olevariant;
   oDet: olevariant;
   oVol: olevariant;
   oDup: olevariant;
@@ -133,6 +134,18 @@ begin
     oInfNFe.Dest.EnderDest.UF := 35; // UFBrasil.SP
     oInfNFe.Dest.EnderDest.CEP := '14080000';
     oInfNFe.Dest.EnderDest.Fone := '01639611500';
+
+    oAutXml := CreateOleObject('Unimake.Business.DFe.Xml.NFe.AutXML');
+    oAutXml.CNPJ := '00000000000000';
+    oInfNFe.AddAutXml(IUnknown(oAutXml));
+
+    oAutXml := CreateOleObject('Unimake.Business.DFe.Xml.NFe.AutXML');
+    oAutXml.CNPJ := '11111111111111';
+    oInfNFe.AddAutXml(IUnknown(oAutXml));
+
+    oAutXml := CreateOleObject('Unimake.Business.DFe.Xml.NFe.AutXML');
+    oAutXml.CPF := '00000000000';
+    oInfNFe.AddAutXml(IUnknown(oAutXml));
 
     for i := 1 to 3 do
     begin
