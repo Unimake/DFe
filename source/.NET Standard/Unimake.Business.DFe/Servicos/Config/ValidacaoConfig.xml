@@ -2290,6 +2290,16 @@
 					<SchemaArquivo>eventoNFCom_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evCancNFCom_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
+				<Tipo>
+					<ID>110300</ID>
+					<SchemaArquivo>eventoNFCom_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evVincPgto_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110301</ID>
+					<SchemaArquivo>eventoNFCom_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancVincPgto_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz="NFCom" versao="1.00">
@@ -3832,7 +3842,7 @@
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS></TargetNS>
 		</Servico>
-			<Servico tagRaiz="TResultLote_GNRE" versao="2.00">
+		<Servico tagRaiz="TResultLote_GNRE" versao="2.00">
 			<Descricao>Envio de Lote da GNRE</Descricao>
 			<SchemaArquivo>lote_gnre_result_v2.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
