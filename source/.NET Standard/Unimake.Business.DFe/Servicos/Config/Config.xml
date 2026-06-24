@@ -172,12 +172,6 @@
 		<ArqConfig>Abase.xml</ArqConfig>
 		<PadraoNFSe>ABASE</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="9999903">
-		<Nome>BETHA</Nome>
-		<UF>BR</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="9999904">
 		<Nome>WEBFISCO</Nome>
 		<UF>BR</UF>

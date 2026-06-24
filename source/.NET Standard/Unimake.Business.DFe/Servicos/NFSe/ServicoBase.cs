@@ -72,7 +72,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     break;
 
                 case PadraoNFSe.ABASE:
-                case PadraoNFSe.BETHA:
                 case PadraoNFSe.GINFES:
                 case PadraoNFSe.EQUIPLANO:
                 case PadraoNFSe.WEBFISCO:
