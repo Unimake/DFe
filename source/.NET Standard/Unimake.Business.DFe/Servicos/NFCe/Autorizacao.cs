@@ -35,12 +35,13 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// </summary>
         protected override void XmlValidar()
         {
-            var validar = new ValidarSchema();
-            validar.Validar(ConteudoXML, TipoDFe.NFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+            XmlValidarConteudo();
 
-            if (!validar.Success)
+            var resultadoValidacao = ValidarXMLCentralizado();
+
+            if (!resultadoValidacao.Validado)
             {
-                throw new ValidarXMLException(validar.ErrorMessage);
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
         }
 

@@ -306,6 +306,21 @@ namespace Unimake.Business.DFe
                     tagRaiz == "distDFeInt";
             }
 
+            if (tipoDFe == TipoDFe.NFe || tipoDFe == TipoDFe.NFCe)
+            {
+                return tagRaiz == "NFe" ||
+                    tagRaiz == "enviNFe" ||
+                    tagRaiz == "envEvento" ||
+                    tagRaiz == "inutNFe" ||
+                    tagRaiz == "consStatServ" ||
+                    tagRaiz == "consSitNFe" ||
+                    tagRaiz == "consReciNFe" ||
+                    tagRaiz == "ConsCad" ||
+                    tagRaiz == "nfceDownloadXML" ||
+                    tagRaiz == "nfceListagemChaves" ||
+                    tagRaiz == "distDFeInt";
+            }
+
             return false;
         }
 
@@ -318,6 +333,10 @@ namespace Unimake.Business.DFe
 
                 case TipoDFe.CTe:
                     return NormalizarCTePeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.NFe:
+                case TipoDFe.NFCe:
+                    return NormalizarNFePeloObjeto(xml, tagRaiz);
 
                 default:
                     return xml;
@@ -376,6 +395,99 @@ namespace Unimake.Business.DFe
             {
                 var consMDFeNaoEnc = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.MDFe.ConsMDFeNaoEnc>(xml);
                 return consMDFeNaoEnc.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static XmlDocument NormalizarNFePeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "NFe")
+            {
+                var nfe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.NFe>(xml);
+                nfe.Signature = null;
+                nfe.InfNFeSupl = null;
+                return XMLUtility.Serializar(nfe);
+            }
+
+            if (tagRaiz == "enviNFe")
+            {
+                var enviNFe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.EnviNFe>(xml);
+
+                if (enviNFe.NFe != null)
+                {
+                    foreach (var nfe in enviNFe.NFe)
+                    {
+                        nfe.Signature = null;
+                        nfe.InfNFeSupl = null;
+                    }
+                }
+
+                return enviNFe.GerarXML();
+            }
+
+            if (tagRaiz == "envEvento")
+            {
+                var envEvento = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.EnvEvento>(xml);
+
+                if (envEvento.Evento != null)
+                {
+                    foreach (var evento in envEvento.Evento)
+                    {
+                        evento.Signature = null;
+                    }
+                }
+
+                return envEvento.GerarXML();
+            }
+
+            if (tagRaiz == "inutNFe")
+            {
+                var inutNFe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.InutNFe>(xml);
+                inutNFe.Signature = null;
+                return inutNFe.GerarXML();
+            }
+
+            if (tagRaiz == "consStatServ")
+            {
+                var consStatServ = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.ConsStatServ>(xml);
+                return consStatServ.GerarXML();
+            }
+
+            if (tagRaiz == "consSitNFe")
+            {
+                var consSitNFe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.ConsSitNFe>(xml);
+                return consSitNFe.GerarXML();
+            }
+
+            if (tagRaiz == "consReciNFe")
+            {
+                var consReciNFe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.ConsReciNFe>(xml);
+                return consReciNFe.GerarXML();
+            }
+
+            if (tagRaiz == "ConsCad")
+            {
+                var consCad = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.ConsCad>(xml);
+                return consCad.GerarXML();
+            }
+
+            if (tagRaiz == "distDFeInt")
+            {
+                var distDFeInt = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.DistDFeInt>(xml);
+                return distDFeInt.GerarXML();
+            }
+
+            if (tagRaiz == "nfceDownloadXML")
+            {
+                var nfceDownloadXML = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.NFCeDownloadXML>(xml);
+                return nfceDownloadXML.GerarXML();
+            }
+
+            if (tagRaiz == "nfceListagemChaves")
+            {
+                var nfceListagemChaves = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.NFCeListagemChaves>(xml);
+                return nfceListagemChaves.GerarXML();
             }
 
             return xml;
@@ -966,6 +1078,11 @@ namespace Unimake.Business.DFe
                     }
 
                     tipoDFe = TipoDFe.NFe;
+                    break;
+
+                case "nfceDownloadXML":
+                case "nfceListagemChaves":
+                    tipoDFe = TipoDFe.NFCe;
                     break;
 
                 case "distDFeInt":

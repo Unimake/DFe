@@ -69,54 +69,12 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             XmlValidarConteudo(); // Efetuar a validação antes de validar schema para evitar alguns erros que não ficam claros para o desenvolvedor.
 
-            var xml = EnvEvento;
+            var resultadoValidacao = ValidarXMLCentralizado();
 
-            var schemaArquivo = string.Empty;
-            var schemaArquivoEspecifico = string.Empty;
-
-            if (Configuracoes.SchemasEspecificos.Count > 0)
+            if (!resultadoValidacao.Validado)
             {
-                int tpEvento;
-                if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
-                {
-                    tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
-                }
-                else
-                {
-                    throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
-                }
-
-                schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
-                schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
-
-            #region Validar o XML geral
-
-            ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
-
-            #endregion Validar o XML geral
-
-            #region Validar a parte específica de cada evento
-
-            var listEvento = ConteudoXML.GetElementsByTagName("evento");
-            for (var i = 0; i < listEvento.Count; i++)
-            {
-                var elementEvento = (XmlElement)listEvento[i];
-
-                if (elementEvento.GetElementsByTagName("infEvento")[0] != null)
-                {
-                    var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
-                    if (elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
-                    {
-                        var xmlEspecifico = new XmlDocument();
-                        xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName("detEvento")[0].OuterXml);
-
-                        ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
-                    }
-                }
-            }
-
-            #endregion Validar a parte específica de cada evento
         }
 
         /// <summary>
@@ -291,25 +249,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura para forçar criar novamente
             EnvEvento = EnvEvento.LerXML<EnvEvento>(ConteudoXML);
-            foreach (var evento in EnvEvento.Evento)
-            {
-                evento.Signature = null;
-            }
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = EnvEvento.GerarXML();
-
-            //Forçar assinar novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado
-            EnvEvento = EnvEvento.LerXML<EnvEvento>(ConteudoXML);
-
-            #endregion
         }
 
         /// <summary>

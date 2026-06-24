@@ -1065,6 +1065,30 @@
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 		</Servico>
+		<Servico tagRaiz ="nfceDownloadXML" versao ="1.00">
+			<Descricao>Download de XML de NFCe</Descricao>
+			<SchemaArquivo>nfceDownloadXML_100.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>nfceDownloadXML</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+		</Servico>
+		<Servico tagRaiz ="nfceListagemChaves" versao ="1.00">
+			<Descricao>Listagem de chaves de NFCe</Descricao>
+			<SchemaArquivo>nfceListagemChaves_100.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>nfceListagemChaves</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+		</Servico>
 	</NFCe>
 	<!--CCG-->
 	<CCG>
