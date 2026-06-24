@@ -144,7 +144,7 @@ namespace Unimake.Business.DFe.Utility
             /// <summary>
             /// Numero da NFSe
             /// </summary>
-            public long NumeroDoctoFiscal { get; set; }
+            public string NumeroDoctoFiscal { get; set; }
 
             /// <summary>
             /// Ano de emissão do documento fiscal

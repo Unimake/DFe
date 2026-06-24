@@ -30,7 +30,7 @@ namespace Unimake.DFe.Test.NFSe
                     Id = "NFS41055082299999999999999000000000000126013568215637",
                     XLocEmi = "Cianorte",
                     XLocPrestacao = "Cianorte",
-                    NNFSe = 1,
+                    NNFSe = "1",
                     CLocIncid = 4105508,
                     XLocIncid = "Cianorte",
                     XTribNac = "Agenciamento, corretagem ou intermediação de bens móveis ou imóveis, não abrangidos em outros itens ou subitens, por quaisquer meios.",
