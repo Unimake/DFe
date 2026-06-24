@@ -7349,12 +7349,6 @@ namespace Unimake.Business.DFe.Servicos
         None = 0,
 
         /// <summary>
-        /// BETHA Sistemas
-        /// </summary>
-        [Description("BETHA Sistemas")]
-        BETHA = 1,
-
-        /// <summary>
         /// SIGCORP - Tecnologia da informação
         /// </summary>
         [Description("SIGCORP - Tecnologia da informação")]
