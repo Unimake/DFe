@@ -17,7 +17,6 @@ namespace Unimake.Business.DFe
     /// </summary>
     public class ValidarEstruturaXML
     {
-
         /// <summary>
         /// Classe de resultado da validação, contendo um boolean para indicar se a validação foi bem-sucedida,
         /// Descrição da validação, mensagem de retorno sobre a validação, status da valiação e o xml assinado.
@@ -49,7 +48,6 @@ namespace Unimake.Business.DFe
             /// </summary>
             public XmlDocument XmlAssinado { get; set; }
         }
-
 
         /// <summary>
         /// Guarda as configurações do XML de configuracção para o acesso durante a validação, evitando múltiplas consultas ao XML de configuração.
@@ -336,7 +334,6 @@ namespace Unimake.Business.DFe
             return nodeServicoCorreto;
         }
 
-
         private static XmlNode TratarNFSe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe)
         {
             string pathServicosNFSe = string.Empty;
@@ -374,7 +371,6 @@ namespace Unimake.Business.DFe
             return servicoNFSe;
         }
 
-
         private static XmlNode TratarDFe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig)
         {
 
@@ -383,7 +379,6 @@ namespace Unimake.Business.DFe
 
             return servico;
         }
-
 
         private static InformacaoXML MontarInformacaoGeral(XmlNode servico, UFBrasil codigoMunicipio)
         {
@@ -429,7 +424,6 @@ namespace Unimake.Business.DFe
 
             return valorCert?.Trim() != "false";
         }
-
 
         private static TipoAmbiente? VerificarAmbienteAssinatura(XmlNode servico, UFBrasil codigoMunicipio)
         {
@@ -716,7 +710,6 @@ namespace Unimake.Business.DFe
             }
         }
 
-
         private static TipoDFe DetectarTipoDFe(XmlDocument xml)
         {
             var tipoDFe = TipoDFe.Desconhecido;
@@ -854,6 +847,7 @@ namespace Unimake.Business.DFe
                 case "eSocial":
                     tipoDFe = TipoDFe.ESocial;
                     break;
+
                 case "Reinf":
                     tipoDFe = TipoDFe.EFDReinf;
                     break;
