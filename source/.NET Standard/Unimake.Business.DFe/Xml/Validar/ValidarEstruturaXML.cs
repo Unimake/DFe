@@ -346,6 +346,11 @@ namespace Unimake.Business.DFe
                     tagRaiz == "consReciNF3e";
             }
 
+            if (tipoDFe == TipoDFe.CCG)
+            {
+                return tagRaiz == "consGTIN";
+            }
+
             return false;
         }
 
@@ -371,6 +376,9 @@ namespace Unimake.Business.DFe
 
                 case TipoDFe.NF3e:
                     return NormalizarNF3ePeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.CCG:
+                    return NormalizarCCGPeloObjeto(xml, tagRaiz);
 
                 default:
                     return xml;
@@ -624,6 +632,17 @@ namespace Unimake.Business.DFe
             {
                 var consReciNF3e = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NF3e.ConsReciNF3e>(xml);
                 return consReciNF3e.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static XmlDocument NormalizarCCGPeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "consGTIN")
+            {
+                var consGTIN = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CCG.ConsGTIN>(xml);
+                return consGTIN.GerarXML();
             }
 
             return xml;
@@ -1275,6 +1294,14 @@ namespace Unimake.Business.DFe
                 case "consMDFeNaoEnc":
                 case "mdfeProc":
                     tipoDFe = TipoDFe.MDFe;
+                    break;
+
+                #endregion
+
+                #region CCG
+
+                case "consGTIN":
+                    tipoDFe = TipoDFe.CCG;
                     break;
 
                 #endregion

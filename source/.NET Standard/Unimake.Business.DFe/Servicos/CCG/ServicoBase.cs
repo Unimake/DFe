@@ -39,13 +39,20 @@ namespace Unimake.Business.DFe.Servicos.CCG
         {
             XmlValidarConteudo(); // Efetuar a validação antes de validar schema para evitar alguns erros que não ficam claros para o desenvolvedor.
 
-            var validar = new ValidarSchema();
-            validar.Validar(ConteudoXML, Configuracoes.TipoDFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+            var resultadoValidacao = ValidarXMLCentralizado();
 
-            if (!validar.Success)
+            if (!resultadoValidacao.Validado)
             {
-                throw new ValidarXMLException(validar.ErrorMessage);
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
+
+            //var validar = new ValidarSchema();
+            //validar.Validar(ConteudoXML, Configuracoes.TipoDFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+
+            //if (!validar.Success)
+            //{
+            //    throw new ValidarXMLException(validar.ErrorMessage);
+            //}
         }
 
         /// <summary>
