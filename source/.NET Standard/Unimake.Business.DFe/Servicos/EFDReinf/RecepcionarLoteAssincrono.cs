@@ -68,30 +68,32 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         /// </summary>
         protected override void XmlValidar()
         {
-            var xml = ReinfEnvioLoteEventos;
-            var schemaArquivoEvento = string.Empty;
+            base.XmlValidar();
 
-            ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+            //var xml = ReinfEnvioLoteEventos;
+            //var schemaArquivoEvento = string.Empty;
 
-            if (Configuracoes.TiposEventosEspecificos.Count > 0)
-            {
-                string eventoEspecifico;
-                var listEventos = ConteudoXML.GetElementsByTagName("evento");
+            //ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-                foreach (var nodeEvento in listEventos)
-                {
-                    var elementEvento = (XmlElement)nodeEvento;
-                    var reinfEvento = elementEvento.GetElementsByTagName("Reinf")[0];
+            //if (Configuracoes.TiposEventosEspecificos.Count > 0)
+            //{
+            //    string eventoEspecifico;
+            //    var listEventos = ConteudoXML.GetElementsByTagName("evento");
 
-                    var xmlEventoEspecifico = new XmlDocument();
-                    xmlEventoEspecifico.LoadXml(reinfEvento.OuterXml);
+            //    foreach (var nodeEvento in listEventos)
+            //    {
+            //        var elementEvento = (XmlElement)nodeEvento;
+            //        var reinfEvento = elementEvento.GetElementsByTagName("Reinf")[0];
 
-                    eventoEspecifico = reinfEvento.FirstChild.Name;
-                    schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
+            //        var xmlEventoEspecifico = new XmlDocument();
+            //        xmlEventoEspecifico.LoadXml(reinfEvento.OuterXml);
 
-                    ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
-                }
-            }
+            //        eventoEspecifico = reinfEvento.FirstChild.Name;
+            //        schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
+
+            //        ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
+            //    }
+            //}
         }
 
         #endregion Protected Methods
@@ -152,7 +154,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
             Inicializar(reinfRecepcionarLoteAssinc?.GerarXML() ?? throw new ArgumentNullException(nameof(reinfRecepcionarLoteAssinc)), configuracao);
 
-            RemoverAssinaturaDoERP();
+            //RemoverAssinaturaDoERP();
         }
 
         /// <summary>
@@ -172,7 +174,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
             Inicializar(doc, configuracao);
 
-            RemoverAssinaturaDoERP();
+            //RemoverAssinaturaDoERP();
         }
 
         /// <summary>

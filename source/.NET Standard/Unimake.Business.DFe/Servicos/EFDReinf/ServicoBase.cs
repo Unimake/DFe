@@ -47,16 +47,23 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         {
             XmlValidarConteudo(); // Efetuar a validação antes de validar schema para evitar alguns erros que não ficam claros para o desenvolvedor.
 
-            if (!string.IsNullOrWhiteSpace(Configuracoes.SchemaArquivo))
-            {
-                var validar = new ValidarSchema();
-                validar.Validar(ConteudoXML, Configuracoes.TipoDFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+            var resultado = ValidarXMLCentralizado();
 
-                if (!validar.Success)
-                {
-                    throw new ValidarXMLException(validar.ErrorMessage);
-                }
+            if (!resultado.Validado)
+            {
+                throw new ValidarXMLException(resultado.MensagemRetorno);
             }
+
+            //if (!string.IsNullOrWhiteSpace(Configuracoes.SchemaArquivo))
+            //{
+            //    var validar = new ValidarSchema();
+            //    validar.Validar(ConteudoXML, Configuracoes.TipoDFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+
+            //    if (!validar.Success)
+            //    {
+            //        throw new ValidarXMLException(validar.ErrorMessage);
+            //    }
+            //}
         }
 
         /// <summary>

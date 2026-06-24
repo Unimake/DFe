@@ -116,29 +116,31 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         /// </summary>
         protected override void XmlValidar()
         {
-            var schemaArquivoEvento = string.Empty;
+            base.XmlValidar();
 
-            ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+            //var schemaArquivoEvento = string.Empty;
 
-            if (Configuracoes.TiposEventosEspecificos.Count > 0)
-            {
-                string eventoEspecifico;
-                var listEventos = ConteudoXML.GetElementsByTagName("evento");
+            //ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-                foreach (XmlNode nodeEvento in listEventos)
-                {
-                    var elementEvento = (XmlElement)nodeEvento;
-                    var esocialEvento = elementEvento.GetElementsByTagName("eSocial")[0];
+            //if (Configuracoes.TiposEventosEspecificos.Count > 0)
+            //{
+            //    string eventoEspecifico;
+            //    var listEventos = ConteudoXML.GetElementsByTagName("evento");
 
-                    var xmlEventoEspecifico = new XmlDocument();
-                    xmlEventoEspecifico.LoadXml(esocialEvento.OuterXml);
+            //    foreach (XmlNode nodeEvento in listEventos)
+            //    {
+            //        var elementEvento = (XmlElement)nodeEvento;
+            //        var esocialEvento = elementEvento.GetElementsByTagName("eSocial")[0];
 
-                    eventoEspecifico = esocialEvento.FirstChild.Name;
-                    schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
+            //        var xmlEventoEspecifico = new XmlDocument();
+            //        xmlEventoEspecifico.LoadXml(esocialEvento.OuterXml);
 
-                    ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
-                }
-            }
+            //        eventoEspecifico = esocialEvento.FirstChild.Name;
+            //        schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
+
+            //        ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
+            //    }
+            //}
 
         }
 
@@ -165,7 +167,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
             Inicializar(eSocialEnviarLoteEventos?.GerarXML() ?? throw new ArgumentNullException(nameof(eSocialEnviarLoteEventos)), configuracao);
 
-            RemoverAssinaturaDoERP();
+            //RemoverAssinaturaDoERP();
         }
 
         /// <summary>
@@ -185,7 +187,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
             Inicializar(doc, configuracao);
 
-            RemoverAssinaturaDoERP();
+            //RemoverAssinaturaDoERP();
         }
 
         #endregion Public Constructors
