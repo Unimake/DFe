@@ -2,18 +2,18 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Xml;
-using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.ConsumirServico.Builders;
 using Unimake.Business.DFe.ConsumirServico.Compatibility;
+using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Validator;
-using Unimake.Business.DFe.Xml;
-using System.Collections.Generic;
-using System.Net.Http;
-using Unimake.Exceptions;
 using Unimake.Business.DFe.Validator.Abstractions;
+using Unimake.Business.DFe.Xml;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -128,7 +128,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         /// <returns>Conteúdo HTTP pronto para envio.</returns>
         protected virtual HttpContent CriarHttpContentPadrao() =>
-            new CommonApiPayloadBuilder().Build(Configuracoes, ConteudoXMLAssinado, ConteudoXML);
+            new CommonApiPayloadBuilder().Build(Configuracoes, ConteudoXML);
 
         /// <summary>
         /// Validar o schema do XML
@@ -173,9 +173,6 @@ namespace Unimake.Business.DFe.Servicos
 
             System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
 
-            //Forçar criar a tag QrCode bem como assinatura para que o usuário possa acessar o conteúdo no objeto do XML antes de enviar
-            _ = ConteudoXMLAssinado;
-
             XmlValidar();
         }
 
@@ -192,9 +189,6 @@ namespace Unimake.Business.DFe.Servicos
         {
             get
             {
-                VerificarAssinarXML(Configuracoes.TagAssinatura, Configuracoes.TagAtributoID);
-                VerificarAssinarXML(Configuracoes.TagLoteAssinatura, Configuracoes.TagLoteAtributoID);
-
                 return ConteudoXML;
             }
         }
