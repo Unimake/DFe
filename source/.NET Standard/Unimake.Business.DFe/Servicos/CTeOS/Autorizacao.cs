@@ -254,23 +254,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura e QRCode para forçar criar novamente
             CTeOS = CTeOS.LerXML<Xml.CTeOS.CTeOS>(ConteudoXML);
-            CTeOS.Signature = null;
-            CTeOS.InfCTeSupl = null;
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = CTeOS.GerarXML();
-
-            //Forçar assinar e criar QRCode novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado e com QRCode
-            CTeOS = CTeOS.LerXML<Xml.CTeOS.CTeOS>(ConteudoXML);
-
-            #endregion
         }
 
         /// <summary>

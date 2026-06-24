@@ -297,6 +297,7 @@ namespace Unimake.Business.DFe
                 return tagRaiz == "CTe" ||
                     tagRaiz == "enviCTe" ||
                     tagRaiz == "CTeSimp" ||
+                    tagRaiz == "CTeOS" ||
                     tagRaiz == "eventoCTe" ||
                     tagRaiz == "consStatServCte" ||
                     tagRaiz == "consStatServCTe" ||
@@ -412,6 +413,14 @@ namespace Unimake.Business.DFe
                 cteSimp.Signature = null;
                 cteSimp.InfCTeSupl = null;
                 return cteSimp.GerarXML();
+            }
+
+            if (tagRaiz == "CTeOS")
+            {
+                var cteOS = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTeOS.CTeOS>(xml);
+                cteOS.Signature = null;
+                cteOS.InfCTeSupl = null;
+                return cteOS.GerarXML();
             }
 
             if (tagRaiz == "eventoCTe")
