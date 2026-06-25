@@ -7714,12 +7714,6 @@ namespace Unimake.Business.DFe.Servicos
         ABASE = 9999902,
 
         /// <summary>
-        /// PADRÃO BETHA
-        /// </summary>
-        [Description("BETHA Sistemas")]
-        BETHA = 9999903,
-
-        /// <summary>
         /// PADRÃO WEBFISCO
         /// </summary>
         [Description("WEBFISCO")]
