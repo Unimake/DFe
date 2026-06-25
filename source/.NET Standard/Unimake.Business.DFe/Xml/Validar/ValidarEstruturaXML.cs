@@ -211,12 +211,11 @@ namespace Unimake.Business.DFe
                 configuracao.TipoDFe = tipoDFe;
                 var xmlConfig = CarregarConfigValidacao();
                 var tagRaiz = xml.DocumentElement.Name;
-                var versao = ObterVersao(xml, xmlConfig, tipoDFe, padraoNFSe);
-
-                if (string.IsNullOrWhiteSpace(versao) && !string.IsNullOrWhiteSpace(configuracao.SchemaVersao))
-                {
-                    versao = configuracao.SchemaVersao;
-                }
+                var versao = tipoDFe == TipoDFe.NFSe
+                    ? (!string.IsNullOrWhiteSpace(configuracao.SchemaVersao)
+                        ? configuracao.SchemaVersao
+                        : DefinirVersaoNFSe(xml, padraoNFSe, configuracao.CodigoMunicipio))
+                    : ObterVersao(xml, xmlConfig, tipoDFe);
 
                 var servico = ObterServico(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
 
@@ -1188,39 +1187,42 @@ namespace Unimake.Business.DFe
 
         private static XmlNode TratarNFSe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe)
         {
-            string pathServicosNFSe = string.Empty;
-            XmlNode servicoNFSe = null;
+            var filtroVersao = versao.IsNullOrEmpty() ? string.Empty : $" and @versao='{versao}'";
+            var pathServicosNFSe = $"//NFSe/Padrao[@nome='{padraoNFSe}']/Servico[@tagRaiz='{tagRaiz}'{filtroVersao}]";
+            var servicosNFSe = xmlConfig.SelectNodes(pathServicosNFSe);
 
-            if (versao.IsNullOrEmpty())
+            if (servicosNFSe.Count == 1)
             {
-                pathServicosNFSe = $"//NFSe/Padrao[@nome='{padraoNFSe.ToString()}']/Servico[@tagRaiz='{tagRaiz}']";
-                var servicosNFSe = xmlConfig.SelectNodes(pathServicosNFSe);
+                return servicosNFSe[0];
+            }
 
-                foreach (XmlNode servico in servicosNFSe)
+            XmlNode servicoGenerico = null;
+
+            foreach (XmlNode servico in servicosNFSe)
+            {
+                // Nodes específicos devem permanecer antes dos genéricos no ValidacaoConfig.xml.
+                var identificador = servico.Attributes["tagIdentificadora"]?.Value?.Split(':').Last();
+
+                if (string.IsNullOrWhiteSpace(identificador))
                 {
-                    // Aceita tag identificadora com ou sem namespace (Ex: "ns:tagIdentificadora" ou "tagIdentificadora")
-                    var identificador = servico.Attributes["tagIdentificadora"]?.Value?.Split(':').Last();
-
-                    if (!string.IsNullOrEmpty(identificador))
+                    if (servicoGenerico is null)
                     {
-                        var nodeServicoNFSe = xml.DocumentElement.SelectSingleNode($"//*[local-name()='{identificador}']");
-
-                        if (!(nodeServicoNFSe is null))
-                        {
-                            servicoNFSe = servico;
-                            break;
-                        }
+                        servicoGenerico = servico;
                     }
+
+                    continue;
+                }
+
+                var identificadorEhRaiz = xml.DocumentElement.LocalName == identificador;
+                var nodeServicoNFSe = xml.DocumentElement.SelectSingleNode($".//*[local-name()='{identificador}']");
+
+                if (identificadorEhRaiz || !(nodeServicoNFSe is null))
+                {
+                    return servico;
                 }
             }
-            else
-            {
-                pathServicosNFSe = $"//NFSe/Padrao[@nome='{padraoNFSe.ToString()}']/Servico[@tagRaiz='{tagRaiz}' and @versao='{versao}']";
-                servicoNFSe = xmlConfig.SelectSingleNode(pathServicosNFSe);
 
-            }
-
-            return servicoNFSe;
+            return servicoGenerico;
         }
 
         private static XmlNode TratarDFe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig)
@@ -1673,18 +1675,10 @@ namespace Unimake.Business.DFe
             }
         }
 
-        private static string ObterVersao(XmlDocument xml, XmlDocument xmlConfig, TipoDFe tipoDFe, PadraoNFSe padraoNFSe)
+        private static string ObterVersao(XmlDocument xml, XmlDocument xmlConfig, TipoDFe tipoDFe)
         {
             var servicoValidacao = xmlConfig.SelectSingleNode("ServicosValidacao");
-
-            var nodeDFe = padraoNFSe == PadraoNFSe.None
-            ? servicoValidacao.SelectSingleNode(tipoDFe.ToString())
-            : servicoValidacao.SelectSingleNode($"{tipoDFe}/Padrao[@nome='{padraoNFSe}']");
-
-            if (nodeDFe is null && padraoNFSe != PadraoNFSe.None)
-            {
-                throw new PadraoNaoImplementadoException($"Não foi possível encontrar a configuração para o padrão: {padraoNFSe}");
-            }
+            var nodeDFe = servicoValidacao.SelectSingleNode(tipoDFe.ToString());
 
             if (nodeDFe is null)
             {
@@ -1726,6 +1720,298 @@ namespace Unimake.Business.DFe
             }
 
             return string.Empty;
+        }
+
+        private static string DefinirVersaoNFSe(XmlDocument xml, PadraoNFSe padraoNFSe, int codigoMunicipio)
+        {
+            var raiz = xml.DocumentElement?.LocalName ?? string.Empty;
+            var raizQualificada = xml.DocumentElement?.Name ?? string.Empty;
+            var namespaceRaiz = xml.DocumentElement?.NamespaceURI ?? string.Empty;
+            var conteudoXML = xml.OuterXml;
+
+            bool Contem(string valor) =>
+                conteudoXML.IndexOf(valor, StringComparison.OrdinalIgnoreCase) >= 0;
+
+            bool RaizEh(params string[] nomes) =>
+                nomes.Any(nome => string.Equals(raiz, nome, StringComparison.OrdinalIgnoreCase));
+
+            string ObterVersaoDeclarada()
+            {
+                var elementos = xml.SelectNodes("//*");
+
+                foreach (XmlElement elemento in elementos)
+                {
+                    var versao = elemento.GetAttribute("versao");
+                    versao = string.IsNullOrWhiteSpace(versao) ? elemento.GetAttribute("Versao") : versao;
+
+                    if (!string.IsNullOrWhiteSpace(versao))
+                    {
+                        var partes = versao.Split('.');
+                        return partes.Length == 2 && partes[1].Length == 1
+                            ? $"{partes[0]}.{partes[1]}0"
+                            : versao;
+                    }
+                }
+
+                return string.Empty;
+            }
+
+            var versaoDeclarada = ObterVersaoDeclarada();
+
+            switch (padraoNFSe)
+            {
+                case PadraoNFSe.NACIONAL:
+                    return string.IsNullOrWhiteSpace(versaoDeclarada) ? "1.01" : versaoDeclarada;
+
+                case PadraoNFSe.BETHA:
+                    if (!string.IsNullOrWhiteSpace(versaoDeclarada))
+                    {
+                        return versaoDeclarada;
+                    }
+
+                    return raizQualificada.StartsWith("e:", StringComparison.OrdinalIgnoreCase) ||
+                           RaizEh("ConsultarSituacaoLoteRpsEnvio")
+                        ? "1.00"
+                        : "2.02";
+
+                case PadraoNFSe.CONAM:
+                    return codigoMunicipio == 3506102 ||
+                           codigoMunicipio == 3509007 ||
+                           codigoMunicipio == 3552809
+                        ? "4.00"
+                        : "2.00";
+
+                case PadraoNFSe.DBSELLER:
+                    return codigoMunicipio == 4319901 ? "2.04" : "1.00";
+
+                case PadraoNFSe.DSF:
+                    if (raizQualificada.StartsWith("ns1:", StringComparison.OrdinalIgnoreCase) ||
+                        RaizEh("ConsultaSeqRps") ||
+                        codigoMunicipio == 2111300)
+                    {
+                        return "1.00";
+                    }
+
+                    if (RaizEh("ConsultarSituacaoLoteRpsEnvio"))
+                    {
+                        return "3.01";
+                    }
+
+                    if (codigoMunicipio == 3170206)
+                    {
+                        return "2.04";
+                    }
+
+                    if ((codigoMunicipio == 3549904 && Contem("ginfes")) ||
+                        versaoDeclarada == "3.00")
+                    {
+                        return "3.00";
+                    }
+
+                    return "2.03";
+
+                case PadraoNFSe.EL:
+                    return RaizEh("DPS", "NFSe", "pedRegEvento") ||
+                           Contem("infDPS") ||
+                           Contem("infNFSe") ||
+                           Contem("infPedReg")
+                        ? "1.01"
+                        : "2.04";
+
+                case PadraoNFSe.FIORILLI:
+                    if (!string.IsNullOrWhiteSpace(versaoDeclarada))
+                    {
+                        return versaoDeclarada;
+                    }
+
+                    if (raiz.IndexOf("Dps", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        return raizQualificada.StartsWith("nfse:", StringComparison.OrdinalIgnoreCase)
+                            ? "1.00"
+                            : "1.01";
+                    }
+
+                    return RaizEh("ConsultarLoteRpsEnvio") ? "1.01" : "2.01";
+
+                case PadraoNFSe.GIF:
+                    return RaizEh("DPS", "NFSe", "pedRegEvento") ||
+                           versaoDeclarada == "1.01"
+                        ? "1.01"
+                        : "1.00";
+
+                case PadraoNFSe.GINFES:
+                    if (versaoDeclarada == "4.00")
+                    {
+                        return "4.00";
+                    }
+
+                    return RaizEh("CancelarNfseEnvio") && Contem("Prestador")
+                        ? "2.00"
+                        : "3.01";
+
+                case PadraoNFSe.GISSONLINE:
+                    return versaoDeclarada == "2.05" ? "2.05" : "2.04";
+
+                case PadraoNFSe.IPM:
+                    return RaizEh("nfse", "nota") ? "1.20" : "2.04";
+
+                case PadraoNFSe.ISSNET:
+                    if (RaizEh("DPS", "NFSe", "pedRegEvento"))
+                    {
+                        return "1.01";
+                    }
+
+                    return Contem("Pedido") ||
+                           RaizEh("EnviarLoteRpsEnvio", "EnviarLoteRpsSincronoEnvio")
+                        ? "2.04"
+                        : "1.01";
+
+                case PadraoNFSe.PAULISTANA:
+                    return versaoDeclarada == "2.00" || Contem("Versao=\"2\"")
+                        ? "2.00"
+                        : "1.00";
+
+                case PadraoNFSe.PRONIM:
+                    if (RaizEh("DPS", "NFSe", "pedRegEvento"))
+                    {
+                        return "1.01";
+                    }
+
+                    return RaizEh("ConsultarSituacaoLoteRpsEnvio") ? "1.00" : "2.03";
+
+                case PadraoNFSe.RLZ_INFORMATICA:
+                    return RaizEh("DPS", "NFSe", "pedRegEvento") ? "1.01" : "2.03";
+
+                case PadraoNFSe.SIGCORP:
+                    if (RaizEh("GerarNota", "CancelarNota"))
+                    {
+                        return codigoMunicipio == 4113700 ? "1.03" : "3.00";
+                    }
+
+                    if (RaizEh("ConsultarNotaPrestador"))
+                    {
+                        return "3.00";
+                    }
+
+                    if (codigoMunicipio == 4113700)
+                    {
+                        return "1.03";
+                    }
+
+                    return codigoMunicipio == 4204202 ||
+                           codigoMunicipio == 3131307 ||
+                           codigoMunicipio == 3530805 ||
+                           codigoMunicipio == 3145208 ||
+                           codigoMunicipio == 3300704
+                        ? "2.04"
+                        : "2.03";
+
+                case PadraoNFSe.SIMPLISS:
+                    if (RaizEh("DPS", "NFSe", "pedRegEvento") ||
+                        versaoDeclarada == "1.01")
+                    {
+                        return "1.01";
+                    }
+
+                    return codigoMunicipio == 3306305 || codigoMunicipio == 4202404
+                        ? "2.03"
+                        : "3.00";
+
+                case PadraoNFSe.SMARAPD:
+                    if (RaizEh("nfd", "tbnfd"))
+                    {
+                        return "1.00";
+                    }
+
+                    if (RaizEh("DPS", "NFSe", "evento", "consPedRegEvento"))
+                    {
+                        return "1.01";
+                    }
+
+                    if (codigoMunicipio == 3506003)
+                    {
+                        return "1.01";
+                    }
+
+                    return "2.04";
+
+                case PadraoNFSe.TINUS:
+                    return versaoDeclarada == "2.03" ||
+                           namespaceRaiz.IndexOf("abrasf", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                           Contem("abrasf")
+                        ? "2.03"
+                        : "1.00";
+
+                case PadraoNFSe.TIPLAN:
+                    if (RaizEh("DPS"))
+                    {
+                        return "1.01";
+                    }
+
+                    return RaizEh("ConsultarSituacaoLoteRpsEnvio") && codigoMunicipio != 3304003
+                        ? "2.01"
+                        : "2.03";
+
+                case PadraoNFSe.ABASE:
+                case PadraoNFSe.PRODATA:
+                case PadraoNFSe.PRODEB:
+                case PadraoNFSe.SONNER:
+                    return "2.01";
+
+                case PadraoNFSe.ADM_SISTEMAS:
+                case PadraoNFSe.ELOTECH:
+                case PadraoNFSe.FISCO:
+                    return "2.03";
+
+                case PadraoNFSe.AGILI:
+                case PadraoNFSe.EGOVERNEISS:
+                case PadraoNFSe.EQUIPLANO:
+                case PadraoNFSe.HM2SOLUCOES:
+                case PadraoNFSe.INTERSOL:
+                case PadraoNFSe.MEMORY:
+                case PadraoNFSe.METROPOLIS:
+                case PadraoNFSe.NOBESISTEMAS:
+                case PadraoNFSe.PROPRIOBARUERISP:
+                case PadraoNFSe.SALVADOR_BA:
+                case PadraoNFSe.TECNOSISTEMAS:
+                case PadraoNFSe.WEBFISCO:
+                    return "1.00";
+
+                case PadraoNFSe.AVMB:
+                case PadraoNFSe.FINTEL:
+                case PadraoNFSe.FUTURIZE:
+                case PadraoNFSe.MODERNIZACAO_PUBLICA:
+                case PadraoNFSe.PORTAL_FACIL:
+                case PadraoNFSe.WEBISS:
+                    return "2.02";
+
+                case PadraoNFSe.BETHA_CLOUD:
+                case PadraoNFSe.COPLAN:
+                case PadraoNFSe.DIGIFRED:
+                case PadraoNFSe.PRIMAX:
+                case PadraoNFSe.QUASAR:
+                    return "1.01";
+
+                case PadraoNFSe.BSITBR:
+                case PadraoNFSe.CENTI:
+                case PadraoNFSe.GIAP:
+                    return "2.00";
+
+                case PadraoNFSe.MEGASOFT:
+                    return "2.02";
+
+                case PadraoNFSe.PROPRIOFORTALEZACE:
+                    return "4.00";
+
+                case PadraoNFSe.PUBLICA:
+                    return "3.00";
+
+                case PadraoNFSe.TRIBUTUS:
+                    return "2.04";
+
+                default:
+                    return string.Empty;
+            }
         }
 
         private string ObterStatus(Exception ex)
