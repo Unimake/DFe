@@ -1237,6 +1237,16 @@ namespace Unimake.Business.DFe
                 servico = xmlConfig.SelectSingleNode(pathServico);
             }
 
+            if (servico is null && string.IsNullOrWhiteSpace(versao))
+            {
+                var servicosPorTagRaiz = xmlConfig.SelectNodes($"//{tipoDFe}/Servico[@tagRaiz='{tagRaiz}']");
+
+                if (servicosPorTagRaiz.Count == 1)
+                {
+                    servico = servicosPorTagRaiz[0];
+                }
+            }
+
             if (servico is null && tipoDFe == TipoDFe.CTe && tagRaiz == "consStatServCte")
             {
                 pathServico = $"//{tipoDFe}/Servico[@tagRaiz='consStatServCTe' and @versao='{versao}']";
@@ -1762,17 +1772,6 @@ namespace Unimake.Business.DFe
             {
                 case PadraoNFSe.NACIONAL:
                     return string.IsNullOrWhiteSpace(versaoDeclarada) ? "1.01" : versaoDeclarada;
-
-                case PadraoNFSe.BETHA:
-                    if (!string.IsNullOrWhiteSpace(versaoDeclarada))
-                    {
-                        return versaoDeclarada;
-                    }
-
-                    return raizQualificada.StartsWith("e:", StringComparison.OrdinalIgnoreCase) ||
-                           RaizEh("ConsultarSituacaoLoteRpsEnvio")
-                        ? "1.00"
-                        : "2.02";
 
                 case PadraoNFSe.CONAM:
                     return codigoMunicipio == 3506102 ||

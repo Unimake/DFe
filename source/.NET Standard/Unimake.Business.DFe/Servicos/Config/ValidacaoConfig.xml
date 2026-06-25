@@ -6461,6 +6461,18 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS></TargetNS>
 			</Servico>
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.04">
+				<Descricao>Consulta NFSe por RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
 			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.04" tagIdentificadora="IdentificacaoRps">
 				<Descricao>Consulta NFSe por RPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>

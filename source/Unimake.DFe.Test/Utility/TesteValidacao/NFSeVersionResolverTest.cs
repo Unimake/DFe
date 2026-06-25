@@ -9,8 +9,6 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
     public class NFSeVersionResolverTest
     {
         [Theory]
-        [InlineData(PadraoNFSe.BETHA, "<ConsultarSituacaoLoteRpsEnvio />", 0, "1.00")]
-        [InlineData(PadraoNFSe.BETHA, "<GerarNfseEnvio />", 0, "2.02")]
         [InlineData(PadraoNFSe.DSF, "<ns1:ConsultaSeqRps xmlns:ns1=\"urn:dsf\" />", 0, "1.00")]
         [InlineData(PadraoNFSe.DSF, "<ConsultarSituacaoLoteRpsEnvio />", 0, "3.01")]
         [InlineData(PadraoNFSe.FIORILLI, "<ConsultarLoteRpsEnvio />", 0, "1.01")]
@@ -113,6 +111,31 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
             Assert.True(resultado.Validado, resultado.MensagemRetorno);
             Assert.Equal(descricaoEsperada, resultado.Descricao);
+        }
+
+        [Fact]
+        public void DeveIdentificarConsultaLoteRpsIPM204()
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                PadraoNFSe = PadraoNFSe.IPM,
+                CodigoMunicipio = 4202305,
+                TipoAmbiente = TipoAmbiente.Homologacao
+            };
+
+            var resultado = new ValidarEstruturaXML().ValidarServico(
+                CriarXml(
+                    "<ConsultarLoteRpsEnvio>" +
+                    "<Prestador><CpfCnpj><Cnpj>99999999999999</Cnpj></CpfCnpj></Prestador>" +
+                    "<Protocolo>1</Protocolo>" +
+                    "</ConsultarLoteRpsEnvio>"
+                ),
+                configuracao
+            );
+
+            Assert.True(resultado.Validado, resultado.MensagemRetorno);
+            Assert.Equal("Consulta NFSe por RPS", resultado.Descricao);
         }
 
         private static string DefinirVersao(
