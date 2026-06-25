@@ -205,7 +205,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             {
                 ThrowHelper.Instance.Throw(ex);
             }
-        }kd
+        }
 
 #endif
 
