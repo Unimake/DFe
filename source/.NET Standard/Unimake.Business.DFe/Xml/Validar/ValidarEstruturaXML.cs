@@ -1774,8 +1774,23 @@ namespace Unimake.Business.DFe
                     return string.IsNullOrWhiteSpace(versaoDeclarada) ? "1.01" : versaoDeclarada;
 
                 case PadraoNFSe.CONAM:
+                    var nodeVersaoCONAM = xml.GetElementsByTagName("Versao")
+                        .Cast<XmlNode>()
+                        .FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.InnerText));
+
+                    if (nodeVersaoCONAM != null)
+                    {
+                        var versaoCONAM = nodeVersaoCONAM.InnerText.Trim();
+                        var partes = versaoCONAM.Split('.');
+
+                        return partes.Length == 2 && partes[1].Length == 1
+                            ? $"{partes[0]}.{partes[1]}0"
+                            : versaoCONAM;
+                    }
+
                     return codigoMunicipio == 3506102 ||
                            codigoMunicipio == 3509007 ||
+                           codigoMunicipio == 3539806 ||
                            codigoMunicipio == 3552809
                         ? "4.00"
                         : "2.00";

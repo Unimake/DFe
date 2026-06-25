@@ -4640,19 +4640,7 @@
 			</Servico>
 		</Padrao>
 		<Padrao nome="CONAM">
-			<Servico tagRaiz="Sdt_processarpsin" versao="4.00" tagIdentificadora="SDTRPS">
-				<Descricao>Recepcionar Lote RPS</Descricao>
-				<SchemaArquivo></SchemaArquivo>
-				<TagAssinatura></TagAssinatura>
-				<TagAtributoID></TagAtributoID>
-				<TagVersao>Versao</TagVersao>
-				<TagLoteAssinatura></TagLoteAssinatura>
-				<TagLoteAtributoID></TagLoteAtributoID>
-				<TagExtraAssinatura></TagExtraAssinatura>
-				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>NFe</TargetNS>
-			</Servico>
-			<Servico tagRaiz="Sdt_cancelanfe" versao="4.00" tagIdentificadora="SerieNota">
+			<Servico tagRaiz="Sdt_cancelanfe" versao="2.00">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -4663,8 +4651,30 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>NFe</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3507605">false</Excecao>
+					<Excecao codMunicipio="3509403">false</Excecao>
+					<Excecao codMunicipio="3528502">false</Excecao>
+				</UsaCertificadoDigital>
 			</Servico>
-			<Servico tagRaiz="SDT_IMPRESSAO_IN" versao="4.00" tagIdentificadora="RPS_Serie">
+			<Servico tagRaiz="Sdt_consultaprotocoloin" versao="2.00">
+				<Descricao>Consulta lote por RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>NFe</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3507605">false</Excecao>
+					<Excecao codMunicipio="3509403">false</Excecao>
+					<Excecao codMunicipio="3528502">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="SDT_IMPRESSAO_IN" versao="2.00">
 				<Descricao>Consulta o link de download da nota fiscal de Serviço</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -4675,8 +4685,84 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>NFe</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3507605">false</Excecao>
+					<Excecao codMunicipio="3509403">false</Excecao>
+					<Excecao codMunicipio="3528502">false</Excecao>
+				</UsaCertificadoDigital>
 			</Servico>
-			<Servico tagRaiz="Consnfserecebida_in" versao="4.00" tagIdentificadora="CodigoUsuario">
+			<Servico tagRaiz="Sdt_processarpsin" versao="2.00">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao>Versao</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>NFe</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3507605">false</Excecao>
+					<Excecao codMunicipio="3509403">false</Excecao>
+					<Excecao codMunicipio="3528502">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="Sdt_processarpsin" versao="4.00">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao>Versao</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>NFe</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3506102">false</Excecao>
+					<Excecao codMunicipio="3509007">false</Excecao>
+					<Excecao codMunicipio="3539806">false</Excecao>
+					<Excecao codMunicipio="3552809">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="Sdt_cancelanfe" versao="4.00">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>NFe</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3506102">false</Excecao>
+					<Excecao codMunicipio="3509007">false</Excecao>
+					<Excecao codMunicipio="3539806">false</Excecao>
+					<Excecao codMunicipio="3552809">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="SDT_IMPRESSAO_IN" versao="4.00">
+				<Descricao>Consulta o link de download da nota fiscal de Serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao>Versao</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>NFe</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3506102">false</Excecao>
+					<Excecao codMunicipio="3509007">false</Excecao>
+					<Excecao codMunicipio="3539806">false</Excecao>
+					<Excecao codMunicipio="3552809">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="Consnfserecebida_in" versao="4.00">
 				<Descricao>Consultar NFSe</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -4687,10 +4773,15 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>NFe</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3506102">false</Excecao>
+					<Excecao codMunicipio="3509007">false</Excecao>
+					<Excecao codMunicipio="3539806">false</Excecao>
+					<Excecao codMunicipio="3552809">false</Excecao>
+				</UsaCertificadoDigital>
 			</Servico>
-			<Servico tagRaiz="Sdt_consultaprotocoloin" versao="4.00" tagIdentificadora="Protocolo">
+			<Servico tagRaiz="Sdt_consultaprotocoloin" versao="4.00">
 				<Descricao>Consultar NFSe</Descricao>
-				<SchemaArquivo></SchemaArquivo>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
@@ -4700,6 +4791,30 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>NFe</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3506102">false</Excecao>
+					<Excecao codMunicipio="3509007">false</Excecao>
+					<Excecao codMunicipio="3539806">false</Excecao>
+					<Excecao codMunicipio="3552809">false</Excecao>
+				</UsaCertificadoDigital>
+			</Servico>
+			<Servico tagRaiz="Sdt_consultanotasprotocoloin" versao="4.00">
+				<Descricao>Consulta lote por RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>NFe</TargetNS>
+				<UsaCertificadoDigital>
+					<Excecao codMunicipio="3506102">false</Excecao>
+					<Excecao codMunicipio="3509007">false</Excecao>
+					<Excecao codMunicipio="3539806">false</Excecao>
+					<Excecao codMunicipio="3552809">false</Excecao>
+				</UsaCertificadoDigital>
 			</Servico>
 		</Padrao>
 		<Padrao nome="COPLAN">
