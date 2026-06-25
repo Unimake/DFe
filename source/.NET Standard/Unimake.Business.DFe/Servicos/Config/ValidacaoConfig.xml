@@ -4940,7 +4940,7 @@
 			</Servico>
 		</Padrao>
 		<Padrao nome="DBSELLER">
-			<Servico tagRaiz="CancelarNfse" versao="1.00" tagIdentificadora="CancelarNfseEnvio">
+			<Servico tagRaiz="CancelarNfse" versao="1.00">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>Pedido</TagAssinatura>
@@ -4952,7 +4952,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			</Servico>
-			<Servico tagRaiz="CancelarNfseEnvio" versao="2.04" tagIdentificadora="InfPedidoCancelamento">
+			<Servico tagRaiz="CancelarNfseEnvio" versao="2.04">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>Pedido</TagAssinatura>
@@ -4964,7 +4964,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://nfse.sapiranga.rs.gov.br/webservice/index/producao</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="1.00" tagIdentificadora="Prestador">
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="1.00">
 				<Descricao>Consulta lote RPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
@@ -4976,7 +4976,19 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="1.00" tagIdentificadora="Pedido">
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.04">
+				<Descricao>Consulta lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>Prestador</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.sapiranga.rs.gov.br/webservice/index/producao</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="1.00">
 				<Descricao>Consulta NFSe por RPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
@@ -4988,7 +5000,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.04" tagIdentificadora="IdentificacaoRps">
+			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.04">
 				<Descricao>Consulta NFSe por RPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
@@ -4998,13 +5010,25 @@
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.sapiranga.rs.gov.br/webservice/index/producao</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarSituacaoLoteRps" versao="1.00">
+				<Descricao>Consulta situação lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>Prestador</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			</Servico>
-			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.04" tagIdentificadora="LoteRps">
+			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="1.00">
 				<Descricao>Recepcionar Lote RPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
-				<TagAtributoID>InfRps</TagAtributoID>
+				<TagAtributoID>ListaRps</TagAtributoID>
 				<TagVersao>LoteRps</TagVersao>
 				<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
 				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
@@ -5012,8 +5036,20 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			</Servico>
-			<Servico tagRaiz="SubstituirNfseEnvio" versao="1.00" tagIdentificadora="SubstituicaoNfse">
+			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.04">
 				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao>LoteRps</TagVersao>
+				<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.sapiranga.rs.gov.br/webservice/index/producao</TargetNS>
+			</Servico>
+			<Servico tagRaiz="SubstituirNfseEnvio" versao="1.00">
+				<Descricao>Substituir nota fiscal de Serviço</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>Pedido</TagAssinatura>
 				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -5023,6 +5059,18 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
+			</Servico>
+			<Servico tagRaiz="SubstituirNfseEnvio" versao="2.04">
+				<Descricao>Substituir nota fiscal de Serviço</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>Pedido</TagAssinatura>
+				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.sapiranga.rs.gov.br/webservice/index/producao</TargetNS>
 			</Servico>
 		</Padrao>
 		<Padrao nome="DIGIFRED">
