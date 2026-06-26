@@ -291,6 +291,97 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
         }
 
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\1.00\GerarNfseEnvio-env-loterps.xml", "Envio do DPS - Sincrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\1.00\GerarNfseEnvio_RTC-env-loterps.xml", "Envio do DPS - Sincrono")]
+        public void DeveIdentificarServicosSIMPLISS100(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIMPLISS, 0);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIMPLISS);
+
+            Assert.NotNull(servico);
+            Assert.Equal("1.00", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\1.01\GerarNfseEnvio-env-loterps.xml", "Envio do DPS - Sincrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\1.01\CancelarNfseEnvio-ped-cannfse.xml", "Envio do cancelamento de NFSe")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\1.01\ConsultarNfseEnvio-ped-sitnfse.xml", "Consultar NFSe")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\1.01\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consultar NFSe por RPS")]
+        public void DeveIdentificarServicosSIMPLISS101(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIMPLISS, 3306305);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIMPLISS);
+
+            Assert.NotNull(servico);
+            Assert.Equal("1.01", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\2.03\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\2.03\GerarNfseEnvio-env-loterps.xml", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\2.03\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\2.03\SubstituirNfseEnvio-ped-substnfse.xml", "Substituir nota fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\2.03\ConsultarLoteRpsEnvio-ped-loterps.xml", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\2.03\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\2.03\ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml", "Consulta NFSe de serviços prestados")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\2.03\ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml", "Consulta NFSe de serviços tomados")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\2.03\ConsultarNfseFaixaEnvio-ped-sitnfse.xml", "Consulta NFSe por Faixa")]
+        public void DeveIdentificarServicosSIMPLISS203(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIMPLISS, 3306305);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIMPLISS);
+
+            Assert.NotNull(servico);
+            Assert.Equal("2.03", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\3.00\GerarNfseEnvio-env-loterps.xml", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\3.00\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\3.00\ConsultarLoteRpsEnvio-ped-loterps.xml", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\3.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consultar NFSe por rps")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\3.00\ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml", "Consultar NFSe")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\3.00\ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml", "Consulta NFSe de serviços tomados")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIMPLISS\3.00\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml", "Consultar Situação Lote RPS")]
+        public void DeveIdentificarServicosSIMPLISS300(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIMPLISS, 3538709);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIMPLISS);
+
+            Assert.NotNull(servico);
+            Assert.Equal("3.00", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
         private static string DefinirVersao(
             string conteudoXML,
             PadraoNFSe padrao,

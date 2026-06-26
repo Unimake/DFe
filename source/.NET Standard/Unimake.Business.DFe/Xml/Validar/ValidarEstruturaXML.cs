@@ -1956,6 +1956,11 @@ namespace Unimake.Business.DFe
                         : "2.03";
 
                 case PadraoNFSe.SIMPLISS:
+                    if (versaoDeclarada == "1.00")
+                    {
+                        return "1.00";
+                    }
+
                     if (RaizEh("DPS", "NFSe", "pedRegEvento") ||
                         versaoDeclarada == "1.01")
                     {
