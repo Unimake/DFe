@@ -206,6 +206,91 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
         }
 
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\1.03\GerarNfseEnvio-env-loterps.xml", "Gerar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\1.03\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\1.03\ConsultarRpsServicoPrestado-ped-sitnfse.xml", "Consultar Rps Serviço Prestado")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\1.03\ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml", "Consulta NFSe de serviços prestados")]
+        public void DeveIdentificarServicosSIGCORP103(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIGCORP, 4113700);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIGCORP);
+
+            Assert.NotNull(servico);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.03\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.03\ConsultarLoteRpsEnvio-ped-loterps.xml", "Consulta Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.03\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.03\GerarNfseEnvio-env-loterps.xml", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.03\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.03\EnviarLoteRpsSincronoEnvio-env-loterps.xml", "Recepcionar Lote RPS Sincrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.03\SubstituirNfseEnvio-ped-substnfse.xml", "Substituir nota fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.03\ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml", "Consulta NFSe de serviços tomados")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.03\ConsultarNfseFaixaEnvio-ped-sitnfse.xml", "Consulta NFSe por Faixa")]
+        public void DeveIdentificarServicosSIGCORP203(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIGCORP, 3554102);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIGCORP);
+
+            Assert.NotNull(servico);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.04\EnviarLoteRpsSincronoEnvio-env-loterps.xml", "Recepcionar Lote RPS Sincrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.04\SubstituirNfseEnvio-ped-substnfse.xml", "Substituir nota fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\2.04\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consulta NFSe por RPS")]
+        public void DeveIdentificarServicosSIGCORP204ComTagsCorrigidas(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIGCORP, 3530805);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIGCORP);
+
+            Assert.NotNull(servico);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\3.00\GerarNfseEnvio-env-loterps.xml", "Envio de NFSe Síncrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\3.00\GerarNfseEnvioRTC-env-loterps.xml", "Envio de NFSe Síncrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\3.00\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\3.00\ConsultarNotaValida-ped-loterps.xml", "Consulta nota fiscal de serviço válida")]
+        [InlineData(@"..\..\..\NFSe\Resources\SIGCORP\3.00\ConsultarNotaPrestador-ped-sitnfse.xml", "Consulta nota fiscal de serviço do prestador")]
+        public void DeveIdentificarServicosSIGCORP300(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIGCORP, 3530706);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIGCORP);
+
+            Assert.NotNull(servico);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
         private static string DefinirVersao(
             string conteudoXML,
             PadraoNFSe padrao,

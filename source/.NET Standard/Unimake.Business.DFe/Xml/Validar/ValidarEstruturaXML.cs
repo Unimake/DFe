@@ -1937,7 +1937,7 @@ namespace Unimake.Business.DFe
                         return codigoMunicipio == 4113700 ? "1.03" : "3.00";
                     }
 
-                    if (RaizEh("ConsultarNotaPrestador"))
+                    if (RaizEh("ConsultarNotaPrestador", "ConsultarNotaValida"))
                     {
                         return "3.00";
                     }
