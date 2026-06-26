@@ -1886,12 +1886,20 @@ namespace Unimake.Business.DFe
                         return "4.00";
                     }
 
+                    if (codigoMunicipio == 4125506 ||
+                        namespaceRaiz.IndexOf("nfe.sjp.pr.gov.br", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        return "3.00";
+                    }
+
                     return RaizEh("CancelarNfseEnvio") && Contem("Prestador")
                         ? "2.00"
                         : "3.01";
 
                 case PadraoNFSe.GISSONLINE:
-                    return versaoDeclarada == "2.05" ? "2.05" : "2.04";
+                    return versaoDeclarada == "2.05" || Contem("IBSCBS")
+                        ? "2.05"
+                        : "2.04";
 
                 case PadraoNFSe.IPM:
                     return RaizEh("nfse", "nota") ? "1.20" : "2.04";
