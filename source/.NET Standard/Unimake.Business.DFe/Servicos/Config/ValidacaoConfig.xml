@@ -6328,6 +6328,9 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS></TargetNS>
+				<SignatureAlgorithmType>
+					<Excecao codMunicipio="3518206">Sha256</Excecao>
+				</SignatureAlgorithmType>
 				<AssinaCanonicalizacaoExclusiva>
 					<Excecao codMunicipio="3518206">true</Excecao>
 				</AssinaCanonicalizacaoExclusiva>
@@ -6343,6 +6346,10 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS></TargetNS>
+				<SignatureAlgorithmType>
+					<Excecao codMunicipio="1100452">Sha256</Excecao>
+					<Excecao codMunicipio="3518206">Sha256</Excecao>
+				</SignatureAlgorithmType>
 				<AssinaCanonicalizacaoExclusiva>
 					<Excecao codMunicipio="3518206">true</Excecao>
 					<Excecao codMunicipio="5220454">true</Excecao>
@@ -6360,6 +6367,9 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS></TargetNS>
+				<SignatureAlgorithmType>
+					<Excecao codMunicipio="3518206">Sha256</Excecao>
+				</SignatureAlgorithmType>
 				<AssinaCanonicalizacaoExclusiva>
 					<Excecao codMunicipio="3518206">true</Excecao>
 				</AssinaCanonicalizacaoExclusiva>
@@ -6557,35 +6567,23 @@
 			</Servico>
 		</Padrao>
 		<Padrao nome="GIF">
+			<Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="1.00">
+				<Descricao>Consultar NFSe serviço prestado</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
+				<TagAtributoID>ConsultarNfseServicoPrestadoEnvio</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
 			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="tpAmb">
 				<Descricao>Envio do DPS - Sincrono</Descricao>
 				<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
 				<TagAssinatura>DPS</TagAssinatura>
 				<TagAtributoID>infDPS</TagAtributoID>
-				<TagVersao></TagVersao>
-				<TagLoteAssinatura></TagLoteAssinatura>
-				<TagLoteAtributoID></TagLoteAtributoID>
-				<TagExtraAssinatura></TagExtraAssinatura>
-				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-			</Servico>
-			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="e101101">
-				<Descricao>Envio do cancelamento de NFSe</Descricao>
-				<SchemaArquivo></SchemaArquivo>
-				<TagAssinatura>pedRegEvento</TagAssinatura>
-				<TagAtributoID>infPedReg</TagAtributoID>
-				<TagVersao></TagVersao>
-				<TagLoteAssinatura></TagLoteAssinatura>
-				<TagLoteAtributoID></TagLoteAtributoID>
-				<TagExtraAssinatura></TagExtraAssinatura>
-				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-			</Servico>
-			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
-				<Descricao>Consultar NFSe</Descricao>
-				<SchemaArquivo></SchemaArquivo>
-				<TagAssinatura></TagAssinatura>
-				<TagAtributoID></TagAtributoID>
 				<TagVersao></TagVersao>
 				<TagLoteAssinatura></TagLoteAssinatura>
 				<TagLoteAtributoID></TagLoteAtributoID>
@@ -6604,6 +6602,174 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="envioLote" versao="1.00">
+				<Descricao>Enviar Lote Notas</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>envioLote</TagAssinatura>
+				<TagAtributoID>NFS-e</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
+			<Servico tagRaiz="NFSe" versao="1.01">
+				<Descricao>Consultar NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedAnulaNFSe" versao="1.00">
+				<Descricao>Anular Nota Fiscal</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedAnulaNFSe</TagAssinatura>
+				<TagAtributoID>CNPJ</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedCancelaNFSe" versao="1.00">
+				<Descricao>Cancelamento Nota Fiscal</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedCancelaNFSe</TagAssinatura>
+				<TagAtributoID>CNPJ</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedConsultaTrans" versao="1.00">
+				<Descricao>Consultar Nota Fiscal</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedConsultaTrans</TagAssinatura>
+				<TagAtributoID>CNPJ</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedRegEvento" versao="1.01">
+				<Descricao>Envio do cancelamento de NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedRegEvento</TagAssinatura>
+				<TagAtributoID>infPedReg</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedidoLoteNFSe" versao="1.00">
+				<Descricao>Consultar Lote Nota Fiscal</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedidoLoteNFSe</TagAssinatura>
+				<TagAtributoID>serieNotaFiscal</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedidoLoteNFSePNG" versao="1.00">
+				<Descricao>Obter Lote NFSe em PNG</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedidoLoteNFSePNG</TagAssinatura>
+				<TagAtributoID>CNPJ</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedidoNFSe" versao="1.00">
+				<Descricao>Obter Nota Fiscal Xml</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedidoNFSe</TagAssinatura>
+				<TagAtributoID>CNPJ</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedidoNFSePDF" versao="1.00">
+				<Descricao>Obter Nota Fiscal Xml</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedidoNFSePDF</TagAssinatura>
+				<TagAtributoID>CNPJ</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedidoNFSePNG" versao="1.00">
+				<Descricao>Obter Nota Fiscal em PNG</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedidoNFSePNG</TagAssinatura>
+				<TagAtributoID>CNPJ</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedidoNFSeTomada" versao="1.00">
+				<Descricao>Consultar Lote Nota Fiscal</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedidoNFSeTomada</TagAssinatura>
+				<TagAtributoID>CNPJ</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedidoStatusLote" versao="1.00">
+				<Descricao>Consulta Pedido Status Lote</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>pedidoStatusLote</TagAssinatura>
+				<TagAtributoID>CNPJ</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+			</Servico>
+			<Servico tagRaiz="solicitacaoInutilizacao" versao="1.00">
+				<Descricao>Solicitar Inutilizacao NFSe</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>solicitacaoInutilizacao</TagAssinatura>
+				<TagAtributoID>numeroSolicitacao</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
 			</Servico>
 		</Padrao>
 		<Padrao nome="GINFES">
