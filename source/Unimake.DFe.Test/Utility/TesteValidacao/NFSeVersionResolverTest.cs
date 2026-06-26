@@ -48,6 +48,19 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         }
 
         [Fact]
+        public void DevePriorizarVersaoDeclaradaEmTagVersao()
+        {
+            Assert.Equal(
+                "4.00",
+                DefinirVersao(
+                    "<EnviarLoteRpsEnvio><Cabecalho><versao>4.0</versao></Cabecalho></EnviarLoteRpsEnvio>",
+                    PadraoNFSe.CONAM,
+                    0
+                )
+            );
+        }
+
+        [Fact]
         public void DeveUsarTagIdentificadoraMesmoComVersaoConhecida()
         {
             var xml = CriarXml("<DPS><infDPS><tpAmb>2</tpAmb></infDPS></DPS>");
@@ -137,6 +150,28 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
             Assert.True(resultado.Validado, resultado.MensagemRetorno);
             Assert.Equal("Consulta NFSe por RPS", resultado.Descricao);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\PRONIM\2.03\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\PRONIM\2.03\GerarNfseEnvio-env-loterps.xml", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\PRONIM\2.03\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\PRONIM\2.03\SubstituirNfseEnvio-ped-substnfse.xml", "Substituir nota fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\PRONIM\2.03\ConsultarLoteRpsEnvio-ped-loterps.xml", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\PRONIM\2.03\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consulta NFSe por RPS")]
+        public void DeveIdentificarServicosPRONIM203(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.PRONIM, 4318309);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.PRONIM);
+
+            Assert.NotNull(servico);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
         }
 
         private static string DefinirVersao(

@@ -1745,6 +1745,27 @@ namespace Unimake.Business.DFe
             bool RaizEh(params string[] nomes) =>
                 nomes.Any(nome => string.Equals(raiz, nome, StringComparison.OrdinalIgnoreCase));
 
+            string NormalizarVersao(string versao)
+            {
+                if (string.IsNullOrWhiteSpace(versao))
+                {
+                    return string.Empty;
+                }
+
+                versao = versao.Trim();
+
+                if (!versao.All(x => char.IsDigit(x) || x == '.'))
+                {
+                    return string.Empty;
+                }
+
+                var partes = versao.Split('.');
+
+                return partes.Length == 2 && partes[1].Length == 1
+                    ? $"{partes[0]}.{partes[1]}0"
+                    : versao;
+            }
+
             string ObterVersaoDeclarada()
             {
                 var elementos = xml.SelectNodes("//*");
@@ -1753,14 +1774,23 @@ namespace Unimake.Business.DFe
                 {
                     var versao = elemento.GetAttribute("versao");
                     versao = string.IsNullOrWhiteSpace(versao) ? elemento.GetAttribute("Versao") : versao;
+                    versao = NormalizarVersao(versao);
 
                     if (!string.IsNullOrWhiteSpace(versao))
                     {
-                        var partes = versao.Split('.');
-                        return partes.Length == 2 && partes[1].Length == 1
-                            ? $"{partes[0]}.{partes[1]}0"
-                            : versao;
+                        return versao;
                     }
+                }
+
+                var nodeVersao = elementos
+                    .Cast<XmlElement>()
+                    .FirstOrDefault(x =>
+                        string.Equals(x.LocalName, "versao", StringComparison.OrdinalIgnoreCase) &&
+                        !string.IsNullOrWhiteSpace(NormalizarVersao(x.InnerText)));
+
+                if (nodeVersao != null)
+                {
+                    return NormalizarVersao(nodeVersao.InnerText);
                 }
 
                 return string.Empty;
@@ -1774,18 +1804,9 @@ namespace Unimake.Business.DFe
                     return string.IsNullOrWhiteSpace(versaoDeclarada) ? "1.01" : versaoDeclarada;
 
                 case PadraoNFSe.CONAM:
-                    var nodeVersaoCONAM = xml.GetElementsByTagName("Versao")
-                        .Cast<XmlNode>()
-                        .FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.InnerText));
-
-                    if (nodeVersaoCONAM != null)
+                    if (!string.IsNullOrWhiteSpace(versaoDeclarada))
                     {
-                        var versaoCONAM = nodeVersaoCONAM.InnerText.Trim();
-                        var partes = versaoCONAM.Split('.');
-
-                        return partes.Length == 2 && partes[1].Length == 1
-                            ? $"{partes[0]}.{partes[1]}0"
-                            : versaoCONAM;
+                        return versaoDeclarada;
                     }
 
                     return codigoMunicipio == 3506102 ||
