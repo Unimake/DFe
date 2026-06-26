@@ -1916,7 +1916,7 @@ namespace Unimake.Business.DFe
                         : "1.01";
 
                 case PadraoNFSe.PAULISTANA:
-                    return versaoDeclarada == "2.00" || Contem("Versao=\"2\"")
+                    return versaoDeclarada == "2.00" || Contem("Versao=\"2\"") || Contem("IBSCBS")
                         ? "2.00"
                         : "1.00";
 

@@ -7935,7 +7935,7 @@
 			</Servico>
 		</Padrao>
 		<Padrao nome="PAULISTANA">
-			<Servico tagRaiz="PedidoEnvioLoteRPS" versao="2" tagIdentificadora="IBSCBS">
+			<Servico tagRaiz="PedidoEnvioLoteRPS" versao="2.00" tagIdentificadora="IBSCBS">
 				<Descricao>Envio Lote Rps</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>PedidoEnvioLoteRPS</TagAssinatura>
@@ -7947,7 +7947,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="PedidoEnvioRPS" versao="2" tagIdentificadora="IBSCBS">
+			<Servico tagRaiz="PedidoEnvioRPS" versao="2.00" tagIdentificadora="IBSCBS">
 				<Descricao>Envio Rps</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>PedidoEnvioRPS</TagAssinatura>
@@ -7959,7 +7959,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="PedidoCancelamentoNFe" versao="1" tagIdentificadora="Cabecalho">
+			<Servico tagRaiz="PedidoCancelamentoNFe" versao="1.00" tagIdentificadora="Cabecalho">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo>PedidoCancelamentoNFe_v01.xsd</SchemaArquivo>
 				<TagAssinatura>PedidoCancelamentoNFe</TagAssinatura>
@@ -7971,7 +7971,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="PedidoConsultaLote" versao="1" tagIdentificadora="Cabecalho">
+			<Servico tagRaiz="PedidoConsultaLote" versao="1.00" tagIdentificadora="Cabecalho">
 				<Descricao>Consulta lote</Descricao>
 				<SchemaArquivo>PedidoConsultaLote_v01.xsd</SchemaArquivo>
 				<TagAssinatura>PedidoConsultaLote</TagAssinatura>
@@ -7983,7 +7983,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="p1:PedidoConsultaNFePeriodo" versao="1" tagIdentificadora="Cabecalho">
+			<Servico tagRaiz="p1:PedidoConsultaNFePeriodo" versao="1.00" tagIdentificadora="Cabecalho">
 				<Descricao>Consulta NFSe Periodo</Descricao>
 				<SchemaArquivo>PedidoConsultaNFePeriodo_v01.xsd</SchemaArquivo>
 				<TagAssinatura>p1:PedidoConsultaNFePeriodo</TagAssinatura>
@@ -7995,7 +7995,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="p1:PedidoConsultaNFe" versao="1" tagIdentificadora="Cabecalho">
+			<Servico tagRaiz="p1:PedidoConsultaNFe" versao="1.00" tagIdentificadora="Cabecalho">
 				<Descricao>Consultar Nfse</Descricao>
 				<SchemaArquivo>PedidoConsultaNFe_v01.xsd</SchemaArquivo>
 				<TagAssinatura>p1:PedidoConsultaNFe</TagAssinatura>
@@ -8007,7 +8007,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="PedidoEnvioLoteRPS" versao="1" tagIdentificadora="RPS">
+			<Servico tagRaiz="PedidoEnvioLoteRPS" versao="1.00" tagIdentificadora="RPS">
 				<Descricao>Envio Lote Rps</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>PedidoEnvioLoteRPS</TagAssinatura>
@@ -8019,7 +8019,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="PedidoEnvioRPS" versao="1" tagIdentificadora="RPS">
+			<Servico tagRaiz="PedidoEnvioRPS" versao="1.00" tagIdentificadora="RPS">
 				<Descricao>Envio Rps</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>PedidoEnvioRPS</TagAssinatura>
@@ -8031,7 +8031,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="PedidoCancelamentoNFe" versao="2" tagIdentificadora="Cabecalho">
+			<Servico tagRaiz="PedidoCancelamentoNFe" versao="2.00" tagIdentificadora="Cabecalho">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo>PedidoCancelamentoNFe_v02.xsd</SchemaArquivo>
 				<TagAssinatura>PedidoCancelamentoNFe</TagAssinatura>
@@ -8043,7 +8043,19 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="p1:PedidoInformacoesLote" versao="2" tagIdentificadora="Cabecalho">
+			<Servico tagRaiz="p1:PedidoInformacoesLote" versao="1.00" tagIdentificadora="Cabecalho">
+				<Descricao>Consulta Informações Lote</Descricao>
+				<SchemaArquivo>PedidoInformacoesLote_v01.xsd</SchemaArquivo>
+				<TagAssinatura>p1:PedidoInformacoesLote</TagAssinatura>
+				<TagAtributoID>Cabecalho</TagAtributoID>
+				<TagVersao>Cabecalho</TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p1:PedidoInformacoesLote" versao="2.00" tagIdentificadora="Cabecalho">
 				<Descricao>Consulta Informações Lote</Descricao>
 				<SchemaArquivo>PedidoInformacoesLote_v02.xsd</SchemaArquivo>
 				<TagAssinatura>p1:PedidoInformacoesLote</TagAssinatura>
@@ -8055,7 +8067,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="PedidoConsultaLote" versao="2" tagIdentificadora="Cabecalho">
+			<Servico tagRaiz="PedidoConsultaLote" versao="2.00" tagIdentificadora="Cabecalho">
 				<Descricao>Consulta lote</Descricao>
 				<SchemaArquivo>PedidoConsultaLote_v02.xsd</SchemaArquivo>
 				<TagAssinatura>PedidoConsultaLote</TagAssinatura>
@@ -8067,7 +8079,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="p1:PedidoConsultaNFePeriodo" versao="2" tagIdentificadora="Cabecalho">
+			<Servico tagRaiz="p1:PedidoConsultaNFePeriodo" versao="2.00" tagIdentificadora="Cabecalho">
 				<Descricao>Consulta NFSe Periodo</Descricao>
 				<SchemaArquivo>PedidoConsultaNFePeriodo_v02.xsd</SchemaArquivo>
 				<TagAssinatura>p1:PedidoConsultaNFePeriodo</TagAssinatura>
@@ -8079,7 +8091,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
 			</Servico>
-			<Servico tagRaiz="p1:PedidoConsultaNFe" versao="2" tagIdentificadora="Cabecalho">
+			<Servico tagRaiz="p1:PedidoConsultaNFe" versao="2.00" tagIdentificadora="Cabecalho">
 				<Descricao>Consultar Nfse</Descricao>
 				<SchemaArquivo>PedidoConsultaNFe_v02.xsd</SchemaArquivo>
 				<TagAssinatura>p1:PedidoConsultaNFe</TagAssinatura>

@@ -591,6 +591,58 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
         }
 
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\1.00\EnvioLoteRps-env-loterps.xml", "Envio Lote Rps")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\1.00\TesteEnvioLoteRps-env-loterps.xml", "Envio Lote Rps")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\1.00\EnvioRps-env-loterps.xml", "Envio Rps")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\1.00\CancelamentoNfe-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\1.00\ConsultaInformacoesLote-ped-sitloterps.xml", "Consulta Informações Lote")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\1.00\ConsultaLote-ped-loterps.xml", "Consulta lote")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\1.00\ConsultaNFeEmitidas-ped-nfseemit.xml", "Consulta NFSe Periodo")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\1.00\ConsultaNFeRecebidas-ped-sitnfserec.xml", "Consulta NFSe Periodo")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\1.00\ConsultarNfseEnvio-ped-sitnfse.xml", "Consultar Nfse")]
+        public void DeveIdentificarServicosPAULISTANA100(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.PAULISTANA, 3550308);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.PAULISTANA);
+
+            Assert.NotNull(servico);
+            Assert.Equal("1.00", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\EnvioLoteRps-env-loterps.xml", "Envio Lote Rps")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\TesteEnvioLoteRps-env-loterps.xml", "Envio Lote Rps")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\EnvioRps-env-loterps.xml", "Envio Rps")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\CancelamentoNfe-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\ConsultaInformacoesLote-ped-sitloterps.xml", "Consulta Informações Lote")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\ConsultaLote-ped-loterps.xml", "Consulta lote")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\ConsultaNFeEmitidas-ped-nfseemit.xml", "Consulta NFSe Periodo")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\ConsultaNFeRecebidas-ped-sitnfserec.xml", "Consulta NFSe Periodo")]
+        [InlineData(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\ConsultarNfseEnvio-ped-sitnfse.xml", "Consultar Nfse")]
+        public void DeveIdentificarServicosPAULISTANA200(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.PAULISTANA, 3550308);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.PAULISTANA);
+
+            Assert.NotNull(servico);
+            Assert.Equal("2.00", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
         private static string DefinirVersao(
             string conteudoXML,
             PadraoNFSe padrao,
