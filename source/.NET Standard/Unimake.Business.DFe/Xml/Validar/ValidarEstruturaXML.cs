@@ -2009,9 +2009,12 @@ namespace Unimake.Business.DFe
                         return "1.01";
                     }
 
-                    return RaizEh("ConsultarSituacaoLoteRpsEnvio") && codigoMunicipio != 3304003
-                        ? "2.01"
-                        : "2.03";
+                    if (namespaceRaiz.IndexOf("ABRASF/arquivos/nfse.xsd", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        return "1.00";
+                    }
+
+                    return "2.03";
 
                 case PadraoNFSe.ABASE:
                 case PadraoNFSe.PRODATA:

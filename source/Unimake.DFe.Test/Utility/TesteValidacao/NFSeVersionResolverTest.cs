@@ -474,6 +474,123 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
         }
 
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\TINUS\1.00\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TINUS\1.00\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TINUS\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml", "Consultar Situação Lote Rps")]
+        [InlineData(@"..\..\..\NFSe\Resources\TINUS\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TINUS\1.00\ConsultarNfseEnvio-ped-sitnfse.xml", "Consultar NFSe")]
+        [InlineData(@"..\..\..\NFSe\Resources\TINUS\1.00\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        public void DeveIdentificarServicosTINUS100(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.TINUS, 2503209);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.TINUS);
+
+            Assert.NotNull(servico);
+            Assert.Equal("1.00", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\TINUS\2.03\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TINUS\2.03\ConsultarLoteRpsEnvio-ped-loterps.xml", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TINUS\2.03\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TINUS\2.03\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        public void DeveIdentificarServicosTINUS203(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.TINUS, 2412005);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.TINUS);
+
+            Assert.NotNull(servico);
+            Assert.Equal("2.03", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\1.00\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\1.00\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml", "Consultar Situação Lote Rps")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\1.00\ConsultarNfseEnvio-ped-sitnfse.xml", "Consultar NFSe")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\1.00\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        public void DeveIdentificarServicosTIPLAN100(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.TIPLAN, 3302403);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.TIPLAN);
+
+            Assert.NotNull(servico);
+            Assert.Equal("1.00", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\1.01\GerarNfseEnvio-env-loterps.xml", "Envio do DPS - Sincrono")]
+        public void DeveIdentificarServicosTIPLAN101(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.TIPLAN, 3304524);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.TIPLAN);
+
+            Assert.NotNull(servico);
+            Assert.Equal("1.01", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\EnviarLoteRpsEnvio-ComRTC-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\EnviarLoteRpsSincronoEnvio-env-loterps.xml", "Recepcionar Lote RPS Sincrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\EnviarLoteRpsSincronoEnvio-ComRTC-env-loterps.xml", "Recepcionar Lote RPS Sincrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\GerarNfseEnvio-env-loterps.xml", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\GerarNfseEnvio-ComRTC-env-loterps.xml", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\CancelarNfseEnvio-ComRTC-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\SubstituirNfseEnvio-ped-substnfse.xml", "Substituir nota fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\SubstituirNfseEnvio-ComRTC-ped-substnfse.xml", "Substituir nota fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\ConsultarLoteRpsEnvio-ped-loterps.xml", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml", "Consulta NFSe de serviços prestados")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml", "Consulta NFSe de serviços tomados")]
+        [InlineData(@"..\..\..\NFSe\Resources\TIPLAN\2.03\ConsultarNfseFaixaEnvio-ped-sitnfse.xml", "Consulta NFSe por Faixa")]
+        public void DeveIdentificarServicosTIPLAN203(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.TIPLAN, 3302403);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.TIPLAN);
+
+            Assert.NotNull(servico);
+            Assert.Equal("2.03", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
         private static string DefinirVersao(
             string conteudoXML,
             PadraoNFSe padrao,
