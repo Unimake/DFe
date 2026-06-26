@@ -180,6 +180,32 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
         }
 
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\RLZ_INFORMATICA\2.03\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\RLZ_INFORMATICA\2.03\EnviarLoteRpsSincronoEnvio-env-loterps.xml", "Recepcionar Lote RPS Sincrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\RLZ_INFORMATICA\2.03\GerarNfseEnvio-env-loterps.xml", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\RLZ_INFORMATICA\2.03\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\RLZ_INFORMATICA\2.03\SubstituirNfseEnvio-ped-substnfse.xml", "Substituir nota fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\RLZ_INFORMATICA\2.03\ConsultarLoteRpsEnvio-ped-loterps.xml", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\RLZ_INFORMATICA\2.03\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\RLZ_INFORMATICA\2.03\ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml", "Consulta NFSe de serviços prestados")]
+        [InlineData(@"..\..\..\NFSe\Resources\RLZ_INFORMATICA\2.03\ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml", "Consulta NFSe de serviços tomados")]
+        [InlineData(@"..\..\..\NFSe\Resources\RLZ_INFORMATICA\2.03\ConsultarNfseFaixaEnvio-ped-sitnfse.xml", "Consulta NFSe por Faixa")]
+        public void DeveIdentificarServicosRLZInformatica203(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.RLZ_INFORMATICA, 3505500);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.RLZ_INFORMATICA);
+
+            Assert.NotNull(servico);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
         private static string DefinirVersao(
             string conteudoXML,
             PadraoNFSe padrao,
