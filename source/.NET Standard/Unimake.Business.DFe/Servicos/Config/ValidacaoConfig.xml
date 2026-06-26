@@ -6919,7 +6919,7 @@
 			</Servico>
 		</Padrao>
 		<Padrao nome ="GISSONLINE">
-			<Servico tagRaiz="ns4:EnviarLoteRpsEnvio" versao="2.05" tagIdentificadora="IBSCBS">
+			<Servico tagRaiz="ns4:EnviarLoteRpsEnvio" versao="2.05">
 				<Descricao>Recepcionar Lote RPS</Descricao>
 				<SchemaArquivo>enviar-lote-rps-envio-v2_04-RTC.xsd</SchemaArquivo>
 				<TagAssinatura>ns2:Rps</TagAssinatura>
@@ -6931,7 +6931,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ns4:EnviarLoteRpsEnvio" versao="2.04" tagIdentificadora="LoteRps">
+			<Servico tagRaiz="ns4:EnviarLoteRpsEnvio" versao="2.04">
 				<Descricao>Recepcionar Lote RPS</Descricao>
 				<SchemaArquivo>enviar-lote-rps-envio-v2_04.xsd</SchemaArquivo>
 				<TagAssinatura>ns2:Rps</TagAssinatura>
@@ -6943,7 +6943,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ns4:CancelarNfseEnvio" versao="2.04" tagIdentificadora="InfPedidoCancelamento">
+			<Servico tagRaiz="ns4:CancelarNfseEnvio" versao="2.04">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo>cancelar-nfse-envio-v2_04-RTC.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6955,7 +6955,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.giss.com.br/cancelar-nfse-envio-v2_04.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ns4:ConsultarLoteRpsEnvio" versao="2.04" tagIdentificadora="Protocolo">
+			<Servico tagRaiz="ns4:ConsultarLoteRpsEnvio" versao="2.04">
 				<Descricao>Consulta lote RPS</Descricao>
 				<SchemaArquivo>consultar-lote-rps-envio-v2_04-RTC.xsd</SchemaArquivo>
 				<TagAssinatura>ns4:ConsultarLoteRpsEnvio</TagAssinatura>
@@ -6965,9 +6965,9 @@
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.giss.com.br/consultar-nfse-rps-envio-v2_04.xsd</TargetNS>
+				<TargetNS>http://www.giss.com.br/consultar-lote-rps-envio-v2_04.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ns4:ConsultarNfseServicoPrestadoEnvio" versao="2.04" tagIdentificadora="Prestador">
+			<Servico tagRaiz="ns4:ConsultarNfseServicoPrestadoEnvio" versao="2.04">
 				<Descricao>Consulta NFSe por serviço prestado</Descricao>
 				<SchemaArquivo>consultar-nfse-servico-prestado-envio-v2_04-RTC.xsd</SchemaArquivo>
 				<TagAssinatura>ns4:ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
@@ -6979,7 +6979,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.giss.com.br/consultar-nfse-servico-prestado-envio-v2_04.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ns4:ConsultarNfseRpsEnvio" versao="2.04" tagIdentificadora="IdentificacaoRps">
+			<Servico tagRaiz="ns4:ConsultarNfseRpsEnvio" versao="2.04">
 				<Descricao>Consulta NFSe por RPS</Descricao>
 				<SchemaArquivo>consultar-nfse-rps-envio-v2_04-RTC.xsd</SchemaArquivo>
 				<TagAssinatura>ns4:ConsultarNfseRpsEnvio</TagAssinatura>
@@ -6991,7 +6991,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.giss.com.br/consultar-nfse-rps-envio-v2_04.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ns4:ConsultarNfseServicoTomadoEnvio" versao="2.04" tagIdentificadora="Consulente">
+			<Servico tagRaiz="ns4:ConsultarNfseServicoTomadoEnvio" versao="2.04">
 				<Descricao>Consulta NFSe por serviço tomado</Descricao>
 				<SchemaArquivo>consultar-nfse-servico-tomado-envio-v2_04-RTC.xsd</SchemaArquivo>
 				<TagAssinatura>ns4:ConsultarNfseServicoTomadoEnvio</TagAssinatura>
