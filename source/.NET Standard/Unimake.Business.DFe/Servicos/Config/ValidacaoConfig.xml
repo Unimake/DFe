@@ -6773,7 +6773,7 @@
 			</Servico>
 		</Padrao>
 		<Padrao nome="GINFES">
-			<Servico tagRaiz="CancelarNfseEnvio" versao="2.00" tagIdentificadora="Prestador">
+			<Servico tagRaiz="CancelarNfseEnvio" versao="2.00">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo>servico_cancelar_nfse_envio_v02.xsd</SchemaArquivo>
 				<TagAssinatura>CancelarNfseEnvio</TagAssinatura>
@@ -6785,19 +6785,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.ginfes.com.br/servico_cancelar_nfse_envio</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ns1:EnviarLoteRpsEnvio" versao="3.01" tagIdentificadora="LoteRps">
-				<Descricao>Recepcionar Lote RPS</Descricao>
-				<SchemaArquivo>servico_enviar_lote_rps_envio_v03.xsd</SchemaArquivo>
-				<TagAssinatura>ns1:EnviarLoteRpsEnvio</TagAssinatura>
-				<TagAtributoID>ns1:LoteRps</TagAtributoID>
-				<TagVersao></TagVersao>
-				<TagLoteAssinatura></TagLoteAssinatura>
-				<TagLoteAtributoID></TagLoteAtributoID>
-				<TagExtraAssinatura></TagExtraAssinatura>
-				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.ginfes.com.br/servico_enviar_lote_rps_envio_v03.xsd</TargetNS>
-			</Servico>
-			<Servico tagRaiz="CancelarNfseEnvio" versao="3.01" tagIdentificadora="InfPedidoCancelamento">
+			<Servico tagRaiz="CancelarNfseEnvio" versao="3.01">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo>servico_cancelar_nfse_envio_v03.xsd</SchemaArquivo>
 				<TagAssinatura>CancelarNfseEnvio</TagAssinatura>
@@ -6809,7 +6797,19 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.ginfes.com.br/servico_cancelar_nfse_envio</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="3.01" tagIdentificadora="Prestador">
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="3.00">
+				<Descricao>Consulta lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>Protocolo</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="3.01">
 				<Descricao>Consulta lote RPS</Descricao>
 				<SchemaArquivo>servico_consultar_lote_rps_envio_v03.xsd</SchemaArquivo>
 				<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
@@ -6821,19 +6821,19 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.ginfes.com.br/servico_consultar_lote_rps_envio_v03.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="3.01" tagIdentificadora="IdentificacaoRps">
-				<Descricao>Consulta NFSe por RPS</Descricao>
-				<SchemaArquivo>servico_consultar_nfse_rps_envio_v03.xsd</SchemaArquivo>
-				<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+			<Servico tagRaiz="ConsultarNfseEnvio" versao="3.00">
+				<Descricao>Consulta de NFSe por Data</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
 				<TagAtributoID>Prestador</TagAtributoID>
 				<TagVersao></TagVersao>
 				<TagLoteAssinatura></TagLoteAssinatura>
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://www.ginfes.com.br/servico_consultar_nfse_rps_envio_v03.xsd</TargetNS>
+				<TargetNS></TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNfseEnvio" versao="3.01" tagIdentificadora="NumeroNfse">
+			<Servico tagRaiz="ConsultarNfseEnvio" versao="3.01">
 				<Descricao>Consulta de NFSe por Data</Descricao>
 				<SchemaArquivo>servico_consultar_nfse_envio_v03.xsd</SchemaArquivo>
 				<TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
@@ -6845,8 +6845,44 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.ginfes.com.br/servico_consultar_nfse_envio_v03.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarSituacaoLoteRpsEnvio" versao="3.01" tagIdentificadora="Protocolo">
-				<Descricao>Consulta de NFSe por Data</Descricao>
+			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="3.00">
+				<Descricao>Consulta NFSe por RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+				<TagAtributoID>Prestador</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="3.01">
+				<Descricao>Consulta NFSe por RPS</Descricao>
+				<SchemaArquivo>servico_consultar_nfse_rps_envio_v03.xsd</SchemaArquivo>
+				<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+				<TagAtributoID>Prestador</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.ginfes.com.br/servico_consultar_nfse_rps_envio_v03.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarSituacaoLoteRpsEnvio" versao="3.00">
+				<Descricao>Consultar Situação Lote Rps</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>Protocolo</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="ConsultarSituacaoLoteRpsEnvio" versao="3.01">
+				<Descricao>Consultar Situação Lote Rps</Descricao>
 				<SchemaArquivo>servico_consultar_situacao_lote_rps_envio_v03.xsd</SchemaArquivo>
 				<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
 				<TagAtributoID>Protocolo</TagAtributoID>
@@ -6856,6 +6892,30 @@
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.ginfes.com.br/servico_consultar_situacao_lote_rps_envio_v03.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="3.00">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo></SchemaArquivo>
+				<TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>LoteRps</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS></TargetNS>
+			</Servico>
+			<Servico tagRaiz="ns1:EnviarLoteRpsEnvio" versao="3.01">
+				<Descricao>Recepcionar Lote RPS</Descricao>
+				<SchemaArquivo>servico_enviar_lote_rps_envio_v03.xsd</SchemaArquivo>
+				<TagAssinatura>ns1:EnviarLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>ns1:LoteRps</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.ginfes.com.br/servico_enviar_lote_rps_envio_v03.xsd</TargetNS>
 			</Servico>
 		</Padrao>
 		<Padrao nome ="GISSONLINE">
