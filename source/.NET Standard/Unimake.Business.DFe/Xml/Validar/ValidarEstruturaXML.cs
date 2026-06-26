@@ -1806,9 +1806,15 @@ namespace Unimake.Business.DFe
                         return "1.00";
                     }
 
+                    if (RaizEh("CancelarNfseEnvio") &&
+                        namespaceRaiz == "http://www.ginfes.com.br/servico_cancelar_nfse_envio")
+                    {
+                        return "2.00";
+                    }
+
                     if (RaizEh("ConsultarSituacaoLoteRpsEnvio"))
                     {
-                        return "3.01";
+                        return "3.00";
                     }
 
                     if (codigoMunicipio == 3170206)

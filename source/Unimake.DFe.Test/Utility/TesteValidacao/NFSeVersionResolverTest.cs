@@ -10,7 +10,8 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
     {
         [Theory]
         [InlineData(PadraoNFSe.DSF, "<ns1:ConsultaSeqRps xmlns:ns1=\"urn:dsf\" />", 0, "1.00")]
-        [InlineData(PadraoNFSe.DSF, "<ConsultarSituacaoLoteRpsEnvio />", 0, "3.01")]
+        [InlineData(PadraoNFSe.DSF, "<CancelarNfseEnvio xmlns=\"http://www.ginfes.com.br/servico_cancelar_nfse_envio\" />", 0, "2.00")]
+        [InlineData(PadraoNFSe.DSF, "<ConsultarSituacaoLoteRpsEnvio />", 0, "3.00")]
         [InlineData(PadraoNFSe.FIORILLI, "<ConsultarLoteRpsEnvio />", 0, "1.01")]
         [InlineData(PadraoNFSe.FIORILLI, "<GerarNfseEnvio />", 0, "2.01")]
         [InlineData(PadraoNFSe.PRONIM, "<ConsultarSituacaoLoteRpsEnvio />", 0, "1.00")]
