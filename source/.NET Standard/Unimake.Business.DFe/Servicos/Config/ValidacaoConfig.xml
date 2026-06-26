@@ -4046,7 +4046,7 @@
 	<!--NFSe-->
 	<NFSe>
 		<Padrao nome="ABASE">
-			<Servico tagRaiz="CancelarNfseEnvio" versao="2.01" tagIdentificadora="InfPedidoCancelamento">
+			<Servico tagRaiz="CancelarNfseEnvio" versao="2.01">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>Pedido</TagAssinatura>
@@ -4058,7 +4058,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.01" tagIdentificadora="Protocolo">
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.01">
 				<Descricao>Consulta lote RPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6185,7 +6185,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="2.01" tagIdentificadora="Faixa">
+			<Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="2.01">
 				<Descricao>Consulta NFSe por Faixa</Descricao>
 				<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6197,7 +6197,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.01" tagIdentificadora="IdentificacaoRps">
+			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.01">
 				<Descricao>Consulta NFSe por RPS</Descricao>
 				<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6209,7 +6209,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="2.01" tagIdentificadora="Prestador">
+			<Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="2.01">
 				<Descricao>Consulta NFSe de serviços prestados</Descricao>
 				<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6221,7 +6221,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="2.01" tagIdentificadora="Consulente">
+			<Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="2.01">
 				<Descricao>Consulta NFSe de serviços tomados</Descricao>
 				<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6233,7 +6233,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.01" tagIdentificadora="LoteRps">
+			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.01">
 				<Descricao>Recepcionar Lote RPS</Descricao>
 				<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
@@ -6251,7 +6251,7 @@
 					<Excecao codMunicipio="3528809">homologação</Excecao>
 				</NaoAssina>
 			</Servico>
-			<Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.01" tagIdentificadora="LoteRps">
+			<Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.01">
 				<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 				<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
@@ -6269,7 +6269,7 @@
 					<Excecao codMunicipio="3528809">homologação</Excecao>
 				</NaoAssina>
 			</Servico>
-			<Servico tagRaiz="GerarNfseEnvio" versao="2.01" tagIdentificadora="InfDeclaracaoPrestacaoServico">
+			<Servico tagRaiz="GerarNfseEnvio" versao="2.01">
 				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 				<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6287,7 +6287,7 @@
 					<Excecao codMunicipio="3528809">homologação</Excecao>
 				</NaoAssina>
 			</Servico>
-			<Servico tagRaiz="SubstituirNfseEnvio" versao="2.01" tagIdentificadora="SubstituicaoNfse">
+			<Servico tagRaiz="SubstituirNfseEnvio" versao="2.01">
 				<Descricao>Substituir nota fiscal de Serviço</Descricao>
 				<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
 				<TagAssinatura>Pedido</TagAssinatura>
@@ -6305,7 +6305,7 @@
 					<Excecao codMunicipio="3528809">homologação</Excecao>
 				</NaoAssina>
 			</Servico>
-			<Servico tagRaiz="nfse:ConsultarLoteDpsEnvio" versao="1.00" tagIdentificadora="Protocolo">
+			<Servico tagRaiz="nfse:ConsultarLoteDpsEnvio" versao="1.00">
 				<Descricao>Consulta lote DPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6317,7 +6317,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS></TargetNS>
 			</Servico>
-			<Servico tagRaiz="nfse:RecepcionarLoteDpsSincronoEnvio" versao="1.00" tagIdentificadora="LoteDps">
+			<Servico tagRaiz="nfse:RecepcionarLoteDpsSincronoEnvio" versao="1.00">
 				<Descricao>Envio do DPS - Síncrono</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>nfse:DPS</TagAssinatura>
@@ -6332,7 +6332,7 @@
 					<Excecao codMunicipio="3518206">true</Excecao>
 				</AssinaCanonicalizacaoExclusiva>
 			</Servico>
-			<Servico tagRaiz="nfse:RecepcionarDpsEnvio" versao="1.00" tagIdentificadora="infDPS">
+			<Servico tagRaiz="nfse:RecepcionarDpsEnvio" versao="1.00">
 				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>nfse:DPS</TagAssinatura>
@@ -6349,7 +6349,7 @@
 					<Excecao codMunicipio="1100452">true</Excecao>
 				</AssinaCanonicalizacaoExclusiva>
 			</Servico>
-			<Servico tagRaiz="nfse:RecepcionarLoteDpsEnvio" versao="1.00" tagIdentificadora="LoteDps">
+			<Servico tagRaiz="nfse:RecepcionarLoteDpsEnvio" versao="1.00">
 				<Descricao>Recepcionar Lote DPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>nfse:DPS</TagAssinatura>
@@ -6364,7 +6364,7 @@
 					<Excecao codMunicipio="3518206">true</Excecao>
 				</AssinaCanonicalizacaoExclusiva>
 			</Servico>
-			<Servico tagRaiz="RecepcionarDpsEnvio" versao="1.01" tagIdentificadora="DPS">
+			<Servico tagRaiz="RecepcionarDpsEnvio" versao="1.01">
 				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>DPS</TagAssinatura>
@@ -6383,7 +6383,7 @@
 					<Excecao codMunicipio="5220454">true</Excecao>
 				</AssinaCanonicalizacaoExclusiva>
 			</Servico>
-			<Servico tagRaiz="ConsultarLoteDpsEnvio" versao="1.01" tagIdentificadora="Protocolo">
+			<Servico tagRaiz="ConsultarLoteDpsEnvio" versao="1.01">
 				<Descricao>Consultar lote DPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -6395,7 +6395,7 @@
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS></TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNfseEnvio" versao="1.01" tagIdentificadora="CNPJ">
+			<Servico tagRaiz="ConsultarNfseEnvio" versao="1.01">
 				<Descricao>Consultar NFSe</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
