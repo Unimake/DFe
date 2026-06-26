@@ -1987,6 +1987,13 @@ namespace Unimake.Business.DFe
                         return "1.01";
                     }
 
+                    if (codigoMunicipio == 3530607 ||
+                        codigoMunicipio == 3201308 ||
+                        codigoMunicipio == 3523107)
+                    {
+                        return "2.03";
+                    }
+
                     return "2.04";
 
                 case PadraoNFSe.TINUS:

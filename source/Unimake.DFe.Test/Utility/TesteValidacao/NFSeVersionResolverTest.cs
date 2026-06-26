@@ -382,6 +382,98 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
         }
 
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\1.00\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\1.00\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\1.00\ConsultarNfseEnvio-ped-sitnfse.xml", "Consultar NFSe")]
+        public void DeveIdentificarServicosSMARAPD100(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SMARAPD, 3551702);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SMARAPD);
+
+            Assert.NotNull(servico);
+            Assert.Equal("1.00", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\1.01\GerarNfseEnvio-env-loterps.xml", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\1.01\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\1.01\SubstituirNfseEnvio-ped-substnfse.xml", "Substituir nota fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\1.01\ConsultarEventosNfse-ped-consevennfse.xml", "Consultar Eventos Diversos da NFSe NACIONAL")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\1.01\ConsultarNfseEnvio-ped-sitnfse.xml", "Consultar NFSe")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\1.01\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consultar NFSe por DPS")]
+        public void DeveIdentificarServicosSMARAPD101(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SMARAPD, 3506003);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SMARAPD);
+
+            Assert.NotNull(servico);
+            Assert.Equal("1.01", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\GerarNfseEnvio-env-loterps.xml", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\ConsultarLoteRpsEnvio-ped-loterps.xml", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\ConsultarNfseFaixaEnvio-ped-sitnfse.xml", "Consulta NFSe por Faixa")]
+        public void DeveIdentificarServicosSMARAPD203(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SMARAPD, 3530607);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SMARAPD);
+
+            Assert.NotNull(servico);
+            Assert.Equal("2.03", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\EnviarLoteRpsEnvio-env-loterps.xml", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\EnviarLoteRpsSincronoEnvio-env-loterps.xml", "Recepcionar Lote RPS Sincrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\GerarNfseEnvio-env-loterps.xml", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\CancelarNfseEnvio-ped-cannfse.xml", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\SubstituirNfseEnvio-ped-substnfse.xml", "Substituir nota fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\ConsultarLoteRpsEnvio-ped-loterps.xml", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml", "Consulta NFSe de serviços prestados")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml", "Consulta NFSe de serviços tomados")]
+        [InlineData(@"..\..\..\NFSe\Resources\SMARAPD\2.04\ConsultarNfseFaixaEnvio-ped-sitnfse.xml", "Consulta NFSe por Faixa")]
+        public void DeveIdentificarServicosSMARAPD204(string arquivoXML, string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SMARAPD, 3205002);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SMARAPD);
+
+            Assert.NotNull(servico);
+            Assert.Equal("2.04", versao);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
         private static string DefinirVersao(
             string conteudoXML,
             PadraoNFSe padrao,
