@@ -15,7 +15,6 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         [InlineData(PadraoNFSe.FIORILLI, "<ConsultarLoteRpsEnvio />", 0, "1.01")]
         [InlineData(PadraoNFSe.FIORILLI, "<GerarNfseEnvio />", 0, "2.01")]
         [InlineData(PadraoNFSe.GINFES, "<CancelarNfseEnvio><Prestador /></CancelarNfseEnvio>", 0, "2.00")]
-        [InlineData(PadraoNFSe.GINFES, "<CancelarNfseEnvio><Pedido /></CancelarNfseEnvio>", 4125506, "3.01")]
         [InlineData(PadraoNFSe.GINFES, "<ConsultarLoteRpsEnvio />", 0, "3.01")]
         [InlineData(PadraoNFSe.GINFES, "<ConsultarLoteRpsEnvio />", 4125506, "3.00")]
         [InlineData(PadraoNFSe.GINFES, "<CancelarNfseEnvio><Pedido /></CancelarNfseEnvio>", 4125506, "3.00")]
@@ -199,7 +198,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         [InlineData(@"..\..\..\NFSe\Resources\GINFES\3.00 - SaoJoseDosPinhais\ConsultarNfseEnvio-ped-sitnfse.xml", "3.00", "Consulta de NFSe por Data")]
         [InlineData(@"..\..\..\NFSe\Resources\GINFES\3.00 - SaoJoseDosPinhais\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "3.00", "Consulta NFSe por RPS")]
         [InlineData(@"..\..\..\NFSe\Resources\GINFES\3.00 - SaoJoseDosPinhais\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml", "3.00", "Consultar Situação Lote Rps")]
-        [InlineData(@"..\..\..\NFSe\Resources\GINFES\3.00\CancelarNfseEnvio-ped-cannfse.xml", "3.01", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\GINFES\3.00\CancelarNfseEnvio-ped-cannfse.xml", "3.00", "Cancelar nota fiscal de serviço")]
         public void DeveIdentificarServicosGINFESParaSaoJoseDosPinhais(
             string arquivoXML,
             string versaoEsperada,
@@ -213,6 +212,51 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.GINFES, 4125506);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.GINFES);
+
+            Assert.Equal(versaoEsperada, versao);
+            Assert.NotNull(servico);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\CancelarNfseEnvio-ped-cannfse.xml", "1.01", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\ConsultarDadosCadastraisEnvio-ped-consdadoscad.xml", "1.01", "Consulta os dados cadastrais")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\ConsultarLoteRpsEnvio-ped-loterps.xml", "1.01", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\ConsultarNfseFaixaEnvio-ped-sitnfse.xml", "1.01", "Consulta NFSe por Faixa")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "1.01", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml", "1.01", "Consulta NFSe de serviços prestados")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml", "1.01", "Consulta NFSe de serviços tomados")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\ConsultarRpsDisponivelEnvio-ped-consrpsdisp.xml", "1.01", "Consulta os dados cadastrais")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\ConsultarUrlNfseEnvio-ped-urlnfse.xml", "1.01", "Consulta os dados cadastrais")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\GerarNfseEnvio-env-loterps.xml", "1.01", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\EnviarLoteRpsEnvio-env-loterps.xml", "1.01", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\EnviarLoteRpsSincronoEnvio-env-loterps.xml", "1.01", "Recepcionar Lote RPS Sincrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\CancelarNfseEnvio-ped-cannfse.xml", "2.04", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarDadosCadastraisEnvio-ped-consdadoscad.xml", "2.04", "Consulta os dados cadastrais")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarLoteRpsEnvio-ped-loterps.xml", "2.04", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarNfseFaixaEnvio-ped-sitnfse.xml", "2.04", "Consulta NFSe por Faixa")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "2.04", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml", "2.04", "Consulta NFSe de serviços prestados")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml", "2.04", "Consulta NFSe de serviços tomados")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarRpsDisponivelEnvio-ped-consrpsdisp.xml", "2.04", "Consulta os dados cadastrais")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarUrlNfseEnvio-ped-urlnfse.xml", "2.04", "Consulta os dados cadastrais")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\GerarNfseEnvio-env-loterps.xml", "2.04", "Gerar Nota Fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\EnviarLoteRpsEnvio-env-loterps.xml", "2.04", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\EnviarLoteRpsSincronoEnvio-env-loterps.xml", "2.04", "Recepcionar Lote RPS Sincrono")]
+        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\SubstituirNfseEnvio-ped-substnfse.xml", "2.04", "Substituir nota fiscal de Serviço")]
+        public void DeveIdentificarServicosISSNET(
+            string arquivoXML,
+            string versaoEsperada,
+            string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.ISSNET, 5208707);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.ISSNET);
 
             Assert.Equal(versaoEsperada, versao);
             Assert.NotNull(servico);
