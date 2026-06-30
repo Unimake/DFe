@@ -15,6 +15,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         [InlineData(PadraoNFSe.FIORILLI, "<ConsultarLoteRpsEnvio />", 0, "1.01")]
         [InlineData(PadraoNFSe.FIORILLI, "<GerarNfseEnvio />", 0, "2.01")]
         [InlineData(PadraoNFSe.GINFES, "<CancelarNfseEnvio><Prestador /></CancelarNfseEnvio>", 0, "2.00")]
+        [InlineData(PadraoNFSe.GINFES, "<CancelarNfseEnvio><Pedido /></CancelarNfseEnvio>", 4125506, "3.01")]
         [InlineData(PadraoNFSe.GINFES, "<ConsultarLoteRpsEnvio />", 0, "3.01")]
         [InlineData(PadraoNFSe.GINFES, "<ConsultarLoteRpsEnvio />", 4125506, "3.00")]
         [InlineData(PadraoNFSe.GINFES, "<ConsultarLoteRpsEnvio xmlns=\"http://nfe.sjp.pr.gov.br/servico_consultar_lote_rps_envio_v03.xsd\" />", 0, "3.00")]
@@ -156,6 +157,65 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
 
             Assert.True(resultado.Validado, resultado.MensagemRetorno);
             Assert.Equal("Consulta NFSe por RPS", resultado.Descricao);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\1.00\EnviarLoteRpsEnvio-env-loterps.xml", 4317103, "1.00", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\1.00\CancelarNfseEnvio-ped-cannfse.xml", 4317103, "1.00", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\1.00\SubstituirNfseEnvio-ped-substnfse.xml", 4317103, "1.00", "Substituir nota fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml", 4317103, "1.00", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.XML", 4317103, "1.00", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\1.00\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml", 4317103, "1.00", "Consulta situação lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\2.04\EnviarLoteRpsEnvio-env-loterps.xml", 4319901, "2.04", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\2.04\CancelarNfseEnvio-ped-cannfse.xml", 4319901, "2.04", "Cancelar nota fiscal de serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\2.04\SubstituirNfseEnvio-ped-substnfse.xml", 4319901, "2.04", "Substituir nota fiscal de Serviço")]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\2.04\ConsultarLoteRpsEnvio-ped-loterps.xml", 4319901, "2.04", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\2.04\ConsultarNfseRpsEnvio-ped-sitnfserps.XML", 4319901, "2.04", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\DBSELLER\2.04\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml", 4319901, "2.04", "Consulta lote RPS")]
+        public void DeveIdentificarServicosDBSELLER(
+            string arquivoXML,
+            int codigoMunicipio,
+            string versaoEsperada,
+            string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.DBSELLER, codigoMunicipio);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.DBSELLER);
+
+            Assert.Equal(versaoEsperada, versao);
+            Assert.NotNull(servico);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Theory]
+        [InlineData(@"..\..\..\NFSe\Resources\GINFES\3.00 - SaoJoseDosPinhais\EnviarLoteRpsEnvio-env-loterps.xml", "3.00", "Recepcionar Lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\GINFES\3.00 - SaoJoseDosPinhais\ConsultarLoteRpsEnvio-ped-loterps.xml", "3.00", "Consulta lote RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\GINFES\3.00 - SaoJoseDosPinhais\ConsultarNfseEnvio-ped-sitnfse.xml", "3.00", "Consulta de NFSe por Data")]
+        [InlineData(@"..\..\..\NFSe\Resources\GINFES\3.00 - SaoJoseDosPinhais\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "3.00", "Consulta NFSe por RPS")]
+        [InlineData(@"..\..\..\NFSe\Resources\GINFES\3.00 - SaoJoseDosPinhais\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml", "3.00", "Consultar Situação Lote Rps")]
+        [InlineData(@"..\..\..\NFSe\Resources\GINFES\3.00\CancelarNfseEnvio-ped-cannfse.xml", "3.01", "Cancelar nota fiscal de serviço")]
+        public void DeveIdentificarServicosGINFESParaSaoJoseDosPinhais(
+            string arquivoXML,
+            string versaoEsperada,
+            string descricaoEsperada)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arquivoXML);
+
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.GINFES, 4125506);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.GINFES);
+
+            Assert.Equal(versaoEsperada, versao);
+            Assert.NotNull(servico);
+            Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
         }
 
         [Theory]
