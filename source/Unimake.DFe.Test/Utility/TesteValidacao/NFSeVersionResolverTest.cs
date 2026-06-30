@@ -18,6 +18,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         [InlineData(PadraoNFSe.GINFES, "<CancelarNfseEnvio><Pedido /></CancelarNfseEnvio>", 4125506, "3.01")]
         [InlineData(PadraoNFSe.GINFES, "<ConsultarLoteRpsEnvio />", 0, "3.01")]
         [InlineData(PadraoNFSe.GINFES, "<ConsultarLoteRpsEnvio />", 4125506, "3.00")]
+        [InlineData(PadraoNFSe.GINFES, "<CancelarNfseEnvio><Pedido /></CancelarNfseEnvio>", 4125506, "3.00")]
         [InlineData(PadraoNFSe.GINFES, "<ConsultarLoteRpsEnvio xmlns=\"http://nfe.sjp.pr.gov.br/servico_consultar_lote_rps_envio_v03.xsd\" />", 0, "3.00")]
         [InlineData(PadraoNFSe.GISSONLINE, "<ns4:EnviarLoteRpsEnvio xmlns:ns4=\"http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd\"><ns4:LoteRps><ns2:IBSCBS xmlns:ns2=\"http://www.giss.com.br/tipos-v2_04.xsd\" /></ns4:LoteRps></ns4:EnviarLoteRpsEnvio>", 0, "2.05")]
         [InlineData(PadraoNFSe.GISSONLINE, "<ns4:EnviarLoteRpsEnvio xmlns:ns4=\"http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd\"><ns4:LoteRps /></ns4:EnviarLoteRpsEnvio>", 0, "2.04")]
@@ -742,6 +743,16 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                     padrao
                 }
             );
+        }
+
+        private static XmlDocument CarregarConfigValidacao()
+        {
+            var method = typeof(ValidarEstruturaXML).GetMethod(
+                "CarregarConfigValidacao",
+                BindingFlags.NonPublic | BindingFlags.Static
+            );
+
+            return (XmlDocument)method.Invoke(null, null);
         }
 
         private static XmlDocument CriarXml(string conteudoXML)

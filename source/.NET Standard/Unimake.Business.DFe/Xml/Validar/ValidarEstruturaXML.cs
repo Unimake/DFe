@@ -1886,9 +1886,9 @@ namespace Unimake.Business.DFe
                         return "4.00";
                     }
 
-                    if (RaizEh("CancelarNfseEnvio"))
+                    if (RaizEh("CancelarNfseEnvio") && Contem("Prestador"))
                     {
-                        return Contem("Prestador") ? "2.00" : "3.01";
+                        return "2.00";
                     }
 
                     if (codigoMunicipio == 4125506 ||
