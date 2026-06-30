@@ -17,6 +17,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
         [InlineData(PadraoNFSe.GINFES, "<CancelarNfseEnvio><Prestador /></CancelarNfseEnvio>", 0, "2.00")]
         [InlineData(PadraoNFSe.GINFES, "<ConsultarLoteRpsEnvio />", 0, "3.01")]
         [InlineData(PadraoNFSe.GINFES, "<ConsultarLoteRpsEnvio />", 4125506, "3.00")]
+        [InlineData(PadraoNFSe.GINFES, "<CancelarNfseEnvio><Pedido /></CancelarNfseEnvio>", 4125506, "3.00")]
         [InlineData(PadraoNFSe.GINFES, "<ConsultarLoteRpsEnvio xmlns=\"http://nfe.sjp.pr.gov.br/servico_consultar_lote_rps_envio_v03.xsd\" />", 0, "3.00")]
         [InlineData(PadraoNFSe.GISSONLINE, "<ns4:EnviarLoteRpsEnvio xmlns:ns4=\"http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd\"><ns4:LoteRps><ns2:IBSCBS xmlns:ns2=\"http://www.giss.com.br/tipos-v2_04.xsd\" /></ns4:LoteRps></ns4:EnviarLoteRpsEnvio>", 0, "2.05")]
         [InlineData(PadraoNFSe.GISSONLINE, "<ns4:EnviarLoteRpsEnvio xmlns:ns4=\"http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd\"><ns4:LoteRps /></ns4:EnviarLoteRpsEnvio>", 0, "2.04")]
@@ -145,6 +146,23 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             Assert.Equal("Consulta NFSe por RPS", resultado.Descricao);
         }
 
+        [Theory]
+        [InlineData("CancelarNfseEnvio", "servico_cancelar_nfse_envio_v03.xsd", "http://www.ginfes.com.br/servico_cancelar_nfse_envio_v03.xsd")]
+        [InlineData("ConsultarLoteRpsEnvio", "servico_consultar_lote_rps_envio_v03.xsd", "http://www.ginfes.com.br/servico_consultar_lote_rps_envio_v03.xsd")]
+        [InlineData("ConsultarNfseEnvio", "servico_consultar_nfse_envio_v03.xsd", "http://www.ginfes.com.br/servico_consultar_nfse_envio_v03.xsd")]
+        [InlineData("ConsultarNfseRpsEnvio", "servico_consultar_nfse_rps_envio_v03.xsd", "http://www.ginfes.com.br/servico_consultar_nfse_rps_envio_v03.xsd")]
+        [InlineData("ConsultarSituacaoLoteRpsEnvio", "servico_consultar_situacao_lote_rps_envio_v03.xsd", "http://www.ginfes.com.br/servico_consultar_situacao_lote_rps_envio_v03.xsd")]
+        [InlineData("EnviarLoteRpsEnvio", "servico_enviar_lote_rps_envio_v03.xsd", "http://www.ginfes.com.br/servico_enviar_lote_rps_envio_v03.xsd")]
+        public void DeveConfigurarSchemaGinfes300(string tagRaiz, string schemaEsperado, string targetNSEsperado)
+        {
+            var xml = CriarXml("<" + tagRaiz + " />");
+            var servico = TratarNFSe(xml, "3.00", CarregarConfigValidacao(), PadraoNFSe.GINFES);
+
+            Assert.NotNull(servico);
+            Assert.Equal(schemaEsperado, servico.SelectSingleNode("SchemaArquivo").InnerText);
+            Assert.Equal(targetNSEsperado, servico.SelectSingleNode("TargetNS").InnerText);
+        }
+
         private static string DefinirVersao(
             string conteudoXML,
             PadraoNFSe padrao,
@@ -184,6 +202,16 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
                     padrao
                 }
             );
+        }
+
+        private static XmlDocument CarregarConfigValidacao()
+        {
+            var method = typeof(ValidarEstruturaXML).GetMethod(
+                "CarregarConfigValidacao",
+                BindingFlags.NonPublic | BindingFlags.Static
+            );
+
+            return (XmlDocument)method.Invoke(null, null);
         }
 
         private static XmlDocument CriarXml(string conteudoXML)
