@@ -4111,7 +4111,7 @@
 					<Excecao codMunicipio="2917508">false</Excecao>
 				</UsaCertificadoDigital>
 			</Servico>
-			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.01" tagIdentificadora="Protocolo">
+			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.03" tagIdentificadora="Protocolo">
 				<Descricao>Consulta lote RPS</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
@@ -4121,7 +4121,7 @@
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
-				<TargetNS>http://nfse.abase.com.br/nfse.xsd</TargetNS>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 				<UsaCertificadoDigital>
 					<Excecao codMunicipio="2917508">false</Excecao>
 				</UsaCertificadoDigital>
@@ -4605,8 +4605,8 @@
 			<Servico tagRaiz="CancelarNfseEnvio" versao="2.00" tagIdentificadora="InfPedidoCancelamento">
 				<Descricao>Envio do cancelamento de NFSe</Descricao>
 				<SchemaArquivo></SchemaArquivo>
-				<TagAssinatura>Rps</TagAssinatura>
-				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagAssinatura>Pedido</TagAssinatura>
+				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 				<TagVersao></TagVersao>
 				<TagLoteAssinatura></TagLoteAssinatura>
 				<TagLoteAtributoID></TagLoteAtributoID>
@@ -4617,8 +4617,8 @@
 			<Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.00" tagIdentificadora="IdentificacaoRps">
 				<Descricao>Consultar NFSe</Descricao>
 				<SchemaArquivo></SchemaArquivo>
-				<TagAssinatura>Rps</TagAssinatura>
-				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
 				<TagVersao></TagVersao>
 				<TagLoteAssinatura></TagLoteAssinatura>
 				<TagLoteAtributoID></TagLoteAtributoID>
@@ -7106,6 +7106,18 @@
 			<Servico tagRaiz="p:ConsultarNfseRpsEnvio" versao="1.00" tagIdentificadora="IdentificacaoRps">
 				<Descricao>Consulta NFSe por RPS</Descricao>
 				<SchemaArquivo>consultar_nfse_rps_envio_v1.xsd</SchemaArquivo>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+			</Servico>
+			<Servico tagRaiz="p:ConsultarNfseEnvio" versao="1.00" tagIdentificadora="Prestador">
+				<Descricao>Consulta de Nota Fiscal de Serviço</Descricao>
+				<SchemaArquivo>consultar_nfse_envio_v1.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
 				<TagVersao></TagVersao>
@@ -10980,6 +10992,18 @@
 				<SchemaArquivo>nfse_v2_02-IBSCBS.xsd</SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+			</Servico>
+			<Servico tagRaiz="CancelarNfseEnvio" versao="2.02" tagIdentificadora="Faixa">
+				<Descricao>Cancelar nota fiscal de serviço</Descricao>
+				<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+				<TagAssinatura>Pedido</TagAssinatura>
+				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 				<TagVersao></TagVersao>
 				<TagLoteAssinatura></TagLoteAssinatura>
 				<TagLoteAtributoID></TagLoteAtributoID>

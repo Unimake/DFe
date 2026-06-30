@@ -221,7 +221,7 @@ namespace Unimake.Business.DFe
 
                 if (servico is null)
                 {
-                    throw new Exception($"Não foi possível encontrar a configuração para o tipo de DFe com tag raiz: {tagRaiz} ou versão: {versao}. Verfique se a versão e/ou tag raiz estão corretas paraa validação");
+                    throw new Exception($"Não foi possível encontrar a configuração para o tipo de DFe com tag raiz: '{tagRaiz}' ou versão: '{versao}'. Verfique se a versão e/ou tag raiz estão corretas para a validação");
                 }
 
                 AtribuirUrl(servico, codigoUF, configuracao);
