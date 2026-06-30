@@ -7153,7 +7153,7 @@
 			</Servico>
 		</Padrao>
 		<Padrao nome="IPM">
-			<Servico tagRaiz="nfse" versao="1.20" tagIdentificadora="nfse_teste">
+			<Servico tagRaiz="nfse" versao="1.20">
 				<Descricao>Gerar NFSe</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>nfse</TagAssinatura>
