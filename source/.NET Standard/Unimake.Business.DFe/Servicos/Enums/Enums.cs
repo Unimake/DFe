@@ -1973,7 +1973,35 @@ namespace Unimake.Business.DFe.Servicos
         /// 5 - DANFE NFC-e em mensagem eletrônica
         /// </summary>
         [XmlEnum("5")]
-        NFCeMensagemEletronica = 5
+        NFCeMensagemEletronica = 5,
+
+        /// <summary>
+        /// 6 - DANFE Simplificado Tipo 2
+        /// </summary>
+        [XmlEnum("6")]
+        SimplificadoTipo2 = 6
+    }
+
+    #endregion
+
+    #region TipoAplicacaoAliquotaZeroCBS
+
+    /// <summary>
+    /// Tipo de aplicação da alíquota zero da CBS
+    /// </summary>
+    public enum TipoAplicacaoAliquotaZeroCBS
+    {
+        /// <summary>
+        /// 1 - Sem processo aprovado na Suframa
+        /// </summary>
+        [XmlEnum("1")]
+        SemProcessoSuframa = 1,
+
+        /// <summary>
+        /// 2 - Com processo aprovado na Suframa
+        /// </summary>
+        [XmlEnum("2")]
+        ComProcessoSuframa = 2
     }
 
     #endregion
