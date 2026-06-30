@@ -1886,15 +1886,18 @@ namespace Unimake.Business.DFe
                         return "4.00";
                     }
 
+                    if (RaizEh("CancelarNfseEnvio") && Contem("Prestador"))
+                    {
+                        return "2.00";
+                    }
+
                     if (codigoMunicipio == 4125506 ||
                         namespaceRaiz.IndexOf("nfe.sjp.pr.gov.br", StringComparison.OrdinalIgnoreCase) >= 0)
                     {
                         return "3.00";
                     }
 
-                    return RaizEh("CancelarNfseEnvio") && Contem("Prestador")
-                        ? "2.00"
-                        : "3.01";
+                    return "3.01";
 
                 case PadraoNFSe.GISSONLINE:
                     return versaoDeclarada == "2.05" || Contem("IBSCBS")
@@ -1905,13 +1908,30 @@ namespace Unimake.Business.DFe
                     return RaizEh("nfse", "nota") ? "1.20" : "2.04";
 
                 case PadraoNFSe.ISSNET:
+                    if (namespaceRaiz.IndexOf("sped.fazenda.gov.br/nfse", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        return "1.01";
+                    }
+
+                    if (namespaceRaiz.IndexOf("abrasf.org.br/nfse.xsd", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        return "2.04";
+                    }
+
                     if (RaizEh("DPS", "NFSe", "pedRegEvento"))
                     {
                         return "1.01";
                     }
 
                     return Contem("Pedido") ||
-                           RaizEh("EnviarLoteRpsEnvio", "EnviarLoteRpsSincronoEnvio")
+                           Contem("InfDeclaracaoPrestacaoServico") ||
+                           RaizEh(
+                               "ConsultarLoteRpsEnvio",
+                               "ConsultarNfseRpsEnvio",
+                               "ConsultarRpsDisponivelEnvio",
+                               "EnviarLoteRpsEnvio",
+                               "EnviarLoteRpsSincronoEnvio",
+                               "SubstituirNfseEnvio")
                         ? "2.04"
                         : "1.01";
 
