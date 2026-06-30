@@ -1745,6 +1745,27 @@ namespace Unimake.Business.DFe
             bool RaizEh(params string[] nomes) =>
                 nomes.Any(nome => string.Equals(raiz, nome, StringComparison.OrdinalIgnoreCase));
 
+            string NormalizarVersao(string versao)
+            {
+                if (string.IsNullOrWhiteSpace(versao))
+                {
+                    return string.Empty;
+                }
+
+                versao = versao.Trim();
+
+                if (!versao.All(x => char.IsDigit(x) || x == '.'))
+                {
+                    return string.Empty;
+                }
+
+                var partes = versao.Split('.');
+
+                return partes.Length == 2 && partes[1].Length == 1
+                    ? $"{partes[0]}.{partes[1]}0"
+                    : versao;
+            }
+
             string ObterVersaoDeclarada()
             {
                 var elementos = xml.SelectNodes("//*");
@@ -1753,14 +1774,23 @@ namespace Unimake.Business.DFe
                 {
                     var versao = elemento.GetAttribute("versao");
                     versao = string.IsNullOrWhiteSpace(versao) ? elemento.GetAttribute("Versao") : versao;
+                    versao = NormalizarVersao(versao);
 
                     if (!string.IsNullOrWhiteSpace(versao))
                     {
-                        var partes = versao.Split('.');
-                        return partes.Length == 2 && partes[1].Length == 1
-                            ? $"{partes[0]}.{partes[1]}0"
-                            : versao;
+                        return versao;
                     }
+                }
+
+                var nodeVersao = elementos
+                    .Cast<XmlElement>()
+                    .FirstOrDefault(x =>
+                        string.Equals(x.LocalName, "versao", StringComparison.OrdinalIgnoreCase) &&
+                        !string.IsNullOrWhiteSpace(NormalizarVersao(x.InnerText)));
+
+                if (nodeVersao != null)
+                {
+                    return NormalizarVersao(nodeVersao.InnerText);
                 }
 
                 return string.Empty;
@@ -1774,18 +1804,9 @@ namespace Unimake.Business.DFe
                     return string.IsNullOrWhiteSpace(versaoDeclarada) ? "1.01" : versaoDeclarada;
 
                 case PadraoNFSe.CONAM:
-                    var nodeVersaoCONAM = xml.GetElementsByTagName("Versao")
-                        .Cast<XmlNode>()
-                        .FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.InnerText));
-
-                    if (nodeVersaoCONAM != null)
+                    if (!string.IsNullOrWhiteSpace(versaoDeclarada))
                     {
-                        var versaoCONAM = nodeVersaoCONAM.InnerText.Trim();
-                        var partes = versaoCONAM.Split('.');
-
-                        return partes.Length == 2 && partes[1].Length == 1
-                            ? $"{partes[0]}.{partes[1]}0"
-                            : versaoCONAM;
+                        return versaoDeclarada;
                     }
 
                     return codigoMunicipio == 3506102 ||
@@ -1898,7 +1919,7 @@ namespace Unimake.Business.DFe
                         : "1.01";
 
                 case PadraoNFSe.PAULISTANA:
-                    return versaoDeclarada == "2.00" || Contem("Versao=\"2\"")
+                    return versaoDeclarada == "2.00" || Contem("Versao=\"2\"") || Contem("IBSCBS")
                         ? "2.00"
                         : "1.00";
 
@@ -1919,7 +1940,7 @@ namespace Unimake.Business.DFe
                         return codigoMunicipio == 4113700 ? "1.03" : "3.00";
                     }
 
-                    if (RaizEh("ConsultarNotaPrestador"))
+                    if (RaizEh("ConsultarNotaPrestador", "ConsultarNotaValida"))
                     {
                         return "3.00";
                     }
@@ -1938,6 +1959,11 @@ namespace Unimake.Business.DFe
                         : "2.03";
 
                 case PadraoNFSe.SIMPLISS:
+                    if (versaoDeclarada == "1.00")
+                    {
+                        return "1.00";
+                    }
+
                     if (RaizEh("DPS", "NFSe", "pedRegEvento") ||
                         versaoDeclarada == "1.01")
                     {
@@ -1964,6 +1990,13 @@ namespace Unimake.Business.DFe
                         return "1.01";
                     }
 
+                    if (codigoMunicipio == 3530607 ||
+                        codigoMunicipio == 3201308 ||
+                        codigoMunicipio == 3523107)
+                    {
+                        return "2.03";
+                    }
+
                     return "2.04";
 
                 case PadraoNFSe.TINUS:
@@ -1979,9 +2012,12 @@ namespace Unimake.Business.DFe
                         return "1.01";
                     }
 
-                    return RaizEh("ConsultarSituacaoLoteRpsEnvio") && codigoMunicipio != 3304003
-                        ? "2.01"
-                        : "2.03";
+                    if (namespaceRaiz.IndexOf("ABRASF/arquivos/nfse.xsd", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        return "1.00";
+                    }
+
+                    return "2.03";
 
                 case PadraoNFSe.ABASE:
                 case PadraoNFSe.PRODATA:
