@@ -2176,7 +2176,7 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoNFCredito
     {
         /// <summary>
-        /// 01 - A Definir (SEFAZ ainda não definiu esta tabela)
+        /// 01 - Multa e juros
         /// </summary>
         [XmlEnum("01")]
         MultaJuros = 1,
@@ -2203,7 +2203,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 05 - Transferência de crédito na sucessão
         /// </summary>
         [XmlEnum("05")]
-        TransferenciaDeCreditoNaSucessao = 5
+        TransferenciaDeCreditoNaSucessao = 5,
+
+        /// <summary>
+        /// 06 - Retorno por recusa parcial na entrega
+        /// </summary>
+        [XmlEnum("06")]
+        RetornoRecusaParcialEntrega = 6
     }
 
     #endregion
