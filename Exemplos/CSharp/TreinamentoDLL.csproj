@@ -39,7 +39,7 @@
       <HintPath>packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
     <Reference Include="GeradorCIOTShared, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.DFe.20260623.1501.18\lib\net472\GeradorCIOTShared.dll</HintPath>
+      <HintPath>packages\Unimake.DFe.20260701.1023.20\lib\net472\GeradorCIOTShared.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.Cryptography, Version=10.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.Cryptography.10.0.9\lib\net462\Microsoft.Bcl.Cryptography.dll</HintPath>
@@ -123,8 +123,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Unimake.Business.DFe, Version=2026.6.23.1501, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.DFe.20260623.1501.18\lib\net472\Unimake.Business.DFe.dll</HintPath>
+    <Reference Include="Unimake.Business.DFe, Version=2026.7.1.1023, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Unimake.DFe.20260701.1023.20\lib\net472\Unimake.Business.DFe.dll</HintPath>
     </Reference>
     <Reference Include="Unimake.Cryptography, Version=2026.6.18.1051, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Unimake.Cryptography.20260618.1051.35\lib\netstandard2.0\Unimake.Cryptography.dll</HintPath>
