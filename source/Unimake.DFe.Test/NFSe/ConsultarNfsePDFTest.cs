@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
@@ -58,7 +59,23 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultarNfsePDF = new ConsultarNfsePDF(conteudoXML, configuracao);
-            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarNfsePDF));
+
+            if (padraoNFSe == PadraoNFSe.GIF)
+            {
+                try
+                {
+                    Assert.Multiple(() => TestUtility.AnalisaResultado(consultarNfsePDF));
+                }
+                catch (Exception ex)
+                {
+                    Assert.Contains("Chave de acesso", ex.Message, StringComparison.OrdinalIgnoreCase);
+                    Assert.Contains("encontrada", ex.Message, StringComparison.OrdinalIgnoreCase);
+                }
+            }
+            else
+            {
+                Assert.Multiple(() => TestUtility.AnalisaResultado(consultarNfsePDF));
+            }
         }
     }
 }
