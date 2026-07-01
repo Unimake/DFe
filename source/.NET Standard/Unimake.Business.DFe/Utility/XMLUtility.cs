@@ -722,14 +722,32 @@ namespace Unimake.Business.DFe.Utility
             {
                 if (linePosition > 0)
                 {
-                    var positionStart = xml.LastIndexOf("<", linePosition);
+                    var searchIndex = linePosition >= xml.Length ? xml.Length - 1 : linePosition;
+                    var positionStart = xml.LastIndexOf("<", searchIndex, StringComparison.Ordinal);
 
-                    if (voltarUmaTag)
+                    if (voltarUmaTag && positionStart > 0)
                     {
-                        positionStart = xml.LastIndexOf("<", positionStart - 1);
+                        var previousPositionStart = xml.LastIndexOf("<", positionStart - 1, StringComparison.Ordinal);
+
+                        if (previousPositionStart >= 0)
+                        {
+                            positionStart = previousPositionStart;
+                        }
                     }
 
-                    var positionFinal = xml.IndexOf(">", linePosition) - positionStart + 1;
+                    if (positionStart < 0)
+                    {
+                        return message;
+                    }
+
+                    var positionEnd = xml.IndexOf(">", positionStart, StringComparison.Ordinal);
+
+                    if (positionEnd < 0)
+                    {
+                        positionEnd = xml.Length - 1;
+                    }
+
+                    var positionFinal = positionEnd - positionStart + 1;
 
                     message = "TAG com caracteres inválidos: " + xml.Substring(positionStart, positionFinal);
                 }
