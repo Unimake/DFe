@@ -196,9 +196,9 @@
 		</ConsultarNfseFaixa>
 		<ConsultarRpsDisponivel versao="2.04">
 			<Descricao>Consulta de RPS disponível</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/anapolis/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarRpsDisponivelEnvio</TagAssinatura>

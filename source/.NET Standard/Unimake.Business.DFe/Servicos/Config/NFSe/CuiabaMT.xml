@@ -157,9 +157,9 @@
 		</ConsultarNfseServicoPrestado>
 		<ConsultarRpsDisponivel versao="2.04">
 			<Descricao>Consulta de RPS disponível</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarRpsDisponivelEnvio</TagAssinatura>

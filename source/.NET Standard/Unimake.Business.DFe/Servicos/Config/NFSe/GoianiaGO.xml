@@ -117,9 +117,9 @@
 		</ConsultarNfseServicoTomado>
 		<ConsultarRpsDisponivel versao="2.04">
 			<Descricao>Consulta os dados cadastrais</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/goiania/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarRpsDisponivelEnvio</TagAssinatura>
