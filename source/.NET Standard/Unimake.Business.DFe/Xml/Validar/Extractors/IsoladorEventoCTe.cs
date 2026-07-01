@@ -1,33 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Interfaces;
 
-namespace Unimake.Business.DFe.Isoladores
+namespace Unimake.Business.DFe.Xml.Validar.Extractors
 {
-    /// <summary>
-    /// Isolador para CTe (modais e eventos).
-    /// Extrai infModal ou detEvento conforme necessário.
-    /// </summary>
-    internal class IsoladorCTe : IXmlEspecificoIsolador
+    internal class IsoladorEventoCTe : IXmlEspecificoIsolador
     {
         public XmlDocument Isolar(XmlNode node)
         {
             var xmlEspecifico = new XmlDocument();
-            var infModal = node.SelectSingleNode(".//*[local-name()='infModal']");
-
-            if (infModal is null)
-            {
-                IsoladorEventoCTe(node, xmlEspecifico);
-            }
-            else
-            {
-                xmlEspecifico.LoadXml(infModal.InnerXml);
-            }
-
+            IsolarEvento(node, xmlEspecifico);
             return xmlEspecifico;
         }
 
-        private void IsoladorEventoCTe(XmlNode node, XmlDocument xmlEspecifico)
+        private void IsolarEvento(XmlNode node, XmlDocument xmlEspecifico)
         {
             var elementInfEvento = (XmlElement)node.SelectSingleNode("*[local-name()='infEvento']");
             if (elementInfEvento is null)

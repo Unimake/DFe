@@ -245,7 +245,6 @@ namespace Unimake.Business.DFe.Servicos.NFGas
 
         #endregion Public Properties
 
-
         #region Public Constructors
 
         /// <summary>
@@ -288,23 +287,7 @@ namespace Unimake.Business.DFe.Servicos.NFGas
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura e QRCode para forçar criar novamente
             NFGas = NFGas.LerXML<Xml.NFGas.NFGas>(ConteudoXML);
-            NFGas.Signature = null;
-            NFGas.InfNFGasSupl = null;
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = NFGas.GerarXML();
-
-            //Forçar assinar e criar o QRCode novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado e com QRCode
-            NFGas = NFGas.LerXML<Xml.NFGas.NFGas>(ConteudoXML);
-
-            #endregion Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
         }
 
         #endregion Public Constructors

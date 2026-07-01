@@ -80,6 +80,7 @@ namespace Unimake.DFe.Test.NFe
         [Theory]
         [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
         [InlineData(@"..\..\..\NFe\Resources\99999999999999999999999999999999999999999999-procNFe.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\31260655555555555555558900999999991888888880-procNfe.xml")]
         public void SerializacaoDesserializacaoNfeProc(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
@@ -112,6 +113,54 @@ namespace Unimake.DFe.Test.NFe
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização e desserialização de múltiplas mensagens no protocolo da NFe
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
+        public void SerializacaoDesserializacaoInfProtComMultiplasMensagens()
+        {
+            const string xml = "<infProt xmlns=\"http://www.portalfiscal.inf.br/nfe\"><tpAmb>1</tpAmb><verAplic>verAplic1</verAplic><chNFe>11170706117473000150550010000000011123456781</chNFe><dhRecbto>2017-07-12T09:44:07-03:00</dhRecbto><nProt>123456789012345</nProt><digVal>digVal1</digVal><cStat>100</cStat><xMotivo>Autorizado</xMotivo><cMsg>1</cMsg><xMsg>Mensagem 1</xMsg><cMsg>2</cMsg><xMsg>Mensagem 2</xMsg></infProt>";
+
+            var root = new System.Xml.Serialization.XmlRootAttribute("infProt")
+            {
+                Namespace = "http://www.portalfiscal.inf.br/nfe"
+            };
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(InfProt), root);
+            InfProt infProt;
+
+            using (var reader = new StringReader(xml))
+            {
+                infProt = (InfProt)serializer.Deserialize(reader);
+            }
+
+            Assert.Equal(2, infProt.Mensagem.Count);
+            Assert.Equal("1", infProt.CMsg);
+            Assert.Equal("Mensagem 1", infProt.XMsg);
+            Assert.Equal("2", infProt.Mensagem[1].CMsg);
+            Assert.Equal("Mensagem 2", infProt.Mensagem[1].XMsg);
+
+            var namespaces = new System.Xml.Serialization.XmlSerializerNamespaces();
+            namespaces.Add(string.Empty, "http://www.portalfiscal.inf.br/nfe");
+
+            using (var writer = new StringWriter())
+            {
+                serializer.Serialize(writer, infProt, namespaces);
+                var xmlGerado = writer.ToString();
+
+                var docGerado = new XmlDocument();
+                docGerado.LoadXml(xmlGerado);
+
+                var nsmgr = new XmlNamespaceManager(docGerado.NameTable);
+                nsmgr.AddNamespace("nfe", "http://www.portalfiscal.inf.br/nfe");
+
+                Assert.Equal("1", docGerado.SelectSingleNode("//nfe:cMsg[1]", nsmgr)?.InnerText);
+                Assert.Equal("Mensagem 1", docGerado.SelectSingleNode("//nfe:xMsg[1]", nsmgr)?.InnerText);
+                Assert.Equal("2", docGerado.SelectSingleNode("//nfe:cMsg[2]", nsmgr)?.InnerText);
+                Assert.Equal("Mensagem 2", docGerado.SelectSingleNode("//nfe:xMsg[2]", nsmgr)?.InnerText);
+            }
         }
 
         /// <summary>

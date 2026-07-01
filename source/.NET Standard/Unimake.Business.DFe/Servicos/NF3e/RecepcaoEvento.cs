@@ -69,52 +69,59 @@ namespace Unimake.Business.DFe.Servicos.NF3e
         {
             XmlValidarConteudo(); // Efetuar a validação antes de validar schema para evitar alguns erros que não ficam claros para o desenvolvedor.
 
-            var schemaArquivo = string.Empty;
-            var schemaArquivoEspecifico = string.Empty;
+            var resultadoValidacao = ValidarXMLCentralizado();
 
-            if (Configuracoes.SchemasEspecificos.Count > 0)
+            if (!resultadoValidacao.Validado)
             {
-                int tpEvento;
-                if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
-                {
-                    tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
-                }
-                else
-                {
-                    throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
-                }
-
-                schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
-                schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
 
-            #region Validar o XML geral
+            //var schemaArquivo = string.Empty;
+            //var schemaArquivoEspecifico = string.Empty;
 
-            ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
+            //if (Configuracoes.SchemasEspecificos.Count > 0)
+            //{
+            //    int tpEvento;
+            //    if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
+            //    {
+            //        tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
+            //    }
+            //    else
+            //    {
+            //        throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
+            //    }
 
-            #endregion Validar o XML geral
+            //    schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
+            //    schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
+            //}
 
-            #region Validar a parte específica de cada evento
+            //#region Validar o XML geral
 
-            var listEvento = ConteudoXML.GetElementsByTagName("evento");
-            for (var i = 0; i < listEvento.Count; i++)
-            {
-                var elementEvento = (XmlElement)listEvento[i];
+            //ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
 
-                if (elementEvento.GetElementsByTagName("infEvento")[0] != null)
-                {
-                    var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
-                    if (elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
-                    {
-                        var xmlEspecifico = new XmlDocument();
-                        xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName("detEvento")[0].OuterXml);
+            //#endregion Validar o XML geral
 
-                        ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
-                    }
-                }
-            }
+            //#region Validar a parte específica de cada evento
 
-            #endregion Validar a parte específica de cada evento
+            //var listEvento = ConteudoXML.GetElementsByTagName("evento");
+            //for (var i = 0; i < listEvento.Count; i++)
+            //{
+            //    var elementEvento = (XmlElement)listEvento[i];
+
+            //    if (elementEvento.GetElementsByTagName("infEvento")[0] != null)
+            //    {
+            //        var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
+            //        if (elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
+            //        {
+            //            var xmlEspecifico = new XmlDocument();
+            //            xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName("detEvento")[0].OuterXml);
+
+            //            ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
+            //        }
+            //    }
+            //}
+
+            //#endregion Validar a parte específica de cada evento
         }
 
         /// <summary>
@@ -198,22 +205,7 @@ namespace Unimake.Business.DFe.Servicos.NF3e
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura para forçar criar novamente
             EventoNF3e = EventoNF3e.LerXML<EventoNF3e>(ConteudoXML);
-            EventoNF3e.Signature = null;
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = EventoNF3e.GerarXML();
-
-            //Forçar assinar novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado
-            EventoNF3e = EventoNF3e.LerXML<EventoNF3e>(ConteudoXML);
-
-            #endregion
         }
 
         /// <summary>

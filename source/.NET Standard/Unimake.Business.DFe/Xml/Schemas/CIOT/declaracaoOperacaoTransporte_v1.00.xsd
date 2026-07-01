@@ -54,17 +54,31 @@
       <xs:choice>
         <xs:element name="temp" type="TTempErro"/>
         <xs:sequence>
-          <xs:element name="IdOperacaoTransporte" type="TCodigoOperacao12"/>
-          <xs:element name="CodigoVerificador">
+          <xs:element name="IdOperacaoTransporte" type="TCodigoOperacao12" minOccurs="0"/>
+          <xs:element name="CodigoVerificador" minOccurs="0">
             <xs:simpleType>
               <xs:restriction base="xs:string">
                 <xs:pattern value="[0-9]{4}"/>
               </xs:restriction>
             </xs:simpleType>
           </xs:element>
-          <xs:element name="Protocolo" type="TProtocolo"/>
-          <xs:element name="Codigo" type="TCodigoRetorno"/>
+          <xs:element name="Protocolo" type="TProtocolo" minOccurs="0"/>
+          <xs:element name="Codigo" type="TCodigoRetorno" minOccurs="0"/>
           <xs:element name="Mensagem" type="xs:string"/>
+          <xs:element name="Mensagens">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Mensagem" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Codigo" type="TCodigoRetorno" minOccurs="0"/>
+                      <xs:element name="Descricao" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
           <xs:element name="AvisoTransportador" minOccurs="0">
             <xs:simpleType>
               <xs:restriction base="xs:string">

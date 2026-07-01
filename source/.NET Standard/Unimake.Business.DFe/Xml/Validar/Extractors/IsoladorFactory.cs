@@ -11,7 +11,7 @@ namespace Unimake.Business.DFe.Isoladores
     /// </summary>
     internal static class IsoladorFactory
     {
-        public static IXmlEspecificoIsolador CriarIsolador(TipoDFe tipoDFe)
+        public static IXmlEspecificoIsolador CriarIsolador(TipoDFe tipoDFe, bool isEvento)
         {
             switch (tipoDFe)
             {
@@ -19,7 +19,11 @@ namespace Unimake.Business.DFe.Isoladores
                 case TipoDFe.NFCe:
                     return new IsoladorNFe();
                 case TipoDFe.CTe:
-                    return new IsoladorCTe();
+                    if (isEvento)
+                    {
+                        return new IsoladorEventoCTe();
+                    } 
+                    return new IsoladorModalCTe();
                 case TipoDFe.DCe:
                     return new IsoladorDCe();
                 case TipoDFe.MDFe:

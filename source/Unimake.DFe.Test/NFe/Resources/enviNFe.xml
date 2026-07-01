@@ -63,19 +63,6 @@
 				<CNAE>CNAE1</CNAE>
 				<CRT>1</CRT>
 			</emit>
-			<avulsa>
-				<CNPJ>CNPJ1</CNPJ>
-				<xOrgao>xOrgao1</xOrgao>
-				<matr>matr1</matr>
-				<xAgente>xAgente1</xAgente>
-				<fone>fone1</fone>
-				<UF>AC</UF>
-				<nDAR>nDAR1</nDAR>
-				<dEmi>2021-11-11</dEmi>
-				<vDAR>vDAR1</vDAR>
-				<repEmi>repEmi1</repEmi>
-				<dPag>2021-11-11</dPag>
-			</avulsa>
 			<dest>
 				<CNPJ>CNPJ1</CNPJ>
 				<xNome>xNome1</xNome>
@@ -1399,19 +1386,6 @@
 				<CNAE>CNAE2</CNAE>
 				<CRT>2</CRT>
 			</emit>
-			<avulsa>
-				<CNPJ>CNPJ2</CNPJ>
-				<xOrgao>xOrgao2</xOrgao>
-				<matr>matr2</matr>
-				<xAgente>xAgente2</xAgente>
-				<fone>fone2</fone>
-				<UF>AL</UF>
-				<nDAR>nDAR2</nDAR>
-				<dEmi>2021-11-11</dEmi>
-				<vDAR>vDAR2</vDAR>
-				<repEmi>repEmi2</repEmi>
-				<dPag>2021-11-11</dPag>
-			</avulsa>
 			<dest>
 				<CNPJ>CNPJ2</CNPJ>
 				<xNome>xNome2</xNome>
@@ -2722,19 +2696,6 @@
 				<CNAE>CNAE3</CNAE>
 				<CRT>3</CRT>
 			</emit>
-			<avulsa>
-				<CNPJ>CNPJ3</CNPJ>
-				<xOrgao>xOrgao3</xOrgao>
-				<matr>matr3</matr>
-				<xAgente>xAgente3</xAgente>
-				<fone>fone3</fone>
-				<UF>AM</UF>
-				<nDAR>nDAR3</nDAR>
-				<dEmi>2021-11-11</dEmi>
-				<vDAR>vDAR3</vDAR>
-				<repEmi>repEmi3</repEmi>
-				<dPag>2021-11-11</dPag>
-			</avulsa>
 			<dest>
 				<CNPJ>CNPJ3</CNPJ>
 				<xNome>xNome3</xNome>

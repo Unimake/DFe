@@ -1,11 +1,14 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
+using System;
 using System.IO;
 using System.Net.Http;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
-using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.ConsumirServico.Compatibility;
+using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Validator;
 using Unimake.Exceptions;
 
@@ -50,16 +53,23 @@ namespace Unimake.Business.DFe.Servicos.DARE
         {
             XmlValidarConteudo(); // Efetuar a validação antes de validar schema para evitar alguns erros que não ficam claros para o desenvolvedor.
 
-            if (!string.IsNullOrWhiteSpace(Configuracoes.SchemaArquivo))
-            {
-                var validar = new ValidarSchema();
-                validar.Validar(ConteudoXML, Configuracoes.TipoDFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+            var resultado = ValidarXMLCentralizado();
 
-                if (!validar.Success)
-                {
-                    throw new ValidarXMLException(validar.ErrorMessage);
-                }
+            if (!resultado.Validado)
+            {
+                throw new ValidarXMLException(resultado.MensagemRetorno);
             }
+
+            //if (!string.IsNullOrWhiteSpace(Configuracoes.SchemaArquivo))
+            //{
+            //    var validar = new ValidarSchema();
+            //    validar.Validar(ConteudoXML, Configuracoes.TipoDFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+
+            //    if (!validar.Success)
+            //    {
+            //        throw new ValidarXMLException(validar.ErrorMessage);
+            //    }
+            //}
         }
 
         /// <summary>
@@ -117,37 +127,9 @@ namespace Unimake.Business.DFe.Servicos.DARE
                 DefinirConfiguracao();
             }
 
-            // 
-            /* Retirado a linha especial do Wandrey; ID #170137
-
-                ¯\_(ツ)_/¯
-
-                 There is always a solution
-
-                         ,;~;,
-                            /\_
-                           (  /
-                           ((),     ;,;
-                           |  \\  ,;;'(
-                       __ _(  )'~;;'   \
-                     /'  '\'()/~' \ /'\.)
-                  ,;(      )||     |
-                 ,;' \    /-(.;,   )
-                      ) /       ) /
-                     //         ||
-                    (_\         (_\
-
-                 go horse <3
-
-            */
-
             System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
 
-            //Forçar criar a tag QrCode bem como assinatura para que o usuário possa acessar o conteúdo no objeto do XML antes de enviar
-            _ = ConteudoXMLAssinado;
-
             XmlValidar();
-
         }
         #endregion Protected Methods
 
@@ -164,6 +146,8 @@ namespace Unimake.Business.DFe.Servicos.DARE
             AjustarXMLAposAssinado();
 
             XmlValidar();
+            AtualizarHttpContentAposValidacao();
+
             var validatorFactory = new ValidatorFactory();
 
             if (!(validatorFactory.BuidValidator(ConteudoXML.InnerXml)?.Validate() ?? true))
@@ -191,6 +175,18 @@ namespace Unimake.Business.DFe.Servicos.DARE
 
             apiConfig.Dispose();
             consumirAPI.Dispose();
+        }
+
+        /// <summary>
+        /// Atualiza o conteúdo HTTP dos serviços DARE que geram JSON a partir do XML validado.
+        /// </summary>
+        protected virtual void AtualizarHttpContentAposValidacao()
+        {
+            if (Configuracoes.Servico == Servico.DAREEnvio &&
+                !string.Equals(Configuracoes.MetodoAPI, "get", StringComparison.OrdinalIgnoreCase))
+            {
+                Configuracoes.HttpContent = GerarJSON();
+            }
         }
 
         /// <summary>

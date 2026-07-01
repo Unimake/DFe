@@ -4,6 +4,8 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Collections.Generic;
+using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -119,15 +121,143 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XMotivo { get; set; }
 
         /// <summary>
+        /// Mensagens da SEFAZ para o emissor
+        /// </summary>
+        [XmlIgnore]
+        public List<MensagemProtocoloNFe> Mensagem { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade Mensagem para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlAnyElement]
+        public XmlElement[] MensagemField
+        {
+            get
+            {
+                if ((Mensagem?.Count ?? 0) == 0)
+                {
+                    return null;
+                }
+
+                var doc = new XmlDocument();
+                var result = new List<XmlElement>();
+
+                foreach (var item in Mensagem)
+                {
+                    if (!string.IsNullOrWhiteSpace(item.CMsg))
+                    {
+                        var cMsg = doc.CreateElement("cMsg", "http://www.portalfiscal.inf.br/nfe");
+                        cMsg.InnerText = item.CMsg;
+                        result.Add(cMsg);
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(item.XMsg))
+                    {
+                        var xMsg = doc.CreateElement("xMsg", "http://www.portalfiscal.inf.br/nfe");
+                        xMsg.InnerText = item.XMsg;
+                        result.Add(xMsg);
+                    }
+                }
+
+                return result.ToArray();
+            }
+            set
+            {
+                Mensagem = null;
+
+                if (value == null || value.Length == 0)
+                {
+                    return;
+                }
+
+                Mensagem = new List<MensagemProtocoloNFe>();
+                MensagemProtocoloNFe item = null;
+
+                foreach (var element in value)
+                {
+                    if (element.LocalName == "cMsg")
+                    {
+                        item = new MensagemProtocoloNFe
+                        {
+                            CMsg = element.InnerText
+                        };
+
+                        Mensagem.Add(item);
+                    }
+                    else if (element.LocalName == "xMsg")
+                    {
+                        if (item == null)
+                        {
+                            item = new MensagemProtocoloNFe();
+                            Mensagem.Add(item);
+                        }
+
+                        item.XMsg = element.InnerText;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Código da Mensagem
         /// </summary>
-        [XmlElement("cMsg")]
+        [XmlIgnore]
+        public string CMsg
+        {
+            get => Mensagem?.Count > 0 ? Mensagem[0].CMsg : null;
+            set
+            {
+                InicializarMensagem();
+                Mensagem[0].CMsg = value;
+            }
+        }
+
+        /// <summary>
+        /// Mensagem da SEFAZ para o emissor
+        /// </summary>
+        [XmlIgnore]
+        public string XMsg
+        {
+            get => Mensagem?.Count > 0 ? Mensagem[0].XMsg : null;
+            set
+            {
+                InicializarMensagem();
+                Mensagem[0].XMsg = value;
+            }
+        }
+
+        private void InicializarMensagem()
+        {
+            if (Mensagem == null)
+            {
+                Mensagem = new List<MensagemProtocoloNFe>();
+            }
+
+            if (Mensagem.Count == 0)
+            {
+                Mensagem.Add(new MensagemProtocoloNFe());
+            }
+        }
+    }
+
+    /// <summary>
+    /// Classe de mensagem da SEFAZ para o emissor
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.MensagemProtocoloNFe")]
+    [ComVisible(true)]
+#endif
+    public class MensagemProtocoloNFe
+    {
+        /// <summary>
+        /// Código da Mensagem
+        /// </summary>
         public string CMsg { get; set; }
 
         /// <summary>
         /// Mensagem da SEFAZ para o emissor
         /// </summary>
-        [XmlElement("xMsg")]
         public string XMsg { get; set; }
     }
 }

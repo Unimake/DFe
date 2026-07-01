@@ -105,11 +105,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// Número da NFS-e.
         /// </summary>
         [XmlElement("nNFSe")]
-#if INTEROP
-        public int NNFSe { get; set; }
-#else
-        public long NNFSe { get; set; }
-#endif
+        public string NNFSe { get; set; }
 
         /// <summary>
         /// Código IBGE do município de incidência do ISSQN (quando aplicável).
@@ -252,7 +248,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
                 throw new Exception("Informe o CNPJ ou CPF do emitente (emit.CNPJ/emit.CPF) antes de gerar o Id da NFS-e.");
             }
 
-            if (NNFSe == 0)
+            if (string.IsNullOrWhiteSpace(NNFSe))
             {
                 throw new Exception("Informe o número da NFS-e (nNFSe) antes de gerar o Id da NFS-e.");
             }
@@ -284,7 +280,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
                 NumeroDoctoFiscal = NNFSe,
                 AnoEmissao = (DhProc.Year % 100).ToString("D2"),
                 MesEmissao = DhProc.Month.ToString("00"),
-                CodigoNumerico = XMLUtility.GerarCodigoNumerico((int)NNFSe, 9).ToString("000000000")
+                CodigoNumerico = XMLUtility.GerarCodigoNumerico(Convert.ToInt32(NNFSe), 9).ToString("000000000")
             };
 
             var chaveNFSe = MontarChaveNFSe(ref conteudoChaveNFSe);

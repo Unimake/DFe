@@ -246,7 +246,6 @@ namespace Unimake.Business.DFe.Servicos.NF3e
 
         #endregion Public Properties
 
-
         #region Public Constructors
 
         /// <summary>
@@ -289,23 +288,7 @@ namespace Unimake.Business.DFe.Servicos.NF3e
 
             Inicializar(doc, configuracao);
 
-            #region Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
-
-            //Remover a assinatura e QRCode para forçar criar novamente
             NF3e = NF3e.LerXML<Xml.NF3e.NF3e>(ConteudoXML);
-            NF3e.Signature = null;
-            NF3e.InfNF3eSupl = null;
-
-            //Gerar o XML novamente com base no objeto
-            ConteudoXML = NF3e.GerarXML();
-
-            //Forçar assinar e criar o QRCode novamente
-            _ = ConteudoXMLAssinado;
-
-            //Atualizar o objeto novamente com o XML já assinado e com QRCode
-            NF3e = NF3e.LerXML<Xml.NF3e.NF3e>(ConteudoXML);
-
-            #endregion Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
         }
 
         #endregion Public Constructors

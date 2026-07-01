@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.06.18.1041</AssemblyVersion>
-		<FileVersion>2026.06.18.1041</FileVersion>
+		<AssemblyVersion>2026.07.01.1023</AssemblyVersion>
+		<FileVersion>2026.07.01.1023</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -411,7 +411,6 @@
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BebedouroSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BelemPA.xml" />
-		<None Remove="Servicos\Config\NFSe\Betha.xml" />
 		<None Remove="Servicos\Config\NFSe\BETHA_CLOUD.xml" />
 		<None Remove="Servicos\Config\NFSe\BiguacuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BiriguiSP.xml" />
@@ -3107,9 +3106,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\Template.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\Betha.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\SNCM\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\SNCM\SNCM.xml">
@@ -3712,9 +3708,9 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="System.Net.Http.Json" Version="10.0.9" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.9" />
-		<PackageReference Include="Unimake.Cryptography" Version="20260416.712.52" />
-		<PackageReference Include="Unimake.Extensions" Version="20260416.712.52" />
-		<PackageReference Include="Unimake.Utils" Version="20260416.712.52" />
+		<PackageReference Include="Unimake.Cryptography" Version="20260618.1051.35" />
+		<PackageReference Include="Unimake.Extensions" Version="20260618.1051.35" />
+		<PackageReference Include="Unimake.Utils" Version="20260618.1051.35" />
 	</ItemGroup>
 
 	<ItemGroup>

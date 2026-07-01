@@ -1973,7 +1973,35 @@ namespace Unimake.Business.DFe.Servicos
         /// 5 - DANFE NFC-e em mensagem eletrônica
         /// </summary>
         [XmlEnum("5")]
-        NFCeMensagemEletronica = 5
+        NFCeMensagemEletronica = 5,
+
+        /// <summary>
+        /// 6 - DANFE Simplificado Tipo 2
+        /// </summary>
+        [XmlEnum("6")]
+        SimplificadoTipo2 = 6
+    }
+
+    #endregion
+
+    #region TipoAplicacaoAliquotaZeroCBS
+
+    /// <summary>
+    /// Tipo de aplicação da alíquota zero da CBS
+    /// </summary>
+    public enum TipoAplicacaoAliquotaZeroCBS
+    {
+        /// <summary>
+        /// 1 - Sem processo aprovado na Suframa
+        /// </summary>
+        [XmlEnum("1")]
+        SemProcessoSuframa = 1,
+
+        /// <summary>
+        /// 2 - Com processo aprovado na Suframa
+        /// </summary>
+        [XmlEnum("2")]
+        ComProcessoSuframa = 2
     }
 
     #endregion
@@ -2176,7 +2204,7 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoNFCredito
     {
         /// <summary>
-        /// 01 - A Definir (SEFAZ ainda não definiu esta tabela)
+        /// 01 - Multa e juros
         /// </summary>
         [XmlEnum("01")]
         MultaJuros = 1,
@@ -2203,7 +2231,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 05 - Transferência de crédito na sucessão
         /// </summary>
         [XmlEnum("05")]
-        TransferenciaDeCreditoNaSucessao = 5
+        TransferenciaDeCreditoNaSucessao = 5,
+
+        /// <summary>
+        /// 06 - Retorno por recusa parcial na entrega
+        /// </summary>
+        [XmlEnum("06")]
+        RetornoRecusaParcialEntrega = 6
     }
 
     #endregion
@@ -7349,12 +7383,6 @@ namespace Unimake.Business.DFe.Servicos
         None = 0,
 
         /// <summary>
-        /// BETHA Sistemas
-        /// </summary>
-        [Description("BETHA Sistemas")]
-        BETHA = 1,
-
-        /// <summary>
         /// SIGCORP - Tecnologia da informação
         /// </summary>
         [Description("SIGCORP - Tecnologia da informação")]
@@ -7718,12 +7746,6 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("ABASE")]
         ABASE = 9999902,
-
-        /// <summary>
-        /// PADRÃO BETHA
-        /// </summary>
-        [Description("BETHA Sistemas")]
-        BETHA = 9999903,
 
         /// <summary>
         /// PADRÃO WEBFISCO

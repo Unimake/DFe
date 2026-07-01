@@ -9,11 +9,11 @@
 		<tpEvento>110111</tpEvento>
 		<nSeqEvento>1</nSeqEvento>
 		<detEvento versaoEvento="1.00">
-			 <evCancNF3e>
+			<evCancNF3e>
 				<descEvento>Cancelamento</descEvento>
-				<nProt>456789</nProt>
+				<nProt>1234567890123456</nProt>
 				<xJust>Erro na descricao dos produtos</xJust>
-            </evCancNF3e>
+			</evCancNF3e>
 		</detEvento>
 	</infEvento>
 </eventoNF3e>

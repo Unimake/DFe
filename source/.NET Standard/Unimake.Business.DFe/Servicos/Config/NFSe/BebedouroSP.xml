@@ -52,7 +52,7 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><ws_nfe.IMPRESSAOLINKNFSE>>{xmlBodyScape}</ws_nfe.IMPRESSAOLINKNFSE>></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><ws_nfe.IMPRESSAOLINKNFSE><nfe:Xml_entrada>{xmlBodyScape}</nfe:Xml_entrada></ws_nfe.IMPRESSAOLINKNFSE></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ws_nfe.IMPRESSAOLINKNFSEResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>

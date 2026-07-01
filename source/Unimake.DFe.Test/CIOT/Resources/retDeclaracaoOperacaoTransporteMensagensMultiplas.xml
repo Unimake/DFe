@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetDeclaracaoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+  <Protocolo>E98000000088800</Protocolo>
+  <Codigo>208</Codigo>
+  <Mensagem>Código de identificação da operação já cadastrado.</Mensagem>
+  <Mensagens>
+    <Mensagem>
+      <Codigo>208</Codigo>
+      <Descricao>Código de identificação da operação já cadastrado.</Descricao>
+    </Mensagem>
+    <Mensagem>
+      <Codigo>219</Codigo>
+      <Descricao>Rejeição: A data e hora da declaração está fora do intervalo de tolerância permitido para esta operação.</Descricao>
+    </Mensagem>
+    <Mensagem>
+      <Codigo>269</Codigo>
+      <Descricao>Rejeição: A data de início da viagem não pode ser inferior à data atual.</Descricao>
+    </Mensagem>
+  </Mensagens>
+</RetDeclaracaoOperacaoTransporte>

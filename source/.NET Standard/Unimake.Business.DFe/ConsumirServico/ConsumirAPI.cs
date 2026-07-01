@@ -107,14 +107,11 @@ namespace Unimake.Business.DFe
                     {
                         RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
                     }
-
-                    //Remover quebras de linhas
-                    RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
                 }
 
                 RetornoServicoXML = new XmlDocument
                 {
-                    PreserveWhitespace = false
+                    PreserveWhitespace = true
                 };
 
                 RetornoServicoXML.LoadXml(retornoXml.InnerXml);

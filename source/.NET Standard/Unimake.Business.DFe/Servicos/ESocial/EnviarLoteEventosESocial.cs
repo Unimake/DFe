@@ -1,6 +1,8 @@
-﻿using System;
-using System.Linq.Expressions;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+
+using System;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
@@ -38,59 +40,6 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
         #endregion Public Properties
 
-        #region Private Methods
-
-        private void ValidarXMLEvento(XmlDocument xml, string schemaArquivo, string targetNS)
-        {
-            var validar = new ValidarSchema();
-            validar.Validar(xml, (Configuracoes.TipoDFe).ToString() + "." + schemaArquivo, targetNS);
-
-            if (!validar.Success)
-            {
-                throw new ValidarXMLException(validar.ErrorMessage);
-            }
-        }
-
-        /// <summary>
-        /// Remove a assinatura do objeto para ser assinado novamente evitando problemas
-        /// </summary>
-        private void RemoverAssinaturaDoERP()
-        {
-            #region Autor: Wesley - Data: 03/04/25 - Ticket: #172039 - Atualizado: #173848
-
-            ESocialEnvioLoteEventos = ESocialEnvioLoteEventos.LerXML<ESocialEnvioLoteEventos>(ConteudoXML);
-
-            foreach (var evento in ESocialEnvioLoteEventos.EnvioLoteEventos.Eventos.Evento)
-            {
-                var propriedades = evento.GetType().GetProperties();
-
-                foreach (var propriedade in propriedades)
-                {
-                    var valorEvento = propriedade.GetValue(evento);
-
-                    if (valorEvento != null)
-                    {
-                        var propriedadeAssinatura = valorEvento.GetType().GetProperty("Signature");
-
-                        propriedadeAssinatura?.SetValue(valorEvento, null);
-                    }
-                }
-            }
-
-            // Atualiza o ConteudoXML sem as assinaturas que vieram no XML
-            ConteudoXML = ESocialEnvioLoteEventos.GerarXML();
-
-            // Força a assinatura agora da DLL
-            _ = ConteudoXMLAssinado;
-
-            // Atualiza o objeto ESocialEnvioLoteEventos com o novo ConteudoXML
-            ESocialEnvioLoteEventos = ESocialEnvioLoteEventos.LerXML<ESocialEnvioLoteEventos>(ConteudoXML);
-
-            #endregion Autor: Wesley - Data: 03/04/25 - Ticket: #172039 - Atualizado: #173848
-        }
-
-        #endregion Private Methods
-
         #region Protected Methods
 
         /// <summary>
@@ -116,29 +65,31 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         /// </summary>
         protected override void XmlValidar()
         {
-            var schemaArquivoEvento = string.Empty;
+            base.XmlValidar();
 
-            ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+            //var schemaArquivoEvento = string.Empty;
 
-            if (Configuracoes.TiposEventosEspecificos.Count > 0)
-            {
-                string eventoEspecifico;
-                var listEventos = ConteudoXML.GetElementsByTagName("evento");
+            //ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-                foreach (XmlNode nodeEvento in listEventos)
-                {
-                    var elementEvento = (XmlElement)nodeEvento;
-                    var esocialEvento = elementEvento.GetElementsByTagName("eSocial")[0];
+            //if (Configuracoes.TiposEventosEspecificos.Count > 0)
+            //{
+            //    string eventoEspecifico;
+            //    var listEventos = ConteudoXML.GetElementsByTagName("evento");
 
-                    var xmlEventoEspecifico = new XmlDocument();
-                    xmlEventoEspecifico.LoadXml(esocialEvento.OuterXml);
+            //    foreach (XmlNode nodeEvento in listEventos)
+            //    {
+            //        var elementEvento = (XmlElement)nodeEvento;
+            //        var esocialEvento = elementEvento.GetElementsByTagName("eSocial")[0];
 
-                    eventoEspecifico = esocialEvento.FirstChild.Name;
-                    schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
+            //        var xmlEventoEspecifico = new XmlDocument();
+            //        xmlEventoEspecifico.LoadXml(esocialEvento.OuterXml);
 
-                    ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
-                }
-            }
+            //        eventoEspecifico = esocialEvento.FirstChild.Name;
+            //        schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
+
+            //        ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
+            //    }
+            //}
 
         }
 
@@ -165,7 +116,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
             Inicializar(eSocialEnviarLoteEventos?.GerarXML() ?? throw new ArgumentNullException(nameof(eSocialEnviarLoteEventos)), configuracao);
 
-            RemoverAssinaturaDoERP();
+            //RemoverAssinaturaDoERP();
         }
 
         /// <summary>
@@ -185,7 +136,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
             Inicializar(doc, configuracao);
 
-            RemoverAssinaturaDoERP();
+            //RemoverAssinaturaDoERP();
         }
 
         #endregion Public Constructors
@@ -288,7 +239,5 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         }
 
         #endregion Result
-
     }
 }
-
