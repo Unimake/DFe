@@ -4,7 +4,7 @@
 		<GerarNfse versao="1.01">
 			<Descricao>Envio do DPS - Sincrono</Descricao>
 			<RequestURIProducao>https://webapp1-vacaria.cidade360.cloud/Nfse.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
-			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
+			<RequestURIHomologacao>https://reformatributaria.cidade360.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>loteXmlGZipB64:[]</WebActionProducao>
 			<TagAssinatura>DPS</TagAssinatura>
@@ -22,7 +22,7 @@
 		<ConsultarNfse versao="1.01">
 			<Descricao>Consultar NFSe</Descricao>
 			<RequestURIProducao>https://webapp1-vacaria.cidade360.cloud/Nfse.Api/NotaNacional/ConsultarNFSe/{Chave}</RequestURIProducao>
-			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/ConsultarNFSe/{Chave}</RequestURIHomologacao>
+			<RequestURIHomologacao>https://reformatributaria.cidade360.cloud/NFSe.Api.Teste/NotaNacional/ConsultarNFSe/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -38,7 +38,7 @@
 		<ConsultarNfsePorRps versao="1.01">
 			<Descricao>Consultar NFSe por DPS</Descricao>
 			<RequestURIProducao>https://webapp1-vacaria.cidade360.cloud/Nfse.Api/NotaNacional/ConsultarDPS/{documento}/{serie}/{numero}</RequestURIProducao>
-			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/ConsultarDPS/{documento}/{serie}/{numero}</RequestURIHomologacao>
+			<RequestURIHomologacao>https://reformatributaria.cidade360.cloud/NFSe.Api.Teste/NotaNacional/ConsultarDPS/{documento}/{serie}/{numero}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -54,7 +54,7 @@
 		<CancelarNfse versao="1.01">
 			<Descricao>Envio do cancelamento de NFSe</Descricao>
 			<RequestURIProducao>https://webapp1-vacaria.cidade360.cloud/Nfse.Api/NotaNacional/EnviarSincrono</RequestURIProducao>
-			<RequestURIHomologacao>https://reformatributaria.govbr.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
+			<RequestURIHomologacao>https://reformatributaria.cidade360.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>loteXmlGZipB64:[]</WebActionProducao>
 			<TagAssinatura>pedRegEvento</TagAssinatura>
