@@ -8132,8 +8132,8 @@ namespace TreinamentoDLL
                                     TpOperGov = TipoOperacaoEnteGovernamental.FornecimentoPagamentoJaRealizado
                                 },
                                 GPagAntecipado = new XmlNFe.GPagAntecipado //RTC
-                                {
-                                    RefNFe = new List<string>
+                                {                                    
+                                    RefDFe = new List<string>
                                     {
                                         "00000000000000000000000000000000000000000000",
                                         "11111111111111111111111111111111111111111111"
