@@ -245,12 +245,6 @@
 		<ArqConfig>VoltaRedondaRJ.xml</ArqConfig>
 		<PadraoNFSe>SIMPLISS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3530706">
-		<Nome>Mogi Guaçu - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>MogiGuacuSP.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5105606">
 		<Nome>Matupá - MT</Nome>
 		<UF>MT</UF>
@@ -304,12 +298,6 @@
 		<UF>SP</UF>
 		<ArqConfig>SorocabaSP.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4310009">
-		<Nome>Ibirubá - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>IbirubaRS.xml</ArqConfig>
-		<PadraoNFSe>DIGIFRED</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3168606">
 		<Nome>Teófilo Otoni - MG</Nome>
@@ -1361,12 +1349,6 @@
 		<ArqConfig>CampinaGrandeDoSulPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="2111300">
-		<Nome>São Luís - MA</Nome>
-		<UF>MA</UF>
-		<ArqConfig>SaoLuisMA.xml</ArqConfig>
-		<PadraoNFSe>DSF</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2211001">
 		<Nome>Teresina - PI</Nome>
 		<UF>PI</UF>
@@ -1762,12 +1744,6 @@
 		<UF>RO</UF>
 		<ArqConfig>VilhenaRO.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3535507">
-		<Nome>Paraguaçu Paulista - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>ParaguacuPaulistaSP.xml</ArqConfig>
-		<PadraoNFSe>SIMPLISS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3148103">
 		<Nome>Patrocínio - MG</Nome>
@@ -2182,12 +2158,6 @@
 		<UF>RS</UF>
 		<ArqConfig>GuaporeRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3304904">
-		<Nome>São Gonçalo - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>SaoGoncaloRJ.xml</ArqConfig>
-		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4306767">
 		<Nome>Eldourado do Sul - RS</Nome>
