@@ -47,7 +47,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     else
                     {
                         var algorithmType = Configuracoes.SignatureAlgorithmType;
-                        
+
                         AssinaturaDigital.Assinar(ConteudoXML, tagAssinatura, tagAtributoID, Configuracoes.CertificadoDigital, algorithmType, true, "", true, Configuracoes.AssinaCanonicalizacaoExclusiva);
 
                         AjustarXMLAposAssinado();
@@ -317,15 +317,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             var dataInicial = string.Empty;
             var dataFinal = string.Empty;
 
-            if (ConteudoXML.GetElementsByTagName("infDPS").Count > 0 || ConteudoXML.GetElementsByTagName("infNFSe").Count > 0 || ConteudoXML.GetElementsByTagName("infPedReg").Count > 0)
-            {
-                if (Configuracoes.RequestURI.Contains("{token}"))
-                {
-                    var token = Configuracoes.MunicipioToken;
-                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{token}", token);
-                }
-            }
-
+            ConfigurarRequestURIEL();
 
             if (Configuracoes.Servico == Servico.NFSeConsultarNfse)
             {
@@ -362,6 +354,83 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                                                                      .Replace("{cnpjCpfTomador}", cnpjCpfTomador)
                                                                      .Replace("{cnpjCpfIntermediario}", cnpjCpfIntermediario);
 
+        }
+
+        private void ConfigurarRequestURIEL()
+        {
+            if (string.IsNullOrWhiteSpace(Configuracoes.RequestURI))
+            {
+                return;
+            }
+
+            if (Configuracoes.RequestURI.Contains("{token}"))
+            {
+                var token = Configuracoes.MunicipioToken;
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{token}", token);
+            }
+
+            foreach (Match match in Regex.Matches(Configuracoes.RequestURI, @"\{(\w+)\}"))
+            {
+                var tagName = match.Groups[1].Value;
+                var value = ObterValorParametroRequestURIEL(tagName);
+
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace(match.Value, value);
+                }
+            }
+        }
+
+        private string ObterValorParametroRequestURIEL(string tagName)
+        {
+            var value = GetXMLElementInnertext(tagName);
+
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                return value;
+            }
+
+            if (string.Equals(tagName, "chaveAcesso", StringComparison.OrdinalIgnoreCase))
+            {
+                return GetXMLElementInnertext("chNFSe");
+            }
+
+            if (string.Equals(tagName, "Chave", StringComparison.OrdinalIgnoreCase))
+            {
+                return ObterChavePeloIdEL();
+            }
+
+            return value;
+        }
+
+        private string ObterChavePeloIdEL()
+        {
+            var nodeList = ConteudoXML.GetElementsByTagName("infDPS");
+
+            if (Configuracoes.Servico != Servico.NFSeConsultarNfsePorRps)
+            {
+                nodeList = ConteudoXML.GetElementsByTagName("infNFSe");
+            }
+
+            if (nodeList == null || nodeList.Count == 0)
+            {
+                return null;
+            }
+
+            var element = nodeList[0] as XmlElement;
+            var id = element?.GetAttribute("Id");
+
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return null;
+            }
+
+            if (Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps)
+            {
+                return id;
+            }
+
+            return (id.StartsWith("NFS", StringComparison.OrdinalIgnoreCase) || id.StartsWith("DPS", StringComparison.OrdinalIgnoreCase)) ? id.Substring(3) : id;
         }
 
         #endregion EL

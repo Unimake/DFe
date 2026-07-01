@@ -1599,7 +1599,7 @@
 		<Nome>Eusébio - CE</Nome>
 		<UF>CE</UF>
 		<ArqConfig>EusebioCE.xml</ArqConfig>
-		<PadraoNFSe>INTERSOL</PadraoNFSe>
+		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2312908">
 		<Nome>Sobral - CE</Nome>
