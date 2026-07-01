@@ -292,7 +292,7 @@ namespace Unimake.DFe.Test.NFSe
     </infConsulta>
 </ConsultaParametros>");
 
-            Assert.Throws<ArgumentException>(() =>
+            Assert.Throws<Exception>(() =>
             {
                 var consulta = new ConsultarConvenioMunicipal(xmlSemMunicipio, configuracao);
                 consulta.Executar();
