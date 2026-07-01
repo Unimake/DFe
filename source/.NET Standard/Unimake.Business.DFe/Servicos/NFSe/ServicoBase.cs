@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -60,7 +61,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     break;
 
                 case PadraoNFSe.HM2SOLUCOES:
-                    HM2SOLUCOES();
                     AuthorizationBasic();
                     break;
 
@@ -114,11 +114,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             base.DefinirConfiguracao();
         }
 
-        private void HM2SOLUCOES()
-        {
-            Configuracoes.HttpContent = new NfsePayloadBuilder().BuildHm2SolucoesContent(ConteudoXML);
-        }
-
         #region Configurações separadas por PadrãoNFSe
 
         #region MEMORY
@@ -156,10 +151,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
             switch (Configuracoes.SchemaVersao)
             {
-                case "2.80":
-                    CriarHttpContentIPM();
-                    break;
-
                 case "2.04":
                     //Remover a linha <?xml version="1.0" encoding="utf-8"?> do XML, pois o webservice do IPM 2.04 não aceita esta linha no corpo do XML.
                     var xmlBody = ConteudoXML.OuterXml;
@@ -170,11 +161,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     }
                     break;
             }
-        }
-
-        private void CriarHttpContentIPM()
-        {
-            Configuracoes.HttpContent = new NfsePayloadBuilder().BuildIpm280Content(Configuracoes, ConteudoXML);
         }
 
         #endregion IPM
@@ -703,16 +689,13 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private ResultadoValidacaoNFSe ValidarXMLCentralizadoNFSe()
         {
-            var xmlValidacao = new XmlDocument();
-            xmlValidacao.LoadXml(ConteudoXML.OuterXml);
-
             var validator = new ValidarEstruturaXML();
             var tipoDFe = Configuracoes.TipoDFe;
             var urlChaveHomologacao = Configuracoes.UrlChaveHomologacao;
             var urlChaveProducao = Configuracoes.UrlChaveProducao;
             var urlQrCodeHomologacao = Configuracoes.UrlQrCodeHomologacao;
             var urlQrCodeProducao = Configuracoes.UrlQrCodeProducao;
-            var resultado = validator.ValidarServico(xmlValidacao, Configuracoes);
+            var resultado = validator.ValidarServico(ConteudoXML, Configuracoes);
 
             return new ResultadoValidacaoNFSe
             {
@@ -755,6 +738,25 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// Validar, o conteúdo das tags do XML, alguns validações manuais que o schema não faz. Vamos implementando novas regras na medida da necessidade de cada serviço.
         /// </summary>
         protected override void XmlValidarConteudo() { }
+
+        /// <summary>
+        /// Cria o conteúdo HTTP padrão para os serviços NFSe que consomem API.
+        /// </summary>
+        /// <returns>Conteúdo HTTP pronto para envio.</returns>
+        protected override HttpContent CriarHttpContentPadrao()
+        {
+            if (Configuracoes.PadraoNFSe == PadraoNFSe.HM2SOLUCOES)
+            {
+                return new NfsePayloadBuilder().BuildHm2SolucoesContent(ConteudoXML);
+            }
+
+            if (Configuracoes.PadraoNFSe == PadraoNFSe.IPM && Configuracoes.SchemaVersao == "2.80")
+            {
+                return new NfsePayloadBuilder().BuildIpm280Content(Configuracoes, ConteudoXML);
+            }
+
+            return base.CriarHttpContentPadrao();
+        }
 
 #if INTEROP
 
@@ -804,25 +806,29 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #endif
         public override void Executar()
         {
-
-            if (Configuracoes.UsaCertificadoDigital && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
-            {
-                if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
-                {
-                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, Configuracoes.SignatureAlgorithmType, true, "Id");
-                }
-
-                if (!string.IsNullOrWhiteSpace(Configuracoes.TagLoteAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagLoteAssinatura))
-                {
-                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagLoteAssinatura, Configuracoes.TagLoteAtributoID, Configuracoes.CertificadoDigital, Configuracoes.SignatureAlgorithmType, true, "Id");
-                }
-            }
-
-            AjustarXMLAposAssinado();
-
             XmlValidar();
+            AjustarXMLAposAssinado();
+            AtualizarHttpContentAposValidacao();
 
             base.Executar();
+        }
+
+        /// <summary>
+        /// Atualiza o conteúdo HTTP de APIs NFSe depois que o XML foi assinado e validado.
+        /// </summary>
+        protected virtual void AtualizarHttpContentAposValidacao()
+        {
+            if (!Configuracoes.IsAPI || string.Equals(Configuracoes.MetodoAPI, "get", StringComparison.OrdinalIgnoreCase))
+            {
+                return;
+            }
+
+            if (Configuracoes.HttpContent != null)
+            {
+                Configuracoes.HttpContent.Dispose();
+            }
+
+            Configuracoes.HttpContent = CriarHttpContentPadrao();
         }
 
 
