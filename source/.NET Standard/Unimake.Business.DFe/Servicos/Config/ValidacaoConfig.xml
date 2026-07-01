@@ -8989,7 +8989,7 @@
 			</Servico>
 			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
 				<Descricao>Consultar NFSe</Descricao>
-				<SchemaArquivo>NFSe_v1.01.xsd</SchemaArquivo>
+				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
 				<TagVersao>NFSe</TagVersao>
@@ -9001,7 +9001,7 @@
 			</Servico>
 			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="infDPS">
 				<Descricao>Consultar NFSe por DPS</Descricao>
-				<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
 				<TagAtributoID></TagAtributoID>
 				<TagVersao>DPS</TagVersao>
