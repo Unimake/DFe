@@ -8024,7 +8024,7 @@
 					<Excecao codMunicipio="1001058">false</Excecao>
 				</UsaCertificadoDigital>
 			</Servico>
-			<Servico tagRaiz="ConsultaParametros" versao="1.01" tagIdentificadora="infConsulta">
+			<Servico tagRaiz="ConsultaParametros" versao="1.01">
 				<Descricao>Consultar NFSe Nacional</Descricao>
 				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura></TagAssinatura>
