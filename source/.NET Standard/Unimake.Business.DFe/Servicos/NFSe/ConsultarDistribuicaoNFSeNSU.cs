@@ -54,7 +54,18 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             {
                 if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    return XMLUtility.Deserializar<RetDistribuicaoNFSe>(RetornoWSXML);
+                    try
+                    {
+                        return XMLUtility.Deserializar<RetDistribuicaoNFSe>(RetornoWSXML);
+                    }
+                    catch
+                    {
+                        return new RetDistribuicaoNFSe
+                        {
+                            StatusProcessamento = "ERRO",
+                            TipoAmbiente = Configuracoes.TipoAmbiente.ToString()
+                        };
+                    }
                 }
 
                 return new RetDistribuicaoNFSe
