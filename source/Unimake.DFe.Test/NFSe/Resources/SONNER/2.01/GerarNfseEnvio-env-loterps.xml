@@ -1,61 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Rps>
-		<InfDeclaracaoPrestacaoServico Id="Rps77">
+		<InfDeclaracaoPrestacaoServico Id="RPS1">
 			<Rps>
 				<IdentificacaoRps>
-					<Numero>77</Numero>
+					<Numero>1</Numero>
 					<Serie>A</Serie>
 					<Tipo>1</Tipo>
 				</IdentificacaoRps>
-				<DataEmissao>2015-02-23</DataEmissao>
+				<DataEmissao>2026-07-02</DataEmissao>
 				<Status>1</Status>
 			</Rps>
-			<Competencia>2015-02-23</Competencia>
+			<Competencia>2026-07-02</Competencia>
 			<Servico>
 				<Valores>
-					<ValorServicos>5190.00</ValorServicos>
-					<ValorPis>33.74</ValorPis>
-					<ValorCofins>155.70</ValorCofins>
-					<ValorIr>77.85</ValorIr>
-					<ValorCsll>51.90</ValorCsll>
-					<ValorIss>103.80</ValorIss>
+					<ValorServicos>1.00</ValorServicos>
+					<ValorDeducoes>0.00</ValorDeducoes>
+					<ValorPis>0.00</ValorPis>
+					<ValorCofins>0.00</ValorCofins>
+					<ValorInss>0.00</ValorInss>
+					<ValorIr>0.00</ValorIr>
+					<ValorCsll>0.00</ValorCsll>
+					<OutrasRetencoes>0.00</OutrasRetencoes>
+					<ValorIss>0.02</ValorIss>
 					<Aliquota>2.0000</Aliquota>
+					<DescontoIncondicionado>0.00</DescontoIncondicionado>
+					<DescontoCondicionado>0.00</DescontoCondicionado>
 				</Valores>
-				<IssRetido>1</IssRetido>
-				<ResponsavelRetencao>1</ResponsavelRetencao>
+				<IssRetido>2</IssRetido>
 				<ItemListaServico>1.01</ItemListaServico>
-				<CodigoCnae>6202300</CodigoCnae>
-				<Discriminacao>ENC. MENSAL SOFT. READER IMPR.</Discriminacao>
-				<CodigoMunicipio>2111003</CodigoMunicipio>
+				<CodigoCnae>6201501</CodigoCnae>
+				<CodigoTributacaoMunicipio>1.01</CodigoTributacaoMunicipio>
+				<Discriminacao>Prestacao de servico de desenvolvimento de software para homologacao.</Discriminacao>
+				<CodigoMunicipio>3168606</CodigoMunicipio>
 				<CodigoPais>1058</CodigoPais>
 				<ExigibilidadeISS>1</ExigibilidadeISS>
-				<MunicipioIncidencia>2111003</MunicipioIncidencia>
+				<MunicipioIncidencia>3168606</MunicipioIncidencia>
+				<CodigoNBS>115029000</CodigoNBS>
 			</Servico>
 			<Prestador>
 				<CpfCnpj>
-					<Cnpj>99999999999999</Cnpj>
+					<Cnpj>06117473000150</Cnpj>
 				</CpfCnpj>
-				<InscricaoMunicipal>18715</InscricaoMunicipal>
+				<InscricaoMunicipal>123456</InscricaoMunicipal>
 			</Prestador>
 			<Tomador>
 				<IdentificacaoTomador>
 					<CpfCnpj>
-						<Cnpj>99999999999999</Cnpj>
+						<Cnpj>11222333000181</Cnpj>
 					</CpfCnpj>
 				</IdentificacaoTomador>
-				<RazaoSocial>xxxxxxxxxxxxxxxxxxx</RazaoSocial>
+				<RazaoSocial>TOMADOR DE TESTE LTDA</RazaoSocial>
 				<Endereco>
-					<Endereco>xxxxxxxxxxxxxxxxx</Endereco>
-					<Numero>69</Numero>
-					<Bairro>69</Bairro>
-					<CodigoMunicipio>2111003</CodigoMunicipio>
-					<Uf>SC</Uf>
+					<Endereco>RUA DE TESTE</Endereco>
+					<Numero>100</Numero>
+					<Bairro>CENTRO</Bairro>
+					<CodigoMunicipio>3168606</CodigoMunicipio>
+					<Uf>MG</Uf>
 					<CodigoPais>1058</CodigoPais>
-					<Cep>12345678</Cep>
+					<Cep>39800000</Cep>
 				</Endereco>
 				<Contato>
-					<Telefone>4832652808</Telefone>
+					<Telefone>3333333333</Telefone>
+					<Email>teste@exemplo.com</Email>
 				</Contato>
 			</Tomador>
 			<RegimeEspecialTributacao>6</RegimeEspecialTributacao>
