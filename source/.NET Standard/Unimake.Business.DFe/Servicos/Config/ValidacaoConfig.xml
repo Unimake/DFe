@@ -6024,9 +6024,9 @@
 				<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
 				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-				<TagVersao>LoteRps</TagVersao>
-				<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
 				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
