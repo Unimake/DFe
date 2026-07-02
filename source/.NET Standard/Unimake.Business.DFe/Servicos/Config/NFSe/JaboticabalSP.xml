@@ -103,8 +103,8 @@
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
 			<SchemaArquivo>consultar-nfse-servico-tomado-envio-v2_04-RTC.xsd</SchemaArquivo>
-			<TagAssinatura>ns4:ConsultarNfseServicoTomadoEnvio</TagAssinatura>
-			<TagAtributoID>ns4:Consulente</TagAtributoID>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
