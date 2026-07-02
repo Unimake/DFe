@@ -192,6 +192,6 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
 			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
-		</ConsultarNfseFaixa>s
+		</ConsultarNfseFaixa>
 	</Servicos>
 </Configuracoes>
