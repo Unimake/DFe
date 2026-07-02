@@ -3,9 +3,9 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="2.04">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/anapolis/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -22,9 +22,9 @@
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.04">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/anapolis/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -41,9 +41,9 @@
 		</RecepcionarLoteRpsSincrono>
 		<GerarNfse versao="2.04">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/anapolis/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -60,9 +60,9 @@
 		</GerarNfse>
 		<CancelarNfse versao="2.04">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/anapolis/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
@@ -79,9 +79,9 @@
 		</CancelarNfse>
 		<SubstituirNfse versao="2.04">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/anapolis/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
@@ -100,9 +100,9 @@
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="2.04">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/anapolis/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
@@ -120,9 +120,9 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.04">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/anapolis/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
@@ -139,9 +139,9 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoPrestado versao="2.04">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/anapolis/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
@@ -158,9 +158,9 @@
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseServicoTomado versao="2.04">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/anapolis/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
@@ -177,9 +177,9 @@
 		</ConsultarNfseServicoTomado>
 		<ConsultarNfseFaixa versao="2.04">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao>https://www.issnetonline.com.br/homologaabrasf/webservicenfse204/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/abrasf204/anapolis/nfse.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
