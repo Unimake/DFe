@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<ConsultarNfseRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+<ConsultarNfseRpsEnvio versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Pedido>
 		<IdentificacaoRps>
 			<Numero>1</Numero>

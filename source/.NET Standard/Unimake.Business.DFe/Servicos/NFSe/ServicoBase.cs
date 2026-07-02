@@ -176,16 +176,14 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
             bool isConsultaEventosNfse = Configuracoes.Servico == Servico.NFSeConsultarEventosDiversos;
 
-            if (isConsulta)
+            if (isConsulta && !string.IsNullOrWhiteSpace(Configuracoes.RequestURI) && Configuracoes.RequestURI.Contains("{Chave}"))
             {
-                var URI = Configuracoes.RequestURI;
-
                 var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
                 var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
                 var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
                 Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
             }
-            else if (isConsultaEventosNfse)
+            else if (isConsultaEventosNfse && !string.IsNullOrWhiteSpace(Configuracoes.RequestURI))
             {
                 if (Configuracoes.RequestURI.Contains("{chNFSe}"))
                 {
