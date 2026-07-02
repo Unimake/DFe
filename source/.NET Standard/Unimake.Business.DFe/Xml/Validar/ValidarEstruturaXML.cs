@@ -1530,7 +1530,7 @@ namespace Unimake.Business.DFe
                 {
                     try
                     {
-                        AssinaturaDigital.Assinar(xmlEventoEspecifico, "eSocial", tagAtributoID, cert, AlgorithmType.Sha256, true, "Id");
+                        AssinaturaDigital.Assinar(xmlEventoEspecifico, "eSocial", tagAtributoID, cert, AlgorithmType.Sha256, false, "Id");
                     }
                     catch (Exception ex)
                     {
