@@ -65,8 +65,8 @@
           <Cep>97010033</Cep>
         </Endereco>
         <Contato>
-          <Telefone>string</Telefone>
-          <Email>maicon@avmb.com.br</Email>
+          <Telefone>8425652313</Telefone>
+          <Email>exemplo@avmb.com.br</Email>
         </Contato>
       </Tomador>
       <RegimeEspecialTributacao>1</RegimeEspecialTributacao>
