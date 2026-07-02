@@ -10747,9 +10747,9 @@
 				<SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
 				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-				<TagVersao>LoteRps</TagVersao>
-				<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-				<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagLoteAtributoID></TagLoteAtributoID>
 				<TagExtraAssinatura></TagExtraAssinatura>
 				<TagExtraAtributoID></TagExtraAtributoID>
