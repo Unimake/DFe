@@ -533,12 +533,6 @@
 		<ArqConfig>SimoesFilhoBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3551702">
-		<Nome>Sertãozinho - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>SertaozinhoSP.xml</ArqConfig>
-		<PadraoNFSe>SMARAPD</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3515509">
 		<Nome>Fernandópolis - SP</Nome>
 		<UF>SP</UF>
@@ -910,12 +904,6 @@
 		<UF>PR</UF>
 		<ArqConfig>GuairaPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3202405">
-		<Nome>Guarapari - ES</Nome>
-		<UF>ES</UF>
-		<ArqConfig>GuarapariES.xml</ArqConfig>
-		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4203808">
 		<Nome>Canoinhas - SC</Nome>
