@@ -227,12 +227,6 @@
 		<ArqConfig>ItabaianaSE.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5107909">
-		<Nome>Sinop - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>SinopMT.xml</ArqConfig>
-		<PadraoNFSe>COPLAN</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4209102">
 		<Nome>Joinville - SC</Nome>
 		<UF>SC</UF>

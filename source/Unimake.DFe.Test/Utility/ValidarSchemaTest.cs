@@ -239,7 +239,7 @@ public class ValidarSchemaTest
         {
             TipoDFe = TipoDFe.NFe,
             TipoAmbiente = TipoAmbiente.Homologacao,
-            CertificadoArquivo = @"c:\projetos\unimakepv.pfx",
+            CertificadoArquivo = @"C:\Projetos\Unimake_PV.pfx",
             CertificadoSenha = "12345678"
         };
 
