@@ -264,6 +264,11 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
                     property.PropertyName = char.ToLowerInvariant(originalName[0]) + originalName.Substring(1);
                 }
 
+                if (property.PropertyType == typeof(SimNaoLetra))
+                {
+                    property.Converter = new XmlEnumJsonConverter();
+                }
+
                 var specifiedProperty = member.DeclaringType?.GetProperty(member.Name + "Specified", BindingFlags.Instance | BindingFlags.Public);
                 if (specifiedProperty?.PropertyType == typeof(bool))
                 {
@@ -271,6 +276,31 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
                 }
 
                 return property;
+            }
+        }
+
+        private sealed class XmlEnumJsonConverter : JsonConverter
+        {
+            public override bool CanRead => false;
+
+            public override bool CanConvert(Type objectType) => objectType.IsEnum;
+
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            {
+                if (value == null)
+                {
+                    writer.WriteNull();
+                    return;
+                }
+
+                var field = value.GetType().GetField(value.ToString());
+                var xmlEnum = field?.GetCustomAttribute<XmlEnumAttribute>();
+                writer.WriteValue(xmlEnum?.Name ?? value.ToString());
+            }
+
+            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+            {
+                throw new NotSupportedException();
             }
         }
     }
