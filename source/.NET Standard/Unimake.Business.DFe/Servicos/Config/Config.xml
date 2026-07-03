@@ -1403,12 +1403,6 @@
 		<ArqConfig>DuqueDeCaxiasRJ.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3302502">
-		<Nome>Magé - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>MageRJ.xml</ArqConfig>
-		<PadraoNFSe>MODERNIZACAO_PUBLICA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3305208">
 		<Nome>São Pedro da Aldeia - RJ</Nome>
 		<UF>RJ</UF>
