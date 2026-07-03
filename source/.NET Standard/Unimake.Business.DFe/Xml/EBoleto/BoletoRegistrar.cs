@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using Unimake.Business.DFe.Utility.Json;
+using Unimake.Business.DFe.Converters.Json;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.EBoleto
