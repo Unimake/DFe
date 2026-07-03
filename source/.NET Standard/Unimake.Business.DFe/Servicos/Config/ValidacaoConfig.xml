@@ -7006,8 +7006,8 @@
 			<Servico tagRaiz="ns4:ConsultarNfseServicoTomadoEnvio" versao="2.04">
 				<Descricao>Consulta NFSe por serviço tomado</Descricao>
 				<SchemaArquivo>consultar-nfse-servico-tomado-envio-v2_04-RTC.xsd</SchemaArquivo>
-				<TagAssinatura>ns4:ConsultarNfseServicoTomadoEnvio</TagAssinatura>
-				<TagAtributoID>ns4:Consulente</TagAtributoID>
+				<TagAssinatura></TagAssinatura>
+				<TagAtributoID></TagAtributoID>
 				<TagVersao></TagVersao>
 				<TagLoteAssinatura></TagLoteAssinatura>
 				<TagLoteAtributoID></TagLoteAtributoID>

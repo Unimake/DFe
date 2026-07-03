@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
+using Unimake.Business.DFe.Utility.Json;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.EBoleto
@@ -35,6 +37,7 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         /// <summary>
         /// Agencia coletora (S/N)
         /// </summary>
+        [JsonConverter(typeof(XmlEnumJsonConverter))]
         [XmlElement("AgenciaColetora")]
         public SimNaoLetra AgenciaColetora { get; set; }
 
@@ -233,6 +236,7 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         /// <summary>
         /// Permite recebimento parcial (S/N)
         /// </summary>
+        [JsonConverter(typeof(XmlEnumJsonConverter))]
         [XmlElement("PermiteRecebimentoParcial")]
         public SimNaoLetra PermiteRecebimentoParcial { get; set; }
 
