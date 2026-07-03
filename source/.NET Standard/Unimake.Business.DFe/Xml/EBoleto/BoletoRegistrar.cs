@@ -1126,9 +1126,9 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         public EBoletoTipoProtesto Tipo { get; set; }
 
         /// <summary>
-        /// Valor do protesto
+        /// Quantidade de dias em que  o documento deve ser protestado
         /// </summary>
         [XmlElement("Valor")]
-        public decimal Valor { get; set; }
+        public int Valor { get; set; }
     }
 }
