@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using Unimake.Business.DFe.Utility.Json;
+using Unimake.Business.DFe.Converters.Json;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.EBoleto
@@ -1126,9 +1126,9 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         public EBoletoTipoProtesto Tipo { get; set; }
 
         /// <summary>
-        /// Valor do protesto
+        /// Quantidade de dias em que  o documento deve ser protestado
         /// </summary>
         [XmlElement("Valor")]
-        public decimal Valor { get; set; }
+        public int Valor { get; set; }
     }
 }

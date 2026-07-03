@@ -881,12 +881,6 @@
 		<ArqConfig>PaulistaPE.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4322806">
-		<Nome>Veranópolis - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>VeranopolisRS.xml</ArqConfig>
-		<PadraoNFSe>FIORILLI</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5107602">
 		<Nome>Rondonópolis - MT</Nome>
 		<UF>MT</UF>
@@ -1143,12 +1137,6 @@
 		<Nome>São José do Rio Preto - SP</Nome>
 		<UF>SP</UF>
 		<ArqConfig>SaoJoseDoRioPretoSP.xml</ArqConfig>
-		<PadraoNFSe>GISSONLINE</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3529302">
-		<Nome>Matão - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>MataoSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3548500">

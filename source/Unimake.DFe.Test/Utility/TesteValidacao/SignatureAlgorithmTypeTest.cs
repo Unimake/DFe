@@ -138,6 +138,84 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             );
         }
 
+        [Fact]
+        public void DeveAssinarLoteESocialComReferenceURIVazio()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml(
+                "<eSocial xmlns=\"http://www.esocial.gov.br/schema/lote/eventos/envio/v1_1_1\">" +
+                "<envioLoteEventos>" +
+                "<eventos>" +
+                "<evento Id=\"ID1785098580000002026070211131400001\">" +
+                "<eSocial xmlns=\"http://www.esocial.gov.br/schema/evt/evtRemun/v_S_01_03_00\">" +
+                "<evtRemun Id=\"ID1785098580000002026070211131400001\" />" +
+                "</eSocial>" +
+                "</evento>" +
+                "</eventos>" +
+                "</envioLoteEventos>" +
+                "</eSocial>"
+            );
+
+            var servicoDocument = new XmlDocument();
+            servicoDocument.LoadXml(
+                "<Servico>" +
+                "<SchemasEspecificos>" +
+                "<Tipo>" +
+                "<Evento>evtRemun</Evento>" +
+                "<TagAtributoID>evtRemun</TagAtributoID>" +
+                "</Tipo>" +
+                "</SchemasEspecificos>" +
+                "</Servico>"
+            );
+
+            using (var rsa = RSA.Create(2048))
+            {
+                var request = new CertificateRequest(
+                    "CN=SignatureAlgorithmTypeTest",
+                    rsa,
+                    HashAlgorithmName.SHA256,
+                    RSASignaturePadding.Pkcs1
+                );
+                using (var certificate = request.CreateSelfSigned(
+                    DateTimeOffset.UtcNow.AddDays(-1),
+                    DateTimeOffset.UtcNow.AddDays(1)
+                ))
+                {
+                    var informacao = new ValidarEstruturaXML.InformacaoXML
+                    {
+                        UsaCertificadoDigital = true
+                    };
+
+                    var method = typeof(ValidarEstruturaXML).GetMethod(
+                        "AssinarSeNecessario",
+                        BindingFlags.NonPublic | BindingFlags.Instance
+                    );
+
+                    method.Invoke(
+                        new ValidarEstruturaXML(),
+                        new object[]
+                        {
+                            xml,
+                            servicoDocument.DocumentElement,
+                            informacao,
+                            certificate,
+                            new Configuracao(),
+                            TipoAmbiente.Homologacao,
+                            TipoDFe.ESocial
+                        }
+                    );
+                }
+            }
+
+            var reference = xml.SelectSingleNode(
+                "//*[local-name()='Reference']"
+            ) as XmlElement;
+
+            Assert.NotNull(reference);
+            Assert.Equal(string.Empty, reference.GetAttribute("URI"));
+            Assert.DoesNotContain("#ID1785098580000002026070211131400001", xml.OuterXml);
+        }
+
         private static XmlNode CriarServico(string xml)
         {
             var document = new XmlDocument();
