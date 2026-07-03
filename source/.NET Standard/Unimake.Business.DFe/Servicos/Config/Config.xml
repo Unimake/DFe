@@ -1139,12 +1139,6 @@
 		<ArqConfig>SaoJoseDoRioPretoSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3529302">
-		<Nome>Matão - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>MataoSP.xml</ArqConfig>
-		<PadraoNFSe>GISSONLINE</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3548500">
 		<Nome>Santos - SP</Nome>
 		<UF>SP</UF>

@@ -567,7 +567,6 @@
 		<None Remove="Servicos\Config\NFSe\MarechalCandidoRondonPR.xml" />
 		<None Remove="Servicos\Config\NFSe\MariliaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MassarandubaSC.xml" />
-		<None Remove="Servicos\Config\NFSe\MataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MatupaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\MedianeiraPR.xml" />
 		<None Remove="Servicos\Config\NFSe\Memory.xml" />
@@ -1922,7 +1921,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItuSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\JundiaiSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MassarandubaSC.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\MataoSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PomerodeSC.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantosSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDoRioPretoSP.xml" />
