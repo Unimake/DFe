@@ -3,7 +3,7 @@ using System;
 using System.Reflection;
 using System.Xml.Serialization;
 
-namespace Unimake.Business.DFe.Utility.Json
+namespace Unimake.Business.DFe.Converters.Json
 {
     /// <summary>
     /// Converte valores de enum para JSON usando o valor definido no atributo <see cref="XmlEnumAttribute"/>.
