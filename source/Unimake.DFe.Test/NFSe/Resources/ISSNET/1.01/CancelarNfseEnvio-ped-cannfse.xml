@@ -1,21 +1,20 @@
 ﻿<CancelarNfseEnvio xmlns="http://www.sped.fazenda.gov.br/nfse" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#">
 	<pedRegEvento versao="1.01">
 		<!-- 
-			Id (62 caracteres): "PRE" + Chave (50) + Evento (6) + nPed (3) 
+			Id (59 caracteres): "PRE" + Chave (50) + Evento (6) 
 			Chave corrigida abaixo possui exatamente 50 dígitos.
 		-->
-		<infPedReg Id="PRE42251199999999999999200000100000000000000111234567101103001">
+		<infPedReg Id="PRE42251199999999999999200000100000000000000111234567101103">
 			<tpAmb>2</tpAmb>
 			<verAplic>1.01.01</verAplic>
 			<dhEvento>2025-11-18T16:00:00-03:00</dhEvento>
 			<CNPJAutor>99999999999999</CNPJAutor>
 			<chNFSe>42251199999999999999200000100000000000000111234567</chNFSe>
-			<nPedRegEvento>001</nPedRegEvento>
-			<e101103>
-				<xDesc>Solicitacao de Analise Fiscal para Cancelamento de NFS-e</xDesc>
+			<e101101>
+				<xDesc>Cancelamento de NFS-e</xDesc>
 				<cMotivo>1</cMotivo>
 				<xMotivo>ERRO NA DIGITACAO DOS VALORES DOS SERVICOS NO MOMENTO DA EMISSAO</xMotivo>
-			</e101103>
+			</e101101>
 		</infPedReg>
 	</pedRegEvento>
 </CancelarNfseEnvio>
