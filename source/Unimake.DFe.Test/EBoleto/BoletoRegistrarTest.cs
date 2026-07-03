@@ -1,7 +1,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Reflection;
+using Newtonsoft.Json.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Xunit;
 
@@ -46,14 +45,10 @@ namespace Unimake.DFe.Test.EBoleto
 
         private static JObject CriarJsonEnvio(Business.DFe.Xml.EBoleto.BoletoRegistrar xml)
         {
-            var resolverType = typeof(Business.DFe.Servicos.EBoleto.ServicoBase<>)
-                .GetNestedType("EBoletoContractResolver", BindingFlags.NonPublic)
-                .MakeGenericType(typeof(Business.DFe.Xml.EBoleto.BoletoRegistrar));
-
             var serializer = JsonSerializer.Create(new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
-                ContractResolver = (Newtonsoft.Json.Serialization.IContractResolver)Activator.CreateInstance(resolverType, true)
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
 
             return JObject.FromObject(xml, serializer);
