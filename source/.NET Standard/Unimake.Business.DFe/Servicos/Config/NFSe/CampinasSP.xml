@@ -194,5 +194,24 @@
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS></TargetNS>
 		</ConsultarNfseFaixa>
+		<!--Versão 1.01-->
+		<GerarNfse versao="1.01">
+			<Descricao>Envio do DPS - Síncrono</Descricao>
+			<RequestURIProducao></RequestURIProducao>
+			<RequestURIHomologacao>https://preprod-nfse.ima.sp.gov.br/notafiscal-adn-ws/api/adn/dps</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<SchemaArquivo></SchemaArquivo>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</GerarNfse>
 	</Servicos>
 </Configuracoes>
