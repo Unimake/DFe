@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<procEventoBPe versao="1.00" ipTransmissor="192.168.0.1" nPortaCon="443" dhConexao="2026-07-06T15:01:00-03:00" xmlns="http://www.portalfiscal.inf.br/bpe">
+  <eventoBPe versao="1.00">
+    <infEvento Id="ID11011135260712345678000123630010000000011000000010001">
+      <cOrgao>35</cOrgao>
+      <tpAmb>2</tpAmb>
+      <CNPJ>12345678000123</CNPJ>
+      <chBPe>35260712345678000123630010000000011000000010</chBPe>
+      <dhEvento>2026-07-06T15:00:00-03:00</dhEvento>
+      <tpEvento>110111</tpEvento>
+      <nSeqEvento>1</nSeqEvento>
+      <detEvento versaoEvento="1.00">
+        <evCancBPe>
+          <descEvento>Cancelamento</descEvento>
+          <nProt>135260000000001</nProt>
+          <xJust>Cancelamento solicitado pelo emitente do BP-e.</xJust>
+        </evCancBPe>
+      </detEvento>
+    </infEvento>
+  </eventoBPe>
+  <retEventoBPe versao="1.00">
+    <infEvento>
+      <tpAmb>2</tpAmb>
+      <verAplic>SP_BPE_1.00</verAplic>
+      <cOrgao>35</cOrgao>
+      <cStat>135</cStat>
+      <xMotivo>Evento registrado e vinculado a BP-e</xMotivo>
+      <chBPe>35260712345678000123630010000000011000000010</chBPe>
+      <tpEvento>110111</tpEvento>
+      <xEvento>Cancelamento</xEvento>
+      <nSeqEvento>1</nSeqEvento>
+      <dhRegEvento>2026-07-06T15:03:00-03:00</dhRegEvento>
+      <nProt>135260000000002</nProt>
+    </infEvento>
+  </retEventoBPe>
+</procEventoBPe>
