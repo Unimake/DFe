@@ -2,7 +2,7 @@
 <ConsultarNfseRpsEnvio xmlns="http://shad.elotech.com.br/schemas/iss/nfse_v2_03.xsd">
 	<IdentificacaoRps>
 		<Numero>1</Numero>
-		<Serie>RPS</Serie>
+		<Serie>0123</Serie>
 		<Tipo>1</Tipo>
 	</IdentificacaoRps>
 	<IdentificacaoRequerente>
