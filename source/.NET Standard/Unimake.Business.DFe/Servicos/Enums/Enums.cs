@@ -17409,6 +17409,22 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion TipoPagamentoAntecipadoNFCom
 
+    #region IndicadorDoacao
+
+    /// <summary>
+    /// Indicador de doação
+    /// </summary>
+    public enum IndicadorDoacao
+    {
+        /// <summary>
+        /// 1 - Operação de doação
+        /// </summary>
+        [XmlEnum("1")]
+        OperacaoDoacao = 1
+    }
+
+    #endregion IndicadorDoacao
+
     #region TipoAssinante
 
     /// <summary>

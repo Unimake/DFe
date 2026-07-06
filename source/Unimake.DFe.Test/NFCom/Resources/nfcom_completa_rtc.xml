@@ -153,6 +153,7 @@
 				<IBSCBS>
 					<CST>123</CST>
 					<cClassTrib>123456</cClassTrib>
+					<indDoacao>1</indDoacao>
 					<gIBSCBS>
 						<vBC>1.00</vBC>
 						<gIBSUF>

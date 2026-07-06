@@ -957,7 +957,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public string IdTransacao { get; set; }
 
         [XmlElement("tpMeioPgto")]
-        public MeioPagamento TpMeioPgto { get; set; }
+        public string TpMeioPgto { get; set; }
 
         [XmlElement("CNPJReceb")]
         public string CNPJReceb { get; set; }
@@ -1907,7 +1907,11 @@ namespace Unimake.Business.DFe.Xml.NFCom
         /// Indica a natureza da operação de doação, orientando a apuração e a geração de débitos ou estornos conforme o cenário
         /// </summary>
         [XmlElement("indDoacao")]
-        public int IndDoacao { get; set; }
+#if INTEROP
+        public IndicadorDoacao IndDoacao { get; set; } = (IndicadorDoacao)(-1);
+#else
+        public IndicadorDoacao? IndDoacao { get; set; }
+#endif
 
         [XmlElement("gIBSCBS")]
         public GIBSCBS GIBSCBS { get; set; }
@@ -1920,7 +1924,11 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeIndDoacao() => IndDoacao == 1;
+#if INTEROP
+        public bool ShouldSerializeIndDoacao() => IndDoacao != (IndicadorDoacao)(-1);
+#else
+        public bool ShouldSerializeIndDoacao() => IndDoacao != null;
+#endif
 
         #endregion
     }
