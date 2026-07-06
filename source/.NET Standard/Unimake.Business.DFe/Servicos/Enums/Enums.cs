@@ -19148,6 +19148,84 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     /// <summary>
+    /// Tipo de substituicao do BP-e Transporte Aereo
+    /// </summary>
+    public enum TipoSubstituicaoTABPe
+    {
+        /// <summary>
+        /// 1 - Remarcacao
+        /// </summary>
+        [XmlEnum("1")]
+        Remarcacao = 1,
+
+        /// <summary>
+        /// 2 - Transferencia
+        /// </summary>
+        [XmlEnum("2")]
+        Transferencia = 2,
+
+        /// <summary>
+        /// 3 - Transferencia e remarcacao
+        /// </summary>
+        [XmlEnum("3")]
+        TransferenciaRemarcacao = 3,
+
+        /// <summary>
+        /// 4 - Outros
+        /// </summary>
+        [XmlEnum("4")]
+        Outros4 = 4,
+
+        /// <summary>
+        /// 5 - Outros
+        /// </summary>
+        [XmlEnum("5")]
+        Outros5 = 5,
+
+        /// <summary>
+        /// 6 - Outros
+        /// </summary>
+        [XmlEnum("6")]
+        Outros6 = 6,
+
+        /// <summary>
+        /// 7 - Outros
+        /// </summary>
+        [XmlEnum("7")]
+        Outros7 = 7,
+
+        /// <summary>
+        /// 9 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9
+    }
+
+    /// <summary>
+    /// Tipo de compra do BP-e Transporte Aereo
+    /// </summary>
+    public enum TipoCompraBPeTA
+    {
+        /// <summary>
+        /// 0 - Normal
+        /// </summary>
+        [XmlEnum("0")]
+        Normal = 0,
+
+        /// <summary>
+        /// 1 - BP-e multiplo
+        /// </summary>
+        [XmlEnum("1")]
+        BPeMultiplo = 1,
+
+        /// <summary>
+        /// 2 - Vinculado a BP-e multiplo
+        /// </summary>
+        [XmlEnum("2")]
+        VinculadoBPeMultiplo = 2
+    }
+
+    /// <summary>
     /// Tipo de documento de identificacao do passageiro do BP-e
     /// </summary>
     public enum TipoDocumentoPassageiroBPe
@@ -19199,6 +19277,96 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("01")]
         Extra = 1
+    }
+
+    /// <summary>
+    /// Tipo de viagem do BP-e Transporte Aereo
+    /// </summary>
+    public enum TipoViagemBPeTA
+    {
+        /// <summary>
+        /// 00 - Regular domestico
+        /// </summary>
+        [XmlEnum("00")]
+        RegularDomestico = 0,
+
+        /// <summary>
+        /// 01 - Regular internacional
+        /// </summary>
+        [XmlEnum("01")]
+        RegularInternacional = 1,
+
+        /// <summary>
+        /// 02 - Nao regular domestico
+        /// </summary>
+        [XmlEnum("02")]
+        NaoRegularDomestico = 2,
+
+        /// <summary>
+        /// 03 - Nao regular internacional
+        /// </summary>
+        [XmlEnum("03")]
+        NaoRegularInternacional = 3
+    }
+
+    /// <summary>
+    /// Tipo de servico do BP-e Transporte Aereo
+    /// </summary>
+    public enum TipoServicoBPeTA
+    {
+        /// <summary>
+        /// 12 - Comercial
+        /// </summary>
+        [XmlEnum("12")]
+        Comercial = 12,
+
+        /// <summary>
+        /// 13 - Executivo
+        /// </summary>
+        [XmlEnum("13")]
+        Executivo = 13
+    }
+
+    /// <summary>
+    /// Tipo de acomodacao do BP-e Transporte Aereo
+    /// </summary>
+    public enum TipoAcomodacaoBPeTA
+    {
+        /// <summary>
+        /// 6 - Comum
+        /// </summary>
+        [XmlEnum("6")]
+        Comum = 6,
+
+        /// <summary>
+        /// 7 - Conforto
+        /// </summary>
+        [XmlEnum("7")]
+        Conforto = 7
+    }
+
+    /// <summary>
+    /// Tipo de trecho do BP-e Transporte Aereo
+    /// </summary>
+    public enum TipoTrechoBPeTA
+    {
+        /// <summary>
+        /// 1 - Normal
+        /// </summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>
+        /// 2 - Trecho inicial
+        /// </summary>
+        [XmlEnum("2")]
+        TrechoInicial = 2,
+
+        /// <summary>
+        /// 3 - Conexao
+        /// </summary>
+        [XmlEnum("3")]
+        Conexao = 3
     }
 
     /// <summary>
@@ -19475,6 +19643,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("07")]
         ReservaAssentos = 7,
+
+        /// <summary>
+        /// 08 - Transporte de animais
+        /// </summary>
+        [XmlEnum("08")]
+        TransporteAnimais = 8,
 
         /// <summary>
         /// 99 - Outros
