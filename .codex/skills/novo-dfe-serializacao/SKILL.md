@@ -1,6 +1,6 @@
 ---
 name: novo-dfe-serializacao
-description: Use quando Codex precisar implementar ou revisar classes C# de serialização/desserialização XML para um novo documento fiscal eletrônico na DLL Unimake.DFe, a partir do nome da subpasta do documento, da pasta de documentação oficial e da pasta explícita de XSDs a implementar, criando uma classe/arquivo para cada XSD aplicável conforme padrões NFCom/NFe/DCe, INTEROP e testes filtrados do projeto.
+description: Use quando Codex precisar implementar ou revisar classes C# de serialização/desserialização XML para um novo documento fiscal eletrônico na DLL Unimake.DFe, a partir do nome da subpasta do documento, da pasta de documentação oficial e da pasta explícita de XSDs a implementar, criando uma classe/arquivo para cada XSD aplicável conforme padrões NFCom/NFe/DCe, tipagem forte por XSD, INTEROP e testes filtrados do projeto.
 ---
 
 # Novo DF-e - Serialização/Desserialização
@@ -96,7 +96,8 @@ Quando houver divergência:
    - `Signature`;
    - utilitários em `Utility`.
 10. Para cada tag/propriedade que será implementada, verifique no XSD e na documentação se há domínio fechado de valores, lista de códigos, `xs:enumeration`, tabela de domínio ou valores predefinidos.
-11. Se a documentação ou a pasta de XSDs estiver incompleta, ilegível, inacessível ou contraditória, pare e peça esclarecimento ou arquivo complementar. Não adivinhe layout fiscal.
+11. Para cada tag/propriedade que será implementada, classifique o tipo C# correto antes de codificar: enum, data/hora, número, booleano, lista, classe de grupo ou string preservada por formato/código.
+12. Se a documentação ou a pasta de XSDs estiver incompleta, ilegível, inacessível ou contraditória, pare e peça esclarecimento ou arquivo complementar. Não adivinhe layout fiscal.
 
 ## Documentação obrigatória
 
@@ -204,6 +205,30 @@ Siga o padrão das classes existentes, incluindo:
 - nomes de classes, propriedades e arquivos alinhados ao XML/schema.
 - uma classe raiz por XSD principal, em arquivo separado, evitando arquivo monolítico com todas as raízes.
 - propriedades explícitas e tipadas para as tags do XML, no padrão da `NFCom`; não use propriedades genéricas para esconder a estrutura do schema.
+- em `INTEROP`, toda classe pública de XML exposta no arquivo, inclusive grupos auxiliares e subtotais, deve ter `[ClassInterface(ClassInterfaceType.AutoDual)]`, `[ProgId("Unimake.Business.DFe.Xml.{Documento}.{Classe}")]` e `[ComVisible(true)]`.
+
+#### Nomenclatura de classes de grupos XML
+
+Classes que representam grupos/tags do XML devem, por padrão, ter exatamente o mesmo nome da tag ou grupo que elas modelam, apenas convertido para o padrão PascalCase do C# quando necessário.
+
+Exemplos:
+
+```text
+<ide>        -> class Ide
+<emit>       -> class Emit
+<enderEmit>  -> class EnderEmit
+<infBPe>     -> class InfBPe
+<det>        -> class Det
+<imp>        -> class Imp
+<IBSCBS>     -> class IBSCBS
+<gIBSCBS>    -> class GIBSCBS
+<ICMSTot>    -> class ICMSTot
+<pgtoVinc>   -> class PgtoVinc
+```
+
+Não acrescente o nome do documento ao final da classe auxiliar apenas para indicar contexto, como `IdeBPeTM`, `EmitBPeTM`, `ImpBPeTM` ou `ICMSBPeTM`, quando a tag real for somente `ide`, `emit`, `imp` ou `ICMS`.
+
+Use sufixo/prefixo do documento somente quando ele fizer parte da tag real, da raiz ou do grupo no XSD, como `BPeTM` e `DetBPeTM`, ou quando houver conflito técnico inevitável com outra classe no mesmo namespace/arquivo. Mesmo em caso de conflito, tente primeiro resolver com o menor qualificador semântico possível e registre o motivo no relatório final.
 
 ### Atributos XML
 
@@ -271,6 +296,71 @@ Para campos opcionais (`minOccurs="0"`) com tipo valor, enum ou número:
 
 Não adicione `ShouldSerialize...()` em campo obrigatório. A omissão condicional deve refletir o XSD.
 
+### Tipagem forte obrigatória
+
+Não implemente campos como `string` por padrão. Em cada propriedade, escolha o tipo de domínio mais seguro a partir do XSD, documentação e padrões `NFCom`, `NFGas`, `NFe`, `CTe`, `NF3e`, `CIOT` ou DFe mais parecido.
+
+Use esta regra de decisão antes de escrever a propriedade:
+
+```text
+xs:complexType / grupo / tag com filhos        -> classe tipada com nome da tag
+maxOccurs > 1                                  -> List<T> tipada + helpers INTEROP
+xs:enumeration / tabela fechada                -> enum em Servicos/Enums/Enums.cs quando reutilizavel
+UF / TCodUfIBGE / TUf / TUf_sem_EX             -> UFBrasil ou enum existente equivalente
+TAmb / tpAmb                                   -> TipoAmbiente
+TMod* / mod                                    -> ModeloDFe ou enum especifico existente
+CRT / regime tributario                        -> CRT ou enum equivalente
+TDateTimeUTC / dateTime com timezone           -> DateTimeOffset fora de INTEROP e DateTime em INTEROP + ...Field
+TData / xs:date / data sem hora                -> DateTime + ...Field no formato yyyy-MM-dd
+TTime / hora                                   -> string somente se o projeto nao tiver tipo/helper melhor
+TDec* / valor monetario / quantidade decimal   -> double + ...Field com CultureInfo.InvariantCulture
+percentual / aliquota / p* decimal             -> double + ...Field; use F4 quando o tipo aceitar 2 a 4 casas e o padrao RTC/NFCom usar 4 casas
+valor monetario / v* decimal                   -> double + ...Field; normalmente F2
+quantidade inteira sem zeros a esquerda        -> int ou long conforme faixa do XSD; se exigir long em classe exposta a INTEROP, usar string dentro de #if INTEROP
+atributo numerico sem zeros a esquerda         -> int/long + [XmlAttribute]
+booleano ou indicador binario fechado          -> enum se os valores fiscais forem codificados; bool somente se o XSD for boolean real
+```
+
+Use `string` somente quando o valor for texto livre ou quando preservar o formato for parte do contrato fiscal:
+
+- documentos e inscricoes: `CNPJ`, `CPF`, `IE`, `IM`, `fone`, `CEP`;
+- chaves, hashes, protocolos, recibos, identificadores fiscais e referencias de DFe;
+- códigos com zeros a esquerda ou tamanho fixo textual: `cBP`, `cNF`, `cClassTrib`, `CST` RTC de 3 digitos, `qComp`, `nPag`, `idTransacao`;
+- CFOP, NCM, CEST, municipio IBGE e códigos oficiais quando o projeto equivalente os mantém como texto para preservar formato;
+- campos de pagamento ou dominio em que nao houver enum central compativel. Para `tpMeioPgto`/`TMeioPgto`, conferir primeiro `MeioPagamento` em `Servicos/Enums/Enums.cs`; se os codigos de dois digitos forem compativeis, usar o enum mesmo que algum DFe antigo ainda tenha a propriedade como `string`.
+
+Quando usar `string` em uma tag que parece numerica, confirme e registre mentalmente o motivo: preservar zeros a esquerda, codigo oficial textual, tamanho fixo, formato livre, compatibilidade com DFe equivalente ou ausencia de dominio fechado. Se o motivo não existir, tipar como `int`, `long`, `double`, `DateTime`, `DateTimeOffset` ou enum.
+
+Para propriedades tipadas que precisam serializar texto:
+
+- exponha a propriedade amigavel com `[XmlIgnore]`;
+- crie a propriedade `...Field` com `[XmlElement]` ou `[XmlAttribute]` no ponto exato da sequencia;
+- use `Converter.ToDouble(value)` ou conversor local ja usado no projeto para numeros;
+- use `CultureInfo.InvariantCulture` ao formatar `double`;
+- mantenha helper privado/interno pequeno somente quando reduzir repeticao real, sem criar arquitetura nova;
+- para opcionais de tipo valor, use `double?`, enum opcional/sentinela ou `ShouldSerialize...Field()` para nao serializar default indevido.
+
+Para propriedades inteiras que precisariam ser `long` no C# e que serão expostas via `INTEROP`/COM, considere a compatibilidade com linguagens como Lazarus. `long` pode não funcionar bem nesses consumidores. Nesse caso, use compilação condicional:
+
+```csharp
+[XmlElement("qPass")]
+#if INTEROP
+public string QPass { get; set; }
+#else
+public long QPass { get; set; }
+#endif
+```
+
+Use esse padrão somente quando o campo realmente exigir faixa acima de `int` ou quando o XSD permitir tamanho que justifique `long`; para inteiros comuns, prefira `int`.
+
+Antes de finalizar, procure no arquivo novo por campos suspeitos:
+
+```powershell
+rg -n "public string (V[A-Z]|P[A-Z]|Q[A-Z]|Tp[A-Z]|Mod|Modal|Dh|D[A-Z].*|UF|CRT|CST|Ind[A-Z]|CDV)" "source/.NET Standard/Unimake.Business.DFe/Xml/{Documento}"
+```
+
+Cada resultado deve ser `...Field` de serializacao ou string justificada pelo contrato fiscal. Se aparecer campo fiscal comum como `public string VBC`, `public string PICMS`, `public string DhEmi`, `public string TpAmb`, `public string Mod`, `public string UF` ou `public string CRT`, corrija antes de testar.
+
 ### Enumeradores obrigatórios
 
 Para cada propriedade/tag implementada, analise se o valor possui domínio fechado.
@@ -315,6 +405,19 @@ public int GetItemCount => (Item != null ? Item.Count : 0);
 ```
 
 Não exponha APIs novas de lista com padrão diferente se a pasta de referência usa `Add...`, `Get...` e `Get...Count`.
+
+Além dos helpers de lista, confira que cada `public class` serializável tenha o bloco COM completo no padrão:
+
+```csharp
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.{Documento}.{Classe}")]
+    [ComVisible(true)]
+#endif
+public class Classe
+```
+
+Não deixe classes auxiliares sem esse bloco apenas por não serem raiz XML; se a classe é pública e representa grupo/tag fiscal, ela deve ficar acessível para COM/OLE no mesmo padrão das demais.
 
 ### Assinatura digital
 
@@ -422,8 +525,12 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - Não serializar campo opcional de tipo valor apenas porque o default do C# existe.
 - Não mover para o XML raiz campos que pertencem a protocolo, evento interno, `infProt`, `infEvento` ou outro grupo aninhado.
 - Não usar `XmlElement[]`, `XmlAnyElement`, `XmlAnyAttribute`, `object`, `dynamic` ou XML bruto como substituto de propriedades explícitas para tags conhecidas no XSD.
+- Não deixar campos fiscais de data, hora com timezone, valor monetário, quantidade, percentual, alíquota, UF, ambiente, modelo, CRT, emissão, modalidade ou indicador como `string` quando houver tipo C# mais adequado e formato serializável via `...Field`.
+- Não expor `long` em propriedade pública de XML sob `INTEROP`; quando a faixa exigir `long` no C#, usar `string` no bloco `#if INTEROP`.
 - Não deixar tag com valores predefinidos como `string`, `int` ou outro primitivo sem antes verificar e justificar se enum existente ou novo enum deveria ser usado.
 - Não criar enum novo sem antes pesquisar enum compatível em `Enums.cs` e nos tipos existentes do projeto.
+- Não sufixar classes auxiliares de grupos/tags com o nome do documento quando esse sufixo não existir na tag XML; use o nome da tag como nome da classe e diferencie somente em caso de conflito real.
+- Não deixar classe pública de XML sem bloco `INTEROP` com `ClassInterface`, `ProgId` e `ComVisible`.
 
 ## Checklist antes de finalizar
 
@@ -436,6 +543,7 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - [ ] Foi montada conferência de XSD raiz, tipo raiz, filhos, atributos, cardinalidade e classe/propriedade C#.
 - [ ] PDFs/manuais, schemas e exemplos XML relevantes foram considerados quando disponíveis.
 - [ ] Classes seguem os padrões de `NFCom`, `NFe` e DFe semelhante.
+- [ ] Classes auxiliares de grupos/tags usam o mesmo nome da tag XML, sem sufixo do documento salvo quando a tag contém esse sufixo ou há conflito real.
 - [ ] Cada XSD principal aplicável tem classe raiz e arquivo `.cs` próprios.
 - [ ] As tags dos XSDs foram modeladas com propriedades explícitas, não com conteúdo XML genérico.
 - [ ] Não há uso de `XmlElement[]`, `XmlAnyElement`, `XmlAnyAttribute`, `object`, `dynamic` ou XML bruto para tags conhecidas.
@@ -445,6 +553,14 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - [ ] Grupos aninhados não foram achatados no nível errado.
 - [ ] Campos opcionais de tipo valor/enum/número não serializam default indevido.
 - [ ] Campos de protocolo/retorno/evento foram conferidos no grupo correto do XSD.
+- [ ] Cada propriedade foi tipada pelo XSD, documentação e padrão de DFe equivalente antes de codificar.
+- [ ] Datas/hora não ficaram como `string`, salvo justificativa real do schema/padrão.
+- [ ] Valores monetários, percentuais, alíquotas e quantidades decimais usam `double` + `...Field` com cultura invariável.
+- [ ] Quantidades inteiras sem zeros à esquerda usam `int`/`long`.
+- [ ] Propriedades `long` em classes públicas de XML foram tratadas para `INTEROP` com alternativa `string` quando necessário.
+- [ ] UF, ambiente, modelo, CRT, emissão, modalidade e indicadores fechados usam enum/tipo existente ou enum novo centralizado.
+- [ ] Strings remanescentes em campos aparentemente numéricos/codificados foram conferidas e têm motivo: texto livre, zeros à esquerda, código textual oficial, chave/hash/documento ou compatibilidade comprovada.
+- [ ] Foi feita varredura por `public string` suspeito em campos `V*`, `P*`, `Q*`, `Tp*`, `Dh*`, `UF`, `CRT`, `CST`, `Ind*` e similares.
 - [ ] Cada propriedade/tag foi analisada para identificar valores predefinidos.
 - [ ] Enums existentes em `Enums.cs` e no projeto foram reaproveitados quando compatíveis.
 - [ ] Novos enums foram criados para domínios fechados ainda inexistentes.
@@ -454,6 +570,7 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - [ ] Atributos XML foram aplicados corretamente.
 - [ ] Namespaces XML oficiais foram preservados.
 - [ ] INTEROP segue o padrão existente.
+- [ ] Todas as classes públicas de XML, incluindo classes auxiliares, têm bloco `INTEROP` com `ClassInterface`, `ProgId` e `ComVisible`.
 - [ ] Propriedades públicas têm `summary` quando aplicável.
 - [ ] Tipos existentes foram reutilizados quando possível.
 - [ ] Não há duplicação evitável.
