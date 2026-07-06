@@ -1,5 +1,8 @@
+using System;
 using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.BPe;
 using Xunit;
 
 namespace Unimake.DFe.Test.BPe
@@ -81,6 +84,41 @@ namespace Unimake.DFe.Test.BPe
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL esta diferente do conteudo do arquivo serializado.");
+        }
+
+        [Fact]
+        [Trait("DFe", "BPe")]
+        public void GerarChaveBPeTM()
+        {
+            var infBPe = new InfBPe
+            {
+                Versao = "1.00",
+                Ide = new Ide
+                {
+                    CUF = UFBrasil.SP,
+                    TpAmb = TipoAmbiente.Homologacao,
+                    Mod = ModeloDFe.BPe,
+                    Serie = 1,
+                    NBP = 1,
+                    CBP = "00000010",
+                    Modal = ModalidadeTransporteBPe.Rodoviario,
+                    DhEmi = DateTimeOffset.Parse("2026-07-06T15:00:00-03:00"),
+                    DCompet = DateTime.Parse("2026-07-01"),
+                    TpEmis = TipoEmissaoBPe.Normal,
+                    VerProc = "1.0",
+                    TpBPe = TipoBPe.TransporteMetropolitano
+                },
+                Emit = new Emit
+                {
+                    CNPJ = "12345678000123"
+                }
+            };
+
+            const string chaveEsperada = "35260712345678000123630010000000011000000108";
+
+            Assert.Equal(chaveEsperada, infBPe.Chave);
+            Assert.Equal("BPe" + chaveEsperada, infBPe.Id);
+            Assert.Equal(8, infBPe.Ide.CDV);
         }
     }
 }

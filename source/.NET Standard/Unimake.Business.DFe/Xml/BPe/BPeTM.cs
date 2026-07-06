@@ -45,6 +45,9 @@ namespace Unimake.Business.DFe.Xml.BPe
 #endif
     public class InfBPe
     {
+        private string idField;
+        private string chaveField;
+
         /// <summary>
         /// Versao do leiaute
         /// </summary>
@@ -55,7 +58,67 @@ namespace Unimake.Business.DFe.Xml.BPe
         /// Identificador da tag a ser assinada
         /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
-        public string Id { get; set; }
+        public string Id
+        {
+            get => string.IsNullOrWhiteSpace(idField) ? "BPe" + Chave : idField;
+            set => idField = value;
+        }
+
+        /// <summary>
+        /// Chave de acesso do BP-e
+        /// </summary>
+        [XmlIgnore]
+        public string Chave
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(chaveField))
+                {
+                    return chaveField;
+                }
+
+                if (!string.IsNullOrWhiteSpace(idField) && idField.StartsWith("BPe", StringComparison.OrdinalIgnoreCase))
+                {
+                    chaveField = idField.Substring(3);
+                    return chaveField;
+                }
+
+                if (Ide == null)
+                {
+                    throw new NullReferenceException("A propriedade 'Ide' esta nula.");
+                }
+
+                if (Emit == null)
+                {
+                    throw new NullReferenceException("A propriedade 'Emit' esta nula.");
+                }
+
+                if (string.IsNullOrWhiteSpace(Emit.CNPJ))
+                {
+                    throw new NullReferenceException("Emit.CNPJ nao foi informado.");
+                }
+
+                var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
+                {
+                    UFEmissor = Ide.CUF,
+                    AnoEmissao = Ide.DhEmi.ToString("yy"),
+                    MesEmissao = Ide.DhEmi.ToString("MM"),
+                    CNPJCPFEmissor = Emit.CNPJ.PadLeft(14, '0'),
+                    Modelo = Ide.Mod,
+                    Serie = Ide.Serie,
+                    NumeroDoctoFiscal = Ide.NBP,
+                    TipoEmissao = (TipoEmissao)(int)Ide.TpEmis,
+                    CodigoNumerico = Ide.CBP
+                };
+
+                chaveField = XMLUtility.MontarChaveBPe(ref conteudoChaveDFe);
+                Ide.CDV = conteudoChaveDFe.DigitoVerificador;
+
+                return chaveField;
+            }
+
+            set => chaveField = value;
+        }
 
         /// <summary>
         /// Identificacao do BP-e TM
