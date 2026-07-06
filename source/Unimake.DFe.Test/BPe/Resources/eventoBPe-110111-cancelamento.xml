@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eventoBPe versao="1.00" xmlns="http://www.portalfiscal.inf.br/bpe">
+  <infEvento Id="ID11011135260712345678000123630010000000011000000010001">
+    <cOrgao>35</cOrgao>
+    <tpAmb>2</tpAmb>
+    <CNPJ>12345678000123</CNPJ>
+    <chBPe>35260712345678000123630010000000011000000010</chBPe>
+    <dhEvento>2026-07-06T15:00:00-03:00</dhEvento>
+    <tpEvento>110111</tpEvento>
+    <nSeqEvento>1</nSeqEvento>
+    <detEvento versaoEvento="1.00">
+      <evCancBPe>
+        <descEvento>Cancelamento</descEvento>
+        <nProt>135260000000001</nProt>
+        <xJust>Cancelamento solicitado pelo emitente do BP-e.</xJust>
+      </evCancBPe>
+    </detEvento>
+  </infEvento>
+</eventoBPe>

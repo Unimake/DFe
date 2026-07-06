@@ -19165,6 +19165,48 @@ namespace Unimake.Business.DFe.Servicos
         Outros = 90
     }
 
+    /// <summary>
+    /// Tipo de evento do BP-e
+    /// </summary>
+    public enum TipoEventoBPe
+    {
+        /// <summary>
+        /// 110111 - Cancelamento
+        /// </summary>
+        [XmlEnum("110111")]
+        Cancelamento = 110111,
+
+        /// <summary>
+        /// 110115 - Nao embarque
+        /// </summary>
+        [XmlEnum("110115")]
+        NaoEmbarque = 110115,
+
+        /// <summary>
+        /// 110116 - Alteracao de poltrona
+        /// </summary>
+        [XmlEnum("110116")]
+        AlteracaoPoltrona = 110116,
+
+        /// <summary>
+        /// 110117 - Excesso de bagagem
+        /// </summary>
+        [XmlEnum("110117")]
+        ExcessoBagagem = 110117,
+
+        /// <summary>
+        /// 110300 - Vinculacao do pagamento
+        /// </summary>
+        [XmlEnum("110300")]
+        VinculacaoPagamento = 110300,
+
+        /// <summary>
+        /// 110301 - Cancelamento da vinculacao do pagamento
+        /// </summary>
+        [XmlEnum("110301")]
+        CancelamentoVinculacaoPagamento = 110301
+    }
+
     #endregion BPe
 
     #region NFGas
