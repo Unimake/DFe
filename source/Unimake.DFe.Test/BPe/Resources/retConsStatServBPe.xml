@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsStatServBPe versao="1.00" xmlns="http://www.portalfiscal.inf.br/bpe">
+  <tpAmb>2</tpAmb>
+  <verAplic>SP_BPE_1.00</verAplic>
+  <cStat>107</cStat>
+  <xMotivo>Servico em operacao</xMotivo>
+  <cUF>35</cUF>
+  <dhRecbto>2026-07-06T15:02:00-03:00</dhRecbto>
+  <tMed>1</tMed>
+  <dhRetorno>2026-07-06T15:05:00-03:00</dhRetorno>
+  <xObs>Ambiente de homologacao</xObs>
+</retConsStatServBPe>

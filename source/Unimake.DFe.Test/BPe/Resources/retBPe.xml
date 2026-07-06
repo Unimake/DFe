@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retBPe versao="1.00" xmlns="http://www.portalfiscal.inf.br/bpe">
+  <tpAmb>2</tpAmb>
+  <cUF>35</cUF>
+  <verAplic>SP_BPE_1.00</verAplic>
+  <cStat>100</cStat>
+  <xMotivo>Autorizado o uso do BP-e</xMotivo>
+  <protBPe versao="1.00">
+    <infProt Id="ID35260712345678000123630010000000011000000010">
+      <tpAmb>2</tpAmb>
+      <verAplic>SP_BPE_1.00</verAplic>
+      <chBPe>35260712345678000123630010000000011000000010</chBPe>
+      <dhRecbto>2026-07-06T15:01:00-03:00</dhRecbto>
+      <nProt>135260000000001</nProt>
+      <digVal>MTIzNDU2Nzg5MDEyMzQ1Njc4OTA=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso do BP-e</xMotivo>
+    </infProt>
+  </protBPe>
+</retBPe>

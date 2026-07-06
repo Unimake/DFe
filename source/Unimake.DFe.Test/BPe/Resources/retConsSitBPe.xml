@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsSitBPe versao="1.00" xmlns="http://www.portalfiscal.inf.br/bpe">
+  <tpAmb>2</tpAmb>
+  <verAplic>SP_BPE_1.00</verAplic>
+  <cStat>100</cStat>
+  <xMotivo>Autorizado o uso do BP-e</xMotivo>
+  <cUF>35</cUF>
+  <protBPe versao="1.00">
+    <infProt Id="ID35260712345678000123630010000000011000000010">
+      <tpAmb>2</tpAmb>
+      <verAplic>SP_BPE_1.00</verAplic>
+      <chBPe>35260712345678000123630010000000011000000010</chBPe>
+      <dhRecbto>2026-07-06T15:01:00-03:00</dhRecbto>
+      <nProt>135260000000001</nProt>
+      <digVal>MTIzNDU2Nzg5MDEyMzQ1Njc4OTA=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso do BP-e</xMotivo>
+    </infProt>
+  </protBPe>
+  <procEventoBPe versao="1.00" ipTransmissor="192.168.0.10" nPortaCon="443" dhConexao="2026-07-06T15:03:01-03:00">
+    <eventoBPe versao="1.00">
+      <infEvento Id="ID11011135260712345678000123630010000000011000000010001">
+        <cOrgao>35</cOrgao>
+        <tpAmb>2</tpAmb>
+        <CNPJ>12345678000123</CNPJ>
+        <chBPe>35260712345678000123630010000000011000000010</chBPe>
+        <dhEvento>2026-07-06T15:00:00-03:00</dhEvento>
+        <tpEvento>110111</tpEvento>
+        <nSeqEvento>1</nSeqEvento>
+        <detEvento versaoEvento="1.00">
+          <evCancBPe>
+            <descEvento>Cancelamento</descEvento>
+            <nProt>135260000000001</nProt>
+            <xJust>Cancelamento solicitado pelo emitente do BP-e.</xJust>
+          </evCancBPe>
+        </detEvento>
+      </infEvento>
+      <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+          <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+          <Reference URI="#ID11011135260712345678000123630010000000011000000010001">
+            <Transforms>
+              <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+              <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+            </Transforms>
+            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+            <DigestValue>MTIzNDU2Nzg5MDEyMzQ1Njc4OTA=</DigestValue>
+          </Reference>
+        </SignedInfo>
+        <SignatureValue>MTIzNDU2Nzg5MDEyMzQ1Njc4OTA=</SignatureValue>
+        <KeyInfo>
+          <X509Data>
+            <X509Certificate>MTIzNDU2Nzg5MDEyMzQ1Njc4OTA=</X509Certificate>
+          </X509Data>
+        </KeyInfo>
+      </Signature>
+    </eventoBPe>
+    <retEventoBPe versao="1.00">
+      <infEvento>
+        <tpAmb>2</tpAmb>
+        <verAplic>SP_BPE_1.00</verAplic>
+        <cOrgao>35</cOrgao>
+        <cStat>135</cStat>
+        <xMotivo>Evento registrado e vinculado a BP-e</xMotivo>
+        <chBPe>35260712345678000123630010000000011000000010</chBPe>
+        <tpEvento>110111</tpEvento>
+        <xEvento>Cancelamento</xEvento>
+        <nSeqEvento>1</nSeqEvento>
+        <dhRegEvento>2026-07-06T15:03:00-03:00</dhRegEvento>
+        <nProt>135260000000002</nProt>
+      </infEvento>
+    </retEventoBPe>
+  </procEventoBPe>
+</retConsSitBPe>

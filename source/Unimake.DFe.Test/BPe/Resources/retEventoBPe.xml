@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retEventoBPe versao="1.00" xmlns="http://www.portalfiscal.inf.br/bpe">
+  <infEvento>
+    <tpAmb>2</tpAmb>
+    <verAplic>SP_BPE_1.00</verAplic>
+    <cOrgao>35</cOrgao>
+    <cStat>135</cStat>
+    <xMotivo>Evento registrado e vinculado a BP-e</xMotivo>
+    <chBPe>35260712345678000123630010000000011000000010</chBPe>
+    <tpEvento>110111</tpEvento>
+    <xEvento>Cancelamento</xEvento>
+    <nSeqEvento>1</nSeqEvento>
+    <dhRegEvento>2026-07-06T15:03:00-03:00</dhRegEvento>
+    <nProt>135260000000002</nProt>
+  </infEvento>
+</retEventoBPe>
