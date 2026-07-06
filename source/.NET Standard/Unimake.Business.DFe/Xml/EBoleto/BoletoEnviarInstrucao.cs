@@ -50,6 +50,18 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         }
 
         /// <summary>
+        /// Indica se DataField deve ser serializado
+        /// </summary>
+        public bool ShouldSerializeDataField()
+        {
+#if INTEROP
+            return Data > DateTime.MinValue;
+#else
+            return Data > DateTimeOffset.MinValue;
+#endif
+        }
+
+        /// <summary>
         /// Instrucao
         /// </summary>
         [XmlElement("Instrucao")]
