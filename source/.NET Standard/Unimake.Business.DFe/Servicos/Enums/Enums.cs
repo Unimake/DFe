@@ -19501,6 +19501,54 @@ namespace Unimake.Business.DFe.Servicos
         CancelamentoVinculacaoPagamento = 110301
     }
 
+    /// <summary>
+    /// Tipo de Receita Bruta do Simples Nacional
+    /// </summary>
+    public enum TipoReceitaBrutaSimplesNacional
+    {
+        /// <summary>
+        /// 0 - Não é receita bruta
+        /// </summary>
+        [XmlEnum("0")]
+        NaoReceitaBruta = 0,
+
+        /// <summary>
+        /// 1 - Receita bruta - interna
+        /// </summary>
+        [XmlEnum("1")]
+        ReceitaBrutaInterna = 1,
+
+        /// <summary>
+        /// 2 - Receita bruta - interna sem cálculo de IBS e CBS
+        /// </summary>
+        [XmlEnum("2")]
+        ReceitaBrutaInternaSemCalculoIBSCBS = 2,
+
+        /// <summary>
+        /// 3 - Receita bruta - exportação direta
+        /// </summary>
+        [XmlEnum("3")]
+        ReceitaBrutaExportacaoDireta = 3,
+
+        /// <summary>
+        /// 4 - Receita bruta - exportação indireta
+        /// </summary>
+        [XmlEnum("4")]
+        ReceitaBrutaExportacaoIndireta = 4,
+
+        /// <summary>
+        /// 5 - Receita bruta - mercado interno e exportação
+        /// </summary>
+        [XmlEnum("5")]
+        ReceitaBrutaMercadoInternoExportacao = 5,
+
+        /// <summary>
+        /// 9 - Fornecimento incompatível com SN
+        /// </summary>
+        [XmlEnum("9")]
+        FornecimentoIncompativelSN = 9
+    }
+
     #endregion NFGas
 
     #region CIOT

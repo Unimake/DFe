@@ -96,7 +96,7 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public string IdTransacao { get; set; }
 
         [XmlElement("tpMeioPgto")]
-        public MeioPagamento TpMeioPgto { get; set; }
+        public string TpMeioPgto { get; set; }
 
         [XmlElement("CNPJReceb")]
         public string CNPJReceb { get; set; }

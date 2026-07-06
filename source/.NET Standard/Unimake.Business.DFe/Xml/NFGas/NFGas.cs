@@ -1034,7 +1034,11 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public string CClassTrib { get; set; }
 
         [XmlElement("indDoacao")]
-        public string IndDoacao { get; set; }
+#if INTEROP
+        public IndicadorDoacao IndDoacao { get; set; } = (IndicadorDoacao)(-1);
+#else
+        public IndicadorDoacao? IndDoacao { get; set; }
+#endif
 
         [XmlElement("gIBSCBS")]
         public GIBSCBS GIBSCBS { get; set; }
@@ -1060,7 +1064,11 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlIgnore]
         public string RefDFe { get; set; }
 
-        public bool ShouldSerializeIndDoacao() => !string.IsNullOrEmpty(IndDoacao);
+#if INTEROP
+        public bool ShouldSerializeIndDoacao() => IndDoacao != (IndicadorDoacao)(-1);
+#else
+        public bool ShouldSerializeIndDoacao() => IndDoacao != null;
+#endif
     }
 
     public class GAgregadora
@@ -1086,8 +1094,15 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("pIS")]
         public string PIS { get; set; }
 
-        [XmlElement("pISEspec")]
-        public string PISEspec { get; set; }
+        [XmlElement("adRemIS")]
+        public string AdRemIS { get; set; }
+
+        [XmlIgnore]
+        public string PISEspec
+        {
+            get => AdRemIS;
+            set => AdRemIS = value;
+        }
 
         [XmlElement("uTrib")]
         public string UTrib { get; set; }
@@ -1211,11 +1226,21 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
     public class GALCZFMCBS
     {
+        [XmlElement("tpALCZFMCBS")]
+        public TipoAplicacaoAliquotaZeroCBS TpALCZFMCBS { get; set; }
+
+        [XmlElement("nProcSuframa")]
+        public string NProcSuframa { get; set; }
+
         [XmlElement("pAliqEfetRegCBS")]
         public string PAliqEfetRegCBS { get; set; }
 
         [XmlElement("vTribRegCBS")]
         public string VTribRegCBS { get; set; }
+
+        public bool ShouldSerializeTpALCZFMCBS() => TpALCZFMCBS > 0;
+
+        public bool ShouldSerializeNProcSuframa() => !string.IsNullOrWhiteSpace(NProcSuframa);
     }
 
     public class GTribRegular
@@ -1421,11 +1446,82 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
     public class GCredPresIBSZFM
     {
+        [XmlElement("competApur")]
+        public string CompetApur { get; set; }
+
         [XmlElement("tpCredPresIBSZFM")]
-        public string TpCredPresIBSZFM { get; set; }
+        public TipoCreditoPresumidoIBSZFM TpCredPresIBSZFM { get; set; }
 
         [XmlElement("vCredPresIBSZFM")]
         public string VCredPresIBSZFM { get; set; }
+    }
+
+    public class TribItemSN
+    {
+        [XmlAttribute("nItem")]
+        public string NItem { get; set; }
+
+        [XmlElement("vRBSNItem")]
+        public string VRBSNItem { get; set; }
+
+        [XmlElement("tpRBSN")]
+        public TipoReceitaBrutaSimplesNacional TpRBSN { get; set; }
+
+        [XmlElement("pIBSSN")]
+        public string PIBSSN { get; set; }
+
+        [XmlElement("vIBSSN")]
+        public string VIBSSN { get; set; }
+
+        [XmlElement("pCBSSN")]
+        public string PCBSSN { get; set; }
+
+        [XmlElement("vCBSSN")]
+        public string VCBSSN { get; set; }
+
+        [XmlElement("vIBSPendSusp")]
+        public string VIBSPendSusp { get; set; }
+
+        [XmlElement("vCBSPendSusp")]
+        public string VCBSPendSusp { get; set; }
+
+        public bool ShouldSerializePIBSSN() => !string.IsNullOrEmpty(PIBSSN);
+
+        public bool ShouldSerializeVIBSSN() => !string.IsNullOrEmpty(VIBSSN);
+
+        public bool ShouldSerializePCBSSN() => !string.IsNullOrEmpty(PCBSSN);
+
+        public bool ShouldSerializeVCBSSN() => !string.IsNullOrEmpty(VCBSSN);
+
+        public bool ShouldSerializeVIBSPendSusp() => !string.IsNullOrEmpty(VIBSPendSusp);
+
+        public bool ShouldSerializeVCBSPendSusp() => !string.IsNullOrEmpty(VCBSPendSusp);
+    }
+
+    public class TotalSN
+    {
+        [XmlElement("vRBSNTot")]
+        public string VRBSNTot { get; set; }
+
+        [XmlElement("vIBSSNTot")]
+        public string VIBSSNTot { get; set; }
+
+        [XmlElement("vIBSSNtotPendSusp")]
+        public string VIBSSNtotPendSusp { get; set; }
+
+        [XmlElement("vCBSSNTot")]
+        public string VCBSSNTot { get; set; }
+
+        [XmlElement("vCBSSNtotPendSusp")]
+        public string VCBSSNtotPendSusp { get; set; }
+
+        public bool ShouldSerializeVIBSSNTot() => !string.IsNullOrEmpty(VIBSSNTot);
+
+        public bool ShouldSerializeVIBSSNtotPendSusp() => !string.IsNullOrEmpty(VIBSSNtotPendSusp);
+
+        public bool ShouldSerializeVCBSSNTot() => !string.IsNullOrEmpty(VCBSSNTot);
+
+        public bool ShouldSerializeVCBSSNtotPendSusp() => !string.IsNullOrEmpty(VCBSSNtotPendSusp);
     }
 
     public class Total
