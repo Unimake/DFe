@@ -1881,6 +1881,74 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region SituacaoNFeDistribuicao
+
+    /// <summary>
+    /// Situação da NFe/NFCe retornada na distribuição de DF-e
+    /// </summary>
+    public enum SituacaoNFeDistribuicao
+    {
+        /// <summary>
+        /// 1 - Uso autorizado no momento da consulta
+        /// </summary>
+        [XmlEnum("1")]
+        UsoAutorizado = 1,
+
+        /// <summary>
+        /// 2 - Uso denegado
+        /// </summary>
+        [XmlEnum("2")]
+        UsoDenegado = 2,
+
+        /// <summary>
+        /// 3 - Uso inutilizado
+        /// </summary>
+        [XmlEnum("3")]
+        UsoInutilizado = 3
+    }
+
+    #endregion
+
+    #region SituacaoManifestacaoDestinatario
+
+    /// <summary>
+    /// Situação da Manifestação do Destinatário retornada na distribuição de DF-e
+    /// </summary>
+    public enum SituacaoManifestacaoDestinatario
+    {
+        /// <summary>
+        /// 0 - Sem Manifestação do Destinatário
+        /// </summary>
+        [XmlEnum("0")]
+        SemManifestacaoDestinatario = 0,
+
+        /// <summary>
+        /// 1 - Confirmada Operação
+        /// </summary>
+        [XmlEnum("1")]
+        ConfirmadaOperacao = 1,
+
+        /// <summary>
+        /// 2 - Desconhecida
+        /// </summary>
+        [XmlEnum("2")]
+        Desconhecida = 2,
+
+        /// <summary>
+        /// 3 - Operação não Realizada
+        /// </summary>
+        [XmlEnum("3")]
+        OperacaoNaoRealizada = 3,
+
+        /// <summary>
+        /// 4 - Ciência
+        /// </summary>
+        [XmlEnum("4")]
+        Ciencia = 4
+    }
+
+    #endregion
+
 
     #region TipoOperacao
 
