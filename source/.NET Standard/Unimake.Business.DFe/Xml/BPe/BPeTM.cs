@@ -11,14 +11,14 @@ using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 
-namespace Unimake.Business.DFe.Xml.BPe
+namespace Unimake.Business.DFe.Xml.BPeTM
 {
     /// <summary>
     /// BP-e TM - Bilhete de Passagem Eletronico Transporte Metropolitano
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.BPeTM")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.BPeTM")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -40,7 +40,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.InfBPe")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.InfBPe")]
     [ComVisible(true)]
 #endif
     public class InfBPe
@@ -188,7 +188,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.Ide")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.Ide")]
     [ComVisible(true)]
 #endif
     public class Ide
@@ -300,7 +300,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.Emit")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.Emit")]
     [ComVisible(true)]
 #endif
     public class Emit
@@ -348,7 +348,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.EnderEmit")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.EnderEmit")]
     [ComVisible(true)]
 #endif
     public class EnderEmit
@@ -391,7 +391,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.CompraGovReduzido")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.CompraGovReduzido")]
     [ComVisible(true)]
 #endif
     public class CompraGovReduzido
@@ -426,7 +426,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.DetBPeTM")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.DetBPeTM")]
     [ComVisible(true)]
 #endif
     public class DetBPeTM
@@ -470,7 +470,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.Det")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.Det")]
     [ComVisible(true)]
 #endif
     public class Det
@@ -526,7 +526,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.Imp")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.Imp")]
     [ComVisible(true)]
 #endif
     public class Imp
@@ -546,7 +546,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.ICMS")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.ICMS")]
     [ComVisible(true)]
 #endif
     public class ICMS
@@ -575,7 +575,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.ICMS00")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.ICMS00")]
     [ComVisible(true)]
 #endif
     public class ICMS00
@@ -616,7 +616,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.ICMS20")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.ICMS20")]
     [ComVisible(true)]
 #endif
     public class ICMS20
@@ -683,7 +683,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.ICMS45")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.ICMS45")]
     [ComVisible(true)]
 #endif
     public class ICMS45
@@ -710,7 +710,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.ICMS90")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.ICMS90")]
     [ComVisible(true)]
 #endif
     public class ICMS90
@@ -803,7 +803,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.IBSCBS")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.IBSCBS")]
     [ComVisible(true)]
 #endif
     public class IBSCBS
@@ -838,7 +838,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.GIBSCBS")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.GIBSCBS")]
     [ComVisible(true)]
 #endif
     public class GIBSCBS
@@ -1295,7 +1295,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.Comp")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.Comp")]
     [ComVisible(true)]
 #endif
     public class Comp
@@ -1309,7 +1309,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.Total")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.Total")]
     [ComVisible(true)]
 #endif
     public class Total
@@ -1349,7 +1349,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.ICMSTot")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.ICMSTot")]
     [ComVisible(true)]
 #endif
     public class ICMSTot
@@ -1377,7 +1377,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.IBSCBSTot")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.IBSCBSTot")]
     [ComVisible(true)]
 #endif
     public class IBSCBSTot
@@ -1544,7 +1544,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.PgtoVinc")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.PgtoVinc")]
     [ComVisible(true)]
 #endif
     public class PgtoVinc
@@ -1561,7 +1561,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.Pgto")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.Pgto")]
     [ComVisible(true)]
 #endif
     public class Pgto
@@ -1584,7 +1584,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.AutXML")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.AutXML")]
     [ComVisible(true)]
 #endif
     public class AutXML
@@ -1601,7 +1601,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.InfAdic")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.InfAdic")]
     [ComVisible(true)]
 #endif
     public class InfAdic
@@ -1618,7 +1618,7 @@ namespace Unimake.Business.DFe.Xml.BPe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.BPe.InfRespTec")]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.InfRespTec")]
     [ComVisible(true)]
 #endif
     public class InfRespTec

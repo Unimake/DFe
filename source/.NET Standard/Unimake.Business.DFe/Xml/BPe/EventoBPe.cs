@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.BPeTM;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.BPe

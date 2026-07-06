@@ -19105,10 +19105,430 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoBPe
     {
         /// <summary>
+        /// 0 - Normal
+        /// </summary>
+        [XmlEnum("0")]
+        Normal = 0,
+
+        /// <summary>
+        /// 3 - Substituicao
+        /// </summary>
+        [XmlEnum("3")]
+        Substituicao = 3,
+
+        /// <summary>
         /// 4 - Transporte Metropolitano
         /// </summary>
         [XmlEnum("4")]
         TransporteMetropolitano = 4
+    }
+
+    /// <summary>
+    /// Tipo de substituicao do BP-e
+    /// </summary>
+    public enum TipoSubstituicaoBPe
+    {
+        /// <summary>
+        /// 1 - Remarcacao
+        /// </summary>
+        [XmlEnum("1")]
+        Remarcacao = 1,
+
+        /// <summary>
+        /// 2 - Transferencia
+        /// </summary>
+        [XmlEnum("2")]
+        Transferencia = 2,
+
+        /// <summary>
+        /// 3 - Outros
+        /// </summary>
+        [XmlEnum("3")]
+        Outros = 3
+    }
+
+    /// <summary>
+    /// Tipo de documento de identificacao do passageiro do BP-e
+    /// </summary>
+    public enum TipoDocumentoPassageiroBPe
+    {
+        /// <summary>
+        /// 1 - RG
+        /// </summary>
+        [XmlEnum("1")]
+        RG = 1,
+
+        /// <summary>
+        /// 2 - Titulo de eleitor
+        /// </summary>
+        [XmlEnum("2")]
+        TituloEleitor = 2,
+
+        /// <summary>
+        /// 3 - Passaporte
+        /// </summary>
+        [XmlEnum("3")]
+        Passaporte = 3,
+
+        /// <summary>
+        /// 4 - CNH
+        /// </summary>
+        [XmlEnum("4")]
+        CNH = 4,
+
+        /// <summary>
+        /// 5 - Outro
+        /// </summary>
+        [XmlEnum("5")]
+        Outro = 5
+    }
+
+    /// <summary>
+    /// Tipo de viagem do BP-e
+    /// </summary>
+    public enum TipoViagemBPe
+    {
+        /// <summary>
+        /// 00 - Regular
+        /// </summary>
+        [XmlEnum("00")]
+        Regular = 0,
+
+        /// <summary>
+        /// 01 - Extra
+        /// </summary>
+        [XmlEnum("01")]
+        Extra = 1
+    }
+
+    /// <summary>
+    /// Tipo de servico do BP-e
+    /// </summary>
+    public enum TipoServicoBPe
+    {
+        /// <summary>
+        /// 1 - Convencional
+        /// </summary>
+        [XmlEnum("1")]
+        Convencional = 1,
+
+        /// <summary>
+        /// 2 - Executivo
+        /// </summary>
+        [XmlEnum("2")]
+        Executivo = 2,
+
+        /// <summary>
+        /// 3 - Semi leito
+        /// </summary>
+        [XmlEnum("3")]
+        SemiLeito = 3,
+
+        /// <summary>
+        /// 4 - Leito
+        /// </summary>
+        [XmlEnum("4")]
+        Leito = 4,
+
+        /// <summary>
+        /// 5 - Leito com ar condicionado
+        /// </summary>
+        [XmlEnum("5")]
+        LeitoComArCondicionado = 5,
+
+        /// <summary>
+        /// 6 - Executivo com ar condicionado
+        /// </summary>
+        [XmlEnum("6")]
+        ExecutivoComArCondicionado = 6,
+
+        /// <summary>
+        /// 7 - Semi leito com ar condicionado
+        /// </summary>
+        [XmlEnum("7")]
+        SemiLeitoComArCondicionado = 7,
+
+        /// <summary>
+        /// 8 - Convencional com ar condicionado
+        /// </summary>
+        [XmlEnum("8")]
+        ConvencionalComArCondicionado = 8,
+
+        /// <summary>
+        /// 9 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9,
+
+        /// <summary>
+        /// 10 - Diferenciado
+        /// </summary>
+        [XmlEnum("10")]
+        Diferenciado = 10,
+
+        /// <summary>
+        /// 11 - Turismo
+        /// </summary>
+        [XmlEnum("11")]
+        Turismo = 11
+    }
+
+    /// <summary>
+    /// Tipo de acomodacao do BP-e
+    /// </summary>
+    public enum TipoAcomodacaoBPe
+    {
+        /// <summary>
+        /// 1 - Sentado
+        /// </summary>
+        [XmlEnum("1")]
+        Sentado = 1,
+
+        /// <summary>
+        /// 2 - Cabine leito
+        /// </summary>
+        [XmlEnum("2")]
+        CabineLeito = 2,
+
+        /// <summary>
+        /// 3 - Camarote
+        /// </summary>
+        [XmlEnum("3")]
+        Camarote = 3,
+
+        /// <summary>
+        /// 4 - Poltrona leito
+        /// </summary>
+        [XmlEnum("4")]
+        PoltronaLeito = 4,
+
+        /// <summary>
+        /// 5 - Outros
+        /// </summary>
+        [XmlEnum("5")]
+        Outros = 5
+    }
+
+    /// <summary>
+    /// Tipo de trecho do BP-e
+    /// </summary>
+    public enum TipoTrechoBPe
+    {
+        /// <summary>
+        /// 1 - Inicial
+        /// </summary>
+        [XmlEnum("1")]
+        Inicial = 1,
+
+        /// <summary>
+        /// 2 - Conexao
+        /// </summary>
+        [XmlEnum("2")]
+        Conexao = 2,
+
+        /// <summary>
+        /// 3 - Final
+        /// </summary>
+        [XmlEnum("3")]
+        Final = 3
+    }
+
+    /// <summary>
+    /// Tipo de veiculo de travessia do BP-e
+    /// </summary>
+    public enum TipoVeiculoTravessiaBPe
+    {
+        /// <summary>
+        /// 01 - Automovel
+        /// </summary>
+        [XmlEnum("01")]
+        Automovel = 1,
+
+        /// <summary>
+        /// 02 - Caminhao
+        /// </summary>
+        [XmlEnum("02")]
+        Caminhao = 2,
+
+        /// <summary>
+        /// 03 - Onibus
+        /// </summary>
+        [XmlEnum("03")]
+        Onibus = 3,
+
+        /// <summary>
+        /// 04 - Micro-onibus
+        /// </summary>
+        [XmlEnum("04")]
+        MicroOnibus = 4,
+
+        /// <summary>
+        /// 05 - Motocicleta
+        /// </summary>
+        [XmlEnum("05")]
+        Motocicleta = 5,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99
+    }
+
+    /// <summary>
+    /// Situacao do veiculo de travessia do BP-e
+    /// </summary>
+    public enum SituacaoVeiculoTravessiaBPe
+    {
+        /// <summary>
+        /// 1 - Carregado
+        /// </summary>
+        [XmlEnum("1")]
+        Carregado = 1,
+
+        /// <summary>
+        /// 2 - Vazio
+        /// </summary>
+        [XmlEnum("2")]
+        Vazio = 2,
+
+        /// <summary>
+        /// 3 - Nao informado
+        /// </summary>
+        [XmlEnum("3")]
+        NaoInformado = 3
+    }
+
+    /// <summary>
+    /// Tipo de desconto do BP-e
+    /// </summary>
+    public enum TipoDescontoBPe
+    {
+        /// <summary>
+        /// 03 - Criancas
+        /// </summary>
+        [XmlEnum("03")]
+        Criancas = 3,
+
+        /// <summary>
+        /// 09 - Profissional da empresa
+        /// </summary>
+        [XmlEnum("09")]
+        ProfissionalEmpresa = 9,
+
+        /// <summary>
+        /// 10 - Programa de fidelidade
+        /// </summary>
+        [XmlEnum("10")]
+        ProgramaFidelidade = 10,
+
+        /// <summary>
+        /// 11 - Acordo corporativo
+        /// </summary>
+        [XmlEnum("11")]
+        AcordoCorporativo = 11,
+
+        /// <summary>
+        /// 12 - Acordo com grupo de passageiros
+        /// </summary>
+        [XmlEnum("12")]
+        AcordoGrupoPassageiros = 12,
+
+        /// <summary>
+        /// 13 - Acompanhante PNE
+        /// </summary>
+        [XmlEnum("13")]
+        AcompanhantePNE = 13,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99
+    }
+
+    /// <summary>
+    /// Tipo de componente de valor do BP-e
+    /// </summary>
+    public enum TipoComponenteValorBPe
+    {
+        /// <summary>
+        /// 01 - Tarifa
+        /// </summary>
+        [XmlEnum("01")]
+        Tarifa = 1,
+
+        /// <summary>
+        /// 03 - Taxa de embarque
+        /// </summary>
+        [XmlEnum("03")]
+        TaxaEmbarque = 3,
+
+        /// <summary>
+        /// 06 - Bagagem
+        /// </summary>
+        [XmlEnum("06")]
+        Bagagem = 6,
+
+        /// <summary>
+        /// 07 - Reserva de assentos
+        /// </summary>
+        [XmlEnum("07")]
+        ReservaAssentos = 7,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99
+    }
+
+    /// <summary>
+    /// Meio de pagamento do BP-e
+    /// </summary>
+    public enum MeioPagamentoBPe
+    {
+        /// <summary>
+        /// 01 - Dinheiro
+        /// </summary>
+        [XmlEnum("01")]
+        Dinheiro = 1,
+
+        /// <summary>
+        /// 02 - Cheque
+        /// </summary>
+        [XmlEnum("02")]
+        Cheque = 2,
+
+        /// <summary>
+        /// 03 - Cartao de credito
+        /// </summary>
+        [XmlEnum("03")]
+        CartaoCredito = 3,
+
+        /// <summary>
+        /// 04 - Cartao de debito
+        /// </summary>
+        [XmlEnum("04")]
+        CartaoDebito = 4,
+
+        /// <summary>
+        /// 05 - Vale transporte
+        /// </summary>
+        [XmlEnum("05")]
+        ValeTransporte = 5,
+
+        /// <summary>
+        /// 06 - PIX
+        /// </summary>
+        [XmlEnum("06")]
+        Pix = 6,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99
     }
 
     /// <summary>

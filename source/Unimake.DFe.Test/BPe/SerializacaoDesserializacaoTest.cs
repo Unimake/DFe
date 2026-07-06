@@ -3,12 +3,31 @@ using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.BPe;
+using BPeTMXml = Unimake.Business.DFe.Xml.BPeTM;
 using Xunit;
 
 namespace Unimake.DFe.Test.BPe
 {
     public class SerializacaoDesserializacaoTest
     {
+        [Theory]
+        [Trait("DFe", "BPe")]
+        [InlineData(@"..\..\..\BPe\Resources\bpe_minimo.xml")]
+        public void SerializacaoDesserializacaoBPe(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " nao foi localizado para a realizacao da serializacao/desserializacao.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var bpe = new Unimake.Business.DFe.Xml.BPe.BPe();
+            var xml = bpe.LerXML<Unimake.Business.DFe.Xml.BPe.BPe>(doc);
+
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL esta diferente do conteudo do arquivo serializado.");
+        }
+
         [Theory]
         [Trait("DFe", "BPe")]
         [InlineData(@"..\..\..\BPe\Resources\bpeTM_minimo.xml")]
@@ -19,8 +38,8 @@ namespace Unimake.DFe.Test.BPe
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var bpe = new Unimake.Business.DFe.Xml.BPe.BPeTM();
-            var xml = bpe.LerXML<Unimake.Business.DFe.Xml.BPe.BPeTM>(doc);
+            var bpe = new BPeTMXml.BPeTM();
+            var xml = bpe.LerXML<BPeTMXml.BPeTM>(doc);
 
             var doc2 = xml.GerarXML();
 
@@ -162,10 +181,10 @@ namespace Unimake.DFe.Test.BPe
         [Trait("DFe", "BPe")]
         public void GerarChaveBPeTM()
         {
-            var infBPe = new InfBPe
+            var infBPe = new BPeTMXml.InfBPe
             {
                 Versao = "1.00",
-                Ide = new Ide
+                Ide = new BPeTMXml.Ide
                 {
                     CUF = UFBrasil.SP,
                     TpAmb = TipoAmbiente.Homologacao,
@@ -180,7 +199,7 @@ namespace Unimake.DFe.Test.BPe
                     VerProc = "1.0",
                     TpBPe = TipoBPe.TransporteMetropolitano
                 },
-                Emit = new Emit
+                Emit = new BPeTMXml.Emit
                 {
                     CNPJ = "12345678000123"
                 }
