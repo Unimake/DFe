@@ -4,15 +4,8 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="ConfigurationId" type="xs:string" minOccurs="1" />
-				<xs:element name="Aceite" type="xs:boolean" minOccurs="1" />
-				<xs:element name="AgenciaColetora" minOccurs="0">
-					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:enumeration value="S" />
-							<xs:enumeration value="N" />
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:element>
+				<xs:element name="Aceite" type="xs:boolean" minOccurs="0" />
+				<xs:element name="AgenciaColetora" type="xs:string" minOccurs="0" />
 				<xs:element name="Avalista" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
@@ -260,7 +253,7 @@
 				<xs:element name="NumeroDiasLimiteRecebimento" type="xs:int" minOccurs="0" />
 				<xs:element name="NumeroNaEmpresa" type="xs:string" minOccurs="0" />
 				<xs:element name="NumeroNoBanco" type="xs:string" minOccurs="0" />
-				<xs:element name="NumeroParcela" type="xs:int" minOccurs="1" />
+				<xs:element name="NumeroParcela" type="xs:int" minOccurs="0" />
 				<xs:element name="NumeroVariacaoCarteira" type="xs:int" minOccurs="0" />
 				<xs:element name="Pagador" minOccurs="1">
 					<xs:complexType>
@@ -295,7 +288,13 @@
 										<xs:element name="Complemento" type="xs:string" />
 										<xs:element name="Bairro" type="xs:string" minOccurs="1" />
 										<xs:element name="Cidade" type="xs:string" minOccurs="1" />
-										<xs:element name="UF" type="xs:string" minOccurs="1" />
+										<xs:element name="UF" minOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
 										<xs:element name="CEP" minOccurs="1">
 											<xs:simpleType>
 												<xs:restriction base="xs:string">
@@ -309,7 +308,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="PDFConfig" minOccurs="1">
+				<xs:element name="PDFConfig" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="Password" type="xs:string" minOccurs="0" />
@@ -321,7 +320,7 @@
 							<xs:element name="PermitModifyDocument" type="xs:boolean" minOccurs="0" />
 							<xs:element name="PermitPrint" type="xs:boolean" minOccurs="0" />
 							<xs:element name="SignPDF" type="xs:boolean" minOccurs="0" />
-							<xs:element name="TryGeneratePDF" type="xs:boolean" minOccurs="1" />
+							<xs:element name="TryGeneratePDF" type="xs:boolean" minOccurs="0" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -336,7 +335,7 @@
 				<xs:element name="PixConfig" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="Chave" type="xs:string" />
+							<xs:element name="Chave" type="xs:string" minOccurs="0" />
 							<xs:element name="QrCodeConfig" minOccurs="0">
 								<xs:complexType>
 									<xs:sequence>
@@ -371,7 +370,7 @@
 							</xs:element>
 							<xs:element name="Valor">
 								<xs:simpleType>
-									<xs:restriction base="xs:decimal">
+									<xs:restriction base="xs:int">
 										<xs:minInclusive value="0" />
 									</xs:restriction>
 								</xs:simpleType>

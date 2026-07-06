@@ -4,7 +4,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="ConfigurationId" type="xs:string"/>
-				<xs:element name="Data" type="xs:date"/>
+				<xs:element name="Data" type="xs:date" minOccurs="0"/>
 				<xs:element name="Instrucao">
 					<xs:simpleType>
 						<xs:restriction base="xs:integer">
@@ -19,6 +19,8 @@
 							<xs:enumeration value="8"/>
 							<xs:enumeration value="9"/>
 							<xs:enumeration value="10"/>
+							<xs:enumeration value="11"/>
+							<xs:enumeration value="12"/>
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
@@ -54,6 +56,14 @@
 							<xs:enumeration value="11"/>
 							<xs:enumeration value="12"/>
 							<xs:enumeration value="13"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TipoJuros" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:int">
+							<xs:minInclusive value="0"/>
+							<xs:maxInclusive value="6"/>
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
