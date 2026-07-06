@@ -9,7 +9,7 @@
 				<xs:element name="NumerosNoBanco" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="NumeroNoBanco" type="xs:string" minOccurs="1" maxOccurs="50"/>
+							<xs:element name="NumeroNoBanco" type="xs:string" minOccurs="1" maxOccurs="100"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>

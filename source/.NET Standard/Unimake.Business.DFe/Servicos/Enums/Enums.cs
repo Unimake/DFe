@@ -20330,7 +20330,19 @@ namespace Unimake.Business.DFe.Servicos
         /// 10 - Codigo 10
         /// </summary>
         [XmlEnum("10")]
-        Codigo10 = 10
+        Codigo10 = 10,
+
+        /// <summary>
+        /// 11 - Codigo 11
+        /// </summary>
+        [XmlEnum("11")]
+        Codigo11 = 11,
+
+        /// <summary>
+        /// 12 - Codigo 12
+        /// </summary>
+        [XmlEnum("12")]
+        Codigo12 = 12
     }
 
     /// <summary>

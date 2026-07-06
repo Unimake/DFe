@@ -110,6 +110,18 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         public bool TipoDescontoSpecified { get; set; }
 
         /// <summary>
+        /// Tipo de juros
+        /// </summary>
+        [XmlElement("TipoJuros")]
+        public EBoletoTipoJuros TipoJuros { get; set; }
+
+        /// <summary>
+        /// Indica se TipoJuros deve ser serializado
+        /// </summary>
+        [XmlIgnore]
+        public bool TipoJurosSpecified { get; set; }
+
+        /// <summary>
         /// Valor
         /// </summary>
         [XmlElement("Valor")]
