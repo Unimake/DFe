@@ -1,0 +1,7 @@
+interface:
+  display_name: "Inserir Municipio NFSe"
+  short_description: "Adiciona municipio NFSe"
+  default_prompt: "Use $inserir-municipio-nfse para adicionar um municipio NFSe, atualizando o Config.xml, criando o XML do municipio e ajustando o EmbeddedResource."
+
+policy:
+  allow_implicit_invocation: true
