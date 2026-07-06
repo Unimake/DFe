@@ -23,5 +23,23 @@ namespace Unimake.DFe.Test.BPe
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL esta diferente do conteudo do arquivo serializado.");
         }
+
+        [Theory]
+        [Trait("DFe", "BPe")]
+        [InlineData(@"..\..\..\BPe\Resources\consStatServBPe-ped-sta.xml")]
+        public void SerializacaoDesserializacaoConsStatServBPe(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " nao foi localizado para a realizacao da serializacao/desserializacao.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var bpe = new Unimake.Business.DFe.Xml.BPe.ConsStatServBPe();
+            var xml = bpe.LerXML<Unimake.Business.DFe.Xml.BPe.ConsStatServBPe>(doc);
+
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL esta diferente do conteudo do arquivo serializado.");
+        }
     }
 }
