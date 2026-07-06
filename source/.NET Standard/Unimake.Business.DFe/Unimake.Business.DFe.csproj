@@ -459,7 +459,6 @@
 		<None Remove="Servicos\Config\NFSe\CaxiasDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CedralSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ChapecoSC.xml" />
-		<None Remove="Servicos\Config\NFSe\CodoMA.xml" />
 		<None Remove="Servicos\Config\NFSe\ConcordiaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\ContagemMG.xml" />
@@ -1912,7 +1911,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\CampoLargoPR.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\CarlosBarbosaRS.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\CodoMA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ConcordiaSC.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\FrancaSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\GetulioVargasRS.xml" />
