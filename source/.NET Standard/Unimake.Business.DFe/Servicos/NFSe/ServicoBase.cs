@@ -448,7 +448,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         public void PRONIM()
         {
-            if (Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps)
+            if (Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps && Configuracoes.SchemaVersao == "1.01")
             {
                 var idNodeList = ConteudoXMLAssinado.GetElementsByTagName("infDPS", "http://www.sped.fazenda.gov.br/nfse");
 
