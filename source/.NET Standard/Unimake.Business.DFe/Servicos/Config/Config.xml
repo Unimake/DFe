@@ -695,12 +695,6 @@
 		<ArqConfig>JataiGO.xml</ArqConfig>
 		<PadraoNFSe>BSITBR</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4315149">
-		<Nome>Presidente Lucena - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>PresidenteLucenaRS.xml</ArqConfig>
-		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4314803">
 		<Nome>Portão - RS</Nome>
 		<UF>RS</UF>
@@ -724,12 +718,6 @@
 		<UF>SC</UF>
 		<ArqConfig>CamboriuSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4316501">
-		<Nome>Salvador do Sul - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>SalvadorDoSulRS.xml</ArqConfig>
-		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4310801">
 		<Nome>Ivoti - RS</Nome>
@@ -845,12 +833,6 @@
 		<ArqConfig>BarreirasBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4319505">
-		<Nome>São Sebastião do Caí - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>SaoSebastiaoDoCaiRS.xml</ArqConfig>
-		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2607901">
 		<Nome>Jaboatão dos Guararapes - PE</Nome>
 		<UF>PE</UF>
@@ -868,12 +850,6 @@
 		<UF>PE</UF>
 		<ArqConfig>GaranhunsPE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4319000">
-		<Nome>São Marcos - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>SaoMarcosRS.xml</ArqConfig>
-		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2610707">
 		<Nome>Paulista - PE</Nome>
@@ -1192,12 +1168,6 @@
 		<UF>GO</UF>
 		<ArqConfig>OrizonaGO.xml</ArqConfig>
 		<PadraoNFSe>BSITBR</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4308201">
-		<Nome>Flores da Cunha - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>FloresDaCunhaRS.xml</ArqConfig>
-		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2918407">
 		<Nome>Juazeiro - BA</Nome>

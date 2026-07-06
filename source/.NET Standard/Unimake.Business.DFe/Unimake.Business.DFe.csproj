@@ -486,7 +486,6 @@
 		<None Remove="Servicos\Config\NFSe\FeiraDeSantanaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\FernandopolisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\FISCO.xml" />
-		<None Remove="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\FormigaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\FortalezaCE.xml" />
 		<None Remove="Servicos\Config\NFSe\FozDoIguacuPR.xml" />
@@ -623,7 +622,6 @@
 		<None Remove="Servicos\Config\NFSe\PortoBeloSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoVelhoRO.xml" />
-		<None Remove="Servicos\Config\NFSe\PresidenteLucenaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PresidentePrudenteSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
 		<None Remove="Servicos\Config\NFSe\ProfessorJamilGO.xml" />
@@ -638,7 +636,6 @@
 		<None Remove="Servicos\Config\NFSe\RolandiaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\RondonopolisMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SalvadorBA.xml" />
-		<None Remove="Servicos\Config\NFSe\SalvadorDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaCruzDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaMariaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaRosaRS.xml" />
@@ -665,10 +662,8 @@
 		<None Remove="Servicos\Config\NFSe\SaoJoseDosPinhaisPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseSC.xml" />
-		<None Remove="Servicos\Config\NFSe\SaoMarcosRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoPedroDaAldeiaRJ.xml" />
-		<None Remove="Servicos\Config\NFSe\SaoSebastiaoDoCaiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SapirangaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
@@ -1908,7 +1903,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CamacariBA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\CedralSP.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\JaboticabalSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\JoaoPessoaPB.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\JuazeiroBA.xml" />
@@ -2035,12 +2029,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItapemaSC.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\SaoMarcosRS.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSebastiaoDoCaiRS.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\PortoVelhoRO.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -2095,9 +2083,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\IvotiRS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\SalvadorDoSulRS.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\PaveramaRS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -2105,9 +2090,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\GuaribaSP.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\PresidenteLucenaRS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantaMariaRS.xml">
