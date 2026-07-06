@@ -377,7 +377,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
                             switch (child.Name.LocalName)
                             {
                                 case "tpMeioPgto":
-                                    Pgto.TpMeioPgto = (MeioPagamento)int.Parse(child.Value);
+                                    Pgto.TpMeioPgto = child.Value;
                                     break;
 
                                 case "CNPJReceb":
@@ -407,7 +407,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
             <descEvento>{DescEvento}</descEvento>
             <nProt>{NProt}</nProt>
             <pgto nPag=""{Pgto?.NPag}"" idTransacao=""{Pgto?.IdTransacao}"">
-            <tpMeioPgto>{(Pgto != null ? ((int)Pgto.TpMeioPgto).ToString("00") : "")}</tpMeioPgto>
+            <tpMeioPgto>{Pgto?.TpMeioPgto}</tpMeioPgto>
             <CNPJReceb>{Pgto?.CNPJReceb}</CNPJReceb>
             <CNPJBasePSP>{Pgto?.CNPJBasePSP}</CNPJBasePSP>
             </pgto>
@@ -492,7 +492,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Meio de pagamento utilizado.
         /// </summary>
         [XmlElement("tpMeioPgto")]
-        public MeioPagamento TpMeioPgto { get; set; }
+        public string TpMeioPgto { get; set; }
 
         /// <summary>
         /// CNPJ do recebedor do pagamento.
