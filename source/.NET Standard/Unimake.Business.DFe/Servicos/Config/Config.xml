@@ -1097,12 +1097,6 @@
 		<ArqConfig>GurupiTO.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="2103307">
-		<Nome>Codó - MA</Nome>
-		<UF>MA</UF>
-		<ArqConfig>CodoMA.xml</ArqConfig>
-		<PadraoNFSe>FIORILLI</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3516200">
 		<Nome>Franca - SP</Nome>
 		<UF>SP</UF>
