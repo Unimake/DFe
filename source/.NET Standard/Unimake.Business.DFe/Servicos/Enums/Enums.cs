@@ -1162,6 +1162,12 @@ namespace Unimake.Business.DFe.Servicos
         NFCom = 62,
 
         /// <summary>
+        /// BP-e (Modelo: 63)
+        /// </summary>
+        [XmlEnum("63")]
+        BPe = 63,
+
+        /// <summary>
         /// DCe (Modelo: 99)
         /// </summary>
         [XmlEnum("99")]
@@ -19048,6 +19054,118 @@ namespace Unimake.Business.DFe.Servicos
 
 
     #endregion NFS-e NACIONAL
+
+    #region BPe
+
+    /// <summary>
+    /// Tipo de emissao do BP-e
+    /// </summary>
+    public enum TipoEmissaoBPe
+    {
+        /// <summary>
+        /// 1 - Normal
+        /// </summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>
+        /// 2 - Contingencia Off-Line
+        /// </summary>
+        [XmlEnum("2")]
+        ContingenciaOffLine = 2
+    }
+
+    /// <summary>
+    /// Modalidade de transporte do BP-e
+    /// </summary>
+    public enum ModalidadeTransporteBPe
+    {
+        /// <summary>
+        /// 1 - Rodoviario
+        /// </summary>
+        [XmlEnum("1")]
+        Rodoviario = 1,
+
+        /// <summary>
+        /// 3 - Aquaviario
+        /// </summary>
+        [XmlEnum("3")]
+        Aquaviario = 3,
+
+        /// <summary>
+        /// 4 - Ferroviario
+        /// </summary>
+        [XmlEnum("4")]
+        Ferroviario = 4
+    }
+
+    /// <summary>
+    /// Tipo de BP-e
+    /// </summary>
+    public enum TipoBPe
+    {
+        /// <summary>
+        /// 4 - Transporte Metropolitano
+        /// </summary>
+        [XmlEnum("4")]
+        TransporteMetropolitano = 4
+    }
+
+    /// <summary>
+    /// Indicador de contribuinte optante pelo Simples Nacional no BP-e
+    /// </summary>
+    public enum IndicadorSimplesNacionalBPe
+    {
+        /// <summary>
+        /// 1 - Contribuinte optante pelo Simples Nacional
+        /// </summary>
+        [XmlEnum("1")]
+        Sim = 1
+    }
+
+    /// <summary>
+    /// Codigo de Situacao Tributaria do ICMS no BP-e
+    /// </summary>
+    public enum CSTICMSBPe
+    {
+        /// <summary>
+        /// 00 - Tributacao normal do ICMS
+        /// </summary>
+        [XmlEnum("00")]
+        TributacaoNormal = 0,
+
+        /// <summary>
+        /// 20 - Tributacao com reducao de BC
+        /// </summary>
+        [XmlEnum("20")]
+        TributacaoComReducaoBC = 20,
+
+        /// <summary>
+        /// 40 - ICMS isencao
+        /// </summary>
+        [XmlEnum("40")]
+        Isencao = 40,
+
+        /// <summary>
+        /// 41 - ICMS nao tributada
+        /// </summary>
+        [XmlEnum("41")]
+        NaoTributada = 41,
+
+        /// <summary>
+        /// 51 - ICMS diferido
+        /// </summary>
+        [XmlEnum("51")]
+        Diferido = 51,
+
+        /// <summary>
+        /// 90 - ICMS outros
+        /// </summary>
+        [XmlEnum("90")]
+        Outros = 90
+    }
+
+    #endregion BPe
 
     #region NFGas
 
