@@ -2,12 +2,11 @@
 <EnviarLoteDpsSincronoEnvio xmlns="http://www.sped.fazenda.gov.br/nfse">
 	<LoteDps Id="Id1" versao="1.01">
 		<NumeroLote>124</NumeroLote>
-		<Prestador>
-			<CNPJ>99999999999999</CNPJ>
-			<IM>1234</IM>
-		</Prestador>
+		<CpfCnpj>
+			<Cnpj>99999999999999</Cnpj>
+		</CpfCnpj>
 		<InscricaoMunicipal>318360468</InscricaoMunicipal>
-		<QuantidadeRps>1</QuantidadeRps>
+		<QuantidadeDps>1</QuantidadeDps>
 		<ListaDps>
 			<DPS xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
 				<infDPS Id="DPS410690211234567800019500001000000000000001">
