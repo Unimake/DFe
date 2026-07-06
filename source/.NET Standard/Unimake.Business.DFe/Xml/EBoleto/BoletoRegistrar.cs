@@ -41,17 +41,33 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         public bool AceiteSpecified { get; set; }
 
         /// <summary>
+        /// Agencia coletora
+        /// </summary>
+        [JsonProperty("agenciaColetora")]
+        [XmlElement("AgenciaColetora")]
+        public string AgenciaColetoraField { get; set; }
+
+        /// <summary>
         /// Agencia coletora (S/N)
         /// </summary>
-        [JsonConverter(typeof(XmlEnumJsonConverter))]
-        [XmlElement("AgenciaColetora")]
-        public SimNaoLetra AgenciaColetora { get; set; }
+        [JsonIgnore]
+        [XmlIgnore]
+        public SimNaoLetra AgenciaColetora
+        {
+            get => AgenciaColetoraField == "S" ? SimNaoLetra.Sim : SimNaoLetra.Nao;
+            set => AgenciaColetoraField = value == SimNaoLetra.Sim ? "S" : "N";
+        }
 
         /// <summary>
         /// Indica se AgenciaColetora deve ser serializado
         /// </summary>
         [XmlIgnore]
         public bool AgenciaColetoraSpecified { get; set; }
+
+        /// <summary>
+        /// Indica se AgenciaColetoraField deve ser serializado
+        /// </summary>
+        public bool ShouldSerializeAgenciaColetoraField() => AgenciaColetoraSpecified;
 
         /// <summary>
         /// Avalista do boleto

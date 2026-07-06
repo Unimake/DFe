@@ -32,14 +32,44 @@ namespace Unimake.DFe.Test.EBoleto
             var xml = CriarBoletoRegistrar();
             xml.PermiteRecebimentoParcial = SimNaoLetra.Sim;
             xml.PermiteRecebimentoParcialSpecified = true;
+
+            var json = CriarJsonEnvio(xml);
+
+            Assert.Equal("S", json.Value<string>("permiteRecebimentoParcial"));
+            Assert.Equal(JTokenType.String, json["permiteRecebimentoParcial"].Type);
+        }
+
+        /// <summary>
+        /// Testar a serializacao JSON da agencia coletora como texto livre
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void DeveSerializarAgenciaColetoraComoTextoNoJson()
+        {
+            var xml = CriarBoletoRegistrar();
+            xml.AgenciaColetoraField = "AGENCIA-01";
+            xml.AgenciaColetoraSpecified = true;
+
+            var json = CriarJsonEnvio(xml);
+
+            Assert.Equal("AGENCIA-01", json.Value<string>("agenciaColetora"));
+            Assert.Equal(JTokenType.String, json["agenciaColetora"].Type);
+        }
+
+        /// <summary>
+        /// Testar compatibilidade da propriedade antiga S/N da agencia coletora
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void DeveManterCompatibilidadeDaAgenciaColetoraComoLetraNoJson()
+        {
+            var xml = CriarBoletoRegistrar();
             xml.AgenciaColetora = SimNaoLetra.Nao;
             xml.AgenciaColetoraSpecified = true;
 
             var json = CriarJsonEnvio(xml);
 
-            Assert.Equal("S", json.Value<string>("permiteRecebimentoParcial"));
             Assert.Equal("N", json.Value<string>("agenciaColetora"));
-            Assert.Equal(JTokenType.String, json["permiteRecebimentoParcial"].Type);
             Assert.Equal(JTokenType.String, json["agenciaColetora"].Type);
         }
 
