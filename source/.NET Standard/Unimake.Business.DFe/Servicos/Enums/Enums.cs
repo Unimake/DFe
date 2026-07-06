@@ -1881,6 +1881,74 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region SituacaoNFeDistribuicao
+
+    /// <summary>
+    /// Situação da NFe/NFCe retornada na distribuição de DF-e
+    /// </summary>
+    public enum SituacaoNFeDistribuicao
+    {
+        /// <summary>
+        /// 1 - Uso autorizado no momento da consulta
+        /// </summary>
+        [XmlEnum("1")]
+        UsoAutorizado = 1,
+
+        /// <summary>
+        /// 2 - Uso denegado
+        /// </summary>
+        [XmlEnum("2")]
+        UsoDenegado = 2,
+
+        /// <summary>
+        /// 3 - Uso inutilizado
+        /// </summary>
+        [XmlEnum("3")]
+        UsoInutilizado = 3
+    }
+
+    #endregion
+
+    #region SituacaoManifestacaoDestinatario
+
+    /// <summary>
+    /// Situação da Manifestação do Destinatário retornada na distribuição de DF-e
+    /// </summary>
+    public enum SituacaoManifestacaoDestinatario
+    {
+        /// <summary>
+        /// 0 - Sem Manifestação do Destinatário
+        /// </summary>
+        [XmlEnum("0")]
+        SemManifestacaoDestinatario = 0,
+
+        /// <summary>
+        /// 1 - Confirmada Operação
+        /// </summary>
+        [XmlEnum("1")]
+        ConfirmadaOperacao = 1,
+
+        /// <summary>
+        /// 2 - Desconhecida
+        /// </summary>
+        [XmlEnum("2")]
+        Desconhecida = 2,
+
+        /// <summary>
+        /// 3 - Operação não Realizada
+        /// </summary>
+        [XmlEnum("3")]
+        OperacaoNaoRealizada = 3,
+
+        /// <summary>
+        /// 4 - Ciência
+        /// </summary>
+        [XmlEnum("4")]
+        Ciencia = 4
+    }
+
+    #endregion
+
 
     #region TipoOperacao
 
@@ -17341,6 +17409,22 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion TipoPagamentoAntecipadoNFCom
 
+    #region IndicadorDoacao
+
+    /// <summary>
+    /// Indicador de doação
+    /// </summary>
+    public enum IndicadorDoacao
+    {
+        /// <summary>
+        /// 1 - Operação de doação
+        /// </summary>
+        [XmlEnum("1")]
+        OperacaoDoacao = 1
+    }
+
+    #endregion IndicadorDoacao
+
     #region TipoAssinante
 
     /// <summary>
@@ -19415,6 +19499,54 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("110301")]
         CancelamentoVinculacaoPagamento = 110301
+    }
+
+    /// <summary>
+    /// Tipo de Receita Bruta do Simples Nacional
+    /// </summary>
+    public enum TipoReceitaBrutaSimplesNacional
+    {
+        /// <summary>
+        /// 0 - Não é receita bruta
+        /// </summary>
+        [XmlEnum("0")]
+        NaoReceitaBruta = 0,
+
+        /// <summary>
+        /// 1 - Receita bruta - interna
+        /// </summary>
+        [XmlEnum("1")]
+        ReceitaBrutaInterna = 1,
+
+        /// <summary>
+        /// 2 - Receita bruta - interna sem cálculo de IBS e CBS
+        /// </summary>
+        [XmlEnum("2")]
+        ReceitaBrutaInternaSemCalculoIBSCBS = 2,
+
+        /// <summary>
+        /// 3 - Receita bruta - exportação direta
+        /// </summary>
+        [XmlEnum("3")]
+        ReceitaBrutaExportacaoDireta = 3,
+
+        /// <summary>
+        /// 4 - Receita bruta - exportação indireta
+        /// </summary>
+        [XmlEnum("4")]
+        ReceitaBrutaExportacaoIndireta = 4,
+
+        /// <summary>
+        /// 5 - Receita bruta - mercado interno e exportação
+        /// </summary>
+        [XmlEnum("5")]
+        ReceitaBrutaMercadoInternoExportacao = 5,
+
+        /// <summary>
+        /// 9 - Fornecimento incompatível com SN
+        /// </summary>
+        [XmlEnum("9")]
+        FornecimentoIncompativelSN = 9
     }
 
     #endregion NFGas

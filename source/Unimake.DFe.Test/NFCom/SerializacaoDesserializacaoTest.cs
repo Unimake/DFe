@@ -43,6 +43,8 @@ namespace Unimake.DFe.Test.NFCom
             Assert.Equal("12345678", xml.InfNFCom.Emit.ISUFEmit);
             Assert.Equal("06117473000150", xml.InfNFCom.Det[0].Prod.CNPJCobrTerc);
             Assert.NotNull(xml.InfNFCom.Det[0].Prod.GPagAntecipado);
+            Assert.Equal(Unimake.Business.DFe.Servicos.IndicadorDoacao.OperacaoDoacao, xml.InfNFCom.Det[0].Imposto.IBSCBS.IndDoacao);
+            Assert.Equal("03", xml.InfNFCom.PgtoVinc.Pgto[0].TpMeioPgto);
             Assert.NotNull(xml.InfNFCom.Det[0].Imposto.IBSCBS.GIBSCBS.GCBS.GALCZFMCBS);
 
             var doc2 = xml.GerarXML();
@@ -51,6 +53,7 @@ namespace Unimake.DFe.Test.NFCom
             Assert.True(doc2.GetElementsByTagName("ISUFEmit").Count > 0);
             Assert.True(doc2.GetElementsByTagName("CNPJCobrTerc").Count > 0);
             Assert.True(doc2.GetElementsByTagName("gPagAntecipado").Count > 0);
+            Assert.True(doc2.GetElementsByTagName("indDoacao").Count > 0);
             Assert.True(doc2.GetElementsByTagName("pDevTrib").Count > 0);
             Assert.True(doc2.GetElementsByTagName("gALCZFMCBS").Count > 0);
             Assert.True(doc2.GetElementsByTagName("pgtoVinc").Count > 0);

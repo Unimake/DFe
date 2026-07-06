@@ -354,7 +354,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
                             switch (child.Name.LocalName)
                             {
                                 case "tpMeioPgto":
-                                    Pgto.TpMeioPgto = (MeioPagamento)int.Parse(child.Value);
+                                    Pgto.TpMeioPgto = child.Value;
                                     break;
 
                                 case "CNPJReceb":
@@ -384,7 +384,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
             <descEvento>{DescEvento}</descEvento>
             <nProt>{NProt}</nProt>
             <pgto nPag=""{Pgto?.NPag}"" idTransacao=""{Pgto?.IdTransacao}"">
-            <tpMeioPgto>{(Pgto != null ? ((int)Pgto.TpMeioPgto).ToString("00") : "")}</tpMeioPgto>
+            <tpMeioPgto>{Pgto?.TpMeioPgto}</tpMeioPgto>
             <CNPJReceb>{Pgto?.CNPJReceb}</CNPJReceb>
             <CNPJBasePSP>{Pgto?.CNPJBasePSP}</CNPJBasePSP>
             </pgto>

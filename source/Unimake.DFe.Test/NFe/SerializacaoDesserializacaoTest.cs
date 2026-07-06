@@ -102,6 +102,7 @@ namespace Unimake.DFe.Test.NFe
         [Theory]
         [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
         [InlineData(@"..\..\..\NFe\Resources\resEvento.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\resEvento_CNPJAlfanumerico.xml")]
         public void SerializacaoDesserializacaoResEvento(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
@@ -170,6 +171,7 @@ namespace Unimake.DFe.Test.NFe
         [Theory]
         [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
         [InlineData(@"..\..\..\NFe\Resources\resNFe.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\resNFe_CNPJAlfanumerico.xml")]
         public void SerializacaoDesserializacaoResNFe(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
@@ -245,6 +247,7 @@ namespace Unimake.DFe.Test.NFe
         [Trait("DFe", "NFe")]
         [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_ChNFe.xml")]
         [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_CNPJ.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_CNPJAlfanumerico.xml")]
         [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_CPF.xml")]
         [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_ComUFAutor.xml")]
         [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_NSU.xml")]
@@ -257,6 +260,26 @@ namespace Unimake.DFe.Test.NFe
             doc.Load(arqXML);
 
             var xml = XMLUtility.Deserializar<DistDFeInt>(doc);
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização e desserialização do XML RetDistDFeInt
+        /// </summary>
+        /// <param name="arqXML">Arquivo a ser desserializado</param>
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(@"..\..\..\NFe\Resources\retDistDFeInt_DocZipSemNSU.xml")]
+        public void SerializacaoDesserializacaoRetDistDFeInt(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<RetDistDFeInt>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");

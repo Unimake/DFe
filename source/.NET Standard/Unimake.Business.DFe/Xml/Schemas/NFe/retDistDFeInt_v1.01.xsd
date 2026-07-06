@@ -59,7 +59,7 @@
                 <xs:complexType>
                   <xs:simpleContent>
                     <xs:extension base="xs:base64Binary">
-                      <xs:attribute name="NSU" type="TNSU" use="required">
+                      <xs:attribute name="NSU" type="TNSU" use="optional">
                         <xs:annotation>
                           <xs:documentation>NSU do documento fiscal</xs:documentation>
                         </xs:annotation>

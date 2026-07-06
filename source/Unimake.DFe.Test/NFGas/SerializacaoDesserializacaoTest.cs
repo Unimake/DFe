@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.NFGas;
@@ -162,7 +163,7 @@ namespace Unimake.DFe.Test.NFGas
                             {
                                 NPag = "1",
                                 IdTransacao = "TRANSACAO01",
-                                TpMeioPgto = MeioPagamento.Dinheiro,
+                                TpMeioPgto = "01",
                                 CNPJReceb = "12345678000195",
                                 CNPJBasePSP = "12345678"
                             }
@@ -189,6 +190,7 @@ namespace Unimake.DFe.Test.NFGas
                                 {
                                     IBSCBS = new IBSCBS
                                     {
+                                        IndDoacao = IndicadorDoacao.OperacaoDoacao,
                                         GIBSCBS = new GIBSCBS
                                         {
                                             GCBS = new GCBS
@@ -200,6 +202,8 @@ namespace Unimake.DFe.Test.NFGas
                                                 },
                                                 GALCZFMCBS = new GALCZFMCBS
                                                 {
+                                                    TpALCZFMCBS = TipoAplicacaoAliquotaZeroCBS.ComProcessoSuframa,
+                                                    NProcSuframa = "12345678",
                                                     PAliqEfetRegCBS = "10.00",
                                                     VTribRegCBS = "1.00"
                                                 }
@@ -221,9 +225,67 @@ namespace Unimake.DFe.Test.NFGas
             Assert.Equal("12345678", doc.SelectSingleNode("//nfgas:ISUFEmit", ns)?.InnerText);
             Assert.Equal("35260512345678000195760010000000011000000109", doc.SelectSingleNode("//nfgas:gPagAntecipado/nfgas:chDFePagAnt", ns)?.InnerText);
             Assert.Equal("1", doc.SelectSingleNode("//nfgas:gPagAntecipado/nfgas:nItemPagAnt", ns)?.InnerText);
+            Assert.Equal("1", doc.SelectSingleNode("//nfgas:IBSCBS/nfgas:indDoacao", ns)?.InnerText);
             Assert.Equal("10.00", doc.SelectSingleNode("//nfgas:gDevTrib/nfgas:pDevTrib", ns)?.InnerText);
+            Assert.Equal("2", doc.SelectSingleNode("//nfgas:gALCZFMCBS/nfgas:tpALCZFMCBS", ns)?.InnerText);
+            Assert.Equal("12345678", doc.SelectSingleNode("//nfgas:gALCZFMCBS/nfgas:nProcSuframa", ns)?.InnerText);
             Assert.Equal("1.00", doc.SelectSingleNode("//nfgas:gALCZFMCBS/nfgas:vTribRegCBS", ns)?.InnerText);
+            Assert.Equal("01", doc.SelectSingleNode("//nfgas:pgtoVinc/nfgas:pgto/nfgas:tpMeioPgto", ns)?.InnerText);
             Assert.Equal("TRANSACAO01", doc.SelectSingleNode("//nfgas:pgtoVinc/nfgas:pgto/@idTransacao", ns)?.InnerText);
+        }
+
+        [Fact]
+        [Trait("DFe", "NFGas")]
+        public void DeveSerializarTiposBasicosRTCNFGas()
+        {
+            var impostoSeletivo = SerializarObjeto(new IS
+            {
+                CSTIS = "000",
+                CClassTribIS = "000001",
+                VBCIS = "10.00",
+                PIS = "1.0000",
+                AdRemIS = "0.5000",
+                UTrib = "M3",
+                QTrib = "1.0000",
+                VIS = "0.10"
+            }, "IS");
+
+            var creditoPresumido = SerializarObjeto(new GCredPresIBSZFM
+            {
+                CompetApur = "2026-07",
+                TpCredPresIBSZFM = TipoCreditoPresumidoIBSZFM.BensCapital,
+                VCredPresIBSZFM = "12.34"
+            }, "gCredPresIBSZFM");
+
+            var tribItemSN = SerializarObjeto(new TribItemSN
+            {
+                NItem = "1",
+                VRBSNItem = "100.00",
+                TpRBSN = TipoReceitaBrutaSimplesNacional.ReceitaBrutaInternaSemCalculoIBSCBS,
+                PIBSSN = "1.0000",
+                VIBSSN = "1.00",
+                PCBSSN = "2.0000",
+                VCBSSN = "2.00",
+                VIBSPendSusp = "3.00",
+                VCBSPendSusp = "4.00"
+            }, "gTribItemSN");
+
+            var totalSN = SerializarObjeto(new TotalSN
+            {
+                VRBSNTot = "100.00",
+                VIBSSNTot = "1.00",
+                VIBSSNtotPendSusp = "3.00",
+                VCBSSNTot = "2.00",
+                VCBSSNtotPendSusp = "4.00"
+            }, "totalSN");
+
+            Assert.Null(impostoSeletivo.SelectSingleNode("/*[local-name()='IS']/*[local-name()='pISEspec']"));
+            Assert.Equal("0.5000", impostoSeletivo.SelectSingleNode("/*[local-name()='IS']/*[local-name()='adRemIS']")?.InnerText);
+            Assert.Equal("2026-07", creditoPresumido.SelectSingleNode("/*[local-name()='gCredPresIBSZFM']/*[local-name()='competApur']")?.InnerText);
+            Assert.Equal("2", creditoPresumido.SelectSingleNode("/*[local-name()='gCredPresIBSZFM']/*[local-name()='tpCredPresIBSZFM']")?.InnerText);
+            Assert.Equal("1", tribItemSN.SelectSingleNode("/*[local-name()='gTribItemSN']/@nItem")?.InnerText);
+            Assert.Equal("2", tribItemSN.SelectSingleNode("/*[local-name()='gTribItemSN']/*[local-name()='tpRBSN']")?.InnerText);
+            Assert.Equal("4.00", totalSN.SelectSingleNode("/*[local-name()='totalSN']/*[local-name()='vCBSSNtotPendSusp']")?.InnerText);
         }
 
         private static void SerializarDesserializar<T>(string arqXML) where T : XMLBase, new()
@@ -237,6 +299,21 @@ namespace Unimake.DFe.Test.NFGas
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, $"XML gerado pela DLL está diferente do conteúdo do arquivo serializado.\nOriginal: {doc.InnerText}\nGerado: {doc2.InnerText}");
+        }
+
+        private static XmlDocument SerializarObjeto<T>(T objeto, string nomeRaiz)
+        {
+            var serializer = new XmlSerializer(typeof(T), new XmlRootAttribute(nomeRaiz));
+
+            using (var writer = new StringWriter())
+            {
+                serializer.Serialize(writer, objeto);
+
+                var doc = new XmlDocument();
+                doc.LoadXml(writer.ToString());
+
+                return doc;
+            }
         }
     }
 }
