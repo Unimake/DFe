@@ -1843,6 +1843,10 @@ namespace Unimake.Business.DFe
                     {
                         return "3.00";
                     }
+                    if (RaizEh("DPS"))
+                    {
+                        return "1.01";
+                    }
 
                     return "2.03";
 

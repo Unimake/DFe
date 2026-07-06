@@ -35,6 +35,12 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         public bool Aceite { get; set; }
 
         /// <summary>
+        /// Indica se Aceite deve ser serializado
+        /// </summary>
+        [XmlIgnore]
+        public bool AceiteSpecified { get; set; }
+
+        /// <summary>
         /// Agencia coletora (S/N)
         /// </summary>
         [JsonConverter(typeof(XmlEnumJsonConverter))]
@@ -208,6 +214,12 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         /// </summary>
         [XmlElement("NumeroParcela")]
         public int NumeroParcela { get; set; }
+
+        /// <summary>
+        /// Indica se NumeroParcela deve ser serializado
+        /// </summary>
+        [XmlIgnore]
+        public bool NumeroParcelaSpecified { get; set; }
 
         /// <summary>
         /// Numero de variacao de carteira
@@ -1043,6 +1055,12 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         /// </summary>
         [XmlElement("TryGeneratePDF")]
         public bool TryGeneratePDF { get; set; }
+
+        /// <summary>
+        /// Indica se TryGeneratePDF deve ser serializado
+        /// </summary>
+        [XmlIgnore]
+        public bool TryGeneratePDFSpecified { get; set; }
     }
 
     /// <summary>

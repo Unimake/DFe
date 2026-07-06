@@ -5,8 +5,10 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
@@ -73,8 +75,25 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
             Configuracoes.Load(GetType().Name);
             Configuracoes.SchemaArquivo = SchemaArquivoEBoleto;
             ConfigureAuth();
+            ConfigurarRequestURI();
             Configuracoes.HttpContent = CriarHttpContentPadrao();
             Configuracoes.Definida = true;
+        }
+
+        /// <summary>
+        /// Configurar URI da requisição
+        /// </summary>
+        protected virtual void ConfigurarRequestURI()
+        {
+            var configurationId = GetPropertyString("ConfigurationId");
+
+            if (!string.IsNullOrWhiteSpace(configurationId))
+            {
+                AdicionarQueryString(new Dictionary<string, string>
+                {
+                    { "configurationId", configurationId }
+                });
+            }
         }
 
         /// <summary>
@@ -174,6 +193,50 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
             }
         }
 
+        /// <summary>
+        /// Adicionar parâmetros na query string das URIs configuradas
+        /// </summary>
+        protected void AdicionarQueryString(Dictionary<string, string> parametros)
+        {
+            var queryString = string.Join("&", parametros
+                .Where(p => !string.IsNullOrWhiteSpace(p.Value))
+                .Select(p => WebUtility.UrlEncode(p.Key) + "=" + WebUtility.UrlEncode(p.Value)));
+
+            if (string.IsNullOrWhiteSpace(queryString))
+            {
+                return;
+            }
+
+            Configuracoes.RequestURIHomologacao = AdicionarQueryString(Configuracoes.RequestURIHomologacao, queryString);
+            Configuracoes.RequestURIProducao = AdicionarQueryString(Configuracoes.RequestURIProducao, queryString);
+        }
+
+        /// <summary>
+        /// Obter valor string de uma propriedade do XML de envio
+        /// </summary>
+        protected string GetPropertyString(string propertyName)
+        {
+            var property = Envio.GetType().GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public);
+            var value = property?.GetValue(Envio, null);
+
+            if (value is null)
+            {
+                return null;
+            }
+
+            if (value is DateTimeOffset dateTimeOffset)
+            {
+                return dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:sszzz");
+            }
+
+            if (value is DateTime dateTime)
+            {
+                return dateTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
+            }
+
+            return value.ToString();
+        }
+
         private void ConfigureAuth()
         {
             var token = UMessengerTokenCache.GetOrAcquireToken(
@@ -192,8 +255,19 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
             return nodes.Count > 0 && bool.TryParse(nodes[0].InnerText, out var value) && value;
         }
 
+        private static string AdicionarQueryString(string uri, string queryString)
+        {
+            if (string.IsNullOrWhiteSpace(uri))
+            {
+                return uri;
+            }
+
+            return uri + (uri.Contains("?") ? "&" : "?") + queryString;
+        }
+
         private static void NormalizarJson(JObject jsonObject)
         {
+            RemoverPropriedade(jsonObject, "configurationId");
             RemoverPropriedade(jsonObject, "useHomologServer");
 
             if (jsonObject.TryGetValue("numerosNoBanco", out var numerosNoBanco) && numerosNoBanco is JObject numerosNoBancoObject)

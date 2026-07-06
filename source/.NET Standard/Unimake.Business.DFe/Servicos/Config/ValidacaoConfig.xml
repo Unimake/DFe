@@ -5130,6 +5130,18 @@
 			</Servico>
 		</Padrao>
 		<Padrao nome="DSF">
+			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="tpAmb">
+				<Descricao>Envio do DPS - Síncrono</Descricao>
+				<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+				<TagAssinatura>DPS</TagAssinatura>
+				<TagAtributoID>infDPS</TagAtributoID>
+				<TagVersao></TagVersao>
+				<TagLoteAssinatura></TagLoteAssinatura>
+				<TagLoteAtributoID></TagLoteAtributoID>
+				<TagExtraAssinatura></TagExtraAssinatura>
+				<TagExtraAtributoID></TagExtraAtributoID>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
 			<Servico tagRaiz="CancelarNfseEnvio" versao="2.00">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<SchemaArquivo>servico_cancelar_nfse_envio_v02.xsd</SchemaArquivo>
