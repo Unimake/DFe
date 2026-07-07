@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Heranca>SVRS.xml</Heranca>
+	<Servicos ID="BPe">
+		<StatusServico versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.bpe.fazenda.sp.gov.br/BPeWeb/services/BPeStatusServico.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.sp.gov.br/BPeWeb/services/BPeStatusServico.asmx</WebEnderecoProducao>
+		</StatusServico>
+		<ConsultaProtocolo versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.bpe.fazenda.sp.gov.br/BPeWeb/services/BPeConsulta.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.sp.gov.br/BPeWeb/services/BPeConsulta.asmx</WebEnderecoProducao>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.bpe.fazenda.sp.gov.br/BPeWeb/services/BPeRecepcaoEvento.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.sp.gov.br/BPeWeb/services/BPeRecepcaoEvento.asmx</WebEnderecoProducao>
+		</RecepcaoEvento>
+		<AutorizacaoBPe versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.bpe.fazenda.sp.gov.br/BPeWeb/services/BPeRecepcao.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.sp.gov.br/BPeWeb/services/BPeRecepcao.asmx</WebEnderecoProducao>
+			<UrlQrCodeHomologacao>https://homologacao.bpe.fazenda.sp.gov.br/BPe/qrcode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://bpe.fazenda.sp.gov.br/BPe/qrcode</UrlQrCodeProducao>
+		</AutorizacaoBPe>
+	</Servicos>
+</Configuracoes>

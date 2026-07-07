@@ -138,14 +138,16 @@ Use também testes de `NFe`, `CTe` ou do DFe mais semelhante quando forem mais p
 9. Inventarie todos os serviços possíveis a partir de:
    - classes XML de envio;
    - classes XML de retorno;
+   - variantes do mesmo documento, quando existirem, como autorização normal, simplificada, modal específico ou serviço técnico separado;
    - arquivos de configuração existentes;
    - WSDLs/URLs já presentes em configs;
    - exemplos XML;
    - documentação técnica informada na pasta obrigatória;
    - documentação técnica presente no repositório ou informada no contexto da tarefa;
    - padrões de NFCom/NFe/CTe.
-10. Implemente todos os serviços aplicáveis identificados.
-11. Não implemente apenas `StatusServico` se houver classes/configs para autorização, consulta, recepção de evento, distribuição, inutilização ou outros serviços aplicáveis.
+10. Inventarie também todos os registros de infraestrutura necessários fora de `Servicos\{Documento}`: enums, configs embutidos, validação central, detecção de tipo de DFe, isoladores e schemas.
+11. Implemente todos os serviços aplicáveis identificados.
+12. Não implemente apenas `StatusServico` se houver classes/configs para autorização, consulta, recepção de evento, distribuição, inutilização ou outros serviços aplicáveis.
 
 Se houver dúvida real sobre endpoint, método SOAP, versão ou mensagem, pare e solicite o dado faltante. Não adivinhe integração fiscal.
 
@@ -227,6 +229,25 @@ Siga o padrão para:
 
 Não crie abstrações novas se o projeto já possui estrutura equivalente.
 
+Quando criar a `ServicoBase` de um novo documento, defina `Configuracoes.TipoDFe = TipoDFe.{Documento}` antes de chamar `Configuracoes.Load(GetType().Name)`, seguindo o padrão de documentos recentes. O consumidor do serviço não deve precisar informar manualmente o tipo do DFe para que a configuração seja localizada.
+
+Use a validação centralizada existente do projeto quando o documento equivalente usa esse fluxo, normalmente por `ValidarXMLCentralizado`, em vez de criar validações paralelas dentro do serviço.
+
+### Registros obrigatórios de infraestrutura
+
+Ao implementar serviço para um documento novo, a alteração normalmente não fica restrita à pasta `Servicos\{Documento}`. Verifique e ajuste, quando aplicável:
+
+- `Servicos\Enums\Enums.cs`: valores de `Servico`, `TipoDFe`, `XMLDoc` e enums auxiliares exigidos por schema ou configuração.
+- `Servicos\Config\{Documento}`: `Config.xml`, arquivos por UF, arquivo base de autorizador virtual e overrides por UF.
+- `source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj`: inclusão explícita dos XMLs de configuração como `EmbeddedResource` quando o projeto exigir.
+- `Servicos\Config\ValidacaoConfig.xml`: bloco do documento com roots, schemas, namespace, tags de assinatura e eventos.
+- `Utility\XMLUtility.cs`: detecção do documento por root, modelo, evento ou chave, quando validação/serviço depender disso.
+- `Xml\Validar\ValidarEstruturaXML.cs`: roots aceitas, normalização do XML, assinatura centralizada e ajustes pós-assinatura específicos do documento.
+- `Xml\Validar\Extractors\IsoladorFactory.cs` e isolador do documento: necessário quando eventos usam `detEvento` com schemas específicos.
+- `.csproj` de schemas: confirme que os XSDs usados por `ValidacaoConfig.xml` estão embutidos.
+
+Se algum desses pontos não for necessário, apenas siga adiante. Se for necessário e ficar faltando, o serviço costuma compilar mas falhar em tempo de execução.
+
 ### Integração com XML
 
 Use obrigatoriamente as classes em:
@@ -240,6 +261,22 @@ Os serviços devem receber ou manipular objetos XML tipados, conforme o padrão 
 Não use XML bruto em string como atalho para evitar a modelagem correta do serviço.
 
 Não duplique classes XML dentro da pasta de serviços.
+
+Antes de criar um serviço, confira se existem classes XML de envio e de retorno para cada root envolvida. Para autorizações com variantes, crie uma classe de serviço por variante quando a documentação ou o usuário indicar raízes distintas, por exemplo autorização normal, modal específico ou modelo técnico separado.
+
+Se existir retorno tipado mas não existir wrapper de distribuição/processamento, como um `Proc...`, não invente esse wrapper dentro desta skill. Implemente o `Result` com o retorno existente e registre a ausência do wrapper no relatório final, salvo quando o schema e a classe já existirem.
+
+Quando testes de serviço revelarem erro de schema por tipo ou enum, corrija a classe XML ou enum conforme o XSD/manual. Não contorne a validação nem force XML bruto. Variantes do mesmo documento podem ter restrição própria para um campo que parece compartilhável, como modal permitido apenas para uma variante.
+
+### Assinatura, suplemento e ordem XML
+
+Quando o serviço assina XML, valide o XML final que sai do pipeline, não apenas o objeto antes da assinatura.
+
+Se a assinatura quebrar a ordem exigida pelo XSD, implemente ajuste pós-assinatura no serviço seguindo padrões existentes, como `AjustarXMLAposAssinado`. Quando a validação central também assina ou reorganiza uma cópia do XML, replique o tratamento em `ValidarEstruturaXML.cs`.
+
+Não remova grupos suplementares ou QRCode na normalização sem confirmar o XSD. Em alguns documentos o grupo suplementar, como `inf...Supl`, é obrigatório e precisa permanecer antes de `Signature`.
+
+Se QRCode ou grupo suplementar for obrigatório e ainda não houver gerador claro no projeto, preserve um XML de recurso válido para testes ou implemente o gerador somente quando a especificação e o padrão existente forem suficientes.
 
 ### Certificado digital
 
@@ -297,6 +334,10 @@ Se `PR.XML` não existir, use como base o primeiro XML válido já existente em 
 
 Se nenhum XML de configuração existir para `{Documento}`, crie a estrutura a partir do padrão de `Config\NFCom` e dos endpoints disponíveis no contexto da tarefa. Se os endpoints não estiverem disponíveis, pare e peça os WSDLs/URLs faltantes.
 
+Quando houver autorizador virtual ou arquivo base oficial equivalente, use esse arquivo como base de herança, por exemplo `SVRS.xml`. Os arquivos de UF com endpoints próprios devem usar `<Heranca>ArquivoBase.xml</Heranca>` e sobrescrever apenas URLs ou tags específicas, mantendo a estrutura completa do serviço no arquivo base.
+
+`Config.xml` é a configuração geral do documento, com conteúdo como `WebContentType`, envelope, versão SOAP, `SchemaVersao` e `TargetNS`. Ele não substitui os arquivos por UF.
+
 ### Restrições de configuração
 
 - Não altere nomes das tags XML.
@@ -306,6 +347,7 @@ Se nenhum XML de configuração existir para `{Documento}`, crie a estrutura a p
 - Não remova serviços existentes do arquivo base.
 - Não deixe UF faltando quando `NFCom` possuir arquivo equivalente.
 - Se alguma UF for propositalmente não aplicável ao novo documento, registre a justificativa no relatório final.
+- Se a documentação tiver erro material evidente em URL ou extensão, compare com produção/homologação, WSDLs equivalentes e padrão do mesmo autorizador. Corrija apenas quando a evidência for forte e registre no relatório final.
 
 ### Inclusão no projeto
 
@@ -314,6 +356,8 @@ Verifique como os arquivos de configuração são tratados no projeto.
 Inclua os novos arquivos no `.csproj` somente se o padrão atual exigir inclusão explícita.
 
 Não altere o `.csproj` se o SDK/padrão do projeto já incluir os arquivos automaticamente.
+
+No projeto atual, confirme sempre o `.csproj`: arquivos em `Servicos\Config\{Documento}` frequentemente precisam de `None Remove` e `EmbeddedResource` explícitos para `Configuracao.Load(...)` encontrá-los em tempo de execução.
 
 ## Serviços a implementar
 
@@ -343,6 +387,20 @@ Para cada serviço aplicável, implemente:
 - teste unitário/integrado correspondente.
 
 Não deixe serviço com XML/config existente sem implementação e sem justificativa.
+
+Para serviços de autorização:
+
+- leia o XML de envio para definir `Configuracoes.Servico`, `CodigoUF`, `Modelo`, `TipoEmissao`, `TipoAmbiente` e `SchemaVersao`;
+- use a classe de retorno própria do documento;
+- use wrapper `Proc...` somente quando ele já existir por schema/classe;
+- mantenha uma classe separada por variante quando houver raízes distintas;
+- preserve blocos `#if INTEROP`, `ClassInterface`, `ProgId` e `ComVisible` em classes públicas quando o padrão exigir.
+
+Para recepção de evento:
+
+- confira se `ValidacaoConfig.xml` mapeia cada evento e seus schemas específicos;
+- confira se existe isolador para validar `detEvento` sem perder a estrutura do evento;
+- teste pelo menos um evento realista com o tipo de evento mais representativo.
 
 ## Testes obrigatórios
 
@@ -374,6 +432,8 @@ Não crie testes que apenas instanciam o serviço sem chamar `Executar()`.
 Não crie testes que enviam XML bruto quando já existe classe XML correspondente.
 
 Não deixe os demais métodos em padrão inferior ao `StatusServico`.
+
+Quando usar XML de recurso para autorização ou evento, remova assinaturas vazias ou placeholders do objeto antes de executar o serviço, se o padrão do teste exigir assinatura real. Preserve, porém, grupos suplementares ou QRCode quando o XSD os exigir.
 
 ### Objeto XML em todos os serviços
 
@@ -434,6 +494,8 @@ e, quando útil:
 [Trait("Servico", "{NomeDoServico}")]
 ```
 
+Se a implementação de serviços exigir ajuste em classe XML, enum, recurso XML ou normalização de assinatura, rode também os testes de serialização/desserialização do documento além dos testes de serviço.
+
 ## Execução de testes
 
 Não rode toda a suíte por padrão.
@@ -446,7 +508,25 @@ dotnet test source\Unimake.DFe.Test\Unimake.DFe.Test.csproj --no-restore --filte
 dotnet test source\Unimake.DFe.Test\Unimake.DFe.Test.csproj --no-restore --filter "DFe={Documento}"
 ```
 
+Quando classes XML ou recursos do documento forem alterados durante a implementação dos serviços, rode também:
+
+```powershell
+dotnet test source\Unimake.DFe.Test\Unimake.DFe.Test.csproj --no-restore --filter "FullyQualifiedName~Unimake.DFe.Test.{Documento}.SerializacaoDesserializacaoTest"
+```
+
 Rode todos os testes apenas se o usuário solicitar ou se a alteração atingir infraestrutura compartilhada do projeto.
+
+## Diagnóstico rápido de falhas comuns
+
+Use estes sintomas para ir direto ao ponto:
+
+- `Não foi possível encontrar a configuração para o tipo de DFe`: falta `TipoDFe`, `ValidacaoConfig.xml`, detecção em `XMLUtility.cs` ou `Configuracoes.TipoDFe` antes de `Load`.
+- Configuração não encontrada em runtime apesar do XML existir: falta `EmbeddedResource` no `.csproj` ou nome/caminho do recurso diverge do padrão.
+- `Não existe um isolador de XML configurado`: falta isolador do documento ou registro em `IsoladorFactory.cs`.
+- Schema reclama que `Signature` apareceu antes de grupo suplementar: falta ajuste de ordem pós-assinatura no serviço e possivelmente na validação central.
+- Schema reclama de enum ou valor fixo de variante: tipo compartilhado está amplo ou errado para o XSD dessa variante; crie enum/tipo específico.
+- Evento falha apenas no `detEvento`: falta mapeamento do evento/schema em `ValidacaoConfig.xml` ou isolador do documento.
+- Serviço compila mas `Configuracao.Load(GetType().Name)` falha: confira nome da classe de serviço, tag correspondente no XML de config e `Servico` enum.
 
 ## Build
 
@@ -491,16 +571,26 @@ Se o build falhar por dependência/restauração ausente, informe isso no result
 - [ ] Requests/results seguem o padrão do projeto.
 - [ ] Certificado digital foi reutilizado conforme padrão existente.
 - [ ] Tratamento de retorno e exceções segue o padrão atual.
+- [ ] `Servico`, `TipoDFe`, `XMLDoc` e enums auxiliares foram registrados quando necessários.
+- [ ] A `ServicoBase` do documento define `Configuracoes.TipoDFe` antes de carregar a configuração.
 - [ ] Arquivos de configuração foram criados para todas as UFs exigidas pelo padrão de NFCom.
 - [ ] O conteúdo dos arquivos por UF foi copiado do arquivo base do documento, especialmente `PR.XML` quando existir.
+- [ ] Arquivo base ou autorizador virtual foi usado com herança quando aplicável.
 - [ ] Nenhuma tag XML dos arquivos de configuração foi renomeada.
 - [ ] Nenhuma estrutura XML de configuração foi alterada indevidamente.
 - [ ] Os WSDLs/URLs foram aplicados corretamente quando disponíveis.
+- [ ] XMLs de configuração foram incluídos como `EmbeddedResource` quando o projeto exigiu.
+- [ ] `ValidacaoConfig.xml` foi atualizado para roots, schemas, namespace, assinatura e eventos.
+- [ ] `XMLUtility.cs` e `ValidarEstruturaXML.cs` foram atualizados quando o documento exigiu detecção ou normalização própria.
+- [ ] Isolador e `IsoladorFactory.cs` foram atualizados quando eventos ou validação específica exigiram.
+- [ ] Ordem final do XML assinado foi validada contra o XSD quando houve assinatura.
+- [ ] Grupos suplementares/QRCode obrigatórios foram preservados ou gerados corretamente.
 - [ ] `ServicosTest.cs` foi criado ou ajustado.
 - [ ] Todos os testes de serviço montam objeto XML tipado.
 - [ ] Todos os testes de serviço chamam `Executar()` quando aplicável.
 - [ ] Os testes seguem o padrão do método `StatusServico`.
 - [ ] Apenas os testes criados/alterados foram executados.
+- [ ] Testes de serialização/desserialização foram executados quando classes XML, enums, recursos XML ou normalização foram alterados.
 - [ ] Build/testes executados foram registrados no relatório final.
 - [ ] Código compila sem warnings relevantes ou a limitação foi registrada.
 

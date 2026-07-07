@@ -2744,6 +2744,117 @@
 			</GrupoUrl>
 		</Servico>
 	</NFGas>
+	<!--BPe-->
+	<BPe>
+		<Servico tagRaiz="consStatServBPe" versao="1.00">
+			<Descricao>Consulta situação do serviço do Bilhete de Passagem Eletrônico</Descricao>
+			<SchemaArquivo>consStatServBPe_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consStatServBPe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
+		</Servico>
+		<Servico tagRaiz="consSitBPe" versao="1.00">
+			<Descricao>Consulta situação do Bilhete de Passagem Eletrônico</Descricao>
+			<SchemaArquivo>consSitBPe_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagVersao>consSitBPe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
+		</Servico>
+		<Servico tagRaiz="eventoBPe" versao="1.00">
+			<Descricao>Recepção de eventos do Bilhete de Passagem Eletrônico</Descricao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>eventoBPe</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagEvento>eventoBPe</TagEvento>
+			<TagVersao>eventoBPe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoBPe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancBPe_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110115</ID>
+					<SchemaArquivo>eventoBPe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evNaoEmbBPe_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110116</ID>
+					<SchemaArquivo>eventoBPe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evAlteracaoPoltrona_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110117</ID>
+					<SchemaArquivo>eventoBPe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evExcessoBagagem_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110300</ID>
+					<SchemaArquivo>eventoBPe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evVincPgto_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110301</ID>
+					<SchemaArquivo>eventoBPe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancVincPgto_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+		</Servico>
+		<Servico tagRaiz="BPe" versao="1.00">
+			<Descricao>Autorização do Bilhete de Passagem Eletrônico</Descricao>
+			<SchemaArquivo>bpe_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura>BPe</TagAssinatura>
+			<TagAtributoID>infBPe</TagAtributoID>
+			<TagVersao>infBPe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
+			<GerarQrCode>false</GerarQrCode>
+		</Servico>
+		<Servico tagRaiz="BPeTM" versao="1.00">
+			<Descricao>Autorização do Bilhete de Passagem Eletrônico Transporte Metropolitano</Descricao>
+			<SchemaArquivo>bpeTM_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura>BPeTM</TagAssinatura>
+			<TagAtributoID>infBPe</TagAtributoID>
+			<TagVersao>infBPe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
+			<GerarQrCode>false</GerarQrCode>
+		</Servico>
+		<Servico tagRaiz="BPeTA" versao="1.00">
+			<Descricao>Autorização do Bilhete de Passagem Eletrônico Transporte Aéreo</Descricao>
+			<SchemaArquivo>bpeTA_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura>BPeTA</TagAssinatura>
+			<TagAtributoID>infBPe</TagAtributoID>
+			<TagVersao>infBPe</TagVersao>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
+			<GerarQrCode>false</GerarQrCode>
+		</Servico>
+	</BPe>
 	<!--DCe-->
 	<DCe>
 		<Servico tagRaiz="consStatServDCe" versao="1.00">
@@ -4820,7 +4931,7 @@
 		<Padrao nome="COPLAN">
 			<Servico tagRaiz="EnviarLoteDpsEnvio" versao="1.01" tagIdentificadora="LoteDps">
 				<Descricao>Recepcionar Lote RPS</Descricao>
-				<SchemaArquivo>Coplan_v1.01.xsd</SchemaArquivo>
+				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>DPS</TagAssinatura>
 				<TagAtributoID>infDPS</TagAtributoID>
 				<TagVersao>LoteDps</TagVersao>

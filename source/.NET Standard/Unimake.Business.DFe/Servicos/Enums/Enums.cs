@@ -763,6 +763,46 @@ namespace Unimake.Business.DFe.Servicos
 
         #endregion
 
+        #region BPe
+
+        /// <summary>
+        /// 123 - Consulta status serviço BPe
+        /// </summary>
+        [Description("Consulta status do serviço do BPe")]
+        BPeStatusServico = 123,
+
+        /// <summary>
+        /// 124 - Consulta protocolo do BPe
+        /// </summary>
+        [Description("Consulta situação do BPe")]
+        BPeConsultaProtocolo = 124,
+
+        /// <summary>
+        /// 125 - Envio de Eventos do BPe
+        /// </summary>
+        [Description("Envio de eventos do BPe")]
+        BPeRecepcaoEvento = 125,
+
+        /// <summary>
+        /// 126 - Envio do XML de BPe
+        /// </summary>
+        [Description("Autorização de BPe")]
+        BPeAutorizacao = 126,
+
+        /// <summary>
+        /// 127 - Envio do XML de BPe TM
+        /// </summary>
+        [Description("Autorização de BPe TM")]
+        BPeTMAutorizacao = 127,
+
+        /// <summary>
+        /// 128 - Envio do XML de BPe TA
+        /// </summary>
+        [Description("Autorização de BPe TA")]
+        BPeTAAutorizacao = 128,
+
+        #endregion
+
         #region Gerais
 
         /// <summary>
@@ -879,6 +919,11 @@ namespace Unimake.Business.DFe.Servicos
         /// 21 - PIX - Serviço de PIX
         /// </summary>
         PIX = 21,
+
+        /// <summary>
+        /// 22 - BPe - Bilhete de Passagem Eletrônico
+        /// </summary>
+        BPe = 22,
 
     }
 
@@ -8158,6 +8203,46 @@ namespace Unimake.Business.DFe.Servicos
         NFGas = 103,
 
         #endregion NFGas
+
+        #region BPe
+
+        /// <summary>
+        /// XML de consulta status do serviço do BPe
+        /// </summary>
+        [Description("XML de consulta status do serviço do BPe")]
+        BPeStatusServico = 104,
+
+        /// <summary>
+        /// XML de consulta situação do BPe
+        /// </summary>
+        [Description("XML de consulta situação do BPe")]
+        BPeConsultaSituacao = 105,
+
+        /// <summary>
+        /// XML de envio de evento do BPe
+        /// </summary>
+        [Description("XML de envio de evento do BPe")]
+        BPeEnvioEvento = 106,
+
+        /// <summary>
+        /// XML individual do BPe
+        /// </summary>
+        [Description("XML individual do BPe")]
+        BPe = 107,
+
+        /// <summary>
+        /// XML individual do BPe TM
+        /// </summary>
+        [Description("XML individual do BPe TM")]
+        BPeTM = 108,
+
+        /// <summary>
+        /// XML individual do BPe TA
+        /// </summary>
+        [Description("XML individual do BPe TA")]
+        BPeTA = 109,
+
+        #endregion BPe
 
         #region eSocial
 
@@ -19097,6 +19182,18 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("4")]
         Ferroviario = 4
+    }
+
+    /// <summary>
+    /// Modalidade de transporte do BP-e Transporte Aereo
+    /// </summary>
+    public enum ModalidadeTransporteBPeTA
+    {
+        /// <summary>
+        /// 2 - Aereo
+        /// </summary>
+        [XmlEnum("2")]
+        Aereo = 2
     }
 
     /// <summary>

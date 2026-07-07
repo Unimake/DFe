@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Heranca>SVRS.xml</Heranca>
+	<Servicos ID="BPe">
+		<StatusServico versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/bpe-ws/services/BPeStatusServico</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.sefaz.mt.gov.br/bpe-ws/services/BPeStatusServico</WebEnderecoProducao>
+		</StatusServico>
+		<ConsultaProtocolo versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/bpe-ws/services/BPeConsulta</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.sefaz.mt.gov.br/bpe-ws/services/BPeConsulta</WebEnderecoProducao>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/bpe-ws/services/BPeRecepcaoEvento</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.sefaz.mt.gov.br/bpe-ws/services/BPeRecepcaoEvento</WebEnderecoProducao>
+		</RecepcaoEvento>
+		<AutorizacaoBPe versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/bpe-ws/services/BPeRecepcao</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.sefaz.mt.gov.br/bpe-ws/services/BPeRecepcao</WebEnderecoProducao>
+			<UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/BPe/qrcode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://www.sefaz.mt.gov.br/BPe/qrcode</UrlQrCodeProducao>
+		</AutorizacaoBPe>
+	</Servicos>
+</Configuracoes>

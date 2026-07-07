@@ -278,6 +278,35 @@
 		<None Remove="Servicos\Config\DCe\SP.xml" />
 		<None Remove="Servicos\Config\DCe\SVRS.xml" />
 		<None Remove="Servicos\Config\DCe\TO.xml" />
+		<None Remove="Servicos\Config\BPe\AC.xml" />
+		<None Remove="Servicos\Config\BPe\AL.xml" />
+		<None Remove="Servicos\Config\BPe\AM.xml" />
+		<None Remove="Servicos\Config\BPe\AP.xml" />
+		<None Remove="Servicos\Config\BPe\BA.xml" />
+		<None Remove="Servicos\Config\BPe\CE.xml" />
+		<None Remove="Servicos\Config\BPe\Config.xml" />
+		<None Remove="Servicos\Config\BPe\DF.xml" />
+		<None Remove="Servicos\Config\BPe\ES.xml" />
+		<None Remove="Servicos\Config\BPe\GO.xml" />
+		<None Remove="Servicos\Config\BPe\MA.xml" />
+		<None Remove="Servicos\Config\BPe\MG.xml" />
+		<None Remove="Servicos\Config\BPe\MS.xml" />
+		<None Remove="Servicos\Config\BPe\MT.xml" />
+		<None Remove="Servicos\Config\BPe\PA.xml" />
+		<None Remove="Servicos\Config\BPe\PB.xml" />
+		<None Remove="Servicos\Config\BPe\PE.xml" />
+		<None Remove="Servicos\Config\BPe\PI.xml" />
+		<None Remove="Servicos\Config\BPe\PR.xml" />
+		<None Remove="Servicos\Config\BPe\RJ.xml" />
+		<None Remove="Servicos\Config\BPe\RN.xml" />
+		<None Remove="Servicos\Config\BPe\RO.xml" />
+		<None Remove="Servicos\Config\BPe\RR.xml" />
+		<None Remove="Servicos\Config\BPe\RS.xml" />
+		<None Remove="Servicos\Config\BPe\SC.xml" />
+		<None Remove="Servicos\Config\BPe\SE.xml" />
+		<None Remove="Servicos\Config\BPe\SP.xml" />
+		<None Remove="Servicos\Config\BPe\SVRS.xml" />
+		<None Remove="Servicos\Config\BPe\TO.xml" />
 		<None Remove="Servicos\Config\NFCom\AC.xml" />
 		<None Remove="Servicos\Config\NFCom\AL.xml" />
 		<None Remove="Servicos\Config\NFCom\AM.xml" />
@@ -1660,6 +1689,35 @@
 	  <EmbeddedResource Include="Servicos\Config\DCe\SP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\DCe\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\DCe\TO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\AC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\AL.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\AM.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\AP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\BA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\CE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\Config.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\DF.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\ES.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\GO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\MA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\MG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\MS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\MT.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\PA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\PB.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\PE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\PI.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\PR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\RJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\RN.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\RO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\RR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\RS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\SC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\SE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\SP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\SVRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\BPe\TO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\AC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\AL.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\AM.xml" />
@@ -3786,6 +3844,11 @@
 		<None Remove="Servicos\Config\CIOT\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\CIOT\AN.xml" />
 		<EmbeddedResource Include="Servicos\Config\CIOT\Config.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Servicos\BPe\" />
+	  <Folder Include="Servicos\Config\BPe\" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

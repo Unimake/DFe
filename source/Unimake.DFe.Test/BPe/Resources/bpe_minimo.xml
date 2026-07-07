@@ -83,7 +83,7 @@
     </pag>
   </infBPe>
   <infBPeSupl>
-    <qrCodBPe>https://www.sefaz.sp.gov.br/bpe/qrcode</qrCodBPe>
+    <qrCodBPe>https://www.sefaz.sp.gov.br/bpe/qrcode?chBPe=35260712345678000195630010000000011234567890&amp;tpAmb=2</qrCodBPe>
   </infBPeSupl>
   <Signature xmlns="http://www.w3.org/2000/09/xmldsig#" />
 </BPe>
