@@ -64,8 +64,6 @@ namespace Unimake.DFe.Test.NFSe
 
             var cancelarNfse = new CancelarNfse(conteudoXML, configuracao);
 
-            // Precisei passar o executar aqui para dentro, por causa do padrão ADM_SISTEMAS.
-            // O padrão necessita de autenticação de login e senha, porém a resposta do padrão vem quebrada, gerando erro nos testes como estava antigamente.
             #region Tratamento de Erros
 
             try
@@ -95,6 +93,13 @@ namespace Unimake.DFe.Test.NFSe
                         Assert.Contains(
                             "Erro original: Data at the root level is invalid. Line 1, position 1.",
                             ex.Message);
+                        break;
+
+                    // Alguns municípios do padrão QUASAR retornam erro em ambiente de homologação.
+                    // Nesses casos, o retorno vem como texto/log de erro, serviço temporariamente indisponível.
+                    case PadraoNFSe.QUASAR:
+                        Assert.Equal(TipoAmbiente.Homologacao, tipoAmbiente);
+                        Assert.Contains("503 Service Temporarily Unavailable", ex.Message);
                         break;
 
                     default:
