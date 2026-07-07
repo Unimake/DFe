@@ -138,7 +138,7 @@
 		</CancelarNfse>
 		<ConsultarNfse versao="1.01">
 			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao>https://nfsepatrocinio.simplissweb.com.br/nfse{Chave}</RequestURIProducao>
+			<RequestURIProducao>https://nfsepatrocinio.simplissweb.com.br/nfse/{Chave}</RequestURIProducao>
 			<RequestURIHomologacao>https://producaorestrita.simplissweb.com.br/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
