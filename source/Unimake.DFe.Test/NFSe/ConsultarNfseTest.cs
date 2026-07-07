@@ -68,28 +68,40 @@ namespace Unimake.DFe.Test.NFSe
 
             var consultarNfse = new ConsultarNfse(conteudoXML, configuracao);
 
-            //Alguns município de padrão TINUS exigem conteúdo real para envio, se não retorna erro 500
-            //Como não são todos, estamos implementando uma adaptação para que o teste unitário não falhe
-            //Recomendo periodicamente remover a condicional para que seja testada a comunicação sem a adaptação
-            if (padraoNFSe == PadraoNFSe.TINUS)
-            {
-                try
-                {
-                    Assert.Multiple(() => TestUtility.AnalisaResultado(consultarNfse));
-                }
-                catch (System.Exception ex)
-                {
-                    Assert.Contains("Este contexto necessita de dados reais", ex.Message);
-                    Assert.True(
-                        ex.Message.Contains("internal server error") ||
-                        ex.Message.Contains("Internal server error") ||
-                        ex.Message.Contains("Server Error"),
-                        ex.Message);
-                }
-            }
-            else
+            try
             {
                 Assert.Multiple(() => TestUtility.AnalisaResultado(consultarNfse));
+            }
+            catch (System.Exception ex)
+            {
+                switch (padraoNFSe)
+                {
+                    // Alguns municípios do padrão TINUS exigem dados reais para concluir o envio.
+                    // Quando recebem dados fictícios, podem retornar erro 500.
+                    // Esta exceção evita falha indevida no teste unitário.
+                    // Recomenda-se remover esta adaptação periodicamente para validar novamente a comunicação.
+                    case PadraoNFSe.TINUS:
+                        Assert.Contains("Este contexto necessita de dados reais", ex.Message);
+                        Assert.True(
+                            ex.Message.Contains("internal server error") ||
+                            ex.Message.Contains("Internal server error") ||
+                            ex.Message.Contains("Server Error"),
+                            ex.Message);
+                        break;
+
+                    // O padrão único WEBFICOS retorna erro nos serviços de consulta e cancelamento.
+                    // Nesses casos, o retorno vem como texto/log de erro, erro 500 ou erro 404.
+                    case PadraoNFSe.WEBFISCO:
+                        Assert.True(
+                            ex.Message.Contains("erro 500 do servidor") ||
+                            ex.Message.Contains("(404) Not Found"),
+                            ex.Message);
+                        break;
+
+                    default:
+                        throw;
+                }
+
             }
         }
     }

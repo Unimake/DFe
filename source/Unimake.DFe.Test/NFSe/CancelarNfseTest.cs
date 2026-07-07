@@ -102,6 +102,15 @@ namespace Unimake.DFe.Test.NFSe
                         Assert.Contains("503 Service Temporarily Unavailable", ex.Message);
                         break;
 
+                    // O padrão único WEBFICOS retorna erro nos serviços de consulta e cancelamento.
+                    // Nesses casos, o retorno vem como texto/log de erro, erro 500 ou erro 404.
+                    case PadraoNFSe.WEBFISCO:
+                        Assert.True(
+                            ex.Message.Contains("erro 500 do servidor") ||
+                            ex.Message.Contains("(404) Not Found"),
+                            ex.Message);
+                        break;
+
                     default:
                         throw;
                 }

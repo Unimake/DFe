@@ -10,7 +10,7 @@
 		<QuantidadeRps>1</QuantidadeRps>
 		<ListaRps>
 			<Rps>
-				<InfDeclaracaoPrestacaoServico>
+				<InfDeclaracaoPrestacaoServico Id="RPS01">
 					<Rps>
 						<IdentificacaoRps>
 							<Numero>1</Numero>

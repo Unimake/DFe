@@ -68,6 +68,19 @@ namespace Unimake.DFe.Test.NFSe
             {
                 switch (padraoNFSe)
                 {
+                    // Alguns municípios do padrão TINUS exigem dados reais para concluir o envio.
+                    // Quando recebem dados fictícios, podem retornar erro 500.
+                    // Esta exceção evita falha indevida no teste unitário.
+                    // Recomenda-se remover esta adaptação periodicamente para validar novamente a comunicação.
+                    case PadraoNFSe.TINUS:
+                        Assert.Contains("Este contexto necessita de dados reais", ex.Message);
+                        Assert.True(
+                            ex.Message.Contains("internal server error") ||
+                            ex.Message.Contains("Internal server error") ||
+                            ex.Message.Contains("Server Error"),
+                            ex.Message);
+                        break;
+
                     // Alguns municípios do padrão QUASAR retornam erro em ambiente de homologação.
                     // Nesses casos, o retorno vem como texto/log de erro, serviço temporariamente indisponível.
                     case PadraoNFSe.QUASAR:
