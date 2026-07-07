@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Heranca>SVRS.xml</Heranca>
+	<Servicos ID="BPe">
+		<AutorizacaoBPe versao="1.00">
+			<UrlQrCodeHomologacao>http://www.receita.pb.gov.br/bpe/qrCode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>http://www.receita.pb.gov.br/bpe/qrCode</UrlQrCodeProducao>
+		</AutorizacaoBPe>
+	</Servicos>
+</Configuracoes>

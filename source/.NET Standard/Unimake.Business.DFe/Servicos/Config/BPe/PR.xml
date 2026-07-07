@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Heranca>SVRS.xml</Heranca>
+	<Servicos ID="BPe">
+		<StatusServico versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.bpe.fazenda.pr.gov.br/bpe/BPeStatusServico</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.pr.gov.br/bpe/BPeStatusServico</WebEnderecoProducao>
+		</StatusServico>
+		<ConsultaProtocolo versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.bpe.fazenda.pr.gov.br/bpe/BPeConsulta</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.pr.gov.br/bpe/BPeConsulta</WebEnderecoProducao>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.bpe.fazenda.pr.gov.br/bpe/BPeRecepcaoEvento</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.pr.gov.br/bpe/BPeRecepcaoEvento</WebEnderecoProducao>
+		</RecepcaoEvento>
+		<AutorizacaoBPe versao="1.00">
+			<WebEnderecoHomologacao>https://homologacao.bpe.fazenda.pr.gov.br/bpe/BPeRecepcao</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.pr.gov.br/bpe/BPeRecepcao</WebEnderecoProducao>
+			<UrlQrCodeHomologacao>https://www.fazenda.pr.gov.br/bpe/qrcode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://www.fazenda.pr.gov.br/bpe/qrcode</UrlQrCodeProducao>
+		</AutorizacaoBPe>
+	</Servicos>
+</Configuracoes>
