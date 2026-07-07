@@ -103,8 +103,8 @@ begin
     oInfNFe.Ide.GCompraGov.TpEnteGov := 4; //TipoEnteGovernamental.Municipio,
     oInfNFe.Ide.GCompraGov.TpOperGov := 1; //TipoOperacaoEnteGovernamental.Fornecimento
     oInfNFe.Ide.GPagAntecipado := CreateOleObject('Unimake.Business.DFe.Xml.NFe.GPagAntecipado');
-    oInfNFe.Ide.GPagAntecipado.AddRefNFe('00000000000000000000000000000000000000000000');
-    oInfNFe.Ide.GPagAntecipado.AddRefNFe('11111111111111111111111111111111111111111111');
+    oInfNFe.Ide.GPagAntecipado.AddRefDFe('00000000000000000000000000000000000000000000');
+    oInfNFe.Ide.GPagAntecipado.AddRefDFe('11111111111111111111111111111111111111111111');
     oInfNFe.Ide.TpNFCredito := 2; //TipoNFCredito.ApropriacaoCreditoPresumidoIBSZFM
     oInfNFe.Ide.TpNFDebito := 6; //TipoNFDebito.PagamentoAntecipado
 
@@ -316,6 +316,11 @@ begin
       //oDet.Imposto.IBSCBS.GCredPresIBSZFM.CompetApurField := '2025-10';
       //oDet.Imposto.IBSCBS.GCredPresIBSZFM.TpCredPresIBSZFM := 0; //TipoCreditoPresumidoIBSZFM.SemCreditoPresumido
       //oDet.Imposto.IBSCBS.GCredPresIBSZFM.VCredPresIBSZFM := 0;
+
+      // RTC - DFeReferenciado
+      oDet.DFeReferenciado := CreateOleObject('Unimake.Business.DFe.Xml.NFe.DFeReferenciado');
+      oDet.DFeReferenciado.ChaveAcesso := '11111111111111111111111111111111111111111111';
+      oDet.DFeReferenciado.NItem := String('1');
 
       // adicionar a tag Det dentro da tag InfNfe
       oInfNfe.AddDet(IUnknown(oDet));

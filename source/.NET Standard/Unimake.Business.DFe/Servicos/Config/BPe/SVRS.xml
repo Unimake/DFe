@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="BPe">
+		<StatusServico versao="1.00">
+			<Descricao>Consulta situação do serviço do Bilhete de Passagem Eletrônico</Descricao>
+			<WebEnderecoHomologacao>https://bpe-homologacao.svrs.rs.gov.br/ws/bpeStatusServico/bpeStatusServico.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.svrs.rs.gov.br/ws/bpeStatusServico/bpeStatusServico.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeStatusServico</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeStatusServico</WebActionProducao>
+			<WebTagRetorno>bpeResultMsg</WebTagRetorno>
+		</StatusServico>
+		<ConsultaProtocolo versao="1.00">
+			<Descricao>Consulta situação do Bilhete de Passagem Eletrônico</Descricao>
+			<WebEnderecoHomologacao>https://bpe-homologacao.svrs.rs.gov.br/ws/bpeConsulta/bpeConsulta.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.svrs.rs.gov.br/ws/bpeConsulta/bpeConsulta.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeConsulta</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeConsulta</WebActionProducao>
+			<WebTagRetorno>bpeResultMsg</WebTagRetorno>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="1.00">
+			<Descricao>Recepção de eventos do Bilhete de Passagem Eletrônico</Descricao>
+			<WebEnderecoHomologacao>https://bpe-homologacao.svrs.rs.gov.br/ws/bpeRecepcaoEvento/bpeRecepcaoEvento.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.svrs.rs.gov.br/ws/bpeRecepcaoEvento/bpeRecepcaoEvento.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeRecepcaoEvento</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeRecepcaoEvento</WebActionProducao>
+			<WebTagRetorno>bpeResultMsg</WebTagRetorno>
+		</RecepcaoEvento>
+		<AutorizacaoBPe versao="1.00">
+			<Descricao>Autorização do Bilhete de Passagem Eletrônico</Descricao>
+			<WebEnderecoHomologacao>https://bpe-homologacao.svrs.rs.gov.br/ws/bpeRecepcao/bpeRecepcao.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.svrs.rs.gov.br/ws/bpeRecepcao/bpeRecepcao.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeRecepcao</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeRecepcao</WebActionProducao>
+			<WebTagRetorno>bpeResultMsg</WebTagRetorno>
+			<GZIPCompress>true</GZIPCompress>
+			<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/bpe/qrCode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/bpe/qrCode</UrlQrCodeProducao>
+		</AutorizacaoBPe>
+		<AutorizacaoBPeTM versao="1.00">
+			<Descricao>Autorização do Bilhete de Passagem Eletrônico Transporte Metropolitano</Descricao>
+			<WebEnderecoHomologacao>https://bpe-homologacao.svrs.rs.gov.br/ws/bpeRecepcaoTM/bpeRecepcaoTM.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.svrs.rs.gov.br/ws/bpeRecepcaoTM/bpeRecepcaoTM.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeRecepcaoTM</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeRecepcaoTM</WebActionProducao>
+			<WebTagRetorno>bpeResultMsg</WebTagRetorno>
+			<GZIPCompress>true</GZIPCompress>
+			<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/bpe/qrCode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/bpe/qrCode</UrlQrCodeProducao>
+		</AutorizacaoBPeTM>
+		<AutorizacaoBPeTA versao="1.00">
+			<Descricao>Autorização do Bilhete de Passagem Eletrônico Transporte Aéreo</Descricao>
+			<WebEnderecoHomologacao>https://bpe-homologacao.svrs.rs.gov.br/WS/BPeRecepcaoTA/BPeRecepcaoTA.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.svrs.rs.gov.br/WS/BPeRecepcaoTA/BPeRecepcaoTA.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeRecepcaoTA</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/bpe/wsdl/BPeRecepcaoTA</WebActionProducao>
+			<WebTagRetorno>bpeResultMsg</WebTagRetorno>
+			<GZIPCompress>true</GZIPCompress>
+			<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/bpe/qrCode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/bpe/qrCode</UrlQrCodeProducao>
+		</AutorizacaoBPeTA>
+	</Servicos>
+</Configuracoes>

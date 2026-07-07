@@ -350,6 +350,16 @@ namespace Unimake.Business.DFe
                     tagRaiz == "consSitNFGas";
             }
 
+            if (tipoDFe == TipoDFe.BPe)
+            {
+                return tagRaiz == "BPe" ||
+                    tagRaiz == "BPeTM" ||
+                    tagRaiz == "BPeTA" ||
+                    tagRaiz == "eventoBPe" ||
+                    tagRaiz == "consStatServBPe" ||
+                    tagRaiz == "consSitBPe";
+            }
+
             if (tipoDFe == TipoDFe.NF3e)
             {
                 return tagRaiz == "NF3e" ||
@@ -432,6 +442,9 @@ namespace Unimake.Business.DFe
 
                 case TipoDFe.NFGas:
                     return NormalizarNFGasPeloObjeto(xml, tagRaiz);
+
+                case TipoDFe.BPe:
+                    return NormalizarBPePeloObjeto(xml, tagRaiz);
 
                 case TipoDFe.NF3e:
                     return NormalizarNF3ePeloObjeto(xml, tagRaiz);
@@ -671,6 +684,51 @@ namespace Unimake.Business.DFe
             {
                 var consSitNFGas = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFGas.ConsSitNFGas>(xml);
                 return consSitNFGas.GerarXML();
+            }
+
+            return xml;
+        }
+
+        private static XmlDocument NormalizarBPePeloObjeto(XmlDocument xml, string tagRaiz)
+        {
+            if (tagRaiz == "BPe")
+            {
+                var bpe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.BPe.BPe>(xml);
+                bpe.Signature = null;
+                return bpe.GerarXML();
+            }
+
+            if (tagRaiz == "BPeTM")
+            {
+                var bpeTM = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.BPeTM.BPeTM>(xml);
+                bpeTM.Signature = null;
+                return bpeTM.GerarXML();
+            }
+
+            if (tagRaiz == "BPeTA")
+            {
+                var bpeTA = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.BPeTA.BPeTA>(xml);
+                bpeTA.Signature = null;
+                return bpeTA.GerarXML();
+            }
+
+            if (tagRaiz == "eventoBPe")
+            {
+                var eventoBPe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.BPe.EventoBPe>(xml);
+                eventoBPe.Signature = null;
+                return eventoBPe.GerarXML();
+            }
+
+            if (tagRaiz == "consStatServBPe")
+            {
+                var consStatServBPe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.BPe.ConsStatServBPe>(xml);
+                return consStatServBPe.GerarXML();
+            }
+
+            if (tagRaiz == "consSitBPe")
+            {
+                var consSitBPe = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.BPe.ConsSitBPe>(xml);
+                return consSitBPe.GerarXML();
             }
 
             return xml;
@@ -1595,7 +1653,31 @@ namespace Unimake.Business.DFe
                     }
 
                     MontarQRCode(xml, gerarQrCode, tipoDFe, configuracao);
+                    PosicionarAssinaturaBPeDepoisDoSuplemento(xml, tipoDFe);
                 }
+            }
+        }
+
+        private static void PosicionarAssinaturaBPeDepoisDoSuplemento(XmlDocument xml, TipoDFe tipoDFe)
+        {
+            if (tipoDFe != TipoDFe.BPe)
+            {
+                return;
+            }
+
+            var raiz = xml.DocumentElement;
+            if (raiz == null)
+            {
+                return;
+            }
+
+            var infBPeSupl = raiz.GetElementsByTagName("infBPeSupl").Count > 0 ? raiz.GetElementsByTagName("infBPeSupl")[0] : null;
+            var signature = raiz.GetElementsByTagName("Signature", "http://www.w3.org/2000/09/xmldsig#").Count > 0 ? raiz.GetElementsByTagName("Signature", "http://www.w3.org/2000/09/xmldsig#")[0] : null;
+
+            if (infBPeSupl != null && signature != null && infBPeSupl.NextSibling != signature)
+            {
+                raiz.RemoveChild(signature);
+                raiz.InsertAfter(signature, infBPeSupl);
             }
         }
 
@@ -2249,6 +2331,19 @@ namespace Unimake.Business.DFe
                 case "eventoNFGas":
                 case "NFGas":
                     tipoDFe = TipoDFe.NFGas;
+                    break;
+
+                #endregion
+
+                #region BPe
+
+                case "consStatServBPe":
+                case "consSitBPe":
+                case "eventoBPe":
+                case "BPe":
+                case "BPeTM":
+                case "BPeTA":
+                    tipoDFe = TipoDFe.BPe;
                     break;
 
                 #endregion

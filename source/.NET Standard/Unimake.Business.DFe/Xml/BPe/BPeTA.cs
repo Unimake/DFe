@@ -218,7 +218,7 @@ namespace Unimake.Business.DFe.Xml.BPeTA
         public int CDV { get; set; }
 
         [XmlElement("modal")]
-        public ModalidadeTransporteBPe Modal { get; set; }
+        public ModalidadeTransporteBPeTA Modal { get; set; }
 
         [XmlIgnore]
 #if INTEROP

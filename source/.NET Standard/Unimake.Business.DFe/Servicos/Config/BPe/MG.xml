@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Heranca>SVRS.xml</Heranca>
+	<Servicos ID="BPe">
+		<StatusServico versao="1.00">
+			<WebEnderecoHomologacao>https://hbpe.fazenda.mg.gov.br/bpe/services/BPeStatusServico</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.mg.gov.br/bpe/services/BPeStatusServico</WebEnderecoProducao>
+		</StatusServico>
+		<ConsultaProtocolo versao="1.00">
+			<WebEnderecoHomologacao>https://bpe.fazenda.mg.gov.br/bpe/services/BPeConsulta</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.mg.gov.br/bpe/services/BPeConsulta</WebEnderecoProducao>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="1.00">
+			<WebEnderecoHomologacao>https://hbpe.fazenda.mg.gov.br/bpe/services/BPeRecepcaoEvento</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.mg.gov.br/bpe/services/BPeRecepcaoEvento</WebEnderecoProducao>
+		</RecepcaoEvento>
+		<AutorizacaoBPe versao="1.00">
+			<WebEnderecoHomologacao>https://hbpe.fazenda.mg.gov.br/bpe/services/BPeRecepcao</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://bpe.fazenda.mg.gov.br/bpe/services/BPeRecepcao</WebEnderecoProducao>
+			<UrlQrCodeHomologacao>https://portalbpe.fazenda.mg.gov.br/portalbpe/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://portalbpe.fazenda.mg.gov.br/portalbpe/sistema/qrcode.xhtml</UrlQrCodeProducao>
+		</AutorizacaoBPe>
+	</Servicos>
+</Configuracoes>

@@ -813,6 +813,10 @@ namespace Unimake.Business.DFe.Utility
             {
                 tipoDFe = TipoDFe.NFCom;
             }
+            else if (xml.Contains("<mod>63</mod>"))
+            {
+                tipoDFe = TipoDFe.BPe;
+            }
 
             return tipoDFe;
         }
@@ -860,6 +864,10 @@ namespace Unimake.Business.DFe.Utility
 
                 case "67":
                     tipoDFe = TipoDFe.CTeOS;
+                    break;
+
+                case "63":
+                    tipoDFe = TipoDFe.BPe;
                     break;
             }
 
