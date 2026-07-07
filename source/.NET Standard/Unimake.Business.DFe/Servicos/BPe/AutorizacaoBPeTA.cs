@@ -3,10 +3,12 @@ using System.Runtime.InteropServices;
 #endif
 
 using System;
+using System.Collections.Generic;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.BPe;
+using Unimake.Business.DFe.Xml.BPeTA;
 using Unimake.Exceptions;
 using BPeTAXml = Unimake.Business.DFe.Xml.BPeTA.BPeTA;
 
@@ -23,6 +25,7 @@ namespace Unimake.Business.DFe.Servicos.BPe
     public class AutorizacaoBPeTA : ServicoBase, IInteropService<BPeTAXml>
     {
         private BPeTAXml _BPeTA;
+        private readonly Dictionary<string, BPeTAProc> BPeTAProcs = new Dictionary<string, BPeTAProc>();
 
         /// <summary>
         /// Objeto XML do BPe TA
@@ -129,6 +132,51 @@ namespace Unimake.Business.DFe.Servicos.BPe
         }
 
         /// <summary>
+        /// Propriedade contendo o XML do BPe TA com o protocolo de autorização anexado
+        /// </summary>
+        public Dictionary<string, BPeTAProc> BPeTAProcResults
+        {
+            get
+            {
+                if (BPeTAProcs.ContainsKey(BPeTA.InfBPe.Chave))
+                {
+                    BPeTAProcs[BPeTA.InfBPe.Chave].ProtBPe = Result.ProtBPe;
+                }
+                else
+                {
+                    BPeTAProcs.Add(BPeTA.InfBPe.Chave, new BPeTAProc
+                    {
+                        Versao = BPeTA.InfBPe.Versao,
+                        BPeTA = BPeTA,
+                        ProtBPe = Result.ProtBPe
+                    });
+                }
+
+                return BPeTAProcs;
+            }
+        }
+
+#if INTEROP
+
+        /// <summary>
+        /// Recupera o XML de distribuição do BPe TA no formato string
+        /// </summary>
+        /// <param name="chaveDFe">Chave do BPe TA que é para retornar o XML de distribuição</param>
+        /// <returns>XML de distribuição do BPe TA</returns>
+        public string GetBPeTAProcResults(string chaveDFe)
+        {
+            var retornar = "";
+            if (BPeTAProcResults.Count > 0)
+            {
+                retornar = BPeTAProcResults[chaveDFe].GerarXML().OuterXml;
+            }
+
+            return retornar;
+        }
+
+#endif
+
+        /// <summary>
         /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
         public RetBPe Result
@@ -151,7 +199,7 @@ namespace Unimake.Business.DFe.Servicos.BPe
         /// <summary>
         /// Construtor
         /// </summary>
-        public AutorizacaoBPeTA() : base() { }
+        public AutorizacaoBPeTA() : base() => BPeTAProcs.Clear();
 
         /// <summary>
         /// Construtor
@@ -220,12 +268,57 @@ namespace Unimake.Business.DFe.Servicos.BPe
 
 #endif
 
-        /// <inheritdoc />
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
+        /// <summary>
+        /// Gravar o XML de distribuição em uma pasta no HD
+        /// </summary>
+        /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
+#if INTEROP
+        [ComVisible(true)]
+#endif
+        public void GravarXmlDistribuicao(string pasta)
         {
             try
             {
-                throw new Exception("Não existe XML de distribuição implementado para autorização do BPe TA.");
+                foreach (var item in BPeTAProcResults)
+                {
+                    if (item.Value.ProtBPe != null)
+                    {
+                        GravarXmlDistribuicao(pasta, item.Value.NomeArquivoDistribuicao, item.Value.GerarXML().OuterXml);
+                    }
+                    else
+                    {
+                        throw new Exception("Não foi localizado no retorno o protocolo da chave para a elaboração do arquivo de distribuição: " + item.Key);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
+
+        /// <summary>
+        /// Grava o XML de distribuição no stream
+        /// </summary>
+        /// <param name="stream">Stream que vai receber o XML de distribuição</param>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public void GravarXmlDistribuicao(System.IO.Stream stream)
+        {
+            try
+            {
+                foreach (var item in BPeTAProcResults)
+                {
+                    if (item.Value.ProtBPe != null)
+                    {
+                        GravarXmlDistribuicao(stream, item.Value.GerarXML().OuterXml);
+                    }
+                    else
+                    {
+                        throw new Exception("Não foi localizado no retorno o protocolo da chave para a elaboração do arquivo de distribuição: " + item.Key);
+                    }
+                }
             }
             catch (Exception ex)
             {

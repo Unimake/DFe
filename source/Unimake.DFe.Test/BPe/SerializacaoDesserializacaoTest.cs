@@ -67,6 +67,35 @@ namespace Unimake.DFe.Test.BPe
 
         [Theory]
         [Trait("DFe", "BPe")]
+        [InlineData(@"..\..\..\BPe\Resources\bpeTA_minimo.xml", @"..\..\..\BPe\Resources\retBPe.xml")]
+        public void SerializacaoDesserializacaoBPeTAProc(string arqXMLBPeTA, string arqXMLRetBPe)
+        {
+            Assert.True(File.Exists(arqXMLBPeTA), "Arquivo " + arqXMLBPeTA + " nao foi localizado para a realizacao da serializacao/desserializacao.");
+            Assert.True(File.Exists(arqXMLRetBPe), "Arquivo " + arqXMLRetBPe + " nao foi localizado para a realizacao da serializacao/desserializacao.");
+
+            var docBPeTA = new XmlDocument();
+            docBPeTA.Load(arqXMLBPeTA);
+
+            var docRetBPe = new XmlDocument();
+            docRetBPe.Load(arqXMLRetBPe);
+
+            var bpeTAProc = new BPeTAXml.BPeTAProc
+            {
+                Versao = "1.00",
+                BPeTA = new BPeTAXml.BPeTA().LerXML<BPeTAXml.BPeTA>(docBPeTA),
+                ProtBPe = new RetBPe().LerXML<RetBPe>(docRetBPe).ProtBPe
+            };
+
+            var doc = bpeTAProc.GerarXML();
+            var xml = new BPeTAXml.BPeTAProc().LerXML<BPeTAXml.BPeTAProc>(doc);
+            var doc2 = xml.GerarXML();
+
+            Assert.Equal("bpeTAProc", doc.DocumentElement.Name);
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL esta diferente do conteudo do arquivo serializado.");
+        }
+
+        [Theory]
+        [Trait("DFe", "BPe")]
         [InlineData(@"..\..\..\BPe\Resources\bpeTMProc.xml")]
         public void SerializacaoDesserializacaoBPeTMProc(string arqXML)
         {
