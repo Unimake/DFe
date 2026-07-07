@@ -13,12 +13,13 @@
 			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:recepcionarLoteRps><ser:xml>{xmlBodyScapeRetorno}</ser:xml></ser:recepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:recepcionarLoteRps><ser:xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</ser:xml></ser:recepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>recepcionarLoteRpsResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
+			<TemCDATA>true</TemCDATA>
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.03">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>

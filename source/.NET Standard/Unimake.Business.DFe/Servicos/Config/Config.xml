@@ -160,12 +160,6 @@
 		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="9999901">
-		<Nome>MEMORY</Nome>
-		<UF>BR</UF>
-		<ArqConfig>Memory.xml</ArqConfig>
-		<PadraoNFSe>MEMORY</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="9999902">
 		<Nome>ABASE</Nome>
 		<UF>BR</UF>
