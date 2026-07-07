@@ -118,6 +118,28 @@ namespace Unimake.DFe.Test.BPe
         }
 
         /// <summary>
+        /// Gerar QRCode automaticamente no XML do BPe.
+        /// </summary>
+        [Theory()]
+        [Trait("DFe", "BPe")]
+        [Trait("Servico", "AutorizacaoBPe")]
+        [InlineData(@"..\..\..\BPe\Resources\bpe_minimo.xml")]
+        public void GerarQRCodeBPe(string arqXML)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arqXML);
+
+            var bpeObjeto = new Business.DFe.Xml.BPe.BPe().LerXML<Business.DFe.Xml.BPe.BPe>(xml);
+            bpeObjeto.Signature = null;
+            bpeObjeto.InfBPeSupl = null;
+            var configuracao = CriarConfiguracao(bpeObjeto.InfBPe.Ide.CUF);
+
+            var autorizacao = new BPeAutorizacaoBPe(bpeObjeto, configuracao);
+
+            AssertQRCodeBPe(autorizacao.ConteudoXMLAssinado, bpeObjeto.InfBPe.Chave, bpeObjeto.InfBPe.Ide.TpAmb);
+        }
+
+        /// <summary>
         /// Autorizar BPe TM.
         /// </summary>
         [Theory()]
@@ -163,6 +185,28 @@ namespace Unimake.DFe.Test.BPe
             Assert.Equal((int)bpeObjeto.InfBPe.Ide.CUF, configuracao.CodigoUF);
             Assert.Equal(bpeObjeto.InfBPe.Ide.TpAmb, configuracao.TipoAmbiente);
             Assert.IsType<RetBPe>(autorizacao.Result);
+        }
+
+        /// <summary>
+        /// Gerar QRCode automaticamente no XML do BPe TA.
+        /// </summary>
+        [Theory()]
+        [Trait("DFe", "BPe")]
+        [Trait("Servico", "AutorizacaoBPeTA")]
+        [InlineData(@"..\..\..\BPe\Resources\bpeTA_minimo.xml")]
+        public void GerarQRCodeBPeTA(string arqXML)
+        {
+            var xml = new XmlDocument();
+            xml.Load(arqXML);
+
+            var bpeObjeto = new Business.DFe.Xml.BPeTA.BPeTA().LerXML<Business.DFe.Xml.BPeTA.BPeTA>(xml);
+            bpeObjeto.Signature = null;
+            bpeObjeto.InfBPeSupl = null;
+            var configuracao = CriarConfiguracao(bpeObjeto.InfBPe.Ide.CUF);
+
+            var autorizacao = new BPeAutorizacaoBPeTA(bpeObjeto, configuracao);
+
+            AssertQRCodeBPe(autorizacao.ConteudoXMLAssinado, bpeObjeto.InfBPe.Chave, bpeObjeto.InfBPe.Ide.TpAmb);
         }
 
         /// <summary>
@@ -223,6 +267,22 @@ namespace Unimake.DFe.Test.BPe
                 CodigoUF = (int)ufBrasil,
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
+        }
+
+        private static void AssertQRCodeBPe(XmlDocument xml, string chave, TipoAmbiente tipoAmbiente)
+        {
+            var qrCodBPe = xml.GetElementsByTagName("qrCodBPe");
+            Assert.Equal(1, qrCodBPe.Count);
+
+            var qrCode = qrCodBPe[0].InnerText;
+            Assert.StartsWith("https://", qrCode);
+            Assert.Contains("?chBPe=", qrCode);
+            Assert.Contains("&tpAmb=" + ((int)tipoAmbiente).ToString(), qrCode);
+
+            var infBPeSupl = xml.GetElementsByTagName("infBPeSupl");
+            Assert.Equal(1, infBPeSupl.Count);
+            Assert.NotNull(infBPeSupl[0].NextSibling);
+            Assert.Equal("Signature", infBPeSupl[0].NextSibling.LocalName);
         }
     }
 }

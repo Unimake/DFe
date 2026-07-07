@@ -43,33 +43,6 @@ namespace Unimake.Business.DFe.Servicos.BPe
             DefinirConfiguracaoAutorizacao("BPe", Servico.BPeAutorizacao);
         }
 
-        /// <summary>
-        /// Efetuar ajustes no XML do BPe logo depois de assinado
-        /// </summary>
-        protected override void AjustarXMLAposAssinado()
-        {
-            PosicionarAssinaturaDepoisDoSuplemento();
-            base.AjustarXMLAposAssinado();
-        }
-
-        private void PosicionarAssinaturaDepoisDoSuplemento()
-        {
-            var raiz = ConteudoXML.DocumentElement;
-            if (raiz == null)
-            {
-                return;
-            }
-
-            var infBPeSupl = raiz.GetElementsByTagName("infBPeSupl").Count > 0 ? raiz.GetElementsByTagName("infBPeSupl")[0] : null;
-            var signature = raiz.GetElementsByTagName("Signature", "http://www.w3.org/2000/09/xmldsig#").Count > 0 ? raiz.GetElementsByTagName("Signature", "http://www.w3.org/2000/09/xmldsig#")[0] : null;
-
-            if (infBPeSupl != null && signature != null && infBPeSupl.NextSibling != signature)
-            {
-                raiz.RemoveChild(signature);
-                raiz.InsertAfter(signature, infBPeSupl);
-            }
-        }
-
         private void DefinirConfiguracaoAutorizacao(string tagDocumento, Servico servico)
         {
             if (!Configuracoes.Definida)

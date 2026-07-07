@@ -2826,7 +2826,7 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
-			<GerarQrCode>false</GerarQrCode>
+			<GerarQrCode>true</GerarQrCode>
 		</Servico>
 		<Servico tagRaiz="BPeTM" versao="1.00">
 			<Descricao>Autorização do Bilhete de Passagem Eletrônico Transporte Metropolitano</Descricao>
@@ -2852,7 +2852,7 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
-			<GerarQrCode>false</GerarQrCode>
+			<GerarQrCode>true</GerarQrCode>
 		</Servico>
 	</BPe>
 	<!--DCe-->

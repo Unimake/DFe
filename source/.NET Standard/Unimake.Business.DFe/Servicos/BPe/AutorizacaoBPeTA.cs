@@ -51,33 +51,6 @@ namespace Unimake.Business.DFe.Servicos.BPe
             }
         }
 
-        /// <summary>
-        /// Efetuar ajustes no XML do BPe TA logo depois de assinado
-        /// </summary>
-        protected override void AjustarXMLAposAssinado()
-        {
-            PosicionarAssinaturaDepoisDoSuplemento();
-            base.AjustarXMLAposAssinado();
-        }
-
-        private void PosicionarAssinaturaDepoisDoSuplemento()
-        {
-            var raiz = ConteudoXML.DocumentElement;
-            if (raiz == null)
-            {
-                return;
-            }
-
-            var infBPeSupl = raiz.GetElementsByTagName("infBPeSupl").Count > 0 ? raiz.GetElementsByTagName("infBPeSupl")[0] : null;
-            var signature = raiz.GetElementsByTagName("Signature", "http://www.w3.org/2000/09/xmldsig#").Count > 0 ? raiz.GetElementsByTagName("Signature", "http://www.w3.org/2000/09/xmldsig#")[0] : null;
-
-            if (infBPeSupl != null && signature != null && infBPeSupl.NextSibling != signature)
-            {
-                raiz.RemoveChild(signature);
-                raiz.InsertAfter(signature, infBPeSupl);
-            }
-        }
-
         private void DefinirConfiguracaoPorInfBPe(string tagDocumento)
         {
             if (ConteudoXML.GetElementsByTagName(tagDocumento).Count <= 0)
