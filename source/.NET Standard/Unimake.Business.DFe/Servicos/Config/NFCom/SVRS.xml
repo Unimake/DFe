@@ -7,12 +7,7 @@
 			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico</WebActionProducao>
-			<SchemaArquivo>consStatServNFCom_v{0}.xsd</SchemaArquivo>
 			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfc="http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico"><soap:Header/><soap:Body><nfc:nfcomDadosMsg>{xmlBody}</nfc:nfcomDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
 		</StatusServico>
 		<ConsultaProtocolo versao="1.00">
@@ -21,12 +16,7 @@
 			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComConsulta/NFComConsulta.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta</WebActionProducao>
-			<SchemaArquivo>consSitNFCom_v{0}.xsd</SchemaArquivo>
 			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 		</ConsultaProtocolo>
 		<RecepcaoEvento versao="1.00">
 			<Descricao>Recepção de eventos</Descricao>
@@ -35,28 +25,6 @@
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionProducao>
 			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
-			<SchemaArquivo></SchemaArquivo>
-			<SchemasEspecificos>
-				<Tipo>
-					<ID>110111</ID>
-					<SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>evCancNFCom_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110300</ID>
-					<SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>evVincPgto_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110301</ID>
-					<SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>evCancVincPgto_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>      
-			</SchemasEspecificos>
-			<TagAssinatura>eventoNFCom</TagAssinatura>
-			<TagAtributoID>infEvento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 		</RecepcaoEvento>
 		<AutorizacaoSinc versao="1.00">
 			<Descricao>Autorização síncrona da NFCom</Descricao>
@@ -65,11 +33,6 @@
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao</WebActionProducao>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfc="http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao"><soap:Header/><soap:Body><nfc:nfcomDadosMsg>{xmlBody}</nfc:nfcomDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
-			<SchemaArquivo>nfcom_v{0}.xsd</SchemaArquivo>
-			<TagAssinatura>NFCom</TagAssinatura>
-			<TagAtributoID>infNFCom</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
 			<GZIPCompress>true</GZIPCompress>
 			<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/NFCom/qrCode</UrlQrCodeHomologacao>
