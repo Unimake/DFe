@@ -426,7 +426,6 @@
 		<None Remove="Servicos\Config\NFSe\CabedeloPB.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboDeSantoAgostinhoPE.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
-		<None Remove="Servicos\Config\NFSe\CaceresMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeiraDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirinhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CaieirasSP.xml" />
@@ -1736,7 +1735,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BebedouroSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BomDespachoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BragancaPaulistaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\CaceresMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CachoeirinhaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaieirasSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CajuruSP.xml" />

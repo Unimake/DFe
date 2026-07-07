@@ -1469,12 +1469,6 @@
 		<ArqConfig>VianaES.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5102504">
-		<Nome>Cáceres - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>CaceresMT.xml</ArqConfig>
-		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5107958">
 		<Nome>Tangará da Serra - MT</Nome>
 		<UF>MT</UF>
