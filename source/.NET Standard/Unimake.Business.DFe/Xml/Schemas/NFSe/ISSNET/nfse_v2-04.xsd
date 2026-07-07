@@ -377,6 +377,7 @@
 			<xsd:enumeration value="38.01"/>
 			<xsd:enumeration value="39.01"/>
 			<xsd:enumeration value="40.01"/>
+			<xsd:enumeration value="99.99"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	
