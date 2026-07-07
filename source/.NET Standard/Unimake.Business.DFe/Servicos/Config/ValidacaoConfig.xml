@@ -4820,7 +4820,7 @@
 		<Padrao nome="COPLAN">
 			<Servico tagRaiz="EnviarLoteDpsEnvio" versao="1.01" tagIdentificadora="LoteDps">
 				<Descricao>Recepcionar Lote RPS</Descricao>
-				<SchemaArquivo>Coplan_v1.01.xsd</SchemaArquivo>
+				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>DPS</TagAssinatura>
 				<TagAtributoID>infDPS</TagAtributoID>
 				<TagVersao>LoteDps</TagVersao>
