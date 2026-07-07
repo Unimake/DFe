@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nfse:RecepcionarLoteDpsEnvio xmlns:nfse="http://www.fiorilli.com.br/nfse-nacional" xmlns:nfse1="http://www.sped.fazenda.gov.br/nfse">
-	<nfse:LoteDps Id="01">
+	<nfse:LoteDps Id="Lote01">
 		<nfse:NumeroLote>01</nfse:NumeroLote>
 		<nfse:CNPJ>99999999999999</nfse:CNPJ>
 		<nfse:IM>999999</nfse:IM>

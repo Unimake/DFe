@@ -221,6 +221,11 @@ namespace Unimake.DFe.Test.NFSe
 
                 message += $"\nErro original: {ex.Message}";
 
+                if (AnalisaExcecaoEsperadaNFSe(servico, message))
+                {
+                    return;
+                }
+
                 throw new Exception(message);
             }
         }
@@ -279,6 +284,91 @@ namespace Unimake.DFe.Test.NFSe
             }
 
             return comunicacaoFuncionou;
+        }
+
+        private static bool AnalisaExcecaoEsperadaNFSe(ServicoBase servico, string mensagem)
+        {
+            switch (servico.Configuracoes.PadraoNFSe)
+            {
+                // Alguns municípios do padrão TINUS exigem dados reais para concluir o envio.
+                // Quando recebem dados fictícios, podem retornar erro 500.
+                // Esta exceção evita falha indevida no teste unitário.
+                // Recomenda-se remover esta adaptação periodicamente para validar novamente a comunicação.
+                case PadraoNFSe.TINUS:
+                    return AmbienteEsperado(servico, TipoAmbiente.Producao, TipoAmbiente.Homologacao) &&
+                           ServicoEsperado(servico,
+                               Servico.NFSeCancelarNfse,
+                               Servico.NFSeConsultarNfse,
+                               Servico.NFSeConsultarNfsePorRps,
+                               Servico.NFSeConsultarSituacaoLoteRps) &&
+                           (mensagem.Contains("Este contexto necessita de dados reais") ||
+                            mensagem.Contains("internal server error") ||
+                            mensagem.Contains("Server Error"));
+
+                // Alguns municípios do padrão QUASAR retornam erro em ambiente de homologação.
+                // Nesses casos, o retorno vem como texto/log de erro, serviço temporariamente indisponível.
+                case PadraoNFSe.QUASAR:
+                    return AmbienteEsperado(servico, TipoAmbiente.Homologacao) &&
+                           ServicoEsperado(servico,
+                               Servico.NFSeCancelarNfse,
+                               Servico.NFSeConsultarNfsePorRps,
+                               Servico.NFSeConsultarSituacaoLoteRps,
+                               Servico.NFSeGerarNfse) &&
+                           mensagem.Contains("503 Service Temporarily Unavailable");
+
+                // O padrão único WEBFISCO retorna erro nos serviços de consulta e cancelamento.
+                // Nesses casos, o retorno vem como texto/log de erro, erro 500 ou erro 404.
+                case PadraoNFSe.WEBFISCO:
+                    return AmbienteEsperado(servico, TipoAmbiente.Producao) &&
+                           ServicoEsperado(servico,
+                               Servico.NFSeCancelarNfse,
+                               Servico.NFSeConsultarNfse) &&
+                           (mensagem.Contains("erro 500 do servidor") ||
+                            mensagem.Contains("(404) Not Found"));
+
+                // Alguns municípios do padrão SMARAPD retornam erro interno no serviço de cancelamento.
+                // Nesses casos, o retorno vem como texto/log de erro, fora do XML esperado.
+                case PadraoNFSe.SMARAPD:
+                    return AmbienteEsperado(servico, TipoAmbiente.Producao, TipoAmbiente.Homologacao) &&
+                           ServicoEsperado(servico, Servico.NFSeCancelarNfse) &&
+                           mensagem.Contains("Erro original: Data at the root level is invalid. Line 1, position 1.");
+
+                // Alguns municípios do padrão GIF podem retornar erro quando a chave de acesso fictícia do teste não é encontrada.
+                case PadraoNFSe.GIF:
+                    return AmbienteEsperado(servico, TipoAmbiente.Producao, TipoAmbiente.Homologacao) &&
+                           ServicoEsperado(servico, Servico.NFSeConsultarNfsePDF) &&
+                           mensagem.Contains("Chave de acesso") &&
+                           mensagem.Contains("encontrada");
+
+                default:
+                    return false;
+            }
+        }
+
+        private static bool AmbienteEsperado(ServicoBase servico, params TipoAmbiente[] ambientes)
+        {
+            foreach (var ambiente in ambientes)
+            {
+                if (servico.Configuracoes.TipoAmbiente == ambiente)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static bool ServicoEsperado(ServicoBase servico, params Servico[] servicos)
+        {
+            foreach (var servicoEsperado in servicos)
+            {
+                if (servico.Configuracoes.Servico == servicoEsperado)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private static string VerificaContexto(ServicoBase servicoBase)

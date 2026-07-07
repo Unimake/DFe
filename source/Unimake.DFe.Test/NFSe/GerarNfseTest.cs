@@ -49,29 +49,7 @@ namespace Unimake.DFe.Test.NFSe
 
             var gerarNfse = new GerarNfse(conteudoXML, configuracao);
 
-            #region Tratamento de Erros
-
-            try
-            {
-                Assert.Multiple(() => TestUtility.AnalisaResultado(gerarNfse));
-            }
-            catch (System.Exception ex)
-            {
-                switch (padraoNFSe)
-                {
-                    // Alguns municípios do padrão QUASAR retornam erro em ambiente de homologação.
-                    // Nesses casos, o retorno vem como texto/log de erro, serviço temporariamente indisponível.
-                    case PadraoNFSe.QUASAR:
-                        Assert.Equal(TipoAmbiente.Homologacao, tipoAmbiente);
-                        Assert.Contains("503 Service Temporarily Unavailable", ex.Message);
-                        break;
-
-                    default:
-                        throw;
-                }
-            }
-
-            #endregion
+            Assert.Multiple(() => TestUtility.AnalisaResultado(gerarNfse));
         }
     }
 }

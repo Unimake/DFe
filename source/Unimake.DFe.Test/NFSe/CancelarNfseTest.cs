@@ -64,59 +64,7 @@ namespace Unimake.DFe.Test.NFSe
 
             var cancelarNfse = new CancelarNfse(conteudoXML, configuracao);
 
-            #region Tratamento de Erros
-
-            try
-            {
-                Assert.Multiple(() => TestUtility.AnalisaResultado(cancelarNfse));
-            }
-            catch (System.Exception ex)
-            {
-                switch (padraoNFSe)
-                {
-                    // Alguns municípios do padrão TINUS exigem dados reais para concluir o envio.
-                    // Quando recebem dados fictícios, podem retornar erro 500.
-                    // Esta exceção evita falha indevida no teste unitário.
-                    // Recomenda-se remover esta adaptação periodicamente para validar novamente a comunicação.
-                    case PadraoNFSe.TINUS:
-                        Assert.True(
-                            ex.Message.Contains("Este contexto necessita de dados reais") ||
-                            ex.Message.Contains("internal server error") ||
-                            ex.Message.Contains("Internal server error") ||
-                            ex.Message.Contains("Server Error"),
-                            ex.Message);
-                        break;
-
-                    // Alguns municípios do padrão SMARAPD retornam erro interno no serviço de cancelamento.
-                    // Nesses casos, o retorno vem como texto/log de erro, fora do XML esperado.
-                    case PadraoNFSe.SMARAPD:
-                        Assert.Contains(
-                            "Erro original: Data at the root level is invalid. Line 1, position 1.",
-                            ex.Message);
-                        break;
-
-                    // Alguns municípios do padrão QUASAR retornam erro em ambiente de homologação.
-                    // Nesses casos, o retorno vem como texto/log de erro, serviço temporariamente indisponível.
-                    case PadraoNFSe.QUASAR:
-                        Assert.Equal(TipoAmbiente.Homologacao, tipoAmbiente);
-                        Assert.Contains("503 Service Temporarily Unavailable", ex.Message);
-                        break;
-
-                    // O padrão único WEBFICOS retorna erro nos serviços de consulta e cancelamento.
-                    // Nesses casos, o retorno vem como texto/log de erro, erro 500 ou erro 404.
-                    case PadraoNFSe.WEBFISCO:
-                        Assert.True(
-                            ex.Message.Contains("erro 500 do servidor") ||
-                            ex.Message.Contains("(404) Not Found"),
-                            ex.Message);
-                        break;
-
-                    default:
-                        throw;
-                }
-            }
-
-            #endregion
+            Assert.Multiple(() => TestUtility.AnalisaResultado(cancelarNfse));
         }
     }
 }
