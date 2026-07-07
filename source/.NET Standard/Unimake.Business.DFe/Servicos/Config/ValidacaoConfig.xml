@@ -7068,7 +7068,7 @@
 			</Servico>
 			<Servico tagRaiz="ns4:EnviarLoteRpsEnvio" versao="2.04">
 				<Descricao>Recepcionar Lote RPS</Descricao>
-				<SchemaArquivo>enviar-lote-rps-envio-v2_04.xsd</SchemaArquivo>
+				<SchemaArquivo>enviar-lote-rps-envio-v2_04-RTC.xsd</SchemaArquivo>
 				<TagAssinatura>ns2:Rps</TagAssinatura>
 				<TagAtributoID>ns2:InfDeclaracaoPrestacaoServico</TagAtributoID>
 				<TagVersao>LoteRps</TagVersao>
