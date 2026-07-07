@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns4:EnviarLoteRpsEnvio xmlns:ns2="http://www.giss.com.br/tipos-v2_04.xsd" xmlns:ns4="http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd" xmlns:nss03="http://www.w3.org/2000/09/xmldsig#">
 	<ns4:LoteRps Id="LOTE1" versao="2.04">
-		<ns2:NumeroLote>12691</ns2:NumeroLote>
+		<ns2:NumeroLote>1</ns2:NumeroLote>
 		<ns2:Prestador>
 			<ns2:CpfCnpj>
-				<ns2:Cnpj>06117473000150</ns2:Cnpj>
+				<ns2:Cnpj>01107122000444</ns2:Cnpj>
 			</ns2:CpfCnpj>
-			<ns2:InscricaoMunicipal>123456</ns2:InscricaoMunicipal>
+			<ns2:InscricaoMunicipal>111111</ns2:InscricaoMunicipal>
 		</ns2:Prestador>
 		<ns2:QuantidadeRps>1</ns2:QuantidadeRps>
 		<ns2:ListaRps>
@@ -14,70 +14,106 @@
 				<ns2:InfDeclaracaoPrestacaoServico Id="ID1">
 					<ns2:Rps Id="RPS1">
 						<ns2:IdentificacaoRps>
-							<ns2:Numero>10</ns2:Numero>
-							<ns2:Serie>NFT</ns2:Serie>
+							<ns2:Numero>1</ns2:Numero>
+							<ns2:Serie>00002</ns2:Serie>
 							<ns2:Tipo>1</ns2:Tipo>
 						</ns2:IdentificacaoRps>
-						<ns2:DataEmissao>2024-06-01</ns2:DataEmissao>
+						<ns2:DataEmissao>2026-07-06</ns2:DataEmissao>
 						<ns2:Status>1</ns2:Status>
 					</ns2:Rps>
-					<ns2:Competencia>2024-06-01</ns2:Competencia>
+					<ns2:Competencia>2026-07-06</ns2:Competencia>
 					<ns2:Servico>
 						<ns2:Valores>
-							<ns2:ValorServicos>100.00</ns2:ValorServicos>
+							<ns2:ValorServicos>1589.47</ns2:ValorServicos>
 							<ns2:ValorDeducoes>0.00</ns2:ValorDeducoes>
-							<ns2:ValorPis>0.00</ns2:ValorPis>
-							<ns2:ValorCofins>0.00</ns2:ValorCofins>
+							<ns2:ValorPis>10.33</ns2:ValorPis>
+							<ns2:ValorCofins>47.68</ns2:ValorCofins>
 							<ns2:ValorInss>0.00</ns2:ValorInss>
 							<ns2:ValorIr>0.00</ns2:ValorIr>
-							<ns2:ValorCsll>0.00</ns2:ValorCsll>
-							<ns2:OutrasRetencoes>0.0</ns2:OutrasRetencoes>
-							<ns2:ValTotTributos>0.0</ns2:ValTotTributos>
-							<ns2:ValorIss>3.00</ns2:ValorIss>
-							<ns2:Aliquota>0.0300</ns2:Aliquota>
-							<ns2:DescontoIncondicionado>0.0</ns2:DescontoIncondicionado>
-							<ns2:DescontoCondicionado>0.0</ns2:DescontoCondicionado>
-					</ns2:Valores>
+							<ns2:ValorCsll>15.89</ns2:ValorCsll>
+							<ns2:OutrasRetencoes>0.00</ns2:OutrasRetencoes>
+							<ns2:ValTotTributos>0.00</ns2:ValTotTributos>
+							<ns2:ValorIss>79.47</ns2:ValorIss>
+							<ns2:Aliquota>0.0500</ns2:Aliquota>
+							<ns2:DescontoIncondicionado>0.00</ns2:DescontoIncondicionado>
+							<ns2:DescontoCondicionado>0.00</ns2:DescontoCondicionado>
+							<ns2:trib>
+								<ns2:tribFed>
+									<ns2:piscofins>
+										<ns2:CST>01</ns2:CST>
+										<ns2:vBCPisCofins>1589.47</ns2:vBCPisCofins>
+										<ns2:pAliqPis>0.65</ns2:pAliqPis>
+										<ns2:pAliqCofins>3.00</ns2:pAliqCofins>
+										<ns2:vPis>10.33</ns2:vPis>
+										<ns2:vCofins>47.68</ns2:vCofins>
+										<ns2:tpRetPisCofins>1</ns2:tpRetPisCofins>
+									</ns2:piscofins>
+								</ns2:tribFed>
+								<ns2:totTrib>
+									<ns2:pTotTrib>
+										<ns2:pTotTribFed>0.00</ns2:pTotTribFed>
+										<ns2:pTotTribEst>0.00</ns2:pTotTribEst>
+										<ns2:pTotTribMun>0.00</ns2:pTotTribMun>
+									</ns2:pTotTrib>
+								</ns2:totTrib>
+							</ns2:trib>
+							<ns2:IBSCBS>
+								<ns2:finNFSe>0</ns2:finNFSe>
+								<ns2:indFinal>0</ns2:indFinal>
+								<ns2:cIndOp>050102</ns2:cIndOp>
+								<ns2:indDest>0</ns2:indDest>
+								<ns2:valores>
+									<ns2:trib>
+										<ns2:gIBSCBS>
+											<ns2:CST>000</ns2:CST>
+											<ns2:cClassTrib>000001</ns2:cClassTrib>
+										</ns2:gIBSCBS>
+									</ns2:trib>
+									<ns2:cLocalidadeIncid>3523404</ns2:cLocalidadeIncid>
+									<ns2:pRedutor>0.00</ns2:pRedutor>
+									<ns2:vBC>1589.47</ns2:vBC>
+								</ns2:valores>
+							</ns2:IBSCBS>
+						</ns2:Valores>
 						<ns2:IssRetido>2</ns2:IssRetido>
-						<ns2:ResponsavelRetencao>1</ns2:ResponsavelRetencao>
-						<ns2:ItemListaServico>11.02</ns2:ItemListaServico>
-						<ns2:CodigoTributacaoMunicipio>8020001</ns2:CodigoTributacaoMunicipio>
-						<ns2:Discriminacao>teste</ns2:Discriminacao>
-						<ns2:CodigoMunicipio>3541000</ns2:CodigoMunicipio>
+						<ns2:ItemListaServico>14.01</ns2:ItemListaServico>
+						<ns2:CodigoTributacaoMunicipio>14.01</ns2:CodigoTributacaoMunicipio>
+						<ns2:CodigoNbs>120015000</ns2:CodigoNbs>
+						<ns2:Discriminacao>Servico</ns2:Discriminacao>
+						<ns2:CodigoMunicipio>3523404</ns2:CodigoMunicipio>
 						<ns2:CodigoPais>0076</ns2:CodigoPais>
 						<ns2:ExigibilidadeISS>1</ns2:ExigibilidadeISS>
-						<ns2:IdentifNaoExigibilidade>1</ns2:IdentifNaoExigibilidade>
-						<ns2:MunicipioIncidencia>3541000</ns2:MunicipioIncidencia>
+						<ns2:MunicipioIncidencia>3525904</ns2:MunicipioIncidencia>
 					</ns2:Servico>
 					<ns2:Prestador>
 						<ns2:CpfCnpj>
-							<ns2:Cnpj>12345678901234</ns2:Cnpj>
+							<ns2:Cnpj>01107122000444</ns2:Cnpj>
 						</ns2:CpfCnpj>
-						<ns2:InscricaoMunicipal>77761</ns2:InscricaoMunicipal>
+						<ns2:InscricaoMunicipal>11111</ns2:InscricaoMunicipal>
 					</ns2:Prestador>
 					<ns2:TomadorServico>
 						<ns2:IdentificacaoTomador>
 							<ns2:CpfCnpj>
-								<ns2:Cnpj>12345678901234</ns2:Cnpj>
+								<ns2:Cnpj>01786983000777</ns2:Cnpj>
 							</ns2:CpfCnpj>
-							<ns2:InscricaoMunicipal>InscricaoMunic1</ns2:InscricaoMunicipal>
 						</ns2:IdentificacaoTomador>
-						<ns2:RazaoSocial>Tomador Pessoa Juridica</ns2:RazaoSocial>
+						<ns2:RazaoSocial>INDUSTRIA E COMERCIO LTDA</ns2:RazaoSocial>
 						<ns2:Endereco>
-							<ns2:Endereco>Avenida Santo Antônio</ns2:Endereco>
-							<ns2:Numero>1</ns2:Numero>
-							<ns2:Bairro>CENTRO</ns2:Bairro>
-							<ns2:CodigoMunicipio>3529302</ns2:CodigoMunicipio>
+							<ns2:Endereco>Est. Municipal Silva Souza</ns2:Endereco>
+							<ns2:Numero>1111</ns2:Numero>
+							<ns2:Bairro>VARGEM</ns2:Bairro>
+							<ns2:CodigoMunicipio>3789456</ns2:CodigoMunicipio>
 							<ns2:Uf>SP</ns2:Uf>
-							<ns2:Cep>15990110</ns2:Cep>
+							<ns2:Cep>22797444</ns2:Cep>
 						</ns2:Endereco>
 						<ns2:Contato>
-							<ns2:Telefone>1135358241</ns2:Telefone>
+							<ns2:Telefone>1144745400</ns2:Telefone>
+							<ns2:Email>Invoices@inovices.com</ns2:Email>
 						</ns2:Contato>
 					</ns2:TomadorServico>
-					<ns2:RegimeEspecialTributacao>1</ns2:RegimeEspecialTributacao>
 					<ns2:OptanteSimplesNacional>2</ns2:OptanteSimplesNacional>
 					<ns2:IncentivoFiscal>2</ns2:IncentivoFiscal>
+					<ns2:InformacoesComplementares>NFSe de teste com RTC para homologacao</ns2:InformacoesComplementares>
 				</ns2:InfDeclaracaoPrestacaoServico>
 			</ns2:Rps>
 		</ns2:ListaRps>
