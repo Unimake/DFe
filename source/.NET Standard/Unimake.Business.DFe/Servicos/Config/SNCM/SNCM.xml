@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://ws-sncm-stage.gaesi.eng.br/WebService/MbrAgtMgmt</WebEnderecoProducao>
 			<WebActionHomologacao>https://sncm.anvisa.gov.br/ws#MbrAgtMgmt</WebActionHomologacao>
 			<WebActionProducao>https://sncm.anvisa.gov.br/ws#MbrAgtMgmt</WebActionProducao>
-			<SchemaArquivo>msgmbragtmgmt_ver_0-01-r1.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
 			<WebSoapString></WebSoapString>
 			<WebTagRetorno></WebTagRetorno>
