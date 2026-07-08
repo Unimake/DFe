@@ -562,6 +562,22 @@ namespace Unimake.Business.DFe.Utility
         public static void MontarQrCodeCTeOS(XmlDocument conteudoXml, Configuracao configuracoes) => MontarQrCodeCTeBase(conteudoXml, configuracoes, "CTeOS");
 
         /// <summary>
+        /// Monta e inclui o grupo suplementar <c>infBPeSupl</c> para BP-e.
+        /// </summary>
+        /// <param name="conteudoXml">Documento XML do BP-e.</param>
+        /// <param name="configuracoes">Configurações do serviço utilizadas na montagem do QRCode.</param>
+        /// <exception cref="Exception">Lançada quando faltam tags obrigatórias do XML para montagem do QRCode.</exception>
+        public static void MontarQrCodeBPe(XmlDocument conteudoXml, Configuracao configuracoes) => MontarQrCodeBPeBase(conteudoXml, configuracoes, "BPe");
+
+        /// <summary>
+        /// Monta e inclui o grupo suplementar <c>infBPeSupl</c> para BP-e TA.
+        /// </summary>
+        /// <param name="conteudoXml">Documento XML do BP-e TA.</param>
+        /// <param name="configuracoes">Configurações do serviço utilizadas na montagem do QRCode.</param>
+        /// <exception cref="Exception">Lançada quando faltam tags obrigatórias do XML para montagem do QRCode.</exception>
+        public static void MontarQrCodeBPeTA(XmlDocument conteudoXml, Configuracao configuracoes) => MontarQrCodeBPeBase(conteudoXml, configuracoes, "BPeTA");
+
+        /// <summary>
         /// Monta e inclui o grupo suplementar <c>infMDFeSupl</c> com a tag de QRCode para MDF-e.
         /// </summary>
         /// <param name="conteudoXml">Documento XML do MDF-e.</param>
@@ -859,6 +875,107 @@ namespace Unimake.Business.DFe.Utility
                     nodeInfCTe,
                     "infCTeSupl",
                     new KeyValuePair<string, string>("qrCodCTe", paramLinkQRCode.Trim()));
+            }
+        }
+
+        /// <summary>
+        /// Implementação base para montagem de QRCode da família BP-e (<c>BPe</c>, <c>BPeTM</c> e <c>BPeTA</c>).
+        /// </summary>
+        /// <param name="conteudoXml">Documento XML do tipo BP-e correspondente.</param>
+        /// <param name="configuracoes">Configurações do serviço para composição do QRCode.</param>
+        /// <param name="nomeTagDocumento">Nome da tag raiz do documento a processar.</param>
+        /// <exception cref="Exception">
+        /// Lançada quando o XML não possui a estrutura mínima esperada para o tipo informado.
+        /// </exception>
+        private static void MontarQrCodeBPeBase(XmlDocument conteudoXml, Configuracao configuracoes, string nomeTagDocumento)
+        {
+            if (conteudoXml.GetElementsByTagName(nomeTagDocumento).Count <= 0)
+            {
+                throw new Exception($"A tag obrigatória <{nomeTagDocumento}> não foi localizada no XML.");
+            }
+            var elementBPe = (XmlElement)conteudoXml.GetElementsByTagName(nomeTagDocumento)[0];
+
+            if (elementBPe.GetElementsByTagName("infBPeSupl").Count <= 0)
+            {
+                if (elementBPe.GetElementsByTagName("infBPe").Count <= 0)
+                {
+                    throw new Exception($"A tag obrigatória <infBPe>, do grupo de tag <{nomeTagDocumento}>, não foi localizada no XML.");
+                }
+                var elementInfBPe = (XmlElement)elementBPe.GetElementsByTagName("infBPe")[0];
+
+                if (elementInfBPe.GetElementsByTagName("ide").Count <= 0)
+                {
+                    throw new Exception($"A tag obrigatória <ide>, do grupo de tag <{nomeTagDocumento}><infBPe>, não foi localizada no XML.");
+                }
+                var elementIde = (XmlElement)elementInfBPe.GetElementsByTagName("ide")[0];
+
+                var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
+                var cUF = elementIde.GetElementsByTagName("cUF")[0].InnerText;
+                var dhEmi = DateTimeOffset.Parse(elementIde.GetElementsByTagName("dhEmi")[0].InnerText);
+                var serie = elementIde.GetElementsByTagName("serie")[0].InnerText;
+                var nBP = elementIde.GetElementsByTagName("nBP")[0].InnerText;
+                var cBP = elementIde.GetElementsByTagName("cBP")[0].InnerText;
+                var tpEmis = (TipoEmissaoBPe)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
+                var mod = elementIde.GetElementsByTagName("mod")[0].InnerText;
+
+                if (elementInfBPe.GetElementsByTagName("emit").Count <= 0)
+                {
+                    throw new Exception($"A tag obrigatória <emit>, do grupo de tag <{nomeTagDocumento}><infBPe>, não foi localizada no XML.");
+                }
+                var elementEmit = (XmlElement)elementInfBPe.GetElementsByTagName("emit")[0];
+
+                var CNPJEmit = string.Empty;
+                var CPFEmit = string.Empty;
+                if (elementEmit.GetElementsByTagName("CNPJ").Count <= 0)
+                {
+                    if (elementEmit.GetElementsByTagName("CPF").Count <= 0)
+                    {
+                        throw new Exception($"A tag obrigatória <CNPJ> ou <CPF>, do grupo de tag <{nomeTagDocumento}><infBPe><emit>, não foi localizada no XML.");
+                    }
+                    else
+                    {
+                        CPFEmit = elementEmit.GetElementsByTagName("CPF")[0].InnerText;
+                    }
+                }
+                else
+                {
+                    CNPJEmit = elementEmit.GetElementsByTagName("CNPJ")[0].InnerText;
+                }
+
+                var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
+                {
+                    UFEmissor = (UFBrasil)Convert.ToInt32(cUF),
+                    AnoEmissao = dhEmi.ToString("yy"),
+                    MesEmissao = dhEmi.ToString("MM"),
+                    CNPJCPFEmissor = (string.IsNullOrWhiteSpace(CNPJEmit) ? CPFEmit : CNPJEmit).PadLeft(14, '0'),
+                    Modelo = (ModeloDFe)Convert.ToInt32(mod),
+                    Serie = Convert.ToInt32(serie),
+                    NumeroDoctoFiscal = Convert.ToInt32(nBP),
+                    TipoEmissao = (TipoEmissao)(int)tpEmis,
+                    CodigoNumerico = cBP
+                };
+
+                var chave = XMLUtility.MontarChaveBPe(ref conteudoChaveDFe);
+
+                var urlQrCode = configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? configuracoes.UrlQrCodeHomologacao : configuracoes.UrlQrCodeProducao;
+                var paramLinkQRCode = urlQrCode +
+                    "?chBPe=" + chave +
+                    "&tpAmb=" + ((int)tpAmb).ToString();
+
+                if (tpEmis == TipoEmissaoBPe.ContingenciaOffLine)
+                {
+                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(configuracoes.CertificadoDigital, chave);
+                }
+
+                var nodeBPe = conteudoXml.GetElementsByTagName(nomeTagDocumento)[0];
+                var nodeInfBPe = (XmlNode)elementInfBPe;
+
+                AdicionarGrupoSuplementar(
+                    conteudoXml,
+                    nodeBPe,
+                    nodeInfBPe,
+                    "infBPeSupl",
+                    new KeyValuePair<string, string>("qrCodBPe", paramLinkQRCode.Trim()));
             }
         }
 
