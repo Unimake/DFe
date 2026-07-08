@@ -22,7 +22,7 @@
 		<CancelarNfse versao="1.01">
 			<Descricao>Envio do cancelamento de NFSe</Descricao>
 			<RequestURIProducao>https://cidadaoonline.barretos.sp.gov.br/nota/nacional/nfse/{Chave}/eventos</RequestURIProducao>
-			<RequestURIHomologacao>https://barretos.prefeitura.rlz.com.br/nota/nacional/nfse/{chave}/eventos</RequestURIHomologacao>
+			<RequestURIHomologacao>https://barretos.prefeitura.rlz.com.br/nota/nacional/nfse/{Chave}/eventos</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
 			<TagAssinatura>pedRegEvento</TagAssinatura>
