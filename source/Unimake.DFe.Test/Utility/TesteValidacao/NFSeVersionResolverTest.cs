@@ -182,7 +182,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.DBSELLER, codigoMunicipio);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.DBSELLER);
@@ -208,7 +208,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.GINFES, 4125506);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.GINFES);
@@ -253,7 +253,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.ISSNET, 5208707);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.ISSNET);
@@ -276,7 +276,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.PRONIM, 4318309);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.PRONIM);
@@ -302,7 +302,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.RLZ_INFORMATICA, 3505500);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.RLZ_INFORMATICA);
@@ -322,7 +322,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIGCORP, 4113700);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIGCORP);
@@ -347,7 +347,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIGCORP, 3554102);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIGCORP);
@@ -366,7 +366,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIGCORP, 3530805);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIGCORP);
@@ -387,7 +387,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIGCORP, 3530706);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIGCORP);
@@ -405,7 +405,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIMPLISS, 0);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIMPLISS);
@@ -426,7 +426,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIMPLISS, 3306305);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIMPLISS);
@@ -452,7 +452,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIMPLISS, 3306305);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIMPLISS);
@@ -477,7 +477,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SIMPLISS, 3538709);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SIMPLISS);
@@ -497,7 +497,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SMARAPD, 3551702);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SMARAPD);
@@ -520,7 +520,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SMARAPD, 3506003);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SMARAPD);
@@ -542,7 +542,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SMARAPD, 3530607);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SMARAPD);
@@ -569,7 +569,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.SMARAPD, 3205002);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.SMARAPD);
@@ -592,7 +592,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.TINUS, 2503209);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.TINUS);
@@ -613,7 +613,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.TINUS, 2412005);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.TINUS);
@@ -636,7 +636,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.TIPLAN, 3302403);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.TIPLAN);
@@ -654,7 +654,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.TIPLAN, 3304524);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.TIPLAN);
@@ -686,7 +686,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.TIPLAN, 3302403);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.TIPLAN);
@@ -712,7 +712,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.PAULISTANA, 3550308);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.PAULISTANA);
@@ -738,7 +738,7 @@ namespace Unimake.DFe.Test.Utility.TesteValidacao
             xml.Load(arquivoXML);
 
             var configuracaoValidacao = new XmlDocument();
-            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\ValidacaoConfig.xml");
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
 
             var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.PAULISTANA, 3550308);
             var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.PAULISTANA);

@@ -7,12 +7,7 @@
       <WebEnderecoProducao>https://www1.cte.fazenda.gov.br/CTeDistribuicaoDFe/CTeDistribuicaoDFe.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeDistribuicaoDFe/cteDistDFeInteresse</WebActionHomologacao>
       <WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeDistribuicaoDFe/cteDistDFeInteresse</WebActionProducao>
-      <SchemaArquivo>distDFeInt_v{0}.xsd</SchemaArquivo>
       <SchemaVersao>1.00</SchemaVersao>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
     </DistribuicaoDFe>
   </Servicos>
 </Configuracoes>

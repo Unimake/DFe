@@ -521,12 +521,6 @@
 		<ArqConfig>SimoesFilhoBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3515509">
-		<Nome>Fernandópolis - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>FernandopolisSP.xml</ArqConfig>
-		<PadraoNFSe>FIORILLI</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3514502">
 		<Nome>Duartina - SP</Nome>
 		<UF>SP</UF>
@@ -2128,5 +2122,11 @@
 		<UF>PR</UF>
 		<ArqConfig>PatoBrancoPR.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3518800">
+		<Nome>Guarulhos - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>GuarulhosSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>

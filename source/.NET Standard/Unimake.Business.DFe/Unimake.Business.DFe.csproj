@@ -117,6 +117,7 @@
 		<None Remove="Servicos\Config\CTe\TO.xml" />
 		<None Remove="Servicos\Config\DARE\AN.xml" />
 		<None Remove="Servicos\Config\DARE\Config.xml" />
+		<None Remove="Servicos\Config\NFSe\GuarulhosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PatoBrancoPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PiratiniRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ItatibaSP.xml" />
@@ -512,7 +513,6 @@
 		<None Remove="Servicos\Config\NFSe\EusebioCE.xml" />
 		<None Remove="Servicos\Config\NFSe\FarroupilhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\FeiraDeSantanaBA.xml" />
-		<None Remove="Servicos\Config\NFSe\FernandopolisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\FISCO.xml" />
 		<None Remove="Servicos\Config\NFSe\FormigaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\FortalezaCE.xml" />
@@ -1605,6 +1605,7 @@
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DiademaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuararapesSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarulhosSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatoBrancoPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiratiniRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItatibaSP.xml" />
@@ -1626,7 +1627,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
-		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
+		<EmbeddedResource Include="Xml\Validar\ValidarConfig.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -2186,9 +2187,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\DuartinaSP.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\FernandopolisSP.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\AssisSP.xml">
