@@ -158,6 +158,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             }
 
             Inicializar(xml?.GerarXML() ?? throw new ArgumentNullException(nameof(xml)), configuracao);
+            AtualizarHttpContentAposInicializacao();
         }
 
         /// <summary>
@@ -174,6 +175,18 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             doc.LoadXml(conteudoXML);
 
             Inicializar(doc, configuracao);
+            AtualizarHttpContentAposInicializacao();
+        }
+
+        /// <summary>
+        /// Atualizar o conteúdo HTTP depois que a configuração do serviço CIOT foi carregada.
+        /// </summary>
+        protected virtual void AtualizarHttpContentAposInicializacao()
+        {
+            if (Configuracoes.RequestURI != null && !string.Equals(Configuracoes.MetodoAPI, "get", StringComparison.OrdinalIgnoreCase))
+            {
+                Configuracoes.HttpContent = CriarHttpContentPadrao();
+            }
         }
 
         /// <inheritdoc />

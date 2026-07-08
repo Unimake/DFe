@@ -10,8 +10,6 @@ namespace Unimake.DFe.Test.CTeOS
     /// </summary>
     public class ConsultaCadastroTest
     {
-        
-
         [Theory]
         [Trait("DFe", "CTeOS")]
         [InlineData(UFBrasil.PR, "06117473000150")]
@@ -32,9 +30,5 @@ namespace Unimake.DFe.Test.CTeOS
             Assert.True(consultaCadastro.Result.InfCons.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(consultaCadastro.Result.InfCons.CStat != 259, "CNPJ consultado não é foi localizado no webservice da UF " + ufBrasil.ToString() + ".");
         }
-
-
     }
-
-
 }

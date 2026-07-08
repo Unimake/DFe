@@ -41,22 +41,6 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// <param name="ufBrasil">UF do contribuinte</param>
         /// <param name="cnpj">CNPJ do contribuinte</param>
         /// <param name="configuracao">Config para conexão e envio do XML</param>
-        public ConsultaCadastro(UFBrasil ufBrasil, string cnpj, Configuracao configuracao) : base(ufBrasil, cnpj, configuracao) { }
-
-        /// <summary>
-        /// Validar o XML
-        /// </summary>
-        protected override void XmlValidar()
-        {
-            var validar = new ValidarSchema();
-            validar.Validar(ConteudoXML, TipoDFe.CTe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
-
-            if (!validar.Success)
-            {
-                throw new ValidarXMLException(validar.ErrorMessage);
-            }
-        }
-
-        
+        public ConsultaCadastro(UFBrasil ufBrasil, string cnpj, Configuracao configuracao) : base(ufBrasil, cnpj, configuracao) { }        
     }
 }
