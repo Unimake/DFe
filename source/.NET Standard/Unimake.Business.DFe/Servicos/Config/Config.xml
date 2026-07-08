@@ -521,12 +521,6 @@
 		<ArqConfig>SimoesFilhoBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3515509">
-		<Nome>Fernandópolis - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>FernandopolisSP.xml</ArqConfig>
-		<PadraoNFSe>FIORILLI</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3514502">
 		<Nome>Duartina - SP</Nome>
 		<UF>SP</UF>
