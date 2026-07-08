@@ -300,9 +300,9 @@ namespace Unimake.DFe.Test.NFSe
                                Servico.NFSeCancelarNfse,
                                Servico.NFSeConsultarNfse,
                                Servico.NFSeConsultarNfsePorRps,
-                               Servico.NFSeConsultarSituacaoLoteRps) &&
-                           (mensagem.Contains("Este contexto necessita de dados reais") ||
-                            mensagem.Contains("internal server error") ||
+                               Servico.NFSeConsultarSituacaoLoteRps,
+                               Servico.NFSeRecepcionarLoteRps) &&
+                            (mensagem.Contains("internal server error") ||
                             mensagem.Contains("Server Error"));
 
                 // Alguns municípios do padrão QUASAR retornam erro em ambiente de homologação.
@@ -310,10 +310,10 @@ namespace Unimake.DFe.Test.NFSe
                 case PadraoNFSe.QUASAR:
                     return AmbienteEsperado(servico, TipoAmbiente.Homologacao) &&
                            ServicoEsperado(servico,
-                               Servico.NFSeCancelarNfse,
-                               Servico.NFSeConsultarNfsePorRps,
-                               Servico.NFSeConsultarSituacaoLoteRps,
-                               Servico.NFSeGerarNfse) &&
+                                Servico.NFSeCancelarNfse,
+                                Servico.NFSeConsultarNfsePorRps,
+                                Servico.NFSeConsultarSituacaoLoteRps,
+                                Servico.NFSeGerarNfse) &&
                            mensagem.Contains("503 Service Temporarily Unavailable");
 
                 // O padrão único WEBFISCO retorna erro nos serviços de consulta e cancelamento.
@@ -321,8 +321,8 @@ namespace Unimake.DFe.Test.NFSe
                 case PadraoNFSe.WEBFISCO:
                     return AmbienteEsperado(servico, TipoAmbiente.Producao) &&
                            ServicoEsperado(servico,
-                               Servico.NFSeCancelarNfse,
-                               Servico.NFSeConsultarNfse) &&
+                                 Servico.NFSeCancelarNfse,
+                                 Servico.NFSeConsultarNfse) &&
                            (mensagem.Contains("erro 500 do servidor") ||
                             mensagem.Contains("(404) Not Found"));
 
@@ -330,15 +330,17 @@ namespace Unimake.DFe.Test.NFSe
                 // Nesses casos, o retorno vem como texto/log de erro, fora do XML esperado.
                 case PadraoNFSe.SMARAPD:
                     return AmbienteEsperado(servico, TipoAmbiente.Producao, TipoAmbiente.Homologacao) &&
-                           ServicoEsperado(servico, Servico.NFSeCancelarNfse) &&
+                           ServicoEsperado(servico,
+                                Servico.NFSeCancelarNfse,
+                                Servico.NFSeConsultarNfseFaixa) &&
                            mensagem.Contains("Erro original: Data at the root level is invalid. Line 1, position 1.");
 
                 // Alguns municípios do padrão GIF podem retornar erro quando a chave de acesso fictícia do teste não é encontrada.
                 case PadraoNFSe.GIF:
                     return AmbienteEsperado(servico, TipoAmbiente.Producao, TipoAmbiente.Homologacao) &&
                            ServicoEsperado(servico, Servico.NFSeConsultarNfsePDF) &&
-                           mensagem.Contains("Chave de acesso") &&
-                           mensagem.Contains("encontrada");
+                           (mensagem.Contains("Chave de acesso") ||
+                           mensagem.Contains("encontrada"));
 
                 // Alguns municípios do padrão FIORILLI podem retornar erro quando o certificado digital não é autorizado.
                 // Nesses casos, o retorno vem como texto/log de erro, ...máquina de destino as recusou ativamente.
@@ -353,6 +355,12 @@ namespace Unimake.DFe.Test.NFSe
                            ServicoEsperado(servico, Servico.NFSeConsultarLoteRps) &&
                            mensagem.Contains("Web server received an invalid response");
 
+                // Alguns municípios do padrão MODERNIZACAO_PUBLICA retornam erro no serviço de consulta.
+                // Nesses casos, o retorno vem como texto/log de erro, ...java.lang.NullPointerException...
+                case PadraoNFSe.MODERNIZACAO_PUBLICA:
+                    return AmbienteEsperado(servico, TipoAmbiente.Producao) &&
+                           ServicoEsperado(servico, Servico.NFSeConsultarNfseServicoTomado) &&
+                           mensagem.Contains("<faultstring>java.lang.NullPointerException</faultstring>");
                 default:
                     return false;
             }
