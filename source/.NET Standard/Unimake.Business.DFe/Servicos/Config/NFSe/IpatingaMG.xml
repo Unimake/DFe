@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://abrasfipatinga.meumunicipio.online/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testeipatingaabrasf.meumunicipio.online/ws#RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>https://abrasfipatinga.meumunicipio.online/ws#RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>LoteRps</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testeipatingaabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBodyScape}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfipatinga.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBodyScape}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -27,11 +22,6 @@
 			<WebEnderecoProducao>https://abrasfipatinga.meumunicipio.online/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testeipatingaabrasf.meumunicipio.online/ws#RecepcionarLoteRpsSincrono</WebActionHomologacao>
 			<WebActionProducao>https://abrasfipatinga.meumunicipio.online/ws#RecepcionarLoteRpsSincrono</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>EnviarLoteRpsSincronoEnvio</TagAssinatura>
-			<TagAtributoID>LoteRps</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testeipatingaabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRpsSincrono><xml>{xmlBodyScape}</xml></ws:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfipatinga.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRpsSincrono><xml>{xmlBodyScape}</xml></ws:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -47,11 +37,6 @@
 			<WebEnderecoProducao>https://abrasfipatinga.meumunicipio.online/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testeipatingaabrasf.meumunicipio.online/ws#CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>https://abrasfipatinga.meumunicipio.online/ws#CancelarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testeipatingaabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:CancelarNfse><xml>{xmlBodyScape}</xml></ws:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfipatinga.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:CancelarNfse><xml>{xmlBodyScape}</xml></ws:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -67,11 +52,6 @@
 			<WebEnderecoProducao>https://abrasfipatinga.meumunicipio.online/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testeipatingaabrasf.meumunicipio.online/ws#GerarNfse</WebActionHomologacao>
 			<WebActionProducao>https://abrasfipatinga.meumunicipio.online/ws#GerarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testeipatingaabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:GerarNfse><xml>{xmlBodyScape}</xml></ws:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfipatinga.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:GerarNfse><xml>{xmlBodyScape}</xml></ws:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -87,11 +67,6 @@
 			<WebEnderecoProducao>https://abrasfipatinga.meumunicipio.online/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testeipatingaabrasf.meumunicipio.online/ws#SubstituirNfse</WebActionHomologacao>
 			<WebActionProducao>https://abrasfipatinga.meumunicipio.online/ws#SubstituirNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura>Rps</TagLoteAssinatura>
-			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
 			<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
 			<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -109,11 +84,6 @@
 			<WebEnderecoProducao>https://abrasfipatinga.meumunicipio.online/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testeipatingaabrasf.meumunicipio.online/ws#ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>https://abrasfipatinga.meumunicipio.online/ws#ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testeipatingaabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarLoteRps><xml>{xmlBodyScape}</xml></ws:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfipatinga.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarLoteRps><xml>{xmlBodyScape}</xml></ws:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -129,11 +99,6 @@
 			<WebEnderecoProducao>https://abrasfipatinga.meumunicipio.online/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testeipatingaabrasf.meumunicipio.online/ws#ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>https://abrasfipatinga.meumunicipio.online/ws#ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testeipatingaabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfsePorRps><xml>{xmlBodyScape}</xml></ws:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfipatinga.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfsePorRps><xml>{xmlBodyScape}</xml></ws:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -149,11 +114,6 @@
 			<WebEnderecoProducao>https://abrasfipatinga.meumunicipio.online/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testeipatingaabrasf.meumunicipio.online/ws#ConsultarNfseServicoPrestado</WebActionHomologacao>
 			<WebActionProducao>https://abrasfipatinga.meumunicipio.online/ws#ConsultarNfseServicoPrestado</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testeipatingaabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoPrestado><xml>{xmlBodyScape}</xml></ws:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfipatinga.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoPrestado><xml>{xmlBodyScape}</xml></ws:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -169,11 +129,6 @@
 			<WebEnderecoProducao>https://abrasfipatinga.meumunicipio.online/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testeipatingaabrasf.meumunicipio.online/ws#ConsultarNfseServicoTomado</WebActionHomologacao>
 			<WebActionProducao>https://abrasfipatinga.meumunicipio.online/ws#ConsultarNfseServicoTomado</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testeipatingaabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoTomado><xml>{xmlBodyScape}</xml></ws:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfipatinga.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoTomado><xml>{xmlBodyScape}</xml></ws:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -189,11 +144,6 @@
 			<WebEnderecoProducao>https://abrasfipatinga.meumunicipio.online/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testeipatingaabrasf.meumunicipio.online/ws#ConsultarNfseFaixa</WebActionHomologacao>
 			<WebActionProducao>https://abrasfipatinga.meumunicipio.online/ws#ConsultarNfseFaixa</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testeipatingaabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseFaixa><xml>{xmlBodyScape}</xml></ws:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfipatinga.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseFaixa><xml>{xmlBodyScape}</xml></ws:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>

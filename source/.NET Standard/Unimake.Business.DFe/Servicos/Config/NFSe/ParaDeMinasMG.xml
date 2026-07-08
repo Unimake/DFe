@@ -7,11 +7,6 @@
 			<WebEnderecoHomologacao>https://parademinas.mg.des.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>DPS</TagAssinatura>
-			<TagAtributoID>infDPS</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.supernova.com.br/"><soapenv:Header/><soapenv:Body><ws:RecepcionarDps><xml>{xmlBodyScape}</xml></ws:RecepcionarDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:RecepcionarDpsResponse</WebTagRetorno>
@@ -27,11 +22,6 @@
 			<WebEnderecoHomologacao>https://parademinas.mg.des.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedRegEvento</TagAssinatura>
-			<TagAtributoID>infPedReg</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.supernova.com.br/"><soapenv:Header/><soapenv:Body><ws:RecepcionarEventoCancelamentoDps><xml>{xmlBodyScapeRetorno}</xml></ws:RecepcionarEventoCancelamentoDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:RecepcionarEventoCancelamentoDpsResponse</WebTagRetorno>
@@ -46,11 +36,6 @@
 			<WebEnderecoHomologacao>https://parademinas.mg.des.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarDps</TagAssinatura>
-			<TagAtributoID>ConsultarDps</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.supernova.com.br/"><soapenv:Header/><soapenv:Body><ws:ConsultarDps><xml>{xmlBodyScape}</xml></ws:ConsultarDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:ConsultarDpsResponse</WebTagRetorno>
@@ -65,11 +50,6 @@
 			<WebEnderecoHomologacao>https://parademinas.mg.des.issqn.quasar.tec.br/nfe/snissdigitalsvc?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarStatusDps</TagAssinatura>
-			<TagAtributoID>ConsultarStatusDps</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.supernova.com.br/"><soapenv:Header/><soapenv:Body><ws:ConsultarStatusDps><xml>{xmlBodyScape}</xml></ws:ConsultarStatusDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:ConsultarStatusDpsResponse</WebTagRetorno>

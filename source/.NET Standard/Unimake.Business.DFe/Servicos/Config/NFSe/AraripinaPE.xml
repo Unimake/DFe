@@ -7,8 +7,6 @@
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/x-www-form-urlencoded</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -21,11 +19,6 @@
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<RequestURIProducao>https://araripina.hm2solucoes.com.br/tributacao/RecepcionarLoteRps.rule?sys=TRB</RequestURIProducao>
 			<RequestURIHomologacao></RequestURIHomologacao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfRps</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>application/x-www-form-urlencoded</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno></WebEncodingRetorno>
@@ -37,8 +30,6 @@
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/x-www-form-urlencoded</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -52,8 +43,6 @@
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/x-www-form-urlencoded</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -67,8 +56,6 @@
 			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/x-www-form-urlencoded</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>

@@ -7,11 +7,6 @@
       <WebEnderecoProducao>https://ws.pelotas.rs.gov.br/wsnfse/NfseWSISAPI.dll/soap/INfse</WebEnderecoProducao>                           
       <WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>Rps</TagAssinatura>
-      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-      <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br/"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:input"><nfseCabecMsg xsi:type="xsd:string"><cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBody}</nfseDadosMsg></parameters></nfse:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -26,11 +21,6 @@
       <WebEnderecoProducao>https://ws.pelotas.rs.gov.br/wsnfse/NfseWSISAPI.dll/soap/INfse</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>Rps</TagAssinatura>
-      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-      <TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br/"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsSincrono soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:input"><nfseCabecMsg xsi:type="xsd:string"><cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBody}</nfseDadosMsg></parameters></nfse:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -45,11 +35,6 @@
       <WebEnderecoProducao>https://ws.pelotas.rs.gov.br/wsnfse/NfseWSISAPI.dll/soap/INfse</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>Rps</TagAssinatura>
-      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br/"><soapenv:Header/><soapenv:Body><nfse:GerarNfse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:input"><nfseCabecMsg xsi:type="xsd:string"><cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBody}</nfseDadosMsg></parameters></nfse:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -64,11 +49,6 @@
       <WebEnderecoProducao>https://ws.pelotas.rs.gov.br/wsnfse/NfseWSISAPI.dll/soap/INfse</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>Pedido</TagAssinatura>
-      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br/"><soapenv:Header/><soapenv:Body><nfse:CancelarNfse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:input"><nfseCabecMsg xsi:type="xsd:string"><cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBody}</nfseDadosMsg></parameters></nfse:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -83,11 +63,6 @@
       <WebEnderecoProducao>https://ws.pelotas.rs.gov.br/wsnfse/NfseWSISAPI.dll/soap/INfse</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>Rps</TagAssinatura>
-      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-      <TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
-      <TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
       <TagExtraAssinatura>Pedido</TagExtraAssinatura>
       <TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -104,11 +79,6 @@
       <WebEnderecoProducao>https://ws.pelotas.rs.gov.br/wsnfse/NfseWSISAPI.dll/soap/INfse</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br/"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:input"><nfseCabecMsg xsi:type="xsd:string"><cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBody}</nfseDadosMsg></parameters></nfse:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -123,11 +93,6 @@
       <WebEnderecoProducao>https://ws.pelotas.rs.gov.br/wsnfse/NfseWSISAPI.dll/soap/INfse</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br/"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorFaixa soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:input"><nfseCabecMsg xsi:type="xsd:string"><cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBody}</nfseDadosMsg></parameters></nfse:ConsultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -142,11 +107,6 @@
       <WebEnderecoProducao>https://ws.pelotas.rs.gov.br/wsnfse/NfseWSISAPI.dll/soap/INfse</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br/"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:input"><nfseCabecMsg xsi:type="xsd:string"><cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBody}</nfseDadosMsg></parameters></nfse:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -161,11 +121,6 @@
       <WebEnderecoProducao>https://ws.pelotas.rs.gov.br/wsnfse/NfseWSISAPI.dll/soap/INfse</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br/"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestado soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:input"><nfseCabecMsg xsi:type="xsd:string"><cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBody}</nfseDadosMsg></parameters></nfse:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -180,11 +135,6 @@
       <WebEnderecoProducao>https://ws.pelotas.rs.gov.br/wsnfse/NfseWSISAPI.dll/soap/INfse</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br/"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomado soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><parameters xsi:type="nfse:input"><nfseCabecMsg xsi:type="xsd:string"><cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.02</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg xsi:type="xsd:string">{xmlBody}</nfseDadosMsg></parameters></nfse:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>prop:innertext</WebTagRetorno>

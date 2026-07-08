@@ -7,11 +7,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -28,11 +23,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -49,11 +39,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -70,11 +55,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -91,11 +71,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <TagExtraAssinatura></TagExtraAssinatura>
       <TagExtraAtributoID></TagExtraAtributoID>
       <WebContentType></WebContentType>
@@ -114,11 +89,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -135,11 +105,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -156,11 +121,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -177,11 +137,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -198,11 +153,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -219,11 +169,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -240,11 +185,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -261,11 +201,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -282,11 +217,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -303,11 +233,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -324,11 +249,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -345,11 +265,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -366,11 +281,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -387,11 +297,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -408,11 +313,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -429,11 +329,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -449,11 +344,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -470,11 +360,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -491,11 +376,6 @@
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>

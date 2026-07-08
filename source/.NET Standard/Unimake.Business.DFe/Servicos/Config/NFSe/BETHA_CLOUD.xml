@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<GerarNfse versao="1.01">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/dps/ws/service.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>RecepcionarDps</WebActionHomologacao>
 			<WebActionProducao>RecepcionarDps</WebActionProducao>
-			<SchemaArquivo>nfse_dps_v01.xsd</SchemaArquivo>
-			<TagAssinatura>e:DPS</TagAssinatura>
-			<TagAtributoID>e:infDPS</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>env:Body</WebTagRetorno>
@@ -27,11 +22,6 @@
 			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/dps/ws/service.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>RecepcionarEventoCancelamento</WebActionHomologacao>
 			<WebActionProducao>RecepcionarEventoCancelamento</WebActionProducao>
-			<SchemaArquivo>nfse_dps_v01.xsd</SchemaArquivo>
-			<TagAssinatura>e:evento</TagAssinatura>
-			<TagAtributoID>e:infEvento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>env:Body</WebTagRetorno>
@@ -47,11 +37,6 @@
 			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/dps/ws/service.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>RecepcionarEventoSubstituicao</WebActionHomologacao>
 			<WebActionProducao>RecepcionarEventoSubstituicao</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>e:evento</TagAssinatura>
-			<TagAtributoID>e:infEvento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>env:Body</WebTagRetorno>
@@ -67,11 +52,6 @@
 			<WebEnderecoProducao>https://nota-eletronica.betha.cloud/dps/ws/service.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>ConsultarStatusDps</WebActionHomologacao>
 			<WebActionProducao>ConsultarStatusDps</WebActionProducao>
-			<SchemaArquivo>nfse_dps_v01.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>env:Body</WebTagRetorno>
@@ -87,8 +67,6 @@
 			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/dps/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>chaveAcesso</WebTagRetorno>
@@ -102,8 +80,6 @@
 			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>

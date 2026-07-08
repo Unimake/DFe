@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://cidadaoonline.catanduva.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></RecepcionarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:RecepcionarLoteRpsResponse</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://cidadaoonline.catanduva.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
-			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsSincronoRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></RecepcionarLoteRpsSincronoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:RecepcionarLoteRpsSincronoResponse</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>https://cidadaoonline.catanduva.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
-			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GerarNfseRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></GerarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:GerarNfseResponse</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>https://cidadaoonline.catanduva.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
-			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></CancelarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:CancelarNfseResponse</WebTagRetorno>
@@ -83,11 +63,6 @@
 			<WebEnderecoProducao>https://cidadaoonline.catanduva.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
-			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
 			<TagExtraAssinatura>Pedido</TagExtraAssinatura>
 			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -104,11 +79,6 @@
 			<WebEnderecoProducao>https://cidadaoonline.catanduva.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:ConsultarLoteRpsResponse</WebTagRetorno>
@@ -123,11 +93,6 @@
 			<WebEnderecoProducao>https://cidadaoonline.catanduva.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfsePorRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:ConsultarNfsePorRpsResponse</WebTagRetorno>
@@ -142,11 +107,6 @@
 			<WebEnderecoProducao>https://cidadaoonline.catanduva.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
-			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseServicoPrestadoRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfseServicoPrestadoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:ConsultarNfseServicoPrestadoResponse</WebTagRetorno>
@@ -161,11 +121,6 @@
 			<WebEnderecoProducao>https://cidadaoonline.catanduva.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
-			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseServicoTomadoRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfseServicoTomadoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:ConsultarNfseServicoTomadoResponse</WebTagRetorno>
@@ -180,11 +135,6 @@
 			<WebEnderecoProducao>https://cidadaoonline.catanduva.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
-			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorFaixaRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfsePorFaixaRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:ConsultarNfsePorFaixaResponse</WebTagRetorno>
@@ -200,10 +150,7 @@
 			<RequestURIHomologacao>https://catanduva.prefeitura.rlz.com.br/nota/nacional/nfse</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
-			<TagAssinatura>DPS</TagAssinatura>
-			<TagAtributoID>infDPS</TagAtributoID>
 			<WebSoapString></WebSoapString>
-			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
@@ -218,8 +165,6 @@
 			<RequestURIHomologacao>https://catanduva.prefeitura.rlz.com.br/nota/nacional/nfse/{chave}/eventos</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
-			<TagAssinatura>pedRegEvento</TagAssinatura>
-			<TagAtributoID>infPedReg</TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
@@ -234,8 +179,6 @@
 			<RequestURIHomologacao>https://catanduva.prefeitura.rlz.com.br/nota/nacional/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
@@ -250,8 +193,6 @@
 			<RequestURIHomologacao>https://catanduva.prefeitura.rlz.com.br/nota/nacional/dps/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>chaveAcesso</WebTagRetorno>

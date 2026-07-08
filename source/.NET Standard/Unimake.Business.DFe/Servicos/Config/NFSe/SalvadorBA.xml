@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/ENVIOLOTERPS/EnvioLoteRPS.svc</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/IEnvioLoteRPS/EnviarLoteRPS</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/IEnvioLoteRPS/EnviarLoteRPS</WebActionProducao>
-			<SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfRps</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><EnviarLoteRPS xmlns="http://tempuri.org/"><loteXML>{xmlBodyScape}</loteXML></EnviarLoteRPS></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:Innertext</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTASITUACAOLOTERPS/ConsultaSituacaoLoteRPS.svc</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/IConsultaSituacaoLoteRPS/ConsultarSituacaoLoteRPS</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/IConsultaSituacaoLoteRPS/ConsultarSituacaoLoteRPS</WebActionProducao>
-			<SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRPS xmlns="http://tempuri.org/"><loteXML>{xmlBodyScape}</loteXML></ConsultarSituacaoLoteRPS></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:Innertext</WebTagRetorno>
@@ -45,9 +35,6 @@
 			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTALOTERPS/ConsultaLoteRPS.svc</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/IConsultaLoteRPS/ConsultarLoteRPS</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/IConsultaLoteRPS/ConsultarLoteRPS</WebActionProducao>
-			<SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRPS xmlns="http://tempuri.org/"><loteXML>{xmlBodyScape}</loteXML></ConsultarLoteRPS></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:Innertext</WebTagRetorno>
@@ -62,11 +49,6 @@
 			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTANFSERPS/ConsultaNfseRPS.svc</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/IConsultaNfseRPS/ConsultarNfseRPS</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/IConsultaNfseRPS/ConsultarNfseRPS</WebActionProducao>
-			<SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseRPS xmlns="http://tempuri.org/"><consultaxml>{xmlBodyScape}</consultaxml></ConsultarNfseRPS></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:Innertext</WebTagRetorno>
@@ -81,11 +63,6 @@
 			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTANFSE/ConsultaNfse.svc</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/IConsultaNfse/ConsultarNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/IConsultaNfse/ConsultarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfse xmlns="http://tempuri.org/"><consultaxml>{xmlBodyScape}</consultaxml></ConsultarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:Innertext</WebTagRetorno>

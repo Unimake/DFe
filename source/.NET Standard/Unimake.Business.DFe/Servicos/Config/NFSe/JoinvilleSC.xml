@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/RecepcionarLoteRpsRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfRps</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:RecepcionarLoteRps><XML>{xmlBodyScape}</XML></ser:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:RecepcionarLoteRpsResponse</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfRps</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:GerarNfse><XML>{xmlBodyScape}</XML></ser:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:GerarNfseResponse</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/CancelarNfseRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:CancelarNfse><XML>{xmlBodyScape}</XML></ser:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:CancelarNfseResponse</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarLoteRpsRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarLoteRps><XML>{xmlBodyScape}</XML></ser:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:ConsultarLoteRpsResponse</WebTagRetorno>
@@ -83,11 +63,6 @@
 			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfsePorRpsRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarNfsePorRps><XML>{xmlBodyScape}</XML></ser:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:ConsultarNfsePorRpsResponse</WebTagRetorno>
@@ -102,11 +77,6 @@
 			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfseFaixaRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarNfseFaixa><XML>{xmlBodyScape}</XML></ser:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:ConsultarNfseFaixaResponse</WebTagRetorno>
@@ -121,11 +91,6 @@
 			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarSituacaoLoteRpsRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarSituacaoLoteRps><XML>{xmlBodyScape}</XML></ser:ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:ConsultarSituacaoLoteRpsResponse</WebTagRetorno>

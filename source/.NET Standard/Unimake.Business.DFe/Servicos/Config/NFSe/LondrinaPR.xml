@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<GerarNfse versao="1.03">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://iss.londrina.pr.gov.br/ws/v1_03/sigiss_ws.php</WebEnderecoProducao>
 			<WebActionHomologacao>http://iss.londrina.pr.gov.br/ws/v1_03#GerarNota</WebActionHomologacao>
 			<WebActionProducao>http://iss.londrina.pr.gov.br/ws/v1_03#GerarNota</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://iss.londrina.pr.gov.br/ws/v1_03"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -27,11 +22,6 @@
 			<WebEnderecoProducao>https://iss.londrina.pr.gov.br/ws/v1_03/sigiss_ws.php</WebEnderecoProducao>
 			<WebActionHomologacao>http://iss.londrina.pr.gov.br/ws/v1_03#CancelarNota</WebActionHomologacao>
 			<WebActionProducao>http://iss.londrina.pr.gov.br/ws/v1_03#CancelarNota</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://iss.londrina.pr.gov.br/ws/v1_03"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -47,11 +37,6 @@
 			<WebEnderecoProducao>https://iss.londrina.pr.gov.br/ws/v1_03/sigiss_ws.php</WebEnderecoProducao>
 			<WebActionHomologacao>http://iss.londrina.pr.gov.br/ws/v1_03#ConsultarRpsServicoPrestado</WebActionHomologacao>
 			<WebActionProducao>http://iss.londrina.pr.gov.br/ws/v1_03#ConsultarRpsServicoPrestado</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://iss.londrina.pr.gov.br/ws/v1_03"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -67,11 +52,6 @@
 			<WebEnderecoProducao>https://iss.londrina.pr.gov.br/ws/v1_03/sigiss_ws.php</WebEnderecoProducao>
 			<WebActionHomologacao>http://iss.londrina.pr.gov.br/ws/v1_03#ConsultarNfseServicoPrestado</WebActionHomologacao>
 			<WebActionProducao>http://iss.londrina.pr.gov.br/ws/v1_03#ConsultarNfseServicoPrestado</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://iss.londrina.pr.gov.br/ws/v1_03"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>

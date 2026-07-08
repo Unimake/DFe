@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<GerarNfse versao="3.00">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl#GerarNota</WebActionHomologacao>
 			<WebActionProducao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl#GerarNota</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl#CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl#CancelarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl#ConsultarNotaValida</WebActionHomologacao>
 			<WebActionProducao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl#ConsultarNotaValida</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl#ConsultarNotaPrestador</WebActionHomologacao>
 			<WebActionProducao>https://tremembe.sigiss.com.br/tremembe/ws/sigiss_ws.php?wsdl#ConsultarNotaPrestador</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>

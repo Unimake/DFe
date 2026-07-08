@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<EnviarLoteNotas versao="1.00">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://sapucaia.infisc.com.br/portal/Servicos</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>envioLote</TagAssinatura>
-			<TagAtributoID>NFS-e</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:enviarLoteNotas><xml>{xmlBody}</xml></ws:enviarLoteNotas></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://sapucaia.infisc.com.br/portal/Servicos</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedCancelaNFSe</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:cancelarNotaFiscal><xml>{xmlBody}</xml></ws:cancelarNotaFiscal></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>https://sapucaia.infisc.com.br/portal/Servicos</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedConsultaTrans</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:consultarNotaFiscal><xml>{xmlBody}</xml></ws:consultarNotaFiscal></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>https://sapucaia.infisc.com.br/portal/Servicos</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedidoStatusLote</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:obterCriticaLote><xml>{xmlBody}</xml></ws:obterCriticaLote></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
@@ -83,11 +63,6 @@
 			<WebEnderecoProducao>https://sapucaia.infisc.com.br/portal/Servicos</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedidoNFSe</TagAssinatura>
-			<TagAtributoID>pedidoNFSe</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:obterNotaFiscalXml><xml>{xmlBody}</xml></ws:obterNotaFiscalXml></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
@@ -102,11 +77,6 @@
 			<WebEnderecoProducao>https://sapucaia.infisc.com.br/portal/Servicos?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedidoNFSePDF</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:obterNotasEmPDF><xml>{xmlBodyScapeRetorno}</xml></ws:obterNotasEmPDF></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ws:obterNotasEmPDFResponse</WebTagRetorno>
@@ -121,11 +91,6 @@
 			<WebEnderecoProducao>https://sapucaia.infisc.com.br/portal/Servicos?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:inutilizacao><xml>{xmlBodyScapeRetorno}</xml></ws:inutilizacao></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>env:Body</WebTagRetorno>
@@ -140,10 +105,7 @@
 			<RequestURIHomologacao>https://sefin.sapucaiadosul-homol.infisc.com.br/sefinnacional/nfse</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
-			<TagAssinatura>DPS</TagAssinatura>
-			<TagAtributoID>infDPS</TagAtributoID>
 			<WebSoapString></WebSoapString>
-			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
@@ -158,8 +120,6 @@
 			<RequestURIHomologacao>https://sefin.sapucaiadosul-homol.infisc.com.br/sefinnacional/nfse/{Chave}/eventos</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
-			<TagAssinatura>pedRegEvento</TagAssinatura>
-			<TagAtributoID>infPedReg</TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
@@ -174,8 +134,6 @@
 			<RequestURIHomologacao>https://sefin.sapucaiadosul-homol.infisc.com.br/sefinnacional/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>

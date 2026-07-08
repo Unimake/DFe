@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>LoteRps</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.issfortaleza.com.br"><soapenv:Header/><soapenv:Body><prod:RecepcionarLoteRpsV4><Cabecalho>&lt;ns2:cabecalho versao="4" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v04.xsd"&gt;&lt;versaoDados&gt;4&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><EnviarLoteRpsEnvio>{xmlBodyScape}</EnviarLoteRpsEnvio></prod:RecepcionarLoteRpsV4></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>soap:Body</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>CancelarNfseEnvio</TagAssinatura>
-			<TagAtributoID>NumeroNfse</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfse xmlns="http://producao.issfortaleza.com.br"><CancelarNfseEnvio xmlns="">{xmlBodyScape}</CancelarNfseEnvio></CancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>soap:Body</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>Protocolo</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsV3 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarLoteRpsEnvio xmlns="">{xmlBodyScape}</ConsultarLoteRpsEnvio></ConsultarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>soap:Body</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsV4 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="4" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v04.xsd"&gt;&lt;versaoDados&gt;4&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarNfseRpsEnvio xmlns="">{xmlBodyScape}</ConsultarNfseRpsEnvio></ConsultarNfsePorRpsV4></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>soap:Body</WebTagRetorno>
@@ -83,11 +63,6 @@
 			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseV4 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="4" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v04.xsd"&gt;&lt;versaoDados&gt;4&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarNfseEnvio xmlns="">{xmlBodyScape}</ConsultarNfseEnvio></ConsultarNfseV4></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>soap:Body</WebTagRetorno>
@@ -102,11 +77,6 @@
 			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>Protocolo</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsV4 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="4" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v04.xsd"&gt;&lt;versaoDados&gt;4&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarLoteRpsEnvio xmlns="">{xmlBodyScape}</ConsultarLoteRpsEnvio></ConsultarLoteRpsV4></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>soap:Body</WebTagRetorno>

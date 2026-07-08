@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://nfse.campobom.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>envioLote</TagAssinatura>
-			<TagAtributoID>NFS-e</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><enviarLoteNotasRequest>{xmlBodyScapeRetorno}</enviarLoteNotasRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://nfse.campobom.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedCancelaNFSe</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><cancelarNotaFiscalRequest>{xmlBodyScapeRetorno}</cancelarNotaFiscalRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>https://nfse.campobom.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedConsultaTrans</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><consultarNotaFiscalRequest>{xmlBodyScapeRetorno}</consultarNotaFiscalRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>https://nfse.campobom.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedidoStatusLote</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterCriticaLoteRequest>{xmlBodyScapeRetorno}</obterCriticaLoteRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -83,11 +63,6 @@
 			<WebEnderecoProducao>https://nfse.campobom.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedidoNFSe</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterNotaFiscalXmlRequest>{xmlBodyScapeRetorno}</obterNotaFiscalXmlRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>obterNotaFiscalXmlResponse</WebTagRetorno>
@@ -102,11 +77,6 @@
 			<WebEnderecoProducao>https://nfse.campobom.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedidoNFSePDF</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterNotasEmPDFRequest>{xmlBodyScapeRetorno}</obterNotasEmPDFRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>obterNotasEmPDFResponse</WebTagRetorno>
@@ -121,11 +91,6 @@
 			<WebEnderecoProducao>https://nfse.campobom.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>solicitacaoInutilizacao</TagAssinatura>
-			<TagAtributoID>numeroSolicitacao</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><inutilizacaoRequest>{xmlBodyScapeRetorno}</inutilizacaoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>inutilizacaoResponse</WebTagRetorno>
@@ -140,10 +105,7 @@
 			<RequestURIHomologacao>https://sefin.campobom-gif4homol.infisc.com.br/sefinnacional/nfse</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
-			<TagAssinatura>DPS</TagAssinatura>
-			<TagAtributoID>infDPS</TagAtributoID>
 			<WebSoapString></WebSoapString>
-			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
@@ -158,8 +120,6 @@
 			<RequestURIHomologacao>https://sefin.campobom-gif4homol.infisc.com.br/sefinnacional/nfse/{Chave}/eventos</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
-			<TagAssinatura>pedRegEvento</TagAssinatura>
-			<TagAtributoID>infPedReg</TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
@@ -174,8 +134,6 @@
 			<RequestURIHomologacao>https://sefin.campobom-gif4homol.infisc.com.br/sefinnacional/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>

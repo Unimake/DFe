@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<GerarNfse versao="1.01">
@@ -7,10 +7,7 @@
 			<RequestURIHomologacao>https://reformatributaria.cidade360.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>loteXmlGZipB64:[]</WebActionProducao>
-			<TagAssinatura>DPS</TagAssinatura>
-			<TagAtributoID>infDPS</TagAtributoID>
 			<WebSoapString></WebSoapString>
-			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>xmlGZipB64</WebTagRetorno>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
@@ -25,8 +22,6 @@
 			<RequestURIHomologacao>https://reformatributaria.cidade360.cloud/NFSe.Api.Teste/NotaNacional/ConsultarNFSe/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>xmlGZipB64</WebTagRetorno>
@@ -41,8 +36,6 @@
 			<RequestURIHomologacao>https://reformatributaria.cidade360.cloud/NFSe.Api.Teste/NotaNacional/ConsultarDPS/{documento}/{serie}/{numero}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>xmlGZipB64</WebTagRetorno>
@@ -57,8 +50,6 @@
 			<RequestURIHomologacao>https://reformatributaria.cidade360.cloud/NFSe.Api.Teste/NotaNacional/EnviarSincrono</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>loteXmlGZipB64:[]</WebActionProducao>
-			<TagAssinatura>pedRegEvento</TagAssinatura>
-			<TagAtributoID>infPedReg</TagAtributoID>
 			<WebSoapString/>
 			<SchemaArquivo/>
 			<WebContentType>application/json</WebContentType>

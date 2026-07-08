@@ -7,11 +7,6 @@
       <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-	  <TagAssinatura>Rps</TagAssinatura>
-	  <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-	  <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-	  <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
 	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRps>{xmlBody}</nfse:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>ns4:RecepcionarLoteRpsResponse</WebTagRetorno>
@@ -26,11 +21,6 @@
       <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>Pedido</TagAssinatura>
-      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:CancelarNfse>{xmlBody}</nfse:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 	  <WebTagRetorno>ns4:CancelarNfseResponse</WebTagRetorno>
@@ -45,11 +35,6 @@
       <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-	  <TagAssinatura>Rps</TagAssinatura>
-	  <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-	  <TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
-	  <TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
 	  <TagExtraAssinatura>Pedido</TagExtraAssinatura>
 	  <TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -66,11 +51,6 @@
       <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
-      <TagAtributoID>Prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteRps>{xmlBody}</nfse:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>ns4:ConsultarLoteRpsResponse</WebTagRetorno>
@@ -85,11 +65,6 @@
       <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
-      <TagAtributoID>Prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRps>{xmlBody}</nfse:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>ns4:ConsultarNfsePorRpsResponse</WebTagRetorno>
@@ -104,11 +79,6 @@
       <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
-      <TagAtributoID>Prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestado>{xmlBody}</nfse:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>ns4:ConsultarNfseServicoPrestadoResponse</WebTagRetorno>
@@ -123,11 +93,6 @@
       <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
-      <TagAtributoID>Prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomado>{xmlBody}</nfse:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>ns4:ConsultarNfseServicoTomadoResponse</WebTagRetorno>
@@ -142,11 +107,6 @@
       <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
-      <TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
-      <TagAtributoID>Prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseFaixa>{xmlBody}</nfse:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>ns4:ConsultarNfseFaixaResponse</WebTagRetorno>
@@ -161,11 +121,6 @@
 			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>LoteRps</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 		  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></RecepcionarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
 		  <WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -180,11 +135,6 @@
 			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>CancelarNfseEnvio</TagAssinatura>
-			<TagAtributoID>Pedido</TagAtributoID>
-			<TagLoteAssinatura>Pedido</TagLoteAssinatura>
-			<TagLoteAtributoID>InfPedidoCancelamento</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></CancelarNfseV3></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -199,11 +149,6 @@
 			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>Protocolo</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></ConsultarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -218,11 +163,6 @@
 			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></ConsultarNfsePorRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -237,11 +177,6 @@
 			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></ConsultarNfseV3></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -256,11 +191,6 @@
 			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>Protocolo</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRpsV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></ConsultarSituacaoLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
