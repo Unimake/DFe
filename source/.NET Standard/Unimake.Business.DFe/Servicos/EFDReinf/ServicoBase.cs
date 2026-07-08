@@ -107,17 +107,6 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             }
         }
 
-        /// <summary>
-        /// Atualizar o conteúdo HTTP depois da validação/assinatura do XML.
-        /// </summary>
-        protected virtual void AtualizarHttpContentAposValidacao()
-        {
-            if (Configuracoes.RequestURI != null && !string.Equals(Configuracoes.MetodoAPI, "get", StringComparison.OrdinalIgnoreCase))
-            {
-                Configuracoes.HttpContent = CriarHttpContentPadrao();
-            }
-        }
-
         #endregion Protected Methods
 
         #region Public Methods
@@ -133,8 +122,6 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             AjustarXMLAposAssinado();
 
             XmlValidar();
-
-            AtualizarHttpContentAposValidacao();
 
             base.Executar();
         }
