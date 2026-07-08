@@ -28,14 +28,14 @@
 				<Rps>
 					<IdentificacaoRps>
 						<Numero>0</Numero>
-						<Serie>Seri1</Serie>
+						<Serie>1234</Serie>
 						<Tipo>1</Tipo>
 					</IdentificacaoRps>
 					<DataEmissao>1900-01-01</DataEmissao>
 					<Status>1</Status>
 					<RpsSubstituido>
 						<Numero>0</Numero>
-						<Serie>Seri1</Serie>
+						<Serie>1324</Serie>
 						<Tipo>1</Tipo>
 					</RpsSubstituido>
 				</Rps>
@@ -175,16 +175,6 @@
 					</Contato>
 					<InscricaoEstadual>InscricaoEstadual1</InscricaoEstadual>
 				</Tomador>
-				<Intermediario>
-					<IdentificacaoIntermediario>
-						<CpfCnpj>
-							<Cpf>12345678901</Cpf>
-						</CpfCnpj>
-						<InscricaoMunicipal>Inscricao1</InscricaoMunicipal>
-					</IdentificacaoIntermediario>
-					<RazaoSocial>RazaoSocial1</RazaoSocial>
-					<CodigoMunicipio>1</CodigoMunicipio>
-				</Intermediario>
 				<ConstrucaoCivil>
 					<CodigoObra>CodigoObra1</CodigoObra>
 					<NumeroAlvaraConstrucao>0</NumeroAlvaraConstrucao>
