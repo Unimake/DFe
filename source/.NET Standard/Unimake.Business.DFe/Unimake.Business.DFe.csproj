@@ -421,7 +421,6 @@
 		<None Remove="Servicos\Config\NFSe\AraucariaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\ArcosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AriquemesRO.xml" />
-		<None Remove="Servicos\Config\NFSe\ArroioDoMeioRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AssisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AssuRN.xml" />
 		<None Remove="Servicos\Config\NFSe\AstorgaPR.xml" />
@@ -1784,7 +1783,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AndradasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AngraDosReisRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArcosMG.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\ArroioDoMeioRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AstorgaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BageRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarbacenaMG.xml" />
@@ -1983,7 +1981,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaboaoDaSerraSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaiobeirasMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TangaraDaSerraMT.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\TapejaraRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeixeiraDeFreitasBA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeresopolisRJ.xml" />
