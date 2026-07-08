@@ -173,7 +173,7 @@ namespace Unimake.Business.DFe
         private static XmlDocument CarregarConfigValidacao()
         {
             var assembly = typeof(ValidarEstruturaXML).Assembly;
-            var resourceName = "Unimake.Business.DFe.Servicos.Config.ValidacaoConfig.xml";
+            var resourceName = "Unimake.Business.DFe.Xml.Validar.ValidarConfig.xml";
 
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             {
@@ -1258,7 +1258,7 @@ namespace Unimake.Business.DFe
 
             foreach (XmlNode servico in servicosNFSe)
             {
-                // Nodes específicos devem permanecer antes dos genéricos no ValidacaoConfig.xml.
+                // Nodes específicos devem permanecer antes dos genéricos no ValidarConfig.xml.
                 var identificador = servico.Attributes["tagIdentificadora"]?.Value?.Split(':').Last();
 
                 if (string.IsNullOrWhiteSpace(identificador))

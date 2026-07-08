@@ -1627,7 +1627,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
-		<EmbeddedResource Include="Servicos\Config\ValidacaoConfig.xml" />
+		<EmbeddedResource Include="Xml\Validar\ValidarConfig.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
