@@ -340,6 +340,19 @@ namespace Unimake.DFe.Test.NFSe
                            mensagem.Contains("Chave de acesso") &&
                            mensagem.Contains("encontrada");
 
+                // Alguns municípios do padrão FIORILLI podem retornar erro quando o certificado digital não é autorizado.
+                // Nesses casos, o retorno vem como texto/log de erro, ...máquina de destino as recusou ativamente.
+                case PadraoNFSe.FIORILLI:
+                    return AmbienteEsperado(servico, TipoAmbiente.Producao) &&
+                           mensagem.Contains("máquina de destino as recusou ativamente");
+
+                // Alguns municípios do padrão QUASAR retornam erro em ambiente de homologação.
+                // Nesses casos, o retorno vem como texto/log de erro, ...Web server received an invalid response...
+                case PadraoNFSe.PORTAL_FACIL:
+                    return AmbienteEsperado(servico, TipoAmbiente.Homologacao) &&
+                           ServicoEsperado(servico, Servico.NFSeConsultarLoteRps) &&
+                           mensagem.Contains("Web server received an invalid response");
+
                 default:
                     return false;
             }
