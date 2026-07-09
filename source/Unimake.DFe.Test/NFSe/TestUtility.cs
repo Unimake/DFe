@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.CIOT;
 using Xunit;
 
 namespace Unimake.DFe.Test.NFSe
@@ -343,16 +344,20 @@ namespace Unimake.DFe.Test.NFSe
                            mensagem.Contains("encontrada"));
 
                 // Alguns municípios do padrão FIORILLI podem retornar erro quando o certificado digital não é autorizado.
-                // Nesses casos, o retorno vem como texto/log de erro, ...máquina de destino as recusou ativamente.
                 case PadraoNFSe.FIORILLI:
                     return AmbienteEsperado(servico, TipoAmbiente.Producao) &&
-                           mensagem.Contains("máquina de destino as recusou ativamente");
+                           (mensagem.Contains("máquina de destino as recusou ativamente") ||
+                            mensagem.Contains("host conectado não respondeu.") ||
+                            mensagem.Contains("Nenhuma conexão pôde ser feita"));
 
                 // Alguns municípios do padrão QUASAR retornam erro em ambiente de homologação.
                 // Nesses casos, o retorno vem como texto/log de erro, ...Web server received an invalid response...
                 case PadraoNFSe.PORTAL_FACIL:
                     return AmbienteEsperado(servico, TipoAmbiente.Homologacao) &&
-                           ServicoEsperado(servico, Servico.NFSeConsultarLoteRps) &&
+                           ServicoEsperado(servico, 
+                           Servico.NFSeConsultarLoteRps,
+                           Servico.NFSeConsultarNfsePorRps,
+                           Servico.NFSeGerarNfse) &&
                            mensagem.Contains("Web server received an invalid response");
 
                 // Alguns municípios do padrão MODERNIZACAO_PUBLICA retornam erro no serviço de consulta.
@@ -361,6 +366,14 @@ namespace Unimake.DFe.Test.NFSe
                     return AmbienteEsperado(servico, TipoAmbiente.Producao) &&
                            ServicoEsperado(servico, Servico.NFSeConsultarNfseServicoTomado) &&
                            mensagem.Contains("<faultstring>java.lang.NullPointerException</faultstring>");
+
+                //Os serviços de TECNOSISTEMAS podem retornar erro 500 nos serviços de Cancelar e Recepcionar lote Síncriono.
+                //Nesses casos, o retorno vem como texto/log de erro, ...Internal Server Error...
+                case PadraoNFSe.TECNOSISTEMAS:
+                    return AmbienteEsperado(servico, TipoAmbiente.Homologacao) &&
+                           ServicoEsperado(servico, Servico.NFSeCancelarNfse, Servico.NFSeRecepcionarLoteRpsSincrono) &&
+                           mensagem.Contains("Internal Server Error");
+
                 default:
                     return false;
             }
