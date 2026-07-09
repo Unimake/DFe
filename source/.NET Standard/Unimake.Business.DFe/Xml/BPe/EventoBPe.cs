@@ -59,7 +59,7 @@ namespace Unimake.Business.DFe.Xml.BPe
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string Id
         {
-            get => "ID" + ((int)TpEvento).ToString() + ChBPe + NSeqEvento.ToString("000");
+            get => "ID" + ((int)TpEvento).ToString() + ChBPe + NSeqEvento.ToString("00");
             set => _ = value;
         }
 
