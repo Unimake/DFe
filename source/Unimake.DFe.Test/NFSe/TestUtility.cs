@@ -328,13 +328,15 @@ namespace Unimake.DFe.Test.NFSe
                             mensagem.Contains("(404) Not Found"));
 
                 // Alguns municípios do padrão SMARAPD retornam erro interno no serviço de cancelamento.
-                // Nesses casos, o retorno vem como texto/log de erro, fora do XML esperado.
+                // Nesses casos, o retorno vem como texto/log de erro, ...Data at the root level is invalid...
+                // Alguns municípios do padrão SMARAPD retornam erro em serviços de lote.
+                // Nesses casos, o retorno vem como texto/log de erro, ...Data at the root level is invalid...
                 case PadraoNFSe.SMARAPD:
                     return AmbienteEsperado(servico, TipoAmbiente.Producao, TipoAmbiente.Homologacao) &&
                            ServicoEsperado(servico,
                                 Servico.NFSeCancelarNfse,
                                 Servico.NFSeConsultarNfseFaixa) &&
-                           mensagem.Contains("Erro original: Data at the root level is invalid. Line 1, position 1.");
+                           mensagem.Contains("Data at the root level is invalid. Line 1, position 1.");
 
                 // Alguns municípios do padrão GIF podem retornar erro quando a chave de acesso fictícia do teste não é encontrada.
                 case PadraoNFSe.GIF:
@@ -362,16 +364,24 @@ namespace Unimake.DFe.Test.NFSe
 
                 // Alguns municípios do padrão MODERNIZACAO_PUBLICA retornam erro no serviço de consulta.
                 // Nesses casos, o retorno vem como texto/log de erro, ...java.lang.NullPointerException...
+                // Alguns municípios do padrão MODERNIZACAO_PUBLICA retornam erro em ambeinte de produção.
+                // Nesses casos, o retorno vem como texto/log de erro, No server is available to handle this request.
                 case PadraoNFSe.MODERNIZACAO_PUBLICA:
                     return AmbienteEsperado(servico, TipoAmbiente.Producao) &&
-                           ServicoEsperado(servico, Servico.NFSeConsultarNfseServicoTomado) &&
+                           ServicoEsperado(servico, 
+                           Servico.NFSeConsultarNfseServicoTomado,
+                           Servico.NFSeConsultarNfsePorRps,
+                           Servico.NFSeRecepcionarLoteRps,
+                           Servico.NFSeConsultarNfseServicoPrestado) &&
                            mensagem.Contains("<faultstring>java.lang.NullPointerException</faultstring>");
 
                 //Os serviços de TECNOSISTEMAS podem retornar erro 500 nos serviços de Cancelar e Recepcionar lote Síncriono.
                 //Nesses casos, o retorno vem como texto/log de erro, ...Internal Server Error...
                 case PadraoNFSe.TECNOSISTEMAS:
                     return AmbienteEsperado(servico, TipoAmbiente.Homologacao) &&
-                           ServicoEsperado(servico, Servico.NFSeCancelarNfse, Servico.NFSeRecepcionarLoteRpsSincrono) &&
+                           ServicoEsperado(servico, 
+                           Servico.NFSeCancelarNfse, 
+                           Servico.NFSeRecepcionarLoteRpsSincrono) &&
                            mensagem.Contains("Internal Server Error");
 
                 default:
