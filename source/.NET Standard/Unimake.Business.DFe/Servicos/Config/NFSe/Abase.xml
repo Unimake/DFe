@@ -7,11 +7,6 @@
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/RecepcionarLoteRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/RecepcionarLoteRps</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura>Rps</TagAssinatura>
-      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-      <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
 	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRps xmlns="http://nfse.abase.com.br/NFSeWS"><nfseCabecMsg>&lt;cabecalho xmlns="http://nfse.abase.com.br/nfse.xsd" versao ="1.00"&gt;&lt;versaoDados&gt;1.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScapeEnvio}</nfseDadosMsg></RecepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
       <WebTagRetorno>soap:Body</WebTagRetorno>
@@ -26,11 +21,6 @@
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/CancelaNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/CancelaNfse</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura>Pedido</TagAssinatura>
-      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
 	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelaNfse xmlns="http://nfse.abase.com.br/NFSeWS"><nfseCabecMsg>&lt;cabecalho xmlns="http://nfse.abase.com.br/nfse.xsd" versao ="1.00"&gt;&lt;versaoDados&gt;1.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScapeEnvio}</nfseDadosMsg></CancelaNfse></soap:Body></soap:Envelope>]]></WebSoapString>
 	  <WebTagRetorno>soap:Body</WebTagRetorno>
@@ -45,11 +35,6 @@
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/ConsultaLoteRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/ConsultaLoteRps</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
 	  <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultaLoteRps xmlns="http://nfse.abase.com.br/NFSeWS"><nfseCabecMsg>&lt;cabecalho xmlns="http://nfse.abase.com.br/nfse.xsd" versao ="1.00"&gt;&lt;versaoDados&gt;1.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScapeEnvio}</nfseDadosMsg></ConsultaLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
       <WebTagRetorno>soap:Body</WebTagRetorno>
@@ -64,11 +49,6 @@
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/ConsultaNfseRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/ConsultaNfseRps</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
 	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultaNfseRps xmlns="http://nfse.abase.com.br/NFSeWS"><nfseCabecMsg>&lt;cabecalho xmlns="http://nfse.abase.com.br/nfse.xsd" versao ="1.00"&gt;&lt;versaoDados&gt;1.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></ConsultaNfseRps></soap:Body></soap:Envelope>]]></WebSoapString>
 	  <WebTagRetorno>ConsultaNfseRpsResponse</WebTagRetorno>

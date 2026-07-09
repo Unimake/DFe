@@ -295,7 +295,7 @@ namespace Unimake.DFe.Test.BPe
                     NBP = 1,
                     CBP = "00000010",
                     Modal = ModalidadeTransporteBPe.Rodoviario,
-                    DhEmi = DateTimeOffset.Parse("2026-07-06T15:00:00-03:00"),
+                    DhEmi = DateTime.Now,
                     DCompet = DateTime.Parse("2026-07-01"),
                     TpEmis = TipoEmissaoBPe.Normal,
                     VerProc = "1.0",

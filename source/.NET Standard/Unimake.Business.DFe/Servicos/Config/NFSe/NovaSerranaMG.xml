@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://abrasfnovaserrana.meumunicipio.online/ws/nfs</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/CancelarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testenovaserranaabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:CancelarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfnovaserrana.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:CancelarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -28,11 +23,6 @@
 			<WebEnderecoProducao>https://abrasfnovaserrana.meumunicipio.online/ws/nfs</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testenovaserranaabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:ConsultarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfnovaserrana.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:ConsultarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -49,11 +39,6 @@
 			<WebEnderecoProducao>https://abrasfnovaserrana.meumunicipio.online/ws/nfs</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testenovaserranaabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:ConsultarNfsePorRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfnovaserrana.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:ConsultarNfsePorRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -70,11 +55,6 @@
 			<WebEnderecoProducao>https://abrasfnovaserrana.meumunicipio.online/ws/nfs</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/GerarNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/GerarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testenovaserranaabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:GerarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfnovaserrana.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:GerarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -91,11 +71,6 @@
 			<WebEnderecoProducao>https://abrasfnovaserrana.meumunicipio.online/ws/nfs</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testenovaserranaabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:RecepcionarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfnovaserrana.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:RecepcionarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -112,11 +87,6 @@
 			<WebEnderecoProducao>https://abrasfnovaserrana.meumunicipio.online/ws/nfs</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testenovaserranaabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:RecepcionarLoteRpsSincronoRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:RecepcionarLoteRpsSincronoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfnovaserrana.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:RecepcionarLoteRpsSincronoRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:RecepcionarLoteRpsSincronoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -133,11 +103,6 @@
 			<WebEnderecoProducao>https://abrasfnovaserrana.meumunicipio.online/ws/nfs</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/SubstituirNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/SubstituirNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
 			<TagExtraAssinatura>Pedido</TagExtraAssinatura>
 			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>

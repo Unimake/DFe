@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<EnviarLoteNotas versao="1.00">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://nfse.farroupilha.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>envioLote</TagAssinatura>
-			<TagAtributoID>NFS-e</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><enviarLoteNotasRequest>{xmlBodyScapeRetorno}</enviarLoteNotasRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>enviarLoteNotasResponse</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://nfse.farroupilha.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedCancelaNFSe</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><cancelarNotaFiscalRequest>{xmlBodyScapeRetorno}</cancelarNotaFiscalRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>cancelarNotaFiscalResponse</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>https://nfse.farroupilha.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedConsultaTrans</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><consultarNotaFiscalRequest>{xmlBodyScapeRetorno}</consultarNotaFiscalRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>consultarNotaFiscalResponse</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>https://nfse.farroupilha.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedidoStatusLote</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterCriticaLoteRequest>{xmlBodyScapeRetorno}</obterCriticaLoteRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>obterCriticaLoteResponse</WebTagRetorno>
@@ -83,11 +63,6 @@
 			<WebEnderecoProducao>https://nfse.farroupilha.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedidoNFSe</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterNotaFiscalXmlRequest>{xmlBodyScapeRetorno}</obterNotaFiscalXmlRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>obterNotaFiscalXmlResponse</WebTagRetorno>
@@ -102,11 +77,6 @@
 			<WebEnderecoProducao>https://nfse.farroupilha.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedidoNFSePDF</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterNotasEmPDFRequest>{xmlBodyScapeRetorno}</obterNotasEmPDFRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>obterNotasEmPDFResponse</WebTagRetorno>
@@ -121,11 +91,6 @@
 			<WebEnderecoProducao>https://nfse.farroupilha.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>solicitacaoInutilizacao</TagAssinatura>
-			<TagAtributoID>solicitacaoInutilizacao</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><inutilizacaoRequest>{xmlBodyScapeRetorno}</inutilizacaoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>inutilizacaoResponse</WebTagRetorno>
@@ -140,11 +105,6 @@
 			<WebEnderecoProducao>https://nfse.farroupilha.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedidoLoteNFSe</TagAssinatura>
-			<TagAtributoID>serieNotaFiscal</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterLoteNotaFiscalRequest>{xmlBodyScapeRetorno}</obterLoteNotaFiscalRequest></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -159,11 +119,6 @@
 			<WebEnderecoProducao>https://nfse.farroupilha.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>pedidoNFSeTomada</TagAssinatura>
-			<TagAtributoID>CNPJ</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterNotaFiscalTomada>{xmlBodyScapeRetorno}</obterNotaFiscalTomada></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -178,11 +133,6 @@
 			<WebEnderecoProducao>https://nfse.farroupilha.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
-			<TagAtributoID>ConsultarNfseServicoPrestadoEnvio</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestadoRequest><nfse:nfseCabecMsg><nfse:cabecalho versao="1.00"><nfse:versaoDados>1.00</nfse:versaoDados></nfse:cabecalho></nfse:nfseCabecMsg><nfse:nfseDadosMsg>{xmlBody}</nfse:nfseDadosMsg></nfse:ConsultarNfseServicoPrestadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -197,10 +147,7 @@
 			<RequestURIHomologacao>https://sefin.farroupilha-homol.infisc.com.br/sefinnacional/nfse</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
-			<TagAssinatura>DPS</TagAssinatura>
-			<TagAtributoID>infDPS</TagAtributoID>
 			<WebSoapString></WebSoapString>
-			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
@@ -215,8 +162,6 @@
 			<RequestURIHomologacao>https://sefin.farroupilha-homol.infisc.com.br/sefinnacional/nfse/{Chave}/eventos</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
-			<TagAssinatura>pedRegEvento</TagAssinatura>
-			<TagAtributoID>infPedReg</TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
@@ -231,8 +176,6 @@
 			<RequestURIHomologacao>https://sefin.farroupilha-homol.infisc.com.br/sefinnacional/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
@@ -247,8 +190,6 @@
 			<RequestURIHomologacao>https://sefin.farroupilha-homol.infisc.com.br/sefinnacional/dps/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>chaveAcesso</WebTagRetorno>
@@ -262,8 +203,6 @@
 			<RequestURIHomologacao>https://sefin.farroupilha-homol.infisc.com.br/sefinnacional/nfse/pdf/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/pdf</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>

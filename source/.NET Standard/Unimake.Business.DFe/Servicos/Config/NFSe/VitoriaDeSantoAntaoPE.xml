@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="1.00">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://www.tinus.com.br/csp/VITORIA/WSNFSE.RecepcionarLoteRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao>http://www2.tinus.com.br/WSNFSE.RecepcionarLoteRps.RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://www.tinus.com.br/WSNFSE.RecepcionarLoteRps.RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfRps</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><tin:RecepcionarLoteRps><tin:Arg>{xmlBody}</tin:Arg></tin:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:www2="http://www2.tinus.com.br" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><www2:RecepcionarLoteRps><www2:Arg>{xmlBody}</www2:Arg></www2:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
@@ -27,11 +22,6 @@
 			<WebEnderecoProducao>https://www.tinus.com.br/csp/VITORIA/WSNFSE.ConsultarSituacaoLoteRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.tinus.com.br/WSNFSE.ConsultarSituacaoLoteRps.ConsultarSituacaoLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://www.tinus.com.br/WSNFSE.ConsultarSituacaoLoteRps.ConsultarSituacaoLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><tin:ConsultarSituacaoLoteRps><tin:Arg>{xmlBody}</tin:Arg></tin:ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:www2:="http://www2.tinus.com.br"><soapenv:Header/><soapenv:Body><www2:ConsultarSituacaoLoteRps><www2:Arg>{xmlBody}</www2:Arg></www2:ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
@@ -47,9 +37,6 @@
 			<WebEnderecoProducao>https://www.tinus.com.br/csp/VITORIA/WSNFSE.ConsultarLoteRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.tinus.com.br/WSNFSE.ConsultarLoteRps.ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://www.tinus.com.br/WSNFSE.ConsultarLoteRps.ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><tin:ConsultarLoteRps><tin:Arg>{xmlBody}</tin:Arg></tin:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:www2="http://www2.tinus.com.br"><soapenv:Header/><soapenv:Body><www2:ConsultarLoteRps><www2:Arg>{xmlBody}</www2:Arg></www2:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
@@ -65,11 +52,6 @@
 			<WebEnderecoProducao>https://www.tinus.com.br/csp/VITORIA/WSNFSE.ConsultarNfsePorRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.tinus.com.br/WSNFSE.ConsultarNfsePorRps.ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://www.tinus.com.br/WSNFSE.ConsultarNfsePorRps.ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><tin:ConsultarNfsePorRps><tin:Arg>{xmlBody}</tin:Arg></tin:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:www2="http://www2.tinus.com.br"><soapenv:Header/><soapenv:Body><www2:ConsultarNfsePorRps><www2:Arg>{xmlBody}</www2:Arg></www2:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
@@ -85,11 +67,6 @@
 			<WebEnderecoProducao>https://www.tinus.com.br/csp/VITORIA/WSNFSE.ConsultarNfse.CLS</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.tinus.com.br/WSNFSE.ConsultarNfse.ConsultarNfse</WebActionHomologacao>
 			<WebActionProducao>http://www.tinus.com.br/WSNFSE.ConsultarNfse.ConsultarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><tin:ConsultarNfse><tin:Arg>{xmlBody}</tin:Arg></tin:ConsultarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:www2="http://www2.tinus.com.br"><soapenv:Header/><soapenv:Body><www2:ConsultarNfse><www2:Arg>{xmlBody}</www2:Arg></www2:ConsultarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
@@ -105,11 +82,6 @@
 			<WebEnderecoProducao>https://www.tinus.com.br/csp/VITORIA/WSNFSE.CancelarNfse.CLS</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.tinus.com.br/WSNFSE.CancelarNfse.CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://www.tinus.com.br/WSNFSE.CancelarNfse.CancelarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml</WebContentType>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><tin:CancelarNfse><tin:Arg>{xmlBody}</tin:Arg></tin:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:www2="http://www2.tinus.com.br"><soapenv:Header/><soapenv:Body><www2:CancelarNfse><www2:Arg>{xmlBody}</www2:Arg></www2:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="1.00">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
 			<WebActionHomologacao>urn:loterpswsdl#tm_lote_rps_service.testarLoteRPS</WebActionHomologacao>
 			<WebActionProducao>urn:loterpswsdl#tm_lote_rps_service.importarLoteRPS</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:loterpswsdl"><soapenv:Header/><soapenv:Body><urn:tm_lote_rps_service.importarLoteRPS soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><xml xsi:type="xsd:string">{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml><codMunicipio xsi:type="xsd:string">{codMunicipio}</codMunicipio><cnpjPrestador xsi:type="xsd:string">{cnpjPrestador}</cnpjPrestador><hashValidador xsi:type="xsd:string">{hashValidador}</hashValidador></urn:tm_lote_rps_service.importarLoteRPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -29,11 +24,6 @@
 			<WebEnderecoProducao>https://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
 			<WebActionHomologacao>urn:loterpswsdl#tm_lote_rps_service.consultarRPS</WebActionHomologacao>
 			<WebActionProducao>urn:loterpswsdl#tm_lote_rps_service.consultarRPS</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:loterpswsdl"><soapenv:Header/><soapenv:Body><urn:tm_lote_rps_service.consultarRPS soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><numeroRPS xsi:type="xsd:string">{numeroRPS}</numeroRPS><codMunicipio xsi:type="xsd:string">{codMunicipio}</codMunicipio><cnpjPrestador xsi:type="xsd:string">{cnpjPrestador}</cnpjPrestador><hashValidador xsi:type="xsd:string">{hashValidador}</hashValidador></urn:tm_lote_rps_service.consultarRPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -49,11 +39,6 @@
 			<WebEnderecoProducao>https://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
 			<WebActionHomologacao>urn:loterpswsdl#tm_lote_rps_service.consultarNFSE</WebActionHomologacao>
 			<WebActionProducao>urn:loterpswsdl#tm_lote_rps_service.consultarNFSE</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:loterpswsdl"><soapenv:Header/><soapenv:Body><urn:tm_lote_rps_service.consultarNFSE soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><numeroNFSE xsi:type="xsd:string">{numeroNFSE}</numeroNFSE><codMunicipio xsi:type="xsd:string">{codMunicipio}</codMunicipio><cnpjPrestador xsi:type="xsd:string">{cnpjPrestador}</cnpjPrestador><hashValidador xsi:type="xsd:string">{hashValidador}</hashValidador></urn:tm_lote_rps_service.consultarNFSE></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -69,11 +54,6 @@
 			<WebEnderecoProducao>https://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
 			<WebActionHomologacao>urn:loterpswsdl#tm_lote_rps_service.consultarLoteRPS</WebActionHomologacao>
 			<WebActionProducao>urn:loterpswsdl#tm_lote_rps_service.consultarLoteRPS</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:loterpswsdl"><soapenv:Header/><soapenv:Body><urn:tm_lote_rps_service.consultarLoteRPS soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><protocolo xsi:type="xsd:string">{protocolo}</protocolo><codMunicipio xsi:type="xsd:string">{codMunicipio}</codMunicipio><cnpjPrestador xsi:type="xsd:string">{cnpjPrestador}</cnpjPrestador><hashValidador xsi:type="xsd:string">{hashValidador}</hashValidador></urn:tm_lote_rps_service.consultarLoteRPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -89,11 +69,6 @@
 			<WebEnderecoProducao>https://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
 			<WebActionHomologacao>urn:loterpswsdl#tm_lote_rps_service.cancelarNFSE</WebActionHomologacao>
 			<WebActionProducao>urn:loterpswsdl#tm_lote_rps_service.cancelarNFSE</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:loterpswsdl"><soapenv:Header/><soapenv:Body><urn:tm_lote_rps_service.cancelarNFSE soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><numeroNFSE xsi:type="xsd:string">{numeroNFSE}</numeroNFSE><codMunicipio xsi:type="xsd:string">{codMunicipio}</codMunicipio><cnpjPrestador xsi:type="xsd:string">{cnpjPrestador}</cnpjPrestador><hashValidador xsi:type="xsd:string">{hashValidador}</hashValidador></urn:tm_lote_rps_service.cancelarNFSE></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>

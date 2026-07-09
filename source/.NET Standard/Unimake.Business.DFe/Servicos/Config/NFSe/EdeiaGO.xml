@@ -7,8 +7,6 @@
 			<RequestURIHomologacao>https://api.centi.com.br/nfe/gerar/homologacao/go/edeia</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>GerarNfseResposta</WebTagRetorno>
@@ -22,8 +20,6 @@
 			<RequestURIHomologacao>https://api.centi.com.br/nfe/cancelar/homologacao/go/edeia</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno></WebTagRetorno>
@@ -37,8 +33,6 @@
 			<RequestURIHomologacao>https://api.centi.com.br/nfe/consultar/homologacao/rps/go/edeia</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>

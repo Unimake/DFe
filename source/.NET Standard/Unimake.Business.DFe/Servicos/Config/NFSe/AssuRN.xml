@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="3.00">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://nfse-assu.e-publica.net/assu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_nfse_v03xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfRps</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:RecepcionarLoteRps><XML>{xmlBodyScape}</XML></ser:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:RecepcionarLoteRpsResponse</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://nfse-assu.e-publica.net/assu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao/>
-			<SchemaArquivo>schema_nfse_v03.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfRps</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:GerarNfse><XML>{xmlBodyScape}</XML></ser:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:GerarNfseResponse</WebTagRetorno>
@@ -45,9 +35,6 @@
 			<WebEnderecoProducao>https://nfse-assu.e-publica.net/assu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_nfse_v03.xsd</SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura/>
 			<TagLoteAtributoID/>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -65,8 +52,6 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo/>
-			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura/>
 			<TagLoteAtributoID/>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -83,9 +68,6 @@
 			<WebEnderecoProducao>https://nfse-assu.e-publica.net/assu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_nfse_v03.xsd</SchemaArquivo>
-			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura/>
 			<TagLoteAtributoID/>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -103,8 +85,6 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo/>
-			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura/>
 			<TagLoteAtributoID/>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -122,8 +102,6 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo/>
-			<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura/>
 			<TagLoteAtributoID/>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>

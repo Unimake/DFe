@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <eventoBPe versao="1.00" xmlns="http://www.portalfiscal.inf.br/bpe">
-  <infEvento Id="ID11011735260712345678000123630010000000011000000010001">
+  <infEvento Id="ID1101173526071234567800012363001000000001100000001001">
     <cOrgao>35</cOrgao>
     <tpAmb>2</tpAmb>
     <CNPJ>12345678000123</CNPJ>

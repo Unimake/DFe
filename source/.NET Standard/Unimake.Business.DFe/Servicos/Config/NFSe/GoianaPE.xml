@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/goiana/WSNFSE.RecepcionarLoteRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfRps</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><RecepcionarLoteRps><Arg>{xmlBody}</Arg></RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/goiana/WSNFSE.ConsultarSituacaoLoteRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><ConsultarSituacaoLoteRps><Arg>{xmlBody}</Arg></ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -45,9 +35,6 @@
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/goiana/WSNFSE.ConsultarLoteRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><ConsultarLoteRps><Arg>{xmlBody}</Arg></ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -62,11 +49,6 @@
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/goiana/WSNFSE.ConsultarNfsePorRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><ConsultarNfsePorRps><Arg>{xmlBody}</Arg></ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -81,11 +63,6 @@
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/goiana/WSNFSE.ConsultarNfse.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:www2="http://www2.tinus.com.br"><soapenv:Header/><soapenv:Body><www2:ConsultarNfse><www2:Arg>{xmlBody}</www2:Arg></www2:ConsultarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><tin:ConsultarNfse><tin:Arg>{xmlBody}</tin:Arg></tin:ConsultarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -101,11 +78,6 @@
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/goiana/WSNFSE.CancelarNfse.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><CancelarNfse><Arg>{xmlBody}</Arg></CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>CancelarNfseResponse</WebTagRetorno>

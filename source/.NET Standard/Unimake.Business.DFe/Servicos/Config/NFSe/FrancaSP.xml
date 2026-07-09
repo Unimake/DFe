@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="2.04">
@@ -7,11 +7,6 @@
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/recepcionarLoteRpsRequest</WebActionProducao>
 			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/recepcionarLoteRpsRequest</WebActionHomologacao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:recepcionarLoteRps><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:recepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/recepcionarLoteRpsSincronoRequest</WebActionProducao>
 			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/recepcionarLoteRpsSincronoRequest</WebActionHomologacao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:recepcionarLoteRpsSincrono><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:recepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/gerarNfseRequest</WebActionProducao>
 			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/gerarNfseRequest</WebActionHomologacao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:gerarNfse><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:gerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/cancelarNfseRequest</WebActionProducao>
 			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/cancelarNfseRequest</WebActionHomologacao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:cancelarNfse><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:cancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -83,11 +63,6 @@
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/substituirNfseRequest</WebActionProducao>
 			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/substituirNfseRequest</WebActionHomologacao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura>Rps</TagLoteAssinatura>
-			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
 			<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
 			<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -104,11 +79,6 @@
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarLoteRpsRequest</WebActionProducao>
 			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/consultarLoteRpsRequest</WebActionHomologacao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarLoteRps><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -123,10 +93,6 @@
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarNfsePorRpsRequest</WebActionProducao>
 			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/consultarNfsePorRpsRequest</WebActionHomologacao>
-			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
-			<TagAtributoID>Pedido</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfsePorRps><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -141,11 +107,6 @@
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarNfseServicoPrestadoRequest</WebActionProducao>
 			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/consultarNfseServicoPrestadoRequest</WebActionHomologacao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfseServicoPrestado><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -172,11 +133,6 @@
 			<Descricao>Consulta NFSe por Faixa</Descricao>
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/Abrasf24?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarNfsePorFaixaRequest</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfsePorFaixa><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -191,11 +147,6 @@
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/NotaFiscalNacional?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>NFSe</TagAssinatura>
-			<TagAtributoID>infNFSe</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.sil.com/"><soapenv:Header/><soapenv:Body><web:NotaFiscalNacionalGerar><xml>{oCDATA}{xmlBody}{cCDATA}</xml></web:NotaFiscalNacionalGerar></soapenv:Body></soapenv:Envelope]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -210,11 +161,6 @@
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/NotaFiscalNacional?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>evento</TagAssinatura>
-			<TagAtributoID>infEvento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.sil.com/"><soapenv:Header/><soapenv:Body><web:NotaFiscalNacionalCancelar><xml>{oCDATA}{xmlBody}{cCDATA}</xml></web:NotaFiscalNacionalCancelar></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -229,11 +175,6 @@
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/NotaFiscalNacional?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>evento</TagAssinatura>
-			<TagAtributoID>infEvento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.sil.com/"><soapenv:Header/><soapenv:Body><web:NotaFiscalNacionalSubstituir><xml>{oCDATA}{xmlBody}{cCDATA}</xml></web:NotaFiscalNacionalSubstituir></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>

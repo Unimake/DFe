@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="1.00">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
 			<WebActionHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api/RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfRps</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>env:Body</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
 			<WebActionHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api/CancelarNfse</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>env:Body</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
 			<WebActionHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api/ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api/ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>env:Body</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
 			<WebActionHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>env:Body</WebTagRetorno>
@@ -83,11 +63,6 @@
 			<WebEnderecoProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
 			<WebActionHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api/ConsultarNfse</WebActionHomologacao>
 			<WebActionProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api/ConsultarNfse</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>env:Body</WebTagRetorno>

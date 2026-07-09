@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="1.00">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>ListaRps</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://hom.nfe.sdolivramento.com.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:RecepcionarLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://nfe.sdolivramento.com.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:RecepcionarLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -28,11 +23,6 @@
 			<WebEnderecoProducao>https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://hom.nfe.sdolivramento.com.br/webservice/index/producao?wsdl"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://nfe.sdolivramento.com.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -49,11 +39,6 @@
 			<WebEnderecoProducao>https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
@@ -72,11 +57,6 @@
 			<WebEnderecoProducao>https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://hom.nfe.sdolivramento.com.br/webservice/index/producao?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -93,11 +73,6 @@
 			<WebEnderecoProducao>https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
-			<TagAtributoID>IdentificacaoRps</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://hom.nfe.sdolivramento.com.br/webservice/index/producao?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>

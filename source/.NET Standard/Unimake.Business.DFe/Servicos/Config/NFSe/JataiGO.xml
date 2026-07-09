@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://jatai.sigep.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>p:Rps</TagAssinatura>
-			<TagAtributoID>p:InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integration.pm.bsit.com.br/"><soapenv:Header/><soapenv:Body><ws:gerarNfse><GerarNfseEnvio>{xmlBodyScape}</GerarNfseEnvio></ws:gerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>GerarNfseRetorno</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://jatai.sigep.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>p:Pedido</TagAssinatura>
-			<TagAtributoID>p:InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integration.pm.bsit.com.br/"><soapenv:Header/><soapenv:Body><ws:cancelarNfse><CancelarNfseEnvio>{xmlBodyScape}</CancelarNfseEnvio></ws:cancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>CancelarNfseResposta</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>https://jatai.sigep.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integration.pm.bsit.com.br/"><soapenv:Header/><soapenv:Body><ws:consultarLoteRps><ConsultarLoteRpsEnvio>{xmlBodyScape}</ConsultarLoteRpsEnvio></ws:consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ConsultarLoteRpsResposta</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>https://jatai.sigep.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType></WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integration.pm.bsit.com.br/"><soapenv:Header/><soapenv:Body><ws:consultarNfseRps><ConsultarNfseRpsEnvio>{xmlBodyScape}</ConsultarNfseRpsEnvio></ws:consultarNfseRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ConsultarNfseRpsResposta</WebTagRetorno>

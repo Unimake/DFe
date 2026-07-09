@@ -929,12 +929,6 @@
 		<ArqConfig>SaoBorjaRS.xml</ArqConfig>
 		<PadraoNFSe>GIF</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3170206">
-		<Nome>Uberlândia - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>UberlandiaMG.xml</ArqConfig>
-		<PadraoNFSe>DSF</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4303004">
 		<Nome>Cachoeira do Sul - RS</Nome>
 		<UF>RS</UF>
@@ -1276,12 +1270,6 @@
 		<UF>RS</UF>
 		<ArqConfig>SapirangaRS.xml</ArqConfig>
 		<PadraoNFSe>DBSELLER</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4208203">
-		<Nome>Itajaí - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>ItajaiSC.xml</ArqConfig>
-		<PadraoNFSe>PUBLICA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4210100">
 		<Nome>Mafra - SC</Nome>

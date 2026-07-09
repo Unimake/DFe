@@ -7,8 +7,6 @@
 			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/gerar</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -24,8 +22,6 @@
 			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/cancelar</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -41,8 +37,6 @@
 			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/Consultar?NumeroRps={Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -58,8 +52,6 @@
 			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/Consultar?NumeroNfse={Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -75,8 +67,6 @@
 			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/substituir</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -92,8 +82,6 @@
 			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/ultimorpsenviado</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>

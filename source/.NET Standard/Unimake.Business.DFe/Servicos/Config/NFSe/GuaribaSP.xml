@@ -7,11 +7,6 @@
       <WebEnderecoProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeenviapn.php</WebEnderecoProducao>
       <WebActionHomologacao>https://www.primaxonline.com.br/issqn/wservice/wsnfe_teste_homologacaopn.php/EnvNfe</WebActionHomologacao>
       <WebActionProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeenviapn.php/EnvNfe</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml; charset=UTF-8</WebContentType>
       <WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsn="https://www.primaxonline.com.br/issqn/wservice/wsnfeenvia.php"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
       <WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
@@ -28,11 +23,6 @@
       <WebEnderecoProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfecancelapn.php</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfecancelapn.php/CancelaNfe</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml; charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>ns1:CancelaNfeResponse</WebTagRetorno>
@@ -47,11 +37,6 @@
       <WebEnderecoProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeconsultapn.php</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeconsultapn.php/ConsultaNfe</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml; charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>ns1:ConsultaNfeResponse</WebTagRetorno>
@@ -66,11 +51,6 @@
       <WebEnderecoProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeconsultaxmlpn.php</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>https://www.primaxonline.com.br/issqn/wservice/wsnfeconsultaxmlpn.php/ConsultaNfe</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml; charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>ns1:ConsultaNfeResponse</WebTagRetorno>

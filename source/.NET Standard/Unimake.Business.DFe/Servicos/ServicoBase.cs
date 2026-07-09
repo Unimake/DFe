@@ -188,7 +188,6 @@ namespace Unimake.Business.DFe.Servicos
             }
         }
 
-
         /// <summary>
         /// Helper que delega a validação para a implementação centralizada ValidarEstruturaXML.
         /// Retorna o resultado sem lançar exceção — o chamador decide como tratar o resultado e quando chamar AjustarXMLAposAssinado().
@@ -199,9 +198,6 @@ namespace Unimake.Business.DFe.Servicos
             var resultado = validator.ValidarServico(ConteudoXML, Configuracoes);
             return resultado;
         }
-
-
-
 
 #if INTEROP
 

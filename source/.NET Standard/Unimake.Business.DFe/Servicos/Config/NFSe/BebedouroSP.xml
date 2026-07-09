@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="4.00">
@@ -6,11 +6,6 @@
 			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><ws_nfe.PROCESSARPS>{xmlBody}</ws_nfe.PROCESSARPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ws_nfe.PROCESSARPSResponse</WebTagRetorno>
@@ -25,11 +20,6 @@
 			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><ws_nfe.CANCELANOTAELETRONICA>{xmlBody}</ws_nfe.CANCELANOTAELETRONICA></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ws_nfe.CANCELANOTAELETRONICAResponse</WebTagRetorno>
@@ -44,11 +34,6 @@
 			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
@@ -65,11 +50,6 @@
 			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><ws_nfe.CONSULTANOTASPROTOCOLO>{xmlBody}</ws_nfe.CONSULTANOTASPROTOCOLO></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ws_nfe.CONSULTANOTASPROTOCOLOResponse</WebTagRetorno>
@@ -85,11 +65,6 @@
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><ws_nfe.CONSNFSERECEBIDAS>{xmlBody}</ws_nfe.CONSNFSERECEBIDAS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ws_nfe.CONSNFSERECEBIDASResponse</WebTagRetorno>
@@ -105,11 +80,6 @@
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.bebedouro/webservice/aws_nfe.aspx?wsdl</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><ws_nfe.CONSULTAPROTOCOLO>{xmlBody}</ws_nfe.CONSULTAPROTOCOLO></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ws_nfe.CONSULTAPROTOCOLOResponse</WebTagRetorno>

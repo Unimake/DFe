@@ -7,11 +7,6 @@
       <WebEnderecoProducao>https://pmbirigui01.smarapd.com.br/smartb/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsRequest</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:recepcionarLoteRps><xml><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></xml></nfse:recepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>S:Body</WebTagRetorno>
@@ -26,11 +21,6 @@
       <WebEnderecoProducao>https://pmbirigui01.smarapd.com.br/smartb/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsSincronoRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsSincronoRequest</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:recepcionarLoteRpsSincrono><xml><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></xml></nfse:recepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>S:Body</WebTagRetorno>
@@ -45,11 +35,6 @@
       <WebEnderecoProducao>https://pmbirigui01.smarapd.com.br/smartb/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/gerarNfseRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/gerarNfseRequest</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura>Rps</TagAssinatura>
-      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:gerarNfse><xml><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></xml></nfse:gerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>S:Body</WebTagRetorno>
@@ -64,11 +49,6 @@
       <WebEnderecoProducao>https://pmbirigui01.smarapd.com.br/smartb/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/cancelarNfseRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/cancelarNfseRequest</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura>Pedido</TagAssinatura>
-      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:cancelarNfse><xml><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></xml></nfse:cancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>S:Body</WebTagRetorno>
@@ -83,11 +63,6 @@
       <WebEnderecoProducao>https://pmbirigui01.smarapd.com.br/smartb/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarLoteRpsRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarLoteRpsRequest</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
-      <TagAtributoID>Prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarLoteRps><xml><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></xml></nfse:consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>S:Body</WebTagRetorno>
@@ -102,11 +77,6 @@
       <WebEnderecoProducao>https://pmbirigui01.smarapd.com.br/smartb/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
-      <TagAtributoID>Prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfsePorRps><xml><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></xml></nfse:consultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>S:Body</WebTagRetorno>
@@ -121,11 +91,6 @@
       <WebEnderecoProducao>https://pmbirigui01.smarapd.com.br/smartb/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoPrestadoRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoPrestadoRequest</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
-      <TagAtributoID>Prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=utf-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfseServicoPrestado><xml><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></xml></nfse:consultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>S:Body</WebTagRetorno>
@@ -140,11 +105,6 @@
       <WebEnderecoProducao>https://pmbirigui01.smarapd.com.br/smartb/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoTomadoRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoTomadoRequest</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
-      <TagAtributoID>Prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfseServicoTomado><xml><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></xml></nfse:consultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>S:Body</WebTagRetorno>

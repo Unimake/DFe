@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="2.02">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>http://webservice.pmspa.rj.gov.br:3080/nfe/webservices/NFEServices.jws?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:def="http://DefaultNamespace"><soapenv:Header/><soapenv:Body><def:RecepcionarLoteRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><Nfsecabecmsg xsi:type="xsd:string">&lt;cabecalho xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot; versao=&quot;2.02&quot;&gt; &lt;versaoDados&gt;2.02&lt;/versaoDados&gt; &lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></def:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:RecepcionarLoteRpsResponse</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>http://webservice.pmspa.rj.gov.br:3080/nfe/webservices/NFEServices.jws?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:def="http://DefaultNamespace"><soapenv:Header/><soapenv:Body><def:RecepcionarLoteRpsSincrono soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><Nfsecabecmsg xsi:type="xsd:string">&lt;cabecalho xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot; versao=&quot;2.02&quot;&gt; &lt;versaoDados&gt;2.02&lt;/versaoDados&gt; &lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></def:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:RecepcionarLoteRpsSincronoResponse</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>http://webservice.pmspa.rj.gov.br:3080/nfe/webservices/NFEServices.jws?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:def="http://DefaultNamespace"><soapenv:Header/><soapenv:Body><def:GerarNfse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><Nfsecabecmsg xsi:type="xsd:string">&lt;cabecalho xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot; versao=&quot;2.02&quot;&gt; &lt;versaoDados&gt;2.02&lt;/versaoDados&gt; &lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></def:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:GerarNfseResponse</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>http://webservice.pmspa.rj.gov.br:3080/nfe/webservices/NFEServices.jws?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:def="http://DefaultNamespace"><soapenv:Header/><soapenv:Body><def:CancelarNfse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><Nfsecabecmsg xsi:type="xsd:string">&lt;cabecalho xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot; versao=&quot;2.02&quot;&gt; &lt;versaoDados&gt;2.02&lt;/versaoDados&gt; &lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></def:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:CancelarNfseResponse</WebTagRetorno>
@@ -83,12 +63,6 @@
 			<WebEnderecoProducao>http://webservice.pmspa.rj.gov.br:3080/nfe/webservices/NFEServices.jws?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
 			<TagExtraAssinatura>Pedido</TagExtraAssinatura>
 			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
@@ -105,11 +79,6 @@
 			<WebEnderecoProducao>http://webservice.pmspa.rj.gov.br:3080/nfe/webservices/NFEServices.jws?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:def="http://DefaultNamespace"><soapenv:Header/><soapenv:Body><def:ConsultarLoteRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><Nfsecabecmsg xsi:type="xsd:string">&lt;cabecalho xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot; versao=&quot;2.02&quot;&gt; &lt;versaoDados&gt;2.02&lt;/versaoDados&gt; &lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg xsi:type="xsd:string">{xmlBodyScape}</Nfsedadosmsg></def:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:ConsultarLoteRpsResponse</WebTagRetorno>

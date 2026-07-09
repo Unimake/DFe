@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="1.00">
@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://srv2-isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionHomologacao>
 			<WebActionProducao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfRps</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns="https://www.e-governeapps2.com.br/"><soap:Header/><soap:Body><RecepcionarXml><metodo>RecepcionarLoteRps</metodo><xml>{xmlBodyScape}</xml></RecepcionarXml></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarXmlResult</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://srv2-isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionHomologacao>
 			<WebActionProducao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns="https://www.e-governeapps2.com.br/"><soap:Header/><soap:Body><RecepcionarXml><metodo>CancelarNfse</metodo><xml>{xmlBodyScape}</xml></RecepcionarXml></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarXmlResult</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>https://srv2-isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionHomologacao>
 			<WebActionProducao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns="https://www.e-governeapps2.com.br/"><soap:Header/><soap:Body><RecepcionarXml><metodo>ConsultarLoteRps</metodo><xml>{xmlBodyScape}</xml></RecepcionarXml></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarXmlResult</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>https://srv2-isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionHomologacao>
 			<WebActionProducao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns="https://www.e-governeapps2.com.br/"><soap:Header/><soap:Body><RecepcionarXml><metodo>ConsultarNfsePorRps</metodo><xml>{xmlBodyScape}</xml></RecepcionarXml></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarXmlResult</WebTagRetorno>
@@ -83,11 +63,6 @@
 			<WebEnderecoProducao>https://srv2-isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionHomologacao>
 			<WebActionProducao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns="https://www.e-governeapps2.com.br/"><soap:Header/><soap:Body><RecepcionarXml><metodo>ConsultarNfse</metodo><xml>{xmlBodyScape}</xml></RecepcionarXml></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarXmlResult</WebTagRetorno>
@@ -102,11 +77,6 @@
 			<WebEnderecoProducao>https://srv2-isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionHomologacao>
 			<WebActionProducao>https://www.e-governeapps2.com.br/RecepcionarXml</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns="https://www.e-governeapps2.com.br/"><soap:Header/><soap:Body><RecepcionarXml><metodo>ConsultarSituacaoLoteRps</metodo><xml>{xmlBodyScape}</xml></RecepcionarXml></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarXmlResult</WebTagRetorno>

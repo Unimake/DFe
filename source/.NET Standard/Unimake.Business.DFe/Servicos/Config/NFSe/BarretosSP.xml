@@ -7,10 +7,7 @@
 			<RequestURIHomologacao>https://barretos.prefeitura.rlz.com.br/nota/nacional/nfse</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
-			<TagAssinatura>DPS</TagAssinatura>
-			<TagAtributoID>infDPS</TagAtributoID>
 			<WebSoapString></WebSoapString>
-			<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
@@ -25,8 +22,6 @@
 			<RequestURIHomologacao>https://barretos.prefeitura.rlz.com.br/nota/nacional/nfse/{Chave}/eventos</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
-			<TagAssinatura>pedRegEvento</TagAssinatura>
-			<TagAtributoID>infPedReg</TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
@@ -41,8 +36,6 @@
 			<RequestURIHomologacao>https://barretos.prefeitura.rlz.com.br/nota/nacional/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
@@ -57,8 +50,6 @@
 			<RequestURIHomologacao>https://barretos.prefeitura.rlz.com.br/nota/nacional/dps/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>chaveAcesso</WebTagRetorno>

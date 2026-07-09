@@ -7,11 +7,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRps><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarLoteRpsResponse</WebTagRetorno>
@@ -26,11 +21,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsSincrono><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarLoteRpsSincronoResponse</WebTagRetorno>
@@ -45,11 +35,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:GerarNfse><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>GerarNfseResponse</WebTagRetorno>
@@ -64,11 +49,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:CancelarNfse><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>CancelarNfseResponse</WebTagRetorno>
@@ -83,11 +63,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura>Rps</TagLoteAssinatura>
-			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
 			<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
 			<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -104,11 +79,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteRps><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ConsultarLoteRpsResponse</WebTagRetorno>
@@ -123,11 +93,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
-			<TagAtributoID>Pedido</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRps><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ConsultarNfsePorRpsResponse</WebTagRetorno>
@@ -142,11 +107,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
-			<TagAtributoID>Pedido</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestado><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ConsultarNfseServicoPrestadoResponse</WebTagRetorno>
@@ -161,11 +121,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarRpsDisponivel</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarRpsDisponivelEnvio</TagAssinatura>
-			<TagAtributoID>Pedido</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarRpsDisponivel><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarRpsDisponivel></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
@@ -180,11 +135,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarUrlNfseEnvio</TagAssinatura>
-			<TagAtributoID>Pedido</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarUrlNfse><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarUrlNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body|s1:Body</WebTagRetorno>
@@ -199,11 +149,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
-			<TagAtributoID>Pedido</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomado><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ConsultarNfseServicoTomadoResponse</WebTagRetorno>
@@ -218,11 +163,6 @@
 			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/webservicenfse204/nfse.asmx?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
-			<TagAtributoID>Pedido</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorFaixa><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ConsultarNfsePorFaixaResponse</WebTagRetorno>
@@ -238,11 +178,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDps</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-			<TagAssinatura>DPS</TagAssinatura>
-			<TagAtributoID>infDPS</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteDpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteDps><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:RecepcionarLoteDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
@@ -257,11 +192,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDpsSincrono</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-			<TagAssinatura>DPS</TagAssinatura>
-			<TagAtributoID>infDPS</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteDpsSincronoEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteDpsSincrono><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:RecepcionarLoteDpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
@@ -276,11 +206,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/GerarNfse</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-			<TagAssinatura>DPS</TagAssinatura>
-			<TagAtributoID>infDPS</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:GerarNfse><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse"><versaoDados>1.01</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
@@ -295,11 +220,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-			<TagAssinatura>pedRegEvento</TagAssinatura>
-			<TagAtributoID>infPedReg</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:CancelarNfse><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
@@ -314,11 +234,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarLoteDps</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteDps><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarLoteDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
@@ -333,11 +248,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseDps</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseDps><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfseDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
@@ -352,11 +262,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseServicoPrestado</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestado><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
@@ -371,11 +276,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseServicoTomado</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomado><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
@@ -390,11 +290,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfsePorFaixa</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorFaixa><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
@@ -409,11 +304,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarDadosCadastrais</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarDadosCadastrais><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarDadosCadastrais></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ConsultarDadosCadastraisResponse</WebTagRetorno>
@@ -428,11 +318,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarDpsDisponivel</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarDpsDisponivel><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarDpsDisponivel></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body|s1:Body</WebTagRetorno>
@@ -447,11 +332,6 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarUrlNfse</WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarUrlNfse><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarUrlNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>

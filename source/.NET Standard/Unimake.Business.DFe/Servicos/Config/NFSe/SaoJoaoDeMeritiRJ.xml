@@ -7,11 +7,6 @@
       <WebEnderecoProducao>https://saojoaodemeriti.sigiss.com.br:443/saojoaodemeriti/ws/sigiss_ws.php</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>https://saojoaodemeriti.sigiss.com.br:443/saojoaodemeriti/ws/sigiss_ws.php#GerarNota</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -26,11 +21,6 @@
       <WebEnderecoProducao>https://saojoaodemeriti.sigiss.com.br:443/saojoaodemeriti/ws/sigiss_ws.php</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>https://saojoaodemeriti.sigiss.com.br:443/saojoaodemeriti/ws/sigiss_ws.php#CancelarNfse</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -45,11 +35,6 @@
       <WebEnderecoProducao>https://saojoaodemeriti.sigiss.com.br:443/saojoaodemeriti/ws/sigiss_ws.php</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>https://saojoaodemeriti.sigiss.com.br:443/saojoaodemeriti/ws/sigiss_ws.php#ConsultarNotaValida</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
@@ -64,11 +49,6 @@
       <WebEnderecoProducao>https://saojoaodemeriti.sigiss.com.br:443/saojoaodemeriti/ws/sigiss_ws.php</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>https://saojoaodemeriti.sigiss.com.br:443/saojoaodemeriti/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>

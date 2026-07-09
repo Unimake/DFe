@@ -7,11 +7,6 @@
       <WebEnderecoProducao>https://www.esnfs.com.br:8444/enfsws/services/Enfs</WebEnderecoProducao>
       <WebActionHomologacao>urn:esRecepcionarLoteRps</WebActionHomologacao>
       <WebActionProducao>urn:esRecepcionarLoteRps</WebActionProducao>
-      <SchemaArquivo>esRecepcionarLoteRpsEnvio_v01.xsd</SchemaArquivo>
-      <TagAssinatura>es:enviarLoteRpsEnvio</TagAssinatura>
-      <TagAtributoID>lote</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><esRecepcionarLoteRps xmlns="http://services.enfsws.es"><nrVersaoXml>1</nrVersaoXml><xml>{xmlBodyScape}</xml></esRecepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
       <WebTagRetorno>soapenv:Body</WebTagRetorno>
@@ -26,11 +21,6 @@
       <WebEnderecoProducao>https://www.esnfs.com.br:8444/enfsws/services/Enfs</WebEnderecoProducao>
       <WebActionHomologacao>urn:esCancelarNfseEnvio</WebActionHomologacao>
       <WebActionProducao>urn:esCancelarNfseEnvio</WebActionProducao>
-      <SchemaArquivo>esCancelarNfseEnvio_v01.xsd</SchemaArquivo>
-      <TagAssinatura>es:esCancelarNfseEnvio</TagAssinatura>
-      <TagAtributoID>prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><esCancelarNfse xmlns="http://services.enfsws.es"><nrVersaoXml>1</nrVersaoXml><xml>{xmlBodyScape}</xml></esCancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
       <WebTagRetorno>soapenv:Body</WebTagRetorno>
@@ -45,11 +35,6 @@
       <WebEnderecoProducao>https://www.esnfs.com.br:8444/enfsws/services/Enfs</WebEnderecoProducao>
       <WebActionHomologacao>urn:esConsultarLoteRpsEnvio</WebActionHomologacao>
       <WebActionProducao>urn:esConsultarLoteRpsEnvio</WebActionProducao>
-      <SchemaArquivo>esConsultarLoteRpsEnvio_v01.xsd</SchemaArquivo>
-      <TagAssinatura>es:esConsultarLoteRpsEnvio</TagAssinatura>
-      <TagAtributoID>prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><esConsultarLoteRps xmlns="http://services.enfsws.es"><nrVersaoXml>1</nrVersaoXml><xml>{xmlBodyScape}</xml></esConsultarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
       <WebTagRetorno>soapenv:Body</WebTagRetorno>
@@ -64,11 +49,6 @@
       <WebEnderecoProducao>https://www.esnfs.com.br:8444/enfsws/services/Enfs</WebEnderecoProducao>
       <WebActionHomologacao>urn:esConsultarNfsePorRpsEnvio</WebActionHomologacao>
       <WebActionProducao>urn:esConsultarNfsePorRpsEnvio</WebActionProducao>
-      <SchemaArquivo>esConsultarNfsePorRpsEnvio_v01.xsd</SchemaArquivo>
-      <TagAssinatura>es:esConsultarNfsePorRpsEnvio</TagAssinatura>
-      <TagAtributoID>prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><esConsultarNfsePorRps xmlns="http://services.enfsws.es"><nrVersaoXml>1</nrVersaoXml><xml>{xmlBodyScape}</xml></esConsultarNfsePorRps></soap:Body></soap:Envelope>]]></WebSoapString>
       <WebTagRetorno>soapenv:Body</WebTagRetorno>
@@ -83,11 +63,6 @@
       <WebEnderecoProducao>https://www.esnfs.com.br:8444/enfsws/services/Enfs</WebEnderecoProducao>
       <WebActionHomologacao>urn:esConsultarNfseEnvio</WebActionHomologacao>
       <WebActionProducao>urn:esConsultarNfseEnvio</WebActionProducao>
-      <SchemaArquivo>esConsultarNfseEnvio_v01.xsd</SchemaArquivo>
-      <TagAssinatura>es:esConsultarNfseEnvio</TagAssinatura>
-      <TagAtributoID>prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><esConsultarNfse xmlns="http://services.enfsws.es"><nrVersaoXml>1</nrVersaoXml><xml>{xmlBodyScape}</xml></esConsultarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
       <WebTagRetorno>soapenv:Body</WebTagRetorno>
@@ -102,11 +77,6 @@
       <WebEnderecoProducao>https://www.esnfs.com.br:8444/enfsws/services/Enfs</WebEnderecoProducao>
       <WebActionHomologacao>urn:esConsultarSituacaoLoteRpsEnvio</WebActionHomologacao>
       <WebActionProducao>urn:esConsultarSituacaoLoteRpsEnvio</WebActionProducao>
-      <SchemaArquivo>esConsultarSituacaoLoteRpsEnvio_v01.xsd</SchemaArquivo>
-      <TagAssinatura>es:esConsultarSituacaoLoteRpsEnvio</TagAssinatura>
-      <TagAtributoID>prestador</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><esConsultarSituacaoLoteRps xmlns="http://services.enfsws.es"><nrVersaoXml>1</nrVersaoXml><xml>{xmlBodyScape}</xml></esConsultarSituacaoLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
       <WebTagRetorno>soapenv:Body</WebTagRetorno>
