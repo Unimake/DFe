@@ -30,7 +30,9 @@ uses
   CIOTDeclaracaoOperacaoTransporte, CIOTConsultarCIOTGerado, CIOTConsultarExcecao,
   CIOTConsultarFrotaTransportador, CIOTConsultarSituacaoTransportador,
   CIOTEncerramentoOperacaoTransporte, CIOTCancelamentoOperacaoTransporte,
-  CIOTRetificacaoOperacaoTransporte;
+  CIOTRetificacaoOperacaoTransporte, ConsultarStatusBPe, EnviarBPeSincrono,
+  EnviarBPeTASincrono, EnviarBPeTMSincrono, ConsultarSituacaoBPe,
+  EnviarEventoCancelamentoBPe;
 
 type
 
@@ -98,6 +100,12 @@ type
     BtnCIOTEncerramentoOperacaoTransporte: TButton;
     BtnCIOTCancelamentoOperacaoTransporte: TButton;
     BtnCIOTRetificacaoOperacaoTransporte: TButton;
+    BtnConsultaStatusBPe: TButton;
+    BtnEnviarBPeSincrono: TButton;
+    BtnEnviarBPeTASincrono: TButton;
+    BtnEnviarBPeTMSincrono: TButton;
+    BtnConsultaSituacaoBPe: TButton;
+    BtnEnviarEventoCancelamentoBPe: TButton;
     EnviarXmlGNRe: TButton;
     ConsultaConfigGNRE: TButton;
     GroupBox1: TGroupBox;
@@ -122,6 +130,7 @@ type
     btnConsultaChaves: TToggleBox;
     GroupBox9: TGroupBox;
     GroupBox10: TGroupBox;
+    GroupBox11: TGroupBox;
     BtnConsultarStatusDCe: TToggleBox;
     procedure BtnBETHACancelarNFSeClick(Sender: TObject);
     procedure BtnBETHAConsultarLoteRPSClick(Sender: TObject);
@@ -139,6 +148,8 @@ type
     procedure BtnCIOTEncerramentoOperacaoTransporteClick(Sender: TObject);
     procedure BtnCIOTGerarIdOperacaoTransporteClick(Sender: TObject);
     procedure BtnCIOTRetificacaoOperacaoTransporteClick(Sender: TObject);
+    procedure BtnConsultaSituacaoBPeClick(Sender: TObject);
+    procedure BtnConsultaStatusBPeClick(Sender: TObject);
     procedure btnConsultarDistribuicaoDFeOnClick(Sender: TObject);
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
     procedure BtnConsultarStatusDCeClick(Sender: TObject);
@@ -147,6 +158,10 @@ type
     procedure btnDesserializarRetornoConsultaDFeClick(Sender: TObject);
     procedure btnDownloadXMLNFCeSEFAZSPClick(Sender: TObject);
     procedure BtnEnviarDCeClick(Sender: TObject);
+    procedure BtnEnviarBPeSincronoClick(Sender: TObject);
+    procedure BtnEnviarBPeTASincronoClick(Sender: TObject);
+    procedure BtnEnviarBPeTMSincronoClick(Sender: TObject);
+    procedure BtnEnviarEventoCancelamentoBPeClick(Sender: TObject);
     procedure BtnEnviarEventoCancelamentoMDFeClick(Sender: TObject);
     procedure BtnEnviarEventoEncerramentoMDFeClick(Sender: TObject);
     procedure btnEnviarEventoManifestacaoNFeClick(Sender: TObject);
@@ -313,6 +328,72 @@ var
   oServico: TCIOTRetificacaoOperacaoTransporte;
 begin
   oServico := TCIOTRetificacaoOperacaoTransporte.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnConsultaStatusBPeClick(Sender: TObject);
+var
+  oServico: TConsultarStatusBPe;
+begin
+  oServico := TConsultarStatusBPe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnEnviarBPeSincronoClick(Sender: TObject);
+var
+  oServico: TEnviarBPeSincrono;
+begin
+  oServico := TEnviarBPeSincrono.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnEnviarBPeTASincronoClick(Sender: TObject);
+var
+  oServico: TEnviarBPeTASincrono;
+begin
+  oServico := TEnviarBPeTASincrono.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnEnviarBPeTMSincronoClick(Sender: TObject);
+var
+  oServico: TEnviarBPeTMSincrono;
+begin
+  oServico := TEnviarBPeTMSincrono.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnConsultaSituacaoBPeClick(Sender: TObject);
+var
+  oServico: TConsultarSituacaoBPe;
+begin
+  oServico := TConsultarSituacaoBPe.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.BtnEnviarEventoCancelamentoBPeClick(Sender: TObject);
+var
+  oServico: TEnviarEventoCancelamentoBPe;
+begin
+  oServico := TEnviarEventoCancelamentoBPe.Create;
   try
     oServico.Executar();
   finally
