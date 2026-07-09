@@ -389,12 +389,6 @@
 		<ArqConfig>TremembeSP.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4113700">
-		<Nome>Londrina - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>LondrinaPR.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3145208">
 		<Nome>Nova Serrana - MG</Nome>
 		<UF>MG</UF>

@@ -123,7 +123,7 @@
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarUrlNfse</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarUrlNfse><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarUrlNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.04</SchemaVersao>
@@ -166,7 +166,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteDps><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:RecepcionarLoteDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
@@ -180,7 +180,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteDpsSincrono><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:RecepcionarLoteDpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
@@ -194,7 +194,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:GerarNfse><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse"><versaoDados>1.01</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
@@ -208,7 +208,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:CancelarNfse><nfseCabecMsg><cabecalho versao="1.01" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
@@ -222,7 +222,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteDps><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarLoteDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
@@ -236,7 +236,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseDps><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfseDps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
@@ -250,7 +250,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestado><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
@@ -264,7 +264,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomado><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
@@ -278,7 +278,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorFaixa><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
@@ -306,7 +306,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarDpsDisponivel><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarDpsDisponivel></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
@@ -320,7 +320,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.sped.fazenda.gov.br/nfse"><soapenv:Header/><soapenv:Body><nfse:ConsultarUrlNfse><nfseCabecMsg><cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:ConsultarUrlNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.01</SchemaVersao>
