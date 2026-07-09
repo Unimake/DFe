@@ -3,7 +3,7 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="3.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/homologa_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-assu.e-publica.net/assu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
@@ -17,7 +17,7 @@
 		</RecepcionarLoteRps>
 		<GerarNfse versao="3.00">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/homologa_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-assu.e-publica.net/assu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao/>
@@ -31,7 +31,7 @@
 		</GerarNfse>
 		<CancelarNfse versao="3.00">
 			<Descricao>Cancelar NFSe</Descricao>
-			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/homologa_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-assu.e-publica.net/assu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
@@ -47,7 +47,7 @@
 		</CancelarNfse>
 		<ConsultarLoteRps versao="3.00">
 			<Descricao>Consultar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/homologa_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-assu.e-publica.net/assu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
@@ -64,7 +64,7 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="3.00">
 			<Descricao>Consultar NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/homologa_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-assu.e-publica.net/assu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
@@ -80,7 +80,7 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfseFaixa versao="3.00">
 			<Descricao>Consultar NFSe por faixa de numeração</Descricao>
-			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/homologa_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-assu.e-publica.net/assu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
@@ -97,7 +97,7 @@
 		</ConsultarNfseFaixa>
 		<ConsultarSituacaoLoteRps versao="3.00">
 			<Descricao>Consultar situação do lote RPS</Descricao>
-			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br/homologa_nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-assu.e-publica.net/assu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
