@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.CIOT;
 using Xunit;
 
 namespace Unimake.DFe.Test.NFSe
@@ -345,14 +346,18 @@ namespace Unimake.DFe.Test.NFSe
                 // Alguns municípios do padrão FIORILLI podem retornar erro quando o certificado digital não é autorizado.
                 case PadraoNFSe.FIORILLI:
                     return AmbienteEsperado(servico, TipoAmbiente.Producao) &&
-                           (mensagem.Contains("máquina de destino as recusou ativamente") &&
-                            mensagem.Contains("host conectado não respondeu."));
+                           (mensagem.Contains("máquina de destino as recusou ativamente") ||
+                            mensagem.Contains("host conectado não respondeu.") ||
+                            mensagem.Contains("Nenhuma conexão pôde ser feita"));
 
                 // Alguns municípios do padrão QUASAR retornam erro em ambiente de homologação.
                 // Nesses casos, o retorno vem como texto/log de erro, ...Web server received an invalid response...
                 case PadraoNFSe.PORTAL_FACIL:
                     return AmbienteEsperado(servico, TipoAmbiente.Homologacao) &&
-                           ServicoEsperado(servico, Servico.NFSeConsultarLoteRps) &&
+                           ServicoEsperado(servico, 
+                           Servico.NFSeConsultarLoteRps,
+                           Servico.NFSeConsultarNfsePorRps,
+                           Servico.NFSeGerarNfse) &&
                            mensagem.Contains("Web server received an invalid response");
 
                 // Alguns municípios do padrão MODERNIZACAO_PUBLICA retornam erro no serviço de consulta.
