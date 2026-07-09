@@ -361,6 +361,14 @@ namespace Unimake.DFe.Test.NFSe
                     return AmbienteEsperado(servico, TipoAmbiente.Producao) &&
                            ServicoEsperado(servico, Servico.NFSeConsultarNfseServicoTomado) &&
                            mensagem.Contains("<faultstring>java.lang.NullPointerException</faultstring>");
+
+                //Os serviços de TECNOSISTEMAS podem retornar erro 500 nos serviços de Cancelar e Recepcionar lote Síncriono.
+                //Nesses casos, o retorno vem como texto/log de erro, ...Internal Server Error...
+                case PadraoNFSe.TECNOSISTEMAS:
+                    return AmbienteEsperado(servico, TipoAmbiente.Homologacao) &&
+                           ServicoEsperado(servico, Servico.NFSeCancelarNfse, Servico.NFSeRecepcionarLoteRpsSincrono) &&
+                           mensagem.Contains("Internal Server Error");
+
                 default:
                     return false;
             }
