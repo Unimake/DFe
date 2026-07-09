@@ -15,20 +15,6 @@
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</RecepcionarLoteRps>
-		<RecepcionarLoteRpsSincrono versao="2.03">
-			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao>https://primaveradoleste.prefeitura.rlz.com.br/api/webservice/nfse?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://cidadaoonline.primaveradoleste.mt.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsSincronoRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></RecepcionarLoteRpsSincronoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns1:RecepcionarLoteRpsSincronoResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</RecepcionarLoteRpsSincrono>
 		<GerarNfse versao="2.03">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao>https://primaveradoleste.prefeitura.rlz.com.br/api/webservice/nfse?wsdl</WebEnderecoHomologacao>
