@@ -799,4 +799,68 @@ object frmPrincipal: TfrmPrincipal
       OnClick = BtnCIOTRetificacaoOperacaoTransporteClick
     end
   end
+  object GroupBox11: TGroupBox
+    Left = 1872
+    Height = 310
+    Top = 572
+    Width = 374
+    Caption = 'BP-e'
+    ClientHeight = 280
+    ClientWidth = 370
+    TabOrder = 13
+    object BtnConsultaStatusBPe: TButton
+      Left = 10
+      Height = 38
+      Top = 8
+      Width = 355
+      Caption = 'Consulta Status'
+      TabOrder = 0
+      OnClick = BtnConsultaStatusBPeClick
+    end
+    object BtnEnviarBPeSincrono: TButton
+      Left = 10
+      Height = 38
+      Top = 48
+      Width = 355
+      Caption = 'Enviar BP-e modo síncrono'
+      TabOrder = 1
+      OnClick = BtnEnviarBPeSincronoClick
+    end
+    object BtnEnviarBPeTASincrono: TButton
+      Left = 10
+      Height = 38
+      Top = 88
+      Width = 355
+      Caption = 'Enviar BP-e TA modo síncrono'
+      TabOrder = 2
+      OnClick = BtnEnviarBPeTASincronoClick
+    end
+    object BtnEnviarBPeTMSincrono: TButton
+      Left = 10
+      Height = 38
+      Top = 128
+      Width = 355
+      Caption = 'Enviar BP-e TM modo síncrono'
+      TabOrder = 3
+      OnClick = BtnEnviarBPeTMSincronoClick
+    end
+    object BtnConsultaSituacaoBPe: TButton
+      Left = 10
+      Height = 38
+      Top = 168
+      Width = 355
+      Caption = 'Consulta Situação'
+      TabOrder = 4
+      OnClick = BtnConsultaSituacaoBPeClick
+    end
+    object BtnEnviarEventoCancelamentoBPe: TButton
+      Left = 10
+      Height = 38
+      Top = 208
+      Width = 355
+      Caption = 'Enviar Evento de Cancelamento'
+      TabOrder = 5
+      OnClick = BtnEnviarEventoCancelamentoBPeClick
+    end
+  end
 end

@@ -109,6 +109,12 @@ FUNCTION Main()
    AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Encerramento da operacao de transporte", {|| CIOTEncerramentoOperacaoTransporte()})
    AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Cancelamento da operacao de transporte", {|| CIOTCancelamentoOperacaoTransporte()})
    AddOpcaoMenu(aOpcoes, aAcoes, "CIOT - Retificacao da operacao de transporte", {|| CIOTRetificacaoOperacaoTransporte()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "BP-e - Consulta Status", {|| ConsultarStatusBPe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "BP-e - Enviar modo sincrono", {|| EnviarBPeSincrono()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "BP-e TA - Enviar modo sincrono", {|| EnviarBPeTASincrono()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "BP-e TM - Enviar modo sincrono", {|| EnviarBPeTMSincrono()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "BP-e - Consulta Situacao", {|| ConsultarSituacaoBPe()})
+   AddOpcaoMenu(aOpcoes, aAcoes, "BP-e - Enviar Evento de Cancelamento", {|| EnviarEventoCancelamentoBPe()})
 
    Do While .T.
       Cls

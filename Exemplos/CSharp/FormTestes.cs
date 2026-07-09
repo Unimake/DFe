@@ -24,6 +24,7 @@ using ServicoCIOT = Unimake.Business.DFe.Servicos.CIOT;
 using ServicoCTe = Unimake.Business.DFe.Servicos.CTe;
 using ServicoCTeOS = Unimake.Business.DFe.Servicos.CTeOS;
 using ServicoDCe = Unimake.Business.DFe.Servicos.DCe;
+using ServicoBPe = Unimake.Business.DFe.Servicos.BPe;
 using ServicoEFDReinf = Unimake.Business.DFe.Servicos.EFDReinf;
 using ServicoESocial = Unimake.Business.DFe.Servicos.ESocial;
 using ServicoGNRe = Unimake.Business.DFe.Servicos.GNRE;
@@ -38,6 +39,9 @@ using XmlCIOT = Unimake.Business.DFe.Xml.CIOT;
 using XmlCTe = Unimake.Business.DFe.Xml.CTe;
 using XmlCTeOS = Unimake.Business.DFe.Xml.CTeOS;
 using XmlDCe = Unimake.Business.DFe.Xml.DCe;
+using XmlBPe = Unimake.Business.DFe.Xml.BPe;
+using XmlBPeTA = Unimake.Business.DFe.Xml.BPeTA;
+using XmlBPeTM = Unimake.Business.DFe.Xml.BPeTM;
 using XmlEFDReinf = Unimake.Business.DFe.Xml.EFDReinf;
 using XmlESocial = Unimake.Business.DFe.Xml.ESocial;
 using XmlGNRe = Unimake.Business.DFe.Xml.GNRE;
@@ -7489,6 +7493,517 @@ namespace TreinamentoDLL
                     DhEvento = DateTime.Now,
                     TpEvento = TipoEventoDCe.Cancelamento,
                     NSeqEvento = 1
+                }
+            };
+
+            return xml;
+        }
+
+        private void BtnConsultaStatusBPe_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlBPe.ConsStatServBPe
+            {
+                TpAmb = TipoAmbiente.Homologacao,
+                Versao = "1.00"
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.BPe,
+                CertificadoDigital = CertificadoSelecionado,
+                CodigoUF = (int)UFBrasil.PR
+            };
+
+            var statusServico = new ServicoBPe.StatusServico(xml, configuracao);
+            statusServico.Executar();
+
+            MessageBox.Show(statusServico.RetornoWSString);
+        }
+
+        private void BtnEnviarBPeSincrono_Click(object sender, EventArgs e)
+        {
+            var xml = CriarBPe();
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.BPe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = CertificadoSelecionado,
+            };
+
+            var autorizacao = new ServicoBPe.AutorizacaoBPe(xml, configuracao);
+            autorizacao.Executar();
+
+            MessageBox.Show(autorizacao.RetornoWSString);
+
+            if (autorizacao.Result.CStat == 100 &&
+                autorizacao.Result.ProtBPe != null &&
+                autorizacao.Result.ProtBPe.InfProt.CStat == 100)
+            {
+                MessageBox.Show(autorizacao.Result.ProtBPe.InfProt.NProt);
+                var teste = autorizacao.BPeProcResults[xml.InfBPe.Chave].GerarXML();
+            }
+        }
+
+        private void BtnEnviarBPeTASincrono_Click(object sender, EventArgs e)
+        {
+            var xml = CriarBPeTA();
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.BPe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = CertificadoSelecionado,
+            };
+
+            var autorizacao = new ServicoBPe.AutorizacaoBPeTA(xml, configuracao);
+            autorizacao.Executar();
+
+            MessageBox.Show(autorizacao.RetornoWSString);
+
+            if (autorizacao.Result.CStat == 100 &&
+                autorizacao.Result.ProtBPe != null &&
+                autorizacao.Result.ProtBPe.InfProt.CStat == 100)
+            {
+                MessageBox.Show(autorizacao.Result.ProtBPe.InfProt.NProt);
+                var teste = autorizacao.BPeTAProcResults[xml.InfBPe.Chave].GerarXML();
+            }
+        }
+
+        private void BtnEnviarBPeTMSincrono_Click(object sender, EventArgs e)
+        {
+            var xml = CriarBPeTM();
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.BPe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = CertificadoSelecionado,
+            };
+
+            var autorizacao = new ServicoBPe.AutorizacaoBPeTM(xml, configuracao);
+            autorizacao.Executar();
+
+            MessageBox.Show(autorizacao.RetornoWSString);
+
+            if (autorizacao.Result.CStat == 100 &&
+                autorizacao.Result.ProtBPe != null &&
+                autorizacao.Result.ProtBPe.InfProt.CStat == 100)
+            {
+                MessageBox.Show(autorizacao.Result.ProtBPe.InfProt.NProt);
+                var teste = autorizacao.BPeTMProcResults[xml.InfBPe.Chave].GerarXML();
+            }
+        }
+
+        private void BtnConsultaSituacaoBPe_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlBPe.ConsSitBPe
+            {
+                ChBPe = "35260712345678000195630010000000011123456780",
+                TpAmb = TipoAmbiente.Homologacao,
+                Versao = "1.00"
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.BPe,
+                CodigoUF = (int)UFBrasil.PR,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var consultaProtocolo = new ServicoBPe.ConsultaProtocolo(xml, configuracao);
+            consultaProtocolo.Executar();
+
+            MessageBox.Show(consultaProtocolo.RetornoWSString);
+        }
+
+        private void BtnEnviarEventoCancelamentoBPe_Click(object sender, EventArgs e)
+        {
+            var xml = CriarEventoBPe();
+
+            var xmlstring = xml.GerarXML();
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.BPe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = CertificadoSelecionado,
+            };
+
+            var recepcaoEvento = new ServicoBPe.RecepcaoEvento(xml, configuracao);
+            recepcaoEvento.Executar();
+
+            MessageBox.Show(recepcaoEvento.RetornoWSString);
+            MessageBox.Show(recepcaoEvento.Result.InfEvento.CStat + " - " + recepcaoEvento.Result.InfEvento.XMotivo);
+
+            switch (recepcaoEvento.Result.InfEvento.CStat)
+            {
+                case 134:
+                case 135:
+                case 136:
+                    recepcaoEvento.GravarXmlDistribuicao(@"d:\testenfe");
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private static XmlBPe.BPe CriarBPe()
+        {
+            return new XmlBPe.BPe
+            {
+                InfBPe = new XmlBPe.InfBPe
+                {
+                    Versao = "1.00",
+                    Ide = new XmlBPe.Ide
+                    {
+                        CUF = UFBrasil.SP,
+                        TpAmb = TipoAmbiente.Homologacao,
+                        Mod = (ModeloDFe)63,
+                        Serie = 1,
+                        NBP = 1,
+                        CBP = "12345678",
+                        Modal = (ModalidadeTransporteBPe)1,
+                        DhEmi = new DateTimeOffset(2026, 7, 6, 8, 0, 0, TimeSpan.FromHours(-3)),
+                        TpEmis = (TipoEmissaoBPe)1,
+                        VerProc = "1.0",
+                        TpBPe = (TipoBPe)0,
+                        IndPres = (IndicadorPresenca)1,
+                        UFIni = UFBrasil.SP,
+                        CMunIni = "3550308",
+                        UFFim = UFBrasil.RJ,
+                        CMunFim = "3304557"
+                    },
+                    Emit = new XmlBPeTM.Emit
+                    {
+                        CNPJ = "12345678000195",
+                        IE = "123456789012",
+                        XNome = "EMPRESA BP-E",
+                        CRT = CRT.RegimeNormal,
+                        EnderEmit = new XmlBPeTM.EnderEmit
+                        {
+                            XLgr = "RUA TESTE",
+                            Nro = "100",
+                            XBairro = "CENTRO",
+                            CMun = "3550308",
+                            XMun = "SAO PAULO",
+                            UF = UFBrasil.SP
+                        }
+                    },
+                    InfPassagem = new XmlBPe.InfPassagem
+                    {
+                        CLocOrig = "3550308",
+                        XLocOrig = "SAO PAULO",
+                        CLocDest = "3304557",
+                        XLocDest = "RIO DE JANEIRO",
+                        DhEmb = new DateTimeOffset(2026, 7, 6, 10, 0, 0, TimeSpan.FromHours(-3)),
+                        DhValidade = new DateTimeOffset(2026, 7, 7, 10, 0, 0, TimeSpan.FromHours(-3)),
+                        InfPassageiro = new XmlBPe.InfPassageiro
+                        {
+                            XNome = "PASSAGEIRO TESTE",
+                            CPF = "12345678901",
+                            TpDoc = (TipoDocumentoPassageiroBPe)1,
+                            NDoc = "12345678"
+                        }
+                    },
+                    InfViagem = new List<XmlBPe.InfViagem>
+                    {
+                        new XmlBPe.InfViagem
+                        {
+                            CPercurso = "001",
+                            XPercurso = "SAO PAULO - RIO DE JANEIRO",
+                            TpViagem = (TipoViagemBPe)0,
+                            TpServ = (TipoServicoBPe)1,
+                            TpAcomodacao = (TipoAcomodacaoBPe)1,
+                            TpTrecho = (TipoTrechoBPe)1,
+                            DhViagem = new DateTimeOffset(2026, 7, 6, 10, 0, 0, TimeSpan.FromHours(-3))
+                        }
+                    },
+                    InfValorBPe = new XmlBPe.InfValorBPe
+                    {
+                        VBP = 100.00,
+                        VDesconto = 0.00,
+                        VPgto = 100.00,
+                        VTroco = 0.00,
+                        Comp = new List<XmlBPe.CompValor>
+                        {
+                            new XmlBPe.CompValor
+                            {
+                                TpComp = (TipoComponenteValorBPe)1,
+                                VComp = 100.00
+                            }
+                        }
+                    },
+                    Imp = new XmlBPe.Imp
+                    {
+                        ICMS = new XmlBPeTM.ICMS
+                        {
+                            ICMS00 = new XmlBPeTM.ICMS00
+                            {
+                                CST = (CSTICMSBPe)0,
+                                VBC = 100.00,
+                                PICMS = 18.00,
+                                VICMS = 18.00
+                            }
+                        }
+                    },
+                    Pag = new List<XmlBPe.Pag>
+                    {
+                        new XmlBPe.Pag
+                        {
+                            TPag = (MeioPagamentoBPe)1,
+                            VPag = 100.00
+                        }
+                    }
+                }
+            };
+        }
+
+        private static XmlBPeTA.BPeTA CriarBPeTA()
+        {
+            return new XmlBPeTA.BPeTA
+            {
+                InfBPe = new XmlBPeTA.InfBPe
+                {
+                    Versao = "1.00",
+                    Ide = new XmlBPeTA.Ide
+                    {
+                        CUF = UFBrasil.SP,
+                        TpAmb = TipoAmbiente.Homologacao,
+                        Mod = (ModeloDFe)63,
+                        Serie = 1,
+                        NBP = 1,
+                        CBP = "12345678",
+                        Modal = (ModalidadeTransporteBPeTA)2,
+                        DhEmi = new DateTimeOffset(2026, 7, 6, 8, 0, 0, TimeSpan.FromHours(-3)),
+                        TpEmis = (TipoEmissaoBPe)1,
+                        VerProc = "1.0",
+                        TpBPe = (TipoBPe)0,
+                        TpCompra = (TipoCompraBPeTA)0,
+                        IndPres = (IndicadorPresenca)1,
+                        UFIni = UFBrasil.SP,
+                        CMunIni = "3550308",
+                        UFFim = UFBrasil.RJ,
+                        CMunFim = "3304557"
+                    },
+                    Emit = new XmlBPeTM.Emit
+                    {
+                        CNPJ = "12345678000195",
+                        IE = "123456789012",
+                        XNome = "EMPRESA BP-E TA",
+                        CRT = CRT.RegimeNormal,
+                        EnderEmit = new XmlBPeTM.EnderEmit
+                        {
+                            XLgr = "RUA TESTE",
+                            Nro = "100",
+                            XBairro = "CENTRO",
+                            CMun = "3550308",
+                            XMun = "SAO PAULO",
+                            UF = UFBrasil.SP
+                        }
+                    },
+                    InfPassagem = new XmlBPeTA.InfPassagem
+                    {
+                        DhEmb = new DateTimeOffset(2026, 7, 6, 10, 0, 0, TimeSpan.FromHours(-3)),
+                        DhValidade = new DateTimeOffset(2026, 7, 7, 10, 0, 0, TimeSpan.FromHours(-3)),
+                        InfPassageiro = new XmlBPeTA.InfPassageiro
+                        {
+                            XNome = "PASSAGEIRO TESTE",
+                            CPF = "12345678901",
+                            TpDoc = (TipoDocumentoPassageiroBPe)1,
+                            NDoc = "12345678"
+                        }
+                    },
+                    InfViagem = new List<XmlBPeTA.InfViagem>
+                    {
+                        new XmlBPeTA.InfViagem
+                        {
+                            NroVoo = "1234",
+                            SiglaCiaOperVoo = "UMK",
+                            TpViagem = (TipoViagemBPeTA)0,
+                            CAeroOrig = "GRU",
+                            CAeroDest = "GIG",
+                            TpServ = (TipoServicoBPeTA)12,
+                            TpAcomodacao = (TipoAcomodacaoBPeTA)6,
+                            TpTrecho = (TipoTrechoBPeTA)1,
+                            DhViagem = new DateTimeOffset(2026, 7, 6, 10, 0, 0, TimeSpan.FromHours(-3))
+                        }
+                    },
+                    InfValorBPe = new XmlBPeTA.InfValorBPe
+                    {
+                        VBP = 100.00,
+                        VDesconto = 0.00,
+                        VPgto = 100.00,
+                        VTroco = 0.00,
+                        Comp = new List<XmlBPeTA.CompValor>
+                        {
+                            new XmlBPeTA.CompValor
+                            {
+                                TpComp = (TipoComponenteValorBPe)1,
+                                VComp = 100.00
+                            }
+                        }
+                    },
+                    Imp = new XmlBPeTA.Imp
+                    {
+                        IBSCBS = new XmlBPeTM.IBSCBS
+                        {
+                            CST = "000",
+                            CClassTrib = "000001",
+                            GIBSCBS = new XmlBPeTM.GIBSCBS
+                            {
+                                VBC = 100.00,
+                                GIBSUF = new XmlBPeTM.GIBSUF { PIBSUF = 0.1000, VIBSUF = 0.10 },
+                                GIBSMun = new XmlBPeTM.GIBSMun { PIBSMun = 0.1000, VIBSMun = 0.10 },
+                                VIBS = 0.20,
+                                GCBS = new XmlBPeTM.GCBS { PCBS = 0.1000, VCBS = 0.10 }
+                            }
+                        },
+                        VTotDFe = 100.30
+                    },
+                    Pag = new List<XmlBPeTA.Pag>
+                    {
+                        new XmlBPeTA.Pag
+                        {
+                            TPag = (MeioPagamentoBPe)1,
+                            VPag = 100.00
+                        }
+                    }
+                }
+            };
+        }
+
+        private static XmlBPeTM.BPeTM CriarBPeTM()
+        {
+            return new XmlBPeTM.BPeTM
+            {
+                InfBPe = new XmlBPeTM.InfBPe
+                {
+                    Versao = "1.00",
+                    Ide = new XmlBPeTM.Ide
+                    {
+                        CUF = UFBrasil.SP,
+                        TpAmb = TipoAmbiente.Homologacao,
+                        Mod = (ModeloDFe)63,
+                        Serie = 1,
+                        NBP = 1,
+                        CBP = "12345678",
+                        Modal = (ModalidadeTransporteBPe)1,
+                        DhEmi = new DateTimeOffset(2026, 7, 6, 8, 0, 0, TimeSpan.FromHours(-3)),
+                        DCompet = new DateTime(2026, 7, 6),
+                        TpEmis = (TipoEmissaoBPe)1,
+                        VerProc = "1.0",
+                        TpBPe = (TipoBPe)4,
+                        CFOP = "5353"
+                    },
+                    Emit = new XmlBPeTM.Emit
+                    {
+                        CNPJ = "12345678000195",
+                        IE = "123456789012",
+                        XNome = "EMPRESA BP-E TM",
+                        CRT = CRT.RegimeNormal,
+                        EnderEmit = new XmlBPeTM.EnderEmit
+                        {
+                            XLgr = "RUA TESTE",
+                            Nro = "100",
+                            XBairro = "CENTRO",
+                            CMun = "3550308",
+                            XMun = "SAO PAULO",
+                            UF = UFBrasil.SP
+                        }
+                    },
+                    DetBPeTM = new List<XmlBPeTM.DetBPeTM>
+                    {
+                        new XmlBPeTM.DetBPeTM
+                        {
+                            IdEqpCont = 1,
+                            UFIniViagem = UFBrasil.SP,
+                            Det = new List<XmlBPeTM.Det>
+                            {
+                                new XmlBPeTM.Det
+                                {
+                                    NViagem = 1,
+                                    CMunIni = "3550308",
+                                    QPass = 1,
+                                    VBP = 10.00,
+                                    Imp = new XmlBPeTM.Imp
+                                    {
+                                        ICMS = new XmlBPeTM.ICMS
+                                        {
+                                            ICMS00 = new XmlBPeTM.ICMS00
+                                            {
+                                                CST = (CSTICMSBPe)0,
+                                                VBC = 10.00,
+                                                PICMS = 18.00,
+                                                VICMS = 1.80
+                                            }
+                                        }
+                                    },
+                                    Comp = new List<XmlBPeTM.Comp>
+                                    {
+                                        new XmlBPeTM.Comp
+                                        {
+                                            XNome = "TARIFA",
+                                            QComp = "00001"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    Total = new XmlBPeTM.Total
+                    {
+                        QPass = 1,
+                        VBP = 10.00,
+                        ICMSTot = new XmlBPeTM.ICMSTot
+                        {
+                            VBC = 10.00,
+                            VICMS = 1.80
+                        },
+                        VTotDFe = 10.00
+                    },
+                    PgtoVinc = new XmlBPeTM.PgtoVinc
+                    {
+                        Pgto = new List<XmlBPeTM.Pgto>
+                        {
+                            new XmlBPeTM.Pgto
+                            {
+                                NPag = "1",
+                                IdTransacao = "TRANSACAO123",
+                                TpMeioPgto = (MeioPagamento)17,
+                                CNPJReceb = "12345678000195",
+                                CNPJBasePSP = "12345678"
+                            }
+                        }
+                    }
+                },
+            };
+        }
+
+        private static XmlBPe.EventoBPe CriarEventoBPe()
+        {
+            var xml = new XmlBPe.EventoBPe
+            {
+                Versao = "1.00",
+                InfEvento = new XmlBPe.InfEventoBPe
+                {
+                    COrgao = (int)UFBrasil.PR,
+                    TpAmb = TipoAmbiente.Homologacao,
+                    CNPJ = "00000000000199",
+                    ChBPe = "35260712345678000195630010000000011123456780",                             
+                    DhEvento = DateTimeOffset.Now,
+                    TpEvento = TipoEventoBPe.Cancelamento,
+                    NSeqEvento = 1,
+                    DetEvento = new XmlBPe.DetEventoBPe
+                    {
+                        VersaoEvento = "1.00",
+                        EvCancBPe = new XmlBPe.EvCancBPe
+                        {
+                            NProt = "123456789012345",
+                            XJust = "Justificativa de teste valida"
+                        }
+                    }
                 }
             };
 
