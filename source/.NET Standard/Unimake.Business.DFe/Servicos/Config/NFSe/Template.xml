@@ -354,22 +354,6 @@
       <TargetNS></TargetNS>
       <TimeOutWebServiceConnect></TimeOutWebServiceConnect>
     </ConsultaNFeEmitidas>
-    <ConsultarRpsServicoPrestado versao="1.00">
-      <Descricao>Consultar Rps Serviço Prestado</Descricao>
-      <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao></WebEnderecoProducao>
-      <WebActionHomologacao></WebActionHomologacao>
-      <WebActionProducao></WebActionProducao>
-      <WebContentType></WebContentType>
-      <WebSoapString></WebSoapString>
-      <WebTagRetorno></WebTagRetorno>
-      <WebEncodingRetorno></WebEncodingRetorno>
-      <WebSoapVersion></WebSoapVersion>
-      <SchemaVersao></SchemaVersao>
-      <UsaCertificadoDigital></UsaCertificadoDigital>
-      <TargetNS></TargetNS>
-      <TimeOutWebServiceConnect></TimeOutWebServiceConnect>
-    </ConsultarRpsServicoPrestado>
     <ConsultarSequenciaLoteNotaRPS versao="1.00">
       <Descricao>Consulta Sequencia Lote Nota RPS</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>

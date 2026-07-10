@@ -14,7 +14,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// <summary>
         /// Parâmetros para os testes
         /// </summary>
-        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("RecepcionarEventosNfse");
+        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("RecepcionarEvento");
 
         /// <summary>
         /// Testar o serviço de recepção de eventos da NFSe
@@ -24,7 +24,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         [MemberData(nameof(Parametros))]
         public void RecepcionarEventos(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
         {
-            var nomeXMLEnvio = "PedRegEvento-ped-regev.xml";
+            var nomeXMLEnvio = "EventoCancelar-ped-regev.xml";
             var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
 
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi encontrado.");
