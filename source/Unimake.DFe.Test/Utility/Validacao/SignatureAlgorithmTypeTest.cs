@@ -216,6 +216,41 @@ namespace Unimake.DFe.Test.Utility.Validacao
             Assert.DoesNotContain("#ID1785098580000002026070211131400001", xml.OuterXml);
         }
 
+        [Fact]
+        public void NaoDeveAssinarNoAmbienteConfigurado()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml("<root><inf Id=\"ID1\" /></root>");
+            var servico = CriarServico("<Servico />");
+            var informacao = new ValidarEstruturaXML.InformacaoXML
+            {
+                TagAssinatura = "root",
+                TagAtributoID = "inf",
+                UsaCertificadoDigital = true,
+                NaoAssina = TipoAmbiente.Homologacao
+            };
+            var method = typeof(ValidarEstruturaXML).GetMethod(
+                "AssinarSeNecessario",
+                BindingFlags.NonPublic | BindingFlags.Instance
+            );
+
+            method.Invoke(
+                new ValidarEstruturaXML(),
+                new object[]
+                {
+                    xml,
+                    servico,
+                    informacao,
+                    null,
+                    new Configuracao(),
+                    TipoAmbiente.Homologacao,
+                    TipoDFe.NFe
+                }
+            );
+
+            Assert.Null(xml.SelectSingleNode("//*[local-name()='Signature']"));
+        }
+
         private static XmlNode CriarServico(string xml)
         {
             var document = new XmlDocument();

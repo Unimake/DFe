@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
-using Unimake.Business.DFe.Isoladores;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Vinculadores;
+using Unimake.Business.DFe.Xml.Validar;
 using Unimake.Business.DFe.Xml.Validar.QRCode;
 using Unimake.Exceptions;
 
@@ -172,18 +171,7 @@ namespace Unimake.Business.DFe
         /// <exception cref="Exception"></exception>
         private static XmlDocument CarregarConfigValidacao()
         {
-            var assembly = typeof(ValidarEstruturaXML).Assembly;
-            var resourceName = "Unimake.Business.DFe.Xml.Validar.ValidarConfig.xml";
-
-            using (var stream = assembly.GetManifestResourceStream(resourceName))
-            {
-                if (stream == null)
-                    throw new Exception($"Recurso não encontrado: {resourceName}");
-
-                var xmlConfig = new XmlDocument();
-                xmlConfig.Load(stream);
-                return xmlConfig;
-            }
+            return CatalogoValidacaoXML.CriarCopia();
         }
 
         /// <summary>
@@ -241,186 +229,53 @@ namespace Unimake.Business.DFe
 
                         SubstituirConteudoXml(xml, xmlNormalizado);
 
-                        return new ResultadoValidacao
-                        {
-                            Validado = true,
-                            Descricao = inform.Descricao,
-                            MensagemRetorno = "XML normalizado, assinado e validado com sucesso.",
-                            StatusValidacao = "1",
-                            XmlAssinado = xml
-                        };
+                        return CriarResultadoSucesso(xml, inform.Descricao, "XML normalizado, assinado e validado com sucesso.");
                     }
 
                     AssinarSeNecessario(xml, servico, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
                     ValidarSchemas(xml, servico, inform, tipoDFe, padraoNFSe);
 
-                    return new ResultadoValidacao
-                    {
-                        Validado = true,
-                        Descricao = inform.Descricao,
-                        MensagemRetorno = "XML assinado e validado com sucesso.",
-                        StatusValidacao = "1",
-                        XmlAssinado = xml
-                    };
+                    return CriarResultadoSucesso(xml, inform.Descricao, "XML assinado e validado com sucesso.");
                 }
 
                 catch (Exception ex)
                 {
-                    var status = ObterStatus(ex);
-
-                    return new ResultadoValidacao
-                    {
-                        Validado = false,
-                        Descricao = inform.Descricao,
-                        MensagemRetorno = ex.Message,
-                        StatusValidacao = status,
-                        XmlAssinado = xml,
-                    };
+                    return CriarResultadoFalha(xml, inform.Descricao, ex, ObterStatus(ex));
                 }
             }
             catch (Exception ex)
             {
-                var status = ObterStatus(ex);
-                return new ResultadoValidacao
-                {
-                    Validado = false,
-                    MensagemRetorno = ex.Message,
-                    StatusValidacao = status,
-                    XmlAssinado = xml,
-
-                };
+                return CriarResultadoFalha(xml, null, ex, ObterStatus(ex));
             }
+        }
+
+        private static ResultadoValidacao CriarResultadoSucesso(XmlDocument xml, string descricao, string mensagem)
+        {
+            return new ResultadoValidacao
+            {
+                Validado = true,
+                Descricao = descricao,
+                MensagemRetorno = mensagem,
+                StatusValidacao = "1",
+                XmlAssinado = xml
+            };
+        }
+
+        private static ResultadoValidacao CriarResultadoFalha(XmlDocument xml, string descricao, Exception exception, string status)
+        {
+            return new ResultadoValidacao
+            {
+                Validado = false,
+                Descricao = descricao,
+                MensagemRetorno = exception.Message,
+                StatusValidacao = status,
+                XmlAssinado = xml
+            };
         }
 
         private static bool DeveNormalizarXmlPeloObjeto(TipoDFe tipoDFe, string tagRaiz)
         {
-            if (tipoDFe == TipoDFe.MDFe)
-            {
-                return tagRaiz == "MDFe" ||
-                    tagRaiz == "enviMDFe" ||
-                    tagRaiz == "eventoMDFe" ||
-                    tagRaiz == "consStatServMDFe" ||
-                    tagRaiz == "consSitMDFe" ||
-                    tagRaiz == "consReciMDFe" ||
-                    tagRaiz == "consMDFeNaoEnc";
-            }
-
-            if (tipoDFe == TipoDFe.CTe)
-            {
-                return tagRaiz == "CTe" ||
-                    tagRaiz == "enviCTe" ||
-                    tagRaiz == "CTeSimp" ||
-                    tagRaiz == "CTeOS" ||
-                    tagRaiz == "eventoCTe" ||
-                    tagRaiz == "consStatServCte" ||
-                    tagRaiz == "consStatServCTe" ||
-                    tagRaiz == "consSitCTe" ||
-                    tagRaiz == "consReciCTe" ||
-                    tagRaiz == "distDFeInt";
-            }
-
-            if (tipoDFe == TipoDFe.NFe || tipoDFe == TipoDFe.NFCe)
-            {
-                return tagRaiz == "NFe" ||
-                    tagRaiz == "enviNFe" ||
-                    tagRaiz == "envEvento" ||
-                    tagRaiz == "inutNFe" ||
-                    tagRaiz == "consStatServ" ||
-                    tagRaiz == "consSitNFe" ||
-                    tagRaiz == "consReciNFe" ||
-                    tagRaiz == "ConsCad" ||
-                    tagRaiz == "nfceDownloadXML" ||
-                    tagRaiz == "nfceListagemChaves" ||
-                    tagRaiz == "distDFeInt";
-            }
-
-            if (tipoDFe == TipoDFe.NFCom)
-            {
-                return tagRaiz == "NFCom" ||
-                    tagRaiz == "eventoNFCom" ||
-                    tagRaiz == "consStatServNFCom" ||
-                    tagRaiz == "consSitNFCom";
-            }
-
-            if (tipoDFe == TipoDFe.NFGas)
-            {
-                return tagRaiz == "NFGas" ||
-                    tagRaiz == "eventoNFGas" ||
-                    tagRaiz == "consStatServNFGas" ||
-                    tagRaiz == "consSitNFGas";
-            }
-
-            if (tipoDFe == TipoDFe.BPe)
-            {
-                return tagRaiz == "BPe" ||
-                    tagRaiz == "BPeTM" ||
-                    tagRaiz == "BPeTA" ||
-                    tagRaiz == "eventoBPe" ||
-                    tagRaiz == "consStatServBPe" ||
-                    tagRaiz == "consSitBPe";
-            }
-
-            if (tipoDFe == TipoDFe.NF3e)
-            {
-                return tagRaiz == "NF3e" ||
-                    tagRaiz == "eventoNF3e" ||
-                    tagRaiz == "consStatServNF3e" ||
-                    tagRaiz == "consSitNF3e" ||
-                    tagRaiz == "consReciNF3e";
-            }
-
-            if (tipoDFe == TipoDFe.DCe)
-            {
-                return tagRaiz == "DCe" ||
-                    tagRaiz == "eventoDCe" ||
-                    tagRaiz == "consStatServDCe" ||
-                    tagRaiz == "consSitDCe";
-            }
-
-            if (tipoDFe == TipoDFe.CCG)
-            {
-                return tagRaiz == "consGTIN";
-            }
-
-            if (tipoDFe == TipoDFe.CIOT)
-            {
-                return tagRaiz == "ConsultarSituacaoTransportador" ||
-                    tagRaiz == "ConsultarFrotaTransportador" ||
-                    tagRaiz == "DeclaracaoOperacaoTransporte" ||
-                    tagRaiz == "CancelamentoOperacaoTransporte" ||
-                    tagRaiz == "RetificacaoOperacaoTransporte" ||
-                    tagRaiz == "EncerramentoOperacaoTransporte" ||
-                    tagRaiz == "ConsultarExcecao" ||
-                    tagRaiz == "ConsultarCIOTGerado" ||
-                    tagRaiz == "GerarIdOperacaoTransporte";
-            }
-
-            if (tipoDFe == TipoDFe.GNRE)
-            {
-                return tagRaiz == "TConsultaConfigUf" ||
-                    tagRaiz == "TConsLote_GNRE" ||
-                    tagRaiz == "TLote_GNRE" ||
-                    tagRaiz == "TLote_ConsultaGNRE";
-            }
-
-            if (tipoDFe == TipoDFe.DARE)
-            {
-                return tagRaiz == "Dare" ||
-                    tagRaiz == "DareLote" ||
-                    tagRaiz == "Receitas";
-            }
-
-            if (tipoDFe == TipoDFe.EFDReinf)
-            {
-                return tagRaiz == "Reinf";
-            }
-
-            if (tipoDFe == TipoDFe.ESocial)
-            {
-                return tagRaiz == "eSocial";
-            }
-
-            return false;
+            return RegistroNormalizacaoXML.DeveNormalizar(tipoDFe, tagRaiz);
         }
 
         private static XmlDocument NormalizarXmlPeloObjeto(XmlDocument xml, TipoDFe tipoDFe, string tagRaiz)
@@ -1153,335 +1008,53 @@ namespace Unimake.Business.DFe
 
         private void ValidarSchemas(XmlDocument xml, XmlNode servico, InformacaoXML inform, TipoDFe tipoDFe, PadraoNFSe padraoNFSe)
         {
-            if (servico.SelectSingleNode(".//*[local-name()='SchemasEspecificos']") is null)
-            {
-                ValidarSchemaGeral(xml, inform, tipoDFe, padraoNFSe);
-                return;
-            }
-
-            bool isEvento = servico.SelectSingleNode(".//*[local-name()='TagEvento']") != null;
-            var vinculador = VinculadorFactory.Criar(tipoDFe, isEvento);
-            var nodes = vinculador.Vincular(servico, xml);
-
-            var xmlGeralValidado = false;
-
-            foreach (var (tipoCorreto, node) in nodes)
-            {
-                var informEspecifica = CopiarInformacao(inform);
-                MontarInformacaoEspecifica(servico, tipoCorreto, informEspecifica);
-
-                if (!xmlGeralValidado)
-                {
-                    ValidarSchemaGeral(xml, informEspecifica, tipoDFe, padraoNFSe);
-                    xmlGeralValidado = true;
-                }
-
-                ValidarSchemaEspecifico(node, isEvento, informEspecifica, tipoDFe);
-            }
+            ValidadorEstruturalXML.Validar(xml, servico, inform, tipoDFe, padraoNFSe);
         }
-
-        private static InformacaoXML CopiarInformacao(InformacaoXML origem) =>
-            new InformacaoXML
-            {
-                TagRaiz = origem.TagRaiz,
-                Descricao = origem.Descricao,
-                Versao = origem.Versao,
-                SchemaArquivo = origem.SchemaArquivo,
-                SchemaArquivoEspecifico = origem.SchemaArquivoEspecifico,
-                TagEvento = origem.TagEvento,
-                TargetNS = origem.TargetNS,
-                TargetNSEspecifico = origem.TargetNSEspecifico,
-                TagAssinatura = origem.TagAssinatura,
-                TagAtributoID = origem.TagAtributoID,
-                TagLoteAssinatura = origem.TagLoteAssinatura,
-                TagLoteAtributoID = origem.TagLoteAtributoID,
-                TagExtraAssinatura = origem.TagExtraAssinatura,
-                TagExtraAtributoID = origem.TagExtraAtributoID,
-                AssinaCanonicalizacaoExclusiva = origem.AssinaCanonicalizacaoExclusiva,
-                UsaCertificadoDigital = origem.UsaCertificadoDigital,
-                SignatureAlgorithmType = origem.SignatureAlgorithmType,
-                NaoAssina = origem.NaoAssina,
-                GerarQRCode = origem.GerarQRCode
-            };
 
         private static XmlNode ObterServico(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe)
         {
-            if (tipoDFe == TipoDFe.NFSe)
-            {
-                return TratarNFSe(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
-            }
-
-            if (tipoDFe == TipoDFe.ESocial || tipoDFe == TipoDFe.EFDReinf)
-            {
-                return TratarESocialEFDReinf(xml, versao, tipoDFe, tagRaiz, xmlConfig);
-            }
-
-            return TratarDFe(xml, versao, tipoDFe, tagRaiz, xmlConfig);
+            return ResolvedorServicoValidacao.Resolver(xml, versao, tipoDFe, tagRaiz, xmlConfig, padraoNFSe);
         }
 
         private static XmlNode TratarESocialEFDReinf(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig)
         {
-            XmlNodeList nodeListDFe = xmlConfig.SelectNodes($"//{tipoDFe}/Servico");
-            XmlNode nodeServicoCorreto = null;
-
-            foreach (XmlNode nodeServico in nodeListDFe)
-            {
-                var tagIdentificadora = nodeServico.Attributes["tagIdentificadora"]?.Value;
-
-                if (!tagIdentificadora.IsNullOrEmpty())
-                {
-                    var nodeServicoESocial = xml.DocumentElement.SelectSingleNode($"//*[local-name()='{tagIdentificadora}']");
-
-                    if (!(nodeServicoESocial is null))
-                    {
-                        nodeServicoCorreto = nodeServico;
-                        break;
-                    }
-                }
-            }
-
-            return nodeServicoCorreto;
+            return ResolvedorServicoValidacao.ResolverPorTagIdentificadora(xml, tipoDFe, xmlConfig);
         }
 
         private static XmlNode TratarNFSe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig, PadraoNFSe padraoNFSe)
         {
-            var filtroVersao = versao.IsNullOrEmpty() ? string.Empty : $" and @versao='{versao}'";
-            var pathServicosNFSe = $"//NFSe/Padrao[@nome='{padraoNFSe}']/Servico[@tagRaiz='{tagRaiz}'{filtroVersao}]";
-            var servicosNFSe = xmlConfig.SelectNodes(pathServicosNFSe);
-
-            if (servicosNFSe.Count == 1)
-            {
-                return servicosNFSe[0];
-            }
-
-            XmlNode servicoGenerico = null;
-
-            foreach (XmlNode servico in servicosNFSe)
-            {
-                // Nodes específicos devem permanecer antes dos genéricos no ValidarConfig.xml.
-                var identificador = servico.Attributes["tagIdentificadora"]?.Value?.Split(':').Last();
-
-                if (string.IsNullOrWhiteSpace(identificador))
-                {
-                    if (servicoGenerico is null)
-                    {
-                        servicoGenerico = servico;
-                    }
-
-                    continue;
-                }
-
-                var identificadorEhRaiz = xml.DocumentElement.LocalName == identificador;
-                var nodeServicoNFSe = xml.DocumentElement.SelectSingleNode($".//*[local-name()='{identificador}']");
-
-                if (identificadorEhRaiz || !(nodeServicoNFSe is null))
-                {
-                    return servico;
-                }
-            }
-
-            return servicoGenerico;
+            return ResolvedorServicoValidacao.ResolverNFSe(xml, versao, tagRaiz, xmlConfig, padraoNFSe);
         }
 
         private static XmlNode TratarDFe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig)
         {
 
-            string pathServico = $"//{tipoDFe}/Servico[@tagRaiz='{tagRaiz}' and @versao='{versao}']";
-            XmlNode servico = xmlConfig.SelectSingleNode(pathServico);
-
-            if (servico is null && !string.IsNullOrWhiteSpace(versao))
-            {
-                pathServico = $"//{tipoDFe}/Servico[@tagRaiz='{tagRaiz}' and @versao='']";
-                servico = xmlConfig.SelectSingleNode(pathServico);
-            }
-
-            if (servico is null && string.IsNullOrWhiteSpace(versao))
-            {
-                var servicosPorTagRaiz = xmlConfig.SelectNodes($"//{tipoDFe}/Servico[@tagRaiz='{tagRaiz}']");
-
-                if (servicosPorTagRaiz.Count == 1)
-                {
-                    servico = servicosPorTagRaiz[0];
-                }
-            }
-
-            if (servico is null && tipoDFe == TipoDFe.CTe && tagRaiz == "consStatServCte")
-            {
-                pathServico = $"//{tipoDFe}/Servico[@tagRaiz='consStatServCTe' and @versao='{versao}']";
-                servico = xmlConfig.SelectSingleNode(pathServico);
-            }
-
-            return servico;
+            return ResolvedorServicoValidacao.ResolverDFe(versao, tipoDFe, tagRaiz, xmlConfig);
         }
 
         private static InformacaoXML MontarInformacaoGeral(XmlNode servico, int codigoConfiguracao)
         {
-            #region verifica variáveis para a assinatura
-
-            var usaCertificado = VerificarUtilizacaoCertificadoDigital(servico, codigoConfiguracao);
-            var ambiente = VerificarAmbienteAssinatura(servico, codigoConfiguracao);
-            var canonizalizacaoExclusiva = VerificarAssinaCanonicalizacaoExclusiva(servico, codigoConfiguracao);
-            var signatureAlgorithmType = VerificarAlgoritmoAssinatura(servico, codigoConfiguracao);
-
-            #endregion
-
-            return new InformacaoXML
-            {
-                TagRaiz = servico.Attributes["tagRaiz"]?.Value,
-                Versao = servico.Attributes["versao"]?.Value,
-                Descricao = servico.SelectSingleNode("*[local-name()='Descricao']")?.InnerText,
-                SchemaArquivo = servico.SelectSingleNode("*[local-name()='SchemaArquivo']")?.InnerText,
-                TargetNS = servico.SelectSingleNode("*[local-name()='TargetNS']")?.InnerText,
-                TagAssinatura = servico.SelectSingleNode("*[local-name()='TagAssinatura']")?.InnerText,
-                TagAtributoID = servico.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText,
-                TagEvento = servico.SelectSingleNode("*[local-name()='TagEvento']")?.InnerText,
-                TagLoteAssinatura = servico.SelectSingleNode("*[local-name()='TagLoteAssinatura']")?.InnerText,
-                TagLoteAtributoID = servico.SelectSingleNode("*[local-name()='TagLoteAtributoID']")?.InnerText,
-                TagExtraAssinatura = servico.SelectSingleNode("*[local-name()='TagExtraAssinatura']")?.InnerText,
-                TagExtraAtributoID = servico.SelectSingleNode("*[local-name()='TagExtraAtributoID']")?.InnerText,
-                NaoAssina = ambiente,
-                UsaCertificadoDigital = usaCertificado,
-                AssinaCanonicalizacaoExclusiva = canonizalizacaoExclusiva,
-                SignatureAlgorithmType = signatureAlgorithmType,
-                GerarQRCode = servico.SelectSingleNode("*[local-name()='GerarQrCode']")?.InnerText?.Trim() == "true"
-
-            };
-        }
-
-        private static bool VerificarUtilizacaoCertificadoDigital(XmlNode servico, int codigoConfiguracao)
-        {
-            string valorCert = null;
-            var nodeExcecao = VerificarExcecao(servico, codigoConfiguracao, "UsaCertificadoDigital");
-
-            if (nodeExcecao != null)
-            {
-                valorCert = nodeExcecao.InnerText;
-            }
-
-            return valorCert?.Trim() != "false";
-        }
-
-        private static TipoAmbiente? VerificarAmbienteAssinatura(XmlNode servico, int codigoConfiguracao)
-        {
-            string ambiente = null;
-            var nodeExcecao = VerificarExcecao(servico, codigoConfiguracao, "NaoAssina");
-
-            if (nodeExcecao != null)
-            {
-                ambiente = nodeExcecao.InnerText?.Trim().ToLower();
-            }
-
-            return ambiente?.ToLower() == "homologação" ? TipoAmbiente.Homologacao : (ambiente?.ToLower() == "produção" ? TipoAmbiente.Producao : (TipoAmbiente?)null);
-        }
-
-        private static bool VerificarAssinaCanonicalizacaoExclusiva(XmlNode servico, int codigoConfiguracao)
-        {
-            string valorCanonicalizacao = null;
-            var nodeExcecao = VerificarExcecao(servico, codigoConfiguracao, "AssinaCanonicalizacaoExclusiva");
-
-            if (nodeExcecao != null)
-            {
-                valorCanonicalizacao = nodeExcecao.InnerText;
-            }
-
-            return valorCanonicalizacao?.Trim() == "true";
+            return LeitorConfiguracaoValidacao.Ler(servico, codigoConfiguracao);
         }
 
         private static AlgorithmType VerificarAlgoritmoAssinatura(XmlNode servico, int codigoConfiguracao)
         {
-            var valorAlgoritmo = ObterValorConfiguracao(servico, codigoConfiguracao, "SignatureAlgorithmType")
-                ?? ObterValorConfiguracao(servico?.ParentNode, codigoConfiguracao, "SignatureAlgorithmType");
-
-            if (string.IsNullOrWhiteSpace(valorAlgoritmo))
-            {
-                return AlgorithmType.Sha1;
-            }
-
-            if (Enum.TryParse(valorAlgoritmo, true, out AlgorithmType algoritmo) &&
-                Enum.IsDefined(typeof(AlgorithmType), algoritmo))
-            {
-                return algoritmo;
-            }
-
-            throw new Exception($"Valor inválido para SignatureAlgorithmType: {valorAlgoritmo}.");
-        }
-
-        private static string ObterValorConfiguracao(XmlNode node, int codigoConfiguracao, string nomeTag)
-        {
-            var nodeTag = node?.SelectSingleNode($"*[local-name()='{nomeTag}']");
-
-            if (nodeTag is null)
-            {
-                return null;
-            }
-
-            var nodeExcecao = nodeTag.SelectSingleNode(
-                $"*[local-name()='Excecao' and @codMunicipio='{codigoConfiguracao}']"
-            );
-
-            if (nodeExcecao != null)
-            {
-                return nodeExcecao.InnerText?.Trim();
-            }
-
-            var possuiElementosFilhos = nodeTag.ChildNodes
-                .Cast<XmlNode>()
-                .Any(x => x.NodeType == XmlNodeType.Element);
-
-            return possuiElementosFilhos ? null : nodeTag.InnerText?.Trim();
-        }
-
-        private static XmlNode VerificarExcecao(XmlNode servico, int codigoConfiguracao, string nomeTag)
-        {
-            var nodeTag = servico.SelectSingleNode($"*[local-name()='{nomeTag}']");
-            XmlNode nodeExcecao = null;
-
-            if (nodeTag != null)
-            {
-                nodeExcecao = nodeTag.SelectSingleNode(
-                    $"*[local-name()='Excecao' and @codMunicipio='{codigoConfiguracao}']"
-                );
-            }
-
-            return nodeExcecao;
-        }
-
-        private static void MontarInformacaoEspecifica(XmlNode servico, XmlNode tipo, InformacaoXML inform)
-        {
-            inform.SchemaArquivo = tipo.SelectSingleNode("*[local-name()='SchemaArquivo']")?.InnerText;
-            inform.SchemaArquivoEspecifico = tipo.SelectSingleNode("*[local-name()='SchemaArquivoEspecifico']")?.InnerText;
-            inform.TargetNSEspecifico = tipo.SelectSingleNode("*[local-name()='TargetNS']")?.InnerText ?? inform.TargetNS; // Caso o nó específico tenha uma TargetNS diferente da geral, utiliza a específica, caso contrário, mantém a geral
-            inform.TagAtributoID = tipo.SelectSingleNode("*[local-name()='TagAtributoID']")?.InnerText ?? inform.TagAtributoID; // Caso o nó específico tenha um atributo ID diferente da geral, utiliza o específico, caso contrário, mantém o geral
+            return LeitorConfiguracaoValidacao.ObterAlgoritmoAssinatura(servico, codigoConfiguracao);
         }
 
         private void AssinarSeNecessario(XmlDocument xml, XmlNode servico, InformacaoXML inform, X509Certificate2 cert, Configuracao configuracao, TipoAmbiente tipoAmbiente, TipoDFe tipoDFe)
         {
-            if (tipoDFe == TipoDFe.EFDReinf && xml.GetElementsByTagName("envioLoteEventos").Count > 0)
-            {
-                AssinarEventosEFDReinf(xml, servico, inform.NaoAssina, cert, tipoAmbiente);
-                return;
-            }
-
-            if (tipoDFe == TipoDFe.ESocial && xml.GetElementsByTagName("envioLoteEventos").Count > 0)
-            {
-                AssinarEventosESocial(xml, servico, inform.NaoAssina, cert, tipoAmbiente);
-                return;
-            }
-
-            if (!string.IsNullOrEmpty(inform.TagAssinatura))
-            {
-                Assinar(xml, inform.TagAssinatura, inform.TagAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.SignatureAlgorithmType, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
-            }
-
-            if (!string.IsNullOrEmpty(inform.TagLoteAssinatura))
-            {
-                Assinar(xml, inform.TagLoteAssinatura, inform.TagLoteAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.SignatureAlgorithmType, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
-            }
-
-            if (!string.IsNullOrEmpty(inform.TagExtraAssinatura))
-            {
-                Assinar(xml, inform.TagExtraAssinatura, inform.TagExtraAtributoID, inform.NaoAssina, inform.UsaCertificadoDigital, inform.AssinaCanonicalizacaoExclusiva, inform.SignatureAlgorithmType, inform.GerarQRCode, cert, tipoAmbiente, tipoDFe, configuracao);
-            }
+            CoordenadorAssinaturaXML.AssinarSeNecessario(
+                xml,
+                servico,
+                inform,
+                cert,
+                configuracao,
+                tipoAmbiente,
+                tipoDFe,
+                AssinarEventosEFDReinf,
+                AssinarEventosESocial,
+                Assinar);
         }
 
         private static void AssinarEventosEFDReinf(XmlDocument xml, XmlNode servico, TipoAmbiente? tagNaoAssina, X509Certificate2 cert, TipoAmbiente tipoAmbiente)
@@ -1708,57 +1281,6 @@ namespace Unimake.Business.DFe
                         return;
                     }
                 }
-            }
-        }
-
-        private static void ValidarSchemaGeral(XmlDocument xml, InformacaoXML info, TipoDFe tipoDFe, PadraoNFSe padraoNFSe = PadraoNFSe.None)
-        {
-            // Caso não possua Schema para a validação retornar sem validar e deixar a validação por conta da prefeitura ao enviar
-            if (string.IsNullOrEmpty(info.SchemaArquivo))
-            {
-                return;
-            }
-
-            var tipoBusca = tipoDFe == TipoDFe.NFCe ? TipoDFe.NFe : tipoDFe;
-
-            string schema = padraoNFSe == PadraoNFSe.None
-                ? $"{tipoBusca.ToString()}.{info.SchemaArquivo}"
-                : $"{tipoBusca.ToString()}.{padraoNFSe.ToString()}.{info.SchemaArquivo}";
-
-            var validar = new ValidarSchema();
-            validar.Validar(xml, schema, info.TargetNS, padraoNFSe);
-
-            if (!validar.Success)
-            {
-                throw new ValidarXMLException($"Erro ao validar schema geral: {validar.ErrorMessage}.");
-            }
-        }
-
-        private static void ValidarSchemaEspecifico(XmlNode node, bool isEvento, InformacaoXML info, TipoDFe tipoDFe)
-        {
-            // Caso não possua Schema para a validação retornar sem validar e deixar a validação por conta da prefeitura ao enviar
-            if (string.IsNullOrEmpty(info.SchemaArquivoEspecifico))
-            {
-                return;
-            }
-
-            //Isolando cada XML dependendo do tipoDFe
-            var isolador = IsoladorFactory.CriarIsolador(tipoDFe, isEvento);
-            var xmlEspecifico = isolador.Isolar(node);
-
-            // Em casos que não possuir o xml especifico  Ex: CTe de complemento
-            if (xmlEspecifico is null)
-            {
-                return;
-            }
-
-            var validarEspecifico = new ValidarSchema();
-            string schemaEspecifico = $"{tipoDFe.ToString()}.{info.SchemaArquivoEspecifico}";
-            validarEspecifico.Validar(xmlEspecifico, schemaEspecifico, info.TargetNSEspecifico);
-
-            if (!validarEspecifico.Success)
-            {
-                throw new ValidarXMLException($"Erro ao validar schema específico: {validarEspecifico.ErrorMessage}.");
             }
         }
 
