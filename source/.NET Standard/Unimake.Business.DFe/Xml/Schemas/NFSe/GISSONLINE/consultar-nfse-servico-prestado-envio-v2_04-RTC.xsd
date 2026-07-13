@@ -6,10 +6,10 @@
 	attributeFormDefault="unqualified" elementFormDefault="qualified">
 
 	<xsd:import namespace="http://www.w3.org/2000/09/xmldsig#"
-		schemaLocation="xmldsig-core-schema20020212.xsd" />
+		schemaLocation="xmldsig-core-schema20020212-RTC.xsd" />
 
 	<xsd:import namespace="http://www.giss.com.br/tipos-v2_04.xsd"
-		schemaLocation="tipos-v2_04.xsd" />
+		schemaLocation="tipos-v2_04-RTC.xsd" />
 
 	<xsd:element name="ConsultarNfseServicoPrestadoEnvio">
 		<xsd:complexType>
