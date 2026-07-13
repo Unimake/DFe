@@ -692,6 +692,12 @@
 		</xsd:restriction>
 	</xsd:simpleType>
 
+	<xsd:simpleType name="tsContextoTecnico">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="4000" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
 	<xsd:simpleType name="tsCodigoCancelamentoNfse">
 		<xsd:annotation>
 			<xsd:documentation>Codigo do Cancelamento da NFS-e (
@@ -808,39 +814,70 @@
 		</xsd:restriction>
 	</xsd:simpleType>
 	
-	<xsd:simpleType name="TSDec2V2">
-		<xsd:annotation>
-			<xsd:documentation>Valor decimal com 1 ou 2 dígitos mais 2 casas decimais</xsd:documentation>
-		</xsd:annotation>
-		<xsd:restriction base="xsd:string">
-			<xsd:whiteSpace value="preserve"/>
-			<xsd:pattern value="0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,1}(\.[0-9]{2})?"/>
-		</xsd:restriction>
-	</xsd:simpleType>
+    <xsd:simpleType name="TSDec2V2">
+        <xsd:annotation>
+            <xsd:documentation>
+                Valor decimal com 1 ou 2 dígitos inteiros e até 2 casas decimais
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+            <!-- Máximo de 4 dígitos no total (2 inteiros + 2 decimais) -->
+            <xsd:totalDigits value="4"/>
+            <!-- Exatamente 2 casas decimais -->
+            <xsd:fractionDigits value="2"/>
+            <!-- Valor mínimo e máximo permitidos -->
+            <xsd:minInclusive value="0.00"/>
+            <xsd:maxInclusive value="99.99"/>
+        </xsd:restriction>
+    </xsd:simpleType>
 	
-	<xsd:simpleType name="TSDec15V2">
-		<xsd:annotation>
-			<xsd:documentation>Valor decimal com 1 a 15 dígitos mais 2 casas decimais</xsd:documentation>
-		</xsd:annotation>
-		<xsd:restriction base="xsd:string">
-			<xsd:whiteSpace value="preserve"/>
-			<xsd:pattern value="0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,14}(\.[0-9]{2})?"/>
-		</xsd:restriction>
-	</xsd:simpleType>
+    <xsd:simpleType name="TSDec15V2">
+        <xsd:annotation>
+            <xsd:documentation>
+                Valor decimal com 1 a 15 dígitos inteiros e até 2 casas decimais
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+            <!-- Total digits = max 17 (15 inteiros + 2 decimais) -->
+            <xsd:totalDigits value="17"/>
+            <!-- Até 2 casas decimais -->
+            <xsd:fractionDigits value="2"/>
+            <!-- Valor mínimo -->
+            <xsd:minInclusive value="0.00"/>
+            <!-- Valor máximo = 999999999999999.99 -->
+            <xsd:maxInclusive value="999999999999999.99"/>
+        </xsd:restriction>
+    </xsd:simpleType>
 	
 	
 	<xsd:simpleType name="TSTipoRetPISCofins">
 		<xsd:annotation>
 			<xsd:documentation>
         Tipo de retencao do Pis/Cofins:
-        1 - Retido;
-        2 - Não Retido;
-      </xsd:documentation>
+	        0 - PIS/COFINS/CSLL Não Retidos;
+	        1 - PIS/COFINS Retidos;
+	        2 - PIS/COFINS Não Retidos;
+	        3 - PIS/COFINS/CSLL Retidos;
+	        4 - PIS/COFINS Retidos, CSLL Não Retido;
+	        5 - PIS Retido, COFINS/CSLL Não Retido;
+	        6 - COFINS Retido, PIS/CSLL Não Retido;
+	        7 - PIS Não Retido, COFINS/CSLL Retidos;
+	        8 - PIS/COFINS Não Retidos, CSLL Retido;
+	        9 - COFINS Não Retido, PIS/CSLL Retidos;
+	      </xsd:documentation>
 		</xsd:annotation>
 		<xsd:restriction base="xsd:string">
 			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="0"/>
 			<xsd:enumeration value="1"/>
 			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="5"/>
+			<xsd:enumeration value="6"/>
+			<xsd:enumeration value="7"/>
+			<xsd:enumeration value="8"/>
+			<xsd:enumeration value="9"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	
@@ -848,11 +885,17 @@
 		<xsd:annotation>
 			<xsd:documentation>Valor decimal com 1 a 3 dígitos mais 2 casas decimais</xsd:documentation>
 		</xsd:annotation>
-		<xsd:restriction base="xsd:string">
-			<xsd:whiteSpace value="preserve"/>
-			<xsd:pattern value="0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2})?"/>
-		</xsd:restriction>
-	</xsd:simpleType>
+        <xsd:restriction base="xsd:decimal">
+            <!-- Total digits = max 5 (3 inteiros + 2 decimais) -->
+            <xsd:totalDigits value="5"/>
+            <!-- Até 2 casas decimais -->
+            <xsd:fractionDigits value="2"/>
+            <!-- Valor mínimo -->
+            <xsd:minInclusive value="0.00"/>
+            <!-- Valor máximo = 999.99 -->
+            <xsd:maxInclusive value="999.99"/>
+        </xsd:restriction>
+	</xsd:simpleType>	
 	
 	<xsd:simpleType name="TSTipoCST">
 		<xsd:annotation>
@@ -865,10 +908,34 @@
         04 - Operação Tributável monofásica - Revenda a Alíquota Zero;
         05 - Operação Tributável por Substituição Tributária;
         06 - Operação Tributável a Alíquota Zero;
-        07 - Operação Tributável da Contribuição;
+	        07 - Operação Isenta da Contribuição;
         08 - Operação sem Incidência da Contribuição;
         09 - Operação com Suspensão da Contribuição;
-      </xsd:documentation>
+	        49 - Outras Operações de Saída;
+	        50 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Tributada no Mercado Interno;
+	        51 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno;
+	        52 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação;
+	        53 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno;
+	        54 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas no Mercado Interno e de Exportação;
+	        55 - Operação com Direito a Crédito – Vinculada a Receitas Não Tributadas no Mercado Interno e de Exportação;
+	        56 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação;
+	        60 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno;
+	        61 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno;
+	        62 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação;
+	        63 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno;
+	        64 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação;
+	        65 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação;
+	        66 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação;
+	        67 - Crédito Presumido – Outras Operações;
+	        70 - Operação de Aquisição sem Direito a Crédito;
+	        71 - Operação de Aquisição com Isenção;
+	        72 - Operação de Aquisição com Suspensão;
+	        73 - Operação de Aquisição a Alíquota Zero;
+	        74 - Operação de Aquisição sem Incidência da Contribuição;
+	        75 - Operação de Aquisição por Substituição Tributária;
+	        98 - Outras Operações de Entrada;
+	        99 - Outras Operações;
+	      </xsd:documentation>
 		</xsd:annotation>
 		<xsd:restriction base="xsd:string">
 			<xsd:whiteSpace value="preserve"/>
@@ -882,10 +949,48 @@
 			<xsd:enumeration value="07"/>
 			<xsd:enumeration value="08"/>
 			<xsd:enumeration value="09"/>
+			<xsd:enumeration value="49"/>
+			<xsd:enumeration value="50"/>
+			<xsd:enumeration value="51"/>
+			<xsd:enumeration value="52"/>
+			<xsd:enumeration value="53"/>
+			<xsd:enumeration value="54"/>
+			<xsd:enumeration value="55"/>
+			<xsd:enumeration value="56"/>
+			<xsd:enumeration value="60"/>
+			<xsd:enumeration value="61"/>
+			<xsd:enumeration value="62"/>
+			<xsd:enumeration value="63"/>
+			<xsd:enumeration value="64"/>
+			<xsd:enumeration value="65"/>
+			<xsd:enumeration value="66"/>
+			<xsd:enumeration value="67"/>
+			<xsd:enumeration value="70"/>
+			<xsd:enumeration value="71"/>
+			<xsd:enumeration value="72"/>
+			<xsd:enumeration value="73"/>
+			<xsd:enumeration value="74"/>
+			<xsd:enumeration value="75"/>
+			<xsd:enumeration value="98"/>
+			<xsd:enumeration value="99"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	
-		<xsd:simpleType name="TSRTCFinNFSe">
+		<xsd:simpleType name="TSTipoIndTotTrib">
+		<xsd:annotation>
+			<xsd:documentation>
+        Indicador de informação de valor total de tributos. Possui valor fixo igual a zero (indTotTrib=0).
+        Não informar nenhum valor estimado para os Tributos (Decreto 8.264/2014).
+        0 - Não;
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="TSRTCFinNFSe">
 		<xsd:annotation>
 			<xsd:documentation>
         Indicador da finalidade da emissão de NFS-e:
@@ -1098,7 +1203,7 @@ Tipo de Operação com Entes Governanementais ou outros serviços sobre bens im�
 		<xsd:restriction base="xsd:string">
 			<xsd:whiteSpace value="preserve"/>
 			<xsd:maxLength value="14"/>
-			<xsd:pattern value="[0-9]{14}"/>
+			<xsd:pattern value="[0-9A-Z]{14}"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="TSCPF">
@@ -1220,7 +1325,8 @@ Tipo de Operação com Entes Governanementais ou outros serviços sobre bens im�
         4 - Matriz;
         5 - Filial ou sucursal;
         6 - Outro vínculo;
-      </xsd:documentation>
+	        9 - Desconhecido (tipo não informado na nota de origem);
+	      </xsd:documentation>
 		</xsd:annotation>
 		<xsd:restriction base="xsd:string">
 			<xsd:whiteSpace value="preserve"/>
@@ -1231,6 +1337,7 @@ Tipo de Operação com Entes Governanementais ou outros serviços sobre bens im�
 			<xsd:enumeration value="4"/>
 			<xsd:enumeration value="5"/>
 			<xsd:enumeration value="6"/>
+			<xsd:enumeration value="9"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="TSMecAFComExPrest">
@@ -1583,10 +1690,19 @@ Tipo de Operação com Entes Governanementais ou outros serviços sobre bens im�
             </xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
+				<xsd:element name="indTotTrib" type="TSTipoIndTotTrib">
+					<xsd:annotation>
+						<xsd:documentation>
+              Indicador de informação de valor total de tributos. Possui valor fixo igual a zero (indTotTrib=0).
+              Não informar nenhum valor estimado para os Tributos (Decreto 8.264/2014).
+              0 - Não;
+            </xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
 				<xsd:element name="pTotTribSN" type="TSDec2V2">
 					<xsd:annotation>
 						<xsd:documentation>
-              Valor percentual aproximado do total dos tributos da alíquota do Simples Nacional (%)
+              Valor percentual aproximado do total dos tributos da alíquota do Simples Nacional (%).
             </xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
@@ -2472,14 +2588,14 @@ Tipo de Operação com Entes Governanementais ou outros serviços sobre bens im�
 				minOccurs="0" maxOccurs="1" />
 			<xsd:element name="DescontoCondicionado" type="tsValor"
 				minOccurs="0" maxOccurs="1" />
-			<xsd:element name="trib" type="TCInfoTributacao">
+			<xsd:element name="trib" type="TCInfoTributacao" minOccurs="0" maxOccurs="1">
 				<xsd:annotation>
 					<xsd:documentation>
             Grupo de informações relacionados aos tributos federais e valor aproximado dos tributos referentes ao serviço prestado
           </xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="IBSCBS" type="TCRTCInfoIBSCBS">
+			<xsd:element name="IBSCBS" type="TCRTCInfoIBSCBS" minOccurs="0" maxOccurs="1" >
 				<xsd:annotation>
 					<xsd:documentation>Grupo de informações declaradas pelo emitente referentes ao IBS e à CBS</xsd:documentation>
 				</xsd:annotation>
@@ -2636,7 +2752,7 @@ Tipo de Operação com Entes Governanementais ou outros serviços sobre bens im�
 			<xsd:element name="CodigoTributacaoMunicipio" type="tsCodigoTributacao"
 				minOccurs="0" maxOccurs="1" />
 			<xsd:element name="CodigoNbs" type="tsCodigoNbs"
-				minOccurs="1" maxOccurs="1" />
+				minOccurs="0" maxOccurs="1" />
 			<xsd:element name="Discriminacao" type="tsDiscriminacao"
 				minOccurs="1" maxOccurs="1" />
 			<xsd:element name="CodigoMunicipio" type="tsCodigoMunicipioIbge"
@@ -2990,6 +3106,8 @@ Tipo de Operação com Entes Governanementais ou outros serviços sobre bens im�
 				minOccurs="1" maxOccurs="1" />
 			<xsd:element name="Correcao" type="tsDescricaoMensagemAlerta"
 				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ContextoTecnico" type="tsContextoTecnico"
+				minOccurs="0" maxOccurs="1" />
 		</xsd:sequence>
 	</xsd:complexType>
 
@@ -3056,4 +3174,3 @@ Tipo de Operação com Entes Governanementais ou outros serviços sobre bens im�
 	<xsd:element name="CompNfse" type="tcCompNfse" />
 
 </xsd:schema>
-

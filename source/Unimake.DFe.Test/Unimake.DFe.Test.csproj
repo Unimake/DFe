@@ -6,18 +6,47 @@
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
-	<ItemGroup>
+	<ItemGroup Label="Exclusoes gerais">
 		<Compile Remove="Properties\**" />
 		<EmbeddedResource Remove="Properties\**" />
 		<None Remove="Properties\**" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Compile Remove="Utility\CertificadoDigitalTesteMetodo.cs" />
-	  <Compile Remove="Utility\TesteVelocidadeCache.cs" />
+	<ItemGroup Label="Testes por DFe">
+		<Compile Update="BPe\**\*.cs" />
+		<Compile Update="CCG\**\*.cs" />
+		<Compile Update="CIOT\**\*.cs" />
+		<Compile Update="CTe\**\*.cs" />
+		<Compile Update="CTeOS\**\*.cs" />
+		<Compile Update="CTeSimp\**\*.cs" />
+		<Compile Update="DARE\**\*.cs" />
+		<Compile Update="DCe\**\*.cs" />
+		<Compile Update="EFDReinf\**\*.cs" />
+		<Compile Update="ESocial\**\*.cs" />
+		<Compile Update="GNRE\**\*.cs" />
+		<Compile Update="MDFe\**\*.cs" />
+		<Compile Update="NF3e\**\*.cs" />
+		<Compile Update="NFCe\**\*.cs" />
+		<Compile Update="NFCom\**\*.cs" />
+		<Compile Update="NFe\**\*.cs" />
+		<Compile Update="NFGas\**\*.cs" />
+		<Compile Update="NFSe\**\*.cs" />
+		<Compile Update="SNCM\**\*.cs" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Label="Testes de integracoes e utilitarios">
+		<Compile Update="EBoleto\**\*.cs" />
+		<Compile Update="PIX\**\*.cs" />
+		<Compile Update="UMessenger\**\*.cs" />
+		<Compile Update="Utility\**\*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Label="Utility - testes locais removidos da suite">
+		<Compile Remove="Utility\CertificadoDigitalTesteMetodo.cs" />
+		<Compile Remove="Utility\TesteVelocidadeCache.cs" />
+	</ItemGroup>
+
+	<ItemGroup Label="NFSe - recursos XML removidos de None">
 		<None Remove="NFSe\Resources\CONAM\4.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<None Remove="NFSe\Resources\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml" />
 		<None Remove="NFSe\Resources\DIGIFRED\1.01\CancelarNfseEnvio-ped-cannfse.xml" />
@@ -29,10 +58,13 @@
 		<None Remove="NFSe\Resources\GINFES\3.01\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
 		<None Remove="NFSe\Resources\GINFES\3.01\EnviarLoteRpsEnvio-env-loterps.xml" />
 		<None Remove="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
-		<None Remove="Utility\TesteValidacao\XMLteste\CTe\consReciCTe .xml" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Label="Utility - recursos CTe removidos de None">
+		<None Remove="Utility\Validacao\XMLteste\CTe\consReciCTe .xml" />
+	</ItemGroup>
+
+	<ItemGroup Label="NFSe - recursos XML embutidos">
 		<EmbeddedResource Include="NFSe\Resources\CONAM\4.00\CancelarNfseEnvio-ped-cannfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\CONAM\4.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
 		<EmbeddedResource Include="NFSe\Resources\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml" />
@@ -45,15 +77,18 @@
 		<EmbeddedResource Include="NFSe\Resources\GINFES\3.01\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\GINFES\3.01\EnviarLoteRpsEnvio-env-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
-		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\CONAM\4.00\CancelarNfseEnvio-ped-cannfse.xml" />
-		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\CONAM\4.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
-		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml" />
-		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\CancelarNfseEnvio-ped-cannfse.xml" />
-		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\ConsultarLoteRpsEnvio-ped-loterps.xml" />
-		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\ConsultarNfseEnvio-ped-sitnfse.xml" />
-		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
-		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
-		<EmbeddedResource Include="Utility\TesteValidacao\XMLteste\NFSe\GINFES\3.01\EnviarLoteRpsEnvio-env-loterps.xml" />
+	</ItemGroup>
+
+	<ItemGroup Label="Utility - recursos NFSe embutidos para validacao">
+		<EmbeddedResource Include="Utility\Validacao\XMLteste\NFSe\CONAM\4.00\CancelarNfseEnvio-ped-cannfse.xml" />
+		<EmbeddedResource Include="Utility\Validacao\XMLteste\NFSe\CONAM\4.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
+		<EmbeddedResource Include="Utility\Validacao\XMLteste\NFSe\CONAM\4.00\EnviarLoteRpsEnvio-env-loterps.xml" />
+		<EmbeddedResource Include="Utility\Validacao\XMLteste\NFSe\GINFES\3.01\CancelarNfseEnvio-ped-cannfse.xml" />
+		<EmbeddedResource Include="Utility\Validacao\XMLteste\NFSe\GINFES\3.01\ConsultarLoteRpsEnvio-ped-loterps.xml" />
+		<EmbeddedResource Include="Utility\Validacao\XMLteste\NFSe\GINFES\3.01\ConsultarNfseEnvio-ped-sitnfse.xml" />
+		<EmbeddedResource Include="Utility\Validacao\XMLteste\NFSe\GINFES\3.01\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
+		<EmbeddedResource Include="Utility\Validacao\XMLteste\NFSe\GINFES\3.01\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
+		<EmbeddedResource Include="Utility\Validacao\XMLteste\NFSe\GINFES\3.01\EnviarLoteRpsEnvio-env-loterps.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -62,7 +97,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-    <PackageReference Include="xunit.v3" Version="3.2.2" />
+		<PackageReference Include="xunit.v3" Version="3.2.2" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -73,22 +108,21 @@
 		<ProjectReference Include="..\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<None Update="BugFixes\XML\41170801761135000132550010000189121110755809-ev-110110-001.xml">
+	<ItemGroup Label="NFe - recursos XML de BugFixes copiados para saida">
+		<None Update="NFe\Resources\BugFixes\41170801761135000132550010000189121110755809-ev-110110-001.xml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<None Update="BugFixes\XML\41190976430438002891550020000200981772597373-procNFe.xml">
+		<None Update="NFe\Resources\BugFixes\41190976430438002891550020000200981772597373-procNFe.xml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<None Update="BugFixes\XML\Bug162066.xml">
+		<None Update="NFe\Resources\BugFixes\Bug162066.xml">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Label="Pastas de recursos por DFe">
 		<Folder Include="DCe\Resources\" />
 		<Folder Include="NFSe\Resources\PORTAL_FACIL\2.02\" />
 	</ItemGroup>
-
 
 </Project>

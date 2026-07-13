@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.NFSe;
+using Unimake.DFe.Test.NFSe.Utilitarios;
+using Xunit;
+
+namespace Unimake.DFe.Test.NFSe.Servicos
+{
+    public class RecepcionarEventoTest
+    {
+        /// <summary>
+        /// Parâmetros para os testes
+        /// </summary>
+        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("RecepcionarEvento");
+
+        /// <summary>
+        /// Testar o serviço de recepção de eventos da NFSe
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [MemberData(nameof(Parametros))]
+        public void RecepcionarEventos(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
+        {
+            var nomeXMLEnvio = "EventoCancelar-ped-regev.xml";
+            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi encontrado.");
+
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(arqXML);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = tipoAmbiente,
+                CodigoMunicipio = codMunicipio,
+                Servico = Servico.NFSeRecepcionarEventosDiversos,
+                SchemaVersao = versaoSchema,
+                PadraoNFSe = padraoNFSe
+            };
+
+            var recepcionarEvento = new RecepcionarEvento(conteudoXML, configuracao);
+
+            Assert.Multiple(() => TestUtility.AnalisaResultado(recepcionarEvento));
+        }
+    }
+}

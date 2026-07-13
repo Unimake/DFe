@@ -1,0 +1,127 @@
+// ------------------------------------------------------------------
+// Evento de Prestação de Serviço em Desacordo - CT-e
+// ------------------------------------------------------------------
+
+// Limpar o campo utilizado para demonstrar os retornos
+EDT_RetornoWSString = ""
+
+// ------------------------------------------------------------------
+// Criar as configurações mínimas necessárias para consumir o serviço
+// ------------------------------------------------------------------
+oConfiguracao is Unimake.Business.DFe.Servicos.Configuracao()
+
+oConfiguracao.TipoDFe				= 2 // TipoDFe.CTe
+oConfiguracao.CertificadoArquivo	= "C:\Projetos\certificados\UnimakePV.pfx"
+oConfiguracao.CertificadoSenha		= "12345678"
+
+// ------------------------------------------------------------------
+// Criar o objeto principal do evento do CT-e
+// ------------------------------------------------------------------
+oEventoCTe is Unimake.Business.DFe.XML.CTe.EventoCTe
+
+oEventoCTe.Versao = "4.00"
+
+// ------------------------------------------------------------------
+// Criar o grupo de informações do evento <infEvento>
+// ------------------------------------------------------------------
+oInfEvento is Unimake.Business.DFe.XML.CTe.InfEvento
+
+oInfEvento.COrgao		= 41 // UFBrasil.PR
+oInfEvento.ChCTe		= "41200211111111111111111111111111111111111115"
+oInfEvento.CNPJ			= "11111111111111"
+oInfEvento.DhEvento		= SysDateTime()
+oInfEvento.TpEvento		= 610110 // Prestação do serviço em desacordo
+oInfEvento.TpAmb			= 2 // TipoAmbiente.Homologacao
+
+// ------------------------------------------------------------------
+// Criar o detalhamento específico do evento de desacordo
+// ------------------------------------------------------------------
+oDetEvento is Unimake.Business.DFe.XML.CTe.DetEventoPrestDesacordo
+
+oDetEvento.VersaoEvento		= "4.00"
+oDetEvento.IndDesacordoOper	= "1"
+oDetEvento.XObs				= "Observação do desacordo"
+
+// Adicionar o detalhamento do evento dentro de <infEvento>
+oInfEvento.DetEvento = oDetEvento
+
+// Adicionar o grupo <infEvento> dentro do objeto principal do evento
+oEventoCTe.InfEvento = oInfEvento
+
+// ------------------------------------------------------------------
+// Consumir o serviço de recepção de eventos do CT-e
+// ------------------------------------------------------------------
+WHEN EXCEPTION IN
+
+	// Criar o serviço de recepção de eventos
+	oRecepcaoEvento is Unimake.Business.DFe.Servicos.CTe.RecepcaoEvento()
+
+	// Executar o evento
+	oRecepcaoEvento.Executar(oEventoCTe, oConfiguracao)
+
+	// ------------------------------------------------------------------
+	// Recuperar o XML assinado
+	// ------------------------------------------------------------------
+	eventoAssinado is string = oRecepcaoEvento.GetConteudoXMLAssinado()
+
+	EDT_RetornoWSString += "XML do evento assinado:" + CR + CR
+	EDT_RetornoWSString += eventoAssinado + CR + CR
+
+	// ------------------------------------------------------------------
+	// Gravar o XML assinado no HD
+	// ------------------------------------------------------------------
+	caminhoArquivoEvento is string = "d:\testenfe\EventoDesacordoCte.xml"
+
+	fDelete(caminhoArquivoEvento)
+	fSaveText(caminhoArquivoEvento, eventoAssinado)
+
+	// ------------------------------------------------------------------
+	// Demonstrar o XML retornado pelo webservice
+	// ------------------------------------------------------------------
+	EDT_RetornoWSString += "Retorno do webservice:" + CR + CR
+	EDT_RetornoWSString += oRecepcaoEvento.RetornoWSString + CR + CR
+
+	// ------------------------------------------------------------------
+	// Demonstrar o resultado do processamento do evento
+	// ------------------------------------------------------------------
+	EDT_RetornoWSString += "<cStat Evento> " + ...
+		oRecepcaoEvento.Result.InfEvento.CStat + CR
+
+	EDT_RetornoWSString += "<xMotivo Evento> " + ...
+		oRecepcaoEvento.Result.InfEvento.XMotivo + CR + CR
+
+	// ------------------------------------------------------------------
+	// Realizar o tratamento conforme o status retornado
+	// ------------------------------------------------------------------
+	IF oRecepcaoEvento.Result.InfEvento.CStat = 135 THEN
+
+		// 135 = Evento registrado e vinculado ao CT-e
+		EDT_RetornoWSString += ...
+			"Evento de prestação de serviço em desacordo registrado com sucesso." + ...
+			CR + CR
+
+	ELSE IF oRecepcaoEvento.Result.InfEvento.CStat = 136 THEN
+
+		// 136 = Evento registrado, mas não vinculado ao CT-e
+		EDT_RetornoWSString += ...
+			"Evento registrado, mas não vinculado ao CT-e." + ...
+			CR + CR
+
+	ELSE
+
+		// Evento rejeitado ou retornado com outro status
+		EDT_RetornoWSString += ...
+			"O evento não foi registrado. Verifique o cStat e o xMotivo retornados." + ...
+			CR + CR
+
+	END
+
+	Info("FIM")
+
+DO
+
+	// ExceptionInfo também recupera os detalhes da exceção gerada
+	// internamente pelas classes .NET da DLL Unimake.DFe.
+	Info(ExceptionInfo(errFullDetails))
+
+END

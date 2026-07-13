@@ -20,27 +20,17 @@ namespace Unimake.Business.DFe
 #endif
     public class ValidarSchema
     {
+        private static readonly Lazy<HashSet<string>> Recursos =
+            new Lazy<HashSet<string>>(
+                () => new HashSet<string>(
+                    typeof(ValidarSchema).Assembly.GetManifestResourceNames(),
+                    StringComparer.Ordinal),
+                true);
+
         /// <summary>
         /// Erros ocorridos na validação
         /// </summary>
         private string ErroValidacao { get; set; }
-
-        /// <summary>
-        /// Converte String para Stream
-        /// </summary>
-        /// <param name="s">Conteúdo a ser convertido</param>
-        /// <returns>Retorna Stream do conteúdo informado para o método</returns>
-        private static Stream GenerateStreamFromString(string s)
-        {
-            var stream = new MemoryStream();
-            var writer = new StreamWriter(stream);
-            writer.Write(s);
-            writer.Flush();
-            stream.Position = 0;
-            return stream;
-        }
-
-        //private static Stream GenerateStreamFromString(string s) => new MemoryStream(System.Text.Encoding.UTF8.GetBytes(s ?? ""));
 
         /// <summary>
         /// Extrai recursos (XSD) da DLL para efetuar a validação do XML, resolvendo recursivamente todos os includes/imports.
@@ -55,8 +45,8 @@ namespace Unimake.Business.DFe
                 throw new Exception("Arquivo de schema (XSD) não foi informado.");
             }
 
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            var resources = new HashSet<string>(assembly.GetManifestResourceNames(), StringComparer.Ordinal);
+            var assembly = typeof(ValidarSchema).Assembly;
+            var resources = Recursos.Value;
 
             // Ex.: Configuration.NamespaceSchema + "NFSe.NACIONAL.DPS_v1.01.xsd"
             var arquivoResource = Configuration.NamespaceSchema + arqSchema;
@@ -133,13 +123,52 @@ namespace Unimake.Business.DFe
                 // Fallback: procura por "qualquer resource que termine com .<arquivo>"
                 // (ajuda se schemaLocation vier com subpasta mas o resource estiver "achatado")
                 var suffix = "." + fileOnly;
-                var bySuffix = resources.FirstOrDefault(r => r.EndsWith(suffix, StringComparison.Ordinal));
-                if (!string.IsNullOrWhiteSpace(bySuffix))
+                var bySuffix = resources
+                    .Where(r => r.EndsWith(suffix, StringComparison.Ordinal))
+                    .OrderBy(r => r, StringComparer.Ordinal)
+                    .ToList();
+
+                if (bySuffix.Count > 1)
                 {
-                    return bySuffix;
+                    var proximidadeMaxima = bySuffix.Max(x => ObterTamanhoPrefixoComum(currentResourceName, x));
+                    var maisProximos = bySuffix
+                        .Where(x => ObterTamanhoPrefixoComum(currentResourceName, x) == proximidadeMaxima)
+                        .ToList();
+
+                    if (maisProximos.Count == 1)
+                    {
+                        return maisProximos[0];
+                    }
+                }
+
+                if (bySuffix.Count == 1)
+                {
+                    return bySuffix[0];
+                }
+
+                if (bySuffix.Count > 1)
+                {
+                    throw new Exception(
+                        "Referência de schema ambígua nos recursos da DLL.\r\n" +
+                        "Schema principal: " + arqSchema + "\r\n" +
+                        "schemaLocation: " + schemaLocation + "\r\n" +
+                        "Recursos encontrados: " + string.Join(", ", bySuffix));
                 }
 
                 return null;
+            }
+
+            int ObterTamanhoPrefixoComum(string primeiro, string segundo)
+            {
+                var limite = Math.Min(primeiro?.Length ?? 0, segundo?.Length ?? 0);
+                var indice = 0;
+
+                while (indice < limite && primeiro[indice] == segundo[indice])
+                {
+                    indice++;
+                }
+
+                return indice;
             }
 
             while (queue.Count > 0)
@@ -252,7 +281,12 @@ namespace Unimake.Business.DFe
 
             foreach (var file in files)
             {
-                var result = XmlSchema.Read(GenerateStreamFromString(file), null);
+                XmlSchema result;
+                using (var reader = new StringReader(file))
+                {
+                    result = XmlSchema.Read(reader, null);
+                }
+
                 yield return result;
             }
         }

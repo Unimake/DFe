@@ -110,8 +110,21 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         /// <summary>
         /// Código IBGE do município de incidência do ISSQN (quando aplicável).
         /// </summary>
-        [XmlElement("cLocIncid")]
+        [XmlIgnore]
         public int CLocIncid { get; set; }
+
+        /// <summary>
+        /// Campo auxiliar para serialização do código IBGE do município de incidência do ISSQN.
+        /// </summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        [XmlElement("cLocIncid")]
+        public string CLocIncidField
+        {
+            get => CLocIncid.ToString(CultureInfo.InvariantCulture);
+            set => CLocIncid = string.IsNullOrWhiteSpace(value) ? 0 : int.Parse(value, CultureInfo.InvariantCulture);
+        }
 
         /// <summary>
         /// Descrição do município de incidência do ISSQN (quando aplicável).
@@ -335,7 +348,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         #endregion Gerar ID
 
         #region Should Serialize
-        public bool ShouldSerializeCLocIncid() => CLocIncid > 0;
+        public bool ShouldSerializeCLocIncidField() => CLocIncid > 0;
         public bool ShouldSerializeXLocIncid() => !string.IsNullOrWhiteSpace(XLocIncid);
         public bool ShouldSerializeXTribMun() => !string.IsNullOrWhiteSpace(XTribMun);
         public bool ShouldSerializeXNBS() => !string.IsNullOrWhiteSpace(XNBS);

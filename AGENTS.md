@@ -67,14 +67,34 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 
 ## Testes obrigatórios para novas implementações
 
-- Para novo XML/classe de serialização, adicione ou atualize teste de serialização/desserialização em `source/Unimake.DFe.Test/<DFe>`.
-- Para novo serviço, adicione teste no diretório do DFe correspondente, seguindo nomes como `StatusServicoTest`, `ConsultaProtocoloTest`, `AutorizacaoTest`, `RecepcaoEventoTest`.
+- Para novo XML/classe de serialização, adicione ou atualize teste de serialização/desserialização em `source/Unimake.DFe.Test/<DFe>/Serializacao`.
+- Para novo serviço, adicione teste em `source/Unimake.DFe.Test/<DFe>/Servicos`, seguindo nomes como `StatusServicoTest`, `ConsultaProtocoloTest`, `AutorizacaoTest`, `RecepcaoEventoTest`.
 - Para novo schema ou provedor, adicione XML realista em `Resources` e valide geração, leitura e comparação de `InnerText`.
 - Marque testes com `[Trait("DFe", "<DFe>")]`.
 - Use caminhos relativos no padrão existente, como `@"..\..\..\NFe\Resources\arquivo.xml"`.
 - Para bug fixes, prefira criar teste em `BugFixes` ou no DFe afetado, com recurso XML mínimo que reproduza o problema.
 - Ao implementar algo novo ou adaptar comportamento existente, execute somente os testes novos ou alterados. Não rode toda a suíte por padrão, pois ela é grande e demorada.
 - Se precisar validar regressão de um DFe específico, filtre pelos testes do DFe ou pela classe/método afetado. Rode todos os testes apenas quando a mudança atingir infraestrutura compartilhada, serialização base, assinatura, transporte, validação global ou quando isso for solicitado explicitamente.
+
+## Organização dos testes unitários
+
+- Mantenha os testes em `source/Unimake.DFe.Test` separados primeiro pelo documento fiscal eletrônico ou integração: `BPe`, `CCG`, `CIOT`, `CTe`, `CTeOS`, `CTeSimp`, `DARE`, `DCe`, `EFDReinf`, `ESocial`, `GNRE`, `MDFe`, `NF3e`, `NFCe`, `NFCom`, `NFe`, `NFGas`, `NFSe`, `SNCM`, `EBoleto`, `PIX`, `UMessenger`.
+- Dentro de cada grupo, use subpastas por responsabilidade:
+  - `Serializacao` para serialização, desserialização, round-trip e leitura/gravação de XML.
+  - `Servicos` para consumo de serviços, status, autorização, consulta, recepção de eventos, inutilização, distribuição e bases auxiliares usadas só por testes de serviço.
+  - `Validacao` para testes de validators, schema, regras manuais e validações específicas do DFe.
+  - `BugFixes` para regressões de bugs, com recursos relacionados em `Resources\BugFixes` quando forem do mesmo DFe.
+  - `Utilitarios` para helpers ou testes auxiliares que pertencem a um DFe específico.
+  - `Parsing` para parsers de retorno/API, especialmente em integrações como `EBoleto`, `PIX` e `UMessenger`.
+- Não deixe arquivos `.cs` diretamente na raiz de um grupo de DFe/integração; a exceção é `Infraestrutura`, que concentra suporte global do projeto de testes (`PropConfig`, `AssemblyInfo`, `GlobalUsings`).
+- O namespace deve acompanhar o caminho físico. Exemplo: `source/Unimake.DFe.Test/NFe/Servicos/StatusServicoTest.cs` deve usar `namespace Unimake.DFe.Test.NFe.Servicos`.
+- O valor de `[Trait("DFe", "...")]` deve ser igual ao primeiro diretório do teste. Exemplo: testes em `DARE\...` usam `[Trait("DFe", "DARE")]`, nunca o trait de outro DFe.
+- Testes utilitários que não pertencem a um DFe ficam em `Utility`, usando subpastas como `Cache`, `Certificados`, `Chaves`, `Conversao`, `Rede`, `Xml` e `Validacao`, com `[Trait("Utility", "...")]` quando aplicável.
+- Recursos XML devem ficar no grupo do DFe em `Resources`, ou em `Utility\Validacao\XMLteste` quando forem massa de validação compartilhada. Ao mover recursos, atualize também `Unimake.DFe.Test.csproj` (`EmbeddedResource`, `None Remove`, `None Update`) e qualquer caminho usado pelos testes.
+- Bases de teste compartilhadas por um único grupo devem ficar perto dos consumidores. Exemplo: `PIXTestBase`, `EBoletoTestBase` e `UMessengerTestBase` ficam em `Servicos` porque são usadas pelos testes de serviço.
+- Antes de concluir reorganizações de teste, faça uma varredura por arquivos soltos, namespaces antigos, `Trait("DFe", ...)` divergente do diretório e caminhos antigos no `.csproj`.
+- Para GNRE, evite rodar o filtro inteiro `DFe=GNRE` por padrão; rode apenas um método representativo, pois alguns testes se multiplicam bastante.
+- Para NFSe, evite rodar o filtro inteiro `DFe=NFSe` por padrão; prefira filtros por `FullyQualifiedName` de poucos métodos ou classes, pois o grupo pode gerar milhares de casos.
 
 ## Estilo de código
 

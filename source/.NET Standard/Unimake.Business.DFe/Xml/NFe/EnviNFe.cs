@@ -8911,13 +8911,13 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeVISSRetField() => VISSRet > 0;
 
-        public bool ShouldSerializeCServico() => string.IsNullOrWhiteSpace(CServico);
+        public bool ShouldSerializeCServico() => !string.IsNullOrWhiteSpace(CServico);
 
         public bool ShouldSerializeCMun() => CMun > 0;
 
         public bool ShouldSerializeCPais() => CPais > 0 && CPais != 1058;
 
-        public bool ShouldSerializeNProcesso() => string.IsNullOrWhiteSpace(NProcesso);
+        public bool ShouldSerializeNProcesso() => !string.IsNullOrWhiteSpace(NProcesso);
 
         #endregion
     }
