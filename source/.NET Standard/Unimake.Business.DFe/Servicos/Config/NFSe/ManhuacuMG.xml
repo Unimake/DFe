@@ -4,7 +4,7 @@
 		<RecepcionarLoteRps versao="2.04">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notafiscal-backend.linhares.es.gov.br/producao/NfseWSService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://mg-manhuacu-pm-nfs-backend.cloud.el.com.br/producao06/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -19,7 +19,7 @@
 		<RecepcionarLoteRpsSincrono versao="2.04">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notafiscal-backend.linhares.es.gov.br/producao/NfseWSService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://mg-manhuacu-pm-nfs-backend.cloud.el.com.br/producao06/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -34,7 +34,7 @@
 		<CancelarNfse versao="2.04">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notafiscal-backend.linhares.es.gov.br/producao/NfseWSService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://mg-manhuacu-pm-nfs-backend.cloud.el.com.br/producao06/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -49,7 +49,7 @@
 		<GerarNfse versao="2.04">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notafiscal-backend.linhares.es.gov.br/producao/NfseWSService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://mg-manhuacu-pm-nfs-backend.cloud.el.com.br/producao06/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -64,7 +64,7 @@
 		<SubstituirNfse versao="2.04">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notafiscal-backend.linhares.es.gov.br/producao/NfseWSService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://mg-manhuacu-pm-nfs-backend.cloud.el.com.br/producao06/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
 			<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
@@ -81,7 +81,7 @@
 		<ConsultarLoteRps versao="2.04">
 			<Descricao>Consulta Lote RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notafiscal-backend.linhares.es.gov.br/producao/NfseWSService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://mg-manhuacu-pm-nfs-backend.cloud.el.com.br/producao06/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -96,7 +96,7 @@
 		<ConsultarNfsePorRps versao="2.04">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notafiscal-backend.linhares.es.gov.br/producao/NfseWSService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://mg-manhuacu-pm-nfs-backend.cloud.el.com.br/producao06/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -111,7 +111,7 @@
 		<ConsultarNfseServicoPrestado versao="2.04">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notafiscal-backend.linhares.es.gov.br/producao/NfseWSService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://mg-manhuacu-pm-nfs-backend.cloud.el.com.br/producao06/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -126,7 +126,7 @@
 		<ConsultarNfseServicoTomado versao="2.04">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notafiscal-backend.linhares.es.gov.br/producao/NfseWSService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://mg-manhuacu-pm-nfs-backend.cloud.el.com.br/producao06/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -141,7 +141,7 @@
 		<ConsultarNfseFaixa versao="2.04">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notafiscal-backend.linhares.es.gov.br/producao/NfseWSService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://mg-manhuacu-pm-nfs-backend.cloud.el.com.br/producao06/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
