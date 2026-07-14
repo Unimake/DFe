@@ -12,8 +12,11 @@ namespace Unimake.Business.DFe
     {
         #region Private Fields
 
+        private static readonly Lazy<ConfiguracoesNFSeCache> ConfiguracoesNFSe =
+            new Lazy<ConfiguracoesNFSeCache>(CarregarConfiguracoesNFSe);
+
         private static readonly Lazy<Dictionary<int, PadraoNFSe>> PadraoNFSePorMunicipio =
-            new Lazy<Dictionary<int, PadraoNFSe>>(CarregarPadraoNFSePorMunicipio);
+            new Lazy<Dictionary<int, PadraoNFSe>>(CriarPadraoNFSePorMunicipio);
 
         #endregion Private Fields
 
@@ -41,6 +44,24 @@ namespace Unimake.Business.DFe
         #region Public Methods
 
         /// <summary>
+        /// Carrega os municípios e padrões de NFSe definidos no arquivo de configuração geral.
+        /// </summary>
+        /// <returns>Lista com os municípios configurados para NFSe e suas respectivas informações</returns>
+        public static List<MunicipioNFSeConfiguracao> CarregarMunicipio()
+        {
+            return new List<MunicipioNFSeConfiguracao>(ConfiguracoesNFSe.Value.Municipios);
+        }
+
+        /// <summary>
+        /// Carrega os estados definidos no arquivo de configuração geral.
+        /// </summary>
+        /// <returns>Lista com os estados configurados</returns>
+        public static List<MunicipioNFSeConfiguracao> CarregarEstados()
+        {
+            return new List<MunicipioNFSeConfiguracao>(ConfiguracoesNFSe.Value.Estados);
+        }
+
+        /// <summary>
         /// Retorna o padrão da NFSe com base no código do município no arquivo de configuração geral.
         /// </summary>
         /// <param name="codigoMunicipio">Código IBGE do município (7 dígitos)</param>
@@ -64,9 +85,22 @@ namespace Unimake.Business.DFe
 
         #region Private Methods
 
-        private static Dictionary<int, PadraoNFSe> CarregarPadraoNFSePorMunicipio()
+        private static Dictionary<int, PadraoNFSe> CriarPadraoNFSePorMunicipio()
         {
             var retorno = new Dictionary<int, PadraoNFSe>();
+            var municipios = ConfiguracoesNFSe.Value.Municipios;
+
+            foreach (var municipio in municipios)
+            {
+                retorno[municipio.CodigoMunicipio] = municipio.PadraoNFSe;
+            }
+
+            return retorno;
+        }
+
+        private static ConfiguracoesNFSeCache CarregarConfiguracoesNFSe()
+        {
+            var retorno = new ConfiguracoesNFSeCache();
             var document = new XmlDocument();
 
             using (var stream = typeof(Configuration).Assembly.GetManifestResourceStream(ArquivoConfigGeral))
@@ -86,31 +120,125 @@ namespace Unimake.Business.DFe
                 var elementArquivo = (XmlElement)nodeArquivo;
                 var id = elementArquivo.GetAttribute("ID");
 
-                if (id.Length != 7 || !int.TryParse(id, out var codigoMunicipio))
+                if (!int.TryParse(id, out var codigoConfig))
                 {
+                    continue;
+                }
+
+                var nome = string.Empty;
+                var uf = string.Empty;
+                var arqConfig = string.Empty;
+
+                var nomeNode = elementArquivo.GetElementsByTagName("Nome");
+                if (nomeNode.Count > 0)
+                {
+                    nome = nomeNode[0].InnerText;
+                }
+
+                var ufNode = elementArquivo.GetElementsByTagName("UF");
+                if (ufNode.Count > 0)
+                {
+                    uf = ufNode[0].InnerText;
+                }
+
+                var arqConfigNode = elementArquivo.GetElementsByTagName("ArqConfig");
+                if (arqConfigNode.Count > 0)
+                {
+                    arqConfig = arqConfigNode[0].InnerText;
+                }
+
+                if (id.Length <= 2)
+                {
+                    if (uf == "SVRS" || uf == "AN")
+                    {
+                        continue;
+                    }
+
+                    retorno.Estados.Add(new MunicipioNFSeConfiguracao(codigoConfig, uf, nome, arqConfig, PadraoNFSe.None));
                     continue;
                 }
 
                 var padraoNode = elementArquivo.GetElementsByTagName("PadraoNFSe");
-                if (padraoNode.Count == 0)
+                var padraoNFSe = PadraoNFSe.None;
+
+                if (padraoNode.Count > 0)
                 {
-                    continue;
+                    var padraoTag = padraoNode[0].InnerText;
+
+                    if (Enum.TryParse(padraoTag, true, out padraoNFSe))
+                    {
+                        retorno.Municipios.Add(new MunicipioNFSeConfiguracao(codigoConfig, uf, nome, arqConfig, padraoNFSe));
+                        continue;
+                    }
+
+                    throw new Exception("Caro desenvolvedor, você esqueceu de definir no enumerador \"PadraoNFSe\" o tipo " + padraoTag + " e eu não tenho como resolver esta encrenca. Por favor, va lá e defina.");
                 }
 
-                var padraoTag = padraoNode[0].InnerText;
-
-                if (Enum.TryParse(padraoTag, true, out PadraoNFSe padraoNFSe))
-                {
-                    retorno[codigoMunicipio] = padraoNFSe;
-                    continue;
-                }
-
-                throw new Exception("Caro desenvolvedor, você esqueceu de definir no enumerador \"PadraoNFSe\" o tipo " + padraoTag + " e eu não tenho como resolver esta encrenca. Por favor, va lá e defina.");
+                retorno.Municipios.Add(new MunicipioNFSeConfiguracao(codigoConfig, uf, nome, arqConfig, padraoNFSe));
             }
 
             return retorno;
         }
 
         #endregion Private Methods
+
+        #region Private Types
+
+        private sealed class ConfiguracoesNFSeCache
+        {
+            public List<MunicipioNFSeConfiguracao> Municipios { get; } = new List<MunicipioNFSeConfiguracao>();
+
+            public List<MunicipioNFSeConfiguracao> Estados { get; } = new List<MunicipioNFSeConfiguracao>();
+        }
+
+        #endregion Private Types
+    }
+
+    /// <summary>
+    /// Representa os dados de configuração de NFSe de um município ou padrão de configuração especial.
+    /// </summary>
+    public class MunicipioNFSeConfiguracao
+    {
+        /// <summary>
+        /// Inicializa uma nova instância com os dados de configuração de NFSe.
+        /// </summary>
+        /// <param name="codigoMunicipio">Código do município ou código especial de configuração</param>
+        /// <param name="uf">Sigla da unidade federativa associada</param>
+        /// <param name="nome">Nome do município ou da configuração</param>
+        /// <param name="arquivoConfiguracao">Nome do arquivo de configuração específico</param>
+        /// <param name="padraoNFSe">Padrão de NFSe utilizado</param>
+        public MunicipioNFSeConfiguracao(int codigoMunicipio, string uf, string nome, string arquivoConfiguracao, PadraoNFSe padraoNFSe)
+        {
+            CodigoMunicipio = codigoMunicipio;
+            UF = uf;
+            Nome = nome;
+            ArquivoConfiguracao = arquivoConfiguracao;
+            PadraoNFSe = padraoNFSe;
+        }
+
+        /// <summary>
+        /// Código do município ou código especial de configuração.
+        /// </summary>
+        public int CodigoMunicipio { get; }
+
+        /// <summary>
+        /// Sigla da unidade federativa associada ao município ou padrão.
+        /// </summary>
+        public string UF { get; }
+
+        /// <summary>
+        /// Nome do município ou do padrão especial.
+        /// </summary>
+        public string Nome { get; }
+
+        /// <summary>
+        /// Nome do arquivo de configuração específico associado ao município.
+        /// </summary>
+        public string ArquivoConfiguracao { get; }
+
+        /// <summary>
+        /// Padrão de NFSe utilizado pelo município.
+        /// </summary>
+        public PadraoNFSe PadraoNFSe { get; }
     }
 }
