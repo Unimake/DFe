@@ -1371,6 +1371,7 @@
 		<None Remove="Xml\Schemas\NFSe\GISSONLINE\substituir-nfse-envio-v2_04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GISSONLINE\substituir-nfse-resposta-v2_04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GISSONLINE\tipos-v2_04.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GISSONLINE\xmldsig-core-schema20020212-RTC.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GISSONLINE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\cabecalho_v1.xsd" />
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\cancelar_nfse_envio_v1.xsd" />
@@ -1623,6 +1624,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\xmldsig-core-schema20020212-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Validar\ValidarConfig.xml" />
 	</ItemGroup>
 
