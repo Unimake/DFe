@@ -122,6 +122,7 @@
 		<None Remove="Servicos\Config\NFSe\PatoBrancoPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PiratiniRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ItatibaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\RegistroSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RioClaroSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<None Remove="Servicos\Config\EBoleto\AN.xml" />
@@ -1608,6 +1609,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatoBrancoPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiratiniRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItatibaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\RegistroSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioClaroSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoBernardoDoCampoSP.xml" />
 	</ItemGroup>
