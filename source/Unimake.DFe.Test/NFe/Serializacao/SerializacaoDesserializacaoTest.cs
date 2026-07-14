@@ -1,5 +1,6 @@
 using System.IO;
 using System.Xml;
+using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
@@ -71,6 +72,29 @@ namespace Unimake.DFe.Test.NFe.Serializacao
             var doc2 = enviNFe.GerarXML();
 
             Assert.True(doc.InnerText == doc2.GetElementsByTagName("NFe")[0].InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a validação do QR-Code da NFC-e com CPF
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFe")]
+        public void ValidarQRCodeNFCeComCPF()
+        {
+            var doc = new XmlDocument();
+            doc.Load(@"..\..\..\NFe\Resources\99999999999999999999999999999999999999999999-procNFe.xml");
+
+            const string namespaceNFe = "http://www.portalfiscal.inf.br/nfe";
+            var namespaceManager = new XmlNamespaceManager(doc.NameTable);
+            namespaceManager.AddNamespace("nfe", namespaceNFe);
+            var qrCode = doc.SelectSingleNode("//nfe:qrCode", namespaceManager);
+            Assert.NotNull(qrCode);
+            qrCode.InnerText = "https://www.exemplo.gov.br/qrcode?p=41250899999999999900000000000000009000000000|3|2|01|0.00|1|12345678901|YWJjZA==";
+
+            var validar = new ValidarSchema();
+            validar.Validar(doc, "NFe.procNFe_v4.00.xsd", namespaceNFe);
+
+            Assert.True(validar.Success, validar.ErrorMessage);
         }
 
         /// <summary>
