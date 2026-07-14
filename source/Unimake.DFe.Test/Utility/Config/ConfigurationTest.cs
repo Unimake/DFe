@@ -3,7 +3,7 @@ using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
 using Xunit;
 
-namespace Unimake.DFe.Test.Config
+namespace Unimake.DFe.Test.Utility.Config
 {
     /// <summary>
     /// Testes unitários para validar leituras de configurações gerais.
