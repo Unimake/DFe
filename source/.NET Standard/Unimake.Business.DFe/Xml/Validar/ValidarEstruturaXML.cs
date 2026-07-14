@@ -1331,7 +1331,14 @@ namespace Unimake.Business.DFe
             return string.Empty;
         }
 
-        private static string DefinirVersaoNFSe(XmlDocument xml, PadraoNFSe padraoNFSe, int codigoMunicipio)
+        /// <summary>
+        /// Define a versão do XML de NFSe com base no conteúdo do XML, padrão de NFSe e código do município.
+        /// </summary>
+        /// <param name="xml">Arquivo XML enviado para a validação</param>
+        /// <param name="padraoNFSe">Padrão da NFSe</param>
+        /// <param name="codigoMunicipio">Código do município</param>
+        /// <returns></returns>
+        public static string DefinirVersaoNFSe(XmlDocument xml, PadraoNFSe padraoNFSe, int codigoMunicipio)
         {
             var raiz = xml.DocumentElement?.LocalName ?? string.Empty;
             var raizQualificada = xml.DocumentElement?.Name ?? string.Empty;
