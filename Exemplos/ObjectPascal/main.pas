@@ -32,7 +32,7 @@ uses
   CIOTEncerramentoOperacaoTransporte, CIOTCancelamentoOperacaoTransporte,
   CIOTRetificacaoOperacaoTransporte, ConsultarStatusBPe, EnviarBPeSincrono,
   EnviarBPeTASincrono, EnviarBPeTMSincrono, ConsultarSituacaoBPe,
-  EnviarEventoCancelamentoBPe;
+  EnviarEventoCancelamentoBPe, ConsultarReciboNFe;
 
 type
 
@@ -106,6 +106,7 @@ type
     BtnEnviarBPeTMSincrono: TButton;
     BtnConsultaSituacaoBPe: TButton;
     BtnEnviarEventoCancelamentoBPe: TButton;
+    btnConsultarReciboNFe: TButton;
     EnviarXmlGNRe: TButton;
     ConsultaConfigGNRE: TButton;
     GroupBox1: TGroupBox;
@@ -148,6 +149,7 @@ type
     procedure BtnCIOTEncerramentoOperacaoTransporteClick(Sender: TObject);
     procedure BtnCIOTGerarIdOperacaoTransporteClick(Sender: TObject);
     procedure BtnCIOTRetificacaoOperacaoTransporteClick(Sender: TObject);
+    procedure btnConsultarReciboNFeClick(Sender: TObject);
     procedure BtnConsultaSituacaoBPeClick(Sender: TObject);
     procedure BtnConsultaStatusBPeClick(Sender: TObject);
     procedure btnConsultarDistribuicaoDFeOnClick(Sender: TObject);
@@ -328,6 +330,17 @@ var
   oServico: TCIOTRetificacaoOperacaoTransporte;
 begin
   oServico := TCIOTRetificacaoOperacaoTransporte.Create;
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.btnConsultarReciboNFeClick(Sender: TObject);
+var
+  oServico: TConsultarReciboNFe;
+begin
+  oServico := TConsultarReciboNFe.Create;
   try
     oServico.Executar();
   finally
