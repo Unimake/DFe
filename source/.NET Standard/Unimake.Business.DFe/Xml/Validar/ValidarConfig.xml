@@ -6516,6 +6516,24 @@
           <Excecao codMunicipio="5220454">true</Excecao>
         </AssinaCanonicalizacaoExclusiva>
       </Servico>
+		<Servico tagRaiz="RecepcionarLoteDpsSincronoEnvio" versao="1.01">
+			<Descricao>Envio do DPS - Síncrono</Descricao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>DPS</TagAssinatura>
+			<TagAtributoID>infDPS</TagAtributoID>
+			<TagVersao></TagVersao>
+			<TagLoteAssinatura>RecepcionarLoteDpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<TargetNS></TargetNS>
+			<SignatureAlgorithmType>
+				<Excecao codMunicipio="3518206">Sha256</Excecao>
+			</SignatureAlgorithmType>
+			<AssinaCanonicalizacaoExclusiva>
+				<Excecao codMunicipio="3518206">true</Excecao>
+			</AssinaCanonicalizacaoExclusiva>
+		</Servico>
       <Servico tagRaiz="ConsultarLoteDpsEnvio" versao="1.01">
         <Descricao>Consultar lote DPS</Descricao>
         <SchemaArquivo></SchemaArquivo>
