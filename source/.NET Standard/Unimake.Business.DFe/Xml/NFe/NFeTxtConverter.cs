@@ -1,4 +1,7 @@
 using System;
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using Unimake.Business.DFe.Xml.NFe.Txt;
 
 namespace Unimake.Business.DFe.Xml.NFe
@@ -7,6 +10,11 @@ namespace Unimake.Business.DFe.Xml.NFe
     /// Converte arquivos TXT no layout 4.00 para XML de NFe ou NFCe.
     /// A conversão apenas lê o arquivo informado e mantém o resultado em memória.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.NFeTxtConverter")]
+    [ComVisible(true)]
+#endif
     public sealed class NFeTxtConverter
     {
         /// <summary>
@@ -21,7 +29,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 throw new ArgumentException("O caminho do arquivo TXT deve ser informado.", nameof(caminhoArquivo));
             }
 
-            return new NFeTxtLegacyConverter().Converter(caminhoArquivo);
+            return new NFeTxtConversionEngine().Converter(caminhoArquivo);
         }
     }
 }
