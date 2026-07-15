@@ -29,6 +29,7 @@ public class NFeTxtConverterTest
     [InlineData("NFE_Venda_00002.txt")]
     [InlineData("NFe_Venda_para_o_Governo.txt")]
     [InlineData("NFCe-4.00.txt")]
+    [InlineData("versaoprouducao-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -55,17 +56,18 @@ public class NFeTxtConverterTest
     /// Deve manter o XML de referência de cada TXT de regressão durante a migração para o modelo oficial.
     /// </summary>
     [Theory]
-    [InlineData("NFe_000250887_07_43_31-nfe-orig.txt", "4751f82da7d984b6eff0269380ac1a0078a8a458a06a0a57ac8f08fdc6808e7d")]
-    [InlineData("0000042301054300027600113072026-NFE.txt", "656b2e4a2a8da0aba599edd1b45c1efdc563d58e15d9862f1df14b69ec5f6030")]
-    [InlineData("CST_SEM_CLASSTRIB_SEM_NotaCredito03Retorno_SemImpostoIBSCBS.txt", "d65f0564a93e1f047b58b3980f5de1b6f637eb3a5f291ffe9a00df2f0f799ef6")]
+    [InlineData("NFe_000250887_07_43_31-nfe-orig.txt", "1dfeb1ca43795977a207c36fda58365832ff7ee99605692c6dd9895c2a65e870")]
+    [InlineData("0000042301054300027600113072026-NFE.txt", "c66fdb441657aae6823f1e273a36aad908164f160eba2e3408422c6876b0c489")]
+    [InlineData("CST_SEM_CLASSTRIB_SEM_NotaCredito03Retorno_SemImpostoIBSCBS.txt", "3e2f1e54ac159cd1b03b0024f1317b0eed96e46babe0cc615ac7c9deb1a60a06")]
     [InlineData("NFE_Devolucao_00003.txt", "a927e05abdf374845b43837cfe6f3360c7a07fb312c4be22d994a864fe23b21c")]
-    [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt", "1fc754371080a87ee42d99fdf39ef9891ebddaeaea74549e6c0aa51cb26ed91e")]
+    [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt", "d0cd1dc2a69bbf8f4f72f0130a7f993e4e44bcccd8f6e737994b34f2c36ac678")]
     [InlineData("NFe_ReformaTributaria_3_prods-nfe.txt", "e8214766f92cd58e33d430499bd22024c7edacc2c4b72c288307605f31d7f61f")]
-    [InlineData("NFe_Reforma_Tributaria-nfe.txt", "d33ccbd3d3ccaec70aaddbb305c86372edfb35f175bd835ab8b536f816e68cbf")]
+    [InlineData("NFe_Reforma_Tributaria-nfe.txt", "eff1e1061fb0e3b935bc5d449ff617b8c5321a1511e5b25265f10c7106840e6e")]
     [InlineData("NFe_Reforma_Tributaria_Monofasica-nfe.txt", "7d0689545b29cde304678e9b4b232bac9330ebd64e57be5abcc7041cb85f6928")]
     [InlineData("NFE_Venda_00002.txt", "bbf5b92b9d1afbeb7706af0d2a928905ac46ed4531aa0bcc9383e4fc47f5f300")]
-    [InlineData("NFe_Venda_para_o_Governo.txt", "fc1c485846a22b0bd63bf1c886d9c8fba1f485383948f2ee4049c2b355243316")]
-    [InlineData("NFCe-4.00.txt", "8d00d8b5128ca917ca6231ce4f72e654b24d16a04a640c99521e57f933aff040")]
+    [InlineData("NFe_Venda_para_o_Governo.txt", "f7d0bb8621a22a7c7cdbadde40dded3d21caffaf5fa0df92d4c6c1ed56522c64")]
+    [InlineData("NFCe-4.00.txt", "b59fbb7ff20b02c095265abae22a7b9ca4bfb3bcafc390ff5283e4111b5f4904")]
+    [InlineData("versaoprouducao-nfe-orig.txt", "64523fb5d72dce0cbed48f73bd57340dbcefb9b9b6ad7ce7e870e9e4448dd11b")]
     public void ConverterDeveManterXmlDeReferencia(string nomeArquivo, string hashEsperado)
     {
         var resultado = new NFeTxtConverter().Converter(CaminhoArquivo(nomeArquivo));
@@ -90,6 +92,21 @@ public class NFeTxtConverterTest
 
         Assert.True(resultado.Sucesso, resultado.MensagemErro);
         Assert.NotEmpty(resultado.Documentos);
+    }
+
+    /// <summary>
+    /// Deve despachar segmentos cujo sufixo alfabetico foi informado em minusculo no TXT.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveProcessarSegmentoComSufixoEmMinusculo()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("NFCe-4.00.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.NotNull(xml.SelectSingleNode("//*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMSSN102']"));
     }
 
     /// <summary>

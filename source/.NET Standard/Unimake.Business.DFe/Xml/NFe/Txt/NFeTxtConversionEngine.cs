@@ -2125,10 +2125,29 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarIcmsSn500(int nProd, int lenPipesRegistro)
         {
+            var origem = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1);
+            var csosn = this.LerInt32(TpcnResources.CSOSN, ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture);
+
+            // O layout N10g é utilizado por TXT legados também para os CSOSN que
+            // são serializados como ICMSSN102. O gerador histórico escolhia a tag
+            // final pelo CSOSN, e não apenas pelo identificador do segmento.
+            if (csosn == "102" || csosn == "103" || csosn == "300" || csosn == "400")
+            {
+                detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS
+                {
+                    ICMSSN102 = new DFeNFe.ICMSSN102
+                    {
+                        Orig = origem,
+                        CSOSN = csosn
+                    }
+                };
+                return;
+            }
+
             var icms = new DFeNFe.ICMSSN500
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CSOSN = this.LerInt32(TpcnResources.CSOSN, ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture)
+                Orig = origem,
+                CSOSN = csosn
             };
             if (versaoNFe < 3) this.LerInt32(TpcnResources.modBCST, ObOp.Opcional, 1, 1);
             var baseRetida = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCSTRet, ObOp.Opcional, 15);
