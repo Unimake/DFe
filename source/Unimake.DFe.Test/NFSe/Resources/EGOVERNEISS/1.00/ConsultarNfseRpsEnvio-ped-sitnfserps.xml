@@ -1,4 +1,4 @@
-<tem:Consultar xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem">
+<tem:RTC_ConsultarNFE xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem">
 	<tem:request>
 		<eis:ChaveAutenticacao>123456</eis:ChaveAutenticacao>
 		<eis:CNPJTomador>99999999999999</eis:CNPJTomador>
@@ -11,4 +11,4 @@
 		<eis:NumeroReciboFinal>456</eis:NumeroReciboFinal>
 		<eis:NumeroReciboUnico>789</eis:NumeroReciboUnico>
 	</tem:request>
-</tem:Consultar>
+</tem:RTC_ConsultarNFE>
