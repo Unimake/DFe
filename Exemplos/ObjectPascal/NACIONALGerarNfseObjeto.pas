@@ -94,6 +94,17 @@ begin
     DPS.InfDPS.Valores.Trib.TotTrib := CreateOleObject('Unimake.Business.DFe.Xml.NFSe.NACIONAL.TotTrib');
     DPS.InfDPS.Valores.Trib.TotTrib.PTotTribSN := 16.16;
 
+    DPS.InfDPS.IBSCBS := CreateOleObject('Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBS');
+    DPS.InfDPS.IBSCBS.finNFSe := 0;
+    DPS.InfDPS.IBSCBS.IndFinal := 0;
+    DPS.InfDPS.IBSCBS.cIndOp := '000001';
+    DPS.InfDPS.IBSCBS.indDest := 0;
+    DPS.InfDPS.IBSCBS.valores := CreateOleObject('Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBSValores');
+    DPS.InfDPS.IBSCBS.valores.trib := CreateOleObject('Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBSValoresTrib');
+    DPS.InfDPS.IBSCBS.valores.trib.gIBSCBS := CreateOleObject('Unimake.Business.DFe.Xml.NFSe.NACIONAL.GIBSCBS');
+    DPS.InfDPS.IBSCBS.valores.trib.gIBSCBS.CST := '000';
+    DPS.InfDPS.IBSCBS.valores.trib.gIBSCBS.cClassTrib := '000001';
+
     XML := DPS.GerarXMLString();
 
     oGerarNFSe := CreateOleObject('Unimake.Business.DFe.Servicos.NFSe.GerarNFSe');
