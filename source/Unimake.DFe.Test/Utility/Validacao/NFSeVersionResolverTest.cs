@@ -753,14 +753,10 @@ namespace Unimake.DFe.Test.Utility.Validacao
             PadraoNFSe padrao,
             int codigoMunicipio)
         {
-            var method = typeof(ValidarEstruturaXML).GetMethod(
-                "DefinirVersaoNFSe",
-                BindingFlags.NonPublic | BindingFlags.Static
-            );
-
-            return (string)method.Invoke(
-                null,
-                new object[] { CriarXml(conteudoXML), padrao, codigoMunicipio }
+            return ValidarEstruturaXML.DefinirVersaoNFSe(
+                CriarXml(conteudoXML),
+                padrao,
+                codigoMunicipio
             );
         }
 
