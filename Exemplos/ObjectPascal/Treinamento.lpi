@@ -399,6 +399,11 @@
         <Filename Value="EnviarEventoCancelamentoBPe.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="consultarrecibonfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ConsultarReciboNFe"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
