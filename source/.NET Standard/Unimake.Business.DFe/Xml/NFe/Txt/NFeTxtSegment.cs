@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             }
 
             QuantidadePipes = conteudo.Split(new char[] { '|' }).Length - 1;
-            Codigo = conteudo.Substring(1, conteudo.IndexOf("|") - 1);
+            Codigo = conteudo.Substring(1, conteudo.IndexOf("|") - 1).ToUpperInvariant();
         }
 
         internal string Codigo { get; private set; }
