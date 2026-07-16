@@ -36,6 +36,7 @@ var
       oUnidanfeConfiguration.Visualizar := True;
       oUnidanfeConfiguration.Imprimir := False;
       oUnidanfeConfiguration.EnviaEmail := False;
+      oUnidanfeConfiguration.Cancelada := False;
 
       oUnidanfeServices := CreateOleObject('Unimake.Unidanfe.UnidanfeServices');
       oUnidanfeServices.Execute(oUnidanfeConfiguration);
