@@ -30,6 +30,10 @@ public class NFeTxtConverterTest
     [InlineData("NFe_Venda_para_o_Governo.txt")]
     [InlineData("NFCe-4.00.txt")]
     [InlineData("versaoprouducao-nfe-orig.txt")]
+    [InlineData("000580_08606985000105_001-nfe.txt")]
+    [InlineData("0000072301054300027600116072026-NFE-orig.txt")]
+    [InlineData("0000092301054300027600116072026-NFE-orig.txt")]
+    [InlineData("0000112301054300027600116072026-NFE-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -57,7 +61,7 @@ public class NFeTxtConverterTest
     /// </summary>
     [Theory]
     [InlineData("NFe_000250887_07_43_31-nfe-orig.txt", "1dfeb1ca43795977a207c36fda58365832ff7ee99605692c6dd9895c2a65e870")]
-    [InlineData("0000042301054300027600113072026-NFE.txt", "c66fdb441657aae6823f1e273a36aad908164f160eba2e3408422c6876b0c489")]
+    [InlineData("0000042301054300027600113072026-NFE.txt", "174dc230d9d4174df3e7a3ef14b4d25f1173ac4138812b88c3003b2d0a5b8bd6")]
     [InlineData("CST_SEM_CLASSTRIB_SEM_NotaCredito03Retorno_SemImpostoIBSCBS.txt", "3e2f1e54ac159cd1b03b0024f1317b0eed96e46babe0cc615ac7c9deb1a60a06")]
     [InlineData("NFE_Devolucao_00003.txt", "a927e05abdf374845b43837cfe6f3360c7a07fb312c4be22d994a864fe23b21c")]
     [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt", "d0cd1dc2a69bbf8f4f72f0130a7f993e4e44bcccd8f6e737994b34f2c36ac678")]
@@ -107,6 +111,76 @@ public class NFeTxtConverterTest
         xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
 
         Assert.NotNull(xml.SelectSingleNode("//*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMSSN102']"));
+    }
+
+    /// <summary>
+    /// Deve selecionar ICMSSN102 pelo CSOSN mesmo quando o TXT utiliza o layout N10c.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveSelecionarIcmsSn102PeloCsosnDoLayoutN10c()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000580_08606985000105_001-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal(2, xml.SelectNodes("//*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMSSN102']").Count);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMSSN101']"));
+    }
+
+    /// <summary>
+    /// Deve manter o volume e o lacre informados, ainda que quantidade e pesos sejam zero.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveManterVolumeZeradoComLacre()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("0000092301054300027600116072026-NFE-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("000000", xml.SelectSingleNode("//*[local-name()='transp']/*[local-name()='vol']/*[local-name()='lacres']/*[local-name()='nLacre']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve omitir os valores retidos zerados do ICMS60 nas mesmas condições da conversão histórica.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveOmitirValoresRetidosZeradosDoIcms60()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("0000112301054300027600116072026-NFE-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var icms60 = xml.SelectSingleNode("//*[local-name()='det'][2]/*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMS60']");
+
+        Assert.NotNull(icms60);
+        Assert.Equal(2, icms60.ChildNodes.Count);
+        Assert.Null(icms60.SelectSingleNode("*[local-name()='vBCSTRet' or local-name()='pST' or local-name()='vICMSSubstituto' or local-name()='vICMSSTRet']"));
+    }
+
+    /// <summary>
+    /// Deve escolher o grupo de ICMS pelo CST final e omitir IPI sem CST, como a conversão histórica.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveManterSelecaoHistoricaDosGruposDeImposto()
+    {
+        var resultadoIcms = new NFeTxtConverter().Converter(CaminhoArquivo("0000112301054300027600116072026-NFE-orig.txt"));
+        var resultadoIpi = new NFeTxtConverter().Converter(CaminhoArquivo("0000092301054300027600116072026-NFE-orig.txt"));
+
+        Assert.True(resultadoIcms.Sucesso, resultadoIcms.MensagemErro);
+        Assert.True(resultadoIpi.Sucesso, resultadoIpi.MensagemErro);
+        var xmlIcms = new XmlDocument();
+        var xmlIpi = new XmlDocument();
+        xmlIcms.LoadXml(Assert.Single(resultadoIcms.Documentos).Xml);
+        xmlIpi.LoadXml(Assert.Single(resultadoIpi.Documentos).Xml);
+
+        Assert.NotNull(xmlIcms.SelectSingleNode("//*[local-name()='det'][1]/*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMS00']"));
+        Assert.Null(xmlIcms.SelectSingleNode("//*[local-name()='det'][1]/*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMS60']"));
+        Assert.Null(xmlIpi.SelectSingleNode("//*[local-name()='det'][2]/*[local-name()='imposto']/*[local-name()='IPI']"));
     }
 
     /// <summary>

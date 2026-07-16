@@ -376,7 +376,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             NFeTxtCompatibilityValidator.Validar(nfe, detalhesOficiais);
             chave = new NFeTxtKeyValidator().MontarEValidar(nfe.InfNFeField, cDvInformado, identificacaoOficial.CDV);
             var documento = XMLUtility.Serializar(nfe);
-            NFeTxtXmlCompatibilityAdjuster.Ajustar(documento);
+            NFeTxtXmlCompatibilityAdjuster.Ajustar(documento, transporteOficial.Vol);
 
             identificacaoOficial.CNF = chave.Substring(35, 8);
             identificacaoOficial.CDV = int.Parse(chave.Substring(43, 1));
@@ -1886,16 +1886,22 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarIcms60(int nProd, int lenPipesRegistro)
         {
+            var origem = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1);
+            var cst = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2);
+            double vBCSTRet = 0;
+            double pST = 0;
+            double vICMSSTRet = 0;
+            double vICMSSubstituto = 0;
             var icms = new DFeNFe.ICMS60
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2)
+                Orig = origem,
+                CST = cst
             };
             if (versaoNFe >= 4)
             {
-                icms.VBCSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCSTRet, ObOp.Obrigatorio, 15);
-                icms.PST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pST, ObOp.Opcional, 15);
-                icms.VICMSSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSTRet, ObOp.Obrigatorio, 15);
+                vBCSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCSTRet, ObOp.Obrigatorio, 15);
+                pST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pST, ObOp.Opcional, 15);
+                vICMSSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSTRet, ObOp.Obrigatorio, 15);
                 icms.VBCFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPSTRet, ObOp.Opcional, 15);
                 icms.PFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPSTRet, ObOp.Opcional, 15);
                 icms.VFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPSTRet, ObOp.Opcional, 15);
@@ -1906,8 +1912,37 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     icms.PICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pICMSEfet, ObOp.Opcional, 15);
                     icms.VICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSEfet, ObOp.Opcional, 15);
                 }
-                icms.VICMSSubstituto = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSubstituto, ObOp.Opcional, 15);
+                vICMSSubstituto = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSubstituto, ObOp.Opcional, 15);
+
+                // A rotina histórica só gera estes quatro campos quando existe valor
+                // no grupo de retenção ou quando a operação não é para consumidor final.
+                var possuiGrupoIcms60 = vBCSTRet + vICMSSTRet + pST +
+                    icms.VBCFCPSTRet + icms.PFCPSTRet + icms.VFCPSTRet +
+                    icms.PRedBCEfet + icms.VBCEfet + icms.PICMSEfet + icms.VICMSEfet > 0 ||
+                    identificacaoOficial.IndFinal == SimNao.Nao;
+                var deveGerarRetidos = possuiGrupoIcms60 &&
+                    (vBCSTRet + pST + vICMSSubstituto + vICMSSTRet > 0 ||
+                     identificacaoOficial.IndFinal == SimNao.Nao);
+                if (deveGerarRetidos)
+                {
+                    icms.VBCSTRet = vBCSTRet;
+                    icms.PST = pST;
+                    icms.VICMSSubstituto = vICMSSubstituto;
+                    icms.VICMSSTRet = vICMSSTRet;
+                }
             }
+
+            // O gerador histórico escolhe a tag pelo CST efetivamente informado.
+            // Quando um N08 com CST 00 complementa um N02 anterior, o ICMS00 já
+            // preenchido deve ser preservado em vez de ser substituído por ICMS60.
+            var grupoAtual = detalhesOficiais[nProd].Imposto.ICMS;
+            if (cst == "00" && grupoAtual != null && grupoAtual.ICMS00 != null)
+            {
+                grupoAtual.ICMS00.Orig = origem;
+                grupoAtual.ICMS00.CST = cst;
+                return;
+            }
+
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS60 = icms };
         }
 
@@ -2053,12 +2088,31 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarIcmsSn101(int nProd, int lenPipesRegistro)
         {
+            var origem = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1);
+            var csosn = this.LerInt32(TpcnResources.CSOSN, ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture);
+
+            // O gerador histórico definia a tag final pelo CSOSN. Assim, mesmo
+            // quando o TXT utiliza o layout N10c, os CSOSN 102/103/300/400 devem
+            // ser serializados no grupo ICMSSN102.
+            if (csosn == "102" || csosn == "103" || csosn == "300" || csosn == "400")
+            {
+                detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS
+                {
+                    ICMSSN102 = new DFeNFe.ICMSSN102
+                    {
+                        Orig = origem,
+                        CSOSN = csosn
+                    }
+                };
+                return;
+            }
+
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS
             {
                 ICMSSN101 = new DFeNFe.ICMSSN101
                 {
-                    Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                    CSOSN = this.LerInt32(TpcnResources.CSOSN, ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture),
+                    Orig = origem,
+                    CSOSN = csosn,
                     PCredSN = this.LerDouble(this.TipoCampo42, TpcnResources.pCredSN, ObOp.Obrigatorio, this.CasasDecimais75),
                     VCredICMSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredICMSSN, ObOp.Obrigatorio, 15)
                 }
