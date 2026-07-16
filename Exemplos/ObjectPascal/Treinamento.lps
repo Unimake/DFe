@@ -45,10 +45,12 @@
         <Filename Value="imprimirdanfecomunidanfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ImprimirDANFEcomUniDANFE"/>
-        <EditorIndex Value="-1"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="5"/>
-        <CursorPos X="40" Y="26"/>
+        <CursorPos Y="39"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfesincronodesserializacao.pas"/>
@@ -474,9 +476,8 @@
         <Filename Value="NACIONALGerarNfseObjeto.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="NACIONALGerarNFSeObjeto"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="71"/>
+        <TopLine Value="72"/>
         <CursorPos X="31" Y="90"/>
         <UsageCount Value="95"/>
         <Loaded Value="True"/>
@@ -667,7 +668,7 @@
         <Filename Value="consultarrecibonfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarReciboNFe"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="23"/>
         <CursorPos X="48" Y="64"/>
         <UsageCount Value="33"/>
@@ -887,7 +888,7 @@
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="imprimirdanfecomunidanfe.pas"/>
-        <Line Value="57"/>
+        <Line Value="58"/>
       </Item>
       <Item>
         <Kind Value="bpkSource"/>
