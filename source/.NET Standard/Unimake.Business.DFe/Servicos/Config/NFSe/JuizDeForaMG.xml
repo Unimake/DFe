@@ -3,9 +3,9 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="2.02">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://nfse.homologacao.pjf.mg.gov.br:4432/WebService.asmx?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.pjf.mg.gov.br:4431/WebService.asmx?WSDL</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionHomologacao>http://www.fintel.com.br/WebService/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://www.fintel.com.br/WebService/RecepcionarLoteRps</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRps xmlns="http://www.fintel.com.br/WebService"><cabecalho>&lt;cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho><xml>{xmlBodyScape}</xml></RecepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
@@ -17,9 +17,9 @@
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.02">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://nfse.homologacao.pjf.mg.gov.br:4432/WebService.asmx?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.pjf.mg.gov.br:4431/WebService.asmx?WSDL</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionHomologacao>http://www.fintel.com.br/WebService/RecepcionarLoteRpsSincrono</WebActionHomologacao>
 			<WebActionProducao>http://www.fintel.com.br/WebService/RecepcionarLoteRpsSincrono</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsSincrono xmlns="http://www.fintel.com.br/WebService"><cabecalho>&lt;cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho><xml>{xmlBodyScape}</xml></RecepcionarLoteRpsSincrono></soap:Body></soap:Envelope>]]></WebSoapString>
@@ -31,9 +31,9 @@
 		</RecepcionarLoteRpsSincrono>
 		<GerarNfse versao="2.02">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://nfse.homologacao.pjf.mg.gov.br:4432/WebService.asmx?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.pjf.mg.gov.br:4431/WebService.asmx?WSDL</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionHomologacao>http://www.fintel.com.br/WebService/GerarNfse</WebActionHomologacao>
 			<WebActionProducao>http://www.fintel.com.br/WebService/GerarNfse</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GerarNfse xmlns="http://www.fintel.com.br/WebService"><cabecalho>&lt;cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho><xml>{xmlBodyScape}</xml></GerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
@@ -45,9 +45,9 @@
 		</GerarNfse>
 		<CancelarNfse versao="2.02">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://nfse.homologacao.pjf.mg.gov.br:4432/WebService.asmx?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.pjf.mg.gov.br:4431/WebService.asmx?WSDL</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionHomologacao>http://www.fintel.com.br/WebService/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://www.fintel.com.br/WebService/CancelarNfse</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfse xmlns="http://www.fintel.com.br/WebService"><cabecalho>&lt;cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho><xml>{xmlBodyScape}</xml></CancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
@@ -59,9 +59,9 @@
 		</CancelarNfse>
 		<ConsultarLoteRps versao="2.02">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://nfse.homologacao.pjf.mg.gov.br:4432/WebService.asmx?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.pjf.mg.gov.br:4431/WebService.asmx?WSDL</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionHomologacao>http://www.fintel.com.br/WebService/ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://www.fintel.com.br/WebService/ConsultarLoteRps</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRps xmlns="http://www.fintel.com.br/WebService"><cabecalho>&lt;cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho><xml>{xmlBodyScape}</xml></ConsultarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
@@ -73,9 +73,9 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.02">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://nfse.homologacao.pjf.mg.gov.br:4432/WebService.asmx?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.pjf.mg.gov.br:4431/WebService.asmx?WSDL</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionHomologacao>http://www.fintel.com.br/WebService/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://www.fintel.com.br/WebService/ConsultarNfsePorRps</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRps xmlns="http://www.fintel.com.br/WebService"><cabecalho>&lt;cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho><xml>{xmlBodyScape}</xml></ConsultarNfsePorRps></soap:Body></soap:Envelope>]]></WebSoapString>
@@ -87,9 +87,9 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfseFaixa versao="2.02">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://nfse.homologacao.pjf.mg.gov.br:4432/WebService.asmx?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.pjf.mg.gov.br:4431/WebService.asmx?WSDL</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionHomologacao>http://www.fintel.com.br/WebService/ConsultarNfseFaixa</WebActionHomologacao>
 			<WebActionProducao>http://www.fintel.com.br/WebService/ConsultarNfseFaixa</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseFaixa xmlns="http://www.fintel.com.br/WebService"><cabecalho>&lt;cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho><xml>{xmlBodyScape}</xml></ConsultarNfseFaixa></soap:Body></soap:Envelope>]]></WebSoapString>
@@ -101,9 +101,9 @@
 		</ConsultarNfseFaixa>
 		<ConsultarSituacaoLoteRps versao="2.02">
 			<Descricao>Consulta Situuação do Lote por RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://nfse.homologacao.pjf.mg.gov.br:4432/WebService.asmx?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.pjf.mg.gov.br:4431/WebService.asmx?WSDL</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionHomologacao>http://www.fintel.com.br/WebService/ConsultarSituacaoLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://www.fintel.com.br/WebService/ConsultarSituacaoLoteRps</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRps xmlns="http://www.fintel.com.br/WebService"><cabecalho>&lt;cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho><xml>{xmlBodyScape}</xml></ConsultarSituacaoLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
