@@ -145,6 +145,15 @@ object frmPrincipal: TfrmPrincipal
       TabOrder = 13
       OnClick = btnEnviarNFeSincronoContingenciaSVCClick
     end
+    object btnConsultarReciboNFe: TButton
+      Left = 14
+      Height = 38
+      Top = 645
+      Width = 320
+      Caption = 'Consultar Recibo NFe'
+      TabOrder = 14
+      OnClick = btnConsultarReciboNFeClick
+    end
   end
   object GroupBox2: TGroupBox
     Left = 376

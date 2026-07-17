@@ -1677,19 +1677,31 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public FinalidadeNFSeRTC FinNFSe { get; set; }
 
         [XmlElement("indFinal")]
+#if INTEROP
+        public IndicadorFinalNFSeRTC IndFinal { get; set; } = (IndicadorFinalNFSeRTC)(-1);
+#else
         public IndicadorFinalNFSeRTC? IndFinal { get; set; }
+#endif
 
         [XmlElement("cIndOp")]
         public string CIndOp { get; set; }
 
         [XmlElement("tpOper")]
+#if INTEROP
+        public TpOperacaoGov TpOper { get; set; } = (TpOperacaoGov)(-1);
+#else
         public TpOperacaoGov? TpOper { get; set; }
+#endif
 
         [XmlElement("gRefNFSe")]
         public GRefNFSe GRefNFSe { get; set; }
 
         [XmlElement("tpEnteGov")]
+#if INTEROP
+        public TipoEnteGovernamentalNFSeRTC TpEnteGov { get; set; } = (TipoEnteGovernamentalNFSeRTC)(-1);
+#else
         public TipoEnteGovernamentalNFSeRTC? TpEnteGov { get; set; }
+#endif
 
         [XmlElement("indDest")]
         public IndicadorDestinatarioNFSeRTC IndDest { get; set; }
@@ -1701,12 +1713,20 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public Imovel Imovel { get; set; }
 
         [XmlElement("valores")]
-        public ValoresValores Valores { get; set; }
+        public IBSCBSValores Valores { get; set; }
 
         #region Should Serialize
+
+#if INTEROP
+        public bool ShouldSerializeIndFinal() => IndFinal != (IndicadorFinalNFSeRTC)(-1);
+        public bool ShouldSerializeTpOper() => TpOper != (TpOperacaoGov)(-1);
+        public bool ShouldSerializeTpEnteGov() => TpEnteGov != (TipoEnteGovernamentalNFSeRTC)(-1);
+#else
         public bool ShouldSerializeIndFinal() => IndFinal.HasValue;
         public bool ShouldSerializeTpOper() => TpOper.HasValue;
         public bool ShouldSerializeTpEnteGov() => TpEnteGov.HasValue;
+#endif
+
         #endregion Should Serialize
     }
 
@@ -1809,7 +1829,6 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("xBairro")]
         public string XBairro { get; set; }
 
-
         #region Should Serialize
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
@@ -1826,16 +1845,16 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ValoresValores")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBSValores")]
     [ComVisible(true)]
 #endif
-    public class ValoresValores
+    public class IBSCBSValores
     {
         [XmlElement("gReeRepRes")]
         public GReeRepRes GReeRepRes { get; set; }
 
         [XmlElement("trib")]
-        public ValoresValoresTrib Trib { get; set; }
+        public IBSCBSValoresTrib Trib { get; set; }
     }
 
 #if INTEROP
@@ -2127,10 +2146,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.ValoresValoresTrib")]
+    [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBSValoresTrib")]
     [ComVisible(true)]
 #endif
-    public class ValoresValoresTrib
+    public class IBSCBSValoresTrib
     {
         [XmlElement("gIBSCBS")]
         public GIBSCBS GIBSCBS { get; set; }

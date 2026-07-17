@@ -3,9 +3,9 @@
 	<Servicos ID="NFSe">
 		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homolog-nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionHomologacao>http://tempuri.org/INotaFiscalEletronicaServico/Cancelar</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/Cancelar</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8	</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
@@ -17,13 +17,13 @@
 		</CancelarNfse>
 		<ConsultarLoteRps versao="1.00">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homolog-nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/ConsultarLote</WebActionProducao>
+			<WebActionHomologacao>http://tempuri.org/INotaFiscalEletronicaServico/RTC_ConsultarLote</WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/RTC_ConsultarLote</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8	</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarLoteResponse</WebTagRetorno>
+			<WebTagRetorno>RTC_ConsultarLoteResponse|s:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -31,26 +31,26 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="1.00">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homolog-nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/Consultar</WebActionProducao>
+			<WebActionHomologacao>http://tempuri.org/INotaFiscalEletronicaServico/RTC_ConsultarNFE</WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/RTC_ConsultarNFE</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8	</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarResponse</WebTagRetorno>
+			<WebTagRetorno>RTC_ConsultarNFEResponse|s:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfsePorRps>
 		<EnvioLoteRps versao="1.00">
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homolog-nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/EmitirEmLote</WebActionProducao>
+			<WebActionHomologacao>http://tempuri.org/INotaFiscalEletronicaServico/RTC_EmitirNFELote</WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/RTC_EmitirNFELote</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8	</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem"><soapenv:Header/><soapenv:Body><EmitirEmLote xmlns="http://tempuri.org/"><request>{xmlBodyNotas}</request></EmitirEmLote></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>EmitirEmLoteResponse</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem"><soapenv:Header/><soapenv:Body><RTC_EmitirNFELote xmlns="http://tempuri.org/"><request>{xmlBodyNotas}</request></RTC_EmitirNFELote></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RTC_EmitirNFELoteResponse|s:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -58,13 +58,13 @@
 		</EnvioLoteRps>
 		<EnvioRps versao="1.00">
 			<Descricao>Envio Rps</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>https://homolog-nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.osasco.sp.gov.br/EissnfeWebServices/NotaFiscalEletronica.svc?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/Emitir</WebActionProducao>
+			<WebActionHomologacao>http://tempuri.org/INotaFiscalEletronicaServico/RTC_EmitirNFE</WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/INotaFiscalEletronicaServico/RTC_EmitirNFE</WebActionProducao>
 			<WebContentType>text/xml; charset=utf-8	</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem"><soapenv:Header/><soapenv:Body><Emitir xmlns="http://tempuri.org/"><request>{xmlBodyNotaFiscal}</request></Emitir></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>EmitirResponse</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem"><soapenv:Header/><soapenv:Body><RTC_EmitirNFE xmlns="http://tempuri.org/"><request>{xmlBodyNotaFiscal}</request></RTC_EmitirNFE></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RTC_EmitirNFEResponse|s:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>

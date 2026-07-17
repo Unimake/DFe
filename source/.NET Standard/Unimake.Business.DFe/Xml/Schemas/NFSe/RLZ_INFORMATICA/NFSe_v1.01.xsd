@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- PL_NFSE_NT04_RTCv101 - Alterações dos esquemas decorrentes da Nota Técnica SE/CGNFS-e nº 004, de 19 de agosto de 2025 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
            xmlns:ds="http://www.w3.org/2000/09/xmldsig#" 
            targetNamespace="http://www.sped.fazenda.gov.br/nfse" 

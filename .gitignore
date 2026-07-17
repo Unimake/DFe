@@ -399,3 +399,7 @@ MigrationBackup/
 /Exemplos/ObjectPascal/lib/x86_64-win64
 /Exemplos/ObjectPascal/lib/x86_64-win64
 /objcodex
+
+/graphify-out/
+/source/graphify-out/
+/source/.NET Standard/graphify-out/

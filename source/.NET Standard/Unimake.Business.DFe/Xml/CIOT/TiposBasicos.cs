@@ -16,14 +16,18 @@ namespace Unimake.Business.DFe.Xml.CIOT
     internal static class CIOTDateTimeFormat
     {
 #if INTEROP
-        public static string DateTime(System.DateTime value) => value.Kind == DateTimeKind.Utc ? value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFF") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz");
+        public static string DateTime(System.DateTime value) => value.Kind == DateTimeKind.Utc ? value.ToString("yyyy-MM-ddTHH:mm:ss") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:sszzz");
+
+        public static string DateTimeComFracoes(System.DateTime value) => value.Kind == DateTimeKind.Utc ? value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFF") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz");
 
         public static System.DateTime ParseDateTimeOrMinValue(string value)
         {
             return string.IsNullOrWhiteSpace(value) ? System.DateTime.MinValue : System.DateTime.Parse(value);
         }
 #else
-        public static string DateTime(DateTimeOffset value) => value.Offset == TimeSpan.Zero ? value.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFF") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz");
+        public static string DateTime(DateTimeOffset value) => value.Offset == TimeSpan.Zero ? value.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:sszzz");
+
+        public static string DateTimeComFracoes(DateTimeOffset value) => value.Offset == TimeSpan.Zero ? value.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFF") + "Z" : value.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz");
 
         public static DateTimeOffset ParseDateTimeOrMinValue(string value)
         {
@@ -341,7 +345,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [JsonProperty("timestamp")]
         public string TimestampField
         {
-            get => CIOTDateTimeFormat.DateTime(Timestamp);
+            get => CIOTDateTimeFormat.DateTimeComFracoes(Timestamp);
 #if INTEROP
             set => Timestamp = DateTime.Parse(value);
 #else

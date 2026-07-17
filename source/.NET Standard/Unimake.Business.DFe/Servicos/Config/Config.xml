@@ -2099,4 +2099,16 @@
 		<ArqConfig>GuarulhosSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3533908">
+		<Nome>Olímpia - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>OlimpiaSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3542602">
+		<Nome>Registro - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>RegistroSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

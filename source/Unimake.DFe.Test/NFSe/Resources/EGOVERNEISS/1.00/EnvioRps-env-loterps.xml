@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <EmissaoNotaFiscalRequest xmlns="http://schemas.datacontract.org/2004/07/Eissnfe.Negocio.WebServices.Mensagem" xmlns:eis="http://schemas.datacontract.org/2004/07/Eissnfe.Dominio.DataTransferObject.Prestador" xmlns:eis2="http://schemas.datacontract.org/2004/07/Eissnfe.Dominio.DataTransferObject.Contribuinte" xmlns:eis3="http://schemas.datacontract.org/2004/07/Eissnfe.Dominio.DataTransferObject.Contrbuinte" xmlns:xsi="_http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="_http://www.w3.org/2001/XMLSchema">
-	<NotaFiscal>
+	<NotaFiscal_RTC>
 		<eis:Aliquota>1.18</eis:Aliquota>
 		<eis:Atividade>1</eis:Atividade>
 		<eis:ChaveAutenticacao>EFRREEGE-ERGERGERG-ERGGG-G-GGEGEGERG-</eis:ChaveAutenticacao>
@@ -29,5 +29,10 @@
 		<eis:TomadorEstrangeiro>false</eis:TomadorEstrangeiro>
 		<eis:Valor>10.00</eis:Valor>
 		<eis:ValorDeducao>0.00</eis:ValorDeducao>
-	</NotaFiscal>
+		<eis:ClassTrib>132456</eis:ClassTrib>
+		<eis:CodigoCST>123</eis:CodigoCST>
+		<eis:CodigoNBS>132456</eis:CodigoNBS>
+		<eis:IdLocalIncidencia>1234567</eis:IdLocalIncidencia>
+		<eis:IndOperacao>13245678</eis:IndOperacao>
+	</NotaFiscal_RTC>
 </EmissaoNotaFiscalRequest>
