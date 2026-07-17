@@ -1332,6 +1332,69 @@ namespace Unimake.Business.DFe
         }
 
         /// <summary>
+        /// Define o tipo de serviço de NFSe com base no XML, padrão e versão informados.
+        /// </summary>
+        /// <param name="conteudoXML">Conteúdo XML enviado para identificação</param>
+        /// <param name="padraoNFSe">Padrão da NFSe</param>
+        /// <param name="versao">Versão do XML</param>
+        /// <returns>Tipo de serviço correspondente</returns>
+        public static Servico DefinirTipoServicoNFSe(string conteudoXML, PadraoNFSe padraoNFSe, string versao)
+        {
+            if (string.IsNullOrWhiteSpace(conteudoXML))
+            {
+                throw new ArgumentNullException(nameof(conteudoXML));
+            }
+
+            var xml = new XmlDocument();
+            xml.LoadXml(conteudoXML);
+
+            return DefinirTipoServicoNFSe(xml, padraoNFSe, versao);
+        }
+
+        /// <summary>
+        /// Define o tipo de serviço de NFSe com base no XML, padrão e versão informados.
+        /// </summary>
+        /// <param name="xml">Arquivo XML enviado para identificação</param>
+        /// <param name="padraoNFSe">Padrão da NFSe</param>
+        /// <param name="versao">Versão do XML</param>
+        /// <returns>Tipo de serviço correspondente</returns>
+        public static Servico DefinirTipoServicoNFSe(XmlDocument xml, PadraoNFSe padraoNFSe, string versao)
+        {
+            if (xml is null)
+            {
+                throw new ArgumentNullException(nameof(xml));
+            }
+
+            if (xml.DocumentElement is null)
+            {
+                throw new Exception("Não foi possível identificar o tipo de serviço NFSe: XML sem tag raiz.");
+            }
+
+            var xmlConfig = CarregarConfigValidacao();
+            var tagRaiz = xml.DocumentElement.Name;
+            var servico = ResolvedorServicoValidacao.ResolverNFSe(xml, versao, tagRaiz, xmlConfig, padraoNFSe);
+
+            if (servico is null)
+            {
+                throw new Exception($"Não foi possível encontrar a configuração para identificar o tipo de serviço NFSe com padrão: '{padraoNFSe}', tag raiz: '{tagRaiz}' ou versão: '{versao}'.");
+            }
+
+            var tipoServico = servico.SelectSingleNode("*[local-name()='TipoServico']")?.InnerText?.Trim();
+
+            if (string.IsNullOrWhiteSpace(tipoServico))
+            {
+                throw new Exception($"A tag TipoServico não foi configurada para o padrão: '{padraoNFSe}', tag raiz: '{tagRaiz}' e versão: '{versao}'.");
+            }
+
+            if (!Enum.TryParse(tipoServico, false, out Servico result))
+            {
+                throw new Exception($"TipoServico inválido no ValidarConfig.xml: '{tipoServico}'.");
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Define a versão do XML de NFSe com base no conteúdo do XML, padrão de NFSe e código do município.
         /// </summary>
         /// <param name="xml">Arquivo XML enviado para a validação</param>

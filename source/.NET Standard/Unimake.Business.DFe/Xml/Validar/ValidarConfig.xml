@@ -5243,6 +5243,7 @@
     <Padrao nome="DSF">
       <Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="tpAmb">
         <Descricao>Envio do DPS - Síncrono</Descricao>
+        <TipoServico>NFSeGerarNfse</TipoServico>
         <SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
         <TagAssinatura>DPS</TagAssinatura>
         <TagAtributoID>infDPS</TagAtributoID>
@@ -5255,6 +5256,7 @@
       </Servico>
       <Servico tagRaiz="CancelarNfseEnvio" versao="2.00">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo>servico_cancelar_nfse_envio_v02.xsd</SchemaArquivo>
         <TagAssinatura>CancelarNfseEnvio</TagAssinatura>
         <TagAtributoID>NumeroNfse</TagAtributoID>
@@ -5267,6 +5269,7 @@
       </Servico>
       <Servico tagRaiz="CancelarNfseEnvio" versao="2.03">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo>nfse.xsd</SchemaArquivo>
         <TagAssinatura>Pedido</TagAssinatura>
         <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -5279,6 +5282,7 @@
       </Servico>
       <Servico tagRaiz="CancelarNfseEnvio" versao="2.04">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>Pedido</TagAssinatura>
         <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -5291,6 +5295,7 @@
       </Servico>
       <Servico tagRaiz="CancelarNfseEnvio" versao="3.00">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>CancelarNfseEnvio</TagAssinatura>
         <TagAtributoID>Pedido</TagAtributoID>
@@ -5303,6 +5308,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.03">
         <Descricao>Consulta lote RPS</Descricao>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo>nfse.xsd</SchemaArquivo>
         <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -5315,6 +5321,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.04">
         <Descricao>Consulta lote RPS</Descricao>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -5327,6 +5334,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarLoteRpsEnvio" versao="3.00">
         <Descricao>Consulta lote RPS</Descricao>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
         <TagAtributoID>Protocolo</TagAtributoID>
@@ -5339,6 +5347,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseEnvio" versao="3.00">
         <Descricao>Consulta de NFSe por Data</Descricao>
+        <TipoServico>NFSeConsultarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -5351,6 +5360,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="2.03">
         <Descricao>Consulta NFSe por Faixa</Descricao>
+        <TipoServico>NFSeConsultarNfseFaixa</TipoServico>
         <SchemaArquivo>nfse.xsd</SchemaArquivo>
         <TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -5363,6 +5373,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.03">
         <Descricao>Consulta NFSe por RPS</Descricao>
+        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
         <SchemaArquivo>nfse.xsd</SchemaArquivo>
         <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -5375,6 +5386,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseRpsEnvio" versao="3.00">
         <Descricao>Consulta NFSe por RPS</Descricao>
+        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -5387,6 +5399,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="2.03">
         <Descricao>Consulta NFSe de serviços prestados</Descricao>
+        <TipoServico>NFSeConsultarNfseServicoPrestado</TipoServico>
         <SchemaArquivo>nfse.xsd</SchemaArquivo>
         <TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -5399,6 +5412,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="2.04">
         <Descricao>Consulta NFSe de serviços prestados</Descricao>
+        <TipoServico>NFSeConsultarNfseServicoPrestado</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -5411,6 +5425,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="2.03">
         <Descricao>Consulta NFSe de serviços tomados</Descricao>
+        <TipoServico>NFSeConsultarNfseServicoTomado</TipoServico>
         <SchemaArquivo>nfse.xsd</SchemaArquivo>
         <TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -5423,6 +5438,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarSituacaoLoteRpsEnvio" versao="3.00">
         <Descricao>Consultar Situação Lote Rps</Descricao>
+        <TipoServico>NFSeConsultarSituacaoLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
         <TagAtributoID>Protocolo</TagAtributoID>
@@ -5435,6 +5451,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.03">
         <Descricao>Recepcionar Lote RPS</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRps</TipoServico>
         <SchemaArquivo>nfse.xsd</SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -5447,6 +5464,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.04">
         <Descricao>Recepcionar Lote RPS</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -5459,6 +5477,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsEnvio" versao="3.00">
         <Descricao>Recepcionar Lote RPS</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
         <TagAtributoID>LoteRps</TagAtributoID>
@@ -5471,6 +5490,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.03">
         <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRpsSincrono</TipoServico>
         <SchemaArquivo>nfse.xsd</SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -5483,6 +5503,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.04">
         <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRpsSincrono</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -5495,6 +5516,7 @@
       </Servico>
       <Servico tagRaiz="GerarNfseEnvio" versao="2.03">
         <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+        <TipoServico>NFSeGerarNfse</TipoServico>
         <SchemaArquivo>nfse.xsd</SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -5507,6 +5529,7 @@
       </Servico>
       <Servico tagRaiz="GerarNfseEnvio" versao="2.04">
         <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+        <TipoServico>NFSeGerarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -5519,6 +5542,7 @@
       </Servico>
       <Servico tagRaiz="SubstituirNfseEnvio" versao="2.03">
         <Descricao>Substituir nota fiscal de Serviço</Descricao>
+        <TipoServico>NFSeSubstituirNfse</TipoServico>
         <SchemaArquivo>nfse.xsd</SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -5531,6 +5555,7 @@
       </Servico>
       <Servico tagRaiz="SubstituirNfseEnvio" versao="2.04">
         <Descricao>Substituir nota fiscal de Serviço</Descricao>
+        <TipoServico>NFSeSubstituirNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -5543,6 +5568,7 @@
       </Servico>
       <Servico tagRaiz="ns1:ConsultaSeqRps" versao="1.00">
         <Descricao>Consulta Sequencia Lote Nota RPS</Descricao>
+        <TipoServico>NFSeConsultarSequenciaLoteNotaRPS</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -5555,6 +5581,7 @@
       </Servico>
       <Servico tagRaiz="ns1:ReqCancelamentoNFSe" versao="1.00">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ns1:ReqCancelamentoNFSe</TagAssinatura>
         <TagAtributoID>Cabecalho</TagAtributoID>
@@ -5567,6 +5594,7 @@
       </Servico>
       <Servico tagRaiz="ns1:ReqConsultaLote" versao="1.00">
         <Descricao>Consulta lote RPS</Descricao>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -5579,6 +5607,7 @@
       </Servico>
       <Servico tagRaiz="ns1:ReqConsultaNFSeRPS" versao="1.00">
         <Descricao>Consulta NFSe por RPS</Descricao>
+        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ns1:ReqConsultaNFSeRPS</TagAssinatura>
         <TagAtributoID>Cabecalho</TagAtributoID>
@@ -5591,6 +5620,7 @@
       </Servico>
       <Servico tagRaiz="ns1:ReqConsultaNotas" versao="1.00">
         <Descricao>Consultar NFSe Valida</Descricao>
+        <TipoServico>NFSeConsultarNotaValida</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -5603,6 +5633,7 @@
       </Servico>
       <Servico tagRaiz="ns1:ReqEnvioLoteRPS" versao="1.00">
         <Descricao>Recepcionar Lote RPS</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRpsSincrono</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ns1:ReqEnvioLoteRPS</TagAssinatura>
         <TagAtributoID>Lote</TagAtributoID>
@@ -7452,6 +7483,7 @@
     <Padrao nome="ISSNET">
       <Servico tagRaiz="CancelarNfseEnvio" versao="2.04" tagIdentificadora="Pedido">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
         <TagAssinatura>Pedido</TagAssinatura>
         <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -7464,6 +7496,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarDadosCadastraisEnvio" versao="2.04" tagIdentificadora="Pedido">
         <Descricao>Consulta os dados cadastrais</Descricao>
+        <TipoServico>NFSeConsultarDadosCadastrais</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarDadosCadastraisEnvio</TagAssinatura>
         <TagAtributoID>Pedido</TagAtributoID>
@@ -7476,6 +7509,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.04" tagIdentificadora="Prestador">
         <Descricao>Consulta lote RPS</Descricao>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -7488,6 +7522,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="2.04" tagIdentificadora="Pedido">
         <Descricao>Consulta NFSe por Faixa</Descricao>
+        <TipoServico>NFSeConsultarNfseFaixa</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
         <TagAtributoID>Pedido</TagAtributoID>
@@ -7500,6 +7535,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.04" tagIdentificadora="Pedido">
         <Descricao>Consulta NFSe por RPS</Descricao>
+        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
         <TagAtributoID>Pedido</TagAtributoID>
@@ -7512,6 +7548,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="2.04" tagIdentificadora="Pedido">
         <Descricao>Consulta NFSe de serviços prestados</Descricao>
+        <TipoServico>NFSeConsultarNfseServicoPrestado</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
         <TagAtributoID>Pedido</TagAtributoID>
@@ -7524,6 +7561,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="2.04" tagIdentificadora="Pedido">
         <Descricao>Consulta NFSe de serviços tomados</Descricao>
+        <TipoServico>NFSeConsultarNfseServicoTomado</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
         <TagAtributoID>Pedido</TagAtributoID>
@@ -7536,6 +7574,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarRpsDisponivelEnvio" versao="2.04" tagIdentificadora="Pedido">
         <Descricao>Consulta os dados cadastrais</Descricao>
+        <TipoServico>NFSeConsultarRpsDisponivel</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarRpsDisponivelEnvio</TagAssinatura>
         <TagAtributoID>Pedido</TagAtributoID>
@@ -7548,6 +7587,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarUrlNfseEnvio" versao="2.04" tagIdentificadora="Pedido">
         <Descricao>Consulta os dados cadastrais</Descricao>
+        <TipoServico>NFSeConsultarUrlNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarUrlNfseEnvio</TagAssinatura>
         <TagAtributoID>Pedido</TagAtributoID>
@@ -7560,6 +7600,7 @@
       </Servico>
       <Servico tagRaiz="GerarNfseEnvio" versao="2.04" tagIdentificadora="InfDeclaracaoPrestacaoServico">
         <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+        <TipoServico>NFSeGerarNfse</TipoServico>
         <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -7572,6 +7613,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.04" tagIdentificadora="LoteRps">
         <Descricao>Recepcionar Lote RPS</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRps</TipoServico>
         <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -7584,6 +7626,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.04" tagIdentificadora="LoteRps">
         <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRpsSincrono</TipoServico>
         <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -7596,6 +7639,7 @@
       </Servico>
       <Servico tagRaiz="SubstituirNfseEnvio" versao="2.04" tagIdentificadora="SubstituicaoNfse">
         <Descricao>Substituir nota fiscal de Serviço</Descricao>
+        <TipoServico>NFSeSubstituirNfse</TipoServico>
         <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
         <TagAssinatura>Pedido</TagAssinatura>
         <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -7608,6 +7652,7 @@
       </Servico>
       <Servico tagRaiz="CancelarNfseEnvio" versao="1.01" tagIdentificadora="pedRegEvento">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura>pedRegEvento</TagAssinatura>
         <TagAtributoID>infPedReg</TagAtributoID>
@@ -7620,6 +7665,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarDadosCadastraisEnvio" versao="1.01" tagIdentificadora="Prestador">
         <Descricao>Consulta os dados cadastrais</Descricao>
+        <TipoServico>NFSeConsultarDadosCadastrais</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -7632,6 +7678,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarLoteDpsEnvio" versao="1.01" tagIdentificadora="IM">
         <Descricao>Consulta lote RPS</Descricao>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -7644,6 +7691,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="1.01" tagIdentificadora="IM">
         <Descricao>Consulta NFSe por Faixa</Descricao>
+        <TipoServico>NFSeConsultarNfseFaixa</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -7656,6 +7704,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseDpsEnvio" versao="1.01" tagIdentificadora="IM">
         <Descricao>Consulta NFSe por RPS</Descricao>
+        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -7668,6 +7717,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="1.01" tagIdentificadora="IM">
         <Descricao>Consulta NFSe de serviços prestados</Descricao>
+        <TipoServico>NFSeConsultarNfseServicoPrestado</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -7680,6 +7730,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="1.01" tagIdentificadora="IM">
         <Descricao>Consulta NFSe de serviços tomados</Descricao>
+        <TipoServico>NFSeConsultarNfseServicoTomado</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -7692,6 +7743,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarDpsDisponivelEnvio" versao="1.01" tagIdentificadora="IM">
         <Descricao>Consulta os dados cadastrais</Descricao>
+        <TipoServico>NFSeConsultarRpsDisponivel</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -7704,6 +7756,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarUrlNfseEnvio" versao="1.01" tagIdentificadora="IM">
         <Descricao>Consulta os dados cadastrais</Descricao>
+        <TipoServico>NFSeConsultarUrlNfse</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -7716,6 +7769,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteDpsEnvio" versao="1.01" tagIdentificadora="LoteDps">
         <Descricao>Recepcionar Lote RPS</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRps</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura>DPS</TagAssinatura>
         <TagAtributoID>infDPS</TagAtributoID>
@@ -7728,6 +7782,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteDpsSincronoEnvio" versao="1.01" tagIdentificadora="LoteDps">
         <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRpsSincrono</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura>DPS</TagAssinatura>
         <TagAtributoID>infDPS</TagAtributoID>
@@ -7740,6 +7795,7 @@
       </Servico>
       <Servico tagRaiz="GerarNfseEnvio" versao="1.01" tagIdentificadora="infDPS">
         <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+        <TipoServico>NFSeGerarNfse</TipoServico>
         <SchemaArquivo>schema_v101.xsd</SchemaArquivo>
         <TagAssinatura>DPS</TagAssinatura>
         <TagAtributoID>infDPS</TagAtributoID>
@@ -8502,6 +8558,7 @@
     <Padrao nome="PRODEB">
       <Servico tagRaiz="CancelarNfseEnvio" versao="2.01" tagIdentificadora="InfPedidoCancelamento">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
         <TagAssinatura>Pedido</TagAssinatura>
         <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -8514,6 +8571,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.01" tagIdentificadora="Protocolo">
         <Descricao>Consulta lote RPS</Descricao>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -8624,6 +8682,7 @@
     <Padrao nome="PRODATA">
       <Servico tagRaiz="CancelarNfseEnvio" versao="2.01" tagIdentificadora="InfPedidoCancelamento">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
         <TagAssinatura>Pedido</TagAssinatura>
         <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -8636,6 +8695,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.01" tagIdentificadora="Protocolo">
         <Descricao>Consulta lote RPS</Descricao>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -8648,6 +8708,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNotaPdfEnvio" versao="2.01" tagIdentificadora="IdentificacaoNfse">
         <Descricao>Consultar nota PDF</Descricao>
+        <TipoServico>NFSeConsultarNfsePDF</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -8660,6 +8721,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.01" tagIdentificadora="LoteRps">
         <Descricao>Recepcionar Lote RPS</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRps</TipoServico>
         <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -8672,6 +8734,7 @@
       </Servico>
       <Servico tagRaiz="GerarNfseEnvio" versao="2.01" tagIdentificadora="Rps">
         <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+        <TipoServico>NFSeGerarNfse</TipoServico>
         <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -9980,6 +10043,7 @@
     <Padrao nome="SMARAPD">
       <Servico tagRaiz="tbnfd" versao="1.00" tagIdentificadora="nfd">
         <Descricao>Recepcionar Lote RPS</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -9992,6 +10056,7 @@
       </Servico>
       <Servico tagRaiz="nfd" versao="1.00" tagIdentificadora="motivocancelamento">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -10004,6 +10069,7 @@
       </Servico>
       <Servico tagRaiz="nfd" versao="1.00" tagIdentificadora="recibo">
         <Descricao>Consultar NFSe</Descricao>
+        <TipoServico>NFSeConsultarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -10016,6 +10082,7 @@
       </Servico>
       <Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="nNFSe">
         <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+        <TipoServico>NFSeGerarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>NFSe</TagAssinatura>
         <TagAtributoID>infNFSe</TagAtributoID>
@@ -10031,6 +10098,7 @@
       </Servico>
       <Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
         <Descricao>Consultar NFSe</Descricao>
+        <TipoServico>NFSeConsultarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -10046,6 +10114,7 @@
       </Servico>
       <Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="infDPS">
         <Descricao>Consultar NFSe por DPS</Descricao>
+        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -10058,6 +10127,7 @@
       </Servico>
       <Servico tagRaiz="evento" versao="1.01" tagIdentificadora="e101101">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>evento</TagAssinatura>
         <TagAtributoID>infEvento</TagAtributoID>
@@ -10070,6 +10140,7 @@
       </Servico>
       <Servico tagRaiz="evento" versao="1.01" tagIdentificadora="e105102">
         <Descricao>Substituir nota fiscal de Serviço</Descricao>
+        <TipoServico>NFSeSubstituirNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>evento</TagAssinatura>
         <TagAtributoID>infEvento</TagAtributoID>
@@ -10082,6 +10153,7 @@
       </Servico>
       <Servico tagRaiz="consPedRegEvento" versao="1.01" tagIdentificadora="infConsPedRegEvento">
         <Descricao>Consultar Eventos Diversos da NFSe NACIONAL</Descricao>
+        <TipoServico>NFSeConsultarEventosDiversos</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -10094,6 +10166,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.03" tagIdentificadora="LoteRps">
         <Descricao>Recepcionar Lote RPS</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -10106,6 +10179,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.03" tagIdentificadora="LoteRps">
         <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRpsSincrono</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -10118,6 +10192,7 @@
       </Servico>
       <Servico tagRaiz="GerarNfseEnvio" versao="2.03" tagIdentificadora="Rps">
         <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+        <TipoServico>NFSeGerarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -10130,6 +10205,7 @@
       </Servico>
       <Servico tagRaiz="CancelarNfseEnvio" versao="2.03" tagIdentificadora="InfPedidoCancelamento">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>Pedido</TagAssinatura>
         <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -10142,6 +10218,7 @@
       </Servico>
       <Servico tagRaiz="SubstituirNfseEnvio" versao="2.03" tagIdentificadora="SubstituicaoNfse">
         <Descricao>Substituir nota fiscal de Serviço</Descricao>
+        <TipoServico>NFSeSubstituirNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>Pedido</TagAssinatura>
         <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -10154,6 +10231,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.03" tagIdentificadora="Prestador">
         <Descricao>Consulta lote RPS</Descricao>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -10166,6 +10244,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.03" tagIdentificadora="IdentificacaoRps">
         <Descricao>Consulta NFSe por RPS</Descricao>
+        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -10178,6 +10257,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="2.03" tagIdentificadora="Prestador">
         <Descricao>Consulta NFSe de serviços prestados</Descricao>
+        <TipoServico>NFSeConsultarNfseServicoPrestado</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -10190,6 +10270,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseServicoTomadoEnvio" versao="2.03" tagIdentificadora="Prestador">
         <Descricao>Consulta NFSe de serviços tomados</Descricao>
+        <TipoServico>NFSeConsultarNfseServicoTomado</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -10202,6 +10283,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="2.03" tagIdentificadora="Faixa">
         <Descricao>Consulta NFSe por Faixa</Descricao>
+        <TipoServico>NFSeConsultarNfseFaixa</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -10214,6 +10296,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.04" tagIdentificadora="LoteRps">
         <Descricao>Recepcionar Lote RPS</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -10226,6 +10309,7 @@
       </Servico>
       <Servico tagRaiz="EnviarLoteRpsSincronoEnvio" versao="2.04" tagIdentificadora="LoteRps">
         <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+        <TipoServico>NFSeRecepcionarLoteRpsSincrono</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -10238,6 +10322,7 @@
       </Servico>
       <Servico tagRaiz="GerarNfseEnvio" versao="2.04" tagIdentificadora="Rps">
         <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+        <TipoServico>NFSeGerarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -10250,6 +10335,7 @@
       </Servico>
       <Servico tagRaiz="CancelarNfseEnvio" versao="2.04" tagIdentificadora="InfPedidoCancelamento">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
+        <TipoServico>NFSeCancelarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>Pedido</TagAssinatura>
         <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -10262,6 +10348,7 @@
       </Servico>
       <Servico tagRaiz="SubstituirNfseEnvio" versao="2.04" tagIdentificadora="SubstituicaoNfse">
         <Descricao>Substituir nota fiscal de Serviço</Descricao>
+        <TipoServico>NFSeSubstituirNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>Pedido</TagAssinatura>
         <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -10274,6 +10361,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.04" tagIdentificadora="Prestador">
         <Descricao>Consulta lote RPS</Descricao>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -10286,6 +10374,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseRpsEnvio" versao="2.04" tagIdentificadora="Pedido">
         <Descricao>Consulta NFSe por RPS</Descricao>
+        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
         <TagAtributoID>Pedido</TagAtributoID>
@@ -10298,6 +10387,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="2.04" tagIdentificadora="PeriodoCompetencia">
         <Descricao>Consulta NFSe de serviços prestados</Descricao>
+        <TipoServico>NFSeConsultarNfseServicoPrestado</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -10310,6 +10400,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseServicoPrestadoEnvio" versao="2.04" tagIdentificadora="NumeroNfse">
         <Descricao>Consulta NFSe de serviços tomados</Descricao>
+        <TipoServico>NFSeConsultarNfseServicoTomado</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -10322,6 +10413,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseFaixaEnvio" versao="2.04" tagIdentificadora="Faixa">
         <Descricao>Consulta NFSe por Faixa</Descricao>
+        <TipoServico>NFSeConsultarNfseFaixa</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
