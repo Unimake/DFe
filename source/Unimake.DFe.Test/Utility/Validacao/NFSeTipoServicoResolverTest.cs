@@ -24,6 +24,7 @@ namespace Unimake.DFe.Test.Utility.Validacao
         [InlineData(PadraoNFSe.ISSNET, "<EnviarLoteDpsSincronoEnvio xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><LoteDps /></EnviarLoteDpsSincronoEnvio>", "1.01", Servico.NFSeRecepcionarLoteRpsSincrono)]
         [InlineData(PadraoNFSe.DSF, "<DPS versao=\"1.01\" xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><infDPS><tpAmb>2</tpAmb></infDPS></DPS>", "1.01", Servico.NFSeGerarNfse)]
         [InlineData(PadraoNFSe.DSF, "<ns1:ConsultaSeqRps xmlns:ns1=\"http://localhost:8080/WsNFe2/lote\"><Cabecalho Versao=\"1.00\" /></ns1:ConsultaSeqRps>", "1.00", Servico.NFSeConsultarSequenciaLoteNotaRPS)]
+        [InlineData(PadraoNFSe.DSF, "<x:ConsultaSeqRps xmlns:x=\"http://localhost:8080/WsNFe2/lote\"><Cabecalho Versao=\"1.00\" /></x:ConsultaSeqRps>", "1.00", Servico.NFSeConsultarSequenciaLoteNotaRPS)]
         [InlineData(PadraoNFSe.DSF, "<ns1:ReqConsultaNotas xmlns:ns1=\"http://localhost:8080/WsNFe2/lote\"><Cabecalho Versao=\"1.00\" /></ns1:ReqConsultaNotas>", "1.00", Servico.NFSeConsultarNotaValida)]
         [InlineData(PadraoNFSe.DSF, "<ns1:ReqEnvioLoteRPS xmlns:ns1=\"http://localhost:8080/WsNFe2/lote\"><Cabecalho Versao=\"1.00\" /><Lote /></ns1:ReqEnvioLoteRPS>", "1.00", Servico.NFSeRecepcionarLoteRpsSincrono)]
         [InlineData(PadraoNFSe.DSF, "<ConsultarSituacaoLoteRpsEnvio xmlns=\"http://www.ginfes.com.br/servico_consultar_situacao_lote_rps_envio_v03.xsd\"><Protocolo>1</Protocolo></ConsultarSituacaoLoteRpsEnvio>", "3.00", Servico.NFSeConsultarSituacaoLoteRps)]
@@ -42,6 +43,19 @@ namespace Unimake.DFe.Test.Utility.Validacao
             var tipoServico = ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.SMARAPD, "2.04");
 
             Assert.Equal(Servico.NFSeRecepcionarLoteRpsSincrono, tipoServico);
+        }
+
+        [Fact]
+        public void DeveUsarTagIdentificadoraParaDiferenciarServicosComMesmaRaiz()
+        {
+            var xmlPrestado = "<ConsultarNfseServicoPrestadoEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><Prestador /><PeriodoCompetencia /></ConsultarNfseServicoPrestadoEnvio>";
+            var xmlTomado = "<ConsultarNfseServicoPrestadoEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><Prestador /><NumeroNfse>201700000000806</NumeroNfse></ConsultarNfseServicoPrestadoEnvio>";
+
+            var tipoServicoPrestado = ValidarEstruturaXML.DefinirTipoServicoNFSe(xmlPrestado, PadraoNFSe.SMARAPD, "2.04");
+            var tipoServicoTomado = ValidarEstruturaXML.DefinirTipoServicoNFSe(xmlTomado, PadraoNFSe.SMARAPD, "2.04");
+
+            Assert.Equal(Servico.NFSeConsultarNfseServicoPrestado, tipoServicoPrestado);
+            Assert.Equal(Servico.NFSeConsultarNfseServicoTomado, tipoServicoTomado);
         }
 
         [Fact]

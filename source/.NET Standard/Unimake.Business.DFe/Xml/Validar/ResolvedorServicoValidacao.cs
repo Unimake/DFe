@@ -56,7 +56,7 @@ namespace Unimake.Business.DFe.Xml.Validar
             var candidatos = padrao
                 .SelectNodes("Servico")
                 .Cast<XmlNode>()
-                .Where(x => string.Equals(x.Attributes?["tagRaiz"]?.Value, tagRaiz, StringComparison.Ordinal))
+                .Where(x => TagRaizCorresponde(x, xml, tagRaiz))
                 .Where(x => string.IsNullOrWhiteSpace(versao) || string.Equals(x.Attributes?["versao"]?.Value, versao, StringComparison.Ordinal))
                 .ToList();
 
@@ -140,6 +140,28 @@ namespace Unimake.Business.DFe.Xml.Validar
             return servicos.FirstOrDefault(x =>
                 string.Equals(x.Attributes?["tagRaiz"]?.Value, tagRaiz, StringComparison.Ordinal) &&
                 string.Equals(x.Attributes?["versao"]?.Value ?? string.Empty, versao ?? string.Empty, StringComparison.Ordinal));
+        }
+
+        private static bool TagRaizCorresponde(XmlNode servico, XmlDocument xml, string tagRaiz)
+        {
+            var tagRaizConfigurada = servico.Attributes?["tagRaiz"]?.Value;
+
+            if (string.IsNullOrWhiteSpace(tagRaizConfigurada))
+            {
+                return false;
+            }
+
+            if (string.Equals(tagRaizConfigurada, tagRaiz, StringComparison.Ordinal))
+            {
+                return true;
+            }
+
+            return string.Equals(ObterNomeLocal(tagRaizConfigurada), xml.DocumentElement?.LocalName, StringComparison.Ordinal);
+        }
+
+        private static string ObterNomeLocal(string nome)
+        {
+            return nome?.Split(':').Last();
         }
 
         private static bool ContemElemento(XmlDocument xml, string localName)
