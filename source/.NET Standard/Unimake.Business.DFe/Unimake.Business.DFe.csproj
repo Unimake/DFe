@@ -3668,15 +3668,33 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\tiposSimples_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\CNC_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\DPS_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\evento_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\NFSe_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\pedRegEvento_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\tiposCnc_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\tiposComplexos_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\tiposEventos_v1.01.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\tiposSimples_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\CNC_v1.00.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\DPS_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\evento_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\NFSe_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\pedRegEvento_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\tiposCnc_v1.00.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\tiposComplexos_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\tiposEventos_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\tiposSimples_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\XSDRLZ_Informatica_02.xsd" />
