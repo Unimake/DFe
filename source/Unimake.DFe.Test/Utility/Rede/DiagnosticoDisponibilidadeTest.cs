@@ -531,6 +531,56 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.Equal(descricao, resultado.Descricao);
         }
 
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void AgregadorIdentificaConfiguracaoComoProblemaLocal()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(new ResultadoSondaDisponibilidade
+            {
+                Servico = "Configuracao",
+                Fonte = FonteEvidenciaDisponibilidade.Infraestrutura,
+                Status = StatusDisponibilidade.Inconclusivo,
+                TipoFalha = TipoFalhaDisponibilidade.Configuracao,
+                Essencial = true
+            });
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AmbienteLocal, resultado.OrigemProvavel);
+            Assert.Equal("Não foi possível verificar a SEFAZ porque a configuração do sistema precisa ser revisada.",
+                resultado.Descricao);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void AgregadorMantemNaoAplicavelQuandoNenhumaSondaSeAplica()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(new ResultadoSondaDisponibilidade
+            {
+                Servico = "StatusServico",
+                Fonte = FonteEvidenciaDisponibilidade.Infraestrutura,
+                Status = StatusDisponibilidade.NaoAplicavel,
+                TipoFalha = TipoFalhaDisponibilidade.Nenhuma
+            });
+            resultado.Sondas.Add(new ResultadoSondaDisponibilidade
+            {
+                Servico = "Infraestrutura",
+                Fonte = FonteEvidenciaDisponibilidade.Infraestrutura,
+                Status = StatusDisponibilidade.NaoAplicavel,
+                TipoFalha = TipoFalhaDisponibilidade.Nenhuma
+            });
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.NaoAplicavel, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.Indeterminada, resultado.OrigemProvavel);
+            Assert.Equal("Este diagnóstico não se aplica ao documento, ambiente ou local configurado.",
+                resultado.Descricao);
+        }
+
         [Theory(Skip = "Integração explícita: consulta somente StatusServico em homologação com certificado real.")]
         [Trait("Utility", "DisponibilidadeIntegracao")]
         [InlineData(TipoDFe.NFe, UFBrasil.PR, "4.00")]

@@ -341,6 +341,13 @@ namespace Unimake.Business.DFe.Utility
                 return;
             }
 
+            if (itens.All(x => x.Status == StatusDisponibilidade.NaoAplicavel))
+            {
+                resultado.Status = StatusDisponibilidade.NaoAplicavel;
+                resultado.OrigemProvavel = OrigemProvavelIndisponibilidade.Indeterminada;
+                return;
+            }
+
             if (itens.Any(x => x.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido))
             {
                 resultado.Status = StatusDisponibilidade.Degradado;
@@ -441,6 +448,7 @@ namespace Unimake.Business.DFe.Utility
             item.TipoFalha == TipoFalhaDisponibilidade.Conexao ||
             item.TipoFalha == TipoFalhaDisponibilidade.TLS ||
             item.TipoFalha == TipoFalhaDisponibilidade.Proxy ||
-            item.TipoFalha == TipoFalhaDisponibilidade.Certificado;
+            item.TipoFalha == TipoFalhaDisponibilidade.Certificado ||
+            item.TipoFalha == TipoFalhaDisponibilidade.Configuracao;
     }
 }
