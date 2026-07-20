@@ -97,6 +97,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
+		<PackageReference Include="Unimake.Utils" Version="20260720.1548.24" />
 		<PackageReference Include="xunit.v3" Version="3.2.2" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
 			<PrivateAssets>all</PrivateAssets>
@@ -105,7 +106,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Helpers-UtilitiesAndExtensions\source\Unimake.Utils\Unimake.Utils.csproj" />
 		<ProjectReference Include="..\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj" />
 	</ItemGroup>
 

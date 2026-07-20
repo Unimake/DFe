@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F53F2154-F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unimake.DFe.Test", "Unimake.DFe.Test\Unimake.DFe.Test.csproj", "{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unimake.Utils", "..\..\Helpers-UtilitiesAndExtensions\source\Unimake.Utils\Unimake.Utils.csproj", "{07A0527F-3ED4-3A9D-6E3A-7DACA85E6670}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,12 +40,6 @@ Global
 		{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}.INTEROP_Release|Any CPU.Build.0 = Release|Any CPU
 		{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07A0527F-3ED4-3A9D-6E3A-7DACA85E6670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07A0527F-3ED4-3A9D-6E3A-7DACA85E6670}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07A0527F-3ED4-3A9D-6E3A-7DACA85E6670}.INTEROP_Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07A0527F-3ED4-3A9D-6E3A-7DACA85E6670}.INTEROP_Release|Any CPU.Build.0 = Release|Any CPU
-		{07A0527F-3ED4-3A9D-6E3A-7DACA85E6670}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07A0527F-3ED4-3A9D-6E3A-7DACA85E6670}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
