@@ -27,6 +27,13 @@ namespace Unimake.Business.DFe.Utility
 #endif
     public class DiagnosticoDisponibilidadeDFe
     {
+        private static readonly HashSet<TipoDFe> DocumentosSuportados = new HashSet<TipoDFe>
+        {
+            TipoDFe.NFe,
+            TipoDFe.NFCe,
+            TipoDFe.CTe,
+            TipoDFe.MDFe
+        };
         private readonly Configuracao configuracao;
         private readonly ConfiguracaoDiagnosticoDisponibilidade opcoes;
         private readonly IExecutorInfraestruturaDisponibilidade executorInfraestrutura;
@@ -61,6 +68,13 @@ namespace Unimake.Business.DFe.Utility
             opcoes.Validar();
             var resultado = CriarResultado();
             var cronometro = Stopwatch.StartNew();
+            if (!DocumentoSuportado())
+            {
+                resultado.Sondas.Add(CriarNaoAplicavel("Diagnostico",
+                    "O documento ainda não possui uma estratégia de diagnóstico registrada."));
+                Finalizar(resultado, cronometro);
+                return resultado;
+            }
             AdicionarTelemetria(resultado);
 
             Configuracao configuracaoStatus;
@@ -84,6 +98,11 @@ namespace Unimake.Business.DFe.Utility
                     }
                 }
             }
+            catch (CertificadoDiagnosticoException ex)
+            {
+                resultado.Sondas.Add(CriarFalhaCertificado(
+                    ClassificadorDisponibilidade.SanitizarExcecao(ex.InnerException ?? ex)));
+            }
             catch (Exception ex)
             {
                 resultado.Sondas.Add(CriarFalhaConfiguracao(ex));
@@ -100,6 +119,13 @@ namespace Unimake.Business.DFe.Utility
             opcoes.Validar();
             var resultado = CriarResultado();
             var cronometro = Stopwatch.StartNew();
+            if (!DocumentoSuportado())
+            {
+                resultado.Sondas.Add(CriarNaoAplicavel("Diagnostico",
+                    "O documento ainda não possui uma estratégia de diagnóstico registrada."));
+                Finalizar(resultado, cronometro);
+                return resultado;
+            }
             AdicionarTelemetria(resultado);
             Finalizar(resultado, cronometro);
             return resultado;
@@ -116,6 +142,13 @@ namespace Unimake.Business.DFe.Utility
             var cronometro = Stopwatch.StartNew();
             try
             {
+                if (resultado.Status == StatusDisponibilidade.NaoAplicavel)
+                {
+                    cronometro.Stop();
+                    resultado.DuracaoTotalMilissegundos += cronometro.ElapsedMilliseconds;
+                    return resultado;
+                }
+
                 if (PossuiFalhaEstruturalEssencial(resultado))
                 {
                     cronometro.Stop();
@@ -145,7 +178,9 @@ namespace Unimake.Business.DFe.Utility
                 else
                 {
                     var chave = CriarChaveStatus(configuracaoStatus, endpoint);
-                    var status = CacheStatusDisponibilidade.ObterOuExecutar(chave,
+                    var contextoLocal = CacheInfraestruturaDisponibilidade.CriarIdentidadeContextoLocal(
+                        configuracaoStatus, opcoes.TimeoutMilissegundos);
+                    var status = CacheStatusDisponibilidade.ObterOuExecutar(chave, contextoLocal,
                         TimeSpan.FromMinutes(opcoes.IntervaloMinimoStatusMinutos),
                         () => executorStatus(configuracaoStatus, endpoint));
                     if (status.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido)
@@ -154,6 +189,11 @@ namespace Unimake.Business.DFe.Utility
                     }
                     resultado.Sondas.Add(status);
                 }
+            }
+            catch (CertificadoDiagnosticoException ex)
+            {
+                resultado.Sondas.Add(CriarFalhaCertificado(
+                    ClassificadorDisponibilidade.SanitizarExcecao(ex.InnerException ?? ex)));
             }
             catch (Exception ex)
             {
@@ -234,6 +274,16 @@ namespace Unimake.Business.DFe.Utility
 
         private Configuracao CriarConfiguracaoStatus()
         {
+            X509Certificate2 certificado;
+            try
+            {
+                certificado = configuracao.CertificadoDigital;
+            }
+            catch (Exception ex)
+            {
+                throw new CertificadoDiagnosticoException(ex);
+            }
+
             var copia = new Configuracao
             {
                 TipoDFe = configuracao.TipoDFe,
@@ -242,7 +292,7 @@ namespace Unimake.Business.DFe.Utility
                 CodigoMunicipio = configuracao.CodigoMunicipio,
                 TipoAmbiente = configuracao.TipoAmbiente,
                 SchemaVersao = ObterVersaoStatus(),
-                CertificadoDigital = configuracao.CertificadoDigital,
+                CertificadoDigital = certificado,
                 HasProxy = configuracao.HasProxy,
                 ProxyAutoDetect = configuracao.ProxyAutoDetect,
                 ProxyUser = configuracao.ProxyUser,
@@ -253,6 +303,8 @@ namespace Unimake.Business.DFe.Utility
             copia.Load("StatusServico");
             return copia;
         }
+
+        private bool DocumentoSuportado() => DocumentosSuportados.Contains(configuracao.TipoDFe);
 
         private string ObterVersaoStatus()
         {
@@ -412,6 +464,12 @@ namespace Unimake.Business.DFe.Utility
             cronometro.Stop();
             resultado.DuracaoTotalMilissegundos = cronometro.ElapsedMilliseconds;
             AgregadorDisponibilidade.Agregar(resultado);
+        }
+
+        private sealed class CertificadoDiagnosticoException : Exception
+        {
+            public CertificadoDiagnosticoException(Exception innerException)
+                : base(innerException == null ? string.Empty : innerException.Message, innerException) { }
         }
     }
 
@@ -624,10 +682,16 @@ namespace Unimake.Business.DFe.Utility
 
         internal static string CriarChaveCache(Configuracao configuracao, string endpoint, int timeoutMilissegundos)
         {
+            return ClassificadorDisponibilidade.SanitizarEndpoint(endpoint) + "|" +
+                CriarIdentidadeContextoLocal(configuracao, timeoutMilissegundos);
+        }
+
+        internal static string CriarIdentidadeContextoLocal(Configuracao configuracao, int timeoutMilissegundos)
+        {
             var identidadeCertificado = configuracao.CertificadoDigital == null
                 ? "sem-certificado"
                 : configuracao.CertificadoDigital.GetCertHashString();
-            return ClassificadorDisponibilidade.SanitizarEndpoint(endpoint) + "|" + identidadeCertificado + "|" +
+            return identidadeCertificado + "|" +
                 timeoutMilissegundos.ToString(CultureInfo.InvariantCulture) + "|" + IdentidadeProxy(configuracao);
         }
 
@@ -668,6 +732,8 @@ namespace Unimake.Business.DFe.Utility
             public DateTime DataHora;
             public DateTime BloqueadoAte;
             public ResultadoSondaDisponibilidade Resultado;
+            public string ContextoLocal;
+            public bool ResultadoCompartilhavel;
         }
 
         private static readonly object CacheSync = new object();
@@ -701,7 +767,11 @@ namespace Unimake.Business.DFe.Utility
         }
 
         internal static ResultadoSondaDisponibilidade ObterOuExecutar(string chave, TimeSpan intervalo,
-            Func<ResultadoSondaDisponibilidade> executar)
+            Func<ResultadoSondaDisponibilidade> executar) =>
+            ObterOuExecutar(chave, "contexto-padrao", intervalo, executar);
+
+        internal static ResultadoSondaDisponibilidade ObterOuExecutar(string chave, string contextoLocal,
+            TimeSpan intervalo, Func<ResultadoSondaDisponibilidade> executar)
         {
             Entrada entrada;
             lock (CacheSync)
@@ -723,6 +793,12 @@ namespace Unimake.Business.DFe.Utility
                 var agora = RelogioDisponibilidade.Agora();
                 if (entrada.Resultado != null && (agora < entrada.BloqueadoAte || agora - entrada.DataHora < intervalo))
                 {
+                    if (!entrada.ResultadoCompartilhavel &&
+                        !string.Equals(entrada.ContextoLocal, contextoLocal, StringComparison.Ordinal))
+                    {
+                        return CriarResultadoSuprimido(entrada, agora);
+                    }
+
                     var cache = ClassificadorDisponibilidade.Clonar(entrada.Resultado);
                     cache.DoCache = true;
                     cache.IdadeSegundos = Math.Max(0, (long)(agora - entrada.DataHora).TotalSeconds);
@@ -732,6 +808,8 @@ namespace Unimake.Business.DFe.Utility
                 var resultado = executar();
                 entrada.DataHora = agora;
                 entrada.Resultado = ClassificadorDisponibilidade.Clonar(resultado);
+                entrada.ContextoLocal = contextoLocal;
+                entrada.ResultadoCompartilhavel = ResultadoPodeSerCompartilhado(resultado);
                 if (resultado.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido)
                 {
                     entrada.BloqueadoAte = agora.AddHours(1);
@@ -739,6 +817,27 @@ namespace Unimake.Business.DFe.Utility
                 return resultado;
             }
         }
+
+        private static bool ResultadoPodeSerCompartilhado(ResultadoSondaDisponibilidade resultado) =>
+            resultado != null &&
+            (resultado.CStat == 107 || resultado.CStat == 108 || resultado.CStat == 109 ||
+             resultado.CStat == 656 || resultado.CStat == 678);
+
+        private static ResultadoSondaDisponibilidade CriarResultadoSuprimido(Entrada entrada, DateTime agora) =>
+            new ResultadoSondaDisponibilidade
+            {
+                Servico = "StatusServico",
+                Endpoint = entrada.Resultado.Endpoint,
+                Protocolo = entrada.Resultado.Protocolo,
+                Fonte = FonteEvidenciaDisponibilidade.StatusServico,
+                DataHora = agora,
+                IdadeSegundos = Math.Max(0, (long)(agora - entrada.DataHora).TotalSeconds),
+                Status = StatusDisponibilidade.Inconclusivo,
+                TipoFalha = TipoFalhaDisponibilidade.Protocolo,
+                XMotivo = "A consulta foi suprimida pelo intervalo mínimo porque a evidência anterior pertence a outro contexto local.",
+                DoCache = true,
+                Essencial = true
+            };
 
         internal static void Limpar()
         {

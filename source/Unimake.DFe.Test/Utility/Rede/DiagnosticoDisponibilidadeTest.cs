@@ -183,6 +183,69 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
+        public void FalhaAoCarregarCertificadoEhClassificadaComoCertificado()
+        {
+            var configuracao = ConfiguracaoBase();
+            configuracao.CertificadoArquivo = @"C:\Clientes\Empresa Sigilosa\certificado-inexistente.pfx";
+            configuracao.CertificadoSenha = "senha-sigilosa";
+            var executor = new ExecutorInfraestruturaFake();
+
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, null, executor).Executar();
+
+            Assert.Equal(0, executor.Execucoes);
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AmbienteLocal, resultado.OrigemProvavel);
+            var falha = Assert.Single(resultado.Sondas.Itens);
+            Assert.Equal(TipoFalhaDisponibilidade.Certificado, falha.TipoFalha);
+            Assert.DoesNotContain("Empresa Sigilosa", falha.Excecao, StringComparison.OrdinalIgnoreCase);
+            Assert.Equal("Não foi possível acessar a SEFAZ porque o certificado digital não está disponível ou precisa ser revisado.",
+                resultado.Descricao);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void Base64DeCertificadoInvalidoEhClassificadoComoCertificado()
+        {
+            var configuracao = ConfiguracaoBase();
+            configuracao.CertificadoBase64 = "conteudo-base64-invalido";
+            configuracao.CertificadoSenha = "senha-sigilosa";
+            var executor = new ExecutorInfraestruturaFake();
+
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, null, executor).Executar();
+
+            Assert.Equal(0, executor.Execucoes);
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AmbienteLocal, resultado.OrigemProvavel);
+            Assert.Contains(resultado.Sondas.Itens,
+                x => x.TipoFalha == TipoFalhaDisponibilidade.Certificado && x.Essencial);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void FalhaEstruturalPrevaleceSobreConsumoIndevidoNoExecutar()
+        {
+            var configuracao = ConfiguracaoBase();
+            configuracao.ColetarTelemetriaDisponibilidade = true;
+            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
+                HttpStatusCode.OK, Retorno(656), null);
+
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, null,
+                new ExecutorInfraestruturaFake()).Executar();
+
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AmbienteLocal, resultado.OrigemProvavel);
+            Assert.Contains(resultado.Sondas.Itens,
+                x => x.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido);
+            Assert.Contains(resultado.Sondas.Itens,
+                x => x.TipoFalha == TipoFalhaDisponibilidade.Certificado && x.Essencial);
+            Assert.Equal("Não foi possível acessar a SEFAZ porque o certificado digital não está disponível ou precisa ser revisado.",
+                resultado.Descricao);
+            DateTime bloqueadoAte;
+            Assert.True(CacheStatusDisponibilidade.ContextoBloqueado(configuracao, out bloqueadoAte));
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
         public void EvidenciaExpiraDepoisDaJanelaConfigurada()
         {
             var agora = new DateTime(2026, 7, 20, 10, 0, 0);
@@ -350,6 +413,32 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.DoesNotContain(resultado.Sondas.Itens, x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico);
         }
 
+        [Theory]
+        [Trait("Utility", "Disponibilidade")]
+        [InlineData(TipoDFe.NFSe)]
+        [InlineData(TipoDFe.BPe)]
+        public void DocumentoAindaNaoSuportadoFicaNaoAplicavelSemExecutarTransporte(TipoDFe tipoDFe)
+        {
+            var configuracao = ConfiguracaoBase();
+            configuracao.TipoDFe = tipoDFe;
+            var infraestrutura = new ExecutorInfraestruturaFake();
+            var execucoesStatus = 0;
+            var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracao, null, infraestrutura,
+                (configuracaoStatus, endpoint) =>
+                {
+                    execucoesStatus++;
+                    return Status(107);
+                });
+
+            var resultado = diagnostico.ConsultarStatusServico();
+
+            Assert.Equal(0, infraestrutura.Execucoes);
+            Assert.Equal(0, execucoesStatus);
+            Assert.Equal(StatusDisponibilidade.NaoAplicavel, resultado.Status);
+            Assert.Equal("Este diagnóstico não se aplica ao documento, ambiente ou local configurado.",
+                resultado.Descricao);
+        }
+
         [Fact]
         [Trait("Utility", "Disponibilidade")]
         public async Task CacheStatusUnificaChamadasConcorrentes()
@@ -393,6 +482,99 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
+        public void CacheStatusNaoCompartilhaFalhaLocalEntreContextos()
+        {
+            var agora = new DateTime(2026, 7, 20, 10, 0, 0);
+            RelogioDisponibilidade.Agora = () => agora;
+            var execucoes = 0;
+            Func<ResultadoSondaDisponibilidade> falharTls = () =>
+            {
+                execucoes++;
+                return new ResultadoSondaDisponibilidade
+                {
+                    Servico = "StatusServico",
+                    Endpoint = "https://sefaz.test/ws",
+                    Protocolo = "SOAP",
+                    Fonte = FonteEvidenciaDisponibilidade.StatusServico,
+                    DataHora = agora,
+                    Status = StatusDisponibilidade.Inconclusivo,
+                    TipoFalha = TipoFalhaDisponibilidade.TLS,
+                    Essencial = true
+                };
+            };
+
+            var primeiro = CacheStatusDisponibilidade.ObterOuExecutar("NFe|PR|H", "certificado-a|proxy-a|1000",
+                TimeSpan.FromMinutes(5), falharTls);
+            var segundo = CacheStatusDisponibilidade.ObterOuExecutar("NFe|PR|H", "certificado-b|proxy-b|10000",
+                TimeSpan.FromMinutes(5), () => { execucoes++; return Status(107); });
+            agora = agora.AddMinutes(6);
+            var renovado = CacheStatusDisponibilidade.ObterOuExecutar("NFe|PR|H", "certificado-b|proxy-b|10000",
+                TimeSpan.FromMinutes(5), () => { execucoes++; return Status(107); });
+
+            Assert.Equal(TipoFalhaDisponibilidade.TLS, primeiro.TipoFalha);
+            Assert.Equal(TipoFalhaDisponibilidade.Protocolo, segundo.TipoFalha);
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, segundo.Status);
+            Assert.True(segundo.DoCache);
+            Assert.DoesNotContain("TLS", segundo.XMotivo, StringComparison.OrdinalIgnoreCase);
+            Assert.Equal(StatusDisponibilidade.Operacional, renovado.Status);
+            Assert.Equal(2, execucoes);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void ConsultaStatusNaoRepassaFalhaTlsParaOutroCertificado()
+        {
+            var agora = new DateTime(2026, 7, 20, 10, 0, 0);
+            RelogioDisponibilidade.Agora = () => agora;
+            using (var certificadoA = CriarCertificadoValido(agora))
+            using (var certificadoB = CriarCertificadoValido(agora))
+            {
+                var configuracaoA = ConfiguracaoBase();
+                configuracaoA.CertificadoDigital = certificadoA;
+                var configuracaoB = ConfiguracaoBase();
+                configuracaoB.CertificadoDigital = certificadoB;
+                var execucoesStatus = 0;
+                var diagnosticoA = new DiagnosticoDisponibilidadeDFe(configuracaoA, null,
+                    new ExecutorInfraestruturaFake(), (configuracaoStatus, endpoint) =>
+                    {
+                        execucoesStatus++;
+                        return new ResultadoSondaDisponibilidade
+                        {
+                            Servico = "StatusServico",
+                            Endpoint = endpoint,
+                            Protocolo = "SOAP",
+                            Fonte = FonteEvidenciaDisponibilidade.StatusServico,
+                            DataHora = agora,
+                            Status = StatusDisponibilidade.Inconclusivo,
+                            TipoFalha = TipoFalhaDisponibilidade.TLS,
+                            Essencial = true
+                        };
+                    });
+                var diagnosticoB = new DiagnosticoDisponibilidadeDFe(configuracaoB, null,
+                    new ExecutorInfraestruturaFake(), (configuracaoStatus, endpoint) =>
+                    {
+                        execucoesStatus++;
+                        return Status(107);
+                    });
+
+                var primeiro = diagnosticoA.ConsultarStatusServico();
+                var segundo = diagnosticoB.ConsultarStatusServico();
+
+                Assert.Contains(primeiro.Sondas.Itens,
+                    x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
+                         x.TipoFalha == TipoFalhaDisponibilidade.TLS);
+                Assert.DoesNotContain(segundo.Sondas.Itens,
+                    x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
+                         x.TipoFalha == TipoFalhaDisponibilidade.TLS);
+                Assert.Contains(segundo.Sondas.Itens,
+                    x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico && x.DoCache &&
+                         x.Status == StatusDisponibilidade.Inconclusivo);
+                Assert.Equal(1, execucoesStatus);
+            }
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
         public void ConsumoIndevidoBloqueiaNovaSondaPorUmaHora()
         {
             var agora = new DateTime(2026, 7, 20, 10, 0, 0);
@@ -427,6 +609,24 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.DoesNotContain("senha", excecao, StringComparison.Ordinal);
             Assert.DoesNotContain("segredo", excecao, StringComparison.Ordinal);
             Assert.DoesNotContain("123456789", excecao, StringComparison.Ordinal);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void SanitizacaoRemoveIdentificadoresFormatadosCaminhosESegredos()
+        {
+            const string mensagem = "CNPJ 12.345.678/0001-90 CPF 123.456.789-09 senha=segredo " +
+                @"arquivo C:\Clientes\Empresa Sigilosa\certificado.pfx";
+
+            var sanitizada = ClassificadorDisponibilidade.SanitizarMensagem(mensagem);
+            var endpointInvalido = ClassificadorDisponibilidade.SanitizarEndpoint(
+                "usuario:senha@sefaz.test/ws#token-secreto");
+
+            Assert.DoesNotContain("12.345.678/0001-90", sanitizada, StringComparison.Ordinal);
+            Assert.DoesNotContain("123.456.789-09", sanitizada, StringComparison.Ordinal);
+            Assert.DoesNotContain("segredo", sanitizada, StringComparison.OrdinalIgnoreCase);
+            Assert.DoesNotContain("Empresa Sigilosa", sanitizada, StringComparison.OrdinalIgnoreCase);
+            Assert.Equal(string.Empty, endpointInvalido);
         }
 
         [Fact]

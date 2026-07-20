@@ -94,10 +94,11 @@ namespace Unimake.Business.DFe.Utility
             var resultados = new List<ResultadoSondaDisponibilidade>();
             var agora = RelogioDisponibilidade.Agora();
             var limite = agora.AddMinutes(-opcoes.JanelaEvidenciaMinutos);
+            var identidadeCertificado = IdentidadeCertificado(configuracao);
             var prefixoFiscal = CriarPrefixo(configuracao) + "F|*|";
-            var prefixoAcesso = CriarPrefixo(configuracao) + "A|" + IdentidadeCertificado(configuracao) + "|";
+            var prefixoAcesso = CriarPrefixo(configuracao) + "A|" + identidadeCertificado + "|";
             var prefixoFiscalNacional = CriarPrefixo(configuracao.TipoDFe, (int)UFBrasil.AN, configuracao.TipoAmbiente) + "F|*|";
-            var prefixoAcessoNacional = CriarPrefixo(configuracao.TipoDFe, (int)UFBrasil.AN, configuracao.TipoAmbiente) + "A|" + IdentidadeCertificado(configuracao) + "|";
+            var prefixoAcessoNacional = CriarPrefixo(configuracao.TipoDFe, (int)UFBrasil.AN, configuracao.TipoAmbiente) + "A|" + identidadeCertificado + "|";
 
             lock (SyncRoot)
             {
@@ -178,12 +179,13 @@ namespace Unimake.Business.DFe.Utility
 
         private static string IdentidadeCertificado(Configuracao configuracao)
         {
-            if (configuracao.CertificadoDigital == null) return "sem-certificado";
             try
             {
+                var certificado = configuracao.CertificadoDigital;
+                if (certificado == null) return "sem-certificado";
                 using (var sha = SHA256.Create())
                 {
-                    var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(configuracao.CertificadoDigital.Thumbprint ?? string.Empty));
+                    var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(certificado.Thumbprint ?? string.Empty));
                     return BitConverter.ToString(bytes).Replace("-", string.Empty);
                 }
             }
@@ -296,7 +298,11 @@ namespace Unimake.Business.DFe.Utility
         {
             if (string.IsNullOrWhiteSpace(endpoint)) return string.Empty;
             Uri uri;
-            if (!Uri.TryCreate(endpoint, UriKind.Absolute, out uri)) return endpoint.Split('?')[0];
+            if (!Uri.TryCreate(endpoint, UriKind.Absolute, out uri) ||
+                (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps))
+            {
+                return string.Empty;
+            }
             var seguro = new UriBuilder(uri) { UserName = string.Empty, Password = string.Empty, Query = string.Empty, Fragment = string.Empty };
             return seguro.Uri.GetLeftPart(UriPartial.Path);
         }
@@ -309,8 +315,16 @@ namespace Unimake.Business.DFe.Utility
             mensagem = mensagem ?? string.Empty;
             var quebra = mensagem.IndexOfAny(new[] { '\r', '\n' });
             if (quebra >= 0) mensagem = mensagem.Substring(0, quebra);
-            mensagem = Regex.Replace(mensagem, @"https?://[^\s\""']+", m => SanitizarEndpoint(m.Value));
+            mensagem = Regex.Replace(mensagem, @"[a-z][a-z0-9+.-]*://[^\s\""']+", m => SanitizarEndpoint(m.Value),
+                RegexOptions.IgnoreCase);
+            mensagem = Regex.Replace(mensagem, @"(?<!\d)\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2}(?!\d)", "***");
+            mensagem = Regex.Replace(mensagem, @"(?<!\d)\d{3}\.?\d{3}\.?\d{3}-?\d{2}(?!\d)", "***");
             mensagem = Regex.Replace(mensagem, @"\d{6,}", "***");
+            mensagem = Regex.Replace(mensagem,
+                @"\b(password|senha|token|apikey|api_key|secret|usuario|user)\s*[:=]\s*[^,;\s]+",
+                "$1=***", RegexOptions.IgnoreCase);
+            mensagem = Regex.Replace(mensagem, @"(?:[a-z]:\\|\\\\)[^'\""\r\n]+", "***",
+                RegexOptions.IgnoreCase);
             return mensagem.Length > 300 ? mensagem.Substring(0, 300) : mensagem;
         }
 
@@ -348,6 +362,15 @@ namespace Unimake.Business.DFe.Utility
             {
                 resultado.Status = StatusDisponibilidade.NaoAplicavel;
                 resultado.OrigemProvavel = OrigemProvavelIndisponibilidade.Indeterminada;
+                return;
+            }
+
+            if (itens.Any(x => x.Essencial &&
+                (x.TipoFalha == TipoFalhaDisponibilidade.Certificado ||
+                 x.TipoFalha == TipoFalhaDisponibilidade.Configuracao)))
+            {
+                resultado.Status = StatusDisponibilidade.Inconclusivo;
+                resultado.OrigemProvavel = OrigemProvavelIndisponibilidade.AmbienteLocal;
                 return;
             }
 
