@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
@@ -115,23 +117,68 @@ namespace Unimake.DFe.Test.Utility.Rede
             TelemetriaDisponibilidade.Registrar(configuracaoNacional, "https://sefaz.test/distribuicao", "SOAP", 100,
                 HttpStatusCode.OK, Retorno(656), null);
 
-            var configuracaoUF = ConfiguracaoBase();
-            var execucoesStatus = 0;
-            var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracaoUF, null,
-                new ExecutorInfraestruturaFake(), (configuracao, endpoint) =>
+            using (var certificado = CriarCertificadoValido(agora))
+            {
+                var configuracaoUF = ConfiguracaoBase();
+                configuracaoUF.CertificadoDigital = certificado;
+                var execucoesStatus = 0;
+                var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracaoUF, null,
+                    new ExecutorInfraestruturaFake(), (configuracao, endpoint) =>
+                    {
+                        execucoesStatus++;
+                        return Status(107);
+                    });
+
+                var resultado = diagnostico.ConsultarStatusServico();
+
+                Assert.Equal(0, execucoesStatus);
+                Assert.Contains(resultado.Sondas.Itens, x => x.Servico == "StatusServico" &&
+                    x.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido && x.DoCache);
+                DateTime bloqueadoAte;
+                Assert.True(CacheStatusDisponibilidade.ContextoBloqueado(configuracaoUF, out bloqueadoAte));
+                Assert.Equal(agora.AddHours(1), bloqueadoAte);
+            }
+        }
+
+        [Theory]
+        [Trait("Utility", "Disponibilidade")]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        public void CertificadoInvalidoSuprimeConsultaStatus(int tipoCertificado)
+        {
+            var agora = new DateTime(2026, 7, 20, 10, 0, 0);
+            RelogioDisponibilidade.Agora = () => agora;
+            var certificado = CriarCertificadoInvalido(tipoCertificado, agora);
+            try
+            {
+                var configuracao = ConfiguracaoBase();
+                configuracao.CertificadoDigital = certificado;
+                var execucoesStatus = 0;
+                var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracao, null,
+                    new ExecutorInfraestruturaFake(), (configuracaoStatus, endpoint) =>
+                    {
+                        execucoesStatus++;
+                        return Status(107);
+                    });
+
+                var resultado = diagnostico.ConsultarStatusServico();
+
+                Assert.Equal(0, execucoesStatus);
+                Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
+                Assert.Equal(OrigemProvavelIndisponibilidade.AmbienteLocal, resultado.OrigemProvavel);
+                Assert.Contains(resultado.Sondas.Itens, x => x.Essencial &&
+                    x.TipoFalha == TipoFalhaDisponibilidade.Certificado);
+                Assert.Equal("Não foi possível acessar a SEFAZ porque o certificado digital não está disponível ou precisa ser revisado.",
+                    resultado.Descricao);
+            }
+            finally
+            {
+                if (certificado != null)
                 {
-                    execucoesStatus++;
-                    return Status(107);
-                });
-
-            var resultado = diagnostico.ConsultarStatusServico();
-
-            Assert.Equal(0, execucoesStatus);
-            Assert.Contains(resultado.Sondas.Itens, x => x.Servico == "StatusServico" &&
-                x.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido && x.DoCache);
-            DateTime bloqueadoAte;
-            Assert.True(CacheStatusDisponibilidade.ContextoBloqueado(configuracaoUF, out bloqueadoAte));
-            Assert.Equal(agora.AddHours(1), bloqueadoAte);
+                    certificado.Dispose();
+                }
+            }
         }
 
         [Fact]
@@ -455,6 +502,41 @@ namespace Unimake.DFe.Test.Utility.Rede
             };
             ClassificadorDisponibilidade.ClassificarRespostaFiscal(resultado);
             return resultado;
+        }
+
+        private static X509Certificate2 CriarCertificadoInvalido(int tipoCertificado, DateTime agora)
+        {
+            if (tipoCertificado == 0)
+            {
+                return null;
+            }
+
+            if (tipoCertificado == 1)
+            {
+                using (var completo = CriarCertificadoValido(agora))
+                {
+                    return X509Certificate2.CreateFromPem(completo.ExportCertificatePem());
+                }
+            }
+
+            using (var rsa = RSA.Create())
+            {
+                var requisicao = new CertificateRequest("CN=DiagnosticoDisponibilidadeTest", rsa,
+                    HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                return requisicao.CreateSelfSigned(new DateTimeOffset(agora.AddDays(-2)),
+                    new DateTimeOffset(agora.AddDays(-1)));
+            }
+        }
+
+        private static X509Certificate2 CriarCertificadoValido(DateTime agora)
+        {
+            using (var rsa = RSA.Create())
+            {
+                var requisicao = new CertificateRequest("CN=DiagnosticoDisponibilidadeTest", rsa,
+                    HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                return requisicao.CreateSelfSigned(new DateTimeOffset(agora.AddDays(-1)),
+                    new DateTimeOffset(agora.AddDays(1)));
+            }
         }
 
         private static ResultadoSondaDisponibilidade FalhaRemota(int segundo) => new ResultadoSondaDisponibilidade

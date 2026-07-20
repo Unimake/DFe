@@ -114,6 +114,15 @@ namespace Unimake.Business.DFe.Utility
             var cronometro = Stopwatch.StartNew();
             try
             {
+                if (PossuiFalhaEstruturalEssencial(resultado))
+                {
+                    cronometro.Stop();
+                    resultado.DuracaoTotalMilissegundos += cronometro.ElapsedMilliseconds;
+                    resultado.Status = StatusDisponibilidade.Inconclusivo;
+                    resultado.OrigemProvavel = OrigemProvavelIndisponibilidade.AmbienteLocal;
+                    return resultado;
+                }
+
                 DateTime bloqueadoAte;
                 if (TentarBloquearPelasEvidencias(resultado, out bloqueadoAte) ||
                     CacheStatusDisponibilidade.ContextoBloqueado(configuracao, out bloqueadoAte))
@@ -154,6 +163,11 @@ namespace Unimake.Business.DFe.Utility
             AgregadorDisponibilidade.Agregar(resultado);
             return resultado;
         }
+
+        private static bool PossuiFalhaEstruturalEssencial(ResultadoDiagnosticoDisponibilidade resultado) =>
+            resultado.Sondas.Itens.Any(x => x.Essencial &&
+                (x.TipoFalha == TipoFalhaDisponibilidade.Certificado ||
+                 x.TipoFalha == TipoFalhaDisponibilidade.Configuracao));
 
         private bool TentarBloquearPelasEvidencias(ResultadoDiagnosticoDisponibilidade resultado, out DateTime bloqueadoAte)
         {
