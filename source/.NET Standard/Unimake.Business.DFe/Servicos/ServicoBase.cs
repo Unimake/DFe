@@ -277,22 +277,30 @@ namespace Unimake.Business.DFe.Servicos
                 var apiConfig = new ConfiguracaoApiConfigMapper().Map(Configuracoes);
 
                 var consumirAPI = new ConsumirAPI();
-                var cronometro = Stopwatch.StartNew();
-                Exception falhaTransporte = null;
-                try
+                if (!TelemetriaDisponibilidade.EstaHabilitada(Configuracoes))
                 {
                     consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
                 }
-                catch (Exception ex)
+                else
                 {
-                    falhaTransporte = ex;
-                    throw;
-                }
-                finally
-                {
-                    cronometro.Stop();
-                    TelemetriaDisponibilidade.Registrar(Configuracoes, apiConfig.RequestURI, "REST", cronometro.ElapsedMilliseconds,
-                        consumirAPI.HttpStatusCode, consumirAPI.RetornoServicoXML, falhaTransporte);
+                    var inicioTelemetria = Stopwatch.GetTimestamp();
+                    Exception falhaTransporte = null;
+                    try
+                    {
+                        consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
+                    }
+                    catch (Exception ex)
+                    {
+                        falhaTransporte = ex;
+                        throw;
+                    }
+                    finally
+                    {
+                        var duracaoTelemetria = (long)((Stopwatch.GetTimestamp() - inicioTelemetria) *
+                            1000.0 / Stopwatch.Frequency);
+                        TelemetriaDisponibilidade.Registrar(Configuracoes, apiConfig.RequestURI, "REST", duracaoTelemetria,
+                            consumirAPI.HttpStatusCode, consumirAPI.RetornoServicoXML, falhaTransporte);
+                    }
                 }
 
                 RetornoWSString = consumirAPI.RetornoServicoString;
@@ -321,22 +329,30 @@ namespace Unimake.Business.DFe.Servicos
                 var soap = new ConfiguracaoWSSoapMapper().Map(Configuracoes);
 
                 var consumirWS = new ConsumirWS();
-                var cronometro = Stopwatch.StartNew();
-                Exception falhaTransporte = null;
-                try
+                if (!TelemetriaDisponibilidade.EstaHabilitada(Configuracoes))
                 {
                     consumirWS.ExecutarServico(ConteudoXML, soap, Configuracoes.CertificadoDigital);
                 }
-                catch (Exception ex)
+                else
                 {
-                    falhaTransporte = ex;
-                    throw;
-                }
-                finally
-                {
-                    cronometro.Stop();
-                    TelemetriaDisponibilidade.Registrar(Configuracoes, soap.EnderecoWeb, "SOAP", cronometro.ElapsedMilliseconds,
-                        consumirWS.HttpStatusCode, consumirWS.RetornoServicoXML, falhaTransporte);
+                    var inicioTelemetria = Stopwatch.GetTimestamp();
+                    Exception falhaTransporte = null;
+                    try
+                    {
+                        consumirWS.ExecutarServico(ConteudoXML, soap, Configuracoes.CertificadoDigital);
+                    }
+                    catch (Exception ex)
+                    {
+                        falhaTransporte = ex;
+                        throw;
+                    }
+                    finally
+                    {
+                        var duracaoTelemetria = (long)((Stopwatch.GetTimestamp() - inicioTelemetria) *
+                            1000.0 / Stopwatch.Frequency);
+                        TelemetriaDisponibilidade.Registrar(Configuracoes, soap.EnderecoWeb, "SOAP", duracaoTelemetria,
+                            consumirWS.HttpStatusCode, consumirWS.RetornoServicoXML, falhaTransporte);
+                    }
                 }
 
                 RetornoWSString = consumirWS.RetornoServicoString;

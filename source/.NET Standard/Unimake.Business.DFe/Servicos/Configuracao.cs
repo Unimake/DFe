@@ -32,6 +32,12 @@ namespace Unimake.Business.DFe.Servicos
 
         #endregion Private Fields
 
+        #region Internal Properties
+
+        internal X509Certificate2 CertificadoDigitalCarregado => _certificadoDigital;
+
+        #endregion Internal Properties
+
         #region Private Properties
 
         /// <summary>

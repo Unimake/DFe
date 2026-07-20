@@ -7,6 +7,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 
@@ -25,10 +26,14 @@ namespace Unimake.Business.DFe.Utility
         private static readonly Dictionary<string, Queue<ResultadoSondaDisponibilidade>> Historico =
             new Dictionary<string, Queue<ResultadoSondaDisponibilidade>>(StringComparer.OrdinalIgnoreCase);
 
+        internal static bool EstaHabilitada(Configuracao configuracao) =>
+            configuracao != null && configuracao.ColetarTelemetriaDisponibilidade &&
+            EhDFeSuportado(configuracao.TipoDFe);
+
         internal static void Registrar(Configuracao configuracao, string endpoint, string protocolo, long duracao,
             HttpStatusCode httpStatusCode, XmlDocument retorno, Exception exception)
         {
-            if (configuracao == null || !configuracao.ColetarTelemetriaDisponibilidade || !EhDFeSuportado(configuracao.TipoDFe))
+            if (!EstaHabilitada(configuracao))
             {
                 return;
             }
@@ -62,8 +67,15 @@ namespace Unimake.Business.DFe.Utility
                 {
                     CacheStatusDisponibilidade.BloquearContexto(configuracao, amostra.DataHora.AddHours(1));
                 }
-                lock (SyncRoot)
+                var lockAdquirido = false;
+                try
                 {
+                    if (!Monitor.TryEnter(SyncRoot))
+                    {
+                        return;
+                    }
+                    lockAdquirido = true;
+
                     Queue<ResultadoSondaDisponibilidade> fila;
                     if (!Historico.TryGetValue(chave, out fila))
                     {
@@ -79,6 +91,13 @@ namespace Unimake.Business.DFe.Utility
                     while (fila.Count > MaximoAmostrasPorChave)
                     {
                         fila.Dequeue();
+                    }
+                }
+                finally
+                {
+                    if (lockAdquirido)
+                    {
+                        Monitor.Exit(SyncRoot);
                     }
                 }
             }
@@ -100,6 +119,7 @@ namespace Unimake.Business.DFe.Utility
             var prefixoFiscalNacional = CriarPrefixo(configuracao.TipoDFe, (int)UFBrasil.AN, configuracao.TipoAmbiente) + "F|*|";
             var prefixoAcessoNacional = CriarPrefixo(configuracao.TipoDFe, (int)UFBrasil.AN, configuracao.TipoAmbiente) + "A|" + identidadeCertificado + "|";
 
+            var amostras = new List<ResultadoSondaDisponibilidade>();
             lock (SyncRoot)
             {
                 foreach (var item in Historico)
@@ -112,22 +132,32 @@ namespace Unimake.Business.DFe.Utility
                         continue;
                     }
 
-                    foreach (var amostra in item.Value.Where(x => x.DataHora >= limite))
+                    foreach (var amostra in item.Value)
                     {
-                        if (opcoes.AceitaServico(amostra.Servico))
+                        if (amostra.DataHora >= limite)
                         {
-                            var copia = ClassificadorDisponibilidade.Clonar(amostra);
-                            copia.IdadeSegundos = Math.Max(0, (long)(agora - copia.DataHora).TotalSeconds);
-                            if (copia.Status == StatusDisponibilidade.Operacional &&
-                                copia.DuracaoMilissegundos >= opcoes.LimiteLentidaoMilissegundos)
-                            {
-                                copia.Status = StatusDisponibilidade.Degradado;
-                                copia.XMotivo = "O serviço respondeu acima do limite de lentidão.";
-                            }
-                            resultados.Add(copia);
+                            amostras.Add(amostra);
                         }
                     }
                 }
+            }
+
+            foreach (var amostra in amostras)
+            {
+                if (!opcoes.AceitaServico(amostra.Servico))
+                {
+                    continue;
+                }
+
+                var copia = ClassificadorDisponibilidade.Clonar(amostra);
+                copia.IdadeSegundos = Math.Max(0, (long)(agora - copia.DataHora).TotalSeconds);
+                if (copia.Status == StatusDisponibilidade.Operacional &&
+                    copia.DuracaoMilissegundos >= opcoes.LimiteLentidaoMilissegundos)
+                {
+                    copia.Status = StatusDisponibilidade.Degradado;
+                    copia.XMotivo = "O serviço respondeu acima do limite de lentidão.";
+                }
+                resultados.Add(copia);
             }
 
             return resultados.OrderBy(x => x.DataHora).ToList();
@@ -148,7 +178,9 @@ namespace Unimake.Business.DFe.Utility
                 return;
             }
 
-            var noCStat = retorno.SelectSingleNode("//*[local-name()='cStat']");
+            var noCStat = retorno.DocumentElement.LocalName == "cStat"
+                ? retorno.DocumentElement
+                : retorno.DocumentElement.SelectSingleNode("./*[local-name()='cStat']");
             int codigo;
             if (noCStat != null && int.TryParse(noCStat.InnerText, NumberStyles.Integer, CultureInfo.InvariantCulture, out codigo))
             {
@@ -169,8 +201,8 @@ namespace Unimake.Business.DFe.Utility
             var acesso = amostra.Servico + "|" + amostra.Endpoint;
             var escopo = "F|*|";
             // TLS pode depender do certificado apresentado; não deve contaminar outros contribuintes no mesmo processo.
-            if ((amostra.TipoFalha == TipoFalhaDisponibilidade.TLS || amostra.TipoFalha == TipoFalhaDisponibilidade.Certificado) &&
-                configuracao.CertificadoDigital != null)
+            if (amostra.TipoFalha == TipoFalhaDisponibilidade.TLS ||
+                amostra.TipoFalha == TipoFalhaDisponibilidade.Certificado)
             {
                 escopo = "A|" + IdentidadeCertificado(configuracao) + "|";
             }
@@ -181,11 +213,35 @@ namespace Unimake.Business.DFe.Utility
         {
             try
             {
-                var certificado = configuracao.CertificadoDigital;
-                if (certificado == null) return "sem-certificado";
+                var certificado = configuracao.CertificadoDigitalCarregado;
+                if (certificado != null)
+                {
+                    return certificado.GetCertHashString();
+                }
+
+                string material;
+                if (!string.IsNullOrWhiteSpace(configuracao.CertificadoSerialNumberOrThumbPrint))
+                {
+                    material = "repositorio|" + configuracao.CertificadoSerialNumberOrThumbPrint;
+                }
+                else if (!string.IsNullOrWhiteSpace(configuracao.CertificadoArquivo))
+                {
+                    material = "arquivo|" + configuracao.CertificadoArquivo + "|" +
+                        (configuracao.CertificadoSenha ?? string.Empty);
+                }
+                else if (!string.IsNullOrWhiteSpace(configuracao.CertificadoBase64))
+                {
+                    material = "base64|" + configuracao.CertificadoBase64 + "|" +
+                        (configuracao.CertificadoSenha ?? string.Empty);
+                }
+                else
+                {
+                    return "sem-certificado";
+                }
+
                 using (var sha = SHA256.Create())
                 {
-                    var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(certificado.Thumbprint ?? string.Empty));
+                    var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(material));
                     return BitConverter.ToString(bytes).Replace("-", string.Empty);
                 }
             }

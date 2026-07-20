@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
@@ -36,6 +37,68 @@ namespace Unimake.DFe.Test.Utility.Rede
 
             Assert.Equal(0, resultado.Sondas.Count);
             Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public async Task RegistroDeTelemetriaNaoEsperaQuandoHistoricoEstaOcupado()
+        {
+            var configuracao = ConfiguracaoBase();
+            configuracao.ColetarTelemetriaDisponibilidade = true;
+            var token = TestContext.Current.CancellationToken;
+
+            await ComHistoricoBloqueado(async () =>
+            {
+                var registro = Task.Run(() => TelemetriaDisponibilidade.Registrar(configuracao,
+                    "https://sefaz.test/ws", "SOAP", 100, HttpStatusCode.OK, Retorno(107), null), token);
+
+                await registro.WaitAsync(TimeSpan.FromSeconds(1), token);
+            });
+
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
+            Assert.Equal(0, resultado.Sondas.Count);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public async Task ConsumoIndevidoBloqueiaContextoMesmoQuandoAmostraEhDescartada()
+        {
+            var agora = new DateTime(2026, 7, 20, 10, 0, 0);
+            RelogioDisponibilidade.Agora = () => agora;
+            var configuracao = ConfiguracaoBase();
+            configuracao.ColetarTelemetriaDisponibilidade = true;
+            var token = TestContext.Current.CancellationToken;
+
+            await ComHistoricoBloqueado(async () =>
+            {
+                var registro = Task.Run(() => TelemetriaDisponibilidade.Registrar(configuracao,
+                    "https://sefaz.test/ws", "SOAP", 100, HttpStatusCode.OK, Retorno(656), null), token);
+                await registro.WaitAsync(TimeSpan.FromSeconds(1), token);
+            });
+
+            DateTime bloqueadoAte;
+            Assert.True(CacheStatusDisponibilidade.ContextoBloqueado(configuracao, out bloqueadoAte));
+            Assert.Equal(agora.AddHours(1), bloqueadoAte);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void TelemetriaNaoCarregaCertificadoParaCriarIdentidade()
+        {
+            var configuracao = ConfiguracaoBase();
+            configuracao.ColetarTelemetriaDisponibilidade = true;
+            configuracao.CertificadoArquivo = @"C:\certificados\inexistente.pfx";
+            configuracao.CertificadoSenha = "senha-sigilosa";
+            var falhaTls = new WebException("Falha TLS", WebExceptionStatus.SecureChannelFailure);
+
+            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
+                (HttpStatusCode)0, null, falhaTls);
+
+            Assert.Null(configuracao.CertificadoDigitalCarregado);
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
+            var amostra = Assert.Single(resultado.Sondas.Itens);
+            Assert.Equal(TipoFalhaDisponibilidade.TLS, amostra.TipoFalha);
+            Assert.Null(configuracao.CertificadoDigitalCarregado);
         }
 
         [Fact]
@@ -904,6 +967,46 @@ namespace Unimake.DFe.Test.Utility.Rede
             SchemaVersao = "4.00",
             Servico = Servico.NFeAutorizacao
         };
+
+        private static async Task ComHistoricoBloqueado(Func<Task> executar)
+        {
+            var syncRoot = typeof(TelemetriaDisponibilidade)
+                .GetField("SyncRoot", BindingFlags.Static | BindingFlags.NonPublic)
+                .GetValue(null);
+            var token = TestContext.Current.CancellationToken;
+            var iniciou = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+            using (var liberar = new ManualResetEventSlim())
+            {
+                var bloqueio = Task.Run(() =>
+                {
+                    var lockAdquirido = false;
+                    try
+                    {
+                        Monitor.Enter(syncRoot, ref lockAdquirido);
+                        iniciou.TrySetResult(true);
+                        liberar.Wait(token);
+                    }
+                    finally
+                    {
+                        if (lockAdquirido)
+                        {
+                            Monitor.Exit(syncRoot);
+                        }
+                    }
+                }, token);
+
+                await iniciou.Task.WaitAsync(TimeSpan.FromSeconds(5), token);
+                try
+                {
+                    await executar();
+                }
+                finally
+                {
+                    liberar.Set();
+                    await bloqueio;
+                }
+            }
+        }
 
         private static XmlDocument Retorno(int cStat)
         {
