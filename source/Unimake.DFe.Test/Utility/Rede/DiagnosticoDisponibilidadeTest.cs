@@ -363,6 +363,35 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
+        public void ExecutorProxySanitizaMensagemAntesDeArmazenar()
+        {
+            const string endpoint = "https://usuario:senha@sefaz.test/ws?token=segredo";
+            var configuracao = ConfiguracaoBase();
+            configuracao.HasProxy = true;
+            var executor = new ExecutorInfraestruturaDisponibilidade((url, certificado, timeout, proxy, metodo) =>
+                new Unimake.Net.HttpConnectionResult
+                {
+                    ResponseReceived = false,
+                    FailureType = Unimake.Net.HttpConnectionFailureType.Proxy,
+                    ErrorMessage = "Falha 123456789 em " + endpoint + "\r\nconteúdo que não deve ser armazenado"
+                });
+
+            var resultados = executor.Executar(configuracao, endpoint, 10000);
+
+            var resultado = Assert.Single(resultados);
+            Assert.Equal("Proxy", resultado.Servico);
+            Assert.Equal("https://sefaz.test/ws", resultado.Endpoint);
+            Assert.Equal(TipoFalhaDisponibilidade.Proxy, resultado.TipoFalha);
+            Assert.Equal("Falha *** em https://sefaz.test/ws", resultado.Excecao);
+            Assert.DoesNotContain("usuario", resultado.Excecao, StringComparison.Ordinal);
+            Assert.DoesNotContain("senha", resultado.Excecao, StringComparison.Ordinal);
+            Assert.DoesNotContain("segredo", resultado.Excecao, StringComparison.Ordinal);
+            Assert.DoesNotContain("123456789", resultado.Excecao, StringComparison.Ordinal);
+            Assert.DoesNotContain("conteúdo", resultado.Excecao, StringComparison.Ordinal);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
         public void AgregadorDistingueIndisponibilidadeParcial()
         {
             var resultado = new ResultadoDiagnosticoDisponibilidade();

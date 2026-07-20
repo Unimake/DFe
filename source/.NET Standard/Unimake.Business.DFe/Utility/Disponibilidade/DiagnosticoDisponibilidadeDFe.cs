@@ -420,6 +420,17 @@ namespace Unimake.Business.DFe.Utility
 
     internal sealed class ExecutorInfraestruturaDisponibilidade : IExecutorInfraestruturaDisponibilidade
     {
+        private readonly Func<string, X509Certificate2, int, IWebProxy, string, Unimake.Net.HttpConnectionResult> testarConexaoHttp;
+
+        internal ExecutorInfraestruturaDisponibilidade()
+            : this(Unimake.Net.Utility.TestHttpConnectionDetailed) { }
+
+        internal ExecutorInfraestruturaDisponibilidade(
+            Func<string, X509Certificate2, int, IWebProxy, string, Unimake.Net.HttpConnectionResult> testarConexaoHttp)
+        {
+            this.testarConexaoHttp = testarConexaoHttp ?? throw new ArgumentNullException(nameof(testarConexaoHttp));
+        }
+
         public IList<ResultadoSondaDisponibilidade> Executar(Configuracao configuracao, string endpoint, int timeoutMilissegundos)
         {
             var resultados = new List<ResultadoSondaDisponibilidade>();
@@ -434,7 +445,7 @@ namespace Unimake.Business.DFe.Utility
             if (soap.Proxy != null)
             {
                 var cronometroProxy = Stopwatch.StartNew();
-                var teste = Unimake.Net.Utility.TestHttpConnectionDetailed(endpoint, configuracao.CertificadoDigital,
+                var teste = testarConexaoHttp(endpoint, configuracao.CertificadoDigital,
                     Math.Max(1, timeoutMilissegundos / 1000), soap.Proxy, "HEAD");
                 cronometroProxy.Stop();
                 var proxy = Base("Proxy", endpoint, "HTTP", cronometroProxy.ElapsedMilliseconds);
@@ -443,7 +454,7 @@ namespace Unimake.Business.DFe.Utility
                 if (!teste.ResponseReceived)
                 {
                     proxy.TipoFalha = ConverterFalha(teste.FailureType);
-                    proxy.Excecao = teste.ErrorMessage;
+                    proxy.Excecao = ClassificadorDisponibilidade.SanitizarMensagem(teste.ErrorMessage);
                 }
                 resultados.Add(proxy);
                 return resultados;

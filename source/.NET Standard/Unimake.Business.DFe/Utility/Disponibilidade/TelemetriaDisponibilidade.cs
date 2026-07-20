@@ -301,9 +301,12 @@ namespace Unimake.Business.DFe.Utility
             return seguro.Uri.GetLeftPart(UriPartial.Path);
         }
 
-        internal static string SanitizarExcecao(Exception exception)
+        internal static string SanitizarExcecao(Exception exception) =>
+            SanitizarMensagem(exception?.Message);
+
+        internal static string SanitizarMensagem(string mensagem)
         {
-            var mensagem = exception?.Message ?? string.Empty;
+            mensagem = mensagem ?? string.Empty;
             var quebra = mensagem.IndexOfAny(new[] { '\r', '\n' });
             if (quebra >= 0) mensagem = mensagem.Substring(0, quebra);
             mensagem = Regex.Replace(mensagem, @"https?://[^\s\""']+", m => SanitizarEndpoint(m.Value));
