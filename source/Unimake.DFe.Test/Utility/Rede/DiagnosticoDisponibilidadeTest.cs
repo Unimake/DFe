@@ -263,6 +263,74 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.True(segundo.Sondas.Itens.Last().DoCache);
         }
 
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void CacheInfraestruturaSeparaTimeoutsDiferentes()
+        {
+            var configuracao = ConfiguracaoBase();
+            var executor = new ExecutorInfraestruturaFake();
+            var curto = new ConfiguracaoDiagnosticoDisponibilidade { TimeoutMilissegundos = 1000 };
+            var longo = new ConfiguracaoDiagnosticoDisponibilidade { TimeoutMilissegundos = 10000 };
+
+            var primeiro = CacheInfraestruturaDisponibilidade.ObterOuExecutar(configuracao,
+                "https://sefaz.test/ws", curto, executor);
+            var segundo = CacheInfraestruturaDisponibilidade.ObterOuExecutar(configuracao,
+                "https://sefaz.test/ws", longo, executor);
+            var repetido = CacheInfraestruturaDisponibilidade.ObterOuExecutar(configuracao,
+                "https://sefaz.test/ws", longo, executor);
+
+            Assert.Equal(2, executor.Execucoes);
+            Assert.False(primeiro[0].DoCache);
+            Assert.False(segundo[0].DoCache);
+            Assert.True(repetido[0].DoCache);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void CacheInfraestruturaSeparaCredenciaisProxySemExpoLasNaChave()
+        {
+            var primeiroProxy = ConfiguracaoBase();
+            primeiroProxy.HasProxy = true;
+            primeiroProxy.ProxyUser = "usuario-cache-um";
+            primeiroProxy.ProxyPassword = "senha-cache-um";
+            var segundoProxy = ConfiguracaoBase();
+            segundoProxy.HasProxy = true;
+            segundoProxy.ProxyUser = "usuario-cache-dois";
+            segundoProxy.ProxyPassword = "senha-cache-dois";
+            var terceiroProxy = ConfiguracaoBase();
+            terceiroProxy.HasProxy = true;
+            terceiroProxy.ProxyUser = primeiroProxy.ProxyUser;
+            terceiroProxy.ProxyPassword = "senha-cache-tres";
+            var opcoes = new ConfiguracaoDiagnosticoDisponibilidade();
+            var executor = new ExecutorInfraestruturaFake();
+
+            var chavePrimeiro = CacheInfraestruturaDisponibilidade.CriarChaveCache(primeiroProxy,
+                "https://sefaz.test/ws", opcoes.TimeoutMilissegundos);
+            var chaveSegundo = CacheInfraestruturaDisponibilidade.CriarChaveCache(segundoProxy,
+                "https://sefaz.test/ws", opcoes.TimeoutMilissegundos);
+            var chaveTerceiro = CacheInfraestruturaDisponibilidade.CriarChaveCache(terceiroProxy,
+                "https://sefaz.test/ws", opcoes.TimeoutMilissegundos);
+            CacheInfraestruturaDisponibilidade.ObterOuExecutar(primeiroProxy,
+                "https://sefaz.test/ws", opcoes, executor);
+            CacheInfraestruturaDisponibilidade.ObterOuExecutar(segundoProxy,
+                "https://sefaz.test/ws", opcoes, executor);
+            CacheInfraestruturaDisponibilidade.ObterOuExecutar(terceiroProxy,
+                "https://sefaz.test/ws", opcoes, executor);
+            var repetido = CacheInfraestruturaDisponibilidade.ObterOuExecutar(terceiroProxy,
+                "https://sefaz.test/ws", opcoes, executor);
+
+            Assert.NotEqual(chavePrimeiro, chaveSegundo);
+            Assert.NotEqual(chavePrimeiro, chaveTerceiro);
+            Assert.DoesNotContain(primeiroProxy.ProxyUser, chavePrimeiro, StringComparison.Ordinal);
+            Assert.DoesNotContain(primeiroProxy.ProxyPassword, chavePrimeiro, StringComparison.Ordinal);
+            Assert.DoesNotContain(segundoProxy.ProxyUser, chaveSegundo, StringComparison.Ordinal);
+            Assert.DoesNotContain(segundoProxy.ProxyPassword, chaveSegundo, StringComparison.Ordinal);
+            Assert.DoesNotContain(terceiroProxy.ProxyUser, chaveTerceiro, StringComparison.Ordinal);
+            Assert.DoesNotContain(terceiroProxy.ProxyPassword, chaveTerceiro, StringComparison.Ordinal);
+            Assert.Equal(3, executor.Execucoes);
+            Assert.True(repetido[0].DoCache);
+        }
+
         [Theory]
         [Trait("Utility", "Disponibilidade")]
         [InlineData(TipoDFe.NFe, "4.00")]

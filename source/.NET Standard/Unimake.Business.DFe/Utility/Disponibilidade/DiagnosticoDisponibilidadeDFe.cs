@@ -10,7 +10,9 @@ using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Security.Authentication;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Threading.Tasks;
 using Unimake.Business.DFe.ConsumirServico.Compatibility;
 using Unimake.Business.DFe.Servicos;
@@ -577,6 +579,7 @@ namespace Unimake.Business.DFe.Utility
     internal static class CacheInfraestruturaDisponibilidade
     {
         private const int MaximoEntradas = 256;
+        private static readonly byte[] ChaveIdentidadeProxy = CriarChaveIdentidadeProxy();
         private sealed class Entrada
         {
             public readonly object SyncRoot = new object();
@@ -589,9 +592,7 @@ namespace Unimake.Business.DFe.Utility
         internal static IList<ResultadoSondaDisponibilidade> ObterOuExecutar(Configuracao configuracao, string endpoint,
             ConfiguracaoDiagnosticoDisponibilidade opcoes, IExecutorInfraestruturaDisponibilidade executor)
         {
-            var identidadeCertificado = configuracao.CertificadoDigital == null ? "sem-certificado" : configuracao.CertificadoDigital.GetCertHashString();
-            var chave = ClassificadorDisponibilidade.SanitizarEndpoint(endpoint) + "|" + identidadeCertificado + "|" +
-                configuracao.HasProxy.ToString(CultureInfo.InvariantCulture) + "|" + configuracao.ProxyAutoDetect.ToString(CultureInfo.InvariantCulture);
+            var chave = CriarChaveCache(configuracao, endpoint, opcoes.TimeoutMilissegundos);
             Entrada entrada;
             lock (SyncRoot)
             {
@@ -619,6 +620,40 @@ namespace Unimake.Business.DFe.Utility
                 entrada.Resultados = resultados.Select(ClassificadorDisponibilidade.Clonar).ToList();
                 return resultados;
             }
+        }
+
+        internal static string CriarChaveCache(Configuracao configuracao, string endpoint, int timeoutMilissegundos)
+        {
+            var identidadeCertificado = configuracao.CertificadoDigital == null
+                ? "sem-certificado"
+                : configuracao.CertificadoDigital.GetCertHashString();
+            return ClassificadorDisponibilidade.SanitizarEndpoint(endpoint) + "|" + identidadeCertificado + "|" +
+                timeoutMilissegundos.ToString(CultureInfo.InvariantCulture) + "|" + IdentidadeProxy(configuracao);
+        }
+
+        private static string IdentidadeProxy(Configuracao configuracao)
+        {
+            if (!configuracao.HasProxy)
+            {
+                return "sem-proxy";
+            }
+
+            var material = configuracao.ProxyAutoDetect.ToString(CultureInfo.InvariantCulture) + "\0" +
+                (configuracao.ProxyUser ?? string.Empty) + "\0" + (configuracao.ProxyPassword ?? string.Empty);
+            using (var hmac = new HMACSHA256(ChaveIdentidadeProxy))
+            {
+                return BitConverter.ToString(hmac.ComputeHash(Encoding.UTF8.GetBytes(material))).Replace("-", string.Empty);
+            }
+        }
+
+        private static byte[] CriarChaveIdentidadeProxy()
+        {
+            var chave = new byte[32];
+            using (var gerador = RandomNumberGenerator.Create())
+            {
+                gerador.GetBytes(chave);
+            }
+            return chave;
         }
 
         internal static void Limpar() { lock (SyncRoot) Cache.Clear(); }
