@@ -28,19 +28,26 @@ namespace Unimake.Business.DFe.Utility
         private readonly Configuracao configuracao;
         private readonly ConfiguracaoDiagnosticoDisponibilidade opcoes;
         private readonly IExecutorInfraestruturaDisponibilidade executorInfraestrutura;
+        private readonly Func<Configuracao, string, ResultadoSondaDisponibilidade> executorStatus;
 
         /// <summary>Cria o motor de diagnóstico.</summary>
         /// <param name="configuracao">Configuração que identifica DFe, UF, ambiente e certificado.</param>
         /// <param name="opcoes">Opções; quando nulas, são usados os padrões seguros.</param>
         public DiagnosticoDisponibilidadeDFe(Configuracao configuracao, ConfiguracaoDiagnosticoDisponibilidade opcoes = null)
-            : this(configuracao, opcoes, new ExecutorInfraestruturaDisponibilidade()) { }
+            : this(configuracao, opcoes, new ExecutorInfraestruturaDisponibilidade(), null) { }
 
         internal DiagnosticoDisponibilidadeDFe(Configuracao configuracao, ConfiguracaoDiagnosticoDisponibilidade opcoes,
             IExecutorInfraestruturaDisponibilidade executorInfraestrutura)
+            : this(configuracao, opcoes, executorInfraestrutura, null) { }
+
+        internal DiagnosticoDisponibilidadeDFe(Configuracao configuracao, ConfiguracaoDiagnosticoDisponibilidade opcoes,
+            IExecutorInfraestruturaDisponibilidade executorInfraestrutura,
+            Func<Configuracao, string, ResultadoSondaDisponibilidade> executorStatus)
         {
             this.configuracao = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
             this.opcoes = opcoes ?? new ConfiguracaoDiagnosticoDisponibilidade();
             this.executorInfraestrutura = executorInfraestrutura ?? throw new ArgumentNullException(nameof(executorInfraestrutura));
+            this.executorStatus = executorStatus ?? ExecutarStatusServico;
         }
 
         /// <summary>
@@ -108,19 +115,10 @@ namespace Unimake.Business.DFe.Utility
             try
             {
                 DateTime bloqueadoAte;
-                if (CacheStatusDisponibilidade.ContextoBloqueado(configuracao, out bloqueadoAte))
+                if (TentarBloquearPelasEvidencias(resultado, out bloqueadoAte) ||
+                    CacheStatusDisponibilidade.ContextoBloqueado(configuracao, out bloqueadoAte))
                 {
-                    resultado.Sondas.Add(new ResultadoSondaDisponibilidade
-                    {
-                        Servico = "StatusServico",
-                        Fonte = FonteEvidenciaDisponibilidade.StatusServico,
-                        DataHora = RelogioDisponibilidade.Agora(),
-                        Status = StatusDisponibilidade.Degradado,
-                        TipoFalha = TipoFalhaDisponibilidade.ConsumoIndevido,
-                        XMotivo = "A consulta de status foi suprimida até " + bloqueadoAte.ToString("s", CultureInfo.InvariantCulture) + " por consumo indevido observado.",
-                        DoCache = true,
-                        Essencial = true
-                    });
+                    AdicionarStatusSuprimido(resultado, bloqueadoAte);
                     cronometro.Stop();
                     resultado.DuracaoTotalMilissegundos += cronometro.ElapsedMilliseconds;
                     AgregadorDisponibilidade.Agregar(resultado);
@@ -138,7 +136,11 @@ namespace Unimake.Business.DFe.Utility
                     var chave = CriarChaveStatus(configuracaoStatus, endpoint);
                     var status = CacheStatusDisponibilidade.ObterOuExecutar(chave,
                         TimeSpan.FromMinutes(opcoes.IntervaloMinimoStatusMinutos),
-                        () => ExecutarStatusServico(configuracaoStatus, endpoint));
+                        () => executorStatus(configuracaoStatus, endpoint));
+                    if (status.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido)
+                    {
+                        CacheStatusDisponibilidade.BloquearContexto(configuracaoStatus, status.DataHora.AddHours(1));
+                    }
                     resultado.Sondas.Add(status);
                 }
             }
@@ -151,6 +153,43 @@ namespace Unimake.Business.DFe.Utility
             resultado.DuracaoTotalMilissegundos += cronometro.ElapsedMilliseconds;
             AgregadorDisponibilidade.Agregar(resultado);
             return resultado;
+        }
+
+        private bool TentarBloquearPelasEvidencias(ResultadoDiagnosticoDisponibilidade resultado, out DateTime bloqueadoAte)
+        {
+            var evidencia = resultado.Sondas.Itens
+                .Where(x => x.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido)
+                .OrderByDescending(x => x.DataHora)
+                .FirstOrDefault();
+            if (evidencia == null)
+            {
+                bloqueadoAte = default(DateTime);
+                return false;
+            }
+
+            bloqueadoAte = evidencia.DataHora.AddHours(1);
+            if (RelogioDisponibilidade.Agora() >= bloqueadoAte)
+            {
+                return false;
+            }
+
+            CacheStatusDisponibilidade.BloquearContexto(configuracao, bloqueadoAte);
+            return true;
+        }
+
+        private static void AdicionarStatusSuprimido(ResultadoDiagnosticoDisponibilidade resultado, DateTime bloqueadoAte)
+        {
+            resultado.Sondas.Add(new ResultadoSondaDisponibilidade
+            {
+                Servico = "StatusServico",
+                Fonte = FonteEvidenciaDisponibilidade.StatusServico,
+                DataHora = RelogioDisponibilidade.Agora(),
+                Status = StatusDisponibilidade.Degradado,
+                TipoFalha = TipoFalhaDisponibilidade.ConsumoIndevido,
+                XMotivo = "A consulta de status foi suprimida até " + bloqueadoAte.ToString("s", CultureInfo.InvariantCulture) + " por consumo indevido observado.",
+                DoCache = true,
+                Essencial = true
+            });
         }
 
         /// <summary>Limpa telemetria e caches mantidos somente em memória no processo atual.</summary>
@@ -652,7 +691,6 @@ namespace Unimake.Business.DFe.Utility
 
         private static string ChaveContexto(Configuracao configuracao) =>
             ((int)configuracao.TipoDFe).ToString(CultureInfo.InvariantCulture) + "|" +
-            configuracao.CodigoUF.ToString(CultureInfo.InvariantCulture) + "|" +
             ((int)configuracao.TipoAmbiente).ToString(CultureInfo.InvariantCulture);
     }
 

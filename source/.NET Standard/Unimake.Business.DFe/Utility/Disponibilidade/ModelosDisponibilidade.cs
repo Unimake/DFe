@@ -95,7 +95,7 @@ namespace Unimake.Business.DFe.Utility
         public ConfiguracaoDiagnosticoDisponibilidade()
         {
             TimeoutMilissegundos = 10000;
-            LimiteLentidaoMilissegundos = 5000;
+            LimiteLentidaoMilissegundos = 3000;
             JanelaEvidenciaMinutos = 15;
             CacheInfraestruturaSegundos = 60;
             IntervaloMinimoStatusMinutos = 5;

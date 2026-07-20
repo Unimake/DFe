@@ -104,6 +104,38 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
+        public void ConsumoIndevidoNacionalSuprimeConsultaStatusDaUF()
+        {
+            var agora = new DateTime(2026, 7, 20, 10, 0, 0);
+            RelogioDisponibilidade.Agora = () => agora;
+            var configuracaoNacional = ConfiguracaoBase();
+            configuracaoNacional.CodigoUF = (int)UFBrasil.AN;
+            configuracaoNacional.Servico = Servico.NFeDistribuicaoDFe;
+            configuracaoNacional.ColetarTelemetriaDisponibilidade = true;
+            TelemetriaDisponibilidade.Registrar(configuracaoNacional, "https://sefaz.test/distribuicao", "SOAP", 100,
+                HttpStatusCode.OK, Retorno(656), null);
+
+            var configuracaoUF = ConfiguracaoBase();
+            var execucoesStatus = 0;
+            var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracaoUF, null,
+                new ExecutorInfraestruturaFake(), (configuracao, endpoint) =>
+                {
+                    execucoesStatus++;
+                    return Status(107);
+                });
+
+            var resultado = diagnostico.ConsultarStatusServico();
+
+            Assert.Equal(0, execucoesStatus);
+            Assert.Contains(resultado.Sondas.Itens, x => x.Servico == "StatusServico" &&
+                x.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido && x.DoCache);
+            DateTime bloqueadoAte;
+            Assert.True(CacheStatusDisponibilidade.ContextoBloqueado(configuracaoUF, out bloqueadoAte));
+            Assert.Equal(agora.AddHours(1), bloqueadoAte);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
         public void EvidenciaExpiraDepoisDaJanelaConfigurada()
         {
             var agora = new DateTime(2026, 7, 20, 10, 0, 0);
@@ -152,6 +184,8 @@ namespace Unimake.DFe.Test.Utility.Rede
             var padrao = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
 
             Assert.Equal(StatusDisponibilidade.Operacional, tolerante.Status);
+            Assert.Equal(4000, padrao.Sondas.GetItem(0).DuracaoMilissegundos);
+            Assert.Equal(StatusDisponibilidade.Degradado, padrao.Sondas.GetItem(0).Status);
             Assert.Equal(StatusDisponibilidade.Degradado, padrao.Status);
         }
 
