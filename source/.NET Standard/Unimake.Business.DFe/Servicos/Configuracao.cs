@@ -1053,6 +1053,12 @@ namespace Unimake.Business.DFe.Servicos
         public bool Definida { get; set; }
 
         /// <summary>
+        /// Habilita a coleta passiva e sanitizada de evidências de disponibilidade para esta execução fiscal.
+        /// A coleta não cria requisições adicionais e permanece somente em memória.
+        /// </summary>
+        public bool ColetarTelemetriaDisponibilidade { get; set; }
+
+        /// <summary>
         /// Descrição do serviço
         /// </summary>
         public string Descricao { get; set; }

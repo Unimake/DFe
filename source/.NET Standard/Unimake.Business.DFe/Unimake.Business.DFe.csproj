@@ -3819,7 +3819,6 @@
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.10" />
 		<PackageReference Include="Unimake.Cryptography" Version="20260618.1051.35" />
 		<PackageReference Include="Unimake.Extensions" Version="20260618.1051.35" />
-		<PackageReference Include="Unimake.Utils" Version="20260618.1051.35" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -3859,6 +3858,10 @@
 	<ItemGroup>
 	  <Folder Include="Servicos\BPe\" />
 	  <Folder Include="Servicos\Config\BPe\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\Helpers-UtilitiesAndExtensions\source\Unimake.Utils\Unimake.Utils.csproj" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

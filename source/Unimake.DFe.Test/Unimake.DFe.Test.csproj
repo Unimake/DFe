@@ -105,6 +105,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\Helpers-UtilitiesAndExtensions\source\Unimake.Utils\Unimake.Utils.csproj" />
 		<ProjectReference Include="..\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj" />
 	</ItemGroup>
 
