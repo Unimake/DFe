@@ -15,21 +15,44 @@ namespace Unimake.Business.DFe.Utility
 {
     internal static class RelogioDisponibilidade
     {
+        /// <summary>Função que fornece a data e hora usadas pelo diagnóstico.</summary>
+        /// <remarks>É substituível nos testes para simular a passagem do tempo sem esperar de verdade.</remarks>
         internal static Func<DateTime> Agora = () => DateTime.Now;
     }
 
+    /// <summary>Coleta, em memória, evidências das operações fiscais reais da aplicação.</summary>
+    /// <remarks>
+    /// A telemetria é passiva: ela observa chamadas que o sistema já faria e não envia mensagens fiscais extras.
+    /// O histórico é limitado e temporário para não aumentar o custo da emissão nem criar arquivos no computador.
+    /// </remarks>
     internal static class TelemetriaDisponibilidade
     {
+        /// <summary>Quantidade máxima de amostras guardadas para cada combinação de serviço e contexto.</summary>
         private const int MaximoAmostrasPorChave = 20;
+        /// <summary>Quantidade máxima de combinações diferentes mantidas no processo.</summary>
         private const int MaximoChaves = 512;
+        /// <summary>Lock usado somente para proteger o dicionário de histórico.</summary>
         private static readonly object SyncRoot = new object();
+        /// <summary>Histórico em memória, separado por documento, UF, ambiente e serviço.</summary>
         private static readonly Dictionary<string, Queue<ResultadoSondaDisponibilidade>> Historico =
             new Dictionary<string, Queue<ResultadoSondaDisponibilidade>>(StringComparer.OrdinalIgnoreCase);
 
+        /// <summary>Verifica se a configuração permite observar as operações atuais.</summary>
+        /// <param name="configuracao">Configuração usada pela operação fiscal.</param>
+        /// <returns><see langword="true"/> quando a coleta está ligada e o documento é suportado.</returns>
         internal static bool EstaHabilitada(Configuracao configuracao) =>
             configuracao != null && configuracao.ColetarTelemetriaDisponibilidade &&
             EhDFeSuportado(configuracao.TipoDFe);
 
+        /// <summary>Registra uma operação fiscal já executada, sem repetir a chamada.</summary>
+        /// <param name="configuracao">Configuração da operação observada.</param>
+        /// <param name="endpoint">Endereço utilizado pelo transporte; será sanitizado.</param>
+        /// <param name="protocolo">Protocolo de transporte, como SOAP ou REST.</param>
+        /// <param name="duracao">Duração da operação em milissegundos.</param>
+        /// <param name="httpStatusCode">Status HTTP retornado, quando existir.</param>
+        /// <param name="retorno">Resposta fiscal recebida, usada apenas para localizar o cStat.</param>
+        /// <param name="exception">Exceção ocorrida, quando a operação falhou.</param>
+        /// <remarks>Qualquer erro da própria telemetria é ignorado para nunca interromper a emissão.</remarks>
         internal static void Registrar(Configuracao configuracao, string endpoint, string protocolo, long duracao,
             HttpStatusCode httpStatusCode, XmlDocument retorno, Exception exception)
         {
@@ -107,6 +130,10 @@ namespace Unimake.Business.DFe.Utility
             }
         }
 
+        /// <summary>Obtém cópias das evidências recentes relevantes para uma configuração.</summary>
+        /// <param name="configuracao">Configuração cujo documento, UF, ambiente e certificado serão filtrados.</param>
+        /// <param name="opcoes">Janela de tempo e serviços que devem ser considerados.</param>
+        /// <returns>Lista ordenada por data, sem executar qualquer chamada externa.</returns>
         internal static IList<ResultadoSondaDisponibilidade> Obter(Configuracao configuracao,
             ConfiguracaoDiagnosticoDisponibilidade opcoes)
         {
@@ -163,6 +190,7 @@ namespace Unimake.Business.DFe.Utility
             return resultados.OrderBy(x => x.DataHora).ToList();
         }
 
+        /// <summary>Apaga o histórico passivo mantido em memória.</summary>
         internal static void Limpar()
         {
             lock (SyncRoot)
@@ -171,6 +199,9 @@ namespace Unimake.Business.DFe.Utility
             }
         }
 
+        /// <summary>Extrai somente o cStat da resposta, evitando guardar o XML fiscal completo.</summary>
+        /// <param name="retorno">Documento XML retornado pelo serviço.</param>
+        /// <param name="amostra">Amostra que receberá o código encontrado.</param>
         private static void PreencherRetorno(XmlDocument retorno, ResultadoSondaDisponibilidade amostra)
         {
             if (retorno == null || retorno.DocumentElement == null)
@@ -188,14 +219,18 @@ namespace Unimake.Business.DFe.Utility
             }
         }
 
+        /// <summary>Cria o prefixo de chave para a UF da configuração.</summary>
         private static string CriarPrefixo(Configuracao configuracao) =>
             CriarPrefixo(configuracao.TipoDFe, configuracao.CodigoUF, configuracao.TipoAmbiente);
 
+        /// <summary>Cria o prefixo numérico comum usado nas chaves do histórico.</summary>
         private static string CriarPrefixo(TipoDFe tipoDFe, int codigoUF, TipoAmbiente tipoAmbiente) =>
             ((int)tipoDFe).ToString(CultureInfo.InvariantCulture) + "|" +
             codigoUF.ToString(CultureInfo.InvariantCulture) + "|" +
             ((int)tipoAmbiente).ToString(CultureInfo.InvariantCulture) + "|";
 
+        /// <summary>Combina o contexto fiscal, serviço e endpoint em uma chave de histórico.</summary>
+        /// <remarks>Falhas dependentes do certificado ficam separadas para não misturar contribuintes.</remarks>
         private static string CriarChave(Configuracao configuracao, ResultadoSondaDisponibilidade amostra)
         {
             var acesso = amostra.Servico + "|" + amostra.Endpoint;
@@ -209,6 +244,8 @@ namespace Unimake.Business.DFe.Utility
             return CriarPrefixo(configuracao) + escopo + acesso;
         }
 
+        /// <summary>Obtém uma identidade não reversível do certificado configurado.</summary>
+        /// <remarks>Senha, certificado em Base64 e outros dados sensíveis nunca são devolvidos no resultado.</remarks>
         private static string IdentidadeCertificado(Configuracao configuracao)
         {
             try
@@ -251,9 +288,11 @@ namespace Unimake.Business.DFe.Utility
             }
         }
 
+        /// <summary>Verifica se o documento possui regras de telemetria implementadas nesta versão.</summary>
         private static bool EhDFeSuportado(TipoDFe tipoDFe) => tipoDFe == TipoDFe.NFe || tipoDFe == TipoDFe.NFCe ||
             tipoDFe == TipoDFe.CTe || tipoDFe == TipoDFe.MDFe;
 
+        /// <summary>Identifica serviços cuja evidência representa diretamente a capacidade de emissão.</summary>
         private static bool EhServicoEssencial(Servico servico)
         {
             var nome = servico.ToString();
@@ -262,8 +301,11 @@ namespace Unimake.Business.DFe.Utility
         }
     }
 
+    /// <summary>Converte respostas e exceções de transporte em classificações seguras.</summary>
     internal static class ClassificadorDisponibilidade
     {
+        /// <summary>Classifica um retorno fiscal usando cStat, HTTP e motivo.</summary>
+        /// <param name="resultado">Amostra que será preenchida.</param>
         internal static void ClassificarRespostaFiscal(ResultadoSondaDisponibilidade resultado)
         {
             resultado.TipoFalha = TipoFalhaDisponibilidade.Nenhuma;
@@ -297,6 +339,9 @@ namespace Unimake.Business.DFe.Utility
             }
         }
 
+        /// <summary>Classifica uma exceção de transporte sem expor dados sensíveis.</summary>
+        /// <param name="exception">Exceção original da operação.</param>
+        /// <param name="resultado">Amostra que receberá o tipo de falha e mensagem sanitizada.</param>
         internal static void PreencherFalha(Exception exception, ResultadoSondaDisponibilidade resultado)
         {
             resultado.Status = StatusDisponibilidade.Inconclusivo;
@@ -330,6 +375,9 @@ namespace Unimake.Business.DFe.Utility
             }
         }
 
+        /// <summary>Cria uma cópia independente de uma amostra para cache ou retorno.</summary>
+        /// <param name="origem">Amostra original.</param>
+        /// <returns>Cópia com os mesmos dados públicos.</returns>
         internal static ResultadoSondaDisponibilidade Clonar(ResultadoSondaDisponibilidade origem) =>
             new ResultadoSondaDisponibilidade
             {
@@ -350,6 +398,9 @@ namespace Unimake.Business.DFe.Utility
                 Essencial = origem.Essencial
             };
 
+        /// <summary>Remove usuário, senha, consulta e fragmento de um endpoint HTTP.</summary>
+        /// <param name="endpoint">Endereço potencialmente sensível.</param>
+        /// <returns>Somente esquema, host, porta e caminho seguros.</returns>
         internal static string SanitizarEndpoint(string endpoint)
         {
             if (string.IsNullOrWhiteSpace(endpoint)) return string.Empty;
@@ -363,9 +414,15 @@ namespace Unimake.Business.DFe.Utility
             return seguro.Uri.GetLeftPart(UriPartial.Path);
         }
 
+        /// <summary>Sanitiza a mensagem de uma exceção de transporte.</summary>
+        /// <param name="exception">Exceção que será resumida.</param>
+        /// <returns>Mensagem curta sem URLs, credenciais ou identificadores conhecidos.</returns>
         internal static string SanitizarExcecao(Exception exception) =>
             SanitizarMensagem(exception?.Message);
 
+        /// <summary>Sanitiza texto externo antes de colocá-lo no resultado do diagnóstico.</summary>
+        /// <param name="mensagem">Texto vindo do transporte ou do provedor.</param>
+        /// <returns>Texto limitado e sem dados sensíveis comuns.</returns>
         internal static string SanitizarMensagem(string mensagem)
         {
             mensagem = mensagem ?? string.Empty;
@@ -384,6 +441,9 @@ namespace Unimake.Business.DFe.Utility
             return mensagem.Length > 300 ? mensagem.Substring(0, 300) : mensagem;
         }
 
+        /// <summary>Procura uma WebException dentro da cadeia de exceções internas.</summary>
+        /// <param name="exception">Exceção inicial.</param>
+        /// <returns>A WebException encontrada ou <see langword="null"/>.</returns>
         private static WebException EncontrarWebException(Exception exception)
         {
             for (var atual = exception; atual != null; atual = atual.InnerException)
@@ -395,15 +455,23 @@ namespace Unimake.Business.DFe.Utility
         }
     }
 
+    /// <summary>Combina as sondas em um estado geral e em uma origem provável.</summary>
+    /// <remarks>Considera essencialidade, evidência fiscal direta e falhas locais antes de atribuir problema à SEFAZ.</remarks>
     internal static class AgregadorDisponibilidade
     {
+        /// <summary>Estado consolidado de um serviço após combinar suas tentativas recentes.</summary>
         private sealed class EstadoServico
         {
+            /// <summary>Indica se o serviço é necessário para emissão ou status.</summary>
             public bool Essencial;
+            /// <summary>Indica que cStat 108 ou 109 confirmou indisponibilidade fiscal.</summary>
             public bool IndisponibilidadeConfirmada;
+            /// <summary>Estado mais representativo do serviço.</summary>
             public StatusDisponibilidade Status;
         }
 
+        /// <summary>Calcula o estado agregado do diagnóstico recebido.</summary>
+        /// <param name="resultado">Resultado cujas sondas serão analisadas e atualizado.</param>
         internal static void Agregar(ResultadoDiagnosticoDisponibilidade resultado)
         {
             var itens = resultado.Sondas.Itens.ToList();
@@ -484,6 +552,10 @@ namespace Unimake.Business.DFe.Utility
             }
         }
 
+        /// <summary>Classifica um serviço usando suas até três amostras mais recentes.</summary>
+        /// <param name="grupo">Amostras do mesmo serviço e endpoint.</param>
+        /// <param name="infraestruturaSaudavel">Indica se a rede local respondeu normalmente.</param>
+        /// <returns>Estado consolidado do serviço.</returns>
         private static EstadoServico ClassificarServico(IGrouping<string, ResultadoSondaDisponibilidade> grupo,
             bool infraestruturaSaudavel)
         {
@@ -525,6 +597,9 @@ namespace Unimake.Business.DFe.Utility
             return estado;
         }
 
+        /// <summary>Verifica se uma amostra aponta para a máquina ou configuração local.</summary>
+        /// <param name="item">Amostra analisada.</param>
+        /// <returns><see langword="true"/> para DNS, conexão, TLS, proxy, certificado ou configuração.</returns>
         private static bool EhFalhaLocal(ResultadoSondaDisponibilidade item) =>
             item.TipoFalha == TipoFalhaDisponibilidade.DNS ||
             item.TipoFalha == TipoFalhaDisponibilidade.Conexao ||
