@@ -391,6 +391,80 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
+        public void TimeoutsComFalhaLocalNaoSaoAtribuidosSefaz()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(FalhaTimeout(1, true));
+            resultado.Sondas.Add(FalhaTimeout(2, true));
+            resultado.Sondas.Add(Infraestrutura(TipoFalhaDisponibilidade.DNS, StatusDisponibilidade.Inconclusivo));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AmbienteLocal, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void TimeoutsSemComprovacaoDaInfraestruturaFicamInconclusivos()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(FalhaTimeout(1, true));
+            resultado.Sondas.Add(FalhaTimeout(2, true));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.Indeterminada, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void TimeoutsComInfraestruturaSaudavelPodemIndicarSefaz()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(FalhaTimeout(1, true));
+            resultado.Sondas.Add(FalhaTimeout(2, true));
+            resultado.Sondas.Add(Infraestrutura(TipoFalhaDisponibilidade.Nenhuma, StatusDisponibilidade.Operacional));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void FalhaExclusivaDeServicoNaoEssencialFicaParcial()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(FalhaHttp(1, false));
+            resultado.Sondas.Add(FalhaHttp(2, false));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.ParcialmenteIndisponivel, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.Parcial, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void IndisponibilidadeFiscalConfirmadaPrevaleceSobreFalhaLocal()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            var status = Status(108);
+            status.Essencial = true;
+            resultado.Sondas.Add(status);
+            resultado.Sondas.Add(Infraestrutura(TipoFalhaDisponibilidade.DNS, StatusDisponibilidade.Inconclusivo));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
         public void SucessoMaisRecenteSuperaFalhasAnteriores()
         {
             var resultado = new ResultadoDiagnosticoDisponibilidade();
@@ -539,7 +613,9 @@ namespace Unimake.DFe.Test.Utility.Rede
             }
         }
 
-        private static ResultadoSondaDisponibilidade FalhaRemota(int segundo) => new ResultadoSondaDisponibilidade
+        private static ResultadoSondaDisponibilidade FalhaRemota(int segundo) => FalhaHttp(segundo, true);
+
+        private static ResultadoSondaDisponibilidade FalhaHttp(int segundo, bool essencial) => new ResultadoSondaDisponibilidade
         {
             Servico = "NFeAutorizacao",
             Endpoint = "https://sefaz.test/ws",
@@ -547,7 +623,30 @@ namespace Unimake.DFe.Test.Utility.Rede
             DataHora = new DateTime(2026, 7, 20, 10, 0, segundo),
             Status = StatusDisponibilidade.Degradado,
             TipoFalha = TipoFalhaDisponibilidade.HTTP,
-            HttpStatusCode = 503
+            HttpStatusCode = 503,
+            Essencial = essencial
+        };
+
+        private static ResultadoSondaDisponibilidade FalhaTimeout(int segundo, bool essencial) => new ResultadoSondaDisponibilidade
+        {
+            Servico = "NFeAutorizacao",
+            Endpoint = "https://sefaz.test/ws",
+            Fonte = FonteEvidenciaDisponibilidade.TelemetriaPassiva,
+            DataHora = new DateTime(2026, 7, 20, 10, 0, segundo),
+            Status = StatusDisponibilidade.Degradado,
+            TipoFalha = TipoFalhaDisponibilidade.Timeout,
+            Essencial = essencial
+        };
+
+        private static ResultadoSondaDisponibilidade Infraestrutura(TipoFalhaDisponibilidade falha,
+            StatusDisponibilidade status) => new ResultadoSondaDisponibilidade
+        {
+            Servico = falha == TipoFalhaDisponibilidade.DNS ? "DNS" : "TCP",
+            Fonte = FonteEvidenciaDisponibilidade.Infraestrutura,
+            DataHora = new DateTime(2026, 7, 20, 10, 0, 3),
+            Status = status,
+            TipoFalha = falha,
+            Essencial = true
         };
 
         private sealed class ExecutorInfraestruturaFake : IExecutorInfraestruturaDisponibilidade

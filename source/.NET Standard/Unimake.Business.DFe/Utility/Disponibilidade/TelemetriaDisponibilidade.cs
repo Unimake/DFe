@@ -324,6 +324,13 @@ namespace Unimake.Business.DFe.Utility
 
     internal static class AgregadorDisponibilidade
     {
+        private sealed class EstadoServico
+        {
+            public bool Essencial;
+            public bool IndisponibilidadeConfirmada;
+            public StatusDisponibilidade Status;
+        }
+
         internal static void Agregar(ResultadoDiagnosticoDisponibilidade resultado)
         {
             var itens = resultado.Sondas.Itens.ToList();
@@ -341,50 +348,92 @@ namespace Unimake.Business.DFe.Utility
                 return;
             }
 
+            var falhaLocal = itens.Any(EhFalhaLocal);
+            var infraestrutura = itens.Where(x => x.Fonte == FonteEvidenciaDisponibilidade.Infraestrutura &&
+                x.Status != StatusDisponibilidade.NaoAplicavel).ToList();
+            var infraestruturaSaudavel = infraestrutura.Count > 0 && !falhaLocal &&
+                infraestrutura.All(x => x.Status == StatusDisponibilidade.Operacional);
             var fiscais = itens.Where(x => x.Fonte != FonteEvidenciaDisponibilidade.Infraestrutura).ToList();
             var estadosServicos = fiscais
                 .GroupBy(x => (x.Servico ?? string.Empty) + "|" + (x.Endpoint ?? string.Empty), StringComparer.OrdinalIgnoreCase)
-                .Select(ClassificarServico)
+                .Select(x => ClassificarServico(x, infraestruturaSaudavel))
                 .ToList();
-            var indisponiveis = estadosServicos.Count(x => x == StatusDisponibilidade.Indisponivel);
-            var operacionais = estadosServicos.Count(x => x == StatusDisponibilidade.Operacional || x == StatusDisponibilidade.Degradado);
-            var falhaLocal = itens.Any(EhFalhaLocal);
-            if (indisponiveis > 0 && operacionais > 0)
+            var indisponiveis = estadosServicos.Where(x => x.Status == StatusDisponibilidade.Indisponivel).ToList();
+            var operacionais = estadosServicos.Where(x => x.Status == StatusDisponibilidade.Operacional ||
+                x.Status == StatusDisponibilidade.Degradado).ToList();
+            var essenciais = estadosServicos.Where(x => x.Essencial).ToList();
+            var indisponibilidadeConfirmada = indisponiveis.Any(x => x.IndisponibilidadeConfirmada);
+
+            if (falhaLocal && !indisponibilidadeConfirmada)
             {
-                resultado.Status = StatusDisponibilidade.ParcialmenteIndisponivel;
-                resultado.OrigemProvavel = OrigemProvavelIndisponibilidade.Parcial;
+                resultado.Status = operacionais.Count > 0
+                    ? StatusDisponibilidade.Degradado
+                    : StatusDisponibilidade.Inconclusivo;
+                resultado.OrigemProvavel = OrigemProvavelIndisponibilidade.AmbienteLocal;
             }
-            else if (indisponiveis > 0)
+            else if (essenciais.Count > 0 && essenciais.All(x => x.Status == StatusDisponibilidade.Indisponivel))
             {
                 resultado.Status = StatusDisponibilidade.Indisponivel;
                 resultado.OrigemProvavel = OrigemProvavelIndisponibilidade.AutoridadeFiscal;
             }
-            else if (operacionais > 0)
+            else if (indisponiveis.Count > 0)
             {
-                resultado.Status = estadosServicos.Any(x => x == StatusDisponibilidade.Degradado) || falhaLocal
+                resultado.Status = StatusDisponibilidade.ParcialmenteIndisponivel;
+                resultado.OrigemProvavel = OrigemProvavelIndisponibilidade.Parcial;
+            }
+            else if (operacionais.Count > 0)
+            {
+                resultado.Status = estadosServicos.Any(x => x.Status == StatusDisponibilidade.Degradado)
                     ? StatusDisponibilidade.Degradado
                     : StatusDisponibilidade.Operacional;
-                resultado.OrigemProvavel = falhaLocal ? OrigemProvavelIndisponibilidade.AmbienteLocal : OrigemProvavelIndisponibilidade.Nenhuma;
+                resultado.OrigemProvavel = OrigemProvavelIndisponibilidade.Nenhuma;
             }
             else
             {
                 resultado.Status = StatusDisponibilidade.Inconclusivo;
-                resultado.OrigemProvavel = falhaLocal ? OrigemProvavelIndisponibilidade.AmbienteLocal : OrigemProvavelIndisponibilidade.Indeterminada;
+                resultado.OrigemProvavel = OrigemProvavelIndisponibilidade.Indeterminada;
             }
         }
 
-        private static StatusDisponibilidade ClassificarServico(IGrouping<string, ResultadoSondaDisponibilidade> grupo)
+        private static EstadoServico ClassificarServico(IGrouping<string, ResultadoSondaDisponibilidade> grupo,
+            bool infraestruturaSaudavel)
         {
             var ultimas = grupo.OrderByDescending(x => x.DataHora).Take(3).ToList();
             var maisRecente = ultimas[0];
-            if (maisRecente.Status == StatusDisponibilidade.Operacional) return StatusDisponibilidade.Operacional;
-            if (maisRecente.Status == StatusDisponibilidade.Indisponivel) return StatusDisponibilidade.Indisponivel;
-            if (maisRecente.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido) return StatusDisponibilidade.Degradado;
+            var estado = new EstadoServico
+            {
+                Essencial = ultimas.Any(x => x.Essencial),
+                IndisponibilidadeConfirmada = maisRecente.CStat == 108 || maisRecente.CStat == 109,
+                Status = maisRecente.Status
+            };
+            if (maisRecente.Status == StatusDisponibilidade.Operacional ||
+                maisRecente.Status == StatusDisponibilidade.Indisponivel ||
+                maisRecente.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido)
+            {
+                return estado;
+            }
 
-            var falhasRemotas = ultimas.Count(x => x.TipoFalha == TipoFalhaDisponibilidade.Timeout ||
-                (x.TipoFalha == TipoFalhaDisponibilidade.HTTP && x.HttpStatusCode >= 500));
-            if (falhasRemotas >= 2) return StatusDisponibilidade.Indisponivel;
-            return maisRecente.Status;
+            var falhasHttp = ultimas.Count(x => x.TipoFalha == TipoFalhaDisponibilidade.HTTP && x.HttpStatusCode >= 500);
+            if (falhasHttp >= 2)
+            {
+                estado.Status = StatusDisponibilidade.Indisponivel;
+                return estado;
+            }
+
+            if (maisRecente.TipoFalha == TipoFalhaDisponibilidade.Timeout)
+            {
+                var timeouts = ultimas.Count(x => x.TipoFalha == TipoFalhaDisponibilidade.Timeout);
+                if (timeouts >= 2 && infraestruturaSaudavel)
+                {
+                    estado.Status = StatusDisponibilidade.Indisponivel;
+                }
+                else if (!ultimas.Skip(1).Any(x => x.Status == StatusDisponibilidade.Operacional))
+                {
+                    estado.Status = StatusDisponibilidade.Inconclusivo;
+                }
+            }
+
+            return estado;
         }
 
         private static bool EhFalhaLocal(ResultadoSondaDisponibilidade item) =>
