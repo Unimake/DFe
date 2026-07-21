@@ -4520,6 +4520,35 @@ namespace TreinamentoDLL
                     //Salvar XMLs do docZIP no HD
                     distribuicaoDFe.GravarXMLDocZIP(folder, true);
 
+                    //Resumo das notas já em objeto
+                    foreach (var resNFes in distribuicaoDFe.ResNFes)
+                    {
+                        var chNFe = resNFes.ChNFe;
+                        var dhEmi = resNFes.DhEmi;
+                    }
+
+                    //Resumo dos eventos já em objeto
+                    foreach (var resEventos in distribuicaoDFe.ResEventos)
+                    {
+                        var chNFe = resEventos.ChNFe;
+                        var dhEmi = resEventos.DhRecbto;
+                    }
+
+                    //Eventos completos já em objeto
+                    foreach (var procEventoNFes in distribuicaoDFe.ProcEventoNFes)
+                    {
+                        var chNFe = procEventoNFes.Evento.InfEvento.ChNFe;
+                        var tpEvento = procEventoNFes.Evento.InfEvento.TpEvento;
+                    }
+
+                    //NFes completas já em objeto
+                    foreach (var procNFes in distribuicaoDFe.ProcNFes)
+                    {
+                        var dhEmi = procNFes.NFe.InfNFeField.Ide.DhEmi;
+                        var id = procNFes.NFe.InfNFeField.Id;
+                        var chave = procNFes.NFe.InfNFeField.Chave;
+                    }
+
                     foreach (var docZip in distribuicaoDFe.Result.LoteDistDFeInt.DocZip)
                     {
                         switch (docZip.TipoXML)
@@ -4535,6 +4564,7 @@ namespace TreinamentoDLL
 
                                 //XML no formato Base64
                                 var xmlResNFeBase64 = docZip.Value;
+
                                 break;
 
                             case TipoXMLDocZip.ResEvento:
