@@ -390,6 +390,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             this.documentos.Clear();
         }
 
+        private static string XmlTag<T>(string propertyName) => NFeXmlTagNameResolver.Get<T>(propertyName);
+
 #if INTEROP
         private static DateTime ConverterDataHora(string valor) =>
             DateTimeOffset.Parse(valor, CultureInfo.InvariantCulture).DateTime;
@@ -538,51 +540,42 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         /// LerCampo
         /// </summary>
 
-        private double LerDouble(TpcnTipoCampo Tipo, TpcnResources tag, ObOp optional, int maxLength, bool returnNull) =>
+        private double LerDouble(TpcnTipoCampo Tipo, string tag, ObOp optional, int maxLength, bool returnNull) =>
             (double)LerCampo(Tipo, tag, optional, 0, maxLength, true, returnNull);
 
-        private double LerDouble(TpcnTipoCampo Tipo, TpcnResources tag, ObOp optional, int maxLength) =>
+        private double LerDouble(TpcnTipoCampo Tipo, string tag, ObOp optional, int maxLength) =>
             (double)this.LerCampo(Tipo, tag, optional, 0, maxLength, true, false);
-        private decimal LerDecimal(TpcnTipoCampo Tipo, TpcnResources tag, ObOp optional, int maxLength) =>
-            (decimal)this.LerCampo(Tipo, tag.ToString(), optional, 0, maxLength, true, false);
+        private decimal LerDecimal(TpcnTipoCampo Tipo, string tag, ObOp optional, int maxLength) =>
+            (decimal)this.LerCampo(Tipo, tag, optional, 0, maxLength, true, false);
 
-        private double LerDouble(TpcnTipoCampo Tipo, TpcnResources tag, ObOp optional, int minLength, int maxLength) =>
+        private double LerDouble(TpcnTipoCampo Tipo, string tag, ObOp optional, int minLength, int maxLength) =>
             (double)this.LerCampo(Tipo, tag, optional, minLength, maxLength, true, false);
 
         private Int32 LerInt32(string tag, ObOp optional, int minLength, int maxLength) =>
             (Int32)this.LerCampo(TpcnTipoCampo.tcInt, tag, optional, minLength, maxLength, true, false);
 
-        private Int32 LerInt32(TpcnResources tag, ObOp optional, int minLength, int maxLength) =>
-            (Int32)this.LerCampo(TpcnTipoCampo.tcInt, tag, optional, minLength, maxLength, true, false);
-
-        private Int32 LerInt32(TpcnResources tag, ObOp optional, int minLength, int maxLength, bool returnNull) =>
+        private Int32 LerInt32(string tag, ObOp optional, int minLength, int maxLength, bool returnNull) =>
             (Int32)this.LerCampo(TpcnTipoCampo.tcInt, tag, optional, minLength, maxLength, true, returnNull);
 
         private string LerString(string tag, ObOp optional, int minLength, int maxLength) =>
             (string)this.LerCampo(TpcnTipoCampo.tcStr, tag, optional, minLength, maxLength, true, false);
 
-        private string LerString(TpcnResources tag, ObOp optional, int minLength, int maxLength) =>
-            (string)this.LerCampo(TpcnTipoCampo.tcStr, tag, optional, minLength, maxLength, true, false);
-
-        private string LerString(TpcnResources tag, ObOp optional, int minLength, int maxLength, bool trim) =>
+        private string LerString(string tag, ObOp optional, int minLength, int maxLength, bool trim) =>
             (string)this.LerCampo(TpcnTipoCampo.tcStr, tag, optional, minLength, maxLength, trim, false);
 
-        private object LerCampo(TpcnTipoCampo Tipo, TpcnResources tag, ObOp optional, int minLength, int maxLength, bool trim, bool returnNull)
-            => LerCampo(Tipo, tag.ToString(), optional, minLength, maxLength, trim, returnNull);
-
-        private object LerCampo(TpcnTipoCampo Tipo, string /*TpcnResources*/ tag, ObOp optional, int minLength, int maxLength, bool trim, bool returnNull)
+        private object LerCampo(TpcnTipoCampo Tipo, string tag, ObOp optional, int minLength, int maxLength, bool trim, bool returnNull)
         {
             int nDecimais = 0;
             string ConteudoTag = "";
             try
             {
-                ConteudoTag = RetornarConteudoTag(tag.ToString(), trim, optional);
+                ConteudoTag = RetornarConteudoTag(tag, trim, optional);
 
                 if (ConteudoTag != "")
                     if (ConteudoTag.StartsWith(prefix))
                         ConteudoTag = "";
 
-                if (string.IsNullOrEmpty(ConteudoTag) && (tag.ToString() == "cEAN" || tag.ToString() == "cEANTrib"))
+                if (string.IsNullOrEmpty(ConteudoTag) && (tag == "cEAN" || tag == "cEANTrib"))
                     return ConteudoTag = "SEM GTIN";
 
                 int len = ConteudoTag.Length;
@@ -627,7 +620,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                         this.cMensagemErro += "Layout: " + this.layout.Replace(prefix, "") + Environment.NewLine;
                         this.cMensagemErro += string.Format("Segmento [{0}]: tag <{1}> deve ser informada.\r\n" +
                                                             "\tLinha: {2}: Conteudo do segmento: {3}",
-                                                            this.FSegmento, tag.ToString(), this.context.LinhaLida + 1, this.Registro.Substring(1)) + Environment.NewLine;
+                                                            this.FSegmento, tag, this.context.LinhaLida + 1, this.Registro.Substring(1)) + Environment.NewLine;
                     }
                     else
                     {
@@ -652,7 +645,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                                     this.cMensagemErro += "Layout: " + this.layout.Replace(prefix, "") + Environment.NewLine;
                                     this.cMensagemErro += string.Format("Segmento [{0}]: tag <{1}> deve ter seu tamanho entre {2} e {3}. Conteudo: {4}" +
                                                             "\r\n\tLinha: {5}: Conteudo do segmento: {6}",
-                                                            this.FSegmento, tag.ToString(), minLength, maxLength, ConteudoTag, this.context.LinhaLida + 1, this.Registro.Substring(1)) + Environment.NewLine;
+                                                            this.FSegmento, tag, minLength, maxLength, ConteudoTag, this.context.LinhaLida + 1, this.Registro.Substring(1)) + Environment.NewLine;
                                 }
                                 break;
                         }
@@ -695,7 +688,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                                         this.cMensagemErro += "Layout: " + this.layout.Replace(prefix, "") + Environment.NewLine;
                                         this.cMensagemErro += string.Format("Segmento [{0}]: tag <{1}> número de casas decimais deve ser de {2} e existe(m) {3}" +
                                                                             "\r\n\tLinha: {4}: Conteudo do segmento: {5}",
-                                                                            this.FSegmento, tag.ToString(), nDecimais, ndec, this.context.LinhaLida + 1, this.Registro.Substring(1)) + Environment.NewLine;
+                                                                            this.FSegmento, tag, nDecimais, ndec, this.context.LinhaLida + 1, this.Registro.Substring(1)) + Environment.NewLine;
                                     }
                                 }
                                 else
@@ -708,19 +701,19 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
                                 TpcnTipoCampo tipo = (TpcnTipoCampo)ndec;
 
-                                if (tag == TpcnResources.qTotMes.ToString())
+                                if (tag == XmlTag<DFeNFe.Cana>(nameof(DFeNFe.Cana.QTotMes)).ToString())
                                 {
                                 }
 
-                                if (tag == TpcnResources.qTotAnt.ToString())
+                                if (tag == XmlTag<DFeNFe.Cana>(nameof(DFeNFe.Cana.QTotAnt)).ToString())
                                 {
                                 }
 
-                                if (tag == TpcnResources.qTotGer.ToString())
+                                if (tag == XmlTag<DFeNFe.Cana>(nameof(DFeNFe.Cana.QTotGer)).ToString())
                                 {
                                 }
 
-                                if (tag == TpcnResources.qtde.ToString())
+                                if (tag == XmlTag<DFeNFe.ForDia>(nameof(DFeNFe.ForDia.Qtde)).ToString())
                                 {
                                 }
 
@@ -785,7 +778,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     this.cMensagemErro += "Layout: " + this.layout.Replace(prefix, "") + Environment.NewLine;
                 this.cMensagemErro += string.Format("Segmento [{0}]: tag <{1}> Conteudo: {2}\r\n" +
                                                     "\tLinha: {3}: Conteudo do segmento: {4}\r\n\tMensagem de erro: {5}",
-                                                    this.FSegmento, tag.ToString(), ConteudoTag, this.context.LinhaLida + 1, this.Registro.Substring(1),
+                                                    this.FSegmento, tag, ConteudoTag, this.context.LinhaLida + 1, this.Registro.Substring(1),
                                                     ex.Message) + Environment.NewLine;
                 return RetornarValorPadraoDoCampo(Tipo);
             }
@@ -846,8 +839,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (this.nfeOficial.InfNFeField.Agropecuario.Defensivo == null) this.nfeOficial.InfNFeField.Agropecuario.Defensivo = new List<DFeNFe.Defensivo>();
             this.nfeOficial.InfNFeField.Agropecuario.Defensivo.Add(new DFeNFe.Defensivo
             {
-                NReceituario = this.LerString(TpcnResources.nReceituario, ObOp.Obrigatorio, 1, 30),
-                CPFRespTec = this.LerString(TpcnResources.CPFRespTec, ObOp.Obrigatorio, 11, 11)
+                NReceituario = this.LerString(XmlTag<DFeNFe.Defensivo>(nameof(DFeNFe.Defensivo.NReceituario)), ObOp.Obrigatorio, 1, 30),
+                CPFRespTec = this.LerString(XmlTag<DFeNFe.Defensivo>(nameof(DFeNFe.Defensivo.CPFRespTec)), ObOp.Obrigatorio, 11, 11)
             });
         }
 
@@ -856,24 +849,24 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (this.nfeOficial.InfNFeField.Agropecuario == null) this.nfeOficial.InfNFeField.Agropecuario = new DFeNFe.Agropecuario();
             this.nfeOficial.InfNFeField.Agropecuario.GuiaTransito = new DFeNFe.GuiaTransito
             {
-                TpGuia = (TipoGuiaTransito)this.LerInt32(TpcnResources.tpGuia, ObOp.Obrigatorio, 1, 1),
-                UFGuia = (UFBrasil)Enum.Parse(typeof(UFBrasil), this.LerString(TpcnResources.UFGuia, ObOp.Obrigatorio, 2, 2), true),
-                SerieGuia = VazioParaNulo(this.LerString(TpcnResources.serieGuia, ObOp.Opcional, 1, 9)),
-                NGuia = this.LerString(TpcnResources.nGuia, ObOp.Obrigatorio, 1, 9)
+                TpGuia = (TipoGuiaTransito)this.LerInt32(XmlTag<DFeNFe.GuiaTransito>(nameof(DFeNFe.GuiaTransito.TpGuia)), ObOp.Obrigatorio, 1, 1),
+                UFGuia = (UFBrasil)Enum.Parse(typeof(UFBrasil), this.LerString(XmlTag<DFeNFe.GuiaTransito>(nameof(DFeNFe.GuiaTransito.UFGuia)), ObOp.Obrigatorio, 2, 2), true),
+                SerieGuia = VazioParaNulo(this.LerString(XmlTag<DFeNFe.GuiaTransito>(nameof(DFeNFe.GuiaTransito.SerieGuia)), ObOp.Opcional, 1, 9)),
+                NGuia = this.LerString(XmlTag<DFeNFe.GuiaTransito>(nameof(DFeNFe.GuiaTransito.NGuia)), ObOp.Obrigatorio, 1, 9)
             };
         }
         private void ProcessarCana()
         {
             this.nfeOficial.InfNFeField.Cana = new DFeNFe.Cana
             {
-                Safra = this.LerString(TpcnResources.safra, ObOp.Obrigatorio, 4, 9),
-                Ref = this.LerString(TpcnResources.Ref, ObOp.Obrigatorio, 7, 7),
-                QTotMes = this.LerDouble(TpcnTipoCampo.tcDouble10, TpcnResources.qTotMes, ObOp.Obrigatorio, 11),
-                QTotAnt = this.LerDouble(TpcnTipoCampo.tcDouble10, TpcnResources.qTotAnt, ObOp.Obrigatorio, 11),
-                QTotGer = this.LerDouble(TpcnTipoCampo.tcDouble10, TpcnResources.qTotGer, ObOp.Obrigatorio, 11),
-                VFor = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFor, ObOp.Obrigatorio, 15),
-                VTotDed = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTotDed, ObOp.Obrigatorio, 15),
-                VLiqFor = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vLiqFor, ObOp.Obrigatorio, 15)
+                Safra = this.LerString(XmlTag<DFeNFe.Cana>(nameof(DFeNFe.Cana.Safra)), ObOp.Obrigatorio, 4, 9),
+                Ref = this.LerString(NFeTxtFieldNames.Referencia, ObOp.Obrigatorio, 7, 7),
+                QTotMes = this.LerDouble(TpcnTipoCampo.tcDouble10, XmlTag<DFeNFe.Cana>(nameof(DFeNFe.Cana.QTotMes)), ObOp.Obrigatorio, 11),
+                QTotAnt = this.LerDouble(TpcnTipoCampo.tcDouble10, XmlTag<DFeNFe.Cana>(nameof(DFeNFe.Cana.QTotAnt)), ObOp.Obrigatorio, 11),
+                QTotGer = this.LerDouble(TpcnTipoCampo.tcDouble10, XmlTag<DFeNFe.Cana>(nameof(DFeNFe.Cana.QTotGer)), ObOp.Obrigatorio, 11),
+                VFor = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Cana>(nameof(DFeNFe.Cana.VFor)), ObOp.Obrigatorio, 15),
+                VTotDed = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Cana>(nameof(DFeNFe.Cana.VTotDed)), ObOp.Obrigatorio, 15),
+                VLiqFor = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Cana>(nameof(DFeNFe.Cana.VLiqFor)), ObOp.Obrigatorio, 15)
             };
         }
         private void ProcessarReferenciasDaIdentificacao()
@@ -887,7 +880,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
                     identificacaoOficial.NFref.Add(new DFeNFe.NFref
                     {
-                        RefNFe = this.LerString(TpcnResources.refNFe, ObOp.Obrigatorio, 44, 44)
+                        RefNFe = this.LerString(XmlTag<DFeNFe.NFref>(nameof(DFeNFe.NFref.RefNFe)), ObOp.Obrigatorio, 44, 44)
                     });
 
                     #endregion
@@ -902,12 +895,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                         {
                             RefNF = new DFeNFe.RefNF
                             {
-                                CUF = (UFBrasil)this.LerInt32(TpcnResources.cUF, ObOp.Obrigatorio, 2, 2),
-                                AAMM = this.LerString(TpcnResources.AAMM, ObOp.Obrigatorio, 4, 4),
-                                CNPJ = this.LerString(TpcnResources.CNPJ, ObOp.Obrigatorio, 14, 14),
-                                Mod = this.LerString(TpcnResources.mod, ObOp.Obrigatorio, 2, 2),
-                                Serie = this.LerInt32(TpcnResources.serie, ObOp.Obrigatorio, 1, 3),
-                                NNF = this.LerInt32(TpcnResources.nNF, ObOp.Obrigatorio, 1, 9)
+                                CUF = (UFBrasil)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.CUF)), ObOp.Obrigatorio, 2, 2),
+                                AAMM = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.AAMM)), ObOp.Obrigatorio, 4, 4),
+                                CNPJ = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Obrigatorio, 14, 14),
+                                Mod = this.LerString(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.Mod)), ObOp.Obrigatorio, 2, 2),
+                                Serie = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.Serie)), ObOp.Obrigatorio, 1, 3),
+                                NNF = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.NNF)), ObOp.Obrigatorio, 1, 9)
                             }
                         });
                     }
@@ -922,18 +915,18 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                         {
                             RefNFP = new DFeNFe.RefNFP
                             {
-                                CUF = (UFBrasil)this.LerInt32(TpcnResources.cUF, ObOp.Obrigatorio, 2, 2),
-                                AAMM = this.LerString(TpcnResources.AAMM, ObOp.Obrigatorio, 4, 4),
-                                IE = VazioParaNulo(this.LerString(TpcnResources.IE, ObOp.Obrigatorio, 1, 14)),
-                                Mod = this.LerString(TpcnResources.mod, ObOp.Obrigatorio, 2, 2),
-                                Serie = this.LerInt32(TpcnResources.serie, ObOp.Obrigatorio, 1, 3),
-                                NNF = this.LerInt32(TpcnResources.nNF, ObOp.Obrigatorio, 1, 9)
+                                CUF = (UFBrasil)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.CUF)), ObOp.Obrigatorio, 2, 2),
+                                AAMM = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.AAMM)), ObOp.Obrigatorio, 4, 4),
+                                IE = VazioParaNulo(this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.IE)), ObOp.Obrigatorio, 1, 14)),
+                                Mod = this.LerString(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.Mod)), ObOp.Obrigatorio, 2, 2),
+                                Serie = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.Serie)), ObOp.Obrigatorio, 1, 3),
+                                NNF = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.NNF)), ObOp.Obrigatorio, 1, 9)
                             }
                         };
                         identificacaoOficial.NFref.Add(item);
                         if (FSegmento.ToUpper().Equals("BA10"))
                         {
-                            var refCTe = this.LerString(TpcnResources.refCTe, ObOp.Opcional, 44, 44);
+                            var refCTe = this.LerString(XmlTag<DFeNFe.NFref>(nameof(DFeNFe.NFref.RefCTe)), ObOp.Opcional, 44, 44);
                             if (!string.IsNullOrWhiteSpace(refCTe)) identificacaoOficial.NFref.Add(new DFeNFe.NFref { RefCTe = refCTe });
                         }
                     }
@@ -943,13 +936,13 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 case "B20D":
                 case "BA13":
                     ObterUltimaReferenciaProdutor(FSegmento.ToUpper().Equals("B20D") ? "Segmento B20d sem segmento B20A" : "Segmento BA13 sem segmento BA10").CNPJ =
-                        this.LerString(TpcnResources.CNPJ, ObOp.Obrigatorio, 14, 14);
+                        this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Obrigatorio, 14, 14);
                     break;
 
                 case "B20E":
                 case "BA14":
                     ObterUltimaReferenciaProdutor(FSegmento.ToUpper().Equals("B20E") ? "Segmento B20e sem segmento B20A" : "Segmento BA14 sem segmento BA10").CPF =
-                        this.LerString(TpcnResources.CPF, ObOp.Obrigatorio, 11, 11);
+                        this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.CPF)), ObOp.Obrigatorio, 11, 11);
                     break;
 
                 case "BA19":
@@ -957,7 +950,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     //layout = "§BA19|refCTe"; //ok
                     identificacaoOficial.NFref.Add(new DFeNFe.NFref
                     {
-                        RefCTe = LerString(TpcnResources.refCTe, ObOp.Obrigatorio, 44, 44)
+                        RefCTe = LerString(XmlTag<DFeNFe.NFref>(nameof(DFeNFe.NFref.RefCTe)), ObOp.Obrigatorio, 44, 44)
                     });
                     break;
 
@@ -969,9 +962,9 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                         {
                             RefECF = new DFeNFe.RefECF
                             {
-                                Mod = this.LerString(TpcnResources.mod, ObOp.Obrigatorio, 2, 2),
-                                NECF = this.LerInt32(TpcnResources.nECF, ObOp.Obrigatorio, 1, 3),
-                                NCOO = this.LerInt32(TpcnResources.nCOO, ObOp.Obrigatorio, 1, 6)
+                                Mod = this.LerString(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.Mod)), ObOp.Obrigatorio, 2, 2),
+                                NECF = this.LerInt32(XmlTag<DFeNFe.RefECF>(nameof(DFeNFe.RefECF.NECF)), ObOp.Obrigatorio, 1, 3),
+                                NCOO = this.LerInt32(XmlTag<DFeNFe.RefECF>(nameof(DFeNFe.RefECF.NCOO)), ObOp.Obrigatorio, 1, 6)
                             }
                         });
                     }
@@ -980,12 +973,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 case "BB01":
                     {
                         //layout = BB01|tpEnteGov|pRedutor|tpOperGov|refDFeAnt|
-                        var refDFeAnt = VazioParaNulo(this.LerString(TpcnResources.refDFeAnt, ObOp.Opcional, 44, 44));
+                        var refDFeAnt = VazioParaNulo(this.LerString(XmlTag<DFeNFe.GCompraGov>(nameof(DFeNFe.GCompraGov.RefDFeAnt)), ObOp.Opcional, 44, 44));
                         identificacaoOficial.GCompraGov = new DFeNFe.GCompraGov
                         {
-                            TpEnteGov = (TipoEnteGovernamental)this.LerInt32(TpcnResources.tpEnteGov, ObOp.Obrigatorio, 1, 1),
-                            PRedutor = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedutor, ObOp.Obrigatorio, 7),
-                            TpOperGov = (TipoOperacaoEnteGovernamental)this.LerInt32(TpcnResources.tpOperGov, ObOp.Obrigatorio, 1, 1),
+                            TpEnteGov = (TipoEnteGovernamental)this.LerInt32(XmlTag<DFeNFe.GCompraGov>(nameof(DFeNFe.GCompraGov.TpEnteGov)), ObOp.Obrigatorio, 1, 1),
+                            PRedutor = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GCompraGov>(nameof(DFeNFe.GCompraGov.PRedutor)), ObOp.Obrigatorio, 7),
+                            TpOperGov = (TipoOperacaoEnteGovernamental)this.LerInt32(XmlTag<DFeNFe.GCompraGov>(nameof(DFeNFe.GCompraGov.TpOperGov)), ObOp.Obrigatorio, 1, 1),
                             RefDFeAnt = refDFeAnt == null ? null : new List<string> { refDFeAnt }
                         };
                     }
@@ -999,14 +992,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     }
 
                     if (identificacaoOficial.GCompraGov.RefDFeAnt == null) identificacaoOficial.GCompraGov.RefDFeAnt = new List<string>();
-                    identificacaoOficial.GCompraGov.RefDFeAnt.Add(this.LerString(TpcnResources.refDFeAnt, ObOp.Obrigatorio, 44, 44));
+                    identificacaoOficial.GCompraGov.RefDFeAnt.Add(this.LerString(XmlTag<DFeNFe.GCompraGov>(nameof(DFeNFe.GCompraGov.RefDFeAnt)), ObOp.Obrigatorio, 44, 44));
                     break;
 
                 case "BC01":
                     //layout = BC01|refDFe|
 
                     if (identificacaoOficial.GPagAntecipado == null) identificacaoOficial.GPagAntecipado = new DFeNFe.GPagAntecipado { RefDFe = new List<string>() };
-                    identificacaoOficial.GPagAntecipado.RefDFe.Add(this.LerString(TpcnResources.refDFe, ObOp.Obrigatorio, 44, 44));
+                    identificacaoOficial.GPagAntecipado.RefDFe.Add(this.LerString(XmlTag<DFeNFe.GPagAntecipado>(nameof(DFeNFe.GPagAntecipado.RefDFe)), ObOp.Obrigatorio, 44, 44));
                     break;
             }
         }
@@ -1043,8 +1036,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarCabecalhoInicial()
         {
-                    double v = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.versao, ObOp.Opcional, 6);
-                    this.chave = this.LerString(TpcnResources.ID, ObOp.Opcional, 0, 47);
+                    double v = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.EnviNFe>(nameof(DFeNFe.EnviNFe.Versao)), ObOp.Opcional, 6);
+                    this.chave = this.LerString(NFeTxtFieldNames.Id, ObOp.Opcional, 0, 47);
                     // Alguns emissores informam apenas o tipo do documento (NFe ou NFCe) no campo reservado à chave.
                     if (string.Equals(this.chave, "NFe", StringComparison.OrdinalIgnoreCase) ||
                         string.Equals(this.chave, "NFCe", StringComparison.OrdinalIgnoreCase))
@@ -1067,17 +1060,17 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarIdentificacao(int lenPipesRegistro)
         {
-            identificacaoOficial.CUF = (UFBrasil)this.LerInt32(TpcnResources.cUF, ObOp.Obrigatorio, 2, 2);
-            var codigoNumerico = this.LerInt32(TpcnResources.cNF, ObOp.Opcional, 8, 8);
+            identificacaoOficial.CUF = (UFBrasil)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.CUF)), ObOp.Obrigatorio, 2, 2);
+            var codigoNumerico = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.CNF)), ObOp.Opcional, 8, 8);
             identificacaoOficial.CNF = codigoNumerico > 0 ? codigoNumerico.ToString("00000000") : null;
-            identificacaoOficial.NatOp = this.LerString(TpcnResources.natOp, ObOp.Obrigatorio, 1, 60);
-            identificacaoOficial.Mod = (ModeloDFe)this.LerInt32(TpcnResources.mod, ObOp.Obrigatorio, 2, 2);
-            identificacaoOficial.Serie = this.LerInt32(TpcnResources.serie, ObOp.Obrigatorio, 1, 3);
-            identificacaoOficial.NNF = this.LerInt32(TpcnResources.nNF, ObOp.Obrigatorio, 1, 9);
+            identificacaoOficial.NatOp = this.LerString(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.NatOp)), ObOp.Obrigatorio, 1, 60);
+            identificacaoOficial.Mod = (ModeloDFe)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.Mod)), ObOp.Obrigatorio, 2, 2);
+            identificacaoOficial.Serie = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.Serie)), ObOp.Obrigatorio, 1, 3);
+            identificacaoOficial.NNF = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.NNF)), ObOp.Obrigatorio, 1, 9);
 
-            var dataEmissao = this.LerString(TpcnResources.dhEmi, ObOp.Obrigatorio, 19, 25);
-            var dataSaida = this.LerString(TpcnResources.dhSaiEnt, ObOp.Opcional, 0, 25);
-            var destinoOperacao = this.LerInt32(TpcnResources.idDest, ObOp.Obrigatorio, 1, 1);
+            var dataEmissao = this.LerString(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.DhEmi)), ObOp.Obrigatorio, 19, 25);
+            var dataSaida = this.LerString(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.DhSaiEnt)), ObOp.Opcional, 0, 25);
+            var destinoOperacao = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.IdDest)), ObOp.Obrigatorio, 1, 1);
             if (string.IsNullOrEmpty(dataEmissao) || Convert.ToDateTime(dataEmissao).Year == 1 || dataEmissao.EndsWith("00:00"))
             {
                 throw new Exception("Data de emissão da nota inválida");
@@ -1095,41 +1088,41 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             identificacaoOficial.IdDest = identificacaoOficial.Mod == ModeloDFe.NFCe
                 ? DestinoOperacao.OperacaoInterna
                 : (DestinoOperacao)destinoOperacao;
-            identificacaoOficial.TpNF = (TipoOperacao)this.LerInt32(TpcnResources.tpNF, ObOp.Obrigatorio, 1, 1);
-            identificacaoOficial.CMunFG = this.LerInt32(TpcnResources.cMunFG, ObOp.Obrigatorio, 7, 7);
-            identificacaoOficial.CMunFGIBS = this.LerInt32(TpcnResources.cMunFGIBS, ObOp.Opcional, 7, 7);
-            identificacaoOficial.TpImp = (FormatoImpressaoDANFE)this.LerInt32(TpcnResources.tpImp, ObOp.Obrigatorio, 1, 1);
-            identificacaoOficial.TpEmis = (TipoEmissao)this.LerInt32(TpcnResources.tpEmis, ObOp.Obrigatorio, 1, 1);
-            identificacaoOficial.CDV = this.LerInt32(TpcnResources.cDV, ObOp.Opcional, 1, 1);
+            identificacaoOficial.TpNF = (TipoOperacao)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.TpNF)), ObOp.Obrigatorio, 1, 1);
+            identificacaoOficial.CMunFG = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.CMunFG)), ObOp.Obrigatorio, 7, 7);
+            identificacaoOficial.CMunFGIBS = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.CMunFGIBS)), ObOp.Opcional, 7, 7);
+            identificacaoOficial.TpImp = (FormatoImpressaoDANFE)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.TpImp)), ObOp.Obrigatorio, 1, 1);
+            identificacaoOficial.TpEmis = (TipoEmissao)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.TpEmis)), ObOp.Obrigatorio, 1, 1);
+            identificacaoOficial.CDV = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.CDV)), ObOp.Opcional, 1, 1);
             this.cDvInformado = identificacaoOficial.CDV != 0;
-            identificacaoOficial.TpAmb = (TipoAmbiente)this.LerInt32(TpcnResources.tpAmb, ObOp.Obrigatorio, 1, 1);
-            identificacaoOficial.FinNFe = (FinalidadeNFe)this.LerInt32(TpcnResources.finNFe, ObOp.Obrigatorio, 1, 1);
+            identificacaoOficial.TpAmb = (TipoAmbiente)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.TpAmb)), ObOp.Obrigatorio, 1, 1);
+            identificacaoOficial.FinNFe = (FinalidadeNFe)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.FinNFe)), ObOp.Obrigatorio, 1, 1);
 
-            var tipoDebito = this.LerInt32(TpcnResources.tpNFDebito, ObOp.Opcional, 2, 2, true);
+            var tipoDebito = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.TpNFDebito)), ObOp.Opcional, 2, 2, true);
             identificacaoOficial.TpNFDebito = ObterEnumOpcional(tipoDebito, (TipoNFDebito)(-1));
-            var tipoCredito = this.LerInt32(TpcnResources.tpNFCredito, ObOp.Opcional, 2, 2, true);
+            var tipoCredito = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.TpNFCredito)), ObOp.Opcional, 2, 2, true);
             identificacaoOficial.TpNFCredito = ObterEnumOpcional(tipoCredito, (TipoNFCredito)(-1));
-            identificacaoOficial.IndFinal = (SimNao)this.LerInt32(TpcnResources.indFinal, ObOp.Obrigatorio, 1, 1);
-            identificacaoOficial.IndPres = (IndicadorPresenca)this.LerInt32(TpcnResources.indPres, ObOp.Obrigatorio, 1, 1);
+            identificacaoOficial.IndFinal = (SimNao)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.IndFinal)), ObOp.Obrigatorio, 1, 1);
+            identificacaoOficial.IndPres = (IndicadorPresenca)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.IndPres)), ObOp.Obrigatorio, 1, 1);
 
             if (lenPipesRegistro >= 24)
             {
-                var indicadorIntermediario = this.LerInt32(TpcnResources.indIntermed, ObOp.Opcional, 1, 1, true);
+                var indicadorIntermediario = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.IndIntermed)), ObOp.Opcional, 1, 1, true);
                 identificacaoOficial.IndIntermed = ObterEnumOpcional(indicadorIntermediario, (IndicadorIntermediario)(-1));
             }
 
-            identificacaoOficial.ProcEmi = (ProcessoEmissao)this.LerInt32(TpcnResources.procEmi, ObOp.Obrigatorio, 1, 1);
-            identificacaoOficial.VerProc = this.LerString(TpcnResources.verProc, ObOp.Obrigatorio, 1, 20);
-            var dataContingencia = this.LerString(TpcnResources.dhCont, ObOp.Opcional, 0, 25);
+            identificacaoOficial.ProcEmi = (ProcessoEmissao)this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.ProcEmi)), ObOp.Obrigatorio, 1, 1);
+            identificacaoOficial.VerProc = this.LerString(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.VerProc)), ObOp.Obrigatorio, 1, 20);
+            var dataContingencia = this.LerString(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.DhCont)), ObOp.Opcional, 0, 25);
             if (!string.IsNullOrWhiteSpace(dataContingencia))
             {
                 identificacaoOficial.DhCont = ConverterDataHora(dataContingencia);
             }
-            identificacaoOficial.XJust = VazioParaNulo(this.LerString(TpcnResources.xJust, ObOp.Opcional, 15, 256));
+            identificacaoOficial.XJust = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.XJust)), ObOp.Opcional, 15, 256));
 
             if (lenPipesRegistro >= 28)
             {
-                var previsaoEntrega = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, TpcnResources.dPrevEntrega, ObOp.Opcional, 8, 10, true, false);
+                var previsaoEntrega = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.DPrevEntrega)), ObOp.Opcional, 8, 10, true, false);
                 if (identificacaoOficial.Mod == ModeloDFe.NFe && previsaoEntrega > DateTime.MinValue)
                 {
                     identificacaoOficial.DPrevEntrega = previsaoEntrega;
@@ -1165,188 +1158,188 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarEmitente()
         {
             this.nfeOficial.InfNFeField.Emit = new DFeNFe.Emit();
-            this.nfeOficial.InfNFeField.Emit.XNome = this.LerString(TpcnResources.xNome, ObOp.Obrigatorio, 2, 60);
-            this.nfeOficial.InfNFeField.Emit.XFant = VazioParaNulo(this.LerString(TpcnResources.xFant, ObOp.Opcional, 1, 60));
-            this.nfeOficial.InfNFeField.Emit.IE = this.LerString(TpcnResources.IE, ObOp.Opcional, 0, 14);
-            this.nfeOficial.InfNFeField.Emit.IEST = VazioParaNulo(this.LerString(TpcnResources.IEST, ObOp.Opcional, 2, 14));
-            this.nfeOficial.InfNFeField.Emit.IM = VazioParaNulo(this.LerString(TpcnResources.IM, ObOp.Opcional, 1, 15));
-            this.nfeOficial.InfNFeField.Emit.CNAE = VazioParaNulo(this.LerString(TpcnResources.CNAE, ObOp.Opcional, 7, 7));
-            this.nfeOficial.InfNFeField.Emit.CRT = (CRT)this.LerInt32(TpcnResources.CRT, ObOp.Obrigatorio, 1, 1);
-            this.nfeOficial.InfNFeField.Emit.ISUFEmit = VazioParaNulo(this.LerString(TpcnResources.ISUFEmit, ObOp.Opcional, 8, 9));
+            this.nfeOficial.InfNFeField.Emit.XNome = this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.XNome)), ObOp.Obrigatorio, 2, 60);
+            this.nfeOficial.InfNFeField.Emit.XFant = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.XFant)), ObOp.Opcional, 1, 60));
+            this.nfeOficial.InfNFeField.Emit.IE = this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.IE)), ObOp.Opcional, 0, 14);
+            this.nfeOficial.InfNFeField.Emit.IEST = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.IEST)), ObOp.Opcional, 2, 14));
+            this.nfeOficial.InfNFeField.Emit.IM = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.IM)), ObOp.Opcional, 1, 15));
+            this.nfeOficial.InfNFeField.Emit.CNAE = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.CNAE)), ObOp.Opcional, 7, 7));
+            this.nfeOficial.InfNFeField.Emit.CRT = (CRT)this.LerInt32(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.CRT)), ObOp.Obrigatorio, 1, 1);
+            this.nfeOficial.InfNFeField.Emit.ISUFEmit = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.ISUFEmit)), ObOp.Opcional, 8, 9));
         }
 
         private void ProcessarDocumentoEmitente()
         {
-            this.nfeOficial.InfNFeField.Emit.CNPJ = this.LerString(TpcnResources.CNPJ, ObOp.Obrigatorio, 14, 14);
+            this.nfeOficial.InfNFeField.Emit.CNPJ = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Obrigatorio, 14, 14);
         }
 
         private void ProcessarCpfEmitente()
         {
-            this.nfeOficial.InfNFeField.Emit.CPF = this.LerString(TpcnResources.CPF, ObOp.Obrigatorio, 11, 11);
+            this.nfeOficial.InfNFeField.Emit.CPF = this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.CPF)), ObOp.Obrigatorio, 11, 11);
         }
 
         private void ProcessarEnderecoEmitente()
         {
             this.nfeOficial.InfNFeField.Emit.EnderEmit = new DFeNFe.EnderEmit();
-            this.nfeOficial.InfNFeField.Emit.EnderEmit.XLgr = this.LerString(TpcnResources.xLgr, ObOp.Obrigatorio, 1, 60);
-            this.nfeOficial.InfNFeField.Emit.EnderEmit.Nro = this.LerString(TpcnResources.nro, ObOp.Obrigatorio, 1, 60);
-            this.nfeOficial.InfNFeField.Emit.EnderEmit.XCpl = VazioParaNulo(this.LerString(TpcnResources.xCpl, ObOp.Opcional, 1, 60));
-            this.nfeOficial.InfNFeField.Emit.EnderEmit.XBairro = this.LerString(TpcnResources.xBairro, ObOp.Obrigatorio, 2, 60);
-            this.nfeOficial.InfNFeField.Emit.EnderEmit.CMun = this.LerInt32(TpcnResources.cMun, ObOp.Obrigatorio, 7, 7);
-            this.nfeOficial.InfNFeField.Emit.EnderEmit.XMun = this.LerString(TpcnResources.xMun, ObOp.Obrigatorio, 2, 60);
-            this.nfeOficial.InfNFeField.Emit.EnderEmit.UF = (UFBrasil)Enum.Parse(typeof(UFBrasil), this.LerString(TpcnResources.UF, ObOp.Obrigatorio, 2, 2), true);
-            var cep = this.LerInt32(TpcnResources.CEP, ObOp.Opcional, 0, 8);
+            this.nfeOficial.InfNFeField.Emit.EnderEmit.XLgr = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XLgr)), ObOp.Obrigatorio, 1, 60);
+            this.nfeOficial.InfNFeField.Emit.EnderEmit.Nro = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Nro)), ObOp.Obrigatorio, 1, 60);
+            this.nfeOficial.InfNFeField.Emit.EnderEmit.XCpl = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XCpl)), ObOp.Opcional, 1, 60));
+            this.nfeOficial.InfNFeField.Emit.EnderEmit.XBairro = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XBairro)), ObOp.Obrigatorio, 2, 60);
+            this.nfeOficial.InfNFeField.Emit.EnderEmit.CMun = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CMun)), ObOp.Obrigatorio, 7, 7);
+            this.nfeOficial.InfNFeField.Emit.EnderEmit.XMun = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XMun)), ObOp.Obrigatorio, 2, 60);
+            this.nfeOficial.InfNFeField.Emit.EnderEmit.UF = (UFBrasil)Enum.Parse(typeof(UFBrasil), this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.UF)), ObOp.Obrigatorio, 2, 2), true);
+            var cep = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CEP)), ObOp.Opcional, 0, 8);
             this.nfeOficial.InfNFeField.Emit.EnderEmit.CEP = cep > 0 ? cep.ToString("00000000") : null;
-            this.nfeOficial.InfNFeField.Emit.EnderEmit.CPais = this.LerInt32(TpcnResources.cPais, ObOp.Obrigatorio, 4, 4);
-            this.nfeOficial.InfNFeField.Emit.EnderEmit.XPais = VazioParaNulo(this.LerString(TpcnResources.xPais, ObOp.Opcional, 1, 60));
-            this.nfeOficial.InfNFeField.Emit.EnderEmit.Fone = VazioParaNulo(this.LerString(TpcnResources.fone, ObOp.Opcional, 6, 14));
+            this.nfeOficial.InfNFeField.Emit.EnderEmit.CPais = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CPais)), ObOp.Obrigatorio, 4, 4);
+            this.nfeOficial.InfNFeField.Emit.EnderEmit.XPais = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XPais)), ObOp.Opcional, 1, 60));
+            this.nfeOficial.InfNFeField.Emit.EnderEmit.Fone = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Fone)), ObOp.Opcional, 6, 14));
         }
         private void ProcessarNotaAvulsa()
         {
-            this.LerString(TpcnResources.CNPJ, ObOp.Obrigatorio, 14, 14);
-            this.LerString(TpcnResources.xOrgao, ObOp.Obrigatorio, 1, 60);
-            this.LerString(TpcnResources.matr, ObOp.Obrigatorio, 1, 60);
-            this.LerString(TpcnResources.xAgente, ObOp.Obrigatorio, 1, 60);
-            this.LerString(TpcnResources.fone, ObOp.Obrigatorio, 6, 14);
-            this.LerString(TpcnResources.UF, ObOp.Obrigatorio, 2, 2);
-            this.LerString(TpcnResources.nDAR, ObOp.Obrigatorio, 1, 60);
-            this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, TpcnResources.dEmi, ObOp.Obrigatorio, 10, 10, true, false);
-            this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDAR, ObOp.Obrigatorio, 15);
-            this.LerString(TpcnResources.repEmi, ObOp.Obrigatorio, 1, 60);
-            this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, TpcnResources.dPag, ObOp.Opcional, 10, 10, true, false);
+            this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Obrigatorio, 14, 14);
+            this.LerString(XmlTag<DFeNFe.Avulsa>(nameof(DFeNFe.Avulsa.XOrgao)), ObOp.Obrigatorio, 1, 60);
+            this.LerString(XmlTag<DFeNFe.Avulsa>(nameof(DFeNFe.Avulsa.Matr)), ObOp.Obrigatorio, 1, 60);
+            this.LerString(XmlTag<DFeNFe.Avulsa>(nameof(DFeNFe.Avulsa.XAgente)), ObOp.Obrigatorio, 1, 60);
+            this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Fone)), ObOp.Obrigatorio, 6, 14);
+            this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.UF)), ObOp.Obrigatorio, 2, 2);
+            this.LerString(XmlTag<DFeNFe.Avulsa>(nameof(DFeNFe.Avulsa.NDAR)), ObOp.Obrigatorio, 1, 60);
+            this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, XmlTag<DFeNFe.Avulsa>(nameof(DFeNFe.Avulsa.DEmi)), ObOp.Obrigatorio, 10, 10, true, false);
+            this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Avulsa>(nameof(DFeNFe.Avulsa.VDAR)), ObOp.Obrigatorio, 15);
+            this.LerString(XmlTag<DFeNFe.Avulsa>(nameof(DFeNFe.Avulsa.RepEmi)), ObOp.Obrigatorio, 1, 60);
+            this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, XmlTag<DFeNFe.Avulsa>(nameof(DFeNFe.Avulsa.DPag)), ObOp.Opcional, 10, 10, true, false);
         }
         private void ProcessarDestinatario()
         {
-            destinatarioOficial.XNome = this.LerString(TpcnResources.xNome, identificacaoOficial.Mod != ModeloDFe.NFe ? ObOp.Opcional : ObOp.Obrigatorio, 2, 60);
+            destinatarioOficial.XNome = this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.XNome)), identificacaoOficial.Mod != ModeloDFe.NFe ? ObOp.Opcional : ObOp.Obrigatorio, 2, 60);
             if (versaoNFe >= 3)
-                destinatarioOficial.IndIEDest = (IndicadorIEDestinatario)this.LerInt32(TpcnResources.indIEDest, ObOp.Opcional, 0, 1);
-            destinatarioOficial.IE = VazioParaNulo(this.LerString(TpcnResources.IE, ObOp.Opcional, 0, 14));
-            destinatarioOficial.ISUF = VazioParaNulo(this.LerString(TpcnResources.ISUF, ObOp.Opcional, 8, 9));
+                destinatarioOficial.IndIEDest = (IndicadorIEDestinatario)this.LerInt32(XmlTag<DFeNFe.Dest>(nameof(DFeNFe.Dest.IndIEDest)), ObOp.Opcional, 0, 1);
+            destinatarioOficial.IE = VazioParaNulo(this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.IE)), ObOp.Opcional, 0, 14));
+            destinatarioOficial.ISUF = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Dest>(nameof(DFeNFe.Dest.ISUF)), ObOp.Opcional, 8, 9));
             if (versaoNFe >= 3)
-                destinatarioOficial.IM = VazioParaNulo(this.LerString(TpcnResources.IM, ObOp.Opcional, 1, 15));
-            destinatarioOficial.Email = VazioParaNulo(this.LerString(TpcnResources.email, ObOp.Opcional, 1, 60));
+                destinatarioOficial.IM = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.IM)), ObOp.Opcional, 1, 15));
+            destinatarioOficial.Email = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Dest>(nameof(DFeNFe.Dest.Email)), ObOp.Opcional, 1, 60));
         }
 
         private void ProcessarDocumentoDestinatario()
         {
-            destinatarioOficial.CNPJ = VazioParaNulo(this.LerString(TpcnResources.CNPJ, ObOp.Opcional, 14, 14));
+            destinatarioOficial.CNPJ = VazioParaNulo(this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Opcional, 14, 14));
         }
 
         private void ProcessarCpfDestinatario()
         {
             if (identificacaoOficial.Mod == ModeloDFe.NFCe)
-                destinatarioOficial.CPF = VazioParaNulo(this.LerString(TpcnResources.CPF, ObOp.Opcional, 11, 11));
+                destinatarioOficial.CPF = VazioParaNulo(this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.CPF)), ObOp.Opcional, 11, 11));
             else
-                destinatarioOficial.CPF = VazioParaNulo(this.LerString(TpcnResources.CPF, ObOp.Obrigatorio, 11, 11));
+                destinatarioOficial.CPF = VazioParaNulo(this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.CPF)), ObOp.Obrigatorio, 11, 11));
         }
 
         private void ProcessarIdEstrangeiroDestinatario()
         {
-            destinatarioOficial.IdEstrangeiro = this.LerString(TpcnResources.idEstrangeiro, ObOp.Opcional, 5, 20);
+            destinatarioOficial.IdEstrangeiro = this.LerString(XmlTag<DFeNFe.Dest>(nameof(DFeNFe.Dest.IdEstrangeiro)), ObOp.Opcional, 5, 20);
             if (string.IsNullOrEmpty(destinatarioOficial.IdEstrangeiro) && string.IsNullOrEmpty(destinatarioOficial.CPF)) destinatarioOficial.IdEstrangeiro = "NAO GERAR TAG";
         }
 
         private void ProcessarEnderecoDestinatario()
         {
-            destinatarioOficial.EnderDest.XLgr = this.LerString(TpcnResources.xLgr, ObOp.Obrigatorio, 1, 60);
-            destinatarioOficial.EnderDest.Nro = this.LerString(TpcnResources.nro, ObOp.Obrigatorio, 1, 60);
-            destinatarioOficial.EnderDest.XCpl = VazioParaNulo(this.LerString(TpcnResources.xCpl, ObOp.Opcional, 1, 60));
-            destinatarioOficial.EnderDest.XBairro = this.LerString(TpcnResources.xBairro, ObOp.Obrigatorio, 1, 60);
-            destinatarioOficial.EnderDest.CMun = this.LerInt32(TpcnResources.cMun, ObOp.Obrigatorio, 7, 7);
-            destinatarioOficial.EnderDest.XMun = this.LerString(TpcnResources.xMun, ObOp.Obrigatorio, 2, 60);
-            destinatarioOficial.EnderDest.UF = LerUF(TpcnResources.UF, ObOp.Obrigatorio).Value;
-            var cep = this.LerInt32(TpcnResources.CEP, ObOp.Opcional, 0, 8);
+            destinatarioOficial.EnderDest.XLgr = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XLgr)), ObOp.Obrigatorio, 1, 60);
+            destinatarioOficial.EnderDest.Nro = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Nro)), ObOp.Obrigatorio, 1, 60);
+            destinatarioOficial.EnderDest.XCpl = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XCpl)), ObOp.Opcional, 1, 60));
+            destinatarioOficial.EnderDest.XBairro = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XBairro)), ObOp.Obrigatorio, 1, 60);
+            destinatarioOficial.EnderDest.CMun = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CMun)), ObOp.Obrigatorio, 7, 7);
+            destinatarioOficial.EnderDest.XMun = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XMun)), ObOp.Obrigatorio, 2, 60);
+            destinatarioOficial.EnderDest.UF = LerUF(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.UF)), ObOp.Obrigatorio).Value;
+            var cep = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CEP)), ObOp.Opcional, 0, 8);
             destinatarioOficial.EnderDest.CEP = cep > 0 ? cep.ToString("00000000") : null;
-            destinatarioOficial.EnderDest.CPais = this.LerInt32(TpcnResources.cPais, ObOp.Obrigatorio, 2, 4);
-            destinatarioOficial.EnderDest.XPais = VazioParaNulo(this.LerString(TpcnResources.xPais, ObOp.Opcional, 2, 60));
-            destinatarioOficial.EnderDest.Fone = VazioParaNulo(this.LerString(TpcnResources.fone, ObOp.Opcional, 6, 14));
+            destinatarioOficial.EnderDest.CPais = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CPais)), ObOp.Obrigatorio, 2, 4);
+            destinatarioOficial.EnderDest.XPais = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XPais)), ObOp.Opcional, 2, 60));
+            destinatarioOficial.EnderDest.Fone = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Fone)), ObOp.Opcional, 6, 14));
         }
         private void ProcessarLocalRetirada(int lenPipesRegistro)
         {
             bool novo;
             if ((novo = lenPipesRegistro == 16 || versaoNFe >= 4))
             {
-                retiradaOficial.CNPJ = VazioParaNulo(this.LerString(TpcnResources.CNPJ_CPF, ObOp.Opcional, 0, 0));
+                retiradaOficial.CNPJ = VazioParaNulo(this.LerString(NFeTxtFieldNames.CnpjCpf, ObOp.Opcional, 0, 0));
                 if (!string.IsNullOrEmpty(retiradaOficial.CNPJ) && retiradaOficial.CNPJ.Length == 11)
                 {
                     retiradaOficial.CPF = retiradaOficial.CNPJ;
                     retiradaOficial.CNPJ = null;
                 }
-                retiradaOficial.XNome = VazioParaNulo(this.LerString(TpcnResources.xNome, ObOp.Opcional, 2, 60));
+                retiradaOficial.XNome = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.XNome)), ObOp.Opcional, 2, 60));
             }
-            retiradaOficial.XLgr = this.LerString(TpcnResources.xLgr, ObOp.Obrigatorio, 1, 60);
-            retiradaOficial.Nro = this.LerString(TpcnResources.nro, ObOp.Obrigatorio, 1, 60);
-            retiradaOficial.XCpl = VazioParaNulo(this.LerString(TpcnResources.xCpl, ObOp.Opcional, 1, 60));
-            retiradaOficial.XBairro = this.LerString(TpcnResources.xBairro, ObOp.Obrigatorio, 1, 60);
-            retiradaOficial.CMun = this.LerInt32(TpcnResources.cMun, ObOp.Obrigatorio, 7, 7);
-            retiradaOficial.XMun = this.LerString(TpcnResources.xMun, ObOp.Obrigatorio, 2, 60);
-            retiradaOficial.UF = LerUF(TpcnResources.UF, ObOp.Obrigatorio).Value;
+            retiradaOficial.XLgr = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XLgr)), ObOp.Obrigatorio, 1, 60);
+            retiradaOficial.Nro = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Nro)), ObOp.Obrigatorio, 1, 60);
+            retiradaOficial.XCpl = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XCpl)), ObOp.Opcional, 1, 60));
+            retiradaOficial.XBairro = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XBairro)), ObOp.Obrigatorio, 1, 60);
+            retiradaOficial.CMun = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CMun)), ObOp.Obrigatorio, 7, 7);
+            retiradaOficial.XMun = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XMun)), ObOp.Obrigatorio, 2, 60);
+            retiradaOficial.UF = LerUF(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.UF)), ObOp.Obrigatorio).Value;
             if (novo)
             {
-                retiradaOficial.CEP = VazioParaNulo(this.LerString(TpcnResources.CEP, ObOp.Opcional, 8, 8));
-                retiradaOficial.CPais = this.LerInt32(TpcnResources.cPais, ObOp.Opcional, 4, 4);
-                retiradaOficial.XPais = VazioParaNulo(this.LerString(TpcnResources.xPais, ObOp.Opcional, 2, 60));
-                retiradaOficial.Fone = VazioParaNulo(this.LerString(TpcnResources.fone, ObOp.Opcional, 6, 14));
-                retiradaOficial.Email = VazioParaNulo(this.LerString(TpcnResources.email, ObOp.Opcional, 1, 60));
-                retiradaOficial.IE = VazioParaNulo(this.LerString(TpcnResources.IE, ObOp.Opcional, 2, 14));
+                retiradaOficial.CEP = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CEP)), ObOp.Opcional, 8, 8));
+                retiradaOficial.CPais = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CPais)), ObOp.Opcional, 4, 4);
+                retiradaOficial.XPais = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XPais)), ObOp.Opcional, 2, 60));
+                retiradaOficial.Fone = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Fone)), ObOp.Opcional, 6, 14));
+                retiradaOficial.Email = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Dest>(nameof(DFeNFe.Dest.Email)), ObOp.Opcional, 1, 60));
+                retiradaOficial.IE = VazioParaNulo(this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.IE)), ObOp.Opcional, 2, 14));
             }
         }
 
         private void ProcessarDocumentoRetirada()
         {
-            retiradaOficial.CNPJ = this.LerString(TpcnResources.CNPJ, ObOp.Obrigatorio, 14, 14);
+            retiradaOficial.CNPJ = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Obrigatorio, 14, 14);
         }
 
         private void ProcessarCpfRetirada()
         {
-            retiradaOficial.CPF = this.LerString(TpcnResources.CPF, ObOp.Obrigatorio, 11, 11);
+            retiradaOficial.CPF = this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.CPF)), ObOp.Obrigatorio, 11, 11);
         }
         private void ProcessarLocalEntrega(int lenPipesRegistro)
         {
             bool novo;
             if ((novo = lenPipesRegistro == 16 || versaoNFe >= 4))
             {
-                entregaOficial.CNPJ = VazioParaNulo(this.LerString(TpcnResources.CNPJ_CPF, ObOp.Opcional, 0, 0));
+                entregaOficial.CNPJ = VazioParaNulo(this.LerString(NFeTxtFieldNames.CnpjCpf, ObOp.Opcional, 0, 0));
                 if (!string.IsNullOrEmpty(entregaOficial.CNPJ) && entregaOficial.CNPJ.Length == 11)
                 {
                     entregaOficial.CPF = entregaOficial.CNPJ;
                     entregaOficial.CNPJ = null;
                 }
-                entregaOficial.XNome = VazioParaNulo(this.LerString(TpcnResources.xNome, ObOp.Opcional, 2, 60));
+                entregaOficial.XNome = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.XNome)), ObOp.Opcional, 2, 60));
             }
-            entregaOficial.XLgr = this.LerString(TpcnResources.xLgr, ObOp.Obrigatorio, 1, 60);
-            entregaOficial.Nro = this.LerString(TpcnResources.nro, ObOp.Obrigatorio, 1, 60);
-            entregaOficial.XCpl = VazioParaNulo(this.LerString(TpcnResources.xCpl, ObOp.Opcional, 1, 60));
-            entregaOficial.XBairro = this.LerString(TpcnResources.xBairro, ObOp.Obrigatorio, 1, 60);
-            entregaOficial.CMun = this.LerInt32(TpcnResources.cMun, ObOp.Obrigatorio, 7, 7);
-            entregaOficial.XMun = this.LerString(TpcnResources.xMun, ObOp.Obrigatorio, 2, 60);
-            entregaOficial.UF = LerUF(TpcnResources.UF, ObOp.Obrigatorio).Value;
+            entregaOficial.XLgr = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XLgr)), ObOp.Obrigatorio, 1, 60);
+            entregaOficial.Nro = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Nro)), ObOp.Obrigatorio, 1, 60);
+            entregaOficial.XCpl = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XCpl)), ObOp.Opcional, 1, 60));
+            entregaOficial.XBairro = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XBairro)), ObOp.Obrigatorio, 1, 60);
+            entregaOficial.CMun = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CMun)), ObOp.Obrigatorio, 7, 7);
+            entregaOficial.XMun = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XMun)), ObOp.Obrigatorio, 2, 60);
+            entregaOficial.UF = LerUF(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.UF)), ObOp.Obrigatorio).Value;
             if (novo)
             {
-                entregaOficial.CEP = VazioParaNulo(this.LerString(TpcnResources.CEP, ObOp.Opcional, 8, 8));
-                entregaOficial.CPais = this.LerInt32(TpcnResources.cPais, ObOp.Opcional, 4, 4);
-                entregaOficial.XPais = VazioParaNulo(this.LerString(TpcnResources.xPais, ObOp.Opcional, 2, 60));
-                entregaOficial.Fone = VazioParaNulo(this.LerString(TpcnResources.fone, ObOp.Opcional, 6, 14));
-                entregaOficial.Email = VazioParaNulo(this.LerString(TpcnResources.email, ObOp.Opcional, 1, 60));
-                entregaOficial.IE = VazioParaNulo(this.LerString(TpcnResources.IE, ObOp.Opcional, 2, 14));
+                entregaOficial.CEP = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CEP)), ObOp.Opcional, 8, 8));
+                entregaOficial.CPais = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CPais)), ObOp.Opcional, 4, 4);
+                entregaOficial.XPais = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XPais)), ObOp.Opcional, 2, 60));
+                entregaOficial.Fone = VazioParaNulo(this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Fone)), ObOp.Opcional, 6, 14));
+                entregaOficial.Email = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Dest>(nameof(DFeNFe.Dest.Email)), ObOp.Opcional, 1, 60));
+                entregaOficial.IE = VazioParaNulo(this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.IE)), ObOp.Opcional, 2, 14));
             }
         }
 
         private void ProcessarDocumentoEntrega()
         {
-            entregaOficial.CNPJ = this.LerString(TpcnResources.CNPJ, ObOp.Obrigatorio, 14, 14);
+            entregaOficial.CNPJ = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Obrigatorio, 14, 14);
         }
 
         private void ProcessarCpfEntrega()
         {
-            entregaOficial.CPF = this.LerString(TpcnResources.CPF, ObOp.Obrigatorio, 11, 11);
+            entregaOficial.CPF = this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.CPF)), ObOp.Obrigatorio, 11, 11);
         }
 
         private void AdicionarAutorizacaoXmlCnpj()
         {
             autorizadosXmlOficiais.Add(new DFeNFe.AutXML
             {
-                CNPJ = this.LerString(TpcnResources.CNPJ, ObOp.Obrigatorio, 14, 14)
+                CNPJ = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Obrigatorio, 14, 14)
             });
         }
 
@@ -1354,7 +1347,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             autorizadosXmlOficiais.Add(new DFeNFe.AutXML
             {
-                CPF = this.LerString(TpcnResources.CPF, ObOp.Obrigatorio, 11, 11)
+                CPF = this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.CPF)), ObOp.Obrigatorio, 11, 11)
             });
         }
         private void IniciarItemDaNota(ref int nProd)
@@ -1362,8 +1355,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             nProd = detalhesOficiais.Count;
             detalhesOficiais.Add(new DFeNFe.Det
             {
-                NItem = this.LerInt32(TpcnResources.NItem, ObOp.Obrigatorio, 1, 3),
-                InfAdProd = VazioParaNulo(this.LerString(TpcnResources.infAdProd, ObOp.Opcional, 0, 500, false)),
+                NItem = this.LerInt32(NFeTxtFieldNames.NumeroItem, ObOp.Obrigatorio, 1, 3),
+                InfAdProd = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Det>(nameof(DFeNFe.Det.InfAdProd)), ObOp.Opcional, 0, 500, false)),
                 Prod = new DFeNFe.Prod(),
                 Imposto = new DFeNFe.Imposto()
             });
@@ -1371,25 +1364,25 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarProduto(int nProd, int lenPipesRegistro)
         {
             var produto = detalhesOficiais[nProd].Prod;
-            produto.CProd = this.LerString(TpcnResources.cProd, ObOp.Obrigatorio, 1, 60);
-            produto.CEAN = this.LerString(TpcnResources.cEAN, ObOp.Obrigatorio, 0, 14);
+            produto.CProd = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CProd)), ObOp.Obrigatorio, 1, 60);
+            produto.CEAN = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CEAN)), ObOp.Obrigatorio, 0, 14);
             if (lenPipesRegistro >= 30)
             {
-                produto.CBarra = VazioParaNulo(this.LerString(TpcnResources.cBarra, ObOp.Opcional, 0, 30));
+                produto.CBarra = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CBarra)), ObOp.Opcional, 0, 30));
             }
 
-            var descricao = this.LerString(TpcnResources.xProd, ObOp.Obrigatorio, 1, 120);
+            var descricao = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.XProd)), ObOp.Obrigatorio, 1, 120);
             produto.XProd = identificacaoOficial.TpAmb == TipoAmbiente.Homologacao &&
                 identificacaoOficial.Mod == ModeloDFe.NFCe && detalhesOficiais[nProd].NItem == 1
                     ? "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
                     : descricao;
-            produto.NCM = this.LerString(TpcnResources.NCM, ObOp.Obrigatorio, 2, 8);
-            var nve = this.LerString(TpcnResources.NVE, ObOp.Opcional, 0, 6);
+            produto.NCM = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.NCM)), ObOp.Obrigatorio, 2, 8);
+            var nve = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.NVE)), ObOp.Opcional, 0, 6);
             produto.NVE = string.IsNullOrWhiteSpace(nve) ? null : new List<string> { nve };
-            var cest = this.LerInt32(TpcnResources.CEST, ObOp.Opcional, 0, 7);
+            var cest = this.LerInt32(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CEST)), ObOp.Opcional, 0, 7);
             produto.CEST = cest > 0 ? cest.ToString("0000000") : null;
 
-            switch (this.LerString(TpcnResources.indEscala, ObOp.Opcional, 1, 1))
+            switch (this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.IndEscala)), ObOp.Opcional, 1, 1))
             {
                 case "S":
                     produto.IndEscala = IndicadorEscalaRelevante.Sim;
@@ -1402,30 +1395,30 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     break;
             }
 
-            produto.CNPJFab = VazioParaNulo(this.LerString(TpcnResources.CNPJFab, ObOp.Opcional, 0, 14));
-            produto.CBenef = VazioParaNulo(this.LerString(TpcnResources.cBenef, ObOp.Opcional, 0, 10));
-            produto.EXTIPI = VazioParaNulo(this.LerString(TpcnResources.EXTIPI, ObOp.Opcional, 2, 3));
-            produto.CFOP = this.LerString(TpcnResources.CFOP, ObOp.Obrigatorio, 4, 4);
-            produto.UCom = this.LerString(TpcnResources.uCom, ObOp.Obrigatorio, 1, 6);
-            produto.QCom = this.LerDecimal(TpcnTipoCampo.tcDec4, TpcnResources.qCom, ObOp.Obrigatorio, 11);
-            produto.VUnCom = this.LerDecimal(TpcnTipoCampo.tcDec10, TpcnResources.vUnCom, ObOp.Opcional, 21);
-            produto.VProd = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vProd, ObOp.Obrigatorio, 15);
-            produto.CEANTrib = this.LerString(TpcnResources.cEANTrib, ObOp.Obrigatorio, 0, 14);
+            produto.CNPJFab = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CNPJFab)), ObOp.Opcional, 0, 14));
+            produto.CBenef = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CBenef)), ObOp.Opcional, 0, 10));
+            produto.EXTIPI = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.EXTIPI)), ObOp.Opcional, 2, 3));
+            produto.CFOP = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CFOP)), ObOp.Obrigatorio, 4, 4);
+            produto.UCom = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.UCom)), ObOp.Obrigatorio, 1, 6);
+            produto.QCom = this.LerDecimal(TpcnTipoCampo.tcDec4, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.QCom)), ObOp.Obrigatorio, 11);
+            produto.VUnCom = this.LerDecimal(TpcnTipoCampo.tcDec10, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VUnCom)), ObOp.Opcional, 21);
+            produto.VProd = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VProd)), ObOp.Obrigatorio, 15);
+            produto.CEANTrib = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CEANTrib)), ObOp.Obrigatorio, 0, 14);
             if (lenPipesRegistro >= 30)
             {
-                produto.CBarraTrib = VazioParaNulo(this.LerString(TpcnResources.cBarraTrib, ObOp.Opcional, 0, 30));
+                produto.CBarraTrib = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CBarraTrib)), ObOp.Opcional, 0, 30));
             }
-            produto.UTrib = this.LerString(TpcnResources.uTrib, ObOp.Obrigatorio, 1, 6);
-            produto.QTrib = this.LerDecimal(TpcnTipoCampo.tcDec4, TpcnResources.qTrib, ObOp.Obrigatorio, 15);
-            produto.VUnTrib = this.LerDecimal(TpcnTipoCampo.tcDec10, TpcnResources.vUnTrib, ObOp.Obrigatorio, 21);
-            produto.VFrete = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFrete, ObOp.Opcional, 15);
-            produto.VSeg = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vSeg, ObOp.Opcional, 15);
-            produto.VDesc = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDesc, ObOp.Opcional, 15);
-            produto.VOutro = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vOutro, ObOp.Opcional, 15);
-            produto.IndTot = (SimNao)this.LerInt32(TpcnResources.indTot, ObOp.Obrigatorio, 1, 1);
-            produto.XPed = VazioParaNulo(this.LerString(TpcnResources.xPed, ObOp.Opcional, 1, 15));
-            produto.NItemPed = VazioParaNulo(this.LerString(TpcnResources.nItemPed, ObOp.Opcional, 0, 6));
-            produto.NFCI = VazioParaNulo(this.LerString(TpcnResources.nFCI, ObOp.Opcional, 0, 255));
+            produto.UTrib = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.UTrib)), ObOp.Obrigatorio, 1, 6);
+            produto.QTrib = this.LerDecimal(TpcnTipoCampo.tcDec4, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.QTrib)), ObOp.Obrigatorio, 15);
+            produto.VUnTrib = this.LerDecimal(TpcnTipoCampo.tcDec10, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VUnTrib)), ObOp.Obrigatorio, 21);
+            produto.VFrete = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VFrete)), ObOp.Opcional, 15);
+            produto.VSeg = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VSeg)), ObOp.Opcional, 15);
+            produto.VDesc = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VDesc)), ObOp.Opcional, 15);
+            produto.VOutro = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VOutro)), ObOp.Opcional, 15);
+            produto.IndTot = (SimNao)this.LerInt32(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.IndTot)), ObOp.Obrigatorio, 1, 1);
+            produto.XPed = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.XPed)), ObOp.Opcional, 1, 15));
+            produto.NItemPed = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.NItemPed)), ObOp.Opcional, 0, 6));
+            produto.NFCI = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.NFCI)), ObOp.Opcional, 0, 255));
         }
 
         private void AdicionarCreditoPresumido(int nProd)
@@ -1434,21 +1427,21 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (produto.GCred == null) produto.GCred = new List<DFeNFe.GCred>();
             produto.GCred.Add(new DFeNFe.GCred
             {
-                CCredPresumido = this.LerString(TpcnResources.cCredPresumido, ObOp.Obrigatorio, 8, 10),
-                PCredPresumido = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pCredPresumido, ObOp.Obrigatorio, 8),
-                VCredPresumido = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredPresumido, ObOp.Obrigatorio, 16)
+                CCredPresumido = this.LerString(XmlTag<DFeNFe.GCred>(nameof(DFeNFe.GCred.CCredPresumido)), ObOp.Obrigatorio, 8, 10),
+                PCredPresumido = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GCred>(nameof(DFeNFe.GCred.PCredPresumido)), ObOp.Obrigatorio, 8),
+                VCredPresumido = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GCred>(nameof(DFeNFe.GCred.VCredPresumido)), ObOp.Obrigatorio, 16)
             });
         }
 
         private void ProcessarNveProduto(int nProd)
         {
-            var nve = this.LerString(TpcnResources.NVE, ObOp.Opcional, 0, 6);
+            var nve = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.NVE)), ObOp.Opcional, 0, 6);
             detalhesOficiais[nProd].Prod.NVE = string.IsNullOrWhiteSpace(nve) ? null : new List<string> { nve };
         }
 
         private void ProcessarCreditoPresumidoIbsZfm(int nProd)
         {
-            var valor = this.LerString(TpcnResources.tpCredPresIBSZFM, ObOp.Opcional, 1, 1);
+            var valor = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.TpCredPresIBSZFM)), ObOp.Opcional, 1, 1);
             int codigo;
             detalhesOficiais[nProd].Prod.TpCredPresIBSZFM = ObterEnumOpcional(
                 int.TryParse(valor, out codigo) ? codigo : -1, (TipoCreditoPresumidoIBSZFM)(-1));
@@ -1457,19 +1450,19 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarCestProduto(int nProd, int lenPipesRegistro)
         {
             var produto = detalhesOficiais[nProd].Prod;
-            var cest = this.LerInt32(TpcnResources.CEST, ObOp.Opcional, 0, 7);
+            var cest = this.LerInt32(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CEST)), ObOp.Opcional, 0, 7);
             produto.CEST = cest > 0 ? cest.ToString("0000000") : null;
             if (lenPipesRegistro == 4)
             {
-                this.LerInt32(TpcnResources.indEscala, ObOp.Opcional, 1, 1);
+                this.LerInt32(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.IndEscala)), ObOp.Opcional, 1, 1);
                 produto.IndEscala = ObterEnumOpcional(-1, (IndicadorEscalaRelevante)(-1));
-                produto.CNPJFab = VazioParaNulo(this.LerString(TpcnResources.CNPJFab, ObOp.Opcional, 0, 14));
+                produto.CNPJFab = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CNPJFab)), ObOp.Opcional, 0, 14));
             }
         }
 
         private void ProcessarBemMovelUsado(int nProd)
         {
-            detalhesOficiais[nProd].Prod.IndBemMovelUsado = this.LerInt32(TpcnResources.indBemMovelUsado, ObOp.Opcional, 1, 1);
+            detalhesOficiais[nProd].Prod.IndBemMovelUsado = this.LerInt32(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.IndBemMovelUsado)), ObOp.Opcional, 1, 1);
         }
         private void AdicionarDeclaracaoImportacao(int nProd, int lenPipesRegistro)
         {
@@ -1477,27 +1470,27 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (produto.DI == null) produto.DI = new List<DFeNFe.DI>();
             var item = new DFeNFe.DI
             {
-                NDI = this.LerString(TpcnResources.nDI, ObOp.Obrigatorio, 1, 15),
-                DDI = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, TpcnResources.dDI, ObOp.Obrigatorio, 10, 10, true, false),
-                XLocDesemb = this.LerString(TpcnResources.xLocDesemb, ObOp.Obrigatorio, 1, 60),
-                UFDesemb = LerUF(TpcnResources.UFDesemb, ObOp.Obrigatorio).Value,
-                DDesemb = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, TpcnResources.dDesemb, ObOp.Obrigatorio, 10, 10, true, false),
-                TpViaTransp = (ViaTransporteInternacional)this.LerInt32(TpcnResources.tpViaTransp, ObOp.Opcional, 1, 2),
-                VAFRMM = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vAFRMM, ObOp.Opcional, 15),
-                TpIntermedio = (FormaImportacaoIntermediacao)this.LerInt32(TpcnResources.tpIntermedio, ObOp.Opcional, 1, 1),
-                CNPJ = VazioParaNulo(this.LerString(TpcnResources.CNPJ, ObOp.Opcional, 14, 14))
+                NDI = this.LerString(XmlTag<DFeNFe.DI>(nameof(DFeNFe.DI.NDI)), ObOp.Obrigatorio, 1, 15),
+                DDI = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, XmlTag<DFeNFe.DI>(nameof(DFeNFe.DI.DDI)), ObOp.Obrigatorio, 10, 10, true, false),
+                XLocDesemb = this.LerString(XmlTag<DFeNFe.DI>(nameof(DFeNFe.DI.XLocDesemb)), ObOp.Obrigatorio, 1, 60),
+                UFDesemb = LerUF(XmlTag<DFeNFe.DI>(nameof(DFeNFe.DI.UFDesemb)), ObOp.Obrigatorio).Value,
+                DDesemb = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, XmlTag<DFeNFe.DI>(nameof(DFeNFe.DI.DDesemb)), ObOp.Obrigatorio, 10, 10, true, false),
+                TpViaTransp = (ViaTransporteInternacional)this.LerInt32(XmlTag<DFeNFe.DI>(nameof(DFeNFe.DI.TpViaTransp)), ObOp.Opcional, 1, 2),
+                VAFRMM = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.DI>(nameof(DFeNFe.DI.VAFRMM)), ObOp.Opcional, 15),
+                TpIntermedio = (FormaImportacaoIntermediacao)this.LerInt32(XmlTag<DFeNFe.DI>(nameof(DFeNFe.DI.TpIntermedio)), ObOp.Opcional, 1, 1),
+                CNPJ = VazioParaNulo(this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Opcional, 14, 14))
             };
             if (lenPipesRegistro >= 13)
             {
-                item.CPF = VazioParaNulo(this.LerString(TpcnResources.CPF, ObOp.Opcional, 11, 11));
+                item.CPF = VazioParaNulo(this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.CPF)), ObOp.Opcional, 11, 11));
             }
-            var ufTerceiro = this.LerString(TpcnResources.UFTerceiro, ObOp.Opcional, 2, 2);
+            var ufTerceiro = this.LerString(XmlTag<DFeNFe.DI>(nameof(DFeNFe.DI.UFTerceiro)), ObOp.Opcional, 2, 2);
 #if INTEROP
             item.UFTerceiro = string.IsNullOrWhiteSpace(ufTerceiro) ? UFBrasil.NaoDefinido : (UFBrasil)Enum.Parse(typeof(UFBrasil), ufTerceiro, true);
 #else
             item.UFTerceiro = string.IsNullOrWhiteSpace(ufTerceiro) ? null : (UFBrasil?)Enum.Parse(typeof(UFBrasil), ufTerceiro, true);
 #endif
-            item.CExportador = this.LerString(TpcnResources.cExportador, ObOp.Obrigatorio, 1, 60);
+            item.CExportador = this.LerString(XmlTag<DFeNFe.DI>(nameof(DFeNFe.DI.CExportador)), ObOp.Obrigatorio, 1, 60);
             produto.DI.Add(item);
         }
 
@@ -1508,11 +1501,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (declaracao.Adi == null) declaracao.Adi = new List<DFeNFe.Adi>();
             declaracao.Adi.Add(new DFeNFe.Adi
             {
-                NAdicao = this.LerInt32(TpcnResources.nAdicao, ObOp.Obrigatorio, 1, 3),
-                NSeqAdic = this.LerInt32(TpcnResources.nSeqAdic, ObOp.Obrigatorio, 1, 3),
-                CFabricante = this.LerString(TpcnResources.cFabricante, ObOp.Obrigatorio, 1, 60),
-                VDescDI = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDescDI, ObOp.Opcional, 15),
-                NDraw = VazioParaNulo(this.LerString(TpcnResources.nDraw, ObOp.Opcional, 0, 11))
+                NAdicao = this.LerInt32(XmlTag<DFeNFe.Adi>(nameof(DFeNFe.Adi.NAdicao)), ObOp.Obrigatorio, 1, 3),
+                NSeqAdic = this.LerInt32(XmlTag<DFeNFe.Adi>(nameof(DFeNFe.Adi.NSeqAdic)), ObOp.Obrigatorio, 1, 3),
+                CFabricante = this.LerString(XmlTag<DFeNFe.Adi>(nameof(DFeNFe.Adi.CFabricante)), ObOp.Obrigatorio, 1, 60),
+                VDescDI = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Adi>(nameof(DFeNFe.Adi.VDescDI)), ObOp.Opcional, 15),
+                NDraw = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Adi>(nameof(DFeNFe.Adi.NDraw)), ObOp.Opcional, 0, 11))
             });
         }
 
@@ -1520,7 +1513,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var produto = detalhesOficiais[nProd].Prod;
             if (produto.DetExport == null) produto.DetExport = new List<DFeNFe.DetExport>();
-            produto.DetExport.Add(new DFeNFe.DetExport { NDraw = VazioParaNulo(this.LerString(TpcnResources.nDraw, ObOp.Opcional, 0, 11)) });
+            produto.DetExport.Add(new DFeNFe.DetExport { NDraw = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Adi>(nameof(DFeNFe.Adi.NDraw)), ObOp.Opcional, 0, 11)) });
         }
 
         private void ProcessarExportacaoIndireta(int nProd)
@@ -1528,9 +1521,9 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             var exportacoes = detalhesOficiais[nProd].Prod.DetExport;
             exportacoes[exportacoes.Count - 1].ExportInd = new DFeNFe.ExportInd
             {
-                NRE = this.LerString(TpcnResources.nRE, ObOp.Opcional, 1, 12),
-                ChNFe = this.LerString(TpcnResources.chNFe, ObOp.Obrigatorio, 44, 44),
-                QExport = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qExport, ObOp.Obrigatorio, 1, 15)
+                NRE = this.LerString(XmlTag<DFeNFe.ExportInd>(nameof(DFeNFe.ExportInd.NRE)), ObOp.Opcional, 1, 12),
+                ChNFe = this.LerString(XmlTag<DFeNFe.ExportInd>(nameof(DFeNFe.ExportInd.ChNFe)), ObOp.Obrigatorio, 44, 44),
+                QExport = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ExportInd>(nameof(DFeNFe.ExportInd.QExport)), ObOp.Obrigatorio, 1, 15)
             };
         }
 
@@ -1540,20 +1533,20 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (produto.Rastro == null) produto.Rastro = new List<DFeNFe.Rastro>();
             produto.Rastro.Add(new DFeNFe.Rastro
             {
-                NLote = this.LerString(TpcnResources.nLote, ObOp.Obrigatorio, 1, 20),
-                QLote = this.LerDouble(TpcnTipoCampo.tcDouble3, TpcnResources.qLote, ObOp.Obrigatorio, 11),
-                DFab = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, TpcnResources.dFab, ObOp.Obrigatorio, 10, 10, true, false),
-                DVal = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, TpcnResources.dVal, ObOp.Obrigatorio, 10, 10, true, false),
-                CAgreg = VazioParaNulo(this.LerString(TpcnResources.cAgreg, ObOp.Opcional, 0, 20))
+                NLote = this.LerString(XmlTag<DFeNFe.Rastro>(nameof(DFeNFe.Rastro.NLote)), ObOp.Obrigatorio, 1, 20),
+                QLote = this.LerDouble(TpcnTipoCampo.tcDouble3, XmlTag<DFeNFe.Rastro>(nameof(DFeNFe.Rastro.QLote)), ObOp.Obrigatorio, 11),
+                DFab = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, XmlTag<DFeNFe.Rastro>(nameof(DFeNFe.Rastro.DFab)), ObOp.Obrigatorio, 10, 10, true, false),
+                DVal = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, XmlTag<DFeNFe.Rastro>(nameof(DFeNFe.Rastro.DVal)), ObOp.Obrigatorio, 10, 10, true, false),
+                CAgreg = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Rastro>(nameof(DFeNFe.Rastro.CAgreg)), ObOp.Opcional, 0, 20))
             });
         }
         private void ProcessarResponsavelTecnico()
         {
             var responsavel = CriarResponsavelTecnico();
-            responsavel.CNPJ = this.LerString(TpcnResources.CNPJ, ObOp.Obrigatorio, 14, 14);
+            responsavel.CNPJ = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Obrigatorio, 14, 14);
             responsavel.XContato = this.LerString("xContato", ObOp.Obrigatorio, 2, 60);
-            responsavel.Email = this.LerString(TpcnResources.email, ObOp.Obrigatorio, 2, 60);
-            responsavel.Fone = this.LerString(TpcnResources.fone, ObOp.Obrigatorio, 6, 14);
+            responsavel.Email = this.LerString(XmlTag<DFeNFe.Dest>(nameof(DFeNFe.Dest.Email)), ObOp.Obrigatorio, 2, 60);
+            responsavel.Fone = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Fone)), ObOp.Obrigatorio, 6, 14);
             var idCsrt = this.LerInt32("idCSRT", ObOp.Opcional, 2, 2);
             responsavel.IdCSRT = idCsrt > 0 ? idCsrt.ToString("00") : null;
             responsavel.HashCSRT = VazioParaNulo(this.LerString("hashCSRT", ObOp.Opcional, 28, 28));
@@ -1567,30 +1560,30 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             detalhesOficiais[nProd].Prod.VeicProd = new DFeNFe.VeicProd
             {
-                TpOp = (TipoOperacaoVeicNovo)this.LerInt32(TpcnResources.tpOp, ObOp.Obrigatorio, 1, 1),
-                Chassi = this.LerString(TpcnResources.chassi, ObOp.Obrigatorio, 17, 17),
-                CCor = this.LerString(TpcnResources.cCor, ObOp.Obrigatorio, 1, 4),
-                XCor = this.LerString(TpcnResources.xCor, ObOp.Obrigatorio, 1, 40),
-                Pot = this.LerString(TpcnResources.pot, ObOp.Obrigatorio, 1, 4),
-                Cilin = this.LerString(TpcnResources.cilin, ObOp.Obrigatorio, 1, 4),
-                PesoL = this.LerString(TpcnResources.pesoL, ObOp.Obrigatorio, 1, 9),
-                PesoB = this.LerString(TpcnResources.pesoB, ObOp.Obrigatorio, 1, 9),
-                NSerie = this.LerString(TpcnResources.nSerie, ObOp.Obrigatorio, 1, 9),
-                TpComb = this.LerString(TpcnResources.tpComb, ObOp.Obrigatorio, 1, 2),
-                NMotor = this.LerString(TpcnResources.nMotor, ObOp.Obrigatorio, 1, 21),
-                CMT = this.LerString(TpcnResources.CMT, ObOp.Obrigatorio, 1, 9),
-                Dist = this.LerString(TpcnResources.dist, ObOp.Obrigatorio, 1, 4),
-                AnoMod = this.LerInt32(TpcnResources.anoMod, ObOp.Obrigatorio, 4, 4).ToString("0000"),
-                AnoFab = this.LerInt32(TpcnResources.anoFab, ObOp.Obrigatorio, 4, 4).ToString("0000"),
-                TpPint = this.LerString(TpcnResources.tpPint, ObOp.Obrigatorio, 1, 1),
-                TpVeic = this.LerInt32(TpcnResources.tpVeic, ObOp.Obrigatorio, 1, 2).ToString(),
-                EspVeic = this.LerInt32(TpcnResources.espVeic, ObOp.Obrigatorio, 1, 1).ToString(),
-                VIN = (CondicaoVIN)this.LerInt32(TpcnResources.VIN, ObOp.Obrigatorio, 1, 1),
-                CondVeic = (CondicaoVeiculo)this.LerInt32(TpcnResources.condVeic, ObOp.Obrigatorio, 1, 1),
-                CMod = this.LerInt32(TpcnResources.cMod, ObOp.Obrigatorio, 1, 6),
-                CCorDENATRAN = this.LerInt32(TpcnResources.cCorDENATRAN, ObOp.Obrigatorio, 1, 2).ToString("00"),
-                Lota = this.LerInt32(TpcnResources.lota, ObOp.Obrigatorio, 1, 3),
-                TpRest = (TipoRestricaoVeiculo)this.LerInt32(TpcnResources.tpRest, ObOp.Obrigatorio, 1, 1)
+                TpOp = (TipoOperacaoVeicNovo)this.LerInt32(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.TpOp)), ObOp.Obrigatorio, 1, 1),
+                Chassi = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.Chassi)), ObOp.Obrigatorio, 17, 17),
+                CCor = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.CCor)), ObOp.Obrigatorio, 1, 4),
+                XCor = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.XCor)), ObOp.Obrigatorio, 1, 40),
+                Pot = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.Pot)), ObOp.Obrigatorio, 1, 4),
+                Cilin = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.Cilin)), ObOp.Obrigatorio, 1, 4),
+                PesoL = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.PesoL)), ObOp.Obrigatorio, 1, 9),
+                PesoB = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.PesoB)), ObOp.Obrigatorio, 1, 9),
+                NSerie = this.LerString(XmlTag<DFeNFe.Arma>(nameof(DFeNFe.Arma.NSerie)), ObOp.Obrigatorio, 1, 9),
+                TpComb = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.TpComb)), ObOp.Obrigatorio, 1, 2),
+                NMotor = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.NMotor)), ObOp.Obrigatorio, 1, 21),
+                CMT = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.CMT)), ObOp.Obrigatorio, 1, 9),
+                Dist = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.Dist)), ObOp.Obrigatorio, 1, 4),
+                AnoMod = this.LerInt32(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.AnoMod)), ObOp.Obrigatorio, 4, 4).ToString("0000"),
+                AnoFab = this.LerInt32(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.AnoFab)), ObOp.Obrigatorio, 4, 4).ToString("0000"),
+                TpPint = this.LerString(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.TpPint)), ObOp.Obrigatorio, 1, 1),
+                TpVeic = this.LerInt32(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.TpVeic)), ObOp.Obrigatorio, 1, 2).ToString(),
+                EspVeic = this.LerInt32(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.EspVeic)), ObOp.Obrigatorio, 1, 1).ToString(),
+                VIN = (CondicaoVIN)this.LerInt32(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.VIN)), ObOp.Obrigatorio, 1, 1),
+                CondVeic = (CondicaoVeiculo)this.LerInt32(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.CondVeic)), ObOp.Obrigatorio, 1, 1),
+                CMod = this.LerInt32(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.CMod)), ObOp.Obrigatorio, 1, 6),
+                CCorDENATRAN = this.LerInt32(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.CCorDENATRAN)), ObOp.Obrigatorio, 1, 2).ToString("00"),
+                Lota = this.LerInt32(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.Lota)), ObOp.Obrigatorio, 1, 3),
+                TpRest = (TipoRestricaoVeiculo)this.LerInt32(XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.TpRest)), ObOp.Obrigatorio, 1, 1)
             };
         }
 
@@ -1602,9 +1595,9 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             }
             detalhesOficiais[nProd].Prod.Med = new DFeNFe.Med
             {
-                CProdANVISA = LerString(TpcnResources.cProdANVISA, ObOp.Obrigatorio, 1, 13),
+                CProdANVISA = LerString(XmlTag<DFeNFe.Med>(nameof(DFeNFe.Med.CProdANVISA)), ObOp.Obrigatorio, 1, 13),
                 XMotivoIsencao = VazioParaNulo(LerString("xMotivoIsencao", ObOp.Opcional, 1, 255)),
-                VPMC = LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vPMC, ObOp.Obrigatorio, 15)
+                VPMC = LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Med>(nameof(DFeNFe.Med.VPMC)), ObOp.Obrigatorio, 15)
             };
         }
 
@@ -1614,10 +1607,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (produto.Arma == null) produto.Arma = new List<DFeNFe.Arma>();
             produto.Arma.Add(new DFeNFe.Arma
             {
-                TpArma = (TipoArma)this.LerInt32(TpcnResources.tpArma, ObOp.Obrigatorio, 1, 1),
-                NSerie = LerString(TpcnResources.nSerie, ObOp.Obrigatorio, 1, 15),
-                NCano = LerString(TpcnResources.nCano, ObOp.Obrigatorio, 1, 15),
-                Descr = LerString(TpcnResources.descr, ObOp.Obrigatorio, 1, 256)
+                TpArma = (TipoArma)this.LerInt32(XmlTag<DFeNFe.Arma>(nameof(DFeNFe.Arma.TpArma)), ObOp.Obrigatorio, 1, 1),
+                NSerie = LerString(XmlTag<DFeNFe.Arma>(nameof(DFeNFe.Arma.NSerie)), ObOp.Obrigatorio, 1, 15),
+                NCano = LerString(XmlTag<DFeNFe.Arma>(nameof(DFeNFe.Arma.NCano)), ObOp.Obrigatorio, 1, 15),
+                Descr = LerString(XmlTag<DFeNFe.Arma>(nameof(DFeNFe.Arma.Descr)), ObOp.Obrigatorio, 1, 256)
             });
         }
 
@@ -1626,20 +1619,20 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             var produto = detalhesOficiais[nProd].Prod;
             var combustivel = new DFeNFe.Comb
             {
-                CProdANP = this.LerInt32(TpcnResources.cProdANP, ObOp.Obrigatorio, 9, 9).ToString("000000000"),
-                DescANP = this.LerString(TpcnResources.descANP, ObOp.Opcional, 2, 295),
-                PGLP = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pGLP, ObOp.Opcional, 16),
-                PGNn = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pGNn, ObOp.Opcional, 16),
-                PGNi = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pGNi, ObOp.Opcional, 16),
-                VPart = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vPart, ObOp.Opcional, 16),
-                CODIF = VazioParaNulo(this.LerString(TpcnResources.CODIF, ObOp.Opcional, 0, 21)),
-                QTemp = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qTemp, ObOp.Opcional, 16),
-                UFCons = LerUF(TpcnResources.UFCons, ObOp.Obrigatorio).Value
+                CProdANP = this.LerInt32(XmlTag<DFeNFe.Comb>(nameof(DFeNFe.Comb.CProdANP)), ObOp.Obrigatorio, 9, 9).ToString("000000000"),
+                DescANP = this.LerString(XmlTag<DFeNFe.Comb>(nameof(DFeNFe.Comb.DescANP)), ObOp.Opcional, 2, 295),
+                PGLP = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.Comb>(nameof(DFeNFe.Comb.PGLP)), ObOp.Opcional, 16),
+                PGNn = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.Comb>(nameof(DFeNFe.Comb.PGNn)), ObOp.Opcional, 16),
+                PGNi = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.Comb>(nameof(DFeNFe.Comb.PGNi)), ObOp.Opcional, 16),
+                VPart = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Comb>(nameof(DFeNFe.Comb.VPart)), ObOp.Opcional, 16),
+                CODIF = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Comb>(nameof(DFeNFe.Comb.CODIF)), ObOp.Opcional, 0, 21)),
+                QTemp = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.Comb>(nameof(DFeNFe.Comb.QTemp)), ObOp.Opcional, 16),
+                UFCons = LerUF(XmlTag<DFeNFe.Comb>(nameof(DFeNFe.Comb.UFCons)), ObOp.Obrigatorio).Value
             };
 
             if (lenPipesRegistro >= 11)
             {
-                combustivel.PBio = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pBio, ObOp.Opcional, 15);
+                combustivel.PBio = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.Comb>(nameof(DFeNFe.Comb.PBio)), ObOp.Opcional, 15);
             }
             produto.Comb = new List<DFeNFe.Comb> { combustivel };
         }
@@ -1649,11 +1642,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             var combustivel = ObterCombustivel(nProd);
             combustivel.Encerrante = new DFeNFe.Encerrante
             {
-                NBico = this.LerInt32(TpcnResources.nBico, ObOp.Obrigatorio, 1, 3),
-                NBomba = this.LerInt32(TpcnResources.nBomba, ObOp.Opcional, 0, 3),
-                NTanque = this.LerInt32(TpcnResources.nTanque, ObOp.Obrigatorio, 1, 3),
-                VEncIni = double.Parse(this.LerString(TpcnResources.vEncIni, ObOp.Obrigatorio, 1, 15), CultureInfo.InvariantCulture),
-                VEncFin = double.Parse(this.LerString(TpcnResources.vEncFin, ObOp.Obrigatorio, 1, 15), CultureInfo.InvariantCulture)
+                NBico = this.LerInt32(XmlTag<DFeNFe.Encerrante>(nameof(DFeNFe.Encerrante.NBico)), ObOp.Obrigatorio, 1, 3),
+                NBomba = this.LerInt32(XmlTag<DFeNFe.Encerrante>(nameof(DFeNFe.Encerrante.NBomba)), ObOp.Opcional, 0, 3),
+                NTanque = this.LerInt32(XmlTag<DFeNFe.Encerrante>(nameof(DFeNFe.Encerrante.NTanque)), ObOp.Obrigatorio, 1, 3),
+                VEncIni = double.Parse(this.LerString(XmlTag<DFeNFe.Encerrante>(nameof(DFeNFe.Encerrante.VEncIni)), ObOp.Obrigatorio, 1, 15), CultureInfo.InvariantCulture),
+                VEncFin = double.Parse(this.LerString(XmlTag<DFeNFe.Encerrante>(nameof(DFeNFe.Encerrante.VEncFin)), ObOp.Obrigatorio, 1, 15), CultureInfo.InvariantCulture)
             };
         }
 
@@ -1663,17 +1656,17 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (combustivel.OrigComb == null) combustivel.OrigComb = new List<DFeNFe.OrigComb>();
             combustivel.OrigComb.Add(new DFeNFe.OrigComb
             {
-                IndImport = (IndicadorImportacao)this.LerInt32(TpcnResources.indImport, ObOp.Obrigatorio, 1, 1),
-                CUFOrig = (UFBrasil)this.LerInt32(TpcnResources.cUFOrig, ObOp.Obrigatorio, 2, 2),
-                POrig = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pOrig, ObOp.Obrigatorio, 15)
+                IndImport = (IndicadorImportacao)this.LerInt32(XmlTag<DFeNFe.OrigComb>(nameof(DFeNFe.OrigComb.IndImport)), ObOp.Obrigatorio, 1, 1),
+                CUFOrig = (UFBrasil)this.LerInt32(XmlTag<DFeNFe.OrigComb>(nameof(DFeNFe.OrigComb.CUFOrig)), ObOp.Obrigatorio, 2, 2),
+                POrig = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.OrigComb>(nameof(DFeNFe.OrigComb.POrig)), ObOp.Obrigatorio, 15)
             });
         }
 
         private void ProcessarCideCombustivel(int nProd)
         {
-            var quantidade = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCProd, ObOp.Obrigatorio, 16);
-            var aliquota = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vAliqProd, ObOp.Obrigatorio, 15);
-            var valor = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCIDE, ObOp.Obrigatorio, 15);
+            var quantidade = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 16);
+            var aliquota = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15);
+            var valor = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VCIDE)), ObOp.Obrigatorio, 15);
             ObterCombustivel(nProd).CIDE = quantidade > 0 ? new DFeNFe.CIDE
             {
                 QBCProd = quantidade,
@@ -1683,7 +1676,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         }
         private void ProcessarRecopi(int nProd)
         {
-            detalhesOficiais[nProd].Prod.NRECOPI = VazioParaNulo(this.LerString(TpcnResources.nRECOPI, ObOp.Opcional, 20, 20));
+            detalhesOficiais[nProd].Prod.NRECOPI = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.NRECOPI)), ObOp.Opcional, 20, 20));
         }
 
         private DFeNFe.Comb ObterCombustivel(int nProd)
@@ -1698,23 +1691,23 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarTotalTributosItem(int nProd)
         {
-            detalhesOficiais[nProd].Imposto.VTotTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTotTrib, ObOp.Opcional, 15);
+            detalhesOficiais[nProd].Imposto.VTotTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Imposto>(nameof(DFeNFe.Imposto.VTotTrib)), ObOp.Opcional, 15);
         }
         private void ProcessarIcms00(int nProd)
         {
             var icms = new DFeNFe.ICMS00
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(TpcnResources.modBC, ObOp.Obrigatorio, 1, 1),
-                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15),
-                PICMS = this.LerDouble(this.TipoCampo42, TpcnResources.pICMS, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMS, ObOp.Obrigatorio, 15)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.ModBC)), ObOp.Obrigatorio, 1, 1),
+                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15),
+                PICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PICMS)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VICMS)), ObOp.Obrigatorio, 15)
             };
             if (versaoNFe >= 4)
             {
-                icms.PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCP, ObOp.Obrigatorio, 15);
-                icms.VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCP, ObOp.Obrigatorio, 15);
+                icms.PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PFCP)), ObOp.Obrigatorio, 15);
+                icms.VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VFCP)), ObOp.Obrigatorio, 15);
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS00 = icms };
         }
@@ -1725,11 +1718,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 ICMS02 = new DFeNFe.ICMS02
                 {
-                    Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                    CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                    QBCMono = (decimal)this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCMono, ObOp.Opcional, 15),
-                    AdRemICMS = this.LerDouble(this.TipoCampo42, TpcnResources.adRemICMS, ObOp.Obrigatorio, 15),
-                    VICMSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSMono, ObOp.Obrigatorio, 13)
+                    Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                    QBCMono = (decimal)this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.QBCMono)), ObOp.Opcional, 15),
+                    AdRemICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.AdRemICMS)), ObOp.Obrigatorio, 15),
+                    VICMSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.VICMSMono)), ObOp.Obrigatorio, 13)
                 }
             };
         }
@@ -1737,29 +1730,29 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMS10
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(TpcnResources.modBC, ObOp.Obrigatorio, 1, 1),
-                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15),
-                PICMS = this.LerDouble(this.TipoCampo42, TpcnResources.pICMS, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMS, ObOp.Obrigatorio, 15),
-                VBCFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCP, ObOp.Obrigatorio, 15),
-                PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCP, ObOp.Obrigatorio, 15),
-                VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCP, ObOp.Obrigatorio, 15),
-                ModBCST = (ModalidadeBaseCalculoICMSST)this.LerInt32(TpcnResources.modBCST, ObOp.Obrigatorio, 1, 1),
-                PMVAST = this.LerDouble(this.TipoCampo42, TpcnResources.pMVAST, ObOp.Opcional, this.CasasDecimais75),
-                PRedBCST = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBCST, ObOp.Opcional, this.CasasDecimais75),
-                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCST, ObOp.Obrigatorio, 15),
-                PICMSST = this.LerDouble(this.TipoCampo42, TpcnResources.pICMSST, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSST, ObOp.Obrigatorio, 15),
-                VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPST, ObOp.Obrigatorio, 15),
-                PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPST, ObOp.Obrigatorio, 15),
-                VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPST, ObOp.Obrigatorio, 15)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.ModBC)), ObOp.Obrigatorio, 1, 1),
+                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15),
+                PICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PICMS)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VICMS)), ObOp.Obrigatorio, 15),
+                VBCFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCP)), ObOp.Obrigatorio, 15),
+                PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PFCP)), ObOp.Obrigatorio, 15),
+                VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VFCP)), ObOp.Obrigatorio, 15),
+                ModBCST = (ModalidadeBaseCalculoICMSST)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Obrigatorio, 1, 1),
+                PMVAST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PMVAST)), ObOp.Opcional, this.CasasDecimais75),
+                PRedBCST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PRedBCST)), ObOp.Opcional, this.CasasDecimais75),
+                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCST)), ObOp.Obrigatorio, 15),
+                PICMSST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PICMSST)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSST)), ObOp.Obrigatorio, 15),
+                VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCPST)), ObOp.Obrigatorio, 15),
+                PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PFCPST)), ObOp.Obrigatorio, 15),
+                VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VFCPST)), ObOp.Obrigatorio, 15)
             };
             if (lenPipesRegistro >= 21)
             {
-                icms.VICMSSTDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSTDeson, ObOp.Opcional, 15);
-                icms.MotDesICMSST = (MotivoDesoneracaoICMS)this.LerInt32(TpcnResources.motDesICMSST, ObOp.Opcional, 1, 2);
+                icms.VICMSSTDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSSTDeson)), ObOp.Opcional, 15);
+                icms.MotDesICMSST = (MotivoDesoneracaoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.MotDesICMSST)), ObOp.Opcional, 1, 2);
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS10 = icms };
         }
@@ -1770,16 +1763,16 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 ICMS15 = new DFeNFe.ICMS15
                 {
-                    Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                    CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                    QBCMono = (decimal)this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCMono, ObOp.Opcional, 11),
-                    AdRemICMS = this.LerDouble(this.TipoCampo42, TpcnResources.adRemICMS, ObOp.Obrigatorio, 15),
-                    VICMSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSMono, ObOp.Obrigatorio, 15),
-                    QBCMonoReten = (decimal)this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCMonoReten, ObOp.Opcional, 11),
-                    AdRemICMSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.adRemICMSReten, ObOp.Obrigatorio, 15),
-                    VICMSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSMonoReten, ObOp.Obrigatorio, 15),
-                    PRedAdRem = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.pRedAdRem, ObOp.Obrigatorio, 15),
-                    MotRedAdRem = (MotivoReducaoAdRem)this.LerInt32(TpcnResources.motRedAdRem, ObOp.Obrigatorio, 1, 1)
+                    Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                    QBCMono = (decimal)this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.QBCMono)), ObOp.Opcional, 11),
+                    AdRemICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.AdRemICMS)), ObOp.Obrigatorio, 15),
+                    VICMSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.VICMSMono)), ObOp.Obrigatorio, 15),
+                    QBCMonoReten = (decimal)this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS15>(nameof(DFeNFe.ICMS15.QBCMonoReten)), ObOp.Opcional, 11),
+                    AdRemICMSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS15>(nameof(DFeNFe.ICMS15.AdRemICMSReten)), ObOp.Obrigatorio, 15),
+                    VICMSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS15>(nameof(DFeNFe.ICMS15.VICMSMonoReten)), ObOp.Obrigatorio, 15),
+                    PRedAdRem = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS15>(nameof(DFeNFe.ICMS15.PRedAdRem)), ObOp.Obrigatorio, 15),
+                    MotRedAdRem = (MotivoReducaoAdRem)this.LerInt32(XmlTag<DFeNFe.ICMS15>(nameof(DFeNFe.ICMS15.MotRedAdRem)), ObOp.Obrigatorio, 1, 1)
                 }
             };
         }
@@ -1788,23 +1781,23 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMS20
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(TpcnResources.modBC, ObOp.Obrigatorio, 1, 1),
-                PRedBC = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBC, ObOp.Obrigatorio, this.CasasDecimais75),
-                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15),
-                PICMS = this.LerDouble(this.TipoCampo42, TpcnResources.pICMS, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMS, ObOp.Obrigatorio, 15)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.ModBC)), ObOp.Obrigatorio, 1, 1),
+                PRedBC = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.PRedBC)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15),
+                PICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PICMS)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VICMS)), ObOp.Obrigatorio, 15)
             };
             if (versaoNFe >= 4)
             {
-                icms.VBCFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCP, ObOp.Obrigatorio, 15);
-                icms.PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCP, ObOp.Obrigatorio, 15);
-                icms.VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCP, ObOp.Obrigatorio, 15);
+                icms.VBCFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCP)), ObOp.Obrigatorio, 15);
+                icms.PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PFCP)), ObOp.Obrigatorio, 15);
+                icms.VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VFCP)), ObOp.Obrigatorio, 15);
             }
-            icms.VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSDeson, ObOp.Opcional, 15);
-            icms.MotDesICMS = (MotivoDesoneracaoICMS)this.LerInt32(TpcnResources.motDesICMS, ObOp.Opcional, 1, 1);
-            if (lenPipesRegistro >= 14) icms.IndDeduzDeson = LerSimNaoOpcional(TpcnResources.indDeduzDeson);
+            icms.VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.VICMSDeson)), ObOp.Opcional, 15);
+            icms.MotDesICMS = (MotivoDesoneracaoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.MotDesICMS)), ObOp.Opcional, 1, 1);
+            if (lenPipesRegistro >= 14) icms.IndDeduzDeson = LerSimNaoOpcional(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.IndDeduzDeson)));
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS20 = icms };
         }
 
@@ -1812,24 +1805,24 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMS30
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                ModBCST = (ModalidadeBaseCalculoICMSST)this.LerInt32(TpcnResources.modBCST, ObOp.Obrigatorio, 1, 1),
-                PMVAST = this.LerDouble(this.TipoCampo42, TpcnResources.pMVAST, ObOp.Opcional, this.CasasDecimais75),
-                PRedBCST = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBCST, ObOp.Opcional, this.CasasDecimais75),
-                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCST, ObOp.Obrigatorio, 15),
-                PICMSST = this.LerDouble(this.TipoCampo42, TpcnResources.pICMSST, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSST, ObOp.Obrigatorio, 15)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                ModBCST = (ModalidadeBaseCalculoICMSST)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Obrigatorio, 1, 1),
+                PMVAST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PMVAST)), ObOp.Opcional, this.CasasDecimais75),
+                PRedBCST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PRedBCST)), ObOp.Opcional, this.CasasDecimais75),
+                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCST)), ObOp.Obrigatorio, 15),
+                PICMSST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PICMSST)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSST)), ObOp.Obrigatorio, 15)
             };
             if (versaoNFe >= 4)
             {
-                icms.VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPST, ObOp.Obrigatorio, 15);
-                icms.PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPST, ObOp.Obrigatorio, 15);
-                icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPST, ObOp.Obrigatorio, 15);
+                icms.VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCPST)), ObOp.Obrigatorio, 15);
+                icms.PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PFCPST)), ObOp.Obrigatorio, 15);
+                icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VFCPST)), ObOp.Obrigatorio, 15);
             }
-            icms.VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSDeson, ObOp.Opcional, 15);
-            icms.MotDesICMS = (MotivoDesoneracaoICMS)this.LerInt32(TpcnResources.motDesICMS, ObOp.Opcional, 1, 1);
-            if (lenPipesRegistro >= 15) icms.IndDeduzDeson = LerSimNaoOpcional(TpcnResources.indDeduzDeson);
+            icms.VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.VICMSDeson)), ObOp.Opcional, 15);
+            icms.MotDesICMS = (MotivoDesoneracaoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.MotDesICMS)), ObOp.Opcional, 1, 1);
+            if (lenPipesRegistro >= 15) icms.IndDeduzDeson = LerSimNaoOpcional(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.IndDeduzDeson)));
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS30 = icms };
         }
 
@@ -1837,16 +1830,16 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMS40
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2)
             };
             if (lenPipesRegistro >= 5)
             {
-                if (versaoNFe >= 3) icms.VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSDeson, ObOp.Opcional, 15);
-                else this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMS, ObOp.Opcional, 15);
-                icms.MotDesICMS = (MotivoDesoneracaoICMS)this.LerInt32(TpcnResources.motDesICMS, ObOp.Opcional, 1, 1);
+                if (versaoNFe >= 3) icms.VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.VICMSDeson)), ObOp.Opcional, 15);
+                else this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VICMS)), ObOp.Opcional, 15);
+                icms.MotDesICMS = (MotivoDesoneracaoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.MotDesICMS)), ObOp.Opcional, 1, 1);
             }
-            if (lenPipesRegistro >= 6) icms.IndDeduzDeson = LerSimNaoOpcional(TpcnResources.indDeduzDeson);
+            if (lenPipesRegistro >= 6) icms.IndDeduzDeson = LerSimNaoOpcional(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.IndDeduzDeson)));
             if (icms.VICMSDeson <= 0)
             {
                 icms.MotDesICMS = default(MotivoDesoneracaoICMS);
@@ -1859,27 +1852,27 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMS51
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(TpcnResources.modBC, ObOp.Opcional, 1, 1),
-                PRedBC = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBC, ObOp.Opcional, this.CasasDecimais75),
-                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Opcional, 15),
-                PICMS = this.LerDouble(this.TipoCampo42, TpcnResources.pICMS, ObOp.Opcional, this.CasasDecimais75),
-                VICMSOp = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSOp, ObOp.Opcional, 15),
-                PDif = this.LerDouble(this.TipoCampo42, TpcnResources.pDif, ObOp.Opcional, this.CasasDecimais75),
-                VICMSDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSDif, ObOp.Opcional, 15),
-                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMS, ObOp.Opcional, 15),
-                VBCFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCP, ObOp.Obrigatorio, 15),
-                PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCP, ObOp.Obrigatorio, 15),
-                VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCP, ObOp.Obrigatorio, 15)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.ModBC)), ObOp.Opcional, 1, 1),
+                PRedBC = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.PRedBC)), ObOp.Opcional, this.CasasDecimais75),
+                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Opcional, 15),
+                PICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PICMS)), ObOp.Opcional, this.CasasDecimais75),
+                VICMSOp = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.VICMSOp)), ObOp.Opcional, 15),
+                PDif = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.PDif)), ObOp.Opcional, this.CasasDecimais75),
+                VICMSDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.VICMSDif)), ObOp.Opcional, 15),
+                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VICMS)), ObOp.Opcional, 15),
+                VBCFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCP)), ObOp.Obrigatorio, 15),
+                PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PFCP)), ObOp.Obrigatorio, 15),
+                VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VFCP)), ObOp.Obrigatorio, 15)
             };
             if (lenPipesRegistro == 10 && (icms.VICMS ?? 0) == 0) icms.VICMS = Math.Max(0, (icms.VICMSOp ?? 0) - (icms.VICMSDif ?? 0));
             if (lenPipesRegistro >= 17)
             {
-                icms.PFCPDif = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPDif, ObOp.Opcional, 15);
-                icms.VFCPDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPDif, ObOp.Opcional, 15);
-                icms.VFCPEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPEfet, ObOp.Opcional, 15);
-                if (lenPipesRegistro >= 18) icms.CBenefRBC = this.LerString(TpcnResources.cBenefRBC, ObOp.Opcional, 8, 10);
+                icms.PFCPDif = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.PFCPDif)), ObOp.Opcional, 15);
+                icms.VFCPDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.VFCPDif)), ObOp.Opcional, 15);
+                icms.VFCPEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.VFCPEfet)), ObOp.Opcional, 15);
+                if (lenPipesRegistro >= 18) icms.CBenefRBC = this.LerString(XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.CBenefRBC)), ObOp.Opcional, 8, 10);
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS51 = icms };
         }
@@ -1890,22 +1883,22 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 ICMS53 = new DFeNFe.ICMS53
                 {
-                    Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                    CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                    QBCMono = (decimal)this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCMono, ObOp.Opcional, 15),
-                    AdRemICMS = this.LerDouble(this.TipoCampo42, TpcnResources.adRemICMS, ObOp.Obrigatorio, 15),
-                    VICMSMonoOp = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSMonoOp, ObOp.Opcional, 15),
-                    PDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.pDif, ObOp.Opcional, 15),
-                    VICMSMonoDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSMonoDif, ObOp.Opcional, 15),
-                    VICMSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSMono, ObOp.Opcional, 15)
+                    Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                    QBCMono = (decimal)this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.QBCMono)), ObOp.Opcional, 15),
+                    AdRemICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.AdRemICMS)), ObOp.Obrigatorio, 15),
+                    VICMSMonoOp = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS53>(nameof(DFeNFe.ICMS53.VICMSMonoOp)), ObOp.Opcional, 15),
+                    PDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.PDif)), ObOp.Opcional, 15),
+                    VICMSMonoDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS53>(nameof(DFeNFe.ICMS53.VICMSMonoDif)), ObOp.Opcional, 15),
+                    VICMSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.VICMSMono)), ObOp.Opcional, 15)
                 }
             };
         }
 
         private void ProcessarIcms60(int nProd, int lenPipesRegistro)
         {
-            var origem = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1);
-            var cst = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2);
+            var origem = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1);
+            var cst = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2);
             double vBCSTRet = 0;
             double pST = 0;
             double vICMSSTRet = 0;
@@ -1917,20 +1910,20 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             };
             if (versaoNFe >= 4)
             {
-                vBCSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCSTRet, ObOp.Obrigatorio, 15);
-                pST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pST, ObOp.Opcional, 15);
-                vICMSSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSTRet, ObOp.Obrigatorio, 15);
-                icms.VBCFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPSTRet, ObOp.Opcional, 15);
-                icms.PFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPSTRet, ObOp.Opcional, 15);
-                icms.VFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPSTRet, ObOp.Opcional, 15);
+                vBCSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VBCSTRet)), ObOp.Obrigatorio, 15);
+                pST = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PST)), ObOp.Opcional, 15);
+                vICMSSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSSTRet)), ObOp.Obrigatorio, 15);
+                icms.VBCFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VBCFCPSTRet)), ObOp.Opcional, 15);
+                icms.PFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PFCPSTRet)), ObOp.Opcional, 15);
+                icms.VFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VFCPSTRet)), ObOp.Opcional, 15);
                 if (lenPipesRegistro >= 13)
                 {
-                    icms.PRedBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedBCEfet, ObOp.Opcional, 15);
-                    icms.VBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCEfet, ObOp.Opcional, 15);
-                    icms.PICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pICMSEfet, ObOp.Opcional, 15);
-                    icms.VICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSEfet, ObOp.Opcional, 15);
+                    icms.PRedBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PRedBCEfet)), ObOp.Opcional, 15);
+                    icms.VBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VBCEfet)), ObOp.Opcional, 15);
+                    icms.PICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PICMSEfet)), ObOp.Opcional, 15);
+                    icms.VICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSEfet)), ObOp.Opcional, 15);
                 }
-                vICMSSubstituto = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSubstituto, ObOp.Opcional, 15);
+                vICMSSubstituto = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSSubstituto)), ObOp.Opcional, 15);
 
                 // A rotina histórica só gera estes quatro campos quando existe valor
                 // no grupo de retenção ou quando a operação não é para consumidor final.
@@ -1968,14 +1961,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMS61
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2)
             };
             if (versaoNFe >= 4)
             {
-                icms.QBCMonoRet = this.LerDecimal(TpcnTipoCampo.tcDec4, TpcnResources.qBCMonoRet, ObOp.Obrigatorio, 15);
-                icms.AdRemICMSRet = this.LerDouble(this.TipoCampo42, TpcnResources.adRemICMSRet, ObOp.Opcional, 15);
-                icms.VICMSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSMonoRet, ObOp.Obrigatorio, 15);
+                icms.QBCMonoRet = this.LerDecimal(TpcnTipoCampo.tcDec4, XmlTag<DFeNFe.ICMS61>(nameof(DFeNFe.ICMS61.QBCMonoRet)), ObOp.Obrigatorio, 15);
+                icms.AdRemICMSRet = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS61>(nameof(DFeNFe.ICMS61.AdRemICMSRet)), ObOp.Opcional, 15);
+                icms.VICMSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS61>(nameof(DFeNFe.ICMS61.VICMSMonoRet)), ObOp.Obrigatorio, 15);
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS61 = icms };
         }
@@ -1984,33 +1977,33 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMS70
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(TpcnResources.modBC, ObOp.Obrigatorio, 1, 1),
-                PRedBC = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBC, ObOp.Obrigatorio, this.CasasDecimais75),
-                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15),
-                PICMS = this.LerDouble(this.TipoCampo42, TpcnResources.pICMS, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMS, ObOp.Obrigatorio, 15),
-                ModBCST = (ModalidadeBaseCalculoICMSST)this.LerInt32(TpcnResources.modBCST, ObOp.Obrigatorio, 1, 1),
-                PMVAST = this.LerDouble(this.TipoCampo42, TpcnResources.pMVAST, ObOp.Opcional, this.CasasDecimais75),
-                PRedBCST = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBCST, ObOp.Opcional, this.CasasDecimais75),
-                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCST, ObOp.Obrigatorio, 15),
-                PICMSST = this.LerDouble(this.TipoCampo42, TpcnResources.pICMSST, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSST, ObOp.Obrigatorio, 15),
-                VBCFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCP, ObOp.Opcional, 15),
-                PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCP, ObOp.Opcional, 15),
-                VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCP, ObOp.Opcional, 15),
-                VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPST, ObOp.Opcional, 15),
-                PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPST, ObOp.Opcional, 15),
-                VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPST, ObOp.Opcional, 15),
-                VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSDeson, ObOp.Opcional, 15),
-                MotDesICMS = (MotivoDesoneracaoICMS)this.LerInt32(TpcnResources.motDesICMS, ObOp.Opcional, 1, 1)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.ModBC)), ObOp.Obrigatorio, 1, 1),
+                PRedBC = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.PRedBC)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15),
+                PICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PICMS)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VICMS)), ObOp.Obrigatorio, 15),
+                ModBCST = (ModalidadeBaseCalculoICMSST)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Obrigatorio, 1, 1),
+                PMVAST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PMVAST)), ObOp.Opcional, this.CasasDecimais75),
+                PRedBCST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PRedBCST)), ObOp.Opcional, this.CasasDecimais75),
+                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCST)), ObOp.Obrigatorio, 15),
+                PICMSST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PICMSST)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSST)), ObOp.Obrigatorio, 15),
+                VBCFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCP)), ObOp.Opcional, 15),
+                PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PFCP)), ObOp.Opcional, 15),
+                VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VFCP)), ObOp.Opcional, 15),
+                VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCPST)), ObOp.Opcional, 15),
+                PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PFCPST)), ObOp.Opcional, 15),
+                VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VFCPST)), ObOp.Opcional, 15),
+                VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.VICMSDeson)), ObOp.Opcional, 15),
+                MotDesICMS = (MotivoDesoneracaoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.MotDesICMS)), ObOp.Opcional, 1, 1)
             };
             if (lenPipesRegistro >= 24)
             {
-                icms.VICMSSTDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSTDeson, ObOp.Opcional, 15);
-                icms.MotDesICMSST = (MotivoDesoneracaoICMS)this.LerInt32(TpcnResources.motDesICMSST, ObOp.Opcional, 1, 2);
-                if (lenPipesRegistro >= 25) icms.IndDeduzDeson = LerSimNaoOpcional(TpcnResources.indDeduzDeson);
+                icms.VICMSSTDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSSTDeson)), ObOp.Opcional, 15);
+                icms.MotDesICMSST = (MotivoDesoneracaoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.MotDesICMSST)), ObOp.Opcional, 1, 2);
+                if (lenPipesRegistro >= 25) icms.IndDeduzDeson = LerSimNaoOpcional(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.IndDeduzDeson)));
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS70 = icms };
         }
@@ -2019,33 +2012,33 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMS90
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(TpcnResources.modBC, ObOp.Obrigatorio, 1, 1),
-                PRedBC = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBC, ObOp.Opcional, this.CasasDecimais75),
-                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15),
-                PICMS = this.LerDouble(this.TipoCampo42, TpcnResources.pICMS, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMS, ObOp.Obrigatorio, 15),
-                ModBCST = (ModalidadeBaseCalculoICMSST)this.LerInt32(TpcnResources.modBCST, ObOp.Obrigatorio, 1, 1),
-                PMVAST = this.LerDouble(this.TipoCampo42, TpcnResources.pMVAST, ObOp.Opcional, this.CasasDecimais75),
-                PRedBCST = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBCST, ObOp.Opcional, this.CasasDecimais75),
-                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCST, ObOp.Obrigatorio, 15),
-                PICMSST = this.LerDouble(this.TipoCampo42, TpcnResources.pICMSST, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSST, ObOp.Obrigatorio, 15),
-                VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSDeson, ObOp.Opcional, 15),
-                MotDesICMS = (MotivoDesoneracaoICMS)this.LerInt32(TpcnResources.motDesICMS, ObOp.Opcional, 1, 1),
-                VBCFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCP, ObOp.Opcional, 15),
-                PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCP, ObOp.Opcional, 15),
-                VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCP, ObOp.Opcional, 15),
-                VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPST, ObOp.Opcional, 15),
-                PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPST, ObOp.Opcional, 15),
-                VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPST, ObOp.Opcional, 15)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.ModBC)), ObOp.Obrigatorio, 1, 1),
+                PRedBC = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.PRedBC)), ObOp.Opcional, this.CasasDecimais75),
+                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15),
+                PICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PICMS)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VICMS)), ObOp.Obrigatorio, 15),
+                ModBCST = (ModalidadeBaseCalculoICMSST)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Obrigatorio, 1, 1),
+                PMVAST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PMVAST)), ObOp.Opcional, this.CasasDecimais75),
+                PRedBCST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PRedBCST)), ObOp.Opcional, this.CasasDecimais75),
+                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCST)), ObOp.Obrigatorio, 15),
+                PICMSST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PICMSST)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSST)), ObOp.Obrigatorio, 15),
+                VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.VICMSDeson)), ObOp.Opcional, 15),
+                MotDesICMS = (MotivoDesoneracaoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.MotDesICMS)), ObOp.Opcional, 1, 1),
+                VBCFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCP)), ObOp.Opcional, 15),
+                PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PFCP)), ObOp.Opcional, 15),
+                VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VFCP)), ObOp.Opcional, 15),
+                VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCPST)), ObOp.Opcional, 15),
+                PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PFCPST)), ObOp.Opcional, 15),
+                VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VFCPST)), ObOp.Opcional, 15)
             };
             if (lenPipesRegistro >= 24)
             {
-                icms.VICMSSTDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSTDeson, ObOp.Opcional, 15);
-                icms.MotDesICMSST = (MotivoDesoneracaoICMS)this.LerInt32(TpcnResources.motDesICMSST, ObOp.Opcional, 1, 2);
-                if (lenPipesRegistro >= 25) icms.IndDeduzDeson = LerSimNaoOpcional(TpcnResources.indDeduzDeson);
+                icms.VICMSSTDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSSTDeson)), ObOp.Opcional, 15);
+                icms.MotDesICMSST = (MotivoDesoneracaoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.MotDesICMSST)), ObOp.Opcional, 1, 2);
+                if (lenPipesRegistro >= 25) icms.IndDeduzDeson = LerSimNaoOpcional(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.IndDeduzDeson)));
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS90 = icms };
         }
@@ -2054,27 +2047,27 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMSPart
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(TpcnResources.modBC, ObOp.Obrigatorio, 1, 1),
-                PRedBC = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBC, ObOp.Opcional, this.CasasDecimais75),
-                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15),
-                PICMS = this.LerDouble(this.TipoCampo42, TpcnResources.pICMS, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMS, ObOp.Obrigatorio, 15),
-                ModBCSTField = (ModalidadeBaseCalculoICMSST)this.LerInt32(TpcnResources.modBCST, ObOp.Obrigatorio, 1, 1),
-                PMVAST = this.LerDouble(this.TipoCampo42, TpcnResources.pMVAST, ObOp.Opcional, this.CasasDecimais75),
-                PRedBCST = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBCST, ObOp.Opcional, this.CasasDecimais75),
-                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCST, ObOp.Obrigatorio, 15),
-                PICMSST = this.LerDouble(this.TipoCampo42, TpcnResources.pICMSST, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSST, ObOp.Obrigatorio, 15),
-                PBCOp = this.LerDouble(this.TipoCampo42, TpcnResources.pBCOp, ObOp.Obrigatorio, this.CasasDecimais75),
-                UFST = (UFBrasil)Enum.Parse(typeof(UFBrasil), this.LerString(TpcnResources.UFST, ObOp.Obrigatorio, 2, 2))
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.ModBC)), ObOp.Obrigatorio, 1, 1),
+                PRedBC = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.PRedBC)), ObOp.Opcional, this.CasasDecimais75),
+                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15),
+                PICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PICMS)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VICMS)), ObOp.Obrigatorio, 15),
+                ModBCSTField = (ModalidadeBaseCalculoICMSST)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Obrigatorio, 1, 1),
+                PMVAST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PMVAST)), ObOp.Opcional, this.CasasDecimais75),
+                PRedBCST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PRedBCST)), ObOp.Opcional, this.CasasDecimais75),
+                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCST)), ObOp.Obrigatorio, 15),
+                PICMSST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PICMSST)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSST)), ObOp.Obrigatorio, 15),
+                PBCOp = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMSPart>(nameof(DFeNFe.ICMSPart.PBCOp)), ObOp.Obrigatorio, this.CasasDecimais75),
+                UFST = (UFBrasil)Enum.Parse(typeof(UFBrasil), this.LerString(XmlTag<DFeNFe.ICMSPart>(nameof(DFeNFe.ICMSPart.UFST)), ObOp.Obrigatorio, 2, 2))
             };
             if (lenPipesRegistro >= 19)
             {
-                icms.VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPST, ObOp.Obrigatorio, 15);
-                icms.PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPST, ObOp.Obrigatorio, 15);
-                icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPST, ObOp.Obrigatorio, 15);
+                icms.VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCPST)), ObOp.Obrigatorio, 15);
+                icms.PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PFCPST)), ObOp.Obrigatorio, 15);
+                icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VFCPST)), ObOp.Obrigatorio, 15);
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMSPart = icms };
         }
@@ -2085,29 +2078,29 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 ICMSST = new DFeNFe.ICMSST
                 {
-                    Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                    CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                    VBCSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCSTRet, ObOp.Obrigatorio, 15),
-                    VICMSSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSTRet, ObOp.Obrigatorio, 15),
-                    VBCSTDest = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCSTDest, ObOp.Obrigatorio, 15),
-                    VICMSSTDest = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSTDest, ObOp.Obrigatorio, 15),
-                    PST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pST, ObOp.None, 15, true),
-                    VICMSSubstituto = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSubstituto, ObOp.None, 15, true),
-                    VBCFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPSTRet, ObOp.None, 15, true),
-                    PFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPSTRet, ObOp.None, 15, true),
-                    VFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPSTRet, ObOp.None, 15, true),
-                    PRedBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedBCEfet, ObOp.None, 15, true),
-                    VBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCEfet, ObOp.None, 15, true),
-                    PICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pICMSEfet, ObOp.None, 15, true),
-                    VICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSEfet, ObOp.None, 15, true)
+                    Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                    VBCSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VBCSTRet)), ObOp.Obrigatorio, 15),
+                    VICMSSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSSTRet)), ObOp.Obrigatorio, 15),
+                    VBCSTDest = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSST>(nameof(DFeNFe.ICMSST.VBCSTDest)), ObOp.Obrigatorio, 15),
+                    VICMSSTDest = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSST>(nameof(DFeNFe.ICMSST.VICMSSTDest)), ObOp.Obrigatorio, 15),
+                    PST = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PST)), ObOp.None, 15, true),
+                    VICMSSubstituto = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSSubstituto)), ObOp.None, 15, true),
+                    VBCFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VBCFCPSTRet)), ObOp.None, 15, true),
+                    PFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PFCPSTRet)), ObOp.None, 15, true),
+                    VFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VFCPSTRet)), ObOp.None, 15, true),
+                    PRedBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PRedBCEfet)), ObOp.None, 15, true),
+                    VBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VBCEfet)), ObOp.None, 15, true),
+                    PICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PICMSEfet)), ObOp.None, 15, true),
+                    VICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSEfet)), ObOp.None, 15, true)
                 }
             };
         }
 
         private void ProcessarIcmsSn101(int nProd, int lenPipesRegistro)
         {
-            var origem = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1);
-            var csosn = this.LerInt32(TpcnResources.CSOSN, ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture);
+            var origem = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1);
+            var csosn = this.LerInt32(XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.CSOSN)), ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture);
 
             // O gerador histórico definia a tag final pelo CSOSN. Assim, mesmo
             // quando o TXT utiliza o layout N10c, os CSOSN 102/103/300/400 devem
@@ -2131,8 +2124,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 {
                     Orig = origem,
                     CSOSN = csosn,
-                    PCredSN = this.LerDouble(this.TipoCampo42, TpcnResources.pCredSN, ObOp.Obrigatorio, this.CasasDecimais75),
-                    VCredICMSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredICMSSN, ObOp.Obrigatorio, 15)
+                    PCredSN = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.PCredSN)), ObOp.Obrigatorio, this.CasasDecimais75),
+                    VCredICMSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.VCredICMSSN)), ObOp.Obrigatorio, 15)
                 }
             };
         }
@@ -2143,8 +2136,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 ICMSSN102 = new DFeNFe.ICMSSN102
                 {
-                    Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                    CSOSN = this.LerInt32(TpcnResources.CSOSN, ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture)
+                    Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                    CSOSN = this.LerInt32(XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.CSOSN)), ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture)
                 }
             };
         }
@@ -2153,23 +2146,23 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMSSN201
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CSOSN = this.LerInt32(TpcnResources.CSOSN, ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture),
-                ModBCSTField = (ModalidadeBaseCalculoICMSST)this.LerInt32(TpcnResources.modBCST, ObOp.Obrigatorio, 1, 1),
-                PMVAST = this.LerDouble(this.TipoCampo42, TpcnResources.pMVAST, ObOp.Opcional, this.CasasDecimais75),
-                PRedBCST = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBCST, ObOp.Opcional, this.CasasDecimais75),
-                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCST, ObOp.Obrigatorio, 15),
-                PICMSST = this.LerDouble(this.TipoCampo42, TpcnResources.pICMSST, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSST, ObOp.Obrigatorio, 15)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CSOSN = this.LerInt32(XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.CSOSN)), ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture),
+                ModBCSTField = (ModalidadeBaseCalculoICMSST)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Obrigatorio, 1, 1),
+                PMVAST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PMVAST)), ObOp.Opcional, this.CasasDecimais75),
+                PRedBCST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PRedBCST)), ObOp.Opcional, this.CasasDecimais75),
+                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCST)), ObOp.Obrigatorio, 15),
+                PICMSST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PICMSST)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSST)), ObOp.Obrigatorio, 15)
             };
             if (versaoNFe >= 4)
             {
-                icms.VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPST, ObOp.Obrigatorio, 15);
-                icms.PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPST, ObOp.Obrigatorio, 15);
-                icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPST, ObOp.Obrigatorio, 15);
+                icms.VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCPST)), ObOp.Obrigatorio, 15);
+                icms.PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PFCPST)), ObOp.Obrigatorio, 15);
+                icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VFCPST)), ObOp.Obrigatorio, 15);
             }
-            icms.PCredSN = this.LerDouble(this.TipoCampo42, TpcnResources.pCredSN, ObOp.Obrigatorio, this.CasasDecimais75);
-            icms.VCredICMSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredICMSSN, ObOp.Obrigatorio, 15);
+            icms.PCredSN = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.PCredSN)), ObOp.Obrigatorio, this.CasasDecimais75);
+            icms.VCredICMSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.VCredICMSSN)), ObOp.Obrigatorio, 15);
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMSSN201 = icms };
         }
 
@@ -2177,28 +2170,28 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMSSN202
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CSOSN = this.LerInt32(TpcnResources.CSOSN, ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture),
-                ModBCSTField = (ModalidadeBaseCalculoICMSST)this.LerInt32(TpcnResources.modBCST, ObOp.Obrigatorio, 1, 1),
-                PMVAST = this.LerDouble(this.TipoCampo42, TpcnResources.pMVAST, ObOp.Opcional, this.CasasDecimais75),
-                PRedBCST = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBCST, ObOp.Opcional, this.CasasDecimais75),
-                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCST, ObOp.Obrigatorio, 15),
-                PICMSST = this.LerDouble(this.TipoCampo42, TpcnResources.pICMSST, ObOp.Obrigatorio, this.CasasDecimais75),
-                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSST, ObOp.Obrigatorio, 15)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CSOSN = this.LerInt32(XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.CSOSN)), ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture),
+                ModBCSTField = (ModalidadeBaseCalculoICMSST)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Obrigatorio, 1, 1),
+                PMVAST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PMVAST)), ObOp.Opcional, this.CasasDecimais75),
+                PRedBCST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PRedBCST)), ObOp.Opcional, this.CasasDecimais75),
+                VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCST)), ObOp.Obrigatorio, 15),
+                PICMSST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PICMSST)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSST)), ObOp.Obrigatorio, 15)
             };
             if (versaoNFe >= 4)
             {
-                icms.VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPST, ObOp.Obrigatorio, 15);
-                icms.PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPST, ObOp.Obrigatorio, 15);
-                icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPST, ObOp.Obrigatorio, 15);
+                icms.VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCPST)), ObOp.Obrigatorio, 15);
+                icms.PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PFCPST)), ObOp.Obrigatorio, 15);
+                icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VFCPST)), ObOp.Obrigatorio, 15);
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMSSN202 = icms };
         }
 
         private void ProcessarIcmsSn500(int nProd, int lenPipesRegistro)
         {
-            var origem = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1);
-            var csosn = this.LerInt32(TpcnResources.CSOSN, ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture);
+            var origem = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1);
+            var csosn = this.LerInt32(XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.CSOSN)), ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture);
 
             // O layout N10g é utilizado por TXT legados também para os CSOSN que
             // são serializados como ICMSSN102. O gerador histórico escolhia a tag
@@ -2221,26 +2214,26 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 Orig = origem,
                 CSOSN = csosn
             };
-            if (versaoNFe < 3) this.LerInt32(TpcnResources.modBCST, ObOp.Opcional, 1, 1);
-            var baseRetida = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCSTRet, ObOp.Opcional, 15);
-            var icmsRetido = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSTRet, ObOp.Opcional, 15);
+            if (versaoNFe < 3) this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Opcional, 1, 1);
+            var baseRetida = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VBCSTRet)), ObOp.Opcional, 15);
+            var icmsRetido = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSSTRet)), ObOp.Opcional, 15);
             icms.VBCSTRet = baseRetida > 0 ? (double?)baseRetida : null;
             icms.VICMSSTRet = icmsRetido > 0 ? (double?)icmsRetido : null;
             if (versaoNFe >= 4)
             {
-                var percentualSt = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pST, ObOp.Obrigatorio, 15);
+                var percentualSt = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PST)), ObOp.Obrigatorio, 15);
                 icms.PST = percentualSt > 0 ? (double?)percentualSt : null;
-                icms.VBCFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPSTRet, ObOp.Obrigatorio, 15);
-                icms.PFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPSTRet, ObOp.Obrigatorio, 15);
-                icms.VFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPSTRet, ObOp.Obrigatorio, 15);
+                icms.VBCFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VBCFCPSTRet)), ObOp.Obrigatorio, 15);
+                icms.PFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PFCPSTRet)), ObOp.Obrigatorio, 15);
+                icms.VFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VFCPSTRet)), ObOp.Obrigatorio, 15);
                 if (lenPipesRegistro >= 13)
                 {
-                    icms.PRedBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedBCEfet, ObOp.Opcional, 15);
-                    icms.VBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCEfet, ObOp.Opcional, 15);
-                    icms.PICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pICMSEfet, ObOp.Opcional, 15);
-                    icms.VICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSEfet, ObOp.Opcional, 15);
+                    icms.PRedBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PRedBCEfet)), ObOp.Opcional, 15);
+                    icms.VBCEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VBCEfet)), ObOp.Opcional, 15);
+                    icms.PICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PICMSEfet)), ObOp.Opcional, 15);
+                    icms.VICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSEfet)), ObOp.Opcional, 15);
                 }
-                var substituto = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSSubstituto, ObOp.Opcional, 15);
+                var substituto = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSSubstituto)), ObOp.Opcional, 15);
                 icms.VICMSSubstituto = substituto > 0 ? (double?)substituto : null;
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMSSN500 = icms };
@@ -2250,29 +2243,29 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var icms = new DFeNFe.ICMSSN900
             {
-                Orig = (OrigemMercadoria)this.LerInt32(TpcnResources.orig, ObOp.Obrigatorio, 1, 1),
-                CSOSN = this.LerInt32(TpcnResources.CSOSN, ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture),
-                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(TpcnResources.modBC, ObOp.Opcional, 1, 1),
-                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Opcional, 15, true)
+                Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
+                CSOSN = this.LerInt32(XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.CSOSN)), ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture),
+                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.ModBC)), ObOp.Opcional, 1, 1),
+                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Opcional, 15, true)
             };
-            var reducao = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBC, ObOp.Opcional, this.CasasDecimais75);
+            var reducao = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.PRedBC)), ObOp.Opcional, this.CasasDecimais75);
             icms.PRedBC = reducao > 0 ? (double?)reducao : null;
-            icms.PICMS = this.LerDouble(this.TipoCampo42, TpcnResources.pICMS, ObOp.Opcional, this.CasasDecimais75, true);
-            icms.VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMS, ObOp.Opcional, 15, true);
-            icms.ModBCSTField = (ModalidadeBaseCalculoICMSST)this.LerInt32(TpcnResources.modBCST, ObOp.Opcional, 1, 1, true);
-            icms.PMVAST = this.LerDouble(this.TipoCampo42, TpcnResources.pMVAST, ObOp.Opcional, this.CasasDecimais75);
-            var reducaoSt = this.LerDouble(this.TipoCampo42, TpcnResources.pRedBCST, ObOp.Opcional, this.CasasDecimais75);
+            icms.PICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PICMS)), ObOp.Opcional, this.CasasDecimais75, true);
+            icms.VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VICMS)), ObOp.Opcional, 15, true);
+            icms.ModBCSTField = (ModalidadeBaseCalculoICMSST)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Opcional, 1, 1, true);
+            icms.PMVAST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PMVAST)), ObOp.Opcional, this.CasasDecimais75);
+            var reducaoSt = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PRedBCST)), ObOp.Opcional, this.CasasDecimais75);
             icms.PRedBCST = reducaoSt > 0 ? (double?)reducaoSt : null;
-            icms.VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCST, ObOp.Opcional, 15, true);
-            icms.PICMSST = this.LerDouble(this.TipoCampo42, TpcnResources.pICMSST, ObOp.Opcional, this.CasasDecimais75, true);
-            icms.VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSST, ObOp.Opcional, 15, true);
-            icms.PCredSN = this.LerDouble(this.TipoCampo42, TpcnResources.pCredSN, ObOp.Opcional, this.CasasDecimais75, true);
-            icms.VCredICMSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredICMSSN, ObOp.Opcional, 15, true);
+            icms.VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCST)), ObOp.Opcional, 15, true);
+            icms.PICMSST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PICMSST)), ObOp.Opcional, this.CasasDecimais75, true);
+            icms.VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSST)), ObOp.Opcional, 15, true);
+            icms.PCredSN = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.PCredSN)), ObOp.Opcional, this.CasasDecimais75, true);
+            icms.VCredICMSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.VCredICMSSN)), ObOp.Opcional, 15, true);
             if (versaoNFe >= 4)
             {
-                icms.VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPST, ObOp.Obrigatorio, 15);
-                icms.PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pFCPST, ObOp.Obrigatorio, 15);
-                icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPST, ObOp.Obrigatorio, 15);
+                icms.VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCPST)), ObOp.Obrigatorio, 15);
+                icms.PFCPST = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PFCPST)), ObOp.Obrigatorio, 15);
+                icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VFCPST)), ObOp.Obrigatorio, 15);
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMSSN900 = icms };
         }
@@ -2281,28 +2274,28 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var imposto = new DFeNFe.ICMSUFDest
             {
-                VBCUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCUFDest, ObOp.Obrigatorio, 1, 15),
-                PFCPUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.pFCPUFDest, ObOp.Opcional, 1, 8),
-                PICMSUFDest = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pICMSUFDest, ObOp.Opcional, 1, 8),
-                PICMSInter = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.pICMSInter, ObOp.Obrigatorio, 1, 8),
-                PICMSInterPart = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pICMSInterPart, ObOp.Opcional, 1, 8),
-                VFCPUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPUFDest, ObOp.Opcional, 1, 15),
-                VICMSUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSUFDest, ObOp.Obrigatorio, 1, 15),
-                VICMSUFRemet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSUFRemet, ObOp.Opcional, 1, 15)
+                VBCUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.VBCUFDest)), ObOp.Obrigatorio, 1, 15),
+                PFCPUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.PFCPUFDest)), ObOp.Opcional, 1, 8),
+                PICMSUFDest = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.PICMSUFDest)), ObOp.Opcional, 1, 8),
+                PICMSInter = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.PICMSInter)), ObOp.Obrigatorio, 1, 8),
+                PICMSInterPart = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.PICMSInterPart)), ObOp.Opcional, 1, 8),
+                VFCPUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.VFCPUFDest)), ObOp.Opcional, 1, 15),
+                VICMSUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.VICMSUFDest)), ObOp.Obrigatorio, 1, 15),
+                VICMSUFRemet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.VICMSUFRemet)), ObOp.Opcional, 1, 15)
             };
             if (versaoNFe >= 4)
             {
-                imposto.VBCFCPUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCFCPUFDest, ObOp.Obrigatorio, 15);
+                imposto.VBCFCPUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.VBCFCPUFDest)), ObOp.Obrigatorio, 15);
             }
             detalhesOficiais[nProd].Imposto.ICMSUFDest = imposto;
         }
 
         private void ProcessarIpi(int nProd)
         {
-            var cnpjProdutor = this.LerString(TpcnResources.CNPJProd, ObOp.Opcional, 14, 14);
-            var codigoSelo = this.LerString(TpcnResources.cSelo, ObOp.Opcional, 1, 60);
-            var quantidadeSelo = this.LerInt32(TpcnResources.qSelo, ObOp.Opcional, 1, 12);
-            var codigoEnquadramento = this.LerString(TpcnResources.cEnq, ObOp.Obrigatorio, 3, 3);
+            var cnpjProdutor = this.LerString(XmlTag<DFeNFe.IPI>(nameof(DFeNFe.IPI.CNPJProd)), ObOp.Opcional, 14, 14);
+            var codigoSelo = this.LerString(XmlTag<DFeNFe.IPI>(nameof(DFeNFe.IPI.CSelo)), ObOp.Opcional, 1, 60);
+            var quantidadeSelo = this.LerInt32(XmlTag<DFeNFe.IPI>(nameof(DFeNFe.IPI.QSelo)), ObOp.Opcional, 1, 12);
+            var codigoEnquadramento = this.LerString(XmlTag<DFeNFe.IPI>(nameof(DFeNFe.IPI.CEnq)), ObOp.Obrigatorio, 3, 3);
             detalhesOficiais[nProd].Imposto.IPI = new DFeNFe.IPI
             {
                 CNPJProd = VazioParaNulo(cnpjProdutor),
@@ -2316,8 +2309,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             ObterIpi(nProd).IPITrib = new DFeNFe.IPITrib
             {
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                VIPI = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIPI, ObOp.Opcional, 15)
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                VIPI = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.VIPI)), ObOp.Opcional, 15)
             };
         }
 
@@ -2325,33 +2318,33 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             ObterIpi(nProd).IPINT = new DFeNFe.IPINT
             {
-                CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2)
+                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2)
             };
         }
 
         private void ProcessarIpiBaseAliquota(int nProd, int lenPipesRegistro)
         {
             var tributado = ObterIpiTributado(nProd);
-            tributado.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15);
-            tributado.PIPI = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pIPI, ObOp.Obrigatorio, 7);
+            tributado.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
+            tributado.PIPI = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.PIPI)), ObOp.Obrigatorio, 7);
         }
 
         private void ProcessarIpiQuantidade(int nProd, int lenPipesRegistro)
         {
             var tributado = ObterIpiTributado(nProd);
-            tributado.QUnid = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qUnid, ObOp.Obrigatorio, 16);
-            tributado.VUnid = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vUnid, ObOp.Obrigatorio, 15);
-            tributado.VIPI = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vIPI, ObOp.Opcional, 15);
+            tributado.QUnid = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.QUnid)), ObOp.Obrigatorio, 16);
+            tributado.VUnid = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.VUnid)), ObOp.Obrigatorio, 15);
+            tributado.VIPI = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.VIPI)), ObOp.Opcional, 15);
         }
 
         private void ProcessarImpostoImportacao(int nProd, int lenPipesRegistro)
         {
             detalhesOficiais[nProd].Imposto.II = new DFeNFe.II
             {
-                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15),
-                VDespAdu = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDespAdu, ObOp.Obrigatorio, 15),
-                VII = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vII, ObOp.Obrigatorio, 15),
-                VIOF = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIOF, ObOp.Obrigatorio, 15)
+                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15),
+                VDespAdu = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.II>(nameof(DFeNFe.II.VDespAdu)), ObOp.Obrigatorio, 15),
+                VII = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.II>(nameof(DFeNFe.II.VII)), ObOp.Obrigatorio, 15),
+                VIOF = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.II>(nameof(DFeNFe.II.VIOF)), ObOp.Obrigatorio, 15)
             };
         }
 
@@ -2374,10 +2367,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 PISAliq = new DFeNFe.PISAliq
                 {
-                    CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                    VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15),
-                    PPIS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pPIS, ObOp.Obrigatorio, 7),
-                    VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vPIS, ObOp.Obrigatorio, 15)
+                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                    VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15),
+                    PPIS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.PPIS)), ObOp.Obrigatorio, 7),
+                    VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.VPIS)), ObOp.Obrigatorio, 15)
                 }
             };
         }
@@ -2388,10 +2381,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 PISQtde = new DFeNFe.PISQtde
                 {
-                    CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                    QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCProd, ObOp.Obrigatorio, 16),
-                    VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vAliqProd, ObOp.Obrigatorio, 15),
-                    VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vPIS, ObOp.Obrigatorio, 15)
+                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                    QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 16),
+                    VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15),
+                    VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.VPIS)), ObOp.Obrigatorio, 15)
                 }
             };
         }
@@ -2400,7 +2393,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             detalhesOficiais[nProd].Imposto.PIS = new DFeNFe.PIS
             {
-                PISNT = new DFeNFe.PISNT { CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2) }
+                PISNT = new DFeNFe.PISNT { CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2) }
             };
         }
 
@@ -2410,10 +2403,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 PISOutr = new DFeNFe.PISOutr
                 {
-                    CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
+                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
                     VBC = 0,
                     PPIS = 0,
-                    VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vPIS, ObOp.Opcional, 15)
+                    VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.VPIS)), ObOp.Opcional, 15)
                 }
             };
         }
@@ -2421,16 +2414,16 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarPisAliquotaRetencao(int nProd, int lenPipesRegistro)
         {
             var pis = ObterPisOutros(nProd);
-            pis.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15);
-            pis.PPIS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pPIS, ObOp.Obrigatorio, 7);
-            pis.VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vPIS, ObOp.Obrigatorio, 15);
+            pis.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
+            pis.PPIS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.PPIS)), ObOp.Obrigatorio, 7);
+            pis.VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.VPIS)), ObOp.Obrigatorio, 15);
         }
 
         private void ProcessarPisQuantidadeRetencao(int nProd, int lenPipesRegistro)
         {
             var pis = ObterPisOutros(nProd);
-            pis.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCProd, ObOp.Obrigatorio, 15);
-            pis.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vAliqProd, ObOp.Obrigatorio, 15);
+            pis.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 15);
+            pis.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15);
             pis.VBC = null;
             pis.PPIS = null;
         }
@@ -2439,28 +2432,28 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             detalhesOficiais[nProd].Imposto.PISST = new DFeNFe.PISST
             {
-                VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vPIS, ObOp.Obrigatorio, 15)
+                VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.VPIS)), ObOp.Obrigatorio, 15)
             };
         }
 
         private void ProcessarPisStBase(int nProd, int lenPipesRegistro)
         {
             var pis = ObterPisSt(nProd);
-            pis.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15);
-            pis.PPIS = this.LerDouble(this.TipoCampo42, TpcnResources.pPIS, ObOp.Obrigatorio, this.CasasDecimais75);
+            pis.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
+            pis.PPIS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.PPIS)), ObOp.Obrigatorio, this.CasasDecimais75);
         }
 
         private void ProcessarPisStQuantidade(int nProd, int lenPipesRegistro)
         {
             var pis = ObterPisSt(nProd);
-            pis.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCProd, ObOp.Obrigatorio, 16);
-            pis.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vAliqProd, ObOp.Obrigatorio, 15);
-            pis.VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vPIS, ObOp.Obrigatorio, 15);
+            pis.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 16);
+            pis.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15);
+            pis.VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.VPIS)), ObOp.Obrigatorio, 15);
             pis.VBC = null;
             pis.PPIS = null;
             if (lenPipesRegistro >= 5)
             {
-                var indicador = this.LerString(TpcnResources.indSomaPISST, ObOp.Opcional, 0, 1);
+                var indicador = this.LerString(XmlTag<DFeNFe.PISST>(nameof(DFeNFe.PISST.IndSomaPISST)), ObOp.Opcional, 0, 1);
                 int codigo;
                 pis.IndSomaPISST = ObterEnumOpcional(
                     int.TryParse(indicador, out codigo) ? codigo : -1, (IndicaSomaPISST)(-1));
@@ -2481,9 +2474,9 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         }
 
 #if INTEROP
-        private SimNao LerSimNaoOpcional(TpcnResources recurso)
+        private SimNao LerSimNaoOpcional(string recurso)
 #else
-        private SimNao? LerSimNaoOpcional(TpcnResources recurso)
+        private SimNao? LerSimNaoOpcional(string recurso)
 #endif
         {
             var valor = this.LerString(recurso, ObOp.Opcional, 1, 1);
@@ -2497,10 +2490,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 COFINSAliq = new DFeNFe.COFINSAliq
                 {
-                    CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                    VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15),
-                    PCOFINS = this.LerDouble(this.TipoCampo42, TpcnResources.pCOFINS, ObOp.Obrigatorio, this.CasasDecimais75),
-                    VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCOFINS, ObOp.Obrigatorio, 15)
+                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                    VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15),
+                    PCOFINS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.PCOFINS)), ObOp.Obrigatorio, this.CasasDecimais75),
+                    VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.VCOFINS)), ObOp.Obrigatorio, 15)
                 }
             };
         }
@@ -2511,10 +2504,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 COFINSQtde = new DFeNFe.COFINSQtde
                 {
-                    CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
-                    QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCProd, ObOp.Obrigatorio, 16),
-                    VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vAliqProd, ObOp.Obrigatorio, 15),
-                    VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCOFINS, ObOp.Obrigatorio, 15)
+                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                    QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 16),
+                    VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15),
+                    VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.VCOFINS)), ObOp.Obrigatorio, 15)
                 }
             };
         }
@@ -2523,7 +2516,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             detalhesOficiais[nProd].Imposto.COFINS = new DFeNFe.COFINS
             {
-                COFINSNT = new DFeNFe.COFINSNT { CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2) }
+                COFINSNT = new DFeNFe.COFINSNT { CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2) }
             };
         }
 
@@ -2533,10 +2526,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 COFINSOutr = new DFeNFe.COFINSOutr
                 {
-                    CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 2, 2),
+                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
                     VBC = 0,
                     PCOFINS = 0,
-                    VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCOFINS, ObOp.Obrigatorio, 15)
+                    VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.VCOFINS)), ObOp.Obrigatorio, 15)
                 }
             };
         }
@@ -2544,15 +2537,15 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarCofinsAliquotaRetencao(int nProd, int lenPipesRegistro)
         {
             var cofins = ObterCofinsOutros(nProd);
-            cofins.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15);
-            cofins.PCOFINS = this.LerDouble(this.TipoCampo42, TpcnResources.pCOFINS, ObOp.Obrigatorio, this.CasasDecimais75);
+            cofins.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
+            cofins.PCOFINS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.PCOFINS)), ObOp.Obrigatorio, this.CasasDecimais75);
         }
 
         private void ProcessarCofinsQuantidadeRetencao(int nProd, int lenPipesRegistro)
         {
             var cofins = ObterCofinsOutros(nProd);
-            cofins.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCProd, ObOp.Obrigatorio, 16);
-            cofins.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vAliqProd, ObOp.Obrigatorio, 15);
+            cofins.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 16);
+            cofins.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15);
             cofins.VBC = null;
             cofins.PCOFINS = null;
         }
@@ -2561,28 +2554,28 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             detalhesOficiais[nProd].Imposto.COFINSST = new DFeNFe.COFINSST
             {
-                VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCOFINS, ObOp.Obrigatorio, 15)
+                VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.VCOFINS)), ObOp.Obrigatorio, 15)
             };
         }
 
         private void ProcessarIssqnValores(int nProd, int lenPipesRegistro)
         {
             var cofins = ObterCofinsSt(nProd);
-            cofins.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15);
-            cofins.PCOFINS = this.LerDouble(this.TipoCampo42, TpcnResources.pCOFINS, ObOp.Obrigatorio, this.CasasDecimais75);
+            cofins.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
+            cofins.PCOFINS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.PCOFINS)), ObOp.Obrigatorio, this.CasasDecimais75);
         }
 
         private void ProcessarIssqnRetencao(int nProd, int lenPipesRegistro)
         {
             var cofins = ObterCofinsSt(nProd);
-            cofins.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCProd, ObOp.Obrigatorio, 16);
-            cofins.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vAliqProd, ObOp.Obrigatorio, 15);
-            cofins.VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCOFINS, ObOp.Obrigatorio, 15);
+            cofins.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 16);
+            cofins.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15);
+            cofins.VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.VCOFINS)), ObOp.Obrigatorio, 15);
             cofins.VBC = null;
             cofins.PCOFINS = null;
             if (lenPipesRegistro >= 5)
             {
-                var indicador = this.LerString(TpcnResources.indSomaCOFINSST, ObOp.Opcional, 0, 1);
+                var indicador = this.LerString(XmlTag<DFeNFe.COFINSST>(nameof(DFeNFe.COFINSST.IndSomaCOFINSST)), ObOp.Opcional, 0, 1);
                 int codigo;
                 cofins.IndSomaCOFINSST = ObterEnumOpcional(
                     int.TryParse(indicador, out codigo) ? codigo : -1, (IndicaSomaCOFINSST)(-1));
@@ -2606,28 +2599,28 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             var issqn = new DFeNFe.ISSQN
             {
-                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15),
-                VAliq = this.LerDouble(this.TipoCampo42, TpcnResources.vAliq, ObOp.Obrigatorio, this.CasasDecimais75),
-                VISSQN = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vISSQN, ObOp.Obrigatorio, 15),
-                CMunFG = this.LerInt32(TpcnResources.cMunFG, ObOp.Obrigatorio, 7, 7)
+                VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15),
+                VAliq = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.VAliq)), ObOp.Obrigatorio, this.CasasDecimais75),
+                VISSQN = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.VISSQN)), ObOp.Obrigatorio, 15),
+                CMunFG = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.CMunFG)), ObOp.Obrigatorio, 7, 7)
             };
-            var listaServico = this.LerString(TpcnResources.cListServ, ObOp.Obrigatorio, versaoNFe >= 3 ? 5 : 3, versaoNFe >= 3 ? 5 : 4);
+            var listaServico = this.LerString(XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.CListServ)), ObOp.Obrigatorio, versaoNFe >= 3 ? 5 : 3, versaoNFe >= 3 ? 5 : 4);
             issqn.CListServ = (ListaServicoISSQN)int.Parse(listaServico.Replace(".", string.Empty), CultureInfo.InvariantCulture);
             if (versaoNFe >= 3)
             {
-                issqn.VDeducao = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDeducao, ObOp.Opcional, 15);
-                issqn.VOutro = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vOutro, ObOp.Opcional, 15);
-                issqn.VDescIncond = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDescIncond, ObOp.Opcional, 15);
-                issqn.VDescCond = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDescCond, ObOp.Opcional, 15);
-                issqn.VISSRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vISSRet, ObOp.Opcional, 15);
-                issqn.IndISS = (IndicadorExigibilidadeISSQN)this.LerInt32(TpcnResources.indISS, ObOp.Obrigatorio, 1, 1);
-                issqn.CServico = VazioParaNulo(this.LerString(TpcnResources.cServico, ObOp.Opcional, 1, 20));
-                issqn.CMun = this.LerInt32(TpcnResources.cMun, ObOp.Opcional, 7, 7);
-                issqn.CPais = this.LerInt32(TpcnResources.cPais, ObOp.Opcional, 4, 4);
-                issqn.NProcesso = VazioParaNulo(this.LerString(TpcnResources.nProcesso, ObOp.Opcional, 1, 30));
-                issqn.IndIncentivo = this.LerInt32(TpcnResources.indIncentivo, ObOp.Opcional, 1, 1) == 1 ? SimNao12.Sim : SimNao12.Nao;
+                issqn.VDeducao = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.VDeducao)), ObOp.Opcional, 15);
+                issqn.VOutro = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VOutro)), ObOp.Opcional, 15);
+                issqn.VDescIncond = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.VDescIncond)), ObOp.Opcional, 15);
+                issqn.VDescCond = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.VDescCond)), ObOp.Opcional, 15);
+                issqn.VISSRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.VISSRet)), ObOp.Opcional, 15);
+                issqn.IndISS = (IndicadorExigibilidadeISSQN)this.LerInt32(XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.IndISS)), ObOp.Obrigatorio, 1, 1);
+                issqn.CServico = VazioParaNulo(this.LerString(XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.CServico)), ObOp.Opcional, 1, 20));
+                issqn.CMun = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CMun)), ObOp.Opcional, 7, 7);
+                issqn.CPais = this.LerInt32(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.CPais)), ObOp.Opcional, 4, 4);
+                issqn.NProcesso = VazioParaNulo(this.LerString(XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.NProcesso)), ObOp.Opcional, 1, 30));
+                issqn.IndIncentivo = this.LerInt32(XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.IndIncentivo)), ObOp.Opcional, 1, 1) == 1 ? SimNao12.Sim : SimNao12.Nao;
             }
-            else this.LerString(TpcnResources.cSitTrib, ObOp.Obrigatorio, 1, 1);
+            else this.LerString(NFeTxtFieldNames.SituacaoTributaria, ObOp.Obrigatorio, 1, 1);
             detalhesOficiais[nProd].Imposto.ISSQN = issqn;
         }
 
@@ -2635,8 +2628,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             detalhesOficiais[nProd].ImpostoDevol = new DFeNFe.ImpostoDevol
             {
-                PDevol = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.pDevol, ObOp.Opcional, 5),
-                IPI = new DFeNFe.IPIDevol { VIPIDevol = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIPIDevol, ObOp.Opcional, 5) }
+                PDevol = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ImpostoDevol>(nameof(DFeNFe.ImpostoDevol.PDevol)), ObOp.Opcional, 5),
+                IPI = new DFeNFe.IPIDevol { VIPIDevol = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.IPIDevol>(nameof(DFeNFe.IPIDevol.VIPIDevol)), ObOp.Opcional, 5) }
             };
         }
 
@@ -2644,14 +2637,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             detalhesOficiais[nProd].Imposto.IS = new DFeNFe.IS
             {
-                CSTIS = this.LerString(TpcnResources.CSTIS, ObOp.Obrigatorio, 1, 3),
-                CClassTribIS = this.LerString(TpcnResources.cClassTribIS, ObOp.Obrigatorio, 1, 6),
-                VBCIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCIS, ObOp.Opcional, 1, 15),
-                PIS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pIS, ObOp.Opcional, 1, 7),
-                AdRemIS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.adRemIS, ObOp.Opcional, 1, 7),
-                UTrib = this.LerString(TpcnResources.uTrib, ObOp.Opcional, 1, 6),
-                QTrib = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qTrib, ObOp.Opcional, 1, 15),
-                VIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIS, ObOp.Obrigatorio, 1, 15)
+                CSTIS = this.LerString(XmlTag<DFeNFe.IS>(nameof(DFeNFe.IS.CSTIS)), ObOp.Obrigatorio, 1, 3),
+                CClassTribIS = this.LerString(XmlTag<DFeNFe.IS>(nameof(DFeNFe.IS.CClassTribIS)), ObOp.Obrigatorio, 1, 6),
+                VBCIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.IS>(nameof(DFeNFe.IS.VBCIS)), ObOp.Opcional, 1, 15),
+                PIS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.Imposto>(nameof(DFeNFe.Imposto.PIS)), ObOp.Opcional, 1, 7),
+                AdRemIS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IS>(nameof(DFeNFe.IS.AdRemIS)), ObOp.Opcional, 1, 7),
+                UTrib = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.UTrib)), ObOp.Opcional, 1, 6),
+                QTrib = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.QTrib)), ObOp.Opcional, 1, 15),
+                VIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.IS>(nameof(DFeNFe.IS.VIS)), ObOp.Obrigatorio, 1, 15)
             };
         }
 
@@ -2687,16 +2680,16 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             //layout = "UB12|CST|cClassTrib|"
             var imposto = ObterIBSCBS(nProd);
-            imposto.CST = this.LerString(TpcnResources.CST, ObOp.Obrigatorio, 1, 3);
-            imposto.CClassTrib = this.LerString(TpcnResources.cClassTrib, ObOp.Obrigatorio, 1, 6);
+            imposto.CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 1, 3);
+            imposto.CClassTrib = this.LerString(XmlTag<DFeNFe.IBSCBS>(nameof(DFeNFe.IBSCBS.CClassTrib)), ObOp.Obrigatorio, 1, 6);
         }
 
         private void ProcessarTotalIbsCbsDiferimento(int nProd, int lenPipesRegistro)
         {
             //layout = "UB15|vBC|vIBS|"
             var imposto = ObterGIBSCBS(nProd);
-            imposto.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 1, 15);
-            imposto.VIBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBS, ObOp.Obrigatorio, 15, true);
+            imposto.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 1, 15);
+            imposto.VIBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCBS>(nameof(DFeNFe.GIBSCBS.VIBS)), ObOp.Obrigatorio, 15, true);
         }
 
         private void ProcessarTotalIbsCbsDevolucao(int nProd, int lenPipesRegistro)
@@ -2704,19 +2697,19 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = "UB17|pIBSUF|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vIBSUF|"
             ObterGIBSCBS(nProd).GIBSUF = new DFeNFe.GIBSUF
             {
-                PIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pIBSUF, ObOp.Obrigatorio, 1, 7),
+                PIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GIBSUF>(nameof(DFeNFe.GIBSUF.PIBSUF)), ObOp.Obrigatorio, 1, 7),
                 GDif = new DFeNFe.GDif
                 {
-                    PDif = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pDif, ObOp.Opcional, 1, 7),
-                    VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDif, ObOp.Opcional, 1, 15)
+                    PDif = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.PDif)), ObOp.Opcional, 1, 7),
+                    VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GDif>(nameof(DFeNFe.GDif.VDif)), ObOp.Opcional, 1, 15)
                 },
                 GDevTrib = CriarGrupoDevolucaoTributos(),
                 GRed = new DFeNFe.GRed
                 {
-                    PRedAliq = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedAliq, ObOp.Opcional, 1, 7),
-                    PAliqEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqEfet, ObOp.Opcional, 1, 7)
+                    PRedAliq = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GRed>(nameof(DFeNFe.GRed.PRedAliq)), ObOp.Opcional, 1, 7),
+                    PAliqEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GRed>(nameof(DFeNFe.GRed.PAliqEfet)), ObOp.Opcional, 1, 7)
                 },
-                VIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSUF, ObOp.Obrigatorio, 1, 15)
+                VIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSUF>(nameof(DFeNFe.GIBSUF.VIBSUF)), ObOp.Obrigatorio, 1, 15)
             };
         }
 
@@ -2725,19 +2718,19 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = "UB36|pIBSMun|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vIBSMun|"
             ObterGIBSCBS(nProd).GIBSMun = new DFeNFe.GIBSMun
             {
-                PIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pIBSMun, ObOp.Obrigatorio, 1, 7),
+                PIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GIBSMun>(nameof(DFeNFe.GIBSMun.PIBSMun)), ObOp.Obrigatorio, 1, 7),
                 GDif = new DFeNFe.GDif
                 {
-                    PDif = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pDif, ObOp.Opcional, 1, 7),
-                    VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDif, ObOp.Opcional, 1, 15)
+                    PDif = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.PDif)), ObOp.Opcional, 1, 7),
+                    VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GDif>(nameof(DFeNFe.GDif.VDif)), ObOp.Opcional, 1, 15)
                 },
                 GDevTrib = CriarGrupoDevolucaoTributos(),
                 GRed = new DFeNFe.GRed
                 {
-                    PRedAliq = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedAliq, ObOp.Opcional, 1, 7),
-                    PAliqEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqEfet, ObOp.Opcional, 1, 7)
+                    PRedAliq = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GRed>(nameof(DFeNFe.GRed.PRedAliq)), ObOp.Opcional, 1, 7),
+                    PAliqEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GRed>(nameof(DFeNFe.GRed.PAliqEfet)), ObOp.Opcional, 1, 7)
                 },
-                VIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vIBSMun, ObOp.Obrigatorio, 1, 7)
+                VIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GIBSMun>(nameof(DFeNFe.GIBSMun.VIBSMun)), ObOp.Obrigatorio, 1, 7)
             };
         }
 
@@ -2746,26 +2739,26 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = "UB55|pCBS|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vCBS|"
             ObterGIBSCBS(nProd).GCBS = new DFeNFe.GCBS
             {
-                PCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pCBS, ObOp.Obrigatorio, 1, 7),
+                PCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GCBS>(nameof(DFeNFe.GCBS.PCBS)), ObOp.Obrigatorio, 1, 7),
                 GDif = new DFeNFe.GDif
                 {
-                    PDif = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pDif, ObOp.Opcional, 1, 7),
-                    VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDif, ObOp.Opcional, 1, 15)
+                    PDif = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.PDif)), ObOp.Opcional, 1, 7),
+                    VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GDif>(nameof(DFeNFe.GDif.VDif)), ObOp.Opcional, 1, 15)
                 },
                 GDevTrib = CriarGrupoDevolucaoTributos(),
                 GRed = new DFeNFe.GRed
                 {
-                    PRedAliq = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedAliq, ObOp.Opcional, 1, 7),
-                    PAliqEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqEfet, ObOp.Opcional, 1, 7)
+                    PRedAliq = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GRed>(nameof(DFeNFe.GRed.PRedAliq)), ObOp.Opcional, 1, 7),
+                    PAliqEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GRed>(nameof(DFeNFe.GRed.PAliqEfet)), ObOp.Opcional, 1, 7)
                 },
-                VCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vCBS, ObOp.Obrigatorio, 1, 7)
+                VCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GCBS>(nameof(DFeNFe.GCBS.VCBS)), ObOp.Obrigatorio, 1, 7)
             };
         }
 
         private DFeNFe.GDevTrib CriarGrupoDevolucaoTributos()
         {
-            var percentualDevolucao = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pDevTrib, ObOp.Opcional, 7, true);
-            var valorDevolvido = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDevTrib, ObOp.Opcional, 15, true);
+            var percentualDevolucao = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GDevTrib>(nameof(DFeNFe.GDevTrib.PDevTrib)), ObOp.Opcional, 7, true);
+            var valorDevolvido = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GDevTrib>(nameof(DFeNFe.GDevTrib.VDevTrib)), ObOp.Opcional, 15, true);
             if (percentualDevolucao == -9.99)
             {
                 return null;
@@ -2789,10 +2782,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
             gCBS.GALCZFMCBS = new DFeNFe.GALCZFMCBS
             {
-                TpALCZFMCBS = (TipoAplicacaoAliquotaZeroCBS)this.LerInt32(TpcnResources.tpALCZFMCBS, ObOp.Obrigatorio, 1, 1),
-                NProcSuframa = VazioParaNulo(this.LerString(TpcnResources.nProcSuframa, ObOp.Opcional, 8, 12)),
-                PAliqEfetRegCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqEfetRegCBS, ObOp.Obrigatorio, 1, 7),
-                VTribRegCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTribRegCBS, ObOp.Obrigatorio, 1, 15)
+                TpALCZFMCBS = (TipoAplicacaoAliquotaZeroCBS)this.LerInt32(XmlTag<DFeNFe.GALCZFMCBS>(nameof(DFeNFe.GALCZFMCBS.TpALCZFMCBS)), ObOp.Obrigatorio, 1, 1),
+                NProcSuframa = VazioParaNulo(this.LerString(XmlTag<DFeNFe.GALCZFMCBS>(nameof(DFeNFe.GALCZFMCBS.NProcSuframa)), ObOp.Opcional, 8, 12)),
+                PAliqEfetRegCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GALCZFMCBS>(nameof(DFeNFe.GALCZFMCBS.PAliqEfetRegCBS)), ObOp.Obrigatorio, 1, 7),
+                VTribRegCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GALCZFMCBS>(nameof(DFeNFe.GALCZFMCBS.VTribRegCBS)), ObOp.Obrigatorio, 1, 15)
             };
         }
 
@@ -2801,14 +2794,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = "UB68|CSTReg|cClassTribReg|pAliqEfetRegIBSUF|vTribRegIBSUF|pAliqEfetRegIBSMun|vTribRegIBSMun|pAliqEfetRegCBS|vTribRegCBS|"
             ObterGIBSCBS(nProd).GTribRegular = new DFeNFe.GTribRegular
             {
-                CSTReg = this.LerString(TpcnResources.CSTReg, ObOp.Obrigatorio, 1, 3),
-                CClassTribReg = this.LerString(TpcnResources.cClassTribReg, ObOp.Obrigatorio, 1, 6),
-                PAliqEfetRegIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqEfetRegIBSUF, ObOp.Obrigatorio, 1, 7),
-                VTribRegIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTribRegIBSUF, ObOp.Obrigatorio, 1, 15),
-                PAliqEfetRegIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqEfetRegIBSMun, ObOp.Obrigatorio, 1, 7),
-                VTribRegIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTribRegIBSMun, ObOp.Obrigatorio, 1, 15),
-                PAliqEfetRegCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqEfetRegCBS, ObOp.Obrigatorio, 1, 7),
-                VTribRegCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTribRegCBS, ObOp.Obrigatorio, 1, 15)
+                CSTReg = this.LerString(XmlTag<DFeNFe.GTribRegular>(nameof(DFeNFe.GTribRegular.CSTReg)), ObOp.Obrigatorio, 1, 3),
+                CClassTribReg = this.LerString(XmlTag<DFeNFe.GTribRegular>(nameof(DFeNFe.GTribRegular.CClassTribReg)), ObOp.Obrigatorio, 1, 6),
+                PAliqEfetRegIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GTribRegular>(nameof(DFeNFe.GTribRegular.PAliqEfetRegIBSUF)), ObOp.Obrigatorio, 1, 7),
+                VTribRegIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GTribRegular>(nameof(DFeNFe.GTribRegular.VTribRegIBSUF)), ObOp.Obrigatorio, 1, 15),
+                PAliqEfetRegIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GTribRegular>(nameof(DFeNFe.GTribRegular.PAliqEfetRegIBSMun)), ObOp.Obrigatorio, 1, 7),
+                VTribRegIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GTribRegular>(nameof(DFeNFe.GTribRegular.VTribRegIBSMun)), ObOp.Obrigatorio, 1, 15),
+                PAliqEfetRegCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GALCZFMCBS>(nameof(DFeNFe.GALCZFMCBS.PAliqEfetRegCBS)), ObOp.Obrigatorio, 1, 7),
+                VTribRegCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GALCZFMCBS>(nameof(DFeNFe.GALCZFMCBS.VTribRegCBS)), ObOp.Obrigatorio, 1, 15)
             };
         }
 
@@ -2817,12 +2810,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = UB82|pAliqIBSUF|vTribIBSUF|pAliqIBSMun|vTribIBSMun|pAliqCBS|vTribCBS|
             ObterGIBSCBS(nProd).GTribCompraGov = new DFeNFe.GTribCompraGov
             {
-                PAliqIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqIBSUF, ObOp.Obrigatorio, 1, 7),
-                VTribIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTribIBSUF, ObOp.Obrigatorio, 1, 15),
-                PAliqIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqIBSMun, ObOp.Obrigatorio, 1, 7),
-                VTribIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTribIBSMun, ObOp.Obrigatorio, 1, 15),
-                PAliqCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqCBS, ObOp.Obrigatorio, 1, 7),
-                VTribCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTribCBS, ObOp.Obrigatorio, 1, 15)
+                PAliqIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GTribCompraGov>(nameof(DFeNFe.GTribCompraGov.PAliqIBSUF)), ObOp.Obrigatorio, 1, 7),
+                VTribIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GTribCompraGov>(nameof(DFeNFe.GTribCompraGov.VTribIBSUF)), ObOp.Obrigatorio, 1, 15),
+                PAliqIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GTribCompraGov>(nameof(DFeNFe.GTribCompraGov.PAliqIBSMun)), ObOp.Obrigatorio, 1, 7),
+                VTribIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GTribCompraGov>(nameof(DFeNFe.GTribCompraGov.VTribIBSMun)), ObOp.Obrigatorio, 1, 15),
+                PAliqCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GTribCompraGov>(nameof(DFeNFe.GTribCompraGov.PAliqCBS)), ObOp.Obrigatorio, 1, 7),
+                VTribCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GTribCompraGov>(nameof(DFeNFe.GTribCompraGov.VTribCBS)), ObOp.Obrigatorio, 1, 15)
             };
         }
 
@@ -2830,8 +2823,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             //layout = "UB84|vTotIBSMonoItem|vTotCBSMonoItem|"
             var monofasico = ObterGIBSCBSMono(nProd);
-            monofasico.VTotIBSMonoItem = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTotIBSMonoItem, ObOp.Opcional, 1, 15);
-            monofasico.VTotCBSMonoItem = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTotCBSMonoItem, ObOp.Opcional, 1, 15);
+            monofasico.VTotIBSMonoItem = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCBSMono>(nameof(DFeNFe.GIBSCBSMono.VTotIBSMonoItem)), ObOp.Opcional, 1, 15);
+            monofasico.VTotCBSMonoItem = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCBSMono>(nameof(DFeNFe.GIBSCBSMono.VTotCBSMonoItem)), ObOp.Opcional, 1, 15);
         }
 
         private void ProcessarTotalIbsCbsCreditoPresumidoCompraGov(int nProd, int lenPipesRegistro)
@@ -2839,11 +2832,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = "UB85|qBCMono|adRemIBS|adRemCBS|vIBSMono|vCBSMono|"
             ObterGIBSCBSMono(nProd).GMonoPadrao = new DFeNFe.GMonoPadrao
             {
-                QBCMono = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCMono, ObOp.Opcional, 1, 15),
-                AdRemIBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.adRemIBS, ObOp.Opcional, 1, 7),
-                AdRemCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.adRemCBS, ObOp.Opcional, 1, 7),
-                VIBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSMono, ObOp.Opcional, 1, 15),
-                VCBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBSMono, ObOp.Opcional, 1, 15)
+                QBCMono = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.QBCMono)), ObOp.Opcional, 1, 15),
+                AdRemIBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.AdRemIBS)), ObOp.Opcional, 1, 7),
+                AdRemCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.AdRemCBS)), ObOp.Opcional, 1, 7),
+                VIBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.VIBSMono)), ObOp.Opcional, 1, 15),
+                VCBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.VCBSMono)), ObOp.Opcional, 1, 15)
             };
         }
 
@@ -2852,11 +2845,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = "UB91|qBCMonoReten|adRemIBSReten|vIBSMonoReten|adRemCBSReten|vCBSMonoReten|"
             ObterGIBSCBSMono(nProd).GMonoReten = new DFeNFe.GMonoReten
             {
-                QBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCMonoReten, ObOp.Opcional, 1, 15),
-                AdRemIBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.adRemIBSReten, ObOp.Opcional, 1, 7),
-                VIBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSMonoReten, ObOp.Opcional, 1, 15),
-                AdRemCBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.adRemCBSReten, ObOp.Opcional, 1, 7),
-                VCBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBSMonoReten, ObOp.Opcional, 1, 15)
+                QBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS15>(nameof(DFeNFe.ICMS15.QBCMonoReten)), ObOp.Opcional, 1, 15),
+                AdRemIBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.AdRemIBSReten)), ObOp.Opcional, 1, 7),
+                VIBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.VIBSMonoReten)), ObOp.Opcional, 1, 15),
+                AdRemCBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.AdRemCBSReten)), ObOp.Opcional, 1, 7),
+                VCBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.VCBSMonoReten)), ObOp.Opcional, 1, 15)
             };
         }
 
@@ -2865,11 +2858,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = "UB95|qBCMonoRet|adRemIBSRet|vIBSMonoRet|adRemCBSRet|vCBSMonoRet|"
             ObterGIBSCBSMono(nProd).GMonoRet = new DFeNFe.GMonoRet
             {
-                QBCMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qBCMonoRet, ObOp.Opcional, 1, 15),
-                AdRemIBSRet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.adRemIBSRet, ObOp.Opcional, 1, 7),
-                VIBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSMonoRet, ObOp.Opcional, 1, 15),
-                AdRemCBSRet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.adRemCBSRet, ObOp.Opcional, 1, 7),
-                VCBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBSMonoRet, ObOp.Opcional, 1, 15)
+                QBCMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS61>(nameof(DFeNFe.ICMS61.QBCMonoRet)), ObOp.Opcional, 1, 15),
+                AdRemIBSRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.AdRemIBSRet)), ObOp.Opcional, 1, 7),
+                VIBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.VIBSMonoRet)), ObOp.Opcional, 1, 15),
+                AdRemCBSRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.AdRemCBSRet)), ObOp.Opcional, 1, 7),
+                VCBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.VCBSMonoRet)), ObOp.Opcional, 1, 15)
             };
         }
 
@@ -2879,8 +2872,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (observacao.ObsCont == null) observacao.ObsCont = new List<DFeNFe.ObsCont>();
             observacao.ObsCont.Add(new DFeNFe.ObsCont
             {
-                XCampo = this.LerString(TpcnResources.xCampo, ObOp.Obrigatorio, 1, 20),
-                XTexto = this.LerString(TpcnResources.xTexto, ObOp.Obrigatorio, 1, 60)
+                XCampo = this.LerString(XmlTag<DFeNFe.ObsCont>(nameof(DFeNFe.ObsCont.XCampo)), ObOp.Obrigatorio, 1, 20),
+                XTexto = this.LerString(XmlTag<DFeNFe.ObsCont>(nameof(DFeNFe.ObsCont.XTexto)), ObOp.Obrigatorio, 1, 60)
             });
         }
 
@@ -2890,20 +2883,20 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (observacao.ObsFisco == null) observacao.ObsFisco = new List<DFeNFe.ObsFisco>();
             observacao.ObsFisco.Add(new DFeNFe.ObsFisco
             {
-                XCampo = this.LerString(TpcnResources.xCampo, ObOp.Obrigatorio, 1, 20),
-                XTexto = this.LerString(TpcnResources.xTexto, ObOp.Obrigatorio, 1, 60)
+                XCampo = this.LerString(XmlTag<DFeNFe.ObsCont>(nameof(DFeNFe.ObsCont.XCampo)), ObOp.Obrigatorio, 1, 20),
+                XTexto = this.LerString(XmlTag<DFeNFe.ObsCont>(nameof(DFeNFe.ObsCont.XTexto)), ObOp.Obrigatorio, 1, 60)
             });
         }
 
         private void ProcessarTotaisMonofasico(int nProd, int lenPipesRegistro)
         {
-            detalhesOficiais[nProd].VItem = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vItem, ObOp.Opcional, 15);
+            detalhesOficiais[nProd].VItem = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Det>(nameof(DFeNFe.Det.VItem)), ObOp.Opcional, 15);
         }
 
         private void ProcessarTotaisMonofasicoRetido(int nProd, int lenPipesRegistro)
         {
-            var chaveAcesso = this.LerString(TpcnResources.chaveAcesso, ObOp.Obrigatorio, 1, 44);
-            var numeroItem = this.LerInt32(TpcnResources.NItem, ObOp.Opcional, 1, 3);
+            var chaveAcesso = this.LerString(XmlTag<DFeNFe.DFeReferenciado>(nameof(DFeNFe.DFeReferenciado.ChaveAcesso)), ObOp.Obrigatorio, 1, 44);
+            var numeroItem = this.LerInt32(NFeTxtFieldNames.NumeroItem, ObOp.Opcional, 1, 3);
             detalhesOficiais[nProd].DFeReferenciado = new DFeNFe.DFeReferenciado
             {
                 ChaveAcesso = chaveAcesso,
@@ -2922,10 +2915,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = "UB100|pDifIBS|vIBSMonoDif|pDifCBS|vCBSMonoDif|"
             ObterGIBSCBSMono(nProd).GMonoDif = new DFeNFe.GMonoDif
             {
-                PDifIBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pDifIBS, ObOp.Opcional, 1, 7),
-                VIBSMonoDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSMonoDif, ObOp.Opcional, 1, 15),
-                PDifCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pDifCBS, ObOp.Opcional, 1, 7),
-                VCBSMonoDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBSMonoDif, ObOp.Opcional, 1, 15)
+                PDifIBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.PDifIBS)), ObOp.Opcional, 1, 7),
+                VIBSMonoDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.VIBSMonoDif)), ObOp.Opcional, 1, 15),
+                PDifCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.PDifCBS)), ObOp.Opcional, 1, 7),
+                VCBSMonoDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.VCBSMonoDif)), ObOp.Opcional, 1, 15)
             };
         }
 
@@ -2934,53 +2927,53 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = UB106|vIBS|vCBS|
             ObterIBSCBS(nProd).GTransfCred = new DFeNFe.GTransfCred
             {
-                VIBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBS, ObOp.Obrigatorio, 1, 15),
-                VCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBS, ObOp.Obrigatorio, 1, 15)
+                VIBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCBS>(nameof(DFeNFe.GIBSCBS.VIBS)), ObOp.Obrigatorio, 1, 15),
+                VCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GCBS>(nameof(DFeNFe.GCBS.VCBS)), ObOp.Obrigatorio, 1, 15)
             };
         }
 
         private void ProcessarAjusteCompetencia(int nProd, int lenPipesRegistro)
         {
-            var competencia = this.LerString(TpcnResources.competApur, ObOp.Obrigatorio, 7, 7);
+            var competencia = this.LerString(XmlTag<DFeNFe.GAjusteCompet>(nameof(DFeNFe.GAjusteCompet.CompetApur)), ObOp.Obrigatorio, 7, 7);
             ObterIBSCBS(nProd).GAjusteCompet = new DFeNFe.GAjusteCompet
             {
                 CompetApur = DateTime.ParseExact(competencia, "yyyy-MM", CultureInfo.InvariantCulture),
-                VIBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBS, ObOp.Obrigatorio, 1, 13),
-                VCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBS, ObOp.Obrigatorio, 1, 13)
+                VIBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCBS>(nameof(DFeNFe.GIBSCBS.VIBS)), ObOp.Obrigatorio, 1, 13),
+                VCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GCBS>(nameof(DFeNFe.GCBS.VCBS)), ObOp.Obrigatorio, 1, 13)
             };
         }
 
         private void ProcessarIndicadorDoacao(int nProd, int lenPipesRegistro)
         {
             //layout = "UB14a|indDoacao|;
-            var indicador = this.LerString(TpcnResources.indDoacao, ObOp.Opcional, 1, 1);
+            var indicador = this.LerString(XmlTag<DFeNFe.IBSCBS>(nameof(DFeNFe.IBSCBS.IndDoacao)), ObOp.Opcional, 1, 1);
             ObterIBSCBS(nProd).IndDoacao = int.TryParse(indicador, out var valor) ? valor : 0;
         }
 
         private void ProcessarEstornoCredito(int nProd, int lenPipesRegistro)
         {
-            var valorCbs = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBSEstCred, ObOp.None, 13, true);
+            var valorCbs = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GEstornoCred>(nameof(DFeNFe.GEstornoCred.VCBSEstCred)), ObOp.None, 13, true);
             ObterIBSCBS(nProd).GEstornoCred = new DFeNFe.GEstornoCred
             {
                 VCBSEstCred = valorCbs,
-                VIBSEstCred = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSEstCred, ObOp.None, 13, true)
+                VIBSEstCred = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GEstornoCred>(nameof(DFeNFe.GEstornoCred.VIBSEstCred)), ObOp.None, 13, true)
             };
         }
 
         private void ProcessarCreditoPresumidoOperacao(int nProd, int lenPipesRegistro)
         {
             var credito = ObterGCredPresOper(nProd);
-            credito.VBCCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCCredPres, ObOp.Obrigatorio, 1, 13);
-            credito.CCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.cCredPres, ObOp.Obrigatorio, 1, 2).ToString("F2", CultureInfo.InvariantCulture);
+            credito.VBCCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GCredPresOper>(nameof(DFeNFe.GCredPresOper.VBCCredPres)), ObOp.Obrigatorio, 1, 13);
+            credito.CCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GCredPresOper>(nameof(DFeNFe.GCredPresOper.CCredPres)), ObOp.Obrigatorio, 1, 2).ToString("F2", CultureInfo.InvariantCulture);
         }
 
         private void ProcessarCreditoPresumidoIbs(int nProd, int lenPipesRegistro)
         {
             ObterGCredPresOper(nProd).GIBSCredPres = new DFeNFe.GIBSCredPres
             {
-                PCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.pCredPres, ObOp.Opcional, 1, 4),
-                VCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredPres, ObOp.Opcional, 1, 13),
-                VCredPresCondSus = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredPresCondSus, ObOp.Opcional, 1, 13)
+                PCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCredPres>(nameof(DFeNFe.GIBSCredPres.PCredPres)), ObOp.Opcional, 1, 4),
+                VCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCredPres>(nameof(DFeNFe.GIBSCredPres.VCredPres)), ObOp.Opcional, 1, 13),
+                VCredPresCondSus = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCredPres>(nameof(DFeNFe.GIBSCredPres.VCredPresCondSus)), ObOp.Opcional, 1, 13)
             };
         }
 
@@ -2988,22 +2981,22 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             ObterGCredPresOper(nProd).GCBSCredPres = new DFeNFe.GCBSCredPres
             {
-                PCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.pCredPres, ObOp.Opcional, 1, 4),
-                VCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredPres, ObOp.Opcional, 1, 13),
-                VCredPresCondSus = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredPresCondSus, ObOp.Opcional, 1, 13)
+                PCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCredPres>(nameof(DFeNFe.GIBSCredPres.PCredPres)), ObOp.Opcional, 1, 4),
+                VCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCredPres>(nameof(DFeNFe.GIBSCredPres.VCredPres)), ObOp.Opcional, 1, 13),
+                VCredPresCondSus = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCredPres>(nameof(DFeNFe.GIBSCredPres.VCredPresCondSus)), ObOp.Opcional, 1, 13)
             };
         }
 
         private void ProcessarCreditoPresumidoZfm(int nProd, int lenPipesRegistro)
         {
             //layout = UB109|tpCredPresIBSZFM|vCredPresIBSZFM|
-            var competencia = this.LerString(TpcnResources.competApur, ObOp.Obrigatorio, 7, 7);
-            var tipoCredito = this.LerString(TpcnResources.tpCredPresIBSZFM, ObOp.Obrigatorio, 1, 1);
+            var competencia = this.LerString(XmlTag<DFeNFe.GAjusteCompet>(nameof(DFeNFe.GAjusteCompet.CompetApur)), ObOp.Obrigatorio, 7, 7);
+            var tipoCredito = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.TpCredPresIBSZFM)), ObOp.Obrigatorio, 1, 1);
             ObterIBSCBS(nProd).GCredPresIBSZFM = new DFeNFe.GCredPresIBSZFM
             {
                 CompetApur = DateTime.ParseExact(competencia, "yyyy-MM", CultureInfo.InvariantCulture),
                 TpCredPresIBSZFM = (TipoCreditoPresumidoIBSZFM)int.Parse(tipoCredito),
-                VCredPresIBSZFM = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredPresIBSZFM, ObOp.Opcional, 1, 15)
+                VCredPresIBSZFM = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GCredPresIBSZFM>(nameof(DFeNFe.GCredPresIBSZFM.VCredPresIBSZFM)), ObOp.Opcional, 1, 15)
             };
         }
 
@@ -3032,44 +3025,44 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     // Grupo da TAG <total><ICMSTot>.
                     #region <total><ICMSTot>
                     var icms = totalOficial.ICMSTot;
-                    icms.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Obrigatorio, 15);
-                    icms.VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMS, ObOp.Obrigatorio, 15);
-                    icms.VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCST, ObOp.Obrigatorio, 15);
-                    icms.VST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vST, ObOp.Obrigatorio, 15);
-                    icms.VProd = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vProd, ObOp.Obrigatorio, 15);
-                    icms.VFrete = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFrete, ObOp.Obrigatorio, 15);
-                    icms.VSeg = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vSeg, ObOp.Obrigatorio, 15);
-                    icms.VDesc = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDesc, ObOp.Obrigatorio, 15);
-                    icms.VII = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vII, ObOp.Obrigatorio, 15);
-                    icms.VIPI = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIPI, ObOp.Obrigatorio, 15);
-                    icms.VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vPIS, ObOp.Obrigatorio, 15);
-                    icms.VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCOFINS, ObOp.Obrigatorio, 15);
-                    icms.VOutro = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vOutro, ObOp.Obrigatorio, 15);
-                    icms.VNF = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vNF, ObOp.Obrigatorio, 15);
-                    icms.VTotTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTotTrib, ObOp.Opcional, 15);
+                    icms.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
+                    icms.VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VICMS)), ObOp.Obrigatorio, 15);
+                    icms.VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCST)), ObOp.Obrigatorio, 15);
+                    icms.VST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSTot>(nameof(DFeNFe.ICMSTot.VST)), ObOp.Obrigatorio, 15);
+                    icms.VProd = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VProd)), ObOp.Obrigatorio, 15);
+                    icms.VFrete = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VFrete)), ObOp.Obrigatorio, 15);
+                    icms.VSeg = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VSeg)), ObOp.Obrigatorio, 15);
+                    icms.VDesc = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VDesc)), ObOp.Obrigatorio, 15);
+                    icms.VII = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.II>(nameof(DFeNFe.II.VII)), ObOp.Obrigatorio, 15);
+                    icms.VIPI = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.VIPI)), ObOp.Obrigatorio, 15);
+                    icms.VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.VPIS)), ObOp.Obrigatorio, 15);
+                    icms.VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.VCOFINS)), ObOp.Obrigatorio, 15);
+                    icms.VOutro = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VOutro)), ObOp.Obrigatorio, 15);
+                    icms.VNF = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSTot>(nameof(DFeNFe.ICMSTot.VNF)), ObOp.Obrigatorio, 15);
+                    icms.VTotTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Imposto>(nameof(DFeNFe.Imposto.VTotTrib)), ObOp.Opcional, 15);
 
 
 
-                    icms.VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSDeson, ObOp.Opcional, 15);
+                    icms.VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.VICMSDeson)), ObOp.Opcional, 15);
 
                     if (versaoNFe >= 3 && lenPipesRegistro > 17)
                     {
-                        icms.VICMSUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSUFDest, ObOp.Opcional, 15);
-                        icms.VFCPUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPUFDest, ObOp.Opcional, 15);
-                        icms.VICMSUFRemet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSUFRemet, ObOp.Opcional, 15);
+                        icms.VICMSUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.VICMSUFDest)), ObOp.Opcional, 15);
+                        icms.VFCPUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.VFCPUFDest)), ObOp.Opcional, 15);
+                        icms.VICMSUFRemet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.VICMSUFRemet)), ObOp.Opcional, 15);
 
                         if (versaoNFe >= 4)
                         {
-                            icms.VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCP, ObOp.Opcional, 15);
-                            icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPST, ObOp.Opcional, 15);
-                            icms.VFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPSTRet, ObOp.Opcional, 15);
-                            icms.VIPIDevol = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIPIDevol, ObOp.Opcional, 15);
-                            icms.QBCMono = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.qBCMono, ObOp.Opcional, 15);
-                            icms.VICMSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSMono, ObOp.Opcional, 15);
-                            icms.QBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.qBCMonoReten, ObOp.Opcional, 15);
-                            icms.VICMSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSMonoReten, ObOp.Opcional, 15);
-                            icms.QBCMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.qBCMonoRet, ObOp.Opcional, 15);
-                            icms.VICMSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSMonoRet, ObOp.Opcional, 15);
+                            icms.VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VFCP)), ObOp.Opcional, 15);
+                            icms.VFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VFCPST)), ObOp.Opcional, 15);
+                            icms.VFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VFCPSTRet)), ObOp.Opcional, 15);
+                            icms.VIPIDevol = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.IPIDevol>(nameof(DFeNFe.IPIDevol.VIPIDevol)), ObOp.Opcional, 15);
+                            icms.QBCMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.QBCMono)), ObOp.Opcional, 15);
+                            icms.VICMSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.VICMSMono)), ObOp.Opcional, 15);
+                            icms.QBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS15>(nameof(DFeNFe.ICMS15.QBCMonoReten)), ObOp.Opcional, 15);
+                            icms.VICMSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS15>(nameof(DFeNFe.ICMS15.VICMSMonoReten)), ObOp.Opcional, 15);
+                            icms.QBCMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS61>(nameof(DFeNFe.ICMS61.QBCMonoRet)), ObOp.Opcional, 15);
+                            icms.VICMSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS61>(nameof(DFeNFe.ICMS61.VICMSMonoRet)), ObOp.Opcional, 15);
                         }
                     }
                     #endregion
@@ -3078,9 +3071,9 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarTotaisIcmsSt(int nProd, int lenPipesRegistro)
         {
                     //layout = prefix + this.FSegmento + "|vICMSUFDest|vICMSUFRemet|vFCPUFDest";
-                    totalOficial.ICMSTot.VICMSUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSUFDest, ObOp.Opcional, 15);
-                    totalOficial.ICMSTot.VICMSUFRemet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSUFRemet, ObOp.Opcional, 15);
-                    totalOficial.ICMSTot.VFCPUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vFCPUFDest, ObOp.Opcional, 15);
+                    totalOficial.ICMSTot.VICMSUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.VICMSUFDest)), ObOp.Opcional, 15);
+                    totalOficial.ICMSTot.VICMSUFRemet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.VICMSUFRemet)), ObOp.Opcional, 15);
+                    totalOficial.ICMSTot.VFCPUFDest = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSUFDest>(nameof(DFeNFe.ICMSUFDest.VFCPUFDest)), ObOp.Opcional, 15);
         }
 
         private void ProcessarTotaisFcp(int nProd, int lenPipesRegistro)
@@ -3091,21 +3084,21 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     // Grupo da TAG <total><ISSQNtot>.
                     #region <total><ISSQNtot>
                     var issqn = totalOficial.ISSQNtot;
-                    issqn.VServ = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vServ, ObOp.Opcional, 15);
-                    issqn.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBC, ObOp.Opcional, 15);
-                    issqn.VISS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vISS, ObOp.Opcional, 15);
-                    issqn.VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vPIS, ObOp.Opcional, 15);
-                    issqn.VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCOFINS, ObOp.Opcional, 15);
+                    issqn.VServ = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQNtot>(nameof(DFeNFe.ISSQNtot.VServ)), ObOp.Opcional, 15);
+                    issqn.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Opcional, 15);
+                    issqn.VISS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQNtot>(nameof(DFeNFe.ISSQNtot.VISS)), ObOp.Opcional, 15);
+                    issqn.VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.VPIS)), ObOp.Opcional, 15);
+                    issqn.VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.VCOFINS)), ObOp.Opcional, 15);
 
                     if ((double)versaoNFe >= 3.10)
                     {
-                        issqn.DCompet = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, TpcnResources.dCompet, ObOp.Opcional, 10, 10, true, false);
-                        issqn.VDeducao = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDeducao, ObOp.Opcional, 15);
-                        issqn.VOutro = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vOutro, ObOp.Opcional, 15);
-                        issqn.VDescIncond = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDescIncond, ObOp.Opcional, 15);
-                        issqn.VDescCond = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDescCond, ObOp.Opcional, 15);
-                        issqn.VISSRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vISSRet, ObOp.Opcional, 15);
-                        issqn.CRegTrib = (CodigoRegimeEspecialTributacao)this.LerInt32(TpcnResources.cRegTrib, ObOp.Opcional, 1, 1);
+                        issqn.DCompet = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, XmlTag<DFeNFe.ISSQNtot>(nameof(DFeNFe.ISSQNtot.DCompet)), ObOp.Opcional, 10, 10, true, false);
+                        issqn.VDeducao = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.VDeducao)), ObOp.Opcional, 15);
+                        issqn.VOutro = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VOutro)), ObOp.Opcional, 15);
+                        issqn.VDescIncond = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.VDescIncond)), ObOp.Opcional, 15);
+                        issqn.VDescCond = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.VDescCond)), ObOp.Opcional, 15);
+                        issqn.VISSRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQN>(nameof(DFeNFe.ISSQN.VISSRet)), ObOp.Opcional, 15);
+                        issqn.CRegTrib = (CodigoRegimeEspecialTributacao)this.LerInt32(XmlTag<DFeNFe.ISSQNtot>(nameof(DFeNFe.ISSQNtot.CRegTrib)), ObOp.Opcional, 1, 1);
                     }
                     #endregion
         }
@@ -3116,13 +3109,13 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     // Grupo da TAG <total><retTrib>.
                     #region <total><retTrib>
                     var retencoes = totalOficial.RetTrib;
-                    retencoes.VRetPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vRetPIS, ObOp.Opcional, 15);
-                    retencoes.VRetCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vRetCOFINS, ObOp.Opcional, 15);
-                    retencoes.VRetCSLL = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vRetCSLL, ObOp.Opcional, 15);
-                    retencoes.VBCIRRF = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCIRRF, ObOp.Opcional, 15);
-                    retencoes.VIRRF = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIRRF, ObOp.Opcional, 15);
-                    retencoes.VBCRetPrev = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCRetPrev, ObOp.Opcional, 15);
-                    retencoes.VRetPrev = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vRetPrev, ObOp.Opcional, 15);
+                    retencoes.VRetPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.RetTrib>(nameof(DFeNFe.RetTrib.VRetPIS)), ObOp.Opcional, 15);
+                    retencoes.VRetCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.RetTrib>(nameof(DFeNFe.RetTrib.VRetCOFINS)), ObOp.Opcional, 15);
+                    retencoes.VRetCSLL = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.RetTrib>(nameof(DFeNFe.RetTrib.VRetCSLL)), ObOp.Opcional, 15);
+                    retencoes.VBCIRRF = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.RetTrib>(nameof(DFeNFe.RetTrib.VBCIRRF)), ObOp.Opcional, 15);
+                    retencoes.VIRRF = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.RetTrib>(nameof(DFeNFe.RetTrib.VIRRF)), ObOp.Opcional, 15);
+                    retencoes.VBCRetPrev = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.RetTrib>(nameof(DFeNFe.RetTrib.VBCRetPrev)), ObOp.Opcional, 15);
+                    retencoes.VRetPrev = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.RetTrib>(nameof(DFeNFe.RetTrib.VRetPrev)), ObOp.Opcional, 15);
                     #endregion
         }
 
@@ -3130,52 +3123,52 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
                     //layout = "W31|vIS|"
 
-                    totalOficial.ISTot.VIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIS, ObOp.Obrigatorio, 15);
+                    totalOficial.ISTot.VIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.IS>(nameof(DFeNFe.IS.VIS)), ObOp.Obrigatorio, 15);
         }
 
         private void ProcessarTotaisCofins(int nProd, int lenPipesRegistro)
         {
                     //layout = "W34|vBCIBSCBS|"
 
-                    totalOficial.IBSCBSTot.VBCIBSCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCIBSCBS, ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.VBCIBSCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.IBSCBSTot>(nameof(DFeNFe.IBSCBSTot.VBCIBSCBS)), ObOp.Obrigatorio, 15);
         }
 
         private void ProcessarTotaisIssqn(int nProd, int lenPipesRegistro)
         {
                     //layout = "W36|vIBS|vCredPres|vCredPresCondSus|"
 
-                    totalOficial.IBSCBSTot.GIBS.VIBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBS, ObOp.Obrigatorio, 15);
-                    totalOficial.IBSCBSTot.GIBS.VCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredPres, ObOp.Obrigatorio, 15);
-                    totalOficial.IBSCBSTot.GIBS.VCredPresCondSus = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredPresCondSus, ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GIBS.VIBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCBS>(nameof(DFeNFe.GIBSCBS.VIBS)), ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GIBS.VCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCredPres>(nameof(DFeNFe.GIBSCredPres.VCredPres)), ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GIBS.VCredPresCondSus = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCredPres>(nameof(DFeNFe.GIBSCredPres.VCredPresCondSus)), ObOp.Obrigatorio, 15);
         }
 
         private void ProcessarTotaisRetencoes(int nProd, int lenPipesRegistro)
         {
                     //layout = "W37|vDif|vDevTrib|vIBSUF|"
 
-                    totalOficial.IBSCBSTot.GIBS.GIBSUF.VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDif, ObOp.Obrigatorio, 15);
-                    totalOficial.IBSCBSTot.GIBS.GIBSUF.VDevTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDevTrib, ObOp.Obrigatorio, 15);
-                    totalOficial.IBSCBSTot.GIBS.GIBSUF.VIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSUF, ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GIBS.GIBSUF.VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GDif>(nameof(DFeNFe.GDif.VDif)), ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GIBS.GIBSUF.VDevTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GDevTrib>(nameof(DFeNFe.GDevTrib.VDevTrib)), ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GIBS.GIBSUF.VIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSUF>(nameof(DFeNFe.GIBSUF.VIBSUF)), ObOp.Obrigatorio, 15);
         }
 
         private void ProcessarTotaisTributos(int nProd, int lenPipesRegistro)
         {
                     //layout = "W42|vDif|vDevTrib|vIBSMun|"
 
-                    totalOficial.IBSCBSTot.GIBS.GIBSMun.VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDif, ObOp.Obrigatorio, 15);
-                    totalOficial.IBSCBSTot.GIBS.GIBSMun.VDevTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDevTrib, ObOp.Obrigatorio, 15);
-                    totalOficial.IBSCBSTot.GIBS.GIBSMun.VIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSMun, ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GIBS.GIBSMun.VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GDif>(nameof(DFeNFe.GDif.VDif)), ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GIBS.GIBSMun.VDevTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GDevTrib>(nameof(DFeNFe.GDevTrib.VDevTrib)), ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GIBS.GIBSMun.VIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSMun>(nameof(DFeNFe.GIBSMun.VIBSMun)), ObOp.Obrigatorio, 15);
         }
 
         private void ProcessarTotaisIcmsUfDest(int nProd, int lenPipesRegistro)
         {
                     //layout = "W50|vDif|vDevTrib|vCBS|vCredPres|vCredPresCondSus|"
 
-                    totalOficial.IBSCBSTot.GCBS.VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDif, ObOp.Obrigatorio, 15);
-                    totalOficial.IBSCBSTot.GCBS.VDevTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDevTrib, ObOp.Obrigatorio, 15);
-                    totalOficial.IBSCBSTot.GCBS.VCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBS, ObOp.Obrigatorio, 15);
-                    totalOficial.IBSCBSTot.GCBS.VCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredPres, ObOp.Obrigatorio, 15);
-                    totalOficial.IBSCBSTot.GCBS.VCredPresCondSus = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCredPresCondSus, ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GCBS.VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GDif>(nameof(DFeNFe.GDif.VDif)), ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GCBS.VDevTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GDevTrib>(nameof(DFeNFe.GDevTrib.VDevTrib)), ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GCBS.VCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GCBS>(nameof(DFeNFe.GCBS.VCBS)), ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GCBS.VCredPres = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCredPres>(nameof(DFeNFe.GIBSCredPres.VCredPres)), ObOp.Obrigatorio, 15);
+                    totalOficial.IBSCBSTot.GCBS.VCredPresCondSus = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GIBSCredPres>(nameof(DFeNFe.GIBSCredPres.VCredPresCondSus)), ObOp.Obrigatorio, 15);
         }
 
         private void ProcessarTotaisFcpUfDest(int nProd, int lenPipesRegistro)
@@ -3183,20 +3176,20 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     //layout = "W57|vIBSMono|vCBSMono|vIBSMonoReten|vCBSMonoReten|vIBSMonoRet|vCBSMonoRet|"
 
                     var monofasia = totalOficial.IBSCBSTot.GMono;
-                    monofasia.VIBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSMono, ObOp.Obrigatorio, 15);
-                    monofasia.VCBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBSMono, ObOp.Obrigatorio, 15);
-                    monofasia.VIBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSMonoReten, ObOp.Obrigatorio, 15);
-                    monofasia.VCBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBSMonoReten, ObOp.Obrigatorio, 15);
-                    monofasia.VIBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSMonoRet, ObOp.Obrigatorio, 15);
-                    monofasia.VCBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBSMonoRet, ObOp.Obrigatorio, 15);
+                    monofasia.VIBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.VIBSMono)), ObOp.Obrigatorio, 15);
+                    monofasia.VCBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.VCBSMono)), ObOp.Obrigatorio, 15);
+                    monofasia.VIBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.VIBSMonoReten)), ObOp.Obrigatorio, 15);
+                    monofasia.VCBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.VCBSMonoReten)), ObOp.Obrigatorio, 15);
+                    monofasia.VIBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.VIBSMonoRet)), ObOp.Obrigatorio, 15);
+                    monofasia.VCBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.VCBSMonoRet)), ObOp.Obrigatorio, 15);
         }
 
         private void ProcessarTotaisFcpUfRemet(int nProd, int lenPipesRegistro)
         {
                     totalOficial.IBSCBSTot.GEstornoCred = new DFeNFe.GEstornoCred
                     {
-                        VIBSEstCred = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIBSEstCred, ObOp.Opcional, 1, 13),
-                        VCBSEstCred = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vCBSEstCred, ObOp.Opcional, 1, 13)
+                        VIBSEstCred = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GEstornoCred>(nameof(DFeNFe.GEstornoCred.VIBSEstCred)), ObOp.Opcional, 1, 13),
+                        VCBSEstCred = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GEstornoCred>(nameof(DFeNFe.GEstornoCred.VCBSEstCred)), ObOp.Opcional, 1, 13)
                     };
         }
 
@@ -3204,14 +3197,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
                     //layout = "W60|vNFTot|"
 
-                    totalOficial.VNFTot = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vNFTot, ObOp.Opcional, 15);
+                    totalOficial.VNFTot = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Total>(nameof(DFeNFe.Total.VNFTot)), ObOp.Opcional, 15);
         }
 
         private void ProcessarTransporte(int nProd, int lenPipesRegistro)
         {
                     //layout = "§X|modFrete"; //ok
                     // Grupo da TAG <transp>.
-                    transporteOficial.ModFrete = (ModalidadeFrete)this.LerInt32(TpcnResources.modFrete, ObOp.Obrigatorio, 1, 1);
+                    transporteOficial.ModFrete = (ModalidadeFrete)this.LerInt32(XmlTag<DFeNFe.Transp>(nameof(DFeNFe.Transp.ModFrete)), ObOp.Obrigatorio, 1, 1);
         }
 
         private void ProcessarTransportador(int nProd, int lenPipesRegistro)
@@ -3221,14 +3214,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     // Grupo da TAG <transp><transporta>.
                     #region <transp><TRansportadora>
                     var transportador = ObterTransportador();
-                    transportador.XNome = this.LerString(TpcnResources.xNome, ObOp.Opcional, 1, 60);
-                    transportador.IE = this.LerString(TpcnResources.IE, ObOp.Opcional, 0, 14);
-                    transportador.XEnder = this.LerString(TpcnResources.xEnder, ObOp.Opcional, 1, 60);
-                    transportador.XMun = this.LerString(TpcnResources.xMun, ObOp.Opcional, 1, 60);
+                    transportador.XNome = this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.XNome)), ObOp.Opcional, 1, 60);
+                    transportador.IE = this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.IE)), ObOp.Opcional, 0, 14);
+                    transportador.XEnder = this.LerString(XmlTag<DFeNFe.Transporta>(nameof(DFeNFe.Transporta.XEnder)), ObOp.Opcional, 1, 60);
+                    transportador.XMun = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.XMun)), ObOp.Opcional, 1, 60);
 #if INTEROP
-                    transportador.UF = LerUF(TpcnResources.UF, ObOp.Opcional) ?? UFBrasil.NaoDefinido;
+                    transportador.UF = LerUF(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.UF)), ObOp.Opcional) ?? UFBrasil.NaoDefinido;
 #else
-                    transportador.UF = LerUF(TpcnResources.UF, ObOp.Opcional);
+                    transportador.UF = LerUF(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.UF)), ObOp.Opcional);
 #endif
                     #endregion
         }
@@ -3237,14 +3230,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
                     //layout = "§X04|CNPJ"; //ok
 
-                    ObterTransportador().CNPJ = this.LerString(TpcnResources.CNPJ, ObOp.Opcional, 14, 14);
+                    ObterTransportador().CNPJ = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Opcional, 14, 14);
         }
 
         private void ProcessarReboque(int nProd, int lenPipesRegistro)
         {
                     //layout = "§X05|CPF"; //ok
 
-                    ObterTransportador().CPF = this.LerString(TpcnResources.CPF, ObOp.Opcional, 11, 11);
+                    ObterTransportador().CPF = this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.CPF)), ObOp.Opcional, 11, 11);
         }
 
         private void ProcessarVolume(int nProd, int lenPipesRegistro)
@@ -3254,12 +3247,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     #region <transp><retTransp>
                     transporteOficial.RetTransp = new DFeNFe.RetTransp
                     {
-                        VServ = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vServ, ObOp.Obrigatorio, 15),
-                        VBCRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCRet, ObOp.Obrigatorio, 15),
-                        PICMSRet = this.LerDouble(this.TipoCampo42, TpcnResources.pICMSRet, ObOp.Obrigatorio, this.CasasDecimais75),
-                        VICMSRet = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vICMSRet, ObOp.Obrigatorio, 15),
-                        CFOP = this.LerString(TpcnResources.CFOP, ObOp.Obrigatorio, 4, 4),
-                        CMunFG = this.LerInt32(TpcnResources.cMunFG, ObOp.Obrigatorio, 7, 7)
+                        VServ = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ISSQNtot>(nameof(DFeNFe.ISSQNtot.VServ)), ObOp.Obrigatorio, 15),
+                        VBCRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.RetTransp>(nameof(DFeNFe.RetTransp.VBCRet)), ObOp.Obrigatorio, 15),
+                        PICMSRet = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.RetTransp>(nameof(DFeNFe.RetTransp.PICMSRet)), ObOp.Obrigatorio, this.CasasDecimais75),
+                        VICMSRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.RetTransp>(nameof(DFeNFe.RetTransp.VICMSRet)), ObOp.Obrigatorio, 15),
+                        CFOP = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CFOP)), ObOp.Obrigatorio, 4, 4),
+                        CMunFG = this.LerInt32(XmlTag<DFeNFe.Ide>(nameof(DFeNFe.Ide.CMunFG)), ObOp.Obrigatorio, 7, 7)
                     };
                     #endregion
         }
@@ -3271,13 +3264,13 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     #region <transp><veicTransp>
                     transporteOficial.VeicTransp = new DFeNFe.VeicTransp
                     {
-                        Placa = this.LerString(TpcnResources.placa, ObOp.Obrigatorio, 1, 8),
+                        Placa = this.LerString(XmlTag<DFeNFe.VeiculoBase>(nameof(DFeNFe.VeiculoBase.Placa)), ObOp.Obrigatorio, 1, 8),
 #if INTEROP
-                        UF = LerUF(TpcnResources.UF, ObOp.Obrigatorio) ?? UFBrasil.NaoDefinido,
+                        UF = LerUF(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.UF)), ObOp.Obrigatorio) ?? UFBrasil.NaoDefinido,
 #else
-                        UF = LerUF(TpcnResources.UF, ObOp.Obrigatorio),
+                        UF = LerUF(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.UF)), ObOp.Obrigatorio),
 #endif
-                        RNTC = VazioParaNulo(this.LerString(TpcnResources.RNTC, ObOp.Opcional, 1, 20))
+                        RNTC = VazioParaNulo(this.LerString(XmlTag<DFeNFe.VeiculoBase>(nameof(DFeNFe.VeiculoBase.RNTC)), ObOp.Opcional, 1, 20))
                     };
                     #endregion
         }
@@ -3293,18 +3286,18 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     }
                     transporteOficial.Reboque.Add(new DFeNFe.Reboque
                     {
-                        Placa = this.LerString(TpcnResources.placa, ObOp.Obrigatorio, 1, 8),
+                        Placa = this.LerString(XmlTag<DFeNFe.VeiculoBase>(nameof(DFeNFe.VeiculoBase.Placa)), ObOp.Obrigatorio, 1, 8),
 #if INTEROP
-                        UF = LerUF(TpcnResources.UF, ObOp.Obrigatorio) ?? UFBrasil.NaoDefinido,
+                        UF = LerUF(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.UF)), ObOp.Obrigatorio) ?? UFBrasil.NaoDefinido,
 #else
-                        UF = LerUF(TpcnResources.UF, ObOp.Obrigatorio),
+                        UF = LerUF(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.UF)), ObOp.Obrigatorio),
 #endif
-                        RNTC = VazioParaNulo(this.LerString(TpcnResources.RNTC, ObOp.Opcional, 1, 20))
+                        RNTC = VazioParaNulo(this.LerString(XmlTag<DFeNFe.VeiculoBase>(nameof(DFeNFe.VeiculoBase.RNTC)), ObOp.Opcional, 1, 20))
                     });
                     if (versaoNFe >= 3)
                     {
-                        transporteOficial.Vagao = VazioParaNulo(this.LerString(TpcnResources.vagao, ObOp.Opcional, 1, 20));
-                        transporteOficial.Balsa = VazioParaNulo(this.LerString(TpcnResources.balsa, ObOp.Opcional, 1, 20));
+                        transporteOficial.Vagao = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Transp>(nameof(DFeNFe.Transp.Vagao)), ObOp.Opcional, 1, 20));
+                        transporteOficial.Balsa = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Transp>(nameof(DFeNFe.Transp.Balsa)), ObOp.Opcional, 1, 20));
                     }
                     #endregion
         }
@@ -3316,12 +3309,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     #region <transp><vol>
                     transporteOficial.Vol.Add(new DFeNFe.Vol
                     {
-                        QVol = this.LerInt32(TpcnResources.qVol, ObOp.Obrigatorio, 1, 15),
-                        Esp = VazioParaNulo(this.LerString(TpcnResources.esp, ObOp.Opcional, 1, 60)),
-                        Marca = VazioParaNulo(this.LerString(TpcnResources.marca, ObOp.Opcional, 1, 60)),
-                        NVol = VazioParaNulo(this.LerString(TpcnResources.nVol, ObOp.Opcional, 1, 60)),
-                        PesoL = this.LerDouble(TpcnTipoCampo.tcDouble3, TpcnResources.pesoL, ObOp.Opcional, 15),
-                        PesoB = this.LerDouble(TpcnTipoCampo.tcDouble3, TpcnResources.pesoB, ObOp.Opcional, 15)
+                        QVol = this.LerInt32(XmlTag<DFeNFe.Vol>(nameof(DFeNFe.Vol.QVol)), ObOp.Obrigatorio, 1, 15),
+                        Esp = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Vol>(nameof(DFeNFe.Vol.Esp)), ObOp.Opcional, 1, 60)),
+                        Marca = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Vol>(nameof(DFeNFe.Vol.Marca)), ObOp.Opcional, 1, 60)),
+                        NVol = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Vol>(nameof(DFeNFe.Vol.NVol)), ObOp.Opcional, 1, 60)),
+                        PesoL = this.LerDouble(TpcnTipoCampo.tcDouble3, XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.PesoL)), ObOp.Opcional, 15),
+                        PesoB = this.LerDouble(TpcnTipoCampo.tcDouble3, XmlTag<DFeNFe.VeicProd>(nameof(DFeNFe.VeicProd.PesoB)), ObOp.Opcional, 15)
                     });
                     #endregion
         }
@@ -3338,7 +3331,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     }
                     volume.Lacres.Add(new DFeNFe.Lacres
                     {
-                        NLacre = this.LerString(TpcnResources.nLacre, ObOp.Obrigatorio, 1, 60)
+                        NLacre = this.LerString(XmlTag<DFeNFe.Lacres>(nameof(DFeNFe.Lacres.NLacre)), ObOp.Obrigatorio, 1, 60)
                     });
                     #endregion
         }
@@ -3352,7 +3345,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             return transporteOficial.Transporta;
         }
 
-        private UFBrasil? LerUF(TpcnResources campo, ObOp obrigatoriedade)
+        private UFBrasil? LerUF(string campo, ObOp obrigatoriedade)
         {
             var uf = this.LerString(campo, obrigatoriedade, 2, 2);
             return string.IsNullOrWhiteSpace(uf) ? (UFBrasil?)null : (UFBrasil)Enum.Parse(typeof(UFBrasil), uf);
@@ -3366,10 +3359,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     var cobranca = CriarCobranca();
                     cobranca.Fat = new DFeNFe.Fat
                     {
-                        NFat = this.LerString(TpcnResources.nFat, ObOp.Opcional, 1, 60),
-                        VOrig = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vOrig, ObOp.Opcional, 15),
-                        VDesc = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDesc, ObOp.None, 15, true),
-                        VLiq = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vLiq, ObOp.Opcional, 15)
+                        NFat = this.LerString(XmlTag<DFeNFe.Fat>(nameof(DFeNFe.Fat.NFat)), ObOp.Opcional, 1, 60),
+                        VOrig = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Fat>(nameof(DFeNFe.Fat.VOrig)), ObOp.Opcional, 15),
+                        VDesc = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VDesc)), ObOp.None, 15, true),
+                        VLiq = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Fat>(nameof(DFeNFe.Fat.VLiq)), ObOp.Opcional, 15)
                     };
                     #endregion
         }
@@ -3383,11 +3376,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     if (cobranca.Dup == null) cobranca.Dup = new List<DFeNFe.Dup>();
                     var duplicata = new DFeNFe.Dup();
                     if (DateTime.Today >= new DateTime(2018, 9, 3))
-                        duplicata.NDup = this.LerString(TpcnResources.nDup, ObOp.Opcional, 1, 3);
+                        duplicata.NDup = this.LerString(XmlTag<DFeNFe.Dup>(nameof(DFeNFe.Dup.NDup)), ObOp.Opcional, 1, 3);
                     else
-                        duplicata.NDup = this.LerString(TpcnResources.nDup, ObOp.Opcional, 1, 60);
-                    duplicata.DVenc = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, TpcnResources.dVenc, ObOp.Opcional, 10, 10, true, false);
-                    duplicata.VDup = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDup, ObOp.Opcional, 15);
+                        duplicata.NDup = this.LerString(XmlTag<DFeNFe.Dup>(nameof(DFeNFe.Dup.NDup)), ObOp.Opcional, 1, 60);
+                    duplicata.DVenc = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, XmlTag<DFeNFe.Dup>(nameof(DFeNFe.Dup.DVenc)), ObOp.Opcional, 10, 10, true, false);
+                    duplicata.VDup = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Dup>(nameof(DFeNFe.Dup.VDup)), ObOp.Opcional, 15);
                     cobranca.Dup.Add(duplicata);
                     #endregion
 
@@ -3404,27 +3397,27 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
 
                     var pagamentoLegado = new NFeTxtPagamentoLido();
-                    pagamentoLegado.indPag = (TpcnIndicadorPagamento)this.LerInt32(TpcnResources.indPag, ObOp.Opcional, 1, 1, true);
-                    pagamentoLegado.tPag = (TpcnFormaPagamento)this.LerInt32(TpcnResources.tPag, ObOp.Obrigatorio, 2, 2);
-                    pagamentoLegado.xPag = this.LerString(TpcnResources.xPag, ObOp.Opcional, 0, 60);
-                    pagamentoLegado.vPag = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vPag, ObOp.Obrigatorio, 15);
+                    pagamentoLegado.indPag = (TpcnIndicadorPagamento)this.LerInt32(XmlTag<DFeNFe.DetPag>(nameof(DFeNFe.DetPag.IndPag)), ObOp.Opcional, 1, 1, true);
+                    pagamentoLegado.tPag = (TpcnFormaPagamento)this.LerInt32(XmlTag<DFeNFe.DetPag>(nameof(DFeNFe.DetPag.TPag)), ObOp.Obrigatorio, 2, 2);
+                    pagamentoLegado.xPag = this.LerString(XmlTag<DFeNFe.DetPag>(nameof(DFeNFe.DetPag.XPag)), ObOp.Opcional, 0, 60);
+                    pagamentoLegado.vPag = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.DetPag>(nameof(DFeNFe.DetPag.VPag)), ObOp.Obrigatorio, 15);
 
                     if (lenPipesRegistro >= 14)
                     {
-                        pagamentoLegado.dPag = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, TpcnResources.dPag, ObOp.Opcional, 10, 10, true, false);
-                        pagamentoLegado.CNPJPag = this.LerString(TpcnResources.CNPJPag, ObOp.Opcional, 14, 14);
-                        pagamentoLegado.UFPag = this.LerString(TpcnResources.UFPag, ObOp.Opcional, 1, 2);
+                        pagamentoLegado.dPag = (DateTime)this.LerCampo(TpcnTipoCampo.tcDatYYYY_MM_DD, XmlTag<DFeNFe.Avulsa>(nameof(DFeNFe.Avulsa.DPag)), ObOp.Opcional, 10, 10, true, false);
+                        pagamentoLegado.CNPJPag = this.LerString(XmlTag<DFeNFe.DetPag>(nameof(DFeNFe.DetPag.CNPJPag)), ObOp.Opcional, 14, 14);
+                        pagamentoLegado.UFPag = this.LerString(XmlTag<DFeNFe.DetPag>(nameof(DFeNFe.DetPag.UFPag)), ObOp.Opcional, 1, 2);
                     }
 
-                    pagamentoLegado.CNPJ = this.LerString(TpcnResources.CNPJ, ObOp.Opcional, 14, 14);
-                    pagamentoLegado.tBand = (TpcnBandeiraCartao)this.LerInt32(TpcnResources.tBand, ObOp.Opcional, 2, 2);
-                    pagamentoLegado.cAut = this.LerString(TpcnResources.cAut, ObOp.Opcional, 1, 128);
-                    pagamentoLegado.tpIntegra = this.LerInt32(TpcnResources.tpIntegra, ObOp.Opcional, 1, 1);
+                    pagamentoLegado.CNPJ = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Opcional, 14, 14);
+                    pagamentoLegado.tBand = (TpcnBandeiraCartao)this.LerInt32(XmlTag<DFeNFe.Card>(nameof(DFeNFe.Card.TBand)), ObOp.Opcional, 2, 2);
+                    pagamentoLegado.cAut = this.LerString(XmlTag<DFeNFe.Card>(nameof(DFeNFe.Card.CAut)), ObOp.Opcional, 1, 128);
+                    pagamentoLegado.tpIntegra = this.LerInt32(XmlTag<DFeNFe.Card>(nameof(DFeNFe.Card.TpIntegra)), ObOp.Opcional, 1, 1);
 
                     if (lenPipesRegistro >= 14)
                     {
-                        pagamentoLegado.CNPJReceb = this.LerString(TpcnResources.CNPJReceb, ObOp.Opcional, 14, 14);
-                        pagamentoLegado.idTermPag = this.LerString(TpcnResources.idTermPag, ObOp.Opcional, 0, 40);
+                        pagamentoLegado.CNPJReceb = this.LerString(XmlTag<DFeNFe.Card>(nameof(DFeNFe.Card.CNPJReceb)), ObOp.Opcional, 14, 14);
+                        pagamentoLegado.idTermPag = this.LerString(XmlTag<DFeNFe.Card>(nameof(DFeNFe.Card.IdTermPag)), ObOp.Opcional, 0, 40);
                     }
 
                     var pagamentoOficial = this.nfeOficial.InfNFeField.Pag ?? (this.nfeOficial.InfNFeField.Pag = new DFeNFe.Pag());
@@ -3445,12 +3438,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarCnpjInstituicaoPagadora(int nProd, int lenPipesRegistro)
         {
-                    this.nfeOficial.InfNFeField.Pag.VTroco = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTroco, ObOp.Opcional, 15);
+                    this.nfeOficial.InfNFeField.Pag.VTroco = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Pag>(nameof(DFeNFe.Pag.VTroco)), ObOp.Opcional, 15);
         }
 
         private void ProcessarTipoIntegracaoPagamento()
         {
-            var tipoIntegracao = this.LerInt32(TpcnResources.tpIntegra, ObOp.Obrigatorio, 1, 1);
+            var tipoIntegracao = this.LerInt32(XmlTag<DFeNFe.Card>(nameof(DFeNFe.Card.TpIntegra)), ObOp.Obrigatorio, 1, 1);
             var detalhe = this.nfeOficial.InfNFeField.Pag.DetPag[this.nfeOficial.InfNFeField.Pag.DetPag.Count - 1];
             if (detalhe.Card == null) detalhe.Card = new DFeNFe.Card();
             detalhe.Card.TpIntegra = (TipoIntegracaoPagamento)tipoIntegracao;
@@ -3465,8 +3458,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
                     this.nfeOficial.InfNFeField.InfIntermed = new DFeNFe.InfIntermed
                     {
-                        CNPJ = LerString(TpcnResources.CNPJ, ObOp.Obrigatorio, 1, 14, true),
-                        IdCadIntTran = LerString(TpcnResources.idCadIntTran, ObOp.Obrigatorio, 1, 60, true)
+                        CNPJ = LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Obrigatorio, 1, 14, true),
+                        IdCadIntTran = LerString(XmlTag<DFeNFe.InfIntermed>(nameof(DFeNFe.InfIntermed.IdCadIntTran)), ObOp.Obrigatorio, 1, 60, true)
                     };
         }
 
@@ -3476,8 +3469,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     // Grupo da TAG <infAdic>.
                     #region <InfAdic>
                     var informacoes = CriarInformacoesAdicionais();
-                    informacoes.InfAdFisco += this.LerString(TpcnResources.infAdFisco, ObOp.Opcional, 1, 2000, false);
-                    informacoes.InfCpl += this.LerString(TpcnResources.infCpl, ObOp.Opcional, 1, 5000, false);
+                    informacoes.InfAdFisco += this.LerString(XmlTag<DFeNFe.InfAdic>(nameof(DFeNFe.InfAdic.InfAdFisco)), ObOp.Opcional, 1, 2000, false);
+                    informacoes.InfCpl += this.LerString(XmlTag<DFeNFe.InfAdic>(nameof(DFeNFe.InfAdic.InfCpl)), ObOp.Opcional, 1, 5000, false);
                     #endregion
         }
 
@@ -3488,7 +3481,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     #region <infAdic><obsCont>
                     var informacoes = CriarInformacoesAdicionais();
                     if (informacoes.ObsCont == null) informacoes.ObsCont = new List<DFeNFe.ObsCont>();
-                    informacoes.ObsCont.Add(new DFeNFe.ObsCont { XCampo = this.LerString(TpcnResources.xCampo, ObOp.Obrigatorio, 1, 20), XTexto = this.LerString(TpcnResources.xTexto, ObOp.Obrigatorio, 1, 60) });
+                    informacoes.ObsCont.Add(new DFeNFe.ObsCont { XCampo = this.LerString(XmlTag<DFeNFe.ObsCont>(nameof(DFeNFe.ObsCont.XCampo)), ObOp.Obrigatorio, 1, 20), XTexto = this.LerString(XmlTag<DFeNFe.ObsCont>(nameof(DFeNFe.ObsCont.XTexto)), ObOp.Obrigatorio, 1, 60) });
                     #endregion
         }
 
@@ -3499,7 +3492,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     #region <infAdic><obsFisco>
                     var informacoes = CriarInformacoesAdicionais();
                     if (informacoes.ObsFisco == null) informacoes.ObsFisco = new List<DFeNFe.ObsFisco>();
-                    informacoes.ObsFisco.Add(new DFeNFe.ObsFisco { XCampo = this.LerString(TpcnResources.xCampo, ObOp.Obrigatorio, 1, 20), XTexto = this.LerString(TpcnResources.xTexto, ObOp.Obrigatorio, 1, 60) });
+                    informacoes.ObsFisco.Add(new DFeNFe.ObsFisco { XCampo = this.LerString(XmlTag<DFeNFe.ObsCont>(nameof(DFeNFe.ObsCont.XCampo)), ObOp.Obrigatorio, 1, 20), XTexto = this.LerString(XmlTag<DFeNFe.ObsCont>(nameof(DFeNFe.ObsCont.XTexto)), ObOp.Obrigatorio, 1, 60) });
                     #endregion
         }
 
@@ -3510,11 +3503,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     #region <infAdic><procRef>
                     var informacoes = CriarInformacoesAdicionais();
                     if (informacoes.ProcRef == null) informacoes.ProcRef = new List<DFeNFe.ProcRef>();
-                    var processo = new DFeNFe.ProcRef { NProc = this.LerString(TpcnResources.nProc, ObOp.Obrigatorio, 1, 60), IndProc = (IndicadorOrigemProcesso)this.LerInt32(TpcnResources.indProc, ObOp.Obrigatorio, 1, 1) };
+                    var processo = new DFeNFe.ProcRef { NProc = this.LerString(XmlTag<DFeNFe.ProcRef>(nameof(DFeNFe.ProcRef.NProc)), ObOp.Obrigatorio, 1, 60), IndProc = (IndicadorOrigemProcesso)this.LerInt32(XmlTag<DFeNFe.ProcRef>(nameof(DFeNFe.ProcRef.IndProc)), ObOp.Obrigatorio, 1, 1) };
                     if (lenPipesRegistro >= 4)
                     {
                         processo.TpAto = ObterEnumOpcional(
-                            this.LerInt32(TpcnResources.tpAto, ObOp.Opcional, 2, 2),
+                            this.LerInt32(XmlTag<DFeNFe.ProcRef>(nameof(DFeNFe.ProcRef.TpAto)), ObOp.Opcional, 2, 2),
                             (TipoAtoConcessorio)(-1));
                     }
                     informacoes.ProcRef.Add(processo);
@@ -3529,17 +3522,17 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                         // Grupo da TAG <exporta>.
                         this.nfeOficial.InfNFeField.Exporta = new DFeNFe.Exporta
                         {
-                            UFSaidaPais = (UFBrasil)Enum.Parse(typeof(UFBrasil), this.LerString(TpcnResources.UFSaidaPais, ObOp.Obrigatorio, 2, 2), true),
-                            XLocExporta = this.LerString(TpcnResources.xLocExporta, ObOp.Obrigatorio, 1, 60),
-                            XLocDespacho = VazioParaNulo(this.LerString(TpcnResources.xLocDespacho, ObOp.Opcional, 1, 60))
+                            UFSaidaPais = (UFBrasil)Enum.Parse(typeof(UFBrasil), this.LerString(XmlTag<DFeNFe.Exporta>(nameof(DFeNFe.Exporta.UFSaidaPais)), ObOp.Obrigatorio, 2, 2), true),
+                            XLocExporta = this.LerString(XmlTag<DFeNFe.Exporta>(nameof(DFeNFe.Exporta.XLocExporta)), ObOp.Obrigatorio, 1, 60),
+                            XLocDespacho = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Exporta>(nameof(DFeNFe.Exporta.XLocDespacho)), ObOp.Opcional, 1, 60))
                         };
                     }
                     else
                     {
                         //layout = "§ZA|UFEmbarq|XLocEmbarq"; //ok
                         // Grupo da TAG <exporta>.
-                        this.LerString(TpcnResources.UFEmbarq, ObOp.Obrigatorio, 2, 2);
-                        this.LerString(TpcnResources.xLocEmbarq, ObOp.Obrigatorio, 1, 60);
+                        this.LerString(NFeTxtFieldNames.UfEmbarque, ObOp.Obrigatorio, 2, 2);
+                        this.LerString(NFeTxtFieldNames.LocalEmbarque, ObOp.Obrigatorio, 1, 60);
                     }
         }
 
@@ -3549,9 +3542,9 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     // Grupo da TAG <compra>.
                     this.nfeOficial.InfNFeField.Compra = new DFeNFe.Compra
                     {
-                        XNEmp = VazioParaNulo(this.LerString(TpcnResources.xNEmp, ObOp.Opcional, 1, 17)),
-                        XPed = VazioParaNulo(this.LerString(TpcnResources.xPed, ObOp.Opcional, 1, 60)),
-                        XCont = VazioParaNulo(this.LerString(TpcnResources.xCont, ObOp.Opcional, 1, 60))
+                        XNEmp = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Compra>(nameof(DFeNFe.Compra.XNEmp)), ObOp.Opcional, 1, 17)),
+                        XPed = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.XPed)), ObOp.Opcional, 1, 60)),
+                        XCont = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Compra>(nameof(DFeNFe.Compra.XCont)), ObOp.Opcional, 1, 60))
                     };
         }
 
@@ -3560,7 +3553,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     //layout = "§ZC04|dia|qtde";
                     if (this.nfeOficial.InfNFeField.Cana == null) this.nfeOficial.InfNFeField.Cana = new DFeNFe.Cana();
                     if (this.nfeOficial.InfNFeField.Cana.ForDia == null) this.nfeOficial.InfNFeField.Cana.ForDia = new List<DFeNFe.ForDia>();
-                    this.nfeOficial.InfNFeField.Cana.ForDia.Add(new DFeNFe.ForDia { Dia = this.LerInt32(TpcnResources.dia, ObOp.Obrigatorio, 1, 2), Qtde = this.LerDouble(TpcnTipoCampo.tcDouble10, TpcnResources.qtde, ObOp.Obrigatorio, 11) });
+                    this.nfeOficial.InfNFeField.Cana.ForDia.Add(new DFeNFe.ForDia { Dia = this.LerInt32(XmlTag<DFeNFe.ForDia>(nameof(DFeNFe.ForDia.Dia)), ObOp.Obrigatorio, 1, 2), Qtde = this.LerDouble(TpcnTipoCampo.tcDouble10, XmlTag<DFeNFe.ForDia>(nameof(DFeNFe.ForDia.Qtde)), ObOp.Obrigatorio, 11) });
         }
 
         private void AdicionarDeducaoCana()
@@ -3568,17 +3561,17 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     //layout = "§ZC10|xDed|vDed";
                     if (this.nfeOficial.InfNFeField.Cana == null) this.nfeOficial.InfNFeField.Cana = new DFeNFe.Cana();
                     if (this.nfeOficial.InfNFeField.Cana.Deduc == null) this.nfeOficial.InfNFeField.Cana.Deduc = new List<DFeNFe.Deduc>();
-                    this.nfeOficial.InfNFeField.Cana.Deduc.Add(new DFeNFe.Deduc { XDed = this.LerString(TpcnResources.xDed, ObOp.Obrigatorio, 1, 60), VDed = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDed, ObOp.Obrigatorio, 15) });
+                    this.nfeOficial.InfNFeField.Cana.Deduc.Add(new DFeNFe.Deduc { XDed = this.LerString(XmlTag<DFeNFe.Deduc>(nameof(DFeNFe.Deduc.XDed)), ObOp.Obrigatorio, 1, 60), VDed = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Deduc>(nameof(DFeNFe.Deduc.VDed)), ObOp.Obrigatorio, 15) });
         }
 
         private void ProcessarResponsavelTecnicoZ()
         {
                     //layout = "ZD|CNPJ|xContato|email|fone|idCSRT|hashCSRT|"
                     var responsavel = CriarResponsavelTecnico();
-                    responsavel.CNPJ = this.LerString(TpcnResources.CNPJ, ObOp.Obrigatorio, 14, 14);
+                    responsavel.CNPJ = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Obrigatorio, 14, 14);
                     responsavel.XContato = this.LerString("xContato", ObOp.Obrigatorio, 2, 60);
-                    responsavel.Email = this.LerString(TpcnResources.email, ObOp.Obrigatorio, 2, 60);
-                    responsavel.Fone = this.LerString(TpcnResources.fone, ObOp.Obrigatorio, 6, 14);
+                    responsavel.Email = this.LerString(XmlTag<DFeNFe.Dest>(nameof(DFeNFe.Dest.Email)), ObOp.Obrigatorio, 2, 60);
+                    responsavel.Fone = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Fone)), ObOp.Obrigatorio, 6, 14);
                     var idCsrt = this.LerInt32("idCSRT", ObOp.Opcional, 2, 2);
                     responsavel.IdCSRT = idCsrt > 0 ? idCsrt.ToString("00") : null;
                     responsavel.HashCSRT = VazioParaNulo(this.LerString("hashCSRT", ObOp.Opcional, 16, 80));
