@@ -88,8 +88,9 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 { "B20I", _ => this.ProcessarReferenciasDaIdentificacao() },
                 { "B20J", _ => this.ProcessarReferenciasDaIdentificacao() },
                 { "BA20", _ => this.ProcessarReferenciasDaIdentificacao() },
-                { "B31", _ => this.ProcessarReferenciasDaIdentificacao() },
                 { "BB01", _ => this.ProcessarReferenciasDaIdentificacao() },
+                { "BB05", _ => this.ProcessarReferenciasDaIdentificacao() },
+                { "BC01", _ => this.ProcessarReferenciasDaIdentificacao() },
                 { "C", _ => this.ProcessarEmitente() },
                 { "C02", _ => this.ProcessarDocumentoEmitente() },
                 { "C02A", _ => this.ProcessarCpfEmitente() },
@@ -196,6 +197,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 { "UB17", this.ProcessarTotalIbsCbsDevolucao },
                 { "UB36", this.ProcessarTotalIbsCbsCreditoPresumido },
                 { "UB55", this.ProcessarTotalIbsCbsReducao },
+                { "UB66A", this.ProcessarGrupoAreasIncentivadasCbs },
                 { "UB68", this.ProcessarTotalIbsCbsRegularCompraGov },
                 { "UB82", this.ProcessarTotalIbsCbsDiferimentoCompraGov },
                 { "UB84", this.ProcessarTotalIbsCbsDevolucaoCompraGov },
@@ -975,21 +977,36 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     }
                     break;
 
-                case "B31":
-                    //layout = B31|tpEnteGov|pRedutor|tpOperGov|
-                    identificacaoOficial.GCompraGov = new DFeNFe.GCompraGov
+                case "BB01":
                     {
-                        TpEnteGov = (TipoEnteGovernamental)this.LerInt32(TpcnResources.tpEnteGov, ObOp.Obrigatorio, 1, 1),
-                        PRedutor = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedutor, ObOp.Obrigatorio, 7),
-                        TpOperGov = (TipoOperacaoEnteGovernamental)this.LerInt32(TpcnResources.tpOperGov, ObOp.Obrigatorio, 1, 1)
-                    };
+                        //layout = BB01|tpEnteGov|pRedutor|tpOperGov|refDFeAnt|
+                        var refDFeAnt = VazioParaNulo(this.LerString(TpcnResources.refDFeAnt, ObOp.Opcional, 44, 44));
+                        identificacaoOficial.GCompraGov = new DFeNFe.GCompraGov
+                        {
+                            TpEnteGov = (TipoEnteGovernamental)this.LerInt32(TpcnResources.tpEnteGov, ObOp.Obrigatorio, 1, 1),
+                            PRedutor = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedutor, ObOp.Obrigatorio, 7),
+                            TpOperGov = (TipoOperacaoEnteGovernamental)this.LerInt32(TpcnResources.tpOperGov, ObOp.Obrigatorio, 1, 1),
+                            RefDFeAnt = refDFeAnt == null ? null : new List<string> { refDFeAnt }
+                        };
+                    }
                     break;
 
-                case "BB01":
-                    //layout = BB01|refNFe|
+                case "BB05":
+                    //layout = BB05|refDFeAnt|
+                    if (identificacaoOficial.GCompraGov == null)
+                    {
+                        throw new Exception("Segmento BB05 informado sem o segmento BB01.");
+                    }
+
+                    if (identificacaoOficial.GCompraGov.RefDFeAnt == null) identificacaoOficial.GCompraGov.RefDFeAnt = new List<string>();
+                    identificacaoOficial.GCompraGov.RefDFeAnt.Add(this.LerString(TpcnResources.refDFeAnt, ObOp.Obrigatorio, 44, 44));
+                    break;
+
+                case "BC01":
+                    //layout = BC01|refDFe|
 
                     if (identificacaoOficial.GPagAntecipado == null) identificacaoOficial.GPagAntecipado = new DFeNFe.GPagAntecipado { RefDFe = new List<string>() };
-                    identificacaoOficial.GPagAntecipado.RefDFe.Add(this.LerString(TpcnResources.refNFe, ObOp.Obrigatorio, 1, 99));
+                    identificacaoOficial.GPagAntecipado.RefDFe.Add(this.LerString(TpcnResources.refDFe, ObOp.Obrigatorio, 44, 44));
                     break;
             }
         }
@@ -1155,6 +1172,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             this.nfeOficial.InfNFeField.Emit.IM = VazioParaNulo(this.LerString(TpcnResources.IM, ObOp.Opcional, 1, 15));
             this.nfeOficial.InfNFeField.Emit.CNAE = VazioParaNulo(this.LerString(TpcnResources.CNAE, ObOp.Opcional, 7, 7));
             this.nfeOficial.InfNFeField.Emit.CRT = (CRT)this.LerInt32(TpcnResources.CRT, ObOp.Obrigatorio, 1, 1);
+            this.nfeOficial.InfNFeField.Emit.ISUFEmit = VazioParaNulo(this.LerString(TpcnResources.ISUFEmit, ObOp.Opcional, 8, 9));
         }
 
         private void ProcessarDocumentoEmitente()
@@ -2630,7 +2648,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 CClassTribIS = this.LerString(TpcnResources.cClassTribIS, ObOp.Obrigatorio, 1, 6),
                 VBCIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vBCIS, ObOp.Opcional, 1, 15),
                 PIS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pIS, ObOp.Opcional, 1, 7),
-                AdRemIS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pISEspec, ObOp.Opcional, 1, 7),
+                AdRemIS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.adRemIS, ObOp.Opcional, 1, 7),
                 UTrib = this.LerString(TpcnResources.uTrib, ObOp.Opcional, 1, 6),
                 QTrib = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.qTrib, ObOp.Opcional, 1, 15),
                 VIS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vIS, ObOp.Obrigatorio, 1, 15)
@@ -2683,7 +2701,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarTotalIbsCbsDevolucao(int nProd, int lenPipesRegistro)
         {
-            //layout = "UB17|pIBSUF|pDif|vDif|vDevTrib|pRedAliq|pAliqEfet|vIBSUF|"
+            //layout = "UB17|pIBSUF|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vIBSUF|"
             ObterGIBSCBS(nProd).GIBSUF = new DFeNFe.GIBSUF
             {
                 PIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pIBSUF, ObOp.Obrigatorio, 1, 7),
@@ -2692,10 +2710,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     PDif = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pDif, ObOp.Opcional, 1, 7),
                     VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDif, ObOp.Opcional, 1, 15)
                 },
-                GDevTrib = new DFeNFe.GDevTrib
-                {
-                    VDevTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDevTrib, ObOp.Opcional, 1, 15)
-                },
+                GDevTrib = CriarGrupoDevolucaoTributos(),
                 GRed = new DFeNFe.GRed
                 {
                     PRedAliq = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedAliq, ObOp.Opcional, 1, 7),
@@ -2707,7 +2722,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarTotalIbsCbsCreditoPresumido(int nProd, int lenPipesRegistro)
         {
-            //layout = "UB36|pIBSMun|pDif|vDif|vDevTrib|pRedAliq|pAliqEfet|vIBSMun|"
+            //layout = "UB36|pIBSMun|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vIBSMun|"
             ObterGIBSCBS(nProd).GIBSMun = new DFeNFe.GIBSMun
             {
                 PIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pIBSMun, ObOp.Obrigatorio, 1, 7),
@@ -2716,10 +2731,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     PDif = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pDif, ObOp.Opcional, 1, 7),
                     VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDif, ObOp.Opcional, 1, 15)
                 },
-                GDevTrib = new DFeNFe.GDevTrib
-                {
-                    VDevTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDevTrib, ObOp.Opcional, 1, 15)
-                },
+                GDevTrib = CriarGrupoDevolucaoTributos(),
                 GRed = new DFeNFe.GRed
                 {
                     PRedAliq = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedAliq, ObOp.Opcional, 1, 7),
@@ -2731,7 +2743,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarTotalIbsCbsReducao(int nProd, int lenPipesRegistro)
         {
-            //layout = "UB55|pCBS|pDif|vDif|vDevTrib|pRedAliq|pAliqEfet|vCBS|"
+            //layout = "UB55|pCBS|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vCBS|"
             ObterGIBSCBS(nProd).GCBS = new DFeNFe.GCBS
             {
                 PCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pCBS, ObOp.Obrigatorio, 1, 7),
@@ -2740,16 +2752,47 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     PDif = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pDif, ObOp.Opcional, 1, 7),
                     VDif = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDif, ObOp.Opcional, 1, 15)
                 },
-                GDevTrib = new DFeNFe.GDevTrib
-                {
-                    VDevTrib = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDevTrib, ObOp.Opcional, 1, 15)
-                },
+                GDevTrib = CriarGrupoDevolucaoTributos(),
                 GRed = new DFeNFe.GRed
                 {
                     PRedAliq = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pRedAliq, ObOp.Opcional, 1, 7),
                     PAliqEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqEfet, ObOp.Opcional, 1, 7)
                 },
                 VCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.vCBS, ObOp.Obrigatorio, 1, 7)
+            };
+        }
+
+        private DFeNFe.GDevTrib CriarGrupoDevolucaoTributos()
+        {
+            var percentualDevolucao = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pDevTrib, ObOp.Opcional, 7, true);
+            var valorDevolvido = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vDevTrib, ObOp.Opcional, 15, true);
+            if (percentualDevolucao == -9.99)
+            {
+                return null;
+            }
+
+            return new DFeNFe.GDevTrib
+            {
+                PDevTrib = percentualDevolucao == -9.99 ? 0 : percentualDevolucao,
+                VDevTrib = valorDevolvido == -9.99 ? 0 : valorDevolvido
+            };
+        }
+
+        private void ProcessarGrupoAreasIncentivadasCbs(int nProd, int lenPipesRegistro)
+        {
+            //layout = "UB66a|tpALCZFMCBS|nProcSuframa|pAliqEfetRegCBS|vTribRegCBS|"
+            var gCBS = ObterGIBSCBS(nProd).GCBS;
+            if (gCBS == null)
+            {
+                throw new Exception("Segmento UB66a informado sem o segmento UB55.");
+            }
+
+            gCBS.GALCZFMCBS = new DFeNFe.GALCZFMCBS
+            {
+                TpALCZFMCBS = (TipoAplicacaoAliquotaZeroCBS)this.LerInt32(TpcnResources.tpALCZFMCBS, ObOp.Obrigatorio, 1, 1),
+                NProcSuframa = VazioParaNulo(this.LerString(TpcnResources.nProcSuframa, ObOp.Opcional, 8, 12)),
+                PAliqEfetRegCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, TpcnResources.pAliqEfetRegCBS, ObOp.Obrigatorio, 1, 7),
+                VTribRegCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, TpcnResources.vTribRegCBS, ObOp.Obrigatorio, 1, 15)
             };
         }
 

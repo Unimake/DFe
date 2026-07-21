@@ -30,10 +30,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     layouts.Add("BA19", prefix + "BA19|refCTe|");
                     layouts.Add("B20J", prefix + "B20j|mod|nECF|nCOO|");
                     layouts.Add("BA20", prefix + "BA20|mod|nECF|nCOO|");
-                    layouts.Add("B31", prefix + "B31|tpEnteGov|pRedutor|tpOperGov|"); // ide->gCompraGov
-                    layouts.Add("BB01", prefix + "BB01|refNFe|"); // ide->gPagAntecipado
+                    layouts.Add("BB01", prefix + "BB01|tpEnteGov|pRedutor|tpOperGov|refDFeAnt|"); // ide->gCompraGov
+                    layouts.Add("BB05", prefix + "BB05|refDFeAnt|"); // ide->gCompraGov->refDFeAnt
+                    layouts.Add("BC01", prefix + "BC01|refDFe|"); // ide->gPagAntecipado
                     // "C"
-                    layouts.Add("C", prefix + "C|xNome|xFant|IE|IEST|IM|CNAE|CRT|");
+                    layouts.Add("C", prefix + "C|xNome|xFant|IE|IEST|IM|CNAE|CRT|ISUFEmit|");
                     layouts.Add("C02", prefix + "C02|CNPJ|");
                     layouts.Add("C02A", prefix + "C02a|CPF|");
                     layouts.Add("C05", prefix + "C05|xLgr|nro|xCpl|xBairro|cMun|xMun|UF|CEP|cPais|xPais|fone|");
@@ -199,13 +200,17 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     // "U":
                     layouts.Add("U_400", prefix + "U|VBC|VAliq|VISSQN|CMunFG|CListServ|vDeducao|vOutro|vDescIncond|vDescCond|vISSRet|indISS|cServico|cMun|cPais|nProcesso|indIncentivo|");
                     layouts.Add("UA", prefix + "UA|pDevol|vIPIDevol|");
-                    layouts.Add("UB01", prefix + "UB01|CSTIS|cClassTribIS|vBCIS|pIS|pISEspec|uTrib|qTrib|vIS|"); //IS
+                    layouts.Add("UB01", prefix + "UB01|CSTIS|cClassTribIS|vBCIS|pIS|adRemIS|uTrib|qTrib|vIS|"); //IS
                     layouts.Add("UB12", prefix + "UB12|CST|cClassTrib|"); //IBSCBS
                     layouts.Add("UB15", prefix + "UB15|vBC|vIBS|"); //IBSCBS->gIBSCBS
 
-                    layouts.Add("UB17", prefix + "UB17|pIBSUF|pDif|vDif|vDevTrib|pRedAliq|pAliqEfet|vIBSUF|"); //IBSCBS->gIBSCBS->gIBSUF
-                    layouts.Add("UB36", prefix + "UB36|pIBSMun|pDif|vDif|vDevTrib|pRedAliq|pAliqEfet|vIBSMun|"); //IBSCBS->gIBSCBS->gIBSMun
-                    layouts.Add("UB55", prefix + "UB55|pCBS|pDif|vDif|vDevTrib|pRedAliq|pAliqEfet|vCBS|"); //IBSCBS->gIBSCBS->gCBS
+                    layouts.Add("UB17", prefix + "UB17|pIBSUF|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vIBSUF|"); //IBSCBS->gIBSCBS->gIBSUF
+                    layouts.Add("UB17_8", prefix + "UB17|pIBSUF|pDif|vDif|vDevTrib|pRedAliq|pAliqEfet|vIBSUF|"); //Compatibilidade com o layout anterior
+                    layouts.Add("UB36", prefix + "UB36|pIBSMun|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vIBSMun|"); //IBSCBS->gIBSCBS->gIBSMun
+                    layouts.Add("UB36_8", prefix + "UB36|pIBSMun|pDif|vDif|vDevTrib|pRedAliq|pAliqEfet|vIBSMun|"); //Compatibilidade com o layout anterior
+                    layouts.Add("UB55", prefix + "UB55|pCBS|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vCBS|"); //IBSCBS->gIBSCBS->gCBS
+                    layouts.Add("UB55_8", prefix + "UB55|pCBS|pDif|vDif|vDevTrib|pRedAliq|pAliqEfet|vCBS|"); //Compatibilidade com o layout anterior
+                    layouts.Add("UB66A", prefix + "UB66a|tpALCZFMCBS|nProcSuframa|pAliqEfetRegCBS|vTribRegCBS|"); //IBSCBS->gIBSCBS->gCBS->gALCZFMCBS
 
                     layouts.Add("UB68", prefix + "UB68|CSTReg|cClassTribReg|pAliqEfetRegIBSUF|vTribRegIBSUF|pAliqEfetRegIBSMun|vTribRegIBSMun|pAliqEfetRegCBS|vTribRegCBS|"); //IBSCBS->gIBSCBS->gTribRegular
 
