@@ -216,6 +216,15 @@ namespace Unimake.Business.DFe
 
                 AtribuirUrl(servico, codigoUF, configuracao);
 
+                // A NT 2026.003 determina que a NF-e com DANFE Simplificado Tipo 2 utilize
+                // as URLs de consulta do Portal Nacional da NFC-e. Mantemos as URLs em uma
+                // única fonte no catálogo da NFC-e e as reutilizamos somente na validação da NF-e.
+                if (tipoDFe == TipoDFe.NFe && string.IsNullOrWhiteSpace(configuracao.UrlQrCodeHomologacao))
+                {
+                    var servicoNFCe = xmlConfig.SelectSingleNode("ServicosValidacao/NFCe/Servico[@tagRaiz='" + tagRaiz + "' and @versao='" + versao + "']");
+                    AtribuirUrl(servicoNFCe, codigoUF, configuracao);
+                }
+
                 var inform = MontarInformacaoGeral(servico, codigoConfiguracao);
 
                 try

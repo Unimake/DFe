@@ -41,6 +41,26 @@ namespace Unimake.Business.DFe.Utility
         /// </exception>
         public static void MontarQrCodeNFCe(XmlDocument conteudoXml, Configuracao configuracoes)
         {
+            MontarQrCodeNFe(conteudoXml, configuracoes, false);
+        }
+
+        /// <summary>
+        /// Monta e inclui o grupo suplementar <c>infNFeSupl</c> com as tags de QRCode para NF-e
+        /// emitida com DANFE Simplificado Tipo 2.
+        /// </summary>
+        /// <param name="conteudoXml">Documento XML da NF-e já carregado em memória.</param>
+        /// <param name="configuracoes">Configurações do serviço (ambiente, URLs e certificado).</param>
+        /// <remarks>
+        /// Conforme a NT 2026.003, a geração é aplicável exclusivamente à NF-e modelo 55 com
+        /// <c>tpImp</c> igual a 6. A composição da URL segue o QRCode versão 3 já utilizado pela NFC-e.
+        /// </remarks>
+        public static void MontarQrCodeNFeSimplificadoTipo2(XmlDocument conteudoXml, Configuracao configuracoes)
+        {
+            MontarQrCodeNFe(conteudoXml, configuracoes, true);
+        }
+
+        private static void MontarQrCodeNFe(XmlDocument conteudoXml, Configuracao configuracoes, bool somenteSimplificadoTipo2)
+        {
             XmlNodeList nodeListNFe;
 
             if (conteudoXml.GetElementsByTagName("enviNFe").Count > 0)
@@ -92,6 +112,13 @@ namespace Unimake.Business.DFe.Utility
                         throw new Exception("A tag obrigatória <ide>, do grupo de tag <enviNFe><NFe><infNFe>, não foi localizada no XML.");
                     }
                     var elementIde = (XmlElement)elementInfNFe.GetElementsByTagName("ide")[0];
+
+                    if (somenteSimplificadoTipo2 &&
+                        (elementIde.GetElementsByTagName("tpImp").Count <= 0 ||
+                         elementIde.GetElementsByTagName("tpImp")[0].InnerText != ((int)FormatoImpressaoDANFE.SimplificadoTipo2).ToString()))
+                    {
+                        continue;
+                    }
 
                     if (elementIde.GetElementsByTagName("tpEmis").Count <= 0)
                     {

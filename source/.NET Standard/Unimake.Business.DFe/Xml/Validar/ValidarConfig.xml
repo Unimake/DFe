@@ -267,6 +267,7 @@
       <TagExtraAssinatura></TagExtraAssinatura>
       <TagExtraAtributoID></TagExtraAtributoID>
       <TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+      <GerarQrCode>true</GerarQrCode>
     </Servico>
     <Servico tagRaiz ="NFe" versao ="4.00">
       <Descricao>Autorização da NFe</Descricao>
@@ -279,6 +280,7 @@
       <TagExtraAssinatura></TagExtraAssinatura>
       <TagExtraAtributoID></TagExtraAtributoID>
       <TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+      <GerarQrCode>true</GerarQrCode>
     </Servico>
     <Servico tagRaiz ="distDFeInt" versao ="1.01">
       <Descricao>Consulta da relação de documentos fiscais eletrônicos destinados - NFe</Descricao>
