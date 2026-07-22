@@ -177,7 +177,13 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         [Trait("DFe", "NFSe")]
         public void TesteGravarXmlDistribuicaoDeveManterUtf8()
         {
-            var servico = new ConsultarDistribuicaoNFSeNSU();
+            var servico = new ConsultarDistribuicaoNFSeNSU
+            {
+                Configuracoes = new Configuracao
+                {
+                    PadraoNFSe = PadraoNFSe.NACIONAL
+                }
+            };
             var pastaTemp = Path.Combine(Path.GetTempPath(), "ConsultarDistribuicaoNFSeNSU_UTF8", Guid.NewGuid().ToString("N"));
             var nomeArquivo = "nfse-utf8.xml";
             var conteudoXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><NFSe><Descricao>Suporte técnico em informática, instalação e configuração</Descricao></NFSe>";
@@ -205,6 +211,31 @@ namespace Unimake.DFe.Test.NFSe.Servicos
                 }
                 catch { }
             }
+        }
+
+        /// <summary>
+        /// Testa que a gravação do XML de distribuição fica restrita ao padrão NFSe Nacional
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFSe")]
+        public void TesteGravarXmlDistribuicaoDevePermitirApenasPadraoNacional()
+        {
+            var servico = new ConsultarDistribuicaoNFSeNSU
+            {
+                Configuracoes = new Configuracao
+                {
+                    PadraoNFSe = PadraoNFSe.GINFES
+                }
+            };
+
+            var ex = Assert.Throws<InvalidOperationException>(() =>
+                servico.GravarXmlDistribuicao(
+                    Path.GetTempPath(),
+                    "nfse.xml",
+                    "<?xml version=\"1.0\" encoding=\"utf-8\"?><NFSe />"));
+
+            Assert.Contains("disponível apenas para o padrão NACIONAL", ex.Message);
+            Assert.Contains("GINFES", ex.Message);
         }
 
         [Theory]
