@@ -75,6 +75,7 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Para bug fixes, prefira criar teste em `BugFixes` ou no DFe afetado, com recurso XML mínimo que reproduza o problema.
 - Ao implementar algo novo ou adaptar comportamento existente, execute somente os testes novos ou alterados. Não rode toda a suíte por padrão, pois ela é grande e demorada.
 - Se precisar validar regressão de um DFe específico, filtre pelos testes do DFe ou pela classe/método afetado. Rode todos os testes apenas quando a mudança atingir infraestrutura compartilhada, serialização base, assinatura, transporte, validação global ou quando isso for solicitado explicitamente.
+- Sempre que executar testes unitários da DLL, execute também os testes unitários do projeto `C:\projetos\github\UniNFe\source\UniNFe.Test\UniNFe.Test.csproj` em `Debug`. Nessa configuração, os projetos do UniNFe usam `ProjectReference` para este checkout e validam a DLL recém-alterada; aplique no UniNFe um filtro correspondente ao escopo testado na DLL quando houver uma suíte focada equivalente.
 
 ## Organização dos testes unitários
 

@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -10,6 +11,7 @@ using System.Xml;
 using Unimake.Business.DFe.ConsumirServico.Builders;
 using Unimake.Business.DFe.ConsumirServico.Compatibility;
 using Unimake.Business.DFe.Security;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Validator;
 using Unimake.Business.DFe.Validator.Abstractions;
 using Unimake.Business.DFe.Xml;
@@ -275,7 +277,31 @@ namespace Unimake.Business.DFe.Servicos
                 var apiConfig = new ConfiguracaoApiConfigMapper().Map(Configuracoes);
 
                 var consumirAPI = new ConsumirAPI();
-                consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
+                if (!TelemetriaDisponibilidade.EstaHabilitada(Configuracoes))
+                {
+                    consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
+                }
+                else
+                {
+                    var inicioTelemetria = Stopwatch.GetTimestamp();
+                    Exception falhaTransporte = null;
+                    try
+                    {
+                        consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
+                    }
+                    catch (Exception ex)
+                    {
+                        falhaTransporte = ex;
+                        throw;
+                    }
+                    finally
+                    {
+                        var duracaoTelemetria = (long)((Stopwatch.GetTimestamp() - inicioTelemetria) *
+                            1000.0 / Stopwatch.Frequency);
+                        TelemetriaDisponibilidade.Registrar(Configuracoes, apiConfig.RequestURI, "REST", duracaoTelemetria,
+                            consumirAPI.HttpStatusCode, consumirAPI.RetornoServicoXML, falhaTransporte);
+                    }
+                }
 
                 RetornoWSString = consumirAPI.RetornoServicoString;
                 RetornoWSRawString = consumirAPI.RetornoServicoRawString;
@@ -303,7 +329,31 @@ namespace Unimake.Business.DFe.Servicos
                 var soap = new ConfiguracaoWSSoapMapper().Map(Configuracoes);
 
                 var consumirWS = new ConsumirWS();
-                consumirWS.ExecutarServico(ConteudoXML, soap, Configuracoes.CertificadoDigital);
+                if (!TelemetriaDisponibilidade.EstaHabilitada(Configuracoes))
+                {
+                    consumirWS.ExecutarServico(ConteudoXML, soap, Configuracoes.CertificadoDigital);
+                }
+                else
+                {
+                    var inicioTelemetria = Stopwatch.GetTimestamp();
+                    Exception falhaTransporte = null;
+                    try
+                    {
+                        consumirWS.ExecutarServico(ConteudoXML, soap, Configuracoes.CertificadoDigital);
+                    }
+                    catch (Exception ex)
+                    {
+                        falhaTransporte = ex;
+                        throw;
+                    }
+                    finally
+                    {
+                        var duracaoTelemetria = (long)((Stopwatch.GetTimestamp() - inicioTelemetria) *
+                            1000.0 / Stopwatch.Frequency);
+                        TelemetriaDisponibilidade.Registrar(Configuracoes, soap.EnderecoWeb, "SOAP", duracaoTelemetria,
+                            consumirWS.HttpStatusCode, consumirWS.RetornoServicoXML, falhaTransporte);
+                    }
+                }
 
                 RetornoWSString = consumirWS.RetornoServicoString;
                 RetornoWSXML = consumirWS.RetornoServicoXML;

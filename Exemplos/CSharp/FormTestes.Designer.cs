@@ -178,6 +178,7 @@ namespace TreinamentoDLL
             this.btnConsultarCIOTGerado = new System.Windows.Forms.Button();
             this.btnDeclaracaoOperacaoTransporte = new System.Windows.Forms.Button();
             this.btnGerarIdOperacaoTransporte = new System.Windows.Forms.Button();
+            this.btnDistribuicaoNFSe = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1701,6 +1702,7 @@ namespace TreinamentoDLL
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btnDistribuicaoNFSe);
             this.tabPage4.Controls.Add(this.BtnConsultarPdfNFSe);
             this.tabPage4.Controls.Add(this.BtnEnviarCancNFSe);
             this.tabPage4.Controls.Add(this.BtnConsultarNFSe);
@@ -2019,6 +2021,18 @@ namespace TreinamentoDLL
             this.btnGerarIdOperacaoTransporte.UseVisualStyleBackColor = true;
             this.btnGerarIdOperacaoTransporte.Click += new System.EventHandler(this.btnGerarIdOperacaoTransporte_Click);
             // 
+            // btnDistribuicaoNFSe
+            // 
+            this.btnDistribuicaoNFSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDistribuicaoNFSe.Location = new System.Drawing.Point(8, 690);
+            this.btnDistribuicaoNFSe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDistribuicaoNFSe.Name = "btnDistribuicaoNFSe";
+            this.btnDistribuicaoNFSe.Size = new System.Drawing.Size(296, 37);
+            this.btnDistribuicaoNFSe.TabIndex = 30;
+            this.btnDistribuicaoNFSe.Text = "NACIONAL - Distribuicao NFSe";
+            this.btnDistribuicaoNFSe.UseVisualStyleBackColor = true;
+            this.btnDistribuicaoNFSe.Click += new System.EventHandler(this.btnDistribuicaoNFSe_Click);
+            // 
             // FormTestes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -2202,6 +2216,7 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button btnConsultarFrotaTransportador;
         private System.Windows.Forms.Button btnConsultarExcecao;
         private System.Windows.Forms.Button btnConsultarCIOTGerado;
+        private System.Windows.Forms.Button btnDistribuicaoNFSe;
     }
 }
 

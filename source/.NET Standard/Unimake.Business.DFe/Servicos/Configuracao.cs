@@ -32,6 +32,12 @@ namespace Unimake.Business.DFe.Servicos
 
         #endregion Private Fields
 
+        #region Internal Properties
+
+        internal X509Certificate2 CertificadoDigitalCarregado => _certificadoDigital;
+
+        #endregion Internal Properties
+
         #region Private Properties
 
         /// <summary>
@@ -1051,6 +1057,12 @@ namespace Unimake.Business.DFe.Servicos
         /// Configuração já foi definida anteriormente, não precisa carregar de acordo com os dados do XML
         /// </summary>
         public bool Definida { get; set; }
+
+        /// <summary>
+        /// Habilita a coleta passiva e sanitizada de evidências de disponibilidade para esta execução fiscal.
+        /// A coleta não cria requisições adicionais e permanece somente em memória.
+        /// </summary>
+        public bool ColetarTelemetriaDisponibilidade { get; set; }
 
         /// <summary>
         /// Descrição do serviço

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
@@ -182,6 +181,9 @@ namespace Unimake.Business.DFe
         /// <exception cref="Exception"></exception>
         public ResultadoValidacao ValidarServico(XmlDocument xml, Configuracao configuracao)
         {
+            //Tenho que salvar o tipo do DFe antes pois no caso da NFCe é alterado para NFe e temos que voltar antes de sair do método, pois a configuração é compartilhada e não podemos alterar o tipo do DFe da configuração original.
+            var tipoDFeSalva = configuracao.TipoDFe;
+
             var certificado = configuracao.CertificadoDigital;
             var tipoAmbiente = configuracao.TipoAmbiente;
             var padraoNFSe = configuracao.PadraoNFSe;
@@ -246,6 +248,10 @@ namespace Unimake.Business.DFe
             catch (Exception ex)
             {
                 return CriarResultadoFalha(xml, null, ex, ObterStatus(ex));
+            }
+            finally
+            {
+                configuracao.TipoDFe = tipoDFeSalva;
             }
         }
 

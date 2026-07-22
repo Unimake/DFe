@@ -7,24 +7,26 @@ using System.Xml;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.NFSe;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Business.DFe.Xml.DCe;
 using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Business.DFe.Xml.NF3e;
 using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta;
 using Unimake.Exceptions;
 using Unimake.Security.Platform;
 using Unimake.Unidanfe;
 using Unimake.Unidanfe.Configurations;
 using DANFe = Unimake.Unidanfe;
 using DFe = Unimake.Business.DFe;
+using ServicoBPe = Unimake.Business.DFe.Servicos.BPe;
 using ServicoCCG = Unimake.Business.DFe.Servicos.CCG;
 using ServicoCIOT = Unimake.Business.DFe.Servicos.CIOT;
 using ServicoCTe = Unimake.Business.DFe.Servicos.CTe;
 using ServicoCTeOS = Unimake.Business.DFe.Servicos.CTeOS;
 using ServicoDCe = Unimake.Business.DFe.Servicos.DCe;
-using ServicoBPe = Unimake.Business.DFe.Servicos.BPe;
 using ServicoEFDReinf = Unimake.Business.DFe.Servicos.EFDReinf;
 using ServicoESocial = Unimake.Business.DFe.Servicos.ESocial;
 using ServicoGNRe = Unimake.Business.DFe.Servicos.GNRE;
@@ -34,14 +36,14 @@ using ServicoNFCe = Unimake.Business.DFe.Servicos.NFCe;
 using ServicoNFCom = Unimake.Business.DFe.Servicos.NFCom;
 using ServicoNFe = Unimake.Business.DFe.Servicos.NFe;
 using ServicoNFSe = Unimake.Business.DFe.Servicos.NFSe;
+using XmlBPe = Unimake.Business.DFe.Xml.BPe;
+using XmlBPeTA = Unimake.Business.DFe.Xml.BPeTA;
+using XmlBPeTM = Unimake.Business.DFe.Xml.BPeTM;
 using XmlCCG = Unimake.Business.DFe.Xml.CCG;
 using XmlCIOT = Unimake.Business.DFe.Xml.CIOT;
 using XmlCTe = Unimake.Business.DFe.Xml.CTe;
 using XmlCTeOS = Unimake.Business.DFe.Xml.CTeOS;
 using XmlDCe = Unimake.Business.DFe.Xml.DCe;
-using XmlBPe = Unimake.Business.DFe.Xml.BPe;
-using XmlBPeTA = Unimake.Business.DFe.Xml.BPeTA;
-using XmlBPeTM = Unimake.Business.DFe.Xml.BPeTM;
 using XmlEFDReinf = Unimake.Business.DFe.Xml.EFDReinf;
 using XmlESocial = Unimake.Business.DFe.Xml.ESocial;
 using XmlGNRe = Unimake.Business.DFe.Xml.GNRE;
@@ -4517,6 +4519,98 @@ namespace TreinamentoDLL
 
                     //Salvar XMLs do docZIP no HD
                     distribuicaoDFe.GravarXMLDocZIP(folder, true);
+
+                    //Resumo das notas já em objeto
+                    foreach (var resNFes in distribuicaoDFe.ResNFes)
+                    {
+                        var chNFe = resNFes.ChNFe;
+                        var dhEmi = resNFes.DhEmi;
+                    }
+
+                    //Resumo dos eventos já em objeto
+                    foreach (var resEventos in distribuicaoDFe.ResEventos)
+                    {
+                        var chNFe = resEventos.ChNFe;
+                        var dhEmi = resEventos.DhRecbto;
+                    }
+
+                    //Eventos completos já em objeto
+                    foreach (var procEventoNFes in distribuicaoDFe.ProcEventoNFes)
+                    {
+                        var chNFe = procEventoNFes.Evento.InfEvento.ChNFe;
+                        var tpEvento = procEventoNFes.Evento.InfEvento.TpEvento;
+                    }
+
+                    //NFes completas já em objeto
+                    foreach (var procNFes in distribuicaoDFe.ProcNFes)
+                    {
+                        var dhEmi = procNFes.NFe.InfNFeField.Ide.DhEmi;
+                        var id = procNFes.NFe.InfNFeField.Id;
+                        var chave = procNFes.NFe.InfNFeField.Chave;
+                    }
+
+                    foreach (var docZip in distribuicaoDFe.Result.LoteDistDFeInt.DocZip)
+                    {
+                        switch (docZip.TipoXML)
+                        {
+                            case TipoXMLDocZip.ResNFe:
+                                //Executar as ações necessárias para o XML de resumo da NFe
+
+                                //XML no formato XmlDocument
+                                var xmlResNFe = docZip.DocXML;
+
+                                //XML no formato string
+                                var xmlResNFeString = docZip.ConteudoXML;
+
+                                //XML no formato Base64
+                                var xmlResNFeBase64 = docZip.Value;
+
+                                break;
+
+                            case TipoXMLDocZip.ResEvento:
+                                //Executar as ações necessárias para o XML de resumo dos eventos da NFe
+
+                                //XML no formato XmlDocument
+                                var xmlResEvento = docZip.DocXML;
+
+                                //XML no formato string
+                                var xmlResEventoString = docZip.ConteudoXML;
+
+                                //XML no formato Base64
+                                var xmlResEventoBase64 = docZip.Value;
+
+                                break;
+
+                            case TipoXMLDocZip.ProcNFe:
+                                //Executar as ações necessárias para o XML de distribuição da NFe (NFe completa)
+
+                                //XML no formato XmlDocument
+                                var xmlProcNFe = docZip.DocXML;
+
+                                //XML no formato string
+                                var xmlProcNFeString = docZip.ConteudoXML;
+
+                                //XML no formato Base64
+                                var xmlProcNFeBase64 = docZip.Value;
+
+                                break;
+
+                            case TipoXMLDocZip.ProcEventoNFe:
+                                //Executar as ações necessárias para o XML de distribuição dos eventos da NFe (Eventos completos)
+
+                                //XML no formato XmlDocument
+                                var xmlProcEventoNFe = docZip.DocXML;
+
+                                //XML no formato string
+                                var xmlProcEventoNFeString = docZip.ConteudoXML;
+
+                                //XML no formato Base64
+                                var xmlProcEventoNFeBase64 = docZip.Value;
+
+                                break;
+
+                        }
+                    }
                 }
 
                 nsu = distribuicaoDFe.Result.UltNSU; //Salvar o ultNSU para usar na próxima consulta
@@ -9559,6 +9653,57 @@ namespace TreinamentoDLL
                 CodigoUF = (int)UFBrasil.AN,
                 CertificadoDigital = CertificadoSelecionado
             };
+        }
+
+        private void btnDistribuicaoNFSe_Click(object sender, EventArgs e)
+        {
+            //Configuração mínima
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = CertificadoSelecionado,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeConsultarDistribuicaoNFSeNSU,
+                SchemaVersao = "1.01"
+            };
+
+
+            //XML de Distribuição para consulta de NSU
+            var distribuicaoNFSe = new DistribuicaoNFSe
+            {
+                NSU = "1",
+                TipoNSU = "DISTRIBUICAO",
+                Lote = "false"
+            };
+
+            //Consumir o serviço
+            var consultarNSU = new ConsultarDistribuicaoNFSeNSU(distribuicaoNFSe.GerarXML(), configuracao);
+            consultarNSU.Executar();
+
+            if (consultarNSU.Result.LoteDFe?.Count > 0)
+            {
+                //Notas retornadas
+                foreach (var loteDFe in consultarNSU.Result.LoteDFe)
+                {
+
+                    MessageBox.Show("NSU: " + loteDFe.NSU + "\r\n" +
+                                    "Numero da NFSe: " + loteDFe.ArquivoXml.NFSe.InfNFSe.NNFSe);
+
+                    //String do XML da nota
+                    var xmlNFSeString = loteDFe.ConteudoXML;
+                }
+            }
+            else
+            {
+                if (consultarNSU.Result.Erros?.Count > 0)
+                {
+                    foreach (var erro in consultarNSU.Result.Erros)
+                    {
+                        MessageBox.Show(erro.Codigo + " - " + erro.Descricao + " - " + erro.Complemento);                        
+                    }
+                }
+            }
         }
     }
 }

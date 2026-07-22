@@ -39,10 +39,10 @@
       <HintPath>packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
     <Reference Include="GeradorCIOTShared, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.DFe.20260710.1617.22\lib\net472\GeradorCIOTShared.dll</HintPath>
+      <HintPath>packages\Unimake.DFe.20260721.1022.26\lib\net472\GeradorCIOTShared.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.Cryptography, Version=10.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Bcl.Cryptography.10.0.9\lib\net462\Microsoft.Bcl.Cryptography.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.Cryptography, Version=10.0.0.10, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.Cryptography.10.0.10\lib\net462\Microsoft.Bcl.Cryptography.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -56,8 +56,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.Formats.Asn1, Version=10.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Formats.Asn1.10.0.9\lib\net462\System.Formats.Asn1.dll</HintPath>
+    <Reference Include="System.Formats.Asn1, Version=10.0.0.10, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Formats.Asn1.10.0.10\lib\net462\System.Formats.Asn1.dll</HintPath>
     </Reference>
     <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
@@ -102,11 +102,11 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Security.Cryptography.Xml, Version=10.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Security.Cryptography.Xml.10.0.9\lib\net462\System.Security.Cryptography.Xml.dll</HintPath>
+    <Reference Include="System.Security.Cryptography.Xml, Version=10.0.0.10, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Xml.10.0.10\lib\net462\System.Security.Cryptography.Xml.dll</HintPath>
     </Reference>
-    <Reference Include="System.Security.Permissions, Version=10.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Security.Permissions.10.0.9\lib\net462\System.Security.Permissions.dll</HintPath>
+    <Reference Include="System.Security.Permissions, Version=10.0.0.10, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Permissions.10.0.10\lib\net462\System.Security.Permissions.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
@@ -123,14 +123,14 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Unimake.Business.DFe, Version=2026.7.10.1617, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.DFe.20260710.1617.22\lib\net472\Unimake.Business.DFe.dll</HintPath>
+    <Reference Include="Unimake.Business.DFe, Version=2026.7.21.1022, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Unimake.DFe.20260721.1022.26\lib\net472\Unimake.Business.DFe.dll</HintPath>
     </Reference>
-    <Reference Include="Unimake.Cryptography, Version=2026.6.18.1051, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.Cryptography.20260618.1051.35\lib\netstandard2.0\Unimake.Cryptography.dll</HintPath>
+    <Reference Include="Unimake.Cryptography, Version=2026.7.20.1548, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Unimake.Cryptography.20260720.1548.24\lib\netstandard2.0\Unimake.Cryptography.dll</HintPath>
     </Reference>
-    <Reference Include="Unimake.Extensions, Version=2026.6.18.1051, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.Extensions.20260618.1051.35\lib\netstandard2.0\Unimake.Extensions.dll</HintPath>
+    <Reference Include="Unimake.Extensions, Version=2026.7.20.1548, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Unimake.Extensions.20260720.1548.24\lib\netstandard2.0\Unimake.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Unimake.Security.Platform, Version=2023.7.6.1027, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Unimake.Security.Platform.20230706.1027.33\lib\net\Unimake.Security.Platform.dll</HintPath>
@@ -138,8 +138,8 @@
     <Reference Include="Unimake.Unidanfe, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Unimake.Unidanfe.20260615.1704.43\lib\net472\Unimake.Unidanfe.dll</HintPath>
     </Reference>
-    <Reference Include="Unimake.Utils, Version=2026.6.18.1051, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.Utils.20260618.1051.35\lib\netstandard2.0\Unimake.Utils.dll</HintPath>
+    <Reference Include="Unimake.Utils, Version=2026.7.20.1548, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Unimake.Utils.20260720.1548.24\lib\netstandard2.0\Unimake.Utils.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
