@@ -31,7 +31,7 @@
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/dce/wsdl/DCeAutorizacao</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/dce/wsdl/DCeAutorizacao</WebActionProducao>
 			<WebTagRetorno>dceResultMsg</WebTagRetorno>
-			<GZIPCompress>true</GZIPCompress>
+			<GZIPCompress>false</GZIPCompress>
 			<UrlQrCodeHomologacao>https://www.fazenda.pr.gov.br/dce/qrcode</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>https://www.fazenda.pr.gov.br/dce/qrcode</UrlQrCodeProducao>
 			<UrlChaveHomologacao>https://www.fazenda.pr.gov.br/dce/qrcode</UrlChaveHomologacao>

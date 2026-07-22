@@ -2945,10 +2945,10 @@
           <UF>SP</UF>
           <UF>TO</UF>
           <Urls>
-            <UrlChaveHomologacao>https://dfe-portal.svrs.rs.gov.br/dce/qrCode</UrlChaveHomologacao>
-            <UrlChaveProducao>https://dfe-portal.svrs.rs.gov.br/dce/qrCode</UrlChaveProducao>
-            <UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/dce/qrCode</UrlQrCodeHomologacao>
-            <UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/dce/qrCode</UrlQrCodeProducao>
+            <UrlChaveHomologacao>https://www.fazenda.pr.gov.br/dce/qrcode</UrlChaveHomologacao>
+            <UrlChaveProducao>https://www.fazenda.pr.gov.br/dce/qrcode</UrlChaveProducao>
+            <UrlQrCodeHomologacao>https://www.fazenda.pr.gov.br/dce/qrcode</UrlQrCodeHomologacao>
+            <UrlQrCodeProducao>https://www.fazenda.pr.gov.br/dce/qrcode</UrlQrCodeProducao>
           </Urls>
         </Grupo>
       </GrupoUrl>
