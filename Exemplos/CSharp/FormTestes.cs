@@ -1086,6 +1086,8 @@ namespace TreinamentoDLL
                         XContato = "TESTE TESTE TESTE",
                         Email = "wandrey@unimake.com.br",
                         Fone = "04431421010",
+                        HashCSRT = "COLOQUE AQUI SÓ O CSRT, A DLL GERA O HASH AUTOMATICAMENTE",
+                        IdCSRT = "01"
                     },
                 },
             };
