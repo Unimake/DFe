@@ -143,5 +143,62 @@
 			<SchemaVersao>2.04</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarNfseFaixa>
+		<!--VERSÃO 1.01-->
+		<GerarNfse versao="1.01">
+			<Descricao>Envio do DPS - Sincrono</Descricao>
+			<RequestURIProducao></RequestURIProducao>
+			<RequestURIHomologacao>https://nfse-backend.portovelho.ro.gov.br/producao/api/nacional/homologacao/nfse?token={token}</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</GerarNfse>
+		<CancelarNfse versao="1.01">
+			<Descricao>Envio do cancelamento de NFSe</Descricao>
+			<RequestURIProducao></RequestURIProducao>
+			<RequestURIHomologacao>https://nfse-backend.portovelho.ro.gov.br/producao/api/nacional/homologacao/nfse/{chaveAcesso}/eventos?token={token}</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</CancelarNfse>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao></RequestURIProducao>
+			<RequestURIHomologacao>https://nfse-backend.portovelho.ro.gov.br/producao/api/nacional/homologacao/nfse/{Chave}?token={token}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfse>
+		<ConsultarNfsePorRps versao="1.01">
+			<Descricao>Consultar NFSe por DPS</Descricao>
+			<RequestURIProducao></RequestURIProducao>
+			<RequestURIHomologacao>https://nfse-backend.portovelho.ro.gov.br/producao/api/nacional/homologacao/dps/{Chave}?token={token}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>
