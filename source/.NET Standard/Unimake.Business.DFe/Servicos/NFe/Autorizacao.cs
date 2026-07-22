@@ -215,6 +215,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                             switch (Result.ProtNFe.InfProt.CStat)
                             {
                                 case 100: //Autorizado o uso da NF-e
+                                case 120: //Autorizado o uso da NF-e, com alerta
                                 case 110: //Uso Denegado
                                 case 150: //Autorizado o uso da NF-e, autorização fora de prazo
                                 case 205: //NF-e está denegada na base de dados da SEFAZ [nRec:999999999999999]
@@ -283,6 +284,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                             switch (item.InfProt.CStat)
                                             {
                                                 case 100: //Autorizado o uso da NF-e
+                                                case 120: //Autorizado o uso da NF-e, com alerta
                                                 case 110: //Uso Denegado
                                                 case 150: //Autorizado o uso da NF-e, autorização fora de prazo
                                                 case 205: //NF-e está denegada na base de dados da SEFAZ [nRec:999999999999999]
@@ -312,6 +314,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                             switch (item.ProtNFe.InfProt.CStat)
                                             {
                                                 case 100: //Autorizado o uso da NF-e
+                                                case 120: //Autorizado o uso da NF-e, com alerta
                                                 case 110: //Uso Denegado
                                                 case 150: //Autorizado o uso da NF-e, autorização fora de prazo
                                                 case 205: //NF-e está denegada na base de dados da SEFAZ [nRec:999999999999999]
