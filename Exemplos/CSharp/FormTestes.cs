@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
@@ -219,11 +220,22 @@ namespace TreinamentoDLL
             {
                 TipoDFe = TipoDFe.NFCe,
                 TipoEmissao = TipoEmissao.Normal,
-                CertificadoDigital = CertificadoSelecionado
+                CertificadoDigital = CertificadoSelecionado,
+                ColetarTelemetriaDisponibilidade = true
             };
 
             var statusServico = new ServicoNFCe.StatusServico(xml, configuracao);
-            statusServico.Executar();
+            try
+            {
+                statusServico.Executar();
+                AtualizarIndicadorComDiagnostico(configuracao);
+            }
+            catch (Exception exception)
+            {
+                AtualizarIndicadorComDiagnostico(configuracao);
+                MessageBox.Show(exception.Message, "Falha ao consultar NFCe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             MessageBox.Show(statusServico.Result.CStat + " " + statusServico.Result.XMotivo);
         }
@@ -241,11 +253,22 @@ namespace TreinamentoDLL
             {
                 TipoDFe = TipoDFe.NFe,
                 TipoEmissao = TipoEmissao.Normal,
-                CertificadoDigital = CertificadoSelecionado
+                CertificadoDigital = CertificadoSelecionado,
+                ColetarTelemetriaDisponibilidade = true
             };
 
             var statusServico = new ServicoNFe.StatusServico(xml, configuracao);
-            statusServico.Executar();
+            try
+            {
+                statusServico.Executar();
+                AtualizarIndicadorComDiagnostico(configuracao);
+            }
+            catch (Exception exception)
+            {
+                AtualizarIndicadorComDiagnostico(configuracao);
+                MessageBox.Show(exception.Message, "Falha ao consultar NFe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             MessageBox.Show(statusServico.Result.CStat + " " + statusServico.Result.XMotivo);
         }
@@ -1086,7 +1109,7 @@ namespace TreinamentoDLL
                         XContato = "TESTE TESTE TESTE",
                         Email = "wandrey@unimake.com.br",
                         Fone = "04431421010",
-                        HashCSRT = "COLOQUE AQUI SÓ O CSRT, A DLL GERA O HASH AUTOMATICAMENTE",
+                        HashCSRT = Convert.FromBase64String(Converter.CalculateSHA1Hash("COLOQUE AQUI SÓ O CSRT, A DLL GERA O HASH AUTOMATICAMENTE")),
                         IdCSRT = "01"
                     },
                 },
@@ -1377,11 +1400,22 @@ namespace TreinamentoDLL
                 TipoDFe = TipoDFe.NFCe,
                 CertificadoDigital = CertificadoSelecionado,
                 CSC = "HCJBIRTWGCQ3HVQN7DCA0ZY0P2NYT6FVLPJG",
-                CSCIDToken = 2
+                CSCIDToken = 2,
+                ColetarTelemetriaDisponibilidade = true
             };
 
             var autorizacao = new ServicoNFCe.Autorizacao(xml, configuracao);
-            autorizacao.Executar();
+            try
+            {
+                autorizacao.Executar();
+                AtualizarIndicadorComDiagnostico(configuracao);
+            }
+            catch (Exception exception)
+            {
+                AtualizarIndicadorComDiagnostico(configuracao);
+                MessageBox.Show(exception.Message, "Falha ao enviar NFCe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (autorizacao.Result.ProtNFe != null)
             {
@@ -2279,14 +2313,25 @@ namespace TreinamentoDLL
             {
                 TipoDFe = TipoDFe.NFe,
                 TipoEmissao = TipoEmissao.Normal,
-                CertificadoDigital = CertificadoSelecionado
+                CertificadoDigital = CertificadoSelecionado,
+                ColetarTelemetriaDisponibilidade = true
             };
 
             var autorizacao = new ServicoNFe.Autorizacao(xml, configuracao);
             var xmlNFeAssinadoNoFormatoString = autorizacao.ConteudoXMLAssinado.OuterXml;
 
             //Gravo no meu banco de dados o xmlString
-            autorizacao.Executar();
+            try
+            {
+                autorizacao.Executar();
+                AtualizarIndicadorComDiagnostico(configuracao);
+            }
+            catch (Exception exception)
+            {
+                AtualizarIndicadorComDiagnostico(configuracao);
+                MessageBox.Show(exception.Message, "Falha ao enviar NFe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
 
             //Gravar o arquivo do conteúdo retornado em uma pasta qualquer para ter em segurança. Pode-se também gravar na base de dados. Fica a critério de cada um.
@@ -2969,6 +3014,87 @@ namespace TreinamentoDLL
         #region Public Constructors
 
         public FormTestes() => InitializeComponent();
+
+        private void AtualizarIndicador(TipoDFe tipoDFe, StatusDisponibilidade status, string detalhe)
+        {
+            var indicador = tipoDFe == TipoDFe.NFCe ? IndicadorNFCe : IndicadorNFe;
+            var documento = tipoDFe == TipoDFe.NFCe ? "NFCe" : "NFe";
+            string cor;
+
+            switch (status)
+            {
+                case StatusDisponibilidade.Operacional:
+                    cor = "VERDE";
+                    indicador.BackColor = Color.Honeydew;
+                    indicador.ForeColor = Color.DarkGreen;
+                    break;
+
+                case StatusDisponibilidade.Degradado:
+                case StatusDisponibilidade.ParcialmenteIndisponivel:
+                    cor = "AMARELO";
+                    indicador.BackColor = Color.LightYellow;
+                    indicador.ForeColor = Color.DarkGoldenrod;
+                    break;
+
+                default:
+                    cor = "VERMELHO";
+                    indicador.BackColor = Color.MistyRose;
+                    indicador.ForeColor = Color.DarkRed;
+                    break;
+            }
+
+            indicador.Text = "● " + documento + ": " + cor + " - " + status.ToString().ToUpperInvariant() +
+                Environment.NewLine + LimitarDetalhe(detalhe) +
+                Environment.NewLine + "Executado às " + DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private static string LimitarDetalhe(string detalhe)
+        {
+            if (string.IsNullOrWhiteSpace(detalhe)) return string.Empty;
+            detalhe = detalhe.Replace(Environment.NewLine, " ").Replace("\r", " ").Replace("\n", " ");
+            return detalhe.Length > 75 ? detalhe.Substring(0, 75) + "..." : detalhe;
+        }
+
+        private void AtualizarIndicadorComDiagnostico(Configuracao configuracao)
+        {
+            try
+            {
+                // Antes de executar o serviço fiscal, a configuração usada na consulta ou autorização
+                // recebeu ColetarTelemetriaDisponibilidade = true. Por isso, a própria DLL já registrou
+                // em memória o resultado da operação real: cStat, HTTP, duração ou exceção de transporte.
+                var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracao);
+
+                // Primeiro usamos somente a telemetria passiva. Este método não acessa a internet,
+                // não consulta novamente o StatusServico e não executa testes adicionais de rede.
+                // Se a operação real respondeu normalmente, essa evidência já é suficiente para
+                // atualizar o indicador sem acrescentar qualquer custo ao processo de emissão.
+                var resultado = diagnostico.ObterDiagnosticoPassivo();
+
+                if (resultado.Status != StatusDisponibilidade.Operacional)
+                {
+                    // Quando a operação real falha, fica lenta ou não fornece evidência suficiente,
+                    // enriquecemos o diagnóstico com verificações locais de DNS, TCP, TLS e proxy.
+                    //
+                    // Executar() NÃO envia outra NFe/NFCe, NÃO cria XML fiscal sintético e NÃO realiza
+                    // uma nova autorização. Ele reaproveita a telemetria existente e executa somente
+                    // as verificações locais de infraestrutura necessárias para ajudar a descobrir se
+                    // o problema está na SEFAZ, na internet, no proxy, no certificado ou na configuração.
+                    //
+                    // Essas verificações possuem cache interno. Assim, chamadas próximas não repetem
+                    // desnecessariamente os mesmos testes de infraestrutura.
+                    resultado = diagnostico.Executar();
+                }
+
+                // A aplicação cliente não precisa conhecer cStat, WebExceptionStatus ou regras de
+                // agregação. Ela usa o Status para escolher a cor e a Descricao para orientar o usuário.
+                AtualizarIndicador(configuracao.TipoDFe, resultado.Status, resultado.Descricao);
+            }
+            catch (Exception exception)
+            {
+                AtualizarIndicador(configuracao.TipoDFe, StatusDisponibilidade.Inconclusivo,
+                    "Não foi possível concluir o diagnóstico: " + exception.Message);
+            }
+        }
 
 
         #endregion Public Constructors
@@ -8087,7 +8213,7 @@ namespace TreinamentoDLL
                     COrgao = (int)UFBrasil.PR,
                     TpAmb = TipoAmbiente.Homologacao,
                     CNPJ = "00000000000199",
-                    ChBPe = "35260712345678000195630010000000011123456780",                             
+                    ChBPe = "35260712345678000195630010000000011123456780",
                     DhEvento = DateTimeOffset.Now,
                     TpEvento = TipoEventoBPe.Cancelamento,
                     NSeqEvento = 1,
@@ -8743,7 +8869,7 @@ namespace TreinamentoDLL
                                     TpOperGov = TipoOperacaoEnteGovernamental.FornecimentoPagamentoJaRealizado
                                 },
                                 GPagAntecipado = new XmlNFe.GPagAntecipado //RTC
-                                {                                    
+                                {
                                     RefDFe = new List<string>
                                     {
                                         "00000000000000000000000000000000000000000000",
@@ -9702,7 +9828,7 @@ namespace TreinamentoDLL
                 {
                     foreach (var erro in consultarNSU.Result.Erros)
                     {
-                        MessageBox.Show(erro.Codigo + " - " + erro.Descricao + " - " + erro.Complemento);                        
+                        MessageBox.Show(erro.Codigo + " - " + erro.Descricao + " - " + erro.Complemento);
                     }
                 }
             }

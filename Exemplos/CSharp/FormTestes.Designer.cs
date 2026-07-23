@@ -132,6 +132,8 @@ namespace TreinamentoDLL
             this.BtnConsultaStatusBPe = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBoxDisponibilidadeNFe = new System.Windows.Forms.GroupBox();
+            this.IndicadorNFe = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnEventoSolicitacaoApropriacaoCreditoBensServicosAdquirente = new System.Windows.Forms.Button();
             this.BtnEventoSolicitacaoApropriacaoCreditoCombustivel = new System.Windows.Forms.Button();
@@ -154,8 +156,11 @@ namespace TreinamentoDLL
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BtnEnviarNFeSincronoRTC = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBoxDisponibilidadeNFCe = new System.Windows.Forms.GroupBox();
+            this.IndicadorNFCe = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnDistribuicaoNFSe = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
@@ -178,12 +183,13 @@ namespace TreinamentoDLL
             this.btnConsultarCIOTGerado = new System.Windows.Forms.Button();
             this.btnDeclaracaoOperacaoTransporte = new System.Windows.Forms.Button();
             this.btnGerarIdOperacaoTransporte = new System.Windows.Forms.Button();
-            this.btnDistribuicaoNFSe = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBoxDisponibilidadeNFe.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBoxDisponibilidadeNFCe.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -1372,6 +1378,7 @@ namespace TreinamentoDLL
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBoxDisponibilidadeNFe);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.btnImpDANFESemValorFiscal);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -1399,6 +1406,29 @@ namespace TreinamentoDLL
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "NFe";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxDisponibilidadeNFe
+            // 
+            this.groupBoxDisponibilidadeNFe.Controls.Add(this.IndicadorNFe);
+            this.groupBoxDisponibilidadeNFe.Location = new System.Drawing.Point(1235, 561);
+            this.groupBoxDisponibilidadeNFe.Name = "groupBoxDisponibilidadeNFe";
+            this.groupBoxDisponibilidadeNFe.Size = new System.Drawing.Size(453, 430);
+            this.groupBoxDisponibilidadeNFe.TabIndex = 40;
+            this.groupBoxDisponibilidadeNFe.TabStop = false;
+            this.groupBoxDisponibilidadeNFe.Text = "Teste Disponibilidade Serviço NFe";
+            // 
+            // IndicadorNFe
+            // 
+            this.IndicadorNFe.BackColor = System.Drawing.Color.LightGray;
+            this.IndicadorNFe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IndicadorNFe.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IndicadorNFe.ForeColor = System.Drawing.Color.DimGray;
+            this.IndicadorNFe.Location = new System.Drawing.Point(3, 22);
+            this.IndicadorNFe.Name = "IndicadorNFe";
+            this.IndicadorNFe.Size = new System.Drawing.Size(447, 405);
+            this.IndicadorNFe.TabIndex = 0;
+            this.IndicadorNFe.Text = "● NFe: AGUARDANDO TESTE";
+            this.IndicadorNFe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox2
             // 
@@ -1666,6 +1696,7 @@ namespace TreinamentoDLL
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBoxDisponibilidadeNFCe);
             this.tabPage2.Controls.Add(this.BtnInutilizacaoNFCe);
             this.tabPage2.Controls.Add(this.BtnConsultaStatusNFCe);
             this.tabPage2.Controls.Add(this.BtnEnviarEventoCancelamentoNFCe);
@@ -1681,6 +1712,29 @@ namespace TreinamentoDLL
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "NFCe";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxDisponibilidadeNFCe
+            // 
+            this.groupBoxDisponibilidadeNFCe.Controls.Add(this.IndicadorNFCe);
+            this.groupBoxDisponibilidadeNFCe.Location = new System.Drawing.Point(1238, 541);
+            this.groupBoxDisponibilidadeNFCe.Name = "groupBoxDisponibilidadeNFCe";
+            this.groupBoxDisponibilidadeNFCe.Size = new System.Drawing.Size(453, 450);
+            this.groupBoxDisponibilidadeNFCe.TabIndex = 41;
+            this.groupBoxDisponibilidadeNFCe.TabStop = false;
+            this.groupBoxDisponibilidadeNFCe.Text = "Teste Disponibilidade Serviço NFCe";
+            // 
+            // IndicadorNFCe
+            // 
+            this.IndicadorNFCe.BackColor = System.Drawing.Color.LightGray;
+            this.IndicadorNFCe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IndicadorNFCe.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IndicadorNFCe.ForeColor = System.Drawing.Color.DimGray;
+            this.IndicadorNFCe.Location = new System.Drawing.Point(3, 22);
+            this.IndicadorNFCe.Name = "IndicadorNFCe";
+            this.IndicadorNFCe.Size = new System.Drawing.Size(447, 425);
+            this.IndicadorNFCe.TabIndex = 0;
+            this.IndicadorNFCe.Text = "● NFCe: AGUARDANDO TESTE";
+            this.IndicadorNFCe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabPage3
             // 
@@ -1723,6 +1777,18 @@ namespace TreinamentoDLL
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "NFSe";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnDistribuicaoNFSe
+            // 
+            this.btnDistribuicaoNFSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDistribuicaoNFSe.Location = new System.Drawing.Point(8, 690);
+            this.btnDistribuicaoNFSe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDistribuicaoNFSe.Name = "btnDistribuicaoNFSe";
+            this.btnDistribuicaoNFSe.Size = new System.Drawing.Size(296, 37);
+            this.btnDistribuicaoNFSe.TabIndex = 30;
+            this.btnDistribuicaoNFSe.Text = "NACIONAL - Distribuicao NFSe";
+            this.btnDistribuicaoNFSe.UseVisualStyleBackColor = true;
+            this.btnDistribuicaoNFSe.Click += new System.EventHandler(this.btnDistribuicaoNFSe_Click);
             // 
             // tabPage5
             // 
@@ -2021,18 +2087,6 @@ namespace TreinamentoDLL
             this.btnGerarIdOperacaoTransporte.UseVisualStyleBackColor = true;
             this.btnGerarIdOperacaoTransporte.Click += new System.EventHandler(this.btnGerarIdOperacaoTransporte_Click);
             // 
-            // btnDistribuicaoNFSe
-            // 
-            this.btnDistribuicaoNFSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDistribuicaoNFSe.Location = new System.Drawing.Point(8, 690);
-            this.btnDistribuicaoNFSe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnDistribuicaoNFSe.Name = "btnDistribuicaoNFSe";
-            this.btnDistribuicaoNFSe.Size = new System.Drawing.Size(296, 37);
-            this.btnDistribuicaoNFSe.TabIndex = 30;
-            this.btnDistribuicaoNFSe.Text = "NACIONAL - Distribuicao NFSe";
-            this.btnDistribuicaoNFSe.UseVisualStyleBackColor = true;
-            this.btnDistribuicaoNFSe.Click += new System.EventHandler(this.btnDistribuicaoNFSe_Click);
-            // 
             // FormTestes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -2045,9 +2099,11 @@ namespace TreinamentoDLL
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBoxDisponibilidadeNFe.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.groupBoxDisponibilidadeNFCe.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
@@ -2217,6 +2273,10 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button btnConsultarExcecao;
         private System.Windows.Forms.Button btnConsultarCIOTGerado;
         private System.Windows.Forms.Button btnDistribuicaoNFSe;
+        private System.Windows.Forms.GroupBox groupBoxDisponibilidadeNFe;
+        private System.Windows.Forms.Label IndicadorNFe;
+        private System.Windows.Forms.GroupBox groupBoxDisponibilidadeNFCe;
+        private System.Windows.Forms.Label IndicadorNFCe;
     }
 }
 
