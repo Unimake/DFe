@@ -121,9 +121,32 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Theory]
         [Trait("Utility", "Disponibilidade")]
+        [MemberData(nameof(RetornosFiscaisComCStat))]
+        public void TelemetriaExtraiPrimeiroCStatDosRetornosImplementados(TipoDFe tipoDFe, Servico servico,
+            string xmlRetorno, int cStatEsperado, StatusDisponibilidade statusEsperado)
+        {
+            var configuracao = ConfiguracaoBase();
+            configuracao.TipoDFe = tipoDFe;
+            configuracao.Servico = servico;
+            configuracao.ColetarTelemetriaDisponibilidade = true;
+            var retorno = new XmlDocument();
+            retorno.LoadXml(xmlRetorno);
+
+            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
+                HttpStatusCode.OK, retorno, null);
+
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
+            var amostra = Assert.Single(resultado.Sondas.Itens);
+            Assert.Equal(cStatEsperado, amostra.CStat);
+            Assert.Equal(statusEsperado, amostra.Status);
+        }
+
+        [Theory]
+        [Trait("Utility", "Disponibilidade")]
         [InlineData(107, StatusDisponibilidade.Operacional, TipoFalhaDisponibilidade.Nenhuma)]
         [InlineData(108, StatusDisponibilidade.Indisponivel, TipoFalhaDisponibilidade.Protocolo)]
         [InlineData(109, StatusDisponibilidade.Indisponivel, TipoFalhaDisponibilidade.Protocolo)]
+        [InlineData(999, StatusDisponibilidade.Indisponivel, TipoFalhaDisponibilidade.Protocolo)]
         [InlineData(656, StatusDisponibilidade.Degradado, TipoFalhaDisponibilidade.ConsumoIndevido)]
         [InlineData(678, StatusDisponibilidade.Degradado, TipoFalhaDisponibilidade.ConsumoIndevido)]
         public void ClassificaStatusFiscal(int cStat, StatusDisponibilidade status, TipoFalhaDisponibilidade falha)
@@ -545,6 +568,34 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
+        public void CacheStatusCompartilhaErroNaoCatalogadoComoIndisponibilidadeFiscal()
+        {
+            var agora = new DateTime(2026, 7, 20, 10, 0, 0);
+            RelogioDisponibilidade.Agora = () => agora;
+            var execucoes = 0;
+
+            var primeiro = CacheStatusDisponibilidade.ObterOuExecutar("NFe|PR|H", "certificado-a",
+                TimeSpan.FromMinutes(5), () =>
+                {
+                    execucoes++;
+                    return Status(999);
+                });
+            var segundo = CacheStatusDisponibilidade.ObterOuExecutar("NFe|PR|H", "certificado-b",
+                TimeSpan.FromMinutes(5), () =>
+                {
+                    execucoes++;
+                    return Status(107);
+                });
+
+            Assert.Equal(StatusDisponibilidade.Indisponivel, primeiro.Status);
+            Assert.Equal(999, segundo.CStat);
+            Assert.Equal(StatusDisponibilidade.Indisponivel, segundo.Status);
+            Assert.True(segundo.DoCache);
+            Assert.Equal(1, execucoes);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
         public void CacheStatusNaoCompartilhaFalhaLocalEntreContextos()
         {
             var agora = new DateTime(2026, 7, 20, 10, 0, 0);
@@ -825,6 +876,22 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
+        public void ErroNaoCatalogadoConfirmaIndisponibilidadeFiscalMesmoComFalhaLocal()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            var status = Status(999);
+            status.Essencial = true;
+            resultado.Sondas.Add(status);
+            resultado.Sondas.Add(Infraestrutura(TipoFalhaDisponibilidade.DNS, StatusDisponibilidade.Inconclusivo));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
         public void SucessoMaisRecenteSuperaFalhasAnteriores()
         {
             var resultado = new ResultadoDiagnosticoDisponibilidade();
@@ -966,6 +1033,90 @@ namespace Unimake.DFe.Test.Utility.Rede
             TipoAmbiente = TipoAmbiente.Homologacao,
             SchemaVersao = "4.00",
             Servico = Servico.NFeAutorizacao
+        };
+
+        public static IEnumerable<object[]> RetornosFiscaisComCStat => new[]
+        {
+            new object[]
+            {
+                TipoDFe.NFe,
+                Servico.NFeInutilizacao,
+                "<retInutNFe xmlns='http://www.portalfiscal.inf.br/nfe'><infInut><cStat>213</cStat><xMotivo>Rejeição</xMotivo></infInut></retInutNFe>",
+                213,
+                StatusDisponibilidade.Operacional
+            },
+            new object[]
+            {
+                TipoDFe.NFCe,
+                Servico.NFeInutilizacao,
+                "<retInutNFe xmlns='http://www.portalfiscal.inf.br/nfe'><infInut><cStat>213</cStat><xMotivo>Rejeição</xMotivo></infInut></retInutNFe>",
+                213,
+                StatusDisponibilidade.Operacional
+            },
+            new object[]
+            {
+                TipoDFe.NFe,
+                Servico.NFeConsultaCadastro,
+                "<retConsCad xmlns='http://www.portalfiscal.inf.br/nfe'><infCons><cStat>111</cStat><xMotivo>Consulta processada</xMotivo></infCons></retConsCad>",
+                111,
+                StatusDisponibilidade.Operacional
+            },
+            new object[]
+            {
+                TipoDFe.CTe,
+                Servico.NFeConsultaCadastro,
+                "<retConsCad xmlns='http://www.portalfiscal.inf.br/nfe'><infCons><cStat>111</cStat><xMotivo>Consulta processada</xMotivo></infCons></retConsCad>",
+                111,
+                StatusDisponibilidade.Operacional
+            },
+            new object[]
+            {
+                TipoDFe.CTe,
+                Servico.NFeRecepcaoEvento,
+                "<retEventoCTe xmlns='http://www.portalfiscal.inf.br/cte'><infEvento><cStat>135</cStat><xMotivo>Evento registrado</xMotivo></infEvento></retEventoCTe>",
+                135,
+                StatusDisponibilidade.Operacional
+            },
+            new object[]
+            {
+                TipoDFe.MDFe,
+                Servico.NFeRecepcaoEvento,
+                "<retEventoMDFe xmlns='http://www.portalfiscal.inf.br/mdfe'><infEvento><cStat>999</cStat><xMotivo>Erro não catalogado</xMotivo></infEvento></retEventoMDFe>",
+                999,
+                StatusDisponibilidade.Indisponivel
+            },
+            new object[]
+            {
+                TipoDFe.NFe,
+                Servico.NFeAutorizacao,
+                "<retEnviNFe xmlns='http://www.portalfiscal.inf.br/nfe'><cStat>104</cStat><xMotivo>Lote processado</xMotivo><protNFe><infProt><cStat>999</cStat><xMotivo>Resultado do protocolo</xMotivo></infProt></protNFe></retEnviNFe>",
+                104,
+                StatusDisponibilidade.Operacional
+            },
+            new object[]
+            {
+                TipoDFe.NFCe,
+                Servico.NFeAutorizacao,
+                "<retEnviNFe xmlns='http://www.portalfiscal.inf.br/nfe'><cStat>104</cStat><xMotivo>Lote processado</xMotivo><protNFe><infProt><cStat>999</cStat><xMotivo>Resultado do protocolo</xMotivo></infProt></protNFe></retEnviNFe>",
+                104,
+                StatusDisponibilidade.Operacional
+            },
+            new object[]
+            {
+                TipoDFe.CTe,
+                Servico.CTeAutorizacaoSinc,
+                "<retCTe xmlns='http://www.portalfiscal.inf.br/cte'><cStat>104</cStat><xMotivo>Lote processado</xMotivo><protCTe><infProt><cStat>999</cStat><xMotivo>Resultado do protocolo</xMotivo></infProt></protCTe></retCTe>",
+                104,
+                StatusDisponibilidade.Operacional
+            },
+            new object[]
+            {
+                TipoDFe.MDFe,
+                Servico.MDFeAutorizacaoSinc,
+                "<retMDFe xmlns='http://www.portalfiscal.inf.br/mdfe'><cStat>104</cStat><xMotivo>Lote processado</xMotivo><protMDFe><infProt><cStat>999</cStat><xMotivo>Resultado do protocolo</xMotivo></infProt></protMDFe></retMDFe>",
+                104,
+                StatusDisponibilidade.Operacional
+            }
         };
 
         private static async Task ComHistoricoBloqueado(Func<Task> executar)

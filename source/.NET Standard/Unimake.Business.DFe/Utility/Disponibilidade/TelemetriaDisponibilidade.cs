@@ -199,9 +199,15 @@ namespace Unimake.Business.DFe.Utility
             }
         }
 
-        /// <summary>Extrai somente o cStat da resposta, evitando guardar o XML fiscal completo.</summary>
+        /// <summary>Extrai o primeiro cStat da resposta, evitando guardar o XML fiscal completo.</summary>
         /// <param name="retorno">Documento XML retornado pelo serviço.</param>
         /// <param name="amostra">Amostra que receberá o código encontrado.</param>
+        /// <remarks>
+        /// O primeiro cStat representa o retorno principal do serviço quando também existem códigos dentro de
+        /// protNFe, protCTe ou protMDFe. Nos retornos sem código principal, a busca alcança grupos como infInut,
+        /// infCons e infEvento. Essa ordem segue os schemas fiscais e impede que o resultado do documento substitua
+        /// indevidamente a evidência de processamento do serviço ou do lote.
+        /// </remarks>
         private static void PreencherRetorno(XmlDocument retorno, ResultadoSondaDisponibilidade amostra)
         {
             if (retorno == null || retorno.DocumentElement == null)
@@ -209,9 +215,8 @@ namespace Unimake.Business.DFe.Utility
                 return;
             }
 
-            var noCStat = retorno.DocumentElement.LocalName == "cStat"
-                ? retorno.DocumentElement
-                : retorno.DocumentElement.SelectSingleNode("./*[local-name()='cStat']");
+            var noCStat = retorno.DocumentElement.SelectSingleNode(
+                "descendant-or-self::*[local-name()='cStat']");
             int codigo;
             if (noCStat != null && int.TryParse(noCStat.InnerText, NumberStyles.Integer, CultureInfo.InvariantCulture, out codigo))
             {
@@ -309,11 +314,13 @@ namespace Unimake.Business.DFe.Utility
         internal static void ClassificarRespostaFiscal(ResultadoSondaDisponibilidade resultado)
         {
             resultado.TipoFalha = TipoFalhaDisponibilidade.Nenhuma;
-            if (resultado.CStat == 108 || resultado.CStat == 109)
+            if (EhIndisponibilidadeFiscal(resultado.CStat))
             {
                 resultado.Status = StatusDisponibilidade.Indisponivel;
                 resultado.TipoFalha = TipoFalhaDisponibilidade.Protocolo;
-                resultado.XMotivo = "A autoridade fiscal informou indisponibilidade do serviço.";
+                resultado.XMotivo = resultado.CStat == 999
+                    ? "A autoridade fiscal retornou erro não catalogado, indicando provável instabilidade."
+                    : "A autoridade fiscal informou indisponibilidade do serviço.";
             }
             else if (resultado.CStat == 656 || resultado.CStat == 678)
             {
@@ -338,6 +345,12 @@ namespace Unimake.Business.DFe.Utility
                 resultado.TipoFalha = TipoFalhaDisponibilidade.Protocolo;
             }
         }
+
+        /// <summary>Verifica se o código fiscal representa indisponibilidade atribuída à autoridade fiscal.</summary>
+        /// <param name="cStat">Código de status retornado pelo serviço fiscal.</param>
+        /// <returns><see langword="true"/> para indisponibilidade declarada ou provável instabilidade fiscal.</returns>
+        internal static bool EhIndisponibilidadeFiscal(int cStat) =>
+            cStat == 108 || cStat == 109 || cStat == 999;
 
         /// <summary>Classifica uma exceção de transporte sem expor dados sensíveis.</summary>
         /// <param name="exception">Exceção original da operação.</param>
@@ -464,7 +477,7 @@ namespace Unimake.Business.DFe.Utility
         {
             /// <summary>Indica se o serviço é necessário para emissão ou status.</summary>
             public bool Essencial;
-            /// <summary>Indica que cStat 108 ou 109 confirmou indisponibilidade fiscal.</summary>
+            /// <summary>Indica que cStat 108, 109 ou 999 confirmou indisponibilidade fiscal.</summary>
             public bool IndisponibilidadeConfirmada;
             /// <summary>Estado mais representativo do serviço.</summary>
             public StatusDisponibilidade Status;
@@ -564,7 +577,7 @@ namespace Unimake.Business.DFe.Utility
             var estado = new EstadoServico
             {
                 Essencial = ultimas.Any(x => x.Essencial),
-                IndisponibilidadeConfirmada = maisRecente.CStat == 108 || maisRecente.CStat == 109,
+                IndisponibilidadeConfirmada = ClassificadorDisponibilidade.EhIndisponibilidadeFiscal(maisRecente.CStat),
                 Status = maisRecente.Status
             };
             if (maisRecente.Status == StatusDisponibilidade.Operacional ||

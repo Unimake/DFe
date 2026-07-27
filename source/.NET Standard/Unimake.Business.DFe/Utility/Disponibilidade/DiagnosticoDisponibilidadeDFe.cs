@@ -374,7 +374,8 @@ namespace Unimake.Business.DFe.Utility
                 }
 
                 ClassificadorDisponibilidade.ClassificarRespostaFiscal(resultado);
-                if (resultado.CStat != 107 && resultado.CStat != 108 && resultado.CStat != 109 &&
+                if (resultado.CStat != 107 &&
+                    !ClassificadorDisponibilidade.EhIndisponibilidadeFiscal(resultado.CStat) &&
                     resultado.CStat != 656 && resultado.CStat != 678)
                 {
                     resultado.Status = StatusDisponibilidade.Degradado;
@@ -999,7 +1000,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns><see langword="true"/> somente para códigos fiscais oficiais conhecidos.</returns>
         private static bool ResultadoPodeSerCompartilhado(ResultadoSondaDisponibilidade resultado) =>
             resultado != null &&
-            (resultado.CStat == 107 || resultado.CStat == 108 || resultado.CStat == 109 ||
+            (resultado.CStat == 107 || ClassificadorDisponibilidade.EhIndisponibilidadeFiscal(resultado.CStat) ||
              resultado.CStat == 656 || resultado.CStat == 678);
 
         /// <summary>Cria uma sonda neutra quando o intervalo impede reutilizar uma falha de outro contexto.</summary>
