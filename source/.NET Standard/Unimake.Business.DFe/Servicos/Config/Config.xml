@@ -2111,4 +2111,10 @@
 		<ArqConfig>RegistroSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3529401">
+		<Nome>Mauá - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>MauaSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
