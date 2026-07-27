@@ -23,6 +23,8 @@ public class NFeTxtConverterTest
     [InlineData("CST_SEM_CLASSTRIB_SEM_NotaCredito03Retorno_SemImpostoIBSCBS.txt")]
     [InlineData("NFE_Devolucao_00003.txt")]
     [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt")]
+    [InlineData("NFe_ALCZFMCBS_Tipo1-nfe.txt")]
+    [InlineData("NFe_ALCZFMCBS_Tipo2-nfe.txt")]
     [InlineData("NFe_ReformaTributaria_3_prods-nfe.txt")]
     [InlineData("NFe_Reforma_Tributaria-nfe.txt")]
     [InlineData("NFe_Reforma_Tributaria_Monofasica-nfe.txt")]
@@ -66,7 +68,7 @@ public class NFeTxtConverterTest
     [InlineData("NFE_Devolucao_00003.txt", "a927e05abdf374845b43837cfe6f3360c7a07fb312c4be22d994a864fe23b21c")]
     [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt", "d0cd1dc2a69bbf8f4f72f0130a7f993e4e44bcccd8f6e737994b34f2c36ac678")]
     [InlineData("NFe_ReformaTributaria_3_prods-nfe.txt", "e8214766f92cd58e33d430499bd22024c7edacc2c4b72c288307605f31d7f61f")]
-    [InlineData("NFe_Reforma_Tributaria-nfe.txt", "eff1e1061fb0e3b935bc5d449ff617b8c5321a1511e5b25265f10c7106840e6e")]
+    [InlineData("NFe_Reforma_Tributaria-nfe.txt", "aed2a7ab8509318407bc830fb0b7ac663e6ec238bd73641da8a0998bbb58d774")]
     [InlineData("NFe_Reforma_Tributaria_Monofasica-nfe.txt", "7d0689545b29cde304678e9b4b232bac9330ebd64e57be5abcc7041cb85f6928")]
     [InlineData("NFE_Venda_00002.txt", "bbf5b92b9d1afbeb7706af0d2a928905ac46ed4531aa0bcc9383e4fc47f5f300")]
     [InlineData("NFe_Venda_para_o_Governo.txt", "f7d0bb8621a22a7c7cdbadde40dded3d21caffaf5fa0df92d4c6c1ed56522c64")]
@@ -310,6 +312,192 @@ public class NFeTxtConverterTest
     }
 
     /// <summary>
+    /// Deve converter os grupos de devolucao de tributos informados nos segmentos UB17, UB36 e UB55.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveProcessarGruposDevolucaoTributos()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("NFe_GrupoDevolucaoTributos-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        ValidarGrupoDevolucaoTributos(xml, "gIBSUF", "25.1234", "0.01");
+        ValidarGrupoDevolucaoTributos(xml, "gIBSMun", "30.1234", "0.02");
+        ValidarGrupoDevolucaoTributos(xml, "gCBS", "40.1234", "0.03");
+    }
+
+    /// <summary>
+    /// Nao deve gerar os grupos de devolucao de tributos quando seus campos nao foram informados.
+    /// </summary>
+    [Fact]
+    public void ConverterNaoDeveGerarGruposDevolucaoTributosSemValores()
+    {
+        var linhas = File.ReadAllLines(CaminhoArquivo("NFe_GrupoDevolucaoTributos-nfe.txt"));
+        foreach (var segmento in new[] { "UB17|", "UB36|", "UB55|" })
+        {
+            var indiceSegmento = Array.FindIndex(linhas, linha => linha.StartsWith(segmento));
+            var campos = linhas[indiceSegmento].Split('|');
+            campos[4] = string.Empty;
+            campos[5] = string.Empty;
+            linhas[indiceSegmento] = string.Join("|", campos);
+        }
+
+        var resultado = ConverterTemporario(linhas);
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='gIBSUF']/*[local-name()='gDevTrib']"));
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='gIBSMun']/*[local-name()='gDevTrib']"));
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='gCBS']/*[local-name()='gDevTrib']"));
+    }
+
+    /// <summary>
+    /// Nao deve gerar o grupo de devolucao quando somente o valor devolvido foi informado.
+    /// </summary>
+    [Fact]
+    public void ConverterNaoDeveGerarGrupoDevolucaoTributosSemPercentual()
+    {
+        var linhas = File.ReadAllLines(CaminhoArquivo("NFe_GrupoDevolucaoTributos-nfe.txt"));
+        foreach (var segmento in new[] { "UB17|", "UB36|", "UB55|" })
+        {
+            var indiceSegmento = Array.FindIndex(linhas, linha => linha.StartsWith(segmento));
+            var campos = linhas[indiceSegmento].Split('|');
+            campos[4] = string.Empty;
+            linhas[indiceSegmento] = string.Join("|", campos);
+        }
+
+        var resultado = ConverterTemporario(linhas);
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='gIBSUF']/*[local-name()='gDevTrib']"));
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='gIBSMun']/*[local-name()='gDevTrib']"));
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='gCBS']/*[local-name()='gDevTrib']"));
+    }
+
+    /// <summary>
+    /// Deve converter o grupo de operacoes em areas incentivadas da CBS.
+    /// </summary>
+    [Theory]
+    [InlineData("NFe_ALCZFMCBS_Tipo1-nfe.txt", "1", null, "1.2345", "12.34")]
+    [InlineData("NFe_ALCZFMCBS_Tipo2-nfe.txt", "2", "123456789012", "2.3456", "23.45")]
+    public void ConverterDeveProcessarGrupoAreasIncentivadasCbs(string nomeArquivo, string tipoEsperado, string processoEsperado, string aliquotaEsperada, string valorEsperado)
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo(nomeArquivo));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var grupo = xml.SelectSingleNode("//*[local-name()='gCBS']/*[local-name()='gALCZFMCBS']");
+        Assert.NotNull(grupo);
+        Assert.Equal(tipoEsperado, grupo.SelectSingleNode("*[local-name()='tpALCZFMCBS']")?.InnerText);
+        Assert.Equal(aliquotaEsperada, grupo.SelectSingleNode("*[local-name()='pAliqEfetRegCBS']")?.InnerText);
+        Assert.Equal(valorEsperado, grupo.SelectSingleNode("*[local-name()='vTribRegCBS']")?.InnerText);
+
+        var processo = grupo.SelectSingleNode("*[local-name()='nProcSuframa']");
+        if (processoEsperado == null)
+        {
+            Assert.Null(processo);
+        }
+        else
+        {
+            Assert.Equal(processoEsperado, processo?.InnerText);
+        }
+    }
+
+    /// <summary>
+    /// Deve converter a inscricao do emitente na Suframa quando informada no segmento C.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveProcessarIsufEmitInformada()
+    {
+        var linhas = File.ReadAllLines(CaminhoArquivo("NFE_Venda_00002.txt"));
+        var indiceSegmento = Array.FindIndex(linhas, linha => linha.StartsWith("C|"));
+        var campos = linhas[indiceSegmento].Split('|');
+        campos[8] = "12345678";
+        linhas[indiceSegmento] = string.Join("|", campos);
+
+        var resultado = ConverterTemporario(linhas);
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        Assert.Equal("12345678", xml.SelectSingleNode("//*[local-name()='emit']/*[local-name()='ISUFEmit']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Nao deve gerar a inscricao do emitente na Suframa quando nao informada no segmento C.
+    /// </summary>
+    [Fact]
+    public void ConverterNaoDeveGerarIsufEmitNaoInformada()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("NFE_Venda_00002.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='emit']/*[local-name()='ISUFEmit']"));
+    }
+
+    /// <summary>
+    /// Deve converter o novo grupo de compra governamental e suas referencias de documentos anteriores.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveProcessarNovoGrupoCompraGovernamental()
+    {
+        var linhas = File.ReadAllLines(CaminhoArquivo("NFe_Venda_para_o_Governo.txt"));
+        var indiceSegmento = Array.FindIndex(linhas, linha => linha.StartsWith("BB01|"));
+        var linhasComReferencias = new string[linhas.Length + 1];
+        Array.Copy(linhas, 0, linhasComReferencias, 0, indiceSegmento);
+        linhasComReferencias[indiceSegmento] = "BB01|6|47.2730|4|12345678901234567890123456789012345678901234|";
+        linhasComReferencias[indiceSegmento + 1] = "BB05|12345678901234567890123456789012345678901235|";
+        Array.Copy(linhas, indiceSegmento + 1, linhasComReferencias, indiceSegmento + 2, linhas.Length - indiceSegmento - 1);
+
+        var resultado = ConverterTemporario(linhasComReferencias);
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var grupo = xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='gCompraGov']");
+
+        Assert.NotNull(grupo);
+        Assert.Equal("6", grupo.SelectSingleNode("*[local-name()='tpEnteGov']")?.InnerText);
+        Assert.Equal("47.2730", grupo.SelectSingleNode("*[local-name()='pRedutor']")?.InnerText);
+        Assert.Equal("4", grupo.SelectSingleNode("*[local-name()='tpOperGov']")?.InnerText);
+        Assert.Equal(2, grupo.SelectNodes("*[local-name()='refDFeAnt']").Count);
+    }
+
+    /// <summary>
+    /// Nao deve interpretar o antigo segmento B31 como grupo de compra governamental.
+    /// </summary>
+    [Fact]
+    public void ConverterNaoDeveProcessarAntigoBlocoB31()
+    {
+        var linhas = File.ReadAllLines(CaminhoArquivo("NFe_Venda_para_o_Governo.txt"));
+        var indiceSegmento = Array.FindIndex(linhas, linha => linha.StartsWith("BB01|"));
+        linhas[indiceSegmento] = "B31|4|60.00|1|";
+
+        var resultado = ConverterTemporario(linhas);
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='gCompraGov']"));
+    }
+
+    private static void ValidarGrupoDevolucaoTributos(XmlDocument xml, string grupoPai, string percentualEsperado, string valorEsperado)
+    {
+        var grupo = xml.SelectSingleNode("//*[local-name()='" + grupoPai + "']/*[local-name()='gDevTrib']");
+
+        Assert.NotNull(grupo);
+        Assert.Equal(percentualEsperado, grupo.SelectSingleNode("*[local-name()='pDevTrib']")?.InnerText);
+        Assert.Equal(valorEsperado, grupo.SelectSingleNode("*[local-name()='vDevTrib']")?.InnerText);
+    }
+
+    /// <summary>
     /// Deve manter os ajustes pontuais exigidos pelo XML de referencia da conversao TXT.
     /// </summary>
     [Fact]
@@ -321,10 +509,10 @@ public class NFeTxtConverterTest
         var xml = new XmlDocument();
         xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
 
-        Assert.Equal(3, xml.SelectNodes("//*[local-name()='gPagAntecipado']/*[local-name()='refNFe']").Count);
-        Assert.Null(xml.SelectSingleNode("//*[local-name()='gPagAntecipado']/*[local-name()='refDFe']"));
-        Assert.NotNull(xml.SelectSingleNode("//*[local-name()='IS']/*[local-name()='pISEspec']"));
-        Assert.Null(xml.SelectSingleNode("//*[local-name()='IS']/*[local-name()='adRemIS']"));
+        Assert.Equal(3, xml.SelectNodes("//*[local-name()='gPagAntecipado']/*[local-name()='refDFe']").Count);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='gPagAntecipado']/*[local-name()='refNFe']"));
+        Assert.NotNull(xml.SelectSingleNode("//*[local-name()='IS']/*[local-name()='adRemIS']"));
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='IS']/*[local-name()='pISEspec']"));
 
         foreach (XmlElement elemento in xml.SelectNodes("//*[local-name()='gIBSCBS']/*[local-name()='vIBS']"))
         {

@@ -60,6 +60,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                         return ProtNFe.InfProt.ChNFe + "-den.xml";
 
                     case 100: //Autorizado o uso da NF-e
+                    case 120: //Autorizado o uso da NF-e, com alerta
                     case 150: //Autorizado o uso da NF-e, autorização fora de prazo
                     default:
                         return ProtNFe.InfProt.ChNFe + "-procnfe.xml";

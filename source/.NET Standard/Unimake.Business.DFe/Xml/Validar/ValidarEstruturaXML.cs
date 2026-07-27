@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
@@ -182,6 +181,9 @@ namespace Unimake.Business.DFe
         /// <exception cref="Exception"></exception>
         public ResultadoValidacao ValidarServico(XmlDocument xml, Configuracao configuracao)
         {
+            //Tenho que salvar o tipo do DFe antes pois no caso da NFCe é alterado para NFe e temos que voltar antes de sair do método, pois a configuração é compartilhada e não podemos alterar o tipo do DFe da configuração original.
+            var tipoDFeSalva = configuracao.TipoDFe;
+
             var certificado = configuracao.CertificadoDigital;
             var tipoAmbiente = configuracao.TipoAmbiente;
             var padraoNFSe = configuracao.PadraoNFSe;
@@ -213,6 +215,15 @@ namespace Unimake.Business.DFe
                 }
 
                 AtribuirUrl(servico, codigoUF, configuracao);
+
+                // A NT 2026.003 determina que a NF-e com DANFE Simplificado Tipo 2 utilize
+                // as URLs de consulta do Portal Nacional da NFC-e. Mantemos as URLs em uma
+                // única fonte no catálogo da NFC-e e as reutilizamos somente na validação da NF-e.
+                if (tipoDFe == TipoDFe.NFe && string.IsNullOrWhiteSpace(configuracao.UrlQrCodeHomologacao))
+                {
+                    var servicoNFCe = xmlConfig.SelectSingleNode("ServicosValidacao/NFCe/Servico[@tagRaiz='" + tagRaiz + "' and @versao='" + versao + "']");
+                    AtribuirUrl(servicoNFCe, codigoUF, configuracao);
+                }
 
                 var inform = MontarInformacaoGeral(servico, codigoConfiguracao);
 
@@ -246,6 +257,10 @@ namespace Unimake.Business.DFe
             catch (Exception ex)
             {
                 return CriarResultadoFalha(xml, null, ex, ObterStatus(ex));
+            }
+            finally
+            {
+                configuracao.TipoDFe = tipoDFeSalva;
             }
         }
 

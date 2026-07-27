@@ -906,10 +906,18 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// <param name="nomeArquivo">Nome do arquivo a ser gravado no HD</param>
         /// <param name="conteudoXML">String contendo o conteúdo do XML a ser gravado no HD</param>
 #if INTEROP
-        [ComVisible(false)]
+        [ComVisible(true)]
 #endif
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
         {
+            if (Configuracoes.PadraoNFSe != PadraoNFSe.NACIONAL)
+            {
+                throw new InvalidOperationException(
+                    $"O método GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) está disponível apenas para o padrão NACIONAL. " +
+                    $"Padrão atual: {Configuracoes.PadraoNFSe}"
+                );
+            }
+
             using (var fileStream = new FileStream(Path.Combine(pasta, nomeArquivo), FileMode.Create, FileAccess.Write, FileShare.Read))
             {
                 GravarXmlDistribuicao(fileStream, conteudoXML, Encoding.UTF8);

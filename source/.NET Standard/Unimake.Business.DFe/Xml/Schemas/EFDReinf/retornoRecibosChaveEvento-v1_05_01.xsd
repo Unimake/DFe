@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.reinf.esocial.gov.br/schemas/retornoRecibosChaveEvento/v1_05_01" targetNamespace="http://www.reinf.esocial.gov.br/schemas/retornoRecibosChaveEvento/v1_05_01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns="http://www.reinf.esocial.gov.br/schemas/retornoRecibosChaveEvento/v1_05_01"
+           targetNamespace="http://www.reinf.esocial.gov.br/schemas/retornoRecibosChaveEvento/v1_05_01"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
 	<xs:element name="Reinf">
 		<xs:annotation>
 			<xs:documentation>Elemento raiz do Reinf.</xs:documentation>

@@ -17,6 +17,51 @@ namespace Unimake.DFe.Test.NFe.Servicos
     public class AutorizacaoTest
     {
         /// <summary>
+        /// Validar a geração do XML processado para NFe autorizada com alerta
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
+        public void GerarNfeProcParaNfeAutorizadaComAlerta()
+        {
+            var doc = new XmlDocument();
+            doc.Load(@"..\..\..\NFe\Resources\NFe1.xml");
+
+            var enviNFe = new EnviNFe
+            {
+                Versao = "4.00",
+                IdLote = "000000000000001",
+                IndSinc = SimNao.Nao,
+                NFe = new List<Business.DFe.Xml.NFe.NFe>
+                {
+                    XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(doc)
+                }
+            };
+            var autorizacao = new AutorizacaoParaTeste(enviNFe)
+            {
+                RetConsReciNFe = new RetConsReciNFe
+                {
+                    CStat = 104,
+                    ProtNFe = new List<ProtNFe>
+                    {
+                        new ProtNFe
+                        {
+                            InfProt = new InfProt
+                            {
+                                ChNFe = enviNFe.NFe[0].InfNFeField.Chave,
+                                CStat = 120
+                            }
+                        }
+                    }
+                }
+            };
+
+            var nfeProc = autorizacao.NfeProcResults[enviNFe.NFe[0].InfNFeField.Chave];
+
+            Assert.NotNull(nfeProc.ProtNFe);
+            Assert.Equal(120, nfeProc.ProtNFe.InfProt.CStat);
+        }
+
+        /// <summary>
         /// Enviar uma NFe no modo síncrono somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Efetua o envio por estado + ambiente para garantir que todos estão funcionando.
         /// </summary>
@@ -1308,6 +1353,14 @@ namespace Unimake.DFe.Test.NFe.Servicos
             };
 
             return xml;
+        }
+
+        private class AutorizacaoParaTeste : Autorizacao
+        {
+            public AutorizacaoParaTeste(EnviNFe enviNFe)
+            {
+                EnviNFe = enviNFe;
+            }
         }
 
     }

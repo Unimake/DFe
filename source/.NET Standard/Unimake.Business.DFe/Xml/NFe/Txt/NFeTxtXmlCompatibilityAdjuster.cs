@@ -11,8 +11,6 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
     {
         internal static void Ajustar(XmlDocument documento, List<Vol> volumes)
         {
-            RenomearElementos(documento, "//*[local-name()='gPagAntecipado']/*[local-name()='refDFe']", "refNFe");
-            RenomearElementos(documento, "//*[local-name()='IS']/*[local-name()='adRemIS']", "pISEspec");
             RemoverNegativos(documento, "//*[local-name()='gIBSCBS']/*[local-name()='vIBS']");
             RemoverElementos(documento, "//*[local-name()='IPI' and not(*[local-name()='IPINT']/*[local-name()='CST']) and not(*[local-name()='IPITrib']/*[local-name()='CST'])]");
             if (volumes != null && volumes.Count > 0)
