@@ -46,6 +46,18 @@ namespace Unimake.DFe.Test.Utility.Validacao
         }
 
         [Fact]
+        public void DeveAplicarExcecaoMunicipalDoTipoServicoNFSe()
+        {
+            var xml = CriarXml("<EnviarLoteRpsSincronoEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><LoteRps /></EnviarLoteRpsSincronoEnvio>");
+
+            var tipoServicoPadrao = ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.SMARAPD, "2.04", 0);
+            var tipoServicoExcecao = ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.SMARAPD, "2.04", 2111300);
+
+            Assert.Equal(Servico.NFSeRecepcionarLoteRpsSincrono, tipoServicoPadrao);
+            Assert.Equal(Servico.NFSeRecepcionarLoteRps, tipoServicoExcecao);
+        }
+
+        [Fact]
         public void DeveUsarTagIdentificadoraParaDiferenciarServicosComMesmaRaiz()
         {
             var xmlPrestado = "<ConsultarNfseServicoPrestadoEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><Prestador /><PeriodoCompetencia /></ConsultarNfseServicoPrestadoEnvio>";
@@ -59,14 +71,14 @@ namespace Unimake.DFe.Test.Utility.Validacao
         }
 
         [Fact]
-        public void DeveRejeitarServicoSemTipoServicoConfigurado()
+        public void DeveRejeitarServicoNFSeNaoConfigurado()
         {
             var xml = CriarXml("<ConsultarLoteRpsEnvio xmlns=\"http://www.tinus.com.br\"><CpfCnpj /></ConsultarLoteRpsEnvio>");
 
             var ex = Assert.Throws<Exception>(() =>
-                ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.TINUS, "2.03"));
+                ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.TINUS, "9.99"));
 
-            Assert.Contains("A tag TipoServico não foi configurada", ex.Message);
+            Assert.Contains("Não foi possível encontrar", ex.Message);
         }
 
         private static XmlDocument CriarXml(string conteudoXML)

@@ -1355,6 +1355,19 @@ namespace Unimake.Business.DFe
         /// <returns>Tipo de serviço correspondente</returns>
         public static Servico DefinirTipoServicoNFSe(string conteudoXML, PadraoNFSe padraoNFSe, string versao)
         {
+            return DefinirTipoServicoNFSe(conteudoXML, padraoNFSe, versao, 0);
+        }
+
+        /// <summary>
+        /// Define o tipo de serviço de NFSe com base no XML, padrão, versão e município informados.
+        /// </summary>
+        /// <param name="conteudoXML">Conteúdo XML enviado para identificação</param>
+        /// <param name="padraoNFSe">Padrão da NFSe</param>
+        /// <param name="versao">Versão do XML</param>
+        /// <param name="codigoMunicipio">Código do município</param>
+        /// <returns>Tipo de serviço correspondente</returns>
+        public static Servico DefinirTipoServicoNFSe(string conteudoXML, PadraoNFSe padraoNFSe, string versao, int codigoMunicipio)
+        {
             if (string.IsNullOrWhiteSpace(conteudoXML))
             {
                 throw new ArgumentNullException(nameof(conteudoXML));
@@ -1363,7 +1376,7 @@ namespace Unimake.Business.DFe
             var xml = new XmlDocument();
             xml.LoadXml(conteudoXML);
 
-            return DefinirTipoServicoNFSe(xml, padraoNFSe, versao);
+            return DefinirTipoServicoNFSe(xml, padraoNFSe, versao, codigoMunicipio);
         }
 
         /// <summary>
@@ -1374,6 +1387,19 @@ namespace Unimake.Business.DFe
         /// <param name="versao">Versão do XML</param>
         /// <returns>Tipo de serviço correspondente</returns>
         public static Servico DefinirTipoServicoNFSe(XmlDocument xml, PadraoNFSe padraoNFSe, string versao)
+        {
+            return DefinirTipoServicoNFSe(xml, padraoNFSe, versao, 0);
+        }
+
+        /// <summary>
+        /// Define o tipo de serviço de NFSe com base no XML, padrão, versão e município informados.
+        /// </summary>
+        /// <param name="xml">Arquivo XML enviado para identificação</param>
+        /// <param name="padraoNFSe">Padrão da NFSe</param>
+        /// <param name="versao">Versão do XML</param>
+        /// <param name="codigoMunicipio">Código do município</param>
+        /// <returns>Tipo de serviço correspondente</returns>
+        public static Servico DefinirTipoServicoNFSe(XmlDocument xml, PadraoNFSe padraoNFSe, string versao, int codigoMunicipio)
         {
             if (xml is null)
             {
@@ -1394,7 +1420,7 @@ namespace Unimake.Business.DFe
                 throw new Exception($"Não foi possível encontrar a configuração para identificar o tipo de serviço NFSe com padrão: '{padraoNFSe}', tag raiz: '{tagRaiz}' ou versão: '{versao}'.");
             }
 
-            var tipoServico = servico.SelectSingleNode("*[local-name()='TipoServico']")?.InnerText?.Trim();
+            var tipoServico = ObterTipoServico(servico, codigoMunicipio);
 
             if (string.IsNullOrWhiteSpace(tipoServico))
             {
@@ -1407,6 +1433,37 @@ namespace Unimake.Business.DFe
             }
 
             return result;
+        }
+
+        private static string ObterTipoServico(XmlNode servico, int codigoMunicipio)
+        {
+            var nodeTipoServico = servico.SelectSingleNode("*[local-name()='TipoServico']");
+
+            if (nodeTipoServico is null)
+            {
+                return string.Empty;
+            }
+
+            if (codigoMunicipio > 0)
+            {
+                var excecao = nodeTipoServico
+                    .SelectNodes("*[local-name()='Excecao']")
+                    .Cast<XmlNode>()
+                    .FirstOrDefault(x => string.Equals(x.Attributes?["codMunicipio"]?.Value, codigoMunicipio.ToString(), StringComparison.Ordinal));
+
+                if (excecao != null)
+                {
+                    return excecao.InnerText?.Trim();
+                }
+            }
+
+            return nodeTipoServico
+                .ChildNodes
+                .Cast<XmlNode>()
+                .Where(x => x.NodeType == XmlNodeType.Text || x.NodeType == XmlNodeType.CDATA)
+                .Select(x => x.Value)
+                .FirstOrDefault(x => !string.IsNullOrWhiteSpace(x))
+                ?.Trim();
         }
 
         /// <summary>
