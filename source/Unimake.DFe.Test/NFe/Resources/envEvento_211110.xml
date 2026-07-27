@@ -16,45 +16,42 @@
 				<cOrgaoAutor>41</cOrgaoAutor>
 				<tpAutor>2</tpAutor>
 				<verAplic>verAplic1</verAplic>
-				<gCredPres nItem="1">
-					<vBC>11.11</vBC>
-					<gIBS>
-						<cCredPres>01</cCredPres>
+				<gCredPresOper nItem="1">
+					<vBCCredPres>11.11</vBCCredPres>
+					<cCredPres>01</cCredPres>
+					<gIBSCredPres>
 						<pCredPres>1.1111</pCredPres>
 						<vCredPres>11.11</vCredPres>
-					</gIBS>
-					<gCBS>
-						<cCredPres>02</cCredPres>
+					</gIBSCredPres>
+					<gCBSCredPres>
 						<pCredPres>2.2222</pCredPres>
 						<vCredPres>22.22</vCredPres>
-					</gCBS>
-				</gCredPres>
-				<gCredPres nItem="2">
-					<vBC>22.22</vBC>
-					<gIBS>
-						<cCredPres>03</cCredPres>
+					</gCBSCredPres>
+				</gCredPresOper>
+				<gCredPresOper nItem="2">
+					<vBCCredPres>22.22</vBCCredPres>
+					<cCredPres>03</cCredPres>
+					<gIBSCredPres>
 						<pCredPres>3.3333</pCredPres>
 						<vCredPres>33.33</vCredPres>
-					</gIBS>
-					<gCBS>
-						<cCredPres>04</cCredPres>
+					</gIBSCredPres>
+					<gCBSCredPres>
 						<pCredPres>4.4444</pCredPres>
 						<vCredPres>44.44</vCredPres>
-					</gCBS>
-				</gCredPres>
-				<gCredPres nItem="3">
-					<vBC>33.33</vBC>
-					<gIBS>
-						<cCredPres>05</cCredPres>
+					</gCBSCredPres>
+				</gCredPresOper>
+				<gCredPresOper nItem="3">
+					<vBCCredPres>33.33</vBCCredPres>
+					<cCredPres>05</cCredPres>
+					<gIBSCredPres>
 						<pCredPres>5.5555</pCredPres>
 						<vCredPres>55.55</vCredPres>
-					</gIBS>
-					<gCBS>
-						<cCredPres>06</cCredPres>
+					</gIBSCredPres>
+					<gCBSCredPres>
 						<pCredPres>6.6666</pCredPres>
 						<vCredPres>66.66</vCredPres>
-					</gCBS>
-				</gCredPres>
+					</gCBSCredPres>
+				</gCredPresOper>
 			</detEvento>
 		</infEvento>
 	</evento>
