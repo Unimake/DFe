@@ -65,6 +65,18 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Mensagens de validação devem ser claras para o desenvolvedor e citar tag, grupo e valor informado quando possível.
 - Use `Warnings` apenas para avisos que não interrompem o fluxo; erros impeditivos devem lançar `ValidatorDFeException` ou exceção específica.
 
+## Diagnóstico de disponibilidade dos DFe
+
+- Use a skill `manutencao-disponibilidade-dfe` ao alterar `Utility/Disponibilidade`, a coleta em `Servicos/ServicoBase.cs`, o cache de status ou a classificação de conectividade usada pelo diagnóstico.
+- A telemetria deve permanecer passiva e nunca repetir uma operação fiscal real, criar arquivos ou aumentar perceptivelmente o tempo da autorização.
+- Nunca enviar XML sintético como teste de disponibilidade. A única sonda fiscal explícita permitida é `StatusServico`, protegida por cache e bloqueio de consumo indevido.
+- Em XML com vários `cStat`, usar o primeiro em ordem documental. O retorno principal do serviço/lote prevalece sobre códigos posteriores em `protNFe`, `protCTe` e `protMDFe`.
+- Quando não houver `cStat` principal, localizar o primeiro em estruturas internas como `infInut`, `infCons` e `infEvento`, sempre conferindo o XSD do serviço e da versão.
+- Tratar `108`, `109` e `999` como indisponibilidade fiscal; `656` e `678` como consumo indevido; qualquer outro `cStat > 0` como prova de processamento pela aplicação fiscal.
+- Não atribuir DNS, conexão, TLS, proxy, certificado, configuração ou timeout isolado à SEFAZ.
+- Nunca armazenar XML fiscal, certificado, senha, token, credencial ou mensagem não sanitizada no diagnóstico.
+- Validar alterações com testes determinísticos sem internet, incluindo precedência entre status principal e protocolo, desempenho do caminho fiscal, build principal e testes do UniNFe em `Debug`.
+
 ## Testes obrigatórios para novas implementações
 
 - Para novo XML/classe de serialização, adicione ou atualize teste de serialização/desserialização em `source/Unimake.DFe.Test/<DFe>/Serializacao`.

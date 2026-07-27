@@ -324,47 +324,46 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void PrepararGCredPres(XmlDocument xmlDoc)
         {
-            var gCredPRes = xmlDoc.GetElementsByTagName("gCredPres");
+            var gCredPresOper = xmlDoc.GetElementsByTagName("gCredPresOper");
 
             foreach (var evento in Evento)
             {
                 if (evento.InfEvento.DetEvento is DetEventoSolicitacaoApropriacaoCreditoPresumido detEvento)
                 {
-                    detEvento.GCredPres = new List<GCredPres>();
+                    detEvento.GCredPresOper = new List<GCredPresOperEvento>();
 
-                    foreach (var nodeGCredPres in gCredPRes)
+                    foreach (var nodeGCredPresOper in gCredPresOper)
                     {
-                        var elementGCresPres = (XmlElement)nodeGCredPres;
+                        var elementGCredPresOper = (XmlElement)nodeGCredPresOper;
 
-                        detEvento.GCredPres.Add(new GCredPres
+                        detEvento.GCredPresOper.Add(new GCredPresOperEvento
                         {
-                            NItem = Convert.ToInt32(elementGCresPres.GetAttribute("nItem")),
-                            VBC = Convert.ToDouble(elementGCresPres.GetElementsByTagName("vBC")[0].InnerText, CultureInfo.InvariantCulture),
+                            NItem = Convert.ToInt32(elementGCredPresOper.GetAttribute("nItem")),
+                            VBCCredPres = Convert.ToDouble(elementGCredPresOper.GetElementsByTagName("vBCCredPres")[0].InnerText, CultureInfo.InvariantCulture),
+                            CCredPres = elementGCredPresOper.GetElementsByTagName("cCredPres")[0].InnerText,
                         });
 
-                        var indice = detEvento.GCredPres.Count - 1;
+                        var indice = detEvento.GCredPresOper.Count - 1;
 
-                        if (elementGCresPres.GetElementsByTagName("gIBS").Count > 0)
+                        if (elementGCredPresOper.GetElementsByTagName("gIBSCredPres").Count > 0)
                         {
-                            var elementGIBS = (XmlElement)elementGCresPres.GetElementsByTagName("gIBS")[0];
+                            var elementGIBSCredPres = (XmlElement)elementGCredPresOper.GetElementsByTagName("gIBSCredPres")[0];
 
-                            detEvento.GCredPres[indice].GIBS = new GIBSGCredPres
+                            detEvento.GCredPresOper[indice].GIBSCredPres = new GIBSCredPresEvento
                             {
-                                CCredPres = elementGIBS.GetElementsByTagName("cCredPres")[0].InnerText,
-                                PCredPres = Convert.ToDouble(elementGIBS.GetElementsByTagName("pCredPres")[0].InnerText, CultureInfo.InvariantCulture),
-                                VCredPres = Convert.ToDouble(elementGIBS.GetElementsByTagName("vCredPres")[0].InnerText, CultureInfo.InvariantCulture)
+                                PCredPres = Convert.ToDouble(elementGIBSCredPres.GetElementsByTagName("pCredPres")[0].InnerText, CultureInfo.InvariantCulture),
+                                VCredPres = Convert.ToDouble(elementGIBSCredPres.GetElementsByTagName("vCredPres")[0].InnerText, CultureInfo.InvariantCulture)
                             };
                         }
 
-                        if (elementGCresPres.GetElementsByTagName("gCBS").Count > 0)
+                        if (elementGCredPresOper.GetElementsByTagName("gCBSCredPres").Count > 0)
                         {
-                            var elementGCBS = (XmlElement)elementGCresPres.GetElementsByTagName("gCBS")[0];
+                            var elementGCBSCredPres = (XmlElement)elementGCredPresOper.GetElementsByTagName("gCBSCredPres")[0];
 
-                            detEvento.GCredPres[indice].GCBS = new GCBSGCredPres
+                            detEvento.GCredPresOper[indice].GCBSCredPres = new GCBSCredPresEvento
                             {
-                                CCredPres = elementGCBS.GetElementsByTagName("cCredPres")[0].InnerText,
-                                PCredPres = Convert.ToDouble(elementGCBS.GetElementsByTagName("pCredPres")[0].InnerText, CultureInfo.InvariantCulture),
-                                VCredPres = Convert.ToDouble(elementGCBS.GetElementsByTagName("vCredPres")[0].InnerText, CultureInfo.InvariantCulture)
+                                PCredPres = Convert.ToDouble(elementGCBSCredPres.GetElementsByTagName("pCredPres")[0].InnerText, CultureInfo.InvariantCulture),
+                                VCredPres = Convert.ToDouble(elementGCBSCredPres.GetElementsByTagName("vCredPres")[0].InnerText, CultureInfo.InvariantCulture)
                             };
                         }
                     }
@@ -5065,8 +5064,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Informações do crédito presumido
         /// </summary>        
-        [XmlElement("gCredPres", Order = 4)]
-        public List<GCredPres> GCredPres { get; set; } = new List<GCredPres>();
+        [XmlElement("gCredPresOper", Order = 4)]
+        public List<GCredPresOperEvento> GCredPresOper { get; set; } = new List<GCredPresOperEvento>();
 
         public override void WriteXml(XmlWriter writer)
         {
@@ -5077,34 +5076,33 @@ namespace Unimake.Business.DFe.Xml.NFe
                          <tpAutor>{(int)TpAutor}</tpAutor>
                          <verAplic>{VerAplic}</verAplic>";
 
-            if (GCredPres != null)
+            if (GCredPresOper != null)
             {
-                if (GCredPres.Count > 0)
+                if (GCredPresOper.Count > 0)
                 {
-                    for (int i = 0; i < GCredPres.Count; i++)
+                    for (int i = 0; i < GCredPresOper.Count; i++)
                     {
-                        xml += $@"<gCredPres nItem={"\"" + GCredPres[i].NItem.ToString() + "\""}>
-                              <vBC>{GCredPres[i].VBCField}</vBC>";
+                        xml += $@"<gCredPresOper nItem={"\"" + GCredPresOper[i].NItem.ToString() + "\""}>
+                              <vBCCredPres>{GCredPresOper[i].VBCCredPresField}</vBCCredPres>
+                              <cCredPres>{GCredPresOper[i].CCredPres}</cCredPres>";
 
-                        if (GCredPres[i].GIBS != null)
+                        if (GCredPresOper[i].GIBSCredPres != null)
                         {
-                            xml += $@"<gIBS>
-                                  <cCredPres>{GCredPres[i].GIBS.CCredPres}</cCredPres>
-                                  <pCredPres>{GCredPres[i].GIBS.PCredPresField}</pCredPres>
-                                  <vCredPres>{GCredPres[i].GIBS.VCredPresField}</vCredPres>
-                                  </gIBS>";
+                            xml += $@"<gIBSCredPres>
+                                  <pCredPres>{GCredPresOper[i].GIBSCredPres.PCredPresField}</pCredPres>
+                                  <vCredPres>{GCredPresOper[i].GIBSCredPres.VCredPresField}</vCredPres>
+                                  </gIBSCredPres>";
                         }
 
-                        if (GCredPres[i].GCBS != null)
+                        if (GCredPresOper[i].GCBSCredPres != null)
                         {
-                            xml += $@"<gCBS>
-                                  <cCredPres>{GCredPres[i].GCBS.CCredPres}</cCredPres>
-                                  <pCredPres>{GCredPres[i].GCBS.PCredPresField}</pCredPres>
-                                  <vCredPres>{GCredPres[i].GCBS.VCredPresField}</vCredPres>
-                                  </gCBS>";
+                            xml += $@"<gCBSCredPres>
+                                  <pCredPres>{GCredPresOper[i].GCBSCredPres.PCredPresField}</pCredPres>
+                                  <vCredPres>{GCredPresOper[i].GCBSCredPres.VCredPresField}</vCredPres>
+                                  </gCBSCredPres>";
                         }
 
-                        xml += $@"</gCredPres>";
+                        xml += $@"</gCredPresOper>";
                     }
                 }
             }
@@ -5118,40 +5116,49 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddGCredPres(GCredPres item)
+        public void AddGCredPresOper(GCredPresOperEvento item)
         {
-            if (GCredPres == null)
+            if (GCredPresOper == null)
             {
-                GCredPres = new List<GCredPres>();
+                GCredPresOper = new List<GCredPresOperEvento>();
             }
 
-            GCredPres.Add(item);
+            GCredPresOper.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista GCredPres (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista GCredPresOper (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da GCredPres</returns>
-        public GCredPres GetGCredPres(int index)
+        /// <returns>Conteúdo do index passado por parâmetro da GCredPresOper</returns>
+        public GCredPresOperEvento GetGCredPresOper(int index)
         {
-            if ((GCredPres?.Count ?? 0) == 0)
+            if ((GCredPresOper?.Count ?? 0) == 0)
             {
                 return default;
             }
 
-            return GCredPres[index];
+            return GCredPresOper[index];
         }
 
         /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista GCredPres
+        /// Retorna a quantidade de elementos existentes na lista GCredPresOper
         /// </summary>
-        public int GetGCredPresCount => (GCredPres != null ? GCredPres.Count : 0);
+        public int GetGCredPresOperCount => (GCredPresOper != null ? GCredPresOper.Count : 0);
 
 #endif
     }
 
-    public class GCredPres
+    /// <summary>
+    /// Informações de crédito presumido por item
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GCredPresOperEvento")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class GCredPresOperEvento
     {
         /// <summary>
         /// Número do item
@@ -5163,39 +5170,48 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Valor do base de cálculo do item
         /// </summary>
         [XmlIgnore]
-        public double VBC { get; set; }
+        public double VBCCredPres { get; set; }
 
         /// <summary>
-        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VBC para atribuir ou resgatar o valor)
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VBCCredPres para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vBC")]
-        public string VBCField
+        [XmlElement("vBCCredPres")]
+        public string VBCCredPresField
         {
-            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            get => VBCCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCCredPres = Converter.ToDouble(value);
         }
+
+        /// <summary>
+        /// Código de Classificação do Crédito presumido, conforme tabela cCredPres (Anexo IV)
+        /// </summary>
+        [XmlElement("cCredPres")]
+        public string CCredPres { get; set; }
 
         /// <summary>
         /// Grupo de IBS
         /// </summary>
-        [XmlElement("gIBS")]
-        public GIBSGCredPres GIBS { get; set; }
+        [XmlElement("gIBSCredPres")]
+        public GIBSCredPresEvento GIBSCredPres { get; set; }
 
         /// <summary>
         /// Grupo de CBS
         /// </summary>
-        [XmlElement("gCBS")]
-        public GCBSGCredPres GCBS { get; set; }
+        [XmlElement("gCBSCredPres")]
+        public GCBSCredPresEvento GCBSCredPres { get; set; }
     }
 
-    public class GIBSGCredPres
+    /// <summary>
+    /// Grupo de informações do crédito presumido referente ao IBS
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GIBSCredPresEvento")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class GIBSCredPresEvento
     {
-        /// <summary>
-        /// Usar tabela Cred Presumido, para o emitente da nota.
-        /// </summary>
-        [XmlElement("cCredPres")]
-        public string CCredPres { get; set; }
-
         /// <summary>
         /// Percentual do Crédito Presumido
         /// </summary>
@@ -5224,19 +5240,22 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("vCredPres")]
         public string VCredPresField
         {
-            get => VCredPres.ToString("0.00##", CultureInfo.InvariantCulture);
-            set => VCredPres = double.Parse(value, CultureInfo.InvariantCulture);
+            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPres = Converter.ToDouble(value);
         }
     }
 
-    public class GCBSGCredPres
+    /// <summary>
+    /// Grupo de informações do crédito presumido referente à CBS
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GCBSCredPresEvento")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class GCBSCredPresEvento
     {
-        /// <summary>
-        /// Usar tabela Cred Presumido, para o emitente da nota.
-        /// </summary>
-        [XmlElement("cCredPres")]
-        public string CCredPres { get; set; }
-
         /// <summary>
         /// Percentual do Crédito Presumido
         /// </summary>
@@ -5265,8 +5284,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("vCredPres")]
         public string VCredPresField
         {
-            get => VCredPres.ToString("0.00##", CultureInfo.InvariantCulture);
-            set => VCredPres = double.Parse(value, CultureInfo.InvariantCulture);
+            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPres = Converter.ToDouble(value);
         }
     }
 
