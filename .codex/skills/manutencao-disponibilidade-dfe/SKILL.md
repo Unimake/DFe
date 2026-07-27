@@ -1,85 +1,89 @@
 ---
 name: manutencao-disponibilidade-dfe
-description: [TODO: Complete and informative explanation of what the skill does and when to use it. Include WHEN to use this skill - specific scenarios, file types, or tasks that trigger it.]
+description: Use quando Codex precisar implementar, corrigir, revisar ou otimizar o diagnóstico de disponibilidade e a telemetria passiva de NFe, NFCe, CTe, MDFe ou futuros DFe na Unimake.DFe, incluindo Utility/Disponibilidade, coleta em Servicos/ServicoBase, classificação de cStat, infraestrutura DNS/TCP/TLS/proxy, cache de status, agregação, sanitização, desempenho e testes relacionados.
 ---
 
-# Manutencao Disponibilidade Dfe
+# Manutenção do diagnóstico de disponibilidade DFe
 
-## Overview
+## Preparação obrigatória
 
-[TODO: 1-2 sentences explaining what this skill enables]
+1. Ler integralmente [references/regras-diagnostico.md](references/regras-diagnostico.md) antes de alterar código.
+2. Inspecionar `git status --short` e preservar mudanças alheias.
+3. Localizar o fluxo completo da evidência: serviço fiscal, transporte, `TelemetriaDisponibilidade`, classificador, agregador e apresentação.
+4. Tratar a autorização do documento como caminho crítico de desempenho.
 
-## Structuring This Skill
+## Fluxo de manutenção
 
-[TODO: Choose the structure that best fits this skill's purpose. Common patterns:
+### 1. Delimitar a evidência
 
-**1. Workflow-Based** (best for sequential processes)
-- Works well when there are clear step-by-step procedures
-- Example: DOCX skill with "Workflow Decision Tree" -> "Reading" -> "Creating" -> "Editing"
-- Structure: ## Overview -> ## Workflow Decision Tree -> ## Step 1 -> ## Step 2...
+- Identificar `TipoDFe`, `Servico`, versão, ambiente e formato de retorno.
+- Conferir o XSD oficial embutido em `Xml/Schemas/<DFe>` e a classe em `Xml/<DFe>`.
+- Não deduzir a posição de `cStat` apenas por outro documento ou serviço.
+- Confirmar se o retorno contém status principal e status internos de protocolo, documento ou evento.
 
-**2. Task-Based** (best for tool collections)
-- Works well when the skill offers different operations/capabilities
-- Example: PDF skill with "Quick Start" -> "Merge PDFs" -> "Split PDFs" -> "Extract Text"
-- Structure: ## Overview -> ## Quick Start -> ## Task Category 1 -> ## Task Category 2...
+### 2. Preservar a operação fiscal
 
-**3. Reference/Guidelines** (best for standards or specifications)
-- Works well for brand guidelines, coding standards, or requirements
-- Example: Brand styling with "Brand Guidelines" -> "Colors" -> "Typography" -> "Features"
-- Structure: ## Overview -> ## Guidelines -> ## Specifications -> ## Usage...
+- Manter a coleta passiva: observar somente a chamada que a aplicação já executaria.
+- Nunca repetir autorização, evento, inutilização, distribuição ou outra mensagem fiscal para diagnosticar disponibilidade.
+- Não introduzir leitura/gravação de arquivos, espera, bloqueio prolongado ou chamada externa no caminho da emissão.
+- Manter falhas da telemetria isoladas: elas nunca podem mudar o resultado da operação fiscal observada.
+- Permitir consulta explícita de `StatusServico` somente pelo fluxo protegido por cache e bloqueio de consumo indevido.
 
-**4. Capabilities-Based** (best for integrated systems)
-- Works well when the skill provides multiple interrelated features
-- Example: Product Management with "Core Capabilities" -> numbered capability list
-- Structure: ## Overview -> ## Core Capabilities -> ### 1. Feature -> ### 2. Feature...
+### 3. Extrair e classificar o retorno
 
-Patterns can be mixed and matched as needed. Most skills combine patterns (e.g., start with task-based, add workflow for complex operations).
+- Usar o primeiro `cStat` em ordem documental.
+- Preservar o status principal do serviço ou lote quando existirem `protNFe`, `protCTe` ou `protMDFe` posteriores.
+- Quando não houver status principal, alcançar o primeiro código em estruturas como `infInut`, `infCons` e `infEvento`.
+- Não escolher o maior, o último ou o “pior” `cStat` do XML.
+- Alterar códigos especiais somente na política central compartilhada pelo classificador, agregador, consulta explícita e cache.
+- Manter qualquer `cStat` positivo não especial como prova de processamento fiscal.
 
-Delete this entire "Structuring This Skill" section when done - it's just guidance.]
+### 4. Separar origem fiscal e local
 
-## [TODO: Replace with the first main section based on chosen structure]
+- Não atribuir timeout isolado à SEFAZ.
+- Correlacionar HTTP 5xx e timeouts por serviço e endpoint.
+- Fazer DNS, conexão, TLS, proxy, certificado e configuração prevalecerem como causa local quando não houver indisponibilidade fiscal direta.
+- Usar `Essencial` na agregação; falha apenas em serviço secundário não representa indisponibilidade total.
+- Tratar serviço, UF, ambiente ou versão inexistente como `NaoAplicavel`.
 
-[TODO: Add content here. See examples in existing skills:
-- Code samples for technical skills
-- Decision trees for complex workflows
-- Concrete examples with realistic user requests
-- References to scripts/templates/references as needed]
+### 5. Proteger dados e compatibilidade
 
-## Resources (optional)
+- Nunca guardar XML completo, corpo fiscal, certificado, chave privada, senha, token ou credencial de proxy.
+- Sanitizar endpoint e mensagens vindas de transporte antes de armazená-los.
+- Preservar `netstandard2.0`, C# 7.3 e INTEROP/COM.
+- Documentar APIs públicas e novos membros conforme o padrão do projeto.
+- Manter a memória limitada e sem persistência em disco.
 
-Create only the resource directories this skill actually needs. Delete this section if no resources are required.
+## Pontos principais do código
 
-### scripts/
-Executable code (Python/Bash/etc.) that can be run directly to perform specific operations.
+- `source/.NET Standard/Unimake.Business.DFe/Servicos/ServicoBase.cs`
+- `source/.NET Standard/Unimake.Business.DFe/Utility/Disponibilidade/DiagnosticoDisponibilidadeDFe.cs`
+- `source/.NET Standard/Unimake.Business.DFe/Utility/Disponibilidade/TelemetriaDisponibilidade.cs`
+- `source/.NET Standard/Unimake.Business.DFe/Utility/Disponibilidade/ModelosDisponibilidade.cs`
+- `source/Unimake.DFe.Test/Utility/Rede/DiagnosticoDisponibilidadeTest.cs`
+- Projeto `Unimake.Utils`, quando a mudança envolver classificação HTTP, DNS, conexão, timeout, TLS ou proxy.
 
-**Examples from other skills:**
-- PDF skill: `fill_fillable_fields.py`, `extract_form_field_info.py` - utilities for PDF manipulation
-- DOCX skill: `document.py`, `utilities.py` - Python modules for document processing
+## Validação
 
-**Appropriate for:** Python scripts, shell scripts, or any executable code that performs automation, data processing, or specific operations.
+1. Criar teste determinístico sem internet para cada formato de retorno ou regra alterada.
+2. Cobrir status principal e status interno quando o XML puder conter mais de um `cStat`.
+3. Confirmar que a telemetria não executa transporte adicional nem lança exceção para a operação fiscal.
+4. Validar agregação, origem provável, cache, consumo indevido e sanitização quando afetados.
+5. Executar somente os testes novos/alterados e, para infraestrutura compartilhada, a classe completa de disponibilidade.
+6. Executar o build principal com `--no-restore`.
+7. Executar também `C:\projetos\github\UniNFe\source\UniNFe.Test\UniNFe.Test.csproj` em `Debug`, conforme o `AGENTS.md`.
 
-**Note:** Scripts may be executed without loading into context, but can still be read by Codex for patching or environment adjustments.
+Comandos usuais:
 
-### references/
-Documentation and reference material intended to be loaded into context to inform Codex's process and thinking.
+```powershell
+dotnet test "source/Unimake.DFe.Test/Unimake.DFe.Test.csproj" --no-restore --filter "FullyQualifiedName~DiagnosticoDisponibilidadeTest"
+dotnet build "source/.NET Standard/Unimake.Business.DFe/Unimake.Business.DFe.csproj" --no-restore
+dotnet test "C:\projetos\github\UniNFe\source\UniNFe.Test\UniNFe.Test.csproj" --no-restore --configuration Debug
+```
 
-**Examples from other skills:**
-- Product management: `communication.md`, `context_building.md` - detailed workflow guides
-- BigQuery: API reference documentation and query examples
-- Finance: Schema documentation, company policies
+## Entrega
 
-**Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that Codex should reference while working.
-
-### assets/
-Files not intended to be loaded into context, but rather used within the output Codex produces.
-
-**Examples from other skills:**
-- Brand styling: PowerPoint template files (.pptx), logo files
-- Frontend builder: HTML/React boilerplate project directories
-- Typography: Font files (.ttf, .woff2)
-
-**Appropriate for:** Templates, boilerplate code, document templates, images, icons, fonts, or any files meant to be copied or used in the final output.
-
----
-
-**Not every skill requires all three types of resources.**
+- Informar quais evidências mudaram e como são agregadas.
+- Explicar explicitamente o efeito sobre autorização e consumo indevido.
+- Relatar testes aprovados, ignorados e falhas externas ou preexistentes separadamente.
+- Não afirmar que a SEFAZ está indisponível sem evidência fiscal direta ou correlação suficiente.
