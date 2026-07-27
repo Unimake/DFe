@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manutencao de Disponibilidade DFe"
+  short_description: "Manutencao segura do diagnostico fiscal"
+  default_prompt: "Use $manutencao-disponibilidade-dfe para revisar ou alterar o diagnostico de disponibilidade dos DFe com seguranca."
