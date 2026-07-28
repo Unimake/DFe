@@ -5346,6 +5346,19 @@
         <TagExtraAtributoID></TagExtraAtributoID>
         <TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
       </Servico>
+	  <Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
+		<Descricao>Consultar NFSe</Descricao>
+		<TipoServico>NFSeConsultarNfse</TipoServico>
+		<SchemaArquivo></SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagVersao></TagVersao>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+	  </Servico>
       <Servico tagRaiz="CancelarNfseEnvio" versao="2.00">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
         <TipoServico>NFSeCancelarNfse</TipoServico>

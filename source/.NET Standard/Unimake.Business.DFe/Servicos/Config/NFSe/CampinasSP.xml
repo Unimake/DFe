@@ -160,5 +160,19 @@
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</GerarNfse>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao></RequestURIProducao>
+			<RequestURIHomologacao>https://preprod-nfse.ima.sp.gov.br/notafiscal-adn-ws/api/adn/nfse/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>
