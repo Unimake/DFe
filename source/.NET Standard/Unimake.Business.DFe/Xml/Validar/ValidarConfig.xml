@@ -4432,7 +4432,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarRequerimentoCancelamentoEnvio" versao="1.00" tagIdentificadora="IdentificacaoPrestador">
         <Descricao>Consultar situação do cancelamento da NFSe</Descricao>
-        <TipoServico>NFSeCancelarNfse</TipoServico>
+        <TipoServico>NFSeConsultarRequerimentoCancelamento</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -6178,8 +6178,8 @@
         <TargetNS>http://www.equiplano.com.br/esnfs</TargetNS>
       </Servico>
       <Servico tagRaiz="es:esConsultarNfseEnvio" versao="1.00" tagIdentificadora="prestador">
-        <Descricao>Consulta lote RPS</Descricao>
-        <TipoServico>NFSeConsultarLoteRps</TipoServico>
+        <Descricao>Consultar NFSe</Descricao>
+        <TipoServico>NFSeConsultarNfse</TipoServico>
         <SchemaArquivo>esConsultarNfseEnvio_v01.xsd</SchemaArquivo>
         <TagAssinatura>es:esConsultarNfseEnvio</TagAssinatura>
         <TagAtributoID>prestador</TagAtributoID>
@@ -7237,7 +7237,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseEnvio" versao="3.00">
         <Descricao>Consulta de NFSe por Data</Descricao>
-        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
+        <TipoServico>NFSeConsultarNfse</TipoServico>
         <SchemaArquivo>servico_consultar_nfse_envio_v03.xsd</SchemaArquivo>
         <TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -7250,7 +7250,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseEnvio" versao="3.01">
         <Descricao>Consulta de NFSe por Data</Descricao>
-        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
+        <TipoServico>NFSeConsultarNfse</TipoServico>
         <SchemaArquivo>servico_consultar_nfse_envio_v03.xsd</SchemaArquivo>
         <TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -9393,7 +9393,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseEnvio" versao="4.00" tagIdentificadora="IntermediarioServico">
         <Descricao>Consulta da NFSe</Descricao>
-        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
+        <TipoServico>NFSeConsultarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
         <TagAtributoID>Prestador</TagAtributoID>
@@ -11622,9 +11622,22 @@
         <TagExtraAtributoID></TagExtraAtributoID>
         <TargetNS>http://144.22.133.90/issqn/wservice/wsnfecancela.php</TargetNS>
       </Servico>
+      <Servico tagRaiz="ConsultaNfe" versao="1.00" tagIdentificadora="pass">
+        <Descricao>Obter Nota Fiscal Xml</Descricao>
+        <TipoServico>NFSeObterNotaFiscalXml</TipoServico>
+        <SchemaArquivo></SchemaArquivo>
+        <TagAssinatura></TagAssinatura>
+        <TagAtributoID></TagAtributoID>
+        <TagVersao></TagVersao>
+        <TagLoteAssinatura></TagLoteAssinatura>
+        <TagLoteAtributoID></TagLoteAtributoID>
+        <TagExtraAssinatura></TagExtraAssinatura>
+        <TagExtraAtributoID></TagExtraAtributoID>
+        <TargetNS>http://144.22.133.90/issqn/wservice/wsnfecancela.php</TargetNS>
+      </Servico>
       <Servico tagRaiz="ConsultaNfe" versao="1.00" tagIdentificadora="prf">
         <Descricao>Consultar NFSe</Descricao>
-        <TipoServico>NFSeConsultaNotaFiscal</TipoServico>
+        <TipoServico>NFSeConsultarNfse</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -11636,21 +11649,8 @@
         <TargetNS>http://144.22.133.90/issqn/wservice/wsnfecancela.php</TargetNS>
       </Servico>
       <Servico tagRaiz="EnvNfe" versao="1.00" tagIdentificadora="prf">
-        <Descricao>Obter Nota Fiscal Xml</Descricao>
-        <TipoServico>NFSeRecepcionarLoteRpsSincrono</TipoServico>
-        <SchemaArquivo></SchemaArquivo>
-        <TagAssinatura></TagAssinatura>
-        <TagAtributoID></TagAtributoID>
-        <TagVersao></TagVersao>
-        <TagLoteAssinatura></TagLoteAssinatura>
-        <TagLoteAtributoID></TagLoteAtributoID>
-        <TagExtraAssinatura></TagExtraAssinatura>
-        <TagExtraAtributoID></TagExtraAtributoID>
-        <TargetNS>http://144.22.133.90/issqn/wservice/wsnfecancela.php</TargetNS>
-      </Servico>
-      <Servico tagRaiz="ConsultaNfe" versao="1.00" tagIdentificadora="pass">
         <Descricao>Envio Lote Rps</Descricao>
-        <TipoServico>NFSeConsultarNfse</TipoServico>
+        <TipoServico>NFSeRecepcionarLoteRpsSincrono</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
