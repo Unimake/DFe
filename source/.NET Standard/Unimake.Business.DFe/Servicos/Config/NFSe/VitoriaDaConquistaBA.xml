@@ -146,7 +146,7 @@
 		<!--VERSÃO 1.01-->
 		<GerarNfse versao="1.01">
 			<Descricao>Envio do DPS - Sincrono</Descricao>
-			<RequestURIProducao></RequestURIProducao>
+			<RequestURIProducao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/nfse?token={token}</RequestURIProducao>
 			<RequestURIHomologacao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/homologacao/nfse?token={token}</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
@@ -161,7 +161,7 @@
 		</GerarNfse>
 		<CancelarNfse versao="1.01">
 			<Descricao>Envio do cancelamento de NFSe</Descricao>
-			<RequestURIProducao></RequestURIProducao>
+			<RequestURIProducao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/nfse/{chaveAcesso}/eventos?token={token}</RequestURIProducao>
 			<RequestURIHomologacao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/homologacao/nfse/{chaveAcesso}/eventos?token={token}</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
@@ -175,7 +175,7 @@
 		</CancelarNfse>
 		<ConsultarNfse versao="1.01">
 			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao></RequestURIProducao>
+			<RequestURIProducao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/nfse/{Chave}?token={token}</RequestURIProducao>
 			<RequestURIHomologacao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/homologacao/nfse/{Chave}?token={token}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -189,7 +189,7 @@
 		</ConsultarNfse>
 		<ConsultarNfsePorRps versao="1.01">
 			<Descricao>Consultar NFSe por DPS</Descricao>
-			<RequestURIProducao></RequestURIProducao>
+			<RequestURIProducao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/nfse/{Chave}?token={token}</RequestURIProducao>
 			<RequestURIHomologacao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/homologacao/dps/{Chave}?token={token}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
