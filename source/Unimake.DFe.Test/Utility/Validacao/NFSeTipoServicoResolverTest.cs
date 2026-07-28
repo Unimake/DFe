@@ -28,6 +28,15 @@ namespace Unimake.DFe.Test.Utility.Validacao
         [InlineData(PadraoNFSe.DSF, "<ns1:ReqConsultaNotas xmlns:ns1=\"http://localhost:8080/WsNFe2/lote\"><Cabecalho Versao=\"1.00\" /></ns1:ReqConsultaNotas>", "1.00", Servico.NFSeConsultarNotaValida)]
         [InlineData(PadraoNFSe.DSF, "<ns1:ReqEnvioLoteRPS xmlns:ns1=\"http://localhost:8080/WsNFe2/lote\"><Cabecalho Versao=\"1.00\" /><Lote /></ns1:ReqEnvioLoteRPS>", "1.00", Servico.NFSeRecepcionarLoteRpsSincrono)]
         [InlineData(PadraoNFSe.DSF, "<ConsultarSituacaoLoteRpsEnvio xmlns=\"http://www.ginfes.com.br/servico_consultar_situacao_lote_rps_envio_v03.xsd\"><Protocolo>1</Protocolo></ConsultarSituacaoLoteRpsEnvio>", "3.00", Servico.NFSeConsultarSituacaoLoteRps)]
+        [InlineData(PadraoNFSe.GINFES, "<ConsultarNfseEnvio xmlns=\"http://www.ginfes.com.br/servico_consultar_nfse_envio_v03.xsd\"><Prestador /><PeriodoEmissao /></ConsultarNfseEnvio>", "3.01", Servico.NFSeConsultarNfse)]
+        [InlineData(PadraoNFSe.GINFES, "<ConsultarNfseRpsEnvio xmlns=\"http://www.ginfes.com.br/servico_consultar_nfse_rps_envio_v03.xsd\"><Prestador /><IdentificacaoRps /></ConsultarNfseRpsEnvio>", "3.01", Servico.NFSeConsultarNfsePorRps)]
+        [InlineData(PadraoNFSe.PROPRIOFORTALEZACE, "<ConsultarNfseEnvio><Prestador /><IntermediarioServico /></ConsultarNfseEnvio>", "4.00", Servico.NFSeConsultarNfse)]
+        [InlineData(PadraoNFSe.PROPRIOFORTALEZACE, "<ConsultarNfseRpsEnvio><Prestador /><IdentificacaoRps /></ConsultarNfseRpsEnvio>", "4.00", Servico.NFSeConsultarNfsePorRps)]
+        [InlineData(PadraoNFSe.EQUIPLANO, "<es:esConsultarNfseEnvio xmlns:es=\"http://www.equiplano.com.br/esnfs\"><prestador /></es:esConsultarNfseEnvio>", "1.00", Servico.NFSeConsultarNfse)]
+        [InlineData(PadraoNFSe.AGILI, "<ConsultarRequerimentoCancelamentoEnvio><IdentificacaoPrestador /></ConsultarRequerimentoCancelamentoEnvio>", "1.00", Servico.NFSeConsultarRequerimentoCancelamento)]
+        [InlineData(PadraoNFSe.WEBFISCO, "<ConsultaNfe><prf>1</prf><usr>1</usr><ctr>1</ctr><tipo>1</tipo></ConsultaNfe>", "1.00", Servico.NFSeConsultarNfse)]
+        [InlineData(PadraoNFSe.WEBFISCO, "<ConsultaNfe><pass>?</pass><prf>?</prf><usr>?</usr><ctr>?</ctr><tipo>?</tipo><obs>?</obs></ConsultaNfe>", "1.00", Servico.NFSeObterNotaFiscalXml)]
+        [InlineData(PadraoNFSe.WEBFISCO, "<EnvNfe><prf>1</prf><usr>1</usr><ctr>1</ctr></EnvNfe>", "1.00", Servico.NFSeRecepcionarLoteRpsSincrono)]
         public void DeveDefinirTipoServicoNFSePorXmlString(PadraoNFSe padraoNFSe, string conteudoXML, string versao, Servico tipoServicoEsperado)
         {
             var tipoServico = ValidarEstruturaXML.DefinirTipoServicoNFSe(conteudoXML, padraoNFSe, versao);
@@ -46,6 +55,18 @@ namespace Unimake.DFe.Test.Utility.Validacao
         }
 
         [Fact]
+        public void DeveAplicarExcecaoMunicipalDoTipoServicoNFSe()
+        {
+            var xml = CriarXml("<EnviarLoteRpsSincronoEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><LoteRps /></EnviarLoteRpsSincronoEnvio>");
+
+            var tipoServicoPadrao = ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.SMARAPD, "2.04", 0);
+            var tipoServicoExcecao = ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.SMARAPD, "2.04", 2111300);
+
+            Assert.Equal(Servico.NFSeRecepcionarLoteRpsSincrono, tipoServicoPadrao);
+            Assert.Equal(Servico.NFSeRecepcionarLoteRps, tipoServicoExcecao);
+        }
+
+        [Fact]
         public void DeveUsarTagIdentificadoraParaDiferenciarServicosComMesmaRaiz()
         {
             var xmlPrestado = "<ConsultarNfseServicoPrestadoEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><Prestador /><PeriodoCompetencia /></ConsultarNfseServicoPrestadoEnvio>";
@@ -59,14 +80,14 @@ namespace Unimake.DFe.Test.Utility.Validacao
         }
 
         [Fact]
-        public void DeveRejeitarServicoSemTipoServicoConfigurado()
+        public void DeveRejeitarServicoNFSeNaoConfigurado()
         {
             var xml = CriarXml("<ConsultarLoteRpsEnvio xmlns=\"http://www.tinus.com.br\"><CpfCnpj /></ConsultarLoteRpsEnvio>");
 
             var ex = Assert.Throws<Exception>(() =>
-                ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.TINUS, "2.03"));
+                ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.TINUS, "9.99"));
 
-            Assert.Contains("A tag TipoServico não foi configurada", ex.Message);
+            Assert.Contains("Não foi possível encontrar", ex.Message);
         }
 
         private static XmlDocument CriarXml(string conteudoXML)
