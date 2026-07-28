@@ -6732,6 +6732,7 @@
           <Excecao codMunicipio="5005152">true</Excecao>
           <Excecao codMunicipio="1100155">true</Excecao>
           <Excecao codMunicipio="5220454">true</Excecao>
+		  <Excecao codMunicipio="5003207">true</Excecao>
         </AssinaCanonicalizacaoExclusiva>
       </Servico>
     <Servico tagRaiz="RecepcionarLoteDpsSincronoEnvio" versao="1.01">
@@ -6754,6 +6755,7 @@
       </SignatureAlgorithmType>
       <AssinaCanonicalizacaoExclusiva>
         <Excecao codMunicipio="3518206">true</Excecao>
+		<Excecao codMunicipio="5003207">true</Excecao>
       </AssinaCanonicalizacaoExclusiva>
     </Servico>
       <Servico tagRaiz="ConsultarLoteDpsEnvio" versao="1.01">
