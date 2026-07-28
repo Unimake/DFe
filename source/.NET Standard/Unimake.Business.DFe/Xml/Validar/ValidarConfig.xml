@@ -11240,8 +11240,8 @@
         <TagVersao></TagVersao>
         <TagLoteAssinatura></TagLoteAssinatura>
         <TagLoteAtributoID></TagLoteAtributoID>
-        <TagExtraAssinatura></TagExtraAssinatura>
-        <TagExtraAtributoID></TagExtraAtributoID>
+        <TagExtraAssinatura>EnviarLoteRpsSincronoEnvio</TagExtraAssinatura>
+        <TagExtraAtributoID>LoteRps</TagExtraAtributoID>
         <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
       </Servico>
     </Padrao>
