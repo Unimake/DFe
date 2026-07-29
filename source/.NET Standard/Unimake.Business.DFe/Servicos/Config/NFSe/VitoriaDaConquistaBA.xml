@@ -189,7 +189,7 @@
 		</ConsultarNfse>
 		<ConsultarNfsePorRps versao="1.01">
 			<Descricao>Consultar NFSe por DPS</Descricao>
-			<RequestURIProducao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/nfse/{Chave}?token={token}</RequestURIProducao>
+			<RequestURIProducao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/dps/{Chave}?token={token}</RequestURIProducao>
 			<RequestURIHomologacao>https://ba-vitoriadaconquista-pm-nfs-backend.cloud.el.com.br/producao/api/nacional/homologacao/dps/{Chave}?token={token}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
