@@ -83,6 +83,12 @@
                                                         <xsd:element name="Aliquota" type="xsd:decimal" />
                                                         <xsd:element name="DescontoIncondicionado" type="xsd:decimal" />
                                                         <xsd:element name="DescontoCondicionado" type="xsd:decimal" />
+														<xsd:element name="IbsMunicipal" type="xsd:decimal" />
+														<xsd:element name="ValorIbsMunicipal" type="xsd:decimal" />
+														<xsd:element name="IbsEstadual" type="xsd:decimal" />
+														<xsd:element name="ValorIbsEstadual" type="xsd:decimal" />
+														<xsd:element name="Cbs" type="xsd:decimal" />
+														<xsd:element name="ValorCbs" type="xsd:decimal" />
                                                       </xsd:sequence>
                                                     </xsd:complexType>
                                                   </xsd:element>
@@ -97,7 +103,25 @@
                                                   <xsd:element name="ExigibilidadeISS" type="xsd:unsignedByte" />
                                                   <xsd:element name="MunicipioIncidencia" type="xsd:unsignedLong" />
                                                   <xsd:element name="NumeroProcesso" />
-                                                </xsd:sequence>
+												  <xsd:element name="CodigoNBS" type="xsd:unsignedLong" />
+												  <xsd:element name="CodigoServicoNacional" type="xsd:unsignedLong" />
+												  <xsd:element name="ComercioExterior" minOccurs="0">
+                                                    <xsd:complexType>
+                                                      <xsd:sequence>
+                                                        <xsd:element name="ModoPrestacao" type="xsd:unsignedByte" minOccurs="0" />
+                                                        <xsd:element name="VinculoPrestacao" type="xsd:unsignedByte" minOccurs="0" />
+                                                        <xsd:element name="TipoMoeda" type="xsd:string" minOccurs="0" />
+                                                        <xsd:element name="ValorServicoMoeda" type="xsd:decimal" minOccurs="0" />
+                                                        <xsd:element name="MecanismoApoioPrestador" type="xsd:string" minOccurs="0" />
+                                                        <xsd:element name="MecanismoApoioTomador" type="xsd:string" minOccurs="0" />
+                                                        <xsd:element name="MovimentacaoTemporariaBens" type="xsd:unsignedByte" minOccurs="0" />
+                                                        <xsd:element name="NumeroDeclaracaoImportacao" type="xsd:string" minOccurs="0" />
+                                                        <xsd:element name="NumeroRegistroExportacao" type="xsd:string" minOccurs="0" />
+                                                        <xsd:element name="EnviarMdic" type="xsd:unsignedByte" minOccurs="0" />
+                                                      </xsd:sequence>
+                                                    </xsd:complexType>
+                                                  </xsd:element>
+                                                  </xsd:sequence>
                                               </xsd:complexType>
                                             </xsd:element>
                                           </xsd:sequence>
@@ -134,6 +158,9 @@
                                                       </xsd:choice>                                                    
                                                     </xsd:complexType>
                                                   </xsd:element>
+												  <xsd:element name="NIF" type="xsd:string" minOccurs="0" />
+                                                  <xsd:element name="CodigoMotivoAusenciaNIF" type="xsd:unsignedByte" minOccurs="0" />
+                                                  <xsd:element name="CAEPF" type="xsd:string" minOccurs="0" />
                                                   <xsd:element name="InscricaoMunicipal" type="xsd:unsignedLong" />
                                                 </xsd:sequence>
                                               </xsd:complexType>
