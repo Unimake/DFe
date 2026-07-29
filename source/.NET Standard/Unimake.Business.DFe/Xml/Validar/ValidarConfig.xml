@@ -5346,6 +5346,19 @@
         <TagExtraAtributoID></TagExtraAtributoID>
         <TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
       </Servico>
+	  <Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
+		<Descricao>Consultar NFSe</Descricao>
+		<TipoServico>NFSeConsultarNfse</TipoServico>
+		<SchemaArquivo></SchemaArquivo>
+		<TagAssinatura></TagAssinatura>
+		<TagAtributoID></TagAtributoID>
+		<TagVersao></TagVersao>
+		<TagLoteAssinatura></TagLoteAssinatura>
+		<TagLoteAtributoID></TagLoteAtributoID>
+		<TagExtraAssinatura></TagExtraAssinatura>
+		<TagExtraAtributoID></TagExtraAtributoID>
+		<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+	  </Servico>
       <Servico tagRaiz="CancelarNfseEnvio" versao="2.00">
         <Descricao>Cancelar nota fiscal de serviço</Descricao>
         <TipoServico>NFSeCancelarNfse</TipoServico>
@@ -6732,6 +6745,7 @@
           <Excecao codMunicipio="5005152">true</Excecao>
           <Excecao codMunicipio="1100155">true</Excecao>
           <Excecao codMunicipio="5220454">true</Excecao>
+		  <Excecao codMunicipio="5003207">true</Excecao>
         </AssinaCanonicalizacaoExclusiva>
       </Servico>
     <Servico tagRaiz="RecepcionarLoteDpsSincronoEnvio" versao="1.01">
@@ -6754,6 +6768,7 @@
       </SignatureAlgorithmType>
       <AssinaCanonicalizacaoExclusiva>
         <Excecao codMunicipio="3518206">true</Excecao>
+		<Excecao codMunicipio="5003207">true</Excecao>
       </AssinaCanonicalizacaoExclusiva>
     </Servico>
       <Servico tagRaiz="ConsultarLoteDpsEnvio" versao="1.01">
@@ -11240,8 +11255,8 @@
         <TagVersao></TagVersao>
         <TagLoteAssinatura></TagLoteAssinatura>
         <TagLoteAtributoID></TagLoteAtributoID>
-        <TagExtraAssinatura></TagExtraAssinatura>
-        <TagExtraAtributoID></TagExtraAtributoID>
+        <TagExtraAssinatura>EnviarLoteRpsSincronoEnvio</TagExtraAssinatura>
+        <TagExtraAtributoID>LoteRps</TagExtraAtributoID>
         <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
       </Servico>
     </Padrao>

@@ -109,6 +109,13 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     BETHA_CLOUD();
                     break;
 
+                case PadraoNFSe.DSF:
+                    if(Configuracoes.SchemaVersao == "1.01")
+                    {
+                        DSF();
+                    }
+                    break;
+
             }
             Configuracoes.Definida = true;
             base.DefinirConfiguracao();
@@ -596,6 +603,21 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         }
         #endregion BETHA_CLOUD
+
+        #region DSF
+
+        private void DSF()
+        {
+            if (Configuracoes.RequestURI.Contains("{Chave}"))
+            {
+                var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+                var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+                var chave = ConteudoXML.OuterXml.Substring(startIndex, endIndex - startIndex);
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+            }
+        }
+
+        #endregion DSF
 
         #endregion Configurações separadas por PadrãoNFSe
 
