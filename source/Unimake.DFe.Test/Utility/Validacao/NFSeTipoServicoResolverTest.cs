@@ -37,6 +37,15 @@ namespace Unimake.DFe.Test.Utility.Validacao
         [InlineData(PadraoNFSe.WEBFISCO, "<ConsultaNfe><prf>1</prf><usr>1</usr><ctr>1</ctr><tipo>1</tipo></ConsultaNfe>", "1.00", Servico.NFSeConsultarNfse)]
         [InlineData(PadraoNFSe.WEBFISCO, "<ConsultaNfe><pass>?</pass><prf>?</prf><usr>?</usr><ctr>?</ctr><tipo>?</tipo><obs>?</obs></ConsultaNfe>", "1.00", Servico.NFSeObterNotaFiscalXml)]
         [InlineData(PadraoNFSe.WEBFISCO, "<EnvNfe><prf>1</prf><usr>1</usr><ctr>1</ctr></EnvNfe>", "1.00", Servico.NFSeRecepcionarLoteRpsSincrono)]
+        [InlineData(PadraoNFSe.INTERSOL, "<p:ConsultarNfseEnvio xmlns:p=\"http://www.abrasf.org.br/nfse.xsd\"><Prestador /></p:ConsultarNfseEnvio>", "1.00", Servico.NFSeConsultarNfse)]
+        [InlineData(PadraoNFSe.INTERSOL, "<p:ConsultarNfseRpsEnvio xmlns:p=\"http://www.abrasf.org.br/nfse.xsd\"><IdentificacaoRps /></p:ConsultarNfseRpsEnvio>", "1.00", Servico.NFSeConsultarNfsePorRps)]
+        [InlineData(PadraoNFSe.METROPOLIS, "<ConsultarNfseEnvio><Prestador /></ConsultarNfseEnvio>", "1.00", Servico.NFSeConsultarNfse)]
+        [InlineData(PadraoNFSe.METROPOLIS, "<ConsultarNfseRpsEnvio><IdentificacaoRps /></ConsultarNfseRpsEnvio>", "1.00", Servico.NFSeConsultarNfsePorRps)]
+        [InlineData(PadraoNFSe.MEMORY, "<consultarLoteRPS><protocolo>1</protocolo></consultarLoteRPS>", "1.00", Servico.NFSeConsultarLoteRps)]
+        [InlineData(PadraoNFSe.CONAM, "<Sdt_consultaprotocoloin xmlns=\"NFe\"><Protocolo>1</Protocolo></Sdt_consultaprotocoloin>", "4.00", Servico.NFSeConsultarNfsePorRps)]
+        [InlineData(PadraoNFSe.CONAM, "<Sdt_consultanotasprotocoloin xmlns=\"NFe\"><Protocolo>1</Protocolo></Sdt_consultanotasprotocoloin>", "4.00", Servico.NFSeConsultarLoteRps)]
+        [InlineData(PadraoNFSe.PAULISTANA, "<p1:PedidoInformacoesLote xmlns:p1=\"http://www.prefeitura.sp.gov.br/nfe\"><Cabecalho Versao=\"1\" /></p1:PedidoInformacoesLote>", "1.00", Servico.NFSeConsultaInformacoesLote)]
+        [InlineData(PadraoNFSe.PAULISTANA, "<p1:PedidoInformacoesLote xmlns:p1=\"http://www.prefeitura.sp.gov.br/nfe\"><Cabecalho Versao=\"2\" /></p1:PedidoInformacoesLote>", "2.00", Servico.NFSeConsultaInformacoesLote)]
         public void DeveDefinirTipoServicoNFSePorXmlString(PadraoNFSe padraoNFSe, string conteudoXML, string versao, Servico tipoServicoEsperado)
         {
             var tipoServico = ValidarEstruturaXML.DefinirTipoServicoNFSe(conteudoXML, padraoNFSe, versao);

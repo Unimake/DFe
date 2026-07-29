@@ -4955,7 +4955,7 @@
       </Servico>
       <Servico tagRaiz="Sdt_consultaprotocoloin" versao="4.00">
         <Descricao>Consultar NFSe</Descricao>
-        <TipoServico>NFSeConsultarLoteRps</TipoServico>
+        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -4974,7 +4974,7 @@
       </Servico>
       <Servico tagRaiz="Sdt_consultanotasprotocoloin" versao="4.00">
         <Descricao>Consulta lote por RPS</Descricao>
-        <TipoServico>NFSeConsultarNfse</TipoServico>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -7557,7 +7557,7 @@
       </Servico>
       <Servico tagRaiz="p:ConsultarNfseEnvio" versao="1.00" tagIdentificadora="Prestador">
         <Descricao>Consulta de Nota Fiscal de Serviço</Descricao>
-        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
+        <TipoServico>NFSeConsultarNfse</TipoServico>
         <SchemaArquivo>consultar_nfse_envio_v1.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -8146,7 +8146,7 @@
       </Servico>
       <Servico tagRaiz="consultarLoteRPS" versao="1.00" tagIdentificadora="protocolo">
         <Descricao>Consulta o Lote RPS enviado</Descricao>
-        <TipoServico>NFSeConsultarNfse</TipoServico>
+        <TipoServico>NFSeConsultarLoteRps</TipoServico>
         <SchemaArquivo></SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -8238,7 +8238,7 @@
       </Servico>
       <Servico tagRaiz="ConsultarNfseEnvio" versao="1.00" tagIdentificadora="Prestador">
         <Descricao>Consulta NFSe</Descricao>
-        <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
+        <TipoServico>NFSeConsultarNfse</TipoServico>
         <SchemaArquivo>nfse.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
@@ -8765,7 +8765,7 @@
       </Servico>
       <Servico tagRaiz="p1:PedidoInformacoesLote" versao="1.00" tagIdentificadora="Cabecalho">
         <Descricao>Consulta Informações Lote</Descricao>
-        <TipoServico>NFSeConsultarNfse</TipoServico>
+        <TipoServico>NFSeConsultaInformacoesLote</TipoServico>
         <SchemaArquivo>PedidoInformacoesLote_v01.xsd</SchemaArquivo>
         <TagAssinatura>p1:PedidoInformacoesLote</TagAssinatura>
         <TagAtributoID>Cabecalho</TagAtributoID>
@@ -8778,7 +8778,7 @@
       </Servico>
       <Servico tagRaiz="p1:PedidoInformacoesLote" versao="2.00" tagIdentificadora="Cabecalho">
         <Descricao>Consulta Informações Lote</Descricao>
-        <TipoServico>NFSeConsultarNfse</TipoServico>
+        <TipoServico>NFSeConsultaInformacoesLote</TipoServico>
         <SchemaArquivo>PedidoInformacoesLote_v02.xsd</SchemaArquivo>
         <TagAssinatura>p1:PedidoInformacoesLote</TagAssinatura>
         <TagAtributoID>Cabecalho</TagAtributoID>
