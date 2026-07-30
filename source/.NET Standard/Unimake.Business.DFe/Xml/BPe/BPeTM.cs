@@ -60,8 +60,21 @@ namespace Unimake.Business.DFe.Xml.BPeTM
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string Id
         {
-            get => string.IsNullOrWhiteSpace(idField) ? "BPe" + Chave : idField;
-            set => idField = value;
+            get
+            {
+                idField = "BPe" + Chave;
+                return idField;
+            }
+
+            set
+            {
+                idField = value;
+
+                if (!string.IsNullOrWhiteSpace(value) && value.StartsWith("BPe", StringComparison.OrdinalIgnoreCase))
+                {
+                    chaveField = value.Substring(3);
+                }
+            }
         }
 
         /// <summary>
@@ -72,29 +85,33 @@ namespace Unimake.Business.DFe.Xml.BPeTM
         {
             get
             {
-                if (!string.IsNullOrWhiteSpace(chaveField))
-                {
-                    return chaveField;
-                }
-
-                if (!string.IsNullOrWhiteSpace(idField) && idField.StartsWith("BPe", StringComparison.OrdinalIgnoreCase))
-                {
-                    chaveField = idField.Substring(3);
-                    return chaveField;
-                }
-
                 if (Ide == null)
                 {
+                    if (!string.IsNullOrWhiteSpace(chaveField))
+                    {
+                        return chaveField;
+                    }
+
                     throw new NullReferenceException("A propriedade 'Ide' esta nula.");
                 }
 
                 if (Emit == null)
                 {
+                    if (!string.IsNullOrWhiteSpace(chaveField))
+                    {
+                        return chaveField;
+                    }
+
                     throw new NullReferenceException("A propriedade 'Emit' esta nula.");
                 }
 
                 if (string.IsNullOrWhiteSpace(Emit.CNPJ))
                 {
+                    if (!string.IsNullOrWhiteSpace(chaveField))
+                    {
+                        return chaveField;
+                    }
+
                     throw new NullReferenceException("Emit.CNPJ nao foi informado.");
                 }
 
@@ -112,12 +129,17 @@ namespace Unimake.Business.DFe.Xml.BPeTM
                 };
 
                 chaveField = XMLUtility.MontarChaveBPe(ref conteudoChaveDFe);
+                idField = "BPe" + chaveField;
                 Ide.CDV = conteudoChaveDFe.DigitoVerificador;
 
                 return chaveField;
             }
 
-            set => chaveField = value;
+            set
+            {
+                chaveField = value;
+                idField = string.IsNullOrWhiteSpace(value) ? null : "BPe" + value;
+            }
         }
 
         /// <summary>
