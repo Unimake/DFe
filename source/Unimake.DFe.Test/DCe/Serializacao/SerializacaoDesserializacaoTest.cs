@@ -53,7 +53,7 @@ namespace Unimake.DFe.Test.DCe.Serializacao
                         Mod = ModeloDFe.DCe,
                         Serie = 0,
                         NDC = 1,
-                        DhEmi = new DateTimeOffset(2026, 5, 1, 10, 20, 30, TimeSpan.FromHours(-3)),
+                        DhEmi = DateTime.Parse("2026-05-01T10:20:30-03:00"),
                         TpEmis = TipoEmissao.Normal,
                         TpEmit = TipoEmitenteDCe.EmissorProprio,
                         NSiteAutoriz = "0",

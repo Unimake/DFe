@@ -70,7 +70,7 @@ namespace Unimake.DFe.Test.BPe.Serializacao
             infBPe.Ide.Serie = 7;
             infBPe.Emit.CNPJ = "46090221000794";
             infBPe.Ide.CBP = "32380172";
-            infBPe.Ide.DhEmi = DateTimeOffset.Parse("2026-07-29T12:52:15-03:00");
+            infBPe.Ide.DhEmi = DateTime.Parse("2026-07-29T12:52:15-03:00");
 
             var conteudoChave = XMLUtility.ExtrairConteudoChaveDFe(infBPe.Chave);
 
@@ -94,7 +94,7 @@ namespace Unimake.DFe.Test.BPe.Serializacao
                     NBP = 1,
                     CBP = "00000010",
                     Modal = ModalidadeTransporteBPe.Rodoviario,
-                    DhEmi = DateTimeOffset.Parse("2026-07-01T08:00:00-03:00"),
+                    DhEmi = DateTime.Parse("2026-07-01T08:00:00-03:00"),
                     DCompet = DateTime.Parse("2026-07-01"),
                     TpEmis = TipoEmissaoBPe.Normal,
                     VerProc = "1.0",
