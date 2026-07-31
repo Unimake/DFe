@@ -11,11 +11,28 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
     {
         internal static void Ajustar(XmlDocument documento, List<Vol> volumes)
         {
+            ReposicionarInformacoesAdicionaisDosItens(documento);
             RemoverNegativos(documento, "//*[local-name()='gIBSCBS']/*[local-name()='vIBS']");
             RemoverElementos(documento, "//*[local-name()='IPI' and not(*[local-name()='IPINT']/*[local-name()='CST']) and not(*[local-name()='IPITrib']/*[local-name()='CST'])]");
             if (volumes != null && volumes.Count > 0)
             {
                 AdicionarVolumesOmitidos(documento, volumes);
+            }
+        }
+
+        private static void ReposicionarInformacoesAdicionaisDosItens(XmlDocument documento)
+        {
+            foreach (XmlElement informacaoAdicional in documento.SelectNodes("//*[local-name()='det']/*[local-name()='infAdProd']"))
+            {
+                var detalhe = informacaoAdicional.ParentNode;
+                var impostoDevolvido = detalhe.SelectSingleNode("*[local-name()='impostoDevol']");
+                var imposto = detalhe.SelectSingleNode("*[local-name()='imposto']");
+                var elementoAnterior = impostoDevolvido ?? imposto;
+                if (elementoAnterior != null && informacaoAdicional.PreviousSibling != elementoAnterior)
+                {
+                    detalhe.RemoveChild(informacaoAdicional);
+                    detalhe.InsertAfter(informacaoAdicional, elementoAnterior);
+                }
             }
         }
 

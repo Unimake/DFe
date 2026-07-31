@@ -38,6 +38,9 @@ public class NFeTxtConverterTest
     [InlineData("0000112301054300027600116072026-NFE-orig.txt")]
     [InlineData("novaVersao-nfe.txt")]
     [InlineData("35260747498059000115550010004029951909226874-nfe-orig.txt")]
+    [InlineData("002310_01_01_31_07_2026-nfe-orig.txt")]
+    [InlineData("000479_09531276000170_003_31_07_2026-nfe-orig.txt")]
+    [InlineData("nfe-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -61,6 +64,92 @@ public class NFeTxtConverterTest
     }
 
     /// <summary>
+    /// Deve manter as informações adicionais do item depois dos grupos obrigatórios do detalhe.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarInfAdProdDepoisDoImposto()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("002310_01_01_31_07_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var detalhe = xml.SelectSingleNode("//*[local-name()='det']");
+        var produto = detalhe.SelectSingleNode("*[local-name()='prod']");
+        var imposto = detalhe.SelectSingleNode("*[local-name()='imposto']");
+        var informacaoAdicional = detalhe.SelectSingleNode("*[local-name()='infAdProd']");
+
+        Assert.NotNull(produto);
+        Assert.NotNull(imposto);
+        Assert.NotNull(informacaoAdicional);
+        Assert.Same(produto, imposto.PreviousSibling);
+        Assert.Same(imposto, informacaoAdicional.PreviousSibling);
+        Assert.Equal("DEC:52921/IMP.REC.SUBSTITUICAO/ART.313-Y", informacaoAdicional.InnerText);
+    }
+
+    /// <summary>
+    /// Deve preservar os campos zerados do ICMS cobrado anteriormente quando a operação não é para consumidor final.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarCamposZeradosDoIcmsSn500ParaNaoConsumidorFinal()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("002310_01_01_31_07_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var detalhe = xml.SelectSingleNode("//*[local-name()='det']");
+        var icmsSn500 = detalhe.SelectSingleNode("*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMSSN500']");
+
+        Assert.NotNull(icmsSn500);
+        Assert.Equal("0.00", icmsSn500.SelectSingleNode("*[local-name()='vBCSTRet']").InnerText);
+        Assert.Equal("0.0000", icmsSn500.SelectSingleNode("*[local-name()='pST']").InnerText);
+        Assert.Equal("0.00", icmsSn500.SelectSingleNode("*[local-name()='vICMSSubstituto']").InnerText);
+        Assert.Equal("0.00", icmsSn500.SelectSingleNode("*[local-name()='vICMSSTRet']").InnerText);
+    }
+
+    /// <summary>
+    /// Deve preservar os campos zerados do ICMSSN500 em todos os itens informados pelo TXT.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarIcmsSn500ZeradoEmTodosOsItens()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000479_09531276000170_003_31_07_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var grupos = xml.SelectNodes("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMSSN500']");
+
+        Assert.Equal(2, grupos.Count);
+        foreach (XmlNode grupo in grupos)
+        {
+            Assert.Equal("0.00", grupo.SelectSingleNode("*[local-name()='vBCSTRet']").InnerText);
+            Assert.Equal("0.0000", grupo.SelectSingleNode("*[local-name()='pST']").InnerText);
+            Assert.Equal("0.00", grupo.SelectSingleNode("*[local-name()='vICMSSubstituto']").InnerText);
+            Assert.Equal("0.00", grupo.SelectSingleNode("*[local-name()='vICMSSTRet']").InnerText);
+        }
+    }
+
+    /// <summary>
+    /// Deve selecionar os grupos não tributados de PIS e COFINS pelo CST, mesmo nos segmentos Q05 e S05.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveSelecionarPisECofinsNaoTributadosPeloCst()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("nfe-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal(5, xml.SelectNodes("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='PIS']/*[local-name()='PISNT' and *[local-name()='CST']='04']").Count);
+        Assert.Equal(5, xml.SelectNodes("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='COFINS']/*[local-name()='COFINSNT' and *[local-name()='CST']='04']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='PISOutr']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='COFINSOutr']").Count);
+    }
+
+    /// <summary>
     /// Deve manter o XML de referência de cada TXT de regressão durante a migração para o modelo oficial.
     /// </summary>
     [Theory]
@@ -70,7 +159,7 @@ public class NFeTxtConverterTest
     [InlineData("NFE_Devolucao_00003.txt", "a927e05abdf374845b43837cfe6f3360c7a07fb312c4be22d994a864fe23b21c")]
     [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt", "d0cd1dc2a69bbf8f4f72f0130a7f993e4e44bcccd8f6e737994b34f2c36ac678")]
     [InlineData("NFe_ReformaTributaria_3_prods-nfe.txt", "e8214766f92cd58e33d430499bd22024c7edacc2c4b72c288307605f31d7f61f")]
-    [InlineData("NFe_Reforma_Tributaria-nfe.txt", "84860d7802e3a5d6a9d6d23cde15af41df3515d9028427585a54481c2be02a8a")]
+    [InlineData("NFe_Reforma_Tributaria-nfe.txt", "9e4bfde2755564884af7d5fda2a4526cae24ee1b9732a677087c3fa20f3e1dfe")]
     [InlineData("NFe_Reforma_Tributaria_Monofasica-nfe.txt", "7d0689545b29cde304678e9b4b232bac9330ebd64e57be5abcc7041cb85f6928")]
     [InlineData("NFE_Venda_00002.txt", "bbf5b92b9d1afbeb7706af0d2a928905ac46ed4531aa0bcc9383e4fc47f5f300")]
     [InlineData("NFe_Venda_para_o_Governo.txt", "f7d0bb8621a22a7c7cdbadde40dded3d21caffaf5fa0df92d4c6c1ed56522c64")]
@@ -597,7 +686,39 @@ public class NFeTxtConverterTest
             "RUA GENERAL MARIANTE",
             "48577324915",
             "04690036934",
-            "92991289953"
+            "92991289953",
+            "SOC.COM.MAT.P/CONSTR.LUIZ LOPES LTDA",
+            "00454749000109",
+            "108680702113",
+            "956224310481",
+            "RUA MAJOR OTAVIANO",
+            "R. OLIVEIRA CATRAMBI",
+            "1122911633",
+            "11997556655",
+            "luizlopes.nfe@uol.com.br",
+            "VENDEDOR: 0110 WAGNER",
+            "AUTO VIDROS PRUDENTE",
+            "562319803111",
+            "592009166115",
+            "45523719000811",
+            "RUA ANTONIO RUIZ",
+            "AVENIDA XV DE NOVEMBRO",
+            "Marco Thomaz",
+            "marco@duesoft.com.br",
+            "1839167600",
+            "PLACA: FRT 6828",
+            "J. R. DE OLIVEIRA AUTO ELETRICA",
+            "38136977000103",
+            "03640467000194",
+            "401300590118",
+            "401035229111",
+            "1436215947",
+            "36025222",
+            "RUA OTAVIO CONEGUNDES DE SOUZA",
+            "SUPERM. JAU SERVE LTDA",
+            "nfe@jauserve.com.br",
+            "carlos.tagiarolli@jauserve.com.br",
+            "AVENIDA JOAO SANZOVO"
         };
 
         var pasta = Path.GetDirectoryName(CaminhoArquivo("novaVersao-nfe.txt"));
