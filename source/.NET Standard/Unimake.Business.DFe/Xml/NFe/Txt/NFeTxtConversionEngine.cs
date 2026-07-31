@@ -2240,12 +2240,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (versaoNFe < 3) this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Opcional, 1, 1);
             var baseRetida = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VBCSTRet)), ObOp.Opcional, 15);
             var icmsRetido = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSSTRet)), ObOp.Opcional, 15);
-            icms.VBCSTRet = baseRetida > 0 ? (double?)baseRetida : null;
-            icms.VICMSSTRet = icmsRetido > 0 ? (double?)icmsRetido : null;
+            var percentualSt = 0d;
+            var substituto = 0d;
             if (versaoNFe >= 4)
             {
-                var percentualSt = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PST)), ObOp.Obrigatorio, 15);
-                icms.PST = percentualSt > 0 ? (double?)percentualSt : null;
+                percentualSt = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PST)), ObOp.Obrigatorio, 15);
                 icms.VBCFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VBCFCPSTRet)), ObOp.Obrigatorio, 15);
                 icms.PFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PFCPSTRet)), ObOp.Obrigatorio, 15);
                 icms.VFCPSTRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VFCPSTRet)), ObOp.Obrigatorio, 15);
@@ -2256,8 +2255,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     icms.PICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.PICMSEfet)), ObOp.Opcional, 15);
                     icms.VICMSEfet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSEfet)), ObOp.Opcional, 15);
                 }
-                var substituto = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSSubstituto)), ObOp.Opcional, 15);
-                icms.VICMSSubstituto = substituto > 0 ? (double?)substituto : null;
+                substituto = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS60>(nameof(DFeNFe.ICMS60.VICMSSubstituto)), ObOp.Opcional, 15);
+            }
+            if (baseRetida + percentualSt + substituto + icmsRetido > 0 || identificacaoOficial.IndFinal == SimNao.Nao)
+            {
+                icms.VBCSTRet = baseRetida;
+                icms.PST = percentualSt;
+                icms.VICMSSubstituto = substituto;
+                icms.VICMSSTRet = icmsRetido;
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMSSN500 = icms };
         }
@@ -2422,11 +2427,21 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarPisOutros(int nProd, int lenPipesRegistro)
         {
+            var cst = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2);
+            if (CstPisCofinsNaoTributado(cst))
+            {
+                detalhesOficiais[nProd].Imposto.PIS = new DFeNFe.PIS
+                {
+                    PISNT = new DFeNFe.PISNT { CST = cst }
+                };
+                return;
+            }
+
             detalhesOficiais[nProd].Imposto.PIS = new DFeNFe.PIS
             {
                 PISOutr = new DFeNFe.PISOutr
                 {
-                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                    CST = cst,
                     VBC = 0,
                     PPIS = 0,
                     VPIS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.VPIS)), ObOp.Opcional, 15)
@@ -2436,6 +2451,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarPisAliquotaRetencao(int nProd, int lenPipesRegistro)
         {
+            if (detalhesOficiais[nProd].Imposto.PIS?.PISNT != null) return;
             var pis = ObterPisOutros(nProd);
             pis.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
             pis.PPIS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.PISAliq>(nameof(DFeNFe.PISAliq.PPIS)), ObOp.Obrigatorio, 7);
@@ -2444,6 +2460,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarPisQuantidadeRetencao(int nProd, int lenPipesRegistro)
         {
+            if (detalhesOficiais[nProd].Imposto.PIS?.PISNT != null) return;
             var pis = ObterPisOutros(nProd);
             pis.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 15);
             pis.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15);
@@ -2545,11 +2562,21 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarCofinsOutros(int nProd, int lenPipesRegistro)
         {
+            var cst = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2);
+            if (CstPisCofinsNaoTributado(cst))
+            {
+                detalhesOficiais[nProd].Imposto.COFINS = new DFeNFe.COFINS
+                {
+                    COFINSNT = new DFeNFe.COFINSNT { CST = cst }
+                };
+                return;
+            }
+
             detalhesOficiais[nProd].Imposto.COFINS = new DFeNFe.COFINS
             {
                 COFINSOutr = new DFeNFe.COFINSOutr
                 {
-                    CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
+                    CST = cst,
                     VBC = 0,
                     PCOFINS = 0,
                     VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.VCOFINS)), ObOp.Obrigatorio, 15)
@@ -2559,6 +2586,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarCofinsAliquotaRetencao(int nProd, int lenPipesRegistro)
         {
+            if (detalhesOficiais[nProd].Imposto.COFINS?.COFINSNT != null) return;
             var cofins = ObterCofinsOutros(nProd);
             cofins.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
             cofins.PCOFINS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.PCOFINS)), ObOp.Obrigatorio, this.CasasDecimais75);
@@ -2566,11 +2594,18 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarCofinsQuantidadeRetencao(int nProd, int lenPipesRegistro)
         {
+            if (detalhesOficiais[nProd].Imposto.COFINS?.COFINSNT != null) return;
             var cofins = ObterCofinsOutros(nProd);
             cofins.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 16);
             cofins.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15);
             cofins.VBC = null;
             cofins.PCOFINS = null;
+        }
+
+        private static bool CstPisCofinsNaoTributado(string cst)
+        {
+            int codigo;
+            return int.TryParse(cst, NumberStyles.Integer, CultureInfo.InvariantCulture, out codigo) && codigo >= 4 && codigo <= 9;
         }
 
         private void ProcessarIssqn(int nProd, int lenPipesRegistro)
