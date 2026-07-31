@@ -8,8 +8,8 @@ BASE_DIR = Path(__file__).parent
 ENUMS_CS = (BASE_DIR / ".." / ".NET Standard" / "Unimake.Business.DFe" / "Servicos" / "Enums" / "Enums.cs").resolve()
 CONFIG_XML = (BASE_DIR / ".." / ".NET Standard" / "Unimake.Business.DFe" / "Servicos" / "Config" / "Config.xml").resolve()
 NFSE_DIR = (BASE_DIR / ".." / ".NET Standard" / "Unimake.Business.DFe" / "Servicos" / "Config" / "NFSe").resolve()
-OUTPUT_DIR = BASE_DIR / "Wikis_NFSe"
-OUTPUT_DIR.mkdir(exist_ok=True)
+OUTPUT_DIR = BASE_DIR / "generated" / "lista_padroes_nfse"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # ------------------- Mapeamento de nomes de padrões com exceção -------------------
 EXCEPTION_NAME_MAP: Dict[str, str] = {
