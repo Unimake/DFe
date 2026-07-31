@@ -89,6 +89,16 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Se precisar validar regressão de um DFe específico, filtre pelos testes do DFe ou pela classe/método afetado. Rode todos os testes apenas quando a mudança atingir infraestrutura compartilhada, serialização base, assinatura, transporte, validação global ou quando isso for solicitado explicitamente.
 - Sempre que executar testes unitários da DLL, execute também os testes unitários do projeto `C:\projetos\github\UniNFe\source\UniNFe.Test\UniNFe.Test.csproj` em `Debug`. Nessa configuração, os projetos do UniNFe usam `ProjectReference` para este checkout e validam a DLL recém-alterada; aplique no UniNFe um filtro correspondente ao escopo testado na DLL quando houver uma suíte focada equivalente.
 
+## Massas TXT de regressão e comparação antes/depois
+
+- Sempre que o usuário fornecer um TXT real para reproduzir conversão de NFe/NFCe ou comparar o conversor legado do UniNFe com a DLL, anonimize a massa antes de copiá-la para qualquer repositório ou incluí-la em testes.
+- Aplique a anonimização tanto em `source/Unimake.DFe.Test/.../Resources/Txt` quanto na massa equivalente do repositório `C:\projetos\github\UniNFe`, mantendo as duas cópias sincronizadas.
+- Remova ou substitua nome ou razão social identificável, CPF, CNPJ de pessoa ou empresário individual quando não for indispensável ao cenário, inscrição estadual, e-mail, telefone, endereço, CEP, nome de vendedor, número de pedido e dados repetidos em campos livres, como `Z`, `Z04`, `ZD` e observações.
+- Use valores claramente sintéticos, como `CLIENTE TESTE`, `EMPRESA TESTE`, `RUA EXEMPLO` e domínios `example.com`. Preserve somente os campos fiscais indispensáveis ao cenário; se um identificador compuser a chave de acesso ou afetar o dígito verificador, mantenha a consistência ou recalcule a chave e atualize as expectativas.
+- Antes de concluir, faça uma varredura em todos os TXT adicionados ou alterados e nas demais massas usadas pela mesma suíte, procurando dados esquecidos, especialmente nos segmentos `E`, `E02`, `E03`, `E05`, `F`, `G`, `G02a`, `X03`, `X04`, `Z`, `Z04` e `ZD`.
+- Para comparações “antes × depois”, execute o mesmo TXT anonimizado no conversor legado do UniNFe e na DLL, compare os XMLs e acrescente uma asserção explícita para o comportamento corrigido. Atualize hashes somente após revisar o diff da massa anonimizada.
+- Adicione ou mantenha um teste preventivo que falhe se dados identificáveis conhecidos reaparecerem nas massas TXT.
+
 ## Organização dos testes unitários
 
 - Mantenha os testes em `source/Unimake.DFe.Test` separados primeiro pelo documento fiscal eletrônico ou integração: `BPe`, `CCG`, `CIOT`, `CTe`, `CTeOS`, `CTeSimp`, `DARE`, `DCe`, `EFDReinf`, `ESocial`, `GNRE`, `MDFe`, `NF3e`, `NFCe`, `NFCom`, `NFe`, `NFGas`, `NFSe`, `SNCM`, `EBoleto`, `PIX`, `UMessenger`.
