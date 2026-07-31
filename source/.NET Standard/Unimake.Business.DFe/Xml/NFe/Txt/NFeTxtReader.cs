@@ -28,14 +28,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 {
                     var numeroNota = -1;
                     var linha = leitor.ReadLine();
-                    if (linha != null)
+                    while (linha != null && string.IsNullOrWhiteSpace(linha))
+                    {
+                        linha = leitor.ReadLine();
+                    }
+
+                    if (linha != null && (linha.TrimStart('\uFEFF').StartsWith("NOTAFISCAL") || linha.TrimStart('\uFEFF').StartsWith("NOTA FISCAL")))
                     {
                         possuiCabecalho = true;
-                        if (!linha.StartsWith("NOTAFISCAL") && !linha.StartsWith("NOTA FISCAL"))
-                        {
-                            mensagemErro = " ConteÃºdo da primeira linha do arquivo deve ser 'NOTAFISCAL'";
-                        }
-
                         linha = leitor.ReadLine();
                     }
 
