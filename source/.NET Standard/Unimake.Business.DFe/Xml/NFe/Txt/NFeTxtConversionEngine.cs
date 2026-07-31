@@ -1816,6 +1816,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             icms.VICMSDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.VICMSDeson)), ObOp.Opcional, 15);
             icms.MotDesICMS = (MotivoDesoneracaoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.MotDesICMS)), ObOp.Opcional, 1, 1);
             if (lenPipesRegistro >= 14) icms.IndDeduzDeson = LerSimNaoOpcional(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.IndDeduzDeson)));
+            if (icms.VICMSDeson <= 0)
+            {
+                icms.MotDesICMS = default(MotivoDesoneracaoICMS);
+                icms.IndDeduzDeson = ObterEnumOpcional(-1, (SimNao)(-1));
+            }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS20 = icms };
         }
 
@@ -2713,6 +2718,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarTotalIbsCbsDevolucao(int nProd, int lenPipesRegistro)
         {
             //layout = "UB17|pIBSUF|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vIBSUF|"
+            AjustarLayoutLegadoGrupoDevolucaoTributos();
             ObterGIBSCBS(nProd).GIBSUF = new DFeNFe.GIBSUF
             {
                 PIBSUF = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GIBSUF>(nameof(DFeNFe.GIBSUF.PIBSUF)), ObOp.Obrigatorio, 1, 7),
@@ -2734,6 +2740,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarTotalIbsCbsCreditoPresumido(int nProd, int lenPipesRegistro)
         {
             //layout = "UB36|pIBSMun|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vIBSMun|"
+            AjustarLayoutLegadoGrupoDevolucaoTributos();
             ObterGIBSCBS(nProd).GIBSMun = new DFeNFe.GIBSMun
             {
                 PIBSMun = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GIBSMun>(nameof(DFeNFe.GIBSMun.PIBSMun)), ObOp.Obrigatorio, 1, 7),
@@ -2755,6 +2762,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarTotalIbsCbsReducao(int nProd, int lenPipesRegistro)
         {
             //layout = "UB55|pCBS|pDif|vDif|pDevTrib|vDevTrib|pRedAliq|pAliqEfet|vCBS|"
+            AjustarLayoutLegadoGrupoDevolucaoTributos();
             ObterGIBSCBS(nProd).GCBS = new DFeNFe.GCBS
             {
                 PCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GCBS>(nameof(DFeNFe.GCBS.PCBS)), ObOp.Obrigatorio, 1, 7),
@@ -2787,6 +2795,33 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 PDevTrib = percentualDevolucao == -9.99 ? 0 : percentualDevolucao,
                 VDevTrib = valorDevolvido == -9.99 ? 0 : valorDevolvido
             };
+        }
+
+        private void AjustarLayoutLegadoGrupoDevolucaoTributos()
+        {
+            const string campoPercentualDevolucao = "|pDevTrib|";
+            const string campoValorDevolvido = "|vDevTrib|";
+            var indicePercentualLayout = layout.IndexOf(campoPercentualDevolucao, StringComparison.OrdinalIgnoreCase);
+            var indiceValorLayout = layout.IndexOf(campoValorDevolvido, StringComparison.OrdinalIgnoreCase);
+            if (indicePercentualLayout < 0 || indiceValorLayout < 0)
+            {
+                return;
+            }
+
+            var camposLayout = layout.Substring(1).Split('|');
+            var camposRegistro = Registro.Split('|');
+            var indicePercentual = Array.FindIndex(camposLayout, campo => string.Equals(campo, "pDevTrib", StringComparison.OrdinalIgnoreCase));
+            var indiceValor = Array.FindIndex(camposLayout, campo => string.Equals(campo, "vDevTrib", StringComparison.OrdinalIgnoreCase));
+            double valorPosicaoLegadaReducao;
+            if (indicePercentual < 0 || indiceValor < 0 || indiceValor >= camposRegistro.Length ||
+                !string.IsNullOrWhiteSpace(camposRegistro[indicePercentual]) ||
+                !double.TryParse(camposRegistro[indiceValor], NumberStyles.Float, CultureInfo.InvariantCulture, out valorPosicaoLegadaReducao) ||
+                valorPosicaoLegadaReducao <= 0)
+            {
+                return;
+            }
+
+            layout = layout.Remove(indicePercentualLayout, campoPercentualDevolucao.Length - 1);
         }
 
         private void ProcessarGrupoAreasIncentivadasCbs(int nProd, int lenPipesRegistro)
