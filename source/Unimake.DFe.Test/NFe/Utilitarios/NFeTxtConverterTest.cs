@@ -37,6 +37,7 @@ public class NFeTxtConverterTest
     [InlineData("0000092301054300027600116072026-NFE-orig.txt")]
     [InlineData("0000112301054300027600116072026-NFE-orig.txt")]
     [InlineData("novaVersao-nfe.txt")]
+    [InlineData("35260747498059000115550010004029951909226874-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -63,13 +64,13 @@ public class NFeTxtConverterTest
     /// Deve manter o XML de referência de cada TXT de regressão durante a migração para o modelo oficial.
     /// </summary>
     [Theory]
-    [InlineData("NFe_000250887_07_43_31-nfe-orig.txt", "1dfeb1ca43795977a207c36fda58365832ff7ee99605692c6dd9895c2a65e870")]
+    [InlineData("NFe_000250887_07_43_31-nfe-orig.txt", "7eb292fea3549c5ceedd9220d8ed328a012a2e5263edf5366dbafcd80118a482")]
     [InlineData("0000042301054300027600113072026-NFE.txt", "174dc230d9d4174df3e7a3ef14b4d25f1173ac4138812b88c3003b2d0a5b8bd6")]
-    [InlineData("CST_SEM_CLASSTRIB_SEM_NotaCredito03Retorno_SemImpostoIBSCBS.txt", "3e2f1e54ac159cd1b03b0024f1317b0eed96e46babe0cc615ac7c9deb1a60a06")]
+    [InlineData("CST_SEM_CLASSTRIB_SEM_NotaCredito03Retorno_SemImpostoIBSCBS.txt", "7bcbe40ef98b8e84d5687f028953f18a4b7f18525b3f3eece1a64538092fa8cd")]
     [InlineData("NFE_Devolucao_00003.txt", "a927e05abdf374845b43837cfe6f3360c7a07fb312c4be22d994a864fe23b21c")]
     [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt", "d0cd1dc2a69bbf8f4f72f0130a7f993e4e44bcccd8f6e737994b34f2c36ac678")]
     [InlineData("NFe_ReformaTributaria_3_prods-nfe.txt", "e8214766f92cd58e33d430499bd22024c7edacc2c4b72c288307605f31d7f61f")]
-    [InlineData("NFe_Reforma_Tributaria-nfe.txt", "aed2a7ab8509318407bc830fb0b7ac663e6ec238bd73641da8a0998bbb58d774")]
+    [InlineData("NFe_Reforma_Tributaria-nfe.txt", "84860d7802e3a5d6a9d6d23cde15af41df3515d9028427585a54481c2be02a8a")]
     [InlineData("NFe_Reforma_Tributaria_Monofasica-nfe.txt", "7d0689545b29cde304678e9b4b232bac9330ebd64e57be5abcc7041cb85f6928")]
     [InlineData("NFE_Venda_00002.txt", "bbf5b92b9d1afbeb7706af0d2a928905ac46ed4531aa0bcc9383e4fc47f5f300")]
     [InlineData("NFe_Venda_para_o_Governo.txt", "f7d0bb8621a22a7c7cdbadde40dded3d21caffaf5fa0df92d4c6c1ed56522c64")]
@@ -83,8 +84,9 @@ public class NFeTxtConverterTest
         var xml = Assert.Single(resultado.Documentos).Xml;
         var bytes = Encoding.UTF8.GetBytes(xml);
         var hash = SHA256.Create().ComputeHash(bytes);
+        var hashAtual = BitConverter.ToString(hash).Replace("-", string.Empty).ToLowerInvariant();
 
-        Assert.Equal(hashEsperado, BitConverter.ToString(hash).Replace("-", string.Empty).ToLowerInvariant());
+        Assert.True(hashEsperado == hashAtual, $"Hash esperado: {hashEsperado}. Hash atual: {hashAtual}.");
     }
 
     /// <summary>
@@ -536,6 +538,79 @@ public class NFeTxtConverterTest
         Assert.Equal("9", xml.SelectSingleNode("//*[local-name()='dest']/*[local-name()='indIEDest']")?.InnerText);
         Assert.Equal(12, xml.SelectNodes("//*[local-name()='infNFe']/*[local-name()='det']").Count);
         Assert.Equal(12, xml.SelectNodes("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='IBSCBS']").Count);
+    }
+
+    /// <summary>
+    /// Nao deve gerar indDeduzDeson isolado no ICMS20 quando vICMSDeson for zero.
+    /// </summary>
+    [Fact]
+    public void ConverterNaoDeveGerarIndDeduzDesonNoIcms20SemValorDesonerado()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("35260747498059000115550010004029951909226874-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal(3, xml.SelectNodes("//*[local-name()='ICMS20']").Count);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='ICMS20']/*[local-name()='indDeduzDeson']"));
+    }
+
+    /// <summary>
+    /// Deve preservar a redução do IBS municipal na posição do layout legado do segmento UB36.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarReducaoIbsMunicipalDoUb36LegadoComCampoFinalAdicional()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("35260747498059000115550010004029951909226874-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var reducaoIbsMunicipal = xml.SelectSingleNode("//*[local-name()='det'][12]/*[local-name()='imposto']/*[local-name()='IBSCBS']/*[local-name()='gIBSCBS']/*[local-name()='gIBSMun']/*[local-name()='gRed']");
+        Assert.NotNull(reducaoIbsMunicipal);
+        Assert.Equal("60.0000", reducaoIbsMunicipal.SelectSingleNode("*[local-name()='pRedAliq']")?.InnerText);
+        Assert.Equal("0.0000", reducaoIbsMunicipal.SelectSingleNode("*[local-name()='pAliqEfet']")?.InnerText);
+    }
+
+    /// <summary>
+    /// As massas TXT não devem voltar a conter os dados identificáveis removidos durante a anonimização.
+    /// </summary>
+    [Fact]
+    public void MassasTxtNaoDevemConterDadosIdentificaveisConhecidos()
+    {
+        var dadosIdentificaveis = new[]
+        {
+            "EMERSON SILVA GUEDES",
+            "contato@roguelimp.com.br",
+            "05976103804",
+            "mepagodi@gmail.com",
+            "WONENFE@GMAIL.COM",
+            "JULIANO KOCH",
+            "51999626374",
+            "suporte@microprisma.com.br",
+            "WYLBER NASSA",
+            "DEBORA PJ",
+            "RUA SANTO ANDRE|134",
+            "R. PEDRO VITORATO",
+            "RUA GENERAL MARIANTE",
+            "48577324915",
+            "04690036934",
+            "92991289953"
+        };
+
+        var pasta = Path.GetDirectoryName(CaminhoArquivo("novaVersao-nfe.txt"));
+        foreach (var arquivo in Directory.GetFiles(pasta, "*.txt"))
+        {
+            var conteudo = File.ReadAllText(arquivo);
+            foreach (var dadoIdentificavel in dadosIdentificaveis)
+            {
+                Assert.True(
+                    conteudo.IndexOf(dadoIdentificavel, StringComparison.OrdinalIgnoreCase) < 0,
+                    $"O arquivo '{Path.GetFileName(arquivo)}' contém o dado identificável '{dadoIdentificavel}'.");
+            }
+        }
     }
 
     /// <summary>
