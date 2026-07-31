@@ -273,7 +273,21 @@ namespace Unimake.Business.DFe.Servicos.PIX
 
         private static void NormalizarJson(JObject jsonObject)
         {
+            NormalizarValorCobranca(jsonObject);
             RemoverPropriedade(jsonObject, "useHomologServer");
+        }
+
+        private static void NormalizarValorCobranca(JObject jsonObject)
+        {
+            if (!jsonObject.TryGetValue("valor", out var valor) || valor is JObject)
+            {
+                return;
+            }
+
+            jsonObject["valor"] = new JObject
+            {
+                { "original", valor }
+            };
         }
 
         private static void RemoverPropriedade(JObject jsonObject, string propertyName)
