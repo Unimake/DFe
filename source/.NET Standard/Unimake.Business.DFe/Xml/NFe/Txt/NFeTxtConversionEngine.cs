@@ -359,8 +359,21 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             }
             catch (Exception ex)
             {
-                this.cMensagemErro += ex.Message;
+                this.cMensagemErro += ObterMensagemCompleta(ex);
             }
+        }
+
+        private static string ObterMensagemCompleta(Exception exception)
+        {
+            var mensagem = exception.Message;
+            var interna = exception.InnerException;
+            while (interna != null)
+            {
+                mensagem += " " + interna.Message;
+                interna = interna.InnerException;
+            }
+
+            return mensagem;
         }
 
         private NFeTxtDocumento GerarDocumento(DFeNFe.NFe nfeOficial, bool cDvInformado)
@@ -376,7 +389,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             this.nfeMapper.Mapear(nfe, identificacaoOficial, destinatarioOficial, retiradaOficial, entregaOficial,
                 autorizadosXmlOficiais, detalhesOficiais, totalOficial, transporteOficial);
             NFeTxtCompatibilityValidator.Validar(nfe, detalhesOficiais);
-            chave = new NFeTxtKeyValidator().MontarEValidar(nfe.InfNFeField, cDvInformado, identificacaoOficial.CDV);
+            chave = new NFeTxtKeyValidator().MontarEValidar(nfe.InfNFeField, cDvInformado, identificacaoOficial.CDV, this.chave);
             var documento = XMLUtility.Serializar(nfe);
             NFeTxtXmlCompatibilityAdjuster.Ajustar(documento, transporteOficial.Vol);
 
@@ -1212,7 +1225,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             destinatarioOficial.XNome = this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.XNome)), identificacaoOficial.Mod != ModeloDFe.NFe ? ObOp.Opcional : ObOp.Obrigatorio, 2, 60);
             if (versaoNFe >= 3)
-                destinatarioOficial.IndIEDest = (IndicadorIEDestinatario)this.LerInt32(XmlTag<DFeNFe.Dest>(nameof(DFeNFe.Dest.IndIEDest)), ObOp.Opcional, 0, 1);
+            {
+                var indicadorIE = this.LerInt32(XmlTag<DFeNFe.Dest>(nameof(DFeNFe.Dest.IndIEDest)), ObOp.Opcional, 0, 1);
+                destinatarioOficial.IndIEDest = indicadorIE == 0
+                    ? IndicadorIEDestinatario.NaoContribuinte
+                    : (IndicadorIEDestinatario)indicadorIE;
+            }
             destinatarioOficial.IE = VazioParaNulo(this.LerString(XmlTag<DFeNFe.RefNFP>(nameof(DFeNFe.RefNFP.IE)), ObOp.Opcional, 0, 14));
             destinatarioOficial.ISUF = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Dest>(nameof(DFeNFe.Dest.ISUF)), ObOp.Opcional, 8, 9));
             if (versaoNFe >= 3)

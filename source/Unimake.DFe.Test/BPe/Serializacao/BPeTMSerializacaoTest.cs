@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 using BPeTMXml = Unimake.Business.DFe.Xml.BPeTM;
 using Xunit;
 
@@ -49,7 +50,39 @@ namespace Unimake.DFe.Test.BPe.Serializacao
         [Trait("DFe", "BPe")]
         public void GerarChaveBPeTM()
         {
-            var infBPe = new BPeTMXml.InfBPe
+            var infBPe = CriarInfBPeTMParaGerarChave();
+
+            const string chaveEsperada = "35260712345678000123630010000000011000000108";
+
+            Assert.Equal(chaveEsperada, infBPe.Chave);
+            Assert.Equal("BPe" + chaveEsperada, infBPe.Id);
+            Assert.Equal(8, infBPe.Ide.CDV);
+        }
+
+        [Fact]
+        [Trait("DFe", "BPe")]
+        public void RecalcularChaveBPeTMQuandoSerieForAlterada()
+        {
+            var infBPe = CriarInfBPeTMParaGerarChave();
+
+            Assert.Equal(1, XMLUtility.ExtrairConteudoChaveDFe(infBPe.Chave).Serie);
+
+            infBPe.Ide.Serie = 7;
+            infBPe.Emit.CNPJ = "46090221000794";
+            infBPe.Ide.CBP = "32380172";
+            infBPe.Ide.DhEmi = DateTime.Parse("2026-07-29T12:52:15-03:00");
+
+            var conteudoChave = XMLUtility.ExtrairConteudoChaveDFe(infBPe.Chave);
+
+            Assert.Equal(7, conteudoChave.Serie);
+            Assert.Equal("32380172", conteudoChave.CodigoNumerico);
+            Assert.Equal(infBPe.Chave, infBPe.Id.Substring(3));
+            Assert.Equal(conteudoChave.DigitoVerificador, infBPe.Ide.CDV);
+        }
+
+        private static BPeTMXml.InfBPe CriarInfBPeTMParaGerarChave()
+        {
+            return new BPeTMXml.InfBPe
             {
                 Versao = "1.00",
                 Ide = new BPeTMXml.Ide
@@ -61,7 +94,7 @@ namespace Unimake.DFe.Test.BPe.Serializacao
                     NBP = 1,
                     CBP = "00000010",
                     Modal = ModalidadeTransporteBPe.Rodoviario,
-                    DhEmi = DateTime.Now,
+                    DhEmi = DateTime.Parse("2026-07-01T08:00:00-03:00"),
                     DCompet = DateTime.Parse("2026-07-01"),
                     TpEmis = TipoEmissaoBPe.Normal,
                     VerProc = "1.0",
@@ -72,12 +105,6 @@ namespace Unimake.DFe.Test.BPe.Serializacao
                     CNPJ = "12345678000123"
                 }
             };
-
-            const string chaveEsperada = "35260712345678000123630010000000011000000108";
-
-            Assert.Equal(chaveEsperada, infBPe.Chave);
-            Assert.Equal("BPe" + chaveEsperada, infBPe.Id);
-            Assert.Equal(8, infBPe.Ide.CDV);
         }
     }
 }

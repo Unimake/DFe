@@ -34,6 +34,51 @@ namespace Unimake.DFe.Test.DCe.Serializacao
             Assert.True(doc.InnerText == doc2.InnerText, $"XML gerado pela DLL está diferente do conteúdo do arquivo serializado.\nOriginal: {doc.InnerText}\nGerado: {doc2.InnerText}");
         }
 
+        /// <summary>
+        /// Garante a serialização do CNPJ alfanumérico e sua utilização na chave da DCe.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "DCe")]
+        public void SerializacaoDCeComCNPJAlfanumerico()
+        {
+            var dce = new Unimake.Business.DFe.Xml.DCe.DCe
+            {
+                InfDCe = new Unimake.Business.DFe.Xml.DCe.InfDCe
+                {
+                    Versao = "1.00",
+                    Ide = new Unimake.Business.DFe.Xml.DCe.Ide
+                    {
+                        CUF = UFBrasil.PR,
+                        CDC = "123456",
+                        Mod = ModeloDFe.DCe,
+                        Serie = 0,
+                        NDC = 1,
+                        DhEmi = DateTime.Parse("2026-05-01T10:20:30-03:00"),
+                        TpEmis = TipoEmissao.Normal,
+                        TpEmit = TipoEmitenteDCe.EmissorProprio,
+                        NSiteAutoriz = "0",
+                        TpAmb = TipoAmbiente.Homologacao,
+                        VerProc = "Unimake-Test"
+                    },
+                    Emit = new Unimake.Business.DFe.Xml.DCe.Emit
+                    {
+                        CNPJ = "12ABC34501DE35",
+                        XNome = "Emitente Teste"
+                    }
+                }
+            };
+
+            var chave = dce.InfDCe.Chave;
+            var doc = dce.GerarXML();
+            var xml = dce.LerXML<Unimake.Business.DFe.Xml.DCe.DCe>(doc);
+
+            Assert.Equal(44, chave.Length);
+            Assert.Equal("12ABC34501DE35", chave.Substring(6, 14));
+            Assert.Equal("12ABC34501DE35", xml.InfDCe.Emit.CNPJ);
+            Assert.Equal(chave, xml.InfDCe.Chave);
+            XMLUtility.ChecarChaveDFe(chave);
+        }
+
         [Theory]
         [Trait("DFe", "DCe")]
         [InlineData(@"..\..\..\DCe\Resources\protDCe.xml", @"..\.NET Standard\Unimake.Business.DFe\Xml\Schemas\DCe\dce_v1.00.xsd")]

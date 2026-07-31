@@ -7,7 +7,7 @@ import locale
 BASE_DIR = Path(__file__).parent
 CONFIG_XML = (BASE_DIR / ".." / ".NET Standard" / "Unimake.Business.DFe" / "Servicos" / "Config" / "Config.xml").resolve()
 NFSE_DIR = (BASE_DIR / ".." / ".NET Standard" / "Unimake.Business.DFe" / "Servicos" / "Config" / "NFSe").resolve()
-OUTPUT_FILE = "ListaMunicipiosNFSe.txt"
+OUTPUT_FILE = BASE_DIR / "generated" / "lista_municipios_nfse.txt"
 
 try:
     locale.setlocale(locale.LC_COLLATE, 'pt_BR.UTF-8')
@@ -127,7 +127,9 @@ Unificamos as antigas listas de municípios implementados no UniNFe e na DLL Uni
 """
     lines.append(footer_text)
 
-    Path(OUTPUT_FILE).write_text("\n".join(lines), encoding="utf-8")
+    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_FILE.write_text("\n".join(lines), encoding="utf-8")
+    
     print(f"Gerado: {OUTPUT_FILE} ({len(entradas)} entradas)")
 
 if __name__ == "__main__":

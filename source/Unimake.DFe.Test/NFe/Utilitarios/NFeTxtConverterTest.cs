@@ -36,6 +36,7 @@ public class NFeTxtConverterTest
     [InlineData("0000072301054300027600116072026-NFE-orig.txt")]
     [InlineData("0000092301054300027600116072026-NFE-orig.txt")]
     [InlineData("0000112301054300027600116072026-NFE-orig.txt")]
+    [InlineData("novaVersao-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -521,6 +522,23 @@ public class NFeTxtConverterTest
     }
 
     /// <summary>
+    /// Deve converter a nova versao do TXT com destinatario sem indIEDest e grupos de IBS/CBS.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveProcessarNovaVersaoComDestinatarioEReformaTributaria()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("novaVersao-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("9", xml.SelectSingleNode("//*[local-name()='dest']/*[local-name()='indIEDest']")?.InnerText);
+        Assert.Equal(12, xml.SelectNodes("//*[local-name()='infNFe']/*[local-name()='det']").Count);
+        Assert.Equal(12, xml.SelectNodes("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='IBSCBS']").Count);
+    }
+
+    /// <summary>
     /// Deve preservar a ausencia de indDeduzDeson no ICMS40 quando vICMSDeson nao foi informado.
     /// </summary>
     [Fact]
@@ -556,10 +574,24 @@ public class NFeTxtConverterTest
     [Fact]
     public void ConverterDeveRejeitarDigitoVerificadorDivergenteNaChaveDoSegmentoA()
     {
-        var arquivo = CaminhoArquivo("NFE_Venda_00002.txt");
-        var chaveValida = Assert.Single(new NFeTxtConverter().Converter(arquivo).Documentos).Chave;
+        var linhas = File.ReadAllLines(CaminhoArquivo("NFE_Venda_00002.txt"));
+        var indiceEmissor = Array.FindIndex(linhas, linha => linha.StartsWith("C02|"));
+        var camposEmissor = linhas[indiceEmissor].Split('|');
+        camposEmissor[1] = "08606985000105";
+        linhas[indiceEmissor] = string.Join("|", camposEmissor);
+
+        var indiceSegmentoB = Array.FindIndex(linhas, linha => linha.StartsWith("B|"));
+        var camposSegmentoB = linhas[indiceSegmentoB].Split('|');
+        camposSegmentoB[14] = string.Empty;
+        linhas[indiceSegmentoB] = string.Join("|", camposSegmentoB);
+
+        var conversaoValida = ConverterTemporario(linhas);
+        Assert.True(conversaoValida.Sucesso, conversaoValida.MensagemErro);
+        var chaveValida = Assert.Single(conversaoValida.Documentos).Chave;
         var chaveInvalida = chaveValida.Substring(0, 43) + (chaveValida.EndsWith("9") ? "8" : "9");
-        var linhas = File.ReadAllLines(arquivo);
+
+        camposSegmentoB[14] = chaveValida.Substring(43, 1);
+        linhas[indiceSegmentoB] = string.Join("|", camposSegmentoB);
         var indiceSegmentoA = Array.FindIndex(linhas, linha => linha.StartsWith("A|"));
         var campos = linhas[indiceSegmentoA].Split('|');
         campos[2] = chaveInvalida;
