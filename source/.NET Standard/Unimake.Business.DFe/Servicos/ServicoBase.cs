@@ -327,12 +327,11 @@ namespace Unimake.Business.DFe.Servicos
             else
             {
                 var soap = new ConfiguracaoWSSoapMapper().Map(Configuracoes);
-                var conteudoXMLAssinado = ConteudoXMLAssinado;
 
                 var consumirWS = new ConsumirWS();
                 if (!TelemetriaDisponibilidade.EstaHabilitada(Configuracoes))
                 {
-                    consumirWS.ExecutarServico(conteudoXMLAssinado, soap, Configuracoes.CertificadoDigital);
+                    consumirWS.ExecutarServico(ConteudoXML, soap, Configuracoes.CertificadoDigital);
                 }
                 else
                 {
@@ -340,7 +339,7 @@ namespace Unimake.Business.DFe.Servicos
                     Exception falhaTransporte = null;
                     try
                     {
-                        consumirWS.ExecutarServico(conteudoXMLAssinado, soap, Configuracoes.CertificadoDigital);
+                        consumirWS.ExecutarServico(ConteudoXML, soap, Configuracoes.CertificadoDigital);
                     }
                     catch (Exception ex)
                     {
