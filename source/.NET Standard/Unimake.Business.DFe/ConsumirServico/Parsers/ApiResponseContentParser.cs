@@ -427,7 +427,26 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
                 DLLVersao = Info.VersaoDLL
             };
 
-            PreencherRetornoEBoletoBasico(retorno, root, context.Response.IsSuccessStatusCode, "Boleto foi marcado como pago com sucesso", "Falha ao informar pagamento do boleto.", 0, 1);
+            if (context.Response.StatusCode == System.Net.HttpStatusCode.Accepted ||
+                context.Response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                retorno.Status = 0;
+                retorno.Motivo = "Instrução para marcar o boleto como pago enviado com sucesso";
+            }
+            else
+            {
+                var codigo = ObterPrimeiroValorTexto(root, "codigo", "code");
+                var mensagem = ObterPrimeiroValorTexto(root, "mensagem", "message");
+
+                retorno.Status = 1;
+                retorno.Motivo = "Não foi possível marcar o boleto como pago. Tente novamente mais tarde. (Status Code: " +
+                    ((int)context.Response.StatusCode).ToString() + ")" +
+                    (!string.IsNullOrWhiteSpace(codigo)
+                        ? " - (Erro: " + codigo + (!string.IsNullOrWhiteSpace(mensagem) ? " - " + mensagem : "") + ")"
+                        : "");
+                retorno.TraceId = ObterPrimeiroValorTexto(root, "traceId");
+            }
+
             return retorno.GerarXML();
         }
 

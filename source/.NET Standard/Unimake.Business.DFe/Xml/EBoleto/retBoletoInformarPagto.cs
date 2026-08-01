@@ -21,6 +21,12 @@ namespace Unimake.Business.DFe.Xml.EBoleto
     public class retBoletoInformarPagto : retEBoletoRetornoBasico
     {
         /// <summary>
+        /// Identificador de rastreamento retornado pela API
+        /// </summary>
+        [XmlElement]
+        public string TraceId { get; set; }
+
+        /// <summary>
         /// Versão da DLL
         /// </summary>
         [XmlElement]

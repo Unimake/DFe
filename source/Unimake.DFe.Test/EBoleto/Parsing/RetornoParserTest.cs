@@ -167,17 +167,57 @@ namespace Unimake.DFe.Test.EBoleto.Parsing
 
         [Fact]
         [Trait("DFe", "EBoleto")]
-        public void DeveMapearRetornoSimplesDeInformarPagamento()
+        public void DevePreservarRetornoDeSucessoAoInformarPagamento()
+        {
+            const string json = @"{}";
+
+            var retornoOk = ExecutarParser<retBoletoInformarPagto>(Servico.EBoletoInformarPagt, json, HttpStatusCode.OK, "application/json");
+            var retornoAccepted = ExecutarParser<retBoletoInformarPagto>(Servico.EBoletoInformarPagt, json, HttpStatusCode.Accepted, "application/json");
+
+            Assert.Equal(0, retornoOk.Status);
+            Assert.Equal("Instrução para marcar o boleto como pago enviado com sucesso", retornoOk.Motivo);
+            Assert.Equal(Info.VersaoDLL, retornoOk.DLLVersao);
+            Assert.Equal(0, retornoAccepted.Status);
+            Assert.Equal("Instrução para marcar o boleto como pago enviado com sucesso", retornoAccepted.Motivo);
+            Assert.Equal(Info.VersaoDLL, retornoAccepted.DLLVersao);
+        }
+
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void DevePreservarRetornoDeErroAoInformarPagamento()
         {
             const string json = @"{
-    ""status"": 1,
-    ""message"": ""Não foi possível marcar o boleto como pago. Tente novamente mais tarde. (Status Code: 202)""
+    ""codigo"": ""BOLETO_INVALIDO"",
+    ""mensagem"": ""Boleto não localizado."",
+    ""traceId"": ""TRACE-PAGAMENTO-001""
 }";
 
-            var retorno = ExecutarParser<retBoletoInformarPagto>(Servico.EBoletoInformarPagt, json, HttpStatusCode.OK, "application/json");
+            var retorno = ExecutarParser<retBoletoInformarPagto>(Servico.EBoletoInformarPagt, json, HttpStatusCode.BadRequest, "application/problem+json");
 
             Assert.Equal(1, retorno.Status);
-            Assert.Equal("Não foi possível marcar o boleto como pago. Tente novamente mais tarde. (Status Code: 202)", retorno.Motivo);
+            Assert.Equal("Não foi possível marcar o boleto como pago. Tente novamente mais tarde. (Status Code: 400) - (Erro: BOLETO_INVALIDO - Boleto não localizado.)", retorno.Motivo);
+            Assert.Equal("TRACE-PAGAMENTO-001", retorno.TraceId);
+            Assert.Equal(Info.VersaoDLL, retorno.DLLVersao);
+        }
+
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void DeveManterBoletoInformarPagtoResponseQuandoApiRetornarErroInterno()
+        {
+            const string json = @"{
+    ""codigo"": ""ERRO_INTERNO"",
+    ""mensagem"": ""Falha temporária no eBoleto."",
+    ""traceId"": ""TRACE-PAGAMENTO-500""
+}";
+
+            var xml = ExecutarTratamentoCompleto(Servico.EBoletoInformarPagt, json, HttpStatusCode.InternalServerError, "application/problem+json");
+
+            Assert.Equal("BoletoInformarPagtoResponse", xml.DocumentElement.Name);
+
+            var retorno = XMLUtility.Deserializar<retBoletoInformarPagto>(xml);
+            Assert.Equal(1, retorno.Status);
+            Assert.Equal("Não foi possível marcar o boleto como pago. Tente novamente mais tarde. (Status Code: 500) - (Erro: ERRO_INTERNO - Falha temporária no eBoleto.)", retorno.Motivo);
+            Assert.Equal("TRACE-PAGAMENTO-500", retorno.TraceId);
             Assert.Equal(Info.VersaoDLL, retorno.DLLVersao);
         }
 
