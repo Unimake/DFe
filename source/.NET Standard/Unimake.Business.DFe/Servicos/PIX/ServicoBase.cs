@@ -74,7 +74,6 @@ namespace Unimake.Business.DFe.Servicos.PIX
 
             Configuracoes.Load(GetType().Name);
             Configuracoes.SchemaArquivo = SchemaArquivoPIX;
-            ConfigureAuth();
             ConfigurarRequestURI();
 
             if (Configuracoes.MetodoAPI != "get")
@@ -83,6 +82,13 @@ namespace Unimake.Business.DFe.Servicos.PIX
             }
 
             Configuracoes.Definida = true;
+        }
+
+        /// <inheritdoc />
+        public override void Executar()
+        {
+            ConfigureAuth();
+            base.Executar();
         }
 
         /// <summary>

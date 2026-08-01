@@ -19,14 +19,12 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
         /// <summary>
         /// Resultado do retorno do envio de instrução de boleto
         /// </summary>
-        public retBoletoEnviarInstrucao Result => RetornoWSXML != null
-            ? XMLUtility.Deserializar<retBoletoEnviarInstrucao>(RetornoWSXML)
-            : new retBoletoEnviarInstrucao
+        public retBoletoEnviarInstrucao Result => ObterResultado(() => new retBoletoEnviarInstrucao
             {
                 Status = 999,
                 Motivo = "Ocorreu um erro ao tentar obter o objeto no retorno da API",
                 DLLVersao = Info.VersaoDLL
-            };
+            });
 
         /// <inheritdoc />
         protected override Servico ServicoEBoleto => Servico.EBoletoEnviarInstrucao;

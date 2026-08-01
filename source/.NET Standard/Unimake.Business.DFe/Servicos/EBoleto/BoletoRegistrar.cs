@@ -19,14 +19,12 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
         /// <summary>
         /// Resultado do retorno do registro de boleto
         /// </summary>
-        public retBoletoRegistrar Result => RetornoWSXML != null
-            ? XMLUtility.Deserializar<retBoletoRegistrar>(RetornoWSXML)
-            : new retBoletoRegistrar
+        public retBoletoRegistrar Result => ObterResultado(() => new retBoletoRegistrar
             {
                 Status = 999,
                 Motivo = "Ocorreu um erro ao tentar obter o objeto no retorno da API",
                 DLLVersao = Info.VersaoDLL
-            };
+            });
 
         /// <inheritdoc />
         protected override Servico ServicoEBoleto => Servico.EBoletoRegistrar;

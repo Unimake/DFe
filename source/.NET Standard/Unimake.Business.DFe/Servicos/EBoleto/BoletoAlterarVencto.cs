@@ -19,14 +19,12 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
         /// <summary>
         /// Resultado do retorno da alteração de vencimento de boleto
         /// </summary>
-        public retBoletoAlterarVencto Result => RetornoWSXML != null
-            ? XMLUtility.Deserializar<retBoletoAlterarVencto>(RetornoWSXML)
-            : new retBoletoAlterarVencto
+        public retBoletoAlterarVencto Result => ObterResultado(() => new retBoletoAlterarVencto
             {
                 Status = 999,
                 Motivo = "Ocorreu um erro ao tentar obter o objeto no retorno da API",
                 DLLVersao = Info.VersaoDLL
-            };
+            });
 
         /// <inheritdoc />
         protected override Servico ServicoEBoleto => Servico.EBoletoAlterarVencto;

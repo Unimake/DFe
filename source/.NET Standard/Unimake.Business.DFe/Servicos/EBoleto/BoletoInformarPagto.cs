@@ -1,6 +1,7 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
+using System;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.EBoleto;
 
@@ -9,6 +10,7 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
     /// <summary>
     /// Informar pagamento do boleto
     /// </summary>
+    [Obsolete("Utilize BoletoCancelar. BoletoInformarPagto é um alias legado da mesma operação /api/v1/boleto/baixar.", false)]
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Servicos.EBoleto.BoletoInformarPagto")]
@@ -19,14 +21,12 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
         /// <summary>
         /// Resultado do retorno da informação de pagamento de boleto
         /// </summary>
-        public retBoletoInformarPagto Result => RetornoWSXML != null
-            ? XMLUtility.Deserializar<retBoletoInformarPagto>(RetornoWSXML)
-            : new retBoletoInformarPagto
+        public retBoletoInformarPagto Result => ObterResultado(() => new retBoletoInformarPagto
             {
                 Status = 999,
                 Motivo = "Ocorreu um erro ao tentar obter o objeto no retorno da API",
                 DLLVersao = Info.VersaoDLL
-            };
+            });
 
         /// <inheritdoc />
         protected override Servico ServicoEBoleto => Servico.EBoletoInformarPagt;

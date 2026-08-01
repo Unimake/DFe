@@ -19,14 +19,12 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
         /// <summary>
         /// Resultado do retorno do cancelamento de boleto
         /// </summary>
-        public retBoletoCancelar Result => RetornoWSXML != null
-            ? XMLUtility.Deserializar<retBoletoCancelar>(RetornoWSXML)
-            : new retBoletoCancelar
+        public retBoletoCancelar Result => ObterResultado(() => new retBoletoCancelar
             {
                 Status = 999,
                 Motivo = "Ocorreu um erro ao tentar obter o objeto no retorno da API",
                 DLLVersao = Info.VersaoDLL
-            };
+            });
 
         /// <inheritdoc />
         protected override Servico ServicoEBoleto => Servico.EBoletoCancelar;
