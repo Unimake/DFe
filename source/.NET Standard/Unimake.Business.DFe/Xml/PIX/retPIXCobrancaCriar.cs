@@ -31,21 +31,27 @@ namespace Unimake.Business.DFe.Xml.PIX
         public string Motivo { get; set; }
 
         /// <summary>
-        /// PIX copia e cola
+        /// Identificador de rastreamento do erro na API
         /// </summary>
         [XmlElement(Order = 2)]
+        public string TraceId { get; set; }
+
+        /// <summary>
+        /// PIX copia e cola
+        /// </summary>
+        [XmlElement(Order = 3)]
         public string PixCopiaECola { get; set; }
 
         /// <summary>
         /// Caminho da imagem do QRCode
         /// </summary>
-        [XmlElement(Order = 3)]
+        [XmlElement(Order = 4)]
         public string ImageQRCode { get; set; }
 
         /// <summary>
         /// Versão da DLL
         /// </summary>
-        [XmlElement(Order = 4)]
+        [XmlElement(Order = 5)]
         public string DLLVersao { get; set; }
     }
 }

@@ -74,7 +74,7 @@ namespace Unimake.DFe.Test.UMessenger.Parsing
             var retorno = ExecutarParser(json, HttpStatusCode.BadRequest, "application/problem+json");
 
             Assert.Single(retorno.Mensagem);
-            Assert.Equal(0, retorno.Mensagem[0].Status);
+            Assert.Equal(999, retorno.Mensagem[0].Status);
             Assert.Equal("Mensagem de erro de teste.", retorno.Mensagem[0].Motivo);
             Assert.Equal("trace-array", retorno.Mensagem[0].TraceId);
             Assert.Equal("https://example.test/help", retorno.Mensagem[0].HelpLink);
@@ -103,7 +103,7 @@ namespace Unimake.DFe.Test.UMessenger.Parsing
             var retorno = ExecutarParser(json, HttpStatusCode.BadRequest, "application/problem+json");
 
             Assert.Single(retorno.Mensagem);
-            Assert.Equal(0, retorno.Mensagem[0].Status);
+            Assert.Equal(999, retorno.Mensagem[0].Status);
             Assert.Equal("The Text field is required.", retorno.Mensagem[0].Motivo);
             Assert.Equal("trace-object", retorno.Mensagem[0].TraceId);
             Assert.Equal("https://example.test/validation-help", retorno.Mensagem[0].HelpLink);

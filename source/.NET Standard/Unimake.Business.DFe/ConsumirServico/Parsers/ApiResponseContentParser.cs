@@ -231,7 +231,7 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
             var root = JObject.Parse(context.ResponseContent);
             var mensagem = new retUMessengerMensagem
             {
-                Status = context.Response.IsSuccessStatusCode ? 1 : 0,
+                Status = context.Response.IsSuccessStatusCode ? 1 : 999,
                 Motivo = context.Response.IsSuccessStatusCode
                     ? "Mensagem enviada com sucesso."
                     : ExtrairMotivoErroUMessenger(root),
@@ -384,6 +384,13 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
             };
 
             PreencherRetornoEBoletoBasico(retorno, root, context.Response.IsSuccessStatusCode, "Vencimento alterado com sucesso", "Falha ao alterar vencimento do boleto.", 0, 1);
+
+            if (!context.Response.IsSuccessStatusCode)
+            {
+                retorno.Status = 1;
+                retorno.TraceId = ObterPrimeiroValorTexto(root, "traceId");
+            }
+
             return retorno.GerarXML();
         }
 
@@ -466,13 +473,25 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
             {
                 retorno.Status = 999;
                 retorno.Motivo = ExtrairMotivoErroApi(root, "Falha ao criar cobrança PIX.");
+                retorno.TraceId = ObterPrimeiroValorTexto(root, "traceId");
+                retorno.PixCopiaECola = string.Empty;
+                retorno.ImageQRCode = string.Empty;
                 return retorno.GerarXML();
             }
 
             retorno.Status = ResolverStatusPIXCobrancaCriar(root);
-            retorno.Motivo = ResolverMotivoPIXCobrancaCriar(root, retorno.Status);
-            retorno.PixCopiaECola = ObterPrimeiroValorTexto(root, "PixCopiaECola", "pixCopiaECola", "copiaECola", "pixCopiaCola", "emv");
-            retorno.ImageQRCode = ObterPrimeiroValorTexto(root, "ImageQRCode", "imageQRCode", "qrCodeImagePath", "qrCodeImage", "imagemQRCode");
+            retorno.Motivo = ResolverMotivoPIXCobrancaCriar(retorno.Status);
+
+            if (retorno.Status == 0)
+            {
+                retorno.PixCopiaECola = ObterPrimeiroValorTexto(root, "PixCopiaECola", "pixCopiaECola", "copiaECola", "pixCopiaCola", "emv");
+                retorno.ImageQRCode = ObterPrimeiroValorTexto(root, "ImageQRCode", "imageQRCode", "qrCodeImagePath", "qrCodeImage", "imagemQRCode");
+            }
+            else
+            {
+                retorno.PixCopiaECola = string.Empty;
+                retorno.ImageQRCode = string.Empty;
+            }
 
             return retorno.GerarXML();
         }
@@ -585,30 +604,24 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
             return 0;
         }
 
-        private string ResolverMotivoPIXCobrancaCriar(JObject root, int status)
+        private string ResolverMotivoPIXCobrancaCriar(int status)
         {
-            var motivoExplicito = ObterPrimeiroValorTexto(root, "motivo", "message", "mensagem");
-            if (!string.IsNullOrWhiteSpace(motivoExplicito))
-            {
-                return motivoExplicito;
-            }
-
             switch (status)
             {
                 case 0:
-                    return "PIX Ativo (Cobrança gerada)";
+                    return "PIX Ativo (Cobranca gerada)";
 
                 case 1:
-                    return "PIX Concluído.";
+                    return "PIX Concluído (PIX ja foi pago)";
 
                 case 2:
-                    return "PIX removido pelo usuário recebedor.";
+                    return "Cobranca do PIX removida pelo usuario recebedor";
 
                 case 3:
-                    return "PIX removido pelo PSP.";
+                    return "Cobranca do PIX removida pelo PSP do recebedor";
             }
 
-            return "PIX processado com sucesso.";
+            return string.Empty;
         }
 
         private List<retPIXItem> CriarListaItensPIX(JObject root)

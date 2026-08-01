@@ -21354,10 +21354,10 @@ namespace Unimake.Business.DFe.Servicos
     public enum PixQrCodeImageFormat
     {
         /// <summary>
-        /// 0 - PNG
+        /// 0 - GIF
         /// </summary>
         [XmlEnum("0")]
-        PNG = 0,
+        GIF = 0,
 
         /// <summary>
         /// 1 - JPEG
@@ -21366,16 +21366,16 @@ namespace Unimake.Business.DFe.Servicos
         JPEG = 1,
 
         /// <summary>
-        /// 2 - BMP
+        /// 2 - PNG
         /// </summary>
         [XmlEnum("2")]
-        BMP = 2,
+        PNG = 2,
 
         /// <summary>
-        /// 3 - GIF
+        /// 3 - WEBP
         /// </summary>
         [XmlEnum("3")]
-        GIF = 3
+        WEBP = 3
     }
 
     #endregion PIX

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.UMessenger;
 using Xunit;
@@ -86,6 +88,80 @@ namespace Unimake.DFe.Test.UMessenger.Servicos
                         Assert.NotEmpty(r.Mensagem[0].DLLVersao);
                     });
                 });
+        }
+
+        [Fact]
+        [Trait("DFe", "UMessenger")]
+        public void DeveManterMensagemDeErroParaArquivoInexistente()
+        {
+            var caminho = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N") + ".pdf");
+            var servico = CriarServicoComArquivo(caminho, true);
+
+            var exception = Assert.Throws<Exception>(() => servico.Executar());
+
+            Assert.Equal($"O arquivo '{caminho}' não foi encontrado.", exception.Message);
+        }
+
+        [Fact]
+        [Trait("DFe", "UMessenger")]
+        public void DeveExigirTipoDeMidiaDoArquivo()
+        {
+            var caminho = Path.GetTempFileName();
+
+            try
+            {
+                var servico = CriarServicoComArquivo(caminho, false);
+
+                var exception = Assert.Throws<Exception>(() => servico.Executar());
+
+                Assert.Equal($"O tipo de mídia do '{caminho}' arquivo não foi informado.", exception.Message);
+            }
+            finally
+            {
+                File.Delete(caminho);
+            }
+        }
+
+        [Fact]
+        [Trait("DFe", "UMessenger")]
+        public void DeveManterMensagemParaServicoNaoIdentificado()
+        {
+            const string xml = "<uMessenger versao=\"1.00\"><OutroServico /></uMessenger>";
+
+            var exception = Assert.Throws<Exception>(() =>
+                new Business.DFe.Servicos.UMessenger.PublishUMessenger(xml, CriarConfiguracao(Servico.UMessengerPublish)));
+
+            Assert.Equal("Não foi possível identificar qual o tipo de serviço de envio de mensagens via WhatsApp deve ser utilizado.", exception.Message);
+        }
+
+        private static Business.DFe.Servicos.UMessenger.PublishUMessenger CriarServicoComArquivo(string caminho, bool informarMediaType)
+        {
+            var arquivo = new SendTextMessageFile
+            {
+                FullPath = caminho,
+                MediaType = 2,
+                MediaTypeSpecified = informarMediaType
+            };
+
+            var xml = new uMessengerSendTextMessage
+            {
+                SendTextMessage = new List<SendTextMessageContent>
+                {
+                    new SendTextMessageContent
+                    {
+                        InstanceName = "INSTANCIA-TESTE",
+                        To = "5544999999999",
+                        Text = "Mensagem de teste.",
+                        Testing = true,
+                        Files = new SendTextMessageFiles
+                        {
+                            File = new List<SendTextMessageFile> { arquivo }
+                        }
+                    }
+                }
+            };
+
+            return new Business.DFe.Servicos.UMessenger.PublishUMessenger(xml, CriarConfiguracao(Servico.UMessengerPublish));
         }
     }
 }

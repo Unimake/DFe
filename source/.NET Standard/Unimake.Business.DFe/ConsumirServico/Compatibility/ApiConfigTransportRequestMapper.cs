@@ -12,6 +12,7 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 Method = configuracoes.MetodoAPI,
                 RequestUri = configuracoes.RequestURI,
                 HttpContent = configuracoes.HttpContent,
+                Timeout = configuracoes.Timeout,
                 Certificate = certificado,
                 UseCertificate = configuracoes.UsaCertificadoDigital,
                 UseDefaultCredentials = !configuracoes.UsaCertificadoDigital,

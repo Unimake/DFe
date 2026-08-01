@@ -32,6 +32,10 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
 
         private List<retUMessengerPublish> _results;
         private retUMessengerPublish _result;
+        private string _requestURIHomologacao;
+        private string _requestURIProducao;
+        private TipoAmbiente _tipoAmbienteConfigurado;
+        private bool _configuracaoOriginalCapturada;
 
         private static readonly JsonSerializerSettings JsonSettings = new JsonSerializerSettings
         {
@@ -115,13 +119,12 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
 
             Configuracoes.SchemaArquivo = "uMessengerText_1_00.xsd";
 
-            var firstMsg = ConteudoXML.GetElementsByTagName("SendTextMessage")[0] as XmlElement;
-            if (GetBoolTag(firstMsg, "Testing") || GetBoolTag(firstMsg, "UseHomologServer"))
+            if (ConteudoXML.GetElementsByTagName("SendTextMessage").Count == 0)
             {
-                Configuracoes.TipoAmbiente = TipoAmbiente.Homologacao;
+                throw new Exception("Não foi possível identificar qual o tipo de serviço de envio de mensagens via WhatsApp deve ser utilizado.");
             }
 
-            ConfigureAuth(ResolverInstanceName());
+            CapturarConfiguracaoOriginal();
         }
 
         #endregion Protected Methods
@@ -147,7 +150,9 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
             {
                 var msgData = sendTextXml.SendTextMessage[i];
 
+                TimeoutEmMilissegundos = PossuiArquivos(msgData) ? 180000 : 0;
                 Configuracoes.HttpContent = GerarJSONTextMessage(msgData);
+                PrepararExecucao(msgData);
                 base.Executar();
 
                 var retorno = CriarRetornoCompativel(RetornoWSXML, RetornoWSRawString);
@@ -182,13 +187,37 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
 
         #region Private Methods
 
-        private string ResolverInstanceName()
+        private void PrepararExecucao(SendTextMessageContent mensagem)
         {
-            var firstMsg = ConteudoXML.GetElementsByTagName("SendTextMessage")[0] as XmlElement;
-            var instanceNodes = firstMsg?.GetElementsByTagName("InstanceName");
-            if (instanceNodes != null && instanceNodes.Count > 0 && !string.IsNullOrWhiteSpace(instanceNodes[0].InnerText))
+            CapturarConfiguracaoOriginal();
+
+            Configuracoes.RequestURIHomologacao = _requestURIHomologacao;
+            Configuracoes.RequestURIProducao = _requestURIProducao;
+            Configuracoes.TipoAmbiente = mensagem.Testing || mensagem.UseHomologServer
+                ? TipoAmbiente.Homologacao
+                : _tipoAmbienteConfigurado;
+
+            ConfigureAuth(ResolverInstanceName(mensagem));
+        }
+
+        private void CapturarConfiguracaoOriginal()
+        {
+            if (_configuracaoOriginalCapturada)
             {
-                return instanceNodes[0].InnerText.Trim();
+                return;
+            }
+
+            _requestURIHomologacao = Configuracoes.RequestURIHomologacao;
+            _requestURIProducao = Configuracoes.RequestURIProducao;
+            _tipoAmbienteConfigurado = Configuracoes.TipoAmbiente;
+            _configuracaoOriginalCapturada = true;
+        }
+
+        private string ResolverInstanceName(SendTextMessageContent mensagem)
+        {
+            if (!string.IsNullOrWhiteSpace(mensagem.InstanceName))
+            {
+                return mensagem.InstanceName.Trim();
             }
 
             if (!string.IsNullOrWhiteSpace(Configuracoes.UMessengerInstanceName))
@@ -198,6 +227,9 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
 
             throw new Exception("InstanceName não informado. Informe no XML (tag InstanceName) ou em Configuracao.UMessengerInstanceName.");
         }
+
+        private static bool PossuiArquivos(SendTextMessageContent mensagem) =>
+            mensagem.Files?.File != null && mensagem.Files.File.Count > 0;
 
         private static retUMessengerPublish CriarRetornoCompativel(XmlDocument retornoXml, string rawResponse)
         {
@@ -240,7 +272,12 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
                 {
                     if (!File.Exists(f.FullPath))
                     {
-                        throw new Exception($"Arquivo não encontrado: '{f.FullPath}'");
+                        throw new Exception($"O arquivo '{f.FullPath}' não foi encontrado.");
+                    }
+
+                    if (!f.MediaTypeSpecified)
+                    {
+                        throw new Exception($"O tipo de mídia do '{f.FullPath}' arquivo não foi informado.");
                     }
 
                     files.Add(new
@@ -248,7 +285,7 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
                         Base64Content = Convert.ToBase64String(File.ReadAllBytes(f.FullPath)),
                         FileName = Path.GetFileName(f.FullPath),
                         Caption = f.Description,
-                        MediaType = f.MediaTypeSpecified ? (int?)f.MediaType : null
+                        MediaType = (int?)f.MediaType
                     });
                 }
 
@@ -277,14 +314,6 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
 
             var json = JsonConvert.SerializeObject(payload, JsonSettings);
             return new StringContent(json, Encoding.UTF8, Configuracoes.WebContentType);
-        }
-
-        private static bool GetBoolTag(XmlElement parent, string tagName)
-        {
-            if (parent == null) return false;
-            var nodes = parent.GetElementsByTagName(tagName);
-            if (nodes.Count == 0) return false;
-            return bool.TryParse(nodes[0].InnerText, out var val) && val;
         }
 
         #endregion Private Methods

@@ -50,6 +50,11 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
                 BaseAddress = new Uri(request.RequestUri)
             };
 
+            if (request.Timeout > 0)
+            {
+                client.Timeout = TimeSpan.FromMilliseconds(request.Timeout);
+            }
+
             foreach (var header in request.Headers)
             {
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);

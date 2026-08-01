@@ -34,7 +34,17 @@ namespace Unimake.Business.DFe
         private string _ApiKey;
         private HttpContent _HttpContent;
         private string _Cookie;
+        private int _Timeout;
         private bool _disposed = false;
+
+        /// <summary>
+        /// Tempo limite da requisição HTTP, em milissegundos. Zero utiliza o padrão do HttpClient.
+        /// </summary>
+        public int Timeout
+        {
+            get => _Timeout;
+            set => _Timeout = value;
+        }
 
         /// <summary>
         /// Cookie - Header API

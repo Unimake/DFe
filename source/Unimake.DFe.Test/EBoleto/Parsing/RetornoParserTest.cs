@@ -128,6 +128,38 @@ namespace Unimake.DFe.Test.EBoleto.Parsing
             Assert.Equal(Info.VersaoDLL, retorno.DLLVersao);
         }
 
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void DeveManterSucessoAoAlterarVencimento()
+        {
+            const string json = @"{}";
+
+            var retorno = ExecutarParser<retBoletoAlterarVencto>(Servico.EBoletoAlterarVencto, json, HttpStatusCode.Accepted, "application/json");
+
+            Assert.Equal(0, retorno.Status);
+            Assert.Equal("Vencimento alterado com sucesso", retorno.Motivo);
+            Assert.Null(retorno.TraceId);
+            Assert.Equal(Info.VersaoDLL, retorno.DLLVersao);
+        }
+
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void DeveRetornarStatusUmETraceIdQuandoAlteracaoDeVencimentoForRejeitada()
+        {
+            const string json = @"{
+    ""errors"": [""Não foi possível alterar o vencimento.""],
+    ""status"": 400,
+    ""traceId"": ""TRACE-BOLETO-001""
+}";
+
+            var retorno = ExecutarParser<retBoletoAlterarVencto>(Servico.EBoletoAlterarVencto, json, HttpStatusCode.BadRequest, "application/problem+json");
+
+            Assert.Equal(1, retorno.Status);
+            Assert.Equal("Não foi possível alterar o vencimento.", retorno.Motivo);
+            Assert.Equal("TRACE-BOLETO-001", retorno.TraceId);
+            Assert.Equal(Info.VersaoDLL, retorno.DLLVersao);
+        }
+
         private static T ExecutarParser<T>(Servico servico, string conteudo, HttpStatusCode statusCode, string mediaType)
             where T : class, new()
         {

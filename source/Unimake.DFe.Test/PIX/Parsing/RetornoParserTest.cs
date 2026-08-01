@@ -21,15 +21,15 @@ namespace Unimake.DFe.Test.PIX.Parsing
             const string json = @"{
     ""status"": ""ATIVA"",
     ""pixCopiaECola"": ""000201010212pix-copia-cola"",
-    ""imageQRCode"": ""C:\\Retorno\\pix.png""
+    ""imageQRCode"": ""AQIDBA==""
 }";
 
             var retorno = ExecutarParser<retPIXCobrancaCriar>(Servico.PIXCobrancaCriar, json, HttpStatusCode.OK, "application/json");
 
             Assert.Equal(0, retorno.Status);
-            Assert.Equal("PIX Ativo (Cobrança gerada)", retorno.Motivo);
+            Assert.Equal("PIX Ativo (Cobranca gerada)", retorno.Motivo);
             Assert.Equal("000201010212pix-copia-cola", retorno.PixCopiaECola);
-            Assert.Equal(@"C:\Retorno\pix.png", retorno.ImageQRCode);
+            Assert.Equal("AQIDBA==", retorno.ImageQRCode);
             Assert.Equal(Info.VersaoDLL, retorno.DLLVersao);
         }
 
@@ -120,6 +120,25 @@ namespace Unimake.DFe.Test.PIX.Parsing
             Assert.Equal(999, retorno.Status);
             Assert.Equal("A configuração 'TESTE-55LTDXKYYC,TESTE-55LTDXKYYC' não é valida para este contexto.", retorno.Motivo);
             Assert.Equal(Info.VersaoDLL, retorno.DLLVersao);
+        }
+
+        [Fact]
+        [Trait("DFe", "PIX")]
+        public void DevePreservarContratoDoErroNaCriacaoDeCobranca()
+        {
+            const string json = @"{
+    ""errors"": [""Falha ao criar cobrança.""],
+    ""status"": 400,
+    ""traceId"": ""TRACE-PIX-001""
+}";
+
+            var retorno = ExecutarParser<retPIXCobrancaCriar>(Servico.PIXCobrancaCriar, json, HttpStatusCode.BadRequest, "application/problem+json");
+
+            Assert.Equal(999, retorno.Status);
+            Assert.Equal("Falha ao criar cobrança.", retorno.Motivo);
+            Assert.Equal("TRACE-PIX-001", retorno.TraceId);
+            Assert.Equal(string.Empty, retorno.PixCopiaECola);
+            Assert.Equal(string.Empty, retorno.ImageQRCode);
         }
 
         private static T ExecutarParser<T>(Servico servico, string conteudo, HttpStatusCode statusCode, string mediaType)
