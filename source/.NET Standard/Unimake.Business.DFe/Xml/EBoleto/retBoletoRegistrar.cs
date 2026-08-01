@@ -39,10 +39,31 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         public string LinhaDigitavel { get; set; }
 
         /// <summary>
-        /// Indica se o PDF foi gerado com sucesso
+        /// Identificador de rastreamento do erro retornado pela API
         /// </summary>
         [XmlElement]
+        public string TraceId { get; set; }
+
+        /// <summary>
+        /// Indica se o PDF foi gerado com sucesso
+        /// </summary>
+        [XmlIgnore]
         public bool PdfContentSuccess { get; set; }
+
+        /// <summary>
+        /// Indica se o PDF foi gerado com sucesso no formato legado do XML
+        /// </summary>
+        [XmlElement("PdfContentSuccess")]
+        public string PdfContentSuccessField
+        {
+            get => PdfContentSuccess.ToString();
+            set => PdfContentSuccess = bool.TryParse(value, out var success) && success;
+        }
+
+        /// <summary>
+        /// Serializa o indicador do PDF somente nos retornos de sucesso
+        /// </summary>
+        public bool ShouldSerializePdfContentSuccessField() => Status == 0;
 
         /// <summary>
         /// Mensagem referente à geração do PDF
@@ -61,6 +82,12 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         /// </summary>
         [XmlElement]
         public string PdfPath { get; set; }
+
+        /// <summary>
+        /// Dados da liquidação PIX retornados no registro
+        /// </summary>
+        [XmlElement]
+        public retBoletoRegistrarPIXPagamentoDetalhe PixPagamentoDetalhe { get; set; }
 
         /// <summary>
         /// Conteúdo do QRCode
@@ -95,13 +122,59 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         /// <summary>
         /// Indica se o QRCode foi gerado com sucesso
         /// </summary>
-        [XmlElement]
+        [XmlIgnore]
         public bool Success { get; set; }
+
+        /// <summary>
+        /// Indica se o QRCode foi gerado com sucesso no formato legado do XML
+        /// </summary>
+        [XmlElement("Success")]
+        public string SuccessField
+        {
+            get => Success.ToString();
+            set => Success = bool.TryParse(value, out var success) && success;
+        }
 
         /// <summary>
         /// Texto do QRCode
         /// </summary>
         [XmlElement]
         public string Text { get; set; }
+    }
+
+    /// <summary>
+    /// Dados da liquidação PIX retornados no registro do boleto
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EBoleto.retBoletoRegistrarPIXPagamentoDetalhe")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class retBoletoRegistrarPIXPagamentoDetalhe
+    {
+        [XmlElement]
+        public string DataPagamento { get; set; }
+
+        [XmlElement]
+        public string TxId { get; set; }
+
+        [XmlElement]
+        public string ValorAbatimento { get; set; }
+
+        [XmlElement]
+        public string ValorDesconto { get; set; }
+
+        [XmlElement]
+        public string ValorJuros { get; set; }
+
+        [XmlElement]
+        public string ValorLiquidado { get; set; }
+
+        [XmlElement]
+        public string ValorMulta { get; set; }
+
+        [XmlElement]
+        public string ValorOriginal { get; set; }
     }
 }

@@ -5,13 +5,13 @@
   <CodigoBarraNumerico>61885413104039157298878833105511271184934708</CodigoBarraNumerico>
   <NumeroNoBanco>123456789</NumeroNoBanco>
   <LinhaDigitavel>55666538375117619420465569876583610990625736333</LinhaDigitavel>
-  <PdfContentSuccess>true</PdfContentSuccess>
+  <PdfContentSuccess>True</PdfContentSuccess>
   <PdfContentMessage />
   <PdfContentBase64>JVBERi0xLjQK</PdfContentBase64>
   <PdfPath>d:\testenfe\Retorno\ret-BoletoRegistrar.pdf</PdfPath>
   <QRCodeContent>
     <Image />
-    <Success>false</Success>
+    <Success>False</Success>
     <Text />
   </QRCodeContent>
   <DLLVersao>20260617.1001</DLLVersao>

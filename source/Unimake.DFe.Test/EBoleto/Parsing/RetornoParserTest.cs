@@ -94,6 +94,74 @@ namespace Unimake.DFe.Test.EBoleto.Parsing
 
         [Fact]
         [Trait("DFe", "EBoleto")]
+        public void DevePreservarContratoLegadoDoRegistroDeBoleto()
+        {
+            const string json = @"{
+    ""message"": ""Registro concluído pela API"",
+    ""codigoBarraNumerico"": ""61885413104039157298878833105511271184934708"",
+    ""numeroNoBanco"": ""123456789"",
+    ""linhaDigitavel"": ""55666538375117619420465569876583610990625736333"",
+    ""pdfContent"": {
+        ""success"": true,
+        ""message"": null,
+        ""content"": ""JVBERi0xLjQK""
+    },
+    ""pixPagamentoDetalhe"": {
+        ""dataPagamento"": ""2026-08-01T10:11:12.345Z"",
+        ""txId"": ""PIX-REGISTRO-001"",
+        ""valorAbatimento"": 1.2,
+        ""valorDesconto"": null,
+        ""valorJuros"": 3,
+        ""valorLiquidado"": 100,
+        ""valorMulta"": 4.567,
+        ""valorOriginal"": 101.2
+    },
+    ""qrCodeContent"": {
+        ""success"": false,
+        ""image"": """",
+        ""text"": """"
+    }
+}";
+
+            var xml = ExecutarTratamentoCompleto(Servico.EBoletoRegistrar, json, HttpStatusCode.OK, "application/json");
+
+            Assert.Equal("0", xml.SelectSingleNode("/BoletoRegistrarResponse/Status").InnerText);
+            Assert.Equal("Boleto registrado", xml.SelectSingleNode("/BoletoRegistrarResponse/Motivo").InnerText);
+            Assert.Equal("True", xml.SelectSingleNode("/BoletoRegistrarResponse/PdfContentSuccess").InnerText);
+            Assert.NotNull(xml.SelectSingleNode("/BoletoRegistrarResponse/PdfContentMessage"));
+            Assert.NotNull(xml.SelectSingleNode("/BoletoRegistrarResponse/PdfPath"));
+            Assert.Equal("2026-08-01T10:11:12.345Z", xml.SelectSingleNode("//PixPagamentoDetalhe/DataPagamento").InnerText);
+            Assert.Equal("PIX-REGISTRO-001", xml.SelectSingleNode("//PixPagamentoDetalhe/TxId").InnerText);
+            Assert.Equal("1.20", xml.SelectSingleNode("//PixPagamentoDetalhe/ValorAbatimento").InnerText);
+            Assert.Equal(string.Empty, xml.SelectSingleNode("//PixPagamentoDetalhe/ValorDesconto").InnerText);
+            Assert.Equal("3.00", xml.SelectSingleNode("//PixPagamentoDetalhe/ValorJuros").InnerText);
+            Assert.Equal("100.00", xml.SelectSingleNode("//PixPagamentoDetalhe/ValorLiquidado").InnerText);
+            Assert.Equal("4.57", xml.SelectSingleNode("//PixPagamentoDetalhe/ValorMulta").InnerText);
+            Assert.Equal("101.20", xml.SelectSingleNode("//PixPagamentoDetalhe/ValorOriginal").InnerText);
+            Assert.Null(xml.SelectSingleNode("/BoletoRegistrarResponse/QRCodeContent"));
+        }
+
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void DevePreservarTraceIdNoErroDoRegistroDeBoleto()
+        {
+            const string json = @"{
+    ""errors"": [""Não foi possível registrar o boleto.\r\nDetalhe adicional.""],
+    ""status"": 400,
+    ""traceId"": ""TRACE-REGISTRO-001""
+}";
+
+            var xml = ExecutarTratamentoCompleto(Servico.EBoletoRegistrar, json, HttpStatusCode.BadRequest, "application/problem+json");
+
+            Assert.Equal("999", xml.SelectSingleNode("/BoletoRegistrarResponse/Status").InnerText);
+            Assert.Equal("Não foi possível registrar o boleto.Detalhe adicional.", xml.SelectSingleNode("/BoletoRegistrarResponse/Motivo").InnerText);
+            Assert.Equal("TRACE-REGISTRO-001", xml.SelectSingleNode("/BoletoRegistrarResponse/TraceId").InnerText);
+            Assert.Null(xml.SelectSingleNode("/BoletoRegistrarResponse/PdfContentSuccess"));
+            Assert.Null(xml.SelectSingleNode("/BoletoRegistrarResponse/QRCodeContent"));
+        }
+
+        [Fact]
+        [Trait("DFe", "EBoleto")]
         public void DevePreservarContratoLegadoDaConsultaDeBoleto()
         {
             const string json = @"[
