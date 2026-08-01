@@ -47,6 +47,16 @@ namespace Unimake.DFe.Test.Utility.Conversao
 
         [Fact]
         [Trait("Utility", "Converter")]
+        public void TestInvalidSHA1Base64ComMesmoTamanhoDoHash()
+        {
+            var csrtComVinteEOitoCaracteres = "CSRTTESTE0123456789012345678";
+            var isValid = Converter.IsSHA1Base64(csrtComVinteEOitoCaracteres);
+
+            Assert.False(isValid, "O tamanho isoladamente não deve classificar um CSRT como hash SHA-1 em Base64.");
+        }
+
+        [Fact]
+        [Trait("Utility", "Converter")]
         public void TestCalculateSHA1Hash()
         {
             var input = "example_input";

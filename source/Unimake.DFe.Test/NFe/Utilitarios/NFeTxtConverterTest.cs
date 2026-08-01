@@ -41,6 +41,7 @@ public class NFeTxtConverterTest
     [InlineData("002310_01_01_31_07_2026-nfe-orig.txt")]
     [InlineData("000479_09531276000170_003_31_07_2026-nfe-orig.txt")]
     [InlineData("nfe-nfe-orig.txt")]
+    [InlineData("14222_43343052000335_1_31_7_2026-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -61,6 +62,25 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// Deve gerar o hash CSRT usando o segredo informado no ZD concatenado com a chave de acesso definitiva.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarHashCsrtComAChaveDeAcesso()
+    {
+        const string csrt = "CSRTTESTE0123456789012345678";
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("14222_43343052000335_1_31_7_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var documento = Assert.Single(resultado.Documentos);
+        var xml = new XmlDocument();
+        xml.LoadXml(documento.Xml);
+
+        var hashCsrt = xml.SelectSingleNode("//*[local-name()='infRespTec']/*[local-name()='hashCSRT']")?.InnerText;
+        Assert.Equal(Unimake.Business.DFe.Utility.Converter.CalculateSHA1Hash(csrt + documento.Chave), hashCsrt);
+        Assert.NotEqual(csrt, hashCsrt);
     }
 
     /// <summary>
@@ -718,7 +738,12 @@ public class NFeTxtConverterTest
             "SUPERM. JAU SERVE LTDA",
             "nfe@jauserve.com.br",
             "carlos.tagiarolli@jauserve.com.br",
-            "AVENIDA JOAO SANZOVO"
+            "AVENIDA JOAO SANZOVO",
+            "Florestal Alvorada Florestamento e Reflorestamento Ltda",
+            "Industria de Compensados Sudati Ltda",
+            "João Henrique Buckta",
+            "joao.henrique@valorflorestal.com.br",
+            "8X77VU0XB39URUYTGYSU7IU14UQB"
         };
 
         var pasta = Path.GetDirectoryName(CaminhoArquivo("novaVersao-nfe.txt"));

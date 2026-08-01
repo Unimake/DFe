@@ -390,12 +390,36 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 autorizadosXmlOficiais, detalhesOficiais, totalOficial, transporteOficial);
             NFeTxtCompatibilityValidator.Validar(nfe, detalhesOficiais);
             chave = new NFeTxtKeyValidator().MontarEValidar(nfe.InfNFeField, cDvInformado, identificacaoOficial.CDV, this.chave);
+            PrepararHashCsrt(nfe, chave);
             var documento = XMLUtility.Serializar(nfe);
             NFeTxtXmlCompatibilityAdjuster.Ajustar(documento, transporteOficial.Vol);
 
             identificacaoOficial.CNF = chave.Substring(35, 8);
             identificacaoOficial.CDV = int.Parse(chave.Substring(43, 1));
             return new NFeTxtDocumento(documento.OuterXml, chave, identificacaoOficial.NNF, identificacaoOficial.Serie);
+        }
+
+        private static void PrepararHashCsrt(DFeNFe.NFe nfe, string chaveAcesso)
+        {
+            var responsavel = nfe.InfNFeField.InfRespTec;
+            if (responsavel == null)
+            {
+                return;
+            }
+
+            responsavel.GerarHashCSRT(chaveAcesso);
+        }
+
+        private static void DefinirCsrt(DFeNFe.InfRespTec responsavel, string valor)
+        {
+            if (Unimake.Business.DFe.Utility.Converter.IsSHA1Base64(valor))
+            {
+                responsavel.HashCSRT = valor;
+            }
+            else
+            {
+                responsavel.CSRT = valor;
+            }
         }
 
         private void LimparDocumentosGerados()
@@ -1567,7 +1591,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             responsavel.Fone = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Fone)), ObOp.Obrigatorio, 6, 14);
             var idCsrt = this.LerInt32("idCSRT", ObOp.Opcional, 2, 2);
             responsavel.IdCSRT = idCsrt > 0 ? idCsrt.ToString("00") : null;
-            responsavel.HashCSRT = VazioParaNulo(this.LerString("hashCSRT", ObOp.Opcional, 28, 28));
+            DefinirCsrt(responsavel, VazioParaNulo(this.LerString("hashCSRT", ObOp.Opcional, 28, 28)));
         }
 
         private DFeNFe.InfRespTec CriarResponsavelTecnico()
@@ -3662,7 +3686,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     responsavel.Fone = this.LerString(XmlTag<DFeNFe.EnderEmit>(nameof(DFeNFe.EnderEmit.Fone)), ObOp.Obrigatorio, 6, 14);
                     var idCsrt = this.LerInt32("idCSRT", ObOp.Opcional, 2, 2);
                     responsavel.IdCSRT = idCsrt > 0 ? idCsrt.ToString("00") : null;
-                    responsavel.HashCSRT = VazioParaNulo(this.LerString("hashCSRT", ObOp.Opcional, 16, 80));
+                    DefinirCsrt(responsavel, VazioParaNulo(this.LerString("hashCSRT", ObOp.Opcional, 16, 80)));
         }
 
         private void LerRegistro(NFeTxtSegment segmento)

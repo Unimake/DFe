@@ -144,9 +144,19 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>True se a string estiver no formato de hash SHA-1 em Base64, False caso contrário.</returns>
         public static bool IsSHA1Base64(string input)
         {
-            if (string.IsNullOrEmpty(input)) return false;
+            if (string.IsNullOrEmpty(input) || input.Length != 28)
+            {
+                return false;
+            }
 
-            return input.Length == 28; // SHA-1 em Base64 tem que ter 28 caracteres
+            try
+            {
+                return Convert.FromBase64String(input).Length == 20;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
     }
 
