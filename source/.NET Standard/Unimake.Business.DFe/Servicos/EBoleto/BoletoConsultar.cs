@@ -1,6 +1,7 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
+using System.Net.Http;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.EBoleto;
 
@@ -33,6 +34,25 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
 
         /// <inheritdoc />
         protected override string SchemaArquivoEBoleto => "BoletoConsultar_1_00.xsd";
+
+        /// <inheritdoc />
+        protected override HttpContent CriarHttpContentPadrao()
+        {
+            if (Envio.PageNumber == 0)
+            {
+                Envio.PageNumber = 1;
+            }
+
+            if (Envio.PageSize == 0)
+            {
+                Envio.PageSize = 50;
+            }
+
+            Envio.PageNumberSpecified = true;
+            Envio.PageSizeSpecified = true;
+
+            return base.CriarHttpContentPadrao();
+        }
 
         /// <summary>
         /// Construtor

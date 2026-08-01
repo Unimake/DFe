@@ -1,5 +1,6 @@
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.EBoleto;
+using Unimake.Exceptions;
 using Xunit;
 
 namespace Unimake.DFe.Test.EBoleto.Servicos
@@ -24,6 +25,21 @@ namespace Unimake.DFe.Test.EBoleto.Servicos
             ExecutarTesteServico(
                 () => new Business.DFe.Servicos.EBoleto.BoletoCancelar(xml, CriarConfiguracao(Servico.EBoletoCancelar)),
                 TemConfiguracaoEBoletoValida(true));
+        }
+
+        [Fact]
+        [Trait("DFe", "EBoleto")]
+        public void DeveValidarXmlAntesDeAutenticar()
+        {
+            var xml = new BoletoCancelar
+            {
+                ConfigurationId = "CONFIGURACAO-TESTE",
+                Testing = true,
+                TestingSpecified = true
+            };
+
+            Assert.Throws<ValidarXMLException>(() =>
+                new Business.DFe.Servicos.EBoleto.BoletoCancelar(xml, CriarConfiguracao(Servico.EBoletoCancelar)));
         }
     }
 }

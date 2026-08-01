@@ -28,13 +28,13 @@
     </Pagador>
     <PdfContent>
       <Content />
-      <Success>false</Success>
+      <Success>False</Success>
       <Message />
     </PdfContent>
     <QrCodeContent>
       <Text>00020101021226950014br.gov.bcb.pix2573pix.sicoob.com.br</Text>
       <Image />
-      <Success>false</Success>
+      <Success>False</Success>
     </QrCodeContent>
     <Situacao>9</Situacao>
     <TipoLiquidacao>0</TipoLiquidacao>

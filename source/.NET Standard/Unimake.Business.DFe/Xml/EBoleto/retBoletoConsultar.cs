@@ -32,6 +32,12 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         /// </summary>
         [XmlElement]
         public string DLLVersao { get; set; }
+
+        /// <summary>
+        /// Identificador de rastreamento retornado pela API
+        /// </summary>
+        [XmlElement]
+        public string TraceId { get; set; }
     }
 
     /// <summary>
@@ -68,6 +74,9 @@ namespace Unimake.Business.DFe.Xml.EBoleto
 
         [XmlElement]
         public retBoletoConsultarPdfContent PdfContent { get; set; }
+
+        [XmlElement]
+        public retBoletoConsultarPIXPagamentoDetalhe PIXPagamentoDetalhe { get; set; }
 
         [XmlElement]
         public retBoletoConsultarQrCodeContent QrCodeContent { get; set; }
@@ -177,11 +186,48 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         [XmlElement]
         public string Content { get; set; }
 
-        [XmlElement]
+        [XmlIgnore]
         public bool Success { get; set; }
+
+        [XmlElement("Success")]
+        public string SuccessField
+        {
+            get => Success.ToString();
+            set => Success = bool.TryParse(value, out var success) && success;
+        }
 
         [XmlElement]
         public string Message { get; set; }
+    }
+
+    /// <summary>
+    /// Dados da liquidação PIX retornados na consulta
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EBoleto.retBoletoConsultarPIXPagamentoDetalhe")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class retBoletoConsultarPIXPagamentoDetalhe
+    {
+        [XmlElement]
+        public string DataPagamento { get; set; }
+
+        [XmlElement]
+        public string ValorDesconto { get; set; }
+
+        [XmlElement]
+        public string ValorJuros { get; set; }
+
+        [XmlElement]
+        public string ValorLiquidado { get; set; }
+
+        [XmlElement]
+        public string ValorMulta { get; set; }
+
+        [XmlElement]
+        public string ValorOriginal { get; set; }
     }
 
     /// <summary>
@@ -201,7 +247,14 @@ namespace Unimake.Business.DFe.Xml.EBoleto
         [XmlElement]
         public string Image { get; set; }
 
-        [XmlElement]
+        [XmlIgnore]
         public bool Success { get; set; }
+
+        [XmlElement("Success")]
+        public string SuccessField
+        {
+            get => Success.ToString();
+            set => Success = bool.TryParse(value, out var success) && success;
+        }
     }
 }

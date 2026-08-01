@@ -74,10 +74,16 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
 
             Configuracoes.Load(GetType().Name);
             Configuracoes.SchemaArquivo = SchemaArquivoEBoleto;
-            ConfigureAuth();
             ConfigurarRequestURI();
             Configuracoes.HttpContent = CriarHttpContentPadrao();
             Configuracoes.Definida = true;
+        }
+
+        /// <inheritdoc />
+        public override void Executar()
+        {
+            ConfigureAuth();
+            base.Executar();
         }
 
         /// <summary>

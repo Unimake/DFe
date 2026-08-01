@@ -9,7 +9,9 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
 
         public XmlDocument TryParse(ref ApiResponseContext context)
         {
-            if (context.Response.StatusCode == System.Net.HttpStatusCode.InternalServerError && context.Config.PadraoNFSe != PadraoNFSe.NACIONAL)
+            if (context.Response.StatusCode == System.Net.HttpStatusCode.InternalServerError &&
+                context.Config.PadraoNFSe != PadraoNFSe.NACIONAL &&
+                context.Config.Servico != Servico.EBoletoCancelar)
             {
                 return _xmlSupport.StringToSerializedXml("O servidor retornou um erro (500) || Mensagem retornada:  " + context.ResponseContent);
             }
