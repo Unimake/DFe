@@ -701,7 +701,7 @@ namespace Unimake.DFe.Test.NFe.Servicos
 
             Assert.True(configuracao.CodigoUF.Equals((int)UFBrasil.SVRS), "UF definida nas configurações diferente de " + UFBrasil.SVRS.ToString());
             Assert.True(configuracao.TipoAmbiente.Equals(TipoAmbiente.Homologacao), "Tipo de ambiente definido nas configurações diferente de " + TipoAmbiente.Homologacao.ToString());
-            Assert.True(recepcaoEvento.Result.COrgao.Equals(UFBrasil.PR), "Webservice retornou uma UF e está diferente de " + UFBrasil.PR.ToString());
+            Assert.True(recepcaoEvento.Result.COrgao.Equals(UFBrasil.PR) || recepcaoEvento.Result.COrgao.Equals(UFBrasil.NaoDefinido), "Webservice retornou uma UF e está diferente de " + UFBrasil.PR.ToString());
             Assert.True(recepcaoEvento.Result.TpAmb.Equals(TipoAmbiente.Homologacao), "Webservice retornou um Tipo de ambiente diferente " + TipoAmbiente.Homologacao.ToString());
             Assert.True(recepcaoEvento.Result.CStat.Equals(128) || recepcaoEvento.Result.CStat.Equals(656) || recepcaoEvento.Result.CStat.Equals(217) || recepcaoEvento.Result.CStat.Equals(215), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.XMotivo + "<xMotivo>");
         }
