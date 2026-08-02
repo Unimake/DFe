@@ -111,7 +111,7 @@ namespace Unimake.DFe.Test.PIX.Servicos
 
             xml.Calendario = new PixCalendario
             {
-                Criacao = DateTimeOffset.Now
+                Criacao = DateTime.Now
             };
 
             using (var servico = CriarServicoSemAutenticacao(xml))
