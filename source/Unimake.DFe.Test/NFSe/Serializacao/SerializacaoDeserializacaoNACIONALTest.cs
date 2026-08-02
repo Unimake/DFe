@@ -299,11 +299,11 @@ public class SerializacaoDesserializacaoNacionalTest
             InfDPS = new InfDPS
             {
                 TpAmb = TipoAmbiente.Homologacao,
-                DhEmi = new DateTimeOffset(2026, 8, 1, 12, 0, 0, TimeSpan.FromHours(-3)),
+                DhEmi = new DateTime(2026, 8, 1, 12, 0, 0),
                 CLocEmi = 4314902,
                 Serie = "10",
                 NDPS = "9147",
-                DCompet = new DateTimeOffset(2026, 8, 1, 0, 0, 0, TimeSpan.Zero),
+                DCompet = new DateTime(2026, 8, 1),
                 TpEmit = TipoEmitenteNFSe.Prestador,
                 Prest = new Prest
                 {
@@ -337,7 +337,7 @@ public class SerializacaoDesserializacaoNacionalTest
                 CNPJ = "12ABC34501DE35"
             },
             NNFSe = "1",
-            DhProc = new DateTimeOffset(2026, 8, 1, 12, 0, 0, TimeSpan.FromHours(-3)),
+            DhProc = new DateTime(2026, 8, 1, 12, 0, 0),
             DPS = new DPS
             {
                 InfDPS = new InfDPS
