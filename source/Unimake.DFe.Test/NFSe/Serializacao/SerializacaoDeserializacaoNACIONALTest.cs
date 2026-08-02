@@ -285,6 +285,91 @@ public class SerializacaoDesserializacaoNacionalTest
     }
 
     /// <summary>
+    /// Testa a geração automática do ID do DPS com CNPJ alfanumérico.
+    /// </summary>
+    [Fact]
+    [Trait("DFe", "NFSe")]
+    [Trait("Layout", "Nacional")]
+    [Trait("Versao", "1.01")]
+    public void GerarDpsNACIONAL_GeracaoAutomaticaID_ComCnpjAlfanumerico()
+    {
+        var dps = new DPS
+        {
+            Versao = "1.01",
+            InfDPS = new InfDPS
+            {
+                TpAmb = TipoAmbiente.Homologacao,
+                DhEmi = new DateTimeOffset(2026, 8, 1, 12, 0, 0, TimeSpan.FromHours(-3)),
+                CLocEmi = 4314902,
+                Serie = "10",
+                NDPS = "9147",
+                DCompet = new DateTimeOffset(2026, 8, 1, 0, 0, 0, TimeSpan.Zero),
+                TpEmit = TipoEmitenteNFSe.Prestador,
+                Prest = new Prest
+                {
+                    CNPJ = "12ABC34501DE35"
+                }
+            }
+        };
+
+        const string idEsperado = "DPS4314902212ABC34501DE3500010000000000009147";
+        Assert.Equal(idEsperado, dps.InfDPS.Id);
+
+        var xml = dps.GerarXML();
+        var nsmgr = CreateNamespaceManager(xml);
+        Assert.Equal("12ABC34501DE35", xml.SelectSingleNode("//ns:prest/ns:CNPJ", nsmgr)?.InnerText);
+    }
+
+    /// <summary>
+    /// Testa a geração automática do ID da NFS-e com CNPJ alfanumérico.
+    /// </summary>
+    [Fact]
+    [Trait("DFe", "NFSe")]
+    [Trait("Layout", "Nacional")]
+    [Trait("Versao", "1.01")]
+    public void GerarNfseNACIONAL_GeracaoAutomaticaID_ComCnpjAlfanumerico()
+    {
+        var nfse = new Business.DFe.Xml.NFSe.NACIONAL.NFSe.InfNFSe
+        {
+            AmbGer = AmbienteGeradorNFSe.SefinNacionalNfse,
+            Emit = new Business.DFe.Xml.NFSe.NACIONAL.NFSe.Emit
+            {
+                CNPJ = "12ABC34501DE35"
+            },
+            NNFSe = "1",
+            DhProc = new DateTimeOffset(2026, 8, 1, 12, 0, 0, TimeSpan.FromHours(-3)),
+            DPS = new DPS
+            {
+                InfDPS = new InfDPS
+                {
+                    CLocEmi = 4314902
+                }
+            }
+        };
+
+        Assert.Matches(@"^NFS43149022212ABC34501DE35[0-9]{27}$", nfse.Id);
+    }
+
+    /// <summary>
+    /// Testa a composição do ID do pedido de evento com chave de NFS-e alfanumérica.
+    /// </summary>
+    [Fact]
+    [Trait("DFe", "NFSe")]
+    [Trait("Layout", "Nacional")]
+    [Trait("Versao", "1.01")]
+    public void GerarPedidoEventoNACIONAL_GeracaoAutomaticaID_ComCnpjAlfanumerico()
+    {
+        const string chaveNFSe = "43149021212ABC34501DE35000000000000126081234567896";
+        var pedido = new InfPedReg
+        {
+            ChNFSe = chaveNFSe,
+            E101101 = new Business.DFe.Xml.NFSe.NACIONAL.Eventos.E101101()
+        };
+
+        Assert.Equal("PRE" + chaveNFSe + "101101", pedido.Id);
+    }
+
+    /// <summary>
     /// Testa a desserialização do XML de retorno da NFSe (versão 1.01)
     /// </summary>
     [Theory]

@@ -28,7 +28,7 @@ namespace Unimake.DFe.Test.NFSe.Validacao
                 Versao = "1.01",
                 InfNFSe = new Business.DFe.Xml.NFSe.NACIONAL.NFSe.InfNFSe
                 {
-                    Id = "NFS41055082299999999999999000000000000126013568215637",
+                    Id = "NFS41055082212ABC34501DE35000000000000126081234567893",
                     XLocEmi = "Cianorte",
                     XLocPrestacao = "Cianorte",
                     NNFSe = "1",
@@ -44,7 +44,7 @@ namespace Unimake.DFe.Test.NFSe.Validacao
                     NDFSe = "1",
                     Emit = new Business.DFe.Xml.NFSe.NACIONAL.NFSe.Emit
                     {
-                        CNPJ = "99999999999999",
+                        CNPJ = "12ABC34501DE35",
                         XNome = "XXXXXXXXXXXXXXXXXXXXXXXXXXXX LTDA",
                         EnderNac = new Business.DFe.Xml.NFSe.NACIONAL.NFSe.EnderNac
                         {
@@ -70,7 +70,7 @@ namespace Unimake.DFe.Test.NFSe.Validacao
                         Versao = "1.01",
                         InfDPS = new Business.DFe.Xml.NFSe.NACIONAL.InfDPS
                         {
-                            Id = "DPS410550829999999999999900901000000000000001",
+                            Id = "DPS4105508212ABC34501DE3500901000000000000001",
                             TpAmb = TipoAmbiente.Homologacao,
                             DhEmi = emissao,
                             VerAplic = "EmissorWeb_1.4.0.26",
@@ -81,7 +81,7 @@ namespace Unimake.DFe.Test.NFSe.Validacao
                             CLocEmi = 4105508,
                             Prest = new Business.DFe.Xml.NFSe.NACIONAL.Prest
                             {
-                                CNPJ = "99999999999999",
+                                CNPJ = "12ABC34501DE35",
                                 RegTrib = new Business.DFe.Xml.NFSe.NACIONAL.RegTrib
                                 {
                                     OpSimpNac = OptSimplesNacional.NaoOptante,

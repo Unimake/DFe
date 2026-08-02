@@ -64,7 +64,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// Id da NFS-e a ser gerada.
         /// Gerado automaticamente se não for informado.
         /// Composição: "DPS" + Código IBGE do Município Emissor (7) + Tipo de Inscrição (1) + 
-        /// Inscrição Federal (14 - CPF completar com 000 à esquerda) + Série DPS (5) + Núm. DPS (15)
+        /// Inscrição Federal (14 - CPF completar com 000 à esquerda; CNPJ pode ser alfanumérico) + Série DPS (5) + Núm. DPS (15)
         /// </summary>
         [XmlAttribute("Id", DataType = "token")]
         public string Id
@@ -130,7 +130,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// - DPS: Prefixo fixo (3 caracteres)
         /// - 1234567: Código IBGE do Município (7 dígitos)
         /// - 2: Tipo de Inscrição (1=CPF, 2=CNPJ)
-        /// - 12345678901234: Inscrição Federal (14 dígitos - se CPF completa com 000 à esquerda)
+        /// - 12345678901234: Inscrição Federal (14 caracteres - se CPF completa com 000 à esquerda)
         /// - 12345: Série do DPS (5 dígitos)
         /// - 123456789012345: Número do DPS (15 dígitos)
         /// </summary>
@@ -147,7 +147,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
             var tipoInscricao = !string.IsNullOrWhiteSpace(Prest.CPF) ? "1" : "2";
             id += tipoInscricao;
 
-            // 4. Inscrição Federal (14 dígitos)
+            // 4. Inscrição Federal (14 caracteres)
             // Se for CPF, completa com 000 à esquerda até 14 dígitos
             // Se for CNPJ, completa com zeros à esquerda se necessário
             var inscricaoFederal = !string.IsNullOrWhiteSpace(Prest.CPF)

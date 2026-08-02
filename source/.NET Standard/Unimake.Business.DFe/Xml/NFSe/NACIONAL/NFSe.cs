@@ -278,7 +278,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         }
 
         /// <summary>
-        /// Monta o Id da NFS-e no padrão: "NFS" + cMun(7) + ambGer(1) + tpInsc(1) + inscrFed(14) + nNFSe(13) + anoMes(4) + cNum(9) + DV(1)
+        /// Monta o Id da NFS-e no padrão: "NFS" + cMun(7) + ambGer(1) + tpInsc(1) + inscrFed(14, podendo ser alfanumérica para CNPJ) + nNFSe(13) + anoMes(4) + cNum(9) + DV(1)
         /// </summary>
         private string MontarIdNFSe()
         {
