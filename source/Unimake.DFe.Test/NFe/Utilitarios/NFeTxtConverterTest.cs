@@ -42,6 +42,8 @@ public class NFeTxtConverterTest
     [InlineData("000479_09531276000170_003_31_07_2026-nfe-orig.txt")]
     [InlineData("nfe-nfe-orig.txt")]
     [InlineData("14222_43343052000335_1_31_7_2026-nfe-orig.txt")]
+    [InlineData("046481_01391063000189_0_03_08_2026-nfe-orig.txt")]
+    [InlineData("Nota_Fiscal_20265.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -81,6 +83,76 @@ public class NFeTxtConverterTest
         var hashCsrt = xml.SelectSingleNode("//*[local-name()='infRespTec']/*[local-name()='hashCSRT']")?.InnerText;
         Assert.Equal(Unimake.Business.DFe.Utility.Converter.CalculateSHA1Hash(csrt + documento.Chave), hashCsrt);
         Assert.NotEqual(csrt, hashCsrt);
+    }
+
+    /// <summary>
+    /// Deve selecionar IPITrib pelo CST mesmo quando o TXT utiliza o segmento O08 sem valores de cálculo.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarIpiTribParaCst99InformadoNoO08()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("046481_01391063000189_0_03_08_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal(20, xml.SelectNodes("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='IPI']/*[local-name()='IPITrib' and *[local-name()='CST']='99']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='IPI']/*[local-name()='IPINT']").Count);
+    }
+
+    /// <summary>
+    /// Deve omitir os campos opcionais zerados do ICMS51, preservando o XML produzido pelo conversor legado.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveOmitirCamposOpcionaisZeradosDoIcms51()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("Nota_Fiscal_20265.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var icms51 = xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMS51']");
+
+        Assert.NotNull(icms51);
+        Assert.Equal(3, icms51.ChildNodes.Count);
+        Assert.Equal("0", icms51.SelectSingleNode("*[local-name()='orig']")?.InnerText);
+        Assert.Equal("51", icms51.SelectSingleNode("*[local-name()='CST']")?.InnerText);
+        Assert.Equal("3", icms51.SelectSingleNode("*[local-name()='modBC']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve selecionar os grupos Outros de PIS e COFINS pelo CST 49 mesmo nos segmentos Q04 e S04.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarPisECofinsOutrosParaCst49InformadoEmQ04ES04()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("Nota_Fiscal_20265.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.NotNull(xml.SelectSingleNode("//*[local-name()='PISOutr']/*[local-name()='CST' and text()='49']"));
+        Assert.NotNull(xml.SelectSingleNode("//*[local-name()='COFINSOutr']/*[local-name()='CST' and text()='49']"));
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='PISNT']"));
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='COFINSNT']"));
+    }
+
+    /// <summary>
+    /// Deve preservar o IPI devolvido informado no segmento UA.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarIpiDevolvidoDoSegmentoUa()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("Nota_Fiscal_20265.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("100.00", xml.SelectSingleNode("//*[local-name()='impostoDevol']/*[local-name()='pDevol']")?.InnerText);
+        Assert.Equal("150.48", xml.SelectSingleNode("//*[local-name()='impostoDevol']/*[local-name()='IPI']/*[local-name()='vIPIDevol']")?.InnerText);
     }
 
     /// <summary>
@@ -743,7 +815,18 @@ public class NFeTxtConverterTest
             "Industria de Compensados Sudati Ltda",
             "João Henrique Buckta",
             "joao.henrique@valorflorestal.com.br",
-            "8X77VU0XB39URUYTGYSU7IU14UQB"
+            "8X77VU0XB39URUYTGYSU7IU14UQB",
+            "NET LIGHT LTDA.",
+            "notafiscal@zummo.com.br",
+            "RUA MATOS COSTA",
+            "278064462111",
+            "1146128926",
+            "ARVENSIS COSMETICOS LTDA",
+            "ARVENSIS COSMETICOS",
+            "GMN EMBALAGENS LTDA",
+            "RUA DOMICIANO MARTINS DE ANDRADE",
+            "RUA DR MILTON LADEIRA",
+            "3232258011"
         };
 
         var pasta = Path.GetDirectoryName(CaminhoArquivo("novaVersao-nfe.txt"));

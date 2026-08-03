@@ -1913,7 +1913,17 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PFCP)), ObOp.Obrigatorio, 15),
                 VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VFCP)), ObOp.Obrigatorio, 15)
             };
-            if (lenPipesRegistro == 10 && (icms.VICMS ?? 0) == 0) icms.VICMS = Math.Max(0, (icms.VICMSOp ?? 0) - (icms.VICMSDif ?? 0));
+            icms.PRedBC = ManterValorPositivo(icms.PRedBC);
+            icms.VBC = ManterValorPositivo(icms.VBC);
+            icms.PICMS = ManterValorPositivo(icms.PICMS);
+            icms.VICMSOp = ManterValorPositivo(icms.VICMSOp);
+            icms.PDif = ManterValorPositivo(icms.PDif);
+            icms.VICMSDif = ManterValorPositivo(icms.VICMSDif);
+            icms.VICMS = ManterValorPositivo(icms.VICMS);
+            if (lenPipesRegistro == 10 && !icms.VICMS.HasValue)
+            {
+                icms.VICMS = ManterValorPositivo((icms.VICMSOp ?? 0) - (icms.VICMSDif ?? 0));
+            }
             if (lenPipesRegistro >= 17)
             {
                 icms.PFCPDif = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.PFCPDif)), ObOp.Opcional, 15);
@@ -1923,6 +1933,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS51 = icms };
         }
+
+        private static double? ManterValorPositivo(double? valor) => valor > 0 ? valor : null;
 
         private void ProcessarIcms53(int nProd, int lenPipesRegistro)
         {
@@ -2368,10 +2380,16 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarIpiNaoTributado(int nProd, int lenPipesRegistro)
         {
-            ObterIpi(nProd).IPINT = new DFeNFe.IPINT
+            var cst = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2);
+            var ipi = ObterIpi(nProd);
+            if (cst == "00" || cst == "49" || cst == "50" || cst == "99")
             {
-                CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2)
-            };
+                ipi.IPITrib = new DFeNFe.IPITrib { CST = cst };
+            }
+            else
+            {
+                ipi.IPINT = new DFeNFe.IPINT { CST = cst };
+            }
         }
 
         private void ProcessarIpiBaseAliquota(int nProd, int lenPipesRegistro)
@@ -2443,9 +2461,19 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarPisNaoTributado(int nProd, int lenPipesRegistro)
         {
+            var cst = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2);
+            if (!CstPisCofinsNaoTributado(cst))
+            {
+                detalhesOficiais[nProd].Imposto.PIS = new DFeNFe.PIS
+                {
+                    PISOutr = new DFeNFe.PISOutr { CST = cst, VBC = 0, PPIS = 0, VPIS = 0 }
+                };
+                return;
+            }
+
             detalhesOficiais[nProd].Imposto.PIS = new DFeNFe.PIS
             {
-                PISNT = new DFeNFe.PISNT { CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2) }
+                PISNT = new DFeNFe.PISNT { CST = cst }
             };
         }
 
@@ -2578,9 +2606,19 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarCofinsNaoTributado(int nProd, int lenPipesRegistro)
         {
+            var cst = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2);
+            if (!CstPisCofinsNaoTributado(cst))
+            {
+                detalhesOficiais[nProd].Imposto.COFINS = new DFeNFe.COFINS
+                {
+                    COFINSOutr = new DFeNFe.COFINSOutr { CST = cst, VBC = 0, PCOFINS = 0, VCOFINS = 0 }
+                };
+                return;
+            }
+
             detalhesOficiais[nProd].Imposto.COFINS = new DFeNFe.COFINS
             {
-                COFINSNT = new DFeNFe.COFINSNT { CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2) }
+                COFINSNT = new DFeNFe.COFINSNT { CST = cst }
             };
         }
 

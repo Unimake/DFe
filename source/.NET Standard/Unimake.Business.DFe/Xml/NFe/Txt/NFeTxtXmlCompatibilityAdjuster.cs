@@ -13,7 +13,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             ReposicionarInformacoesAdicionaisDosItens(documento);
             RemoverNegativos(documento, "//*[local-name()='gIBSCBS']/*[local-name()='vIBS']");
-            RemoverElementos(documento, "//*[local-name()='IPI' and not(*[local-name()='IPINT']/*[local-name()='CST']) and not(*[local-name()='IPITrib']/*[local-name()='CST'])]");
+            RemoverElementos(documento, "//*[local-name()='imposto']/*[local-name()='IPI' and not(*[local-name()='IPINT']/*[local-name()='CST']) and not(*[local-name()='IPITrib']/*[local-name()='CST'])]");
             if (volumes != null && volumes.Count > 0)
             {
                 AdicionarVolumesOmitidos(documento, volumes);
