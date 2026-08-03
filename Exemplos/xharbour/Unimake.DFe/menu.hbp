@@ -6,6 +6,7 @@
 
 menu.prg
 CancelarNfe.prg
+enviareventocomprovanteentreganfe.prg
 CarregarCertificadoA1.prg
 CartaDeCorrecao.prg
 ConsultaReciboNfe.prg

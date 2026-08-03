@@ -66,6 +66,11 @@ MYC_FLAGS =
 MYDEFINES = 
 MYPRG_FLAGS = 
 
+[enviareventocomprovanteentreganfe.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
 [CancelarNFeDesserializando.prg]
 MYC_FLAGS = 
 MYDEFINES = 
