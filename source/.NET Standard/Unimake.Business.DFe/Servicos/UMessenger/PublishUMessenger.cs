@@ -233,9 +233,26 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
 
         private static retUMessengerPublish CriarRetornoCompativel(XmlDocument retornoXml, string rawResponse)
         {
-            var retorno = retornoXml != null
-                ? XMLUtility.Deserializar<retUMessengerPublish>(retornoXml)
-                : new retUMessengerPublish();
+            retUMessengerPublish retorno;
+
+            if (retornoXml?.DocumentElement != null &&
+                string.Equals(retornoXml.DocumentElement.LocalName, "string", StringComparison.OrdinalIgnoreCase))
+            {
+                retorno = new retUMessengerPublish();
+                retorno.Mensagem.Add(new retUMessengerMensagem
+                {
+                    Status = 1,
+                    Motivo = "Mensagem enviada com sucesso.",
+                    MessageID = retornoXml.DocumentElement.InnerText?.Trim(),
+                    DLLVersao = Info.VersaoDLL
+                });
+            }
+            else
+            {
+                retorno = retornoXml != null
+                    ? XMLUtility.Deserializar<retUMessengerPublish>(retornoXml)
+                    : new retUMessengerPublish();
+            }
 
             retorno.RawResponse = rawResponse;
 

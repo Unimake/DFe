@@ -58,6 +58,27 @@ namespace Unimake.DFe.Test.UMessenger.Parsing
 
         [Fact]
         [Trait("DFe", "UMessenger")]
+        public void DeveCriarRetornoCompativelParaIdentificadorSerializadoComoStringXml()
+        {
+            const string messageId = "BAE572D1B77AFA4E";
+            const string rawResponse = "BAE572D1B77AFA4E";
+
+            var xml = new XmlDocument();
+            xml.LoadXml("<?xml version=\"1.0\" encoding=\"utf-16\"?><string xmlns=\"\">BAE572D1B77AFA4E</string>");
+
+            var metodo = typeof(Business.DFe.Servicos.UMessenger.PublishUMessenger).GetMethod("CriarRetornoCompativel", BindingFlags.Static | BindingFlags.NonPublic);
+            var retorno = (retUMessengerPublish)metodo.Invoke(null, new object[] { xml, rawResponse });
+
+            Assert.Single(retorno.Mensagem);
+            Assert.Equal(1, retorno.Mensagem[0].Status);
+            Assert.Equal("Mensagem enviada com sucesso.", retorno.Mensagem[0].Motivo);
+            Assert.Equal(messageId, retorno.Mensagem[0].MessageID);
+            Assert.Equal(Info.VersaoDLL, retorno.Mensagem[0].DLLVersao);
+            Assert.Equal(rawResponse, retorno.RawResponse);
+        }
+
+        [Fact]
+        [Trait("DFe", "UMessenger")]
         public void DeveMapearRetornoDeErroComErrorsComoArray()
         {
             const string json = @"{
