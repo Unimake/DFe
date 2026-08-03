@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
@@ -133,6 +134,34 @@ namespace Unimake.DFe.Test.UMessenger.Parsing
             Assert.Equal(Info.VersaoDLL, retorno.Mensagem[0].DLLVersao);
         }
 
+        [Fact]
+        [Trait("DFe", "UMessenger")]
+        public void DeveMapearHttp500ProblemJsonComoErroNoTratamentoCompleto()
+        {
+            const string json = @"{
+    ""errors"": [
+        ""Erro desconhecido ao processar resposta: {\""statusCode\"":500,\""error\"":\""internal-server-error\"",\""messages\"":[\""Erro interno do servidor.\""]}""
+    ],
+    ""helpLink"": ""https://unimake.app/problems?q=Erro"",
+    ""status"": 500,
+    ""title"": ""Publish"",
+    ""traceId"": ""0HNNDGA9HLC75-00000001"",
+    ""type"": ""ResponseException""
+}";
+
+            var retorno = ExecutarTratamentoCompleto(json, HttpStatusCode.InternalServerError, "application/problem+json");
+
+            Assert.Single(retorno.Mensagem);
+            Assert.Equal(999, retorno.Mensagem[0].Status);
+            Assert.Contains("Erro desconhecido ao processar resposta", retorno.Mensagem[0].Motivo);
+            Assert.Null(retorno.Mensagem[0].MessageID);
+            Assert.Equal("0HNNDGA9HLC75-00000001", retorno.Mensagem[0].TraceId);
+            Assert.Equal("https://unimake.app/problems?q=Erro", retorno.Mensagem[0].HelpLink);
+            Assert.Equal("ResponseException", retorno.Mensagem[0].ErrorType);
+            Assert.Equal("Publish", retorno.Mensagem[0].ErrorTitle);
+            Assert.Equal(Info.VersaoDLL, retorno.Mensagem[0].DLLVersao);
+        }
+
         private static retUMessengerPublish ExecutarParser(string conteudo, HttpStatusCode statusCode, string mediaType)
         {
             var assembly = typeof(APIConfig).Assembly;
@@ -163,6 +192,26 @@ namespace Unimake.DFe.Test.UMessenger.Parsing
             var xmlRetorno = (XmlDocument)metodo.Invoke(parser, parametros);
 
             return XMLUtility.Deserializar<retUMessengerPublish>(xmlRetorno);
+        }
+
+        private static retUMessengerPublish ExecutarTratamentoCompleto(string conteudo, HttpStatusCode statusCode, string mediaType)
+        {
+            var config = new APIConfig
+            {
+                ResponseMediaType = mediaType,
+                Servico = Servico.UMessengerPublish
+            };
+
+            using (var response = new HttpResponseMessage(statusCode))
+            {
+                response.Content = new StringContent(conteudo);
+                response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(mediaType);
+
+                Stream stream = null;
+                var xmlRetorno = TratarRetornoAPI.ReceberRetorno(ref config, response, ref stream);
+
+                return XMLUtility.Deserializar<retUMessengerPublish>(xmlRetorno);
+            }
         }
     }
 }
