@@ -12,7 +12,8 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
             if (context.Response.StatusCode == System.Net.HttpStatusCode.InternalServerError &&
                 context.Config.PadraoNFSe != PadraoNFSe.NACIONAL &&
                 context.Config.Servico != Servico.EBoletoCancelar &&
-                context.Config.Servico != Servico.EBoletoInformarPagt)
+                context.Config.Servico != Servico.EBoletoInformarPagt &&
+                context.Config.Servico != Servico.UMessengerPublish)
             {
                 return _xmlSupport.StringToSerializedXml("O servidor retornou um erro (500) || Mensagem retornada:  " + context.ResponseContent);
             }
