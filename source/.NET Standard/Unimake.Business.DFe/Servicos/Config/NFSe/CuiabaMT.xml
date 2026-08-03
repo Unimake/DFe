@@ -175,7 +175,7 @@
 		<RecepcionarLoteRps versao="1.01">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDps</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDps</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -189,7 +189,7 @@
 		<RecepcionarLoteRpsSincrono versao="1.01">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDpsSincrono</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDpsSincrono</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -203,7 +203,7 @@
 		<GerarNfse versao="1.01">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/GerarNfse</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/GerarNfse</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -217,7 +217,7 @@
 		<CancelarNfse versao="1.01">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/CancelarNfse</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -231,7 +231,7 @@
 		<ConsultarLoteRps versao="1.01">
 			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarLoteDps</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/ConsultarLoteDps</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -245,7 +245,7 @@
 		<ConsultarNfsePorRps versao="1.01">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseDps</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseDps</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -259,7 +259,7 @@
 		<ConsultarNfseServicoPrestado versao="1.01">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseServicoPrestado</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseServicoPrestado</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -273,7 +273,7 @@
 		<ConsultarNfseServicoTomado versao="1.01">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseServicoTomado</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfseServicoTomado</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -287,7 +287,7 @@
 		<ConsultarNfseFaixa versao="1.01">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfsePorFaixa</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/ConsultarNfsePorFaixa</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -301,7 +301,7 @@
 		<ConsultarDadosCadastrais versao="1.01">
 			<Descricao>Consulta os dados cadastrais</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarDadosCadastrais</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/ConsultarDadosCadastrais</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -315,7 +315,7 @@
 		<ConsultarRpsDisponivel versao="1.01">
 			<Descricao>Consulta os dados cadastrais</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarDpsDisponivel</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/ConsultarDpsDisponivel</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -329,7 +329,7 @@
 		<ConsultarUrlNfse versao="1.01">
 			<Descricao>Consulta os dados cadastrais</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/cuiaba/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>https://wscuiaba.issnetonline.com.br/wsnfsenacional/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.sped.fazenda.gov.br/nfse/ConsultarUrlNfse</WebActionHomologacao>
 			<WebActionProducao>http://www.sped.fazenda.gov.br/nfse/ConsultarUrlNfse</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
