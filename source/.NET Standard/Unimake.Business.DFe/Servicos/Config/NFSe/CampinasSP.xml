@@ -147,7 +147,7 @@
 		<!--Versão 1.01-->
 		<GerarNfse versao="1.01">
 			<Descricao>Envio do DPS - Síncrono</Descricao>
-			<RequestURIProducao></RequestURIProducao>
+			<RequestURIProducao>https://novanfse.campinas.sp.gov.br/notafiscal-adn-ws/api/adn/dps</RequestURIProducao>
 			<RequestURIHomologacao>https://preprod-nfse.ima.sp.gov.br/notafiscal-adn-ws/api/adn/dps</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
@@ -162,7 +162,7 @@
 		</GerarNfse>
 		<ConsultarNfse versao="1.01">
 			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao></RequestURIProducao>
+			<RequestURIProducao>https://novanfse.campinas.sp.gov.br/notafiscal-adn-ws/api/adn/nfse/{Chave}</RequestURIProducao>
 			<RequestURIHomologacao>https://preprod-nfse.ima.sp.gov.br/notafiscal-adn-ws/api/adn/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
