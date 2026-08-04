@@ -112,22 +112,11 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         {
             XmlValidarConteudo();
 
-            if (!string.IsNullOrWhiteSpace(Configuracoes.SchemaArquivo))
+            var resultadoValidacao = ValidarXMLCentralizado();
+
+            if (!resultadoValidacao.Validado)
             {
-                var resultadoValidacao = ValidarXMLCentralizado();
-
-                if (!resultadoValidacao.Validado)
-                {
-                    throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
-                }
-
-                //var validar = new ValidarSchema();
-                //validar.Validar(ConteudoXML, Configuracoes.TipoDFe + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
-
-                //if (!validar.Success)
-                //{
-                //    throw new ValidarXMLException(validar.ErrorMessage);
-                //}
+                throw new ValidarXMLException(resultadoValidacao.MensagemRetorno);
             }
         }
 

@@ -4,7 +4,6 @@
 		<WebContentType>application/json</WebContentType>
 		<WebTagRetorno></WebTagRetorno>
 		<SchemaVersao>1.00</SchemaVersao>
-		<SchemaVersaoEvento></SchemaVersaoEvento>
 		<TargetNS></TargetNS>
 		<HostHomologacao>apigateway-hml.fazenda.sp.gov.br</HostHomologacao>
 		<HostProducao>apigateway.fazenda.sp.gov.br</HostProducao>

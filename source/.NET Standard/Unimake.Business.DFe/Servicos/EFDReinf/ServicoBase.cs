@@ -71,42 +71,6 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         /// </summary>
         protected override void XmlValidarConteudo() { }
 
-        /// <summary>
-        /// Verifica se o XML está assinado, se não estiver assina. Só faz isso para XMLs que tem tag de assinatura, demais ele mantem como está, sem assinar.
-        /// </summary>
-        /// <param name="tagAssinatura">Tag de assinatura</param>
-        /// <param name="tagAtributoID">Tag que detêm o atributo ID</param>
-        protected override void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
-        {
-            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
-            {
-                var eventoEspecifico = string.Empty;
-                var listEventos = ConteudoXML.GetElementsByTagName("evento");
-
-                foreach (XmlNode nodeEvento in listEventos)
-                {
-                    var elementEvento = (XmlElement)nodeEvento;
-                    var reinfEvento = elementEvento.GetElementsByTagName("Reinf")[0];
-
-                    var xmlEventoEspecifico = new XmlDocument();
-                    xmlEventoEspecifico.LoadXml(reinfEvento.OuterXml);
-
-                    eventoEspecifico = reinfEvento.FirstChild.Name;
-
-                    if (!AssinaturaDigital.EstaAssinado(xmlEventoEspecifico, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAssinatura))
-                    {
-                        AssinaturaDigital.Assinar(xmlEventoEspecifico, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAssinatura,
-                             Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAtributoID,
-                             Configuracoes.CertificadoDigital, AlgorithmType.Sha256, true, "id");
-
-                        var novoXml = xmlEventoEspecifico.ChildNodes[0];
-                        nodeEvento.RemoveChild(reinfEvento);
-                        nodeEvento.AppendChild(ConteudoXML.ImportNode(xmlEventoEspecifico.DocumentElement, true));
-                    }
-                }
-            }
-        }
-
         #endregion Protected Methods
 
         #region Public Methods

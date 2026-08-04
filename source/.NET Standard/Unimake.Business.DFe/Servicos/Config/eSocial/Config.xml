@@ -4,6 +4,5 @@
 		<WebContentType>text/xml</WebContentType>
 		<WebTagRetorno>ideStatus</WebTagRetorno>
 		<SchemaVersao>1.1.0</SchemaVersao>
-		<SchemaVersaoEvento>S_01_03_00</SchemaVersaoEvento>
 	</Versao>
 </ConfigPadrao>

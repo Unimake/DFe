@@ -70,30 +70,6 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         {
             base.XmlValidar();
 
-            //var xml = ReinfEnvioLoteEventos;
-            //var schemaArquivoEvento = string.Empty;
-
-            //ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
-
-            //if (Configuracoes.TiposEventosEspecificos.Count > 0)
-            //{
-            //    string eventoEspecifico;
-            //    var listEventos = ConteudoXML.GetElementsByTagName("evento");
-
-            //    foreach (var nodeEvento in listEventos)
-            //    {
-            //        var elementEvento = (XmlElement)nodeEvento;
-            //        var reinfEvento = elementEvento.GetElementsByTagName("Reinf")[0];
-
-            //        var xmlEventoEspecifico = new XmlDocument();
-            //        xmlEventoEspecifico.LoadXml(reinfEvento.OuterXml);
-
-            //        eventoEspecifico = reinfEvento.FirstChild.Name;
-            //        schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
-
-            //        ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
-            //    }
-            //}
         }
 
         #endregion Protected Methods

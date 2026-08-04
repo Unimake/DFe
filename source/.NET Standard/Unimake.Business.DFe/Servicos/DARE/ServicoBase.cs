@@ -78,41 +78,6 @@ namespace Unimake.Business.DFe.Servicos.DARE
         protected override void XmlValidarConteudo() { }
 
         /// <summary>
-        /// Verifica se o XML está assinado, se não estiver assina. Só faz isso para XMLs que tem tag de assinatura, demais ele mantem como está, sem assinar.
-        /// </summary>
-        /// <param name="tagAssinatura">Tag de assinatura</param>
-        /// <param name="tagAtributoID">Tag que detêm o atributo ID</param>
-        protected override void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
-        {
-            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
-            {
-                var eventoEspecifico = string.Empty;
-                var listEventos = ConteudoXML.GetElementsByTagName("evento");
-
-                foreach (XmlNode nodeEvento in listEventos)
-                {
-                    var elementEvento = (XmlElement)nodeEvento;
-                    var DAREEvento = elementEvento.GetElementsByTagName("DARE")[0];
-
-                    var xmlEventoEspecifico = new XmlDocument();
-                    xmlEventoEspecifico.LoadXml(DAREEvento.OuterXml);
-
-                    eventoEspecifico = DAREEvento.FirstChild.Name;
-
-                    if (!AssinaturaDigital.EstaAssinado(xmlEventoEspecifico, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAssinatura))
-                    {
-                        AssinaturaDigital.Assinar(xmlEventoEspecifico, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAssinatura,
-                            Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAtributoID,
-                            Configuracoes.CertificadoDigital, AlgorithmType.Sha256, false, "Id");
-
-                        nodeEvento.RemoveChild(DAREEvento);
-                        nodeEvento.AppendChild(ConteudoXML.ImportNode(xmlEventoEspecifico.DocumentElement, true));
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// </summary>
         /// <param name="conteudoXML"></param>
         /// <param name="configuracao"></param>
@@ -153,15 +118,6 @@ namespace Unimake.Business.DFe.Servicos.DARE
             if (!(validatorFactory.BuidValidator(ConteudoXML.InnerXml)?.Validate() ?? true))
             {
                 return;
-            }
-
-            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && Configuracoes.NaoAssina != null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
-            {
-                if (!AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
-                {
-                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
-                    AjustarXMLAposAssinado();
-                }
             }
 
             var apiConfig = new ConfiguracaoApiConfigMapper().MapExplicitEnvironment(Configuracoes);

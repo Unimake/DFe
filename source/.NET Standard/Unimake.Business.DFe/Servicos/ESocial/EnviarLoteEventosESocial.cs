@@ -67,30 +67,6 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         {
             base.XmlValidar();
 
-            //var schemaArquivoEvento = string.Empty;
-
-            //ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
-
-            //if (Configuracoes.TiposEventosEspecificos.Count > 0)
-            //{
-            //    string eventoEspecifico;
-            //    var listEventos = ConteudoXML.GetElementsByTagName("evento");
-
-            //    foreach (XmlNode nodeEvento in listEventos)
-            //    {
-            //        var elementEvento = (XmlElement)nodeEvento;
-            //        var esocialEvento = elementEvento.GetElementsByTagName("eSocial")[0];
-
-            //        var xmlEventoEspecifico = new XmlDocument();
-            //        xmlEventoEspecifico.LoadXml(esocialEvento.OuterXml);
-
-            //        eventoEspecifico = esocialEvento.FirstChild.Name;
-            //        schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
-
-            //        ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
-            //    }
-            //}
-
         }
 
         #endregion Protected Methods

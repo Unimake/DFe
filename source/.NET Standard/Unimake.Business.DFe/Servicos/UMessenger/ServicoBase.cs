@@ -101,8 +101,6 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
         /// <summary>
         /// Verificar assinatura (não aplicável ao uMessenger)
         /// </summary>
-        protected override void VerificarAssinarXML(string tagAssinatura, string tagAtributoID) { }
-
         /// <summary>
         /// Inicializar o serviço
         /// </summary>

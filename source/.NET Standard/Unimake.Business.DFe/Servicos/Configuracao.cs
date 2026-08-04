@@ -258,26 +258,6 @@ namespace Unimake.Business.DFe.Servicos
                                 SchemaVersao = XMLUtility.TagRead(elementPropriedades, "SchemaVersao");
                             }
 
-                            if (XMLUtility.TagExist(elementPropriedades, "SchemaArquivo"))
-                            {
-                                SchemaArquivo = XMLUtility.TagRead(elementPropriedades, "SchemaArquivo").Replace("{0}", SchemaVersao);
-                            }
-
-                            if (XMLUtility.TagExist(elementPropriedades, "SchemaVersaoEvento"))
-                            {
-                                SchemaVersaoEvento = XMLUtility.TagRead(elementPropriedades, "SchemaVersaoEvento").Replace("{0}", SchemaVersaoEvento);
-                            }
-
-                            if (XMLUtility.TagExist(elementPropriedades, "TagAssinatura"))
-                            {
-                                TagAssinatura = XMLUtility.TagRead(elementPropriedades, "TagAssinatura");
-                            }
-
-                            if (XMLUtility.TagExist(elementPropriedades, "TagAtributoID"))
-                            {
-                                TagAtributoID = XMLUtility.TagRead(elementPropriedades, "TagAtributoID");
-                            }
-
                             if (XMLUtility.TagExist(elementPropriedades, "TagExtraAssinatura"))
                             {
                                 TagExtraAssinatura = XMLUtility.TagRead(elementPropriedades, "TagExtraAssinatura");
@@ -286,16 +266,6 @@ namespace Unimake.Business.DFe.Servicos
                             if (XMLUtility.TagExist(elementPropriedades, "TagExtraAtributoID"))
                             {
                                 TagExtraAtributoID = XMLUtility.TagRead(elementPropriedades, "TagExtraAtributoID");
-                            }
-
-                            if (XMLUtility.TagExist(elementPropriedades, "TagLoteAssinatura"))
-                            {
-                                TagLoteAssinatura = XMLUtility.TagRead(elementPropriedades, "TagLoteAssinatura");
-                            }
-
-                            if (XMLUtility.TagExist(elementPropriedades, "TagLoteAtributoID"))
-                            {
-                                TagLoteAtributoID = XMLUtility.TagRead(elementPropriedades, "TagLoteAtributoID");
                             }
 
                             if (XMLUtility.TagExist(elementPropriedades, "UrlQrCodeHomologacao"))
@@ -407,60 +377,6 @@ namespace Unimake.Business.DFe.Servicos
                                 if (timeOut > 0)
                                 {
                                     TimeOutWebServiceConnect = timeOut;
-                                }
-                            }
-
-                            //Verificar se existem schemas específicos de validação
-                            if (XMLUtility.TagExist(elementPropriedades, "SchemasEspecificos"))
-                            {
-                                var listSchemasEspecificios = elementPropriedades.GetElementsByTagName("SchemasEspecificos");
-
-                                foreach (var nodeSchemasEspecificos in listSchemasEspecificios)
-                                {
-                                    var elemenSchemasEspecificos = (XmlElement)nodeSchemasEspecificos;
-
-                                    var listTipo = elemenSchemasEspecificos.GetElementsByTagName("Tipo");
-
-                                    foreach (var nodeTipo in listTipo)
-                                    {
-                                        var elementTipo = (XmlElement)nodeTipo;
-                                        var idSchemaEspecifico = elementTipo.GetElementsByTagName("ID")[0].InnerText;
-
-                                        SchemasEspecificos[idSchemaEspecifico] = new SchemaEspecifico
-                                        {
-                                            Id = idSchemaEspecifico,
-                                            SchemaArquivo = elementTipo.GetElementsByTagName("SchemaArquivo")[0].InnerText.Replace("{0}", SchemaVersao),
-                                            SchemaArquivoEspecifico = elementTipo.GetElementsByTagName("SchemaArquivoEspecifico")[0].InnerText.Replace("{0}", SchemaVersao)
-                                        };
-                                    }
-                                }
-                            }
-
-                            //Verificar se existem schemas específicos de validação para o evento do REINF ou eSocial
-                            if (XMLUtility.TagExist(elementPropriedades, "TiposEventosEspecificos"))
-                            {
-                                var listTiposEventosEspecificos = elementPropriedades.GetElementsByTagName("TiposEventosEspecificos");
-
-                                foreach (var nodeTiposEventosEspecificos in listTiposEventosEspecificos)
-                                {
-                                    var elemenTiposEventosEspecificos = (XmlElement)nodeTiposEventosEspecificos;
-
-                                    var listTipo = elemenTiposEventosEspecificos.GetElementsByTagName("Tipo");
-
-                                    foreach (var nodeTipo in listTipo)
-                                    {
-                                        var elementTipo = (XmlElement)nodeTipo;
-                                        var eventoEspecifico = elementTipo.GetElementsByTagName("Evento")[0].InnerText;
-
-                                        TiposEventosEspecificos[eventoEspecifico] = new TiposEventosEspecificos
-                                        {
-                                            Evento = eventoEspecifico,
-                                            SchemaArquivoEvento = elementTipo.GetElementsByTagName("SchemaArquivoEvento")[0].InnerText.Replace("{0}", SchemaVersaoEvento),
-                                            TagAssinatura = elementTipo.GetElementsByTagName("TagAssinatura")[0].InnerText,
-                                            TagAtributoID = elementTipo.GetElementsByTagName("TagAtributoID")[0].InnerText,
-                                            TargetNS = elementTipo.GetElementsByTagName("TargetNS")[0].InnerText.Replace("{0}", SchemaVersaoEvento)
-                                        };
-                                    }
                                 }
                             }
 
@@ -891,11 +807,6 @@ namespace Unimake.Business.DFe.Servicos
                             MetodoAPI = XMLUtility.TagRead(elementVersao, "MetodoAPI");
                         }
 
-                        if (XMLUtility.TagExist(elementVersao, "SchemaVersaoEvento"))
-                        {
-                            SchemaVersaoEvento = XMLUtility.TagRead(elementVersao, "SchemaVersaoEvento");
-                        }
-
                         if (XMLUtility.TagExist(elementVersao, "HostHomologacao"))
                         {
                             HostHomologacao = XMLUtility.TagRead(elementVersao, "HostHomologacao");
@@ -923,16 +834,6 @@ namespace Unimake.Business.DFe.Servicos
         #endregion Private Methods
 
         #region Public Fields
-
-        /// <summary>
-        /// Schemas específicos de um mesmo serviço (Tipos de Evento, Modal CTe ou Modal MDFe)
-        /// </summary>
-        public Dictionary<string, SchemaEspecifico> SchemasEspecificos = new Dictionary<string, SchemaEspecifico>();
-
-        /// <summary>
-        /// Tipos de eventos específicos do REINF e eSocial
-        /// </summary>
-        public Dictionary<string, TiposEventosEspecificos> TiposEventosEspecificos = new Dictionary<string, TiposEventosEspecificos>();
 
         /// <summary>
         /// URLs para consulta de recibos do REINF
@@ -1149,26 +1050,6 @@ namespace Unimake.Business.DFe.Servicos
         /// Serviço que será executado
         /// </summary>
         public Servico Servico { get; set; }
-
-        /// <summary>
-        /// Nome da tag de Assinatura do XML
-        /// </summary>
-        public string TagAssinatura { get; set; }
-
-        /// <summary>
-        /// Nome da tag que tem o atributo de identificador único a ser utilizado no Reference.URI da assinatura
-        /// </summary>
-        public string TagAtributoID { get; set; }
-
-        /// <summary>
-        /// Nome da tag de Assinatura do XML, quando tem lote (Exemplo: Uma lote com várias NFe ou NFSe)
-        /// </summary>
-        public string TagLoteAssinatura { get; set; }
-
-        /// <summary>
-        /// Nome da tag que tem o atributo de identificador único a ser utilizado no Reference.URI da assinatura, quando tem lote (Exemplo: Uma lote com várias NFe ou NFSe)
-        /// </summary>
-        public string TagLoteAtributoID { get; set; }
 
         /// <summary>
         /// Nome da tag de Assinatura do XML, quando tiver uma terceira tag para assinar (É o caso da Substituição da NFSe)
@@ -1500,11 +1381,6 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         public string NumeroProtocolo { get; set; }
 
-        /// <summary>
-        /// Versão do schema do XML do evento
-        /// </summary>
-        public string SchemaVersaoEvento { get; set; }
-
         private int _TimeOutWebServiceConnect;
 
         /// <summary>
@@ -1645,66 +1521,6 @@ namespace Unimake.Business.DFe.Servicos
         }
 
         #endregion
-    }
-
-    /// <summary>
-    /// Arquivos de schema específicos. Um mesmo serviço mais com vários arquivos de schema para validação, varia de acordo com uma determinada informação de tag, exemplo: CTe tem o Modal, Evento tem o tipo de evento, MDFe tem o modal, etc...
-    /// </summary>
-    public class SchemaEspecifico
-    {
-        #region Public Properties
-
-        /// <summary>
-        /// ID da parte específica do XML. Pode ser o TipoEvento para eventos ou o Modal para CTe e MDFe.
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Arquivo de schema principal
-        /// </summary>
-        public string SchemaArquivo { get; set; }
-
-        /// <summary>
-        /// Arquivo de schema da parte específica do XML
-        /// </summary>
-        public string SchemaArquivoEspecifico { get; set; }
-
-        #endregion Public Properties
-    }
-
-    /// <summary>
-    /// Arquivos de eventos específicos.
-    /// </summary>
-    public class TiposEventosEspecificos
-    {
-        #region Public Properties
-
-        /// <summary>
-        /// Evento específico que vai ser validado para o REINF ou eSocial
-        /// </summary>
-        public string Evento { get; set; }
-
-        /// <summary>
-        /// Arquivo de schema específico do evento
-        /// </summary>
-        public string SchemaArquivoEvento { get; set; }
-
-        /// <summary>
-        /// Nome da tag de Assinatura do evento
-        /// </summary>
-        public string TagAssinatura { get; set; }
-
-        /// <summary>
-        /// Nome da tag que tem o atributo de identificador único a ser utilizado no Reference.URI da assinatura
-        /// </summary>
-        public string TagAtributoID { get; set; }
-
-        /// <summary>
-        /// Namespace do XML para validação de schema
-        /// </summary>
-        public string TargetNS { get; set; }
-
-        #endregion Public Properties
     }
 
     /// <summary>

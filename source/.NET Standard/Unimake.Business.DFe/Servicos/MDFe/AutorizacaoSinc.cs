@@ -288,7 +288,6 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             //var schemaArquivo = string.Empty;
             //var schemaArquivoEspecifico = string.Empty;
 
-            //if (Configuracoes.SchemasEspecificos.Count > 0)
             //{
             //    if (ConteudoXML.GetElementsByTagName("MDFe").Count <= 0)
             //    {
@@ -316,8 +315,6 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
             //    var modal = Convert.ToInt32(elementIde.GetElementsByTagName("modal")[0].InnerText);
 
-            //    schemaArquivo = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivo;
-            //    schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivoEspecifico;
             //}
 
             //#region Validar o XML geral

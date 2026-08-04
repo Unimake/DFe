@@ -33,31 +33,6 @@ namespace Unimake.Business.DFe.Servicos
         private XmlDocument _ConteudoXML;
 
         /// <summary>
-        /// Verifica se o XML está assinado, se não estiver assina. Só faz isso para XMLs que tem tag de assinatura, demais ele mantem como está, sem assinar.
-        /// </summary>
-        /// <param name="tagAssinatura">Tag de assinatura</param>
-        /// <param name="tagAtributoID">Tag que detêm o atributo ID</param>
-        protected virtual void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
-        {
-            if (Configuracoes.UsaCertificadoDigital)
-            {
-                if (!string.IsNullOrWhiteSpace(tagAssinatura) && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
-                {
-                    if (AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
-                    {
-                        AjustarXMLAposAssinado();
-                    }
-                    else
-                    {
-                        AssinaturaDigital.Assinar(ConteudoXML, tagAssinatura, tagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "", true);
-
-                        AjustarXMLAposAssinado();
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Conteúdo do XML, pode ou não estar assinado. Esta propriedade é utilizada em tempo de processamento.
         /// Utilize as propriedades ConteudoXMLOriginal ou ConteudoXMLAssinado para recuperar o que você deseja fora da classe.
         /// </summary>
@@ -258,15 +233,6 @@ namespace Unimake.Business.DFe.Servicos
 #endif
         public virtual void Executar()
         {
-            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && Configuracoes.NaoAssina != null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
-            {
-                if (!AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
-                {
-                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
-                    AjustarXMLAposAssinado();
-                }
-            }
-
             if (Configuracoes.IsAPI)
             {
                 if (Configuracoes.RequestURI != null && !string.Equals(Configuracoes.MetodoAPI, "get", StringComparison.OrdinalIgnoreCase))

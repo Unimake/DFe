@@ -79,7 +79,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
             //var schemaArquivo = string.Empty;
             //var schemaArquivoEspecifico = string.Empty;
 
-            //if (Configuracoes.SchemasEspecificos.Count > 0)
             //{
             //    int tpEvento;
             //    if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
@@ -93,8 +92,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
 
             //    try
             //    {
-            //        schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
-            //        schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
             //    }
             //    catch
             //    {

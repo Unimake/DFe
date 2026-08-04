@@ -151,8 +151,6 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
         /// <summary>
         /// Verificar assinatura (não aplicável ao eBoleto)
         /// </summary>
-        protected override void VerificarAssinarXML(string tagAssinatura, string tagAtributoID) { }
-
         /// <summary>
         /// Inicializar serviço
         /// </summary>

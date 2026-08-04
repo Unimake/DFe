@@ -68,12 +68,6 @@ namespace Unimake.Business.DFe.Servicos.CCG
 #endif
         public override void Executar()
         {
-            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) &&
-               !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
-            {
-                AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
-            }
-
             AjustarXMLAposAssinado();
 
             XmlValidar();

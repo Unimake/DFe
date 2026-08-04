@@ -155,8 +155,6 @@ namespace Unimake.Business.DFe.Servicos.PIX
         /// <summary>
         /// Verificar assinatura (não aplicável ao PIX)
         /// </summary>
-        protected override void VerificarAssinarXML(string tagAssinatura, string tagAtributoID) { }
-
         /// <summary>
         /// Inicializar serviço
         /// </summary>

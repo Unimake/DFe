@@ -4,7 +4,6 @@
 		<WebContentType>application/json</WebContentType>
 		<WebTagRetorno>prop:Innertext</WebTagRetorno>
 		<SchemaVersao>1.00</SchemaVersao>
-		<SchemaVersaoEvento></SchemaVersaoEvento>
 		<TargetNS></TargetNS>
 	</Versao>
 </ConfigPadrao>

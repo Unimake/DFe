@@ -79,7 +79,6 @@ namespace Unimake.Business.DFe.Servicos.NFCom
             //var schemaArquivo = string.Empty;
             //var schemaArquivoEspecifico = string.Empty;
 
-            //if (Configuracoes.SchemasEspecificos.Count > 0)
             //{
             //    int tpEvento;
             //    if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
@@ -91,8 +90,6 @@ namespace Unimake.Business.DFe.Servicos.NFCom
             //        throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
             //    }
 
-            //    schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
-            //    schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
             //}
 
             //#region Validar o XML geral

@@ -10,7 +10,6 @@
 		<WebContentType>application/xml</WebContentType>
 		<WebTagRetorno>Reinf</WebTagRetorno>
 		<SchemaVersao>1.00.00</SchemaVersao>
-		<SchemaVersaoEvento>2_01_02</SchemaVersaoEvento>
 		<TargetNS></TargetNS>
 	</Versao>
 </ConfigPadrao>

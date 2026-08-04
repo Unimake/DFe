@@ -656,75 +656,50 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     Configuracoes.Servico == Servico.NFSeSubstituirNfse ||
                     Configuracoes.Servico == Servico.NFSeCancelarNfse)
                 {
-
                     var xmlDoc = new XmlDocument();
                     xmlDoc.LoadXml(ConteudoXML.OuterXml);
                     var mudouXml = false;
-                    if (Configuracoes.TagAssinatura.Equals("Rps"))
+
+                    foreach (XmlNode nodeRps in xmlDoc.GetElementsByTagName("Rps"))
                     {
-                        if (Configuracoes.Servico == Servico.NFSeGerarNfse)
+                        var elementRps = (XmlElement)nodeRps;
+                        var infDeclaracaoNodes = elementRps.GetElementsByTagName("InfDeclaracaoPrestacaoServico");
+                        var signatureValueNodes = elementRps.GetElementsByTagName("SignatureValue");
+
+                        if (infDeclaracaoNodes.Count == 0 || signatureValueNodes.Count == 0)
                         {
-                            var nodeRps = xmlDoc.GetElementsByTagName("Rps")[0];
-                            var elementNodeRps = (XmlElement)nodeRps;
-                            var elementInfDeclaracao = (XmlElement)elementNodeRps.GetElementsByTagName("InfDeclaracaoPrestacaoServico")[0];
-                            var id = elementInfDeclaracao.GetAttribute("Id").Replace("ID_", "");
-                            var elementSignatureValue = (XmlElement)elementNodeRps.GetElementsByTagName("SignatureValue")[0];
-
-                            if (string.IsNullOrWhiteSpace(elementSignatureValue.GetAttribute("Id")))
-                            {
-                                var attributeId = xmlDoc.CreateAttribute("Id");
-                                attributeId.Value = "ID_ASSINATURA_" + id;
-                                elementSignatureValue.SetAttributeNode(attributeId);
-
-                                mudouXml = true;
-                            }
-                        }
-                        else
-                        {
-                            var listListaRps = xmlDoc.GetElementsByTagName("ListaRps");
-                            foreach (XmlNode nodeListaRps in listListaRps)
-                            {
-                                var elementListaRps = (XmlElement)nodeListaRps;
-                                foreach (XmlNode nodeRps in elementListaRps.GetElementsByTagName("Rps"))
-                                {
-                                    var elementRps = (XmlElement)nodeRps;
-                                    if (elementRps.GetElementsByTagName("InfDeclaracaoPrestacaoServico").Count > 0)
-                                    {
-                                        var elementInfDeclaracao = (XmlElement)elementRps.GetElementsByTagName("InfDeclaracaoPrestacaoServico")[0];
-                                        var id = elementInfDeclaracao.GetAttribute("Id").Replace("ID_", "");
-                                        var elementSignatureValue = (XmlElement)elementRps.GetElementsByTagName("SignatureValue")[0];
-
-                                        if (string.IsNullOrWhiteSpace(elementSignatureValue.GetAttribute("Id")))
-                                        {
-                                            var attributeId = xmlDoc.CreateAttribute("Id");
-                                            attributeId.Value = "ID_ASSINATURA_" + id;
-                                            elementSignatureValue.SetAttributeNode(attributeId);
-                                            mudouXml = true;
-                                        }
-                                    }
-                                }
-                            }
+                            continue;
                         }
 
-                        if (mudouXml)
-                        {
-                            ConteudoXML.LoadXml(xmlDoc.OuterXml);
-                        }
-                    }
-                    else if (Configuracoes.TagAssinatura.Equals("Pedido")) //Para o serviço CancelarNfse
-                    {
-                        var nodePedido = xmlDoc.GetElementsByTagName("Pedido")[0];
-                        var elementNodePedido = (XmlElement)nodePedido;
-                        var elementInfPedidoCancelamento = (XmlElement)elementNodePedido.GetElementsByTagName("InfPedidoCancelamento")[0];
-                        var id = elementInfPedidoCancelamento.GetAttribute("Id").Replace("ID_PEDIDO_CANCELAMENTO_", "");
-                        var elementSignatureValue = (XmlElement)elementNodePedido.GetElementsByTagName("SignatureValue")[0];
+                        var elementInfDeclaracao = (XmlElement)infDeclaracaoNodes[0];
+                        var elementSignatureValue = (XmlElement)signatureValueNodes[0];
 
                         if (string.IsNullOrWhiteSpace(elementSignatureValue.GetAttribute("Id")))
                         {
-                            var attributeId = xmlDoc.CreateAttribute("Id");
-                            attributeId.Value = "ID_ASSINATURA_PEDIDO_CANCELAMENTO_" + id;
-                            elementSignatureValue.SetAttributeNode(attributeId);
+                            var id = elementInfDeclaracao.GetAttribute("Id").Replace("ID_", "");
+                            elementSignatureValue.SetAttribute("Id", "ID_ASSINATURA_" + id);
+                            mudouXml = true;
+                        }
+                    }
 
+                    foreach (XmlNode nodePedido in xmlDoc.GetElementsByTagName("Pedido"))
+                    {
+                        var elementPedido = (XmlElement)nodePedido;
+                        var infPedidoNodes = elementPedido.GetElementsByTagName("InfPedidoCancelamento");
+                        var signatureValueNodes = elementPedido.GetElementsByTagName("SignatureValue");
+
+                        if (infPedidoNodes.Count == 0 || signatureValueNodes.Count == 0)
+                        {
+                            continue;
+                        }
+
+                        var elementInfPedidoCancelamento = (XmlElement)infPedidoNodes[0];
+                        var elementSignatureValue = (XmlElement)signatureValueNodes[0];
+
+                        if (string.IsNullOrWhiteSpace(elementSignatureValue.GetAttribute("Id")))
+                        {
+                            var id = elementInfPedidoCancelamento.GetAttribute("Id").Replace("ID_PEDIDO_CANCELAMENTO_", "");
+                            elementSignatureValue.SetAttribute("Id", "ID_ASSINATURA_PEDIDO_CANCELAMENTO_" + id);
                             mudouXml = true;
                         }
                     }
@@ -733,7 +708,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     {
                         ConteudoXML.LoadXml(xmlDoc.OuterXml);
                     }
-
                 }
             }
 

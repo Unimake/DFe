@@ -28,6 +28,38 @@ namespace Unimake.DFe.Test.Utility.Validacao
         }
 
         [Fact]
+        public void ConfiguracaoNaoDeveExporEstruturasLegadasDeValidacao()
+        {
+            var tipoConfiguracao = typeof(Configuracao);
+            var assembly = tipoConfiguracao.Assembly;
+
+            Assert.Null(tipoConfiguracao.GetField("SchemasEspecificos"));
+            Assert.Null(tipoConfiguracao.GetField("TiposEventosEspecificos"));
+            Assert.Null(tipoConfiguracao.GetProperty("TagAssinatura"));
+            Assert.Null(tipoConfiguracao.GetProperty("TagAtributoID"));
+            Assert.Null(tipoConfiguracao.GetProperty("TagLoteAssinatura"));
+            Assert.Null(tipoConfiguracao.GetProperty("TagLoteAtributoID"));
+            Assert.Null(tipoConfiguracao.GetProperty("SchemaVersaoEvento"));
+            Assert.Null(assembly.GetType("Unimake.Business.DFe.Servicos.SchemaEspecifico"));
+            Assert.Null(assembly.GetType("Unimake.Business.DFe.Servicos.TiposEventosEspecificos"));
+        }
+
+        [Fact]
+        public void ConfiguracaoDevePreservarCamposAindaUtilizadosPorCodigo()
+        {
+            var configuracao = new Configuracao
+            {
+                SchemaArquivo = "schema-programatico.xsd",
+                TagExtraAssinatura = "SubstituirNfseEnvio",
+                TagExtraAtributoID = "SubstituicaoNfse"
+            };
+
+            Assert.Equal("schema-programatico.xsd", configuracao.SchemaArquivo);
+            Assert.Equal("SubstituirNfseEnvio", configuracao.TagExtraAssinatura);
+            Assert.Equal("SubstituicaoNfse", configuracao.TagExtraAtributoID);
+        }
+
+        [Fact]
         public void DeveManterServicosVersionadosENaoVersionados()
         {
             var catalogo = CarregarCatalogo();
