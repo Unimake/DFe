@@ -107,6 +107,24 @@ public class NFeTxtConverterTest
     }
 
     /// <summary>
+    /// Deve gerar pMVAST zerado no ICMSSN900 quando a modalidade de cálculo ST utiliza margem de valor agregado.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarMargemValorAdicionadoStZeradaQuandoModalidadeForMva()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("NFe_ReformaTributaria_1_prod-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var icms = xml.SelectSingleNode("//*[local-name()='ICMSSN900']");
+        Assert.NotNull(icms);
+        Assert.Equal("4", icms.SelectSingleNode("*[local-name()='modBCST']")?.InnerText);
+        Assert.Equal("0.0000", icms.SelectSingleNode("*[local-name()='pMVAST']")?.InnerText);
+    }
+
+    /// <summary>
     /// Deve preservar nas descrições de produto a representação textual de aspas produzida pelo conversor legado.
     /// </summary>
     [Fact]
@@ -347,7 +365,7 @@ public class NFeTxtConverterTest
     [InlineData("0000042301054300027600113072026-NFE.txt", "174dc230d9d4174df3e7a3ef14b4d25f1173ac4138812b88c3003b2d0a5b8bd6")]
     [InlineData("CST_SEM_CLASSTRIB_SEM_NotaCredito03Retorno_SemImpostoIBSCBS.txt", "7bcbe40ef98b8e84d5687f028953f18a4b7f18525b3f3eece1a64538092fa8cd")]
     [InlineData("NFE_Devolucao_00003.txt", "a927e05abdf374845b43837cfe6f3360c7a07fb312c4be22d994a864fe23b21c")]
-    [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt", "38cee09f3cc745732c31b0557f56218a6492b412d5c1e25a31e9acc8b8e70e40")]
+    [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt", "d0cd1dc2a69bbf8f4f72f0130a7f993e4e44bcccd8f6e737994b34f2c36ac678")]
     [InlineData("NFe_ReformaTributaria_3_prods-nfe.txt", "e8214766f92cd58e33d430499bd22024c7edacc2c4b72c288307605f31d7f61f")]
     [InlineData("NFe_Reforma_Tributaria-nfe.txt", "9e4bfde2755564884af7d5fda2a4526cae24ee1b9732a677087c3fa20f3e1dfe")]
     [InlineData("NFe_Reforma_Tributaria_Monofasica-nfe.txt", "7d0689545b29cde304678e9b4b232bac9330ebd64e57be5abcc7041cb85f6928")]
