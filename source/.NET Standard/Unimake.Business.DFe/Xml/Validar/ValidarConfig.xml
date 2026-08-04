@@ -10087,7 +10087,7 @@
       <Servico tagRaiz="EnviarLoteRpsEnvio" versao="1.00" tagIdentificadora="LoteRps">
         <Descricao>Recepcionar Lote RPS</Descricao>
         <TipoServico>NFSeRecepcionarLoteRps</TipoServico>
-        <SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
+        <SchemaArquivo>nfse_salvador_rtc.xsd</SchemaArquivo>
         <TagAssinatura>Rps</TagAssinatura>
         <TagAtributoID>InfRps</TagAtributoID>
         <TagVersao></TagVersao>
@@ -10100,7 +10100,7 @@
       <Servico tagRaiz="ConsultarSituacaoLoteRpsEnvio" versao="1.00" tagIdentificadora="Prestador">
         <Descricao>Consultar Situação Lote Rps</Descricao>
         <TipoServico>NFSeConsultarSituacaoLoteRps</TipoServico>
-        <SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
+        <SchemaArquivo>nfse_salvador_rtc.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
         <TagLoteAssinatura></TagLoteAssinatura>
@@ -10112,7 +10112,7 @@
       <Servico tagRaiz="ConsultarLoteRpsEnvio" versao="1.00" tagIdentificadora="Protocolo">
         <Descricao>Consulta lote RPS</Descricao>
         <TipoServico>NFSeConsultarLoteRps</TipoServico>
-        <SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
+        <SchemaArquivo>nfse_salvador_rtc.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
         <TagVersao></TagVersao>
@@ -10125,7 +10125,7 @@
       <Servico tagRaiz="ConsultarNfseRpsEnvio" versao="1.00" tagIdentificadora="IdentificacaoRps">
         <Descricao>Consulta NFSe por RPS</Descricao>
         <TipoServico>NFSeConsultarNfsePorRps</TipoServico>
-        <SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
+        <SchemaArquivo>nfse_salvador_rtc.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
         <TagVersao></TagVersao>
@@ -10138,7 +10138,7 @@
       <Servico tagRaiz="ConsultarNfseEnvio" versao="1.00" tagIdentificadora="PeriodoEmissao">
         <Descricao>Consultar NFSe</Descricao>
         <TipoServico>NFSeConsultarNfse</TipoServico>
-        <SchemaArquivo>nfse_salvador.xsd</SchemaArquivo>
+        <SchemaArquivo>nfse_salvador_rtc.xsd</SchemaArquivo>
         <TagAssinatura></TagAssinatura>
         <TagAtributoID></TagAtributoID>
         <TagVersao></TagVersao>
