@@ -233,16 +233,16 @@ namespace Unimake.DFe.Test.CTeSimp.Servicos
                         },
                         Email = "email@gmail.com"
                     },
-                    InfCarga = new Business.DFe.Xml.CTe.InfCarga
+                    InfCarga = new Business.DFe.Xml.CTeSimp.InfCarga
                     {
                         VCarga = 1.00,
                         ProPred = "proPred1",
                         XOutCat = "xOutCat1",
-                        InfQ = new List<Business.DFe.Xml.CTe.InfQ>
+                        InfQ = new List<Business.DFe.Xml.CTeSimp.InfQ>
                         {
-                            new Business.DFe.Xml.CTe.InfQ { CUnid = CodigoUnidadeMedidaCTe.KG, TpMed = "00", QCarga = 1.0000 },
-                            new Business.DFe.Xml.CTe.InfQ { CUnid = CodigoUnidadeMedidaCTe.KG, TpMed = "01", QCarga = 2.0000 },
-                            new Business.DFe.Xml.CTe.InfQ { CUnid = CodigoUnidadeMedidaCTe.KG, TpMed = "02", QCarga = 3.0000 }
+                            new Business.DFe.Xml.CTeSimp.InfQ { CUnid = CodigoUnidadeMedidaCTe.KG, TpMed = TipoMedidaCTeSimplificado.CubagemNFe, QCarga = 1.0000 },
+                            new Business.DFe.Xml.CTeSimp.InfQ { CUnid = CodigoUnidadeMedidaCTe.KG, TpMed = TipoMedidaCTeSimplificado.CubagemAferidaTransportador, QCarga = 2.0000 },
+                            new Business.DFe.Xml.CTeSimp.InfQ { CUnid = CodigoUnidadeMedidaCTe.KG, TpMed = TipoMedidaCTeSimplificado.PesoBrutoNFe, QCarga = 3.0000 }
                         },
                         VCargaAverb = 1.00
                     },

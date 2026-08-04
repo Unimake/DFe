@@ -43,6 +43,7 @@
       <gCompraGov>
         <tpEnteGov>1</tpEnteGov>
         <pRedutor>1.0000</pRedutor>
+        <tpOperGov>1</tpOperGov>
       </gCompraGov>
     </ide>
     <compl>

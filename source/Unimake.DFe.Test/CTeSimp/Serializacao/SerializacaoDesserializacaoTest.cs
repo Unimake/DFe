@@ -46,6 +46,9 @@ namespace Unimake.DFe.Test.CTeSimp.Serializacao
             var xml = new Business.DFe.Xml.CTeSimp.CTeSimp();
             xml = xml.LerXML<Business.DFe.Xml.CTeSimp.CTeSimp>(doc);
 
+            Assert.Equal(TipoMedidaCTeSimplificado.CubagemNFe, xml.InfCTe.InfCarga.InfQ[0].TpMed);
+            Assert.Equal(TipoMedidaCTeSimplificado.CubagemAferidaTransportador, xml.InfCTe.InfCarga.InfQ[1].TpMed);
+            Assert.Equal(TipoMedidaCTeSimplificado.PesoBrutoNFe, xml.InfCTe.InfCarga.InfQ[2].TpMed);
             Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 

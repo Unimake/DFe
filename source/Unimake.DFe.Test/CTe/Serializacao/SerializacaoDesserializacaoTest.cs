@@ -94,6 +94,55 @@ namespace Unimake.DFe.Test.CTe.Serializacao
         }
 
         /// <summary>
+        /// Testar a serialização e desserialização do grupo de compras governamentais.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "CTe")]
+        public void SerializacaoDesserializacaoCTeGCompraGov()
+        {
+            const string arqXML = @"..\..\..\CTe\Resources\4_00_CTe_ModalRodoviario.xml";
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTe.CTe>(doc);
+            var gCompraGov = xml.InfCTe.Ide.GCompraGov;
+
+            Assert.Equal(TipoEnteGovernamental.Uniao, gCompraGov.TpEnteGov);
+            Assert.Equal(1d, gCompraGov.PRedutor);
+            Assert.Equal(TipoOperacaoEnteGovernamental.FornecimentoPagamentoJaRealizado, gCompraGov.TpOperGov);
+            Assert.Equal(2, gCompraGov.RefDFeAnt.Count);
+            Assert.Equal("99999999999999999999999999999999999999999999", gCompraGov.RefDFeAnt[0]);
+            Assert.Equal("88888888888888888888888888888888888888888888", gCompraGov.RefDFeAnt[1]);
+            Assert.Equal(IndicadorDoacao.OperacaoDoacao, xml.InfCTe.Imp.IBSCBS.IndDoacao);
+            Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização e desserialização da assinatura do Provedor de Assinatura e Autorização.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "CTe")]
+        public void SerializacaoDesserializacaoCTeInfPAA()
+        {
+            const string arqXML = @"..\..\..\CTe\Resources\4_00_CTe_ModalRodoviario.xml";
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTe.CTe>(doc);
+            var infPAA = xml.InfCTe.InfPAA;
+
+            Assert.Equal("00000000000000", infPAA.CNPJPAA);
+            Assert.Equal(new byte[] { 1, 2, 3, 4 }, infPAA.PAASignature.SignatureValue);
+            Assert.Equal(new byte[] { 1, 2, 3 }, infPAA.PAASignature.RSAKeyValue.Modulus);
+            Assert.Equal(new byte[] { 1, 0, 1 }, infPAA.PAASignature.RSAKeyValue.Exponent);
+            Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
         /// Testar a serialização e desserialização do XML CteProc
         /// </summary>
         /// <param name="arqXML">Arquivo a ser desserializado</param>

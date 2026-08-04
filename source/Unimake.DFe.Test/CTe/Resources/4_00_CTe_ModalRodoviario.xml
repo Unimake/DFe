@@ -40,6 +40,9 @@
       <gCompraGov>
         <tpEnteGov>1</tpEnteGov>
         <pRedutor>1.0000</pRedutor>
+        <tpOperGov>3</tpOperGov>
+        <refDFeAnt>99999999999999999999999999999999999999999999</refDFeAnt>
+        <refDFeAnt>88888888888888888888888888888888888888888888</refDFeAnt>
       </gCompraGov>
     </ide>
     <compl>
@@ -785,5 +788,15 @@
     <infSolicNFF>
       <xSolic>xSolic1</xSolic>
     </infSolicNFF>
+    <infPAA>
+      <CNPJPAA>00000000000000</CNPJPAA>
+      <PAASignature>
+        <SignatureValue>AQIDBA==</SignatureValue>
+        <RSAKeyValue>
+          <Modulus>AQID</Modulus>
+          <Exponent>AQAB</Exponent>
+        </RSAKeyValue>
+      </PAASignature>
+    </infPAA>
   </infCte>
 </CTe>
