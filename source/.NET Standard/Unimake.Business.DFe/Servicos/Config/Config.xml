@@ -2117,4 +2117,10 @@
 		<ArqConfig>MauaSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4323002">
+		<Nome>Viamão - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>ViamaoRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
