@@ -12,6 +12,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         internal static void Ajustar(XmlDocument documento, List<Vol> volumes)
         {
             ReposicionarInformacoesAdicionaisDosItens(documento);
+            PreservarAspasDeDescricoesDeProdutoComoLegado(documento);
             RemoverNegativos(documento, "//*[local-name()='gIBSCBS']/*[local-name()='vIBS']");
             RemoverNegativos(documento, "//*[local-name()='cobr']/*[local-name()='fat']/*[local-name()='vDesc']");
             RemoverElementos(documento, "//*[local-name()='imposto']/*[local-name()='IPI' and not(*[local-name()='IPINT']/*[local-name()='CST']) and not(*[local-name()='IPITrib']/*[local-name()='CST'])]");
@@ -33,6 +34,17 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 {
                     detalhe.RemoveChild(informacaoAdicional);
                     detalhe.InsertAfter(informacaoAdicional, elementoAnterior);
+                }
+            }
+        }
+
+        private static void PreservarAspasDeDescricoesDeProdutoComoLegado(XmlDocument documento)
+        {
+            foreach (XmlElement descricao in documento.SelectNodes("//*[local-name()='det']/*[local-name()='prod']/*[local-name()='xProd']"))
+            {
+                if (descricao.InnerText.IndexOf('"') >= 0)
+                {
+                    descricao.InnerText = descricao.InnerText.Replace("\"", "&quot;");
                 }
             }
         }

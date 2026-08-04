@@ -45,6 +45,8 @@ public class NFeTxtConverterTest
     [InlineData("046481_01391063000189_0_03_08_2026-nfe-orig.txt")]
     [InlineData("Nota_Fiscal_20265.txt")]
     [InlineData("20819_22716895000289_1_382026-nfe.txt")]
+    [InlineData("2140_01955703000136_4_8_2026-nfe-orig.txt")]
+    [InlineData("000071619_37870375000112_001_03_08_2026-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -85,6 +87,81 @@ public class NFeTxtConverterTest
         Assert.Null(fatura.SelectSingleNode("*[local-name()='vDesc']"));
         Assert.Equal("13961.12", fatura.SelectSingleNode("*[local-name()='vOrig']")?.InnerText);
         Assert.Equal("13961.12", fatura.SelectSingleNode("*[local-name()='vLiq']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve omitir pMVAST do ICMSSN900 quando o campo opcional correspondente estiver vazio no segmento N10h.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveOmitirMargemValorAdicionadoStVaziaDoIcmsSn900()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("2140_01955703000136_4_8_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var grupos = xml.SelectNodes("//*[local-name()='ICMSSN900']");
+        Assert.Equal(149, grupos.Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='ICMSSN900']/*[local-name()='pMVAST']").Count);
+    }
+
+    /// <summary>
+    /// Deve preservar nas descrições de produto a representação textual de aspas produzida pelo conversor legado.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarAspasDasDescricoesComoLegado()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("2140_01955703000136_4_8_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var descricoesComAspas = xml.SelectNodes("//*[local-name()='xProd'][contains(text(), '&quot;')]");
+        Assert.Equal(4, descricoesComAspas.Count);
+        Assert.Equal("BRIDAO DE FERRO MODELO &quot;D&quot; SIMPLES", descricoesComAspas[0].InnerText);
+    }
+
+    /// <summary>
+    /// Deve omitir os subgrupos opcionais de ST e desoneração do ICMS90 quando todos os respectivos valores estiverem zerados.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveOmitirGruposZeradosDoIcms90()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000071619_37870375000112_001_03_08_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var icms90 = xml.SelectSingleNode("//*[local-name()='ICMS90']");
+        Assert.NotNull(icms90);
+        Assert.Equal(6, icms90.ChildNodes.Count);
+        Assert.Null(icms90.SelectSingleNode("*[local-name()='modBCST']"));
+        Assert.Null(icms90.SelectSingleNode("*[local-name()='vICMSDeson']"));
+        Assert.Equal("11.15", xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='prod']/*[local-name()='vOutro']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve usar PISOutr e COFINSOutr quando Q02 e S02 informarem CST 49, preservando base, alíquota e valor.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveSelecionarPisECofinsOutrosPeloCstDosSegmentosDeAliquota()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000071619_37870375000112_001_03_08_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("49", xml.SelectSingleNode("//*[local-name()='PISOutr']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("167.72", xml.SelectSingleNode("//*[local-name()='PISOutr']/*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("1.6500", xml.SelectSingleNode("//*[local-name()='PISOutr']/*[local-name()='pPIS']")?.InnerText);
+        Assert.Equal("2.77", xml.SelectSingleNode("//*[local-name()='PISOutr']/*[local-name()='vPIS']")?.InnerText);
+        Assert.Equal("49", xml.SelectSingleNode("//*[local-name()='COFINSOutr']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("7.6000", xml.SelectSingleNode("//*[local-name()='COFINSOutr']/*[local-name()='pCOFINS']")?.InnerText);
+        Assert.Equal("12.75", xml.SelectSingleNode("//*[local-name()='COFINSOutr']/*[local-name()='vCOFINS']")?.InnerText);
     }
 
     /// <summary>
@@ -270,7 +347,7 @@ public class NFeTxtConverterTest
     [InlineData("0000042301054300027600113072026-NFE.txt", "174dc230d9d4174df3e7a3ef14b4d25f1173ac4138812b88c3003b2d0a5b8bd6")]
     [InlineData("CST_SEM_CLASSTRIB_SEM_NotaCredito03Retorno_SemImpostoIBSCBS.txt", "7bcbe40ef98b8e84d5687f028953f18a4b7f18525b3f3eece1a64538092fa8cd")]
     [InlineData("NFE_Devolucao_00003.txt", "a927e05abdf374845b43837cfe6f3360c7a07fb312c4be22d994a864fe23b21c")]
-    [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt", "d0cd1dc2a69bbf8f4f72f0130a7f993e4e44bcccd8f6e737994b34f2c36ac678")]
+    [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt", "38cee09f3cc745732c31b0557f56218a6492b412d5c1e25a31e9acc8b8e70e40")]
     [InlineData("NFe_ReformaTributaria_3_prods-nfe.txt", "e8214766f92cd58e33d430499bd22024c7edacc2c4b72c288307605f31d7f61f")]
     [InlineData("NFe_Reforma_Tributaria-nfe.txt", "9e4bfde2755564884af7d5fda2a4526cae24ee1b9732a677087c3fa20f3e1dfe")]
     [InlineData("NFe_Reforma_Tributaria_Monofasica-nfe.txt", "7d0689545b29cde304678e9b4b232bac9330ebd64e57be5abcc7041cb85f6928")]
@@ -858,7 +935,28 @@ public class NFeTxtConverterTest
             "M-126863",
             "134004",
             "0042882644996",
-            "0618231258819"
+            "0618231258819",
+            "Conquista Industria de Artigos Para Selaria",
+            "CONQUISTA IND. DE ART. P/SELARIA",
+            "Rua Ezidio Balladelli",
+            "RUA EZIDIO BALADELLI",
+            "DEOCLECIO ALVES DE ARAUJO",
+            "RUA MEN DE SA",
+            "59623500904",
+            "9013566450",
+            "0443351392",
+            "CENTERKASA COMERCIAL LTDA",
+            "NOVA ROCHA IND TINTAS LTDA",
+            "devolucoes@leinertex.com.br",
+            "AV ANAPOLIS",
+            "AV JATAI",
+            "VILA CONCORDIA",
+            "PQ IND AP VICE P JOSE ALENCAR",
+            "102575584",
+            "103120939",
+            "6232081448",
+            "6232750800",
+            "420396)"
         };
 
         var pasta = Path.GetDirectoryName(CaminhoArquivo("novaVersao-nfe.txt"));
