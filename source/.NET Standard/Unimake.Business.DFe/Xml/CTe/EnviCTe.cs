@@ -742,6 +742,9 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class GCompraGov
     {
+        /// <summary>
+        /// Tipo de ente governamental
+        /// </summary>
         [XmlElement("tpEnteGov")]
         public TipoEnteGovernamental TpEnteGov { get; set; }
 
@@ -759,8 +762,63 @@ namespace Unimake.Business.DFe.Xml.CTe
         {
             get => PRedutor.ToString("F4", CultureInfo.InvariantCulture);
             set => PRedutor = Converter.ToDouble(value);
-
         }
+
+        /// <summary>
+        /// Tipo da operação com ente governamental
+        /// </summary>
+        [XmlElement("tpOperGov")]
+        public TipoOperacaoEnteGovernamental TpOperGov { get; set; }
+
+        /// <summary>
+        /// Chave de acesso do documento fiscal anterior
+        /// </summary>
+        [XmlElement("refDFeAnt")]
+        public List<string> RefDFeAnt { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddRefDFeAnt(string item)
+        {
+            if (RefDFeAnt == null)
+            {
+                RefDFeAnt = new List<string>();
+            }
+
+            RefDFeAnt.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista RefDFeAnt (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da RefDFeAnt</returns>
+        public string GetRefDFeAnt(int index)
+        {
+            if ((RefDFeAnt?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return RefDFeAnt[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista RefDFeAnt
+        /// </summary>
+        public int GetRefDFeAntCount => (RefDFeAnt != null ? RefDFeAnt.Count : 0);
+
+#endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeRefDFeAnt() => RefDFeAnt?.Count > 0;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -7829,7 +7887,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// Indica a natureza da operação de doação, orientando a apuração e a geração de débitos ou estornos conforme o cenário
         /// </summary>
         [XmlElement("indDoacao")]
-        public int IndDoacao { get; set; }
+        public IndicadorDoacao IndDoacao { get; set; }
 
         /// <summary>
         /// Grupo de Informações específicas do IBS e da CBS
@@ -7845,7 +7903,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeIndDoacao() => IndDoacao == 1;
+        public bool ShouldSerializeIndDoacao() => IndDoacao == IndicadorDoacao.OperacaoDoacao;
 
         #endregion
     }

@@ -80,7 +80,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         public Toma Toma { get; set; }
 
         [XmlElement("infCarga")]
-        public CTe.InfCarga InfCarga { get; set; }
+        public InfCarga InfCarga { get; set; }
 
         [XmlElement("det")]
         public List<Det> Det { get; set; }
@@ -1106,5 +1106,161 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         public bool ShouldSerializeInfAdFisco() => !string.IsNullOrWhiteSpace(InfAdFisco);
 
         #endregion
+    }
+
+    /// <summary>
+    /// Informações da carga do CT-e Simplificado.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.InfCarga")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class InfCarga
+    {
+        /// <summary>
+        /// Valor total da carga.
+        /// </summary>
+        [XmlIgnore]
+        public double VCarga { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VCarga" para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCarga")]
+        public string VCargaField
+        {
+            get => VCarga.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCarga = Utility.Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Produto predominante.
+        /// </summary>
+        [XmlElement("proPred")]
+        public string ProPred { get; set; }
+
+        /// <summary>
+        /// Outras características da carga.
+        /// </summary>
+        [XmlElement("xOutCat")]
+        public string XOutCat { get; set; }
+
+        /// <summary>
+        /// Informações de quantidades da carga.
+        /// </summary>
+        [XmlElement("infQ")]
+        public List<InfQ> InfQ { get; set; }
+
+        /// <summary>
+        /// Valor da carga para efeito de averbação.
+        /// </summary>
+        [XmlIgnore]
+        public double VCargaAverb { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VCargaAverb" para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCargaAverb")]
+        public string VCargaAverbField
+        {
+            get => VCargaAverb.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCargaAverb = Utility.Converter.ToDouble(value);
+        }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento à lista de informações de quantidades da carga.
+        /// </summary>
+        /// <param name="infq">Elemento InfQ a ser adicionado.</param>
+        public void AddInfQ(InfQ infq)
+        {
+            if (InfQ == null)
+            {
+                InfQ = new List<InfQ>();
+            }
+
+            InfQ.Add(infq);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfQ (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista).
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero)).</param>
+        /// <returns>Conteúdo do índice passado por parâmetro da InfQ.</returns>
+        public InfQ GetInfQ(int index)
+        {
+            if ((InfQ?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return InfQ[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfQ.
+        /// </summary>
+        public int GetInfQCount => (InfQ != null ? InfQ.Count : 0);
+
+#endif
+
+        #region ShouldSerialize
+
+        /// <summary>
+        /// Verifica se a propriedade XOutCat deve ser serializada.
+        /// </summary>
+        public bool ShouldSerializeXOutCat() => !string.IsNullOrWhiteSpace(XOutCat);
+
+        /// <summary>
+        /// Verifica se a propriedade VCargaAverbField deve ser serializada.
+        /// </summary>
+        public bool ShouldSerializeVCargaAverbField() => VCargaAverb > 0;
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Informações de quantidades da carga do CT-e Simplificado.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.InfQ")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class InfQ
+    {
+        /// <summary>
+        /// Código da unidade de medida.
+        /// </summary>
+        [XmlElement("cUnid")]
+        public CodigoUnidadeMedidaCTe CUnid { get; set; }
+
+        /// <summary>
+        /// Tipo da medida.
+        /// </summary>
+        [XmlElement("tpMed")]
+        public TipoMedidaCTeSimplificado TpMed { get; set; }
+
+        /// <summary>
+        /// Quantidade da carga.
+        /// </summary>
+        [XmlIgnore]
+        public double QCarga { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "QCarga" para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("qCarga")]
+        public string QCargaField
+        {
+            get => QCarga.ToString("F4", CultureInfo.InvariantCulture);
+            set => QCarga = Utility.Converter.ToDouble(value);
+        }
     }
 }

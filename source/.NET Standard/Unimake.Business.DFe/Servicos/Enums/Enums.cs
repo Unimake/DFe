@@ -5343,6 +5343,134 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region TipoMedidaCTeSimplificado
+
+    /// <summary>
+    /// Tipo da medida da carga do CT-e Simplificado
+    /// </summary>
+    public enum TipoMedidaCTeSimplificado
+    {
+        /// <summary>
+        /// 00 - Cubagem da NF-e
+        /// </summary>
+        [XmlEnum("00")]
+        CubagemNFe = 0,
+
+        /// <summary>
+        /// 01 - Cubagem aferida pelo transportador
+        /// </summary>
+        [XmlEnum("01")]
+        CubagemAferidaTransportador = 1,
+
+        /// <summary>
+        /// 02 - Peso bruto da NF-e
+        /// </summary>
+        [XmlEnum("02")]
+        PesoBrutoNFe = 2,
+
+        /// <summary>
+        /// 03 - Peso bruto aferido pelo transportador
+        /// </summary>
+        [XmlEnum("03")]
+        PesoBrutoAferidoTransportador = 3,
+
+        /// <summary>
+        /// 04 - Peso cubado
+        /// </summary>
+        [XmlEnum("04")]
+        PesoCubado = 4,
+
+        /// <summary>
+        /// 05 - Peso base do cálculo do frete
+        /// </summary>
+        [XmlEnum("05")]
+        PesoBaseCalculoFrete = 5,
+
+        /// <summary>
+        /// 06 - Peso para uso operacional
+        /// </summary>
+        [XmlEnum("06")]
+        PesoUsoOperacional = 6,
+
+        /// <summary>
+        /// 07 - Caixas
+        /// </summary>
+        [XmlEnum("07")]
+        Caixas = 7,
+
+        /// <summary>
+        /// 08 - Paletes
+        /// </summary>
+        [XmlEnum("08")]
+        Paletes = 8,
+
+        /// <summary>
+        /// 09 - Sacas
+        /// </summary>
+        [XmlEnum("09")]
+        Sacas = 9,
+
+        /// <summary>
+        /// 10 - Containers
+        /// </summary>
+        [XmlEnum("10")]
+        Containers = 10,
+
+        /// <summary>
+        /// 11 - Rolos
+        /// </summary>
+        [XmlEnum("11")]
+        Rolos = 11,
+
+        /// <summary>
+        /// 12 - Bombonas
+        /// </summary>
+        [XmlEnum("12")]
+        Bombonas = 12,
+
+        /// <summary>
+        /// 13 - Latas
+        /// </summary>
+        [XmlEnum("13")]
+        Latas = 13,
+
+        /// <summary>
+        /// 14 - Litragem
+        /// </summary>
+        [XmlEnum("14")]
+        Litragem = 14,
+
+        /// <summary>
+        /// 15 - Milhão de BTU (British Thermal Units)
+        /// </summary>
+        [XmlEnum("15")]
+        MilhaoBTU = 15,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99
+    }
+
+    #endregion TipoMedidaCTeSimplificado
+
+    #region IndicadorDesacordoOperacaoCTe
+
+    /// <summary>
+    /// Indicador de desacordo na operação do CT-e
+    /// </summary>
+    public enum IndicadorDesacordoOperacaoCTe
+    {
+        /// <summary>
+        /// 1 - Operação em desacordo
+        /// </summary>
+        [XmlEnum("1")]
+        OperacaoEmDesacordo = 1
+    }
+
+    #endregion IndicadorDesacordoOperacaoCTe
+
     #region TipoPrestacaoCTe
 
     /// <summary>

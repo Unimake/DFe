@@ -212,8 +212,18 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <summary>
         /// Indicador de Desacordo na Operação.
         /// </summary>
+        [XmlIgnore]
+        public IndicadorDesacordoOperacaoCTe IndDesacordoOper { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "IndDesacordoOper" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("indDesacordoOper", Order = 1)]
-        public string IndDesacordoOper { get; set; }
+        public string IndDesacordoOperField
+        {
+            get => ((int)IndDesacordoOper).ToString();
+            set => IndDesacordoOper = (IndicadorDesacordoOperacaoCTe)Convert.ToInt32(value);
+        }
 
         /// <summary>
         /// Observações.
@@ -232,7 +242,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             writer.WriteRaw($@"
                 <evPrestDesacordo>
                 <descEvento>{DescEvento}</descEvento>
-                <indDesacordoOper>{IndDesacordoOper}</indDesacordoOper>
+                <indDesacordoOper>{(int)IndDesacordoOper}</indDesacordoOper>
                 <xObs>{XObs}</xObs>
                 </evPrestDesacordo>");
         }
@@ -1643,6 +1653,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             "UFIni",
             "UFFim",
             "TpCTe",
+            "IndDesacordoOper",
             "DhEmi",
             "DhPass",
             "DhRecbto"
