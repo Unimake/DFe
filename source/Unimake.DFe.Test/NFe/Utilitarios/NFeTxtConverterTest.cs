@@ -44,6 +44,7 @@ public class NFeTxtConverterTest
     [InlineData("14222_43343052000335_1_31_7_2026-nfe-orig.txt")]
     [InlineData("046481_01391063000189_0_03_08_2026-nfe-orig.txt")]
     [InlineData("Nota_Fiscal_20265.txt")]
+    [InlineData("20819_22716895000289_1_382026-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -64,6 +65,26 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// Deve omitir o desconto da fatura quando o campo correspondente do segmento Y02 estiver vazio.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveOmitirDescontoVazioDaFatura()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("20819_22716895000289_1_382026-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var documento = Assert.Single(resultado.Documentos);
+        var xml = new XmlDocument();
+        xml.LoadXml(documento.Xml);
+
+        var fatura = xml.SelectSingleNode("//*[local-name()='cobr']/*[local-name()='fat']");
+        Assert.NotNull(fatura);
+        Assert.Null(fatura.SelectSingleNode("*[local-name()='vDesc']"));
+        Assert.Equal("13961.12", fatura.SelectSingleNode("*[local-name()='vOrig']")?.InnerText);
+        Assert.Equal("13961.12", fatura.SelectSingleNode("*[local-name()='vLiq']")?.InnerText);
     }
 
     /// <summary>
@@ -826,7 +847,18 @@ public class NFeTxtConverterTest
             "GMN EMBALAGENS LTDA",
             "RUA DOMICIANO MARTINS DE ANDRADE",
             "RUA DR MILTON LADEIRA",
-            "3232258011"
+            "3232258011",
+            "J.A. HARD NUTRITION",
+            "PEDRO HENRIQUE MELLO CASAGRANDE",
+            "materiaprimasuplementosfw@gmail.com",
+            "Rua Jambeiro",
+            "R 21 DE ABRIL",
+            "ATIVA DISTRIBUICAO E LOGISTICA LTDA",
+            "sac@underlabznutrition.com",
+            "M-126863",
+            "134004",
+            "0042882644996",
+            "0618231258819"
         };
 
         var pasta = Path.GetDirectoryName(CaminhoArquivo("novaVersao-nfe.txt"));
