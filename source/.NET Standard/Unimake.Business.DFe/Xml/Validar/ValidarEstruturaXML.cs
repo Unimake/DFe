@@ -1579,11 +1579,6 @@ namespace Unimake.Business.DFe
                         return "3.00";
                     }
 
-                    if (codigoMunicipio == 3170206)
-                    {
-                        return "2.04";
-                    }
-
                     if ((codigoMunicipio == 3549904 && Contem("ginfes")) ||
                         versaoDeclarada == "3.00")
                     {
