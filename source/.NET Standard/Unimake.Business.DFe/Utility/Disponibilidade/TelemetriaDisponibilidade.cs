@@ -556,7 +556,10 @@ namespace Unimake.Business.DFe.Utility
                 resultado.Status = estadosServicos.Any(x => x.Status == StatusDisponibilidade.Degradado)
                     ? StatusDisponibilidade.Degradado
                     : StatusDisponibilidade.Operacional;
-                resultado.OrigemProvavel = OrigemProvavelIndisponibilidade.Nenhuma;
+                resultado.OrigemProvavel = resultado.Status == StatusDisponibilidade.Degradado &&
+                    fiscais.Any(x => x.TipoFalha == TipoFalhaDisponibilidade.Timeout)
+                    ? OrigemProvavelIndisponibilidade.Indeterminada
+                    : OrigemProvavelIndisponibilidade.Nenhuma;
             }
             else
             {
@@ -601,7 +604,8 @@ namespace Unimake.Business.DFe.Utility
                 {
                     estado.Status = StatusDisponibilidade.Indisponivel;
                 }
-                else if (!ultimas.Skip(1).Any(x => x.Status == StatusDisponibilidade.Operacional))
+                else if (!infraestruturaSaudavel &&
+                    !ultimas.Skip(1).Any(x => x.Status == StatusDisponibilidade.Operacional))
                 {
                     estado.Status = StatusDisponibilidade.Inconclusivo;
                 }

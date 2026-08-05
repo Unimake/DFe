@@ -197,6 +197,11 @@ namespace Unimake.Business.DFe.Utility
                     var status = CacheStatusDisponibilidade.ObterOuExecutar(chave, contextoLocal,
                         TimeSpan.FromMinutes(opcoes.IntervaloMinimoStatusMinutos),
                         () => executorStatus(configuracaoStatus, endpoint));
+                    foreach (var anterior in CacheStatusDisponibilidade.ObterHistorico(chave, contextoLocal,
+                        TimeSpan.FromMinutes(opcoes.JanelaEvidenciaMinutos)))
+                    {
+                        resultado.Sondas.Add(anterior);
+                    }
                     if (status.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido)
                     {
                         CacheStatusDisponibilidade.BloquearContexto(configuracaoStatus, status.DataHora.AddHours(1));
@@ -875,6 +880,18 @@ namespace Unimake.Business.DFe.Utility
     {
         /// <summary>Quantidade máxima de combinações de status mantidas.</summary>
         private const int MaximoEntradas = 256;
+        /// <summary>Quantidade máxima de resultados anteriores mantidos para correlacionar oscilações.</summary>
+        private const int MaximoHistoricoPorEntrada = 2;
+        /// <summary>Resultado anterior e contexto local em que a consulta foi realmente executada.</summary>
+        private sealed class AmostraHistorico
+        {
+            /// <summary>Sonda anterior, sem XML ou conteúdo fiscal.</summary>
+            public ResultadoSondaDisponibilidade Resultado;
+            /// <summary>Identidade irreversível do certificado, proxy e timeout usados.</summary>
+            public string ContextoLocal;
+            /// <summary>Indica se a evidência fiscal pode ser usada por outro contexto local.</summary>
+            public bool Compartilhavel;
+        }
         /// <summary>Dados de uma entrada do cache de status.</summary>
         private sealed class Entrada
         {
@@ -890,6 +907,8 @@ namespace Unimake.Business.DFe.Utility
             public string ContextoLocal;
             /// <summary>Indica se a sonda pode ser reutilizada por outros contextos.</summary>
             public bool ResultadoCompartilhavel;
+            /// <summary>Resultados anteriores usados para confirmar falhas sem criar chamadas extras.</summary>
+            public readonly List<AmostraHistorico> Historico = new List<AmostraHistorico>();
         }
 
         /// <summary>Lock do dicionário e dos bloqueios nacionais/estaduais.</summary>
@@ -983,6 +1002,19 @@ namespace Unimake.Business.DFe.Utility
                 }
 
                 var resultado = executar();
+                if (entrada.Resultado != null)
+                {
+                    entrada.Historico.Add(new AmostraHistorico
+                    {
+                        Resultado = ClassificadorDisponibilidade.Clonar(entrada.Resultado),
+                        ContextoLocal = entrada.ContextoLocal,
+                        Compartilhavel = entrada.ResultadoCompartilhavel
+                    });
+                    if (entrada.Historico.Count > MaximoHistoricoPorEntrada)
+                    {
+                        entrada.Historico.RemoveAt(0);
+                    }
+                }
                 entrada.DataHora = agora;
                 entrada.Resultado = ClassificadorDisponibilidade.Clonar(resultado);
                 entrada.ContextoLocal = contextoLocal;
@@ -992,6 +1024,44 @@ namespace Unimake.Business.DFe.Utility
                     entrada.BloqueadoAte = agora.AddHours(1);
                 }
                 return resultado;
+            }
+        }
+
+        /// <summary>Obtém resultados anteriores compatíveis, sem executar uma nova consulta fiscal.</summary>
+        /// <param name="chave">Identidade compartilhada do endpoint fiscal.</param>
+        /// <param name="contextoLocal">Identidade do certificado, proxy e timeout atuais.</param>
+        /// <param name="janela">Idade máxima das evidências que podem participar da correlação.</param>
+        /// <returns>Até dois resultados anteriores, clonados e marcados como provenientes do cache.</returns>
+        internal static IList<ResultadoSondaDisponibilidade> ObterHistorico(string chave, string contextoLocal,
+            TimeSpan janela)
+        {
+            Entrada entrada;
+            lock (CacheSync)
+            {
+                if (!Cache.TryGetValue(chave, out entrada))
+                {
+                    return new List<ResultadoSondaDisponibilidade>();
+                }
+            }
+
+            lock (entrada.SyncRoot)
+            {
+                var agora = RelogioDisponibilidade.Agora();
+                return entrada.Historico
+                    .Where(x => x.Resultado != null &&
+                        agora >= x.Resultado.DataHora &&
+                        agora - x.Resultado.DataHora <= janela &&
+                        (x.Compartilhavel || string.Equals(x.ContextoLocal, contextoLocal,
+                            StringComparison.Ordinal)))
+                    .Select(x =>
+                    {
+                        var historico = ClassificadorDisponibilidade.Clonar(x.Resultado);
+                        historico.DoCache = true;
+                        historico.IdadeSegundos = Math.Max(0,
+                            (long)(agora - historico.DataHora).TotalSeconds);
+                        return historico;
+                    })
+                    .ToList();
             }
         }
 

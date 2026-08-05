@@ -568,6 +568,60 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
+        public void ConsultaStatusCorrelacionaTimeoutsSemAumentarQuantidadeDeChamadas()
+        {
+            var agora = new DateTime(2026, 8, 5, 14, 0, 0);
+            RelogioDisponibilidade.Agora = () => agora;
+            using (var certificado = CriarCertificadoValido(agora))
+            {
+                var configuracao = ConfiguracaoBase();
+                configuracao.TipoDFe = TipoDFe.NFCe;
+                configuracao.CodigoUF = (int)UFBrasil.SP;
+                configuracao.TipoAmbiente = TipoAmbiente.Producao;
+                configuracao.CertificadoDigital = certificado;
+                var execucoesStatus = 0;
+                var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracao, null,
+                    new ExecutorInfraestruturaFake(), (configuracaoStatus, endpoint) =>
+                    {
+                        execucoesStatus++;
+                        return new ResultadoSondaDisponibilidade
+                        {
+                            Servico = "StatusServico",
+                            Endpoint = endpoint,
+                            Protocolo = "SOAP",
+                            Fonte = FonteEvidenciaDisponibilidade.StatusServico,
+                            DataHora = agora,
+                            Status = StatusDisponibilidade.Degradado,
+                            TipoFalha = TipoFalhaDisponibilidade.Timeout,
+                            Essencial = true
+                        };
+                    });
+
+                var primeira = diagnostico.ConsultarStatusServico();
+                agora = agora.AddMinutes(1);
+                var cache = diagnostico.ConsultarStatusServico();
+                agora = agora.AddMinutes(5);
+                var segundaExecucao = diagnostico.ConsultarStatusServico();
+
+                Assert.Equal(StatusDisponibilidade.Degradado, primeira.Status);
+                Assert.Equal(OrigemProvavelIndisponibilidade.Indeterminada, primeira.OrigemProvavel);
+                Assert.Equal("O serviço da SEFAZ não respondeu no tempo esperado. Uma nova medição é necessária para confirmar a indisponibilidade.",
+                    primeira.Descricao);
+                Assert.Equal(StatusDisponibilidade.Degradado, cache.Status);
+                Assert.Contains(cache.Sondas.Itens,
+                    x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico && x.DoCache);
+                Assert.Equal(StatusDisponibilidade.Indisponivel, segundaExecucao.Status);
+                Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal,
+                    segundaExecucao.OrigemProvavel);
+                Assert.Equal(2, segundaExecucao.Sondas.Itens.Count(
+                    x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
+                         x.TipoFalha == TipoFalhaDisponibilidade.Timeout));
+                Assert.Equal(2, execucoesStatus);
+            }
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
         public void CacheStatusCompartilhaErroNaoCatalogadoComoIndisponibilidadeFiscal()
         {
             var agora = new DateTime(2026, 7, 20, 10, 0, 0);
@@ -831,6 +885,21 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
+        public void TimeoutIsoladoComInfraestruturaSaudavelFicaDegradado()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(FalhaTimeout(1, true));
+            resultado.Sondas.Add(Infraestrutura(TipoFalhaDisponibilidade.Nenhuma,
+                StatusDisponibilidade.Operacional));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Degradado, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.Indeterminada, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
         public void TimeoutsComInfraestruturaSaudavelPodemIndicarSefaz()
         {
             var resultado = new ResultadoDiagnosticoDisponibilidade();
@@ -1023,6 +1092,52 @@ namespace Unimake.DFe.Test.Utility.Rede
             configuracao.CertificadoDigital = PropConfig.CertificadoDigital;
             var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ConsultarStatusServico();
             Assert.Contains(resultado.Sondas.Itens, x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico);
+        }
+
+        [Fact(Explicit = true, Timeout = 60000)]
+        [Trait("Utility", "DisponibilidadeIntegracao")]
+        public void ConsultaStatusNFCeSPProducao()
+        {
+            // Este teste é explícito porque acessa um serviço real. Ele não participa da suíte normal
+            // e nunca envia NFCe, evento, inutilização ou qualquer outro XML com efeito fiscal.
+            DiagnosticoDisponibilidadeDFe.LimparMemoriaDiagnostico();
+            var configuracao = ConfiguracaoBase();
+            configuracao.TipoDFe = TipoDFe.NFCe;
+            configuracao.CodigoUF = (int)UFBrasil.SP;
+            configuracao.TipoAmbiente = TipoAmbiente.Producao;
+            configuracao.SchemaVersao = "4.00";
+            configuracao.Servico = Servico.NFeStatusServico;
+            configuracao.CertificadoDigital = PropConfig.CertificadoDigital;
+
+            var opcoes = new ConfiguracaoDiagnosticoDisponibilidade
+            {
+                TimeoutMilissegundos = 10000,
+                LimiteLentidaoMilissegundos = 3000
+            };
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ConsultarStatusServico();
+
+            var saida = TestContext.Current.TestOutputHelper;
+            if (saida != null)
+            {
+                saida.WriteLine("Diagnóstico NFCe/SP em produção: {0} / {1}", resultado.Status,
+                    resultado.OrigemProvavel);
+                saida.WriteLine("Descrição: {0}", resultado.Descricao);
+                foreach (var sonda in resultado.Sondas.Itens)
+                {
+                    saida.WriteLine(
+                        "{0:O} | {1} | {2} | falha={3} | HTTP={4} | cStat={5} | {6} ms | cache={7} | endpoint={8} | motivo={9} | exceção={10}",
+                        sonda.DataHora, sonda.Servico, sonda.Status, sonda.TipoFalha,
+                        sonda.HttpStatusCode, sonda.CStat, sonda.DuracaoMilissegundos,
+                        sonda.DoCache, sonda.Endpoint, sonda.XMotivo, sonda.Excecao);
+                }
+            }
+
+            Assert.Equal(TipoDFe.NFCe, resultado.TipoDFe);
+            Assert.Equal(UFBrasil.SP, resultado.UFBrasil);
+            Assert.Equal(TipoAmbiente.Producao, resultado.TipoAmbiente);
+            Assert.Contains(resultado.Sondas.Itens,
+                x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
+                     x.Servico == "StatusServico");
         }
 
         private static Configuracao ConfiguracaoBase() => new Configuracao

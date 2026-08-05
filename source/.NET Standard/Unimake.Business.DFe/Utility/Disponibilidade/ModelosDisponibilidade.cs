@@ -347,6 +347,10 @@ namespace Unimake.Business.DFe.Utility
                     return "Os serviços da SEFAZ estão funcionando normalmente.";
 
                 case StatusDisponibilidade.Degradado:
+                    if (PossuiFalha(resultado, TipoFalhaDisponibilidade.Timeout))
+                    {
+                        return "O serviço da SEFAZ não respondeu no tempo esperado. Uma nova medição é necessária para confirmar a indisponibilidade.";
+                    }
                     return "Os serviços da SEFAZ estão respondendo, mas apresentam lentidão ou instabilidade.";
 
                 case StatusDisponibilidade.ParcialmenteIndisponivel:

@@ -63,10 +63,11 @@ NFe/NFCe, CTe e MDFe usam status principal antes de `protNFe`, `protCTe` ou `pro
 ## Evidências de transporte
 
 - DNS, conexão recusada, TLS, proxy, certificado e configuração indicam ambiente local.
-- Timeout isolado permanece inconclusivo sem infraestrutura local comprovadamente saudável.
+- Timeout isolado permanece inconclusivo sem infraestrutura local comprovadamente saudável; com DNS/TCP/TLS saudáveis, fica degradado e com origem indeterminada.
 - Dois timeouts recentes podem indicar indisponibilidade do endpoint somente com infraestrutura saudável.
 - HTTP 5xx indica resposta do host e deve ser correlacionado pelo mesmo serviço e endpoint.
 - SOAP fault, schema local, autenticação inválida e HTTP 4xx não provam indisponibilidade da SEFAZ.
+- O cache de `StatusServico` conserva no máximo duas execuções anteriores compatíveis para permitir essa correlação, sem reduzir o intervalo mínimo nem criar chamadas extras.
 
 ## Segurança e desempenho
 
