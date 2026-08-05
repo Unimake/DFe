@@ -47,6 +47,7 @@ public class NFeTxtConverterTest
     [InlineData("20819_22716895000289_1_382026-nfe.txt")]
     [InlineData("2140_01955703000136_4_8_2026-nfe-orig.txt")]
     [InlineData("000071619_37870375000112_001_03_08_2026-nfe-orig.txt")]
+    [InlineData("58_78789542000182_4_8_2026-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -235,6 +236,26 @@ public class NFeTxtConverterTest
         Assert.Equal("0", icms51.SelectSingleNode("*[local-name()='orig']")?.InnerText);
         Assert.Equal("51", icms51.SelectSingleNode("*[local-name()='CST']")?.InnerText);
         Assert.Equal("3", icms51.SelectSingleNode("*[local-name()='modBC']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve preservar pRedBC explicitamente zerado quando o ICMS51 contém valores de cálculo.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarReducaoZeradaDoIcms51ComValoresDeCalculo()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("58_78789542000182_4_8_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var grupos = xml.SelectNodes("//*[local-name()='ICMS51']");
+        Assert.Equal(30, grupos.Count);
+        foreach (XmlNode grupo in grupos)
+        {
+            Assert.Equal("0.0000", grupo.SelectSingleNode("*[local-name()='pRedBC']")?.InnerText);
+        }
     }
 
     /// <summary>
@@ -965,6 +986,19 @@ public class NFeTxtConverterTest
             "0443351392",
             "CENTERKASA COMERCIAL LTDA",
             "NOVA ROCHA IND TINTAS LTDA",
+            "CIARIN COMERCIO E INDUSTRIA DE ARTIGOS P/ SELARIA LTDA",
+            "CIARIN METAIS",
+            "AGROPECUARIA GALPAO DO BOIADEIRO LTDA EPP",
+            "SUDOESTE TRANSPORTES LTDA",
+            "RUA EZIDIO BALLADELLI",
+            "RUA SALDANHA MARINHO",
+            "RUA ALMERINDA SILVEIRA COELHO",
+            "8330316005",
+            "9012364374",
+            "01468972000178",
+            "02343801000851",
+            "4433513934",
+            "236235023",
             "devolucoes@leinertex.com.br",
             "AV ANAPOLIS",
             "AV JATAI",

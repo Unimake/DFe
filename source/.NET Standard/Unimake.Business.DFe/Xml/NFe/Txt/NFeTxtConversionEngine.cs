@@ -1902,7 +1902,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
                 CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
                 ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.ModBC)), ObOp.Opcional, 1, 1),
-                PRedBC = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.PRedBC)), ObOp.Opcional, this.CasasDecimais75),
+                PRedBC = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.PRedBC)), ObOp.Opcional, this.CasasDecimais75, true),
                 VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Opcional, 15),
                 PICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PICMS)), ObOp.Opcional, this.CasasDecimais75),
                 VICMSOp = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS51>(nameof(DFeNFe.ICMS51.VICMSOp)), ObOp.Opcional, 15),
@@ -1913,13 +1913,18 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PFCP)), ObOp.Obrigatorio, 15),
                 VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VFCP)), ObOp.Obrigatorio, 15)
             };
-            icms.PRedBC = ManterValorPositivo(icms.PRedBC);
+            var percentualReducao = icms.PRedBC;
             icms.VBC = ManterValorPositivo(icms.VBC);
             icms.PICMS = ManterValorPositivo(icms.PICMS);
             icms.VICMSOp = ManterValorPositivo(icms.VICMSOp);
             icms.PDif = ManterValorPositivo(icms.PDif);
             icms.VICMSDif = ManterValorPositivo(icms.VICMSDif);
             icms.VICMS = ManterValorPositivo(icms.VICMS);
+            icms.PRedBC = percentualReducao >= 0 &&
+                (icms.VBC.HasValue || icms.PICMS.HasValue || icms.VICMSOp.HasValue ||
+                 icms.PDif.HasValue || icms.VICMSDif.HasValue || icms.VICMS.HasValue)
+                ? percentualReducao
+                : null;
             if (lenPipesRegistro == 10 && !icms.VICMS.HasValue)
             {
                 icms.VICMS = ManterValorPositivo((icms.VICMSOp ?? 0) - (icms.VICMSDif ?? 0));
