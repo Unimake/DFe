@@ -127,6 +127,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<None Remove="Servicos\Config\EBoleto\AN.xml" />
 		<None Remove="Servicos\Config\EBoleto\Config.xml" />
+		<None Remove="Servicos\Config\NFSe\ViamaoRS.xml" />
 		<None Remove="Servicos\Config\PIX\AN.xml" />
 		<None Remove="Servicos\Config\PIX\Config.xml" />
 		<None Remove="Servicos\Config\UMessenger\AN.xml" />
@@ -1630,6 +1631,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\xmldsig-core-schema20020212-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SALVADOR_BA\nfse_salvador_rtc.xsd" />
