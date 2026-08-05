@@ -32,7 +32,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     layouts.Add("BA20", prefix + "BA20|mod|nECF|nCOO|");
                     layouts.Add("BB01", prefix + "BB01|tpEnteGov|pRedutor|tpOperGov|refDFeAnt|"); // ide->gCompraGov
                     layouts.Add("BB05", prefix + "BB05|refDFeAnt|"); // ide->gCompraGov->refDFeAnt
-                    layouts.Add("BC01", prefix + "BC01|refDFe|"); // ide->gPagAntecipado
+                    layouts.Add("BC01", prefix + "BC01|refNFe|"); // ide->gPagAntecipado
                     // "C"
                     layouts.Add("C", prefix + "C|xNome|xFant|IE|IEST|IM|CNAE|CRT|ISUFEmit|");
                     layouts.Add("C02", prefix + "C02|CNPJ|");

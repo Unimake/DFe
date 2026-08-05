@@ -1033,10 +1033,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     break;
 
                 case "BC01":
-                    //layout = BC01|refDFe|
+                    //layout = BC01|refNFe|
 
-                    if (identificacaoOficial.GPagAntecipado == null) identificacaoOficial.GPagAntecipado = new DFeNFe.GPagAntecipado { RefDFe = new List<string>() };
-                    identificacaoOficial.GPagAntecipado.RefDFe.Add(this.LerString(XmlTag<DFeNFe.GPagAntecipado>(nameof(DFeNFe.GPagAntecipado.RefDFe)), ObOp.Obrigatorio, 44, 44));
+                    if (identificacaoOficial.GPagAntecipado == null) identificacaoOficial.GPagAntecipado = new DFeNFe.GPagAntecipado { RefNFe = new List<string>() };
+                    identificacaoOficial.GPagAntecipado.RefNFe.Add(this.LerString(XmlTag<DFeNFe.GPagAntecipado>(nameof(DFeNFe.GPagAntecipado.RefNFe)), ObOp.Obrigatorio, 44, 44));
                     break;
             }
         }

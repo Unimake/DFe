@@ -830,8 +830,8 @@ public class NFeTxtConverterTest
         var xml = new XmlDocument();
         xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
 
-        Assert.Equal(3, xml.SelectNodes("//*[local-name()='gPagAntecipado']/*[local-name()='refDFe']").Count);
-        Assert.Null(xml.SelectSingleNode("//*[local-name()='gPagAntecipado']/*[local-name()='refNFe']"));
+        Assert.Equal(3, xml.SelectNodes("//*[local-name()='gPagAntecipado']/*[local-name()='refNFe']").Count);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='gPagAntecipado']/*[local-name()='refDFe']"));
         Assert.NotNull(xml.SelectSingleNode("//*[local-name()='IS']/*[local-name()='adRemIS']"));
         Assert.Null(xml.SelectSingleNode("//*[local-name()='IS']/*[local-name()='pISEspec']"));
 
