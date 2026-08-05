@@ -48,6 +48,7 @@ public class NFeTxtConverterTest
     [InlineData("2140_01955703000136_4_8_2026-nfe-orig.txt")]
     [InlineData("000071619_37870375000112_001_03_08_2026-nfe-orig.txt")]
     [InlineData("58_78789542000182_4_8_2026-nfe-orig.txt")]
+    [InlineData("000001_01_01_05_08_2026-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -450,6 +451,29 @@ public class NFeTxtConverterTest
 
         Assert.Equal(2, xml.SelectNodes("//*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMSSN102']").Count);
         Assert.Null(xml.SelectSingleNode("//*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMSSN101']"));
+    }
+
+    /// <summary>
+    /// Deve preservar a NFC-e em contingência com CSOSN 102 e tributos federais sem valores de cálculo.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarNfceEmContingenciaComTributosSemValores()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000001_01_01_05_08_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("65", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='mod']")?.InnerText);
+        Assert.Equal("6", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='tpEmis']")?.InnerText);
+        Assert.Equal("2026-08-05T13:00:00-03:00", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='dhCont']")?.InnerText);
+        Assert.Equal("SEFAZ SP FORA DO AR", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='xJust']")?.InnerText);
+        Assert.Equal("102", xml.SelectSingleNode("//*[local-name()='ICMSSN102']/*[local-name()='CSOSN']")?.InnerText);
+        Assert.Equal("99", xml.SelectSingleNode("//*[local-name()='PISOutr']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("99", xml.SelectSingleNode("//*[local-name()='COFINSOutr']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("232.30", xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='vItem']")?.InnerText);
+        Assert.Equal("232.30", xml.SelectSingleNode("//*[local-name()='total']/*[local-name()='vNFTot']")?.InnerText);
     }
 
     /// <summary>
