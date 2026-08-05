@@ -14969,10 +14969,10 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class GPagAntecipado
     {
         /// <summary>
-        /// Chave de acesso do documento fiscal de antecipação de pagamento
+        /// Chave de acesso da NF-e de antecipação de pagamento
         /// </summary>
-        [XmlElement("refDFe")]
-        public List<string> RefDFe { get; set; }
+        [XmlElement("refNFe")]
+        public List<string> RefNFe { get; set; }
 
 #if INTEROP
 
@@ -14980,40 +14980,35 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddRefDFe(string item)
+        public void AddRefNFe(string item)
         {
-            if (RefDFe == null)
+            if (RefNFe == null)
             {
-                RefDFe = new List<string>();
+                RefNFe = new List<string>();
             }
 
-            RefDFe.Add(item);
+            RefNFe.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista RefDFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista RefNFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da RefDFe</returns>
-        public string GetRefDFe(int index)
+        /// <returns>Conteúdo do index passado por parâmetro da RefNFe</returns>
+        public string GetRefNFe(int index)
         {
-            if ((RefDFe?.Count ?? 0) == 0)
+            if ((RefNFe?.Count ?? 0) == 0)
             {
                 return default;
             }
 
-            return RefDFe[index];
+            return RefNFe[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista RefNFe
         /// </summary>
-        public int GetRefNFeCount => GetRefDFeCount;
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista RefDFe
-        /// </summary>
-        public int GetRefDFeCount => (RefDFe != null ? RefDFe.Count : 0);
+        public int GetRefNFeCount => (RefNFe != null ? RefNFe.Count : 0);
 
 #endif
     }

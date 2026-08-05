@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe;
@@ -40,6 +41,50 @@ namespace Unimake.DFe.Test.NFe.Serializacao
 
 
             Assert.True(doc.InnerText == docGerado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização, desserialização e schema do grupo de pagamento antecipado
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFe")]
+        public void SerializacaoDesserializacaoGPagAntecipado()
+        {
+            var doc = new XmlDocument();
+            doc.Load(@"..\..\..\NFe\Resources\99999999999999999999999999999999999999999999-procNFe.xml");
+
+            var nfe = XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(doc.GetElementsByTagName("NFe")[0].OuterXml);
+            nfe.InfNFeField.Ide.GPagAntecipado = new GPagAntecipado
+            {
+                RefNFe = new List<string>
+                {
+                    "11170706117473000150550010000000011123456783",
+                    "11170706117473000150550010000000011123456783"
+                }
+            };
+
+            var enviNFe = new EnviNFe
+            {
+                Versao = "4.00",
+                IdLote = "000000000000001",
+                IndSinc = SimNao.Sim,
+                NFe = new List<Business.DFe.Xml.NFe.NFe> { nfe }
+            };
+            var docGerado = enviNFe.GerarXML();
+            const string namespaceNFe = "http://www.portalfiscal.inf.br/nfe";
+            var namespaceManager = new XmlNamespaceManager(docGerado.NameTable);
+            namespaceManager.AddNamespace("nfe", namespaceNFe);
+            docGerado.SelectSingleNode("//nfe:qrCode", namespaceManager).InnerText = "https://www.exemplo.gov.br/qrcode?p=41250899999999999900000000000000009000000000|3|2|01|0.00|1|12345678901|YWJjZA==";
+            var enviNFeDesserializada = new EnviNFe().LerXML<EnviNFe>(docGerado);
+
+            Assert.Equal(2, enviNFeDesserializada.NFe[0].InfNFeField.Ide.GPagAntecipado.RefNFe.Count);
+            Assert.Equal(2, docGerado.SelectNodes("//nfe:gPagAntecipado/nfe:refNFe", namespaceManager).Count);
+            Assert.Null(docGerado.SelectSingleNode("//nfe:gPagAntecipado/nfe:refDFe", namespaceManager));
+
+            var validar = new ValidarSchema();
+            validar.Validar(docGerado, "NFe.enviNFe_v4.00.xsd", namespaceNFe);
+
+            Assert.True(validar.Success, validar.ErrorMessage);
         }
 
         /// <summary>
