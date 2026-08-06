@@ -54,6 +54,7 @@ public class NFeTxtConverterTest
     [InlineData("060218_32336224000165_001_06_08_2026-nfe-orig.txt")]
     [InlineData("NT60860218.TXT")]
     [InlineData("27260821287558000170650010001143821778530846-nfe-orig.txt")]
+    [InlineData("nfe000077-NFE.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -188,6 +189,45 @@ public class NFeTxtConverterTest
         Assert.NotNull(icms51);
         Assert.Equal(2, icms51.ChildNodes.Count);
         Assert.Null(icms51.SelectSingleNode("*[local-name()='modBC']"));
+    }
+
+    /// <summary>
+    /// Deve limitar quantidades a quatro casas sem perder a precisão válida dos valores unitários.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveNormalizarCasasDecimaisDoProdutoComoLegado()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("31260803742159000170550020000003051000234068-NFE-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("22919.6000", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='qCom']")?.InnerText);
+        Assert.Equal("22919.6000", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='qTrib']")?.InnerText);
+        Assert.Equal("14.046314", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='vUnCom']")?.InnerText);
+        Assert.Equal("14.046314", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='vUnTrib']")?.InnerText);
+        Assert.Equal("321935.90", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='vProd']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve vincular o DFe referenciado ao item correspondente.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveManterDfeReferenciadoEmTodosOsItens()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("nfe000077-NFE.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var referencias = xml.SelectNodes("//*[local-name()='det']/*[local-name()='DFeReferenciado']");
+
+        Assert.Equal(3, referencias.Count);
+        Assert.Equal("35260796597620000129550010001408741335108850", referencias[0].SelectSingleNode("*[local-name()='chaveAcesso']")?.InnerText);
+        Assert.Equal("991", referencias[0].SelectSingleNode("*[local-name()='nItem']")?.InnerText);
+        Assert.Equal("25", referencias[1].SelectSingleNode("*[local-name()='nItem']")?.InnerText);
+        Assert.Equal("15", referencias[2].SelectSingleNode("*[local-name()='nItem']")?.InnerText);
     }
 
     /// <summary>
