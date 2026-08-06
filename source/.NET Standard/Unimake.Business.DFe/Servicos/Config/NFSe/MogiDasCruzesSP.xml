@@ -27,5 +27,61 @@
 			<SchemaVersao>1.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</CancelarNfse>
+		<!-- Eventos de consulta do padrão NACIONAL de versão 1.01 -->
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/nfse/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfse>
+		<ConsultarNfsePorRps versao="1.01">
+			<Descricao>Consultar NFSe por DPS</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/dps/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/dps/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>chaveAcesso</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+		</ConsultarNfsePorRps>
+		<ConsultarNfsePDF versao="1.01">
+			<Descricao>Consultar NFSe PDF</Descricao>
+			<RequestURIProducao>https://adn.nfse.gov.br/danfse/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/danfse/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/pdf</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfsePDF>
+		<ConsultarEvento versao="1.01">
+			<Descricao>Consultar Eventos Diversos da NFSe NACIONAL</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{chNFSe}/eventos/{tipoEvento}/{numSeqEvento}</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/API/SefinNacional/nfse/{chNFSe}/eventos/{tipoEvento}/{numSeqEvento}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarEvento>
 	</Servicos>
 </Configuracoes>
