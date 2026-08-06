@@ -24,7 +24,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (imposto != null)
             {
                 if (imposto.IPI != null && imposto.IPI.IPITrib == null && imposto.IPI.IPINT == null) imposto.IPI = null;
-                if (imposto.II != null && imposto.II.VBC + imposto.II.VDespAdu + imposto.II.VII + imposto.II.VIOF <= 0) imposto.II = null;
+                var possuiDeclaracaoImportacao = detalhe.Prod?.DI != null && detalhe.Prod.DI.Count > 0;
+                if (imposto.II != null && !possuiDeclaracaoImportacao && imposto.II.VBC + imposto.II.VDespAdu + imposto.II.VII + imposto.II.VIOF <= 0) imposto.II = null;
                 if (imposto.PIS != null && imposto.PIS.PISAliq == null && imposto.PIS.PISQtde == null && imposto.PIS.PISNT == null && imposto.PIS.PISOutr == null) imposto.PIS = null;
                 if (!TemPISST(imposto.PISST)) imposto.PISST = null;
                 if (imposto.COFINS != null && imposto.COFINS.COFINSAliq == null && imposto.COFINS.COFINSQtde == null && imposto.COFINS.COFINSNT == null && imposto.COFINS.COFINSOutr == null) imposto.COFINS = null;

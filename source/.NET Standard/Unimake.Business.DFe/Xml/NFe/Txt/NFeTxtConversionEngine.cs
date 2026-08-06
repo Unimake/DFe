@@ -1897,11 +1897,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarIcms51(int nProd, int lenPipesRegistro)
         {
+            var modalidadeBaseCalculo = this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.ModBC)), ObOp.Opcional, 1, 1);
             var icms = new DFeNFe.ICMS51
             {
                 Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
                 CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
-                ModBC = (ModalidadeBaseCalculoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.ModBC)), ObOp.Opcional, 1, 1),
+                ModBC = (ModalidadeBaseCalculoICMS)(modalidadeBaseCalculo > 0 ? modalidadeBaseCalculo : -1),
                 PRedBC = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.PRedBC)), ObOp.Opcional, this.CasasDecimais75, true),
                 VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Opcional, 15),
                 PICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PICMS)), ObOp.Opcional, this.CasasDecimais75),
@@ -2331,7 +2332,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             icms.PRedBC = reducao > 0 ? (double?)reducao : null;
             icms.PICMS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PICMS)), ObOp.Opcional, this.CasasDecimais75, true);
             icms.VICMS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VICMS)), ObOp.Opcional, 15, true);
-            icms.ModBCSTField = (ModalidadeBaseCalculoICMSST)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Opcional, 1, 1, true);
+            var modalidadeBaseCalculoSt = this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.ModBCST)), ObOp.Opcional, 1, 1, true);
+            icms.ModBCSTField = (ModalidadeBaseCalculoICMSST)(modalidadeBaseCalculoSt == 100 ? -1 : modalidadeBaseCalculoSt);
             var margemValorAdicionadoSt = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PMVAST)), ObOp.Opcional, this.CasasDecimais75, true);
             icms.PMVAST = margemValorAdicionadoSt < 0 && icms.ModBCSTField != ModalidadeBaseCalculoICMSST.MargemValorAgregado
                 ? (double?)null
@@ -2341,8 +2343,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             icms.VBCST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCST)), ObOp.Opcional, 15, true);
             icms.PICMSST = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.PICMSST)), ObOp.Opcional, this.CasasDecimais75, true);
             icms.VICMSST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSST)), ObOp.Opcional, 15, true);
-            icms.PCredSN = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.PCredSN)), ObOp.Opcional, this.CasasDecimais75, true);
-            icms.VCredICMSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.VCredICMSSN)), ObOp.Opcional, 15, true);
+            var percentualCredito = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.PCredSN)), ObOp.Opcional, this.CasasDecimais75, true);
+            icms.PCredSN = percentualCredito < 0 ? (double?)null : percentualCredito;
+            var valorCredito = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.VCredICMSSN)), ObOp.Opcional, 15, true);
+            icms.VCredICMSSN = valorCredito < 0 ? (double?)null : valorCredito;
             if (versaoNFe >= 4)
             {
                 icms.VBCFCPST = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VBCFCPST)), ObOp.Obrigatorio, 15);

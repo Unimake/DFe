@@ -49,6 +49,8 @@ public class NFeTxtConverterTest
     [InlineData("000071619_37870375000112_001_03_08_2026-nfe-orig.txt")]
     [InlineData("58_78789542000182_4_8_2026-nfe-orig.txt")]
     [InlineData("000001_01_01_05_08_2026-nfe-orig.txt")]
+    [InlineData("08785-NFe.TXT")]
+    [InlineData("31260803742159000170550020000003051000234068-NFE-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -124,6 +126,65 @@ public class NFeTxtConverterTest
         Assert.NotNull(icms);
         Assert.Equal("4", icms.SelectSingleNode("*[local-name()='modBCST']")?.InnerText);
         Assert.Equal("0.0000", icms.SelectSingleNode("*[local-name()='pMVAST']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve preservar modBC como zero e omitir os demais campos opcionais vazios do ICMSSN900.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveOmitirCamposVaziosDoIcmsSn900()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("08785-NFe.TXT"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var icms = xml.SelectSingleNode("//*[local-name()='ICMSSN900']");
+        Assert.NotNull(icms);
+        Assert.Equal(3, icms.ChildNodes.Count);
+        Assert.Equal("0", icms.SelectSingleNode("*[local-name()='orig']")?.InnerText);
+        Assert.Equal("900", icms.SelectSingleNode("*[local-name()='CSOSN']")?.InnerText);
+        Assert.Equal("0", icms.SelectSingleNode("*[local-name()='modBC']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve manter o grupo II zerado quando o item possui declaração de importação.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveManterImpostoImportacaoZeradoQuandoItemPossuiDi()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("31260803742159000170550020000003051000234068-NFE-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var impostoImportacao = xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='II']");
+        Assert.NotNull(impostoImportacao);
+        Assert.Equal(4, impostoImportacao.ChildNodes.Count);
+        Assert.Equal("0.00", impostoImportacao.SelectSingleNode("*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("0.00", impostoImportacao.SelectSingleNode("*[local-name()='vDespAdu']")?.InnerText);
+        Assert.Equal("0.00", impostoImportacao.SelectSingleNode("*[local-name()='vII']")?.InnerText);
+        Assert.Equal("0.00", impostoImportacao.SelectSingleNode("*[local-name()='vIOF']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve omitir modBC zerado do ICMS51 como o conversor legado.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveOmitirModalidadeBaseCalculoZeradaDoIcms51()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("31260803742159000170550020000003051000234068-NFE-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var icms51 = xml.SelectSingleNode("//*[local-name()='ICMS51']");
+        Assert.NotNull(icms51);
+        Assert.Equal(2, icms51.ChildNodes.Count);
+        Assert.Null(icms51.SelectSingleNode("*[local-name()='modBC']"));
     }
 
     /// <summary>

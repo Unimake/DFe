@@ -8164,13 +8164,13 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeModBC() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1);
 
-        public bool ShouldSerializeVBCField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1); //Se a modalidade for informada tem que ir esta TAG
+        public bool ShouldSerializeVBCField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1) && VBC >= 0; //Se a modalidade for informada tem que ir esta TAG
 
         public bool ShouldSerializePRedBCField() => PRedBC != null;
 
-        public bool ShouldSerializePICMSField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1); //Se a modalidade for informada tem que ir esta TAG
+        public bool ShouldSerializePICMSField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1) && PICMS >= 0; //Se a modalidade for informada tem que ir esta TAG
 
-        public bool ShouldSerializeVICMSField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1); //Se a modalidade for informada tem que ir esta TAG
+        public bool ShouldSerializeVICMSField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1) && VICMS >= 0; //Se a modalidade for informada tem que ir esta TAG
 
         public bool ShouldSerializeModBCST() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1);
 
