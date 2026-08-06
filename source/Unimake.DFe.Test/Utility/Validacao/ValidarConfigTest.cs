@@ -88,6 +88,24 @@ namespace Unimake.DFe.Test.Utility.Validacao
             }
         }
 
+        [Theory]
+        [InlineData("enviNFe")]
+        [InlineData("NFe")]
+        public void DeveConterUrlsQRCodeNFCeParaAlagoas(string tagRaiz)
+        {
+            var catalogo = CarregarCatalogo();
+            var servico = catalogo.SelectSingleNode($"ServicosValidacao/NFCe/Servico[@tagRaiz='{tagRaiz}' and @versao='4.00']");
+            var configuracao = new Configuracao();
+
+            Assert.NotNull(servico);
+            InvocarAtribuirUrl(servico, UFBrasil.AL, configuracao);
+
+            Assert.Equal("www.sefaz.al.gov.br/nfce/consulta", configuracao.UrlChaveHomologacao);
+            Assert.Equal("www.sefaz.al.gov.br/nfce/consulta", configuracao.UrlChaveProducao);
+            Assert.Equal("http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp", configuracao.UrlQrCodeHomologacao);
+            Assert.Equal("http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp", configuracao.UrlQrCodeProducao);
+        }
+
         [Fact]
         public void DeveResolverServicoSemVersaoComoFallback()
         {
@@ -186,6 +204,17 @@ namespace Unimake.DFe.Test.Utility.Validacao
 
             Assert.NotNull(metodo);
             return (XmlNode)metodo.Invoke(null, parametros);
+        }
+
+        private static void InvocarAtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao)
+        {
+            var metodo = typeof(ValidarEstruturaXML).GetMethod(
+                "AtribuirUrl",
+                BindingFlags.NonPublic | BindingFlags.Static
+            );
+
+            Assert.NotNull(metodo);
+            metodo.Invoke(null, new object[] { servico, codigoUF, configuracao });
         }
     }
 }
