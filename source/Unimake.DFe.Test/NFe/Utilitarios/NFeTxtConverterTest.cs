@@ -51,6 +51,9 @@ public class NFeTxtConverterTest
     [InlineData("000001_01_01_05_08_2026-nfe-orig.txt")]
     [InlineData("08785-NFe.TXT")]
     [InlineData("31260803742159000170550020000003051000234068-NFE-orig.txt")]
+    [InlineData("060218_32336224000165_001_06_08_2026-nfe-orig.txt")]
+    [InlineData("NT60860218.TXT")]
+    [InlineData("27260821287558000170650010001143821778530846-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -185,6 +188,64 @@ public class NFeTxtConverterTest
         Assert.NotNull(icms51);
         Assert.Equal(2, icms51.ChildNodes.Count);
         Assert.Null(icms51.SelectSingleNode("*[local-name()='modBC']"));
+    }
+
+    /// <summary>
+    /// Deve converter a NFC-e em contingência com chave calculada e impostos equivalentes ao legado.
+    /// </summary>
+    [Theory]
+    [InlineData("060218_32336224000165_001_06_08_2026-nfe-orig.txt")]
+    [InlineData("NT60860218.TXT")]
+    public void ConverterDeveManterNfceEmContingenciaComChaveCalculada(string nomeArquivo)
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo(nomeArquivo));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var documento = Assert.Single(resultado.Documentos);
+        Assert.Equal(44, documento.Chave.Length);
+        var xml = new XmlDocument();
+        xml.LoadXml(documento.Xml);
+
+        Assert.Equal("65", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='mod']")?.InnerText);
+        Assert.Equal("9", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='tpEmis']")?.InnerText);
+        Assert.Equal("2026-08-06T10:08:59-03:00", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='dhCont']")?.InnerText);
+        Assert.Equal("PROBLEMA DE CONECTIVIDADE PARA TESTE", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='xJust']")?.InnerText);
+        Assert.Equal("25.41", xml.SelectSingleNode("//*[local-name()='ICMS00']/*[local-name()='vICMS']")?.InnerText);
+        Assert.Equal("2.0000", xml.SelectSingleNode("//*[local-name()='ICMS00']/*[local-name()='pFCP']")?.InnerText);
+        Assert.Equal("2.54", xml.SelectSingleNode("//*[local-name()='ICMS00']/*[local-name()='vFCP']")?.InnerText);
+        Assert.Equal("2.10", xml.SelectSingleNode("//*[local-name()='PISAliq']/*[local-name()='vPIS']")?.InnerText);
+        Assert.Equal("9.65", xml.SelectSingleNode("//*[local-name()='COFINSAliq']/*[local-name()='vCOFINS']")?.InnerText);
+        Assert.Equal("127.03", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve manter ICMSSN500 e Reforma Tributária quando os grupos possuem campos opcionais vazios.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveManterIcmsSn500EReformaComCamposVazios()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("27260821287558000170650010001143821778530846-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var documento = Assert.Single(resultado.Documentos);
+        Assert.Equal("27260821287558000170650010001143821800677760", documento.Chave);
+        var xml = new XmlDocument();
+        xml.LoadXml(documento.Xml);
+
+        var icms = xml.SelectSingleNode("//*[local-name()='ICMSSN500']");
+        Assert.NotNull(icms);
+        Assert.Equal(2, icms.ChildNodes.Count);
+        Assert.Equal("500", icms.SelectSingleNode("*[local-name()='CSOSN']")?.InnerText);
+        Assert.Equal("06", xml.SelectSingleNode("//*[local-name()='PISNT']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("06", xml.SelectSingleNode("//*[local-name()='COFINSNT']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("000", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("000001", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='cClassTrib']")?.InnerText);
+        Assert.Equal("9.00", xml.SelectSingleNode("//*[local-name()='gIBSCBS']/*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("0.1000", xml.SelectSingleNode("//*[local-name()='gIBSUF']/*[local-name()='pIBSUF']")?.InnerText);
+        Assert.Equal("0.01", xml.SelectSingleNode("//*[local-name()='gIBSUF']/*[local-name()='vIBSUF']")?.InnerText);
+        Assert.Equal("0.9000", xml.SelectSingleNode("//*[local-name()='gCBS']/*[local-name()='pCBS']")?.InnerText);
+        Assert.Equal("0.08", xml.SelectSingleNode("//*[local-name()='gCBS']/*[local-name()='vCBS']")?.InnerText);
+        Assert.Equal("9.00", xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='vItem']")?.InnerText);
     }
 
     /// <summary>
