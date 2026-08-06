@@ -1442,8 +1442,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             produto.EXTIPI = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.EXTIPI)), ObOp.Opcional, 2, 3));
             produto.CFOP = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CFOP)), ObOp.Obrigatorio, 4, 4);
             produto.UCom = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.UCom)), ObOp.Obrigatorio, 1, 6);
-            produto.QCom = this.LerDecimal(TpcnTipoCampo.tcDec4, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.QCom)), ObOp.Obrigatorio, 11);
-            produto.VUnCom = this.LerDecimal(TpcnTipoCampo.tcDec10, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VUnCom)), ObOp.Opcional, 21);
+            produto.QCom = decimal.Round(this.LerDecimal(TpcnTipoCampo.tcDec4, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.QCom)), ObOp.Obrigatorio, 11), 4);
+            produto.VUnCom = decimal.Round(this.LerDecimal(TpcnTipoCampo.tcDec10, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VUnCom)), ObOp.Opcional, 21), 10);
             produto.VProd = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VProd)), ObOp.Obrigatorio, 15);
             produto.CEANTrib = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CEANTrib)), ObOp.Obrigatorio, 0, 14);
             if (lenPipesRegistro >= 30)
@@ -1451,8 +1451,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 produto.CBarraTrib = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CBarraTrib)), ObOp.Opcional, 0, 30));
             }
             produto.UTrib = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.UTrib)), ObOp.Obrigatorio, 1, 6);
-            produto.QTrib = this.LerDecimal(TpcnTipoCampo.tcDec4, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.QTrib)), ObOp.Obrigatorio, 15);
-            produto.VUnTrib = this.LerDecimal(TpcnTipoCampo.tcDec10, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VUnTrib)), ObOp.Obrigatorio, 21);
+            produto.QTrib = decimal.Round(this.LerDecimal(TpcnTipoCampo.tcDec4, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.QTrib)), ObOp.Obrigatorio, 15), 4);
+            produto.VUnTrib = decimal.Round(this.LerDecimal(TpcnTipoCampo.tcDec10, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VUnTrib)), ObOp.Obrigatorio, 21), 10);
             produto.VFrete = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VFrete)), ObOp.Opcional, 15);
             produto.VSeg = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VSeg)), ObOp.Opcional, 15);
             produto.VDesc = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.VDesc)), ObOp.Opcional, 15);
