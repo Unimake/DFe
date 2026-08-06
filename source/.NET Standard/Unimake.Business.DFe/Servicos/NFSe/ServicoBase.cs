@@ -833,13 +833,14 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #endif
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
         {
-            if (Configuracoes.PadraoNFSe != PadraoNFSe.NACIONAL)
-            {
-                throw new InvalidOperationException(
-                    $"O método GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) está disponível apenas para o padrão NACIONAL. " +
-                    $"Padrão atual: {Configuracoes.PadraoNFSe}"
-                );
-            }
+            //Como é o DEV que vai passar o XML por parâmetro, vou deixar ele gravar o que desejar. Wandrey 06/08/2026
+            //if (Configuracoes.PadraoNFSe != PadraoNFSe.NACIONAL && Configuracoes.PadraoNFSe != PadraoNFSe.ELOTECH)
+            //{
+            //    throw new InvalidOperationException(
+            //        $"O método GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) está disponível apenas para os padrões NACIONAL e ELOTECH. " +
+            //        $"Padrão atual: {Configuracoes.PadraoNFSe}"
+            //    );
+            //}
 
             using (var fileStream = new FileStream(Path.Combine(pasta, nomeArquivo), FileMode.Create, FileAccess.Write, FileShare.Read))
             {
