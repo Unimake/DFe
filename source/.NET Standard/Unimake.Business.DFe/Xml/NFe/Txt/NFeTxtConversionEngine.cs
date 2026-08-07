@@ -1914,21 +1914,31 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PFCP)), ObOp.Obrigatorio, 15),
                 VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VFCP)), ObOp.Obrigatorio, 15)
             };
-            var percentualReducao = icms.PRedBC;
-            icms.VBC = ManterValorPositivo(icms.VBC);
-            icms.PICMS = ManterValorPositivo(icms.PICMS);
-            icms.VICMSOp = ManterValorPositivo(icms.VICMSOp);
-            icms.PDif = ManterValorPositivo(icms.PDif);
-            icms.VICMSDif = ManterValorPositivo(icms.VICMSDif);
-            icms.VICMS = ManterValorPositivo(icms.VICMS);
-            icms.PRedBC = percentualReducao >= 0 &&
-                (icms.VBC.HasValue || icms.PICMS.HasValue || icms.VICMSOp.HasValue ||
-                 icms.PDif.HasValue || icms.VICMSDif.HasValue || icms.VICMS.HasValue)
-                ? percentualReducao
-                : null;
-            if (lenPipesRegistro == 10 && !icms.VICMS.HasValue)
+            if (lenPipesRegistro == 10 && !(icms.VICMS > 0))
             {
                 icms.VICMS = ManterValorPositivo((icms.VICMSOp ?? 0) - (icms.VICMSDif ?? 0));
+            }
+            var possuiValoresIcms = icms.PRedBC > 0 || icms.VBC > 0 || icms.PICMS > 0 ||
+                icms.VICMSOp > 0 || icms.PDif > 0 || icms.VICMSDif > 0 || icms.VICMS > 0;
+            if (possuiValoresIcms)
+            {
+                icms.PRedBC = ManterValorNaoNegativo(icms.PRedBC);
+                icms.VBC = ManterValorNaoNegativo(icms.VBC);
+                icms.PICMS = ManterValorNaoNegativo(icms.PICMS);
+                icms.VICMSOp = ManterValorNaoNegativo(icms.VICMSOp);
+                icms.PDif = ManterValorNaoNegativo(icms.PDif);
+                icms.VICMSDif = ManterValorNaoNegativo(icms.VICMSDif);
+                icms.VICMS = ManterValorNaoNegativo(icms.VICMS);
+            }
+            else
+            {
+                icms.PRedBC = null;
+                icms.VBC = null;
+                icms.PICMS = null;
+                icms.VICMSOp = null;
+                icms.PDif = null;
+                icms.VICMSDif = null;
+                icms.VICMS = null;
             }
             if (lenPipesRegistro >= 17)
             {
@@ -1941,6 +1951,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         }
 
         private static double? ManterValorPositivo(double? valor) => valor > 0 ? valor : null;
+
+        private static double? ManterValorNaoNegativo(double? valor) => valor >= 0 ? valor : 0;
 
         private void ProcessarIcms53(int nProd, int lenPipesRegistro)
         {
