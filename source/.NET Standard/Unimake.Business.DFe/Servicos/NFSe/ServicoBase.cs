@@ -664,6 +664,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         {
             XmlValidarConteudo(); // Efetuar a validação antes de validar schema para evitar alguns erros que não ficam claros para o desenvolvedor.
 
+            EncriptarTagAssinaturaPaulistanaAntesDaAssinaturaXML();
+
             var resultado = ValidarXMLCentralizadoNFSe();
 
             if (resultado.ValidacaoExecutada)
@@ -674,6 +676,15 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 }
 
                 return;
+            }
+        }
+
+        private void EncriptarTagAssinaturaPaulistanaAntesDaAssinaturaXML()
+        {
+            if (Configuracoes.EncriptaTagAssinatura &&
+                Configuracoes.PadraoNFSe == PadraoNFSe.PAULISTANA)
+            {
+                XMLUtility.EncryptTagAssinaturaNFSe(Configuracoes.PadraoNFSe, ConteudoXML, Configuracoes.CertificadoDigital);
             }
         }
 
