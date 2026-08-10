@@ -2123,4 +2123,10 @@
 		<ArqConfig>ViamaoRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4211207">
+		<Nome>Morro DA Fumaça - SC</Nome>
+		<UF>RS</UF>
+		<ArqConfig>MorroDaFumacaSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
