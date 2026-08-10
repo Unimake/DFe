@@ -407,6 +407,15 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 return;
             }
 
+            if (!string.IsNullOrWhiteSpace(responsavel.CSRT) &&
+                responsavel.CSRT.Length > chaveAcesso.Length &&
+                responsavel.CSRT.EndsWith(chaveAcesso, StringComparison.Ordinal))
+            {
+                responsavel.HashCSRT = Unimake.Business.DFe.Utility.Converter.CalculateSHA1Hash(responsavel.CSRT);
+                responsavel.CSRT = null;
+                return;
+            }
+
             responsavel.GerarHashCSRT(chaveAcesso);
         }
 
@@ -2560,10 +2569,15 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             if (detalhesOficiais[nProd].Imposto.PIS?.PISNT != null) return;
             var pis = ObterPisOutros(nProd);
-            pis.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 15);
-            pis.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15);
-            pis.VBC = null;
-            pis.PPIS = null;
+            var quantidade = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 15);
+            var aliquota = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15);
+            if (quantidade + aliquota > 0)
+            {
+                pis.QBCProd = quantidade;
+                pis.VAliqProd = aliquota;
+                pis.VBC = null;
+                pis.PPIS = null;
+            }
         }
 
         private void ProcessarPisSt(int nProd)
@@ -2716,10 +2730,15 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
             if (detalhesOficiais[nProd].Imposto.COFINS?.COFINSNT != null) return;
             var cofins = ObterCofinsOutros(nProd);
-            cofins.QBCProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 16);
-            cofins.VAliqProd = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15);
-            cofins.VBC = null;
-            cofins.PCOFINS = null;
+            var quantidade = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.QBCProd)), ObOp.Obrigatorio, 16);
+            var aliquota = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.CIDE>(nameof(DFeNFe.CIDE.VAliqProd)), ObOp.Obrigatorio, 15);
+            if (quantidade + aliquota > 0)
+            {
+                cofins.QBCProd = quantidade;
+                cofins.VAliqProd = aliquota;
+                cofins.VBC = null;
+                cofins.PCOFINS = null;
+            }
         }
 
         private static bool CstPisCofinsNaoTributado(string cst)
