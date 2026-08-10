@@ -117,7 +117,9 @@
 		<None Remove="Servicos\Config\CTe\TO.xml" />
 		<None Remove="Servicos\Config\DARE\AN.xml" />
 		<None Remove="Servicos\Config\DARE\Config.xml" />
+		<None Remove="Servicos\Config\NFSe\GuarujaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarulhosSP.xml" />
+		<None Remove="Servicos\Config\NFSe\MorroDaFumacaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\OlimpiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PatoBrancoPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PiratiniRS.xml" />
@@ -1606,7 +1608,9 @@
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DiademaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuararapesSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarujaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarulhosSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MorroDaFumacaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OlimpiaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PatoBrancoPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiratiniRS.xml" />
