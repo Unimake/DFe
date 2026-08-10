@@ -55,6 +55,7 @@ public class NFeTxtConverterTest
     [InlineData("060218_32336224000165_001_06_08_2026-nfe-orig.txt")]
     [InlineData("NT60860218.TXT")]
     [InlineData("27260821287558000170650010001143821778530846-nfe-orig.txt")]
+    [InlineData("41260801182867000178550010001800011567804549-nfe-orig.txt")]
     [InlineData("nfe000077-NFE.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
@@ -254,6 +255,31 @@ public class NFeTxtConverterTest
         Assert.Equal("991", referencias[0].SelectSingleNode("*[local-name()='nItem']")?.InnerText);
         Assert.Equal("25", referencias[1].SelectSingleNode("*[local-name()='nItem']")?.InnerText);
         Assert.Equal("15", referencias[2].SelectSingleNode("*[local-name()='nItem']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve manter rastreabilidade, valor do item e responsável técnico.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveManterRastroValorItemEResponsavelTecnico()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("41260801182867000178550010001800011567804549-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var itens = xml.SelectNodes("//*[local-name()='det']");
+
+        Assert.Equal(3, itens.Count);
+        Assert.Equal("LOTE001", itens[0].SelectSingleNode("*[local-name()='prod']/*[local-name()='rastro']/*[local-name()='nLote']")?.InnerText);
+        Assert.Equal("25.000", itens[0].SelectSingleNode("*[local-name()='prod']/*[local-name()='rastro']/*[local-name()='qLote']")?.InnerText);
+        Assert.Equal("2026-08-05", itens[0].SelectSingleNode("*[local-name()='prod']/*[local-name()='rastro']/*[local-name()='dFab']")?.InnerText);
+        Assert.Equal("2028-08-05", itens[0].SelectSingleNode("*[local-name()='prod']/*[local-name()='rastro']/*[local-name()='dVal']")?.InnerText);
+        Assert.Equal("1351.25", itens[0].SelectSingleNode("*[local-name()='vItem']")?.InnerText);
+        Assert.Equal("2064.00", itens[1].SelectSingleNode("*[local-name()='vItem']")?.InnerText);
+        Assert.Equal("1074.75", itens[2].SelectSingleNode("*[local-name()='vItem']")?.InnerText);
+        Assert.Equal("02", xml.SelectSingleNode("//*[local-name()='infRespTec']/*[local-name()='idCSRT']")?.InnerText);
+        Assert.Equal("AAAAAAAAAAAAAAAAAAAAAAAAAAA=", xml.SelectSingleNode("//*[local-name()='infRespTec']/*[local-name()='hashCSRT']")?.InnerText);
     }
 
     /// <summary>
