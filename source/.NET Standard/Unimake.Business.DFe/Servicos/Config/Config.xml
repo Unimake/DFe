@@ -2129,4 +2129,10 @@
 		<ArqConfig>GuarujaSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4211207">
+		<Nome>Morro Da Fumaça - SC</Nome>
+		<UF>RS</UF>
+		<ArqConfig>MorroDaFumacaSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

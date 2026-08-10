@@ -56,6 +56,7 @@ public class NFeTxtConverterTest
     [InlineData("NT60860218.TXT")]
     [InlineData("27260821287558000170650010001143821778530846-nfe-orig.txt")]
     [InlineData("41260801182867000178550010001800011567804549-nfe-orig.txt")]
+    [InlineData("41260806225442000112550010002455051903698959-nfe-orig.txt")]
     [InlineData("nfe000077-NFE.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
@@ -415,6 +416,29 @@ public class NFeTxtConverterTest
         var hashCsrt = xml.SelectSingleNode("//*[local-name()='infRespTec']/*[local-name()='hashCSRT']")?.InnerText;
         Assert.Equal(Unimake.Business.DFe.Utility.Converter.CalculateSHA1Hash(csrt + documento.Chave), hashCsrt);
         Assert.NotEqual(csrt, hashCsrt);
+    }
+
+    /// <summary>
+    /// Deve preservar a compatibilidade quando o ZD já contém o CSRT concatenado com a chave de acesso.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarHashCsrtQuandoZdJaContemAChaveDeAcesso()
+    {
+        const string csrt = "CSRTTESTE0123456789012345678";
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("41260806225442000112550010002455051903698959-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var documento = Assert.Single(resultado.Documentos);
+        var xml = new XmlDocument();
+        xml.LoadXml(documento.Xml);
+
+        var hashCsrt = xml.SelectSingleNode("//*[local-name()='infRespTec']/*[local-name()='hashCSRT']")?.InnerText;
+        Assert.Equal(Unimake.Business.DFe.Utility.Converter.CalculateSHA1Hash(csrt + documento.Chave), hashCsrt);
+        Assert.Equal(28, hashCsrt?.Length);
+        Assert.NotNull(xml.SelectSingleNode("//*[local-name()='PISOutr']/*[local-name()='vBC']"));
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='PISOutr']/*[local-name()='qBCProd']"));
+        Assert.NotNull(xml.SelectSingleNode("//*[local-name()='COFINSOutr']/*[local-name()='vBC']"));
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='COFINSOutr']/*[local-name()='qBCProd']"));
     }
 
     /// <summary>
