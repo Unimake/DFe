@@ -160,6 +160,7 @@ namespace Unimake.Business.DFe.Servicos.DCe
                                 switch (item.ProtDCe.InfProt.CStat)
                                 {
                                     case 100:
+                                    case 150:
                                         protDCe = item.ProtDCe;
                                         break;
                                 }

@@ -174,6 +174,7 @@ namespace Unimake.Business.DFe.Servicos.NFCom
                                 switch (item.ProtNFCom.InfProt.CStat)
                                 {
                                     case 100: //NFCom autorizada
+                                    case 150: //NFCom autorizada fora do prazo
                                         protNFCom = item.ProtNFCom;
                                         break;
                                 }

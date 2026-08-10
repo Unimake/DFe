@@ -175,6 +175,7 @@ namespace Unimake.Business.DFe.Servicos.NF3e
                                 switch (item.ProtNF3e.InfProt.CStat)
                                 {
                                     case 100: //NF3e autorizada
+                                    case 150: //NF3e autorizada fora do prazo
                                         protNF3e = item.ProtNF3e;
                                         break;
                                 }

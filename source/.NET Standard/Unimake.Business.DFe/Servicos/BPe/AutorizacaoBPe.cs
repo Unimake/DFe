@@ -134,7 +134,8 @@ namespace Unimake.Business.DFe.Servicos.BPe
 
                         foreach (var protocolo in item.ProtBPe)
                         {
-                            if (protocolo?.InfProt != null && protocolo.InfProt.ChBPe == BPe.InfBPe.Chave && protocolo.InfProt.CStat == 100)
+                            if (protocolo?.InfProt != null && protocolo.InfProt.ChBPe == BPe.InfBPe.Chave &&
+                                (protocolo.InfProt.CStat == 100 || protocolo.InfProt.CStat == 150))
                             {
                                 protBPe = protocolo;
                                 break;

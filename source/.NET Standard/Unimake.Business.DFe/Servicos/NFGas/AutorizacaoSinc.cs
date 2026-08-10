@@ -174,6 +174,7 @@ namespace Unimake.Business.DFe.Servicos.NFGas
                                 switch (item.ProtNFGas.InfProt.CStat)
                                 {
                                     case 100: //NFGas autorizada
+                                    case 150: //NFGas autorizada fora do prazo
                                         protNFGas = item.ProtNFGas;
                                         break;
                                 }

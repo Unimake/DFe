@@ -35,7 +35,7 @@ namespace Unimake.DFe.Test.DCe.Servicos
         /// Cria o XML da DCe para testes de autorização
         /// </summary>
         /// <returns>XML da DCe</returns>
-        private static XmlDCe CriarDCe() => new XmlDCe
+        internal static XmlDCe CriarDCe() => new XmlDCe
         {
             InfDCe = new InfDCe
             {
