@@ -84,7 +84,11 @@ namespace Unimake.Business.DFe.Security
                     ConfigurarPinCsp(privateKey, pinPassword);
                 }
 
-                privateKeyWarmUp.WarmUp(certificado);
+                var warmUpAlgorithm = privateKey.KeySpec == CertificateKeySpec.Cng
+                    ? HashAlgorithmName.SHA256
+                    : HashAlgorithmName.SHA1;
+
+                privateKeyWarmUp.WarmUp(certificado, warmUpAlgorithm);
             }
             finally
             {
@@ -195,13 +199,19 @@ namespace Unimake.Business.DFe.Security
 
         private sealed class PrivateKeyWarmUp : IPrivateKeyWarmUp
         {
-            public void WarmUp(X509Certificate2 certificado)
+            public void WarmUp(X509Certificate2 certificado, HashAlgorithmName hashAlgorithm)
             {
                 using (var rsa = certificado.GetRSAPrivateKey())
                 {
                     if (rsa == null)
                     {
                         throw new CryptographicException("Não foi possível acessar a chave privada RSA do certificado digital.");
+                    }
+
+                    if (hashAlgorithm == HashAlgorithmName.SHA1)
+                    {
+                        rsa.SignHash(Sha1Hash, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
+                        return;
                     }
 
                     try
@@ -224,7 +234,7 @@ namespace Unimake.Business.DFe.Security
 
     internal interface IPrivateKeyWarmUp
     {
-        void WarmUp(X509Certificate2 certificado);
+        void WarmUp(X509Certificate2 certificado, HashAlgorithmName hashAlgorithm);
     }
 
     internal interface IX509Certificate2NativeApi
@@ -286,12 +296,7 @@ namespace Unimake.Business.DFe.Security
 
         public PrivateKeyHandle AcquirePrivateKey(X509Certificate2 certificado, bool cache)
         {
-            var flags = CryptAcquireFlags.PreferCng | CryptAcquireFlags.Silent;
-
-            if (cache)
-            {
-                flags |= CryptAcquireFlags.Cache;
-            }
+            var flags = CreateAcquireFlags(cache);
 
             if (!SafeNativeMethods.CryptAcquireCertificatePrivateKey(
                 certificado.Handle,
@@ -310,6 +315,18 @@ namespace Unimake.Business.DFe.Security
                 KeySpec = keySpec,
                 CallerMustFree = callerMustFree
             };
+        }
+
+        internal static CryptAcquireFlags CreateAcquireFlags(bool cache)
+        {
+            var flags = CryptAcquireFlags.AllowCng | CryptAcquireFlags.Silent;
+
+            if (cache)
+            {
+                flags |= CryptAcquireFlags.Cache;
+            }
+
+            return flags;
         }
 
         public void ReleasePrivateKey(PrivateKeyHandle privateKey)
@@ -420,7 +437,7 @@ namespace Unimake.Business.DFe.Security
     {
         Cache = 0x1,
         Silent = 0x40,
-        PreferCng = 0x20000
+        AllowCng = 0x10000
     }
 
     internal enum CryptProviderParameterQuery

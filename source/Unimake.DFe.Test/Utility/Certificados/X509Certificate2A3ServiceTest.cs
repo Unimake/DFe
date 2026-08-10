@@ -27,6 +27,7 @@ namespace Unimake.DFe.Test.Utility.Certificados
                 Assert.True(nativeApi.CacheRequested);
                 Assert.True(nativeApi.Released);
                 Assert.True(warmUp.Executed);
+                Assert.Equal(HashAlgorithmName.SHA256, warmUp.HashAlgorithm);
             }
         }
 
@@ -43,13 +44,15 @@ namespace Unimake.DFe.Test.Utility.Certificados
                 var keySpec = (CertificateKeySpec)keySpecValue;
                 var expectedParameter = (CryptProviderParameter)expectedParameterValue;
                 var nativeApi = new FakeNativeApi(keySpec);
-                var service = new X509Certificate2A3Service(nativeApi, new FakeWarmUp());
+                var warmUp = new FakeWarmUp();
+                var service = new X509Certificate2A3Service(nativeApi, warmUp);
 
                 service.SetPinPrivateKey(certificate, "9876");
 
                 Assert.Equal(expectedParameter, nativeApi.CspParameter);
                 Assert.Equal(new byte[] { 57, 56, 55, 54, 0 }, nativeApi.PinDuringCall);
                 Assert.All(nativeApi.PinBuffer, value => Assert.Equal(0, value));
+                Assert.Equal(HashAlgorithmName.SHA1, warmUp.HashAlgorithm);
             }
         }
 
@@ -177,6 +180,17 @@ namespace Unimake.DFe.Test.Utility.Certificados
                 Assert.False(service.IsA3(certificate));
                 Assert.False(nativeApi.Acquired);
             }
+        }
+
+        [Theory]
+        [InlineData(false, (int)(CryptAcquireFlags.AllowCng | CryptAcquireFlags.Silent))]
+        [InlineData(true, (int)(CryptAcquireFlags.AllowCng | CryptAcquireFlags.Silent | CryptAcquireFlags.Cache))]
+        [Trait("Utility", "Certificados")]
+        public void AcquirePrivateKeyDevePermitirCngSemPreferirSobreCsp(bool cache, int expectedFlags)
+        {
+            var flags = X509Certificate2NativeApi.CreateAcquireFlags(cache);
+
+            Assert.Equal((CryptAcquireFlags)expectedFlags, flags);
         }
 
         [Fact]
@@ -320,9 +334,12 @@ namespace Unimake.DFe.Test.Utility.Certificados
         {
             internal bool Executed { get; private set; }
 
-            public void WarmUp(X509Certificate2 certificado)
+            internal HashAlgorithmName HashAlgorithm { get; private set; }
+
+            public void WarmUp(X509Certificate2 certificado, HashAlgorithmName hashAlgorithm)
             {
                 Executed = true;
+                HashAlgorithm = hashAlgorithm;
             }
         }
 
