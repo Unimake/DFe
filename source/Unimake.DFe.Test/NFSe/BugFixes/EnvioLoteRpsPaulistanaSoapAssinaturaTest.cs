@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -17,6 +18,34 @@ namespace Unimake.DFe.Test.NFSe.BugFixes
     /// </summary>
     public class EnvioLoteRpsPaulistanaSoapAssinaturaTest
     {
+        private const string AssinaturaOriginal = "673853970    00000000014320260804TNN00000000008612800000000000000003159248780395000119";
+
+        /// <summary>
+        /// Verifica se a XMLDSig final cobre a tag Assinatura já transformada pela PAULISTANA.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFSe")]
+        public void DeveManterXmlDSigValidaDepoisDeEncriptarAssinatura()
+        {
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\EnvioLoteRps-env-loterps.xml");
+
+            var configuracao = CriarConfiguracao(false);
+            var envioLoteRps = new EnvioLoteRps(conteudoXML, configuracao);
+
+            var xmlAssinado = envioLoteRps.ConteudoXMLAssinado;
+            var primeiraLeitura = xmlAssinado.OuterXml;
+
+            Assert.DoesNotContain("<Assinatura>" + AssinaturaOriginal + "</Assinatura>", primeiraLeitura);
+            Assert.NotNull(ObterAssinaturaXmlDSig(xmlAssinado));
+            Assert.True(ValidarAssinaturaXmlDSig(xmlAssinado, configuracao), "A XMLDSig deve permanecer válida após a criptografia da tag Assinatura.");
+
+            var segundaLeitura = envioLoteRps.ConteudoXMLAssinado.OuterXml;
+
+            Assert.Equal(primeiraLeitura, segundaLeitura);
+            Assert.True(ValidarAssinaturaXmlDSig(xmlAssinado, configuracao), "Uma nova leitura de ConteudoXMLAssinado não deve invalidar a XMLDSig.");
+        }
+
         /// <summary>
         /// Verifica se o transporte SOAP recebe o XML com a assinatura transformada pela PAULISTANA.
         /// </summary>
@@ -27,24 +56,12 @@ namespace Unimake.DFe.Test.NFSe.BugFixes
         [InlineData(true)]
         public async Task DeveEnviarConteudoXMLAssinadoNoSoap(bool coletarTelemetriaDisponibilidade)
         {
-            const string assinaturaOriginal = "AAECAwQFBgcICQoLDA0ODw==";
-
             using (var servidor = new ServidorSoapLocal())
             {
                 var conteudoXML = new XmlDocument();
                 conteudoXML.Load(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\EnvioLoteRps-env-loterps.xml");
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.NFSe,
-                    CertificadoDigital = PropConfig.CertificadoDigital,
-                    TipoAmbiente = TipoAmbiente.Producao,
-                    CodigoMunicipio = 3550308,
-                    Servico = Servico.NFSeEnvioLoteRps,
-                    SchemaVersao = "2.00",
-                    ColetarTelemetriaDisponibilidade = coletarTelemetriaDisponibilidade,
-                    TimeOutWebServiceConnect = 5000
-                };
+                var configuracao = CriarConfiguracao(coletarTelemetriaDisponibilidade);
 
                 var envioLoteRps = new EnvioLoteRps(conteudoXML, configuracao);
                 envioLoteRps.Configuracoes.WebEnderecoProducao = servidor.Url;
@@ -56,8 +73,33 @@ namespace Unimake.DFe.Test.NFSe.BugFixes
                 var envelopeSoap = await requisicao;
 
                 Assert.Contains("<Assinatura>", envelopeSoap);
-                Assert.DoesNotContain("<Assinatura>" + assinaturaOriginal + "</Assinatura>", envelopeSoap);
+                Assert.DoesNotContain("<Assinatura>" + AssinaturaOriginal + "</Assinatura>", envelopeSoap);
             }
+        }
+
+        private static Configuracao CriarConfiguracao(bool coletarTelemetriaDisponibilidade) => new Configuracao
+        {
+            TipoDFe = TipoDFe.NFSe,
+            CertificadoDigital = PropConfig.CertificadoDigital,
+            TipoAmbiente = TipoAmbiente.Producao,
+            CodigoMunicipio = 3550308,
+            Servico = Servico.NFSeEnvioLoteRps,
+            SchemaVersao = "2.00",
+            ColetarTelemetriaDisponibilidade = coletarTelemetriaDisponibilidade,
+            TimeOutWebServiceConnect = 5000
+        };
+
+        private static XmlElement ObterAssinaturaXmlDSig(XmlDocument xml) => xml.GetElementsByTagName("Signature", SignedXml.XmlDsigNamespaceUrl)[0] as XmlElement;
+
+        private static bool ValidarAssinaturaXmlDSig(XmlDocument xml, Configuracao configuracao)
+        {
+            var assinatura = ObterAssinaturaXmlDSig(xml);
+            Assert.NotNull(assinatura);
+
+            var signedXml = new SignedXml(xml);
+            signedXml.LoadXml(assinatura);
+
+            return signedXml.CheckSignature(configuracao.CertificadoDigital, true);
         }
 
         private sealed class ServidorSoapLocal : System.IDisposable
