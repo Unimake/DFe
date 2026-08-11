@@ -2188,25 +2188,25 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Dados dos produtos e serviços da NFe/NFCe
         /// </summary>
-        [XmlElement("prod")]
+        [XmlElement("prod", Order = 0)]
         public Prod Prod { get; set; }
 
         /// <summary>
         /// Tributos incidentes nos produtos ou serviços da NFe/NFCe
         /// </summary>
-        [XmlElement("imposto")]
+        [XmlElement("imposto", Order = 1)]
         public Imposto Imposto { get; set; }
 
         /// <summary>
         /// Grupo de devolução de tributos
         /// </summary>
-        [XmlElement("impostoDevol")]
+        [XmlElement("impostoDevol", Order = 2)]
         public ImpostoDevol ImpostoDevol { get; set; }
 
         /// <summary>
         /// Informações adicionais do produto (norma referenciada, informações complementares, etc)
         /// </summary>
-        [XmlElement("infAdProd")]
+        [XmlElement("infAdProd", Order = 3)]
         public string InfAdProd
         {
             get => string.IsNullOrWhiteSpace(InfAdProdField) ? null : InfAdProdField;
@@ -2216,7 +2216,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Grupo de observações de uso livre (para o item da NFe/NFCe
         /// </summary>
-        [XmlElement("obsItem")]
+        [XmlElement("obsItem", Order = 4)]
         public ObsItem ObsItem { get; set; }
 
         /// <summary>
@@ -2228,7 +2228,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vItem para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vItem")]
+        [XmlElement("vItem", Order = 5)]
         public string VItemField
         {
             get => VItem.ToString("F2", CultureInfo.InvariantCulture);
@@ -2238,7 +2238,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Documento Fiscal Eletrônico Referenciado 
         /// </summary>
-        [XmlElement("DFeReferenciado")]
+        [XmlElement("DFeReferenciado", Order = 6)]
         public DFeReferenciado DFeReferenciado { get; set; }
 
         #region ShouldSerialize

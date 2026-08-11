@@ -3,6 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
 
@@ -553,6 +554,30 @@ public class NFeTxtConverterTest
         Assert.Same(produto, imposto.PreviousSibling);
         Assert.Same(imposto, informacaoAdicional.PreviousSibling);
         Assert.Equal("DEC:52921/IMP.REC.SUBSTITUICAO/ART.313-Y", informacaoAdicional.InnerText);
+    }
+
+    /// <summary>
+    /// Deve preservar a ordem do detalhe quando o fluxo Somente Validar normaliza a NFe pelo objeto oficial.
+    /// </summary>
+    [Fact]
+    public void NormalizacaoDaNFeDeveManterInfAdProdDepoisDoImposto()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("41260801182867000178550010001800811409310317-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var nfe = XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(Assert.Single(resultado.Documentos).Xml);
+        var xmlNormalizado = XMLUtility.Serializar(nfe);
+        var detalhe = xmlNormalizado.SelectSingleNode("//*[local-name()='det']");
+        var produto = detalhe.SelectSingleNode("*[local-name()='prod']");
+        var imposto = detalhe.SelectSingleNode("*[local-name()='imposto']");
+        var informacaoAdicional = detalhe.SelectSingleNode("*[local-name()='infAdProd']");
+
+        Assert.NotNull(produto);
+        Assert.NotNull(imposto);
+        Assert.NotNull(informacaoAdicional);
+        Assert.Same(produto, detalhe.FirstChild);
+        Assert.Same(imposto, informacaoAdicional.PreviousSibling);
+        Assert.Equal("INFORMACAO ADICIONAL DO ITEM PARA TESTE DE ORDENACAO", informacaoAdicional.InnerText);
     }
 
     /// <summary>
