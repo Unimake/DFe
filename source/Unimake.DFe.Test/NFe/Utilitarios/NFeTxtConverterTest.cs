@@ -59,6 +59,9 @@ public class NFeTxtConverterTest
     [InlineData("41260801182867000178550010001800011567804549-nfe-orig.txt")]
     [InlineData("41260806225442000112550010002455051903698959-nfe-orig.txt")]
     [InlineData("nfe000077-NFE.txt")]
+    [InlineData("NFe_2998-nfe-orig-v2.txt")]
+    [InlineData("NFe_2999-nfe-orig-v2.txt")]
+    [InlineData("000023655_11092080000179_001_11_08_2026-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -578,6 +581,136 @@ public class NFeTxtConverterTest
         Assert.Same(produto, detalhe.FirstChild);
         Assert.Same(imposto, informacaoAdicional.PreviousSibling);
         Assert.Equal("INFORMACAO ADICIONAL DO ITEM PARA TESTE DE ORDENACAO", informacaoAdicional.InnerText);
+    }
+
+    /// <summary>
+    /// Deve interpretar os campos de outras despesas e tributos totais exatamente nas posições do layout TXT.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveEvidenciarDivergenciaDeVOutroInformadaPeloErp()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("NFe_2998-nfe-orig-v2.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var itens = xml.SelectNodes("//*[local-name()='det']/*[local-name()='prod']/*[local-name()='vOutro']");
+
+        Assert.Equal(2, itens.Count);
+        Assert.Equal("0.65", itens[0].InnerText);
+        Assert.Equal("0.64", itens[1].InnerText);
+        Assert.Equal("0.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vOutro']")?.InnerText);
+        Assert.Equal("654.40", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+        Assert.Equal("1.29", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vTotTrib']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve manter os totais coerentes quando o ERP informa vTotTrib no segmento M, sem usar vOutro do produto.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveAceitarBlocosCorrigidosDeTributosAproximados()
+    {
+        var linhas = File.ReadAllLines(CaminhoArquivo("NFe_2998-nfe-orig-v2.txt"));
+        var valoresTributos = new[] { "0.65", "0.64" };
+        var indiceItem = 0;
+
+        for (var i = 0; i < linhas.Length; i++)
+        {
+            if (linhas[i].StartsWith("I|", StringComparison.Ordinal))
+            {
+                var campos = linhas[i].Split('|');
+                campos[23] = "0.00";
+                linhas[i] = string.Join("|", campos);
+            }
+            else if (linhas[i].StartsWith("M|", StringComparison.Ordinal))
+            {
+                linhas[i] = "M|" + valoresTributos[indiceItem++] + "|";
+            }
+        }
+
+        var resultado = ConverterTemporario(linhas);
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var tributosItens = xml.SelectNodes("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='vTotTrib']");
+
+        Assert.Equal(2, tributosItens.Count);
+        Assert.Equal("0.65", tributosItens[0].InnerText);
+        Assert.Equal("0.64", tributosItens[1].InnerText);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='det']/*[local-name()='prod']/*[local-name()='vOutro']").Count);
+        Assert.Equal("0.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vOutro']")?.InnerText);
+        Assert.Equal("654.40", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+        Assert.Equal("1.29", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vTotTrib']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve evidenciar o total de tributos aproximados informado sem os valores correspondentes nos itens.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveEvidenciarVtotTribTotalSemValoresNosItens()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("NFe_2999-nfe-orig-v2.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='vTotTrib']").Count);
+        Assert.Equal("2.80", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vTotTrib']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve aceitar a distribuição do vTotTrib entre os itens quando a soma corresponde ao total da NFe.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveAceitarVtotTribDistribuidoNosItens()
+    {
+        var linhas = File.ReadAllLines(CaminhoArquivo("NFe_2999-nfe-orig-v2.txt"));
+        var valoresTributos = new[] { "2.05", "0.75" };
+        var indiceItem = 0;
+
+        for (var i = 0; i < linhas.Length; i++)
+        {
+            if (linhas[i].StartsWith("M|", StringComparison.Ordinal))
+            {
+                linhas[i] = "M|" + valoresTributos[indiceItem++] + "|";
+            }
+        }
+
+        var resultado = ConverterTemporario(linhas);
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var tributosItens = xml.SelectNodes("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='vTotTrib']");
+
+        Assert.Equal(2, tributosItens.Count);
+        Assert.Equal("2.05", tributosItens[0].InnerText);
+        Assert.Equal("0.75", tributosItens[1].InnerText);
+        Assert.Equal("2.80", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vTotTrib']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve preservar referência, tributos aproximados, total e pagamento da NFC-e de devolução.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarTotaisDaNfceDevolucao23655()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000023655_11092080000179_001_11_08_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("65", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='mod']")?.InnerText);
+        Assert.Equal("35260899999999000191550010000000011000000017", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='NFref']/*[local-name()='refNFe']")?.InnerText);
+        Assert.Equal("27.58", xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='vTotTrib']")?.InnerText);
+        Assert.Equal("85.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vProd']")?.InnerText);
+        Assert.Equal("85.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+        Assert.Equal("27.58", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vTotTrib']")?.InnerText);
+        Assert.Equal("20", xml.SelectSingleNode("//*[local-name()='detPag']/*[local-name()='tPag']")?.InnerText);
+        Assert.Equal("85.00", xml.SelectSingleNode("//*[local-name()='detPag']/*[local-name()='vPag']")?.InnerText);
     }
 
     /// <summary>
