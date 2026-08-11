@@ -2130,8 +2130,8 @@
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4211207">
-		<Nome>Morro Da Fumaça - SC</Nome>
-		<UF>RS</UF>
+		<Nome>Morro da Fumaça - SC</Nome>
+		<UF>SC</UF>
 		<ArqConfig>MorroDaFumacaSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>

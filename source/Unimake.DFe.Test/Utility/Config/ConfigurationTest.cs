@@ -17,6 +17,7 @@ namespace Unimake.DFe.Test.Utility.Config
         [InlineData(4314407, PadraoNFSe.AVMB)]
         [InlineData(2802908, PadraoNFSe.WEBISS)]
         [InlineData(3550308, PadraoNFSe.PAULISTANA)]
+        [InlineData(4211207, PadraoNFSe.IPM)]
         public void GetPadraoNFSeByCodigoMunicipio_DeveRetornarPadraoCorretoParaMunicipiosImplementados(int codigoMunicipio, PadraoNFSe padraoEsperado)
         {
             Assert.Equal(padraoEsperado, Configuration.GetPadraoNFSe(codigoMunicipio));
@@ -29,6 +30,7 @@ namespace Unimake.DFe.Test.Utility.Config
         [InlineData(4314407, "RS", "PelotasRS.xml", PadraoNFSe.AVMB)]
         [InlineData(2802908, "SE", "ItabaianaSE.xml", PadraoNFSe.WEBISS)]
         [InlineData(3550308, "SP", "SaoPauloSP.xml", PadraoNFSe.PAULISTANA)]
+        [InlineData(4211207, "SC", "MorroDaFumacaSC.xml", PadraoNFSe.IPM)]
         public void CarregarMunicipio_DeveRetornarDadosCompletosParaMunicipiosConfigurados(int codigoMunicipio, string ufEsperada, string arqConfigEsperado, PadraoNFSe padraoEsperado)
         {
             var municipios = Configuration.CarregarMunicipio();
