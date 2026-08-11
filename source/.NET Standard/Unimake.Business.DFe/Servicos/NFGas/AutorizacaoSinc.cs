@@ -138,7 +138,7 @@ namespace Unimake.Business.DFe.Servicos.NFGas
         {
             get
             {
-                if (Result.ProtNFGas != null)
+                if (Result.ProtNFGas != null && StatusProtocoloAutorizacao.NFGas(Result.ProtNFGas.InfProt.CStat))
                 {
                     if (NFGasProcs.ContainsKey(NFGas.InfNFGas.Chave))
                     {
@@ -154,7 +154,7 @@ namespace Unimake.Business.DFe.Servicos.NFGas
                         });
                     }
                 }
-                else
+                else if (Result.ProtNFGas == null)
                 {
                     if (RetConsSitNFGas.Count <= 0)
                     {
@@ -180,6 +180,11 @@ namespace Unimake.Business.DFe.Servicos.NFGas
                                 }
                             }
                         }
+                    }
+
+                    if (protNFGas == null)
+                    {
+                        return NFGasProcs;
                     }
 
                     if (NFGasProcs.ContainsKey(NFGas.InfNFGas.Chave))

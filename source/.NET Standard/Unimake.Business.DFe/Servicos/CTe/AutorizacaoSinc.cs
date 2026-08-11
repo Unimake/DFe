@@ -163,7 +163,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             get
             {
-                if (Result.ProtCTe != null)
+                if (Result.ProtCTe != null && StatusProtocoloAutorizacao.CTe(Result.ProtCTe.InfProt.CStat))
                 {
                     if (CteProcs.ContainsKey(CTe.InfCTe.Chave))
                     {
@@ -179,7 +179,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
                         });
                     }
                 }
-                else
+                else if (Result.ProtCTe == null)
                 {
                     if (RetConsSitCTe == null || RetConsSitCTe.Count <= 0)
                     {
@@ -199,6 +199,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
                                 switch (item.ProtCTe.InfProt.CStat)
                                 {
                                     case 100: //CTe Autorizado
+                                    case 150: //CTe autorizado fora de prazo
                                         protCTe = item.ProtCTe;
                                         break;
                                 }
@@ -207,6 +208,11 @@ namespace Unimake.Business.DFe.Servicos.CTe
                     }
 
                     #endregion
+
+                    if (protCTe == null)
+                    {
+                        return CteProcs;
+                    }
 
                     if (CteProcs.ContainsKey(CTe.InfCTe.Chave))
                     {

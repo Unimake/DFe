@@ -116,9 +116,12 @@ namespace Unimake.Business.DFe.Servicos.BPe
         {
             get
             {
-                ProtBPe protBPe = Result.ProtBPe;
+                var retornoDireto = Result.ProtBPe;
+                ProtBPe protBPe = retornoDireto?.InfProt != null && StatusProtocoloAutorizacao.BPe(retornoDireto.InfProt.CStat)
+                    ? retornoDireto
+                    : null;
 
-                if (protBPe == null)
+                if (retornoDireto == null)
                 {
                     if (RetConsSitBPe.Count <= 0)
                     {
@@ -135,7 +138,7 @@ namespace Unimake.Business.DFe.Servicos.BPe
                         foreach (var protocolo in item.ProtBPe)
                         {
                             if (protocolo?.InfProt != null && protocolo.InfProt.ChBPe == BPe.InfBPe.Chave &&
-                                (protocolo.InfProt.CStat == 100 || protocolo.InfProt.CStat == 150))
+                                StatusProtocoloAutorizacao.BPe(protocolo.InfProt.CStat))
                             {
                                 protBPe = protocolo;
                                 break;

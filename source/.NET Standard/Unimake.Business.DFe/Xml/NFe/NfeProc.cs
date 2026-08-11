@@ -46,27 +46,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Nome do arquivo de distribuição
         /// </summary>
         [XmlIgnore]
-        public string NomeArquivoDistribuicao
-        {
-            get
-            {
-                switch (ProtNFe.InfProt.CStat)
-                {
-                    case 110: //Uso Denegado
-                    case 205: //NF-e está denegada na base de dados da SEFAZ [nRec:999999999999999]
-                    case 301: //Uso Denegado: Irregularidade fiscal do emitente
-                    case 302: //Uso Denegado: Irregularidade fiscal do destinatário
-                    case 303: //Uso Denegado: Destinatário não habilitado a operar na UF
-                        return ProtNFe.InfProt.ChNFe + "-den.xml";
-
-                    case 100: //Autorizado o uso da NF-e
-                    case 120: //Autorizado o uso da NF-e, com alerta
-                    case 150: //Autorizado o uso da NF-e, autorização fora de prazo
-                    default:
-                        return ProtNFe.InfProt.ChNFe + "-procnfe.xml";
-                }
-            }
-        }
+        public string NomeArquivoDistribuicao => ProtNFe.InfProt.ChNFe + "-procnfe.xml";
 
         public override XmlDocument GerarXML()
         {

@@ -126,7 +126,7 @@ namespace Unimake.Business.DFe.Servicos.DCe
         {
             get
             {
-                if (Result.ProtDCe != null)
+                if (Result.ProtDCe != null && StatusProtocoloAutorizacao.DCe(Result.ProtDCe.InfProt.CStat))
                 {
                     if (DCeProcs.ContainsKey(DCe.InfDCe.Chave))
                     {
@@ -142,7 +142,7 @@ namespace Unimake.Business.DFe.Servicos.DCe
                         });
                     }
                 }
-                else
+                else if (Result.ProtDCe == null)
                 {
                     if (RetConsSitDCe.Count <= 0)
                     {
@@ -166,6 +166,11 @@ namespace Unimake.Business.DFe.Servicos.DCe
                                 }
                             }
                         }
+                    }
+
+                    if (protDCe == null)
+                    {
+                        return DCeProcs;
                     }
 
                     if (DCeProcs.ContainsKey(DCe.InfDCe.Chave))

@@ -1246,6 +1246,10 @@ namespace Unimake.Business.DFe.Utility
                     tipoXML = TipoXML.NFGasConsultaSituacao;
                     break;
 
+                case "consSitBPe":
+                    tipoXML = TipoXML.BPeConsultaSituacao;
+                    break;
+
                 case "eventoNFGas":
                     tipoXML = TipoXML.NFGasEnvioEvento;
                     break;

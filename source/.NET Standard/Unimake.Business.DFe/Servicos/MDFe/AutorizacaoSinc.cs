@@ -118,7 +118,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         {
             get
             {
-                if (Result.ProtMDFe != null)
+                if (Result.ProtMDFe != null && StatusProtocoloAutorizacao.MDFe(Result.ProtMDFe.InfProt.CStat))
                 {
                     if (MdfeProcs.ContainsKey(MDFe.InfMDFe.Chave))
                     {
@@ -134,7 +134,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
                         });
                     }
                 }
-                else
+                else if (Result.ProtMDFe == null)
                 {
                     if (RetConsSitMDFe.Count <= 0)
                     {
@@ -159,6 +159,11 @@ namespace Unimake.Business.DFe.Servicos.MDFe
                                 }
                             }
                         }
+                    }
+
+                    if (protMDFe == null)
+                    {
+                        return MdfeProcs;
                     }
 
                     if (MdfeProcs.ContainsKey(MDFe.InfMDFe.Chave))

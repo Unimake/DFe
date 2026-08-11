@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.MDFe;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.MDFe;
 using Xunit;
 
@@ -12,6 +15,55 @@ namespace Unimake.DFe.Test.MDFe.Servicos
     /// </summary>
     public class AutorizacaoSincTest
     {
+        [Fact]
+        [Trait("DFe", "MDFe")]
+        public void ConsultaSituacao132DeveGerarDistribuicaoComProtocoloAutorizado()
+        {
+            var mdfe = MontarXMLMDFe(UFBrasil.PR, TipoAmbiente.Homologacao);
+            var retorno = CarregarRetornoConsultaSituacao(mdfe, 100);
+            var configuracao = CriarConfiguracao();
+            using var servico = new AutorizacaoSinc(mdfe, configuracao);
+            servico.RetConsSitMDFe.Add(retorno);
+            var pasta = CriarPastaTemporaria();
+
+            try
+            {
+                servico.GravarXmlDistribuicao(pasta);
+
+                var arquivo = Assert.Single(Directory.EnumerateFiles(pasta));
+                Assert.EndsWith("-procmdfe.xml", arquivo, StringComparison.Ordinal);
+                var xml = File.ReadAllText(arquivo);
+                Assert.Contains(mdfe.InfMDFe.Chave, xml);
+                Assert.Contains("<cStat>100</cStat>", xml);
+            }
+            finally
+            {
+                Directory.Delete(pasta, true);
+            }
+        }
+
+        [Fact]
+        [Trait("DFe", "MDFe")]
+        public void ConsultaSituacaoComProtocoloRejeitadoNaoDeveGerarDistribuicao()
+        {
+            var mdfe = MontarXMLMDFe(UFBrasil.PR, TipoAmbiente.Homologacao);
+            var retorno = CarregarRetornoConsultaSituacao(mdfe, 110);
+            var configuracao = CriarConfiguracao();
+            using var servico = new AutorizacaoSinc(mdfe, configuracao);
+            servico.RetConsSitMDFe.Add(retorno);
+            var pasta = CriarPastaTemporaria();
+
+            try
+            {
+                servico.GravarXmlDistribuicao(pasta);
+                Assert.Empty(Directory.EnumerateFiles(pasta));
+            }
+            finally
+            {
+                Directory.Delete(pasta, true);
+            }
+        }
+
         /// <summary>
         /// Enviar um MDFe no modo síncrono somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Efetua o envio por estado + ambiente para garantir que todos estão funcionando.
@@ -379,6 +431,33 @@ namespace Unimake.DFe.Test.MDFe.Servicos
             };
 
             return xml;
+        }
+
+        private static RetConsSitMDFe CarregarRetornoConsultaSituacao(Business.DFe.Xml.MDFe.MDFe mdfe, int cStatProtocolo)
+        {
+            var documento = new XmlDocument();
+            documento.Load(@"..\..\..\MDFe\Resources\retConsSitMDFe-com-evento-de-encerramento.xml");
+            var retorno = XMLUtility.Deserializar<RetConsSitMDFe>(documento);
+            Assert.Equal(132, retorno.CStat);
+            retorno.ProtMDFe.InfProt.ChMDFe = mdfe.InfMDFe.Chave;
+            retorno.ProtMDFe.InfProt.CStat = cStatProtocolo;
+            return retorno;
+        }
+
+        private static Configuracao CriarConfiguracao() => new Configuracao
+        {
+            TipoDFe = TipoDFe.MDFe,
+            TipoEmissao = TipoEmissao.Normal,
+            CodigoUF = (int)UFBrasil.PR,
+            TipoAmbiente = TipoAmbiente.Homologacao,
+            CertificadoDigital = PropConfig.CertificadoDigital
+        };
+
+        private static string CriarPastaTemporaria()
+        {
+            var pasta = Path.Combine(Path.GetTempPath(), "Unimake.DFe.Test", "MDFeConsultaSituacao", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(pasta);
+            return pasta;
         }
     }
 }

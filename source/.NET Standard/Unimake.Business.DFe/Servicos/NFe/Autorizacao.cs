@@ -211,48 +211,33 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     case SimNao.Sim: //Envio síncrono
                         if (Result.ProtNFe != null)
                         {
-                            var autorizado = false;
-                            switch (Result.ProtNFe.InfProt.CStat)
+                            var autorizado = StatusProtocoloAutorizacao.NFe(Result.ProtNFe.InfProt.CStat);
+                            if (autorizado)
                             {
-                                case 100: //Autorizado o uso da NF-e
-                                case 120: //Autorizado o uso da NF-e, com alerta
-                                case 110: //Uso Denegado
-                                case 150: //Autorizado o uso da NF-e, autorização fora de prazo
-                                case 205: //NF-e está denegada na base de dados da SEFAZ [nRec:999999999999999]
-                                case 301: //Uso Denegado: Irregularidade fiscal do emitente
-                                case 302: //Uso Denegado: Irregularidade fiscal do destinatário
-                                case 303: //Uso Denegado: Destinatário não habilitado a operar na UF
-                                    if (NfeProcs.ContainsKey(EnviNFe.NFe[0].InfNFeField.Chave))
-                                    {
-                                        NfeProcs[EnviNFe.NFe[0].InfNFeField.Chave].ProtNFe = Result.ProtNFe;
-                                    }
-                                    else
-                                    {
-                                        NfeProcs.Add(EnviNFe.NFe[0].InfNFeField.Chave,
-                                            new NfeProc
-                                            {
-                                                Versao = EnviNFe.Versao,
-                                                NFe = EnviNFe.NFe[0],
-                                                ProtNFe = Result.ProtNFe
-                                            });
-                                    }
-
-                                    autorizado = true;
-
-                                    break;
-
-                                default: //Rejeitado
-                                    if (RetConsSitNFes.Count <= 0)
-                                    {
-                                        goto case 100;
-                                    }
-
-                                    break;
+                                if (NfeProcs.ContainsKey(EnviNFe.NFe[0].InfNFeField.Chave))
+                                {
+                                    NfeProcs[EnviNFe.NFe[0].InfNFeField.Chave].ProtNFe = Result.ProtNFe;
+                                }
+                                else
+                                {
+                                    NfeProcs.Add(EnviNFe.NFe[0].InfNFeField.Chave,
+                                        new NfeProc
+                                        {
+                                            Versao = EnviNFe.Versao,
+                                            NFe = EnviNFe.NFe[0],
+                                            ProtNFe = Result.ProtNFe
+                                        });
+                                }
                             }
 
                             if (!autorizado)
                             {
-                                goto default;
+                                if (RetConsSitNFes.Count > 0)
+                                {
+                                    goto default;
+                                }
+
+                                return NfeProcs;
                             }
                         }
                         else
@@ -281,18 +266,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                     {
                                         if (item.InfProt.ChNFe == EnviNFe.NFe[i].InfNFeField.Chave)
                                         {
-                                            switch (item.InfProt.CStat)
+                                            if (StatusProtocoloAutorizacao.NFe(item.InfProt.CStat))
                                             {
-                                                case 100: //Autorizado o uso da NF-e
-                                                case 120: //Autorizado o uso da NF-e, com alerta
-                                                case 110: //Uso Denegado
-                                                case 150: //Autorizado o uso da NF-e, autorização fora de prazo
-                                                case 205: //NF-e está denegada na base de dados da SEFAZ [nRec:999999999999999]
-                                                case 301: //Uso Denegado: Irregularidade fiscal do emitente
-                                                case 302: //Uso Denegado: Irregularidade fiscal do destinatário
-                                                case 303: //Uso Denegado: Destinatário não habilitado a operar na UF
-                                                    protNFe = item;
-                                                    break;
+                                                protNFe = item;
                                             }
 
                                             break;
@@ -311,24 +287,20 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                     {
                                         if (item.ProtNFe.InfProt.ChNFe == EnviNFe.NFe[i].InfNFeField.Chave)
                                         {
-                                            switch (item.ProtNFe.InfProt.CStat)
+                                            if (StatusProtocoloAutorizacao.NFe(item.ProtNFe.InfProt.CStat))
                                             {
-                                                case 100: //Autorizado o uso da NF-e
-                                                case 120: //Autorizado o uso da NF-e, com alerta
-                                                case 110: //Uso Denegado
-                                                case 150: //Autorizado o uso da NF-e, autorização fora de prazo
-                                                case 205: //NF-e está denegada na base de dados da SEFAZ [nRec:999999999999999]
-                                                case 301: //Uso Denegado: Irregularidade fiscal do emitente
-                                                case 302: //Uso Denegado: Irregularidade fiscal do destinatário
-                                                case 303: //Uso Denegado: Destinatário não habilitado a operar na UF
-                                                    protNFe = item.ProtNFe;
-                                                    break;
+                                                protNFe = item.ProtNFe;
                                             }
                                         }
                                     }
                                 }
 
                                 #endregion
+                            }
+
+                            if (protNFe == null)
+                            {
+                                continue;
                             }
 
                             if (NfeProcs.ContainsKey(EnviNFe.NFe[i].InfNFeField.Chave))

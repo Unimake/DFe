@@ -110,7 +110,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             get
             {
-                if (Result.ProtCTe != null)
+                if (Result.ProtCTe != null && StatusProtocoloAutorizacao.CTe(Result.ProtCTe.InfProt.CStat))
                 {
                     if (CteSimpProcs.ContainsKey(CTeSimp.InfCTe.Chave))
                     {
@@ -127,7 +127,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
                             });
                     }
                 }
-                else
+                else if (Result.ProtCTe == null)
                 {
                     if (RetConsSitCTes.Count <= 0)
                     {
@@ -147,18 +147,17 @@ namespace Unimake.Business.DFe.Servicos.CTe
                                 switch (item.ProtCTe.InfProt.CStat)
                                 {
                                     case 100: //CTe Autorizado
-                                    case 110: //CTe Denegado - Não sei quando ocorre este, mas descobrir ele no manual então estou incluindo. 
-                                    case 301: //CTe Denegado - Irregularidade fiscal do emitente
-                                    case 302: //CTe Denegado - Irregularidade fiscal do remetente
-                                    case 303: //CTe Denegado - Irregularidade fiscal do destinatário
-                                    case 304: //CTe Denegado - Irregularidade fiscal do expedidor
-                                    case 305: //CTe Denegado - Irregularidade fiscal do recebedor
-                                    case 306: //CTe Denegado - Irregularidade fiscal do tomador
+                                    case 150: //CTe autorizado fora de prazo
                                         protCTe = item.ProtCTe;
                                         break;
                                 }
                             }
                         }
+                    }
+
+                    if (protCTe == null)
+                    {
+                        return CteSimpProcs;
                     }
 
                     if (CteSimpProcs.ContainsKey(CTeSimp.InfCTe.Chave))

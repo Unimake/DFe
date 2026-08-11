@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTe;
 using Unimake.Business.DFe.Xml.CTe;
@@ -12,6 +15,79 @@ namespace Unimake.DFe.Test.CTe.Servicos
     /// </summary>
     public class AutorizacaoSincTest
     {
+        [Theory]
+        [Trait("DFe", "CTe")]
+        [InlineData(150, "-proccte.xml")]
+        public void ConsultaSituacaoDevePreservarProtocoloAutorizado(int cStat, string sufixo)
+        {
+            var cte = MontarXmlCTe(UFBrasil.PR, TipoAmbiente.Homologacao);
+            var documentoRetorno = new XmlDocument();
+            documentoRetorno.Load(@"..\..\..\CTe\Resources\4_00_retConsSitCTe.xml");
+            var retorno = XMLUtility.Deserializar<RetConsSitCTe>(documentoRetorno);
+            retorno.ProtCTe.InfProt.ChCTe = cte.InfCTe.Chave;
+            retorno.ProtCTe.InfProt.CStat = cStat;
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                TipoEmissao = TipoEmissao.Normal,
+                CodigoUF = (int)UFBrasil.PR,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+            using var servico = new AutorizacaoSinc(cte, configuracao);
+            servico.RetConsSitCTe.Add(retorno);
+            var pasta = Path.Combine(Path.GetTempPath(), "Unimake.DFe.Test", "CTeConsultaSituacao", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(pasta);
+            try
+            {
+                servico.GravarXmlDistribuicao(pasta);
+                var arquivo = Assert.Single(Directory.EnumerateFiles(pasta));
+                Assert.EndsWith(sufixo, arquivo, StringComparison.Ordinal);
+                var xml = File.ReadAllText(arquivo);
+                Assert.Contains($"<cStat>{cStat}</cStat>", xml);
+                Assert.Contains(cte.InfCTe.Chave, xml);
+            }
+            finally
+            {
+                Directory.Delete(pasta, true);
+            }
+        }
+
+        [Theory]
+        [Trait("DFe", "CTe")]
+        [InlineData(110)]
+        [InlineData(304)]
+        public void ConsultaSituacaoComCodigoDeRejeicaoNaoDeveGerarDistribuicao(int cStat)
+        {
+            var cte = MontarXmlCTe(UFBrasil.PR, TipoAmbiente.Homologacao);
+            var documentoRetorno = new XmlDocument();
+            documentoRetorno.Load(@"..\..\..\CTe\Resources\4_00_retConsSitCTe.xml");
+            var retorno = XMLUtility.Deserializar<RetConsSitCTe>(documentoRetorno);
+            retorno.ProtCTe.InfProt.ChCTe = cte.InfCTe.Chave;
+            retorno.ProtCTe.InfProt.CStat = cStat;
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                TipoEmissao = TipoEmissao.Normal,
+                CodigoUF = (int)UFBrasil.PR,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+            using var servico = new AutorizacaoSinc(cte, configuracao);
+            servico.RetConsSitCTe.Add(retorno);
+            var pasta = Path.Combine(Path.GetTempPath(), "Unimake.DFe.Test", "CTeConsultaSituacao", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(pasta);
+            try
+            {
+                servico.GravarXmlDistribuicao(pasta);
+                Assert.Empty(Directory.EnumerateFiles(pasta));
+            }
+            finally
+            {
+                Directory.Delete(pasta, true);
+            }
+        }
+
         /// <summary>
         /// Enviar uma CTe no modo síncrono somente para saber se a conexão com o web-service está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Efetua o envio por estado + ambiente para garantir que todos estão funcionando.

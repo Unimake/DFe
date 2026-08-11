@@ -111,6 +111,11 @@ namespace Unimake.Business.DFe.Servicos.BPe
         {
             get
             {
+                if (Result.ProtBPe?.InfProt == null || !StatusProtocoloAutorizacao.BPe(Result.ProtBPe.InfProt.CStat))
+                {
+                    return BPeTMProcs;
+                }
+
                 if (BPeTMProcs.ContainsKey(BPeTM.InfBPe.Chave))
                 {
                     BPeTMProcs[BPeTM.InfBPe.Chave].ProtBPe = Result.ProtBPe;

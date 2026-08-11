@@ -13,6 +13,16 @@ namespace Unimake.DFe.Test.Utility.Xml
 {
     public class TipoXMLTest
     {
+        [Fact]
+        [Trait("Utility", "TipoXML")]
+        public void ObterTipoXmlConsultaSituacaoBPe()
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml("<consSitBPe versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/bpe\"><tpAmb>2</tpAmb><xServ>CONSULTAR</xServ><chBPe>41260899999999000191630010000000011000000014</chBPe></consSitBPe>");
+
+            Assert.Equal(TipoXML.BPeConsultaSituacao, XMLUtility.DetectXMLType(doc));
+        }
+
         /// <summary>
         /// Receber um arquivo de XML do eSocial e devolver o tipo dele
         /// </summary>
