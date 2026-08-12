@@ -22,7 +22,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [Serializable()]
     [XmlType(Namespace = CIOTNamespace.PortalANTT)]
     [XmlRoot("DeclaracaoOperacaoTransporte", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
-    public class DeclaracaoOperacaoTransporte : XMLBase
+    public partial class DeclaracaoOperacaoTransporte : XMLBase
     {
         [XmlElement("IdOperacaoTransporte")]
         public string IdOperacaoTransporte { get; set; }
@@ -149,8 +149,10 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public bool ShouldSerializeDataFimViagem() => false;
         public bool ShouldSerializeValorFreteField() => ValorFrete > 0;
 #if INTEROP
+        public bool ShouldSerializeDataInicioViagemField() => DataInicioViagem > DateTime.MinValue;
         public bool ShouldSerializeDataFimViagemField() => DataFimViagem > DateTime.MinValue;
 #else
+        public bool ShouldSerializeDataInicioViagemField() => DataInicioViagem > DateTimeOffset.MinValue;
         public bool ShouldSerializeDataFimViagemField() => DataFimViagem > DateTimeOffset.MinValue;
 #endif
         public bool ShouldSerializeOrigemDestino() => OrigemDestino?.Count > 0;

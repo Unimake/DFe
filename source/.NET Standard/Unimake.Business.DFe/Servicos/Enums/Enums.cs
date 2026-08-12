@@ -20533,6 +20533,22 @@ namespace Unimake.Business.DFe.Servicos
     #region CIOT
 
     /// <summary>
+    /// Provedor utilizado para os serviços do CIOT.
+    /// </summary>
+    public enum ProvedorCIOT
+    {
+        /// <summary>
+        /// Integração direta com a ANTT.
+        /// </summary>
+        ANTT = 0,
+
+        /// <summary>
+        /// Integração por meio da instituição de pagamento eFrete.
+        /// </summary>
+        EFrete = 1
+    }
+
+    /// <summary>
     /// Tipo da operação de transporte do CIOT
     /// </summary>
     public enum TipoOperacaoTransporteCIOT

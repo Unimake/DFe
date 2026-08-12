@@ -3861,8 +3861,10 @@
 	<ItemGroup>
 		<None Remove="Servicos\Config\CIOT\AN.xml" />
 		<None Remove="Servicos\Config\CIOT\Config.xml" />
+		<None Remove="Servicos\Config\CIOT\EF.xml" />
 		<EmbeddedResource Include="Servicos\Config\CIOT\AN.xml" />
 		<EmbeddedResource Include="Servicos\Config\CIOT\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\CIOT\EF.xml" />
 	</ItemGroup>
 
 	<ItemGroup>

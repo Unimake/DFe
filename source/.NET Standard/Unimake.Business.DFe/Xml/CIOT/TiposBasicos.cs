@@ -74,7 +74,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [ProgId("Unimake.Business.DFe.Xml.CIOT.OrigemDestino")]
     [ComVisible(true)]
 #endif
-    public class OrigemDestino
+    public partial class OrigemDestino
     {
         [XmlElement("Origem")]
         public Origem Origem { get; set; }
@@ -147,7 +147,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [ProgId("Unimake.Business.DFe.Xml.CIOT.DadosCarga")]
     [ComVisible(true)]
 #endif
-    public class DadosCarga
+    public partial class DadosCarga
     {
         [XmlElement("CodigoNaturezaCarga")]
         public string CodigoNaturezaCarga { get; set; }
@@ -207,7 +207,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [ProgId("Unimake.Business.DFe.Xml.CIOT.InfPagamento")]
     [ComVisible(true)]
 #endif
-    public class InfPagamento
+    public partial class InfPagamento
     {
         [XmlElement("TipoPagamento")]
         public TipoPagamentoFreteCIOT TipoPagamento { get; set; }

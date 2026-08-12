@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuracoes>
+  <Servicos ID="CIOT">
+    <DeclaracaoOperacaoTransporte versao="1.00">
+      <Descricao>CIOT eFrete - Adicionar operação de transporte V2</Descricao>
+      <RequestURIHomologacao>https://dev.efrete.com.br/Services/Pef/AdicionarOperacaoTransporteV2</RequestURIHomologacao>
+      <RequestURIProducao>https://sistema.efrete.com.br/Services/Pef/AdicionarOperacaoTransporteV2</RequestURIProducao>
+      <RequestURILoginHomologacao>https://dev.efrete.com.br/services/Logon/Login</RequestURILoginHomologacao>
+      <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
+      <MetodoAPI>post</MetodoAPI>
+    </DeclaracaoOperacaoTransporte>
+    <ConsultarCIOTGerado versao="1.00">
+      <Descricao>CIOT eFrete - Consultar por identificador do cliente</Descricao>
+      <RequestURIHomologacao>https://dev.efrete.com.br/services/Pef/ObterCodigoIdentificacaoOperacaoTransportePorIdOperacaoCliente</RequestURIHomologacao>
+      <RequestURIProducao>https://sistema.efrete.com.br/services/Pef/ObterCodigoIdentificacaoOperacaoTransportePorIdOperacaoCliente</RequestURIProducao>
+      <RequestURILoginHomologacao>https://dev.efrete.com.br/services/Logon/Login</RequestURILoginHomologacao>
+      <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
+      <MetodoAPI>get</MetodoAPI>
+    </ConsultarCIOTGerado>
+    <CancelamentoOperacaoTransporte versao="1.00">
+      <Descricao>CIOT eFrete - Cancelar operação de transporte</Descricao>
+      <RequestURIHomologacao>https://dev.efrete.com.br/Services/Pef/CancelarOperacaoTransporte</RequestURIHomologacao>
+      <RequestURIProducao>https://sistema.efrete.com.br/Services/Pef/CancelarOperacaoTransporte</RequestURIProducao>
+      <RequestURILoginHomologacao>https://dev.efrete.com.br/services/Logon/Login</RequestURILoginHomologacao>
+      <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
+      <MetodoAPI>post</MetodoAPI>
+    </CancelamentoOperacaoTransporte>
+    <EncerramentoOperacaoTransporte versao="1.00">
+      <Descricao>CIOT eFrete - Encerrar operação de transporte</Descricao>
+      <RequestURIHomologacao>https://dev.efrete.com.br/Services/Pef/EncerrarOperacaoTransporte</RequestURIHomologacao>
+      <RequestURIProducao>https://sistema.efrete.com.br/Services/Pef/EncerrarOperacaoTransporte</RequestURIProducao>
+      <RequestURILoginHomologacao>https://dev.efrete.com.br/services/Logon/Login</RequestURILoginHomologacao>
+      <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
+      <MetodoAPI>post</MetodoAPI>
+    </EncerramentoOperacaoTransporte>
+    <ConsultarSituacaoTransportador versao="1.00">
+      <Descricao>CIOT eFrete - Consultar situação do transportador</Descricao>
+      <RequestURIHomologacao>https://dev.efrete.com.br/services/Pef/ConsultaSituacaoTransportador</RequestURIHomologacao>
+      <RequestURIProducao>https://sistema.efrete.com.br/services/Pef/ConsultaSituacaoTransportador</RequestURIProducao>
+      <RequestURILoginHomologacao>https://dev.efrete.com.br/services/Logon/Login</RequestURILoginHomologacao>
+      <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
+      <MetodoAPI>get</MetodoAPI>
+    </ConsultarSituacaoTransportador>
+    <ConsultarFrotaTransportador versao="1.00">
+      <Descricao>CIOT eFrete - Consultar frota do transportador</Descricao>
+      <RequestURIHomologacao>https://dev.efrete.com.br/services/Pef/ConsultaSituacaoTransportador</RequestURIHomologacao>
+      <RequestURIProducao>https://sistema.efrete.com.br/services/Pef/ConsultaSituacaoTransportador</RequestURIProducao>
+      <RequestURILoginHomologacao>https://dev.efrete.com.br/services/Logon/Login</RequestURILoginHomologacao>
+      <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
+      <MetodoAPI>get</MetodoAPI>
+    </ConsultarFrotaTransportador>
+  </Servicos>
+</Configuracoes>

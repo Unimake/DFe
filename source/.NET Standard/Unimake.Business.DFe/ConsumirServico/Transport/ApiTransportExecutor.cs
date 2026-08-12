@@ -13,7 +13,12 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
             {
                 HttpResponseMessage httpResponse;
                 if (string.Equals(request.Method, "get", StringComparison.OrdinalIgnoreCase))
-                    httpResponse = httpClient.GetAsync("").GetAwaiter().GetResult();
+                {
+                    using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "") { Content = request.HttpContent })
+                    {
+                        httpResponse = httpClient.SendAsync(requestMessage).GetAwaiter().GetResult();
+                    }
+                }
                 else if (string.Equals(request.Method, "delete", StringComparison.OrdinalIgnoreCase))
                     httpResponse = httpClient.DeleteAsync("").GetAwaiter().GetResult();
                 else

@@ -1372,6 +1372,31 @@ namespace Unimake.Business.DFe.Servicos
         public string ClientSecret { get; set; }
 
         /// <summary>
+        /// Provedor utilizado para os serviços do CIOT. O padrão é a integração direta com a ANTT.
+        /// </summary>
+        public ProvedorCIOT ProvedorCIOT { get; set; } = ProvedorCIOT.ANTT;
+
+        /// <summary>
+        /// Hash de identificação do integrador fornecido pela eFrete.
+        /// </summary>
+        public string EFreteIntegrador { get; set; }
+
+        /// <summary>
+        /// Usuário utilizado para autenticação na eFrete.
+        /// </summary>
+        public string EFreteUsuario { get; set; }
+
+        /// <summary>
+        /// Senha utilizada para autenticação na eFrete.
+        /// </summary>
+        public string EFreteSenha { get; set; }
+
+        /// <summary>
+        /// Token de autenticação da eFrete. Quando não informado, pode ser obtido automaticamente pelas credenciais.
+        /// </summary>
+        public string EFreteToken { get; set; }
+
+        /// <summary>
         /// Tipo do Evento do EFDReinf
         /// </summary>
         public string TipoEventoEFDReinf { get; set; }
@@ -1518,6 +1543,23 @@ namespace Unimake.Business.DFe.Servicos
                     throw new Exception((CodigoConfig.ToString().Length <= 2 ? "Unidade Federativa" : "Município") + " (" + CodigoConfig + ") não está implementado na DLL Unimake.DFe. Entre em contato com o suporte para solicitar a implementação.");
                 }
             }
+        }
+
+        /// <summary>
+        /// Carrega uma configuração específica do DFe diretamente pelo nome do arquivo embutido.
+        /// </summary>
+        /// <param name="nomeTagServico">Nome da tag do serviço que será consumido.</param>
+        /// <param name="arquivoConfiguracao">Nome do arquivo de configuração dentro da pasta do DFe.</param>
+        public void Load(string nomeTagServico, string arquivoConfiguracao)
+        {
+            if (string.IsNullOrWhiteSpace(arquivoConfiguracao))
+            {
+                Load(nomeTagServico);
+                return;
+            }
+
+            NomeTagServico = nomeTagServico;
+            LerXmlConfigEspecifico(GetConfigFile(arquivoConfiguracao));
         }
 
         #endregion

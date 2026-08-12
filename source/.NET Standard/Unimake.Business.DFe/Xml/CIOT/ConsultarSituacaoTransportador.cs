@@ -18,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [Serializable()]
     [XmlType(Namespace = CIOTNamespace.PortalANTT)]
     [XmlRoot("ConsultarSituacaoTransportador", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
-    public class ConsultarSituacaoTransportador : XMLBase
+    public partial class ConsultarSituacaoTransportador : XMLBase
     {
         [XmlElement("CpfCnpjInteressado")]
         public string CpfCnpjInteressado { get; set; }

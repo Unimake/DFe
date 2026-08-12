@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [Serializable()]
     [XmlType(Namespace = CIOTNamespace.PortalANTT)]
     [XmlRoot("ConsultarCIOTGerado", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
-    public class ConsultarCIOTGerado : XMLBase
+    public partial class ConsultarCIOTGerado : XMLBase
     {
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }
@@ -39,7 +39,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [Serializable()]
     [XmlType(Namespace = CIOTNamespace.PortalANTT)]
     [XmlRoot("RetConsultarCIOTGerado", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
-    public class RetConsultarCIOTGerado : XMLBase
+    public partial class RetConsultarCIOTGerado : XMLBase
     {
         [XmlElement("temp")]
         public Temp Temp { get; set; }
