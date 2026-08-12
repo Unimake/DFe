@@ -5,7 +5,7 @@ using Unimake.Business.DFe.ConsumirServico.Contracts;
 
 namespace Unimake.Business.DFe.ConsumirServico.Transport
 {
-    internal sealed class ApiTransportExecutor
+    internal sealed class ApiTransportExecutor : IApiTransportExecutor
     {
         public TransportResponse Execute(TransportRequest request)
         {

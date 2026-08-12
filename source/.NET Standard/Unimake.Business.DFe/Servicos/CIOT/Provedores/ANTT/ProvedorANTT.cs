@@ -17,6 +17,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.ANTT
 
         public bool EnviaConteudoEmRequisicaoGet => false;
 
+        public bool RecriaConteudoAposPrepararExecucao => false;
+
         public void Configurar(Configuracao configuracao, string nomeServico, Servico servico)
         {
             if (!configuracao.Definida)

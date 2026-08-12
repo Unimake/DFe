@@ -10,6 +10,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores
 
         bool EnviaConteudoEmRequisicaoGet { get; }
 
+        bool RecriaConteudoAposPrepararExecucao { get; }
+
         void Configurar(Configuracao configuracao, string nomeServico, Servico servico);
 
         HttpContent CriarHttpContent(XMLBase xml, Servico servico, Configuracao configuracao);

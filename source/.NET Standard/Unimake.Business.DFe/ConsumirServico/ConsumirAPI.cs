@@ -31,7 +31,7 @@ namespace Unimake.Business.DFe
 
             var request = new ApiConfigTransportRequestMapper().Map(apiConfig, certificado);
 
-            using (var transportResponse = new ApiTransportExecutor().Execute(request))
+            using (var transportResponse = ApiTransportExecutorFactory.Create().Execute(request))
             using (var httpResponse = transportResponse.HttpResponseMessage)
             {
                 WebException webException = null;

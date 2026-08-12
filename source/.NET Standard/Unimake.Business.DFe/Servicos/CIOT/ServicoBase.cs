@@ -110,7 +110,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         public override void Executar()
         {
             Provedor.PrepararExecucao(Configuracoes);
-            if (Provedor.EnviaConteudoEmRequisicaoGet && string.Equals(Configuracoes.MetodoAPI, "get", StringComparison.OrdinalIgnoreCase))
+            if (Provedor.RecriaConteudoAposPrepararExecucao)
             {
                 Configuracoes.HttpContent = CriarHttpContentPadrao();
             }

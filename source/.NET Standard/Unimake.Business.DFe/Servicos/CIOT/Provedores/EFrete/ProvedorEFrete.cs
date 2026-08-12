@@ -10,6 +10,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
 
         public bool EnviaConteudoEmRequisicaoGet => true;
 
+        public bool RecriaConteudoAposPrepararExecucao => true;
+
         public void Configurar(Configuracao configuracao, string nomeServico, Servico servico)
         {
             EFreteValidator.ValidarServicoSuportado(servico);
