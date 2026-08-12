@@ -17,25 +17,54 @@ namespace Unimake.DFe.Test.NFe.Servicos
     public class AutorizacaoTest
     {
         /// <summary>
-        /// Validar a geração do XML processado para NFe autorizada com alerta
+        /// Validar os códigos de protocolo que geram XML processado no retorno síncrono.
         /// </summary>
-        [Fact]
+        [Theory]
+        [InlineData(ModeloDFe.NFe, 100, "Autorizado o uso da NF-e", true)]
+        [InlineData(ModeloDFe.NFe, 120, "Autorizado o uso da NF-e, autorização concedida com alerta", true)]
+        [InlineData(ModeloDFe.NFe, 150, "Autorizado o uso da NF-e, autorização fora de prazo", true)]
+        [InlineData(ModeloDFe.NFe, 539, "Rejeição: Duplicidade de NF-e, com diferença na Chave de Acesso", false)]
+        [InlineData(ModeloDFe.NFCe, 100, "Autorizado o uso da NF-e", true)]
+        [InlineData(ModeloDFe.NFCe, 120, "Autorizado o uso da NF-e, autorização concedida com alerta", true)]
+        [InlineData(ModeloDFe.NFCe, 150, "Autorizado o uso da NF-e, autorização fora de prazo", true)]
+        [InlineData(ModeloDFe.NFCe, 539, "Rejeição: Duplicidade de NF-e, com diferença na Chave de Acesso", false)]
         [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
-        public void GerarNfeProcParaNfeAutorizadaComAlerta()
+        public void GerarNfeProcRetornoSincrono(ModeloDFe modeloDFe, int cStat, string xMotivo, bool autorizado)
         {
-            var doc = new XmlDocument();
-            doc.Load(@"..\..\..\NFe\Resources\NFe1.xml");
-
-            var enviNFe = new EnviNFe
+            var enviNFe = CriarEnviNFe(modeloDFe, SimNao.Sim);
+            var protocolo = CriarProtocolo(enviNFe, cStat, xMotivo);
+            var retorno = new RetEnviNFe
             {
-                Versao = "4.00",
-                IdLote = "000000000000001",
-                IndSinc = SimNao.Nao,
-                NFe = new List<Business.DFe.Xml.NFe.NFe>
-                {
-                    XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(doc)
-                }
+                CStat = 104,
+                ProtNFe = protocolo,
+                TpAmb = TipoAmbiente.Homologacao,
+                Versao = "4.00"
             };
+            var autorizacao = new AutorizacaoParaTeste(enviNFe)
+            {
+                RetornoWSXML = retorno.GerarXML()
+            };
+            autorizacao.RetornoWSString = autorizacao.RetornoWSXML.OuterXml;
+
+            ValidarNfeProc(autorizacao, enviNFe, cStat, xMotivo, autorizado);
+        }
+
+        /// <summary>
+        /// Validar os códigos de protocolo que geram XML processado na consulta do recibo.
+        /// </summary>
+        [Theory]
+        [InlineData(ModeloDFe.NFe, 100, "Autorizado o uso da NF-e", true)]
+        [InlineData(ModeloDFe.NFe, 120, "Autorizado o uso da NF-e, autorização concedida com alerta", true)]
+        [InlineData(ModeloDFe.NFe, 150, "Autorizado o uso da NF-e, autorização fora de prazo", true)]
+        [InlineData(ModeloDFe.NFe, 539, "Rejeição", false)]
+        [InlineData(ModeloDFe.NFCe, 100, "Autorizado o uso da NF-e", true)]
+        [InlineData(ModeloDFe.NFCe, 120, "Autorizado o uso da NF-e, autorização concedida com alerta", true)]
+        [InlineData(ModeloDFe.NFCe, 150, "Autorizado o uso da NF-e, autorização fora de prazo", true)]
+        [InlineData(ModeloDFe.NFCe, 539, "Rejeição", false)]
+        [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
+        public void GerarNfeProcConsultaRecibo(ModeloDFe modeloDFe, int cStat, string xMotivo, bool autorizado)
+        {
+            var enviNFe = CriarEnviNFe(modeloDFe, SimNao.Nao);
             var autorizacao = new AutorizacaoParaTeste(enviNFe)
             {
                 RetConsReciNFe = new RetConsReciNFe
@@ -43,22 +72,39 @@ namespace Unimake.DFe.Test.NFe.Servicos
                     CStat = 104,
                     ProtNFe = new List<ProtNFe>
                     {
-                        new ProtNFe
-                        {
-                            InfProt = new InfProt
-                            {
-                                ChNFe = enviNFe.NFe[0].InfNFeField.Chave,
-                                CStat = 120
-                            }
-                        }
+                        CriarProtocolo(enviNFe, cStat, xMotivo)
                     }
                 }
             };
 
-            var nfeProc = autorizacao.NfeProcResults[enviNFe.NFe[0].InfNFeField.Chave];
+            ValidarNfeProc(autorizacao, enviNFe, cStat, xMotivo, autorizado);
+        }
 
-            Assert.NotNull(nfeProc.ProtNFe);
-            Assert.Equal(120, nfeProc.ProtNFe.InfProt.CStat);
+        /// <summary>
+        /// Validar os códigos de protocolo que geram XML processado na consulta de situação.
+        /// </summary>
+        [Theory]
+        [InlineData(ModeloDFe.NFe, 100, "Autorizado o uso da NF-e", true)]
+        [InlineData(ModeloDFe.NFe, 120, "Autorizado o uso da NF-e, autorização concedida com alerta", true)]
+        [InlineData(ModeloDFe.NFe, 150, "Autorizado o uso da NF-e, autorização fora de prazo", true)]
+        [InlineData(ModeloDFe.NFe, 539, "Rejeição", false)]
+        [InlineData(ModeloDFe.NFCe, 100, "Autorizado o uso da NF-e", true)]
+        [InlineData(ModeloDFe.NFCe, 120, "Autorizado o uso da NF-e, autorização concedida com alerta", true)]
+        [InlineData(ModeloDFe.NFCe, 150, "Autorizado o uso da NF-e, autorização fora de prazo", true)]
+        [InlineData(ModeloDFe.NFCe, 539, "Rejeição", false)]
+        [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
+        public void GerarNfeProcConsultaSituacao(ModeloDFe modeloDFe, int cStat, string xMotivo, bool autorizado)
+        {
+            var enviNFe = CriarEnviNFe(modeloDFe, SimNao.Nao);
+            var autorizacao = new AutorizacaoParaTeste(enviNFe);
+            autorizacao.RetConsSitNFes.Add(new RetConsSitNFe
+            {
+                CStat = cStat,
+                XMotivo = xMotivo,
+                ProtNFe = CriarProtocolo(enviNFe, cStat, xMotivo)
+            });
+
+            ValidarNfeProc(autorizacao, enviNFe, cStat, xMotivo, autorizado);
         }
 
         /// <summary>
@@ -1353,6 +1399,58 @@ namespace Unimake.DFe.Test.NFe.Servicos
             };
 
             return xml;
+        }
+
+        private static EnviNFe CriarEnviNFe(ModeloDFe modeloDFe, SimNao indSinc)
+        {
+            var doc = new XmlDocument();
+            doc.Load(@"..\..\..\NFe\Resources\NFe1.xml");
+            var nfe = XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(doc);
+            nfe.InfNFeField.Ide.Mod = modeloDFe;
+
+            return new EnviNFe
+            {
+                Versao = "4.00",
+                IdLote = "000000000000001",
+                IndSinc = indSinc,
+                NFe = new List<Business.DFe.Xml.NFe.NFe>
+                {
+                    nfe
+                }
+            };
+        }
+
+        private static ProtNFe CriarProtocolo(EnviNFe enviNFe, int cStat, string xMotivo) => new ProtNFe
+        {
+            Versao = "4.00",
+            InfProt = new InfProt
+            {
+                ChNFe = enviNFe.NFe[0].InfNFeField.Chave,
+                CStat = cStat,
+                TpAmb = TipoAmbiente.Homologacao,
+                XMotivo = xMotivo
+            }
+        };
+
+        private static void ValidarNfeProc(Autorizacao autorizacao, EnviNFe enviNFe, int cStat, string xMotivo, bool autorizado)
+        {
+            var chave = enviNFe.NFe[0].InfNFeField.Chave;
+            var resultados = autorizacao.NfeProcResults;
+
+            if (!autorizado)
+            {
+                Assert.DoesNotContain(chave, resultados.Keys);
+                return;
+            }
+
+            var nfeProc = resultados[chave];
+            Assert.NotNull(nfeProc.ProtNFe);
+            Assert.Equal(cStat, nfeProc.ProtNFe.InfProt.CStat);
+            Assert.Equal(xMotivo, nfeProc.ProtNFe.InfProt.XMotivo);
+
+            var xml = nfeProc.GerarXML();
+            Assert.Equal(cStat.ToString(), xml.GetElementsByTagName("cStat")[0].InnerText);
+            Assert.Equal(xMotivo, xml.GetElementsByTagName("xMotivo")[0].InnerText);
         }
 
         private class AutorizacaoParaTeste : Autorizacao
