@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetConsultarCIOTGerado xmlns="http://www.antt.gov.br/ciot">
+	<CodigoIdentificacaoOperacao>992000000126</CodigoIdentificacaoOperacao>
+	<Codigo>
+		<Item>000000</Item>
+	</Codigo>
+	<Mensagem>
+		<Item>Operacao localizada com sucesso</Item>
+	</Mensagem>
+	<EstadoCIOT>EmViagem</EstadoCIOT>
+	<Protocolo>PROTO-EFRETE-CONS-001</Protocolo>
+</RetConsultarCIOTGerado>

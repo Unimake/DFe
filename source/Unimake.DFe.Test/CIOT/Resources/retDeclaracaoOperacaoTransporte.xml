@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RetDeclaracaoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
-  <IdOperacaoTransporte>123456789012</IdOperacaoTransporte>
-  <CodigoVerificador>1234</CodigoVerificador>
-  <Protocolo>1234567890123456</Protocolo>
-  <Codigo>000000</Codigo>
-  <Mensagem>Operacao realizada com sucesso</Mensagem>
-  <Mensagens>
-    <Mensagem>
-      <Codigo>000000</Codigo>
-      <Descricao>Operacao realizada com sucesso</Descricao>
-    </Mensagem>
-  </Mensagens>
-  <AvisoTransportador>Apresentar aviso ao transportador quando retornado.</AvisoTransportador>
+	<IdOperacaoTransporte>123456789012</IdOperacaoTransporte>
+	<CodigoVerificador>1234</CodigoVerificador>
+	<Protocolo>1234567890123456</Protocolo>
+	<Codigo>000000</Codigo>
+	<Mensagem>Operacao realizada com sucesso</Mensagem>
+	<Mensagens>
+		<Mensagem>
+			<Codigo>000000</Codigo>
+			<Descricao>Operacao realizada com sucesso</Descricao>
+		</Mensagem>
+	</Mensagens>
+	<AvisoTransportador>Apresentar aviso ao transportador quando retornado.</AvisoTransportador>
 </RetDeclaracaoOperacaoTransporte>

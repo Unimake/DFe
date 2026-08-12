@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DeclaracaoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+	<TipoOperacao>3</TipoOperacao>
+	<CpfCnpjContratado>12345678901</CpfCnpjContratado>
+	<RNTRCContratado>123456789</RNTRCContratado>
+	<CpfCnpjContratante>12345678000199</CpfCnpjContratante>
+	<RNTRCContratante>987654321</RNTRCContratante>
+	<ValorFrete>9500.00</ValorFrete>
+	<DataDeclaracao>2026-08-12T07:30:00-03:00</DataDeclaracao>
+	<IndContingencia>false</IndContingencia>
+	<DataFimViagem>2026-09-12</DataFimViagem>
+	<Veiculos>
+		<Veiculo>
+			<Placa>BRA2E19</Placa>
+			<RNTRCVeiculo>123456789</RNTRCVeiculo>
+			<NumeroEixos>3</NumeroEixos>
+		</Veiculo>
+	</Veiculos>
+	<InfPagamento>
+		<TipoPagamentoEFrete>eFRETE</TipoPagamentoEFrete>
+		<IdPagamentoCliente>ID-PAG-TAC-001</IdPagamentoCliente>
+		<DataDeLiberacao>2026-09-12T18:00:00-03:00</DataDeLiberacao>
+		<Categoria>SemCategoria</Categoria>
+		<Documento>DOC-TAC-001</Documento>
+		<InformacaoAdicional>PAGAMENTO TAC AGREGADO</InformacaoAdicional>
+		<TipoPagamento>1</TipoPagamento>
+		<CpfCnpjCreditado>12345678901</CpfCnpjCreditado>
+		<CodigoPagamento>PAG-TAC-001</CodigoPagamento>
+		<IndPagamento>1</IndPagamento>
+		<NumeroParcela>1</NumeroParcela>
+		<DataVencimento>2026-09-12</DataVencimento>
+		<ValorParcela>9500.00</ValorParcela>
+	</InfPagamento>
+	<IdOperacaoCliente>CIOT-TAC-0001</IdOperacaoCliente>
+	<MatrizCNPJ>12345678000199</MatrizCNPJ>
+	<FilialCNPJ>12345678000270</FilialCNPJ>
+	<TipoEmbalagem>NaoAplicavel</TipoEmbalagem>
+	<TipoPagamentoEFrete>eFRETE</TipoPagamentoEFrete>
+	<Motorista>
+		<CpfOuCnpj>12345678901</CpfOuCnpj>
+		<CNH>12345678901</CNH>
+		<Celular>
+			<DDD>44</DDD>
+			<Numero>999999999</Numero>
+		</Celular>
+	</Motorista>
+	<Impostos>
+		<IRRF>90</IRRF>
+		<SestSenat>145</SestSenat>
+		<INSS>250</INSS>
+		<ISSQN>70</ISSQN>
+		<OutrosImpostos>20</OutrosImpostos>
+		<DescricaoOutrosImpostos>TRIBUTO TESTE</DescricaoOutrosImpostos>
+	</Impostos>
+	<Contratado>
+		<NomeOuRazaoSocial>TRANSPORTADOR TESTE</NomeOuRazaoSocial>
+		<CpfOuCnpj>12345678901</CpfOuCnpj>
+		<RNTRC>123456789</RNTRC>
+		<Endereco>
+			<Bairro>CENTRO</Bairro>
+			<Rua>RUA EXEMPLO</Rua>
+			<Numero>100</Numero>
+			<Complemento>SALA 1</Complemento>
+			<CEP>87000000</CEP>
+			<CodigoMunicipio>4115200</CodigoMunicipio>
+		</Endereco>
+		<EMail>transportador@example.com</EMail>
+		<Telefones>
+			<Celular>
+				<DDD>44</DDD>
+				<Numero>999999999</Numero>
+			</Celular>
+			<Fixo>
+				<DDD>44</DDD>
+				<Numero>33333333</Numero>
+			</Fixo>
+			<Fax>
+				<DDD>44</DDD>
+				<Numero>32222222</Numero>
+			</Fax>
+		</Telefones>
+		<ResponsavelPeloPagamento>false</ResponsavelPeloPagamento>
+	</Contratado>
+	<Contratante>
+		<NomeOuRazaoSocial>CONTRATANTE TAC TESTE</NomeOuRazaoSocial>
+		<CpfOuCnpj>12345678000199</CpfOuCnpj>
+		<RNTRC>987654321</RNTRC>
+		<Endereco>
+			<Bairro>INDUSTRIAL</Bairro>
+			<Rua>AVENIDA MODELO</Rua>
+			<Numero>200</Numero>
+			<Complemento>BLOCO A</Complemento>
+			<CEP>87010000</CEP>
+			<CodigoMunicipio>4115200</CodigoMunicipio>
+		</Endereco>
+		<EMail>contratante@example.com</EMail>
+		<Telefones>
+			<Celular>
+				<DDD>44</DDD>
+				<Numero>988888888</Numero>
+			</Celular>
+			<Fixo>
+				<DDD>44</DDD>
+				<Numero>31111111</Numero>
+			</Fixo>
+			<Fax>
+				<DDD>44</DDD>
+				<Numero>30000000</Numero>
+			</Fax>
+		</Telefones>
+		<ResponsavelPeloPagamento>true</ResponsavelPeloPagamento>
+	</Contratante>
+	<Subcontratante>
+		<NomeOuRazaoSocial>SUBCONTRATANTE TAC TESTE</NomeOuRazaoSocial>
+		<CpfOuCnpj>22222222000122</CpfOuCnpj>
+		<RNTRC>222222222</RNTRC>
+		<Endereco>
+			<Bairro>TESTE</Bairro>
+			<Rua>RUA DOIS</Rua>
+			<Numero>400</Numero>
+			<Complemento>SALA 2</Complemento>
+			<CEP>80010000</CEP>
+			<CodigoMunicipio>4106902</CodigoMunicipio>
+		</Endereco>
+		<EMail>subcontratante@example.com</EMail>
+		<Telefones>
+			<Celular>
+				<DDD>41</DDD>
+				<Numero>966666666</Numero>
+			</Celular>
+			<Fixo>
+				<DDD>41</DDD>
+				<Numero>32221111</Numero>
+			</Fixo>
+			<Fax>
+				<DDD>41</DDD>
+				<Numero>32220000</Numero>
+			</Fax>
+		</Telefones>
+		<ResponsavelPeloPagamento>false</ResponsavelPeloPagamento>
+	</Subcontratante>
+	<Consignatario>
+		<NomeOuRazaoSocial>CONSIGNATARIO TAC TESTE</NomeOuRazaoSocial>
+		<CpfOuCnpj>33333333000133</CpfOuCnpj>
+		<RNTRC>333333333</RNTRC>
+		<Endereco>
+			<Bairro>TESTE</Bairro>
+			<Rua>RUA TRES</Rua>
+			<Numero>500</Numero>
+			<Complemento>SALA 3</Complemento>
+			<CEP>80020000</CEP>
+			<CodigoMunicipio>4106902</CodigoMunicipio>
+		</Endereco>
+		<EMail>consignatario@example.com</EMail>
+		<Telefones>
+			<Celular>
+				<DDD>41</DDD>
+				<Numero>955555555</Numero>
+			</Celular>
+			<Fixo>
+				<DDD>41</DDD>
+				<Numero>32223333</Numero>
+			</Fixo>
+			<Fax>
+				<DDD>41</DDD>
+				<Numero>32224444</Numero>
+			</Fax>
+		</Telefones>
+		<ResponsavelPeloPagamento>false</ResponsavelPeloPagamento>
+	</Consignatario>
+	<TomadorServico>
+		<NomeOuRazaoSocial>TOMADOR TAC TESTE</NomeOuRazaoSocial>
+		<CpfOuCnpj>44444444000144</CpfOuCnpj>
+		<RNTRC>444444444</RNTRC>
+		<Endereco>
+			<Bairro>TESTE</Bairro>
+			<Rua>RUA QUATRO</Rua>
+			<Numero>600</Numero>
+			<Complemento>SALA 4</Complemento>
+			<CEP>80030000</CEP>
+			<CodigoMunicipio>4106902</CodigoMunicipio>
+		</Endereco>
+		<EMail>tomador@example.com</EMail>
+		<Telefones>
+			<Celular>
+				<DDD>41</DDD>
+				<Numero>944444444</Numero>
+			</Celular>
+			<Fixo>
+				<DDD>41</DDD>
+				<Numero>31112222</Numero>
+			</Fixo>
+			<Fax>
+				<DDD>41</DDD>
+				<Numero>31113333</Numero>
+			</Fax>
+		</Telefones>
+		<ResponsavelPeloPagamento>false</ResponsavelPeloPagamento>
+	</TomadorServico>
+	<ObservacoesAoTransportador>
+		<Observacao>OPERACAO TAC AGREGADO</Observacao>
+	</ObservacoesAoTransportador>
+	<ObservacoesAoCredenciado>
+		<Observacao>MASSA SINTETICA</Observacao>
+	</ObservacoesAoCredenciado>
+	<EntregaDocumentacao>Digital</EntregaDocumentacao>
+	<QuantidadeSaques>1</QuantidadeSaques>
+	<QuantidadeTransferencias>2</QuantidadeTransferencias>
+</DeclaracaoOperacaoTransporte>
