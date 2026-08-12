@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RetificacaoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+	<ProvedorCIOT>ANTT</ProvedorCIOT>
 	<CodigoIdentificacaoOperacao>1234567890123456</CodigoIdentificacaoOperacao>
 	<ValorFrete>1550.75</ValorFrete>
 	<DataFimViagem>2026-05-27</DataFimViagem>

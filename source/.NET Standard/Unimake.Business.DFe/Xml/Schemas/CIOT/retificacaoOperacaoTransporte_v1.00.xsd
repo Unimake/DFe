@@ -8,6 +8,7 @@
   <xs:element name="RetificacaoOperacaoTransporte">
     <xs:complexType>
       <xs:sequence>
+        <xs:element name="ProvedorCIOT" type="TProvedorCIOT" minOccurs="0"/>
         <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
         <xs:element name="ValorFrete" type="TValor10v2" minOccurs="0"/>
         <xs:element name="DataFimViagem" type="TData" minOccurs="0"/>

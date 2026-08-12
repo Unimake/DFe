@@ -8,6 +8,7 @@
   <xs:element name="ConsultarSituacaoTransportador">
     <xs:complexType>
       <xs:sequence>
+        <xs:element name="ProvedorCIOT" type="TProvedorCIOT" minOccurs="0"/>
         <xs:element name="CpfCnpjInteressado" type="TCpfCnpj"/>
         <xs:element name="CpfCnpjTransportador" type="TCpfCnpj"/>
         <xs:element name="RNTRCTransportador" type="TRNTRC"/>

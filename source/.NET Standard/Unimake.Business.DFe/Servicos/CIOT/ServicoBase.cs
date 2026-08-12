@@ -132,7 +132,9 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             where TEnvio : XMLBase, new()
         {
             if (configuracao is null) throw new ArgumentNullException(nameof(configuracao));
-            Inicializar(xml?.GerarXML() ?? throw new ArgumentNullException(nameof(xml)), configuracao);
+            var documento = xml?.GerarXML() ?? throw new ArgumentNullException(nameof(xml));
+            AplicarProvedorDoXML(documento, configuracao);
+            Inicializar(documento, configuracao);
             AtualizarHttpContentAposInicializacao();
         }
 
@@ -144,8 +146,46 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             if (configuracao is null) throw new ArgumentNullException(nameof(configuracao));
             var doc = new XmlDocument();
             doc.LoadXml(conteudoXML);
+            AplicarProvedorDoXML(doc, configuracao);
             Inicializar(doc, configuracao);
             AtualizarHttpContentAposInicializacao();
+        }
+
+        private void AplicarProvedorDoXML(XmlDocument documento, Configuracao configuracao)
+        {
+            var provedor = ProvedorCIOT.ANTT;
+            XmlNode tagProvedor = null;
+            if (documento?.DocumentElement != null)
+            {
+                foreach (XmlNode node in documento.DocumentElement.ChildNodes)
+                {
+                    if (node.NodeType == XmlNodeType.Element && node.LocalName == "ProvedorCIOT")
+                    {
+                        tagProvedor = node;
+                        break;
+                    }
+                }
+            }
+
+            if (tagProvedor != null)
+            {
+                if (tagProvedor.InnerText == nameof(ProvedorCIOT.EFrete))
+                {
+                    provedor = ProvedorCIOT.EFrete;
+                }
+                else if (tagProvedor.InnerText != nameof(ProvedorCIOT.ANTT))
+                {
+                    throw new ValidarXMLException("A tag ProvedorCIOT deve conter ANTT ou EFrete.");
+                }
+            }
+
+            if (configuracao.ProvedorCIOT != provedor)
+            {
+                configuracao.Definida = false;
+                configuracao.RequestURI = null;
+            }
+            configuracao.ProvedorCIOT = provedor;
+            _provedor = null;
         }
 
         /// <summary>

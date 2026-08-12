@@ -90,6 +90,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             var configuracao = CriarConfiguracaoEFrete();
             var servico = new ConsultaServico(new ConsultarCIOTGerado
             {
+                ProvedorCIOT = ProvedorCIOT.EFrete,
                 MatrizCNPJ = "12345678000199",
                 IdOperacaoCliente = "CIOT-CLIENTE-001"
             }, configuracao);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ConsultarCIOTGerado xmlns="http://www.antt.gov.br/ciot">
+	<ProvedorCIOT>EFrete</ProvedorCIOT>
 	<MatrizCNPJ>12345678000199</MatrizCNPJ>
 	<IdOperacaoCliente>CIOT-LOTACAO-0001</IdOperacaoCliente>
 </ConsultarCIOTGerado>

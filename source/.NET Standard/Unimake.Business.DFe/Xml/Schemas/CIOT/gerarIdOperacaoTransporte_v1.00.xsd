@@ -21,6 +21,7 @@
   <xs:element name="GerarIdOperacaoTransporte">
     <xs:complexType>
       <xs:sequence>
+        <xs:element name="ProvedorCIOT" type="TProvedorCIOT" minOccurs="0"/>
         <xs:element name="CpfCnpj" type="TCpfCnpj"/>
       </xs:sequence>
       <xs:attribute name="versao" type="TVersaoGerarIdOperacaoTransporte" use="required"/>

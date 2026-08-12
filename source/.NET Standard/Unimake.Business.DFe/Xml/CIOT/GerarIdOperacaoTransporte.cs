@@ -20,6 +20,25 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [XmlRoot("GerarIdOperacaoTransporte", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
     public class GerarIdOperacaoTransporte : XMLBase
     {
+        /// <summary>
+        /// Provedor utilizado para executar o serviço CIOT.
+        /// Quando não informado, o serviço utiliza a ANTT.
+        /// </summary>
+        [XmlElement("ProvedorCIOT")]
+        [Newtonsoft.Json.JsonIgnore]
+#if INTEROP
+        public Unimake.Business.DFe.Servicos.ProvedorCIOT ProvedorCIOT { get; set; } = (Unimake.Business.DFe.Servicos.ProvedorCIOT)(-1);
+#else
+        public Unimake.Business.DFe.Servicos.ProvedorCIOT? ProvedorCIOT { get; set; }
+#endif
+
+#if INTEROP
+        public bool ShouldSerializeProvedorCIOT() => ProvedorCIOT != (Unimake.Business.DFe.Servicos.ProvedorCIOT)(-1);
+#else
+        public bool ShouldSerializeProvedorCIOT() => ProvedorCIOT.HasValue;
+#endif
+
+
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         [JsonIgnore]
         public string Versao { get; set; } = "1.00";

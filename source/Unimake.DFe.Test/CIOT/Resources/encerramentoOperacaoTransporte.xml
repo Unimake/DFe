@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <EncerramentoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+	<ProvedorCIOT>ANTT</ProvedorCIOT>
 	<CodigoIdentificacaoOperacao>1234567890123456</CodigoIdentificacaoOperacao>
 	<OrigemDestino>
 		<ParOrigemDestino>

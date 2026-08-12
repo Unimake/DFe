@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DeclaracaoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+	<ProvedorCIOT>EFrete</ProvedorCIOT>
 	<TipoOperacao>3</TipoOperacao>
 	<CpfCnpjContratado>12345678901</CpfCnpjContratado>
 	<RNTRCContratado>123456789</RNTRCContratado>

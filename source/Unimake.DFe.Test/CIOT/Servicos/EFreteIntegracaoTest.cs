@@ -28,7 +28,59 @@ namespace Unimake.DFe.Test.CIOT.Servicos
 
         [Fact]
         [Trait("DFe", "CIOT")]
-        public void ConfiguraEndpointEFreteSemAlterarServicoPublico()
+        public void AusenciaDaTagProvedorSempreSelecionaANTT()
+        {
+            var configuracao = CriarConfiguracao();
+            new ConsultaServico(new ConsultarCIOTGerado
+            {
+                CodigoIdentificacaoOperacao = "123456789012",
+                AnoDeclaracao = 2026
+            }, configuracao);
+
+            Assert.Equal(ProvedorCIOT.ANTT, configuracao.ProvedorCIOT);
+            Assert.Contains("antt.gov.br", configuracao.RequestURI, StringComparison.OrdinalIgnoreCase);
+
+            var configuracaoXml = CriarConfiguracao();
+            var xmlLegado = System.IO.File.ReadAllText(@"..\..\..\CIOT\Resources\consultarCIOTGeradoSemProvedor.xml");
+            new ConsultaServico(xmlLegado, configuracaoXml);
+
+            Assert.Equal(ProvedorCIOT.ANTT, configuracaoXml.ProvedorCIOT);
+            Assert.Contains("antt.gov.br", configuracaoXml.RequestURI, StringComparison.OrdinalIgnoreCase);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void TagDoXmlPrevaleceEPermiteAlternarProvedorNaConfiguracao()
+        {
+            var configuracao = new Configuracao { TipoAmbiente = TipoAmbiente.Homologacao, EFreteIntegrador = "INTEGRADOR-TESTE", EFreteToken = "TOKEN-TESTE" };
+            var xmlEFrete = System.IO.File.ReadAllText(@"..\..\..\CIOT\Resources\efrete-consultar-ciot-gerado.xml");
+            new ConsultaServico(xmlEFrete, configuracao);
+
+            Assert.Equal(ProvedorCIOT.EFrete, configuracao.ProvedorCIOT);
+            Assert.Contains("efrete.com.br", configuracao.RequestURI, StringComparison.OrdinalIgnoreCase);
+
+            var xmlANTT = System.IO.File.ReadAllText(@"..\..\..\CIOT\Resources\consultarCIOTGerado.xml");
+            new ConsultaServico(xmlANTT, configuracao);
+
+            Assert.Equal(ProvedorCIOT.ANTT, configuracao.ProvedorCIOT);
+            Assert.Contains("antt.gov.br", configuracao.RequestURI, StringComparison.OrdinalIgnoreCase);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void RejeitaProvedorDesconhecidoAntesDeConfigurarTransporte()
+        {
+            var xml = System.IO.File.ReadAllText(@"..\..\..\CIOT\Resources\consultarCIOTGerado.xml")
+                .Replace("<ProvedorCIOT>ANTT</ProvedorCIOT>", "<ProvedorCIOT>OUTRO</ProvedorCIOT>");
+            var configuracao = new Configuracao { TipoAmbiente = TipoAmbiente.Homologacao };
+
+            Assert.Throws<Unimake.Exceptions.ValidarXMLException>(() => new ConsultaServico(xml, configuracao));
+            Assert.Null(configuracao.RequestURI);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public async System.Threading.Tasks.Task ConfiguraEndpointEFreteSemAlterarServicoPublico()
         {
             var configuracao = CriarConfiguracao();
             var servico = new DeclaracaoServico(CriarDeclaracao(TipoOperacaoTransporteCIOT.CargaLotacao), configuracao);
@@ -38,6 +90,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Equal(Servico.CIOTDeclaracaoOperacaoTransporte, configuracao.Servico);
             Assert.Equal("CIOT-CLIENTE-001", servico.Envio.IdOperacaoCliente);
             Assert.Equal("post", configuracao.MetodoAPI);
+            Assert.DoesNotContain("ProvedorCIOT", await configuracao.HttpContent.ReadAsStringAsync(TestContext.Current.CancellationToken));
         }
 
         [Fact]
@@ -45,7 +98,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
         public void ConfiguraConsultaEFreteComoGetComJsonNoCorpo()
         {
             var configuracao = CriarConfiguracao();
-            new ConsultaServico(new ConsultarCIOTGerado { MatrizCNPJ = "12345678000199", IdOperacaoCliente = "CIOT-CLIENTE-001" }, configuracao);
+            new ConsultaServico(new ConsultarCIOTGerado { ProvedorCIOT = ProvedorCIOT.EFrete, MatrizCNPJ = "12345678000199", IdOperacaoCliente = "CIOT-CLIENTE-001" }, configuracao);
 
             Assert.Equal("get", configuracao.MetodoAPI);
             Assert.Contains("ObterCodigoIdentificacaoOperacaoTransportePorIdOperacaoCliente", configuracao.RequestURI);
@@ -66,6 +119,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Equal("CIOT-CLIENTE-001", json.Value<string>("IdOperacaoCliente"));
             Assert.Equal("TOKEN-TESTE", json.Value<string>("Token"));
             Assert.Null(json["IdOperacaoTransporte"]);
+            Assert.Null(json["ProvedorCIOT"]);
 
             if (tipo == TipoOperacaoTransporteCIOT.TACAgregado)
             {
@@ -191,9 +245,9 @@ namespace Unimake.DFe.Test.CIOT.Servicos
         public void RecusaServicosSemEquivalenteAntesDaRequisicao()
         {
             var configuracao = CriarConfiguracao();
-            Assert.Throws<NotSupportedException>(() => new GerarIdServico(new GerarIdOperacaoTransporte { CpfCnpj = "12345678000199" }, configuracao));
-            Assert.Throws<NotSupportedException>(() => new RetificacaoServico(new RetificacaoOperacaoTransporte { CodigoIdentificacaoOperacao = "992000000126" }, CriarConfiguracao()));
-            Assert.Throws<NotSupportedException>(() => new ConsultarExcecaoServico(new ConsultarExcecao { CpfCnpjTransportador = "12345678901" }, CriarConfiguracao()));
+            Assert.Throws<NotSupportedException>(() => new GerarIdServico(new GerarIdOperacaoTransporte { ProvedorCIOT = ProvedorCIOT.EFrete, CpfCnpj = "12345678000199" }, configuracao));
+            Assert.Throws<NotSupportedException>(() => new RetificacaoServico(new RetificacaoOperacaoTransporte { ProvedorCIOT = ProvedorCIOT.EFrete, CodigoIdentificacaoOperacao = "992000000126" }, CriarConfiguracao()));
+            Assert.Throws<NotSupportedException>(() => new ConsultarExcecaoServico(new ConsultarExcecao { ProvedorCIOT = ProvedorCIOT.EFrete, CpfCnpjTransportador = "12345678901" }, CriarConfiguracao()));
         }
 
         [Fact]
@@ -217,6 +271,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
         {
             var xml = new DeclaracaoOperacaoTransporte
             {
+                ProvedorCIOT = ProvedorCIOT.EFrete,
                 IdOperacaoCliente = "CIOT-CLIENTE-001",
                 MatrizCNPJ = "12345678000199",
                 TipoOperacao = tipo,
