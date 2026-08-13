@@ -4,14 +4,16 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
 {
     internal static class EFreteSchemaResolver
     {
+        private const string SchemaEFrete = "CIOT.EFrete.ciotEFrete_v1.00.xsd";
+
         private static readonly IReadOnlyDictionary<Servico, string> Schemas = new Dictionary<Servico, string>
         {
-            { Servico.CIOTDeclaracaoOperacaoTransporte, "CIOT.EFrete.declaracaoOperacaoTransporteEFrete_v1.00.xsd" },
-            { Servico.CIOTConsultarCIOTGerado, "CIOT.EFrete.consultarCIOTGeradoEFrete_v1.00.xsd" },
-            { Servico.CIOTCancelamentoOperacaoTransporte, "CIOT.EFrete.cancelamentoOperacaoTransporteEFrete_v1.00.xsd" },
-            { Servico.CIOTEncerramentoOperacaoTransporte, "CIOT.EFrete.encerramentoOperacaoTransporteEFrete_v1.00.xsd" },
-            { Servico.CIOTConsultarSituacaoTransportador, "CIOT.EFrete.consultarSituacaoTransportadorEFrete_v1.00.xsd" },
-            { Servico.CIOTConsultarFrotaTransportador, "CIOT.EFrete.consultarFrotaTransportadorEFrete_v1.00.xsd" }
+            { Servico.CIOTDeclaracaoOperacaoTransporte, SchemaEFrete },
+            { Servico.CIOTConsultarCIOTGerado, SchemaEFrete },
+            { Servico.CIOTCancelamentoOperacaoTransporte, SchemaEFrete },
+            { Servico.CIOTEncerramentoOperacaoTransporte, SchemaEFrete },
+            { Servico.CIOTConsultarSituacaoTransportador, SchemaEFrete },
+            { Servico.CIOTConsultarFrotaTransportador, SchemaEFrete }
         };
 
         internal static string ObterSchemaArquivo(Servico servico)

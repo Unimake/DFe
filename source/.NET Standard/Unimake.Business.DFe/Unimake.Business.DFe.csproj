@@ -784,6 +784,7 @@
 		<None Remove="Xml\Schemas\CIOT\retificacaoOperacaoTransporte_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\tiposBasicosCIOT_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\EFrete\cancelamentoOperacaoTransporteEFrete_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\EFrete\ciotEFrete_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\EFrete\consultarCIOTGeradoEFrete_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\EFrete\consultarFrotaTransportadorEFrete_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\EFrete\consultarSituacaoTransportadorEFrete_v1.00.xsd" />
@@ -2356,6 +2357,7 @@
 		<EmbeddedResource Include="Xml\Schemas\CIOT\retificacaoOperacaoTransporte_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\tiposBasicosCIOT_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\cancelamentoOperacaoTransporteEFrete_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\ciotEFrete_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\consultarCIOTGeradoEFrete_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\consultarFrotaTransportadorEFrete_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\consultarSituacaoTransportadorEFrete_v1.00.xsd" />
@@ -3838,11 +3840,20 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="System.Net.Http.Json" Version="10.0.10" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.10" />
+		<PackageReference Include="System.Net.Http.Json" Version="10.0.11" />
+		<PackageReference Include="System.Net.Http.WinHttpHandler" Version="10.0.11" GeneratePathProperty="true" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.11" />
 		<PackageReference Include="Unimake.Cryptography" Version="20260803.1649.49" />
 		<PackageReference Include="Unimake.Extensions" Version="20260803.1649.49" />
 		<PackageReference Include="Unimake.Utils" Version="20260803.1649.49" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="$(PkgSystem_Net_Http_WinHttpHandler)\lib\net462\System.Net.Http.WinHttpHandler.dll"
+			  Link="System.Net.Http.WinHttpHandler.dll"
+			  CopyToOutputDirectory="Always"
+			  CopyToPublishDirectory="Always"
+			  Pack="false"
+			  Visible="false" />
 	</ItemGroup>
 
 	<ItemGroup>

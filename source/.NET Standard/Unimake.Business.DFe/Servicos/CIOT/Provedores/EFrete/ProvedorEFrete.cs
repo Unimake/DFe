@@ -17,6 +17,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
         public void Configurar(Configuracao configuracao, string nomeServico, Servico servico)
         {
             EFreteValidator.ValidarServicoSuportado(servico);
+            configuracao.UsaWinHttpHandler = true;
             if (!configuracao.Definida)
             {
                 configuracao.Load(nomeServico, "EF.xml");

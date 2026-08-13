@@ -23,6 +23,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.ANTT
 
         public void Configurar(Configuracao configuracao, string nomeServico, Servico servico)
         {
+            configuracao.UsaWinHttpHandler = false;
             if (!configuracao.Definida)
             {
                 configuracao.Load(nomeServico);

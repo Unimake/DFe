@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.antt.gov.br/ciot" targetNamespace="http://www.antt.gov.br/ciot" elementFormDefault="qualified">
-  <xs:include schemaLocation="tiposBasicosCIOTEFrete_v1.00.xsd" />
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.antt.gov.br/ciot" elementFormDefault="qualified">
   <xs:element name="EncerramentoOperacaoTransporte" type="tns:EncerramentoOperacaoTransporte" />
 </xs:schema>

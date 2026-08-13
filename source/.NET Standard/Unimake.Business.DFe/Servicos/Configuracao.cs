@@ -845,6 +845,8 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         public HttpContent HttpContent { get; set; }
 
+        internal bool UsaWinHttpHandler { get; set; }
+
         /// <summary>
         /// 
         /// </summary>

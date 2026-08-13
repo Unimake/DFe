@@ -39,6 +39,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 ContentType = "application/json",
                 TagRetorno = "prop:innertext",
                 UsaCertificadoDigital = false,
+                UsaWinHttpHandler = true,
                 HttpContent = new StringContent(EFreteMapper.CriarJsonLogin(configuracao), System.Text.Encoding.UTF8, "application/json")
             };
             using (var consumidor = new ConsumirAPI())
