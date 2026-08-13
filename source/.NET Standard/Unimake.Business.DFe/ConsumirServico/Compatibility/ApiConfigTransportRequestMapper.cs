@@ -17,7 +17,8 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 UseCertificate = configuracoes.UsaCertificadoDigital,
                 UseDefaultCredentials = !configuracoes.UsaCertificadoDigital,
                 Expect100Continue = false,
-                UseWinHttpHandler = configuracoes.UsaWinHttpHandler
+                UseWinHttpHandler = configuracoes.UsaWinHttpHandler,
+                DisableAutomaticClientCertificateSelection = configuracoes.DesabilitaSelecaoAutomaticaCertificadoCliente
             };
 
             if (!string.IsNullOrEmpty(configuracoes.Token))

@@ -76,7 +76,9 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
 
             if (!request.UseCertificate)
             {
-                handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+                handler.ClientCertificateOptions = request.DisableAutomaticClientCertificateSelection ?
+                    ClientCertificateOption.Manual :
+                    ClientCertificateOption.Automatic;
                 if (request.UseDefaultCredentials)
                 {
                     handler.Credentials = CredentialCache.DefaultCredentials;

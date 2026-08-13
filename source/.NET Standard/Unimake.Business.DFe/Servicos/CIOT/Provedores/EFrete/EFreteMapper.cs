@@ -203,10 +203,26 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     ["DistanciaPercorrida"] = Numero(item.DistanciaPercorrida),
                     ["Valores"] = item.Valores == null ? null : JObject.FromObject(item.Valores),
                     ["TipoPagamento"] = item.TipoPagamentoEFrete,
-                    ["NotasFiscais"] = item.NotasFiscais == null ? null : new JObject { ["NotaFiscal"] = JArray.FromObject(item.NotasFiscais) }
+                    ["NotasFiscais"] = CriarNotasFiscais(item.NotasFiscais)
                 });
             }
             return result;
+        }
+
+        private static JObject CriarNotasFiscais(List<NotaFiscalCIOT> notasFiscais)
+        {
+            if (notasFiscais == null)
+            {
+                return null;
+            }
+
+            var notas = new JArray();
+            foreach (var notaFiscal in notasFiscais)
+            {
+                notas.Add(JObject.FromObject(notaFiscal));
+            }
+
+            return new JObject { ["NotaFiscal"] = notas };
         }
 
         private static JArray CriarPagamentos(List<InfPagamento> pagamentos)

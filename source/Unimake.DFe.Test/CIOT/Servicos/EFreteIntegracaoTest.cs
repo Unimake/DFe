@@ -145,7 +145,38 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Equal("ContaCorrente", json.SelectToken("Pagamentos[0].InformacoesBancarias.TipoConta")?.Value<string>());
             Assert.Equal("DOC-001", json.SelectToken("Viagens[0].DocumentoViagem")?.Value<string>());
             Assert.Equal("NF-001", json.SelectToken("Viagens[0].NotasFiscais.NotaFiscal[0].Numero")?.Value<string>());
+            Assert.IsType<JArray>(json.SelectToken("Viagens[0].NotasFiscais.NotaFiscal"));
             Assert.Equal(5000d, json.SelectToken("Viagens[0].Valores.TotalOperacao")?.Value<double>());
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void MapeiaUmaOuMaisNotasFiscaisSempreComoArray()
+        {
+            var declaracao = CriarDeclaracao(TipoOperacaoTransporteCIOT.CargaLotacao);
+            var notasFiscais = declaracao.OrigemDestino[0].NotasFiscais;
+
+            var jsonUmaNota = JObject.Parse(EFreteMapper.CriarJson(declaracao, Servico.CIOTDeclaracaoOperacaoTransporte, CriarConfiguracao()));
+            var arrayUmaNota = Assert.IsType<JArray>(jsonUmaNota.SelectToken("Viagens[0].NotasFiscais.NotaFiscal"));
+            Assert.Single(arrayUmaNota);
+
+            notasFiscais.Add(new NotaFiscalCIOT
+            {
+                Numero = "NF-002",
+                Serie = "1",
+                ValorTotal = 20000,
+                ValorDaMercadoriaPorUnidade = 2,
+                CodigoNCMNaturezaCarga = "2701",
+                UnidadeDeMedidaDaMercadoria = "Kg",
+                TipoDeCalculo = "SemQuebra",
+                QuantidadeDaMercadoriaNoEmbarque = 10000,
+                ToleranciaDePerdaDeMercadoria = new ToleranciaCIOT { Tipo = "Nenhum" }
+            });
+
+            var jsonDuasNotas = JObject.Parse(EFreteMapper.CriarJson(declaracao, Servico.CIOTDeclaracaoOperacaoTransporte, CriarConfiguracao()));
+            var arrayDuasNotas = Assert.IsType<JArray>(jsonDuasNotas.SelectToken("Viagens[0].NotasFiscais.NotaFiscal"));
+            Assert.Equal(2, arrayDuasNotas.Count);
+            Assert.Equal("NF-002", arrayDuasNotas[1].Value<string>("Numero"));
         }
 
         [Fact]

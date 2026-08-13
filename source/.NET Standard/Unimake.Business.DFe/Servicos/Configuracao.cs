@@ -847,6 +847,8 @@ namespace Unimake.Business.DFe.Servicos
 
         internal bool UsaWinHttpHandler { get; set; }
 
+        internal bool DesabilitaSelecaoAutomaticaCertificadoCliente { get; set; }
+
         /// <summary>
         /// 
         /// </summary>

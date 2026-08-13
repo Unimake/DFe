@@ -28,6 +28,7 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 ApiKey = configuracoes.ApiKey,
                 HttpContent = configuracoes.HttpContent,
                 UsaWinHttpHandler = configuracoes.UsaWinHttpHandler,
+                DesabilitaSelecaoAutomaticaCertificadoCliente = configuracoes.DesabilitaSelecaoAutomaticaCertificadoCliente,
             };
 
         public APIConfig MapExplicitEnvironment(Configuracao configuracoes) =>
@@ -49,6 +50,7 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 ApiKey = configuracoes.ApiKey,
                 HttpContent = configuracoes.HttpContent,
                 UsaWinHttpHandler = configuracoes.UsaWinHttpHandler,
+                DesabilitaSelecaoAutomaticaCertificadoCliente = configuracoes.DesabilitaSelecaoAutomaticaCertificadoCliente,
             };
     }
 }

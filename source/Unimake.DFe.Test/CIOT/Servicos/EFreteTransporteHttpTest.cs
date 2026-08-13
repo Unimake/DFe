@@ -101,6 +101,46 @@ namespace Unimake.DFe.Test.CIOT.Servicos
 
         [Fact]
         [Trait("DFe", "CIOT")]
+        public void PostEFreteSemCertificadoNaoSelecionaCertificadoAutomaticamente()
+        {
+            var request = new TransportRequest
+            {
+                Method = "post",
+                RequestUri = "https://localhost/Services/Pef/AdicionarOperacaoTransporteV2",
+                HttpContent = new StringContent("{}", Encoding.UTF8, "application/json"),
+                UseCertificate = false,
+                DisableAutomaticClientCertificateSelection = true
+            };
+            var criarHandler = typeof(ApiTransportExecutor).GetMethod("CriarHandler", BindingFlags.Instance | BindingFlags.NonPublic);
+
+            using (var handler = (HttpClientHandler)criarHandler.Invoke(new ApiTransportExecutor(), new object[] { request }))
+            {
+                Assert.Equal(ClientCertificateOption.Manual, handler.ClientCertificateOptions);
+                Assert.Empty(handler.ClientCertificates);
+            }
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void PostGenericoSemCertificadoMantemSelecaoAutomatica()
+        {
+            var request = new TransportRequest
+            {
+                Method = "post",
+                RequestUri = "https://localhost/servico-generico",
+                HttpContent = new StringContent("{}", Encoding.UTF8, "application/json"),
+                UseCertificate = false
+            };
+            var criarHandler = typeof(ApiTransportExecutor).GetMethod("CriarHandler", BindingFlags.Instance | BindingFlags.NonPublic);
+
+            using (var handler = (HttpClientHandler)criarHandler.Invoke(new ApiTransportExecutor(), new object[] { request }))
+            {
+                Assert.Equal(ClientCertificateOption.Automatic, handler.ClientCertificateOptions);
+            }
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
         public void SomenteConfiguracaoEFretePropagaUsoDoWinHttpHandler()
         {
             var configuracaoGenerica = new Configuracao
@@ -112,6 +152,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             var apiGenerica = new ConfiguracaoApiConfigMapper().Map(configuracaoGenerica);
             var requestGenerica = new ApiConfigTransportRequestMapper().Map(apiGenerica, null);
             Assert.False(requestGenerica.UseWinHttpHandler);
+            Assert.False(requestGenerica.DisableAutomaticClientCertificateSelection);
 
             var configuracaoEFrete = new Configuracao
             {
@@ -131,6 +172,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             var requestEFrete = new ApiConfigTransportRequestMapper().Map(apiEFrete, null);
 
             Assert.True(requestEFrete.UseWinHttpHandler);
+            Assert.True(requestEFrete.DisableAutomaticClientCertificateSelection);
         }
 
         [Fact]

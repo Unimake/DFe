@@ -39,6 +39,8 @@ namespace Unimake.Business.DFe
 
         internal bool UsaWinHttpHandler { get; set; }
 
+        internal bool DesabilitaSelecaoAutomaticaCertificadoCliente { get; set; }
+
         /// <summary>
         /// Tempo limite da requisição HTTP, em milissegundos. Zero utiliza o padrão do HttpClient.
         /// </summary>
