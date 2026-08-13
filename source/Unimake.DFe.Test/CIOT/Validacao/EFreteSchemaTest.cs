@@ -147,7 +147,7 @@ namespace Unimake.DFe.Test.CIOT.Validacao
 
             Assert.Null(provedorANTT.ObterSchemaArquivo(Servico.CIOTConsultarCIOTGerado));
             Assert.Equal(
-                "CIOT.EFrete.consultarCIOTGeradoEFrete_v1.00.xsd",
+                "CIOT.EFrete.ciotEFrete_v1.00.xsd",
                 provedorEFrete.ObterSchemaArquivo(Servico.CIOTConsultarCIOTGerado));
         }
 
