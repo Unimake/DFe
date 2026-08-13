@@ -7188,13 +7188,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Origem da mercadoria
         /// </summary>
-        [XmlElement("orig")]
+        [XmlElement("orig", Order = 0)]
         public OrigemMercadoria Orig { get; set; }
 
         /// <summary>
         /// 101- Tributada pelo Simples Nacional com permissão de crédito
         /// </summary>
-        [XmlElement("CSOSN")]
+        [XmlElement("CSOSN", Order = 1)]
         public string CSOSN { get; set; } = "101";
 
         /// <summary>
@@ -7206,7 +7206,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PCredSN para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("pCredSN")]
+        [XmlElement("pCredSN", Order = 2)]
         public string PCredSNField
         {
             get => PCredSN.ToString("F4", CultureInfo.InvariantCulture);
@@ -7222,7 +7222,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCredICMSSN para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vCredICMSSN")]
+        [XmlElement("vCredICMSSN", Order = 3)]
         public string VCredICMSSNField
         {
             get => VCredICMSSN.ToString("F2", CultureInfo.InvariantCulture);

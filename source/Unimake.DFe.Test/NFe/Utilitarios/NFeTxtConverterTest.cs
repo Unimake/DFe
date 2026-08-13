@@ -67,6 +67,7 @@ public class NFeTxtConverterTest
     [InlineData("399_15528301000160_1_11_08_2026-NFE-orig.txt")]
     [InlineData("35260847498059000115550010004030011909226990-nfe.txt")]
     [InlineData("35260847498059000115550010004030021004029993-nfe.txt")]
+    [InlineData("0000056689-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -118,6 +119,32 @@ public class NFeTxtConverterTest
         Assert.Equal(referenciasEsperadas, xml.SelectNodes("//*[local-name()='ide']/*[local-name()='NFref']").Count);
         Assert.NotNull(xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='ICMS']"));
         Assert.NotNull(xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='IBSCBS']"));
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve preservar a origem da mercadoria e o crédito do Simples Nacional informados no segmento N10c.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarOrigemECreditoDoIcmsSn101()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("0000056689-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var icms = xml.SelectSingleNode("//*[local-name()='ICMSSN101']");
+
+        Assert.NotNull(icms);
+        Assert.True(icms.SelectSingleNode("*[local-name()='orig']") != null, xml.OuterXml);
+        Assert.Equal("0", icms.SelectSingleNode("*[local-name()='orig']")?.InnerText);
+        Assert.Equal("101", icms.SelectSingleNode("*[local-name()='CSOSN']")?.InnerText);
+        Assert.Equal("3.9500", icms.SelectSingleNode("*[local-name()='pCredSN']")?.InnerText);
+        Assert.Equal("17.78", icms.SelectSingleNode("*[local-name()='vCredICMSSN']")?.InnerText);
 
         var validacao = new ValidarSchema();
         validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
@@ -1455,6 +1482,11 @@ public class NFeTxtConverterTest
     {
         var dadosIdentificaveis = new[]
         {
+            "OXI GENESES COM.GASES EQUIPAMENTOS LTDA EPP",
+            "METACAULIM BRASIL INDUSTRIA COMERCIO LTDA",
+            "RUA  AGOSTINHO BALESTRIN",
+            "AV.HUMBERTO CERESER",
+            "vendas@metacaulim.com.br",
             "LOTUS CENTRAL DE DIST DE HIGIENICOS LTDA",
             "TEXTIL BICOLOR INDUSTRIA E COM DE CONFEC",
             "R DR JOAO ALTES DE LIMA",
