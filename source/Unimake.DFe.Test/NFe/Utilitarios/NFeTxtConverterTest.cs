@@ -65,6 +65,8 @@ public class NFeTxtConverterTest
     [InlineData("000023655_11092080000179_001_11_08_2026-nfe-orig.txt")]
     [InlineData("398_15528301000160_1_11_08_2026-NFE-orig.txt")]
     [InlineData("399_15528301000160_1_11_08_2026-NFE-orig.txt")]
+    [InlineData("35260847498059000115550010004030011909226990-nfe.txt")]
+    [InlineData("35260847498059000115550010004030021004029993-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -85,6 +87,42 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// Deve reconhecer o cabeçalho da Reforma Tributária que informa os tipos de nota de
+    /// crédito/débito e omite o campo opcional cMunFGIBS.
+    /// </summary>
+    [Theory]
+    [InlineData("35260847498059000115550010004030011909226990-nfe.txt", "6", "07", null, "1", 0)]
+    [InlineData("35260847498059000115550010004030021004029993-nfe.txt", "5", null, "03", "0", 2)]
+    public void ConverterDeveProcessarNotaDeCreditoEDebitoSemMunicipioFatoGeradorIbs(
+        string nomeArquivo,
+        string finalidadeEsperada,
+        string tipoDebitoEsperado,
+        string tipoCreditoEsperado,
+        string tipoOperacaoEsperado,
+        int referenciasEsperadas)
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo(nomeArquivo));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal(finalidadeEsperada, xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='finNFe']").InnerText);
+        Assert.Equal(tipoOperacaoEsperado, xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='tpNF']").InnerText);
+        Assert.Equal(tipoDebitoEsperado, xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='tpNFDebito']")?.InnerText);
+        Assert.Equal(tipoCreditoEsperado, xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='tpNFCredito']")?.InnerText);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='cMunFGIBS']"));
+        Assert.Equal(referenciasEsperadas, xml.SelectNodes("//*[local-name()='ide']/*[local-name()='NFref']").Count);
+        Assert.NotNull(xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='ICMS']"));
+        Assert.NotNull(xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='IBSCBS']"));
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
     }
 
     /// <summary>
@@ -1417,6 +1455,10 @@ public class NFeTxtConverterTest
     {
         var dadosIdentificaveis = new[]
         {
+            "LOTUS CENTRAL DE DIST DE HIGIENICOS LTDA",
+            "TEXTIL BICOLOR INDUSTRIA E COM DE CONFEC",
+            "R DR JOAO ALTES DE LIMA",
+            "VENDEDOR: VIVIANE",
             "EMERSON SILVA GUEDES",
             "contato@roguelimp.com.br",
             "05976103804",
