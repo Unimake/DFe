@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.antt.gov.br/ciot" elementFormDefault="qualified" targetNamespace="http://www.antt.gov.br/ciot" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="DeclaracaoOperacaoTransporte">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:XMLBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ProvedorCIOT" type="tns:ProvedorCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IdOperacaoTransporte" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TipoOperacao" type="tns:TipoOperacaoTransporteCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CpfCnpjContratado" type="tns:TCpfCnpj" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RNTRCContratado" type="tns:TRNTRC" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CpfCnpjContratante" type="tns:TCpfCnpj" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RNTRCContratante" type="tns:TRNTRC" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CpfCnpjDestinatario" type="tns:TCpfCnpj" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ValorFrete" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DataDeclaracao" type="tns:TDataHora" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IndContingencia" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="JustificativaContingencia" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DataInicioViagem" type="tns:TData" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DataFimViagem" type="tns:TData" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Veiculos" type="tns:ArrayOfVeiculo" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OrigemDestino" type="tns:ArrayOfOrigemDestino" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DadosCarga" type="tns:DadosCarga" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="InfPagamento" type="tns:InfPagamento" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InfIndicadoresOperacionais" type="tns:IndicadoresOperacionais" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IdOperacaoCliente" type="tns:TIdentificadorCliente" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MatrizCNPJ" type="tns:TCnpj" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FilialCNPJ" type="tns:TCnpj" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TipoEmbalagem" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TipoPagamentoEFrete" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Motorista" type="tns:MotoristaCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Impostos" type="tns:ImpostosCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Contratado" type="tns:PessoaCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Contratante" type="tns:PessoaCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Destinatario" type="tns:PessoaCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Subcontratante" type="tns:PessoaCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Consignatario" type="tns:PessoaCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TomadorServico" type="tns:PessoaCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ObservacoesAoTransportador" type="tns:ArrayOfString" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ObservacoesAoCredenciado" type="tns:ArrayOfString" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EntregaDocumentacao" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="QuantidadeSaques" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="QuantidadeTransferencias" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="XMLBase" abstract="true" />
+  <xs:simpleType name="ProvedorCIOT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EFrete" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TCpfCnpj">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{11}|[0-9]{14}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TCnpj">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{14}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TRNTRC">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{9}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TPlaca">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{3}[0-9][A-Z0-9][0-9]{2}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TData">
+    <xs:restriction base="xs:date" />
+  </xs:simpleType>
+  <xs:simpleType name="TDataHora">
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:simpleType name="TIdentificadorCliente">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TipoOperacaoTransporteCIOT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1" />
+      <xs:enumeration value="2" />
+      <xs:enumeration value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ArrayOfVeiculo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Veiculo" nillable="true" type="tns:Veiculo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Veiculo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Placa" type="tns:TPlaca" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RNTRCVeiculo" type="tns:TRNTRC" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NumeroEixos" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfOrigemDestino">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParOrigemDestino" nillable="true" type="tns:OrigemDestino" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrigemDestino">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="DocumentoViagem" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Valores" type="tns:ValoresViagemCIOT" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NotasFiscais" type="tns:ArrayOfNotaFiscalCIOT" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TipoPagamentoEFrete" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Origem" type="tns:Origem" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Destino" type="tns:Destino" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DistanciaPercorrida" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="QtdViagens" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ValoresViagemCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="TotalOperacao" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="TotalViagem" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="TotalDeAdiantamento" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="TotalDeQuitacao" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Combustivel" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Pedagio" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Seguro" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="OutrosCreditos" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="JustificativaOutrosCreditos" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="OutrosDebitos" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="JustificativaOutrosDebitos" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfNotaFiscalCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NotaFiscal" nillable="true" type="tns:NotaFiscalCIOT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NotaFiscalCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CnpjEmissor" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Numero" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Serie" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Data" type="tns:TData" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ValorTotal" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ValorDaMercadoriaPorUnidade" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CodigoNCMNaturezaCarga" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DescricaoDaMercadoria" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UnidadeDeMedidaDaMercadoria" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TipoDeCalculo" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ValorDoFretePorUnidadeDeMercadoria" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="QuantidadeDaMercadoriaNoEmbarque" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ToleranciaDePerdaDeMercadoria" type="tns:ToleranciaCIOT" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DiferencaDeFrete" type="tns:DiferencaFreteCIOT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ToleranciaCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Tipo" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Valor" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DiferencaFreteCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Tipo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Base" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Tolerancia" type="tns:ToleranciaCIOT" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MargemGanho" type="tns:ToleranciaCIOT" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MargemPerda" type="tns:ToleranciaCIOT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Origem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CodigoMunicipioOrigem" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CepOrigem" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LatitudeOrigem" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LongitudeOrigem" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Destino">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CodigoMunicipioDestino" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CepDestino" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LatitudeDestino" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LongitudeDestino" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadosCarga">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CodigoNaturezaCarga" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PesoCarga" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CodigoTipoCarga" type="tns:TipoCargaCIOT" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContratantesCargFrac" type="tns:TCpfCnpj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="TipoCargaCIOT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1" />
+      <xs:enumeration value="2" />
+      <xs:enumeration value="3" />
+      <xs:enumeration value="4" />
+      <xs:enumeration value="5" />
+      <xs:enumeration value="6" />
+      <xs:enumeration value="7" />
+      <xs:enumeration value="8" />
+      <xs:enumeration value="9" />
+      <xs:enumeration value="10" />
+      <xs:enumeration value="11" />
+      <xs:enumeration value="12" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="InfPagamento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="TipoPagamentoEFrete" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IdPagamentoCliente" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DataDeLiberacao" type="tns:TDataHora" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Categoria" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Documento" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TipoConta" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TipoChavePix" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InformacaoAdicional" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CnpjFilialAbastecimento" type="tns:TCnpj" />
+      <xs:element minOccurs="1" maxOccurs="1" name="TipoPagamento" type="tns:TipoPagamentoFreteCIOT" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CodigoInstituicaoFinanceira" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NumeroAgencia" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NumeroConta" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ChavePix" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CpfCnpjCreditado" type="tns:TCpfCnpj" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CodigoPagamento" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IdentificadorPix" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IndPagamento" type="tns:IndicadorPagamentoCIOT" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NumeroParcela" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DataVencimento" type="tns:TData" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ValorParcela" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="TipoPagamentoFreteCIOT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1" />
+      <xs:enumeration value="2" />
+      <xs:enumeration value="3" />
+      <xs:enumeration value="4" />
+      <xs:enumeration value="5" />
+      <xs:enumeration value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="IndicadorPagamentoCIOT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="0" />
+      <xs:enumeration value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="IndicadoresOperacionais">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="IndAltoDesempenho" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IndRetornoVazio" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ComposicaoVeicular" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MotoristaCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CpfOuCnpj" type="tns:TCpfCnpj" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CNH" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Celular" type="tns:TelefoneCIOT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TelefoneCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="DDD" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Numero" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ImpostosCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="IRRF" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SestSenat" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="INSS" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ISSQN" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="OutrosImpostos" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DescricaoOutrosImpostos" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PessoaCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="NomeOuRazaoSocial" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CpfOuCnpj" type="tns:TCpfCnpj" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RNTRC" type="tns:TRNTRC" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Endereco" type="tns:EnderecoCIOT" />
+      <xs:element minOccurs="0" maxOccurs="1" name="EMail" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Telefones" type="tns:TelefonesCIOT" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ResponsavelPeloPagamento" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EnderecoCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Bairro" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Rua" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Numero" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Complemento" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CEP" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CodigoMunicipio" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TelefonesCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Celular" type="tns:TelefoneCIOT" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Fixo" type="tns:TelefoneCIOT" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Fax" type="tns:TelefoneCIOT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Observacao" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConsultarCIOTGerado">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:XMLBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ProvedorCIOT" type="tns:ProvedorCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CodigoIdentificacaoOperacao" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AnoDeclaracao" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MatrizCNPJ" type="tns:TCnpj" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IdOperacaoCliente" type="tns:TIdentificadorCliente" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CancelamentoOperacaoTransporte">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:XMLBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ProvedorCIOT" type="tns:ProvedorCIOT" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CodigoIdentificacaoOperacao" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MotivoCancelamento" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EncerramentoOperacaoTransporte">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:XMLBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ProvedorCIOT" type="tns:ProvedorCIOT" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CodigoIdentificacaoOperacao" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OrigemDestino" type="tns:ArrayOfOrigemDestino" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DadosCarga" type="tns:DadosCargaEncerramento" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DadosCargaEncerramento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="PesoTotalCarga" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConsultarSituacaoTransportador">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:XMLBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ProvedorCIOT" type="tns:ProvedorCIOT" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CpfCnpjInteressado" type="tns:TCpfCnpj" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CpfCnpjTransportador" type="tns:TCpfCnpj" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RNTRCTransportador" type="tns:TRNTRC" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DataPrevistaFimViagem" type="tns:TData" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PlacasConsulta" type="tns:ArrayOfString1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfString1">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Placa" nillable="true" type="tns:TPlaca" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConsultarFrotaTransportador">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ConsultarSituacaoTransportador">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Placas" type="tns:ArrayOfString1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

@@ -783,6 +783,13 @@
 		<None Remove="Xml\Schemas\CIOT\gerarIdOperacaoTransporte_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\retificacaoOperacaoTransporte_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\tiposBasicosCIOT_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\EFrete\cancelamentoOperacaoTransporteEFrete_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\EFrete\consultarCIOTGeradoEFrete_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\EFrete\consultarFrotaTransportadorEFrete_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\EFrete\consultarSituacaoTransportadorEFrete_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\EFrete\declaracaoOperacaoTransporteEFrete_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\EFrete\encerramentoOperacaoTransporteEFrete_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\EFrete\tiposBasicosCIOTEFrete_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\consSitCTeTiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\consSitCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\consStatServCTe_v4.00.xsd" />
@@ -2348,6 +2355,13 @@
 		<EmbeddedResource Include="Xml\Schemas\CIOT\gerarIdOperacaoTransporte_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\retificacaoOperacaoTransporte_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\tiposBasicosCIOT_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\cancelamentoOperacaoTransporteEFrete_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\consultarCIOTGeradoEFrete_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\consultarFrotaTransportadorEFrete_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\consultarSituacaoTransportadorEFrete_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\declaracaoOperacaoTransporteEFrete_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\encerramentoOperacaoTransporteEFrete_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\tiposBasicosCIOTEFrete_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\consSitCTeTiposBasico_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\consSitCTe_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\consStatServCTe_v4.00.xsd" />

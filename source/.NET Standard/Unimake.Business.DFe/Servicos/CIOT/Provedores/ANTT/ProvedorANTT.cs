@@ -15,6 +15,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.ANTT
     {
         public bool UsaValidacaoSchema => true;
 
+        public string ObterSchemaArquivo(Servico servico) => null;
+
         public bool EnviaConteudoEmRequisicaoGet => false;
 
         public bool RecriaConteudoAposPrepararExecucao => false;

@@ -8,6 +8,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores
     {
         bool UsaValidacaoSchema { get; }
 
+        string ObterSchemaArquivo(Servico servico);
+
         bool EnviaConteudoEmRequisicaoGet { get; }
 
         bool RecriaConteudoAposPrepararExecucao { get; }

@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.CIOT.Provedores;
 using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Xml.CIOT;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CIOT
@@ -90,8 +91,21 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// </summary>
         protected override void XmlValidar()
         {
+            var schemaEspecifico = Provedor.ObterSchemaArquivo(ServicoCIOT);
+            if (!string.IsNullOrWhiteSpace(schemaEspecifico))
+            {
+                var validador = new ValidarSchema();
+                validador.Validar(ConteudoXML, schemaEspecifico, CIOTNamespace.PortalANTT);
+                if (!validador.Success)
+                {
+                    throw new ValidarXMLException(validador.ErrorMessage);
+                }
+            }
+
             Provedor.Validar(XmlEnvio, ServicoCIOT, Configuracoes);
             if (!Provedor.UsaValidacaoSchema) return;
+
+            if (!string.IsNullOrWhiteSpace(schemaEspecifico)) return;
 
             XmlValidarConteudo();
             var resultado = ValidarXMLCentralizado();

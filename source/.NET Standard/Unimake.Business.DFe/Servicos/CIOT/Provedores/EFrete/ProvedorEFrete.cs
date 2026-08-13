@@ -6,7 +6,9 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
 {
     internal sealed class ProvedorEFrete : IProvedorCIOT
     {
-        public bool UsaValidacaoSchema => false;
+        public bool UsaValidacaoSchema => true;
+
+        public string ObterSchemaArquivo(Servico servico) => EFreteSchemaResolver.ObterSchemaArquivo(servico);
 
         public bool EnviaConteudoEmRequisicaoGet => true;
 
