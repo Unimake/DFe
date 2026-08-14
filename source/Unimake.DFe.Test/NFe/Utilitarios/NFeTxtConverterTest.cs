@@ -68,6 +68,7 @@ public class NFeTxtConverterTest
     [InlineData("35260847498059000115550010004030011909226990-nfe.txt")]
     [InlineData("35260847498059000115550010004030021004029993-nfe.txt")]
     [InlineData("0000056689-nfe-orig.txt")]
+    [InlineData("NFe_000049184_08_27_14-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -145,6 +146,31 @@ public class NFeTxtConverterTest
         Assert.Equal("101", icms.SelectSingleNode("*[local-name()='CSOSN']")?.InnerText);
         Assert.Equal("3.9500", icms.SelectSingleNode("*[local-name()='pCredSN']")?.InnerText);
         Assert.Equal("17.78", icms.SelectSingleNode("*[local-name()='vCredICMSSN']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve serializar emitente, destinatário e detalhe na sequência definida pelo schema em qualquer runtime.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarOrdemDeEmitenteDestinatarioEDetalhe()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("NFe_000049184_08_27_14-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var emitente = xml.SelectSingleNode("//*[local-name()='emit']");
+        var destinatario = xml.SelectSingleNode("//*[local-name()='dest']");
+        var detalhe = xml.SelectSingleNode("//*[local-name()='det']");
+        Assert.Equal("CNPJ,xNome,xFant,enderEmit,IE,IM,CNAE,CRT", NomesElementosFilhos(emitente));
+        Assert.Equal("CNPJ,xNome,enderDest,indIEDest,email", NomesElementosFilhos(destinatario));
+        Assert.Equal("prod,imposto,infAdProd,vItem", NomesElementosFilhos(detalhe));
 
         var validacao = new ValidarSchema();
         validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
@@ -1482,6 +1508,13 @@ public class NFeTxtConverterTest
     {
         var dadosIdentificaveis = new[]
         {
+            "AGILLE COMERCIO DE MEDICAMENTOS LTDA",
+            "OON ONCOLOGIA, ORTOPEDIA E NEUROLOGIA VET LTDA",
+            "cmanhaesvet@gmail.com",
+            "AV DAS AGUIAS",
+            "RUA FELIPE NEVES",
+            "AVENIDA ATLANTICA N 720",
+            "nfe@agillemed.com.br",
             "OXI GENESES COM.GASES EQUIPAMENTOS LTDA EPP",
             "METACAULIM BRASIL INDUSTRIA COMERCIO LTDA",
             "RUA  AGOSTINHO BALESTRIN",
@@ -1679,6 +1712,24 @@ public class NFeTxtConverterTest
 
     private static string CaminhoArquivo(string nomeArquivo) =>
         Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
+
+    private static string NomesElementosFilhos(XmlNode elemento)
+    {
+        var nomes = new StringBuilder();
+        foreach (XmlNode filho in elemento.ChildNodes)
+        {
+            if (filho.NodeType != XmlNodeType.Element)
+            {
+                continue;
+            }
+            if (nomes.Length > 0)
+            {
+                nomes.Append(',');
+            }
+            nomes.Append(filho.LocalName);
+        }
+        return nomes.ToString();
+    }
 
     private static void ValidarFalhaDeDigitoVerificador(string[] linhas)
     {

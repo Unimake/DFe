@@ -1332,19 +1332,19 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// CNPJ do emitente
         /// </summary>
-        [XmlElement("CNPJ")]
+        [XmlElement("CNPJ", Order = 0)]
         public string CNPJ { get; set; }
 
         /// <summary>
         /// CPF do emitente
         /// </summary>
-        [XmlElement("CPF")]
+        [XmlElement("CPF", Order = 1)]
         public string CPF { get; set; }
 
         /// <summary>
         /// Razão Social ou Nome do emitente
         /// </summary>
-        [XmlElement("xNome")]
+        [XmlElement("xNome", Order = 2)]
         public string XNome
         {
             get => XNomeField;
@@ -1354,7 +1354,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Nome fantasia
         /// </summary>
-        [XmlElement("xFant")]
+        [XmlElement("xFant", Order = 3)]
         public string XFant
         {
             get => XFantField;
@@ -1364,43 +1364,43 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Endereço do emitente
         /// </summary>
-        [XmlElement("enderEmit")]
+        [XmlElement("enderEmit", Order = 4)]
         public EnderEmit EnderEmit { get; set; }
 
         /// <summary>
         /// Inscrição estadual do emitente
         /// </summary>
-        [XmlElement("IE")]
+        [XmlElement("IE", Order = 5)]
         public string IE { get; set; }
 
         /// <summary>
         /// Inscricao Estadual do Substituto Tributário
         /// </summary>
-        [XmlElement("IEST")]
+        [XmlElement("IEST", Order = 6)]
         public string IEST { get; set; }
 
         /// <summary>
         /// Inscrição Municipal
         /// </summary>
-        [XmlElement("IM")]
+        [XmlElement("IM", Order = 7)]
         public string IM { get; set; }
 
         /// <summary>
         /// CNAE Fiscal
         /// </summary>
-        [XmlElement("CNAE")]
+        [XmlElement("CNAE", Order = 8)]
         public string CNAE { get; set; }
 
         /// <summary>
         /// Código de Regime Tributário
         /// </summary>
-        [XmlElement("CRT")]
+        [XmlElement("CRT", Order = 9)]
         public CRT CRT { get; set; }
 
         /// <summary>
         /// Inscrição do emitente na Suframa
         /// </summary>
-        [XmlElement("ISUFEmit")]
+        [XmlElement("ISUFEmit", Order = 10)]
         public string ISUFEmit { get; set; }
 
         #region ShouldSerialize
@@ -1668,13 +1668,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// CNPJ do destinatário
         /// </summary>
-        [XmlElement("CNPJ")]
+        [XmlElement("CNPJ", Order = 0)]
         public string CNPJ { get; set; }
 
         /// <summary>
         /// CPF do destinatário
         /// </summary>
-        [XmlElement("CPF")]
+        [XmlElement("CPF", Order = 1)]
         public string CPF { get; set; }
 
         [XmlIgnore]
@@ -1696,13 +1696,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Identificador do destinatário, em caso de comprador estrangeiro
         /// </summary>
-        [XmlElement("idEstrangeiro")]
+        [XmlElement("idEstrangeiro", Order = 2)]
         public string IdEstrangeiro { get; set; }
 
         /// <summary>
         /// Razão Social ou nome do destinatário
         /// </summary>
-        [XmlElement("xNome")]
+        [XmlElement("xNome", Order = 3)]
         public string XNome
         {
             get => XNomeField;
@@ -1712,37 +1712,37 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Endereço do destinatário
         /// </summary>
-        [XmlElement("enderDest")]
+        [XmlElement("enderDest", Order = 4)]
         public EnderDest EnderDest { get; set; }
 
         /// <summary>
         /// Indicador da IE do destinatário
         /// </summary>
-        [XmlElement("indIEDest")]
+        [XmlElement("indIEDest", Order = 5)]
         public IndicadorIEDestinatario IndIEDest { get; set; }
 
         /// <summary>
         /// Inscrição Estadual (obrigatório nas operações com contribuintes do ICMS)
         /// </summary>
-        [XmlElement("IE")]
+        [XmlElement("IE", Order = 6)]
         public string IE { get; set; }
 
         /// <summary>
         /// Inscrição na SUFRAMA (Obrigatório nas operações com as áreas com benefícios de incentivos fiscais sob controle da SUFRAMA)
         /// </summary>
-        [XmlElement("ISUF")]
+        [XmlElement("ISUF", Order = 7)]
         public string ISUF { get; set; }
 
         /// <summary>
         /// Inscrição Municipal do tomador do serviço
         /// </summary>
-        [XmlElement("IM")]
+        [XmlElement("IM", Order = 8)]
         public string IM { get; set; }
 
         /// <summary>
         /// Informar o e-mail do destinatário
         /// </summary>
-        [XmlElement("email")]
+        [XmlElement("email", Order = 9)]
         public string Email { get; set; }
 
         #region ShouldSerialize
