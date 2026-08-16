@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -900,6 +901,115 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
+        public void TimeoutFiscalComTimeoutTcpNoMesmoEndpointFicaDegradadoNaPrimeiraMedicao()
+        {
+            const string endpoint = "https://sefaz.test/ws";
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(FalhaTimeout(1, true));
+            resultado.Sondas.Add(InfraestruturaEndpoint("DNS", TipoFalhaDisponibilidade.Nenhuma,
+                StatusDisponibilidade.Operacional, endpoint));
+            resultado.Sondas.Add(InfraestruturaEndpoint("TCP", TipoFalhaDisponibilidade.Timeout,
+                StatusDisponibilidade.Inconclusivo, endpoint));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Degradado, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.Indeterminada, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void TimeoutsFiscaisRepetidosComTimeoutTcpNoMesmoEndpointIndicamSefaz()
+        {
+            const string endpoint = "https://sefaz.test/ws";
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(FalhaTimeout(1, true));
+            resultado.Sondas.Add(FalhaTimeout(2, true));
+            resultado.Sondas.Add(InfraestruturaEndpoint("DNS", TipoFalhaDisponibilidade.Nenhuma,
+                StatusDisponibilidade.Operacional, endpoint));
+            resultado.Sondas.Add(InfraestruturaEndpoint("TCP", TipoFalhaDisponibilidade.Timeout,
+                StatusDisponibilidade.Inconclusivo, endpoint));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void TimeoutTcpDeOutroEndpointNaoConfirmaFalhaFiscal()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(FalhaTimeout(1, true));
+            resultado.Sondas.Add(FalhaTimeout(2, true));
+            resultado.Sondas.Add(InfraestruturaEndpoint("DNS", TipoFalhaDisponibilidade.Nenhuma,
+                StatusDisponibilidade.Operacional, "https://sefaz.test/ws"));
+            resultado.Sondas.Add(InfraestruturaEndpoint("TCP", TipoFalhaDisponibilidade.Timeout,
+                StatusDisponibilidade.Inconclusivo, "https://outro-endpoint.test/ws"));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.Indeterminada, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void ClassificadorReconheceConexaoRecusadaPeloEndpointRemoto()
+        {
+            var resultado = new ResultadoSondaDisponibilidade();
+            var excecao = new WebException("Falha no transporte.",
+                new SocketException((int)SocketError.ConnectionRefused),
+                WebExceptionStatus.UnknownError, null);
+
+            ClassificadorDisponibilidade.PreencherFalha(excecao, resultado);
+
+            Assert.Equal(TipoFalhaDisponibilidade.ConexaoRecusada, resultado.TipoFalha);
+            Assert.Equal(StatusDisponibilidade.Degradado, resultado.Status);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void ConexaoRecusadaIsoladaFicaDegradadaComDescricaoClara()
+        {
+            const string endpoint = "https://sefaz.test/ws";
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(FalhaConexaoRecusada(1, true));
+            resultado.Sondas.Add(InfraestruturaEndpoint("DNS", TipoFalhaDisponibilidade.Nenhuma,
+                StatusDisponibilidade.Operacional, endpoint));
+            resultado.Sondas.Add(InfraestruturaEndpoint("TCP", TipoFalhaDisponibilidade.ConexaoRecusada,
+                StatusDisponibilidade.Degradado, endpoint));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Degradado, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.Indeterminada, resultado.OrigemProvavel);
+            Assert.Equal("O serviço da SEFAZ recusou a conexão. Uma nova medição é necessária para confirmar a indisponibilidade.",
+                resultado.Descricao);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void TimeoutSeguidoDeConexaoRecusadaNoMesmoEndpointIndicaSefaz()
+        {
+            const string endpoint = "https://sefaz.test/ws";
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(FalhaTimeout(1, true));
+            resultado.Sondas.Add(FalhaConexaoRecusada(2, true));
+            resultado.Sondas.Add(InfraestruturaEndpoint("DNS", TipoFalhaDisponibilidade.Nenhuma,
+                StatusDisponibilidade.Operacional, endpoint));
+            resultado.Sondas.Add(InfraestruturaEndpoint("TCP", TipoFalhaDisponibilidade.Timeout,
+                StatusDisponibilidade.Inconclusivo, endpoint));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
         public void TimeoutsComInfraestruturaSaudavelPodemIndicarSefaz()
         {
             var resultado = new ResultadoDiagnosticoDisponibilidade();
@@ -1140,6 +1250,52 @@ namespace Unimake.DFe.Test.Utility.Rede
                      x.Servico == "StatusServico");
         }
 
+        [Fact(Explicit = true, Timeout = 60000)]
+        [Trait("Utility", "DisponibilidadeIntegracao")]
+        public void ConsultaStatusNFeMTProducao()
+        {
+            // Este teste é explícito porque acessa um serviço real. Ele não participa da suíte normal
+            // e nunca envia NFe, evento, inutilização ou qualquer outro XML com efeito fiscal.
+            DiagnosticoDisponibilidadeDFe.LimparMemoriaDiagnostico();
+            var configuracao = ConfiguracaoBase();
+            configuracao.TipoDFe = TipoDFe.NFe;
+            configuracao.CodigoUF = (int)UFBrasil.MT;
+            configuracao.TipoAmbiente = TipoAmbiente.Producao;
+            configuracao.SchemaVersao = "4.00";
+            configuracao.Servico = Servico.NFeStatusServico;
+            configuracao.CertificadoDigital = PropConfig.CertificadoDigital;
+
+            var opcoes = new ConfiguracaoDiagnosticoDisponibilidade
+            {
+                TimeoutMilissegundos = 10000,
+                LimiteLentidaoMilissegundos = 3000
+            };
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ConsultarStatusServico();
+
+            var saida = TestContext.Current.TestOutputHelper;
+            if (saida != null)
+            {
+                saida.WriteLine("Diagnóstico NFe/MT em produção: {0} / {1}", resultado.Status,
+                    resultado.OrigemProvavel);
+                saida.WriteLine("Descrição: {0}", resultado.Descricao);
+                foreach (var sonda in resultado.Sondas.Itens)
+                {
+                    saida.WriteLine(
+                        "{0:O} | {1} | {2} | falha={3} | HTTP={4} | cStat={5} | {6} ms | cache={7} | endpoint={8} | motivo={9} | exceção={10}",
+                        sonda.DataHora, sonda.Servico, sonda.Status, sonda.TipoFalha,
+                        sonda.HttpStatusCode, sonda.CStat, sonda.DuracaoMilissegundos,
+                        sonda.DoCache, sonda.Endpoint, sonda.XMotivo, sonda.Excecao);
+                }
+            }
+
+            Assert.Equal(TipoDFe.NFe, resultado.TipoDFe);
+            Assert.Equal(UFBrasil.MT, resultado.UFBrasil);
+            Assert.Equal(TipoAmbiente.Producao, resultado.TipoAmbiente);
+            Assert.Contains(resultado.Sondas.Itens,
+                x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
+                     x.Servico == "StatusServico");
+        }
+
         private static Configuracao ConfiguracaoBase() => new Configuracao
         {
             TipoDFe = TipoDFe.NFe,
@@ -1354,6 +1510,18 @@ namespace Unimake.DFe.Test.Utility.Rede
             Essencial = essencial
         };
 
+        private static ResultadoSondaDisponibilidade FalhaConexaoRecusada(int segundo, bool essencial) =>
+            new ResultadoSondaDisponibilidade
+            {
+                Servico = "NFeAutorizacao",
+                Endpoint = "https://sefaz.test/ws",
+                Fonte = FonteEvidenciaDisponibilidade.TelemetriaPassiva,
+                DataHora = new DateTime(2026, 7, 20, 10, 0, segundo),
+                Status = StatusDisponibilidade.Degradado,
+                TipoFalha = TipoFalhaDisponibilidade.ConexaoRecusada,
+                Essencial = essencial
+            };
+
         private static ResultadoSondaDisponibilidade Infraestrutura(TipoFalhaDisponibilidade falha,
             StatusDisponibilidade status) => new ResultadoSondaDisponibilidade
         {
@@ -1364,6 +1532,19 @@ namespace Unimake.DFe.Test.Utility.Rede
             TipoFalha = falha,
             Essencial = true
         };
+
+        private static ResultadoSondaDisponibilidade InfraestruturaEndpoint(string servico,
+            TipoFalhaDisponibilidade falha, StatusDisponibilidade status, string endpoint) =>
+            new ResultadoSondaDisponibilidade
+            {
+                Servico = servico,
+                Endpoint = endpoint,
+                Fonte = FonteEvidenciaDisponibilidade.Infraestrutura,
+                DataHora = new DateTime(2026, 7, 20, 10, 0, 3),
+                Status = status,
+                TipoFalha = falha,
+                Essencial = true
+            };
 
         private sealed class ExecutorInfraestruturaFake : IExecutorInfraestruturaDisponibilidade
         {

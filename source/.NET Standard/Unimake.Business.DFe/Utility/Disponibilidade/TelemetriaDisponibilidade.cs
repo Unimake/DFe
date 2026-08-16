@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -361,6 +362,24 @@ namespace Unimake.Business.DFe.Utility
             resultado.TipoFalha = TipoFalhaDisponibilidade.Desconhecida;
             resultado.Excecao = SanitizarExcecao(exception);
             var webException = EncontrarWebException(exception);
+            var permiteClassificarSocket = webException == null ||
+                webException.Status == WebExceptionStatus.UnknownError ||
+                webException.Status == WebExceptionStatus.ConnectFailure ||
+                webException.Status == WebExceptionStatus.Timeout ||
+                webException.Status == WebExceptionStatus.NameResolutionFailure;
+            var falhaSocket = permiteClassificarSocket
+                ? ClassificarSocketException(exception)
+                : TipoFalhaDisponibilidade.Desconhecida;
+            if (falhaSocket != TipoFalhaDisponibilidade.Desconhecida)
+            {
+                resultado.TipoFalha = falhaSocket;
+                if (falhaSocket == TipoFalhaDisponibilidade.Timeout ||
+                    falhaSocket == TipoFalhaDisponibilidade.ConexaoRecusada)
+                {
+                    resultado.Status = StatusDisponibilidade.Degradado;
+                }
+                return;
+            }
             if (webException == null)
             {
                 resultado.TipoFalha = TipoFalhaDisponibilidade.Protocolo;
@@ -385,6 +404,32 @@ namespace Unimake.Business.DFe.Utility
                     resultado.TipoFalha = TipoFalhaDisponibilidade.HTTP;
                     resultado.Status = resultado.HttpStatusCode >= 500 ? StatusDisponibilidade.Degradado : StatusDisponibilidade.Inconclusivo;
                     break;
+            }
+        }
+
+        /// <summary>Classifica uma falha de socket encontrada dentro da cadeia de exceções.</summary>
+        /// <param name="exception">Exceção externa gerada pelo transporte.</param>
+        /// <returns>Categoria de rede correspondente ou <see cref="TipoFalhaDisponibilidade.Desconhecida"/>.</returns>
+        internal static TipoFalhaDisponibilidade ClassificarSocketException(Exception exception)
+        {
+            var socketException = EncontrarSocketException(exception);
+            if (socketException == null)
+            {
+                return TipoFalhaDisponibilidade.Desconhecida;
+            }
+
+            switch (socketException.SocketErrorCode)
+            {
+                case SocketError.ConnectionRefused:
+                    return TipoFalhaDisponibilidade.ConexaoRecusada;
+                case SocketError.TimedOut:
+                    return TipoFalhaDisponibilidade.Timeout;
+                case SocketError.HostNotFound:
+                case SocketError.NoData:
+                case SocketError.TryAgain:
+                    return TipoFalhaDisponibilidade.DNS;
+                default:
+                    return TipoFalhaDisponibilidade.Conexao;
             }
         }
 
@@ -466,6 +511,35 @@ namespace Unimake.Business.DFe.Utility
             }
             return null;
         }
+
+        /// <summary>Procura uma <see cref="SocketException"/> dentro da cadeia de exceções internas.</summary>
+        /// <param name="exception">Exceção inicial.</param>
+        /// <returns>A falha de socket encontrada ou <see langword="null"/>.</returns>
+        private static SocketException EncontrarSocketException(Exception exception)
+        {
+            for (var atual = exception; atual != null; atual = atual.InnerException)
+            {
+                var socketException = atual as SocketException;
+                if (socketException != null)
+                {
+                    return socketException;
+                }
+
+                var aggregateException = atual as AggregateException;
+                if (aggregateException != null)
+                {
+                    foreach (var interna in aggregateException.Flatten().InnerExceptions)
+                    {
+                        socketException = EncontrarSocketException(interna);
+                        if (socketException != null)
+                        {
+                            return socketException;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
     }
 
     /// <summary>Combina as sondas em um estado geral e em uma origem provável.</summary>
@@ -524,9 +598,11 @@ namespace Unimake.Business.DFe.Utility
             var infraestruturaSaudavel = infraestrutura.Count > 0 && !falhaLocal &&
                 infraestrutura.All(x => x.Status == StatusDisponibilidade.Operacional);
             var fiscais = itens.Where(x => x.Fonte != FonteEvidenciaDisponibilidade.Infraestrutura).ToList();
+            var infraestruturaCorroboraFalhaRemota = InfraestruturaCorroboraFalhaRemota(
+                infraestrutura, fiscais, falhaLocal, infraestruturaSaudavel);
             var estadosServicos = fiscais
                 .GroupBy(x => (x.Servico ?? string.Empty) + "|" + (x.Endpoint ?? string.Empty), StringComparer.OrdinalIgnoreCase)
-                .Select(x => ClassificarServico(x, infraestruturaSaudavel))
+                .Select(x => ClassificarServico(x, infraestruturaCorroboraFalhaRemota))
                 .ToList();
             var indisponiveis = estadosServicos.Where(x => x.Status == StatusDisponibilidade.Indisponivel).ToList();
             var operacionais = estadosServicos.Where(x => x.Status == StatusDisponibilidade.Operacional ||
@@ -557,7 +633,7 @@ namespace Unimake.Business.DFe.Utility
                     ? StatusDisponibilidade.Degradado
                     : StatusDisponibilidade.Operacional;
                 resultado.OrigemProvavel = resultado.Status == StatusDisponibilidade.Degradado &&
-                    fiscais.Any(x => x.TipoFalha == TipoFalhaDisponibilidade.Timeout)
+                    fiscais.Any(x => EhFalhaAcessoRemoto(x.TipoFalha))
                     ? OrigemProvavelIndisponibilidade.Indeterminada
                     : OrigemProvavelIndisponibilidade.Nenhuma;
             }
@@ -570,10 +646,10 @@ namespace Unimake.Business.DFe.Utility
 
         /// <summary>Classifica um serviço usando suas até três amostras mais recentes.</summary>
         /// <param name="grupo">Amostras do mesmo serviço e endpoint.</param>
-        /// <param name="infraestruturaSaudavel">Indica se a rede local respondeu normalmente.</param>
+        /// <param name="infraestruturaCorroboraFalhaRemota">Indica se a infraestrutura permite correlacionar timeouts com o endpoint remoto.</param>
         /// <returns>Estado consolidado do serviço.</returns>
         private static EstadoServico ClassificarServico(IGrouping<string, ResultadoSondaDisponibilidade> grupo,
-            bool infraestruturaSaudavel)
+            bool infraestruturaCorroboraFalhaRemota)
         {
             var ultimas = grupo.OrderByDescending(x => x.DataHora).Take(3).ToList();
             var maisRecente = ultimas[0];
@@ -597,14 +673,14 @@ namespace Unimake.Business.DFe.Utility
                 return estado;
             }
 
-            if (maisRecente.TipoFalha == TipoFalhaDisponibilidade.Timeout)
+            if (EhFalhaAcessoRemoto(maisRecente.TipoFalha))
             {
-                var timeouts = ultimas.Count(x => x.TipoFalha == TipoFalhaDisponibilidade.Timeout);
-                if (timeouts >= 2 && infraestruturaSaudavel)
+                var falhasAcessoRemoto = ultimas.Count(x => EhFalhaAcessoRemoto(x.TipoFalha));
+                if (falhasAcessoRemoto >= 2 && infraestruturaCorroboraFalhaRemota)
                 {
                     estado.Status = StatusDisponibilidade.Indisponivel;
                 }
-                else if (!infraestruturaSaudavel &&
+                else if (!infraestruturaCorroboraFalhaRemota &&
                     !ultimas.Skip(1).Any(x => x.Status == StatusDisponibilidade.Operacional))
                 {
                     estado.Status = StatusDisponibilidade.Inconclusivo;
@@ -613,6 +689,55 @@ namespace Unimake.Business.DFe.Utility
 
             return estado;
         }
+
+        /// <summary>Verifica se as sondas locais permitem atribuir timeouts repetidos ao endpoint remoto.</summary>
+        /// <param name="infraestrutura">Sondas de DNS, TCP, TLS e proxy do diagnóstico atual.</param>
+        /// <param name="fiscais">Sondas fiscais que serão correlacionadas.</param>
+        /// <param name="falhaLocal">Indica se existe causa local objetiva, como DNS, TLS, proxy ou certificado.</param>
+        /// <param name="infraestruturaSaudavel">Indica se todas as sondas locais foram operacionais.</param>
+        /// <returns><see langword="true"/> quando a rede está saudável ou quando DNS funcionou e TCP/serviço expiraram no mesmo endpoint.</returns>
+        private static bool InfraestruturaCorroboraFalhaRemota(
+            IList<ResultadoSondaDisponibilidade> infraestrutura,
+            IList<ResultadoSondaDisponibilidade> fiscais,
+            bool falhaLocal,
+            bool infraestruturaSaudavel)
+        {
+            if (falhaLocal)
+            {
+                return false;
+            }
+
+            if (infraestruturaSaudavel)
+            {
+                return true;
+            }
+
+            var dnsOperacional = infraestrutura.Any(x =>
+                string.Equals(x.Servico, "DNS", StringComparison.OrdinalIgnoreCase) &&
+                x.Status == StatusDisponibilidade.Operacional);
+            if (!dnsOperacional)
+            {
+                return false;
+            }
+
+            var endpointsComFalhaRemota = new HashSet<string>(
+                infraestrutura
+                    .Where(x => EhFalhaAcessoRemoto(x.TipoFalha) &&
+                        !string.IsNullOrWhiteSpace(x.Endpoint))
+                    .Select(x => x.Endpoint),
+                StringComparer.OrdinalIgnoreCase);
+            return endpointsComFalhaRemota.Count > 0 && fiscais.Any(x =>
+                EhFalhaAcessoRemoto(x.TipoFalha) &&
+                !string.IsNullOrWhiteSpace(x.Endpoint) &&
+                endpointsComFalhaRemota.Contains(x.Endpoint));
+        }
+
+        /// <summary>Identifica falhas que indicam ausência de resposta ou recusa ativa do endpoint remoto.</summary>
+        /// <param name="tipoFalha">Categoria de falha observada.</param>
+        /// <returns><see langword="true"/> para timeout ou conexão recusada pelo host remoto.</returns>
+        private static bool EhFalhaAcessoRemoto(TipoFalhaDisponibilidade tipoFalha) =>
+            tipoFalha == TipoFalhaDisponibilidade.Timeout ||
+            tipoFalha == TipoFalhaDisponibilidade.ConexaoRecusada;
 
         /// <summary>Verifica se uma amostra aponta para a máquina ou configuração local.</summary>
         /// <param name="item">Amostra analisada.</param>

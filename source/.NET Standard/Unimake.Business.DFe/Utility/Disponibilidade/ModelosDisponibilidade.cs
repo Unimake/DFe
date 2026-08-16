@@ -66,7 +66,9 @@ namespace Unimake.Business.DFe.Utility
         /// <summary>A autoridade fiscal informou excesso de consultas ou consumo indevido.</summary>
         ConsumoIndevido = 10,
         /// <summary>Ocorreu uma falha que ainda não pôde ser enquadrada em outra categoria.</summary>
-        Desconhecida = 11
+        Desconhecida = 11,
+        /// <summary>O host remoto foi alcançado, mas recusou ativamente a conexão com a porta do serviço.</summary>
+        ConexaoRecusada = 12
     }
 
     /// <summary>
@@ -347,6 +349,10 @@ namespace Unimake.Business.DFe.Utility
                     return "Os serviços da SEFAZ estão funcionando normalmente.";
 
                 case StatusDisponibilidade.Degradado:
+                    if (PossuiFalha(resultado, TipoFalhaDisponibilidade.ConexaoRecusada))
+                    {
+                        return "O serviço da SEFAZ recusou a conexão. Uma nova medição é necessária para confirmar a indisponibilidade.";
+                    }
                     if (PossuiFalha(resultado, TipoFalhaDisponibilidade.Timeout))
                     {
                         return "O serviço da SEFAZ não respondeu no tempo esperado. Uma nova medição é necessária para confirmar a indisponibilidade.";
