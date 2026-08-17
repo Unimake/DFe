@@ -25,7 +25,19 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
         internal static string ObterTokenLogin(string retorno)
         {
             var objeto = string.IsNullOrWhiteSpace(retorno) ? new JObject() : JObject.Parse(retorno);
-            return objeto.Properties().FirstOrDefault(x => string.Equals(x.Name, "Token", StringComparison.OrdinalIgnoreCase))?.Value?.ToString();
+            return LocalizarRecursivo(objeto, "Token")?.ToString();
+        }
+
+        internal static string ObterMotivoRejeicaoLogin(string retorno)
+        {
+            var objeto = string.IsNullOrWhiteSpace(retorno) ? new JObject() : JObject.Parse(retorno);
+            var mensagem = LocalizarRecursivo(objeto, "Mensagem")?.ToString();
+            var codigo = LocalizarRecursivo(objeto, "Codigo")?.ToString();
+            if (string.IsNullOrWhiteSpace(mensagem))
+            {
+                return null;
+            }
+            return string.IsNullOrWhiteSpace(codigo) ? mensagem : mensagem + " (" + codigo + ")";
         }
 
         internal static string CriarJson(XMLBase xml, Servico servico, Configuracao configuracao)
@@ -298,6 +310,23 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
         private static string Valor(JObject obj, string nome) => Localizar(obj, nome)?.Type == JTokenType.Null ? null : Localizar(obj, nome)?.ToString();
         private static string Valor(JObject obj, string grupo, string nome) => Valor(Localizar(obj, grupo) as JObject, nome);
         private static bool ValorBool(JObject obj, string nome) { bool value; return bool.TryParse(Valor(obj, nome), out value) && value; }
+        private static JToken LocalizarRecursivo(JToken token, string nome)
+        {
+            var objeto = token as JObject;
+            if (objeto != null)
+            {
+                var propriedade = objeto.Properties().FirstOrDefault(x => string.Equals(x.Name, nome, StringComparison.OrdinalIgnoreCase));
+                if (propriedade != null) return propriedade.Value;
+                foreach (var item in objeto.Properties())
+                {
+                    var encontrado = LocalizarRecursivo(item.Value, nome);
+                    if (encontrado != null) return encontrado;
+                }
+            }
+            var array = token as JArray;
+            if (array != null) foreach (var item in array) { var encontrado = LocalizarRecursivo(item, nome); if (encontrado != null) return encontrado; }
+            return null;
+        }
         private static void RemoverNulos(JToken token)
         {
             if (token is JObject obj) foreach (var prop in obj.Properties().ToList()) { RemoverNulos(prop.Value); if (prop.Value.Type == JTokenType.Null || (prop.Value.Type == JTokenType.String && string.IsNullOrWhiteSpace(prop.Value.ToString()))) prop.Remove(); }

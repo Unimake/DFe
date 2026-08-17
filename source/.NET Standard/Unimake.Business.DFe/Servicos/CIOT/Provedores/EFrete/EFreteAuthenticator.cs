@@ -47,7 +47,14 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             {
                 consumidor.ExecutarServico(apiConfig, null);
                 var token = EFreteMapper.ObterTokenLogin(consumidor.RetornoServicoRawString);
-                if (string.IsNullOrWhiteSpace(token)) throw new InvalidOperationException("A eFrete não retornou token para as credenciais informadas.");
+                if (string.IsNullOrWhiteSpace(token))
+                {
+                    var rejeicao = EFreteMapper.ObterMotivoRejeicaoLogin(consumidor.RetornoServicoRawString);
+                    throw new InvalidOperationException(
+                        string.IsNullOrWhiteSpace(rejeicao)
+                            ? "A eFrete não retornou token para as credenciais informadas."
+                            : "A eFrete rejeitou a autenticação: " + rejeicao);
+                }
                 configuracao.EFreteToken = token;
                 configuracao.UsaCertificadoDigital = false;
             }

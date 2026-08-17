@@ -273,6 +273,17 @@ namespace Unimake.DFe.Test.CIOT.Servicos
 
         [Fact]
         [Trait("DFe", "CIOT")]
+        public void LeTokenAninhadoEMotivoSeguroDaRejeicaoDoLogin()
+        {
+            var token = EFreteMapper.ObterTokenLogin("{\"Sucesso\":true,\"Retorno\":{\"Token\":\"TOKEN-ANINHADO\"}}");
+            var motivo = EFreteMapper.ObterMotivoRejeicaoLogin("{\"Sucesso\":false,\"Excecao\":{\"Codigo\":\"AUTH-01\",\"Mensagem\":\"Credenciais inválidas.\"}}");
+
+            Assert.Equal("TOKEN-ANINHADO", token);
+            Assert.Equal("Credenciais inválidas. (AUTH-01)", motivo);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
         public void RecusaServicosSemEquivalenteAntesDaRequisicao()
         {
             var configuracao = CriarConfiguracao();
