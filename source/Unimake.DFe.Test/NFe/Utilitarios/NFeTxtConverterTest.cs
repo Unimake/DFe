@@ -69,6 +69,7 @@ public class NFeTxtConverterTest
     [InlineData("35260847498059000115550010004030021004029993-nfe.txt")]
     [InlineData("0000056689-nfe-orig.txt")]
     [InlineData("NFe_000049184_08_27_14-nfe.txt")]
+    [InlineData("002320_01_01_17_08_2026-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -171,6 +172,38 @@ public class NFeTxtConverterTest
         Assert.Equal("CNPJ,xNome,xFant,enderEmit,IE,IM,CNAE,CRT", NomesElementosFilhos(emitente));
         Assert.Equal("CNPJ,xNome,enderDest,indIEDest,email", NomesElementosFilhos(destinatario));
         Assert.Equal("prod,imposto,infAdProd,vItem", NomesElementosFilhos(detalhe));
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve interpretar o layout completo do produto sem deslocar os campos posteriores ao benefício fiscal.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarProdutoIpiEReformaDaNFe2320()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("002320_01_01_17_08_2026-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var produto = xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='prod']");
+
+        Assert.Equal("ABRACADEIRA ROSCA SEM FIM 51X64(200X212) INCA", produto.SelectSingleNode("*[local-name()='xProd']")?.InnerText);
+        Assert.Equal("73269090", produto.SelectSingleNode("*[local-name()='NCM']")?.InnerText);
+        Assert.Equal("1006200", produto.SelectSingleNode("*[local-name()='CEST']")?.InnerText);
+        Assert.Equal("SP010830", produto.SelectSingleNode("*[local-name()='cBenef']")?.InnerText);
+        Assert.Null(produto.SelectSingleNode("*[local-name()='EXTIPI']"));
+        Assert.Equal("5124", produto.SelectSingleNode("*[local-name()='CFOP']")?.InnerText);
+        Assert.Equal("500.0000", produto.SelectSingleNode("*[local-name()='qCom']")?.InnerText);
+        Assert.Equal("8.7000", produto.SelectSingleNode("*[local-name()='vUnCom']")?.InnerText);
+        Assert.Equal("53", xml.SelectSingleNode("//*[local-name()='IPI']//*[local-name()='CST']")?.InnerText);
+        Assert.Equal("4219.50", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='gIBSCBS']/*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("4392.18", xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='vItem']")?.InnerText);
+        Assert.Equal("4261.68", xml.SelectSingleNode("//*[local-name()='total']/*[local-name()='vNFTot']")?.InnerText);
 
         var validacao = new ValidarSchema();
         validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
@@ -1549,6 +1582,12 @@ public class NFeTxtConverterTest
             "1122911633",
             "11997556655",
             "luizlopes.nfe@uol.com.br",
+            "SOC.COM.MAT.P/CONSTR.LUIZ LOPES LTDA",
+            "108680702113",
+            "RUA MAJOR OTAVIANO",
+            "ROD. RAPOSO TAVARES KM-18 5",
+            "100441666118",
+            "60561719000557",
             "VENDEDOR: 0110 WAGNER",
             "AUTO VIDROS PRUDENTE",
             "562319803111",
