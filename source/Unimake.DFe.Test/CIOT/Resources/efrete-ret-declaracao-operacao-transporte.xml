@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetDeclaracaoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+	<IdOperacaoTransporte>992000000126</IdOperacaoTransporte>
+	<Protocolo>PROTO-EFRETE-DECL-001</Protocolo>
+	<Codigo>000000</Codigo>
+	<Mensagem>Operacao adicionada com sucesso</Mensagem>
+	<Mensagens>
+		<Mensagem>
+			<Codigo>000000</Codigo>
+			<Descricao>Operacao adicionada com sucesso</Descricao>
+		</Mensagem>
+	</Mensagens>
+</RetDeclaracaoOperacaoTransporte>

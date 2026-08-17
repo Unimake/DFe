@@ -620,24 +620,22 @@ namespace TreinamentoDLL
                 COrgaoAutor = UFBrasil.PR,
                 TpAutor = TipoAutor.EmpresaEmitente,
                 VerAplic = "1.00",
-                GCredPres = new List<XmlNFe.GCredPres>
+                GCredPresOper = new List<XmlNFe.GCredPresOperEvento>
                 {
-                    new XmlNFe.GCredPres
+                    new XmlNFe.GCredPresOperEvento
                     {
-                        NItem = 1,
-                        VBC = 100.00,
-                        GIBS = new XmlNFe.GIBSGCredPres
+                        CCredPres = "001",
+                        GCBSCredPres = new XmlNFe.GCBSCredPresEvento
                         {
-                            CCredPres = "001",
+                            PCredPres = 5.00,
+                            VCredPres = 5.00
+                        },
+                        GIBSCredPres = new XmlNFe.GIBSCredPresEvento
+                        {
                             PCredPres = 10.00,
                             VCredPres = 10.00
                         },
-                        GCBS = new XmlNFe.GCBSGCredPres
-                        {
-                            CCredPres = "001",
-                            PCredPres = 5.00,
-                            VCredPres = 5.00
-                        }
+                        VBCCredPres = 100.00
                     }
                 }
             };
@@ -6363,7 +6361,7 @@ namespace TreinamentoDLL
                 InfEvento = new XmlCTe.InfEvento(new Unimake.Business.DFe.Xml.CTe.DetEventoPrestDesacordo
                 {
                     VersaoEvento = "4.00",
-                    IndDesacordoOper = "1",
+                    IndDesacordoOper = IndicadorDesacordoOperacaoCTe.OperacaoEmDesacordo,
                     XObs = "Observação do desacordo"
                 })
                 {
@@ -8870,7 +8868,7 @@ namespace TreinamentoDLL
                                 },
                                 GPagAntecipado = new XmlNFe.GPagAntecipado //RTC
                                 {
-                                    RefDFe = new List<string>
+                                    RefNFe = new List<string>
                                     {
                                         "00000000000000000000000000000000000000000000",
                                         "11111111111111111111111111111111111111111111"

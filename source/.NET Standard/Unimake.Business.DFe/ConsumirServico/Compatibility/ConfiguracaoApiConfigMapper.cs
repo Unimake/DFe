@@ -27,6 +27,8 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 Host = configuracoes.TipoAmbiente == TipoAmbiente.Producao ? configuracoes.HostProducao : configuracoes.HostHomologacao,
                 ApiKey = configuracoes.ApiKey,
                 HttpContent = configuracoes.HttpContent,
+                UsaWinHttpHandler = configuracoes.UsaWinHttpHandler,
+                DesabilitaSelecaoAutomaticaCertificadoCliente = configuracoes.DesabilitaSelecaoAutomaticaCertificadoCliente,
             };
 
         public APIConfig MapExplicitEnvironment(Configuracao configuracoes) =>
@@ -47,6 +49,8 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 Host = configuracoes.TipoAmbiente == TipoAmbiente.Producao ? configuracoes.HostProducao : configuracoes.HostHomologacao,
                 ApiKey = configuracoes.ApiKey,
                 HttpContent = configuracoes.HttpContent,
+                UsaWinHttpHandler = configuracoes.UsaWinHttpHandler,
+                DesabilitaSelecaoAutomaticaCertificadoCliente = configuracoes.DesabilitaSelecaoAutomaticaCertificadoCliente,
             };
     }
 }

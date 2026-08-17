@@ -126,7 +126,7 @@
 			<SchemaVersao>1.01</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarConvenioMunicipal>
 		<ConsultarAliquotasMunicipais versao="1.01">
 			<Descricao>Consultar Alíquotas Municipais</Descricao>
@@ -140,7 +140,7 @@
 			<SchemaVersao>1.01</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarAliquotasMunicipais>
 		<ConsultarHistoricoAliquotasMunicipais versao="1.01">
 			<Descricao>Consultar Histórico de Alíquotas Municipais</Descricao>
@@ -154,7 +154,7 @@
 			<SchemaVersao>1.01</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarHistoricoAliquotasMunicipais>
 		<ConsultarRegimesEspeciaisMunicipais versao="1.01">
 			<Descricao>Consultar Regimes Especiais Municipais</Descricao>
@@ -168,7 +168,7 @@
 			<SchemaVersao>1.01</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarRegimesEspeciaisMunicipais>
 		<ConsultarRetencoesMunicipais versao="1.01">
 			<Descricao>Consultar Retenções Municipais</Descricao>
@@ -182,7 +182,7 @@
 			<SchemaVersao>1.01</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarRetencoesMunicipais>
 		<ConsultarBeneficioMunicipal versao="1.01">
 			<Descricao>Consultar Benefícios Municipais</Descricao>
@@ -196,7 +196,7 @@
 			<SchemaVersao>1.01</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarBeneficioMunicipal>
 		<ConsultarDistribuicaoNFSeNSU versao="1.01">
 			<Descricao>Consultar Distribuição de NFSe por NSU</Descricao>
@@ -208,6 +208,7 @@
 			<SchemaVersao>1.01</SchemaVersao>
 			<GZIPCompress>true</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarDistribuicaoNFSeNSU>
 		<ConsultaEventosNFSeChaveAcesso versao="1.01">
 			<Descricao>Consultar Eventos da NFSe por Chave de Acesso</Descricao>
@@ -218,7 +219,7 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>1.01</SchemaVersao>
 			<LoginConexao>false</LoginConexao>
-			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultaEventosNFSeChaveAcesso>
 	</Servicos>
 </Configuracoes>

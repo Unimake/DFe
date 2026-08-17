@@ -8,6 +8,7 @@
   <xs:element name="CancelamentoOperacaoTransporte">
     <xs:complexType>
       <xs:sequence>
+        <xs:element name="ProvedorCIOT" type="TProvedorCIOT" minOccurs="0"/>
         <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
         <xs:element name="MotivoCancelamento">
           <xs:simpleType>

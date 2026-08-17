@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetEncerramentoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
+	<CodigoIdentificacaoOperacao>992000000126</CodigoIdentificacaoOperacao>
+	<Protocolo>PROTO-EFRETE-ENC-001</Protocolo>
+	<Codigo>000000</Codigo>
+	<Mensagem>Operacao encerrada com sucesso</Mensagem>
+</RetEncerramentoOperacaoTransporte>

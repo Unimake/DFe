@@ -20,8 +20,27 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [Serializable()]
     [XmlType(Namespace = CIOTNamespace.PortalANTT)]
     [XmlRoot("ConsultarCIOTGerado", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
-    public class ConsultarCIOTGerado : XMLBase
+    public partial class ConsultarCIOTGerado : XMLBase
     {
+        /// <summary>
+        /// Provedor utilizado para executar o serviço CIOT.
+        /// Quando não informado, o serviço utiliza a ANTT.
+        /// </summary>
+        [XmlElement("ProvedorCIOT")]
+        [Newtonsoft.Json.JsonIgnore]
+#if INTEROP
+        public Unimake.Business.DFe.Servicos.ProvedorCIOT ProvedorCIOT { get; set; } = (Unimake.Business.DFe.Servicos.ProvedorCIOT)(-1);
+#else
+        public Unimake.Business.DFe.Servicos.ProvedorCIOT? ProvedorCIOT { get; set; }
+#endif
+
+#if INTEROP
+        public bool ShouldSerializeProvedorCIOT() => ProvedorCIOT != (Unimake.Business.DFe.Servicos.ProvedorCIOT)(-1);
+#else
+        public bool ShouldSerializeProvedorCIOT() => ProvedorCIOT.HasValue;
+#endif
+
+
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }
 
@@ -39,7 +58,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [Serializable()]
     [XmlType(Namespace = CIOTNamespace.PortalANTT)]
     [XmlRoot("RetConsultarCIOTGerado", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
-    public class RetConsultarCIOTGerado : XMLBase
+    public partial class RetConsultarCIOTGerado : XMLBase
     {
         [XmlElement("temp")]
         public Temp Temp { get; set; }

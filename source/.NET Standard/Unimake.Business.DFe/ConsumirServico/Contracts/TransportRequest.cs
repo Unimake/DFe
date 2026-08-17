@@ -35,6 +35,10 @@ namespace Unimake.Business.DFe.ConsumirServico.Contracts
 
         public HttpContent HttpContent { get; set; }
 
+        public bool UseWinHttpHandler { get; set; }
+
+        public bool DisableAutomaticClientCertificateSelection { get; set; }
+
         public IDictionary<string, string> Headers { get; } = new Dictionary<string, string>();
     }
 }

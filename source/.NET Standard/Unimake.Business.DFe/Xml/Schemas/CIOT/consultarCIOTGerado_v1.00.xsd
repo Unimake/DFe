@@ -8,6 +8,7 @@
   <xs:element name="ConsultarCIOTGerado">
     <xs:complexType>
       <xs:sequence>
+        <xs:element name="ProvedorCIOT" type="TProvedorCIOT" minOccurs="0"/>
         <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao12"/>
         <xs:element name="AnoDeclaracao" minOccurs="0">
           <xs:simpleType>

@@ -5,6 +5,13 @@
            elementFormDefault="qualified"
            attributeFormDefault="unqualified">
 
+  <xs:simpleType name="TProvedorCIOT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ANTT"/>
+      <xs:enumeration value="EFrete"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:simpleType name="TCpfCnpj">
     <xs:restriction base="xs:string">
       <xs:pattern value="[0-9]{11}|[0-9]{14}"/>

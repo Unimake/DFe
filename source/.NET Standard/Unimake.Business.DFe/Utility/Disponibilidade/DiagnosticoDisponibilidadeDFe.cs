@@ -655,7 +655,13 @@ namespace Unimake.Business.DFe.Utility
                 catch (Exception ex)
                 {
                     cronometroTcp.Stop();
-                    var tipo = ex is TimeoutException ? TipoFalhaDisponibilidade.Timeout : TipoFalhaDisponibilidade.Conexao;
+                    var tipo = ex is TimeoutException
+                        ? TipoFalhaDisponibilidade.Timeout
+                        : ClassificadorDisponibilidade.ClassificarSocketException(ex);
+                    if (tipo == TipoFalhaDisponibilidade.Desconhecida)
+                    {
+                        tipo = TipoFalhaDisponibilidade.Conexao;
+                    }
                     resultados.Add(Falha("TCP", endpoint, tipo, ex, cronometroTcp.ElapsedMilliseconds));
                     return resultados;
                 }

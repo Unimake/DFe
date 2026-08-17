@@ -35,7 +35,9 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         public ConsultarConvenioMunicipal(int codigoMunicipio, Configuracao configuracao) : base()
         {
             CodigoMunicipio = codigoMunicipio;
-            
+
+            ValidarParametrosObrigatorios();
+
             var xmlConvenio = CriarXMLConvenio();
             Inicializar(xmlConvenio, configuracao);
         }
@@ -56,8 +58,18 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     CodigoMunicipio = codigo;
                 }
             }
-            
+
+            ValidarParametrosObrigatorios();
+
             Inicializar(conteudoXML, configuracao);
+        }
+
+        private void ValidarParametrosObrigatorios()
+        {
+            if (CodigoMunicipio <= 0)
+            {
+                throw new InvalidOperationException("O código do município deve ser informado.");
+            }
         }
 
         /// <summary>
@@ -96,6 +108,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #endif
         public override void Executar()
         {
+            ValidarParametrosObrigatorios();
+
             if (!Configuracoes.Definida)
             {
                 DefinirConfiguracao();

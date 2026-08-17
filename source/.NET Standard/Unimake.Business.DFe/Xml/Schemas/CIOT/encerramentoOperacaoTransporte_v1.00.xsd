@@ -8,6 +8,7 @@
   <xs:element name="EncerramentoOperacaoTransporte">
     <xs:complexType>
       <xs:sequence>
+        <xs:element name="ProvedorCIOT" type="TProvedorCIOT" minOccurs="0"/>
         <xs:element name="CodigoIdentificacaoOperacao" type="TCodigoOperacao16"/>
         <xs:element name="OrigemDestino" minOccurs="0">
           <xs:complexType>

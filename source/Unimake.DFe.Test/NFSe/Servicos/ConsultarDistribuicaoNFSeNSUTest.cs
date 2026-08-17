@@ -214,11 +214,11 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         }
 
         /// <summary>
-        /// Testa que a gravação do XML de distribuição fica restrita ao padrão NFSe Nacional
+        /// Testa que a gravação do XML de distribuição permite qualquer padrão NFSe
         /// </summary>
         [Fact]
         [Trait("DFe", "NFSe")]
-        public void TesteGravarXmlDistribuicaoDevePermitirApenasPadraoNacional()
+        public void TesteGravarXmlDistribuicaoDevePermitirQualquerPadrao()
         {
             var servico = new ConsultarDistribuicaoNFSeNSU
             {
@@ -227,15 +227,28 @@ namespace Unimake.DFe.Test.NFSe.Servicos
                     PadraoNFSe = PadraoNFSe.GINFES
                 }
             };
+            var pastaTemp = Path.Combine(Path.GetTempPath(), "ConsultarDistribuicaoNFSeNSU_GINFES", Guid.NewGuid().ToString("N"));
+            var nomeArquivo = "nfse.xml";
+            var conteudoXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><NFSe />";
 
-            var ex = Assert.Throws<InvalidOperationException>(() =>
-                servico.GravarXmlDistribuicao(
-                    Path.GetTempPath(),
-                    "nfse.xml",
-                    "<?xml version=\"1.0\" encoding=\"utf-8\"?><NFSe />"));
+            Directory.CreateDirectory(pastaTemp);
 
-            Assert.Contains("disponível apenas para o padrão NACIONAL", ex.Message);
-            Assert.Contains("GINFES", ex.Message);
+            try
+            {
+                servico.GravarXmlDistribuicao(pastaTemp, nomeArquivo, conteudoXml);
+
+                var caminhoArquivo = Path.Combine(pastaTemp, nomeArquivo);
+                Assert.True(File.Exists(caminhoArquivo));
+                Assert.Equal(conteudoXml, File.ReadAllText(caminhoArquivo, Encoding.UTF8));
+            }
+            finally
+            {
+                try
+                {
+                    Directory.Delete(pastaTemp, true);
+                }
+                catch { }
+            }
         }
 
         [Theory]

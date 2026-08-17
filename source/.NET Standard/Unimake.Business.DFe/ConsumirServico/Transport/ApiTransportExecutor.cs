@@ -1,11 +1,12 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using Unimake.Business.DFe.ConsumirServico.Contracts;
 
 namespace Unimake.Business.DFe.ConsumirServico.Transport
 {
-    internal sealed class ApiTransportExecutor
+    internal sealed class ApiTransportExecutor : IApiTransportExecutor
     {
         public TransportResponse Execute(TransportRequest request)
         {
@@ -13,7 +14,12 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
             {
                 HttpResponseMessage httpResponse;
                 if (string.Equals(request.Method, "get", StringComparison.OrdinalIgnoreCase))
-                    httpResponse = httpClient.GetAsync("").GetAwaiter().GetResult();
+                {
+                    using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "") { Content = request.HttpContent })
+                    {
+                        httpResponse = httpClient.SendAsync(requestMessage).GetAwaiter().GetResult();
+                    }
+                }
                 else if (string.Equals(request.Method, "delete", StringComparison.OrdinalIgnoreCase))
                     httpResponse = httpClient.DeleteAsync("").GetAwaiter().GetResult();
                 else
@@ -29,23 +35,8 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
 
         private HttpClient CreateClient(TransportRequest request)
         {
-            var httpClientHandler = new HttpClientHandler();
-
-            if (!request.UseCertificate)
-            {
-                httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Automatic;
-                if (request.UseDefaultCredentials)
-                {
-                    httpClientHandler.Credentials = CredentialCache.DefaultCredentials;
-                }
-            }
-            else
-            {
-                httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Manual;
-                httpClientHandler.ClientCertificates.Add(request.Certificate);
-            }
-
-            var client = new HttpClient(httpClientHandler)
+            var handler = CriarHandler(request);
+            var client = new HttpClient(handler)
             {
                 BaseAddress = new Uri(request.RequestUri)
             };
@@ -64,6 +55,75 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
             return client;
+        }
+
+        private HttpMessageHandler CriarHandler(TransportRequest request)
+        {
+            if (request.UseWinHttpHandler &&
+                RuntimeInformation.IsOSPlatform(OSPlatform.Windows) &&
+                string.Equals(request.Method, "get", StringComparison.OrdinalIgnoreCase) &&
+                request.HttpContent != null)
+            {
+                return CriarWinHttpHandler(request);
+            }
+
+            return CriarHttpClientHandler(request);
+        }
+
+        private HttpClientHandler CriarHttpClientHandler(TransportRequest request)
+        {
+            var handler = new HttpClientHandler();
+
+            if (!request.UseCertificate)
+            {
+                handler.ClientCertificateOptions = request.DisableAutomaticClientCertificateSelection ?
+                    ClientCertificateOption.Manual :
+                    ClientCertificateOption.Automatic;
+                if (request.UseDefaultCredentials)
+                {
+                    handler.Credentials = CredentialCache.DefaultCredentials;
+                }
+            }
+            else
+            {
+                handler.ClientCertificateOptions = ClientCertificateOption.Manual;
+                handler.ClientCertificates.Add(request.Certificate);
+            }
+
+            if (request.Proxy != null)
+            {
+                handler.Proxy = request.Proxy;
+            }
+
+            return handler;
+        }
+
+        private WinHttpHandler CriarWinHttpHandler(TransportRequest request)
+        {
+            var handler = new WinHttpHandler
+            {
+                WindowsProxyUsePolicy = request.Proxy == null ? WindowsProxyUsePolicy.UseWinInetProxy : WindowsProxyUsePolicy.UseCustomProxy,
+                Proxy = request.Proxy
+            };
+
+            if (!request.UseCertificate)
+            {
+                // No WinHTTP, Automatic pode selecionar um certificado do repositório do
+                // Windows mesmo quando a autenticação da API é feita por token/credenciais.
+                // Manual sem certificados garante que o handshake não tente usar certificado.
+                handler.ClientCertificateOption = ClientCertificateOption.Manual;
+                if (request.UseDefaultCredentials)
+                {
+                    handler.ServerCredentials = CredentialCache.DefaultCredentials;
+                }
+            }
+            else
+            {
+                handler.ClientCertificateOption = ClientCertificateOption.Manual;
+                handler.ClientCertificates.Add(request.Certificate);
+            }
+
+            return handler;
         }
     }
 }

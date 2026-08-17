@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Net;
+using System.Reflection;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFSe;
@@ -20,9 +22,10 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
-        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
-        public void ConsultarConvenioMunicipal(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
+        [Trait("Categoria", "Integracao")]
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL, HttpStatusCode.OK)]
+        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL, HttpStatusCode.OK)]
+        public void ConsultarConvenioMunicipal(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, HttpStatusCode statusEsperado)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
@@ -46,7 +49,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
             };
 
             var consultarConvenio = new ConsultarConvenioMunicipal(conteudoXML, configuracao);
-            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarConvenio));
+            ExecutarEValidarStatus(consultarConvenio, statusEsperado);
         }
 
         #endregion
@@ -58,9 +61,9 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
-        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
-        public void ConsultarAliquotasMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
+        [Trait("Categoria", "Integracao")]
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL, HttpStatusCode.NotFound)]
+        public void ConsultarAliquotasMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, HttpStatusCode statusEsperado)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
@@ -84,7 +87,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
             };
 
             var consultarAliquotas = new ConsultarAliquotasMunicipais(conteudoXML, configuracao);
-            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarAliquotas));
+            ExecutarEValidarStatus(consultarAliquotas, statusEsperado);
         }
 
         #endregion
@@ -96,9 +99,9 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
-        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
-        public void ConsultarHistoricoAliquotasMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
+        [Trait("Categoria", "Integracao")]
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL, HttpStatusCode.NotFound)]
+        public void ConsultarHistoricoAliquotasMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, HttpStatusCode statusEsperado)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
@@ -122,7 +125,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
             };
 
             var consultarHistorico = new ConsultarHistoricoAliquotasMunicipais(conteudoXML, configuracao);
-            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarHistorico));
+            ExecutarEValidarStatus(consultarHistorico, statusEsperado);
         }
 
         #endregion
@@ -134,9 +137,9 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
-        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
-        public void ConsultarRegimesEspeciaisMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
+        [Trait("Categoria", "Integracao")]
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL, HttpStatusCode.NotFound)]
+        public void ConsultarRegimesEspeciaisMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, HttpStatusCode statusEsperado)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
@@ -160,7 +163,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
             };
 
             var consultarRegimes = new ConsultarRegimesEspeciaisMunicipais(conteudoXML, configuracao);
-            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarRegimes));
+            ExecutarEValidarStatus(consultarRegimes, statusEsperado);
         }
 
         #endregion
@@ -172,9 +175,9 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
-        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
-        public void ConsultarRetencoesMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
+        [Trait("Categoria", "Integracao")]
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL, HttpStatusCode.NotFound)]
+        public void ConsultarRetencoesMunicipais(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, HttpStatusCode statusEsperado)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
@@ -198,7 +201,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
             };
 
             var consultarRetencoes = new ConsultarRetencoesMunicipais(conteudoXML, configuracao);
-            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarRetencoes));
+            ExecutarEValidarStatus(consultarRetencoes, statusEsperado);
         }
 
         #endregion
@@ -210,9 +213,9 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
-        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
-        public void ConsultarBeneficioMunicipal(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
+        [Trait("Categoria", "Integracao")]
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL, HttpStatusCode.BadRequest)]
+        public void ConsultarBeneficioMunicipal(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, HttpStatusCode statusEsperado)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
@@ -236,7 +239,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
             };
 
             var consultarBeneficio = new ConsultarBeneficioMunicipal(conteudoXML, configuracao);
-            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarBeneficio));
+            ExecutarEValidarStatus(consultarBeneficio, statusEsperado);
         }
 
         /// <summary>
@@ -244,9 +247,9 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// </summary>
         [Theory]
         [Trait("DFe", "NFSe")]
-        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL)]
-        [InlineData(TipoAmbiente.Producao, PadraoNFSe.NACIONAL)]
-        public void ConsultarBeneficioMunicipalDireto(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe)
+        [Trait("Categoria", "Integracao")]
+        [InlineData(TipoAmbiente.Homologacao, PadraoNFSe.NACIONAL, HttpStatusCode.BadRequest)]
+        public void ConsultarBeneficioMunicipalDireto(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, HttpStatusCode statusEsperado)
         {
             if (padraoNFSe != PadraoNFSe.NACIONAL)
                 return;
@@ -261,8 +264,39 @@ namespace Unimake.DFe.Test.NFSe.Servicos
                 SchemaVersao = "1.01"
             };
 
-            var consultarBeneficio = new ConsultarBeneficioMunicipal(4204608, "99.99.99.999", DateTime.Now, configuracao);
-            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarBeneficio));
+            var consultarBeneficio = new ConsultarBeneficioMunicipal(4204608, "1234.56.78.901", new DateTime(2025, 11, 15), configuracao);
+            ExecutarEValidarStatus(consultarBeneficio, statusEsperado);
+        }
+
+        #endregion
+
+        #region Testes de Configuração
+
+        /// <summary>
+        /// Confirma a configuração determinística dos serviços GET do ADN que exigem mTLS.
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [Trait("Categoria", "Unidade")]
+        [InlineData("ConsultarConvenioMunicipal", "https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/convenio", "https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/convenio")]
+        [InlineData("ConsultarAliquotasMunicipais", "https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/aliquota", "https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/aliquota")]
+        [InlineData("ConsultarHistoricoAliquotasMunicipais", "https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/historicoaliquotas", "https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/historicoaliquotas")]
+        [InlineData("ConsultarRegimesEspeciaisMunicipais", "https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/regimes_especiais", "https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{codigoServico}/{competencia}/regimes_especiais")]
+        [InlineData("ConsultarRetencoesMunicipais", "https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{competencia}/retencoes", "https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{competencia}/retencoes")]
+        [InlineData("ConsultarBeneficioMunicipal", "https://adn.nfse.gov.br/parametrizacao/{codigoMunicipio}/{numeroBeneficio}/{competencia}/beneficio", "https://adn.producaorestrita.nfse.gov.br/parametrizacao/{codigoMunicipio}/{numeroBeneficio}/{competencia}/beneficio")]
+        [InlineData("ConsultarDistribuicaoNFSeNSU", "https://adn.nfse.gov.br/contribuintes/DFe/{NSU}", "https://adn.producaorestrita.nfse.gov.br/contribuintes/DFe/{NSU}")]
+        [InlineData("ConsultaEventosNFSeChaveAcesso", "https://adn.nfse.gov.br/contribuintes/NFSe/{ChaveNFSe}/Eventos", "https://adn.producaorestrita.nfse.gov.br/contribuintes/NFSe/{ChaveNFSe}/Eventos")]
+        public void ConfiguracaoNacionalDeveExigirCertificadoDigital(string nomeServico, string endpointProducao, string endpointHomologacao)
+        {
+            var configuracao = CriarConfiguracao(TipoAmbiente.Homologacao);
+
+            configuracao.Load(nomeServico);
+
+            Assert.Multiple(
+                () => Assert.True(configuracao.UsaCertificadoDigital),
+                () => Assert.Equal("GET", configuracao.MetodoAPI.ToUpperInvariant()),
+                () => Assert.Equal(endpointProducao, configuracao.RequestURIProducao),
+                () => Assert.Equal(endpointHomologacao, configuracao.RequestURIHomologacao));
         }
 
         #endregion
@@ -274,6 +308,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// </summary>
         [Fact]
         [Trait("DFe", "NFSe")]
+        [Trait("Categoria", "Unidade")]
         public void ValidarParametrosObrigatorios()
         {
             var configuracao = new Configuracao
@@ -293,11 +328,9 @@ namespace Unimake.DFe.Test.NFSe.Servicos
     </infConsulta>
 </ConsultaParametros>");
 
-            Assert.Throws<Exception>(() =>
-            {
-                var consulta = new ConsultarConvenioMunicipal(xmlSemMunicipio, configuracao);
-                consulta.Executar();
-            });
+            var exception = Assert.Throws<InvalidOperationException>(() => new ConsultarConvenioMunicipal(xmlSemMunicipio, configuracao));
+
+            Assert.Equal("O código do município deve ser informado.", exception.Message);
         }
 
         /// <summary>
@@ -305,33 +338,71 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// </summary>
         [Fact]
         [Trait("DFe", "NFSe")]
+        [Trait("Categoria", "Unidade")]
         public void ValidarConstrucaoURLs()
         {
-            var configuracao = new Configuracao
-            {
-                TipoDFe = TipoDFe.NFSe,
-                CertificadoDigital = PropConfig.CertificadoDigital,
-                TipoAmbiente = TipoAmbiente.Homologacao,
-                CodigoMunicipio = 1001058,
-                SchemaVersao = "1.01"
-            };
+            var competencia = new DateTime(2025, 11, 15);
 
-            // Teste Convênio
-            var consultaConvenio = new ConsultarConvenioMunicipal(4106902, configuracao);
-            Assert.Equal(4106902, consultaConvenio.CodigoMunicipio);
-
-            // Teste Alíquotas
-            var consultaAliquotas = new ConsultarAliquotasMunicipais(4106902, "01.01", DateTime.Now, configuracao);
-            Assert.Equal(4106902, consultaAliquotas.CodigoMunicipio);
-            Assert.Equal("01.01", consultaAliquotas.CodigoServico);
-            Assert.True(consultaAliquotas.Competencia != default(DateTime));
-
-            // Teste Benefício Municipal
-            var consultaBeneficio = new ConsultarBeneficioMunicipal(4106902, "123456", DateTime.Now, configuracao);
-            Assert.Equal(4106902, consultaBeneficio.CodigoMunicipio);
-            Assert.Equal("123456", consultaBeneficio.NumeroBeneficio);
+            ValidarRequestURI(
+                new ConsultarConvenioMunicipal(4106902, CriarConfiguracao(TipoAmbiente.Homologacao)),
+                "https://adn.producaorestrita.nfse.gov.br/parametrizacao/4106902/convenio");
+            ValidarRequestURI(
+                new ConsultarAliquotasMunicipais(4106902, "01.01", competencia, CriarConfiguracao(TipoAmbiente.Homologacao)),
+                "https://adn.producaorestrita.nfse.gov.br/parametrizacao/4106902/01.01/2025-11-15T00:00:00/aliquota");
+            ValidarRequestURI(
+                new ConsultarHistoricoAliquotasMunicipais(4106902, "01.01", CriarConfiguracao(TipoAmbiente.Homologacao)),
+                "https://adn.producaorestrita.nfse.gov.br/parametrizacao/4106902/01.01/historicoaliquotas");
+            ValidarRequestURI(
+                new ConsultarRegimesEspeciaisMunicipais(4106902, "01.01", competencia, CriarConfiguracao(TipoAmbiente.Homologacao)),
+                "https://adn.producaorestrita.nfse.gov.br/parametrizacao/4106902/01.01/2025-11-15T00:00:00/regimes_especiais");
+            ValidarRequestURI(
+                new ConsultarRetencoesMunicipais(4106902, competencia, CriarConfiguracao(TipoAmbiente.Homologacao)),
+                "https://adn.producaorestrita.nfse.gov.br/parametrizacao/4106902/2025-11-15T00:00:00/retencoes");
+            ValidarRequestURI(
+                new ConsultarBeneficioMunicipal(4106902, "123456", competencia, CriarConfiguracao(TipoAmbiente.Homologacao)),
+                "https://adn.producaorestrita.nfse.gov.br/parametrizacao/4106902/123456/2025-11-15T00:00:00/beneficio");
         }
 
         #endregion
+
+        private static Configuracao CriarConfiguracao(TipoAmbiente tipoAmbiente)
+        {
+            return new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = tipoAmbiente,
+                CodigoMunicipio = 1001058,
+                SchemaVersao = "1.01"
+            };
+        }
+
+        private static void ExecutarEValidarStatus(Unimake.Business.DFe.Servicos.ServicoBase servico, HttpStatusCode statusEsperado)
+        {
+            try
+            {
+                servico.Executar();
+            }
+            catch
+            {
+                if (servico.HttpStatusCode == 0 || servico.HttpStatusCode != statusEsperado)
+                {
+                    throw;
+                }
+            }
+
+            Assert.NotEqual((HttpStatusCode)0, servico.HttpStatusCode);
+            Assert.Equal(statusEsperado, servico.HttpStatusCode);
+        }
+
+        private static void ValidarRequestURI(Unimake.Business.DFe.Servicos.ServicoBase servico, string requestURIEsperada)
+        {
+            var definirConfiguracao = servico.GetType().GetMethod("DefinirConfiguracao", BindingFlags.Instance | BindingFlags.NonPublic);
+
+            Assert.NotNull(definirConfiguracao);
+            definirConfiguracao.Invoke(servico, null);
+
+            Assert.Equal(requestURIEsperada, servico.Configuracoes.RequestURI);
+        }
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetConsultarFrotaTransportador xmlns="http://www.antt.gov.br/ciot">
+	<CpfCnpjTransportador>12345678901</CpfCnpjTransportador>
+	<RNTRCTransportador>123456789</RNTRCTransportador>
+	<NomeRazaoSocialTransportador>TRANSPORTADOR TESTE</NomeRazaoSocialTransportador>
+	<RNTRCAtivo>true</RNTRCAtivo>
+	<Frota>
+		<PlacaVeiculo>BRA2E19</PlacaVeiculo>
+		<SituacaoVeiculoFrotaTransportador>true</SituacaoVeiculoFrotaTransportador>
+	</Frota>
+	<Frota>
+		<PlacaVeiculo>ABC1D23</PlacaVeiculo>
+		<SituacaoVeiculoFrotaTransportador>false</SituacaoVeiculoFrotaTransportador>
+	</Frota>
+	<Mensagem>Frota consultada com sucesso</Mensagem>
+	<Protocolo>PROTO-EFRETE-FROTA-001</Protocolo>
+	<Codigo>000000</Codigo>
+</RetConsultarFrotaTransportador>

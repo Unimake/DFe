@@ -18,8 +18,27 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [Serializable()]
     [XmlType(Namespace = CIOTNamespace.PortalANTT)]
     [XmlRoot("ConsultarSituacaoTransportador", Namespace = CIOTNamespace.PortalANTT, IsNullable = false)]
-    public class ConsultarSituacaoTransportador : XMLBase
+    public partial class ConsultarSituacaoTransportador : XMLBase
     {
+        /// <summary>
+        /// Provedor utilizado para executar o serviço CIOT.
+        /// Quando não informado, o serviço utiliza a ANTT.
+        /// </summary>
+        [XmlElement("ProvedorCIOT")]
+        [Newtonsoft.Json.JsonIgnore]
+#if INTEROP
+        public Unimake.Business.DFe.Servicos.ProvedorCIOT ProvedorCIOT { get; set; } = (Unimake.Business.DFe.Servicos.ProvedorCIOT)(-1);
+#else
+        public Unimake.Business.DFe.Servicos.ProvedorCIOT? ProvedorCIOT { get; set; }
+#endif
+
+#if INTEROP
+        public bool ShouldSerializeProvedorCIOT() => ProvedorCIOT != (Unimake.Business.DFe.Servicos.ProvedorCIOT)(-1);
+#else
+        public bool ShouldSerializeProvedorCIOT() => ProvedorCIOT.HasValue;
+#endif
+
+
         [XmlElement("CpfCnpjInteressado")]
         public string CpfCnpjInteressado { get; set; }
 

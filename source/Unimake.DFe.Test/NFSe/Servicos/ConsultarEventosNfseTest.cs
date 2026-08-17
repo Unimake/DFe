@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFSe;
@@ -16,7 +17,24 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// <summary>
         /// Monta o parâmetros, de forma dinâmica, para o cenário de testes
         /// </summary>
-        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("ConsultarEvento");
+        public static IEnumerable<object[]> Parametros
+        {
+            get
+            {
+                foreach (var parametros in TestUtility.PreparaDadosCenario("ConsultarEvento"))
+                {
+                    var tipoAmbiente = (TipoAmbiente)parametros[0];
+                    var padraoNFSe = (PadraoNFSe)parametros[1];
+
+                    if (tipoAmbiente == TipoAmbiente.Producao && padraoNFSe == PadraoNFSe.NACIONAL)
+                    {
+                        continue;
+                    }
+
+                    yield return parametros;
+                }
+            }
+        }
 
         /// <summary>
         /// Consultar Eventos NFSe para saber se a conexão com o webservice está ocorrendo corretamente.
@@ -24,6 +42,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
         /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado o XML</param>
         [Theory]
         [Trait("DFe", "NFSe")]
+        [Trait("Categoria", "Integracao")]
         [MemberData(nameof(Parametros))]
         public void ConsultarEventosNfse(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
         {
@@ -52,6 +71,19 @@ namespace Unimake.DFe.Test.NFSe.Servicos
             Assert.Multiple(() => TestUtility.AnalisaResultado(consultarEventos));
 
             var resultado = consultarEventos.Result;
+
+            if (resultado == null && padraoNFSe == PadraoNFSe.NACIONAL)
+            {
+                Assert.Equal(HttpStatusCode.BadRequest, consultarEventos.HttpStatusCode);
+
+                var resultadoErro = consultarEventos.ResultErro;
+                Assert.NotNull(resultadoErro);
+                Assert.NotNull(resultadoErro.Erro);
+                Assert.Equal(((int)HttpStatusCode.BadRequest).ToString(), resultadoErro.Erro.Codigo);
+                Assert.False(string.IsNullOrWhiteSpace(resultadoErro.Erro.Descricao));
+                return;
+            }
+
             Assert.NotNull(resultado);
 
             Assert.NotNull(resultado.DataHoraProcessamento);
@@ -81,6 +113,33 @@ namespace Unimake.DFe.Test.NFSe.Servicos
                 Assert.NotNull(resultado.Erro.Codigo);
                 Assert.NotNull(resultado.Erro.Descricao);
             }
+        }
+
+        /// <summary>
+        /// Confirma localmente a configuração do serviço Nacional em produção sem depender da disponibilidade externa.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFSe")]
+        [Trait("Categoria", "Unidade")]
+        public void ConfiguracaoProducaoNacionalDeveUsarGetComCertificadoDigital()
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                TipoAmbiente = TipoAmbiente.Producao,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeConsultarEventosDiversos,
+                SchemaVersao = "1.01"
+            };
+
+            configuracao.Load("ConsultarEvento");
+
+            Assert.Multiple(
+                () => Assert.True(configuracao.UsaCertificadoDigital),
+                () => Assert.Equal("GET", configuracao.MetodoAPI.ToUpperInvariant()),
+                () => Assert.Equal(
+                    "https://sefin.nfse.gov.br/sefinnacional/nfse/{chNFSe}/eventos/{tipoEvento}/{numSeqEvento}",
+                    configuracao.RequestURIProducao));
         }
     }
 }

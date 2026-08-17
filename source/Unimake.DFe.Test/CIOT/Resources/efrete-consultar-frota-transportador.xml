@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarFrotaTransportador xmlns="http://www.antt.gov.br/ciot">
+	<ProvedorCIOT>EFrete</ProvedorCIOT>
+	<CpfCnpjInteressado>12345678000199</CpfCnpjInteressado>
+	<CpfCnpjTransportador>12345678901</CpfCnpjTransportador>
+	<RNTRCTransportador>123456789</RNTRCTransportador>
+	<DataPrevistaFimViagem>2026-08-14</DataPrevistaFimViagem>
+	<Placas>
+		<Placa>BRA2E19</Placa>
+		<Placa>ABC1D23</Placa>
+	</Placas>
+</ConsultarFrotaTransportador>
