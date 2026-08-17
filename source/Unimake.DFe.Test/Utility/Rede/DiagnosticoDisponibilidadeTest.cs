@@ -1296,6 +1296,75 @@ namespace Unimake.DFe.Test.Utility.Rede
                      x.Servico == "StatusServico");
         }
 
+        [Fact(Explicit = true)]
+        [Trait("Utility", "DisponibilidadeIntegracao")]
+        public void ConsultaStatusNFeAMProducao()
+        {
+            // Este teste é explícito porque acessa o serviço real da SEFAZ AM. A única mensagem
+            // transmitida é a consulta oficial de StatusServico, sem efeito fiscal.
+            var resultado = ConsultarStatusNFeAM(TipoAmbiente.Producao);
+
+            Assert.Equal(TipoDFe.NFe, resultado.TipoDFe);
+            Assert.Equal(UFBrasil.AM, resultado.UFBrasil);
+            Assert.Equal(TipoAmbiente.Producao, resultado.TipoAmbiente);
+            Assert.Contains(resultado.Sondas.Itens,
+                x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
+                     x.Servico == "StatusServico");
+        }
+
+        [Fact(Explicit = true)]
+        [Trait("Utility", "DisponibilidadeIntegracao")]
+        public void ConsultaStatusNFeAMHomologacao()
+        {
+            // Produção e homologação possuem hosts próprios no Amazonas. Este teste mantém as
+            // evidências separadas para mostrar se a indisponibilidade afeta um ou os dois ambientes.
+            var resultado = ConsultarStatusNFeAM(TipoAmbiente.Homologacao);
+
+            Assert.Equal(TipoDFe.NFe, resultado.TipoDFe);
+            Assert.Equal(UFBrasil.AM, resultado.UFBrasil);
+            Assert.Equal(TipoAmbiente.Homologacao, resultado.TipoAmbiente);
+            Assert.Contains(resultado.Sondas.Itens,
+                x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
+                     x.Servico == "StatusServico");
+        }
+
+        private static ResultadoDiagnosticoDisponibilidade ConsultarStatusNFeAM(TipoAmbiente ambiente)
+        {
+            DiagnosticoDisponibilidadeDFe.LimparMemoriaDiagnostico();
+            var configuracao = ConfiguracaoBase();
+            configuracao.TipoDFe = TipoDFe.NFe;
+            configuracao.CodigoUF = (int)UFBrasil.AM;
+            configuracao.TipoAmbiente = ambiente;
+            configuracao.SchemaVersao = "4.00";
+            configuracao.Servico = Servico.NFeStatusServico;
+            configuracao.CertificadoDigital = PropConfig.CertificadoDigital;
+
+            var opcoes = new ConfiguracaoDiagnosticoDisponibilidade
+            {
+                TimeoutMilissegundos = 10000,
+                LimiteLentidaoMilissegundos = 3000
+            };
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ConsultarStatusServico();
+
+            var saida = TestContext.Current.TestOutputHelper;
+            if (saida != null)
+            {
+                saida.WriteLine("Diagnóstico NFe/AM em {0}: {1} / {2}", ambiente, resultado.Status,
+                    resultado.OrigemProvavel);
+                saida.WriteLine("Descrição: {0}", resultado.Descricao);
+                foreach (var sonda in resultado.Sondas.Itens)
+                {
+                    saida.WriteLine(
+                        "{0:O} | {1} | {2} | falha={3} | HTTP={4} | cStat={5} | {6} ms | cache={7} | endpoint={8} | motivo={9} | exceção={10}",
+                        sonda.DataHora, sonda.Servico, sonda.Status, sonda.TipoFalha,
+                        sonda.HttpStatusCode, sonda.CStat, sonda.DuracaoMilissegundos,
+                        sonda.DoCache, sonda.Endpoint, sonda.XMotivo, sonda.Excecao);
+                }
+            }
+
+            return resultado;
+        }
+
         private static Configuracao ConfiguracaoBase() => new Configuracao
         {
             TipoDFe = TipoDFe.NFe,
