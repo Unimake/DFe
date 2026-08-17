@@ -300,5 +300,45 @@ namespace Unimake.DFe.Test.NFSe.Servicos
                 Assert.NotEmpty(servico.Result.Erros);
             }
         }
+
+        [Fact]
+        [Trait("DFe", "NFSe")]
+        public void TesteConsultarDistribuicaoNFSeNSUDeveRemontarRequestURIQuandoReutilizaConfiguracao()
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeConsultarDistribuicaoNFSeNSU,
+                SchemaVersao = "1.01"
+            };
+
+            var primeiraConsulta = new DistribuicaoNFSe
+            {
+                NSU = "000000000000001",
+                TipoNSU = "DISTRIBUICAO",
+                Lote = "false"
+            };
+
+            var segundaConsulta = new DistribuicaoNFSe
+            {
+                NSU = "000000000000002",
+                TipoNSU = "DISTRIBUICAO",
+                Lote = "false"
+            };
+
+            _ = new ConsultarDistribuicaoNFSeNSU(primeiraConsulta, configuracao);
+            var primeiraRequestURI = configuracao.RequestURI;
+
+            _ = new ConsultarDistribuicaoNFSeNSU(segundaConsulta, configuracao);
+            var segundaRequestURI = configuracao.RequestURI;
+
+            Assert.Contains("000000000000001", primeiraRequestURI);
+            Assert.Contains("000000000000002", segundaRequestURI);
+            Assert.DoesNotContain("000000000000001", segundaRequestURI);
+            Assert.Contains("tipoNSU=DISTRIBUICAO", segundaRequestURI);
+            Assert.Contains("lote=false", segundaRequestURI);
+        }
     }
 }

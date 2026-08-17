@@ -30,15 +30,24 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            var xml = new DistribuicaoNFSe();
-            xml = xml.LerXML<DistribuicaoNFSe>(ConteudoXML);
+            Configuracoes.Servico = Servico.NFSeConsultarDistribuicaoNFSeNSU;
 
-            if (!Configuracoes.Definida)
+            base.DefinirConfiguracao();
+        }
+
+        /// <summary>
+        /// Inicializa o serviço refazendo a configuração dinâmica quando a mesma instância for reutilizada.
+        /// </summary>
+        /// <param name="conteudoXML">XML contendo os parâmetros de consulta.</param>
+        /// <param name="configuracao">Configurações para conexão e envio para o web-service.</param>
+        protected override void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
+        {
+            if (configuracao != null)
             {
-                Configuracoes.Servico = Servico.NFSeConsultarDistribuicaoNFSeNSU;
-
-                base.DefinirConfiguracao();
+                configuracao.Definida = false;
             }
+
+            base.Inicializar(conteudoXML, configuracao);
         }
 
         #endregion Protected Methods
