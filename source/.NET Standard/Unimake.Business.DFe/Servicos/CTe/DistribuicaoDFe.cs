@@ -190,11 +190,18 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// Gravar os XML contidos no DocZIP da consulta em uma pasta no HD
         /// </summary>
         /// <param name="folder">Nome da pasta onde é para salvar os XML</param>
-        public void GravarXMLDocZIP(string folder)
+        /// <param name="fileNameWithNSU">Indica se o nome do arquivo deve conter o NSU</param>
+        public void GravarXMLDocZIP(string folder, bool fileNameWithNSU = false)
         {
             try
             {
-                foreach (var item in Result.LoteDistDFeInt.DocZip)
+                var docZip = Result?.LoteDistDFeInt?.DocZip;
+                if (docZip == null || docZip.Count == 0)
+                {
+                    return;
+                }
+
+                foreach (var item in docZip)
                 {
                     var save = true;
                     var conteudoXML = item.ConteudoXML;
@@ -206,15 +213,29 @@ namespace Unimake.Business.DFe.Servicos.CTe
                     switch (item.TipoXML)
                     {
                         case TipoXMLDocZip.ProcEventoCTe:
-                            var chCTe = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "chCTe");
-                            var tpEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "tpEvento");
-                            var nSeqEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "nSeqEvento");
-                            nomeArquivo = chCTe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-procEventoCTe.xml";
+                            if (fileNameWithNSU)
+                            {
+                                nomeArquivo = item.NSU + "-procEventoCTe.xml";
+                            }
+                            else
+                            {
+                                var chCTe = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "chCTe");
+                                var tpEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "tpEvento");
+                                var nSeqEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "nSeqEvento");
+                                nomeArquivo = chCTe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-procEventoCTe.xml";
+                            }
                             break;
 
                         case TipoXMLDocZip.ProcCTe:
-                            var chave = ((XmlElement)docXML.GetElementsByTagName("infCte")[0]).GetAttribute("Id").Substring(3, 44);
-                            nomeArquivo = chave + "-procCTe.xml";
+                            if (fileNameWithNSU)
+                            {
+                                nomeArquivo = item.NSU + "-procCTe.xml";
+                            }
+                            else
+                            {
+                                var chave = ((XmlElement)docXML.GetElementsByTagName("infCte")[0]).GetAttribute("Id").Substring(3, 44);
+                                nomeArquivo = chave + "-procCTe.xml";
+                            }
                             break;
                     }
 

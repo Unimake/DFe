@@ -228,7 +228,13 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             try
             {
-                foreach (var item in Result.LoteDistDFeInt.DocZip)
+                var docZip = Result?.LoteDistDFeInt?.DocZip;
+                if (docZip == null || docZip.Count == 0)
+                {
+                    return;
+                }
+
+                foreach (var item in docZip)
                 {
                     var save = true;
                     var conteudoXML = item.ConteudoXML;

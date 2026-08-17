@@ -11,6 +11,74 @@ namespace Unimake.DFe.Test.CTe.Servicos
     /// </summary>
     public class DistribuicaoDFeTest
     {
+        [Theory]
+        [Trait("DFe", "CTe")]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void GravarXMLDocZIPSemDocumentosNaoDeveLancarExcecao(bool incluirLoteVazio)
+        {
+            using var distribuicaoDFe = new DistribuicaoDFe();
+            var lote = incluirLoteVazio ? "<loteDistDFeInt />" : string.Empty;
+            var retorno =
+                $"<retDistDFeInt versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/cte\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cStat>137</cStat><xMotivo>Nenhum documento localizado</xMotivo><dhResp>2026-08-17T10:00:00-03:00</dhResp><ultNSU>000000000000000</ultNSU><maxNSU>000000000000000</maxNSU>{lote}</retDistDFeInt>";
+            var retornoXML = new System.Xml.XmlDocument();
+            retornoXML.LoadXml(retorno);
+            distribuicaoDFe.RetornoWSString = retorno;
+            distribuicaoDFe.RetornoWSXML = retornoXML;
+
+            var exception = Record.Exception(() => distribuicaoDFe.GravarXMLDocZIP("pasta-inexistente"));
+
+            Assert.Null(exception);
+        }
+
+        [Theory]
+        [Trait("DFe", "CTe")]
+        [InlineData(false, false, "41260899999999000199570010000000011000000010-procCTe.xml")]
+        [InlineData(true, false, "000000000000123-procCTe.xml")]
+        [InlineData(false, true, "41260899999999000199570010000000011000000010_110110_01-procEventoCTe.xml")]
+        [InlineData(true, true, "000000000000123-procEventoCTe.xml")]
+        public void GravarXMLDocZIPDeveNomearPorChaveOuNSU(
+            bool fileNameWithNSU,
+            bool evento,
+            string nomeEsperado)
+        {
+            const string chave = "41260899999999000199570010000000011000000010";
+            const string nsu = "000000000000123";
+            var conteudo = evento
+                ? $"<procEventoCTe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/cte\"><eventoCTe versao=\"4.00\"><infEvento><chCTe>{chave}</chCTe><tpEvento>110110</tpEvento><nSeqEvento>1</nSeqEvento></infEvento></eventoCTe><retEventoCTe /></procEventoCTe>"
+                : $"<cteProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/cte\"><CTe><infCte Id=\"CTe{chave}\" /></CTe><protCTe /></cteProc>";
+            var schema = evento ? "procEventoCTe_v4.00.xsd" : "procCTe_v4.00.xsd";
+            var retorno =
+                $"<retDistDFeInt versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/cte\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cStat>138</cStat><xMotivo>Documento localizado</xMotivo><dhResp>2026-08-17T10:00:00-03:00</dhResp><ultNSU>{nsu}</ultNSU><maxNSU>{nsu}</maxNSU><loteDistDFeInt><docZip NSU=\"{nsu}\" schema=\"{schema}\">{Unimake.Business.DFe.Utility.Compress.GZIPCompress(conteudo)}</docZip></loteDistDFeInt></retDistDFeInt>";
+            var retornoXML = new System.Xml.XmlDocument();
+            retornoXML.LoadXml(retorno);
+            using var distribuicaoDFe = new DistribuicaoDFe
+            {
+                RetornoWSString = retorno,
+                RetornoWSXML = retornoXML
+            };
+            var pasta = System.IO.Path.Combine(
+                System.IO.Path.GetTempPath(),
+                "unimake-dfe-cte-doczip-" + Guid.NewGuid().ToString("N"));
+
+            try
+            {
+                System.IO.Directory.CreateDirectory(pasta);
+                distribuicaoDFe.GravarXMLDocZIP(pasta, fileNameWithNSU);
+
+                var arquivo = Assert.Single(System.IO.Directory.EnumerateFiles(pasta));
+                Assert.Equal(nomeEsperado, System.IO.Path.GetFileName(arquivo));
+                Assert.Equal(conteudo, System.IO.File.ReadAllText(arquivo));
+            }
+            finally
+            {
+                if (System.IO.Directory.Exists(pasta))
+                {
+                    System.IO.Directory.Delete(pasta, true);
+                }
+            }
+        }
+
         /// <summary>
         /// Consultar de distribuição do CTe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Efetua a consulta DFe ambiente para garantir que todos estão funcionando.
