@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Reflection;
+using System.Xml;
+using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTe;
 using Unimake.Business.DFe.Xml.CTe;
@@ -11,6 +14,29 @@ namespace Unimake.DFe.Test.CTe.Servicos
     /// </summary>
     public class RecepcaoEventoTest
     {
+        [Theory]
+        [Trait("DFe", "CTe")]
+        [InlineData("110300", "evVincPgto_v4.00.xsd")]
+        [InlineData("110301", "evCancVincPgto_v4.00.xsd")]
+        public void DeveConterSchemaDosEventosDeVinculacaoDePagamento(string tipoEvento, string schemaEspecifico)
+        {
+            var metodo = typeof(ValidarEstruturaXML).GetMethod(
+                "CarregarConfigValidacao",
+                BindingFlags.NonPublic | BindingFlags.Static
+            );
+
+            Assert.NotNull(metodo);
+
+            var catalogo = (XmlDocument)metodo.Invoke(null, null);
+            var tipo = catalogo.SelectSingleNode(
+                $"/ServicosValidacao/CTe/Servico[@tagRaiz='eventoCTe' and @versao='4.00']/SchemasEspecificos/Tipo[ID='{tipoEvento}']"
+            );
+
+            Assert.NotNull(tipo);
+            Assert.Equal("eventoCTe_v4.00.xsd", tipo.SelectSingleNode("SchemaArquivo").InnerText);
+            Assert.Equal(schemaEspecifico, tipo.SelectSingleNode("SchemaArquivoEspecifico").InnerText);
+        }
+
         /// <summary>
         /// Enviar um evento de da CTe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Enviar um evento por estado + ambiente para garantir que todos estão funcionando.
