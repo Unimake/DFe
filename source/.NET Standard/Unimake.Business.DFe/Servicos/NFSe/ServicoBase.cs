@@ -230,6 +230,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void NACIONAL()
         {
+            Configuracoes.RequestURI = Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.RequestURIHomologacao : Configuracoes.RequestURIProducao;
+
             // Substitui todos os placeholders {tag} na URL pelo valor do elemento XML de mesmo nome.
             // Novos serviços com placeholders na URL são suportados automaticamente sem alteração aqui.
             foreach (Match match in Regex.Matches(Configuracoes.RequestURI, @"\{(\w+)\}"))
