@@ -1,11 +1,13 @@
 using System;
+using System.Reflection;
 using System.Xml;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
 using Xunit;
 
-namespace Unimake.DFe.Test.Utility.Validacao
+namespace Unimake.DFe.Test.NFSe.Validacao
 {
+    [Trait("DFe", "NFSe")]
     public class NFSeTipoServicoResolverTest
     {
         [Theory]
@@ -73,6 +75,69 @@ namespace Unimake.DFe.Test.Utility.Validacao
 
             Assert.Equal(Servico.NFSeRecepcionarLoteRpsSincrono, tipoServicoPadrao);
             Assert.Equal(Servico.NFSeRecepcionarLoteRps, tipoServicoExcecao);
+        }
+
+        [Theory]
+        [InlineData(TipoAmbiente.Producao, Servico.NFSeEnvioLoteRps)]
+        [InlineData(TipoAmbiente.Homologacao, Servico.NFSeTesteEnvioLoteRps)]
+        public void DeveAplicarExcecaoPorAmbienteDoTipoServicoNFSe(TipoAmbiente tipoAmbiente, Servico tipoServicoEsperado)
+        {
+            var xml = CriarXml("<PedidoEnvioLoteRPS xmlns=\"http://www.prefeitura.sp.gov.br/nfe\"><Cabecalho Versao=\"1\" /><RPS /></PedidoEnvioLoteRPS>");
+
+            var tipoServico = ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.PAULISTANA, "1.00", 3550308, tipoAmbiente);
+
+            Assert.Equal(tipoServicoEsperado, tipoServico);
+        }
+
+        [Fact]
+        public void DeveAplicarExcecaoPorAmbienteNoEnvioPaulistanaVersao2()
+        {
+            var xml = CriarXml("<PedidoEnvioLoteRPS xmlns=\"http://www.prefeitura.sp.gov.br/nfe\"><Cabecalho Versao=\"2\" /><IBSCBS /></PedidoEnvioLoteRPS>");
+
+            var tipoServico = ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.PAULISTANA, "2.00", 3550308, TipoAmbiente.Homologacao);
+
+            Assert.Equal(Servico.NFSeTesteEnvioLoteRps, tipoServico);
+        }
+
+        [Fact]
+        public void DeveManterProducaoComoAmbientePadraoNosOverloadsExistentes()
+        {
+            const string conteudoXML = "<PedidoEnvioLoteRPS xmlns=\"http://www.prefeitura.sp.gov.br/nfe\"><Cabecalho Versao=\"1\" /><RPS /></PedidoEnvioLoteRPS>";
+            var xml = CriarXml(conteudoXML);
+
+            var tipoServicoPorString = ValidarEstruturaXML.DefinirTipoServicoNFSe(conteudoXML, PadraoNFSe.PAULISTANA, "1.00", 3550308);
+            var tipoServicoPorXml = ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.PAULISTANA, "1.00", 3550308);
+            var tipoServicoHomologacaoPorString = ValidarEstruturaXML.DefinirTipoServicoNFSe(conteudoXML, PadraoNFSe.PAULISTANA, "1.00", 3550308, TipoAmbiente.Homologacao);
+
+            Assert.Equal(Servico.NFSeEnvioLoteRps, tipoServicoPorString);
+            Assert.Equal(Servico.NFSeEnvioLoteRps, tipoServicoPorXml);
+            Assert.Equal(Servico.NFSeTesteEnvioLoteRps, tipoServicoHomologacaoPorString);
+        }
+
+        [Theory]
+        [InlineData(3550308, TipoAmbiente.Homologacao, "NFSeTesteEnvioLoteRps")]
+        [InlineData(3550308, TipoAmbiente.Producao, "NFSeEnvioLoteRps")]
+        [InlineData(4106902, TipoAmbiente.Homologacao, "NFSeRecepcionarLoteRps")]
+        [InlineData(4106902, TipoAmbiente.Producao, "NFSeGerarNfse")]
+        public void DeveRespeitarPrecedenciaDasExcecoesDeTipoServico(int codigoMunicipio, TipoAmbiente tipoAmbiente, string tipoServicoEsperado)
+        {
+            var configuracao = new XmlDocument();
+            configuracao.LoadXml(
+                "<Servico><TipoServico>NFSeGerarNfse" +
+                "<Excecao tipoAmbiente=\"2\">NFSeRecepcionarLoteRps</Excecao>" +
+                "<Excecao codMunicipio=\"3550308\">NFSeEnvioLoteRps</Excecao>" +
+                "<Excecao codMunicipio=\"3550308\" tipoAmbiente=\"2\">NFSeTesteEnvioLoteRps</Excecao>" +
+                "</TipoServico></Servico>");
+
+            var method = typeof(ValidarEstruturaXML).GetMethod(
+                "ObterTipoServico",
+                BindingFlags.NonPublic | BindingFlags.Static);
+
+            var tipoServico = (string)method.Invoke(
+                null,
+                new object[] { configuracao.DocumentElement, codigoMunicipio, tipoAmbiente });
+
+            Assert.Equal(tipoServicoEsperado, tipoServico);
         }
 
         [Fact]

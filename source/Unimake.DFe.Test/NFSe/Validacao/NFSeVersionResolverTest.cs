@@ -1,11 +1,13 @@
 using System.Reflection;
+using System.Linq;
 using System.Xml;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
 using Xunit;
 
-namespace Unimake.DFe.Test.Utility.Validacao
+namespace Unimake.DFe.Test.NFSe.Validacao
 {
+    [Trait("DFe", "NFSe")]
     public class NFSeVersionResolverTest
     {
         [Theory]
@@ -39,6 +41,39 @@ namespace Unimake.DFe.Test.Utility.Validacao
                 versaoEsperada,
                 DefinirVersao(conteudoXML, padrao, codigoMunicipio)
             );
+        }
+
+        [Theory]
+        [InlineData(PadraoNFSe.DIGIFRED)]
+        [InlineData(PadraoNFSe.MEMORY)]
+        [InlineData(PadraoNFSe.None)]
+        public void DeveRetornarVazioParaPadraoSemMunicipioAtivo(PadraoNFSe padraoNFSe)
+        {
+            Assert.Equal(string.Empty, DefinirVersao("<ConsultarLoteRpsEnvio />", padraoNFSe, 0));
+        }
+
+        [Fact]
+        public void DeveResolverTodosOsPadroesComMunicipioAtivo()
+        {
+            var padroesAtivos = Configuration
+                .CarregarMunicipio()
+                .Select(x => x.PadraoNFSe)
+                .Distinct();
+
+            foreach (var padraoNFSe in padroesAtivos)
+            {
+                var versao = DefinirVersao("<ConsultarLoteRpsEnvio />", padraoNFSe, 0);
+
+                Assert.False(string.IsNullOrWhiteSpace(versao), $"O padrão {padraoNFSe} não possui resolução automática de versão.");
+            }
+        }
+
+        [Theory]
+        [InlineData("<ConsultarDpsDisponivelEnvio xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><IM>1</IM></ConsultarDpsDisponivelEnvio>", "1.01")]
+        [InlineData("<ConsultarRpsDisponivelEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><Pedido /></ConsultarRpsDisponivelEnvio>", "2.04")]
+        public void DeveResolverVersaoDaConsultaRpsDisponivelISSNET(string conteudoXML, string versaoEsperada)
+        {
+            Assert.Equal(versaoEsperada, DefinirVersao(conteudoXML, PadraoNFSe.ISSNET, 0));
         }
 
         [Fact]
