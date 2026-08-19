@@ -55,6 +55,8 @@ Trabalhe principalmente nestes arquivos:
 ```text
 C:\Projetos\GitHub\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Servicos\Config\Config.xml
 C:\Projetos\GitHub\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Servicos\Config\NFSe\
+C:\Projetos\GitHub\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml
+C:\Projetos\GitHub\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarEstruturaXML.cs
 C:\Projetos\GitHub\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj
 ```
 
@@ -177,6 +179,18 @@ Se o usuario nao informar homologacao:
 
 Nao altere a estrutura do XML apenas para acomodar o novo municipio.
 
+### 5.1. Validar a resolução centralizada
+
+Depois de montar a configuração municipal:
+
+1. confirme que `ValidarEstruturaXML.DefinirVersaoNFSe(...)` resolve a versão informada para o padrão e município;
+2. confira em `Xml/Validar/ValidarConfig.xml` se as raízes e serviços usados pelo XML municipal estão mapeados;
+3. quando o serviço variar por município ou ambiente, represente a diferença com `Excecao` em `TipoServico`, usando `codMunicipio`, `tipoAmbiente` ou ambos;
+4. preserve a precedência município+ambiente, município, ambiente e valor padrão;
+5. adicione ou ajuste testes focados em `NFSeVersionResolverTest` e `NFSeTipoServicoResolverTest`.
+
+Nao crie switches paralelos de versão ou serviço fora dos resolvedores centrais.
+
 ### 6. Incluir o arquivo no .csproj
 
 Depois de criar o XML do municipio, ajuste `Unimake.Business.DFe.csproj` para embuti-lo como recurso.
@@ -230,6 +244,9 @@ Siga apenas com producao e nao crie URL ficticia.
 - [ ] Quando a versao nao existiu, o usuario foi informado e a tag de versao do municipio ficou vazia.
 - [ ] O novo XML do municipio foi criado em `Servicos/Config/NFSe`.
 - [ ] Os links de producao e homologacao foram substituidos corretamente.
+- [ ] A versão e o tipo de serviço foram resolvidos pelos resolvedores centrais para produção e homologação aplicáveis.
+- [ ] `ValidarConfig.xml` foi revisado quando o município introduziu nova raiz, versão, serviço ou exceção.
+- [ ] Os testes focados de resolução de versão e serviço foram executados.
 - [ ] O `.csproj` foi atualizado com `None Remove` e `EmbeddedResource`.
 
 ## Saida esperada
