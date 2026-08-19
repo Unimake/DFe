@@ -101,7 +101,14 @@ namespace Unimake.Business.DFe.ConsumirServico.Parsers
                 return retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].InnerText;
             }
 
-            var retornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml;
+            var tagRetornoNode = retornoXml.GetElementsByTagName(tagRetorno)[0];
+            if (tagRetornoNode == null || tagRetornoNode.ChildNodes.Count == 0)
+            {
+                throw new ValidarXMLRetornoException(
+                    "A tag <" + tagRetorno + "> foi retornada sem conteúdo pelo web-service.");
+            }
+
+            var retornoServicoString = tagRetornoNode.ChildNodes[0].OuterXml;
             if (context.Soap.PadraoNFSe == PadraoNFSe.DSF && tagRetorno == "soap:Fault")
             {
                 retornoServicoString = retornoXml.OuterXml;

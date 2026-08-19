@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetGravarMotorista xmlns="http://www.antt.gov.br/ciot"><Sucesso>true</Sucesso><Versao>2</Versao><Motorista><CNH>12345678901</CNH><CPF>12345678901</CPF><DataNascimento>1985-06-15T00:00:00</DataNascimento><Endereco><Bairro>Centro</Bairro><Rua>Rua Exemplo</Rua><Numero>100</Numero><CEP>01310930</CEP><CodigoMunicipio>3550308</CodigoMunicipio></Endereco><Nome>MOTORISTA TESTE</Nome><Telefones><Celular><DDD>11</DDD><Numero>999999999</Numero></Celular></Telefones></Motorista></RetGravarMotorista>

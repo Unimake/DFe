@@ -11,6 +11,26 @@ namespace Unimake.DFe.Test.NFe.Servicos
     /// </summary>
     public class DistribuicaoDFeTest
     {
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void GravarXMLDocZIPSemDocumentosNaoDeveLancarExcecao(bool incluirLoteVazio)
+        {
+            using var distribuicaoDFe = new DistribuicaoDFe();
+            var lote = incluirLoteVazio ? "<loteDistDFeInt />" : string.Empty;
+            var retorno =
+                $"<retDistDFeInt versao=\"1.01\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cStat>137</cStat><xMotivo>Nenhum documento localizado</xMotivo><dhResp>2026-08-17T10:00:00-03:00</dhResp><ultNSU>000000000000000</ultNSU><maxNSU>000000000000000</maxNSU>{lote}</retDistDFeInt>";
+            var retornoXML = new System.Xml.XmlDocument();
+            retornoXML.LoadXml(retorno);
+            distribuicaoDFe.RetornoWSString = retorno;
+            distribuicaoDFe.RetornoWSXML = retornoXML;
+
+            var exception = Record.Exception(() => distribuicaoDFe.GravarXMLDocZIP("pasta-inexistente", true));
+
+            Assert.Null(exception);
+        }
+
         /// <summary>
         /// Consultar o status do serviço da NFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Efetua uma consulta por estado + ambiente para garantir que todos estão funcionando.

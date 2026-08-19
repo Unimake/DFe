@@ -225,6 +225,48 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             }
         }
 
+        [Theory]
+        [InlineData("efrete-gravar-motorista.xml", Servico.CIOTGravarMotorista, "{\"Sucesso\":true,\"Versao\":2,\"Motorista\":{\"CPF\":\"12345678901\",\"CNH\":\"12345678901\"}}", "RetGravarMotorista")]
+        [InlineData("efrete-gravar-proprietario.xml", Servico.CIOTGravarProprietario, "{\"Sucesso\":true,\"Versao\":4,\"Proprietario\":{\"CNPJ\":\"12345678000199\",\"TipoPessoa\":\"Juridica\",\"RNTRC\":\"012345678\"}}", "RetGravarProprietario")]
+        [InlineData("efrete-gravar-veiculo.xml", Servico.CIOTGravarVeiculo, "{\"Sucesso\":true,\"Versao\":1,\"Veiculo\":{\"Placa\":\"BRA2E19\",\"RNTRC\":\"012345678\"}}", "RetGravarVeiculo")]
+        [Trait("DFe", "CIOT")]
+        public async Task ExecutarCadastrosEFretePercorreTransporteENormalizaResult(string arquivo, Servico tipoServico, string resposta, string rootRetorno)
+        {
+            var listener = new TcpListener(IPAddress.Loopback, 0);
+            listener.Start();
+            try
+            {
+                var porta = ((IPEndPoint)listener.LocalEndpoint).Port;
+                var servidor = ReceberRequisicoes(listener, resposta);
+                var configuracao = new Configuracao
+                {
+                    TipoAmbiente = TipoAmbiente.Homologacao,
+                    EFreteIntegrador = "INTEGRADOR-TESTE",
+                    EFreteToken = "TOKEN-LOCAL"
+                };
+                var xml = File.ReadAllText(Path.Combine(@"..\..\..\CIOT\Resources", arquivo));
+                Unimake.Business.DFe.Servicos.CIOT.ServicoBase servico;
+                if (tipoServico == Servico.CIOTGravarMotorista) servico = new Unimake.Business.DFe.Servicos.CIOT.GravarMotorista(xml, configuracao);
+                else if (tipoServico == Servico.CIOTGravarProprietario) servico = new Unimake.Business.DFe.Servicos.CIOT.GravarProprietario(xml, configuracao);
+                else servico = new Unimake.Business.DFe.Servicos.CIOT.GravarVeiculo(xml, configuracao);
+                using (servico)
+                {
+                    configuracao.RequestURI = "http://127.0.0.1:" + porta + "/services/cadastro";
+                    servico.Executar();
+                    var requisicao = Assert.Single(await servidor);
+                    Assert.Equal("POST", requisicao.Metodo);
+                    Assert.Contains("TOKEN-LOCAL", requisicao.Corpo);
+                    Assert.DoesNotContain("ProvedorCIOT", requisicao.Corpo);
+                    Assert.Equal(rootRetorno, servico.RetornoWSXML.DocumentElement.LocalName);
+                    Assert.Contains("<Sucesso>true</Sucesso>", servico.RetornoWSString);
+                }
+            }
+            finally
+            {
+                listener.Stop();
+            }
+        }
+
         private static async Task<System.Collections.Generic.IList<RequisicaoRecebida>> ReceberRequisicoes(TcpListener listener, params string[] respostas)
         {
             var requisicoes = new System.Collections.Generic.List<RequisicaoRecebida>();

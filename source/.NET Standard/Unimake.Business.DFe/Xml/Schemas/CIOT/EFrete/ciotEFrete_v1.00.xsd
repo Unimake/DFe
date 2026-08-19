@@ -10,4 +10,7 @@
   <xs:include schemaLocation="encerramentoOperacaoTransporteEFrete_v1.00.xsd" />
   <xs:include schemaLocation="consultarSituacaoTransportadorEFrete_v1.00.xsd" />
   <xs:include schemaLocation="consultarFrotaTransportadorEFrete_v1.00.xsd" />
+  <xs:include schemaLocation="gravarMotoristaEFrete_v1.00.xsd" />
+  <xs:include schemaLocation="gravarProprietarioEFrete_v1.00.xsd" />
+  <xs:include schemaLocation="gravarVeiculoEFrete_v1.00.xsd" />
 </xs:schema>

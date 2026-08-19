@@ -52,7 +52,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
         public void ExecutarFazLoginIncluiTokenNoPostEReaproveitaToken()
         {
             var transporte = new TransporteControlado();
-            transporte.AdicionarResposta("{\"Sucesso\":true,\"Token\":\"TOKEN-OBTIDO\"}");
+            transporte.AdicionarResposta("{\"Sucesso\":true,\"Retorno\":{\"Token\":\"TOKEN-OBTIDO\"}}");
             transporte.AdicionarResposta("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000127\",\"ProtocoloServico\":\"PROTO-LOGIN\"}");
             transporte.AdicionarResposta("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000128\",\"ProtocoloServico\":\"PROTO-REUSO\"}");
             var configuracao = CriarConfiguracaoEFrete();

@@ -13,7 +13,10 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             { Servico.CIOTCancelamentoOperacaoTransporte, SchemaEFrete },
             { Servico.CIOTEncerramentoOperacaoTransporte, SchemaEFrete },
             { Servico.CIOTConsultarSituacaoTransportador, SchemaEFrete },
-            { Servico.CIOTConsultarFrotaTransportador, SchemaEFrete }
+            { Servico.CIOTConsultarFrotaTransportador, SchemaEFrete },
+            { Servico.CIOTGravarMotorista, SchemaEFrete },
+            { Servico.CIOTGravarProprietario, SchemaEFrete },
+            { Servico.CIOTGravarVeiculo, SchemaEFrete }
         };
 
         internal static string ObterSchemaArquivo(Servico servico)

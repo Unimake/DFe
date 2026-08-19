@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GravarVeiculo xmlns="http://www.antt.gov.br/ciot">
+	<ProvedorCIOT>EFrete</ProvedorCIOT>
+	<Veiculo>
+		<AnoFabricacao>2024</AnoFabricacao><AnoModelo>2025</AnoModelo><CapacidadeKg>25000</CapacidadeKg><CapacidadeM3>90</CapacidadeM3>
+		<Chassi>9BWZZZ377VT004251</Chassi><CodigoMunicipio>3550308</CodigoMunicipio><Cor>BRANCO</Cor><Marca>MARCA TESTE</Marca><Modelo>MODELO TESTE</Modelo>
+		<NumeroDeEixos>3</NumeroDeEixos><Placa>BRA2E19</Placa><RNTRC>12345678</RNTRC><Renavam>12345678901</Renavam><Tara>9000</Tara><TipoCarroceria>Granelera</TipoCarroceria><TipoRodado>Truck</TipoRodado>
+	</Veiculo>
+</GravarVeiculo>
