@@ -1368,6 +1368,20 @@ namespace Unimake.Business.DFe
         /// <returns>Tipo de serviço correspondente</returns>
         public static Servico DefinirTipoServicoNFSe(string conteudoXML, PadraoNFSe padraoNFSe, string versao, int codigoMunicipio)
         {
+            return DefinirTipoServicoNFSe(conteudoXML, padraoNFSe, versao, codigoMunicipio, TipoAmbiente.Producao);
+        }
+
+        /// <summary>
+        /// Define o tipo de serviço de NFSe com base no XML, padrão, versão, município e ambiente informados.
+        /// </summary>
+        /// <param name="conteudoXML">Conteúdo XML enviado para identificação</param>
+        /// <param name="padraoNFSe">Padrão da NFSe</param>
+        /// <param name="versao">Versão do XML</param>
+        /// <param name="codigoMunicipio">Código do município</param>
+        /// <param name="tipoAmbiente">Ambiente de execução do serviço</param>
+        /// <returns>Tipo de serviço correspondente</returns>
+        public static Servico DefinirTipoServicoNFSe(string conteudoXML, PadraoNFSe padraoNFSe, string versao, int codigoMunicipio, TipoAmbiente tipoAmbiente)
+        {
             if (string.IsNullOrWhiteSpace(conteudoXML))
             {
                 throw new ArgumentNullException(nameof(conteudoXML));
@@ -1376,7 +1390,7 @@ namespace Unimake.Business.DFe
             var xml = new XmlDocument();
             xml.LoadXml(conteudoXML);
 
-            return DefinirTipoServicoNFSe(xml, padraoNFSe, versao, codigoMunicipio);
+            return DefinirTipoServicoNFSe(xml, padraoNFSe, versao, codigoMunicipio, tipoAmbiente);
         }
 
         /// <summary>
@@ -1401,6 +1415,20 @@ namespace Unimake.Business.DFe
         /// <returns>Tipo de serviço correspondente</returns>
         public static Servico DefinirTipoServicoNFSe(XmlDocument xml, PadraoNFSe padraoNFSe, string versao, int codigoMunicipio)
         {
+            return DefinirTipoServicoNFSe(xml, padraoNFSe, versao, codigoMunicipio, TipoAmbiente.Producao);
+        }
+
+        /// <summary>
+        /// Define o tipo de serviço de NFSe com base no XML, padrão, versão, município e ambiente informados.
+        /// </summary>
+        /// <param name="xml">Arquivo XML enviado para identificação</param>
+        /// <param name="padraoNFSe">Padrão da NFSe</param>
+        /// <param name="versao">Versão do XML</param>
+        /// <param name="codigoMunicipio">Código do município</param>
+        /// <param name="tipoAmbiente">Ambiente de execução do serviço</param>
+        /// <returns>Tipo de serviço correspondente</returns>
+        public static Servico DefinirTipoServicoNFSe(XmlDocument xml, PadraoNFSe padraoNFSe, string versao, int codigoMunicipio, TipoAmbiente tipoAmbiente)
+        {
             if (xml is null)
             {
                 throw new ArgumentNullException(nameof(xml));
@@ -1420,7 +1448,7 @@ namespace Unimake.Business.DFe
                 throw new Exception($"Não foi possível encontrar a configuração para identificar o tipo de serviço NFSe com padrão: '{padraoNFSe}', tag raiz: '{tagRaiz}' ou versão: '{versao}'.");
             }
 
-            var tipoServico = ObterTipoServico(servico, codigoMunicipio);
+            var tipoServico = ObterTipoServico(servico, codigoMunicipio, tipoAmbiente);
 
             if (string.IsNullOrWhiteSpace(tipoServico))
             {
@@ -1435,7 +1463,7 @@ namespace Unimake.Business.DFe
             return result;
         }
 
-        private static string ObterTipoServico(XmlNode servico, int codigoMunicipio)
+        private static string ObterTipoServico(XmlNode servico, int codigoMunicipio, TipoAmbiente tipoAmbiente)
         {
             var nodeTipoServico = servico.SelectSingleNode("*[local-name()='TipoServico']");
 
@@ -1444,17 +1472,35 @@ namespace Unimake.Business.DFe
                 return string.Empty;
             }
 
-            if (codigoMunicipio > 0)
-            {
-                var excecao = nodeTipoServico
-                    .SelectNodes("*[local-name()='Excecao']")
-                    .Cast<XmlNode>()
-                    .FirstOrDefault(x => string.Equals(x.Attributes?["codMunicipio"]?.Value, codigoMunicipio.ToString(), StringComparison.Ordinal));
+            var excecoes = nodeTipoServico
+                .SelectNodes("*[local-name()='Excecao']")
+                .Cast<XmlNode>()
+                .ToList();
 
-                if (excecao != null)
-                {
-                    return excecao.InnerText?.Trim();
-                }
+            var codigoMunicipioTexto = codigoMunicipio.ToString();
+            var tipoAmbienteTexto = ((int)tipoAmbiente).ToString();
+
+            var excecao = excecoes.FirstOrDefault(x =>
+                string.Equals(x.Attributes?["codMunicipio"]?.Value, codigoMunicipioTexto, StringComparison.Ordinal) &&
+                string.Equals(x.Attributes?["tipoAmbiente"]?.Value, tipoAmbienteTexto, StringComparison.Ordinal));
+
+            if (excecao == null && codigoMunicipio > 0)
+            {
+                excecao = excecoes.FirstOrDefault(x =>
+                    string.Equals(x.Attributes?["codMunicipio"]?.Value, codigoMunicipioTexto, StringComparison.Ordinal) &&
+                    x.Attributes?["tipoAmbiente"] == null);
+            }
+
+            if (excecao == null)
+            {
+                excecao = excecoes.FirstOrDefault(x =>
+                    x.Attributes?["codMunicipio"] == null &&
+                    string.Equals(x.Attributes?["tipoAmbiente"]?.Value, tipoAmbienteTexto, StringComparison.Ordinal));
+            }
+
+            if (excecao != null)
+            {
+                return excecao.InnerText?.Trim();
             }
 
             return nodeTipoServico
@@ -1792,7 +1838,6 @@ namespace Unimake.Business.DFe
                 case PadraoNFSe.EQUIPLANO:
                 case PadraoNFSe.HM2SOLUCOES:
                 case PadraoNFSe.INTERSOL:
-                case PadraoNFSe.MEMORY:
                 case PadraoNFSe.METROPOLIS:
                 case PadraoNFSe.NOBESISTEMAS:
                 case PadraoNFSe.PROPRIOBARUERISP:
@@ -1811,7 +1856,6 @@ namespace Unimake.Business.DFe
 
                 case PadraoNFSe.BETHA_CLOUD:
                 case PadraoNFSe.COPLAN:
-                case PadraoNFSe.DIGIFRED:
                 case PadraoNFSe.PRIMAX:
                 case PadraoNFSe.QUASAR:
                     return "1.01";

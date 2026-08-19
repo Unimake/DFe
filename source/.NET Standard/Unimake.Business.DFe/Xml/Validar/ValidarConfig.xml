@@ -8680,7 +8680,10 @@
 		<Padrao nome="PAULISTANA">
 			<Servico tagRaiz="PedidoEnvioLoteRPS" versao="2.00" tagIdentificadora="IBSCBS">
 				<Descricao>Envio Lote Rps</Descricao>
-				<TipoServico>NFSeEnvioLoteRps</TipoServico>
+				<TipoServico>
+					NFSeEnvioLoteRps
+					<Excecao tipoAmbiente="2">NFSeTesteEnvioLoteRps</Excecao>
+				</TipoServico>
 				<SchemaArquivo/>
 				<TagAssinatura>PedidoEnvioLoteRPS</TagAssinatura>
 				<TagAtributoID>Cabecalho</TagAtributoID>
@@ -8758,7 +8761,10 @@
 			</Servico>
 			<Servico tagRaiz="PedidoEnvioLoteRPS" versao="1.00" tagIdentificadora="RPS">
 				<Descricao>Envio Lote Rps</Descricao>
-				<TipoServico>NFSeEnvioLoteRps</TipoServico>
+				<TipoServico>
+					NFSeEnvioLoteRps
+					<Excecao tipoAmbiente="2">NFSeTesteEnvioLoteRps</Excecao>
+				</TipoServico>
 				<SchemaArquivo/>
 				<TagAssinatura>PedidoEnvioLoteRPS</TagAssinatura>
 				<TagAtributoID>Cabecalho</TagAtributoID>
