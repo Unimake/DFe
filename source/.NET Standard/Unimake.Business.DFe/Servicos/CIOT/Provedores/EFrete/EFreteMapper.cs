@@ -71,6 +71,18 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     payload = CriarSituacao(frota, frota.Placas);
                     payload["Versao"] = 1;
                     break;
+                case Servico.CIOTGravarMotorista:
+                    payload = CriarMotorista((Xml.CIOT.GravarMotorista)xml);
+                    payload["Versao"] = 2;
+                    break;
+                case Servico.CIOTGravarProprietario:
+                    payload = CriarProprietario((Xml.CIOT.GravarProprietario)xml);
+                    payload["Versao"] = 4;
+                    break;
+                case Servico.CIOTGravarVeiculo:
+                    payload = CriarVeiculo((Xml.CIOT.GravarVeiculo)xml);
+                    payload["Versao"] = 1;
+                    break;
                 default:
                     throw new NotSupportedException("O serviço " + servico + " não possui equivalente disponível na integração eFrete.");
             }
@@ -81,6 +93,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 payload["Token"] = configuracao.EFreteToken;
             }
 
+            NormalizarRNTRCs(payload);
             RemoverNulos(payload);
             return payload.ToString(Newtonsoft.Json.Formatting.None);
         }
@@ -143,6 +156,39 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     break;
                 case Servico.CIOTConsultarFrotaTransportador:
                     resultado = CriarRetFrota(root, erro, codigo, mensagem);
+                    break;
+                case Servico.CIOTGravarMotorista:
+                    resultado = new RetGravarMotorista
+                    {
+                        Motorista = ConverterObjeto<MotoristaCadastroCIOT>(Localizar(root, "Motorista")),
+                        Sucesso = sucesso,
+                        Versao = ValorInt(root, "Versao"),
+                        Codigo = codigo,
+                        Mensagem = mensagem,
+                        Temp = erro ? CriarTemp(codigo, mensagem) : null
+                    };
+                    break;
+                case Servico.CIOTGravarProprietario:
+                    resultado = new RetGravarProprietario
+                    {
+                        Proprietario = ConverterObjeto<ProprietarioCIOT>(Localizar(root, "Proprietario")),
+                        Sucesso = sucesso,
+                        Versao = ValorInt(root, "Versao"),
+                        Codigo = codigo,
+                        Mensagem = mensagem,
+                        Temp = erro ? CriarTemp(codigo, mensagem) : null
+                    };
+                    break;
+                case Servico.CIOTGravarVeiculo:
+                    resultado = new RetGravarVeiculo
+                    {
+                        Veiculo = ConverterObjeto<VeiculoCadastroCIOT>(Localizar(root, "Veiculo")),
+                        Sucesso = sucesso,
+                        Versao = ValorInt(root, "Versao"),
+                        Codigo = codigo,
+                        Mensagem = mensagem,
+                        Temp = erro ? CriarTemp(codigo, mensagem) : null
+                    };
                     break;
                 default:
                     throw new NotSupportedException("Retorno eFrete não implementado para " + servico + ".");
@@ -283,6 +329,51 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             ["Veiculos"] = placas == null ? null : JArray.FromObject(placas.Select(x => new { Placa = x }))
         };
 
+        private static JObject CriarMotorista(Xml.CIOT.GravarMotorista xml) => new JObject
+        {
+            ["CNH"] = xml.CNH,
+            ["CPF"] = xml.CPF,
+            ["DataNascimento"] = xml.ShouldSerializeDataNascimentoField() ? xml.DataNascimentoField : null,
+            ["Endereco"] = xml.Endereco == null ? null : JObject.FromObject(xml.Endereco),
+            ["Nome"] = xml.Nome,
+            ["Telefones"] = xml.Telefones == null ? null : JObject.FromObject(xml.Telefones)
+        };
+
+        private static JObject CriarProprietario(Xml.CIOT.GravarProprietario xml) => new JObject
+        {
+            ["CNPJ"] = xml.CNPJ,
+            ["Endereco"] = xml.Endereco == null ? null : JObject.FromObject(xml.Endereco),
+            ["RNTRC"] = xml.RNTRC,
+            ["RazaoSocial"] = xml.RazaoSocial,
+            ["Telefones"] = xml.Telefones == null ? null : JObject.FromObject(xml.Telefones)
+        };
+
+        private static JObject CriarVeiculo(Xml.CIOT.GravarVeiculo xml)
+        {
+            var veiculo = xml.Veiculo;
+            return new JObject
+            {
+                ["Veiculo"] = veiculo == null ? null : new JObject
+                {
+                    ["Chassi"] = veiculo.Chassi,
+                    ["NumeroDeEixos"] = veiculo.NumeroDeEixos,
+                    ["Placa"] = veiculo.Placa,
+                    ["RNTRC"] = veiculo.RNTRC,
+                    ["Renavam"] = veiculo.Renavam,
+                    ["TipoCarroceria"] = veiculo.ShouldSerializeTipoCarroceria() ? veiculo.TipoCarroceria.ToString() : null,
+                    ["TipoRodado"] = veiculo.ShouldSerializeTipoRodado() ? veiculo.TipoRodado.ToString() : null,
+                    ["AnoFabricacao"] = veiculo.ShouldSerializeAnoFabricacao() ? (JToken)new JValue(veiculo.AnoFabricacao) : null,
+                    ["AnoModelo"] = veiculo.ShouldSerializeAnoModelo() ? (JToken)new JValue(veiculo.AnoModelo) : null,
+                    ["CapacidadeKg"] = veiculo.ShouldSerializeCapacidadeKg() ? (JToken)new JValue(veiculo.CapacidadeKg) : null,
+                    ["CapacidadeM3"] = veiculo.ShouldSerializeCapacidadeM3() ? (JToken)new JValue(veiculo.CapacidadeM3) : null,
+                    ["Cor"] = veiculo.Cor,
+                    ["Marca"] = veiculo.Marca,
+                    ["Modelo"] = veiculo.Modelo,
+                    ["Tara"] = veiculo.ShouldSerializeTara() ? (JToken)new JValue(veiculo.Tara) : null
+                }
+            };
+        }
+
         private static RetConsultarSituacaoTransportador CriarRetSituacao(JObject root, bool erro, string codigo, string mensagem) => new RetConsultarSituacaoTransportador
         {
             CpfCnpjTransportador = Valor(root, "CpfOuCnpj"), RNTRCTransportador = Valor(root, "RNTRC"),
@@ -310,6 +401,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
         private static string Valor(JObject obj, string nome) => Localizar(obj, nome)?.Type == JTokenType.Null ? null : Localizar(obj, nome)?.ToString();
         private static string Valor(JObject obj, string grupo, string nome) => Valor(Localizar(obj, grupo) as JObject, nome);
         private static bool ValorBool(JObject obj, string nome) { bool value; return bool.TryParse(Valor(obj, nome), out value) && value; }
+        private static int ValorInt(JObject obj, string nome) { int value; return int.TryParse(Valor(obj, nome), out value) ? value : 0; }
+        private static T ConverterObjeto<T>(JToken token) where T : class => token == null || token.Type == JTokenType.Null ? null : token.ToObject<T>();
         private static JToken LocalizarRecursivo(JToken token, string nome)
         {
             var objeto = token as JObject;
@@ -331,6 +424,26 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
         {
             if (token is JObject obj) foreach (var prop in obj.Properties().ToList()) { RemoverNulos(prop.Value); if (prop.Value.Type == JTokenType.Null || (prop.Value.Type == JTokenType.String && string.IsNullOrWhiteSpace(prop.Value.ToString()))) prop.Remove(); }
             else if (token is JArray array) foreach (var item in array) RemoverNulos(item);
+        }
+
+        private static void NormalizarRNTRCs(JToken token)
+        {
+            var objeto = token as JObject;
+            if (objeto != null)
+            {
+                foreach (var propriedade in objeto.Properties().ToList())
+                {
+                    if (propriedade.Value.Type == JTokenType.String && propriedade.Name.EndsWith("RNTRC", StringComparison.OrdinalIgnoreCase))
+                    {
+                        var valor = propriedade.Value.ToString();
+                        if (valor.Length == 8 && valor.All(char.IsDigit)) propriedade.Value = "0" + valor;
+                    }
+                    else NormalizarRNTRCs(propriedade.Value);
+                }
+                return;
+            }
+            var array = token as JArray;
+            if (array != null) foreach (var item in array) NormalizarRNTRCs(item);
         }
     }
 }

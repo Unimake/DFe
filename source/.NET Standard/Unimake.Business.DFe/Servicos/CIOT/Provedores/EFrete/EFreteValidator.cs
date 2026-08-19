@@ -28,6 +28,9 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 throw new ValidarXMLException("CodigoIdentificacaoOperacao é obrigatório no encerramento eFrete.");
             }
             else if (servico == Servico.CIOTConsultarSituacaoTransportador || servico == Servico.CIOTConsultarFrotaTransportador) ValidarSituacao(xml, servico);
+            else if (servico == Servico.CIOTGravarMotorista) ValidarMotorista((Xml.CIOT.GravarMotorista)xml);
+            else if (servico == Servico.CIOTGravarProprietario) ValidarProprietario((Xml.CIOT.GravarProprietario)xml);
+            else if (servico == Servico.CIOTGravarVeiculo) ValidarVeiculo((Xml.CIOT.GravarVeiculo)xml);
         }
 
         internal static void ValidarServicoSuportado(Servico servico)
@@ -105,6 +108,45 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             var placas = servico == Servico.CIOTConsultarFrotaTransportador ? ((Xml.CIOT.ConsultarFrotaTransportador)s).Placas : s.PlacasConsulta;
             if (string.IsNullOrWhiteSpace(s.CpfCnpjInteressado) || string.IsNullOrWhiteSpace(s.CpfCnpjTransportador) || string.IsNullOrWhiteSpace(s.RNTRCTransportador)) throw new ValidarXMLException("Interessado, transportador e RNTRC são obrigatórios na consulta de situação eFrete.");
             if (placas == null || placas.Count == 0) throw new ValidarXMLException("Ao menos uma placa é obrigatória na consulta de situação/frota eFrete.");
+        }
+
+        private static void ValidarMotorista(Xml.CIOT.GravarMotorista xml)
+        {
+            if (string.IsNullOrWhiteSpace(xml.CPF) || string.IsNullOrWhiteSpace(xml.CNH) || string.IsNullOrWhiteSpace(xml.Nome) || !xml.ShouldSerializeDataNascimentoField())
+            {
+                throw new ValidarXMLException("CPF, CNH, DataNascimento e Nome são obrigatórios no cadastro do motorista eFrete.");
+            }
+            ValidarEndereco(xml.Endereco, "motorista");
+            if (xml.Telefones?.Celular == null || string.IsNullOrWhiteSpace(xml.Telefones.Celular.DDD) || string.IsNullOrWhiteSpace(xml.Telefones.Celular.Numero))
+            {
+                throw new ValidarXMLException("O telefone celular é obrigatório no cadastro do motorista eFrete.");
+            }
+        }
+
+        private static void ValidarProprietario(Xml.CIOT.GravarProprietario xml)
+        {
+            if (string.IsNullOrWhiteSpace(xml.CNPJ) || string.IsNullOrWhiteSpace(xml.RNTRC) || string.IsNullOrWhiteSpace(xml.RazaoSocial))
+            {
+                throw new ValidarXMLException("CNPJ, RNTRC e RazaoSocial são obrigatórios no cadastro do proprietário eFrete.");
+            }
+            ValidarEndereco(xml.Endereco, "proprietário");
+        }
+
+        private static void ValidarVeiculo(Xml.CIOT.GravarVeiculo xml)
+        {
+            var veiculo = xml.Veiculo;
+            if (veiculo == null || string.IsNullOrWhiteSpace(veiculo.Chassi) || veiculo.NumeroDeEixos <= 0 || string.IsNullOrWhiteSpace(veiculo.Placa) || string.IsNullOrWhiteSpace(veiculo.RNTRC) || string.IsNullOrWhiteSpace(veiculo.Renavam))
+            {
+                throw new ValidarXMLException("Veiculo, Chassi, NumeroDeEixos, Placa, RNTRC e Renavam são obrigatórios no cadastro do veículo eFrete.");
+            }
+        }
+
+        private static void ValidarEndereco(Xml.CIOT.EnderecoCIOT endereco, string grupo)
+        {
+            if (endereco == null || string.IsNullOrWhiteSpace(endereco.Bairro) || string.IsNullOrWhiteSpace(endereco.Rua) || string.IsNullOrWhiteSpace(endereco.Numero) || string.IsNullOrWhiteSpace(endereco.CEP) || string.IsNullOrWhiteSpace(endereco.CodigoMunicipio))
+            {
+                throw new ValidarXMLException("O endereço completo do " + grupo + " é obrigatório para a eFrete.");
+            }
         }
     }
 }

@@ -23,6 +23,10 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.ANTT
 
         public void Configurar(Configuracao configuracao, string nomeServico, Servico servico)
         {
+            if (servico == Servico.CIOTGravarMotorista || servico == Servico.CIOTGravarProprietario || servico == Servico.CIOTGravarVeiculo)
+            {
+                throw new NotSupportedException("O serviço " + servico + " é exclusivo da eFrete. Informe <ProvedorCIOT>EFrete</ProvedorCIOT> no XML de envio.");
+            }
             configuracao.UsaWinHttpHandler = false;
             configuracao.DesabilitaSelecaoAutomaticaCertificadoCliente = false;
             if (!configuracao.Definida)

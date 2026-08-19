@@ -801,6 +801,24 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização de BPe TA")]
         BPeTAAutorizacao = 128,
 
+        /// <summary>
+        /// 129 - CIOT eFrete - Gravar motorista
+        /// </summary>
+        [Description("CIOT eFrete - Gravar motorista")]
+        CIOTGravarMotorista = 129,
+
+        /// <summary>
+        /// 130 - CIOT eFrete - Gravar proprietário
+        /// </summary>
+        [Description("CIOT eFrete - Gravar proprietário")]
+        CIOTGravarProprietario = 130,
+
+        /// <summary>
+        /// 131 - CIOT eFrete - Gravar veículo
+        /// </summary>
+        [Description("CIOT eFrete - Gravar veículo")]
+        CIOTGravarVeiculo = 131,
+
         #endregion
 
         #region Gerais

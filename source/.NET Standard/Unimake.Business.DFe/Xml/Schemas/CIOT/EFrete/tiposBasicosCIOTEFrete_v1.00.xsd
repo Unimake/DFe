@@ -63,7 +63,7 @@
   </xs:simpleType>
   <xs:simpleType name="TRNTRC">
     <xs:restriction base="xs:string">
-      <xs:pattern value="[0-9]{9}" />
+      <xs:pattern value="[0-9]{8,9}" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="TPlaca">
@@ -384,5 +384,114 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TCpf">
+    <xs:restriction base="xs:string"><xs:pattern value="[0-9]{11}" /></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TCepEFrete">
+    <xs:restriction base="xs:string"><xs:pattern value="[0-9]{8}" /></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TCodigoMunicipioEFrete">
+    <xs:restriction base="xs:string"><xs:pattern value="[0-9]{7}" /></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TRNTRCEFreteCadastro">
+    <xs:restriction base="xs:string"><xs:pattern value="[0-9]{8,9}" /></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TChassiEFrete">
+    <xs:restriction base="xs:string"><xs:length value="17" /></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TRenavamEFrete">
+    <xs:restriction base="xs:string"><xs:pattern value="[0-9]{1,11}" /></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TDDD">
+    <xs:restriction base="xs:string"><xs:pattern value="[0-9]{2}" /></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TNumeroTelefoneEFrete">
+    <xs:restriction base="xs:string"><xs:pattern value="[0-9]{8,9}" /></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TTipoCarroceriaCIOT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NaoAplicavel" /><xs:enumeration value="Aberta" /><xs:enumeration value="FechadaOuBau" />
+      <xs:enumeration value="Granelera" /><xs:enumeration value="PortaContainer" /><xs:enumeration value="Sider" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TTipoRodadoCIOT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NaoAplicavel" /><xs:enumeration value="Truck" /><xs:enumeration value="Toco" /><xs:enumeration value="Cavalo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="EnderecoCadastroEFrete">
+    <xs:sequence>
+      <xs:element name="Bairro" type="xs:string" />
+      <xs:element name="Rua" type="xs:string" />
+      <xs:element name="Numero" type="xs:string" />
+      <xs:element name="Complemento" type="xs:string" minOccurs="0" />
+      <xs:element name="CEP" type="tns:TCepEFrete" />
+      <xs:element name="CodigoMunicipio" type="tns:TCodigoMunicipioEFrete" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TelefoneCadastroEFrete">
+    <xs:sequence><xs:element name="DDD" type="tns:TDDD" /><xs:element name="Numero" type="tns:TNumeroTelefoneEFrete" /></xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TelefonesMotoristaCadastroEFrete">
+    <xs:sequence>
+      <xs:element name="Celular" type="tns:TelefoneCadastroEFrete" />
+      <xs:element name="Fixo" type="tns:TelefoneCadastroEFrete" minOccurs="0" />
+      <xs:element name="Fax" type="tns:TelefoneCadastroEFrete" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TelefonesProprietarioCadastroEFrete">
+    <xs:sequence>
+      <xs:element name="Celular" type="tns:TelefoneCadastroEFrete" minOccurs="0" />
+      <xs:element name="Fixo" type="tns:TelefoneCadastroEFrete" minOccurs="0" />
+      <xs:element name="Fax" type="tns:TelefoneCadastroEFrete" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GravarMotorista">
+    <xs:complexContent><xs:extension base="tns:XMLBase"><xs:sequence>
+      <xs:element name="ProvedorCIOT" type="tns:ProvedorCIOT" />
+      <xs:element name="CNH" type="xs:string" />
+      <xs:element name="CPF" type="tns:TCpf" />
+      <xs:element name="DataNascimento" type="xs:dateTime" />
+      <xs:element name="Endereco" type="tns:EnderecoCadastroEFrete" />
+      <xs:element name="Nome" type="xs:string" />
+      <xs:element name="Telefones" type="tns:TelefonesMotoristaCadastroEFrete" />
+    </xs:sequence></xs:extension></xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GravarProprietario">
+    <xs:complexContent><xs:extension base="tns:XMLBase"><xs:sequence>
+      <xs:element name="ProvedorCIOT" type="tns:ProvedorCIOT" />
+      <xs:element name="CNPJ" type="tns:TCpfCnpj" />
+      <xs:element name="Endereco" type="tns:EnderecoCadastroEFrete" />
+      <xs:element name="RNTRC" type="tns:TRNTRCEFreteCadastro" />
+      <xs:element name="RazaoSocial" type="xs:string" />
+      <xs:element name="Telefones" type="tns:TelefonesProprietarioCadastroEFrete" minOccurs="0" />
+    </xs:sequence></xs:extension></xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="VeiculoCadastroCIOT">
+    <xs:sequence>
+      <xs:element name="AnoFabricacao" type="xs:gYear" minOccurs="0" />
+      <xs:element name="AnoModelo" type="xs:gYear" minOccurs="0" />
+      <xs:element name="CapacidadeKg" type="xs:double" minOccurs="0" />
+      <xs:element name="CapacidadeM3" type="xs:double" minOccurs="0" />
+      <xs:element name="Chassi" type="tns:TChassiEFrete" />
+      <xs:element name="CodigoMunicipio" type="tns:TCodigoMunicipioEFrete" minOccurs="0" />
+      <xs:element name="Cor" type="xs:string" minOccurs="0" />
+      <xs:element name="Marca" type="xs:string" minOccurs="0" />
+      <xs:element name="Modelo" type="xs:string" minOccurs="0" />
+      <xs:element name="NumeroDeEixos" type="xs:positiveInteger" />
+      <xs:element name="Placa" type="tns:TPlaca" />
+      <xs:element name="RNTRC" type="tns:TRNTRCEFreteCadastro" />
+      <xs:element name="Renavam" type="tns:TRenavamEFrete" />
+      <xs:element name="Tara" type="xs:double" minOccurs="0" />
+      <xs:element name="TipoCarroceria" type="tns:TTipoCarroceriaCIOT" minOccurs="0" />
+      <xs:element name="TipoRodado" type="tns:TTipoRodadoCIOT" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GravarVeiculo">
+    <xs:complexContent><xs:extension base="tns:XMLBase"><xs:sequence>
+      <xs:element name="ProvedorCIOT" type="tns:ProvedorCIOT" />
+      <xs:element name="Veiculo" type="tns:VeiculoCadastroCIOT" />
+    </xs:sequence></xs:extension></xs:complexContent>
   </xs:complexType>
 </xs:schema>

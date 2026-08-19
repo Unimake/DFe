@@ -791,6 +791,9 @@
 		<None Remove="Xml\Schemas\CIOT\EFrete\declaracaoOperacaoTransporteEFrete_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\EFrete\encerramentoOperacaoTransporteEFrete_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CIOT\EFrete\tiposBasicosCIOTEFrete_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\EFrete\gravarMotoristaEFrete_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\EFrete\gravarProprietarioEFrete_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CIOT\EFrete\gravarVeiculoEFrete_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\consSitCTeTiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\consSitCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\consStatServCTe_v4.00.xsd" />
@@ -2364,6 +2367,9 @@
 		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\declaracaoOperacaoTransporteEFrete_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\encerramentoOperacaoTransporteEFrete_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\tiposBasicosCIOTEFrete_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\gravarMotoristaEFrete_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\gravarProprietarioEFrete_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CIOT\EFrete\gravarVeiculoEFrete_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\consSitCTeTiposBasico_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\consSitCTe_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\consStatServCTe_v4.00.xsd" />

@@ -49,5 +49,29 @@
       <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
       <MetodoAPI>get</MetodoAPI>
     </ConsultarFrotaTransportador>
+    <GravarMotorista versao="1.00">
+      <Descricao>CIOT eFrete - Gravar motorista</Descricao>
+      <RequestURIHomologacao>https://dev.efrete.com.br/services/motoristas/gravar</RequestURIHomologacao>
+      <RequestURIProducao>https://sistema.efrete.com.br/services/motoristas/gravar</RequestURIProducao>
+      <RequestURILoginHomologacao>https://dev.efrete.com.br/services/Logon/Login</RequestURILoginHomologacao>
+      <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
+      <MetodoAPI>post</MetodoAPI>
+    </GravarMotorista>
+    <GravarProprietario versao="1.00">
+      <Descricao>CIOT eFrete - Gravar proprietário</Descricao>
+      <RequestURIHomologacao>https://dev.efrete.com.br/services/proprietarios/gravarV2</RequestURIHomologacao>
+      <RequestURIProducao>https://sistema.efrete.com.br/services/proprietarios/gravarV2</RequestURIProducao>
+      <RequestURILoginHomologacao>https://dev.efrete.com.br/services/Logon/Login</RequestURILoginHomologacao>
+      <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
+      <MetodoAPI>post</MetodoAPI>
+    </GravarProprietario>
+    <GravarVeiculo versao="1.00">
+      <Descricao>CIOT eFrete - Gravar veículo</Descricao>
+      <RequestURIHomologacao>https://dev.efrete.com.br/services/veiculos/gravar</RequestURIHomologacao>
+      <RequestURIProducao>https://sistema.efrete.com.br/services/veiculos/gravar</RequestURIProducao>
+      <RequestURILoginHomologacao>https://dev.efrete.com.br/services/Logon/Login</RequestURILoginHomologacao>
+      <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
+      <MetodoAPI>post</MetodoAPI>
+    </GravarVeiculo>
   </Servicos>
 </Configuracoes>
