@@ -911,6 +911,48 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         /// <summary>
+        /// Criar retorno de erro do padrão NACIONAL.
+        /// </summary>
+        private Xml.NFSe.NACIONAL.Temp CriarResultErro(Xml.NFSe.NACIONAL.Temp retorno,
+                                                       string codigo,
+                                                       string descricao) =>
+            new Xml.NFSe.NACIONAL.Temp
+            {
+                TipoAmbiente = retorno?.TipoAmbiente ?? Configuracoes.TipoAmbiente,
+                VersaoAplicativo = retorno?.VersaoAplicativo,
+                DataHoraProcessamento = retorno?.DataHoraProcessamento ?? default,
+                Erro = CriarErroNacional(codigo, descricao)
+            };
+
+        /// <summary>
+        /// Criar erro do padrão NACIONAL.
+        /// </summary>
+        private static Xml.NFSe.NACIONAL.Erro CriarErroNacional(string codigo,
+                                                                string descricao,
+                                                                string complemento = null) =>
+            new Xml.NFSe.NACIONAL.Erro
+            {
+                Codigo = codigo,
+                Descricao = descricao,
+                Complemento = complemento
+            };
+
+        /// <summary>
+        /// Normalizar o grupo "erros" para a propriedade "Erro" usada por C# e INTEROP/COM.
+        /// </summary>
+        private static void NormalizarErroNacional(Xml.NFSe.NACIONAL.Temp retorno)
+        {
+            if (retorno?.Erro != null || retorno?.Erros == null)
+            {
+                return;
+            }
+
+            retorno.Erro = CriarErroNacional(retorno.Erros.Codigo,
+                                             retorno.Erros.Descricao,
+                                             retorno.Erros.Complemento);
+        }
+
+        /// <summary>
         /// Resultado quando ocorreu erro (apenas para padrão NACIONAL).
         /// Retorna null se processamento foi bem-sucedido.
         /// </summary>
@@ -925,46 +967,24 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
                 if (string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    return new Xml.NFSe.NACIONAL.Temp
-                    {
-                        Erro = new Xml.NFSe.NACIONAL.Erro
-                        {
-                            Codigo = "0",
-                            Descricao = "Não há retorno do servidor para processar."
-                        }
-                    };
+                    return CriarResultErro(null, "0", "Não há retorno do servidor para processar.");
                 }
 
                 try
                 {
                     var retorno = XMLUtility.Deserializar<Xml.NFSe.NACIONAL.Temp>(RetornoWSXML);
+                    NormalizarErroNacional(retorno);
+
                     if (retorno?.Erro != null)
                     {
                         return retorno;
                     }
 
-                    return new Xml.NFSe.NACIONAL.Temp
-                    {
-                        TipoAmbiente = retorno?.TipoAmbiente ?? Configuracoes.TipoAmbiente,
-                        VersaoAplicativo = retorno?.VersaoAplicativo,
-                        DataHoraProcessamento = retorno?.DataHoraProcessamento ?? default,
-                        Erro = new Xml.NFSe.NACIONAL.Erro
-                        {
-                            Codigo = "0",
-                            Descricao = "O retorno do servidor não contém o evento processado nem os detalhes do erro."
-                        }
-                    };
+                    return CriarResultErro(retorno, "0", "O retorno do servidor não contém o evento processado nem os detalhes do erro.");
                 }
                 catch
                 {
-                    return new Xml.NFSe.NACIONAL.Temp
-                    {
-                        Erro = new Xml.NFSe.NACIONAL.Erro
-                        {
-                            Codigo = "0",
-                            Descricao = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
-                        }
-                    };
+                    return CriarResultErro(null, "0", "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ.");
                 }
             }
         }
