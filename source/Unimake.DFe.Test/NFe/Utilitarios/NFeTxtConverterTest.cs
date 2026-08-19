@@ -70,6 +70,7 @@ public class NFeTxtConverterTest
     [InlineData("0000056689-nfe-orig.txt")]
     [InlineData("NFe_000049184_08_27_14-nfe.txt")]
     [InlineData("002320_01_01_17_08_2026-nfe.txt")]
+    [InlineData("000017136_19041494000180_001_19_08_2026-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -90,6 +91,36 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// Deve preservar todos os pagamentos e dados dos cartões informados em segmentos YA consecutivos.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarPagamentosDaNfce17136()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000017136_19041494000180_001_19_08_2026-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var pagamentos = xml.SelectNodes("//*[local-name()='detPag']");
+        var cartoes = xml.SelectNodes("//*[local-name()='detPag']/*[local-name()='card']");
+
+        Assert.Equal(5, pagamentos.Count);
+        Assert.Equal(4, cartoes.Count);
+        Assert.Equal("196.00", pagamentos[0].SelectSingleNode("*[local-name()='vPag']")?.InnerText);
+        Assert.Equal("295.00", pagamentos[1].SelectSingleNode("*[local-name()='vPag']")?.InnerText);
+        Assert.Equal("300.00", pagamentos[2].SelectSingleNode("*[local-name()='vPag']")?.InnerText);
+        Assert.Equal("65.00", pagamentos[3].SelectSingleNode("*[local-name()='vPag']")?.InnerText);
+        Assert.Equal("24.00", pagamentos[4].SelectSingleNode("*[local-name()='vPag']")?.InnerText);
+        Assert.Equal("AUT001", cartoes[0].SelectSingleNode("*[local-name()='cAut']")?.InnerText);
+        Assert.Equal("AUT004", cartoes[3].SelectSingleNode("*[local-name()='cAut']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
     }
 
     /// <summary>
@@ -1671,7 +1702,19 @@ public class NFeTxtConverterTest
             "103120939",
             "6232081448",
             "6232750800",
-            "420396)"
+            "420396)",
+            "ALTO DA BOA VISTA MATERIAS DE CONSTRUCAO LTDA",
+            "CENTERKASA",
+            "RUA JACINTO RAMOS",
+            "6235133655",
+            "58033)",
+            "TINTA LEINERTEX ACR FOSCA 18L AREIA",
+            "7898360090686",
+            "08561701000101",
+            "082853",
+            "739532",
+            "430893",
+            "526811"
         };
 
         var pasta = Path.GetDirectoryName(CaminhoArquivo("novaVersao-nfe.txt"));
