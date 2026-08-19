@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GravarProprietario xmlns="http://www.antt.gov.br/ciot">
+	<ProvedorCIOT>EFrete</ProvedorCIOT>
+	<CNPJ>12345678000199</CNPJ>
+	<Endereco><Bairro>Centro</Bairro><Rua>Avenida Exemplo</Rua><Numero>200</Numero><Complemento>Galpao</Complemento><CEP>01310930</CEP><CodigoMunicipio>3550308</CodigoMunicipio></Endereco>
+	<RNTRC>12345678</RNTRC>
+	<RazaoSocial>TRANSPORTADORA TESTE LTDA</RazaoSocial>
+	<Telefones><Celular><DDD>11</DDD><Numero>988888888</Numero></Celular><Fixo><DDD>11</DDD><Numero>34444444</Numero></Fixo><Fax><DDD>11</DDD><Numero>35555555</Numero></Fax></Telefones>
+</GravarProprietario>
