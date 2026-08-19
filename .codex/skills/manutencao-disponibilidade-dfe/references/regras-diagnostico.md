@@ -51,7 +51,7 @@ Quando não houver código no nível principal, usar o primeiro interno:
 | Evento CTe | `retEventoCTe/infEvento/cStat` |
 | Evento MDFe | `retEventoMDFe/infEvento/cStat` |
 
-NFe/NFCe, CTe e MDFe usam status principal antes de `protNFe`, `protCTe` ou `protMDFe`. Conferir novamente o XSD quando surgir versão, documento ou provedor novo.
+NFe/NFCe, CTe, MDFe e NF3e usam o primeiro status principal do retorno. Nos documentos que possuem protocolo interno, o status principal prevalece sobre `protNFe`, `protCTe`, `protMDFe` ou `protNF3e`. Conferir novamente o XSD quando surgir versão, documento ou provedor novo.
 
 ## Serviços essenciais
 

@@ -27,13 +27,14 @@ namespace Unimake.Business.DFe.Utility
 #endif
     public class DiagnosticoDisponibilidadeDFe
     {
-        /// <summary>Conjunto dos quatro documentos atendidos pela primeira versão do motor.</summary>
+        /// <summary>Documentos que possuem telemetria e consulta oficial de status registradas no motor.</summary>
         private static readonly HashSet<TipoDFe> DocumentosSuportados = new HashSet<TipoDFe>
         {
             TipoDFe.NFe,
             TipoDFe.NFCe,
             TipoDFe.CTe,
-            TipoDFe.MDFe
+            TipoDFe.MDFe,
+            TipoDFe.NF3e
         };
         /// <summary>Configuração do contribuinte, documento, UF, ambiente e certificado.</summary>
         private readonly Configuracao configuracao;
@@ -340,7 +341,7 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>Informa se existe estratégia de diagnóstico para o documento configurado.</summary>
-        /// <returns><see langword="true"/> para NFe, NFCe, CTe e MDFe.</returns>
+        /// <returns><see langword="true"/> para NFe, NFCe, CTe, MDFe e NF3e.</returns>
         private bool DocumentoSuportado() => DocumentosSuportados.Contains(configuracao.TipoDFe);
 
         /// <summary>Escolhe a versão de schema usada pela consulta de status do documento.</summary>
@@ -348,6 +349,7 @@ namespace Unimake.Business.DFe.Utility
         private string ObterVersaoStatus()
         {
             if (configuracao.TipoDFe == TipoDFe.MDFe) return "3.00";
+            if (configuracao.TipoDFe == TipoDFe.NF3e) return "1.00";
             if (configuracao.TipoDFe == TipoDFe.CTe) return string.IsNullOrWhiteSpace(configuracao.SchemaVersao) ? "4.00" : configuracao.SchemaVersao;
             return "4.00";
         }
@@ -432,6 +434,12 @@ namespace Unimake.Business.DFe.Utility
                     return new Xml.MDFe.ConsStatServMDFe
                     {
                         Versao = "3.00",
+                        TpAmb = configuracaoStatus.TipoAmbiente
+                    }.GerarXML();
+                case TipoDFe.NF3e:
+                    return new Xml.NF3e.ConsStatServNF3e
+                    {
+                        Versao = "1.00",
                         TpAmb = configuracaoStatus.TipoAmbiente
                     }.GerarXML();
                 default:

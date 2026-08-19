@@ -487,7 +487,8 @@ namespace Unimake.DFe.Test.Utility.Rede
         [InlineData(TipoDFe.NFCe, "4.00")]
         [InlineData(TipoDFe.CTe, "4.00")]
         [InlineData(TipoDFe.MDFe, "3.00")]
-        public void QuatroDocumentosCarregamEndpointSemSondaFiscal(TipoDFe tipoDFe, string versao)
+        [InlineData(TipoDFe.NF3e, "1.00")]
+        public void DocumentosSuportadosCarregamEndpointSemSondaFiscal(TipoDFe tipoDFe, string versao)
         {
             var configuracao = ConfiguracaoBase();
             configuracao.TipoDFe = tipoDFe;
@@ -498,6 +499,45 @@ namespace Unimake.DFe.Test.Utility.Rede
 
             Assert.Equal(1, executor.Execucoes);
             Assert.DoesNotContain(resultado.Sondas.Itens, x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void ConsultaStatusNF3eClassificaParalisacaoComoIndisponibilidadeFiscal()
+        {
+            var agora = new DateTime(2026, 8, 19, 10, 0, 0);
+            RelogioDisponibilidade.Agora = () => agora;
+            using (var certificado = CriarCertificadoValido(agora))
+            {
+                var configuracao = ConfiguracaoBase();
+                configuracao.TipoDFe = TipoDFe.NF3e;
+                configuracao.CodigoUF = (int)UFBrasil.MT;
+                configuracao.TipoAmbiente = TipoAmbiente.Producao;
+                configuracao.SchemaVersao = "1.00";
+                configuracao.Servico = Servico.NF3eStatusServico;
+                configuracao.CertificadoDigital = certificado;
+                Configuracao configuracaoRecebida = null;
+                var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracao, null,
+                    new ExecutorInfraestruturaFake(), (configuracaoStatus, endpoint) =>
+                    {
+                        configuracaoRecebida = configuracaoStatus;
+                        var status = Status(108);
+                        status.Endpoint = endpoint;
+                        status.Essencial = true;
+                        return status;
+                    });
+
+                var resultado = diagnostico.ConsultarStatusServico();
+
+                Assert.NotNull(configuracaoRecebida);
+                Assert.Equal("1.00", configuracaoRecebida.SchemaVersao);
+                Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
+                Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
+                Assert.Contains(resultado.Sondas.Itens, x =>
+                    x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
+                    x.CStat == 108 &&
+                    x.Status == StatusDisponibilidade.Indisponivel);
+            }
         }
 
         [Theory]
@@ -1298,6 +1338,52 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact(Explicit = true)]
         [Trait("Utility", "DisponibilidadeIntegracao")]
+        public void ConsultaStatusNF3eMTProducao()
+        {
+            // Este teste acessa somente a consulta oficial de StatusServico da NF3e. Ele não envia
+            // documento, evento ou qualquer outra mensagem capaz de produzir efeito fiscal.
+            DiagnosticoDisponibilidadeDFe.LimparMemoriaDiagnostico();
+            var configuracao = ConfiguracaoBase();
+            configuracao.TipoDFe = TipoDFe.NF3e;
+            configuracao.CodigoUF = (int)UFBrasil.MT;
+            configuracao.TipoAmbiente = TipoAmbiente.Producao;
+            configuracao.SchemaVersao = "1.00";
+            configuracao.Servico = Servico.NF3eStatusServico;
+            configuracao.CertificadoDigital = PropConfig.CertificadoDigital;
+
+            var opcoes = new ConfiguracaoDiagnosticoDisponibilidade
+            {
+                TimeoutMilissegundos = 10000,
+                LimiteLentidaoMilissegundos = 3000
+            };
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ConsultarStatusServico();
+
+            var saida = TestContext.Current.TestOutputHelper;
+            if (saida != null)
+            {
+                saida.WriteLine("Diagnóstico NF3e/MT em produção: {0} / {1}", resultado.Status,
+                    resultado.OrigemProvavel);
+                saida.WriteLine("Descrição: {0}", resultado.Descricao);
+                foreach (var sonda in resultado.Sondas.Itens)
+                {
+                    saida.WriteLine(
+                        "{0:O} | {1} | {2} | falha={3} | HTTP={4} | cStat={5} | {6} ms | cache={7} | endpoint={8} | motivo={9} | exceção={10}",
+                        sonda.DataHora, sonda.Servico, sonda.Status, sonda.TipoFalha,
+                        sonda.HttpStatusCode, sonda.CStat, sonda.DuracaoMilissegundos,
+                        sonda.DoCache, sonda.Endpoint, sonda.XMotivo, sonda.Excecao);
+                }
+            }
+
+            Assert.Equal(TipoDFe.NF3e, resultado.TipoDFe);
+            Assert.Equal(UFBrasil.MT, resultado.UFBrasil);
+            Assert.Equal(TipoAmbiente.Producao, resultado.TipoAmbiente);
+            Assert.Contains(resultado.Sondas.Itens,
+                x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
+                     x.Servico == "StatusServico");
+        }
+
+        [Fact(Explicit = true)]
+        [Trait("Utility", "DisponibilidadeIntegracao")]
         public void ConsultaStatusNFeAMProducao()
         {
             // Este teste é explícito porque acessa o serviço real da SEFAZ AM. A única mensagem
@@ -1456,6 +1542,14 @@ namespace Unimake.DFe.Test.Utility.Rede
                 "<retMDFe xmlns='http://www.portalfiscal.inf.br/mdfe'><cStat>104</cStat><xMotivo>Lote processado</xMotivo><protMDFe><infProt><cStat>999</cStat><xMotivo>Resultado do protocolo</xMotivo></infProt></protMDFe></retMDFe>",
                 104,
                 StatusDisponibilidade.Operacional
+            },
+            new object[]
+            {
+                TipoDFe.NF3e,
+                Servico.NF3eStatusServico,
+                "<retConsStatServNF3e xmlns='http://www.portalfiscal.inf.br/nf3e'><tpAmb>1</tpAmb><verAplic>1.00</verAplic><cStat>108</cStat><xMotivo>Servico Paralisado Momentaneamente (curto prazo)</xMotivo><cUF>51</cUF></retConsStatServNF3e>",
+                108,
+                StatusDisponibilidade.Indisponivel
             }
         };
 

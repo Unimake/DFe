@@ -296,7 +296,7 @@ namespace Unimake.Business.DFe.Utility
 
         /// <summary>Verifica se o documento possui regras de telemetria implementadas nesta versão.</summary>
         private static bool EhDFeSuportado(TipoDFe tipoDFe) => tipoDFe == TipoDFe.NFe || tipoDFe == TipoDFe.NFCe ||
-            tipoDFe == TipoDFe.CTe || tipoDFe == TipoDFe.MDFe;
+            tipoDFe == TipoDFe.CTe || tipoDFe == TipoDFe.MDFe || tipoDFe == TipoDFe.NF3e;
 
         /// <summary>Identifica serviços cuja evidência representa diretamente a capacidade de emissão.</summary>
         private static bool EhServicoEssencial(Servico servico)
