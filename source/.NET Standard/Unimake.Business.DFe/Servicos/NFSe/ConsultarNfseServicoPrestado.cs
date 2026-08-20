@@ -8,12 +8,13 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     /// <summary>
     /// Enviar o XML de Consulta NFSe de Serviços Prestados para o webservice
     /// </summary>
+    [System.Obsolete("Utilize ConsultarNfse informando o serviço correspondente em Configuracao.Servico.", false)]
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfseServicoPrestado")]
     [ComVisible(true)]
 #endif
-    public class ConsultarNfseServicoPrestado: ConsultarNfse
+    public class ConsultarNfseServicoPrestado : ConsultarNfse
     {
         /// <summary>
         /// Construtor

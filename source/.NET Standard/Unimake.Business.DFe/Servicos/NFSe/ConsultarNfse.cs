@@ -29,6 +29,53 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         public ConsultarNfse(XmlDocument conteudoXML, Configuracao configuracao) : this() => Inicializar(conteudoXML, configuracao);
 
         /// <summary>
+        /// Obtém a tag de configuração correspondente ao serviço de consulta solicitado.
+        /// </summary>
+        /// <returns>Nome da tag do serviço.</returns>
+        protected override string ObterNomeTagServico()
+        {
+            if (GetType() != typeof(ConsultarNfse))
+            {
+                return base.ObterNomeTagServico();
+            }
+
+            switch (Configuracoes.Servico)
+            {
+                case Servico.NFSeConsultarNfse:
+                    return nameof(ConsultarNfse);
+
+                case Servico.NFSeConsultarNfseFaixa:
+                    return "ConsultarNfseFaixa";
+
+                case Servico.NFSeConsultarNfseServicoPrestado:
+                    return "ConsultarNfseServicoPrestado";
+
+                case Servico.NFSeConsultarNotaFiscal:
+                    return "ConsultarNotaFiscal";
+
+                case Servico.NFSeConsultarNotaValida:
+                    return "ConsultarNotaValida";
+
+                case Servico.NFSeObterNotaFiscalXml:
+                    return "ObterNotaFiscalXml";
+
+                case Servico.NFSeConsultaNFeEmitidas:
+                    return "ConsultaNFeEmitidas";
+
+                case Servico.NFSeConsultarNotaPrestador:
+                    return "ConsultarNotaPrestador";
+
+                default:
+                    throw new System.InvalidOperationException(
+                        $"O serviço {Configuracoes.Servico} não pode ser executado pela classe {nameof(ConsultarNfse)}. " +
+                        $"Serviços aceitos: {Servico.NFSeConsultarNfse}, {Servico.NFSeConsultarNfseFaixa}, " +
+                        $"{Servico.NFSeConsultarNfseServicoPrestado}, {Servico.NFSeConsultarNotaFiscal}, " +
+                        $"{Servico.NFSeConsultarNotaValida}, {Servico.NFSeObterNotaFiscalXml}, " +
+                        $"{Servico.NFSeConsultaNFeEmitidas} e {Servico.NFSeConsultarNotaPrestador}.");
+            }
+        }
+
+        /// <summary>
         /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
         /// </summary>
         protected override void DefinirConfiguracao()

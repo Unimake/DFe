@@ -8,12 +8,13 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     /// <summary>
     /// Enviar o XML de NFSe para o webservice
     /// </summary>
+    [System.Obsolete("Utilize GerarNfse informando o serviço correspondente em Configuracao.Servico.", false)]
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Servicos.NFSe.RecepcionarLoteRpsSincrono")]
     [ComVisible(true)]
 #endif
-    public class RecepcionarLoteRpsSincrono: GerarNfse
+    public class RecepcionarLoteRpsSincrono : GerarNfse
     {
         /// <summary>
         /// Construtor

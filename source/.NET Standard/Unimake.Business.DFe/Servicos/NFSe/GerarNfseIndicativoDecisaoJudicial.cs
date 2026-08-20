@@ -8,6 +8,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     /// <summary>
     /// Enviar o XML de NFSe com indicativo de decisão judicial para o webservice
     /// </summary>
+    [System.Obsolete("Utilize GerarNfse informando o serviço correspondente em Configuracao.Servico.", false)]
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Servicos.NFSe.GerarNfseIndicativoDecisaoJudicial")]

@@ -8,12 +8,13 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     /// <summary>
     /// Enviar o XML de Envio Lote Rps NFSe para o webservice
     /// </summary>
+    [System.Obsolete("Utilize GerarNfse informando o serviço correspondente em Configuracao.Servico.", false)]
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Servicos.NFSe.EnvioLoteRps")]
     [ComVisible(true)]
 #endif
-    public class EnvioLoteRps: GerarNfse
+    public class EnvioLoteRps : GerarNfse
     {
         /// <summary>
         /// Construtor
@@ -27,6 +28,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
         /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
         public EnvioLoteRps(XmlDocument conteudoXML, Configuracao configuracao) : base(conteudoXML, configuracao)
-        { }       
+        { }
     }
 }

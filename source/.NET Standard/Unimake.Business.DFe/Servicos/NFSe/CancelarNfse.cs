@@ -41,6 +41,36 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         public CancelarNfse(XmlDocument conteudoXML, Configuracao configuracao) : this() => Inicializar(conteudoXML, configuracao);
 
         /// <summary>
+        /// Obtém a tag de configuração correspondente ao serviço de cancelamento solicitado.
+        /// </summary>
+        /// <returns>Nome da tag do serviço.</returns>
+        protected override string ObterNomeTagServico()
+        {
+            if (GetType() != typeof(CancelarNfse))
+            {
+                return base.ObterNomeTagServico();
+            }
+
+            switch (Configuracoes.Servico)
+            {
+                case Servico.NFSeCancelarNfse:
+                    return nameof(CancelarNfse);
+
+                case Servico.NFSeCancelamentoNfe:
+                    return "CancelamentoNfe";
+
+                case Servico.NFSeCancelarNotaFiscal:
+                    return "CancelarNotaFiscal";
+
+                default:
+                    throw new System.InvalidOperationException(
+                        $"O serviço {Configuracoes.Servico} não pode ser executado pela classe {nameof(CancelarNfse)}. " +
+                        $"Serviços aceitos: {Servico.NFSeCancelarNfse}, {Servico.NFSeCancelamentoNfe} e " +
+                        $"{Servico.NFSeCancelarNotaFiscal}.");
+            }
+        }
+
+        /// <summary>
         /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
         /// </summary>
         protected override void DefinirConfiguracao()

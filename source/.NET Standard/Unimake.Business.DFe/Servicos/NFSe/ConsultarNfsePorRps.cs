@@ -43,6 +43,27 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         public ConsultarNfsePorRps(XmlDocument conteudoXML, Configuracao configuracao) : base(conteudoXML, configuracao)
         { }
 
+        /// <summary>
+        /// Obtém a tag de configuração correspondente ao serviço de consulta por RPS solicitado.
+        /// </summary>
+        /// <returns>Nome da tag do serviço.</returns>
+        protected override string ObterNomeTagServico()
+        {
+            if (GetType() != typeof(ConsultarNfsePorRps))
+            {
+                return base.ObterNomeTagServico();
+            }
+
+            if (Configuracoes.Servico == Servico.NFSeConsultarNfsePorRps)
+            {
+                return nameof(ConsultarNfsePorRps);
+            }
+
+            throw new System.InvalidOperationException(
+                $"O serviço {Configuracoes.Servico} não pode ser executado pela classe {nameof(ConsultarNfsePorRps)}. " +
+                $"Serviço aceito: {Servico.NFSeConsultarNfsePorRps}.");
+        }
+
         ///<summary>
         ///Resultado da consutla de NFSe por RPS - Apenas para padrão NACIONAL
         ///Em caso de sucesso, a tag chaveAcesso será preenchida com a chave de acesso da NFSe consultada (50 dígitos).
@@ -51,7 +72,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #if INTEROP
         [ComVisible(true)]
 #endif
-        public Xml.NFSe.NACIONAL.Consulta.RetDPS Result
+        public new Xml.NFSe.NACIONAL.Consulta.RetDPS Result
         {
             get
             {

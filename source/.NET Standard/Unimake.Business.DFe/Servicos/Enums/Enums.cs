@@ -311,6 +311,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 50 - Enviar o XML de cancelamento da NFS-e para prefeitura
         /// </summary>
         [Description("Cancela NFS-e")]
+        [Obsolete("Utilize um serviço de cancelamento configurado para o município com a classe CancelarNfse.", false)]
         NFSeCancelaNota = 50,
 
         /// <summary>
@@ -341,6 +342,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 55 - Consultar Rps Serviço Prestado da NFS-e para prefeitura
         /// </summary>
         [Description("Consultar Rps Serviço Prestado")]
+        [Obsolete("Utilize um serviço de consulta configurado para o município com a classe ConsultarNfsePorRps.", false)]
         NFSeConsultarRpsServicoPrestado = 55,
 
         /// <summary>
@@ -818,6 +820,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("CIOT eFrete - Gravar veículo")]
         CIOTGravarVeiculo = 131,
+
+        /// <summary>
+        /// 132 - Envio de NFSe com indicativo de decisão judicial
+        /// </summary>
+        [Description("Envio de NFSe com indicativo de decisão judicial")]
+        NFSeGerarNfseIndicativoDecisaoJudicial = 132,
 
         #endregion
 

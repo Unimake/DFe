@@ -31,12 +31,18 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         protected ServicoBase() : base() { }
 
         /// <summary>
+        /// Obtém o nome da tag do serviço que deve ser carregada do arquivo de configuração da NFSe.
+        /// </summary>
+        /// <returns>Nome da tag do serviço.</returns>
+        protected virtual string ObterNomeTagServico() => GetType().Name;
+
+        /// <summary>
         /// Definir configurações específicas da NFSe
         /// </summary>
         protected override void DefinirConfiguracao()
         {
             //Esta linha irá carregar as informações referentes ao município.
-            Configuracoes.Load(GetType().Name);
+            Configuracoes.Load(ObterNomeTagServico());
 
             //Depois de carregar as configurações
             switch (Configuracoes.PadraoNFSe)
@@ -110,7 +116,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     break;
 
                 case PadraoNFSe.DSF:
-                    if(Configuracoes.SchemaVersao == "1.01")
+                    if (Configuracoes.SchemaVersao == "1.01")
                     {
                         DSF();
                     }
@@ -957,7 +963,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// Retorna null se processamento foi bem-sucedido.
         /// </summary>
 #if INTEROP
-[ComVisible(true)]
+        [ComVisible(true)]
 #endif
         public Xml.NFSe.NACIONAL.Temp ResultErro
         {

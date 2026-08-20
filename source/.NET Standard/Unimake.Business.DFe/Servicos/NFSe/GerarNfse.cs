@@ -42,6 +42,56 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         public GerarNfse(XmlDocument conteudoXML, Configuracao configuracao) : this() => Inicializar(conteudoXML, configuracao);
 
         /// <summary>
+        /// Obtém a tag de configuração correspondente ao serviço de geração solicitado.
+        /// </summary>
+        /// <returns>Nome da tag do serviço.</returns>
+        protected override string ObterNomeTagServico()
+        {
+            if (GetType() != typeof(GerarNfse))
+            {
+                return base.ObterNomeTagServico();
+            }
+
+            switch (Configuracoes.Servico)
+            {
+                case Servico.NFSeGerarNfse:
+                    return nameof(GerarNfse);
+
+                case Servico.NFSeRecepcionarLoteRps:
+                    return "RecepcionarLoteRps";
+
+                case Servico.NFSeRecepcionarLoteRpsSincrono:
+                    return "RecepcionarLoteRpsSincrono";
+
+                case Servico.NFSeGerarNfseIndicativoDecisaoJudicial:
+                    return "GerarNfseIndicativoDecisaoJudicial";
+
+                case Servico.NFSeEnviarLoteNotas:
+                    return "EnviarLoteNotas";
+
+                case Servico.NFSeEnvioLoteRps:
+                    return "EnvioLoteRps";
+
+                case Servico.NFSeEnvioRps:
+                    return "EnvioRps";
+
+                case Servico.NFSeEmissaoNota:
+                    return "EmissaoNota";
+
+                case Servico.NFSeTesteEnvioLoteRps:
+                    return "TesteEnvioLoteRps";
+
+                default:
+                    throw new System.InvalidOperationException(
+                        $"O serviço {Configuracoes.Servico} não pode ser executado pela classe {nameof(GerarNfse)}. " +
+                        $"Serviços aceitos: {Servico.NFSeGerarNfse}, {Servico.NFSeRecepcionarLoteRps}, " +
+                        $"{Servico.NFSeRecepcionarLoteRpsSincrono}, {Servico.NFSeGerarNfseIndicativoDecisaoJudicial}, " +
+                        $"{Servico.NFSeEnviarLoteNotas}, {Servico.NFSeEnvioLoteRps}, {Servico.NFSeEnvioRps}, " +
+                        $"{Servico.NFSeEmissaoNota} e {Servico.NFSeTesteEnvioLoteRps}.");
+            }
+        }
+
+        /// <summary>
         /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
         /// </summary>
         protected override void DefinirConfiguracao()
