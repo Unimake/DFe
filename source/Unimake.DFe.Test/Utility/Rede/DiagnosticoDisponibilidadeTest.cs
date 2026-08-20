@@ -144,6 +144,29 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Theory]
         [Trait("Utility", "Disponibilidade")]
+        [MemberData(nameof(ServicosMonitorados))]
+        public void TelemetriaRegistraCadaServicoDasPastasSolicitadas(TipoDFe tipoDFe, Servico servico)
+        {
+            var configuracao = ConfiguracaoBase();
+            configuracao.TipoDFe = tipoDFe;
+            configuracao.Servico = servico;
+            configuracao.ColetarTelemetriaDisponibilidade = true;
+
+            Assert.True(TelemetriaDisponibilidade.EstaHabilitada(configuracao));
+            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
+                HttpStatusCode.OK, Retorno(204), null);
+
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
+            var amostra = Assert.Single(resultado.Sondas.Itens);
+            Assert.Equal(servico.ToString(), amostra.Servico);
+            Assert.Equal(StatusDisponibilidade.Operacional, amostra.Status);
+            Assert.Equal(servico.ToString().IndexOf("Autorizacao", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                servico.ToString().IndexOf("StatusServico", StringComparison.OrdinalIgnoreCase) >= 0,
+                amostra.Essencial);
+        }
+
+        [Theory]
+        [Trait("Utility", "Disponibilidade")]
         [InlineData(107, StatusDisponibilidade.Operacional, TipoFalhaDisponibilidade.Nenhuma)]
         [InlineData(108, StatusDisponibilidade.Indisponivel, TipoFalhaDisponibilidade.Protocolo)]
         [InlineData(109, StatusDisponibilidade.Indisponivel, TipoFalhaDisponibilidade.Protocolo)]
@@ -501,6 +524,41 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.DoesNotContain(resultado.Sondas.Itens, x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico);
         }
 
+        [Theory]
+        [Trait("Utility", "Disponibilidade")]
+        [InlineData(TipoDFe.BPe, Servico.BPeAutorizacao)]
+        [InlineData(TipoDFe.CTeOS, Servico.CTeAutorizacaoOS)]
+        [InlineData(TipoDFe.DCe, Servico.DCeAutorizacaoSinc)]
+        [InlineData(TipoDFe.NFCom, Servico.NFComAutorizacaoSinc)]
+        [InlineData(TipoDFe.NFGas, Servico.NFGasAutorizacaoSinc)]
+        public void DocumentoSomenteComTelemetriaNaoExecutaSondaAtiva(TipoDFe tipoDFe, Servico servico)
+        {
+            var configuracao = ConfiguracaoBase();
+            configuracao.TipoDFe = tipoDFe;
+            configuracao.Servico = servico;
+            configuracao.ColetarTelemetriaDisponibilidade = true;
+            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
+                HttpStatusCode.OK, Retorno(108), null);
+            var infraestrutura = new ExecutorInfraestruturaFake();
+            var execucoesStatus = 0;
+            var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracao, null, infraestrutura,
+                (configuracaoStatus, endpoint) =>
+                {
+                    execucoesStatus++;
+                    return Status(107);
+                });
+
+            var resultado = diagnostico.ConsultarStatusServico();
+
+            Assert.Equal(0, infraestrutura.Execucoes);
+            Assert.Equal(0, execucoesStatus);
+            Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
+            Assert.Contains(resultado.Sondas.Itens, x => x.Servico == servico.ToString() && x.CStat == 108);
+            Assert.Contains(resultado.Sondas.Itens, x => x.Servico == "StatusServico" &&
+                x.Status == StatusDisponibilidade.NaoAplicavel);
+        }
+
         [Fact]
         [Trait("Utility", "Disponibilidade")]
         public void ConsultaStatusNF3eClassificaParalisacaoComoIndisponibilidadeFiscal()
@@ -543,7 +601,7 @@ namespace Unimake.DFe.Test.Utility.Rede
         [Theory]
         [Trait("Utility", "Disponibilidade")]
         [InlineData(TipoDFe.NFSe)]
-        [InlineData(TipoDFe.BPe)]
+        [InlineData(TipoDFe.GNRE)]
         public void DocumentoAindaNaoSuportadoFicaNaoAplicavelSemExecutarTransporte(TipoDFe tipoDFe)
         {
             var configuracao = ConfiguracaoBase();
@@ -1550,7 +1608,108 @@ namespace Unimake.DFe.Test.Utility.Rede
                 "<retConsStatServNF3e xmlns='http://www.portalfiscal.inf.br/nf3e'><tpAmb>1</tpAmb><verAplic>1.00</verAplic><cStat>108</cStat><xMotivo>Servico Paralisado Momentaneamente (curto prazo)</xMotivo><cUF>51</cUF></retConsStatServNF3e>",
                 108,
                 StatusDisponibilidade.Indisponivel
+            },
+            new object[]
+            {
+                TipoDFe.BPe,
+                Servico.BPeStatusServico,
+                "<retConsStatServBPe xmlns='http://www.portalfiscal.inf.br/bpe'><cStat>107</cStat><xMotivo>Serviço em operação</xMotivo></retConsStatServBPe>",
+                107,
+                StatusDisponibilidade.Operacional
+            },
+            new object[]
+            {
+                TipoDFe.CTeOS,
+                Servico.CTeStatusServico,
+                "<retConsStatServCte xmlns='http://www.portalfiscal.inf.br/cte'><cStat>109</cStat><xMotivo>Serviço paralisado sem previsão</xMotivo></retConsStatServCte>",
+                109,
+                StatusDisponibilidade.Indisponivel
+            },
+            new object[]
+            {
+                TipoDFe.DCe,
+                Servico.DCeStatusServico,
+                "<retConsStatServDCe xmlns='http://www.portalfiscal.inf.br/dce'><cStat>107</cStat><xMotivo>Serviço em operação</xMotivo></retConsStatServDCe>",
+                107,
+                StatusDisponibilidade.Operacional
+            },
+            new object[]
+            {
+                TipoDFe.NFCom,
+                Servico.NFComStatusServico,
+                "<retConsStatServNFCom xmlns='http://www.portalfiscal.inf.br/nfcom'><cStat>999</cStat><xMotivo>Erro não catalogado</xMotivo></retConsStatServNFCom>",
+                999,
+                StatusDisponibilidade.Indisponivel
+            },
+            new object[]
+            {
+                TipoDFe.NFGas,
+                Servico.NFGasStatusServico,
+                "<retConsStatServNFGas xmlns='http://www.portalfiscal.inf.br/nfgas'><cStat>107</cStat><xMotivo>Serviço em operação</xMotivo></retConsStatServNFGas>",
+                107,
+                StatusDisponibilidade.Operacional
             }
+        };
+
+        public static IEnumerable<object[]> ServicosMonitorados => new[]
+        {
+            new object[] { TipoDFe.BPe, Servico.BPeStatusServico },
+            new object[] { TipoDFe.BPe, Servico.BPeConsultaProtocolo },
+            new object[] { TipoDFe.BPe, Servico.BPeRecepcaoEvento },
+            new object[] { TipoDFe.BPe, Servico.BPeAutorizacao },
+            new object[] { TipoDFe.BPe, Servico.BPeTMAutorizacao },
+            new object[] { TipoDFe.BPe, Servico.BPeTAAutorizacao },
+            new object[] { TipoDFe.CTe, Servico.CTeStatusServico },
+            new object[] { TipoDFe.CTe, Servico.CTeConsultaProtocolo },
+            new object[] { TipoDFe.CTe, Servico.NFeRecepcaoEvento },
+            new object[] { TipoDFe.CTe, Servico.CTeDistribuicaoDFe },
+            new object[] { TipoDFe.CTe, Servico.NFeConsultaCadastro },
+            new object[] { TipoDFe.CTe, Servico.CTeAutorizacaoSinc },
+            new object[] { TipoDFe.CTe, Servico.CTeAutorizacaoSimp },
+            new object[] { TipoDFe.CTeOS, Servico.CTeStatusServico },
+            new object[] { TipoDFe.CTeOS, Servico.CTeConsultaProtocolo },
+            new object[] { TipoDFe.CTeOS, Servico.NFeRecepcaoEvento },
+            new object[] { TipoDFe.CTeOS, Servico.NFeConsultaCadastro },
+            new object[] { TipoDFe.CTeOS, Servico.CTeAutorizacaoOS },
+            new object[] { TipoDFe.DCe, Servico.DCeStatusServico },
+            new object[] { TipoDFe.DCe, Servico.DCeConsultaProtocolo },
+            new object[] { TipoDFe.DCe, Servico.DCeRecepcaoEvento },
+            new object[] { TipoDFe.DCe, Servico.DCeAutorizacaoSinc },
+            new object[] { TipoDFe.MDFe, Servico.MDFeStatusServico },
+            new object[] { TipoDFe.MDFe, Servico.MDFeConsultaProtocolo },
+            new object[] { TipoDFe.MDFe, Servico.NFeRecepcaoEvento },
+            new object[] { TipoDFe.MDFe, Servico.MDFeConsultaNaoEnc },
+            new object[] { TipoDFe.MDFe, Servico.MDFeAutorizacaoSinc },
+            new object[] { TipoDFe.NF3e, Servico.NF3eStatusServico },
+            new object[] { TipoDFe.NF3e, Servico.NF3eConsultaProtocolo },
+            new object[] { TipoDFe.NF3e, Servico.NF3eConsultaRecibo },
+            new object[] { TipoDFe.NF3e, Servico.NF3eRecepcaoEvento },
+            new object[] { TipoDFe.NF3e, Servico.NF3eAutorizacaoSinc },
+            new object[] { TipoDFe.NFCe, Servico.NFeStatusServico },
+            new object[] { TipoDFe.NFCe, Servico.NFeConsultaProtocolo },
+            new object[] { TipoDFe.NFCe, Servico.NFeConsultaRecibo },
+            new object[] { TipoDFe.NFCe, Servico.NFeInutilizacao },
+            new object[] { TipoDFe.NFCe, Servico.NFeConsultaCadastro },
+            new object[] { TipoDFe.NFCe, Servico.NFeRecepcaoEvento },
+            new object[] { TipoDFe.NFCe, Servico.NFeAutorizacao },
+            new object[] { TipoDFe.NFCe, Servico.NFCeDownloadXML },
+            new object[] { TipoDFe.NFCe, Servico.NFCeConsultaChaves },
+            new object[] { TipoDFe.NFCom, Servico.NFComStatusServico },
+            new object[] { TipoDFe.NFCom, Servico.NFComConsultaProtocolo },
+            new object[] { TipoDFe.NFCom, Servico.NFComRecepcaoEvento },
+            new object[] { TipoDFe.NFCom, Servico.NFComAutorizacaoSinc },
+            new object[] { TipoDFe.NFe, Servico.NFeStatusServico },
+            new object[] { TipoDFe.NFe, Servico.NFeConsultaProtocolo },
+            new object[] { TipoDFe.NFe, Servico.NFeConsultaRecibo },
+            new object[] { TipoDFe.NFe, Servico.NFeInutilizacao },
+            new object[] { TipoDFe.NFe, Servico.NFeConsultaCadastro },
+            new object[] { TipoDFe.NFe, Servico.NFeRecepcaoEvento },
+            new object[] { TipoDFe.NFe, Servico.NFeAutorizacao },
+            new object[] { TipoDFe.NFe, Servico.NFeDistribuicaoDFe },
+            new object[] { TipoDFe.NFGas, Servico.NFGasStatusServico },
+            new object[] { TipoDFe.NFGas, Servico.NFGasConsultaProtocolo },
+            new object[] { TipoDFe.NFGas, Servico.NFGasRecepcaoEvento },
+            new object[] { TipoDFe.NFGas, Servico.NFGasAutorizacaoSinc }
         };
 
         private static async Task ComHistoricoBloqueado(Func<Task> executar)

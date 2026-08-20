@@ -43,7 +43,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns><see langword="true"/> quando a coleta está ligada e o documento é suportado.</returns>
         internal static bool EstaHabilitada(Configuracao configuracao) =>
             configuracao != null && configuracao.ColetarTelemetriaDisponibilidade &&
-            EhDFeSuportado(configuracao.TipoDFe);
+            SuportaDocumento(configuracao.TipoDFe);
 
         /// <summary>Registra uma operação fiscal já executada, sem repetir a chamada.</summary>
         /// <param name="configuracao">Configuração da operação observada.</param>
@@ -294,9 +294,20 @@ namespace Unimake.Business.DFe.Utility
             }
         }
 
-        /// <summary>Verifica se o documento possui regras de telemetria implementadas nesta versão.</summary>
-        private static bool EhDFeSuportado(TipoDFe tipoDFe) => tipoDFe == TipoDFe.NFe || tipoDFe == TipoDFe.NFCe ||
-            tipoDFe == TipoDFe.CTe || tipoDFe == TipoDFe.MDFe || tipoDFe == TipoDFe.NF3e;
+        /// <summary>Verifica se o documento passa pelo transporte central observado pela telemetria.</summary>
+        /// <param name="tipoDFe">Documento fiscal configurado na operação real.</param>
+        /// <returns><see langword="true"/> para documentos cuja telemetria passiva está habilitada nesta versão.</returns>
+        internal static bool SuportaDocumento(TipoDFe tipoDFe) =>
+            tipoDFe == TipoDFe.BPe ||
+            tipoDFe == TipoDFe.CTe ||
+            tipoDFe == TipoDFe.CTeOS ||
+            tipoDFe == TipoDFe.DCe ||
+            tipoDFe == TipoDFe.MDFe ||
+            tipoDFe == TipoDFe.NF3e ||
+            tipoDFe == TipoDFe.NFCe ||
+            tipoDFe == TipoDFe.NFCom ||
+            tipoDFe == TipoDFe.NFe ||
+            tipoDFe == TipoDFe.NFGas;
 
         /// <summary>Identifica serviços cuja evidência representa diretamente a capacidade de emissão.</summary>
         private static bool EhServicoEssencial(Servico servico)
