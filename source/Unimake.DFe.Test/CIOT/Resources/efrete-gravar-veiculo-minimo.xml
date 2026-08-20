@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GravarVeiculo xmlns="http://www.antt.gov.br/ciot">
+	<ProvedorCIOT>EFrete</ProvedorCIOT>
+	<Veiculo>
+		<Chassi>9BWZZZ377VT004251</Chassi>
+		<NumeroDeEixos>3</NumeroDeEixos>
+		<Placa>BRA2E19</Placa>
+		<RNTRC>12345678</RNTRC>
+		<Renavam>12345678901</Renavam>
+	</Veiculo>
+</GravarVeiculo>

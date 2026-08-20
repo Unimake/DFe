@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Xml;
 using Unimake.Business.DFe.Xml;
@@ -182,7 +183,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 case Servico.CIOTGravarVeiculo:
                     resultado = new RetGravarVeiculo
                     {
-                        Veiculo = ConverterObjeto<VeiculoCadastroCIOT>(Localizar(root, "Veiculo")),
+                        Veiculo = ConverterVeiculo(Localizar(root, "Veiculo")),
                         Sucesso = sucesso,
                         Versao = ValorInt(root, "Versao"),
                         Codigo = codigo,
@@ -425,6 +426,48 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             if (string.Equals(valor, "Fisica", StringComparison.OrdinalIgnoreCase) || valor == "1") return TipoPessoaCIOT.Fisica;
             if (string.Equals(valor, "Juridica", StringComparison.OrdinalIgnoreCase) || valor == "2") return TipoPessoaCIOT.Juridica;
             throw new InvalidOperationException("TipoPessoa retornado pela eFrete não reconhecido: " + (valor ?? "<nulo>") + ".");
+        }
+
+        private static VeiculoCadastroCIOT ConverterVeiculo(JToken token)
+        {
+            var veiculo = token as JObject;
+            if (veiculo == null) return null;
+
+            return new VeiculoCadastroCIOT
+            {
+                AnoFabricacao = ValorInt(veiculo, "AnoFabricacao"),
+                AnoModelo = ValorInt(veiculo, "AnoModelo"),
+                CapacidadeKg = ValorDouble(veiculo, "CapacidadeKg"),
+                CapacidadeM3 = ValorDouble(veiculo, "CapacidadeM3"),
+                Chassi = Valor(veiculo, "Chassi"),
+                CodigoMunicipio = Valor(veiculo, "CodigoMunicipio"),
+                Cor = Valor(veiculo, "Cor"),
+                Marca = Valor(veiculo, "Marca"),
+                Modelo = Valor(veiculo, "Modelo"),
+                NumeroDeEixos = ValorInt(veiculo, "NumeroDeEixos"),
+                Placa = Valor(veiculo, "Placa"),
+                RNTRC = Valor(veiculo, "RNTRC"),
+                Renavam = Valor(veiculo, "Renavam"),
+                Tara = ValorDouble(veiculo, "Tara"),
+                TipoCarroceria = ConverterEnumOpcional<TipoCarroceriaCIOT>(Localizar(veiculo, "TipoCarroceria")),
+                TipoRodado = ConverterEnumOpcional<TipoRodadoCIOT>(Localizar(veiculo, "TipoRodado"))
+            };
+        }
+
+        private static double ValorDouble(JObject obj, string nome)
+        {
+            var token = Localizar(obj, nome);
+            if (token == null || token.Type == JTokenType.Null) return 0;
+            double valor;
+            return double.TryParse(token.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture, out valor) ? valor : 0;
+        }
+
+        private static T ConverterEnumOpcional<T>(JToken token) where T : struct
+        {
+            if (token == null || token.Type == JTokenType.Null || string.IsNullOrWhiteSpace(token.ToString())) return (T)Enum.ToObject(typeof(T), -1);
+            T valor;
+            if (Enum.TryParse(token.ToString(), true, out valor)) return valor;
+            throw new InvalidOperationException(typeof(T).Name + " retornado pela eFrete não reconhecido: " + token + ".");
         }
         private static JToken LocalizarRecursivo(JToken token, string nome)
         {

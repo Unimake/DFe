@@ -20,6 +20,7 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
         [InlineData("efrete-gravar-motorista.xml", Servico.CIOTGravarMotorista)]
         [InlineData("efrete-gravar-proprietario.xml", Servico.CIOTGravarProprietario)]
         [InlineData("efrete-gravar-veiculo.xml", Servico.CIOTGravarVeiculo)]
+        [InlineData("efrete-gravar-veiculo-minimo.xml", Servico.CIOTGravarVeiculo)]
         [Trait("DFe", "CIOT")]
         public void EnvioFazRoundTripEValidaSchema(string arquivo, Servico servico)
         {
@@ -112,6 +113,22 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
 
             Assert.Equal(esperado, retorno.Proprietario.TipoPessoa);
             Assert.Contains("<TipoPessoa>" + valorXml + "</TipoPessoa>", xml.OuterXml);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void NormalizaRetornoVeiculoComCamposOpcionaisNulos()
+        {
+            const string json = "{\"Sucesso\":true,\"Versao\":1,\"Veiculo\":{\"AnoFabricacao\":null,\"AnoModelo\":null,\"CapacidadeKg\":null,\"CapacidadeM3\":null,\"Chassi\":\"9BWZZZ377VT004251\",\"CodigoMunicipio\":null,\"Cor\":null,\"Marca\":null,\"Modelo\":null,\"NumeroDeEixos\":3,\"Placa\":\"BRA2E19\",\"RNTRC\":\"012345678\",\"Renavam\":\"12345678901\",\"Tara\":null,\"TipoCarroceria\":null,\"TipoRodado\":null}}";
+            var xml = EFreteMapper.NormalizarRetorno(json, Servico.CIOTGravarVeiculo);
+            var retorno = new RetGravarVeiculo().LerXML<RetGravarVeiculo>(xml);
+
+            Assert.Equal("BRA2E19", retorno.Veiculo.Placa);
+            Assert.Equal(3, retorno.Veiculo.NumeroDeEixos);
+            Assert.DoesNotContain("<AnoFabricacao>", xml.OuterXml);
+            Assert.DoesNotContain("<CapacidadeKg>", xml.OuterXml);
+            Assert.DoesNotContain("<TipoCarroceria>", xml.OuterXml);
+            Assert.DoesNotContain("<TipoRodado>", xml.OuterXml);
         }
 
         private static XMLBase LerEnvio(string arquivo, Servico servico)
