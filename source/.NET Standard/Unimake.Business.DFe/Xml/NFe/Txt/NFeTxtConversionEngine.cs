@@ -2517,6 +2517,22 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarPisNaoTributado(int nProd, int lenPipesRegistro)
         {
             var cst = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2);
+            if (cst == "01" || cst == "02")
+            {
+                detalhesOficiais[nProd].Imposto.PIS = new DFeNFe.PIS
+                {
+                    PISAliq = new DFeNFe.PISAliq { CST = cst, VBC = 0, PPIS = 0, VPIS = 0 }
+                };
+                return;
+            }
+            if (cst == "03")
+            {
+                detalhesOficiais[nProd].Imposto.PIS = new DFeNFe.PIS
+                {
+                    PISQtde = new DFeNFe.PISQtde { CST = cst, QBCProd = 0, VAliqProd = 0, VPIS = 0 }
+                };
+                return;
+            }
             if (!CstPisCofinsNaoTributado(cst))
             {
                 detalhesOficiais[nProd].Imposto.PIS = new DFeNFe.PIS
@@ -2679,6 +2695,22 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarCofinsNaoTributado(int nProd, int lenPipesRegistro)
         {
             var cst = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2);
+            if (cst == "01" || cst == "02")
+            {
+                detalhesOficiais[nProd].Imposto.COFINS = new DFeNFe.COFINS
+                {
+                    COFINSAliq = new DFeNFe.COFINSAliq { CST = cst, VBC = 0, PCOFINS = 0, VCOFINS = 0 }
+                };
+                return;
+            }
+            if (cst == "03")
+            {
+                detalhesOficiais[nProd].Imposto.COFINS = new DFeNFe.COFINS
+                {
+                    COFINSQtde = new DFeNFe.COFINSQtde { CST = cst, QBCProd = 0, VAliqProd = 0, VCOFINS = 0 }
+                };
+                return;
+            }
             if (!CstPisCofinsNaoTributado(cst))
             {
                 detalhesOficiais[nProd].Imposto.COFINS = new DFeNFe.COFINS

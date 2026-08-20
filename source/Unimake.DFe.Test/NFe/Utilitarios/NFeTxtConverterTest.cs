@@ -71,6 +71,7 @@ public class NFeTxtConverterTest
     [InlineData("NFe_000049184_08_27_14-nfe.txt")]
     [InlineData("002320_01_01_17_08_2026-nfe.txt")]
     [InlineData("000017136_19041494000180_001_19_08_2026-nfe-orig.txt")]
+    [InlineData("035814-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -91,6 +92,28 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// Deve selecionar os grupos PISAliq e COFINSAliq pelo CST mesmo quando o ERP usa os segmentos Q04 e S04.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarGruposPisECofinsDaNfe35814()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("035814-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var pis = xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='PIS']/*");
+        var cofins = xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='COFINS']/*");
+
+        Assert.Equal("PISAliq", pis?.LocalName);
+        Assert.Equal("01", pis?.SelectSingleNode("*[local-name()='CST']")?.InnerText);
+        Assert.Equal("0.00", pis?.SelectSingleNode("*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("COFINSAliq", cofins?.LocalName);
+        Assert.Equal("01", cofins?.SelectSingleNode("*[local-name()='CST']")?.InnerText);
+        Assert.Equal("0.00", cofins?.SelectSingleNode("*[local-name()='vBC']")?.InnerText);
     }
 
     /// <summary>
@@ -1619,6 +1642,15 @@ public class NFeTxtConverterTest
             "ROD. RAPOSO TAVARES KM-18 5",
             "100441666118",
             "60561719000557",
+            "COMERCIO DE PRODUTOS AGROVETERINARIOS LTDA",
+            "CASA DO FAZENDEIRO",
+            "00131341545",
+            "36912368000173",
+            "AV MATO GROSSO 201",
+            "6634381569",
+            "JOSE ADELMO DE JESUS",
+            "45184984100",
+            "RUA JOSE ANDRE VAJAO",
             "VENDEDOR: 0110 WAGNER",
             "AUTO VIDROS PRUDENTE",
             "562319803111",
