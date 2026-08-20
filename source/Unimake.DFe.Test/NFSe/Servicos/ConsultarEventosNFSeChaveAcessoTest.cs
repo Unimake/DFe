@@ -125,6 +125,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
             var configuracao = new Configuracao
             {
                 TipoDFe = TipoDFe.NFSe,
+                PadraoNFSe = padraoNFSe,
                 TipoAmbiente = tipoAmbiente,
                 CertificadoDigital = PropConfig.CertificadoDigital,
                 CodigoMunicipio = codigoMunicipio,
