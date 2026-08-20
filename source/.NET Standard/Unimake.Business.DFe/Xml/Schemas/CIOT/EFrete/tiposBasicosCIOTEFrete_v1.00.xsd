@@ -423,11 +423,11 @@
   <xs:complexType name="EnderecoCadastroEFrete">
     <xs:sequence>
       <xs:element name="Bairro" type="xs:string" />
+      <xs:element name="CEP" type="tns:TCepEFrete" />
+      <xs:element name="CodigoMunicipio" type="tns:TCodigoMunicipioEFrete" />
       <xs:element name="Rua" type="xs:string" />
       <xs:element name="Numero" type="xs:string" />
       <xs:element name="Complemento" type="xs:string" minOccurs="0" />
-      <xs:element name="CEP" type="tns:TCepEFrete" />
-      <xs:element name="CodigoMunicipio" type="tns:TCodigoMunicipioEFrete" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="TelefoneCadastroEFrete">

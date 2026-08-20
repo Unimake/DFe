@@ -171,7 +171,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 case Servico.CIOTGravarProprietario:
                     resultado = new RetGravarProprietario
                     {
-                        Proprietario = ConverterObjeto<ProprietarioCIOT>(Localizar(root, "Proprietario")),
+                        Proprietario = ConverterProprietario(Localizar(root, "Proprietario")),
                         Sucesso = sucesso,
                         Versao = ValorInt(root, "Versao"),
                         Codigo = codigo,
@@ -403,6 +403,29 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
         private static bool ValorBool(JObject obj, string nome) { bool value; return bool.TryParse(Valor(obj, nome), out value) && value; }
         private static int ValorInt(JObject obj, string nome) { int value; return int.TryParse(Valor(obj, nome), out value) ? value : 0; }
         private static T ConverterObjeto<T>(JToken token) where T : class => token == null || token.Type == JTokenType.Null ? null : token.ToObject<T>();
+        private static ProprietarioCIOT ConverterProprietario(JToken token)
+        {
+            var proprietario = token as JObject;
+            if (proprietario == null) return null;
+
+            return new ProprietarioCIOT
+            {
+                CNPJ = Valor(proprietario, "CNPJ"),
+                TipoPessoa = ConverterTipoPessoa(Localizar(proprietario, "TipoPessoa")),
+                Endereco = ConverterObjeto<EnderecoCIOT>(Localizar(proprietario, "Endereco")),
+                RNTRC = Valor(proprietario, "RNTRC"),
+                RazaoSocial = Valor(proprietario, "RazaoSocial"),
+                Telefones = ConverterObjeto<TelefonesCIOT>(Localizar(proprietario, "Telefones"))
+            };
+        }
+
+        private static TipoPessoaCIOT ConverterTipoPessoa(JToken token)
+        {
+            var valor = token == null ? null : token.ToString();
+            if (string.Equals(valor, "Fisica", StringComparison.OrdinalIgnoreCase) || valor == "1") return TipoPessoaCIOT.Fisica;
+            if (string.Equals(valor, "Juridica", StringComparison.OrdinalIgnoreCase) || valor == "2") return TipoPessoaCIOT.Juridica;
+            throw new InvalidOperationException("TipoPessoa retornado pela eFrete não reconhecido: " + (valor ?? "<nulo>") + ".");
+        }
         private static JToken LocalizarRecursivo(JToken token, string nome)
         {
             var objeto = token as JObject;

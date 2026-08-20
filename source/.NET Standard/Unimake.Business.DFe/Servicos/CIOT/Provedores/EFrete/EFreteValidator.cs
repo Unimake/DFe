@@ -148,5 +148,6 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 throw new ValidarXMLException("O endereço completo do " + grupo + " é obrigatório para a eFrete.");
             }
         }
+
     }
 }

@@ -62,8 +62,20 @@ namespace Unimake.Business.DFe.Xml.CIOT
         }
 
         /// <summary>Endereço do motorista.</summary>
-        [XmlElement("Endereco")]
+        [XmlIgnore]
         public EnderecoCIOT Endereco { get; set; }
+
+        /// <summary>Endereço na ordem do contrato de cadastro da eFrete.</summary>
+        [XmlElement("Endereco")]
+        [JsonIgnore]
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public EnderecoCadastroEFrete EnderecoField
+        {
+            get => EnderecoCadastroEFrete.FromEndereco(Endereco);
+            set => Endereco = value?.ToEndereco();
+        }
 
         /// <summary>Nome completo do motorista.</summary>
         [XmlElement("Nome")]
@@ -113,8 +125,19 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
         /// <summary>Endereço do proprietário.</summary>
-        [XmlElement("Endereco")]
+        [XmlIgnore]
         public EnderecoCIOT Endereco { get; set; }
+        /// <summary>Endereço na ordem do contrato de cadastro da eFrete.</summary>
+        [XmlElement("Endereco")]
+        [JsonIgnore]
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public EnderecoCadastroEFrete EnderecoField
+        {
+            get => EnderecoCadastroEFrete.FromEndereco(Endereco);
+            set => Endereco = value?.ToEndereco();
+        }
         /// <summary>RNTRC do proprietário.</summary>
         [XmlElement("RNTRC")]
         public string RNTRC { get; set; }
@@ -180,7 +203,17 @@ namespace Unimake.Business.DFe.Xml.CIOT
         /// <summary>Data de nascimento retornada pela eFrete.</summary>
         [XmlElement("DataNascimento")] public string DataNascimento { get; set; }
         /// <summary>Endereço.</summary>
-        [XmlElement("Endereco")] public EnderecoCIOT Endereco { get; set; }
+        [XmlIgnore] public EnderecoCIOT Endereco { get; set; }
+        /// <summary>Endereço na ordem do contrato de cadastro da eFrete.</summary>
+        [XmlElement("Endereco")]
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public EnderecoCadastroEFrete EnderecoField
+        {
+            get => EnderecoCadastroEFrete.FromEndereco(Endereco);
+            set => Endereco = value?.ToEndereco();
+        }
         /// <summary>Nome.</summary>
         [XmlElement("Nome")] public string Nome { get; set; }
         /// <summary>Nome de solteira da mãe.</summary>
@@ -205,13 +238,72 @@ namespace Unimake.Business.DFe.Xml.CIOT
         /// <summary>Tipo da pessoa.</summary>
         [XmlElement("TipoPessoa")] public TipoPessoaCIOT TipoPessoa { get; set; }
         /// <summary>Endereço.</summary>
-        [XmlElement("Endereco")] public EnderecoCIOT Endereco { get; set; }
+        [XmlIgnore] public EnderecoCIOT Endereco { get; set; }
+        /// <summary>Endereço na ordem do contrato de cadastro da eFrete.</summary>
+        [XmlElement("Endereco")]
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public EnderecoCadastroEFrete EnderecoField
+        {
+            get => EnderecoCadastroEFrete.FromEndereco(Endereco);
+            set => Endereco = value?.ToEndereco();
+        }
         /// <summary>RNTRC.</summary>
         [XmlElement("RNTRC")] public string RNTRC { get; set; }
         /// <summary>Nome ou razão social.</summary>
         [XmlElement("RazaoSocial")] public string RazaoSocial { get; set; }
         /// <summary>Telefones.</summary>
         [XmlElement("Telefones")] public TelefonesCIOT Telefones { get; set; }
+    }
+
+    /// <summary>Endereço utilizado nos cadastros de motorista e proprietário da eFrete.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CIOT.EnderecoCadastroEFrete")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    public class EnderecoCadastroEFrete
+    {
+        /// <summary>Bairro.</summary>
+        [XmlElement("Bairro")] public string Bairro { get; set; }
+        /// <summary>CEP com oito dígitos.</summary>
+        [XmlElement("CEP")] public string CEP { get; set; }
+        /// <summary>Código do município segundo o IBGE.</summary>
+        [XmlElement("CodigoMunicipio")] public string CodigoMunicipio { get; set; }
+        /// <summary>Logradouro.</summary>
+        [XmlElement("Rua")] public string Rua { get; set; }
+        /// <summary>Número do imóvel.</summary>
+        [XmlElement("Numero")] public string Numero { get; set; }
+        /// <summary>Complemento.</summary>
+        [XmlElement("Complemento")] public string Complemento { get; set; }
+        /// <summary>Indica se o complemento deve ser serializado.</summary>
+        public bool ShouldSerializeComplemento() => !string.IsNullOrWhiteSpace(Complemento);
+
+        internal static EnderecoCadastroEFrete FromEndereco(EnderecoCIOT endereco)
+        {
+            if (endereco == null) return null;
+            return new EnderecoCadastroEFrete
+            {
+                Bairro = endereco.Bairro,
+                CEP = endereco.CEP,
+                CodigoMunicipio = endereco.CodigoMunicipio,
+                Rua = endereco.Rua,
+                Numero = endereco.Numero,
+                Complemento = endereco.Complemento
+            };
+        }
+
+        internal EnderecoCIOT ToEndereco() => new EnderecoCIOT
+        {
+            Bairro = Bairro,
+            CEP = CEP,
+            CodigoMunicipio = CodigoMunicipio,
+            Rua = Rua,
+            Numero = Numero,
+            Complemento = Complemento
+        };
     }
 
     /// <summary>Dados completos do veículo no cadastro eFrete.</summary>

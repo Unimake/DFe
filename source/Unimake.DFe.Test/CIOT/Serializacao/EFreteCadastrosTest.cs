@@ -98,6 +98,22 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
             Assert.NotNull(retornoErro.Temp);
         }
 
+        [Theory]
+        [InlineData("1", TipoPessoaCIOT.Fisica, "Fisica")]
+        [InlineData("2", TipoPessoaCIOT.Juridica, "Juridica")]
+        [InlineData("\"Fisica\"", TipoPessoaCIOT.Fisica, "Fisica")]
+        [InlineData("\"Juridica\"", TipoPessoaCIOT.Juridica, "Juridica")]
+        [Trait("DFe", "CIOT")]
+        public void NormalizaTipoPessoaNumericoOuTextual(string valorJson, TipoPessoaCIOT esperado, string valorXml)
+        {
+            var json = "{\"Sucesso\":true,\"Versao\":4,\"Proprietario\":{\"CNPJ\":\"12345678000199\",\"TipoPessoa\":" + valorJson + ",\"RNTRC\":\"012345678\",\"RazaoSocial\":\"TESTE\"}}";
+            var xml = EFreteMapper.NormalizarRetorno(json, Servico.CIOTGravarProprietario);
+            var retorno = new RetGravarProprietario().LerXML<RetGravarProprietario>(xml);
+
+            Assert.Equal(esperado, retorno.Proprietario.TipoPessoa);
+            Assert.Contains("<TipoPessoa>" + valorXml + "</TipoPessoa>", xml.OuterXml);
+        }
+
         private static XMLBase LerEnvio(string arquivo, Servico servico)
         {
             var doc = new XmlDocument(); doc.Load(Caminho(arquivo));

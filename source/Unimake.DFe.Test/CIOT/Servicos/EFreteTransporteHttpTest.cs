@@ -227,7 +227,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
 
         [Theory]
         [InlineData("efrete-gravar-motorista.xml", Servico.CIOTGravarMotorista, "{\"Sucesso\":true,\"Versao\":2,\"Motorista\":{\"CPF\":\"12345678901\",\"CNH\":\"12345678901\"}}", "RetGravarMotorista")]
-        [InlineData("efrete-gravar-proprietario.xml", Servico.CIOTGravarProprietario, "{\"Sucesso\":true,\"Versao\":4,\"Proprietario\":{\"CNPJ\":\"12345678000199\",\"TipoPessoa\":\"Juridica\",\"RNTRC\":\"012345678\"}}", "RetGravarProprietario")]
+        [InlineData("efrete-gravar-proprietario.xml", Servico.CIOTGravarProprietario, "{\"Sucesso\":true,\"Versao\":4,\"Proprietario\":{\"CNPJ\":\"12345678000199\",\"TipoPessoa\":2,\"RNTRC\":\"012345678\"}}", "RetGravarProprietario")]
         [InlineData("efrete-gravar-veiculo.xml", Servico.CIOTGravarVeiculo, "{\"Sucesso\":true,\"Versao\":1,\"Veiculo\":{\"Placa\":\"BRA2E19\",\"RNTRC\":\"012345678\"}}", "RetGravarVeiculo")]
         [Trait("DFe", "CIOT")]
         public async Task ExecutarCadastrosEFretePercorreTransporteENormalizaResult(string arquivo, Servico tipoServico, string resposta, string rootRetorno)
