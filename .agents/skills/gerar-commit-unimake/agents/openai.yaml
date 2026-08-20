@@ -1,4 +1,4 @@
 interface:
   display_name: "Gerar commit Unimake"
-  short_description: "Gera mensagens de commit no padrão Unimake"
-  default_prompt: "Use $gerar-commit-unimake para analisar as alterações locais e sugerir mensagens de commit prontas para copiar."
+  short_description: "Gera Conventional Commits da sessão atual"
+  default_prompt: "Use $gerar-commit-unimake para analisar apenas as alterações pendentes feitas neste chat e gerar mensagens Conventional Commits prontas para copiar."
