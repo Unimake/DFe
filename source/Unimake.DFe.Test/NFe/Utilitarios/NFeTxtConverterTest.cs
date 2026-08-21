@@ -72,6 +72,7 @@ public class NFeTxtConverterTest
     [InlineData("002320_01_01_17_08_2026-nfe.txt")]
     [InlineData("000017136_19041494000180_001_19_08_2026-nfe-orig.txt")]
     [InlineData("035814-nfe-orig.txt")]
+    [InlineData("161540-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -114,6 +115,30 @@ public class NFeTxtConverterTest
         Assert.Equal("COFINSAliq", cofins?.LocalName);
         Assert.Equal("01", cofins?.SelectSingleNode("*[local-name()='CST']")?.InnerText);
         Assert.Equal("0.00", cofins?.SelectSingleNode("*[local-name()='vBC']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve preservar os impostos por alíquota e os grupos da Reforma Tributária da NFCe 161540.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarImpostosDaNfce161540()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("161540-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("65", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='mod']")?.InnerText);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='dest']"));
+        Assert.Equal("32.00", xml.SelectSingleNode("//*[local-name()='ICMS00']/*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("5.44", xml.SelectSingleNode("//*[local-name()='ICMS00']/*[local-name()='vICMS']")?.InnerText);
+        Assert.Equal("26.56", xml.SelectSingleNode("//*[local-name()='PISAliq']/*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("0.44", xml.SelectSingleNode("//*[local-name()='PISAliq']/*[local-name()='vPIS']")?.InnerText);
+        Assert.Equal("26.56", xml.SelectSingleNode("//*[local-name()='COFINSAliq']/*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("2.02", xml.SelectSingleNode("//*[local-name()='COFINSAliq']/*[local-name()='vCOFINS']")?.InnerText);
+        Assert.Equal("000001", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='cClassTrib']")?.InnerText);
+        Assert.Equal("24.10", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='gIBSCBS']/*[local-name()='vBC']")?.InnerText);
     }
 
     /// <summary>
