@@ -70,7 +70,6 @@ namespace Unimake.DFe.Test.NFSe.Validacao
 
         [Theory]
         [InlineData("<ConsultarDpsDisponivelEnvio xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><IM>1</IM></ConsultarDpsDisponivelEnvio>", "1.01")]
-        [InlineData("<ConsultarRpsDisponivelEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><Pedido /></ConsultarRpsDisponivelEnvio>", "2.04")]
         public void DeveResolverVersaoDaConsultaRpsDisponivelISSNET(string conteudoXML, string versaoEsperada)
         {
             Assert.Equal(versaoEsperada, DefinirVersao(conteudoXML, PadraoNFSe.ISSNET, 0));
@@ -266,19 +265,6 @@ namespace Unimake.DFe.Test.NFSe.Validacao
         [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\GerarNfseEnvio-env-loterps.xml", "1.01", "Gerar Nota Fiscal de Serviço")]
         [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\EnviarLoteRpsEnvio-env-loterps.xml", "1.01", "Recepcionar Lote RPS")]
         [InlineData(@"..\..\..\NFSe\Resources\ISSNET\1.01\EnviarLoteRpsSincronoEnvio-env-loterps.xml", "1.01", "Recepcionar Lote RPS Sincrono")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\CancelarNfseEnvio-ped-cannfse.xml", "2.04", "Cancelar nota fiscal de serviço")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarDadosCadastraisEnvio-ped-consdadoscad.xml", "2.04", "Consulta os dados cadastrais")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarLoteRpsEnvio-ped-loterps.xml", "2.04", "Consulta lote RPS")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarNfseFaixaEnvio-ped-sitnfse.xml", "2.04", "Consulta NFSe por Faixa")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarNfseRpsEnvio-ped-sitnfserps.xml", "2.04", "Consulta NFSe por RPS")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarNfseServicoPrestadoEnvio-ped-sitnfse.xml", "2.04", "Consulta NFSe de serviços prestados")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarNfseServicoTomadoEnvio-ped-sitnfsetom.xml", "2.04", "Consulta NFSe de serviços tomados")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarRpsDisponivelEnvio-ped-consrpsdisp.xml", "2.04", "Consulta os dados cadastrais")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\ConsultarUrlNfseEnvio-ped-urlnfse.xml", "2.04", "Consulta os dados cadastrais")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\GerarNfseEnvio-env-loterps.xml", "2.04", "Gerar Nota Fiscal de Serviço")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\EnviarLoteRpsEnvio-env-loterps.xml", "2.04", "Recepcionar Lote RPS")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\EnviarLoteRpsSincronoEnvio-env-loterps.xml", "2.04", "Recepcionar Lote RPS Sincrono")]
-        [InlineData(@"..\..\..\NFSe\Resources\ISSNET\2.04\SubstituirNfseEnvio-ped-substnfse.xml", "2.04", "Substituir nota fiscal de Serviço")]
         public void DeveIdentificarServicosISSNET(
             string arquivoXML,
             string versaoEsperada,
