@@ -72,8 +72,15 @@ namespace Unimake.Business.DFe.Security
 
                             foreach (XmlNode nodes in lists)
                             {
+                                var encontrouElementoAssinavel = false;
+
                                 foreach (XmlNode childNodes in nodes.ChildNodes)
                                 {
+                                    if (!(childNodes is XmlElement))
+                                    {
+                                        continue;
+                                    }
+
                                     var nodeAtributoId = childNodes;
 
                                     if (!tagEhAMesma)
@@ -105,6 +112,8 @@ namespace Unimake.Business.DFe.Security
                                             nodeAtributoId = nodes;
                                         }
                                     }
+
+                                    encontrouElementoAssinavel = true;
 
                                     // Create a reference to be signed
                                     var reference = new Reference
@@ -181,6 +190,11 @@ namespace Unimake.Business.DFe.Security
                                     {
                                         break;
                                     }
+                                }
+
+                                if (tagEhAMesma && !encontrouElementoAssinavel)
+                                {
+                                    throw new Exception("Não foi encontrado um elemento XML válido para realizar a assinatura.");
                                 }
 
                                 if (tagEhAMesma)
