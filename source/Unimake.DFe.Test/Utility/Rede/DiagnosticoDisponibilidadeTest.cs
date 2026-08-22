@@ -1069,6 +1069,70 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
+        public void TelemetriaCTeSimpClassificaHttp503ComoIndisponibilidadeDoServico()
+        {
+            DiagnosticoDisponibilidadeDFe.LimparMemoriaDiagnostico();
+            var configuracao = ConfiguracaoBase();
+            configuracao.TipoDFe = TipoDFe.CTe;
+            configuracao.CodigoUF = (int)UFBrasil.MT;
+            configuracao.TipoAmbiente = TipoAmbiente.Homologacao;
+            configuracao.Servico = Servico.CTeAutorizacaoSimp;
+            configuracao.ColetarTelemetriaDisponibilidade = true;
+
+            var falha = new WebException(
+                "The remote server returned an error: (503) Service Unavailable.",
+                WebExceptionStatus.ProtocolError);
+            TelemetriaDisponibilidade.Registrar(
+                configuracao,
+                "https://sefaz.mt.gov.br/cte/services/CTeRecepcaoSimpV4",
+                "SOAP",
+                766,
+                HttpStatusCode.ServiceUnavailable,
+                null,
+                falha);
+
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
+            var sonda = Assert.Single(resultado.Sondas.Itens);
+
+            Assert.Equal("CTeAutorizacaoSimp", sonda.Servico);
+            Assert.True(sonda.Essencial);
+            Assert.Equal(503, sonda.HttpStatusCode);
+            Assert.Equal(TipoFalhaDisponibilidade.HTTP, sonda.TipoFalha);
+            Assert.Equal(StatusDisponibilidade.Indisponivel, sonda.Status);
+            Assert.Equal("O endpoint fiscal informou indisponibilidade temporária do serviço (HTTP 503).",
+                sonda.XMotivo);
+            Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void Http503ConfirmadoPrevaleceSobreFalhaLocalPosterior()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(new ResultadoSondaDisponibilidade
+            {
+                Servico = "CTeAutorizacaoSimp",
+                Endpoint = "https://sefaz.mt.gov.br/cte/services/CTeRecepcaoSimpV4",
+                Fonte = FonteEvidenciaDisponibilidade.TelemetriaPassiva,
+                DataHora = new DateTime(2026, 8, 22, 14, 0, 0),
+                Status = StatusDisponibilidade.Indisponivel,
+                TipoFalha = TipoFalhaDisponibilidade.HTTP,
+                HttpStatusCode = 503,
+                Essencial = true
+            });
+            resultado.Sondas.Add(Infraestrutura(
+                TipoFalhaDisponibilidade.DNS,
+                StatusDisponibilidade.Inconclusivo));
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
         public void ConexaoRecusadaIsoladaFicaDegradadaComDescricaoClara()
         {
             const string endpoint = "https://sefaz.test/ws";
@@ -1216,6 +1280,67 @@ namespace Unimake.DFe.Test.Utility.Rede
             };
 
             Assert.Equal(descricao, resultado.Descricao);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void DescricaoOperacionalLimitaConclusaoQuandoSomenteStatusFoiObservado()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade
+            {
+                Status = StatusDisponibilidade.Operacional,
+                OrigemProvavel = OrigemProvavelIndisponibilidade.Nenhuma
+            };
+            resultado.Sondas.Add(new ResultadoSondaDisponibilidade
+            {
+                Servico = "DNS",
+                Fonte = FonteEvidenciaDisponibilidade.Infraestrutura,
+                Status = StatusDisponibilidade.Operacional
+            });
+            resultado.Sondas.Add(new ResultadoSondaDisponibilidade
+            {
+                Servico = "StatusServico",
+                Fonte = FonteEvidenciaDisponibilidade.StatusServico,
+                Status = StatusDisponibilidade.Operacional,
+                CStat = 107
+            });
+
+            Assert.Equal(
+                "A consulta de status da SEFAZ está funcionando normalmente, mas a autorização e os demais serviços ainda não foram observados.",
+                resultado.Descricao);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void AutorizacaoIndisponivelPrevaleceComoFalhaParcialMesmoComStatusServicoOperacional()
+        {
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            resultado.Sondas.Add(new ResultadoSondaDisponibilidade
+            {
+                Servico = "StatusServico",
+                Endpoint = "https://sefaz.test/status",
+                Fonte = FonteEvidenciaDisponibilidade.StatusServico,
+                Status = StatusDisponibilidade.Operacional,
+                CStat = 107,
+                Essencial = true
+            });
+            resultado.Sondas.Add(new ResultadoSondaDisponibilidade
+            {
+                Servico = "NFeAutorizacao",
+                Endpoint = "https://sefaz.test/autorizacao",
+                Fonte = FonteEvidenciaDisponibilidade.TelemetriaPassiva,
+                Status = StatusDisponibilidade.Indisponivel,
+                CStat = 108,
+                Essencial = true
+            });
+
+            AgregadorDisponibilidade.Agregar(resultado);
+
+            Assert.Equal(StatusDisponibilidade.ParcialmenteIndisponivel, resultado.Status);
+            Assert.Equal(OrigemProvavelIndisponibilidade.Parcial, resultado.OrigemProvavel);
+            Assert.Equal(
+                "Alguns serviços da SEFAZ estão indisponíveis, enquanto outros continuam funcionando.",
+                resultado.Descricao);
         }
 
         [Theory]
@@ -1389,6 +1514,52 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.Equal(TipoDFe.NFe, resultado.TipoDFe);
             Assert.Equal(UFBrasil.MT, resultado.UFBrasil);
             Assert.Equal(TipoAmbiente.Producao, resultado.TipoAmbiente);
+            Assert.Contains(resultado.Sondas.Itens,
+                x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
+                     x.Servico == "StatusServico");
+        }
+
+        [Fact(Explicit = true)]
+        [Trait("Utility", "DisponibilidadeIntegracao")]
+        public void ConsultaStatusNFeMTHomologacao()
+        {
+            // Este teste é explícito porque acessa um serviço real. Ele não participa da suíte normal
+            // e nunca envia NFe, evento, inutilização ou qualquer outro XML com efeito fiscal.
+            DiagnosticoDisponibilidadeDFe.LimparMemoriaDiagnostico();
+            var configuracao = ConfiguracaoBase();
+            configuracao.TipoDFe = TipoDFe.NFe;
+            configuracao.CodigoUF = (int)UFBrasil.MT;
+            configuracao.TipoAmbiente = TipoAmbiente.Homologacao;
+            configuracao.SchemaVersao = "4.00";
+            configuracao.Servico = Servico.NFeStatusServico;
+            configuracao.CertificadoDigital = PropConfig.CertificadoDigital;
+
+            var opcoes = new ConfiguracaoDiagnosticoDisponibilidade
+            {
+                TimeoutMilissegundos = 10000,
+                LimiteLentidaoMilissegundos = 3000
+            };
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ConsultarStatusServico();
+
+            var saida = TestContext.Current.TestOutputHelper;
+            if (saida != null)
+            {
+                saida.WriteLine("Diagnóstico NFe/MT em homologação: {0} / {1}", resultado.Status,
+                    resultado.OrigemProvavel);
+                saida.WriteLine("Descrição: {0}", resultado.Descricao);
+                foreach (var sonda in resultado.Sondas.Itens)
+                {
+                    saida.WriteLine(
+                        "{0:O} | {1} | {2} | falha={3} | HTTP={4} | cStat={5} | {6} ms | cache={7} | endpoint={8} | motivo={9} | exceção={10}",
+                        sonda.DataHora, sonda.Servico, sonda.Status, sonda.TipoFalha,
+                        sonda.HttpStatusCode, sonda.CStat, sonda.DuracaoMilissegundos,
+                        sonda.DoCache, sonda.Endpoint, sonda.XMotivo, sonda.Excecao);
+                }
+            }
+
+            Assert.Equal(TipoDFe.NFe, resultado.TipoDFe);
+            Assert.Equal(UFBrasil.MT, resultado.UFBrasil);
+            Assert.Equal(TipoAmbiente.Homologacao, resultado.TipoAmbiente);
             Assert.Contains(resultado.Sondas.Itens,
                 x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
                      x.Servico == "StatusServico");

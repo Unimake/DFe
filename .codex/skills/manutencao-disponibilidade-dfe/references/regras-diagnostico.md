@@ -66,7 +66,7 @@ NFe/NFCe, CTe, MDFe e NF3e usam o primeiro status principal do retorno. Nos docu
 - Timeout isolado permanece inconclusivo sem infraestrutura local comprovadamente saudável; com DNS/TCP/TLS saudáveis, fica degradado e com origem indeterminada.
 - Dois timeouts fiscais recentes podem indicar indisponibilidade quando a infraestrutura estiver saudável ou quando DNS funcionar e TCP/serviço expirarem repetidamente no mesmo endpoint, sem DNS, TLS, proxy, certificado ou configuração local inválida.
 - Conexão recusada deve ser identificada pela `SocketException`, sem analisar a mensagem localizada; uma ocorrência fica degradada e duas falhas recentes de timeout/recusa no mesmo endpoint podem confirmar indisponibilidade.
-- HTTP 5xx indica resposta do host e deve ser correlacionado pelo mesmo serviço e endpoint.
+- HTTP 503 declara que o endpoint está temporariamente indisponível e confirma imediatamente a indisponibilidade do serviço observado. Os demais HTTP 5xx indicam resposta do host e devem ser correlacionados pelo mesmo serviço e endpoint.
 - SOAP fault, schema local, autenticação inválida e HTTP 4xx não provam indisponibilidade da SEFAZ.
 - O cache de `StatusServico` conserva no máximo duas execuções anteriores compatíveis para permitir essa correlação, sem reduzir o intervalo mínimo nem criar chamadas extras.
 

@@ -346,6 +346,10 @@ namespace Unimake.Business.DFe.Utility
             switch (resultado.Status)
             {
                 case StatusDisponibilidade.Operacional:
+                    if (SomenteConsultaStatusFoiObservada(resultado))
+                    {
+                        return "A consulta de status da SEFAZ está funcionando normalmente, mas a autorização e os demais serviços ainda não foram observados.";
+                    }
                     return "Os serviços da SEFAZ estão funcionando normalmente.";
 
                 case StatusDisponibilidade.Degradado:
@@ -373,6 +377,37 @@ namespace Unimake.Business.DFe.Utility
                 default:
                     return "Ainda não há informações suficientes para determinar se os serviços da SEFAZ estão disponíveis.";
             }
+        }
+
+        /// <summary>
+        /// Verifica se a única evidência fiscal disponível veio da consulta oficial de status.
+        /// </summary>
+        /// <param name="resultado">Resultado cujas sondas serão consultadas.</param>
+        /// <returns>
+        /// <see langword="true"/> quando existe pelo menos uma evidência fiscal e todas elas pertencem
+        /// ao serviço de consulta de status; caso contrário, <see langword="false"/>.
+        /// </returns>
+        private static bool SomenteConsultaStatusFoiObservada(ResultadoDiagnosticoDisponibilidade resultado)
+        {
+            var encontrouEvidenciaFiscal = false;
+            for (var i = 0; i < resultado.Sondas.Count; i++)
+            {
+                var sonda = resultado.Sondas.GetItem(i);
+                if (sonda.Fonte == FonteEvidenciaDisponibilidade.Infraestrutura ||
+                    sonda.Status == StatusDisponibilidade.NaoAplicavel)
+                {
+                    continue;
+                }
+
+                encontrouEvidenciaFiscal = true;
+                if (string.IsNullOrWhiteSpace(sonda.Servico) ||
+                    sonda.Servico.IndexOf("StatusServico", StringComparison.OrdinalIgnoreCase) < 0)
+                {
+                    return false;
+                }
+            }
+
+            return encontrouEvidenciaFiscal;
         }
 
         /// <summary>Verifica se alguma sonda possui a categoria de falha informada.</summary>

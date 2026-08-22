@@ -413,7 +413,17 @@ namespace Unimake.Business.DFe.Utility
                 case Unimake.Net.HttpConnectionFailureType.Proxy: resultado.TipoFalha = TipoFalhaDisponibilidade.Proxy; break;
                 case Unimake.Net.HttpConnectionFailureType.Http:
                     resultado.TipoFalha = TipoFalhaDisponibilidade.HTTP;
-                    resultado.Status = resultado.HttpStatusCode >= 500 ? StatusDisponibilidade.Degradado : StatusDisponibilidade.Inconclusivo;
+                    if (resultado.HttpStatusCode == (int)HttpStatusCode.ServiceUnavailable)
+                    {
+                        resultado.Status = StatusDisponibilidade.Indisponivel;
+                        resultado.XMotivo = "O endpoint fiscal informou indisponibilidade temporária do serviço (HTTP 503).";
+                    }
+                    else
+                    {
+                        resultado.Status = resultado.HttpStatusCode >= 500
+                            ? StatusDisponibilidade.Degradado
+                            : StatusDisponibilidade.Inconclusivo;
+                    }
                     break;
             }
         }
@@ -667,7 +677,7 @@ namespace Unimake.Business.DFe.Utility
             var estado = new EstadoServico
             {
                 Essencial = ultimas.Any(x => x.Essencial),
-                IndisponibilidadeConfirmada = ClassificadorDisponibilidade.EhIndisponibilidadeFiscal(maisRecente.CStat),
+                IndisponibilidadeConfirmada = EhIndisponibilidadeConfirmada(maisRecente),
                 Status = maisRecente.Status
             };
             if (maisRecente.Status == StatusDisponibilidade.Operacional ||
@@ -700,6 +710,17 @@ namespace Unimake.Business.DFe.Utility
 
             return estado;
         }
+
+        /// <summary>Identifica evidência direta de indisponibilidade declarada pelo serviço fiscal.</summary>
+        /// <param name="amostra">Amostra fiscal mais recente do serviço.</param>
+        /// <returns>
+        /// <see langword="true"/> para os códigos fiscais de indisponibilidade ou para HTTP 503;
+        /// caso contrário, <see langword="false"/>.
+        /// </returns>
+        private static bool EhIndisponibilidadeConfirmada(ResultadoSondaDisponibilidade amostra) =>
+            ClassificadorDisponibilidade.EhIndisponibilidadeFiscal(amostra.CStat) ||
+            (amostra.TipoFalha == TipoFalhaDisponibilidade.HTTP &&
+             amostra.HttpStatusCode == (int)HttpStatusCode.ServiceUnavailable);
 
         /// <summary>Verifica se as sondas locais permitem atribuir timeouts repetidos ao endpoint remoto.</summary>
         /// <param name="infraestrutura">Sondas de DNS, TCP, TLS e proxy do diagnóstico atual.</param>
