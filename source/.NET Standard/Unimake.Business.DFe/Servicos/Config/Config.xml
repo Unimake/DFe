@@ -869,12 +869,6 @@
 		<ArqConfig>CampinasSP.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4306106">
-		<Nome>Cruz Alta - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>CruzAltaRS.xml</ArqConfig>
-		<PadraoNFSe>ISSNET</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4304705">
 		<Nome>Carazinho - RS</Nome>
 		<UF>RS</UF>
@@ -1319,12 +1313,6 @@
 		<ArqConfig>SantaCruzDoCapibaribePE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3301702">
-		<Nome>Duque de Caxias - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>DuqueDeCaxiasRJ.xml</ArqConfig>
-		<PadraoNFSe>ISSNET</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3305208">
 		<Nome>São Pedro da Aldeia - RJ</Nome>
 		<UF>RJ</UF>
@@ -1366,12 +1354,6 @@
 		<UF>SP</UF>
 		<ArqConfig>OsascoSP.xml</ArqConfig>
 		<PadraoNFSe>EGOVERNEISS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5201108">
-		<Nome>Anápolis - GO</Nome>
-		<UF>GO</UF>
-		<ArqConfig>AnapolisGO.xml</ArqConfig>
-		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3302403">
 		<Nome>Macaé - RJ</Nome>
@@ -1438,12 +1420,6 @@
 		<UF>BA</UF>
 		<ArqConfig>TeixeiraDeFreitasBA.xml</ArqConfig>
 		<PadraoNFSe>MODERNIZACAO_PUBLICA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3514403">
-		<Nome>Dracena - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>DracenaSP.xml</ArqConfig>
-		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2307650">
 		<Nome>Maracanaú - CE</Nome>
@@ -1936,12 +1912,6 @@
 		<UF>RJ</UF>
 		<ArqConfig>RioDasOstrasRJ.xml</ArqConfig>
 		<PadraoNFSe>TIPLAN</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="1600303">
-		<Nome>Macapá - AP</Nome>
-		<UF>AP</UF>
-		<ArqConfig>MacapaAP.xml</ArqConfig>
-		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4101804">
 		<Nome>Araucária - PR</Nome>

@@ -1694,32 +1694,7 @@ namespace Unimake.Business.DFe
                     return RaizEh("nfse", "nota") ? "1.20" : "2.04";
 
                 case PadraoNFSe.ISSNET:
-                    if (namespaceRaiz.IndexOf("sped.fazenda.gov.br/nfse", StringComparison.OrdinalIgnoreCase) >= 0)
-                    {
-                        return "1.01";
-                    }
-
-                    if (namespaceRaiz.IndexOf("abrasf.org.br/nfse.xsd", StringComparison.OrdinalIgnoreCase) >= 0)
-                    {
-                        return "2.04";
-                    }
-
-                    if (RaizEh("DPS", "NFSe", "pedRegEvento"))
-                    {
-                        return "1.01";
-                    }
-
-                    return Contem("Pedido") ||
-                           Contem("InfDeclaracaoPrestacaoServico") ||
-                           RaizEh(
-                               "ConsultarLoteRpsEnvio",
-                               "ConsultarNfseRpsEnvio",
-                               "ConsultarRpsDisponivelEnvio",
-                               "EnviarLoteRpsEnvio",
-                               "EnviarLoteRpsSincronoEnvio",
-                               "SubstituirNfseEnvio")
-                        ? "2.04"
-                        : "1.01";
+                    return "1.01";
 
                 case PadraoNFSe.PAULISTANA:
                     return versaoDeclarada == "2.00" || Contem("Versao=\"2\"") || Contem("IBSCBS")

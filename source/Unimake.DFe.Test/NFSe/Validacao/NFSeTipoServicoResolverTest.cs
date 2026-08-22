@@ -21,7 +21,6 @@ namespace Unimake.DFe.Test.NFSe.Validacao
         [InlineData(PadraoNFSe.PRODATA, "<CancelarNfseEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><InfPedidoCancelamento /></CancelarNfseEnvio>", "2.01", Servico.NFSeCancelarNfse)]
         [InlineData(PadraoNFSe.PRODATA, "<ConsultarNotaPdfEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><IdentificacaoNfse /></ConsultarNotaPdfEnvio>", "2.01", Servico.NFSeConsultarNfsePDF)]
         [InlineData(PadraoNFSe.PRODATA, "<EnviarLoteRpsEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><LoteRps /></EnviarLoteRpsEnvio>", "2.01", Servico.NFSeRecepcionarLoteRps)]
-        [InlineData(PadraoNFSe.ISSNET, "<ConsultarDadosCadastraisEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><Pedido /></ConsultarDadosCadastraisEnvio>", "2.04", Servico.NFSeConsultarDadosCadastrais)]
         [InlineData(PadraoNFSe.ISSNET, "<ConsultarNfseDpsEnvio xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><IM>123</IM></ConsultarNfseDpsEnvio>", "1.01", Servico.NFSeConsultarNfsePorRps)]
         [InlineData(PadraoNFSe.ISSNET, "<EnviarLoteDpsSincronoEnvio xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><LoteDps /></EnviarLoteDpsSincronoEnvio>", "1.01", Servico.NFSeRecepcionarLoteRpsSincrono)]
         [InlineData(PadraoNFSe.DSF, "<DPS versao=\"1.01\" xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><infDPS><tpAmb>2</tpAmb></infDPS></DPS>", "1.01", Servico.NFSeGerarNfse)]

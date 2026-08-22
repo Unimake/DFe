@@ -415,7 +415,6 @@
 		<None Remove="Servicos\Config\NFSe\AlvoradaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AmambaiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\AmericanaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\AnapolisGO.xml" />
 		<None Remove="Servicos\Config\NFSe\AndradasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AngraDosReisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
@@ -499,14 +498,11 @@
 		<None Remove="Servicos\Config\NFSe\CorupaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CosmoramaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CotiaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\CruzAltaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CuritibaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\DiademaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
-		<None Remove="Servicos\Config\NFSe\DracenaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DuartinaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\EdeiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\EldouradoDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
@@ -583,7 +579,6 @@
 		<None Remove="Servicos\Config\NFSe\LoandaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\LontrasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\MacaeRJ.xml" />
-		<None Remove="Servicos\Config\NFSe\MacapaAP.xml" />
 		<None Remove="Servicos\Config\NFSe\MafraSC.xml" />
 		<None Remove="Servicos\Config\NFSe\MairiporaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MairipotabaGO.xml" />
@@ -1406,8 +1401,6 @@
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\tipos_v1-rtc.xsd" />
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\tipos_v1.xsd" />
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\xmldsig-core-schema20020212_v1.xsd" />
-		<None Remove="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
-		<None Remove="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MEGASOFT\nfse_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MEGASOFT\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\METROPOLIS\nfse.xsd" />
@@ -1665,7 +1658,6 @@
 	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CamaragibePE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\JaguariunaSP.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\MacapaAP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\OuroPretoDoOesteRO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\RioDasOstrasRJ.xml" />
 	</ItemGroup>
@@ -1803,7 +1795,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlemParaibaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlvoradaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmericanaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AnapolisGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AndradasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AngraDosReisRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArcosMG.xml" />
@@ -1824,7 +1815,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CastroPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CorupaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\DracenaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EmbuDasArtesSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EusebioCE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FormigaMG.xml" />
@@ -1884,7 +1874,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BelemPA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CuritibaPR.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaberabaBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LauroDeFreitasBA.xml" />
@@ -2075,7 +2064,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CarazinhoRS.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\CruzAltaRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\CanoinhasSC.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\GuairaPR.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PaulistaPE.xml">
@@ -3585,9 +3573,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\INTERSOL\tipos_v1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\INTERSOL\xmldsig-core-schema20020212_v1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\schema_v101.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MEGASOFT\nfse_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MEGASOFT\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\METROPOLIS\nfse.xsd" />
