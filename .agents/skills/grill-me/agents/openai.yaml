@@ -1,0 +1,7 @@
+interface:
+  display_name: "Grill Me"
+  short_description: "Pressione decisões antes de fechar o plano"
+  default_prompt: "Use $grill-me para questionar rigorosamente este plano antes de consolidá-lo."
+
+policy:
+  allow_implicit_invocation: true
