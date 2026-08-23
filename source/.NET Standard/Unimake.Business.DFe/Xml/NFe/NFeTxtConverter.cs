@@ -31,5 +31,15 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             return new NFeTxtConversionEngine().Converter(caminhoArquivo);
         }
+
+        /// <summary>
+        /// Converte o retorno bruto da autorização de NFe/NFCe para o layout TXT legado do UniNFe.
+        /// </summary>
+        /// <param name="xmlRetorno">XML bruto retornado pelo serviço de autorização.</param>
+        /// <returns>Conteúdo TXT compatível com o UniNFe.</returns>
+        public string ConverterRetorno(string xmlRetorno)
+        {
+            return Txt.LegacyTxtRetornoConverter.Autorizacao(xmlRetorno);
+        }
     }
 }
