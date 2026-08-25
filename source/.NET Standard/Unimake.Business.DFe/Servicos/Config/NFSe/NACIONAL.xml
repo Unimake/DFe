@@ -72,20 +72,6 @@
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</ConsultarNfse>
-		<ConsultarNfsePDF versao="1.01">
-			<Descricao>Consultar NFSe PDF</Descricao>
-			<RequestURIProducao>https://adn.nfse.gov.br/danfse/{Chave}</RequestURIProducao>
-			<RequestURIHomologacao>https://adn.producaorestrita.nfse.gov.br/danfse/{Chave}</RequestURIHomologacao>
-			<MetodoAPI>get</MetodoAPI>
-			<WebActionProducao></WebActionProducao>
-			<WebSoapString></WebSoapString>
-			<WebContentType>application/pdf</WebContentType>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<SchemaVersao></SchemaVersao>
-			<GZIPCompress>false</GZIPCompress>
-			<LoginConexao>false</LoginConexao>
-			<UsaCertificadoDigital>true</UsaCertificadoDigital>
-		</ConsultarNfsePDF>
 		<RecepcionarEvento versao="1.01">
 			<Descricao>Recepcionar Eventos Diversos da NFSe NACIONAL</Descricao>
 			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}/eventos</RequestURIProducao>

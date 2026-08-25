@@ -8940,19 +8940,6 @@
 				<TagExtraAtributoID/>
 				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 			</Servico>
-			<Servico tagRaiz="ConsultarNotaPdfEnvio" versao="2.01" tagIdentificadora="IdentificacaoNfse">
-				<Descricao>Consultar nota PDF</Descricao>
-				<TipoServico>NFSeConsultarNfsePDF</TipoServico>
-				<SchemaArquivo/>
-				<TagAssinatura/>
-				<TagAtributoID/>
-				<TagVersao/>
-				<TagLoteAssinatura/>
-				<TagLoteAtributoID/>
-				<TagExtraAssinatura/>
-				<TagExtraAtributoID/>
-				<TargetNS/>
-			</Servico>
 			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.01" tagIdentificadora="LoteRps">
 				<Descricao>Recepcionar Lote RPS</Descricao>
 				<TipoServico>NFSeRecepcionarLoteRps</TipoServico>
