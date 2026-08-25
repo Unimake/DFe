@@ -73,6 +73,7 @@ public class NFeTxtConverterTest
     [InlineData("000017136_19041494000180_001_19_08_2026-nfe-orig.txt")]
     [InlineData("035814-nfe-orig.txt")]
     [InlineData("161540-nfe-orig.txt")]
+    [InlineData("000015493-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -139,6 +140,27 @@ public class NFeTxtConverterTest
         Assert.Equal("2.02", xml.SelectSingleNode("//*[local-name()='COFINSAliq']/*[local-name()='vCOFINS']")?.InnerText);
         Assert.Equal("000001", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='cClassTrib']")?.InnerText);
         Assert.Equal("24.10", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='gIBSCBS']/*[local-name()='vBC']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve omitir percentuais opcionais zerados e preservar os valores do ICMS-ST da NFe 15493.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveOmitirPercentuaisZeradosDoIcms10DaNfe15493()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000015493-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var icms = xml.SelectSingleNode("//*[local-name()='ICMS10']");
+
+        Assert.NotNull(icms);
+        Assert.Null(icms.SelectSingleNode("*[local-name()='pMVAST']"));
+        Assert.Null(icms.SelectSingleNode("*[local-name()='pRedBCST']"));
+        Assert.Equal("5585.21", icms.SelectSingleNode("*[local-name()='vBCST']")?.InnerText);
+        Assert.Equal("18.0000", icms.SelectSingleNode("*[local-name()='pICMSST']")?.InnerText);
+        Assert.Equal("335.12", icms.SelectSingleNode("*[local-name()='vICMSST']")?.InnerText);
     }
 
     /// <summary>
@@ -1676,6 +1698,22 @@ public class NFeTxtConverterTest
             "JOSE ADELMO DE JESUS",
             "45184984100",
             "RUA JOSE ANDRE VAJAO",
+            "VOL IMPORTS - MG",
+            "0032376020050",
+            "30999720000173",
+            "AV DOUTOR ROFLES CECILIO",
+            "3432124039",
+            "MILLS PESADOS LOCACAO SERVICOS E LOGISTICA SA",
+            "671666958115",
+            "gestaonotas.pesados@mills.com.br",
+            "01633840003099",
+            "R FIORAVANTE MANCINO",
+            "1154306482",
+            "CLIENTE RETIRA",
+            "DHIEFFERSON FELIPE RENDE SANTOS",
+            "5500021454",
+            "SN/013244",
+            "FROTA 1417",
             "VENDEDOR: 0110 WAGNER",
             "AUTO VIDROS PRUDENTE",
             "562319803111",

@@ -1805,6 +1805,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 icms.VICMSSTDeson = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.VICMSSTDeson)), ObOp.Opcional, 15);
                 icms.MotDesICMSST = (MotivoDesoneracaoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.MotDesICMSST)), ObOp.Opcional, 1, 2);
             }
+            if ((icms.PMVAST ?? 0) <= 0) icms.PMVAST = null;
+            if ((icms.PRedBCST ?? 0) <= 0) icms.PRedBCST = null;
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS10 = icms };
         }
 
