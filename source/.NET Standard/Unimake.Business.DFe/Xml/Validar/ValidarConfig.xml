@@ -9285,6 +9285,19 @@
 				<TagExtraAtributoID/>
 				<TargetNS/>
 			</Servico>
+			<Servico tagRaiz="ConsultarSituacaoLoteRpsEnvio" versao="4.00">
+				<Descricao>Consulta situação lote RPS</Descricao>
+				<TipoServico>NFSeConsultarSituacaoLoteRps</TipoServico>
+				<SchemaArquivo/>
+				<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+				<TagAtributoID>Protocolo</TagAtributoID>
+				<TagVersao/>
+				<TagLoteAssinatura/>
+				<TagLoteAtributoID/>
+				<TagExtraAssinatura/>
+				<TagExtraAtributoID/>
+				<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
+			</Servico>
 		</Padrao>
 		<Padrao nome="PUBLICA">
 			<Servico tagRaiz="CancelarNfseEnvio" versao="3.00" tagIdentificadora="InfPedidoCancelamento">
