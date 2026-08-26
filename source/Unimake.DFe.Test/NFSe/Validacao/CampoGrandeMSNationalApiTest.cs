@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Xml;
+using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
 using Xunit;
 using NFSeServicoBase = Unimake.Business.DFe.Servicos.NFSe.ServicoBase;
@@ -37,6 +38,19 @@ namespace Unimake.DFe.Test.NFSe.Validacao
         }
 
         [Fact]
+        public void DeveConfigurarSchemaNoCancelamentoNacionalDSF()
+        {
+            var configuracaoXml = new XmlDocument();
+            configuracaoXml.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
+
+            var servico = configuracaoXml.SelectSingleNode(
+                "/ServicosValidacao/NFSe/Padrao[@nome='DSF']/Servico[@tagRaiz='pedRegEvento' and @versao='1.01' and @tagIdentificadora='e101101']");
+
+            Assert.NotNull(servico);
+            Assert.Equal("pedRegEvento_v1.01.xsd", servico.SelectSingleNode("SchemaArquivo").InnerText);
+        }
+
+        [Fact]
         public void DeveUsarChaveDaNFSeNaUrlDeCancelamento()
         {
             var conteudoXml = new XmlDocument();
@@ -53,6 +67,41 @@ namespace Unimake.DFe.Test.NFSe.Validacao
             Assert.Equal(
                 "14001591201761135000132000000000000022096100197260",
                 chave);
+        }
+
+        [Fact]
+        public void DeveValidarCancelamentoNacionalDSFComSchema()
+        {
+            var conteudoXml = new XmlDocument();
+            conteudoXml.Load(@"..\..\..\NFSe\Resources\DSF\1.01\CancelarNfseEnvio-ped-cannfse.xml");
+
+            var validador = new ValidarSchema();
+            validador.Validar(
+                conteudoXml,
+                "NFSe.DSF.pedRegEvento_v1.01.xsd",
+                "http://www.sped.fazenda.gov.br/nfse",
+                PadraoNFSe.DSF);
+
+            Assert.True(validador.Success, validador.ErrorMessage);
+        }
+
+        [Fact]
+        public void DeveRejeitarCancelamentoDSFSemChaveDaNFSe()
+        {
+            var conteudoXml = new XmlDocument();
+            conteudoXml.Load(@"..\..\..\NFSe\Resources\DSF\1.01\CancelarNfseEnvio-ped-cannfse.xml");
+            conteudoXml.DocumentElement.SelectSingleNode("//*[local-name()='chNFSe']").ParentNode.RemoveChild(
+                conteudoXml.DocumentElement.SelectSingleNode("//*[local-name()='chNFSe']"));
+
+            var validador = new ValidarSchema();
+            validador.Validar(
+                conteudoXml,
+                "NFSe.DSF.pedRegEvento_v1.01.xsd",
+                "http://www.sped.fazenda.gov.br/nfse",
+                PadraoNFSe.DSF);
+
+            Assert.False(validador.Success);
+            Assert.Contains("chNFSe", validador.ErrorMessage);
         }
     }
 }

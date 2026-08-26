@@ -5407,7 +5407,7 @@
 			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="e101101">
 				<Descricao>Envio do cancelamento de NFSe</Descricao>
 				<TipoServico>NFSeCancelarNfse</TipoServico>
-				<SchemaArquivo/>
+				<SchemaArquivo>pedRegEvento_v1.01.xsd</SchemaArquivo>
 				<TagAssinatura>pedRegEvento</TagAssinatura>
 				<TagAtributoID>infPedReg</TagAtributoID>
 				<TagVersao/>
