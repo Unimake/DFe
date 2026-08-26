@@ -270,6 +270,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 if (!string.IsNullOrWhiteSpace(lote))
                     queryParams.Add($"lote={Uri.EscapeDataString(lote)}");
 
+                var cnpjConsulta = GetXMLElementInnertext("cnpjConsulta");
+                if (!string.IsNullOrWhiteSpace(cnpjConsulta))
+                    queryParams.Add($"cnpjConsulta={Uri.EscapeDataString(cnpjConsulta)}");
+
                 if (queryParams.Count > 0)
                     Configuracoes.RequestURI += "?" + string.Join("&", queryParams);
             }

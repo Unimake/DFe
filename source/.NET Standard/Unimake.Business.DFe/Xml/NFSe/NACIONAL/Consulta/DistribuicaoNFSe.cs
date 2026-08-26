@@ -37,10 +37,17 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta
         [XmlElement("lote")]
         public string Lote { get; set; }
 
+        /// <summary>
+        /// CNPJ do contribuinte consultado quando diferente do CNPJ do certificado digital
+        /// </summary>
+        [XmlElement("cnpjConsulta")]
+        public string CnpjConsulta { get; set; }
+
         #region ShouldSerialize
         public bool ShouldSerializeNSU() => !string.IsNullOrWhiteSpace(NSU);
         public bool ShouldSerializeTipoNSU() => !string.IsNullOrWhiteSpace(TipoNSU);
         public bool ShouldSerializeLote() => !string.IsNullOrWhiteSpace(Lote);
+        public bool ShouldSerializeCnpjConsulta() => !string.IsNullOrWhiteSpace(CnpjConsulta);
         #endregion ShouldSerialize
     }
 }
