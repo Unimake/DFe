@@ -354,5 +354,58 @@ namespace Unimake.DFe.Test.NFSe.Servicos
             Assert.Contains("tipoNSU=DISTRIBUICAO", segundaRequestURI);
             Assert.Contains("lote=false", segundaRequestURI);
         }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [InlineData("00000000000191", true)]
+        [InlineData("", false)]
+        public void ConsultarDistribuicaoNFSeNSUDeveTratarCnpjConsultaNaSerializacaoENaRequestURI(string cnpjConsulta, bool deveInformarCnpjConsulta)
+        {
+            var parametros = new DistribuicaoNFSe
+            {
+                NSU = "000000000000003",
+                TipoNSU = "DISTRIBUICAO",
+                Lote = "false",
+                CnpjConsulta = cnpjConsulta
+            };
+
+            var parametrosXML = parametros.GerarXML().OuterXml;
+            var parametrosDesserializado = XMLUtility.Deserializar<DistribuicaoNFSe>(parametrosXML);
+
+            if (deveInformarCnpjConsulta)
+            {
+                Assert.Equal(cnpjConsulta, parametrosDesserializado.CnpjConsulta);
+            }
+            else
+            {
+                Assert.Null(parametrosDesserializado.CnpjConsulta);
+            }
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeConsultarDistribuicaoNFSeNSU,
+                SchemaVersao = "1.01"
+            };
+
+            _ = new ConsultarDistribuicaoNFSeNSU(parametros, configuracao);
+
+            Assert.Contains("000000000000003", configuracao.RequestURI);
+            Assert.Contains("tipoNSU=DISTRIBUICAO", configuracao.RequestURI);
+            Assert.Contains("lote=false", configuracao.RequestURI);
+
+            if (deveInformarCnpjConsulta)
+            {
+                Assert.Contains("cnpjConsulta=00000000000191", configuracao.RequestURI);
+                Assert.Contains("<cnpjConsulta>00000000000191</cnpjConsulta>", parametrosXML);
+            }
+            else
+            {
+                Assert.DoesNotContain("cnpjConsulta", configuracao.RequestURI);
+                Assert.DoesNotContain("<cnpjConsulta>", parametrosXML);
+            }
+        }
     }
 }
