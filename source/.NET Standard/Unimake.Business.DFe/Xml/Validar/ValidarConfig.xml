@@ -5378,12 +5378,38 @@
 				<TagExtraAtributoID/>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
+			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="infDPS">
+				<Descricao>Consultar NFSe por DPS</Descricao>
+				<TipoServico>NFSeConsultarNfsePorRps</TipoServico>
+				<SchemaArquivo/>
+				<TagAssinatura/>
+				<TagAtributoID/>
+				<TagVersao/>
+				<TagLoteAssinatura/>
+				<TagLoteAtributoID/>
+				<TagExtraAssinatura/>
+				<TagExtraAtributoID/>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
 			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
 				<Descricao>Consultar NFSe</Descricao>
 				<TipoServico>NFSeConsultarNfse</TipoServico>
 				<SchemaArquivo/>
 				<TagAssinatura/>
 				<TagAtributoID/>
+				<TagVersao/>
+				<TagLoteAssinatura/>
+				<TagLoteAtributoID/>
+				<TagExtraAssinatura/>
+				<TagExtraAtributoID/>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="e101101">
+				<Descricao>Envio do cancelamento de NFSe</Descricao>
+				<TipoServico>NFSeCancelarNfse</TipoServico>
+				<SchemaArquivo/>
+				<TagAssinatura>pedRegEvento</TagAssinatura>
+				<TagAtributoID>infPedReg</TagAtributoID>
 				<TagVersao/>
 				<TagLoteAssinatura/>
 				<TagLoteAtributoID/>

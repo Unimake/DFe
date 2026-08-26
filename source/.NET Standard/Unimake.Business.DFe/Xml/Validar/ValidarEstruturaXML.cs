@@ -1630,7 +1630,7 @@ namespace Unimake.Business.DFe
                     {
                         return "3.00";
                     }
-                    if (RaizEh("DPS"))
+                    if (RaizEh("DPS", "NFSe", "pedRegEvento"))
                     {
                         return "1.01";
                     }

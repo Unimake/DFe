@@ -622,11 +622,23 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         {
             if (Configuracoes.RequestURI.Contains("{Chave}"))
             {
-                var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
-                var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
-                var chave = ConteudoXML.OuterXml.Substring(startIndex, endIndex - startIndex);
+                var chave = ObterChaveDSF(ConteudoXML, Configuracoes.Servico);
+
                 Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
             }
+        }
+
+        private static string ObterChaveDSF(XmlDocument conteudoXML, Servico servico)
+        {
+            if (servico == Servico.NFSeCancelarNfse)
+            {
+                return conteudoXML.GetElementsByTagName("chNFSe")[0]?.InnerText;
+            }
+
+            var startIndex = conteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+            var endIndex = conteudoXML.OuterXml.IndexOf("\"", startIndex);
+
+            return conteudoXML.OuterXml.Substring(startIndex, endIndex - startIndex);
         }
 
         #endregion DSF

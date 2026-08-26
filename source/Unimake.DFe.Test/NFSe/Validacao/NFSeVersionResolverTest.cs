@@ -14,6 +14,8 @@ namespace Unimake.DFe.Test.NFSe.Validacao
         [InlineData(PadraoNFSe.DSF, "<ns1:ConsultaSeqRps xmlns:ns1=\"urn:dsf\" />", 0, "1.00")]
         [InlineData(PadraoNFSe.DSF, "<CancelarNfseEnvio xmlns=\"http://www.ginfes.com.br/servico_cancelar_nfse_envio\" />", 0, "2.00")]
         [InlineData(PadraoNFSe.DSF, "<ConsultarSituacaoLoteRpsEnvio />", 0, "3.00")]
+        [InlineData(PadraoNFSe.DSF, "<NFSe versao=\"1.01\" xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><infNFSe Id=\"NFS123\" /></NFSe>", 5002704, "1.01")]
+        [InlineData(PadraoNFSe.DSF, "<pedRegEvento versao=\"1.01\" xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><infPedReg Id=\"PRE123\"><e101101 /></infPedReg></pedRegEvento>", 5002704, "1.01")]
         [InlineData(PadraoNFSe.FIORILLI, "<ConsultarLoteRpsEnvio />", 0, "1.01")]
         [InlineData(PadraoNFSe.FIORILLI, "<GerarNfseEnvio />", 0, "2.01")]
         [InlineData(PadraoNFSe.GINFES, "<CancelarNfseEnvio><Prestador /></CancelarNfseEnvio>", 0, "2.00")]
