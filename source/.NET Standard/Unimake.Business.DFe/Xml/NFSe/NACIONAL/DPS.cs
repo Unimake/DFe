@@ -1110,6 +1110,18 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
         [XmlElement("documentos")]
         public Documentos Documentos { get; set; }
+
+        #region Should Serialize
+
+        private bool HasDocumentos() => Documentos?.DocDedRed?.Count > 0;
+
+        public bool ShouldSerializePDRField() => PDR > 0 && VDR <= 0 && !HasDocumentos();
+
+        public bool ShouldSerializeVDRField() => VDR > 0 && PDR <= 0 && !HasDocumentos();
+
+        public bool ShouldSerializeDocumentos() => HasDocumentos();
+
+        #endregion Should Serialize
     }
 
 #if INTEROP

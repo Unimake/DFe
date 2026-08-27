@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
@@ -246,6 +247,115 @@ public class SerializacaoDesserializacaoNacionalTest
         // Testa ShouldSerialize com valores informados
         Assert.True(ibscbs.ShouldSerializeTpOper());
         Assert.True(ibscbs.ShouldSerializeTpEnteGov());
+    }
+
+    [Fact]
+    [Trait("DFe", "NFSe")]
+    [Trait("Layout", "Nacional")]
+    [Trait("Versao", "1.01")]
+    public void VDedRed_ComDocumentos_NaoDeveSerializarPDRNemVDR()
+    {
+        var dps = new DPS
+        {
+            Versao = "1.01",
+            InfDPS = new InfDPS
+            {
+                Id = "DPS_TESTE_DEDUCAO_DOCUMENTOS",
+                TpAmb = TipoAmbiente.Homologacao,
+                DhEmi = new DateTime(2026, 8, 27, 12, 0, 0),
+                VerAplic = "1.01.01",
+                Serie = "1",
+                NDPS = "1",
+                DCompet = new DateTime(2026, 8, 27),
+                TpEmit = TipoEmitenteNFSe.Prestador,
+                CLocEmi = 4202909,
+                Prest = new Prest
+                {
+                    CNPJ = "99999999999999",
+                    RegTrib = new RegTrib
+                    {
+                        OpSimpNac = OptSimplesNacional.NaoOptante,
+                        RegEspTrib = RegEspTrib.Nenhum
+                    }
+                },
+                Toma = new Toma
+                {
+                    CNPJ = "00000000000000",
+                    XNome = "TESTE LTDA"
+                },
+                Serv = new Serv
+                {
+                    LocPrest = new LocPrest
+                    {
+                        CLocPrestacao = 4202909
+                    },
+                    CServ = new CServ
+                    {
+                        CTribNac = "140101",
+                        XDescServ = "Teste de deducao por documentos"
+                    }
+                },
+                Valores = new Valores
+                {
+                    VServPrest = new VServPrest
+                    {
+                        VServ = 20000.00
+                    },
+                    VDedRed = new VDedRed
+                    {
+                        Documentos = new Documentos
+                        {
+                            DocDedRed = new List<DocDedRed>
+                            {
+                                new DocDedRed
+                                {
+                                    ChNFSe = "35234042226204829000108000000000002026087162970758",
+                                    TpDedRed = TipoDeducaoReducao.Materiais,
+                                    DtEmiDoc = new DateTime(2026, 8, 27),
+                                    VDedutivelRedutivel = 17661.96,
+                                    VDeducaoReducao = 17661.96
+                                }
+                            }
+                        }
+                    },
+                    Trib = new Trib
+                    {
+                        TribMun = new TribMun
+                        {
+                            TribISSQN = TribISSQN.OperacaoTributavel,
+                            TpRetISSQN = TipoRetencaoISSQN.NaoRetido
+                        }
+                    }
+                }
+            }
+        };
+
+        var xml = dps.GerarXML();
+        var nsmgr = CreateNamespaceManager(xml);
+        var vDedRed = xml.SelectSingleNode("//ns:vDedRed", nsmgr);
+
+        Assert.NotNull(vDedRed);
+        Assert.Null(vDedRed.SelectSingleNode("ns:pDR", nsmgr));
+        Assert.Null(vDedRed.SelectSingleNode("ns:vDR", nsmgr));
+        Assert.NotNull(vDedRed.SelectSingleNode("ns:documentos/ns:docDedRed", nsmgr));
+        Assert.Equal("17661.96", vDedRed.SelectSingleNode("ns:documentos/ns:docDedRed/ns:vDedutivelRedutivel", nsmgr)?.InnerText);
+        Assert.Equal("17661.96", vDedRed.SelectSingleNode("ns:documentos/ns:docDedRed/ns:vDeducaoReducao", nsmgr)?.InnerText);
+    }
+
+    [Fact]
+    [Trait("DFe", "NFSe")]
+    [Trait("Layout", "Nacional")]
+    [Trait("Versao", "1.01")]
+    public void VDedRed_ComVDR_NaoDeveSerializarPDR()
+    {
+        var vDedRed = new VDedRed
+        {
+            VDR = 17661.96
+        };
+
+        Assert.False(vDedRed.ShouldSerializePDRField());
+        Assert.True(vDedRed.ShouldSerializeVDRField());
+        Assert.False(vDedRed.ShouldSerializeDocumentos());
     }
 
     /// <summary>
