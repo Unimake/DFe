@@ -14938,29 +14938,35 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("E")]
         ConversaoLicencaSaudeAcidenteTrabalho = 4,
 
+        ///<summary>
+        ///F - Outras verbas de natureza salarial ou não salarial devidas após o desligamento
+        /// </summary>
+        [XmlEnum("F")]
+        OutrasVerbasNaturalezaSalarialNaoSalarialDevidasAposDesligamento = 5,
+
         /// <summary>
         /// G - Antecipação de diferenças de acordo, convenção ou dissídio coletivo
         /// </summary>
         [XmlEnum("G")]
-        AntecipacaoDiferencasAcordoConvencaoDissidio = 5,
+        AntecipacaoDiferencasAcordoConvencaoDissidio = 6,
 
         /// <summary>
         /// H - Declaração de base de cálculo de FGTS anterior ao início do FGTS Digital
         /// </summary>
         [XmlEnum("H")]
-        DeclaracaoBaseCalculoFgtsAnteriorInicioFgtsDigital = 6,
+        DeclaracaoBaseCalculoFgtsAnteriorInicioFgtsDigital = 7,
 
         /// <summary>
         /// I - Sentença judicial (exceto reclamatória trabalhista)
         /// </summary>
         [XmlEnum("I")]
-        SentencaJudicial = 7,
+        SentencaJudicial = 8,
 
         /// <summary>
         /// J - Parcelas complementares conhecidas após o fechamento da folha
         /// </summary>
         [XmlEnum("J")]
-        ParcelasComplementaresAposFechamentoFolha = 8
+        ParcelasComplementaresAposFechamentoFolha = 9
     }
 
     #endregion
