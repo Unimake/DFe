@@ -74,6 +74,7 @@ public class NFeTxtConverterTest
     [InlineData("035814-nfe-orig.txt")]
     [InlineData("161540-nfe-orig.txt")]
     [InlineData("000015493-nfe.txt")]
+    [InlineData("000000892-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -161,6 +162,25 @@ public class NFeTxtConverterTest
         Assert.Equal("5585.21", icms.SelectSingleNode("*[local-name()='vBCST']")?.InnerText);
         Assert.Equal("18.0000", icms.SelectSingleNode("*[local-name()='pICMSST']")?.InnerText);
         Assert.Equal("335.12", icms.SelectSingleNode("*[local-name()='vICMSST']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Deve preservar a referência à nota de produtor, os itens e os pagamentos da NFe 892.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarReferenciaProdutorItensEPagamentosDaNfe892()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000000892-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        ValidarReferenciaProdutorItensEPagamentosDaNfe892(xml);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
     }
 
     /// <summary>
@@ -1714,6 +1734,22 @@ public class NFeTxtConverterTest
             "5500021454",
             "SN/013244",
             "FROTA 1417",
+            "M. L. SCHWERTNER PLANTAS",
+            "MLS PLANTAS",
+            "1280058657",
+            "28508340000147",
+            "PRIMEIRO DE MAIO",
+            "51997012925",
+            "PAULO JAIR HOLDEFER",
+            "05579449020",
+            "2131010863",
+            "R BOA VISTA",
+            "5135624755",
+            "JASMIM PLANTAS ORNAMENTAIS",
+            "00001280019163",
+            "R RS 122 KM 09",
+            "87215802000105",
+            "68711275",
             "VENDEDOR: 0110 WAGNER",
             "AUTO VIDROS PRUDENTE",
             "562319803111",
@@ -1906,6 +1942,32 @@ public class NFeTxtConverterTest
             nomes.Append(filho.LocalName);
         }
         return nomes.ToString();
+    }
+
+    private static void ValidarReferenciaProdutorItensEPagamentosDaNfe892(XmlDocument xml)
+    {
+        var referencia = xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='NFref']/*[local-name()='refNFP']");
+        Assert.NotNull(referencia);
+        Assert.Null(referencia.SelectSingleNode("*[local-name()='CNPJ']"));
+        Assert.Equal("11144477735", referencia.SelectSingleNode("*[local-name()='CPF']")?.InnerText);
+        Assert.Equal("1234567890", referencia.SelectSingleNode("*[local-name()='IE']")?.InnerText);
+        Assert.Equal("04", referencia.SelectSingleNode("*[local-name()='mod']")?.InnerText);
+        Assert.Equal("890", referencia.SelectSingleNode("*[local-name()='serie']")?.InnerText);
+        Assert.Equal("1", referencia.SelectSingleNode("*[local-name()='nNF']")?.InnerText);
+
+        Assert.Equal(6, xml.SelectNodes("//*[local-name()='det']").Count);
+        Assert.Equal(6, xml.SelectNodes("//*[local-name()='ICMSSN102']").Count);
+        Assert.Equal(6, xml.SelectNodes("//*[local-name()='ICMSSN102']/*[local-name()='orig' and text()='0']").Count);
+        Assert.Equal(6, xml.SelectNodes("//*[local-name()='ICMSSN102']/*[local-name()='CSOSN' and text()='102']").Count);
+        Assert.Equal(6, xml.SelectNodes("//*[local-name()='IPI']/*[local-name()='CNPJProd' and text()='00000000000000']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='prod']/*[local-name()='indEscala']").Count);
+        Assert.Equal("4700.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+
+        var pagamentos = xml.SelectNodes("//*[local-name()='pag']/*[local-name()='detPag']");
+        Assert.Equal(2, pagamentos.Count);
+        Assert.Equal(2, xml.SelectNodes("//*[local-name()='detPag']/*[local-name()='tPag' and text()='90']").Count);
+        Assert.Equal(2, xml.SelectNodes("//*[local-name()='detPag']/*[local-name()='vPag' and text()='0.00']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='detPag']/*[local-name()='xPag']").Count);
     }
 
     private static void ValidarFalhaDeDigitoVerificador(string[] linhas)
