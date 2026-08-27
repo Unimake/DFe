@@ -268,7 +268,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             return result;
         }
 
-        private static JObject CriarNotasFiscais(List<NotaFiscalCIOT> notasFiscais)
+        private static JArray CriarNotasFiscais(List<NotaFiscalCIOT> notasFiscais)
         {
             if (notasFiscais == null)
             {
@@ -286,7 +286,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 notas.Add(nota);
             }
 
-            return new JObject { ["NotaFiscal"] = notas };
+            return notas;
         }
 
         private static JArray CriarPagamentos(List<InfPagamento> pagamentos)

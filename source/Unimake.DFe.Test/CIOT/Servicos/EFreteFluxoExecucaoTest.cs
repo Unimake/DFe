@@ -37,7 +37,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
 
             var requisicao = Assert.Single(transporte.Requisicoes);
             var json = JObject.Parse(requisicao.Corpo);
-            var notasFiscais = Assert.IsType<JArray>(json.SelectToken("Viagens[0].NotasFiscais.NotaFiscal"));
+            var notasFiscais = Assert.IsType<JArray>(json.SelectToken("Viagens[0].NotasFiscais"));
             Assert.Equal("post", requisicao.Metodo, ignoreCase: true);
             Assert.Equal(endpointEsperado, requisicao.Url);
             Assert.Equal("TOKEN-TESTE", json.Value<string>("Token"));

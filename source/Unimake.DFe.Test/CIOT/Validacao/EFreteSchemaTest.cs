@@ -87,6 +87,7 @@ namespace Unimake.DFe.Test.CIOT.Validacao
         [InlineData("<TipoEmbalagem>Granel</TipoEmbalagem>", "<TipoEmbalagem>Volumes</TipoEmbalagem>")]
         [InlineData("<TipoDeCalculo>QuebraSomenteUltrapassado</TipoDeCalculo>", "<TipoDeCalculo>ComQuebra</TipoDeCalculo>")]
         [InlineData("<ValorParcela>3000.00</ValorParcela>", "<ValorParcela>0</ValorParcela>")]
+        [InlineData("<UnidadeDeMedidaDaMercadoria>Kg</UnidadeDeMedidaDaMercadoria>", "<UnidadeDeMedidaDaMercadoria>CX</UnidadeDeMedidaDaMercadoria>")]
         [Trait("DFe", "CIOT")]
         public void SchemaEFreteRejeitaValoresForaDoContrato81(string valorValido, string valorInvalido)
         {

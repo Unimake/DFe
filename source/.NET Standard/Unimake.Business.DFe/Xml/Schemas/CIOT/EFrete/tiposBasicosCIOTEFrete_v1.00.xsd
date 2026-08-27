@@ -149,7 +149,7 @@
       <xs:element minOccurs="1" maxOccurs="1" name="ValorDaMercadoriaPorUnidade" type="xs:double" />
       <xs:element minOccurs="1" maxOccurs="1" name="CodigoNCMNaturezaCarga" type="tns:TNCM" />
       <xs:element minOccurs="0" maxOccurs="1" name="DescricaoDaMercadoria" type="xs:string" />
-      <xs:element minOccurs="1" maxOccurs="1" name="UnidadeDeMedidaDaMercadoria" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="UnidadeDeMedidaDaMercadoria" type="tns:TUnidadeMedidaMercadoria" />
       <xs:element minOccurs="1" maxOccurs="1" name="TipoDeCalculo" type="tns:TTipoCalculoQuebra" />
       <xs:element minOccurs="0" maxOccurs="1" name="ValorDoFretePorUnidadeDeMercadoria" type="xs:double" />
       <xs:element minOccurs="1" maxOccurs="1" name="QuantidadeDaMercadoriaNoEmbarque" type="xs:double" />
@@ -167,6 +167,12 @@
       <xs:enumeration value="SemQuebra" />
       <xs:enumeration value="QuebraSomenteUltrapassado" />
       <xs:enumeration value="QuebraIntegral" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TUnidadeMedidaMercadoria">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Kg" />
+      <xs:enumeration value="Tonelada" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ToleranciaPerdaCIOT">

@@ -104,6 +104,14 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 if (Math.Abs(v.Valores.TotalViagem - v.Valores.TotalDeAdiantamento - v.Valores.TotalDeQuitacao) > 0.01) throw new ValidarXMLException("TotalViagem deve ser igual à soma de TotalDeAdiantamento e TotalDeQuitacao em cada viagem eFrete.");
                 ValidarTipoPagamento(v.TipoPagamentoEFrete, "da viagem");
                 if (v.NotasFiscais == null || v.NotasFiscais.Count == 0) throw new ValidarXMLException("Ao menos uma NotaFiscal é obrigatória em cada viagem eFrete.");
+                foreach (var notaFiscal in v.NotasFiscais)
+                {
+                    if (!string.Equals(notaFiscal.UnidadeDeMedidaDaMercadoria, "Kg", StringComparison.Ordinal) &&
+                        !string.Equals(notaFiscal.UnidadeDeMedidaDaMercadoria, "Tonelada", StringComparison.Ordinal))
+                    {
+                        throw new ValidarXMLException("UnidadeDeMedidaDaMercadoria inválida para a eFrete. Informe Kg ou Tonelada.");
+                    }
+                }
             }
         }
 

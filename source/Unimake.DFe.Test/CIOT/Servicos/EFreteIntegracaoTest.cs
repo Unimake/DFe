@@ -144,8 +144,8 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Equal("PAG-001", json.SelectToken("Pagamentos[0].IdPagamentoCliente")?.Value<string>());
             Assert.Equal("ContaCorrente", json.SelectToken("Pagamentos[0].InformacoesBancarias.TipoConta")?.Value<string>());
             Assert.Equal("DOC-001", json.SelectToken("Viagens[0].DocumentoViagem")?.Value<string>());
-            Assert.Equal("NF-001", json.SelectToken("Viagens[0].NotasFiscais.NotaFiscal[0].Numero")?.Value<string>());
-            Assert.IsType<JArray>(json.SelectToken("Viagens[0].NotasFiscais.NotaFiscal"));
+            Assert.Equal("NF-001", json.SelectToken("Viagens[0].NotasFiscais[0].Numero")?.Value<string>());
+            Assert.IsType<JArray>(json.SelectToken("Viagens[0].NotasFiscais"));
             Assert.Equal(5000d, json.SelectToken("Viagens[0].Valores.TotalOperacao")?.Value<double>());
         }
 
@@ -157,9 +157,9 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             var notasFiscais = declaracao.OrigemDestino[0].NotasFiscais;
 
             var jsonUmaNota = JObject.Parse(EFreteMapper.CriarJson(declaracao, Servico.CIOTDeclaracaoOperacaoTransporte, CriarConfiguracao()));
-            var arrayUmaNota = Assert.IsType<JArray>(jsonUmaNota.SelectToken("Viagens[0].NotasFiscais.NotaFiscal"));
+            var arrayUmaNota = Assert.IsType<JArray>(jsonUmaNota.SelectToken("Viagens[0].NotasFiscais"));
             Assert.Single(arrayUmaNota);
-            Assert.Null(jsonUmaNota.SelectToken("Viagens[0].NotasFiscais.NotaFiscal[0].ValorDoFretePorUnidadeDeMercadoria"));
+            Assert.Null(jsonUmaNota.SelectToken("Viagens[0].NotasFiscais[0].ValorDoFretePorUnidadeDeMercadoria"));
 
             notasFiscais.Add(new NotaFiscalCIOT
             {
@@ -175,7 +175,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             });
 
             var jsonDuasNotas = JObject.Parse(EFreteMapper.CriarJson(declaracao, Servico.CIOTDeclaracaoOperacaoTransporte, CriarConfiguracao()));
-            var arrayDuasNotas = Assert.IsType<JArray>(jsonDuasNotas.SelectToken("Viagens[0].NotasFiscais.NotaFiscal"));
+            var arrayDuasNotas = Assert.IsType<JArray>(jsonDuasNotas.SelectToken("Viagens[0].NotasFiscais"));
             Assert.Equal(2, arrayDuasNotas.Count);
             Assert.Equal("NF-002", arrayDuasNotas[1].Value<string>("Numero"));
         }
