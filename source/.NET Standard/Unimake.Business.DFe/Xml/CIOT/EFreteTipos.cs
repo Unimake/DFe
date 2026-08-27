@@ -339,5 +339,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("QuantidadeDaMercadoriaNoEmbarque")] public double QuantidadeDaMercadoriaNoEmbarque { get; set; }
         [XmlElement("ToleranciaDePerdaDeMercadoria")] public ToleranciaCIOT ToleranciaDePerdaDeMercadoria { get; set; }
         [XmlElement("DiferencaDeFrete")] public DiferencaFreteCIOT DiferencaDeFrete { get; set; }
+
+        public bool ShouldSerializeValorDoFretePorUnidadeDeMercadoria() => !string.Equals(TipoDeCalculo, "SemQuebra", StringComparison.OrdinalIgnoreCase);
     }
 }

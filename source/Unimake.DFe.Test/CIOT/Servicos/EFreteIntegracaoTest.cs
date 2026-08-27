@@ -159,6 +159,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             var jsonUmaNota = JObject.Parse(EFreteMapper.CriarJson(declaracao, Servico.CIOTDeclaracaoOperacaoTransporte, CriarConfiguracao()));
             var arrayUmaNota = Assert.IsType<JArray>(jsonUmaNota.SelectToken("Viagens[0].NotasFiscais.NotaFiscal"));
             Assert.Single(arrayUmaNota);
+            Assert.Null(jsonUmaNota.SelectToken("Viagens[0].NotasFiscais.NotaFiscal[0].ValorDoFretePorUnidadeDeMercadoria"));
 
             notasFiscais.Add(new NotaFiscalCIOT
             {
@@ -317,6 +318,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
                 IdOperacaoCliente = "CIOT-CLIENTE-001",
                 MatrizCNPJ = "12345678000199",
                 TipoOperacao = tipo,
+                TipoEmbalagem = tipo == TipoOperacaoTransporteCIOT.CargaLotacao ? "Granel" : null,
                 DataInicioViagem = new DateTime(2026, 8, 12, 8, 0, 0),
                 DataFimViagem = new DateTime(2026, 8, 13, 18, 0, 0),
                 CpfCnpjContratado = "12345678901",

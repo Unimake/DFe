@@ -35,7 +35,6 @@
 	<IdOperacaoCliente>CIOT-TAC-0001</IdOperacaoCliente>
 	<MatrizCNPJ>12345678000199</MatrizCNPJ>
 	<FilialCNPJ>12345678000270</FilialCNPJ>
-	<TipoEmbalagem>NaoAplicavel</TipoEmbalagem>
 	<TipoPagamentoEFrete>eFRETE</TipoPagamentoEFrete>
 	<Motorista>
 		<CpfOuCnpj>12345678901</CpfOuCnpj>
