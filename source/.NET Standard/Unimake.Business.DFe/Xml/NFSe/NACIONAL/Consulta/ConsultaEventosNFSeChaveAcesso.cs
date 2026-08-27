@@ -20,10 +20,24 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.Consulta
     [XmlRoot("consultaEventosNFSeChaveAcesso")]
     public class ConsultaEventosNFSeChaveAcesso : XMLBase
     {
+        private string ChaveNFSeField;
+
         /// <summary>
         /// Chave de acesso da NFSe para consulta de eventos.
         /// </summary>
         [XmlElement("ChaveNFSe")]
-        public string ChaveNFSe { get; set; }
+        public string ChaveNFSe 
+        {             
+            get { return ChaveNFSeField; }
+            set 
+            { 
+                if (value.Length != 50)
+                {
+                    throw new ArgumentException("A Chave de Acesso da NFSe deve conter 50 caracteres.");
+                }
+
+                ChaveNFSeField = value;
+            }
+        }
     }
 }
