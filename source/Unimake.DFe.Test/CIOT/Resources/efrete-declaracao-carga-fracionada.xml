@@ -46,28 +46,11 @@
 					<DescricaoDaMercadoria>MERCADORIA FRACIONADA TESTE</DescricaoDaMercadoria>
 					<UnidadeDeMedidaDaMercadoria>Kg</UnidadeDeMedidaDaMercadoria>
 					<TipoDeCalculo>SemQuebra</TipoDeCalculo>
-					<ValorDoFretePorUnidadeDeMercadoria>0.84</ValorDoFretePorUnidadeDeMercadoria>
 					<QuantidadeDaMercadoriaNoEmbarque>5000</QuantidadeDaMercadoriaNoEmbarque>
 					<ToleranciaDePerdaDeMercadoria>
 						<Tipo>Nenhum</Tipo>
 						<Valor>0</Valor>
 					</ToleranciaDePerdaDeMercadoria>
-					<DiferencaDeFrete>
-						<Tipo>SemDiferenca</Tipo>
-						<Base>PesoNoDestino</Base>
-						<Tolerancia>
-							<Tipo>Percentual</Tipo>
-							<Valor>0</Valor>
-						</Tolerancia>
-						<MargemGanho>
-							<Tipo>Valor</Tipo>
-							<Valor>0</Valor>
-						</MargemGanho>
-						<MargemPerda>
-							<Tipo>Valor</Tipo>
-							<Valor>0</Valor>
-						</MargemPerda>
-					</DiferencaDeFrete>
 				</NotaFiscal>
 			</NotasFiscais>
 			<TipoPagamentoEFrete>eFRETE</TipoPagamentoEFrete>
@@ -117,7 +100,6 @@
 	<IdOperacaoCliente>CIOT-FRACIONADO-0001</IdOperacaoCliente>
 	<MatrizCNPJ>12345678000199</MatrizCNPJ>
 	<FilialCNPJ>12345678000270</FilialCNPJ>
-	<TipoEmbalagem>Volumes</TipoEmbalagem>
 	<TipoPagamentoEFrete>eFRETE</TipoPagamentoEFrete>
 	<Motorista>
 		<CpfOuCnpj>12345678901</CpfOuCnpj>

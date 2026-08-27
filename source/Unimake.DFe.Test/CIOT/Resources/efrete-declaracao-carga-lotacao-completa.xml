@@ -52,26 +52,26 @@
 					<CodigoNCMNaturezaCarga>2701</CodigoNCMNaturezaCarga>
 					<DescricaoDaMercadoria>PRODUTO TESTE A GRANEL</DescricaoDaMercadoria>
 					<UnidadeDeMedidaDaMercadoria>Kg</UnidadeDeMedidaDaMercadoria>
-					<TipoDeCalculo>ComQuebra</TipoDeCalculo>
+					<TipoDeCalculo>QuebraSomenteUltrapassado</TipoDeCalculo>
 					<ValorDoFretePorUnidadeDeMercadoria>0.4361</ValorDoFretePorUnidadeDeMercadoria>
 					<QuantidadeDaMercadoriaNoEmbarque>18000</QuantidadeDaMercadoriaNoEmbarque>
 					<ToleranciaDePerdaDeMercadoria>
-						<Tipo>Percentual</Tipo>
+						<Tipo>Porcentagem</Tipo>
 						<Valor>0.5</Valor>
 					</ToleranciaDePerdaDeMercadoria>
 					<DiferencaDeFrete>
-						<Tipo>PorQuantidade</Tipo>
-						<Base>PesoNoDestino</Base>
+						<Tipo>SomenteUltrapassado</Tipo>
+						<Base>QuantidadeDesembarque</Base>
 						<Tolerancia>
-							<Tipo>Percentual</Tipo>
+							<Tipo>Porcentagem</Tipo>
 							<Valor>0.5</Valor>
 						</Tolerancia>
 						<MargemGanho>
-							<Tipo>Valor</Tipo>
+							<Tipo>Absoluto</Tipo>
 							<Valor>150</Valor>
 						</MargemGanho>
 						<MargemPerda>
-							<Tipo>Valor</Tipo>
+							<Tipo>Absoluto</Tipo>
 							<Valor>200</Valor>
 						</MargemPerda>
 					</DiferencaDeFrete>
@@ -120,7 +120,7 @@
 		<ValorParcela>3000.00</ValorParcela>
 	</InfPagamento>
 	<InfPagamento>
-		<TipoPagamentoEFrete>Pix</TipoPagamentoEFrete>
+		<TipoPagamentoEFrete>TransferenciaBancaria</TipoPagamentoEFrete>
 		<IdPagamentoCliente>ID-PAG-PIX-002</IdPagamentoCliente>
 		<DataDeLiberacao>2026-08-14T18:00:00-03:00</DataDeLiberacao>
 		<Categoria>Quitacao</Categoria>

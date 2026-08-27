@@ -83,6 +83,23 @@ namespace Unimake.DFe.Test.CIOT.Validacao
             Assert.False(validador.Success);
         }
 
+        [Theory]
+        [InlineData("<TipoEmbalagem>Granel</TipoEmbalagem>", "<TipoEmbalagem>Volumes</TipoEmbalagem>")]
+        [InlineData("<TipoDeCalculo>QuebraSomenteUltrapassado</TipoDeCalculo>", "<TipoDeCalculo>ComQuebra</TipoDeCalculo>")]
+        [InlineData("<ValorParcela>3000.00</ValorParcela>", "<ValorParcela>0</ValorParcela>")]
+        [Trait("DFe", "CIOT")]
+        public void SchemaEFreteRejeitaValoresForaDoContrato81(string valorValido, string valorInvalido)
+        {
+            var xml = File.ReadAllText(CaminhoRecurso("efrete-declaracao-carga-lotacao-completa.xml"))
+                .Replace(valorValido, valorInvalido);
+            var documento = new XmlDocument();
+            documento.LoadXml(xml);
+            var validador = new ValidarSchema();
+            validador.Validar(documento, EFreteSchemaResolver.ObterSchemaArquivo(Servico.CIOTDeclaracaoOperacaoTransporte), NamespaceCIOT);
+
+            Assert.False(validador.Success);
+        }
+
         [Fact]
         [Trait("DFe", "CIOT")]
         public void SchemaEFreteRejeitaDataInvalida()

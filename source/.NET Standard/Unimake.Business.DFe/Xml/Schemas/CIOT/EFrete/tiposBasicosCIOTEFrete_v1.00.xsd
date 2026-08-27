@@ -26,8 +26,8 @@
           <xs:element minOccurs="1" maxOccurs="1" name="IdOperacaoCliente" type="tns:TIdentificadorCliente" />
           <xs:element minOccurs="1" maxOccurs="1" name="MatrizCNPJ" type="tns:TCnpj" />
           <xs:element minOccurs="0" maxOccurs="1" name="FilialCNPJ" type="tns:TCnpj" />
-          <xs:element minOccurs="0" maxOccurs="1" name="TipoEmbalagem" type="xs:string" />
-          <xs:element minOccurs="0" maxOccurs="1" name="TipoPagamentoEFrete" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TipoEmbalagem" type="tns:TTipoEmbalagem" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TipoPagamentoEFrete" type="tns:TTipoPagamentoEFrete" />
           <xs:element minOccurs="0" maxOccurs="1" name="Motorista" type="tns:MotoristaCIOT" />
           <xs:element minOccurs="0" maxOccurs="1" name="Impostos" type="tns:ImpostosCIOT" />
           <xs:element minOccurs="0" maxOccurs="1" name="Contratado" type="tns:PessoaCIOT" />
@@ -92,19 +92,19 @@
   </xs:simpleType>
   <xs:complexType name="ArrayOfVeiculo">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Veiculo" nillable="true" type="tns:Veiculo" />
+      <xs:element minOccurs="1" maxOccurs="5" name="Veiculo" type="tns:Veiculo" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Veiculo">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" name="Placa" type="tns:TPlaca" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Placa" type="tns:TPlaca" />
       <xs:element minOccurs="0" maxOccurs="1" name="RNTRCVeiculo" type="tns:TRNTRC" />
       <xs:element minOccurs="0" maxOccurs="1" name="NumeroEixos" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ArrayOfOrigemDestino">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParOrigemDestino" nillable="true" type="tns:OrigemDestino" />
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="ParOrigemDestino" type="tns:OrigemDestino" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="OrigemDestino">
@@ -112,7 +112,7 @@
       <xs:element minOccurs="0" maxOccurs="1" name="DocumentoViagem" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="Valores" type="tns:ValoresViagemCIOT" />
       <xs:element minOccurs="0" maxOccurs="1" name="NotasFiscais" type="tns:ArrayOfNotaFiscalCIOT" />
-      <xs:element minOccurs="0" maxOccurs="1" name="TipoPagamentoEFrete" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TipoPagamentoEFrete" type="tns:TTipoPagamentoEFrete" />
       <xs:element minOccurs="0" maxOccurs="1" name="Origem" type="tns:Origem" />
       <xs:element minOccurs="0" maxOccurs="1" name="Destino" type="tns:Destino" />
       <xs:element minOccurs="0" maxOccurs="1" name="DistanciaPercorrida" type="xs:string" />
@@ -136,42 +136,87 @@
   </xs:complexType>
   <xs:complexType name="ArrayOfNotaFiscalCIOT">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="NotaFiscal" nillable="true" type="tns:NotaFiscalCIOT" />
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="NotaFiscal" type="tns:NotaFiscalCIOT" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="NotaFiscalCIOT">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="1" name="CnpjEmissor" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Numero" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Serie" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Numero" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Serie" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="Data" type="tns:TData" />
       <xs:element minOccurs="1" maxOccurs="1" name="ValorTotal" type="xs:double" />
       <xs:element minOccurs="1" maxOccurs="1" name="ValorDaMercadoriaPorUnidade" type="xs:double" />
-      <xs:element minOccurs="0" maxOccurs="1" name="CodigoNCMNaturezaCarga" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CodigoNCMNaturezaCarga" type="tns:TNCM" />
       <xs:element minOccurs="0" maxOccurs="1" name="DescricaoDaMercadoria" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="UnidadeDeMedidaDaMercadoria" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="TipoDeCalculo" type="xs:string" />
-      <xs:element minOccurs="1" maxOccurs="1" name="ValorDoFretePorUnidadeDeMercadoria" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="UnidadeDeMedidaDaMercadoria" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="TipoDeCalculo" type="tns:TTipoCalculoQuebra" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ValorDoFretePorUnidadeDeMercadoria" type="xs:double" />
       <xs:element minOccurs="1" maxOccurs="1" name="QuantidadeDaMercadoriaNoEmbarque" type="xs:double" />
-      <xs:element minOccurs="0" maxOccurs="1" name="ToleranciaDePerdaDeMercadoria" type="tns:ToleranciaCIOT" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ToleranciaDePerdaDeMercadoria" type="tns:ToleranciaPerdaCIOT" />
       <xs:element minOccurs="0" maxOccurs="1" name="DiferencaDeFrete" type="tns:DiferencaFreteCIOT" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="ToleranciaCIOT">
+  <xs:simpleType name="TNCM">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TTipoCalculoQuebra">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SemQuebra" />
+      <xs:enumeration value="QuebraSomenteUltrapassado" />
+      <xs:enumeration value="QuebraIntegral" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ToleranciaPerdaCIOT">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" name="Tipo" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tipo" type="tns:TTipoToleranciaPerda" />
       <xs:element minOccurs="1" maxOccurs="1" name="Valor" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="DiferencaFreteCIOT">
+  <xs:simpleType name="TTipoToleranciaPerda">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nenhum" />
+      <xs:enumeration value="Porcentagem" />
+      <xs:enumeration value="ValorAbsoluto" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ToleranciaDiferencaCIOT">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" name="Tipo" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Base" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Tolerancia" type="tns:ToleranciaCIOT" />
-      <xs:element minOccurs="0" maxOccurs="1" name="MargemGanho" type="tns:ToleranciaCIOT" />
-      <xs:element minOccurs="0" maxOccurs="1" name="MargemPerda" type="tns:ToleranciaCIOT" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tipo" type="tns:TTipoToleranciaDiferenca" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Valor" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
+  <xs:simpleType name="TTipoToleranciaDiferenca">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nenhum" />
+      <xs:enumeration value="Porcentagem" />
+      <xs:enumeration value="Absoluto" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DiferencaFreteCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Tipo" type="tns:TTipoDiferencaFrete" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Base" type="tns:TBaseDiferencaFrete" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tolerancia" type="tns:ToleranciaDiferencaCIOT" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MargemGanho" type="tns:ToleranciaDiferencaCIOT" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MargemPerda" type="tns:ToleranciaDiferencaCIOT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="TTipoDiferencaFrete">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SemDiferenca" />
+      <xs:enumeration value="SomenteUltrapassado" />
+      <xs:enumeration value="Integral" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TBaseDiferencaFrete">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="QuantidadeDesembarque" />
+      <xs:enumeration value="QuantidadeMenor" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="Origem">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="1" name="CodigoMunicipioOrigem" type="xs:string" />
@@ -214,7 +259,7 @@
   </xs:simpleType>
   <xs:complexType name="InfPagamento">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" name="TipoPagamentoEFrete" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TipoPagamentoEFrete" type="tns:TTipoPagamentoEFrete" />
       <xs:element minOccurs="0" maxOccurs="1" name="IdPagamentoCliente" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="DataDeLiberacao" type="tns:TDataHora" />
       <xs:element minOccurs="0" maxOccurs="1" name="Categoria" type="xs:string" />
@@ -234,7 +279,7 @@
       <xs:element minOccurs="1" maxOccurs="1" name="IndPagamento" type="tns:IndicadorPagamentoCIOT" />
       <xs:element minOccurs="0" maxOccurs="1" name="NumeroParcela" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="DataVencimento" type="tns:TData" />
-      <xs:element minOccurs="0" maxOccurs="1" name="ValorParcela" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ValorParcela" type="tns:TValorPositivo" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="TipoPagamentoFreteCIOT">
@@ -387,6 +432,30 @@
   </xs:complexType>
   <xs:simpleType name="TCpf">
     <xs:restriction base="xs:string"><xs:pattern value="[0-9]{11}" /></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TTipoEmbalagem">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bigbag" />
+      <xs:enumeration value="Pallet" />
+      <xs:enumeration value="Granel" />
+      <xs:enumeration value="Container" />
+      <xs:enumeration value="Saco" />
+      <xs:enumeration value="Caixa" />
+      <xs:enumeration value="Unitario" />
+      <xs:enumeration value="Fardo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TTipoPagamentoEFrete">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TransferenciaBancaria" />
+      <xs:enumeration value="eFRETE" />
+      <xs:enumeration value="DepositoAgendado" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TValorPositivo">
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0" />
+    </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="TCepEFrete">
     <xs:restriction base="xs:string"><xs:pattern value="[0-9]{8}" /></xs:restriction>

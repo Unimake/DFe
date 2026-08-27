@@ -278,7 +278,12 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             var notas = new JArray();
             foreach (var notaFiscal in notasFiscais)
             {
-                notas.Add(JObject.FromObject(notaFiscal));
+                var nota = JObject.FromObject(notaFiscal);
+                if (string.Equals(notaFiscal.TipoDeCalculo, "SemQuebra", StringComparison.OrdinalIgnoreCase))
+                {
+                    nota.Remove("ValorDoFretePorUnidadeDeMercadoria");
+                }
+                notas.Add(nota);
             }
 
             return new JObject { ["NotaFiscal"] = notas };

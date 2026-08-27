@@ -1959,14 +1959,16 @@ public class NFeTxtConverterTest
         Assert.Equal(6, xml.SelectNodes("//*[local-name()='ICMSSN102']").Count);
         Assert.Equal(6, xml.SelectNodes("//*[local-name()='ICMSSN102']/*[local-name()='orig' and text()='0']").Count);
         Assert.Equal(6, xml.SelectNodes("//*[local-name()='ICMSSN102']/*[local-name()='CSOSN' and text()='102']").Count);
-        Assert.Equal(6, xml.SelectNodes("//*[local-name()='IPI']/*[local-name()='CNPJProd' and text()='00000000000000']").Count);
-        Assert.Equal(0, xml.SelectNodes("//*[local-name()='prod']/*[local-name()='indEscala']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='IPI']/*[local-name()='CNPJProd']").Count);
+        Assert.Equal(6, xml.SelectNodes("//*[local-name()='prod']/*[local-name()='indEscala' and text()='S']").Count);
         Assert.Equal("4700.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='cobr']/*[local-name()='fat']").Count);
 
         var pagamentos = xml.SelectNodes("//*[local-name()='pag']/*[local-name()='detPag']");
-        Assert.Equal(2, pagamentos.Count);
-        Assert.Equal(2, xml.SelectNodes("//*[local-name()='detPag']/*[local-name()='tPag' and text()='90']").Count);
-        Assert.Equal(2, xml.SelectNodes("//*[local-name()='detPag']/*[local-name()='vPag' and text()='0.00']").Count);
+        Assert.Equal(1, pagamentos.Count);
+        Assert.Equal(1, xml.SelectNodes("//*[local-name()='detPag']/*[local-name()='tPag' and text()='90']").Count);
+        Assert.Equal(1, xml.SelectNodes("//*[local-name()='detPag']/*[local-name()='vPag' and text()='0.00']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='detPag']/*[local-name()='indPag']").Count);
         Assert.Equal(0, xml.SelectNodes("//*[local-name()='detPag']/*[local-name()='xPag']").Count);
     }
 

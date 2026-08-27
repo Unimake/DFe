@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unimake.Business.DFe.Xml;
 using Unimake.Exceptions;
 
@@ -53,9 +54,13 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             if (string.IsNullOrWhiteSpace(declaracao.TipoPagamentoEFrete)) throw new ValidarXMLException("TipoPagamentoEFrete é obrigatório para a eFrete.");
 
             var tac = declaracao.TipoOperacao == TipoOperacaoTransporteCIOT.TACAgregado;
+            var lotacao = declaracao.TipoOperacao == TipoOperacaoTransporteCIOT.CargaLotacao;
             if (!tac && !declaracao.TemDataInicioViagemEFrete()) throw new ValidarXMLException("DataInicioViagem é obrigatória para lotação e fracionado na eFrete.");
             if (!tac && (declaracao.OrigemDestino == null || declaracao.OrigemDestino.Count == 0)) throw new ValidarXMLException("Ao menos uma viagem em OrigemDestino é obrigatória para CIOT de lotação ou fracionado na eFrete.");
             if (!tac && (declaracao.DadosCarga == null || string.IsNullOrWhiteSpace(declaracao.DadosCarga.CodigoNaturezaCarga) || string.IsNullOrWhiteSpace(declaracao.DadosCarga.PesoCarga))) throw new ValidarXMLException("DadosCarga, NCM e peso são obrigatórios para lotação e fracionado na eFrete.");
+            if (!lotacao && !string.IsNullOrWhiteSpace(declaracao.TipoEmbalagem)) throw new ValidarXMLException("TipoEmbalagem somente pode ser informado para CIOT de lotação na eFrete.");
+            if (!string.IsNullOrWhiteSpace(declaracao.TipoEmbalagem) && !TiposEmbalagem.Contains(declaracao.TipoEmbalagem, StringComparer.Ordinal)) throw new ValidarXMLException("TipoEmbalagem inválido para a eFrete. Informe Bigbag, Pallet, Granel, Container, Saco, Caixa, Unitario ou Fardo.");
+            ValidarTipoPagamento(declaracao.TipoPagamentoEFrete, "da operação");
             if (!tac) ValidarPessoa(declaracao.Destinatario, "Destinatário", false);
             if (!tac && declaracao.InfIndicadoresOperacionais == null) throw new ValidarXMLException("InfIndicadoresOperacionais é obrigatório para lotação e fracionado na eFrete.");
             if (declaracao.TipoOperacao == TipoOperacaoTransporteCIOT.CargaFracionada && (declaracao.DadosCarga?.ContratantesCargFrac == null || declaracao.DadosCarga.ContratantesCargFrac.Count == 0)) throw new ValidarXMLException("ContratantesCargFrac é obrigatório para carga fracionada na eFrete.");
@@ -66,12 +71,19 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             ValidarPagamentos(declaracao.InfPagamento);
         }
 
+        private static readonly string[] TiposEmbalagem = { "Bigbag", "Pallet", "Granel", "Container", "Saco", "Caixa", "Unitario", "Fardo" };
+
+        private static readonly string[] TiposPagamento = { "TransferenciaBancaria", "eFRETE", "DepositoAgendado" };
+
         private static void ValidarPagamentos(List<Xml.CIOT.InfPagamento> pagamentos)
         {
             if (pagamentos == null) return;
             foreach (var p in pagamentos)
             {
                 if (string.IsNullOrWhiteSpace(p.IdPagamentoCliente) || string.IsNullOrWhiteSpace(p.DataDeLiberacao) || string.IsNullOrWhiteSpace(p.Categoria) || string.IsNullOrWhiteSpace(p.Documento) || string.IsNullOrWhiteSpace(p.CpfCnpjCreditado)) throw new ValidarXMLException("IdPagamentoCliente, DataDeLiberacao, Categoria, Documento e CpfCnpjCreditado são obrigatórios em cada pagamento eFrete.");
+                if (p.ValorParcela <= 0) throw new ValidarXMLException("ValorParcela deve ser maior que zero em cada pagamento eFrete.");
+                if (p.IndPagamento == IndicadorPagamentoCIOT.APrazo && string.IsNullOrWhiteSpace(p.NumeroParcela)) throw new ValidarXMLException("NumeroParcela é obrigatório quando IndPagamento for a prazo na eFrete.");
+                ValidarTipoPagamento(p.TipoPagamentoEFrete, "do pagamento");
                 var banco = !string.IsNullOrWhiteSpace(p.CodigoInstituicaoFinanceira) || !string.IsNullOrWhiteSpace(p.NumeroAgencia) || !string.IsNullOrWhiteSpace(p.NumeroConta);
                 var pix = !string.IsNullOrWhiteSpace(p.TipoChavePix) || !string.IsNullOrWhiteSpace(p.ChavePix);
                 if (banco && pix) throw new ValidarXMLException("Informe somente dados bancários ou dados PIX em cada InfPagamento da eFrete, nunca os dois grupos.");
@@ -88,7 +100,18 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             foreach (var v in viagens)
             {
                 if (string.IsNullOrWhiteSpace(v.DocumentoViagem) || string.IsNullOrWhiteSpace(v.DistanciaPercorrida) || v.Valores == null || string.IsNullOrWhiteSpace(v.TipoPagamentoEFrete)) throw new ValidarXMLException("DocumentoViagem, DistanciaPercorrida, Valores e TipoPagamentoEFrete são obrigatórios em cada viagem eFrete.");
+                if (v.Valores.TotalViagem <= 0) throw new ValidarXMLException("TotalViagem deve ser maior que zero em cada viagem eFrete.");
+                if (Math.Abs(v.Valores.TotalViagem - v.Valores.TotalDeAdiantamento - v.Valores.TotalDeQuitacao) > 0.01) throw new ValidarXMLException("TotalViagem deve ser igual à soma de TotalDeAdiantamento e TotalDeQuitacao em cada viagem eFrete.");
+                ValidarTipoPagamento(v.TipoPagamentoEFrete, "da viagem");
                 if (v.NotasFiscais == null || v.NotasFiscais.Count == 0) throw new ValidarXMLException("Ao menos uma NotaFiscal é obrigatória em cada viagem eFrete.");
+            }
+        }
+
+        private static void ValidarTipoPagamento(string tipoPagamento, string contexto)
+        {
+            if (string.IsNullOrWhiteSpace(tipoPagamento) || !TiposPagamento.Contains(tipoPagamento, StringComparer.OrdinalIgnoreCase))
+            {
+                throw new ValidarXMLException("TipoPagamentoEFrete " + contexto + " inválido. Informe TransferenciaBancaria, eFRETE ou DepositoAgendado.");
             }
         }
 

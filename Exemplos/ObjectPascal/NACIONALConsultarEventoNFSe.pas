@@ -83,11 +83,15 @@ begin
       end
       else
       begin
-       ShowMessage('Chave de acesso da NFSe: ' + oConsultarEvento.Result.Eventos.ChaveAcesso);
-       ShowMessage('Tipo Evento: ' + oConsultarEvento.Result.Eventos.TipoEvento);
-       ShowMessage('VerAplic: ' + oConsultarEvento.Result.Eventos.ArquivoXml.Evento.InfEvento.VerAplic);
-       ShowMessage('Id Evento: ' + oConsultarEvento.Result.Eventos.ArquivoXml.Evento.InfEvento.Id);
-       ShowMessage('Id Pedido de registro do Evento: ' + oConsultarEvento.Result.Eventos.ArquivoXml.Evento.InfEvento.PedRegEvento.InfPedReg.Id);
+              if IUnknown(oConsultarEvento.Result.Eventos) <> nil THEN
+              begin
+                   ShowMessage('Chave de acesso da NFSe: ' + oConsultarEvento.Result.Eventos.ChaveAcesso);
+                   ShowMessage('Tipo Evento: ' + oConsultarEvento.Result.Eventos.TipoEvento);
+                   ShowMessage('VerAplic: ' + oConsultarEvento.Result.Eventos.ArquivoXml.Evento.InfEvento.VerAplic);
+                   ShowMessage('Id Evento: ' + oConsultarEvento.Result.Eventos.ArquivoXml.Evento.InfEvento.Id);
+                   ShowMessage('Id Pedido de registro do Evento: ' + oConsultarEvento.Result.Eventos.ArquivoXml.Evento.InfEvento.PedRegEvento.InfPedReg.Id);
+              end
+              else ShowMessage('Não há registro da NFS-e informada...' + sLineBreak + 'Por favor, verifique se a chave da NFS-e é válida');
       end;
     end;
 
