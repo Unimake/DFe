@@ -1505,8 +1505,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             produto.CEST = cest > 0 ? cest.ToString("0000000") : null;
             if (lenPipesRegistro == 4)
             {
-                this.LerInt32(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.IndEscala)), ObOp.Opcional, 1, 1);
-                produto.IndEscala = ObterEnumOpcional(-1, (IndicadorEscalaRelevante)(-1));
+                var indicadorEscala = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.IndEscala)), ObOp.Opcional, 1, 1);
+                produto.IndEscala = string.Equals(indicadorEscala, "S", StringComparison.OrdinalIgnoreCase)
+                    ? IndicadorEscalaRelevante.Sim
+                    : string.Equals(indicadorEscala, "N", StringComparison.OrdinalIgnoreCase)
+                        ? IndicadorEscalaRelevante.Nao
+                        : ObterEnumOpcional(-1, (IndicadorEscalaRelevante)(-1));
                 produto.CNPJFab = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CNPJFab)), ObOp.Opcional, 0, 14));
             }
         }
