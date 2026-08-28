@@ -2234,12 +2234,28 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarIcmsSn102(int nProd, int lenPipesRegistro)
         {
+            var origem = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1);
+            var csosn = this.LerInt32(XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.CSOSN)), ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture);
+
+            if (csosn == "500")
+            {
+                detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS
+                {
+                    ICMSSN500 = new DFeNFe.ICMSSN500
+                    {
+                        Orig = origem,
+                        CSOSN = csosn
+                    }
+                };
+                return;
+            }
+
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS
             {
                 ICMSSN102 = new DFeNFe.ICMSSN102
                 {
-                    Orig = (OrigemMercadoria)this.LerInt32(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.Orig)), ObOp.Obrigatorio, 1, 1),
-                    CSOSN = this.LerInt32(XmlTag<DFeNFe.ICMSSN101>(nameof(DFeNFe.ICMSSN101.CSOSN)), ObOp.Obrigatorio, 3, 3).ToString(CultureInfo.InvariantCulture)
+                    Orig = origem,
+                    CSOSN = csosn
                 }
             };
         }

@@ -75,6 +75,7 @@ public class NFeTxtConverterTest
     [InlineData("161540-nfe-orig.txt")]
     [InlineData("000015493-nfe.txt")]
     [InlineData("000000892-nfe.txt")]
+    [InlineData("000002191-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -182,6 +183,30 @@ public class NFeTxtConverterTest
         Assert.False(validacao.Success);
         Assert.Contains("Signature", validacao.ErrorMessage);
         Assert.DoesNotContain("indEscala", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve selecionar ICMSSN500 pelo CSOSN informado no segmento N10d em todos os itens.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarIcmsSn500DaNfe2191()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000002191-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal(2, xml.SelectNodes("//*[local-name()='ICMSSN500']").Count);
+        Assert.Equal(2, xml.SelectNodes("//*[local-name()='ICMSSN500']/*[local-name()='orig' and text()='0']").Count);
+        Assert.Equal(2, xml.SelectNodes("//*[local-name()='ICMSSN500']/*[local-name()='CSOSN' and text()='500']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='ICMSSN102']").Count);
+        Assert.Equal("OUTROS MEIOS", xml.SelectSingleNode("//*[local-name()='detPag']/*[local-name()='xPag']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
     }
 
     /// <summary>
