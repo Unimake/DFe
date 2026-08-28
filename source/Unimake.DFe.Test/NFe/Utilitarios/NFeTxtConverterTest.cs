@@ -76,6 +76,7 @@ public class NFeTxtConverterTest
     [InlineData("000015493-nfe.txt")]
     [InlineData("000000892-nfe.txt")]
     [InlineData("000002191-nfe-orig.txt")]
+    [InlineData("000000200-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -207,6 +208,33 @@ public class NFeTxtConverterTest
         validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
         Assert.False(validacao.Success);
         Assert.Contains("Signature", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve selecionar COFINSAliq pelo CST quando o ERP informa o valor no S05 e a base e alíquota no S07.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarCofinsAliquotaDaNfe200()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000000200-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var grupos = xml.SelectNodes("//*[local-name()='COFINSAliq']");
+        Assert.Equal(3, grupos.Count);
+        Assert.Equal(3, xml.SelectNodes("//*[local-name()='COFINSAliq']/*[local-name()='CST' and text()='01']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='COFINSOutr']").Count);
+        Assert.Equal("45007.60", grupos[0].SelectSingleNode("*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("3.0000", grupos[0].SelectSingleNode("*[local-name()='pCOFINS']")?.InnerText);
+        Assert.Equal("1350.23", grupos[0].SelectSingleNode("*[local-name()='vCOFINS']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.DoesNotContain("CST", validacao.ErrorMessage);
     }
 
     /// <summary>
@@ -1935,7 +1963,19 @@ public class NFeTxtConverterTest
             "082853",
             "739532",
             "430893",
-            "526811"
+            "526811",
+            "FS HOME SIGNS COMERCIO DE PLASTICOS LTDA",
+            "451219138113",
+            "65624784000174",
+            "RUA MARIO SAURIN",
+            "PARQUE DOS BURITIS",
+            "17991926177",
+            "ORION HOME DESIGN LTDA",
+            "191052997118",
+            "61182144000109",
+            "ESTRADA ARTUR FORNAZARI",
+            "LIMOEIRO",
+            "Referente Pedido Nr.: 828"
         };
 
         var pasta = Path.GetDirectoryName(CaminhoArquivo("novaVersao-nfe.txt"));

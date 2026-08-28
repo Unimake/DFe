@@ -2751,6 +2751,21 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarCofinsOutros(int nProd, int lenPipesRegistro)
         {
             var cst = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2);
+            if (cst == "01" || cst == "02")
+            {
+                var valor = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.VCOFINS)), ObOp.Obrigatorio, 15);
+                detalhesOficiais[nProd].Imposto.COFINS = new DFeNFe.COFINS
+                {
+                    COFINSAliq = new DFeNFe.COFINSAliq
+                    {
+                        CST = cst,
+                        VBC = 0,
+                        PCOFINS = 0,
+                        VCOFINS = valor
+                    }
+                };
+                return;
+            }
             if (CstPisCofinsNaoTributado(cst))
             {
                 detalhesOficiais[nProd].Imposto.COFINS = new DFeNFe.COFINS
@@ -2760,6 +2775,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 return;
             }
 
+            var valorOutros = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.VCOFINS)), ObOp.Obrigatorio, 15);
             detalhesOficiais[nProd].Imposto.COFINS = new DFeNFe.COFINS
             {
                 COFINSOutr = new DFeNFe.COFINSOutr
@@ -2767,7 +2783,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     CST = cst,
                     VBC = 0,
                     PCOFINS = 0,
-                    VCOFINS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.VCOFINS)), ObOp.Obrigatorio, 15)
+                    VCOFINS = valorOutros
                 }
             };
         }
@@ -2775,6 +2791,13 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarCofinsAliquotaRetencao(int nProd, int lenPipesRegistro)
         {
             if (detalhesOficiais[nProd].Imposto.COFINS?.COFINSNT != null) return;
+            var cofinsAliquota = detalhesOficiais[nProd].Imposto.COFINS?.COFINSAliq;
+            if (cofinsAliquota != null)
+            {
+                cofinsAliquota.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
+                cofinsAliquota.PCOFINS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.PCOFINS)), ObOp.Obrigatorio, this.CasasDecimais75);
+                return;
+            }
             var cofins = ObterCofinsOutros(nProd);
             cofins.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
             cofins.PCOFINS = this.LerDouble(this.TipoCampo42, XmlTag<DFeNFe.COFINSAliq>(nameof(DFeNFe.COFINSAliq.PCOFINS)), ObOp.Obrigatorio, this.CasasDecimais75);
