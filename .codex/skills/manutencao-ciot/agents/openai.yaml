@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manutenção CIOT"
+  short_description: "Manter CIOT ANTT e eFrete sem quebrar compatibilidade"
+  default_prompt: "Use $manutencao-ciot para implementar ou revisar esta manutenção do CIOT preservando a compatibilidade entre ANTT e eFrete."

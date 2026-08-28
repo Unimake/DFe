@@ -181,6 +181,71 @@ public class NFeTxtConverterTest
         validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
         Assert.False(validacao.Success);
         Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.DoesNotContain("indEscala", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve gerar o indicador de escala depois do CEST quando ambos forem informados no segmento I05c.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarIndicadorEscalaDepoisDoCest()
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+        try
+        {
+            var conteudo = File.ReadAllText(CaminhoArquivo("000000892-nfe.txt"));
+            conteudo = conteudo.Replace("\nM|0.00", "\nI05c|0100100|N||\nM|0.00");
+            File.WriteAllText(arquivoTemporario, conteudo);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            foreach (XmlNode produto in xml.SelectNodes("//*[local-name()='det']/*[local-name()='prod']"))
+            {
+                var cest = produto.SelectSingleNode("*[local-name()='CEST']");
+                var indicadorEscala = produto.SelectSingleNode("*[local-name()='indEscala']");
+
+                Assert.Equal("0100100", cest?.InnerText);
+                Assert.Equal("N", indicadorEscala?.InnerText);
+                Assert.Same(cest.NextSibling, indicadorEscala);
+            }
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
+    }
+
+    /// <summary>
+    /// Deve evidenciar no schema que o indicador de escala não pode ser informado sem o CEST.
+    /// </summary>
+    [Fact]
+    public void SchemaDeveRejeitarIndicadorEscalaSemCest()
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+        try
+        {
+            var conteudo = File.ReadAllText(CaminhoArquivo("000000892-nfe.txt"));
+            conteudo = conteudo.Replace("\nM|0.00", "\nI05c||S||\nM|0.00");
+            File.WriteAllText(arquivoTemporario, conteudo);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            var validacao = new ValidarSchema();
+            validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+
+            Assert.False(validacao.Success);
+            Assert.Contains("indEscala", validacao.ErrorMessage);
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
     }
 
     /// <summary>
@@ -1960,7 +2025,7 @@ public class NFeTxtConverterTest
         Assert.Equal(6, xml.SelectNodes("//*[local-name()='ICMSSN102']/*[local-name()='orig' and text()='0']").Count);
         Assert.Equal(6, xml.SelectNodes("//*[local-name()='ICMSSN102']/*[local-name()='CSOSN' and text()='102']").Count);
         Assert.Equal(0, xml.SelectNodes("//*[local-name()='IPI']/*[local-name()='CNPJProd']").Count);
-        Assert.Equal(6, xml.SelectNodes("//*[local-name()='prod']/*[local-name()='indEscala' and text()='S']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='prod']/*[local-name()='indEscala']").Count);
         Assert.Equal("4700.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
         Assert.Equal(0, xml.SelectNodes("//*[local-name()='cobr']/*[local-name()='fat']").Count);
 
