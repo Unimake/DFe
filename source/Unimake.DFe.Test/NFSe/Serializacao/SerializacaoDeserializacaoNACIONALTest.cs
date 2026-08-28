@@ -358,6 +358,36 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.False(vDedRed.ShouldSerializeDocumentos());
     }
 
+    [Fact]
+    [Trait("DFe", "NFSe")]
+    [Trait("Layout", "Nacional")]
+    [Trait("Versao", "1.01")]
+    public void VDedRed_ComPDREVDR_DeveRejeitarConflito()
+    {
+        var vDedRed = new VDedRed
+        {
+            PDR = 10.00,
+            VDR = 25.00
+        };
+
+        var exception = Assert.Throws<InvalidOperationException>(() => vDedRed.ShouldSerializePDRField());
+        Assert.Contains("Não informe <pDR> e <vDR> simultaneamente", exception.Message);
+    }
+
+    [Fact]
+    [Trait("DFe", "NFSe")]
+    [Trait("Layout", "Nacional")]
+    [Trait("Versao", "1.01")]
+    public void VDedRed_Vazio_NaoDeveSerializarGrupo()
+    {
+        var valores = new Valores
+        {
+            VDedRed = new VDedRed()
+        };
+
+        Assert.False(valores.ShouldSerializeVDedRed());
+    }
+
     /// <summary>
     /// Testa a geração automática do ID do DPS seguindo o padrão:
     /// DPS + Código IBGE Município(7) + Tipo Inscrição(1) + Inscrição Federal(14) + Série(5) + Núm. DPS(15)
