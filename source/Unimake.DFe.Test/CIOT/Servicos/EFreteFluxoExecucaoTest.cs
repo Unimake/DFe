@@ -45,6 +45,11 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.False(requisicao.UsaCertificado);
             Assert.Equal("992000000126", servico.Result.IdOperacaoTransporte);
             Assert.Equal("110", servico.Result.Codigo);
+            Assert.Equal("Dados inseridos com sucesso!", servico.Result.Mensagem);
+            Assert.Single(servico.Result.Mensagens);
+            Assert.Equal("110", servico.Result.Mensagens[0].Codigo);
+            Assert.Equal("Dados inseridos com sucesso!", servico.Result.Mensagens[0].Descricao);
+            Assert.Contains("<Mensagem>Dados inseridos com sucesso!</Mensagem><Mensagens><Mensagem><Codigo>110</Codigo><Descricao>Dados inseridos com sucesso!</Descricao></Mensagem></Mensagens>", servico.RetornoWSString);
             Assert.Equal("PROTO-POST", servico.Result.Protocolo);
         }
 

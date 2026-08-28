@@ -201,6 +201,10 @@ namespace Unimake.DFe.Test.CIOT.Servicos
 
             Assert.Equal("992000000126", declaracao.IdOperacaoTransporte);
             Assert.Equal("110", declaracao.Codigo);
+            Assert.Equal("Dados inseridos com sucesso!", declaracao.Mensagem);
+            Assert.Single(declaracao.Mensagens);
+            Assert.Equal("110", declaracao.Mensagens[0].Codigo);
+            Assert.Equal("Dados inseridos com sucesso!", declaracao.Mensagens[0].Descricao);
             Assert.Equal("PROTO-1", declaracao.Protocolo);
             Assert.Equal("EmViagem", consulta.EstadoCIOT);
             Assert.Equal("PROTO-2", consulta.Protocolo);

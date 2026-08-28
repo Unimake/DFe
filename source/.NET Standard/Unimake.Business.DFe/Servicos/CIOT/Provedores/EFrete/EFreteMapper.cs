@@ -113,12 +113,14 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             switch (servico)
             {
                 case Servico.CIOTDeclaracaoOperacaoTransporte:
+                    var mensagemDeclaracao = sucesso && string.IsNullOrWhiteSpace(mensagem) ? "Dados inseridos com sucesso!" : mensagem;
                     resultado = new RetDeclaracaoOperacaoTransporte
                     {
                         IdOperacaoTransporte = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
                         Protocolo = Valor(root, "ProtocoloServico"),
                         Codigo = sucesso ? CodigoSucessoCIOT : codigo,
-                        Mensagem = mensagem,
+                        Mensagem = mensagemDeclaracao,
+                        Mensagens = sucesso ? MensagemDeclaracaoOperacaoTransporteHelper.CriarMensagens(CodigoSucessoCIOT, mensagemDeclaracao) : null,
                         Temp = erro ? CriarTemp(codigo, mensagem) : null
                     };
                     break;
