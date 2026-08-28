@@ -243,13 +243,31 @@ namespace Unimake.Business.DFe.Xml.CIOT
     [Serializable]
     public class PessoaCIOT
     {
+        private bool responsavelPeloPagamento;
+
         [XmlElement("NomeOuRazaoSocial")] public string NomeOuRazaoSocial { get; set; }
         [XmlElement("CpfOuCnpj")] public string CpfOuCnpj { get; set; }
         [XmlElement("RNTRC")] public string RNTRC { get; set; }
         [XmlElement("Endereco")] public EnderecoCIOT Endereco { get; set; }
         [XmlElement("EMail")] public string EMail { get; set; }
         [XmlElement("Telefones")] public TelefonesCIOT Telefones { get; set; }
-        [XmlElement("ResponsavelPeloPagamento")] public bool ResponsavelPeloPagamento { get; set; }
+        [XmlElement("ResponsavelPeloPagamento")]
+        public bool ResponsavelPeloPagamento
+        {
+            get => responsavelPeloPagamento;
+            set
+            {
+                responsavelPeloPagamento = value;
+                ResponsavelPeloPagamentoSpecified = true;
+            }
+        }
+
+        [XmlIgnore]
+        [Newtonsoft.Json.JsonIgnore]
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public bool ResponsavelPeloPagamentoSpecified { get; set; }
     }
 
 #if INTEROP

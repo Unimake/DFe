@@ -132,6 +132,22 @@ namespace Unimake.DFe.Test.CIOT.Validacao
 
         [Fact]
         [Trait("DFe", "CIOT")]
+        public void SchemaEFreteRejeitaResponsavelPeloPagamentoNoTomadorServico()
+        {
+            var documento = new XmlDocument();
+            documento.Load(CaminhoRecurso("efrete-declaracao-carga-lotacao-completa.xml"));
+            var tomador = documento.GetElementsByTagName("TomadorServico", NamespaceCIOT)[0];
+            var responsavel = documento.CreateElement("ResponsavelPeloPagamento", NamespaceCIOT);
+            responsavel.InnerText = "true";
+            tomador.AppendChild(responsavel);
+            var validador = new ValidarSchema();
+            validador.Validar(documento, EFreteSchemaResolver.ObterSchemaArquivo(Servico.CIOTDeclaracaoOperacaoTransporte), NamespaceCIOT);
+
+            Assert.False(validador.Success);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
         public void ServicoEFreteValidaSchemaAntesDoEFreteValidator()
         {
             var xml = File.ReadAllText(CaminhoRecurso("efrete-consultar-ciot-gerado.xml"))

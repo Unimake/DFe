@@ -49,6 +49,28 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             if (string.IsNullOrWhiteSpace(declaracao.RNTRCContratado) && string.IsNullOrWhiteSpace(declaracao.Contratado?.RNTRC)) throw new ValidarXMLException("O RNTRC do Contratado é obrigatório para a eFrete.");
             if (declaracao.Motorista == null || string.IsNullOrWhiteSpace(declaracao.Motorista.CpfOuCnpj) || string.IsNullOrWhiteSpace(declaracao.Motorista.CNH) || declaracao.Motorista.Celular == null || string.IsNullOrWhiteSpace(declaracao.Motorista.Celular.DDD) || string.IsNullOrWhiteSpace(declaracao.Motorista.Celular.Numero)) throw new ValidarXMLException("Motorista, CPF, CNH e celular são obrigatórios para a eFrete.");
             ValidarPessoa(declaracao.Contratante, "Contratante", true);
+            if (!declaracao.Contratante.ResponsavelPeloPagamentoSpecified)
+            {
+                throw new ValidarXMLException("ResponsavelPeloPagamento é obrigatório no grupo Contratante da eFrete.");
+            }
+            ValidarResponsabilidadeQuandoObrigatoria(declaracao.Subcontratante, "Subcontratante");
+            ValidarResponsabilidadeQuandoObrigatoria(declaracao.Consignatario, "Consignatario");
+            if (declaracao.TomadorServico != null)
+            {
+                ValidarPessoa(declaracao.TomadorServico, "TomadorServico", true);
+                if (declaracao.TomadorServico.ResponsavelPeloPagamentoSpecified)
+                {
+                    throw new ValidarXMLException("ResponsavelPeloPagamento não deve ser informado no grupo TomadorServico da eFrete. Informe o responsável no Contratante, Destinatario, Subcontratante ou Consignatario.");
+                }
+                if (!string.IsNullOrWhiteSpace(declaracao.TomadorServico.RNTRC))
+                {
+                    throw new ValidarXMLException("RNTRC não deve ser informado no grupo TomadorServico da eFrete.");
+                }
+            }
+            if (!PossuiResponsavelPeloPagamento(declaracao))
+            {
+                throw new ValidarXMLException("Ao menos um dos grupos Contratante, Destinatario, Subcontratante ou Consignatario deve ter ResponsavelPeloPagamento igual a true na eFrete.");
+            }
             if (declaracao.Veiculos == null || declaracao.Veiculos.Count == 0 || declaracao.Veiculos.Count > 5) throw new ValidarXMLException("A eFrete exige de um a cinco veículos na operação.");
             if (declaracao.Impostos == null) throw new ValidarXMLException("O grupo Impostos é obrigatório para a eFrete, mesmo quando os valores forem zero.");
             if (string.IsNullOrWhiteSpace(declaracao.TipoPagamentoEFrete)) throw new ValidarXMLException("TipoPagamentoEFrete é obrigatório para a eFrete.");
@@ -69,6 +91,22 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             if (tac && string.IsNullOrWhiteSpace(declaracao.Contratante.RNTRC)) throw new ValidarXMLException("O RNTRC do Contratante é obrigatório para TAC agregado na eFrete.");
             ValidarViagens(declaracao.OrigemDestino);
             ValidarPagamentos(declaracao.InfPagamento);
+        }
+
+        private static bool PossuiResponsavelPeloPagamento(Xml.CIOT.DeclaracaoOperacaoTransporte declaracao)
+        {
+            return declaracao.Contratante != null && declaracao.Contratante.ResponsavelPeloPagamento ||
+                   declaracao.Destinatario != null && declaracao.Destinatario.ResponsavelPeloPagamento ||
+                   declaracao.Subcontratante != null && declaracao.Subcontratante.ResponsavelPeloPagamento ||
+                   declaracao.Consignatario != null && declaracao.Consignatario.ResponsavelPeloPagamento;
+        }
+
+        private static void ValidarResponsabilidadeQuandoObrigatoria(Xml.CIOT.PessoaCIOT pessoa, string grupo)
+        {
+            if (pessoa != null && !pessoa.ResponsavelPeloPagamentoSpecified)
+            {
+                throw new ValidarXMLException("ResponsavelPeloPagamento é obrigatório no grupo " + grupo + " da eFrete.");
+            }
         }
 
         private static readonly string[] TiposEmbalagem = { "Bigbag", "Pallet", "Granel", "Container", "Saco", "Caixa", "Unitario", "Fardo" };

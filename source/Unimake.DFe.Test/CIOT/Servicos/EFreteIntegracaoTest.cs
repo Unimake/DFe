@@ -10,6 +10,7 @@ using RetificacaoServico = Unimake.Business.DFe.Servicos.CIOT.RetificacaoOperaca
 using ConsultaServico = Unimake.Business.DFe.Servicos.CIOT.ConsultarCIOTGerado;
 using ConsultarExcecaoServico = Unimake.Business.DFe.Servicos.CIOT.ConsultarExcecao;
 using EFreteMapper = Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete.EFreteMapper;
+using EFreteValidator = Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete.EFreteValidator;
 using ProvedorCIOTFactory = Unimake.Business.DFe.Servicos.CIOT.Provedores.ProvedorCIOTFactory;
 using OrigemCIOT = Unimake.Business.DFe.Xml.CIOT.Origem;
 
@@ -138,7 +139,14 @@ namespace Unimake.DFe.Test.CIOT.Servicos
         [Trait("DFe", "CIOT")]
         public void MapeiaGruposCompletosDaDeclaracao()
         {
-            var json = JObject.Parse(EFreteMapper.CriarJson(CriarDeclaracao(TipoOperacaoTransporteCIOT.CargaLotacao), Servico.CIOTDeclaracaoOperacaoTransporte, CriarConfiguracao()));
+            var declaracao = CriarDeclaracao(TipoOperacaoTransporteCIOT.CargaLotacao);
+            declaracao.TomadorServico = new PessoaCIOT
+            {
+                NomeOuRazaoSocial = "TOMADOR TESTE",
+                CpfOuCnpj = "11222333000181",
+                Endereco = new EnderecoCIOT { Bairro = "CENTRO", Rua = "RUA TOMADOR", Numero = "300", CEP = "87000000", CodigoMunicipio = "4115200" }
+            };
+            var json = JObject.Parse(EFreteMapper.CriarJson(declaracao, Servico.CIOTDeclaracaoOperacaoTransporte, CriarConfiguracao()));
 
             Assert.Equal("EMPRESA TESTE", json.SelectToken("Contratante.NomeOuRazaoSocial")?.Value<string>());
             Assert.Equal("PAG-001", json.SelectToken("Pagamentos[0].IdPagamentoCliente")?.Value<string>());
@@ -147,6 +155,9 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Equal("NF-001", json.SelectToken("Viagens[0].NotasFiscais[0].Numero")?.Value<string>());
             Assert.IsType<JArray>(json.SelectToken("Viagens[0].NotasFiscais"));
             Assert.Equal(5000d, json.SelectToken("Viagens[0].Valores.TotalOperacao")?.Value<double>());
+            Assert.Equal("11222333000181", json.SelectToken("TomadorServico.CpfOuCnpj")?.Value<string>());
+            Assert.Null(json.SelectToken("TomadorServico.RNTRC"));
+            Assert.Null(json.SelectToken("TomadorServico.ResponsavelPeloPagamento"));
         }
 
         [Fact]
@@ -300,6 +311,36 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             var xml = CriarDeclaracao(TipoOperacaoTransporteCIOT.CargaLotacao);
             xml.IdOperacaoCliente = null;
             Assert.Throws<Unimake.Exceptions.ValidarXMLException>(() => new DeclaracaoServico(xml, CriarConfiguracao()));
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void RecusaResponsavelPeloPagamentoNoTomadorServico()
+        {
+            var xml = CriarDeclaracao(TipoOperacaoTransporteCIOT.CargaLotacao);
+            xml.TomadorServico = new PessoaCIOT
+            {
+                NomeOuRazaoSocial = "TOMADOR TESTE",
+                CpfOuCnpj = "11222333000181",
+                Endereco = new EnderecoCIOT { Bairro = "CENTRO", Rua = "RUA TOMADOR", Numero = "300", CEP = "87000000", CodigoMunicipio = "4115200" },
+                ResponsavelPeloPagamento = true
+            };
+
+            var exception = Assert.Throws<Unimake.Exceptions.ValidarXMLException>(() => EFreteValidator.Validar(xml, Servico.CIOTDeclaracaoOperacaoTransporte, CriarConfiguracao()));
+
+            Assert.Contains("não deve ser informado no grupo TomadorServico", exception.Message);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void ExigeResponsavelPeloPagamentoEmGrupoPermitido()
+        {
+            var xml = CriarDeclaracao(TipoOperacaoTransporteCIOT.CargaLotacao);
+            xml.Contratante.ResponsavelPeloPagamento = false;
+
+            var exception = Assert.Throws<Unimake.Exceptions.ValidarXMLException>(() => EFreteValidator.Validar(xml, Servico.CIOTDeclaracaoOperacaoTransporte, CriarConfiguracao()));
+
+            Assert.Contains("deve ter ResponsavelPeloPagamento igual a true", exception.Message);
         }
 
         private static Configuracao CriarConfiguracao() => new Configuracao

@@ -171,7 +171,6 @@
 	<TomadorServico>
 		<NomeOuRazaoSocial>TOMADOR TAC TESTE</NomeOuRazaoSocial>
 		<CpfOuCnpj>44444444000144</CpfOuCnpj>
-		<RNTRC>444444444</RNTRC>
 		<Endereco>
 			<Bairro>TESTE</Bairro>
 			<Rua>RUA QUATRO</Rua>
@@ -195,7 +194,6 @@
 				<Numero>31113333</Numero>
 			</Fax>
 		</Telefones>
-		<ResponsavelPeloPagamento>false</ResponsavelPeloPagamento>
 	</TomadorServico>
 	<ObservacoesAoTransportador>
 		<Observacao>OPERACAO TAC AGREGADO</Observacao>
