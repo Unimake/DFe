@@ -44,6 +44,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Single(notasFiscais);
             Assert.False(requisicao.UsaCertificado);
             Assert.Equal("992000000126", servico.Result.IdOperacaoTransporte);
+            Assert.Equal("110", servico.Result.Codigo);
             Assert.Equal("PROTO-POST", servico.Result.Protocolo);
         }
 

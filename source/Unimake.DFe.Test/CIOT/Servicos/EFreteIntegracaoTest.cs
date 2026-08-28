@@ -195,16 +195,40 @@ namespace Unimake.DFe.Test.CIOT.Servicos
         [Trait("DFe", "CIOT")]
         public void NormalizaRetornosEFreteNoPadraoAtual()
         {
-            var declaracao = new RetDeclaracaoOperacaoTransporte().LerXML<RetDeclaracaoOperacaoTransporte>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126\",\"ProtocoloServico\":\"PROTO-1\"}", Servico.CIOTDeclaracaoOperacaoTransporte));
-            var consulta = new RetConsultarCIOTGerado().LerXML<RetConsultarCIOTGerado>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126\",\"EstadoCiot\":\"EmViagem\",\"ProtocoloServico\":\"PROTO-2\"}", Servico.CIOTConsultarCIOTGerado));
+            var declaracao = new RetDeclaracaoOperacaoTransporte().LerXML<RetDeclaracaoOperacaoTransporte>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126/XXXX\",\"ProtocoloServico\":\"PROTO-1\"}", Servico.CIOTDeclaracaoOperacaoTransporte));
+            var consulta = new RetConsultarCIOTGerado().LerXML<RetConsultarCIOTGerado>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126/XXXX\",\"EstadoCiot\":\"EmViagem\",\"ProtocoloServico\":\"PROTO-2\"}", Servico.CIOTConsultarCIOTGerado));
             var encerramento = new RetEncerramentoOperacaoTransporte().LerXML<RetEncerramentoOperacaoTransporte>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126\",\"Protocolo\":\"PROTO-3\"}", Servico.CIOTEncerramentoOperacaoTransporte));
 
             Assert.Equal("992000000126", declaracao.IdOperacaoTransporte);
+            Assert.Equal("110", declaracao.Codigo);
             Assert.Equal("PROTO-1", declaracao.Protocolo);
             Assert.Equal("EmViagem", consulta.EstadoCIOT);
             Assert.Equal("PROTO-2", consulta.Protocolo);
             Assert.Equal("PROTO-3", encerramento.Protocolo);
+            Assert.Equal("110", encerramento.Codigo);
             Assert.Equal(default, encerramento.DataEncerramento);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void EnviaSomenteOsDozeCaracteresDoCodigoNasOperacoesEFrete()
+        {
+            var configuracao = CriarConfiguracao();
+            var cancelamento = new CancelamentoOperacaoTransporte
+            {
+                CodigoIdentificacaoOperacao = "992000000126/XXXX",
+                MotivoCancelamento = "MOTIVO DE TESTE"
+            };
+            var encerramento = new EncerramentoOperacaoTransporte
+            {
+                CodigoIdentificacaoOperacao = "992000000126/XXXX"
+            };
+
+            var jsonCancelamento = JObject.Parse(EFreteMapper.CriarJson(cancelamento, Servico.CIOTCancelamentoOperacaoTransporte, configuracao));
+            var jsonEncerramento = JObject.Parse(EFreteMapper.CriarJson(encerramento, Servico.CIOTEncerramentoOperacaoTransporte, configuracao));
+
+            Assert.Equal("992000000126", jsonCancelamento.Value<string>("CodigoIdentificacaoOperacao"));
+            Assert.Equal("992000000126", jsonEncerramento.Value<string>("CodigoIdentificacaoOperacao"));
         }
 
         [Fact]
@@ -217,6 +241,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             var frota = new RetConsultarFrotaTransportador().LerXML<RetConsultarFrotaTransportador>(EFreteMapper.NormalizarRetorno(jsonSituacao, Servico.CIOTConsultarFrotaTransportador));
 
             Assert.Equal("PROTO-C", cancelamento.Protocolo);
+            Assert.Equal("110", cancelamento.Codigo);
             Assert.Equal(2026, cancelamento.DataCancelamento.Year);
             Assert.Equal(8, cancelamento.DataCancelamento.Month);
             Assert.Equal(12, cancelamento.DataCancelamento.Day);
