@@ -48,6 +48,12 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Retornos tipados devem expor propriedade `Result` desserializando `RetornoWSXML` com `XMLUtility.Deserializar<T>()` e retornando objeto com erro amigável quando não houver retorno.
 - Exceções de serviço devem seguir o padrão existente com `ThrowHelper.Instance.Throw(...)` e exceções específicas (`ValidarXMLException`, `CertificadoDigitalException`, `ValidatorDFeException`) quando aplicável.
 
+## Manutenção do CIOT
+
+- Use a skill `manutencao-ciot` ao implementar, corrigir ou revisar XML, XSD, serviços, provedores, autenticação, transporte, retornos, INTEROP, testes ou integração UniNFe do CIOT via ANTT/eFrete.
+- A ANTT é o baseline: ausência de `<ProvedorCIOT>` continua selecionando ANTT e nenhuma regra exclusiva da eFrete pode alterar seu endpoint, payload, schema ou retorno.
+- Diferenças eFrete devem permanecer no provedor e ser normalizadas na DLL. Em especial, sucessos precisam chegar aos consumidores no contrato CIOT existente, incluindo `Codigo=110` e mensagens estruturadas quando aplicável; não transfira essa compatibilização para o UniNFe.
+
 ## Configurações, schemas e recursos embutidos
 
 - Ao adicionar novo serviço, versão de schema, município ou provedor:
