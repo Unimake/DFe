@@ -35,7 +35,7 @@
           <xs:element minOccurs="0" maxOccurs="1" name="Destinatario" type="tns:PessoaCIOT" />
           <xs:element minOccurs="0" maxOccurs="1" name="Subcontratante" type="tns:PessoaCIOT" />
           <xs:element minOccurs="0" maxOccurs="1" name="Consignatario" type="tns:PessoaCIOT" />
-          <xs:element minOccurs="0" maxOccurs="1" name="TomadorServico" type="tns:PessoaCIOT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TomadorServico" type="tns:TomadorServicoCIOT" />
           <xs:element minOccurs="0" maxOccurs="1" name="ObservacoesAoTransportador" type="tns:ArrayOfString" />
           <xs:element minOccurs="0" maxOccurs="1" name="ObservacoesAoCredenciado" type="tns:ArrayOfString" />
           <xs:element minOccurs="0" maxOccurs="1" name="EntregaDocumentacao" type="xs:string" />
@@ -149,7 +149,7 @@
       <xs:element minOccurs="1" maxOccurs="1" name="ValorDaMercadoriaPorUnidade" type="xs:double" />
       <xs:element minOccurs="1" maxOccurs="1" name="CodigoNCMNaturezaCarga" type="tns:TNCM" />
       <xs:element minOccurs="0" maxOccurs="1" name="DescricaoDaMercadoria" type="xs:string" />
-      <xs:element minOccurs="1" maxOccurs="1" name="UnidadeDeMedidaDaMercadoria" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="UnidadeDeMedidaDaMercadoria" type="tns:TUnidadeMedidaMercadoria" />
       <xs:element minOccurs="1" maxOccurs="1" name="TipoDeCalculo" type="tns:TTipoCalculoQuebra" />
       <xs:element minOccurs="0" maxOccurs="1" name="ValorDoFretePorUnidadeDeMercadoria" type="xs:double" />
       <xs:element minOccurs="1" maxOccurs="1" name="QuantidadeDaMercadoriaNoEmbarque" type="xs:double" />
@@ -167,6 +167,12 @@
       <xs:enumeration value="SemQuebra" />
       <xs:enumeration value="QuebraSomenteUltrapassado" />
       <xs:enumeration value="QuebraIntegral" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TUnidadeMedidaMercadoria">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Kg" />
+      <xs:enumeration value="Tonelada" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ToleranciaPerdaCIOT">
@@ -336,7 +342,7 @@
       <xs:element minOccurs="0" maxOccurs="1" name="Endereco" type="tns:EnderecoCIOT" />
       <xs:element minOccurs="0" maxOccurs="1" name="EMail" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="Telefones" type="tns:TelefonesCIOT" />
-      <xs:element minOccurs="1" maxOccurs="1" name="ResponsavelPeloPagamento" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResponsavelPeloPagamento" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="EnderecoCIOT">
@@ -429,6 +435,15 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TomadorServicoCIOT">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="NomeOuRazaoSocial" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CpfOuCnpj" type="tns:TCpfCnpj" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Endereco" type="tns:EnderecoCIOT" />
+      <xs:element minOccurs="0" maxOccurs="1" name="EMail" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Telefones" type="tns:TelefonesCIOT" />
+    </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="TCpf">
     <xs:restriction base="xs:string"><xs:pattern value="[0-9]{11}" /></xs:restriction>

@@ -168,6 +168,9 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
             Assert.True(declaracao.InfIndicadoresOperacionais.IndAltoDesempenho);
             Assert.True(declaracao.InfIndicadoresOperacionais.IndRetornoVazio);
             Assert.True(declaracao.InfIndicadoresOperacionais.ComposicaoVeicular);
+            Assert.False(declaracao.TomadorServico.ResponsavelPeloPagamentoSpecified);
+            Assert.DoesNotContain(declaracao.GerarXML().GetElementsByTagName("ResponsavelPeloPagamento").Cast<XmlNode>(),
+                x => x.ParentNode.LocalName == "TomadorServico");
         }
 
         [Fact]

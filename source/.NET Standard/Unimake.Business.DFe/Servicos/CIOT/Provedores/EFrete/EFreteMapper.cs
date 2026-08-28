@@ -225,7 +225,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 ["Contratante"] = JObject.FromObject(contratante),
                 ["Subcontratante"] = xml.Subcontratante == null ? null : JObject.FromObject(xml.Subcontratante),
                 ["Consignatario"] = xml.Consignatario == null ? null : JObject.FromObject(xml.Consignatario),
-                ["TomadorServico"] = xml.TomadorServico == null ? null : JObject.FromObject(xml.TomadorServico),
+                ["TomadorServico"] = CriarTomadorServico(xml.TomadorServico),
                 ["Veiculos"] = xml.Veiculos == null ? null : JArray.FromObject(xml.Veiculos.Select(x => new { x.Placa })),
                 ["ContratantesCargaFracionada"] = tacAgregado || xml.DadosCarga?.ContratantesCargFrac == null ? null : JArray.FromObject(xml.DadosCarga.ContratantesCargFrac),
                 ["CodigoTipoCarga"] = tacAgregado || xml.DadosCarga == null || (int)xml.DadosCarga.CodigoTipoCarga == 0 ? null : new JValue((int)xml.DadosCarga.CodigoTipoCarga),
@@ -240,6 +240,19 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 ["TipoPagamento"] = xml.TipoPagamentoEFrete ?? MapearTipoPagamento(xml.InfPagamento?.FirstOrDefault()?.TipoPagamento)
             };
             return payload;
+        }
+
+        private static JObject CriarTomadorServico(PessoaCIOT tomadorServico)
+        {
+            if (tomadorServico == null)
+            {
+                return null;
+            }
+
+            var resultado = JObject.FromObject(tomadorServico);
+            resultado.Remove("RNTRC");
+            resultado.Remove("ResponsavelPeloPagamento");
+            return resultado;
         }
 
         private static JArray CriarViagens(List<OrigemDestino> viagens)
@@ -268,7 +281,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             return result;
         }
 
-        private static JObject CriarNotasFiscais(List<NotaFiscalCIOT> notasFiscais)
+        private static JArray CriarNotasFiscais(List<NotaFiscalCIOT> notasFiscais)
         {
             if (notasFiscais == null)
             {
@@ -286,7 +299,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 notas.Add(nota);
             }
 
-            return new JObject { ["NotaFiscal"] = notas };
+            return notas;
         }
 
         private static JArray CriarPagamentos(List<InfPagamento> pagamentos)

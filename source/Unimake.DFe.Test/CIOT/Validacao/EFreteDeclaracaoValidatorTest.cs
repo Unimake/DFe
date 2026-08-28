@@ -67,6 +67,18 @@ namespace Unimake.DFe.Test.CIOT.Validacao
             Assert.Contains("TipoPagamentoEFrete", excecao.Message);
         }
 
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void RejeitaUnidadeDeMedidaForaDoContratoEFrete()
+        {
+            var declaracao = LerDeclaracao();
+            declaracao.OrigemDestino[0].NotasFiscais[0].UnidadeDeMedidaDaMercadoria = "CX";
+
+            var excecao = Assert.Throws<ValidarXMLException>(() => EFreteValidator.Validar(declaracao, Servico.CIOTDeclaracaoOperacaoTransporte, CriarConfiguracao()));
+
+            Assert.Contains("UnidadeDeMedidaDaMercadoria", excecao.Message);
+        }
+
         private static Configuracao CriarConfiguracao() => new Configuracao
         {
             EFreteIntegrador = "INTEGRADOR-TESTE",
