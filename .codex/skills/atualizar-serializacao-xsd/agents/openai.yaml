@@ -1,0 +1,4 @@
+interface:
+  display_name: "Atualizar serialização por XSD"
+  short_description: "Analisa XSD, classes, impactos e testes ligados"
+  default_prompt: "Use $atualizar-serializacao-xsd para analisar profundamente os XSDs alterados, atualizar as classes afetadas e auditar impactos e testes em todo o projeto."
