@@ -411,3 +411,5 @@ MigrationBackup/
 /.codex/skills/*
 !/.codex/skills/manutencao-ciot/
 !/.codex/skills/manutencao-ciot/**
+!/.codex/skills/atualizar-serializacao-xsd/
+!/.codex/skills/atualizar-serializacao-xsd/**
