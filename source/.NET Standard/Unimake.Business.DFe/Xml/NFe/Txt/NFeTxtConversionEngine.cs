@@ -3772,9 +3772,13 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     //layout = "§Z|InfAdFisco|InfCpl"; //ok
                     // Grupo da TAG <infAdic>.
                     #region <InfAdic>
+                    var informacaoFisco = this.LerString(XmlTag<DFeNFe.InfAdic>(nameof(DFeNFe.InfAdic.InfAdFisco)), ObOp.Opcional, 1, 2000, false);
+                    var informacaoContribuinte = this.LerString(XmlTag<DFeNFe.InfAdic>(nameof(DFeNFe.InfAdic.InfCpl)), ObOp.Opcional, 1, 5000, false);
+                    if (string.IsNullOrEmpty(informacaoFisco) && string.IsNullOrEmpty(informacaoContribuinte)) return;
+
                     var informacoes = CriarInformacoesAdicionais();
-                    informacoes.InfAdFisco += this.LerString(XmlTag<DFeNFe.InfAdic>(nameof(DFeNFe.InfAdic.InfAdFisco)), ObOp.Opcional, 1, 2000, false);
-                    informacoes.InfCpl += this.LerString(XmlTag<DFeNFe.InfAdic>(nameof(DFeNFe.InfAdic.InfCpl)), ObOp.Opcional, 1, 5000, false);
+                    informacoes.InfAdFisco += informacaoFisco;
+                    informacoes.InfCpl += informacaoContribuinte;
                     #endregion
         }
 

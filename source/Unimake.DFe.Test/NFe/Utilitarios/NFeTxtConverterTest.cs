@@ -78,6 +78,7 @@ public class NFeTxtConverterTest
     [InlineData("000002191-nfe-orig.txt")]
     [InlineData("000000200-nfe.txt")]
     [InlineData("000062981-nfe-orig.txt")]
+    [InlineData("000000411-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -251,6 +252,39 @@ public class NFeTxtConverterTest
         xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
 
         ValidarItensImpostosETotaisDaNfce62981(xml);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve preservar a chave informada e ignorar o segmento Z vazio da NFCe 411.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarChaveEOmitirInformacoesAdicionaisVaziasDaNfce411()
+    {
+        const string chaveEsperada = "35260899999999000191650000000004111000007768";
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000000411-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var documento = Assert.Single(resultado.Documentos);
+        Assert.Equal(chaveEsperada, documento.Chave);
+
+        var xml = new XmlDocument();
+        xml.LoadXml(documento.Xml);
+        Assert.Equal("NFe" + chaveEsperada, xml.SelectSingleNode("//*[local-name()='infNFe']")?.Attributes?["Id"]?.Value);
+        Assert.Equal("00000776", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='cNF']")?.InnerText);
+        Assert.Equal("8", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='cDV']")?.InnerText);
+        Assert.Equal("65", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='mod']")?.InnerText);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='dest']"));
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='infAdic']"));
+        Assert.Equal("60", xml.SelectSingleNode("//*[local-name()='ICMS60']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("07", xml.SelectSingleNode("//*[local-name()='PISNT']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("07", xml.SelectSingleNode("//*[local-name()='COFINSNT']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("30.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+        Assert.Equal("30.00", xml.SelectSingleNode("//*[local-name()='detPag']/*[local-name()='vPag']")?.InnerText);
 
         var validacao = new ValidarSchema();
         validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
@@ -2007,7 +2041,16 @@ public class NFeTxtConverterTest
             "ACES CABO 1.2MT IPHONE",
             "PAO DE QUEIJO UN",
             "NESCAFE CHOCOLATE ALPINO",
-            "Op: LUCELIA"
+            "Op: LUCELIA",
+            "B.B. DE OLIVEIRA CENTRO AUTOMOTIVO - EPP",
+            "QUITANDA DOS PNEUS",
+            "379260061119",
+            "24531255000149",
+            "ESTRADA DE SAO BENTO",
+            "JD ODETE",
+            "08598100",
+            "1146458785",
+            "35260824531255000149650000000004111000007760"
         };
 
         var pasta = Path.GetDirectoryName(CaminhoArquivo("novaVersao-nfe.txt"));
