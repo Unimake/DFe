@@ -466,6 +466,22 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("gCompraGov")]
         public GCompraGov GCompraGov { get; set; }
 
+        /// <summary>
+        /// Tipo de pagamento ou pagamento antecipado.
+        /// </summary>
+        [XmlElement("tpPagAnt")]
+#if INTEROP
+        public TipoPagamentoAntecipadoCTe TpPagAnt { get; set; } = (TipoPagamentoAntecipadoCTe)(-1);
+#else
+        public TipoPagamentoAntecipadoCTe? TpPagAnt { get; set; }
+#endif
+
+        /// <summary>
+        /// Grupo de antecipação de pagamento.
+        /// </summary>
+        [XmlElement("gPagAntecipado")]
+        public CTe.GPagAntecipado GPagAntecipado { get; set; }
+
 #if INTEROP
 
         /// <summary>
@@ -521,6 +537,12 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public bool ShouldSerializeDhContField() => DhCont > DateTime.MinValue;
 
         public bool ShouldSerializeXJust() => !string.IsNullOrWhiteSpace(XJust);
+
+#if INTEROP
+        public bool ShouldSerializeTpPagAnt() => TpPagAnt != (TipoPagamentoAntecipadoCTe)(-1);
+#else
+        public bool ShouldSerializeTpPagAnt() => TpPagAnt != null;
+#endif
 
         #endregion
     }
@@ -725,6 +747,12 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public CRT? CRT { get; set; }
 #endif
 
+        /// <summary>
+        /// Inscrição do emitente na SUFRAMA.
+        /// </summary>
+        [XmlElement("ISUFEmit")]
+        public string ISUFEmit { get; set; }
+
         #region ShouldSerialize
 
 #if INTEROP
@@ -736,6 +764,8 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public bool ShouldSerializeIEST() => !string.IsNullOrWhiteSpace(IEST);
 
         public bool ShouldSerializeXFant() => !string.IsNullOrWhiteSpace(XFant);
+
+        public bool ShouldSerializeISUFEmit() => !string.IsNullOrWhiteSpace(ISUFEmit);
 
         #endregion
     }

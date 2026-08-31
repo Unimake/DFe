@@ -44,6 +44,11 @@
         <refDFeAnt>99999999999999999999999999999999999999999999</refDFeAnt>
         <refDFeAnt>88888888888888888888888888888888888888888888</refDFeAnt>
       </gCompraGov>
+      <tpPagAnt>3</tpPagAnt>
+      <gPagAntecipado>
+        <chDFePagAnt>11111111111111111111111111111111111111111111</chDFePagAnt>
+        <chDFePagAnt>22222222222222222222222222222222222222222222</chDFePagAnt>
+      </gPagAntecipado>
     </ide>
     <compl>
       <xCaracAd>xCaracAd1</xCaracAd>
@@ -110,6 +115,8 @@
         <UF>AC</UF>
         <fone>fone1</fone>
       </enderEmit>
+      <CRT>1</CRT>
+      <ISUFEmit>12345678</ISUFEmit>
     </emit>
     <rem>
       <CNPJ>00000000000000</CNPJ>
@@ -269,12 +276,17 @@
               <vDif>3.00</vDif>
             </gDif>
             <gDevTrib>
+              <pDevTrib>10.0000</pDevTrib>
               <vDevTrib>1.50</vDevTrib>
             </gDevTrib>
             <gRed>
               <pRedAliq>8.0000</pRedAliq>
               <pAliqEfet>2.3000</pAliqEfet>
             </gRed>
+            <gALCZFMCBS>
+              <pAliqEfetRegCBS>2.5000</pAliqEfetRegCBS>
+              <vTribRegCBS>25.00</vTribRegCBS>
+            </gALCZFMCBS>
             <vCBS>25.00</vCBS>
           </gCBS>
           <gTribRegular>

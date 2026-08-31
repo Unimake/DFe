@@ -37,6 +37,27 @@ namespace Unimake.DFe.Test.CTeOS.Serializacao
         }
 
         /// <summary>
+        /// Testar os campos de antecipação, SUFRAMA e CBS adicionados ao leiaute 4.00.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "CTeOS")]
+        public void SerializacaoDesserializacaoCTeOSNovosCamposRTC()
+        {
+            const string arqXML = @"..\..\..\CTeOS\Resources\4_00_CTeOS_ModalRodoOS.xml";
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = Business.DFe.Utility.XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTeOS.CTeOS>(doc);
+
+            Assert.Equal(TipoPagamentoAntecipadoCTe.FornecimentoPagamentoRealizadoAnteriormente, xml.InfCTe.Ide.TpPagAnt);
+            Assert.Equal(2, xml.InfCTe.Ide.GPagAntecipado.ChDFePagAnt.Count);
+            Assert.Equal("12345678", xml.InfCTe.Emit.ISUFEmit);
+            Assert.Equal(10d, xml.InfCTe.Imp.IBSCBS.GIBSCBS.GCBS.GDevTrib.PDevTrib);
+            Assert.Equal(2.5d, xml.InfCTe.Imp.IBSCBS.GIBSCBS.GCBS.GALCZFMCBS.PAliqEfetRegCBS);
+            Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
         /// Testar a serialização e desserialização do XML CteOSProc
         /// </summary>
         /// <param name="arqXML">Arquivo a ser desserializado</param>

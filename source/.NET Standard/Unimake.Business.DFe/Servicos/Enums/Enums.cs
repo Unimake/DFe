@@ -17660,6 +17660,28 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion TipoPagamentoAntecipadoNFCom
 
+    #region TipoPagamentoAntecipadoCTe
+
+    /// <summary>
+    /// Tipo de pagamento ou pagamento antecipado do CTe
+    /// </summary>
+    public enum TipoPagamentoAntecipadoCTe
+    {
+        /// <summary>
+        /// 1 - Pagamento antecipado
+        /// </summary>
+        [XmlEnum("1")]
+        PagamentoAntecipado = 1,
+
+        /// <summary>
+        /// 3 - Fornecimento com pagamento realizado anteriormente
+        /// </summary>
+        [XmlEnum("3")]
+        FornecimentoPagamentoRealizadoAnteriormente = 3
+    }
+
+    #endregion TipoPagamentoAntecipadoCTe
+
     #region IndicadorDoacao
 
     /// <summary>
