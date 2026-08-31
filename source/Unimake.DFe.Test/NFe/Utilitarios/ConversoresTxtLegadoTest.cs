@@ -67,6 +67,32 @@ public class ConversoresTxtLegadoTest
     }
 
     [Fact]
+    public void ConverteGeracaoDeChavePreservandoContratoLegado()
+    {
+        var arquivo = Criar("nNF|104\r\ncNF|67182188\r\nserie|1\r\nAAMM|0310\r\nCNPJ|12345678000195\r\nmod|55");
+        try
+        {
+            var resultado = new Unimake.Business.DFe.Xml.DFe.GerarChaveDFeTxtConverter().Converter(arquivo, Contexto);
+
+            Assert.True(resultado.Sucesso);
+            Assert.Equal(
+                "<gerarChave><UF>41</UF><tpEmis>1</tpEmis><nNF>104</nNF><cNF>67182188</cNF><serie>1</serie><AAMM>0310</AAMM><CNPJ>12345678000195</CNPJ><mod>55</mod></gerarChave>",
+                resultado.Xml);
+        }
+        finally { File.Delete(arquivo); }
+    }
+
+    [Fact]
+    public void ConverteRetornoDaGeracaoDeChaveParaTxt()
+    {
+        const string chave = "51031012345678000195550010000001041671821883";
+        var retorno = new Unimake.Business.DFe.Xml.DFe.GerarChaveDFeTxtConverter()
+            .ConverterRetorno("<retGerarChave><chaveNFe>" + chave + "</chaveNFe></retGerarChave>");
+
+        Assert.Equal(chave, retorno);
+    }
+
+    [Fact]
     public void ConverteInutilizacao()
     {
         var arquivo = Criar("ano|26\r\nCNPJ|12345678000195\r\nserie|1\r\nnNFIni|10\r\nnNFFin|12\r\nxJust|Justificativa sintética válida para inutilização\r\n");
