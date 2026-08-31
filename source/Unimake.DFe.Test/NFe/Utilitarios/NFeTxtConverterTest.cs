@@ -77,6 +77,7 @@ public class NFeTxtConverterTest
     [InlineData("000000892-nfe.txt")]
     [InlineData("000002191-nfe-orig.txt")]
     [InlineData("000000200-nfe.txt")]
+    [InlineData("000062981-nfe-orig.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -235,6 +236,26 @@ public class NFeTxtConverterTest
         Assert.False(validacao.Success);
         Assert.Contains("Signature", validacao.ErrorMessage);
         Assert.DoesNotContain("CST", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve preservar os itens, impostos, totais e pagamento da NFCe 62981.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarItensImpostosETotaisDaNfce62981()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000062981-nfe-orig.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        ValidarItensImpostosETotaisDaNfce62981(xml);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
     }
 
     /// <summary>
@@ -1975,7 +1996,18 @@ public class NFeTxtConverterTest
             "61182144000109",
             "ESTRADA ARTUR FORNAZARI",
             "LIMOEIRO",
-            "Referente Pedido Nr.: 828"
+            "Referente Pedido Nr.: 828",
+            "REDE CAFE TANTA LTDA",
+            "CAFE TANTA",
+            "224291586114",
+            "30985309000149",
+            "AVENIDA PROFESSOR JOSE PEDRETTI NETO",
+            "CONJ HAB FREI FIDELI",
+            "01438136127",
+            "ACES CABO 1.2MT IPHONE",
+            "PAO DE QUEIJO UN",
+            "NESCAFE CHOCOLATE ALPINO",
+            "Op: LUCELIA"
         };
 
         var pasta = Path.GetDirectoryName(CaminhoArquivo("novaVersao-nfe.txt"));
@@ -2072,6 +2104,28 @@ public class NFeTxtConverterTest
             nomes.Append(filho.LocalName);
         }
         return nomes.ToString();
+    }
+
+    private static void ValidarItensImpostosETotaisDaNfce62981(XmlDocument xml)
+    {
+        Assert.Equal("65", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='mod']")?.InnerText);
+        Assert.Equal(3, xml.SelectNodes("//*[local-name()='det']").Count);
+        Assert.Equal(3, xml.SelectNodes("//*[local-name()='prod']/*[local-name()='CEST']").Count);
+        Assert.Equal(1, xml.SelectNodes("//*[local-name()='ICMS60']").Count);
+        Assert.Equal(2, xml.SelectNodes("//*[local-name()='ICMS00']").Count);
+        Assert.Equal(3, xml.SelectNodes("//*[local-name()='PISNT']/*[local-name()='CST' and text()='07']").Count);
+        Assert.Equal(3, xml.SelectNodes("//*[local-name()='COFINSNT']/*[local-name()='CST' and text()='07']").Count);
+        Assert.Equal(3, xml.SelectNodes("//*[local-name()='IBSCBS']").Count);
+        Assert.Equal("18.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("3.24", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vICMS']")?.InnerText);
+        Assert.Equal("107.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vProd']")?.InnerText);
+        Assert.Equal("107.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+        Assert.Equal("27.28", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vTotTrib']")?.InnerText);
+        Assert.Equal("103.76", xml.SelectSingleNode("//*[local-name()='IBSCBSTot']/*[local-name()='vBCIBSCBS']")?.InnerText);
+        Assert.Equal("107.00", xml.SelectSingleNode("//*[local-name()='vNFTot']")?.InnerText);
+        Assert.Equal("04", xml.SelectSingleNode("//*[local-name()='detPag']/*[local-name()='tPag']")?.InnerText);
+        Assert.Equal("107.00", xml.SelectSingleNode("//*[local-name()='detPag']/*[local-name()='vPag']")?.InnerText);
+        Assert.Equal("2", xml.SelectSingleNode("//*[local-name()='detPag']/*[local-name()='card']/*[local-name()='tpIntegra']")?.InnerText);
     }
 
     private static void ValidarReferenciaProdutorItensEPagamentosDaNfe892(XmlDocument xml)
