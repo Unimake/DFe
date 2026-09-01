@@ -578,6 +578,15 @@
 			<GerarQrCode>true</GerarQrCode>
 			<GrupoUrl>
 				<Grupo>
+					<UF>AC</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaznet.ac.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaznet.ac.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.hml.sefaznet.ac.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaznet.ac.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
 					<UF>AL</UF>
 					<Urls>
 						<UrlChaveHomologacao>www.sefaz.al.gov.br/nfce/consulta</UrlChaveHomologacao>
@@ -826,6 +835,15 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
 			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaznet.ac.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaznet.ac.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.hml.sefaznet.ac.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaznet.ac.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
 				<Grupo>
 					<UF>AL</UF>
 					<Urls>

@@ -106,6 +106,24 @@ namespace Unimake.DFe.Test.Utility.Validacao
             Assert.Equal("http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp", configuracao.UrlQrCodeProducao);
         }
 
+        [Theory]
+        [InlineData("enviNFe")]
+        [InlineData("NFe")]
+        public void DeveConterUrlsQRCodeNFCeParaAcre(string tagRaiz)
+        {
+            var catalogo = CarregarCatalogo();
+            var servico = catalogo.SelectSingleNode($"ServicosValidacao/NFCe/Servico[@tagRaiz='{tagRaiz}' and @versao='4.00']");
+            var configuracao = new Configuracao();
+
+            Assert.NotNull(servico);
+            InvocarAtribuirUrl(servico, UFBrasil.AC, configuracao);
+
+            Assert.Equal("www.sefaznet.ac.gov.br/nfce/consulta", configuracao.UrlChaveHomologacao);
+            Assert.Equal("www.sefaznet.ac.gov.br/nfce/consulta", configuracao.UrlChaveProducao);
+            Assert.Equal("http://www.hml.sefaznet.ac.gov.br/nfce/qrcode", configuracao.UrlQrCodeHomologacao);
+            Assert.Equal("http://www.sefaznet.ac.gov.br/nfce/qrcode", configuracao.UrlQrCodeProducao);
+        }
+
         [Fact]
         public void DeveResolverServicoSemVersaoComoFallback()
         {
