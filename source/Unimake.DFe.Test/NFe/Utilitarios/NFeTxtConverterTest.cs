@@ -79,6 +79,7 @@ public class NFeTxtConverterTest
     [InlineData("000000200-nfe.txt")]
     [InlineData("000062981-nfe-orig.txt")]
     [InlineData("000000411-nfe.txt")]
+    [InlineData("000027937-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -290,6 +291,34 @@ public class NFeTxtConverterTest
         validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
         Assert.False(validacao.Success);
         Assert.Contains("Signature", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve omitir modBCST quando o campo opcional estiver vazio no ICMSSN900 da NFe complementar 27937.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveOmitirModalidadeStVaziaDoIcmsSn900DaNfeComplementar27937()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000027937-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var icms = xml.SelectSingleNode("//*[local-name()='ICMSSN900']");
+
+        Assert.NotNull(icms);
+        Assert.Equal("2", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='finNFe']")?.InnerText);
+        Assert.Equal("3", icms.SelectSingleNode("*[local-name()='modBC']")?.InnerText);
+        Assert.Equal("269.00", icms.SelectSingleNode("*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("18.0000", icms.SelectSingleNode("*[local-name()='pICMS']")?.InnerText);
+        Assert.Equal("9.98", icms.SelectSingleNode("*[local-name()='vICMS']")?.InnerText);
+        Assert.Null(icms.SelectSingleNode("*[local-name()='modBCST']"));
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.DoesNotContain("ModalidadeBaseCalculoICMSST", validacao.ErrorMessage);
     }
 
     /// <summary>
@@ -2050,7 +2079,19 @@ public class NFeTxtConverterTest
             "JD ODETE",
             "08598100",
             "1146458785",
-            "35260824531255000149650000000004111000007760"
+            "35260824531255000149650000000004111000007760",
+            "ELEB-MATERIAIS ELETRICOS LTDA",
+            "0010379490048",
+            "08746947000158",
+            "RUA MARTINS BARBOSA",
+            "36090300",
+            "3232221948",
+            "POSTO ECO LTDA",
+            "3670838040021",
+            "03845434000180",
+            "AV BRASIL",
+            "36081500",
+            "31260608746947000158550000000274421121715254"
         };
 
         var pasta = Path.GetDirectoryName(CaminhoArquivo("novaVersao-nfe.txt"));
