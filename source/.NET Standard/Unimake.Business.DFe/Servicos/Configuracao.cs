@@ -1031,6 +1031,16 @@ namespace Unimake.Business.DFe.Servicos
         public bool ProxyAutoDetect { get; set; } = false;
 
         /// <summary>
+        /// Nome, endereço IP ou URI HTTP/HTTPS do servidor de proxy manual
+        /// </summary>
+        public string ProxyServer { get; set; }
+
+        /// <summary>
+        /// Porta do servidor de proxy manual
+        /// </summary>
+        public int ProxyPort { get; set; }
+
+        /// <summary>
         /// Senha do usuário para conexão do servidor de proxy
         /// </summary>
         public string ProxyPassword { get; set; }

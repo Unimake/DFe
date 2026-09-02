@@ -102,10 +102,7 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
                 httpWebRequest.ClientCertificates.Add(request.Certificate);
             }
 
-            if (request.Proxy != null)
-            {
-                httpWebRequest.Proxy = request.Proxy;
-            }
+            httpWebRequest.Proxy = request.UseProxy ? request.Proxy : null;
 
             return httpWebRequest;
         }

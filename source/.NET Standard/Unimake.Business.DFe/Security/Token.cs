@@ -51,8 +51,9 @@ namespace Unimake.Business.DFe.Security
         /// <param name="senha"></param>
         /// <param name="clientID"></param>
         /// <param name="clientSecret"></param>
+        /// <param name="useProxy">Indica se a requisição deve utilizar o proxy informado.</param>
         /// <returns></returns>
-        public static Token GerarToken(IWebProxy proxy, string usuario, string senha, string clientID, string clientSecret)
+        public static Token GerarToken(IWebProxy proxy, string usuario, string senha, string clientID, string clientSecret, bool useProxy = true)
         {
             var url = "http://agiliblue.agilicloud.com.br/api/";
             string result = string.Empty;
@@ -80,10 +81,11 @@ namespace Unimake.Business.DFe.Security
                 var request = WebRequest.Create(url);
 
                 request.Method = "POST";
+                request.Proxy = useProxy ? proxy : null;
                 //request.KeepAlive = true;
                 request.Credentials = CredentialCache.DefaultCredentials;
 
-                if (proxy != null)
+                if (useProxy && proxy != null)
                 {
                     request.UseDefaultCredentials = false;
                     request.Proxy = proxy;

@@ -42,7 +42,7 @@ namespace Unimake.Business.DFe.Security
         /// <summary>
         /// Retorna um token válido do cache, ou adquire um novo via AppId/Secret.
         /// </summary>
-        public static string GetOrAcquireToken(string appId, string secret, bool useHomolog, string loginUrlProducao, string loginUrlHomologacao)
+        public static string GetOrAcquireToken(string appId, string secret, bool useHomolog, string loginUrlProducao, string loginUrlHomologacao, bool useProxy, IWebProxy proxy)
         {
             if (string.IsNullOrWhiteSpace(appId) || string.IsNullOrWhiteSpace(secret))
             {
@@ -74,6 +74,7 @@ namespace Unimake.Business.DFe.Security
             request.ContentType = "application/json";
             request.Accept = "application/json";
             request.ContentLength = bytes.Length;
+            request.Proxy = useProxy ? proxy : null;
 
             using (var reqStream = request.GetRequestStream())
             {

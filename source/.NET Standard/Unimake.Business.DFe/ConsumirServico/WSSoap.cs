@@ -36,6 +36,8 @@ namespace Unimake.Business.DFe
 
         #region Public Properties
 
+        internal bool UseProxy { get; set; } = true;
+
 
         /// <summary>
         /// Propriedade criada para tratar municípios com mais de um CDATA no SOAP.

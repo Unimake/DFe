@@ -41,6 +41,8 @@ namespace Unimake.Business.DFe
 
         internal bool DesabilitaSelecaoAutomaticaCertificadoCliente { get; set; }
 
+        internal bool UseProxy { get; set; } = true;
+
         /// <summary>
         /// Tempo limite da requisição HTTP, em milissegundos. Zero utiliza o padrão do HttpClient.
         /// </summary>
