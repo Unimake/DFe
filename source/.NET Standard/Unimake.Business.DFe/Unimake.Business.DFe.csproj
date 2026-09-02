@@ -475,6 +475,7 @@
 		<None Remove="Servicos\Config\NFSe\CampoLargoPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoMouraoPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoNovoParecisMT.xml" />
+		<None Remove="Servicos\Config\NFSe\CaceresMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CanaaDosCarajasPA.xml" />
 		<None Remove="Servicos\Config\NFSe\CandeiasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoasRS.xml" />
@@ -1981,6 +1982,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\OrizonaGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PontalinaGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\CaceresMT.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ProfessorJamilGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantaCruzDoCapibaribePE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantanaDoLivramentoRS.xml" />

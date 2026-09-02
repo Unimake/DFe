@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<GerarNfse versao="1.01">
+			<Descricao>Envio do DPS - Síncrono</Descricao>
+			<RequestURIProducao>https://cidadaoonline.caceres.rlz.com.br/nota/nacional/nfse</RequestURIProducao>
+			<RequestURIHomologacao>https://caceres.prefeitura.rlz.com.br/nota/nacional/nfse</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</GerarNfse>
+		<CancelarNfse versao="1.01">
+			<Descricao>Envio do cancelamento de NFSe</Descricao>
+			<RequestURIProducao>https://cidadaoonline.caceres.rlz.com.br/nota/nacional/nfse/{Chave}/eventos</RequestURIProducao>
+			<RequestURIHomologacao>https://caceres.prefeitura.rlz.com.br/nota/nacional/nfse/{Chave}/eventos</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</CancelarNfse>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao>https://cidadaoonline.caceres.rlz.com.br/nota/nacional/nfse/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://caceres.prefeitura.rlz.com.br/nota/nacional/nfse/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfse>
+		<ConsultarNfsePorRps versao="1.01">
+			<Descricao>Consultar NFSe por DPS</Descricao>
+			<RequestURIProducao>https://cidadaoonline.caceres.rlz.com.br/nota/nacional/dps/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://caceres.prefeitura.rlz.com.br/nota/nacional/dps/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>chaveAcesso</WebTagRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+		</ConsultarNfsePorRps>
+	</Servicos>
+</Configuracoes>
