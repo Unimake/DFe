@@ -17,6 +17,7 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 Cookies = cookies,
                 Timeout = soap.TimeOutWebServiceConnect,
                 ContentType = string.IsNullOrEmpty(soap.ContentType) ? "application/soap+xml; charset=utf-8;" : soap.ContentType,
+                UseProxy = soap.UseProxy,
                 Proxy = soap.Proxy,
                 Certificate = certificado,
                 UseCertificate = soap.UsaCertificadoDigital,

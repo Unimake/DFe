@@ -257,7 +257,11 @@ namespace Unimake.Business.DFe.Servicos.EBoleto
                 Configuracoes.Secret,
                 Configuracoes.TipoAmbiente != TipoAmbiente.Producao,
                 Configuracoes.RequestURILoginProducao,
-                Configuracoes.RequestURILoginHomologacao);
+                Configuracoes.RequestURILoginHomologacao,
+                Configuracoes.HasProxy,
+                Configuracoes.HasProxy
+                    ? Utility.Proxy.DefinirServidor(Configuracoes.ProxyServer, Configuracoes.ProxyPort, Configuracoes.ProxyAutoDetect, Configuracoes.ProxyUser, Configuracoes.ProxyPassword)
+                    : null);
 
             Configuracoes.MunicipioToken = "Bearer " + token;
         }
