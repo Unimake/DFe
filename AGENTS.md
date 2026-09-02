@@ -48,6 +48,15 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Retornos tipados devem expor propriedade `Result` desserializando `RetornoWSXML` com `XMLUtility.Deserializar<T>()` e retornando objeto com erro amigável quando não houver retorno.
 - Exceções de serviço devem seguir o padrão existente com `ThrowHelper.Instance.Throw(...)` e exceções específicas (`ValidarXMLException`, `CertificadoDigitalException`, `ValidatorDFeException`) quando aplicável.
 
+## Proxy e transportes HTTP
+
+- `Configuracao.HasProxy` é a decisão explícita dos consumidores de alto nível. Quando `false`, mappers e transportes criados a partir de `Configuracao` devem forçar conexão direta; `HttpWebRequest` e handlers não podem herdar silenciosamente o proxy do sistema.
+- `ProxyAutoDetect = true` usa o proxy do sistema sem exigir `ProxyServer`/`ProxyPort`. No modo manual, valide servidor/URI HTTP(S) sem caminho/query/fragmento e porta entre 1 e 65535.
+- Credenciais explícitas de proxy exigem usuário e senha em conjunto. Não use `DefaultCredentials`/`UseDefaultCredentials` como fallback para os fluxos originados de `Configuracao`.
+- Aplique a mesma política em SOAP, API com `HttpClientHandler`, WinHTTP, preparação TLS e autenticações auxiliares que criem request próprio, como eFrete, eBoleto, PIX e uMessenger. Ao adicionar transporte ou token/login, procure antes um mapper/executor compartilhado e inclua teste offline.
+- Preserve compatibilidade das APIs de baixo nível (`WSSoap`, `APIConfig` e overloads públicos existentes): defaults históricos podem continuar selecionando proxy do sistema, mas os mappers de `Configuracao` devem carregar uma flag explícita até o request final.
+- Nunca registre senha/usuário de proxy. A identidade usada no diagnóstico deve incluir modo, endpoint, porta e credenciais somente por derivação irreversível; mudança de endpoint não pode reutilizar cache de outro proxy.
+
 ## Manutenção do CIOT
 
 - Use a skill `manutencao-ciot` ao implementar, corrigir ou revisar XML, XSD, serviços, provedores, autenticação, transporte, retornos, INTEROP, testes ou integração UniNFe do CIOT via ANTT/eFrete.
@@ -100,6 +109,7 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Para bug fixes, prefira criar teste em `BugFixes` ou no DFe afetado, com recurso XML mínimo que reproduza o problema.
 - Ao implementar algo novo ou adaptar comportamento existente, execute somente os testes novos ou alterados. Não rode toda a suíte por padrão, pois ela é grande e demorada.
 - Se precisar validar regressão de um DFe específico, filtre pelos testes do DFe ou pela classe/método afetado. Rode todos os testes apenas quando a mudança atingir infraestrutura compartilhada, serialização base, assinatura, transporte, validação global ou quando isso for solicitado explicitamente.
+- A suíte integral contém casos que exigem certificado A1 e serviços externos. Para transporte compartilhado, execute-a somente em ambiente preparado; sem esses recursos, não enfraqueça validação/certificado nem trate a falha ambiental como regressão. Registre a limitação e mantenha verdes os testes determinísticos do transporte, o build principal e o `UniNFe.Test` Debug.
 - Sempre que executar testes unitários da DLL, execute também os testes unitários do projeto `C:\projetos\github\UniNFe\source\UniNFe.Test\UniNFe.Test.csproj` em `Debug`. Nessa configuração, os projetos do UniNFe usam `ProjectReference` para este checkout e validam a DLL recém-alterada; aplique no UniNFe um filtro correspondente ao escopo testado na DLL quando houver uma suíte focada equivalente.
 
 ## Massas TXT de regressão e comparação antes/depois
