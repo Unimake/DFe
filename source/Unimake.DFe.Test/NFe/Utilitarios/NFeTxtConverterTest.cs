@@ -80,6 +80,10 @@ public class NFeTxtConverterTest
     [InlineData("000062981-nfe-orig.txt")]
     [InlineData("000000411-nfe.txt")]
     [InlineData("000027937-nfe.txt")]
+    [InlineData("RTC2026-NFe621-nfe.txt")]
+    [InlineData("RTC2026-NFe622-nfe.txt")]
+    [InlineData("RTC2026-NFe623-nfe.txt")]
+    [InlineData("RTC2026-NFe624-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -100,6 +104,55 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// Deve preservar os quatro modelos RTC de entrada, venda, devolução e compra.
+    /// </summary>
+    [Theory]
+    [InlineData("RTC2026-NFe621-nfe.txt", "41260799999999000191550010000006211152363383", "1917", "410", "410029", "19500.00", "0.00", "01", null, "ICMS90")]
+    [InlineData("RTC2026-NFe622-nfe.txt", "41260799999999000191550010000006221674788693", "5115", "000", "000001", "20000.00", "20000.00", "01", null, "ICMS20")]
+    [InlineData("RTC2026-NFe623-nfe.txt", "41260799999999000191550010000006231197214012", "5919", "410", "410029", "19500.00", "0.00", "90", "41260799999999000191550010000006211152363383", "ICMS90")]
+    [InlineData("RTC2026-NFe624-nfe.txt", "41260799999999000191550010000006241719639319", "1113", "410", "410017", "19500.00", "0.00", "01", null, "ICMS90")]
+    public void ConverterDevePreservarModelosRtc2026(
+        string nomeArquivo,
+        string chaveEsperada,
+        string cfopEsperado,
+        string cstRtcEsperado,
+        string classificacaoTributariaEsperada,
+        string valorNotaEsperado,
+        string baseRtcEsperada,
+        string formaPagamentoEsperada,
+        string referenciaEsperada,
+        string grupoIcmsEsperado)
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo(nomeArquivo));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var documento = Assert.Single(resultado.Documentos);
+        Assert.Equal(chaveEsperada, documento.Chave);
+
+        var xml = new XmlDocument();
+        xml.LoadXml(documento.Xml);
+        Assert.Equal("NFe" + chaveEsperada, xml.SelectSingleNode("//*[local-name()='infNFe']")?.Attributes?["Id"]?.Value);
+        Assert.Equal(cfopEsperado, xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='CFOP']")?.InnerText);
+        Assert.Equal(cstRtcEsperado, xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal(classificacaoTributariaEsperada, xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='cClassTrib']")?.InnerText);
+        Assert.Equal(valorNotaEsperado, xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+        Assert.Equal(baseRtcEsperada, xml.SelectSingleNode("//*[local-name()='IBSCBSTot']/*[local-name()='vBCIBSCBS']")?.InnerText);
+        Assert.Equal(formaPagamentoEsperada, xml.SelectSingleNode("//*[local-name()='detPag']/*[local-name()='tPag']")?.InnerText);
+        Assert.NotNull(xml.SelectSingleNode("//*[local-name()='" + grupoIcmsEsperado + "']"));
+        Assert.Equal(referenciaEsperada, xml.SelectSingleNode("//*[local-name()='NFref']/*[local-name()='refNFe']")?.InnerText);
+        Assert.Equal("RESPONSAVEL TECNICO TESTE", xml.SelectSingleNode("//*[local-name()='infRespTec']/*[local-name()='xContato']")?.InnerText);
+        Assert.Equal("AAAAAAAAAAAAAAAAAAAAAAAAAAA=", xml.SelectSingleNode("//*[local-name()='infRespTec']/*[local-name()='hashCSRT']")?.InnerText);
+
+        if (nomeArquivo == "RTC2026-NFe622-nfe.txt")
+        {
+            Assert.Equal("1", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='indBemMovelUsado']")?.InnerText);
+            Assert.Equal("95.0000", xml.SelectSingleNode("//*[local-name()='ICMS20']/*[local-name()='pRedBC']")?.InnerText);
+            Assert.Equal("20.00", xml.SelectSingleNode("//*[local-name()='IBSCBSTot']/*[local-name()='gIBS']/*[local-name()='vIBS']")?.InnerText);
+            Assert.Equal("180.00", xml.SelectSingleNode("//*[local-name()='IBSCBSTot']/*[local-name()='gCBS']/*[local-name()='vCBS']")?.InnerText);
+        }
     }
 
     /// <summary>
