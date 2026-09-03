@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RetObterOperacaoTransportePdf xmlns="http://www.antt.gov.br/ciot">
+  <temp>
+    <error>PDF001</error>
+    <message>Operação não localizada.</message>
+  </temp>
+  <Codigo>PDF001</Codigo>
+  <Mensagem>Operação não localizada.</Mensagem>
+  <Sucesso>false</Sucesso>
+  <Versao>1</Versao>
+</RetObterOperacaoTransportePdf>

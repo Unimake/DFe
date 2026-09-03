@@ -17,13 +17,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.ANTT
 
         public string ObterSchemaArquivo(Servico servico) => null;
 
+        public string ObterSchemaRetornoArquivo(Servico servico) => null;
+
         public bool EnviaConteudoEmRequisicaoGet => false;
 
         public bool RecriaConteudoAposPrepararExecucao => false;
 
         public void Configurar(Configuracao configuracao, string nomeServico, Servico servico)
         {
-            if (servico == Servico.CIOTGravarMotorista || servico == Servico.CIOTGravarProprietario || servico == Servico.CIOTGravarVeiculo)
+            if (servico == Servico.CIOTGravarMotorista || servico == Servico.CIOTGravarProprietario || servico == Servico.CIOTGravarVeiculo || servico == Servico.CIOTObterOperacaoTransportePdf)
             {
                 throw new NotSupportedException("O serviço " + servico + " é exclusivo da eFrete. Informe <ProvedorCIOT>EFrete</ProvedorCIOT> no XML de envio.");
             }

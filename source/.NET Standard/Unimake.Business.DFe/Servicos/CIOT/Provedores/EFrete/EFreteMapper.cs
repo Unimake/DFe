@@ -7,6 +7,7 @@ using System.Linq;
 using System.Xml;
 using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
 {
@@ -84,6 +85,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     break;
                 case Servico.CIOTGravarVeiculo:
                     payload = CriarVeiculo((Xml.CIOT.GravarVeiculo)xml);
+                    payload["Versao"] = 1;
+                    break;
+                case Servico.CIOTObterOperacaoTransportePdf:
+                    var pdf = (Xml.CIOT.ObterOperacaoTransportePdf)xml;
+                    payload = new JObject
+                    {
+                        ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacao(pdf.CodigoIdentificacaoOperacao),
+                        ["DocumentoViagem"] = pdf.DocumentoViagem
+                    };
                     payload["Versao"] = 1;
                     break;
                 default:
@@ -188,6 +198,37 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     resultado = new RetGravarVeiculo
                     {
                         Veiculo = ConverterVeiculo(Localizar(root, "Veiculo")),
+                        Sucesso = sucesso,
+                        Versao = ValorInt(root, "Versao"),
+                        Codigo = codigo,
+                        Mensagem = mensagem,
+                        Temp = erro ? CriarTemp(codigo, mensagem) : null
+                    };
+                    break;
+                case Servico.CIOTObterOperacaoTransportePdf:
+                    if (Localizar(root, "Sucesso") == null)
+                    {
+                        throw new ValidarXMLException("A eFrete retornou uma resposta vazia ou sem a propriedade Sucesso ao obter o PDF da operação de transporte.");
+                    }
+                    var conteudoPdf = Valor(root, "Pdf");
+                    if (sucesso)
+                    {
+                        if (string.IsNullOrWhiteSpace(conteudoPdf))
+                        {
+                            throw new ValidarXMLException("A eFrete informou sucesso, mas não retornou o PDF da operação de transporte.");
+                        }
+                        try
+                        {
+                            Convert.FromBase64String(conteudoPdf);
+                        }
+                        catch (FormatException)
+                        {
+                            throw new ValidarXMLException("A eFrete retornou um conteúdo inválido na propriedade Pdf.");
+                        }
+                    }
+                    resultado = new RetObterOperacaoTransportePdf
+                    {
+                        Pdf = conteudoPdf,
                         Sucesso = sucesso,
                         Versao = ValorInt(root, "Versao"),
                         Codigo = codigo,

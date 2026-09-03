@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObterOperacaoTransportePdf xmlns="http://www.antt.gov.br/ciot">
+  <ProvedorCIOT>EFrete</ProvedorCIOT>
+  <CodigoIdentificacaoOperacao>992000000126</CodigoIdentificacaoOperacao>
+  <DocumentoViagem>VIAGEM-TESTE-001</DocumentoViagem>
+</ObterOperacaoTransportePdf>

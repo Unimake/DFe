@@ -827,6 +827,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Envio de NFSe com indicativo de decisão judicial")]
         NFSeGerarNfseIndicativoDecisaoJudicial = 132,
 
+        /// <summary>
+        /// 133 - CIOT eFrete - Obter o PDF da operação de transporte
+        /// </summary>
+        [Description("CIOT eFrete - Obter operação de transporte PDF")]
+        CIOTObterOperacaoTransportePdf = 133,
+
         #endregion
 
         #region Gerais

@@ -135,8 +135,22 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             {
                 RetornoWSXML = retornoNormalizado;
                 RetornoWSString = retornoNormalizado.OuterXml;
+                ValidarSchemaRetornoDoProvedor();
             }
             NormalizarRetorno();
+        }
+
+        private void ValidarSchemaRetornoDoProvedor()
+        {
+            var schemaRetorno = Provedor.ObterSchemaRetornoArquivo(ServicoCIOT);
+            if (string.IsNullOrWhiteSpace(schemaRetorno) || RetornoWSXML?.DocumentElement == null) return;
+
+            var validador = new ValidarSchema();
+            validador.Validar(RetornoWSXML, schemaRetorno, CIOTNamespace.PortalANTT);
+            if (!validador.Success)
+            {
+                throw new ValidarXMLException("O retorno da eFrete não atende ao schema do serviço: " + validador.ErrorMessage);
+            }
         }
 
         /// <summary>
