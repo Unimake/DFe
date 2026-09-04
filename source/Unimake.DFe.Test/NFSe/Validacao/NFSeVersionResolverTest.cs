@@ -77,6 +77,17 @@ namespace Unimake.DFe.Test.NFSe.Validacao
             Assert.Equal(versaoEsperada, DefinirVersao(conteudoXML, PadraoNFSe.ISSNET, 0));
         }
 
+        [Theory]
+        [InlineData(4316907, "1.00", "1.00")]
+        [InlineData(4316907, "1.01", "1.01")]
+        [InlineData(5208707, "1.00", "1.01")]
+        public void DeveResolverVersaoISSNETDeSantaMariaPeloAtributoVersaoDoLoteDps(int codigoMunicipio, string versaoDeclarada, string versaoEsperada)
+        {
+            var conteudoXML = "<EnviarLoteDpsSincronoEnvio xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><LoteDps Id=\"Lote1\" versao=\"" + versaoDeclarada + "\" /></EnviarLoteDpsSincronoEnvio>";
+
+            Assert.Equal(versaoEsperada, DefinirVersao(conteudoXML, PadraoNFSe.ISSNET, codigoMunicipio));
+        }
+
         [Fact]
         public void DevePriorizarVersaoDeclaradaNoXml()
         {
@@ -284,6 +295,40 @@ namespace Unimake.DFe.Test.NFSe.Validacao
             Assert.Equal(versaoEsperada, versao);
             Assert.NotNull(servico);
             Assert.Equal(descricaoEsperada, servico.SelectSingleNode("Descricao").InnerText);
+        }
+
+        [Fact]
+        public void DeveIdentificarEnvioSincronoISSNET100DeSantaMariaSemSchema()
+        {
+            var xml = CriarXml(
+                "<EnviarLoteDpsSincronoEnvio xmlns=\"http://www.sped.fazenda.gov.br/nfse\">" +
+                "<LoteDps Id=\"Lote1\" versao=\"1.00\" />" +
+                "</EnviarLoteDpsSincronoEnvio>");
+            var configuracaoValidacao = new XmlDocument();
+            configuracaoValidacao.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Xml\Validar\ValidarConfig.xml");
+
+            var versao = DefinirVersao(xml.OuterXml, PadraoNFSe.ISSNET, 4316907);
+            var servico = TratarNFSe(xml, versao, configuracaoValidacao, PadraoNFSe.ISSNET);
+
+            Assert.Equal("1.00", versao);
+            Assert.NotNull(servico);
+            Assert.Equal("", servico.SelectSingleNode("SchemaArquivo").InnerText);
+        }
+
+        [Fact]
+        public void DeveConfigurarRecepcaoSincronaISSNET100DeSantaMaria()
+        {
+            var configuracaoMunicipio = new XmlDocument();
+            configuracaoMunicipio.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\NFSe\SantaMariaRS.xml");
+
+            var servico = configuracaoMunicipio.SelectSingleNode(
+                "/Configuracoes/Servicos/RecepcionarLoteRpsSincrono[@versao='1.00']");
+
+            Assert.NotNull(servico);
+            Assert.Equal("1.00", servico.SelectSingleNode("SchemaVersao").InnerText);
+            Assert.Equal("http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDpsSincrono", servico.SelectSingleNode("WebActionProducao").InnerText);
+            Assert.Contains("versao=\"1.00\"", servico.SelectSingleNode("WebSoapString").InnerText);
+            Assert.Contains("<versaoDados>1.00</versaoDados>", servico.SelectSingleNode("WebSoapString").InnerText);
         }
 
         [Theory]

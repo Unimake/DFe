@@ -7989,6 +7989,20 @@
 				<TagExtraAtributoID/>
 				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
 			</Servico>
+			<!--Versão 1.00 suportada pela prefeitura de Santa Maria - RS para envio sem o grupo IBSCBS-->
+			<Servico tagRaiz="EnviarLoteDpsSincronoEnvio" versao="1.00" tagIdentificadora="LoteDps">
+				<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+				<TipoServico>NFSeRecepcionarLoteRpsSincrono</TipoServico>
+				<SchemaArquivo/>
+				<TagAssinatura>DPS</TagAssinatura>
+				<TagAtributoID>infDPS</TagAtributoID>
+				<TagVersao>LoteDps</TagVersao>
+				<TagLoteAssinatura>EnviarLoteDpsSincronoEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
+				<TagExtraAssinatura/>
+				<TagExtraAtributoID/>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
 			<Servico tagRaiz="GerarNfseEnvio" versao="1.01" tagIdentificadora="infDPS">
 				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 				<TipoServico>NFSeGerarNfse</TipoServico>
