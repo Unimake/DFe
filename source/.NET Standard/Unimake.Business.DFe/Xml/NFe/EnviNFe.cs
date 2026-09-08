@@ -10001,8 +10001,19 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Valor total da NF-e com IBS / CBS / IS 
         /// </summary>
+        private double vNFTot;
+        private bool vNFTotInformado;
+
         [XmlIgnore]
-        public double VNFTot { get; set; }
+        public double VNFTot
+        {
+            get => vNFTot;
+            set
+            {
+                vNFTot = value;
+                vNFTotInformado = true;
+            }
+        }
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vNFTot para atribuir ou resgatar o valor)
@@ -10016,7 +10027,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVNFTotField() => VNFTot > 0;
+        public bool ShouldSerializeVNFTotField() => vNFTotInformado && VNFTot >= 0;
 
         #endregion
     }
@@ -14032,28 +14043,111 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class GIBSCBSMono
     {
-        /// <summary>
-        /// Grupo de informações da Tributação Monofásica Padrão
-        /// </summary>
-        [XmlElement("gMonoPadrao", Order = 0)]
-        public GMonoPadrao GMonoPadrao { get; set; }
+        private GIBSMonoAdRem gIBSMonoAdRem;
+        private GCBSMonoAdRem gCBSMonoAdRem;
+        private GMonoPadrao gMonoPadrao;
+        private GMonoReten gMonoReten;
+        private GMonoRet gMonoRet;
 
         /// <summary>
-        /// Grupo de informações da Tributação Monofásica Sujeita à Retenção
+        /// Grupo de informações da tributação monofásica Ad Rem do IBS
         /// </summary>
-        [XmlElement("gMonoReten", Order = 1)]
-        public GMonoReten GMonoReten { get; set; }
+        [XmlElement("gIBSMonoAdRem", Order = 0)]
+        public GIBSMonoAdRem GIBSMonoAdRem
+        {
+            get
+            {
+                if (gIBSMonoAdRem == null)
+                {
+                    gIBSMonoAdRem = CriarGIBSMonoAdRemLegado();
+                }
+                return gIBSMonoAdRem;
+            }
+            set => gIBSMonoAdRem = value;
+        }
 
         /// <summary>
-        /// Grupo de informações da Tributação Monofásica Retida Anteriormente
+        /// Grupo de informações da tributação monofásica Ad Valorem do IBS
         /// </summary>
-        [XmlElement("gMonoRet", Order = 2)]
-        public GMonoRet GMonoRet { get; set; }
+        [XmlElement("gIBSMonoAdValorem", Order = 1)]
+        public GIBSMonoAdValorem GIBSMonoAdValorem { get; set; }
 
         /// <summary>
-        /// Grupo de informações do Diferimento da Tributação Monofásica
+        /// Grupo de informações da tributação monofásica Ad Rem da CBS
         /// </summary>
-        [XmlElement("gMonoDif", Order = 3)]
+        [XmlElement("gCBSMonoAdRem", Order = 2)]
+        public GCBSMonoAdRem GCBSMonoAdRem
+        {
+            get
+            {
+                if (gCBSMonoAdRem == null)
+                {
+                    gCBSMonoAdRem = CriarGCBSMonoAdRemLegado();
+                }
+                return gCBSMonoAdRem;
+            }
+            set => gCBSMonoAdRem = value;
+        }
+
+        /// <summary>
+        /// Grupo de informações da tributação monofásica Ad Valorem da CBS
+        /// </summary>
+        [XmlElement("gCBSMonoAdValorem", Order = 3)]
+        public GCBSMonoAdValorem GCBSMonoAdValorem { get; set; }
+
+        /// <summary>
+        /// Grupo legado de informações da tributação monofásica padrão.
+        /// </summary>
+        [Obsolete("Utilize GIBSMonoAdRem, GIBSMonoAdValorem, GCBSMonoAdRem ou GCBSMonoAdValorem conforme a modalidade do imposto.")]
+        [XmlIgnore]
+        public GMonoPadrao GMonoPadrao
+        {
+            get => gMonoPadrao;
+            set
+            {
+                gMonoPadrao = value;
+                gIBSMonoAdRem = null;
+                gCBSMonoAdRem = null;
+            }
+        }
+
+        /// <summary>
+        /// Grupo legado de informações da tributação monofásica sujeita à retenção.
+        /// </summary>
+        [Obsolete("Informe a retenção no grupo específico de IBS ou CBS, Ad Rem ou Ad Valorem.")]
+        [XmlIgnore]
+        public GMonoReten GMonoReten
+        {
+            get => gMonoReten;
+            set
+            {
+                gMonoReten = value;
+                gIBSMonoAdRem = null;
+                gCBSMonoAdRem = null;
+            }
+        }
+
+        /// <summary>
+        /// Grupo legado de informações da tributação monofásica retida anteriormente.
+        /// </summary>
+        [Obsolete("Informe a retenção anterior no grupo específico de IBS ou CBS, Ad Rem ou Ad Valorem.")]
+        [XmlIgnore]
+        public GMonoRet GMonoRet
+        {
+            get => gMonoRet;
+            set
+            {
+                gMonoRet = value;
+                gIBSMonoAdRem = null;
+                gCBSMonoAdRem = null;
+            }
+        }
+
+        /// <summary>
+        /// Grupo legado de informações do diferimento da tributação monofásica.
+        /// </summary>
+        [Obsolete("O grupo gMonoDif não pertence mais ao tipo TMonofasia do schema da NFe/NFCe.")]
+        [XmlIgnore]
         public GMonoDif GMonoDif { get; set; }
 
         /// <summary>
@@ -14086,6 +14180,62 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             get => VTotCBSMonoItem.ToString("F2", CultureInfo.InvariantCulture);
             set => VTotCBSMonoItem = Converter.ToDouble(value);
+        }
+
+        private GIBSMonoAdRem CriarGIBSMonoAdRemLegado()
+        {
+            var temPadrao = gMonoPadrao != null && gMonoPadrao.QBCMono + gMonoPadrao.AdRemIBS + gMonoPadrao.VIBSMono > 0;
+            var temRetencao = gMonoReten != null && gMonoReten.QBCMonoReten + gMonoReten.AdRemIBSReten + gMonoReten.VIBSMonoReten > 0;
+            var temRetido = gMonoRet != null && gMonoRet.VIBSMonoRet > 0;
+            if (!temPadrao && !temRetencao && !temRetido)
+            {
+                return null;
+            }
+
+            return new GIBSMonoAdRem
+            {
+                GMonoPadrao = temPadrao ? new GMonoPadraoIBSAdRem
+                {
+                    QBCMono = gMonoPadrao.QBCMono,
+                    AdRemIBS = gMonoPadrao.AdRemIBS,
+                    VIBSMono = gMonoPadrao.VIBSMono
+                } : null,
+                GMonoReten = temRetencao ? new GMonoRetenIBSAdRem
+                {
+                    QBCMonoReten = gMonoReten.QBCMonoReten,
+                    AdRemIBSReten = gMonoReten.AdRemIBSReten,
+                    VIBSMonoReten = gMonoReten.VIBSMonoReten
+                } : null,
+                GMonoRet = temRetido ? new GMonoRetIBS { VIBSMonoRet = gMonoRet.VIBSMonoRet } : null
+            };
+        }
+
+        private GCBSMonoAdRem CriarGCBSMonoAdRemLegado()
+        {
+            var temPadrao = gMonoPadrao != null && gMonoPadrao.QBCMono + gMonoPadrao.AdRemCBS + gMonoPadrao.VCBSMono > 0;
+            var temRetencao = gMonoReten != null && gMonoReten.QBCMonoReten + gMonoReten.AdRemCBSReten + gMonoReten.VCBSMonoReten > 0;
+            var temRetido = gMonoRet != null && gMonoRet.VCBSMonoRet > 0;
+            if (!temPadrao && !temRetencao && !temRetido)
+            {
+                return null;
+            }
+
+            return new GCBSMonoAdRem
+            {
+                GMonoPadrao = temPadrao ? new GMonoPadraoCBSAdRem
+                {
+                    QBCMono = gMonoPadrao.QBCMono,
+                    AdRemCBS = gMonoPadrao.AdRemCBS,
+                    VCBSMono = gMonoPadrao.VCBSMono
+                } : null,
+                GMonoReten = temRetencao ? new GMonoRetenCBSAdRem
+                {
+                    QBCMonoReten = gMonoReten.QBCMonoReten,
+                    AdRemCBSReten = gMonoReten.AdRemCBSReten,
+                    VCBSMonoReten = gMonoReten.VCBSMonoReten
+                } : null,
+                GMonoRet = temRetido ? new GMonoRetCBS { VCBSMonoRet = gMonoRet.VCBSMonoRet } : null
+            };
         }
     }
 

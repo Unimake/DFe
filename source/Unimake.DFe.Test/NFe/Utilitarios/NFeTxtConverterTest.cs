@@ -1409,7 +1409,7 @@ public class NFeTxtConverterTest
     [InlineData("NFe_ReformaTributaria_1_prod-nfe.txt", "d0cd1dc2a69bbf8f4f72f0130a7f993e4e44bcccd8f6e737994b34f2c36ac678")]
     [InlineData("NFe_ReformaTributaria_3_prods-nfe.txt", "e8214766f92cd58e33d430499bd22024c7edacc2c4b72c288307605f31d7f61f")]
     [InlineData("NFe_Reforma_Tributaria-nfe.txt", "44db7065458c6eb5130e5bdfb12c06ea1197de342fc6385eed8b2f027ff8e250")]
-    [InlineData("NFe_Reforma_Tributaria_Monofasica-nfe.txt", "7d0689545b29cde304678e9b4b232bac9330ebd64e57be5abcc7041cb85f6928")]
+    [InlineData("NFe_Reforma_Tributaria_Monofasica-nfe.txt", "e96790e21626c5aa5801f7fd09ec6d8a6c815e7a426411ada77329bae09ff949")]
     [InlineData("NFE_Venda_00002.txt", "bbf5b92b9d1afbeb7706af0d2a928905ac46ed4531aa0bcc9383e4fc47f5f300")]
     [InlineData("NFe_Venda_para_o_Governo.txt", "f7d0bb8621a22a7c7cdbadde40dded3d21caffaf5fa0df92d4c6c1ed56522c64")]
     [InlineData("NFCe-4.00.txt", "b59fbb7ff20b02c095265abae22a7b9ca4bfb3bcafc390ff5283e4111b5f4904")]

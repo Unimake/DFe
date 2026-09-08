@@ -3134,38 +3134,68 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarTotalIbsCbsCreditoPresumidoCompraGov(int nProd, int lenPipesRegistro)
         {
             //layout = "UB85|qBCMono|adRemIBS|adRemCBS|vIBSMono|vCBSMono|"
-            ObterGIBSCBSMono(nProd).GMonoPadrao = new DFeNFe.GMonoPadrao
+            var monofasico = ObterGIBSCBSMono(nProd);
+            var quantidade = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.QBCMono)), ObOp.Opcional, 1, 15);
+            var adRemIBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadraoIBSAdRem>(nameof(DFeNFe.GMonoPadraoIBSAdRem.AdRemIBS)), ObOp.Opcional, 1, 7);
+            var adRemCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadraoCBSAdRem>(nameof(DFeNFe.GMonoPadraoCBSAdRem.AdRemCBS)), ObOp.Opcional, 1, 7);
+            var valorIBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadraoIBSAdRem>(nameof(DFeNFe.GMonoPadraoIBSAdRem.VIBSMono)), ObOp.Opcional, 1, 15);
+            var valorCBS = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadraoCBSAdRem>(nameof(DFeNFe.GMonoPadraoCBSAdRem.VCBSMono)), ObOp.Opcional, 1, 15);
+            monofasico.GIBSMonoAdRem = new DFeNFe.GIBSMonoAdRem
             {
-                QBCMono = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.QBCMono)), ObOp.Opcional, 1, 15),
-                AdRemIBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.AdRemIBS)), ObOp.Opcional, 1, 7),
-                AdRemCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.AdRemCBS)), ObOp.Opcional, 1, 7),
-                VIBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.VIBSMono)), ObOp.Opcional, 1, 15),
-                VCBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.VCBSMono)), ObOp.Opcional, 1, 15)
+                GMonoPadrao = new DFeNFe.GMonoPadraoIBSAdRem
+                {
+                    QBCMono = quantidade,
+                    AdRemIBS = adRemIBS,
+                    VIBSMono = valorIBS
+                }
+            };
+            monofasico.GCBSMonoAdRem = new DFeNFe.GCBSMonoAdRem
+            {
+                GMonoPadrao = new DFeNFe.GMonoPadraoCBSAdRem
+                {
+                    QBCMono = quantidade,
+                    AdRemCBS = adRemCBS,
+                    VCBSMono = valorCBS
+                }
             };
         }
 
         private void ProcessarTotalIbsCbsTribRegular(int nProd, int lenPipesRegistro)
         {
             //layout = "UB91|qBCMonoReten|adRemIBSReten|vIBSMonoReten|adRemCBSReten|vCBSMonoReten|"
-            ObterGIBSCBSMono(nProd).GMonoReten = new DFeNFe.GMonoReten
+            var monofasico = ObterGIBSCBSMono(nProd);
+            var quantidade = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS15>(nameof(DFeNFe.ICMS15.QBCMonoReten)), ObOp.Opcional, 1, 15);
+            monofasico.GIBSMonoAdRem = monofasico.GIBSMonoAdRem ?? new DFeNFe.GIBSMonoAdRem();
+            monofasico.GIBSMonoAdRem.GMonoReten = new DFeNFe.GMonoRetenIBSAdRem
             {
-                QBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS15>(nameof(DFeNFe.ICMS15.QBCMonoReten)), ObOp.Opcional, 1, 15),
-                AdRemIBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.AdRemIBSReten)), ObOp.Opcional, 1, 7),
-                VIBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.VIBSMonoReten)), ObOp.Opcional, 1, 15),
-                AdRemCBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.AdRemCBSReten)), ObOp.Opcional, 1, 7),
-                VCBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.VCBSMonoReten)), ObOp.Opcional, 1, 15)
+                QBCMonoReten = quantidade,
+                AdRemIBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRetenIBSAdRem>(nameof(DFeNFe.GMonoRetenIBSAdRem.AdRemIBSReten)), ObOp.Opcional, 1, 7),
+                VIBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetenIBSAdRem>(nameof(DFeNFe.GMonoRetenIBSAdRem.VIBSMonoReten)), ObOp.Opcional, 1, 15)
+            };
+            monofasico.GCBSMonoAdRem = monofasico.GCBSMonoAdRem ?? new DFeNFe.GCBSMonoAdRem();
+            monofasico.GCBSMonoAdRem.GMonoReten = new DFeNFe.GMonoRetenCBSAdRem
+            {
+                QBCMonoReten = quantidade,
+                AdRemCBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRetenCBSAdRem>(nameof(DFeNFe.GMonoRetenCBSAdRem.AdRemCBSReten)), ObOp.Opcional, 1, 7),
+                VCBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetenCBSAdRem>(nameof(DFeNFe.GMonoRetenCBSAdRem.VCBSMonoReten)), ObOp.Opcional, 1, 15)
             };
         }
 
         private void ProcessarTotalIbsCbsTribRegularCompraGov(int nProd, int lenPipesRegistro)
         {
             //layout = "UB95|qBCMonoRet|adRemIBSRet|vIBSMonoRet|adRemCBSRet|vCBSMonoRet|"
-            ObterGIBSCBSMono(nProd).GMonoRet = new DFeNFe.GMonoRet
+            var monofasico = ObterGIBSCBSMono(nProd);
+            this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.QBCMonoRet)), ObOp.Opcional, 1, 15);
+            this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.AdRemIBSRet)), ObOp.Opcional, 1, 7);
+            monofasico.GIBSMonoAdRem = monofasico.GIBSMonoAdRem ?? new DFeNFe.GIBSMonoAdRem();
+            monofasico.GIBSMonoAdRem.GMonoRet = new DFeNFe.GMonoRetIBS
             {
-                QBCMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS61>(nameof(DFeNFe.ICMS61.QBCMonoRet)), ObOp.Opcional, 1, 15),
-                AdRemIBSRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.AdRemIBSRet)), ObOp.Opcional, 1, 7),
                 VIBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.VIBSMonoRet)), ObOp.Opcional, 1, 15),
-                AdRemCBSRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.AdRemCBSRet)), ObOp.Opcional, 1, 7),
+            };
+            this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.AdRemCBSRet)), ObOp.Opcional, 1, 7);
+            monofasico.GCBSMonoAdRem = monofasico.GCBSMonoAdRem ?? new DFeNFe.GCBSMonoAdRem();
+            monofasico.GCBSMonoAdRem.GMonoRet = new DFeNFe.GMonoRetCBS
+            {
                 VCBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.VCBSMonoRet)), ObOp.Opcional, 1, 15)
             };
         }
@@ -3217,13 +3247,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarMonoDiferido(int nProd, int lenPipesRegistro)
         {
             //layout = "UB100|pDifIBS|vIBSMonoDif|pDifCBS|vCBSMonoDif|"
-            ObterGIBSCBSMono(nProd).GMonoDif = new DFeNFe.GMonoDif
-            {
-                PDifIBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.PDifIBS)), ObOp.Opcional, 1, 7),
-                VIBSMonoDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.VIBSMonoDif)), ObOp.Opcional, 1, 15),
-                PDifCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.PDifCBS)), ObOp.Opcional, 1, 7),
-                VCBSMonoDif = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.VCBSMonoDif)), ObOp.Opcional, 1, 15)
-            };
+            this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.PDifIBS)), ObOp.Opcional, 1, 7);
+            this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.VIBSMonoDif)), ObOp.Opcional, 1, 15);
+            this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.PDifCBS)), ObOp.Opcional, 1, 7);
+            this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.VCBSMonoDif)), ObOp.Opcional, 1, 15);
         }
 
         private void ProcessarTransferenciaCredito(int nProd, int lenPipesRegistro)
