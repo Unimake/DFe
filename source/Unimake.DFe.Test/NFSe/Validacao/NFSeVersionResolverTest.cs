@@ -47,7 +47,6 @@ namespace Unimake.DFe.Test.NFSe.Validacao
 
         [Theory]
         [InlineData(PadraoNFSe.DIGIFRED)]
-        [InlineData(PadraoNFSe.MEMORY)]
         [InlineData(PadraoNFSe.None)]
         public void DeveRetornarVazioParaPadraoSemMunicipioAtivo(PadraoNFSe padraoNFSe)
         {

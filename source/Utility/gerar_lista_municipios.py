@@ -86,7 +86,7 @@ Unificamos as antigas listas de municípios implementados no UniNFe e na DLL Uni
 ====<font color="#008000">Observações</font>====
 * Em caso de dúvidas sobre o padrão do município, clique no nome do padrão para visualizar os serviços disponíveis e exemplos de XML de envio.
 
-===<font color="#008000">'''ATENÇÃO aos padrões BETHA, BETHA_CLOUD, GINFES, MEMORY, ABASE, WEBFISCO, EQUIPLANO, FISCO e NACIONAL'''</font>===
+===<font color="#008000">'''ATENÇÃO aos padrões BETHA, BETHA_CLOUD, GINFES, ABASE, WEBFISCO, EQUIPLANO, FISCO e NACIONAL'''</font>===
 
 * No '''UniNFe''':
 ** Veja como configurar a [[Manuais:UniNFe/MunicipiosMonitor/ConfigTodosPadroesUnico|NFSe para padrões com um único WSDL para todos os municípios]] no monitor UniNFe.
