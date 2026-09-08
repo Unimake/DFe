@@ -593,7 +593,6 @@
 		<None Remove="Servicos\Config\NFSe\MassarandubaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\MatupaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\MedianeiraPR.xml" />
-		<None Remove="Servicos\Config\NFSe\Memory.xml" />
 		<None Remove="Servicos\Config\NFSe\MirassolandiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiDasCruzesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiMirimSP.xml" />
@@ -2258,7 +2257,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CaxiasDoSulRS.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\Memory.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\Equiplano.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>

@@ -7794,12 +7794,6 @@ namespace Unimake.Business.DFe.Servicos
         EQUIPLANO = 24,
 
         /// <summary>
-        /// MEMORY 
-        /// </summary>
-        [Description("MEMORY")]
-        MEMORY = 25,
-
-        /// <summary>
         /// ABASE Sistemas
         /// </summary>
         [Description("ABASE")]
@@ -8013,12 +8007,6 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("GINFES")]
         GINFES = 9999900,
-
-        /// <summary>
-        /// PADRÃO MEMORY
-        /// </summary>
-        [Description("MEMORY")]
-        MEMORY = 9999901,
 
         /// <summary>
         /// PADRÃO ABASE

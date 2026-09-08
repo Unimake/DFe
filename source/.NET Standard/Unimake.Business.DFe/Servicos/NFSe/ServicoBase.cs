@@ -47,10 +47,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             //Depois de carregar as configurações
             switch (Configuracoes.PadraoNFSe)
             {
-                case PadraoNFSe.MEMORY:
-                    MEMORY();
-                    break;
-
                 case PadraoNFSe.ABASE:
                 case PadraoNFSe.GINFES:
                 case PadraoNFSe.EQUIPLANO:
@@ -128,33 +124,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #region Configurações separadas por PadrãoNFSe
-
-        #region MEMORY
-
-        private void MEMORY()
-        {
-            var numeroRPS = GetXMLElementInnertext("numeroRPS");
-            var numeroNFSE = GetXMLElementInnertext("numeroNFSE");
-            var protocolo = GetXMLElementInnertext("protocolo");
-            var codMunicipio = GetXMLElementInnertext("codMunicipio");
-
-            if (codMunicipio == null && Configuracoes.Servico == Servico.NFSeRecepcionarLoteRps)
-            {
-                var nodeloteRps = ConteudoXML.GetElementsByTagName("LoteRps")?[0];
-                codMunicipio = nodeloteRps.Attributes.GetNamedItem("codMunicipio").Value;
-            }
-
-            // Replaces necessários para a comunicação com o webservice, deve estar antes da linha que altera o Codigo do Municipio
-            Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{numeroRPS}", numeroRPS)
-                                                                     .Replace("{numeroNFSE}", numeroNFSE)
-                                                                     .Replace("{protocolo}", protocolo)
-                                                                     .Replace("{codMunicipio}", codMunicipio)
-                                                                     .Replace("{cnpjPrestador}", Configuracoes.MunicipioUsuario)
-                                                                     .Replace("{hashValidador}", Configuracoes.MunicipioSenha);
-            PadroesConfigUnica();
-        }
-
-        #endregion MEMORY
 
         #region IPM
 

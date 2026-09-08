@@ -45,7 +45,6 @@ namespace Unimake.DFe.Test.NFSe.Validacao
         [InlineData(PadraoNFSe.INTERSOL, "<p:ConsultarNfseRpsEnvio xmlns:p=\"http://www.abrasf.org.br/nfse.xsd\"><IdentificacaoRps /></p:ConsultarNfseRpsEnvio>", "1.00", Servico.NFSeConsultarNfsePorRps)]
         [InlineData(PadraoNFSe.METROPOLIS, "<ConsultarNfseEnvio><Prestador /></ConsultarNfseEnvio>", "1.00", Servico.NFSeConsultarNfse)]
         [InlineData(PadraoNFSe.METROPOLIS, "<ConsultarNfseRpsEnvio><IdentificacaoRps /></ConsultarNfseRpsEnvio>", "1.00", Servico.NFSeConsultarNfsePorRps)]
-        [InlineData(PadraoNFSe.MEMORY, "<consultarLoteRPS><protocolo>1</protocolo></consultarLoteRPS>", "1.00", Servico.NFSeConsultarLoteRps)]
         [InlineData(PadraoNFSe.CONAM, "<Sdt_consultaprotocoloin xmlns=\"NFe\"><Protocolo>1</Protocolo></Sdt_consultaprotocoloin>", "4.00", Servico.NFSeConsultarNfsePorRps)]
         [InlineData(PadraoNFSe.CONAM, "<Sdt_consultanotasprotocoloin xmlns=\"NFe\"><Protocolo>1</Protocolo></Sdt_consultanotasprotocoloin>", "4.00", Servico.NFSeConsultarLoteRps)]
         [InlineData(PadraoNFSe.PAULISTANA, "<p1:PedidoInformacoesLote xmlns:p1=\"http://www.prefeitura.sp.gov.br/nfe\"><Cabecalho Versao=\"1\" /></p1:PedidoInformacoesLote>", "1.00", Servico.NFSeConsultaInformacoesLote)]

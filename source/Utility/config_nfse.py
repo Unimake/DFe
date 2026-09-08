@@ -588,18 +588,6 @@ var retornoPrefeitura = servico.RetornoWSString;
         "codigo_mun": "codigo_ibge_do_municipio",
         "exemplo_dll_unico": ""
     },
-    "MEMORY": {
-        "wsdl_unico": True,
-        "wsdl_diferente": False,
-        "api": False,
-        "notas_unicas": [],
-        "obs_unicas": [],
-        "exemplo_dll_padrao": True,
-        "exemplo_user_pass": False,
-        "exemplo_servico": "RecepcionarLoteRps",
-        "codigo_mun": "9999901",
-        "exemplo_dll_unico": ""
-    },
     "MODERNIZACAO_PUBLICA": {
         "wsdl_unico": False,
         "wsdl_diferente": True,
