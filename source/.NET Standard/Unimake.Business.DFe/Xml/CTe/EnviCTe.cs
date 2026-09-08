@@ -713,6 +713,22 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("gCompraGov")]
         public GCompraGov GCompraGov { get; set; }
 
+        /// <summary>
+        /// Tipo de pagamento ou pagamento antecipado.
+        /// </summary>
+        [XmlElement("tpPagAnt")]
+#if INTEROP
+        public TipoPagamentoAntecipadoCTe TpPagAnt { get; set; } = (TipoPagamentoAntecipadoCTe)(-1);
+#else
+        public TipoPagamentoAntecipadoCTe? TpPagAnt { get; set; }
+#endif
+
+        /// <summary>
+        /// Grupo de antecipação de pagamento.
+        /// </summary>
+        [XmlElement("gPagAntecipado")]
+        public GPagAntecipado GPagAntecipado { get; set; }
+
         #region ShouldSerialize
 
         /// <summary>
@@ -730,7 +746,74 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// </summary>
         public bool ShouldSerializeXJust() => !string.IsNullOrWhiteSpace(XJust);
 
+#if INTEROP
+        /// <summary>
+        /// Verifica se a propriedade TpPagAnt deve ser serializada.
+        /// </summary>
+        public bool ShouldSerializeTpPagAnt() => TpPagAnt != (TipoPagamentoAntecipadoCTe)(-1);
+#else
+        /// <summary>
+        /// Verifica se a propriedade TpPagAnt deve ser serializada.
+        /// </summary>
+        public bool ShouldSerializeTpPagAnt() => TpPagAnt != null;
+#endif
+
         #endregion
+    }
+
+    /// <summary>
+    /// Grupo de antecipação de pagamento.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.GPagAntecipado")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GPagAntecipado
+    {
+        /// <summary>
+        /// Chaves de acesso dos documentos fiscais de antecipação de pagamento.
+        /// </summary>
+        [XmlElement("chDFePagAnt")]
+        public List<string> ChDFePagAnt { get; set; }
+
+#if INTEROP
+        /// <summary>
+        /// Adiciona uma chave de documento fiscal de antecipação de pagamento.
+        /// </summary>
+        /// <param name="item">Chave de acesso a adicionar.</param>
+        public void AddChDFePagAnt(string item)
+        {
+            if (ChDFePagAnt == null)
+            {
+                ChDFePagAnt = new List<string>();
+            }
+
+            ChDFePagAnt.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna uma chave de documento fiscal de antecipação de pagamento.
+        /// </summary>
+        /// <param name="index">Índice da chave.</param>
+        /// <returns>Chave localizada no índice informado.</returns>
+        public string GetChDFePagAnt(int index)
+        {
+            if ((ChDFePagAnt?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return ChDFePagAnt[index];
+        }
+
+        /// <summary>
+        /// Quantidade de chaves de documentos fiscais de antecipação de pagamento.
+        /// </summary>
+        public int GetChDFePagAntCount => ChDFePagAnt != null ? ChDFePagAnt.Count : 0;
+#endif
     }
 
 #if INTEROP
@@ -1826,6 +1909,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         public CRT? CRT { get; set; }
 #endif
 
+        /// <summary>
+        /// Inscrição do emitente na SUFRAMA.
+        /// </summary>
+        [XmlElement("ISUFEmit")]
+        public string ISUFEmit { get; set; }
+
         #region ShouldSerialize
 
 #if INTEROP
@@ -1854,6 +1943,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// Verifica se a propriedade XFant deve ser serializada.
         /// </summary>
         public bool ShouldSerializeXFant() => !string.IsNullOrWhiteSpace(XFant);
+
+        /// <summary>
+        /// Verifica se a propriedade ISUFEmit deve ser serializada.
+        /// </summary>
+        public bool ShouldSerializeISUFEmit() => !string.IsNullOrWhiteSpace(ISUFEmit);
 
         #endregion
     }
@@ -8149,6 +8243,30 @@ namespace Unimake.Business.DFe.Xml.CTe
     public class GDevTrib
     {
         /// <summary>
+        /// Percentual de devolução do tributo.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public double PDevTrib { get; set; } = -1;
+#else
+        public double? PDevTrib { get; set; }
+#endif
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PDevTrib para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pDevTrib")]
+        public string PDevTribField
+        {
+#if INTEROP
+            get => PDevTrib.ToString("F4", CultureInfo.InvariantCulture);
+#else
+            get => PDevTrib?.ToString("F4", CultureInfo.InvariantCulture);
+#endif
+            set => PDevTrib = Converter.ToDouble(value);
+        }
+
+        /// <summary>
         /// Valor do tributo devolvido
         /// </summary>
         [XmlIgnore]
@@ -8163,6 +8281,15 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => VDevTrib.ToString("F2", CultureInfo.InvariantCulture);
             set => VDevTrib = Converter.ToDouble(value);
         }
+
+        /// <summary>
+        /// Verifica se a propriedade PDevTribField deve ser serializada.
+        /// </summary>
+#if INTEROP
+        public bool ShouldSerializePDevTribField() => PDevTrib >= 0;
+#else
+        public bool ShouldSerializePDevTribField() => PDevTrib != null;
+#endif
     }
 
     /// <summary>
@@ -8274,6 +8401,51 @@ namespace Unimake.Business.DFe.Xml.CTe
     }
 
     /// <summary>
+    /// Grupo de operações em áreas incentivadas com alíquota zero da CBS.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.GALCZFMCBS")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GALCZFMCBS
+    {
+        /// <summary>
+        /// Alíquota efetiva de referência da CBS aplicável fora de áreas incentivadas.
+        /// </summary>
+        [XmlIgnore]
+        public double PAliqEfetRegCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqEfetRegCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pAliqEfetRegCBS")]
+        public string PAliqEfetRegCBSField
+        {
+            get => PAliqEfetRegCBS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqEfetRegCBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da CBS calculado fora de áreas incentivadas.
+        /// </summary>
+        [XmlIgnore]
+        public double VTribRegCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribRegCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTribRegCBS")]
+        public string VTribRegCBSField
+        {
+            get => VTribRegCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribRegCBS = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>
     /// Grupo de Informações da CBS
     /// </summary>
 #if INTEROP
@@ -8318,6 +8490,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// </summary>
         [XmlElement("gRed")]
         public GRed GRed { get; set; }
+
+        /// <summary>
+        /// Grupo de operações em áreas incentivadas com alíquota zero da CBS.
+        /// </summary>
+        [XmlElement("gALCZFMCBS")]
+        public GALCZFMCBS GALCZFMCBS { get; set; }
 
         /// <summary>
         /// Valor da CBS 

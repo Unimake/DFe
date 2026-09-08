@@ -267,6 +267,83 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             }
         }
 
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public async Task ExecutarObterPdfPercorreGetComCorpoENormalizaResult()
+        {
+            var listener = new TcpListener(IPAddress.Loopback, 0);
+            listener.Start();
+            try
+            {
+                var porta = ((IPEndPoint)listener.LocalEndpoint).Port;
+                var servidor = ReceberRequisicoes(listener, "{\"Sucesso\":true,\"Pdf\":\"JVBERi0xLjQK\",\"Versao\":1}");
+                var configuracao = new Configuracao
+                {
+                    TipoAmbiente = TipoAmbiente.Homologacao,
+                    EFreteIntegrador = "INTEGRADOR-TESTE",
+                    EFreteToken = "TOKEN-LOCAL"
+                };
+                var xml = File.ReadAllText(Path.Combine(@"..\..\..\CIOT\Resources", "efrete-obter-operacao-transporte-pdf.xml"));
+                using (var servico = new Unimake.Business.DFe.Servicos.CIOT.ObterOperacaoTransportePdf(xml, configuracao))
+                {
+                    configuracao.RequestURI = "http://127.0.0.1:" + porta + "/services/Pef/ObterOperacaoTransportePdf";
+                    servico.Executar();
+
+                    var requisicao = Assert.Single(await servidor);
+                    Assert.Equal("GET", requisicao.Metodo);
+                    Assert.Contains("\"CodigoIdentificacaoOperacao\":\"992000000126\"", requisicao.Corpo);
+                    Assert.Contains("\"DocumentoViagem\":\"VIAGEM-TESTE-001\"", requisicao.Corpo);
+                    Assert.Contains("\"Token\":\"TOKEN-LOCAL\"", requisicao.Corpo);
+                    Assert.DoesNotContain("ProvedorCIOT", requisicao.Corpo);
+                    Assert.Equal("RetObterOperacaoTransportePdf", servico.RetornoWSXML.DocumentElement.LocalName);
+                    Assert.True(servico.Result.Sucesso);
+                    Assert.Equal("JVBERi0xLjQK", servico.Result.Pdf);
+                }
+            }
+            finally
+            {
+                listener.Stop();
+            }
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public async Task ExecutarObterPdfNormalizaRejeicaoAteResult()
+        {
+            var listener = new TcpListener(IPAddress.Loopback, 0);
+            listener.Start();
+            try
+            {
+                var porta = ((IPEndPoint)listener.LocalEndpoint).Port;
+                var servidor = ReceberRequisicoes(listener, "{\"Sucesso\":false,\"Versao\":1,\"Excecao\":{\"Codigo\":\"PDF001\",\"Mensagem\":\"Operação não localizada.\"}}");
+                var configuracao = new Configuracao
+                {
+                    TipoAmbiente = TipoAmbiente.Homologacao,
+                    EFreteIntegrador = "INTEGRADOR-TESTE",
+                    EFreteToken = "TOKEN-LOCAL"
+                };
+                var xml = File.ReadAllText(Path.Combine(@"..\..\..\CIOT\Resources", "efrete-obter-operacao-transporte-pdf-sem-viagem.xml"));
+                using (var servico = new Unimake.Business.DFe.Servicos.CIOT.ObterOperacaoTransportePdf(xml, configuracao))
+                {
+                    configuracao.RequestURI = "http://127.0.0.1:" + porta + "/services/Pef/ObterOperacaoTransportePdf";
+                    servico.Executar();
+
+                    var requisicao = Assert.Single(await servidor);
+                    Assert.Equal("GET", requisicao.Metodo);
+                    Assert.DoesNotContain("DocumentoViagem", requisicao.Corpo);
+                    Assert.False(servico.Result.Sucesso);
+                    Assert.Equal("PDF001", servico.Result.Codigo);
+                    Assert.Equal("Operação não localizada.", servico.Result.Mensagem);
+                    Assert.NotNull(servico.Result.Temp);
+                    Assert.DoesNotContain("<Pdf>", servico.RetornoWSString);
+                }
+            }
+            finally
+            {
+                listener.Stop();
+            }
+        }
+
         private static async Task<System.Collections.Generic.IList<RequisicaoRecebida>> ReceberRequisicoes(TcpListener listener, params string[] respostas)
         {
             var requisicoes = new System.Collections.Generic.List<RequisicaoRecebida>();

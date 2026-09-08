@@ -903,6 +903,8 @@ namespace Unimake.DFe.Test.Utility.Rede
             const string endpoint = "https://usuario:senha@sefaz.test/ws?token=segredo";
             var configuracao = ConfiguracaoBase();
             configuracao.HasProxy = true;
+            configuracao.ProxyServer = "proxy.exemplo.test";
+            configuracao.ProxyPort = 3128;
             var executor = new ExecutorInfraestruturaDisponibilidade((url, certificado, timeout, proxy, metodo) =>
                 new Unimake.Net.HttpConnectionResult
                 {

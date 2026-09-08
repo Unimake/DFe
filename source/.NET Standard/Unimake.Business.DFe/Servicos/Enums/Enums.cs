@@ -827,6 +827,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Envio de NFSe com indicativo de decisão judicial")]
         NFSeGerarNfseIndicativoDecisaoJudicial = 132,
 
+        /// <summary>
+        /// 133 - CIOT eFrete - Obter o PDF da operação de transporte
+        /// </summary>
+        [Description("CIOT eFrete - Obter operação de transporte PDF")]
+        CIOTObterOperacaoTransportePdf = 133,
+
         #endregion
 
         #region Gerais
@@ -17647,6 +17653,28 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion TipoPagamentoAntecipadoNFCom
+
+    #region TipoPagamentoAntecipadoCTe
+
+    /// <summary>
+    /// Tipo de pagamento ou pagamento antecipado do CTe
+    /// </summary>
+    public enum TipoPagamentoAntecipadoCTe
+    {
+        /// <summary>
+        /// 1 - Pagamento antecipado
+        /// </summary>
+        [XmlEnum("1")]
+        PagamentoAntecipado = 1,
+
+        /// <summary>
+        /// 3 - Fornecimento com pagamento realizado anteriormente
+        /// </summary>
+        [XmlEnum("3")]
+        FornecimentoPagamentoRealizadoAnteriormente = 3
+    }
+
+    #endregion TipoPagamentoAntecipadoCTe
 
     #region IndicadorDoacao
 

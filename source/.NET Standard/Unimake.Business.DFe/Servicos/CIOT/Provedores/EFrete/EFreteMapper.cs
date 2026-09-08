@@ -7,11 +7,14 @@ using System.Linq;
 using System.Xml;
 using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
 {
     internal static class EFreteMapper
     {
+        private const string CodigoSucessoCIOT = "110";
+
         internal static string CriarJsonLogin(Configuracao configuracao)
         {
             return new JObject
@@ -84,6 +87,15 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     payload = CriarVeiculo((Xml.CIOT.GravarVeiculo)xml);
                     payload["Versao"] = 1;
                     break;
+                case Servico.CIOTObterOperacaoTransportePdf:
+                    var pdf = (Xml.CIOT.ObterOperacaoTransportePdf)xml;
+                    payload = new JObject
+                    {
+                        ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacao(pdf.CodigoIdentificacaoOperacao),
+                        ["DocumentoViagem"] = pdf.DocumentoViagem
+                    };
+                    payload["Versao"] = 1;
+                    break;
                 default:
                     throw new NotSupportedException("O serviço " + servico + " não possui equivalente disponível na integração eFrete.");
             }
@@ -111,19 +123,21 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             switch (servico)
             {
                 case Servico.CIOTDeclaracaoOperacaoTransporte:
+                    var mensagemDeclaracao = sucesso && string.IsNullOrWhiteSpace(mensagem) ? "Dados inseridos com sucesso!" : mensagem;
                     resultado = new RetDeclaracaoOperacaoTransporte
                     {
-                        IdOperacaoTransporte = Valor(root, "CodigoIdentificacaoOperacao"),
+                        IdOperacaoTransporte = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
                         Protocolo = Valor(root, "ProtocoloServico"),
-                        Codigo = codigo,
-                        Mensagem = mensagem,
+                        Codigo = sucesso ? CodigoSucessoCIOT : codigo,
+                        Mensagem = mensagemDeclaracao,
+                        Mensagens = sucesso ? MensagemDeclaracaoOperacaoTransporteHelper.CriarMensagens(CodigoSucessoCIOT, mensagemDeclaracao) : null,
                         Temp = erro ? CriarTemp(codigo, mensagem) : null
                     };
                     break;
                 case Servico.CIOTConsultarCIOTGerado:
                     resultado = new RetConsultarCIOTGerado
                     {
-                        CodigoIdentificacaoOperacao = Valor(root, "CodigoIdentificacaoOperacao"),
+                        CodigoIdentificacaoOperacao = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
                         EstadoCIOT = Valor(root, "EstadoCiot"),
                         Protocolo = Valor(root, "ProtocoloServico"),
                         Codigo = erro ? new List<string> { codigo } : null,
@@ -134,9 +148,9 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 case Servico.CIOTCancelamentoOperacaoTransporte:
                     resultado = new RetCancelamentoOperacaoTransporte
                     {
-                        CodigoIdentificacaoOperacao = Valor(root, "CodigoIdentificacaoOperacao"),
+                        CodigoIdentificacaoOperacao = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
                         Protocolo = Valor(root, "Protocolo"),
-                        Codigo = codigo,
+                        Codigo = sucesso ? CodigoSucessoCIOT : codigo,
                         Mensagem = mensagem,
                         DataCancelamentoField = Valor(root, "Data"),
                         Temp = erro ? CriarTemp(codigo, mensagem) : null
@@ -145,9 +159,9 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 case Servico.CIOTEncerramentoOperacaoTransporte:
                     resultado = new RetEncerramentoOperacaoTransporte
                     {
-                        CodigoIdentificacaoOperacao = Valor(root, "CodigoIdentificacaoOperacao"),
+                        CodigoIdentificacaoOperacao = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
                         Protocolo = Valor(root, "Protocolo"),
-                        Codigo = codigo,
+                        Codigo = sucesso ? CodigoSucessoCIOT : codigo,
                         Mensagem = mensagem,
                         Temp = erro ? CriarTemp(codigo, mensagem) : null
                     };
@@ -184,6 +198,37 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     resultado = new RetGravarVeiculo
                     {
                         Veiculo = ConverterVeiculo(Localizar(root, "Veiculo")),
+                        Sucesso = sucesso,
+                        Versao = ValorInt(root, "Versao"),
+                        Codigo = codigo,
+                        Mensagem = mensagem,
+                        Temp = erro ? CriarTemp(codigo, mensagem) : null
+                    };
+                    break;
+                case Servico.CIOTObterOperacaoTransportePdf:
+                    if (Localizar(root, "Sucesso") == null)
+                    {
+                        throw new ValidarXMLException("A eFrete retornou uma resposta vazia ou sem a propriedade Sucesso ao obter o PDF da operação de transporte.");
+                    }
+                    var conteudoPdf = Valor(root, "Pdf");
+                    if (sucesso)
+                    {
+                        if (string.IsNullOrWhiteSpace(conteudoPdf))
+                        {
+                            throw new ValidarXMLException("A eFrete informou sucesso, mas não retornou o PDF da operação de transporte.");
+                        }
+                        try
+                        {
+                            Convert.FromBase64String(conteudoPdf);
+                        }
+                        catch (FormatException)
+                        {
+                            throw new ValidarXMLException("A eFrete retornou um conteúdo inválido na propriedade Pdf.");
+                        }
+                    }
+                    resultado = new RetObterOperacaoTransportePdf
+                    {
+                        Pdf = conteudoPdf,
                         Sucesso = sucesso,
                         Versao = ValorInt(root, "Versao"),
                         Codigo = codigo,
@@ -337,8 +382,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
         }
 
         private static JObject CriarConsulta(Xml.CIOT.ConsultarCIOTGerado xml) => new JObject { ["MatrizCNPJ"] = xml.MatrizCNPJ, ["IdOperacaoCliente"] = xml.IdOperacaoCliente };
-        private static JObject CriarCancelamento(Xml.CIOT.CancelamentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = xml.CodigoIdentificacaoOperacao, ["Motivo"] = xml.MotivoCancelamento };
-        private static JObject CriarEncerramento(Xml.CIOT.EncerramentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = xml.CodigoIdentificacaoOperacao, ["PesoCarga"] = Numero(xml.DadosCarga?.PesoTotalCarga) };
+        private static JObject CriarCancelamento(Xml.CIOT.CancelamentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacao(xml.CodigoIdentificacaoOperacao), ["Motivo"] = xml.MotivoCancelamento };
+        private static JObject CriarEncerramento(Xml.CIOT.EncerramentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacao(xml.CodigoIdentificacaoOperacao), ["PesoCarga"] = Numero(xml.DadosCarga?.PesoTotalCarga) };
         private static JObject CriarSituacao(Xml.CIOT.ConsultarSituacaoTransportador xml, List<string> placas) => new JObject
         {
             ["InteressadoCpfOuCnpj"] = xml.CpfCnpjInteressado,
@@ -415,6 +460,16 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
         private static Temp CriarTemp(string codigo, string mensagem) => new Temp { Error = codigo ?? "EFRETE", Message = mensagem ?? "A eFrete rejeitou a solicitação." };
         private static string TipoViagem(TipoOperacaoTransporteCIOT tipo) => tipo == TipoOperacaoTransporteCIOT.CargaFracionada ? "Fracionado" : tipo == TipoOperacaoTransporteCIOT.TACAgregado ? "TAC_Agregado" : "Padrao";
         private static string MapearTipoPagamento(TipoPagamentoFreteCIOT? tipo) => tipo == TipoPagamentoFreteCIOT.InstituicaoPagamento ? "eFRETE" : "TransferenciaBancaria";
+        private static string NormalizarCodigoIdentificacaoOperacao(string codigo)
+        {
+            if (string.IsNullOrWhiteSpace(codigo))
+            {
+                return codigo;
+            }
+
+            var separador = codigo.IndexOf('/');
+            return separador > 0 ? codigo.Substring(0, separador) : codigo;
+        }
         private static JToken Numero(string value) { decimal parsed; return decimal.TryParse(value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out parsed) ? new JValue(parsed) : null; }
         private static JToken Localizar(JObject obj, string nome) { return obj?.Properties().FirstOrDefault(x => string.Equals(x.Name, nome, StringComparison.OrdinalIgnoreCase))?.Value; }
         private static string Valor(JObject obj, string nome) => Localizar(obj, nome)?.Type == JTokenType.Null ? null : Localizar(obj, nome)?.ToString();

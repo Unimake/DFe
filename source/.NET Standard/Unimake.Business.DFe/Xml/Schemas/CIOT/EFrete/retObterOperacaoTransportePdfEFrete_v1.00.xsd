@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.antt.gov.br/ciot" elementFormDefault="qualified">
+  <xs:element name="RetObterOperacaoTransportePdf" type="tns:RetObterOperacaoTransportePdf" />
+  <xs:complexType name="RetObterOperacaoTransportePdf">
+    <xs:sequence>
+      <xs:element name="temp" type="tns:TempEFrete" minOccurs="0" />
+      <xs:element name="Codigo" type="xs:string" minOccurs="0" />
+      <xs:element name="Mensagem" type="xs:string" minOccurs="0" />
+      <xs:element name="Pdf" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="Sucesso" type="xs:boolean" />
+      <xs:element name="Versao" type="xs:int" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TempEFrete">
+    <xs:sequence>
+      <xs:element name="error" type="xs:string" minOccurs="0" />
+      <xs:element name="message" type="xs:string" minOccurs="0" />
+      <xs:element name="timestamp" type="xs:dateTime" minOccurs="0" />
+      <xs:element name="correlationId" type="xs:string" minOccurs="0" />
+      <xs:element name="path" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

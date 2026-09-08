@@ -196,7 +196,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                             continue;
                         }
 
-                        var nomeArquivo = $"{chave}-nfse.xml";
+                        var tipoDocumento = XMLUtility.TagRead(loteXml, "TipoDocumento");
+                        var nsu = XMLUtility.TagRead(loteXml, "NSU");
+                        var nomeArquivo = tipoDocumento == "EVENTO" ? $"{chave}-evt-{nsu}-nfse.xml" : $"{chave}-nfse.xml";
+
                         base.GravarXmlDistribuicao(pasta, nomeArquivo, xml);
                     }
                     catch

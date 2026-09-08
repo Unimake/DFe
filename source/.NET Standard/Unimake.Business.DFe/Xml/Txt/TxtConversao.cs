@@ -77,6 +77,29 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         internal static TxtConversaoResultado Situacao(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a); var d = Novo("consSitNFe", NFeNs, f.Get("versao", "4.00")); Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente))); Add(d, "xServ", "CONSULTAR"); Add(d, "chNFe", Req(f, "chNFe")); return R(d); }
         internal static TxtConversaoResultado Cadastro(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a); var d = Novo("ConsCad", NFeNs, f.Get("versao", "2.00")); var inf = E(d, "infCons"); d.DocumentElement.AppendChild(inf); Add(d, inf, "xServ", "CONS-CAD"); Add(d, inf, "UF", f.Get("UF", c.CodigoUF.ToString())); Primeiro(d, inf, f, "IE", "CNPJ", "CPF"); return R(d); }
         internal static TxtConversaoResultado Gtin(string a) { var f = TxtCampos.Ler(a); var d = Novo("consGTIN", "http://www.portalfiscal.inf.br/ccg", f.Get("versao", "1.00")); Add(d, "GTIN", Req(f, "GTIN")); return R(d); }
+        internal static TxtConversaoResultado GerarChave(string arquivo, TxtConversaoContexto contexto)
+        {
+            var campos = TxtCampos.Ler(arquivo);
+            var documento = new XmlDocument { XmlResolver = null };
+            documento.AppendChild(documento.CreateElement("gerarChave"));
+            foreach (var campo in new[]
+            {
+                new[] { "UF", campos.Get("UF", N(contexto.CodigoUF)) },
+                new[] { "tpEmis", campos.Get("tpEmis", N(contexto.TipoEmissao)) },
+                new[] { "nNF", Req(campos, "nNF") },
+                new[] { "cNF", campos.Get("cNF", "0") },
+                new[] { "serie", campos.Get("serie", "0") },
+                new[] { "AAMM", Req(campos, "AAMM") },
+                new[] { "CNPJ", Req(campos, "CNPJ") },
+                new[] { "mod", Req(campos, "mod") }
+            })
+            {
+                var elemento = documento.CreateElement(campo[0]);
+                elemento.InnerText = campo[1];
+                documento.DocumentElement.AppendChild(elemento);
+            }
+            return R(documento);
+        }
         internal static TxtConversaoResultado Distribuicao(string a, TxtConversaoContexto c, string ns, bool chave) { var f = TxtCampos.Ler(a); var d = Novo("distDFeInt", ns, f.Get("versao", "1.01")); Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente))); Add(d, "cUFAutor", f.Get("cUFAutor", N(c.CodigoUF))); Primeiro(d, d.DocumentElement, f, "CNPJ", "CPF"); if (chave && !string.IsNullOrWhiteSpace(f.Get("chNFe"))) Grupo(d, "consChNFe", "chNFe", f.Get("chNFe")); else if (!string.IsNullOrWhiteSpace(f.Get("NSU"))) Grupo(d, "consNSU", "NSU", f.Get("NSU")); else Grupo(d, "distNSU", "ultNSU", f.Get("ultNSU", "000000000000000")); return R(d); }
         internal static TxtConversaoResultado Inutilizacao(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a); var uf = f.Get("cUF", N(c.CodigoUF)); var ano = Req(f, "ano").PadLeft(2, '0'); var cnpj = Req(f, "CNPJ"); var mod = f.Get("mod", N(c.Modelo)); var ser = Req(f, "serie"); var ini = Req(f, "nNFIni"); var fim = Req(f, "nNFFin"); var d = Novo("inutNFe", NFeNs, f.Get("versao", "4.00")); var inf = E(d, "infInut"); inf.SetAttribute("Id", "ID" + uf.PadLeft(2, '0') + ano + cnpj + mod.PadLeft(2, '0') + ser.PadLeft(3, '0') + ini.PadLeft(9, '0') + fim.PadLeft(9, '0')); d.DocumentElement.AppendChild(inf); foreach (var p in new[] { new[] { "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente)) }, new[] { "xServ", "INUTILIZAR" }, new[] { "cUF", uf }, new[] { "ano", ano }, new[] { "CNPJ", cnpj }, new[] { "mod", mod }, new[] { "serie", ser }, new[] { "nNFIni", ini }, new[] { "nNFFin", fim }, new[] { "xJust", Req(f, "xJust") } }) Add(d, inf, p[0], p[1]); return R(d); }
         internal static TxtConversaoResultado Evento(string arquivo, TxtConversaoContexto contexto)
@@ -267,6 +290,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         internal static string Distribuicao(string x) { var d = L(x); var r = F(d, "retDistDFeInt"); var b = new StringBuilder().Append(V(r, "tpAmb")).Append(V(r, "verAplic")).Append(V(r, "cStat")).Append(V(r, "xMotivo")).Append(V(r, "dhResp")).Append(V(r, "ultNSU")).Append(V(r, "maxNSU")).Append("\r\n"); foreach (XmlElement z in d.GetElementsByTagName("docZip")) { var nsu = z.GetAttribute("NSU"); if (string.IsNullOrEmpty(nsu)) nsu = "000000000000000"; var schema = z.GetAttribute("schema"); var i = L(Compress.GZIPDecompress(z.InnerText)); string tipo = null, ch = null, extra = ""; if (schema.StartsWith("resEvento")) { tipo = "resEvento"; ch = T(i, "chNFe"); extra = Ev(i, 2); } else if (schema.StartsWith("procEventoNFe")) { tipo = "procEventoNFe"; ch = T(i, "chNFe"); extra = Ev(i, 2); } else if (schema.StartsWith("procNFe")) { tipo = "procNFe"; ch = T(i, "chNFe"); } else if (schema.StartsWith("resNFe")) { tipo = "resNFe"; ch = T(i, "chNFe"); } else if (schema.StartsWith("procEventoCTe")) { tipo = "procEventoCTe"; ch = T(i, "chCTe"); extra = Ev(i, schema.Contains("3.00") ? 2 : 3); } else if (schema.StartsWith("procCTe")) { tipo = "procCTe"; ch = T(i, "chCTe"); } if (tipo != null) b.Append(tipo).Append(';').Append(nsu).Append(';').Append(ch).Append(';').Append(extra).Append("\r\n"); } return b.ToString(); }
         internal static string Cadastro(string x) { var d = L(x); var r = F(d, "retConsCad"); var b = new StringBuilder().Append(P(T(r, "cStat"), 3)).Append(';').Append(S(T(r, "xMotivo"))).Append(';').Append(V(r, "UF")).Append(V(r, "IE")).Append(V(r, "CNPJ")).Append(V(r, "CPF")).Append(V(r, "dhCons")).Append(P(T(r, "cUF"), 2)).Append(";\r\r"); foreach (XmlElement e in d.GetElementsByTagName("infCad")) { foreach (var n in new[] { "IE", "CNPJ", "CPF", "UF", "cSit" }) b.Append(V(e, n)); b.Append(S(T(e, "xNome"))).Append(';').Append(S(T(e, "xFant"))).Append(';').Append(S(T(e, "xRegApur"))).Append(';').Append(V(e, "CNAE")).Append(V(e, "dIniAtiv")).Append(V(e, "dUltSit")).Append(S(T(e, "IEUnica"))).Append(';').Append(S(T(e, "IEAtual"))).Append(';'); var end = F(e, "ender", false); if (end != null) b.Append(S(T(end, "xLgr"))).Append(';').Append(S(T(end, "nro"))).Append(';').Append(S(T(end, "xCpl"))).Append(';').Append(S(T(end, "xBairro"))).Append(';').Append(P(T(end, "cMun"), 7)).Append(';').Append(S(T(end, "xMun"))).Append(';').Append(P(T(end, "CEP"), 8)).Append(';'); b.Append("\r\r"); } return b.ToString(); }
         internal static string Gtin(string x) { var d = L(x); var b = new StringBuilder(); foreach (var n in new[] { "cStat", "xMotivo", "GTIN", "tpGTIN", "xProd", "NCM" }) b.Append(n == "cStat" ? "CStat" : n == "xMotivo" ? "XMotivo" : n).Append('|').Append(T(d, n)).Append("\r\n"); foreach (XmlElement e in d.GetElementsByTagName("CEST")) b.Append("CEST|").Append(e.InnerText).Append("\r\n"); return b.ToString(); }
+        internal static string GerarChave(string x)
+        {
+            var documento = L(x);
+            var chave = T(documento, "chaveNFe");
+            if (string.IsNullOrWhiteSpace(chave))
+                throw new FormatException("O XML de retorno não contém a tag 'chaveNFe'.");
+            return chave;
+        }
         private static string Ev(XmlDocument d, int n) { int seq; int.TryParse(T(d, "nSeqEvento"), out seq); return TipoEventoLegado(T(d, "tpEvento")) + ";" + seq.ToString(new string('0', n), CultureInfo.InvariantCulture); }
         private static bool EhProrrogacao(string t) { return t == "111500" || t == "111501" || t == "111502" || t == "111503" || t == "411500" || t == "411501" || t == "411502" || t == "411503"; }
         private static string TipoEventoLegado(string t) { switch (t) { case "110110": return "tpEvCCe"; case "110111": return "tpEvCancelamentoNFe"; case "110112": return "tpEvCancelamentoSubstituicaoNFCe"; case "210200": return "tpEvConfirmacaoOperacao"; case "210210": return "tpEvCienciaOperacao"; case "210220": return "tpEvDesconhecimentoOperacao"; case "110140": return "tpEvEPEC"; case "110113": return "tpEvEPECCTe"; case "210240": return "tpEvOperacaoNaoRealizada"; case "110114": return "tpEvInclusaoCondutor"; case "310620": return "tpEvRegistroPassagem"; case "510620": return "tpEvRegistroPassagemBRid"; case "110160": return "tpevRegMultimodal"; case "111500": return "tpEvPedProrrogacao_ICMS_1"; case "111501": return "tpEvPedProrrogacao_ICMS_2"; case "111502": return "tpEvCancPedProrrogacao_ICMS_1"; case "111503": return "tpEvCancPedProrrogacao_ICMS_2"; case "411500": return "tpEvFiscoRespPedProrrogacao_ICMS_1"; case "411501": return "tpEvFiscoRespPedProrrogacao_ICMS_2"; case "411502": return "tpEvFiscoRespCancPedProrrogacao_ICMS_1"; case "411503": return "tpEvFiscoRespCancPedProrrogacao_ICMS_2"; case "110116": return "tpEvPagamentoOperacaoMDFe"; case "110130": return "tpEvComprovanteEntregaNFe"; case "110131": return "tpEvCancelamentoComprovanteEntregaNFe"; case "110750": return "tpEvConciliacaoFinanceiraNFe"; case "110751": return "tpEvCancelamentoConciliacaoFinanceiraNFe"; default: return t; } }
@@ -417,4 +448,28 @@ namespace Unimake.Business.DFe.Xml.CCG
     [ComVisible(true)]
 #endif
     public sealed class ConsultaGTINTxtConverter { public NFe.Txt.TxtConversaoResultado Converter(string a, NFe.Txt.TxtConversaoContexto c) { return NFe.Txt.LegacyTxtXml.Gtin(a); } public string ConverterRetorno(string x) { return NFe.Txt.LegacyTxtRetornoConverter.Gtin(x); } }
+}
+
+namespace Unimake.Business.DFe.Xml.DFe
+{
+    /// <summary>Converte o contrato TXT legado de geração de chave de acesso de DFe.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DFe.GerarChaveDFeTxtConverter")]
+    [ComVisible(true)]
+#endif
+    public sealed class GerarChaveDFeTxtConverter
+    {
+        /// <summary>Converte um arquivo TXT <c>*-gerar-chave.txt</c> para o XML <c>gerarChave</c>.</summary>
+        public NFe.Txt.TxtConversaoResultado Converter(string arquivo, NFe.Txt.TxtConversaoContexto contexto)
+        {
+            return NFe.Txt.LegacyTxtXml.GerarChave(arquivo, contexto);
+        }
+
+        /// <summary>Extrai a chave de acesso do XML <c>retGerarChave</c>.</summary>
+        public string ConverterRetorno(string xmlRetorno)
+        {
+            return NFe.Txt.LegacyTxtRetornoConverter.GerarChave(xmlRetorno);
+        }
+    }
 }

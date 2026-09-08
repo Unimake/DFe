@@ -73,5 +73,13 @@
       <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
       <MetodoAPI>post</MetodoAPI>
     </GravarVeiculo>
+    <ObterOperacaoTransportePdf versao="1.00">
+      <Descricao>CIOT eFrete - Obter operação de transporte PDF</Descricao>
+      <RequestURIHomologacao>https://dev.efrete.com.br/services/Pef/ObterOperacaoTransportePdf</RequestURIHomologacao>
+      <RequestURIProducao>https://sistema.efrete.com.br/services/Pef/ObterOperacaoTransportePdf</RequestURIProducao>
+      <RequestURILoginHomologacao>https://dev.efrete.com.br/services/Logon/Login</RequestURILoginHomologacao>
+      <RequestURILoginProducao>https://sistema.efrete.com.br/services/Logon/Login</RequestURILoginProducao>
+      <MetodoAPI>get</MetodoAPI>
+    </ObterOperacaoTransportePdf>
   </Servicos>
 </Configuracoes>

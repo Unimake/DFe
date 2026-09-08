@@ -399,6 +399,22 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         [XmlElement("gCompraGov")]
         public GCompraGov GCompraGov { get; set; }
 
+        /// <summary>
+        /// Tipo de pagamento ou pagamento antecipado.
+        /// </summary>
+        [XmlElement("tpPagAnt")]
+#if INTEROP
+        public TipoPagamentoAntecipadoCTe TpPagAnt { get; set; } = (TipoPagamentoAntecipadoCTe)(-1);
+#else
+        public TipoPagamentoAntecipadoCTe? TpPagAnt { get; set; }
+#endif
+
+        /// <summary>
+        /// Grupo de antecipação de pagamento.
+        /// </summary>
+        [XmlElement("gPagAntecipado")]
+        public CTe.GPagAntecipado GPagAntecipado { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeDhContField() => DhCont > DateTime.MinValue;
@@ -406,6 +422,12 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         public bool ShouldSerializeXJust() => !string.IsNullOrWhiteSpace(XJust);
 
         public bool ShouldSerializeXDetRetira() => !string.IsNullOrEmpty(XDetRetira);
+
+#if INTEROP
+        public bool ShouldSerializeTpPagAnt() => TpPagAnt != (TipoPagamentoAntecipadoCTe)(-1);
+#else
+        public bool ShouldSerializeTpPagAnt() => TpPagAnt != null;
+#endif
 
         #endregion
     }

@@ -10,6 +10,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores
 
         string ObterSchemaArquivo(Servico servico);
 
+        string ObterSchemaRetornoArquivo(Servico servico);
+
         bool EnviaConteudoEmRequisicaoGet { get; }
 
         bool RecriaConteudoAposPrepararExecucao { get; }

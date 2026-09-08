@@ -32,6 +32,10 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             else if (servico == Servico.CIOTGravarMotorista) ValidarMotorista((Xml.CIOT.GravarMotorista)xml);
             else if (servico == Servico.CIOTGravarProprietario) ValidarProprietario((Xml.CIOT.GravarProprietario)xml);
             else if (servico == Servico.CIOTGravarVeiculo) ValidarVeiculo((Xml.CIOT.GravarVeiculo)xml);
+            else if (servico == Servico.CIOTObterOperacaoTransportePdf && string.IsNullOrWhiteSpace(((Xml.CIOT.ObterOperacaoTransportePdf)xml).CodigoIdentificacaoOperacao))
+            {
+                throw new ValidarXMLException("CodigoIdentificacaoOperacao é obrigatório para obter o PDF da operação de transporte na eFrete.");
+            }
         }
 
         internal static void ValidarServicoSuportado(Servico servico)

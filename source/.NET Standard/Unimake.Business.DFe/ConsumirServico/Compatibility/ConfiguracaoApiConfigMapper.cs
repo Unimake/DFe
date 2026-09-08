@@ -1,4 +1,5 @@
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.ConsumirServico.Compatibility
 {
@@ -29,6 +30,10 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 HttpContent = configuracoes.HttpContent,
                 UsaWinHttpHandler = configuracoes.UsaWinHttpHandler,
                 DesabilitaSelecaoAutomaticaCertificadoCliente = configuracoes.DesabilitaSelecaoAutomaticaCertificadoCliente,
+                UseProxy = configuracoes.HasProxy,
+                Proxy = configuracoes.HasProxy
+                    ? Proxy.DefinirServidor(configuracoes.ProxyServer, configuracoes.ProxyPort, configuracoes.ProxyAutoDetect, configuracoes.ProxyUser, configuracoes.ProxyPassword)
+                    : null,
             };
 
         public APIConfig MapExplicitEnvironment(Configuracao configuracoes) =>
@@ -51,6 +56,10 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 HttpContent = configuracoes.HttpContent,
                 UsaWinHttpHandler = configuracoes.UsaWinHttpHandler,
                 DesabilitaSelecaoAutomaticaCertificadoCliente = configuracoes.DesabilitaSelecaoAutomaticaCertificadoCliente,
+                UseProxy = configuracoes.HasProxy,
+                Proxy = configuracoes.HasProxy
+                    ? Proxy.DefinirServidor(configuracoes.ProxyServer, configuracoes.ProxyPort, configuracoes.ProxyAutoDetect, configuracoes.ProxyUser, configuracoes.ProxyPassword)
+                    : null,
             };
     }
 }

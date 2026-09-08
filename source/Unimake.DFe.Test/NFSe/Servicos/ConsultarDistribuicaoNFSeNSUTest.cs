@@ -170,6 +170,52 @@ namespace Unimake.DFe.Test.NFSe.Servicos
 
         #endregion Testes de Integração
 
+        [Fact]
+        [Trait("DFe", "NFSe")]
+        public void GravarXMLNFSeDeveUsarNomeComNSUParaEventos()
+        {
+            var chave = "12345678901234567890123456789012345678901234567890";
+            var nsuEvento = "000000000000002";
+            var xmlRetorno = "<?xml version=\"1.0\" encoding=\"utf-8\"?><retDistribuicaoNFSe>" +
+                $"<LoteDFe><NSU>000000000000001</NSU><ChaveAcesso>{chave}</ChaveAcesso><TipoDocumento>NFSE</TipoDocumento><ArquivoXml><NFSe><InfNFSe Id=\"nfse\">NFSe original</InfNFSe></NFSe></ArquivoXml></LoteDFe>" +
+                $"<LoteDFe><NSU>{nsuEvento}</NSU><ChaveAcesso>{chave}</ChaveAcesso><TipoDocumento>EVENTO</TipoDocumento><TipoEvento>CANCELAMENTO</TipoEvento><ArquivoXml><Evento><InfEvento Id=\"evento\">Evento da NFSe</InfEvento></Evento></ArquivoXml></LoteDFe>" +
+                "</retDistribuicaoNFSe>";
+
+            var retornoWSXML = new XmlDocument();
+            retornoWSXML.LoadXml(xmlRetorno);
+
+            var servico = new ConsultarDistribuicaoNFSeNSU
+            {
+                RetornoWSXML = retornoWSXML,
+                RetornoWSString = xmlRetorno
+            };
+
+            var pastaTemp = Path.Combine(Path.GetTempPath(), "ConsultarDistribuicaoNFSeNSU_Evento", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(pastaTemp);
+
+            try
+            {
+                servico.GravarXMLNFSe(pastaTemp);
+
+                var arquivoNFSe = Path.Combine(pastaTemp, $"{chave}-nfse.xml");
+                var arquivoEvento = Path.Combine(pastaTemp, $"{chave}-evt-{nsuEvento}-nfse.xml");
+
+                Assert.True(File.Exists(arquivoNFSe));
+                Assert.True(File.Exists(arquivoEvento));
+                Assert.Equal(2, Directory.GetFiles(pastaTemp, "*.xml").Length);
+                Assert.Contains("<NFSe>", File.ReadAllText(arquivoNFSe, Encoding.UTF8));
+                Assert.Contains("<Evento>", File.ReadAllText(arquivoEvento, Encoding.UTF8));
+            }
+            finally
+            {
+                try
+                {
+                    Directory.Delete(pastaTemp, true);
+                }
+                catch { }
+            }
+        }
+
         /// <summary>
         /// Teste unitário para validar a gravação do XML de distribuição em UTF-8
         /// </summary>

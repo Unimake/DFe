@@ -72,7 +72,10 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
 
         private HttpClientHandler CriarHttpClientHandler(TransportRequest request)
         {
-            var handler = new HttpClientHandler();
+            var handler = new HttpClientHandler
+            {
+                UseProxy = request.UseProxy
+            };
 
             if (!request.UseCertificate)
             {
@@ -102,9 +105,15 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
         {
             var handler = new WinHttpHandler
             {
-                WindowsProxyUsePolicy = request.Proxy == null ? WindowsProxyUsePolicy.UseWinInetProxy : WindowsProxyUsePolicy.UseCustomProxy,
-                Proxy = request.Proxy
+                WindowsProxyUsePolicy = !request.UseProxy
+                    ? WindowsProxyUsePolicy.DoNotUseProxy
+                    : request.Proxy == null ? WindowsProxyUsePolicy.UseWinInetProxy : WindowsProxyUsePolicy.UseCustomProxy
             };
+
+            if(request.UseProxy && request.Proxy != null)
+            {
+                handler.Proxy = request.Proxy;
+            }
 
             if (!request.UseCertificate)
             {

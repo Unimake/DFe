@@ -16,7 +16,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             { Servico.CIOTConsultarFrotaTransportador, SchemaEFrete },
             { Servico.CIOTGravarMotorista, SchemaEFrete },
             { Servico.CIOTGravarProprietario, SchemaEFrete },
-            { Servico.CIOTGravarVeiculo, SchemaEFrete }
+            { Servico.CIOTGravarVeiculo, SchemaEFrete },
+            { Servico.CIOTObterOperacaoTransportePdf, SchemaEFrete }
         };
 
         internal static string ObterSchemaArquivo(Servico servico)
@@ -24,5 +25,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             string schema;
             return Schemas.TryGetValue(servico, out schema) ? schema : null;
         }
+
+        internal static string ObterSchemaRetornoArquivo(Servico servico) =>
+            servico == Servico.CIOTObterOperacaoTransportePdf ? SchemaEFrete : null;
     }
 }

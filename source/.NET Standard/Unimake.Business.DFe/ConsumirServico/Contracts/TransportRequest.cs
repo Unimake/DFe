@@ -31,6 +31,8 @@ namespace Unimake.Business.DFe.ConsumirServico.Contracts
 
         public IWebProxy Proxy { get; set; }
 
+        public bool UseProxy { get; set; } = true;
+
         public CookieContainer Cookies { get; set; }
 
         public HttpContent HttpContent { get; set; }

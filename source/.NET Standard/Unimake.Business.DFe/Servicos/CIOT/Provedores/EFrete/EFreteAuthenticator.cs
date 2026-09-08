@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
 {
@@ -41,7 +42,11 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 UsaCertificadoDigital = false,
                 UsaWinHttpHandler = true,
                 DesabilitaSelecaoAutomaticaCertificadoCliente = true,
-                HttpContent = new StringContent(EFreteMapper.CriarJsonLogin(configuracao), System.Text.Encoding.UTF8, "application/json")
+                HttpContent = new StringContent(EFreteMapper.CriarJsonLogin(configuracao), System.Text.Encoding.UTF8, "application/json"),
+                UseProxy = configuracao.HasProxy,
+                Proxy = configuracao.HasProxy
+                    ? Proxy.DefinirServidor(configuracao.ProxyServer, configuracao.ProxyPort, configuracao.ProxyAutoDetect, configuracao.ProxyUser, configuracao.ProxyPassword)
+                    : null
             };
             using (var consumidor = new ConsumirAPI())
             {

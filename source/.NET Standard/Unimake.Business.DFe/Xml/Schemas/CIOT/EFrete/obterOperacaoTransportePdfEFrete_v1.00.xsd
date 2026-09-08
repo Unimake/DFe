@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.antt.gov.br/ciot" elementFormDefault="qualified">
+  <xs:element name="ObterOperacaoTransportePdf" type="tns:ObterOperacaoTransportePdf" />
+  <xs:complexType name="ObterOperacaoTransportePdf">
+    <xs:complexContent>
+      <xs:extension base="tns:XMLBase">
+        <xs:sequence>
+          <xs:element name="ProvedorCIOT" type="tns:ProvedorCIOT" />
+          <xs:element name="CodigoIdentificacaoOperacao" type="tns:TCodigoIdentificacaoOperacaoEFrete" />
+          <xs:element name="DocumentoViagem" type="tns:TTextoNaoVazio" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

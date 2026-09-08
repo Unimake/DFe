@@ -349,6 +349,8 @@ namespace Unimake.Business.DFe.Utility
                 CertificadoDigital = certificado,
                 HasProxy = configuracao.HasProxy,
                 ProxyAutoDetect = configuracao.ProxyAutoDetect,
+                ProxyServer = configuracao.ProxyServer,
+                ProxyPort = configuracao.ProxyPort,
                 ProxyUser = configuracao.ProxyUser,
                 ProxyPassword = configuracao.ProxyPassword,
                 TimeOutWebServiceConnect = opcoes.TimeoutMilissegundos,
@@ -887,6 +889,8 @@ namespace Unimake.Business.DFe.Utility
             }
 
             var material = configuracao.ProxyAutoDetect.ToString(CultureInfo.InvariantCulture) + "\0" +
+                (configuracao.ProxyServer ?? string.Empty) + "\0" +
+                configuracao.ProxyPort.ToString(CultureInfo.InvariantCulture) + "\0" +
                 (configuracao.ProxyUser ?? string.Empty) + "\0" + (configuracao.ProxyPassword ?? string.Empty);
             using (var hmac = new HMACSHA256(ChaveIdentidadeProxy))
             {

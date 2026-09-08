@@ -1694,7 +1694,9 @@ namespace Unimake.Business.DFe
                     return RaizEh("nfse", "nota") ? "1.20" : "2.04";
 
                 case PadraoNFSe.ISSNET:
-                    return "1.01";
+                    return codigoMunicipio == 4316907 && versaoDeclarada == "1.00"
+                        ? "1.00"
+                        : "1.01";
 
                 case PadraoNFSe.PAULISTANA:
                     return versaoDeclarada == "2.00" || Contem("Versao=\"2\"") || Contem("IBSCBS")

@@ -83,6 +83,17 @@
       <xs:maxLength value="100" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="TTextoNaoVazio">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TCodigoIdentificacaoOperacaoEFrete">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="17" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="TipoOperacaoTransporteCIOT">
     <xs:restriction base="xs:string">
       <xs:enumeration value="1" />

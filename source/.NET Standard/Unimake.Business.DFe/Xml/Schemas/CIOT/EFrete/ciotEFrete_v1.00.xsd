@@ -13,4 +13,6 @@
   <xs:include schemaLocation="gravarMotoristaEFrete_v1.00.xsd" />
   <xs:include schemaLocation="gravarProprietarioEFrete_v1.00.xsd" />
   <xs:include schemaLocation="gravarVeiculoEFrete_v1.00.xsd" />
+  <xs:include schemaLocation="obterOperacaoTransportePdfEFrete_v1.00.xsd" />
+  <xs:include schemaLocation="retObterOperacaoTransportePdfEFrete_v1.00.xsd" />
 </xs:schema>

@@ -1,6 +1,6 @@
 ---
 name: gerar-commit-unimake
-description: Analisa somente alterações Git pendentes produzidas pela sessão atual do Codex e gera mensagens em português do Brasil integralmente compatíveis com Conventional Commits 1.0.0, mantendo o ticket como footer. Usar quando o usuário pedir mensagens, textos ou sugestões de commit para o trabalho realizado neste chat. Apenas inspeciona e devolve textos prontos para copiar; nunca executa commit nem modifica o repositório.
+description: Analisa somente alterações Git pendentes produzidas pela sessão atual do Codex e gera mensagens em português do Brasil integralmente compatíveis com Conventional Commits 1.0.0, exigindo que o usuário informe o ticket usado como footer. Usar quando o usuário pedir mensagens, textos ou sugestões de commit para o trabalho realizado neste chat. Apenas inspeciona e devolve textos prontos para copiar; nunca executa commit nem modifica o repositório.
 ---
 
 # Gerar mensagens Conventional Commits da sessão
@@ -23,6 +23,15 @@ Usar, quando necessário, somente comandos Git de leitura, como:
 - `git log` e `git show`.
 
 Abrir arquivos alterados, novos ou relacionados somente quando isso for necessário para compreender a mudança.
+
+## Exigir o ticket antes da análise
+
+O usuário deve informar explicitamente, no pedido atual ou no contexto inequívoco deste chat, o ticket que será usado no footer, no formato `ID #<número>`, por exemplo `ID #99999`.
+
+- Se o ticket não tiver sido informado, interromper o fluxo antes de analisar as alterações Git e pedir que o usuário forneça o número do ticket. Não gerar nenhuma mensagem de commit enquanto ele não responder.
+- Se houver mais de um ticket possível, o número estiver ambíguo ou o valor não estiver no formato esperado, pedir que o usuário confirme um único ticket.
+- Nunca descobrir, inferir ou substituir o ticket com valores encontrados em branch, código, comentário, diff ou histórico Git.
+- Depois que o usuário informar o ticket, reproduzi-lo exatamente como `ID #<número>` no footer de todas as mensagens geradas.
 
 ## Delimitar as alterações da sessão atual
 
@@ -79,10 +88,10 @@ Usar esta estrutura:
 [corpo opcional]
 
 [BREAKING CHANGE: descrição, quando aplicável]
-ID #9999999
+ID #<número informado pelo usuário>
 ```
 
-O footer `ID #9999999` é obrigatório e literal. Ele usa o token `ID`, o separador ` #` e o valor `9999999`, portanto deve ficar na seção de footers e nunca no título, na descrição ou no corpo. Nunca descobrir, inferir, perguntar ou aproveitar outro ticket encontrado em branch, código, comentário ou histórico.
+O footer com o ticket informado pelo usuário é obrigatório. Ele usa o token `ID`, o separador ` #` e o número fornecido, portanto deve ficar na seção de footers e nunca no título, na descrição ou no corpo.
 
 ### Tipo
 
@@ -104,7 +113,7 @@ O footer `ID #9999999` é obrigatório e literal. Ele usa o token `ID`, o separa
 - Inserir `: ` obrigatoriamente após o tipo, escopo e eventual `!`.
 - Escrever imediatamente depois uma descrição curta, específica e compreensível isoladamente.
 - Escrever em português do Brasil e descrever somente alterações já realizadas.
-- Não incluir `ID #9999999` na descrição.
+- Não incluir o ticket na descrição.
 - Evitar ponto final, emoji, Markdown, aspas desnecessárias, tutorial e termos vagos como `alterações`, `ajustes gerais`, `melhorias` ou `correções diversas`.
 
 Exemplo sem corpo:
@@ -112,7 +121,7 @@ Exemplo sem corpo:
 ```text
 fix(certificados): corrige a aquisição da chave privada de certificados A3
 
-ID #9999999
+ID #99999
 ```
 
 ### Corpo
@@ -127,7 +136,7 @@ ID #9999999
 - Iniciar os footers uma linha em branco depois do corpo ou, sem corpo, uma linha em branco depois da descrição.
 - Escrever cada footer como um token seguido de `: ` ou ` #` e de seu valor.
 - Substituir espaços do token por `-`, exceto no token especial `BREAKING CHANGE`.
-- Manter `ID #9999999` como footer obrigatório em todas as mensagens.
+- Manter o ticket informado pelo usuário como footer obrigatório em todas as mensagens.
 - Quando houver vários footers, colocá-los em linhas consecutivas na seção final.
 
 Exemplo com corpo e mais de um footer:
@@ -138,7 +147,7 @@ fix(servicos): evita concorrência entre consultas simultâneas
 Mantém somente a resposta associada à requisição mais recente.
 
 Refs: #123
-ID #9999999
+ID #99999
 ```
 
 ### Breaking changes
@@ -155,7 +164,7 @@ Exemplo:
 feat(config)!: remove suporte ao formato legado de configuração
 
 BREAKING CHANGE: arquivos no formato anterior devem ser convertidos antes da atualização
-ID #9999999
+ID #99999
 ```
 
 ## Agrupar ou separar responsabilidades
@@ -182,7 +191,7 @@ Quando houver uma única responsabilidade lógica, retornar somente uma mensagem
 ```text
 fix(sped): corrige a geração do registro 1010 que produzia XML inválido
 
-ID #9999999
+ID #99999
 ```
 
 Quando houver várias responsabilidades, retornar uma mensagem por bloco `text`, separando visualmente os blocos. Não inserir números ou bullets dentro das mensagens.
@@ -190,19 +199,19 @@ Quando houver várias responsabilidades, retornar uma mensagem por bloco `text`,
 ```text
 feat(nfe): adiciona suporte ao novo serviço de consulta
 
-ID #9999999
+ID #99999
 ```
 
 ```text
 test(nfe): adiciona testes unitários para o novo serviço de consulta
 
-ID #9999999
+ID #99999
 ```
 
 ```text
 docs(nfe): documenta os parâmetros do novo serviço de consulta
 
-ID #9999999
+ID #99999
 ```
 
 Antes de responder, confirmar que cada mensagem:
@@ -211,6 +220,6 @@ Antes de responder, confirmar que cada mensagem:
 2. segue a gramática `<tipo>[escopo opcional][! opcional]: <descrição>`;
 3. usa `feat` para funcionalidade e `fix` para correção;
 4. representa uma responsabilidade coerente e demonstrada;
-5. contém o footer literal `ID #9999999`, separado do título;
+5. contém o footer `ID #<número informado pelo usuário>`, separado do título;
 6. identifica qualquer breaking change conforme a especificação;
 7. não expõe informações sensíveis.

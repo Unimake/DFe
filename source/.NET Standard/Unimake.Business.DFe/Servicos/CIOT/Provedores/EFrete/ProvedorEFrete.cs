@@ -10,6 +10,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
 
         public string ObterSchemaArquivo(Servico servico) => EFreteSchemaResolver.ObterSchemaArquivo(servico);
 
+        public string ObterSchemaRetornoArquivo(Servico servico) => EFreteSchemaResolver.ObterSchemaRetornoArquivo(servico);
+
         public bool EnviaConteudoEmRequisicaoGet => true;
 
         public bool RecriaConteudoAposPrepararExecucao => true;

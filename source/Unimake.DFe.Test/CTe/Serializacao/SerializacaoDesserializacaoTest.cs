@@ -120,6 +120,30 @@ namespace Unimake.DFe.Test.CTe.Serializacao
         }
 
         /// <summary>
+        /// Testar os campos de antecipação, SUFRAMA e CBS adicionados ao leiaute 4.00.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "CTe")]
+        public void SerializacaoDesserializacaoCTeNovosCamposRTC()
+        {
+            const string arqXML = @"..\..\..\CTe\Resources\4_00_CTe_ModalRodoviario.xml";
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTe.CTe>(doc);
+
+            Assert.Equal(TipoPagamentoAntecipadoCTe.FornecimentoPagamentoRealizadoAnteriormente, xml.InfCTe.Ide.TpPagAnt);
+            Assert.Equal(2, xml.InfCTe.Ide.GPagAntecipado.ChDFePagAnt.Count);
+            Assert.Equal("12345678", xml.InfCTe.Emit.ISUFEmit);
+            Assert.Equal(10d, xml.InfCTe.Imp.IBSCBS.GIBSCBS.GCBS.GDevTrib.PDevTrib);
+            Assert.Equal(2.5d, xml.InfCTe.Imp.IBSCBS.GIBSCBS.GCBS.GALCZFMCBS.PAliqEfetRegCBS);
+            Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+
+            xml.InfCTe.Imp.IBSCBS.GIBSCBS.GCBS.GDevTrib.PDevTrib = 0;
+            Assert.Equal("0.0000", xml.GerarXML().GetElementsByTagName("pDevTrib")[0].InnerText);
+        }
+
+        /// <summary>
         /// Testar a serialização e desserialização da assinatura do Provedor de Assinatura e Autorização.
         /// </summary>
         [Fact]

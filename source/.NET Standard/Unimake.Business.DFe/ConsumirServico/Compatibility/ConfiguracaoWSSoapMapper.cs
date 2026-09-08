@@ -30,8 +30,9 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 Servico = configuracoes.Servico,
                 TemCDATA = configuracoes.TemCDATA,
                 PrepararConexaoTLSAntesDoEnvio = configuracoes.PrepararConexaoTLSAntesDoEnvio,
+                UseProxy = configuracoes.HasProxy,
                 Proxy = configuracoes.HasProxy
-                    ? Proxy.DefinirServidor(configuracoes.ProxyAutoDetect, configuracoes.ProxyUser, configuracoes.ProxyPassword)
+                    ? Proxy.DefinirServidor(configuracoes.ProxyServer, configuracoes.ProxyPort, configuracoes.ProxyAutoDetect, configuracoes.ProxyUser, configuracoes.ProxyPassword)
                     : null
             };
     }

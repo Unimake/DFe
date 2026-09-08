@@ -578,6 +578,15 @@
 			<GerarQrCode>true</GerarQrCode>
 			<GrupoUrl>
 				<Grupo>
+					<UF>AC</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaznet.ac.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaznet.ac.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.hml.sefaznet.ac.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaznet.ac.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
+				<Grupo>
 					<UF>AL</UF>
 					<Urls>
 						<UrlChaveHomologacao>www.sefaz.al.gov.br/nfce/consulta</UrlChaveHomologacao>
@@ -826,6 +835,15 @@
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
 			<GrupoUrl>
+				<Grupo>
+					<UF>AC</UF>
+					<Urls>
+						<UrlChaveHomologacao>www.sefaznet.ac.gov.br/nfce/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao>www.sefaznet.ac.gov.br/nfce/consulta</UrlChaveProducao>
+						<UrlQrCodeHomologacao>http://www.hml.sefaznet.ac.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao>http://www.sefaznet.ac.gov.br/nfce/qrcode</UrlQrCodeProducao>
+					</Urls>
+				</Grupo>
 				<Grupo>
 					<UF>AL</UF>
 					<Urls>
@@ -7962,6 +7980,20 @@
           <Excecao codMunicipio="2111300">NFSeRecepcionarLoteRps</Excecao>
 				</TipoServico>
 				<SchemaArquivo>schema_v101.xsd</SchemaArquivo>
+				<TagAssinatura>DPS</TagAssinatura>
+				<TagAtributoID>infDPS</TagAtributoID>
+				<TagVersao>LoteDps</TagVersao>
+				<TagLoteAssinatura>EnviarLoteDpsSincronoEnvio</TagLoteAssinatura>
+				<TagLoteAtributoID>LoteDps</TagLoteAtributoID>
+				<TagExtraAssinatura/>
+				<TagExtraAtributoID/>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<!--Versão 1.00 suportada pela prefeitura de Santa Maria - RS para envio sem o grupo IBSCBS-->
+			<Servico tagRaiz="EnviarLoteDpsSincronoEnvio" versao="1.00" tagIdentificadora="LoteDps">
+				<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+				<TipoServico>NFSeRecepcionarLoteRpsSincrono</TipoServico>
+				<SchemaArquivo/>
 				<TagAssinatura>DPS</TagAssinatura>
 				<TagAtributoID>infDPS</TagAtributoID>
 				<TagVersao>LoteDps</TagVersao>
