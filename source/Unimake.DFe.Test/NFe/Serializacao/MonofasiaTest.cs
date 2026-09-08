@@ -184,6 +184,67 @@ namespace Unimake.DFe.Test.NFe.Serializacao
             Assert.Null(gerado.SelectSingleNode("//*[local-name()='gIBSCBSMono']/*[local-name()='gMonoPadrao']"));
         }
 
+        [Fact]
+        [Trait("DFe", "NFe")]
+        public void DeveAtualizarEstruturaNovaQuandoGrupoLegadoForAlteradoInternamente()
+        {
+            var nfe = CriarNFeBase();
+            var padrao = new GMonoPadrao
+            {
+                QBCMono = 10,
+                AdRemIBS = 0.1,
+                AdRemCBS = 0.2,
+                VIBSMono = 1,
+                VCBSMono = 2
+            };
+            var retencao = new GMonoReten
+            {
+                QBCMonoReten = 5,
+                AdRemIBSReten = 0.3,
+                AdRemCBSReten = 0.4,
+                VIBSMonoReten = 1.5,
+                VCBSMonoReten = 2
+            };
+            var retido = new GMonoRet
+            {
+                VIBSMonoRet = 3,
+                VCBSMonoRet = 4
+            };
+#pragma warning disable CS0618
+            nfe.InfNFeField.Det[0].Imposto.IBSCBS = new IBSCBS
+            {
+                CST = "620",
+                CClassTrib = "200032",
+                GIBSCBSMono = new GIBSCBSMono
+                {
+                    GMonoPadrao = padrao,
+                    GMonoReten = retencao,
+                    GMonoRet = retido,
+                    VTotIBSMonoItem = 1,
+                    VTotCBSMonoItem = 2
+                }
+            };
+#pragma warning restore CS0618
+
+            XMLUtility.Serializar(nfe);
+
+            padrao.AdRemIBS = 0.9;
+            padrao.AdRemCBS = 0.8;
+            retencao.AdRemIBSReten = 0.7;
+            retencao.AdRemCBSReten = 0.6;
+            retido.VIBSMonoRet = 5;
+            retido.VCBSMonoRet = 6;
+
+            var geradoNovamente = XMLUtility.Serializar(nfe);
+            ValidarSchema(geradoNovamente);
+            Assert.Equal("0.9000", geradoNovamente.SelectSingleNode("//*[local-name()='gIBSMonoAdRem']/*[local-name()='gMonoPadrao']/*[local-name()='adRemIBS']").InnerText);
+            Assert.Equal("0.8000", geradoNovamente.SelectSingleNode("//*[local-name()='gCBSMonoAdRem']/*[local-name()='gMonoPadrao']/*[local-name()='adRemCBS']").InnerText);
+            Assert.Equal("0.7000", geradoNovamente.SelectSingleNode("//*[local-name()='gIBSMonoAdRem']/*[local-name()='gMonoReten']/*[local-name()='adRemIBSReten']").InnerText);
+            Assert.Equal("0.6000", geradoNovamente.SelectSingleNode("//*[local-name()='gCBSMonoAdRem']/*[local-name()='gMonoReten']/*[local-name()='adRemCBSReten']").InnerText);
+            Assert.Equal("5.00", geradoNovamente.SelectSingleNode("//*[local-name()='gIBSMonoAdRem']/*[local-name()='gMonoRet']/*[local-name()='vIBSMonoRet']").InnerText);
+            Assert.Equal("6.00", geradoNovamente.SelectSingleNode("//*[local-name()='gCBSMonoAdRem']/*[local-name()='gMonoRet']/*[local-name()='vCBSMonoRet']").InnerText);
+        }
+
         private static Business.DFe.Xml.NFe.NFe CriarNFeBase()
         {
             var doc = new XmlDocument();

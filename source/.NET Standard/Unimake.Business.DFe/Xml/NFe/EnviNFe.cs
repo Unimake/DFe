@@ -14045,6 +14045,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         private GIBSMonoAdRem gIBSMonoAdRem;
         private GCBSMonoAdRem gCBSMonoAdRem;
+        private bool gIBSMonoAdRemInformado;
+        private bool gCBSMonoAdRemInformado;
         private GMonoPadrao gMonoPadrao;
         private GMonoReten gMonoReten;
         private GMonoRet gMonoRet;
@@ -14055,15 +14057,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("gIBSMonoAdRem", Order = 0)]
         public GIBSMonoAdRem GIBSMonoAdRem
         {
-            get
+            get => gIBSMonoAdRemInformado ? gIBSMonoAdRem : CriarGIBSMonoAdRemLegado();
+            set
             {
-                if (gIBSMonoAdRem == null)
-                {
-                    gIBSMonoAdRem = CriarGIBSMonoAdRemLegado();
-                }
-                return gIBSMonoAdRem;
+                gIBSMonoAdRem = value;
+                gIBSMonoAdRemInformado = true;
             }
-            set => gIBSMonoAdRem = value;
         }
 
         /// <summary>
@@ -14078,15 +14077,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("gCBSMonoAdRem", Order = 2)]
         public GCBSMonoAdRem GCBSMonoAdRem
         {
-            get
+            get => gCBSMonoAdRemInformado ? gCBSMonoAdRem : CriarGCBSMonoAdRemLegado();
+            set
             {
-                if (gCBSMonoAdRem == null)
-                {
-                    gCBSMonoAdRem = CriarGCBSMonoAdRemLegado();
-                }
-                return gCBSMonoAdRem;
+                gCBSMonoAdRem = value;
+                gCBSMonoAdRemInformado = true;
             }
-            set => gCBSMonoAdRem = value;
         }
 
         /// <summary>
@@ -14108,6 +14104,8 @@ namespace Unimake.Business.DFe.Xml.NFe
                 gMonoPadrao = value;
                 gIBSMonoAdRem = null;
                 gCBSMonoAdRem = null;
+                gIBSMonoAdRemInformado = false;
+                gCBSMonoAdRemInformado = false;
             }
         }
 
@@ -14124,6 +14122,8 @@ namespace Unimake.Business.DFe.Xml.NFe
                 gMonoReten = value;
                 gIBSMonoAdRem = null;
                 gCBSMonoAdRem = null;
+                gIBSMonoAdRemInformado = false;
+                gCBSMonoAdRemInformado = false;
             }
         }
 
@@ -14140,6 +14140,8 @@ namespace Unimake.Business.DFe.Xml.NFe
                 gMonoRet = value;
                 gIBSMonoAdRem = null;
                 gCBSMonoAdRem = null;
+                gIBSMonoAdRemInformado = false;
+                gCBSMonoAdRemInformado = false;
             }
         }
 
