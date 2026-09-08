@@ -91,7 +91,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     var pdf = (Xml.CIOT.ObterOperacaoTransportePdf)xml;
                     payload = new JObject
                     {
-                        ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacao(pdf.CodigoIdentificacaoOperacao),
+                        ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacaoCompleto(pdf.CodigoIdentificacaoOperacao),
                         ["DocumentoViagem"] = pdf.DocumentoViagem
                     };
                     payload["Versao"] = 1;
@@ -127,6 +127,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     resultado = new RetDeclaracaoOperacaoTransporte
                     {
                         IdOperacaoTransporte = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
+                        CodigoVerificador = ObterCodigoVerificador(Valor(root, "CodigoIdentificacaoOperacao")),
                         Protocolo = Valor(root, "ProtocoloServico"),
                         Codigo = sucesso ? CodigoSucessoCIOT : codigo,
                         Mensagem = mensagemDeclaracao,
@@ -138,6 +139,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     resultado = new RetConsultarCIOTGerado
                     {
                         CodigoIdentificacaoOperacao = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
+                        CodigoVerificador = ObterCodigoVerificador(Valor(root, "CodigoIdentificacaoOperacao")),
                         EstadoCIOT = Valor(root, "EstadoCiot"),
                         Protocolo = Valor(root, "ProtocoloServico"),
                         Codigo = erro ? new List<string> { codigo } : null,
@@ -469,6 +471,20 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
 
             var separador = codigo.IndexOf('/');
             return separador > 0 ? codigo.Substring(0, separador) : codigo;
+        }
+
+        private static string NormalizarCodigoIdentificacaoOperacaoCompleto(string codigo) =>
+            string.IsNullOrWhiteSpace(codigo) ? codigo : codigo.Trim();
+
+        private static string ObterCodigoVerificador(string codigo)
+        {
+            if (string.IsNullOrWhiteSpace(codigo))
+            {
+                return null;
+            }
+
+            var separador = codigo.IndexOf('/');
+            return separador >= 0 && separador < codigo.Length - 1 ? codigo.Substring(separador + 1) : null;
         }
         private static JToken Numero(string value) { decimal parsed; return decimal.TryParse(value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out parsed) ? new JValue(parsed) : null; }
         private static JToken Localizar(JObject obj, string nome) { return obj?.Properties().FirstOrDefault(x => string.Equals(x.Name, nome, StringComparison.OrdinalIgnoreCase))?.Value; }

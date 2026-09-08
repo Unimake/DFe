@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Unimake.Business.DFe.Xml;
 using Unimake.Exceptions;
 
@@ -32,9 +33,17 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             else if (servico == Servico.CIOTGravarMotorista) ValidarMotorista((Xml.CIOT.GravarMotorista)xml);
             else if (servico == Servico.CIOTGravarProprietario) ValidarProprietario((Xml.CIOT.GravarProprietario)xml);
             else if (servico == Servico.CIOTGravarVeiculo) ValidarVeiculo((Xml.CIOT.GravarVeiculo)xml);
-            else if (servico == Servico.CIOTObterOperacaoTransportePdf && string.IsNullOrWhiteSpace(((Xml.CIOT.ObterOperacaoTransportePdf)xml).CodigoIdentificacaoOperacao))
+            else if (servico == Servico.CIOTObterOperacaoTransportePdf)
             {
-                throw new ValidarXMLException("CodigoIdentificacaoOperacao é obrigatório para obter o PDF da operação de transporte na eFrete.");
+                var obterPdf = (Xml.CIOT.ObterOperacaoTransportePdf)xml;
+                if (string.IsNullOrWhiteSpace(obterPdf.CodigoIdentificacaoOperacao))
+                {
+                    throw new ValidarXMLException("CodigoIdentificacaoOperacao é obrigatório para obter o PDF da operação de transporte na eFrete.");
+                }
+                if (!Regex.IsMatch(obterPdf.CodigoIdentificacaoOperacao.Trim(), @"^\d{12}/\d{4}$"))
+                {
+                    throw new ValidarXMLException("CodigoIdentificacaoOperacao deve conter o CIOT completo no formato 999999999999/9999 para obter o PDF na eFrete.");
+                }
             }
         }
 

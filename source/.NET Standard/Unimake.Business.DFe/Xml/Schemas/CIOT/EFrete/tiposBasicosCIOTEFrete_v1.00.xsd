@@ -90,8 +90,7 @@
   </xs:simpleType>
   <xs:simpleType name="TCodigoIdentificacaoOperacaoEFrete">
     <xs:restriction base="xs:string">
-      <xs:minLength value="1" />
-      <xs:maxLength value="17" />
+      <xs:pattern value="[0-9]{12}/[0-9]{4}" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="TipoOperacaoTransporteCIOT">

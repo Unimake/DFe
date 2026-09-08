@@ -85,6 +85,8 @@ Regras que já causaram falhas reais:
 - A própria eFrete usa internamente o CIOT de 16 caracteres, com dígito verificador, ao falar com a ANTT.
 - Se homologação retornar algo como `123456789012/XXXX`, exponha e transmita somente `123456789012` nos serviços eFrete.
 - Cancelamento e encerramento recebem os 12 caracteres; não exija consulta apenas para obter o dígito verificador.
+- `ObterOperacaoTransportePdf` é a exceção: o endpoint exige o código completo no formato `999999999999/9999`. Preserve a barra e os quatro dígitos no JSON desse serviço.
+- Ao normalizar declaração e consulta por `IdOperacaoCliente`, exponha os 12 caracteres no identificador atual e os quatro dígitos em `CodigoVerificador`, permitindo compor o código completo para consultar o PDF.
 - Essa normalização é exclusiva do mapper eFrete. Não corte identificadores ANTT.
 
 ## Normalização obrigatória dos retornos

@@ -173,12 +173,17 @@ namespace Unimake.Business.DFe.Xml.CIOT
 
     public partial class RetConsultarCIOTGerado
     {
+        /// <summary>Código verificador da operação de transporte retornado pela eFrete.</summary>
+        [XmlElement("CodigoVerificador")]
+        public string CodigoVerificador { get; set; }
+
         [XmlElement("EstadoCIOT")]
         public string EstadoCIOT { get; set; }
 
         [XmlElement("Protocolo")]
         public string Protocolo { get; set; }
 
+        public bool ShouldSerializeCodigoVerificador() => !string.IsNullOrWhiteSpace(CodigoVerificador);
         public bool ShouldSerializeEstadoCIOT() => !string.IsNullOrWhiteSpace(EstadoCIOT);
         public bool ShouldSerializeProtocolo() => !string.IsNullOrWhiteSpace(Protocolo);
     }

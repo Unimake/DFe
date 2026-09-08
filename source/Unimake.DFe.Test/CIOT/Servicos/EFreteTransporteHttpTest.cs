@@ -291,7 +291,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
 
                     var requisicao = Assert.Single(await servidor);
                     Assert.Equal("GET", requisicao.Metodo);
-                    Assert.Contains("\"CodigoIdentificacaoOperacao\":\"992000000126\"", requisicao.Corpo);
+                    Assert.Contains("\"CodigoIdentificacaoOperacao\":\"992000000126/4321\"", requisicao.Corpo);
                     Assert.Contains("\"DocumentoViagem\":\"VIAGEM-TESTE-001\"", requisicao.Corpo);
                     Assert.Contains("\"Token\":\"TOKEN-LOCAL\"", requisicao.Corpo);
                     Assert.DoesNotContain("ProvedorCIOT", requisicao.Corpo);

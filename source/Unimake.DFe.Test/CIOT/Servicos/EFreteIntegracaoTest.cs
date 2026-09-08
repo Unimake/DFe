@@ -200,6 +200,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             var encerramento = new RetEncerramentoOperacaoTransporte().LerXML<RetEncerramentoOperacaoTransporte>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126\",\"Protocolo\":\"PROTO-3\"}", Servico.CIOTEncerramentoOperacaoTransporte));
 
             Assert.Equal("992000000126", declaracao.IdOperacaoTransporte);
+            Assert.Equal("XXXX", declaracao.CodigoVerificador);
             Assert.Equal("110", declaracao.Codigo);
             Assert.Equal("Dados inseridos com sucesso!", declaracao.Mensagem);
             Assert.Single(declaracao.Mensagens);
@@ -207,6 +208,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Equal("Dados inseridos com sucesso!", declaracao.Mensagens[0].Descricao);
             Assert.Equal("PROTO-1", declaracao.Protocolo);
             Assert.Equal("EmViagem", consulta.EstadoCIOT);
+            Assert.Equal("XXXX", consulta.CodigoVerificador);
             Assert.Equal("PROTO-2", consulta.Protocolo);
             Assert.Equal("PROTO-3", encerramento.Protocolo);
             Assert.Equal("110", encerramento.Codigo);

@@ -28,7 +28,7 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public ProvedorCIOT? ProvedorCIOT { get; set; }
 #endif
 
-        /// <summary>Código de identificação da operação de transporte.</summary>
+        /// <summary>Código completo de identificação da operação de transporte, no formato 999999999999/9999.</summary>
         [XmlElement("CodigoIdentificacaoOperacao")]
         public string CodigoIdentificacaoOperacao { get; set; }
 
