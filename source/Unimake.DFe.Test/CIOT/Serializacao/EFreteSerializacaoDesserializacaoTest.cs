@@ -55,6 +55,7 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
             else
             {
                 var requisicao = Comparar<CancelamentoOperacaoTransporte>(caminho);
+                Assert.Equal("992000000126/XXXX", requisicao.CodigoIdentificacaoOperacao);
                 Validar(requisicao, Servico.CIOTCancelamentoOperacaoTransporte);
             }
         }
@@ -74,6 +75,7 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
             else
             {
                 var requisicao = Comparar<EncerramentoOperacaoTransporte>(caminho);
+                Assert.Equal("992000000126/4321", requisicao.CodigoIdentificacaoOperacao);
                 Validar(requisicao, Servico.CIOTEncerramentoOperacaoTransporte);
             }
         }

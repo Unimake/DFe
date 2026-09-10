@@ -215,26 +215,29 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Equal(default, encerramento.DataEncerramento);
         }
 
-        [Fact]
+        [Theory]
+        [InlineData("992000000126")]
+        [InlineData("992000000126/XXXX")]
+        [InlineData("992000000126/4321")]
         [Trait("DFe", "CIOT")]
-        public void EnviaSomenteOsDozeCaracteresDoCodigoNasOperacoesEFrete()
+        public void PreservaCodigoInformadoNoCancelamentoEEncerramentoEFrete(string codigoIdentificacaoOperacao)
         {
             var configuracao = CriarConfiguracao();
             var cancelamento = new CancelamentoOperacaoTransporte
             {
-                CodigoIdentificacaoOperacao = "992000000126/XXXX",
+                CodigoIdentificacaoOperacao = codigoIdentificacaoOperacao,
                 MotivoCancelamento = "MOTIVO DE TESTE"
             };
             var encerramento = new EncerramentoOperacaoTransporte
             {
-                CodigoIdentificacaoOperacao = "992000000126/XXXX"
+                CodigoIdentificacaoOperacao = codigoIdentificacaoOperacao
             };
 
             var jsonCancelamento = JObject.Parse(EFreteMapper.CriarJson(cancelamento, Servico.CIOTCancelamentoOperacaoTransporte, configuracao));
             var jsonEncerramento = JObject.Parse(EFreteMapper.CriarJson(encerramento, Servico.CIOTEncerramentoOperacaoTransporte, configuracao));
 
-            Assert.Equal("992000000126", jsonCancelamento.Value<string>("CodigoIdentificacaoOperacao"));
-            Assert.Equal("992000000126", jsonEncerramento.Value<string>("CodigoIdentificacaoOperacao"));
+            Assert.Equal(codigoIdentificacaoOperacao, jsonCancelamento.Value<string>("CodigoIdentificacaoOperacao"));
+            Assert.Equal(codigoIdentificacaoOperacao, jsonEncerramento.Value<string>("CodigoIdentificacaoOperacao"));
         }
 
         [Fact]

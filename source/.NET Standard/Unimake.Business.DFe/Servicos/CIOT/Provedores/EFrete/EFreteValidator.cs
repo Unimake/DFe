@@ -24,10 +24,16 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             {
                 var cancelamento = (Xml.CIOT.CancelamentoOperacaoTransporte)xml;
                 if (string.IsNullOrWhiteSpace(cancelamento.CodigoIdentificacaoOperacao) || string.IsNullOrWhiteSpace(cancelamento.MotivoCancelamento)) throw new ValidarXMLException("CodigoIdentificacaoOperacao e MotivoCancelamento são obrigatórios no cancelamento eFrete.");
+                ValidarCodigoIdentificacaoOperacao(cancelamento.CodigoIdentificacaoOperacao, false, "cancelamento");
             }
-            else if (servico == Servico.CIOTEncerramentoOperacaoTransporte && string.IsNullOrWhiteSpace(((Xml.CIOT.EncerramentoOperacaoTransporte)xml).CodigoIdentificacaoOperacao))
+            else if (servico == Servico.CIOTEncerramentoOperacaoTransporte)
             {
-                throw new ValidarXMLException("CodigoIdentificacaoOperacao é obrigatório no encerramento eFrete.");
+                var encerramento = (Xml.CIOT.EncerramentoOperacaoTransporte)xml;
+                if (string.IsNullOrWhiteSpace(encerramento.CodigoIdentificacaoOperacao))
+                {
+                    throw new ValidarXMLException("CodigoIdentificacaoOperacao é obrigatório no encerramento eFrete.");
+                }
+                ValidarCodigoIdentificacaoOperacao(encerramento.CodigoIdentificacaoOperacao, false, "encerramento");
             }
             else if (servico == Servico.CIOTConsultarSituacaoTransportador || servico == Servico.CIOTConsultarFrotaTransportador) ValidarSituacao(xml, servico);
             else if (servico == Servico.CIOTGravarMotorista) ValidarMotorista((Xml.CIOT.GravarMotorista)xml);
@@ -40,10 +46,17 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 {
                     throw new ValidarXMLException("CodigoIdentificacaoOperacao é obrigatório para obter o PDF da operação de transporte na eFrete.");
                 }
-                if (!Regex.IsMatch(obterPdf.CodigoIdentificacaoOperacao.Trim(), @"^\d{12}/\d{4}$"))
-                {
-                    throw new ValidarXMLException("CodigoIdentificacaoOperacao deve conter o CIOT completo no formato 999999999999/9999 para obter o PDF na eFrete.");
-                }
+                ValidarCodigoIdentificacaoOperacao(obterPdf.CodigoIdentificacaoOperacao, true, "obtenção do PDF");
+            }
+        }
+
+        private static void ValidarCodigoIdentificacaoOperacao(string codigo, bool exigeCodigoVerificador, string operacao)
+        {
+            var padrao = exigeCodigoVerificador ? @"^\d{12}/(?:\d{4}|XXXX)$" : @"^\d{12}(?:/(?:\d{4}|XXXX))?$";
+            if (!Regex.IsMatch(codigo.Trim(), padrao))
+            {
+                var formatos = exigeCodigoVerificador ? "999999999999/9999 ou 999999999999/XXXX" : "999999999999, 999999999999/9999 ou 999999999999/XXXX";
+                throw new ValidarXMLException("CodigoIdentificacaoOperacao deve estar em um dos formatos " + formatos + " para " + operacao + " na eFrete.");
             }
         }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <EncerramentoOperacaoTransporte xmlns="http://www.antt.gov.br/ciot">
 	<ProvedorCIOT>EFrete</ProvedorCIOT>
-	<CodigoIdentificacaoOperacao>992000000126</CodigoIdentificacaoOperacao>
+	<CodigoIdentificacaoOperacao>992000000126/4321</CodigoIdentificacaoOperacao>
 </EncerramentoOperacaoTransporte>

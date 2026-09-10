@@ -25,7 +25,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
         public void ExecutarEnviaPostComTokenFornecidoENormalizaResult()
         {
             var transporte = new TransporteControlado();
-            transporte.AdicionarResposta("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126\",\"ProtocoloServico\":\"PROTO-POST\"}");
+            transporte.AdicionarResposta("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126/XXXX\",\"ProtocoloServico\":\"PROTO-POST\"}");
             var configuracao = CriarConfiguracaoEFrete();
             var servico = new DeclaracaoServico(LerXML<DeclaracaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\efrete-declaracao-carga-lotacao-completa.xml"), configuracao);
             var endpointEsperado = configuracao.RequestURI;
@@ -44,12 +44,14 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Single(notasFiscais);
             Assert.False(requisicao.UsaCertificado);
             Assert.Equal("992000000126", servico.Result.IdOperacaoTransporte);
+            Assert.Equal("XXXX", servico.Result.CodigoVerificador);
             Assert.Equal("110", servico.Result.Codigo);
             Assert.Equal("Dados inseridos com sucesso!", servico.Result.Mensagem);
             Assert.Single(servico.Result.Mensagens);
             Assert.Equal("110", servico.Result.Mensagens[0].Codigo);
             Assert.Equal("Dados inseridos com sucesso!", servico.Result.Mensagens[0].Descricao);
             Assert.Contains("<Mensagem>Dados inseridos com sucesso!</Mensagem><Mensagens><Mensagem><Codigo>110</Codigo><Descricao>Dados inseridos com sucesso!</Descricao></Mensagem></Mensagens>", servico.RetornoWSString);
+            Assert.Contains("<IdOperacaoTransporte>992000000126</IdOperacaoTransporte><CodigoVerificador>XXXX</CodigoVerificador>", servico.RetornoWSString);
             Assert.Equal("PROTO-POST", servico.Result.Protocolo);
         }
 

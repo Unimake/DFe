@@ -90,7 +90,12 @@
   </xs:simpleType>
   <xs:simpleType name="TCodigoIdentificacaoOperacaoEFrete">
     <xs:restriction base="xs:string">
-      <xs:pattern value="[0-9]{12}/[0-9]{4}" />
+      <xs:pattern value="[0-9]{12}/([0-9]{4}|XXXX)" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TCodigoIdentificacaoOperacaoFlexivelEFrete">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{12}(/([0-9]{4}|XXXX))?" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="TipoOperacaoTransporteCIOT">
@@ -395,7 +400,7 @@
       <xs:extension base="tns:XMLBase">
         <xs:sequence>
           <xs:element minOccurs="1" maxOccurs="1" name="ProvedorCIOT" type="tns:ProvedorCIOT" />
-          <xs:element minOccurs="1" maxOccurs="1" name="CodigoIdentificacaoOperacao" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CodigoIdentificacaoOperacao" type="tns:TCodigoIdentificacaoOperacaoFlexivelEFrete" />
           <xs:element minOccurs="0" maxOccurs="1" name="MotivoCancelamento" type="xs:string" />
         </xs:sequence>
       </xs:extension>
@@ -406,7 +411,7 @@
       <xs:extension base="tns:XMLBase">
         <xs:sequence>
           <xs:element minOccurs="1" maxOccurs="1" name="ProvedorCIOT" type="tns:ProvedorCIOT" />
-          <xs:element minOccurs="1" maxOccurs="1" name="CodigoIdentificacaoOperacao" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CodigoIdentificacaoOperacao" type="tns:TCodigoIdentificacaoOperacaoFlexivelEFrete" />
           <xs:element minOccurs="0" maxOccurs="1" name="OrigemDestino" type="tns:ArrayOfOrigemDestino" />
           <xs:element minOccurs="0" maxOccurs="1" name="DadosCarga" type="tns:DadosCargaEncerramento" />
         </xs:sequence>

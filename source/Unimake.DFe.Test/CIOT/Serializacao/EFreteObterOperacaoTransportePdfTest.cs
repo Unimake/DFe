@@ -55,6 +55,8 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
             var desconhecido = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace(">EFrete<", ">OUTRO<");
             var codigoVazio = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace(">992000000126/4321<", "><");
             var codigoSemVerificador = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace("992000000126/4321", "992000000126");
+            var codigoProvisorio = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace("992000000126/4321", "992000000126/XXXX");
+            var codigoInvalido = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace("992000000126/4321", "992000000126/ABCD");
             var retornoInvalido = File.ReadAllText(Caminho("efrete-ret-obter-operacao-transporte-pdf.xml")).Replace("JVBERi0xLjQK", "%%%INVALIDO%%%");
 
             ValidarSchema(Xml(semProvedor), false);
@@ -62,6 +64,8 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
             ValidarSchema(Xml(desconhecido), false);
             ValidarSchema(Xml(codigoVazio), false);
             ValidarSchema(Xml(codigoSemVerificador), false);
+            ValidarSchema(Xml(codigoProvisorio), true);
+            ValidarSchema(Xml(codigoInvalido), false);
             ValidarSchema(Xml(retornoInvalido), false);
         }
 
@@ -90,7 +94,7 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
         public void RecusaCodigoSemVerificadorAntesDoTransporte()
         {
             var xml = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf-sem-viagem.xml"))
-                .Replace("992000000126/4321", "992000000126");
+                .Replace("992000000126/XXXX", "992000000126");
 
             var excecao = Assert.Throws<ValidarXMLException>(() => new ServicoPdf(xml, ConfiguracaoEFrete()));
 

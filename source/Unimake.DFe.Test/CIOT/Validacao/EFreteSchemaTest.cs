@@ -84,6 +84,28 @@ namespace Unimake.DFe.Test.CIOT.Validacao
         }
 
         [Theory]
+        [InlineData("efrete-cancelamento-operacao-transporte.xml", Servico.CIOTCancelamentoOperacaoTransporte, "992000000126", true)]
+        [InlineData("efrete-cancelamento-operacao-transporte.xml", Servico.CIOTCancelamentoOperacaoTransporte, "992000000126/XXXX", true)]
+        [InlineData("efrete-cancelamento-operacao-transporte.xml", Servico.CIOTCancelamentoOperacaoTransporte, "992000000126/4321", true)]
+        [InlineData("efrete-cancelamento-operacao-transporte.xml", Servico.CIOTCancelamentoOperacaoTransporte, "992000000126/ABCD", false)]
+        [InlineData("efrete-encerramento-operacao-transporte.xml", Servico.CIOTEncerramentoOperacaoTransporte, "992000000126", true)]
+        [InlineData("efrete-encerramento-operacao-transporte.xml", Servico.CIOTEncerramentoOperacaoTransporte, "992000000126/XXXX", true)]
+        [InlineData("efrete-encerramento-operacao-transporte.xml", Servico.CIOTEncerramentoOperacaoTransporte, "992000000126/4321", true)]
+        [InlineData("efrete-encerramento-operacao-transporte.xml", Servico.CIOTEncerramentoOperacaoTransporte, "992000000126/ABCD", false)]
+        [Trait("DFe", "CIOT")]
+        public void SchemaEFreteValidaFormatosDoCodigoNoCancelamentoEEncerramento(string arquivo, Servico servico, string codigo, bool esperado)
+        {
+            var documento = new XmlDocument();
+            documento.Load(CaminhoRecurso(arquivo));
+            documento.GetElementsByTagName("CodigoIdentificacaoOperacao", NamespaceCIOT)[0].InnerText = codigo;
+            var validador = new ValidarSchema();
+
+            validador.Validar(documento, EFreteSchemaResolver.ObterSchemaArquivo(servico), NamespaceCIOT);
+
+            Assert.Equal(esperado, validador.Success);
+        }
+
+        [Theory]
         [InlineData("<TipoEmbalagem>Granel</TipoEmbalagem>", "<TipoEmbalagem>Volumes</TipoEmbalagem>")]
         [InlineData("<TipoDeCalculo>QuebraSomenteUltrapassado</TipoDeCalculo>", "<TipoDeCalculo>ComQuebra</TipoDeCalculo>")]
         [InlineData("<ValorParcela>3000.00</ValorParcela>", "<ValorParcela>0</ValorParcela>")]

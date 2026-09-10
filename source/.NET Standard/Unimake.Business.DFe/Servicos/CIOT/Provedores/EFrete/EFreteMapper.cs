@@ -91,7 +91,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     var pdf = (Xml.CIOT.ObterOperacaoTransportePdf)xml;
                     payload = new JObject
                     {
-                        ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacaoCompleto(pdf.CodigoIdentificacaoOperacao),
+                        ["CodigoIdentificacaoOperacao"] = PreservarCodigoIdentificacaoOperacaoInformado(pdf.CodigoIdentificacaoOperacao),
                         ["DocumentoViagem"] = pdf.DocumentoViagem
                     };
                     payload["Versao"] = 1;
@@ -384,8 +384,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
         }
 
         private static JObject CriarConsulta(Xml.CIOT.ConsultarCIOTGerado xml) => new JObject { ["MatrizCNPJ"] = xml.MatrizCNPJ, ["IdOperacaoCliente"] = xml.IdOperacaoCliente };
-        private static JObject CriarCancelamento(Xml.CIOT.CancelamentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacao(xml.CodigoIdentificacaoOperacao), ["Motivo"] = xml.MotivoCancelamento };
-        private static JObject CriarEncerramento(Xml.CIOT.EncerramentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacao(xml.CodigoIdentificacaoOperacao), ["PesoCarga"] = Numero(xml.DadosCarga?.PesoTotalCarga) };
+        private static JObject CriarCancelamento(Xml.CIOT.CancelamentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = PreservarCodigoIdentificacaoOperacaoInformado(xml.CodigoIdentificacaoOperacao), ["Motivo"] = xml.MotivoCancelamento };
+        private static JObject CriarEncerramento(Xml.CIOT.EncerramentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = PreservarCodigoIdentificacaoOperacaoInformado(xml.CodigoIdentificacaoOperacao), ["PesoCarga"] = Numero(xml.DadosCarga?.PesoTotalCarga) };
         private static JObject CriarSituacao(Xml.CIOT.ConsultarSituacaoTransportador xml, List<string> placas) => new JObject
         {
             ["InteressadoCpfOuCnpj"] = xml.CpfCnpjInteressado,
@@ -473,7 +473,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             return separador > 0 ? codigo.Substring(0, separador) : codigo;
         }
 
-        private static string NormalizarCodigoIdentificacaoOperacaoCompleto(string codigo) =>
+        private static string PreservarCodigoIdentificacaoOperacaoInformado(string codigo) =>
             string.IsNullOrWhiteSpace(codigo) ? codigo : codigo.Trim();
 
         private static string ObterCodigoVerificador(string codigo)
