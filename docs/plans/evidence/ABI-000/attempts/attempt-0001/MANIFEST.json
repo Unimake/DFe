@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "stage_id": "ABI-000",
+  "state": "DELIVERED_FOR_REVIEW",
+  "attempt_id": "attempt-0001",
+  "attempt_archive": "docs/plans/evidence/ABI-000/attempts/attempt-0001",
+  "base_state": "read-only inspection 2026-09-10",
+  "started_at": "2026-09-10T00:00:00-03:00",
+  "finished_at": "2026-09-10T00:00:01-03:00",
+  "files": [
+    "docs/planning/PROJECT-BRIEF.md",
+    "docs/plans/TRACEABILITY.md",
+    "docs/plans/ABI-000-planning-baseline.md"
+  ],
+  "hashes_sha256": {
+    "docs/planning/PROJECT-BRIEF.md": "D2D49448E44253BB5A5BA2A1ACA1F8EA9C7FFEA6CAEBA20D5D226A244CBDF8C0",
+    "docs/plans/TRACEABILITY.md": "BF1FAE0D10D9A112F226046273689D005A0551E80B732DAE4C189176600044CD",
+    "docs/plans/ABI-000-planning-baseline.md": "909CFE1BFF9051C071D5831D6D6D73D7DB95BCF2659DEECC99D5CEA83DE172A8"
+  },
+  "commands": [
+    {
+      "command": "pwsh -NoProfile -File .agents/skills/plan-linter/scripts/test-plan.ps1 -RepositoryRoot .",
+      "result": "PASS",
+      "exit_code": 0,
+      "evidence": "docs/plans/evidence/ABI-000/TESTS.md"
+    }
+  ],
+  "tests": {
+    "status": "PASS_WITH_JUSTIFIED_NA",
+    "executed": [
+      "plan linter"
+    ],
+    "not_executed": [
+      "testes do produto: proibidos na etapa 000"
+    ]
+  },
+  "decisions": [
+    "DEC-001",
+    "DEC-002",
+    "DEC-003"
+  ],
+  "models_used": [
+    {
+      "part_id": "ABI-000-P01",
+      "role": "planner",
+      "profile": "DEEP",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "plan-main"
+    },
+    {
+      "part_id": "ABI-000-P02",
+      "role": "executor",
+      "profile": "DEEP",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "plan-main"
+    },
+    {
+      "part_id": "ABI-000-P03",
+      "role": "reviewer",
+      "profile": "INDEPENDENT_REVIEW",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "plan-review-independent"
+    },
+    {
+      "part_id": "ABI-000-P04",
+      "role": "documenter",
+      "profile": "ECONOMY",
+      "model": "gpt-5.6-luna",
+      "effort": "low",
+      "context_id": "plan-main"
+    }
+  ],
+  "not_executed": [
+    "implementação do produto"
+  ],
+  "limitations": [
+    "WSDL de homologação recusou handshake TLS sem ambiente fiscal preparado"
+  ],
+  "next_stage_started": false
+}

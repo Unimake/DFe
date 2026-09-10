@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "stage_id": "ABI-001",
+  "stage_type": "PLAN_REVIEW",
+  "plan_revision": "0.1",
+  "depends_on": [
+    "ABI-000"
+  ],
+  "status": "PLANNED",
+  "human_gate": true,
+  "critical_gate": true,
+  "normative_plan": "docs/plans/ABI-001-plan-review.md",
+  "allowed_subtrees": [
+    "docs/",
+    ".agents/"
+  ],
+  "out_of_scope": [
+    "código do produto"
+  ],
+  "rollback": "Restaurar a revisão 0.1 do planejamento.",
+  "blocked_when": [
+    "fonte NFABI divergir sem análise",
+    "decisão material ausente",
+    "ambiente obrigatório indisponível"
+  ],
+  "parts": [
+    {
+      "part_id": "ABI-001-P01",
+      "phase": "PLAN",
+      "role": "planner",
+      "model_profile": "DEEP",
+      "inputs": [
+        "plano",
+        "manifesto",
+        "fontes NFABI",
+        "estado-base"
+      ],
+      "outputs": [
+        "checkpoint",
+        "matriz de impacto"
+      ],
+      "validation": "readiness e hashes conferidos",
+      "stop_condition": "bloquear em fonte divergente ou decisão ausente"
+    },
+    {
+      "part_id": "ABI-001-P02",
+      "phase": "DO",
+      "role": "executor",
+      "model_profile": "DEEP",
+      "inputs": [
+        "checkpoint",
+        "contratos aprovados"
+      ],
+      "outputs": [
+        "incremento restrito"
+      ],
+      "validation": "diff no escopo e compilação incremental",
+      "stop_condition": "parar em expansão material"
+    },
+    {
+      "part_id": "ABI-001-P03",
+      "phase": "CHECK",
+      "role": "reviewer",
+      "model_profile": "INDEPENDENT_REVIEW",
+      "inputs": [
+        "incremento",
+        "testes",
+        "diff"
+      ],
+      "outputs": [
+        "relatório de gate"
+      ],
+      "validation": "build, testes e contratos verdes",
+      "stop_condition": "finding material exige correção ou bloqueio"
+    },
+    {
+      "part_id": "ABI-001-P04",
+      "phase": "ACT",
+      "role": "documenter",
+      "model_profile": "ECONOMY",
+      "inputs": [
+        "relatório de gate",
+        "artifacts"
+      ],
+      "outputs": [
+        "dossiê",
+        "PDCA sincronizado"
+      ],
+      "validation": "linter verde e snapshot imutável",
+      "stop_condition": "DELIVERED_FOR_REVIEW"
+    }
+  ],
+  "requirements": [
+    "REQ-002"
+  ],
+  "decisions": [
+    "DEC-001",
+    "DEC-002",
+    "DEC-003",
+    "DEC-004"
+  ],
+  "risks": [
+    "RISK-001",
+    "RISK-002",
+    "RISK-003",
+    "RISK-004"
+  ],
+  "environments": [
+    "ENV-PLAN"
+  ],
+  "dossier": "docs/plans/evidence/ABI-001"
+}

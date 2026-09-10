@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "stage_id": "ABI-003",
+  "stage_type": "EXECUTION",
+  "plan_revision": "0.1",
+  "depends_on": [
+    "ABI-002"
+  ],
+  "status": "PLANNED",
+  "human_gate": true,
+  "critical_gate": true,
+  "normative_plan": "docs/plans/ABI-003-xml-core.md",
+  "allowed_subtrees": [
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/",
+    "source/.NET Standard/Unimake.Business.DFe/Servicos/Enums/",
+    "source/.NET Standard/Unimake.Business.DFe/Servicos/StatusProtocoloAutorizacao.cs",
+    "source/Unimake.DFe.Test/NFeABI/"
+  ],
+  "out_of_scope": [
+    "eventos",
+    "transporte",
+    "UniNFe"
+  ],
+  "rollback": "Reverter apenas modelos/testes desta etapa; manter ABI-002.",
+  "blocked_when": [
+    "fonte NFABI divergir sem análise",
+    "decisão material ausente",
+    "ambiente obrigatório indisponível"
+  ],
+  "parts": [
+    {
+      "part_id": "ABI-003-P01",
+      "phase": "PLAN",
+      "role": "planner",
+      "model_profile": "DEEP",
+      "inputs": [
+        "plano",
+        "manifesto",
+        "fontes NFABI",
+        "estado-base"
+      ],
+      "outputs": [
+        "checkpoint",
+        "matriz de impacto"
+      ],
+      "validation": "readiness e hashes conferidos",
+      "stop_condition": "bloquear em fonte divergente ou decisão ausente"
+    },
+    {
+      "part_id": "ABI-003-P02",
+      "phase": "DO",
+      "role": "executor",
+      "model_profile": "BALANCED",
+      "inputs": [
+        "checkpoint",
+        "contratos aprovados"
+      ],
+      "outputs": [
+        "incremento restrito"
+      ],
+      "validation": "diff no escopo e compilação incremental",
+      "stop_condition": "parar em expansão material"
+    },
+    {
+      "part_id": "ABI-003-P03",
+      "phase": "CHECK",
+      "role": "reviewer",
+      "model_profile": "INDEPENDENT_REVIEW",
+      "inputs": [
+        "incremento",
+        "testes",
+        "diff"
+      ],
+      "outputs": [
+        "relatório de gate"
+      ],
+      "validation": "build, testes e contratos verdes",
+      "stop_condition": "finding material exige correção ou bloqueio"
+    },
+    {
+      "part_id": "ABI-003-P04",
+      "phase": "ACT",
+      "role": "documenter",
+      "model_profile": "ECONOMY",
+      "inputs": [
+        "relatório de gate",
+        "artifacts"
+      ],
+      "outputs": [
+        "dossiê",
+        "PDCA sincronizado"
+      ],
+      "validation": "linter verde e snapshot imutável",
+      "stop_condition": "DELIVERED_FOR_REVIEW"
+    }
+  ],
+  "requirements": [
+    "REQ-005"
+  ],
+  "decisions": [
+    "DEC-004"
+  ],
+  "risks": [
+    "RISK-001",
+    "RISK-002",
+    "RISK-003",
+    "RISK-004"
+  ],
+  "environments": [
+    "ENV-DLL"
+  ],
+  "dossier": "docs/plans/evidence/ABI-003"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Linter"
+  short_description: "Valida o pacote PDCA NF-e ABI."
+  default_prompt: "Use $plan-linter para validar o plano completo e reportar inconsistências."
