@@ -96,6 +96,8 @@ O contrato público de retorno é o CIOT atual, não o JSON da eFrete.
 
 - Declaração eFrete bem-sucedida expõe o código real de 12 caracteres em `IdOperacaoTransporte`.
 - Declaração, cancelamento e encerramento bem-sucedidos expõem `Codigo=110`, pois consumidores existentes e o UniNFe reconhecem assim o sucesso CIOT.
+- A eFrete só documenta `Mensagem` dentro de `Excecao` para cancelamento e encerramento. No sucesso sem mensagem, preencha o texto compatível `Operação de transporte cancelada com sucesso.` ou `Operação de transporte encerrada com sucesso.`, evitando `<Mensagem />` no XML final.
+- Nos retornos de cancelamento e encerramento, aceite o protocolo tanto em `Protocolo` quanto em `ProtocoloServico`. Não invente protocolo quando nenhum dos dois for devolvido pela API.
 - Na declaração autorizada, mantenha simultaneamente:
   - `<Mensagem>` no nível raiz;
   - `<Mensagens><Mensagem><Codigo>110</Codigo><Descricao>...</Descricao></Mensagem></Mensagens>`.

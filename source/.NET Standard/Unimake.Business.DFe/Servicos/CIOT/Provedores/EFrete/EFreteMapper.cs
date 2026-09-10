@@ -14,6 +14,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
     internal static class EFreteMapper
     {
         private const string CodigoSucessoCIOT = "110";
+        private const string MensagemSucessoCancelamento = "Operação de transporte cancelada com sucesso.";
+        private const string MensagemSucessoEncerramento = "Operação de transporte encerrada com sucesso.";
 
         internal static string CriarJsonLogin(Configuracao configuracao)
         {
@@ -148,23 +150,25 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     };
                     break;
                 case Servico.CIOTCancelamentoOperacaoTransporte:
+                    var mensagemCancelamento = sucesso && string.IsNullOrWhiteSpace(mensagem) ? MensagemSucessoCancelamento : mensagem;
                     resultado = new RetCancelamentoOperacaoTransporte
                     {
                         CodigoIdentificacaoOperacao = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
-                        Protocolo = Valor(root, "Protocolo"),
+                        Protocolo = Valor(root, "Protocolo") ?? Valor(root, "ProtocoloServico"),
                         Codigo = sucesso ? CodigoSucessoCIOT : codigo,
-                        Mensagem = mensagem,
+                        Mensagem = mensagemCancelamento,
                         DataCancelamentoField = Valor(root, "Data"),
                         Temp = erro ? CriarTemp(codigo, mensagem) : null
                     };
                     break;
                 case Servico.CIOTEncerramentoOperacaoTransporte:
+                    var mensagemEncerramento = sucesso && string.IsNullOrWhiteSpace(mensagem) ? MensagemSucessoEncerramento : mensagem;
                     resultado = new RetEncerramentoOperacaoTransporte
                     {
                         CodigoIdentificacaoOperacao = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
-                        Protocolo = Valor(root, "Protocolo"),
+                        Protocolo = Valor(root, "Protocolo") ?? Valor(root, "ProtocoloServico"),
                         Codigo = sucesso ? CodigoSucessoCIOT : codigo,
-                        Mensagem = mensagem,
+                        Mensagem = mensagemEncerramento,
                         Temp = erro ? CriarTemp(codigo, mensagem) : null
                     };
                     break;

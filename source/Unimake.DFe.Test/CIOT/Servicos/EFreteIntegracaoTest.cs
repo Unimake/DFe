@@ -197,7 +197,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
         {
             var declaracao = new RetDeclaracaoOperacaoTransporte().LerXML<RetDeclaracaoOperacaoTransporte>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126/XXXX\",\"ProtocoloServico\":\"PROTO-1\"}", Servico.CIOTDeclaracaoOperacaoTransporte));
             var consulta = new RetConsultarCIOTGerado().LerXML<RetConsultarCIOTGerado>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126/XXXX\",\"EstadoCiot\":\"EmViagem\",\"ProtocoloServico\":\"PROTO-2\"}", Servico.CIOTConsultarCIOTGerado));
-            var encerramento = new RetEncerramentoOperacaoTransporte().LerXML<RetEncerramentoOperacaoTransporte>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126\",\"Protocolo\":\"PROTO-3\"}", Servico.CIOTEncerramentoOperacaoTransporte));
+            var encerramento = new RetEncerramentoOperacaoTransporte().LerXML<RetEncerramentoOperacaoTransporte>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126\",\"ProtocoloServico\":\"PROTO-3\"}", Servico.CIOTEncerramentoOperacaoTransporte));
 
             Assert.Equal("992000000126", declaracao.IdOperacaoTransporte);
             Assert.Equal("XXXX", declaracao.CodigoVerificador);
@@ -212,6 +212,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Equal("PROTO-2", consulta.Protocolo);
             Assert.Equal("PROTO-3", encerramento.Protocolo);
             Assert.Equal("110", encerramento.Codigo);
+            Assert.Equal("Operação de transporte encerrada com sucesso.", encerramento.Mensagem);
             Assert.Equal(default, encerramento.DataEncerramento);
         }
 
@@ -251,6 +252,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
 
             Assert.Equal("PROTO-C", cancelamento.Protocolo);
             Assert.Equal("110", cancelamento.Codigo);
+            Assert.Equal("Operação de transporte cancelada com sucesso.", cancelamento.Mensagem);
             Assert.Equal(2026, cancelamento.DataCancelamento.Year);
             Assert.Equal(8, cancelamento.DataCancelamento.Month);
             Assert.Equal(12, cancelamento.DataCancelamento.Day);
