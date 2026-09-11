@@ -21520,6 +21520,26 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion EBoleto
 
+    #region NFe
+
+    /// <summary>
+    /// Versão do leiaute dos grupos de tributação monofásica do IBS e da CBS.
+    /// </summary>
+    public enum VersaoLeiauteMonofasia
+    {
+        /// <summary>
+        /// Leiaute legado, com os grupos de tributação diretamente em gIBSCBSMono.
+        /// </summary>
+        Legado = 0,
+
+        /// <summary>
+        /// Leiaute atual, com grupos separados por tributo e modalidade.
+        /// </summary>
+        Atual = 1
+    }
+
+    #endregion NFe
+
     #region PIX
 
     /// <summary>

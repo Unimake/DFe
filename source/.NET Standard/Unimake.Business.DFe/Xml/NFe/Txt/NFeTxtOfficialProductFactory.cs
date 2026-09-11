@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unimake.Business.DFe.Servicos;
 using DFeNFe = Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.NFe.Txt
@@ -142,6 +143,18 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private static DFeNFe.GIBSCBSMono NormalizarGIBSCBSMono(DFeNFe.GIBSCBSMono grupo)
         {
             if (grupo == null) return null;
+            if (grupo.VersaoLeiaute == VersaoLeiauteMonofasia.Legado)
+            {
+                grupo.GMonoPadrao = TemDados(grupo.GMonoPadrao) ? grupo.GMonoPadrao : null;
+                grupo.GMonoReten = TemDados(grupo.GMonoReten) ? grupo.GMonoReten : null;
+                grupo.GMonoRet = TemDados(grupo.GMonoRet) ? grupo.GMonoRet : null;
+                grupo.GMonoDif = TemDados(grupo.GMonoDif) ? grupo.GMonoDif : null;
+                return grupo.VTotIBSMonoItem <= 0 && grupo.VTotCBSMonoItem <= 0 &&
+                    grupo.GMonoPadrao == null && grupo.GMonoReten == null && grupo.GMonoRet == null && grupo.GMonoDif == null
+                    ? null
+                    : grupo;
+            }
+
             if (grupo.GIBSMonoAdRem != null)
             {
                 grupo.GIBSMonoAdRem.GMonoPadrao = TemDados(grupo.GIBSMonoAdRem.GMonoPadrao) ? grupo.GIBSMonoAdRem.GMonoPadrao : null;
@@ -202,6 +215,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private static bool TemDados(DFeNFe.GMonoPadraoCBSAdRem grupo) => grupo != null && grupo.QBCMono + grupo.AdRemCBS + grupo.VCBSMono > 0;
         private static bool TemDados(DFeNFe.GMonoRetenCBSAdRem grupo) => grupo != null && grupo.QBCMonoReten + grupo.AdRemCBSReten + grupo.VCBSMonoReten > 0;
         private static bool TemDados(DFeNFe.GMonoRetCBS grupo) => grupo != null && grupo.VCBSMonoRet > 0;
+        private static bool TemDados(DFeNFe.GMonoPadrao grupo) => grupo != null && grupo.QBCMono + grupo.AdRemIBS + grupo.AdRemCBS + grupo.VIBSMono + grupo.VCBSMono > 0;
+        private static bool TemDados(DFeNFe.GMonoReten grupo) => grupo != null && grupo.QBCMonoReten + grupo.AdRemIBSReten + grupo.VIBSMonoReten + grupo.AdRemCBSReten + grupo.VCBSMonoReten > 0;
+        private static bool TemDados(DFeNFe.GMonoRet grupo) => grupo != null && grupo.QBCMonoRet + grupo.AdRemIBSRet + grupo.VIBSMonoRet + grupo.AdRemCBSRet + grupo.VCBSMonoRet > 0;
+        private static bool TemDados(DFeNFe.GMonoDif grupo) => grupo != null && grupo.PDifIBS + grupo.VIBSMonoDif + grupo.PDifCBS + grupo.VCBSMonoDif > 0;
 
         private static bool TemImposto(DFeNFe.Imposto imposto) => imposto.VTotTrib > 0 || imposto.ICMS != null || imposto.IPI != null ||
             imposto.II != null || imposto.PIS != null || imposto.PISST != null || imposto.COFINS != null || imposto.COFINSST != null ||

@@ -2,7 +2,7 @@
 
 | RequirementId | Requisito | Fonte/owner | Etapa | Validação | Evidence | Estado |
 |---|---|---|---|---|---|---|
-| REQ-001 | pacote de plano retomável | skill/DEV | ABI-000 | linter | `docs/plans/evidence/ABI-000/EVIDENCE.md` | DELIVERED |
+| REQ-001 | pacote de plano retomável | skill/DEV | ABI-000 | linter | `docs/plans/evidence/ABI-000/EVIDENCE.md` | APPROVED |
 | REQ-002 | decisões fechadas antes do produto | governança/DEV | ABI-001 | revisão independente | `docs/plans/evidence/ABI-001/EVIDENCE.md` | PLANNED |
 | REQ-003 | 20 XSDs oficiais copiados/embutidos | pedido/DEV | ABI-002 | hash e schema | `docs/plans/evidence/ABI-002/EVIDENCE.md` | PLANNED |
 | REQ-004 | TipoDFe/modelo 77/detecção | MOC/repo | ABI-002 | testes negativos/positivos | `docs/plans/evidence/ABI-002/EVIDENCE.md` | PLANNED |

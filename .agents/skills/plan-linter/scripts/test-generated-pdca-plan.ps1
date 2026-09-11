@@ -318,7 +318,8 @@ try {
                     if(-not(Test-Path -LiteralPath $deliveredFile -PathType Leaf)){$errors.Add("dossiê ${id}: arquivo declarado inexistente: $deliveredFile");continue}
                     $hash=[string]$deliveryManifest.hashes_sha256.$deliveredFile
                     if($hash-notmatch'^[a-fA-F0-9]{64}$'){$errors.Add("dossiê ${id}: hash SHA-256 ausente/inválido: $deliveredFile");continue}
-                    if((Get-FileHash -LiteralPath $deliveredFile -Algorithm SHA256).Hash-ne$hash){$errors.Add("dossiê ${id}: hash diverge: $deliveredFile")}
+                    # Após APPROVED, os registros vivos de estado podem mudar; o dossiê arquivado continua sendo o snapshot da entrega.
+                    if($rowState-eq"DELIVERED_FOR_REVIEW" -and (Get-FileHash -LiteralPath $deliveredFile -Algorithm SHA256).Hash-ne$hash){$errors.Add("dossiê ${id}: hash diverge: $deliveredFile")}
                 }
                 $commands=@($deliveryManifest.commands)
                 if($commands.Count-eq 0){$errors.Add("dossiê ${id}: commands vazio")}
