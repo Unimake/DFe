@@ -2,7 +2,7 @@
 
 | Etapa | Incremento | Estado | Dependências | Ambiente |
 |---|---|---|---|---|
-| ABI-000 | base do planejamento | DELIVERED_FOR_REVIEW | nenhuma | ENV-PLAN |
+| ABI-000 | base do planejamento | APPROVED | nenhuma | ENV-PLAN |
 | ABI-001 | revisão decisória e congelamento | PLANNED | ABI-000 APPROVED | ENV-PLAN |
 | ABI-002 | schemas e fundação do tipo fiscal | PLANNED | ABI-001 APPROVED | ENV-DLL |
 | ABI-003 | modelo XML principal e retornos | PLANNED | ABI-002 APPROVED | ENV-DLL |
@@ -20,3 +20,4 @@
 | 2026-09-10 | ABI-000 | DELIVERED_FOR_REVIEW | REWORK | retrabalho solicitado pelo DEV para corrigir placeholders, fontes, referências, hashes e dossiê | attempt-0002 |
 | 2026-09-10 | ABI-000 | REWORK | IN_PROGRESS | auditoria integral e correção exclusiva dos artefatos de planejamento | attempt-0002 |
 | 2026-09-10 | ABI-000 | IN_PROGRESS | DELIVERED_FOR_REVIEW | retrabalho concluído, fontes e hashes registrados, auditorias e linter verdes; aguarda DEV | attempt-0002 |
+| 2026-09-11 | ABI-000 | DELIVERED_FOR_REVIEW | APPROVED | revisão e aprovação explícitas pelo DEV | attempt-0002 |

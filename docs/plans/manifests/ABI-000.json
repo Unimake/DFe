@@ -4,7 +4,7 @@
   "stage_type": "PLANNING_BASELINE",
   "plan_revision": "0.2",
   "depends_on": [],
-  "status": "DELIVERED_FOR_REVIEW",
+  "status": "APPROVED",
   "human_gate": true,
   "critical_gate": true,
   "normative_plan": "docs/plans/ABI-000-planning-baseline.md",
