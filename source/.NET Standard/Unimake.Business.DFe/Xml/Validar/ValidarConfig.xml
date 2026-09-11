@@ -7235,7 +7235,7 @@
 			</Servico>
 			<Servico tagRaiz="pedidoStatusLote" versao="1.00">
 				<Descricao>Consulta Pedido Status Lote</Descricao>
-				<TipoServico>NFSeConsultarSituacaoLoteRps</TipoServico>
+				<TipoServico>NFSeObterCriticaLote</TipoServico>
 				<SchemaArquivo/>
 				<TagAssinatura>pedidoStatusLote</TagAssinatura>
 				<TagAtributoID>CNPJ</TagAtributoID>
