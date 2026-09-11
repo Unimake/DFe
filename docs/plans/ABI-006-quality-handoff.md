@@ -3,20 +3,20 @@
 > **Tipo:** EXECUTION
 > **Dependências:** ABI-005 APPROVED
 > **Ambientes:** ENV-INTEGRATED
-> **Decisões necessárias:** DEC-004
+> **Decisões necessárias:** DEC-004 e DEC-005
 > **Manifesto:** docs/plans/manifests/ABI-006.json
-> **Orquestrador:** $(System.Collections.Hashtable.Id.ToLowerInvariant())-orchestrator
+> **Orquestrador:** `$abi-006-orchestrator`
 > **Regra:** execute somente esta etapa e pare após dossiê/PDCA.
 
 ## 1. Objetivo e valor executável
 
-Entregar a DLL pronta para o plano UAB, com API/INTEROP, build e regressão integrada comprovados.
+Entregar a DLL pronta para o handoff ao UniNFe, com API/INTEROP, build e regressão integrada comprovados.
 
 ## 2. Definition of Ready
 
 - Predecessora aprovada e manifesto coerente com o PDCA.
 - Árvore de trabalho inspecionada; alterações preexistentes preservadas.
-- Ler integralmente os dois MOCs e os XSDs aplicáveis em $SourceRoot; recalcular SHA-256 e comparar com docs/architecture/INTEGRATION-CATALOG.md.
+- Ler integralmente os dois MOCs e os XSDs aplicáveis em `C:\Users\Wandrey\OneDrive\Downloads\NFeAbi`; recalcular SHA-256 e comparar com docs/architecture/INTEGRATION-CATALOG.md.
 - Decisões listadas fechadas ou contingência explicitamente autorizada.
 
 ## 3. Skills e instructions

@@ -5,7 +5,7 @@
 > **Ambientes:** ENV-DLL
 > **Decisões necessárias:** DEC-001, DEC-002 e DEC-003
 > **Manifesto:** docs/plans/manifests/ABI-005.json
-> **Orquestrador:** $(System.Collections.Hashtable.Id.ToLowerInvariant())-orchestrator
+> **Orquestrador:** `$abi-005-orchestrator`
 > **Regra:** execute somente esta etapa e pare após dossiê/PDCA.
 
 ## 1. Objetivo e valor executável
@@ -16,7 +16,7 @@ Status e autorização síncrona NFeABI resolvem a configuração oficial de hom
 
 - Predecessora aprovada e manifesto coerente com o PDCA.
 - Árvore de trabalho inspecionada; alterações preexistentes preservadas.
-- Ler integralmente os dois MOCs e os XSDs aplicáveis em $SourceRoot; recalcular SHA-256 e comparar com docs/architecture/INTEGRATION-CATALOG.md.
+- Ler integralmente os dois MOCs e os XSDs aplicáveis em `C:\Users\Wandrey\OneDrive\Downloads\NFeAbi`; recalcular SHA-256 e comparar com docs/architecture/INTEGRATION-CATALOG.md.
 - Decisões listadas fechadas ou contingência explicitamente autorizada.
 
 ## 3. Skills e instructions

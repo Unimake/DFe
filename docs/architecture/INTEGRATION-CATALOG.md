@@ -2,8 +2,8 @@
 
 | Integração/fonte | Contrato | Estado 2026-09-10 | Estratégia |
 |---|---|---|---|
-| Documentação local $sourceRoot | 2 MOCs v1.00a | hash PDF geral BC783961CABAB2DA8208FCC10A7BCA1BCED198EDF91715A62BDD9A84017422FD; anexo 419AE6A89BE62EE20A8C349D218EA67DEFCEFA6D0BE86F063A1F22F3730280DE | reler toda etapa 002+ |
-| Schemas $schemaRoot | 20 XSDs v1.00 | pacote existente; nomes/hashes devem ser inventariados na ABI-002 | copiar byte a byte para Xml/Schemas/NFeABI |
+| Fonte normativa `C:\Users\Wandrey\OneDrive\Downloads\NFeAbi` | 2 MOCs v1.00a e 20 XSDs | snapshot SHA-256 `0383F95D81140925C4EF91046C2D723CA9D94F477E138069F7202D79D9CCCAD8`; inventário em `docs/plans/evidence/ABI-000/evidence/SOURCE-SNAPSHOT.md` | reler no Plan e no Check de toda etapa `ABI-002+` |
+| Origem dos schemas `C:\Users\Wandrey\OneDrive\Downloads\NFeAbi\PL_NFeABI_1.00` | 20 XSDs v1.00 | snapshot SHA-256 `BA44B39981C4DF3860A6BE9AA7C0739904D664377EABE963AB52AC8C2E74AE40`; nomes e hashes individuais inventariados | copiar byte a byte para `Xml/Schemas/NFeABI` |
 | Portal Serviços | https://dfe-portal.svrs.rs.gov.br/NFABI/Servicos | somente Status e Autorização homologação | conferir antes do transporte |
 | Portal Documentos | https://dfe-portal.svrs.rs.gov.br/NFABI/Documentos | MOCs e schemas publicados em ago/set 2026 | comparar versão/data/hash |
 | Homologação Status | https://homologacao.nfeabi.fazenda.pr.gov.br/nfeabi/NFeABIStatusServico | 1.00 | config somente homologação |

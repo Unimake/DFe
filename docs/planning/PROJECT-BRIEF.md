@@ -8,8 +8,8 @@
 - FrozenStageIds: N/A
 - Proprietário/autoridade: DEV
 - Resultado: Adicionar suporte completo aos contratos XML NF-e ABI 1.00 e aos serviços oficialmente publicados, preservando netstandard2.0, C# 7.3, API pública e INTEROP.
-- Fonte documental obrigatória e recorrente: C:\Users\Wandrey\OneDrive\Downloads\NFeAbi
-- Pasta real do pacote de schemas: C:\Users\Wandrey\OneDrive\Downloads\NFeAbi\PL_NFeABI_1.00
+- Fonte normativa obrigatória e recorrente: `C:\Users\Wandrey\OneDrive\Downloads\NFeAbi`
+- Origem dos schemas: `C:\Users\Wandrey\OneDrive\Downloads\NFeAbi\PL_NFeABI_1.00`
 - Estado observado: projeto existente, sem docs/planning anterior; árvore Git limpa na inspeção de 2026-09-10.
 - Não objetivos: modernização de stack, refatoração ampla, endpoint de produção inventado, deploy, commit ou push.
 

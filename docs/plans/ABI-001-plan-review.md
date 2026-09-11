@@ -5,7 +5,7 @@
 > **Ambientes:** ENV-PLAN
 > **Decisões necessárias:** todas as decisões propostas do DEV
 > **Manifesto:** docs/plans/manifests/ABI-001.json
-> **Orquestrador:** $(System.Collections.Hashtable.Id.ToLowerInvariant())-orchestrator
+> **Orquestrador:** `$abi-001-orchestrator`
 > **Regra:** execute somente esta etapa e pare após dossiê/PDCA.
 
 ## 1. Objetivo e valor executável
@@ -16,7 +16,7 @@ Fechar escopo remoto, prefixo e critérios de aceite; tornar `ABI-002` executáv
 
 - Predecessora aprovada e manifesto coerente com o PDCA.
 - Árvore de trabalho inspecionada; alterações preexistentes preservadas.
-- Ler integralmente os dois MOCs e os XSDs aplicáveis em $SourceRoot; recalcular SHA-256 e comparar com docs/architecture/INTEGRATION-CATALOG.md.
+- Ler integralmente os dois MOCs e os XSDs aplicáveis em `C:\Users\Wandrey\OneDrive\Downloads\NFeAbi`; recalcular SHA-256 e comparar com docs/architecture/INTEGRATION-CATALOG.md.
 - Decisões listadas fechadas ou contingência explicitamente autorizada.
 
 ## 3. Skills e instructions

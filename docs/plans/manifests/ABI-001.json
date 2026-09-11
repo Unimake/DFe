@@ -2,7 +2,7 @@
   "schema_version": 1,
   "stage_id": "ABI-001",
   "stage_type": "PLAN_REVIEW",
-  "plan_revision": "0.1",
+  "plan_revision": "0.2",
   "depends_on": [
     "ABI-000"
   ],
@@ -97,7 +97,8 @@
     "DEC-001",
     "DEC-002",
     "DEC-003",
-    "DEC-004"
+    "DEC-004",
+    "DEC-005"
   ],
   "risks": [
     "RISK-001",

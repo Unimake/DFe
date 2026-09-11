@@ -23,6 +23,7 @@ try {
     foreach ($path in @(
         "README.md", "AGENTS.md", "docs/CODEX-START-HERE.md",
         ".agents/instructions/pdca-execution.instructions.md", ".agents/instructions/model-routing.instructions.md",
+        ".agents/instructions/nfabi-execution.instructions.md",
         ".agents/skills/plan-linter/SKILL.md", ".agents/skills/plan-linter/agents/openai.yaml",
         ".agents/skills/plan-linter/scripts/test-plan.ps1", ".agents/skills/plan-linter/scripts/test-generated-pdca-plan.ps1",
         "docs/planning/PROJECT-BRIEF.md", "docs/planning/QUESTION-LEDGER.md", "docs/planning/RISK-REGISTER.md",
@@ -51,6 +52,10 @@ try {
         }
         $errors.Add("PROJECT-BRIEF.md: StagePrefix deve ter exatamente três letras ASCII maiúsculas"); $prefix = "ZZZ"
     } else { $prefix = $prefixMatch.Groups[1].Value }
+    $sourceRoot = 'C:\Users\Wandrey\OneDrive\Downloads\NFeAbi'
+    $schemaRoot = 'C:\Users\Wandrey\OneDrive\Downloads\NFeAbi\PL_NFeABI_1.00'
+    if (-not $brief.Contains($sourceRoot)) { $errors.Add("PROJECT-BRIEF.md: fonte normativa obrigatória ausente ou incorreta") }
+    if (-not $brief.Contains($schemaRoot)) { $errors.Add("PROJECT-BRIEF.md: origem dos schemas ausente ou incorreta") }
 
     if (Test-Path -LiteralPath "README.md") {
         $projectReadme = Get-Content -Raw -LiteralPath "README.md"
@@ -78,6 +83,11 @@ try {
         $modelInstruction=Get-Content -Raw ".agents/instructions/model-routing.instructions.md"
         foreach($term in @("ECONOMY","BALANCED","DEEP","INDEPENDENT_REVIEW","fallback")){if($modelInstruction-notmatch[regex]::Escape($term)){$errors.Add("model-routing.instructions.md: contrato ausente: $term")}}
     }
+    if(Test-Path -LiteralPath ".agents/instructions/nfabi-execution.instructions.md"){
+        $nfabiInstruction=Get-Content -Raw ".agents/instructions/nfabi-execution.instructions.md"
+        if(-not$nfabiInstruction.Contains($sourceRoot)){$errors.Add("nfabi-execution.instructions.md: fonte normativa ausente ou incorreta")}
+        if(-not$nfabiInstruction.Contains($schemaRoot)){$errors.Add("nfabi-execution.instructions.md: origem dos schemas ausente ou incorreta")}
+    }
     if(Test-Path -LiteralPath ".agents/skills/plan-linter/SKILL.md"){
         $planLinterSkill=Get-Content -Raw ".agents/skills/plan-linter/SKILL.md"
         if($planLinterSkill-notmatch'(?m)^name: plan-linter\s*$' -or $planLinterSkill-notmatch'test-plan\.ps1'){$errors.Add("plan-linter/SKILL.md: interface/runner inválido")}
@@ -100,6 +110,8 @@ try {
         foreach ($section in @("Plan","Do","Check","Act","Definition of Done")) {
             if ($text -notmatch [regex]::Escape($section)) { $errors.Add("$($plan.Name): seção obrigatória ausente: $section") }
         }
+        $expectedOrchestrator='$'+$id.ToLowerInvariant()+'-orchestrator'
+        if($text-notmatch('(?m)^> \*\*Orquestrador:\*\* `'+[regex]::Escape($expectedOrchestrator)+'`\s*$')){$errors.Add("$($plan.Name): orquestrador deve ser $expectedOrchestrator")}
         if ($text -match '\{\{[^}]+\}\}|(?m)^\s*(?:[-*]\s*)?(?:TODO|TBD|FIXME)(?:\s*[:=-]|\s*$)') { $errors.Add("$($plan.Name): placeholder não resolvido") }
     }
     $stageIds=@($stageById.Values|Sort-Object Number|ForEach-Object Id)
@@ -185,6 +197,11 @@ try {
         }
     }
     $knownDecisions=@();foreach($decisionFile in @("docs/plans/DECISION-REGISTER.md","docs/architecture/DECISIONS-LOCKED.md")){if(Test-Path $decisionFile){$knownDecisions+=@([regex]::Matches((Get-Content -Raw $decisionFile),'(?m)^\| (DEC-[0-9]{3}) \|')|ForEach-Object{$_.Groups[1].Value})}};$knownDecisions=@($knownDecisions|Sort-Object -Unique)
+    $referencedDecisions=@()
+    foreach($decisionSource in @(Get-ChildItem -Recurse -File -Path "docs" -Include "*.md","*.json" -ErrorAction SilentlyContinue)){
+        $referencedDecisions+=@([regex]::Matches((Get-Content -Raw -LiteralPath $decisionSource.FullName),'\bDEC-[0-9]{3}\b')|ForEach-Object{$_.Value})
+    }
+    foreach($referencedDecision in @($referencedDecisions|Sort-Object -Unique)){if($referencedDecision-notin$knownDecisions){$errors.Add("referência a decisão inexistente: $referencedDecision")}}
     $knownRisks=@();if(Test-Path "docs/planning/RISK-REGISTER.md"){$knownRisks=@([regex]::Matches((Get-Content -Raw "docs/planning/RISK-REGISTER.md"),'(?m)^\| (RISK-[0-9]{3}) \|')|ForEach-Object{$_.Groups[1].Value});Add-Duplicates $knownRisks "RISK-REGISTER.md"}
     $knownRequirements=@();$requirementsByStage=@{}
     if(Test-Path "docs/plans/TRACEABILITY.md"){
@@ -348,6 +365,8 @@ try {
     foreach($file in $markdown){
         $text=Get-Content -Raw $file.FullName
         if($file.FullName-notmatch'[\\/]assets[\\/]templates[\\/]' -and $text-match'\{\{[^}]+\}\}|(?m)^\s*(?:[-*]\s*)?(?:TODO|TBD|FIXME)(?:\s*[:=-]|\s*$)'){$errors.Add("$($file.FullName): placeholder não resolvido")}
+        if($text-match'System\.Collections\.Hashtable|\$\(System\.Collections\.Hashtable|\$(?:SourceRoot|sourceRoot|SchemaRoot|schemaRoot)\b'){$errors.Add("$($file.FullName): placeholder de geração malformado")}
+        if($text-match'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]'){$errors.Add("$($file.FullName): caractere de controle proibido")}
         foreach($link in [regex]::Matches($text,'\[[^\]]*\]\(([^)]+)\)')){$target=($link.Groups[1].Value.Trim()-split'#')[0];if([string]::IsNullOrWhiteSpace($target)-or$target-match'^(https?://|mailto:|#|/)'){continue};if(-not(Test-Path (Join-Path $file.DirectoryName $target))){$errors.Add("$($file.FullName): link local inexistente: $target")}}
     }
     if($errors.Count-gt 0){throw (($errors|Sort-Object -Unique|ForEach-Object{"ERROR: $_"}) -join "`n")}

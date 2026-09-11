@@ -3,9 +3,9 @@
 > **Tipo:** PLANNING_BASELINE
 > **Dependências:** nenhuma
 > **Ambientes:** ENV-PLAN
-> **Decisões necessárias:** DEC-001, DEC-002 e DEC-003
+> **Decisões registradas:** DEC-001 a DEC-005; as propostas serão fechadas em ABI-001
 > **Manifesto:** docs/plans/manifests/ABI-000.json
-> **Orquestrador:** $(System.Collections.Hashtable.Id.ToLowerInvariant())-orchestrator
+> **Orquestrador:** `$abi-000-orchestrator`
 > **Regra:** execute somente esta etapa e pare após dossiê/PDCA.
 
 ## 1. Objetivo e valor executável
@@ -14,10 +14,10 @@ Gerar o contrato retomável do trabalho sem iniciar produto.
 
 ## 2. Definition of Ready
 
-- Predecessora aprovada e manifesto coerente com o PDCA.
+- A etapa não possui predecessora; manifesto e PDCA devem estar coerentes com `ABI-000`.
 - Árvore de trabalho inspecionada; alterações preexistentes preservadas.
-- Ler integralmente os dois MOCs e os XSDs aplicáveis em $SourceRoot; recalcular SHA-256 e comparar com docs/architecture/INTEGRATION-CATALOG.md.
-- Decisões listadas fechadas ou contingência explicitamente autorizada.
+- Ler integralmente os dois MOCs e inventariar os XSDs em `C:\Users\Wandrey\OneDrive\Downloads\NFeAbi`; recalcular SHA-256 e comparar com docs/architecture/INTEGRATION-CATALOG.md.
+- Registrar as decisões propostas para fechamento em ABI-001; nenhuma decisão proposta é considerada aprovada pela entrega desta baseline.
 
 ## 3. Skills e instructions
 
@@ -26,7 +26,7 @@ Gerar o contrato retomável do trabalho sem iniciar produto.
 
 ## 4. Escopo
 
-Descoberta, arquitetura, etapas, riscos, manifests, orquestradores, dossiê e linter.
+Descoberta, arquitetura, etapas, riscos, manifests, orquestradores, dossiê, inventário hash das fontes e linter.
 
 ## 5. Fora de escopo
 
@@ -54,7 +54,7 @@ Código funcional, schemas no projeto, dependências, commit, push e publicaçã
 
 ## 9. Execução detalhada
 
-1. Inspecionar MOCs/XSDs e padrões NFGas/NFCom. 2. Gerar o pacote. 3. Validar e entregar.
+1. Inspecionar MOCs/XSDs e os padrões documentais aplicáveis. 2. Corrigir e sincronizar o pacote de planejamento. 3. Validar placeholders, caracteres de controle, referências, links, hashes e estado. 4. Arquivar o dossiê e entregar.
 
 ## 10. Compatibilidade, migration e rollback
 
@@ -81,13 +81,14 @@ Somente linter e revisão de links; testes do produto são proibidos.
 | Critério | Gate | Como medir |
 |---|---|---|
 | Escopo | PASS | diff somente nos subtrees permitidos |
-| Contrato XML/ERP | PASS | fixture representativa preserva estrutura, ordem, namespace e nomes |
-| Regressão | PASS | build e testes focados verdes; limitações ambientais registradas |
-| Fontes | PASS | hashes comparados e divergências analisadas antes de codificar |
+| Integridade textual | PASS | zero placeholder malformado e zero caractere de controle proibido |
+| Referências | PASS | links locais válidos, decisões existentes e orquestradores `$abi-000-orchestrator` a `$abi-006-orchestrator` corretos |
+| Fontes | PASS | caminhos normativos explícitos e hashes dos 2 MOCs e 20 XSDs registrados |
+| Validação | PASS | linter retorna 0 e o diff completo permanece restrito a planejamento |
 
 ## 15. Stop/Blocked
 
-- Bloquear se a documentação externa mudar, se um contrato público depender de decisão aberta, se o endpoint necessário não estiver publicado ou se o ambiente obrigatório faltar.
+- Bloquear se a fonte normativa estiver inacessível, se o inventário hash não puder ser reproduzido, se o linter permanecer vermelho ou se a correção exigir alteração de produto.
 - Não enfraquecer validação, certificado ou teste para obter verde. Não iniciar a sucessora.
 
 ## 16. Definition of Done

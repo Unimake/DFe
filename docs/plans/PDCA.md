@@ -17,3 +17,6 @@
 | 2026-09-10 | ABI-000 | — | PLANNED | geração autorizada pelo DEV no pedido atual | attempt-0001 |
 | 2026-09-10 | ABI-000 | PLANNED | IN_PROGRESS | descoberta e geração do plano | attempt-0001 |
 | 2026-09-10 | ABI-000 | IN_PROGRESS | DELIVERED_FOR_REVIEW | pacote gerado e linter verde; aguarda DEV | attempt-0001 |
+| 2026-09-10 | ABI-000 | DELIVERED_FOR_REVIEW | REWORK | retrabalho solicitado pelo DEV para corrigir placeholders, fontes, referências, hashes e dossiê | attempt-0002 |
+| 2026-09-10 | ABI-000 | REWORK | IN_PROGRESS | auditoria integral e correção exclusiva dos artefatos de planejamento | attempt-0002 |
+| 2026-09-10 | ABI-000 | IN_PROGRESS | DELIVERED_FOR_REVIEW | retrabalho concluído, fontes e hashes registrados, auditorias e linter verdes; aguarda DEV | attempt-0002 |

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "stage_id": "ABI-000",
   "stage_type": "PLANNING_BASELINE",
-  "plan_revision": "0.1",
+  "plan_revision": "0.2",
   "depends_on": [],
   "status": "DELIVERED_FOR_REVIEW",
   "human_gate": true,
@@ -17,9 +17,9 @@
   ],
   "rollback": "Reverter somente arquivos de planejamento desta tentativa.",
   "blocked_when": [
-    "fonte NFABI divergir sem análise",
-    "decisão material ausente",
-    "ambiente obrigatório indisponível"
+    "fonte normativa inacessível ou hash não reproduzível",
+    "linter permanecer vermelho",
+    "correção exigir alteração de produto"
   ],
   "parts": [
     {
@@ -34,11 +34,11 @@
         "estado-base"
       ],
       "outputs": [
-        "checkpoint",
-        "matriz de impacto"
+        "checkpoint de retrabalho",
+        "inventário hash das fontes"
       ],
-      "validation": "readiness e hashes conferidos",
-      "stop_condition": "bloquear em fonte divergente ou decisão ausente"
+      "validation": "readiness, fontes e hashes conferidos",
+      "stop_condition": "bloquear em fonte inacessível ou hash não reproduzível"
     },
     {
       "part_id": "ABI-000-P02",
@@ -46,14 +46,14 @@
       "role": "executor",
       "model_profile": "DEEP",
       "inputs": [
-        "checkpoint",
-        "contratos aprovados"
+        "checkpoint de retrabalho",
+        "achados da auditoria"
       ],
       "outputs": [
-        "incremento restrito"
+        "planejamento corrigido"
       ],
-      "validation": "diff no escopo e compilação incremental",
-      "stop_condition": "parar em expansão material"
+      "validation": "diff restrito a docs e .agents",
+      "stop_condition": "parar se a correção exigir código do produto"
     },
     {
       "part_id": "ABI-000-P03",
@@ -61,14 +61,14 @@
       "role": "reviewer",
       "model_profile": "INDEPENDENT_REVIEW",
       "inputs": [
-        "incremento",
-        "testes",
-        "diff"
+        "planejamento corrigido",
+        "linter",
+        "diff completo"
       ],
       "outputs": [
         "relatório de gate"
       ],
-      "validation": "build, testes e contratos verdes",
+      "validation": "placeholders, controles, links, referências, hashes e linter verdes",
       "stop_condition": "finding material exige correção ou bloqueio"
     },
     {
@@ -78,7 +78,7 @@
       "model_profile": "ECONOMY",
       "inputs": [
         "relatório de gate",
-        "artifacts"
+        "artefatos de planejamento"
       ],
       "outputs": [
         "dossiê",
@@ -94,7 +94,9 @@
   "decisions": [
     "DEC-001",
     "DEC-002",
-    "DEC-003"
+    "DEC-003",
+    "DEC-004",
+    "DEC-005"
   ],
   "risks": [
     "RISK-001",

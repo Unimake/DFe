@@ -2,7 +2,7 @@
   "schema_version": 1,
   "stage_id": "ABI-002",
   "stage_type": "EXECUTION",
-  "plan_revision": "0.1",
+  "plan_revision": "0.2",
   "depends_on": [
     "ABI-001"
   ],
