@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "stage_id": "ABI-000",
+  "stage_type": "PLANNING_BASELINE",
+  "plan_revision": "0.3",
+  "depends_on": [],
+  "status": "APPROVED",
+  "human_gate": true,
+  "critical_gate": true,
+  "normative_plan": "docsplan/nfabi/plans/ABI-000-planning-baseline.md",
+  "allowed_subtrees": [
+    "docsplan/nfabi/",
+    ".agents/"
+  ],
+  "out_of_scope": [
+    "código do produto"
+  ],
+  "rollback": "Reverter somente arquivos de planejamento desta tentativa.",
+  "blocked_when": [
+    "fonte normativa inacessível ou hash não reproduzível",
+    "linter permanecer vermelho",
+    "correção exigir alteração de produto"
+  ],
+  "parts": [
+    {
+      "part_id": "ABI-000-P01",
+      "phase": "PLAN",
+      "role": "planner",
+      "model_profile": "DEEP",
+      "inputs": [
+        "plano",
+        "manifesto",
+        "fontes NFABI",
+        "estado-base"
+      ],
+      "outputs": [
+        "checkpoint de retrabalho",
+        "inventário hash das fontes"
+      ],
+      "validation": "readiness, fontes e hashes conferidos",
+      "stop_condition": "bloquear em fonte inacessível ou hash não reproduzível"
+    },
+    {
+      "part_id": "ABI-000-P02",
+      "phase": "DO",
+      "role": "executor",
+      "model_profile": "DEEP",
+      "inputs": [
+        "checkpoint de retrabalho",
+        "achados da auditoria"
+      ],
+      "outputs": [
+        "planejamento corrigido"
+      ],
+      "validation": "diff restrito a docsplan/nfabi e .agents",
+      "stop_condition": "parar se a correção exigir código do produto"
+    },
+    {
+      "part_id": "ABI-000-P03",
+      "phase": "CHECK",
+      "role": "reviewer",
+      "model_profile": "INDEPENDENT_REVIEW",
+      "inputs": [
+        "planejamento corrigido",
+        "linter",
+        "diff completo"
+      ],
+      "outputs": [
+        "relatório de gate"
+      ],
+      "validation": "placeholders, controles, links, referências, hashes e linter verdes",
+      "stop_condition": "finding material exige correção ou bloqueio"
+    },
+    {
+      "part_id": "ABI-000-P04",
+      "phase": "ACT",
+      "role": "documenter",
+      "model_profile": "ECONOMY",
+      "inputs": [
+        "relatório de gate",
+        "artefatos de planejamento"
+      ],
+      "outputs": [
+        "dossiê",
+        "PDCA sincronizado"
+      ],
+      "validation": "linter verde e snapshot imutável",
+      "stop_condition": "DELIVERED_FOR_REVIEW"
+    }
+  ],
+  "requirements": [
+    "REQ-001"
+  ],
+  "decisions": [
+    "DEC-001",
+    "DEC-002",
+    "DEC-003",
+    "DEC-004",
+    "DEC-005"
+  ],
+  "risks": [
+    "RISK-001",
+    "RISK-002",
+    "RISK-003",
+    "RISK-004"
+  ],
+  "environments": [
+    "ENV-PLAN"
+  ],
+  "dossier": "docsplan/nfabi/plans/evidence/ABI-000"
+}

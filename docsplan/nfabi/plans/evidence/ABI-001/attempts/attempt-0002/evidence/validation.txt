@@ -1,0 +1,8 @@
+ABI-001 rework validation
+Timestamp: 2026-09-14T13:57:41-03:00
+Command: pwsh -NoProfile -File .agents/skills/plan-linter/scripts/test-plan.ps1 -RepositoryRoot .
+ExitCode: 0
+Output: Generated PDCA plan validation passed: 7 stages, prefix ABI, 7 manifests.
+IndependentReview: PASS - ENV-DLL coverage finding corrected; no material finding remaining.
+Snapshot: PASS - current dossier matches attempts/attempt-0002.
+Scope: PASS - active plan is restricted to Unimake.DFe DLL and repository-local tests; ABI-002 remains PLANNED and not started.

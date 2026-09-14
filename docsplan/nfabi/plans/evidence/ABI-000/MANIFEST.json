@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "stage_id": "ABI-000",
+  "state": "DELIVERED_FOR_REVIEW",
+  "attempt_id": "attempt-0002",
+  "attempt_archive": "docsplan/nfabi/plans/evidence/ABI-000/attempts/attempt-0002",
+  "base_state": "attempt-0001 delivered; clean Git worktree at rework start",
+  "started_at": "2026-09-10T19:30:00-03:00",
+  "finished_at": "2026-09-10T19:53:44-03:00",
+  "files": [
+    ".agents/instructions/nfabi-execution.instructions.md",
+    ".agents/skills/plan-linter/scripts/test-generated-pdca-plan.ps1",
+    "docsplan/nfabi/CODEX-START-HERE.md",
+    "docsplan/nfabi/architecture/DATA-ARCHITECTURE.md",
+    "docsplan/nfabi/architecture/INTEGRATION-CATALOG.md",
+    "docsplan/nfabi/planning/PROJECT-BRIEF.md",
+    "docsplan/nfabi/planning/QUESTION-LEDGER.md",
+    "docsplan/nfabi/plans/ABI-000-planning-baseline.md",
+    "docsplan/nfabi/plans/ABI-001-plan-review.md",
+    "docsplan/nfabi/plans/ABI-002-schemas-foundation.md",
+    "docsplan/nfabi/plans/ABI-003-xml-core.md",
+    "docsplan/nfabi/plans/ABI-004-event-models.md",
+    "docsplan/nfabi/plans/ABI-005-published-services.md",
+    "docsplan/nfabi/plans/ABI-006-quality-handoff.md",
+    "docsplan/nfabi/plans/DECISION-REGISTER.md",
+    "docsplan/nfabi/plans/MODEL-CATALOG.md",
+    "docsplan/nfabi/plans/PDCA.md",
+    "docsplan/nfabi/plans/READINESS.md",
+    "docsplan/nfabi/plans/manifests/ABI-000.json",
+    "docsplan/nfabi/plans/manifests/ABI-001.json",
+    "docsplan/nfabi/plans/manifests/ABI-002.json",
+    "docsplan/nfabi/plans/manifests/ABI-003.json",
+    "docsplan/nfabi/plans/manifests/ABI-004.json",
+    "docsplan/nfabi/plans/manifests/ABI-005.json",
+    "docsplan/nfabi/plans/manifests/ABI-006.json",
+    "docsplan/nfabi/plans/evidence/ABI-000/evidence/SOURCE-SNAPSHOT.md",
+    "docsplan/nfabi/plans/evidence/ABI-000/attempts/attempt-0002/evidence/SOURCE-SNAPSHOT.md"
+  ],
+  "hashes_sha256": {
+    ".agents/instructions/nfabi-execution.instructions.md": "35497B67B763CAA7F309D528BF123E70B1CDABC16ACC2D072281FDD4DB8D87EB",
+    ".agents/skills/plan-linter/scripts/test-generated-pdca-plan.ps1": "69C977947F3DE277BF6B8522309AF6D0B331B9A72C4A6D258A221584CB6F3393",
+    "docsplan/nfabi/CODEX-START-HERE.md": "FB7B44345E144689E5816F8128BE915B73BF98C83C31E010F3C4F6D06B425F94",
+    "docsplan/nfabi/architecture/DATA-ARCHITECTURE.md": "F0B3E99811EAF936302ADB9E464F8FA6888E0617C5B03F0CA4E466C7DF99B774",
+    "docsplan/nfabi/architecture/INTEGRATION-CATALOG.md": "E79A688C0FD7959D8028AA72D6A6AC2D5FC8AD90CF252671B886BB23A6DEFF81",
+    "docsplan/nfabi/planning/PROJECT-BRIEF.md": "95F681AF4D8423025A6F9FF512FF3EC6D5A2B1D57DA8B824414ED6D1E9A528C4",
+    "docsplan/nfabi/planning/QUESTION-LEDGER.md": "8F1BBB28C778B73827448DA0C6CD232EAA61F6580515693198BCD1887BA7DB13",
+    "docsplan/nfabi/plans/ABI-000-planning-baseline.md": "16A076724B92E6952562E23C950CA54A689AD0AEC30DD52D7654BF7FEAA4C2C2",
+    "docsplan/nfabi/plans/ABI-001-plan-review.md": "9429546F0E0379C96004B76CF17E23B1A0534A518999645203CB10D6908F395E",
+    "docsplan/nfabi/plans/ABI-002-schemas-foundation.md": "7469C02078C30643DCF3730A7FAD26A81CA07C85D3FB61C1791C794BF1BCE4E0",
+    "docsplan/nfabi/plans/ABI-003-xml-core.md": "7BA71F86CF40E52630345315107AAC87AE098216D029F5C0C917BEE34DAA4928",
+    "docsplan/nfabi/plans/ABI-004-event-models.md": "0F52E629B633928E5B041C1EB9C97671307FA5C0A8827DBCC3BC3A41D95AD080",
+    "docsplan/nfabi/plans/ABI-005-published-services.md": "3DE7C71475C74551DE0C1687BF7AAD55E78A1AA55E9C3AE1C25029F7A593D7DB",
+    "docsplan/nfabi/plans/ABI-006-quality-handoff.md": "7D3AD35477122EED59A4E84C014E4364D7549D812BDD04477A05D619F370935E",
+    "docsplan/nfabi/plans/DECISION-REGISTER.md": "C35DE74D551C2D0C1F798D73A7E85279CC494DF6EE0295906C69D461D89394A8",
+    "docsplan/nfabi/plans/MODEL-CATALOG.md": "C8F7C18591D0FD96032948E941691A4079AC71539E7D3BABE0BB041FCD053835",
+    "docsplan/nfabi/plans/PDCA.md": "A0C07D2285F835C5CE781FDEE2397B8723C79A37366E9D5FF34D60AA0241ACF1",
+    "docsplan/nfabi/plans/READINESS.md": "B8696F5BC2E42A04584EB7B3170FA270866CC6215061A2AC6178C5107D00540E",
+    "docsplan/nfabi/plans/manifests/ABI-000.json": "B2619644068F5FE34D94DF1667F672F956AE042EDA30644A07966B0AC1F62506",
+    "docsplan/nfabi/plans/manifests/ABI-001.json": "EC1CDF345183C63BBA3E9448528F10A6F58DD55C66EACC5DF40E41C258BF1784",
+    "docsplan/nfabi/plans/manifests/ABI-002.json": "1B3253BA8956A52E434EB8BC4BC78E3611D4BAC6B79C771D2D24D7D91EE3CBB9",
+    "docsplan/nfabi/plans/manifests/ABI-003.json": "DC3972F88DC11F88AF14B9EDFE240EF289F03862577565B6B79C07290EA14C68",
+    "docsplan/nfabi/plans/manifests/ABI-004.json": "0804FE486CF155EFBBD7B4A283530D9686DDCD2D83BF58D68ED17922E1E81DE3",
+    "docsplan/nfabi/plans/manifests/ABI-005.json": "BF56BA5B13C65D16D88739A06DEFF0C76F369190C0FB13259EE8E21B5B6AC7A9",
+    "docsplan/nfabi/plans/manifests/ABI-006.json": "E07CC98D6DCE15DDA7AB3A3A96370A69017F789D227D627A9E6D4FB6A8AC1D59",
+    "docsplan/nfabi/plans/evidence/ABI-000/evidence/SOURCE-SNAPSHOT.md": "940633EA9F9D2666AE93A4D64BCF19D6179009E29468893868197A490BBC25B3",
+    "docsplan/nfabi/plans/evidence/ABI-000/attempts/attempt-0002/evidence/SOURCE-SNAPSHOT.md": "940633EA9F9D2666AE93A4D64BCF19D6179009E29468893868197A490BBC25B3"
+  },
+  "commands": [
+    {
+      "command": "pwsh -NoProfile -File .agents/skills/plan-linter/scripts/test-plan.ps1 -RepositoryRoot .",
+      "result": "PASS: 7 stages, prefix ABI, 7 manifests",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-000/TESTS.md"
+    },
+    {
+      "command": "git diff --check; git diff --stat; git diff",
+      "result": "PASS: diff reviewed; planning artifacts only",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-000/REVIEW.md"
+    }
+  ],
+  "tests": {
+    "status": "PASS_WITH_JUSTIFIED_NA",
+    "executed": [
+      "plan linter",
+      "placeholder and control-character scans",
+      "source hash inventory",
+      "link validation",
+      "complete diff review"
+    ],
+    "not_executed": [
+      "testes do produto: proibidos na etapa ABI-000"
+    ]
+  },
+  "decisions": [
+    "DEC-001",
+    "DEC-002",
+    "DEC-003",
+    "DEC-004",
+    "DEC-005"
+  ],
+  "models_used": [
+    {
+      "part_id": "ABI-000-P01",
+      "role": "planner",
+      "profile": "DEEP",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0002-main"
+    },
+    {
+      "part_id": "ABI-000-P02",
+      "role": "executor",
+      "profile": "DEEP",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0002-main"
+    },
+    {
+      "part_id": "ABI-000-P03",
+      "role": "reviewer",
+      "profile": "INDEPENDENT_REVIEW",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0002-review-pass"
+    },
+    {
+      "part_id": "ABI-000-P04",
+      "role": "documenter",
+      "profile": "ECONOMY",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0002-main"
+    }
+  ],
+  "not_executed": [
+    "implementação ou teste do produto",
+    "aprovação da ABI-000",
+    "início da ABI-001"
+  ],
+  "limitations": [
+    "endpoints fiscais individuais não foram acionados; a etapa validou sua publicação no portal oficial"
+  ],
+  "next_stage_started": false
+}
