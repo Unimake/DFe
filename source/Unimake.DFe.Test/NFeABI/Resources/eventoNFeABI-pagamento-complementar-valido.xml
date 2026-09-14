@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<evento xmlns="http://www.portalfiscal.inf.br/nfeabi" versao="1.00">
+  <infEvento Id="ID112110412609123456780001237700100000000110123456701">
+    <cOrgao>41</cOrgao>
+    <tpAmb>2</tpAmb>
+    <CNPJ>12345678000123</CNPJ>
+    <chNFeABI>41260912345678000123770010000000011012345670</chNFeABI>
+    <dhEvento>2026-09-14T12:00:00-03:00</dhEvento>
+    <tpEvento>112110</tpEvento>
+    <nSeqEvento>1</nSeqEvento>
+    <verEvento>1.00</verEvento>
+    <detEvento versaoEvento="1.00">
+      <evPagParcelaNFeABI versao="1.00">
+        <descEvento>Pagamento de Parcela</descEvento>
+        <cdEventoPag>02</cdEventoPag>
+        <vOrigParcela>95000.00</vOrigParcela>
+        <vAcrescParcela>5000.00</vAcrescParcela>
+        <dataPag>2026-09-14</dataPag>
+        <CST>000</CST>
+        <cClassTrib>000001</cClassTrib>
+        <gIBSCBS>
+          <vBC>5000.00</vBC>
+          <gIBSUF><pIBSUF>0.1000</pIBSUF><gRed><pRedAliq>0.0000</pRedAliq><pAliqEfet>0.1000</pAliqEfet></gRed><vIBSUF>5.00</vIBSUF></gIBSUF>
+          <gIBSMun><pIBSMun>0.1000</pIBSMun><gRed><pRedAliq>0.0000</pRedAliq><pAliqEfet>0.1000</pAliqEfet></gRed><vIBSMun>5.00</vIBSMun></gIBSMun>
+          <gCBS><pCBS>0.9000</pCBS><gRed><pRedAliq>0.0000</pRedAliq><pAliqEfet>0.9000</pAliqEfet></gRed><vCBS>45.00</vCBS></gCBS>
+        </gIBSCBS>
+      </evPagParcelaNFeABI>
+    </detEvento>
+  </infEvento>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="#ID112110412609123456780001237700100000000110123456701">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>AA==</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>AA==</SignatureValue>
+    <KeyInfo><X509Data><X509Certificate>AA==</X509Certificate></X509Data></KeyInfo>
+  </Signature>
+</evento>
