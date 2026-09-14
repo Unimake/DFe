@@ -20,6 +20,8 @@ namespace Unimake.Business.DFe.Servicos
 
         internal static bool NFe(int cStat) => cStat == 100 || cStat == 120 || cStat == 150;
 
+        internal static bool NFeABI(int cStat) => cStat == 100 || cStat == 150;
+
         internal static bool NFGas(int cStat) => cStat == 100 || cStat == 150;
     }
 }

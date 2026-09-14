@@ -21603,6 +21603,146 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion NFe
 
+    #region NFeABI
+
+    /// <summary>Tipo da nota fiscal de alienação de bens imóveis.</summary>
+    public enum TipoNotaFiscalNFeABI
+    {
+        /// <summary>0 - Nota simplificada.</summary>
+        [XmlEnum("0")]
+        Simplificada = 0,
+
+        /// <summary>1 - Nota completa.</summary>
+        [XmlEnum("1")]
+        Completa = 1
+    }
+
+    /// <summary>Formato de impressão da NFeABI.</summary>
+    public enum TipoImpressaoNFeABI
+    {
+        /// <summary>0 - Sem impressão.</summary>
+        [XmlEnum("0")]
+        SemImpressao = 0,
+
+        /// <summary>1 - Retrato.</summary>
+        [XmlEnum("1")]
+        Retrato = 1,
+
+        /// <summary>2 - Paisagem.</summary>
+        [XmlEnum("2")]
+        Paisagem = 2
+    }
+
+    /// <summary>Tipo de emissão da NFeABI.</summary>
+    public enum TipoEmissaoNFeABI
+    {
+        /// <summary>1 - Emissão normal.</summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>9 - Contingência offline.</summary>
+        [XmlEnum("9")]
+        ContingenciaOffline = 9
+    }
+
+    /// <summary>Finalidade da NFeABI.</summary>
+    public enum FinalidadeNFeABI
+    {
+        /// <summary>1 - Normal.</summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>2 - Substituição.</summary>
+        [XmlEnum("2")]
+        Substituicao = 2
+    }
+
+    /// <summary>Processo de emissão da NFeABI.</summary>
+    public enum ProcessoEmissaoNFeABI
+    {
+        /// <summary>0 - Aplicativo do contribuinte.</summary>
+        [XmlEnum("0")]
+        AplicativoContribuinte = 0,
+
+        /// <summary>1 - Aplicativo do fisco.</summary>
+        [XmlEnum("1")]
+        AplicativoFisco = 1
+    }
+
+    /// <summary>Indicador binário da NFeABI.</summary>
+    public enum IndicadorSimNaoNFeABI
+    {
+        /// <summary>0 - Não.</summary>
+        [XmlEnum("0")]
+        Nao = 0,
+
+        /// <summary>1 - Sim.</summary>
+        [XmlEnum("1")]
+        Sim = 1
+    }
+
+    /// <summary>Indicador de contribuição no negócio imobiliário.</summary>
+    public enum IndicadorContribuinteNFeABI
+    {
+        /// <summary>0 - Não contribuinte.</summary>
+        [XmlEnum("0")]
+        NaoContribuinte = 0,
+
+        /// <summary>1 - Contribuinte.</summary>
+        [XmlEnum("1")]
+        Contribuinte = 1,
+
+        /// <summary>2 - Optante pelo Simples Nacional.</summary>
+        [XmlEnum("2")]
+        OptanteSimplesNacional = 2
+    }
+
+    /// <summary>Tipo do imóvel.</summary>
+    public enum TipoImovelNFeABI
+    {
+        /// <summary>1 - Urbano.</summary>
+        [XmlEnum("1")]
+        Urbano = 1,
+
+        /// <summary>2 - Rural.</summary>
+        [XmlEnum("2")]
+        Rural = 2
+    }
+
+    /// <summary>Tipo de operação de compra governamental da NFeABI.</summary>
+    public enum TipoOperacaoGovernamentalNFeABI
+    {
+        /// <summary>1 - Fornecimento com pagamento posterior.</summary>
+        [XmlEnum("1")]
+        FornecimentoPagamentoPosterior = 1,
+
+        /// <summary>2 - Recebimento do pagamento por fornecimento já realizado.</summary>
+        [XmlEnum("2")]
+        RecebimentoPagamentoFornecimentoRealizado = 2
+    }
+
+    /// <summary>Tipo de ente governamental da operação NFeABI.</summary>
+    public enum TipoEnteGovernamentalNFeABI
+    {
+        /// <summary>1 - União.</summary>
+        [XmlEnum("1")]
+        Uniao = 1,
+
+        /// <summary>2 - Estado.</summary>
+        [XmlEnum("2")]
+        Estado = 2,
+
+        /// <summary>3 - Distrito Federal.</summary>
+        [XmlEnum("3")]
+        DistritoFederal = 3,
+
+        /// <summary>4 - Município.</summary>
+        [XmlEnum("4")]
+        Municipio = 4
+    }
+
+    #endregion NFeABI
+
     #region PIX
 
     /// <summary>

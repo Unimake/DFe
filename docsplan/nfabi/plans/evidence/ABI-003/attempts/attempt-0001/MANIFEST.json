@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "stage_id": "ABI-003",
+  "state": "DELIVERED_FOR_REVIEW",
+  "attempt_id": "attempt-0001",
+  "attempt_archive": "docsplan/nfabi/plans/evidence/ABI-003/attempts/attempt-0001",
+  "base_state": "ABI-002 approved by DEV; NFeABI schema/type/validation foundation present",
+  "started_at": "2026-09-14T15:00:00-03:00",
+  "finished_at": "2026-09-14T16:21:58-03:00",
+  "files": [
+    "docsplan/nfabi/plans/ABI-003-xml-core.md",
+    "docsplan/nfabi/plans/PDCA.md",
+    "docsplan/nfabi/plans/READINESS.md",
+    "docsplan/nfabi/plans/TRACEABILITY.md",
+    "docsplan/nfabi/plans/manifests/ABI-002.json",
+    "docsplan/nfabi/plans/manifests/ABI-003.json",
+    "source/.NET Standard/Unimake.Business.DFe/Servicos/Enums/Enums.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Servicos/StatusProtocoloAutorizacao.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/NFeABI.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/TiposBasicos.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/ConsStatServNFeABI.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/RetConsStatServNFeABI.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/ConsSitNFeABI.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/RetConsSitNFeABI.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/RetNFeABI.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/NFeABIProc.cs",
+    "source/Unimake.DFe.Test/NFeABI/Serializacao/SerializacaoNFeABITest.cs"
+  ],
+  "hashes_sha256": {
+    "docsplan/nfabi/plans/ABI-003-xml-core.md": "BC7723D514E2EBB974E8B6CDAA871248B5DD4528CF50AE5BEDB563AD3E6DA3A1",
+    "docsplan/nfabi/plans/PDCA.md": "00AF6FFE43CC9845C7A83BF0D31DF258715127B243C0B075E74E03DBA92330AF",
+    "docsplan/nfabi/plans/READINESS.md": "92A9368A99113D0ACE5AE5E17C553BE7A2EBF1164ED3DC63427E3234CC3BCF9D",
+    "docsplan/nfabi/plans/TRACEABILITY.md": "1F3BBC4F271955252C321D64DA4E9BDF0674DD225F153E4A35AF6BEFE8B90039",
+    "docsplan/nfabi/plans/manifests/ABI-002.json": "46CD19EBC0AE1D18300255D8906F1152A72F986FBFF45E4E8C0E1D0AA8E9E8E3",
+    "docsplan/nfabi/plans/manifests/ABI-003.json": "F45DE7B976855DDB00C7C5B7B33B519C049E1A785E8FCAF853E500C0F8F85EE0",
+    "source/.NET Standard/Unimake.Business.DFe/Servicos/Enums/Enums.cs": "701F31C73B0D30B43B922BF7A3A87809F728D452FD82CF732DE8B1D82EB70865",
+    "source/.NET Standard/Unimake.Business.DFe/Servicos/StatusProtocoloAutorizacao.cs": "442D51317BBCFF2FE0671F9B78646FF62E912CD5111EA06446F44019422BE5E9",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/NFeABI.cs": "5EF70C905FA318E876C373C5E555C034BC23907963486ABBEBA9DD970AF6F363",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/TiposBasicos.cs": "42FE873B00B5B2214D2270A295BCFD221CF78D2CE7CA3BE601B1C6407D53DC9D",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/ConsStatServNFeABI.cs": "04972CCB4C487375DCA6B08C7AFBDF6A82ECAF06E63F962FAA1668D91EC7538C",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/RetConsStatServNFeABI.cs": "82646CDE697E99B63A5CA274196C8A8191637C844B25FE359767B4BDD4198DE8",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/ConsSitNFeABI.cs": "2A1D5C9A545E8BD274E606ABA48F69DC0D8EDEE24A3403CF1DAE725F7B30FE6E",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/RetConsSitNFeABI.cs": "6DDEE605F7857F98EF609CD272AC3E9B0C633866358BCF93F5F146D4EF352C5E",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/RetNFeABI.cs": "D1C759D82F668C21C653F894AF1D8A07E8D5D79A38B8F78F81031185CADF6D27",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/NFeABIProc.cs": "5B91FAC99E096A86CD9988342F3D4D5C661E5F56625F2192DD22CF305909E15E",
+    "source/Unimake.DFe.Test/NFeABI/Serializacao/SerializacaoNFeABITest.cs": "C55312BA3AE9E3BBF549306A4652FBE49A17BF985D712D1B21CF1AA54624FCFE"
+  },
+  "commands": [
+    {
+      "command": "SHA-256 aggregate for the local normative source and schema package",
+      "result": "PASS: 22 source files and 20 schemas; zero divergence",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-003/evidence/SOURCE-HASHES.md"
+    },
+    {
+      "command": "dotnet build source/.NET Standard/Unimake.Business.DFe/Unimake.Business.DFe.csproj --no-restore",
+      "result": "PASS: 0 errors, 4 pre-existing warnings",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-003/TESTS.md"
+    },
+    {
+      "command": "dotnet build DLL with DefineConstants=INTEROP",
+      "result": "PASS: 0 errors, 11 pre-existing warnings",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-003/TESTS.md"
+    },
+    {
+      "command": "dotnet build source/Unimake.DFe.Test/Unimake.DFe.Test.csproj --no-restore",
+      "result": "PASS: 0 errors, 28 pre-existing warnings",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-003/TESTS.md"
+    },
+    {
+      "command": "xUnit v3 focused ABI-003 and schema foundation classes",
+      "result": "PASS: ABI-003 3/3; schema foundation 14/14",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-003/evidence/validation.txt"
+    },
+    {
+      "command": "pwsh -NoProfile -File .agents/skills/plan-linter/scripts/test-plan.ps1 -RepositoryRoot .",
+      "result": "PASS: docsplan/nfabi, 7 stages, ABI prefix, 7 manifests",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-003/evidence/validation.txt"
+    },
+    {
+      "command": "git diff --check and complete diff review",
+      "result": "PASS: scope and consistency reviewed; no material finding remains",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-003/REVIEW.md"
+    }
+  ],
+  "tests": {
+    "status": "PASS",
+    "executed": [
+      "source and schema SHA-256 reproduction",
+      "main DLL build",
+      "INTEROP DLL build",
+      "test project build",
+      "SerializacaoNFeABITest",
+      "SchemaFoundationTest",
+      "independent critical review",
+      "plan linter",
+      "complete diff review"
+    ],
+    "not_executed": [
+      "online fiscal smoke: outside ABI-003",
+      "external product validation: excluded from the plan",
+      "full test suite: focused deterministic coverage is sufficient"
+    ]
+  },
+  "decisions": [
+    "DEC-004"
+  ],
+  "models_used": [
+    {
+      "part_id": "ABI-003-P01",
+      "role": "planner",
+      "profile": "DEEP",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0001-main"
+    },
+    {
+      "part_id": "ABI-003-P02",
+      "role": "executor",
+      "profile": "BALANCED",
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "context_id": "attempt-0001-main"
+    },
+    {
+      "part_id": "ABI-003-P03",
+      "role": "reviewer",
+      "profile": "INDEPENDENT_REVIEW",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0001-independent-review"
+    },
+    {
+      "part_id": "ABI-003-P04",
+      "role": "documenter",
+      "profile": "ECONOMY",
+      "model": "gpt-5.6-luna",
+      "effort": "low",
+      "context_id": "attempt-0001-main"
+    }
+  ],
+  "not_executed": [
+    "approval of ABI-003",
+    "start of ABI-004",
+    "event models",
+    "remote transport or endpoints",
+    "changes or tests in an external product"
+  ],
+  "limitations": [
+    "no fiscal endpoint was called",
+    "the post-build emitted the pre-existing *Undefined*Build.bat informational message without failing"
+  ],
+  "next_stage_started": false
+}

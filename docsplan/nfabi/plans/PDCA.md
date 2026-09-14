@@ -4,8 +4,8 @@
 |---|---|---|---|---|
 | ABI-000 | base do planejamento | APPROVED | nenhuma | ENV-PLAN |
 | ABI-001 | revisão decisória e congelamento | APPROVED | ABI-000 APPROVED | ENV-PLAN |
-| ABI-002 | schemas e fundação do tipo fiscal | DELIVERED_FOR_REVIEW | ABI-001 APPROVED | ENV-DLL |
-| ABI-003 | modelo XML principal e retornos | PLANNED | ABI-002 APPROVED | ENV-DLL |
+| ABI-002 | schemas e fundação do tipo fiscal | APPROVED | ABI-001 APPROVED | ENV-DLL |
+| ABI-003 | modelo XML principal e retornos | DELIVERED_FOR_REVIEW | ABI-002 APPROVED | ENV-DLL |
 | ABI-004 | modelos de eventos NF-e ABI | PLANNED | ABI-003 APPROVED | ENV-DLL |
 | ABI-005 | serviços publicados de homologação | PLANNED | ABI-004 APPROVED | ENV-DLL |
 | ABI-006 | qualidade final e compatibilidade pública da DLL | PLANNED | ABI-005 APPROVED | ENV-DLL |
@@ -32,3 +32,6 @@
 | 2026-09-14 | ABI-001 | DELIVERED_FOR_REVIEW | APPROVED | revisão e aprovação explícitas pelo DEV | attempt-0003 |
 | 2026-09-14 | ABI-002 | PLANNED | IN_PROGRESS | execução exclusiva autorizada pelo DEV; predecessora aprovada e fontes normativas sem divergência | attempt-0001 |
 | 2026-09-14 | ABI-002 | IN_PROGRESS | DELIVERED_FOR_REVIEW | schemas íntegros e embutidos, fundação de tipo/detecção/validação concluída, testes, revisão independente e hashes verdes; aguarda DEV | attempt-0001 |
+| 2026-09-14 | ABI-002 | DELIVERED_FOR_REVIEW | APPROVED | revisão e aprovação explícitas pelo DEV | attempt-0001 |
+| 2026-09-14 | ABI-003 | PLANNED | IN_PROGRESS | execução exclusiva autorizada pelo DEV; predecessora aprovada e fontes normativas sem divergência | attempt-0001 |
+| 2026-09-14 | ABI-003 | IN_PROGRESS | DELIVERED_FOR_REVIEW | modelo XML principal e retornos concluídos, builds, testes focados, revisão independente e hashes verdes; aguarda DEV | attempt-0001 |
