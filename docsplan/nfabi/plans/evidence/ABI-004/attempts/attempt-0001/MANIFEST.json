@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "stage_id": "ABI-004",
+  "state": "DELIVERED_FOR_REVIEW",
+  "attempt_id": "attempt-0001",
+  "attempt_archive": "docsplan/nfabi/plans/evidence/ABI-004/attempts/attempt-0001",
+  "base_state": "ABI-003 approved by DEV; NFeABI core XML model and returns present",
+  "started_at": "2026-09-14T16:48:19-03:00",
+  "finished_at": "2026-09-14T17:06:39-03:00",
+  "files": [
+    "docsplan/nfabi/plans/ABI-004-event-models.md",
+    "docsplan/nfabi/plans/PDCA.md",
+    "docsplan/nfabi/plans/READINESS.md",
+    "docsplan/nfabi/plans/TRACEABILITY.md",
+    "docsplan/nfabi/plans/manifests/ABI-003.json",
+    "docsplan/nfabi/plans/manifests/ABI-004.json",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/EventoNFeABI.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/EvCancNFeABI.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/EvPagParcelaNFeABI.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/EvApropCredIndNFeABI.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/RetEventoNFeABI.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/ProcEventoNFeABI.cs",
+    "source/Unimake.DFe.Test/NFeABI/Resources/eventoNFeABI-cancelamento-valido.xml",
+    "source/Unimake.DFe.Test/NFeABI/Resources/eventoNFeABI-pagamento-parcela-valido.xml",
+    "source/Unimake.DFe.Test/NFeABI/Resources/eventoNFeABI-pagamento-complementar-valido.xml",
+    "source/Unimake.DFe.Test/NFeABI/Resources/eventoNFeABI-apropriacao-credito-valido.xml",
+    "source/Unimake.DFe.Test/NFeABI/Serializacao/EventosNFeABITest.cs"
+  ],
+  "hashes_sha256": {
+    "docsplan/nfabi/plans/ABI-004-event-models.md": "E19BB447FDE6B1474E46C0AB63E546F342E83DA67259370E2635403B9DA1D0C9",
+    "docsplan/nfabi/plans/PDCA.md": "629DFB191407EBF7DF666426719EDE92AD43A433C287846F558932D0BC62BAED",
+    "docsplan/nfabi/plans/READINESS.md": "112F7910A559F63A22C498BAA5CEE70183BF0B6C8F8A75E258B9D795AAC20BCA",
+    "docsplan/nfabi/plans/TRACEABILITY.md": "79E1D0A0FE4BB91F4026D431348ED6976162F7A84E96F1107141CDE7792BA675",
+    "docsplan/nfabi/plans/manifests/ABI-003.json": "FB855396F534E1D0B297204353FC704472685253556EB43193C2D036AB9C2070",
+    "docsplan/nfabi/plans/manifests/ABI-004.json": "F732EAEAFEFFFCFD784D12E2731026E3DFCD5FCF6A4566502841F911CC33AE87",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/EventoNFeABI.cs": "0E3DA28EA2306B3C48BE5CA04E35CE3E1E5C0FC919D2B3E4665C5B0D6368676E",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/EvCancNFeABI.cs": "21FF7577B43F55512A725DF398C1A709C58BF5C5B050276EC8155D1EAFE4C0CA",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/EvPagParcelaNFeABI.cs": "7A50467040E31D89F137506FE8A9E823B6EB57AB17236C352439EA905A08FFBB",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/EvApropCredIndNFeABI.cs": "844FE05417F61A650183A65B70FB37DA4DE59B2D41C6B01868126CB68DA4130F",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/RetEventoNFeABI.cs": "87D1321A99B69DBE8FEBA7359A29E5E7B412CC7C6B06A3F72723120ACA941DDD",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/ProcEventoNFeABI.cs": "1C9663FE4CB346F461C1095D3BABC24F2ACCE0CD7AB0FE6D7BED40EF896BF348",
+    "source/Unimake.DFe.Test/NFeABI/Resources/eventoNFeABI-cancelamento-valido.xml": "CC0562B248E9DBA9FBC2E4DEF172A6BB3AD41372B2A38B556DD759D208A820F6",
+    "source/Unimake.DFe.Test/NFeABI/Resources/eventoNFeABI-pagamento-parcela-valido.xml": "B04882D5135AA3AB1D0E1469D12D3106E98E45ACF15D45E1AEC7563947DBDDAE",
+    "source/Unimake.DFe.Test/NFeABI/Resources/eventoNFeABI-pagamento-complementar-valido.xml": "30DCEC9BEA5E27669C26C1F4E5A31A8EEDB816CBF70F5A0C16EA56D784332D40",
+    "source/Unimake.DFe.Test/NFeABI/Resources/eventoNFeABI-apropriacao-credito-valido.xml": "1CA5B02B4AF94986E665DC7C4626573999EDADF85F1B338C4689EF5543D84595",
+    "source/Unimake.DFe.Test/NFeABI/Serializacao/EventosNFeABITest.cs": "DE68142DE305693FC5604C29A83F7FA5254CB0A1A70B70564654250D59265CA5"
+  },
+  "commands": [
+    {
+      "command": "SHA-256 aggregate for the local normative source and schema package",
+      "result": "PASS: 22 source files and 20 schemas; zero divergence",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-004/evidence/SOURCE-HASHES.md"
+    },
+    {
+      "command": "dotnet build source/.NET Standard/Unimake.Business.DFe/Unimake.Business.DFe.csproj --no-restore",
+      "result": "PASS: 0 errors; pre-existing warnings only on non-incremental build",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-004/TESTS.md"
+    },
+    {
+      "command": "dotnet build DLL with DefineConstants=INTEROP",
+      "result": "PASS: 0 errors, 11 pre-existing warnings",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-004/TESTS.md"
+    },
+    {
+      "command": "dotnet build source/Unimake.DFe.Test/Unimake.DFe.Test.csproj --no-restore",
+      "result": "PASS: 0 errors, 28 pre-existing warnings",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-004/TESTS.md"
+    },
+    {
+      "command": "xUnit v3 focused ABI-004, ABI-003 and schema foundation classes",
+      "result": "PASS: ABI-004 9/9; ABI-003 3/3; schema foundation 14/14",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-004/evidence/validation.txt"
+    },
+    {
+      "command": "pwsh -NoProfile -File .agents/skills/plan-linter/scripts/test-plan.ps1 -RepositoryRoot .",
+      "result": "PASS: docsplan/nfabi, 7 stages, ABI prefix, 7 manifests",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-004/evidence/validation.txt"
+    },
+    {
+      "command": "git diff --check and complete diff review",
+      "result": "PASS: scope and consistency reviewed; no material finding remains",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-004/REVIEW.md"
+    }
+  ],
+  "tests": {
+    "status": "PASS",
+    "executed": [
+      "source and schema SHA-256 reproduction",
+      "main DLL build",
+      "INTEROP DLL build",
+      "test project build",
+      "EventosNFeABITest",
+      "SerializacaoNFeABITest",
+      "SchemaFoundationTest",
+      "independent critical review",
+      "plan linter",
+      "complete diff review"
+    ],
+    "not_executed": [
+      "online fiscal smoke: outside ABI-004",
+      "external product validation: excluded from the plan",
+      "full test suite: focused deterministic coverage is sufficient"
+    ]
+  },
+  "decisions": [
+    "DEC-001",
+    "DEC-004"
+  ],
+  "models_used": [
+    {
+      "part_id": "ABI-004-P01",
+      "role": "planner",
+      "profile": "DEEP",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0001-main"
+    },
+    {
+      "part_id": "ABI-004-P02",
+      "role": "executor",
+      "profile": "BALANCED",
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "context_id": "attempt-0001-main"
+    },
+    {
+      "part_id": "ABI-004-P03",
+      "role": "reviewer",
+      "profile": "INDEPENDENT_REVIEW",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0001-independent-review"
+    },
+    {
+      "part_id": "ABI-004-P04",
+      "role": "documenter",
+      "profile": "ECONOMY",
+      "model": "gpt-5.6-luna",
+      "effort": "low",
+      "context_id": "attempt-0001-main"
+    }
+  ],
+  "not_executed": [
+    "approval of ABI-004",
+    "start of ABI-005",
+    "remote event transport or endpoints",
+    "changes or tests in an external product"
+  ],
+  "limitations": [
+    "no fiscal endpoint was called",
+    "the post-build emitted the pre-existing *Undefined*Build.bat informational message without failing"
+  ],
+  "next_stage_started": false
+}

@@ -6,7 +6,7 @@
   "depends_on": [
     "ABI-002"
   ],
-  "status": "DELIVERED_FOR_REVIEW",
+  "status": "APPROVED",
   "human_gate": true,
   "critical_gate": true,
   "normative_plan": "docsplan/nfabi/plans/ABI-003-xml-core.md",

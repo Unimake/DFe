@@ -4,6 +4,8 @@
 
 `ABI-002` foi aprovada explicitamente pelo DEV em 2026-09-14 na `attempt-0001`.
 
-`ABI-003` está `DELIVERED_FOR_REVIEW` na `attempt-0001`: o modelo XML principal, retornos, protocolos e consultas/status foram concluídos; hashes, builds, testes focados, revisão independente e linter estão verdes. A etapa aguarda revisão do DEV e não está aprovada.
+`ABI-003` foi aprovada explicitamente pelo DEV em 2026-09-14 na `attempt-0001`.
 
-`ABI-004` permanece `PLANNED` e bloqueada até aprovação explícita da ABI-003 e autorização separada do DEV.
+`ABI-004` está `DELIVERED_FOR_REVIEW` na `attempt-0001`: modelos dos eventos, retorno e processado foram entregues com hashes, builds, testes de schema/round-trip, regras negativas e revisão crítica independentes verdes. Aguarda exclusivamente revisão do DEV.
+
+`ABI-005` permanece `PLANNED` e não foi iniciada.
