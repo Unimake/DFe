@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NFeABI xmlns="http://www.portalfiscal.inf.br/nfeabi">
+  <infNFeABI versao="1.00" Id="NFeABI41260912345678000123770010000000011012345670">
+    <ide>
+      <cUF>41</cUF>
+      <cNF>1234567</cNF>
+      <mod>77</mod>
+      <serie>1</serie>
+      <nNF>1</nNF>
+      <dhEmi>2026-09-14T12:00:00-03:00</dhEmi>
+      <tpNF>0</tpNF>
+      <tpImp>1</tpImp>
+      <gModNat>
+        <modOper>01</modOper>
+        <natOper>01</natOper>
+      </gModNat>
+      <tpEmis>1</tpEmis>
+      <nSiteAutoriz>0</nSiteAutoriz>
+      <cDV>0</cDV>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <procEmi>0</procEmi>
+      <verProc>TESTE ABI-002</verProc>
+    </ide>
+    <emit>
+      <CNPJ>12345678000123</CNPJ>
+      <xNome>EMITENTE TESTE</xNome>
+      <enderEmit>
+        <xLgr>RUA EXEMPLO</xLgr>
+        <nro>100</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>4106902</cMun>
+        <xMun>CURITIBA</xMun>
+        <UF>PR</UF>
+        <CEP>80000000</CEP>
+      </enderEmit>
+      <tpEmit>01</tpEmit>
+    </emit>
+    <transmit nTransmit="1">
+      <CNPJ>12345678000123</CNPJ>
+      <xNome>TRANSMITENTE TESTE</xNome>
+    </transmit>
+    <adquirente nAdquir="1">
+      <CPF>12345678901</CPF>
+      <xNome>ADQUIRENTE TESTE</xNome>
+      <enderAdquirente>
+        <xLgr>RUA EXEMPLO</xLgr>
+        <nro>200</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>4106902</cMun>
+        <xMun>CURITIBA</xMun>
+        <UF>PR</UF>
+        <CEP>80000000</CEP>
+      </enderAdquirente>
+    </adquirente>
+    <imovel>
+      <tipo>1</tipo>
+      <espImovel>01</espImovel>
+      <enderImovel>
+        <xLgr>RUA EXEMPLO</xLgr>
+        <nro>300</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>4106902</cMun>
+        <xMun>CURITIBA</xMun>
+        <UF>PR</UF>
+        <CEP>80000000</CEP>
+      </enderImovel>
+    </imovel>
+    <infOper>
+      <vTotalOperacao>100.00</vTotalOperacao>
+      <instrumento>
+        <tpInstrumento>01</tpInstrumento>
+        <dtInstrumento>2026-09-14</dtInstrumento>
+      </instrumento>
+    </infOper>
+    <gInfTrib>
+      <IBSCBS>
+        <CST>000</CST>
+        <cClassTrib>000001</cClassTrib>
+      </IBSCBS>
+    </gInfTrib>
+    <infRespTec>
+      <CNPJ>12345678000123</CNPJ>
+      <xContato>CONTATO TESTE</xContato>
+      <email>teste@example.com</email>
+      <fone>41999999999</fone>
+    </infRespTec>
+  </infNFeABI>
+  <infNFeSupl>
+    <qrCode>https://example.com/nfeabi/consulta?chave=41260912345678000123770010000000011012345670&amp;ambiente=2&amp;teste=abi002</qrCode>
+    <urlChave>https://example.com/nfeabi</urlChave>
+  </infNFeSupl>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="#NFeABI41260912345678000123770010000000011012345670">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>AA==</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>AA==</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>AA==</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+</NFeABI>

@@ -6,13 +6,14 @@
   "depends_on": [
     "ABI-001"
   ],
-  "status": "PLANNED",
+  "status": "DELIVERED_FOR_REVIEW",
   "human_gate": true,
   "critical_gate": true,
   "normative_plan": "docsplan/nfabi/plans/ABI-002-schemas-foundation.md",
   "allowed_subtrees": [
     "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/",
     "source/.NET Standard/Unimake.Business.DFe/Servicos/Enums/",
+    "source/.NET Standard/Unimake.Business.DFe/Utility/XMLUtility.cs",
     "source/.NET Standard/Unimake.Business.DFe/Xml/Validar/",
     "source/.NET Standard/Unimake.Business.DFe/Unimake.Business.DFe.csproj",
     "source/Unimake.DFe.Test/NFeABI/"

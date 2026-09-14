@@ -4,9 +4,9 @@
 - Raiz documental do plano: `docsplan/nfabi`
 - ProjectMode: EVOLUTION
 - StagePrefix: ABI
-- PlanningStatus: DELIVERED_FOR_REVIEW
-- StageIdsFrozen: false; o congelamento efetivo depende de `ABI-001 APPROVED`
-- FrozenStageIds: N/A
+- PlanningStatus: READY_FOR_EXECUTION
+- StageIdsFrozen: true
+- FrozenStageIds: ABI-002, ABI-003, ABI-004, ABI-005, ABI-006
 - CandidateStageIds: ABI-000, ABI-001, ABI-002, ABI-003, ABI-004, ABI-005, ABI-006
 - Proprietário/autoridade: DEV
 - Resultado: Adicionar exclusivamente à DLL Unimake.DFe suporte completo aos contratos XML NF-e ABI 1.00 e aos serviços oficialmente publicados, preservando netstandard2.0, C# 7.3, API pública e INTEROP.

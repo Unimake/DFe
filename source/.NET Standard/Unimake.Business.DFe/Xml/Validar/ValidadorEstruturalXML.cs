@@ -47,6 +47,13 @@ namespace Unimake.Business.DFe.Xml.Validar
                 return;
             }
 
+            if (tipoDFe == TipoDFe.NFeABI &&
+                !string.Equals(xml.DocumentElement?.NamespaceURI, informacao.TargetNS, StringComparison.Ordinal))
+            {
+                throw new ValidarXMLException(
+                    $"O namespace da tag raiz deve ser '{informacao.TargetNS}', mas foi informado '{xml.DocumentElement?.NamespaceURI}'.");
+            }
+
             var tipoSchema = tipoDFe == TipoDFe.NFCe ? TipoDFe.NFe : tipoDFe;
             var schema = padraoNFSe == PadraoNFSe.None
                 ? $"{tipoSchema}.{informacao.SchemaArquivo}"
@@ -73,6 +80,13 @@ namespace Unimake.Business.DFe.Xml.Validar
             if (xmlEspecifico == null)
             {
                 return;
+            }
+
+            if (tipoDFe == TipoDFe.NFeABI &&
+                !string.Equals(xmlEspecifico.DocumentElement?.NamespaceURI, informacao.TargetNSEspecifico, StringComparison.Ordinal))
+            {
+                throw new ValidarXMLException(
+                    $"O namespace da tag específica deve ser '{informacao.TargetNSEspecifico}', mas foi informado '{xmlEspecifico.DocumentElement?.NamespaceURI}'.");
             }
 
             var validar = new ValidarSchema();

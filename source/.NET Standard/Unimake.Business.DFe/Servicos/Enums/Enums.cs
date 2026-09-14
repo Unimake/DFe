@@ -833,6 +833,30 @@ namespace Unimake.Business.DFe.Servicos
         [Description("CIOT eFrete - Obter operação de transporte PDF")]
         CIOTObterOperacaoTransportePdf = 133,
 
+        /// <summary>
+        /// 134 - Consulta status serviço NFeABI
+        /// </summary>
+        [Description("Consulta status do serviço da NFeABI")]
+        NFeABIStatusServico = 134,
+
+        /// <summary>
+        /// 135 - Consulta protocolo da NFeABI
+        /// </summary>
+        [Description("Consulta situação da NFeABI")]
+        NFeABIConsultaProtocolo = 135,
+
+        /// <summary>
+        /// 136 - Envio de eventos da NFeABI
+        /// </summary>
+        [Description("Envio de eventos da NFeABI")]
+        NFeABIRecepcaoEvento = 136,
+
+        /// <summary>
+        /// 137 - Envio síncrono do XML de NFeABI
+        /// </summary>
+        [Description("Autorização síncrona da NFeABI")]
+        NFeABIAutorizacaoSinc = 137,
+
         #endregion
 
         #region Gerais
@@ -956,6 +980,11 @@ namespace Unimake.Business.DFe.Servicos
         /// 22 - BPe - Bilhete de Passagem Eletrônico
         /// </summary>
         BPe = 22,
+
+        /// <summary>
+        /// 23 - NFeABI - Nota Fiscal Eletrônica de Alienação de Bens Imóveis
+        /// </summary>
+        NFeABI = 23,
 
     }
 
@@ -1255,6 +1284,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("76")]
         NFGas = 76,
+
+        /// <summary>
+        /// NFeABI (Modelo: 77)
+        /// </summary>
+        [XmlEnum("77")]
+        NFeABI = 77,
     }
 
     #endregion
@@ -8391,6 +8426,34 @@ namespace Unimake.Business.DFe.Servicos
         BPeTA = 109,
 
         #endregion BPe
+
+        #region NFeABI
+
+        /// <summary>
+        /// XML de consulta status do serviço da NFeABI
+        /// </summary>
+        [Description("XML de consulta status do serviço da NFeABI")]
+        NFeABIStatusServico = 110,
+
+        /// <summary>
+        /// XML de consulta situação da NFeABI
+        /// </summary>
+        [Description("XML de consulta situação da NFeABI")]
+        NFeABIConsultaSituacao = 111,
+
+        /// <summary>
+        /// XML de envio de evento da NFeABI
+        /// </summary>
+        [Description("XML de envio de evento da NFeABI")]
+        NFeABIEnvioEvento = 112,
+
+        /// <summary>
+        /// XML individual da NFeABI
+        /// </summary>
+        [Description("XML individual da NFeABI")]
+        NFeABI = 113,
+
+        #endregion NFeABI
 
         #region eSocial
 

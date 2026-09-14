@@ -1260,6 +1260,29 @@ namespace Unimake.Business.DFe.Utility
 
                 #endregion XML da NFGas
 
+                #region XML da NFeABI
+
+                case "consStatServNFeABI":
+                    tipoXML = TipoXML.NFeABIStatusServico;
+                    break;
+
+                case "consSitNFeABI":
+                    tipoXML = TipoXML.NFeABIConsultaSituacao;
+                    break;
+
+                case "evento":
+                    if (xmlDoc.DocumentElement.NamespaceURI == "http://www.portalfiscal.inf.br/nfeabi")
+                    {
+                        tipoXML = TipoXML.NFeABIEnvioEvento;
+                    }
+                    break;
+
+                case "NFeABI":
+                    tipoXML = TipoXML.NFeABI;
+                    break;
+
+                #endregion XML da NFeABI
+
                 case "eSocial":
                     tipoXML = ObterTipoXmlESocial(xmlDoc, primeiraTagFilha);
                     break;

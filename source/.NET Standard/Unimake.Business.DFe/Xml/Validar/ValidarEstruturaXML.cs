@@ -2015,6 +2015,31 @@ namespace Unimake.Business.DFe
 
                 #endregion
 
+                #region NFeABI
+
+                case "consStatServNFeABI":
+                case "consSitNFeABI":
+                case "NFeABI":
+                case "nfeabiProc":
+                case "retNFeABI":
+                case "retConsSitNFeABI":
+                case "retConsStatServNFeABI":
+                case "retEventoNFeABI":
+                case "procEventoNFeABI":
+                    tipoDFe = TipoDFe.NFeABI;
+                    break;
+
+                case "evento":
+                    if (xml.DocumentElement.NamespaceURI == "http://www.portalfiscal.inf.br/nfeabi")
+                    {
+                        tipoDFe = TipoDFe.NFeABI;
+                        break;
+                    }
+
+                    goto default;
+
+                #endregion
+
                 #region BPe
 
                 case "consStatServBPe":
