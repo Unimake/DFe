@@ -82,6 +82,7 @@ public class NFeTxtConverterTest
     [InlineData("000027937-nfe.txt")]
     [InlineData("000002722-nfe.txt")]
     [InlineData("000000001-corrigido-nfe.txt")]
+    [InlineData("000000001-rtc-zerado-nfe.txt")]
     [InlineData("NFe_RTC_CST200_Reducao100_TribRegular-nfe.txt")]
     [InlineData("RTC2026-NFe621-nfe.txt")]
     [InlineData("RTC2026-NFe622-nfe.txt")]
@@ -162,6 +163,53 @@ public class NFeTxtConverterTest
         validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
         Assert.False(validacao.Success);
         Assert.Contains("Signature", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve converter e validar a massa com tributação da reforma informada com valores zerados.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarRtcZeradaEmOrdemValida()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000000001-rtc-zerado-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.Equal(2, xml.SelectNodes("//*[local-name()='IBSCBS']").Count);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='total']/*[local-name()='vNFTot']"));
+    }
+
+    /// <summary>
+    /// Deve distinguir o total RTC vazio do valor zero explicitamente informado.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarVNFTotQuandoZeroForInformadoExplicitamente()
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+
+        try
+        {
+            var conteudo = File.ReadAllText(CaminhoArquivo("000000001-rtc-zerado-nfe.txt"))
+                .Replace("W60||", "W60|0.00|");
+            File.WriteAllText(arquivoTemporario, conteudo);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            Assert.Equal("0.00", xml.SelectSingleNode("//*[local-name()='total']/*[local-name()='vNFTot']")?.InnerText);
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
     }
 
     /// <summary>

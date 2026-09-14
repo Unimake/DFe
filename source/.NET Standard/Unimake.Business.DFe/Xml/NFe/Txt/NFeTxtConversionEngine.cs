@@ -3514,7 +3514,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
                     //layout = "W60|vNFTot|"
 
-                    totalOficial.VNFTot = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Total>(nameof(DFeNFe.Total.VNFTot)), ObOp.Opcional, 15);
+                    var valorNotaFiscal = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Total>(nameof(DFeNFe.Total.VNFTot)), ObOp.Opcional, 15, true);
+
+                    if (valorNotaFiscal >= 0)
+                    {
+                        totalOficial.VNFTot = valorNotaFiscal;
+                    }
         }
 
         private void ProcessarTransporte(int nProd, int lenPipesRegistro)
