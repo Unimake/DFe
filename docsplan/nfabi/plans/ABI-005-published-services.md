@@ -26,7 +26,7 @@ Status e autorização síncrona NFeABI resolvem a configuração oficial de hom
 
 ## 4. Escopo
 
-ServicoBase, StatusServico, AutorizacaoSinc, Result/NFeABIProcResults e Config/SVRS nacional somente para os dois endpoints publicados.
+ServicoBase, StatusServico, AutorizacaoSinc, Result/NFeABIProcResults, configuração-base nacional e os 27 arquivos estaduais que herdam de `SVRS.xml`, somente para os dois endpoints publicados.
 
 ## 5. Fora de escopo
 
@@ -54,7 +54,7 @@ Serviços/config NFeABI, recursos do csproj e testes NFeABI.
 
 ## 9. Execução detalhada
 
-1. Obter WSDL ou evidência equivalente oficial. 2. Configurar somente homologação. 3. Implementar serviços pelo padrão NFGas. 4. Testar resolução offline e, se autorizado, smoke online sem retry.
+1. Obter WSDL ou evidência equivalente oficial. 2. Configurar somente homologação. 3. Implementar serviços pelo padrão NFGas, incluindo um XML embutido para cada UF com herança de `SVRS.xml`. 4. Testar a resolução offline de todas as UFs. 5. Manter testes de integração no padrão BPe, com objetos tipados e chamada a `Executar()`, exclusivamente em homologação e sem retry automático.
 
 ## 10. Compatibilidade, migration e rollback
 
@@ -64,11 +64,11 @@ Remover serviço/config NFeABI; modelos e schemas continuam utilizáveis.
 
 | Ordem | Comando/cenário | Ambiente | Timeout | Resultado esperado | Artefato |
 |---:|---|---|---:|---|---|
-| 1 | testes offline de configuração + build; smoke homologação opcional/autorizado | ENV-DLL | 15 min | status/autorização resolvem URL correta; produção falha fechada | docsplan/nfabi/plans/evidence/ABI-005/evidence/validation.txt |
+| 1 | testes offline de configuração + build; integração tipada de Status e Autorização com `Executar()` em homologação | ENV-DLL | 15 min | status/autorização alcançam o endpoint, desserializam retorno tipado e produção falha fechada | docsplan/nfabi/plans/evidence/ABI-005/evidence/validation.txt |
 
 ## 12. Testes
 
-Mocks/fixtures para retorno sucesso/rejeição, certificado ausente, produção sem endpoint, proxy e resultado vazio; online não substitui gate offline.
+Mocks/fixtures para retorno sucesso/rejeição, certificado ausente, produção sem endpoint, proxy e resultado vazio. Testes de integração separados para Status e Autorização, construindo os objetos tipados e chamando `Executar()` como no BPe, somente em homologação; online não substitui gate offline.
 
 ## 13. Segurança, privacidade e observabilidade
 
@@ -82,7 +82,7 @@ Mocks/fixtures para retorno sucesso/rejeição, certificado ausente, produção 
 |---|---|---|
 | Escopo | PASS | diff somente nos subtrees permitidos |
 | Contrato XML/ERP | PASS | fixture representativa preserva estrutura, ordem, namespace e nomes |
-| Regressão | PASS | build e testes focados verdes; limitações ambientais registradas |
+| Regressão | PASS | build, testes offline e integrações tipadas de homologação verdes; limitações ambientais registradas |
 | Fontes | PASS | hashes comparados e divergências analisadas antes de codificar |
 
 ## 15. Stop/Blocked

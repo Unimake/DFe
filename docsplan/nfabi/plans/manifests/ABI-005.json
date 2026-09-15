@@ -2,11 +2,11 @@
   "schema_version": 1,
   "stage_id": "ABI-005",
   "stage_type": "EXECUTION",
-  "plan_revision": "0.4",
+  "plan_revision": "0.5",
   "depends_on": [
     "ABI-004"
   ],
-  "status": "PLANNED",
+  "status": "DELIVERED_FOR_REVIEW",
   "human_gate": true,
   "critical_gate": true,
   "normative_plan": "docsplan/nfabi/plans/ABI-005-published-services.md",

@@ -6,6 +6,6 @@
 
 `ABI-003` foi aprovada explicitamente pelo DEV em 2026-09-14 na `attempt-0001`.
 
-`ABI-004` está `DELIVERED_FOR_REVIEW` na `attempt-0001`: modelos dos eventos, retorno e processado foram entregues com hashes, builds, testes de schema/round-trip, regras negativas e revisão crítica independentes verdes. Aguarda exclusivamente revisão do DEV.
+`ABI-004` foi aprovada explicitamente pelo DEV em 2026-09-14 na `attempt-0001`.
 
-`ABI-005` permanece `PLANNED` e não foi iniciada.
+`ABI-005` está `DELIVERED_FOR_REVIEW` na `attempt-0004`: foram adicionados testes de integração equivalentes aos do BPe, com objetos tipados e `Executar()`, restritos à homologação. As fontes normativas permanecem íntegras, os gates técnicos estão verdes e a etapa aguarda exclusivamente a revisão do DEV. `ABI-006` não foi iniciada.

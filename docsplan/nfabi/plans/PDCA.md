@@ -6,8 +6,8 @@
 | ABI-001 | revisão decisória e congelamento | APPROVED | ABI-000 APPROVED | ENV-PLAN |
 | ABI-002 | schemas e fundação do tipo fiscal | APPROVED | ABI-001 APPROVED | ENV-DLL |
 | ABI-003 | modelo XML principal e retornos | APPROVED | ABI-002 APPROVED | ENV-DLL |
-| ABI-004 | modelos de eventos NF-e ABI | DELIVERED_FOR_REVIEW | ABI-003 APPROVED | ENV-DLL |
-| ABI-005 | serviços publicados de homologação | PLANNED | ABI-004 APPROVED | ENV-DLL |
+| ABI-004 | modelos de eventos NF-e ABI | APPROVED | ABI-003 APPROVED | ENV-DLL |
+| ABI-005 | serviços publicados de homologação | DELIVERED_FOR_REVIEW | ABI-004 APPROVED | ENV-DLL |
 | ABI-006 | qualidade final e compatibilidade pública da DLL | PLANNED | ABI-005 APPROVED | ENV-DLL |
 
 ## Histórico
@@ -38,3 +38,14 @@
 | 2026-09-14 | ABI-003 | DELIVERED_FOR_REVIEW | APPROVED | revisão e aprovação explícitas pelo DEV | attempt-0001 |
 | 2026-09-14 | ABI-004 | PLANNED | IN_PROGRESS | execução exclusiva autorizada pelo DEV; predecessora aprovada e fontes normativas sem divergência | attempt-0001 |
 | 2026-09-14 | ABI-004 | IN_PROGRESS | DELIVERED_FOR_REVIEW | modelos dos três eventos, retorno e processado concluídos; builds, testes, revisão independente e hashes verdes; aguarda DEV | attempt-0001 |
+| 2026-09-14 | ABI-004 | DELIVERED_FOR_REVIEW | APPROVED | revisão e aprovação explícitas pelo DEV | attempt-0001 |
+| 2026-09-14 | ABI-005 | PLANNED | IN_PROGRESS | execução exclusiva autorizada pelo DEV; predecessora aprovada e fontes normativas sem divergência | attempt-0001 |
+| 2026-09-14 | ABI-005 | IN_PROGRESS | BLOCKED | WSDL oficial exige certificado no handshake TLS; revisão independente rejeitou metadados SOAP inferidos e o protótipo foi integralmente retirado | attempt-0001 |
+| 2026-09-14 | ABI-005 | BLOCKED | IN_PROGRESS | DEV forneceu e autorizou uso direto de certificado A1; os dois WSDLs oficiais foram obtidos com HTTP 200 e o contrato wire deixou de ser inferido | attempt-0002 |
+| 2026-09-14 | ABI-005 | IN_PROGRESS | DELIVERED_FOR_REVIEW | WSDLs oficiais arquivados, serviços publicados implementados, produção fail-closed, builds, 39 testes focados e revisão independente verdes; aguarda DEV | attempt-0002 |
+| 2026-09-14 | ABI-005 | DELIVERED_FOR_REVIEW | REWORK | DEV solicitou configuração estadual completa no padrão NFGas | attempt-0003 |
+| 2026-09-14 | ABI-005 | REWORK | IN_PROGRESS | criação dos arquivos das 27 UFs, resolução por UF, recursos e testes em ajuste | attempt-0003 |
+| 2026-09-14 | ABI-005 | IN_PROGRESS | DELIVERED_FOR_REVIEW | configuração das 27 UFs concluída; builds, 67 testes focados, hashes, revisão independente e linter verdes; aguarda DEV | attempt-0003 |
+| 2026-09-14 | ABI-005 | DELIVERED_FOR_REVIEW | REWORK | DEV solicitou testes de integração dos serviços no padrão BPe, somente em homologação | attempt-0004 |
+| 2026-09-14 | ABI-005 | REWORK | IN_PROGRESS | criação de base e testes tipados de Status e Autorização com chamada a Executar() | attempt-0004 |
+| 2026-09-14 | ABI-005 | IN_PROGRESS | DELIVERED_FOR_REVIEW | testes offline e integrações reais de Status e Autorização em homologação verdes; compatibilidade do cUF textual centralizada, revisão independente e linter verdes; aguarda DEV | attempt-0004 |

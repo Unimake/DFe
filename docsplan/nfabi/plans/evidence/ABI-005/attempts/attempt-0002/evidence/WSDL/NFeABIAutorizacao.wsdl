@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIAutorizacao" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIAutorizacao">
+  <wsdl:types>
+<s:schema xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIAutorizacao" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" elementFormDefault="qualified" targetNamespace="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIAutorizacao">
+			
+  <s:element name="nfeabiDadosMsg">
+				
+    <s:complexType mixed="true">
+					
+      <s:sequence>
+						
+        <s:any/>
+					
+      </s:sequence>
+				
+    </s:complexType>
+			
+  </s:element>
+			
+  <s:element name="nfeabiDadosMsgZip">
+				
+    <s:simpleType>
+					
+      <s:restriction base="s:string"/>
+    			
+    </s:simpleType>
+			
+  </s:element>
+			
+  <s:element name="nfeabiAutorizacaoResult">
+				
+    <s:complexType mixed="true">
+					
+      <s:sequence>
+						
+        <s:any/>
+					
+      </s:sequence>
+				
+    </s:complexType>
+			
+  </s:element>
+		
+</s:schema>
+  </wsdl:types>
+  <wsdl:message name="nfeabiAutorizacaoZipSoap12In">
+    <wsdl:part element="tns:nfeabiDadosMsgZip" name="nfeabiDadosMsgZip">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="nfeabiAutorizacaoSoap12In">
+    <wsdl:part element="tns:nfeabiDadosMsg" name="nfeabiDadosMsg">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="nfeabiAutorizacaoSoap12Out">
+    <wsdl:part element="tns:nfeabiAutorizacaoResult" name="nfeabiAutorizacaoResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="NFeABIAutorizacaoSoap12">
+    <wsdl:operation name="nfeabiAutorizacao">
+<wsdl:documentation>Transmissao descompactado da NFeABI</wsdl:documentation>
+      <wsdl:input message="tns:nfeabiAutorizacaoSoap12In">
+    </wsdl:input>
+      <wsdl:output message="tns:nfeabiAutorizacaoSoap12Out">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nfeabiAutorizacaoZip">
+<wsdl:documentation>Transmissao compactado da NFeABI</wsdl:documentation>
+      <wsdl:input message="tns:nfeabiAutorizacaoZipSoap12In">
+    </wsdl:input>
+      <wsdl:output message="tns:nfeabiAutorizacaoSoap12Out">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NFeABIAutorizacaoSoap12" type="tns:NFeABIAutorizacaoSoap12">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="nfeabiAutorizacao">
+      <soap12:operation soapAction="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIAutorizacao/nfeabiAutorizacao" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nfeabiAutorizacaoZip">
+      <soap12:operation soapAction="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIAutorizacao/nfeabiAutorizacaoZip" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NFeABIAutorizacao">
+<wsdl:documentation>Servico destinado a recepcao de mensagens da NFeABI</wsdl:documentation>
+    <wsdl:port binding="tns:NFeABIAutorizacaoSoap12" name="NFeABIAutorizacaoSoap12">
+      <soap12:address location="https://homologacao.nfeabi.fazenda.pr.gov.br/nfeabi/NFeABIAutorizacao"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
