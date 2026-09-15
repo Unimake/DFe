@@ -14,6 +14,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
     internal static class EFreteMapper
     {
         private const string CodigoSucessoCIOT = "110";
+        private const string MensagemSucessoCancelamento = "Operação de transporte cancelada com sucesso.";
+        private const string MensagemSucessoEncerramento = "Operação de transporte encerrada com sucesso.";
 
         internal static string CriarJsonLogin(Configuracao configuracao)
         {
@@ -91,7 +93,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     var pdf = (Xml.CIOT.ObterOperacaoTransportePdf)xml;
                     payload = new JObject
                     {
-                        ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacao(pdf.CodigoIdentificacaoOperacao),
+                        ["CodigoIdentificacaoOperacao"] = PreservarCodigoIdentificacaoOperacaoInformado(pdf.CodigoIdentificacaoOperacao),
                         ["DocumentoViagem"] = pdf.DocumentoViagem
                     };
                     payload["Versao"] = 1;
@@ -127,6 +129,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     resultado = new RetDeclaracaoOperacaoTransporte
                     {
                         IdOperacaoTransporte = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
+                        CodigoVerificador = ObterCodigoVerificador(Valor(root, "CodigoIdentificacaoOperacao")),
                         Protocolo = Valor(root, "ProtocoloServico"),
                         Codigo = sucesso ? CodigoSucessoCIOT : codigo,
                         Mensagem = mensagemDeclaracao,
@@ -138,6 +141,7 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     resultado = new RetConsultarCIOTGerado
                     {
                         CodigoIdentificacaoOperacao = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
+                        CodigoVerificador = ObterCodigoVerificador(Valor(root, "CodigoIdentificacaoOperacao")),
                         EstadoCIOT = Valor(root, "EstadoCiot"),
                         Protocolo = Valor(root, "ProtocoloServico"),
                         Codigo = erro ? new List<string> { codigo } : null,
@@ -146,23 +150,25 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                     };
                     break;
                 case Servico.CIOTCancelamentoOperacaoTransporte:
+                    var mensagemCancelamento = sucesso && string.IsNullOrWhiteSpace(mensagem) ? MensagemSucessoCancelamento : mensagem;
                     resultado = new RetCancelamentoOperacaoTransporte
                     {
                         CodigoIdentificacaoOperacao = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
-                        Protocolo = Valor(root, "Protocolo"),
+                        Protocolo = Valor(root, "Protocolo") ?? Valor(root, "ProtocoloServico"),
                         Codigo = sucesso ? CodigoSucessoCIOT : codigo,
-                        Mensagem = mensagem,
+                        Mensagem = mensagemCancelamento,
                         DataCancelamentoField = Valor(root, "Data"),
                         Temp = erro ? CriarTemp(codigo, mensagem) : null
                     };
                     break;
                 case Servico.CIOTEncerramentoOperacaoTransporte:
+                    var mensagemEncerramento = sucesso && string.IsNullOrWhiteSpace(mensagem) ? MensagemSucessoEncerramento : mensagem;
                     resultado = new RetEncerramentoOperacaoTransporte
                     {
                         CodigoIdentificacaoOperacao = NormalizarCodigoIdentificacaoOperacao(Valor(root, "CodigoIdentificacaoOperacao")),
-                        Protocolo = Valor(root, "Protocolo"),
+                        Protocolo = Valor(root, "Protocolo") ?? Valor(root, "ProtocoloServico"),
                         Codigo = sucesso ? CodigoSucessoCIOT : codigo,
-                        Mensagem = mensagem,
+                        Mensagem = mensagemEncerramento,
                         Temp = erro ? CriarTemp(codigo, mensagem) : null
                     };
                     break;
@@ -382,8 +388,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
         }
 
         private static JObject CriarConsulta(Xml.CIOT.ConsultarCIOTGerado xml) => new JObject { ["MatrizCNPJ"] = xml.MatrizCNPJ, ["IdOperacaoCliente"] = xml.IdOperacaoCliente };
-        private static JObject CriarCancelamento(Xml.CIOT.CancelamentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacao(xml.CodigoIdentificacaoOperacao), ["Motivo"] = xml.MotivoCancelamento };
-        private static JObject CriarEncerramento(Xml.CIOT.EncerramentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = NormalizarCodigoIdentificacaoOperacao(xml.CodigoIdentificacaoOperacao), ["PesoCarga"] = Numero(xml.DadosCarga?.PesoTotalCarga) };
+        private static JObject CriarCancelamento(Xml.CIOT.CancelamentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = PreservarCodigoIdentificacaoOperacaoInformado(xml.CodigoIdentificacaoOperacao), ["Motivo"] = xml.MotivoCancelamento };
+        private static JObject CriarEncerramento(Xml.CIOT.EncerramentoOperacaoTransporte xml) => new JObject { ["CodigoIdentificacaoOperacao"] = PreservarCodigoIdentificacaoOperacaoInformado(xml.CodigoIdentificacaoOperacao), ["PesoCarga"] = Numero(xml.DadosCarga?.PesoTotalCarga) };
         private static JObject CriarSituacao(Xml.CIOT.ConsultarSituacaoTransportador xml, List<string> placas) => new JObject
         {
             ["InteressadoCpfOuCnpj"] = xml.CpfCnpjInteressado,
@@ -469,6 +475,20 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
 
             var separador = codigo.IndexOf('/');
             return separador > 0 ? codigo.Substring(0, separador) : codigo;
+        }
+
+        private static string PreservarCodigoIdentificacaoOperacaoInformado(string codigo) =>
+            string.IsNullOrWhiteSpace(codigo) ? codigo : codigo.Trim();
+
+        private static string ObterCodigoVerificador(string codigo)
+        {
+            if (string.IsNullOrWhiteSpace(codigo))
+            {
+                return null;
+            }
+
+            var separador = codigo.IndexOf('/');
+            return separador >= 0 && separador < codigo.Length - 1 ? codigo.Substring(separador + 1) : null;
         }
         private static JToken Numero(string value) { decimal parsed; return decimal.TryParse(value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out parsed) ? new JValue(parsed) : null; }
         private static JToken Localizar(JObject obj, string nome) { return obj?.Properties().FirstOrDefault(x => string.Equals(x.Name, nome, StringComparison.OrdinalIgnoreCase))?.Value; }

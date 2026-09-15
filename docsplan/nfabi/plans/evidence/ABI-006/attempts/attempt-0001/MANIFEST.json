@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "stage_id": "ABI-006",
+  "state": "DELIVERED_FOR_REVIEW",
+  "attempt_id": "attempt-0001",
+  "attempt_archive": "docsplan/nfabi/plans/evidence/ABI-006/attempts/attempt-0001",
+  "base_state": "ABI-005 approved by DEV; ABI-006 explicitly authorized",
+  "started_at": "2026-09-14T21:52:22-03:00",
+  "finished_at": "2026-09-14T22:00:28-03:00",
+  "files": [
+    "docsplan/nfabi/plans/ABI-006-quality-handoff.md",
+    "docsplan/nfabi/plans/PDCA.md",
+    "docsplan/nfabi/plans/READINESS.md",
+    "docsplan/nfabi/plans/TRACEABILITY.md",
+    "docsplan/nfabi/plans/manifests/ABI-005.json",
+    "docsplan/nfabi/plans/manifests/ABI-006.json",
+    "docsplan/nfabi/guides/NFEABI-USAGE.md",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/NFeABI.cs",
+    "source/Unimake.DFe.Test/NFeABI/Validacao/PublicApiTest.cs"
+  ],
+  "hashes_sha256": {
+    "docsplan/nfabi/plans/ABI-006-quality-handoff.md": "B39D07FADCBA883BB0DC9D292F729B2AEF5811D877E2137C875A4BA91FA74F02",
+    "docsplan/nfabi/plans/PDCA.md": "54ED5FDE4A683D102AD4798E6F1A7F1A08693CF6A955B0AE16ACCC7FAD65C9EE",
+    "docsplan/nfabi/plans/READINESS.md": "364023119A087FAEEE06D8CB5DF292840740C7A64BEAC7D3D4E77F2B7279C5F9",
+    "docsplan/nfabi/plans/TRACEABILITY.md": "DD7EA73793064BD1947B2E8C2FE502A99FE05C53BFC842CB03EF162C5876B93B",
+    "docsplan/nfabi/plans/manifests/ABI-005.json": "6BD48D7D715B0587F575DB7FFB7257641308C5C4014391FD1808F858FF80B6CE",
+    "docsplan/nfabi/plans/manifests/ABI-006.json": "1B84414FFD820A5F36C4E96F4C9DCE1FCE5053B7A48E2CC89A79ABCADA995749",
+    "docsplan/nfabi/guides/NFEABI-USAGE.md": "5EB49CCCBB7FDA663EE2E62D47DBCC6F77B340EB1B33A769CC873DC72A55BBFF",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/NFeABI/NFeABI.cs": "EBCE4EAEF46DC7BC1404653EB9209F27B874235E387BC42FA2987FA7770E9E12",
+    "source/Unimake.DFe.Test/NFeABI/Validacao/PublicApiTest.cs": "F7DD9E2B36FE413983D8A9A740C2D6FCA24121C353C2F6DC356764E143348324"
+  },
+  "commands": [
+    {
+      "command": "SHA-256 aggregate for normative source and schemas in Plan and Check",
+      "result": "PASS: 22 source files and 20 schemas; zero divergence",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-006/evidence/SOURCE-HASHES.md"
+    },
+    {
+      "command": "main DLL normal and INTEROP builds",
+      "result": "PASS: 0 errors; pre-existing warnings only",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-006/TESTS.md"
+    },
+    {
+      "command": "test project build and xUnit v3 deterministic NFeABI classes",
+      "result": "PASS: 71/71 deterministic tests",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-006/evidence/validation.txt"
+    },
+    {
+      "command": "public API and INTEROP reflection audit",
+      "result": "PASS: 64 exported types, 62 classes, 2 enums, 62 unique ProgIds",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-006/evidence/API-SURFACE.md"
+    },
+    {
+      "command": "independent critical review and complete diff review",
+      "result": "PASS after resolving two documentation/API findings",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-006/REVIEW.md"
+    },
+    {
+      "command": "pwsh -NoProfile -File .agents/skills/plan-linter/scripts/test-plan.ps1 -RepositoryRoot .",
+      "result": "PASS",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-006/evidence/validation.txt"
+    }
+  ],
+  "tests": {
+    "status": "PASS",
+    "executed": [
+      "source and schema SHA-256 reproduction",
+      "20/20 embedded schema byte comparison",
+      "13/13 NFeABI root coverage",
+      "main DLL normal and INTEROP builds",
+      "test project build",
+      "ServicosPublicadosTest 43/43",
+      "SerializacaoNFeABITest 3/3",
+      "EventosNFeABITest 9/9",
+      "SchemaFoundationTest 14/14",
+      "PublicApiTest 2/2",
+      "public API and INTEROP audit",
+      "independent critical review",
+      "plan linter and complete diff review"
+    ],
+    "not_executed": [
+      "real homologation status and authorization: already evidenced in ABI-005 and not repeated as probes",
+      "external product validation: excluded from this plan",
+      "full test suite: focused deterministic coverage is sufficient",
+      "release or package publication: outside ABI-006 scope"
+    ]
+  },
+  "decisions": ["DEC-004", "DEC-005"],
+  "models_used": [
+    { "part_id": "ABI-006-P01", "role": "planner", "profile": "DEEP", "model": "gpt-6-astra", "effort": "high", "context_id": "attempt-0001-main" },
+    { "part_id": "ABI-006-P02", "role": "executor", "profile": "BALANCED", "model": "gpt-5.6-sol", "effort": "medium", "context_id": "attempt-0001-main" },
+    { "part_id": "ABI-006-P03", "role": "reviewer", "profile": "INDEPENDENT_REVIEW", "model": "gpt-6-astra", "effort": "high", "context_id": "attempt-0001-independent-review" },
+    { "part_id": "ABI-006-P04", "role": "documenter", "profile": "ECONOMY", "model": "gpt-5.6-luna", "effort": "low", "context_id": "attempt-0001-main" }
+  ],
+  "not_executed": ["approval of ABI-006", "release/publish", "production endpoint", "external consumer work"],
+  "limitations": ["online fiscal operations were not repeated", "the post-build emitted the pre-existing *Undefined*Build.bat informational message without failing"],
+  "next_stage_started": false
+}

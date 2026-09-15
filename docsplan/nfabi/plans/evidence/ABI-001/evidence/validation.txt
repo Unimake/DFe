@@ -1,0 +1,9 @@
+ABI-001 path migration validation
+Timestamp: 2026-09-14T14:18:00-03:00
+Command: pwsh -NoProfile -File .agents/skills/plan-linter/scripts/test-plan.ps1 -RepositoryRoot .
+ExitCode: 0
+Output: Generated PDCA plan validation passed: 7 stages, prefix ABI, 7 manifests.
+PathMigration: PASS - 92 files moved from docs to docsplan/nfabi; no unresolved legacy path reference.
+IndependentReview: PASS - no material finding remaining.
+Snapshot: PASS - current dossier matches attempts/attempt-0003.
+Scope: PASS - planning-only change; ABI-002 remains PLANNED and not started.

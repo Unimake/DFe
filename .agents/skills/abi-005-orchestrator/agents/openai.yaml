@@ -1,0 +1,4 @@
+interface:
+  display_name: "ABI-005 Orchestrator"
+  short_description: "Executa somente ABI-005 e para no gate humano."
+  default_prompt: "Use $abi-005-orchestrator para executar somente ABI-005, registrar evidence e não iniciar a sucessora."

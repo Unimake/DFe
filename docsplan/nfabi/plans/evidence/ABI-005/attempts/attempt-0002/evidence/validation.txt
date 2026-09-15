@@ -1,0 +1,17 @@
+ABI-005 attempt-0002 - validation summary
+
+PASS source snapshot: 22/22, 0383F95D81140925C4EF91046C2D723CA9D94F477E138069F7202D79D9CCCAD8
+PASS schema snapshot: 20/20, BA44B39981C4DF3860A6BE9AA7C0739904D664377EABE963AB52AC8C2E74AE40
+PASS official Status WSDL: HTTP 200, SHA-256 33EEED91FD925E88C139E15C08B1CA135EA1A995C99FC1990ECD80F437EFCDAF
+PASS official Authorization WSDL: HTTP 200, SHA-256 B7A2BF6692DA4A2A5C199332D86AF45DF67A28C57A5C8F920160B326DDD813C8
+PASS main DLL build: 0 errors, 4 pre-existing warnings
+PASS INTEROP DLL build: 0 errors, 11 pre-existing warnings
+PASS test project build: 0 errors, 24 pre-existing warnings
+PASS ServicosPublicadosTest: 13/13
+PASS SerializacaoNFeABITest regression: 3/3
+PASS EventosNFeABITest regression: 9/9
+PASS SchemaFoundationTest regression: 14/14
+PASS control-character scan
+PASS independent critical review: no material finding remains
+PASS plan linter: 7 stages, ABI prefix, 7 manifests
+PASS final diff review: scope, hashes, controls, secrets and consistency

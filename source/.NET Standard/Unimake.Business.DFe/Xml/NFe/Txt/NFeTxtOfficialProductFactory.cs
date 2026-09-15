@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unimake.Business.DFe.Servicos;
 using DFeNFe = Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.NFe.Txt
@@ -142,11 +143,39 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private static DFeNFe.GIBSCBSMono NormalizarGIBSCBSMono(DFeNFe.GIBSCBSMono grupo)
         {
             if (grupo == null) return null;
-            grupo.GMonoPadrao = TemDados(grupo.GMonoPadrao) ? grupo.GMonoPadrao : null;
-            grupo.GMonoReten = TemDados(grupo.GMonoReten) ? grupo.GMonoReten : null;
-            grupo.GMonoRet = TemDados(grupo.GMonoRet) ? grupo.GMonoRet : null;
-            grupo.GMonoDif = TemDados(grupo.GMonoDif) ? grupo.GMonoDif : null;
-            return grupo.VTotIBSMonoItem <= 0 && grupo.VTotCBSMonoItem <= 0 && grupo.GMonoRet == null ? null : grupo;
+            if (grupo.VersaoLeiaute == VersaoLeiauteMonofasia.Legado)
+            {
+                grupo.GMonoPadrao = TemDados(grupo.GMonoPadrao) ? grupo.GMonoPadrao : null;
+                grupo.GMonoReten = TemDados(grupo.GMonoReten) ? grupo.GMonoReten : null;
+                grupo.GMonoRet = TemDados(grupo.GMonoRet) ? grupo.GMonoRet : null;
+                grupo.GMonoDif = TemDados(grupo.GMonoDif) ? grupo.GMonoDif : null;
+                return grupo.VTotIBSMonoItem <= 0 && grupo.VTotCBSMonoItem <= 0 &&
+                    grupo.GMonoPadrao == null && grupo.GMonoReten == null && grupo.GMonoRet == null && grupo.GMonoDif == null
+                    ? null
+                    : grupo;
+            }
+
+            if (grupo.GIBSMonoAdRem != null)
+            {
+                grupo.GIBSMonoAdRem.GMonoPadrao = TemDados(grupo.GIBSMonoAdRem.GMonoPadrao) ? grupo.GIBSMonoAdRem.GMonoPadrao : null;
+                grupo.GIBSMonoAdRem.GMonoReten = TemDados(grupo.GIBSMonoAdRem.GMonoReten) ? grupo.GIBSMonoAdRem.GMonoReten : null;
+                grupo.GIBSMonoAdRem.GMonoRet = TemDados(grupo.GIBSMonoAdRem.GMonoRet) ? grupo.GIBSMonoAdRem.GMonoRet : null;
+                if (grupo.GIBSMonoAdRem.GMonoPadrao == null && grupo.GIBSMonoAdRem.GMonoReten == null && grupo.GIBSMonoAdRem.GMonoRet == null && grupo.GIBSMonoAdRem.GPBioDiferenca == null)
+                {
+                    grupo.GIBSMonoAdRem = null;
+                }
+            }
+            if (grupo.GCBSMonoAdRem != null)
+            {
+                grupo.GCBSMonoAdRem.GMonoPadrao = TemDados(grupo.GCBSMonoAdRem.GMonoPadrao) ? grupo.GCBSMonoAdRem.GMonoPadrao : null;
+                grupo.GCBSMonoAdRem.GMonoReten = TemDados(grupo.GCBSMonoAdRem.GMonoReten) ? grupo.GCBSMonoAdRem.GMonoReten : null;
+                grupo.GCBSMonoAdRem.GMonoRet = TemDados(grupo.GCBSMonoAdRem.GMonoRet) ? grupo.GCBSMonoAdRem.GMonoRet : null;
+                if (grupo.GCBSMonoAdRem.GMonoPadrao == null && grupo.GCBSMonoAdRem.GMonoReten == null && grupo.GCBSMonoAdRem.GMonoRet == null && grupo.GCBSMonoAdRem.GPBioDiferenca == null)
+                {
+                    grupo.GCBSMonoAdRem = null;
+                }
+            }
+            return grupo.VTotIBSMonoItem <= 0 && grupo.VTotCBSMonoItem <= 0 && grupo.GIBSMonoAdRem == null && grupo.GIBSMonoAdValorem == null && grupo.GCBSMonoAdRem == null && grupo.GCBSMonoAdValorem == null ? null : grupo;
         }
 
         private static DFeNFe.GCredPresOper NormalizarGCredPresOper(DFeNFe.GCredPresOper grupo)
@@ -180,6 +209,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private static bool TemDados(DFeNFe.GTribCompraGov grupo) => grupo != null &&
             grupo.PAliqIBSUF + grupo.VTribIBSUF + grupo.PAliqIBSMun + grupo.VTribIBSMun + grupo.PAliqCBS + grupo.VTribCBS > 0;
 
+        private static bool TemDados(DFeNFe.GMonoPadraoIBSAdRem grupo) => grupo != null && grupo.QBCMono + grupo.AdRemIBS + grupo.VIBSMono > 0;
+        private static bool TemDados(DFeNFe.GMonoRetenIBSAdRem grupo) => grupo != null && grupo.QBCMonoReten + grupo.AdRemIBSReten + grupo.VIBSMonoReten > 0;
+        private static bool TemDados(DFeNFe.GMonoRetIBS grupo) => grupo != null && grupo.VIBSMonoRet > 0;
+        private static bool TemDados(DFeNFe.GMonoPadraoCBSAdRem grupo) => grupo != null && grupo.QBCMono + grupo.AdRemCBS + grupo.VCBSMono > 0;
+        private static bool TemDados(DFeNFe.GMonoRetenCBSAdRem grupo) => grupo != null && grupo.QBCMonoReten + grupo.AdRemCBSReten + grupo.VCBSMonoReten > 0;
+        private static bool TemDados(DFeNFe.GMonoRetCBS grupo) => grupo != null && grupo.VCBSMonoRet > 0;
         private static bool TemDados(DFeNFe.GMonoPadrao grupo) => grupo != null && grupo.QBCMono + grupo.AdRemIBS + grupo.AdRemCBS + grupo.VIBSMono + grupo.VCBSMono > 0;
         private static bool TemDados(DFeNFe.GMonoReten grupo) => grupo != null && grupo.QBCMonoReten + grupo.AdRemIBSReten + grupo.VIBSMonoReten + grupo.AdRemCBSReten + grupo.VCBSMonoReten > 0;
         private static bool TemDados(DFeNFe.GMonoRet grupo) => grupo != null && grupo.QBCMonoRet + grupo.AdRemIBSRet + grupo.VIBSMonoRet + grupo.AdRemCBSRet + grupo.VCBSMonoRet > 0;

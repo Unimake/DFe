@@ -14,7 +14,9 @@ using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.CIOT;
 using Xunit;
 using ConsultaServico = Unimake.Business.DFe.Servicos.CIOT.ConsultarCIOTGerado;
+using CancelamentoServico = Unimake.Business.DFe.Servicos.CIOT.CancelamentoOperacaoTransporte;
 using DeclaracaoServico = Unimake.Business.DFe.Servicos.CIOT.DeclaracaoOperacaoTransporte;
+using EncerramentoServico = Unimake.Business.DFe.Servicos.CIOT.EncerramentoOperacaoTransporte;
 
 namespace Unimake.DFe.Test.CIOT.Servicos
 {
@@ -25,7 +27,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
         public void ExecutarEnviaPostComTokenFornecidoENormalizaResult()
         {
             var transporte = new TransporteControlado();
-            transporte.AdicionarResposta("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126\",\"ProtocoloServico\":\"PROTO-POST\"}");
+            transporte.AdicionarResposta("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126/XXXX\",\"ProtocoloServico\":\"PROTO-POST\"}");
             var configuracao = CriarConfiguracaoEFrete();
             var servico = new DeclaracaoServico(LerXML<DeclaracaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\efrete-declaracao-carga-lotacao-completa.xml"), configuracao);
             var endpointEsperado = configuracao.RequestURI;
@@ -44,12 +46,14 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Single(notasFiscais);
             Assert.False(requisicao.UsaCertificado);
             Assert.Equal("992000000126", servico.Result.IdOperacaoTransporte);
+            Assert.Equal("XXXX", servico.Result.CodigoVerificador);
             Assert.Equal("110", servico.Result.Codigo);
             Assert.Equal("Dados inseridos com sucesso!", servico.Result.Mensagem);
             Assert.Single(servico.Result.Mensagens);
             Assert.Equal("110", servico.Result.Mensagens[0].Codigo);
             Assert.Equal("Dados inseridos com sucesso!", servico.Result.Mensagens[0].Descricao);
             Assert.Contains("<Mensagem>Dados inseridos com sucesso!</Mensagem><Mensagens><Mensagem><Codigo>110</Codigo><Descricao>Dados inseridos com sucesso!</Descricao></Mensagem></Mensagens>", servico.RetornoWSString);
+            Assert.Contains("<IdOperacaoTransporte>992000000126</IdOperacaoTransporte><CodigoVerificador>XXXX</CodigoVerificador>", servico.RetornoWSString);
             Assert.Equal("PROTO-POST", servico.Result.Protocolo);
         }
 
@@ -117,6 +121,56 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.NotNull(servico.Result.Temp);
             Assert.Equal("EF123", servico.Result.Codigo[0]);
             Assert.Equal("Operação rejeitada", servico.Result.Mensagem[0]);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void ExecutarNormalizaSucessoDoCancelamentoAteORetornoFinal()
+        {
+            var transporte = new TransporteControlado();
+            transporte.AdicionarResposta("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126\",\"Data\":\"2026-09-10T10:00:17-03:00\",\"Protocolo\":\"PROTO-CANCELAMENTO\",\"Versao\":1}");
+            var servico = new CancelamentoServico(new CancelamentoOperacaoTransporte
+            {
+                ProvedorCIOT = ProvedorCIOT.EFrete,
+                CodigoIdentificacaoOperacao = "992000000126/0237",
+                MotivoCancelamento = "CANCELAMENTO SINTETICO PARA TESTE"
+            }, CriarConfiguracaoEFrete());
+
+            using (ApiTransportExecutorFactory.Override(() => transporte))
+            {
+                servico.Executar();
+            }
+
+            Assert.Equal("992000000126", servico.Result.CodigoIdentificacaoOperacao);
+            Assert.Equal("PROTO-CANCELAMENTO", servico.Result.Protocolo);
+            Assert.Equal("110", servico.Result.Codigo);
+            Assert.Equal("Operação de transporte cancelada com sucesso.", servico.Result.Mensagem);
+            Assert.Contains("<Protocolo>PROTO-CANCELAMENTO</Protocolo><Codigo>110</Codigo><Mensagem>Operação de transporte cancelada com sucesso.</Mensagem>", servico.RetornoWSString);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void ExecutarNormalizaSucessoDoEncerramentoAteORetornoFinal()
+        {
+            var transporte = new TransporteControlado();
+            transporte.AdicionarResposta("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000127\",\"ProtocoloServico\":\"PROTO-ENCERRAMENTO\",\"Versao\":1}");
+            var servico = new EncerramentoServico(new EncerramentoOperacaoTransporte
+            {
+                ProvedorCIOT = ProvedorCIOT.EFrete,
+                CodigoIdentificacaoOperacao = "992000000127/0238"
+            }, CriarConfiguracaoEFrete());
+
+            using (ApiTransportExecutorFactory.Override(() => transporte))
+            {
+                servico.Executar();
+            }
+
+            Assert.Equal("992000000127", servico.Result.CodigoIdentificacaoOperacao);
+            Assert.Equal("PROTO-ENCERRAMENTO", servico.Result.Protocolo);
+            Assert.Equal("110", servico.Result.Codigo);
+            Assert.Equal("Operação de transporte encerrada com sucesso.", servico.Result.Mensagem);
+            Assert.DoesNotContain("<DataEncerramento>", servico.RetornoWSString);
+            Assert.Contains("<Protocolo>PROTO-ENCERRAMENTO</Protocolo><Codigo>110</Codigo><Mensagem>Operação de transporte encerrada com sucesso.</Mensagem>", servico.RetornoWSString);
         }
 
         [Fact]

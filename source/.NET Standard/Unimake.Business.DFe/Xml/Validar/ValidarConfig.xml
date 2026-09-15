@@ -2796,6 +2796,75 @@
 			</GrupoUrl>
 		</Servico>
 	</NFGas>
+	<!--NFeABI-->
+	<NFeABI>
+		<Servico tagRaiz="consStatServNFeABI" versao="1.00">
+			<Descricao>Consulta situação do serviço da nota fiscal eletrônica de alienação de bens imóveis</Descricao>
+			<SchemaArquivo>consStatServNFeABI_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>consStatServNFeABI</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.portalfiscal.inf.br/nfeabi</TargetNS>
+		</Servico>
+		<Servico tagRaiz="consSitNFeABI" versao="1.00">
+			<Descricao>Consulta situação da nota fiscal eletrônica de alienação de bens imóveis</Descricao>
+			<SchemaArquivo>consSitNFeABI_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>consSitNFeABI</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.portalfiscal.inf.br/nfeabi</TargetNS>
+		</Servico>
+		<Servico tagRaiz="evento" versao="1.00">
+			<Descricao>Recepção de eventos da NFeABI</Descricao>
+			<SchemaArquivo/>
+			<TagAssinatura>evento</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagEvento>evento</TagEvento>
+			<TagVersao>evento</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.portalfiscal.inf.br/nfeabi</TargetNS>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoNFeABI_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancNFeABI_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>112110</ID>
+					<SchemaArquivo>eventoNFeABI_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evPagParcelaNFeABI_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>112120</ID>
+					<SchemaArquivo>eventoNFeABI_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evApropCredIndNFeABI_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+		</Servico>
+		<Servico tagRaiz="NFeABI" versao="1.00">
+			<Descricao>Autorização síncrona da NFeABI</Descricao>
+			<SchemaArquivo>NFeABI_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura>NFeABI</TagAssinatura>
+			<TagAtributoID>infNFeABI</TagAtributoID>
+			<TagVersao>infNFeABI</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.portalfiscal.inf.br/nfeabi</TargetNS>
+		</Servico>
+	</NFeABI>
 	<!--BPe-->
 	<BPe>
 		<Servico tagRaiz="consStatServBPe" versao="1.00">
@@ -7235,7 +7304,7 @@
 			</Servico>
 			<Servico tagRaiz="pedidoStatusLote" versao="1.00">
 				<Descricao>Consulta Pedido Status Lote</Descricao>
-				<TipoServico>NFSeConsultarSituacaoLoteRps</TipoServico>
+				<TipoServico>NFSeObterCriticaLote</TipoServico>
 				<SchemaArquivo/>
 				<TagAssinatura>pedidoStatusLote</TagAssinatura>
 				<TagAtributoID>CNPJ</TagAtributoID>

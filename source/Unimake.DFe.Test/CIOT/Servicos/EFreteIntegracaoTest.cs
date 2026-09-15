@@ -197,9 +197,10 @@ namespace Unimake.DFe.Test.CIOT.Servicos
         {
             var declaracao = new RetDeclaracaoOperacaoTransporte().LerXML<RetDeclaracaoOperacaoTransporte>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126/XXXX\",\"ProtocoloServico\":\"PROTO-1\"}", Servico.CIOTDeclaracaoOperacaoTransporte));
             var consulta = new RetConsultarCIOTGerado().LerXML<RetConsultarCIOTGerado>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126/XXXX\",\"EstadoCiot\":\"EmViagem\",\"ProtocoloServico\":\"PROTO-2\"}", Servico.CIOTConsultarCIOTGerado));
-            var encerramento = new RetEncerramentoOperacaoTransporte().LerXML<RetEncerramentoOperacaoTransporte>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126\",\"Protocolo\":\"PROTO-3\"}", Servico.CIOTEncerramentoOperacaoTransporte));
+            var encerramento = new RetEncerramentoOperacaoTransporte().LerXML<RetEncerramentoOperacaoTransporte>(EFreteMapper.NormalizarRetorno("{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126\",\"ProtocoloServico\":\"PROTO-3\"}", Servico.CIOTEncerramentoOperacaoTransporte));
 
             Assert.Equal("992000000126", declaracao.IdOperacaoTransporte);
+            Assert.Equal("XXXX", declaracao.CodigoVerificador);
             Assert.Equal("110", declaracao.Codigo);
             Assert.Equal("Dados inseridos com sucesso!", declaracao.Mensagem);
             Assert.Single(declaracao.Mensagens);
@@ -207,32 +208,37 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Equal("Dados inseridos com sucesso!", declaracao.Mensagens[0].Descricao);
             Assert.Equal("PROTO-1", declaracao.Protocolo);
             Assert.Equal("EmViagem", consulta.EstadoCIOT);
+            Assert.Equal("XXXX", consulta.CodigoVerificador);
             Assert.Equal("PROTO-2", consulta.Protocolo);
             Assert.Equal("PROTO-3", encerramento.Protocolo);
             Assert.Equal("110", encerramento.Codigo);
+            Assert.Equal("Operação de transporte encerrada com sucesso.", encerramento.Mensagem);
             Assert.Equal(default, encerramento.DataEncerramento);
         }
 
-        [Fact]
+        [Theory]
+        [InlineData("992000000126")]
+        [InlineData("992000000126/XXXX")]
+        [InlineData("992000000126/4321")]
         [Trait("DFe", "CIOT")]
-        public void EnviaSomenteOsDozeCaracteresDoCodigoNasOperacoesEFrete()
+        public void PreservaCodigoInformadoNoCancelamentoEEncerramentoEFrete(string codigoIdentificacaoOperacao)
         {
             var configuracao = CriarConfiguracao();
             var cancelamento = new CancelamentoOperacaoTransporte
             {
-                CodigoIdentificacaoOperacao = "992000000126/XXXX",
+                CodigoIdentificacaoOperacao = codigoIdentificacaoOperacao,
                 MotivoCancelamento = "MOTIVO DE TESTE"
             };
             var encerramento = new EncerramentoOperacaoTransporte
             {
-                CodigoIdentificacaoOperacao = "992000000126/XXXX"
+                CodigoIdentificacaoOperacao = codigoIdentificacaoOperacao
             };
 
             var jsonCancelamento = JObject.Parse(EFreteMapper.CriarJson(cancelamento, Servico.CIOTCancelamentoOperacaoTransporte, configuracao));
             var jsonEncerramento = JObject.Parse(EFreteMapper.CriarJson(encerramento, Servico.CIOTEncerramentoOperacaoTransporte, configuracao));
 
-            Assert.Equal("992000000126", jsonCancelamento.Value<string>("CodigoIdentificacaoOperacao"));
-            Assert.Equal("992000000126", jsonEncerramento.Value<string>("CodigoIdentificacaoOperacao"));
+            Assert.Equal(codigoIdentificacaoOperacao, jsonCancelamento.Value<string>("CodigoIdentificacaoOperacao"));
+            Assert.Equal(codigoIdentificacaoOperacao, jsonEncerramento.Value<string>("CodigoIdentificacaoOperacao"));
         }
 
         [Fact]
@@ -246,6 +252,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
 
             Assert.Equal("PROTO-C", cancelamento.Protocolo);
             Assert.Equal("110", cancelamento.Codigo);
+            Assert.Equal("Operação de transporte cancelada com sucesso.", cancelamento.Mensagem);
             Assert.Equal(2026, cancelamento.DataCancelamento.Year);
             Assert.Equal(8, cancelamento.DataCancelamento.Month);
             Assert.Equal(12, cancelamento.DataCancelamento.Day);

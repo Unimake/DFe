@@ -43,6 +43,7 @@ namespace Unimake.DFe.Test.NFSe.Validacao
         [InlineData(PadraoNFSe.WEBFISCO, "<EnvNfe><prf>1</prf><usr>1</usr><ctr>1</ctr></EnvNfe>", "1.00", Servico.NFSeRecepcionarLoteRpsSincrono)]
         [InlineData(PadraoNFSe.INTERSOL, "<p:ConsultarNfseEnvio xmlns:p=\"http://www.abrasf.org.br/nfse.xsd\"><Prestador /></p:ConsultarNfseEnvio>", "1.00", Servico.NFSeConsultarNfse)]
         [InlineData(PadraoNFSe.INTERSOL, "<p:ConsultarNfseRpsEnvio xmlns:p=\"http://www.abrasf.org.br/nfse.xsd\"><IdentificacaoRps /></p:ConsultarNfseRpsEnvio>", "1.00", Servico.NFSeConsultarNfsePorRps)]
+        [InlineData(PadraoNFSe.GIF, "<pedidoStatusLote versao=\"1.00\"><CNPJ>06117473000150</CNPJ><cLote>8514</cLote></pedidoStatusLote>", "1.00", Servico.NFSeObterCriticaLote)]
         [InlineData(PadraoNFSe.METROPOLIS, "<ConsultarNfseEnvio><Prestador /></ConsultarNfseEnvio>", "1.00", Servico.NFSeConsultarNfse)]
         [InlineData(PadraoNFSe.METROPOLIS, "<ConsultarNfseRpsEnvio><IdentificacaoRps /></ConsultarNfseRpsEnvio>", "1.00", Servico.NFSeConsultarNfsePorRps)]
         [InlineData(PadraoNFSe.CONAM, "<Sdt_consultaprotocoloin xmlns=\"NFe\"><Protocolo>1</Protocolo></Sdt_consultaprotocoloin>", "4.00", Servico.NFSeConsultarNfsePorRps)]

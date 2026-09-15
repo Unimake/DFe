@@ -255,25 +255,44 @@
 						<CST>620</CST>
 						<cClassTrib>200032</cClassTrib>
 						<gIBSCBSMono>
-							<qBCMono>100.00</qBCMono>
-							<adRemIBS>0.5000</adRemIBS>
-							<adRemCBS>0.7500</adRemCBS>
-							<vIBSMono>50.00</vIBSMono>
-							<vCBSMono>75.00</vCBSMono>
-							<qBCMonoReten>50</qBCMonoReten>
-							<adRemIBSReten>0.2500</adRemIBSReten>
-							<vIBSMonoReten>12.50</vIBSMonoReten>
-							<adRemCBSReten>0.3750</adRemCBSReten>
-							<vCBSMonoReten>18.75</vCBSMonoReten>
-							<qBCMonoRet>30</qBCMonoRet>
-							<adRemIBSRet>0.2000</adRemIBSRet>
-							<vIBSMonoRet>6.00</vIBSMonoRet>
-							<adRemCBSRet>0.3000</adRemCBSRet>
-							<vCBSMonoRet>9.00</vCBSMonoRet>
-							<pDifIBS>1.5000</pDifIBS>
-							<vIBSMonoDif>3.00</vIBSMonoDif>
-							<pDifCBS>2.0000</pDifCBS>
-							<vCBSMonoDif>4.00</vCBSMonoDif>
+							<gIBSMonoAdRem>
+								<gMonoPadrao>
+									<qBCMono>100.0000</qBCMono>
+									<adRemIBS>0.5000</adRemIBS>
+									<vIBSMono>50.00</vIBSMono>
+								</gMonoPadrao>
+								<gMonoReten>
+									<qBCMonoReten>50.0000</qBCMonoReten>
+									<adRemIBSReten>0.2500</adRemIBSReten>
+									<vIBSMonoReten>12.50</vIBSMonoReten>
+								</gMonoReten>
+								<gMonoRet>
+									<vIBSMonoRet>6.00</vIBSMonoRet>
+								</gMonoRet>
+								<gpBioDiferenca>
+									<qBCBioComb>2.0000</qBCBioComb>
+									<vIBSDiferenca>1.00</vIBSDiferenca>
+								</gpBioDiferenca>
+							</gIBSMonoAdRem>
+							<gCBSMonoAdRem>
+								<gMonoPadrao>
+									<qBCMono>100.0000</qBCMono>
+									<adRemCBS>0.7500</adRemCBS>
+									<vCBSMono>75.00</vCBSMono>
+								</gMonoPadrao>
+								<gMonoReten>
+									<qBCMonoReten>50.0000</qBCMonoReten>
+									<adRemCBSReten>0.3750</adRemCBSReten>
+									<vCBSMonoReten>18.75</vCBSMonoReten>
+								</gMonoReten>
+								<gMonoRet>
+									<vCBSMonoRet>9.00</vCBSMonoRet>
+								</gMonoRet>
+								<gpBioDiferenca>
+									<qBCBioComb>2.0000</qBCBioComb>
+									<vCBSDiferenca>1.50</vCBSDiferenca>
+								</gpBioDiferenca>
+							</gCBSMonoAdRem>
 							<vTotIBSMonoItem>125.00</vTotIBSMonoItem>
 							<vTotCBSMonoItem>180.00</vTotCBSMonoItem>
 						</gIBSCBSMono>

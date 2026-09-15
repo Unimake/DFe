@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.08.16.1049</AssemblyVersion>
-		<FileVersion>2026.08.16.1049</FileVersion>
+		<AssemblyVersion>2026.09.08.1441</AssemblyVersion>
+		<FileVersion>2026.09.08.1441</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -343,6 +343,35 @@
 		<None Remove="Servicos\Config\NFCom\SP.xml" />
 		<None Remove="Servicos\Config\NFCom\SVRS.xml" />
 		<None Remove="Servicos\Config\NFCom\TO.xml" />
+		<None Remove="Servicos\Config\NFeABI\AC.xml" />
+		<None Remove="Servicos\Config\NFeABI\AL.xml" />
+		<None Remove="Servicos\Config\NFeABI\AM.xml" />
+		<None Remove="Servicos\Config\NFeABI\AP.xml" />
+		<None Remove="Servicos\Config\NFeABI\BA.xml" />
+		<None Remove="Servicos\Config\NFeABI\CE.xml" />
+		<None Remove="Servicos\Config\NFeABI\Config.xml" />
+		<None Remove="Servicos\Config\NFeABI\DF.xml" />
+		<None Remove="Servicos\Config\NFeABI\ES.xml" />
+		<None Remove="Servicos\Config\NFeABI\GO.xml" />
+		<None Remove="Servicos\Config\NFeABI\MA.xml" />
+		<None Remove="Servicos\Config\NFeABI\MG.xml" />
+		<None Remove="Servicos\Config\NFeABI\MS.xml" />
+		<None Remove="Servicos\Config\NFeABI\MT.xml" />
+		<None Remove="Servicos\Config\NFeABI\PA.xml" />
+		<None Remove="Servicos\Config\NFeABI\PB.xml" />
+		<None Remove="Servicos\Config\NFeABI\PE.xml" />
+		<None Remove="Servicos\Config\NFeABI\PI.xml" />
+		<None Remove="Servicos\Config\NFeABI\PR.xml" />
+		<None Remove="Servicos\Config\NFeABI\RJ.xml" />
+		<None Remove="Servicos\Config\NFeABI\RN.xml" />
+		<None Remove="Servicos\Config\NFeABI\RO.xml" />
+		<None Remove="Servicos\Config\NFeABI\RR.xml" />
+		<None Remove="Servicos\Config\NFeABI\RS.xml" />
+		<None Remove="Servicos\Config\NFeABI\SC.xml" />
+		<None Remove="Servicos\Config\NFeABI\SE.xml" />
+		<None Remove="Servicos\Config\NFeABI\SP.xml" />
+		<None Remove="Servicos\Config\NFeABI\SVRS.xml" />
+		<None Remove="Servicos\Config\NFeABI\TO.xml" />
 		<None Remove="Servicos\Config\NFGas\AC.xml" />
 		<None Remove="Servicos\Config\NFGas\AL.xml" />
 		<None Remove="Servicos\Config\NFGas\AM.xml" />
@@ -1209,6 +1238,14 @@
 		<None Remove="Xml\Schemas\NFCom\xmldsig-core-schema_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFe\110150_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\DFeTiposBasicos_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\DFeTiposBasicos_v1.00_monofasia_legado.xsd" />
+		<None Remove="Xml\Schemas\NFe\consReciNFe_v4.00_monofasia_legado.xsd" />
+		<None Remove="Xml\Schemas\NFe\enviNFe_v4.00_monofasia_legado.xsd" />
+		<None Remove="Xml\Schemas\NFe\leiauteNFe_v4.00_monofasia_legado.xsd" />
+		<None Remove="Xml\Schemas\NFe\nfe_v4.00_monofasia_legado.xsd" />
+		<None Remove="Xml\Schemas\NFe\procNFe_v4.00_monofasia_legado.xsd" />
+		<None Remove="Xml\Schemas\NFe\retConsReciNFe_v4.00_monofasia_legado.xsd" />
+		<None Remove="Xml\Schemas\NFe\retEnviNFe_v4.00_monofasia_legado.xsd" />
 		<None Remove="Xml\Schemas\NFe\distDFeInt_v1.35.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110001_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110130_v1.00.xsd" />
@@ -1263,6 +1300,26 @@
 		<None Remove="Xml\Schemas\NFGas\retNFGas_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\tiposGeralNFGas_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFGas\xmldsig-core-schema_v1.01.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\consSitNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\consSitNFeABITiposBasico_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\consStatServNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\consStatServNFeABITiposBasico_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\DFeTiposBasicos_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\evApropCredIndNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\evCancNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\eventoNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\eventoNFeABITiposBasico_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\evPagParcelaNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\NFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\nfeabiTiposBasico_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\procEventoNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\procNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\retConsSitNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\retConsStatServNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\retEventoNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\retNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\tiposGeralNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\xmldsig-core-schema_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\nfse v2 03.xsd" />
@@ -1766,6 +1823,35 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\AC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\AL.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\AM.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\AP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\BA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\CE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\Config.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\DF.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\ES.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\GO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\MA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\MG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\MS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\MT.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\PA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\PB.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\PE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\PI.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\PR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\RJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\RN.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\RO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\RR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\RS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\SC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\SE.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\SP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\SVRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFeABI\TO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFGas\AC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFGas\AL.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFGas\AM.xml" />
@@ -2631,6 +2717,14 @@
 		<EmbeddedResource Include="Xml\Schemas\NFCom\xmldsig-core-schema_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\110150_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\DFeTiposBasicos_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\DFeTiposBasicos_v1.00_monofasia_legado.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\consReciNFe_v4.00_monofasia_legado.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\enviNFe_v4.00_monofasia_legado.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteNFe_v4.00_monofasia_legado.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\nfe_v4.00_monofasia_legado.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procNFe_v4.00_monofasia_legado.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retConsReciNFe_v4.00_monofasia_legado.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEnviNFe_v4.00_monofasia_legado.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\e110001_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\e110192_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\e110193_v1.00.xsd" />
@@ -2678,6 +2772,26 @@
 		<EmbeddedResource Include="Xml\Schemas\NFGas\retNFGas_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\tiposGeralNFGas_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFGas\xmldsig-core-schema_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\consSitNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\consSitNFeABITiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\consStatServNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\consStatServNFeABITiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\DFeTiposBasicos_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\evApropCredIndNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\evCancNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\eventoNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\eventoNFeABITiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\evPagParcelaNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\NFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\nfeabiTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\procEventoNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\procNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\retConsSitNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\retConsStatServNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\retEventoNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\retNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\tiposGeralNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\xmldsig-core-schema_v1.01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\nfse v2 03.xsd" />
@@ -3841,9 +3955,9 @@
 		<PackageReference Include="System.Net.Http.Json" Version="10.0.11" />
 		<PackageReference Include="System.Net.Http.WinHttpHandler" Version="10.0.11" GeneratePathProperty="true" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.11" />
-		<PackageReference Include="Unimake.Cryptography" Version="20260803.1649.49" />
-		<PackageReference Include="Unimake.Extensions" Version="20260803.1649.49" />
-		<PackageReference Include="Unimake.Utils" Version="20260803.1649.49" />
+		<PackageReference Include="Unimake.Cryptography" Version="20260826.2146.14" />
+		<PackageReference Include="Unimake.Extensions" Version="20260826.2146.14" />
+		<PackageReference Include="Unimake.Utils" Version="20260826.2146.14" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="$(PkgSystem_Net_Http_WinHttpHandler)\lib\net462\System.Net.Http.WinHttpHandler.dll" Link="System.Net.Http.WinHttpHandler.dll" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" Pack="false" Visible="false" />

@@ -1,0 +1,22 @@
+ABI-006 attempt-0001 - validação final
+
+Fonte normativa Plan/Check: PASS, 22/22, 0383F95D81140925C4EF91046C2D723CA9D94F477E138069F7202D79D9CCCAD8
+Schemas Plan/Check: PASS, 20/20, BA44B39981C4DF3860A6BE9AA7C0739904D664377EABE963AB52AC8C2E74AE40
+Schemas incorporados: PASS, 20/20 byte a byte
+Raízes XML NFeABI: PASS, 13/13; XMLDSig comum reutilizado
+Build DLL normal: PASS, 0 erros, 4 avisos preexistentes
+Build DLL INTEROP: PASS, 0 erros, 11 avisos preexistentes
+Build de testes: PASS, 0 erros, 28 avisos preexistentes
+ServicosPublicadosTest: PASS, 43/43
+SerializacaoNFeABITest: PASS, 3/3
+EventosNFeABITest: PASS, 9/9
+SchemaFoundationTest: PASS, 14/14
+PublicApiTest: PASS, 2/2
+Total determinístico: PASS, 71/71
+API/INTEROP: PASS, 64 tipos, 62 classes, 2 enums, zero ProgId duplicado
+Produção e transportes não publicados: ausentes
+Revisão independente: PASS após correções
+JSON/XML, controles, segredos, links e escopo: PASS
+git diff --check: PASS
+Plan linter: PASS, 7 etapas, prefixo ABI e 7 manifests
+Snapshot imutável: PASS

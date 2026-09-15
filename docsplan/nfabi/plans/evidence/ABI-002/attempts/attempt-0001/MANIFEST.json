@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "stage_id": "ABI-002",
+  "state": "DELIVERED_FOR_REVIEW",
+  "attempt_id": "attempt-0001",
+  "attempt_archive": "docsplan/nfabi/plans/evidence/ABI-002/attempts/attempt-0001",
+  "base_state": "ABI-001 approved by DEV; product tree without NFeABI support",
+  "started_at": "2026-09-14T14:30:00-03:00",
+  "finished_at": "2026-09-14T14:51:00-03:00",
+  "files": [
+    "docsplan/nfabi/architecture/INTEGRATION-CATALOG.md",
+    "docsplan/nfabi/planning/PROJECT-BRIEF.md",
+    "docsplan/nfabi/plans/PDCA.md",
+    "docsplan/nfabi/plans/READINESS.md",
+    "docsplan/nfabi/plans/STAGE-ID-MAP.md",
+    "docsplan/nfabi/plans/TRACEABILITY.md",
+    "docsplan/nfabi/plans/manifests/ABI-001.json",
+    "docsplan/nfabi/plans/manifests/ABI-002.json",
+    "source/.NET Standard/Unimake.Business.DFe/Servicos/Enums/Enums.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Unimake.Business.DFe.csproj",
+    "source/.NET Standard/Unimake.Business.DFe/Utility/XMLUtility.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Validar/Extractors/IsoladorFactory.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Validar/ValidadorEstruturalXML.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Validar/ValidarConfig.xml",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Validar/ValidarEstruturaXML.cs",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/consSitNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/consSitNFeABITiposBasico_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/consStatServNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/consStatServNFeABITiposBasico_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/DFeTiposBasicos_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/evApropCredIndNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/evCancNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/eventoNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/eventoNFeABITiposBasico_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/evPagParcelaNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/NFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/nfeabiTiposBasico_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/procEventoNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/procNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/retConsSitNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/retConsStatServNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/retEventoNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/retNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/tiposGeralNFeABI_v1.00.xsd",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/xmldsig-core-schema_v1.01.xsd",
+    "source/Unimake.DFe.Test/NFeABI/Resources/NFeABI-minima.xml",
+    "source/Unimake.DFe.Test/NFeABI/Resources/consSitNFeABI-valido.xml",
+    "source/Unimake.DFe.Test/NFeABI/Resources/consStatServNFeABI-valido.xml",
+    "source/Unimake.DFe.Test/NFeABI/Resources/eventoNFeABI-cancelamento-valido.xml",
+    "source/Unimake.DFe.Test/NFeABI/Validacao/SchemaFoundationTest.cs"
+  ],
+  "hashes_sha256": {
+    "docsplan/nfabi/architecture/INTEGRATION-CATALOG.md": "D9D8B3B4712A8D8B575370DEAD83641C7A1FF264AB0C74F4372C4ECB6896C723",
+    "docsplan/nfabi/planning/PROJECT-BRIEF.md": "EFBEDC2383D85FF42A415B9F07A60084FF4D52459527EFFAE112EFE223CC86EA",
+    "docsplan/nfabi/plans/PDCA.md": "55A499A50C62761DA737F820B032E6FA254AD2F096B7638ABB32D815B3F1C10C",
+    "docsplan/nfabi/plans/READINESS.md": "7B3298DCA43EEEDAB7E7C1E5D43CAB23781923A61DCA0AF7551BBB2A2D0FF2BD",
+    "docsplan/nfabi/plans/STAGE-ID-MAP.md": "860422DAD7588BEC9DECAD8338040E636EBD2A4E8B7B6C8AA1A01CEED2F9D443",
+    "docsplan/nfabi/plans/TRACEABILITY.md": "8ACE3DB41B8F8007189652EE5764547AD9C60755F37ABC866A8A1CEBD0F2114C",
+    "docsplan/nfabi/plans/manifests/ABI-001.json": "BAC73FB331149056BA9C00BC0A1E3FC0EEAAF07422078036D7EF68B4BA75649F",
+    "docsplan/nfabi/plans/manifests/ABI-002.json": "77BBBE7E5EA6CACE95EEF28D4882711C2FE2A61B59EE9AB899D38E34C2B1BA6A",
+    "source/.NET Standard/Unimake.Business.DFe/Servicos/Enums/Enums.cs": "60FF39CB81D73DB52C3821A714D21BBA802E9196C9B78069F3A05319B237FA1A",
+    "source/.NET Standard/Unimake.Business.DFe/Unimake.Business.DFe.csproj": "0CA168A66FFA5423004A9B87FF47E25107EA5AD369078EEE0A1C9AA14FA88C96",
+    "source/.NET Standard/Unimake.Business.DFe/Utility/XMLUtility.cs": "FDDEB39A656ED67B3596270999C20BA06E64DD2B8EA98AE6ECB2FC20B17BF2A7",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Validar/Extractors/IsoladorFactory.cs": "FF02EBCA6A99540360839A4A4E08D532643C8EB977FEC631ADFD4558090F996A",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Validar/ValidadorEstruturalXML.cs": "5AD9B99ABAE57DF12899D3487B60AC7E209065C818D550B775CBDFA44F4E8C30",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Validar/ValidarConfig.xml": "2E78777154692BBFB525FA36DDC7F441306B2C31DC3CC0FDB9D5A3594E9EE525",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Validar/ValidarEstruturaXML.cs": "7BD5C101F6405A87437B6D6BFD833D19F7BCCE84DB98D574979B0B04A63D8E39",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/consSitNFeABI_v1.00.xsd": "6611DC4A6333F39EF1E61F905DD9FA19E309AEA37CFA7DE3CC53D45ECC670032",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/consSitNFeABITiposBasico_v1.00.xsd": "0E29539082A04EE0B40202C53FCBB5C8CDD9754A13B9732F7FEE20F7FA5B9E59",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/consStatServNFeABI_v1.00.xsd": "88567CECF6DF4C169CBFF9036AA0C512A18912E50C46A2AA8E8E9565F1765300",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/consStatServNFeABITiposBasico_v1.00.xsd": "C13885F649BF5BDB01D91D10F131C0DFDB38178B5891C238FE1794D8B681D03D",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/DFeTiposBasicos_v1.00.xsd": "9CF7D0E4A3B794CD3CB0DFB4399347B913B427DC9E4B31EE9ECD790F232F32F8",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/evApropCredIndNFeABI_v1.00.xsd": "5542667CAA8206CFFA29B42EC644F11EBF5C090AE122521DBC2D8B768CAF8825",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/evCancNFeABI_v1.00.xsd": "F3E4DA62FF10425BAB6E932A36436BA097199E96B9FEDB1F9BE82DF52DCBE86C",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/eventoNFeABI_v1.00.xsd": "54F02493FAAF653828CC8FCFA351C7EA7862DD86DE948FEBEA9DCEDE2CD7DB63",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/eventoNFeABITiposBasico_v1.00.xsd": "5E4DD59C5D9337C96C4C44D10FE6D880D671374BAAE016191FCA0D70D89509E0",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/evPagParcelaNFeABI_v1.00.xsd": "76334F673F8A567BE6ABC733A73FCB03844AF88768001BEF4C13E0770B74E9A6",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/NFeABI_v1.00.xsd": "C530C1FA61DB55A2885053679C0F1DD2D74C55C49CF3BDDEF68DD5B2F694F0CE",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/nfeabiTiposBasico_v1.00.xsd": "0B7B60388129F7BE2EF1789B1BB43520B8E8D091B3A4582E50617BD5235A7B87",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/procEventoNFeABI_v1.00.xsd": "F6D7BAF8F1C96F532EAAE90FD21B2A6AFF7FD0ADE369A33C70D1EDE603346C18",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/procNFeABI_v1.00.xsd": "F7538FD1E1D904F931B7ABE4C96E33FE52B4EBD63C32D96A259725347CB4C73E",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/retConsSitNFeABI_v1.00.xsd": "0C5619CF4EFE3A1C074915BE32B36FB65C2CBD80AD2DCA7A76894630BF2477C6",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/retConsStatServNFeABI_v1.00.xsd": "32276CC32EBE7A67FC090CADC186FB256CDA436F90D83C05B7168C5F198E2332",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/retEventoNFeABI_v1.00.xsd": "D9576BD933A1DC54122F026DDDD77D8B42B96817AF85A939DCED81E7E4BF3833",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/retNFeABI_v1.00.xsd": "78E5526F4D0317CCEB5B93D013E7DEA76BA2F7C80207405AEF23459BFDB59D37",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/tiposGeralNFeABI_v1.00.xsd": "8DADA493EC1C88B3D91B51A31C92AB0033C411BF4D2DE763680A41B6A51F5D15",
+    "source/.NET Standard/Unimake.Business.DFe/Xml/Schemas/NFeABI/xmldsig-core-schema_v1.01.xsd": "8CE2A385B593C85ACF09CB03521F9E730DAD2B2E6A5D02CC6F5B688CA94CE230",
+    "source/Unimake.DFe.Test/NFeABI/Resources/NFeABI-minima.xml": "153510525B0F58B3DCDDAEF0A539717504E20FE78F344DFCC2FDAC4C06D14066",
+    "source/Unimake.DFe.Test/NFeABI/Resources/consSitNFeABI-valido.xml": "CA95C61CC23F87BFEEFF4E03A230222218D14CF50D3AF994246C3998E3C567D7",
+    "source/Unimake.DFe.Test/NFeABI/Resources/consStatServNFeABI-valido.xml": "55809495B76BFEC445F709E662DA3DD9CA8E551031403319DC40E787C3B7A7D3",
+    "source/Unimake.DFe.Test/NFeABI/Resources/eventoNFeABI-cancelamento-valido.xml": "CC0562B248E9DBA9FBC2E4DEF172A6BB3AD41372B2A38B556DD759D208A820F6",
+    "source/Unimake.DFe.Test/NFeABI/Validacao/SchemaFoundationTest.cs": "AB68F7ED43EA2D01054E786906CA08CD466DF5F3144270C88F00C64B99B0D766"
+  },
+  "commands": [
+    {
+      "command": "SHA-256 aggregate, XML parse and byte comparison for the local normative source",
+      "result": "PASS: 22 source files, 20 schemas, zero divergence, 20/20 byte-identical",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-002/evidence/SOURCE-HASHES.md"
+    },
+    {
+      "command": "dotnet build source/.NET Standard/Unimake.Business.DFe/Unimake.Business.DFe.csproj --no-restore",
+      "result": "PASS: 0 errors, 4 pre-existing obsolete warnings",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-002/TESTS.md"
+    },
+    {
+      "command": "dotnet build source/Unimake.DFe.Test/Unimake.DFe.Test.csproj --no-restore",
+      "result": "PASS: 0 errors",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-002/TESTS.md"
+    },
+    {
+      "command": "xUnit v3 focused ABI-002 and regression classes",
+      "result": "PASS: ABI-002 14/14; regressions 3/3, 11/11 and 14/14",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-002/evidence/validation.txt"
+    },
+    {
+      "command": "pwsh -NoProfile -File .agents/skills/plan-linter/scripts/test-plan.ps1 -RepositoryRoot .",
+      "result": "PASS: docsplan/nfabi, 7 stages, ABI prefix, 7 manifests",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-002/evidence/validation.txt"
+    },
+    {
+      "command": "git diff --check and complete diff review",
+      "result": "PASS: scope and consistency reviewed; no material finding remains",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-002/REVIEW.md"
+    }
+  ],
+  "tests": {
+    "status": "PASS",
+    "executed": [
+      "source and schema SHA-256 reproduction",
+      "20 XSD byte comparison, parse and independent compilation",
+      "main DLL build",
+      "test project build",
+      "SchemaFoundationTest",
+      "ValidarSchemaTest",
+      "MonofasiaTest",
+      "TipoXMLTest",
+      "independent critical review",
+      "plan linter",
+      "complete diff review"
+    ],
+    "not_executed": [
+      "online fiscal smoke: outside ABI-002",
+      "external consumer validation: excluded from the plan",
+      "full test suite: focused deterministic coverage is sufficient for this foundation"
+    ]
+  },
+  "decisions": [
+    "DEC-001",
+    "DEC-004"
+  ],
+  "models_used": [
+    {
+      "part_id": "ABI-002-P01",
+      "role": "planner",
+      "profile": "DEEP",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0001-main"
+    },
+    {
+      "part_id": "ABI-002-P02",
+      "role": "executor",
+      "profile": "BALANCED",
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "context_id": "attempt-0001-executor"
+    },
+    {
+      "part_id": "ABI-002-P03",
+      "role": "reviewer",
+      "profile": "INDEPENDENT_REVIEW",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0001-independent-review"
+    },
+    {
+      "part_id": "ABI-002-P04",
+      "role": "documenter",
+      "profile": "ECONOMY",
+      "model": "gpt-5.6-luna",
+      "effort": "low",
+      "context_id": "attempt-0001-documenter"
+    }
+  ],
+  "not_executed": [
+    "approval of ABI-002",
+    "start of ABI-003",
+    "complete XML object model",
+    "remote transport or endpoints",
+    "changes or tests in an external consumer product"
+  ],
+  "limitations": [
+    "no fiscal endpoint was called",
+    "the post-build emitted the pre-existing *Undefined*Build.bat informational message without failing"
+  ],
+  "next_stage_started": false
+}

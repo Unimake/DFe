@@ -1,0 +1,8 @@
+ABI-001 validation
+Timestamp: 2026-09-14T13:46:31-03:00
+Command: pwsh -NoProfile -File .agents/skills/plan-linter/scripts/test-plan.ps1 -RepositoryRoot .
+ExitCode: 0
+Output: Generated PDCA plan validation passed: 7 stages, prefix ABI, 7 manifests.
+IndependentReview: PASS - no material finding remaining.
+Snapshot: PASS - current dossier matches attempts/attempt-0001.
+Scope: PASS - planning artifacts only; ABI-002 remains PLANNED and not started.

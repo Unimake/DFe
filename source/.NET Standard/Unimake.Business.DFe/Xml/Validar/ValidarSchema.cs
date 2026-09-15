@@ -20,6 +20,16 @@ namespace Unimake.Business.DFe
 #endif
     public class ValidarSchema
     {
+        private static readonly HashSet<string> SchemasNFeComLeiaute = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "nfe_v4.00.xsd",
+            "enviNFe_v4.00.xsd",
+            "procNFe_v4.00.xsd",
+            "consReciNFe_v4.00.xsd",
+            "retConsReciNFe_v4.00.xsd",
+            "retEnviNFe_v4.00.xsd"
+        };
+
         private static readonly Lazy<HashSet<string>> Recursos =
             new Lazy<HashSet<string>>(
                 () => new HashSet<string>(
@@ -31,6 +41,54 @@ namespace Unimake.Business.DFe
         /// Erros ocorridos na validação
         /// </summary>
         private string ErroValidacao { get; set; }
+
+        private static string SelecionarSchemaMonofasia(XmlDocument conteudoXML, string arqSchema)
+        {
+            var nomeSchema = SchemasNFeComLeiaute.FirstOrDefault(x => arqSchema.EndsWith(x, StringComparison.OrdinalIgnoreCase));
+            if (nomeSchema == null)
+            {
+                return arqSchema;
+            }
+
+            var temGrupoLegado = false;
+            var temGrupoAtual = false;
+            var grupos = conteudoXML.GetElementsByTagName("gIBSCBSMono", "http://www.portalfiscal.inf.br/nfe");
+            foreach (XmlNode grupo in grupos)
+            {
+                foreach (XmlNode filho in grupo.ChildNodes)
+                {
+                    switch (filho.LocalName)
+                    {
+                        case "gMonoPadrao":
+                        case "gMonoReten":
+                        case "gMonoRet":
+                        case "gMonoDif":
+                            temGrupoLegado = true;
+                            break;
+
+                        case "gIBSMonoAdRem":
+                        case "gIBSMonoAdValorem":
+                        case "gCBSMonoAdRem":
+                        case "gCBSMonoAdValorem":
+                            temGrupoAtual = true;
+                            break;
+                    }
+                }
+            }
+
+            if (temGrupoLegado && temGrupoAtual)
+            {
+                throw new InvalidOperationException("O grupo gIBSCBSMono não pode misturar grupos do leiaute legado com grupos do leiaute atual.");
+            }
+
+            if (!temGrupoLegado)
+            {
+                return arqSchema;
+            }
+
+            var nomeLegado = Path.GetFileNameWithoutExtension(nomeSchema) + "_monofasia_legado.xsd";
+            return arqSchema.Substring(0, arqSchema.Length - nomeSchema.Length) + nomeLegado;
+        }
 
         /// <summary>
         /// Extrai recursos (XSD) da DLL para efetuar a validação do XML, resolvendo recursivamente todos os includes/imports.
@@ -373,6 +431,8 @@ namespace Unimake.Business.DFe
             Success = true;
             ErrorCode = 0;
             ErrorMessage = "";
+
+            arqSchema = SelecionarSchemaMonofasia(conteudoXML, arqSchema);
 
             //if (padraoNFSe == Servicos.PadraoNFSe.None)
             //{

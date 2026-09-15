@@ -17,7 +17,8 @@ Leia este arquivo quando a manutenção atingir configuração, tarefas ou rotea
 - As tarefas CIOT existentes reconhecem autorização/sucesso pelo contrato ANTT, inclusive `Codigo == "110"`.
 - Mantenha essa regra genérica. A DLL deve normalizar um sucesso eFrete para `Codigo=110`, mensagem e grupo de mensagens compatíveis.
 - Não adicione ramificações eFrete nas tarefas para interpretar JSON, ausência de código ou identificadores com `/XXXX`.
-- O CIOT retornado pela DLL deve ter 12 caracteres válidos para nome de arquivo e para cancelamento/encerramento.
+- O CIOT retornado pela DLL deve manter os 12 caracteres na propriedade de identificação e expor `XXXX` ou o código definitivo separadamente em `CodigoVerificador`.
+- Para obter o PDF, o consumidor compõe `CIOT/CodigoVerificador`; cancelamento e encerramento preservam o formato informado no XML eFrete.
 
 ## Arquivos e serviços exclusivos
 

@@ -3,6 +3,7 @@ using System;
 using System.Runtime.InteropServices;
 #endif
 using Unimake.Business.DFe.Xml.NFe.Txt;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -24,12 +25,23 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Resultado com os XMLs produzidos ou a mensagem de erro de compatibilidade.</returns>
         public NFeTxtConversaoResultado Converter(string caminhoArquivo)
         {
+            return Converter(caminhoArquivo, VersaoLeiauteMonofasia.Legado);
+        }
+
+        /// <summary>
+        /// Converte todas as NFe ou NFCe presentes no arquivo TXT informado usando a versão escolhida do leiaute monofásico.
+        /// </summary>
+        /// <param name="caminhoArquivo">Caminho completo do arquivo TXT de origem.</param>
+        /// <param name="versaoLeiauteMonofasia">Versão do leiaute dos grupos de tributação monofásica.</param>
+        /// <returns>Resultado com os XMLs produzidos ou a mensagem de erro de compatibilidade.</returns>
+        public NFeTxtConversaoResultado Converter(string caminhoArquivo, VersaoLeiauteMonofasia versaoLeiauteMonofasia)
+        {
             if (string.IsNullOrWhiteSpace(caminhoArquivo))
             {
                 throw new ArgumentException("O caminho do arquivo TXT deve ser informado.", nameof(caminhoArquivo));
             }
 
-            return new NFeTxtConversionEngine().Converter(caminhoArquivo);
+            return new NFeTxtConversionEngine(versaoLeiauteMonofasia).Converter(caminhoArquivo);
         }
 
         /// <summary>

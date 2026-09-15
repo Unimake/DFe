@@ -53,13 +53,19 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
             var semProvedor = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace("  <ProvedorCIOT>EFrete</ProvedorCIOT>\r\n", string.Empty).Replace("  <ProvedorCIOT>EFrete</ProvedorCIOT>\n", string.Empty);
             var antt = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace(">EFrete<", ">ANTT<");
             var desconhecido = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace(">EFrete<", ">OUTRO<");
-            var codigoVazio = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace(">992000000126<", "><");
+            var codigoVazio = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace(">992000000126/4321<", "><");
+            var codigoSemVerificador = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace("992000000126/4321", "992000000126");
+            var codigoProvisorio = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace("992000000126/4321", "992000000126/XXXX");
+            var codigoInvalido = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf.xml")).Replace("992000000126/4321", "992000000126/ABCD");
             var retornoInvalido = File.ReadAllText(Caminho("efrete-ret-obter-operacao-transporte-pdf.xml")).Replace("JVBERi0xLjQK", "%%%INVALIDO%%%");
 
             ValidarSchema(Xml(semProvedor), false);
             ValidarSchema(Xml(antt), false);
             ValidarSchema(Xml(desconhecido), false);
             ValidarSchema(Xml(codigoVazio), false);
+            ValidarSchema(Xml(codigoSemVerificador), false);
+            ValidarSchema(Xml(codigoProvisorio), true);
+            ValidarSchema(Xml(codigoInvalido), false);
             ValidarSchema(Xml(retornoInvalido), false);
         }
 
@@ -71,7 +77,7 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
             var configuracao = ConfiguracaoEFrete();
             var json = JObject.Parse(EFreteMapper.CriarJson(envio, Servico.CIOTObterOperacaoTransportePdf, configuracao));
 
-            Assert.Equal("992000000126", json.Value<string>("CodigoIdentificacaoOperacao"));
+            Assert.Equal("992000000126/4321", json.Value<string>("CodigoIdentificacaoOperacao"));
             Assert.Equal("VIAGEM-TESTE-001", json.Value<string>("DocumentoViagem"));
             Assert.Equal(1, json.Value<int>("Versao"));
             Assert.Equal("INTEGRADOR-TESTE", json.Value<string>("Integrador"));
@@ -81,6 +87,18 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
             new ServicoPdf(envio, configuracao);
             Assert.Equal("get", configuracao.MetodoAPI);
             Assert.EndsWith("/services/Pef/ObterOperacaoTransportePdf", configuracao.RequestURI, StringComparison.OrdinalIgnoreCase);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void RecusaCodigoSemVerificadorAntesDoTransporte()
+        {
+            var xml = File.ReadAllText(Caminho("efrete-obter-operacao-transporte-pdf-sem-viagem.xml"))
+                .Replace("992000000126/XXXX", "992000000126");
+
+            var excecao = Assert.Throws<ValidarXMLException>(() => new ServicoPdf(xml, ConfiguracaoEFrete()));
+
+            Assert.Contains("CodigoIdentificacaoOperacao", excecao.Message);
         }
 
         [Fact]

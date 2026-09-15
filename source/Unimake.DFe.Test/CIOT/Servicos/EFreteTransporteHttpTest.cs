@@ -291,7 +291,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
 
                     var requisicao = Assert.Single(await servidor);
                     Assert.Equal("GET", requisicao.Metodo);
-                    Assert.Contains("\"CodigoIdentificacaoOperacao\":\"992000000126\"", requisicao.Corpo);
+                    Assert.Contains("\"CodigoIdentificacaoOperacao\":\"992000000126/4321\"", requisicao.Corpo);
                     Assert.Contains("\"DocumentoViagem\":\"VIAGEM-TESTE-001\"", requisicao.Corpo);
                     Assert.Contains("\"Token\":\"TOKEN-LOCAL\"", requisicao.Corpo);
                     Assert.DoesNotContain("ProvedorCIOT", requisicao.Corpo);
@@ -330,6 +330,7 @@ namespace Unimake.DFe.Test.CIOT.Servicos
 
                     var requisicao = Assert.Single(await servidor);
                     Assert.Equal("GET", requisicao.Metodo);
+                    Assert.Contains("\"CodigoIdentificacaoOperacao\":\"992000000126/XXXX\"", requisicao.Corpo);
                     Assert.DoesNotContain("DocumentoViagem", requisicao.Corpo);
                     Assert.False(servico.Result.Sucesso);
                     Assert.Equal("PDF001", servico.Result.Codigo);
@@ -342,6 +343,69 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             {
                 listener.Stop();
             }
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public async Task ExecutarCancelamentoEEncerramentoPreservaCodigoCompletoInformado()
+        {
+            var listener = new TcpListener(IPAddress.Loopback, 0);
+            listener.Start();
+            try
+            {
+                var porta = ((IPEndPoint)listener.LocalEndpoint).Port;
+                var servidor = ReceberRequisicoes(
+                    listener,
+                    "{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126/XXXX\",\"Protocolo\":\"PROTO-C\"}",
+                    "{\"Sucesso\":true,\"CodigoIdentificacaoOperacao\":\"992000000126/4321\",\"Protocolo\":\"PROTO-E\"}");
+                var configuracaoCancelamento = ConfiguracaoEFrete();
+                var configuracaoEncerramento = ConfiguracaoEFrete();
+                var cancelamento = new CancelamentoOperacaoTransporte
+                {
+                    ProvedorCIOT = ProvedorCIOT.EFrete,
+                    CodigoIdentificacaoOperacao = "992000000126/XXXX",
+                    MotivoCancelamento = "MOTIVO DE TESTE"
+                };
+                var encerramento = new EncerramentoOperacaoTransporte
+                {
+                    ProvedorCIOT = ProvedorCIOT.EFrete,
+                    CodigoIdentificacaoOperacao = "992000000126/4321"
+                };
+
+                using (var servico = new Unimake.Business.DFe.Servicos.CIOT.CancelamentoOperacaoTransporte(cancelamento, configuracaoCancelamento))
+                {
+                    configuracaoCancelamento.RequestURI = "http://127.0.0.1:" + porta + "/services/Pef/CancelarOperacaoTransporte";
+                    servico.Executar();
+                    Assert.Equal("110", servico.Result.Codigo);
+                }
+                using (var servico = new Unimake.Business.DFe.Servicos.CIOT.EncerramentoOperacaoTransporte(encerramento, configuracaoEncerramento))
+                {
+                    configuracaoEncerramento.RequestURI = "http://127.0.0.1:" + porta + "/services/Pef/EncerrarOperacaoTransporte";
+                    servico.Executar();
+                    Assert.Equal("110", servico.Result.Codigo);
+                }
+
+                var requisicoes = await servidor;
+                Assert.Equal(2, requisicoes.Count);
+                Assert.Equal("POST", requisicoes[0].Metodo);
+                Assert.Contains("\"CodigoIdentificacaoOperacao\":\"992000000126/XXXX\"", requisicoes[0].Corpo);
+                Assert.Equal("POST", requisicoes[1].Metodo);
+                Assert.Contains("\"CodigoIdentificacaoOperacao\":\"992000000126/4321\"", requisicoes[1].Corpo);
+            }
+            finally
+            {
+                listener.Stop();
+            }
+        }
+
+        private static Configuracao ConfiguracaoEFrete()
+        {
+            return new Configuracao
+            {
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                EFreteIntegrador = "INTEGRADOR-TESTE",
+                EFreteToken = "TOKEN-LOCAL"
+            };
         }
 
         private static async Task<System.Collections.Generic.IList<RequisicaoRecebida>> ReceberRequisicoes(TcpListener listener, params string[] respostas)

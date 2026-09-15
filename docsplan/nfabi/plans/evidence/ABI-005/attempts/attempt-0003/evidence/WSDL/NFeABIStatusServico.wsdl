@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIStatusServico" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIStatusServico">
+  <wsdl:types>
+<s:schema xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIStatusServico" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" elementFormDefault="qualified" targetNamespace="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIStatusServico">
+			
+  <s:element name="nfeabiDadosMsg">
+				
+    <s:complexType mixed="true">
+					
+      <s:sequence>
+						
+        <s:any/>
+					
+      </s:sequence>
+				
+    </s:complexType>
+			
+  </s:element>
+			
+  <s:element name="nfeabiStatusServicoResult">
+				
+    <s:complexType mixed="true">
+					
+      <s:sequence>
+						
+        <s:any/>
+					
+      </s:sequence>
+				
+    </s:complexType>
+			
+  </s:element>
+		
+</s:schema>
+  </wsdl:types>
+  <wsdl:message name="nfeabiStatusServicoSoap12Out">
+    <wsdl:part element="tns:nfeabiStatusServicoResult" name="nfeabiStatusServicoResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="nfeabiStatusServicoSoap12In">
+    <wsdl:part element="tns:nfeabiDadosMsg" name="nfeabiDadosMsg">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="NFeABIStatusServicoSoap12">
+    <wsdl:operation name="nfeabiStatusServico">
+      <wsdl:input message="tns:nfeabiStatusServicoSoap12In">
+    </wsdl:input>
+      <wsdl:output message="tns:nfeabiStatusServicoSoap12Out">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NFeABIStatusServicoSoap12" type="tns:NFeABIStatusServicoSoap12">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="nfeabiStatusServico">
+      <soap12:operation soapAction="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIStatusServico/nfeabiStatusServico" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NFeABIStatusServico">
+    <wsdl:port binding="tns:NFeABIStatusServicoSoap12" name="NFeABIStatusServicoSoap12">
+      <soap12:address location="https://homologacao.nfeabi.fazenda.pr.gov.br/nfeabi/NFeABIStatusServico"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

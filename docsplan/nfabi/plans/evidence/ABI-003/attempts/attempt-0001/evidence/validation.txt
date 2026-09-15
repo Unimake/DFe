@@ -1,0 +1,22 @@
+ABI-003 / attempt-0001 / validação final / 2026-09-14
+
+PASS source aggregate: 22/22; 0383F95D81140925C4EF91046C2D723CA9D94F477E138069F7202D79D9CCCAD8
+PASS schema aggregate: 20/20; BA44B39981C4DF3860A6BE9AA7C0739904D664377EABE963AB52AC8C2E74AE40
+PASS source/schema divergence: zero
+
+PASS DLL build: 0 errors; 4 pre-existing warnings
+PASS DLL INTEROP build: 0 errors; 11 pre-existing warnings
+PASS test project build: 0 errors; 28 pre-existing warnings
+PASS SerializacaoNFeABITest: 3 total; 0 failed
+PASS SchemaFoundationTest: 14 total; 0 failed
+
+PASS XML/XSD: complete, simplified, return/protocol, situation and status roots
+PASS invariants: namespace 1.00, model 77, 44-digit key, decimal precision, CNPJ/CPF choices, tMed zero, signature and COM bridge
+PASS independent review: no material finding remains after rework
+PASS scope: only ABI-003 manifest subtrees plus planning/evidence synchronization
+PASS control characters/placeholders/invalid active references: none found
+PASS git diff --check
+PASS plan linter: docsplan/nfabi; ABI prefix; 7 stages; 7 manifests
+
+NOT EXECUTED: online fiscal smoke, certificate, endpoint, external product, full suite
+NEXT STAGE STARTED: NO

@@ -81,10 +81,13 @@ Regras que já causaram falhas reais:
 
 ## Identificador e dígito verificador
 
-- A API eFrete trabalha externamente com `CodigoIdentificacaoOperacao` de 12 caracteres.
+- A API eFrete pode trabalhar com `CodigoIdentificacaoOperacao` de 12 caracteres ou com o CIOT completo no formato `999999999999/9999`.
 - A própria eFrete usa internamente o CIOT de 16 caracteres, com dígito verificador, ao falar com a ANTT.
-- Se homologação retornar algo como `123456789012/XXXX`, exponha e transmita somente `123456789012` nos serviços eFrete.
-- Cancelamento e encerramento recebem os 12 caracteres; não exija consulta apenas para obter o dígito verificador.
+- Enquanto a eFrete ainda não conseguiu homologar a operação na ANTT, pode retornar `123456789012/XXXX`. Exponha `123456789012` no identificador atual e `XXXX` em `CodigoVerificador`.
+- Ao normalizar declaração e consulta por `IdOperacaoCliente`, preserve em `CodigoVerificador` tanto `XXXX` quanto o código numérico definitivo.
+- `ObterOperacaoTransportePdf` exige o código completo, aceitando `999999999999/XXXX` enquanto provisório e `999999999999/9999` após a homologação na ANTT. Preserve a barra e o sufixo no JSON.
+- Antes de pedir o PDF, o consumidor deve consultar por `IdOperacaoCliente`: use `/XXXX` enquanto a consulta ainda o devolver e passe a usar o código numérico assim que estiver disponível.
+- Cancelamento e encerramento aceitam o código básico ou completo. Preserve no JSON o formato informado pelo consumidor; não corte o sufixo nem repita automaticamente a operação com formatos alternativos.
 - Essa normalização é exclusiva do mapper eFrete. Não corte identificadores ANTT.
 
 ## Normalização obrigatória dos retornos
@@ -93,6 +96,8 @@ O contrato público de retorno é o CIOT atual, não o JSON da eFrete.
 
 - Declaração eFrete bem-sucedida expõe o código real de 12 caracteres em `IdOperacaoTransporte`.
 - Declaração, cancelamento e encerramento bem-sucedidos expõem `Codigo=110`, pois consumidores existentes e o UniNFe reconhecem assim o sucesso CIOT.
+- A eFrete só documenta `Mensagem` dentro de `Excecao` para cancelamento e encerramento. No sucesso sem mensagem, preencha o texto compatível `Operação de transporte cancelada com sucesso.` ou `Operação de transporte encerrada com sucesso.`, evitando `<Mensagem />` no XML final.
+- Nos retornos de cancelamento e encerramento, aceite o protocolo tanto em `Protocolo` quanto em `ProtocoloServico`. Não invente protocolo quando nenhum dos dois for devolvido pela API.
 - Na declaração autorizada, mantenha simultaneamente:
   - `<Mensagem>` no nível raiz;
   - `<Mensagens><Mensagem><Codigo>110</Codigo><Descricao>...</Descricao></Mensagem></Mensagens>`.

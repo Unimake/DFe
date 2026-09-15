@@ -49,6 +49,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private bool cDvInformado;
         private const string prefix = "§";
         private readonly NFeTxtConversionContext context;
+        private readonly VersaoLeiauteMonofasia versaoLeiauteMonofasia;
         private readonly NFeTxtInitialSegmentDispatcher initialSegmentDispatcher;
         private readonly NFeTxtToNFeMapper nfeMapper;
 
@@ -64,8 +65,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         #endregion
 
-        internal NFeTxtConversionEngine()
+        internal NFeTxtConversionEngine(VersaoLeiauteMonofasia versaoLeiauteMonofasia)
         {
+            if (!Enum.IsDefined(typeof(VersaoLeiauteMonofasia), versaoLeiauteMonofasia))
+            {
+                throw new ArgumentOutOfRangeException(nameof(versaoLeiauteMonofasia));
+            }
+
+            this.versaoLeiauteMonofasia = versaoLeiauteMonofasia;
             this.context = new NFeTxtConversionContext();
             this.nfeMapper = new NFeTxtToNFeMapper();
             this.documentos = new List<NFeTxtDocumento>();
@@ -2939,7 +2946,13 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private DFeNFe.GIBSCBSMono ObterGIBSCBSMono(int nProd)
         {
             var imposto = ObterIBSCBS(nProd);
-            if (imposto.GIBSCBSMono == null) imposto.GIBSCBSMono = new DFeNFe.GIBSCBSMono();
+            if (imposto.GIBSCBSMono == null)
+            {
+                imposto.GIBSCBSMono = new DFeNFe.GIBSCBSMono
+                {
+                    VersaoLeiaute = this.versaoLeiauteMonofasia
+                };
+            }
             return imposto.GIBSCBSMono;
         }
 
@@ -3136,7 +3149,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = "UB85|qBCMono|adRemIBS|adRemCBS|vIBSMono|vCBSMono|"
             ObterGIBSCBSMono(nProd).GMonoPadrao = new DFeNFe.GMonoPadrao
             {
-                QBCMono = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS02>(nameof(DFeNFe.ICMS02.QBCMono)), ObOp.Opcional, 1, 15),
+                QBCMono = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.QBCMono)), ObOp.Opcional, 1, 15),
                 AdRemIBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.AdRemIBS)), ObOp.Opcional, 1, 7),
                 AdRemCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.AdRemCBS)), ObOp.Opcional, 1, 7),
                 VIBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.VIBSMono)), ObOp.Opcional, 1, 15),
@@ -3149,7 +3162,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = "UB91|qBCMonoReten|adRemIBSReten|vIBSMonoReten|adRemCBSReten|vCBSMonoReten|"
             ObterGIBSCBSMono(nProd).GMonoReten = new DFeNFe.GMonoReten
             {
-                QBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS15>(nameof(DFeNFe.ICMS15.QBCMonoReten)), ObOp.Opcional, 1, 15),
+                QBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.QBCMonoReten)), ObOp.Opcional, 1, 15),
                 AdRemIBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.AdRemIBSReten)), ObOp.Opcional, 1, 7),
                 VIBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.VIBSMonoReten)), ObOp.Opcional, 1, 15),
                 AdRemCBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.AdRemCBSReten)), ObOp.Opcional, 1, 7),
@@ -3162,7 +3175,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             //layout = "UB95|qBCMonoRet|adRemIBSRet|vIBSMonoRet|adRemCBSRet|vCBSMonoRet|"
             ObterGIBSCBSMono(nProd).GMonoRet = new DFeNFe.GMonoRet
             {
-                QBCMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS61>(nameof(DFeNFe.ICMS61.QBCMonoRet)), ObOp.Opcional, 1, 15),
+                QBCMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.QBCMonoRet)), ObOp.Opcional, 1, 15),
                 AdRemIBSRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.AdRemIBSRet)), ObOp.Opcional, 1, 7),
                 VIBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.VIBSMonoRet)), ObOp.Opcional, 1, 15),
                 AdRemCBSRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.AdRemCBSRet)), ObOp.Opcional, 1, 7),
@@ -3501,7 +3514,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         {
                     //layout = "W60|vNFTot|"
 
-                    totalOficial.VNFTot = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Total>(nameof(DFeNFe.Total.VNFTot)), ObOp.Opcional, 15);
+                    var valorNotaFiscal = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.Total>(nameof(DFeNFe.Total.VNFTot)), ObOp.Opcional, 15, true);
+
+                    if (valorNotaFiscal >= 0)
+                    {
+                        totalOficial.VNFTot = valorNotaFiscal;
+                    }
         }
 
         private void ProcessarTransporte(int nProd, int lenPipesRegistro)

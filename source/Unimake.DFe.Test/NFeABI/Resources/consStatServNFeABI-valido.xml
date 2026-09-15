@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<consStatServNFeABI versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfeabi">
+  <tpAmb>2</tpAmb>
+  <cUF>41</cUF>
+  <xServ>STATUS</xServ>
+</consStatServNFeABI>

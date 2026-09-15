@@ -1,0 +1,20 @@
+ABI-005 attempt-0003 - validação final
+
+Fonte normativa: PASS, 22 arquivos, agregado 0383F95D81140925C4EF91046C2D723CA9D94F477E138069F7202D79D9CCCAD8
+Schemas: PASS, 20 arquivos, agregado BA44B39981C4DF3860A6BE9AA7C0739904D664377EABE963AB52AC8C2E74AE40
+Configurações estaduais: PASS, 27/27, nenhum ausente/extra, todos byte a byte iguais a NFGas/AC.xml
+SHA-256 comum dos arquivos estaduais: 756B6744B329648FC4BED2861815A099A8D2FA1BD6043A2597EB5F9F5D854FB1
+Entradas csproj: PASS, 27 None Remove e 27 EmbeddedResource
+Build DLL normal: PASS, 0 erros, 4 avisos preexistentes
+Build DLL INTEROP: PASS, 0 erros, 11 avisos preexistentes
+Build de testes: PASS, 0 erros, 24 avisos preexistentes
+ServicosPublicadosTest: PASS, 41/41
+SerializacaoNFeABITest: PASS, 3/3
+EventosNFeABITest: PASS, 9/9
+SchemaFoundationTest: PASS, 14/14
+Total focado final: PASS, 67/67
+XML/csproj/JSON parse: PASS
+git diff --check: PASS
+ABI-006 diff: zero
+Revisão independente: PASS
+Plan linter: PASS, 7 etapas, prefixo ABI e 7 manifests

@@ -97,7 +97,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Include="Unimake.Utils" Version="20260803.1649.49" />
+		<PackageReference Include="Unimake.Utils" Version="20260826.2146.14" />
 		<PackageReference Include="xunit.v3" Version="4.0.0" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="4.0.0">
 			<PrivateAssets>all</PrivateAssets>

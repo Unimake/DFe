@@ -159,3 +159,10 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Testes xUnit foram adicionados ou ajustados com recursos XML representativos.
 - Build recomendado: `dotnet build "source/.NET Standard/Unimake.Business.DFe/Unimake.Business.DFe.csproj" --no-restore`.
 - Para xUnit v3 neste projeto, compile `Unimake.DFe.Test.csproj` e execute a DLL gerada diretamente com `dotnet "source/Unimake.DFe.Test/bin/Debug/net8.0/Unimake.DFe.Test.dll" -class "<namespace.classe>"`; não use o alvo VSTest legado quando o SDK o rejeitar.
+
+## Planejamento NF-e ABI (DevPlanner)
+
+- Para executar NF-e ABI, leia `docsplan/nfabi/CODEX-START-HERE.md` e use somente a etapa explicitamente autorizada.
+- Em toda etapa `002+`, releia `C:\Users\Wandrey\OneDrive\Downloads\NFeAbi`, compare hashes e pare se a fonte mudou.
+- Somente o DEV aprova etapas. Não inicie a sucessora após entregar.
+- Produção permanece sem endpoint; não invente URL nem copie homologação para produção.

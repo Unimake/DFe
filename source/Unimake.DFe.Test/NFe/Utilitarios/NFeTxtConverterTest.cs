@@ -80,6 +80,9 @@ public class NFeTxtConverterTest
     [InlineData("000062981-nfe-orig.txt")]
     [InlineData("000000411-nfe.txt")]
     [InlineData("000027937-nfe.txt")]
+    [InlineData("000002722-nfe.txt")]
+    [InlineData("000000001-corrigido-nfe.txt")]
+    [InlineData("000000001-rtc-zerado-nfe.txt")]
     [InlineData("NFe_RTC_CST200_Reducao100_TribRegular-nfe.txt")]
     [InlineData("RTC2026-NFe621-nfe.txt")]
     [InlineData("RTC2026-NFe622-nfe.txt")]
@@ -105,6 +108,108 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// O conversor deve preservar os grupos e totais informados no TXT, sem inventar dados fiscais.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarAusenciasEValoresInformadosNoTxt()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000002722-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var itens = xml.SelectNodes("//*[local-name()='det']");
+
+        Assert.Equal(2, itens.Count);
+        Assert.NotNull(itens[0].SelectSingleNode("*[local-name()='imposto']/*[local-name()='ICMS']"));
+        Assert.Null(itens[1].SelectSingleNode("*[local-name()='imposto']/*[local-name()='ICMS']"));
+        Assert.Equal("8751.75", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vBC']")?.InnerText);
+        Assert.Equal("1575.32", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vICMS']")?.InnerText);
+        Assert.Equal("0.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vPIS']")?.InnerText);
+        Assert.Equal("0.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vCOFINS']")?.InnerText);
+    }
+
+    /// <summary>
+    /// O grupo de identificação B é obrigatório para que o TXT possa ser convertido.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveRejeitarTxtSemSegmentoB()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000000001-nfe.txt"));
+
+        Assert.False(resultado.Sucesso);
+        Assert.Empty(resultado.Documentos);
+    }
+
+    /// <summary>
+    /// A inclusão do segmento B deve tornar a massa equivalente conversível.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveAceitarTxtAposInclusaoDoSegmentoB()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000000001-corrigido-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("TRANSFERENCIA DE BENS E MERCADORIAS", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='natOp']")?.InnerText);
+        Assert.Equal("1", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='nNF']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve converter e validar a massa com tributação da reforma informada com valores zerados.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarRtcZeradaEmOrdemValida()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000000001-rtc-zerado-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.Equal(2, xml.SelectNodes("//*[local-name()='IBSCBS']").Count);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='total']/*[local-name()='vNFTot']"));
+    }
+
+    /// <summary>
+    /// Deve distinguir o total RTC vazio do valor zero explicitamente informado.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarVNFTotQuandoZeroForInformadoExplicitamente()
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+
+        try
+        {
+            var conteudo = File.ReadAllText(CaminhoArquivo("000000001-rtc-zerado-nfe.txt"))
+                .Replace("W60||", "W60|0.00|");
+            File.WriteAllText(arquivoTemporario, conteudo);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            Assert.Equal("0.00", xml.SelectSingleNode("//*[local-name()='total']/*[local-name()='vNFTot']")?.InnerText);
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
     }
 
     /// <summary>

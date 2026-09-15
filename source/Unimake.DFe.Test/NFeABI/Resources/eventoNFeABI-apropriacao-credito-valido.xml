@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<evento xmlns="http://www.portalfiscal.inf.br/nfeabi" versao="1.00">
+  <infEvento Id="ID112120412609123456780001237700100000000110123456701">
+    <cOrgao>41</cOrgao>
+    <tpAmb>2</tpAmb>
+    <CPF>12345678901</CPF>
+    <chNFeABI>41260912345678000123770010000000011012345670</chNFeABI>
+    <dhEvento>2026-09-14T12:00:00-03:00</dhEvento>
+    <tpEvento>112120</tpEvento>
+    <nSeqEvento>1</nSeqEvento>
+    <verEvento>1.00</verEvento>
+    <detEvento versaoEvento="1.00">
+      <evApropCredIndNFeABI versao="1.00">
+        <descEvento>Apropriação de créditos individuais</descEvento>
+        <adquirente nAdquir="1"><CNPJ>12345678000123</CNPJ><xNome>ADQUIRENTE TESTE 1</xNome><pParticip>60.0000</pParticip></adquirente>
+        <adquirente nAdquir="2"><CPF>12345678901</CPF><xNome>ADQUIRENTE TESTE 2</xNome><pParticip>40.0000</pParticip></adquirente>
+      </evApropCredIndNFeABI>
+    </detEvento>
+  </infEvento>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="#ID112120412609123456780001237700100000000110123456701">
+        <Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>AA==</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>AA==</SignatureValue><KeyInfo><X509Data><X509Certificate>AA==</X509Certificate></X509Data></KeyInfo>
+  </Signature>
+</evento>

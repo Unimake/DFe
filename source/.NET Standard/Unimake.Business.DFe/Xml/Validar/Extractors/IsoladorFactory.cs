@@ -33,6 +33,7 @@ namespace Unimake.Business.DFe.Isoladores
                 case TipoDFe.NF3e:
                     return new IsoladorNF3e();
                 case TipoDFe.NFGas:
+                case TipoDFe.NFeABI:
                     return new IsoladorNFGas();
                 case TipoDFe.BPe:
                     return new IsoladorBPe();

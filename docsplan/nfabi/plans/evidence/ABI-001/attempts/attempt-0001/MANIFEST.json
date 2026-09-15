@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "stage_id": "ABI-001",
+  "state": "DELIVERED_FOR_REVIEW",
+  "attempt_id": "attempt-0001",
+  "attempt_archive": "docsplan/nfabi/plans/evidence/ABI-001/attempts/attempt-0001",
+  "base_state": "ABI-000 APPROVED; ABI-001 PLANNED; clean Git worktree",
+  "started_at": "2026-09-14T13:34:10-03:00",
+  "finished_at": "2026-09-14T13:46:31-03:00",
+  "files": [
+    "docsplan/nfabi/architecture/DECISIONS-LOCKED.md",
+    "docsplan/nfabi/architecture/INTEGRATION-CATALOG.md",
+    "docsplan/nfabi/planning/PROJECT-BRIEF.md",
+    "docsplan/nfabi/planning/QUESTION-LEDGER.md",
+    "docsplan/nfabi/plans/ABI-001-plan-review.md",
+    "docsplan/nfabi/plans/DECISION-REGISTER.md",
+    "docsplan/nfabi/plans/PDCA.md",
+    "docsplan/nfabi/plans/READINESS.md",
+    "docsplan/nfabi/plans/STAGE-ID-MAP.md",
+    "docsplan/nfabi/plans/TRACEABILITY.md",
+    "docsplan/nfabi/plans/manifests/ABI-001.json",
+    "docsplan/nfabi/plans/evidence/ABI-001/evidence/DECISION-MATRIX.md",
+    "docsplan/nfabi/plans/evidence/ABI-001/evidence/SOURCE-REVIEW.md",
+    "docsplan/nfabi/plans/evidence/ABI-001/evidence/validation.txt",
+    "docsplan/nfabi/plans/evidence/ABI-001/attempts/attempt-0001/evidence/DECISION-MATRIX.md",
+    "docsplan/nfabi/plans/evidence/ABI-001/attempts/attempt-0001/evidence/SOURCE-REVIEW.md",
+    "docsplan/nfabi/plans/evidence/ABI-001/attempts/attempt-0001/evidence/validation.txt"
+  ],
+  "hashes_sha256": {
+    "docsplan/nfabi/architecture/DECISIONS-LOCKED.md": "2EC89F13A23902BFB01FE11B7018AD61B859768763DD584F9D82BCD1CFB5A716",
+    "docsplan/nfabi/architecture/INTEGRATION-CATALOG.md": "56955EBFD2B12C9377D2AFFF7DEBB14C54753B6E3AFE5F24850CD3AB454626FD",
+    "docsplan/nfabi/planning/PROJECT-BRIEF.md": "2F5BE9627FDEDB17032BB8D139A4126A3CAE3A595662C60C4A1C0A4A020704BE",
+    "docsplan/nfabi/planning/QUESTION-LEDGER.md": "E62D4EAF98944438FF395A2CF98E2EDC1CC98C2054654120C796D1A0B32CB081",
+    "docsplan/nfabi/plans/ABI-001-plan-review.md": "F42D36239672443F3CEB6D3DD25F0FDBD504ED8BB0D8BE586B9B5BA96E49E4C5",
+    "docsplan/nfabi/plans/DECISION-REGISTER.md": "D75F5108F58B614A42C76675A58586399B9B3E4C851D40041B217ED0E73167C0",
+    "docsplan/nfabi/plans/PDCA.md": "172027BE481CC1B021A1C358267381D086D480C97A3AB588D8467860E328BE4C",
+    "docsplan/nfabi/plans/READINESS.md": "E5F7E51FA7392B31CE2ED1234544C38E191138BFBBB005D75E191DD52BC35972",
+    "docsplan/nfabi/plans/STAGE-ID-MAP.md": "6FB8A36C230F101284395965A774ABE39C5903009164E59FE054AB1BA2086D07",
+    "docsplan/nfabi/plans/TRACEABILITY.md": "D6F64A38C2491EC9D134F97A6DE3CBA26252324BCD220BCE2C300D036B684093",
+    "docsplan/nfabi/plans/manifests/ABI-001.json": "6A4DD944336CE4490F2A88194455F07C940F7B144F4EA08A0D5E91966BFD66A1",
+    "docsplan/nfabi/plans/evidence/ABI-001/evidence/DECISION-MATRIX.md": "472BBF004AE459D5006EA0140A9FC0FCEE39F9FDF0667101CC50096B63262753",
+    "docsplan/nfabi/plans/evidence/ABI-001/evidence/SOURCE-REVIEW.md": "CF150C696BAE6687C66406ECE79C72B0E124C667454D61E5021742B14B17B997",
+    "docsplan/nfabi/plans/evidence/ABI-001/evidence/validation.txt": "F41109B90130FF96936A040DDE79F56DDDD5BBCD8D9440A1DD7D225CB5C5DB4E",
+    "docsplan/nfabi/plans/evidence/ABI-001/attempts/attempt-0001/evidence/DECISION-MATRIX.md": "472BBF004AE459D5006EA0140A9FC0FCEE39F9FDF0667101CC50096B63262753",
+    "docsplan/nfabi/plans/evidence/ABI-001/attempts/attempt-0001/evidence/SOURCE-REVIEW.md": "CF150C696BAE6687C66406ECE79C72B0E124C667454D61E5021742B14B17B997",
+    "docsplan/nfabi/plans/evidence/ABI-001/attempts/attempt-0001/evidence/validation.txt": "F41109B90130FF96936A040DDE79F56DDDD5BBCD8D9440A1DD7D225CB5C5DB4E"
+  },
+  "commands": [
+    {
+      "command": "pwsh -NoProfile -File .agents/skills/plan-linter/scripts/test-plan.ps1 -RepositoryRoot .",
+      "result": "PASS: 7 stages, prefix ABI, 7 manifests",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-001/TESTS.md"
+    },
+    {
+      "command": "SHA-256 inventory and aggregate snapshot reproduction for the local normative source",
+      "result": "PASS: 22 files, 20 XSDs, zero divergence",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-001/evidence/SOURCE-REVIEW.md"
+    },
+    {
+      "command": "XML parse of all XSDs and official portal publication review",
+      "result": "PASS: 20 XSDs parsed; only Status and Authorization published in homologation",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-001/TESTS.md"
+    },
+    {
+      "command": "git diff --check; git diff --stat; git diff; git status --short",
+      "result": "PASS: complete diff reviewed; planning artifacts only",
+      "exit_code": 0,
+      "evidence": "docsplan/nfabi/plans/evidence/ABI-001/REVIEW.md"
+    }
+  ],
+  "tests": {
+    "status": "PASS_WITH_JUSTIFIED_NA",
+    "executed": [
+      "plan linter",
+      "source hash inventory",
+      "XSD parse",
+      "official publication check",
+      "decision and question closure scan",
+      "independent review",
+      "complete diff review"
+    ],
+    "not_executed": [
+      "product build and tests: prohibited in ABI-001",
+      "fiscal endpoint smoke: requires explicit authorization and prepared environment"
+    ]
+  },
+  "decisions": [
+    "DEC-001",
+    "DEC-002",
+    "DEC-003",
+    "DEC-004",
+    "DEC-005"
+  ],
+  "models_used": [
+    {
+      "part_id": "ABI-001-P01",
+      "role": "planner",
+      "profile": "DEEP",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0001-main"
+    },
+    {
+      "part_id": "ABI-001-P02",
+      "role": "executor",
+      "profile": "DEEP",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0001-main"
+    },
+    {
+      "part_id": "ABI-001-P03",
+      "role": "reviewer",
+      "profile": "INDEPENDENT_REVIEW",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0001-independent-review"
+    },
+    {
+      "part_id": "ABI-001-P04",
+      "role": "documenter",
+      "profile": "ECONOMY",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "context_id": "attempt-0001-main"
+    }
+  ],
+  "not_executed": [
+    "product implementation or tests",
+    "approval of ABI-001",
+    "effective stage ID freeze",
+    "start of ABI-002"
+  ],
+  "limitations": [
+    "official portal pages were checked, but no fiscal endpoint was called",
+    "online fiscal tests remain opt-in for a later authorized stage"
+  ],
+  "next_stage_started": false
+}
