@@ -180,11 +180,6 @@
 					<SchemaArquivoEspecifico>e211110_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
-					<ID>211120</ID>
-					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e211120_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
 					<ID>211124</ID>
 					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e211124_v1.00.xsd</SchemaArquivoEspecifico>
@@ -486,11 +481,6 @@
 					<ID>211110</ID>
 					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e211110_v1.00.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>211120</ID>
-					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>e211120_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
 					<ID>211124</ID>
