@@ -10,4 +10,4 @@
 
 `ABI-005` foi aprovada explicitamente pelo DEV em 2026-09-14 na `attempt-0004`.
 
-`ABI-006` permanece `PLANNED`, não foi iniciada e aguarda comando explícito do DEV.
+`ABI-006` está `DELIVERED_FOR_REVIEW` na `attempt-0001`: qualidade final da DLL comprovada por fontes e schemas íntegros, API pública de carga, guia de uso, builds normal/INTEROP, 71 testes determinísticos e revisão independente. Aguarda exclusivamente revisão do DEV; nenhuma publicação foi iniciada.

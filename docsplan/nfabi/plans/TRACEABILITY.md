@@ -11,4 +11,4 @@
 | REQ-007 | Status homologação | portal/DEV | ABI-005 | integração tipada com `Executar()`, configuração das 27 UFs e contrato WSDL | `docsplan/nfabi/plans/evidence/ABI-005/EVIDENCE.md` | APPROVED |
 | REQ-008 | Autorização síncrona homologação | portal/DEV | ABI-005 | integração tipada com `Executar()`, retorno/proc e negativos | `docsplan/nfabi/plans/evidence/ABI-005/EVIDENCE.md` | APPROVED |
 | REQ-009 | produção sem URL | pedido/DEV | ABI-005 | teste fail-closed | `docsplan/nfabi/plans/evidence/ABI-005/EVIDENCE.md` | APPROVED |
-| REQ-010 | qualidade final e compatibilidade pública da DLL comprovadas | pedido/DEV | ABI-006 | build, testes NFeABI e revisão API/INTEROP | `docsplan/nfabi/plans/evidence/ABI-006/EVIDENCE.md` | PLANNED |
+| REQ-010 | qualidade final e compatibilidade pública da DLL comprovadas | pedido/DEV | ABI-006 | build, testes NFeABI e revisão API/INTEROP | `docsplan/nfabi/plans/evidence/ABI-006/EVIDENCE.md` | DELIVERED_FOR_REVIEW |
