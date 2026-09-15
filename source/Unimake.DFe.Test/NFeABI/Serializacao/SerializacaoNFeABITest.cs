@@ -72,7 +72,7 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
                     TpAmb = TipoAmbiente.Homologacao,
                     VerAplic = "TESTE",
                     ChNFeABI = new string('1', 44),
-                    DhRecbto = new DateTimeOffset(2026, 9, 14, 12, 0, 0, TimeSpan.FromHours(-3)),
+                    DhRecbtoField = "2026-09-14T12:00:00-03:00",
                     NProt = "141260000000001",
                     CStat = 100,
                     XMotivo = "Autorizado"
@@ -86,7 +86,7 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
                 CStat = 100,
                 XMotivo = "Autorizado",
                 CUF = UFBrasil.PR,
-                DhRecbto = new DateTimeOffset(2026, 9, 14, 12, 0, 0, TimeSpan.FromHours(-3)),
+                DhRecbtoField = "2026-09-14T12:00:00-03:00",
                 ProtNFeABI = protocolo
             };
             var processado = new DFeNFeABI.NFeABIProc { Versao = "1.00", NFeABI = CriarDocumentoCompleto(), ProtNFeABI = protocolo };
@@ -94,13 +94,13 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
             {
                 Versao = "1.00", TpAmb = TipoAmbiente.Homologacao, VerAplic = "TESTE", CStat = 107,
                 XMotivo = "Servico em operacao", CUF = UFBrasil.PR,
-                DhRecbto = new DateTimeOffset(2026, 9, 14, 12, 0, 0, TimeSpan.FromHours(-3)), TMed = 0
+                DhRecbtoField = "2026-09-14T12:00:00-03:00", TMed = 0
             };
             var retornoSituacao = new DFeNFeABI.RetConsSitNFeABI
             {
                 Versao = "1.00", TpAmb = TipoAmbiente.Homologacao, VerAplic = "TESTE", CStat = 217,
                 XMotivo = "NFeABI nao consta", CUF = UFBrasil.PR,
-                DhRecbto = new DateTimeOffset(2026, 9, 14, 12, 0, 0, TimeSpan.FromHours(-3)),
+                DhRecbtoField = "2026-09-14T12:00:00-03:00",
                 ChNFeABI = new string('1', 44),
                 ProtNFeABI = new DFeNFeABI.ProtocoloConsultaNFeABI { Versao = "1.00", ConteudoXML = "<protocolo xmlns=\"urn:teste\">OK</protocolo>" },
                 ProcEventoNFeABI = new List<DFeNFeABI.ProcessoEventoConsultaNFeABI>
@@ -139,7 +139,7 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
                     Ide = new DFeNFeABI.Ide
                     {
                         CUF = UFBrasil.PR, CNF = "1234567", Mod = ModeloDFe.NFeABI, Serie = 1, NNF = 1,
-                        DhEmi = new DateTimeOffset(2026, 9, 14, 12, 0, 0, TimeSpan.FromHours(-3)),
+                        DhEmiField = "2026-09-14T12:00:00-03:00",
                         TpNF = TipoNotaFiscalNFeABI.Completa, TpImp = TipoImpressaoNFeABI.Retrato,
                         GModNat = new DFeNFeABI.GModNat { ModOper = "01", NatOper = "01", DetOper = "01" },
                         TpEmis = TipoEmissaoNFeABI.Normal, NSiteAutoriz = "0", TpAmb = TipoAmbiente.Homologacao,
