@@ -8,7 +8,7 @@
 | ABI-003 | modelo XML principal e retornos | APPROVED | ABI-002 APPROVED | ENV-DLL |
 | ABI-004 | modelos de eventos NF-e ABI | APPROVED | ABI-003 APPROVED | ENV-DLL |
 | ABI-005 | serviços publicados de homologação | APPROVED | ABI-004 APPROVED | ENV-DLL |
-| ABI-006 | qualidade final e compatibilidade pública da DLL | DELIVERED_FOR_REVIEW | ABI-005 APPROVED | ENV-DLL |
+| ABI-006 | qualidade final e compatibilidade pública da DLL | APPROVED | ABI-005 APPROVED | ENV-DLL |
 
 ## Histórico
 
@@ -52,3 +52,4 @@
 | 2026-09-14 | ABI-005 | DELIVERED_FOR_REVIEW | APPROVED | revisão e aprovação explícitas pelo DEV | attempt-0004 |
 | 2026-09-14 | ABI-006 | PLANNED | IN_PROGRESS | execução exclusiva autorizada pelo DEV; predecessora aprovada e fontes normativas sem divergência | attempt-0001 |
 | 2026-09-14 | ABI-006 | IN_PROGRESS | DELIVERED_FOR_REVIEW | API pública de carga, guia seguro, builds, 71 testes determinísticos, auditoria INTEROP, revisão independente e hashes verdes; aguarda DEV | attempt-0001 |
+| 2026-09-14 | ABI-006 | DELIVERED_FOR_REVIEW | APPROVED | revisão e aprovação explícitas pelo DEV; plano NF-e ABI encerrado no escopo atual | attempt-0001 |
