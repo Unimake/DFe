@@ -7,7 +7,7 @@
 | ABI-002 | schemas e fundação do tipo fiscal | APPROVED | ABI-001 APPROVED | ENV-DLL |
 | ABI-003 | modelo XML principal e retornos | APPROVED | ABI-002 APPROVED | ENV-DLL |
 | ABI-004 | modelos de eventos NF-e ABI | APPROVED | ABI-003 APPROVED | ENV-DLL |
-| ABI-005 | serviços publicados de homologação | DELIVERED_FOR_REVIEW | ABI-004 APPROVED | ENV-DLL |
+| ABI-005 | serviços publicados de homologação | APPROVED | ABI-004 APPROVED | ENV-DLL |
 | ABI-006 | qualidade final e compatibilidade pública da DLL | PLANNED | ABI-005 APPROVED | ENV-DLL |
 
 ## Histórico
@@ -49,3 +49,4 @@
 | 2026-09-14 | ABI-005 | DELIVERED_FOR_REVIEW | REWORK | DEV solicitou testes de integração dos serviços no padrão BPe, somente em homologação | attempt-0004 |
 | 2026-09-14 | ABI-005 | REWORK | IN_PROGRESS | criação de base e testes tipados de Status e Autorização com chamada a Executar() | attempt-0004 |
 | 2026-09-14 | ABI-005 | IN_PROGRESS | DELIVERED_FOR_REVIEW | testes offline e integrações reais de Status e Autorização em homologação verdes; compatibilidade do cUF textual centralizada, revisão independente e linter verdes; aguarda DEV | attempt-0004 |
+| 2026-09-14 | ABI-005 | DELIVERED_FOR_REVIEW | APPROVED | revisão e aprovação explícitas pelo DEV | attempt-0004 |

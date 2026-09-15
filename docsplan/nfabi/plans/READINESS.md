@@ -8,4 +8,6 @@
 
 `ABI-004` foi aprovada explicitamente pelo DEV em 2026-09-14 na `attempt-0001`.
 
-`ABI-005` está `DELIVERED_FOR_REVIEW` na `attempt-0004`: foram adicionados testes de integração equivalentes aos do BPe, com objetos tipados e `Executar()`, restritos à homologação. As fontes normativas permanecem íntegras, os gates técnicos estão verdes e a etapa aguarda exclusivamente a revisão do DEV. `ABI-006` não foi iniciada.
+`ABI-005` foi aprovada explicitamente pelo DEV em 2026-09-14 na `attempt-0004`.
+
+`ABI-006` permanece `PLANNED`, não foi iniciada e aguarda comando explícito do DEV.
