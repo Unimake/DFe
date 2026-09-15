@@ -41,6 +41,25 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         /// <summary>Assinatura XML digital da NFeABI.</summary>
         [XmlElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
+
+        /// <summary>
+        /// Desserializa um arquivo XML no objeto NFeABI.
+        /// </summary>
+        /// <param name="filename">Caminho do arquivo XML NFeABI.</param>
+        /// <returns>Objeto NFeABI desserializado.</returns>
+        public NFeABI LoadFromFile(string filename)
+        {
+            var doc = new System.Xml.XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, System.Text.Encoding.UTF8));
+            return XMLUtility.Deserializar<NFeABI>(doc);
+        }
+
+        /// <summary>
+        /// Desserializa uma string XML no objeto NFeABI.
+        /// </summary>
+        /// <param name="xml">Conteúdo XML da NFeABI.</param>
+        /// <returns>Objeto NFeABI desserializado.</returns>
+        public NFeABI LoadFromXML(string xml) => XMLUtility.Deserializar<NFeABI>(xml);
     }
 
 /// <summary>Representa o grupo InfNFeABI do contrato XML da NFeABI.</summary>
