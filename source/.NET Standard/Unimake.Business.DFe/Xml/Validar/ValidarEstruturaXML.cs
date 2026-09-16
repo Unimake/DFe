@@ -1686,7 +1686,7 @@ namespace Unimake.Business.DFe
                     return "3.01";
 
                 case PadraoNFSe.GISSONLINE:
-                    return versaoDeclarada == "2.05" || Contem("IBSCBS")
+                    return versaoDeclarada == "2.05"
                         ? "2.05"
                         : "2.04";
 
