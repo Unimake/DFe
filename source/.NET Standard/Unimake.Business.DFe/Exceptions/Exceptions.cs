@@ -60,6 +60,17 @@ namespace Unimake.Exceptions
             : base(message) => HResult = (int)ErrorCodes.ValidacaoSchemaXML;
     }
 
+    /// <summary>
+    /// Classe de exceção para erros que impedem a desserialização segura de um XML.
+    /// </summary>
+    public class DesserializacaoXMLException : Exception
+    {
+        /// <summary>
+        /// Inicializa a exceção com a descrição dos elementos ou atributos que não puderam ser desserializados com segurança.
+        /// </summary>
+        /// <param name="message">Mensagem que descreve a falha de desserialização.</param>
+        public DesserializacaoXMLException(string message) : base(message) { }
+    }
 
     /// <summary>
     /// Classe de exceção quando ocorre erros na assinatura dos XMLs (NFe, CTe, MDFe, NFCe, etc...)
