@@ -1460,6 +1460,8 @@
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\tipos_v1-rtc.xsd" />
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\tipos_v1.xsd" />
 		<None Remove="Xml\Schemas\NFSe\INTERSOL\xmldsig-core-schema20020212_v1.xsd" />
+		<None Remove="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
+		<None Remove="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MEGASOFT\nfse_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MEGASOFT\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\METROPOLIS\nfse.xsd" />
@@ -1702,6 +1704,8 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\xmldsig-core-schema20020212-RTC.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SALVADOR_BA\nfse_salvador_rtc.xsd" />
 		<EmbeddedResource Include="Xml\Validar\ValidarConfig.xml" />
 	</ItemGroup>
