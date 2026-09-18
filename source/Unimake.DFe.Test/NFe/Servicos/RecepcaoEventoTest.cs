@@ -679,7 +679,6 @@ namespace Unimake.DFe.Test.NFe.Servicos
         [InlineData(@"..\..\..\NFe\Resources\envEvento_412130.xml")]
         [InlineData(@"..\..\..\NFe\Resources\envEvento_112140.xml")]
         [InlineData(@"..\..\..\NFe\Resources\envEvento_211110.xml")]
-        [InlineData(@"..\..\..\NFe\Resources\envEvento_211120.xml")]
         [InlineData(@"..\..\..\NFe\Resources\envEvento_211124.xml")]
         [InlineData(@"..\..\..\NFe\Resources\envEvento_211130.xml")]
         [InlineData(@"..\..\..\NFe\Resources\envEvento_211140.xml")]

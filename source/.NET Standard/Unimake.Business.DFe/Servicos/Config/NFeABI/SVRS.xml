@@ -13,6 +13,10 @@
 			<WebEnderecoHomologacao>https://homologacao.nfeabi.fazenda.pr.gov.br/nfeabi/NFeABIAutorizacao</WebEnderecoHomologacao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIAutorizacao/nfeabiAutorizacao</WebActionHomologacao>
 			<WebTagRetorno>nfeabiAutorizacaoResult</WebTagRetorno>
+			<UrlQrCodeHomologacao>https://www.fazenda.pr.gov.br/nfeabi/qrcode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://www.fazenda.pr.gov.br/nfeabi/qrcode</UrlQrCodeProducao>
+			<UrlChaveHomologacao>https://www.fazenda.pr.gov.br/nfeabi/qrcode</UrlChaveHomologacao>
+			<UrlChaveProducao>https://www.fazenda.pr.gov.br/nfeabi/qrcode</UrlChaveProducao>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfeabi="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIAutorizacao"><soap:Header/><soap:Body><nfeabi:nfeabiDadosMsg>{xmlBody}</nfeabi:nfeabiDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
 		</AutorizacaoSinc>
 	</Servicos>

@@ -139,7 +139,6 @@ namespace TreinamentoDLL
             this.BtnEventoSolicitacaoApropriacaoCreditoCombustivel = new System.Windows.Forms.Button();
             this.BtnEventoImobilizacaoItem = new System.Windows.Forms.Button();
             this.BtnEventoPerecimentoDuranteTransporteContratadoAdquirente = new System.Windows.Forms.Button();
-            this.BtnEventoDestinacaoItemParaConsumoPessoal = new System.Windows.Forms.Button();
             this.BtnEventoSolicitacaoApropriacaoCreditoPresumido = new System.Windows.Forms.Button();
             this.BtnEventoFornecimentoNaoRealizadoComPagamentoAntecipado = new System.Windows.Forms.Button();
             this.BtnEventoPerecimentoDuranteTransporteContratadoFornecedor = new System.Windows.Forms.Button();
@@ -1436,7 +1435,6 @@ namespace TreinamentoDLL
             this.groupBox2.Controls.Add(this.BtnEventoSolicitacaoApropriacaoCreditoCombustivel);
             this.groupBox2.Controls.Add(this.BtnEventoImobilizacaoItem);
             this.groupBox2.Controls.Add(this.BtnEventoPerecimentoDuranteTransporteContratadoAdquirente);
-            this.groupBox2.Controls.Add(this.BtnEventoDestinacaoItemParaConsumoPessoal);
             this.groupBox2.Controls.Add(this.BtnEventoSolicitacaoApropriacaoCreditoPresumido);
             this.groupBox2.Controls.Add(this.BtnEventoFornecimentoNaoRealizadoComPagamentoAntecipado);
             this.groupBox2.Controls.Add(this.BtnEventoPerecimentoDuranteTransporteContratadoFornecedor);
@@ -1503,18 +1501,6 @@ namespace TreinamentoDLL
             this.BtnEventoPerecimentoDuranteTransporteContratadoAdquirente.Text = "Evento Perecimento no Transporte Contratado pelo Adquirente";
             this.BtnEventoPerecimentoDuranteTransporteContratadoAdquirente.UseVisualStyleBackColor = true;
             this.BtnEventoPerecimentoDuranteTransporteContratadoAdquirente.Click += new System.EventHandler(this.BtnEventoPerecimentoDuranteTransporteContratadoAdquirente_Click);
-            // 
-            // BtnEventoDestinacaoItemParaConsumoPessoal
-            // 
-            this.BtnEventoDestinacaoItemParaConsumoPessoal.CausesValidation = false;
-            this.BtnEventoDestinacaoItemParaConsumoPessoal.Location = new System.Drawing.Point(7, 662);
-            this.BtnEventoDestinacaoItemParaConsumoPessoal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnEventoDestinacaoItemParaConsumoPessoal.Name = "BtnEventoDestinacaoItemParaConsumoPessoal";
-            this.BtnEventoDestinacaoItemParaConsumoPessoal.Size = new System.Drawing.Size(448, 37);
-            this.BtnEventoDestinacaoItemParaConsumoPessoal.TabIndex = 12;
-            this.BtnEventoDestinacaoItemParaConsumoPessoal.Text = "Evento Destinação de Item para Consumo Pessoal";
-            this.BtnEventoDestinacaoItemParaConsumoPessoal.UseVisualStyleBackColor = true;
-            this.BtnEventoDestinacaoItemParaConsumoPessoal.Click += new System.EventHandler(this.BtnEventoDestinacaoItemParaConsumoPessoal_Click);
             // 
             // BtnEventoSolicitacaoApropriacaoCreditoPresumido
             // 
@@ -2231,7 +2217,6 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnEventoSolicitacaoApropriacaoCreditoCombustivel;
         private System.Windows.Forms.Button BtnEventoImobilizacaoItem;
         private System.Windows.Forms.Button BtnEventoPerecimentoDuranteTransporteContratadoAdquirente;
-        private System.Windows.Forms.Button BtnEventoDestinacaoItemParaConsumoPessoal;
         private System.Windows.Forms.Button BtnEventoSolicitacaoApropriacaoCreditoPresumido;
         private System.Windows.Forms.Button BtnEventoFornecimentoNaoRealizadoComPagamentoAntecipado;
         private System.Windows.Forms.Button BtnEventoPerecimentoDuranteTransporteContratadoFornecedor;

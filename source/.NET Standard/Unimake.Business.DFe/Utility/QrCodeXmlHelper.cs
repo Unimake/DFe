@@ -503,6 +503,124 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
+        /// Monta e inclui o grupo suplementar <c>infNFeSupl</c> com o QR Code da NFeABI.
+        /// </summary>
+        /// <param name="conteudoXml">Documento XML da NFeABI já carregado em memória.</param>
+        /// <param name="configuracoes">Configurações do serviço, incluindo ambiente, URLs e certificado digital.</param>
+        /// <exception cref="Exception">Lançada quando alguma informação obrigatória para o QR Code não é localizada.</exception>
+        public static void MontarQrCodeNFeABI(XmlDocument conteudoXml, Configuracao configuracoes)
+        {
+            if (conteudoXml.GetElementsByTagName("NFeABI").Count <= 0)
+            {
+                throw new Exception("A tag obrigatória <NFeABI> não foi localizada no XML.");
+            }
+
+            var elementNFeABI = (XmlElement)conteudoXml.GetElementsByTagName("NFeABI")[0];
+
+            if (elementNFeABI.GetElementsByTagName("infNFeSupl").Count > 0)
+            {
+                return;
+            }
+
+            if (elementNFeABI.GetElementsByTagName("infNFeABI").Count <= 0)
+            {
+                throw new Exception("A tag obrigatória <infNFeABI>, do grupo de tag <NFeABI>, não foi localizada no XML.");
+            }
+
+            var elementInfNFeABI = (XmlElement)elementNFeABI.GetElementsByTagName("infNFeABI")[0];
+            var id = elementInfNFeABI.GetAttribute("Id");
+            const string prefixoChave = "NFeABI";
+
+            if (string.IsNullOrWhiteSpace(id) || !id.StartsWith(prefixoChave, StringComparison.Ordinal) || id.Length != prefixoChave.Length + 44)
+            {
+                throw new Exception("O atributo obrigatório \"Id\" da tag <infNFeABI> não contém uma chave de acesso válida.");
+            }
+
+            if (elementInfNFeABI.GetElementsByTagName("ide").Count <= 0)
+            {
+                throw new Exception("A tag obrigatória <ide>, do grupo de tag <NFeABI><infNFeABI>, não foi localizada no XML.");
+            }
+
+            var elementIde = (XmlElement)elementInfNFeABI.GetElementsByTagName("ide")[0];
+            var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
+            var tpEmis = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
+            var chave = id.Substring(prefixoChave.Length);
+            var urlQrCode = tpAmb == TipoAmbiente.Homologacao ? configuracoes.UrlQrCodeHomologacao : configuracoes.UrlQrCodeProducao;
+            var urlChave = tpAmb == TipoAmbiente.Homologacao ? configuracoes.UrlChaveHomologacao : configuracoes.UrlChaveProducao;
+
+            if (string.IsNullOrWhiteSpace(urlQrCode))
+            {
+                throw new Exception("A URL do QR Code da NFeABI não foi configurada para o ambiente informado.");
+            }
+
+            if (string.IsNullOrWhiteSpace(urlChave))
+            {
+                throw new Exception("A URL de consulta por chave da NFeABI não foi configurada para o ambiente informado.");
+            }
+
+            var parametrosQrCode = chave + "|1|" + ((int)tpAmb).ToString();
+
+            if (tpEmis == TipoEmissao.ContingenciaOffLine)
+            {
+                if (elementIde.GetElementsByTagName("dhEmi").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <dhEmi>, do grupo de tag <NFeABI><infNFeABI><ide>, não foi localizada no XML.");
+                }
+
+                if (elementInfNFeABI.GetElementsByTagName("total").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <total>, do grupo de tag <NFeABI><infNFeABI>, não foi localizada no XML.");
+                }
+
+                var elementTotal = (XmlElement)elementInfNFeABI.GetElementsByTagName("total")[0];
+                if (elementTotal.GetElementsByTagName("vNF").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <vNF>, do grupo de tag <NFeABI><infNFeABI><total>, não foi localizada no XML.");
+                }
+
+                if (elementInfNFeABI.GetElementsByTagName("adquirente").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <adquirente>, do grupo de tag <NFeABI><infNFeABI>, não foi localizada no XML.");
+                }
+
+                var elementAdquirente = (XmlElement)elementInfNFeABI.GetElementsByTagName("adquirente")[0];
+                string tipoDocumento;
+                string documento;
+
+                if (elementAdquirente.GetElementsByTagName("CNPJ").Count > 0)
+                {
+                    tipoDocumento = "1";
+                    documento = elementAdquirente.GetElementsByTagName("CNPJ")[0].InnerText;
+                }
+                else if (elementAdquirente.GetElementsByTagName("CPF").Count > 0)
+                {
+                    tipoDocumento = "2";
+                    documento = elementAdquirente.GetElementsByTagName("CPF")[0].InnerText;
+                }
+                else
+                {
+                    throw new Exception("A tag obrigatória <CNPJ> ou <CPF>, do primeiro grupo <adquirente>, não foi localizada no XML.");
+                }
+
+                var dhEmi = DateTimeOffset.Parse(elementIde.GetElementsByTagName("dhEmi")[0].InnerText);
+                var vNF = elementTotal.GetElementsByTagName("vNF")[0].InnerText;
+                parametrosQrCode += "|" + dhEmi.ToString("dd") + "|" + vNF.Trim() + "|" + tipoDocumento + "|" + documento;
+                parametrosQrCode += "|" + Converter.ToRSASHA1(configuracoes.CertificadoDigital, parametrosQrCode);
+            }
+
+            var nodeNFeABI = conteudoXml.GetElementsByTagName("NFeABI")[0];
+            var nodeInfNFeABI = (XmlNode)elementInfNFeABI;
+
+            AdicionarGrupoSuplementar(
+                conteudoXml,
+                nodeNFeABI,
+                nodeInfNFeABI,
+                "infNFeSupl",
+                new KeyValuePair<string, string>("qrCode", urlQrCode + "?p=" + parametrosQrCode),
+                new KeyValuePair<string, string>("urlChave", urlChave));
+        }
+
+        /// <summary>
         /// Monta e inclui o grupo suplementar <c>infDCeSupl</c> com a tag de QRCode para DCe.
         /// </summary>
         /// <param name="conteudoXml">Documento XML da DCe.</param>

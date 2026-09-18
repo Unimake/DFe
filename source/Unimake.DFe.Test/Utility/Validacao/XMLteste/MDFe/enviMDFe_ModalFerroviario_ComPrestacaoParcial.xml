@@ -306,15 +306,15 @@
               <qtdParcial>0.0000</qtdParcial>
             </infEntregaParcial>
 		    <indPrestacaoParcial>1</indPrestacaoParcial>
-		    <infNFePresParcial>
+		    <infNFePrestParcial>
 				<chNFe>0000000000000000000000000000000000000000</chNFe>
-			</infNFePresParcial>
-		    <infNFePresParcial>
+			</infNFePrestParcial>
+		    <infNFePrestParcial>
 				<chNFe>0000000000000000000000000000000000000000</chNFe>
-			</infNFePresParcial>
-		    <infNFePresParcial>
+			</infNFePrestParcial>
+		    <infNFePrestParcial>
 				<chNFe>0000000000000000000000000000000000000000</chNFe>
-			</infNFePresParcial>
+			</infNFePrestParcial>
           </infCTe>
           <infCTe>
             <chCTe>chCTe2</chCTe>

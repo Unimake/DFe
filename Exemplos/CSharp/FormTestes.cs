@@ -643,38 +643,6 @@ namespace TreinamentoDLL
             EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.SolicitacaoApropriacaoCreditoPresumido, "Solicitação de apropriação de crédito presumido");
         }
 
-        private void BtnEventoDestinacaoItemParaConsumoPessoal_Click(object sender, EventArgs e)
-        {
-            var detEvento = new XmlNFe.DetEventoDestinacaoItemParaConsumoPessoal
-            {
-                Versao = "1.00",
-                COrgaoAutor = UFBrasil.PR,
-                TpAutor = TipoAutor.EmpresaEmitente,
-                VerAplic = "1.00",
-                GConsumo = new List<XmlNFe.GConsumoAquisicao>
-                {
-                    new XmlNFe.GConsumoAquisicao
-                    {
-                        NItem = 1,
-                        VIBS = 10.00,
-                        VCBS = 5.00,
-                        GControleEstoque = new XmlNFe.GControleEstoqueAquisicao
-                        {
-                            QConsumo = 1.0000,
-                            UConsumo = "UN"
-                        },
-                        DFeReferenciado = new XmlNFe.DFeReferenciado
-                        {
-                            ChaveAcesso = "41190806117473000150550010000579131943463890",
-                            NItem = "1"
-                        }
-                    }
-                }
-            };
-
-            EnviarEventoNFePorDetalhamento(detEvento, TipoEventoNFe.DestinacaoItemParaConsumoPessoal, "Destinação de item para consumo pessoal");
-        }
-
         private void BtnEventoPerecimentoDuranteTransporteContratadoAdquirente_Click(object sender, EventArgs e)
         {
             var detEvento = new XmlNFe.DetEventoPerecimentoDuranteTransporteContratadoAdquirente

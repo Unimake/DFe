@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -548,12 +549,68 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
         public static T Deserializar<T>(string xml)
             where T : new()
+            => Deserializar<T>(xml, false);
+
+        /// <summary>
+        /// Desserializar XML rejeitando elementos e atributos sem mapeamento na classe de destino.
+        /// </summary>
+        /// <typeparam name="T">Tipo do objeto</typeparam>
+        /// <param name="xml">String do XML a ser desserializado</param>
+        /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
+        /// <exception cref="DesserializacaoXMLException">Lançada quando o XML contém elementos ou atributos desconhecidos.</exception>
+        public static T DeserializarEstrito<T>(string xml)
+            where T : new()
+            => Deserializar<T>(xml, true);
+
+        /// <summary>
+        /// Desserializar XML monitorando elementos e atributos ignorados pelo XmlSerializer.
+        /// </summary>
+        private static T Deserializar<T>(string xml, bool rejeitarTodosDesconhecidos)
+            where T : new()
         {
             try
             {
                 xml = TratarFalhaXML(xml);
 
-                var result = XmlHelper.Deserialize<T>(xml);
+                T result;
+                if (rejeitarTodosDesconhecidos || TipoNFe(typeof(T)))
+                {
+                    var ocorrencias = new List<OcorrenciaDesserializacao>();
+                    var serializer = new XmlSerializer(typeof(T));
+
+                    serializer.UnknownElement += (sender, args) => ocorrencias.Add(
+                        new OcorrenciaDesserializacao
+                        {
+                            Nome = args.Element.LocalName,
+                            Namespace = args.Element.NamespaceURI,
+                            Linha = args.LineNumber,
+                            Coluna = args.LinePosition,
+                            TipoDestino = args.ObjectBeingDeserialized?.GetType() ?? typeof(T),
+                            Tipo = TipoOcorrenciaDesserializacao.Elemento
+                        });
+
+                    serializer.UnknownAttribute += (sender, args) => ocorrencias.Add(
+                        new OcorrenciaDesserializacao
+                        {
+                            Nome = args.Attr.LocalName,
+                            Namespace = args.Attr.NamespaceURI,
+                            Linha = args.LineNumber,
+                            Coluna = args.LinePosition,
+                            TipoDestino = args.ObjectBeingDeserialized?.GetType() ?? typeof(T),
+                            Tipo = TipoOcorrenciaDesserializacao.Atributo
+                        });
+
+                    using (var reader = new StringReader(xml))
+                    {
+                        result = (T)serializer.Deserialize(reader);
+                    }
+
+                    ValidarOcorrenciasDesserializacao(ocorrencias, rejeitarTodosDesconhecidos);
+                }
+                else
+                {
+                    result = XmlHelper.Deserialize<T>(xml);
+                }
 
                 if (result is Contract.Serialization.IXmlSerializable serializable)
                 {
@@ -595,6 +652,194 @@ namespace Unimake.Business.DFe.Utility
                 ThrowHelper.Instance.Throw(ex.GetLastException());
                 throw; //Desnecessário, mas se eu tiro esta linha o compilador gera falha, mas dentro do ThrowHelper já tem este cara.
             }
+        }
+
+        /// <summary>
+        /// Verifica se o tipo pertence às classes de XML da NFe/NFCe que exigem proteção automática contra perda de dados por ordem.
+        /// </summary>
+        private static bool TipoNFe(Type tipo) => tipo.Namespace == "Unimake.Business.DFe.Xml.NFe";
+
+        /// <summary>
+        /// Verifica se o XmlSerializer ignorou conteúdo que deve impedir o retorno de um objeto parcial.
+        /// </summary>
+        private static void ValidarOcorrenciasDesserializacao(List<OcorrenciaDesserializacao> ocorrencias, bool rejeitarTodosDesconhecidos)
+        {
+            if (ocorrencias.Count == 0)
+            {
+                return;
+            }
+
+            foreach (var ocorrencia in ocorrencias)
+            {
+                ocorrencia.PossuiMapeamento = PossuiMapeamento(ocorrencia);
+            }
+
+            var mapeadosIgnorados = ocorrencias.Where(x => x.PossuiMapeamento).ToList();
+            if (!rejeitarTodosDesconhecidos && mapeadosIgnorados.Count == 0)
+            {
+                return;
+            }
+
+            var mensagem = new StringBuilder();
+            if (mapeadosIgnorados.Count > 0)
+            {
+                mensagem.Append("A desserialização do XML foi interrompida para evitar perda silenciosa de dados. ");
+                mensagem.Append("O XmlSerializer ignorou elementos ou atributos que possuem mapeamento na classe de destino. ");
+                mensagem.Append("Isso normalmente indica conteúdo desconhecido ou fora da ordem antes das ocorrências listadas.");
+            }
+            else
+            {
+                mensagem.Append("A desserialização estrita do XML encontrou elementos ou atributos sem mapeamento na classe de destino.");
+            }
+
+            mensagem.AppendLine();
+            mensagem.AppendLine("Ocorrências:");
+
+            foreach (var ocorrencia in ocorrencias.Take(20))
+            {
+                mensagem.Append("- ");
+                mensagem.Append(ocorrencia.Tipo == TipoOcorrenciaDesserializacao.Elemento ? "Elemento" : "Atributo");
+                mensagem.Append(" <");
+                mensagem.Append(ocorrencia.Nome);
+                mensagem.Append("> em ");
+                mensagem.Append(ocorrencia.TipoDestino.FullName);
+                mensagem.Append(" (linha ");
+                mensagem.Append(ocorrencia.Linha);
+                mensagem.Append(", coluna ");
+                mensagem.Append(ocorrencia.Coluna);
+                mensagem.Append(")");
+
+                if (ocorrencia.PossuiMapeamento)
+                {
+                    mensagem.Append(" [conteúdo mapeado que seria perdido]");
+                }
+
+                mensagem.AppendLine();
+            }
+
+            if (ocorrencias.Count > 20)
+            {
+                mensagem.Append("- ... e mais ");
+                mensagem.Append(ocorrencias.Count - 20);
+                mensagem.AppendLine(" ocorrência(s).");
+            }
+
+            throw new DesserializacaoXMLException(mensagem.ToString().TrimEnd());
+        }
+
+        /// <summary>
+        /// Verifica se a ocorrência desconhecida corresponde a um membro serializável do tipo de destino.
+        /// </summary>
+        private static bool PossuiMapeamento(OcorrenciaDesserializacao ocorrencia)
+        {
+            var membros = ocorrencia.TipoDestino.GetMembers(BindingFlags.Instance | BindingFlags.Public)
+                .Where(x => x.MemberType == MemberTypes.Property || x.MemberType == MemberTypes.Field);
+
+            foreach (var membro in membros)
+            {
+                if (membro.GetCustomAttributes(typeof(XmlIgnoreAttribute), true).Any())
+                {
+                    continue;
+                }
+
+                if (ocorrencia.Tipo == TipoOcorrenciaDesserializacao.Elemento && ElementoPossuiMapeamento(membro, ocorrencia))
+                {
+                    return true;
+                }
+
+                if (ocorrencia.Tipo == TipoOcorrenciaDesserializacao.Atributo && AtributoPossuiMapeamento(membro, ocorrencia))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verifica o mapeamento de um elemento XML em um membro.
+        /// </summary>
+        private static bool ElementoPossuiMapeamento(MemberInfo membro, OcorrenciaDesserializacao ocorrencia)
+        {
+            var atributosElemento = membro.GetCustomAttributes(typeof(XmlElementAttribute), true).Cast<XmlElementAttribute>().ToList();
+            foreach (var atributo in atributosElemento)
+            {
+                var nome = string.IsNullOrWhiteSpace(atributo.ElementName) ? membro.Name : atributo.ElementName;
+                if (nome == ocorrencia.Nome && NamespaceElementoCorresponde(ocorrencia.TipoDestino, atributo.Namespace, ocorrencia.Namespace))
+                {
+                    return true;
+                }
+            }
+
+            var atributoArray = membro.GetCustomAttributes(typeof(XmlArrayAttribute), true).Cast<XmlArrayAttribute>().FirstOrDefault();
+            if (atributoArray != null)
+            {
+                var nome = string.IsNullOrWhiteSpace(atributoArray.ElementName) ? membro.Name : atributoArray.ElementName;
+                return nome == ocorrencia.Nome && NamespaceElementoCorresponde(ocorrencia.TipoDestino, atributoArray.Namespace, ocorrencia.Namespace);
+            }
+
+            var possuiMapeamentoExplicito = atributosElemento.Count > 0 ||
+                membro.GetCustomAttributes(typeof(XmlAttributeAttribute), true).Any() ||
+                membro.GetCustomAttributes(typeof(XmlTextAttribute), true).Any() ||
+                membro.GetCustomAttributes(typeof(XmlAnyElementAttribute), true).Any() ||
+                membro.GetCustomAttributes(typeof(XmlAnyAttributeAttribute), true).Any();
+
+            return !possuiMapeamentoExplicito &&
+                membro.Name == ocorrencia.Nome &&
+                NamespaceElementoCorresponde(ocorrencia.TipoDestino, null, ocorrencia.Namespace);
+        }
+
+        /// <summary>
+        /// Verifica o mapeamento de um atributo XML em um membro.
+        /// </summary>
+        private static bool AtributoPossuiMapeamento(MemberInfo membro, OcorrenciaDesserializacao ocorrencia)
+        {
+            var atributo = membro.GetCustomAttributes(typeof(XmlAttributeAttribute), true).Cast<XmlAttributeAttribute>().FirstOrDefault();
+            if (atributo == null)
+            {
+                return false;
+            }
+
+            var nome = string.IsNullOrWhiteSpace(atributo.AttributeName) ? membro.Name : atributo.AttributeName;
+            var xmlNamespace = atributo.Namespace ?? string.Empty;
+            return nome == ocorrencia.Nome && xmlNamespace == ocorrencia.Namespace;
+        }
+
+        /// <summary>
+        /// Compara o namespace do elemento com o namespace efetivo do mapeamento.
+        /// </summary>
+        private static bool NamespaceElementoCorresponde(Type tipoDestino, string namespaceMapeado, string namespaceXml)
+        {
+            if (namespaceMapeado == null)
+            {
+                var xmlType = tipoDestino.GetCustomAttributes(typeof(XmlTypeAttribute), true).Cast<XmlTypeAttribute>().FirstOrDefault();
+                namespaceMapeado = xmlType?.Namespace ?? string.Empty;
+            }
+
+            return namespaceMapeado == namespaceXml;
+        }
+
+        /// <summary>
+        /// Ocorrência ignorada pelo XmlSerializer durante a desserialização.
+        /// </summary>
+        private sealed class OcorrenciaDesserializacao
+        {
+            public int Coluna { get; set; }
+            public int Linha { get; set; }
+            public string Namespace { get; set; }
+            public string Nome { get; set; }
+            public bool PossuiMapeamento { get; set; }
+            public TipoOcorrenciaDesserializacao Tipo { get; set; }
+            public Type TipoDestino { get; set; }
+        }
+
+        /// <summary>
+        /// Tipo de conteúdo ignorado durante a desserialização.
+        /// </summary>
+        private enum TipoOcorrenciaDesserializacao
+        {
+            Elemento,
+            Atributo
         }
 
         /// <summary>
@@ -722,6 +967,16 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
         public static T Deserializar<T>(XmlDocument doc)
         where T : new() => Deserializar<T>(doc.OuterXml);
+
+        /// <summary>
+        /// Desserializar XML rejeitando elementos e atributos sem mapeamento na classe de destino.
+        /// </summary>
+        /// <typeparam name="T">Tipo do objeto</typeparam>
+        /// <param name="doc">Conteúdo do XML a ser desserializado</param>
+        /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
+        /// <exception cref="DesserializacaoXMLException">Lançada quando o XML contém elementos ou atributos desconhecidos.</exception>
+        public static T DeserializarEstrito<T>(XmlDocument doc)
+        where T : new() => Deserializar<T>(doc.OuterXml, true);
 
         /// <summary>
         /// Detectar qual o tipo de documento fiscal eletrônico do XML

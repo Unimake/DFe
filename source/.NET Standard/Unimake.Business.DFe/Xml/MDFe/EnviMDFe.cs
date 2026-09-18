@@ -3259,7 +3259,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         /// <summary>
         /// Grupo de informações das NFe entregues na prestação parcial do CTe (Este grupo sempre é informado quando indPrestacaoParcial for igual a Sim (1))
         /// </summary>
-        [XmlElement("infNFePresParcial")]
+        [XmlElement("infNFePrestParcial")]
         public List<InfNFePresParcial> InfNFePresParcial { get; set; }
 
         #region ShouldSerialize

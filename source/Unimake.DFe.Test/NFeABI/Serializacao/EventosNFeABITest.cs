@@ -59,7 +59,7 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
                     TpEvento = DFeNFeABI.TipoEventoNFeABI.Cancelamento,
                     XEvento = "Cancelamento homologado",
                     NSeqEvento = 1,
-                    DhRegEvento = new DateTimeOffset(2026, 9, 14, 12, 1, 0, TimeSpan.FromHours(-3)),
+                    DhRegEventoField = "2026-09-14T12:01:00-03:00",
                     NProt = "141260000000001"
                 }
             };
@@ -68,7 +68,7 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
                 Versao = "1.00",
                 IPTransmissor = "127.0.0.1",
                 NPortaCon = 0,
-                DhConexao = new DateTimeOffset(2026, 9, 14, 12, 0, 30, TimeSpan.FromHours(-3)),
+                DhConexaoField = "2026-09-14T12:00:30-03:00",
                 EventoNFeABI = evento,
                 RetEventoNFeABI = retorno
             };

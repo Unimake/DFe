@@ -3158,6 +3158,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
+        public bool ShouldSerializeNAdicao() => NAdicao > 0;
+
         public bool ShouldSerializeNDraw() => !string.IsNullOrWhiteSpace(NDraw);
 
         public bool ShouldSerializeVDescDIField() => VDescDI > 0;
