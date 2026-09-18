@@ -40,7 +40,23 @@ namespace Unimake.DFe.Test.MDFe.Serializacao
 
             var doc2 = xml.GerarXML();
 
-            Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            const string mdfeNamespace = "http://www.portalfiscal.inf.br/mdfe";
+            var gruposOriginais = doc.GetElementsByTagName("infNFePrestParcial", mdfeNamespace);
+            var gruposSerializados = doc2.GetElementsByTagName("infNFePrestParcial", mdfeNamespace);
+
+            Assert.True(gruposOriginais.Count > 0);
+            Assert.Equal(gruposOriginais.Count, gruposSerializados.Count);
+            Assert.Equal(0, doc.GetElementsByTagName("infNFePresParcial", mdfeNamespace).Count);
+            Assert.Equal(0, doc2.GetElementsByTagName("infNFePresParcial", mdfeNamespace).Count);
+
+            for (var i = 0; i < gruposOriginais.Count; i++)
+            {
+                Assert.Equal(
+                    gruposOriginais[i]["chNFe", mdfeNamespace].InnerText,
+                    gruposSerializados[i]["chNFe", mdfeNamespace].InnerText);
+            }
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
 
