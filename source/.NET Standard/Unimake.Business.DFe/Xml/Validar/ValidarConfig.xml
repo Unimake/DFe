@@ -7943,22 +7943,9 @@
 			<Servico tagRaiz="CancelarNfseEnvio" versao="2.04" tagIdentificadora="Pedido">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<TipoServico>NFSeCancelarNfse</TipoServico>
-				<SchemaArquivo></SchemaArquivo>
+				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>Pedido</TagAssinatura>
 				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-				<TagVersao/>
-				<TagLoteAssinatura/>
-				<TagLoteAtributoID/>
-				<TagExtraAssinatura/>
-				<TagExtraAtributoID/>
-				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-			</Servico>
-			<Servico tagRaiz="ConsultarDadosCadastraisEnvio" versao="2.04" tagIdentificadora="Pedido">
-				<Descricao>Consulta os dados cadastrais</Descricao>
-				<TipoServico>NFSeConsultarDadosCadastrais</TipoServico>
-				<SchemaArquivo/>
-				<TagAssinatura>ConsultarDadosCadastraisEnvio</TagAssinatura>
-				<TagAtributoID>Pedido</TagAtributoID>
 				<TagVersao/>
 				<TagLoteAssinatura/>
 				<TagLoteAtributoID/>
@@ -7969,7 +7956,7 @@
 			<Servico tagRaiz="ConsultarLoteRpsEnvio" versao="2.04" tagIdentificadora="Prestador">
 				<Descricao>Consulta lote RPS</Descricao>
 				<TipoServico>NFSeConsultarLoteRps</TipoServico>
-				<SchemaArquivo></SchemaArquivo>
+				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura/>
 				<TagAtributoID/>
 				<TagVersao/>
@@ -8060,7 +8047,7 @@
 			<Servico tagRaiz="GerarNfseEnvio" versao="2.04" tagIdentificadora="InfDeclaracaoPrestacaoServico">
 				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 				<TipoServico>NFSeGerarNfse</TipoServico>
-				<SchemaArquivo></SchemaArquivo>
+				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
 				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 				<TagVersao/>
@@ -8073,7 +8060,7 @@
 			<Servico tagRaiz="EnviarLoteRpsEnvio" versao="2.04" tagIdentificadora="LoteRps">
 				<Descricao>Recepcionar Lote RPS</Descricao>
 				<TipoServico>NFSeRecepcionarLoteRps</TipoServico>
-				<SchemaArquivo></SchemaArquivo>
+				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
 				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 				<TagVersao>LoteRps</TagVersao>
@@ -8089,7 +8076,7 @@
 					NFSeRecepcionarLoteRpsSincrono
 					<Excecao codMunicipio="2111300">NFSeRecepcionarLoteRps</Excecao>
 				</TipoServico>
-				<SchemaArquivo></SchemaArquivo>
+				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>Rps</TagAssinatura>
 				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 				<TagVersao>LoteRps</TagVersao>
@@ -8102,7 +8089,7 @@
 			<Servico tagRaiz="SubstituirNfseEnvio" versao="2.04" tagIdentificadora="SubstituicaoNfse">
 				<Descricao>Substituir nota fiscal de Serviço</Descricao>
 				<TipoServico>NFSeSubstituirNfse</TipoServico>
-				<SchemaArquivo></SchemaArquivo>
+				<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
 				<TagAssinatura>Pedido</TagAssinatura>
 				<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 				<TagVersao/>
