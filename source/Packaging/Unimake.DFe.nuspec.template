@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Unimake.DFe</id>
+    <version>{{PACKAGE_VERSION}}</version>
+    <title></title>
+    <authors>Wandrey,Marcelo</authors>
+    <owners>Unimake Software</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>http://www.uninfe.com.br/</projectUrl>
+    <iconUrl>https://www.unimake.com.br/uninfe/assets/img/logo_uninfe_flat.png</iconUrl>
+    <description>{{DESCRIPTION}}</description>
+    <releaseNotes>{{RELEASE_NOTES}}</releaseNotes>
+    <copyright>Unimake Software 2024</copyright>
+    <language>pt-BR</language>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.CSharp" version="{{DEPENDENCY_MICROSOFT_CSHARP}}" />
+        <dependency id="Unimake.Utils" version="{{DEPENDENCY_UNIMAKE_UTILS}}" />
+        <dependency id="Unimake.Extensions" version="{{DEPENDENCY_UNIMAKE_EXTENSIONS}}" />
+        <dependency id="Unimake.Cryptography" version="{{DEPENDENCY_UNIMAKE_CRYPTOGRAPHY}}" />
+        <dependency id="System.Net.Http.WinHttpHandler" version="{{DEPENDENCY_WINHTTPHANDLER}}" />
+        <dependency id="System.Security.Cryptography.Xml" version="{{DEPENDENCY_CRYPTOGRAPHY_XML}}" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="{{DFe_DLL}}" target="lib\netstandard2.0" />
+    <file src="{{DFe_PDB}}" target="lib\netstandard2.0" />
+    <file src="{{DFe_XML}}" target="lib\netstandard2.0" />
+    <file src="{{CIOT_DLL}}" target="lib\netstandard2.0" />
+  </files>
+</package>
