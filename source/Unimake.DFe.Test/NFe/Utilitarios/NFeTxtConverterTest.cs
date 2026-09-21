@@ -83,6 +83,7 @@ public class NFeTxtConverterTest
     [InlineData("000002722-nfe.txt")]
     [InlineData("000000001-corrigido-nfe.txt")]
     [InlineData("000000001-rtc-zerado-nfe.txt")]
+    [InlineData("000000011-devolucao-rtc-nfe.txt")]
     [InlineData("NFe_RTC_CST200_Reducao100_TribRegular-nfe.txt")]
     [InlineData("RTC2026-NFe621-nfe.txt")]
     [InlineData("RTC2026-NFe622-nfe.txt")]
@@ -205,6 +206,70 @@ public class NFeTxtConverterTest
             var xml = new XmlDocument();
             xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
             Assert.Equal("0.00", xml.SelectSingleNode("//*[local-name()='total']/*[local-name()='vNFTot']")?.InnerText);
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
+    }
+
+    /// <summary>
+    /// Deve preservar a chave informada e o indicador de escala na devolução com RTC.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveEvidenciarIndEscalaSemCestNaDevolucaoRtc()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000000011-devolucao-rtc-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("NFe33260999999999000191550050000000111003282235", xml.SelectSingleNode("//*[local-name()='infNFe']")?.Attributes?["Id"]?.Value);
+        Assert.Equal("00328223", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='cNF']")?.InnerText);
+        Assert.Equal("S", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='indEscala']")?.InnerText);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='CEST']"));
+        Assert.Equal("102", xml.SelectSingleNode("//*[local-name()='ICMSSN102']/*[local-name()='CSOSN']")?.InnerText);
+        Assert.Equal("000", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("340.00", xml.SelectSingleNode("//*[local-name()='total']/*[local-name()='vNFTot']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("indEscala", validacao.ErrorMessage);
+        Assert.Contains("CEST", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve aceitar a correção do grupo I05c com CEST ou sem indicador de escala.
+    /// </summary>
+    [Theory]
+    [InlineData("I05c||||", null, null)]
+    [InlineData("I05c|1234567|S||", "1234567", "S")]
+    public void ConverterDeveAceitarGrupoCestEscalaValido(string segmentoCorrigido, string cestEsperado, string indEscalaEsperado)
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+
+        try
+        {
+            var conteudo = File.ReadAllText(CaminhoArquivo("000000011-devolucao-rtc-nfe.txt"))
+                .Replace("I05c||S||", segmentoCorrigido);
+            File.WriteAllText(arquivoTemporario, conteudo);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            Assert.Equal(cestEsperado, xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='CEST']")?.InnerText);
+            Assert.Equal(indEscalaEsperado, xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='indEscala']")?.InnerText);
+
+            var validacao = new ValidarSchema();
+            validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+            Assert.False(validacao.Success);
+            Assert.Contains("Signature", validacao.ErrorMessage);
+            Assert.DoesNotContain("indEscala", validacao.ErrorMessage);
+            Assert.DoesNotContain("CEST", validacao.ErrorMessage);
         }
         finally
         {
