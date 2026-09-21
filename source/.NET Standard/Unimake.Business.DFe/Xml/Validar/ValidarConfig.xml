@@ -7940,6 +7940,19 @@
 			</Servico>
 		</Padrao>
 		<Padrao nome="ISSNET">
+			<Servico tagRaiz="ConsultarDadosCadastraisEnvio" versao="2.04" tagIdentificadora="Pedido">
+				<Descricao>Consulta os dados cadastrais</Descricao>
+				<TipoServico>NFSeConsultarDadosCadastrais</TipoServico>
+				<SchemaArquivo/>
+				<TagAssinatura>ConsultarDadosCadastraisEnvio</TagAssinatura>
+				<TagAtributoID>Pedido</TagAtributoID>
+				<TagVersao/>
+				<TagLoteAssinatura/>
+				<TagLoteAtributoID/>
+				<TagExtraAssinatura/>
+				<TagExtraAtributoID/>
+				<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			</Servico>
 			<Servico tagRaiz="CancelarNfseEnvio" versao="2.04" tagIdentificadora="Pedido">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
 				<TipoServico>NFSeCancelarNfse</TipoServico>
