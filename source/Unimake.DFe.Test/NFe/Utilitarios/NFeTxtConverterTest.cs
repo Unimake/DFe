@@ -84,6 +84,7 @@ public class NFeTxtConverterTest
     [InlineData("000000001-corrigido-nfe.txt")]
     [InlineData("000000001-rtc-zerado-nfe.txt")]
     [InlineData("000000011-devolucao-rtc-nfe.txt")]
+    [InlineData("000000011-devolucao-rtc-referenciada-nfe.txt")]
     [InlineData("NFe_RTC_CST200_Reducao100_TribRegular-nfe.txt")]
     [InlineData("RTC2026-NFe621-nfe.txt")]
     [InlineData("RTC2026-NFe622-nfe.txt")]
@@ -270,6 +271,78 @@ public class NFeTxtConverterTest
             Assert.Contains("Signature", validacao.ErrorMessage);
             Assert.DoesNotContain("indEscala", validacao.ErrorMessage);
             Assert.DoesNotContain("CEST", validacao.ErrorMessage);
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
+    }
+
+    /// <summary>
+    /// Deve gerar a devolução RTC com referência ao item do documento original.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveGerarDevolucaoRtcComDfeReferenciado()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000000011-devolucao-rtc-referenciada-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("4", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='finNFe']")?.InnerText);
+        Assert.Equal("33260999999999000191550050000000081003099869", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='NFref']/*[local-name()='refNFe']")?.InnerText);
+        Assert.Equal("33260999999999000191550050000000081003099869", xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='DFeReferenciado']/*[local-name()='chaveAcesso']")?.InnerText);
+        Assert.Equal("88888888000191", xml.SelectSingleNode("//*[local-name()='dest']/*[local-name()='CNPJ']")?.InnerText);
+        Assert.Equal("2", xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='DFeReferenciado']/*[local-name()='nItem']")?.InnerText);
+        Assert.Equal("000", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("312.00", xml.SelectSingleNode("//*[local-name()='total']/*[local-name()='vNFTot']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.DoesNotContain("DFeReferenciado", validacao.ErrorMessage);
+        Assert.DoesNotContain("nItem", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve aceitar a devolução RTC com referência somente no item e emitente igual ao destinatário atual.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveAceitarDevolucaoRtcComReferenciaCorretaNoItem()
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+
+        try
+        {
+            var linhas = File.ReadAllLines(CaminhoArquivo("000000011-devolucao-rtc-referenciada-nfe.txt"));
+            linhas = Array.FindAll(linhas, linha =>
+                !linha.StartsWith("BA|", StringComparison.OrdinalIgnoreCase) &&
+                !linha.StartsWith("BA02|", StringComparison.OrdinalIgnoreCase));
+            for (var i = 0; i < linhas.Length; i++)
+            {
+                if (linhas[i].StartsWith("VC01|", StringComparison.OrdinalIgnoreCase))
+                {
+                    linhas[i] = "VC01|33260988888888000191550050000000081003099869|2|";
+                }
+            }
+            File.WriteAllLines(arquivoTemporario, linhas);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            Assert.Null(xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='NFref']"));
+            Assert.Equal("33260988888888000191550050000000081003099869", xml.SelectSingleNode("//*[local-name()='DFeReferenciado']/*[local-name()='chaveAcesso']")?.InnerText);
+            Assert.Equal("88888888000191", xml.SelectSingleNode("//*[local-name()='dest']/*[local-name()='CNPJ']")?.InnerText);
+
+            var validacao = new ValidarSchema();
+            validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+            Assert.False(validacao.Success);
+            Assert.Contains("Signature", validacao.ErrorMessage);
+            Assert.DoesNotContain("DFeReferenciado", validacao.ErrorMessage);
         }
         finally
         {
