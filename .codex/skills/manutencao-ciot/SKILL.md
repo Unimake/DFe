@@ -46,7 +46,7 @@ Não afrouxe o XSD ANTT para acomodar uma regra exclusiva da eFrete. Valide eFre
 - Para transporte e autenticação, execute `Executar()` com transporte controlado, cobrindo GET com corpo, POST, token, login, certificado, sucesso e erro até `Result`.
 - Para retornos, valide propriedades tipadas e o XML final completo, incluindo ordem e grupos repetidos. Não considere suficiente testar somente o mapper isolado.
 - Mantenha pelo menos uma regressão explícita da ANTT ao alterar código compartilhado.
-- Compile a biblioteca principal com `--no-restore`, execute apenas as classes CIOT afetadas pelo runner xUnit v3 e rode o filtro CIOT correspondente do `UniNFe.Test` em `Debug`.
+- Compile a biblioteca principal com `--no-restore` e execute apenas as classes CIOT afetadas pelo runner xUnit v3. Quando a mudança atingir a integração com o UniNFe, gere um pacote offline da DLL, atualize o UniNFe localmente para essa versão e só então rode o filtro CIOT correspondente do `UniNFe.Test` e os builds relevantes.
 - Execute `INTEROP_Release` quando mudar API pública, enum, coleção, nullable, dependência ou transporte usado pela compilação COM.
 
 Testes reais na homologação eFrete são opcionais, exigem autorização explícita e credenciais fornecidas fora do repositório. Nunca grave ou reproduza segredos em código, massas, logs ou respostas.

@@ -29,7 +29,9 @@ Leia este arquivo quando a manutenção atingir configuração, tarefas ou rotea
 
 ## Build BETA e testes
 
-- Em `Debug`/BETA, confirme que os projetos usam `ProjectReference` para o checkout local da Unimake.DFe, não uma DLL NuGet antiga.
+- Debug, BETA e Release usam `Unimake.DFe` exclusivamente por NuGet. Não adicione `ProjectReference` para o checkout local nem inclua o projeto da DLL na solução do UniNFe.
+- Antes de validar uma alteração ainda não publicada, execute `source\packDFeOffline.bat`, atualize localmente todos os consumidores do UniNFe para a versão exata criada em `C:\projetos\NuGetOffline` e não faça commit dessa versão enquanto ela não existir no nuget.org.
+- Confirme que `Unimake.Business.DFe.dll` e `GeradorCIOTShared.dll` vêm do mesmo pacote em `lib/netstandard2.0`.
 - Teste reconhecimento da raiz, task, extensão, propagação das credenciais e geração de retorno/erro.
-- Depois de testes CIOT da DLL, compile `C:\projetos\github\UniNFe\source\UniNFe.Test\UniNFe.Test.csproj` em `Debug` e execute o filtro CIOT correspondente.
+- Depois de instalar o pacote offline, compile `C:\projetos\github\UniNFe\source\UniNFe.Test\UniNFe.Test.csproj` e execute o filtro CIOT correspondente.
 - Quando o problema ocorrer somente no executável BETA, confira a DLL efetivamente copiada para `source\uninfe\bin`, mas não trate data do EXE como prova da versão da DLL.
