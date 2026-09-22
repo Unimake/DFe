@@ -1244,6 +1244,126 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
 		</Servico>
+		<Servico tagRaiz="ConsultarSituacaoTransportador" versao="1.00" provedorCIOT="EFrete">
+			<Descricao>CIOT eFrete - Consultar situação do transportador</Descricao>
+			<SchemaArquivo>EFrete.ciotEFrete_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>ConsultarSituacaoTransportador</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="ConsultarFrotaTransportador" versao="1.00" provedorCIOT="EFrete">
+			<Descricao>CIOT eFrete - Consultar frota do transportador</Descricao>
+			<SchemaArquivo>EFrete.ciotEFrete_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>ConsultarFrotaTransportador</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="DeclaracaoOperacaoTransporte" versao="1.00" provedorCIOT="EFrete">
+			<Descricao>CIOT eFrete - Declaração da operação de transporte</Descricao>
+			<SchemaArquivo>EFrete.ciotEFrete_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>DeclaracaoOperacaoTransporte</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="CancelamentoOperacaoTransporte" versao="1.00" provedorCIOT="EFrete">
+			<Descricao>CIOT eFrete - Cancelamento da operação de transporte</Descricao>
+			<SchemaArquivo>EFrete.ciotEFrete_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>CancelamentoOperacaoTransporte</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="EncerramentoOperacaoTransporte" versao="1.00" provedorCIOT="EFrete">
+			<Descricao>CIOT eFrete - Encerramento da operação de transporte</Descricao>
+			<SchemaArquivo>EFrete.ciotEFrete_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>EncerramentoOperacaoTransporte</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="ConsultarCIOTGerado" versao="1.00" provedorCIOT="EFrete">
+			<Descricao>CIOT eFrete - Consultar CIOT gerado</Descricao>
+			<SchemaArquivo>EFrete.ciotEFrete_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>ConsultarCIOTGerado</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="GravarMotorista" versao="1.00" provedorCIOT="EFrete">
+			<Descricao>CIOT eFrete - Gravar motorista</Descricao>
+			<SchemaArquivo>EFrete.ciotEFrete_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>GravarMotorista</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="GravarProprietario" versao="1.00" provedorCIOT="EFrete">
+			<Descricao>CIOT eFrete - Gravar proprietário</Descricao>
+			<SchemaArquivo>EFrete.ciotEFrete_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>GravarProprietario</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="GravarVeiculo" versao="1.00" provedorCIOT="EFrete">
+			<Descricao>CIOT eFrete - Gravar veículo</Descricao>
+			<SchemaArquivo>EFrete.ciotEFrete_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>GravarVeiculo</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
+		<Servico tagRaiz="ObterOperacaoTransportePdf" versao="1.00" provedorCIOT="EFrete">
+			<Descricao>CIOT eFrete - Obter operação de transporte PDF</Descricao>
+			<SchemaArquivo>EFrete.ciotEFrete_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura/>
+			<TagAtributoID/>
+			<TagVersao>ObterOperacaoTransportePdf</TagVersao>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<TagExtraAssinatura/>
+			<TagExtraAtributoID/>
+			<TargetNS>http://www.antt.gov.br/ciot</TargetNS>
+		</Servico>
 	</CIOT>
 	<!--CTe-->
 	<CTe>

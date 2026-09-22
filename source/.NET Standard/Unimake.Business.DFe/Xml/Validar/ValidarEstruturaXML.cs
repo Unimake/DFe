@@ -1043,8 +1043,7 @@ namespace Unimake.Business.DFe
 
         private static XmlNode TratarDFe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument xmlConfig)
         {
-
-            return ResolvedorServicoValidacao.ResolverDFe(versao, tipoDFe, tagRaiz, xmlConfig);
+            return ResolvedorServicoValidacao.ResolverDFe(xml, versao, tipoDFe, tagRaiz, xmlConfig);
         }
 
         private static InformacaoXML MontarInformacaoGeral(XmlNode servico, int codigoConfiguracao)
@@ -2015,6 +2014,10 @@ namespace Unimake.Business.DFe
                 case "ConsultarExcecao":
                 case "ConsultarCIOTGerado":
                 case "GerarIdOperacaoTransporte":
+                case "GravarMotorista":
+                case "GravarProprietario":
+                case "GravarVeiculo":
+                case "ObterOperacaoTransportePdf":
                     tipoDFe = TipoDFe.CIOT;
                     break;
 

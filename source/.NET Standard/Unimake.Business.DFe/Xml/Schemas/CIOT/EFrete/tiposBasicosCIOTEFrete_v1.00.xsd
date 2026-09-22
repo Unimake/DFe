@@ -143,9 +143,9 @@
       <xs:element minOccurs="1" maxOccurs="1" name="Combustivel" type="xs:double" />
       <xs:element minOccurs="1" maxOccurs="1" name="Pedagio" type="xs:double" />
       <xs:element minOccurs="1" maxOccurs="1" name="Seguro" type="xs:double" />
-      <xs:element minOccurs="1" maxOccurs="1" name="OutrosCreditos" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OutrosCreditos" type="xs:double" />
       <xs:element minOccurs="0" maxOccurs="1" name="JustificativaOutrosCreditos" type="xs:string" />
-      <xs:element minOccurs="1" maxOccurs="1" name="OutrosDebitos" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OutrosDebitos" type="xs:double" />
       <xs:element minOccurs="0" maxOccurs="1" name="JustificativaOutrosDebitos" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
