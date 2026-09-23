@@ -10,6 +10,18 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Os testes ficam em `source/Unimake.DFe.Test`, usam xUnit v3 e miram `net8.0`.
 - Exemplos em `Exemplos/` atendem várias linguagens e não devem dirigir a arquitetura da biblioteca principal.
 
+## Empacotamento NuGet e integração com o UniNFe
+
+- A automação oficial fica em `source/packDFeOffline.bat`, `source/packDFeNuget.bat` e `source/Packaging/Pack-DFe.ps1`; não monte pacotes manualmente nem crie outro fluxo paralelo.
+- O pacote `Unimake.DFe` deve conter somente `lib/netstandard2.0`, com `Unimake.Business.DFe.dll`, PDB, XML e `GeradorCIOTShared.dll`. Não duplique os mesmos binários em `lib/net472`; consumidores .NET Framework 4.7.2 ou superiores usam os assets `netstandard2.0`.
+- A DLL `GeradorCIOTShared.dll` acompanha o mesmo pacote e deve ser validada contra `source/.NET Standard/Unimake.Business.DFe/ThirdParty/GeradorCIOTShared/GeradorCIOTShared.dll`. Não crie pacote ou referência externa separada para ela.
+- Use `source/packDFeOffline.bat` para gerar versões imutáveis no feed local `C:\projetos\NuGetOffline`. A fonte `Unimake Offline` é configuração do usuário e não deve ser gravada em `NuGet.Config` versionado.
+- Use `source/packDFeNuget.bat` somente para uma publicação explicitamente autorizada. A publicação exige branch `main`, árvore limpa, sincronismo com `origin/main` e `NUGET_API_KEY` no ambiente; nunca grave ou exiba chaves em scripts, arquivos ou argumentos de linha de comando.
+- Release notes vêm dos commits elegíveis do GitHub no intervalo informado. Preserve a descrição institucional em UTF-8 e as validações de versão, dependências, conteúdo e hash do CIOT.
+- O modo `-DryRun` é o caminho padrão para validar o fluxo oficial sem publicar nem persistir o pacote ou versões rastreadas.
+- Debug, Beta e Release do UniNFe consomem a DLL exclusivamente pelo pacote NuGet. Nunca instrua a inclusão deste checkout na solução do UniNFe nem recrie `ProjectReference` para a biblioteca.
+- Para validar uma alteração da DLL no UniNFe antes da publicação oficial, gere um novo pacote offline, atualize localmente o UniNFe para essa versão exata, execute os builds/testes relevantes e não faça commit da versão no UniNFe enquanto ela não existir no nuget.org.
+
 ## Organização por domínio fiscal
 
 - Preserve a separação por tipo de DFe. Quando implementar algo de NFe, CTe, NFSe etc., mantenha arquivos no respectivo diretório em `Xml/`, `Servicos/`, `Servicos/Config/`, `Validator/` e `Unimake.DFe.Test/`.
@@ -110,7 +122,7 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Ao implementar algo novo ou adaptar comportamento existente, execute somente os testes novos ou alterados. Não rode toda a suíte por padrão, pois ela é grande e demorada.
 - Se precisar validar regressão de um DFe específico, filtre pelos testes do DFe ou pela classe/método afetado. Rode todos os testes apenas quando a mudança atingir infraestrutura compartilhada, serialização base, assinatura, transporte, validação global ou quando isso for solicitado explicitamente.
 - A suíte integral contém casos que exigem certificado A1 e serviços externos. Para transporte compartilhado, execute-a somente em ambiente preparado; sem esses recursos, não enfraqueça validação/certificado nem trate a falha ambiental como regressão. Registre a limitação e mantenha verdes os testes determinísticos do transporte, o build principal e o `UniNFe.Test` Debug.
-- Sempre que executar testes unitários da DLL, execute também os testes unitários do projeto `C:\projetos\github\UniNFe\source\UniNFe.Test\UniNFe.Test.csproj` em `Debug`. Nessa configuração, os projetos do UniNFe usam `ProjectReference` para este checkout e validam a DLL recém-alterada; aplique no UniNFe um filtro correspondente ao escopo testado na DLL quando houver uma suíte focada equivalente.
+- Sempre que executar testes unitários da DLL e a mudança afetar a integração com o UniNFe, gere primeiro um pacote offline desta DLL e atualize localmente `C:\projetos\github\UniNFe` para essa versão. Depois execute os testes do projeto `source/UniNFe.Test/UniNFe.Test.csproj` e os builds relevantes; aplique um filtro correspondente ao escopo testado na DLL quando houver uma suíte focada equivalente. O UniNFe não usa mais `ProjectReference` para este checkout.
 
 ## Massas TXT de regressão e comparação antes/depois
 
@@ -148,7 +160,7 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Escreva comentários XML (`/// <summary>`) em APIs públicas; o build trata `CS1591` como erro no projeto principal.
 - Mantenha mensagens e documentação em português quando o código existente estiver em português.
 - Não faça refatorações amplas junto com uma correção funcional. Alterações devem ser pequenas, rastreáveis e alinhadas ao DFe afetado.
-- Evite alterar arquivos gerados, pacotes em `source/Unimake.DFe/packages`, binários, `Compilacao`, `bin` ou `obj`.
+- Evite alterar arquivos gerados, pacotes em `source/Unimake.DFe/packages`, binários, `Compilacao`, `bin` ou `obj`. A exceção é a substituição controlada de `source/Unimake.DFe/Unimake.DFe.nupkg` pelo fluxo oficial de publicação, quando explicitamente autorizada.
 
 ## Checklist antes de concluir uma mudança
 
@@ -158,6 +170,7 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Configuração, schema e recursos embutidos foram atualizados juntos.
 - Testes xUnit foram adicionados ou ajustados com recursos XML representativos.
 - Build recomendado: `dotnet build "source/.NET Standard/Unimake.Business.DFe/Unimake.Business.DFe.csproj" --no-restore`.
+- Quando a mudança afetar empacotamento ou consumo pelo UniNFe, valide `source/Packaging/Pack-DFe.ps1` em `-DryRun` e confirme que o pacote contém apenas os assets `netstandard2.0`, incluindo `GeradorCIOTShared.dll`.
 - Para xUnit v3 neste projeto, compile `Unimake.DFe.Test.csproj` e execute a DLL gerada diretamente com `dotnet "source/Unimake.DFe.Test/bin/Debug/net8.0/Unimake.DFe.Test.dll" -class "<namespace.classe>"`; não use o alvo VSTest legado quando o SDK o rejeitar.
 
 ## Planejamento NF-e ABI (DevPlanner)

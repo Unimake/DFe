@@ -177,6 +177,40 @@ namespace Unimake.DFe.Test.CIOT.Serializacao
 
         [Fact]
         [Trait("DFe", "CIOT")]
+        public void ValoresViagemOmitemCreditosEDebitosOpcionaisZerados()
+        {
+            var valores = new ValoresViagemCIOT
+            {
+                TotalOperacao = 100,
+                TotalViagem = 100,
+                TotalDeAdiantamento = 40,
+                TotalDeQuitacao = 60,
+                Combustivel = 0,
+                Pedagio = 0,
+                Seguro = 0
+            };
+            var declaracao = new DeclaracaoOperacaoTransporte
+            {
+                ProvedorCIOT = ProvedorCIOT.EFrete,
+                TipoOperacao = TipoOperacaoTransporteCIOT.CargaLotacao,
+                IndContingencia = false,
+                OrigemDestino = new System.Collections.Generic.List<OrigemDestino>
+                {
+                    new OrigemDestino { Valores = valores }
+                }
+            };
+
+            var xml = declaracao.GerarXML();
+
+            Assert.Empty(xml.GetElementsByTagName("OutrosCreditos").Cast<XmlNode>());
+            Assert.Empty(xml.GetElementsByTagName("JustificativaOutrosCreditos").Cast<XmlNode>());
+            Assert.Empty(xml.GetElementsByTagName("OutrosDebitos").Cast<XmlNode>());
+            Assert.Empty(xml.GetElementsByTagName("JustificativaOutrosDebitos").Cast<XmlNode>());
+            Assert.Single(xml.GetElementsByTagName("Seguro").Cast<XmlNode>());
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
         public void ModeloFracionadoContemContratantesAdicionais()
         {
             var declaracao = Ler(@"..\..\..\CIOT\Resources\efrete-declaracao-carga-fracionada.xml");

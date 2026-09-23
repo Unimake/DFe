@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Xml.Validar
 {
@@ -23,7 +24,7 @@ namespace Unimake.Business.DFe.Xml.Validar
                 return ResolverPorTagIdentificadora(xml, tipoDFe, catalogo);
             }
 
-            return ResolverDFe(versao, tipoDFe, tagRaiz, catalogo);
+            return ResolverDFe(xml, versao, tipoDFe, tagRaiz, catalogo);
         }
 
         internal static XmlNode ResolverPorTagIdentificadora(XmlDocument xml, TipoDFe tipoDFe, XmlDocument catalogo)
@@ -93,7 +94,18 @@ namespace Unimake.Business.DFe.Xml.Validar
 
         internal static XmlNode ResolverDFe(string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument catalogo)
         {
+            return ResolverDFe(null, versao, tipoDFe, tagRaiz, catalogo);
+        }
+
+        internal static XmlNode ResolverDFe(XmlDocument xml, string versao, TipoDFe tipoDFe, string tagRaiz, XmlDocument catalogo)
+        {
             var servicos = ObterServicosDFe(catalogo, tipoDFe);
+
+            if (tipoDFe == TipoDFe.CIOT)
+            {
+                servicos = FiltrarServicosCIOTPorProvedor(servicos, ObterProvedorCIOT(xml));
+            }
+
             var servico = Procurar(servicos, tagRaiz, versao);
 
             if (servico == null && !string.IsNullOrWhiteSpace(versao))
@@ -119,6 +131,45 @@ namespace Unimake.Business.DFe.Xml.Validar
             }
 
             return servico;
+        }
+
+        private static List<XmlNode> FiltrarServicosCIOTPorProvedor(IEnumerable<XmlNode> servicos, ProvedorCIOT provedor)
+        {
+            return servicos
+                .Where(x =>
+                {
+                    var provedorConfigurado = x.Attributes?["provedorCIOT"]?.Value;
+
+                    if (provedor == ProvedorCIOT.EFrete)
+                    {
+                        return string.Equals(provedorConfigurado, nameof(ProvedorCIOT.EFrete), StringComparison.Ordinal);
+                    }
+
+                    return string.IsNullOrWhiteSpace(provedorConfigurado) ||
+                        string.Equals(provedorConfigurado, nameof(ProvedorCIOT.ANTT), StringComparison.Ordinal);
+                })
+                .ToList();
+        }
+
+        private static ProvedorCIOT ObterProvedorCIOT(XmlDocument xml)
+        {
+            var tagProvedor = xml?.DocumentElement?
+                .ChildNodes
+                .Cast<XmlNode>()
+                .FirstOrDefault(x => x.NodeType == XmlNodeType.Element && x.LocalName == "ProvedorCIOT");
+
+            if (tagProvedor == null || string.IsNullOrWhiteSpace(tagProvedor.InnerText))
+            {
+                return ProvedorCIOT.ANTT;
+            }
+
+            ProvedorCIOT provedor;
+            if (!Enum.TryParse(tagProvedor.InnerText.Trim(), false, out provedor) || !Enum.IsDefined(typeof(ProvedorCIOT), provedor))
+            {
+                throw new ValidarXMLException("A tag ProvedorCIOT deve conter ANTT ou EFrete.");
+            }
+
+            return provedor;
         }
 
         private static List<XmlNode> ObterServicosDFe(XmlDocument catalogo, TipoDFe tipoDFe)

@@ -154,6 +154,73 @@ namespace Unimake.DFe.Test.CIOT.Validacao
 
         [Fact]
         [Trait("DFe", "CIOT")]
+        public void SchemaEFreteAceitaCreditosEDebitosOpcionaisAusentes()
+        {
+            var xml = File.ReadAllText(CaminhoRecurso("efrete-declaracao-carga-lotacao-completa.xml"))
+                .Replace("\t\t\t\t<OutrosCreditos>75.5</OutrosCreditos>\r\n", string.Empty)
+                .Replace("\t\t\t\t<OutrosCreditos>75.5</OutrosCreditos>\n", string.Empty)
+                .Replace("\t\t\t\t<JustificativaOutrosCreditos>PREMIO DE DESEMPENHO</JustificativaOutrosCreditos>\r\n", string.Empty)
+                .Replace("\t\t\t\t<JustificativaOutrosCreditos>PREMIO DE DESEMPENHO</JustificativaOutrosCreditos>\n", string.Empty)
+                .Replace("\t\t\t\t<OutrosDebitos>50.25</OutrosDebitos>\r\n", string.Empty)
+                .Replace("\t\t\t\t<OutrosDebitos>50.25</OutrosDebitos>\n", string.Empty)
+                .Replace("\t\t\t\t<JustificativaOutrosDebitos>ADIANTAMENTO DE DESPESA</JustificativaOutrosDebitos>\r\n", string.Empty)
+                .Replace("\t\t\t\t<JustificativaOutrosDebitos>ADIANTAMENTO DE DESPESA</JustificativaOutrosDebitos>\n", string.Empty);
+            var documento = new XmlDocument();
+            documento.LoadXml(xml);
+            var validador = new ValidarSchema();
+
+            validador.Validar(documento, EFreteSchemaResolver.ObterSchemaArquivo(Servico.CIOTDeclaracaoOperacaoTransporte), NamespaceCIOT);
+
+            Assert.True(validador.Success, validador.ErrorMessage);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void ValidadorCentralSelecionaSchemaEFretePelaTagProvedor()
+        {
+            var documento = new XmlDocument();
+            documento.Load(CaminhoRecurso("efrete-declaracao-carga-lotacao-completa.xml"));
+
+            var resultado = new ValidarEstruturaXML().ValidarServico(documento, CriarConfiguracaoValidacao());
+
+            Assert.True(resultado.Validado, resultado.MensagemRetorno);
+            Assert.Equal("CIOT eFrete - Declaração da operação de transporte", resultado.Descricao);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void ValidadorCentralMantemSchemaANTTQuandoProvedorAusente()
+        {
+            var xml = File.ReadAllText(CaminhoRecurso("declaracaoOperacaoTransporte.xml"))
+                .Replace("\t<ProvedorCIOT>ANTT</ProvedorCIOT>\r\n", string.Empty)
+                .Replace("\t<ProvedorCIOT>ANTT</ProvedorCIOT>\n", string.Empty);
+            var documento = new XmlDocument();
+            documento.LoadXml(xml);
+
+            var resultado = new ValidarEstruturaXML().ValidarServico(documento, CriarConfiguracaoValidacao());
+
+            Assert.True(resultado.Validado, resultado.MensagemRetorno);
+            Assert.Equal("CIOT - Declaração da operação de transporte", resultado.Descricao);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
+        public void ValidadorCentralEFreteReportaDecimalInvalidoSemAplicarSchemaANTT()
+        {
+            var xml = File.ReadAllText(CaminhoRecurso("efrete-declaracao-carga-lotacao-completa.xml"))
+                .Replace("<QuantidadeDaMercadoriaNoEmbarque>18000</QuantidadeDaMercadoriaNoEmbarque>", "<QuantidadeDaMercadoriaNoEmbarque>1,</QuantidadeDaMercadoriaNoEmbarque>");
+            var documento = new XmlDocument();
+            documento.LoadXml(xml);
+
+            var resultado = new ValidarEstruturaXML().ValidarServico(documento, CriarConfiguracaoValidacao());
+
+            Assert.False(resultado.Validado);
+            Assert.Contains("QuantidadeDaMercadoriaNoEmbarque", resultado.MensagemRetorno);
+            Assert.DoesNotContain("DocumentoViagem", resultado.MensagemRetorno);
+        }
+
+        [Fact]
+        [Trait("DFe", "CIOT")]
         public void SchemaEFreteRejeitaResponsavelPeloPagamentoNoTomadorServico()
         {
             var documento = new XmlDocument();
@@ -218,6 +285,12 @@ namespace Unimake.DFe.Test.CIOT.Validacao
         }
 
         private static object[] Caso(string arquivo, Servico servico) => new object[] { arquivo, servico };
+
+        private static Configuracao CriarConfiguracaoValidacao() => new Configuracao
+        {
+            CodigoUF = (int)UFBrasil.AN,
+            TipoAmbiente = TipoAmbiente.Homologacao
+        };
 
         private static string CaminhoRecurso(string arquivo) => Path.Combine(@"..\..\..\CIOT\Resources", arquivo);
     }

@@ -317,6 +317,11 @@ namespace Unimake.Business.DFe.Xml.CIOT
         [XmlElement("JustificativaOutrosCreditos")] public string JustificativaOutrosCreditos { get; set; }
         [XmlElement("OutrosDebitos")] public double OutrosDebitos { get; set; }
         [XmlElement("JustificativaOutrosDebitos")] public string JustificativaOutrosDebitos { get; set; }
+
+        public bool ShouldSerializeOutrosCreditos() => OutrosCreditos != 0;
+        public bool ShouldSerializeJustificativaOutrosCreditos() => !string.IsNullOrWhiteSpace(JustificativaOutrosCreditos);
+        public bool ShouldSerializeOutrosDebitos() => OutrosDebitos != 0;
+        public bool ShouldSerializeJustificativaOutrosDebitos() => !string.IsNullOrWhiteSpace(JustificativaOutrosDebitos);
     }
 
 #if INTEROP
