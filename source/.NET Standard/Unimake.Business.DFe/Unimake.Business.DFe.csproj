@@ -3957,9 +3957,9 @@
 		<PackageReference Include="System.Net.Http.Json" Version="10.0.12" />
 		<PackageReference Include="System.Net.Http.WinHttpHandler" Version="10.0.12" GeneratePathProperty="true" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.12" />
-		<PackageReference Include="Unimake.Cryptography" Version="20260826.2146.14" />
-		<PackageReference Include="Unimake.Extensions" Version="20260826.2146.14" />
-		<PackageReference Include="Unimake.Utils" Version="20260826.2146.14" />
+		<PackageReference Include="Unimake.Cryptography" Version="20260918.1832.16" />
+		<PackageReference Include="Unimake.Extensions" Version="20260918.1832.16" />
+		<PackageReference Include="Unimake.Utils" Version="20260918.1832.16" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="$(PkgSystem_Net_Http_WinHttpHandler)\lib\net462\System.Net.Http.WinHttpHandler.dll" Link="System.Net.Http.WinHttpHandler.dll" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" Pack="false" Visible="false" />
