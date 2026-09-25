@@ -90,6 +90,7 @@ public class NFeTxtConverterTest
     [InlineData("RTC2026-NFe622-nfe.txt")]
     [InlineData("RTC2026-NFe623-nfe.txt")]
     [InlineData("RTC2026-NFe624-nfe.txt")]
+    [InlineData("000323950-entrega-futura-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -110,6 +111,62 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// Deve preservar o último grupo de ICMS informado na venda para entrega futura.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarIcmsFinalDaEntregaFutura323950()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000323950-entrega-futura-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("41", xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMS40']/*[local-name()='CST']")?.InnerText);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMS90']"));
+        Assert.Equal("410", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='CST']")?.InnerText);
+        Assert.Equal("70000.00", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+    }
+
+    /// <summary>
+    /// Deve preservar o ICMS 90 quando o ERP usa somente o segmento N02 histórico.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarIcms90DeN02NaEntregaFutura323950()
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+        try
+        {
+            var linhas = Array.FindAll(File.ReadAllLines(CaminhoArquivo("000323950-entrega-futura-nfe.txt")),
+                linha => !linha.StartsWith("N06|", StringComparison.OrdinalIgnoreCase) &&
+                         !linha.StartsWith("--", StringComparison.Ordinal));
+            File.WriteAllLines(arquivoTemporario, linhas);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+            Assert.Equal("90", xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMS90']/*[local-name()='CST']")?.InnerText);
+            Assert.Null(xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='ICMS']/*[local-name()='ICMS00']"));
+
+            var validacao = new ValidarSchema();
+            validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+            Assert.False(validacao.Success);
+            Assert.Contains("Signature", validacao.ErrorMessage);
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
     }
 
     /// <summary>
