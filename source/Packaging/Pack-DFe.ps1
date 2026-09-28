@@ -497,11 +497,19 @@ function Ensure-OfflineSource {
 function Update-TrackedVersion {
     param([Parameter(Mandatory = $true)][string]$AssemblyVersion)
 
-    $content = Get-Content -Raw -LiteralPath $script:ProjectPath
+    $content = [IO.File]::ReadAllText($script:ProjectPath, [Text.Encoding]::UTF8)
     $content = [regex]::Replace($content, '<AssemblyVersion>[^<]+</AssemblyVersion>', "<AssemblyVersion>$AssemblyVersion</AssemblyVersion>")
     $content = [regex]::Replace($content, '<FileVersion>[^<]+</FileVersion>', "<FileVersion>$AssemblyVersion</FileVersion>")
     $temporaryProject = "$($script:ProjectPath).packaging.tmp"
     [IO.File]::WriteAllText($temporaryProject, $content, [Text.UTF8Encoding]::new($false))
+    Move-Item -LiteralPath $temporaryProject -Destination $script:ProjectPath -Force
+}
+
+function Restore-TrackedProject {
+    param([Parameter(Mandatory = $true)][byte[]]$Content)
+
+    $temporaryProject = "$($script:ProjectPath).packaging.tmp"
+    [IO.File]::WriteAllBytes($temporaryProject, $Content)
     Move-Item -LiteralPath $temporaryProject -Destination $script:ProjectPath -Force
 }
 
@@ -555,8 +563,15 @@ try {
     $releaseNotes = Get-ReleaseNotes -Interval $interval
     $temporaryPath = Join-Path ([IO.Path]::GetTempPath()) ("Unimake.DFe.Packaging." + [Guid]::NewGuid().ToString('N'))
     New-Item -ItemType Directory -Path $temporaryPath | Out-Null
+    $originalProjectContent = [IO.File]::ReadAllBytes($script:ProjectPath)
+    $restoreProjectVersion = $true
+    $projectVersionUpdated = $false
 
     try {
+        Update-TrackedVersion -AssemblyVersion $assemblyVersion
+        $projectVersionUpdated = $true
+        Write-Host "AssemblyVersion e FileVersion atualizadas no projeto para $assemblyVersion antes da compilação." -ForegroundColor Green
+
         $buildResult = Build-Package -PackageVersion $packageVersion -AssemblyVersion $assemblyVersion -ReleaseNotes $releaseNotes -TemporaryPath $temporaryPath
         Test-GeneratedPackage -BuildResult $buildResult -PackageVersion $packageVersion -AssemblyVersion $assemblyVersion -ReleaseNotes $releaseNotes -TemporaryPath $temporaryPath
         Show-Summary -PackageVersion $packageVersion -AssemblyVersion $assemblyVersion -Interval $interval -ReleaseNotes $releaseNotes
@@ -569,7 +584,9 @@ try {
         if ($Mode -eq 'Offline') {
             Ensure-OfflineSource
             Invoke-NativeCommand -Command dotnet -Arguments @('nuget', 'push', $buildResult.PackagePath, '--source', $script:OfflineFeed)
+            $restoreProjectVersion = $false
             Write-Host "Pacote enviado para $($script:OfflineFeed)." -ForegroundColor Green
+            Write-Host "AssemblyVersion e FileVersion mantidas no projeto em $assemblyVersion." -ForegroundColor Green
             Write-Host 'Atualização manual no Package Manager Console:'
             Write-Host "Update-Package Unimake.DFe -Version $packageVersion -Source `"$($script:OfflineFeed)`""
             Write-Host 'Não faça commit das referências enquanto esta versão existir somente no feed offline.' -ForegroundColor Yellow
@@ -582,12 +599,15 @@ try {
             exit 0
         }
 
-        Update-TrackedVersion -AssemblyVersion $assemblyVersion
+        $restoreProjectVersion = $false
         Update-TrackedPackage -PackagePath $buildResult.PackagePath
         Invoke-NativeCommand -Command dotnet -Arguments @('nuget', 'push', $buildResult.PackagePath, '--source', $script:NuGetSource)
         Write-Host 'Pacote publicado com sucesso. Revise e faça commit das alterações locais.' -ForegroundColor Green
     }
     finally {
+        if ($restoreProjectVersion -and $projectVersionUpdated) {
+            Restore-TrackedProject -Content $originalProjectContent
+        }
         if (Test-Path -LiteralPath $temporaryPath) {
             Remove-Item -LiteralPath $temporaryPath -Recurse -Force
         }
