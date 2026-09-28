@@ -118,6 +118,7 @@
 		<None Remove="Servicos\Config\DARE\AN.xml" />
 		<None Remove="Servicos\Config\DARE\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\ArapongasPR.xml" />
+		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarujaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarulhosSP.xml" />
@@ -1666,6 +1667,7 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ArapongasPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\PotirendabaSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\BuritisRO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CapelaDeSantanaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
