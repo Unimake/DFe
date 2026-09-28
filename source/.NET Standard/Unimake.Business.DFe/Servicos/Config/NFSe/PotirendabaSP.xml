@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<GerarNfse versao="1.01">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosonline.potirendaba.sp.gov.br:5661/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>recepcionarDPS</WebActionHomologacao>
+			<WebActionProducao>recepcionarDPS</WebActionProducao>
+			<TagLoteAssinatura />
+			<TagLoteAtributoID />
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:nfse="http://www.fiorilli.com.br/nfse-nacional" xmlns:nfse1="http://www.sped.fazenda.gov.br/nfse" xmlns:xd="http://www.w3.org/2000/09/xmldsig#" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns3:RecepcionarDpsResposta</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao />
+			<TargetNS />
+			<AssinaCanonicalizacaoExclusiva>true</AssinaCanonicalizacaoExclusiva>
+			<SignatureAlgorithmType>Sha1</SignatureAlgorithmType>
+		</GerarNfse>
+		<ConsultarLoteRps versao="1.01">
+			<Descricao>Consultar lote DPS</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosonline.potirendaba.sp.gov.br:5661/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>consultarLoteDps</WebActionHomologacao>
+			<WebActionProducao>consultarLoteDps</WebActionProducao>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.fiorilli.com.br/nfse-nacional"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao />
+			<TargetNS />
+		</ConsultarLoteRps>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consultar NFSe</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosonline.potirendaba.sp.gov.br:5661/IssWeb-ejb/IssWebWSNacional/IssWebWSNacionalPortType?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>consultarNfse</WebActionHomologacao>
+			<WebActionProducao>consultarNfse</WebActionProducao>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.fiorilli.com.br/nfse-nacional"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao />
+			<TargetNS />
+		</ConsultarNfse>
+	</Servicos>
+</Configuracoes>
