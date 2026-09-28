@@ -108,7 +108,7 @@
                                                 <xs:documentation>Validação: Deve observar o que segue:</xs:documentation>
                                                 <xs:documentation>a) Deve ser igual ou anterior à data do óbito, se existente (se não for possível obter a data do óbito, deve ser igual ou anterior ao ano do óbito; se não for possível obter a data e o ano do óbito, o evento deve ser recebido mediante alerta);</xs:documentation>
                                                 <xs:documentation>b) Se {cadIni}(./cadIni) = [S], deve ser anterior à data de início da obrigatoriedade dos eventos não periódicos para o ente público no eSocial;</xs:documentation>
-                                                <xs:documentation>c) Se {cadIni}(./cadIni) = [N], deve ser igual ou posterior à data de início da obrigatoriedade dos eventos não periódicos para o ente público no eSocial e igual ou anterior à data atual.</xs:documentation>
+                                                <xs:documentation>c) Se {indSitBenef}(2410_infoBenInicio_indSitBenef) = [1], deve ser igual ou posterior à data de início da obrigatoriedade dos eventos não periódicos para o ente público no eSocial e igual ou anterior à data atual.</xs:documentation>
                                             </xs:annotation>
                                         </xs:element>
                                         <xs:element name="dtPublic" type="xs:date" minOccurs="0">
@@ -126,7 +126,7 @@
                                                     <xs:element name="tpBeneficio" type="TS_tpBeneficio">
                                                         <xs:annotation>
                                                             <xs:documentation>Tipo de benefício.</xs:documentation>
-                                                            <xs:documentation>Validação: Deve ser um código válido e existente na Tabela 25. Se {cadIni}(2410_infoBenInicio_cadIni) = [N], não é permitido utilizar código do grupo [08] dessa tabela.</xs:documentation>
+                                                            <xs:documentation>Validação: Deve ser um código válido e existente na Tabela 25. Se {indSitBenef}(2410_infoBenInicio_indSitBenef) = [1], não é permitido utilizar código do grupo [08] dessa tabela.</xs:documentation>
                                                         </xs:annotation>
                                                     </xs:element>
                                                     <xs:element name="tpPlanRP" type="TS_tpPlanRP" />
@@ -153,7 +153,7 @@
                                                                 <xs:element name="instPenMorte" minOccurs="0">
                                                                     <xs:annotation>
                                                                         <xs:documentation>Informações do instituidor da pensão por morte.</xs:documentation>
-                                                                        <xs:documentation>CONDICAO_GRUPO: O (se {cadIni}(2410_infoBenInicio_cadIni) = [N]); F (se {cadIni}(2410_infoBenInicio_cadIni) = [S])</xs:documentation>
+                                                                        <xs:documentation>CONDICAO_GRUPO: O (se {indSitBenef}(2410_infoBenInicio_indSitBenef) = [1]); OC (se {indSitBenef}(2410_infoBenInicio_indSitBenef) = [2, 3]); F (se {cadIni}(2410_infoBenInicio_cadIni) = [S])</xs:documentation>
                                                                     </xs:annotation>
                                                                     <xs:complexType>
                                                                         <xs:sequence>
@@ -230,7 +230,7 @@
                                                     <xs:element name="cnpjOrgaoAnt" type="TS_cnpj">
                                                         <xs:annotation>
                                                             <xs:documentation>Informar o CNPJ do órgão público anterior.</xs:documentation>
-                                                            <xs:documentation>Validação: Deve ser um CNPJ válido e diferente da inscrição do declarante, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000. Além disso, deve possuir 14 (catorze) algarismos e ser diferente do CNPJ base do órgão público declarante (exceto se {ideEmpregador/nrInsc}(2410_ideEmpregador_nrInsc) tiver 14 (catorze) algarismos) e dos estabelecimentos informados através do evento S-1005.</xs:documentation>
+                                                            <xs:documentation>Validação: Deve ser um CNPJ válido e diferente da inscrição do declarante, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000. Além disso, deve possuir 14 (catorze) algarismos e ser diferente do CNPJ base do órgão público declarante (exceto se {ideEmpregador/nrInsc}(2410_ideEmpregador_nrInsc) tiver 14 (catorze) algarismos). Também deve ser diferente dos estabelecimentos informados através do evento S-1005, exceto se a natureza jurídica do declarante for Administração Pública (grupo [1]).</xs:documentation>
                                                         </xs:annotation>
                                                     </xs:element>
                                                     <xs:element name="nrBeneficioAnt" type="TS_nrBeneficio">

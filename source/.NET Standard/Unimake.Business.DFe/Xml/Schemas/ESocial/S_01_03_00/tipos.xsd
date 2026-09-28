@@ -739,76 +739,36 @@
 
     <xs:complexType name="T_horContratual">
         <xs:sequence>
-            <xs:element name="qtdHrsSem" minOccurs="0">
-                <xs:simpleType>
-                    <xs:annotation>
-                        <xs:documentation>Quantidade média de horas relativas à jornada semanal do trabalhador.</xs:documentation>
-                        <xs:documentation>Validação: Deve ser preenchida se {codCateg}(../codCateg) for diferente de [111]. Se informada, deve ser maior que 0 (zero).</xs:documentation>
-                    </xs:annotation>
-                    <xs:restriction base="xs:decimal">
-                        <xs:totalDigits value="4" />
-                        <xs:fractionDigits value="2" />
-                        <xs:minExclusive value="0" />
-                        <xs:maxInclusive value="99.99" />
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="tpJornada">
-                <xs:simpleType>
-                    <xs:annotation>
-                        <xs:documentation>Tipo de jornada.</xs:documentation>
-                    </xs:annotation>
-                    <xs:restriction base="xs:byte">
-                        <xs:enumeration value="2">
-                            <xs:annotation>
-                                <xs:documentation>Jornada 12 x 36 (12 horas de trabalho seguidas de 36 horas ininterruptas de descanso)</xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="3">
-                            <xs:annotation>
-                                <xs:documentation>Jornada com horário diário fixo e folga variável</xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="4">
-                            <xs:annotation>
-                                <xs:documentation>Jornada com horário diário fixo e folga fixa (no domingo)</xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="5">
-                            <xs:annotation>
-                                <xs:documentation>Jornada com horário diário fixo e folga fixa (exceto no domingo)</xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="6">
-                            <xs:annotation>
-                                <xs:documentation>Jornada com horário diário fixo e folga fixa (em outro dia da semana), com folga adicional periódica no domingo</xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="7">
-                            <xs:annotation>
-                                <xs:documentation>Turno ininterrupto de revezamento</xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="9">
-                            <xs:annotation>
-                                <xs:documentation>Demais tipos de jornada</xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
+            <xs:element name="qtdHrsSem" minOccurs="0" type="TS_qtdHrsSem" />
+            <xs:element name="tpJornada" type="TS_tpJornada" />
             <xs:element name="tmpParc" type="TS_tmpParc" />
-            <xs:element name="horNoturno" minOccurs="0" type="TS_sim_nao">
+            <xs:element name="horNoturno" minOccurs="0" type="TS_horNoturno" />
+            <xs:element name="dscJorn" type="TS_dscJorn" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="T_horContratual_2206">
+        <xs:sequence>
+            <xs:element name="qtdHrsSem" minOccurs="0" type="TS_qtdHrsSem">
                 <xs:annotation>
-                    <xs:documentation>Indicar se a jornada semanal possui horário noturno (no todo ou em parte).</xs:documentation>
-                    <xs:documentation>Validação: Informação obrigatória se {codCateg}(../codCateg) for diferente de [111].</xs:documentation>
+                    <xs:documentation>Quantidade média de horas relativas à jornada semanal do trabalhador.</xs:documentation>
+                    <xs:documentation>Validação: Deve ser preenchida se {codCateg}(../codCateg) for diferente de [111]. Se informada, deve ser maior que 0 (zero).</xs:documentation>
+                    <xs:documentation>Caso {dtAlteracao}(2206_altContratual_dtAlteracao) seja igual ou posterior a [2026-11-23]:</xs:documentation>
+                    <xs:documentation>a) Se {tmpParc}(./tmpParc) = [1], deve ser menor ou igual a [25];</xs:documentation>
+                    <xs:documentation>b) Se {tmpParc}(./tmpParc) = [2], deve ser menor ou igual a [30];</xs:documentation>
+                    <xs:documentation>c) Se {tmpParc}(./tmpParc) = [3], deve ser menor ou igual a [26].</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="dscJorn" type="TS_texto_999">
+            <xs:element name="tpJornada" type="TS_tpJornada" />
+            <xs:element name="tmpParc" type="TS_tmpParc">
                 <xs:annotation>
-                    <xs:documentation>Descrição da jornada semanal contratual, contendo os dias da semana e os respectivos horários contratuais (entrada, saída e intervalos).</xs:documentation>
+                    <xs:documentation>Preencher com o código relativo ao tipo de contrato em tempo parcial.</xs:documentation>
+                    <xs:documentation>Validação: O código [1] só é válido se {codCateg}(../codCateg) = [104]. Os códigos [2, 3] não são válidos se {codCateg}(../codCateg) = [104].</xs:documentation>
+                    <xs:documentation>Se {tpJornada}(./tpJornada) = [2] e {dtAlteracao}(2206_altContratual_dtAlteracao) for igual ou posterior a [2026-11-23], deve ser igual a [0].</xs:documentation>
                 </xs:annotation>
             </xs:element>
+            <xs:element name="horNoturno" minOccurs="0" type="TS_horNoturno" />
+            <xs:element name="dscJorn" type="TS_dscJorn" />
         </xs:sequence>
     </xs:complexType>
 
@@ -1973,6 +1933,13 @@
         <xs:restriction base="TS_texto_255" />
     </xs:simpleType>
 
+    <xs:simpleType name="TS_observacao_trab">
+        <xs:annotation>
+            <xs:documentation>Observação relacionada ao contrato de trabalho.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="TS_texto_255" />
+    </xs:simpleType>    
+
     <!-- Campo {tpLotacao} -->
 
     <xs:simpleType name="TS_tpLotacao">
@@ -2124,7 +2091,8 @@
     <xs:simpleType name="TS_cpfDepIR">
         <xs:annotation>
             <xs:documentation>Número de inscrição no CPF.</xs:documentation>
-            <xs:documentation>Validação: Deve ser um CPF válido e diferente do CPF do declarante pessoa física ({ideEmpregador/nrInsc}(/ideEmpregador_nrInsc)) e do beneficiário ({cpfBenef}(../../cpfBenef)).</xs:documentation>
+            <xs:documentation>Validação: Informação validada na base de dados do CPF.</xs:documentation>
+            <xs:documentation>Deve ser diferente do CPF do declarante pessoa física ({ideEmpregador/nrInsc}(/ideEmpregador_nrInsc)) e do beneficiário ({cpfBenef}(../../cpfBenef)).</xs:documentation>
         </xs:annotation>
         <xs:restriction base="TS_cpf" />
     </xs:simpleType>
@@ -2133,6 +2101,7 @@
         <xs:annotation>
             <xs:documentation>Número de inscrição no CPF.</xs:documentation>
             <xs:documentation>Validação: Deve ser um CPF de dependente cadastrado no eSocial (S-2200/S-2205/S-2300/S-2400/S-2405 ou no grupo {infoDep}(1210_ideBenef_infoIRComplem_infoDep)).</xs:documentation>
+            <xs:documentation>Não podem ser informados os números [00000000000, 00000000191, 11111111111, 22222222222, 33333333333, 44444444444, 55555555555, 66666666666, 77777777777, 88888888888, 99999999999].</xs:documentation>
         </xs:annotation>
         <xs:restriction base="TS_cpf" />
     </xs:simpleType>
@@ -2141,6 +2110,7 @@
         <xs:annotation>
             <xs:documentation>Número do CPF do dependente/beneficiário da pensão alimentícia.</xs:documentation>
             <xs:documentation>Validação: Deve ser um CPF de dependente cadastrado no eSocial (S-2200/S-2205/S-2300/S-2400/S-2405 ou no grupo {infoDep}(../../infoDep)).</xs:documentation>
+            <xs:documentation>Não podem ser informados os números [00000000000, 00000000191, 11111111111, 22222222222, 33333333333, 44444444444, 55555555555, 66666666666, 77777777777, 88888888888, 99999999999].</xs:documentation>
         </xs:annotation>
         <xs:restriction base="TS_cpf" />
     </xs:simpleType>
@@ -2148,7 +2118,8 @@
     <xs:simpleType name="TS_cpfDep">
         <xs:annotation>
             <xs:documentation>Número de inscrição no CPF.</xs:documentation>
-            <xs:documentation>Validação: Deve ser um número de CPF válido, observando o que segue:</xs:documentation>
+            <xs:documentation>Validação: Informação validada na base de dados do CPF. Essa integração não deve ser realizada quando se tratar de recepção de evento extemporâneo.</xs:documentation>
+            <xs:documentation>Também deve observar o que segue:</xs:documentation>
             <xs:documentation>a) O preenchimento é obrigatório se {depIRRF}(./depIRRF) = [S];</xs:documentation>
             <xs:documentation>b) Em arquivo de empregador Pessoa Física, deve ser diferente do CPF informado em {ideEmpregador}(/ideEmpregador);</xs:documentation>
             <xs:documentation>c) Não pode haver mais de um dependente com o mesmo número de CPF.</xs:documentation>
@@ -2159,7 +2130,8 @@
     <xs:simpleType name="TS_cpfDepBenef">
         <xs:annotation>
             <xs:documentation>Número de inscrição no CPF.</xs:documentation>
-            <xs:documentation>Validação: Deve ser um número de CPF válido, observando o que segue:</xs:documentation>
+            <xs:documentation>Validação: Informação validada na base de dados do CPF. Essa integração não deve ser realizada quando se tratar de recepção de evento extemporâneo.</xs:documentation>
+            <xs:documentation>Também deve observar o que segue:</xs:documentation>
             <xs:documentation>a) O preenchimento é obrigatório se {depIRRF}(./depIRRF) = [S];</xs:documentation>
             <xs:documentation>b) Não pode haver mais de um dependente com o mesmo número de CPF.</xs:documentation>
         </xs:annotation>
@@ -3077,6 +3049,11 @@
                     <xs:documentation>Reembolso efetuado pelo empregador como benefício do próprio empregador</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Ressarcimento pelo empregador de despesas com plano de saúde do trabalhador</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
 
@@ -3722,6 +3699,29 @@
             </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
+    
+    <xs:simpleType name="TS_tpRegTrab_1_2_3">
+        <xs:annotation>
+            <xs:documentation>Tipo de regime trabalhista.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:byte">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>CLT - Consolidação das Leis de Trabalho e legislações trabalhistas específicas</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Estatutário/legislações específicas (servidor temporário, militar, agente político, etc.)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Contrato de servidor público declarado nulo</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
 
     <!-- Campo {tpRegPrev} -->
    
@@ -3910,12 +3910,77 @@
         <xs:restriction base="TS_texto_255" />
     </xs:simpleType>
 
+    <!-- Campo {qtdHrsSem} -->
+
+    <xs:simpleType name="TS_qtdHrsSem">
+        <xs:annotation>
+            <xs:documentation>Quantidade média de horas relativas à jornada semanal do trabalhador.</xs:documentation>
+            <xs:documentation>Validação: Deve ser preenchida se {codCateg}(../codCateg) for diferente de [111]. Se informada, deve ser maior que 0 (zero).</xs:documentation>
+            <xs:documentation>Caso {dtAdm}(2200_vinculo_infoRegimeTrab_infoCeletista_dtAdm) ou {dtTransf}(2200_vinculo_sucessaoVinc_dtTransf) (maior data entre elas) seja igual ou posterior a [2026-11-23]:</xs:documentation>
+            <xs:documentation>a) Se {tmpParc}(./tmpParc) = [1], deve ser menor ou igual a [25];</xs:documentation>
+            <xs:documentation>b) Se {tmpParc}(./tmpParc) = [2], deve ser menor ou igual a [30];</xs:documentation>
+            <xs:documentation>c) Se {tmpParc}(./tmpParc) = [3], deve ser menor ou igual a [26].</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="4" />
+            <xs:fractionDigits value="2" />
+            <xs:minExclusive value="0" />
+            <xs:maxInclusive value="99.99" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Campo {tpJornada} -->
+
+    <xs:simpleType name="TS_tpJornada">
+        <xs:annotation>
+            <xs:documentation>Tipo de jornada.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:byte">
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Jornada 12 x 36 (12 horas de trabalho seguidas de 36 horas ininterruptas de descanso)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Jornada com horário diário fixo e folga variável</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>Jornada com horário diário fixo e folga fixa (no domingo)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation>Jornada com horário diário fixo e folga fixa (exceto no domingo)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation>Jornada com horário diário fixo e folga fixa (em outro dia da semana), com folga adicional periódica no domingo</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="7">
+                <xs:annotation>
+                    <xs:documentation>Turno ininterrupto de revezamento</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="9">
+                <xs:annotation>
+                    <xs:documentation>Demais tipos de jornada</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
     <!-- Campo {tmpParc} -->
 
     <xs:simpleType name="TS_tmpParc">
         <xs:annotation>
             <xs:documentation>Preencher com o código relativo ao tipo de contrato em tempo parcial.</xs:documentation>
             <xs:documentation>Validação: O código [1] só é válido se {codCateg}(../codCateg) = [104]. Os códigos [2, 3] não são válidos se {codCateg}(../codCateg) = [104].</xs:documentation>
+            <xs:documentation>Se {tpJornada}(./tpJornada) = [2] e {dtAdm}(2200_vinculo_infoRegimeTrab_infoCeletista_dtAdm) ou {dtTransf}(2200_vinculo_sucessaoVinc_dtTransf) (maior data entre elas) for igual ou posterior a [2026-11-23], deve ser igual a [0].</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:byte">
             <xs:enumeration value="0">
@@ -3939,6 +4004,25 @@
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Campo {horNoturno} -->
+
+    <xs:simpleType name="TS_horNoturno">
+        <xs:annotation>
+            <xs:documentation>Indicar se a jornada semanal possui horário noturno (no todo ou em parte).</xs:documentation>
+            <xs:documentation>Validação: Informação obrigatória se {codCateg}(../codCateg) for diferente de [111].</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="TS_sim_nao" />
+    </xs:simpleType>
+
+    <!-- Campo {dscJorn} -->
+
+    <xs:simpleType name="TS_dscJorn">
+        <xs:annotation>
+            <xs:documentation>Descrição da jornada semanal contratual, contendo os dias da semana e os respectivos horários contratuais (entrada, saída e intervalos).</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="TS_texto_999" />
     </xs:simpleType>
 
     <!-- Campo {codMotAfast} -->
@@ -4038,6 +4122,22 @@
             <xs:documentation>Informação obrigatória e exclusiva se {pensAlim}(./pensAlim) = [2, 3].</xs:documentation>
         </xs:annotation>
         <xs:restriction base="TS_valorMonetario_positivo" />
+    </xs:simpleType>
+
+    <!-- Campo {indCPFDesvinc} -->
+
+    <xs:simpleType name="TS_indCPFDesvinc">
+        <xs:annotation>
+            <xs:documentation>Indicativo de casos especiais de mudança de CPF.</xs:documentation>
+            <xs:documentation>Validação: Preenchimento obrigatório e exclusivo se o novo CPF não possuir o {}(2299_ideVinculo_cpfTrab) vinculado na base da RFB.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:byte">
+            <xs:enumeration value="9">
+                <xs:annotation>
+                    <xs:documentation>CPF novo não possui CPFs vinculados na base da RFB</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
     </xs:simpleType>
 
     <!-- Campo {indRemunCargo} -->

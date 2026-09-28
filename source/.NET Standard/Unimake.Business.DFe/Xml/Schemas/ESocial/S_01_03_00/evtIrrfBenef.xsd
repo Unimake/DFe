@@ -1304,7 +1304,8 @@
                                                                     <xs:simpleType>    
                                                                         <xs:annotation>
                                                                             <xs:documentation>Descrição do rendimento não tributável ou isento do IRRF.</xs:documentation>
-                                                                            <xs:documentation>Origem: {totApurMen/descRendimento}(5002_ideTrabalhador_dmDev_totApurMen_descRendimento). Concatenar os campos encontrados com separador ';' e truncar o conteúdo que ultrapassar o tamanho do campo.</xs:documentation>
+                                                                            <xs:documentation>Origem: valores consolidados do campo {totApurMen/descRendimento}(5002_ideTrabalhador_dmDev_totApurMen_descRendimento).</xs:documentation>
+                                                                            <xs:documentation>Validação: Concatenar os campos encontrados com separador ';' e truncar o conteúdo que ultrapassar o tamanho do campo. Não retornar se {consolidApurMen/vlrIsenOutros}(./vlrIsenOutros) for 0 (zero).</xs:documentation>
                                                                         </xs:annotation>
                                                                         <xs:restriction base="xs:string">
                                                                             <xs:minLength value="1" />

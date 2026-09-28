@@ -186,6 +186,7 @@
                                                             <xs:documentation>Validação: Deve ser um CPF válido e diferente do CPF do empregador e do antigo CPF do trabalhador.</xs:documentation>
                                                         </xs:annotation>
                                                     </xs:element>
+                                                    <xs:element name="indCPFDesvinc" minOccurs="0" type="TS_indCPFDesvinc" />
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>

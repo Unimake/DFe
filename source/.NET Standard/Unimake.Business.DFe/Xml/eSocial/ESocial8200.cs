@@ -470,6 +470,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("CBOCargo")]
         public string CBOCargo { get; set; }
+
+        /// <summary>
+        /// Nome do cargo.
+        /// </summary>
+        [XmlElement("nmCargo")]
+        public string NmCargo { get; set; }
+
+        public bool ShouldSerializeNmCargo() => !string.IsNullOrEmpty(NmCargo);
     }
 
     /// <summary>

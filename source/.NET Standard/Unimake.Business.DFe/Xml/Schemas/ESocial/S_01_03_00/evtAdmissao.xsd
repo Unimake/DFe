@@ -118,7 +118,8 @@
                                                     <xs:element name="infoCota" minOccurs="0" type="TS_sim_nao">
                                                         <xs:annotation>
                                                             <xs:documentation>Informar se o trabalhador deve ser contabilizado no preenchimento de cota de pessoas com deficiência habilitadas ou de beneficiários reabilitados.</xs:documentation>
-                                                            <xs:documentation>Validação: Preenchimento obrigatório e exclusivo se {tpRegTrab}(2200_vinculo_tpRegTrab) = [1]. Somente pode ser informado [S] se pelo menos um dos campos a seguir estiver preenchido com [S]: {defFisica}(./defFisica), {defVisual}(./defVisual), {defAuditiva}(./defAuditiva), {defMental}(./defMental), {defIntelectual}(./defIntelectual) e {reabReadap}(./reabReadap).</xs:documentation>
+                                                            <xs:documentation>Validação: Preenchimento obrigatório e exclusivo se {tpRegTrab}(2200_vinculo_tpRegTrab) = [1] e se {dtAdm}(2200_vinculo_infoRegimeTrab_infoCeletista_dtAdm), {sucessaoVinc/dtTransf}(2200_vinculo_sucessaoVinc_dtTransf) ou {dtAltCPF}(2200_vinculo_mudancaCPF_dtAltCPF) (maior data entre elas) for anterior a [2026-10-26]. Somente pode ser informado [S] se pelo menos um dos campos a seguir estiver preenchido com [S]: {defFisica}(./defFisica), {defVisual}(./defVisual), {defAuditiva}(./defAuditiva), {defMental}(./defMental), {defIntelectual}(./defIntelectual) e {reabReadap}(./reabReadap).</xs:documentation>
+                                                            <xs:documentation>Não informar se {dtAdm}(2200_vinculo_infoRegimeTrab_infoCeletista_dtAdm), {sucessaoVinc/dtTransf}(2200_vinculo_sucessaoVinc_dtTransf) ou {dtAltCPF}(2200_vinculo_mudancaCPF_dtAltCPF) (maior data entre elas) for igual ou posterior a [2026-10-26].</xs:documentation>
                                                             <xs:documentation>Esta validação não deve ser realizada quando se tratar de evento enviado em versão do leiaute anterior a S-1.0.</xs:documentation>
                                                         </xs:annotation>
                                                     </xs:element>
@@ -633,11 +634,7 @@
                                                         </xs:annotation>
                                                         <xs:complexType>
                                                             <xs:sequence>
-                                                                <xs:element name="observacao" type="TS_observacao">
-                                                                    <xs:annotation>
-                                                                        <xs:documentation>Observação relacionada ao contrato de trabalho.</xs:documentation>
-                                                                    </xs:annotation>
-                                                                </xs:element>
+                                                                <xs:element name="observacao" type="TS_observacao_trab" />
                                                             </xs:sequence>
                                                         </xs:complexType>
                                                     </xs:element>

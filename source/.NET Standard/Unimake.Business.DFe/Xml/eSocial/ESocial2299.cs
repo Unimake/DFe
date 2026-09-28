@@ -569,6 +569,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("novoCPF")]
         public string NovoCPF { get; set; }
+
+        /// <summary>
+        /// Indicativo de caso especial de mudança de CPF.
+        /// </summary>
+        [XmlElement("indCPFDesvinc")]
+#if INTEROP
+        public IndicativoCPFDesvinculado IndCPFDesvinc { get; set; } = (IndicativoCPFDesvinculado)(-1);
+#else
+        public IndicativoCPFDesvinculado? IndCPFDesvinc { get; set; }
+#endif
+
+#if INTEROP
+        public bool ShouldSerializeIndCPFDesvinc() => IndCPFDesvinc != (IndicativoCPFDesvinculado)(-1);
+#else
+        public bool ShouldSerializeIndCPFDesvinc() => IndCPFDesvinc != null;
+#endif
     }
 
     /// <summary>

@@ -148,6 +148,12 @@
                                                             <xs:documentation>Validação: Deve ser um código válido e existente na tabela de CBO, com 6 (seis) posições.</xs:documentation>
                                                         </xs:annotation>
                                                     </xs:element>
+                                                    <xs:element name="nmCargo" minOccurs="0" type="TS_texto_100">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Informar o nome do cargo.</xs:documentation>
+                                                            <xs:documentation>Validação: Preenchimento obrigatório se {dtSent}(8200_infoProcesso_dtSent) >= [2026-10-26].</xs:documentation>
+                                                        </xs:annotation>
+                                                    </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
@@ -208,7 +214,7 @@
                                                     </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
-                                        </xs:element>
+                                        </xs:element>                                       
                                         <xs:element name="afastamento" minOccurs="0">
                                             <xs:annotation>
                                                 <xs:documentation>Informações de afastamento do trabalhador.</xs:documentation>
@@ -227,7 +233,7 @@
                                                         <xs:annotation>
                                                             <xs:documentation>Preencher com o código do motivo de afastamento temporário.</xs:documentation>
                                                             <xs:documentation>Validação: Deve ser um código válido e existente na Tabela 18, bem como compatível com o código de categoria do trabalhador, conforme Tabela 18.</xs:documentation>
-                                                            <xs:documentation>Somente podem ser informados os códigos [01, 03, 06, 11, 12, 17, 18, 19, 20, 22, 24, 29, 35].</xs:documentation>
+                                                            <xs:documentation>Somente podem ser informados os códigos [01, 03, 06, 11, 12, 17, 18, 19, 20, 22, 24, 29, 35, 43].</xs:documentation>
                                                         </xs:annotation>
                                                     </xs:element>
                                                 </xs:sequence>
