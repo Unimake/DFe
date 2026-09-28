@@ -2462,7 +2462,9 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private void ProcessarIpiTributado(int nProd, int lenPipesRegistro)
         {
-            ObterIpi(nProd).IPITrib = new DFeNFe.IPITrib
+            var ipi = ObterIpi(nProd);
+            ipi.IPINT = null;
+            ipi.IPITrib = new DFeNFe.IPITrib
             {
                 CST = this.LerString(XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.CST)), ObOp.Obrigatorio, 2, 2),
                 VIPI = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.VIPI)), ObOp.Opcional, 15)
@@ -2475,27 +2477,36 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             var ipi = ObterIpi(nProd);
             if (cst == "00" || cst == "49" || cst == "50" || cst == "99")
             {
+                ipi.IPINT = null;
                 ipi.IPITrib = new DFeNFe.IPITrib { CST = cst };
             }
             else
             {
+                ipi.IPITrib = null;
                 ipi.IPINT = new DFeNFe.IPINT { CST = cst };
             }
         }
 
         private void ProcessarIpiBaseAliquota(int nProd, int lenPipesRegistro)
         {
+            var vbc = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
+            var aliquota = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.PIPI)), ObOp.Obrigatorio, 7);
+            if (ObterIpi(nProd).IPINT != null) return;
             var tributado = ObterIpiTributado(nProd);
-            tributado.VBC = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VBC)), ObOp.Obrigatorio, 15);
-            tributado.PIPI = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.PIPI)), ObOp.Obrigatorio, 7);
+            tributado.VBC = vbc;
+            tributado.PIPI = aliquota;
         }
 
         private void ProcessarIpiQuantidade(int nProd, int lenPipesRegistro)
         {
+            var quantidade = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.QUnid)), ObOp.Obrigatorio, 16);
+            var valorUnitario = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.VUnid)), ObOp.Obrigatorio, 15);
+            var valorIpi = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.VIPI)), ObOp.Opcional, 15);
+            if (ObterIpi(nProd).IPINT != null) return;
             var tributado = ObterIpiTributado(nProd);
-            tributado.QUnid = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.QUnid)), ObOp.Obrigatorio, 16);
-            tributado.VUnid = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.VUnid)), ObOp.Obrigatorio, 15);
-            tributado.VIPI = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.IPITrib>(nameof(DFeNFe.IPITrib.VIPI)), ObOp.Opcional, 15);
+            tributado.QUnid = quantidade;
+            tributado.VUnid = valorUnitario;
+            tributado.VIPI = valorIpi;
         }
 
         private void ProcessarImpostoImportacao(int nProd, int lenPipesRegistro)

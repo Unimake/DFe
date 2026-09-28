@@ -91,6 +91,7 @@ public class NFeTxtConverterTest
     [InlineData("RTC2026-NFe623-nfe.txt")]
     [InlineData("RTC2026-NFe624-nfe.txt")]
     [InlineData("000323950-entrega-futura-nfe.txt")]
+    [InlineData("000047246-importacao-quatro-itens-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -111,6 +112,31 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// CST de IPI não tributado prevalece sobre O10 zerado informado no TXT de importação.
+    /// </summary>
+    [Fact]
+    public void ConverterImportacaoDeveGerarSomenteIpiNaoTributado()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000047246-importacao-quatro-itens-nfe.txt"));
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var itens = xml.SelectNodes("//*[local-name()='infNFe']/*[local-name()='det']");
+        Assert.Equal(4, itens.Count);
+        foreach (XmlNode item in itens)
+        {
+            Assert.Equal(1, item.SelectNodes("*[local-name()='imposto']/*[local-name()='IPI']/*[local-name()='IPINT']").Count);
+            Assert.Equal(0, item.SelectNodes("*[local-name()='imposto']/*[local-name()='IPI']/*[local-name()='IPITrib']").Count);
+        }
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
     }
 
     /// <summary>
