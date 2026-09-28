@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using Unimake.Business.DFe;
@@ -277,6 +278,40 @@ namespace Unimake.DFe.Test.NFe.Serializacao
             var roundTrip = XMLUtility.Serializar(XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(gerado));
             ValidarSchema(roundTrip);
             Assert.NotNull(roundTrip.SelectSingleNode("//*[local-name()='gIBSCBSMono']/*[local-name()='gMonoPadrao']"));
+        }
+
+        [Fact]
+        [Trait("DFe", "NFe")]
+        public void DeveValidarLeiauteLegadoNoEnvelopeDeAutorizacao()
+        {
+            var nfe = CriarNFeBase();
+            nfe.InfNFeField.Det[0].Imposto.IBSCBS = new IBSCBS
+            {
+                CST = "620",
+                CClassTrib = "200032",
+                GIBSCBSMono = new GIBSCBSMono
+                {
+                    GMonoRet = new GMonoRet
+                    {
+                        QBCMonoRet = 17.3584,
+                        AdRemIBSRet = 0,
+                        VIBSMonoRet = 0,
+                        AdRemCBSRet = 0,
+                        VCBSMonoRet = 0
+                    },
+                    VTotIBSMonoItem = 0,
+                    VTotCBSMonoItem = 0
+                }
+            };
+            var enviNFe = new EnviNFe
+            {
+                Versao = "4.00",
+                IdLote = "000000000000001",
+                IndSinc = SimNao.Sim,
+                NFe = new List<Business.DFe.Xml.NFe.NFe> { nfe }
+            };
+
+            ValidarSchema(enviNFe.GerarXML(), "NFe.enviNFe_v4.00.xsd");
         }
 
         [Fact]

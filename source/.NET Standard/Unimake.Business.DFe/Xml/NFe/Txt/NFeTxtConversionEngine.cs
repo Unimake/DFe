@@ -1771,6 +1771,25 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 icms.PFCP = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.PFCP)), ObOp.Obrigatorio, 15);
                 icms.VFCP = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.ICMS00>(nameof(DFeNFe.ICMS00.VFCP)), ObOp.Obrigatorio, 15);
             }
+            if (icms.CST == "90")
+            {
+                // O legado seleciona o grupo XML pelo CST, mesmo quando o ERP envia o segmento N02.
+                detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS
+                {
+                    ICMS90 = new DFeNFe.ICMS90
+                    {
+                        Orig = icms.Orig,
+                        CST = icms.CST,
+                        ModBC = icms.ModBC,
+                        VBC = icms.VBC,
+                        PICMS = icms.PICMS,
+                        VICMS = icms.VICMS,
+                        PFCP = icms.PFCP,
+                        VFCP = icms.VFCP
+                    }
+                };
+                return;
+            }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS00 = icms };
         }
 

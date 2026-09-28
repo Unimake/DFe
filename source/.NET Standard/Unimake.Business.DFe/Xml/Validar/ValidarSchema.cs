@@ -44,7 +44,9 @@ namespace Unimake.Business.DFe
 
         private static string SelecionarSchemaMonofasia(XmlDocument conteudoXML, string arqSchema)
         {
-            var nomeSchema = SchemasNFeComLeiaute.FirstOrDefault(x => arqSchema.EndsWith(x, StringComparison.OrdinalIgnoreCase));
+            var nomeSchema = SchemasNFeComLeiaute.FirstOrDefault(x =>
+                string.Equals(arqSchema, x, StringComparison.OrdinalIgnoreCase) ||
+                arqSchema.EndsWith("." + x, StringComparison.OrdinalIgnoreCase));
             if (nomeSchema == null)
             {
                 return arqSchema;

@@ -23,6 +23,17 @@ namespace Unimake.Business.DFe.Security
         }
 
         /// <summary>
+        /// Prepara a chave privada de um certificado A3 sem receber PIN, permitindo que o
+        /// provedor criptográfico apresente sua própria solicitação interativa.
+        /// O chamador deve coordenar tentativas para evitar bloqueio do token.
+        /// </summary>
+        /// <param name="certificado">Certificado que será usado na comunicação TLS.</param>
+        public static void PreparePrivateKeyForInteractivePin(this X509Certificate2 certificado)
+        {
+            X509Certificate2A3Service.Instance.PreparePrivateKeyForInteractivePin(certificado);
+        }
+
+        /// <summary>
         /// Retorna true se o certificado for do tipo A3.
         /// </summary>
         /// <param name="x509cert">Certificado que deverá ser validado se é A3 ou não.</param>
@@ -89,6 +100,30 @@ namespace Unimake.Business.DFe.Security
                     : HashAlgorithmName.SHA1;
 
                 privateKeyWarmUp.WarmUp(certificado, warmUpAlgorithm);
+            }
+            finally
+            {
+                nativeApi.ReleasePrivateKey(privateKey);
+            }
+        }
+
+        internal void PreparePrivateKeyForInteractivePin(X509Certificate2 certificado)
+        {
+            ValidarCertificado(certificado);
+
+            if (!nativeApi.IsWindows)
+            {
+                throw new PlatformNotSupportedException("A preparação interativa de certificados A3 é suportada somente no Windows.");
+            }
+
+            // Não alterar a aquisição silenciosa usada por IsA3 e SetPinPrivateKey.
+            var privateKey = nativeApi.AcquirePrivateKeyInteractive(certificado);
+            try
+            {
+                var algorithm = privateKey.KeySpec == CertificateKeySpec.Cng
+                    ? HashAlgorithmName.SHA256
+                    : HashAlgorithmName.SHA1;
+                privateKeyWarmUp.WarmUp(certificado, algorithm);
             }
             finally
             {
@@ -243,6 +278,8 @@ namespace Unimake.Business.DFe.Security
 
         PrivateKeyHandle AcquirePrivateKey(X509Certificate2 certificado, bool cache);
 
+        PrivateKeyHandle AcquirePrivateKeyInteractive(X509Certificate2 certificado);
+
         void ReleasePrivateKey(PrivateKeyHandle privateKey);
 
         void SetCngPin(IntPtr providerHandle, byte[] pinBuffer);
@@ -297,6 +334,22 @@ namespace Unimake.Business.DFe.Security
         public PrivateKeyHandle AcquirePrivateKey(X509Certificate2 certificado, bool cache)
         {
             var flags = CreateAcquireFlags(cache);
+
+            return AcquirePrivateKey(certificado, flags);
+        }
+
+        public PrivateKeyHandle AcquirePrivateKeyInteractive(X509Certificate2 certificado)
+        {
+            return AcquirePrivateKey(certificado, CreateInteractiveAcquireFlags());
+        }
+
+        internal static CryptAcquireFlags CreateInteractiveAcquireFlags()
+        {
+            return CryptAcquireFlags.AllowCng | CryptAcquireFlags.Cache;
+        }
+
+        private PrivateKeyHandle AcquirePrivateKey(X509Certificate2 certificado, CryptAcquireFlags flags)
+        {
 
             if (!SafeNativeMethods.CryptAcquireCertificatePrivateKey(
                 certificado.Handle,
@@ -540,6 +593,7 @@ namespace Unimake.Business.DFe.Security
         {
             return X509Certificate2A3Service.Instance.IsA3(x509cert);
         }
+
     }
 
 #endif

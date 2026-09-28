@@ -32,6 +32,66 @@ namespace Unimake.DFe.Test.Utility.Certificados
         }
 
         [Theory]
+        [InlineData((int)CertificateKeySpec.Cng)]
+        [InlineData((int)CertificateKeySpec.KeyExchange)]
+        [Trait("Utility", "Certificados")]
+        public void PreparacaoInterativaNaoDefinePinEAqueceChaveUmaVez(int keySpecValue)
+        {
+            using (var certificate = CreateRsaCertificate())
+            {
+                var nativeApi = new FakeNativeApi((CertificateKeySpec)keySpecValue);
+                var warmUp = new FakeWarmUp();
+                var service = new X509Certificate2A3Service(nativeApi, warmUp);
+
+                service.PreparePrivateKeyForInteractivePin(certificate);
+
+                Assert.True(nativeApi.InteractiveRequested);
+                Assert.True(nativeApi.CacheRequested);
+                Assert.Null(nativeApi.PinBuffer);
+                Assert.True(nativeApi.Released);
+                Assert.True(warmUp.Executed);
+                Assert.Equal((CertificateKeySpec)keySpecValue == CertificateKeySpec.Cng
+                    ? HashAlgorithmName.SHA256 : HashAlgorithmName.SHA1, warmUp.HashAlgorithm);
+            }
+        }
+
+        [Fact]
+        [Trait("Utility", "Certificados")]
+        public void PreparacaoInterativaLiberaHandleQuandoAssinaturaFalha()
+        {
+            using (var certificate = CreateRsaCertificate())
+            {
+                var nativeApi = new FakeNativeApi(CertificateKeySpec.Cng);
+                var warmUp = new FakeWarmUp { Exception = new CryptographicException("Falha simulada.") };
+                var service = new X509Certificate2A3Service(nativeApi, warmUp);
+
+                Assert.Throws<CryptographicException>(() => service.PreparePrivateKeyForInteractivePin(certificate));
+                Assert.True(nativeApi.Released);
+                Assert.Null(nativeApi.PinBuffer);
+            }
+        }
+
+        [Fact]
+        [Trait("Utility", "Certificados")]
+        public void PreparacaoInterativaNaoAceitaCertificadoSemChaveOuOutraPlataforma()
+        {
+            var nativeApi = new FakeNativeApi(CertificateKeySpec.Cng) { IsWindows = false };
+            var service = new X509Certificate2A3Service(nativeApi, new FakeWarmUp());
+
+            using (var certificate = CreateRsaCertificate())
+            {
+                Assert.Throws<PlatformNotSupportedException>(() => service.PreparePrivateKeyForInteractivePin(certificate));
+            }
+
+            using (var certificate = CreateRsaCertificateWithoutPrivateKey())
+            {
+                Assert.Throws<CryptographicException>(() => service.PreparePrivateKeyForInteractivePin(certificate));
+            }
+
+            Assert.False(nativeApi.Acquired);
+        }
+
+        [Theory]
         [InlineData((int)CertificateKeySpec.KeyExchange, (int)CryptProviderParameter.KeyExchangePin)]
         [InlineData((int)CertificateKeySpec.Signature, (int)CryptProviderParameter.SignaturePin)]
         [Trait("Utility", "Certificados")]
@@ -195,6 +255,14 @@ namespace Unimake.DFe.Test.Utility.Certificados
 
         [Fact]
         [Trait("Utility", "Certificados")]
+        public void PreparacaoInterativaNaoUsaFlagSilenciosa()
+        {
+            Assert.Equal(CryptAcquireFlags.AllowCng | CryptAcquireFlags.Cache,
+                X509Certificate2NativeApi.CreateInteractiveAcquireFlags());
+        }
+
+        [Fact]
+        [Trait("Utility", "Certificados")]
         public void FallbackSha1DeveOcorrerSomenteParaAlgoritmoNaoSuportado()
         {
             Assert.True(X509Certificate2A3Service.ShouldFallbackToSha1(new BadAlgorithmCryptographicException()));
@@ -258,6 +326,8 @@ namespace Unimake.DFe.Test.Utility.Certificados
 
             internal bool CacheRequested { get; private set; }
 
+            internal bool InteractiveRequested { get; private set; }
+
             internal CryptProviderParameter CspParameter { get; private set; }
 
             internal bool IdentificationSucceeded { get; set; } = true;
@@ -288,6 +358,12 @@ namespace Unimake.DFe.Test.Utility.Certificados
                     KeySpec = keySpec,
                     CallerMustFree = !cache
                 };
+            }
+
+            public PrivateKeyHandle AcquirePrivateKeyInteractive(X509Certificate2 certificado)
+            {
+                InteractiveRequested = true;
+                return AcquirePrivateKey(certificado, true);
             }
 
             public void ReleasePrivateKey(PrivateKeyHandle privateKey)
@@ -334,12 +410,15 @@ namespace Unimake.DFe.Test.Utility.Certificados
         {
             internal bool Executed { get; private set; }
 
+            internal Exception Exception { get; set; }
+
             internal HashAlgorithmName HashAlgorithm { get; private set; }
 
             public void WarmUp(X509Certificate2 certificado, HashAlgorithmName hashAlgorithm)
             {
                 Executed = true;
                 HashAlgorithm = hashAlgorithm;
+                if (Exception != null) throw Exception;
             }
         }
 
