@@ -2,60 +2,43 @@
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<GerarNfse versao="2.00">
-			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://orizona.sigep.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+			<Descricao>Envio de lote RPS - Sincrono</Descricao>
+			<RequestURIProducao>https://api.centi.com.br/nfe/gerar/go/orizona</RequestURIProducao>
+			<RequestURIHomologacao>https://api.centi.com.br/nfe/gerar/homologacao/go/orizona</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<WebContentType></WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integration.pm.bsit.com.br/"><soapenv:Header/><soapenv:Body><ws:gerarNfse><GerarNfseEnvio>{xmlBodyScape}</GerarNfseEnvio></ws:gerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>GerarNfseRetorno</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
-			<TargetNS></TargetNS>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>GerarNfseResposta</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</GerarNfse>
 		<CancelarNfse versao="2.00">
-			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://orizona.sigep.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+			<Descricao>Envio do cancelamento de NFSe</Descricao>
+			<RequestURIProducao>https://api.centi.com.br/nfe/cancelar/go/orizona</RequestURIProducao>
+			<RequestURIHomologacao>https://api.centi.com.br/nfe/cancelar/homologacao/go/orizona</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<WebContentType></WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integration.pm.bsit.com.br/"><soapenv:Header/><soapenv:Body><ws:cancelarNfse><CancelarNfseEnvio>{xmlBodyScape}</CancelarNfseEnvio></ws:cancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>CancelarNfseResposta</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</CancelarNfse>
-		<ConsultarLoteRps versao="2.00">
-			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://orizona.sigep.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
+		<SubstituirNfse versao="2.00">
+			<Descricao>Substituir NFSe</Descricao>
+			<RequestURIProducao>https://api.centi.com.br/nfe/substituir/go/orizona</RequestURIProducao>
+			<RequestURIHomologacao>https://api.centi.com.br/nfe/substituir/go/orizona</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<WebContentType></WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integration.pm.bsit.com.br/"><soapenv:Header/><soapenv:Body><ws:consultarLoteRps><ConsultarLoteRpsEnvio>{xmlBodyScape}</ConsultarLoteRpsEnvio></ws:consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarLoteRpsResposta</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</ConsultarLoteRps>
-		<ConsultarNfsePorRps versao="2.00">
-			<Descricao>Consulta NFSe pelo RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://orizona.sigep.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
-			<WebContentType></WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.integration.pm.bsit.com.br/"><soapenv:Header/><soapenv:Body><ws:consultarNfseRps><ConsultarNfseRpsEnvio>{xmlBodyScape}</ConsultarNfseRpsEnvio></ws:consultarNfseRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarNfseRpsResposta</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</ConsultarNfsePorRps>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</SubstituirNfse>
 	</Servicos>
 </Configuracoes>

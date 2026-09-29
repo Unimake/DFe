@@ -1137,7 +1137,7 @@
 		<Nome>Orizona - GO</Nome>
 		<UF>GO</UF>
 		<ArqConfig>OrizonaGO.xml</ArqConfig>
-		<PadraoNFSe>BSITBR</PadraoNFSe>
+		<PadraoNFSe>CENTI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2918407">
 		<Nome>Juazeiro - BA</Nome>
