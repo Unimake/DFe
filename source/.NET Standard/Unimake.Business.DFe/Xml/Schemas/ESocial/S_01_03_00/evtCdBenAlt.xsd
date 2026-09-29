@@ -48,7 +48,7 @@
                                                     <xs:element name="tpBeneficio" type="TS_tpBeneficio">
                                                         <xs:annotation>
                                                             <xs:documentation>Tipo de benefício.</xs:documentation>
-                                                            <xs:documentation>Validação: Deve ser um código válido e existente na Tabela 25. Se {cadIni}(2410_infoBenInicio_cadIni) em S-2410 for igual a [N], não é permitido utilizar código do grupo [08] dessa tabela.</xs:documentation>
+                                                            <xs:documentation>Validação: Deve ser um código válido e existente na Tabela 25. Se {indSitBenef}(2410_infoBenInicio_indSitBenef) em S-2410 for igual a [1], não é permitido utilizar código do grupo [08] dessa tabela.</xs:documentation>
                                                         </xs:annotation>
                                                     </xs:element>
                                                     <xs:element name="tpPlanRP" type="TS_tpPlanRP" />

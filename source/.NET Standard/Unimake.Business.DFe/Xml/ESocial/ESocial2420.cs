@@ -163,10 +163,26 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("novoCPF")]
         public string NovoCPF { get; set; }
 
+        /// <summary>
+        /// Indicativo de caso especial de mudança de CPF.
+        /// </summary>
+        [XmlElement("indCPFDesvinc")]
+#if INTEROP
+        public IndicativoCPFDesvinculado IndCPFDesvinc { get; set; } = (IndicativoCPFDesvinculado)(-1);
+#else
+        public IndicativoCPFDesvinculado? IndCPFDesvinc { get; set; }
+#endif
+
         #region ShouldSerialize
 
         public bool ShouldSerializeCnpjOrgaoSuc() => !string.IsNullOrEmpty(CnpjOrgaoSuc);
         public bool ShouldSerializeNovoCPF() => !string.IsNullOrEmpty(NovoCPF);
+
+#if INTEROP
+        public bool ShouldSerializeIndCPFDesvinc() => IndCPFDesvinc != (IndicativoCPFDesvinculado)(-1);
+#else
+        public bool ShouldSerializeIndCPFDesvinc() => IndCPFDesvinc != null;
+#endif
 
         #endregion ShouldSerialize 
     }

@@ -229,6 +229,7 @@
                                                 <xs:documentation>Validação: Preenchimento obrigatório se não existir contrato com {indContr}(2500_ideTrab_infoContr_indContr) = [S]. Deve ser maior ou igual que 01/01/1890 e menor ou igual à data atual.</xs:documentation>
                                             </xs:annotation>
                                         </xs:element>
+                                        <xs:element name="nmSoc" minOccurs="0" type="TS_nmSoc" />
                                         <xs:element name="ideSeqTrab" minOccurs="0">
                                             <xs:annotation>
                                                 <xs:documentation>Número sequencial atribuído pela empresa a cada conjunto de dados de processo trabalhista, quando for necessário enviar o mesmo processo em múltiplos S-2500, para o mesmo {}(./cpfTrab).</xs:documentation>
@@ -255,7 +256,7 @@
                                                         <xs:simpleType>
                                                             <xs:annotation>
                                                                 <xs:documentation>Tipo de contrato a que se refere o processo judicial ou a demanda submetida à CCP ou ao NINTER.</xs:documentation>
-                                                                <xs:documentation>Validação: Deve ser igual a [6, 8] se o grupo {ideResp}(2500_ideEmpregador_ideResp) for informado. Além disso, se {origem}(2500_infoProcesso_origem) = [3], deve ser igual a [1].</xs:documentation>
+                                                                <xs:documentation>Validação: Se {origem}(2500_infoProcesso_origem) = [3], deve ser igual a [1, 7, 9].</xs:documentation>
                                                             </xs:annotation>
                                                             <xs:restriction base="xs:byte">
                                                                 <xs:enumeration value="1">
@@ -309,7 +310,7 @@
                                                     <xs:element name="indContr" type="TS_sim_nao">
                                                         <xs:annotation>
                                                             <xs:documentation>Indicativo se o contrato possui informação no evento S-2190, S-2200 ou S-2300 no declarante.</xs:documentation>
-                                                            <xs:documentation>Validação: Deve ser igual a [N] se o grupo {ideResp}(2500_ideEmpregador_ideResp) for informado. Deve ser igual a [S] se {infoContr/tpContr}(2500_ideTrab_infoContr_tpContr) = [1, 2, 3, 4]. Além disso, somente pode haver um contrato com o valor igual a [N].</xs:documentation>
+                                                            <xs:documentation>Validação: Deve ser igual a [N] se {infoContr/tpContr}(./tpContr) = [8]. Deve ser igual a [S] se {infoContr/tpContr}(2500_ideTrab_infoContr_tpContr) = [1, 2, 3, 4]. Além disso, somente pode haver um contrato com o valor igual a [N].</xs:documentation>
                                                         </xs:annotation>
                                                     </xs:element>
                                                     <xs:element name="dtAdmOrig" minOccurs="0" type="xs:date">
@@ -379,12 +380,24 @@
                                                         </xs:annotation>
                                                         <xs:complexType>
                                                             <xs:sequence>
-                                                                <xs:element name="codCBO" type="TS_cbo" minOccurs="0">
+                                                                <xs:element name="nmCargo" minOccurs="0" type="TS_texto_100">
                                                                     <xs:annotation>
-                                                                        <xs:documentation>Classificação Brasileira de Ocupações - CBO.</xs:documentation>
-                                                                        <xs:documentation>Validação: Preenchimento obrigatório se {infoContr/codCateg}(../codCateg) for diferente de [901, 903, 904]). Se informado, deve ser um código válido e existente na tabela de CBO, com 6 (seis) posições.</xs:documentation>
+                                                                        <xs:documentation>Informar o nome do cargo.</xs:documentation>
+                                                                        <xs:documentation>Validação: Preenchimento obrigatório se {infoContr/codCateg}(../codCateg) for diferente de [901, 903, 904, 906]) e ({dtSent}(2500_infoProcesso_dadosCompl_infoProcJud_dtSent) ou {dtCCP}(2500_infoProcesso_dadosCompl_infoCCP_dtCCP)) >= [2026-10-26].</xs:documentation>
                                                                     </xs:annotation>
                                                                 </xs:element>
+                                                                <xs:element name="codCBO" minOccurs="0" type="TS_cbo">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Informar a Classificação Brasileira de Ocupações - CBO relativa ao cargo.</xs:documentation>
+                                                                        <xs:documentation>Validação: Preenchimento obrigatório se {infoContr/codCateg}(../codCateg) for diferente de [901, 903, 904, 906]). Se informado, deve ser um código válido e existente na tabela de CBO, com 6 (seis) posições.</xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:element>
+                                                                <xs:element name="nmFuncao" minOccurs="0" type="TS_texto_100">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Informar o nome da função de confiança/cargo em comissão.</xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:element>
+                                                                <xs:element name="CBOFuncao" minOccurs="0" type="TS_CBOFuncao" />
                                                                 <xs:element name="natAtividade" minOccurs="0" type="TS_natAtividade">
                                                                     <xs:annotation>
                                                                         <xs:documentation>Natureza da atividade.</xs:documentation>
@@ -429,7 +442,7 @@
                                                                     </xs:annotation>
                                                                     <xs:complexType>
                                                                         <xs:sequence>
-                                                                            <xs:element name="tpRegTrab" type="TS_tpRegTrab">
+                                                                            <xs:element name="tpRegTrab" type="TS_tpRegTrab_1_2_3">
                                                                                 <xs:annotation>
                                                                                     <xs:documentation>Tipo de regime trabalhista.</xs:documentation>
                                                                                     <xs:documentation>Validação: Se {infoContr/codCateg}(../../codCateg) = [104], deve ser preenchido com [1].</xs:documentation>
@@ -490,11 +503,7 @@
                                                                                 </xs:annotation>
                                                                                 <xs:complexType>
                                                                                     <xs:sequence>
-                                                                                        <xs:element name="observacao" type="TS_observacao">
-                                                                                            <xs:annotation>
-                                                                                                <xs:documentation>Observação relacionada ao contrato de trabalho.</xs:documentation>
-                                                                                            </xs:annotation>
-                                                                                        </xs:element>
+                                                                                        <xs:element name="observacao" type="TS_observacao_trab" />
                                                                                     </xs:sequence>
                                                                                 </xs:complexType>
                                                                             </xs:element>
@@ -673,6 +682,30 @@
                                                                                         </xs:enumeration>
                                                                                     </xs:restriction>
                                                                                 </xs:simpleType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="localTrabalho" minOccurs="0">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Informações do local de trabalho.</xs:documentation>
+                                                                        <xs:documentation>CONDICAO_GRUPO: O ((se {infoContr/codCateg}(../../codCateg) = [1XX, 301, 302, 303, 306, 307, 309, 310, 312, 314] e {dtAdm}(../infoVinc_dtAdm) >= [2026-10-26]) ou (se {infoContr/codCateg}(../../codCateg) = [2XX, 304, 305, 4XX, 721, 722, 723, 731, 734, 738, 761, 771, 901, 902, 906] e {dtInicio}(../../dtInicio) >= [2026-10-26])); F ((se {infoContr/codCateg}(../../codCateg) = [1XX, 301, 302, 303, 306, 307, 309, 310, 312, 314] e {dtAdm}(../infoVinc_dtAdm) &lt; [2026-10-26]) ou (se {infoContr/codCateg}(../../codCateg) = [2XX, 304, 305, 4XX, 721, 722, 723, 731, 734, 738, 761, 771, 901, 902, 906] e {dtInicio}(../../dtInicio) &lt; [2026-10-26])); N (nos demais casos)</xs:documentation>
+                                                                    </xs:annotation>
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="localTrabGeral" minOccurs="0" type="T_localTrabGeral">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Estabelecimento onde o trabalhador exercerá suas atividades</xs:documentation>
+                                                                                    <xs:documentation>DESCRICAO_COMPLETA:Estabelecimento (CNPJ, CNO, CAEPF) onde o trabalhador (exceto doméstico) exercerá suas atividades. Caso o trabalhador exerça suas atividades em instalações de terceiros, este campo deve ser preenchido com o estabelecimento do próprio empregador ao qual o trabalhador esteja vinculado.</xs:documentation>
+                                                                                    <xs:documentation>CONDICAO_GRUPO: N (se {infoContr/codCateg}(../../../codCateg) = [104]); O (nos demais casos)</xs:documentation>
+                                                                                </xs:annotation>
+                                                                            </xs:element>
+                                                                            <xs:element name="localTempDom" minOccurs="0" type="T_endereco_brasil">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Endereço de trabalho do trabalhador doméstico e trabalhador temporário</xs:documentation>
+                                                                                    <xs:documentation>DESCRICAO_COMPLETA:Grupo preenchido exclusivamente em caso de trabalhador doméstico e trabalhador temporário, indicando o endereço onde o trabalhador exerce suas atividades.</xs:documentation>
+                                                                                    <xs:documentation>CONDICAO_GRUPO: N (se {infoContr/codCateg}(../../../codCateg) for diferente de [104, 106]); O (nos demais casos)</xs:documentation>
+                                                                                </xs:annotation>
                                                                             </xs:element>
                                                                         </xs:sequence>
                                                                     </xs:complexType>
@@ -916,7 +949,7 @@
                                                                                                 <xs:documentation>Informações referentes a bases de cálculo de FGTS para geração de guia.</xs:documentation>
                                                                                                 <xs:documentation>DESCRICAO_COMPLETA:Informações referentes a bases de cálculo de FGTS (valores históricos, sem atualização), inclusive valores de 13º salário, aviso prévio indenizado e seu reflexo sobre o 13º salário, para geração de guia no FGTS Digital.</xs:documentation>
                                                                                                 <xs:documentation>Os campos deste grupo serão somados para compor a base de cálculo para geração de guia.</xs:documentation>
-                                                                                                <xs:documentation>CONDICAO_GRUPO: OC</xs:documentation>
+                                                                                                <xs:documentation>CONDICAO_GRUPO: OC ((se {infoContr/codCateg}(2500_ideTrab_infoContr_codCateg) ou o código de categoria no RET for igual a [1XX, 301, 302, 303, 304, 306, 307, 309, 310, 312] com {tpRegTrab}(2500_ideTrab_infoContr_infoCompl_infoVinc_tpRegTrab) = [1, 3] ou {tpRegTrab} no RET = [1] ou não informado) OU (se {infoContr/codCateg}(2500_ideTrab_infoContr_codCateg) ou o código de categoria no RET for igual a [201, 202, 721]) OU (se {infoContr/codCateg}(2500_ideTrab_infoContr_codCateg) ou o código de categoria no RET for igual a [401, 410] com {categOrig} em S-2300 = [1XX, 301, 302, 303, 304, 306, 307, 309, 310, 312] ou não informada e com {tpRegTrab}(2500_ideTrab_infoContr_infoCompl_infoVinc_tpRegTrab) = [1, 3] ou {tpRegTrab} no RET = [1] ou não informado)); N (nos demais casos)</xs:documentation>
                                                                                             </xs:annotation>
                                                                                             <xs:complexType>
                                                                                                 <xs:sequence>

@@ -317,7 +317,7 @@
                                                                 <xs:element name="cnpjCednt" type="TS_cnpj">
                                                                     <xs:annotation>
                                                                         <xs:documentation>Informar o CNPJ do empregador/órgão público cedente/de origem.</xs:documentation>
-                                                                        <xs:documentation>Validação: Deve ser um CNPJ diferente do CNPJ do empregador/órgão público e diferente dos estabelecimentos informados através do evento S-1005.</xs:documentation>
+                                                                        <xs:documentation>Validação: Deve ser um CNPJ diferente do CNPJ do empregador/órgão público e diferente dos estabelecimentos informados através do evento S-1005, exceto se a natureza jurídica do declarante for Administração Pública (grupo [1]).</xs:documentation>
                                                                         <xs:documentation>REGRA:REGRA_VALIDA_CNPJ</xs:documentation>
                                                                     </xs:annotation>
                                                                 </xs:element>

@@ -2117,4 +2117,16 @@
 		<ArqConfig>DuqueDeCaxiasRJ.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4101507">
+		<Nome>Arapongas - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>ArapongasPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3540804">
+		<Nome>Potirendaba - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>PotirendabaSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -7286,6 +7286,34 @@ namespace Unimake.Business.DFe.Servicos
         Sim = 1
     }
 
+    /// <summary>
+    /// Indica se o afastamento decorre do mesmo motivo anterior.
+    /// </summary>
+    public enum MesmoMotivoAfastamento
+    {
+        /// <summary>Não.</summary>
+        [XmlEnum("N")]
+        Nao = 0,
+
+        /// <summary>Sim.</summary>
+        [XmlEnum("S")]
+        Sim = 1,
+
+        /// <summary>Indeterminado porque não consta CID.</summary>
+        [XmlEnum("I")]
+        Indeterminado = 2
+    }
+
+    /// <summary>
+    /// Indicativo de caso especial de mudança de CPF no eSocial.
+    /// </summary>
+    public enum IndicativoCPFDesvinculado
+    {
+        /// <summary>O CPF novo não possui CPFs vinculados na base da RFB.</summary>
+        [XmlEnum("9")]
+        SemVinculoNaRFB = 9
+    }
+
     #endregion
 
     #region IndicativoSimLetra
@@ -12964,6 +12992,12 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("2")]
         BeneficioDoProprioEmpregador = 2,
 
+        /// <summary>
+        /// 3 - Ressarcimento pelo empregador de despesas com plano de saúde do trabalhador.
+        /// </summary>
+        [XmlEnum("3")]
+        RessarcimentoDespesasPlanoSaude = 3,
+
     }
     #endregion
 
@@ -13720,7 +13754,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 2 - Estatutário/legislações específicas (servidor temporário, militar, agente político, etc.)
         /// </summary>
         [XmlEnum("2")]
-        EstatutarioOuLegislacoesEspecificas = 2
+        EstatutarioOuLegislacoesEspecificas = 2,
+
+        /// <summary>
+        /// 3 - Contrato de servidor público declarado nulo.
+        /// </summary>
+        [XmlEnum("3")]
+        ContratoServidorPublicoNulo = 3
     }
     #endregion
 

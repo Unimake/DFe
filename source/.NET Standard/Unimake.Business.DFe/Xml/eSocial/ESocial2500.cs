@@ -354,6 +354,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NmTrab { get; set; }
 
         /// <summary>
+        /// Nome social do trabalhador.
+        /// </summary>
+        [XmlElement("nmSoc")]
+        public string NmSoc { get; set; }
+
+        /// <summary>
         /// Preencher com a data de nascimento
         /// </summary>
         [XmlIgnore]
@@ -423,6 +429,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeNmTrab() => !string.IsNullOrEmpty(NmTrab);
+
+        public bool ShouldSerializeNmSoc() => !string.IsNullOrEmpty(NmSoc);
 
         public bool ShouldSerializeDtNasctoField() => DtNascto > DateTime.MinValue;
 
@@ -677,10 +685,28 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoCompl
     {
         /// <summary>
+        /// Nome do cargo do trabalhador.
+        /// </summary>
+        [XmlElement("nmCargo")]
+        public string NmCargo { get; set; }
+
+        /// <summary>
         /// Classificação Brasileira de Ocupações - CBO
         /// </summary>
         [XmlElement("codCBO")]
         public string CodCBO { get; set; }
+
+        /// <summary>
+        /// Nome da função de confiança ou cargo em comissão.
+        /// </summary>
+        [XmlElement("nmFuncao")]
+        public string NmFuncao { get; set; }
+
+        /// <summary>
+        /// CBO relativo à função de confiança ou cargo em comissão.
+        /// </summary>
+        [XmlElement("CBOFuncao")]
+        public string CBOFuncao { get; set; }
 
         /// <summary>
         /// Natureza da atividade
@@ -750,6 +776,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeCodCBO() => !string.IsNullOrEmpty(CodCBO);
+
+        public bool ShouldSerializeNmCargo() => !string.IsNullOrEmpty(NmCargo);
+
+        public bool ShouldSerializeNmFuncao() => !string.IsNullOrEmpty(NmFuncao);
+
+        public bool ShouldSerializeCBOFuncao() => !string.IsNullOrEmpty(CBOFuncao);
 
 #if INTEROP
         public bool ShouldSerializeNatAtividade() => NatAtividade != (NatAtividade)(-1);
@@ -936,6 +968,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("infoDeslig")]
         public InfoDeslig2500 InfoDeslig { get; set; }
+
+        /// <summary>
+        /// Informações do local de trabalho reconhecido no processo trabalhista.
+        /// </summary>
+        [XmlElement("localTrabalho")]
+        public LocalTrabalho2200 LocalTrabalho { get; set; }
 
         #region ShouldSerialize
 

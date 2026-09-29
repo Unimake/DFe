@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2026.09.18.1641</AssemblyVersion>
-		<FileVersion>2026.09.18.1641</FileVersion>
+		<AssemblyVersion>2026.09.28.1926</AssemblyVersion>
+		<FileVersion>2026.09.28.1926</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -117,6 +117,8 @@
 		<None Remove="Servicos\Config\CTe\TO.xml" />
 		<None Remove="Servicos\Config\DARE\AN.xml" />
 		<None Remove="Servicos\Config\DARE\Config.xml" />
+		<None Remove="Servicos\Config\NFSe\ArapongasPR.xml" />
+		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarujaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarulhosSP.xml" />
@@ -1664,7 +1666,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BuritisRO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\ArapongasPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\PotirendabaSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\BuritisRO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CapelaDeSantanaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EldouradoDoSulRS.xml" />

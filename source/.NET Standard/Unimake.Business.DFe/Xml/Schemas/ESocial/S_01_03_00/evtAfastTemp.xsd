@@ -81,10 +81,30 @@
                                                         </xs:annotation>
                                                     </xs:element>
                                                     <xs:element name="codMotAfast" type="TS_codMotAfast" />
-                                                    <xs:element name="infoMesmoMtv" minOccurs="0" type="TS_sim_nao">
-                                                        <xs:annotation>
-                                                            <xs:documentation>Informar se o afastamento decorre da mesma doença que gerou o afastamento anterior ({codMotAfast}(./codMotAfast) = [01, 03]), dentro de 60 dias.</xs:documentation>
-                                                        </xs:annotation>
+                                                    <xs:element name="infoMesmoMtv" minOccurs="0">
+                                                        <xs:simpleType>
+                                                            <xs:annotation>
+                                                                <xs:documentation>Informar se o afastamento decorre da mesma doença que gerou o(s) afastamento(s) anterior(es) ({codMotAfast}(./codMotAfast) = [01, 03]), dentro de 60 (sessenta) dias.</xs:documentation>
+                                                                <xs:documentation>Validação: Se {codMotAfast}(./codMotAfast) = [01], somente podem ser informados os valores [S] ou [N]. Além disso, caso {dtIniAfast}(./dtIniAfast) seja igual ou posterior a [2026-10-26], o preenchimento do campo é obrigatório e exclusivo se {codMotAfast}(./codMotAfast) = [01, 03] e se existir para o mesmo contrato do trabalhador outro afastamento anterior dentro do período de 60 (sessenta) dias com o mesmo código de motivo de afastamento.</xs:documentation>
+                                                            </xs:annotation>
+                                                            <xs:restriction base="xs:string">
+                                                                <xs:enumeration value="S">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Sim</xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:enumeration>
+                                                                <xs:enumeration value="N">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Não</xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:enumeration>
+                                                                <xs:enumeration value="I">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>Indeterminado (não consta CID)</xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:enumeration>
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
                                                     </xs:element>
                                                     <xs:element name="tpAcidTransito" minOccurs="0">
                                                         <xs:simpleType>

@@ -58,7 +58,7 @@
                                             <xs:annotation>
                                                 <xs:documentation>Informar o CNPJ do órgão público sucessor.</xs:documentation>
                                                 <xs:documentation>Validação: Preenchimento obrigatório e exclusivo se {mtvTermino}(./mtvTermino) = [09].</xs:documentation>
-                                                <xs:documentation>Deve ser um CNPJ válido e diferente da inscrição do declarante, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000. Além disso, deve possuir 14 (catorze) algarismos e ser diferente do CNPJ base do órgão público declarante (exceto se {ideEmpregador/nrInsc}(2420_ideEmpregador_nrInsc) tiver 14 (catorze) algarismos) e dos estabelecimentos informados através do evento S-1005.</xs:documentation>
+                                                <xs:documentation>Deve ser um CNPJ válido e diferente da inscrição do declarante, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000. Além disso, deve possuir 14 (catorze) algarismos e ser diferente do CNPJ base do órgão público declarante (exceto se {ideEmpregador/nrInsc}(2420_ideEmpregador_nrInsc) tiver 14 (catorze) algarismos). Também deve ser diferente dos estabelecimentos informados através do evento S-1005, exceto se a natureza jurídica do declarante for Administração Pública (grupo [1]).</xs:documentation>
                                             </xs:annotation>
                                         </xs:element>
                                         <xs:element name="novoCPF" minOccurs="0" type="TS_cpf">
@@ -66,6 +66,12 @@
                                                 <xs:documentation>Preencher com o novo CPF do beneficiário.</xs:documentation>
                                                 <xs:documentation>Validação: Preenchimento obrigatório e exclusivo se {mtvTermino}(./mtvTermino) = [10].</xs:documentation>
                                                 <xs:documentation>Deve ser um CPF válido e diferente do antigo CPF do beneficiário.</xs:documentation>
+                                            </xs:annotation>
+                                        </xs:element>
+                                        <xs:element name="indCPFDesvinc" minOccurs="0" type="TS_indCPFDesvinc">
+                                            <xs:annotation>
+                                                <xs:documentation>Indicativo de casos especiais de mudança de CPF.</xs:documentation>
+                                                <xs:documentation>Validação: Preenchimento obrigatório e exclusivo se o novo CPF não possuir o {}(2420_ideBeneficio_cpfBenef) vinculado na base da RFB.</xs:documentation>
                                             </xs:annotation>
                                         </xs:element>
                                     </xs:sequence>
