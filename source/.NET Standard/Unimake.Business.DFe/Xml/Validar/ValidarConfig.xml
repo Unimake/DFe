@@ -5070,6 +5070,19 @@
 				<TagExtraAtributoID/>
 				<TargetNS/>
 			</Servico>
+			<Servico tagRaiz="SubstituirNfseEnvio" versao="2.00" tagIdentificadora="RpsSubstituido">
+				<Descricao>Substituir NFSe</Descricao>
+				<TipoServico>NFSeSubstituirNfse</TipoServico>
+				<SchemaArquivo/>
+				<TagAssinatura>Rps</TagAssinatura>
+				<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+				<TagVersao/>
+				<TagLoteAssinatura/>
+				<TagLoteAtributoID/>
+				<TagExtraAssinatura/>
+				<TagExtraAtributoID/>
+				<TargetNS/>
+			</Servico>
 		</Padrao>
 		<Padrao nome="CONAM">
 			<Servico tagRaiz="Sdt_cancelanfe" versao="2.00">

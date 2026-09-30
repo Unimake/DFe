@@ -30,7 +30,7 @@
 		<SubstituirNfse versao="2.00">
 			<Descricao>Substituir NFSe</Descricao>
 			<RequestURIProducao>https://api.centi.com.br/nfe/substituir/go/orizona</RequestURIProducao>
-			<RequestURIHomologacao>https://api.centi.com.br/nfe/substituir/go/orizona</RequestURIHomologacao>
+			<RequestURIHomologacao>https://api.centi.com.br/nfe/substituir/homologacao/go/orizona</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<WebSoapString></WebSoapString>
