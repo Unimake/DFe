@@ -92,6 +92,8 @@ public class NFeTxtConverterTest
     [InlineData("RTC2026-NFe624-nfe.txt")]
     [InlineData("000323950-entrega-futura-nfe.txt")]
     [InlineData("000047246-importacao-quatro-itens-nfe.txt")]
+    [InlineData("000024804-retorno-vasilhames-nfe.txt")]
+    [InlineData("000024804-retorno-vasilhames-vc01-nfe.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -112,6 +114,30 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// Preserva escala, itens de notas referenciadas e totais no retorno de vasilhames.
+    /// </summary>
+    [Theory]
+    [InlineData("000024804-retorno-vasilhames-nfe.txt", 0)]
+    [InlineData("000024804-retorno-vasilhames-vc01-nfe.txt", 6)]
+    public void ConverterRetornoDeVasilhamesDevePreservarSeisItensEReferencias(string nomeArquivo, int referenciasEsperadas)
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo(nomeArquivo));
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        Assert.Equal(6, xml.SelectNodes("//*[local-name()='infNFe']/*[local-name()='det']").Count);
+        Assert.Equal(6, xml.SelectNodes("//*[local-name()='prod']/*[local-name()='indEscala' and text()='S']").Count);
+        Assert.Equal(referenciasEsperadas, xml.SelectNodes("//*[local-name()='det']/*[local-name()='DFeReferenciado']").Count);
+        Assert.Equal("21775.25", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
     }
 
     /// <summary>
