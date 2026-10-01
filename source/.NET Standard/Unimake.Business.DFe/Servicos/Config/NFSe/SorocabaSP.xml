@@ -146,18 +146,63 @@
 		<!--Versão 1.01-->
 		<GerarNfse versao="1.01">
 			<Descricao>Envio do DPS - Síncrono</Descricao>
-			<RequestURIProducao></RequestURIProducao>
-			<RequestURIHomologacao>https://nfse2-sod.dsfweb.com.br/notafiscal-adn-ws/api/adn/dps</RequestURIHomologacao>
+			<RequestURIProducao>https://nfseapi.sorocaba.sp.gov.br/notafiscal-ws/nfse</RequestURIProducao>
+			<RequestURIHomologacao>https://nfse2-sod.dsfweb.com.br/notafiscal-ws/nfse</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
-			<SchemaVersao></SchemaVersao>
+			<SchemaVersao>1.01</SchemaVersao>
 			<GZIPCompress>true</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
 			<UsaCertificadoDigital>true</UsaCertificadoDigital>
 		</GerarNfse>
+		<CancelarNfse versao="1.01">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<RequestURIProducao>https://nfseapi.sorocaba.sp.gov.br/notafiscal-ws/nfse/{Chave}/eventos</RequestURIProducao>
+			<RequestURIHomologacao>https://nfse2-sod.dsfweb.com.br/notafiscal-ws/nfse/{Chave}/eventos</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</CancelarNfse>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consulta NFSe</Descricao>
+			<RequestURIProducao>https://nfseapi.sorocaba.sp.gov.br/notafiscal-ws/nfse/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://nfse2-sod.dsfweb.com.br/notafiscal-ws/nfse/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfse>
+		<ConsultarNfsePorRps versao="1.01">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<RequestURIProducao>https://nfseapi.sorocaba.sp.gov.br/notafiscal-ws/nfse/dps/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://nfse2-sod.dsfweb.com.br/notafiscal-ws/nfse/dps/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>chaveAcesso</WebTagRetorno>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<SchemaVersao>1.01</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>
