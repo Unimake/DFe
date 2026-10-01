@@ -21630,9 +21630,29 @@ namespace Unimake.Business.DFe.Servicos
         Legado = 0,
 
         /// <summary>
-        /// Leiaute atual, com grupos separados por tributo e modalidade.
+        /// Leiaute atual originalmente disponibilizado, com IBS e CBS na modalidade Ad Rem.
         /// </summary>
-        Atual = 1
+        Atual = 1,
+
+        /// <summary>
+        /// Leiaute atual aplicável em 2026, com IBS e CBS na modalidade Ad Valorem.
+        /// </summary>
+        Atual2026 = 2,
+
+        /// <summary>
+        /// Leiaute atual aplicável em 2027 e 2028, com IBS Ad Valorem e CBS Ad Rem.
+        /// </summary>
+        Atual2027A2028 = 3,
+
+        /// <summary>
+        /// Leiaute atual aplicável a partir de 2029, com IBS e CBS na modalidade Ad Rem.
+        /// </summary>
+        Atual2029EmDiante = 4,
+
+        /// <summary>
+        /// Seleciona o leiaute atual conforme o ano da data de emissão no conversor TXT.
+        /// </summary>
+        Automatica = 5
     }
 
     #endregion NFe

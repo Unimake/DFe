@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml;
 using Unimake.Business.DFe;
@@ -186,6 +187,64 @@ namespace Unimake.DFe.Test.NFe.Serializacao
             Assert.Equal("0.1000", gerado.SelectSingleNode("//*[local-name()='gIBSMonoAdRem']/*[local-name()='gMonoPadrao']/*[local-name()='adRemIBS']").InnerText);
             Assert.Equal("0.2000", gerado.SelectSingleNode("//*[local-name()='gCBSMonoAdRem']/*[local-name()='gMonoPadrao']/*[local-name()='adRemCBS']").InnerText);
             Assert.Null(gerado.SelectSingleNode("//*[local-name()='gIBSCBSMono']/*[local-name()='gMonoPadrao']"));
+        }
+
+        [Theory]
+        [InlineData(VersaoLeiauteMonofasia.Atual2026, "gIBSMonoAdValorem", "gCBSMonoAdValorem")]
+        [InlineData(VersaoLeiauteMonofasia.Atual2027A2028, "gIBSMonoAdValorem", "gCBSMonoAdRem")]
+        [InlineData(VersaoLeiauteMonofasia.Atual2029EmDiante, "gIBSMonoAdRem", "gCBSMonoAdRem")]
+        [Trait("DFe", "NFe")]
+        public void DeveAdaptarGrupoRetidoLegadoConformePeriodoDoLeiauteAtual(
+            VersaoLeiauteMonofasia versaoLeiaute,
+            string grupoIBS,
+            string grupoCBS)
+        {
+            var nfe = CriarNFeBase();
+            nfe.InfNFeField.Det[0].Imposto.IBSCBS = new IBSCBS
+            {
+                CST = "620",
+                CClassTrib = "620006",
+                GIBSCBSMono = new GIBSCBSMono
+                {
+                    VersaoLeiaute = versaoLeiaute,
+                    GMonoRet = new GMonoRet
+                    {
+                        QBCMonoRet = 1,
+                        VIBSMonoRet = 0,
+                        VCBSMonoRet = 0
+                    },
+                    VTotIBSMonoItem = 0,
+                    VTotCBSMonoItem = 0
+                }
+            };
+
+            var gerado = XMLUtility.Serializar(nfe);
+            ValidarSchema(gerado);
+
+            Assert.Equal("0.00", gerado.SelectSingleNode("//*[local-name()='" + grupoIBS + "']/*[local-name()='gMonoRet']/*[local-name()='vIBSMonoRet']")?.InnerText);
+            Assert.Equal("0.00", gerado.SelectSingleNode("//*[local-name()='" + grupoCBS + "']/*[local-name()='gMonoRet']/*[local-name()='vCBSMonoRet']")?.InnerText);
+            Assert.Null(gerado.SelectSingleNode("//*[local-name()='gIBSCBSMono']/*[local-name()='gMonoRet']"));
+        }
+
+        [Fact]
+        [Trait("DFe", "NFe")]
+        public void DeveExplicarQuandoGrupoLegadoNaoPodeSerConvertidoParaAdValorem()
+        {
+            var nfe = CriarNFeBase();
+            nfe.InfNFeField.Det[0].Imposto.IBSCBS = new IBSCBS
+            {
+                CST = "620",
+                CClassTrib = "620006",
+                GIBSCBSMono = new GIBSCBSMono
+                {
+                    VersaoLeiaute = VersaoLeiauteMonofasia.Atual2026,
+                    GMonoPadrao = new GMonoPadrao { QBCMono = 1, AdRemIBS = 0.1, AdRemCBS = 0.2 }
+                }
+            };
+
+            var exception = Assert.Throws<InvalidOperationException>(() => XMLUtility.Serializar(nfe));
+            Assert.Contains("Não é possível converter automaticamente", ObterMensagemCompleta(exception));
+            Assert.Contains("Ad Valorem", ObterMensagemCompleta(exception));
         }
 
         [Fact]
@@ -395,6 +454,33 @@ namespace Unimake.DFe.Test.NFe.Serializacao
             Assert.Equal("0.0500", xmlLegado.SelectSingleNode("//*[local-name()='gMonoPadrao']/*[local-name()='adRemCBS']").InnerText);
             Assert.Equal("0.1000", xmlAtual.SelectSingleNode("//*[local-name()='gIBSMonoAdRem']/*[local-name()='gMonoPadrao']/*[local-name()='adRemIBS']").InnerText);
             Assert.Equal("0.0500", xmlAtual.SelectSingleNode("//*[local-name()='gCBSMonoAdRem']/*[local-name()='gMonoPadrao']/*[local-name()='adRemCBS']").InnerText);
+        }
+
+        [Fact]
+        [Trait("DFe", "NFe")]
+        public void ConversorTxtAutomaticoDeveUsarAdValoremParaRetidoEm2026()
+        {
+            const string origem = @"..\..\..\NFe\Resources\Txt\NFe_Reforma_Tributaria_Monofasica-nfe.txt";
+            var arquivoTemporario = Path.GetTempFileName();
+            try
+            {
+                var conteudo = File.ReadAllText(origem)
+                    .Replace("2023-02-01T15:17:21-03:00", "2026-02-01T15:17:21-03:00")
+                    .Replace("UB85|500.00|0.10|0.05|50.00|25.00|", "UB95|500.00|0.00|0.00|0.00|0.00|");
+                File.WriteAllText(arquivoTemporario, conteudo);
+
+                var resultado = new NFeTxtConverter().Converter(arquivoTemporario, VersaoLeiauteMonofasia.Automatica);
+
+                Assert.True(resultado.Sucesso, resultado.MensagemErro);
+                var xml = new XmlDocument();
+                xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+                Assert.Equal("0.00", xml.SelectSingleNode("//*[local-name()='gIBSMonoAdValorem']/*[local-name()='gMonoRet']/*[local-name()='vIBSMonoRet']")?.InnerText);
+                Assert.Equal("0.00", xml.SelectSingleNode("//*[local-name()='gCBSMonoAdValorem']/*[local-name()='gMonoRet']/*[local-name()='vCBSMonoRet']")?.InnerText);
+            }
+            finally
+            {
+                File.Delete(arquivoTemporario);
+            }
         }
 
         private static string ObterMensagemCompleta(System.Exception exception)

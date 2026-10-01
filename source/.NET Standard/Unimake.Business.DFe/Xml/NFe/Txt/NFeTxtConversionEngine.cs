@@ -2980,10 +2980,33 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 imposto.GIBSCBSMono = new DFeNFe.GIBSCBSMono
                 {
-                    VersaoLeiaute = this.versaoLeiauteMonofasia
+                    VersaoLeiaute = ObterVersaoLeiauteMonofasia()
                 };
             }
             return imposto.GIBSCBSMono;
+        }
+
+        private VersaoLeiauteMonofasia ObterVersaoLeiauteMonofasia()
+        {
+            if (versaoLeiauteMonofasia != VersaoLeiauteMonofasia.Automatica)
+            {
+                return versaoLeiauteMonofasia;
+            }
+
+            var ano = identificacaoOficial.DhEmi.Year;
+            if (ano < 2026)
+            {
+                return VersaoLeiauteMonofasia.Legado;
+            }
+
+            if (ano == 2026)
+            {
+                return VersaoLeiauteMonofasia.Atual2026;
+            }
+
+            return ano <= 2028
+                ? VersaoLeiauteMonofasia.Atual2027A2028
+                : VersaoLeiauteMonofasia.Atual2029EmDiante;
         }
 
         private DFeNFe.GCredPresOper ObterGCredPresOper(int nProd)
