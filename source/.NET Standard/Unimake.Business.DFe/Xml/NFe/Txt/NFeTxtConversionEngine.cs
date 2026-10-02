@@ -212,6 +212,22 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 { "UB91", this.ProcessarTotalIbsCbsTribRegular },
                 { "UB95", this.ProcessarTotalIbsCbsTribRegularCompraGov },
                 { "UB100", this.ProcessarMonoDiferido },
+                { "UB85IAR", this.ProcessarMonoPadraoIbsAdRem },
+                { "UB91IAR", this.ProcessarMonoRetenIbsAdRem },
+                { "UB95IAR", this.ProcessarMonoRetIbsAdRem },
+                { "UB100IAR", this.ProcessarBioDiferencaIbsAdRem },
+                { "UB85IAV", this.ProcessarMonoPadraoIbsAdValorem },
+                { "UB91IAV", this.ProcessarMonoRetenIbsAdValorem },
+                { "UB95IAV", this.ProcessarMonoRetIbsAdValorem },
+                { "UB100IAV", this.ProcessarBioDiferencaIbsAdValorem },
+                { "UB85CAR", this.ProcessarMonoPadraoCbsAdRem },
+                { "UB91CAR", this.ProcessarMonoRetenCbsAdRem },
+                { "UB95CAR", this.ProcessarMonoRetCbsAdRem },
+                { "UB100CAR", this.ProcessarBioDiferencaCbsAdRem },
+                { "UB85CAV", this.ProcessarMonoPadraoCbsAdValorem },
+                { "UB91CAV", this.ProcessarMonoRetenCbsAdValorem },
+                { "UB95CAV", this.ProcessarMonoRetCbsAdValorem },
+                { "UB100CAV", this.ProcessarBioDiferencaCbsAdValorem },
                 { "UB106", this.ProcessarTransferenciaCredito },
                 { "UB112", this.ProcessarAjusteCompetencia },
                 { "UB14A", this.ProcessarIndicadorDoacao },
@@ -2986,6 +3002,72 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             return imposto.GIBSCBSMono;
         }
 
+        private DFeNFe.GIBSCBSMono ObterGIBSCBSMonoNovo(int nProd)
+        {
+            var monofasico = ObterGIBSCBSMono(nProd);
+            if (monofasico.GMonoPadrao != null || monofasico.GMonoReten != null || monofasico.GMonoRet != null || monofasico.GMonoDif != null)
+            {
+                throw new InvalidOperationException(
+                    "O segmento " + FSegmento + " não pode ser utilizado no mesmo item que os segmentos legados UB85, UB91, UB95 ou UB100.");
+            }
+
+            return monofasico;
+        }
+
+        private void ValidarSegmentoMonofasicoLegado(int nProd)
+        {
+            var monofasico = ObterGIBSCBSMono(nProd);
+            if (monofasico.TemGrupoAtualInformado)
+            {
+                throw new InvalidOperationException(
+                    "O segmento legado " + FSegmento + " não pode ser utilizado no mesmo item que os novos segmentos monofásicos.");
+            }
+        }
+
+        private DFeNFe.GIBSMonoAdRem ObterGIBSMonoAdRem(int nProd)
+        {
+            var monofasico = ObterGIBSCBSMonoNovo(nProd);
+            if (monofasico.GIBSMonoAdValorem != null)
+            {
+                throw new InvalidOperationException("Não é permitido informar IBS Ad Rem e IBS Ad Valorem no mesmo item.");
+            }
+            if (monofasico.GIBSMonoAdRem == null) monofasico.GIBSMonoAdRem = new DFeNFe.GIBSMonoAdRem();
+            return monofasico.GIBSMonoAdRem;
+        }
+
+        private DFeNFe.GIBSMonoAdValorem ObterGIBSMonoAdValorem(int nProd)
+        {
+            var monofasico = ObterGIBSCBSMonoNovo(nProd);
+            if (monofasico.GIBSMonoAdRem != null)
+            {
+                throw new InvalidOperationException("Não é permitido informar IBS Ad Rem e IBS Ad Valorem no mesmo item.");
+            }
+            if (monofasico.GIBSMonoAdValorem == null) monofasico.GIBSMonoAdValorem = new DFeNFe.GIBSMonoAdValorem();
+            return monofasico.GIBSMonoAdValorem;
+        }
+
+        private DFeNFe.GCBSMonoAdRem ObterGCBSMonoAdRem(int nProd)
+        {
+            var monofasico = ObterGIBSCBSMonoNovo(nProd);
+            if (monofasico.GCBSMonoAdValorem != null)
+            {
+                throw new InvalidOperationException("Não é permitido informar CBS Ad Rem e CBS Ad Valorem no mesmo item.");
+            }
+            if (monofasico.GCBSMonoAdRem == null) monofasico.GCBSMonoAdRem = new DFeNFe.GCBSMonoAdRem();
+            return monofasico.GCBSMonoAdRem;
+        }
+
+        private DFeNFe.GCBSMonoAdValorem ObterGCBSMonoAdValorem(int nProd)
+        {
+            var monofasico = ObterGIBSCBSMonoNovo(nProd);
+            if (monofasico.GCBSMonoAdRem != null)
+            {
+                throw new InvalidOperationException("Não é permitido informar CBS Ad Rem e CBS Ad Valorem no mesmo item.");
+            }
+            if (monofasico.GCBSMonoAdValorem == null) monofasico.GCBSMonoAdValorem = new DFeNFe.GCBSMonoAdValorem();
+            return monofasico.GCBSMonoAdValorem;
+        }
+
         private VersaoLeiauteMonofasia ObterVersaoLeiauteMonofasia()
         {
             if (versaoLeiauteMonofasia != VersaoLeiauteMonofasia.Automatica)
@@ -3200,6 +3282,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarTotalIbsCbsCreditoPresumidoCompraGov(int nProd, int lenPipesRegistro)
         {
             //layout = "UB85|qBCMono|adRemIBS|adRemCBS|vIBSMono|vCBSMono|"
+            ValidarSegmentoMonofasicoLegado(nProd);
             ObterGIBSCBSMono(nProd).GMonoPadrao = new DFeNFe.GMonoPadrao
             {
                 QBCMono = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadrao>(nameof(DFeNFe.GMonoPadrao.QBCMono)), ObOp.Opcional, 1, 15),
@@ -3213,6 +3296,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarTotalIbsCbsTribRegular(int nProd, int lenPipesRegistro)
         {
             //layout = "UB91|qBCMonoReten|adRemIBSReten|vIBSMonoReten|adRemCBSReten|vCBSMonoReten|"
+            ValidarSegmentoMonofasicoLegado(nProd);
             ObterGIBSCBSMono(nProd).GMonoReten = new DFeNFe.GMonoReten
             {
                 QBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoReten>(nameof(DFeNFe.GMonoReten.QBCMonoReten)), ObOp.Opcional, 1, 15),
@@ -3226,6 +3310,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarTotalIbsCbsTribRegularCompraGov(int nProd, int lenPipesRegistro)
         {
             //layout = "UB95|qBCMonoRet|adRemIBSRet|vIBSMonoRet|adRemCBSRet|vCBSMonoRet|"
+            ValidarSegmentoMonofasicoLegado(nProd);
             ObterGIBSCBSMono(nProd).GMonoRet = new DFeNFe.GMonoRet
             {
                 QBCMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.QBCMonoRet)), ObOp.Opcional, 1, 15),
@@ -3233,6 +3318,157 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 VIBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.VIBSMonoRet)), ObOp.Opcional, 1, 15),
                 AdRemCBSRet = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.AdRemCBSRet)), ObOp.Opcional, 1, 7),
                 VCBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRet>(nameof(DFeNFe.GMonoRet.VCBSMonoRet)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoPadraoIbsAdRem(int nProd, int lenPipesRegistro)
+        {
+            ObterGIBSMonoAdRem(nProd).GMonoPadrao = new DFeNFe.GMonoPadraoIBSAdRem
+            {
+                QBCMono = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadraoIBSAdRem>(nameof(DFeNFe.GMonoPadraoIBSAdRem.QBCMono)), ObOp.Opcional, 1, 15),
+                AdRemIBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadraoIBSAdRem>(nameof(DFeNFe.GMonoPadraoIBSAdRem.AdRemIBS)), ObOp.Opcional, 1, 7),
+                VIBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadraoIBSAdRem>(nameof(DFeNFe.GMonoPadraoIBSAdRem.VIBSMono)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoRetenIbsAdRem(int nProd, int lenPipesRegistro)
+        {
+            ObterGIBSMonoAdRem(nProd).GMonoReten = new DFeNFe.GMonoRetenIBSAdRem
+            {
+                QBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRetenIBSAdRem>(nameof(DFeNFe.GMonoRetenIBSAdRem.QBCMonoReten)), ObOp.Opcional, 1, 15),
+                AdRemIBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRetenIBSAdRem>(nameof(DFeNFe.GMonoRetenIBSAdRem.AdRemIBSReten)), ObOp.Opcional, 1, 7),
+                VIBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetenIBSAdRem>(nameof(DFeNFe.GMonoRetenIBSAdRem.VIBSMonoReten)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoRetIbsAdRem(int nProd, int lenPipesRegistro)
+        {
+            ObterGIBSMonoAdRem(nProd).GMonoRet = new DFeNFe.GMonoRetIBS
+            {
+                VIBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetIBS>(nameof(DFeNFe.GMonoRetIBS.VIBSMonoRet)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarBioDiferencaIbsAdRem(int nProd, int lenPipesRegistro)
+        {
+            ObterGIBSMonoAdRem(nProd).GPBioDiferenca = new DFeNFe.GPBioDiferencaIBS
+            {
+                QBCBioComb = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GPBioDiferencaIBS>(nameof(DFeNFe.GPBioDiferencaIBS.QBCBioComb)), ObOp.Opcional, 1, 15),
+                VIBSDiferenca = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GPBioDiferencaIBS>(nameof(DFeNFe.GPBioDiferencaIBS.VIBSDiferenca)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoPadraoIbsAdValorem(int nProd, int lenPipesRegistro)
+        {
+            ObterGIBSMonoAdValorem(nProd).GMonoPadrao = new DFeNFe.GMonoPadraoIBSAdValorem
+            {
+                VBCMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadraoIBSAdValorem>(nameof(DFeNFe.GMonoPadraoIBSAdValorem.VBCMono)), ObOp.Opcional, 1, 15),
+                PAliqMonoUF = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadraoIBSAdValorem>(nameof(DFeNFe.GMonoPadraoIBSAdValorem.PAliqMonoUF)), ObOp.Opcional, 1, 7),
+                VIBSMonoUF = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadraoIBSAdValorem>(nameof(DFeNFe.GMonoPadraoIBSAdValorem.VIBSMonoUF)), ObOp.Opcional, 1, 15),
+                PAliqMonoMun = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadraoIBSAdValorem>(nameof(DFeNFe.GMonoPadraoIBSAdValorem.PAliqMonoMun)), ObOp.Opcional, 1, 7),
+                VIBSMonoMun = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadraoIBSAdValorem>(nameof(DFeNFe.GMonoPadraoIBSAdValorem.VIBSMonoMun)), ObOp.Opcional, 1, 15),
+                VIBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadraoIBSAdValorem>(nameof(DFeNFe.GMonoPadraoIBSAdValorem.VIBSMono)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoRetenIbsAdValorem(int nProd, int lenPipesRegistro)
+        {
+            ObterGIBSMonoAdValorem(nProd).GMonoReten = new DFeNFe.GMonoRetenIBSAdValorem
+            {
+                VBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetenIBSAdValorem>(nameof(DFeNFe.GMonoRetenIBSAdValorem.VBCMonoReten)), ObOp.Opcional, 1, 15),
+                PAliqMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRetenIBSAdValorem>(nameof(DFeNFe.GMonoRetenIBSAdValorem.PAliqMonoReten)), ObOp.Opcional, 1, 7),
+                VIBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetenIBSAdValorem>(nameof(DFeNFe.GMonoRetenIBSAdValorem.VIBSMonoReten)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoRetIbsAdValorem(int nProd, int lenPipesRegistro)
+        {
+            ObterGIBSMonoAdValorem(nProd).GMonoRet = new DFeNFe.GMonoRetIBS
+            {
+                VIBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetIBS>(nameof(DFeNFe.GMonoRetIBS.VIBSMonoRet)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarBioDiferencaIbsAdValorem(int nProd, int lenPipesRegistro)
+        {
+            ObterGIBSMonoAdValorem(nProd).GPBioDiferenca = new DFeNFe.GPBioDiferencaIBS
+            {
+                QBCBioComb = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GPBioDiferencaIBS>(nameof(DFeNFe.GPBioDiferencaIBS.QBCBioComb)), ObOp.Opcional, 1, 15),
+                VIBSDiferenca = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GPBioDiferencaIBS>(nameof(DFeNFe.GPBioDiferencaIBS.VIBSDiferenca)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoPadraoCbsAdRem(int nProd, int lenPipesRegistro)
+        {
+            ObterGCBSMonoAdRem(nProd).GMonoPadrao = new DFeNFe.GMonoPadraoCBSAdRem
+            {
+                QBCMono = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadraoCBSAdRem>(nameof(DFeNFe.GMonoPadraoCBSAdRem.QBCMono)), ObOp.Opcional, 1, 15),
+                AdRemCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadraoCBSAdRem>(nameof(DFeNFe.GMonoPadraoCBSAdRem.AdRemCBS)), ObOp.Opcional, 1, 7),
+                VCBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadraoCBSAdRem>(nameof(DFeNFe.GMonoPadraoCBSAdRem.VCBSMono)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoRetenCbsAdRem(int nProd, int lenPipesRegistro)
+        {
+            ObterGCBSMonoAdRem(nProd).GMonoReten = new DFeNFe.GMonoRetenCBSAdRem
+            {
+                QBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRetenCBSAdRem>(nameof(DFeNFe.GMonoRetenCBSAdRem.QBCMonoReten)), ObOp.Opcional, 1, 15),
+                AdRemCBSReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRetenCBSAdRem>(nameof(DFeNFe.GMonoRetenCBSAdRem.AdRemCBSReten)), ObOp.Opcional, 1, 7),
+                VCBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetenCBSAdRem>(nameof(DFeNFe.GMonoRetenCBSAdRem.VCBSMonoReten)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoRetCbsAdRem(int nProd, int lenPipesRegistro)
+        {
+            ObterGCBSMonoAdRem(nProd).GMonoRet = new DFeNFe.GMonoRetCBS
+            {
+                VCBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetCBS>(nameof(DFeNFe.GMonoRetCBS.VCBSMonoRet)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarBioDiferencaCbsAdRem(int nProd, int lenPipesRegistro)
+        {
+            ObterGCBSMonoAdRem(nProd).GPBioDiferenca = new DFeNFe.GPBioDiferencaCBS
+            {
+                QBCBioComb = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GPBioDiferencaCBS>(nameof(DFeNFe.GPBioDiferencaCBS.QBCBioComb)), ObOp.Opcional, 1, 15),
+                VCBSDiferenca = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GPBioDiferencaCBS>(nameof(DFeNFe.GPBioDiferencaCBS.VCBSDiferenca)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoPadraoCbsAdValorem(int nProd, int lenPipesRegistro)
+        {
+            ObterGCBSMonoAdValorem(nProd).GMonoPadrao = new DFeNFe.GMonoPadraoCBSAdValorem
+            {
+                VBCMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadraoCBSAdValorem>(nameof(DFeNFe.GMonoPadraoCBSAdValorem.VBCMono)), ObOp.Opcional, 1, 15),
+                PAliqMonoCBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoPadraoCBSAdValorem>(nameof(DFeNFe.GMonoPadraoCBSAdValorem.PAliqMonoCBS)), ObOp.Opcional, 1, 7),
+                VCBSMono = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoPadraoCBSAdValorem>(nameof(DFeNFe.GMonoPadraoCBSAdValorem.VCBSMono)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoRetenCbsAdValorem(int nProd, int lenPipesRegistro)
+        {
+            ObterGCBSMonoAdValorem(nProd).GMonoReten = new DFeNFe.GMonoRetenCBSAdValorem
+            {
+                VBCMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetenCBSAdValorem>(nameof(DFeNFe.GMonoRetenCBSAdValorem.VBCMonoReten)), ObOp.Opcional, 1, 15),
+                PAliqMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoRetenCBSAdValorem>(nameof(DFeNFe.GMonoRetenCBSAdValorem.PAliqMonoReten)), ObOp.Opcional, 1, 7),
+                VCBSMonoReten = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetenCBSAdValorem>(nameof(DFeNFe.GMonoRetenCBSAdValorem.VCBSMonoReten)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarMonoRetCbsAdValorem(int nProd, int lenPipesRegistro)
+        {
+            ObterGCBSMonoAdValorem(nProd).GMonoRet = new DFeNFe.GMonoRetCBS
+            {
+                VCBSMonoRet = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GMonoRetCBS>(nameof(DFeNFe.GMonoRetCBS.VCBSMonoRet)), ObOp.Opcional, 1, 15)
+            };
+        }
+
+        private void ProcessarBioDiferencaCbsAdValorem(int nProd, int lenPipesRegistro)
+        {
+            ObterGCBSMonoAdValorem(nProd).GPBioDiferenca = new DFeNFe.GPBioDiferencaCBS
+            {
+                QBCBioComb = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GPBioDiferencaCBS>(nameof(DFeNFe.GPBioDiferencaCBS.QBCBioComb)), ObOp.Opcional, 1, 15),
+                VCBSDiferenca = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GPBioDiferencaCBS>(nameof(DFeNFe.GPBioDiferencaCBS.VCBSDiferenca)), ObOp.Opcional, 1, 15)
             };
         }
 
@@ -3283,6 +3519,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private void ProcessarMonoDiferido(int nProd, int lenPipesRegistro)
         {
             //layout = "UB100|pDifIBS|vIBSMonoDif|pDifCBS|vCBSMonoDif|"
+            ValidarSegmentoMonofasicoLegado(nProd);
             ObterGIBSCBSMono(nProd).GMonoDif = new DFeNFe.GMonoDif
             {
                 PDifIBS = this.LerDouble(TpcnTipoCampo.tcDouble4, XmlTag<DFeNFe.GMonoDif>(nameof(DFeNFe.GMonoDif.PDifIBS)), ObOp.Opcional, 1, 7),

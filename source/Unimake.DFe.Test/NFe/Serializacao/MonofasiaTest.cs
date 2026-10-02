@@ -483,6 +483,144 @@ namespace Unimake.DFe.Test.NFe.Serializacao
             }
         }
 
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(VersaoLeiauteMonofasia.Atual, "AdRem", "AdRem")]
+        [InlineData(VersaoLeiauteMonofasia.Atual2026, "AdValorem", "AdValorem")]
+        [InlineData(VersaoLeiauteMonofasia.Atual2027A2028, "AdValorem", "AdRem")]
+        [InlineData(VersaoLeiauteMonofasia.Atual2029EmDiante, "AdRem", "AdRem")]
+        public void ConversorTxtDeveAceitarSegmentosDiretosDeTodosOsLeiautesAtuais(
+            VersaoLeiauteMonofasia versaoLeiaute,
+            string modalidadeIbs,
+            string modalidadeCbs)
+        {
+            const string origem = @"..\..\..\NFe\Resources\Txt\NFe_Reforma_Tributaria_Monofasica-nfe.txt";
+            var arquivoTemporario = Path.GetTempFileName();
+            try
+            {
+                var segmentos = CriarSegmentosMonofasicosAtuais(modalidadeIbs, modalidadeCbs);
+                var conteudo = File.ReadAllText(origem)
+                    .Replace("UB85|500.00|0.10|0.05|50.00|25.00|", segmentos);
+                File.WriteAllText(arquivoTemporario, conteudo);
+
+                var resultado = new NFeTxtConverter().Converter(arquivoTemporario, versaoLeiaute);
+
+                Assert.True(resultado.Sucesso, resultado.MensagemErro);
+                var xml = new XmlDocument();
+                xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+                AdicionarAssinaturaParaValidacao(xml);
+                ValidarSchema(xml);
+
+                var grupoIbs = xml.SelectSingleNode("//*[local-name()='gIBSMono" + modalidadeIbs + "']");
+                var grupoCbs = xml.SelectSingleNode("//*[local-name()='gCBSMono" + modalidadeCbs + "']");
+                Assert.NotNull(grupoIbs);
+                Assert.NotNull(grupoCbs);
+                Assert.Equal(4, grupoIbs.ChildNodes.Count);
+                Assert.Equal(4, grupoCbs.ChildNodes.Count);
+                Assert.Equal("0.00", grupoIbs.SelectSingleNode("./*[local-name()='gMonoRet']/*[local-name()='vIBSMonoRet']").InnerText);
+                Assert.Equal("0.00", grupoCbs.SelectSingleNode("./*[local-name()='gMonoRet']/*[local-name()='vCBSMonoRet']").InnerText);
+                Assert.Equal("1.25", grupoIbs.SelectSingleNode("./*[local-name()='gpBioDiferenca']/*[local-name()='vIBSDiferenca']").InnerText);
+                Assert.Equal("1.50", grupoCbs.SelectSingleNode("./*[local-name()='gpBioDiferenca']/*[local-name()='vCBSDiferenca']").InnerText);
+            }
+            finally
+            {
+                File.Delete(arquivoTemporario);
+            }
+        }
+
+        [Fact]
+        [Trait("DFe", "NFe")]
+        public void ConversorTxtDeveRejeitarSegmentosMonofasicosLegadosENovosNoMesmoItem()
+        {
+            const string origem = @"..\..\..\NFe\Resources\Txt\NFe_Reforma_Tributaria_Monofasica-nfe.txt";
+            var arquivoTemporario = Path.GetTempFileName();
+            try
+            {
+                var conteudo = File.ReadAllText(origem)
+                    .Replace("UB85|500.00|0.10|0.05|50.00|25.00|", "UB85|500.00|0.10|0.05|50.00|25.00|" + Environment.NewLine + "UB85IAR|500.0000|0.1000|50.00|");
+                File.WriteAllText(arquivoTemporario, conteudo);
+
+                var resultado = new NFeTxtConverter().Converter(arquivoTemporario, VersaoLeiauteMonofasia.Atual);
+
+                Assert.False(resultado.Sucesso);
+                Assert.Contains("não pode ser utilizado no mesmo item", resultado.MensagemErro);
+            }
+            finally
+            {
+                File.Delete(arquivoTemporario);
+            }
+        }
+
+        [Fact]
+        [Trait("DFe", "NFe")]
+        public void ConversorTxtDeveAdaptarVariosSegmentosLegadosParaLeiauteAtual()
+        {
+            const string origem = @"..\..\..\NFe\Resources\Txt\NFe_Reforma_Tributaria_Monofasica-nfe.txt";
+            var arquivoTemporario = Path.GetTempFileName();
+            try
+            {
+                var conteudo = File.ReadAllText(origem)
+                    .Replace(
+                        "UB85|500.00|0.10|0.05|50.00|25.00|",
+                        "UB85|500.00|0.10|0.05|50.00|25.00|" + Environment.NewLine +
+                        "UB91|100.00|0.10|10.00|0.05|5.00|" + Environment.NewLine +
+                        "UB95|100.00|0.10|10.00|0.05|5.00|");
+                File.WriteAllText(arquivoTemporario, conteudo);
+
+                var resultado = new NFeTxtConverter().Converter(arquivoTemporario, VersaoLeiauteMonofasia.Atual);
+
+                Assert.True(resultado.Sucesso, resultado.MensagemErro);
+                var xml = new XmlDocument();
+                xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+                Assert.NotNull(xml.SelectSingleNode("//*[local-name()='gIBSMonoAdRem']/*[local-name()='gMonoPadrao']"));
+                Assert.NotNull(xml.SelectSingleNode("//*[local-name()='gIBSMonoAdRem']/*[local-name()='gMonoReten']"));
+                Assert.NotNull(xml.SelectSingleNode("//*[local-name()='gIBSMonoAdRem']/*[local-name()='gMonoRet']"));
+                Assert.NotNull(xml.SelectSingleNode("//*[local-name()='gCBSMonoAdRem']/*[local-name()='gMonoPadrao']"));
+                Assert.NotNull(xml.SelectSingleNode("//*[local-name()='gCBSMonoAdRem']/*[local-name()='gMonoReten']"));
+                Assert.NotNull(xml.SelectSingleNode("//*[local-name()='gCBSMonoAdRem']/*[local-name()='gMonoRet']"));
+            }
+            finally
+            {
+                File.Delete(arquivoTemporario);
+            }
+        }
+
+        private static string CriarSegmentosMonofasicosAtuais(string modalidadeIbs, string modalidadeCbs)
+        {
+            var segmentosIbs = modalidadeIbs == "AdValorem"
+                ? new[]
+                {
+                    "UB85IAV|1000.00|0.1000|1.00|0.2000|2.00|3.00|",
+                    "UB91IAV|500.00|0.3000|1.50|",
+                    "UB95IAV|0.00|",
+                    "UB100IAV|10.0000|1.25|"
+                }
+                : new[]
+                {
+                    "UB85IAR|1000.0000|0.1000|100.00|",
+                    "UB91IAR|500.0000|0.2000|100.00|",
+                    "UB95IAR|0.00|",
+                    "UB100IAR|10.0000|1.25|"
+                };
+            var segmentosCbs = modalidadeCbs == "AdValorem"
+                ? new[]
+                {
+                    "UB85CAV|1000.00|0.9000|9.00|",
+                    "UB91CAV|500.00|0.8000|4.00|",
+                    "UB95CAV|0.00|",
+                    "UB100CAV|10.0000|1.50|"
+                }
+                : new[]
+                {
+                    "UB85CAR|1000.0000|0.0500|50.00|",
+                    "UB91CAR|500.0000|0.0600|30.00|",
+                    "UB95CAR|0.00|",
+                    "UB100CAR|10.0000|1.50|"
+                };
+
+            return string.Join(Environment.NewLine, segmentosIbs.Concat(segmentosCbs));
+        }
+
         private static string ObterMensagemCompleta(System.Exception exception)
         {
             var mensagem = exception.Message;

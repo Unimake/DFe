@@ -14055,6 +14055,10 @@ namespace Unimake.Business.DFe.Xml.NFe
         private GMonoReten gMonoReten;
         private GMonoRet gMonoRet;
 
+        internal bool TemGrupoAtualInformado =>
+            gIBSMonoAdRem != null || gIBSMonoAdValorem != null ||
+            gCBSMonoAdRem != null || gCBSMonoAdValorem != null;
+
         /// <summary>
         /// Versão do leiaute utilizada para serializar os grupos de tributação monofásica.
         /// </summary>

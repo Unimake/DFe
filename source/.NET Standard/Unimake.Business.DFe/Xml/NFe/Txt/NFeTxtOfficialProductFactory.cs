@@ -215,12 +215,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private static bool TemDados(DFeNFe.GTribCompraGov grupo) => grupo != null &&
             grupo.PAliqIBSUF + grupo.VTribIBSUF + grupo.PAliqIBSMun + grupo.VTribIBSMun + grupo.PAliqCBS + grupo.VTribCBS > 0;
 
-        private static bool TemDados(DFeNFe.GMonoPadraoIBSAdRem grupo) => grupo != null && grupo.QBCMono + grupo.AdRemIBS + grupo.VIBSMono > 0;
-        private static bool TemDados(DFeNFe.GMonoRetenIBSAdRem grupo) => grupo != null && grupo.QBCMonoReten + grupo.AdRemIBSReten + grupo.VIBSMonoReten > 0;
-        private static bool TemDados(DFeNFe.GMonoRetIBS grupo) => grupo != null && grupo.VIBSMonoRet > 0;
-        private static bool TemDados(DFeNFe.GMonoPadraoCBSAdRem grupo) => grupo != null && grupo.QBCMono + grupo.AdRemCBS + grupo.VCBSMono > 0;
-        private static bool TemDados(DFeNFe.GMonoRetenCBSAdRem grupo) => grupo != null && grupo.QBCMonoReten + grupo.AdRemCBSReten + grupo.VCBSMonoReten > 0;
-        private static bool TemDados(DFeNFe.GMonoRetCBS grupo) => grupo != null && grupo.VCBSMonoRet > 0;
+        private static bool TemDados(DFeNFe.GMonoPadraoIBSAdRem grupo) => grupo != null;
+        private static bool TemDados(DFeNFe.GMonoRetenIBSAdRem grupo) => grupo != null;
+        private static bool TemDados(DFeNFe.GMonoRetIBS grupo) => grupo != null;
+        private static bool TemDados(DFeNFe.GMonoPadraoCBSAdRem grupo) => grupo != null;
+        private static bool TemDados(DFeNFe.GMonoRetenCBSAdRem grupo) => grupo != null;
+        private static bool TemDados(DFeNFe.GMonoRetCBS grupo) => grupo != null;
         private static bool TemDados(DFeNFe.GMonoPadrao grupo) => grupo != null && grupo.QBCMono + grupo.AdRemIBS + grupo.AdRemCBS + grupo.VIBSMono + grupo.VCBSMono > 0;
         private static bool TemDados(DFeNFe.GMonoReten grupo) => grupo != null && grupo.QBCMonoReten + grupo.AdRemIBSReten + grupo.VIBSMonoReten + grupo.AdRemCBSReten + grupo.VCBSMonoReten > 0;
         private static bool TemDados(DFeNFe.GMonoRet grupo) => grupo != null && grupo.QBCMonoRet + grupo.AdRemIBSRet + grupo.VIBSMonoRet + grupo.AdRemCBSRet + grupo.VCBSMonoRet > 0;
