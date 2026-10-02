@@ -130,7 +130,7 @@ public class NFeTxtConverterTest
         var xml = new XmlDocument();
         xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
         Assert.Equal(6, xml.SelectNodes("//*[local-name()='infNFe']/*[local-name()='det']").Count);
-        Assert.Equal(6, xml.SelectNodes("//*[local-name()='prod']/*[local-name()='indEscala' and text()='S']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='prod']/*[local-name()='indEscala']").Count);
         Assert.Equal(referenciasEsperadas, xml.SelectNodes("//*[local-name()='det']/*[local-name()='DFeReferenciado']").Count);
         Assert.Equal("21775.25", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
 
@@ -138,6 +138,7 @@ public class NFeTxtConverterTest
         validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
         Assert.False(validacao.Success);
         Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.DoesNotContain("indEscala", validacao.ErrorMessage);
     }
 
     /// <summary>
@@ -324,10 +325,10 @@ public class NFeTxtConverterTest
     }
 
     /// <summary>
-    /// Deve preservar a chave informada e o indicador de escala na devolução com RTC.
+    /// Deve preservar a chave e omitir a escala sem CEST, como no conversor legado.
     /// </summary>
     [Fact]
-    public void ConverterDeveEvidenciarIndEscalaSemCestNaDevolucaoRtc()
+    public void ConverterDeveOmitirIndEscalaSemCestNaDevolucaoRtc()
     {
         var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000000011-devolucao-rtc-nfe.txt"));
 
@@ -337,7 +338,7 @@ public class NFeTxtConverterTest
 
         Assert.Equal("NFe33260999999999000191550050000000111003282235", xml.SelectSingleNode("//*[local-name()='infNFe']")?.Attributes?["Id"]?.Value);
         Assert.Equal("00328223", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='cNF']")?.InnerText);
-        Assert.Equal("S", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='indEscala']")?.InnerText);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='indEscala']"));
         Assert.Null(xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='CEST']"));
         Assert.Equal("102", xml.SelectSingleNode("//*[local-name()='ICMSSN102']/*[local-name()='CSOSN']")?.InnerText);
         Assert.Equal("000", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='CST']")?.InnerText);
@@ -346,8 +347,9 @@ public class NFeTxtConverterTest
         var validacao = new ValidarSchema();
         validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
         Assert.False(validacao.Success);
-        Assert.Contains("indEscala", validacao.ErrorMessage);
-        Assert.Contains("CEST", validacao.ErrorMessage);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.DoesNotContain("indEscala", validacao.ErrorMessage);
+        Assert.DoesNotContain("CEST", validacao.ErrorMessage);
     }
 
     /// <summary>
@@ -787,10 +789,10 @@ public class NFeTxtConverterTest
     }
 
     /// <summary>
-    /// Deve evidenciar no schema que o indicador de escala não pode ser informado sem o CEST.
+    /// Deve omitir o indicador sem CEST antes da validação do schema.
     /// </summary>
     [Fact]
-    public void SchemaDeveRejeitarIndicadorEscalaSemCest()
+    public void ConverterDeveOmitirIndicadorEscalaSemCest()
     {
         var arquivoTemporario = Path.GetTempFileName();
         try
@@ -808,7 +810,9 @@ public class NFeTxtConverterTest
             validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
 
             Assert.False(validacao.Success);
-            Assert.Contains("indEscala", validacao.ErrorMessage);
+            Assert.Null(xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='indEscala']"));
+            Assert.Contains("Signature", validacao.ErrorMessage);
+            Assert.DoesNotContain("indEscala", validacao.ErrorMessage);
         }
         finally
         {

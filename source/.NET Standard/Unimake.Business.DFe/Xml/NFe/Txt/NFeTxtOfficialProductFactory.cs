@@ -21,6 +21,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private static void CompletarDetalhe(bool compraGovernamental, DFeNFe.Det detalhe)
         {
+            // No TXT legado, a escala sem CEST não chega ao XML; o XSD também exige CEST nesse grupo.
+            if (detalhe.Prod != null && string.IsNullOrWhiteSpace(detalhe.Prod.CEST))
+            {
+                detalhe.Prod.IndEscala = (IndicadorEscalaRelevante)(-1);
+            }
+
             var imposto = detalhe.Imposto;
             if (imposto != null)
             {
