@@ -94,6 +94,7 @@ public class NFeTxtConverterTest
     [InlineData("000047246-importacao-quatro-itens-nfe.txt")]
     [InlineData("000024804-retorno-vasilhames-nfe.txt")]
     [InlineData("000024804-retorno-vasilhames-vc01-nfe.txt")]
+    [InlineData("000107590-venda-nfce-rtc.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -114,6 +115,24 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// Preserva os totais informados no TXT da NFC-e 107590, mesmo quando o ERP os informa inconsistentes.
+    /// </summary>
+    [Fact]
+    public void ConverterNfce107590DevePreservarValoresInformadosPeloErp()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000107590-venda-nfce-rtc.txt"));
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        Assert.Equal("597.84", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='vProd']")?.InnerText);
+        Assert.Equal("55.00", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='vFrete']")?.InnerText);
+        Assert.Equal("652.84", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+        Assert.Equal("546.75", xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='vItem']")?.InnerText);
+        Assert.Equal("546.75", xml.SelectSingleNode("//*[local-name()='total']/*[local-name()='vNFTot']")?.InnerText);
     }
 
     /// <summary>
@@ -2447,6 +2466,10 @@ public class NFeTxtConverterTest
             "9013566450",
             "0443351392",
             "CENTERKASA COMERCIAL LTDA",
+            "SONIA ROSA DE BARROS",
+            "16082230191",
+            "R SENADOR JOAO KUBISTCHEK",
+            "6235650013",
             "NOVA ROCHA IND TINTAS LTDA",
             "CIARIN COMERCIO E INDUSTRIA DE ARTIGOS P/ SELARIA LTDA",
             "CIARIN METAIS",
