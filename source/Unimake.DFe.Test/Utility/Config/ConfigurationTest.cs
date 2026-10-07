@@ -1,5 +1,6 @@
 using System.Linq;
 using Unimake.Business.DFe;
+using Unimake.Business.DFe.ConsumirServico.Compatibility;
 using Unimake.Business.DFe.Servicos;
 using Xunit;
 
@@ -45,6 +46,28 @@ namespace Unimake.DFe.Test.Utility.Config
             Assert.Equal(arqConfigEsperado, municipio.ArquivoConfiguracao);
             Assert.Equal(padraoEsperado, municipio.PadraoNFSe);
             Assert.False(string.IsNullOrWhiteSpace(municipio.Nome));
+        }
+
+        [Theory]
+        [Trait("Utility", "Config")]
+        [InlineData(TipoAmbiente.Producao, "https://api.centi.com.br/nfe/gerar/go/jatai")]
+        [InlineData(TipoAmbiente.Homologacao, "https://api.centi.com.br/nfe/gerar/homologacao/go/jatai")]
+        public void CarregarSubstituirNfseJatai_DeveSelecionarEndpointDoAmbiente(TipoAmbiente tipoAmbiente, string endpointEsperado)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CodigoMunicipio = 5211909,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.NFSeSubstituirNfse,
+                SchemaVersao = "2.00"
+            };
+
+            configuracao.Load("SubstituirNfse");
+
+            var api = new ConfiguracaoApiConfigMapper().MapExplicitEnvironment(configuracao);
+
+            Assert.Equal(endpointEsperado, api.RequestURI);
         }
 
         [Fact]

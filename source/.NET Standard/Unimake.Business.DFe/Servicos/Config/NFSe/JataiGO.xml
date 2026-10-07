@@ -29,8 +29,8 @@
 		</CancelarNfse>
 		<SubstituirNfse versao="2.00">
 			<Descricao>Substituir NFSe</Descricao>
-			<RequestURIProducao>https://api.centi.com.br/nfe/substituir/go/jatai</RequestURIProducao>
-			<RequestURIHomologacao>https://api.centi.com.br/nfe/substituir/go/jatai</RequestURIHomologacao>
+			<RequestURIProducao>https://api.centi.com.br/nfe/gerar/go/jatai</RequestURIProducao>
+			<RequestURIHomologacao>https://api.centi.com.br/nfe/gerar/homologacao/go/jatai</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<WebSoapString></WebSoapString>
