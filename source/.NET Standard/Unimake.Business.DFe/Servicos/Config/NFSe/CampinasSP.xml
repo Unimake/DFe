@@ -148,7 +148,7 @@
 		<GerarNfse versao="1.01">
 			<Descricao>Envio do DPS - Síncrono</Descricao>
 			<RequestURIProducao>https://nfseapi.campinas.sp.gov.br/notafiscal-ws/nfse</RequestURIProducao>
-			<RequestURIHomologacao>https://preprod-nfseapi.ima.sp.gov.br/notafiscal-ws/api/adn/dps</RequestURIHomologacao>
+			<RequestURIHomologacao>https://preprod-nfseapi.ima.sp.gov.br/notafiscal-ws/nfse</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
 			<WebSoapString></WebSoapString>
@@ -163,7 +163,7 @@
 		<CancelarNfse versao="1.01">
 			<Descricao>Envio do cancelamento de NFSe</Descricao>
 			<RequestURIProducao>https://nfseapi.campinas.sp.gov.br/notafiscal-ws/nfse/{Chave}/eventos</RequestURIProducao>
-			<RequestURIHomologacao>https://preprod-nfseapi.ima.sp.gov.br/notafiscal-ws/api/adn/nfse/{Chave}/eventos</RequestURIHomologacao>
+			<RequestURIHomologacao>https://preprod-nfseapi.ima.sp.gov.br/notafiscal-ws/nfse/{Chave}/eventos</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
 			<WebSoapString></WebSoapString>
@@ -176,7 +176,7 @@
 		<ConsultarNfsePorRps versao="1.01">
 			<Descricao>Consultar NFSe por DPS</Descricao>
 			<RequestURIProducao>https://nfseapi.campinas.sp.gov.br/notafiscal-ws/nfse/dps/{Chave}</RequestURIProducao>
-			<RequestURIHomologacao>https://preprod-nfseapi.ima.sp.gov.br/notafiscal-ws/api/adn/dps/{Chave}</RequestURIHomologacao>
+			<RequestURIHomologacao>https://preprod-nfseapi.ima.sp.gov.br/notafiscal-ws/nfse/dps/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<WebSoapString></WebSoapString>
@@ -189,7 +189,7 @@
 		<ConsultarNfse versao="1.01">
 			<Descricao>Consultar NFSe</Descricao>
 			<RequestURIProducao>https://nfseapi.campinas.sp.gov.br/notafiscal-ws/nfse/{Chave}</RequestURIProducao>
-			<RequestURIHomologacao>https://preprod-nfseapi.ima.sp.gov.br/notafiscal-ws/api/adn/nfse/{Chave}</RequestURIHomologacao>
+			<RequestURIHomologacao>https://preprod-nfseapi.ima.sp.gov.br/notafiscal-ws/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<WebSoapString></WebSoapString>
