@@ -675,7 +675,7 @@
 		<Nome>Jataí - GO</Nome>
 		<UF>GO</UF>
 		<ArqConfig>JataiGO.xml</ArqConfig>
-		<PadraoNFSe>BSITBR</PadraoNFSe>
+		<PadraoNFSe>CENTI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4314803">
 		<Nome>Portão - RS</Nome>

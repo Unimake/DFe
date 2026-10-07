@@ -14055,6 +14055,10 @@ namespace Unimake.Business.DFe.Xml.NFe
         private GMonoReten gMonoReten;
         private GMonoRet gMonoRet;
 
+        internal bool TemGrupoAtualInformado =>
+            gIBSMonoAdRem != null || gIBSMonoAdValorem != null ||
+            gCBSMonoAdRem != null || gCBSMonoAdValorem != null;
+
         /// <summary>
         /// Versão do leiaute utilizada para serializar os grupos de tributação monofásica.
         /// </summary>
@@ -14067,12 +14071,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("gIBSMonoAdRem", Order = 0)]
         public GIBSMonoAdRem GIBSMonoAdRem
         {
-            get => gIBSMonoAdRemInformado ? gIBSMonoAdRem : CriarGIBSMonoAdRemLegado();
+            get => gIBSMonoAdRemInformado ? gIBSMonoAdRem : DeveAdaptarIBSAdRem() ? CriarGIBSMonoAdRemLegado() : null;
             set
             {
                 gIBSMonoAdRem = value;
                 gIBSMonoAdRemInformado = true;
-                if (value != null)
+                if (value != null && VersaoLeiaute == VersaoLeiauteMonofasia.Legado)
                 {
                     VersaoLeiaute = VersaoLeiauteMonofasia.Atual;
                 }
@@ -14085,11 +14089,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("gIBSMonoAdValorem", Order = 1)]
         public GIBSMonoAdValorem GIBSMonoAdValorem
         {
-            get => gIBSMonoAdValorem;
+            get => gIBSMonoAdValorem ?? (DeveAdaptarIBSAdValorem() ? CriarGIBSMonoAdValoremLegado() : null);
             set
             {
                 gIBSMonoAdValorem = value;
-                if (value != null)
+                if (value != null && VersaoLeiaute == VersaoLeiauteMonofasia.Legado)
                 {
                     VersaoLeiaute = VersaoLeiauteMonofasia.Atual;
                 }
@@ -14102,12 +14106,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("gCBSMonoAdRem", Order = 2)]
         public GCBSMonoAdRem GCBSMonoAdRem
         {
-            get => gCBSMonoAdRemInformado ? gCBSMonoAdRem : CriarGCBSMonoAdRemLegado();
+            get => gCBSMonoAdRemInformado ? gCBSMonoAdRem : DeveAdaptarCBSAdRem() ? CriarGCBSMonoAdRemLegado() : null;
             set
             {
                 gCBSMonoAdRem = value;
                 gCBSMonoAdRemInformado = true;
-                if (value != null)
+                if (value != null && VersaoLeiaute == VersaoLeiauteMonofasia.Legado)
                 {
                     VersaoLeiaute = VersaoLeiauteMonofasia.Atual;
                 }
@@ -14120,11 +14124,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("gCBSMonoAdValorem", Order = 3)]
         public GCBSMonoAdValorem GCBSMonoAdValorem
         {
-            get => gCBSMonoAdValorem;
+            get => gCBSMonoAdValorem ?? (DeveAdaptarCBSAdValorem() ? CriarGCBSMonoAdValoremLegado() : null);
             set
             {
                 gCBSMonoAdValorem = value;
-                if (value != null)
+                if (value != null && VersaoLeiaute == VersaoLeiauteMonofasia.Legado)
                 {
                     VersaoLeiaute = VersaoLeiauteMonofasia.Atual;
                 }
@@ -14210,10 +14214,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeGIBSMonoAdRem() => VersaoLeiaute == VersaoLeiauteMonofasia.Atual && GIBSMonoAdRem != null;
-        public bool ShouldSerializeGIBSMonoAdValorem() => VersaoLeiaute == VersaoLeiauteMonofasia.Atual && GIBSMonoAdValorem != null;
-        public bool ShouldSerializeGCBSMonoAdRem() => VersaoLeiaute == VersaoLeiauteMonofasia.Atual && GCBSMonoAdRem != null;
-        public bool ShouldSerializeGCBSMonoAdValorem() => VersaoLeiaute == VersaoLeiauteMonofasia.Atual && GCBSMonoAdValorem != null;
+        public bool ShouldSerializeGIBSMonoAdRem() => VersaoLeiaute != VersaoLeiauteMonofasia.Legado && GIBSMonoAdRem != null;
+        public bool ShouldSerializeGIBSMonoAdValorem() => VersaoLeiaute != VersaoLeiauteMonofasia.Legado && GIBSMonoAdValorem != null;
+        public bool ShouldSerializeGCBSMonoAdRem() => VersaoLeiaute != VersaoLeiauteMonofasia.Legado && GCBSMonoAdRem != null;
+        public bool ShouldSerializeGCBSMonoAdValorem() => VersaoLeiaute != VersaoLeiauteMonofasia.Legado && GCBSMonoAdValorem != null;
         public bool ShouldSerializeGMonoPadrao() => VersaoLeiaute == VersaoLeiauteMonofasia.Legado && GMonoPadrao != null;
         public bool ShouldSerializeGMonoReten() => VersaoLeiaute == VersaoLeiauteMonofasia.Legado && GMonoReten != null;
         public bool ShouldSerializeGMonoRet() => VersaoLeiaute == VersaoLeiauteMonofasia.Legado && GMonoRet != null;
@@ -14221,11 +14225,26 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #endregion ShouldSerialize
 
+        private bool DeveAdaptarIBSAdRem() =>
+            VersaoLeiaute == VersaoLeiauteMonofasia.Atual ||
+            VersaoLeiaute == VersaoLeiauteMonofasia.Atual2029EmDiante;
+
+        private bool DeveAdaptarIBSAdValorem() =>
+            VersaoLeiaute == VersaoLeiauteMonofasia.Atual2026 ||
+            VersaoLeiaute == VersaoLeiauteMonofasia.Atual2027A2028;
+
+        private bool DeveAdaptarCBSAdRem() =>
+            VersaoLeiaute == VersaoLeiauteMonofasia.Atual ||
+            VersaoLeiaute == VersaoLeiauteMonofasia.Atual2027A2028 ||
+            VersaoLeiaute == VersaoLeiauteMonofasia.Atual2029EmDiante;
+
+        private bool DeveAdaptarCBSAdValorem() => VersaoLeiaute == VersaoLeiauteMonofasia.Atual2026;
+
         private GIBSMonoAdRem CriarGIBSMonoAdRemLegado()
         {
-            var temPadrao = gMonoPadrao != null && gMonoPadrao.QBCMono + gMonoPadrao.AdRemIBS + gMonoPadrao.VIBSMono > 0;
-            var temRetencao = gMonoReten != null && gMonoReten.QBCMonoReten + gMonoReten.AdRemIBSReten + gMonoReten.VIBSMonoReten > 0;
-            var temRetido = gMonoRet != null && gMonoRet.VIBSMonoRet > 0;
+            var temPadrao = gMonoPadrao != null;
+            var temRetencao = gMonoReten != null;
+            var temRetido = gMonoRet != null;
             if (!temPadrao && !temRetencao && !temRetido)
             {
                 return null;
@@ -14251,9 +14270,9 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         private GCBSMonoAdRem CriarGCBSMonoAdRemLegado()
         {
-            var temPadrao = gMonoPadrao != null && gMonoPadrao.QBCMono + gMonoPadrao.AdRemCBS + gMonoPadrao.VCBSMono > 0;
-            var temRetencao = gMonoReten != null && gMonoReten.QBCMonoReten + gMonoReten.AdRemCBSReten + gMonoReten.VCBSMonoReten > 0;
-            var temRetido = gMonoRet != null && gMonoRet.VCBSMonoRet > 0;
+            var temPadrao = gMonoPadrao != null;
+            var temRetencao = gMonoReten != null;
+            var temRetido = gMonoRet != null;
             if (!temPadrao && !temRetencao && !temRetido)
             {
                 return null;
@@ -14275,6 +14294,40 @@ namespace Unimake.Business.DFe.Xml.NFe
                 } : null,
                 GMonoRet = temRetido ? new GMonoRetCBS { VCBSMonoRet = gMonoRet.VCBSMonoRet } : null
             };
+        }
+
+        private GIBSMonoAdValorem CriarGIBSMonoAdValoremLegado()
+        {
+            ValidarAdaptacaoAdValorem("IBS");
+            return gMonoRet == null
+                ? null
+                : new GIBSMonoAdValorem
+                {
+                    GMonoRet = new GMonoRetIBS { VIBSMonoRet = gMonoRet.VIBSMonoRet }
+                };
+        }
+
+        private GCBSMonoAdValorem CriarGCBSMonoAdValoremLegado()
+        {
+            ValidarAdaptacaoAdValorem("CBS");
+            return gMonoRet == null
+                ? null
+                : new GCBSMonoAdValorem
+                {
+                    GMonoRet = new GMonoRetCBS { VCBSMonoRet = gMonoRet.VCBSMonoRet }
+                };
+        }
+
+        private void ValidarAdaptacaoAdValorem(string tributo)
+        {
+            if (gMonoPadrao == null && gMonoReten == null && GMonoDif == null)
+            {
+                return;
+            }
+
+            throw new InvalidOperationException(
+                "Não é possível converter automaticamente os grupos legados gMonoPadrao, gMonoReten ou gMonoDif para a modalidade Ad Valorem do " +
+                tributo + ". Informe explicitamente o respectivo grupo novo em gIBSCBSMono.");
         }
     }
 

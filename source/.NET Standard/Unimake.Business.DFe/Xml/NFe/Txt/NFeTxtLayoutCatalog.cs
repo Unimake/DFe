@@ -224,6 +224,23 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     layouts.Add("UB95", prefix + "UB95|qBCMonoRet|adRemIBSRet|vIBSMonoRet|adRemCBSRet|vCBSMonoRet|"); //IBSCBS->gIBSCBSMono->gMonoRet
                     layouts.Add("UB100", prefix + "UB100|pDifIBS|vIBSMonoDif|pDifCBS|vCBSMonoDif|"); //IBSCBS->gIBSCBSMono->gMonoDif
 
+                    layouts.Add("UB85IAR", prefix + "UB85IAR|qBCMono|adRemIBS|vIBSMono|"); //IBSCBS->gIBSCBSMono->gIBSMonoAdRem->gMonoPadrao
+                    layouts.Add("UB91IAR", prefix + "UB91IAR|qBCMonoReten|adRemIBSReten|vIBSMonoReten|"); //IBSCBS->gIBSCBSMono->gIBSMonoAdRem->gMonoReten
+                    layouts.Add("UB95IAR", prefix + "UB95IAR|vIBSMonoRet|"); //IBSCBS->gIBSCBSMono->gIBSMonoAdRem->gMonoRet
+                    layouts.Add("UB100IAR", prefix + "UB100IAR|qBCBioComb|vIBSDiferenca|"); //IBSCBS->gIBSCBSMono->gIBSMonoAdRem->gpBioDiferenca
+                    layouts.Add("UB85IAV", prefix + "UB85IAV|vBCMono|pAliqMonoUF|vIBSMonoUF|pAliqMonoMun|vIBSMonoMun|vIBSMono|"); //IBSCBS->gIBSCBSMono->gIBSMonoAdValorem->gMonoPadrao
+                    layouts.Add("UB91IAV", prefix + "UB91IAV|vBCMonoReten|pAliqMonoReten|vIBSMonoReten|"); //IBSCBS->gIBSCBSMono->gIBSMonoAdValorem->gMonoReten
+                    layouts.Add("UB95IAV", prefix + "UB95IAV|vIBSMonoRet|"); //IBSCBS->gIBSCBSMono->gIBSMonoAdValorem->gMonoRet
+                    layouts.Add("UB100IAV", prefix + "UB100IAV|qBCBioComb|vIBSDiferenca|"); //IBSCBS->gIBSCBSMono->gIBSMonoAdValorem->gpBioDiferenca
+                    layouts.Add("UB85CAR", prefix + "UB85CAR|qBCMono|adRemCBS|vCBSMono|"); //IBSCBS->gIBSCBSMono->gCBSMonoAdRem->gMonoPadrao
+                    layouts.Add("UB91CAR", prefix + "UB91CAR|qBCMonoReten|adRemCBSReten|vCBSMonoReten|"); //IBSCBS->gIBSCBSMono->gCBSMonoAdRem->gMonoReten
+                    layouts.Add("UB95CAR", prefix + "UB95CAR|vCBSMonoRet|"); //IBSCBS->gIBSCBSMono->gCBSMonoAdRem->gMonoRet
+                    layouts.Add("UB100CAR", prefix + "UB100CAR|qBCBioComb|vCBSDiferenca|"); //IBSCBS->gIBSCBSMono->gCBSMonoAdRem->gpBioDiferenca
+                    layouts.Add("UB85CAV", prefix + "UB85CAV|vBCMono|pAliqMonoCBS|vCBSMono|"); //IBSCBS->gIBSCBSMono->gCBSMonoAdValorem->gMonoPadrao
+                    layouts.Add("UB91CAV", prefix + "UB91CAV|vBCMonoReten|pAliqMonoReten|vCBSMonoReten|"); //IBSCBS->gIBSCBSMono->gCBSMonoAdValorem->gMonoReten
+                    layouts.Add("UB95CAV", prefix + "UB95CAV|vCBSMonoRet|"); //IBSCBS->gIBSCBSMono->gCBSMonoAdValorem->gMonoRet
+                    layouts.Add("UB100CAV", prefix + "UB100CAV|qBCBioComb|vCBSDiferenca|"); //IBSCBS->gIBSCBSMono->gCBSMonoAdValorem->gpBioDiferenca
+
                     layouts.Add("UB106", prefix + "UB106|vIBS|vCBS|"); //IBSCBS->gTransfCred
 
                     layouts.Add("UB14A", prefix + "UB14a|indDoacao|");//IBSCBS->indDoacao

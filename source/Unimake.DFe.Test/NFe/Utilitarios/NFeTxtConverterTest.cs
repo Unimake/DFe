@@ -92,6 +92,9 @@ public class NFeTxtConverterTest
     [InlineData("RTC2026-NFe624-nfe.txt")]
     [InlineData("000323950-entrega-futura-nfe.txt")]
     [InlineData("000047246-importacao-quatro-itens-nfe.txt")]
+    [InlineData("000024804-retorno-vasilhames-nfe.txt")]
+    [InlineData("000024804-retorno-vasilhames-vc01-nfe.txt")]
+    [InlineData("000107590-venda-nfce-rtc.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
         var arquivo = Path.Combine(Environment.CurrentDirectory, @"NFe\Resources\Txt", nomeArquivo);
@@ -112,6 +115,49 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// Preserva os totais informados no TXT da NFC-e 107590, mesmo quando o ERP os informa inconsistentes.
+    /// </summary>
+    [Fact]
+    public void ConverterNfce107590DevePreservarValoresInformadosPeloErp()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000107590-venda-nfce-rtc.txt"));
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        Assert.Equal("597.84", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='vProd']")?.InnerText);
+        Assert.Equal("55.00", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='vFrete']")?.InnerText);
+        Assert.Equal("652.84", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+        Assert.Equal("546.75", xml.SelectSingleNode("//*[local-name()='det']/*[local-name()='vItem']")?.InnerText);
+        Assert.Equal("546.75", xml.SelectSingleNode("//*[local-name()='total']/*[local-name()='vNFTot']")?.InnerText);
+    }
+
+    /// <summary>
+    /// Preserva escala, itens de notas referenciadas e totais no retorno de vasilhames.
+    /// </summary>
+    [Theory]
+    [InlineData("000024804-retorno-vasilhames-nfe.txt", 0)]
+    [InlineData("000024804-retorno-vasilhames-vc01-nfe.txt", 6)]
+    public void ConverterRetornoDeVasilhamesDevePreservarSeisItensEReferencias(string nomeArquivo, int referenciasEsperadas)
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo(nomeArquivo));
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        Assert.Equal(6, xml.SelectNodes("//*[local-name()='infNFe']/*[local-name()='det']").Count);
+        Assert.Equal(0, xml.SelectNodes("//*[local-name()='prod']/*[local-name()='indEscala']").Count);
+        Assert.Equal(referenciasEsperadas, xml.SelectNodes("//*[local-name()='det']/*[local-name()='DFeReferenciado']").Count);
+        Assert.Equal("21775.25", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vNF']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.DoesNotContain("indEscala", validacao.ErrorMessage);
     }
 
     /// <summary>
@@ -298,10 +344,10 @@ public class NFeTxtConverterTest
     }
 
     /// <summary>
-    /// Deve preservar a chave informada e o indicador de escala na devolução com RTC.
+    /// Deve preservar a chave e omitir a escala sem CEST, como no conversor legado.
     /// </summary>
     [Fact]
-    public void ConverterDeveEvidenciarIndEscalaSemCestNaDevolucaoRtc()
+    public void ConverterDeveOmitirIndEscalaSemCestNaDevolucaoRtc()
     {
         var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000000011-devolucao-rtc-nfe.txt"));
 
@@ -311,7 +357,7 @@ public class NFeTxtConverterTest
 
         Assert.Equal("NFe33260999999999000191550050000000111003282235", xml.SelectSingleNode("//*[local-name()='infNFe']")?.Attributes?["Id"]?.Value);
         Assert.Equal("00328223", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='cNF']")?.InnerText);
-        Assert.Equal("S", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='indEscala']")?.InnerText);
+        Assert.Null(xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='indEscala']"));
         Assert.Null(xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='CEST']"));
         Assert.Equal("102", xml.SelectSingleNode("//*[local-name()='ICMSSN102']/*[local-name()='CSOSN']")?.InnerText);
         Assert.Equal("000", xml.SelectSingleNode("//*[local-name()='IBSCBS']/*[local-name()='CST']")?.InnerText);
@@ -320,8 +366,9 @@ public class NFeTxtConverterTest
         var validacao = new ValidarSchema();
         validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
         Assert.False(validacao.Success);
-        Assert.Contains("indEscala", validacao.ErrorMessage);
-        Assert.Contains("CEST", validacao.ErrorMessage);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.DoesNotContain("indEscala", validacao.ErrorMessage);
+        Assert.DoesNotContain("CEST", validacao.ErrorMessage);
     }
 
     /// <summary>
@@ -761,10 +808,10 @@ public class NFeTxtConverterTest
     }
 
     /// <summary>
-    /// Deve evidenciar no schema que o indicador de escala não pode ser informado sem o CEST.
+    /// Deve omitir o indicador sem CEST antes da validação do schema.
     /// </summary>
     [Fact]
-    public void SchemaDeveRejeitarIndicadorEscalaSemCest()
+    public void ConverterDeveOmitirIndicadorEscalaSemCest()
     {
         var arquivoTemporario = Path.GetTempFileName();
         try
@@ -782,7 +829,9 @@ public class NFeTxtConverterTest
             validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
 
             Assert.False(validacao.Success);
-            Assert.Contains("indEscala", validacao.ErrorMessage);
+            Assert.Null(xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='indEscala']"));
+            Assert.Contains("Signature", validacao.ErrorMessage);
+            Assert.DoesNotContain("indEscala", validacao.ErrorMessage);
         }
         finally
         {
@@ -2417,6 +2466,10 @@ public class NFeTxtConverterTest
             "9013566450",
             "0443351392",
             "CENTERKASA COMERCIAL LTDA",
+            "SONIA ROSA DE BARROS",
+            "16082230191",
+            "R SENADOR JOAO KUBISTCHEK",
+            "6235650013",
             "NOVA ROCHA IND TINTAS LTDA",
             "CIARIN COMERCIO E INDUSTRIA DE ARTIGOS P/ SELARIA LTDA",
             "CIARIN METAIS",
