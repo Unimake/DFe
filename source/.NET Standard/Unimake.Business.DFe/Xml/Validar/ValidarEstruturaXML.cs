@@ -1742,6 +1742,11 @@ namespace Unimake.Business.DFe
                     return RaizEh("DPS", "NFSe", "pedRegEvento") ? "1.01" : "2.03";
 
                 case PadraoNFSe.SIGCORP:
+                    if (codigoMunicipio == 9999908)
+                    {
+                        return "1.01";
+                    }
+
                     if (RaizEh("GerarNota", "CancelarNota"))
                     {
                         return codigoMunicipio == 4113700 ? "1.03" : "3.00";

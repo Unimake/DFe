@@ -80,6 +80,11 @@ namespace Unimake.Business.DFe
         }
 
         /// <summary>
+        /// Cabeçalhos adicionais que serão enviados para a API.
+        /// </summary>
+        public System.Collections.Generic.IDictionary<string, string> Headers { get; set; } = new System.Collections.Generic.Dictionary<string, string>();
+
+        /// <summary>
         /// Host - Header API
         /// </summary>
         public string Host

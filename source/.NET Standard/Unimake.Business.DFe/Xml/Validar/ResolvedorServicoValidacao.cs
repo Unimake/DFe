@@ -44,10 +44,23 @@ namespace Unimake.Business.DFe.Xml.Validar
 
         internal static XmlNode ResolverNFSe(XmlDocument xml, string versao, string tagRaiz, XmlDocument catalogo, PadraoNFSe padraoNFSe)
         {
+            var servico = ResolverNFSePorPadrao(xml, versao, tagRaiz, catalogo, padraoNFSe.ToString());
+
+            if (servico == null && padraoNFSe == PadraoNFSe.SIGCORP)
+            {
+                servico = ResolverNFSePorPadrao(xml, versao, tagRaiz, catalogo, PadraoNFSe.NACIONAL.ToString());
+            }
+
+            return servico;
+        }
+
+        private static XmlNode ResolverNFSePorPadrao(XmlDocument xml, string versao, string tagRaiz, XmlDocument catalogo, string nomePadrao)
+        {
+
             var padrao = catalogo
                 .SelectNodes("/ServicosValidacao/NFSe/Padrao")
                 .Cast<XmlNode>()
-                .FirstOrDefault(x => string.Equals(x.Attributes?["nome"]?.Value, padraoNFSe.ToString(), StringComparison.Ordinal));
+                .FirstOrDefault(x => string.Equals(x.Attributes?["nome"]?.Value, nomePadrao, StringComparison.Ordinal));
 
             if (padrao == null)
             {

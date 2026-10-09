@@ -995,6 +995,11 @@ namespace Unimake.Business.DFe.Servicos
         public string ApiKey { get; set; }
 
         /// <summary>
+        /// Cabeçalhos adicionais que serão enviados para a API.
+        /// </summary>
+        public IDictionary<string, string> Headers { get; } = new Dictionary<string, string>();
+
+        /// <summary>
         /// AppId para autenticação via Bearer token (uMessenger, eBank, etc.)
         /// </summary>
         public string AppId { get; set; }
@@ -1374,6 +1379,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Senha de acesso ao webservice/api do município
         /// </summary>
         public string MunicipioSenha { get; set; }
+
+        /// <summary>
+        /// Protocolo retornado pela prefeitura para consulta posterior da NFS-e.
+        /// </summary>
+        public string ProtocoloNFSe { get; set; }
 
         /// <summary>
         /// ClientID para gerar token (no momento, apenas Padrão AGILI)

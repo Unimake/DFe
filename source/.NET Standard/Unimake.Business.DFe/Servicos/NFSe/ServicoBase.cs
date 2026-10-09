@@ -66,6 +66,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     AuthorizationBasic();
                     break;
 
+                case PadraoNFSe.SIGCORP:
+                    SIGCORP();
+                    break;
+
                 case PadraoNFSe.GIAP:
                     GIAP();
                     break;
@@ -630,6 +634,82 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             Configuracoes.MunicipioToken = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Configuracoes.MunicipioUsuario}:{Configuracoes.MunicipioSenha}"));
         }
 
+        private void SIGCORP()
+        {
+            AuthorizationBasic();
+        }
+
+        private void ValidarConfiguracaoSIGCORP()
+        {
+            if (Configuracoes.PadraoNFSe != PadraoNFSe.SIGCORP)
+            {
+                return;
+            }
+
+            var cnpjPrestador = ObterCNPJPrestadorSIGCORP();
+
+            if (string.IsNullOrWhiteSpace(cnpjPrestador))
+            {
+                throw new InvalidOperationException("O CNPJ do prestador deve ser informado no XML para o padrão SIGCORP.");
+            }
+
+            AuthorizationBasic();
+            Configuracoes.Headers["X-NFSe-Prestador-CNPJ"] = cnpjPrestador;
+
+            if (Configuracoes.Servico == Servico.NFSeGerarNfse)
+            {
+                var noNumeroNFSe = ConteudoXML.SelectSingleNode("//*[local-name()='infDPS']/*[local-name()='nNFSe']");
+                var numeroNFSe = noNumeroNFSe?.InnerText;
+
+                if (string.IsNullOrWhiteSpace(numeroNFSe))
+                {
+                    throw new InvalidOperationException("O número da NFS-e deve ser informado na DPS para o padrão SIGCORP.");
+                }
+
+                Configuracoes.Headers["X-NFSe-nNFSe"] = numeroNFSe;
+                noNumeroNFSe.ParentNode.RemoveChild(noNumeroNFSe);
+            }
+
+            if (Configuracoes.Servico == Servico.NFSeConsultarNfse)
+            {
+                var protocolo = Configuracoes.ProtocoloNFSe;
+
+                if (string.IsNullOrWhiteSpace(protocolo))
+                {
+                    protocolo = ConteudoXML.SelectSingleNode("//*[@Id]")?.Attributes?["Id"]?.Value;
+                }
+
+                if (!string.IsNullOrWhiteSpace(protocolo) &&
+                    !string.IsNullOrWhiteSpace(Configuracoes.RequestURI) && Configuracoes.RequestURI.Contains("{protocolo}"))
+                {
+                    Configuracoes.RequestURI = Configuracoes.RequestURI.Replace(
+                        "{protocolo}",
+                        Uri.EscapeDataString(protocolo));
+                }
+            }
+        }
+
+        private string ObterCNPJPrestadorSIGCORP()
+        {
+            XmlNode cnpjPrestador;
+
+            switch (Configuracoes.Servico)
+            {
+                case Servico.NFSeGerarNfse:
+                    cnpjPrestador = ConteudoXML.SelectSingleNode("//*[local-name()='prest']/*[local-name()='CNPJ']");
+                    break;
+
+                case Servico.NFSeConsultarNfse:
+                    cnpjPrestador = ConteudoXML.SelectSingleNode("/*[local-name()='NFSe']/*[local-name()='CNPJ']");
+                    break;
+
+                default:
+                    return null;
+            }
+
+            return cnpjPrestador?.InnerText;
+        }
+
         private string GetXMLElementInnertext(string tag) => ConteudoXML.GetElementsByTagName(tag)[0]?.InnerText;
 
         private string GetXmlElementOuterXml(string tag) => ConteudoXML.GetElementsByTagName(tag)[0]?.OuterXml;
@@ -723,6 +803,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 DefinirConfiguracao();
             }
 
+            ValidarConfiguracaoSIGCORP();
             System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
 
             XmlValidar();

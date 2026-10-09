@@ -43,6 +43,14 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
                 request.Headers.Add("Cookie", configuracoes.Cookie);
             }
 
+            if (configuracoes.Headers != null)
+            {
+                foreach (var header in configuracoes.Headers)
+                {
+                    request.Headers.Add(header.Key, header.Value);
+                }
+            }
+
             return request;
         }
     }

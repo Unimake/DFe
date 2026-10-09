@@ -10775,6 +10775,32 @@
 				<TagExtraAtributoID/>
 				<TargetNS/>
 			</Servico>
+			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="tpAmb">
+				<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+				<TipoServico>NFSeGerarNfse</TipoServico>
+				<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+				<TagAssinatura/>
+				<TagAtributoID/>
+				<TagVersao>DPS</TagVersao>
+				<TagLoteAssinatura/>
+				<TagLoteAtributoID/>
+				<TagExtraAssinatura/>
+				<TagExtraAtributoID/>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
+			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
+				<Descricao>Consultar NFS-e por protocolo</Descricao>
+				<TipoServico>NFSeConsultarNfse</TipoServico>
+				<SchemaArquivo/>
+				<TagAssinatura/>
+				<TagAtributoID/>
+				<TagVersao>NFSe</TagVersao>
+				<TagLoteAssinatura/>
+				<TagLoteAtributoID/>
+				<TagExtraAssinatura/>
+				<TagExtraAtributoID/>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
 		</Padrao>
 		<Padrao nome="SMARAPD">
 			<Servico tagRaiz="tbnfd" versao="1.00" tagIdentificadora="nfd">

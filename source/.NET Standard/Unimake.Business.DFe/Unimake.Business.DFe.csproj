@@ -118,6 +118,7 @@
 		<None Remove="Servicos\Config\DARE\AN.xml" />
 		<None Remove="Servicos\Config\DARE\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\ArapongasPR.xml" />
+		<None Remove="Servicos\Config\NFSe\SIGCORP.xml" />
 		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarujaSP.xml" />
@@ -1547,9 +1548,19 @@
 		<None Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\XSDRLZ_Informatica_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SALVADOR_BA\nfse_salvador_rtc.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\CNC_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\DPS_v1.01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\evento_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\NFSe_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\pedRegEvento_v1.01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\tiposCnc_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\tiposComplexos_v1.01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\tiposEventos_v1.01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\tiposSimples_v1.01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\DPS_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\evento_v1.01.xsd" />
@@ -1667,6 +1678,7 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ArapongasPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SIGCORP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PotirendabaSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\BuritisRO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CapelaDeSantanaRS.xml" />
@@ -1711,6 +1723,36 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SALVADOR_BA\nfse_salvador_rtc.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\CNC_v1.00.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\DPS_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\evento_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\NFSe_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\pedRegEvento_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\tiposCnc_v1.00.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\tiposComplexos_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\tiposEventos_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\tiposSimples_v1.01.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema.xsd">
+		  <SubType>Designer</SubType>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Validar\ValidarConfig.xml" />
 	</ItemGroup>
 

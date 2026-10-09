@@ -1,0 +1,30 @@
+
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<GerarNfse versao="1.01">
+			<Descricao>Recepcionar DPS</Descricao>
+			<RequestURIHomologacao>https://qa.webservice.meumunicipio.online/v1/nfse/recepcao</RequestURIHomologacao>
+			<RequestURIProducao>https://webservice.meumunicipio.online/v1/nfse/recepcao</RequestURIProducao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebContentType>application/xml</WebContentType>
+			<WebTagRetorno></WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</GerarNfse>
+		<ConsultarNfse versao="1.01">
+			<Descricao>Consultar NFS-e por protocolo</Descricao>
+			<RequestURIHomologacao>https://qa.webservice.meumunicipio.online/v1/nfse/consulta/{protocolo}</RequestURIHomologacao>
+			<RequestURIProducao>https://webservice.meumunicipio.online/v1/nfse/consulta/{protocolo}</RequestURIProducao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebTagRetorno></WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<SchemaVersao>1.01</SchemaVersao>
+			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			<LoginConexao>false</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarNfse>
+	</Servicos>
+</Configuracoes>

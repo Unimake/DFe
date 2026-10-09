@@ -29,6 +29,7 @@ namespace Unimake.DFe.Test.NFSe.Validacao
         [InlineData(PadraoNFSe.GISSONLINE, "<ns4:EnviarLoteRpsEnvio xmlns:ns4=\"http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd\"><ns4:LoteRps /></ns4:EnviarLoteRpsEnvio>", 0, "2.04")]
         [InlineData(PadraoNFSe.PRONIM, "<ConsultarSituacaoLoteRpsEnvio />", 0, "1.00")]
         [InlineData(PadraoNFSe.PRONIM, "<GerarNfseEnvio />", 0, "2.03")]
+        [InlineData(PadraoNFSe.SIGCORP, "<DPS versao=\"1.01\" xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><infDPS Id=\"DPS123\" /></DPS>", 9999908, "1.01")]
         [InlineData(PadraoNFSe.SMARAPD, "<NFSe />", 0, "1.01")]
         [InlineData(PadraoNFSe.SMARAPD, "<nfd />", 0, "1.00")]
         [InlineData(PadraoNFSe.SMARAPD, "<ConsultarLoteRpsEnvio />", 0, "2.04")]
