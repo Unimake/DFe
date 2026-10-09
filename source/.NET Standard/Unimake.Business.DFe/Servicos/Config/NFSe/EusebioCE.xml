@@ -181,7 +181,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
