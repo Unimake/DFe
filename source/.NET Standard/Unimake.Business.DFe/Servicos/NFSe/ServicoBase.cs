@@ -636,12 +636,15 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void SIGCORP()
         {
-            AuthorizationBasic();
+            if (Configuracoes.SchemaVersao == "1.01")
+            {
+                AuthorizationBasic();
+            }
         }
 
         private void ValidarConfiguracaoSIGCORP()
         {
-            if (Configuracoes.PadraoNFSe != PadraoNFSe.SIGCORP)
+            if (Configuracoes.PadraoNFSe != PadraoNFSe.SIGCORP || Configuracoes.SchemaVersao != "1.01")
             {
                 return;
             }

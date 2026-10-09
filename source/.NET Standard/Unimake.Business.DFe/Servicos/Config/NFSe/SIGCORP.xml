@@ -7,7 +7,7 @@
 			<RequestURIProducao>https://webservice.meumunicipio.online/v1/nfse/recepcao</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebContentType>application/xml</WebContentType>
-			<WebTagRetorno></WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<SchemaVersao>1.01</SchemaVersao>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
@@ -19,7 +19,7 @@
 			<RequestURIHomologacao>https://qa.webservice.meumunicipio.online/v1/nfse/consulta/{protocolo}</RequestURIHomologacao>
 			<RequestURIProducao>https://webservice.meumunicipio.online/v1/nfse/consulta/{protocolo}</RequestURIProducao>
 			<MetodoAPI>get</MetodoAPI>
-			<WebTagRetorno></WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<SchemaVersao>1.01</SchemaVersao>
 			<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
