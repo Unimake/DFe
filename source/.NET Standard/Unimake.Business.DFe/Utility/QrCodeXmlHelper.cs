@@ -1006,7 +1006,8 @@ namespace Unimake.Business.DFe.Utility
                     "?chCTe=" + chave +
                     "&tpAmb=" + ((int)tpAmb).ToString();
 
-                if (tpEmis == TipoEmissao.ContingenciaEPEC || tpEmis == TipoEmissao.ContingenciaFSDA)
+                if (tpEmis == TipoEmissao.ContingenciaOfflineCTe ||
+                    tpEmis == TipoEmissao.ContingenciaEPEC || tpEmis == TipoEmissao.ContingenciaFSDA)
                 {
                     paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(configuracoes.CertificadoDigital, chave);
                 }
