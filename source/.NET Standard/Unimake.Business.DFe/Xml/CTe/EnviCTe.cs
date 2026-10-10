@@ -510,12 +510,10 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TpEmisField;
             set
             {
-                if (value == TipoEmissao.ContingenciaFSIA ||
-                   value == TipoEmissao.ContingenciaOffLine ||
-                   value == TipoEmissao.RegimeEspecialNFF ||
+                if (value == TipoEmissao.ContingenciaOffLine ||
                    value == TipoEmissao.ContingenciaSVCAN)
                 {
-                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos: 1, 4, 5, 7 ou 8.");
+                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos no leiaute atual: 1, 2, 3, 7 ou 8. Os valores 4 e 5 são mantidos para leiautes anteriores.");
                 }
 
                 TpEmisField = value;
@@ -2805,6 +2803,39 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
+        /// Valor total líquido da prestação, sem tributos.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VTPrestLiq { get; set; } = -1;
+#else
+        public double? VTPrestLiq { get; set; }
+#endif
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização de VTPrestLiq.
+        /// </summary>
+        [XmlElement("vTPrestLiq")]
+        public string VTPrestLiqField
+        {
+#if INTEROP
+            get => VTPrestLiq.ToString("F2", CultureInfo.InvariantCulture);
+#else
+            get => VTPrestLiq?.ToString("F2", CultureInfo.InvariantCulture);
+#endif
+            set => VTPrestLiq = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Verifica se o valor líquido foi informado, inclusive quando zero.
+        /// </summary>
+#if INTEROP
+        public bool ShouldSerializeVTPrestLiqField() => VTPrestLiq >= 0;
+#else
+        public bool ShouldSerializeVTPrestLiqField() => VTPrestLiq != null;
+#endif
+
+        /// <summary>
         /// Valor a receber.
         /// </summary>
         [XmlIgnore]
@@ -3093,6 +3124,12 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS
     {
+        /// <summary>
+        /// ICMS previsto para o fornecimento futuro em pagamento antecipado.
+        /// </summary>
+        [XmlElement("gICMSPrevistoPagtoAntecip")]
+        public GICMSPrevistoPagtoAntecip GICMSPrevistoPagtoAntecip { get; set; }
+
         /// <summary>
         /// ICMS com tributação normal.
         /// </summary>

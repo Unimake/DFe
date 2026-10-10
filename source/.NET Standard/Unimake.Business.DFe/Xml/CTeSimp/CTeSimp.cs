@@ -298,12 +298,11 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             get => TpEmisField;
             set
             {
-                if (value == TipoEmissao.ContingenciaFSIA ||
-                   value == TipoEmissao.ContingenciaOffLine ||
+                if (value == TipoEmissao.ContingenciaOffLine ||
                    value == TipoEmissao.ContingenciaSVCAN ||
                    value == TipoEmissao.ContingenciaFSDA)
                 {
-                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos: 1, 3, 4, 7 ou 8.");
+                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos no leiaute atual: 1, 2, 3, 7 ou 8. O valor 4 é mantido para leiautes anteriores.");
                 }
 
                 TpEmisField = value;
@@ -645,6 +644,39 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             set => VPrest = Utility.Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor líquido da prestação do item, sem tributos.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VPrestLiq { get; set; } = -1;
+#else
+        public double? VPrestLiq { get; set; }
+#endif
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização de VPrestLiq.
+        /// </summary>
+        [XmlElement("vPrestLiq")]
+        public string VPrestLiqField
+        {
+#if INTEROP
+            get => VPrestLiq.ToString("F2", CultureInfo.InvariantCulture);
+#else
+            get => VPrestLiq?.ToString("F2", CultureInfo.InvariantCulture);
+#endif
+            set => VPrestLiq = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Verifica se o valor líquido foi informado, inclusive quando zero.
+        /// </summary>
+#if INTEROP
+        public bool ShouldSerializeVPrestLiqField() => VPrestLiq >= 0;
+#else
+        public bool ShouldSerializeVPrestLiqField() => VPrestLiq != null;
+#endif
+
         [XmlIgnore]
         public double VRec { get; set; }
 
@@ -657,6 +689,12 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
         [XmlElement("Comp")]
         public List<CTe.Comp> Comp { get; set; }
+
+        /// <summary>
+        /// Tributação de IBS e CBS desta prestação do CT-e Simplificado.
+        /// </summary>
+        [XmlElement("IBSCBS")]
+        public CTe.IBSCBS IBSCBS { get; set; }
 
         [XmlElement("infNFe")]
         public List<InfNFe> InfNFe { get; set; }
@@ -1032,6 +1070,39 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         }
 
         /// <summary>
+        /// Valor total líquido das prestações, sem tributos.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VTPrestLiq { get; set; } = -1;
+#else
+        public double? VTPrestLiq { get; set; }
+#endif
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização de VTPrestLiq.
+        /// </summary>
+        [XmlElement("vTPrestLiq")]
+        public string VTPrestLiqField
+        {
+#if INTEROP
+            get => VTPrestLiq.ToString("F2", CultureInfo.InvariantCulture);
+#else
+            get => VTPrestLiq?.ToString("F2", CultureInfo.InvariantCulture);
+#endif
+            set => VTPrestLiq = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Verifica se o valor líquido foi informado, inclusive quando zero.
+        /// </summary>
+#if INTEROP
+        public bool ShouldSerializeVTPrestLiqField() => VTPrestLiq >= 0;
+#else
+        public bool ShouldSerializeVTPrestLiqField() => VTPrestLiq != null;
+#endif
+
+        /// <summary>
         /// Valor total a Receber
         /// </summary>
         [XmlIgnore]
@@ -1046,6 +1117,12 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             get => VTRec.ToString("F2", CultureInfo.InvariantCulture);
             set => VTRec = Utility.Converter.ToDouble(value);
         }
+
+        /// <summary>
+        /// Totalização de IBS e CBS das prestações.
+        /// </summary>
+        [XmlElement("IBSCBSTot")]
+        public IBSCBSTot IBSCBSTot { get; set; }
 
         /// <summary>
         /// Valor total do documento fiscal
@@ -1120,6 +1197,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// Grupo de informações da Tributação IBS/CBS
         /// </summary>
         [XmlElement("IBSCBS")]
+        [Obsolete("No leiaute atual, informe o IBS/CBS em InfCTe.Det[i].IBSCBS. Esta propriedade atende somente o leiaute anterior.", false)]
         public CTe.IBSCBS IBSCBS { get; set; }
 
         #region ShouldSerialize

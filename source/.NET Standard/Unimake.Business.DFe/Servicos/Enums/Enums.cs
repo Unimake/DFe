@@ -1736,6 +1736,12 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoEventoCTe
     {
         /// <summary>
+        /// 211110 - Apropriação de crédito presumido do CT-e.
+        /// </summary>
+        [XmlEnum("211110")]
+        ApropriacaoCreditoPresumido = 211110,
+
+        /// <summary>
         /// 0 - Evento desconhecido
         /// </summary>
         [XmlEnum("0")]
@@ -1845,6 +1851,24 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion
+
+    /// <summary>
+    /// Literais da declaração de pagamento ao TAC/MEI no evento de crédito presumido do CT-e.
+    /// </summary>
+    public enum DeclaracaoPagamentoCreditoPresumidoCTe
+    {
+        /// <summary>
+        /// Declaração com acentuação.
+        /// </summary>
+        [XmlEnum("Declaro, para fins de apropriação do crédito presumido solicitado, relativo à operação registrada no documento fiscal eletrônico a que se refere este evento: I – já ter efetuado o pagamento integral do valor da prestação do serviço ao transportador, nos termos do art. 126, § 5º, II, da Lei Complementar nº 214, de 16 de janeiro de 2025; II – estar ciente de que a prestação de declaração falsa sujeita-me às penalidades administrativas e sanções penais previstas na legislação, sem prejuízo do estorno do crédito indevidamente apropriado com os acréscimos legais.")]
+        ComAcentuacao = 0,
+
+        /// <summary>
+        /// Declaração sem acentuação.
+        /// </summary>
+        [XmlEnum("Declaro, para fins de apropriacao do credito presumido solicitado, relativo a operacao registrada no documento fiscal eletronico a que se refere este evento: I – ja ter efetuado o pagamento integral do valor da prestacao do servico ao transportador, nos termos do art. 126, paragrafo 5o, II, da Lei Complementar no 214, de 16 de janeiro de 2025; II – estar ciente de que a prestacao de declaracao falsa sujeita-me as penalidades administrativas e sancoes penais previstas na legislacao, sem prejuizo do estorno do credito indevidamente apropriado com os acrescimos legais.")]
+        SemAcentuacao = 1
+    }
 
     #region TipoEventoMDFe
 
@@ -2226,6 +2250,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("2")]
         ContingenciaFSIA = 2,
+
+        /// <summary>
+        /// 2 - Contingência offline do CT-e, CT-e OS e CT-e Simplificado.
+        /// </summary>
+        [XmlEnum("2")]
+        ContingenciaOfflineCTe = 2,
 
         /// <summary>
         /// 3 - Regime Especial NFF (Nota Fiscal Fácil)
