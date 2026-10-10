@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.reinf.esocial.gov.br/schemas/evtInfoContribuinte/v2_01_02" targetNamespace="http://www.reinf.esocial.gov.br/schemas/evtInfoContribuinte/v2_01_02" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="./xmldsig-core-schema.xsd"/>
   <xs:element name="Reinf">
     <xs:annotation>
       <xs:documentation>Escrituracao Fiscal Digital de Retencoes e Outras Informacoes Fiscais (EFD-Reinf)</xs:documentation>
@@ -208,17 +208,17 @@
                                         <xs:pattern value="(19|20)[0-9]{2}-(0[1-9]|1[0-2])-[0-3][0-9]"/>
                                       </xs:restriction>
                                     </xs:simpleType>
-                                  </xs:element>
-                                  <xs:element name="indPertIRRF" minOccurs="0" maxOccurs="1">
-                                    <xs:annotation>
+								  </xs:element>
+								  <xs:element name="indPertIRRF" minOccurs="0" maxOccurs="1">
+									<xs:annotation>
 										<xs:documentation>Indicador de Pertencimento do IRRF</xs:documentation>
-                                    </xs:annotation>
-                                    <xs:simpleType>
-                                      <xs:restriction base="xs:string">
-                                        <xs:pattern value="S"/>
-                                      </xs:restriction>
-                                    </xs:simpleType>
-                                  </xs:element>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:pattern value="S"/>
+										</xs:restriction>
+									</xs:simpleType>
+								  </xs:element>
                                   <xs:element name="contato" minOccurs="1" maxOccurs="1">
                                     <xs:annotation>
                                       <xs:documentation>Informacoes de contato</xs:documentation>
@@ -501,16 +501,16 @@
                                       </xs:restriction>
                                     </xs:simpleType>
                                   </xs:element>
-                                  <xs:element name="indPertIRRF" minOccurs="0" maxOccurs="1">
-                                    <xs:annotation>
+									<xs:element name="indPertIRRF" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
 											<xs:documentation>Indicador de Pertencimento do IRRF</xs:documentation>
-                                    </xs:annotation>
-                                    <xs:simpleType>
-                                      <xs:restriction base="xs:string">
-                                        <xs:pattern value="S"/>
-                                      </xs:restriction>
-                                    </xs:simpleType>
-                                  </xs:element>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern value="S"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element> 	
                                   <xs:element name="contato" minOccurs="1" maxOccurs="1">
                                     <xs:annotation>
                                       <xs:documentation>Informacoes de contato</xs:documentation>
@@ -752,7 +752,7 @@
               <xs:simpleType>
                 <xs:restriction base="xs:ID">
                   <xs:length value="36"/>
-                  <xs:pattern value="I{1}D{1}[0-9]{1}[0-9A-Z]{12}[0-9]{21}"/>
+                  <xs:pattern value="ID[0-9]{1}[0-9A-Z]{14}[0-9]{19}"/>
                 </xs:restriction>
               </xs:simpleType>
             </xs:attribute>
