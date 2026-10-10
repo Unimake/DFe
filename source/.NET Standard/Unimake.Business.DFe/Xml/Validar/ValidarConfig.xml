@@ -1784,6 +1784,11 @@
 					<SchemaArquivoEspecifico>evCancVincPgto_v4.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
+					<ID>211110</ID>
+					<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evApropriaCredPres_v4.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
 					<ID>610110</ID>
 					<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evPrestDesacordo_v4.00.xsd</SchemaArquivoEspecifico>

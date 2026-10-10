@@ -17,6 +17,198 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
+    /// <summary>
+    /// Detalhes do evento 211110 de apropriação de crédito presumido.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoApropriacaoCreditoPresumido")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot("detEvento")]
+    public class DetEventoApropriacaoCreditoPresumido : EventoDetalhe
+    {
+
+        /// <summary>
+        /// Descrição do evento de apropriação de crédito presumido.
+        /// </summary>
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Apropriacao Credito Presumido";
+
+        /// <summary>
+        /// Base de cálculo da operação do crédito presumido.
+        /// </summary>
+        [XmlIgnore]
+        public double VBCCredPres { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização de VBCCredPres.
+        /// </summary>
+        [XmlElement("vBCCredPres", Order = 1)]
+        public string VBCCredPresField
+        {
+            get => VBCCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCCredPres = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Código de classificação do crédito presumido, com dois dígitos.
+        /// </summary>
+        [XmlElement("cCredPres", Order = 2)]
+        public string CCredPres { get; set; }
+
+        /// <summary>
+        /// Crédito presumido do IBS.
+        /// </summary>
+        [XmlElement("gIBSCredPres", Order = 3)]
+        public GCredPresEvento GIBSCredPres { get; set; }
+
+        /// <summary>
+        /// Crédito presumido da CBS.
+        /// </summary>
+        [XmlElement("gCBSCredPres", Order = 4)]
+        public GCredPresEvento GCBSCredPres { get; set; }
+
+        /// <summary>
+        /// Declaração de pagamento integral ao TAC/MEI.
+        /// </summary>
+        [XmlIgnore]
+        public DeclaracaoPagamentoCreditoPresumidoCTe XDecPag { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização da declaração literal.
+        /// </summary>
+        [XmlElement("xDecPag", Order = 5)]
+        public string XDecPagField
+        {
+            get => typeof(DeclaracaoPagamentoCreditoPresumidoCTe).GetField(XDecPag.ToString())
+                ?.GetCustomAttribute<XmlEnumAttribute>()?.Name;
+            set
+            {
+                foreach (DeclaracaoPagamentoCreditoPresumidoCTe declaracao in Enum.GetValues(typeof(DeclaracaoPagamentoCreditoPresumidoCTe)))
+                {
+                    var literal = typeof(DeclaracaoPagamentoCreditoPresumidoCTe).GetField(declaracao.ToString())
+                        .GetCustomAttribute<XmlEnumAttribute>().Name;
+                    if (literal == value)
+                    {
+                        XDecPag = declaracao;
+                        return;
+                    }
+                }
+
+                throw new InvalidOperationException("Conteúdo da TAG <xDecPag> inválido para o evento de apropriação de crédito presumido.");
+            }
+        }
+
+        internal override void ProcessReader()
+        {
+            if (XmlReader == null)
+            {
+                return;
+            }
+
+            using (var reader = XmlReader.ReadSubtree())
+            {
+                var detalhe = XElement.Load(reader);
+                VersaoEvento = detalhe.Attribute("versaoEvento")?.Value;
+                var ns = XNamespace.Get("http://www.portalfiscal.inf.br/cte");
+                var evento = detalhe.Element(ns + "evApropriaCredPres");
+
+                DescEvento = evento.Element(ns + "descEvento").Value;
+                VBCCredPresField = evento.Element(ns + "vBCCredPres").Value;
+                CCredPres = evento.Element(ns + "cCredPres").Value;
+                GIBSCredPres = LerCredito(evento.Element(ns + "gIBSCredPres"), ns);
+                GCBSCredPres = LerCredito(evento.Element(ns + "gCBSCredPres"), ns);
+                XDecPagField = evento.Element(ns + "xDecPag").Value;
+            }
+
+            XmlReader.Read();
+        }
+
+        private static GCredPresEvento LerCredito(XElement grupo, XNamespace ns) => grupo == null ? null : new GCredPresEvento
+        {
+            PCredPresField = grupo.Element(ns + "pCredPres").Value,
+            VCredPresField = grupo.Element(ns + "vCredPres").Value
+        };
+
+        private static void EscreverCredito(XmlWriter writer, string nome, GCredPresEvento credito)
+        {
+            if (credito == null)
+            {
+                return;
+            }
+
+            writer.WriteStartElement(nome);
+            writer.WriteElementString("pCredPres", credito.PCredPresField);
+            writer.WriteElementString("vCredPres", credito.VCredPresField);
+            writer.WriteEndElement();
+        }
+
+        /// <summary>
+        /// Escreve os detalhes do evento na ordem definida pelo schema.
+        /// </summary>
+        /// <param name="writer">Escritor XML.</param>
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+            writer.WriteStartElement("evApropriaCredPres");
+            writer.WriteElementString("descEvento", DescEvento);
+            writer.WriteElementString("vBCCredPres", VBCCredPresField);
+            writer.WriteElementString("cCredPres", CCredPres);
+            EscreverCredito(writer, "gIBSCredPres", GIBSCredPres);
+            EscreverCredito(writer, "gCBSCredPres", GCBSCredPres);
+            writer.WriteElementString("xDecPag", XDecPagField);
+            writer.WriteEndElement();
+        }
+    }
+
+    /// <summary>
+    /// Informações do crédito presumido de IBS ou CBS no evento de apropriação.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.GCredPresEvento")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GCredPresEvento
+    {
+        /// <summary>
+        /// Percentual do crédito presumido.
+        /// </summary>
+        [XmlIgnore]
+        public double PCredPres { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização de PCredPres.
+        /// </summary>
+        [XmlElement("pCredPres")]
+        public string PCredPresField
+        {
+            get => PCredPres.ToString("0.00##", CultureInfo.InvariantCulture);
+            set => PCredPres = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do crédito presumido.
+        /// </summary>
+        [XmlIgnore]
+        public double VCredPres { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização de VCredPres.
+        /// </summary>
+        [XmlElement("vCredPres")]
+        public string VCredPresField
+        {
+            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPres = Converter.ToDouble(value);
+        }
+
+    }
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoCanc")]
@@ -1622,6 +1814,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(DetEventoCanc))]
     [XmlInclude(typeof(DetEventoVincPgto))]
     [XmlInclude(typeof(DetEventoCancVincPgto))]
+    [XmlInclude(typeof(DetEventoApropriacaoCreditoPresumido))]
     [XmlInclude(typeof(DetEventoCCE))]
     [XmlInclude(typeof(DetEventoCancCompEntrega))]
     [XmlInclude(typeof(DetEventoCompEntrega))]
@@ -2019,6 +2212,10 @@ namespace Unimake.Business.DFe.Xml.CTe
 
                     case TipoEventoCTe.CancelamentoVinculacaoPagamento:
                         _detEvento = new DetEventoCancVincPgto();
+                        break;
+
+                    case TipoEventoCTe.ApropriacaoCreditoPresumido:
+                        _detEvento = value as DetEventoApropriacaoCreditoPresumido ?? new DetEventoApropriacaoCreditoPresumido();
                         break;
 
                     case TipoEventoCTe.RegistroPassagem:

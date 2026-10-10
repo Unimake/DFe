@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-    <AssemblyVersion>2026.10.10.0848</AssemblyVersion>
-    <FileVersion>2026.10.10.0848</FileVersion>
+    <AssemblyVersion>2026.10.10.0954</AssemblyVersion>
+    <FileVersion>2026.10.10.0954</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -840,6 +840,7 @@
 		<None Remove="Xml\Schemas\CTe\cteTiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\cte_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\DFeTiposBasicos_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evApropriaCredPres_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCancCECTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCancCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCancIECTe_v4.00.xsd" />
@@ -1718,6 +1719,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evApropriaCredPres_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\xmldsig-core-schema20020212-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
