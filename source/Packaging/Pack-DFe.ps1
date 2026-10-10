@@ -549,13 +549,13 @@ try {
     $timeZone = Get-SaoPauloTimeZone
     $timeBeforeVersionCapture = [TimeZoneInfo]::ConvertTime([DateTimeOffset]::UtcNow, $timeZone).DateTime
     if ($timeBeforeVersionCapture.Second -lt 10) {
-        # O NuGet remove zeros à esquerda dos segmentos numéricos (por exemplo, .05 vira .5).
-        # Aguarde a faixa canônica para preservar exatamente o formato yyyyMMdd.HHmm.ss.
+        # Preserve a faixa de segundos usada historicamente nas versões dos pacotes (10 a 59).
         Start-Sleep -Seconds (10 - $timeBeforeVersionCapture.Second)
     }
 
     $versionTime = [TimeZoneInfo]::ConvertTime([DateTimeOffset]::UtcNow, $timeZone).DateTime
-    $packageVersion = $versionTime.ToString('yyyyMMdd.HHmm.ss', [Globalization.CultureInfo]::InvariantCulture)
+    # O NuGet normaliza segmentos numéricos; inclusive HHmm pode começar com zero antes das 10h.
+    $packageVersion = '{0}.{1}.{2}' -f $versionTime.ToString('yyyyMMdd', [Globalization.CultureInfo]::InvariantCulture), [int]$versionTime.ToString('HHmm', [Globalization.CultureInfo]::InvariantCulture), $versionTime.Second
     $assemblyVersion = $versionTime.ToString('yyyy.MM.dd.HHmm', [Globalization.CultureInfo]::InvariantCulture)
     Test-PackageDoesNotExist -PackageVersion $packageVersion
 
