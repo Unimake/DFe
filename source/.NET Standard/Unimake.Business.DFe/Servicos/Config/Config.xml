@@ -1677,7 +1677,7 @@
 		<Nome>Paranaguá - PR</Nome>
 		<UF>PR</UF>
 		<ArqConfig>ParanaguaPR.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4119152">
 		<Nome>Pinhais - PR</Nome>
