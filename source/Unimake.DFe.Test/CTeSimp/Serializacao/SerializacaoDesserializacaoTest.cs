@@ -52,8 +52,8 @@ namespace Unimake.DFe.Test.CTeSimp.Serializacao
             Assert.Equal(TipoPagamentoAntecipadoCTe.FornecimentoPagamentoRealizadoAnteriormente, xml.InfCTe.Ide.TpPagAnt);
             Assert.Equal(2, xml.InfCTe.Ide.GPagAntecipado.ChDFePagAnt.Count);
             Assert.Equal("12345678", xml.InfCTe.Emit.ISUFEmit);
-            Assert.Equal(10d, xml.InfCTe.Imp.IBSCBS.GIBSCBS.GCBS.GDevTrib.PDevTrib);
-            Assert.Equal(2.5d, xml.InfCTe.Imp.IBSCBS.GIBSCBS.GCBS.GALCZFMCBS.PAliqEfetRegCBS);
+            Assert.Equal(10d, xml.InfCTe.Det[0].IBSCBS.GIBSCBS.GCBS.GDevTrib.PDevTrib);
+            Assert.Equal(2.5d, xml.InfCTe.Det[0].IBSCBS.GIBSCBS.GCBS.GALCZFMCBS.PAliqEfetRegCBS);
             Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 

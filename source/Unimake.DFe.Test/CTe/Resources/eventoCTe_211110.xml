@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Modelo sintético de teste. A assinatura é ilustrativa e deve ser gerada com certificado válido antes do envio. -->
+<eventoCTe xmlns="http://www.portalfiscal.inf.br/cte" versao="4.00">
+  <infEvento Id="ID21111041261000000000000000570010000000011000000000001">
+    <cOrgao>41</cOrgao>
+    <tpAmb>2</tpAmb>
+    <CNPJ>00000000000000</CNPJ>
+    <chCTe>41261000000000000000570010000000011000000000</chCTe>
+    <dhEvento>2026-10-10T10:00:00-03:00</dhEvento>
+    <tpEvento>211110</tpEvento>
+    <nSeqEvento>1</nSeqEvento>
+    <detEvento versaoEvento="4.00">
+      <evApropriaCredPres>
+        <descEvento>Apropriacao Credito Presumido</descEvento>
+        <vBCCredPres>1500.00</vBCCredPres>
+        <cCredPres>01</cCredPres>
+        <gIBSCredPres>
+          <pCredPres>1.2345</pCredPres>
+          <vCredPres>18.52</vCredPres>
+        </gIBSCredPres>
+        <gCBSCredPres>
+          <pCredPres>2.50</pCredPres>
+          <vCredPres>37.50</vCredPres>
+        </gCBSCredPres>
+        <xDecPag>Declaro, para fins de apropriação do crédito presumido solicitado, relativo à operação registrada no documento fiscal eletrônico a que se refere este evento: I – já ter efetuado o pagamento integral do valor da prestação do serviço ao transportador, nos termos do art. 126, § 5º, II, da Lei Complementar nº 214, de 16 de janeiro de 2025; II – estar ciente de que a prestação de declaração falsa sujeita-me às penalidades administrativas e sanções penais previstas na legislação, sem prejuízo do estorno do crédito indevidamente apropriado com os acréscimos legais.</xDecPag>
+      </evApropriaCredPres>
+    </detEvento>
+  </infEvento>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      <Reference URI="#MODELO">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+        <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+        <DigestValue>AA==</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>AA==</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>AA==</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+</eventoCTe>

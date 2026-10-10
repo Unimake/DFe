@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<CTeOS xmlns="http://www.portalfiscal.inf.br/cte" versao="4.00">
+  <infCte versao="4.00" Id="CTe41250831905001000109670010000008611017220677">
+    <ide>
+      <cUF>41</cUF>
+      <cCT>01722067</cCT>
+      <CFOP>5353</CFOP>
+      <natOp>PREST.SERV.TRANSP.INDUSTR</natOp>
+      <mod>67</mod>
+      <serie>1</serie>
+      <nCT>861</nCT>
+      <dhEmi>2025-08-04T12:00:53-03:00</dhEmi>
+      <tpImp>2</tpImp>
+      <tpEmis>1</tpEmis>
+      <cDV>7</cDV>
+      <tpAmb>2</tpAmb>
+      <tpCTe>0</tpCTe>
+      <procEmi>0</procEmi>
+      <verProc>UNICO V8.0</verProc>
+      <cMunEnv>4118402</cMunEnv>
+      <xMunEnv>PARANAVAI</xMunEnv>
+      <UFEnv>PR</UFEnv>
+      <modal>01</modal>
+      <tpServ>6</tpServ>
+      <indIEToma>1</indIEToma>
+    </ide>
+    <emit>
+      <CNPJ>00000000000000</CNPJ>
+      <IE>123456789</IE>
+      <xNome>TESTE DE CTEOS COM IBSCBS</xNome>
+      <enderEmit>
+        <xLgr>TESTE DE CTEOS COM IBSCBS</xLgr>
+        <nro>01112</nro>
+        <xBairro>xxxxxxxxxxxxxx</xBairro>
+        <cMun>4118402</cMun>
+        <xMun>PARANAVAI</xMun>
+        <UF>PR</UF>
+      </enderEmit>
+      <CRT>3</CRT>
+    </emit>
+    <vPrest>
+      <vTPrest>104.76</vTPrest>
+      <vTPrestLiq>100.25</vTPrestLiq>
+      <vRec>104.76</vRec>
+    </vPrest>
+    <imp>
+      <ICMS>
+        <gICMSPrevistoPagtoAntecip>
+          <vICMSPrevisto>0.00</vICMSPrevisto>
+        </gICMSPrevistoPagtoAntecip>
+      </ICMS>
+    </imp>
+    <infCTeNorm>
+      <infServico>
+        <xDescServ>TRANSPORTE DE PASSAGEIROS</xDescServ>
+      </infServico>
+    </infCTeNorm>
+  </infCte>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      <Reference URI="#MODELO">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+        <DigestValue>AA==</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>AA==</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>AA==</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+</CTeOS>
