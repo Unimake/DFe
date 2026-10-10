@@ -141,19 +141,19 @@
             <pICMS>1.12</pICMS>
             <vICMS>111.11</vICMS>
             <vICMSDeson>11.11</vICMSDeson>
-            <cBenef>85</cBenef>
+            <cBenef>00000085</cBenef>
             <pFCP>11.1400</pFCP>
             <vFCP>114.77</vFCP>
           </ICMS20>
           <ICMS40>
             <CST>40</CST>
             <vICMSDeson>1.11</vICMSDeson>
-            <cBenef>86</cBenef>
+            <cBenef>00000086</cBenef>
           </ICMS40>
           <ICMS51>
             <CST>51</CST>
             <vICMSDeson>1.11</vICMSDeson>
-            <cBenef>87</cBenef>
+            <cBenef>00000087</cBenef>
           </ICMS51>
           <ICMS90>
             <CST>90</CST>
@@ -161,7 +161,7 @@
             <pICMS>1.11</pICMS>
             <vICMS>333.33</vICMS>
             <vICMSDeson>1.17</vICMSDeson>
-            <cBenef>87</cBenef>
+            <cBenef>00000087</cBenef>
             <pFCP>11.1400</pFCP>
             <vFCP>114.77</vFCP>
           </ICMS90>
@@ -176,7 +176,7 @@
             <vFCPUFDest>158.55</vFCPUFDest>
             <vICMSUFDest>158.55</vICMSUFDest>
             <vICMSUFEmi>158.55</vICMSUFEmi>
-            <cBenefUFDest>11</cBenefUFDest>
+            <cBenefUFDest>00000011</cBenefUFDest>
           </ICMSUFDest>
           <ICMSUFDest cUFDest="12">
             <vBCUFDest>158.56</vBCUFDest>
@@ -185,7 +185,7 @@
             <vFCPUFDest>158.56</vFCPUFDest>
             <vICMSUFDest>158.56</vICMSUFDest>
             <vICMSUFEmi>158.56</vICMSUFEmi>
-            <cBenefUFDest>12</cBenefUFDest>
+            <cBenefUFDest>00000012</cBenefUFDest>
           </ICMSUFDest>
           <ICMSUFDest cUFDest="13">
             <vBCUFDest>158.57</vBCUFDest>
@@ -194,7 +194,7 @@
             <vFCPUFDest>158.57</vFCPUFDest>
             <vICMSUFDest>158.57</vICMSUFDest>
             <vICMSUFEmi>158.57</vICMSUFEmi>
-            <cBenefUFDest>13</cBenefUFDest>
+            <cBenefUFDest>00000013</cBenefUFDest>
           </ICMSUFDest>
           <PIS>
             <CST>01</CST>
@@ -364,19 +364,19 @@
             <pICMS>1.12</pICMS>
             <vICMS>111.11</vICMS>
             <vICMSDeson>11.11</vICMSDeson>
-            <cBenef>85</cBenef>
+            <cBenef>00000085</cBenef>
             <pFCP>11.1400</pFCP>
             <vFCP>114.77</vFCP>
           </ICMS20>
           <ICMS40>
             <CST>40</CST>
             <vICMSDeson>1.11</vICMSDeson>
-            <cBenef>86</cBenef>
+            <cBenef>00000086</cBenef>
           </ICMS40>
           <ICMS51>
             <CST>51</CST>
             <vICMSDeson>1.11</vICMSDeson>
-            <cBenef>87</cBenef>
+            <cBenef>00000087</cBenef>
           </ICMS51>
           <ICMS90>
             <CST>90</CST>
@@ -384,7 +384,7 @@
             <pICMS>1.11</pICMS>
             <vICMS>333.33</vICMS>
             <vICMSDeson>1.17</vICMSDeson>
-            <cBenef>87</cBenef>
+            <cBenef>00000087</cBenef>
             <pFCP>11.1400</pFCP>
             <vFCP>114.77</vFCP>
           </ICMS90>
@@ -399,7 +399,7 @@
             <vFCPUFDest>158.55</vFCPUFDest>
             <vICMSUFDest>158.55</vICMSUFDest>
             <vICMSUFEmi>158.55</vICMSUFEmi>
-            <cBenefUFDest>14</cBenefUFDest>
+            <cBenefUFDest>00000014</cBenefUFDest>
           </ICMSUFDest>
           <ICMSUFDest cUFDest="15">
             <vBCUFDest>158.56</vBCUFDest>
@@ -408,7 +408,7 @@
             <vFCPUFDest>158.56</vFCPUFDest>
             <vICMSUFDest>158.56</vICMSUFDest>
             <vICMSUFEmi>158.56</vICMSUFEmi>
-            <cBenefUFDest>15</cBenefUFDest>
+            <cBenefUFDest>00000015</cBenefUFDest>
           </ICMSUFDest>
           <ICMSUFDest cUFDest="16">
             <vBCUFDest>158.57</vBCUFDest>
@@ -417,7 +417,7 @@
             <vFCPUFDest>158.57</vFCPUFDest>
             <vICMSUFDest>158.57</vICMSUFDest>
             <vICMSUFEmi>158.57</vICMSUFEmi>
-            <cBenefUFDest>16</cBenefUFDest>
+            <cBenefUFDest>00000016</cBenefUFDest>
           </ICMSUFDest>
           <PIS>
             <CST>01</CST>
@@ -516,19 +516,19 @@
             <pICMS>1.12</pICMS>
             <vICMS>111.11</vICMS>
             <vICMSDeson>11.11</vICMSDeson>
-            <cBenef>85</cBenef>
+            <cBenef>00000085</cBenef>
             <pFCP>11.1400</pFCP>
             <vFCP>114.77</vFCP>
           </ICMS20>
           <ICMS40>
             <CST>40</CST>
             <vICMSDeson>1.11</vICMSDeson>
-            <cBenef>86</cBenef>
+            <cBenef>00000086</cBenef>
           </ICMS40>
           <ICMS51>
             <CST>51</CST>
             <vICMSDeson>1.11</vICMSDeson>
-            <cBenef>87</cBenef>
+            <cBenef>00000087</cBenef>
           </ICMS51>
           <ICMS90>
             <CST>90</CST>
@@ -536,7 +536,7 @@
             <pICMS>1.11</pICMS>
             <vICMS>333.33</vICMS>
             <vICMSDeson>1.17</vICMSDeson>
-            <cBenef>87</cBenef>
+            <cBenef>00000087</cBenef>
             <pFCP>11.1400</pFCP>
             <vFCP>114.77</vFCP>
           </ICMS90>
@@ -551,7 +551,7 @@
             <vFCPUFDest>158.55</vFCPUFDest>
             <vICMSUFDest>158.55</vICMSUFDest>
             <vICMSUFEmi>158.55</vICMSUFEmi>
-            <cBenefUFDest>17</cBenefUFDest>
+            <cBenefUFDest>00000017</cBenefUFDest>
           </ICMSUFDest>
           <ICMSUFDest cUFDest="21">
             <vBCUFDest>158.56</vBCUFDest>
@@ -560,7 +560,7 @@
             <vFCPUFDest>158.56</vFCPUFDest>
             <vICMSUFDest>158.56</vICMSUFDest>
             <vICMSUFEmi>158.56</vICMSUFEmi>
-            <cBenefUFDest>21</cBenefUFDest>
+            <cBenefUFDest>00000021</cBenefUFDest>
           </ICMSUFDest>
           <ICMSUFDest cUFDest="22">
             <vBCUFDest>158.57</vBCUFDest>
@@ -569,7 +569,7 @@
             <vFCPUFDest>158.57</vFCPUFDest>
             <vICMSUFDest>158.57</vICMSUFDest>
             <vICMSUFEmi>158.57</vICMSUFEmi>
-            <cBenefUFDest>22</cBenefUFDest>
+            <cBenefUFDest>00000022</cBenefUFDest>
           </ICMSUFDest>
           <PIS>
             <CST>01</CST>

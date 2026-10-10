@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NFCom xmlns="http://www.portalfiscal.inf.br/nfcom">
+  <infNFCom versao="1.00" Id="NFCom41261000000000000000620010000000011000000017">
+    <ide>
+      <cUF>41</cUF>
+      <tpAmb>2</tpAmb>
+      <mod>62</mod>
+      <serie>1</serie>
+      <nNF>1</nNF>
+      <cNF>0000001</cNF>
+      <cDV>7</cDV>
+      <dhEmi>2026-10-10T10:00:00-03:00</dhEmi>
+      <tpEmis>1</tpEmis>
+      <nSiteAutoriz>0</nSiteAutoriz>
+      <cMunFG>4106902</cMunFG>
+      <finNFCom>0</finNFCom>
+      <tpFat>0</tpFat>
+      <verProc>TESTE</verProc>
+      <tpPagAnt>1</tpPagAnt>
+    </ide>
+    <emit>
+      <CNPJ>00000000000000</CNPJ>
+      <IE>1234567890</IE>
+      <CRT>3</CRT>
+      <xNome>EMPRESA TESTE</xNome>
+      <enderEmit>
+        <xLgr>RUA EXEMPLO</xLgr>
+        <nro>1</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>4106902</cMun>
+        <xMun>CURITIBA</xMun>
+        <CEP>80000000</CEP>
+        <UF>PR</UF>
+      </enderEmit>
+    </emit>
+    <dest>
+      <xNome>CLIENTE TESTE</xNome>
+      <CPF>00000000000</CPF>
+      <indIEDest>9</indIEDest>
+      <enderDest>
+        <xLgr>RUA EXEMPLO</xLgr>
+        <nro>2</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>4106902</cMun>
+        <xMun>CURITIBA</xMun>
+        <CEP>80000000</CEP>
+        <UF>PR</UF>
+      </enderDest>
+    </dest>
+    <assinante>
+      <iCodAssinante>TESTE</iCodAssinante>
+      <tpAssinante>1</tpAssinante>
+      <tpServUtil>1</tpServUtil>
+      <NroTermPrinc>4100000000</NroTermPrinc>
+      <cUFPrinc>41</cUFPrinc>
+      <cMunPrinc>4106902</cMunPrinc>
+      <NroTermAdic>4100000001</NroTermAdic>
+      <cUFAdic>41</cUFAdic>
+      <NroTermAdic>4100000002</NroTermAdic>
+      <cUFAdic>41</cUFAdic>
+    </assinante>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <xProd>SERVICO TESTE</xProd>
+        <cClass>0100101</cClass>
+        <CFOP>5307</CFOP>
+        <uMed>1</uMed>
+        <qFaturada>1.0000</qFaturada>
+        <vItem>100.12345678</vItem>
+        <vProd>100.12345678</vProd>
+        <vItemLiq>80.12345678</vItemLiq>
+        <vProdLiq>80.12345678</vProdLiq>
+        <dExpiracao>2026-10-31</dExpiracao>
+      </prod>
+      <imposto>
+        <gICMSPrevistoPagtoAntecip>
+          <vICMSPrevisto>18.25</vICMSPrevisto>
+        </gICMSPrevistoPagtoAntecip>
+      </imposto>
+      <gProcRef>
+        <vItem>100.12345678</vItem>
+        <qFaturada>1.0000</qFaturada>
+        <vProd>100.12345678</vProd>
+        <gIBSCBS>
+          <vBC>100.12</vBC>
+          <vIBSUF>0.10</vIBSUF>
+          <vIBSMun>0.00</vIBSMun>
+          <vCBS>0.90</vCBS>
+        </gIBSCBS>
+        <gProc>
+          <tpProc>0</tpProc>
+          <nProcesso>PROCESSO TESTE 1</nProcesso>
+        </gProc>
+        <gProc>
+          <tpProc>1</tpProc>
+          <nProcesso>PROCESSO TESTE 2</nProcesso>
+        </gProc>
+      </gProcRef>
+    </det>
+    <total>
+      <vProd>100.12</vProd>
+      <vProdLiq>80.12</vProdLiq>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCP>0.00</vFCP>
+      </ICMSTot>
+      <vCOFINS>0.00</vCOFINS>
+      <vPIS>0.00</vPIS>
+      <vFUNTTEL>0.00</vFUNTTEL>
+      <vFUST>0.00</vFUST>
+      <vRetTribTot>
+        <vRetPIS>0.00</vRetPIS>
+        <vRetCofins>0.00</vRetCofins>
+        <vRetCSLL>0.00</vRetCSLL>
+        <vIRRF>0.00</vIRRF>
+      </vRetTribTot>
+      <vDesc>0.00</vDesc>
+      <vOutro>0.00</vOutro>
+      <vNF>100.12</vNF>
+    </total>
+  </infNFCom>
+  <infNFComSupl>
+    <qrCodNFCom>https://example.com/nfcom?chNFCom=41261000000000000000620010000000011000000017&amp;tpAmb=2</qrCodNFCom>
+  </infNFComSupl>
+  <!-- Assinatura sintética para validação do leiaute, sem certificado real. -->
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="#NFCom41261000000000000000620010000000011000000017">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>AA==</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>AA==</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>AA==</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+</NFCom>

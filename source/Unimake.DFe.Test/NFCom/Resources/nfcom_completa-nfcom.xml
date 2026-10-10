@@ -113,7 +113,7 @@
           <vFCPUFDest>158.55</vFCPUFDest>
           <vICMSUFDest>158.55</vICMSUFDest>
           <vICMSUFEmi>158.55</vICMSUFEmi>
-          <cBenefUFDest>11</cBenefUFDest>
+          <cBenefUFDest>00000011</cBenefUFDest>
         </ICMSUFDest>
         <PIS>
           <CST>09</CST>
