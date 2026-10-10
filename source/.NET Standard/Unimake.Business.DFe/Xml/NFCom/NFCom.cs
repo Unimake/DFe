@@ -743,6 +743,12 @@ namespace Unimake.Business.DFe.Xml.NFCom
             set => CUFPrinc = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
+        /// <summary>
+        /// Código IBGE do município do terminal principal.
+        /// </summary>
+        [XmlElement("cMunPrinc")]
+        public int CMunPrinc { get; set; }
+
         // Lista de objetos combinados
         [XmlIgnore]
         public List<TerminalAdicional> TerminaisAdicionais { get; set; } = new List<TerminalAdicional>();
@@ -808,6 +814,10 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public bool ShouldSerializeDContratoIniField() => DContratoIni != default;
         public bool ShouldSerializeDContratoFimField() => DContratoFim != default;
         public bool ShouldSerializeNroTermPrinc() => !string.IsNullOrEmpty(NroTermPrinc);
+        /// <summary>
+        /// Verifica se o município do terminal principal foi informado.
+        /// </summary>
+        public bool ShouldSerializeCMunPrinc() => CMunPrinc > 0;
         public bool ShouldSerializeTerminaisAdicionaisRaw() => TerminaisAdicionais?.Count > 0;
         #endregion
     }
@@ -1097,6 +1107,54 @@ namespace Unimake.Business.DFe.Xml.NFCom
             set => VProd = decimal.Parse(value, CultureInfo.InvariantCulture);
         }
 
+        /// <summary>
+        /// Valor unitário do item sem tributos. Informar em conjunto com VProdLiq.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public decimal VItemLiq { get; set; } = -1;
+#else
+        public decimal? VItemLiq { get; set; }
+#endif
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização de VItemLiq.
+        /// </summary>
+        [XmlElement("vItemLiq")]
+        public string VItemLiqField
+        {
+#if INTEROP
+            get => VItemLiq.ToString("0.00######", CultureInfo.InvariantCulture);
+#else
+            get => VItemLiq?.ToString("0.00######", CultureInfo.InvariantCulture);
+#endif
+            set => VItemLiq = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Valor líquido total do item sem tributos. Informar em conjunto com VItemLiq.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public decimal VProdLiq { get; set; } = -1;
+#else
+        public decimal? VProdLiq { get; set; }
+#endif
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização de VProdLiq.
+        /// </summary>
+        [XmlElement("vProdLiq")]
+        public string VProdLiqField
+        {
+#if INTEROP
+            get => VProdLiq.ToString("0.00######", CultureInfo.InvariantCulture);
+#else
+            get => VProdLiq?.ToString("0.00######", CultureInfo.InvariantCulture);
+#endif
+            set => VProdLiq = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
+
         [XmlIgnore]
 #if INTEROP
         public DateTime DExpiracao { get; set; }
@@ -1140,6 +1198,24 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public bool ShouldSerializeVDescField() => VDesc > 0;
 
         public bool ShouldSerializeVOutroField() => VOutro > 0;
+
+        /// <summary>
+        /// Verifica se o valor unitário líquido foi informado, inclusive quando zero.
+        /// </summary>
+#if INTEROP
+        public bool ShouldSerializeVItemLiqField() => VItemLiq >= 0;
+#else
+        public bool ShouldSerializeVItemLiqField() => VItemLiq != null;
+#endif
+
+        /// <summary>
+        /// Verifica se o valor líquido do item foi informado, inclusive quando zero.
+        /// </summary>
+#if INTEROP
+        public bool ShouldSerializeVProdLiqField() => VProdLiq >= 0;
+#else
+        public bool ShouldSerializeVProdLiqField() => VProdLiq != null;
+#endif
 
         public bool ShouldSerializeDExpiracaoField() => DExpiracao > DateTime.MinValue;
 
@@ -1196,6 +1272,13 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         [XmlElement("ICMSSN")]
         public ICMSSN ICMSSN { get; set; }
+
+        /// <summary>
+        /// ICMS previsto para o fornecimento futuro em pagamento antecipado,
+        /// como alternativa aos grupos ICMS00, ICMS20, ICMS40, ICMS51, ICMS90 e ICMSSN.
+        /// </summary>
+        [XmlElement("gICMSPrevistoPagtoAntecip")]
+        public GICMSPrevistoPagtoAntecip GICMSPrevistoPagtoAntecip { get; set; }
 
         [XmlElement("ICMSUFDest")]
         public List<ICMSUFDest> ICMSUFDest { get; set; }
@@ -2535,6 +2618,12 @@ namespace Unimake.Business.DFe.Xml.NFCom
             set => VFCP = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// IBS e CBS a considerar sem a aplicação do processo judicial.
+        /// </summary>
+        [XmlElement("gIBSCBS")]
+        public GIBSCBSProcRef GIBSCBS { get; set; }
+
         [XmlElement("gProc")]
         public List<GProc> GProc { get; set; }
 
@@ -2682,6 +2771,30 @@ namespace Unimake.Business.DFe.Xml.NFCom
             set => VProd = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor total líquido dos produtos e serviços sem tributos.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VProdLiq { get; set; } = -1;
+#else
+        public double? VProdLiq { get; set; }
+#endif
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização de VProdLiq.
+        /// </summary>
+        [XmlElement("vProdLiq")]
+        public string VProdLiqField
+        {
+#if INTEROP
+            get => VProdLiq.ToString("F2", CultureInfo.InvariantCulture);
+#else
+            get => VProdLiq?.ToString("F2", CultureInfo.InvariantCulture);
+#endif
+            set => VProdLiq = Converter.ToDouble(value);
+        }
+
         [XmlElement("ICMSTot")]
         public ICMSTot ICMSTot { get; set; }
 
@@ -2773,6 +2886,15 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 
         #region ShouldSerialize 
+
+        /// <summary>
+        /// Verifica se o valor líquido total foi informado, inclusive quando zero.
+        /// </summary>
+#if INTEROP
+        public bool ShouldSerializeVProdLiqField() => VProdLiq >= 0;
+#else
+        public bool ShouldSerializeVProdLiqField() => VProdLiq != null;
+#endif
 
         public bool ShouldSerializeVTotDFeField() => VTotDFe != null;
 

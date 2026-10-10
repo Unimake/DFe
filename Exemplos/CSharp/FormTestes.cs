@@ -7255,7 +7255,7 @@ namespace TreinamentoDLL
                                         VFCPUFDest = 158.55,
                                         VICMSUFDest = 158.55,
                                         VICMSUFEmi = 158.55,
-                                        CBenefUFDest = "11"
+                                        CBenefUFDest = "00000011"
                                     }
                                 },
                                 PIS = new XmlNFCom.PIS
