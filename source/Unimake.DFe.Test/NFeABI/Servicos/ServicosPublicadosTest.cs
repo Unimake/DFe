@@ -9,6 +9,7 @@ using Unimake.Business.DFe.Xml.NFeABI;
 using Unimake.Exceptions;
 using Xunit;
 using NFeABIAutorizacaoSinc = Unimake.Business.DFe.Servicos.NFeABI.AutorizacaoSinc;
+using NFeABIConsultaProtocolo = Unimake.Business.DFe.Servicos.NFeABI.ConsultaProtocolo;
 using NFeABIStatusServico = Unimake.Business.DFe.Servicos.NFeABI.StatusServico;
 
 namespace Unimake.DFe.Test.NFeABI.Servicos
@@ -44,6 +45,73 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
             Assert.Equal(contrato.Retorno, servico.Configuracoes.WebTagRetorno);
             Assert.Contains("<nfeabi:" + contrato.Wrapper + ">", servico.Configuracoes.WebSoapString);
             Assert.Contains(contrato.TargetNamespace, servico.Configuracoes.WebSoapString);
+        }
+
+        /// <summary>
+        /// Confere a configuração de consulta diretamente contra o WSDL oficial arquivado.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFeABI")]
+        [Trait("Servico", "ConsultaProtocolo")]
+        public void ConsultaProtocoloDeveRefletirWsdlOficial()
+        {
+            var contrato = LerContratoWsdl("NFeABIConsulta.wsdl", "nfeabiConsulta", "nfeabiConsultaSoap12In", "nfeabiConsultaSoap12Out");
+            var consulta = new ConsSitNFeABI
+            {
+                Versao = "1.00",
+                TpAmb = TipoAmbiente.Homologacao,
+                XServ = "CONSULTAR",
+                ChNFeABI = "41260912345678000123770010000000011012345670"
+            };
+            var servico = new NFeABIConsultaProtocolo(consulta, new Configuracao());
+
+            Assert.Equal(TipoDFe.NFeABI, servico.Configuracoes.TipoDFe);
+            Assert.Equal(Servico.NFeABIConsultaProtocolo, servico.Configuracoes.Servico);
+            Assert.Equal(ModeloDFe.NFeABI, servico.Configuracoes.Modelo);
+            Assert.Equal(contrato.Endereco, servico.Configuracoes.WebEnderecoHomologacao);
+            Assert.Equal(contrato.Acao, servico.Configuracoes.WebActionHomologacao);
+            Assert.Equal(contrato.Retorno, servico.Configuracoes.WebTagRetorno);
+            Assert.Contains("<nfeabi:" + contrato.Wrapper + ">", servico.Configuracoes.WebSoapString);
+            Assert.Contains(contrato.TargetNamespace, servico.Configuracoes.WebSoapString);
+        }
+
+        /// <summary>
+        /// Desserializa o retorno da consulta pelo pipeline público do serviço.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFeABI")]
+        [Trait("Servico", "ConsultaProtocolo")]
+        public void ConsultaProtocoloDeveDesserializarRetorno()
+        {
+            const string chave = "41260912345678000123770010000000011012345670";
+            const string retorno = "<retConsSitNFeABI versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/nfeabi\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cStat>217</cStat><xMotivo>NFeABI nao consta na base de dados</xMotivo><cUF>41</cUF><dhRecbto>2026-10-13T09:00:00-03:00</dhRecbto><chNFeABI>" + chave + "</chNFeABI></retConsSitNFeABI>";
+            var consulta = new ConsSitNFeABI { Versao = "1.00", TpAmb = TipoAmbiente.Homologacao, ChNFeABI = chave };
+            var servico = new NFeABIConsultaProtocolo(consulta, new Configuracao()) { RetornoWSString = retorno };
+
+            Assert.IsType<RetConsSitNFeABI>(servico.Result);
+            Assert.Equal(217, servico.Result.CStat);
+            Assert.Equal(chave, servico.Result.ChNFeABI);
+            Assert.Equal(UFBrasil.PR, servico.Result.CUF);
+        }
+
+        /// <summary>
+        /// Garante que a consulta em produção falha fechada por não possuir endpoint publicado.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFeABI")]
+        [Trait("Servico", "ConsultaProtocolo")]
+        public void ConsultaProtocoloEmProducaoDeveFalharSemEndpoint()
+        {
+            var consulta = new ConsSitNFeABI
+            {
+                Versao = "1.00",
+                TpAmb = TipoAmbiente.Producao,
+                ChNFeABI = "41260912345678000123770010000000011012345670"
+            };
+
+            var exception = Assert.Throws<Exception>(() => new NFeABIConsultaProtocolo(consulta, new Configuracao()));
+            Assert.Contains("não disponibiliza", exception.Message);
+            Assert.Contains("produção", exception.Message);
         }
 
         /// <summary>

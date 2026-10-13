@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIConsulta" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIConsulta">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIConsulta">
+      <s:element name="nfeabiDadosMsg">
+        <s:complexType mixed="true">
+          <s:sequence>
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="nfeabiResultMsg" nillable="true">
+        <s:complexType mixed="true">
+          <s:sequence>
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="nfeabiConsultaSoap12In">
+    <wsdl:part element="tns:nfeabiDadosMsg" name="nfeabiDadosMsg" />
+  </wsdl:message>
+  <wsdl:message name="nfeabiConsultaSoap12Out">
+    <wsdl:part element="tns:nfeabiResultMsg" name="nfeabiConsultaResult" />
+  </wsdl:message>
+  <wsdl:portType name="NFeABIConsultaSoap12">
+    <wsdl:operation name="nfeabiConsulta">
+      <wsdl:input message="tns:nfeabiConsultaSoap12In" />
+      <wsdl:output message="tns:nfeabiConsultaSoap12Out" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NFeABIConsultaSoap12" type="tns:NFeABIConsultaSoap12">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="nfeabiConsulta">
+      <soap12:operation soapAction="http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIConsulta/nfeabiConsulta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NFeABIConsulta">
+    <wsdl:port binding="tns:NFeABIConsultaSoap12" name="NFeABIConsultaSoap12">
+      <soap12:address location="https://homologacao.nfeabi.fazenda.pr.gov.br/nfeabi/NFeABIConsulta" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
