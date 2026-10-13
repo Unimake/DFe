@@ -637,6 +637,18 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("vProd")]
         public string VProd { get; set; }
 
+        /// <summary>
+        /// Valor unitário do item sem tributos.
+        /// </summary>
+        [XmlElement("vItemLiq")]
+        public string VItemLiq { get; set; }
+
+        /// <summary>
+        /// Valor líquido total do item sem tributos.
+        /// </summary>
+        [XmlElement("vProdLiq")]
+        public string VProdLiq { get; set; }
+
         [XmlElement("indDevolucao")]
         public string IndDevolucao { get; set; }
 
@@ -654,6 +666,16 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public bool ShouldSerializeFatorP() => !string.IsNullOrEmpty(FatorP);
 
         public bool ShouldSerializeFatorT() => !string.IsNullOrEmpty(FatorT);
+
+        /// <summary>
+        /// Indica se o valor unitário líquido deve ser serializado.
+        /// </summary>
+        public bool ShouldSerializeVItemLiq() => !string.IsNullOrEmpty(VItemLiq);
+
+        /// <summary>
+        /// Indica se o valor total líquido do item deve ser serializado.
+        /// </summary>
+        public bool ShouldSerializeVProdLiq() => !string.IsNullOrEmpty(VProdLiq);
 
         public bool ShouldSerializeIndDevolucao() => !string.IsNullOrEmpty(IndDevolucao);
     }
@@ -698,6 +720,12 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("ICMS90")]
         public ICMS90 ICMS90 { get; set; }
 
+        /// <summary>
+        /// ICMS previsto para o fornecimento futuro em cenários de pagamento antecipado.
+        /// </summary>
+        [XmlElement("gICMSPrevistoPagtoAntecip")]
+        public GICMSPrevistoPagtoAntecip GICMSPrevistoPagtoAntecip { get; set; }
+
         [XmlElement("indSemCST")]
         public string IndSemCST { get; set; }
 
@@ -719,6 +747,23 @@ namespace Unimake.Business.DFe.Xml.NFGas
         public bool ShouldSerializeOrig() => Orig != (OrigemMercadoria)(-1);
 
         public bool ShouldSerializeIndSemCST() => !string.IsNullOrEmpty(IndSemCST);
+    }
+
+    /// <summary>
+    /// ICMS a incidir no fornecimento futuro associado ao pagamento antecipado.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFGas.GICMSPrevistoPagtoAntecip")]
+    [ComVisible(true)]
+#endif
+    public class GICMSPrevistoPagtoAntecip
+    {
+        /// <summary>
+        /// Valor do ICMS previsto. Informar zero quando não houver ICMS devido.
+        /// </summary>
+        [XmlElement("vICMSPrevisto")]
+        public string VICMSPrevisto { get; set; }
     }
 
     public class ICMS00
@@ -1529,6 +1574,12 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("vProd")]
         public string VProd { get; set; }
 
+        /// <summary>
+        /// Valor total líquido dos produtos e serviços sem tributos.
+        /// </summary>
+        [XmlElement("vProdLiq")]
+        public string VProdLiq { get; set; }
+
         [XmlElement("ICMSTot")]
         public ICMSTot ICMSTot { get; set; }
 
@@ -1552,6 +1603,11 @@ namespace Unimake.Business.DFe.Xml.NFGas
 
         [XmlElement("vTotDFe")]
         public string VTotDFe { get; set; }
+
+        /// <summary>
+        /// Indica se o valor total líquido dos produtos e serviços deve ser serializado.
+        /// </summary>
+        public bool ShouldSerializeVProdLiq() => !string.IsNullOrEmpty(VProdLiq);
     }
 
     public class ICMSTot
@@ -1900,12 +1956,53 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("indDevolucao")]
         public string IndDevolucao { get; set; }
 
+        /// <summary>
+        /// Valores de IBS e CBS sem a aplicação do processo judicial.
+        /// </summary>
+        [XmlElement("gIBSCBS")]
+        public GIBSCBSProcRef GIBSCBS { get; set; }
+
         [XmlElement("gProc")]
         public List<GProc> GProc { get; set; }
 
         public bool ShouldSerializeIndDevolucao() => !string.IsNullOrEmpty(IndDevolucao);
 
         public bool ShouldSerializeGProc() => GProc?.Count > 0;
+    }
+
+    /// <summary>
+    /// IBS e CBS do item sem a aplicação do processo judicial referenciado.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFGas.GIBSCBSProcRef")]
+    [ComVisible(true)]
+#endif
+    public class GIBSCBSProcRef
+    {
+        /// <summary>
+        /// Valor da base de cálculo do IBS e da CBS.
+        /// </summary>
+        [XmlElement("vBC")]
+        public string VBC { get; set; }
+
+        /// <summary>
+        /// Valor do IBS de competência da UF.
+        /// </summary>
+        [XmlElement("vIBSUF")]
+        public string VIBSUF { get; set; }
+
+        /// <summary>
+        /// Valor do IBS de competência do município.
+        /// </summary>
+        [XmlElement("vIBSMun")]
+        public string VIBSMun { get; set; }
+
+        /// <summary>
+        /// Valor da CBS.
+        /// </summary>
+        [XmlElement("vCBS")]
+        public string VCBS { get; set; }
     }
 
     public class GProc

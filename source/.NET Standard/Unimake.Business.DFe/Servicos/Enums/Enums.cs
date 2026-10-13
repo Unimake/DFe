@@ -20628,7 +20628,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 7 - Por Faixa
         /// </summary>
         [XmlEnum("7")]
-        PorFaixa = 7
+        PorFaixa = 7,
+
+        /// <summary>
+        /// 8 - Mínimo
+        /// </summary>
+        [XmlEnum("8")]
+        Minimo = 8
     }
 
     /// <summary>
