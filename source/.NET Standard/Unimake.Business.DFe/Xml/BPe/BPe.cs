@@ -649,6 +649,25 @@ namespace Unimake.Business.DFe.Xml.BPe
             set => VBP = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor líquido total do bilhete sem tributos. Nulo quando não informado.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public double? VBPLiq { get; set; }
+
+        /// <summary>
+        /// Valor líquido total do bilhete sem tributos, formatado para o XML.
+        /// </summary>
+        [XmlElement("vBPLiq")]
+        public string VBPLiqField
+        {
+            get => VBPLiq.HasValue ? BPeFormat.Format2(VBPLiq.Value) : null;
+            set => VBPLiq = string.IsNullOrWhiteSpace(value) ? (double?)null : Converter.ToDouble(value);
+        }
+
         [XmlIgnore]
         public double VDesconto { get; set; }
 
@@ -696,6 +715,11 @@ namespace Unimake.Business.DFe.Xml.BPe
         public CompValor GetComp(int index) => (Comp?.Count ?? 0) == 0 ? default : Comp[index];
         public int GetCompCount => Comp != null ? Comp.Count : 0;
 #endif
+
+        /// <summary>
+        /// Serializa o valor líquido somente quando informado, inclusive zero.
+        /// </summary>
+        public bool ShouldSerializeVBPLiqField() => VBPLiq.HasValue;
 
         public bool ShouldSerializeTpDesconto() => TpDesconto.HasValue;
         public bool ShouldSerializeXDesconto() => !string.IsNullOrWhiteSpace(XDesconto);

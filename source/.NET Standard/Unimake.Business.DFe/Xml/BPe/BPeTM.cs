@@ -529,6 +529,25 @@ namespace Unimake.Business.DFe.Xml.BPeTM
             set => VBP = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor líquido total dos bilhetes da viagem sem tributos. Nulo quando não informado.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public double? VBPLiq { get; set; }
+
+        /// <summary>
+        /// Valor líquido total dos bilhetes da viagem sem tributos, formatado para o XML.
+        /// </summary>
+        [XmlElement("vBPLiq")]
+        public string VBPLiqField
+        {
+            get => VBPLiq.HasValue ? BPeFormat.Format2(VBPLiq.Value) : null;
+            set => VBPLiq = string.IsNullOrWhiteSpace(value) ? (double?)null : Converter.ToDouble(value);
+        }
+
         [XmlElement("imp")]
         public Imp Imp { get; set; }
 
@@ -540,6 +559,11 @@ namespace Unimake.Business.DFe.Xml.BPeTM
         public Comp GetComp(int index) => (Comp?.Count ?? 0) == 0 ? default : Comp[index];
         public int GetCompCount => Comp != null ? Comp.Count : 0;
 #endif
+
+        /// <summary>
+        /// Serializa o valor líquido somente quando informado, inclusive zero.
+        /// </summary>
+        public bool ShouldSerializeVBPLiqField() => VBPLiq.HasValue;
 
         public bool ShouldSerializeCMunFim() => !string.IsNullOrWhiteSpace(CMunFim);
         public bool ShouldSerializeNContInicio() => !string.IsNullOrWhiteSpace(NContInicio);
@@ -1349,6 +1373,25 @@ namespace Unimake.Business.DFe.Xml.BPeTM
             set => VBP = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor líquido total do bilhete de transporte metropolitano sem tributos. Nulo quando não informado.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public double? VBPLiq { get; set; }
+
+        /// <summary>
+        /// Valor líquido total do bilhete de transporte metropolitano sem tributos, formatado para o XML.
+        /// </summary>
+        [XmlElement("vBPLiq")]
+        public string VBPLiqField
+        {
+            get => VBPLiq.HasValue ? BPeFormat.Format2(VBPLiq.Value) : null;
+            set => VBPLiq = string.IsNullOrWhiteSpace(value) ? (double?)null : Converter.ToDouble(value);
+        }
+
         [XmlElement("ICMSTot")]
         public ICMSTot ICMSTot { get; set; }
 
@@ -1364,6 +1407,11 @@ namespace Unimake.Business.DFe.Xml.BPeTM
             get => BPeFormat.Format2(VTotDFe);
             set => VTotDFe = Converter.ToDouble(value);
         }
+
+        /// <summary>
+        /// Serializa o valor líquido somente quando informado, inclusive zero.
+        /// </summary>
+        public bool ShouldSerializeVBPLiqField() => VBPLiq.HasValue;
 
         public bool ShouldSerializeIBSCBSTot() => IBSCBSTot != null;
         public bool ShouldSerializeVTotDFeField() => VTotDFe != null;

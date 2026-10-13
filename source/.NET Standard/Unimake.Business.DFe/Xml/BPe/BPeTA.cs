@@ -307,11 +307,44 @@ namespace Unimake.Business.DFe.Xml.BPeTA
         [XmlElement("xNome")]
         public string XNome { get; set; }
 
+        /// <summary>
+        /// CNPJ do comprador, como alternativa ao CPF ou identificador estrangeiro.
+        /// </summary>
+        [XmlElement("CNPJ")]
+        public string CNPJ { get; set; }
+
+        /// <summary>
+        /// CPF do comprador, como alternativa ao CNPJ ou identificador estrangeiro.
+        /// </summary>
+        [XmlElement("CPF")]
+        public string CPF { get; set; }
+
+        /// <summary>
+        /// Identificador do comprador estrangeiro, como alternativa ao CNPJ ou CPF.
+        /// </summary>
+        [XmlElement("idEstrangeiro")]
+        public string IdEstrangeiro { get; set; }
+
         [XmlElement("IE")]
         public string IE { get; set; }
 
         [XmlElement("enderComp")]
         public EnderComp EnderComp { get; set; }
+
+        /// <summary>
+        /// Serializa o CNPJ somente quando informado.
+        /// </summary>
+        public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
+
+        /// <summary>
+        /// Serializa o CPF somente quando informado.
+        /// </summary>
+        public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
+
+        /// <summary>
+        /// Serializa o identificador estrangeiro somente quando informado.
+        /// </summary>
+        public bool ShouldSerializeIdEstrangeiro() => !string.IsNullOrWhiteSpace(IdEstrangeiro);
 
         public bool ShouldSerializeIE() => !string.IsNullOrWhiteSpace(IE);
     }
@@ -585,6 +618,25 @@ namespace Unimake.Business.DFe.Xml.BPeTA
             set => VBP = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor líquido total do bilhete sem tributos. Nulo quando não informado.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public double? VBPLiq { get; set; }
+
+        /// <summary>
+        /// Valor líquido total do bilhete sem tributos, formatado para o XML.
+        /// </summary>
+        [XmlElement("vBPLiq")]
+        public string VBPLiqField
+        {
+            get => VBPLiq.HasValue ? BPeFormat.Format2(VBPLiq.Value) : null;
+            set => VBPLiq = string.IsNullOrWhiteSpace(value) ? (double?)null : Converter.ToDouble(value);
+        }
+
         [XmlIgnore]
         public double VDesconto { get; set; }
 
@@ -632,6 +684,11 @@ namespace Unimake.Business.DFe.Xml.BPeTA
         public CompValor GetComp(int index) => (Comp?.Count ?? 0) == 0 ? default : Comp[index];
         public int GetCompCount => Comp != null ? Comp.Count : 0;
 #endif
+
+        /// <summary>
+        /// Serializa o valor líquido somente quando informado, inclusive zero.
+        /// </summary>
+        public bool ShouldSerializeVBPLiqField() => VBPLiq.HasValue;
 
         public bool ShouldSerializeTpDesconto() => TpDesconto.HasValue;
         public bool ShouldSerializeXDesconto() => !string.IsNullOrWhiteSpace(XDesconto);
