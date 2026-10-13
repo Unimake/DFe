@@ -145,6 +145,7 @@ namespace Unimake.DFe.Test.NFSe.Validacao
         private static Configuracao CriarConfiguracaoSIGCORP204(Servico servico) => new Configuracao
         {
             TipoDFe = TipoDFe.NFSe,
+            CertificadoDigital = PropConfig.CertificadoDigital,
             TipoAmbiente = TipoAmbiente.Homologacao,
             CodigoMunicipio = 4204202,
             Servico = servico,
