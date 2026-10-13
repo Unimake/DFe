@@ -11,19 +11,19 @@
 		<xs:sequence>
 			<xs:element name="infNF3e">
 				<xs:annotation>
-					<xs:documentation>Informações da NF-3e</xs:documentation>
+					<xs:documentation>Informações da NF3e</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="ide">
 							<xs:annotation>
-								<xs:documentation>Identificação da NF-3e</xs:documentation>
+								<xs:documentation>Identificação da NF3e</xs:documentation>
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
 									<xs:element name="cUF" type="TCodUfIBGE">
 										<xs:annotation>
-											<xs:documentation>Código da UF do emitente da NF-3e</xs:documentation>
+											<xs:documentation>Código da UF do emitente da NF3e</xs:documentation>
 											<xs:documentation>Código da UF do emitente do Documento Fiscal. Utilizar a
 Tabela do IBGE de código de unidades da federação.</xs:documentation>
 										</xs:annotation>
@@ -37,8 +37,8 @@ Tabela do IBGE de código de unidades da federação.</xs:documentation>
 									</xs:element>
 									<xs:element name="mod" type="TModNF3e">
 										<xs:annotation>
-											<xs:documentation>Modelo da NF-3e</xs:documentation>
-											<xs:documentation>Utilizar o código 66 para identificação da NF-3e</xs:documentation>
+											<xs:documentation>Modelo da NF3e</xs:documentation>
+											<xs:documentation>Utilizar o código 66 para identificação da NF3e</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="serie" type="TSerie">
@@ -110,18 +110,16 @@ Observação: O ambiente autorizador que trabalhar com mais de um Site deverá d
 									</xs:element>
 									<xs:element name="finNF3e" type="TFinNF3e">
 										<xs:annotation>
-											<xs:documentation>Finalidade de emissão da NF-3e</xs:documentation>
-											<xs:documentation>1 - NF-3e normal; 
-
-2 - NF-3e substituição; 
-
-3 - NF-3e normal com ajuste;</xs:documentation>
+											<xs:documentation>Finalidade de emissão da NF3e</xs:documentation>
+											<xs:documentation>1 - NF3e normal; 
+2 - NF3e substituição; 
+3 - NF3e normal com ajuste (DESCONTINUADA)</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="verProc">
 										<xs:annotation>
 											<xs:documentation>Versão do processo de emissão</xs:documentation>
-											<xs:documentation>Informar a versão do aplicativo emissor de NF-3e.</xs:documentation>
+											<xs:documentation>Informar a versão do aplicativo emissor de NF3e.</xs:documentation>
 										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="TString">
@@ -943,8 +941,8 @@ Serve para organizar a informação dos grupos de saldos.</xs:documentation>
 											<xs:sequence>
 												<xs:element name="gAjusteNF3eAnt" minOccurs="0">
 													<xs:annotation>
-														<xs:documentation>Grupo de identificação do ajuste do item de NF-3e anterior</xs:documentation>
-														<xs:documentation>Somente informar no caso de item relacionado a NF-3e anterior </xs:documentation>
+														<xs:documentation>Grupo de identificação do ajuste do item de NF3e anterior</xs:documentation>
+														<xs:documentation>Somente informar no caso de item relacionado a NF3e anterior </xs:documentation>
 													</xs:annotation>
 													<xs:complexType>
 														<xs:sequence>
@@ -956,7 +954,7 @@ Serve para organizar a informação dos grupos de saldos.</xs:documentation>
 2 - Item de substituição (nova imagem do item anterior); 
 
 3 - Item a ser eliminado (deve informar detItemAnt); 
-4 - Item a ser incluído referente a NF-3e anterior
+4 - Item a ser incluído referente a NF3e anterior
 ;</xs:documentation>
 																</xs:annotation>
 															</xs:element>
@@ -977,7 +975,7 @@ Serve para organizar a informação dos grupos de saldos.</xs:documentation>
 												<xs:choice>
 													<xs:element name="detItemAnt">
 														<xs:annotation>
-															<xs:documentation>Grupo de informações referentes a item da NF-3e anterior</xs:documentation>
+															<xs:documentation>Grupo de informações referentes a item da NF3e anterior</xs:documentation>
 															<xs:documentation>Este grupo somente deverá ser preenchido para detalhar item ajustado de nota anterior nos casos de item alterado ou excluído</xs:documentation>
 														</xs:annotation>
 														<xs:complexType>
@@ -1002,7 +1000,7 @@ Serve para organizar a informação dos grupos de saldos.</xs:documentation>
 																<xs:element name="cClass">
 																	<xs:annotation>
 																		<xs:documentation>Código de classificação</xs:documentation>
-																		<xs:documentation>Tabela de Classificação de Item da NF-3e de Energia Elétrica (validar por RV)</xs:documentation>
+																		<xs:documentation>Tabela de Classificação de Item da NF3e de Energia Elétrica (validar por RV)</xs:documentation>
 																	</xs:annotation>
 																	<xs:simpleType>
 																		<xs:restriction base="xs:string">
@@ -1119,7 +1117,7 @@ Serve para organizar a informação dos grupos de saldos.</xs:documentation>
 															</xs:sequence>
 															<xs:attribute name="nItemAnt" use="required">
 																<xs:annotation>
-																	<xs:documentation>Número do item da NF-3e anterior</xs:documentation>
+																	<xs:documentation>Número do item da NF3e anterior</xs:documentation>
 																</xs:annotation>
 																<xs:simpleType>
 																	<xs:restriction base="xs:string">
@@ -1134,7 +1132,7 @@ Serve para organizar a informação dos grupos de saldos.</xs:documentation>
 													</xs:element>
 													<xs:element name="detItem">
 														<xs:annotation>
-															<xs:documentation>Grupo de informações referentes a item da NF-3e </xs:documentation>
+															<xs:documentation>Grupo de informações referentes a item da NF3e </xs:documentation>
 														</xs:annotation>
 														<xs:complexType>
 															<xs:sequence>
@@ -1426,7 +1424,7 @@ Quando for bandeira verde o campo valor do adicional tarifário deverá ser pree
 																			<xs:element name="cClass">
 																				<xs:annotation>
 																					<xs:documentation>Código de classificação</xs:documentation>
-																					<xs:documentation>Tabela de Classificação de Item da NF-3e de Energia Elétrica (validar por RV)</xs:documentation>
+																					<xs:documentation>Tabela de Classificação de Item da NF3e de Energia Elétrica (validar por RV)</xs:documentation>
 																				</xs:annotation>
 																				<xs:simpleType>
 																					<xs:restriction base="xs:string">
@@ -1468,8 +1466,21 @@ Este campo também corresponde ao preço médio efetivo relativo ao consumo ativ
 																			<xs:element name="vProd" type="TDec_1302_1310">
 																				<xs:annotation>
 																					<xs:documentation>Valor total do item</xs:documentation>
+																					<xs:documentation>Observação: A partir 2027, os valores de IBS e CBS compõem o Valor Total do Item </xs:documentation>
 																				</xs:annotation>
 																			</xs:element>
+																			<xs:sequence minOccurs="0">
+																				<xs:element name="vItemLiq" type="TDec_1302_1310">
+																					<xs:annotation>
+																						<xs:documentation>Valor unitário do item sem tributos</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																				<xs:element name="vProdLiq" type="TDec_1302_1310">
+																					<xs:annotation>
+																						<xs:documentation>Valor líquido total do item sem tributos</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																			</xs:sequence>
 																			<xs:element name="indDevolucao" minOccurs="0">
 																				<xs:annotation>
 																					<xs:documentation>Indicador de devolução do valor do item</xs:documentation>
@@ -1529,703 +1540,16 @@ pagamento</xs:documentation>
 																								</xs:restriction>
 																							</xs:simpleType>
 																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
 																		</xs:sequence>
 																	</xs:complexType>
 																</xs:element>
-																		</xs:sequence>
-																	</xs:complexType>
-																</xs:element>
-																<xs:element name="imposto">
+																<xs:element name="imposto" type="TImp">
 																	<xs:annotation>
 																		<xs:documentation>Tributos incidentes no Produto ou Serviço</xs:documentation>
 																	</xs:annotation>
-																	<xs:complexType>
-																		<xs:complexContent>
-																			<xs:extension base="TImp">
-																				<xs:sequence>
-																					<xs:choice>
-																						<xs:choice>
-																							<xs:element name="ICMS00">
-																								<xs:annotation>
-																									<xs:documentation>Prestação sujeito à tributação normal do ICMS</xs:documentation>
-																									<xs:documentation>Tributada integralmente</xs:documentation>
-																								</xs:annotation>
-																								<xs:complexType>
-																									<xs:sequence>
-																										<xs:element name="CST">
-																											<xs:annotation>
-																												<xs:documentation>classificação Tributária do Serviço</xs:documentation>
-																												<xs:documentation>00 - tributação normal ICMS</xs:documentation>
-																											</xs:annotation>
-																											<xs:simpleType>
-																												<xs:restriction base="xs:string">
-																													<xs:whiteSpace value="preserve"/>
-																													<xs:enumeration value="00"/>
-																												</xs:restriction>
-																											</xs:simpleType>
-																										</xs:element>
-																										<xs:element name="vBC" type="TDec_1302">
-																											<xs:annotation>
-																												<xs:documentation>Valor da BC do ICMS</xs:documentation>
-																											</xs:annotation>
-																										</xs:element>
-																										<xs:element name="pICMS" type="TDec_0302">
-																											<xs:annotation>
-																												<xs:documentation>Alíquota do ICMS</xs:documentation>
-																											</xs:annotation>
-																										</xs:element>
-																										<xs:element name="vICMS" type="TDec_1302">
-																											<xs:annotation>
-																												<xs:documentation>Valor do ICMS</xs:documentation>
-																											</xs:annotation>
-																										</xs:element>
-																										<xs:sequence minOccurs="0">
-																											<xs:annotation>
-																												<xs:documentation>Sequencia XML</xs:documentation>
-																											</xs:annotation>
-																											<xs:element name="pFCP" type="TDec_0302a04Opc">
-																												<xs:annotation>
-																													<xs:documentation>Percentual de ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																											<xs:element name="vFCP" type="TDec_1302">
-																												<xs:annotation>
-																													<xs:documentation>Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																										</xs:sequence>
-																									</xs:sequence>
-																								</xs:complexType>
-																							</xs:element>
-																							<xs:element name="ICMS10">
-																								<xs:annotation>
-																									<xs:documentation>Tributada e com cobrança do ICMS por substituição tributária</xs:documentation>
-																								</xs:annotation>
-																								<xs:complexType>
-																									<xs:sequence>
-																										<xs:element name="CST">
-																											<xs:annotation>
-																												<xs:documentation>classificação Tributária do Serviço</xs:documentation>
-																												<xs:documentation>10=Tributada e com cobrança do ICMS por substituição tributária</xs:documentation>
-																											</xs:annotation>
-																											<xs:simpleType>
-																												<xs:restriction base="xs:string">
-																													<xs:whiteSpace value="preserve"/>
-																													<xs:enumeration value="10"/>
-																												</xs:restriction>
-																											</xs:simpleType>
-																										</xs:element>
-																										<xs:element name="vBCST" type="TDec_1302">
-																											<xs:annotation>
-																												<xs:documentation>Valor da BC do ICMS ST</xs:documentation>
-																											</xs:annotation>
-																										</xs:element>
-																										<xs:element name="pICMSST" type="TDec_0302">
-																											<xs:annotation>
-																												<xs:documentation>Alíquota do ICMS ST</xs:documentation>
-																											</xs:annotation>
-																										</xs:element>
-																										<xs:element name="vICMSST" type="TDec_1302">
-																											<xs:annotation>
-																												<xs:documentation>Valor do ICMS ST retido</xs:documentation>
-																											</xs:annotation>
-																										</xs:element>
-																										<xs:sequence minOccurs="0">
-																											<xs:annotation>
-																												<xs:documentation>Sequencia XML</xs:documentation>
-																											</xs:annotation>
-																											<xs:element name="pFCPST" type="TDec_0302a04Opc">
-																												<xs:annotation>
-																													<xs:documentation>Percentual de ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																											<xs:element name="vFCPST" type="TDec_1302">
-																												<xs:annotation>
-																													<xs:documentation>Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																										</xs:sequence>
-																									</xs:sequence>
-																								</xs:complexType>
-																							</xs:element>
-																							<xs:element name="ICMS20">
-																								<xs:annotation>
-																									<xs:documentation>Prestação sujeito à tributação com redução de BC do ICMS</xs:documentation>
-																								</xs:annotation>
-																								<xs:complexType>
-																									<xs:sequence>
-																										<xs:element name="CST">
-																											<xs:annotation>
-																												<xs:documentation>Classificação Tributária do serviço</xs:documentation>
-																												<xs:documentation>20 - tributação com BC reduzida do ICMS</xs:documentation>
-																											</xs:annotation>
-																											<xs:simpleType>
-																												<xs:restriction base="xs:string">
-																													<xs:whiteSpace value="preserve"/>
-																													<xs:enumeration value="20"/>
-																												</xs:restriction>
-																											</xs:simpleType>
-																										</xs:element>
-																										<xs:element name="pRedBC" type="TDec_0302Opc">
-																											<xs:annotation>
-																												<xs:documentation>Percentual de redução da BC</xs:documentation>
-																											</xs:annotation>
-																										</xs:element>
-																										<xs:element name="vBC" type="TDec_1302">
-																											<xs:annotation>
-																												<xs:documentation>Valor da BC do ICMS</xs:documentation>
-																											</xs:annotation>
-																										</xs:element>
-																										<xs:element name="pICMS" type="TDec_0302">
-																											<xs:annotation>
-																												<xs:documentation>Alíquota do ICMS</xs:documentation>
-																											</xs:annotation>
-																										</xs:element>
-																										<xs:element name="vICMS" type="TDec_1302">
-																											<xs:annotation>
-																												<xs:documentation>Valor do ICMS</xs:documentation>
-																											</xs:annotation>
-																										</xs:element>
-																										<xs:sequence minOccurs="0">
-																											<xs:annotation>
-																												<xs:documentation>Sequencia XML</xs:documentation>
-																											</xs:annotation>
-																											<xs:element name="vICMSDeson" type="TDec_1302">
-																												<xs:annotation>
-																													<xs:documentation>Valor do ICMS de desoneração</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																											<xs:element name="cBenef">
-																												<xs:annotation>
-																													<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
-																													<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
- item.
-</xs:documentation>
-																												</xs:annotation>
-																												<xs:simpleType>
-																													<xs:restriction base="xs:string">
-																														<xs:whiteSpace value="preserve"/>
-																														<xs:maxLength value="10"/>
-																													</xs:restriction>
-																												</xs:simpleType>
-																											</xs:element>
-																										</xs:sequence>
-																										<xs:sequence minOccurs="0">
-																											<xs:annotation>
-																												<xs:documentation>Sequencia XML</xs:documentation>
-																											</xs:annotation>
-																											<xs:element name="pFCP" type="TDec_0302a04Opc">
-																												<xs:annotation>
-																													<xs:documentation>Percentual de ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																											<xs:element name="vFCP" type="TDec_1302">
-																												<xs:annotation>
-																													<xs:documentation>Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																										</xs:sequence>
-																									</xs:sequence>
-																								</xs:complexType>
-																							</xs:element>
-																							<xs:element name="ICMS40">
-																								<xs:annotation>
-																									<xs:documentation>Tributação Isenta, Não tributada</xs:documentation>
-																								</xs:annotation>
-																								<xs:complexType>
-																									<xs:sequence>
-																										<xs:element name="CST">
-																											<xs:annotation>
-																												<xs:documentation>Classificação Tributária do serviço</xs:documentation>
-																												<xs:documentation>40=Isenta; 41=Não tributada;
-</xs:documentation>
-																											</xs:annotation>
-																											<xs:simpleType>
-																												<xs:restriction base="xs:string">
-																													<xs:whiteSpace value="preserve"/>
-																													<xs:enumeration value="40"/>
-																													<xs:enumeration value="41"/>
-																												</xs:restriction>
-																											</xs:simpleType>
-																										</xs:element>
-																										<xs:sequence minOccurs="0">
-																											<xs:annotation>
-																												<xs:documentation>Sequencia XML</xs:documentation>
-																											</xs:annotation>
-																											<xs:element name="vICMSDeson" type="TDec_1302">
-																												<xs:annotation>
-																													<xs:documentation>Valor do ICMS de desoneração</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																											<xs:element name="cBenef">
-																												<xs:annotation>
-																													<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
-																													<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
-item.
-</xs:documentation>
-																												</xs:annotation>
-																												<xs:simpleType>
-																													<xs:restriction base="xs:string">
-																														<xs:whiteSpace value="preserve"/>
-																														<xs:maxLength value="10"/>
-																													</xs:restriction>
-																												</xs:simpleType>
-																											</xs:element>
-																										</xs:sequence>
-																									</xs:sequence>
-																								</xs:complexType>
-																							</xs:element>
-																							<xs:element name="ICMS51">
-																								<xs:annotation>
-																									<xs:documentation>Tributação com Diferimento </xs:documentation>
-																									<xs:documentation>A exigência do preenchimento das informações do ICMS diferido fica a critério de cada UF</xs:documentation>
-																								</xs:annotation>
-																								<xs:complexType>
-																									<xs:sequence>
-																										<xs:element name="CST">
-																											<xs:annotation>
-																												<xs:documentation>Classificação Tributária do serviço</xs:documentation>
-																												<xs:documentation>Tributação pelo ICMS 51 - Diferimento</xs:documentation>
-																											</xs:annotation>
-																											<xs:simpleType>
-																												<xs:restriction base="xs:string">
-																													<xs:whiteSpace value="preserve"/>
-																													<xs:enumeration value="51"/>
-																												</xs:restriction>
-																											</xs:simpleType>
-																										</xs:element>
-																										<xs:sequence minOccurs="0">
-																											<xs:annotation>
-																												<xs:documentation>Sequencia XML</xs:documentation>
-																											</xs:annotation>
-																											<xs:element name="vICMSDeson" type="TDec_1302">
-																												<xs:annotation>
-																													<xs:documentation>Valor do ICMS de desoneração</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																											<xs:element name="cBenef">
-																												<xs:annotation>
-																													<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
-																													<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
-item.
-</xs:documentation>
-																												</xs:annotation>
-																												<xs:simpleType>
-																													<xs:restriction base="xs:string">
-																														<xs:whiteSpace value="preserve"/>
-																														<xs:maxLength value="10"/>
-																													</xs:restriction>
-																												</xs:simpleType>
-																											</xs:element>
-																										</xs:sequence>
-																									</xs:sequence>
-																								</xs:complexType>
-																							</xs:element>
-																							<xs:element name="ICMS60">
-																								<xs:annotation>
-																									<xs:documentation>Tributação pelo ICMS
-60 - ICMS cobrado anteriormente por substituição tributária</xs:documentation>
-																								</xs:annotation>
-																								<xs:complexType>
-																									<xs:sequence>
-																										<xs:element name="CST">
-																											<xs:annotation>
-																												<xs:documentation>Tributação pelo ICMS 
-60 - ICMS cobrado anteriormente por substituição tributária</xs:documentation>
-																											</xs:annotation>
-																											<xs:simpleType>
-																												<xs:restriction base="xs:string">
-																													<xs:whiteSpace value="preserve"/>
-																													<xs:enumeration value="60"/>
-																												</xs:restriction>
-																											</xs:simpleType>
-																										</xs:element>
-																										<xs:choice>
-																											<xs:sequence>
-																												<xs:annotation>
-																													<xs:documentation>Choice referente ao conjunto de tags do ICMS Retido #246 até #253.
-Deverá ser informado esse conjunto do ICMS Retido ou o conjunto do ICMS efetivo
-</xs:documentation>
-																												</xs:annotation>
-																												<xs:element name="vBCSTRet" type="TDec_1302">
-																													<xs:annotation>
-																														<xs:documentation>Valor da BC do ICMS ST retido anteriormente</xs:documentation>
-																													</xs:annotation>
-																												</xs:element>
-																												<xs:element name="pICMSSTRet" type="TDec_0302a04Opc">
-																													<xs:annotation>
-																														<xs:documentation>Aliquota suportada pelo consumidor final.</xs:documentation>
-																													</xs:annotation>
-																												</xs:element>
-																												<xs:element name="vICMSSubstituto" type="TDec_1302" minOccurs="0">
-																													<xs:annotation>
-																														<xs:documentation>Valor do ICMS Próprio do Substituto cobrado em operação anterior</xs:documentation>
-																													</xs:annotation>
-																												</xs:element>
-																												<xs:element name="vICMSSTRet" type="TDec_1302">
-																													<xs:annotation>
-																														<xs:documentation>Valor do ICMS ST retido anteriormente</xs:documentation>
-																													</xs:annotation>
-																												</xs:element>
-																												<xs:sequence minOccurs="0">
-																													<xs:element name="vBCFCPSTRet" type="TDec_1302">
-																														<xs:annotation>
-																															<xs:documentation>Valor da Base de cálculo do FCP retido anteriormente por ST.</xs:documentation>
-																														</xs:annotation>
-																													</xs:element>
-																													<xs:element name="pFCPSTRet" type="TDec_0302a04Opc">
-																														<xs:annotation>
-																															<xs:documentation>Percentual de FCP retido anteriormente por substituição tributária.</xs:documentation>
-																														</xs:annotation>
-																													</xs:element>
-																													<xs:element name="vFCPSTRet" type="TDec_1302">
-																														<xs:annotation>
-																															<xs:documentation>Valor do FCP retido por substituição tributária.</xs:documentation>
-																														</xs:annotation>
-																													</xs:element>
-																												</xs:sequence>
-																											</xs:sequence>
-																											<xs:sequence>
-																												<xs:annotation>
-																													<xs:documentation>Choice referente ao conjunto de tags do ICMS Efetivo
-Deverá ser informado esse conjunto do ICMS Efetivo ou o conjunto do ICMS retido
-</xs:documentation>
-																												</xs:annotation>
-																												<xs:element name="pRedBCEfet" type="TDec_0302a04Opc">
-																													<xs:annotation>
-																														<xs:documentation>Percentual de redução da base de cálculo efetiva.</xs:documentation>
-																													</xs:annotation>
-																												</xs:element>
-																												<xs:element name="vBCEfet" type="TDec_1302">
-																													<xs:annotation>
-																														<xs:documentation>Valor da base de cálculo efetiva.</xs:documentation>
-																													</xs:annotation>
-																												</xs:element>
-																												<xs:element name="pICMSEfet" type="TDec_0302a04Opc">
-																													<xs:annotation>
-																														<xs:documentation>Alíquota do ICMS efetiva.</xs:documentation>
-																													</xs:annotation>
-																												</xs:element>
-																												<xs:element name="vICMSEfet" type="TDec_1302">
-																													<xs:annotation>
-																														<xs:documentation>Valor do ICMS efetivo.</xs:documentation>
-																													</xs:annotation>
-																												</xs:element>
-																											</xs:sequence>
-																										</xs:choice>
-																										<xs:sequence minOccurs="0">
-																											<xs:annotation>
-																												<xs:documentation>Sequencia XML</xs:documentation>
-																											</xs:annotation>
-																											<xs:element name="vICMSDeson" type="TDec_1302">
-																												<xs:annotation>
-																													<xs:documentation>Valor do ICMS de desoneração</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																											<xs:element name="cBenef">
-																												<xs:annotation>
-																													<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
-																													<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
- item.
-</xs:documentation>
-																												</xs:annotation>
-																												<xs:simpleType>
-																													<xs:restriction base="xs:string">
-																														<xs:whiteSpace value="preserve"/>
-																														<xs:maxLength value="10"/>
-																													</xs:restriction>
-																												</xs:simpleType>
-																											</xs:element>
-																										</xs:sequence>
-																									</xs:sequence>
-																								</xs:complexType>
-																							</xs:element>
-																							<xs:element name="ICMS90">
-																								<xs:annotation>
-																									<xs:documentation>ICMS Outros</xs:documentation>
-																									<xs:documentation>Será usado no caso da subvenção ou para NF-3e de ajuste quando for o caso.</xs:documentation>
-																								</xs:annotation>
-																								<xs:complexType>
-																									<xs:sequence>
-																										<xs:element name="CST">
-																											<xs:annotation>
-																												<xs:documentation>Classificação Tributária do Serviço</xs:documentation>
-																												<xs:documentation> 90 - ICMS outros</xs:documentation>
-																											</xs:annotation>
-																											<xs:simpleType>
-																												<xs:restriction base="xs:string">
-																													<xs:whiteSpace value="preserve"/>
-																													<xs:enumeration value="90"/>
-																												</xs:restriction>
-																											</xs:simpleType>
-																										</xs:element>
-																										<xs:sequence minOccurs="0">
-																											<xs:annotation>
-																												<xs:documentation>Sequência XML</xs:documentation>
-																											</xs:annotation>
-																											<xs:element name="vBC" type="TDec_1302">
-																												<xs:annotation>
-																													<xs:documentation>Valor da BC do ICMS</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																											<xs:element name="pICMS" type="TDec_0302">
-																												<xs:annotation>
-																													<xs:documentation>Alíquota do ICMS</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																											<xs:element name="vICMS" type="TDec_1302">
-																												<xs:annotation>
-																													<xs:documentation>Valor do ICMS</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																										</xs:sequence>
-																										<xs:sequence minOccurs="0">
-																											<xs:annotation>
-																												<xs:documentation>Sequencia XML</xs:documentation>
-																											</xs:annotation>
-																											<xs:element name="vICMSDeson" type="TDec_1302">
-																												<xs:annotation>
-																													<xs:documentation>Valor do ICMS de desoneração</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																											<xs:element name="cBenef">
-																												<xs:annotation>
-																													<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
-																													<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
- item.
-</xs:documentation>
-																												</xs:annotation>
-																												<xs:simpleType>
-																													<xs:restriction base="xs:string">
-																														<xs:whiteSpace value="preserve"/>
-																														<xs:maxLength value="10"/>
-																													</xs:restriction>
-																												</xs:simpleType>
-																											</xs:element>
-																										</xs:sequence>
-																										<xs:sequence minOccurs="0">
-																											<xs:annotation>
-																												<xs:documentation>Sequencia XML</xs:documentation>
-																											</xs:annotation>
-																											<xs:element name="pFCP" type="TDec_0302a04Opc">
-																												<xs:annotation>
-																													<xs:documentation>Percentual de ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																											<xs:element name="vFCP" type="TDec_1302">
-																												<xs:annotation>
-																													<xs:documentation>Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
-																												</xs:annotation>
-																											</xs:element>
-																										</xs:sequence>
-																									</xs:sequence>
-																								</xs:complexType>
-																							</xs:element>
-																						</xs:choice>
-																						<xs:element name="indSemCST">
-																							<xs:annotation>
-																								<xs:documentation>Sem Situação Tributária para o ICMS</xs:documentation>
-																								<xs:documentation>Informar para itens que não tenham nenhuma relação com o ICMS.
-Quando informado o item NÃO PODE ter CFOP informado
-
-Se informado esse grupo o schema não permite informar nenhum dos grupos de ICMSXX</xs:documentation>
-																							</xs:annotation>
-																							<xs:simpleType>
-																								<xs:restriction base="xs:string">
-																									<xs:whiteSpace value="preserve"/>
-																									<xs:enumeration value="1"/>
-																								</xs:restriction>
-																							</xs:simpleType>
-																						</xs:element>
-																					</xs:choice>
-																					<xs:element name="PIS" minOccurs="0">
-																						<xs:annotation>
-																							<xs:documentation>Dados do PIS</xs:documentation>
-																						</xs:annotation>
-																						<xs:complexType>
-																							<xs:sequence>
-																								<xs:element name="CST">
-																									<xs:annotation>
-																										<xs:documentation>classificação Tributária do PIS</xs:documentation>
-																										<xs:documentation>01 – Tributável com alíquota básica
-02 – Tributável com alíquota diferenciada
-06 – Tributável com alíquota erro
-07 – Operação isenta de contribuição
-08 – Operação sem incidência da contribuição
-09 – Operação com suspensão da contribuição  
-49 – Outras operações de saída</xs:documentation>
-																									</xs:annotation>
-																									<xs:simpleType>
-																										<xs:restriction base="xs:string">
-																											<xs:whiteSpace value="preserve"/>
-																											<xs:enumeration value="01"/>
-																											<xs:enumeration value="02"/>
-																											<xs:enumeration value="06"/>
-																											<xs:enumeration value="07"/>
-																											<xs:enumeration value="08"/>
-																											<xs:enumeration value="09"/>
-																											<xs:enumeration value="49"/>
-																										</xs:restriction>
-																									</xs:simpleType>
-																								</xs:element>
-																								<xs:element name="vBC" type="TDec_1302">
-																									<xs:annotation>
-																										<xs:documentation>Valor da BC do PIS</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="pPIS" type="TDec_0302a04">
-																									<xs:annotation>
-																										<xs:documentation>Alíquota do PIS (em percentual)</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="vPIS" type="TDec_1302">
-																									<xs:annotation>
-																										<xs:documentation>Valor do PIS</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																							</xs:sequence>
-																						</xs:complexType>
-																					</xs:element>
-																					<xs:element name="PISEfet" minOccurs="0">
-																						<xs:annotation>
-																							<xs:documentation>Dados do PIS Efetivo</xs:documentation>
-																						</xs:annotation>
-																						<xs:complexType>
-																							<xs:sequence>
-																								<xs:element name="vBCPISEfet" type="TDec_1302">
-																									<xs:annotation>
-																										<xs:documentation>Valor da BC do PIS efetivo</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="pPISEfet" type="TDec_0302a04">
-																									<xs:annotation>
-																										<xs:documentation>Alíquota efetiva do PIS (em percentual)</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="vPISEfet" type="TDec_1302">
-																									<xs:annotation>
-																										<xs:documentation>Valor efetivo do PIS</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																							</xs:sequence>
-																						</xs:complexType>
-																					</xs:element>
-																					<xs:element name="COFINS" minOccurs="0">
-																						<xs:annotation>
-																							<xs:documentation>Dados do COFINS</xs:documentation>
-																						</xs:annotation>
-																						<xs:complexType>
-																							<xs:sequence>
-																								<xs:element name="CST">
-																									<xs:annotation>
-																										<xs:documentation>classificação Tributária do COFINS</xs:documentation>
-																										<xs:documentation>01 – Tributável com alíquota básica
-02 – Tributável com alíquota diferenciada
-06 – Tributável com alíquota erro
-07 – Operação isenta de contribuição
-08 – Operação sem incidência da contribuição
-09 – Operação com suspensão da contribuição  
-49 – Outras operações de saída
-</xs:documentation>
-																									</xs:annotation>
-																									<xs:simpleType>
-																										<xs:restriction base="xs:string">
-																											<xs:whiteSpace value="preserve"/>
-																											<xs:enumeration value="01"/>
-																											<xs:enumeration value="02"/>
-																											<xs:enumeration value="06"/>
-																											<xs:enumeration value="07"/>
-																											<xs:enumeration value="08"/>
-																											<xs:enumeration value="09"/>
-																											<xs:enumeration value="49"/>
-																										</xs:restriction>
-																									</xs:simpleType>
-																								</xs:element>
-																								<xs:element name="vBC" type="TDec_1302">
-																									<xs:annotation>
-																										<xs:documentation>Valor da BC do COFINS</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="pCOFINS" type="TDec_0302a04">
-																									<xs:annotation>
-																										<xs:documentation>Alíquota do COFINS (em percentual)</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="vCOFINS" type="TDec_1302">
-																									<xs:annotation>
-																										<xs:documentation>Valor do COFINS</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																							</xs:sequence>
-																						</xs:complexType>
-																					</xs:element>
-																					<xs:element name="COFINSEfet" minOccurs="0">
-																						<xs:annotation>
-																							<xs:documentation>Dados do COFINS Efetivo</xs:documentation>
-																						</xs:annotation>
-																						<xs:complexType>
-																							<xs:sequence>
-																								<xs:element name="vBCCOFINSEfet" type="TDec_1302">
-																									<xs:annotation>
-																										<xs:documentation>Valor da BC do COFINS efetivo</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="pCOFINSEfet" type="TDec_0302a04">
-																									<xs:annotation>
-																										<xs:documentation>Alíquota Efetiva do COFINS (em percentual)</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="vCOFINSEfet" type="TDec_1302">
-																									<xs:annotation>
-																										<xs:documentation>Valor Efetivo do COFINS</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																							</xs:sequence>
-																						</xs:complexType>
-																					</xs:element>
-																					<xs:element name="retTrib" minOccurs="0">
-																						<xs:annotation>
-																							<xs:documentation>Grupo de informações de retenção de tributos federais</xs:documentation>
-																						</xs:annotation>
-																						<xs:complexType>
-																							<xs:sequence>
-																								<xs:element name="vRetPIS" type="TDec_1302_1308">
-																									<xs:annotation>
-																										<xs:documentation>Valor do PIS retido</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="vRetCofins" type="TDec_1302_1308">
-																									<xs:annotation>
-																										<xs:documentation>Valor do COFNS retido</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="vRetCSLL" type="TDec_1302_1308">
-																									<xs:annotation>
-																										<xs:documentation>Valor da CSLL retida</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="vBCIRRF" type="TDec_1302_1308">
-																									<xs:annotation>
-																										<xs:documentation>Base de cálculo do IRRF</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																								<xs:element name="vIRRF" type="TDec_1302_1308">
-																									<xs:annotation>
-																										<xs:documentation>Valor do IRRF retido</xs:documentation>
-																									</xs:annotation>
-																								</xs:element>
-																							</xs:sequence>
-																						</xs:complexType>
-																					</xs:element>
-																					<xs:element name="IBSCBS" type="TTribNF3e" minOccurs="0">
-																						<xs:annotation>
-																							<xs:documentation>Grupo de informações do IBS e CBS</xs:documentation>
-																						</xs:annotation>
-																					</xs:element>
-																				</xs:sequence>
-																			</xs:extension>
-																		</xs:complexContent>
-																	</xs:complexType>
 																</xs:element>
 																<xs:element name="gProcRef" minOccurs="0">
 																	<xs:annotation>
@@ -2347,6 +1671,35 @@ Se informado esse grupo o schema não permite informar nenhum dos grupos de ICMS
 																					<xs:documentation>Valor Efetivo do COFINS</xs:documentation>
 																				</xs:annotation>
 																			</xs:element>
+																			<xs:element name="gIBSCBS" minOccurs="0">
+																				<xs:annotation>
+																					<xs:documentation>Grupo de informações do IBS e CBS a serem considerados sem a aplicação do processo judicial </xs:documentation>
+																				</xs:annotation>
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="vBC" type="TDec1302RTC">
+																							<xs:annotation>
+																								<xs:documentation>Valor do BC</xs:documentation>
+																							</xs:annotation>
+																						</xs:element>
+																						<xs:element name="vIBSUF" type="TDec1302RTC">
+																							<xs:annotation>
+																								<xs:documentation>Valor do IBS de competência das UF</xs:documentation>
+																							</xs:annotation>
+																						</xs:element>
+																						<xs:element name="vIBSMun" type="TDec1302RTC">
+																							<xs:annotation>
+																								<xs:documentation>Valor do IBS Municipal</xs:documentation>
+																							</xs:annotation>
+																						</xs:element>
+																						<xs:element name="vCBS" type="TDec1302RTC">
+																							<xs:annotation>
+																								<xs:documentation>Valor da CBS</xs:documentation>
+																							</xs:annotation>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
 																			<xs:element name="gProc" maxOccurs="10">
 																				<xs:annotation>
 																					<xs:documentation>Grupo identificador do Processo</xs:documentation>
@@ -2443,7 +1796,7 @@ Se informado esse grupo o schema não permite informar nenhum dos grupos de ICMS
 															</xs:sequence>
 															<xs:attribute name="nItemAnt" use="optional">
 																<xs:annotation>
-																	<xs:documentation>Número do item da NF-3e anterior que este item está substituindo. 
+																	<xs:documentation>Número do item da NF3e anterior que este item está substituindo. 
 Deve sempre existir um detItemAnt que corresponda</xs:documentation>
 																</xs:annotation>
 																<xs:simpleType>
@@ -2461,7 +1814,7 @@ Deve sempre existir um detItemAnt que corresponda</xs:documentation>
 											</xs:sequence>
 											<xs:attribute name="nItem" use="required">
 												<xs:annotation>
-													<xs:documentation>Número do item da NF-3e</xs:documentation>
+													<xs:documentation>Número do item da NF3e</xs:documentation>
 												</xs:annotation>
 												<xs:simpleType>
 													<xs:restriction base="xs:string">
@@ -2475,7 +1828,7 @@ Deve sempre existir um detItemAnt que corresponda</xs:documentation>
 								</xs:sequence>
 								<xs:attribute name="chNF3eAnt" type="TChDFe">
 									<xs:annotation>
-										<xs:documentation>Chave de Acesso da NF-3e anterior</xs:documentation>
+										<xs:documentation>Chave de Acesso da NF3e anterior</xs:documentation>
 										<xs:documentation>Informar apenas para finalidade de Ajuste</xs:documentation>
 									</xs:annotation>
 								</xs:attribute>
@@ -2489,13 +1842,18 @@ Deve sempre existir um detItemAnt que corresponda</xs:documentation>
 						</xs:element>
 						<xs:element name="total">
 							<xs:annotation>
-								<xs:documentation>Dados dos totais da NF-3e</xs:documentation>
+								<xs:documentation>Dados dos totais da NF3e</xs:documentation>
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
 									<xs:element name="vProd" type="TDec_1302">
 										<xs:annotation>
 											<xs:documentation>Valor Total dos produtos e serviços</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vProdLiq" type="TDec_1302" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Valor Total líquido dos produtos e serviços sem tributos</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="ICMSTot">
@@ -2603,8 +1961,7 @@ Deve sempre existir um detItemAnt que corresponda</xs:documentation>
 									</xs:element>
 									<xs:element name="vTotDFe" type="TDec_1302" minOccurs="0">
 										<xs:annotation>
-											<xs:documentation>Valor total do documento fiscal 
-(vNF + total do IBS + total da CBS) 
+											<xs:documentation>Valor total do documento fiscal (vNF) 
 </xs:documentation>
 										</xs:annotation>
 									</xs:element>
@@ -2835,7 +2192,7 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 					<xs:attribute name="Id" use="required">
 						<xs:annotation>
 							<xs:documentation>Identificador da tag a ser assinada</xs:documentation>
-							<xs:documentation>Informar a chave de acesso da NF-3e e precedida do literal "NF3e"</xs:documentation>
+							<xs:documentation>Informar a chave de acesso da NF3e e precedida do literal "NF3e"</xs:documentation>
 						</xs:annotation>
 						<xs:simpleType>
 							<xs:restriction base="xs:ID">
@@ -2863,13 +2220,13 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 			</xs:element>
 			<xs:element name="infNF3eSupl">
 				<xs:annotation>
-					<xs:documentation>Informações suplementares da NF-3e</xs:documentation>
+					<xs:documentation>Informações suplementares da NF3e</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="qrCodNF3e">
 							<xs:annotation>
-								<xs:documentation>Texto com o QR-Code para consulta da NF-3e</xs:documentation>
+								<xs:documentation>Texto com o QR-Code para consulta da NF3e</xs:documentation>
 							</xs:annotation>
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
@@ -3111,7 +2468,7 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 	</xs:complexType>
 	<xs:complexType name="TProtNF3e">
 		<xs:annotation>
-			<xs:documentation>Tipo Protocolo de status resultado do processamento da NF-3e (Modelo 66)</xs:documentation>
+			<xs:documentation>Tipo Protocolo de status resultado do processamento da NF3e (Modelo 66)</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="infProt">
@@ -3129,12 +2486,12 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 						</xs:element>
 						<xs:element name="verAplic" type="TVerAplic">
 							<xs:annotation>
-								<xs:documentation>Versão do Aplicativo que processou a NF-3e</xs:documentation>
+								<xs:documentation>Versão do Aplicativo que processou a NF3e</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="chNF3e" type="TChDFe">
 							<xs:annotation>
-								<xs:documentation>Chave de acesso da NF-3e</xs:documentation>
+								<xs:documentation>Chave de acesso da NF3e</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="dhRecbto" type="TDateTimeUTC">
@@ -3144,17 +2501,17 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 						</xs:element>
 						<xs:element name="nProt" type="TProt" minOccurs="0">
 							<xs:annotation>
-								<xs:documentation>Número do Protocolo de Status da NF-3e.</xs:documentation>
+								<xs:documentation>Número do Protocolo de Status da NF3e.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="digVal" type="ds:DigestValueType" minOccurs="0">
 							<xs:annotation>
-								<xs:documentation>Digest Value da NF-3e processado. Utilizado para conferir a integridade da NF-3e original.</xs:documentation>
+								<xs:documentation>Digest Value da NF3e processado. Utilizado para conferir a integridade da NF3e original.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="cStat">
 							<xs:annotation>
-								<xs:documentation>Código do status da NF-3e.</xs:documentation>
+								<xs:documentation>Código do status da NF3e.</xs:documentation>
 							</xs:annotation>
 							<xs:simpleType>
 								<xs:restriction base="TStat"/>
@@ -3162,7 +2519,7 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 						</xs:element>
 						<xs:element name="xMotivo" type="TMotivo">
 							<xs:annotation>
-								<xs:documentation>Descrição literal do status da NF-3e.</xs:documentation>
+								<xs:documentation>Descrição literal do status da NF3e.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -3197,7 +2554,7 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 	</xs:complexType>
 	<xs:complexType name="TRetNF3e">
 		<xs:annotation>
-			<xs:documentation>Tipo Retorno do Pedido de Autorização de NF-3e (Modelo 66)</xs:documentation>
+			<xs:documentation>Tipo Retorno do Pedido de Autorização de NF3e (Modelo 66)</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="tpAmb" type="TAmb">
@@ -3214,7 +2571,7 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 			</xs:element>
 			<xs:element name="verAplic" type="TVerAplic">
 				<xs:annotation>
-					<xs:documentation>Versão do Aplicativo que processou a NF-3e</xs:documentation>
+					<xs:documentation>Versão do Aplicativo que processou a NF3e</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cStat" type="TStat">
@@ -3229,7 +2586,7 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 			</xs:element>
 			<xs:element name="protNF3e" type="TProtNF3e" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Reposta ao processamento da NF-3e</xs:documentation>
+					<xs:documentation>Reposta ao processamento da NF3e</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -3237,7 +2594,7 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 	</xs:complexType>
 	<xs:complexType name="TRetEnviNF3e">
 		<xs:annotation>
-			<xs:documentation>Tipo Retorno do recibo de envio do lote de NF-3e (Modelo 66)</xs:documentation>
+			<xs:documentation>Tipo Retorno do recibo de envio do lote de NF3e (Modelo 66)</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="tpAmb" type="TAmb">
@@ -3254,7 +2611,7 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 			</xs:element>
 			<xs:element name="verAplic" type="TVerAplic">
 				<xs:annotation>
-					<xs:documentation>Versão do Aplicativo que processou a NF-3e</xs:documentation>
+					<xs:documentation>Versão do Aplicativo que processou a NF3e</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cStat" type="TStat">
@@ -3301,8 +2658,712 @@ Não obrigatória, conforme item 2.3.2 da Seção 11.1 do Módulo 11 do PRODIST.
 	</xs:complexType>
 	<xs:complexType name="TImp">
 		<xs:annotation>
-			<xs:documentation>Tipo Dados do Imposto NF-3e</xs:documentation>
+			<xs:documentation>Tipo Dados do Imposto NF3e</xs:documentation>
 		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:choice>
+					<xs:element name="ICMS00">
+						<xs:annotation>
+							<xs:documentation>Prestação sujeito à tributação normal do ICMS</xs:documentation>
+							<xs:documentation>Tributada integralmente</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CST">
+									<xs:annotation>
+										<xs:documentation>classificação Tributária do Serviço</xs:documentation>
+										<xs:documentation>00 - tributação normal ICMS</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:whiteSpace value="preserve"/>
+											<xs:enumeration value="00"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="vBC" type="TDec_1302">
+									<xs:annotation>
+										<xs:documentation>Valor da BC do ICMS</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="pICMS" type="TDec_0302">
+									<xs:annotation>
+										<xs:documentation>Alíquota do ICMS</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="vICMS" type="TDec_1302">
+									<xs:annotation>
+										<xs:documentation>Valor do ICMS</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Sequencia XML</xs:documentation>
+									</xs:annotation>
+									<xs:element name="pFCP" type="TDec_0302a04Opc">
+										<xs:annotation>
+											<xs:documentation>Percentual de ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vFCP" type="TDec_1302">
+										<xs:annotation>
+											<xs:documentation>Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ICMS10">
+						<xs:annotation>
+							<xs:documentation>Tributada e com cobrança do ICMS por substituição tributária</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CST">
+									<xs:annotation>
+										<xs:documentation>classificação Tributária do Serviço</xs:documentation>
+										<xs:documentation>10=Tributada e com cobrança do ICMS por substituição tributária</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:whiteSpace value="preserve"/>
+											<xs:enumeration value="10"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="vBCST" type="TDec_1302">
+									<xs:annotation>
+										<xs:documentation>Valor da BC do ICMS ST</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="pICMSST" type="TDec_0302">
+									<xs:annotation>
+										<xs:documentation>Alíquota do ICMS ST</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="vICMSST" type="TDec_1302">
+									<xs:annotation>
+										<xs:documentation>Valor do ICMS ST retido</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Sequencia XML</xs:documentation>
+									</xs:annotation>
+									<xs:element name="pFCPST" type="TDec_0302a04Opc">
+										<xs:annotation>
+											<xs:documentation>Percentual de ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vFCPST" type="TDec_1302">
+										<xs:annotation>
+											<xs:documentation>Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ICMS20">
+						<xs:annotation>
+							<xs:documentation>Prestação sujeito à tributação com redução de BC do ICMS</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CST">
+									<xs:annotation>
+										<xs:documentation>Classificação Tributária do serviço</xs:documentation>
+										<xs:documentation>20 - tributação com BC reduzida do ICMS</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:whiteSpace value="preserve"/>
+											<xs:enumeration value="20"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="pRedBC" type="TDec_0302Opc">
+									<xs:annotation>
+										<xs:documentation>Percentual de redução da BC</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="vBC" type="TDec_1302">
+									<xs:annotation>
+										<xs:documentation>Valor da BC do ICMS</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="pICMS" type="TDec_0302">
+									<xs:annotation>
+										<xs:documentation>Alíquota do ICMS</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="vICMS" type="TDec_1302">
+									<xs:annotation>
+										<xs:documentation>Valor do ICMS</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Sequencia XML</xs:documentation>
+									</xs:annotation>
+									<xs:element name="vICMSDeson" type="TDec_1302">
+										<xs:annotation>
+											<xs:documentation>Valor do ICMS de desoneração</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="cBenef">
+										<xs:annotation>
+											<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
+											<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
+ item.
+</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="preserve"/>
+												<xs:maxLength value="10"/>
+												<xs:pattern value="[!-ÿ]{8}|[!-ÿ]{10}"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+								</xs:sequence>
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Sequencia XML</xs:documentation>
+									</xs:annotation>
+									<xs:element name="pFCP" type="TDec_0302a04Opc">
+										<xs:annotation>
+											<xs:documentation>Percentual de ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vFCP" type="TDec_1302">
+										<xs:annotation>
+											<xs:documentation>Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ICMS40">
+						<xs:annotation>
+							<xs:documentation>Tributação Isenta, Não tributada</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CST">
+									<xs:annotation>
+										<xs:documentation>Classificação Tributária do serviço</xs:documentation>
+										<xs:documentation>40=Isenta; 41=Não tributada;
+</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:whiteSpace value="preserve"/>
+											<xs:enumeration value="40"/>
+											<xs:enumeration value="41"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Sequencia XML</xs:documentation>
+									</xs:annotation>
+									<xs:element name="vICMSDeson" type="TDec_1302">
+										<xs:annotation>
+											<xs:documentation>Valor do ICMS de desoneração</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="cBenef">
+										<xs:annotation>
+											<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
+											<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
+item.
+</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="preserve"/>
+												<xs:maxLength value="10"/>
+												<xs:pattern value="[!-ÿ]{8}|[!-ÿ]{10}"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+								</xs:sequence>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ICMS51">
+						<xs:annotation>
+							<xs:documentation>Tributação com Diferimento </xs:documentation>
+							<xs:documentation>A exigência do preenchimento das informações do ICMS diferido fica a critério de cada UF</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CST">
+									<xs:annotation>
+										<xs:documentation>Classificação Tributária do serviço</xs:documentation>
+										<xs:documentation>Tributação pelo ICMS 51 - Diferimento</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:whiteSpace value="preserve"/>
+											<xs:enumeration value="51"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Sequencia XML</xs:documentation>
+									</xs:annotation>
+									<xs:element name="vICMSDeson" type="TDec_1302">
+										<xs:annotation>
+											<xs:documentation>Valor do ICMS de desoneração</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="cBenef">
+										<xs:annotation>
+											<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
+											<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
+item.
+</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="preserve"/>
+												<xs:maxLength value="10"/>
+												<xs:pattern value="[!-ÿ]{8}|[!-ÿ]{10}"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+								</xs:sequence>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ICMS60">
+						<xs:annotation>
+							<xs:documentation>Tributação pelo ICMS
+60 - ICMS cobrado anteriormente por substituição tributária</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CST">
+									<xs:annotation>
+										<xs:documentation>Tributação pelo ICMS 
+60 - ICMS cobrado anteriormente por substituição tributária</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:whiteSpace value="preserve"/>
+											<xs:enumeration value="60"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:choice>
+									<xs:sequence>
+										<xs:annotation>
+											<xs:documentation>Choice referente ao conjunto de tags do ICMS Retido #246 até #253.
+Deverá ser informado esse conjunto do ICMS Retido ou o conjunto do ICMS efetivo
+</xs:documentation>
+										</xs:annotation>
+										<xs:element name="vBCSTRet" type="TDec_1302">
+											<xs:annotation>
+												<xs:documentation>Valor da BC do ICMS ST retido anteriormente</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="pICMSSTRet" type="TDec_0302a04Opc">
+											<xs:annotation>
+												<xs:documentation>Aliquota suportada pelo consumidor final.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="vICMSSubstituto" type="TDec_1302" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Valor do ICMS Próprio do Substituto cobrado em operação anterior</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="vICMSSTRet" type="TDec_1302">
+											<xs:annotation>
+												<xs:documentation>Valor do ICMS ST retido anteriormente</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:sequence minOccurs="0">
+											<xs:element name="vBCFCPSTRet" type="TDec_1302">
+												<xs:annotation>
+													<xs:documentation>Valor da Base de cálculo do FCP retido anteriormente por ST.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="pFCPSTRet" type="TDec_0302a04Opc">
+												<xs:annotation>
+													<xs:documentation>Percentual de FCP retido anteriormente por substituição tributária.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="vFCPSTRet" type="TDec_1302">
+												<xs:annotation>
+													<xs:documentation>Valor do FCP retido por substituição tributária.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:sequence>
+									</xs:sequence>
+									<xs:sequence>
+										<xs:annotation>
+											<xs:documentation>Choice referente ao conjunto de tags do ICMS Efetivo
+Deverá ser informado esse conjunto do ICMS Efetivo ou o conjunto do ICMS retido
+</xs:documentation>
+										</xs:annotation>
+										<xs:element name="pRedBCEfet" type="TDec_0302a04Opc">
+											<xs:annotation>
+												<xs:documentation>Percentual de redução da base de cálculo efetiva.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="vBCEfet" type="TDec_1302">
+											<xs:annotation>
+												<xs:documentation>Valor da base de cálculo efetiva.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="pICMSEfet" type="TDec_0302a04Opc">
+											<xs:annotation>
+												<xs:documentation>Alíquota do ICMS efetiva.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="vICMSEfet" type="TDec_1302">
+											<xs:annotation>
+												<xs:documentation>Valor do ICMS efetivo.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:choice>
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Sequencia XML</xs:documentation>
+									</xs:annotation>
+									<xs:element name="vICMSDeson" type="TDec_1302">
+										<xs:annotation>
+											<xs:documentation>Valor do ICMS de desoneração</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="cBenef">
+										<xs:annotation>
+											<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
+											<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
+ item.
+</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="preserve"/>
+												<xs:maxLength value="10"/>
+												<xs:pattern value="[!-ÿ]{8}|[!-ÿ]{10}"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+								</xs:sequence>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ICMS90">
+						<xs:annotation>
+							<xs:documentation>ICMS Outros</xs:documentation>
+							<xs:documentation>Será usado no caso da subvenção ou para NF3e de ajuste quando for o caso.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CST">
+									<xs:annotation>
+										<xs:documentation>Classificação Tributária do Serviço</xs:documentation>
+										<xs:documentation> 90 - ICMS outros</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:whiteSpace value="preserve"/>
+											<xs:enumeration value="90"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Sequência XML</xs:documentation>
+									</xs:annotation>
+									<xs:element name="vBC" type="TDec_1302">
+										<xs:annotation>
+											<xs:documentation>Valor da BC do ICMS</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="pICMS" type="TDec_0302">
+										<xs:annotation>
+											<xs:documentation>Alíquota do ICMS</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vICMS" type="TDec_1302">
+										<xs:annotation>
+											<xs:documentation>Valor do ICMS</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Sequencia XML</xs:documentation>
+									</xs:annotation>
+									<xs:element name="vICMSDeson" type="TDec_1302">
+										<xs:annotation>
+											<xs:documentation>Valor do ICMS de desoneração</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="cBenef">
+										<xs:annotation>
+											<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
+											<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
+ item.
+</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="preserve"/>
+												<xs:maxLength value="10"/>
+												<xs:pattern value="[!-ÿ]{8}|[!-ÿ]{10}"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+								</xs:sequence>
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Sequencia XML</xs:documentation>
+									</xs:annotation>
+									<xs:element name="pFCP" type="TDec_0302a04Opc">
+										<xs:annotation>
+											<xs:documentation>Percentual de ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vFCP" type="TDec_1302">
+										<xs:annotation>
+											<xs:documentation>Valor do ICMS relativo ao Fundo de Combate à Pobreza (FCP).</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="gICMSPrevistoPagtoAntecip">
+						<xs:annotation>
+							<xs:documentation>Grupo utilizado exclusivamente na determinação da BC de IBS e CBS em cenários específicos de pagamento antecipado</xs:documentation>
+							<xs:documentation>informar nas hipóteses: 
+  - tpPagAnt = 1 - Pagamento Antecipado   
+  - tpOperGov = 4-Recebimento do pagamento com fornecimento posterior. </xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="vICMSPrevisto" type="TDec_1302">
+									<xs:annotation>
+										<xs:documentation>Valor do ICMS a incidir no momento do fornecimento futuro. 
+Observação: Em cenários onde não há valor de ICMS devido, informar 0. </xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+				<xs:element name="indSemCST">
+					<xs:annotation>
+						<xs:documentation>Sem Situação Tributária para o ICMS</xs:documentation>
+						<xs:documentation>Informar para itens que não tenham nenhuma relação com o ICMS.
+Quando informado o item NÃO PODE ter CFOP informado
+
+Se informado esse grupo o schema não permite informar nenhum dos grupos de ICMSXX</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:whiteSpace value="preserve"/>
+							<xs:enumeration value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="PIS" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Dados do PIS</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CST">
+							<xs:annotation>
+								<xs:documentation>classificação Tributária do PIS</xs:documentation>
+								<xs:documentation>01 – Tributável com alíquota básica
+02 – Tributável com alíquota diferenciada
+06 – Tributável com alíquota erro
+07 – Operação isenta de contribuição
+08 – Operação sem incidência da contribuição
+09 – Operação com suspensão da contribuição  
+49 – Outras operações de saída</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:whiteSpace value="preserve"/>
+									<xs:enumeration value="01"/>
+									<xs:enumeration value="02"/>
+									<xs:enumeration value="06"/>
+									<xs:enumeration value="07"/>
+									<xs:enumeration value="08"/>
+									<xs:enumeration value="09"/>
+									<xs:enumeration value="49"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="vBC" type="TDec_1302">
+							<xs:annotation>
+								<xs:documentation>Valor da BC do PIS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="pPIS" type="TDec_0302a04">
+							<xs:annotation>
+								<xs:documentation>Alíquota do PIS (em percentual)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vPIS" type="TDec_1302">
+							<xs:annotation>
+								<xs:documentation>Valor do PIS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PISEfet" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Dados do PIS Efetivo</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="vBCPISEfet" type="TDec_1302">
+							<xs:annotation>
+								<xs:documentation>Valor da BC do PIS efetivo</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="pPISEfet" type="TDec_0302a04">
+							<xs:annotation>
+								<xs:documentation>Alíquota efetiva do PIS (em percentual)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vPISEfet" type="TDec_1302">
+							<xs:annotation>
+								<xs:documentation>Valor efetivo do PIS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="COFINS" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Dados do COFINS</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CST">
+							<xs:annotation>
+								<xs:documentation>classificação Tributária do COFINS</xs:documentation>
+								<xs:documentation>01 – Tributável com alíquota básica
+02 – Tributável com alíquota diferenciada
+06 – Tributável com alíquota erro
+07 – Operação isenta de contribuição
+08 – Operação sem incidência da contribuição
+09 – Operação com suspensão da contribuição  
+49 – Outras operações de saída
+</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:whiteSpace value="preserve"/>
+									<xs:enumeration value="01"/>
+									<xs:enumeration value="02"/>
+									<xs:enumeration value="06"/>
+									<xs:enumeration value="07"/>
+									<xs:enumeration value="08"/>
+									<xs:enumeration value="09"/>
+									<xs:enumeration value="49"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="vBC" type="TDec_1302">
+							<xs:annotation>
+								<xs:documentation>Valor da BC do COFINS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="pCOFINS" type="TDec_0302a04">
+							<xs:annotation>
+								<xs:documentation>Alíquota do COFINS (em percentual)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCOFINS" type="TDec_1302">
+							<xs:annotation>
+								<xs:documentation>Valor do COFINS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="COFINSEfet" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Dados do COFINS Efetivo</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="vBCCOFINSEfet" type="TDec_1302">
+							<xs:annotation>
+								<xs:documentation>Valor da BC do COFINS efetivo</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="pCOFINSEfet" type="TDec_0302a04">
+							<xs:annotation>
+								<xs:documentation>Alíquota Efetiva do COFINS (em percentual)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCOFINSEfet" type="TDec_1302">
+							<xs:annotation>
+								<xs:documentation>Valor Efetivo do COFINS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="retTrib" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Grupo de informações de retenção de tributos federais</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="vRetPIS" type="TDec_1302_1308">
+							<xs:annotation>
+								<xs:documentation>Valor do PIS retido</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vRetCofins" type="TDec_1302_1308">
+							<xs:annotation>
+								<xs:documentation>Valor do COFNS retido</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vRetCSLL" type="TDec_1302_1308">
+							<xs:annotation>
+								<xs:documentation>Valor da CSLL retida</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vBCIRRF" type="TDec_1302_1308">
+							<xs:annotation>
+								<xs:documentation>Base de cálculo do IRRF</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vIRRF" type="TDec_1302_1308">
+							<xs:annotation>
+								<xs:documentation>Valor do IRRF retido</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="IBSCBS" type="TTribNF3e" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Grupo de informações do IBS e CBS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TEmpresaSoft">
 		<xs:annotation>
@@ -3561,7 +3622,7 @@ Observação: 28 caracteres são representados no schema como 20 bytes do tipo b
 	</xs:complexType>
 	<xs:simpleType name="TProcEmi">
 		<xs:annotation>
-			<xs:documentation>Tipo processo de emissão do NF-3e</xs:documentation>
+			<xs:documentation>Tipo processo de emissão do NF3e</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -3580,7 +3641,7 @@ Observação: 28 caracteres são representados no schema como 20 bytes do tipo b
 	</xs:simpleType>
 	<xs:simpleType name="TVerNF3e">
 		<xs:annotation>
-			<xs:documentation> Tipo Versão da NF-3e</xs:documentation>
+			<xs:documentation> Tipo Versão da NF3e</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -3609,7 +3670,7 @@ Observação: 28 caracteres são representados no schema como 20 bytes do tipo b
 	</xs:simpleType>
 	<xs:simpleType name="TFinNF3e">
 		<xs:annotation>
-			<xs:documentation>Finalidade da NF-3e</xs:documentation>
+			<xs:documentation>Finalidade da NF3e</xs:documentation>
 			<xs:documentation/>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
@@ -3658,7 +3719,7 @@ Observação: 28 caracteres são representados no schema como 20 bytes do tipo b
 	</xs:simpleType>
 	<xs:simpleType name="TtpEmis">
 		<xs:annotation>
-			<xs:documentation>Tipo de emissão da NF-3e</xs:documentation>
+			<xs:documentation>Tipo de emissão da NF3e</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:whiteSpace value="preserve"/>
@@ -3906,7 +3967,7 @@ Observação: 28 caracteres são representados no schema como 20 bytes do tipo b
 	</xs:simpleType>
 	<xs:simpleType name="TAjusteNF3eAnt_v2">
 		<xs:annotation>
-			<xs:documentation>Tipo do ajuste na NF-3e anterior</xs:documentation>
+			<xs:documentation>Tipo do ajuste na NF3e anterior</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
@@ -3919,7 +3980,7 @@ Observação: 28 caracteres são representados no schema como 20 bytes do tipo b
 	</xs:simpleType>
 	<xs:simpleType name="TAjusteNF3eAnt">
 		<xs:annotation>
-			<xs:documentation>Tipo do ajuste na NF-3e anterior</xs:documentation>
+			<xs:documentation>Tipo do ajuste na NF3e anterior</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
