@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-    <AssemblyVersion>2026.10.13.0909</AssemblyVersion>
-    <FileVersion>2026.10.13.0909</FileVersion>
+    <AssemblyVersion>2026.10.14.1524</AssemblyVersion>
+    <FileVersion>2026.10.14.1524</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1679,6 +1679,7 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ArapongasPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\SilvaniaGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SIGCORP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PotirendabaSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\BuritisRO.xml" />

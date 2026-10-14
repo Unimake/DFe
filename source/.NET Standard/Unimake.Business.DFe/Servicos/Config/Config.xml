@@ -2135,4 +2135,10 @@
 		<ArqConfig>PotirendabaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5220603">
+		<Nome>Silvânia - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>SilvaniaGO.xml</ArqConfig>
+		<PadraoNFSe>MEGASOFT</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
