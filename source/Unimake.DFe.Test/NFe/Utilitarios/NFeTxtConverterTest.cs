@@ -394,6 +394,68 @@ public class NFeTxtConverterTest
     }
 
     /// <summary>
+    /// O G curto sem G02/G02A não pode gerar um grupo entrega sem documento.
+    /// </summary>
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void ConverterDeveRejeitarEntregaSemCnpjCpf(bool grupoCompleto)
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+        try
+        {
+            var conteudo = File.ReadAllText(CaminhoArquivo("000000011-devolucao-rtc-nfe.txt"))
+                .Replace("G02|99999999000191", string.Empty);
+            if (grupoCompleto)
+            {
+                conteudo = conteudo.Replace(
+                    "G|RUA ENTREGA|300||CENTRO|3300951|COMENDADOR LEVY GASPARIAN|RJ",
+                    "G||CLIENTE TESTE|RUA ENTREGA|300||CENTRO|3300951|COMENDADOR LEVY GASPARIAN|RJ|||||||");
+            }
+            File.WriteAllText(arquivoTemporario, conteudo);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+
+            Assert.False(resultado.Sucesso);
+            Assert.Empty(resultado.Documentos);
+            Assert.Contains("Grupo G (entrega)", resultado.MensagemErro);
+            Assert.Contains("G02/G02A", resultado.MensagemErro);
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
+    }
+
+    /// <summary>
+    /// O G curto continua válido quando G02 ou G02A informa o documento da entrega.
+    /// </summary>
+    [Theory]
+    [InlineData("G02|99999999000191", "CNPJ", "99999999000191")]
+    [InlineData("G02A|12345678909", "CPF", "12345678909")]
+    public void ConverterDeveAceitarEntregaIdentificadaAposGCurto(string segmentoDocumento, string tag, string valor)
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+        try
+        {
+            var conteudo = File.ReadAllText(CaminhoArquivo("000000011-devolucao-rtc-nfe.txt"))
+                .Replace("G02|99999999000191", segmentoDocumento);
+            File.WriteAllText(arquivoTemporario, conteudo);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            Assert.Equal(valor, xml.SelectSingleNode($"//*[local-name()='entrega']/*[local-name()='{tag}']")?.InnerText);
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
+    }
+
+    /// <summary>
     /// Deve aceitar a correção do grupo I05c com CEST ou sem indicador de escala.
     /// </summary>
     [Theory]
