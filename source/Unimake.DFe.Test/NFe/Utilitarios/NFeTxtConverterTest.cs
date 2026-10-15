@@ -94,6 +94,7 @@ public class NFeTxtConverterTest
     [InlineData("000047246-importacao-quatro-itens-nfe.txt")]
     [InlineData("000024804-retorno-vasilhames-nfe.txt")]
     [InlineData("000024804-retorno-vasilhames-vc01-nfe.txt")]
+    [InlineData("000024800-credito-ciap-nfe.txt")]
     [InlineData("000107590-venda-nfce-rtc.txt")]
     public void ConverterDeveRetornarXmlEmMemoria(string nomeArquivo)
     {
@@ -115,6 +116,27 @@ public class NFeTxtConverterTest
         Assert.Equal(47, id.Length);
         Assert.Equal(documento.Chave, id.Substring(3));
         Assert.Equal(documento.Chave.Substring(43, 1), xml.DocumentElement.SelectSingleNode("*[local-name()='infNFe']/*[local-name()='ide']/*[local-name()='cDV']").InnerText);
+    }
+
+    /// <summary>
+    /// Preserva a NF-e de ajuste de credito do ativo recebida em TXT.
+    /// </summary>
+    [Fact]
+    public void ConverterDeveProcessarCreditoCiapDaNfe24800()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("000024800-credito-ciap-nfe.txt"));
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        Assert.Equal("3", xml.SelectSingleNode("//*[local-name()='ide']/*[local-name()='finNFe']")?.InnerText);
+        Assert.Equal("1604", xml.SelectSingleNode("//*[local-name()='prod']/*[local-name()='CFOP']")?.InnerText);
+        Assert.Equal("758.66", xml.SelectSingleNode("//*[local-name()='ICMS90']/*[local-name()='vICMS']")?.InnerText);
+        Assert.Equal("758.66", xml.SelectSingleNode("//*[local-name()='ICMSTot']/*[local-name()='vICMS']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
     }
 
     /// <summary>
@@ -2318,6 +2340,10 @@ public class NFeTxtConverterTest
     {
         var dadosIdentificaveis = new[]
         {
+            "LBA-LINHA BRANCA E AUTOMOTIVA LTDA",
+            "nfe@lba.ind.br",
+            "RODOVIA ARNALDO JULIO MAUERBERG",
+            "12791583000286",
             "AGILLE COMERCIO DE MEDICAMENTOS LTDA",
             "OON ONCOLOGIA, ORTOPEDIA E NEUROLOGIA VET LTDA",
             "cmanhaesvet@gmail.com",
