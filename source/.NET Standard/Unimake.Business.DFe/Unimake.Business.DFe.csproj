@@ -4003,9 +4003,9 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="System.Net.Http.Json" Version="10.0.12" />
-		<PackageReference Include="System.Net.Http.WinHttpHandler" Version="10.0.12" GeneratePathProperty="true" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.12" />
+		<PackageReference Include="System.Net.Http.Json" Version="10.0.13" />
+		<PackageReference Include="System.Net.Http.WinHttpHandler" Version="10.0.13" GeneratePathProperty="true" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.13" />
 		<PackageReference Include="Unimake.Cryptography" Version="20260918.1832.16" />
 		<PackageReference Include="Unimake.Extensions" Version="20260918.1832.16" />
 		<PackageReference Include="Unimake.Utils" Version="20260918.1832.16" />
