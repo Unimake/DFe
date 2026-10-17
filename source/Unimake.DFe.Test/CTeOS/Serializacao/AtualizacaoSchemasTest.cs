@@ -94,6 +94,21 @@ namespace Unimake.DFe.Test.CTeOS.Serializacao
             Assert.Contains("tpEmis", validador.ErrorMessage);
         }
 
+        [Fact]
+        [Trait("DFe", "CTeOS")]
+        public void EPECContinuaNaoPermitidoNoCTeOS()
+        {
+            var modelo = LerModelo();
+            Assert.Throws<Exception>(() => modelo.InfCTe.Ide.TpEmis = TipoEmissao.ContingenciaEPEC);
+
+            var xml = modelo.GerarXML();
+            xml.GetElementsByTagName("tpEmis", NamespaceCTe)[0].InnerText = "4";
+            var validador = new ValidarSchema();
+            validador.Validar(xml, "CTe.cteOS_v4.00.xsd", NamespaceCTe);
+            Assert.False(validador.Success);
+            Assert.Contains("tpEmis", validador.ErrorMessage);
+        }
+
         [Theory]
         [Trait("DFe", "CTeOS")]
         [InlineData("PR123456", true)]

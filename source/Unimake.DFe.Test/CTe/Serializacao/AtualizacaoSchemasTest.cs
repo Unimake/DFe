@@ -70,6 +70,7 @@ namespace Unimake.DFe.Test.CTe.Serializacao
         [Trait("DFe", "CTe")]
         [InlineData(TipoEmissao.ContingenciaOfflineCTe)]
         [InlineData(TipoEmissao.RegimeEspecialNFF)]
+        [InlineData(TipoEmissao.ContingenciaEPEC)]
         public void TipoEmissaoNovoDominioSerializaEDesserializa(TipoEmissao tipo)
         {
             var modelo = LerModelo();
@@ -82,7 +83,6 @@ namespace Unimake.DFe.Test.CTe.Serializacao
 
         [Theory]
         [Trait("DFe", "CTe")]
-        [InlineData(TipoEmissao.ContingenciaEPEC)]
         [InlineData(TipoEmissao.ContingenciaFSDA)]
         public void EmissaoLegadaPermaneceLegivelMasSchemaAtualRejeita(TipoEmissao tipo)
         {

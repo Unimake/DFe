@@ -55,7 +55,7 @@ namespace Unimake.DFe.Test.CTe.Validacao
                     Assert.Single(xml.GetElementsByTagName("infCTeSupl", NamespaceCTe));
                     Assert.Equal(qrCode, xml.GetElementsByTagName("qrCodCTe", NamespaceCTe)[0].InnerText);
                     Assert.Equal("Signature", xml.GetElementsByTagName("infCTeSupl", NamespaceCTe)[0].NextSibling.LocalName);
-                    if (emissao == TipoEmissao.ContingenciaOfflineCTe)
+                    if (emissao == TipoEmissao.ContingenciaOfflineCTe || emissao == TipoEmissao.ContingenciaEPEC)
                     {
                         ValidarSchema(xml);
                     }

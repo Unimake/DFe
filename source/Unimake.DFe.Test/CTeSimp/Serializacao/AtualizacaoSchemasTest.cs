@@ -98,16 +98,15 @@ namespace Unimake.DFe.Test.CTeSimp.Serializacao
 
         [Fact]
         [Trait("DFe", "CTeSimp")]
-        public void EPECLegadoPermaneceLegivelMasSchemaAtualRejeita()
+        public void EPECEmDesativacaoPermaneceAceitoPeloSchemaAtual()
         {
             var modelo = LerModelo();
             modelo.InfCTe.Ide.TpEmis = TipoEmissao.ContingenciaEPEC;
             var xml = modelo.GerarXML();
+            Assert.Equal("4", xml.GetElementsByTagName("tpEmis", NamespaceCTe)[0].InnerText);
             Assert.Equal(TipoEmissao.ContingenciaEPEC, XMLUtility.Deserializar<ModeloCTeSimp>(xml).InfCTe.Ide.TpEmis);
-            var validador = new ValidarSchema();
-            validador.Validar(xml, "CTe.cteSimp_v4.00.xsd", NamespaceCTe);
-            Assert.False(validador.Success);
-            Assert.Contains("tpEmis", validador.ErrorMessage);
+            Assert.Equal(xml.InnerText, XMLUtility.Deserializar<ModeloCTeSimp>(xml).GerarXML().InnerText);
+            Validar(xml);
         }
     }
 }
