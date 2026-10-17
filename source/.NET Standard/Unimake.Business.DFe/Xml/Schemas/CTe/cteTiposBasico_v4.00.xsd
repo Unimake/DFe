@@ -1443,6 +1443,7 @@ REENTREGA; DEVOLUÇÃO; REFATURAMENTO; etc</xs:documentation>
 1 - Normal;
 2 - Contingência Offline
 3 - Regime Especial NFF
+4 - EPEC - Em desativação
 7 - Autorização pela SVC-RS
 8 - Autorização pela SVC-SP</xs:documentation>
 										</xs:annotation>
@@ -1452,6 +1453,7 @@ REENTREGA; DEVOLUÇÃO; REFATURAMENTO; etc</xs:documentation>
 												<xs:enumeration value="1"/>
 												<xs:enumeration value="2"/>
 												<xs:enumeration value="3"/>
+												<xs:enumeration value="4"/>
 												<xs:enumeration value="7"/>
 												<xs:enumeration value="8"/>
 											</xs:restriction>
@@ -2872,9 +2874,11 @@ Onde v9.99 é a a designação genérica para a versão do arquivo. Por exemplo,
 											<xs:documentation>Preencher com:
 1 - Normal
 2 - Contingencia OffLine
+4 - EPEC - Em desativação
 3 - Regime Especial NFF
 7 - Autorização pela SVC-RS
-8 - Autorização pela SVC-SP</xs:documentation>
+8 - Autorização pela SVC-SP
+</xs:documentation>
 										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
@@ -2882,6 +2886,7 @@ Onde v9.99 é a a designação genérica para a versão do arquivo. Por exemplo,
 												<xs:enumeration value="1"/>
 												<xs:enumeration value="2"/>
 												<xs:enumeration value="3"/>
+												<xs:enumeration value="4"/>
 												<xs:enumeration value="7"/>
 												<xs:enumeration value="8"/>
 											</xs:restriction>

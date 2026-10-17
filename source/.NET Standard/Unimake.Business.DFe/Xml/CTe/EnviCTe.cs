@@ -513,7 +513,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                 if (value == TipoEmissao.ContingenciaOffLine ||
                    value == TipoEmissao.ContingenciaSVCAN)
                 {
-                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos no leiaute atual: 1, 2, 3, 7 ou 8. Os valores 4 e 5 são mantidos para leiautes anteriores.");
+                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos no leiaute atual: 1, 2, 3, 4, 7 ou 8. O valor 4 (EPEC) está em desativação. O valor 5 é mantido para leiautes anteriores.");
                 }
 
                 TpEmisField = value;
