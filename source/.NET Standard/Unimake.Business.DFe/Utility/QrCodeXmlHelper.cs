@@ -608,6 +608,13 @@ namespace Unimake.Business.DFe.Utility
                 parametrosQrCode += "|" + Converter.ToRSASHA1(configuracoes.CertificadoDigital, parametrosQrCode);
             }
 
+            var conteudoQrCode = urlQrCode + "?p=" + parametrosQrCode;
+
+            if (conteudoQrCode.Length < 100 || conteudoQrCode.Length > 600)
+            {
+                throw new Exception("O conteúdo do QR Code da NFeABI deve possuir entre 100 e 600 caracteres, conforme definido pelo schema.");
+            }
+
             var nodeNFeABI = conteudoXml.GetElementsByTagName("NFeABI")[0];
             var nodeInfNFeABI = (XmlNode)elementInfNFeABI;
 
@@ -616,7 +623,7 @@ namespace Unimake.Business.DFe.Utility
                 nodeNFeABI,
                 nodeInfNFeABI,
                 "infNFeSupl",
-                new KeyValuePair<string, string>("qrCode", urlQrCode + "?p=" + parametrosQrCode),
+                new KeyValuePair<string, string>("qrCode", conteudoQrCode),
                 new KeyValuePair<string, string>("urlChave", urlChave));
         }
 

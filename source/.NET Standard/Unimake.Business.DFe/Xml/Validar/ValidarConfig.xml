@@ -3009,10 +3009,10 @@
 					<UF>SP</UF>
 					<UF>TO</UF>
 					<Urls>
-						<UrlChaveHomologacao>https://www.fazenda.pr.gov.br/nfeabi/qrcode</UrlChaveHomologacao>
-						<UrlChaveProducao>https://www.fazenda.pr.gov.br/nfeabi/qrcode</UrlChaveProducao>
-						<UrlQrCodeHomologacao>https://www.fazenda.pr.gov.br/nfeabi/qrcode</UrlQrCodeHomologacao>
-						<UrlQrCodeProducao>https://www.fazenda.pr.gov.br/nfeabi/qrcode</UrlQrCodeProducao>
+						<UrlChaveHomologacao>https://www.fazenda.pr.gov.br/nfeabi/qrcode/consulta</UrlChaveHomologacao>
+						<UrlChaveProducao></UrlChaveProducao>
+						<UrlQrCodeHomologacao>https://www.fazenda.pr.gov.br/nfeabi/qrcode/consulta</UrlQrCodeHomologacao>
+						<UrlQrCodeProducao></UrlQrCodeProducao>
 					</Urls>
 				</Grupo>
 			</GrupoUrl>
