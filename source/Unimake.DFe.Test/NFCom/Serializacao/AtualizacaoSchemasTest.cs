@@ -91,8 +91,13 @@ namespace Unimake.DFe.Test.NFCom.Serializacao
         {
             var modelo = LerModelo();
             decimal? numero = valor == null ? (decimal?)null : decimal.Parse(valor, CultureInfo.InvariantCulture);
-            modelo.InfNFCom.Det[0].Prod.VItemLiq = numero;
-            modelo.InfNFCom.Det[0].Prod.VProdLiq = numero;
+#if INTEROP
+            var numeroEsperado = numero ?? -1;
+#else
+            var numeroEsperado = numero;
+#endif
+            modelo.InfNFCom.Det[0].Prod.VItemLiq = numeroEsperado;
+            modelo.InfNFCom.Det[0].Prod.VProdLiq = numeroEsperado;
             var xml = modelo.GerarXML();
             var item = Selecionar(xml, "/n:NFCom/n:infNFCom/n:det/n:prod/n:vItemLiq");
             var produto = Selecionar(xml, "/n:NFCom/n:infNFCom/n:det/n:prod/n:vProdLiq");
@@ -107,8 +112,8 @@ namespace Unimake.DFe.Test.NFCom.Serializacao
                 Assert.Equal("dExpiracao", produto.NextSibling.LocalName);
             }
             var lido = XMLUtility.Deserializar<ModeloNFCom>(xml);
-            Assert.Equal(numero, lido.InfNFCom.Det[0].Prod.VItemLiq);
-            Assert.Equal(numero, lido.InfNFCom.Det[0].Prod.VProdLiq);
+            Assert.Equal(numeroEsperado, lido.InfNFCom.Det[0].Prod.VItemLiq);
+            Assert.Equal(numeroEsperado, lido.InfNFCom.Det[0].Prod.VProdLiq);
             Validar(xml);
         }
 
@@ -120,7 +125,12 @@ namespace Unimake.DFe.Test.NFCom.Serializacao
         public void TotalLiquidoPreservaAusenciaZeroEOrdem(double? valor)
         {
             var modelo = LerModelo();
-            modelo.InfNFCom.Total.VProdLiq = valor;
+#if INTEROP
+            var valorEsperado = valor ?? -1;
+#else
+            var valorEsperado = valor;
+#endif
+            modelo.InfNFCom.Total.VProdLiq = valorEsperado;
             var xml = modelo.GerarXML();
             var campo = Selecionar(xml, "/n:NFCom/n:infNFCom/n:total/n:vProdLiq");
             Assert.Equal(valor.HasValue, campo != null);
@@ -130,7 +140,7 @@ namespace Unimake.DFe.Test.NFCom.Serializacao
                 Assert.Equal("vProd", campo.PreviousSibling.LocalName);
                 Assert.Equal("ICMSTot", campo.NextSibling.LocalName);
             }
-            Assert.Equal(valor, XMLUtility.Deserializar<ModeloNFCom>(xml).InfNFCom.Total.VProdLiq);
+            Assert.Equal(valorEsperado, XMLUtility.Deserializar<ModeloNFCom>(xml).InfNFCom.Total.VProdLiq);
             Validar(xml);
         }
 
@@ -236,8 +246,13 @@ namespace Unimake.DFe.Test.NFCom.Serializacao
         public void SchemaRejeitaSequenciaLiquidaIncompleta(bool informarUnitario)
         {
             var modelo = LerModelo();
+#if INTEROP
+            modelo.InfNFCom.Det[0].Prod.VItemLiq = informarUnitario ? 0 : -1;
+            modelo.InfNFCom.Det[0].Prod.VProdLiq = informarUnitario ? -1 : 0;
+#else
             modelo.InfNFCom.Det[0].Prod.VItemLiq = informarUnitario ? (decimal?)0 : null;
             modelo.InfNFCom.Det[0].Prod.VProdLiq = informarUnitario ? null : (decimal?)0;
+#endif
             var validador = new ValidarSchema();
             validador.Validar(modelo.GerarXML(), "NFCom.nfcom_v1.00.xsd", NamespaceNFCom);
             Assert.False(validador.Success);
@@ -273,7 +288,11 @@ namespace Unimake.DFe.Test.NFCom.Serializacao
                         TpAmb = TipoAmbiente.Homologacao,
                         VerAplic = "TESTE",
                         ChNFCom = nfcom.InfNFCom.Chave,
+#if INTEROP
+                        DhRecbto = new DateTime(2026, 10, 10, 10, 0, 1),
+#else
                         DhRecbto = new DateTimeOffset(2026, 10, 10, 10, 0, 1, TimeSpan.FromHours(-3)),
+#endif
                         NProt = "1412600000000001",
                         DigVal = "AA==",
                         CStat = 100,

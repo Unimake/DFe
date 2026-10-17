@@ -62,19 +62,24 @@ namespace Unimake.DFe.Test.CTeSimp.Serializacao
         public void ValoresLiquidosETotaisOpcionais(double? valor)
         {
             var modelo = LerModelo();
+#if INTEROP
+            var valorEsperado = valor ?? -1;
+#else
+            var valorEsperado = valor;
+#endif
             foreach (var det in modelo.InfCTe.Det)
             {
-                det.VPrestLiq = valor;
+                det.VPrestLiq = valorEsperado;
             }
-            modelo.InfCTe.Total.VTPrestLiq = valor;
+            modelo.InfCTe.Total.VTPrestLiq = valorEsperado;
             modelo.InfCTe.Total.IBSCBSTot = null;
             var xml = modelo.GerarXML();
             Assert.Equal(valor.HasValue ? 3 : 0, xml.GetElementsByTagName("vPrestLiq").Count);
             Assert.Equal(valor.HasValue ? 1 : 0, xml.GetElementsByTagName("vTPrestLiq").Count);
             Assert.Equal(0, xml.GetElementsByTagName("IBSCBSTot").Count);
             var lido = XMLUtility.Deserializar<ModeloCTeSimp>(xml);
-            Assert.Equal(valor, lido.InfCTe.Det[0].VPrestLiq);
-            Assert.Equal(valor, lido.InfCTe.Total.VTPrestLiq);
+            Assert.Equal(valorEsperado, lido.InfCTe.Det[0].VPrestLiq);
+            Assert.Equal(valorEsperado, lido.InfCTe.Total.VTPrestLiq);
             Validar(xml);
         }
 

@@ -29,7 +29,12 @@ namespace Unimake.DFe.Test.CTeOS.Serializacao
         public void ValorLiquidoPreservaAusenciaZeroEOrdem(double? valor)
         {
             var modelo = LerModelo();
-            modelo.InfCTe.VPrest.VTPrestLiq = valor;
+#if INTEROP
+            var valorEsperado = valor ?? -1;
+#else
+            var valorEsperado = valor;
+#endif
+            modelo.InfCTe.VPrest.VTPrestLiq = valorEsperado;
             var xml = modelo.GerarXML();
             var campos = xml.GetElementsByTagName("vTPrestLiq", NamespaceCTe);
             Assert.Equal(valor.HasValue ? 1 : 0, campos.Count);
@@ -40,7 +45,7 @@ namespace Unimake.DFe.Test.CTeOS.Serializacao
                 Assert.Equal(valor.Value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture), campos[0].InnerText);
             }
 
-            Assert.Equal(valor, XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTeOS.CTeOS>(xml).InfCTe.VPrest.VTPrestLiq);
+            Assert.Equal(valorEsperado, XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTeOS.CTeOS>(xml).InfCTe.VPrest.VTPrestLiq);
             Validar(xml);
         }
 

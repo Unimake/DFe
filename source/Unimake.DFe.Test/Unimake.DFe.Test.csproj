@@ -4,6 +4,11 @@
 		<TargetFramework>net8.0</TargetFramework>
 
 		<IsPackable>false</IsPackable>
+		<Configurations>Debug;Release;INTEROP_Release</Configurations>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='INTEROP_Release'">
+		<DefineConstants>$(DefineConstants);INTEROP</DefineConstants>
 	</PropertyGroup>
 
 	<ItemGroup Label="Exclusoes gerais">
