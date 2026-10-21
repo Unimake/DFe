@@ -513,6 +513,32 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
     [Serializable]
     public class ValoresInfNFSe
     {
+        /// <summary>Valor calculado de ajuste da base de cálculo do ISSQN.</summary>
+        [XmlIgnore]
+        public double VCalcAjusteBCISSQN
+        {
+            get => vCalcAjusteBCISSQN;
+            set
+            {
+                vCalcAjusteBCISSQN = value;
+                vCalcAjusteBCISSQNInformado = true;
+            }
+        }
+
+        private double vCalcAjusteBCISSQN;
+        private bool vCalcAjusteBCISSQNInformado;
+
+        /// <summary>Representação XML do ajuste da base de cálculo do ISSQN.</summary>
+        [XmlElement("vCalcAjusteBCISSQN")]
+        public string VCalcAjusteBCISSQNField
+        {
+            get => VCalcAjusteBCISSQN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCalcAjusteBCISSQN = Converter.ToDouble(value);
+        }
+
+        /// <summary>Omite o ajuste não informado.</summary>
+        public bool ShouldSerializeVCalcAjusteBCISSQNField() => vCalcAjusteBCISSQNInformado;
+
         [XmlIgnore]
         public double VCalcDR { get; set; }
 
@@ -612,6 +638,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
 
         #region Should Serialize
         public bool ShouldSerializeTpBM() => (int)TpBM > 0;
+        /// <summary>Omite o valor legado não informado.</summary>
+        public bool ShouldSerializeVCalcDRField() => VCalcDR > 0;
         public bool ShouldSerializeVCalcBMField() => VCalcBM > 0;
         public bool ShouldSerializePAliqAplicField() => PAliqAplic > 0;
         #endregion
@@ -626,6 +654,9 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
     [Serializable]
     public class IBSCBSNFSe
     {
+        /// <summary>Omite o código opcional da localidade quando não informado.</summary>
+        public bool ShouldSerializeCLocalidadeIncid() => CLocalidadeIncid > 0;
+
         /// <summary>
         /// Código da localidade de incidência.
         /// </summary>
@@ -676,8 +707,19 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
     [Serializable]
     public class ValoresIBSCBS
     {
+        private double vBC;
+        private bool vBCInformado;
+
         [XmlIgnore]
-        public double VBC { get; set; }
+        public double VBC
+        {
+            get => vBC;
+            set
+            {
+                vBC = value;
+                vBCInformado = true;
+            }
+        }
 
         /// <summary>
         /// Base de cálculo.
@@ -688,6 +730,58 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
             set => VBC = Converter.ToDouble(value);
         }
+
+        /// <summary>Valor calculado de ajuste da base de cálculo (VCalcAjusteBCLocImoveis).</summary>
+        [XmlIgnore]
+        public double VCalcAjusteBCLocImoveis
+        {
+            get => vCalcAjusteBCLocImoveis;
+            set
+            {
+                vCalcAjusteBCLocImoveis = value;
+                vCalcAjusteBCLocImoveisInformado = true;
+            }
+        }
+
+        private double vCalcAjusteBCLocImoveis;
+        private bool vCalcAjusteBCLocImoveisInformado;
+
+        /// <summary>Representação XML do valor calculado.</summary>
+        [XmlElement("vCalcAjusteBCLocImoveis")]
+        public string VCalcAjusteBCLocImoveisField
+        {
+            get => VCalcAjusteBCLocImoveis.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCalcAjusteBCLocImoveis = Converter.ToDouble(value);
+        }
+
+        /// <summary>Omite o valor não informado.</summary>
+        public bool ShouldSerializeVCalcAjusteBCLocImoveisField() => vCalcAjusteBCLocImoveisInformado;
+
+        /// <summary>Valor calculado de ajuste da base de cálculo (VCalcAjusteBCIBSCBS).</summary>
+        [XmlIgnore]
+        public double VCalcAjusteBCIBSCBS
+        {
+            get => vCalcAjusteBCIBSCBS;
+            set
+            {
+                vCalcAjusteBCIBSCBS = value;
+                vCalcAjusteBCIBSCBSInformado = true;
+            }
+        }
+
+        private double vCalcAjusteBCIBSCBS;
+        private bool vCalcAjusteBCIBSCBSInformado;
+
+        /// <summary>Representação XML do valor calculado.</summary>
+        [XmlElement("vCalcAjusteBCIBSCBS")]
+        public string VCalcAjusteBCIBSCBSField
+        {
+            get => VCalcAjusteBCIBSCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCalcAjusteBCIBSCBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>Omite o valor não informado.</summary>
+        public bool ShouldSerializeVCalcAjusteBCIBSCBSField() => vCalcAjusteBCIBSCBSInformado;
 
         [XmlIgnore]
         public double VCalcReeRepRes { get; set; }
@@ -722,6 +816,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
 
         #region Should Serialize
         public bool ShouldSerializeVCalcReeRepResField() => VCalcReeRepRes > 0;
+        /// <summary>Omite a base opcional ausente, preservando zero informado.</summary>
+        public bool ShouldSerializeVBCField() => vBCInformado;
         #endregion
     }
 

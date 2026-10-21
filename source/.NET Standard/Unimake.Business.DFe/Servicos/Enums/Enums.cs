@@ -18399,6 +18399,86 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion Tipo de reembolso, repasse ou ressarcimento NFS-e NACIONAL
 
+    /// <summary>Tipo de ajuste da base de cálculo da NFS-e Nacional (TSRTCTpAjusteBC).</summary>
+    public enum TipoAjusteBCNFSe
+    {
+        /// <summary>2 - Materiais.</summary>
+        [XmlEnum("2")]
+        Materiais = 2,
+
+        /// <summary>5 - Repasse consorciado.</summary>
+        [XmlEnum("5")]
+        RepasseConsorciado = 5,
+
+        /// <summary>6 - Repasse de plano de saúde.</summary>
+        [XmlEnum("6")]
+        RepassePlanoSaude = 6,
+
+        /// <summary>7 - Serviços.</summary>
+        [XmlEnum("7")]
+        Servicos = 7,
+
+        /// <summary>8 - Subempreitada de mão de obra.</summary>
+        [XmlEnum("8")]
+        SubempreitadaMaoObra = 8,
+
+        /// <summary>9 - Profissional parceiro.</summary>
+        [XmlEnum("9")]
+        ProfissionalParceiro = 9,
+
+        /// <summary>99 - Outras deduções exclusivas do ISSQN.</summary>
+        [XmlEnum("99")]
+        OutrasDeducoesISSQN = 99,
+
+        /// <summary>101 - Repasse por intermediação de imóveis.</summary>
+        [XmlEnum("101")]
+        RepasseIntermediacaoImoveis = 101,
+
+        /// <summary>102 - Repasse a fornecedor por agência de turismo.</summary>
+        [XmlEnum("102")]
+        RepasseAgenciaTurismo = 102,
+
+        /// <summary>103 - Reembolso de produção externa por agência de publicidade.</summary>
+        [XmlEnum("103")]
+        ReembolsoProducaoExterna = 103,
+
+        /// <summary>104 - Reembolso de mídia por agência de publicidade.</summary>
+        [XmlEnum("104")]
+        ReembolsoMidia = 104,
+
+        /// <summary>105 - Glosa de serviços de saúde.</summary>
+        [XmlEnum("105")]
+        GlosaServicosSaude = 105,
+
+        /// <summary>199 - Outros reembolsos ou ressarcimentos por conta e ordem de terceiro.</summary>
+        [XmlEnum("199")]
+        OutrosReembolsos = 199,
+    }
+
+    /// <summary>Tipo de parcela excluída da base de cálculo da locação (TSAjusteBCLocImoveis).</summary>
+    public enum TipoAjusteBCLocImoveisNFSe
+    {
+        /// <summary>01 - Tributos inclusos no aluguel.</summary>
+        [XmlEnum("01")]
+        Tributos = 1,
+
+        /// <summary>02 - Emolumento incluso no aluguel.</summary>
+        [XmlEnum("02")]
+        Emolumento = 2,
+
+        /// <summary>03 - Condomínio incluso no aluguel.</summary>
+        [XmlEnum("03")]
+        Condominio = 3,
+
+        /// <summary>04 - Redutor social.</summary>
+        [XmlEnum("04")]
+        RedutorSocial = 4,
+
+        /// <summary>99 - Outras parcelas inclusas no aluguel.</summary>
+        [XmlEnum("99")]
+        OutrasParcelas = 99,
+    }
+
     #region Finalidade da emissão NFS-e RTC
     /// <summary>
     /// Indicador da finalidade da emissão de NFS-e RTC

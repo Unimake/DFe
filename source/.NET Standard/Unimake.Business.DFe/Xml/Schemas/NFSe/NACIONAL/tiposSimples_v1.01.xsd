@@ -158,8 +158,8 @@
   <xs:simpleType name="TSSerieDPS">
     <xs:restriction base="xs:string">
       <xs:maxLength value="5"/>
-        <xs:pattern value="[0-9]{1,4}|[0-8][0-9]{4}"/>
-        <xs:whiteSpace value="preserve"/>
+      <xs:pattern value="[0-9]{1,4}|[0-8][0-9]{4}"/>
+      <xs:whiteSpace value="preserve"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="TSEmitenteDPS">
@@ -915,34 +915,40 @@
       <xs:pattern value="[a-zA-Z0-9]{1,15}"/>
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="TSIdeDedRed">
+  <xs:simpleType name="TSRTCTpAjusteBC">
     <xs:annotation>
       <xs:documentation>
-  Identificação da Dedução/Redução:
-        1 – Alimentação e bebidas/frigobar;
+        Tipo de Ajuste:
         2 – Materiais;
-        3 - Produção Externa;
-        4 - Reembolso de despesas;
         5 – Repasse consorciado;
         6 – Repasse plano de saúde;
         7 – Serviços;
         8 – Subempreitada de mão de obra;
         9 - Profissional parceiro;
-        99 – Outras deduções;
+        99 – Outras deduções exclusivas do ISSQN;
+        101 – Repasse de remuneração por intermediação de imóveis a demais corretores envolvidos na operação;
+        102 – Repasse de valores a fornecedor relativo a fornecimento intermediado por agência de turismo;
+        103 – Reembolso ou ressarcimento recebido por agência de propaganda e publicidade por valores pagos relativos a serviços de produção externa por conta e ordem de terceiro;
+        104 – Reembolso ou ressarcimento recebido por agência de propaganda e publicidade por valores pagos relativos a serviços de mídia por conta e ordem de terceiro;
+        105 – Glosa de Serviços de Saúde;
+        199 – Outros reembolsos ou ressarcimentos recebidos por valores pagos relativos a operações por conta e ordem de terceiro;
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:whiteSpace value="preserve"/>
-      <xs:enumeration value="1"/>
       <xs:enumeration value="2"/>
-      <xs:enumeration value="3"/>
-      <xs:enumeration value="4"/>
       <xs:enumeration value="5"/>
       <xs:enumeration value="6"/>
       <xs:enumeration value="7"/>
       <xs:enumeration value="8"/>
       <xs:enumeration value="9"/>
       <xs:enumeration value="99"/>
+      <xs:enumeration value="101"/>
+      <xs:enumeration value="102"/>
+      <xs:enumeration value="103"/>
+      <xs:enumeration value="104"/>
+      <xs:enumeration value="105"/>
+      <xs:enumeration value="199"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="TSDescOutDedRed">
@@ -960,146 +966,146 @@
       <xs:documentation>
         Identificador do benefício parametrizado pelo município.
 
-        Trata-se de um identificador único que foi gerado pelo Sistema Nacional no momento em que o município de incidência do ISSQN incluiu o benefício no sistema.
-        
-        Critério de formação do número de identificação de parâmetros municipais:   
-        7 dígitos - posição 1 a 7: número identificador do Município, conforme código IBGE;
-        2 dígitos - posições 8 e 9 : número identificador do tipo de parametrização (01-legislação, 02-regimes especiais, 03-retenções, 04-outros benefícios);
-        5 dígitos - posição 10 a 14 : número sequencial definido pelo sistema quando do registro específico do parâmetro dentro do tipo de parametrização no sistema;
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:pattern value="[0-9]{14}"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="TSOpExigSuspensa">
-    <xs:annotation>
-      <xs:documentation>
-        Opção para Exigibilidade Suspensa:
-        1 - Exigibilidade Suspensa por Decisão Judicial;
-        2 - Exigibilidade Suspensa por Processo Administrativo;
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:whiteSpace value="preserve"/>
-      <xs:enumeration value="1"/>
-      <xs:enumeration value="2"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="TSNumProcExigSuspensa">
-    <xs:annotation>
-      <xs:documentation>Número do processo judicial ou administrativo de suspensão da exigibilidade</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:pattern value="[0-9]{30}"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="TSOpSimpNac">
-    <xs:annotation>
-      <xs:documentation>
-        Situação perante o Simples Nacional:
-        1 - Não Optante;
-        2 - Optante - Microempreendedor Individual (MEI);
-        3 - Optante - Microempresa ou Empresa de Pequeno Porte (ME/EPP);
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:whiteSpace value="preserve"/>
-      <xs:enumeration value="1"/>
-      <xs:enumeration value="2"/>
-      <xs:enumeration value="3"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="TSRegimeApuracaoSimpNac">
-    <xs:annotation>
-      <xs:documentation>
-        Opção para que o contribuinte optante pelo Simples Nacional ME/EPP (opSimpNac = 3) possa indicar, ao emitir o documento fiscal, em qual regime de apuração os tributos federais e municipal estão inseridos, caso tenha ultrapassado algum sublimite ou limite definido para o Simples Nacional.
-        1 – Regime de apuração dos tributos federais e municipal pelo SN;
-        2 – Regime de apuração dos tributos federais pelo SN e ISSQN  por fora do SN conforme respectiva legislação municipal do tributo;
-        3 – Regime de apuração dos tributos federais e municipal por fora do SN conforme respectivas legislações federal e municipal de cada tributo;
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:whiteSpace value="preserve"/>
-      <xs:enumeration value="1"/>
-      <xs:enumeration value="2"/>
-      <xs:enumeration value="3"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="TSOpSNLimUltrap">
-    <xs:annotation>
-      <xs:documentation>
-        Opção que indica se o limite do Simples Nacional foi ultrapassado:
-        0 - Não ultrapassado;
-        1 - Ultrapassado;
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:whiteSpace value="preserve"/>
-      <xs:enumeration value="0"/>
-      <xs:enumeration value="1"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="TSRegEspTrib">
-    <xs:annotation>
-      <xs:documentation>
-        Tipos de Regimes Especiais de Tributação:
-        0 - Nenhum;
-        1 - Ato Cooperado (Cooperativa);
-        2 - Estimativa;
-        3 - Microempresa Municipal;
-        4 - Notário ou Registrador;
-        5 - Profissional Autônomo;
-        6 - Sociedade de Profissionais;
-        9 - Outros;
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:whiteSpace value="preserve"/>
-      <xs:enumeration value="0"/>
-      <xs:enumeration value="1"/>
-      <xs:enumeration value="2"/>
-      <xs:enumeration value="3"/>
-      <xs:enumeration value="4"/>
-      <xs:enumeration value="5"/>
-      <xs:enumeration value="6"/>
-      <xs:enumeration value="9"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="TSTribISSQN">
-    <xs:annotation>
-      <xs:documentation>
-        Tributação do ISSQN sobre o serviço prestado:
-        1 - Operação tributável;
-        2 - Imunidade;
-        3 - Exportação de serviço;
-        4 - Não Incidência;
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:whiteSpace value="preserve"/>
-      <xs:enumeration value="1"/>
-      <xs:enumeration value="2"/>
-      <xs:enumeration value="3"/>
-      <xs:enumeration value="4"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="TSNumProcesso">
-    <xs:annotation>
-      <xs:documentation>
-        Número do processo judicial ou administrativo de suspensão da exigibilidade.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="TSString">
-      <xs:whiteSpace value="preserve"/>
-      <xs:minLength value="1"/>
-      <xs:maxLength value="30"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="TSTipoImunidadeISSQN">
-    <xs:annotation>
-      <xs:documentation>
-            Identificação da Imunidade do ISSQN – somente para o caso de Imunidade.
+				Trata-se de um identificador único que foi gerado pelo Sistema Nacional no momento em que o município de incidência do ISSQN incluiu o benefício no sistema.
+
+				Critério de formação do número de identificação de parâmetros municipais:
+				7 dígitos - posição 1 a 7: número identificador do Município, conforme código IBGE;
+				2 dígitos - posições 8 e 9 : número identificador do tipo de parametrização (01-legislação, 02-regimes especiais, 03-retenções, 04-outros benefícios);
+				5 dígitos - posição 10 a 14 : número sequencial definido pelo sistema quando do registro específico do parâmetro dentro do tipo de parametrização no sistema;
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{14}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSOpExigSuspensa">
+		<xs:annotation>
+			<xs:documentation>
+				Opção para Exigibilidade Suspensa:
+				1 - Exigibilidade Suspensa por Decisão Judicial;
+				2 - Exigibilidade Suspensa por Processo Administrativo;
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSNumProcExigSuspensa">
+		<xs:annotation>
+			<xs:documentation>Número do processo judicial ou administrativo de suspensão da exigibilidade</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{30}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSOpSimpNac">
+		<xs:annotation>
+			<xs:documentation>
+				Situação perante o Simples Nacional:
+				1 - Não Optante;
+				2 - Optante - Microempreendedor Individual (MEI);
+				3 - Optante - Microempresa ou Empresa de Pequeno Porte (ME/EPP);
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSRegimeApuracaoSimpNac">
+		<xs:annotation>
+			<xs:documentation>
+				Opção para que o contribuinte optante pelo Simples Nacional ME/EPP (opSimpNac = 3) possa indicar, ao emitir o documento fiscal, em qual regime de apuração os tributos federais e municipal estão inseridos, caso tenha ultrapassado algum sublimite ou limite definido para o Simples Nacional.
+				1 – Regime de apuração dos tributos federais e municipal pelo SN;
+				2 – Regime de apuração dos tributos federais pelo SN e ISSQN  por fora do SN conforme respectiva legislação municipal do tributo;
+				3 – Regime de apuração dos tributos federais e municipal por fora do SN conforme respectivas legislações federal e municipal de cada tributo;
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSOpSNLimUltrap">
+		<xs:annotation>
+			<xs:documentation>
+				Opção que indica se o limite do Simples Nacional foi ultrapassado:
+				0 - Não ultrapassado;
+				1 - Ultrapassado;
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSRegEspTrib">
+		<xs:annotation>
+			<xs:documentation>
+				Tipos de Regimes Especiais de Tributação:
+				0 - Nenhum;
+				1 - Ato Cooperado (Cooperativa);
+				2 - Estimativa;
+				3 - Microempresa Municipal;
+				4 - Notário ou Registrador;
+				5 - Profissional Autônomo;
+				6 - Sociedade de Profissionais;
+				9 - Outros;
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSTribISSQN">
+		<xs:annotation>
+			<xs:documentation>
+				Tributação do ISSQN sobre o serviço prestado:
+				1 - Operação tributável;
+				2 - Imunidade;
+				3 - Exportação de serviço;
+				4 - Não Incidência;
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSNumProcesso">
+		<xs:annotation>
+			<xs:documentation>
+				Número do processo judicial ou administrativo de suspensão da exigibilidade.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="TSString">
+			<xs:whiteSpace value="preserve"/>
+			<xs:minLength value="1"/>
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSTipoImunidadeISSQN">
+		<xs:annotation>
+			<xs:documentation>
+				Identificação da Imunidade do ISSQN – somente para o caso de Imunidade.
 
             Tipos de Imunidades:
             
@@ -1763,29 +1769,6 @@
       <xs:enumeration value="1"/>
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="TSRTCTpReeRepRes">
-    <xs:annotation>
-      <xs:documentation>
-        Tipo de valor incluído neste documento, recebido por motivo de estarem relacionadas a operações de terceiros,
-        objeto de reembolso, repasse ou ressarcimento pelo recebedor, já tributados e aqui referenciados
-        01 - Repasse de remuneração por intermediação de imóveis a demais corretores envolvidos na operação;
-        02 - Repasse de valores a fornecedor relativo a fornecimento intermediado por agência de turismo;
-        03 - Reembolso ou ressarcimento recebido por agência de propaganda e publicidade por valores pagos relativos 
-             a serviços de produção externa por conta e ordem de terceiro;
-        04 - Reembolso ou ressarcimento recebido por agência de propaganda e publicidade por valores pagos relativos 
-             a serviços de mídia por conta e ordem de terceiro;
-        99 - Outros reembolsos ou ressarcimentos recebidos por valores pagos relativos a operações por conta e ordem de terceiro;
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:whiteSpace value="preserve"/>
-      <xs:enumeration value="01"/>
-      <xs:enumeration value="02"/>
-      <xs:enumeration value="03"/>
-      <xs:enumeration value="04"/>
-      <xs:enumeration value="99"/>
-    </xs:restriction>
-  </xs:simpleType>
   <xs:simpleType name="TSRTCTipoChaveDFe">
     <xs:annotation>
       <xs:documentation>
@@ -1849,4 +1832,34 @@
       <xs:pattern value="[0-9]{2}"/>
     </xs:restriction>
   </xs:simpleType>
+	<xs:simpleType name="TSAjusteBCLocImoveis">
+		<xs:annotation>
+			<xs:documentation>
+				Tipo de parcela não integrante da base de cálculo do IBS e da CBS
+				01 = Tributos inclusos no aluguel ou equivalente (Ex.: IPTU, Contribuição de melhoria) - apenas para NBS 1.1002.10.00 ou 1.1002.20.00
+				02 = Emolumento incluso no aluguel ou equivalente - apenas para NBS 1.1002.10.00 ou 1.1002.20.00
+				03 = Condomínio incluso no aluguel ou equivalente - apenas para NBS 1.1002.10.00 ou 1.1002.20.00
+				04 = Redutor Social - apenas para a NBS 1.1002.10.00
+				99 = Outras parcelas inclusas no aluguel ou equivalente
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSNCM">
+		<xs:annotation>
+			<xs:documentation>Código da Nomenclatura Comum do Mercosul (NCM) do bem móvel objeto da locação.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:maxLength value="8"/>
+			<xs:pattern value="[0-9]{8}"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>

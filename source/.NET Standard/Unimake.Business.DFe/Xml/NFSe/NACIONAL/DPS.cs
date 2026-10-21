@@ -240,6 +240,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public string CMotivoEmisTI { get; set; }
 
         /// <summary>
+        /// Finalidade da emissão da NFS-e, informada diretamente em infDPS no leiaute atualizado.
+        /// </summary>
+        [XmlElement("finNFSe")]
+        public FinalidadeNFSeRTC FinNFSe { get; set; }
+
+        /// <summary>
         /// Chave de acesso rejeitada pelo Tomador/Intermediário
         /// </summary>
         [XmlElement("chNFSeRej")]
@@ -662,14 +668,14 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("cTribMun")]
         public string CTribMun { get; set; }
 
-        [XmlElement("xDescServ")]
-        public string XDescServ { get; set; }
-
         [XmlElement("cNBS")]
         public string CNBS { get; set; }
 
         [XmlElement("cIntContrib")]
         public string CIntContrib { get; set; }
+
+        [XmlElement("xDescServ")]
+        public string XDescServ { get; set; }
 
 
         #region Should Serialize
@@ -1008,8 +1014,18 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("vDescCondIncond")]
         public VDescCondIncond vDescCondIncond { get; set; }
 
+        /// <summary>
+        /// Dedução/redução do leiaute histórico. Para o schema atualizado, preencha VAjusteBC.
+        /// Não há conversão automática entre os domínios de documentos antigos e novos.
+        /// </summary>
         [XmlElement("vDedRed")]
         public VDedRed VDedRed { get; set; }
+
+        /// <summary>
+        /// Ajustes da base de cálculo. Substitui vDedRed no leiaute atualizado.
+        /// </summary>
+        [XmlElement("vAjusteBC")]
+        public VAjusteBC VAjusteBC { get; set; }
 
         [XmlElement("trib")]
         public Trib Trib { get; set; }
@@ -1708,8 +1724,15 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class IBSCBS
     {
+        /// <summary>
+        /// Finalidade no leiaute anterior. Para emissão atual, use InfDPS.FinNFSe.
+        /// Mantida para leitura de XMLs históricos e compatibilidade da API.
+        /// </summary>
         [XmlElement("finNFSe")]
         public FinalidadeNFSeRTC FinNFSe { get; set; }
+
+        /// <summary>finNFSe passou a pertencer diretamente a infDPS.</summary>
+        public bool ShouldSerializeFinNFSe() => false;
 
         [XmlElement("indFinal")]
 #if INTEROP
@@ -1746,6 +1769,30 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
         [XmlElement("imovel")]
         public Imovel Imovel { get; set; }
+
+        /// <summary>
+        /// Bens móveis relacionados à operação (até 1000 ocorrências).
+        /// </summary>
+        [XmlElement("bensMoveis")]
+        public List<BensMoveis> BensMoveis { get; set; }
+
+#if INTEROP
+        /// <summary>Adiciona um bem móvel.</summary>
+        public void AddBensMoveis(BensMoveis item)
+        {
+            if (BensMoveis == null)
+            {
+                BensMoveis = new List<BensMoveis>();
+            }
+            BensMoveis.Add(item);
+        }
+
+        /// <summary>Obtém um bem móvel pelo índice.</summary>
+        public BensMoveis GetBensMoveis(int index) => BensMoveis == null || BensMoveis.Count == 0 ? default : BensMoveis[index];
+
+        /// <summary>Quantidade de bens móveis.</summary>
+        public int GetBensMoveisCount => BensMoveis?.Count ?? 0;
+#endif
 
         [XmlElement("valores")]
         public IBSCBSValores Valores { get; set; }
@@ -1824,6 +1871,36 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class Imovel
     {
+        /// <summary>Código IBGE do município do imóvel.</summary>
+        [XmlElement("cMun")]
+        public int CMun { get; set; }
+
+        /// <summary>Informações da locação.</summary>
+        [XmlElement("gLocacao")]
+        public GLocacao GLocacao { get; set; }
+
+        /// <summary>Unidades imobiliárias (até 99 ocorrências).</summary>
+        [XmlElement("gUnidImob")]
+        public List<GUnidImob> GUnidImob { get; set; }
+
+#if INTEROP
+        /// <summary>Adiciona uma unidade imobiliária.</summary>
+        public void AddGUnidImob(GUnidImob item)
+        {
+            if (GUnidImob == null)
+            {
+                GUnidImob = new List<GUnidImob>();
+            }
+            GUnidImob.Add(item);
+        }
+
+        /// <summary>Obtém uma unidade imobiliária pelo índice.</summary>
+        public GUnidImob GetGUnidImob(int index) => GUnidImob == null || GUnidImob.Count == 0 ? default : GUnidImob[index];
+
+        /// <summary>Quantidade de unidades imobiliárias.</summary>
+        public int GetGUnidImobCount => GUnidImob?.Count ?? 0;
+#endif
+
         [XmlElement("inscImobFisc")]
         public int InscImobFisc { get; set; }
 
@@ -1885,6 +1962,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class IBSCBSValores
     {
+        /// <summary>
+        /// Reembolso/repasse/ressarcimento do leiaute histórico.
+        /// No schema atualizado, informe os documentos em InfDPS.Valores.VAjusteBC.Documentos.
+        /// </summary>
         [XmlElement("gReeRepRes")]
         public GReeRepRes GReeRepRes { get; set; }
 
@@ -2186,8 +2267,31 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class IBSCBSValoresTrib
     {
+        private string cst;
+        private string cClassTrib;
+
+        /// <summary>Código de situação tributária do IBS/CBS.</summary>
+        [XmlElement("CST")]
+        public string CST
+        {
+            get => cst ?? GIBSCBS?.CST;
+            set => cst = value;
+        }
+
+        /// <summary>Código de classificação tributária do IBS/CBS.</summary>
+        [XmlElement("cClassTrib")]
+        public string CClassTrib
+        {
+            get => cClassTrib ?? GIBSCBS?.CClassTrib;
+            set => cClassTrib = value;
+        }
+
         [XmlElement("gIBSCBS")]
         public GIBSCBS GIBSCBS { get; set; }
+
+        /// <summary>Omite o grupo opcional quando contém somente os códigos migrados para trib.</summary>
+        public bool ShouldSerializeGIBSCBS() => GIBSCBS != null &&
+            (!string.IsNullOrWhiteSpace(GIBSCBS.CCredPres) || GIBSCBS.GTribRegular != null || GIBSCBS.GDif != null);
     }
 
 #if INTEROP
@@ -2213,6 +2317,12 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public GDif GDif { get; set; }
 
         #region Should Serialize
+        /// <summary>CST é serializado em IBSCBS/valores/trib no leiaute atualizado.</summary>
+        public bool ShouldSerializeCST() => false;
+
+        /// <summary>cClassTrib é serializado em IBSCBS/valores/trib no leiaute atualizado.</summary>
+        public bool ShouldSerializeCClassTrib() => false;
+
         public bool ShouldSerializeCCredPres() => !string.IsNullOrWhiteSpace(CCredPres);
 
         #endregion Should Serialize
