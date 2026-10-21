@@ -117,6 +117,7 @@
 		<None Remove="Servicos\Config\CTe\TO.xml" />
 		<None Remove="Servicos\Config\DARE\AN.xml" />
 		<None Remove="Servicos\Config\DARE\Config.xml" />
+		<None Remove="Servicos\Config\NFSe\AquirazCE.xml" />
 		<None Remove="Servicos\Config\NFSe\ArapongasPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SIGCORP.xml" />
 		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
@@ -1719,6 +1720,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSepeRS.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\AcarauCE.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AquirazCE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evApropriaCredPres_v4.00.xsd" />

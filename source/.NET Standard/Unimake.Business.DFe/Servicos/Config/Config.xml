@@ -2147,4 +2147,10 @@
 		<ArqConfig>AcarauCE.xml</ArqConfig>
 		<PadraoNFSe>INTERSOL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2301000">
+		<Nome>Aquiraz - CE</Nome>
+		<UF>CE</UF>
+		<ArqConfig>AquirazCE.xml</ArqConfig>
+		<PadraoNFSe>INTERSOL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
