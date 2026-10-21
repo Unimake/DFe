@@ -2141,4 +2141,10 @@
 		<ArqConfig>SilvaniaGO.xml</ArqConfig>
 		<PadraoNFSe>MEGASOFT</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2300200">
+		<Nome>Acaraú - CE</Nome>
+		<UF>CE</UF>
+		<ArqConfig>AcarauCE.xml</ArqConfig>
+		<PadraoNFSe>INTERSOL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

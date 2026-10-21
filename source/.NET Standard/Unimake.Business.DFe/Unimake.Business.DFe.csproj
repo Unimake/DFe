@@ -1718,6 +1718,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantoAndreSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoCaetanoDoSulSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoSepeRS.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\AcarauCE.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evApropriaCredPres_v4.00.xsd" />
