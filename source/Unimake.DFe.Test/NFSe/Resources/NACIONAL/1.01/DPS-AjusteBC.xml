@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DPS xmlns="http://www.sped.fazenda.gov.br/nfse" versao="1.01">
+  <infDPS Id="DPS410690221234567800019500001000000000000001">
+    <tpAmb>2</tpAmb>
+    <dhEmi>2026-10-21T10:00:00-03:00</dhEmi>
+    <verAplic>TESTE</verAplic>
+    <serie>1</serie>
+    <nDPS>1</nDPS>
+    <dCompet>2026-10-21</dCompet>
+    <tpEmit>1</tpEmit>
+    <finNFSe>0</finNFSe>
+    <cLocEmi>4106902</cLocEmi>
+    <prest>
+      <CNPJ>12345678000195</CNPJ>
+      <regTrib><opSimpNac>1</opSimpNac><regEspTrib>0</regEspTrib></regTrib>
+    </prest>
+    <toma><CNPJ>12345678000195</CNPJ></toma>
+    <serv>
+      <locPrest><cLocPrestacao>4106902</cLocPrestacao></locPrest>
+      <cServ><cTribNac>010101</cTribNac><cNBS>115022000</cNBS><cIntContrib>TESTE</cIntContrib><xDescServ>SERVICO TESTE</xDescServ></cServ>
+    </serv>
+    <valores>
+      <vServPrest><vServ>1000.00</vServ></vServPrest>
+      <vAjusteBC>
+        <pAjusteBCISSQN>10.00</pAjusteBCISSQN>
+        <documentos>
+          <docAjusteBC>
+            <tpAjusteBC>2</tpAjusteBC><vTotDoc>100.00</vTotDoc><vAjusteAplic>50.00</vAjusteAplic>
+            <docOutro><nDoc>1</nDoc><xDoc>DOCUMENTO TESTE</xDoc></docOutro>
+            <fornec><CNPJ>12345678000195</CNPJ></fornec>
+          </docAjusteBC>
+          <docAjusteBC>
+            <tpAjusteBC>105</tpAjusteBC><vTotDoc>100.00</vTotDoc><vAjusteAplic>50.00</vAjusteAplic>
+            <dtEmiDoc>2026-10-20</dtEmiDoc><dtCompDoc>2026-10-01</dtCompDoc>
+            <docFiscalOutro><cMunDocFiscal>4106902</cMunDocFiscal><nDocFiscal>2</nDocFiscal><xDocFiscal>DOCUMENTO FISCAL TESTE</xDocFiscal></docFiscalOutro>
+          </docAjusteBC>
+        </documentos>
+      </vAjusteBC>
+      <trib><tribMun><tribISSQN>1</tribISSQN><tpRetISSQN>1</tpRetISSQN></tribMun><totTrib><vTotTrib><vTotTribFed>0.00</vTotTribFed><vTotTribEst>0.00</vTotTribEst><vTotTribMun>0.00</vTotTribMun></vTotTrib></totTrib></trib>
+    </valores>
+    <IBSCBS>
+      <indDest>0</indDest>
+      <imovel>
+        <cMun>4106902</cMun>
+        <gLocacao><pCopropriedade>50.00</pCopropriedade><vTotOper>1000.00</vTotOper><vDescIncondTot>0.00</vDescIncondTot><dVencOrig>2026-11-01</dVencOrig></gLocacao>
+        <gUnidImob>
+          <inscImobFisc>000123</inscImobFisc><cCIB>12345678</cCIB>
+          <gAjusteBCLocImoveis><tpAjusteBCLocImoveis>01</tpAjusteBCLocImoveis><vAjusteBCLocImoveis>10.00</vAjusteBCLocImoveis></gAjusteBCLocImoveis>
+          <gAjusteBCLocImoveis><tpAjusteBCLocImoveis>04</tpAjusteBCLocImoveis><vAjusteBCLocImoveis>20.00</vAjusteBCLocImoveis></gAjusteBCLocImoveis>
+        </gUnidImob>
+        <gUnidImob><end><CEP>80000000</CEP><xLgr>RUA EXEMPLO</xLgr><nro>1</nro></end></gUnidImob>
+      </imovel>
+      <bensMoveis><cNCMBemMovel>01012100</cNCMBemMovel><xNCMBemMovel>BEM TESTE</xNCMBemMovel><qtdNCMBemMovel>1</qtdNCMBemMovel></bensMoveis>
+      <bensMoveis><cNCMBemMovel>01012900</cNCMBemMovel><xNCMBemMovel>OUTRO BEM TESTE</xNCMBemMovel><qtdNCMBemMovel>2</qtdNCMBemMovel></bensMoveis>
+      <valores><trib><CST>000</CST><cClassTrib>000001</cClassTrib></trib></valores>
+    </IBSCBS>
+  </infDPS>
+</DPS>

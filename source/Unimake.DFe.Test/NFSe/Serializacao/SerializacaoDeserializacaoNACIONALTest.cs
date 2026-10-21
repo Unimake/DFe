@@ -680,6 +680,20 @@ public class SerializacaoDesserializacaoNacionalTest
 
         var xmlGeradado = xml.GerarXML();
 
+        // O XML histórico usa vCalcDR e ainda não contém finNFSe em infDPS.
+        // Compara o conteúdo após aplicar as alterações do novo contrato.
+        var nsmgr = CreateNamespaceManager(xmlOriginal);
+        var vCalcDR = xmlOriginal.SelectSingleNode("/ns:NFSe/ns:infNFSe/ns:valores/ns:vCalcDR", nsmgr);
+        Assert.Equal("0.00", vCalcDR.InnerText);
+        vCalcDR.ParentNode.RemoveChild(vCalcDR);
+        var infDPS = xmlOriginal.SelectSingleNode("/ns:NFSe/ns:infNFSe/ns:DPS/ns:infDPS", nsmgr);
+        var finalidade = xmlOriginal.CreateElement("finNFSe", infDPS.NamespaceURI);
+        finalidade.InnerText = "0";
+        infDPS.InsertAfter(finalidade, infDPS.SelectSingleNode("ns:tpEmit", nsmgr));
+        Assert.Equal("0", xmlGeradado.SelectSingleNode("//ns:infDPS/ns:finNFSe", nsmgr).InnerText);
+        var cServ = infDPS.SelectSingleNode("ns:serv/ns:cServ", nsmgr);
+        cServ.AppendChild(cServ.SelectSingleNode("ns:xDescServ", nsmgr));
+
         Assert.True(xmlOriginal.InnerText == xmlGeradado.InnerText, "XML gerado pela DLL está diferente do XML criado manualmente.");
     }
 
