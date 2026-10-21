@@ -62,19 +62,24 @@ namespace Unimake.DFe.Test.CTeSimp.Serializacao
         public void ValoresLiquidosETotaisOpcionais(double? valor)
         {
             var modelo = LerModelo();
+#if INTEROP
+            var valorEsperado = valor ?? -1;
+#else
+            var valorEsperado = valor;
+#endif
             foreach (var det in modelo.InfCTe.Det)
             {
-                det.VPrestLiq = valor;
+                det.VPrestLiq = valorEsperado;
             }
-            modelo.InfCTe.Total.VTPrestLiq = valor;
+            modelo.InfCTe.Total.VTPrestLiq = valorEsperado;
             modelo.InfCTe.Total.IBSCBSTot = null;
             var xml = modelo.GerarXML();
             Assert.Equal(valor.HasValue ? 3 : 0, xml.GetElementsByTagName("vPrestLiq").Count);
             Assert.Equal(valor.HasValue ? 1 : 0, xml.GetElementsByTagName("vTPrestLiq").Count);
             Assert.Equal(0, xml.GetElementsByTagName("IBSCBSTot").Count);
             var lido = XMLUtility.Deserializar<ModeloCTeSimp>(xml);
-            Assert.Equal(valor, lido.InfCTe.Det[0].VPrestLiq);
-            Assert.Equal(valor, lido.InfCTe.Total.VTPrestLiq);
+            Assert.Equal(valorEsperado, lido.InfCTe.Det[0].VPrestLiq);
+            Assert.Equal(valorEsperado, lido.InfCTe.Total.VTPrestLiq);
             Validar(xml);
         }
 
@@ -93,16 +98,15 @@ namespace Unimake.DFe.Test.CTeSimp.Serializacao
 
         [Fact]
         [Trait("DFe", "CTeSimp")]
-        public void EPECLegadoPermaneceLegivelMasSchemaAtualRejeita()
+        public void EPECEmDesativacaoPermaneceAceitoPeloSchemaAtual()
         {
             var modelo = LerModelo();
             modelo.InfCTe.Ide.TpEmis = TipoEmissao.ContingenciaEPEC;
             var xml = modelo.GerarXML();
+            Assert.Equal("4", xml.GetElementsByTagName("tpEmis", NamespaceCTe)[0].InnerText);
             Assert.Equal(TipoEmissao.ContingenciaEPEC, XMLUtility.Deserializar<ModeloCTeSimp>(xml).InfCTe.Ide.TpEmis);
-            var validador = new ValidarSchema();
-            validador.Validar(xml, "CTe.cteSimp_v4.00.xsd", NamespaceCTe);
-            Assert.False(validador.Success);
-            Assert.Contains("tpEmis", validador.ErrorMessage);
+            Assert.Equal(xml.InnerText, XMLUtility.Deserializar<ModeloCTeSimp>(xml).GerarXML().InnerText);
+            Validar(xml);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
     /// </summary>
     public class QRCodeTest
     {
-        private const string UrlProvisoria = "https://www.fazenda.pr.gov.br/nfeabi/qrcode";
+        private const string UrlProvisoria = "https://www.fazenda.pr.gov.br/nfeabi/qrcode/consulta";
 
         /// <summary>
         /// Gera o grupo suplementar online conforme a versão 1 do QR Code.
@@ -34,6 +34,7 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
             var grupo = xml.GetElementsByTagName("infNFeSupl");
             Assert.Single(grupo);
             Assert.Equal(UrlProvisoria + "?p=" + chave + "|1|2", ((XmlElement)grupo[0]).GetElementsByTagName("qrCode")[0].InnerText);
+            Assert.InRange(((XmlElement)grupo[0]).GetElementsByTagName("qrCode")[0].InnerText.Length, 100, 600);
             Assert.Equal(UrlProvisoria, ((XmlElement)grupo[0]).GetElementsByTagName("urlChave")[0].InnerText);
             Assert.Equal("Signature", grupo[0].NextSibling.LocalName);
         }
@@ -84,9 +85,54 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
             var servico = new NFeABIAutorizacaoSinc(documento, new Configuracao());
 
             Assert.Equal(UrlProvisoria, servico.Configuracoes.UrlQrCodeHomologacao);
-            Assert.Equal(UrlProvisoria, servico.Configuracoes.UrlQrCodeProducao);
+            Assert.True(string.IsNullOrEmpty(servico.Configuracoes.UrlQrCodeProducao));
             Assert.Equal(UrlProvisoria, servico.Configuracoes.UrlChaveHomologacao);
-            Assert.Equal(UrlProvisoria, servico.Configuracoes.UrlChaveProducao);
+            Assert.True(string.IsNullOrEmpty(servico.Configuracoes.UrlChaveProducao));
+        }
+
+        /// <summary>
+        /// Rejeita antecipadamente uma URL que produza QR Code menor que o permitido pelo schema.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFeABI")]
+        public void DeveRejeitarQRCodeMenorQueOLimiteDoSchema()
+        {
+            var xml = CarregarXmlSemGrupoSuplementar();
+            var configuracao = CriarConfiguracao();
+            configuracao.UrlQrCodeHomologacao = "https://example.com";
+
+            var exception = Assert.Throws<Exception>(() => QrCodeXmlHelper.MontarQrCodeNFeABI(xml, configuracao));
+
+            Assert.Contains("entre 100 e 600 caracteres", exception.Message);
+        }
+
+        /// <summary>
+        /// Garante que a autorização online gere um QR Code aceito pelo schema da NFeABI.
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NFeABI")]
+        public void AutorizacaoOnlineDeveGerarQRCodeValidoParaOSchema()
+        {
+            using (var rsa = RSA.Create(2048))
+            {
+                var request = new CertificateRequest("CN=NFeABI QRCode Online Test", rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                using (var certificado = request.CreateSelfSigned(DateTimeOffset.UtcNow.AddDays(-1), DateTimeOffset.UtcNow.AddDays(1)))
+                {
+                    var documento = new Business.DFe.Xml.NFeABI.NFeABI()
+                        .LoadFromFile(@"..\..\..\NFeABI\Resources\NFeABI-minima.xml");
+                    documento.InfNFeSupl = null;
+                    documento.Signature = null;
+                    documento.InfNFeABI.Ide.TpEmis = TipoEmissaoNFeABI.Normal;
+
+                    var servico = new NFeABIAutorizacaoSinc(
+                        documento,
+                        new Configuracao { CertificadoDigital = certificado });
+                    var qrCode = servico.ConteudoXMLAssinado.GetElementsByTagName("qrCode")[0].InnerText;
+
+                    Assert.InRange(qrCode.Length, 100, 600);
+                    Assert.StartsWith(UrlProvisoria + "?p=", qrCode);
+                }
+            }
         }
 
         /// <summary>
@@ -131,9 +177,9 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
             {
                 TipoAmbiente = TipoAmbiente.Homologacao,
                 UrlQrCodeHomologacao = UrlProvisoria,
-                UrlQrCodeProducao = UrlProvisoria,
+                UrlQrCodeProducao = string.Empty,
                 UrlChaveHomologacao = UrlProvisoria,
-                UrlChaveProducao = UrlProvisoria
+                UrlChaveProducao = string.Empty
             };
         }
 

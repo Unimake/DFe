@@ -302,7 +302,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
                    value == TipoEmissao.ContingenciaSVCAN ||
                    value == TipoEmissao.ContingenciaFSDA)
                 {
-                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos no leiaute atual: 1, 2, 3, 7 ou 8. O valor 4 é mantido para leiautes anteriores.");
+                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos no leiaute atual: 1, 2, 3, 4, 7 ou 8. O valor 4 (EPEC) está em desativação.");
                 }
 
                 TpEmisField = value;

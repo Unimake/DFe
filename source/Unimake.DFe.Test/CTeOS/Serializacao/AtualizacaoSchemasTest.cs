@@ -29,7 +29,12 @@ namespace Unimake.DFe.Test.CTeOS.Serializacao
         public void ValorLiquidoPreservaAusenciaZeroEOrdem(double? valor)
         {
             var modelo = LerModelo();
-            modelo.InfCTe.VPrest.VTPrestLiq = valor;
+#if INTEROP
+            var valorEsperado = valor ?? -1;
+#else
+            var valorEsperado = valor;
+#endif
+            modelo.InfCTe.VPrest.VTPrestLiq = valorEsperado;
             var xml = modelo.GerarXML();
             var campos = xml.GetElementsByTagName("vTPrestLiq", NamespaceCTe);
             Assert.Equal(valor.HasValue ? 1 : 0, campos.Count);
@@ -40,7 +45,7 @@ namespace Unimake.DFe.Test.CTeOS.Serializacao
                 Assert.Equal(valor.Value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture), campos[0].InnerText);
             }
 
-            Assert.Equal(valor, XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTeOS.CTeOS>(xml).InfCTe.VPrest.VTPrestLiq);
+            Assert.Equal(valorEsperado, XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTeOS.CTeOS>(xml).InfCTe.VPrest.VTPrestLiq);
             Validar(xml);
         }
 
@@ -83,6 +88,21 @@ namespace Unimake.DFe.Test.CTeOS.Serializacao
             modelo.InfCTe.Ide.TpEmis = tipo;
             var xml = modelo.GerarXML();
             Assert.Equal(tipo, XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTeOS.CTeOS>(xml).InfCTe.Ide.TpEmis);
+            var validador = new ValidarSchema();
+            validador.Validar(xml, "CTe.cteOS_v4.00.xsd", NamespaceCTe);
+            Assert.False(validador.Success);
+            Assert.Contains("tpEmis", validador.ErrorMessage);
+        }
+
+        [Fact]
+        [Trait("DFe", "CTeOS")]
+        public void EPECContinuaNaoPermitidoNoCTeOS()
+        {
+            var modelo = LerModelo();
+            Assert.Throws<Exception>(() => modelo.InfCTe.Ide.TpEmis = TipoEmissao.ContingenciaEPEC);
+
+            var xml = modelo.GerarXML();
+            xml.GetElementsByTagName("tpEmis", NamespaceCTe)[0].InnerText = "4";
             var validador = new ValidarSchema();
             validador.Validar(xml, "CTe.cteOS_v4.00.xsd", NamespaceCTe);
             Assert.False(validador.Success);

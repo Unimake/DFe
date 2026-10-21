@@ -11,6 +11,12 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
     {
         internal static void Validar(DFeNFe.NFe nfe, List<DFeNFe.Det> detalhes)
         {
+            var entrega = nfe.InfNFeField.Entrega;
+            if (entrega != null && string.IsNullOrWhiteSpace(entrega.CNPJ) && string.IsNullOrWhiteSpace(entrega.CPF))
+            {
+                throw new InvalidOperationException("Grupo G (entrega): informe CNPJ/CPF no próprio G ou inclua G02/G02A após o G curto.");
+            }
+
             if (nfe.InfNFeField.Pag == null || nfe.InfNFeField.Pag.DetPag == null || nfe.InfNFeField.Pag.DetPag.Count == 0)
             {
                 throw new InvalidOperationException("Falta definir valores do pagamento, tag <pag>.");

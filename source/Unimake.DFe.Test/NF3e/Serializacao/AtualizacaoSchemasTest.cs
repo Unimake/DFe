@@ -72,8 +72,13 @@ namespace Unimake.DFe.Test.NF3e.Serializacao
         {
             var modelo = LerModelo();
             decimal? numero = valor == null ? (decimal?)null : decimal.Parse(valor, CultureInfo.InvariantCulture);
-            Item(modelo).Prod.VItemLiq = numero;
-            Item(modelo).Prod.VProdLiq = numero;
+#if INTEROP
+            var numeroEsperado = numero ?? -1;
+#else
+            var numeroEsperado = numero;
+#endif
+            Item(modelo).Prod.VItemLiq = numeroEsperado;
+            Item(modelo).Prod.VProdLiq = numeroEsperado;
             var xml = modelo.GerarXML();
             var unitario = Selecionar(xml, CaminhoItem + "/n:prod/n:vItemLiq");
             var total = Selecionar(xml, CaminhoItem + "/n:prod/n:vProdLiq");
@@ -88,8 +93,8 @@ namespace Unimake.DFe.Test.NF3e.Serializacao
                 Assert.Equal("indDevolucao", total.NextSibling.LocalName);
             }
             var lido = XMLUtility.Deserializar<ModeloNF3e>(xml);
-            Assert.Equal(numero, Item(lido).Prod.VItemLiq);
-            Assert.Equal(numero, Item(lido).Prod.VProdLiq);
+            Assert.Equal(numeroEsperado, Item(lido).Prod.VItemLiq);
+            Assert.Equal(numeroEsperado, Item(lido).Prod.VProdLiq);
             Validar(xml);
         }
 
@@ -101,7 +106,12 @@ namespace Unimake.DFe.Test.NF3e.Serializacao
         public void TotalLiquidoPreservaAusenciaZeroEOrdem(double? valor)
         {
             var modelo = LerModelo();
-            modelo.InfNF3e.Total.VProdLiq = valor;
+#if INTEROP
+            var valorEsperado = valor ?? -1;
+#else
+            var valorEsperado = valor;
+#endif
+            modelo.InfNF3e.Total.VProdLiq = valorEsperado;
             var xml = modelo.GerarXML();
             var campo = Selecionar(xml, "/n:NF3e/n:infNF3e/n:total/n:vProdLiq");
             Assert.Equal(valor.HasValue, campo != null);
@@ -111,7 +121,7 @@ namespace Unimake.DFe.Test.NF3e.Serializacao
                 Assert.Equal("vProd", campo.PreviousSibling.LocalName);
                 Assert.Equal("ICMSTot", campo.NextSibling.LocalName);
             }
-            Assert.Equal(valor, XMLUtility.Deserializar<ModeloNF3e>(xml).InfNF3e.Total.VProdLiq);
+            Assert.Equal(valorEsperado, XMLUtility.Deserializar<ModeloNF3e>(xml).InfNF3e.Total.VProdLiq);
             Validar(xml);
         }
 
@@ -221,8 +231,13 @@ namespace Unimake.DFe.Test.NF3e.Serializacao
         public void SchemaRejeitaParLiquidoIncompleto(bool informarUnitario)
         {
             var modelo = LerModelo();
+#if INTEROP
+            Item(modelo).Prod.VItemLiq = informarUnitario ? 0 : -1;
+            Item(modelo).Prod.VProdLiq = informarUnitario ? -1 : 0;
+#else
             Item(modelo).Prod.VItemLiq = informarUnitario ? (decimal?)0 : null;
             Item(modelo).Prod.VProdLiq = informarUnitario ? null : (decimal?)0;
+#endif
             var validador = new ValidarSchema();
             validador.Validar(modelo.GerarXML(), "NF3e.nf3e_v1.00.xsd", NamespaceNF3e);
             Assert.False(validador.Success);
@@ -249,7 +264,11 @@ namespace Unimake.DFe.Test.NF3e.Serializacao
             var processado = new NF3eProc
             {
                 Versao = "1.00",
+#if INTEROP
+                DhConexao = new DateTime(2024, 11, 28, 15, 49, 0),
+#else
                 DhConexao = new DateTimeOffset(2024, 11, 28, 15, 49, 0, TimeSpan.FromHours(-3)),
+#endif
                 NF3e = nf3e,
                 ProtNF3e = new ProtNF3e
                 {
@@ -259,7 +278,11 @@ namespace Unimake.DFe.Test.NF3e.Serializacao
                         TpAmb = TipoAmbiente.Homologacao,
                         VerAplic = "TESTE",
                         ChNF3e = nf3e.InfNF3e.Chave,
+#if INTEROP
+                        DhRecbto = new DateTime(2024, 11, 28, 15, 49, 0),
+#else
                         DhRecbto = new DateTimeOffset(2024, 11, 28, 15, 49, 0, TimeSpan.FromHours(-3)),
+#endif
                         CStat = 100,
                         XMotivo = "Autorizado o uso da NF3e"
                     }

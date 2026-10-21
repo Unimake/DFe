@@ -90,7 +90,11 @@ namespace Unimake.DFe.Test.CTe.Serializacao
                     TpAmb = TipoAmbiente.Homologacao,
                     CNPJ = "00000000000000",
                     ChCTe = "41261000000000000000570010000000011000000000",
+#if INTEROP
+                    DhEvento = new DateTime(2026, 10, 10, 10, 0, 0),
+#else
                     DhEvento = new DateTimeOffset(2026, 10, 10, 10, 0, 0, TimeSpan.FromHours(-3)),
+#endif
                     TpEvento = TipoEventoCTe.ApropriacaoCreditoPresumido,
                     NSeqEvento = 1,
                     DetEvento = detalhe
