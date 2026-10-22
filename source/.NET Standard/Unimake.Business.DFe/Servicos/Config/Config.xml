@@ -329,12 +329,6 @@
 		<ArqConfig>GoianiaGO.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3554102">
-		<Nome>Taubaté - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>TaubateSP.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2910800">
 		<Nome>Feira de Santana - BA</Nome>
 		<UF>BA</UF>
@@ -389,12 +383,6 @@
 		<ArqConfig>TremembeSP.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3145208">
-		<Nome>Nova Serrana - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>NovaSerranaMG.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5211503">
 		<Nome>Itumbiara - GO</Nome>
 		<UF>GO</UF>
@@ -436,12 +424,6 @@
 		<UF>MG</UF>
 		<ArqConfig>UberabaMG.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4204202">
-		<Nome>Chapecó - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>ChapecoSC.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2606408">
 		<Nome>Gravatá - PE</Nome>
@@ -1150,12 +1132,6 @@
 		<UF>PR</UF>
 		<ArqConfig>UmuaramaPR.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5107040">
-		<Nome>Primavera do Leste - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>PrimaveraDoLesteMT.xml</ArqConfig>
-		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2507507">
 		<Nome>João Pessoa - PB</Nome>
