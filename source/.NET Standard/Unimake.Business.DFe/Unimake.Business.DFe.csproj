@@ -717,7 +717,6 @@
 		<None Remove="Servicos\Config\NFSe\SaoJoaquimDeBicasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDaLapaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDoRioPretoSP.xml" />
-		<None Remove="Servicos\Config\NFSe\SaoJoseDosCamposSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDosPinhaisPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseSC.xml" />
@@ -2164,9 +2163,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\PomerodeSC.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SantosSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDoRioPretoSP.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosCamposSP.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaioSC.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TimboSC.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\TupandiRS.xml" />
