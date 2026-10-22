@@ -22,7 +22,7 @@
 			<WebActionProducao></WebActionProducao>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno></WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>true</LoginConexao>
