@@ -49,7 +49,7 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.Equal(TpOperacaoGov.FornecimentoComPagamentoPosterior, ibscbs.TpOper); // tpOper=1
 
         // Campos existentes
-        Assert.Equal(FinalidadeNFSeRTC.Regular, ibscbs.FinNFSe);
+        Assert.Equal(FinalidadeNFSeRTC.Regular, lido.InfDPS.FinNFSe);
         Assert.Equal(IndicadorFinalNFSeRTC.Nao, ibscbs.IndFinal);
         Assert.Equal("000001", ibscbs.CIndOp); // cIndOp="000001"
         Assert.Equal(TipoEnteGovernamentalNFSeRTC.Uniao, ibscbs.TpEnteGov); // tpEnteGov=1
@@ -63,8 +63,8 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.NotNull(ibscbs.Valores.Trib.GIBSCBS);
 
         var gIBSCBS = ibscbs.Valores.Trib.GIBSCBS;
-        Assert.Equal("101", gIBSCBS.CST);
-        Assert.Equal("000001", gIBSCBS.CClassTrib); // "000001"
+        Assert.Equal("101", ibscbs.Valores.Trib.CST);
+        Assert.Equal("000001", ibscbs.Valores.Trib.CClassTrib);
         Assert.Equal("01", gIBSCBS.CCredPres); // "01"
 
         // Serialização (round-trip)
@@ -75,6 +75,10 @@ public class SerializacaoDesserializacaoNacionalTest
         var nsmgr = CreateNamespaceManager(docRoundTrip);
         var ibscbsNode = docRoundTrip.SelectSingleNode("//ns:IBSCBS", nsmgr);
         Assert.NotNull(ibscbsNode);
+        Assert.Equal("0", docRoundTrip.SelectSingleNode("/ns:DPS/ns:infDPS/ns:finNFSe", nsmgr)?.InnerText);
+        Assert.Null(ibscbsNode.SelectSingleNode("ns:finNFSe", nsmgr));
+        Assert.Equal("101", ibscbsNode.SelectSingleNode("ns:valores/ns:trib/ns:CST", nsmgr)?.InnerText);
+        Assert.Null(ibscbsNode.SelectSingleNode("ns:valores/ns:trib/ns:gIBSCBS/ns:CST", nsmgr));
 
         // Verifica presença dos campos v1.01 corretos
         Assert.NotNull(ibscbsNode.SelectSingleNode("ns:indDest", nsmgr));
@@ -102,6 +106,7 @@ public class SerializacaoDesserializacaoNacionalTest
                 NDPS = lido.InfDPS.NDPS,
                 DCompet = lido.InfDPS.DCompet,
                 TpEmit = lido.InfDPS.TpEmit,
+                FinNFSe = lido.InfDPS.FinNFSe,
                 CLocEmi = lido.InfDPS.CLocEmi,
                 Prest = lido.InfDPS.Prest,
                 Toma = lido.InfDPS.Toma,
@@ -113,7 +118,6 @@ public class SerializacaoDesserializacaoNacionalTest
                 },
                 IBSCBS = new IBSCBS
                 {
-                    FinNFSe = ibscbs.FinNFSe,
                     IndFinal = ibscbs.IndFinal,
                     CIndOp = ibscbs.CIndOp,
                     TpOper = ibscbs.TpOper, // v1.01
@@ -680,19 +684,10 @@ public class SerializacaoDesserializacaoNacionalTest
 
         var xmlGeradado = xml.GerarXML();
 
-        // O XML histórico usa vCalcDR e ainda não contém finNFSe em infDPS.
-        // Compara o conteúdo após aplicar as alterações do novo contrato.
         var nsmgr = CreateNamespaceManager(xmlOriginal);
-        var vCalcDR = xmlOriginal.SelectSingleNode("/ns:NFSe/ns:infNFSe/ns:valores/ns:vCalcDR", nsmgr);
-        Assert.Equal("0.00", vCalcDR.InnerText);
-        vCalcDR.ParentNode.RemoveChild(vCalcDR);
-        var infDPS = xmlOriginal.SelectSingleNode("/ns:NFSe/ns:infNFSe/ns:DPS/ns:infDPS", nsmgr);
-        var finalidade = xmlOriginal.CreateElement("finNFSe", infDPS.NamespaceURI);
-        finalidade.InnerText = "0";
-        infDPS.InsertAfter(finalidade, infDPS.SelectSingleNode("ns:tpEmit", nsmgr));
+        Assert.Null(xmlOriginal.SelectSingleNode("/ns:NFSe/ns:infNFSe/ns:valores/ns:vCalcDR", nsmgr));
+        Assert.Equal("0.00", xmlGeradado.SelectSingleNode("/ns:NFSe/ns:infNFSe/ns:valores/ns:vCalcAjusteBCISSQN", nsmgr)?.InnerText);
         Assert.Equal("0", xmlGeradado.SelectSingleNode("//ns:infDPS/ns:finNFSe", nsmgr).InnerText);
-        var cServ = infDPS.SelectSingleNode("ns:serv/ns:cServ", nsmgr);
-        cServ.AppendChild(cServ.SelectSingleNode("ns:xDescServ", nsmgr));
 
         Assert.True(xmlOriginal.InnerText == xmlGeradado.InnerText, "XML gerado pela DLL está diferente do XML criado manualmente.");
     }

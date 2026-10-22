@@ -32,6 +32,21 @@ namespace Unimake.DFe.Test.NFSe.Serializacao
 
         [Fact]
         [Trait("DFe", "NFSe")]
+        public void MassaGeracaoNacionalDeveAtenderSchemaSemNormalizacao()
+        {
+            var xml = new XmlDocument();
+            xml.Load(@"..\..\..\NFSe\Resources\NACIONAL\1.01\GerarNfseEnvio-env-loterps.xml");
+
+            Validar(xml, "DPS_v1.01.xsd");
+
+            var modelo = new DPS().LerXML<DPS>(xml);
+            var gerado = modelo.GerarXML();
+            Assert.Equal(xml.InnerText, gerado.InnerText);
+            Validar(gerado, "DPS_v1.01.xsd");
+        }
+
+        [Fact]
+        [Trait("DFe", "NFSe")]
         public void DeveValidarDPSComAjustesImoveisEBensMoveis()
         {
             var modelo = LerDPS();

@@ -1,4 +1,5 @@
 using System.IO;
+using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
@@ -9,6 +10,37 @@ namespace Unimake.DFe.Test.NFSe.Servicos
 {
     public class RetornoSchemaNacionalTest
     {
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [InlineData("GerarNfseEnvio-env-loterps.xml", false)]
+        [InlineData("GerarNfseEnvio_IndicativoDecisaoJudicial-env-loterps.xml", true)]
+        public void DeveInicializarGeracaoNacionalSemTransmitir(string arquivo, bool decisaoJudicial)
+        {
+            var xml = new XmlDocument();
+            xml.Load(Path.Combine(@"..\..\..\NFSe\Resources\NACIONAL\1.01", arquivo));
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                PadraoNFSe = PadraoNFSe.NACIONAL,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CodigoMunicipio = 1001058,
+                Servico = Servico.NFSeGerarNfse,
+                SchemaVersao = "1.01",
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            // Exercita assinatura e validação dos mesmos construtores dos testes de integração.
+            // Não chama Executar(), para não transmitir uma operação fiscal.
+            Business.DFe.Servicos.NFSe.GerarNfse servico = decisaoJudicial
+                ? new Business.DFe.Servicos.NFSe.GerarNfseIndicativoDecisaoJudicial(xml, configuracao)
+                : new Business.DFe.Servicos.NFSe.GerarNfse(xml, configuracao);
+
+            Assert.NotNull(servico.ConteudoXMLAssinado);
+            Assert.True(servico.ConteudoXMLAssinado.GetElementsByTagName(
+                "Signature", "http://www.w3.org/2000/09/xmldsig#").Count > 0);
+            Assert.True(string.IsNullOrEmpty(servico.RetornoWSString));
+        }
+
         [Fact]
         [Trait("DFe", "NFSe")]
         public void ResultDosServicosDeveLerNFSeAtualizadaSemTransporte()
