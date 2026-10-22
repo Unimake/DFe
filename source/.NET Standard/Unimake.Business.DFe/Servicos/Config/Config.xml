@@ -365,12 +365,6 @@
 		<ArqConfig>GaribaldiRS.xml</ArqConfig>
 		<PadraoNFSe>GIF</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3300704">
-		<Nome>Cabo Frio - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>CaboFrioRJ.xml</ArqConfig>
-		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5300108">
 		<Nome>Brasília - DF</Nome>
 		<UF>DF</UF>

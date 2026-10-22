@@ -492,7 +492,6 @@
 		<None Remove="Servicos\Config\NFSe\BuritisRO.xml" />
 		<None Remove="Servicos\Config\NFSe\CabedeloPB.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboDeSantoAgostinhoPE.xml" />
-		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeiraDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirinhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CaieirasSP.xml" />
@@ -2434,7 +2433,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\AraguainaTO.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\AguaBoaMT.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MogiDasCruzesSP.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
