@@ -353,12 +353,6 @@
 		<ArqConfig>EdeiaGO.xml</ArqConfig>
 		<PadraoNFSe>CENTI</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4202404">
-		<Nome>Blumenau - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>BlumenauSC.xml</ArqConfig>
-		<PadraoNFSe>SIMPLISS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4125506">
 		<Nome>São José dos Pinhais - PR</Nome>
 		<UF>PR</UF>

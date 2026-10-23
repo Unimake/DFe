@@ -481,7 +481,6 @@
 		<None Remove="Servicos\Config\NFSe\BETHA_CLOUD.xml" />
 		<None Remove="Servicos\Config\NFSe\BiguacuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BiriguiSP.xml" />
-		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BoituvaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BomDespachoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\BomPrincipioRS.xml" />
@@ -2417,9 +2416,6 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\BrasiliaDF.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\BlumenauSC.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\BPe\bpeTA_v1.00.xsd" />
