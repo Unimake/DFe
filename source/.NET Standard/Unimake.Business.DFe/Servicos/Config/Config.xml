@@ -203,12 +203,6 @@
 		<ArqConfig>BarretosSP.xml</ArqConfig>
 		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5205109">
-		<Nome>Catalão - GO</Nome>
-		<UF>GO</UF>
-		<ArqConfig>CatalaoGO.xml</ArqConfig>
-		<PadraoNFSe>PRODATA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4314407">
 		<Nome>Pelotas - RS</Nome>
 		<UF>RS</UF>
@@ -298,12 +292,6 @@
 		<UF>MG</UF>
 		<ArqConfig>TeofiloOtoniMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4321667">
-		<Nome>Três Cachoeiras - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>TresCachoeirasRS.xml</ArqConfig>
-		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3147907">
 		<Nome>Passos - MG</Nome>
@@ -573,12 +561,6 @@
 		<Nome>Três Lagoas - MS</Nome>
 		<UF>MS</UF>
 		<ArqConfig>TresLagoasMS.xml</ArqConfig>
-		<PadraoNFSe>FIORILLI</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4323804">
-		<Nome>Xangri-lá - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>XangriLaRS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3539400">
@@ -1282,18 +1264,6 @@
 		<UF>PE</UF>
 		<ArqConfig>SantaCruzDoCapibaribePE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3305208">
-		<Nome>São Pedro da Aldeia - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>SaoPedroDaAldeiaRJ.xml</ArqConfig>
-		<PadraoNFSe>MODERNIZACAO_PUBLICA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2919207">
-		<Nome>Lauro de Freitas - BA</Nome>
-		<UF>BA</UF>
-		<ArqConfig>LauroDeFreitasBA.xml</ArqConfig>
-		<PadraoNFSe>METROPOLIS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5217708">
 		<Nome>Pontalina - GO</Nome>
