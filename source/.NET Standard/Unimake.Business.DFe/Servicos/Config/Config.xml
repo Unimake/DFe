@@ -257,23 +257,11 @@
 		<ArqConfig>BiguacuSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3530805">
-		<Nome>Mogi Mirim - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>MogiMirimSP.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2610004">
 		<Nome>Palmares - PE</Nome>
 		<UF>PE</UF>
 		<ArqConfig>PalmaresPE.xml</ArqConfig>
 		<PadraoNFSe>TRIBUTUS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3131307">
-		<Nome>Ipatinga - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>IpatingaMG.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3550308">
 		<Nome>São Paulo - SP</Nome>
@@ -304,12 +292,6 @@
 		<UF>MG</UF>
 		<ArqConfig>ParaDeMinasMG.xml</ArqConfig>
 		<PadraoNFSe>QUASAR</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3529005">
-		<Nome>Marília - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>MariliaSP.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5208707">
 		<Nome>Goiânia - GO</Nome>
@@ -358,18 +340,6 @@
 		<UF>SP</UF>
 		<ArqConfig>MogiDasCruzesSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4315602">
-		<Nome>Rio Grande - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>RioGrandeRS.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3554805">
-		<Nome>Tremembé - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>TremembeSP.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5211503">
 		<Nome>Itumbiara - GO</Nome>
