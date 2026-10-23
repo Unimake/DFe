@@ -449,7 +449,6 @@
 		<None Remove="Servicos\Config\NFSe\AlvoradaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AmambaiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\AmericanaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\AndradasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AngraDosReisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\AracajuSE.xml" />
@@ -1923,7 +1922,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlemParaibaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlvoradaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmericanaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AndradasMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AngraDosReisRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArcosMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AstorgaPR.xml" />

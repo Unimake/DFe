@@ -1403,12 +1403,6 @@
 		<ArqConfig>AstorgaPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3102605">
-		<Nome>Andradas - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>AndradasMG.xml</ArqConfig>
-		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3128709">
 		<Nome>Guaxupé - MG</Nome>
 		<UF>MG</UF>
