@@ -172,7 +172,7 @@
 			<TargetNS></TargetNS>
 		</ConsultarNfseFaixa>
 		<!--Versão 1.00 suportada pela prefeitura para envio sem o grupo IBSCBS-->
-		<RecepcionarLoteRpsSincrono versao="1.00">
+		<RecepcionarLoteRpsSincrono versao="1.01">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<WebEnderecoHomologacao>https://nfse.issnetonline.com.br/wsnfsenacional/homologacao/nfse.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.issnetonline.com.br/wsnfsenacional/santamaria/nfse.asmx</WebEnderecoProducao>
@@ -183,7 +183,7 @@
 			<WebTagRetorno>s:Body|s1:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>1.00</SchemaVersao>
+			<SchemaVersao>1.01</SchemaVersao>
 			<TargetNS></TargetNS>
 		</RecepcionarLoteRpsSincrono>
 		<RecepcionarLoteRps versao="1.01">
