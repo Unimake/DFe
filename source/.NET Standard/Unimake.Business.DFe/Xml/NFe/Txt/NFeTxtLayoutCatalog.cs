@@ -66,6 +66,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     // "I"
                     layouts.Add("I_28", prefix + "I|cProd|cEAN|XProd|NCM|NVE|CEST|indEscala|CNPJFab|cBenef|EXTIPI|CFOP|UCom|QCom|VUnCom|VProd|CEANTrib|UTrib|QTrib|VUnTrib|VFrete|VSeg|VDesc|vOutro|indTot|xPed|nItemPed|nFCI|");
                     layouts.Add("I_30", prefix + "I|cProd|cEAN|cBarra|XProd|NCM|NVE|CEST|indEscala|CNPJFab|cBenef|EXTIPI|CFOP|UCom|QCom|VUnCom|VProd|CEANTrib|cBarraTrib|UTrib|QTrib|VUnTrib|VFrete|VSeg|VDesc|vOutro|indTot|xPed|nItemPed|nFCI|");
+                    layouts.Add("I11A", prefix + "I11A|vUnComLiq|vProdLiq|");
 
                     layouts.Add("I05G", prefix + "I05g|cCredPresumido|pCredPresumido|vCredPresumido|");
 
@@ -160,6 +161,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     layouts.Add("N10G_400_13", prefix + "N10g|orig|CSOSN|vBCSTRet|pST|vICMSSTRet|vBCFCPSTRet|pFCPSTRet|vFCPSTRet|pRedBCEfet|vBCEfet|pICMSEfet|vICMSEfet|");
                     layouts.Add("N10G_400_14", prefix + "N10g|orig|CSOSN|vBCSTRet|pST|vICMSSubstituto|vICMSSTRet|vBCFCPSTRet|pFCPSTRet|vFCPSTRet|pRedBCEfet|vBCEfet|pICMSEfet|vICMSEfet|");
                     layouts.Add("N10H_400", prefix + "N10h|orig|CSOSN|modBC|vBC|pRedBC|pICMS|vICMS|modBCST|pMVAST|pRedBCST|vBCST|pICMSST|vICMSST|vBCFCPST|pFCPST|vFCPST|pCredSN|vCredICMSSN|");
+                    layouts.Add("NB01", prefix + "NB01|vICMSPrevisto|");
                     layouts.Add("NA_400", prefix + "NA|vBCUFDest|vBCFCPUFDest|pFCPUFDest|pICMSUFDest|pICMSInter|pICMSInterPart|vFCPUFDest|vICMSUFDest|vICMSUFRemet|");
                     // "O"
                     layouts.Add("O_400", prefix + "O|CNPJProd|cSelo|qSelo|cEnq|");
@@ -265,6 +267,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     layouts.Add("VC01", prefix + "VC01|chaveAcesso|nItem|");
 
                     // "W"
+                    layouts.Add("W01A", prefix + "W01A|vProdLiqTot|");
                     layouts.Add("W02_400_17", prefix + "W02|vBC|vICMS|vICMSDeson|vBCST|vST|vProd|vFrete|vSeg|vDesc|vII|vIPI|vPIS|vCOFINS|vOutro|vNF|vTotTrib|");
                     layouts.Add("W02_400_20", prefix + "W02|vBC|vICMS|vICMSDeson|vFCPUFDest|vICMSUFDest|vICMSUFRemet|vBCST|vST|vProd|vFrete|vSeg|vDesc|vII|vIPI|vPIS|vCOFINS|vOutro|vNF|vTotTrib|");
                     layouts.Add("W02_400_21", prefix + "W02|vBC|vICMS|vICMSDeson|vFCPUFDest|vICMSUFDest|vICMSUFRemet||vBCST|vST|vProd|vFrete|vSeg|vDesc|vII|vIPI|vPIS|vCOFINS|vOutro|vNF|vTotTrib|");
@@ -307,6 +310,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     layouts.Add("YA09", prefix + "YA09|vTroco|");
 
                     layouts.Add("YB", prefix + "YB|CNPJ|idCadIntTran|");
+                    layouts.Add("YV01", prefix + "YV01|nPag|idTransacao|tpMeioPgto|CNPJReceb|CNPJBasePSP|");
 
                     // "Z":
                     layouts.Add("Z", prefix + "Z|InfAdFisco|InfCpl|");

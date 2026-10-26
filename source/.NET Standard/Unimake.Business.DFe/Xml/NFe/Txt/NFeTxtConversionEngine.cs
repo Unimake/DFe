@@ -36,6 +36,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         private DFeNFe.NFe nfeOficial = null;
         private DFeNFe.Ide identificacaoOficial = null;
         private List<DFeNFe.Det> detalhesOficiais = null;
+        private HashSet<int> itensIcmsPrevisto = null;
+        private HashSet<int> itensIcmsConvencional = null;
         private DFeNFe.Total totalOficial = null;
         private DFeNFe.Transp transporteOficial = null;
         private DFeNFe.Dest destinatarioOficial = null;
@@ -122,6 +124,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             this.detailSegmentDispatcher = new NFeTxtDetailSegmentDispatcher(new Dictionary<string, Action<int, int>>
             {
                 { "I", this.ProcessarProduto },
+                { "I11A", (nProd, _) => this.ProcessarValoresLiquidosProduto(nProd) },
                 { "I05G", (nProd, _) => this.AdicionarCreditoPresumido(nProd) },
                 { "I05A", (nProd, _) => this.ProcessarNveProduto(nProd) },
                 { "I05K", (nProd, _) => this.ProcessarCreditoPresumidoIbsZfm(nProd) },
@@ -168,6 +171,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 { "N10F", this.ProcessarIcmsSn202 },
                 { "N10G", this.ProcessarIcmsSn500 },
                 { "N10H", this.ProcessarIcmsSn900 },
+                { "NB01", (nProd, _) => this.ProcessarIcmsPrevistoPagtoAntecip(nProd) },
                 { "NA", this.ProcessarDiferimentoIcms },
                 { "O", (nProd, _) => this.ProcessarIpi(nProd) },
                 { "O07", this.ProcessarIpiTributado },
@@ -237,6 +241,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 { "UB127", this.ProcessarCreditoPresumidoCbs },
                 { "UB131", this.ProcessarCreditoPresumidoZfm },
                 { "W02", this.ProcessarTotaisIcms },
+                { "W01A", (nProd, _) => this.ProcessarValorLiquidoTotal() },
                 { "W04", this.ProcessarTotaisIcmsSt },
                 { "W17", this.ProcessarTotaisFcp },
                 { "W23", this.ProcessarTotaisIpi },
@@ -274,7 +279,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 { "YA09", this.ProcessarCnpjInstituicaoPagadora },
                 { "YA04", (nProd, _) => this.ProcessarTipoIntegracaoPagamento() },
                 { "YA04A", (nProd, _) => this.ProcessarTipoIntegracaoPagamento() },
-                { "YB", this.ProcessarIntermediador }
+                { "YB", this.ProcessarIntermediador },
+                { "YV01", (nProd, _) => this.ProcessarPagamentoVinculado() }
             });
             this.additionalInformationSegmentDispatcher = new NFeTxtAdditionalInformationSegmentDispatcher(new Dictionary<string, Action<int, int>>
             {
@@ -334,6 +340,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 this.versaoNFe = 4.0M;
                 this.identificacaoOficial = new DFeNFe.Ide { NFref = new List<DFeNFe.NFref>() };
                 this.detalhesOficiais = new List<DFeNFe.Det>();
+                this.itensIcmsPrevisto = new HashSet<int>();
+                this.itensIcmsConvencional = new HashSet<int>();
                 this.destinatarioOficial = new DFeNFe.Dest { EnderDest = new DFeNFe.EnderDest() };
                 this.retiradaOficial = new DFeNFe.Retirada();
                 this.entregaOficial = new DFeNFe.Entrega();
@@ -408,6 +416,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             }
 
             var nfe = nfeOficial;
+            ValidarNovosSegmentos();
             PrepararReferenciasDaIdentificacao();
             this.nfeMapper.Mapear(nfe, identificacaoOficial, destinatarioOficial, retiradaOficial, entregaOficial,
                 autorizadosXmlOficiais, detalhesOficiais, totalOficial, transporteOficial);
@@ -420,6 +429,41 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             identificacaoOficial.CNF = chave.Substring(35, 8);
             identificacaoOficial.CDV = int.Parse(chave.Substring(43, 1));
             return new NFeTxtDocumento(documento.OuterXml, chave, identificacaoOficial.NNF, identificacaoOficial.Serie);
+        }
+
+        private void ValidarNovosSegmentos()
+        {
+            foreach (var indice in itensIcmsPrevisto)
+            {
+                if (itensIcmsConvencional.Contains(indice))
+                {
+                    throw new InvalidOperationException("O item " + detalhesOficiais[indice].NItem +
+                        " informa NB01 junto com outro grupo de ICMS; escolha apenas uma alternativa.");
+                }
+            }
+
+            var pagamentos = nfeOficial.InfNFeField.GPgtoVinc?.GPgto;
+            if (pagamentos == null) return;
+
+            if (pagamentos.Count > 99)
+            {
+                throw new InvalidOperationException("O grupo YV01 permite no máximo 99 pagamentos vinculados.");
+            }
+
+            var numeros = new HashSet<int>();
+            var transacoes = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var pagamento in pagamentos)
+            {
+                if (!numeros.Add(pagamento.NPag))
+                {
+                    throw new InvalidOperationException("YV01: nPag repetido: " + pagamento.NPag + ".");
+                }
+
+                if (!transacoes.Add(pagamento.IdTransacao))
+                {
+                    throw new InvalidOperationException("YV01: idTransacao repetido: " + pagamento.IdTransacao + ".");
+                }
+            }
         }
 
         private static void PrepararHashCsrt(DFeNFe.NFe nfe, string chaveAcesso)
@@ -1435,6 +1479,80 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 Imposto = new DFeNFe.Imposto()
             });
         }
+
+        private void ProcessarValoresLiquidosProduto(int nProd)
+        {
+            var campos = Registro.Split('|');
+            if (campos.Length < 4 || string.IsNullOrWhiteSpace(campos[1]) != string.IsNullOrWhiteSpace(campos[2]))
+            {
+                throw new InvalidOperationException("I11A: vUnComLiq e vProdLiq devem ser informados juntos.");
+            }
+
+            if (string.IsNullOrWhiteSpace(campos[1]))
+            {
+                throw new InvalidOperationException("I11A: informe vUnComLiq e vProdLiq ou omita o segmento.");
+            }
+
+            var produto = detalhesOficiais[nProd].Prod;
+            produto.VUnComLiq = LerDecimal(TpcnTipoCampo.tcDec10, "vUnComLiq", ObOp.Obrigatorio, 21);
+            produto.VProdLiq = LerDouble(TpcnTipoCampo.tcDouble2, "vProdLiq", ObOp.Obrigatorio, 15);
+        }
+
+        private void ProcessarIcmsPrevistoPagtoAntecip(int nProd)
+        {
+            detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS
+            {
+                ICMSPrevistoPagtoAntecip = new DFeNFe.ICMSPrevistoPagtoAntecip
+                {
+                    VICMSPrevisto = LerDouble(TpcnTipoCampo.tcDouble2, "vICMSPrevisto", ObOp.Obrigatorio, 15)
+                }
+            };
+        }
+
+        private void ProcessarValorLiquidoTotal()
+        {
+            totalOficial.VProdLiqTot = LerDouble(TpcnTipoCampo.tcDouble2, "vProdLiqTot", ObOp.Obrigatorio, 15);
+        }
+
+        private void ProcessarPagamentoVinculado()
+        {
+            var numeroInformado = Registro.Split('|')[1].Trim();
+            var pagamento = new DFeNFe.GPgto
+            {
+                NPag = LerInt32("nPag", ObOp.Obrigatorio, 1, 3),
+                IdTransacao = LerString("idTransacao", ObOp.Obrigatorio, 2, 35),
+                TpMeioPgto = LerString("tpMeioPgto", ObOp.Obrigatorio, 2, 2),
+                CNPJReceb = LerString("CNPJReceb", ObOp.Obrigatorio, 14, 14),
+                CNPJBasePSP = LerString("CNPJBasePSP", ObOp.Obrigatorio, 8, 8)
+            };
+
+            if (pagamento.NPag < 1 || pagamento.NPag > 990 ||
+                numeroInformado != pagamento.NPag.ToString(CultureInfo.InvariantCulture) ||
+                !SomenteDigitos(pagamento.TpMeioPgto) || !SomenteDigitos(pagamento.CNPJReceb) ||
+                !SomenteDigitos(pagamento.CNPJBasePSP))
+            {
+                throw new InvalidOperationException("YV01: nPag deve estar entre 1 e 990, sem zeros à esquerda; tpMeioPgto, CNPJReceb e CNPJBasePSP devem conter apenas dígitos.");
+            }
+
+            if (nfeOficial.InfNFeField.GPgtoVinc == null)
+            {
+                nfeOficial.InfNFeField.GPgtoVinc = new DFeNFe.GPgtoVinc { GPgto = new List<DFeNFe.GPgto>() };
+            }
+
+            nfeOficial.InfNFeField.GPgtoVinc.GPgto.Add(pagamento);
+        }
+
+        private static bool SomenteDigitos(string valor)
+        {
+            if (string.IsNullOrEmpty(valor)) return false;
+            foreach (var caracter in valor)
+            {
+                if (caracter < '0' || caracter > '9') return false;
+            }
+
+            return true;
+        }
+
         private void ProcessarProduto(int nProd, int lenPipesRegistro)
         {
             var produto = detalhesOficiais[nProd].Prod;
@@ -4205,6 +4323,19 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             Console.WriteLine("Segmento lido: {0} - linha: {1} - Pipes: {2}", FSegmento, this.context.LinhaLida + 1, lenPipesRegistro);
 #endif
             layout = segmento.Layout;
+
+            if (nProd >= 0 && this.FSegmento == "NB01")
+            {
+                if (!itensIcmsPrevisto.Add(nProd))
+                {
+                    throw new InvalidOperationException("NB01: o ICMS previsto foi informado mais de uma vez no mesmo item.");
+                }
+            }
+            else if (nProd >= 0 && (this.FSegmento.StartsWith("N0", StringComparison.Ordinal) ||
+                this.FSegmento.StartsWith("N10", StringComparison.Ordinal)))
+            {
+                itensIcmsConvencional.Add(nProd);
+            }
 
             if (this.initialSegmentDispatcher.TentarDespachar(this.FSegmento, lenPipesRegistro)) return;
             if (this.detailSegmentDispatcher.TentarDespachar(this.FSegmento, nProd, lenPipesRegistro)) return;
