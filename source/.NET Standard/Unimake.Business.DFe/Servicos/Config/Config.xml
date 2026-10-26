@@ -1535,12 +1535,6 @@
 		<ArqConfig>NaviraiMS.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4120804">
-		<Nome>Quatro Barras - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>QuatroBarrasPR.xml</ArqConfig>
-		<PadraoNFSe>ELOTECH</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4104808">
 		<Nome>Cascavel - PR</Nome>
 		<UF>PR</UF>
