@@ -113,6 +113,25 @@ public class NFeTxtNovoSchemaTest
         Assert.Equal(1, validacao.ErrorMessage.Split(new[] { "Linha:" }, StringSplitOptions.None).Length - 1);
     }
 
+    [Fact]
+    public void DevePreservarCnpjAlfanumericoDosPagamentosVinculados()
+    {
+        var resultado = Converter(AdicionarApos(MassaBase(), "YA|",
+            "YV01|1|TRANSACAO-ALFANUMERICA|01|ABCD1234EFGH91|ABCD1234|"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        Assert.Equal("ABCD1234EFGH91", xml.SelectSingleNode("//*[local-name()='gPgtoVinc']/*[local-name()='gPgto']/*[local-name()='CNPJReceb']")?.InnerText);
+        Assert.Equal("ABCD1234", xml.SelectSingleNode("//*[local-name()='gPgtoVinc']/*[local-name()='gPgto']/*[local-name()='CNPJBasePSP']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.Equal(1, validacao.ErrorMessage.Split(new[] { "Linha:" }, StringSplitOptions.None).Length - 1);
+    }
+
     [Theory]
     [InlineData("I11A|25.00||", "vUnComLiq e vProdLiq")]
     [InlineData("I11A||37.50|", "vUnComLiq e vProdLiq")]
@@ -137,7 +156,10 @@ public class NFeTxtNovoSchemaTest
     [InlineData("YV01|0|TRANSACAO-01|01|99999999000191|99999999|", "nPag")]
     [InlineData("YV01|01|TRANSACAO-01|01|99999999000191|99999999|", "zeros à esquerda")]
     [InlineData("YV01|991|TRANSACAO-01|01|99999999000191|99999999|", "nPag")]
-    [InlineData("YV01|1|TRANSACAO-01|AB|99999999000191|99999999|", "apenas dígitos")]
+    [InlineData("YV01|1|TRANSACAO-01|AB|99999999000191|99999999|", "tpMeioPgto deve conter dois dígitos")]
+    [InlineData("YV01|1|TRANSACAO-01|01|ABCd1234EFGH91|ABCD1234|", "CNPJReceb")]
+    [InlineData("YV01|1|TRANSACAO-01|01|ABCD1234EFGH9A|ABCD1234|", "CNPJReceb")]
+    [InlineData("YV01|1|TRANSACAO-01|01|ABCD1234EFGH91|ABcD1234|", "CNPJBasePSP")]
     public void DeveCriticarPagamentoIncompletoOuInvalido(string segmento, string erro)
     {
         var resultado = Converter(AdicionarApos(MassaBase(), "YA|", segmento));
