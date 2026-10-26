@@ -377,12 +377,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         public InfIntermed InfIntermed { get; set; }
 
         /// <summary>
+        /// Informações da vinculação com a transação de pagamento.
+        /// </summary>
+        [XmlElement("gPgtoVinc", Order = 13)]
+        public GPgtoVinc GPgtoVinc { get; set; }
+
+        /// <summary>
         /// Informações adicionais da NFe/NFCe
         /// </summary>
 #if INTEROP
-        [XmlElement("infAdic", Order = 13)]
+        [XmlElement("infAdic", Order = 14)]
 #else
-        [XmlElement("infAdic", Order = 13)]
+        [XmlElement("infAdic", Order = 14)]
 #endif
         public InfAdic InfAdic { get; set; }
 
@@ -390,9 +396,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Informações de exportação
         /// </summary>
 #if INTEROP
-        [XmlElement("exporta", Order = 14)]
+        [XmlElement("exporta", Order = 15)]
 #else
-        [XmlElement("exporta", Order = 14)]
+        [XmlElement("exporta", Order = 15)]
 #endif
         public Exporta Exporta { get; set; }
 
@@ -400,9 +406,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Informações de compras  (Nota de Empenho, Pedido e Contrato)
         /// </summary>
 #if INTEROP
-        [XmlElement("compra", Order = 15)]
+        [XmlElement("compra", Order = 16)]
 #else
-        [XmlElement("compra", Order = 15)]
+        [XmlElement("compra", Order = 16)]
 #endif
         public Compra Compra { get; set; }
 
@@ -410,9 +416,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Informações de registro aquisições de cana
         /// </summary>
 #if INTEROP
-        [XmlElement("cana", Order = 16)]
+        [XmlElement("cana", Order = 17)]
 #else
-        [XmlElement("cana", Order = 16)]
+        [XmlElement("cana", Order = 17)]
 #endif
         public Cana Cana { get; set; }
 
@@ -420,9 +426,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Informações do Responsável Técnico pela emissão do DFe
         /// </summary>
 #if INTEROP
-        [XmlElement("infRespTec", Order = 17)]
+        [XmlElement("infRespTec", Order = 18)]
 #else
-        [XmlElement("infRespTec", Order = 17)]
+        [XmlElement("infRespTec", Order = 18)]
 #endif
         public InfRespTec InfRespTec { get; set; }
 
@@ -430,9 +436,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Grupo para informações da solicitação da NFF
         /// </summary>
 #if INTEROP
-        [XmlElement("infSolicNFF", Order = 18)]
+        [XmlElement("infSolicNFF", Order = 19)]
 #else
-        [XmlElement("infSolicNFF", Order = 18)]
+        [XmlElement("infSolicNFF", Order = 19)]
 #endif
         public InfSolicNFF InfSolicNFF { get; set; }
 
@@ -440,9 +446,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Grupo de tags de produtos agropecuários: animais, vegetais e florestais
         /// </summary>
 #if INTEROP
-        [XmlElement("agropecuario", Order = 19)]
+        [XmlElement("agropecuario", Order = 20)]
 #else
-        [XmlElement("agropecuario", Order = 19)]
+        [XmlElement("agropecuario", Order = 20)]
 #endif
         public Agropecuario Agropecuario { get; set; }
 
@@ -450,9 +456,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Grupo de Informação do Provedor de Assinatura e Autorização
         /// </summary>
 #if INTEROP
-        [XmlElement("infPAA", Order = 20)]
+        [XmlElement("infPAA", Order = 21)]
 #else
-        [XmlElement("infPAA", Order = 20)]
+        [XmlElement("infPAA", Order = 21)]
 #endif
         public InfPAA InfPAA { get; set; }
 
@@ -2398,12 +2404,77 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => VProd = Converter.ToDouble(value);
         }
 
+        private decimal valorVUnComLiq;
+        private bool informadoVUnComLiq;
+
+        /// <summary>
+        /// Valor líquido unitário do produto ou serviço, sem tributos.
+        /// Informar em conjunto com VProdLiq.
+        /// </summary>
+        [XmlIgnore]
+        public decimal VUnComLiq
+        {
+            get => valorVUnComLiq;
+            set
+            {
+                valorVUnComLiq = value;
+                informadoVUnComLiq = true;
+            }
+        }
+
+        /// <summary>
+        /// Representação XML do valor líquido unitário, com até dez casas decimais.
+        /// </summary>
+        [XmlElement("vUnComLiq", Order = 18)]
+        public string VUnComLiqField
+        {
+            get => VUnComLiq.ToString("0.##########", CultureInfo.InvariantCulture);
+            set => VUnComLiq = decimal.Parse(value, CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Omite o valor quando não informado.
+        /// </summary>
+        public bool ShouldSerializeVUnComLiqField() => informadoVUnComLiq;
+
+        private double valorVProdLiq;
+        private bool informadoVProdLiq;
+
+        /// <summary>
+        /// Valor líquido do produto ou serviço, sem tributos. Informar em conjunto com VUnComLiq.
+        /// </summary>
+        [XmlIgnore]
+        public double VProdLiq
+        {
+            get => valorVProdLiq;
+            set
+            {
+                valorVProdLiq = value;
+                informadoVProdLiq = true;
+            }
+        }
+
+        /// <summary>
+        /// Representação XML do valor líquido do produto ou serviço.
+        /// </summary>
+        [XmlElement("vProdLiq", Order = 19)]
+        public string VProdLiqField
+        {
+            get => VProdLiq.ToString("F2", CultureInfo.InvariantCulture);
+            set => VProdLiq = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Omite o valor quando não informado.
+        /// </summary>
+        public bool ShouldSerializeVProdLiqField() => informadoVProdLiq;
+
         private string CEANTribField = "";
 
         /// <summary>
         /// GTIN (Global Trade Item Number) da unidade tributável, antigo código EAN ou código de barras
         /// </summary>
-        [XmlElement("cEANTrib", Order = 18)]
+        [XmlElement("cEANTrib", Order = 20)]
         public string CEANTrib
         {
             get => CEANTribField;
@@ -2413,25 +2484,25 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Código de barras da unidade tributável diferente do padrão GTIN
         /// </summary>
-        [XmlElement("cBarraTrib", Order = 19)]
+        [XmlElement("cBarraTrib", Order = 21)]
         public string CBarraTrib { get; set; } = "";
 
         /// <summary>
         /// Unidade Tributável
         /// </summary>
-        [XmlElement("uTrib", Order = 20)]
+        [XmlElement("uTrib", Order = 22)]
         public string UTrib { get; set; }
 
         /// <summary>
         /// Quantidade Tributável - alterado para aceitar de 0 a 4 casas decimais e 11 inteiros
         /// </summary>
-        [XmlElement("qTrib", Order = 21)]
+        [XmlElement("qTrib", Order = 23)]
         public decimal QTrib { get; set; }
 
         /// <summary>
         /// Valor unitário de tributação - - alterado para aceitar 0 a 10 casas decimais e 11 inteiros
         /// </summary>
-        [XmlElement("vUnTrib", Order = 22)]
+        [XmlElement("vUnTrib", Order = 24)]
         public decimal VUnTrib { get; set; }
 
         /// <summary>
@@ -2443,7 +2514,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VFrete para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vFrete", Order = 23)]
+        [XmlElement("vFrete", Order = 25)]
         public string VFreteField
         {
             get => VFrete.ToString("F2", CultureInfo.InvariantCulture);
@@ -2459,7 +2530,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VSeg para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vSeg", Order = 24)]
+        [XmlElement("vSeg", Order = 26)]
         public string VSegField
         {
             get => VSeg.ToString("F2", CultureInfo.InvariantCulture);
@@ -2475,7 +2546,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VDesc para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vDesc", Order = 25)]
+        [XmlElement("vDesc", Order = 27)]
         public string VDescField
         {
             get => VDesc.ToString("F2", CultureInfo.InvariantCulture);
@@ -2491,7 +2562,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VOutro para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vOutro", Order = 26)]
+        [XmlElement("vOutro", Order = 28)]
         public string VOutroField
         {
             get => VOutro.ToString("F2", CultureInfo.InvariantCulture);
@@ -2503,91 +2574,91 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// 0 – o valor do item (vProd) não compõe o valor total da NF-e (vProd);
         /// 1 – o valor do item(vProd) compõe o valor total da NF-e(vProd)
         /// </summary>
-        [XmlElement("indTot", Order = 27)]
+        [XmlElement("indTot", Order = 29)]
         public SimNao IndTot { get; set; }
 
         /// <summary>
         /// 1 - Bem Móvel Usado
         /// </summary>
-        [XmlElement("indBemMovelUsado", Order = 28)]
+        [XmlElement("indBemMovelUsado", Order = 30)]
         public int IndBemMovelUsado { get; set; }
 
         /// <summary>
         /// Declaração de Importação
         /// </summary>
-        [XmlElement("DI", Order = 29)]
+        [XmlElement("DI", Order = 31)]
         public List<DI> DI { get; set; }
 
         /// <summary>
         /// Detalhe da exportação
         /// </summary>
-        [XmlElement("detExport", Order = 30)]
+        [XmlElement("detExport", Order = 32)]
         public List<DetExport> DetExport { get; set; }
 
         /// <summary>
         /// Pedido de compra - Informação de interesse do emissor para controle do B2B
         /// </summary>
-        [XmlElement("xPed", Order = 31)]
+        [XmlElement("xPed", Order = 33)]
         public string XPed { get; set; }
 
         /// <summary>
         /// Número do Item do Pedido de Compra - Identificação do número do item do pedido de Compra
         /// </summary>
-        [XmlElement("nItemPed", Order = 32)]
+        [XmlElement("nItemPed", Order = 34)]
         public string NItemPed { get; set; }
 
         /// <summary>
         /// Número de controle da FCI - Ficha de Conteúdo de Importação
         /// </summary>
-        [XmlElement("nFCI", Order = 33)]
+        [XmlElement("nFCI", Order = 35)]
         public string NFCI { get; set; }
 
         /// <summary>
         /// Grupo de informações de rastreabilidade
         /// </summary>
-        [XmlElement("rastro", Order = 34)]
+        [XmlElement("rastro", Order = 36)]
         public List<Rastro> Rastro { get; set; }
 
         /// <summary>
         /// Informações mais detalhadas do produto
         /// </summary>
-        [XmlElement("infProdNFF", Order = 35)]
+        [XmlElement("infProdNFF", Order = 37)]
         public InfProdNFF InfProdNFF { get; set; }
 
         /// <summary>
         /// Informações mais detalhadas do produto
         /// </summary>
-        [XmlElement("infProdEmb", Order = 36)]
+        [XmlElement("infProdEmb", Order = 38)]
         public InfProdEmb InfProdEmb { get; set; }
 
         /// <summary>
         /// Veículos novos
         /// </summary>
-        [XmlElement("veicProd", Order = 37)]
+        [XmlElement("veicProd", Order = 39)]
         public VeicProd VeicProd { get; set; }
 
         /// <summary>
         /// Grupo do detalhamento de Medicamentos e de matérias-primas farmacêuticas
         /// </summary>
-        [XmlElement("med", Order = 38)]
+        [XmlElement("med", Order = 40)]
         public Med Med { get; set; }
 
         /// <summary>
         /// Armamentos
         /// </summary>
-        [XmlElement("arma", Order = 39)]
+        [XmlElement("arma", Order = 41)]
         public List<Arma> Arma { get; set; }
 
         /// <summary>
         /// Informar apenas para operações com combustíveis líquidos
         /// </summary>
-        [XmlElement("comb", Order = 40)]
+        [XmlElement("comb", Order = 42)]
         public List<Comb> Comb { get; set; }
 
         /// <summary>
         /// Número do RECOPI
         /// </summary>
-        [XmlElement("nRECOPI", Order = 41)]
+        [XmlElement("nRECOPI", Order = 43)]
         public string NRECOPI { get; set; }
 
         #region ShouldSerialize
@@ -4266,6 +4337,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlElement("ICMSST", Order = 20)]
         public ICMSST ICMSST { get; set; }
+
+        /// <summary>
+        /// ICMS previsto no pagamento antecipado, como alternativa aos demais grupos de ICMS.
+        /// </summary>
+        [XmlElement("ICMSPrevistoPagtoAntecip", Order = 21)]
+        public ICMSPrevistoPagtoAntecip ICMSPrevistoPagtoAntecip { get; set; }
     }
 
     /// <summary>
@@ -9970,34 +10047,66 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class Total
     {
+        private double valorVProdLiqTot;
+        private bool informadoVProdLiqTot;
+
+        /// <summary>
+        /// Valor total líquido dos produtos ou serviços, sem tributos.
+        /// </summary>
+        [XmlIgnore]
+        public double VProdLiqTot
+        {
+            get => valorVProdLiqTot;
+            set
+            {
+                valorVProdLiqTot = value;
+                informadoVProdLiqTot = true;
+            }
+        }
+
+        /// <summary>
+        /// Representação XML do valor total líquido dos produtos ou serviços.
+        /// </summary>
+        [XmlElement("vProdLiqTot", Order = 0)]
+        public string VProdLiqTotField
+        {
+            get => VProdLiqTot.ToString("F2", CultureInfo.InvariantCulture);
+            set => VProdLiqTot = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Omite o valor quando não informado.
+        /// </summary>
+        public bool ShouldSerializeVProdLiqTotField() => informadoVProdLiqTot;
+
         /// <summary>
         /// Totais referentes ao ICMS
         /// </summary>
-        [XmlElement("ICMSTot", Order = 0)]
+        [XmlElement("ICMSTot", Order = 1)]
         public ICMSTot ICMSTot { get; set; }
 
         /// <summary>
         /// Totais referentes ao ISSQN
         /// </summary>
-        [XmlElement("ISSQNtot", Order = 1)]
+        [XmlElement("ISSQNtot", Order = 2)]
         public ISSQNtot ISSQNtot { get; set; }
 
         /// <summary>
         /// Retenção de Tributos Federais
         /// </summary>
-        [XmlElement("retTrib", Order = 2)]
+        [XmlElement("retTrib", Order = 3)]
         public RetTrib RetTrib { get; set; }
 
         /// <summary>
         /// Grupo total do imposto seletivo
         /// </summary>
-        [XmlElement("ISTot", Order = 3)]
+        [XmlElement("ISTot", Order = 4)]
         public ISTot ISTot { get; set; }
 
         /// <summary>
         /// Totais da NF-e com IBS e CBS
         /// </summary>
-        [XmlElement("IBSCBSTot", Order = 4)]
+        [XmlElement("IBSCBSTot", Order = 5)]
         public IBSCBSTot IBSCBSTot { get; set; }
 
         /// <summary>
@@ -10020,7 +10129,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade vNFTot para atribuir ou resgatar o valor)
         /// </summary>
-        [XmlElement("vNFTot", Order = 5)]
+        [XmlElement("vNFTot", Order = 6)]
         public string VNFTotField
         {
             get => VNFTot.ToString("F2", CultureInfo.InvariantCulture);

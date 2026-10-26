@@ -766,6 +766,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoCancelamentoConciliacaoFinanceira();
                         break;
 
+                    case TipoEventoNFe.VinculacaoPagamento:
+                        _detEvento = new DetEventoVinculacaoPagamento();
+                        break;
+
                     case TipoEventoNFe.CancelamentoDeEvento:
                         _detEvento = new DetEventoCancelamentoDeEvento();
                         break;

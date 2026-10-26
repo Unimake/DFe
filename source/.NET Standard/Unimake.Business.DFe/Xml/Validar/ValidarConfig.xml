@@ -120,6 +120,11 @@
 					<SchemaArquivoEspecifico>e110751_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
+					<ID>110300</ID>
+					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110300_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
 					<ID>110001</ID>
 					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e110001_v1.00.xsd</SchemaArquivoEspecifico>
@@ -421,6 +426,11 @@
 					<ID>110751</ID>
 					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e110751_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110300</ID>
+					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110300_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
 					<ID>110001</ID>
