@@ -413,3 +413,6 @@ MigrationBackup/
 !/.codex/skills/manutencao-ciot/**
 !/.codex/skills/atualizar-serializacao-xsd/
 !/.codex/skills/atualizar-serializacao-xsd/**
+
+# Backup temporário da validação local com o UniNFe
+/uninfe-xsd-backup.json

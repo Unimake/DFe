@@ -1336,6 +1336,66 @@ namespace Unimake.Business.DFe.Servicos
         CancelamentoDeEvento = 110001,
 
         /// <summary>
+        /// 110300 - Vinculação da transação de pagamento no DF-e.
+        /// </summary>
+        [XmlEnum("110300")]
+        VinculacaoPagamento = 110300,
+
+        /// <summary>
+        /// 211120 - Código de evento cancelável previsto em e110001_v1.00.xsd.
+        /// </summary>
+        [XmlEnum("211120")]
+        Evento211120 = 211120,
+
+        /// <summary>
+        /// 412140 - Código de evento cancelável previsto em e110001_v1.00.xsd.
+        /// </summary>
+        [XmlEnum("412140")]
+        Evento412140 = 412140,
+
+        /// <summary>
+        /// 420110 - Código de evento cancelável previsto em e110001_v1.00.xsd.
+        /// </summary>
+        [XmlEnum("420110")]
+        Evento420110 = 420110,
+
+        /// <summary>
+        /// 420120 - Código de evento cancelável previsto em e110001_v1.00.xsd.
+        /// </summary>
+        [XmlEnum("420120")]
+        Evento420120 = 420120,
+
+        /// <summary>
+        /// 420130 - Código de evento cancelável previsto em e110001_v1.00.xsd.
+        /// </summary>
+        [XmlEnum("420130")]
+        Evento420130 = 420130,
+
+        /// <summary>
+        /// 420140 - Código de evento cancelável previsto em e110001_v1.00.xsd.
+        /// </summary>
+        [XmlEnum("420140")]
+        Evento420140 = 420140,
+
+        /// <summary>
+        /// 420150 - Código de evento cancelável previsto em e110001_v1.00.xsd.
+        /// </summary>
+        [XmlEnum("420150")]
+        Evento420150 = 420150,
+
+        /// <summary>
+        /// 420160 - Código de evento cancelável previsto em e110001_v1.00.xsd.
+        /// </summary>
+        [XmlEnum("420160")]
+        Evento420160 = 420160,
+
+        /// <summary>
+        /// 420170 - Código de evento cancelável previsto em e110001_v1.00.xsd.
+        /// </summary>
+        [XmlEnum("420170")]
+        Evento420170 = 420170,
+
+        /// <summary>
         /// 110110 - Carta de correção eletrônica
         /// </summary>
         [XmlEnum("110110")]

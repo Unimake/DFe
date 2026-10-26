@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-    <AssemblyVersion>2026.10.21.1612</AssemblyVersion>
-    <FileVersion>2026.10.21.1612</FileVersion>
+    <AssemblyVersion>2026.10.26.1657</AssemblyVersion>
+    <FileVersion>2026.10.26.1657</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1235,6 +1235,7 @@
 		<None Remove="Xml\Schemas\NFe\retEnviNFe_v4.00_monofasia_legado.xsd" />
 		<None Remove="Xml\Schemas\NFe\distDFeInt_v1.35.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110001_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\e110300_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110130_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110131_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110140_v1.00.xsd" />
@@ -2742,6 +2743,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFe\retConsReciNFe_v4.00_monofasia_legado.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\retEnviNFe_v4.00_monofasia_legado.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\e110001_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110300_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\e110192_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\e110193_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\e110750_v1.00.xsd" />
@@ -3958,9 +3960,9 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="System.Net.Http.Json" Version="10.0.13" />
-		<PackageReference Include="System.Net.Http.WinHttpHandler" Version="10.0.13" GeneratePathProperty="true" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.13" />
+		<PackageReference Include="System.Net.Http.Json" Version="10.0.14" />
+		<PackageReference Include="System.Net.Http.WinHttpHandler" Version="10.0.14" GeneratePathProperty="true" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.14" />
 		<PackageReference Include="Unimake.Cryptography" Version="20260918.1832.16" />
 		<PackageReference Include="Unimake.Extensions" Version="20260918.1832.16" />
 		<PackageReference Include="Unimake.Utils" Version="20260918.1832.16" />

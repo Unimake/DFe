@@ -21,6 +21,7 @@ namespace Unimake.DFe.Test.Utility.Config
         [InlineData(3550308, PadraoNFSe.PAULISTANA)]
         [InlineData(4211207, PadraoNFSe.IPM)]
         [InlineData(5211909, PadraoNFSe.CENTI)]
+        [InlineData(2925303, PadraoNFSe.WEBISS)]
         public void GetPadraoNFSeByCodigoMunicipio_DeveRetornarPadraoCorretoParaMunicipiosImplementados(int codigoMunicipio, PadraoNFSe padraoEsperado)
         {
             Assert.Equal(padraoEsperado, Configuration.GetPadraoNFSe(codigoMunicipio));
@@ -36,6 +37,7 @@ namespace Unimake.DFe.Test.Utility.Config
         [InlineData(3550308, "SP", "SaoPauloSP.xml", PadraoNFSe.PAULISTANA)]
         [InlineData(4211207, "SC", "MorroDaFumacaSC.xml", PadraoNFSe.IPM)]
         [InlineData(5211909, "GO", "JataiGO.xml", PadraoNFSe.CENTI)]
+        [InlineData(2925303, "BA", "PortoSeguroBA.xml", PadraoNFSe.WEBISS)]
         public void CarregarMunicipio_DeveRetornarDadosCompletosParaMunicipiosConfigurados(int codigoMunicipio, string ufEsperada, string arqConfigEsperado, PadraoNFSe padraoEsperado)
         {
             var municipios = Configuration.CarregarMunicipio();
@@ -68,6 +70,26 @@ namespace Unimake.DFe.Test.Utility.Config
             var api = new ConfiguracaoApiConfigMapper().MapExplicitEnvironment(configuracao);
 
             Assert.Equal(endpointEsperado, api.RequestURI);
+        }
+
+        [Fact]
+        [Trait("Utility", "Config")]
+        public void CarregarGerarNfsePortoSeguro_DeveUsarEndpointWebissProducao()
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                CodigoMunicipio = 2925303,
+                TipoAmbiente = TipoAmbiente.Producao,
+                Servico = Servico.NFSeGerarNfse,
+                SchemaVersao = "2.02"
+            };
+
+            configuracao.Load("GerarNfse");
+
+            Assert.Equal("https://portoseguroba.gestaoiss.com.br/ws/nfse.asmx?wsdl", configuracao.WebEnderecoProducao);
+            Assert.Equal("http://nfse.abrasf.org.br/GerarNfse", configuracao.WebActionProducao);
+            Assert.Equal("2.02", configuracao.SchemaVersao);
         }
 
         [Fact]
