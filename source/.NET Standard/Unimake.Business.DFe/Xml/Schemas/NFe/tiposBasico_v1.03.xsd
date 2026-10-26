@@ -962,4 +962,21 @@ acrescentado:
 			</xs:element>
 		</xs:sequence>
 	</xs:group>
+	<xs:simpleType name="TNSU">
+		<xs:annotation>
+			<xs:documentation>Tipo número sequencial único</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[0-9]{15}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TVerDistDFe">
+		<xs:annotation>
+			<xs:documentation>Tipo Versão dos leiautes do Web Service NFeDistribuicaoDFe</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="1.35"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
