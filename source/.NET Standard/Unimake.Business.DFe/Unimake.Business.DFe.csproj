@@ -119,6 +119,7 @@
 		<None Remove="Servicos\Config\DARE\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\AquirazCE.xml" />
 		<None Remove="Servicos\Config\NFSe\ArapongasPR.xml" />
+		<None Remove="Servicos\Config\NFSe\PocosDeCaldasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SIGCORP.xml" />
 		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DuqueDeCaxiasRJ.xml" />
@@ -1662,6 +1663,7 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ArapongasPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\PocosDeCaldasMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SilvaniaGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SIGCORP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PotirendabaSP.xml" />

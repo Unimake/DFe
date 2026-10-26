@@ -2045,4 +2045,10 @@
 		<ArqConfig>AquirazCE.xml</ArqConfig>
 		<PadraoNFSe>INTERSOL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3151800">
+		<Nome>Poços de Caldas - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>PocosDeCaldasMG.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
