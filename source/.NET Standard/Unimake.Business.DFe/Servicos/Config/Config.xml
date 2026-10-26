@@ -2051,4 +2051,10 @@
 		<ArqConfig>PocosDeCaldasMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2925303">
+		<Nome>Porto Seguro - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>PortoSeguroBA.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
