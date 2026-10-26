@@ -1527,11 +1527,26 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             };
 
             if (pagamento.NPag < 1 || pagamento.NPag > 990 ||
-                numeroInformado != pagamento.NPag.ToString(CultureInfo.InvariantCulture) ||
-                !SomenteDigitos(pagamento.TpMeioPgto) || !SomenteDigitos(pagamento.CNPJReceb) ||
-                !SomenteDigitos(pagamento.CNPJBasePSP))
+                numeroInformado != pagamento.NPag.ToString(CultureInfo.InvariantCulture))
             {
-                throw new InvalidOperationException("YV01: nPag deve estar entre 1 e 990, sem zeros à esquerda; tpMeioPgto, CNPJReceb e CNPJBasePSP devem conter apenas dígitos.");
+                throw new InvalidOperationException("YV01: nPag deve estar entre 1 e 990, sem zeros à esquerda.");
+            }
+
+            if (pagamento.TpMeioPgto?.Length != 2 || !SomenteDigitos(pagamento.TpMeioPgto))
+            {
+                throw new InvalidOperationException("YV01: tpMeioPgto deve conter dois dígitos.");
+            }
+
+            if (pagamento.CNPJReceb?.Length != 14 ||
+                !SomenteLetrasMaiusculasOuDigitos(pagamento.CNPJReceb.Substring(0, 12)) ||
+                !SomenteDigitos(pagamento.CNPJReceb.Substring(12, 2)))
+            {
+                throw new InvalidOperationException("YV01: CNPJReceb deve conter 12 letras maiúsculas ou dígitos, seguidos de dois dígitos.");
+            }
+
+            if (pagamento.CNPJBasePSP?.Length != 8 || !SomenteLetrasMaiusculasOuDigitos(pagamento.CNPJBasePSP))
+            {
+                throw new InvalidOperationException("YV01: CNPJBasePSP deve conter oito letras maiúsculas ou dígitos.");
             }
 
             if (nfeOficial.InfNFeField.GPgtoVinc == null)
@@ -1548,6 +1563,20 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             foreach (var caracter in valor)
             {
                 if (caracter < '0' || caracter > '9') return false;
+            }
+
+            return true;
+        }
+
+        private static bool SomenteLetrasMaiusculasOuDigitos(string valor)
+        {
+            if (string.IsNullOrEmpty(valor)) return false;
+            foreach (var caracter in valor)
+            {
+                if (caracter < '0' || caracter > '9')
+                {
+                    if (caracter < 'A' || caracter > 'Z') return false;
+                }
             }
 
             return true;
