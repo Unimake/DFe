@@ -102,6 +102,7 @@ H|nItem|infAdProd|
 I|cProd|cEAN|XProd|NCM|NVE|CEST|indEscala|CNPJFab|cBenef|EXTIPI|CFOP|UCom|QCom|VUnCom|VProd|CEANTrib|UTrib|QTrib|VUnTrib|VFrete|VSeg|VDesc|vOutro|indTot|xPed|nItemPed|nFCI|
 # I_30
 I|cProd|cEAN|cBarra|XProd|NCM|NVE|CEST|indEscala|CNPJFab|cBenef|EXTIPI|CFOP|UCom|QCom|VUnCom|VProd|CEANTrib|cBarraTrib|UTrib|QTrib|VUnTrib|VFrete|VSeg|VDesc|vOutro|indTot|xPed|nItemPed|nFCI|
+I11A|vUnComLiq|vProdLiq|
 I05g|cCredPresumido|pCredPresumido|vCredPresumido|
 I05a|NVE|
 I05k|tpCredPresIBSZFM|
@@ -245,6 +246,7 @@ N10g|orig|CSOSN|vBCSTRet|pST|vICMSSTRet|vBCFCPSTRet|pFCPSTRet|vFCPSTRet|pRedBCEf
 N10g|orig|CSOSN|vBCSTRet|pST|vICMSSubstituto|vICMSSTRet|vBCFCPSTRet|pFCPSTRet|vFCPSTRet|pRedBCEfet|vBCEfet|pICMSEfet|vICMSEfet|
 # N10H_400
 N10h|orig|CSOSN|modBC|vBC|pRedBC|pICMS|vICMS|modBCST|pMVAST|pRedBCST|vBCST|pICMSST|vICMSST|vBCFCPST|pFCPST|vFCPST|pCredSN|vCredICMSSN|
+NB01|vICMSPrevisto|
 # NA_400
 NA|vBCUFDest|vBCFCPUFDest|pFCPUFDest|pICMSUFDest|pICMSInter|pICMSInterPart|vFCPUFDest|vICMSUFDest|vICMSUFRemet|
 ```
@@ -376,6 +378,7 @@ VC01|chaveAcesso|nItem|
 ## W
 
 ```text
+W01A|vProdLiqTot|
 # W02_400_17
 W02|vBC|vICMS|vICMSDeson|vBCST|vST|vProd|vFrete|vSeg|vDesc|vII|vIPI|vPIS|vCOFINS|vOutro|vNF|vTotTrib|
 # W02_400_20
@@ -429,6 +432,7 @@ YA04|tpIntegra|
 YA04a|tpIntegra|
 YA09|vTroco|
 YB|CNPJ|idCadIntTran|
+YV01|nPag|idTransacao|tpMeioPgto|CNPJReceb|CNPJBasePSP|
 ```
 
 ## Z
