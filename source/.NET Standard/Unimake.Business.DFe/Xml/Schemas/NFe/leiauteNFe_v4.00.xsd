@@ -6169,12 +6169,12 @@ Substituição Tributaria;</xs:documentation>
 							</xs:annotation>
 							<!-- Valida a unicidade de nPag -->
 							<xs:unique name="pk_gPgto_nPag">
-								<xs:selector xpath="gPgto"/>
+								<xs:selector xpath="editix:gPgto"/>
 								<xs:field xpath="@nPag"/>
 							</xs:unique>
 							<!-- Valida a unicidade de idTransacao -->
 							<xs:unique name="pk_gPgto_idTransacao">
-								<xs:selector xpath="gPgto"/>
+								<xs:selector xpath="editix:gPgto"/>
 								<xs:field xpath="@idTransacao"/>
 							</xs:unique>
 						</xs:element>

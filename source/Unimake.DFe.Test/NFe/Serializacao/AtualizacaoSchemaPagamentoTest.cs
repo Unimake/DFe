@@ -189,6 +189,63 @@ namespace Unimake.DFe.Test.NFe.Serializacao
             Validar(retorno.GerarXML(), "retDistDFeInt_v1.35.xsd");
         }
 
+        [Theory]
+        [InlineData("nPag", false)]
+        [InlineData("idTransacao", false)]
+        [InlineData("nPag", true)]
+        [InlineData("idTransacao", true)]
+        public void SchemaRejeitaAtributoDuplicadoNosPagamentosVinculados(string atributo, bool validarLote)
+        {
+            var nfe = CriarNFe();
+            nfe.InfNFeField.GPgtoVinc = CriarPagamentosVinculados();
+            var pagamentos = nfe.InfNFeField.GPgtoVinc.GPgto;
+            if (atributo == "nPag")
+            {
+                pagamentos[1].NPag = pagamentos[0].NPag;
+            }
+            else
+            {
+                pagamentos[1].IdTransacao = pagamentos[0].IdTransacao;
+            }
+
+            var validar = new ValidarSchema();
+            validar.Validar(GerarDocumentoPagamentos(nfe, validarLote),
+                validarLote ? "NFe.enviNFe_v4.00.xsd" : "NFe.nfe_v4.00.xsd", Ns);
+
+            Assert.False(validar.Success, "O schema aceitou o atributo duplicado: " + atributo);
+            Assert.Contains("pk_gPgto_" + atributo, validar.ErrorMessage);
+        }
+
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void SchemaAceitaPagamentosVinculadosComAtributosDistintos(bool validarLote)
+        {
+            var nfe = CriarNFe();
+            nfe.InfNFeField.GPgtoVinc = CriarPagamentosVinculados();
+
+            Validar(GerarDocumentoPagamentos(nfe, validarLote),
+                validarLote ? "enviNFe_v4.00.xsd" : "nfe_v4.00.xsd");
+        }
+
+        private static GPgtoVinc CriarPagamentosVinculados() => new GPgtoVinc
+        {
+            GPgto = new List<GPgto>
+            {
+                new GPgto { NPag = 1, IdTransacao = "TRANSACAO-01", TpMeioPgto = "01", CNPJReceb = "00000000000191", CNPJBasePSP = "00000000" },
+                new GPgto { NPag = 2, IdTransacao = "TRANSACAO-02", TpMeioPgto = "99", CNPJReceb = "00000000000191", CNPJBasePSP = "00000000" }
+            }
+        };
+
+        private static XmlDocument GerarDocumentoPagamentos(Business.DFe.Xml.NFe.NFe nfe, bool validarLote) =>
+            validarLote
+                ? new EnviNFe
+                {
+                    Versao = "4.00", IdLote = "1", IndSinc = SimNao.Sim,
+                    NFe = new List<Business.DFe.Xml.NFe.NFe> { nfe }
+                }.GerarXML()
+                : XMLUtility.Serializar(nfe);
+
         private static Business.DFe.Xml.NFe.NFe CriarNFe()
         {
             var doc = new XmlDocument();
