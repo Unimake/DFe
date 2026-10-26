@@ -33,7 +33,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:GerarNfseRequest><nfseCabecMsg>&lt;ns2:cabecalho xmlns=&quot;http://www.w3.org/2000/09/xmldsig#&quot; xmlns:ns2=&quot;http://www.abrasf.org.br/nfse.xsd&quot; versao=&quot;2.01&quot;&gt;&lt;ns2:versaoDados&gt;2.01&lt;/ns2:versaoDados&gt;&lt;/ns2:cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns2:ConsultarNfseServicoTomadoResponse</WebTagRetorno>
+			<WebTagRetorno>ns2:GerarNfseResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
