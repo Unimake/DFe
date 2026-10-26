@@ -184,7 +184,7 @@ namespace Unimake.DFe.Test.NFe.Serializacao
             {
                 Versao = "1.35", TpAmb = TipoAmbiente.Homologacao, VerAplic = "TESTE", CStat = 137,
                 XMotivo = "Nenhum documento localizado", UltNSU = "000000000000000", MaxNSU = "000000000000000",
-                DhResp = DateTimeOffset.Parse("2026-10-26T10:00:00-03:00")
+                DhRespField = "2026-10-26T10:00:00-03:00"
             };
             Validar(retorno.GerarXML(), "retDistDFeInt_v1.35.xsd");
         }
