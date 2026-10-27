@@ -85,7 +85,8 @@
                                                         <xs:simpleType>
                                                             <xs:annotation>
                                                                 <xs:documentation>Informar se o afastamento decorre da mesma doença que gerou o(s) afastamento(s) anterior(es) ({codMotAfast}(./codMotAfast) = [01, 03]), dentro de 60 (sessenta) dias.</xs:documentation>
-                                                                <xs:documentation>Validação: Se {codMotAfast}(./codMotAfast) = [01], somente podem ser informados os valores [S] ou [N]. Além disso, caso {dtIniAfast}(./dtIniAfast) seja igual ou posterior a [2026-10-26], o preenchimento do campo é obrigatório e exclusivo se {codMotAfast}(./codMotAfast) = [01, 03] e se existir para o mesmo contrato do trabalhador outro afastamento anterior dentro do período de 60 (sessenta) dias com o mesmo código de motivo de afastamento.</xs:documentation>
+                                                                <xs:documentation>Validação: Caso {dtIniAfast}(./dtIniAfast) seja igual ou posterior a [2026-10-26], o preenchimento do campo é exclusivo se {codMotAfast}(./codMotAfast) = [01, 03].</xs:documentation>
+                                                                <xs:documentation>Se {dtIniAfast}(./dtIniAfast) for igual ou posterior a [2026-10-26], se {codMotAfast}(./codMotAfast) = [01, 03] e se existir para o mesmo contrato do trabalhador outro afastamento anterior dentro do período de 60 (sessenta) dias com o mesmo código de motivo de afastamento, deve ser informado um dos valores [S, N]. Caso não exista outro afastamento anterior dentro do período de 60 (sessenta) dias, o campo não deverá ser preenchido ou deverá ser informado o valor [N].</xs:documentation>
                                                             </xs:annotation>
                                                             <xs:restriction base="xs:string">
                                                                 <xs:enumeration value="S">
@@ -96,11 +97,6 @@
                                                                 <xs:enumeration value="N">
                                                                     <xs:annotation>
                                                                         <xs:documentation>Não</xs:documentation>
-                                                                    </xs:annotation>
-                                                                </xs:enumeration>
-                                                                <xs:enumeration value="I">
-                                                                    <xs:annotation>
-                                                                        <xs:documentation>Indeterminado (não consta CID)</xs:documentation>
                                                                     </xs:annotation>
                                                                 </xs:enumeration>
                                                             </xs:restriction>

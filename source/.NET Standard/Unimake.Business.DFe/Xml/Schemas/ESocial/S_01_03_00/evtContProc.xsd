@@ -466,6 +466,7 @@
                                                                 <xs:annotation>
                                                                     <xs:documentation>Informar o número de inscrição do dependente no CPF.</xs:documentation>
                                                                     <xs:documentation>Validação: Deve ser um CPF de dependente cadastrado no eSocial (S-2200/S-2205/S-2300 ou no grupo {infoDep}(2501_ideTrab_infoIRComplem_infoDep)).</xs:documentation>
+                                                                    <xs:documentation>Não podem ser informados os números [00000000000, 00000000191, 11111111111, 22222222222, 33333333333, 44444444444, 55555555555, 66666666666, 77777777777, 88888888888, 99999999999].</xs:documentation>
                                                                 </xs:annotation>
                                                                 <xs:simpleType>
                                                                     <xs:restriction base="TS_cpfDepIR2" />
@@ -525,6 +526,7 @@
                                                                 <xs:annotation>
                                                                     <xs:documentation>Número do CPF do dependente/beneficiário da pensão alimentícia.</xs:documentation>
                                                                     <xs:documentation>Validação: Deve ser um CPF de dependente cadastrado no eSocial (S-2200/S-2205/S-2300 ou no grupo {infoDep}(2501_ideTrab_infoIRComplem_infoDep)).</xs:documentation>
+                                                                    <xs:documentation>Não podem ser informados os números [00000000000, 00000000191, 11111111111, 22222222222, 33333333333, 44444444444, 55555555555, 66666666666, 77777777777, 88888888888, 99999999999].</xs:documentation>
                                                                 </xs:annotation>
                                                                 <xs:simpleType>
                                                                     <xs:restriction base="TS_cpfPenAlim" />
@@ -576,6 +578,7 @@
                                                                                                     <xs:annotation>
                                                                                                         <xs:documentation>Número de inscrição no CPF.</xs:documentation>
                                                                                                         <xs:documentation>Validação: Deve ser um CPF de dependente cadastrado no eSocial (S-2200/S-2205/S-2300 ou no grupo {infoDep}(2501_ideTrab_infoIRComplem_infoDep)).</xs:documentation>
+                                                                                                        <xs:documentation>Não podem ser informados os números [00000000000, 00000000191, 11111111111, 22222222222, 33333333333, 44444444444, 55555555555, 66666666666, 77777777777, 88888888888, 99999999999].</xs:documentation>
                                                                                                     </xs:annotation>
                                                                                                     <xs:simpleType>
                                                                                                         <xs:restriction base="TS_cpfDepIR2" />
@@ -785,7 +788,8 @@
                                                             <xs:attribute name="cpfDep">
                                                                 <xs:annotation>
                                                                     <xs:documentation>Número de inscrição no CPF.</xs:documentation>
-                                                                    <xs:documentation>Validação: Deve ser um CPF válido e diferente do CPF do declarante pessoa física ({ideEmpregador/nrInsc}(/ideEmpregador_nrInsc)) e do beneficiário ({cpfTrab}(../../cpfTrab)).</xs:documentation>
+                                                                    <xs:documentation>Validação: Informação validada na base de dados do CPF.</xs:documentation>
+                                                                    <xs:documentation>Deve ser diferente do CPF do declarante pessoa física ({ideEmpregador/nrInsc}(/ideEmpregador_nrInsc)) e do beneficiário ({cpfTrab}(../../cpfTrab)).</xs:documentation>
                                                                 </xs:annotation>
                                                                 <xs:simpleType>
                                                                     <xs:restriction base="TS_cpfDepIR" />

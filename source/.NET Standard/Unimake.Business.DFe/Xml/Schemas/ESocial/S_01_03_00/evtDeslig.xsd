@@ -62,7 +62,7 @@
                                                 </xs:restriction>
                                             </xs:simpleType>
                                         </xs:element>
-                                        <xs:element name="dtDeslig" type="xs:date">
+                                        <xs:element name="dtDeslig" type="TS_dt1890">
                                             <xs:annotation>
                                                 <xs:documentation>Preencher com a data de desligamento do vínculo (último dia trabalhado).</xs:documentation>
                                                 <xs:documentation>Validação: Deve ser uma data igual ou anterior à data atual acrescida de 10 (dez) dias. No caso de empregado reintegrado e quando não se tratar de retificação do desligamento anterior à reintegração, também deve ser uma data igual ou posterior a {dtEfetRetorno}(2298_infoReintegr_dtEfetRetorno) do evento S-2298.</xs:documentation>
@@ -142,7 +142,7 @@
                                                     <xs:element name="nrInsc" type="TS_nrInsc_11_14">
                                                         <xs:annotation>
                                                             <xs:documentation>Informar o número de inscrição do empregador sucessor, de acordo com o tipo de inscrição indicado no campo {sucessaoVinc/tpInsc}(./tpInsc).</xs:documentation>
-                                                            <xs:documentation>Validação: Deve ser um número de inscrição válido e diferente da inscrição do declarante, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000.</xs:documentation>
+                                                            <xs:documentation>Validação: Deve ser um número de inscrição válido, constante das bases da RFB, e diferente da inscrição do declarante, considerando as particularidades aplicadas à informação de CNPJ de órgão público em S-1000.</xs:documentation>
                                                             <xs:documentation>Se {sucessaoVinc/tpInsc}(./tpInsc) = [1], deve possuir 14 (catorze) algarismos e ser diferente do CNPJ base do empregador (exceto se {ideEmpregador/nrInsc}(2299_ideEmpregador_nrInsc) tiver 14 (catorze) algarismos). Também deve ser diferente dos estabelecimentos informados através do evento S-1005, exceto se a natureza jurídica do declarante for Administração Pública (grupo [1]).</xs:documentation>
                                                             <xs:documentation>Se {sucessaoVinc/tpInsc}(./tpInsc) = [2], deve possuir 11 (onze) algarismos.</xs:documentation>
                                                         </xs:annotation>

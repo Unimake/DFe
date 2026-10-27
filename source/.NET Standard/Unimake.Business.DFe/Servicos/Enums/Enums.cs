@@ -7389,7 +7389,7 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("S")]
         Sim = 1,
 
-        /// <summary>Indeterminado porque não consta CID.</summary>
+        /// <summary>Valor legado: indeterminado porque não consta CID. Não aceito pelo schema vigente de afastamento temporário.</summary>
         [XmlEnum("I")]
         Indeterminado = 2
     }

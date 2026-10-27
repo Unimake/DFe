@@ -197,33 +197,30 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informar se o afastamento decorre da mesma doença que gerou o 
         /// afastamento anterior (codMotAfast = [01, 03]), dentro de 60 dias.
         /// </summary>
-        [XmlIgnore]
+        [XmlElement("infoMesmoMtv")]
 #if INTEROP
-        public SimNaoLetra InfoMesmoMtv
-        {
-            get => InfoMesmoMtvIndicador == MesmoMotivoAfastamento.Sim ? SimNaoLetra.Sim :
-                InfoMesmoMtvIndicador == MesmoMotivoAfastamento.Nao ? SimNaoLetra.Nao : (SimNaoLetra)(-1);
-            set => InfoMesmoMtvIndicador = value == (SimNaoLetra)(-1) ? (MesmoMotivoAfastamento)(-1) :
-                value == SimNaoLetra.Sim ? MesmoMotivoAfastamento.Sim : MesmoMotivoAfastamento.Nao;
-        }
+        public SimNaoLetra InfoMesmoMtv { get; set; } = (SimNaoLetra)(-1);
 #else
-        public SimNaoLetra? InfoMesmoMtv
-        {
-            get => InfoMesmoMtvIndicador == MesmoMotivoAfastamento.Sim ? SimNaoLetra.Sim :
-                InfoMesmoMtvIndicador == MesmoMotivoAfastamento.Nao ? SimNaoLetra.Nao : (SimNaoLetra?)null;
-            set => InfoMesmoMtvIndicador = value == null ? (MesmoMotivoAfastamento?)null :
-                value == SimNaoLetra.Sim ? MesmoMotivoAfastamento.Sim : MesmoMotivoAfastamento.Nao;
-        }
+        public SimNaoLetra? InfoMesmoMtv { get; set; }
 #endif
 
         /// <summary>
-        /// Informa se o afastamento decorre da mesma doença, inclusive quando não consta CID.
+        /// Acesso compatível ao indicador do mesmo motivo de afastamento. Utilize os valores Sim ou Nao.
+        /// O valor legado Indeterminado não pertence ao domínio XML vigente e não pode ser serializado.
         /// </summary>
-        [XmlElement("infoMesmoMtv")]
+        [XmlIgnore]
 #if INTEROP
-        public MesmoMotivoAfastamento InfoMesmoMtvIndicador { get; set; } = (MesmoMotivoAfastamento)(-1);
+        public MesmoMotivoAfastamento InfoMesmoMtvIndicador
+        {
+            get => (MesmoMotivoAfastamento)InfoMesmoMtv;
+            set => InfoMesmoMtv = (SimNaoLetra)value;
+        }
 #else
-        public MesmoMotivoAfastamento? InfoMesmoMtvIndicador { get; set; }
+        public MesmoMotivoAfastamento? InfoMesmoMtvIndicador
+        {
+            get => (MesmoMotivoAfastamento?)InfoMesmoMtv;
+            set => InfoMesmoMtv = (SimNaoLetra?)value;
+        }
 #endif
 
         /// <summary>
@@ -269,13 +266,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
 #if INTEROP
-        public bool ShouldSerializeInfoMesmoMtv() => InfoMesmoMtvIndicador != (MesmoMotivoAfastamento)(-1);
+        public bool ShouldSerializeInfoMesmoMtv() => InfoMesmoMtv != (SimNaoLetra)(-1);
 
-        public bool ShouldSerializeInfoMesmoMtvIndicador() => InfoMesmoMtvIndicador != (MesmoMotivoAfastamento)(-1);
+        public bool ShouldSerializeInfoMesmoMtvIndicador() => ShouldSerializeInfoMesmoMtv();
 #else
-        public bool ShouldSerializeInfoMesmoMtv() => InfoMesmoMtvIndicador != null;
+        public bool ShouldSerializeInfoMesmoMtv() => InfoMesmoMtv != null;
 
-        public bool ShouldSerializeInfoMesmoMtvIndicador() => InfoMesmoMtvIndicador != null;
+        public bool ShouldSerializeInfoMesmoMtvIndicador() => ShouldSerializeInfoMesmoMtv();
 #endif
 
 #if INTEROP
