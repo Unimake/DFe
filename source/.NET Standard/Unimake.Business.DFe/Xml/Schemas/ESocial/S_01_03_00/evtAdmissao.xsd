@@ -221,7 +221,7 @@
                                                             </xs:annotation>
                                                             <xs:complexType>
                                                                 <xs:sequence>
-                                                                    <xs:element name="dtAdm" type="xs:date">
+                                                                    <xs:element name="dtAdm" type="TS_dt1890">
                                                                         <xs:annotation>
                                                                             <xs:documentation>Preencher com a data de admissão do trabalhador.</xs:documentation>
                                                                             <xs:documentation>No caso de transferência do empregado ou de mudança de CPF, preencher com a data inicial do vínculo no primeiro empregador (data de início do vínculo).</xs:documentation>
@@ -481,7 +481,7 @@
                                                                             </xs:restriction>
                                                                         </xs:simpleType>
                                                                     </xs:element>
-                                                                    <xs:element name="dtExercicio" type="xs:date">
+                                                                    <xs:element name="dtExercicio" type="TS_dt1890">
                                                                         <xs:annotation>
                                                                             <xs:documentation>Data da entrada em exercício pelo servidor.</xs:documentation>
                                                                             <xs:documentation>Validação: Devem ser observadas as seguintes regras:</xs:documentation>

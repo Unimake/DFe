@@ -167,7 +167,7 @@
                                             </xs:annotation>
                                         </xs:element>
                                         <xs:element name="codCateg" type="TS_codCateg" />
-                                        <xs:element name="dtInicio" type="xs:date">
+                                        <xs:element name="dtInicio" type="TS_dt1890">
                                             <xs:annotation>
                                                 <xs:documentation>Data de início, que pode ser:</xs:documentation>
                                                 <xs:documentation>a) Para o cooperado, a data de ingresso na cooperativa;</xs:documentation>

@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
@@ -8,20 +9,35 @@ namespace Unimake.DFe.Test.ESocial.Serializacao
 {
     public class AtualizacaoSchemaS010300Test
     {
-        [Fact]
+        [Theory]
         [Trait("DFe", "ESocial")]
-        public void AfastamentoAceitaMotivoIndeterminadoEPreservaSimNao()
+        [InlineData(MesmoMotivoAfastamento.Sim, SimNaoLetra.Sim, "S")]
+        [InlineData(MesmoMotivoAfastamento.Nao, SimNaoLetra.Nao, "N")]
+        public void AfastamentoPreservaSimNaoNasDuasPropriedades(MesmoMotivoAfastamento indicador, SimNaoLetra valor, string codigo)
         {
-            var afastamento = new IniAfastamento { InfoMesmoMtvIndicador = MesmoMotivoAfastamento.Indeterminado };
+            var afastamento = new IniAfastamento { InfoMesmoMtvIndicador = indicador };
             var xml = Serializar(afastamento);
 
-            Assert.Contains("<infoMesmoMtv>I</infoMesmoMtv>", xml);
-            Assert.Equal(MesmoMotivoAfastamento.Indeterminado, Desserializar<IniAfastamento>(xml).InfoMesmoMtvIndicador);
+            Assert.Contains("<infoMesmoMtv>" + codigo + "</infoMesmoMtv>", xml);
+            Assert.Equal(indicador, Desserializar<IniAfastamento>(xml).InfoMesmoMtvIndicador);
+            Assert.Equal(valor, Desserializar<IniAfastamento>(xml).InfoMesmoMtv);
 
-            afastamento.InfoMesmoMtv = SimNaoLetra.Sim;
+            afastamento.InfoMesmoMtv = valor;
             var xmlLegado = Serializar(afastamento);
-            Assert.Contains("<infoMesmoMtv>S</infoMesmoMtv>", xmlLegado);
-            Assert.Equal(SimNaoLetra.Sim, Desserializar<IniAfastamento>(xmlLegado).InfoMesmoMtv);
+            Assert.Contains("<infoMesmoMtv>" + codigo + "</infoMesmoMtv>", xmlLegado);
+            Assert.Equal(indicador, Desserializar<IniAfastamento>(xmlLegado).InfoMesmoMtvIndicador);
+            Assert.DoesNotContain("infoMesmoMtv", Serializar(new IniAfastamento()));
+        }
+
+        [Fact]
+        [Trait("DFe", "ESocial")]
+        public void AfastamentoRejeitaValorIndeterminadoRemovidoDoSchema()
+        {
+            var afastamento = new IniAfastamento { InfoMesmoMtvIndicador = MesmoMotivoAfastamento.Indeterminado };
+            Assert.Throws<InvalidOperationException>(() => Serializar(afastamento));
+
+            var xml = Serializar(new IniAfastamento { InfoMesmoMtv = SimNaoLetra.Sim });
+            Assert.Throws<InvalidOperationException>(() => Desserializar<IniAfastamento>(xml.Replace(">S<", ">I<")));
         }
 
         [Fact]

@@ -43,7 +43,7 @@
                                 </xs:annotation>
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="dtTerm" type="xs:date">
+                                        <xs:element name="dtTerm" type="TS_dt1890">
                                             <xs:annotation>
                                                 <xs:documentation>Data do término.</xs:documentation>
                                                 <xs:documentation>Validação: Deve ser uma data igual ou anterior à data atual acrescida de 10 (dez) dias.</xs:documentation>

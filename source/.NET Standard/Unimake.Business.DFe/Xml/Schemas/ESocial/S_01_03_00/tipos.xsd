@@ -3138,6 +3138,14 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <!-- Campos {dtAdm}(S-2190, S-2200), {dtExercicio}(S-2200), {dtInicio}(S-2300), {dtDeslig}(S-2299), {dtTerm}(S-2299) -->
+
+    <xs:simpleType name="TS_dt1890">
+        <xs:restriction base="xs:date">
+            <xs:minInclusive value="1890-01-01" />
+        </xs:restriction>
+    </xs:simpleType>
+
     <!-- Campo {vrSalFx} -->
 
     <xs:simpleType name="TS_vrSalFx">

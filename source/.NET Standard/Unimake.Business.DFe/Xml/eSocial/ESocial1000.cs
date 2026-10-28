@@ -256,9 +256,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         /// <summary>
         /// Indica se houve opção pelo registro eletrônico de empregados. Caso o declarante seja órgão público sem empregados regidos pela CLT, informar [0].
+        /// O valor -1 indica que o campo opcional não foi informado. Não preencher para início de validade igual ou posterior a 2026-02.
         /// </summary>
         [XmlElement("indOptRegEletron")]
-        public IndOptRegEletron IndOptRegEletron { get; set; }
+        public IndOptRegEletron IndOptRegEletron { get; set; } = (IndOptRegEletron)(-1);
 
         /// <summary>
         /// CNPJ do Ente Federativo Responsável - EFR
@@ -305,6 +306,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoOrgInternacional InfoOrgInternacional { get; set; }
 
         #region ShouldSerialize
+
+        /// <summary>
+        /// Define se o indicativo de opção pelo registro eletrônico foi informado e deve ser serializado.
+        /// </summary>
+        public bool ShouldSerializeIndOptRegEletron() => IndOptRegEletron != (IndOptRegEletron)(-1);
 
 #if INTEROP
         public bool ShouldSerializeIndCoop() => IndCoop != (IndCoop)(-1);

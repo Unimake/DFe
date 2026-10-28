@@ -439,6 +439,7 @@
             <xs:element name="observacao" minOccurs="0" type="TS_observacao">
                 <xs:annotation>
                     <xs:documentation>Observações relacionadas à rubrica ou à sua utilização.</xs:documentation>
+                    <xs:documentation>Validação: Preenchimento obrigatório se {tpRubr}(./tpRubr) = [4].</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="ideProcessoCP" minOccurs="0" maxOccurs="99">
