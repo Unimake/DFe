@@ -1869,8 +1869,12 @@ namespace Unimake.Business.DFe
                 case PadraoNFSe.QUASAR:
                     return "1.01";
 
-                case PadraoNFSe.BSITBR:
                 case PadraoNFSe.CENTI:
+                    return RaizEh("NFSe") && namespaceRaiz == "http://www.sped.fazenda.gov.br/nfse"
+                        ? (string.IsNullOrWhiteSpace(versaoDeclarada) ? "1.01" : versaoDeclarada)
+                        : "2.00";
+
+                case PadraoNFSe.BSITBR:
                 case PadraoNFSe.GIAP:
                     return "2.00";
 

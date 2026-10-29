@@ -5046,6 +5046,19 @@
 			</Servico>
 		</Padrao>
 		<Padrao nome="CENTI">
+			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="infNFSe">
+				<Descricao>Consultar NFSe</Descricao>
+				<TipoServico>NFSeConsultarNfse</TipoServico>
+				<SchemaArquivo/>
+				<TagAssinatura/>
+				<TagAtributoID/>
+				<TagVersao/>
+				<TagLoteAssinatura/>
+				<TagLoteAtributoID/>
+				<TagExtraAssinatura/>
+				<TagExtraAtributoID/>
+				<TargetNS>http://www.sped.fazenda.gov.br/nfse</TargetNS>
+			</Servico>
 			<Servico tagRaiz="CancelarNfseEnvio" versao="2.00" tagIdentificadora="InfPedidoCancelamento">
 				<Descricao>Envio do cancelamento de NFSe</Descricao>
 				<TipoServico>NFSeCancelarNfse</TipoServico>

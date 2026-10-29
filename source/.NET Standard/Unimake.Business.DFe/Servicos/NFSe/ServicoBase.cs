@@ -62,6 +62,13 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     NACIONAL();
                     break;
 
+                case PadraoNFSe.CENTI:
+                    if (Configuracoes.Servico == Servico.NFSeConsultarNfse && Configuracoes.SchemaVersao == "1.01")
+                    {
+                        NACIONAL();
+                    }
+                    break;
+
                 case PadraoNFSe.HM2SOLUCOES:
                     AuthorizationBasic();
                     break;
