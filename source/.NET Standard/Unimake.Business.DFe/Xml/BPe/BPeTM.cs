@@ -311,6 +311,25 @@ namespace Unimake.Business.DFe.Xml.BPeTM
         [XmlElement("gCompraGov")]
         public CompraGovReduzido GCompraGov { get; set; }
 
+        /// <summary>Indicador de BP-e de fornecimento, que dispensa a confirmação de embarque.</summary>
+        [XmlElement("indFornecimento")]
+#if INTEROP
+        public IndicadorFornecimentoBPe IndFornecimento { get; set; } = (IndicadorFornecimentoBPe)(-1);
+#else
+        public IndicadorFornecimentoBPe? IndFornecimento { get; set; }
+#endif
+
+        /// <summary>Indica se o BP-e de fornecimento foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializeIndFornecimento() => IndFornecimento != (IndicadorFornecimentoBPe)(-1);
+#else
+        public bool ShouldSerializeIndFornecimento() => IndFornecimento.HasValue;
+#endif
+
+        /// <summary>Referência ao BP-e que originou a multa ou os juros.</summary>
+        [XmlElement("gMultaJuros")]
+        public GMultaJuros GMultaJuros { get; set; }
+
 #if INTEROP
         public bool ShouldSerializeDhContField() => DhCont > DateTime.MinValue;
 #else
@@ -359,6 +378,23 @@ namespace Unimake.Business.DFe.Xml.BPeTM
 
         [XmlElement("ISUFEmit")]
         public string ISUFEmit { get; set; }
+
+        /// <summary>
+        /// Regime de apuração do IBS e da CBS.
+        /// </summary>
+        [XmlElement("tpRegimeIBSCBS")]
+#if INTEROP
+        public TipoRegimeIBSCBS TpRegimeIBSCBS { get; set; } = (TipoRegimeIBSCBS)(-1);
+#else
+        public TipoRegimeIBSCBS? TpRegimeIBSCBS { get; set; }
+#endif
+
+        /// <summary>Indica se o regime de apuração foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializeTpRegimeIBSCBS() => TpRegimeIBSCBS != (TipoRegimeIBSCBS)(-1);
+#else
+        public bool ShouldSerializeTpRegimeIBSCBS() => TpRegimeIBSCBS.HasValue;
+#endif
 
         public bool ShouldSerializeIEST() => !string.IsNullOrWhiteSpace(IEST);
         public bool ShouldSerializeXFant() => !string.IsNullOrWhiteSpace(XFant);
@@ -869,6 +905,10 @@ namespace Unimake.Business.DFe.Xml.BPeTM
 
         [XmlElement("gIBSCBS")]
         public GIBSCBS GIBSCBS { get; set; }
+
+        /// <summary>Tributação do Simples Nacional.</summary>
+        [XmlElement("gTribSN")]
+        public GTribSN GTribSN { get; set; }
 
         [XmlElement("gEstornoCred")]
         public GEstornoCred GEstornoCred { get; set; }
@@ -1468,6 +1508,10 @@ namespace Unimake.Business.DFe.Xml.BPeTM
         [XmlElement("gCBS")]
         public GCBSTot GCBS { get; set; }
 
+        /// <summary>Tributação do Simples Nacional.</summary>
+        [XmlElement("gTribSN")]
+        public GTribSNTot GTribSN { get; set; }
+
         [XmlElement("gEstornoCred")]
         public GEstornoCred GEstornoCred { get; set; }
 
@@ -1725,4 +1769,171 @@ namespace Unimake.Business.DFe.Xml.BPeTM
 
         public static string Format4(double? value) => value.HasValue ? value.Value.ToString("F4", CultureInfo.InvariantCulture) : null;
     }
+    /// <summary>
+    /// Tributação do Simples Nacional.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.GTribSN")]
+    [ComVisible(true)]
+#endif
+    public class GTribSN
+    {
+        /// <summary>
+        /// Tributação do IBS.
+        /// </summary>
+        [XmlElement("gIBSSN")]
+        public GIBSSN GIBSSN { get; set; }
+
+        /// <summary>
+        /// Tributação da CBS.
+        /// </summary>
+        [XmlElement("gCBSSN")]
+        public GCBSSN GCBSSN { get; set; }
+    }
+
+    /// <summary>
+    /// IBS do Simples Nacional.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.GIBSSN")]
+    [ComVisible(true)]
+#endif
+    public class GIBSSN
+    {
+        /// <summary>
+        /// Alíquota de pIBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double PIBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de PIBSSN.
+        /// </summary>
+        [XmlElement("pIBSSN")]
+        public string PIBSSNField
+        {
+            get => PIBSSN.ToString("0.00##", CultureInfo.InvariantCulture);
+            set => PIBSSN = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor de vIBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double VIBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de VIBSSN.
+        /// </summary>
+        [XmlElement("vIBSSN")]
+        public string VIBSSNField
+        {
+            get => VIBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSSN = Converter.ToDouble(value);
+        }
+
+    }
+
+    /// <summary>
+    /// CBS do Simples Nacional.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.GCBSSN")]
+    [ComVisible(true)]
+#endif
+    public class GCBSSN
+    {
+        /// <summary>
+        /// Alíquota de pCBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double PCBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de PCBSSN.
+        /// </summary>
+        [XmlElement("pCBSSN")]
+        public string PCBSSNField
+        {
+            get => PCBSSN.ToString("0.00##", CultureInfo.InvariantCulture);
+            set => PCBSSN = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor de vCBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double VCBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de VCBSSN.
+        /// </summary>
+        [XmlElement("vCBSSN")]
+        public string VCBSSNField
+        {
+            get => VCBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSSN = Converter.ToDouble(value);
+        }
+
+    }
+
+    /// <summary>
+    /// Totalização do IBS e CBS do Simples Nacional.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.GTribSNTot")]
+    [ComVisible(true)]
+#endif
+    public class GTribSNTot
+    {
+        /// <summary>
+        /// Valor de vIBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double VIBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de VIBSSN.
+        /// </summary>
+        [XmlElement("vIBSSN")]
+        public string VIBSSNField
+        {
+            get => VIBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSSN = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor de vCBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double VCBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de VCBSSN.
+        /// </summary>
+        [XmlElement("vCBSSN")]
+        public string VCBSSNField
+        {
+            get => VCBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSSN = Converter.ToDouble(value);
+        }
+
+    }
+    /// <summary>BP-e de referência da multa ou dos juros.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.BPeTM.GMultaJuros")]
+    [ComVisible(true)]
+#endif
+    public class GMultaJuros
+    {
+        /// <summary>Chave de acesso do BP-e de referência.</summary>
+        [XmlElement("chBPeRef")]
+        public string ChBPeRef { get; set; }
+    }
+
 }

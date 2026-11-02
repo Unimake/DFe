@@ -20369,7 +20369,23 @@ namespace Unimake.Business.DFe.Servicos
         /// 110301 - Cancelamento da vinculacao do pagamento
         /// </summary>
         [XmlEnum("110301")]
-        CancelamentoVinculacaoPagamento = 110301
+        CancelamentoVinculacaoPagamento = 110301,
+
+        /// <summary>412140 - Tributação do Simples Nacional.</summary>
+        [XmlEnum("412140")]
+        TributacaoSimplesNacional = 412140,
+
+        /// <summary>412141 - Cancelamento da tributação do Simples Nacional.</summary>
+        [XmlEnum("412141")]
+        CancelamentoTributacaoSimplesNacional = 412141
+    }
+
+    /// <summary>Indicador de BP-e de fornecimento.</summary>
+    public enum IndicadorFornecimentoBPe
+    {
+        /// <summary>1 - BP-e de fornecimento.</summary>
+        [XmlEnum("1")]
+        Fornecimento = 1
     }
 
     #endregion BPe

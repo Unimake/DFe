@@ -762,10 +762,11 @@
 		<None Remove="Xml\Schemas\BPe\consStatServBPeTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\BPe\consStatServBPe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\BPe\DFeTiposBasicos_v1.00.xsd" />
-		<None Remove="Xml\Schemas\BPe\DFeTiposBasicos_v1.00_old.xsd" />
 		<None Remove="Xml\Schemas\BPe\evAlteracaoPoltrona_v1.00.xsd" />
 		<None Remove="Xml\Schemas\BPe\evCancBPe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\BPe\evCancVincPgto_v1.00.xsd" />
+		<None Remove="Xml\Schemas\BPe\evCancTributacaoSN_v1.00.xsd" />
+		<None Remove="Xml\Schemas\BPe\evTributacaoSN_v1.00.xsd" />
 		<None Remove="Xml\Schemas\BPe\eventoBPeTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\BPe\eventoBPe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\BPe\evExcessoBagagem_v1.00.xsd" />
@@ -2430,10 +2431,11 @@
 		<EmbeddedResource Include="Xml\Schemas\BPe\consStatServBPeTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\BPe\consStatServBPe_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\BPe\DFeTiposBasicos_v1.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\BPe\DFeTiposBasicos_v1.00_old.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\BPe\evAlteracaoPoltrona_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\BPe\evCancBPe_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\BPe\evCancVincPgto_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\BPe\evCancTributacaoSN_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\BPe\evTributacaoSN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\BPe\eventoBPeTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\BPe\eventoBPe_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\BPe\evExcessoBagagem_v1.00.xsd" />

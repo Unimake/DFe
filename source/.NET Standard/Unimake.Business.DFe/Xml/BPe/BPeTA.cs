@@ -293,6 +293,10 @@ namespace Unimake.Business.DFe.Xml.BPeTA
         [XmlElement("gCompraGov")]
         public CompraGovReduzido GCompraGov { get; set; }
 
+        /// <summary>Referência ao BP-e que originou a multa ou os juros.</summary>
+        [XmlElement("gMultaJuros")]
+        public GMultaJuros GMultaJuros { get; set; }
+
         public bool ShouldSerializeNroBPIATA() => !string.IsNullOrWhiteSpace(NroBPIATA);
         public bool ShouldSerializeGCompraGov() => GCompraGov != null;
     }
