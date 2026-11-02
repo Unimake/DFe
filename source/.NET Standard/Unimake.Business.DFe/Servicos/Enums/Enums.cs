@@ -18145,6 +18145,37 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("110301")]
         CancelamentoVinculacaoPagamento = 110301,
+
+        /// <summary>
+        /// 412140 - Tributação do Simples Nacional.
+        /// </summary>
+        [XmlEnum("412140")]
+        TributacaoSimplesNacional = 412140,
+
+        /// <summary>
+        /// 412141 - Cancelamento da tributação do Simples Nacional.
+        /// </summary>
+        [XmlEnum("412141")]
+        CancelamentoTributacaoSimplesNacional = 412141,
+    }
+
+    /// <summary>
+    /// Regime de apuração do IBS e da CBS.
+    /// </summary>
+    public enum TipoRegimeIBSCBS
+    {
+        /// <summary>1 - Simples Nacional com opção pelo regime regular de IBS e CBS.</summary>
+        [XmlEnum("1")]
+        SimplesNacionalRegimeRegular = 1,
+        /// <summary>2 - Regime normal com opção pendente pelo CRT 1, sem regime regular de IBS e CBS.</summary>
+        [XmlEnum("2")]
+        NormalOpcaoPendenteSimplesNacional = 2,
+        /// <summary>3 - Regime normal com opção pendente pelo CRT 2, sem regime regular de IBS e CBS.</summary>
+        [XmlEnum("3")]
+        NormalOpcaoPendenteSimplesNacionalExcessoSublimite = 3,
+        /// <summary>4 - Regime normal com opção pendente pelo Simples Nacional, com regime regular de IBS e CBS.</summary>
+        [XmlEnum("4")]
+        NormalOpcaoPendenteSimplesNacionalRegimeRegular = 4
     }
 
     #endregion TipoEventoNFCom

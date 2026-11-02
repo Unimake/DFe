@@ -296,6 +296,18 @@ A tabela cClass terá uma flag que sinaliza se o tipo de item é de prestação 
 											</xs:restriction>
 										</xs:simpleType>
 									</xs:element>
+									<xs:element name="tpRegimeIBSCBS" type="TRegimeIBSCBS" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Tipo de Regime de Apuração do IBS e da CBS </xs:documentation>
+											<xs:documentation>1 - Contribuinte do Simples Nacional (CRT=1 ou 2) com opção pelo regime regular do IBS e da CBS; 
+
+2 - Contribuinte do Regime Normal (CRT=3) com opção pendente pelo CRT=”1 - Simples Nacional” sem regime regular do IBS e da CBS; 
+
+3 - Contribuinte do Regime Normal (CRT=3) com opção pendente pelo CRT=”2-Simples Nacional, excesso sublimite de receita bruta” sem regime regular do IBS e da CBS; 
+
+4 - Contribuinte do Regime Normal (CRT=3) com opção pendente pelo Simples Nacional (CRT=1 ou 2), com regime regular do IBS e da CBS. </xs:documentation>
+										</xs:annotation>
+									</xs:element>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
@@ -749,7 +761,6 @@ Sequencia XML</xs:documentation>
 															<xs:documentation>Valor total do item
 
 </xs:documentation>
-															<xs:documentation>Observação: A partir 2027, os valores de IBS e CBS compõem o Valor Total do Item </xs:documentation>
 														</xs:annotation>
 														<xs:simpleType>
 															<xs:restriction base="TDec_1302_1308"/>
@@ -1235,8 +1246,7 @@ TAG OPCIONAL, DEVE SER INFORMADA APENAS NOS CASOS PREVISTOS DE NOTA ANTERIOR REF
 										</xs:element>
 										<xs:element name="vTotDFe" type="TDec_1302" minOccurs="0">
 											<xs:annotation>
-												<xs:documentation>Valor total do documento fiscal  (vNF) 
-</xs:documentation>
+												<xs:documentation>Valor total do documento fiscal  (vNF + IBS + CBS) </xs:documentation>
 											</xs:annotation>
 										</xs:element>
 									</xs:sequence>

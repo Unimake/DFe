@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-    <AssemblyVersion>2026.10.26.1657</AssemblyVersion>
-    <FileVersion>2026.10.26.1657</FileVersion>
+    <AssemblyVersion>2026.11.02.1616</AssemblyVersion>
+    <FileVersion>2026.11.02.1616</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1209,9 +1209,11 @@
 		<None Remove="Xml\Schemas\NFCom\consStatServNFCom_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\evCancNFCom_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFCom\evCancTributacaoSN_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\evCancVincPgto_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\eventoNFComTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\eventoNFCom_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFCom\evTributacaoSN_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\evVincPgto_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\nfcomTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\nfcom_v1.00.xsd" />
@@ -1707,6 +1709,8 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evApropriaCredPres_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\evCancTributacaoSN_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\evTributacaoSN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\xmldsig-core-schema20020212-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
