@@ -1466,7 +1466,6 @@ Este campo também corresponde ao preço médio efetivo relativo ao consumo ativ
 																			<xs:element name="vProd" type="TDec_1302_1310">
 																				<xs:annotation>
 																					<xs:documentation>Valor total do item</xs:documentation>
-																					<xs:documentation>Observação: A partir 2027, os valores de IBS e CBS compõem o Valor Total do Item </xs:documentation>
 																				</xs:annotation>
 																			</xs:element>
 																			<xs:sequence minOccurs="0">
@@ -1961,7 +1960,7 @@ Deve sempre existir um detItemAnt que corresponda</xs:documentation>
 									</xs:element>
 									<xs:element name="vTotDFe" type="TDec_1302" minOccurs="0">
 										<xs:annotation>
-											<xs:documentation>Valor total do documento fiscal (vNF) 
+											<xs:documentation>Valor total do documento fiscal (vNF + IBS + CBS) 
 </xs:documentation>
 										</xs:annotation>
 									</xs:element>
