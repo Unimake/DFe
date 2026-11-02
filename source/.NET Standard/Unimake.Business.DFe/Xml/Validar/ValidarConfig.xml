@@ -2578,6 +2578,16 @@
 					<SchemaArquivo>eventoNFCom_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evCancVincPgto_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
+				<Tipo>
+					<ID>412140</ID>
+					<SchemaArquivo>eventoNFCom_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evTributacaoSN_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>412141</ID>
+					<SchemaArquivo>eventoNFCom_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancTributacaoSN_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz="NFCom" versao="1.00">
