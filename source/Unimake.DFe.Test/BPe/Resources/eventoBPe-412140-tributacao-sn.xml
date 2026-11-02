@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<eventoBPe versao="1.00" xmlns="http://www.portalfiscal.inf.br/bpe">
+  <infEvento Id="ID4121403526071234567800012363001000000001100000001001">
+    <cOrgao>35</cOrgao>
+    <tpAmb>2</tpAmb>
+    <CNPJ>12345678000123</CNPJ>
+    <chBPe>35260712345678000123630010000000011000000010</chBPe>
+    <dhEvento>2026-07-06T15:00:00-03:00</dhEvento>
+    <tpEvento>412140</tpEvento>
+    <nSeqEvento>1</nSeqEvento>
+    <detEvento versaoEvento="1.00">
+      <evTributacaoSN>
+        <descEvento>Tributacao do Simples Nacional</descEvento>
+        <nProt>135260000000001</nProt>
+        <gTribItemSN nItem="1">
+          <vRBSNItem>100.00</vRBSNItem>
+          <tpRBSN>1</tpRBSN>
+          <pIBSSN>1.2345</pIBSSN>
+          <vIBSSN>1.23</vIBSSN>
+          <pCBSSN>2.3456</pCBSSN>
+          <vCBSSN>2.35</vCBSSN>
+        </gTribItemSN>
+        <gTribItemSN nItem="2">
+          <vRBSNItem>100.00</vRBSNItem>
+          <tpRBSN>1</tpRBSN>
+          <pIBSSN>1.2345</pIBSSN>
+          <vIBSSN>1.23</vIBSSN>
+          <pCBSSN>2.3456</pCBSSN>
+          <vCBSSN>2.35</vCBSSN>
+        </gTribItemSN>
+        <gTotalSN>
+          <vRBSNTot>200.00</vRBSNTot>
+          <vIBSSNTot>2.46</vIBSSNTot>
+          <vCBSSNTot>4.70</vCBSSNTot>
+        </gTotalSN>
+      </evTributacaoSN>
+    </detEvento>
+  </infEvento>
+</eventoBPe>

@@ -15,6 +15,8 @@ namespace Unimake.DFe.Test.BPe.Serializacao
         [InlineData(@"..\..\..\BPe\Resources\eventoBPe-110117-excesso-bagagem.xml")]
         [InlineData(@"..\..\..\BPe\Resources\eventoBPe-110300-vinc-pgto.xml")]
         [InlineData(@"..\..\..\BPe\Resources\eventoBPe-110301-canc-vinc-pgto.xml")]
+        [InlineData(@"..\..\..\BPe\Resources\eventoBPe-412140-tributacao-sn.xml")]
+        [InlineData(@"..\..\..\BPe\Resources\eventoBPe-412141-canc-tributacao-sn.xml")]
         public void SerializacaoDesserializacaoEventoBPe(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " nao foi localizado para a realizacao da serializacao/desserializacao.");
