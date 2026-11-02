@@ -35,8 +35,13 @@ namespace Unimake.DFe.Test.ESocial.Serializacao
                 cadastro.IndOptRegEletron = (IndOptRegEletron)codigo;
             }
             inclusao.InfoCadastro = cadastro;
+#if INTEROP
+            inclusao.IdePeriodo.IniValid = new DateTime(2026, 1, 1);
+            inclusao.IdePeriodo.FimValid = DateTime.MinValue;
+#else
             inclusao.IdePeriodo.IniValid = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);
             inclusao.IdePeriodo.FimValid = DateTimeOffset.MinValue;
+#endif
             if (alteracao)
             {
                 modelo.EvtInfoEmpregador.InfoEmpregador.Alteracao = new Alteracao1000
@@ -73,14 +78,23 @@ namespace Unimake.DFe.Test.ESocial.Serializacao
         [InlineData(SimNaoLetra.Nao)]
         public void AfastamentoSerializaDominioVigenteNoCaminhoCorreto(SimNaoLetra? valor)
         {
+#if INTEROP
+            var valorEsperado = valor ?? (SimNaoLetra)(-1);
+#else
+            var valorEsperado = valor;
+#endif
             var modelo = Ler<ESocial2230>("2230_evtAfastTemp-esocial-evt.xml");
             modelo.EvtAfastTemp.InfoAfastamento = new InfoAfastamento
             {
                 IniAfastamento = new IniAfastamento
                 {
+#if INTEROP
+                    DtIniAfast = new DateTime(2026, 10, 27),
+#else
                     DtIniAfast = new DateTimeOffset(2026, 10, 27, 0, 0, 0, TimeSpan.Zero),
+#endif
                     CodMotAfast = "01",
-                    InfoMesmoMtv = valor
+                    InfoMesmoMtv = valorEsperado
                 }
             };
             modelo.Signature = AssinaturaEstrutural();
@@ -94,7 +108,7 @@ namespace Unimake.DFe.Test.ESocial.Serializacao
                 Assert.Equal("codMotAfast", tags[0].PreviousSibling.LocalName);
             }
             Validar(xml, "evtAfastTemp");
-            Assert.Equal(valor, modelo.LerXML<ESocial2230>(xml).EvtAfastTemp.InfoAfastamento.IniAfastamento.InfoMesmoMtv);
+            Assert.Equal(valorEsperado, modelo.LerXML<ESocial2230>(xml).EvtAfastTemp.InfoAfastamento.IniAfastamento.InfoMesmoMtv);
             if (valor.HasValue)
             {
                 tags[0].InnerText = "I";
