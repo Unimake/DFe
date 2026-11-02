@@ -201,6 +201,19 @@ Siga o padrão já existente na própria pasta e nas classes estruturalmente equ
 
 Antes de criar classe, propriedade ou helper, procure implementação semanticamente equivalente. Reutilize somente quando namespace, estrutura e significado forem compatíveis.
 
+### Regra obrigatória para datas e horários
+
+Antes de escolher o tipo C# de um campo novo ou alterado, resolva o tipo do XSD até sua definição efetiva, inclusive tipos nomeados como `TData` e restrições de `xs:string` que representam datas. O tipo-base textual do schema não justifica, sozinho, uma propriedade pública `string`.
+
+- Para datas completas como `TData`/`xs:date`, use o padrão do projeto: propriedade principal com `[XmlIgnore]`, `DateTimeOffset` no .NET e `DateTime` sob `#if INTEROP`; propriedade auxiliar `NomeField` com o atributo XML da tag, formatação `yyyy-MM-dd` e parsing correspondente em cada compilação.
+- Confira primeiro o arquivo e a pasta afetados. Se só houver datas legadas como `string`, procure um grupo semanticamente equivalente em outro DFe para confirmar o padrão tipado; por exemplo, `GMed.DMedAnt` e `GMed.DMedAtu` em `Xml/NF3e/NF3e.cs`. Não copie o uso legado de `string` para um campo novo apenas por proximidade.
+- Para datas com horário e/ou fuso, confira o formato efetivo do XSD e o padrão equivalente do projeto antes de implementar `...Field`; não aplique `yyyy-MM-dd` a `xs:dateTime` ou tipos como `TDateTimeUTC`.
+- Em datas opcionais, aplique `ShouldSerializeNomeField()` à propriedade efetivamente serializada, usando o valor mínimo como ausência conforme o padrão existente (por exemplo, `Nome > DateTime.MinValue`). Não emita a data mínima, elemento vazio ou `xsi:nil` para representar ausência.
+- Preserve formatos parciais ou códigos textuais, como competência `AAAA-MM`, quando não representarem uma data completa. Não transforme toda string com aparência de data em `DateTimeOffset`.
+- A regra orienta campos novos e os efetivamente afetados pela mudança. Não converta datas públicas legadas fora do escopo; uma troca de tipo público preexistente exige a auditoria de compatibilidade de API/COM prevista nesta skill.
+
+Exemplo de aplicação: `NFGas/infNFGas/gMed/dMedProx` deve usar `DMedProx` tipada, `DMedProxField` para o texto XML e `ShouldSerializeDMedProxField()` para a omissão, mesmo que `DMedAnt` e `DMedAtu` do arquivo ainda sejam strings.
+
 ## Regra obrigatória para domínios fechados e enums
 
 Para toda mudança que introduza ou altere `xs:enumeration`, lista fechada de códigos ou outro domínio finito:
@@ -235,6 +248,7 @@ Os testes devem comprovar a mudança estrutural, e não apenas que a classe comp
 - desserialização do novo elemento, atributo, enum, choice ou cardinalidade;
 - serialização no nome, namespace, nível e ordem corretos;
 - omissão de campo opcional quando não informado;
+- para datas, atribuição pela propriedade tipada, leitura do XML para o tipo de data, formato exato de `...Field` e omissão da data opcional no valor padrão; em `xs:date`, atribua também um valor com horário e comprove que o XML contém somente `yyyy-MM-dd`;
 - múltiplas ocorrências para listas;
 - round-trip com XML realista e validação contra o XSD raiz correto;
 - consumidores transitivos distintos quando um tipo compartilhado foi alterado;
@@ -268,6 +282,7 @@ Antes de concluir, confirme:
 - todas as pastas fornecidas foram classificadas como afetadas ou não afetadas;
 - elementos, atributos, ordem, choice e cardinalidade refletem o schema;
 - enums foram reutilizados ou centralizados em `Enums.cs` com compatibilidade comprovada;
+- datas novas ou alteradas tiveram o tipo efetivo do XSD resolvido e seguem o padrão tipado com `...Field`, formato correto, omissão opcional e distinção .NET/INTEROP, sem copiar strings legadas por proximidade;
 - API pública, C# 7.3, `netstandard2.0` e INTEROP foram preservados;
 - testes focados cobrem o comportamento alterado;
 - testes preexistentes relacionados foram localizados, executados e corrigidos pela causa quando quebraram;
