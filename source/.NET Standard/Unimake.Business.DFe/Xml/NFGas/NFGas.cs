@@ -490,11 +490,51 @@ namespace Unimake.Business.DFe.Xml.NFGas
         [XmlElement("vMedAtu")]
         public string VMedAtu { get; set; }
 
+        /// <summary>
+        /// Data da próxima leitura, no formato AAAA-MM-DD.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DMedProx { get; set; }
+#else
+        public DateTimeOffset DMedProx { get; set; }
+#endif
+
+        /// <summary>
+        /// Data da próxima leitura para serialização no formato AAAA-MM-DD.
+        /// </summary>
+        [XmlElement("dMedProx")]
+        public string DMedProxField
+        {
+            get => DMedProx.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DMedProx = DateTime.Parse(value);
+#else
+            set => DMedProx = DateTimeOffset.Parse(value);
+#endif
+        }
+
         [XmlElement("tpEqp")]
         public string TpEqp { get; set; }
 
         [XmlElement("tpMedidor")]
         public string TpMedidor { get; set; }
+
+        /// <summary>
+        /// Descrição do ponto de consumo.
+        /// </summary>
+        [XmlElement("descPontoCons")]
+        public string DescPontoCons { get; set; }
+
+        /// <summary>
+        /// Serializa a data da próxima leitura somente quando informada.
+        /// </summary>
+        public bool ShouldSerializeDMedProxField() => DMedProx > DateTime.MinValue;
+
+        /// <summary>
+        /// Serializa a descrição do ponto de consumo somente quando informada.
+        /// </summary>
+        public bool ShouldSerializeDescPontoCons() => !string.IsNullOrEmpty(DescPontoCons);
     }
 
     public class GTarif

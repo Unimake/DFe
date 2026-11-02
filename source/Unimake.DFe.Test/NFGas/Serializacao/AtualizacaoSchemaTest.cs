@@ -189,6 +189,118 @@ namespace Unimake.DFe.Test.NFGas.Serializacao
             }
         }
 
+        [Theory]
+        [Trait("DFe", "NFGas")]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void DevePreservarProximaLeituraEPontoDeConsumo(bool processado)
+        {
+            var modelo = LerModelo();
+            modelo.InfNFGas.GMed = new System.Collections.Generic.List<GMed>
+            {
+                CriarMedicao("01"), CriarMedicao("02")
+            };
+            modelo.InfNFGas.GMed[0].DMedProx = new System.DateTime(2026, 6, 18, 14, 30, 0);
+            modelo.InfNFGas.GMed[0].DescPontoCons = "PONTO DE CONSUMO TESTE";
+
+            var gerado = GerarDocumento(modelo, processado);
+            var medicoes = gerado.GetElementsByTagName("gMed", NamespaceNFGas).Cast<XmlElement>().ToList();
+            Assert.Equal(2, medicoes.Count);
+            Assert.Equal(new[] { "idEqp", "dMedAnt", "vMedAnt", "dMedAtu", "vMedAtu", "dMedProx", "tpEqp", "tpMedidor", "descPontoCons" },
+                medicoes[0].ChildNodes.Cast<XmlNode>().Select(x => x.LocalName));
+            Assert.All(medicoes[0].ChildNodes.Cast<XmlNode>(), x => Assert.Equal(NamespaceNFGas, x.NamespaceURI));
+            Assert.Null(medicoes[1]["dMedProx"]);
+            Assert.Null(medicoes[1]["descPontoCons"]);
+
+            var relido = processado ? XMLUtility.Deserializar<NFGasProc>(gerado).NFGas : XMLUtility.Deserializar<NFGasXml>(gerado);
+            Assert.Equal("2026-06-18", medicoes[0]["dMedProx"].InnerText);
+            Assert.Equal(new System.DateTime(2026, 6, 18), relido.InfNFGas.GMed[0].DMedProx.Date);
+            Assert.Equal("2026-06-18", relido.InfNFGas.GMed[0].DMedProxField);
+            Assert.Equal("PONTO DE CONSUMO TESTE", relido.InfNFGas.GMed[0].DescPontoCons);
+            Assert.False(relido.InfNFGas.GMed[1].ShouldSerializeDMedProxField());
+            Assert.Null(relido.InfNFGas.GMed[1].DescPontoCons);
+            Assert.Equal(medicoes[0].OuterXml, relido.GerarXML().GetElementsByTagName("gMed", NamespaceNFGas)[0].OuterXml);
+            Validar(gerado, processado ? "procNFGas_v1.00.xsd" : "nfgas_v1.00.xsd");
+        }
+
+        [Theory]
+        [Trait("DFe", "NFGas")]
+        [InlineData(null, null)]
+        [InlineData(null, "")]
+        [InlineData("2026-06-18", null)]
+        [InlineData(null, "PONTO TESTE")]
+        public void DeveOmitirCamposOpcionaisDaMedicaoNaoInformados(string data, string descricao)
+        {
+            var modelo = LerModelo();
+            var medicao = CriarMedicao("01");
+            if (data != null)
+            {
+                medicao.DMedProxField = data;
+            }
+            medicao.DescPontoCons = descricao;
+            modelo.InfNFGas.GMed = new System.Collections.Generic.List<GMed> { medicao };
+            var gerado = modelo.GerarXML();
+            Assert.Equal(string.IsNullOrEmpty(data) ? 0 : 1, gerado.GetElementsByTagName("dMedProx", NamespaceNFGas).Count);
+            Assert.Equal(string.IsNullOrEmpty(descricao) ? 0 : 1, gerado.GetElementsByTagName("descPontoCons", NamespaceNFGas).Count);
+            Validar(gerado, "nfgas_v1.00.xsd");
+        }
+
+        [Theory]
+        [Trait("DFe", "NFGas")]
+        [InlineData(9, false)]
+        [InlineData(10, true)]
+        [InlineData(99, true)]
+        [InlineData(100, true)]
+        [InlineData(999, true)]
+        [InlineData(1000, true)]
+        [InlineData(9999, true)]
+        [InlineData(10000, false)]
+        [InlineData(-1, false)]
+        public void DeveValidarQuantidadeDeDiasComDoisAQuatroDigitos(int quantidade, bool valido)
+        {
+            foreach (var processado in new[] { false, true })
+            {
+                var modelo = LerModelo();
+                modelo.InfNFGas.GAgencia.GHistCons[0].GCons[0].QtdDias = quantidade;
+                var gerado = GerarDocumento(modelo, processado);
+                Assert.Equal(quantidade.ToString(System.Globalization.CultureInfo.InvariantCulture), gerado.GetElementsByTagName("qtdDias", NamespaceNFGas)[0].InnerText);
+                var relido = processado ? XMLUtility.Deserializar<NFGasProc>(gerado).NFGas : XMLUtility.Deserializar<NFGasXml>(gerado);
+                Assert.Equal(quantidade, relido.InfNFGas.GAgencia.GHistCons[0].GCons[0].QtdDias);
+                var validador = CriarValidador(gerado, processado ? "procNFGas_v1.00.xsd" : "nfgas_v1.00.xsd");
+                Assert.True(validador.Success == valido, validador.ErrorMessage);
+                if (!valido)
+                {
+                    Assert.Contains("qtdDias", validador.ErrorMessage);
+                }
+            }
+        }
+
+        private static GMed CriarMedicao(string numero) => new GMed
+        {
+            NMed = numero,
+            IdEqp = "MEDIDOR-TESTE",
+            DMedAnt = "2026-04-18",
+            VMedAnt = "100.00",
+            DMedAtu = "2026-05-18",
+            VMedAtu = "130.00",
+            TpEqp = "1",
+            TpMedidor = "1"
+        };
+
+        private static XmlDocument GerarDocumento(NFGasXml modelo, bool processado)
+        {
+            if (!processado)
+            {
+                return modelo.GerarXML();
+            }
+
+            var processo = XMLUtility.Deserializar<NFGasProc>(File.ReadAllText(@"..\..\..\NFGas\Resources\nfgasProc.xml"));
+            processo.NFGas = modelo;
+            processo.ProtNFGas.InfProt.ChNFGas = modelo.InfNFGas.Chave;
+            processo.ProtNFGas.InfProt.NProt = "1352600000000001";
+            return processo.GerarXML();
+        }
+
         private static NFGasXml LerModelo() => XMLUtility.Deserializar<NFGasXml>(File.ReadAllText(CaminhoXML));
 
         private static void ConferirNovosCampos(NFGasXml modelo)
