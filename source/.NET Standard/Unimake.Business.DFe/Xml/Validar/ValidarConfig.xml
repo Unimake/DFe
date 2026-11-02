@@ -3107,6 +3107,16 @@
 					<SchemaArquivo>eventoBPe_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evCancVincPgto_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
+				<Tipo>
+					<ID>412140</ID>
+					<SchemaArquivo>eventoBPe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evTributacaoSN_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>412141</ID>
+					<SchemaArquivo>eventoBPe_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancTributacaoSN_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
 			</SchemasEspecificos>
 		</Servico>
 		<Servico tagRaiz="BPe" versao="1.00">
