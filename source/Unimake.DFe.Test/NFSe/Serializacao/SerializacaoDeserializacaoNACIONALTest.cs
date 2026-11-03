@@ -911,6 +911,8 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.Equal("101", dps.InfDPS.IBSCBS.Valores.Trib.GIBSCBS.CST);
         Assert.Equal("000001", dps.InfDPS.IBSCBS.Valores.Trib.GIBSCBS.CClassTrib);
 
+        dps.InfDPS.Serv.CServ.CTribMun = "4202909";
+
         var xmlAtual = dps.GerarXML();
         var nsmgr = CreateNamespaceManager(xmlAtual);
         var trib = xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:valores/ns:trib", nsmgr);
@@ -922,6 +924,7 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.Equal("101", trib.SelectSingleNode("ns:gIBSCBS/ns:CST", nsmgr)?.InnerText);
         Assert.Equal("000001", trib.SelectSingleNode("ns:gIBSCBS/ns:cClassTrib", nsmgr)?.InnerText);
         Assert.Equal("Descrição no leiaute legado", xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:serv/ns:cServ/ns:xDescServ", nsmgr)?.InnerText);
+        Assert.Equal("cTribNac,cTribMun,xDescServ,cNBS,cIntContrib", string.Join(",", xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:serv/ns:cServ", nsmgr).ChildNodes.Cast<XmlElement>().Select(element => element.LocalName)));
     }
 
     [Fact]
@@ -973,7 +976,8 @@ public class SerializacaoDesserializacaoNacionalTest
                         CTribNac = "100000",
                         XDescServ = "Serviço legado",
                         CNBS = "100000000",
-                        CIntContrib = "1"
+                        CIntContrib = "1",
+                        CTribMun = "123"
                     }
                 },
                 IBSCBS = new IBSCBS
@@ -1003,7 +1007,7 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.Equal("0", xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:finNFSe", nsmgr)?.InnerText);
         Assert.Equal("101", trib.SelectSingleNode("ns:gIBSCBS/ns:CST", nsmgr)?.InnerText);
         Assert.Equal("000001", trib.SelectSingleNode("ns:gIBSCBS/ns:cClassTrib", nsmgr)?.InnerText);
-        Assert.Equal("cTribNac,xDescServ,cNBS,cIntContrib", string.Join(",", cServ.ChildNodes.Cast<XmlElement>().Select(element => element.LocalName)));
+        Assert.Equal("cTribNac,cTribMun,xDescServ,cNBS,cIntContrib", string.Join(",", cServ.ChildNodes.Cast<XmlElement>().Select(element => element.LocalName)));
     }
 
     [Fact]
@@ -1018,15 +1022,16 @@ public class SerializacaoDesserializacaoNacionalTest
             {
                 TpAmb = TipoAmbiente.Homologacao,
                 TpEmit = TipoEmitenteNFSe.Prestador,
+                FinNFSe = FinalidadeNFSeRTC.Regular,
                 Serv = new Serv
                 {
                     CServ = new CServ
                     {
+                        XDescServ = "Serviço de teste",
                         CTribNac = "100000",
                         CTribMun = "123",
                         CNBS = "100000000",
-                        CIntContrib = "1",
-                        XDescServ = "Serviço de teste"
+                        CIntContrib = "1"
                     }
                 }
             }

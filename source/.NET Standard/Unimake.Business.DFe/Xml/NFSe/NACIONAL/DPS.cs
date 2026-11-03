@@ -49,6 +49,34 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// </summary>
         [XmlElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
+
+        /// <summary>
+        /// Gera o XML da DPS preservando automaticamente o leiaute identificado na leitura.
+        /// </summary>
+        /// <returns>Conteúdo do XML gerado.</returns>
+        public override XmlDocument GerarXML()
+        {
+            DefinirLeiauteCServ();
+            return base.GerarXML();
+        }
+
+        private void DefinirLeiauteCServ()
+        {
+            var cServ = InfDPS?.Serv?.CServ;
+            if (cServ != null)
+            {
+                cServ.DefinirLeiauteLegado(!UsaLeiauteAtual());
+            }
+        }
+
+        private bool UsaLeiauteAtual()
+        {
+            var trib = InfDPS?.IBSCBS?.Valores?.Trib;
+            return InfDPS != null &&
+                (InfDPS.FinNFSeInformada ||
+                 !string.IsNullOrWhiteSpace(trib?.CST) ||
+                 !string.IsNullOrWhiteSpace(trib?.CClassTrib));
+        }
     }
 
 #if INTEROP
@@ -256,6 +284,9 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
                 finNFSeInformada = true;
             }
         }
+
+        [XmlIgnore]
+        internal bool FinNFSeInformada => finNFSeInformada;
 
         /// <summary>
         /// Chave de acesso rejeitada pelo Tomador/Intermediário
@@ -683,7 +714,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         private const string CIntContribTag = "cIntContrib";
         private const string XDescServTag = "xDescServ";
 
-        private readonly List<string> ordemElementos = new List<string>();
+        private static readonly string[] OrdemLegada = { CTribNacTag, CTribMunTag, XDescServTag, CNBSTag, CIntContribTag };
+        private static readonly string[] OrdemAtual = { CTribNacTag, CTribMunTag, CNBSTag, CIntContribTag, XDescServTag };
+
+        private bool? leiauteLegado;
         private string cTribNac;
         private string cTribMun;
         private string cNBS;
@@ -694,55 +728,35 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public string CTribNac
         {
             get => cTribNac;
-            set
-            {
-                cTribNac = value;
-                RegistrarOrdem(CTribNacTag);
-            }
+            set => cTribNac = value;
         }
 
         [XmlElement("cTribMun")]
         public string CTribMun
         {
             get => cTribMun;
-            set
-            {
-                cTribMun = value;
-                RegistrarOrdem(CTribMunTag);
-            }
+            set => cTribMun = value;
         }
 
         [XmlElement("cNBS")]
         public string CNBS
         {
             get => cNBS;
-            set
-            {
-                cNBS = value;
-                RegistrarOrdem(CNBSTag);
-            }
+            set => cNBS = value;
         }
 
         [XmlElement("cIntContrib")]
         public string CIntContrib
         {
             get => cIntContrib;
-            set
-            {
-                cIntContrib = value;
-                RegistrarOrdem(CIntContribTag);
-            }
+            set => cIntContrib = value;
         }
 
         [XmlElement("xDescServ")]
         public string XDescServ
         {
             get => xDescServ;
-            set
-            {
-                xDescServ = value;
-                RegistrarOrdem(XDescServTag);
-            }
+            set => xDescServ = value;
         }
 
         #if INTEROP
@@ -755,7 +769,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #endif
         public void ReadXml(XmlReader reader)
         {
-            ordemElementos.Clear();
+            leiauteLegado = null;
+            var elementosLidos = new List<string>();
             var elementoVazio = reader.IsEmptyElement;
             reader.ReadStartElement();
 
@@ -769,18 +784,23 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
                 switch (reader.LocalName)
                 {
                     case CTribNacTag:
+                        elementosLidos.Add(CTribNacTag);
                         CTribNac = reader.ReadElementContentAsString();
                         break;
                     case CTribMunTag:
+                        elementosLidos.Add(CTribMunTag);
                         CTribMun = reader.ReadElementContentAsString();
                         break;
                     case CNBSTag:
+                        elementosLidos.Add(CNBSTag);
                         CNBS = reader.ReadElementContentAsString();
                         break;
                     case CIntContribTag:
+                        elementosLidos.Add(CIntContribTag);
                         CIntContrib = reader.ReadElementContentAsString();
                         break;
                     case XDescServTag:
+                        elementosLidos.Add(XDescServTag);
                         XDescServ = reader.ReadElementContentAsString();
                         break;
                     default:
@@ -790,6 +810,13 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
             }
 
             reader.ReadEndElement();
+
+            var indiceXDescServ = elementosLidos.IndexOf(XDescServTag);
+            var indiceCNBS = elementosLidos.IndexOf(CNBSTag);
+            if (indiceXDescServ >= 0 && indiceCNBS >= 0)
+            {
+                leiauteLegado = indiceXDescServ < indiceCNBS;
+            }
         }
 
         #if INTEROP
@@ -797,7 +824,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #endif
         public void WriteXml(XmlWriter writer)
         {
-            foreach (var nome in ordemElementos)
+            var ordem = leiauteLegado.GetValueOrDefault(true) ? OrdemLegada : OrdemAtual;
+            foreach (var nome in ordem)
             {
                 if (DeveSerializar(nome))
                 {
@@ -806,11 +834,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
             }
         }
 
-        private void RegistrarOrdem(string nome)
+        internal void DefinirLeiauteLegado(bool valor)
         {
-            if (!ordemElementos.Contains(nome))
+            if (!leiauteLegado.HasValue)
             {
-                ordemElementos.Add(nome);
+                leiauteLegado = valor;
             }
         }
 
