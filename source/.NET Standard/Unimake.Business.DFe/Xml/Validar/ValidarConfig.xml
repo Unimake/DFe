@@ -8714,7 +8714,7 @@
 			<Servico tagRaiz="DPS" versao="1.01" tagIdentificadora="tpAmb">
 				<Descricao>Envio do DPS - Síncrono</Descricao>
 				<TipoServico>NFSeGerarNfse</TipoServico>
-				<SchemaArquivo>DPS_v1.01.xsd</SchemaArquivo>
+				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>DPS</TagAssinatura>
 				<TagAtributoID>infDPS</TagAtributoID>
 				<TagVersao/>
@@ -8740,7 +8740,7 @@
 			<Servico tagRaiz="NFSe" versao="1.01" tagIdentificadora="nNFSe">
 				<Descricao>Envio NFS-e com indicativo de decisão judicial - Síncrono</Descricao>
 				<TipoServico>NFSeGerarNfse</TipoServico>
-				<SchemaArquivo>NFSe_v1.01.xsd</SchemaArquivo>
+				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>DPS</TagAssinatura>
 				<TagAtributoID>infDPS</TagAtributoID>
 				<TagVersao/>
@@ -8766,7 +8766,7 @@
 			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="infPedReg">
 				<Descricao>Recepcionar Eventos Diversos da NFSe NACIONAL</Descricao>
 				<TipoServico>NFSeRecepcionarEventosDiversos</TipoServico>
-				<SchemaArquivo>pedRegEvento_v1.01.xsd</SchemaArquivo>
+				<SchemaArquivo></SchemaArquivo>
 				<TagAssinatura>pedRegEvento</TagAssinatura>
 				<TagAtributoID>infPedReg</TagAtributoID>
 				<TagVersao/>

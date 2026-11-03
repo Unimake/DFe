@@ -59,6 +59,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     public class InfDPS
     {
         private string IdField;
+        private FinalidadeNFSeRTC finNFSe;
+        private bool finNFSeInformada;
 
         /// <summary>
         /// Id da NFS-e a ser gerada.
@@ -243,7 +245,15 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// Finalidade da emissão da NFS-e, informada diretamente em infDPS no leiaute atualizado.
         /// </summary>
         [XmlElement("finNFSe")]
-        public FinalidadeNFSeRTC FinNFSe { get; set; }
+        public FinalidadeNFSeRTC FinNFSe
+        {
+            get => finNFSeInformada ? finNFSe : IBSCBS?.FinNFSe ?? default;
+            set
+            {
+                finNFSe = value;
+                finNFSeInformada = true;
+            }
+        }
 
         /// <summary>
         /// Chave de acesso rejeitada pelo Tomador/Intermediário
@@ -298,6 +308,9 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
         #region Should Serialize
         public bool ShouldSerializeCMotivoEmisTI() => !string.IsNullOrWhiteSpace(CMotivoEmisTI);
+
+        /// <summary>Omite a finalidade quando ela não foi informada em nenhum dos leiautes suportados.</summary>
+        public bool ShouldSerializeFinNFSe() => finNFSeInformada || (IBSCBS?.FinNFSeInformada ?? false);
 
         public bool ShouldSerializeChNFSeRej() => !string.IsNullOrWhiteSpace(ChNFSeRej);
         #endregion Should Serialize
@@ -1724,12 +1737,26 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class IBSCBS
     {
+        private FinalidadeNFSeRTC finNFSe;
+
         /// <summary>
         /// Finalidade no leiaute anterior. Para emissão atual, use InfDPS.FinNFSe.
         /// Mantida para leitura de XMLs históricos e compatibilidade da API.
         /// </summary>
         [XmlElement("finNFSe")]
-        public FinalidadeNFSeRTC FinNFSe { get; set; }
+        public FinalidadeNFSeRTC FinNFSe
+        {
+            get => finNFSe;
+            set
+            {
+                finNFSe = value;
+                FinNFSeInformada = true;
+            }
+        }
+
+        /// <summary>Indica que a finalidade foi informada no leiaute histórico.</summary>
+        [XmlIgnore]
+        internal bool FinNFSeInformada { get; private set; }
 
         /// <summary>finNFSe passou a pertencer diretamente a infDPS.</summary>
         public bool ShouldSerializeFinNFSe() => false;
@@ -1911,6 +1938,9 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public ImovelEnd End { get; set; }
 
         #region Should Serialize
+        /// <summary>Omite o município do imóvel quando ele não foi informado.</summary>
+        public bool ShouldSerializeCMun() => CMun > 0;
+
         public bool ShouldSerializeInscImobFisc() => InscImobFisc > 0;
         public bool ShouldSerializeCCIB() => !string.IsNullOrWhiteSpace(CCIB);
         #endregion Should Serialize

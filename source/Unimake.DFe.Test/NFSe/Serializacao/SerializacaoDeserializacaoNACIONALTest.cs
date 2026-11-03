@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.NFSe.NACIONAL;
@@ -892,5 +893,97 @@ public class SerializacaoDesserializacaoNacionalTest
         {
             Assert.Fail("Retorno não contém NFSe nem erro");
         }
+    }
+
+    [Fact]
+    [Trait("DFe", "NFSe")]
+    [Trait("Layout", "Nacional")]
+    public void DPS_DesserializarLeiauteLegado_DeveEmitirTagsMovidasNoNovoNivel()
+    {
+        var xmlLegado = @"<DPS xmlns=""http://www.sped.fazenda.gov.br/nfse"" versao=""1.01""><infDPS><tpAmb>2</tpAmb><dhEmi>2026-11-03T12:00:00-03:00</dhEmi><verAplic>1.01</verAplic><serie>1</serie><nDPS>1</nDPS><dCompet>2026-11-03</dCompet><tpEmit>1</tpEmit><cLocEmi>4202909</cLocEmi><serv><cServ><cTribNac>100000</cTribNac><xDescServ>Descrição no leiaute legado</xDescServ><cNBS>100000000</cNBS><cIntContrib>1</cIntContrib></cServ></serv><IBSCBS><finNFSe>0</finNFSe><valores><trib><gIBSCBS><CST>101</CST><cClassTrib>000001</cClassTrib></gIBSCBS></trib></valores></IBSCBS></infDPS></DPS>";
+        var documentoLegado = new XmlDocument();
+        documentoLegado.LoadXml(xmlLegado);
+
+        var dps = new DPS().LerXML<DPS>(documentoLegado);
+
+        Assert.Equal(FinalidadeNFSeRTC.Regular, dps.InfDPS.FinNFSe);
+        Assert.Equal("Descrição no leiaute legado", dps.InfDPS.Serv.CServ.XDescServ);
+        Assert.Equal("101", dps.InfDPS.IBSCBS.Valores.Trib.CST);
+        Assert.Equal("000001", dps.InfDPS.IBSCBS.Valores.Trib.CClassTrib);
+
+        var xmlAtual = dps.GerarXML();
+        var nsmgr = CreateNamespaceManager(xmlAtual);
+        var trib = xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:valores/ns:trib", nsmgr);
+
+        Assert.Equal("0", xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:finNFSe", nsmgr)?.InnerText);
+        Assert.Null(xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:finNFSe", nsmgr));
+        Assert.Equal("101", trib.SelectSingleNode("ns:CST", nsmgr)?.InnerText);
+        Assert.Equal("000001", trib.SelectSingleNode("ns:cClassTrib", nsmgr)?.InnerText);
+        Assert.Null(trib.SelectSingleNode("ns:gIBSCBS/ns:CST", nsmgr));
+        Assert.Null(trib.SelectSingleNode("ns:gIBSCBS/ns:cClassTrib", nsmgr));
+        Assert.Equal("Descrição no leiaute legado", xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:serv/ns:cServ/ns:xDescServ", nsmgr)?.InnerText);
+    }
+
+    [Fact]
+    [Trait("DFe", "NFSe")]
+    [Trait("Layout", "Nacional")]
+    public void DPS_TagsNovasNaoInformadas_NaoDevemSerSerializadas()
+    {
+        var dps = new DPS
+        {
+            Versao = "1.01",
+            InfDPS = new InfDPS
+            {
+                TpAmb = TipoAmbiente.Homologacao,
+                TpEmit = TipoEmitenteNFSe.Prestador,
+                IBSCBS = new IBSCBS
+                {
+                    Imovel = new Imovel
+                    {
+                        InscImobFisc = 123
+                    }
+                }
+            }
+        };
+
+        var xml = dps.GerarXML();
+        var nsmgr = CreateNamespaceManager(xml);
+
+        Assert.Null(xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:finNFSe", nsmgr));
+        Assert.Null(xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:imovel/ns:cMun", nsmgr));
+        Assert.Equal("123", xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:imovel/ns:inscImobFisc", nsmgr)?.InnerText);
+    }
+
+    [Fact]
+    [Trait("DFe", "NFSe")]
+    [Trait("Layout", "Nacional")]
+    public void CServ_DeveSerializarXDescServAposTagsReordenadas()
+    {
+        var dps = new DPS
+        {
+            Versao = "1.01",
+            InfDPS = new InfDPS
+            {
+                TpAmb = TipoAmbiente.Homologacao,
+                TpEmit = TipoEmitenteNFSe.Prestador,
+                Serv = new Serv
+                {
+                    CServ = new CServ
+                    {
+                        CTribNac = "100000",
+                        CTribMun = "123",
+                        CNBS = "100000000",
+                        CIntContrib = "1",
+                        XDescServ = "Serviço de teste"
+                    }
+                }
+            }
+        };
+
+        var xml = dps.GerarXML();
+        var nsmgr = CreateNamespaceManager(xml);
+        var cServ = xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:serv/ns:cServ", nsmgr);
+
+        Assert.Equal("cTribNac,cTribMun,cNBS,cIntContrib,xDescServ", string.Join(",", cServ.ChildNodes.Cast<XmlElement>().Select(element => element.LocalName)));
     }
 }
