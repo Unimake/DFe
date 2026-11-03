@@ -46,6 +46,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
 
         public override XmlDocument GerarXML()
         {
+            InfNFSe?.DPS?.DefinirLeiauteCServ();
             var xmlDocument = base.GerarXML();
 
             var attribute = GetType().GetCustomAttribute<XmlRootAttribute>();

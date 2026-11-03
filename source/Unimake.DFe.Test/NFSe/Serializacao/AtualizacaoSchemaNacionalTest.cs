@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe;
@@ -241,6 +242,47 @@ namespace Unimake.DFe.Test.NFSe.Serializacao
             xml = modelo.GerarXML();
             Assert.Equal("0.00", Selecionar(xml, "/n:NFSe/n:infNFSe/n:IBSCBS/n:valores/n:vBC").InnerText);
             Validar(xml, "NFSe_v1.01.xsd");
+        }
+
+        [Theory]
+        [Trait("DFe", "NFSe")]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void NFSeDeveGerarCServNovoNoLeiauteDaDPSInterna(bool leiauteAtual)
+        {
+            var modelo = leiauteAtual
+                ? LerNFSe()
+                : XMLUtility.Deserializar<NacionalNFSe.NFSe>(File.ReadAllText(
+                    @"..\..\..\NFSe\Resources\NACIONAL\1.01\RetornoNACIONAL.xml"));
+            modelo.InfNFSe.DPS.InfDPS.Serv.CServ = new CServ
+            {
+                XDescServ = "SERVICO TESTE",
+                CNBS = "100000000",
+                CTribMun = "123",
+                CTribNac = "100000",
+                CIntContrib = "1"
+            };
+
+            var xmlNFSe = modelo.GerarXML();
+            var cServ = Selecionar(xmlNFSe, "/n:NFSe/n:infNFSe/n:DPS/n:infDPS/n:serv/n:cServ");
+            var nomes = new List<string>();
+            foreach (XmlNode elemento in cServ.ChildNodes)
+            {
+                nomes.Add(elemento.LocalName);
+            }
+
+            Assert.Equal(leiauteAtual
+                ? "cTribNac,cTribMun,cNBS,cIntContrib,xDescServ"
+                : "cTribNac,cTribMun,xDescServ,cNBS,cIntContrib", string.Join(",", nomes));
+
+            var xmlDPS = modelo.InfNFSe.DPS.GerarXML();
+            Assert.Equal(cServ.InnerXml, Selecionar(xmlDPS, "/n:DPS/n:infDPS/n:serv/n:cServ").InnerXml);
+            Assert.Equal(xmlNFSe.OuterXml, modelo.GerarXML().OuterXml);
+
+            if (leiauteAtual)
+            {
+                Validar(xmlNFSe, "NFSe_v1.01.xsd");
+            }
         }
 
         private static NacionalNFSe.NFSe LerNFSe()

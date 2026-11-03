@@ -60,7 +60,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
             return base.GerarXML();
         }
 
-        private void DefinirLeiauteCServ()
+        internal void DefinirLeiauteCServ()
         {
             var cServ = InfDPS?.Serv?.CServ;
             if (cServ != null)
