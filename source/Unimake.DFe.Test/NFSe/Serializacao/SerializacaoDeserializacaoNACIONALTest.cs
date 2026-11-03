@@ -898,7 +898,7 @@ public class SerializacaoDesserializacaoNacionalTest
     [Fact]
     [Trait("DFe", "NFSe")]
     [Trait("Layout", "Nacional")]
-    public void DPS_DesserializarLeiauteLegado_DeveEmitirTagsMovidasNoNovoNivel()
+    public void DPS_DesserializarLeiauteLegado_DevePreservarEstruturaOriginal()
     {
         var xmlLegado = @"<DPS xmlns=""http://www.sped.fazenda.gov.br/nfse"" versao=""1.01""><infDPS><tpAmb>2</tpAmb><dhEmi>2026-11-03T12:00:00-03:00</dhEmi><verAplic>1.01</verAplic><serie>1</serie><nDPS>1</nDPS><dCompet>2026-11-03</dCompet><tpEmit>1</tpEmit><cLocEmi>4202909</cLocEmi><serv><cServ><cTribNac>100000</cTribNac><xDescServ>Descrição no leiaute legado</xDescServ><cNBS>100000000</cNBS><cIntContrib>1</cIntContrib></cServ></serv><IBSCBS><finNFSe>0</finNFSe><valores><trib><gIBSCBS><CST>101</CST><cClassTrib>000001</cClassTrib></gIBSCBS></trib></valores></IBSCBS></infDPS></DPS>";
         var documentoLegado = new XmlDocument();
@@ -908,19 +908,19 @@ public class SerializacaoDesserializacaoNacionalTest
 
         Assert.Equal(FinalidadeNFSeRTC.Regular, dps.InfDPS.FinNFSe);
         Assert.Equal("Descrição no leiaute legado", dps.InfDPS.Serv.CServ.XDescServ);
-        Assert.Equal("101", dps.InfDPS.IBSCBS.Valores.Trib.CST);
-        Assert.Equal("000001", dps.InfDPS.IBSCBS.Valores.Trib.CClassTrib);
+        Assert.Equal("101", dps.InfDPS.IBSCBS.Valores.Trib.GIBSCBS.CST);
+        Assert.Equal("000001", dps.InfDPS.IBSCBS.Valores.Trib.GIBSCBS.CClassTrib);
 
         var xmlAtual = dps.GerarXML();
         var nsmgr = CreateNamespaceManager(xmlAtual);
         var trib = xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:valores/ns:trib", nsmgr);
 
-        Assert.Equal("0", xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:finNFSe", nsmgr)?.InnerText);
-        Assert.Null(xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:finNFSe", nsmgr));
-        Assert.Equal("101", trib.SelectSingleNode("ns:CST", nsmgr)?.InnerText);
-        Assert.Equal("000001", trib.SelectSingleNode("ns:cClassTrib", nsmgr)?.InnerText);
-        Assert.Null(trib.SelectSingleNode("ns:gIBSCBS/ns:CST", nsmgr));
-        Assert.Null(trib.SelectSingleNode("ns:gIBSCBS/ns:cClassTrib", nsmgr));
+        Assert.Null(xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:finNFSe", nsmgr));
+        Assert.Equal("0", xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:finNFSe", nsmgr)?.InnerText);
+        Assert.Null(trib.SelectSingleNode("ns:CST", nsmgr));
+        Assert.Null(trib.SelectSingleNode("ns:cClassTrib", nsmgr));
+        Assert.Equal("101", trib.SelectSingleNode("ns:gIBSCBS/ns:CST", nsmgr)?.InnerText);
+        Assert.Equal("000001", trib.SelectSingleNode("ns:gIBSCBS/ns:cClassTrib", nsmgr)?.InnerText);
         Assert.Equal("Descrição no leiaute legado", xmlAtual.SelectSingleNode("/ns:DPS/ns:infDPS/ns:serv/ns:cServ/ns:xDescServ", nsmgr)?.InnerText);
     }
 
@@ -952,6 +952,58 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.Null(xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:finNFSe", nsmgr));
         Assert.Null(xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:imovel/ns:cMun", nsmgr));
         Assert.Equal("123", xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:imovel/ns:inscImobFisc", nsmgr)?.InnerText);
+    }
+
+    [Fact]
+    [Trait("DFe", "NFSe")]
+    [Trait("Layout", "Nacional")]
+    public void DPS_DadosLegadosPreenchidosDevemSerGeradosSemNormalizacao()
+    {
+        var dps = new DPS
+        {
+            Versao = "1.01",
+            InfDPS = new InfDPS
+            {
+                TpAmb = TipoAmbiente.Homologacao,
+                TpEmit = TipoEmitenteNFSe.Prestador,
+                Serv = new Serv
+                {
+                    CServ = new CServ
+                    {
+                        CTribNac = "100000",
+                        XDescServ = "Serviço legado",
+                        CNBS = "100000000",
+                        CIntContrib = "1"
+                    }
+                },
+                IBSCBS = new IBSCBS
+                {
+                    FinNFSe = FinalidadeNFSeRTC.Regular,
+                    Valores = new IBSCBSValores
+                    {
+                        Trib = new IBSCBSValoresTrib
+                        {
+                            GIBSCBS = new GIBSCBS
+                            {
+                                CST = "101",
+                                CClassTrib = "000001"
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        var xml = dps.GerarXML();
+        var nsmgr = CreateNamespaceManager(xml);
+        var trib = xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:valores/ns:trib", nsmgr);
+        var cServ = xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:serv/ns:cServ", nsmgr);
+
+        Assert.Null(xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:finNFSe", nsmgr));
+        Assert.Equal("0", xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:IBSCBS/ns:finNFSe", nsmgr)?.InnerText);
+        Assert.Equal("101", trib.SelectSingleNode("ns:gIBSCBS/ns:CST", nsmgr)?.InnerText);
+        Assert.Equal("000001", trib.SelectSingleNode("ns:gIBSCBS/ns:cClassTrib", nsmgr)?.InnerText);
+        Assert.Equal("cTribNac,xDescServ,cNBS,cIntContrib", string.Join(",", cServ.ChildNodes.Cast<XmlElement>().Select(element => element.LocalName)));
     }
 
     [Fact]

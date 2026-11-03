@@ -140,7 +140,7 @@ namespace Unimake.DFe.Test.NFSe.Serializacao
 
         [Fact]
         [Trait("DFe", "NFSe")]
-        public void DeveManterAPIAntigaDosCodigosEmitindoNoNovoNivel()
+        public void DeveManterEstruturaLegadaDosCodigos()
         {
             var modelo = LerDPS();
             modelo.InfDPS.IBSCBS.Valores.Trib = new IBSCBSValoresTrib
@@ -148,9 +148,9 @@ namespace Unimake.DFe.Test.NFSe.Serializacao
                 GIBSCBS = new GIBSCBS { CST = "000", CClassTrib = "000001" }
             };
             var xml = modelo.GerarXML();
-            Assert.Equal("000", Selecionar(xml, "//n:IBSCBS/n:valores/n:trib/n:CST").InnerText);
-            Assert.Null(Selecionar(xml, "//n:gIBSCBS"));
-            Validar(xml, "DPS_v1.01.xsd");
+            Assert.Equal("000", Selecionar(xml, "//n:IBSCBS/n:valores/n:trib/n:gIBSCBS/n:CST").InnerText);
+            Assert.Equal("000001", Selecionar(xml, "//n:IBSCBS/n:valores/n:trib/n:gIBSCBS/n:cClassTrib").InnerText);
+            Assert.Null(Selecionar(xml, "//n:IBSCBS/n:valores/n:trib/n:CST"));
         }
 
         [Fact]

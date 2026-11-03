@@ -6,6 +6,8 @@ using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -247,7 +249,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("finNFSe")]
         public FinalidadeNFSeRTC FinNFSe
         {
-            get => finNFSeInformada ? finNFSe : IBSCBS?.FinNFSe ?? default;
+            get => finNFSe;
             set
             {
                 finNFSe = value;
@@ -309,8 +311,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         #region Should Serialize
         public bool ShouldSerializeCMotivoEmisTI() => !string.IsNullOrWhiteSpace(CMotivoEmisTI);
 
-        /// <summary>Omite a finalidade quando ela não foi informada em nenhum dos leiautes suportados.</summary>
-        public bool ShouldSerializeFinNFSe() => finNFSeInformada || (IBSCBS?.FinNFSeInformada ?? false);
+        /// <summary>Omite a finalidade quando ela não foi informada.</summary>
+        public bool ShouldSerializeFinNFSe() => finNFSeInformada;
 
         public bool ShouldSerializeChNFSeRej() => !string.IsNullOrWhiteSpace(ChNFSeRej);
         #endregion Should Serialize
@@ -673,23 +675,182 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.CServ")]
     [ComVisible(true)]
 #endif
-    public class CServ
+    public class CServ : IXmlSerializable
     {
+        private const string CTribNacTag = "cTribNac";
+        private const string CTribMunTag = "cTribMun";
+        private const string CNBSTag = "cNBS";
+        private const string CIntContribTag = "cIntContrib";
+        private const string XDescServTag = "xDescServ";
+
+        private readonly List<string> ordemElementos = new List<string>();
+        private string cTribNac;
+        private string cTribMun;
+        private string cNBS;
+        private string cIntContrib;
+        private string xDescServ;
+
         [XmlElement("cTribNac")]
-        public string CTribNac { get; set; }
+        public string CTribNac
+        {
+            get => cTribNac;
+            set
+            {
+                cTribNac = value;
+                RegistrarOrdem(CTribNacTag);
+            }
+        }
 
         [XmlElement("cTribMun")]
-        public string CTribMun { get; set; }
+        public string CTribMun
+        {
+            get => cTribMun;
+            set
+            {
+                cTribMun = value;
+                RegistrarOrdem(CTribMunTag);
+            }
+        }
 
         [XmlElement("cNBS")]
-        public string CNBS { get; set; }
+        public string CNBS
+        {
+            get => cNBS;
+            set
+            {
+                cNBS = value;
+                RegistrarOrdem(CNBSTag);
+            }
+        }
 
         [XmlElement("cIntContrib")]
-        public string CIntContrib { get; set; }
+        public string CIntContrib
+        {
+            get => cIntContrib;
+            set
+            {
+                cIntContrib = value;
+                RegistrarOrdem(CIntContribTag);
+            }
+        }
 
         [XmlElement("xDescServ")]
-        public string XDescServ { get; set; }
+        public string XDescServ
+        {
+            get => xDescServ;
+            set
+            {
+                xDescServ = value;
+                RegistrarOrdem(XDescServTag);
+            }
+        }
 
+        #if INTEROP
+        [ComVisible(false)]
+        #endif
+        public XmlSchema GetSchema() => null;
+
+        #if INTEROP
+        [ComVisible(false)]
+        #endif
+        public void ReadXml(XmlReader reader)
+        {
+            ordemElementos.Clear();
+            var elementoVazio = reader.IsEmptyElement;
+            reader.ReadStartElement();
+
+            if (elementoVazio)
+            {
+                return;
+            }
+
+            while (reader.MoveToContent() == XmlNodeType.Element)
+            {
+                switch (reader.LocalName)
+                {
+                    case CTribNacTag:
+                        CTribNac = reader.ReadElementContentAsString();
+                        break;
+                    case CTribMunTag:
+                        CTribMun = reader.ReadElementContentAsString();
+                        break;
+                    case CNBSTag:
+                        CNBS = reader.ReadElementContentAsString();
+                        break;
+                    case CIntContribTag:
+                        CIntContrib = reader.ReadElementContentAsString();
+                        break;
+                    case XDescServTag:
+                        XDescServ = reader.ReadElementContentAsString();
+                        break;
+                    default:
+                        reader.Skip();
+                        break;
+                }
+            }
+
+            reader.ReadEndElement();
+        }
+
+        #if INTEROP
+        [ComVisible(false)]
+        #endif
+        public void WriteXml(XmlWriter writer)
+        {
+            foreach (var nome in ordemElementos)
+            {
+                if (DeveSerializar(nome))
+                {
+                    writer.WriteElementString(nome, ObterValor(nome));
+                }
+            }
+        }
+
+        private void RegistrarOrdem(string nome)
+        {
+            if (!ordemElementos.Contains(nome))
+            {
+                ordemElementos.Add(nome);
+            }
+        }
+
+        private bool DeveSerializar(string nome)
+        {
+            switch (nome)
+            {
+                case CTribNacTag:
+                    return CTribNac != null;
+                case CTribMunTag:
+                    return ShouldSerializeCTribMun();
+                case CNBSTag:
+                    return ShouldSerializeCNBS();
+                case CIntContribTag:
+                    return ShouldSerializeCIntContrib();
+                case XDescServTag:
+                    return XDescServ != null;
+                default:
+                    return false;
+            }
+        }
+
+        private string ObterValor(string nome)
+        {
+            switch (nome)
+            {
+                case CTribNacTag:
+                    return CTribNac;
+                case CTribMunTag:
+                    return CTribMun;
+                case CNBSTag:
+                    return CNBS;
+                case CIntContribTag:
+                    return CIntContrib;
+                case XDescServTag:
+                    return XDescServ;
+                default:
+                    return null;
+            }
+        }
 
         #region Should Serialize
         public bool ShouldSerializeCTribMun() => !string.IsNullOrWhiteSpace(CTribMun);
@@ -1758,8 +1919,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlIgnore]
         internal bool FinNFSeInformada { get; private set; }
 
-        /// <summary>finNFSe passou a pertencer diretamente a infDPS.</summary>
-        public bool ShouldSerializeFinNFSe() => false;
+        /// <summary>Omite a finalidade quando ela não foi informada.</summary>
+        public bool ShouldSerializeFinNFSe() => FinNFSeInformada;
 
         [XmlElement("indFinal")]
 #if INTEROP
@@ -2304,7 +2465,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("CST")]
         public string CST
         {
-            get => cst ?? GIBSCBS?.CST;
+            get => cst;
             set => cst = value;
         }
 
@@ -2312,7 +2473,7 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("cClassTrib")]
         public string CClassTrib
         {
-            get => cClassTrib ?? GIBSCBS?.CClassTrib;
+            get => cClassTrib;
             set => cClassTrib = value;
         }
 
@@ -2321,7 +2482,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 
         /// <summary>Omite o grupo opcional quando contém somente os códigos migrados para trib.</summary>
         public bool ShouldSerializeGIBSCBS() => GIBSCBS != null &&
-            (!string.IsNullOrWhiteSpace(GIBSCBS.CCredPres) || GIBSCBS.GTribRegular != null || GIBSCBS.GDif != null);
+            (!string.IsNullOrWhiteSpace(GIBSCBS.CST) || !string.IsNullOrWhiteSpace(GIBSCBS.CClassTrib) ||
+             !string.IsNullOrWhiteSpace(GIBSCBS.CCredPres) || GIBSCBS.GTribRegular != null || GIBSCBS.GDif != null);
     }
 
 #if INTEROP
@@ -2347,11 +2509,11 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public GDif GDif { get; set; }
 
         #region Should Serialize
-        /// <summary>CST é serializado em IBSCBS/valores/trib no leiaute atualizado.</summary>
-        public bool ShouldSerializeCST() => false;
+        /// <summary>Omite CST quando não informado.</summary>
+        public bool ShouldSerializeCST() => !string.IsNullOrWhiteSpace(CST);
 
-        /// <summary>cClassTrib é serializado em IBSCBS/valores/trib no leiaute atualizado.</summary>
-        public bool ShouldSerializeCClassTrib() => false;
+        /// <summary>Omite cClassTrib quando não informado.</summary>
+        public bool ShouldSerializeCClassTrib() => !string.IsNullOrWhiteSpace(CClassTrib);
 
         public bool ShouldSerializeCCredPres() => !string.IsNullOrWhiteSpace(CCredPres);
 
