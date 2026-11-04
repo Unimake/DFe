@@ -1710,6 +1710,10 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evApropriaCredPres_v4.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evTributacaoSN_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evCancTributacaoSN_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evTributacaoSN_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCancTributacaoSN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\evCancTributacaoSN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\evTributacaoSN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
