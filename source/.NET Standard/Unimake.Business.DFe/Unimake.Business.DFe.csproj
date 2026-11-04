@@ -119,6 +119,7 @@
 		<None Remove="Servicos\Config\DARE\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\AquirazCE.xml" />
 		<None Remove="Servicos\Config\NFSe\ArapongasPR.xml" />
+		<None Remove="Servicos\Config\NFSe\MarialvaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PocosDeCaldasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SIGCORP.xml" />
 		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
@@ -529,7 +530,6 @@
 		<None Remove="Servicos\Config\NFSe\CorupaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CosmoramaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CotiaSP.xml" />
-		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CuritibaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\DiademaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DoisIrmaosRS.xml" />
@@ -1666,6 +1666,7 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ArapongasPR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MarialvaPR.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\PocosDeCaldasMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SilvaniaGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SIGCORP.xml" />
@@ -2241,9 +2242,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\PorangatuGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MarataRS.xml">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\CuiabaMT.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml">
