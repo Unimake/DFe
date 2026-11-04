@@ -677,12 +677,6 @@
 		<ArqConfig>MarataRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5103403">
-		<Nome>Cuiabá - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>CuiabaMT.xml</ArqConfig>
-		<PadraoNFSe>ISSNET</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5218003">
 		<Nome>Porangatu - GO</Nome>
 		<UF>GO</UF>
