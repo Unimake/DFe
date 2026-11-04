@@ -4001,6 +4001,12 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
     public class DetEventoTributacaoSN : EventoDetalhe
     {
+        private const string NamespaceEvento = "http://www.portalfiscal.inf.br/cte";
+        private static readonly XmlSerializer SerializadorItem = new XmlSerializer(typeof(GTribItemSN),
+            new XmlRootAttribute("gTribItemSN") { Namespace = NamespaceEvento });
+        private static readonly XmlSerializer SerializadorTotal = new XmlSerializer(typeof(GTotalSN),
+            new XmlRootAttribute("gTotalSN") { Namespace = NamespaceEvento });
+
         /// <summary>Descrição do evento.</summary>
         public override string DescEvento { get; set; } = "Tributação do Simples Nacional";
 
@@ -4054,33 +4060,27 @@ namespace Unimake.Business.DFe.Xml.CTe
             GTribItemSN = new List<GTribItemSN>();
             foreach (var item in evento.Elements(ns + "gTribItemSN"))
             {
-                GTribItemSN.Add(LerGrupo<GTribItemSN>(item));
+                GTribItemSN.Add(LerGrupo<GTribItemSN>(item, SerializadorItem));
             }
-            GTotalSN = LerGrupo<GTotalSN>(evento.Element(ns + "gTotalSN"));
+            GTotalSN = LerGrupo<GTotalSN>(evento.Element(ns + "gTotalSN"), SerializadorTotal);
         }
 
-        private static T LerGrupo<T>(XElement elemento)
+        private static T LerGrupo<T>(XElement elemento, XmlSerializer serializer)
         {
-            var serializer = new XmlSerializer(typeof(T), new XmlRootAttribute(elemento.Name.LocalName)
-            {
-                Namespace = elemento.Name.NamespaceName
-            });
             using (var reader = elemento.CreateReader())
             {
                 return (T)serializer.Deserialize(reader);
             }
         }
 
-        private static void EscreverGrupo<T>(XmlWriter writer, T grupo, string nome)
+        private static void EscreverGrupo<T>(XmlWriter writer, T grupo, XmlSerializer serializer)
         {
             if (grupo == null)
             {
                 return;
             }
-            const string ns = "http://www.portalfiscal.inf.br/cte";
-            var serializer = new XmlSerializer(typeof(T), new XmlRootAttribute(nome) { Namespace = ns });
             var namespaces = new XmlSerializerNamespaces();
-            namespaces.Add(string.Empty, ns);
+            namespaces.Add(string.Empty, NamespaceEvento);
             serializer.Serialize(writer, grupo, namespaces);
         }
 
@@ -4095,10 +4095,10 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 foreach (var item in GTribItemSN)
                 {
-                    EscreverGrupo(writer, item, "gTribItemSN");
+                    EscreverGrupo(writer, item, SerializadorItem);
                 }
             }
-            EscreverGrupo(writer, GTotalSN, "gTotalSN");
+            EscreverGrupo(writer, GTotalSN, SerializadorTotal);
             writer.WriteEndElement();
         }
     }
