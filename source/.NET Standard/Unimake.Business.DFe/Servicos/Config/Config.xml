@@ -2045,4 +2045,10 @@
 		<ArqConfig>PortoSeguroBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4114807">
+		<Nome>Marialva - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>MarialvaPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
