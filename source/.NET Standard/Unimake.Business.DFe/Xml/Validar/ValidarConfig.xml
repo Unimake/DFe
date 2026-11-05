@@ -1799,6 +1799,16 @@
 					<SchemaArquivoEspecifico>evApropriaCredPres_v4.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
+					<ID>412140</ID>
+					<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evTributacaoSN_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>412141</ID>
+					<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancTributacaoSN_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
 					<ID>610110</ID>
 					<SchemaArquivo>eventoCTe_v4.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evPrestDesacordo_v4.00.xsd</SchemaArquivoEspecifico>

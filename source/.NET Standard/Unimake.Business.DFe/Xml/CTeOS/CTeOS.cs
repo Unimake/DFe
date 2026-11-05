@@ -481,6 +481,10 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("gPagAntecipado")]
         public CTe.GPagAntecipado GPagAntecipado { get; set; }
 
+        /// <summary>Referência do CT-e para cobrança de multa e juros.</summary>
+        [XmlElement("gMultaJuros")]
+        public CTe.GMultaJuros GMultaJuros { get; set; }
+
 #if INTEROP
 
         /// <summary>

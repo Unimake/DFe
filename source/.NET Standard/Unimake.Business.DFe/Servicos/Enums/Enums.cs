@@ -1801,6 +1801,14 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("211110")]
         ApropriacaoCreditoPresumido = 211110,
 
+        /// <summary>412140 - Tributação do Simples Nacional.</summary>
+        [XmlEnum("412140")]
+        TributacaoSimplesNacional = 412140,
+
+        /// <summary>412141 - Cancelamento da tributação do Simples Nacional.</summary>
+        [XmlEnum("412141")]
+        CancelamentoTributacaoSimplesNacional = 412141,
+
         /// <summary>
         /// 0 - Evento desconhecido
         /// </summary>
