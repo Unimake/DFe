@@ -1917,7 +1917,26 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("ISUFEmit")]
         public string ISUFEmit { get; set; }
 
+        /// <summary>
+        /// Regime de apuração do IBS e da CBS.
+        /// </summary>
+        [XmlElement("tpRegimeIBSCBS")]
+#if INTEROP
+        public TipoRegimeIBSCBS TpRegimeIBSCBS { get; set; } = (TipoRegimeIBSCBS)(-1);
+#else
+        public TipoRegimeIBSCBS? TpRegimeIBSCBS { get; set; }
+#endif
+
         #region ShouldSerialize
+
+        /// <summary>
+        /// Verifica se o regime de apuração do IBS e da CBS foi informado.
+        /// </summary>
+#if INTEROP
+        public bool ShouldSerializeTpRegimeIBSCBS() => TpRegimeIBSCBS != (TipoRegimeIBSCBS)(-1);
+#else
+        public bool ShouldSerializeTpRegimeIBSCBS() => TpRegimeIBSCBS.HasValue;
+#endif
 
 #if INTEROP
         /// <summary>
