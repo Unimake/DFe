@@ -2,6 +2,7 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using Unimake.Business.DFe;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
@@ -64,11 +65,49 @@ namespace Unimake.DFe.Test.CTeSimp.Serializacao
             Assert.True(validador.Success, validador.ErrorMessage);
         }
 
+        [Theory]
+        [Trait("DFe", "CTeSimp")]
+        [InlineData(1, false)]
+        [InlineData(2, false)]
+        [InlineData(3, false)]
+        [InlineData(4, false)]
+        [InlineData(1, true)]
+        [InlineData(2, true)]
+        [InlineData(3, true)]
+        [InlineData(4, true)]
+        public void RegimeIBSCBSPreservaDominioOrdemERoundTrip(int regime, bool informarSuframa)
+        {
+            var modelo = LerModelo();
+            modelo.InfCTe.Emit.ISUFEmit = informarSuframa ? "12345678" : null;
+            modelo.InfCTe.Emit.TpRegimeIBSCBS = (TipoRegimeIBSCBS)regime;
+            Assert.True(modelo.InfCTe.Emit.ShouldSerializeTpRegimeIBSCBS());
+
+            var xml = modelo.GerarXML();
+            var ns = new XmlNamespaceManager(xml.NameTable);
+            ns.AddNamespace("c", NS);
+            var campos = xml.SelectNodes("/*/c:infCte/c:emit/c:tpRegimeIBSCBS", ns);
+            var campo = Assert.Single(campos.Cast<XmlNode>());
+            Assert.Equal(regime.ToString(), campo.InnerText);
+            Assert.Equal(informarSuframa ? "ISUFEmit" : "CRT", campo.PreviousSibling.LocalName);
+            Assert.Null(campo.NextSibling);
+
+            var lido = XMLUtility.Deserializar<Modelo>(xml);
+            Assert.Equal((TipoRegimeIBSCBS)regime, lido.InfCTe.Emit.TpRegimeIBSCBS);
+            Assert.Equal(xml.InnerText, lido.GerarXML().InnerText);
+            var validador = new ValidarSchema();
+            validador.Validar(xml, "CTe.cteSimp_v4.00.xsd", NS);
+            Assert.True(validador.Success, validador.ErrorMessage);
+        }
+
         [Fact]
         [Trait("DFe", "CTeSimp")]
         public void NovosGruposSaoOmitidosQuandoNaoInformados()
         {
-            var xml = LerModelo().GerarXML();
+            var modelo = LerModelo();
+            Assert.False(modelo.InfCTe.Emit.ShouldSerializeTpRegimeIBSCBS());
+            var xml = modelo.GerarXML();
+            Assert.Equal(0, xml.GetElementsByTagName("tpRegimeIBSCBS", NS).Count);
+            Assert.False(XMLUtility.Deserializar<Modelo>(xml).InfCTe.Emit.ShouldSerializeTpRegimeIBSCBS());
             Assert.Equal(0, xml.GetElementsByTagName("gMultaJuros", NS).Count);
             Assert.Equal(0, xml.GetElementsByTagName("gTribSN", NS).Count);
         }
