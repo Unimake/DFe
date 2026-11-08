@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -367,11 +367,12 @@ namespace Unimake.Business.DFe.Utility
         /// <summary>Classifica uma exceção de transporte sem expor dados sensíveis.</summary>
         /// <param name="exception">Exceção original da operação.</param>
         /// <param name="resultado">Amostra que receberá o tipo de falha e mensagem sanitizada.</param>
-        internal static void PreencherFalha(Exception exception, ResultadoSondaDisponibilidade resultado)
+        /// <param name="incluirMensagem">Se permite ler/sanitizar a mensagem externa; desabilitar para observações sem texto.</param>
+        internal static void PreencherFalha(Exception exception, ResultadoSondaDisponibilidade resultado, bool incluirMensagem = true)
         {
             resultado.Status = StatusDisponibilidade.Inconclusivo;
             resultado.TipoFalha = TipoFalhaDisponibilidade.Desconhecida;
-            resultado.Excecao = SanitizarExcecao(exception);
+            resultado.Excecao = incluirMensagem ? SanitizarExcecao(exception) : string.Empty;
             var webException = EncontrarWebException(exception);
             var permiteClassificarSocket = webException == null ||
                 webException.Status == WebExceptionStatus.UnknownError ||

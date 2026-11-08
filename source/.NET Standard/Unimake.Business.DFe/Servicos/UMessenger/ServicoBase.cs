@@ -1,4 +1,4 @@
-#if INTEROP
+﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
 
@@ -132,9 +132,11 @@ namespace Unimake.Business.DFe.Servicos.UMessenger
             var apiConfig = new ConfiguracaoApiConfigMapper().MapExplicitEnvironment(Configuracoes);
             var request = new ApiConfigTransportRequestMapper().Map(apiConfig, null);
 
+            Utility.SessaoObservacaoDisponibilidade.InformarTransporte(request.RequestUri, "REST");
             using (var transportResponse = new ApiTransportExecutor().Execute(request))
             using (var httpResponse = transportResponse.HttpResponseMessage)
             {
+                Utility.SessaoObservacaoDisponibilidade.InformarRespostaHttp(httpResponse.StatusCode);
                 var content = httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
                 if (!httpResponse.IsSuccessStatusCode)

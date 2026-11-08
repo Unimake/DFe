@@ -77,6 +77,7 @@ namespace Unimake.Business.DFe
         public void ExecutarServico(XmlDocument xml, object servico, X509Certificate2 certificado)
         {
             var soap = (WSSoap)servico;
+            Utility.SessaoObservacaoDisponibilidade.InformarTransporte(soap.EnderecoWeb, "SOAP");
 
             if (certificado == null && soap.UsaCertificadoDigital)
             {
@@ -114,6 +115,7 @@ namespace Unimake.Business.DFe
                 using (var transportResponse = new SoapTransportExecutor().Execute(request))
                 {
                     HttpStatusCode = transportResponse.StatusCode;
+                    Utility.SessaoObservacaoDisponibilidade.InformarRespostaHttp(HttpStatusCode);
                     var resultado = new SoapResponseParser().Parse(new SoapResponseContext
                     {
                         Soap = soap,
