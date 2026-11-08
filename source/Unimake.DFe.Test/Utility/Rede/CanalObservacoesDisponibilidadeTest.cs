@@ -385,6 +385,120 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.Equal(StatusDisponibilidade.Inconclusivo, item.Status);
         }
 
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public async Task TimeoutRealDoHttpClientPublicaTimeoutDegradadoSemRede()
+        {
+            using (var handler = new HandlerAguardaCancelamento())
+            using (var client = new HttpClient(handler) { Timeout = TimeSpan.FromMilliseconds(100) })
+            {
+                var falha = await Assert.ThrowsAnyAsync<OperationCanceledException>(async () =>
+                    await client.GetAsync("https://api.test/segredo?token=secreto", TestContext.Current.CancellationToken).WaitAsync(TimeSpan.FromSeconds(10), TestContext.Current.CancellationToken));
+                Assert.IsType<TimeoutException>(falha.InnerException);
+                PublicarFalhaRest(falha, TipoFalhaDisponibilidade.Timeout, StatusDisponibilidade.Degradado);
+                Assert.Equal(1, handler.Chamadas);
+            }
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public async Task CancelamentoExplicitoDoHttpClientNaoEhTimeoutNemProtocolo()
+        {
+            using (var origem = System.Threading.CancellationTokenSource.CreateLinkedTokenSource(TestContext.Current.CancellationToken))
+            using (var handler = new HandlerAguardaCancelamento(origem))
+            using (var client = new HttpClient(handler) { Timeout = System.Threading.Timeout.InfiniteTimeSpan })
+            {
+                var falha = await Assert.ThrowsAnyAsync<OperationCanceledException>(async () =>
+                    await client.GetAsync("https://api.test", origem.Token).WaitAsync(TimeSpan.FromSeconds(10), TestContext.Current.CancellationToken));
+                Assert.True(origem.IsCancellationRequested);
+                Assert.Null(falha.InnerException as TimeoutException);
+                PublicarFalhaRest(falha, TipoFalhaDisponibilidade.Desconhecida, StatusDisponibilidade.Inconclusivo);
+                Assert.Equal(1, handler.Chamadas);
+            }
+        }
+
+        [Theory]
+        [Trait("Utility", "Disponibilidade")]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        public void TimeoutNaCadeiaNaoDependeDeWebExceptionOuMensagem(int formato)
+        {
+            Exception falha = new TimeoutException();
+            if (formato == 1) falha = new HttpRequestException("texto ignorado", falha);
+            if (formato == 2) falha = new TaskCanceledException("texto ignorado", falha);
+            if (formato == 3) falha = new AggregateException(new InvalidOperationException(), falha);
+            if (formato == 4) falha = new WebException("texto ignorado", WebExceptionStatus.Timeout);
+            if (formato == 5) falha = new HttpRequestException("texto ignorado", new WebException("texto ignorado", WebExceptionStatus.Timeout));
+            PublicarFalhaRest(falha, TipoFalhaDisponibilidade.Timeout, StatusDisponibilidade.Degradado);
+        }
+
+        [Theory]
+        [Trait("Utility", "Disponibilidade")]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void CancelamentoSemEvidenciaDeTimeoutPermaneceInconclusivo(bool encapsulado)
+        {
+            // Runtimes antigos podem representar timeout e cancelamento da mesma forma.
+            Exception falha = new TaskCanceledException("timeout; senha=segredo");
+            if (encapsulado) falha = new AggregateException(new InvalidOperationException(), falha);
+            PublicarFalhaRest(falha, TipoFalhaDisponibilidade.Desconhecida, StatusDisponibilidade.Inconclusivo);
+        }
+
+        private static void PublicarFalhaRest(Exception falha, TipoFalhaDisponibilidade tipo,
+            StatusDisponibilidade status)
+        {
+            var canal = new CanalObservacoesDisponibilidade();
+            var executor = new ExecutorFake(falha);
+            using (ApiTransportExecutorFactory.Override(() => executor))
+            using (var sessao = canal.IniciarOperacao(Config(TipoDFe.NFSe), Guid.NewGuid(), Guid.NewGuid()))
+            using (var consumidor = new ConsumirAPI())
+            {
+                var recebida = Record.Exception(() => consumidor.ExecutarServico(new APIConfig
+                {
+                    RequestURI = "https://api.test/segredo?token=secreto",
+                    MetodoAPI = "get",
+                    TagRetorno = "prop:innertext",
+                    UsaCertificadoDigital = false,
+                    UseProxy = false
+                }, null));
+                Assert.Same(falha, recebida);
+                sessao.Falhar(recebida);
+            }
+            Assert.Equal(1, executor.Chamadas);
+            Assert.True(canal.TentarLer(out var item));
+            Assert.Equal("REST", item.Protocolo);
+            Assert.Equal("https://api.test", item.Destino);
+            Assert.Equal(0, item.HttpStatusCode);
+            Assert.Equal(tipo, item.TipoFalha);
+            Assert.Equal(status, item.Status);
+            Assert.False(canal.TentarLer(out _));
+            Assert.Equal(0, canal.ObservacoesDescartadas);
+        }
+
+        private sealed class HandlerAguardaCancelamento : HttpMessageHandler
+        {
+            private readonly System.Threading.CancellationTokenSource origem;
+            internal int Chamadas { get; private set; }
+
+            internal HandlerAguardaCancelamento(System.Threading.CancellationTokenSource origem = null)
+            {
+                this.origem = origem;
+            }
+
+            protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+                System.Threading.CancellationToken cancellationToken)
+            {
+                Chamadas++;
+                origem?.Cancel();
+                await Task.Delay(System.Threading.Timeout.Infinite, cancellationToken);
+                throw new InvalidOperationException("O handler deve terminar por cancelamento.");
+            }
+        }
+
         private sealed class ExecutorFake : IApiTransportExecutor
         {
             private readonly Exception falha;

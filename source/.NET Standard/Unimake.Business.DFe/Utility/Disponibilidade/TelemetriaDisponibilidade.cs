@@ -394,7 +394,17 @@ namespace Unimake.Business.DFe.Utility
             }
             if (webException == null)
             {
-                resultado.TipoFalha = TipoFalhaDisponibilidade.Protocolo;
+                // HttpClient em .NET 5+ encapsula TimeoutException em OperationCanceledException.
+                // Cancelamento sem essa evidência é ambíguo em runtimes antigos; não inferir timeout.
+                if (EncontrarExcecao<TimeoutException>(exception) != null)
+                {
+                    resultado.TipoFalha = TipoFalhaDisponibilidade.Timeout;
+                    resultado.Status = StatusDisponibilidade.Degradado;
+                }
+                else if (EncontrarExcecao<OperationCanceledException>(exception) == null)
+                {
+                    resultado.TipoFalha = TipoFalhaDisponibilidade.Protocolo;
+                }
                 return;
             }
 
@@ -519,6 +529,31 @@ namespace Unimake.Business.DFe.Utility
             mensagem = Regex.Replace(mensagem, @"(?:[a-z]:\\|\\\\)[^'\""\r\n]+", "***",
                 RegexOptions.IgnoreCase);
             return mensagem.Length > 300 ? mensagem.Substring(0, 300) : mensagem;
+        }
+
+        /// <summary>Procura um tipo de exceção na cadeia e nos ramos de exceções agregadas.</summary>
+        /// <typeparam name="T">Tipo de evidência procurada, sem interpretar mensagens localizadas.</typeparam>
+        /// <param name="exception">Exceção inicial.</param>
+        /// <returns>A evidência encontrada ou <see langword="null"/>.</returns>
+        private static T EncontrarExcecao<T>(Exception exception) where T : Exception
+        {
+            for (var atual = exception; atual != null; atual = atual.InnerException)
+            {
+                var encontrada = atual as T;
+                if (encontrada != null) return encontrada;
+
+                var agregada = atual as AggregateException;
+                if (agregada != null)
+                {
+                    foreach (var interna in agregada.InnerExceptions)
+                    {
+                        encontrada = EncontrarExcecao<T>(interna);
+                        if (encontrada != null) return encontrada;
+                    }
+                    return null;
+                }
+            }
+            return null;
         }
 
         /// <summary>Procura uma WebException dentro da cadeia de exceções internas.</summary>
