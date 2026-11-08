@@ -499,6 +499,35 @@ namespace Unimake.DFe.Test.Utility.Rede
             }
         }
 
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public async Task ConfiguracaoPreparadaEmFilhoAssincronoPreservaSessaoDoChamador()
+        {
+            var canal = new CanalObservacoesDisponibilidade();
+            using (var sessao = canal.IniciarOperacao(Config(), Guid.NewGuid(), Guid.NewGuid()))
+            {
+                await Task.Run(() => sessao.DefinirConfiguracao(Config(TipoDFe.PIX)), TestContext.Current.CancellationToken);
+                SessaoObservacaoDisponibilidade.InformarTransporte("https://api.test", "REST");
+                Assert.Throws<InvalidOperationException>(() => sessao.DefinirConfiguracao(Config()));
+                sessao.Concluir(null, HttpStatusCode.OK, true);
+                Assert.Throws<InvalidOperationException>(() => sessao.DefinirConfiguracao(Config()));
+            }
+            Assert.True(canal.TentarLer(out var item));
+            Assert.Equal(TipoDFe.PIX, item.TipoDFe);
+            Assert.True(item.TransporteObservado);
+            Assert.Equal(StatusDisponibilidade.Operacional, item.Status);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void DefinirConfiguracaoRejeitaNuloESessaoDescartada()
+        {
+            var canal = new CanalObservacoesDisponibilidade();
+            var sessao = canal.IniciarOperacao(Config(), Guid.NewGuid(), Guid.NewGuid());
+            Assert.Throws<ArgumentNullException>(() => sessao.DefinirConfiguracao(null));
+            sessao.Dispose();
+            Assert.Throws<InvalidOperationException>(() => sessao.DefinirConfiguracao(Config()));
+        }
         private sealed class ExecutorFake : IApiTransportExecutor
         {
             private readonly Exception falha;

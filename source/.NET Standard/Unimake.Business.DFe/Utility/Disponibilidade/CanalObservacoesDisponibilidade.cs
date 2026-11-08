@@ -104,6 +104,16 @@ namespace Unimake.Business.DFe.Utility
             Atual.Value = this;
         }
 
+        /// <summary>Associa a configuração efetiva antes da primeira entrada no transporte.</summary>
+        /// <param name="configuracao">Configuração preparada pelo consumidor; não será publicada nem retida na fotografia.</param>
+        /// <remarks>Permite abrir a sessão antes de uma preparação assíncrona e acompanhar logins do construtor.</remarks>
+        public void DefinirConfiguracao(Configuracao configuracao)
+        {
+            if (configuracao == null) throw new ArgumentNullException(nameof(configuracao));
+            if (transporte || Volatile.Read(ref finalizada) != 0 || Volatile.Read(ref descartada) != 0)
+                throw new InvalidOperationException("A configuração da observação já foi fixada.");
+            this.configuracao = configuracao;
+        }
         /// <summary>Conclui com o retorno já obtido, sem reexecutar ou reter o XML.</summary>
         /// <param name="retorno">Retorno interpretado da operação principal; não é armazenado.</param>
         /// <param name="httpStatusCode">Código HTTP efetivamente recebido, ou zero quando ausente.</param>
