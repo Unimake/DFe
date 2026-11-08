@@ -857,6 +857,14 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização síncrona da NFeABI")]
         NFeABIAutorizacaoSinc = 137,
 
+        /// <summary>138 - Identidade do diagnóstico de recepção de eventos do CT-e.</summary>
+        [Description("Recepção de eventos do CT-e")]
+        CTeRecepcaoEvento = 138,
+
+        /// <summary>139 - Identidade do diagnóstico de recepção de eventos do MDF-e.</summary>
+        [Description("Recepção de eventos do MDF-e")]
+        MDFeRecepcaoEvento = 139,
+
         #endregion
 
         #region Gerais

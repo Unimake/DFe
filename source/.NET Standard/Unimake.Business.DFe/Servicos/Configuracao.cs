@@ -50,6 +50,13 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         private string NomeTagServico { get; set; }
 
+        // A identidade da fotografia não altera Servico, usado historicamente pelo transporte/configuração.
+        internal Servico ServicoObservacaoDisponibilidade => NomeTagServico == "RecepcaoEvento"
+            ? TipoDFe == TipoDFe.CTe || TipoDFe == TipoDFe.CTeOS ? Servico.CTeRecepcaoEvento
+                : TipoDFe == TipoDFe.MDFe ? Servico.MDFeRecepcaoEvento : Servico
+            : Servico;
+
+
         #endregion 
 
         #region Private Methods

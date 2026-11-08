@@ -293,7 +293,7 @@ namespace Unimake.Business.DFe.Utility
             DuracaoMilissegundos = duracao;
             DuracaoTransporteMilissegundos = duracaoTransporte;
             TipoDFe = configuracao.TipoDFe;
-            Servico = configuracao.Servico;
+            Servico = configuracao.ServicoObservacaoDisponibilidade;
             TipoAmbiente = configuracao.TipoAmbiente;
             CodigoUF = configuracao.CodigoUF;
             CodigoMunicipio = configuracao.CodigoMunicipio;

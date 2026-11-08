@@ -43,6 +43,33 @@ namespace Unimake.DFe.Test.Utility.Rede
             }
         }
 
+        [Theory]
+        [Trait("Utility", "Disponibilidade")]
+        [InlineData(TipoDFe.CTe, Servico.CTeRecepcaoEvento)]
+        [InlineData(TipoDFe.CTeOS, Servico.CTeRecepcaoEvento)]
+        [InlineData(TipoDFe.MDFe, Servico.MDFeRecepcaoEvento)]
+        public void EventosDevemTerIdentidadePropriaSemAlterarConfiguracaoFiscal(TipoDFe tipo, Servico esperado)
+        {
+            var config = Config(tipo);
+            typeof(Configuracao).GetProperty("NomeTagServico", BindingFlags.NonPublic | BindingFlags.Instance)
+                .SetValue(config, "RecepcaoEvento");
+            var anterior = config.Servico;
+            var canal = new CanalObservacoesDisponibilidade();
+            Executar(canal, config);
+            Assert.True(canal.TentarLer(out var item));
+            Assert.Equal(esperado, item.Servico);
+            Assert.Equal(anterior, config.Servico);
+        }
+
+        [Fact]
+        [Trait("Utility", "Disponibilidade")]
+        public void ServicoExplicitoNaoEventoDevePreservarIdentidade()
+        {
+            var config = Config(TipoDFe.CTe); config.Servico = Servico.CTeStatusServico;
+            var canal = new CanalObservacoesDisponibilidade(); Executar(canal, config);
+            Assert.True(canal.TentarLer(out var item)); Assert.Equal(Servico.CTeStatusServico, item.Servico);
+        }
+
         [Fact]
         [Trait("Utility", "Disponibilidade")]
         public void OptInDesabilitadoNaoPublicaNemContaPerda()
