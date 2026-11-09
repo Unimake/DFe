@@ -92,6 +92,22 @@ namespace Unimake.Business.DFe.Utility
         private long duracaoTransporte = -1;
         private int finalizada;
         private int descartada;
+        private int entradasTransporte;
+        private string integracaoRemota = string.Empty;
+        private EvidenciaRespostaDisponibilidade evidenciaUtilitario;
+        private bool rejeicaoAutenticacao;
+        private ResultadoSondaDisponibilidade falhaAuxiliar;
+        private EvidenciaRespostaDisponibilidade evidenciaBinaria;
+
+        // Uma operação acompanhada por sessão não alimenta também o histórico antigo.
+        // A identidade de referência evita suprimir outra configuração no mesmo fluxo.
+        internal static bool PossuiColetaAtiva(Configuracao configuracao)
+        {
+            var sessao = Atual.Value;
+            return sessao != null && ReferenceEquals(sessao.configuracao, configuracao) &&
+                configuracao.ColetarTelemetriaDisponibilidade && Volatile.Read(ref sessao.finalizada) == 0 &&
+                Volatile.Read(ref sessao.descartada) == 0;
+        }
 
         internal SessaoObservacaoDisponibilidade(CanalObservacoesDisponibilidade canal, Configuracao configuracao,
             Guid operacaoId, Guid contextoId)
@@ -114,11 +130,18 @@ namespace Unimake.Business.DFe.Utility
                 throw new InvalidOperationException("A configuração da observação já foi fixada.");
             this.configuracao = configuracao;
         }
-        /// <summary>Conclui com o retorno já obtido, sem reexecutar ou reter o XML.</summary>
+        /// <summary>Interpreta na DLL o retorno já obtido e conclui a sessão sem reexecutar ou reter o XML.</summary>
+        /// <param name="retorno">Retorno da operação principal; não é armazenado na fotografia.</param>
+        /// <param name="httpStatusCode">Código HTTP efetivamente recebido, ou zero quando ausente.</param>
+        public void Concluir(XmlDocument retorno, HttpStatusCode httpStatusCode)
+            => Finalizar(retorno, httpStatusCode, null, false);
+
+        /// <summary>Compatibilidade de conclusão com reconhecimento informado pelo consumidor.</summary>
         /// <param name="retorno">Retorno interpretado da operação principal; não é armazenado.</param>
         /// <param name="httpStatusCode">Código HTTP efetivamente recebido, ou zero quando ausente.</param>
         /// <param name="respostaAplicacaoReconhecida">Verdadeiro somente após reconhecimento do contrato pelo
         /// consumidor, inclusive rejeição normal. HTTP 2xx sozinho não permite informar verdadeiro.</param>
+        [Obsolete("Use Concluir(retorno, httpStatusCode). O reconhecimento de protocolos pertence à DLL; contratos desconhecidos devem permanecer inconclusivos.")]
         public void Concluir(XmlDocument retorno, HttpStatusCode httpStatusCode, bool respostaAplicacaoReconhecida = false)
             => Finalizar(retorno, httpStatusCode, null, respostaAplicacaoReconhecida);
 
@@ -136,32 +159,62 @@ namespace Unimake.Business.DFe.Utility
                 if (!configuracao.ColetarTelemetriaDisponibilidade) return;
                 if (httpStatusCode == 0) httpStatusCode = ultimoHttp;
                 var sonda = new ResultadoSondaDisponibilidade { HttpStatusCode = (int)httpStatusCode };
+                var evidencia = new EvidenciaRespostaDisponibilidade();
                 if (exception != null)
                 {
                     ClassificadorDisponibilidade.PreencherFalha(exception, sonda, incluirMensagem: false);
                     if (exception is Unimake.Exceptions.CertificadoDigitalException)
                         sonda.TipoFalha = TipoFalhaDisponibilidade.Certificado;
+                    if (!transporte && (exception is ArgumentException || exception is UriFormatException))
+                        sonda.TipoFalha = TipoFalhaDisponibilidade.Configuracao;
+                    if (rejeicaoAutenticacao)
+                    {
+                        sonda.TipoFalha = TipoFalhaDisponibilidade.Autenticacao;
+                        sonda.Status = StatusDisponibilidade.Inconclusivo;
+                    }
                 }
                 else
                 {
                     // Reutiliza a precedência do primeiro cStat, sem guardar corpo ou xMotivo externo.
-                    var no = retorno?.DocumentElement?.SelectSingleNode("descendant-or-self::*[local-name()='cStat']");
+                    var fault = ReconhecedorRespostaDisponibilidade.EhFault(retorno?.DocumentElement);
+                    if (fault) reconhecida = false;
+                    var no = fault || !ReconhecedorRespostaDisponibilidade.UsaCStat(configuracao.TipoDFe) ? null :
+                        retorno?.DocumentElement?.SelectSingleNode("descendant-or-self::*[local-name()='cStat']");
                     int cStat;
                     if (no != null && int.TryParse(no.InnerText, out cStat)) sonda.CStat = cStat;
                     ClassificadorDisponibilidade.ClassificarRespostaFiscal(sonda);
-                    if (reconhecida && transporte && (int)httpStatusCode >= 200 && (int)httpStatusCode < 300 &&
+                    evidencia = ReconhecedorRespostaDisponibilidade.Reconhecer(configuracao, retorno);
+                    if (!evidencia.Reconhecida && evidenciaBinaria != null) evidencia = evidenciaBinaria;
+                    if ((reconhecida || evidencia.Reconhecida) && transporte &&
+                        (sonda.HttpStatusCode == 0 || sonda.HttpStatusCode < 500) &&
                         sonda.CStat == 0)
+                    {
+                        sonda.Status = evidencia.Inconclusiva ? StatusDisponibilidade.Inconclusivo :
+                            evidencia.FalhaAplicacao ? StatusDisponibilidade.Degradado : StatusDisponibilidade.Operacional;
+                        sonda.TipoFalha = evidencia.FalhaAplicacao || evidencia.Inconclusiva ? TipoFalhaDisponibilidade.Protocolo : TipoFalhaDisponibilidade.Nenhuma;
+                        if (evidencia.TipoFalha != TipoFalhaDisponibilidade.Nenhuma)
+                        {
+                            sonda.TipoFalha = evidencia.TipoFalha;
+                            sonda.Status = StatusDisponibilidade.Inconclusivo;
+                        }
+                    }
+                }
+                if (falhaAuxiliar != null)
+                {
+                    sonda.TipoFalha = falhaAuxiliar.TipoFalha;
+                    sonda.Status = falhaAuxiliar.Status;
+                    if (sonda.HttpStatusCode == 0) sonda.HttpStatusCode = falhaAuxiliar.HttpStatusCode;
+                }
+                if (etapa == "Utilitario" && evidenciaUtilitario != null)
+                {
+                    evidencia = evidenciaUtilitario;
+                    if (evidencia.Reconhecida && sonda.HttpStatusCode >= 200 && sonda.HttpStatusCode < 500)
                     {
                         sonda.Status = StatusDisponibilidade.Operacional;
                         sonda.TipoFalha = TipoFalhaDisponibilidade.Nenhuma;
                     }
                 }
-                if (sonda.CStat == 0 && sonda.HttpStatusCode >= 400)
-                {
-                    sonda.TipoFalha = TipoFalhaDisponibilidade.HTTP;
-                    sonda.Status = sonda.HttpStatusCode == 503 ? StatusDisponibilidade.Indisponivel
-                        : sonda.HttpStatusCode >= 500 ? StatusDisponibilidade.Degradado : StatusDisponibilidade.Inconclusivo;
-                }
+                ClassificadorDisponibilidade.ClassificarHttp(sonda, exception == null && evidencia.Reconhecida, configuracao.TipoDFe);
                 // Ausência de metadados do componente não é defeito de protocolo da operação bem-sucedida.
                 if (protocolo == "ComponenteExterno" && exception == null && sonda.CStat == 0 &&
                     sonda.HttpStatusCode == 0)
@@ -174,11 +227,16 @@ namespace Unimake.Business.DFe.Utility
                     sonda.Status = StatusDisponibilidade.Inconclusivo;
                     sonda.TipoFalha = TipoFalhaDisponibilidade.Nenhuma;
                 }
+                // Proteção de consumo indevido independe do histórico antigo e da entrega na fila.
+                // Não guarda XML ou credencial, nem inicia uma consulta de status.
+                if (transporte && sonda.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido)
+                    CacheStatusDisponibilidade.BloquearContexto(configuracao, RelogioDisponibilidade.Agora().AddHours(1));
                 canal.Publicar(new ObservacaoDisponibilidade(operacaoId, contextoId, inicioUtc, DateTimeOffset.UtcNow,
                     (long)((Stopwatch.GetTimestamp() - inicio) * 1000.0 / Stopwatch.Frequency),
                     configuracao, destino, protocolo, etapa, transporte,
                     transporte ? duracaoTransporte >= 0 ? duracaoTransporte :
-                        (long)((Stopwatch.GetTimestamp() - inicioTransporte) * 1000.0 / Stopwatch.Frequency) : 0, sonda));
+                        (long)((Stopwatch.GetTimestamp() - inicioTransporte) * 1000.0 / Stopwatch.Frequency) : 0, sonda,
+                    evidencia, entradasTransporte, reconhecida, integracaoRemota));
             }
             catch
             {
@@ -207,11 +265,93 @@ namespace Unimake.Business.DFe.Utility
                     (endpoint == sessao.configuracao.RequestURILoginProducao ||
                      endpoint == sessao.configuracao.RequestURILoginHomologacao) ? "Autenticacao" : etapa;
                 sessao.transporte = true;
+                sessao.entradasTransporte++;
+                sessao.integracaoRemota = string.Empty;
+                sessao.evidenciaUtilitario = null;
+                sessao.rejeicaoAutenticacao = false;
+                sessao.falhaAuxiliar = null;
+                sessao.evidenciaBinaria = null;
             }
             catch
             {
                 // Nenhuma falha de instrumentação pode alterar o transporte.
             }
+        }
+
+        internal static void InformarPdf(System.IO.Stream stream, string mediaType)
+        {
+            try
+            {
+                var sessao = Atual.Value;
+                if (sessao == null || sessao.configuracao == null || !sessao.transporte ||
+                    !sessao.configuracao.ColetarTelemetriaDisponibilidade || Volatile.Read(ref sessao.finalizada) != 0 ||
+                    mediaType != "application/pdf") return;
+                var servico = sessao.configuracao.Servico;
+                if (servico != Servico.NFSeConsultarNfsePDF && servico != Servico.CIOTObterOperacaoTransportePdf) return;
+                var reconhecida = VerificadorRespostaPdf.Completo(stream);
+                sessao.evidenciaBinaria = new EvidenciaRespostaDisponibilidade
+                {
+                    Contrato = "PDF.recebido",
+                    Reconhecida = reconhecida,
+                    Inconclusiva = !reconhecida,
+                    Limitacao = reconhecida ? "Foi recebido um arquivo com cabeçalho e término PDF reconhecidos; isso não valida conteúdo fiscal, assinatura ou outros serviços." :
+                        "A resposta de download não contém um envelope PDF completo reconhecido; HTTP e tipo de conteúdo não confirmam a entrega."
+                };
+            }
+            catch { /* Não consumir, alterar ou reter o stream da operação. */ }
+        }
+
+        internal static void InformarRejeicaoAutenticacao()
+        {
+            var sessao = Atual.Value;
+            if (sessao != null && sessao.etapa == "Autenticacao") sessao.rejeicaoAutenticacao = true;
+        }
+
+        internal static void InformarFalhaAuxiliar(Exception exception)
+        {
+            try
+            {
+                var sessao = Atual.Value;
+                if (sessao == null || !sessao.transporte || Volatile.Read(ref sessao.finalizada) != 0) return;
+                var sonda = new ResultadoSondaDisponibilidade { HttpStatusCode = (int)sessao.ultimoHttp };
+                ClassificadorDisponibilidade.PreencherFalha(exception, sonda, incluirMensagem: false);
+                sessao.falhaAuxiliar = sonda;
+            }
+            catch { /* Conservar somente a categoria da falha original; nunca a exceção. */ }
+        }
+
+        internal static void InformarLookup(string endpoint)
+        {
+            InformarTransporte(endpoint, "REST", "Utilitario");
+            var sessao = Atual.Value;
+            if (sessao != null && sessao.etapa == "Utilitario") sessao.integracaoRemota = "CpfCnpjComBr";
+        }
+
+        internal static void InformarRespostaLookup(string corpo)
+        {
+            var sessao = Atual.Value;
+            if (sessao == null || sessao.integracaoRemota != "CpfCnpjComBr") return;
+            try
+            {
+                var json = Newtonsoft.Json.Linq.JObject.Parse(corpo);
+                var status = json["status"];
+                if (status == null) return;
+                var codigo = 0;
+                if (status.Type == Newtonsoft.Json.Linq.JTokenType.Integer) codigo = (int)status;
+                else if (status.Type == Newtonsoft.Json.Linq.JTokenType.String)
+                {
+                    if (!int.TryParse((string)status, out codigo) &&
+                        !string.Equals((string)status, "error", StringComparison.OrdinalIgnoreCase)) return;
+                }
+                else return;
+                sessao.evidenciaUtilitario = new EvidenciaRespostaDisponibilidade
+                {
+                    Contrato = "CpfCnpjComBr.status",
+                    Codigo = codigo,
+                    Reconhecida = codigo == 1 || json["erro"] != null || json["message"] != null
+                };
+            }
+            catch { /* Corpo malformado continua inconclusivo; não alterar a consulta. */ }
         }
 
         internal static void InformarRespostaHttp(HttpStatusCode codigo)
@@ -253,9 +393,9 @@ namespace Unimake.Business.DFe.Utility
         public long DuracaoMilissegundos { get; }
         /// <summary>Duração até a resposta HTTP do último transporte ou até sua falha; não inclui preparação anterior.</summary>
         public long DuracaoTransporteMilissegundos { get; }
-        /// <summary>Documento ou integração.</summary>
+        /// <summary>Documento ou integração; Desconhecido para utilitário identificado em IntegracaoRemota.</summary>
         public TipoDFe TipoDFe { get; }
-        /// <summary>Serviço principal solicitado.</summary>
+        /// <summary>Serviço principal solicitado; -1 para utilitário externo identificado em IntegracaoRemota.</summary>
         public Servico Servico { get; }
         /// <summary>Ambiente fiscal.</summary>
         public TipoAmbiente TipoAmbiente { get; }
@@ -269,7 +409,7 @@ namespace Unimake.Business.DFe.Utility
         public string Destino { get; }
         /// <summary>SOAP, REST ou ComponenteExterno conforme a última chamada observada.</summary>
         public string Protocolo { get; }
-        /// <summary>Etapa observada: Preparacao, Servico ou Autenticacao.</summary>
+        /// <summary>Etapa observada: Preparacao, Servico, Autenticacao ou Utilitario.</summary>
         public string Etapa { get; }
         /// <summary>Indica entrada no transporte; não garante que o servidor recebeu a requisição.</summary>
         public bool TransporteObservado { get; }
@@ -281,10 +421,24 @@ namespace Unimake.Business.DFe.Utility
         public int HttpStatusCode { get; }
         /// <summary>Primeiro cStat da resposta principal, quando presente.</summary>
         public int CStat { get; }
+        /// <summary>Contrato reconhecido pela DLL, sem conteúdo remoto; vazio quando não identificado.</summary>
+        public string ContratoResposta { get; }
+        /// <summary>Código de aplicação fora do contrato cStat; interpretar junto de ContratoResposta.</summary>
+        public int CodigoRespostaAplicacao { get; }
+        /// <summary>Houve reconhecimento de resposta pelo contrato ou pelo consumidor; não significa autorização.</summary>
+        public bool RespostaAplicacaoReconhecida { get; }
+        /// <summary>Entradas nos executores instrumentados, incluindo autenticação. Não conta requests internos,
+        /// preparação TLS, redirecionamentos nem chamadas ocultas de componentes externos.</summary>
+        public int EntradasTransporte { get; }
+        /// <summary>Limitação controlada da evidência; nunca contém mensagem ou corpo remoto.</summary>
+        public string Limitacao { get; }
+        /// <summary>Utilitário remoto identificado pela DLL; vazio para serviços fiscais e de negócio.</summary>
+        public string IntegracaoRemota { get; }
 
         internal ObservacaoDisponibilidade(Guid operacaoId, Guid contextoId, DateTimeOffset inicioUtc,
             DateTimeOffset conclusaoUtc, long duracao, Configuracao configuracao, string destino,
-            string protocolo, string etapa, bool transporte, long duracaoTransporte, ResultadoSondaDisponibilidade sonda)
+            string protocolo, string etapa, bool transporte, long duracaoTransporte, ResultadoSondaDisponibilidade sonda,
+            EvidenciaRespostaDisponibilidade evidencia, int entradasTransporte, bool reconhecida, string integracaoRemota)
         {
             OperacaoId = operacaoId;
             ContextoId = contextoId;
@@ -306,6 +460,22 @@ namespace Unimake.Business.DFe.Utility
             TipoFalha = sonda.TipoFalha;
             HttpStatusCode = sonda.HttpStatusCode;
             CStat = sonda.CStat;
+            ContratoResposta = sonda.CStat > 0 ? "cStat" : evidencia.Contrato;
+            CodigoRespostaAplicacao = evidencia.Codigo;
+            RespostaAplicacaoReconhecida = transporte && (sonda.CStat > 0 || evidencia.Reconhecida || reconhecida);
+            EntradasTransporte = entradasTransporte;
+            IntegracaoRemota = integracaoRemota;
+            if (!string.IsNullOrEmpty(integracaoRemota))
+            {
+                TipoDFe = TipoDFe.Desconhecido;
+                Servico = (Servico)(-1);
+            }
+            Limitacao = !transporte ? "Nenhuma entrada em transporte remoto foi observada." :
+                protocolo == "ComponenteExterno" ? "O componente externo não expõe endpoint, HTTP ou requests internos." :
+                etapa == "Autenticacao" ? "A evidência pertence à autenticação auxiliar, não ao serviço de negócio." :
+                !string.IsNullOrEmpty(evidencia.Limitacao) ? evidencia.Limitacao :
+                !RespostaAplicacaoReconhecida ? "O contrato da resposta de negócio não foi reconhecido." :
+                "A evidência vale somente para a operação e o serviço observados; não confirma autorização ou recuperação de outros serviços.";
         }
     }
 }

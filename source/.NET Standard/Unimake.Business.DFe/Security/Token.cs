@@ -105,6 +105,7 @@ namespace Unimake.Business.DFe.Security
                 }
                 catch (WebException e)
                 {
+                    SessaoObservacaoDisponibilidade.InformarFalhaAuxiliar(e);
                     response = e.Response;
                 }
 

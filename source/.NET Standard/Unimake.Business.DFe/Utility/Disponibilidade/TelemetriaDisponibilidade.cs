@@ -43,6 +43,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns><see langword="true"/> quando a coleta está ligada e o documento é suportado.</returns>
         internal static bool EstaHabilitada(Configuracao configuracao) =>
             configuracao != null && configuracao.ColetarTelemetriaDisponibilidade &&
+            !SessaoObservacaoDisponibilidade.PossuiColetaAtiva(configuracao) &&
             SuportaDocumento(configuracao.TipoDFe);
 
         /// <summary>Registra uma operação fiscal já executada, sem repetir a chamada.</summary>
@@ -68,6 +69,7 @@ namespace Unimake.Business.DFe.Utility
                 {
                     Servico = configuracao.Servico.ToString(),
                     Endpoint = ClassificadorDisponibilidade.SanitizarEndpoint(endpoint),
+                    IdentidadeEndpoint = ClassificadorDisponibilidade.IdentificarEndpoint(endpoint),
                     Protocolo = protocolo,
                     Fonte = FonteEvidenciaDisponibilidade.TelemetriaPassiva,
                     DataHora = RelogioDisponibilidade.Agora(),
@@ -85,6 +87,7 @@ namespace Unimake.Business.DFe.Utility
                     PreencherRetorno(retorno, amostra);
                     ClassificadorDisponibilidade.ClassificarRespostaFiscal(amostra);
                 }
+                ClassificadorDisponibilidade.ClassificarHttp(amostra, false, configuracao.TipoDFe);
 
                 var chave = CriarChave(configuracao, amostra);
                 if (amostra.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido)
@@ -216,6 +219,7 @@ namespace Unimake.Business.DFe.Utility
                 return;
             }
 
+            if (ReconhecedorRespostaDisponibilidade.EhFault(retorno.DocumentElement)) return;
             var noCStat = retorno.DocumentElement.SelectSingleNode(
                 "descendant-or-self::*[local-name()='cStat']");
             int codigo;
@@ -239,7 +243,7 @@ namespace Unimake.Business.DFe.Utility
         /// <remarks>Falhas dependentes do certificado ficam separadas para não misturar contribuintes.</remarks>
         private static string CriarChave(Configuracao configuracao, ResultadoSondaDisponibilidade amostra)
         {
-            var acesso = amostra.Servico + "|" + amostra.Endpoint;
+            var acesso = amostra.Servico + "|" + (amostra.IdentidadeEndpoint ?? amostra.Endpoint);
             var escopo = "F|*|";
             // TLS pode depender do certificado apresentado; não deve contaminar outros contribuintes no mesmo processo.
             if (amostra.TipoFalha == TipoFalhaDisponibilidade.TLS ||
@@ -370,9 +374,25 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="incluirMensagem">Se permite ler/sanitizar a mensagem externa; desabilitar para observações sem texto.</param>
         internal static void PreencherFalha(Exception exception, ResultadoSondaDisponibilidade resultado, bool incluirMensagem = true)
         {
+            PreencherFalhaInterna(exception, resultado, incluirMensagem);
+            ClassificarHttp(resultado, false);
+        }
+
+        private static void PreencherFalhaInterna(Exception exception, ResultadoSondaDisponibilidade resultado, bool incluirMensagem)
+        {
             resultado.Status = StatusDisponibilidade.Inconclusivo;
             resultado.TipoFalha = TipoFalhaDisponibilidade.Desconhecida;
             resultado.Excecao = incluirMensagem ? SanitizarExcecao(exception) : string.Empty;
+            if (EncontrarExcecao<Unimake.Exceptions.CertificadoDigitalException>(exception) != null)
+            {
+                resultado.TipoFalha = TipoFalhaDisponibilidade.Certificado;
+                return;
+            }
+            if (EncontrarExcecao<System.Security.Authentication.AuthenticationException>(exception) != null)
+            {
+                resultado.TipoFalha = TipoFalhaDisponibilidade.TLS;
+                return;
+            }
             var webException = EncontrarWebException(exception);
             var permiteClassificarSocket = webException == null ||
                 webException.Status == WebExceptionStatus.UnknownError ||
@@ -439,6 +459,40 @@ namespace Unimake.Business.DFe.Utility
             }
         }
 
+        // Não ler mensagens localizadas para inferir autenticação, proxy ou rate limit.
+        internal static void ClassificarHttp(ResultadoSondaDisponibilidade resultado, bool respostaReconhecida,
+            TipoDFe tipoDFe = TipoDFe.Desconhecido)
+        {
+            var http = resultado.HttpStatusCode;
+            if (http < 400) return;
+            // Uma falha objetiva de TLS/certificado não pode ser substituída por HTTP anterior.
+            if (resultado.TipoFalha == TipoFalhaDisponibilidade.TLS ||
+                resultado.TipoFalha == TipoFalhaDisponibilidade.Certificado) return;
+            if (tipoDFe == TipoDFe.EFDReinf && (http == 495 || http == 496))
+            {
+                resultado.TipoFalha = TipoFalhaDisponibilidade.Certificado;
+                resultado.Status = StatusDisponibilidade.Inconclusivo;
+                resultado.XMotivo = "O serviço recusou o certificado de acesso.";
+            }
+            else if (http == 401 || http == 403 || http == 407 || http == 429)
+            {
+                resultado.TipoFalha = http == 407 ? TipoFalhaDisponibilidade.Proxy :
+                    http == 429 ? TipoFalhaDisponibilidade.ConsumoIndevido : TipoFalhaDisponibilidade.Autenticacao;
+                resultado.Status = http == 429 ? StatusDisponibilidade.Degradado : StatusDisponibilidade.Inconclusivo;
+                resultado.XMotivo = http == 429 ? "O endpoint limitou temporariamente as consultas." :
+                    http == 407 ? "O proxy recusou a autenticação." : "O serviço recusou a autenticação ou a autorização de acesso.";
+            }
+            else if (!EhIndisponibilidadeFiscal(resultado.CStat) &&
+                ((!respostaReconhecida && resultado.CStat == 0) || http >= 500))
+            {
+                resultado.TipoFalha = TipoFalhaDisponibilidade.HTTP;
+                resultado.Status = http == 503 ? StatusDisponibilidade.Indisponivel :
+                    http >= 500 ? StatusDisponibilidade.Degradado : StatusDisponibilidade.Inconclusivo;
+                resultado.XMotivo = http == 503 ? "O endpoint informou indisponibilidade temporária (HTTP 503)." :
+                    "O endpoint respondeu com falha HTTP; a causa não foi confirmada.";
+            }
+        }
+
         /// <summary>Classifica uma falha de socket encontrada dentro da cadeia de exceções.</summary>
         /// <param name="exception">Exceção externa gerada pelo transporte.</param>
         /// <returns>Categoria de rede correspondente ou <see cref="TipoFalhaDisponibilidade.Desconhecida"/>.</returns>
@@ -473,6 +527,7 @@ namespace Unimake.Business.DFe.Utility
             {
                 Servico = origem.Servico,
                 Endpoint = origem.Endpoint,
+                IdentidadeEndpoint = origem.IdentidadeEndpoint,
                 Protocolo = origem.Protocolo,
                 Fonte = origem.Fonte,
                 DataHora = origem.DataHora,
@@ -488,9 +543,9 @@ namespace Unimake.Business.DFe.Utility
                 Essencial = origem.Essencial
             };
 
-        /// <summary>Remove usuário, senha, consulta e fragmento de um endpoint HTTP.</summary>
+        /// <summary>Remove usuário, senha, caminho, consulta e fragmento de um endpoint HTTP.</summary>
         /// <param name="endpoint">Endereço potencialmente sensível.</param>
-        /// <returns>Somente esquema, host, porta e caminho seguros.</returns>
+        /// <returns>Somente esquema, host e porta.</returns>
         internal static string SanitizarEndpoint(string endpoint)
         {
             if (string.IsNullOrWhiteSpace(endpoint)) return string.Empty;
@@ -500,15 +555,22 @@ namespace Unimake.Business.DFe.Utility
             {
                 return string.Empty;
             }
-            var seguro = new UriBuilder(uri) { UserName = string.Empty, Password = string.Empty, Query = string.Empty, Fragment = string.Empty };
-            return seguro.Uri.GetLeftPart(UriPartial.Path);
+            return uri.GetComponents(UriComponents.SchemeAndServer, UriFormat.UriEscaped);
+        }
+
+        internal static string IdentificarEndpoint(string endpoint)
+        {
+            using (var sha = SHA256.Create())
+            {
+                return BitConverter.ToString(sha.ComputeHash(Encoding.UTF8.GetBytes(endpoint ?? string.Empty))).Replace("-", string.Empty);
+            }
         }
 
         /// <summary>Sanitiza a mensagem de uma exceção de transporte.</summary>
         /// <param name="exception">Exceção que será resumida.</param>
         /// <returns>Mensagem curta sem URLs, credenciais ou identificadores conhecidos.</returns>
         internal static string SanitizarExcecao(Exception exception) =>
-            SanitizarMensagem(exception?.Message);
+            exception == null ? string.Empty : "Falha técnica (" + exception.GetType().Name + ").";
 
         /// <summary>Sanitiza texto externo antes de colocá-lo no resultado do diagnóstico.</summary>
         /// <param name="mensagem">Texto vindo do transporte ou do provedor.</param>
@@ -559,15 +621,7 @@ namespace Unimake.Business.DFe.Utility
         /// <summary>Procura uma WebException dentro da cadeia de exceções internas.</summary>
         /// <param name="exception">Exceção inicial.</param>
         /// <returns>A WebException encontrada ou <see langword="null"/>.</returns>
-        private static WebException EncontrarWebException(Exception exception)
-        {
-            for (var atual = exception; atual != null; atual = atual.InnerException)
-            {
-                var webException = atual as WebException;
-                if (webException != null) return webException;
-            }
-            return null;
-        }
+        private static WebException EncontrarWebException(Exception exception) => EncontrarExcecao<WebException>(exception);
 
         /// <summary>Procura uma <see cref="SocketException"/> dentro da cadeia de exceções internas.</summary>
         /// <param name="exception">Exceção inicial.</param>
@@ -658,7 +712,7 @@ namespace Unimake.Business.DFe.Utility
             var infraestruturaCorroboraFalhaRemota = InfraestruturaCorroboraFalhaRemota(
                 infraestrutura, fiscais, falhaLocal, infraestruturaSaudavel);
             var estadosServicos = fiscais
-                .GroupBy(x => (x.Servico ?? string.Empty) + "|" + (x.Endpoint ?? string.Empty), StringComparer.OrdinalIgnoreCase)
+                .GroupBy(x => (x.Servico ?? string.Empty) + "|" + (x.IdentidadeEndpoint ?? x.Endpoint ?? string.Empty), StringComparer.OrdinalIgnoreCase)
                 .Select(x => ClassificarServico(x, infraestruturaCorroboraFalhaRemota))
                 .ToList();
             var indisponiveis = estadosServicos.Where(x => x.Status == StatusDisponibilidade.Indisponivel).ToList();
@@ -792,12 +846,12 @@ namespace Unimake.Business.DFe.Utility
                 infraestrutura
                     .Where(x => EhFalhaAcessoRemoto(x.TipoFalha) &&
                         !string.IsNullOrWhiteSpace(x.Endpoint))
-                    .Select(x => x.Endpoint),
+                    .Select(x => x.IdentidadeEndpoint ?? x.Endpoint),
                 StringComparer.OrdinalIgnoreCase);
             return endpointsComFalhaRemota.Count > 0 && fiscais.Any(x =>
                 EhFalhaAcessoRemoto(x.TipoFalha) &&
                 !string.IsNullOrWhiteSpace(x.Endpoint) &&
-                endpointsComFalhaRemota.Contains(x.Endpoint));
+                endpointsComFalhaRemota.Contains(x.IdentidadeEndpoint ?? x.Endpoint));
         }
 
         /// <summary>Identifica falhas que indicam ausência de resposta ou recusa ativa do endpoint remoto.</summary>
@@ -811,6 +865,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="item">Amostra analisada.</param>
         /// <returns><see langword="true"/> para DNS, conexão, TLS, proxy, certificado ou configuração.</returns>
         private static bool EhFalhaLocal(ResultadoSondaDisponibilidade item) =>
+            item.TipoFalha == TipoFalhaDisponibilidade.Autenticacao ||
             item.TipoFalha == TipoFalhaDisponibilidade.DNS ||
             item.TipoFalha == TipoFalhaDisponibilidade.Conexao ||
             item.TipoFalha == TipoFalhaDisponibilidade.TLS ||

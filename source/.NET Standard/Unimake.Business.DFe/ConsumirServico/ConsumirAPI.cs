@@ -24,8 +24,6 @@ namespace Unimake.Business.DFe
         /// <param name="certificado">Certificado digital a ser utilizado na conexão com os serviços</param>
         public void ExecutarServico(APIConfig apiConfig, X509Certificate2 certificado)
         {
-            Utility.SessaoObservacaoDisponibilidade.InformarTransporte(apiConfig.RequestURI, "REST");
-
             if (certificado == null && apiConfig.UsaCertificadoDigital)
             {
                 throw new CertificadoDigitalException();
@@ -33,6 +31,7 @@ namespace Unimake.Business.DFe
 
             var request = new ApiConfigTransportRequestMapper().Map(apiConfig, certificado);
 
+            Utility.SessaoObservacaoDisponibilidade.InformarTransporte(apiConfig.RequestURI, "REST");
             using (var transportResponse = ApiTransportExecutorFactory.Create().Execute(request))
             using (var httpResponse = transportResponse.HttpResponseMessage)
             {
@@ -63,6 +62,7 @@ namespace Unimake.Business.DFe
                     Stream stream = null;
                     retornoXml = TratarRetornoAPI.ReceberRetorno(ref apiConfig, httpResponse, ref stream);
                     RetornoServicoStream = stream;
+                    Utility.SessaoObservacaoDisponibilidade.InformarPdf(stream, httpResponse.Content.Headers.ContentType?.MediaType);
                 }
                 catch (XmlException)
                 {
