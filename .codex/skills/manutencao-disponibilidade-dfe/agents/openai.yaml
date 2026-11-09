@@ -1,4 +1,4 @@
 interface:
   display_name: "Manutenção de Disponibilidade DFe"
-  short_description: "Manutenção segura do diagnóstico fiscal"
-  default_prompt: "Use $manutencao-disponibilidade-dfe para revisar ou alterar o diagnóstico de disponibilidade dos DFe com segurança."
+  short_description: "Sessões, contratos e status de integrações remotas"
+  default_prompt: "Use $manutencao-disponibilidade-dfe para manter sessões, interpretação de respostas e verificação segura de status, preservando a operação original e o contrato do PRO."

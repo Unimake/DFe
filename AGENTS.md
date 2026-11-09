@@ -101,15 +101,16 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 
 ## Diagnóstico de disponibilidade dos DFe
 
-- Use a skill `manutencao-disponibilidade-dfe` ao alterar `Utility/Disponibilidade`, a coleta em `Servicos/ServicoBase.cs`, o cache de status ou a classificação de conectividade usada pelo diagnóstico.
-- A telemetria deve permanecer passiva e nunca repetir uma operação fiscal real, criar arquivos ou aumentar perceptivelmente o tempo da autorização.
-- Nunca enviar XML sintético como teste de disponibilidade. A única sonda fiscal explícita permitida é `StatusServico`, protegida por cache e bloqueio de consumo indevido.
-- Em XML com vários `cStat`, usar o primeiro em ordem documental. O retorno principal do serviço/lote prevalece sobre códigos posteriores em `protNFe`, `protCTe` e `protMDFe`.
-- Quando não houver `cStat` principal, localizar o primeiro em estruturas internas como `infInut`, `infCons` e `infEvento`, sempre conferindo o XSD do serviço e da versão.
-- Tratar `108`, `109` e `999` como indisponibilidade fiscal; `656` e `678` como consumo indevido; qualquer outro `cStat > 0` como prova de processamento pela aplicação fiscal.
-- Não atribuir DNS, conexão, TLS, proxy, certificado, configuração ou timeout isolado à SEFAZ.
-- Nunca armazenar XML fiscal, certificado, senha, token, credencial ou mensagem não sanitizada no diagnóstico.
-- Validar alterações com testes determinísticos sem internet, incluindo precedência entre status principal e protocolo, desempenho do caminho fiscal, build principal e testes do UniNFe em `Debug`.
+- Use a skill [manutencao-disponibilidade-dfe](.codex/skills/manutencao-disponibilidade-dfe/SKILL.md) para diagnóstico, observações, reconhecimento de respostas, autenticações auxiliares, transporte instrumentado, cache ou classificação. O escopo inclui todos os documentos, integrações e utilitários remotos, não somente SEFAZ/cStat.
+- Leia o contrato em [.agents/instructions/disponibilidade-dfe.instructions.md](.agents/instructions/disponibilidade-dfe.instructions.md). Ele aponta as APIs, implementações, testes e evidências sem exigir leitura de todo o inventário.
+- O consumidor do diagnóstico é o PRO (`C:\projetos\UniNFe.Desktop`). O usuário decidiu retirar a rotina do UniNFe legado; não planejar sua migração nem exigir seus testes para este recurso. Isso não elimina a integração fiscal do legado em outros domínios nem comprova que a remoção já ocorreu.
+- A API recomendada é `CanalObservacoesDisponibilidade`/`SessaoObservacaoDisponibilidade`, envolvendo construção/autenticação e execução; concluir com `Concluir(xml, http)` ou `Falhar(ex, http)`. A DLL interpreta respostas; persistência, agregação temporal e apresentação pertencem ao PRO.
+- Para verificação manual, usar `VerificarStatusServico()` e capacidades da DLL. Não introduzir listas fixas no consumidor nem usar `HistoricoLegado`/APIs obsoletas como prova de cobertura ou fallback. A supressão do histórico duplicado e a proteção de consumo indevido devem continuar funcionando, inclusive com fila cheia.
+- Observação passiva não gera tráfego, arquivos ou repetição de negócio. Sonda fiscal explícita somente `StatusServico`, com cache e bloqueio; sem status oficial ainda há observação passiva. Não usar documentos fictícios nem sondas automáticas no caminho crítico.
+- Interpretar cada contrato: `cdResposta`, GNRE, CIOT e NFS-e não herdam a política cStat. Nas famílias que usam cStat, preservar o primeiro em ordem documental, inclusive grupos internos quando não houver principal; 108/109/999 indicam indisponibilidade, 656/678 consumo indevido e outro positivo comprova processamento, não autorização. SOAP Fault/HTTP200 isolado não comprova negócio.
+- Separar transporte, autenticação, preparação e aplicação. Não atribuir DNS, conexão, TLS, proxy, certificado ou timeout isolado ao órgão remoto. Desconhecido fica inconclusivo; verificação sem estratégia oficial fica não aplicável, sem excluir a operação da observação passiva.
+- Não guardar XML, corpo remoto, certificado/PIN, credenciais, token ou exceção bruta. `Endpoint` expõe somente esquema/host/porta; cache e agrupamento preservam identidade derivada interna, sem depender do caminho público. Verificação de envelope PDF não equivale a validação integral ou assinatura.
+- Validação: testes offline dos contratos/executores afetados, preservação do retorno/exceção, ausência de requests extras, sanitização e consumo indevido. Seguir o runner xUnit v3 e os filtros da skill; testar o PRO somente no escopo autorizado e com o pacote novo efetivamente restaurado. Confira versão, ProductVersion e base fiscal: pacote anterior do PRO pode conter patches de diagnóstico sobre uma base diferente do HEAD. Não misturar atualização fiscal independente.
 
 ## Testes obrigatórios para novas implementações
 
@@ -123,6 +124,7 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Se precisar validar regressão de um DFe específico, filtre pelos testes do DFe ou pela classe/método afetado. Rode todos os testes apenas quando a mudança atingir infraestrutura compartilhada, serialização base, assinatura, transporte, validação global ou quando isso for solicitado explicitamente.
 - A suíte integral contém casos que exigem certificado A1 e serviços externos. Para transporte compartilhado, execute-a somente em ambiente preparado; sem esses recursos, não enfraqueça validação/certificado nem trate a falha ambiental como regressão. Registre a limitação e mantenha verdes os testes determinísticos do transporte, o build principal e o `UniNFe.Test` Debug.
 - Sempre que executar testes unitários da DLL e a mudança afetar a integração com o UniNFe, gere primeiro um pacote offline desta DLL e atualize localmente `C:\projetos\github\UniNFe` para essa versão. Depois execute os testes do projeto `source/UniNFe.Test/UniNFe.Test.csproj` e os builds relevantes; aplique um filtro correspondente ao escopo testado na DLL quando houver uma suíte focada equivalente. O UniNFe não usa mais `ProjectReference` para este checkout.
+- Exceção para diagnóstico de disponibilidade: o consumidor é o PRO, conforme a seção específica acima. Não atualizar/testar o legado para validar esse recurso. Se a tarefa limitar o PRO a consulta, executar os testes offline da DLL e registrar a validação do consumidor como pendente; não editar referências nem apresentar testes do pacote anterior como prova do código novo.
 
 ## Massas TXT de regressão e comparação antes/depois
 

@@ -110,6 +110,10 @@ Essa normalização deve permanecer na DLL. Não crie condições eFrete no UniN
 
 ## Testes de regressão
 
+Se o escopo incluir disponibilidade, acompanhar também a construção do serviço, pois ela pode autenticar: sessão deve separar Autenticacao de Servico e contar entradas sem afirmar o total de requests internos. Recusa explícita de login e retorno desconhecido são evidências diferentes; preservar a exceção original e não expor seu texto/token no diagnóstico. Executar `CIOT/Servicos/EFreteFluxoExecucaoTest` e as regressões pertinentes de `Utility/Rede/InterpretacaoContratosDisponibilidadeTest`.
+
+Para PDF, sucesso fiscal/normalização e diagnóstico são responsabilidades distintas: não mudar `Result` por arquivo inconclusivo. A verificação de cabeçalho/término não valida assinatura ou conteúdo fiscal. Não inventar endpoint/HTTP para GeradorCIOTShared. Regras completas: [contrato de disponibilidade](../../../../.agents/instructions/disponibilidade-dfe.instructions.md).
+
 Além dos testes de serialização e schema, atravesse o fluxo público `Executar()` com transporte controlado e verifique:
 
 - endpoint e método;
