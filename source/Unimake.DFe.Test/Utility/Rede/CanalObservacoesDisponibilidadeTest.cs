@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -16,6 +16,7 @@ using Xunit;
 
 namespace Unimake.DFe.Test.Utility.Rede
 {
+    [Collection("MemoriaDiagnosticoDisponibilidade")]
     public class CanalObservacoesDisponibilidadeTest
     {
         private static Configuracao Config(TipoDFe tipo = TipoDFe.NFe) => new Configuracao
@@ -101,8 +102,9 @@ namespace Unimake.DFe.Test.Utility.Rede
             Executar(canal, Config(tipo));
             Assert.True(canal.TentarLer(out var item));
             Assert.Equal(tipo, item.TipoDFe);
-            Assert.Equal(204, item.CStat);
-            Assert.Equal(StatusDisponibilidade.Operacional, item.Status);
+            var codigoEsperado = tipo == TipoDFe.NFe || tipo == TipoDFe.CCG ? 204 : 0;
+            Assert.Equal(codigoEsperado, item.CStat);
+            Assert.Equal(codigoEsperado > 0 ? StatusDisponibilidade.Operacional : StatusDisponibilidade.Inconclusivo, item.Status);
             Assert.False(canal.TentarLer(out _));
         }
 
@@ -297,7 +299,8 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.True(item.TransporteObservado);
             Assert.Equal("REST", item.Protocolo);
             Assert.Equal("https://municipio.test", item.Destino);
-            Assert.Equal(204, item.CStat);
+            Assert.Equal(0, item.CStat);
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, item.Status);
         }
 
         [Theory]
@@ -316,7 +319,7 @@ namespace Unimake.DFe.Test.Utility.Rede
             }
             Assert.True(canal.TentarLer(out var item));
             Assert.Equal(http, item.HttpStatusCode);
-            Assert.Equal(TipoFalhaDisponibilidade.HTTP, item.TipoFalha);
+            Assert.Equal(http == 401 ? TipoFalhaDisponibilidade.Autenticacao : TipoFalhaDisponibilidade.HTTP, item.TipoFalha);
             Assert.Equal(esperado, item.Status);
         }
 
@@ -388,8 +391,9 @@ namespace Unimake.DFe.Test.Utility.Rede
                 sessao.Falhar(falha);
             }
             Assert.True(canal.TentarLer(out var item));
-            Assert.Equal("SOAP", item.Protocolo);
-            Assert.Equal("https://soap.test", item.Destino);
+            Assert.False(item.TransporteObservado);
+            Assert.Equal("Preparacao", item.Etapa);
+            Assert.Equal(string.Empty, item.Destino);
             Assert.Equal(TipoFalhaDisponibilidade.Certificado, item.TipoFalha);
             Assert.Equal(StatusDisponibilidade.Inconclusivo, item.Status);
         }
