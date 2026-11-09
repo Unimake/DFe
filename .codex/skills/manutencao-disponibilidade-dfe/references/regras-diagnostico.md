@@ -24,6 +24,25 @@ Contrato/APIs, fontes e classes de teste: [instrução específica](../../../../
 - PDF recebido oferece somente evidência de envelope: tipo/serviço coerentes, cabeçalho/término e Base64 quando aplicável. Não consumir/alterar/guardar stream, invalidar Base64 válido com quebras de linha nem confirmar entrega por Sucesso sem arquivo. Não inferir validade integral ou assinatura.
 - Uma resposta reconhecida pode estar degradada, indicar certificado/autenticação ou permanecer inconclusiva. Ler `RespostaAplicacaoReconhecida` junto de `Status`, `TipoFalha`, `ContratoResposta`, `CodigoRespostaAplicacao` e `Limitacao`.
 
+## Vincular contrato à operação: eSocial/Reinf
+
+`ContratosRespostaESocialReinf.cs` seleciona o contrato antes de extrair o código. Confirmar a operação executada e o XML retornado, não apenas o enum ou o tipo de Result: algumas classes reutilizam enums/modelos para operações distintas. A identidade diagnóstica não deve alterar o serviço, o payload, o Result ou a exceção fiscal.
+
+| Operação | Contrato de resposta / fonte |
+|---|---|
+| eSocial envio de lote | `retornoEnvioLoteEventos/status/cdResposta`; XmlRoot de `Xml.ESocial.Retorno.RetornoEnvioLote` |
+| eSocial consulta de lote | `retornoProcessamentoLoteEventos/status/cdResposta`; XmlRoot de `Xml.ESocial.Retorno.RetornoEventoProcessado` |
+| eSocial consulta de identificadores (empregador/tabela/trabalhador) | `retornoConsultaIdentificadoresEvts/status/cdResposta`; XSD local `RetornoConsultaIdentificadoresEventos-v1_0_0.xsd` |
+| eSocial download por ID/número de recibo | `download/status/cdResposta`; XSD oficial documentado em INTERPRETACAO.md, não o tipo genérico de Result isolado |
+| Reinf recepção e consulta de lote | Ambas admitem `retornoLoteEventosAssincrono/status/cdResposta`; XmlRoot de `Xml.EFDReinf.ReinfRetornoLoteAssincrono` |
+| Reinf consulta de recibo | Somente essa operação admite `ideStatus/cdRetorno`; XmlRoot de `Xml.EFDReinf.ReinfRetornoRecibo` |
+
+- eSocial usa `ESocialConsultaEvts` tanto para consulta de lote quanto para identificadores. Ler `Configuracao.NomeServicoObservacaoDisponibilidade`, identidade interna somente leitura da operação já carregada. Sem Load, somente um `WebTagRetorno` explicitamente reconhecido resolve a consulta; se a operação carregada for desconhecida, não ocultar isso com outro fallback.
+- Não escolher a operação pelo XML recebido para fazê-lo passar. Resposta de recibo não confirma recepção Reinf; retorno de envio não confirma download eSocial. Enum ambíguo sem identidade suficiente permanece inconclusivo.
+- Exigir namespace completo/versionado da raiz e de cada elemento do caminho principal. Comparar URI do namespace, não prefixo XML textual. Não remover namespaces nem aceitar qualquer versão por StartsWith; a versão da resposta é a do seu contrato, não necessariamente `Configuracao.SchemaVersao` de entrada.
+- Reutilizar os metadados dos modelos quando representarem o retorno efetivo; um getter Result genérico/herança não substitui a prova do contrato. Sem modelo específico, conferir XSD/documentação e registrar a origem. Não carregar schemas ou desserializar novamente o documento fiscal no caminho de observação.
+- Validar com `ContratosOperacaoESocialReinfTest`: respostas compatíveis e cruzadas (inclusive mesmo enum), contratos compartilhados, consulta sem identidade, wrappers de baixo nível, namespace/versão/caminho errados, prefixos válidos, códigos malformados e HTTP de falha. Preservar a classificação HTTP conhecida mesmo quando o corpo não comprovar negócio.
+
 ## Classificação nas famílias que usam cStat
 
 Aplicar somente às famílias aceitas por `ReconhecedorRespostaDisponibilidade.UsaCStat`. Rejeição normal comprova processamento do serviço, não autorização. HTTP de falha e SOAP Fault continuam sendo avaliados; não promover falha HTTP objetiva a sucesso por um código interno.

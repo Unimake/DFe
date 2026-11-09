@@ -40,6 +40,7 @@ description: Manter o diagnóstico de disponibilidade da Unimake.DFe para docume
 ### 3. Extrair e classificar o retorno
 
 - Escolher o reconhecedor da família/serviço. GNRE, CIOT, eSocial/Reinf e NFS-e não herdam o mapa cStat; conferir parser/modelo e contrato antes de acrescentar código. Catálogo estrutural não é interpretação de todos os erros.
+- Vincular o contrato à operação configurada antes de ler códigos. Enum/Result/prefixo de namespace isolados não comprovam correspondência. Conferir namespace completo e caminho qualificado, distinguindo versão de envio e de resposta. Para eSocial/Reinf, seguir a tabela da referência e `ContratosRespostaESocialReinf`; não deduzir a operação do retorno para aceitá-lo.
 - Ler reconhecimento junto com estado/falha/contrato/limitação. Rejeição normal pode provar processamento, sem provar autorização; contrato reconhecido com código desconhecido pode continuar inconclusivo. HTTP200 e SOAP Fault não são confirmação de negócio.
 - As regras de cStat abaixo valem somente para as famílias aceitas por `UsaCStat`.
 - Usar o primeiro `cStat` em ordem documental.
@@ -78,6 +79,7 @@ description: Manter o diagnóstico de disponibilidade da Unimake.DFe para docume
 
 1. Criar teste determinístico sem internet para cada formato de retorno ou regra alterada.
 2. Cobrir status principal e status interno quando o XML puder conter mais de um `cStat`.
+   Para reconhecedores por contrato, testar também respostas cruzadas entre serviços/operações e aliases realmente compartilhados; eSocial/Reinf têm regressões em `ContratosOperacaoESocialReinfTest`.
 3. Atravessar serviço/consumidor/executor real com transporte substituído quando possível. Conferir retorno/exceção intactos, coleta única, ausência de request extra e dados sensíveis, inclusive falhas do próprio diagnóstico.
 4. Validar agregação, origem provável, cache, consumo indevido e sanitização quando afetados.
 5. Rodar testes novos/alterados e regressões compartilhadas pertinentes. Cache/relógio usam `MemoriaDiagnosticoDisponibilidade`, com estado restaurado. Não substituir testes offline por suíte externa.
