@@ -4,6 +4,15 @@ Esta revisão melhora a interpretação sem criar tráfego, alterar respostas fi
 
 ## Matriz da revisão
 
+Correção após revisão do ticket: eSocial e Reinf agora vinculam a resposta ao serviço/operação, namespace completo (incluindo versão de retorno) e caminho qualificado do status principal. `ContratosRespostaESocialReinf.cs` reutiliza os metadados XmlRoot dos modelos de envio/processamento eSocial e dos dois retornos Reinf. Não altera payload, validação fiscal, Result ou exceção da operação.
+
+- eSocial envio: somente retornoEnvioLoteEventos/v1_1_0. Consulta de lote: retornoProcessamentoLoteEventos/v1_3_0. Identificadores: retornoConsultaIdentificadoresEvts/v1_0_0. Download por ID/recibo: download/status no namespace download/solicitacao/retorno/v1_0_0. As versões de retorno não são comparadas indevidamente à versão do XML de envio.
+- Como as consultas de lote e de identificadores usam ESocialConsultaEvts, o diagnóstico lê a operação já carregada em Configuracao. No baixo nível sem Load, só o wrapper SOAP explícito reconhecido permite resolver a consulta. Enum ambíguo sem identidade permanece inconclusivo; o corpo recebido não escolhe sua própria operação.
+- Reinf recepção e consulta de lote compartilham legitimamente retornoLoteEventosAssincrono/v1_00_00. Somente consulta de recibo admite ideStatus/cdRetorno em retornoRecibosChaveEvento/v1_05_01. Resposta de recibo não comprova recepção de lote e vice-versa.
+- Estrutura, versão ou namespace incompatíveis deixam RespostaAplicacaoReconhecida=false, código de aplicação zero e limitação controlada. HTTP de autenticação/indisponibilidade continua classificado, sem transformar a resposta cruzada em confirmação de negócio.
+
+Evidências adicionais: XSD local `Xml/Schemas/ESocial/RetornoConsultaIdentificadoresEventos-v1_0_0.xsd` e [pacote oficial de comunicação eSocial v1.6](https://www.gov.br/esocial/pt-br/documentacao-tecnica/manuais/pacote-de-comunicacao-esocial-v1-6.zip), SHA256 `8F1ED77472DF9EE749B489BD981443D89664EA164F1AD24E8BEEEBD2F1FB5996`, arquivo `RetornoSolicitacaoDownloadEventos-v1_0_0.xsd`. O ZIP foi consultado fora do repositório; nenhum schema/modelo fiscal foi atualizado. Regressões: `ContratosOperacaoESocialReinfTest`, incluindo cruzamento entre todos os serviços concretos dessas famílias e execução pública SOAP da consulta de lote.
+
 | Família / serviço | Caminho e evidência | Reconhecimento e classificação | Regressão offline / limite |
 |---|---|---|---|
 | GNRE recepção e consulta da recepção | Serviço → base GNRE/NFe → SOAP → sessão; `TRetLote_GNRE/situacaoRecepcao/codigo` | 100 e controles de rejeição publicados confirmam resposta; 101 certificado; 102/154 autenticação; 197 falha de processamento; 198 configuração; desconhecido inconclusivo | `GnreDistingueProcessamentoRejeicaoFalhaTecnicaEAcesso`, `GnreNaoEmprestaContratoDeOutroServico`. ConsultaLoteRecepcao usa historicamente enum GNREConsultaResultadoLote; ambas as raízes esperadas são contempladas sem alterar o serviço fiscal |

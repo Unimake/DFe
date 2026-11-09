@@ -50,6 +50,10 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         private string NomeTagServico { get; set; }
 
+        // Identidade da operação carregada; alguns enums agrupam serviços com retornos distintos.
+        // Leitura exclusiva do diagnóstico, sem alterar configuração, transporte ou contrato COM.
+        internal string NomeServicoObservacaoDisponibilidade => NomeTagServico;
+
         // A identidade da fotografia não altera Servico, usado historicamente pelo transporte/configuração.
         internal Servico ServicoObservacaoDisponibilidade => NomeTagServico == "RecepcaoEvento"
             ? TipoDFe == TipoDFe.CTe || TipoDFe == TipoDFe.CTeOS ? Servico.CTeRecepcaoEvento

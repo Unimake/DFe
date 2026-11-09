@@ -38,19 +38,8 @@ namespace Unimake.Business.DFe.Utility
             switch (config.TipoDFe)
             {
                 case TipoDFe.ESocial:
-                    if (raiz.LocalName != "eSocial" || !raiz.NamespaceURI.StartsWith("http://www.esocial.gov.br/schema/", StringComparison.Ordinal)) break;
-                    codigo = raiz.SelectSingleNode("./*[starts-with(local-name(),'retorno') or starts-with(local-name(),'download')]/*[local-name()='status']/*[local-name()='cdResposta']");
-                    evidencia.Contrato = "eSocial.cdResposta";
-                    break;
                 case TipoDFe.EFDReinf:
-                    if (raiz.LocalName != "Reinf" || !raiz.NamespaceURI.StartsWith("http://www.reinf.esocial.gov.br/schemas/", StringComparison.Ordinal)) break;
-                    codigo = raiz.SelectSingleNode("./*[local-name()='retornoLoteEventosAssincrono']/*[local-name()='status']/*[local-name()='cdResposta']");
-                    evidencia.Contrato = "Reinf.cdResposta";
-                    if (codigo == null)
-                    {
-                        codigo = raiz.SelectSingleNode("./*[local-name()='ideStatus']/*[local-name()='cdRetorno']");
-                        evidencia.Contrato = "Reinf.cdRetorno";
-                    }
+                    codigo = ContratosRespostaESocialReinf.LocalizarCodigo(config, raiz, evidencia);
                     break;
                 case TipoDFe.GNRE:
                     return ReconhecedorRespostaGNRE.Reconhecer(config, raiz);

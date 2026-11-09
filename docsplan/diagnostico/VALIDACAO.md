@@ -1,6 +1,33 @@
 # Validação e autorrevisão — 09/11/2026
 
-## Migração para sessões — estado atual
+## Correção após revisão: contratos de eSocial/Reinf por operação
+
+Achado confirmado e corrigido: respostas de outro serviço eram aceitas pelo prefixo da família. A reprodução da recepção Reinf com retorno de consulta de recibo passou de Operacional/reconhecida para Inconclusivo/Protocolo/não reconhecida, com limitação controlada. O mesmo vínculo foi corrigido para download/envio/consultas do eSocial.
+
+**459 testes offline focados aprovados**, zero erros/falhas/ignorados/não executados, seis classes, duração final 2,219 s. Inclui **84 casos novos** de `ContratosOperacaoESocialReinfTest` e 375 regressões existentes das classes Cobertura, Canal, InterpretacaoContratos, Migracao e Diagnostico. O total é do filtro desta correção, não uma nova execução da suíte integral nem a soma de todos os registros históricos abaixo.
+
+Os testes novos percorrem ConsumirAPI/executor substituído em 58 combinações de operação/resposta dessas famílias, preservando os aliases legítimos. Cobrem rejeição normal, falha principal, namespace/versão/estrutura incompatíveis, prefixos XML válidos, wrapper explícito no baixo nível, consulta ambígua sem operação, código malformado, HTTP401/503 e execução pública SOAP de ESocial.ConsultaLoteAssincrono com resposta compatível/cruzada. Conferem uma entrada/uma chamada/uma observação, retorno original intacto e ausência dos dados sintéticos sensíveis na fotografia.
+
+Build principal Debug aprovado: 1 aviso NU1900 em execução incremental, zero erros, 1,23 s. Build dos testes: 67 avisos preexistentes/usos intencionais de APIs obsoletas, zero erros, 5,94 s. INTEROP_Release aprovado: 12 avisos preexistentes, zero erros, 25,53 s. Nenhuma validação, certificado ou teste foi enfraquecido. Comandos de build e runner continuam os abaixo; nesta correção o filtro foi:
+
+```powershell
+dotnet "source/Unimake.DFe.Test/bin/Debug/net8.0/Unimake.DFe.Test.dll" `
+  -class Unimake.DFe.Test.Utility.Rede.ContratosOperacaoESocialReinfTest `
+  -class Unimake.DFe.Test.Utility.Rede.CoberturaDisponibilidadeTest `
+  -class Unimake.DFe.Test.Utility.Rede.CanalObservacoesDisponibilidadeTest `
+  -class Unimake.DFe.Test.Utility.Rede.InterpretacaoContratosDisponibilidadeTest `
+  -class Unimake.DFe.Test.Utility.Rede.MigracaoDiagnosticoSessaoTest `
+  -class Unimake.DFe.Test.Utility.Rede.DiagnosticoDisponibilidadeTest `
+  -trait- "Utility=DisponibilidadeIntegracao" -noLogo
+```
+
+Autorrevisão: as consultas eSocial compartilham enum, portanto a seleção usa a operação já carregada em Configuracao (ou wrapper SOAP explícito quando não houve Load). Reinf recepção e consulta de lote compartilham o mesmo contrato e continuam aceitas. O namespace de retorno é conferido com sua própria versão, sem compará-lo à versão de entrada. O status é lido em filhos diretos qualificados, sem emprestar código de evento interno ou namespace estrangeiro. Quatro contratos reutilizam XmlRoot dos modelos, e os demais têm evidência de XSD local/oficial em INTERPRETACAO.md; sem leitura de arquivo, nova desserialização fiscal ou rede na observação.
+
+Escopo: somente seleção/interpretação diagnóstica e uma propriedade interna somente leitura da identidade da operação em Configuracao. Não houve alteração de XML/modelo/schema/endpoint, assinatura, envio, consumidor de transporte, Result ou exceção fiscal. O PRO e o legado permaneceram sem alterações; nenhuma validação com o pacote antigo do PRO foi apresentada como prova deste código. Não houve execução .NET Framework 4.7.2, certificado real ou A3. Empacotamento final desta correção está registrado ao fim do arquivo.
+
+Empacotamento da correção aprovado pelo fluxo oficial Offline/DryRun, exit code 0: pacote temporário `20261109.1555.49`, AssemblyVersion `2026.11.09.1555`. Conferidos assets somente `lib/netstandard2.0`, dependências e hash do GeradorCIOTShared. Nenhum pacote enviado/persistido nem atualização do PRO. Csproj restaurado com SHA256 `EC4AD764F5BB1C5935BE1B374D84DB0989A1B987ADC4DDA25A10301BBBF5D22F`. Hashes das fontes centrais atualizados e conferidos sem divergências; git diff --check sem erros. Alterações da correção ainda locais, sem commit/push.
+
+## Registro da migração para sessões — anterior à correção de contratos
 
 Decisão do usuário: a rotina será removida do UniNFe legado; o PRO será o consumidor do diagnóstico. Implementação e instruções: [MIGRACAO-SESSOES.md](MIGRACAO-SESSOES.md) e [COMANDO-PRO.md](COMANDO-PRO.md). O PRO continua somente consultado nesta tarefa.
 
