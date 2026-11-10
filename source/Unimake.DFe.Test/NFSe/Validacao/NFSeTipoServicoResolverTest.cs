@@ -68,6 +68,16 @@ namespace Unimake.DFe.Test.NFSe.Validacao
         }
 
         [Fact]
+        public void DeveDefinirCancelarNfseParaPedRegEventoELDePortoVelho()
+        {
+            var xml = CriarXml("<pedRegEvento versao=\"1.01\" xmlns=\"http://www.sped.fazenda.gov.br/nfse\"><infPedReg Id=\"PRE123\"><e101101 /></infPedReg></pedRegEvento>");
+
+            var tipoServico = ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.EL, "1.01", 1100205, TipoAmbiente.Producao);
+
+            Assert.Equal(Servico.NFSeCancelarNfse, tipoServico);
+        }
+
+        [Fact]
         public void DeveAplicarExcecaoMunicipalDoTipoServicoNFSe()
         {
             var xml = CriarXml("<EnviarLoteRpsSincronoEnvio xmlns=\"http://www.abrasf.org.br/nfse.xsd\"><LoteRps /></EnviarLoteRpsSincronoEnvio>");

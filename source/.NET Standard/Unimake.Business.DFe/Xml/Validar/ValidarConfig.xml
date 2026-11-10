@@ -6198,7 +6198,7 @@
 		<Padrao nome="EL">
 			<Servico tagRaiz="pedRegEvento" versao="1.01" tagIdentificadora="infPedReg">
 				<Descricao>Cancelar nota fiscal de serviço</Descricao>
-				<TipoServico>NFSeRecepcionarEventosDiversos</TipoServico>
+				<TipoServico>NFSeCancelarNfse</TipoServico>
 				<SchemaArquivo/>
 				<TagAssinatura>pedRegEvento</TagAssinatura>
 				<TagAtributoID>infPedReg</TagAtributoID>
