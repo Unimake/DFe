@@ -31,9 +31,11 @@ namespace Unimake.Business.DFe
 
             var request = new ApiConfigTransportRequestMapper().Map(apiConfig, certificado);
 
+            Utility.SessaoObservacaoDisponibilidade.InformarTransporte(apiConfig.RequestURI, "REST");
             using (var transportResponse = ApiTransportExecutorFactory.Create().Execute(request))
             using (var httpResponse = transportResponse.HttpResponseMessage)
             {
+                Utility.SessaoObservacaoDisponibilidade.InformarRespostaHttp(httpResponse.StatusCode);
                 WebException webException = null;
                 string responseContent = null;
                 try
@@ -60,6 +62,7 @@ namespace Unimake.Business.DFe
                     Stream stream = null;
                     retornoXml = TratarRetornoAPI.ReceberRetorno(ref apiConfig, httpResponse, ref stream);
                     RetornoServicoStream = stream;
+                    Utility.SessaoObservacaoDisponibilidade.InformarPdf(stream, httpResponse.Content.Headers.ContentType?.MediaType);
                 }
                 catch (XmlException)
                 {

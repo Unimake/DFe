@@ -16,6 +16,7 @@ using Xunit;
 namespace Unimake.DFe.Test.Utility.Rede
 {
     /// <summary>Testes determinísticos do diagnóstico de disponibilidade.</summary>
+    [Collection("MemoriaDiagnosticoDisponibilidade")]
     public class DiagnosticoDisponibilidadeTest : IDisposable
     {
         public DiagnosticoDisponibilidadeTest() => DiagnosticoDisponibilidadeDFe.LimparMemoriaDiagnostico();
@@ -116,7 +117,7 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.Equal(StatusDisponibilidade.Operacional, resultado.Status);
             Assert.Equal(1, resultado.Sondas.Count);
             Assert.Equal(FonteEvidenciaDisponibilidade.TelemetriaPassiva, resultado.Sondas.GetItem(0).Fonte);
-            Assert.Equal("https://sefaz.test/ws", resultado.Sondas.GetItem(0).Endpoint);
+            Assert.Equal("https://sefaz.test", resultado.Sondas.GetItem(0).Endpoint);
             Assert.Equal("A mensagem foi processada pela aplicação fiscal.", resultado.Sondas.GetItem(0).XMotivo);
         }
 
@@ -531,7 +532,7 @@ namespace Unimake.DFe.Test.Utility.Rede
         [InlineData(TipoDFe.DCe, Servico.DCeAutorizacaoSinc)]
         [InlineData(TipoDFe.NFCom, Servico.NFComAutorizacaoSinc)]
         [InlineData(TipoDFe.NFGas, Servico.NFGasAutorizacaoSinc)]
-        public void DocumentoSomenteComTelemetriaNaoExecutaSondaAtiva(TipoDFe tipoDFe, Servico servico)
+        public void DiagnosticoPassivoNaoExecutaSondaMesmoComStatusOficial(TipoDFe tipoDFe, Servico servico)
         {
             var configuracao = ConfiguracaoBase();
             configuracao.TipoDFe = tipoDFe;
@@ -548,15 +549,14 @@ namespace Unimake.DFe.Test.Utility.Rede
                     return Status(107);
                 });
 
-            var resultado = diagnostico.ConsultarStatusServico();
+            var resultado = diagnostico.ObterDiagnosticoPassivo();
 
             Assert.Equal(0, infraestrutura.Execucoes);
             Assert.Equal(0, execucoesStatus);
             Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
             Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
             Assert.Contains(resultado.Sondas.Itens, x => x.Servico == servico.ToString() && x.CStat == 108);
-            Assert.Contains(resultado.Sondas.Itens, x => x.Servico == "StatusServico" &&
-                x.Status == StatusDisponibilidade.NaoAplicavel);
+            Assert.DoesNotContain(resultado.Sondas.Itens, x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico);
         }
 
         [Fact]
@@ -872,7 +872,7 @@ namespace Unimake.DFe.Test.Utility.Rede
             var endpoint = ClassificadorDisponibilidade.SanitizarEndpoint(url);
             var excecao = ClassificadorDisponibilidade.SanitizarExcecao(new Exception("Falha 123456789 em " + url));
 
-            Assert.Equal("https://sefaz.test/ws", endpoint);
+            Assert.Equal("https://sefaz.test", endpoint);
             Assert.DoesNotContain("senha", excecao, StringComparison.Ordinal);
             Assert.DoesNotContain("segredo", excecao, StringComparison.Ordinal);
             Assert.DoesNotContain("123456789", excecao, StringComparison.Ordinal);
@@ -917,9 +917,9 @@ namespace Unimake.DFe.Test.Utility.Rede
 
             var resultado = Assert.Single(resultados);
             Assert.Equal("Proxy", resultado.Servico);
-            Assert.Equal("https://sefaz.test/ws", resultado.Endpoint);
+            Assert.Equal("https://sefaz.test", resultado.Endpoint);
             Assert.Equal(TipoFalhaDisponibilidade.Proxy, resultado.TipoFalha);
-            Assert.Equal("Falha *** em https://sefaz.test/ws", resultado.Excecao);
+            Assert.Equal("Falha na conexão com o proxy.", resultado.Excecao);
             Assert.DoesNotContain("usuario", resultado.Excecao, StringComparison.Ordinal);
             Assert.DoesNotContain("senha", resultado.Excecao, StringComparison.Ordinal);
             Assert.DoesNotContain("segredo", resultado.Excecao, StringComparison.Ordinal);
@@ -1101,7 +1101,7 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.Equal(503, sonda.HttpStatusCode);
             Assert.Equal(TipoFalhaDisponibilidade.HTTP, sonda.TipoFalha);
             Assert.Equal(StatusDisponibilidade.Indisponivel, sonda.Status);
-            Assert.Equal("O endpoint fiscal informou indisponibilidade temporária do serviço (HTTP 503).",
+            Assert.Equal("O endpoint informou indisponibilidade temporária (HTTP 503).",
                 sonda.XMotivo);
             Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
             Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);

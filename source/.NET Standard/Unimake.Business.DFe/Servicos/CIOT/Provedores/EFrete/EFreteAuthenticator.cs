@@ -54,6 +54,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
                 var token = EFreteMapper.ObterTokenLogin(consumidor.RetornoServicoRawString);
                 if (string.IsNullOrWhiteSpace(token))
                 {
+                    if (EFreteMapper.LoginRejeitado(consumidor.RetornoServicoRawString))
+                        Utility.SessaoObservacaoDisponibilidade.InformarRejeicaoAutenticacao();
                     var rejeicao = EFreteMapper.ObterMotivoRejeicaoLogin(consumidor.RetornoServicoRawString);
                     throw new InvalidOperationException(
                         string.IsNullOrWhiteSpace(rejeicao)

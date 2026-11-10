@@ -48,6 +48,10 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         [XmlElement("gCBS")]
         public GCBSTot GCBSTot { get; set; }
 
+        /// <summary>Totalização do IBS e da CBS do Simples Nacional.</summary>
+        [XmlElement("gTribSN")]
+        public CTe.GTribSNTot GTribSN { get; set; }
+
         /// <summary>
         /// Totalização do estorno de crédito.
         /// </summary>

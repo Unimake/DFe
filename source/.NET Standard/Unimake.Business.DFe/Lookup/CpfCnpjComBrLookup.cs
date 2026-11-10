@@ -288,12 +288,15 @@ namespace Unimake.Business.DFe.Lookup
 
             try
             {
+                Utility.SessaoObservacaoDisponibilidade.InformarLookup(url);
                 using(var response = await _httpClient.GetAsync(url, cancellationToken).ConfigureAwait(false))
                 {
+                    Utility.SessaoObservacaoDisponibilidade.InformarRespostaHttp(response.StatusCode);
                     statusHttp = (int)response.StatusCode;
                     corpo = response.Content == null
                         ? null
                         : await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    Utility.SessaoObservacaoDisponibilidade.InformarRespostaLookup(corpo);
                 }
             }
             catch(OperationCanceledException) when(cancellationToken.IsCancellationRequested)

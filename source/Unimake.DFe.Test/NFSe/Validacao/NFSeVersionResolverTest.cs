@@ -318,16 +318,16 @@ namespace Unimake.DFe.Test.NFSe.Validacao
         }
 
         [Fact]
-        public void DeveConfigurarRecepcaoSincronaISSNET100DeSantaMaria()
+        public void DeveConfigurarRecepcaoSincronaISSNET101DeSantaMariaComEnvelope100()
         {
             var configuracaoMunicipio = new XmlDocument();
             configuracaoMunicipio.Load(@"..\..\..\..\.NET Standard\Unimake.Business.DFe\Servicos\Config\NFSe\SantaMariaRS.xml");
 
             var servico = configuracaoMunicipio.SelectSingleNode(
-                "/Configuracoes/Servicos/RecepcionarLoteRpsSincrono[@versao='1.00']");
+                "/Configuracoes/Servicos/RecepcionarLoteRpsSincrono[@versao='1.01']");
 
             Assert.NotNull(servico);
-            Assert.Equal("1.00", servico.SelectSingleNode("SchemaVersao").InnerText);
+            Assert.Equal("1.01", servico.SelectSingleNode("SchemaVersao").InnerText);
             Assert.Equal("http://www.sped.fazenda.gov.br/nfse/RecepcionarLoteDpsSincrono", servico.SelectSingleNode("WebActionProducao").InnerText);
             Assert.Contains("versao=\"1.00\"", servico.SelectSingleNode("WebSoapString").InnerText);
             Assert.Contains("<versaoDados>1.00</versaoDados>", servico.SelectSingleNode("WebSoapString").InnerText);

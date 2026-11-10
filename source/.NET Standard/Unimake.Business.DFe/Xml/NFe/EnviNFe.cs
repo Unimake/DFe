@@ -877,7 +877,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlIgnore]
 #if INTEROP
-        public DateTime DhCont { get; set; }
+        public DateTime DhCont
+        {
+            get => DhContInterop;
+            set
+            {
+                DhContInterop = value;
+                DhContOffsetInterop = null;
+            }
+        }
+
+        private DateTime DhContInterop;
+        private DateTimeOffset? DhContOffsetInterop;
 #else
         public DateTimeOffset DhCont { get; set; }
 #endif
@@ -888,10 +899,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("dhCont", Order = 27)]
         public string DhContField
         {
-            get => DhCont.ToString("yyyy-MM-ddTHH:mm:sszzz");
 #if INTEROP
-            set => DhCont = DateTime.Parse(value);
+            get => DhContOffsetInterop?.ToString("yyyy-MM-ddTHH:mm:sszzz") ?? DhCont.ToString("yyyy-MM-ddTHH:mm:sszzz");
+            set
+            {
+                // Preserva o offset informado no XML sem alterar o contrato DateTime do COM.
+                var dataHora = DateTime.Parse(value);
+                var dataHoraOffset = DateTimeOffset.Parse(value);
+                DhCont = dataHora;
+                DhContOffsetInterop = dataHoraOffset;
+            }
 #else
+            get => DhCont.ToString("yyyy-MM-ddTHH:mm:sszzz");
             set => DhCont = DateTimeOffset.Parse(value);
 #endif
         }

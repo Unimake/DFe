@@ -46,6 +46,16 @@ namespace Unimake.Business.DFe.Servicos.CIOT.Provedores.EFrete
             return string.IsNullOrWhiteSpace(codigo) ? mensagem : mensagem + " (" + codigo + ")";
         }
 
+        internal static bool LoginRejeitado(string retorno)
+        {
+            try
+            {
+                var sucesso = JObject.Parse(retorno)["Sucesso"];
+                return sucesso != null && sucesso.Type == JTokenType.Boolean && !sucesso.Value<bool>();
+            }
+            catch { return false; }
+        }
+
         internal static string CriarJson(XMLBase xml, Servico servico, Configuracao configuracao)
         {
             JObject payload;

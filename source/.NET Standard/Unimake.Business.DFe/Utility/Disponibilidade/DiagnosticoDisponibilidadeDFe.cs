@@ -20,7 +20,7 @@ using Unimake.Business.DFe.Servicos;
 namespace Unimake.Business.DFe.Utility
 {
     /// <summary>
-    /// Consolida telemetria passiva e testes locais sem criar mensagens fiscais sintéticas.
+    /// Executa verificações manuais seguras e mantém APIs anteriores somente para transição.
     /// </summary>
 #if INTEROP
     [ComVisible(false)]
@@ -35,7 +35,12 @@ namespace Unimake.Business.DFe.Utility
             TipoDFe.NFCe,
             TipoDFe.CTe,
             TipoDFe.MDFe,
-            TipoDFe.NF3e
+            TipoDFe.NF3e,
+            TipoDFe.CTeOS,
+            TipoDFe.NFCom,
+            TipoDFe.NFGas,
+            TipoDFe.BPe,
+            TipoDFe.DCe
         };
         /// <summary>Configuração do contribuinte, documento, UF, ambiente e certificado.</summary>
         private readonly Configuracao configuracao;
@@ -80,19 +85,23 @@ namespace Unimake.Business.DFe.Utility
         /// executa DNS, TCP e TLS com cache, sem enviar mensagem fiscal.
         /// </summary>
         /// <returns>Resultado consolidado.</returns>
-        public ResultadoDiagnosticoDisponibilidade Executar()
+        [Obsolete("API de histórico anterior. Use sessões para observação passiva e VerificarStatusServico para verificação manual sem histórico passivo.")]
+        public ResultadoDiagnosticoDisponibilidade Executar() => Executar(true);
+
+        private ResultadoDiagnosticoDisponibilidade Executar(bool incluirHistoricoPassivo)
         {
             opcoes.Validar();
             var resultado = CriarResultado();
             var cronometro = Stopwatch.StartNew();
-            if (!DocumentoComTelemetria())
+            if (incluirHistoricoPassivo ? !DocumentoComTelemetria() : !DocumentoComConsultaStatus())
             {
                 resultado.Sondas.Add(CriarNaoAplicavel("Diagnostico",
-                    "O documento ainda não possui uma estratégia de diagnóstico registrada."));
+                    incluirHistoricoPassivo ? "O documento ainda não possui uma estratégia de diagnóstico registrada." :
+                    "Não há consulta oficial de status registrada para este documento; use as sessões das operações reais como evidência."));
                 Finalizar(resultado, cronometro);
                 return resultado;
             }
-            AdicionarTelemetria(resultado);
+            if (incluirHistoricoPassivo) AdicionarTelemetria(resultado);
 
             if (!DocumentoComConsultaStatus())
             {
@@ -135,8 +144,16 @@ namespace Unimake.Business.DFe.Utility
             return resultado;
         }
 
+        /// <summary>Informa se o diagnóstico implementa uma consulta oficial de status para o tipo informado.</summary>
+        /// <param name="tipoDFe">Documento a verificar.</param>
+        /// <returns>Capacidade implementada; a disponibilidade de UF, ambiente, versão e endpoint ainda deve ser validada.</returns>
+        /// <remarks>Não realiza rede nem carrega certificado. A ausência de status não limita a sessão passiva.
+        /// O resultado de status vale somente para esse serviço e não confirma autorização, eventos ou downloads.</remarks>
+        public static bool PossuiConsultaOficialStatus(TipoDFe tipoDFe) => DocumentosComConsultaStatus.Contains(tipoDFe);
+
         /// <summary>Obtém somente a telemetria passiva em memória, sem executar qualquer acesso de rede.</summary>
         /// <returns>Resultado consolidado.</returns>
+        [Obsolete("Use CanalObservacoesDisponibilidade. Persistência e agregação das observações pertencem ao consumidor.")]
         public ResultadoDiagnosticoDisponibilidade ObterDiagnosticoPassivo()
         {
             opcoes.Validar();
@@ -159,9 +176,29 @@ namespace Unimake.Business.DFe.Utility
         /// Não são enviadas mensagens sintéticas para outros serviços.
         /// </summary>
         /// <returns>Resultado combinado com telemetria, infraestrutura e status.</returns>
-        public ResultadoDiagnosticoDisponibilidade ConsultarStatusServico()
+        [Obsolete("Use VerificarStatusServico, que não incorpora o histórico passivo anterior.")]
+        public ResultadoDiagnosticoDisponibilidade ConsultarStatusServico() => ConsultarStatusServico(true);
+
+        /// <summary>Verifica infraestrutura e status oficial sem ler ou agregar o histórico passivo anterior.</summary>
+        /// <returns>Evidências da verificação manual, incluindo o cache de sondas e suas limitações.</returns>
+        /// <remarks>Não observa nem repete operações de negócio. Respeita proxy, certificado, cache e
+        /// bloqueio de consumo indevido, inclusive o informado pelas sessões. Não limpa nem modifica
+        /// o histórico do consumidor. Sem estratégia oficial, retorna NãoAplicável sem executar rede.</remarks>
+        public ResultadoDiagnosticoDisponibilidade VerificarStatusServico() => ConsultarStatusServico(false);
+
+        private ResultadoDiagnosticoDisponibilidade ConsultarStatusServico(bool incluirHistoricoPassivo)
         {
-            var resultado = Executar();
+            DateTime bloqueadoAntesDaPreparacao;
+            if (!incluirHistoricoPassivo && DocumentoComConsultaStatus() &&
+                CacheStatusDisponibilidade.ContextoBloqueado(configuracao, out bloqueadoAntesDaPreparacao))
+            {
+                opcoes.Validar();
+                var suprimido = CriarResultado();
+                AdicionarStatusSuprimido(suprimido, bloqueadoAntesDaPreparacao);
+                AgregadorDisponibilidade.Agregar(suprimido);
+                return suprimido;
+            }
+            var resultado = Executar(incluirHistoricoPassivo);
             var cronometro = Stopwatch.StartNew();
             try
             {
@@ -374,7 +411,9 @@ namespace Unimake.Business.DFe.Utility
         {
             if (configuracao.TipoDFe == TipoDFe.MDFe) return "3.00";
             if (configuracao.TipoDFe == TipoDFe.NF3e) return "1.00";
-            if (configuracao.TipoDFe == TipoDFe.CTe) return string.IsNullOrWhiteSpace(configuracao.SchemaVersao) ? "4.00" : configuracao.SchemaVersao;
+            if (configuracao.TipoDFe == TipoDFe.BPe) return "1.00";
+            if (configuracao.TipoDFe == TipoDFe.NFCom || configuracao.TipoDFe == TipoDFe.NFGas || configuracao.TipoDFe == TipoDFe.DCe) return "1.00";
+            if (configuracao.TipoDFe == TipoDFe.CTe || configuracao.TipoDFe == TipoDFe.CTeOS) return string.IsNullOrWhiteSpace(configuracao.SchemaVersao) ? "4.00" : configuracao.SchemaVersao;
             return "4.00";
         }
 
@@ -388,6 +427,7 @@ namespace Unimake.Business.DFe.Utility
             {
                 Servico = "StatusServico",
                 Endpoint = ClassificadorDisponibilidade.SanitizarEndpoint(endpoint),
+                IdentidadeEndpoint = ClassificadorDisponibilidade.IdentificarEndpoint(endpoint),
                 Protocolo = "SOAP",
                 Fonte = FonteEvidenciaDisponibilidade.StatusServico,
                 DataHora = RelogioDisponibilidade.Agora(),
@@ -405,7 +445,8 @@ namespace Unimake.Business.DFe.Utility
                 }
 
                 ClassificadorDisponibilidade.ClassificarRespostaFiscal(resultado);
-                if (resultado.CStat != 107 &&
+                ClassificadorDisponibilidade.ClassificarHttp(resultado, false);
+                if (resultado.CStat > 0 && resultado.CStat != 107 &&
                     !ClassificadorDisponibilidade.EhIndisponibilidadeFiscal(resultado.CStat) &&
                     resultado.CStat != 656 && resultado.CStat != 678)
                 {
@@ -448,6 +489,7 @@ namespace Unimake.Business.DFe.Utility
                         CUF = (UFBrasil)configuracaoStatus.CodigoUF
                     }.GerarXML();
                 case TipoDFe.CTe:
+                case TipoDFe.CTeOS:
                     return new Xml.CTe.ConsStatServCte
                     {
                         Versao = configuracaoStatus.SchemaVersao,
@@ -466,6 +508,15 @@ namespace Unimake.Business.DFe.Utility
                         Versao = "1.00",
                         TpAmb = configuracaoStatus.TipoAmbiente
                     }.GerarXML();
+                case TipoDFe.NFCom:
+                    return new Xml.NFCom.ConsStatServNFCom { Versao = "1.00", TpAmb = configuracaoStatus.TipoAmbiente }.GerarXML();
+                case TipoDFe.NFGas:
+                    return new Xml.NFGas.ConsStatServNFGas { Versao = "1.00", TpAmb = configuracaoStatus.TipoAmbiente }.GerarXML();
+                case TipoDFe.BPe:
+                    return new Xml.BPe.ConsStatServBPe { Versao = "1.00", TpAmb = configuracaoStatus.TipoAmbiente }.GerarXML();
+                case TipoDFe.DCe:
+                    return new Xml.DCe.ConsStatServDCe { Versao = "1.00", TpAmb = configuracaoStatus.TipoAmbiente,
+                        CUF = (UFBrasil)configuracaoStatus.CodigoUF }.GerarXML();
                 default:
                     throw new NotSupportedException("O documento não possui consulta de status registrada no diagnóstico.");
             }
@@ -559,7 +610,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Chave sem dados sigilosos usada pelo cache do processo.</returns>
         private static string CriarChaveStatus(Configuracao item, string endpoint) =>
             ((int)item.TipoDFe).ToString(CultureInfo.InvariantCulture) + "|" + item.CodigoUF.ToString(CultureInfo.InvariantCulture) + "|" +
-            ((int)item.TipoAmbiente).ToString(CultureInfo.InvariantCulture) + "|" + ClassificadorDisponibilidade.SanitizarEndpoint(endpoint);
+            ((int)item.TipoAmbiente).ToString(CultureInfo.InvariantCulture) + "|" + ClassificadorDisponibilidade.IdentificarEndpoint(endpoint);
 
         /// <summary>Fecha a medição do diagnóstico e calcula o estado agregado.</summary>
         /// <param name="resultado">Resultado que será concluído.</param>
@@ -644,7 +695,7 @@ namespace Unimake.Business.DFe.Utility
                 if (!teste.ResponseReceived)
                 {
                     proxy.TipoFalha = ConverterFalha(teste.FailureType);
-                    proxy.Excecao = ClassificadorDisponibilidade.SanitizarMensagem(teste.ErrorMessage);
+                    proxy.Excecao = "Falha na conexão com o proxy.";
                 }
                 resultados.Add(proxy);
                 return resultados;
@@ -767,6 +818,7 @@ namespace Unimake.Business.DFe.Utility
             {
                 Servico = servico,
                 Endpoint = ClassificadorDisponibilidade.SanitizarEndpoint(endpoint),
+                IdentidadeEndpoint = ClassificadorDisponibilidade.IdentificarEndpoint(endpoint),
                 Protocolo = protocolo,
                 Fonte = FonteEvidenciaDisponibilidade.Infraestrutura,
                 DataHora = RelogioDisponibilidade.Agora(),
@@ -861,7 +913,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Chave sem senha ou usuário em texto puro.</returns>
         internal static string CriarChaveCache(Configuracao configuracao, string endpoint, int timeoutMilissegundos)
         {
-            return ClassificadorDisponibilidade.SanitizarEndpoint(endpoint) + "|" +
+            return ClassificadorDisponibilidade.IdentificarEndpoint(endpoint) + "|" +
                 CriarIdentidadeContextoLocal(configuracao, timeoutMilissegundos);
         }
 
@@ -963,6 +1015,11 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="bloqueadoAte">Data e hora final do bloqueio.</param>
         internal static void BloquearContexto(Configuracao configuracao, DateTime bloqueadoAte)
         {
+            // Somente contextos que podem executar status precisam deste bloqueio em memória.
+            // A sessão ampla também observa utilitários e configurações desconhecidas: não criar
+            // chaves ilimitadas para enums inválidos ou integrações sem consulta oficial.
+            if (configuracao == null || !DiagnosticoDisponibilidadeDFe.PossuiConsultaOficialStatus(configuracao.TipoDFe) ||
+                configuracao.TipoAmbiente != TipoAmbiente.Producao && configuracao.TipoAmbiente != TipoAmbiente.Homologacao) return;
             var chave = ChaveContexto(configuracao);
             lock (CacheSync)
             {
@@ -1168,6 +1225,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="configuracao">Configuração fiscal.</param>
         /// <param name="opcoes">Opções do diagnóstico.</param>
         /// <returns>Resultado agregado com estado, origem provável, descrição para o usuário e sondas detalhadas.</returns>
+        [Obsolete("API de transição. Use VerificarStatusServico para verificação manual e sessões para observação passiva em .NET.")]
         public ResultadoDiagnosticoDisponibilidade Executar(Configuracao configuracao, ConfiguracaoDiagnosticoDisponibilidade opcoes) =>
             new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).Executar();
 
@@ -1175,6 +1233,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="configuracao">Configuração fiscal.</param>
         /// <param name="opcoes">Opções do diagnóstico.</param>
         /// <returns>Resultado agregado sem enviar nova mensagem fiscal.</returns>
+        [Obsolete("Histórico anterior mantido somente para transição. Em .NET, use CanalObservacoesDisponibilidade.")]
         public ResultadoDiagnosticoDisponibilidade ObterDiagnosticoPassivo(Configuracao configuracao, ConfiguracaoDiagnosticoDisponibilidade opcoes) =>
             new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ObterDiagnosticoPassivo();
 
@@ -1182,11 +1241,19 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="configuracao">Configuração fiscal.</param>
         /// <param name="opcoes">Opções do diagnóstico.</param>
         /// <returns>Resultado agregado da resposta oficial ou inconclusivo quando a configuração não permite consultar.</returns>
+        [Obsolete("Use VerificarStatusServico, sem o histórico passivo anterior.")]
         public ResultadoDiagnosticoDisponibilidade ConsultarStatusServico(Configuracao configuracao, ConfiguracaoDiagnosticoDisponibilidade opcoes) =>
             new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ConsultarStatusServico();
 
         /// <summary>Limpa histórico, cache e bloqueios mantidos em memória no processo atual.</summary>
         /// <remarks>Use somente quando o programa desejar iniciar um novo ciclo de diagnóstico.</remarks>
         public void LimparMemoriaDiagnostico() => DiagnosticoDisponibilidadeDFe.LimparMemoriaDiagnostico();
+
+        /// <summary>Verifica infraestrutura e status oficial sem incorporar histórico passivo anterior.</summary>
+        /// <param name="configuracao">Configuração fiscal, de proxy e certificado.</param>
+        /// <param name="opcoes">Opções de timeout e cache.</param>
+        /// <returns>Sondas manuais e limitações, sem executar operação de negócio.</returns>
+        public ResultadoDiagnosticoDisponibilidade VerificarStatusServico(Configuracao configuracao, ConfiguracaoDiagnosticoDisponibilidade opcoes) =>
+            new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).VerificarStatusServico();
     }
 }

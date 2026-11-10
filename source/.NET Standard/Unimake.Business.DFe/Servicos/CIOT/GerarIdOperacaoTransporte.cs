@@ -1,4 +1,4 @@
-#if INTEROP
+﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
 using GeradorCIOTShared;
@@ -289,6 +289,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         {
             if (Configuracoes.TipoAmbiente == TipoAmbiente.Producao)
             {
+                // O componente ANTT não expõe o endpoint ou o HTTP efetivo; não inventar esses dados.
+                Utility.SessaoObservacaoDisponibilidade.InformarTransporte(string.Empty, "ComponenteExterno");
                 ProcessarRetornoANTT(GerarCIOTProducao(Envio.CpfCnpj));
                 return;
             }

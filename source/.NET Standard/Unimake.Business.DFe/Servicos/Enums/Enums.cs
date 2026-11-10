@@ -857,6 +857,14 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização síncrona da NFeABI")]
         NFeABIAutorizacaoSinc = 137,
 
+        /// <summary>138 - Identidade do diagnóstico de recepção de eventos do CT-e.</summary>
+        [Description("Recepção de eventos do CT-e")]
+        CTeRecepcaoEvento = 138,
+
+        /// <summary>139 - Identidade do diagnóstico de recepção de eventos do MDF-e.</summary>
+        [Description("Recepção de eventos do MDF-e")]
+        MDFeRecepcaoEvento = 139,
+
         #endregion
 
         #region Gerais
@@ -1800,6 +1808,14 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("211110")]
         ApropriacaoCreditoPresumido = 211110,
+
+        /// <summary>412140 - Tributação do Simples Nacional.</summary>
+        [XmlEnum("412140")]
+        TributacaoSimplesNacional = 412140,
+
+        /// <summary>412141 - Cancelamento da tributação do Simples Nacional.</summary>
+        [XmlEnum("412141")]
+        CancelamentoTributacaoSimplesNacional = 412141,
 
         /// <summary>
         /// 0 - Evento desconhecido

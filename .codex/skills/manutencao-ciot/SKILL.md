@@ -13,6 +13,7 @@ Use esta skill para qualquer manutenção do domínio `CIOT` que possa atingir a
 2. Se tocar eFrete, seleção de provedor, schemas compartilhados, transporte ou normalização de retorno, leia [references/efrete.md](references/efrete.md) por completo.
 3. Se tocar o UniNFe, roteamento de arquivos ou configuração da empresa, leia também [references/uninfe.md](references/uninfe.md) por completo.
 4. Para alterar payload, obrigatoriedade, endpoint ou versão eFrete, confira o manual e a lista REST vigentes. O contrato implementado atualmente foi baseado no Manual de Integração eFrete 8.1 e na planilha de URLs REST; não deduza o formato apenas a partir das classes XML.
+5. Se a mudança envolver diagnóstico, sessões, classificação de login ou PDF como evidência de disponibilidade, use também a skill [manutencao-disponibilidade-dfe](../manutencao-disponibilidade-dfe/SKILL.md) e o [contrato específico](../../../.agents/instructions/disponibilidade-dfe.instructions.md). Não alterar normalização/retorno fiscal apenas para tornar o diagnóstico conclusivo.
 
 ## Invariantes de compatibilidade
 
@@ -47,6 +48,7 @@ Não afrouxe o XSD ANTT para acomodar uma regra exclusiva da eFrete. Valide eFre
 - Para retornos, valide propriedades tipadas e o XML final completo, incluindo ordem e grupos repetidos. Não considere suficiente testar somente o mapper isolado.
 - Mantenha pelo menos uma regressão explícita da ANTT ao alterar código compartilhado.
 - Compile a biblioteca principal com `--no-restore` e execute apenas as classes CIOT afetadas pelo runner xUnit v3. Quando a mudança atingir a integração com o UniNFe, gere um pacote offline da DLL, atualize o UniNFe localmente para essa versão e só então rode o filtro CIOT correspondente do `UniNFe.Test` e os builds relevantes.
+- Para mudanças exclusivamente de disponibilidade, o consumidor é o PRO, não a rotina que será retirada do legado. Seguir a validação da skill específica; não modificar/testar o legado por esse motivo nem atualizar um PRO autorizado somente para consulta. Para alterações fiscais CIOT fora do diagnóstico, permanece a validação da integração UniNFe aplicável ao escopo.
 - Execute `INTEROP_Release` quando mudar API pública, enum, coleção, nullable, dependência ou transporte usado pela compilação COM.
 
 Testes reais na homologação eFrete são opcionais, exigem autorização explícita e credenciais fornecidas fora do repositório. Nunca grave ou reproduza segredos em código, massas, logs ou respostas.

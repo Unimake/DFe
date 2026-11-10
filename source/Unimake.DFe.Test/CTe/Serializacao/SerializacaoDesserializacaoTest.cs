@@ -234,6 +234,14 @@ namespace Unimake.DFe.Test.CTe.Serializacao
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
+#if INTEROP
+            // DateTime no COM converte o fuso original para o horário local. Compare os mesmos instantes.
+            foreach (XmlNode data in doc.SelectNodes("//*[local-name()='dhEvento' or local-name()='dhEntrega' or local-name()='dhHashEntrega']"))
+            {
+                data.InnerText = System.DateTimeOffset.Parse(data.InnerText).LocalDateTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
+            }
+#endif
+
             var xml = XMLUtility.Deserializar<EventoCTe>(doc);
             var xmlSerializado = xml.GerarXML();
 

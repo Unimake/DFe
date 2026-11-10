@@ -2641,7 +2641,8 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             if (cst == "00" || cst == "49" || cst == "50" || cst == "99")
             {
                 ipi.IPINT = null;
-                ipi.IPITrib = new DFeNFe.IPITrib { CST = cst };
+                if (ipi.IPITrib == null) ipi.IPITrib = new DFeNFe.IPITrib();
+                ipi.IPITrib.CST = cst;
             }
             else
             {

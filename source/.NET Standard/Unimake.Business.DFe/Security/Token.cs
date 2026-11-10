@@ -78,6 +78,7 @@ namespace Unimake.Business.DFe.Security
             url += postParameter;
             try
             {
+                SessaoObservacaoDisponibilidade.InformarTransporte(url, "REST", "Autenticacao");
                 var request = WebRequest.Create(url);
 
                 request.Method = "POST";
@@ -99,10 +100,12 @@ namespace Unimake.Business.DFe.Security
                 try
                 {
                     response = request.GetResponse();
+                    SessaoObservacaoDisponibilidade.InformarRespostaHttp(((HttpWebResponse)response).StatusCode);
 
                 }
                 catch (WebException e)
                 {
+                    SessaoObservacaoDisponibilidade.InformarFalhaAuxiliar(e);
                     response = e.Response;
                 }
 

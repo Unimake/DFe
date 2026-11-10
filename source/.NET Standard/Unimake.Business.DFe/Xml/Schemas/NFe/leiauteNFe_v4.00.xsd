@@ -58,7 +58,7 @@
 											<xs:documentation>Série do Documento Fiscal</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="nNF" type="TNF">
+									<xs:element name="nNF" type="TNF" minOccurs="0">
 										<xs:annotation>
 											<xs:documentation>Número do Documento Fiscal</xs:documentation>
 										</xs:annotation>

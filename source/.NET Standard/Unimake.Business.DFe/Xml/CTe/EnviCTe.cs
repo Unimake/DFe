@@ -727,6 +727,10 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("gPagAntecipado")]
         public GPagAntecipado GPagAntecipado { get; set; }
 
+        /// <summary>Referência do CT-e para cobrança de multa e juros.</summary>
+        [XmlElement("gMultaJuros")]
+        public GMultaJuros GMultaJuros { get; set; }
+
         #region ShouldSerialize
 
         /// <summary>
@@ -1913,7 +1917,26 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("ISUFEmit")]
         public string ISUFEmit { get; set; }
 
+        /// <summary>
+        /// Regime de apuração do IBS e da CBS.
+        /// </summary>
+        [XmlElement("tpRegimeIBSCBS")]
+#if INTEROP
+        public TipoRegimeIBSCBS TpRegimeIBSCBS { get; set; } = (TipoRegimeIBSCBS)(-1);
+#else
+        public TipoRegimeIBSCBS? TpRegimeIBSCBS { get; set; }
+#endif
+
         #region ShouldSerialize
+
+        /// <summary>
+        /// Verifica se o regime de apuração do IBS e da CBS foi informado.
+        /// </summary>
+#if INTEROP
+        public bool ShouldSerializeTpRegimeIBSCBS() => TpRegimeIBSCBS != (TipoRegimeIBSCBS)(-1);
+#else
+        public bool ShouldSerializeTpRegimeIBSCBS() => TpRegimeIBSCBS.HasValue;
+#endif
 
 #if INTEROP
         /// <summary>
@@ -8026,6 +8049,10 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("gIBSCBS")]
         public GIBSCBS GIBSCBS { get; set; }
 
+        /// <summary>Tributação do IBS e da CBS pelo Simples Nacional.</summary>
+        [XmlElement("gTribSN")]
+        public GTribSN GTribSN { get; set; }
+
         /// <summary>
         /// Estorno de Crédito
         /// </summary>
@@ -8779,5 +8806,177 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => VTribCBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VTribCBS = Converter.ToDouble(value);
         }
+    }
+    /// <summary>
+    /// Tributação do Simples Nacional.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.GTribSN")]
+    [ComVisible(true)]
+#endif
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GTribSN
+    {
+        /// <summary>
+        /// Tributação do IBS.
+        /// </summary>
+        [XmlElement("gIBSSN")]
+        public GIBSSN GIBSSN { get; set; }
+
+        /// <summary>
+        /// Tributação da CBS.
+        /// </summary>
+        [XmlElement("gCBSSN")]
+        public GCBSSN GCBSSN { get; set; }
+    }
+
+    /// <summary>
+    /// IBS do Simples Nacional.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.GIBSSN")]
+    [ComVisible(true)]
+#endif
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GIBSSN
+    {
+        /// <summary>
+        /// Alíquota de pIBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double PIBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de PIBSSN.
+        /// </summary>
+        [XmlElement("pIBSSN")]
+        public string PIBSSNField
+        {
+            get => PIBSSN.ToString("0.00##", CultureInfo.InvariantCulture);
+            set => PIBSSN = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor de vIBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double VIBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de VIBSSN.
+        /// </summary>
+        [XmlElement("vIBSSN")]
+        public string VIBSSNField
+        {
+            get => VIBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSSN = Converter.ToDouble(value);
+        }
+
+    }
+
+    /// <summary>
+    /// CBS do Simples Nacional.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.GCBSSN")]
+    [ComVisible(true)]
+#endif
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GCBSSN
+    {
+        /// <summary>
+        /// Alíquota de pCBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double PCBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de PCBSSN.
+        /// </summary>
+        [XmlElement("pCBSSN")]
+        public string PCBSSNField
+        {
+            get => PCBSSN.ToString("0.00##", CultureInfo.InvariantCulture);
+            set => PCBSSN = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor de vCBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double VCBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de VCBSSN.
+        /// </summary>
+        [XmlElement("vCBSSN")]
+        public string VCBSSNField
+        {
+            get => VCBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSSN = Converter.ToDouble(value);
+        }
+
+    }
+
+    /// <summary>
+    /// Totalização do IBS e CBS do Simples Nacional.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.GTribSNTot")]
+    [ComVisible(true)]
+#endif
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GTribSNTot
+    {
+        /// <summary>
+        /// Valor de vIBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double VIBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de VIBSSN.
+        /// </summary>
+        [XmlElement("vIBSSN")]
+        public string VIBSSNField
+        {
+            get => VIBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSSN = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor de vCBSSN.
+        /// </summary>
+        [XmlIgnore]
+        public double VCBSSN { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização de VCBSSN.
+        /// </summary>
+        [XmlElement("vCBSSN")]
+        public string VCBSSNField
+        {
+            get => VCBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSSN = Converter.ToDouble(value);
+        }
+
+    }
+    /// <summary>CT-e de referência para cobrança de multa e juros.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.GMultaJuros")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GMultaJuros
+    {
+        /// <summary>Chave de acesso do CT-e de referência.</summary>
+        [XmlElement("chCTeRef")]
+        public string ChCTeRef { get; set; }
     }
 }

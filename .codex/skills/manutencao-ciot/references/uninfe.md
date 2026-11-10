@@ -2,6 +2,8 @@
 
 Leia este arquivo quando a manutenção atingir configuração, tarefas ou roteamento de arquivos do UniNFe em `C:\projetos\github\UniNFe`.
 
+Este arquivo trata da integração **fiscal** CIOT do legado. O diagnóstico de disponibilidade ficará no PRO (`C:\projetos\UniNFe.Desktop`); o usuário decidiu retirar essa rotina do legado. Não aplicar o fluxo de atualização/testes abaixo a uma tarefa exclusivamente de diagnóstico. Para esse caso, seguir o [contrato específico](../../../../.agents/instructions/disponibilidade-dfe.instructions.md), respeitando o escopo autorizado do consumidor.
+
 ## Configuração e autenticação
 
 - A empresa guarda `EFreteIntegrador`, `EFreteToken`, `EFreteUsuario` e `EFreteSenha` no `UniNfeConfig.xml` de forma criptografada.

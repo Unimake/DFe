@@ -50,6 +50,17 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         private string NomeTagServico { get; set; }
 
+        // Identidade da operação carregada; alguns enums agrupam serviços com retornos distintos.
+        // Leitura exclusiva do diagnóstico, sem alterar configuração, transporte ou contrato COM.
+        internal string NomeServicoObservacaoDisponibilidade => NomeTagServico;
+
+        // A identidade da fotografia não altera Servico, usado historicamente pelo transporte/configuração.
+        internal Servico ServicoObservacaoDisponibilidade => NomeTagServico == "RecepcaoEvento"
+            ? TipoDFe == TipoDFe.CTe || TipoDFe == TipoDFe.CTeOS ? Servico.CTeRecepcaoEvento
+                : TipoDFe == TipoDFe.MDFe ? Servico.MDFeRecepcaoEvento : Servico
+            : Servico;
+
+
         #endregion 
 
         #region Private Methods
@@ -967,6 +978,9 @@ namespace Unimake.Business.DFe.Servicos
         /// Habilita a coleta passiva e sanitizada de evidências de disponibilidade para esta execução fiscal.
         /// A coleta não cria requisições adicionais e permanece somente em memória.
         /// </summary>
+        /// <remarks>Use com CanalObservacoesDisponibilidade e uma sessão por tentativa. Quando há sessão
+        /// ativa para esta configuração, a operação não alimenta também o histórico anterior.
+        /// Sem sessão, a coleta anterior continua disponível somente para compatibilidade de transição.</remarks>
         public bool ColetarTelemetriaDisponibilidade { get; set; }
 
         /// <summary>

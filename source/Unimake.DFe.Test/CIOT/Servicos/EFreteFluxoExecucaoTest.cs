@@ -11,6 +11,7 @@ using System.Xml;
 using Unimake.Business.DFe.ConsumirServico.Contracts;
 using Unimake.Business.DFe.ConsumirServico.Transport;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CIOT;
 using Xunit;
 using ConsultaServico = Unimake.Business.DFe.Servicos.CIOT.ConsultarCIOTGerado;
@@ -69,12 +70,26 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             configuracao.EFreteToken = null;
             configuracao.EFreteUsuario = "USUARIO-SINTETICO";
             configuracao.EFreteSenha = "SENHA-SINTETICA";
+            configuracao.ColetarTelemetriaDisponibilidade = true;
+            var canal = new CanalObservacoesDisponibilidade();
             var declaracao = LerXML<DeclaracaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\efrete-declaracao-carga-lotacao-completa.xml");
 
             using (ApiTransportExecutorFactory.Override(() => transporte))
             {
-                var primeiroServico = new DeclaracaoServico(declaracao, configuracao);
-                primeiroServico.Executar();
+                DeclaracaoServico primeiroServico;
+                using (var sessao = canal.IniciarOperacao(configuracao, Guid.NewGuid(), Guid.NewGuid()))
+                {
+                    primeiroServico = new DeclaracaoServico(declaracao, configuracao);
+                    primeiroServico.Executar();
+                    sessao.Concluir(primeiroServico.RetornoWSXML, primeiroServico.HttpStatusCode);
+                }
+                Assert.True(canal.TentarLer(out var observacao));
+                Assert.Equal(2, observacao.EntradasTransporte);
+                Assert.Equal("Servico", observacao.Etapa);
+                Assert.Equal(StatusDisponibilidade.Operacional, observacao.Status);
+                Assert.Equal(110, observacao.CodigoRespostaAplicacao);
+                Assert.Equal(0, observacao.CStat);
+                Assert.False(canal.TentarLer(out _));
                 var segundoServico = new DeclaracaoServico(declaracao, configuracao);
                 segundoServico.Executar();
 
@@ -91,6 +106,40 @@ namespace Unimake.DFe.Test.CIOT.Servicos
             Assert.Equal("TOKEN-OBTIDO", JObject.Parse(transporte.Requisicoes[2].Corpo).Value<string>("Token"));
             Assert.DoesNotContain("SENHA-SINTETICA", transporte.Requisicoes[1].Corpo);
             Assert.Equal("TOKEN-OBTIDO", configuracao.EFreteToken);
+        }
+
+        [Theory]
+        [InlineData("{\"Sucesso\":false,\"Excecao\":{\"Mensagem\":\"credenciais secretas\"}}", TipoFalhaDisponibilidade.Autenticacao)]
+        [InlineData("{\"desconhecido\":true}", TipoFalhaDisponibilidade.Protocolo)]
+        [Trait("DFe", "CIOT")]
+        public void LoginObservadoNaoRepeteNegocioNemExibeCredenciais(string resposta, TipoFalhaDisponibilidade tipoFalha)
+        {
+            var transporte = new TransporteControlado();
+            transporte.AdicionarResposta(resposta);
+            var configuracao = CriarConfiguracaoEFrete();
+            configuracao.EFreteToken = null;
+            configuracao.EFreteUsuario = "USUARIO-SINTETICO";
+            configuracao.EFreteSenha = "SENHA-SINTETICA";
+            configuracao.ColetarTelemetriaDisponibilidade = true;
+            var canal = new CanalObservacoesDisponibilidade();
+            using (ApiTransportExecutorFactory.Override(() => transporte))
+            using (var sessao = canal.IniciarOperacao(configuracao, Guid.NewGuid(), Guid.NewGuid()))
+            {
+                var falha = Assert.Throws<InvalidOperationException>(() =>
+                {
+                    var servico = new DeclaracaoServico(LerXML<DeclaracaoOperacaoTransporte>(@"..\..\..\CIOT\Resources\efrete-declaracao-carga-lotacao-completa.xml"), configuracao);
+                    servico.Executar();
+                });
+                sessao.Falhar(falha);
+            }
+            Assert.Single(transporte.Requisicoes);
+            Assert.True(canal.TentarLer(out var item));
+            Assert.Equal(1, item.EntradasTransporte);
+            Assert.Equal("Autenticacao", item.Etapa);
+            Assert.Equal(tipoFalha, item.TipoFalha);
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, item.Status);
+            Assert.DoesNotContain("secretas", item.Limitacao);
+            Assert.DoesNotContain("SENHA", item.Destino);
         }
 
         [Fact]

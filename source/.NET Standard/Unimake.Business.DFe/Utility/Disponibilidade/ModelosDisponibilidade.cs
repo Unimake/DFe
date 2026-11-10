@@ -68,7 +68,9 @@ namespace Unimake.Business.DFe.Utility
         /// <summary>Ocorreu uma falha que ainda não pôde ser enquadrada em outra categoria.</summary>
         Desconhecida = 11,
         /// <summary>O host remoto foi alcançado, mas recusou ativamente a conexão com a porta do serviço.</summary>
-        ConexaoRecusada = 12
+        ConexaoRecusada = 12,
+        /// <summary>O serviço recusou a autenticação ou a autorização de acesso (HTTP 401/403).</summary>
+        Autenticacao = 13
     }
 
     /// <summary>
@@ -208,9 +210,10 @@ namespace Unimake.Business.DFe.Utility
 #endif
     public class ResultadoSondaDisponibilidade
     {
+        internal string IdentidadeEndpoint { get; set; }
         /// <summary>Nome do serviço fiscal ou da etapa local, como DNS, TCP ou StatusServico.</summary>
         public string Servico { get; set; }
-        /// <summary>Endereço sanitizado do serviço, sem usuário, senha, query string ou fragmento.</summary>
+        /// <summary>Esquema, host e porta do serviço, sem usuário, senha, caminho, query ou fragmento.</summary>
         public string Endpoint { get; set; }
         /// <summary>Protocolo usado na evidência, normalmente SOAP, REST, DNS, TCP ou TLS.</summary>
         public string Protocolo { get; set; }
@@ -330,6 +333,10 @@ namespace Unimake.Business.DFe.Utility
 
             if (resultado.OrigemProvavel == OrigemProvavelIndisponibilidade.AmbienteLocal)
             {
+                if (PossuiFalha(resultado, TipoFalhaDisponibilidade.Autenticacao))
+                {
+                    return "O serviço recusou a autenticação ou a autorização de acesso. Revise as credenciais e permissões.";
+                }
                 if (PossuiFalha(resultado, TipoFalhaDisponibilidade.Certificado))
                 {
                     return "Não foi possível acessar a SEFAZ porque o certificado digital não está disponível ou precisa ser revisado.";

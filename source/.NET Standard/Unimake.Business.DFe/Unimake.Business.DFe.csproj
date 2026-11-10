@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-    <AssemblyVersion>2026.11.03.1337</AssemblyVersion>
-    <FileVersion>2026.11.03.1337</FileVersion>
+    <AssemblyVersion>2026.11.08.1207</AssemblyVersion>
+    <FileVersion>2026.11.08.1207</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1711,6 +1711,10 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\TrindadeGO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\ViamaoRS.xml" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evApropriaCredPres_v4.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evTributacaoSN_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evCancTributacaoSN_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evTributacaoSN_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCancTributacaoSN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\evCancTributacaoSN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\evTributacaoSN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />

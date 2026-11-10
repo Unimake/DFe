@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -69,6 +69,7 @@ namespace Unimake.Business.DFe.Security
             var payload = JsonConvert.SerializeObject(new AuthRequest { AppId = appId, Secret = secret });
             var bytes = Encoding.UTF8.GetBytes(payload);
 
+            Utility.SessaoObservacaoDisponibilidade.InformarTransporte(authUrl, "REST", "Autenticacao");
             var request = (HttpWebRequest)WebRequest.Create(authUrl);
             request.Method = "POST";
             request.ContentType = "application/json";
@@ -87,6 +88,7 @@ namespace Unimake.Business.DFe.Security
                 using (var response = (HttpWebResponse)request.GetResponse())
                 using (var reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
                 {
+                    Utility.SessaoObservacaoDisponibilidade.InformarRespostaHttp(response.StatusCode);
                     responseStr = reader.ReadToEnd();
                 }
             }

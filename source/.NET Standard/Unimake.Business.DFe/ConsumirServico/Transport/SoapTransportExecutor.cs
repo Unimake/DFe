@@ -9,7 +9,7 @@ using Unimake.Business.DFe.ConsumirServico.Contracts;
 
 namespace Unimake.Business.DFe.ConsumirServico.Transport
 {
-    internal sealed class SoapTransportExecutor
+    internal sealed class SoapTransportExecutor : ISoapTransportExecutor
     {
         /// <summary>
         /// Executa uma requisição SOAP.
