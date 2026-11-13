@@ -214,8 +214,7 @@ namespace Unimake.Business.DFe
                     throw new Exception($"Não foi possível encontrar a configuração para o tipo de DFe com tag raiz: '{tagRaiz}' ou versão: '{versao}'. Verfique se a versão e/ou tag raiz estão corretas para a validação");
                 }
 
-                AtribuirUrl(servico, codigoUF, configuracao);
-                PrepararUrlsQRCodeBPe(xml, tipoDFe, tagRaiz, versao, configuracao);
+                AtribuirUrl(servico, codigoUF, configuracao, xml);
 
                 // A NT 2026.003 determina que a NF-e com DANFE Simplificado Tipo 2 utilize
                 // as URLs de consulta do Portal Nacional da NFC-e. Mantemos as URLs em uma
@@ -1275,10 +1274,10 @@ namespace Unimake.Business.DFe
             geradorQrCode?.GerarQrCode(xml, configuracao);
         }
 
-        private static void PrepararUrlsQRCodeBPe(XmlDocument xml, TipoDFe tipoDFe, string tagRaiz, string versao, Configuracao configuracao)
+        private static void CompletarUrlQRCodePeloServico(XmlDocument xml, XmlNode servico, XmlNode grupoUrl, Configuracao configuracao)
         {
-            if (tipoDFe != TipoDFe.BPe || (tagRaiz != "BPe" && tagRaiz != "BPeTA")
-                || xml.GetElementsByTagName("infBPeSupl").Count > 0)
+            var tagSuplementar = grupoUrl.Attributes["tagSuplementar"]?.Value;
+            if (!string.IsNullOrWhiteSpace(tagSuplementar) && xml?.GetElementsByTagName(tagSuplementar).Count > 0)
             {
                 return;
             }
@@ -1290,18 +1289,18 @@ namespace Unimake.Business.DFe
                 return;
             }
 
-            // O envio carrega estas URLs antes da validação. A chamada direta deve usar o mesmo catálogo.
+            // Reutiliza o carregador do envio sem alterar o serviço ou as demais opções do consumidor.
             var origem = new Configuracao
             {
-                TipoDFe = TipoDFe.BPe,
+                TipoDFe = configuracao.TipoDFe,
                 CodigoUF = configuracao.CodigoUF,
                 TipoAmbiente = configuracao.TipoAmbiente,
                 TipoEmissao = configuracao.TipoEmissao,
-                SchemaVersao = versao,
+                SchemaVersao = servico.Attributes["versao"]?.Value,
                 BuscarConfiguracaoPastaBase = configuracao.BuscarConfiguracaoPastaBase,
                 PastaArquivoConfiguracao = configuracao.PastaArquivoConfiguracao
             };
-            origem.Load("Autorizacao" + tagRaiz);
+            origem.Load(grupoUrl.Attributes["servicoConfiguracao"].Value);
             if (configuracao.TipoAmbiente == TipoAmbiente.Homologacao)
             {
                 configuracao.UrlQrCodeHomologacao = origem.UrlQrCodeHomologacao;
@@ -1312,8 +1311,15 @@ namespace Unimake.Business.DFe
             }
         }
 
-        private static void AtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao)
+        private static void AtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao, XmlDocument xml = null)
         {
+            var grupoUrl = servico?.SelectSingleNode("GrupoUrl");
+            if (!string.IsNullOrWhiteSpace(grupoUrl?.Attributes?["servicoConfiguracao"]?.Value))
+            {
+                CompletarUrlQRCodePeloServico(xml, servico, grupoUrl, configuracao);
+                return;
+            }
+
             foreach (XmlNode grupoUF in servico?.SelectNodes("GrupoUrl/Grupo"))
             {
                 foreach (XmlNode uf in grupoUF.SelectNodes("UF"))

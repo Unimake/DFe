@@ -3141,6 +3141,8 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
+			<!-- Completa a URL ausente pelo catálogo do envio, preservando o suplemento informado. -->
+			<GrupoUrl servicoConfiguracao="AutorizacaoBPe" tagSuplementar="infBPeSupl"/>
 		</Servico>
 		<Servico tagRaiz="BPeTM" versao="1.00">
 			<Descricao>Autorização do Bilhete de Passagem Eletrônico Transporte Metropolitano</Descricao>
@@ -3167,6 +3169,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl servicoConfiguracao="AutorizacaoBPeTA" tagSuplementar="infBPeSupl"/>
 		</Servico>
 	</BPe>
 	<!--DCe-->
