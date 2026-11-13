@@ -4,9 +4,11 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
+using System.Text;
 using System.Xml;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.BPe;
 using Unimake.Business.DFe.Utility;
 using Xunit;
 
@@ -47,6 +49,59 @@ namespace Unimake.DFe.Test.BPe.BugFixes
             Assert.Equal(ambiente == TipoAmbiente.Homologacao ? esperado.UrlQrCodeHomologacao : esperado.UrlQrCodeProducao, uri.GetLeftPart(UriPartial.Path));
             Assert.Contains("&tpAmb=" + (int)ambiente, qr);
             Assert.Equal(TipoDFe.NFe, configuracao.TipoDFe);
+        }
+
+        [Theory]
+        [MemberData(nameof(Documentos))]
+        public void InicializacaoDoServico_DeveGerarMesmoXmlDaValidacaoDireta(string raiz, UFBrasil uf, TipoAmbiente ambiente)
+        {
+            var xml = CriarXml(raiz, uf, ambiente);
+            var configuracaoDireta = CriarConfiguracao(_certificado, uf, ambiente);
+            var configuracaoEnvio = CriarConfiguracao(_certificado, uf, ambiente);
+            var resultado = new ValidarEstruturaXML().ValidarServico((XmlDocument)xml.CloneNode(true), configuracaoDireta);
+
+            using (var autorizacao = raiz == "BPe"
+                ? (Business.DFe.Servicos.ServicoBase)new AutorizacaoBPe(xml.OuterXml, configuracaoEnvio)
+                : new AutorizacaoBPeTA(xml.OuterXml, configuracaoEnvio))
+            {
+                ConferirAssinatura(resultado);
+                ConferirAssinaturaXml(autorizacao.ConteudoXMLAssinado);
+                Assert.Equal(resultado.XmlAssinado.OuterXml, autorizacao.ConteudoXMLAssinado.OuterXml);
+                Assert.Equal(TipoDFe.BPe, configuracaoEnvio.TipoDFe);
+                Assert.Equal(raiz == "BPe" ? Servico.BPeAutorizacao : Servico.BPeTAAutorizacao, configuracaoEnvio.Servico);
+            }
+        }
+
+        [Theory]
+        [InlineData("BPe", TipoAmbiente.Homologacao)]
+        [InlineData("BPe", TipoAmbiente.Producao)]
+        [InlineData("BPeTA", TipoAmbiente.Homologacao)]
+        [InlineData("BPeTA", TipoAmbiente.Producao)]
+        public void ContingenciaERevalidacao_DevemPreservarQRCodeEAssinaturas(string raiz, TipoAmbiente ambiente)
+        {
+            var xml = CriarXml(raiz, UFBrasil.PR, ambiente, TipoEmissaoBPe.ContingenciaOffLine);
+            var configuracao = CriarConfiguracao(_certificado, UFBrasil.PR, ambiente);
+            configuracao.TipoEmissao = (TipoEmissao)(int)TipoEmissaoBPe.ContingenciaOffLine;
+            var validador = new ValidarEstruturaXML();
+            var resultado = validador.ValidarServico(xml, configuracao);
+
+            ConferirAssinatura(resultado);
+            var qr = Assert.Single(xml.GetElementsByTagName("qrCodBPe").OfType<XmlNode>()).InnerText;
+            var chave = ((XmlElement)xml.GetElementsByTagName("infBPe")[0]).GetAttribute("Id").Substring(3);
+            var posicaoAssinatura = qr.IndexOf("&sign=", StringComparison.Ordinal);
+            Assert.True(posicaoAssinatura > 0);
+            using (var chavePublica = _certificado.GetRSAPublicKey())
+            {
+                Assert.True(chavePublica.VerifyData(Encoding.UTF8.GetBytes(chave), Convert.FromBase64String(qr.Substring(posicaoAssinatura + 6)), HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1));
+            }
+
+            var original = xml.OuterXml;
+            var revalidado = validador.ValidarServico(xml, configuracao);
+
+            ConferirAssinatura(revalidado);
+            Assert.Equal(original, revalidado.XmlAssinado.OuterXml);
+            var suplemento = Assert.Single(xml.GetElementsByTagName("infBPeSupl").OfType<XmlNode>());
+            Assert.Equal("Signature", suplemento.NextSibling.LocalName);
         }
 
         [Theory]
@@ -98,6 +153,34 @@ namespace Unimake.DFe.Test.BPe.BugFixes
             var resultado = new ValidarEstruturaXML().ValidarServico(CriarXml(raiz, UFBrasil.PR, TipoAmbiente.Homologacao), configuracao);
             ConferirAssinatura(resultado);
             Assert.StartsWith(configuracao.UrlQrCodeHomologacao + "?", resultado.XmlAssinado.GetElementsByTagName("qrCodBPe")[0].InnerText);
+        }
+
+        [Theory]
+        [InlineData("BPe", TipoAmbiente.Homologacao)]
+        [InlineData("BPe", TipoAmbiente.Producao)]
+        [InlineData("BPeTA", TipoAmbiente.Homologacao)]
+        [InlineData("BPeTA", TipoAmbiente.Producao)]
+        public void UrlDeOutroAmbiente_NaoDeveImpedirBuscaOuSerAlterada(string raiz, TipoAmbiente ambiente)
+        {
+            const string urlOutroAmbiente = "https://outro-ambiente.example.invalid/bpe";
+            var configuracao = CriarConfiguracao(_certificado, UFBrasil.PR, ambiente);
+            configuracao.Servico = Servico.NFeConsultaProtocolo;
+            configuracao.SchemaVersao = "VERSAO DO CONSUMIDOR";
+            if (ambiente == TipoAmbiente.Homologacao) configuracao.UrlQrCodeProducao = urlOutroAmbiente;
+            else configuracao.UrlQrCodeHomologacao = urlOutroAmbiente;
+
+            var resultado = new ValidarEstruturaXML().ValidarServico(CriarXml(raiz, UFBrasil.PR, ambiente), configuracao);
+
+            ConferirAssinatura(resultado);
+            var qr = resultado.XmlAssinado.GetElementsByTagName("qrCodBPe")[0].InnerText;
+            var urlAtual = ambiente == TipoAmbiente.Homologacao ? configuracao.UrlQrCodeHomologacao : configuracao.UrlQrCodeProducao;
+            Assert.False(string.IsNullOrWhiteSpace(urlAtual));
+            Assert.StartsWith(urlAtual + "?", qr);
+            Assert.DoesNotContain("example.invalid", qr);
+            Assert.Equal(urlOutroAmbiente, ambiente == TipoAmbiente.Homologacao ? configuracao.UrlQrCodeProducao : configuracao.UrlQrCodeHomologacao);
+            Assert.Equal(Servico.NFeConsultaProtocolo, configuracao.Servico);
+            Assert.Equal("VERSAO DO CONSUMIDOR", configuracao.SchemaVersao);
+            Assert.Equal(TipoDFe.NFe, configuracao.TipoDFe);
         }
 
         [Theory]
@@ -244,8 +327,13 @@ namespace Unimake.DFe.Test.BPe.BugFixes
         {
             Assert.True(resultado.Validado, resultado.MensagemRetorno);
             Assert.Equal("1", resultado.StatusValidacao);
-            var signature = Assert.IsType<XmlElement>(resultado.XmlAssinado.GetElementsByTagName("Signature", SignedXml.XmlDsigNamespaceUrl)[0]);
-            var signed = new SignedXml(resultado.XmlAssinado);
+            ConferirAssinaturaXml(resultado.XmlAssinado);
+        }
+
+        private static void ConferirAssinaturaXml(XmlDocument xml)
+        {
+            var signature = Assert.Single(xml.GetElementsByTagName("Signature", SignedXml.XmlDsigNamespaceUrl).OfType<XmlElement>());
+            var signed = new SignedXml(xml);
             signed.LoadXml(signature);
             Assert.True(signed.CheckSignature());
         }
@@ -255,7 +343,7 @@ namespace Unimake.DFe.Test.BPe.BugFixes
             CertificadoDigital = certificado, CodigoUF = (int)uf, TipoAmbiente = ambiente, TipoEmissao = TipoEmissao.Normal, TipoDFe = TipoDFe.NFe
         };
 
-        private static XmlDocument CriarXml(string raiz, UFBrasil uf, TipoAmbiente ambiente)
+        private static XmlDocument CriarXml(string raiz, UFBrasil uf, TipoAmbiente ambiente, TipoEmissaoBPe emissao = TipoEmissaoBPe.Normal)
         {
             var arquivo = raiz == "BPe" ? "bpe_minimo.xml" : raiz == "BPeTA" ? "bpeTA_minimo.xml" : "bpeTM_minimo.xml";
             var xml = new XmlDocument { XmlResolver = null };
@@ -264,12 +352,19 @@ namespace Unimake.DFe.Test.BPe.BugFixes
             {
                 var modelo = XMLUtility.Deserializar<Business.DFe.Xml.BPe.BPe>(xml);
                 modelo.Signature = null; modelo.InfBPeSupl = null; modelo.InfBPe.Ide.CUF = uf; modelo.InfBPe.Ide.TpAmb = ambiente; modelo.InfBPe.Id = null;
+                modelo.InfBPe.Ide.TpEmis = emissao;
+                if (emissao == TipoEmissaoBPe.ContingenciaOffLine)
+                {
+                    modelo.InfBPe.Ide.DhContField = modelo.InfBPe.Ide.DhEmiField;
+                    modelo.InfBPe.Ide.XJust = "CONTINGENCIA SINTETICA PARA TESTE OFFLINE";
+                }
                 return modelo.GerarXML();
             }
             if (raiz == "BPeTA")
             {
                 var modelo = XMLUtility.Deserializar<Business.DFe.Xml.BPeTA.BPeTA>(xml);
                 modelo.Signature = null; modelo.InfBPeSupl = null; modelo.InfBPe.Ide.CUF = uf; modelo.InfBPe.Ide.TpAmb = ambiente; modelo.InfBPe.Id = null;
+                modelo.InfBPe.Ide.TpEmis = emissao;
                 return modelo.GerarXML();
             }
             var metropolitano = XMLUtility.Deserializar<Business.DFe.Xml.BPeTM.BPeTM>(xml);
