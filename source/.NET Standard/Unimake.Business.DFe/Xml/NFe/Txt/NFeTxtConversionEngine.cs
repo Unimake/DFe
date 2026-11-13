@@ -104,6 +104,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 { "C02", _ => this.ProcessarDocumentoEmitente() },
                 { "C02A", _ => this.ProcessarCpfEmitente() },
                 { "C05", _ => this.ProcessarEnderecoEmitente() },
+                { "C21", _ => this.ProcessarRegimeIbsCbsEmitente() },
                 { "D", _ => this.ProcessarNotaAvulsa() },
                 { "E", _ => this.ProcessarDestinatario() },
                 { "E02", _ => this.ProcessarDocumentoDestinatario() },
@@ -131,6 +132,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 { "I05C", this.ProcessarCestProduto },
                 { "I05W", this.ProcessarCestProduto },
                 { "I17", (nProd, _) => this.ProcessarBemMovelUsado(nProd) },
+                { "I17A", (nProd, _) => this.ProcessarAtividadeSimplesNacional(nProd) },
                 { "I18", this.AdicionarDeclaracaoImportacao },
                 { "I25", (nProd, _) => this.AdicionarAdicaoImportacao(nProd) },
                 { "I50", (nProd, _) => this.AdicionarDetalheExportacao(nProd) },
@@ -240,6 +242,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 { "UB123", this.ProcessarCreditoPresumidoIbs },
                 { "UB127", this.ProcessarCreditoPresumidoCbs },
                 { "UB131", this.ProcessarCreditoPresumidoZfm },
+                { "UB132", (nProd, _) => this.ProcessarTributacaoSimplesNacional(nProd) },
                 { "W02", this.ProcessarTotaisIcms },
                 { "W01A", (nProd, _) => this.ProcessarValorLiquidoTotal() },
                 { "W04", this.ProcessarTotaisIcmsSt },
@@ -253,6 +256,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 { "W50", this.ProcessarTotaisIcmsUfDest },
                 { "W57", this.ProcessarTotaisFcpUfDest },
                 { "W59E", this.ProcessarTotaisFcpUfRemet },
+                { "W59F", (nProd, _) => this.ProcessarTotalTributacaoSimplesNacional() },
                 { "W60", this.ProcessarTotaisIbsCbs },
                 { "VA02", this.ProcessarObservacaoContribuinte },
                 { "VA05", this.ProcessarObservacaoFisco },
@@ -1281,6 +1285,17 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             this.nfeOficial.InfNFeField.Emit.ISUFEmit = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.ISUFEmit)), ObOp.Opcional, 8, 9));
         }
 
+        private void ProcessarRegimeIbsCbsEmitente()
+        {
+            var codigo = this.LerString(XmlTag<DFeNFe.Emit>(nameof(DFeNFe.Emit.TpRegimeIBSCBS)), ObOp.Obrigatorio, 1, 1);
+            if (codigo != "1" && codigo != "2" && codigo != "3" && codigo != "4")
+            {
+                throw new InvalidOperationException("C21: tpRegimeIBSCBS deve ser 1, 2, 3 ou 4.");
+            }
+
+            this.nfeOficial.InfNFeField.Emit.TpRegimeIBSCBS = (TipoRegimeIBSCBS)int.Parse(codigo, CultureInfo.InvariantCulture);
+        }
+
         private void ProcessarDocumentoEmitente()
         {
             this.nfeOficial.InfNFeField.Emit.CNPJ = this.LerString(XmlTag<DFeNFe.RefNF>(nameof(DFeNFe.RefNF.CNPJ)), ObOp.Obrigatorio, 14, 14);
@@ -1640,6 +1655,17 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             produto.XPed = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.XPed)), ObOp.Opcional, 1, 15));
             produto.NItemPed = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.NItemPed)), ObOp.Opcional, 0, 6));
             produto.NFCI = VazioParaNulo(this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.NFCI)), ObOp.Opcional, 0, 255));
+        }
+
+        private void ProcessarAtividadeSimplesNacional(int nProd)
+        {
+            var codigo = this.LerString(XmlTag<DFeNFe.Prod>(nameof(DFeNFe.Prod.CAtivSN)), ObOp.Obrigatorio, 2, 2);
+            if (codigo != "01" && codigo != "02" && codigo != "03" && codigo != "04" && codigo != "90")
+            {
+                throw new InvalidOperationException("I17A: cAtivSN deve ser 01, 02, 03, 04 ou 90.");
+            }
+
+            detalhesOficiais[nProd].Prod.CAtivSN = (CodigoAtividadeSimplesNacional)int.Parse(codigo, CultureInfo.InvariantCulture);
         }
 
         private void AdicionarCreditoPresumido(int nProd)
@@ -3715,6 +3741,39 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             };
         }
 
+        private void ProcessarTributacaoSimplesNacional(int nProd)
+        {
+            var campos = Registro.Split('|');
+            var ibsInformado = campos.Length > 2 &&
+                (!string.IsNullOrWhiteSpace(campos[1]) || !string.IsNullOrWhiteSpace(campos[2]));
+            if (ibsInformado && (string.IsNullOrWhiteSpace(campos[1]) || string.IsNullOrWhiteSpace(campos[2])))
+            {
+                throw new InvalidOperationException("UB132: pIBSSN e vIBSSN devem ser informados juntos ou ambos omitidos.");
+            }
+
+            var grupo = new DFeNFe.GTribSN();
+            if (ibsInformado)
+            {
+                grupo.GIBSSN = new DFeNFe.GIBSSN
+                {
+                    PIBSSN = this.LerDouble(TpcnTipoCampo.tcDouble4, "pIBSSN", ObOp.Obrigatorio, 1, 8),
+                    VIBSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, "vIBSSN", ObOp.Obrigatorio, 1, 15)
+                };
+            }
+            else
+            {
+                this.LerString("pIBSSN", ObOp.Opcional, 0, 8);
+                this.LerString("vIBSSN", ObOp.Opcional, 0, 15);
+            }
+
+            grupo.GCBSSN = new DFeNFe.GCBSSN
+            {
+                PCBSSN = this.LerDouble(TpcnTipoCampo.tcDouble4, "pCBSSN", ObOp.Obrigatorio, 1, 8),
+                VCBSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, "vCBSSN", ObOp.Obrigatorio, 1, 15)
+            };
+            ObterIBSCBS(nProd).GTribSN = grupo;
+        }
+
         private void ProcessarCreditoPresumidoOperacao(int nProd, int lenPipesRegistro)
         {
             var credito = ObterGCredPresOper(nProd);
@@ -3946,6 +4005,15 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                         VIBSEstCred = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GEstornoCred>(nameof(DFeNFe.GEstornoCred.VIBSEstCred)), ObOp.Opcional, 1, 13),
                         VCBSEstCred = this.LerDouble(TpcnTipoCampo.tcDouble2, XmlTag<DFeNFe.GEstornoCred>(nameof(DFeNFe.GEstornoCred.VCBSEstCred)), ObOp.Opcional, 1, 13)
                     };
+        }
+
+        private void ProcessarTotalTributacaoSimplesNacional()
+        {
+            totalOficial.IBSCBSTot.GTribSN = new DFeNFe.GTribSNTot
+            {
+                VIBSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, "vIBSSN", ObOp.Obrigatorio, 1, 15),
+                VCBSSN = this.LerDouble(TpcnTipoCampo.tcDouble2, "vCBSSN", ObOp.Obrigatorio, 1, 15)
+            };
         }
 
         private void ProcessarTotaisIbsCbs(int nProd, int lenPipesRegistro)

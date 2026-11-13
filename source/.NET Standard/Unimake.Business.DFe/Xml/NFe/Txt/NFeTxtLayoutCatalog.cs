@@ -39,6 +39,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     layouts.Add("C02", prefix + "C02|CNPJ|");
                     layouts.Add("C02A", prefix + "C02a|CPF|");
                     layouts.Add("C05", prefix + "C05|xLgr|nro|xCpl|xBairro|cMun|xMun|UF|CEP|cPais|xPais|fone|");
+                    layouts.Add("C21", prefix + "C21|tpRegimeIBSCBS|");
                     // "D"
                     layouts.Add("D", prefix + "D|CNPJ|xOrgao|matr|xAgente|fone|UF|nDAR|dEmi|vDAR|repEmi|dPag|");
                     // "E"
@@ -77,6 +78,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     layouts.Add("I05C", prefix + "I05c|CEST|");
                     layouts.Add("I05C_4", prefix + "I05c|CEST|indEscala|CNPJFab|");
                     layouts.Add("I17", prefix + "I17|indBemMovelUsado|"); // prod->indBemMovelUsado (IBSCBS)
+                    layouts.Add("I17A", prefix + "I17A|cAtivSN|");
                     layouts.Add("I18_400_12", prefix + "I18|nDI|dDI|xLocDesemb|UFDesemb|dDesemb|tpViaTransp|vAFRMM|tpIntermedio|CNPJ|UFTerceiro|cExportador|");
                     layouts.Add("I18_400_13", prefix + "I18|nDI|dDI|xLocDesemb|UFDesemb|dDesemb|tpViaTransp|vAFRMM|tpIntermedio|CNPJ|CPF|UFTerceiro|cExportador|");
                     layouts.Add("I25_400", prefix + "I25|NAdicao|NSeqAdic|CFabricante|VDescDI|nDraw|");
@@ -258,6 +260,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     layouts.Add("UB127", prefix + "UB127|pCredPres|vCredPres|vCredPresCondSus|");
 
                     layouts.Add("UB131", prefix + "UB131|competApur|tpCredPresIBSZFM|vCredPresIBSZFM|");
+                    layouts.Add("UB132", prefix + "UB132|pIBSSN|vIBSSN|pCBSSN|vCBSSN|"); // IBSCBS->gTribSN
 
 
                     // "V":
@@ -286,6 +289,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     layouts.Add("W50", prefix + "W50|vDif|vDevTrib|vCBS|vCredPres|vCredPresCondSus|"); //IBSCBSTot -> gCBS
                     layouts.Add("W57", prefix + "W57|vIBSMono|vCBSMono|vIBSMonoReten|vCBSMonoReten|vIBSMonoRet|vCBSMonoRet|"); //IBSCBSTot -> gMono
                     layouts.Add("W59E", prefix + "W59e|vIBSEstCred|vCBSEstCred|");
+                    layouts.Add("W59F", prefix + "W59F|vIBSSN|vCBSSN|"); // IBSCBSTot->gTribSN
                     layouts.Add("W60", prefix + "W60|vNFTot|"); //Total -> vNFTot
 
                     // "X":
