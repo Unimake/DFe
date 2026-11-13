@@ -1422,10 +1422,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("CRT", Order = 9)]
         public CRT CRT { get; set; }
 
+        /// <summary>Tipo de regime de apuração do IBS e da CBS.</summary>
+        [XmlElement("tpRegimeIBSCBS", Order = 10)]
+#if INTEROP
+        public TipoRegimeIBSCBS TpRegimeIBSCBS { get; set; } = (TipoRegimeIBSCBS)(-1);
+#else
+        public TipoRegimeIBSCBS? TpRegimeIBSCBS { get; set; }
+#endif
+
         /// <summary>
         /// Inscrição do emitente na Suframa
         /// </summary>
-        [XmlElement("ISUFEmit", Order = 10)]
+        [XmlElement("ISUFEmit", Order = 11)]
         public string ISUFEmit { get; set; }
 
         #region ShouldSerialize
@@ -1441,6 +1449,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeCNAE() => !string.IsNullOrWhiteSpace(CNAE) && !string.IsNullOrWhiteSpace(IM);
 
         public bool ShouldSerializeISUFEmit() => !string.IsNullOrWhiteSpace(ISUFEmit);
+
+#if INTEROP
+        public bool ShouldSerializeTpRegimeIBSCBS() => TpRegimeIBSCBS != (TipoRegimeIBSCBS)(-1);
+#else
+        public bool ShouldSerializeTpRegimeIBSCBS() => TpRegimeIBSCBS.HasValue;
+#endif
 
         #endregion
     }
@@ -2602,82 +2616,90 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("indBemMovelUsado", Order = 30)]
         public int IndBemMovelUsado { get; set; }
 
+        /// <summary>Código de atividade do Simples Nacional.</summary>
+        [XmlElement("cAtivSN", Order = 31)]
+#if INTEROP
+        public CodigoAtividadeSimplesNacional CAtivSN { get; set; } = (CodigoAtividadeSimplesNacional)(-1);
+#else
+        public CodigoAtividadeSimplesNacional? CAtivSN { get; set; }
+#endif
+
         /// <summary>
         /// Declaração de Importação
         /// </summary>
-        [XmlElement("DI", Order = 31)]
+        [XmlElement("DI", Order = 32)]
         public List<DI> DI { get; set; }
 
         /// <summary>
         /// Detalhe da exportação
         /// </summary>
-        [XmlElement("detExport", Order = 32)]
+        [XmlElement("detExport", Order = 33)]
         public List<DetExport> DetExport { get; set; }
 
         /// <summary>
         /// Pedido de compra - Informação de interesse do emissor para controle do B2B
         /// </summary>
-        [XmlElement("xPed", Order = 33)]
+        [XmlElement("xPed", Order = 34)]
         public string XPed { get; set; }
 
         /// <summary>
         /// Número do Item do Pedido de Compra - Identificação do número do item do pedido de Compra
         /// </summary>
-        [XmlElement("nItemPed", Order = 34)]
+        [XmlElement("nItemPed", Order = 35)]
         public string NItemPed { get; set; }
 
         /// <summary>
         /// Número de controle da FCI - Ficha de Conteúdo de Importação
         /// </summary>
-        [XmlElement("nFCI", Order = 35)]
+        [XmlElement("nFCI", Order = 36)]
         public string NFCI { get; set; }
 
         /// <summary>
         /// Grupo de informações de rastreabilidade
         /// </summary>
-        [XmlElement("rastro", Order = 36)]
+        [XmlElement("rastro", Order = 37)]
         public List<Rastro> Rastro { get; set; }
 
         /// <summary>
         /// Informações mais detalhadas do produto
         /// </summary>
-        [XmlElement("infProdNFF", Order = 37)]
+        [XmlElement("infProdNFF", Order = 38)]
         public InfProdNFF InfProdNFF { get; set; }
 
         /// <summary>
         /// Informações mais detalhadas do produto
         /// </summary>
-        [XmlElement("infProdEmb", Order = 38)]
+        [XmlElement("infProdEmb", Order = 39)]
         public InfProdEmb InfProdEmb { get; set; }
 
         /// <summary>
         /// Veículos novos
         /// </summary>
-        [XmlElement("veicProd", Order = 39)]
+        [XmlElement("veicProd", Order = 40)]
         public VeicProd VeicProd { get; set; }
 
         /// <summary>
         /// Grupo do detalhamento de Medicamentos e de matérias-primas farmacêuticas
         /// </summary>
-        [XmlElement("med", Order = 40)]
+        [XmlElement("med", Order = 41)]
         public Med Med { get; set; }
 
         /// <summary>
         /// Armamentos
         /// </summary>
-        [XmlElement("arma", Order = 41)]
+        [XmlElement("arma", Order = 42)]
         public List<Arma> Arma { get; set; }
 
         /// <summary>
         /// Informar apenas para operações com combustíveis líquidos
         /// </summary>
-        [XmlElement("comb", Order = 42)]
+        [XmlElement("comb", Order = 43)]
         public List<Comb> Comb { get; set; }
 
         /// <summary>
         /// Número do RECOPI
         /// </summary>
-        [XmlElement("nRECOPI", Order = 43)]
+        [XmlElement("nRECOPI", Order = 44)]
         public string NRECOPI { get; set; }
 
         #region ShouldSerialize
@@ -2715,6 +2737,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeCBarraTrib() => !string.IsNullOrWhiteSpace(CBarraTrib);
 
         public bool ShouldSerializeIndBemMovelUsado() => IndBemMovelUsado == 1;
+
+#if INTEROP
+        public bool ShouldSerializeCAtivSN() => CAtivSN != (CodigoAtividadeSimplesNacional)(-1);
+#else
+        public bool ShouldSerializeCAtivSN() => CAtivSN.HasValue;
+#endif
 
 #if INTEROP
         public bool ShouldSerializeTpCredPresIBSZFM() => TpCredPresIBSZFM != (TipoCreditoPresumidoIBSZFM)(-1);
@@ -13358,19 +13386,23 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("gAjusteCompet", Order = 6)]
         public GAjusteCompet GAjusteCompet { get; set; }
 
+        /// <summary>Composição do IBS e da CBS para os optantes do Simples Nacional.</summary>
+        [XmlElement("gTribSN", Order = 7)]
+        public GTribSN GTribSN { get; set; }
+
         /// <summary>
         /// Estorno de Crédito
         /// </summary>
-        [XmlElement("gEstornoCred", Order = 7)]
+        [XmlElement("gEstornoCred", Order = 8)]
         public GEstornoCred GEstornoCred { get; set; }
 
         /// <summary>
         /// Crédito Presumido da Operação
         /// </summary>
-        [XmlElement("gCredPresOper", Order = 8)]
+        [XmlElement("gCredPresOper", Order = 9)]
         public GCredPresOper GCredPresOper { get; set; }
 
-        [XmlElement("gCredPresIBSZFM", Order = 9)]
+        [XmlElement("gCredPresIBSZFM", Order = 10)]
         public GCredPresIBSZFM GCredPresIBSZFM { get; set; }
 
         #region ShouldSerialize
@@ -14927,6 +14959,10 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         [XmlElement("gEstornoCred", Order = 4)]
         public GEstornoCred GEstornoCred { get; set; }
+
+        /// <summary>Totais do IBS e da CBS para os optantes do Simples Nacional.</summary>
+        [XmlElement("gTribSN", Order = 5)]
+        public GTribSNTot GTribSN { get; set; }
     }
 
     /// <summary>
@@ -15692,6 +15728,124 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             get => VTribCBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VTribCBS = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>Composição do IBS e da CBS do Simples Nacional por item.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GTribSN")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GTribSN
+    {
+        /// <summary>Composição do IBS para o Simples Nacional, quando informada.</summary>
+        [XmlElement("gIBSSN", Order = 0)]
+        public GIBSSN GIBSSN { get; set; }
+
+        /// <summary>Composição da CBS para o Simples Nacional.</summary>
+        [XmlElement("gCBSSN", Order = 1)]
+        public GCBSSN GCBSSN { get; set; }
+    }
+    /// <summary>Composição do IBS para o Simples Nacional.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GIBSSN")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GIBSSN
+    {
+        /// <summary>Alíquota efetiva do IBS para os optantes do Simples Nacional.</summary>
+        [XmlIgnore]
+        public double PIBSSN { get; set; }
+
+        /// <summary>Propriedade auxiliar para serialização/desserialização de PIBSSN.</summary>
+        [XmlElement("pIBSSN", Order = 0)]
+        public string PIBSSNField
+        {
+            get => PIBSSN.ToString("0.00##", CultureInfo.InvariantCulture);
+            set => PIBSSN = Converter.ToDouble(value);
+        }
+        /// <summary>Valor do IBS para os optantes do Simples Nacional.</summary>
+        [XmlIgnore]
+        public double VIBSSN { get; set; }
+
+        /// <summary>Propriedade auxiliar para serialização/desserialização de VIBSSN.</summary>
+        [XmlElement("vIBSSN", Order = 1)]
+        public string VIBSSNField
+        {
+            get => VIBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSSN = Converter.ToDouble(value);
+        }
+    }
+    /// <summary>Composição da CBS para o Simples Nacional.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GCBSSN")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GCBSSN
+    {
+        /// <summary>Alíquota efetiva da CBS para os optantes do Simples Nacional.</summary>
+        [XmlIgnore]
+        public double PCBSSN { get; set; }
+
+        /// <summary>Propriedade auxiliar para serialização/desserialização de PCBSSN.</summary>
+        [XmlElement("pCBSSN", Order = 0)]
+        public string PCBSSNField
+        {
+            get => PCBSSN.ToString("0.00##", CultureInfo.InvariantCulture);
+            set => PCBSSN = Converter.ToDouble(value);
+        }
+        /// <summary>Valor da CBS para os optantes do Simples Nacional.</summary>
+        [XmlIgnore]
+        public double VCBSSN { get; set; }
+
+        /// <summary>Propriedade auxiliar para serialização/desserialização de VCBSSN.</summary>
+        [XmlElement("vCBSSN", Order = 1)]
+        public string VCBSSNField
+        {
+            get => VCBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSSN = Converter.ToDouble(value);
+        }
+    }
+    /// <summary>Totais da composição do IBS e da CBS do Simples Nacional.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GTribSNTot")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GTribSNTot
+    {
+        /// <summary>Valor total do IBS para os optantes do Simples Nacional.</summary>
+        [XmlIgnore]
+        public double VIBSSN { get; set; }
+
+        /// <summary>Propriedade auxiliar para serialização/desserialização de VIBSSN.</summary>
+        [XmlElement("vIBSSN", Order = 0)]
+        public string VIBSSNField
+        {
+            get => VIBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSSN = Converter.ToDouble(value);
+        }
+        /// <summary>Valor total da CBS para os optantes do Simples Nacional.</summary>
+        [XmlIgnore]
+        public double VCBSSN { get; set; }
+
+        /// <summary>Propriedade auxiliar para serialização/desserialização de VCBSSN.</summary>
+        [XmlElement("vCBSSN", Order = 1)]
+        public string VCBSSNField
+        {
+            get => VCBSSN.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSSN = Converter.ToDouble(value);
         }
     }
 }

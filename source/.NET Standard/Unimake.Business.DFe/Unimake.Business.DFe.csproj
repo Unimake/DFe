@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-    <AssemblyVersion>2026.11.08.1207</AssemblyVersion>
-    <FileVersion>2026.11.08.1207</FileVersion>
+    <AssemblyVersion>2026.11.13.1344</AssemblyVersion>
+    <FileVersion>2026.11.13.1344</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1230,6 +1230,7 @@
 		<None Remove="Xml\Schemas\NFe\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\DFeTiposBasicos_v1.00_monofasia_legado.xsd" />
 		<None Remove="Xml\Schemas\NFe\consReciNFe_v4.00_monofasia_legado.xsd" />
+		<None Remove="Xml\Schemas\NFe\e412140_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\enviNFe_v4.00_monofasia_legado.xsd" />
 		<None Remove="Xml\Schemas\NFe\leiauteNFe_v4.00_monofasia_legado.xsd" />
 		<None Remove="Xml\Schemas\NFe\nfe_v4.00_monofasia_legado.xsd" />
@@ -1717,6 +1718,7 @@
 		<EmbeddedResource Include="Xml\Schemas\CTe\evCancTributacaoSN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\evCancTributacaoSN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\evTributacaoSN_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e412140_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GISSONLINE\xmldsig-core-schema20020212-RTC.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />

@@ -834,6 +834,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoSolicitacaoApropriacaoCreditoBensServicosAdquirente();
                         break;                        
 
+                    case TipoEventoNFe.Evento412140:
+                        _detEvento = new DetEventoTributacaoSN();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -5990,5 +5994,425 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VCredCBS.ToString("F2", CultureInfo.InvariantCulture);
             set => VCredCBS = Converter.ToDouble(value);
         }
+    }
+
+    /// <summary>Detalhamento do evento 412140 de tributação do Simples Nacional.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoTributacaoSN")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot("detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class DetEventoTributacaoSN : EventoDetalhe
+    {
+        private const string NamespaceEvento = "http://www.portalfiscal.inf.br/nfe";
+        private static readonly XmlSerializer SerializadorItem = new XmlSerializer(typeof(GTribItemSN),
+            new XmlRootAttribute("gTribItemSN") { Namespace = NamespaceEvento });
+        private static readonly XmlSerializer SerializadorTotal = new XmlSerializer(typeof(GTotalSN),
+            new XmlRootAttribute("gTotalSN") { Namespace = NamespaceEvento });
+
+        /// <summary>Descrição do evento.</summary>
+        public override string DescEvento { get; set; } = "Tributação do Simples Nacional";
+
+        /// <summary>Versão do schema do evento.</summary>
+        public override string Versao { get; set; } = "1.00";
+
+        /// <summary>Código da UF do órgão autor do evento.</summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        /// <summary>Propriedade auxiliar para serialização/desserialização de COrgaoAutor.</summary>
+        [XmlElement("cOrgaoAutor")]
+        public int COrgaoAutorField
+        {
+            get => (int)COrgaoAutor;
+            set => COrgaoAutor = (UFBrasil)value;
+        }
+
+        /// <summary>Autor do evento, que deve ser o Fisco (5).</summary>
+        [XmlElement("tpAutor")]
+        public TipoAutor TpAutor { get; set; } = TipoAutor.Fisco;
+
+        /// <summary>Versão do aplicativo que recebeu o evento.</summary>
+        [XmlElement("verAplic")]
+        public string VerAplic { get; set; }
+
+        /// <summary>Detalhamento dos tributos por item, de 1 a 990 ocorrências.</summary>
+        [XmlElement("gTribItemSN")]
+        public List<GTribItemSN> GTribItemSN { get; set; }
+
+        /// <summary>Totais da NF-e/NFC-e referentes ao Simples Nacional.</summary>
+        [XmlElement("gTotalSN")]
+        public GTotalSN GTotalSN { get; set; }
+
+        internal override void ProcessReader()
+        {
+            if (XmlReader == null)
+            {
+                return;
+            }
+
+            var documento = new XmlDocument();
+            using (var reader = XmlReader.ReadSubtree())
+            {
+                documento.Load(reader);
+            }
+            XmlReader.Read();
+
+            var detalhe = documento.DocumentElement;
+            Versao = detalhe.GetAttribute("versao");
+            DescEvento = detalhe["descEvento", NamespaceEvento]?.InnerText;
+            COrgaoAutorField = Convert.ToInt32(detalhe["cOrgaoAutor", NamespaceEvento]?.InnerText, CultureInfo.InvariantCulture);
+            TpAutor = (TipoAutor)Convert.ToInt32(detalhe["tpAutor", NamespaceEvento]?.InnerText, CultureInfo.InvariantCulture);
+            VerAplic = detalhe["verAplic", NamespaceEvento]?.InnerText;
+            GTribItemSN = new List<GTribItemSN>();
+            foreach (XmlNode node in detalhe.ChildNodes)
+            {
+                if (node.NamespaceURI != NamespaceEvento)
+                {
+                    continue;
+                }
+                using (var reader = new XmlNodeReader(node))
+                {
+                    if (node.LocalName == "gTribItemSN")
+                    {
+                        GTribItemSN.Add((GTribItemSN)SerializadorItem.Deserialize(reader));
+                    }
+                    else if (node.LocalName == "gTotalSN")
+                    {
+                        GTotalSN = (GTotalSN)SerializadorTotal.Deserialize(reader);
+                    }
+                }
+            }
+        }
+
+        /// <summary>Escreve o detalhamento no nome, namespace e ordem definidos pelo schema.</summary>
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+            writer.WriteElementString("descEvento", NamespaceEvento, DescEvento);
+            writer.WriteElementString("cOrgaoAutor", NamespaceEvento, COrgaoAutorField.ToString(CultureInfo.InvariantCulture));
+            writer.WriteElementString("tpAutor", NamespaceEvento, ((int)TpAutor).ToString(CultureInfo.InvariantCulture));
+            writer.WriteElementString("verAplic", NamespaceEvento, VerAplic);
+            var namespaces = new XmlSerializerNamespaces();
+            namespaces.Add(string.Empty, NamespaceEvento);
+            if (GTribItemSN != null)
+            {
+                foreach (var item in GTribItemSN)
+                {
+                    SerializadorItem.Serialize(writer, item, namespaces);
+                }
+            }
+            if (GTotalSN != null)
+            {
+                SerializadorTotal.Serialize(writer, GTotalSN, namespaces);
+            }
+        }
+
+#if INTEROP
+        /// <summary>Adiciona a tributação de um item.</summary>
+        public void AddGTribItemSN(GTribItemSN item)
+        {
+            if (GTribItemSN == null)
+            {
+                GTribItemSN = new List<GTribItemSN>();
+            }
+            GTribItemSN.Add(item);
+        }
+
+        /// <summary>Retorna a tributação do item pelo índice, começando em zero.</summary>
+        public GTribItemSN GetGTribItemSN(int index) => GTribItemSN == null || GTribItemSN.Count == 0 ? null : GTribItemSN[index];
+
+        /// <summary>Quantidade de itens com tributação do Simples Nacional.</summary>
+        public int GetGTribItemSNCount => GTribItemSN?.Count ?? 0;
+#endif
+    }
+
+    /// <summary>Tributação do Simples Nacional por item.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GTribItemSN")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GTribItemSN
+    {
+        /// <summary>Número do item.</summary>
+        [XmlAttribute("nItem")]
+        public int NItem { get; set; }
+
+        /// <summary>Valor de vRBSNItem.</summary>
+        [XmlIgnore]
+        public double VRBSNItem { get; set; }
+
+        /// <summary>Propriedade auxiliar para serialização de VRBSNItem.</summary>
+        [XmlElement("vRBSNitem", Order = 0)]
+        public string VRBSNItemField
+        {
+            get => VRBSNItem.ToString("F2", CultureInfo.InvariantCulture);
+            set => VRBSNItem = Converter.ToDouble(value);
+        }
+
+        /// <summary>Tipo de receita bruta do Simples Nacional.</summary>
+        [XmlElement("tpRBSN", Order = 1)]
+        public TipoReceitaBrutaSimplesNacional TpRBSN { get; set; }
+        /// <summary>Alíquota de pIBSSN.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public double PIBSSN { get; set; } = -1;
+#else
+        public double? PIBSSN { get; set; }
+#endif
+
+        /// <summary>Propriedade auxiliar para serialização de PIBSSN.</summary>
+        [XmlElement("pIBSSN", Order = 2)]
+        public string PIBSSNField
+        {
+            get => ((double?)PIBSSN)?.ToString("0.00##", CultureInfo.InvariantCulture);
+            set => PIBSSN = Converter.ToDouble(value);
+        }
+
+        /// <summary>Indica se PIBSSN foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializePIBSSNField() => PIBSSN >= 0;
+#else
+        public bool ShouldSerializePIBSSNField() => PIBSSN.HasValue;
+#endif
+
+        /// <summary>Valor de vIBSSN.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VIBSSN { get; set; } = -1;
+#else
+        public double? VIBSSN { get; set; }
+#endif
+
+        /// <summary>Propriedade auxiliar para serialização de VIBSSN.</summary>
+        [XmlElement("vIBSSN", Order = 3)]
+        public string VIBSSNField
+        {
+            get => ((double?)VIBSSN)?.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSSN = Converter.ToDouble(value);
+        }
+
+        /// <summary>Indica se VIBSSN foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializeVIBSSNField() => VIBSSN >= 0;
+#else
+        public bool ShouldSerializeVIBSSNField() => VIBSSN.HasValue;
+#endif
+
+        /// <summary>Alíquota de pCBSSN.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public double PCBSSN { get; set; } = -1;
+#else
+        public double? PCBSSN { get; set; }
+#endif
+
+        /// <summary>Propriedade auxiliar para serialização de PCBSSN.</summary>
+        [XmlElement("pCBSSN", Order = 4)]
+        public string PCBSSNField
+        {
+            get => ((double?)PCBSSN)?.ToString("0.00##", CultureInfo.InvariantCulture);
+            set => PCBSSN = Converter.ToDouble(value);
+        }
+
+        /// <summary>Indica se PCBSSN foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializePCBSSNField() => PCBSSN >= 0;
+#else
+        public bool ShouldSerializePCBSSNField() => PCBSSN.HasValue;
+#endif
+
+        /// <summary>Valor de vCBSSN.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VCBSSN { get; set; } = -1;
+#else
+        public double? VCBSSN { get; set; }
+#endif
+
+        /// <summary>Propriedade auxiliar para serialização de VCBSSN.</summary>
+        [XmlElement("vCBSSN", Order = 5)]
+        public string VCBSSNField
+        {
+            get => ((double?)VCBSSN)?.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSSN = Converter.ToDouble(value);
+        }
+
+        /// <summary>Indica se VCBSSN foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializeVCBSSNField() => VCBSSN >= 0;
+#else
+        public bool ShouldSerializeVCBSSNField() => VCBSSN.HasValue;
+#endif
+
+        /// <summary>Valor de vIBSPendSusp.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VIBSPendSusp { get; set; } = -1;
+#else
+        public double? VIBSPendSusp { get; set; }
+#endif
+
+        /// <summary>Propriedade auxiliar para serialização de VIBSPendSusp.</summary>
+        [XmlElement("vIBSPendSusp", Order = 6)]
+        public string VIBSPendSuspField
+        {
+            get => ((double?)VIBSPendSusp)?.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSPendSusp = Converter.ToDouble(value);
+        }
+
+        /// <summary>Indica se VIBSPendSusp foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializeVIBSPendSuspField() => VIBSPendSusp >= 0;
+#else
+        public bool ShouldSerializeVIBSPendSuspField() => VIBSPendSusp.HasValue;
+#endif
+
+        /// <summary>Valor de vCBSPendSusp.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VCBSPendSusp { get; set; } = -1;
+#else
+        public double? VCBSPendSusp { get; set; }
+#endif
+
+        /// <summary>Propriedade auxiliar para serialização de VCBSPendSusp.</summary>
+        [XmlElement("vCBSPendSusp", Order = 7)]
+        public string VCBSPendSuspField
+        {
+            get => ((double?)VCBSPendSusp)?.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSPendSusp = Converter.ToDouble(value);
+        }
+
+        /// <summary>Indica se VCBSPendSusp foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializeVCBSPendSuspField() => VCBSPendSusp >= 0;
+#else
+        public bool ShouldSerializeVCBSPendSuspField() => VCBSPendSusp.HasValue;
+#endif
+
+
+    }
+
+    /// <summary>Totais da tributação do Simples Nacional.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GTotalSN")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GTotalSN
+    {
+        /// <summary>Valor de vRBSNTot.</summary>
+        [XmlIgnore]
+        public double VRBSNTot { get; set; }
+
+        /// <summary>Propriedade auxiliar para serialização de VRBSNTot.</summary>
+        [XmlElement("vRBSNtot", Order = 0)]
+        public string VRBSNTotField
+        {
+            get => VRBSNTot.ToString("F2", CultureInfo.InvariantCulture);
+            set => VRBSNTot = Converter.ToDouble(value);
+        }
+
+        /// <summary>Valor de vIBSSNTot.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VIBSSNTot { get; set; } = -1;
+#else
+        public double? VIBSSNTot { get; set; }
+#endif
+
+        /// <summary>Propriedade auxiliar para serialização de VIBSSNTot.</summary>
+        [XmlElement("vIBSSNtot", Order = 1)]
+        public string VIBSSNTotField
+        {
+            get => ((double?)VIBSSNTot)?.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSSNTot = Converter.ToDouble(value);
+        }
+
+        /// <summary>Indica se VIBSSNTot foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializeVIBSSNTotField() => VIBSSNTot >= 0;
+#else
+        public bool ShouldSerializeVIBSSNTotField() => VIBSSNTot.HasValue;
+#endif
+
+        /// <summary>Valor de vIBSSNtotPendSusp.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VIBSSNTotPendSusp { get; set; } = -1;
+#else
+        public double? VIBSSNTotPendSusp { get; set; }
+#endif
+
+        /// <summary>Propriedade auxiliar para serialização de VIBSSNTotPendSusp.</summary>
+        [XmlElement("vIBSSNtotPendSusp", Order = 2)]
+        public string VIBSSNTotPendSuspField
+        {
+            get => ((double?)VIBSSNTotPendSusp)?.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSSNTotPendSusp = Converter.ToDouble(value);
+        }
+
+        /// <summary>Indica se VIBSSNTotPendSusp foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializeVIBSSNTotPendSuspField() => VIBSSNTotPendSusp >= 0;
+#else
+        public bool ShouldSerializeVIBSSNTotPendSuspField() => VIBSSNTotPendSusp.HasValue;
+#endif
+
+        /// <summary>Valor de vCBSSNTot.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VCBSSNTot { get; set; } = -1;
+#else
+        public double? VCBSSNTot { get; set; }
+#endif
+
+        /// <summary>Propriedade auxiliar para serialização de VCBSSNTot.</summary>
+        [XmlElement("vCBSSNtot", Order = 3)]
+        public string VCBSSNTotField
+        {
+            get => ((double?)VCBSSNTot)?.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSSNTot = Converter.ToDouble(value);
+        }
+
+        /// <summary>Indica se VCBSSNTot foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializeVCBSSNTotField() => VCBSSNTot >= 0;
+#else
+        public bool ShouldSerializeVCBSSNTotField() => VCBSSNTot.HasValue;
+#endif
+
+        /// <summary>Valor de vCBSSNtotPendSusp.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public double VCBSSNTotPendSusp { get; set; } = -1;
+#else
+        public double? VCBSSNTotPendSusp { get; set; }
+#endif
+
+        /// <summary>Propriedade auxiliar para serialização de VCBSSNTotPendSusp.</summary>
+        [XmlElement("vCBSSNtotPendSusp", Order = 4)]
+        public string VCBSSNTotPendSuspField
+        {
+            get => ((double?)VCBSSNTotPendSusp)?.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBSSNTotPendSusp = Converter.ToDouble(value);
+        }
+
+        /// <summary>Indica se VCBSSNTotPendSusp foi informado.</summary>
+#if INTEROP
+        public bool ShouldSerializeVCBSSNTotPendSuspField() => VCBSSNTotPendSusp >= 0;
+#else
+        public bool ShouldSerializeVCBSSNTotPendSuspField() => VCBSSNTotPendSusp.HasValue;
+#endif
+
+
     }
 }
