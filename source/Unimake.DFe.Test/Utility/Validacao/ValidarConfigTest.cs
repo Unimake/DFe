@@ -5,6 +5,7 @@ using System.Xml;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.Validar;
 using Xunit;
 
 namespace Unimake.DFe.Test.Utility.Validacao
@@ -226,13 +227,8 @@ namespace Unimake.DFe.Test.Utility.Validacao
 
         private static void InvocarAtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao)
         {
-            var metodo = typeof(ValidarEstruturaXML).GetMethod(
-                "AtribuirUrl",
-                BindingFlags.NonPublic | BindingFlags.Static
-            );
-
-            Assert.NotNull(metodo);
-            metodo.Invoke(null, new object[] { servico, codigoUF, configuracao, null });
+            configuracao.CodigoUF = (int)codigoUF;
+            ResolvedorUrlsConsulta.Atribuir(null, servico, configuracao);
         }
     }
 }
