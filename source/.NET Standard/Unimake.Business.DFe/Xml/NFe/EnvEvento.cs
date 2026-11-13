@@ -1035,7 +1035,20 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public XmlSchema GetSchema() => default;
 
-        public virtual void ReadXml(XmlReader reader) => XmlReader = reader;
+        public virtual void ReadXml(XmlReader reader)
+        {
+            if (reader == null)
+            {
+                XmlReader = null;
+                return;
+            }
+
+            // O leitor do detalhe não pode consumir os eventos ou assinaturas seguintes do lote.
+            var documento = new XmlDocument { XmlResolver = null };
+            var detalhe = documento.ReadNode(reader);
+            XmlReader = new XmlNodeReader(detalhe);
+            XmlReader.MoveToContent();
+        }
 
         public virtual void WriteXml(XmlWriter writer) => writer.WriteAttributeString("versao", Versao);
 
