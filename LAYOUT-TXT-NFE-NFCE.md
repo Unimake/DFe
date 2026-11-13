@@ -46,6 +46,7 @@ C|xNome|xFant|IE|IEST|IM|CNAE|CRT|ISUFEmit|
 C02|CNPJ|
 C02a|CPF|
 C05|xLgr|nro|xCpl|xBairro|cMun|xMun|UF|CEP|cPais|xPais|fone|
+C21|tpRegimeIBSCBS|
 ```
 
 ## D
@@ -113,6 +114,7 @@ I05c|CEST|
 # I05C_4
 I05c|CEST|indEscala|CNPJFab|
 I17|indBemMovelUsado|
+I17A|cAtivSN|
 # I18_400_12
 I18|nDI|dDI|xLocDesemb|UFDesemb|dDesemb|tpViaTransp|vAFRMM|tpIntermedio|CNPJ|UFTerceiro|cExportador|
 # I18_400_13
@@ -364,6 +366,7 @@ UB120|vBCCredPres|cCredPres|
 UB123|pCredPres|vCredPres|vCredPresCondSus|
 UB127|pCredPres|vCredPres|vCredPresCondSus|
 UB131|competApur|tpCredPresIBSZFM|vCredPresIBSZFM|
+UB132|pIBSSN|vIBSSN|pCBSSN|vCBSSN|
 ```
 
 ## V
@@ -401,6 +404,7 @@ W42|vDif|vDevTrib|vIBSMun|
 W50|vDif|vDevTrib|vCBS|vCredPres|vCredPresCondSus|
 W57|vIBSMono|vCBSMono|vIBSMonoReten|vCBSMonoReten|vIBSMonoRet|vCBSMonoRet|
 W59e|vIBSEstCred|vCBSEstCred|
+W59F|vIBSSN|vCBSSN|
 W60|vNFTot|
 ```
 
