@@ -86,10 +86,80 @@ public class NFeTxtNovoSchemaTest
         var resultado = Converter(MassaBase());
         Assert.True(resultado.Sucesso, resultado.MensagemErro);
         var xml = Assert.Single(resultado.Documentos).Xml;
-        foreach (var tag in new[] { "vUnComLiq", "vProdLiq", "vProdLiqTot", "ICMSPrevistoPagtoAntecip", "gPgtoVinc" })
+        foreach (var tag in new[] { "vUnComLiq", "vProdLiq", "vProdLiqTot", "ICMSPrevistoPagtoAntecip", "gPgtoVinc",
+            "tpRegimeIBSCBS", "cAtivSN", "gTribSN" })
         {
             Assert.DoesNotContain("<" + tag, xml);
         }
+    }
+
+    [Fact]
+    public void DeveGerarTributacaoSimplesNacionalPorItemETotal()
+    {
+        var linhas = AdicionarApos(MassaBase(), "C|", "C21|1|");
+        linhas = AdicionarApos(linhas, "I|", "I17A|01|");
+        linhas = AdicionarApos(linhas, "UB12|", "UB132|1.2345|1.23|2.3456|0.00|");
+        var segundoGrupo = Array.FindIndex(linhas, Array.FindIndex(linhas, linha => linha.StartsWith("UB132|", StringComparison.Ordinal)) + 1,
+            linha => linha.StartsWith("UB132|", StringComparison.Ordinal));
+        linhas[segundoGrupo] = "UB132|||0.00|0.00|";
+        linhas = AdicionarApos(linhas, "W50|", "W59F|1.23|0.00|");
+
+        var resultado = Converter(linhas);
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+
+        Assert.Equal("1", xml.SelectSingleNode("//*[local-name()='emit']/*[local-name()='tpRegimeIBSCBS']")?.InnerText);
+        Assert.Equal(2, xml.SelectNodes("//*[local-name()='prod']/*[local-name()='cAtivSN' and text()='01']").Count);
+        var grupos = xml.SelectNodes("//*[local-name()='det']/*[local-name()='imposto']/*[local-name()='IBSCBS']/*[local-name()='gTribSN']");
+        Assert.Equal(2, grupos.Count);
+        Assert.Equal("1.2345", grupos[0].SelectSingleNode("*[local-name()='gIBSSN']/*[local-name()='pIBSSN']")?.InnerText);
+        Assert.Equal("1.23", grupos[0].SelectSingleNode("*[local-name()='gIBSSN']/*[local-name()='vIBSSN']")?.InnerText);
+        Assert.Equal("2.3456", grupos[0].SelectSingleNode("*[local-name()='gCBSSN']/*[local-name()='pCBSSN']")?.InnerText);
+        Assert.Equal("0.00", grupos[0].SelectSingleNode("*[local-name()='gCBSSN']/*[local-name()='vCBSSN']")?.InnerText);
+        Assert.Null(grupos[1].SelectSingleNode("*[local-name()='gIBSSN']"));
+        Assert.Equal("0.00", grupos[1].SelectSingleNode("*[local-name()='gCBSSN']/*[local-name()='pCBSSN']")?.InnerText);
+        var total = xml.SelectSingleNode("//*[local-name()='IBSCBSTot']/*[local-name()='gTribSN']");
+        Assert.Equal("1.23", total.SelectSingleNode("*[local-name()='vIBSSN']")?.InnerText);
+        Assert.Equal("0.00", total.SelectSingleNode("*[local-name()='vCBSSN']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.Equal(1, validacao.ErrorMessage.Split(new[] { "Linha:" }, StringSplitOptions.None).Length - 1);
+    }
+
+    [Theory]
+    [InlineData("C21|0|", "tpRegimeIBSCBS")]
+    [InlineData("C21|5|", "tpRegimeIBSCBS")]
+    public void DeveCriticarRegimeInvalido(string segmento, string erro)
+    {
+        var resultado = Converter(AdicionarApos(MassaBase(), "C|", segmento));
+        Assert.False(resultado.Sucesso);
+        Assert.Contains(erro, resultado.MensagemErro);
+    }
+
+    [Theory]
+    [InlineData("I17A|1|", "cAtivSN")]
+    [InlineData("I17A|05|", "cAtivSN")]
+    public void DeveCriticarAtividadeInvalida(string segmento, string erro)
+    {
+        var resultado = Converter(AdicionarApos(MassaBase(), "I|", segmento));
+        Assert.False(resultado.Sucesso);
+        Assert.Contains(erro, resultado.MensagemErro);
+    }
+
+    [Theory]
+    [InlineData("UB132|1.00||2.00|0.00|", "pIBSSN e vIBSSN")]
+    [InlineData("UB132||1.00|2.00|0.00|", "pIBSSN e vIBSSN")]
+    [InlineData("UB132|1.00|1.00||0.00|", "pCBSSN")]
+    [InlineData("UB132|1.00|1.00|2.00||", "vCBSSN")]
+    public void DeveCriticarGrupoSimplesNacionalIncompleto(string segmento, string erro)
+    {
+        var resultado = Converter(AdicionarApos(MassaBase(), "UB12|", segmento));
+        Assert.False(resultado.Sucesso);
+        Assert.Contains(erro, resultado.MensagemErro);
     }
 
     [Fact]
