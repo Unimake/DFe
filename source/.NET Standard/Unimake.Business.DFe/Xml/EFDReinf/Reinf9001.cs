@@ -75,11 +75,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("perApur")]
         public string PerApurField
         {
-            get => PerApur.ToString("yyyy-MM");
+            get => PerApur == default ? string.Empty : PerApur.ToString("yyyy-MM");
 #if INTEROP
-            set => PerApur = DateTime.Parse(value);
+            set => PerApur = string.IsNullOrWhiteSpace(value) ? default : DateTime.Parse(value);
 #else
-            set => PerApur = DateTimeOffset.Parse(value);
+            set => PerApur = string.IsNullOrWhiteSpace(value) ? default : DateTimeOffset.Parse(value);
 #endif
         }
     }

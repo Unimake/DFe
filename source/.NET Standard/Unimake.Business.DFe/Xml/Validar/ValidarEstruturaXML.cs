@@ -214,7 +214,7 @@ namespace Unimake.Business.DFe
                     throw new Exception($"Não foi possível encontrar a configuração para o tipo de DFe com tag raiz: '{tagRaiz}' ou versão: '{versao}'. Verfique se a versão e/ou tag raiz estão corretas para a validação");
                 }
 
-                AtribuirUrl(servico, codigoUF, configuracao);
+                AtribuirUrl(servico, codigoUF, configuracao, xml);
 
                 // A NT 2026.003 determina que a NF-e com DANFE Simplificado Tipo 2 utilize
                 // as URLs de consulta do Portal Nacional da NFC-e. Mantemos as URLs em uma
@@ -1274,8 +1274,52 @@ namespace Unimake.Business.DFe
             geradorQrCode?.GerarQrCode(xml, configuracao);
         }
 
-        private static void AtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao)
+        private static void CompletarUrlQRCodePeloServico(XmlDocument xml, XmlNode servico, XmlNode grupoUrl, Configuracao configuracao)
         {
+            var tagSuplementar = grupoUrl.Attributes["tagSuplementar"]?.Value;
+            if (!string.IsNullOrWhiteSpace(tagSuplementar) && xml?.GetElementsByTagName(tagSuplementar).Count > 0)
+            {
+                return;
+            }
+
+            var urlAtual = configuracao.TipoAmbiente == TipoAmbiente.Homologacao
+                ? configuracao.UrlQrCodeHomologacao : configuracao.UrlQrCodeProducao;
+            if (!string.IsNullOrWhiteSpace(urlAtual))
+            {
+                return;
+            }
+
+            // Reutiliza o carregador do envio sem alterar o serviço ou as demais opções do consumidor.
+            var origem = new Configuracao
+            {
+                TipoDFe = configuracao.TipoDFe,
+                CodigoUF = configuracao.CodigoUF,
+                TipoAmbiente = configuracao.TipoAmbiente,
+                TipoEmissao = configuracao.TipoEmissao,
+                SchemaVersao = servico.Attributes["versao"]?.Value,
+                BuscarConfiguracaoPastaBase = configuracao.BuscarConfiguracaoPastaBase,
+                PastaArquivoConfiguracao = configuracao.PastaArquivoConfiguracao
+            };
+            origem.Load(grupoUrl.Attributes["servicoConfiguracao"].Value);
+            if (configuracao.TipoAmbiente == TipoAmbiente.Homologacao)
+            {
+                configuracao.UrlQrCodeHomologacao = origem.UrlQrCodeHomologacao;
+            }
+            else
+            {
+                configuracao.UrlQrCodeProducao = origem.UrlQrCodeProducao;
+            }
+        }
+
+        private static void AtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao, XmlDocument xml = null)
+        {
+            var grupoUrl = servico?.SelectSingleNode("GrupoUrl");
+            if (!string.IsNullOrWhiteSpace(grupoUrl?.Attributes?["servicoConfiguracao"]?.Value))
+            {
+                CompletarUrlQRCodePeloServico(xml, servico, grupoUrl, configuracao);
+                return;
+            }
+
             foreach (XmlNode grupoUF in servico?.SelectNodes("GrupoUrl/Grupo"))
             {
                 foreach (XmlNode uf in grupoUF.SelectNodes("UF"))

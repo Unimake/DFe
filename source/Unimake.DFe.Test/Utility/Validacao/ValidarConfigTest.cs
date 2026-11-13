@@ -232,7 +232,7 @@ namespace Unimake.DFe.Test.Utility.Validacao
             );
 
             Assert.NotNull(metodo);
-            metodo.Invoke(null, new object[] { servico, codigoUF, configuracao });
+            metodo.Invoke(null, new object[] { servico, codigoUF, configuracao, null });
         }
     }
 }
