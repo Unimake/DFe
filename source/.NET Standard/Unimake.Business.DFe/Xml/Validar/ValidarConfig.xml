@@ -1,4 +1,6 @@
 <ServicosValidacao>
+	<!-- GrupoUrl: tagSuplementar identifica o grupo fiscal; prepararComSuplemento controla somente a preparação das URLs. -->
+	<!-- A política preserva a regeneração do suplemento e a precedência de URLs existentes em cada documento. -->
 	<!--NFe-->
 	<NFe>
 		<Servico tagRaiz="consStatServ" versao="4.00">
@@ -268,6 +270,8 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
+			<!-- Reutiliza o cadastro da NFC-e e mantém a precedência histórica da URL de homologação. -->
+			<GrupoUrl referenciaDFe="NFCe" somenteSeUrlQrCodeHomologacaoAusente="true" tagSuplementar="infNFeSupl" prepararComSuplemento="true"/>
 		</Servico>
 		<Servico tagRaiz="NFe" versao="4.00">
 			<Descricao>Autorização da NFe</Descricao>
@@ -281,6 +285,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
+			<GrupoUrl referenciaDFe="NFCe" somenteSeUrlQrCodeHomologacaoAusente="true" tagSuplementar="infNFeSupl" prepararComSuplemento="true"/>
 		</Servico>
 		<Servico tagRaiz="distDFeInt" versao="1.01">
 			<Descricao>Consulta da relação de documentos fiscais eletrônicos destinados - NFe</Descricao>
@@ -576,7 +581,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infNFeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<Urls>
@@ -834,7 +839,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infNFeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<Urls>
@@ -1468,7 +1473,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infCTeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AP</UF>
 					<UF>PE</UF>
@@ -1622,7 +1627,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infCTeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<UF>AL</UF>
@@ -1832,7 +1837,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infCTeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AP</UF>
 					<UF>PE</UF>
@@ -1962,7 +1967,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infCTeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AP</UF>
 					<UF>PE</UF>
@@ -2092,7 +2097,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infCTeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<UF>AL</UF>
@@ -2190,7 +2195,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infCTeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<UF>AL</UF>
@@ -2377,7 +2382,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infMDFeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<UF>AL</UF>
@@ -2473,7 +2478,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/mdfe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infMDFeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<UF>AL</UF>
@@ -2612,7 +2617,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/nfcom</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infNFComSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<UF>AL</UF>
@@ -2743,7 +2748,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/nf3e</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infNF3eSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<UF>AL</UF>
@@ -2902,7 +2907,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/nfgas</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infNFGasSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<UF>AL</UF>
@@ -3009,7 +3014,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/nfeabi</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infNFeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<UF>AL</UF>
@@ -3142,7 +3147,7 @@
 			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
 			<!-- Completa a URL ausente pelo catálogo do envio, preservando o suplemento informado. -->
-			<GrupoUrl servicoConfiguracao="AutorizacaoBPe" tagSuplementar="infBPeSupl"/>
+			<GrupoUrl servicoConfiguracao="AutorizacaoBPe" tagSuplementar="infBPeSupl" prepararComSuplemento="false"/>
 		</Servico>
 		<Servico tagRaiz="BPeTM" versao="1.00">
 			<Descricao>Autorização do Bilhete de Passagem Eletrônico Transporte Metropolitano</Descricao>
@@ -3169,7 +3174,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/bpe</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl servicoConfiguracao="AutorizacaoBPeTA" tagSuplementar="infBPeSupl"/>
+			<GrupoUrl servicoConfiguracao="AutorizacaoBPeTA" tagSuplementar="infBPeSupl" prepararComSuplemento="false"/>
 		</Servico>
 	</BPe>
 	<!--DCe-->
@@ -3230,7 +3235,7 @@
 			<TagExtraAtributoID/>
 			<TargetNS>http://www.portalfiscal.inf.br/dce</TargetNS>
 			<GerarQrCode>true</GerarQrCode>
-			<GrupoUrl>
+			<GrupoUrl tagSuplementar="infDCeSupl" prepararComSuplemento="true">
 				<Grupo>
 					<UF>AC</UF>
 					<UF>AL</UF>

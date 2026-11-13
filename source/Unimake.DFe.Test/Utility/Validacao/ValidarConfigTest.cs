@@ -5,6 +5,7 @@ using System.Xml;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.Validar;
 using Xunit;
 
 namespace Unimake.DFe.Test.Utility.Validacao
@@ -25,6 +26,23 @@ namespace Unimake.DFe.Test.Utility.Validacao
             Assert.Equal("ServicosValidacao", catalogo.DocumentElement.Name);
             Assert.NotEmpty(catalogo.SelectNodes("/ServicosValidacao/*").Cast<XmlNode>());
             Assert.NotEmpty(catalogo.SelectNodes("//Servico").Cast<XmlNode>());
+        }
+
+        [Fact]
+        public void TodaGeracaoQRCode_DeveDeclararSuplementoEPoliticaDePreparacao()
+        {
+            var catalogo = CarregarCatalogo();
+            var servicos = catalogo.SelectNodes("/ServicosValidacao/*/Servico[GerarQrCode='true']").Cast<XmlNode>().ToList();
+            Assert.NotEmpty(servicos);
+            foreach (var servico in servicos)
+            {
+                var grupoUrl = servico.SelectSingleNode("GrupoUrl");
+                Assert.NotNull(grupoUrl);
+                var tagSuplementar = grupoUrl.Attributes["tagSuplementar"]?.Value;
+                Assert.False(string.IsNullOrWhiteSpace(tagSuplementar), servico.OuterXml);
+                Assert.Equal(tagSuplementar, XmlConvert.VerifyNCName(tagSuplementar));
+                Assert.Contains(grupoUrl.Attributes["prepararComSuplemento"]?.Value, new[] { "true", "false" });
+            }
         }
 
         [Fact]
@@ -122,6 +140,44 @@ namespace Unimake.DFe.Test.Utility.Validacao
             Assert.Equal("www.sefaznet.ac.gov.br/nfce/consulta", configuracao.UrlChaveProducao);
             Assert.Equal("http://www.hml.sefaznet.ac.gov.br/nfce/qrcode", configuracao.UrlQrCodeHomologacao);
             Assert.Equal("http://www.sefaznet.ac.gov.br/nfce/qrcode", configuracao.UrlQrCodeProducao);
+        }
+
+        [Theory]
+        [InlineData("enviNFe")]
+        [InlineData("NFe")]
+        public void ReferenciaDaNFe_DeveReutilizarUrlsDaNFCe(string tagRaiz)
+        {
+            var catalogo = CarregarCatalogo();
+            var servico = catalogo.SelectSingleNode($"ServicosValidacao/NFe/Servico[@tagRaiz='{tagRaiz}' and @versao='4.00']");
+            var origem = catalogo.SelectSingleNode($"ServicosValidacao/NFCe/Servico[@tagRaiz='{tagRaiz}' and @versao='4.00']");
+            var configuracao = new Configuracao { CodigoUF = (int)UFBrasil.AC };
+            var controle = new Configuracao { CodigoUF = (int)UFBrasil.AC };
+
+            ResolvedorUrlsConsulta.Atribuir(null, servico, configuracao);
+            ResolvedorUrlsConsulta.Atribuir(null, origem, controle);
+
+            Assert.False(string.IsNullOrWhiteSpace(configuracao.UrlQrCodeHomologacao));
+            Assert.Equal(controle.UrlQrCodeHomologacao, configuracao.UrlQrCodeHomologacao);
+            Assert.Equal(controle.UrlQrCodeProducao, configuracao.UrlQrCodeProducao);
+            Assert.Equal(controle.UrlChaveHomologacao, configuracao.UrlChaveHomologacao);
+            Assert.Equal(controle.UrlChaveProducao, configuracao.UrlChaveProducao);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData("<Servico tagRaiz=\"NFe\" versao=\"3.10\"><GrupoUrl/></Servico>")]
+        public void ReferenciaAusenteOuDeOutraVersao_DeveFalharComContexto(string servicoOrigem)
+        {
+            var catalogo = new XmlDocument();
+            catalogo.LoadXml("<ServicosValidacao><NFe><Servico tagRaiz=\"NFe\" versao=\"4.00\">"
+                + "<GrupoUrl referenciaDFe=\"NFCe\"/></Servico></NFe><NFCe>" + servicoOrigem + "</NFCe></ServicosValidacao>");
+            var servico = catalogo.SelectSingleNode("ServicosValidacao/NFe/Servico");
+
+            var erro = Assert.Throws<InvalidOperationException>(() => ResolvedorUrlsConsulta.Atribuir(null, servico, new Configuracao()));
+
+            Assert.Contains("NFe", erro.Message);
+            Assert.Contains("4.00", erro.Message);
+            Assert.Contains("NFCe", erro.Message);
         }
 
         [Fact]
@@ -226,13 +282,8 @@ namespace Unimake.DFe.Test.Utility.Validacao
 
         private static void InvocarAtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao)
         {
-            var metodo = typeof(ValidarEstruturaXML).GetMethod(
-                "AtribuirUrl",
-                BindingFlags.NonPublic | BindingFlags.Static
-            );
-
-            Assert.NotNull(metodo);
-            metodo.Invoke(null, new object[] { servico, codigoUF, configuracao, null });
+            configuracao.CodigoUF = (int)codigoUF;
+            ResolvedorUrlsConsulta.Atribuir(null, servico, configuracao);
         }
     }
 }
