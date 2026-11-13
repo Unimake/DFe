@@ -3970,12 +3970,12 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="System.Net.Http.Json" Version="10.0.14" />
-		<PackageReference Include="System.Net.Http.WinHttpHandler" Version="10.0.14" GeneratePathProperty="true" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.14" />
-		<PackageReference Include="Unimake.Cryptography" Version="20260918.1832.16" />
-		<PackageReference Include="Unimake.Extensions" Version="20260918.1832.16" />
-		<PackageReference Include="Unimake.Utils" Version="20260918.1832.16" />
+		<PackageReference Include="System.Net.Http.Json" Version="11.0.0" />
+		<PackageReference Include="System.Net.Http.WinHttpHandler" Version="11.0.0" GeneratePathProperty="true" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="11.0.0" />
+		<PackageReference Include="Unimake.Cryptography" Version="20261111.1051.53" />
+		<PackageReference Include="Unimake.Extensions" Version="20261111.1051.53" />
+		<PackageReference Include="Unimake.Utils" Version="20261111.1051.53" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="$(PkgSystem_Net_Http_WinHttpHandler)\lib\net462\System.Net.Http.WinHttpHandler.dll" Link="System.Net.Http.WinHttpHandler.dll" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" Pack="false" Visible="false" />
