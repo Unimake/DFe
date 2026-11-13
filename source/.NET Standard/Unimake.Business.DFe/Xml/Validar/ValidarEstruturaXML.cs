@@ -1297,7 +1297,9 @@ namespace Unimake.Business.DFe
                 CodigoUF = configuracao.CodigoUF,
                 TipoAmbiente = configuracao.TipoAmbiente,
                 TipoEmissao = configuracao.TipoEmissao,
-                SchemaVersao = versao
+                SchemaVersao = versao,
+                BuscarConfiguracaoPastaBase = configuracao.BuscarConfiguracaoPastaBase,
+                PastaArquivoConfiguracao = configuracao.PastaArquivoConfiguracao
             };
             origem.Load("Autorizacao" + tagRaiz);
             if (configuracao.TipoAmbiente == TipoAmbiente.Homologacao)

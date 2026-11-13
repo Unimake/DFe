@@ -114,6 +114,132 @@ namespace Unimake.DFe.Test.BPe.BugFixes
             Assert.Null(configuracao.UrlQrCodeProducao);
         }
 
+        public static IEnumerable<object[]> ConfiguracoesExternas()
+        {
+            foreach (var raiz in new[] { "BPe", "BPeTA" })
+                foreach (var ambiente in new[] { TipoAmbiente.Homologacao, TipoAmbiente.Producao })
+                    foreach (var cenario in new[] { "mais-nova", "desabilitada", "antiga", "mesma", "ausente" })
+                        yield return new object[] { raiz, ambiente, cenario };
+        }
+
+        [Theory]
+        [MemberData(nameof(ConfiguracoesExternas))]
+        public void ArquivoExterno_DeveRespeitarOpcoesEVersaoDoConsumidor(string raiz, TipoAmbiente ambiente, string cenario)
+        {
+            using (var externa = new ConfiguracaoExternaTemporaria(cenario))
+            {
+                var configuracao = CriarConfiguracao(_certificado, UFBrasil.PR, ambiente);
+                configuracao.BuscarConfiguracaoPastaBase = cenario != "desabilitada";
+                configuracao.PastaArquivoConfiguracao = externa.Pasta;
+                var controle = CriarConfiguracao(_certificado, UFBrasil.PR, ambiente);
+                controle.TipoDFe = TipoDFe.BPe;
+                controle.SchemaVersao = "1.00";
+                controle.BuscarConfiguracaoPastaBase = configuracao.BuscarConfiguracaoPastaBase;
+                controle.PastaArquivoConfiguracao = externa.Pasta;
+                controle.Load("Autorizacao" + raiz);
+                var esperada = ambiente == TipoAmbiente.Homologacao ? controle.UrlQrCodeHomologacao : controle.UrlQrCodeProducao;
+                if (cenario == "mais-nova") Assert.Equal(ConfiguracaoExternaTemporaria.Url(ambiente), esperada);
+                else Assert.DoesNotContain("example.invalid", esperada);
+
+                var resultado = new ValidarEstruturaXML().ValidarServico(CriarXml(raiz, UFBrasil.PR, ambiente), configuracao);
+
+                ConferirAssinatura(resultado);
+                var qr = resultado.XmlAssinado.GetElementsByTagName("qrCodBPe")[0].InnerText;
+                Assert.Equal(esperada, new Uri(qr).GetLeftPart(UriPartial.Path));
+                Assert.Contains("&tpAmb=" + (int)ambiente, qr);
+                Assert.Equal(cenario != "desabilitada", configuracao.BuscarConfiguracaoPastaBase);
+                Assert.Equal(externa.Pasta, configuracao.PastaArquivoConfiguracao);
+                Assert.Equal(TipoDFe.NFe, configuracao.TipoDFe);
+            }
+        }
+
+        [Theory]
+        [InlineData("BPe", TipoAmbiente.Homologacao, false)]
+        [InlineData("BPe", TipoAmbiente.Producao, false)]
+        [InlineData("BPeTA", TipoAmbiente.Homologacao, false)]
+        [InlineData("BPeTA", TipoAmbiente.Producao, false)]
+        [InlineData("BPe", TipoAmbiente.Homologacao, true)]
+        [InlineData("BPe", TipoAmbiente.Producao, true)]
+        [InlineData("BPeTA", TipoAmbiente.Homologacao, true)]
+        [InlineData("BPeTA", TipoAmbiente.Producao, true)]
+        public void ArquivoExterno_NaoDeveSobreporUrlExplicitaOuSuplemento(string raiz, TipoAmbiente ambiente, bool suplemento)
+        {
+            using (var externa = new ConfiguracaoExternaTemporaria("mais-nova"))
+            {
+                var configuracao = CriarConfiguracao(_certificado, UFBrasil.PR, ambiente);
+                configuracao.BuscarConfiguracaoPastaBase = true;
+                configuracao.PastaArquivoConfiguracao = externa.Pasta;
+                var xml = CriarXml(raiz, UFBrasil.PR, ambiente);
+                const string url = "https://consumidor.example.invalid/bpe";
+                if (suplemento)
+                {
+                    var chave = ((XmlElement)xml.GetElementsByTagName("infBPe")[0]).GetAttribute("Id").Substring(3);
+                    var qr = url + "?chBPe=" + chave + "&tpAmb=" + (int)ambiente;
+                    if (raiz == "BPe")
+                    {
+                        var modelo = XMLUtility.Deserializar<Business.DFe.Xml.BPe.BPe>(xml);
+                        modelo.InfBPeSupl = new Business.DFe.Xml.BPe.InfBPeSupl { QrCodBPe = qr };
+                        xml = modelo.GerarXML();
+                    }
+                    else
+                    {
+                        var modelo = XMLUtility.Deserializar<Business.DFe.Xml.BPeTA.BPeTA>(xml);
+                        modelo.InfBPeSupl = new Business.DFe.Xml.BPeTA.InfBPeSupl { QrCodBPe = qr };
+                        xml = modelo.GerarXML();
+                    }
+                }
+                else
+                {
+                    configuracao.UrlQrCodeHomologacao = url;
+                    configuracao.UrlQrCodeProducao = url;
+                }
+
+                var resultado = new ValidarEstruturaXML().ValidarServico(xml, configuracao);
+
+                ConferirAssinatura(resultado);
+                Assert.Equal(url, new Uri(resultado.XmlAssinado.GetElementsByTagName("qrCodBPe")[0].InnerText).GetLeftPart(UriPartial.Path));
+                Assert.Equal(suplemento ? null : url, configuracao.UrlQrCodeHomologacao);
+                Assert.Equal(suplemento ? null : url, configuracao.UrlQrCodeProducao);
+            }
+        }
+
+        private sealed class ConfiguracaoExternaTemporaria : IDisposable
+        {
+            public string Pasta { get; } = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Unimake-BPe-Externa-" + Guid.NewGuid().ToString("N"));
+
+            public ConfiguracaoExternaTemporaria(string cenario)
+            {
+                System.IO.Directory.CreateDirectory(Pasta);
+                if (cenario == "ausente") return;
+                foreach (var arquivo in new[] { "PR.xml", "SVRS.xml" })
+                {
+                    var assembly = typeof(Configuracao).Assembly;
+                    var recurso = assembly.GetManifestResourceNames().Single(x => x.EndsWith(".Servicos.Config.BPe." + arquivo, StringComparison.Ordinal));
+                    var xml = new XmlDocument { XmlResolver = null };
+                    using (var stream = assembly.GetManifestResourceStream(recurso))
+                    using (var reader = XmlReader.Create(stream, new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null })) xml.Load(reader);
+                    var versao = xml.CreateElement("VersaoConfiguracao");
+                    versao.InnerText = cenario == "antiga" ? "1" : cenario == "mesma" ? Info.VersaoDLL : "999999999999999999";
+                    xml.DocumentElement.PrependChild(versao);
+                    foreach (XmlNode url in xml.GetElementsByTagName("UrlQrCodeHomologacao")) url.InnerText = Url(TipoAmbiente.Homologacao);
+                    foreach (XmlNode url in xml.GetElementsByTagName("UrlQrCodeProducao")) url.InnerText = Url(TipoAmbiente.Producao);
+                    xml.Save(System.IO.Path.Combine(Pasta, arquivo));
+                }
+            }
+
+            public static string Url(TipoAmbiente ambiente) => ambiente == TipoAmbiente.Homologacao
+                ? "https://externa-homologacao.example.invalid/bpe" : "https://externa-producao.example.invalid/bpe";
+
+            public void Dispose()
+            {
+                var pasta = System.IO.Path.GetFullPath(Pasta);
+                var temporaria = System.IO.Path.GetFullPath(System.IO.Path.GetTempPath());
+                if (!pasta.StartsWith(temporaria, StringComparison.OrdinalIgnoreCase)
+                    || !System.IO.Path.GetFileName(pasta).StartsWith("Unimake-BPe-Externa-", StringComparison.Ordinal)) throw new InvalidOperationException("Limpeza fora da fixture temporaria.");
+                System.IO.Directory.Delete(pasta, true);
+            }
+        }
+
         private static void ConferirAssinatura(ValidarEstruturaXML.ResultadoValidacao resultado)
         {
             Assert.True(resultado.Validado, resultado.MensagemRetorno);
