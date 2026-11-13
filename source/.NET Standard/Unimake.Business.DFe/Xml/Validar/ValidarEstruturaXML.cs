@@ -215,6 +215,7 @@ namespace Unimake.Business.DFe
                 }
 
                 AtribuirUrl(servico, codigoUF, configuracao);
+                PrepararUrlsQRCodeBPe(xml, tipoDFe, tagRaiz, versao, configuracao);
 
                 // A NT 2026.003 determina que a NF-e com DANFE Simplificado Tipo 2 utilize
                 // as URLs de consulta do Portal Nacional da NFC-e. Mantemos as URLs em uma
@@ -1272,6 +1273,41 @@ namespace Unimake.Business.DFe
         {
             var geradorQrCode = QrCodeFactory.Criar(configuracao, gerarQrCode, tipoDFe);
             geradorQrCode?.GerarQrCode(xml, configuracao);
+        }
+
+        private static void PrepararUrlsQRCodeBPe(XmlDocument xml, TipoDFe tipoDFe, string tagRaiz, string versao, Configuracao configuracao)
+        {
+            if (tipoDFe != TipoDFe.BPe || (tagRaiz != "BPe" && tagRaiz != "BPeTA")
+                || xml.GetElementsByTagName("infBPeSupl").Count > 0)
+            {
+                return;
+            }
+
+            var urlAtual = configuracao.TipoAmbiente == TipoAmbiente.Homologacao
+                ? configuracao.UrlQrCodeHomologacao : configuracao.UrlQrCodeProducao;
+            if (!string.IsNullOrWhiteSpace(urlAtual))
+            {
+                return;
+            }
+
+            // O envio carrega estas URLs antes da validação. A chamada direta deve usar o mesmo catálogo.
+            var origem = new Configuracao
+            {
+                TipoDFe = TipoDFe.BPe,
+                CodigoUF = configuracao.CodigoUF,
+                TipoAmbiente = configuracao.TipoAmbiente,
+                TipoEmissao = configuracao.TipoEmissao,
+                SchemaVersao = versao
+            };
+            origem.Load("Autorizacao" + tagRaiz);
+            if (configuracao.TipoAmbiente == TipoAmbiente.Homologacao)
+            {
+                configuracao.UrlQrCodeHomologacao = origem.UrlQrCodeHomologacao;
+            }
+            else
+            {
+                configuracao.UrlQrCodeProducao = origem.UrlQrCodeProducao;
+            }
         }
 
         private static void AtribuirUrl(XmlNode servico, UFBrasil codigoUF, Configuracao configuracao)
