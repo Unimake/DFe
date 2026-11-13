@@ -236,15 +236,14 @@
 	</xsd:simpleType>
 	<xsd:simpleType name="tsCodigoObra">
 		<xsd:restriction base="xsd:string">
-			<xsd:maxLength value="15"/>
+			<xsd:maxLength value="30"/>
 			<xsd:minLength value="1"/>
 			<xsd:whiteSpace value="collapse"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="tsArt">
 		<xsd:restriction base="xsd:string">
-			<xsd:maxLength value="15"/>
-			<xsd:minLength value="1"/>
+			<xsd:maxLength value="40"/>
 			<xsd:whiteSpace value="collapse"/>
 		</xsd:restriction>
 	</xsd:simpleType>
@@ -366,6 +365,7 @@
 			<xsd:element maxOccurs="1" minOccurs="0" name="RazaoSocial" type="tsRazaoSocial"/>
 			<xsd:element maxOccurs="1" minOccurs="0" name="Endereco" type="tcEndereco"/>
 			<xsd:element maxOccurs="1" minOccurs="0" name="Contato" type="tcContato"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="NifTomador" type="tsNif"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="tcDadosIntermediario">
@@ -373,6 +373,9 @@
 			<xsd:element maxOccurs="1" minOccurs="1" name="IdentificacaoIntermediario" type="tcIdentificacaoIntermediario"/>
 			<xsd:element maxOccurs="1" minOccurs="1" name="RazaoSocial" type="tsRazaoSocial"/>
 			<xsd:element minOccurs="1" maxOccurs="1" name="CodigoMunicipio" type="tsCodigoMunicipioIbge"/>
+			<xsd:element minOccurs="0" maxOccurs="1" name="Endereco" type="tcEndereco"/>
+			<xsd:element minOccurs="0" maxOccurs="1" name="Contato" type="tcContato"/>
+			<xsd:element minOccurs="0" maxOccurs="1" name="NifIntermediario" type="tsNif"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="tcValoresDeclaracaoServico">
@@ -389,6 +392,13 @@
 			<xsd:element maxOccurs="1" minOccurs="0" name="Aliquota" type="tsAliquota"/>
 			<xsd:element maxOccurs="1" minOccurs="0" name="DescontoIncondicionado" type="tsValor"/>
 			<xsd:element maxOccurs="1" minOccurs="0" name="DescontoCondicionado" type="tsValor"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="InfoPisCofins" type="TCInfoPisCofins">
+				<xsd:annotation>
+					<xsd:documentation>
+						Grupo de informações dos tributos PIS/COFINS.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="tcValoresNfse">
@@ -419,7 +429,8 @@
 	<xsd:complexType name="tcDadosConstrucaoCivil">
 		<xsd:sequence>
 			<xsd:element maxOccurs="1" minOccurs="0" name="CodigoObra" type="tsCodigoObra"/>
-			<xsd:element maxOccurs="1" minOccurs="1" name="Art" type="tsArt"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Art" type="tsArt"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="EnderecoObra" type="TCEnderObraEvento"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="tcDadosPrestador">
@@ -769,7 +780,7 @@
 					<xsd:element maxOccurs="1" minOccurs="1" name="ListaNfse">
 						<xsd:complexType>
 							<xsd:sequence>
-								<xsd:element maxOccurs="50" minOccurs="1" ref="CompNfse"/>
+								<xsd:element maxOccurs="unbounded" minOccurs="1" ref="CompNfse"/>
 								<xsd:element maxOccurs="1" minOccurs="0" ref="ListaMensagemAlertaRetorno"/>
 							</xsd:sequence>
 						</xsd:complexType>
@@ -831,7 +842,7 @@
 				<xsd:element maxOccurs="1" minOccurs="1" name="ListaNfse">
 					<xsd:complexType>
 						<xsd:sequence>
-							<xsd:element maxOccurs="50" minOccurs="1" ref="CompNfse"/>
+							<xsd:element maxOccurs="unbounded" minOccurs="1" ref="CompNfse"/>
 							<xsd:element maxOccurs="1" minOccurs="0" name="ProximaPagina" type="tsPagina"/>
 						</xsd:sequence>
 					</xsd:complexType>
@@ -876,7 +887,7 @@
 				<xsd:element maxOccurs="1" minOccurs="1" name="ListaNfse">
 					<xsd:complexType>
 						<xsd:sequence>
-							<xsd:element maxOccurs="50" minOccurs="1" ref="CompNfse"/>
+							<xsd:element maxOccurs="unbounded" minOccurs="1" ref="CompNfse"/>
 							<xsd:element maxOccurs="1" minOccurs="0" name="ProximaPagina" type="tsPagina"/>
 						</xsd:sequence>
 					</xsd:complexType>
@@ -907,7 +918,7 @@
 				<xsd:element maxOccurs="1" minOccurs="1" name="ListaNfse">
 					<xsd:complexType>
 						<xsd:sequence>
-							<xsd:element maxOccurs="50" minOccurs="1" ref="CompNfse"/>
+							<xsd:element maxOccurs="unbounded" minOccurs="1" ref="CompNfse"/>
 							<xsd:element maxOccurs="1" minOccurs="0" name="ProximaPagina" type="tsPagina"/>
 						</xsd:sequence>
 					</xsd:complexType>
@@ -929,7 +940,7 @@
 					<xsd:documentation>Nome da localidade de incidência do IBS/CBS.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="pRedutor" type="TSDec2V2">
+			<xsd:element name="pRedutor" type="TSDec2V2" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>Percentual de redução de aliquota em compra governamental.</xsd:documentation>
 				</xsd:annotation>
@@ -1098,7 +1109,7 @@
 			<xsd:element name="vIBSTot" type="TSDec15V2">
 				<xsd:annotation>
 					<xsd:documentation>
-						Valor total do IBS: 
+						Valor total do IBS:
 						[vIBSTot = vIBSUF + vIBSMun].
 					</xsd:documentation>
 				</xsd:annotation>
@@ -1142,7 +1153,7 @@
 	<!--TIPO COMPLEXO DE TOTALIZADORES DOS VALORES IBS ESTADUAL-->
 	<xsd:complexType name="TCRTCTotalIBSUF">
 		<xsd:sequence>
-			<xsd:element name="vDifUF" type="TSDec15V2">
+			<xsd:element name="vDifUF" type="TSDec15V2" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>
 						Total do Diferimento do IBS estadual.
@@ -1163,7 +1174,7 @@
 	<!--TIPO COMPLEXO DE TOTALIZADORES DOS VALORES IBS MUNICIPAL-->
 	<xsd:complexType name="TCRTCTotalIBSMun">
 		<xsd:sequence>
-			<xsd:element name="vDifMun" type="TSDec15V2">
+			<xsd:element name="vDifMun" type="TSDec15V2" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>
 						Total do Diferimento do IBS municipal.
@@ -1189,7 +1200,7 @@
 					<xsd:documentation>Grupo de valores referentes ao crédito presumido para CBS.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="vDifCBS" type="TSDec15V2">
+			<xsd:element name="vDifCBS" type="TSDec15V2" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>
 						Total do Diferimento CBS.
@@ -1318,7 +1329,7 @@
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="indFinal" type="TSRTCIndFinal">
+			<xsd:element name="indFinal" type="TSRTCIndFinal" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>
 						Indica operação de uso ou consumo pessoal (art. 57):
@@ -1348,7 +1359,7 @@
 				<xsd:annotation>
 					<xsd:documentation>
 						Grupo de NFS-e referenciadas.
-						
+
 						Obs: O grupo de documentos referenciados deve ser informado quando [tpOper = 2 ou 3] e não ser informado quando [tpOper = 1, 4 ou 5].
 					</xsd:documentation>
 				</xsd:annotation>
@@ -1916,7 +1927,7 @@
 		<xsd:restriction base="xsd:string">
 			<xsd:whiteSpace value="preserve"/>
 			<xsd:maxLength value="50"/>
-			<xsd:pattern value="[0-9]{50}"/>
+			<xsd:pattern value="[0-9]{9}[A-Z0-9]{12}[0-9]{29}"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="TSTelefone">
@@ -1945,7 +1956,7 @@
 		<xsd:restriction base="xsd:string">
 			<xsd:whiteSpace value="preserve"/>
 			<xsd:maxLength value="14"/>
-			<xsd:pattern value="[0-9]{14}"/>
+			<xsd:pattern value="[A-Z0-9]{12}[0-9]{2}"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="TSRTCCodClassTrib">
@@ -2105,7 +2116,7 @@
 		<xsd:annotation>
 			<xsd:documentation>
 				Tipo de Operação com Entes Governamentais ou outros serviços sobre bens imóveis:
-				
+
 				1 = Fornecimento com pagamento posterior;
 				2 = Recebimento do pagamento com fornecimento já realizado;
 				3 = Fornecimento com pagamento já realizado;
@@ -2174,9 +2185,9 @@
 				1 = o destinatário não é o próprio adquirente, podendo ser outra pessoa, física ou jurídica (ou equiparada), ou um estabelecimento diferente do indicado como tomador (tomador=adquirente≠destinatário).
 
 				O Tomador de Serviços (conceito da Lei Complementar nº 116/2003) e o Adquirente (conceito da Lei Complementar nº 214/2025) são identificados como a mesma pessoa, pois é quem:
-				
+
 				a) se obriga ao pagamento ou outra forma de contraprestação pelo fornecimento; ou;
-				b) nos casos de pagamento ou de qualquer outra forma de contraprestação por conta e ordem ou em nome de terceiros, aquele por conta de quem ou em nome de quem decorre a obrigação de pagamento ou de qualquer outra forma de contraprestação pelo fornecimento do bem ou do serviço. 
+				b) nos casos de pagamento ou de qualquer outra forma de contraprestação por conta e ordem ou em nome de terceiros, aquele por conta de quem ou em nome de quem decorre a obrigação de pagamento ou de qualquer outra forma de contraprestação pelo fornecimento do bem ou do serviço.
 
 				Pode ser também o próprio destinatário.
 				O Destinatário é a pessoa a quem é fornecido o bem ou o serviço.
@@ -2325,7 +2336,187 @@
 		<xsd:restriction base="xsd:string">
 			<xsd:whiteSpace value="preserve"/>
 			<xsd:maxLength value="50"/>
-			<xsd:pattern value="[0-9]{50}"/>
+			<xsd:pattern value="[0-9]{9}[A-Z0-9]{12}[0-9]{29}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- TIPO COMPLEXO PARA INFORMAÇÕES DE TRIBUTAÇÃO ESPECÍFICA PARA OUTROS TRIBUTOS DO TIPO PIS/COFINS -->
+	<xsd:simpleType name="TSTipoCST">
+		<xsd:annotation>
+			<xsd:documentation>
+				Código de Situação Tributária do PIS/COFINS (CST):
+				00 - Nenhum;
+				01 - Operação Tributável com Alíquota Básica;
+				02 - Operação Tributável com Alíquota Diferenciada;
+				03 - Operação Tributável com Alíquota por Unidade de Medida de Produto;
+				04 - Operação Tributável monofásica - Revenda a Alíquota Zero;
+				05 - Operação Tributável por Substituição Tributária;
+				06 - Operação Tributável a Alíquota Zero;
+				07 - Operação Isenta da Contribuição;
+				08 - Operação sem Incidência da Contribuição;
+				09 - Operação com Suspensão da Contribuição;
+				49 - Outras Operações de Saída;
+				50 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Tributada no Mercado Interno;
+				51 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno;
+				52 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação;
+				53 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno;
+				54 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas no Mercado Interno e de Exportação;
+				55 - Operação com Direito a Crédito – Vinculada a Receitas Não Tributadas no Mercado Interno e de Exportação;
+				56 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação;
+				60 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno;
+				61 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno;
+				62 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação;
+				63 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno;
+				64 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação;
+				65 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação;
+				66 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação;
+				67 - Crédito Presumido – Outras Operações;
+				70 - Operação de Aquisição sem Direito a Crédito;
+				71 - Operação de Aquisição com Isenção;
+				72 - Operação de Aquisição com Suspensão;
+				73 - Operação de Aquisição a Alíquota Zero;
+				74 - Operação de Aquisição sem Incidência da Contribuição;
+				75 - Operação de Aquisição por Substituição Tributária;
+				98 - Outras Operações de Entrada;
+				99 - Outras Operações;
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="00"/>
+			<xsd:enumeration value="01"/>
+			<xsd:enumeration value="02"/>
+			<xsd:enumeration value="03"/>
+			<xsd:enumeration value="04"/>
+			<xsd:enumeration value="05"/>
+			<xsd:enumeration value="06"/>
+			<xsd:enumeration value="07"/>
+			<xsd:enumeration value="08"/>
+			<xsd:enumeration value="09"/>
+			<xsd:enumeration value="49"/>
+			<xsd:enumeration value="50"/>
+			<xsd:enumeration value="51"/>
+			<xsd:enumeration value="52"/>
+			<xsd:enumeration value="53"/>
+			<xsd:enumeration value="54"/>
+			<xsd:enumeration value="55"/>
+			<xsd:enumeration value="56"/>
+			<xsd:enumeration value="60"/>
+			<xsd:enumeration value="61"/>
+			<xsd:enumeration value="62"/>
+			<xsd:enumeration value="63"/>
+			<xsd:enumeration value="64"/>
+			<xsd:enumeration value="65"/>
+			<xsd:enumeration value="66"/>
+			<xsd:enumeration value="67"/>
+			<xsd:enumeration value="70"/>
+			<xsd:enumeration value="71"/>
+			<xsd:enumeration value="72"/>
+			<xsd:enumeration value="73"/>
+			<xsd:enumeration value="74"/>
+			<xsd:enumeration value="75"/>
+			<xsd:enumeration value="98"/>
+			<xsd:enumeration value="99"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TSTipoRetPISCofins">
+		<xsd:annotation>
+			<xsd:documentation>
+				Tipo de retencao do Pis/Cofins:
+				0 - PIS/COFINS/CSLL Não Retidos;
+				3 - PIS/COFINS/CSLL Retidos;
+				4 - PIS/COFINS Retidos, CSLL Não Retido;
+				5 - PIS Retido, COFINS/CSLL Não Retido;
+				6 - COFINS Retido, PIS/CSLL Não Retido;
+				7 - PIS Não Retido, COFINS/CSLL Retidos;
+				8 - PIS/COFINS Não Retidos, CSLL Retido;
+				9 - COFINS Não Retido, PIS/CSLL Retidos;
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:enumeration value="0"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="5"/>
+			<xsd:enumeration value="6"/>
+			<xsd:enumeration value="7"/>
+			<xsd:enumeration value="8"/>
+			<xsd:enumeration value="9"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="TCInfoPisCofins">
+		<xsd:sequence>
+			<xsd:element name="CST" type="TSTipoCST" minOccurs="1" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>
+						Código de Situação Tributária do PIS/COFINS (CST):
+						00 - Nenhum;
+						01 - Operação Tributável com Alíquota Básica;
+						02 - Operação Tributável com Alíquota Diferenciada;
+						03 - Operação Tributável com Alíquota por Unidade de Medida de Produto;
+						04 - Operação Tributável monofásica - Revenda a Alíquota Zero;
+						05 - Operação Tributável por Substituição Tributária;
+						06 - Operação Tributável a Alíquota Zero;
+						07 - Operação Isenta da Contribuição;
+						08 - Operação sem Incidência da Contribuição;
+						09 - Operação com Suspensão da Contribuição;
+						49 - Outras Operações de Saída;
+						50 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Tributada no Mercado Interno;
+						51 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno;
+						52 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação;
+						53 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno;
+						54 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas no Mercado Interno e de Exportação;
+						55 - Operação com Direito a Crédito – Vinculada a Receitas Não Tributadas no Mercado Interno e de Exportação;
+						56 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação;
+						60 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno;
+						61 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno;
+						62 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação;
+						63 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno;
+						64 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação;
+						65 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação;
+						66 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação;
+						67 - Crédito Presumido – Outras Operações;
+						70 - Operação de Aquisição sem Direito a Crédito;
+						71 - Operação de Aquisição com Isenção;
+						72 - Operação de Aquisição com Suspensão;
+						73 - Operação de Aquisição a Alíquota Zero;
+						74 - Operação de Aquisição sem Incidência da Contribuição;
+						75 - Operação de Aquisição por Substituição Tributária;
+						98 - Outras Operações de Entrada;
+						99 - Outras Operações;
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="tpRetPisCofins" type="TSTipoRetPISCofins" minOccurs="1" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>
+						Tipo de retenção do PIS/COFINS:
+						0 - PIS/COFINS/CSLL Não Retidos;
+						3 - PIS/COFINS/CSLL Retidos;
+						4 - PIS/COFINS Retidos, CSLL Não Retido;
+						5 - PIS Retido, COFINS/CSLL Não Retido;
+						6 - COFINS Retido, PIS/CSLL Não Retido;
+						7 - PIS Não Retido, COFINS/CSLL Retidos;
+						8 - PIS/COFINS Não Retidos, CSLL Retido;
+						9 - COFINS Não Retido, PIS/CSLL Retidos;
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BaseCalculoPisCofins" type="tsValor" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>
+						Base de cálculo do PIS/COFINS informada pelo contribuinte, limitada ao valor do serviço.
+						Se omitida, será utilizado o valor do serviço menos o desconto incondicionado.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="tsNif">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="40" />
+			<xsd:minLength value="1" />
+			<xsd:whiteSpace value="collapse" />
 		</xsd:restriction>
 	</xsd:simpleType>
 </xsd:schema>
