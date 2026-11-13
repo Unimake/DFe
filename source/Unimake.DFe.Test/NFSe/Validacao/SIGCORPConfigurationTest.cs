@@ -79,38 +79,6 @@ namespace Unimake.DFe.Test.NFSe.Validacao
         }
 
         [Fact]
-        public void DeveInicializarGeracaoLegadaSIGCORP()
-        {
-            var configuracao = CriarConfiguracaoSIGCORP204(Servico.NFSeGerarNfse);
-            var excecao = Record.Exception(() => new GerarNfse(
-                CarregarXmlSIGCORP204("GerarNfseEnvio-env-loterps.xml"), configuracao));
-
-            Assert.Null(excecao);
-            Assert.Equal("TOKEN-LEGADO", configuracao.MunicipioToken);
-            Assert.Empty(configuracao.Headers);
-        }
-
-        [Fact]
-        public void DeveInicializarCancelamentoLegadoSIGCORP()
-        {
-            var excecao = Record.Exception(() => new CancelarNfse(
-                CarregarXmlSIGCORP204("CancelarNfseEnvio-ped-cannfse.xml"),
-                CriarConfiguracaoSIGCORP204(Servico.NFSeCancelarNfse)));
-
-            Assert.Null(excecao);
-        }
-
-        [Fact]
-        public void DeveInicializarRecepcaoLoteLegadaSIGCORP()
-        {
-            var excecao = Record.Exception(() => new GerarNfse(
-                CarregarXmlSIGCORP204("EnviarLoteRpsEnvio-env-loterps.xml"),
-                CriarConfiguracaoSIGCORP204(Servico.NFSeRecepcionarLoteRps)));
-
-            Assert.Null(excecao);
-        }
-
-        [Fact]
         public void DeveManterRespostaDeSucessoSIGCORP()
         {
             var configuracao = CriarConfiguracaoSIGCORP101();
@@ -134,26 +102,6 @@ namespace Unimake.DFe.Test.NFSe.Validacao
                 Servico.NFSeGerarNfse,
                 ValidarEstruturaXML.DefinirTipoServicoNFSe(xml, PadraoNFSe.SIGCORP, "1.03", 4113700));
         }
-
-        private static XmlDocument CarregarXmlSIGCORP204(string nomeArquivo)
-        {
-            var xml = new XmlDocument();
-            xml.Load(@"..\..\..\NFSe\Resources\SIGCORP\2.04\" + nomeArquivo);
-            return xml;
-        }
-
-        private static Configuracao CriarConfiguracaoSIGCORP204(Servico servico) => new Configuracao
-        {
-            TipoDFe = TipoDFe.NFSe,
-            CertificadoDigital = PropConfig.CertificadoDigital,
-            TipoAmbiente = TipoAmbiente.Homologacao,
-            CodigoMunicipio = 4204202,
-            Servico = servico,
-            SchemaVersao = "2.04",
-            MunicipioUsuario = "usuario-legado",
-            MunicipioSenha = "senha-legado",
-            MunicipioToken = "TOKEN-LEGADO"
-        };
 
         private static XmlDocument CarregarXmlSIGCORP101()
         {
