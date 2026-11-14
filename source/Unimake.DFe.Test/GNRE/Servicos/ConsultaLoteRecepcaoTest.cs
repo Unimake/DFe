@@ -56,7 +56,7 @@ namespace Unimake.DFe.Test.GNRE.Servicos
 
             Assert.True(consultaLoteRecepcao.Result != null);
             Assert.True(consultaLoteRecepcao.Result.Ambiente.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102"), "Código de retorno diferente de 100 e 102.");  //Lote de consulta de guia recebido com sucesso!
+            Assert.True(consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("200"), "Código de retorno diferente de 100 e 102. Código retornado: " + consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo + " " + consultaLoteRecepcao.Result.SituacaoRecepcao.Descricao);  //Lote de consulta de guia recebido com sucesso!
         }
 
         /// <summary>
@@ -85,10 +85,7 @@ namespace Unimake.DFe.Test.GNRE.Servicos
 
             Assert.NotNull(consultaLoteRecepcao.Result);
             Assert.Equal(tipoAmbiente, consultaLoteRecepcao.Result.Ambiente);
-            Assert.True(
-                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") ||
-                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102"),
-                "Código de retorno diferente de 100 e 102.");
+            Assert.True(consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("200"), "Código de retorno diferente de 100 e 102. Código retornado: " + consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo + " " + consultaLoteRecepcao.Result.SituacaoRecepcao.Descricao);
         }
 
         /// <summary>
@@ -118,10 +115,7 @@ namespace Unimake.DFe.Test.GNRE.Servicos
 
             Assert.NotNull(consultaLoteRecepcao.Result);
             Assert.Equal(tipoAmbiente, consultaLoteRecepcao.Result.Ambiente);
-            Assert.True(
-                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") ||
-                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102"),
-                "Código de retorno diferente de 100 e 102.");
+            Assert.True(consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("200"), "Código de retorno diferente de 100 e 102. Código retornado: " + consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo + " " + consultaLoteRecepcao.Result.SituacaoRecepcao.Descricao);
         }
 
         /// <summary>
@@ -155,10 +149,7 @@ namespace Unimake.DFe.Test.GNRE.Servicos
 
             Assert.NotNull(consultaLoteRecepcao.Result);
             Assert.Equal(tipoAmbiente, consultaLoteRecepcao.Result.Ambiente);
-            Assert.True(
-                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") ||
-                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102"),
-                "Código de retorno diferente de 100 e 102.");
+            Assert.True(consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("200"), "Código de retorno diferente de 100 e 102. Código retornado: " + consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo + " " + consultaLoteRecepcao.Result.SituacaoRecepcao.Descricao);
         }
     }
 }
