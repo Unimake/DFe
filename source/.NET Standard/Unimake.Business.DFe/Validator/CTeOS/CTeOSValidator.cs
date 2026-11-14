@@ -117,24 +117,38 @@ namespace Unimake.Business.DFe.Validator.CTeOS
                 var UFIni = Tag.GetValue("UFIni"); //UF inicial do transporte
                 var UFFim = Tag.GetValue("UFFim"); //UF Final do transporte
 
-                if (Tag.Parent.GetElement("infCTeNorm") == null)
+                var infCTeNorm = Tag.Parent.GetElement("infCTeNorm");
+                if (infCTeNorm == null)
                 {
-                    ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações com CTe normal/substituição (<tpCTe> = 1 ou 3) de transporte rodoviário de pessoas é obrigatório informar o grupo de tag <infCTeNorm>." +
+                    ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações com CTe normal/substituição (<tpCTe> = 0 ou 3) de transporte rodoviário de pessoas é obrigatório informar o grupo de tag <infCTeNorm>." +
                         " [TAG: <infCTeNorm> do grupo de tag <infCte>]"));
                 }
 
                 if (UFIni != "EX" && UFFim != "EX")
                 {
+                    var infModal = infCTeNorm.GetElement("infModal");
+                    if (infModal == null)
+                    {
+                        ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações com CTe normal/substituição de transporte rodoviário de pessoas é obrigatório informar o grupo de tag <infModal>." +
+                            " [TAG: <infModal> do grupo de tag <infCte><infCTeNorm>]"));
+                    }
+
+                    var rodoOS = infModal.GetElement("rodoOS");
+                    if (rodoOS == null)
+                    {
+                        ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações com CTe normal/substituição de transporte rodoviário de pessoas é obrigatório informar o grupo de tag <rodoOS>." +
+                            " [TAG: <rodoOS> do grupo de tag <infCte><infCTeNorm><infModal>]"));
+                    }
                     if (UFIni != UFFim) //Operação Interestadual
                     {
 
-                        if (string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("TAF")))
+                        if (string.IsNullOrWhiteSpace(rodoOS.GetValue("TAF")))
                         {
                             ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações interestaduais com CTe normal/substituição de transporte rodoviário de pessoas é obrigatório informar o conteúdo da tag <TAF> (Termo de Autorização de Fretamento) no CTe." +
                                 " [TAG: <TAF> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]"));
                         }
 
-                        if (!string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("NroRegEstadual")))
+                        if (!string.IsNullOrWhiteSpace(rodoOS.GetValue("NroRegEstadual")))
                         {
                             ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações interestaduais com CTe normal/substituição de transporte rodoviário de pessoas não pode informar a tag <NroRegEstadual> (Número do Registro Estadual) no CTe." +
                                 " [TAG: <NroRegEstadual> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]"));
@@ -142,13 +156,13 @@ namespace Unimake.Business.DFe.Validator.CTeOS
                     }
                     else //Operação Estadual
                     {
-                        if (string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("NroRegEstadual")))
+                        if (string.IsNullOrWhiteSpace(rodoOS.GetValue("NroRegEstadual")))
                         {
                             ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações estaduais com CTe normal/substituição de transporte rodoviário de pessoas é obrigatório informar o conteúdo da tag <NroRegEstadual> (Número do Registro Estadual) no CTe." +
                                 " [TAG: <NroRegEstadual> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]"));
                         }
 
-                        if (!string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("TAF")))
+                        if (!string.IsNullOrWhiteSpace(rodoOS.GetValue("TAF")))
                         {
                             ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações estaduais com CTe normal/substituição de transporte rodoviário de pessoas não pode informar a tag <TAF> (Termo de Autorização de Fretamento) no CTe." +
                                 " [TAG: <TAF> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]"));
