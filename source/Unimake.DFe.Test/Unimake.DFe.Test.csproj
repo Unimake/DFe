@@ -142,4 +142,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup Label="DCe - schemas oficiais de caracterizacao offline AF05">
+    <None Remove="DCe\Resources\AF05\**\*.xsd;DCe\Resources\AF05\proveniencia.json" />
+    <EmbeddedResource Include="DCe\Resources\AF05\**\*.xsd;DCe\Resources\AF05\proveniencia.json" />
+  </ItemGroup>
 </Project>
