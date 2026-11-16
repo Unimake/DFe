@@ -326,10 +326,6 @@ namespace Unimake.Business.DFe.Xml.BPeTM
         public bool ShouldSerializeIndFornecimento() => IndFornecimento.HasValue;
 #endif
 
-        /// <summary>Referência ao BP-e que originou a multa ou os juros.</summary>
-        [XmlElement("gMultaJuros")]
-        public GMultaJuros GMultaJuros { get; set; }
-
 #if INTEROP
         public bool ShouldSerializeDhContField() => DhCont > DateTime.MinValue;
 #else
