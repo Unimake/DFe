@@ -180,19 +180,60 @@ namespace Unimake.Business.DFe.Servicos.NFe
             get
             {
                 var retorno = new List<ProcEventoNFe>();
+                var respostas = Result.RetEvento;
+                var utilizadas = new HashSet<RetEvento>();
+                if (EnvEvento.Evento.Count > 1 && respostas.Count != EnvEvento.Evento.Count)
+                {
+                    throw new InvalidOperationException("A quantidade de retornos não corresponde ao lote de eventos enviado.");
+                }
 
                 for (var i = 0; i < EnvEvento.Evento.Count; i++)
                 {
+                    var resposta = EnvEvento.Evento.Count == 1
+                        ? respostas[i]
+                        : CorrelacionarRetorno(EnvEvento.Evento[i].InfEvento, respostas);
+                    if (!utilizadas.Add(resposta))
+                    {
+                        throw new InvalidOperationException("O retorno contém correlação ambígua para os eventos enviados.");
+                    }
                     retorno.Add(new ProcEventoNFe
                     {
                         Versao = EnvEvento.Versao,
                         Evento = EnvEvento.Evento[i],
-                        RetEvento = Result.RetEvento[i]
+                        RetEvento = resposta
                     });
                 };
 
                 return retorno;
             }
+        }
+
+        private static RetEvento CorrelacionarRetorno(InfEvento pedido, List<RetEvento> respostas)
+        {
+            RetEvento encontrado = null;
+            foreach (var resposta in respostas)
+            {
+                var dados = resposta.InfEvento;
+                if (dados == null) continue;
+                var mesmoId = string.Equals(pedido.Id, dados.Id, StringComparison.OrdinalIgnoreCase);
+                var mesmaIdentidade = pedido.ChNFe == dados.ChNFe && pedido.TpAmb == dados.TpAmb
+                    && pedido.TpEvento == dados.TpEvento && pedido.NSeqEvento == dados.NSeqEvento;
+                if (!mesmoId && !mesmaIdentidade) continue;
+                if ((!string.IsNullOrWhiteSpace(dados.Id) && !mesmoId)
+                    || (!string.IsNullOrWhiteSpace(dados.ChNFe) && pedido.ChNFe != dados.ChNFe)
+                    || ((int)dados.TpAmb != 0 && pedido.TpAmb != dados.TpAmb)
+                    || ((int)dados.TpEvento != 0 && pedido.TpEvento != dados.TpEvento)
+                    || (dados.NSeqEvento != 0 && pedido.NSeqEvento != dados.NSeqEvento))
+                {
+                    throw new InvalidOperationException("O retorno contém dados divergentes para um dos eventos enviados.");
+                }
+                if (encontrado != null)
+                {
+                    throw new InvalidOperationException("O retorno contém correlação ambígua para um dos eventos enviados.");
+                }
+                encontrado = resposta;
+            }
+            return encontrado ?? throw new InvalidOperationException("O retorno não contém correlação para um dos eventos enviados.");
         }
 
         /// <summary>

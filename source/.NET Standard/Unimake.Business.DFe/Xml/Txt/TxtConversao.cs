@@ -76,7 +76,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         internal static TxtConversaoResultado Status(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a); var d = Novo("consStatServ", NFeNs, f.Get("versao", "4.00")); Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente))); Add(d, "cUF", f.Get("cUF", N(c.CodigoUF))); Add(d, "xServ", "STATUS"); return R(d); }
         internal static TxtConversaoResultado Situacao(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a); var d = Novo("consSitNFe", NFeNs, f.Get("versao", "4.00")); Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente))); Add(d, "xServ", "CONSULTAR"); Add(d, "chNFe", Req(f, "chNFe")); return R(d); }
         internal static TxtConversaoResultado Cadastro(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a); var d = Novo("ConsCad", NFeNs, f.Get("versao", "2.00")); var inf = E(d, "infCons"); d.DocumentElement.AppendChild(inf); Add(d, inf, "xServ", "CONS-CAD"); Add(d, inf, "UF", f.Get("UF", c.CodigoUF.ToString())); Primeiro(d, inf, f, "IE", "CNPJ", "CPF"); return R(d); }
-        internal static TxtConversaoResultado Gtin(string a) { var f = TxtCampos.Ler(a); var d = Novo("consGTIN", "http://www.portalfiscal.inf.br/ccg", f.Get("versao", "1.00")); Add(d, "GTIN", Req(f, "GTIN")); return R(d); }
+        internal static TxtConversaoResultado Gtin(string a) { var f = TxtCampos.Ler(a); var d = Novo("consGTIN", NFeNs, f.Get("versao", "1.00")); Add(d, "GTIN", Req(f, "GTIN")); return R(d); }
         internal static TxtConversaoResultado GerarChave(string arquivo, TxtConversaoContexto contexto)
         {
             var campos = TxtCampos.Ler(arquivo);
