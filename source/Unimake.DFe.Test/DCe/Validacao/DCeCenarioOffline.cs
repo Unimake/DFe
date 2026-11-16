@@ -95,7 +95,7 @@ namespace Unimake.DFe.Test.DCe.Validacao
             return documento;
         }
 
-        // A DLL ainda não modela este grupo oficial. O DOM é somente uma fixture de schema,
+        // Fixture DOM para confrontar os conjuntos oficiais independentemente do modelo,
         // construída antes da assinatura; nunca entra em serviço fiscal ou código distribuível.
         internal static void IncluirSolicitacaoFisco(XmlDocument documento)
         {

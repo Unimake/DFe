@@ -67,16 +67,15 @@ namespace Unimake.DFe.Test.DCe.Validacao
         }
 
         [Fact]
-        public void CaracterizacaoAtualDoModeloNaoRepresentaSolicitacaoDoFisco()
+        public void ModeloPreservaSolicitacaoDoFiscoSemAlterarInfDCe()
         {
             var original = DCeCenarioOffline.Documento(tipo: TipoEmitenteDCe.AppFisco).GerarXML();
             DCeCenarioOffline.IncluirSolicitacaoFisco(original);
             var modelo = XMLUtility.Deserializar<XmlDCe>(original);
             var regravado = modelo.GerarXML();
-            // Lacuna conhecida, não uma regra fiscal desejada: revisar esta caracterização
-            // quando houver suporte público autorizado para o grupo de solicitação.
             Assert.Single(original.GetElementsByTagName("infSolicDCe", DCeCenarioOffline.Namespace).Cast<XmlNode>());
-            Assert.Empty(regravado.GetElementsByTagName("infSolicDCe", DCeCenarioOffline.Namespace));
+            Assert.Single(regravado.GetElementsByTagName("infSolicDCe", DCeCenarioOffline.Namespace).Cast<XmlNode>());
+            Assert.Equal(original.DocumentElement.OuterXml, regravado.DocumentElement.OuterXml);
             Assert.Equal(original.GetElementsByTagName("infDCe")[0].OuterXml, regravado.GetElementsByTagName("infDCe")[0].OuterXml);
         }
 
