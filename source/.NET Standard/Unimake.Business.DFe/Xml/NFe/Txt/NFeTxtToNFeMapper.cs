@@ -63,6 +63,13 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             }
 
             destino.InfNFeField.Retirada = string.IsNullOrWhiteSpace(retirada.XLgr) ? null : retirada;
+            if (!string.IsNullOrWhiteSpace(entrega.XLgr) &&
+                string.IsNullOrWhiteSpace(entrega.CNPJ) &&
+                string.IsNullOrWhiteSpace(entrega.CPF))
+            {
+                // TLocal exige a escolha CNPJ/CPF; TCnpjOpc permite CNPJ vazio.
+                entrega.CNPJ = string.Empty;
+            }
             destino.InfNFeField.Entrega = string.IsNullOrWhiteSpace(entrega.XLgr) ? null : entrega;
             destino.InfNFeField.AutXML = autorizadosXml.Count == 0 ? null : autorizadosXml;
         }
