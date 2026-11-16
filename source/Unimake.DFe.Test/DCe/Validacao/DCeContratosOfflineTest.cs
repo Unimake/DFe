@@ -81,25 +81,73 @@ namespace Unimake.DFe.Test.DCe.Validacao
         }
 
         [Theory]
-        [InlineData(false, TipoEmitenteDCe.AppFisco)]
-        [InlineData(true, TipoEmitenteDCe.AppFisco)]
-        [InlineData(false, TipoEmitenteDCe.EmissorProprio)]
-        [InlineData(true, TipoEmitenteDCe.EmissorProprio)]
-        public void CaracterizacaoAtualDaAutorizacaoEValidacaoDiretaUsaLeiautePermissivo(bool pais, TipoEmitenteDCe tipo)
+        [InlineData(false, false, TipoEmitenteDCe.AppFisco)]
+        [InlineData(false, true, TipoEmitenteDCe.AppFisco)]
+        [InlineData(true, false, TipoEmitenteDCe.AppFisco)]
+        [InlineData(true, true, TipoEmitenteDCe.AppFisco)]
+        [InlineData(false, false, TipoEmitenteDCe.EmissorProprio)]
+        [InlineData(false, true, TipoEmitenteDCe.EmissorProprio)]
+        [InlineData(true, false, TipoEmitenteDCe.EmissorProprio)]
+        [InlineData(true, true, TipoEmitenteDCe.EmissorProprio)]
+        public void EmissaoEValidacaoDiretaExigemPaisSemPreencherAutomaticamente(bool codigo, bool nome, TipoEmitenteDCe tipo)
         {
             using var cenario = new DCeCenarioOffline();
-            using var servico = new Autorizacao(DCeCenarioOffline.Documento(pais, pais, tipo), cenario.Configuracao());
-            // Construção, assinatura e validação reais, sem chamar Executar.
-            Assert.Equal(Servico.DCeAutorizacaoSinc, servico.Configuracoes.Servico);
-            DCeCenarioOffline.VerificarAssinatura(servico.ConteudoXMLAssinado);
-            var xml = DCeCenarioOffline.Documento(pais, pais, tipo).GerarXML();
+            var xml = DCeCenarioOffline.Documento(codigo, nome, tipo).GerarXML();
+            var anterior = xml.OuterXml;
             var resultado = new ValidarEstruturaXML().ValidarServico(xml, cenario.Configuracao());
-            Assert.True(resultado.Validado);
-            Assert.Equal("1", resultado.StatusValidacao);
-            DCeCenarioOffline.VerificarAssinatura(resultado.XmlAssinado);
-            Assert.NotEmpty(DCeSchemasOficiaisOffline.Validar(resultado.XmlAssinado, "Emissao", "dce_v1.00.xsd"));
-            Assert.Equal(pais ? 1 : 0, resultado.XmlAssinado.GetElementsByTagName("enderDest")[0]
-                .ChildNodes.Cast<XmlNode>().Count(x => x.LocalName == "cPais"));
+            if (codigo && nome)
+            {
+                Assert.True(resultado.Validado, resultado.MensagemRetorno);
+                DCeCenarioOffline.VerificarAssinatura(resultado.XmlAssinado);
+                using var servico = new Autorizacao(DCeCenarioOffline.Documento(codigo, nome, tipo), cenario.Configuracao());
+                DCeCenarioOffline.VerificarAssinatura(servico.ConteudoXMLAssinado);
+            }
+            else
+            {
+                Assert.False(resultado.Validado);
+                Assert.Equal("2", resultado.StatusValidacao);
+                Assert.Contains(codigo ? "xPais" : "cPais", resultado.MensagemRetorno);
+                Assert.Equal(anterior, xml.OuterXml);
+                var erro = Assert.Throws<Unimake.Exceptions.ValidarXMLException>(() =>
+                    new Autorizacao(DCeCenarioOffline.Documento(codigo, nome, tipo), cenario.Configuracao()));
+                Assert.Contains(codigo ? "xPais" : "cPais", erro.Message);
+            }
+        }
+
+        [Fact]
+        public void ValidacaoDiretaNaoTransformaDocumentoEmConsultaPelaConfiguracao()
+        {
+            using var cenario = new DCeCenarioOffline();
+            var configuracao = cenario.Configuracao();
+            configuracao.Servico = Servico.DCeConsultaProtocolo;
+            var resultado = new ValidarEstruturaXML().ValidarServico(
+                DCeCenarioOffline.Documento(false, false).GerarXML(), configuracao);
+            Assert.False(resultado.Validado);
+            Assert.Equal("2", resultado.StatusValidacao);
+        }
+
+        [Fact]
+        public void EmissaoAssinadaSemPaisERecusadaSemModificarAssinatura()
+        {
+            using var cenario = new DCeCenarioOffline();
+            var xml = cenario.Assinar(DCeCenarioOffline.Documento(false, false).GerarXML());
+            var anterior = xml.OuterXml;
+            var resultado = new ValidarEstruturaXML().ValidarServico(xml, cenario.Configuracao());
+            Assert.False(resultado.Validado);
+            Assert.Equal("2", resultado.StatusValidacao);
+            Assert.Equal(anterior, xml.OuterXml);
+            DCeCenarioOffline.VerificarAssinatura(xml);
+        }
+
+        [Fact]
+        public void ReutilizarConfiguracaoDaConsultaNaoDesviaAValidacaoDaEmissao()
+        {
+            using var cenario = new DCeCenarioOffline();
+            var configuracao = cenario.Configuracao();
+            configuracao.Servico = Servico.DCeConsultaProtocolo;
+            var erro = Assert.Throws<Unimake.Exceptions.ValidarXMLException>(() =>
+                new Autorizacao(DCeCenarioOffline.Documento(false, false), configuracao));
+            Assert.Contains("cPais", erro.Message);
         }
 
         [Fact]
@@ -140,14 +188,12 @@ namespace Unimake.DFe.Test.DCe.Validacao
         }
 
         [Theory]
-        [InlineData(false, 100)]
-        [InlineData(true, 100)]
-        [InlineData(false, 150)]
-        [InlineData(true, 150)]
-        public void DistribuicaoDaAutorizacaoPreservaDocumentoAssinadoEContratoDeArquivo(bool pais, int status)
+        [InlineData(100)]
+        [InlineData(150)]
+        public void DistribuicaoDaAutorizacaoPreservaDocumentoAssinadoEContratoDeArquivo(int status)
         {
             using var cenario = new DCeCenarioOffline();
-            using var servico = new Autorizacao(DCeCenarioOffline.Documento(pais, pais), cenario.Configuracao());
+            using var servico = new Autorizacao(DCeCenarioOffline.Documento(), cenario.Configuracao());
             var chave = servico.DCe.InfDCe.Chave;
             var protocolo = DCeCenarioOffline.Protocolo(chave, DCeCenarioOffline.Digest(servico.ConteudoXMLAssinado), status);
             var retorno = new RetDCe
@@ -156,20 +202,71 @@ namespace Unimake.DFe.Test.DCe.Validacao
                 XMotivo = "RESPOSTA SINTETICA", CUF = UFBrasil.PR, DhRecbto = protocolo.InfProt.DhRecbto, ProtDCe = protocolo
             };
             servico.RetornoWSString = retorno.GerarXML().OuterXml;
-            ConferirDistribuicao(servico, chave, pais, status);
+            ConferirDistribuicao(servico, chave, true, status);
         }
 
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void DistribuicaoRecuperadaDaConsultaPreservaOriginalSemReautorizar(bool pais)
+        [InlineData(false, 100)]
+        [InlineData(true, 100)]
+        [InlineData(false, 150)]
+        [InlineData(true, 150)]
+        public void DistribuicaoRecuperadaUsaModeloExistenteSemEmissaoOuCertificado(bool pais, int status)
         {
             using var cenario = new DCeCenarioOffline();
-            using var servico = new Autorizacao(DCeCenarioOffline.Documento(pais, pais), cenario.Configuracao());
+            var original = cenario.Assinar(DCeCenarioOffline.Documento(pais, pais).GerarXML());
+            var anterior = original.OuterXml;
+            var chave = XMLUtility.Deserializar<XmlDCe>(original).InfDCe.Chave;
+            var protocolo = DCeCenarioOffline.Protocolo(chave, DCeCenarioOffline.Digest(original), status);
+            var resposta = DCeCenarioOffline.RespostaConsulta(chave, protocolo);
+            var distribuicao = new DCeProc
+            {
+                Versao = "1.00", DCe = XMLUtility.Deserializar<XmlDCe>(original), ProtDCe = resposta.ProtDCe
+            };
+            cenario.Dispose(); // A reconstrução não possui certificado disponível para reassinar.
+            using var gravador = new Autorizacao();
+            using var stream = new MemoryStream();
+            gravador.GravarXmlDistribuicao(stream, distribuicao.GerarXML().OuterXml);
+            var documento = DCeCenarioOffline.Ler(System.Text.Encoding.UTF8.GetString(stream.ToArray()).TrimStart('\uFEFF'));
+            Assert.Equal(chave + "-procDCe.xml", distribuicao.NomeArquivoDistribuicao);
+            ConferirDocumentoDistribuicao(documento, original, chave, pais, status);
+            Assert.Equal(anterior, original.OuterXml);
+            Assert.Equal(original.DocumentElement.OuterXml,
+                documento.GetElementsByTagName("DCe", DCeCenarioOffline.Namespace)[0].OuterXml);
+        }
+
+        [Fact]
+        public void ReconstrucaoPorModeloNaoAplicaSchemaAtualAoOriginalPreservado()
+        {
+            using var cenario = new DCeCenarioOffline();
+            var modelo = DCeCenarioOffline.Documento(false, false);
+            // Controle deliberadamente incompatível com o XSD atual, assinado antes da recuperação.
+            modelo.InfDCe.Ide.VerProc = null;
+            var original = cenario.Assinar(modelo.GerarXML());
+            var anterior = original.OuterXml;
+            var schema = new ValidarSchema();
+            schema.Validar(original, "DCe.dce_v1.00.xsd");
+            Assert.False(schema.Success);
+            var distribuicao = new DCeProc
+            {
+                Versao = "1.00", DCe = XMLUtility.Deserializar<XmlDCe>(original),
+                ProtDCe = DCeCenarioOffline.Protocolo(modelo.InfDCe.Chave, DCeCenarioOffline.Digest(original))
+            };
+            var resultado = distribuicao.GerarXML();
+            DCeCenarioOffline.VerificarAssinatura(resultado);
+            Assert.Equal(anterior, original.OuterXml);
+            Assert.Equal(original.DocumentElement.OuterXml,
+                resultado.GetElementsByTagName("DCe", DCeCenarioOffline.Namespace)[0].OuterXml);
+        }
+
+        [Fact]
+        public void ApiExistenteDeDistribuicaoComRetConsSitContinuaDisponivel()
+        {
+            using var cenario = new DCeCenarioOffline();
+            using var servico = new Autorizacao(DCeCenarioOffline.Documento(), cenario.Configuracao());
             var chave = servico.DCe.InfDCe.Chave;
-            var protocolo = DCeCenarioOffline.Protocolo(chave, DCeCenarioOffline.Digest(servico.ConteudoXMLAssinado));
-            servico.RetConsSitDCe.Add(DCeCenarioOffline.RespostaConsulta(chave, protocolo));
-            ConferirDistribuicao(servico, chave, pais, 100);
+            servico.RetConsSitDCe.Add(DCeCenarioOffline.RespostaConsulta(chave,
+                DCeCenarioOffline.Protocolo(chave, DCeCenarioOffline.Digest(servico.ConteudoXMLAssinado))));
+            ConferirDistribuicao(servico, chave, true, 100);
         }
 
         [Fact]
@@ -196,13 +293,18 @@ namespace Unimake.DFe.Test.DCe.Validacao
             using var stream = new MemoryStream();
             servico.GravarXmlDistribuicao(stream);
             var documento = DCeCenarioOffline.Ler(System.Text.Encoding.UTF8.GetString(stream.ToArray()).TrimStart('\uFEFF'));
+            ConferirDocumentoDistribuicao(documento, servico.ConteudoXMLAssinado, chave, pais, status);
+        }
+
+        private static void ConferirDocumentoDistribuicao(XmlDocument documento, XmlDocument original, string chave, bool pais, int status)
+        {
             Assert.Equal("dceProc", documento.DocumentElement.LocalName);
             Assert.Equal(DCeCenarioOffline.Namespace, documento.DocumentElement.NamespaceURI);
             var schema = new ValidarSchema();
             schema.Validar(documento, "DCe.procDCe_v1.00.xsd");
             Assert.True(schema.Success, schema.ErrorMessage);
             DCeCenarioOffline.VerificarAssinatura(documento);
-            Assert.Equal(DCeCenarioOffline.Digest(servico.ConteudoXMLAssinado), DCeCenarioOffline.Digest(documento));
+            Assert.Equal(DCeCenarioOffline.Digest(original), DCeCenarioOffline.Digest(documento));
             var modelo = XMLUtility.Deserializar<DCeProc>(documento);
             Assert.Equal(chave, modelo.DCe.InfDCe.Chave);
             Assert.Equal(chave, modelo.ProtDCe.InfProt.ChDCe);

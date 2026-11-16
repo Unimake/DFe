@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -253,6 +253,9 @@ namespace Unimake.DFe.Test.Utility.Validacao
                 // A massa de serialização possui Id ilustrativo; gerar uma chave consistente para validar o schema.
                 var modelo = XMLUtility.Deserializar<Business.DFe.Xml.DCe.DCe>(xml);
                 modelo.InfDCe.Id = null;
+                // Este cenário testa nova emissão/QR, não leitura da massa histórica de serialização.
+                modelo.InfDCe.Dest.EnderDest.CPais = "1058";
+                modelo.InfDCe.Dest.EnderDest.XPais = "BRASIL";
                 xml = modelo.GerarXML();
             }
 

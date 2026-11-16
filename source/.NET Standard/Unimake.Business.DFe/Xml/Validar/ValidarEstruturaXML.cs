@@ -219,6 +219,11 @@ namespace Unimake.Business.DFe
 
                 try
                 {
+                    if (tipoDFe == TipoDFe.DCe && tagRaiz == "DCe")
+                    {
+                        new Validator.DCe.DCeEmissaoValidator { Xml = xml.OuterXml }.Validate();
+                    }
+
                     if (DeveNormalizarXmlPeloObjeto(tipoDFe, tagRaiz))
                     {
                         AssinarSeNecessario(xml, servico, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
