@@ -46,7 +46,12 @@ namespace Unimake.DFe.Test.DCe.Validacao
                     Ide = new Ide
                     {
                         CUF = UFBrasil.PR, CDC = "189439", Mod = ModeloDFe.DCe,
-                        Serie = 59, NDC = 50, DhEmi = new DateTimeOffset(2026, 11, 14, 12, 0, 0, TimeSpan.FromHours(-3)),
+                        Serie = 59, NDC = 50,
+#if INTEROP
+                        DhEmi = new DateTimeOffset(2026, 11, 14, 12, 0, 0, TimeSpan.FromHours(-3)).LocalDateTime,
+#else
+                        DhEmi = new DateTimeOffset(2026, 11, 14, 12, 0, 0, TimeSpan.FromHours(-3)),
+#endif
                         TpEmis = TipoEmissao.Normal, TpEmit = tipo, NSiteAutoriz = "0",
                         TpAmb = TipoAmbiente.Homologacao, VerProc = "AF05-OFFLINE"
                     },
@@ -141,7 +146,11 @@ namespace Unimake.DFe.Test.DCe.Validacao
             InfProt = new InfProt
             {
                 TpAmb = TipoAmbiente.Homologacao, VerAplic = "AF05-OFFLINE", ChDCe = chave,
+#if INTEROP
+                DhRecbto = new DateTimeOffset(2026, 11, 14, 12, 1, 0, TimeSpan.FromHours(-3)).LocalDateTime,
+#else
                 DhRecbto = new DateTimeOffset(2026, 11, 14, 12, 1, 0, TimeSpan.FromHours(-3)),
+#endif
                 NProt = "1410000000000001", DigVal = digest, CStat = status, XMotivo = "RESPOSTA SINTETICA"
             }
         };
@@ -150,7 +159,11 @@ namespace Unimake.DFe.Test.DCe.Validacao
         {
             Versao = "1.00", TpAmb = TipoAmbiente.Homologacao, VerAplic = "AF05-OFFLINE",
             CStat = protocolo == null ? 217 : 100, XMotivo = "RESPOSTA SINTETICA", CUF = UFBrasil.PR,
+#if INTEROP
+            DhRecbto = new DateTimeOffset(2026, 11, 14, 12, 1, 0, TimeSpan.FromHours(-3)).LocalDateTime,
+#else
             DhRecbto = new DateTimeOffset(2026, 11, 14, 12, 1, 0, TimeSpan.FromHours(-3)),
+#endif
             ChDCe = chave, ProtDCe = protocolo
         };
 

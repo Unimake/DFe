@@ -194,7 +194,11 @@ namespace Unimake.DFe.Test.NF3e.Servicos
             {
                 COrgao = uf, TpAmb = ambiente, CNPJ = "99999999000191",
                 ChNF3e = ((int)uf).ToString() + "261199999999000191660590000000501000000010",
+#if INTEROP
+                DhEvento = new DateTimeOffset(2026, 11, 16, 10, 0, 0, TimeSpan.FromHours(-3)).LocalDateTime,
+#else
                 DhEvento = new DateTimeOffset(2026, 11, 16, 10, 0, 0, TimeSpan.FromHours(-3)),
+#endif
                 TpEvento = TipoEventoNF3e.Cancelamento, NSeqEvento = 1
             }
         };

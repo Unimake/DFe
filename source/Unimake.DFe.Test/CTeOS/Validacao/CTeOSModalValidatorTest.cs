@@ -92,7 +92,11 @@ namespace Unimake.DFe.Test.CTeOS.Validacao
             var cteOS = Unimake.Business.DFe.Utility.XMLUtility.Deserializar<Unimake.Business.DFe.Xml.CTeOS.CTeOS>(documento);
             cteOS.InfCTe.Emit = new Unimake.Business.DFe.Xml.CTeOS.Emit { CNPJ = "99999999000191" };
             cteOS.InfCTe.Ide.CUF = UFBrasil.PR;
+#if INTEROP
+            cteOS.InfCTe.Ide.DhEmi = new DateTimeOffset(2026, 11, 11, 12, 0, 0, TimeSpan.FromHours(-3)).LocalDateTime;
+#else
             cteOS.InfCTe.Ide.DhEmi = new DateTimeOffset(2026, 11, 11, 12, 0, 0, TimeSpan.FromHours(-3));
+#endif
             cteOS.InfCTe.Ide.Serie = 59;
             cteOS.InfCTe.Ide.NCT = 50;
             cteOS.InfCTe.Ide.TpEmis = TipoEmissao.Normal;
