@@ -44,6 +44,7 @@ namespace Unimake.DFe.Test.CTe.Serializacao
             Assert.Equal(2.5d, detalhe.GCBSCredPres.PCredPres);
             Assert.Equal(37.5d, detalhe.GCBSCredPres.VCredPres);
             Assert.Equal(DeclaracaoPagamentoCreditoPresumidoCTe.ComAcentuacao, detalhe.XDecPag);
+            Assert.True(detalhe.ShouldSerializeXDecPagField());
             var gerado = evento.GerarXML();
             Assert.Equal(original.InnerText, gerado.InnerText);
             var esperado = XElement.Parse(original.OuterXml);
@@ -101,6 +102,7 @@ namespace Unimake.DFe.Test.CTe.Serializacao
                 }
             };
             Assert.Same(detalhe, evento.InfEvento.DetEvento);
+            Assert.True(detalhe.ShouldSerializeXDecPagField());
             var xml = evento.GerarXML();
             Assert.Equal(ibs ? 1 : 0, xml.GetElementsByTagName("gIBSCredPres").Count);
             Assert.Equal(cbs ? 1 : 0, xml.GetElementsByTagName("gCBSCredPres").Count);
@@ -110,6 +112,86 @@ namespace Unimake.DFe.Test.CTe.Serializacao
             Assert.Equal(cbs, lido.GCBSCredPres != null);
             Assert.Equal(xml.InnerText, XMLUtility.Deserializar<EventoCTe>(xml).GerarXML().InnerText);
             Validar(xml);
+        }
+
+        [Fact]
+        [Trait("DFe", "CTe")]
+        public void ModeloSemDeclaracaoPreservaAusenciaNoRoundTrip()
+        {
+            const string caminho = @"..\..\..\CTe\Resources\eventoCTe_211110_sem_xDecPag.xml";
+            var original = new XmlDocument();
+            original.Load(caminho);
+            var evento = new EventoCTe().LoadFromFile(caminho);
+            var detalhe = Assert.IsType<DetEventoApropriacaoCreditoPresumido>(evento.InfEvento.DetEvento);
+
+            Assert.Equal((DeclaracaoPagamentoCreditoPresumidoCTe)(-1), detalhe.XDecPag);
+            Assert.Null(detalhe.XDecPagField);
+            Assert.False(detalhe.ShouldSerializeXDecPagField());
+            Assert.Equal(1500, detalhe.VBCCredPres);
+            Assert.Equal(18.52, detalhe.GIBSCredPres.VCredPres);
+            Assert.Equal(37.5, detalhe.GCBSCredPres.VCredPres);
+            var xml = evento.GerarXML();
+            Assert.Equal(0, xml.GetElementsByTagName("xDecPag", NamespaceCTe).Count);
+            Assert.Equal(original.InnerText, xml.InnerText);
+            Assert.Equal(xml.InnerText, XMLUtility.Deserializar<EventoCTe>(xml).GerarXML().InnerText);
+            Validar(xml);
+        }
+
+        [Fact]
+        [Trait("DFe", "CTe")]
+        public void CriacaoPorObjetoSemDeclaracaoOmiteTag()
+        {
+            var evento = new EventoCTe().LoadFromFile(ArquivoModelo);
+            var detalhe = new DetEventoApropriacaoCreditoPresumido
+            {
+                VersaoEvento = "4.00",
+                VBCCredPres = 1500,
+                CCredPres = "01",
+                GIBSCredPres = new GCredPresEvento { PCredPres = 1.2345, VCredPres = 18.52 }
+            };
+            Assert.False(detalhe.ShouldSerializeXDecPagField());
+            evento.InfEvento.DetEvento = detalhe;
+            var xml = evento.GerarXML();
+            Assert.Equal(0, xml.GetElementsByTagName("xDecPag", NamespaceCTe).Count);
+            var lido = Assert.IsType<DetEventoApropriacaoCreditoPresumido>(XMLUtility.Deserializar<EventoCTe>(xml).InfEvento.DetEvento);
+            Assert.False(lido.ShouldSerializeXDecPagField());
+            Assert.Equal(xml.InnerText, XMLUtility.Deserializar<EventoCTe>(xml).GerarXML().InnerText);
+            Validar(xml);
+        }
+
+        [Theory]
+        [Trait("DFe", "CTe")]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void DeclaracaoInformadaPodeSerRemovida(bool pelaPropriedadeAuxiliar)
+        {
+            var evento = new EventoCTe().LoadFromFile(ArquivoModelo);
+            var detalhe = Assert.IsType<DetEventoApropriacaoCreditoPresumido>(evento.InfEvento.DetEvento);
+            Assert.True(detalhe.ShouldSerializeXDecPagField());
+            if (pelaPropriedadeAuxiliar)
+            {
+                detalhe.XDecPagField = null;
+            }
+            else
+            {
+                detalhe.XDecPag = (DeclaracaoPagamentoCreditoPresumidoCTe)(-1);
+            }
+
+            Assert.Null(detalhe.XDecPagField);
+            Assert.False(detalhe.ShouldSerializeXDecPagField());
+            var xml = evento.GerarXML();
+            Assert.Equal(0, xml.GetElementsByTagName("xDecPag", NamespaceCTe).Count);
+            Validar(xml);
+        }
+
+        [Theory]
+        [Trait("DFe", "CTe")]
+        [InlineData("")]
+        [InlineData("DECLARACAO INVALIDA")]
+        public void DeclaracaoVaziaOuDesconhecidaContinuaRejeitada(string literal)
+        {
+            var detalhe = new DetEventoApropriacaoCreditoPresumido();
+            Assert.Throws<InvalidOperationException>(() => detalhe.XDecPagField = literal);
         }
 
         [Fact]
