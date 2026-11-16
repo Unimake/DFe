@@ -1,0 +1,2 @@
+# Preserva os bytes oficiais conferidos pelo manifesto de SHA256.
+*.xsd -text

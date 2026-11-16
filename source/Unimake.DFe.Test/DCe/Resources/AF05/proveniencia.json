@@ -1,0 +1,82 @@
+{
+  "Source": "https://dfe-portal.svrs.rs.gov.br/DCE/DownloadArquivoEstatico/?sistema=DCE&tipoArquivo=2&nomeArquivo=PL_DCe_v1.00a_NT2024.001v1.00.zip",
+  "CapturedOn": "2026-11-14",
+  "ArchiveSha256": "9530d6c15f44de07cf4acc18566196a381f11051b59af3c2e36e3c8473701a6a",
+  "Files": [
+    {
+      "Resource": "Emissao.dce_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/dce/dce_v1.00.xsd",
+      "Sha256": "d495da925f274035bbbb5d02c2a2cd94fe016cc3cbe81025caaf020cca8493f5"
+    },
+    {
+      "Resource": "Emissao.dceTiposBasico_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/dce/dceTiposBasico_v1.00.xsd",
+      "Sha256": "1d481a443f39fd26f4cf9f991a99093dc907b3429766a3fac1093a7898f478e0"
+    },
+    {
+      "Resource": "Emissao.procDCe_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/dce/procDCe_v1.00.xsd",
+      "Sha256": "baa431875116b13621ef66824995862ea015c61b7c5e5e770bbe46209c3f3d62"
+    },
+    {
+      "Resource": "Emissao.retDCe_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/dce/retDCe_v1.00.xsd",
+      "Sha256": "a0aedf198e9b50f2db173203f101afadaa9cb829326be5f99d1140b29bf13285"
+    },
+    {
+      "Resource": "Emissao.tiposGeralDCe_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/dce/tiposGeralDCe_v1.00.xsd",
+      "Sha256": "d14e61017cb4dc2231987cbb6bc51451b5aa192bb1131d822c863825e718ead2"
+    },
+    {
+      "Resource": "Emissao.xmldsig-core-schema_v1.01.xsd",
+      "ArchiveEntry": "xsd/pl100/dce/xmldsig-core-schema_v1.01.xsd",
+      "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+    },
+    {
+      "Resource": "Consulta.consSitDCe_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/consulta/consSitDCe_v1.00.xsd",
+      "Sha256": "69424174eda277e87698a53ffae815016af58abe56043359fee751ae436975f3"
+    },
+    {
+      "Resource": "Consulta.consSitDCeTiposBasico_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/consulta/consSitDCeTiposBasico_v1.00.xsd",
+      "Sha256": "189194e532026612e962ef81dc3f672d60abe60016c299b382447172447d1dbb"
+    },
+    {
+      "Resource": "Consulta.consStatServDCe_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/consulta/consStatServDCe_v1.00.xsd",
+      "Sha256": "2ea7c4cef17869ac4fc20b907b5df632a08c74e93094d3ddc4f33162f8d95ffb"
+    },
+    {
+      "Resource": "Consulta.consStatServDCeTiposBasico_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/consulta/consStatServDCeTiposBasico_v1.00.xsd",
+      "Sha256": "9ff850005bcb33550027a1a36b90cf42d0600584dac8c60f0dcf6b371ab9f111"
+    },
+    {
+      "Resource": "Consulta.dceTiposBasico_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/consulta/dceTiposBasico_v1.00.xsd",
+      "Sha256": "15b3d32bde215c50735cbaea6ab07108c37616f7b012f6ce5fea071604d3c5c8"
+    },
+    {
+      "Resource": "Consulta.retConsSitDCe_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/consulta/retConsSitDCe_v1.00.xsd",
+      "Sha256": "b0d368be5c4cb9246bb80b8c1ba45609d7b0bf139cce6b09aadd764d881bdf8f"
+    },
+    {
+      "Resource": "Consulta.retConsStatServDCe_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/consulta/retConsStatServDCe_v1.00.xsd",
+      "Sha256": "53df59dc67ffb3c87b6153bb119f5ca9604aceb3ba7e5ffbc7e80cf2e128e139"
+    },
+    {
+      "Resource": "Consulta.tiposGeralDCe_v1.00.xsd",
+      "ArchiveEntry": "xsd/pl100/consulta/tiposGeralDCe_v1.00.xsd",
+      "Sha256": "d14e61017cb4dc2231987cbb6bc51451b5aa192bb1131d822c863825e718ead2"
+    },
+    {
+      "Resource": "Consulta.xmldsig-core-schema_v1.01.xsd",
+      "ArchiveEntry": "xsd/pl100/consulta/xmldsig-core-schema_v1.01.xsd",
+      "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<envEvento xmlns="http://www.portalfiscal.inf.br/nfe" versao="1.00">
+  <idLote>1</idLote>
+  <evento versao="1.00">
+    <infEvento Id="ID4121404126110000000000019155001000000001100000001001">
+      <cOrgao>41</cOrgao>
+      <tpAmb>2</tpAmb>
+      <CNPJ>00000000000191</CNPJ>
+      <chNFe>41261100000000000191550010000000011000000010</chNFe>
+      <dhEvento>2026-11-13T10:00:00-03:00</dhEvento>
+      <tpEvento>412140</tpEvento>
+      <nSeqEvento>1</nSeqEvento>
+      <verEvento>1.00</verEvento>
+      <detEvento versao="1.00">
+        <descEvento>Tributação do Simples Nacional</descEvento>
+        <cOrgaoAutor>41</cOrgaoAutor>
+        <tpAutor>5</tpAutor>
+        <verAplic>TESTE &amp; XML</verAplic>
+        <gTribItemSN nItem="1">
+          <vRBSNitem>100.00</vRBSNitem>
+          <tpRBSN>1</tpRBSN>
+          <pIBSSN>1.2345</pIBSSN>
+          <vIBSSN>1.23</vIBSSN>
+          <pCBSSN>0.00</pCBSSN>
+          <vCBSSN>0.00</vCBSSN>
+          <vIBSPendSusp>0.10</vIBSPendSusp>
+          <vCBSPendSusp>0.00</vCBSPendSusp>
+        </gTribItemSN>
+        <gTribItemSN nItem="990">
+          <vRBSNitem>0.00</vRBSNitem>
+          <tpRBSN>0</tpRBSN>
+        </gTribItemSN>
+        <gTotalSN>
+          <vRBSNtot>100.00</vRBSNtot>
+          <vIBSSNtot>1.23</vIBSSNtot>
+          <vIBSSNtotPendSusp>0.10</vIBSSNtotPendSusp>
+          <vCBSSNtot>0.00</vCBSSNtot>
+          <vCBSSNtotPendSusp>0.00</vCBSSNtotPendSusp>
+        </gTotalSN>
+      </detEvento>
+    </infEvento>
+  </evento>
+</envEvento>

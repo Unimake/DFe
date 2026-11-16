@@ -1326,6 +1326,30 @@ namespace Unimake.Business.DFe.Servicos
 
     #region TipoEventoNFe
 
+    /// <summary>Código de atividade do Simples Nacional na NF-e e NFC-e.</summary>
+    public enum CodigoAtividadeSimplesNacional
+    {
+        /// <summary>01 - Revenda ou venda de mercadorias industrializadas pelo contribuinte, Anexo I.</summary>
+        [XmlEnum("01")]
+        RevendaOuVendaMercadorias = 1,
+
+        /// <summary>02 - Demais bens materiais sem incidência de ICMS, Anexo I.</summary>
+        [XmlEnum("02")]
+        DemaisBensSemICMS = 2,
+
+        /// <summary>03 - Venda de mercadorias com industrialização incentivada na Zona Franca de Manaus, Anexo II.</summary>
+        [XmlEnum("03")]
+        VendaMercadoriasIndustrializacaoZFM = 3,
+
+        /// <summary>04 - Demais bens com industrialização incentivada na Zona Franca de Manaus, sem ICMS, Anexo II.</summary>
+        [XmlEnum("04")]
+        DemaisBensIndustrializacaoZFMSemICMS = 4,
+
+        /// <summary>90 - Operações não tributáveis.</summary>
+        [XmlEnum("90")]
+        OperacoesNaoTributaveis = 90
+    }
+
     /// <summary>
     /// Tipos de eventos da NFe e NFCe
     /// </summary>
@@ -1356,7 +1380,7 @@ namespace Unimake.Business.DFe.Servicos
         Evento211120 = 211120,
 
         /// <summary>
-        /// 412140 - Código de evento cancelável previsto em e110001_v1.00.xsd.
+        /// 412140 - Tributação do Simples Nacional, também cancelável por e110001_v1.00.xsd.
         /// </summary>
         [XmlEnum("412140")]
         Evento412140 = 412140,

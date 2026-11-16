@@ -15,7 +15,7 @@ using Xunit;
 namespace Unimake.DFe.Test.Utility.Validacao
 {
     [Trait("Utility", "Validacao")]
-    public class PreparacaoUrlsQRCodeTest : IDisposable
+    public partial class PreparacaoUrlsQRCodeTest : IDisposable
     {
         private readonly X509Certificate2 _certificado = CriarCertificado();
 

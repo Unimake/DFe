@@ -177,6 +177,11 @@
 					<SchemaArquivoEspecifico>e412120_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
+					<ID>412140</ID>
+					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e412140_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
 					<ID>412130</ID>
 					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e412130_v1.00.xsd</SchemaArquivoEspecifico>
@@ -486,6 +491,11 @@
 					<ID>412120</ID>
 					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e412120_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>412140</ID>
+					<SchemaArquivo>envEvento_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e412140_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
 					<ID>412130</ID>
