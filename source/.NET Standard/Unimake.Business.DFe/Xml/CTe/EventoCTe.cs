@@ -71,10 +71,10 @@ namespace Unimake.Business.DFe.Xml.CTe
         public GCredPresEvento GCBSCredPres { get; set; }
 
         /// <summary>
-        /// Declaração de pagamento integral ao TAC/MEI.
+        /// Declaração de pagamento integral ao TAC/MEI. Utilize -1 quando não informada.
         /// </summary>
         [XmlIgnore]
-        public DeclaracaoPagamentoCreditoPresumidoCTe XDecPag { get; set; }
+        public DeclaracaoPagamentoCreditoPresumidoCTe XDecPag { get; set; } = (DeclaracaoPagamentoCreditoPresumidoCTe)(-1);
 
         /// <summary>
         /// Propriedade auxiliar para serialização/desserialização da declaração literal.
@@ -86,6 +86,12 @@ namespace Unimake.Business.DFe.Xml.CTe
                 ?.GetCustomAttribute<XmlEnumAttribute>()?.Name;
             set
             {
+                if (value == null)
+                {
+                    XDecPag = (DeclaracaoPagamentoCreditoPresumidoCTe)(-1);
+                    return;
+                }
+
                 foreach (DeclaracaoPagamentoCreditoPresumidoCTe declaracao in Enum.GetValues(typeof(DeclaracaoPagamentoCreditoPresumidoCTe)))
                 {
                     var literal = typeof(DeclaracaoPagamentoCreditoPresumidoCTe).GetField(declaracao.ToString())
@@ -100,6 +106,11 @@ namespace Unimake.Business.DFe.Xml.CTe
                 throw new InvalidOperationException("Conteúdo da TAG <xDecPag> inválido para o evento de apropriação de crédito presumido.");
             }
         }
+
+        /// <summary>
+        /// Verifica se a declaração de pagamento foi informada.
+        /// </summary>
+        public bool ShouldSerializeXDecPagField() => XDecPag != (DeclaracaoPagamentoCreditoPresumidoCTe)(-1);
 
         internal override void ProcessReader()
         {
@@ -120,7 +131,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                 CCredPres = evento.Element(ns + "cCredPres").Value;
                 GIBSCredPres = LerCredito(evento.Element(ns + "gIBSCredPres"), ns);
                 GCBSCredPres = LerCredito(evento.Element(ns + "gCBSCredPres"), ns);
-                XDecPagField = evento.Element(ns + "xDecPag").Value;
+                XDecPagField = evento.Element(ns + "xDecPag")?.Value;
             }
 
             XmlReader.Read();
@@ -158,7 +169,10 @@ namespace Unimake.Business.DFe.Xml.CTe
             writer.WriteElementString("cCredPres", CCredPres);
             EscreverCredito(writer, "gIBSCredPres", GIBSCredPres);
             EscreverCredito(writer, "gCBSCredPres", GCBSCredPres);
-            writer.WriteElementString("xDecPag", XDecPagField);
+            if (ShouldSerializeXDecPagField())
+            {
+                writer.WriteElementString("xDecPag", XDecPagField);
+            }
             writer.WriteEndElement();
         }
     }
