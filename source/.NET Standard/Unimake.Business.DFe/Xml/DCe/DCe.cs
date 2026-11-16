@@ -28,20 +28,46 @@ namespace Unimake.Business.DFe.Xml.DCe
         /// <summary>
         /// Informações da DCe
         /// </summary>
-        [XmlElement("infDCe")]
+        [XmlElement("infDCe", Order = 0)]
         public InfDCe InfDCe { get; set; }
 
         /// <summary>
         /// Informações suplementares da DCe
         /// </summary>
-        [XmlElement("infDCeSupl")]
+        [XmlElement("infDCeSupl", Order = 2)]
         public InfDCeSupl InfDCeSupl { get; set; }
 
         /// <summary>
         /// Assinatura digital
         /// </summary>
-        [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#", Order = 3)]
         public Signature Signature { get; set; }
+
+        /// <summary>
+        /// Solicitação de emissão pelo aplicativo do Fisco, quando informada pelo consumidor.
+        /// A presença do grupo não dispensa a validação do contrato de emissão.
+        /// </summary>
+        [XmlElement("infSolicDCe", Order = 1)]
+        public InfSolicDCe InfSolicDCe { get; set; }
+    }
+
+    /// <summary>
+    /// Informações do pedido de emissão da DCe pelo aplicativo do Fisco.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DCe.InfSolicDCe")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/dce")]
+    public class InfSolicDCe
+    {
+        /// <summary>
+        /// Conteúdo JSON da solicitação, preservado conforme informado pelo consumidor.
+        /// </summary>
+        [XmlElement("xSolic")]
+        public string XSolic { get; set; }
     }
 
 #if INTEROP
