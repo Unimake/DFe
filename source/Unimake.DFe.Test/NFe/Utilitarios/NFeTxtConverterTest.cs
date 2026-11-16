@@ -417,12 +417,12 @@ public class NFeTxtConverterTest
     }
 
     /// <summary>
-    /// O G curto sem G02/G02A não pode gerar um grupo entrega sem documento.
+    /// O G curto e o G completo sem documento devem usar a alternativa CNPJ vazia permitida pelo XSD.
     /// </summary>
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void ConverterDeveRejeitarEntregaSemCnpjCpf(bool grupoCompleto)
+    public void ConverterDeveGerarCnpjVazioNaEntregaSemDocumento(bool grupoCompleto)
     {
         var arquivoTemporario = Path.GetTempFileName();
         try
@@ -439,10 +439,97 @@ public class NFeTxtConverterTest
 
             var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
 
-            Assert.False(resultado.Sucesso);
-            Assert.Empty(resultado.Documentos);
-            Assert.Contains("Grupo G (entrega)", resultado.MensagemErro);
-            Assert.Contains("G02/G02A", resultado.MensagemErro);
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            var entrega = xml.SelectSingleNode("//*[local-name()='entrega']");
+            Assert.NotNull(entrega);
+            Assert.NotNull(entrega.SelectSingleNode("*[local-name()='CNPJ']"));
+            Assert.Equal(string.Empty, entrega.SelectSingleNode("*[local-name()='CNPJ']")?.InnerText);
+            Assert.Null(entrega.SelectSingleNode("*[local-name()='CPF']"));
+
+            var validacao = new ValidarSchema();
+            validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+            Assert.False(validacao.Success);
+            Assert.Contains("Signature", validacao.ErrorMessage);
+            Assert.Equal(1, validacao.ErrorMessage.Split(new[] { "Linha:" }, StringSplitOptions.None).Length - 1);
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
+    }
+
+    /// <summary>
+    /// O G51 de autorização do XML não deve ser confundido com o CNPJ vazio do local de entrega.
+    /// </summary>
+    [Fact]
+    public void RemessaComodatoDeveGerarEntregaComCnpjVazio()
+    {
+        var resultado = new NFeTxtConverter().Converter(CaminhoArquivo("001157999-entrega-sem-documento-nfe.txt"));
+
+        Assert.True(resultado.Sucesso, resultado.MensagemErro);
+        var xml = new XmlDocument();
+        xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+        var entrega = xml.SelectSingleNode("//*[local-name()='entrega']");
+        Assert.NotNull(entrega);
+        Assert.NotNull(entrega.SelectSingleNode("*[local-name()='CNPJ']"));
+        Assert.Equal(string.Empty, entrega.SelectSingleNode("*[local-name()='CNPJ']")?.InnerText);
+        Assert.Equal("99999999000191", xml.SelectSingleNode("//*[local-name()='autXML']/*[local-name()='CNPJ']")?.InnerText);
+
+        var validacao = new ValidarSchema();
+        validacao.Validar(xml, "NFe.nfe_v4.00.xsd", "http://www.portalfiscal.inf.br/nfe");
+        Assert.False(validacao.Success);
+        Assert.Contains("Signature", validacao.ErrorMessage);
+        Assert.Equal(1, validacao.ErrorMessage.Split(new[] { "Linha:" }, StringSplitOptions.None).Length - 1);
+    }
+
+    /// <summary>
+    /// O CNPJ vazio não deve criar um grupo entrega quando o TXT não informa G.
+    /// </summary>
+    [Fact]
+    public void RemessaComodatoDeveOmitirEntregaQuandoNaoHaGrupoG()
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+        try
+        {
+            var linhas = Array.FindAll(File.ReadAllLines(CaminhoArquivo("001157999-entrega-sem-documento-nfe.txt")),
+                linha => !linha.StartsWith("G|", StringComparison.OrdinalIgnoreCase));
+            File.WriteAllLines(arquivoTemporario, linhas);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            Assert.Null(xml.SelectSingleNode("//*[local-name()='entrega']"));
+            Assert.Equal("99999999000191", xml.SelectSingleNode("//*[local-name()='autXML']/*[local-name()='CNPJ']")?.InnerText);
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
+    }
+
+    /// <summary>
+    /// Acrescentar G02 ao mesmo TXT deve gerar o documento no grupo entrega.
+    /// </summary>
+    [Fact]
+    public void RemessaComodatoDeveAceitarGCurtoComDocumentoEntrega()
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+        try
+        {
+            var conteudo = File.ReadAllText(CaminhoArquivo("001157999-entrega-sem-documento-nfe.txt"))
+                .Replace("G51|99999999000191|", "G02|99999999000191|" + Environment.NewLine + "G51|99999999000191|");
+            File.WriteAllText(arquivoTemporario, conteudo);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            Assert.Equal("99999999000191", xml.SelectSingleNode("//*[local-name()='entrega']/*[local-name()='CNPJ']")?.InnerText);
         }
         finally
         {
