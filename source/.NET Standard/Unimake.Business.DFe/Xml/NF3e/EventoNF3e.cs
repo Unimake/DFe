@@ -253,7 +253,14 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         public XmlSchema GetSchema() => default;
 
-        public void ReadXml(XmlReader reader) => XmlReader = reader;
+        public void ReadXml(XmlReader reader)
+        {
+            // O parser específico é aplicado depois, no setter de DetEvento. Preserve os irmãos, como Signature.
+            var detalhe = new XmlDocument { XmlResolver = null };
+            detalhe.LoadXml(reader.ReadOuterXml());
+            XmlReader = new XmlNodeReader(detalhe.DocumentElement);
+            XmlReader.MoveToContent();
+        }
 
         public virtual void WriteXml(XmlWriter writer) => writer.WriteAttributeString("versaoEvento", VersaoEvento);
 
