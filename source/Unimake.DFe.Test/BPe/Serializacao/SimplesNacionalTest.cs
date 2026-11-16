@@ -53,7 +53,10 @@ namespace Unimake.DFe.Test.BPe.Serializacao
                 {
                     Campo(inf["ide"], "indFornecimento", "1");
                 }
-                Campo(Campo(inf["ide"], "gMultaJuros"), "chBPeRef", "35260712345678000195630010000000011234567890");
+                if (documento != "BPeTM")
+                {
+                    Campo(Campo(inf["ide"], "gMultaJuros"), "chBPeRef", "35260712345678000195630010000000011234567890");
+                }
                 Campo(inf["emit"], "tpRegimeIBSCBS", "4");
                 var imposto = documento == "BPeTM" ? inf["detBPeTM"]["det"]["imp"] : inf["imp"];
                 if (imposto["IBSCBS"] == null)
@@ -88,7 +91,7 @@ namespace Unimake.DFe.Test.BPe.Serializacao
             }
 
             XmlDocument gerado;
-            BPeTMXml.GMultaJuros multa;
+            BPeTMXml.GMultaJuros multa = null;
             BPeTMXml.Emit emit;
             BPeTMXml.IBSCBS impostos;
             switch (documento)
@@ -109,7 +112,6 @@ namespace Unimake.DFe.Test.BPe.Serializacao
                     break;
                 default:
                     var metro = XMLUtility.Deserializar<BPeTMXml.BPeTM>(original);
-                    multa = metro.InfBPe.Ide.GMultaJuros;
                     emit = metro.InfBPe.Emit;
                     impostos = metro.InfBPe.DetBPeTM[0].Det[0].Imp.IBSCBS;
                     Assert.Equal(informado, metro.InfBPe.Ide.ShouldSerializeIndFornecimento());
@@ -117,7 +119,7 @@ namespace Unimake.DFe.Test.BPe.Serializacao
                     gerado = metro.GerarXML();
                     break;
             }
-            Assert.Equal(informado, multa != null);
+            Assert.Equal(informado && documento != "BPeTM", multa != null);
             Assert.Equal(informado, emit.ShouldSerializeTpRegimeIBSCBS());
             Assert.Equal(informado, impostos?.GTribSN != null);
             if (informado)
