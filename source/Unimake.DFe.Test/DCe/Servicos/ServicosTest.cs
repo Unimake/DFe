@@ -85,6 +85,8 @@ namespace Unimake.DFe.Test.DCe.Servicos
                         XMun = "Curitiba",
                         UF = UFBrasil.PR,
                         CEP = "80010000",
+                        CPais = "1058",
+                        XPais = "Brasil",
                         Email = "destino@teste.com"
                     }
                 },
