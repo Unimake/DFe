@@ -3631,7 +3631,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                 if (detpag.TPag == MeioPagamento.Outros)
                 {
-                    xml += $"<xPag>{detpag.XPag}</xPag>";
+                    xml += $"<xPag>{System.Security.SecurityElement.Escape(detpag.XPag)}</xPag>";
                 }
 
                 xml += $"<vPag>{detpag.VPagField}</vPag>";
