@@ -48,7 +48,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
                 MunicipioUsuario = "01001001000113"
             };
 
-            var consultarNfseServicoPrestado = new ConsultarNfseServicoPrestado(conteudoXML, configuracao);
+            var consultarNfseServicoPrestado = new ConsultarNfse(conteudoXML, configuracao);
             Assert.Multiple(() => TestUtility.AnalisaResultado(consultarNfseServicoPrestado));
         }
     }

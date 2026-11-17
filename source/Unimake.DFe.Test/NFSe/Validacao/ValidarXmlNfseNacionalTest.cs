@@ -166,11 +166,11 @@ namespace Unimake.DFe.Test.NFSe.Validacao
                 CertificadoDigital = PropConfig.CertificadoDigital,
                 TipoAmbiente = TipoAmbiente.Homologacao,
                 CodigoMunicipio = 1001058,
-                Servico = Servico.NFSeGerarNfse,
+                Servico = Servico.NFSeGerarNfseIndicativoDecisaoJudicial,
                 SchemaVersao = "1.01"
             };
 
-            var gerarNfseIndicativoDecisaoJudicial = new GerarNfseIndicativoDecisaoJudicial(xmlGeradadoPeloObjeto.OuterXml, configuracao);
+            var gerarNfseIndicativoDecisaoJudicial = new GerarNfse(xmlGeradadoPeloObjeto.OuterXml, configuracao);
             Assert.Multiple(() => TestUtility.AnalisaResultado(gerarNfseIndicativoDecisaoJudicial));
         }
     }

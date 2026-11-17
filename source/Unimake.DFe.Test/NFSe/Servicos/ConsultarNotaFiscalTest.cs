@@ -53,11 +53,11 @@ namespace Unimake.DFe.Test.NFSe.Servicos
                 CertificadoDigital = PropConfig.CertificadoDigital,
                 TipoAmbiente = tipoAmbiente,
                 CodigoMunicipio = codMunicipio,
-                Servico = Servico.NFSeConsultaNotaFiscal,
+                Servico = Servico.NFSeConsultarNotaFiscal,
                 SchemaVersao = versaoSchema
             };
 
-            var consultaNotaFiscal = new ConsultarNotaFiscal(conteudoXML, configuracao);
+            var consultaNotaFiscal = new ConsultarNfse(conteudoXML, configuracao);
             Assert.Multiple(() => TestUtility.AnalisaResultado(consultaNotaFiscal));
         }
     }

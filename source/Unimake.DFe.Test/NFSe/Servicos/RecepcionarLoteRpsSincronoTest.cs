@@ -48,7 +48,7 @@ namespace Unimake.DFe.Test.NFSe.Servicos
                 MunicipioUsuario = "01001001000113"
             };
 
-            var recepcionarLoteRpsSincrono = new RecepcionarLoteRpsSincrono(conteudoXML, configuracao);
+            var recepcionarLoteRpsSincrono = new GerarNfse(conteudoXML, configuracao);
             Assert.Multiple(() => TestUtility.AnalisaResultado(recepcionarLoteRpsSincrono));
         }
     }

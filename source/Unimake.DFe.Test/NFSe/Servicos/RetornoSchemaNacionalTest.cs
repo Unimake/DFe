@@ -24,16 +24,16 @@ namespace Unimake.DFe.Test.NFSe.Servicos
                 PadraoNFSe = PadraoNFSe.NACIONAL,
                 TipoAmbiente = TipoAmbiente.Homologacao,
                 CodigoMunicipio = 1001058,
-                Servico = Servico.NFSeGerarNfse,
+                Servico = decisaoJudicial
+                    ? Servico.NFSeGerarNfseIndicativoDecisaoJudicial
+                    : Servico.NFSeGerarNfse,
                 SchemaVersao = "1.01",
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
             // Exercita assinatura e validação dos mesmos construtores dos testes de integração.
             // Não chama Executar(), para não transmitir uma operação fiscal.
-            Business.DFe.Servicos.NFSe.GerarNfse servico = decisaoJudicial
-                ? new Business.DFe.Servicos.NFSe.GerarNfseIndicativoDecisaoJudicial(xml, configuracao)
-                : new Business.DFe.Servicos.NFSe.GerarNfse(xml, configuracao);
+            var servico = new Business.DFe.Servicos.NFSe.GerarNfse(xml, configuracao);
 
             Assert.NotNull(servico.ConteudoXMLAssinado);
             Assert.True(servico.ConteudoXMLAssinado.GetElementsByTagName(

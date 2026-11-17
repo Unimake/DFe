@@ -31,7 +31,7 @@ namespace Unimake.DFe.Test.NFSe.BugFixes
             conteudoXML.Load(@"..\..\..\NFSe\Resources\PAULISTANA\2.00\EnvioLoteRps-env-loterps.xml");
 
             var configuracao = CriarConfiguracao(false);
-            var envioLoteRps = new EnvioLoteRps(conteudoXML, configuracao);
+            var envioLoteRps = new GerarNfse(conteudoXML, configuracao);
 
             var xmlAssinado = envioLoteRps.ConteudoXMLAssinado;
             var primeiraLeitura = xmlAssinado.OuterXml;
@@ -63,7 +63,7 @@ namespace Unimake.DFe.Test.NFSe.BugFixes
 
                 var configuracao = CriarConfiguracao(coletarTelemetriaDisponibilidade);
 
-                var envioLoteRps = new EnvioLoteRps(conteudoXML, configuracao);
+                var envioLoteRps = new GerarNfse(conteudoXML, configuracao);
                 envioLoteRps.Configuracoes.WebEnderecoProducao = servidor.Url;
 
                 var requisicao = servidor.AguardarRequisicaoAsync();
