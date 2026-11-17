@@ -290,7 +290,7 @@ namespace Unimake.DFe.Test.Utility.Certificados
         {
             using (var certificate = CreateRsaCertificate())
             {
-                return new X509Certificate2(certificate.Export(X509ContentType.Cert));
+                return X509CertificateLoader.LoadCertificate(certificate.Export(X509ContentType.Cert));
             }
         }
 

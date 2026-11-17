@@ -169,7 +169,7 @@ namespace Unimake.DFe.Test.NFe.BugFixes
                 chave.KeySize = 2048;
                 var pedido = new CertificateRequest("CN=TESTE SINTETICO LOTE EVENTOS", chave, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
                 using (var certificado = pedido.CreateSelfSigned(DateTimeOffset.UtcNow.AddDays(-1), DateTimeOffset.UtcNow.AddYears(1)))
-                    return new X509Certificate2(certificado.Export(X509ContentType.Pfx, "teste"), "teste", X509KeyStorageFlags.Exportable | X509KeyStorageFlags.EphemeralKeySet);
+                    return X509CertificateLoader.LoadPkcs12(certificado.Export(X509ContentType.Pfx, "teste"), "teste", X509KeyStorageFlags.Exportable | X509KeyStorageFlags.EphemeralKeySet);
             }
         }
     }

@@ -43,12 +43,7 @@ namespace Unimake.DFe.Test.Utility.Certificados
 
             try
             {
-                using (var fs = fi.OpenRead())
-                {
-                    var buffer = new byte[fs.Length];
-                    fs.Read(buffer, 0, buffer.Length);
-                    certificado = new X509Certificate2(buffer, senha);
-                }
+                certificado = X509CertificateLoader.LoadPkcs12FromFile(fi.FullName, senha);
                 _cacheCertificados[chave] = certificado;
             }
 

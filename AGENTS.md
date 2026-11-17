@@ -7,7 +7,7 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - A solução principal está em `source/Unimake.DFe.sln`.
 - A biblioteca principal fica em `source/.NET Standard/Unimake.Business.DFe` e compila para `netstandard2.0` com `LangVersion` 7.3.
 - O projeto `source/.NET Framework/Unimake.Security.Platform` mantém compatibilidade com `net472`.
-- Os testes ficam em `source/Unimake.DFe.Test`, usam xUnit v3 e miram `net8.0`.
+- Os testes ficam em `source/Unimake.DFe.Test`, usam xUnit v3 e miram `net10.0`.
 - Exemplos em `Exemplos/` atendem várias linguagens e não devem dirigir a arquitetura da biblioteca principal.
 
 ## Empacotamento NuGet e integração com o UniNFe
@@ -174,7 +174,7 @@ Este repositório contém a biblioteca `Unimake.DFe`, usada para emissão, consu
 - Testes xUnit foram adicionados ou ajustados com recursos XML representativos.
 - Build recomendado: `dotnet build "source/.NET Standard/Unimake.Business.DFe/Unimake.Business.DFe.csproj" --no-restore`.
 - Quando a mudança afetar empacotamento ou consumo pelo UniNFe, valide `source/Packaging/Pack-DFe.ps1` em `-DryRun` e confirme que o pacote contém apenas os assets `netstandard2.0`, incluindo `GeradorCIOTShared.dll`.
-- Para xUnit v3 neste projeto, compile `Unimake.DFe.Test.csproj` e execute a DLL gerada diretamente com `dotnet "source/Unimake.DFe.Test/bin/Debug/net8.0/Unimake.DFe.Test.dll" -class "<namespace.classe>"`; não use o alvo VSTest legado quando o SDK o rejeitar.
+- Para xUnit v3 neste projeto, compile `Unimake.DFe.Test.csproj` e execute a DLL gerada diretamente com `dotnet "source/Unimake.DFe.Test/bin/Debug/net10.0/Unimake.DFe.Test.dll" -class "<namespace.classe>"`; não use o alvo VSTest legado quando o SDK o rejeitar.
 
 ## Planejamento NF-e ABI (DevPlanner)
 

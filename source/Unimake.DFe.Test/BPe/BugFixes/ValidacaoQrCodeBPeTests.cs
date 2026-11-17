@@ -379,7 +379,7 @@ namespace Unimake.DFe.Test.BPe.BugFixes
                 var request = new CertificateRequest("CN=TESTE SINTETICO BP-e", rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
                 using (var temporario = request.CreateSelfSigned(DateTimeOffset.UtcNow.AddDays(-1), DateTimeOffset.UtcNow.AddDays(7)))
                 {
-                    return new X509Certificate2(temporario.Export(X509ContentType.Pfx, "teste"), "teste", X509KeyStorageFlags.Exportable | X509KeyStorageFlags.EphemeralKeySet);
+                    return X509CertificateLoader.LoadPkcs12(temporario.Export(X509ContentType.Pfx, "teste"), "teste", X509KeyStorageFlags.Exportable | X509KeyStorageFlags.EphemeralKeySet);
                 }
             }
         }
