@@ -72,7 +72,7 @@ namespace Unimake.DFe.Test.NFGas.Serializacao
             Assert.Equal(presente ? 1 : 0, gerado.GetElementsByTagName("vItemLiq", NamespaceNFGas).Count);
             Assert.Equal(presente ? 2 : 0, gerado.GetElementsByTagName("vProdLiq", NamespaceNFGas).Count);
             Assert.Empty(gerado.GetElementsByTagName("gICMSPrevistoPagtoAntecip", NamespaceNFGas).Cast<XmlNode>());
-            Assert.Empty(gerado.GetElementsByTagName("gProcRef", NamespaceNFGas)[0].ChildNodes.Cast<XmlNode>().Where(x => x.LocalName == "gIBSCBS"));
+            Assert.DoesNotContain(gerado.GetElementsByTagName("gProcRef", NamespaceNFGas)[0].ChildNodes.Cast<XmlNode>(), x => x.LocalName == "gIBSCBS");
 
             var relido = XMLUtility.Deserializar<NFGasXml>(gerado);
             Assert.Equal(presente ? valor : null, relido.InfNFGas.Det[0].GNormal.Prod.VItemLiq);
