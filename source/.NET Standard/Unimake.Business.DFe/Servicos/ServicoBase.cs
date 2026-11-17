@@ -313,11 +313,8 @@ namespace Unimake.Business.DFe.Servicos
             if (disposing)
             {
                 // Liberar recursos gerenciados
-                if (RetornoWSStream != null)
-                {
-                    RetornoWSStream.Dispose();
-                    RetornoWSStream = null;
-                }
+                RetornoWSStream?.Dispose();
+                RetornoWSStream = null;
             }
 
             // Liberar recursos não gerenciados (se houver)
