@@ -18,10 +18,10 @@ O que a DLL já implementou:
 - Canal de sessões amplo, com interpretação dos retornos na DLL, falhas de transporte/autenticação/preparação e limitações explícitas. Não exige cStat genérico em NFS-e/eSocial/Reinf/GNRE/CIOT.
 - Ampliação de contratos de NFS-e municipal/nacional, política GNRE e CIOT e verificação limitada do envelope de PDFs. Não confundir isso com autorização fiscal, validação integral do PDF ou interpretação universal de códigos.
 - Capacidades para observação passiva e status oficial. Ausência de status não impede observar a operação real.
-- `sessao.Concluir(retornoXml, httpStatusCode)` de dois parâmetros como API recomendada. O overload que recebe booleano de reconhecimento ficou obsoleto, mantido para transição.
+- `sessao.Concluir(retornoXml, httpStatusCode)` de dois parâmetros como API recomendada. O overload que recebe booleano de reconhecimento foi removido em 17/11/2026.
 - `DiagnosticoDisponibilidadeDFe.VerificarStatusServico()` para verificação manual sem incorporar o histórico passivo anterior. Mantém cache, correlação de sondas, certificado, proxy e bloqueio de consumo indevido. Sem status oficial não executa rede.
-- Sessões da mesma configuração não alimentam também o histórico antigo. Consumo indevido continua bloqueando status mesmo se a fila de observações estiver cheia; a nova API suprime sondas antes de preparar certificado quando o contexto está bloqueado.
-- APIs de histórico anteriores e `HistoricoLegado` ficaram obsoletas, preservando assinaturas e enums para transição. Não use essas APIs como fonte do Dashboard nem como fallback silencioso.
+- A coleta antiga na base de serviços e o histórico passivo interno foram removidos; a observação exige sessão. Consumo indevido continua bloqueando status mesmo se a fila de observações estiver cheia; a nova API suprime sondas antes de preparar certificado quando o contexto está bloqueado.
+- As APIs de histórico anteriores e `HistoricoLegado` foram removidos, inclusive as fachadas COM correspondentes. Migre os consumidores antes de recompilar com a DLL atual. Os valores dos enums foram preservados.
 
 Implemente no PRO:
 

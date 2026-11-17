@@ -1,4 +1,23 @@
-# Validação e autorrevisão — 09/11/2026
+# Validação e autorrevisão
+
+## Remoção das APIs de transição — 17/11/2026
+
+Solicitação explícita do usuário: retirar os membros obsoletos do diagnóstico. Foram removidos `Executar`, `ObterDiagnosticoPassivo`, `ConsultarStatusServico`, suas fachadas COM, `HistoricoLegado` e `Concluir(xml,http,bool)`. O histórico passivo interno, o filtro exclusivo desse histórico e os wrappers de coleta antiga na base de serviços também foram retirados. Permanecem o classificador/agregador compartilhados, o canal de sessões e a verificação manual com cache e bloqueio por consumo indevido. Enums e contratos fiscais não foram alterados.
+
+Os testes úteis foram migrados para sessões ou `VerificarStatusServico`; saíram somente os casos específicos do armazenamento anterior. Contrato desconhecido com HTTP200 permanece inconclusivo. O reconhecimento da resposta pertence à DLL. Os dois testes explícitos com Timeout agora aguardam a verificação usando o CancellationToken do xUnit. Não foram executados contra a rede.
+
+Validação final aprovada:
+
+- Build principal Debug com `--no-restore`: zero erros, quatro avisos preexistentes de `NFe.InfNFe`.
+- Build `INTEROP_Release` com `--no-restore`: zero erros, 11 avisos preexistentes de `NFe.InfNFe`.
+- Build dos testes: zero erros, 32 avisos preexistentes fora dos arquivos alterados; nenhum CS0618 de disponibilidade e nenhum xUnit1069.
+- **454 testes offline aprovados**, zero erros/falhas/ignorados/não executados, duração 2,891 s. Classes: `CanalObservacoesDisponibilidadeTest`, `CoberturaDisponibilidadeTest`, `DiagnosticoDisponibilidadeTest`, `MigracaoDiagnosticoSessaoTest`, `InterpretacaoContratosDisponibilidadeTest`, `ContratosOperacaoESocialReinfTest` e `UMessenger.Transport.ApiTimeoutTest`, excluindo `Utility=DisponibilidadeIntegracao`.
+- Preservadas as regressões de uma única chamada/observação, retorno/exceção originais, primeiro cStat, respostas cruzadas, sanitização, timeout REST, ausência de sonda sem estratégia oficial, cache e bloqueio antes de certificado/rede, inclusive com fila cheia.
+- `git diff --check` sem problemas. Atualizados somente os hashes das cinco fontes centrais alteradas em DISPONIBILIDADE.sha256.
+
+O build isolado ainda imprime a mensagem preexistente do pós-build `*Undefined*Build.bat`, com saída final de sucesso. A primeira inicialização do dotnet no sandbox falhou ao acessar a telemetria no Registro; os builds acima foram executados com `DOTNET_CLI_TELEMETRY_OPTOUT=1` e `DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1`.
+
+Nenhum pacote foi gerado/publicado e nenhum consumidor foi alterado. A compilação/integração do PRO com um novo pacote permanece fora desta validação. A remoção das assinaturas é deliberada e está documentada em MIGRACAO-SESSOES.md; os registros anteriores abaixo são históricos.
 
 ## Correção após revisão: contratos de eSocial/Reinf por operação
 
