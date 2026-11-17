@@ -146,20 +146,19 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.Equal(falha, item.TipoFalha);
         }
 
-        [Theory]
+        [Fact]
         [Trait("Utility", "Disponibilidade")]
-        [InlineData(false, StatusDisponibilidade.Inconclusivo)]
-        [InlineData(true, StatusDisponibilidade.Operacional)]
-        public void Http200ExigeReconhecimentoDaAplicacao(bool reconhecida, StatusDisponibilidade esperado)
+        public void Http200SemContratoReconhecidoPermaneceInconclusivo()
         {
             var canal = new CanalObservacoesDisponibilidade();
             using (var sessao = canal.IniciarOperacao(Config(TipoDFe.PIX), Guid.NewGuid(), Guid.NewGuid()))
             {
                 SessaoObservacaoDisponibilidade.InformarTransporte("https://api.test/recurso", "REST");
-                sessao.Concluir(null, HttpStatusCode.OK, reconhecida);
+                sessao.Concluir(null, HttpStatusCode.OK);
             }
             Assert.True(canal.TentarLer(out var item));
-            Assert.Equal(esperado, item.Status);
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, item.Status);
+            Assert.False(item.RespostaAplicacaoReconhecida);
         }
 
         [Fact]
@@ -168,7 +167,7 @@ namespace Unimake.DFe.Test.Utility.Rede
         {
             var canal = new CanalObservacoesDisponibilidade();
             using (var sessao = canal.IniciarOperacao(Config(), Guid.NewGuid(), Guid.NewGuid()))
-                sessao.Concluir(Retorno(107), HttpStatusCode.OK, true);
+                sessao.Concluir(Retorno(107), HttpStatusCode.OK);
             Assert.True(canal.TentarLer(out var item));
             Assert.False(item.TransporteObservado);
             Assert.Equal(StatusDisponibilidade.Inconclusivo, item.Status);
@@ -231,7 +230,7 @@ namespace Unimake.DFe.Test.Utility.Rede
                 using (var interna = canal.IniciarOperacao(Config(TipoDFe.PIX), Guid.NewGuid(), Guid.NewGuid()))
                 {
                     SessaoObservacaoDisponibilidade.InformarTransporte("https://interna.test", "REST");
-                    interna.Concluir(null, HttpStatusCode.OK, true);
+                    interna.Concluir(null, HttpStatusCode.OK);
                 }
                 SessaoObservacaoDisponibilidade.InformarTransporte("https://externa.test", "SOAP");
                 externa.Concluir(Retorno(107), HttpStatusCode.OK);
@@ -355,7 +354,7 @@ namespace Unimake.DFe.Test.Utility.Rede
                     { CpfCnpj = "12345678000195" }, config);
                 servico.Executar();
                 Assert.Equal("123456789012", servico.Result.IdOperacaoTransporte);
-                sessao.Concluir(servico.RetornoWSXML, 0, true);
+                sessao.Concluir(servico.RetornoWSXML, 0);
             }
             Assert.True(canal.TentarLer(out var item));
             Assert.True(item.TransporteObservado);
@@ -540,13 +539,14 @@ namespace Unimake.DFe.Test.Utility.Rede
                 await Task.Run(() => sessao.DefinirConfiguracao(Config(TipoDFe.PIX)), TestContext.Current.CancellationToken);
                 SessaoObservacaoDisponibilidade.InformarTransporte("https://api.test", "REST");
                 Assert.Throws<InvalidOperationException>(() => sessao.DefinirConfiguracao(Config()));
-                sessao.Concluir(null, HttpStatusCode.OK, true);
+                sessao.Concluir(null, HttpStatusCode.OK);
                 Assert.Throws<InvalidOperationException>(() => sessao.DefinirConfiguracao(Config()));
             }
             Assert.True(canal.TentarLer(out var item));
             Assert.Equal(TipoDFe.PIX, item.TipoDFe);
             Assert.True(item.TransporteObservado);
-            Assert.Equal(StatusDisponibilidade.Operacional, item.Status);
+            Assert.Equal(StatusDisponibilidade.Inconclusivo, item.Status);
+            Assert.False(item.RespostaAplicacaoReconhecida);
         }
 
         [Fact]

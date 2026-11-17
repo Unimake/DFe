@@ -978,9 +978,8 @@ namespace Unimake.Business.DFe.Servicos
         /// Habilita a coleta passiva e sanitizada de evidências de disponibilidade para esta execução fiscal.
         /// A coleta não cria requisições adicionais e permanece somente em memória.
         /// </summary>
-        /// <remarks>Use com CanalObservacoesDisponibilidade e uma sessão por tentativa. Quando há sessão
-        /// ativa para esta configuração, a operação não alimenta também o histórico anterior.
-        /// Sem sessão, a coleta anterior continua disponível somente para compatibilidade de transição.</remarks>
+        /// <remarks>Use com CanalObservacoesDisponibilidade e uma sessão por tentativa.
+        /// A configuração sozinha não inicia coleta; persistência e agregação pertencem ao consumidor.</remarks>
         public bool ColetarTelemetriaDisponibilidade { get; set; }
 
         /// <summary>

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
@@ -31,74 +30,29 @@ namespace Unimake.DFe.Test.Utility.Rede
         [Trait("Utility", "Disponibilidade")]
         public void TelemetriaFicaDesabilitadaPorPadrao()
         {
-            var configuracao = ConfiguracaoBase();
-            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
-                HttpStatusCode.OK, Retorno(204), null);
-
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
-
-            Assert.Equal(0, resultado.Sondas.Count);
-            Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
-        }
-
-        [Fact]
-        [Trait("Utility", "Disponibilidade")]
-        public async Task RegistroDeTelemetriaNaoEsperaQuandoHistoricoEstaOcupado()
-        {
-            var configuracao = ConfiguracaoBase();
-            configuracao.ColetarTelemetriaDisponibilidade = true;
-            var token = TestContext.Current.CancellationToken;
-
-            await ComHistoricoBloqueado(async () =>
+            var canal = new CanalObservacoesDisponibilidade();
+            using (var sessao = canal.IniciarOperacao(ConfiguracaoBase(), Guid.NewGuid(), Guid.NewGuid()))
             {
-                var registro = Task.Run(() => TelemetriaDisponibilidade.Registrar(configuracao,
-                    "https://sefaz.test/ws", "SOAP", 100, HttpStatusCode.OK, Retorno(107), null), token);
+                SessaoObservacaoDisponibilidade.InformarTransporte("https://sefaz.test/ws", "SOAP");
+                sessao.Concluir(Retorno(204), HttpStatusCode.OK);
+            }
 
-                await registro.WaitAsync(TimeSpan.FromSeconds(1), token);
-            });
-
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
-            Assert.Equal(0, resultado.Sondas.Count);
+            Assert.False(canal.TentarLer(out _));
+            Assert.Equal(0, canal.ObservacoesDescartadas);
         }
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
-        public async Task ConsumoIndevidoBloqueiaContextoMesmoQuandoAmostraEhDescartada()
-        {
-            var agora = new DateTime(2026, 7, 20, 10, 0, 0);
-            RelogioDisponibilidade.Agora = () => agora;
-            var configuracao = ConfiguracaoBase();
-            configuracao.ColetarTelemetriaDisponibilidade = true;
-            var token = TestContext.Current.CancellationToken;
-
-            await ComHistoricoBloqueado(async () =>
-            {
-                var registro = Task.Run(() => TelemetriaDisponibilidade.Registrar(configuracao,
-                    "https://sefaz.test/ws", "SOAP", 100, HttpStatusCode.OK, Retorno(656), null), token);
-                await registro.WaitAsync(TimeSpan.FromSeconds(1), token);
-            });
-
-            DateTime bloqueadoAte;
-            Assert.True(CacheStatusDisponibilidade.ContextoBloqueado(configuracao, out bloqueadoAte));
-            Assert.Equal(agora.AddHours(1), bloqueadoAte);
-        }
-
-        [Fact]
-        [Trait("Utility", "Disponibilidade")]
-        public void TelemetriaNaoCarregaCertificadoParaCriarIdentidade()
+        public void SessaoNaoCarregaCertificadoParaObservarFalhaTls()
         {
             var configuracao = ConfiguracaoBase();
             configuracao.ColetarTelemetriaDisponibilidade = true;
             configuracao.CertificadoArquivo = @"C:\certificados\inexistente.pfx";
             configuracao.CertificadoSenha = "senha-sigilosa";
-            var falhaTls = new WebException("Falha TLS", WebExceptionStatus.SecureChannelFailure);
 
-            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
-                (HttpStatusCode)0, null, falhaTls);
+            var amostra = ObservarOperacao(configuracao, "https://sefaz.test/ws", "SOAP",
+                0, null, new WebException("Falha TLS", WebExceptionStatus.SecureChannelFailure));
 
-            Assert.Null(configuracao.CertificadoDigitalCarregado);
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
-            var amostra = Assert.Single(resultado.Sondas.Itens);
             Assert.Equal(TipoFalhaDisponibilidade.TLS, amostra.TipoFalha);
             Assert.Null(configuracao.CertificadoDigitalCarregado);
         }
@@ -109,22 +63,22 @@ namespace Unimake.DFe.Test.Utility.Rede
         {
             var configuracao = ConfiguracaoBase();
             configuracao.ColetarTelemetriaDisponibilidade = true;
-            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws?token=segredo", "SOAP", 100,
-                HttpStatusCode.OK, Retorno(204), null);
 
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
+            var amostra = ObservarOperacao(configuracao, "https://sefaz.test/ws?token=segredo", "SOAP",
+                HttpStatusCode.OK, Retorno(204));
 
-            Assert.Equal(StatusDisponibilidade.Operacional, resultado.Status);
-            Assert.Equal(1, resultado.Sondas.Count);
-            Assert.Equal(FonteEvidenciaDisponibilidade.TelemetriaPassiva, resultado.Sondas.GetItem(0).Fonte);
-            Assert.Equal("https://sefaz.test", resultado.Sondas.GetItem(0).Endpoint);
-            Assert.Equal("A mensagem foi processada pela aplicação fiscal.", resultado.Sondas.GetItem(0).XMotivo);
+            Assert.Equal(StatusDisponibilidade.Operacional, amostra.Status);
+            Assert.True(amostra.TransporteObservado);
+            Assert.True(amostra.RespostaAplicacaoReconhecida);
+            Assert.Equal("https://sefaz.test", amostra.Destino);
+            Assert.Equal(204, amostra.CStat);
+            Assert.DoesNotContain("segredo", amostra.Limitacao);
         }
 
         [Theory]
         [Trait("Utility", "Disponibilidade")]
         [MemberData(nameof(RetornosFiscaisComCStat))]
-        public void TelemetriaExtraiPrimeiroCStatDosRetornosImplementados(TipoDFe tipoDFe, Servico servico,
+        public void SessaoExtraiPrimeiroCStatDosRetornosImplementados(TipoDFe tipoDFe, Servico servico,
             string xmlRetorno, int cStatEsperado, StatusDisponibilidade statusEsperado)
         {
             var configuracao = ConfiguracaoBase();
@@ -134,11 +88,9 @@ namespace Unimake.DFe.Test.Utility.Rede
             var retorno = new XmlDocument();
             retorno.LoadXml(xmlRetorno);
 
-            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
-                HttpStatusCode.OK, retorno, null);
+            var amostra = ObservarOperacao(configuracao, "https://sefaz.test/ws", "SOAP",
+                HttpStatusCode.OK, retorno);
 
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
-            var amostra = Assert.Single(resultado.Sondas.Itens);
             Assert.Equal(cStatEsperado, amostra.CStat);
             Assert.Equal(statusEsperado, amostra.Status);
         }
@@ -146,24 +98,19 @@ namespace Unimake.DFe.Test.Utility.Rede
         [Theory]
         [Trait("Utility", "Disponibilidade")]
         [MemberData(nameof(ServicosMonitorados))]
-        public void TelemetriaRegistraCadaServicoDasPastasSolicitadas(TipoDFe tipoDFe, Servico servico)
+        public void SessaoRegistraCadaServicoDasPastasSolicitadas(TipoDFe tipoDFe, Servico servico)
         {
             var configuracao = ConfiguracaoBase();
             configuracao.TipoDFe = tipoDFe;
             configuracao.Servico = servico;
             configuracao.ColetarTelemetriaDisponibilidade = true;
 
-            Assert.True(TelemetriaDisponibilidade.EstaHabilitada(configuracao));
-            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
-                HttpStatusCode.OK, Retorno(204), null);
+            var amostra = ObservarOperacao(configuracao, "https://sefaz.test/ws", "SOAP",
+                HttpStatusCode.OK, Retorno(204));
 
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
-            var amostra = Assert.Single(resultado.Sondas.Itens);
-            Assert.Equal(servico.ToString(), amostra.Servico);
+            Assert.Equal(servico, amostra.Servico);
             Assert.Equal(StatusDisponibilidade.Operacional, amostra.Status);
-            Assert.Equal(servico.ToString().IndexOf("Autorizacao", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                servico.ToString().IndexOf("StatusServico", StringComparison.OrdinalIgnoreCase) >= 0,
-                amostra.Essencial);
+            Assert.Equal(1, amostra.EntradasTransporte);
         }
 
         [Theory]
@@ -186,12 +133,18 @@ namespace Unimake.DFe.Test.Utility.Rede
         [Trait("Utility", "Disponibilidade")]
         public void ConsumoIndevidoFicaDegradadoComOrigemEspecifica()
         {
-            var configuracao = ConfiguracaoBase();
-            configuracao.ColetarTelemetriaDisponibilidade = true;
-            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
-                HttpStatusCode.OK, Retorno(656), null);
+            var resultado = new ResultadoDiagnosticoDisponibilidade();
+            var sonda = new ResultadoSondaDisponibilidade
+            {
+                Servico = "NFeAutorizacao",
+                Fonte = FonteEvidenciaDisponibilidade.TelemetriaPassiva,
+                CStat = 656,
+                Essencial = true
+            };
+            ClassificadorDisponibilidade.ClassificarRespostaFiscal(sonda);
+            resultado.Sondas.Add(sonda);
 
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
+            AgregadorDisponibilidade.Agregar(resultado);
 
             Assert.Equal(StatusDisponibilidade.Degradado, resultado.Status);
             Assert.Equal(OrigemProvavelIndisponibilidade.ConsumoIndevido, resultado.OrigemProvavel);
@@ -205,7 +158,7 @@ namespace Unimake.DFe.Test.Utility.Rede
             RelogioDisponibilidade.Agora = () => agora;
             var configuracao = ConfiguracaoBase();
             configuracao.ColetarTelemetriaDisponibilidade = true;
-            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
+            ObservarOperacao(configuracao, "https://sefaz.test/ws", "SOAP",
                 HttpStatusCode.OK, Retorno(656), null);
 
             DateTime bloqueadoAte;
@@ -225,7 +178,7 @@ namespace Unimake.DFe.Test.Utility.Rede
             configuracaoNacional.CodigoUF = (int)UFBrasil.AN;
             configuracaoNacional.Servico = Servico.NFeDistribuicaoDFe;
             configuracaoNacional.ColetarTelemetriaDisponibilidade = true;
-            TelemetriaDisponibilidade.Registrar(configuracaoNacional, "https://sefaz.test/distribuicao", "SOAP", 100,
+            ObservarOperacao(configuracaoNacional, "https://sefaz.test/distribuicao", "SOAP",
                 HttpStatusCode.OK, Retorno(656), null);
 
             using (var certificado = CriarCertificadoValido(agora))
@@ -240,7 +193,7 @@ namespace Unimake.DFe.Test.Utility.Rede
                         return Status(107);
                     });
 
-                var resultado = diagnostico.ConsultarStatusServico();
+                var resultado = diagnostico.VerificarStatusServico();
 
                 Assert.Equal(0, execucoesStatus);
                 Assert.Contains(resultado.Sondas.Itens, x => x.Servico == "StatusServico" &&
@@ -273,7 +226,7 @@ namespace Unimake.DFe.Test.Utility.Rede
                         return Status(107);
                     });
 
-                var resultado = diagnostico.ConsultarStatusServico();
+                var resultado = diagnostico.VerificarStatusServico();
 
                 Assert.Equal(0, execucoesStatus);
                 Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
@@ -301,7 +254,7 @@ namespace Unimake.DFe.Test.Utility.Rede
             configuracao.CertificadoSenha = "senha-sigilosa";
             var executor = new ExecutorInfraestruturaFake();
 
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, null, executor).Executar();
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, null, executor).VerificarStatusServico();
 
             Assert.Equal(0, executor.Execucoes);
             Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
@@ -322,7 +275,7 @@ namespace Unimake.DFe.Test.Utility.Rede
             configuracao.CertificadoSenha = "senha-sigilosa";
             var executor = new ExecutorInfraestruturaFake();
 
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, null, executor).Executar();
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, null, executor).VerificarStatusServico();
 
             Assert.Equal(0, executor.Execucoes);
             Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
@@ -333,108 +286,43 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
-        public void FalhaEstruturalPrevaleceSobreConsumoIndevidoNoExecutar()
+        public void SessaoSemTransporteNaoExecutaInfraestrutura()
         {
             var configuracao = ConfiguracaoBase();
             configuracao.ColetarTelemetriaDisponibilidade = true;
-            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
-                HttpStatusCode.OK, Retorno(656), null);
+            var canal = new CanalObservacoesDisponibilidade();
+            using (var sessao = canal.IniciarOperacao(configuracao, Guid.NewGuid(), Guid.NewGuid()))
+                sessao.Concluir(null, 0);
 
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, null,
-                new ExecutorInfraestruturaFake()).Executar();
-
-            Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
-            Assert.Equal(OrigemProvavelIndisponibilidade.AmbienteLocal, resultado.OrigemProvavel);
-            Assert.Contains(resultado.Sondas.Itens,
-                x => x.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido);
-            Assert.Contains(resultado.Sondas.Itens,
-                x => x.TipoFalha == TipoFalhaDisponibilidade.Certificado && x.Essencial);
-            Assert.Equal("Não foi possível acessar a SEFAZ porque o certificado digital não está disponível ou precisa ser revisado.",
-                resultado.Descricao);
-            DateTime bloqueadoAte;
-            Assert.True(CacheStatusDisponibilidade.ContextoBloqueado(configuracao, out bloqueadoAte));
+            Assert.True(canal.TentarLer(out var amostra));
+            Assert.False(amostra.TransporteObservado);
+            Assert.Equal(0, amostra.EntradasTransporte);
+            Assert.Null(configuracao.CertificadoDigitalCarregado);
         }
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
-        public void EvidenciaExpiraDepoisDaJanelaConfigurada()
+        public void VerificacaoManualUsaInfraestruturaEReaproveitaCache()
         {
-            var agora = new DateTime(2026, 7, 20, 10, 0, 0);
-            RelogioDisponibilidade.Agora = () => agora;
+            using var certificado = CriarCertificadoValido(DateTime.Now);
             var configuracao = ConfiguracaoBase();
-            configuracao.ColetarTelemetriaDisponibilidade = true;
-            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
-                HttpStatusCode.OK, Retorno(204), null);
-            agora = agora.AddMinutes(16);
-
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
-
-            Assert.Equal(0, resultado.Sondas.Count);
-            Assert.Equal(StatusDisponibilidade.Inconclusivo, resultado.Status);
-        }
-
-        [Fact]
-        [Trait("Utility", "Disponibilidade")]
-        public void HistoricoMantemNoMaximoVinteAmostrasPorServico()
-        {
-            var configuracao = ConfiguracaoBase();
-            configuracao.ColetarTelemetriaDisponibilidade = true;
-            for (var i = 0; i < 25; i++)
+            configuracao.CertificadoDigital = certificado;
+            var executor = new ExecutorInfraestruturaFake();
+            var chamadasStatus = 0;
+            var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracao, null, executor, (_, _) =>
             {
-                TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", i,
-                    HttpStatusCode.OK, Retorno(204), null);
-            }
+                chamadasStatus++;
+                return Status(107);
+            });
 
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
-
-            Assert.Equal(20, resultado.Sondas.Count);
-            Assert.Equal(5, resultado.Sondas.GetItem(0).DuracaoMilissegundos);
-        }
-
-        [Fact]
-        [Trait("Utility", "Disponibilidade")]
-        public void LimiteDeLentidaoEhAplicadoNaLeituraDaTelemetria()
-        {
-            var configuracao = ConfiguracaoBase();
-            configuracao.ColetarTelemetriaDisponibilidade = true;
-            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 4000,
-                HttpStatusCode.OK, Retorno(204), null);
-
-            var tolerante = new DiagnosticoDisponibilidadeDFe(configuracao,
-                new ConfiguracaoDiagnosticoDisponibilidade { LimiteLentidaoMilissegundos = 5000 }).ObterDiagnosticoPassivo();
-            var padrao = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
-
-            Assert.Equal(StatusDisponibilidade.Operacional, tolerante.Status);
-            Assert.Equal(4000, padrao.Sondas.GetItem(0).DuracaoMilissegundos);
-            Assert.Equal(StatusDisponibilidade.Degradado, padrao.Sondas.GetItem(0).Status);
-            Assert.Equal(StatusDisponibilidade.Degradado, padrao.Status);
-        }
-
-        [Fact]
-        [Trait("Utility", "Disponibilidade")]
-        public void DiagnosticoPassivoNaoExecutaInfraestrutura()
-        {
-            var executor = new ExecutorInfraestruturaFake();
-            var diagnostico = new DiagnosticoDisponibilidadeDFe(ConfiguracaoBase(), null, executor);
-
-            diagnostico.ObterDiagnosticoPassivo();
-
-            Assert.Equal(0, executor.Execucoes);
-        }
-
-        [Fact]
-        [Trait("Utility", "Disponibilidade")]
-        public void ExecutarUsaInfraestruturaEReaproveitaCache()
-        {
-            var executor = new ExecutorInfraestruturaFake();
-            var diagnostico = new DiagnosticoDisponibilidadeDFe(ConfiguracaoBase(), null, executor);
-
-            var primeiro = diagnostico.Executar();
-            var segundo = diagnostico.Executar();
+            var primeiro = diagnostico.VerificarStatusServico();
+            var segundo = diagnostico.VerificarStatusServico();
 
             Assert.Equal(1, executor.Execucoes);
-            Assert.Equal(FonteEvidenciaDisponibilidade.Infraestrutura, primeiro.Sondas.Itens.Last().Fonte);
-            Assert.True(segundo.Sondas.Itens.Last().DoCache);
+            Assert.Equal(1, chamadasStatus);
+            Assert.Contains(primeiro.Sondas.Itens, x => x.Fonte == FonteEvidenciaDisponibilidade.Infraestrutura && !x.DoCache);
+            Assert.All(segundo.Sondas.Itens.Where(x => x.Fonte == FonteEvidenciaDisponibilidade.Infraestrutura),
+                x => Assert.True(x.DoCache));
         }
 
         [Fact]
@@ -512,17 +400,26 @@ namespace Unimake.DFe.Test.Utility.Rede
         [InlineData(TipoDFe.CTe, "4.00")]
         [InlineData(TipoDFe.MDFe, "3.00")]
         [InlineData(TipoDFe.NF3e, "1.00")]
-        public void DocumentosSuportadosCarregamEndpointSemSondaFiscal(TipoDFe tipoDFe, string versao)
+        public void VerificacaoManualCarregaEndpointDosDocumentosComStatusOficial(TipoDFe tipoDFe, string versao)
         {
+            using var certificado = CriarCertificadoValido(DateTime.Now);
             var configuracao = ConfiguracaoBase();
             configuracao.TipoDFe = tipoDFe;
             configuracao.SchemaVersao = versao;
+            configuracao.CertificadoDigital = certificado;
             var executor = new ExecutorInfraestruturaFake();
+            string endpointRecebido = null;
+            var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracao, null, executor, (_, endpoint) =>
+            {
+                endpointRecebido = endpoint;
+                return Status(107);
+            });
 
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, null, executor).Executar();
+            var resultado = diagnostico.VerificarStatusServico();
 
             Assert.Equal(1, executor.Execucoes);
-            Assert.DoesNotContain(resultado.Sondas.Itens, x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico);
+            Assert.False(string.IsNullOrWhiteSpace(endpointRecebido));
+            Assert.Contains(resultado.Sondas.Itens, x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico);
         }
 
         [Theory]
@@ -532,31 +429,21 @@ namespace Unimake.DFe.Test.Utility.Rede
         [InlineData(TipoDFe.DCe, Servico.DCeAutorizacaoSinc)]
         [InlineData(TipoDFe.NFCom, Servico.NFComAutorizacaoSinc)]
         [InlineData(TipoDFe.NFGas, Servico.NFGasAutorizacaoSinc)]
-        public void DiagnosticoPassivoNaoExecutaSondaMesmoComStatusOficial(TipoDFe tipoDFe, Servico servico)
+        public void SessaoPassivaNaoExecutaSondaMesmoComStatusOficial(TipoDFe tipoDFe, Servico servico)
         {
             var configuracao = ConfiguracaoBase();
             configuracao.TipoDFe = tipoDFe;
             configuracao.Servico = servico;
             configuracao.ColetarTelemetriaDisponibilidade = true;
-            TelemetriaDisponibilidade.Registrar(configuracao, "https://sefaz.test/ws", "SOAP", 100,
-                HttpStatusCode.OK, Retorno(108), null);
-            var infraestrutura = new ExecutorInfraestruturaFake();
-            var execucoesStatus = 0;
-            var diagnostico = new DiagnosticoDisponibilidadeDFe(configuracao, null, infraestrutura,
-                (configuracaoStatus, endpoint) =>
-                {
-                    execucoesStatus++;
-                    return Status(107);
-                });
 
-            var resultado = diagnostico.ObterDiagnosticoPassivo();
+            var amostra = ObservarOperacao(configuracao, "https://sefaz.test/ws", "SOAP",
+                HttpStatusCode.OK, Retorno(108));
 
-            Assert.Equal(0, infraestrutura.Execucoes);
-            Assert.Equal(0, execucoesStatus);
-            Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
-            Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
-            Assert.Contains(resultado.Sondas.Itens, x => x.Servico == servico.ToString() && x.CStat == 108);
-            Assert.DoesNotContain(resultado.Sondas.Itens, x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico);
+            Assert.Equal(StatusDisponibilidade.Indisponivel, amostra.Status);
+            Assert.Equal(servico, amostra.Servico);
+            Assert.Equal(108, amostra.CStat);
+            Assert.Equal(1, amostra.EntradasTransporte);
+            Assert.Null(configuracao.CertificadoDigitalCarregado);
         }
 
         [Fact]
@@ -585,7 +472,7 @@ namespace Unimake.DFe.Test.Utility.Rede
                         return status;
                     });
 
-                var resultado = diagnostico.ConsultarStatusServico();
+                var resultado = diagnostico.VerificarStatusServico();
 
                 Assert.NotNull(configuracaoRecebida);
                 Assert.Equal("1.00", configuracaoRecebida.SchemaVersao);
@@ -602,7 +489,7 @@ namespace Unimake.DFe.Test.Utility.Rede
         [Trait("Utility", "Disponibilidade")]
         [InlineData(TipoDFe.NFSe)]
         [InlineData(TipoDFe.GNRE)]
-        public void DocumentoAindaNaoSuportadoFicaNaoAplicavelSemExecutarTransporte(TipoDFe tipoDFe)
+        public void DocumentoSemStatusOficialFicaNaoAplicavelSemExecutarTransporte(TipoDFe tipoDFe)
         {
             var configuracao = ConfiguracaoBase();
             configuracao.TipoDFe = tipoDFe;
@@ -615,7 +502,7 @@ namespace Unimake.DFe.Test.Utility.Rede
                     return Status(107);
                 });
 
-            var resultado = diagnostico.ConsultarStatusServico();
+            var resultado = diagnostico.VerificarStatusServico();
 
             Assert.Equal(0, infraestrutura.Execucoes);
             Assert.Equal(0, execucoesStatus);
@@ -696,11 +583,11 @@ namespace Unimake.DFe.Test.Utility.Rede
                         };
                     });
 
-                var primeira = diagnostico.ConsultarStatusServico();
+                var primeira = diagnostico.VerificarStatusServico();
                 agora = agora.AddMinutes(1);
-                var cache = diagnostico.ConsultarStatusServico();
+                var cache = diagnostico.VerificarStatusServico();
                 agora = agora.AddMinutes(5);
-                var segundaExecucao = diagnostico.ConsultarStatusServico();
+                var segundaExecucao = diagnostico.VerificarStatusServico();
 
                 Assert.Equal(StatusDisponibilidade.Degradado, primeira.Status);
                 Assert.Equal(OrigemProvavelIndisponibilidade.Indeterminada, primeira.OrigemProvavel);
@@ -824,8 +711,8 @@ namespace Unimake.DFe.Test.Utility.Rede
                         return Status(107);
                     });
 
-                var primeiro = diagnosticoA.ConsultarStatusServico();
-                var segundo = diagnosticoB.ConsultarStatusServico();
+                var primeiro = diagnosticoA.VerificarStatusServico();
+                var segundo = diagnosticoB.VerificarStatusServico();
 
                 Assert.Contains(primeiro.Sondas.Itens,
                     x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico &&
@@ -1071,40 +958,22 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
-        public void TelemetriaCTeSimpClassificaHttp503ComoIndisponibilidadeDoServico()
+        public void SessaoCTeSimpClassificaHttp503ComoIndisponibilidadeDoServico()
         {
-            DiagnosticoDisponibilidadeDFe.LimparMemoriaDiagnostico();
             var configuracao = ConfiguracaoBase();
             configuracao.TipoDFe = TipoDFe.CTe;
-            configuracao.CodigoUF = (int)UFBrasil.MT;
-            configuracao.TipoAmbiente = TipoAmbiente.Homologacao;
             configuracao.Servico = Servico.CTeAutorizacaoSimp;
             configuracao.ColetarTelemetriaDisponibilidade = true;
 
-            var falha = new WebException(
-                "The remote server returned an error: (503) Service Unavailable.",
-                WebExceptionStatus.ProtocolError);
-            TelemetriaDisponibilidade.Registrar(
-                configuracao,
-                "https://sefaz.mt.gov.br/cte/services/CTeRecepcaoSimpV4",
-                "SOAP",
-                766,
-                HttpStatusCode.ServiceUnavailable,
-                null,
-                falha);
+            var amostra = ObservarOperacao(configuracao,
+                "https://sefaz.mt.gov.br/cte/services/CTeRecepcaoSimpV4", "SOAP",
+                HttpStatusCode.ServiceUnavailable, null,
+                new WebException("Falha HTTP.", WebExceptionStatus.ProtocolError));
 
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ObterDiagnosticoPassivo();
-            var sonda = Assert.Single(resultado.Sondas.Itens);
-
-            Assert.Equal("CTeAutorizacaoSimp", sonda.Servico);
-            Assert.True(sonda.Essencial);
-            Assert.Equal(503, sonda.HttpStatusCode);
-            Assert.Equal(TipoFalhaDisponibilidade.HTTP, sonda.TipoFalha);
-            Assert.Equal(StatusDisponibilidade.Indisponivel, sonda.Status);
-            Assert.Equal("O endpoint informou indisponibilidade temporária (HTTP 503).",
-                sonda.XMotivo);
-            Assert.Equal(StatusDisponibilidade.Indisponivel, resultado.Status);
-            Assert.Equal(OrigemProvavelIndisponibilidade.AutoridadeFiscal, resultado.OrigemProvavel);
+            Assert.Equal(Servico.CTeAutorizacaoSimp, amostra.Servico);
+            Assert.Equal(503, amostra.HttpStatusCode);
+            Assert.Equal(TipoFalhaDisponibilidade.HTTP, amostra.TipoFalha);
+            Assert.Equal(StatusDisponibilidade.Indisponivel, amostra.Status);
         }
 
         [Fact]
@@ -1425,13 +1294,13 @@ namespace Unimake.DFe.Test.Utility.Rede
             configuracao.CodigoUF = (int)uf;
             configuracao.SchemaVersao = versao;
             configuracao.CertificadoDigital = PropConfig.CertificadoDigital;
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).ConsultarStatusServico();
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao).VerificarStatusServico();
             Assert.Contains(resultado.Sondas.Itens, x => x.Fonte == FonteEvidenciaDisponibilidade.StatusServico);
         }
 
         [Fact(Explicit = true, Timeout = 60000)]
         [Trait("Utility", "DisponibilidadeIntegracao")]
-        public void ConsultaStatusNFCeSPProducao()
+        public async Task ConsultaStatusNFCeSPProducao()
         {
             // Este teste é explícito porque acessa um serviço real. Ele não participa da suíte normal
             // e nunca envia NFCe, evento, inutilização ou qualquer outro XML com efeito fiscal.
@@ -1449,7 +1318,10 @@ namespace Unimake.DFe.Test.Utility.Rede
                 TimeoutMilissegundos = 10000,
                 LimiteLentidaoMilissegundos = 3000
             };
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ConsultarStatusServico();
+            var token = TestContext.Current.CancellationToken;
+            var resultado = await Task.Run(
+                () => new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).VerificarStatusServico(), token)
+                .WaitAsync(token);
 
             var saida = TestContext.Current.TestOutputHelper;
             if (saida != null)
@@ -1477,7 +1349,7 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact(Explicit = true, Timeout = 60000)]
         [Trait("Utility", "DisponibilidadeIntegracao")]
-        public void ConsultaStatusNFeMTProducao()
+        public async Task ConsultaStatusNFeMTProducao()
         {
             // Este teste é explícito porque acessa um serviço real. Ele não participa da suíte normal
             // e nunca envia NFe, evento, inutilização ou qualquer outro XML com efeito fiscal.
@@ -1495,7 +1367,10 @@ namespace Unimake.DFe.Test.Utility.Rede
                 TimeoutMilissegundos = 10000,
                 LimiteLentidaoMilissegundos = 3000
             };
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ConsultarStatusServico();
+            var token = TestContext.Current.CancellationToken;
+            var resultado = await Task.Run(
+                () => new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).VerificarStatusServico(), token)
+                .WaitAsync(token);
 
             var saida = TestContext.Current.TestOutputHelper;
             if (saida != null)
@@ -1541,7 +1416,7 @@ namespace Unimake.DFe.Test.Utility.Rede
                 TimeoutMilissegundos = 10000,
                 LimiteLentidaoMilissegundos = 3000
             };
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ConsultarStatusServico();
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).VerificarStatusServico();
 
             var saida = TestContext.Current.TestOutputHelper;
             if (saida != null)
@@ -1587,7 +1462,7 @@ namespace Unimake.DFe.Test.Utility.Rede
                 TimeoutMilissegundos = 10000,
                 LimiteLentidaoMilissegundos = 3000
             };
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ConsultarStatusServico();
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).VerificarStatusServico();
 
             var saida = TestContext.Current.TestOutputHelper;
             if (saida != null)
@@ -1661,7 +1536,7 @@ namespace Unimake.DFe.Test.Utility.Rede
                 TimeoutMilissegundos = 10000,
                 LimiteLentidaoMilissegundos = 3000
             };
-            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).ConsultarStatusServico();
+            var resultado = new DiagnosticoDisponibilidadeDFe(configuracao, opcoes).VerificarStatusServico();
 
             var saida = TestContext.Current.TestOutputHelper;
             if (saida != null)
@@ -1885,44 +1760,19 @@ namespace Unimake.DFe.Test.Utility.Rede
             new object[] { TipoDFe.NFGas, Servico.NFGasAutorizacaoSinc }
         };
 
-        private static async Task ComHistoricoBloqueado(Func<Task> executar)
+        private static ObservacaoDisponibilidade ObservarOperacao(Configuracao configuracao, string endpoint,
+            string protocolo, HttpStatusCode http, XmlDocument retorno, Exception falha = null)
         {
-            var syncRoot = typeof(TelemetriaDisponibilidade)
-                .GetField("SyncRoot", BindingFlags.Static | BindingFlags.NonPublic)
-                .GetValue(null);
-            var token = TestContext.Current.CancellationToken;
-            var iniciou = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
-            using (var liberar = new ManualResetEventSlim())
+            var canal = new CanalObservacoesDisponibilidade();
+            using (var sessao = canal.IniciarOperacao(configuracao, Guid.NewGuid(), Guid.NewGuid()))
             {
-                var bloqueio = Task.Run(() =>
-                {
-                    var lockAdquirido = false;
-                    try
-                    {
-                        Monitor.Enter(syncRoot, ref lockAdquirido);
-                        iniciou.TrySetResult(true);
-                        liberar.Wait(token);
-                    }
-                    finally
-                    {
-                        if (lockAdquirido)
-                        {
-                            Monitor.Exit(syncRoot);
-                        }
-                    }
-                }, token);
-
-                await iniciou.Task.WaitAsync(TimeSpan.FromSeconds(5), token);
-                try
-                {
-                    await executar();
-                }
-                finally
-                {
-                    liberar.Set();
-                    await bloqueio;
-                }
+                SessaoObservacaoDisponibilidade.InformarTransporte(endpoint, protocolo);
+                if (falha == null) sessao.Concluir(retorno, http);
+                else sessao.Falhar(falha, http);
             }
+            Assert.True(canal.TentarLer(out var observacao));
+            Assert.False(canal.TentarLer(out _));
+            return observacao;
         }
 
         private static XmlDocument Retorno(int cStat)

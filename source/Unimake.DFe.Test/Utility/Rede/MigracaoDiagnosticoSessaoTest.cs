@@ -36,7 +36,7 @@ namespace Unimake.DFe.Test.Utility.Rede
         [InlineData(108, StatusDisponibilidade.Indisponivel)]
         [InlineData(656, StatusDisponibilidade.Degradado)]
         [Trait("Utility", "Disponibilidade")]
-        public void ServicoPublicoComSessaoEntregaUmaObservacaoSemHistoricoDuplicado(int codigo, StatusDisponibilidade status)
+        public void ServicoPublicoComSessaoEntregaUmaObservacaoSemDuplicar(int codigo, StatusDisponibilidade status)
         {
             using var certificado = Certificado();
             var config = Config(); config.CertificadoDigital = certificado;
@@ -59,36 +59,43 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.Equal(status, item.Status);
             Assert.Equal(codigo, item.CStat);
             Assert.False(canal.TentarLer(out _));
-            Assert.Empty(TelemetriaDisponibilidade.Obter(config, new ConfiguracaoDiagnosticoDisponibilidade()));
             Assert.DoesNotContain("SEGREDO", item.Limitacao);
             Assert.Equal(codigo == 656, CacheStatusDisponibilidade.ContextoBloqueado(config, out _));
         }
 
         [Fact, Trait("Utility", "Disponibilidade")]
-        public void TransicaoSemSessaoMantemContratoAnteriorSemSuprimirOutraConfiguracao()
+        public void ServicoSemSessaoNaoPublicaObservacao()
         {
+            using var certificado = Certificado();
             var config = Config();
-            var outro = Config();
+            config.CertificadoDigital = certificado;
+            var executor = new SoapFake(107);
             var canal = new CanalObservacoesDisponibilidade();
-            using (var sessao = canal.IniciarOperacao(config, Guid.NewGuid(), Guid.NewGuid()))
+            using (SoapTransportExecutorFactory.Override(() => executor))
             {
-                Assert.False(TelemetriaDisponibilidade.EstaHabilitada(config));
-                Assert.True(TelemetriaDisponibilidade.EstaHabilitada(outro));
-                sessao.Concluir(null, 0);
-                Assert.True(TelemetriaDisponibilidade.EstaHabilitada(config));
+                var servico = new Unimake.Business.DFe.Servicos.NFe.StatusServico(new Unimake.Business.DFe.Xml.NFe.ConsStatServ
+                { Versao = "4.00", CUF = UFBrasil.SP, TpAmb = TipoAmbiente.Homologacao }, config);
+                servico.Executar();
+                Assert.Equal(107, servico.Result.CStat);
             }
-            var xml = new XmlDocument(); xml.LoadXml("<ret><cStat>108</cStat></ret>");
-            TelemetriaDisponibilidade.Registrar(config, "https://servico.test/SEGREDO", "SOAP", 1, HttpStatusCode.OK, xml, null);
-            Assert.Single(TelemetriaDisponibilidade.Obter(config, new ConfiguracaoDiagnosticoDisponibilidade()));
+
+            Assert.Equal(1, executor.Chamadas);
+            Assert.False(canal.TentarLer(out _));
+            Assert.Equal(0, canal.ObservacoesDescartadas);
         }
 
         [Fact, Trait("Utility", "Disponibilidade")]
-        public void VerificacaoManualNovaNaoLeNemApagaHistoricoPassivoEReutilizaCacheSeguro()
+        public void VerificacaoManualPreservaObservacaoPassivaEReutilizaCacheSeguro()
         {
             using var certificado = Certificado();
             var config = Config(); config.CertificadoDigital = certificado;
             var xml = new XmlDocument(); xml.LoadXml("<ret><cStat>108</cStat></ret>");
-            TelemetriaDisponibilidade.Registrar(config, "https://servico.test/antigo", "SOAP", 1, HttpStatusCode.OK, xml, null);
+            var canal = new CanalObservacoesDisponibilidade();
+            using (var sessao = canal.IniciarOperacao(config, Guid.NewGuid(), Guid.NewGuid()))
+            {
+                SessaoObservacaoDisponibilidade.InformarTransporte("https://servico.test/passivo", "SOAP");
+                sessao.Concluir(xml, HttpStatusCode.OK);
+            }
             var chamadas = 0;
             var diagnostico = new DiagnosticoDisponibilidadeDFe(config, null, new InfraFake(), (cfg, endpoint) =>
             {
@@ -100,7 +107,10 @@ namespace Unimake.DFe.Test.Utility.Rede
             var resultado = diagnostico.VerificarStatusServico();
             Assert.Equal(StatusDisponibilidade.Operacional, resultado.Status);
             Assert.DoesNotContain(resultado.Sondas.Itens, s => s.Fonte == FonteEvidenciaDisponibilidade.TelemetriaPassiva);
-            Assert.Single(TelemetriaDisponibilidade.Obter(config, new ConfiguracaoDiagnosticoDisponibilidade()));
+            Assert.True(canal.TentarLer(out var passiva));
+            Assert.Equal(108, passiva.CStat);
+            Assert.Equal(StatusDisponibilidade.Indisponivel, passiva.Status);
+            Assert.False(canal.TentarLer(out _));
             var segundo = diagnostico.VerificarStatusServico();
             Assert.Equal(1, chamadas);
             Assert.Contains(segundo.Sondas.Itens, s => s.Fonte == FonteEvidenciaDisponibilidade.StatusServico && s.DoCache);
@@ -131,7 +141,6 @@ namespace Unimake.DFe.Test.Utility.Rede
             Assert.Equal(0, chamadas);
             Assert.Equal(0, infra.Chamadas);
             Assert.Contains(resultado.Sondas.Itens, s => s.Fonte == FonteEvidenciaDisponibilidade.StatusServico && s.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido);
-            Assert.Empty(TelemetriaDisponibilidade.Obter(config, new ConfiguracaoDiagnosticoDisponibilidade()));
         }
 
         [Theory]
@@ -166,7 +175,6 @@ namespace Unimake.DFe.Test.Utility.Rede
                 Assert.True(CacheStatusDisponibilidade.ContextoBloqueado(config, out _));
                 agora = agora.AddMinutes(61);
                 Assert.False(CacheStatusDisponibilidade.ContextoBloqueado(config, out _));
-                Assert.Empty(TelemetriaDisponibilidade.Obter(config, new ConfiguracaoDiagnosticoDisponibilidade()));
             }
             finally { RelogioDisponibilidade.Agora = anterior; }
         }

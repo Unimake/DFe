@@ -117,8 +117,8 @@ namespace Unimake.Business.DFe.Utility
     /// Define como o diagnóstico de disponibilidade deve trabalhar.
     /// </summary>
     /// <remarks>
-    /// Use esta classe quando precisar ajustar timeout, janela de histórico,
-    /// cache ou limitar o diagnóstico a determinados serviços. Os valores
+    /// Use esta classe quando precisar ajustar timeout, janela das sondas
+    /// de status e cache da verificação manual. Os valores
     /// padrão são conservadores para evitar excesso de consultas à SEFAZ.
     /// </remarks>
 #if INTEROP
@@ -128,9 +128,6 @@ namespace Unimake.Business.DFe.Utility
 #endif
     public class ConfiguracaoDiagnosticoDisponibilidade
     {
-        /// <summary>Lista interna dos nomes de serviços selecionados pelo desenvolvedor.</summary>
-        private readonly List<string> servicos = new List<string>();
-
         /// <summary>Cria as opções com padrões conservadores e seguros para uso normal.</summary>
         public ConfiguracaoDiagnosticoDisponibilidade()
         {
@@ -148,7 +145,7 @@ namespace Unimake.Business.DFe.Utility
         /// <summary>Tempo, em milissegundos, a partir do qual uma resposta válida é considerada lenta.</summary>
         public int LimiteLentidaoMilissegundos { get; set; }
 
-        /// <summary>Quantidade de minutos de histórico passivo que pode ser usado no diagnóstico.</summary>
+        /// <summary>Quantidade de minutos das sondas de status que pode ser usada para correlação na verificação manual.</summary>
         public int JanelaEvidenciaMinutos { get; set; }
 
         /// <summary>Quantidade de segundos durante os quais o resultado de DNS/TCP/TLS pode ser reutilizado.</summary>
@@ -156,32 +153,6 @@ namespace Unimake.Business.DFe.Utility
 
         /// <summary>Intervalo mínimo, em minutos, entre consultas explícitas ao StatusServico; o mínimo permitido é cinco.</summary>
         public int IntervaloMinimoStatusMinutos { get; set; }
-
-        /// <summary>Informa quantos serviços foram selecionados para um diagnóstico direcionado.</summary>
-        public int ServicosCount => servicos.Count;
-
-        /// <summary>Adiciona um serviço à seleção do diagnóstico, evitando nomes repetidos.</summary>
-        /// <param name="nomeServico">Nome do serviço.</param>
-        public void AddServico(string nomeServico)
-        {
-            if (!string.IsNullOrWhiteSpace(nomeServico) && !servicos.Contains(nomeServico))
-            {
-                servicos.Add(nomeServico);
-            }
-        }
-
-        /// <summary>Remove a seleção de serviços e faz o diagnóstico voltar a considerar todos os serviços.</summary>
-        public void ClearServicos() => servicos.Clear();
-
-        /// <summary>Obtém o nome do serviço selecionado em um índice iniciado em zero.</summary>
-        /// <param name="index">Índice iniciado em zero.</param>
-        /// <returns>Nome do serviço.</returns>
-        public string GetServico(int index) => servicos[index];
-
-        /// <summary>Verifica se um serviço está incluído no filtro atual.</summary>
-        /// <param name="servico">Nome do serviço que será comparado.</param>
-        /// <returns><see langword="true"/> quando não há filtro ou quando o serviço foi selecionado.</returns>
-        internal bool AceitaServico(string servico) => servicos.Count == 0 || servicos.Contains(servico);
 
         /// <summary>Confere se os limites da configuração têm valores seguros antes da execução.</summary>
         /// <exception cref="ArgumentOutOfRangeException">Lançada quando um limite é zero, negativo ou menor que o mínimo permitido.</exception>

@@ -10,14 +10,10 @@ namespace Unimake.Business.DFe.Utility
 #endif
     public sealed class CapacidadesDiagnosticoDisponibilidade
     {
-        private readonly bool historicoLegado;
         /// <summary>Documento ou integração avaliada.</summary>
         public TipoDFe TipoDFe { get; }
         /// <summary>Há serviços remotos implementados que podem ser acompanhados por uma sessão opt-in.</summary>
         public bool ObservacaoPassiva { get; }
-        /// <summary>Compatibilidade da API anterior; não deve orientar cobertura ou coleta do consumidor.</summary>
-        [System.Obsolete("Use ObservacaoPassiva e o canal de sessões. O histórico anterior existe somente para compatibilidade de transição.")]
-        public bool HistoricoLegado => historicoLegado;
         /// <summary>Há estratégia implementada de consulta oficial de status, com cache e bloqueio.</summary>
         public bool ConsultaOficialStatus { get; }
         /// <summary>O diagnóstico manual pode sondar infraestrutura do endpoint de status configurado.</summary>
@@ -33,7 +29,6 @@ namespace Unimake.Business.DFe.Utility
             ObservacaoPassiva = tipoDFe != TipoDFe.Desconhecido && tipoDFe != TipoDFe.SAT &&
                 tipoDFe != TipoDFe.CFe && tipoDFe != TipoDFe.SNCM &&
                 System.Enum.IsDefined(typeof(TipoDFe), tipoDFe);
-            historicoLegado = TelemetriaDisponibilidade.SuportaDocumento(tipoDFe);
             ConsultaOficialStatus = DiagnosticoDisponibilidadeDFe.PossuiConsultaOficialStatus(tipoDFe);
             Limitacao = !ObservacaoPassiva ? "Não há serviço remoto implementado para este tipo na biblioteca; utilitários externos são identificados separadamente." :
                 ConsultaOficialStatus ? "Status não confirma autorização, eventos, downloads ou recuperação de outro serviço. A configuração efetiva pode não possuir endpoint." :

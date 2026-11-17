@@ -137,7 +137,7 @@ namespace Unimake.DFe.Test.Utility.Rede
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
-        public void CapacidadeDistingueSessaoPassivaStatusEHistoricoSemCarregarCertificado()
+        public void CapacidadeDistingueSessaoPassivaEStatusOficialSemCarregarCertificado()
         {
             foreach (TipoDFe tipo in Enum.GetValues(typeof(TipoDFe)))
             {
@@ -148,24 +148,31 @@ namespace Unimake.DFe.Test.Utility.Rede
             var reinf = new CapacidadesDiagnosticoDisponibilidade(TipoDFe.EFDReinf);
             Assert.True(reinf.ObservacaoPassiva);
             Assert.False(reinf.ConsultaOficialStatus);
-            Assert.False(reinf.HistoricoLegado);
             Assert.False(new CapacidadesDiagnosticoDisponibilidade(TipoDFe.SNCM).ObservacaoPassiva);
         }
 
         [Fact]
         [Trait("Utility", "Disponibilidade")]
-        public void HistoricoRemovePathECorpoSemMisturarEndpointsDoMesmoHost()
+        public void SessaoRemovePathECorpoECacheDistingueEndpointsDoMesmoHost()
         {
-            DiagnosticoDisponibilidadeDFe.LimparMemoriaDiagnostico();
             var config = Config(TipoDFe.NFe, Servico.NFeAutorizacao);
-            var retorno = new XmlDocument(); retorno.LoadXml("<ret><cStat>108</cStat></ret>");
-            TelemetriaDisponibilidade.Registrar(config, "https://sefaz.test/token-secreto/12345678901", "SOAP", 10, HttpStatusCode.OK, retorno, null);
-            retorno.LoadXml("<ret><cStat>107</cStat></ret>");
-            TelemetriaDisponibilidade.Registrar(config, "https://sefaz.test/outro-servico", "SOAP", 10, HttpStatusCode.OK, retorno, null);
-            var resultado = new DiagnosticoDisponibilidadeDFe(config).ObterDiagnosticoPassivo();
-            Assert.Equal(2, resultado.Sondas.Count);
-            Assert.Equal(StatusDisponibilidade.ParcialmenteIndisponivel, resultado.Status);
-            Assert.All(resultado.Sondas.Itens, s => Assert.Equal("https://sefaz.test", s.Endpoint));
+            var canal = new CanalObservacoesDisponibilidade();
+            foreach (var endpoint in new[] { "https://sefaz.test/token-secreto/12345678901", "https://sefaz.test/outro-servico" })
+            {
+                using var sessao = canal.IniciarOperacao(config, Guid.NewGuid(), Guid.NewGuid());
+                SessaoObservacaoDisponibilidade.InformarTransporte(endpoint, "SOAP");
+                var retorno = new XmlDocument();
+                retorno.LoadXml("<ret><cStat>108</cStat><xMotivo>SEGREDO</xMotivo></ret>");
+                sessao.Concluir(retorno, HttpStatusCode.OK);
+            }
+            for (var i = 0; i < 2; i++)
+            {
+                Assert.True(canal.TentarLer(out var observacao));
+                Assert.Equal("https://sefaz.test", observacao.Destino);
+                Assert.DoesNotContain("SEGREDO", observacao.Limitacao);
+                Assert.DoesNotContain("token-secreto", observacao.Destino);
+            }
+            Assert.False(canal.TentarLer(out _));
             var falha = new ResultadoSondaDisponibilidade();
             ClassificadorDisponibilidade.PreencherFalha(new Exception("<xml>SEGREDO e token sem separador</xml>"), falha);
             Assert.DoesNotContain("SEGREDO", falha.Excecao);

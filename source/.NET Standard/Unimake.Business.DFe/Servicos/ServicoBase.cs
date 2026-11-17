@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -243,31 +242,7 @@ namespace Unimake.Business.DFe.Servicos
                 var apiConfig = new ConfiguracaoApiConfigMapper().Map(Configuracoes);
 
                 var consumirAPI = new ConsumirAPI();
-                if (!TelemetriaDisponibilidade.EstaHabilitada(Configuracoes))
-                {
-                    consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
-                }
-                else
-                {
-                    var inicioTelemetria = Stopwatch.GetTimestamp();
-                    Exception falhaTransporte = null;
-                    try
-                    {
-                        consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
-                    }
-                    catch (Exception ex)
-                    {
-                        falhaTransporte = ex;
-                        throw;
-                    }
-                    finally
-                    {
-                        var duracaoTelemetria = (long)((Stopwatch.GetTimestamp() - inicioTelemetria) *
-                            1000.0 / Stopwatch.Frequency);
-                        TelemetriaDisponibilidade.Registrar(Configuracoes, apiConfig.RequestURI, "REST", duracaoTelemetria,
-                            consumirAPI.HttpStatusCode, consumirAPI.RetornoServicoXML, falhaTransporte);
-                    }
-                }
+                consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
 
                 RetornoWSString = consumirAPI.RetornoServicoString;
                 RetornoWSRawString = consumirAPI.RetornoServicoRawString;
@@ -296,31 +271,7 @@ namespace Unimake.Business.DFe.Servicos
                 var conteudoXMLAssinado = ConteudoXMLAssinado;
 
                 var consumirWS = new ConsumirWS();
-                if (!TelemetriaDisponibilidade.EstaHabilitada(Configuracoes))
-                {
-                    consumirWS.ExecutarServico(conteudoXMLAssinado, soap, Configuracoes.CertificadoDigital);
-                }
-                else
-                {
-                    var inicioTelemetria = Stopwatch.GetTimestamp();
-                    Exception falhaTransporte = null;
-                    try
-                    {
-                        consumirWS.ExecutarServico(conteudoXMLAssinado, soap, Configuracoes.CertificadoDigital);
-                    }
-                    catch (Exception ex)
-                    {
-                        falhaTransporte = ex;
-                        throw;
-                    }
-                    finally
-                    {
-                        var duracaoTelemetria = (long)((Stopwatch.GetTimestamp() - inicioTelemetria) *
-                            1000.0 / Stopwatch.Frequency);
-                        TelemetriaDisponibilidade.Registrar(Configuracoes, soap.EnderecoWeb, "SOAP", duracaoTelemetria,
-                            consumirWS.HttpStatusCode, consumirWS.RetornoServicoXML, falhaTransporte);
-                    }
-                }
+                consumirWS.ExecutarServico(conteudoXMLAssinado, soap, Configuracoes.CertificadoDigital);
 
                 RetornoWSString = consumirWS.RetornoServicoString;
                 RetornoWSXML = consumirWS.RetornoServicoXML;

@@ -99,16 +99,6 @@ namespace Unimake.Business.DFe.Utility
         private ResultadoSondaDisponibilidade falhaAuxiliar;
         private EvidenciaRespostaDisponibilidade evidenciaBinaria;
 
-        // Uma operação acompanhada por sessão não alimenta também o histórico antigo.
-        // A identidade de referência evita suprimir outra configuração no mesmo fluxo.
-        internal static bool PossuiColetaAtiva(Configuracao configuracao)
-        {
-            var sessao = Atual.Value;
-            return sessao != null && ReferenceEquals(sessao.configuracao, configuracao) &&
-                configuracao.ColetarTelemetriaDisponibilidade && Volatile.Read(ref sessao.finalizada) == 0 &&
-                Volatile.Read(ref sessao.descartada) == 0;
-        }
-
         internal SessaoObservacaoDisponibilidade(CanalObservacoesDisponibilidade canal, Configuracao configuracao,
             Guid operacaoId, Guid contextoId)
         {
@@ -134,24 +124,15 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="retorno">Retorno da operação principal; não é armazenado na fotografia.</param>
         /// <param name="httpStatusCode">Código HTTP efetivamente recebido, ou zero quando ausente.</param>
         public void Concluir(XmlDocument retorno, HttpStatusCode httpStatusCode)
-            => Finalizar(retorno, httpStatusCode, null, false);
-
-        /// <summary>Compatibilidade de conclusão com reconhecimento informado pelo consumidor.</summary>
-        /// <param name="retorno">Retorno interpretado da operação principal; não é armazenado.</param>
-        /// <param name="httpStatusCode">Código HTTP efetivamente recebido, ou zero quando ausente.</param>
-        /// <param name="respostaAplicacaoReconhecida">Verdadeiro somente após reconhecimento do contrato pelo
-        /// consumidor, inclusive rejeição normal. HTTP 2xx sozinho não permite informar verdadeiro.</param>
-        [Obsolete("Use Concluir(retorno, httpStatusCode). O reconhecimento de protocolos pertence à DLL; contratos desconhecidos devem permanecer inconclusivos.")]
-        public void Concluir(XmlDocument retorno, HttpStatusCode httpStatusCode, bool respostaAplicacaoReconhecida = false)
-            => Finalizar(retorno, httpStatusCode, null, respostaAplicacaoReconhecida);
+            => Finalizar(retorno, httpStatusCode, null);
 
         /// <summary>Conclui com uma falha já ocorrida, sem reter a exceção ou sua mensagem.</summary>
         /// <param name="exception">Exceção original, que o chamador continua responsável por propagar.</param>
         /// <param name="httpStatusCode">Código HTTP efetivamente recebido, quando disponível.</param>
         public void Falhar(Exception exception, HttpStatusCode httpStatusCode = 0)
-            => Finalizar(null, httpStatusCode, exception, false);
+            => Finalizar(null, httpStatusCode, exception);
 
-        private void Finalizar(XmlDocument retorno, HttpStatusCode httpStatusCode, Exception exception, bool reconhecida)
+        private void Finalizar(XmlDocument retorno, HttpStatusCode httpStatusCode, Exception exception)
         {
             if (Volatile.Read(ref descartada) != 0 || Interlocked.Exchange(ref finalizada, 1) != 0) return;
             try
@@ -177,7 +158,6 @@ namespace Unimake.Business.DFe.Utility
                 {
                     // Reutiliza a precedência do primeiro cStat, sem guardar corpo ou xMotivo externo.
                     var fault = ReconhecedorRespostaDisponibilidade.EhFault(retorno?.DocumentElement);
-                    if (fault) reconhecida = false;
                     var no = fault || !ReconhecedorRespostaDisponibilidade.UsaCStat(configuracao.TipoDFe) ? null :
                         retorno?.DocumentElement?.SelectSingleNode("descendant-or-self::*[local-name()='cStat']");
                     int cStat;
@@ -185,7 +165,7 @@ namespace Unimake.Business.DFe.Utility
                     ClassificadorDisponibilidade.ClassificarRespostaFiscal(sonda);
                     evidencia = ReconhecedorRespostaDisponibilidade.Reconhecer(configuracao, retorno);
                     if (!evidencia.Reconhecida && evidenciaBinaria != null) evidencia = evidenciaBinaria;
-                    if ((reconhecida || evidencia.Reconhecida) && transporte &&
+                    if (evidencia.Reconhecida && transporte &&
                         (sonda.HttpStatusCode == 0 || sonda.HttpStatusCode < 500) &&
                         sonda.CStat == 0)
                     {
@@ -227,7 +207,7 @@ namespace Unimake.Business.DFe.Utility
                     sonda.Status = StatusDisponibilidade.Inconclusivo;
                     sonda.TipoFalha = TipoFalhaDisponibilidade.Nenhuma;
                 }
-                // Proteção de consumo indevido independe do histórico antigo e da entrega na fila.
+                // Proteção de consumo indevido independe da entrega na fila.
                 // Não guarda XML ou credencial, nem inicia uma consulta de status.
                 if (transporte && sonda.TipoFalha == TipoFalhaDisponibilidade.ConsumoIndevido)
                     CacheStatusDisponibilidade.BloquearContexto(configuracao, RelogioDisponibilidade.Agora().AddHours(1));
@@ -236,7 +216,7 @@ namespace Unimake.Business.DFe.Utility
                     configuracao, destino, protocolo, etapa, transporte,
                     transporte ? duracaoTransporte >= 0 ? duracaoTransporte :
                         (long)((Stopwatch.GetTimestamp() - inicioTransporte) * 1000.0 / Stopwatch.Frequency) : 0, sonda,
-                    evidencia, entradasTransporte, reconhecida, integracaoRemota));
+                    evidencia, entradasTransporte, integracaoRemota));
             }
             catch
             {
@@ -438,7 +418,7 @@ namespace Unimake.Business.DFe.Utility
         internal ObservacaoDisponibilidade(Guid operacaoId, Guid contextoId, DateTimeOffset inicioUtc,
             DateTimeOffset conclusaoUtc, long duracao, Configuracao configuracao, string destino,
             string protocolo, string etapa, bool transporte, long duracaoTransporte, ResultadoSondaDisponibilidade sonda,
-            EvidenciaRespostaDisponibilidade evidencia, int entradasTransporte, bool reconhecida, string integracaoRemota)
+            EvidenciaRespostaDisponibilidade evidencia, int entradasTransporte, string integracaoRemota)
         {
             OperacaoId = operacaoId;
             ContextoId = contextoId;
@@ -462,7 +442,7 @@ namespace Unimake.Business.DFe.Utility
             CStat = sonda.CStat;
             ContratoResposta = sonda.CStat > 0 ? "cStat" : evidencia.Contrato;
             CodigoRespostaAplicacao = evidencia.Codigo;
-            RespostaAplicacaoReconhecida = transporte && (sonda.CStat > 0 || evidencia.Reconhecida || reconhecida);
+            RespostaAplicacaoReconhecida = transporte && (sonda.CStat > 0 || evidencia.Reconhecida);
             EntradasTransporte = entradasTransporte;
             IntegracaoRemota = integracaoRemota;
             if (!string.IsNullOrEmpty(integracaoRemota))
