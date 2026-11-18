@@ -55,7 +55,11 @@
     </adquirente>
     <imovel>
       <tipo>1</tipo>
+      <cadastro>
+        <cCIB>12345678</cCIB>
+      </cadastro>
       <espImovel>01</espImovel>
+      <enquadramento>01</enquadramento>
       <enderImovel>
         <xLgr>RUA EXEMPLO</xLgr>
         <nro>300</nro>

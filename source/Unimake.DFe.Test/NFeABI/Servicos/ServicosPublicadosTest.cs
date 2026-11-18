@@ -284,7 +284,7 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
         {
             var documento = LerNFeABI();
             var chave = documento.InfNFeABI.Chave;
-            var retorno = "<retNFeABI versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/nfeabi\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cStat>100</cStat><xMotivo>Autorizado</xMotivo><cUF>41</cUF><dhRecbto>2026-09-14T18:00:00-03:00</dhRecbto><protNFeABI versao=\"1.00\"><infProt Id=\"ID" + chave + "\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><chNFeABI>" + chave + "</chNFeABI><dhRecbto>2026-09-14T18:00:00-03:00</dhRecbto><nProt>141260000000001</nProt><digVal>QUJDRA==</digVal><cStat>100</cStat><xMotivo>Autorizado</xMotivo></infProt></protNFeABI></retNFeABI>";
+            var retorno = "<retNFeABI versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/nfeabi\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cStat>100</cStat><xMotivo>Autorizado</xMotivo><cUF>41</cUF><dhRecbto>2026-09-14T18:00:00-03:00</dhRecbto><protNFeABI versao=\"1.00\"><infProt Id=\"ID" + chave + "\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><chNFeABI>" + chave + "</chNFeABI><dhRecbto>2026-09-14T18:00:00-03:00</dhRecbto><nProt>1412600000000001</nProt><digVal>QUJDRA==</digVal><cStat>100</cStat><xMotivo>Autorizado</xMotivo></infProt></protNFeABI></retNFeABI>";
             var servico = new NFeABIAutorizacaoSinc(documento, new Configuracao())
             {
                 RetornoWSString = retorno
@@ -292,7 +292,7 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
 
             Assert.Equal(100, servico.Result.CStat);
             Assert.True(servico.NFeABIProcResults.ContainsKey(chave));
-            Assert.Equal("141260000000001", servico.NFeABIProcResults[chave].ProtNFeABI.InfProt.NProt);
+            Assert.Equal("1412600000000001", servico.NFeABIProcResults[chave].ProtNFeABI.InfProt.NProt);
         }
 
         /// <summary>
@@ -491,7 +491,7 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
 
         private static string CriarRetornoAutorizado(string chave)
         {
-            return "<retNFeABI versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/nfeabi\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cStat>100</cStat><xMotivo>Autorizado</xMotivo><cUF>41</cUF><dhRecbto>2026-09-14T18:00:00-03:00</dhRecbto><protNFeABI versao=\"1.00\"><infProt Id=\"ID" + chave + "\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><chNFeABI>" + chave + "</chNFeABI><dhRecbto>2026-09-14T18:00:00-03:00</dhRecbto><nProt>141260000000001</nProt><digVal>QUJDRA==</digVal><cStat>100</cStat><xMotivo>Autorizado</xMotivo></infProt></protNFeABI></retNFeABI>";
+            return "<retNFeABI versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/nfeabi\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cStat>100</cStat><xMotivo>Autorizado</xMotivo><cUF>41</cUF><dhRecbto>2026-09-14T18:00:00-03:00</dhRecbto><protNFeABI versao=\"1.00\"><infProt Id=\"ID" + chave + "\"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><chNFeABI>" + chave + "</chNFeABI><dhRecbto>2026-09-14T18:00:00-03:00</dhRecbto><nProt>1412600000000001</nProt><digVal>QUJDRA==</digVal><cStat>100</cStat><xMotivo>Autorizado</xMotivo></infProt></protNFeABI></retNFeABI>";
         }
 
         private static ContratoWsdl LerContratoWsdl(string arquivo, string operacao, string mensagemEntrada, string mensagemSaida)

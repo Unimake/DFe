@@ -38,15 +38,16 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
 
         [Fact]
         [Trait("DFe", "NFeABI")]
-        public void PacoteOficialPossuiVinteSchemasEmbutidos()
+        public void PacoteOficialPossuiVinteEUmSchemasEmbutidos()
         {
             var schemas = typeof(ValidarSchema).Assembly.GetManifestResourceNames()
                 .Where(x => x.Contains(".Xml.Schemas.NFeABI.") && x.EndsWith(".xsd", StringComparison.OrdinalIgnoreCase))
                 .ToArray();
 
-            Assert.Equal(20, schemas.Length);
+            Assert.Equal(21, schemas.Length);
             Assert.Contains(schemas, x => x.EndsWith(".NFeABI_v1.00.xsd", StringComparison.Ordinal));
             Assert.Contains(schemas, x => x.EndsWith(".eventoNFeABI_v1.00.xsd", StringComparison.Ordinal));
+            Assert.Contains(schemas, x => x.EndsWith(".evDesfazimAlienacNFeABI_v1.00.xsd", StringComparison.Ordinal));
             Assert.Contains(schemas, x => x.EndsWith(".xmldsig-core-schema_v1.01.xsd", StringComparison.Ordinal));
         }
 
@@ -80,6 +81,7 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
         [InlineData("consStatServNFeABI-valido.xml", TipoXML.NFeABIStatusServico)]
         [InlineData("consSitNFeABI-valido.xml", TipoXML.NFeABIConsultaSituacao)]
         [InlineData("eventoNFeABI-cancelamento-valido.xml", TipoXML.NFeABIEnvioEvento)]
+        [InlineData("eventoNFeABI-desfazimento-alienacao-valido.xml", TipoXML.NFeABIEnvioEvento)]
         [InlineData("NFeABI-minima.xml", TipoXML.NFeABI)]
         [Trait("DFe", "NFeABI")]
         public void DetectorPublicoReconheceRaizesNFeABI(string arquivo, TipoXML esperado)
@@ -90,6 +92,7 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
         [Theory]
         [InlineData("consSitNFeABI-valido.xml")]
         [InlineData("eventoNFeABI-cancelamento-valido.xml")]
+        [InlineData("eventoNFeABI-desfazimento-alienacao-valido.xml")]
         [Trait("DFe", "NFeABI")]
         public void ConfiguracaoCentralValidaDemaisRaizesDeEntrada(string arquivo)
         {

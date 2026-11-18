@@ -60,6 +60,122 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
 
         [Fact]
         [Trait("DFe", "NFeABI")]
+        public void SerializaPagamentoAntecipadoComDataTipadaENovosCadastros()
+        {
+            var documento = CriarDocumentoCompleto();
+            documento.InfNFeABI.Ide.TpPagAnt = TipoPagamentoAntecipadoNFeABI.PagamentoAntecipado;
+            documento.InfNFeABI.InfOper.GIncorpLote = new DFeNFeABI.GIncorpLote
+            {
+                TipoIncorpLote = IndicadorIncorporacaoLoteNFeABI.Loteamento,
+                CNPJempImob = "12345678000123",
+                CNO = "123456789012"
+            };
+            documento.InfNFeABI.GInfTrib.IBSCBS.GIBSCBS.GInfPagAntecip = new DFeNFeABI.GInfPagAntecip
+            {
+                VPagAntecip = 250000,
+#if INTEROP
+                DtPagAntecip = new DateTime(2026, 11, 18, 15, 30, 0),
+#else
+                DtPagAntecip = new DateTimeOffset(2026, 11, 18, 15, 30, 0, TimeSpan.FromHours(-3)),
+#endif
+                IndCNPJempImob = IndicadorSimNaoNFeABI.Sim,
+                CNPJempImob = "12345678000123"
+            };
+            documento.InfNFeABI.GInfTrib.IBSCBS.GIBSCBS.VOperacIndiv = null;
+            documento.InfNFeABI.Total.VTotalOperacao = null;
+            documento.InfNFeABI.Total.VOperacIndiv = null;
+
+            var xml = documento.GerarXML();
+            Assert.Contains("<dtPagAntecip>2026-11-18</dtPagAntecip>", xml.OuterXml);
+            Assert.Contains("<indIncorpLote>2</indIncorpLote>", xml.OuterXml);
+            Assert.Contains("<CNO>123456789012</CNO>", xml.OuterXml);
+            Assert.Contains("<nIPTU>123</nIPTU>", xml.OuterXml);
+            Assert.Contains("<indINCRA>1</indINCRA>", xml.OuterXml);
+            Assert.Contains("<nINCRA>INCRA-123</nINCRA>", xml.OuterXml);
+            Assert.Contains("<indRIP>1</indRIP>", xml.OuterXml);
+            Assert.Contains("<nRIP>RIP-123</nRIP>", xml.OuterXml);
+            Assert.DoesNotContain("<nIptu>", xml.OuterXml);
+            Assert.DoesNotContain("<indIncra>", xml.OuterXml);
+            Assert.DoesNotContain("<nIncra>", xml.OuterXml);
+            Assert.DoesNotContain("<vOperacIndiv>", xml.OuterXml);
+            AssertSchema(xml, "NFeABI.NFeABI_v1.00.xsd");
+
+            var roundTrip = XMLUtility.Deserializar<DFeNFeABI.NFeABI>(xml.OuterXml);
+            Assert.Equal(2026, roundTrip.InfNFeABI.GInfTrib.IBSCBS.GIBSCBS.GInfPagAntecip.DtPagAntecip.Year);
+            Assert.Equal(11, roundTrip.InfNFeABI.GInfTrib.IBSCBS.GIBSCBS.GInfPagAntecip.DtPagAntecip.Month);
+            Assert.Equal(18, roundTrip.InfNFeABI.GInfTrib.IBSCBS.GIBSCBS.GInfPagAntecip.DtPagAntecip.Day);
+            Assert.Equal("2026-11-18", roundTrip.InfNFeABI.GInfTrib.IBSCBS.GIBSCBS.GInfPagAntecip.DtPagAntecipField);
+            Assert.Equal("123", roundTrip.InfNFeABI.Imovel.Cadastro.NIptu);
+        }
+
+        [Fact]
+        [Trait("DFe", "NFeABI")]
+        public void SerializaRegimeDeTransicaoComDataOpcionalTipada()
+        {
+            var documento = CriarDocumentoCompleto();
+            documento.InfNFeABI.Ide.TpNF = TipoNotaFiscalNFeABI.Transicao;
+            documento.InfNFeABI.Ide.GModNat = null;
+            documento.InfNFeABI.Ide.TpPagAnt = TipoPagamentoAntecipadoNFeABI.FornecimentoPagamentoRealizadoAnteriormente;
+            documento.InfNFeABI.GPagAntecipado = new DFeNFeABI.GPagAntecipado
+            {
+                ChNFePagAnt = new List<string> { new string('2', 44), new string('3', 44) }
+            };
+            documento.InfNFeABI.Transmit = null;
+            documento.InfNFeABI.Adquirente = null;
+            documento.InfNFeABI.Imovel = null;
+            documento.InfNFeABI.InfOper = null;
+            documento.InfNFeABI.GInfTrib = null;
+            documento.InfNFeABI.GInfTribTransic = new DFeNFeABI.GInfTribTransic
+            {
+                CNPJ = "12345678000123",
+                XNome = "CONTRIBUINTE TESTE",
+                IBSCBS = new DFeNFeABI.IBSCBSTransic
+                {
+                    CST = "000",
+                    CClassTrib = "000001",
+                    GExigSusp = new DFeNFeABI.GExigSusp
+                    {
+                        TpSusp = TipoSuspensaoExigibilidadeNFeABI.DecisaoJudicial,
+                        NProcesso = "PROCESSO-TESTE-001"
+                    },
+                    GIBSCBSTransic = new DFeNFeABI.GIBSCBSTransic
+                    {
+                        CNPJIncImob = "12345678000123",
+#if INTEROP
+                        DtRecUni = new DateTime(2026, 11, 17, 20, 0, 0),
+#else
+                        DtRecUni = new DateTimeOffset(2026, 11, 17, 20, 0, 0, TimeSpan.FromHours(-3)),
+#endif
+                        VRecRecebRET = 100,
+                        VRecFinRET = 10,
+                        VRecTotal = 110,
+                        VBC = 110,
+                        GIBSUF = new DFeNFeABI.GIBSUFTransic { PIBSUF = 0.1, VIBSUF = 0.11 },
+                        GIBSMun = new DFeNFeABI.GIBSMunTransic { PIBSMun = 0.1, VIBSMun = 0.11 },
+                        GCBS = new DFeNFeABI.GCBSTransic { PCBS = 0.9, VCBS = 0.99 }
+                    }
+                }
+            };
+            documento.InfNFeABI.Total.VTotalOperacao = null;
+            documento.InfNFeABI.Total.VOperacIndiv = null;
+
+            var xml = documento.GerarXML();
+            Assert.Contains("<tpNF>2</tpNF>", xml.OuterXml);
+            Assert.Contains("<tpSusp>01</tpSusp>", xml.OuterXml);
+            Assert.Contains("<dtRecUni>2026-11-17</dtRecUni>", xml.OuterXml);
+            Assert.Equal(2, xml.GetElementsByTagName("chNFePagAnt").Count);
+            AssertSchema(xml, "NFeABI.NFeABI_v1.00.xsd");
+
+#if INTEROP
+            documento.InfNFeABI.GInfTribTransic.IBSCBS.GIBSCBSTransic.DtRecUni = DateTime.MinValue;
+#else
+            documento.InfNFeABI.GInfTribTransic.IBSCBS.GIBSCBSTransic.DtRecUni = DateTimeOffset.MinValue;
+#endif
+            Assert.DoesNotContain("<dtRecUni>", documento.GerarXML().OuterXml);
+        }
+
+        [Fact]
+        [Trait("DFe", "NFeABI")]
         public void SerializaConsultasRetornosEProcessado()
         {
             var consultaStatus = new DFeNFeABI.ConsStatServNFeABI { Versao = "1.00", TpAmb = TipoAmbiente.Homologacao, CUF = UFBrasil.PR };
@@ -73,7 +189,7 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
                     VerAplic = "TESTE",
                     ChNFeABI = new string('1', 44),
                     DhRecbtoField = "2026-09-14T12:00:00-03:00",
-                    NProt = "141260000000001",
+                    NProt = "1412600000000001",
                     CStat = 100,
                     XMotivo = "Autorizado"
                 }
@@ -160,7 +276,16 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
                     Imovel = new DFeNFeABI.Imovel
                     {
                         Tipo = TipoImovelNFeABI.Urbano,
-                        Cadastro = new DFeNFeABI.CadastroImovel { CCIB = "12345678", IndIPTU = IndicadorSimNaoNFeABI.Sim, NIptu = "123" },
+                        Cadastro = new DFeNFeABI.CadastroImovel
+                        {
+                            CCIB = "12345678",
+                            IndIPTU = IndicadorSimNaoNFeABI.Sim,
+                            NIptu = "123",
+                            IndIncra = IndicadorSimNaoNFeABI.Sim,
+                            NIncra = "INCRA-123",
+                            IndRIP = IndicadorSimNaoNFeABI.Sim,
+                            NRIP = "RIP-123"
+                        },
                         EspImovel = "01", Enquadramento = "01", EnderImovel = endereco, AreaTotal = 100, UAreaTotal = "m2",
                         CartorioRegistro = "CARTORIO TESTE", MatricTransc = "12345"
                     },
@@ -168,7 +293,7 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
                     InfOper = new DFeNFeABI.InfOper
                     {
                         PTransImovel = 100, VTotalOperacao = 250000, IndTorna = IndicadorSimNaoNFeABI.Sim,
-                        GTorna = new DFeNFeABI.GTorna { VTorna = 10000, ImovelTorna = new List<DFeNFeABI.Imovel> { new DFeNFeABI.Imovel { Tipo = TipoImovelNFeABI.Rural, EspImovel = "02", EnderImovel = endereco } } },
+                        GTorna = new DFeNFeABI.GTorna { VTorna = 10000, ImovelTorna = new List<DFeNFeABI.Imovel> { new DFeNFeABI.Imovel { Tipo = TipoImovelNFeABI.Rural, Cadastro = new DFeNFeABI.CadastroImovel { CCIB = "87654321" }, EspImovel = "02", Enquadramento = "01", EnderImovel = endereco } } },
                         GRedAjusteImovel = new DFeNFeABI.GRedAjusteImovel { VInicial = 200000, VITBI = 5000, VRedAjusteImovel = 195000 },
                         IndRedSocial = IndicadorSimNaoNFeABI.Nao,
                         Instrumento = new DFeNFeABI.Instrumento { TpInstrumento = "01", DtInstrumento = new DateTime(2026, 9, 14) },

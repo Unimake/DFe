@@ -34,7 +34,7 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
             var grupo = xml.GetElementsByTagName("infNFeSupl");
             Assert.Single(grupo);
             Assert.Equal(UrlProvisoria + "?p=" + chave + "|1|2", ((XmlElement)grupo[0]).GetElementsByTagName("qrCode")[0].InnerText);
-            Assert.InRange(((XmlElement)grupo[0]).GetElementsByTagName("qrCode")[0].InnerText.Length, 100, 600);
+            Assert.InRange(((XmlElement)grupo[0]).GetElementsByTagName("qrCode")[0].InnerText.Length, 100, 1000);
             Assert.Equal(UrlProvisoria, ((XmlElement)grupo[0]).GetElementsByTagName("urlChave")[0].InnerText);
             Assert.Equal("Signature", grupo[0].NextSibling.LocalName);
         }
@@ -103,7 +103,7 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
 
             var exception = Assert.Throws<Exception>(() => QrCodeXmlHelper.MontarQrCodeNFeABI(xml, configuracao));
 
-            Assert.Contains("entre 100 e 600 caracteres", exception.Message);
+            Assert.Contains("entre 100 e 1000 caracteres", exception.Message);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
                         new Configuracao { CertificadoDigital = certificado });
                     var qrCode = servico.ConteudoXMLAssinado.GetElementsByTagName("qrCode")[0].InnerText;
 
-                    Assert.InRange(qrCode.Length, 100, 600);
+                    Assert.InRange(qrCode.Length, 100, 1000);
                     Assert.StartsWith(UrlProvisoria + "?p=", qrCode);
                 }
             }

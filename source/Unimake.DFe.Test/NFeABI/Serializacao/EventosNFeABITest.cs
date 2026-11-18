@@ -19,8 +19,9 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
         [InlineData("eventoNFeABI-pagamento-parcela-valido.xml", "NFeABI.evPagParcelaNFeABI_v1.00.xsd")]
         [InlineData("eventoNFeABI-pagamento-complementar-valido.xml", "NFeABI.evPagParcelaNFeABI_v1.00.xsd")]
         [InlineData("eventoNFeABI-apropriacao-credito-valido.xml", "NFeABI.evApropCredIndNFeABI_v1.00.xsd")]
+        [InlineData("eventoNFeABI-desfazimento-alienacao-valido.xml", "NFeABI.evDesfazimAlienacNFeABI_v1.00.xsd")]
         [Trait("DFe", "NFeABI")]
-        public void DesserializaValidaERoundTripDosTresEventos(string arquivo, string schemaDetalhe)
+        public void DesserializaValidaERoundTripDosEventos(string arquivo, string schemaDetalhe)
         {
             var original = new XmlDocument();
             original.Load(Path.Combine(@"..\..\..\NFeABI\Resources", arquivo));
@@ -30,13 +31,14 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
             var roundTrip = evento.GerarXML();
 
             Assert.Equal(original.InnerText, roundTrip.InnerText);
-            Assert.Equal("ID" + ((int)evento.InfEvento.TpEvento).ToString("000000") + evento.InfEvento.ChNFeABI + "1", evento.InfEvento.Id);
+            Assert.Equal("ID" + ((int)evento.InfEvento.TpEvento).ToString("000000") + evento.InfEvento.ChNFeABI + "001", evento.InfEvento.Id);
             AssertSchema(roundTrip, "NFeABI.eventoNFeABI_v1.00.xsd");
 
             XmlDocument detalhe;
             if (evento.InfEvento.DetEvento.EvCancNFeABI != null) detalhe = evento.InfEvento.DetEvento.EvCancNFeABI.GerarXML();
             else if (evento.InfEvento.DetEvento.EvPagParcelaNFeABI != null) detalhe = evento.InfEvento.DetEvento.EvPagParcelaNFeABI.GerarXML();
-            else detalhe = evento.InfEvento.DetEvento.EvApropCredIndNFeABI.GerarXML();
+            else if (evento.InfEvento.DetEvento.EvApropCredIndNFeABI != null) detalhe = evento.InfEvento.DetEvento.EvApropCredIndNFeABI.GerarXML();
+            else detalhe = evento.InfEvento.DetEvento.EvDesfazimAlienac.GerarXML();
             AssertSchema(detalhe, schemaDetalhe);
         }
 
@@ -60,7 +62,7 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
                     XEvento = "Cancelamento homologado",
                     NSeqEvento = 1,
                     DhRegEventoField = "2026-09-14T12:01:00-03:00",
-                    NProt = "141260000000001"
+                    NProt = "1412600000000001"
                 }
             };
             var processado = new DFeNFeABI.ProcEventoNFeABI
@@ -114,6 +116,21 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
             pagamento02 = CarregarEvento("eventoNFeABI-pagamento-complementar-valido.xml").InfEvento.DetEvento.EvPagParcelaNFeABI;
             pagamento02.GIBSCBS.VBC = 5000.01;
             Assert.Throws<ValidatorDFeException>(() => pagamento02.Validar());
+        }
+
+        [Fact]
+        [Trait("DFe", "NFeABI")]
+        public void DesfazimentoSerializaDataTipadaEExigeDescricaoParaOutros()
+        {
+            var evento = CarregarEvento("eventoNFeABI-desfazimento-alienacao-valido.xml");
+            var desfazimento = evento.InfEvento.DetEvento.EvDesfazimAlienac;
+
+            Assert.Equal(DFeNFeABI.TipoEventoNFeABI.DesfazimentoAlienacao, evento.InfEvento.TpEvento);
+            Assert.Equal("2026-09-13", desfazimento.DtDesfazField);
+            Assert.Contains("<dtDesfaz>2026-09-13</dtDesfaz>", desfazimento.GerarXML().OuterXml);
+
+            desfazimento.XDesfaz = null;
+            Assert.Throws<ValidatorDFeException>(() => evento.Validar());
         }
 
         [Fact]
