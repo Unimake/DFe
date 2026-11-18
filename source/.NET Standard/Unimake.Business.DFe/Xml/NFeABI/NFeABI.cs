@@ -1053,19 +1053,13 @@ namespace Unimake.Business.DFe.Xml.NFeABI
     {
         /// <summary>Obtém ou define o conteúdo da tag vTotalOperacao da NFeABI.</summary>
         [XmlIgnore]
-#if INTEROP
-        [ComVisible(false)]
-#endif
-        public double? VTotalOperacao { get; set; }
+        public double VTotalOperacao { get; set; } = -1;
         /// <summary>Obtém ou define o conteúdo da tag vTotalOperacao da NFeABI.</summary>
         [XmlElement("vTotalOperacao")]
         public string VTotalOperacaoField { get => NFeABIFormat.Money(VTotalOperacao); set => VTotalOperacao = NFeABIFormat.ParseDecimal(value); }
         /// <summary>Obtém ou define o conteúdo da tag vOperacIndiv da NFeABI.</summary>
         [XmlIgnore]
-#if INTEROP
-        [ComVisible(false)]
-#endif
-        public double? VOperacIndiv { get; set; }
+        public double VOperacIndiv { get; set; } = -1;
         /// <summary>Obtém ou define o conteúdo da tag vOperacIndiv da NFeABI.</summary>
         [XmlElement("vOperacIndiv")]
         public string VOperacIndivField { get => NFeABIFormat.Money(VOperacIndiv); set => VOperacIndiv = NFeABIFormat.ParseDecimal(value); }
@@ -1079,9 +1073,9 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         [XmlElement("vNF")]
         public string VNFField { get => NFeABIFormat.Money(VNF); set => VNF = NFeABIFormat.ParseDecimal(value); }
         /// <summary>Indica se o valor total da operação deve ser serializado.</summary>
-        public bool ShouldSerializeVTotalOperacaoField() => VTotalOperacao.HasValue;
+        public bool ShouldSerializeVTotalOperacaoField() => VTotalOperacao >= 0;
         /// <summary>Indica se o valor individual da operação deve ser serializado.</summary>
-        public bool ShouldSerializeVOperacIndivField() => VOperacIndiv.HasValue;
+        public bool ShouldSerializeVOperacIndivField() => VOperacIndiv >= 0;
     }
 
 /// <summary>Representa o grupo Obs do contrato XML da NFeABI.</summary>

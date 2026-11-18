@@ -282,10 +282,7 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         public GInfPagAntecip GInfPagAntecip { get; set; }
         /// <summary>Obtém ou define o conteúdo da tag vOperacIndiv da NFeABI.</summary>
         [XmlIgnore]
-#if INTEROP
-        [ComVisible(false)]
-#endif
-        public double? VOperacIndiv { get; set; }
+        public double VOperacIndiv { get; set; } = -1;
         /// <summary>Obtém ou define o conteúdo da tag vOperacIndiv da NFeABI.</summary>
         [XmlElement("vOperacIndiv")]
         public string VOperacIndivField { get => NFeABIFormat.Money(VOperacIndiv); set => VOperacIndiv = NFeABIFormat.ParseDecimal(value); }
@@ -341,7 +338,7 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         /// <summary>Indica se o membro VRedSocialIndivField deve ser serializado.</summary>
         public bool ShouldSerializeVRedSocialIndivField() => VRedSocialIndiv.HasValue;
         /// <summary>Indica se o valor individual da operação deve ser serializado.</summary>
-        public bool ShouldSerializeVOperacIndivField() => VOperacIndiv.HasValue;
+        public bool ShouldSerializeVOperacIndivField() => VOperacIndiv >= 0;
     }
 
 /// <summary>Representa o grupo GCompraGov do contrato XML da NFeABI.</summary>
