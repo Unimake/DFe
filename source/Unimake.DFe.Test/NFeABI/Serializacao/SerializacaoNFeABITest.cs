@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
@@ -81,9 +82,9 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
                 IndCNPJempImob = IndicadorSimNaoNFeABI.Sim,
                 CNPJempImob = "12345678000123"
             };
-            documento.InfNFeABI.GInfTrib.IBSCBS.GIBSCBS.VOperacIndiv = null;
-            documento.InfNFeABI.Total.VTotalOperacao = null;
-            documento.InfNFeABI.Total.VOperacIndiv = null;
+            documento.InfNFeABI.GInfTrib.IBSCBS.GIBSCBS.VOperacIndiv = -1;
+            documento.InfNFeABI.Total.VTotalOperacao = -1;
+            documento.InfNFeABI.Total.VOperacIndiv = -1;
 
             var xml = documento.GerarXML();
             Assert.Contains("<dtPagAntecip>2026-11-18</dtPagAntecip>", xml.OuterXml);
@@ -106,6 +107,33 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
             Assert.Equal(18, roundTrip.InfNFeABI.GInfTrib.IBSCBS.GIBSCBS.GInfPagAntecip.DtPagAntecip.Day);
             Assert.Equal("2026-11-18", roundTrip.InfNFeABI.GInfTrib.IBSCBS.GIBSCBS.GInfPagAntecip.DtPagAntecipField);
             Assert.Equal("123", roundTrip.InfNFeABI.Imovel.Cadastro.NIptu);
+
+            Assert.Equal(typeof(double), typeof(DFeNFeABI.Total).GetProperty(nameof(DFeNFeABI.Total.VTotalOperacao)).PropertyType);
+            Assert.Equal(typeof(double), typeof(DFeNFeABI.Total).GetProperty(nameof(DFeNFeABI.Total.VOperacIndiv)).PropertyType);
+            Assert.Equal(typeof(double), typeof(DFeNFeABI.GIBSCBS).GetProperty(nameof(DFeNFeABI.GIBSCBS.VOperacIndiv)).PropertyType);
+#if INTEROP
+            var propriedadesInterop = new[]
+            {
+                typeof(DFeNFeABI.Total).GetProperty(nameof(DFeNFeABI.Total.VTotalOperacao)),
+                typeof(DFeNFeABI.Total).GetProperty(nameof(DFeNFeABI.Total.VOperacIndiv)),
+                typeof(DFeNFeABI.GIBSCBS).GetProperty(nameof(DFeNFeABI.GIBSCBS.VOperacIndiv))
+            };
+            Assert.All(propriedadesInterop, propriedade =>
+            {
+                var atributo = (System.Runtime.InteropServices.ComVisibleAttribute)Attribute.GetCustomAttribute(propriedade, typeof(System.Runtime.InteropServices.ComVisibleAttribute));
+                Assert.True(atributo == null || atributo.Value);
+            });
+#endif
+
+            documento.InfNFeABI.GInfTrib.IBSCBS.GIBSCBS.VOperacIndiv = 0;
+            documento.InfNFeABI.Total.VTotalOperacao = 0;
+            documento.InfNFeABI.Total.VOperacIndiv = 0;
+            var xmlComZerosExplicitos = documento.GerarXML();
+            var valoresTotaisOperacao = xmlComZerosExplicitos.GetElementsByTagName("vTotalOperacao").Cast<XmlElement>().ToArray();
+            Assert.Equal(2, valoresTotaisOperacao.Length);
+            Assert.Contains(valoresTotaisOperacao, elemento => elemento.InnerText == "0.00");
+            Assert.Equal(2, xmlComZerosExplicitos.GetElementsByTagName("vOperacIndiv").Count);
+            Assert.All(xmlComZerosExplicitos.GetElementsByTagName("vOperacIndiv").Cast<XmlElement>(), elemento => Assert.Equal("0.00", elemento.InnerText));
         }
 
         [Fact]
@@ -156,8 +184,8 @@ namespace Unimake.DFe.Test.NFeABI.Serializacao
                     }
                 }
             };
-            documento.InfNFeABI.Total.VTotalOperacao = null;
-            documento.InfNFeABI.Total.VOperacIndiv = null;
+            documento.InfNFeABI.Total.VTotalOperacao = -1;
+            documento.InfNFeABI.Total.VOperacIndiv = -1;
 
             var xml = documento.GerarXML();
             Assert.Contains("<tpNF>2</tpNF>", xml.OuterXml);
