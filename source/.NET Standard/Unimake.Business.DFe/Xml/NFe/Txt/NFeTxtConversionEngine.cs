@@ -2312,6 +2312,14 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                 icms.MotDesICMSST = (MotivoDesoneracaoICMS)this.LerInt32(XmlTag<DFeNFe.ICMS10>(nameof(DFeNFe.ICMS10.MotDesICMSST)), ObOp.Opcional, 1, 2);
                 if (lenPipesRegistro >= 25) icms.IndDeduzDeson = LerSimNaoOpcional(XmlTag<DFeNFe.ICMS20>(nameof(DFeNFe.ICMS20.IndDeduzDeson)));
             }
+            if (icms.VICMSDeson <= 0)
+            {
+                icms.MotDesICMS = (MotivoDesoneracaoICMS)(-1);
+            }
+            if (icms.PRedBCST <= 0)
+            {
+                icms.PRedBCST = null;
+            }
             detalhesOficiais[nProd].Imposto.ICMS = new DFeNFe.ICMS { ICMS70 = icms };
         }
 
