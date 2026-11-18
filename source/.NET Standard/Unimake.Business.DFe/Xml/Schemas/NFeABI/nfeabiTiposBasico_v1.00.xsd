@@ -168,7 +168,7 @@
 					<xs:restriction base="TString">
 						<xs:whiteSpace value="preserve"/>
 						<xs:minLength value="2"/>
-						<xs:maxLength value="60"/>
+						<xs:maxLength value="80"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -220,9 +220,51 @@
 			<xs:element name="vTribCBS" type="TDec_1302"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:complexType name="TGInfPagAntecip">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações do pagamento antecipado (U09a - NT 2026.001). Informado somente quando ide/tpPagAnt=1.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vPagAntecip" type="TDec_1302">
+				<xs:annotation>
+					<xs:documentation>Valor do pagamento antecipado (U09b)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dtPagAntecip" type="TDate">
+				<xs:annotation>
+					<xs:documentation>Data do pagamento antecipado (U09c), formato AAAA-MM-DD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="indCNPJempImob">
+				<xs:annotation>
+					<xs:documentation>Indicador de CNPJ do Empreendimento Imobiliário (U09d): 0=Não; 1=Sim</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:whiteSpace value="preserve"/>
+						<xs:pattern value="[0-1]"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CNPJempImob" type="TCnpj" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>CNPJ do Empreendimento Imobiliário (U09e). Informar somente quando indCNPJempImob=1.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="TGIBSCBS">
 		<xs:sequence>
-			<xs:element name="vOperacIndiv" type="TDec_1302"/>
+			<xs:element name="gInfPagAntecip" type="TGInfPagAntecip" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Grupo de informações do pagamento antecipado (U09a - NT 2026.001)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vOperacIndiv" type="TDec_1302" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Valor da Operação individual do Declarante (U10). Ocorrência alterada para 0-1 pela NT 2026.001: não informar quando tpPagAnt=1.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="vTornaIndiv" type="TDec_1302" minOccurs="0"/>
 			<xs:element name="vRedAjusteIndiv" type="TDec_1302" minOccurs="0"/>
 			<xs:element name="vRedSocialIndiv" type="TDec_1302" minOccurs="0"/>
@@ -286,6 +328,134 @@
 			<xs:element name="gEstornoCred" type="TGEstornoCred" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:complexType name="TGExigSusp">
+		<xs:annotation>
+			<xs:documentation>Grupo de Informações para a Suspensão da Exigibilidade do IBS e da CBS (UA08 - NT 2026.001)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="tpSusp">
+				<xs:annotation>
+					<xs:documentation>Tipo de Suspensão de Exigibilidade (UA09): 01=Exigibilidade suspensa por decisão judicial; 02=Exigibilidade suspensa por decisão administrativa</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:whiteSpace value="preserve"/>
+						<xs:pattern value="0[1-2]"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="nProcesso">
+				<xs:annotation>
+					<xs:documentation>Número do processo judicial ou administrativo de suspensão da exigibilidade (UA10)</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TString">
+						<xs:whiteSpace value="preserve"/>
+						<xs:minLength value="1"/>
+						<xs:maxLength value="30"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TGIBSUFTransic">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações do IBS da UF no Regime de Transição (UA17)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="pIBSUF" type="TDec_0304"/>
+			<xs:element name="vIBSUF" type="TDec_1302"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TGIBSMunTransic">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações do IBS do Município no Regime de Transição (UA20)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="pIBSMun" type="TDec_0304"/>
+			<xs:element name="vIBSMun" type="TDec_1302"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TGCBSTransic">
+		<xs:annotation>
+			<xs:documentation>Grupo de Tributação da CBS no Regime de Transição (UA23)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="pCBS" type="TDec_0304"/>
+			<xs:element name="vCBS" type="TDec_1302"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TGIBSCBSTransic">
+		<xs:annotation>
+			<xs:documentation>Grupo de Informações do IBS e da CBS do Regime de Transição (UA11 - NT 2026.001)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CNPJIncImob" type="TCnpj">
+				<xs:annotation>
+					<xs:documentation>CNPJ do Empreendimento imobiliário optante pelo RET (UA12)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dtRecUni" type="TDate" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Data do Recolhimento unificado do IRPJ e da CSLL (UA13), se houver</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vRecRecebRET" type="TDec_1302">
+				<xs:annotation>
+					<xs:documentation>Receitas recebidas na venda das unidades imobiliárias (UA14)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vRecFinRET" type="TDec_1302">
+				<xs:annotation>
+					<xs:documentation>Receitas financeiras e variações monetárias vinculadas às vendas (UA15)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vRecTotal" type="TDec_1302">
+				<xs:annotation>
+					<xs:documentation>Receita total de venda das unidades imobiliárias (UA15a). vRecTotal = vRecRecebRET + vRecFinRET</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vBC" type="TDec_1302">
+				<xs:annotation>
+					<xs:documentation>Valor da Base de Cálculo do IBS e da CBS (UA16)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="gIBSUF" type="TGIBSUFTransic"/>
+			<xs:element name="gIBSMun" type="TGIBSMunTransic"/>
+			<xs:element name="gCBS" type="TGCBSTransic"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TIBSCBSTransic">
+		<xs:annotation>
+			<xs:documentation>Informações do IBS e da CBS no Regime de Transição (UA05 - NT 2026.001)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CST">
+				<xs:annotation>
+					<xs:documentation>Código de Situação Tributária do IBS/CBS (UA06)</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:whiteSpace value="preserve"/>
+						<xs:pattern value="[0-9]{3}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="cClassTrib">
+				<xs:annotation>
+					<xs:documentation>Código de Classificação Tributária do IBS/CBS (UA07)</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:whiteSpace value="preserve"/>
+						<xs:pattern value="[0-9]{6}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="gExigSusp" type="TGExigSusp" minOccurs="0"/>
+			<xs:element name="gIBSCBSTransic" type="TGIBSCBSTransic"/>
+		</xs:sequence>
+	</xs:complexType>
 
 	<xs:complexType name="TProtNFeABI">
 		<xs:annotation>
@@ -324,16 +494,10 @@
 								<xs:documentation>Data e hora de processamento, no formato AAAA-MM-DDTHH:MM:SSTZD</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="nProt" minOccurs="0">
+						<xs:element name="nProt" type="TProt" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Número do Protocolo de Status da NF-e ABI</xs:documentation>
 							</xs:annotation>
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:whiteSpace value="preserve"/>
-									<xs:pattern value="[0-9]{15}"/>
-								</xs:restriction>
-							</xs:simpleType>
 						</xs:element>
 						<xs:element name="digVal" type="ds:DigestValueType" minOccurs="0">
 							<xs:annotation>
@@ -347,7 +511,7 @@
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
 									<xs:whiteSpace value="preserve"/>
-									<xs:pattern value="[0-9]{3}"/>
+									<xs:pattern value="[0-9]{3,4}"/>
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
@@ -398,7 +562,7 @@
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
 						<xs:whiteSpace value="preserve"/>
-						<xs:pattern value="[0-9]{3}"/>
+						<xs:pattern value="[0-9]{3,4}"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>

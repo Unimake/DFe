@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-    <AssemblyVersion>2026.11.13.1701</AssemblyVersion>
-    <FileVersion>2026.11.13.1701</FileVersion>
+    <AssemblyVersion>2026.11.18.1617</AssemblyVersion>
+    <FileVersion>2026.11.18.1617</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1298,6 +1298,7 @@
 		<None Remove="Xml\Schemas\NFeABI\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFeABI\evApropCredIndNFeABI_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFeABI\evCancNFeABI_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFeABI\evDesfazimAlienacNFeABI_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFeABI\eventoNFeABI_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFeABI\eventoNFeABITiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFeABI\evPagParcelaNFeABI_v1.00.xsd" />
@@ -2806,6 +2807,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFeABI\DFeTiposBasicos_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFeABI\evApropCredIndNFeABI_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFeABI\evCancNFeABI_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFeABI\evDesfazimAlienacNFeABI_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFeABI\eventoNFeABI_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFeABI\eventoNFeABITiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFeABI\evPagParcelaNFeABI_v1.00.xsd" />

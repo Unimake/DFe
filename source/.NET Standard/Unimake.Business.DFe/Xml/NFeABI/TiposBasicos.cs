@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 #endif
 
 using System;
+using System.Globalization;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -228,6 +229,46 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         public string VTribCBSField { get => NFeABIFormat.Money(VTribCBS); set => VTribCBS = NFeABIFormat.ParseDecimal(value); }
     }
 
+/// <summary>Representa o grupo de informações do pagamento antecipado da NFeABI.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFeABI.GInfPagAntecip")]
+    [ComVisible(true)]
+#endif
+    public class GInfPagAntecip
+    {
+        /// <summary>Valor do pagamento antecipado.</summary>
+        [XmlIgnore]
+        public double VPagAntecip { get; set; }
+        /// <summary>Campo auxiliar para serialização do valor do pagamento antecipado.</summary>
+        [XmlElement("vPagAntecip")]
+        public string VPagAntecipField { get => NFeABIFormat.Money(VPagAntecip); set => VPagAntecip = NFeABIFormat.ParseDecimal(value); }
+        /// <summary>Data do pagamento antecipado.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtPagAntecip { get; set; }
+#else
+        public DateTimeOffset DtPagAntecip { get; set; }
+#endif
+        /// <summary>Campo auxiliar para serialização da data do pagamento antecipado.</summary>
+        [XmlElement("dtPagAntecip")]
+        public string DtPagAntecipField
+        {
+            get => DtPagAntecip.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+#if INTEROP
+            set => DtPagAntecip = DateTime.ParseExact(value, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+#else
+            set => DtPagAntecip = DateTimeOffset.ParseExact(value, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+#endif
+        }
+        /// <summary>Indica se foi informado o CNPJ do empreendimento imobiliário.</summary>
+        [XmlElement("indCNPJempImob")]
+        public IndicadorSimNaoNFeABI IndCNPJempImob { get; set; }
+        /// <summary>CNPJ do empreendimento imobiliário.</summary>
+        [XmlElement("CNPJempImob")]
+        public string CNPJempImob { get; set; }
+    }
+
 /// <summary>Representa o grupo GIBSCBS do contrato XML da NFeABI.</summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -236,9 +277,15 @@ namespace Unimake.Business.DFe.Xml.NFeABI
 #endif
     public class GIBSCBS
     {
+        /// <summary>Informações do pagamento antecipado.</summary>
+        [XmlElement("gInfPagAntecip")]
+        public GInfPagAntecip GInfPagAntecip { get; set; }
         /// <summary>Obtém ou define o conteúdo da tag vOperacIndiv da NFeABI.</summary>
         [XmlIgnore]
-        public double VOperacIndiv { get; set; }
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public double? VOperacIndiv { get; set; }
         /// <summary>Obtém ou define o conteúdo da tag vOperacIndiv da NFeABI.</summary>
         [XmlElement("vOperacIndiv")]
         public string VOperacIndivField { get => NFeABIFormat.Money(VOperacIndiv); set => VOperacIndiv = NFeABIFormat.ParseDecimal(value); }
@@ -293,6 +340,8 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         public bool ShouldSerializeVRedAjusteIndivField() => VRedAjusteIndiv.HasValue;
         /// <summary>Indica se o membro VRedSocialIndivField deve ser serializado.</summary>
         public bool ShouldSerializeVRedSocialIndivField() => VRedSocialIndiv.HasValue;
+        /// <summary>Indica se o valor individual da operação deve ser serializado.</summary>
+        public bool ShouldSerializeVOperacIndivField() => VOperacIndiv.HasValue;
     }
 
 /// <summary>Representa o grupo GCompraGov do contrato XML da NFeABI.</summary>
@@ -359,6 +408,180 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         /// <summary>Grupo de estorno de crédito.</summary>
         [XmlElement("gEstornoCred")]
         public GEstornoCred GEstornoCred { get; set; }
+    }
+
+/// <summary>Representa a suspensão da exigibilidade do IBS e da CBS.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFeABI.GExigSusp")]
+    [ComVisible(true)]
+#endif
+    public class GExigSusp
+    {
+        /// <summary>Tipo de suspensão da exigibilidade.</summary>
+        [XmlElement("tpSusp")]
+        public TipoSuspensaoExigibilidadeNFeABI TpSusp { get; set; }
+        /// <summary>Número do processo judicial ou administrativo.</summary>
+        [XmlElement("nProcesso")]
+        public string NProcesso { get; set; }
+    }
+
+/// <summary>Representa a tributação do IBS estadual no regime de transição.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFeABI.GIBSUFTransic")]
+    [ComVisible(true)]
+#endif
+    public class GIBSUFTransic
+    {
+        /// <summary>Alíquota do IBS estadual.</summary>
+        [XmlIgnore]
+        public double PIBSUF { get; set; }
+        /// <summary>Campo auxiliar para serialização da alíquota do IBS estadual.</summary>
+        [XmlElement("pIBSUF")]
+        public string PIBSUFField { get => NFeABIFormat.Rate(PIBSUF); set => PIBSUF = NFeABIFormat.ParseDecimal(value); }
+        /// <summary>Valor do IBS estadual.</summary>
+        [XmlIgnore]
+        public double VIBSUF { get; set; }
+        /// <summary>Campo auxiliar para serialização do valor do IBS estadual.</summary>
+        [XmlElement("vIBSUF")]
+        public string VIBSUFField { get => NFeABIFormat.Money(VIBSUF); set => VIBSUF = NFeABIFormat.ParseDecimal(value); }
+    }
+
+/// <summary>Representa a tributação do IBS municipal no regime de transição.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFeABI.GIBSMunTransic")]
+    [ComVisible(true)]
+#endif
+    public class GIBSMunTransic
+    {
+        /// <summary>Alíquota do IBS municipal.</summary>
+        [XmlIgnore]
+        public double PIBSMun { get; set; }
+        /// <summary>Campo auxiliar para serialização da alíquota do IBS municipal.</summary>
+        [XmlElement("pIBSMun")]
+        public string PIBSMunField { get => NFeABIFormat.Rate(PIBSMun); set => PIBSMun = NFeABIFormat.ParseDecimal(value); }
+        /// <summary>Valor do IBS municipal.</summary>
+        [XmlIgnore]
+        public double VIBSMun { get; set; }
+        /// <summary>Campo auxiliar para serialização do valor do IBS municipal.</summary>
+        [XmlElement("vIBSMun")]
+        public string VIBSMunField { get => NFeABIFormat.Money(VIBSMun); set => VIBSMun = NFeABIFormat.ParseDecimal(value); }
+    }
+
+/// <summary>Representa a tributação da CBS no regime de transição.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFeABI.GCBSTransic")]
+    [ComVisible(true)]
+#endif
+    public class GCBSTransic
+    {
+        /// <summary>Alíquota da CBS.</summary>
+        [XmlIgnore]
+        public double PCBS { get; set; }
+        /// <summary>Campo auxiliar para serialização da alíquota da CBS.</summary>
+        [XmlElement("pCBS")]
+        public string PCBSField { get => NFeABIFormat.Rate(PCBS); set => PCBS = NFeABIFormat.ParseDecimal(value); }
+        /// <summary>Valor da CBS.</summary>
+        [XmlIgnore]
+        public double VCBS { get; set; }
+        /// <summary>Campo auxiliar para serialização do valor da CBS.</summary>
+        [XmlElement("vCBS")]
+        public string VCBSField { get => NFeABIFormat.Money(VCBS); set => VCBS = NFeABIFormat.ParseDecimal(value); }
+    }
+
+/// <summary>Representa os valores do IBS e da CBS no regime de transição.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFeABI.GIBSCBSTransic")]
+    [ComVisible(true)]
+#endif
+    public class GIBSCBSTransic
+    {
+        /// <summary>CNPJ do empreendimento imobiliário optante pelo RET.</summary>
+        [XmlElement("CNPJIncImob")]
+        public string CNPJIncImob { get; set; }
+        /// <summary>Data do recolhimento unificado do IRPJ e da CSLL.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtRecUni { get; set; }
+#else
+        public DateTimeOffset DtRecUni { get; set; }
+#endif
+        /// <summary>Campo auxiliar para serialização da data do recolhimento unificado.</summary>
+        [XmlElement("dtRecUni")]
+        public string DtRecUniField
+        {
+            get => DtRecUni.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+#if INTEROP
+            set => DtRecUni = DateTime.ParseExact(value, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+#else
+            set => DtRecUni = DateTimeOffset.ParseExact(value, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+#endif
+        }
+        /// <summary>Receitas recebidas na venda das unidades imobiliárias.</summary>
+        [XmlIgnore]
+        public double VRecRecebRET { get; set; }
+        /// <summary>Campo auxiliar para serialização de vRecRecebRET.</summary>
+        [XmlElement("vRecRecebRET")]
+        public string VRecRecebRETField { get => NFeABIFormat.Money(VRecRecebRET); set => VRecRecebRET = NFeABIFormat.ParseDecimal(value); }
+        /// <summary>Receitas financeiras e variações monetárias vinculadas às vendas.</summary>
+        [XmlIgnore]
+        public double VRecFinRET { get; set; }
+        /// <summary>Campo auxiliar para serialização de vRecFinRET.</summary>
+        [XmlElement("vRecFinRET")]
+        public string VRecFinRETField { get => NFeABIFormat.Money(VRecFinRET); set => VRecFinRET = NFeABIFormat.ParseDecimal(value); }
+        /// <summary>Receita total de venda das unidades imobiliárias.</summary>
+        [XmlIgnore]
+        public double VRecTotal { get; set; }
+        /// <summary>Campo auxiliar para serialização de vRecTotal.</summary>
+        [XmlElement("vRecTotal")]
+        public string VRecTotalField { get => NFeABIFormat.Money(VRecTotal); set => VRecTotal = NFeABIFormat.ParseDecimal(value); }
+        /// <summary>Base de cálculo do IBS e da CBS.</summary>
+        [XmlIgnore]
+        public double VBC { get; set; }
+        /// <summary>Campo auxiliar para serialização da base de cálculo.</summary>
+        [XmlElement("vBC")]
+        public string VBCField { get => NFeABIFormat.Money(VBC); set => VBC = NFeABIFormat.ParseDecimal(value); }
+        /// <summary>Tributação do IBS estadual.</summary>
+        [XmlElement("gIBSUF")]
+        public GIBSUFTransic GIBSUF { get; set; }
+        /// <summary>Tributação do IBS municipal.</summary>
+        [XmlElement("gIBSMun")]
+        public GIBSMunTransic GIBSMun { get; set; }
+        /// <summary>Tributação da CBS.</summary>
+        [XmlElement("gCBS")]
+        public GCBSTransic GCBS { get; set; }
+        /// <summary>Indica se a data de recolhimento unificado deve ser serializada.</summary>
+#if INTEROP
+        public bool ShouldSerializeDtRecUniField() => DtRecUni > DateTime.MinValue;
+#else
+        public bool ShouldSerializeDtRecUniField() => DtRecUni > DateTimeOffset.MinValue;
+#endif
+    }
+
+/// <summary>Representa as informações do IBS e da CBS no regime de transição.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFeABI.IBSCBSTransic")]
+    [ComVisible(true)]
+#endif
+    public class IBSCBSTransic
+    {
+        /// <summary>Código de situação tributária do IBS e da CBS.</summary>
+        [XmlElement("CST")]
+        public string CST { get; set; }
+        /// <summary>Código de classificação tributária do IBS e da CBS.</summary>
+        [XmlElement("cClassTrib")]
+        public string CClassTrib { get; set; }
+        /// <summary>Suspensão da exigibilidade do IBS e da CBS.</summary>
+        [XmlElement("gExigSusp")]
+        public GExigSusp GExigSusp { get; set; }
+        /// <summary>Valores do IBS e da CBS no regime de transição.</summary>
+        [XmlElement("gIBSCBSTransic")]
+        public GIBSCBSTransic GIBSCBSTransic { get; set; }
     }
 
 /// <summary>Representa o grupo ProtNFeABI do contrato XML da NFeABI.</summary>

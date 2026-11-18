@@ -30,7 +30,7 @@
 	<xs:simpleType name="TNome">
 		<xs:restriction base="TString">
 			<xs:minLength value="2"/>
-			<xs:maxLength value="60"/>
+			<xs:maxLength value="80"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="TSeq1a99">
@@ -131,12 +131,16 @@
 						</xs:element>
 						<xs:element name="tpEvento">
 							<xs:annotation>
-								<xs:documentation>Código do evento</xs:documentation>
+								<xs:documentation>Código do evento (NT 2026.001): 110111=Cancelamento; 112310=Pagamento de Parcela; 112320=Desfazimento da Alienação; 211310=Apropriação de créditos individuais</xs:documentation>
 							</xs:annotation>
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
 									<xs:whiteSpace value="preserve"/>
 									<xs:pattern value="[0-9]{6}"/>
+									<xs:enumeration value="110111"/>
+									<xs:enumeration value="112310"/>
+									<xs:enumeration value="112320"/>
+									<xs:enumeration value="211310"/>
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
@@ -158,13 +162,13 @@
 						</xs:element>
 						<xs:element name="detEvento">
 							<xs:annotation>
-								<xs:documentation>Detalhes do evento. Inserir neste local o XML específico do tipo de evento.</xs:documentation>
+								<xs:documentation>Detalhes do evento. Validacao em duas etapas OBRIGATORIA: validar o envelope e, adicionalmente, validar o elemento filho por seu XSD especifico e conferir a correspondencia tpEvento/tag. O xs:any processContents=skip NAO valida o detalhe.</xs:documentation>
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
 									<xs:any processContents="skip">
 										<xs:annotation>
-											<xs:documentation>XML do evento específico (cancelamento, pagamento de parcela, apropriação de créditos individuais)</xs:documentation>
+											<xs:documentation>XML do evento específico (cancelamento, pagamento de parcela, apropriação de créditos individuais, desfazimento da alienação)</xs:documentation>
 										</xs:annotation>
 									</xs:any>
 								</xs:sequence>
@@ -178,7 +182,7 @@
 						</xs:annotation>
 						<xs:simpleType>
 							<xs:restriction base="xs:ID">
-								<xs:pattern value="ID[0-9]{12}[A-Z0-9]{12}[0-9]{26}[1-9][0-9]{0,2}"/>
+								<xs:pattern value="ID[0-9]{12}[A-Z0-9]{12}[0-9]{29}"/>
 							</xs:restriction>
 						</xs:simpleType>
 					</xs:attribute>
@@ -250,7 +254,7 @@
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
 									<xs:whiteSpace value="preserve"/>
-									<xs:pattern value="[0-9]{3}"/>
+									<xs:pattern value="[0-9]{3,4}"/>
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
@@ -320,16 +324,10 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element name="nProt" minOccurs="0">
+						<xs:element name="nProt" type="TProt" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Número do Protocolo do Evento</xs:documentation>
 							</xs:annotation>
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:whiteSpace value="preserve"/>
-									<xs:pattern value="[0-9]{15}"/>
-								</xs:restriction>
-							</xs:simpleType>
 						</xs:element>
 					</xs:sequence>
 				</xs:complexType>

@@ -124,6 +124,10 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         [XmlElement("NFref")]
         public List<NFref> NFref { get; set; }
 
+        /// <summary>Notas de antecipação de pagamento vinculadas à NFeABI.</summary>
+        [XmlElement("gPagAntecipado")]
+        public GPagAntecipado GPagAntecipado { get; set; }
+
         /// <summary>Obtém ou define o conteúdo da tag emit da NFeABI.</summary>
         [XmlElement("emit")]
         public Emit Emit { get; set; }
@@ -151,6 +155,10 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         /// <summary>Obtém ou define o conteúdo da tag gInfTrib da NFeABI.</summary>
         [XmlElement("gInfTrib")]
         public GInfTrib GInfTrib { get; set; }
+
+        /// <summary>Informações da tributação no regime de transição.</summary>
+        [XmlElement("gInfTribTransic")]
+        public GInfTribTransic GInfTribTransic { get; set; }
 
         /// <summary>Obtém ou define o conteúdo da tag pag da NFeABI.</summary>
         [XmlElement("pag")]
@@ -286,6 +294,10 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         [XmlElement("finNFe")]
         public FinalidadeNFeABI FinNFe { get; set; }
 
+        /// <summary>Tipo de pagamento antecipado.</summary>
+        [XmlElement("tpPagAnt")]
+        public TipoPagamentoAntecipadoNFeABI TpPagAnt { get; set; } = (TipoPagamentoAntecipadoNFeABI)(-1);
+
         /// <summary>Obtém ou define o conteúdo da tag procEmi da NFeABI.</summary>
         [XmlElement("procEmi")]
         public ProcessoEmissaoNFeABI ProcEmi { get; set; }
@@ -297,6 +309,9 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         /// <summary>Dados da contingência.</summary>
         [XmlElement("gCont")]
         public GCont GCont { get; set; }
+
+        /// <summary>Indica se o tipo de pagamento antecipado deve ser serializado.</summary>
+        public bool ShouldSerializeTpPagAnt() => TpPagAnt != (TipoPagamentoAntecipadoNFeABI)(-1);
     }
 
 /// <summary>Representa o grupo GModNat do contrato XML da NFeABI.</summary>
@@ -360,6 +375,28 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         /// <summary>Chave da NFeABI referenciada.</summary>
         [XmlElement("refNFeABI")]
         public string RefNFeABI { get; set; }
+    }
+
+/// <summary>Representa o grupo de notas de antecipação de pagamento da NFeABI.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFeABI.GPagAntecipado")]
+    [ComVisible(true)]
+#endif
+    public class GPagAntecipado
+    {
+        /// <summary>Chaves das NFeABI de antecipação de pagamento emitidas anteriormente.</summary>
+        [XmlElement("chNFePagAnt")]
+        public List<string> ChNFePagAnt { get; set; }
+
+#if INTEROP
+        /// <summary>Adiciona uma chave à coleção de NFeABI de antecipação.</summary>
+        public void AddChNFePagAnt(string item) { if (ChNFePagAnt == null) ChNFePagAnt = new List<string>(); ChNFePagAnt.Add(item); }
+        /// <summary>Obtém uma chave da coleção pelo índice.</summary>
+        public string GetChNFePagAnt(int index) => ChNFePagAnt[index];
+        /// <summary>Obtém a quantidade de chaves da coleção.</summary>
+        public int GetChNFePagAntCount => ChNFePagAnt?.Count ?? 0;
+#endif
     }
 
 /// <summary>Representa o grupo Emit do contrato XML da NFeABI.</summary>
@@ -508,19 +545,36 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         /// <summary>Obtém ou define o conteúdo da tag indIPTU da NFeABI.</summary>
         [XmlElement("indIPTU")]
         public IndicadorSimNaoNFeABI IndIPTU { get; set; } = (IndicadorSimNaoNFeABI)(-1);
-        /// <summary>Obtém ou define o conteúdo da tag nIptu da NFeABI.</summary>
-        [XmlElement("nIptu")]
-        public string NIptu { get; set; }
-        /// <summary>Obtém ou define o conteúdo da tag indIncra da NFeABI.</summary>
-        [XmlElement("indIncra")]
-        public IndicadorSimNaoNFeABI IndIncra { get; set; } = (IndicadorSimNaoNFeABI)(-1);
-        /// <summary>Obtém ou define o conteúdo da tag nIncra da NFeABI.</summary>
-        [XmlElement("nIncra")]
-        public string NIncra { get; set; }
+        /// <summary>Obtém ou define o conteúdo da tag nIPTU da NFeABI.</summary>
+        [XmlElement("nIPTU")]
+        public string NIPTU { get; set; }
+        /// <summary>Alias legado de NIPTU, preservado para compatibilidade da API pública.</summary>
+        [XmlIgnore]
+        public string NIptu { get => NIPTU; set => NIPTU = value; }
+        /// <summary>Obtém ou define o conteúdo da tag indINCRA da NFeABI.</summary>
+        [XmlElement("indINCRA")]
+        public IndicadorSimNaoNFeABI IndINCRA { get; set; } = (IndicadorSimNaoNFeABI)(-1);
+        /// <summary>Alias legado de IndINCRA, preservado para compatibilidade da API pública.</summary>
+        [XmlIgnore]
+        public IndicadorSimNaoNFeABI IndIncra { get => IndINCRA; set => IndINCRA = value; }
+        /// <summary>Obtém ou define o conteúdo da tag nINCRA da NFeABI.</summary>
+        [XmlElement("nINCRA")]
+        public string NINCRA { get; set; }
+        /// <summary>Alias legado de NINCRA, preservado para compatibilidade da API pública.</summary>
+        [XmlIgnore]
+        public string NIncra { get => NINCRA; set => NINCRA = value; }
+        /// <summary>Indica se o imóvel possui Registro Imobiliário Patrimonial.</summary>
+        [XmlElement("indRIP")]
+        public IndicadorSimNaoNFeABI IndRIP { get; set; } = (IndicadorSimNaoNFeABI)(-1);
+        /// <summary>Número do Registro Imobiliário Patrimonial.</summary>
+        [XmlElement("nRIP")]
+        public string NRIP { get; set; }
         /// <summary>Indica se o membro IndIPTU deve ser serializado.</summary>
         public bool ShouldSerializeIndIPTU() => IndIPTU != (IndicadorSimNaoNFeABI)(-1);
-        /// <summary>Indica se o membro IndIncra deve ser serializado.</summary>
-        public bool ShouldSerializeIndIncra() => IndIncra != (IndicadorSimNaoNFeABI)(-1);
+        /// <summary>Indica se o membro IndINCRA deve ser serializado.</summary>
+        public bool ShouldSerializeIndINCRA() => IndINCRA != (IndicadorSimNaoNFeABI)(-1);
+        /// <summary>Indica se o membro IndRIP deve ser serializado.</summary>
+        public bool ShouldSerializeIndRIP() => IndRIP != (IndicadorSimNaoNFeABI)(-1);
     }
 
 /// <summary>Representa o grupo Imovel do contrato XML da NFeABI.</summary>
@@ -709,14 +763,37 @@ namespace Unimake.Business.DFe.Xml.NFeABI
     public class GIncorpLote
     {
         /// <summary>Obtém ou define o conteúdo da tag indIncorpLote da NFeABI.</summary>
+        [XmlIgnore]
+        public IndicadorSimNaoNFeABI IndIncorpLote { get; set; } = (IndicadorSimNaoNFeABI)(-1);
+        /// <summary>Domínio ampliado do indicador de incorporação ou loteamento.</summary>
+        [XmlIgnore]
+        public IndicadorIncorporacaoLoteNFeABI TipoIncorpLote { get; set; } = (IndicadorIncorporacaoLoteNFeABI)(-1);
+        /// <summary>Campo auxiliar para serialização da tag indIncorpLote.</summary>
         [XmlElement("indIncorpLote")]
-        public IndicadorSimNaoNFeABI IndIncorpLote { get; set; }
+        public string IndIncorpLoteField
+        {
+            get => ((int)(TipoIncorpLote != (IndicadorIncorporacaoLoteNFeABI)(-1) ? TipoIncorpLote : (IndicadorIncorporacaoLoteNFeABI)(int)IndIncorpLote)).ToString(CultureInfo.InvariantCulture);
+            set
+            {
+                TipoIncorpLote = (IndicadorIncorporacaoLoteNFeABI)int.Parse(value, CultureInfo.InvariantCulture);
+                IndIncorpLote = TipoIncorpLote == IndicadorIncorporacaoLoteNFeABI.Loteamento ? (IndicadorSimNaoNFeABI)(-1) : (IndicadorSimNaoNFeABI)(int)TipoIncorpLote;
+            }
+        }
         /// <summary>Obtém ou define o conteúdo da tag CNPJempImob da NFeABI.</summary>
         [XmlElement("CNPJempImob")]
         public string CNPJempImob { get; set; }
         /// <summary>Código CIB da obra.</summary>
         [XmlElement("cCIBObra")]
         public string CCIBObra { get; set; }
+        /// <summary>Cadastro Nacional de Obras.</summary>
+        [XmlElement("CNO")]
+        public string CNO { get; set; }
+        /// <summary>Indica se o cadastro CIB da obra deve ser serializado.</summary>
+        public bool ShouldSerializeCCIBObra() => !string.IsNullOrWhiteSpace(CCIBObra);
+        /// <summary>Indica se o Cadastro Nacional de Obras deve ser serializado.</summary>
+        public bool ShouldSerializeCNO() => string.IsNullOrWhiteSpace(CCIBObra) && !string.IsNullOrWhiteSpace(CNO);
+        /// <summary>Indica se o indicador de incorporação ou loteamento deve ser serializado.</summary>
+        public bool ShouldSerializeIndIncorpLoteField() => TipoIncorpLote != (IndicadorIncorporacaoLoteNFeABI)(-1) || IndIncorpLote != (IndicadorSimNaoNFeABI)(-1);
     }
 
 /// <summary>Representa o grupo GRedAjusteImovel do contrato XML da NFeABI.</summary>
@@ -815,6 +892,32 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         /// <summary>Tributação IBS e CBS.</summary>
         [XmlElement("IBSCBS")]
         public IBSCBS IBSCBS { get; set; }
+    }
+
+/// <summary>Representa as informações da tributação da NFeABI no regime de transição.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFeABI.GInfTribTransic")]
+    [ComVisible(true)]
+#endif
+    public class GInfTribTransic
+    {
+        /// <summary>CNPJ do contribuinte.</summary>
+        [XmlElement("CNPJ")]
+        public string CNPJ { get; set; }
+        /// <summary>CPF do contribuinte.</summary>
+        [XmlElement("CPF")]
+        public string CPF { get; set; }
+        /// <summary>Razão social ou nome do contribuinte.</summary>
+        [XmlElement("xNome")]
+        public string XNome { get; set; }
+        /// <summary>Informações do IBS e da CBS no regime de transição.</summary>
+        [XmlElement("IBSCBS")]
+        public IBSCBSTransic IBSCBS { get; set; }
+        /// <summary>Indica se o CNPJ deve ser serializado.</summary>
+        public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
+        /// <summary>Indica se o CPF deve ser serializado.</summary>
+        public bool ShouldSerializeCPF() => string.IsNullOrWhiteSpace(CNPJ) && !string.IsNullOrWhiteSpace(CPF);
     }
 
 /// <summary>Representa o grupo DetPagImovel do contrato XML da NFeABI.</summary>
@@ -950,13 +1053,19 @@ namespace Unimake.Business.DFe.Xml.NFeABI
     {
         /// <summary>Obtém ou define o conteúdo da tag vTotalOperacao da NFeABI.</summary>
         [XmlIgnore]
-        public double VTotalOperacao { get; set; }
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public double? VTotalOperacao { get; set; }
         /// <summary>Obtém ou define o conteúdo da tag vTotalOperacao da NFeABI.</summary>
         [XmlElement("vTotalOperacao")]
         public string VTotalOperacaoField { get => NFeABIFormat.Money(VTotalOperacao); set => VTotalOperacao = NFeABIFormat.ParseDecimal(value); }
         /// <summary>Obtém ou define o conteúdo da tag vOperacIndiv da NFeABI.</summary>
         [XmlIgnore]
-        public double VOperacIndiv { get; set; }
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public double? VOperacIndiv { get; set; }
         /// <summary>Obtém ou define o conteúdo da tag vOperacIndiv da NFeABI.</summary>
         [XmlElement("vOperacIndiv")]
         public string VOperacIndivField { get => NFeABIFormat.Money(VOperacIndiv); set => VOperacIndiv = NFeABIFormat.ParseDecimal(value); }
@@ -969,6 +1078,10 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         /// <summary>Valor total da NFeABI.</summary>
         [XmlElement("vNF")]
         public string VNFField { get => NFeABIFormat.Money(VNF); set => VNF = NFeABIFormat.ParseDecimal(value); }
+        /// <summary>Indica se o valor total da operação deve ser serializado.</summary>
+        public bool ShouldSerializeVTotalOperacaoField() => VTotalOperacao.HasValue;
+        /// <summary>Indica se o valor individual da operação deve ser serializado.</summary>
+        public bool ShouldSerializeVOperacIndivField() => VOperacIndiv.HasValue;
     }
 
 /// <summary>Representa o grupo Obs do contrato XML da NFeABI.</summary>

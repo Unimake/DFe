@@ -3001,14 +3001,19 @@
 					<SchemaArquivoEspecifico>evCancNFeABI_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
-					<ID>112110</ID>
+					<ID>112310</ID>
 					<SchemaArquivo>eventoNFeABI_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evPagParcelaNFeABI_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
-					<ID>112120</ID>
+					<ID>211310</ID>
 					<SchemaArquivo>eventoNFeABI_v1.00.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evApropCredIndNFeABI_v1.00.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>112320</ID>
+					<SchemaArquivo>eventoNFeABI_v1.00.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evDesfazimAlienacNFeABI_v1.00.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 			</SchemasEspecificos>
 		</Servico>

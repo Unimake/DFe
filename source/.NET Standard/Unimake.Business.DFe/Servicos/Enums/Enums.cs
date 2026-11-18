@@ -21931,7 +21931,51 @@ namespace Unimake.Business.DFe.Servicos
 
         /// <summary>1 - Nota completa.</summary>
         [XmlEnum("1")]
-        Completa = 1
+        Completa = 1,
+
+        /// <summary>2 - Nota do regime de transição.</summary>
+        [XmlEnum("2")]
+        Transicao = 2
+    }
+
+    /// <summary>Tipo de pagamento antecipado da NFeABI.</summary>
+    public enum TipoPagamentoAntecipadoNFeABI
+    {
+        /// <summary>1 - Pagamento antecipado.</summary>
+        [XmlEnum("1")]
+        PagamentoAntecipado = 1,
+
+        /// <summary>2 - Fornecimento com pagamento realizado anteriormente.</summary>
+        [XmlEnum("2")]
+        FornecimentoPagamentoRealizadoAnteriormente = 2
+    }
+
+    /// <summary>Indicador de incorporação ou loteamento da NFeABI.</summary>
+    public enum IndicadorIncorporacaoLoteNFeABI
+    {
+        /// <summary>0 - Não se aplica.</summary>
+        [XmlEnum("0")]
+        NaoSeAplica = 0,
+
+        /// <summary>1 - Incorporação imobiliária.</summary>
+        [XmlEnum("1")]
+        IncorporacaoImobiliaria = 1,
+
+        /// <summary>2 - Loteamento.</summary>
+        [XmlEnum("2")]
+        Loteamento = 2
+    }
+
+    /// <summary>Tipo de suspensão da exigibilidade do IBS e da CBS da NFeABI.</summary>
+    public enum TipoSuspensaoExigibilidadeNFeABI
+    {
+        /// <summary>01 - Decisão judicial.</summary>
+        [XmlEnum("01")]
+        DecisaoJudicial = 1,
+
+        /// <summary>02 - Decisão administrativa.</summary>
+        [XmlEnum("02")]
+        DecisaoAdministrativa = 2
     }
 
     /// <summary>Formato de impressão da NFeABI.</summary>

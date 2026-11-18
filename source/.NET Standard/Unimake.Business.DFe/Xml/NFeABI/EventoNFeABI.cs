@@ -17,13 +17,17 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         [XmlEnum("110111")]
         Cancelamento = 110111,
 
-        /// <summary>112110 - Pagamento de parcela.</summary>
-        [XmlEnum("112110")]
-        PagamentoParcela = 112110,
+        /// <summary>112310 - Pagamento de parcela.</summary>
+        [XmlEnum("112310")]
+        PagamentoParcela = 112310,
 
-        /// <summary>112120 - Apropriação de créditos individuais.</summary>
-        [XmlEnum("112120")]
-        ApropriacaoCreditosIndividuais = 112120
+        /// <summary>112320 - Desfazimento da alienação.</summary>
+        [XmlEnum("112320")]
+        DesfazimentoAlienacao = 112320,
+
+        /// <summary>211310 - Apropriação de créditos individuais.</summary>
+        [XmlEnum("211310")]
+        ApropriacaoCreditosIndividuais = 211310
     }
 
     /// <summary>Pedido de registro de evento da NFeABI.</summary>
@@ -133,7 +137,7 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         [XmlAttribute("Id", DataType = "ID")]
         public string Id
         {
-            get => "ID" + ((int)TpEvento).ToString("000000") + ChNFeABI + NSeqEvento;
+            get => "ID" + ((int)TpEvento).ToString("000000") + ChNFeABI + NSeqEvento.ToString("000", CultureInfo.InvariantCulture);
             set => _ = value;
         }
 
@@ -195,10 +199,14 @@ namespace Unimake.Business.DFe.Xml.NFeABI
         [XmlElement("evApropCredIndNFeABI")]
         public EvApropCredIndNFeABI EvApropCredIndNFeABI { get; set; }
 
+        /// <summary>Detalhe do desfazimento da alienação.</summary>
+        [XmlElement("evDesfazimAlienac")]
+        public EvDesfazimAlienacNFeABI EvDesfazimAlienac { get; set; }
+
         /// <summary>Valida a correspondência entre tpEvento e o detalhe informado.</summary>
         public void Validar(TipoEventoNFeABI tipoEvento)
         {
-            var quantidade = (EvCancNFeABI == null ? 0 : 1) + (EvPagParcelaNFeABI == null ? 0 : 1) + (EvApropCredIndNFeABI == null ? 0 : 1);
+            var quantidade = (EvCancNFeABI == null ? 0 : 1) + (EvPagParcelaNFeABI == null ? 0 : 1) + (EvApropCredIndNFeABI == null ? 0 : 1) + (EvDesfazimAlienac == null ? 0 : 1);
             if (quantidade != 1)
             {
                 ThrowHelper.Instance.Throw(new ValidatorDFeException("O grupo detEvento deve conter exatamente um detalhe de evento da NFeABI."));
@@ -210,6 +218,11 @@ namespace Unimake.Business.DFe.Xml.NFeABI
                 EvPagParcelaNFeABI.Validar();
                 return;
             }
+            if (tipoEvento == TipoEventoNFeABI.DesfazimentoAlienacao && EvDesfazimAlienac != null)
+            {
+                EvDesfazimAlienac.Validar();
+                return;
+            }
             if (tipoEvento == TipoEventoNFeABI.ApropriacaoCreditosIndividuais && EvApropCredIndNFeABI != null)
             {
                 EvApropCredIndNFeABI.Validar();
@@ -217,6 +230,62 @@ namespace Unimake.Business.DFe.Xml.NFeABI
             }
 
             ThrowHelper.Instance.Throw(new ValidatorDFeException("A tag tpEvento não corresponde ao detalhe informado na NFeABI. Valor informado: " + (int)tipoEvento + "."));
+        }
+    }
+
+    /// <summary>Detalhe do evento de desfazimento da alienação da NFeABI.</summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFeABI.EvDesfazimAlienacNFeABI")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot("evDesfazimAlienac", Namespace = "http://www.portalfiscal.inf.br/nfeabi", IsNullable = false)]
+    public class EvDesfazimAlienacNFeABI : XMLBase
+    {
+        /// <summary>Versão do leiaute do evento.</summary>
+        [XmlAttribute("versao", DataType = "token")]
+        public string Versao { get; set; }
+
+        /// <summary>Descrição fixa do evento.</summary>
+        [XmlElement("descEvento")]
+        public string DescEvento { get; set; } = "Evento de Desfazimento da Alienação";
+
+        /// <summary>Tipo de desfazimento conforme tabela da NFeABI.</summary>
+        [XmlElement("tpDesfaz")]
+        public string TpDesfaz { get; set; }
+
+        /// <summary>Data do ato de desfazimento.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtDesfaz { get; set; }
+#else
+        public DateTimeOffset DtDesfaz { get; set; }
+#endif
+
+        /// <summary>Campo auxiliar para serialização da data do ato de desfazimento.</summary>
+        [XmlElement("dtDesfaz")]
+        public string DtDesfazField
+        {
+            get => DtDesfaz.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+#if INTEROP
+            set => DtDesfaz = DateTime.ParseExact(value, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+#else
+            set => DtDesfaz = DateTimeOffset.ParseExact(value, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+#endif
+        }
+
+        /// <summary>Descrição do ato de desfazimento.</summary>
+        [XmlElement("xDesfaz")]
+        public string XDesfaz { get; set; }
+
+        /// <summary>Valida os campos condicionais do desfazimento da alienação.</summary>
+        public void Validar()
+        {
+            if (TpDesfaz == "99" && string.IsNullOrWhiteSpace(XDesfaz))
+            {
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("A tag xDesfaz deve ser informada quando tpDesfaz for 99."));
+            }
         }
     }
 }

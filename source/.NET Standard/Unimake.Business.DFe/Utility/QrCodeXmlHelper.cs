@@ -610,9 +610,9 @@ namespace Unimake.Business.DFe.Utility
 
             var conteudoQrCode = urlQrCode + "?p=" + parametrosQrCode;
 
-            if (conteudoQrCode.Length < 100 || conteudoQrCode.Length > 600)
+            if (conteudoQrCode.Length < 100 || conteudoQrCode.Length > 1000)
             {
-                throw new Exception("O conteúdo do QR Code da NFeABI deve possuir entre 100 e 600 caracteres, conforme definido pelo schema.");
+                throw new Exception("O conteúdo do QR Code da NFeABI deve possuir entre 100 e 1000 caracteres, conforme definido pelo schema.");
             }
 
             var nodeNFeABI = conteudoXml.GetElementsByTagName("NFeABI")[0];
