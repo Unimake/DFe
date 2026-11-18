@@ -62,59 +62,38 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             base.ReadXml(document);
 
-            switch (document.GetElementsByTagName("tpEvento")[0].InnerText)
-            {
-                case "111500":
-                case "111501":
-                    PreparaItemPedido(document);
-                    break;
+            PreparaItemPedido(document);
+            PreparaDetPag(document);
+            PrepararGConsumo(document);
+            PrepararGPerecimentoAdquirente(document);
+            PrepararGPerecimento(document);
+            PrepararGItemNaoFornecido(document);
+            PrepararGCredPres(document);
+            PrepararGImobilizado(document);
+            PrepararGConsumoComb(document);
+            PrepararGCredito(document);
+        }
 
-                case "110750":
-                    PreparaDetPag(document);
-                    break;
+        private XmlNodeList ObterGruposDoEvento(XmlDocument xmlDoc, Evento evento, string nomeGrupo)
+        {
+            var namespaces = new XmlNamespaceManager(xmlDoc.NameTable);
+            namespaces.AddNamespace("nfe", "http://www.portalfiscal.inf.br/nfe");
 
-                case "112120":
-                    PrepararGConsumo(document);
-                    break;
-
-                case "211124":
-                    PrepararGPerecimentoAdquirente(document);
-                    break;
-
-                case "112130":
-                    PrepararGPerecimento(document);
-                    break;
-
-                case "112140":
-                    PrepararGItemNaoFornecido(document);
-                    break;
-
-                case "211110":
-                    PrepararGCredPres(document);
-                    break;
-
-                case "211130":
-                    PrepararGImobilizado(document);
-                    break;
-
-                case "211140":
-                    PrepararGConsumoComb(document);
-                    break;
-
-                case "211150":
-                    PrepararGCredito(document);
-                    break;
-            }
+            // A desserialização mantém a ordem dos eventos. A posição distingue também
+            // entradas repetidas, sem buscar grupos de outro evento com o mesmo tipo.
+            var posicao = Evento.IndexOf(evento) + 1;
+            return xmlDoc.SelectNodes("/nfe:envEvento/nfe:evento[" + posicao +
+                "]/nfe:infEvento/nfe:detEvento/nfe:" + nomeGrupo, namespaces);
         }
 
         public void PreparaDetPag(XmlDocument xmlDoc)
         {
-            var detPags = xmlDoc.GetElementsByTagName("detPag");
-
             foreach (var evento in Evento)
             {
                 if (evento.InfEvento.DetEvento is DetEventoConciliacaoFinanceira detEvento)
                 {
+                    var detPags = ObterGruposDoEvento(xmlDoc, evento, "detPag");
+
                     detEvento.DetPag = new List<DetPagECONF>();
 
                     foreach (var nodeDetPag in detPags)
@@ -151,12 +130,12 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void PreparaItemPedido(XmlDocument xmlDoc)
         {
-            var itensPedidos = xmlDoc.GetElementsByTagName("itemPedido");
-
             foreach (var evento in Evento)
             {
                 if (evento.InfEvento.DetEvento is DetEventoPedidoProrrogPrazoICMS detEvento)
                 {
+                    var itensPedidos = ObterGruposDoEvento(xmlDoc, evento, "itemPedido");
+
                     detEvento.ItemPedido = new List<ItemPedidoProrrogPrazoICMS>();
 
                     foreach (var nodeItemPedido in itensPedidos)
@@ -175,12 +154,12 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void PrepararGConsumo(XmlDocument xmlDoc)
         {
-            var gConsumos = xmlDoc.GetElementsByTagName("gConsumo");
-
             foreach (var evento in Evento)
             {
                 if (evento.InfEvento.DetEvento is DetEventoImportacaoALCZFMNaoConvertidaIsencao detEvento)
                 {
+                    var gConsumos = ObterGruposDoEvento(xmlDoc, evento, "gConsumo");
+
                     detEvento.GConsumo = new List<GConsumo>();
 
                     foreach (var nodeGConsumo in gConsumos)
@@ -211,12 +190,12 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void PrepararGPerecimento(XmlDocument xmlDoc)
         {
-            var gPerecimento = xmlDoc.GetElementsByTagName("gPerecimento");
-
             foreach (var evento in Evento)
             {
                 if (evento.InfEvento.DetEvento is DetEventoPerecimentoDuranteTransporteContratadoFornecedor detEvento)
                 {
+                    var gPerecimento = ObterGruposDoEvento(xmlDoc, evento, "gPerecimento");
+
                     detEvento.GPerecimento = new List<GPerecimento>();
 
                     foreach (var nodeGPerecimento in gPerecimento)
@@ -249,12 +228,12 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void PrepararGPerecimentoAdquirente(XmlDocument xmlDoc)
         {
-            var gPerecimento = xmlDoc.GetElementsByTagName("gPerecimento");
-
             foreach (var evento in Evento)
             {
                 if (evento.InfEvento.DetEvento is DetEventoPerecimentoDuranteTransporteContratadoAdquirente detEvento)
                 {
+                    var gPerecimento = ObterGruposDoEvento(xmlDoc, evento, "gPerecimento");
+
                     detEvento.GPerecimento = new List<GPerecimentoAdquirente>();
 
                     foreach (var nodeGPerecimento in gPerecimento)
@@ -284,12 +263,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
         public void PrepararGItemNaoFornecido(XmlDocument xmlDoc)
         {
-            var gItemNaoFornecido = xmlDoc.GetElementsByTagName("gItemNaoFornecido");
-
             foreach (var evento in Evento)
             {
                 if (evento.InfEvento.DetEvento is DetEventoFornecimentoNaoRealizadoComPagamentoAntecipado detEvento)
                 {
+                    var gItemNaoFornecido = ObterGruposDoEvento(xmlDoc, evento, "gItemNaoFornecido");
+
                     detEvento.GItemNaoFornecido = new List<GItemNaoFornecido>();
 
                     foreach (var nodeGItemNaoFornecido in gItemNaoFornecido)
@@ -320,12 +299,12 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void PrepararGCredPres(XmlDocument xmlDoc)
         {
-            var gCredPresOper = xmlDoc.GetElementsByTagName("gCredPresOper");
-
             foreach (var evento in Evento)
             {
                 if (evento.InfEvento.DetEvento is DetEventoSolicitacaoApropriacaoCreditoPresumido detEvento)
                 {
+                    var gCredPresOper = ObterGruposDoEvento(xmlDoc, evento, "gCredPresOper");
+
                     detEvento.GCredPresOper = new List<GCredPresOperEvento>();
 
                     foreach (var nodeGCredPresOper in gCredPresOper)
@@ -369,12 +348,12 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void PrepararGImobilizado(XmlDocument xmlDoc)
         {
-            var gImobilizacao = xmlDoc.GetElementsByTagName("gImobilizacao");
-
             foreach (var evento in Evento)
             {
                 if (evento.InfEvento.DetEvento is DetEventoImobilizacaoItem detEvento)
                 {
+                    var gImobilizacao = ObterGruposDoEvento(xmlDoc, evento, "gImobilizacao");
+
                     detEvento.GImobilizacao = new List<GImobilizacao>();
 
                     foreach (var nodeGImobilizacao in gImobilizacao)
@@ -405,12 +384,12 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void PrepararGConsumoComb(XmlDocument xmlDoc)
         {
-            var gConsumoComb = xmlDoc.GetElementsByTagName("gConsumoComb");
-
             foreach (var evento in Evento)
             {
                 if (evento.InfEvento.DetEvento is DetEventoSolicitacaoApropriacaoCreditoCombustivel detEvento)
                 {
+                    var gConsumoComb = ObterGruposDoEvento(xmlDoc, evento, "gConsumoComb");
+
                     detEvento.GConsumoComb = new List<GConsumoComb>();
 
                     foreach (var nodeGConsumoComb in gConsumoComb)
@@ -441,12 +420,12 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void PrepararGCredito(XmlDocument xmlDoc)
         {
-            var gCredito = xmlDoc.GetElementsByTagName("gCredito");
-
             foreach (var evento in Evento)
             {
                 if (evento.InfEvento.DetEvento is DetEventoSolicitacaoApropriacaoCreditoBensServicosAdquirente detEvento)
                 {
+                    var gCredito = ObterGruposDoEvento(xmlDoc, evento, "gCredito");
+
                     detEvento.GCredito = new List<GCredito>();
 
                     foreach (var nodeGCredito in gCredito)
