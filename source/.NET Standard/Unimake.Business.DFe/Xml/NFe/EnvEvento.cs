@@ -4523,7 +4523,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                          <verAplic>{VerAplic}</verAplic>
                          <indDeferimento>{(int)IndDeferimento}</indDeferimento>
                          <cMotivo>{(int)CMotivo}</cMotivo>
-                         <xMotivo>{XMotivo}</xMotivo>";
+                         <xMotivo>{System.Security.SecurityElement.Escape(XMotivo)}</xMotivo>";
 
             writer.WriteRaw(xml);
         }
