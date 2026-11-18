@@ -223,7 +223,19 @@ namespace Unimake.DFe.Test.NFe.BugFixes
                 case 211150:
                     detalhe = new DetEventoSolicitacaoApropriacaoCreditoBensServicosAdquirente { GCredito = new List<GCredito> { new GCredito { NItem = marca, VCredIBS = marca, VCredCBS = marca + 0.25 } } }; break;
                 case 112150:
-                    detalhe = new DetEventoAtualizacaoDataPrevisaoEntrega { Versao = "1.00", COrgaoAutor = UFBrasil.PR, TpAutor = (TipoAutor)1, VerAplic = "TESTE", DPrevEntrega = new DateTimeOffset(2026, 12, 8, 12, 0, 0, TimeSpan.FromHours(-3)) }; break;
+                    detalhe = new DetEventoAtualizacaoDataPrevisaoEntrega
+                    {
+                        Versao = "1.00",
+                        COrgaoAutor = UFBrasil.PR,
+                        TpAutor = (TipoAutor)1,
+                        VerAplic = "TESTE",
+#if INTEROP
+                        DPrevEntrega = new DateTime(2026, 12, 8, 12, 0, 0)
+#else
+                        DPrevEntrega = new DateTimeOffset(2026, 12, 8, 12, 0, 0, TimeSpan.FromHours(-3))
+#endif
+                    };
+                    break;
                 case 211128:
                     detalhe = new DetEventoAceiteDebitoApuracaoEmissaoNotaCredito { Versao = "1.00", COrgaoAutor = UFBrasil.PR, TpAutor = (TipoAutor)2, VerAplic = "TESTE", IndAceitacao = SimNao.Sim }; break;
                 case 110751:
