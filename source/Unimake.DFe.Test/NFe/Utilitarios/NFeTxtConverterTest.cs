@@ -1481,6 +1481,80 @@ public class NFeTxtConverterTest
     }
 
     /// <summary>
+    /// O N09 sem valor nem motivo de desoneracao nao deve criar vICMSDeson no ICMS70.
+    /// </summary>
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void ConverterDeveOmitirDesoneracaoNaoInformadaNoIcms70(bool usarLayoutCom22Pipes)
+    {
+        var origem = CaminhoArquivo("001045277-icms70-sem-desoneracao-nfe.txt");
+        var arquivo = origem;
+        try
+        {
+            if (usarLayoutCom22Pipes)
+            {
+                arquivo = Path.GetTempFileName();
+                var linhas = File.ReadAllLines(origem);
+                var indice = Array.FindIndex(linhas, linha => linha.StartsWith("N09|", StringComparison.Ordinal));
+                linhas[indice] = linhas[indice].Substring(0, linhas[indice].Length - 2);
+                File.WriteAllLines(arquivo, linhas);
+            }
+
+            var resultado = new NFeTxtConverter().Converter(arquivo);
+
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            var icms70 = xml.SelectSingleNode("//*[local-name()='ICMS70']");
+            Assert.NotNull(icms70);
+            Assert.Equal("70", icms70.SelectSingleNode("*[local-name()='CST']")?.InnerText);
+            Assert.Equal("46.85", icms70.SelectSingleNode("*[local-name()='vICMS']")?.InnerText);
+            Assert.Null(icms70.SelectSingleNode("*[local-name()='pRedBCST']"));
+            Assert.Null(icms70.SelectSingleNode("*[local-name()='vICMSDeson']"));
+            Assert.Null(icms70.SelectSingleNode("*[local-name()='motDesICMS']"));
+            Assert.Null(icms70.SelectSingleNode("*[local-name()='indDeduzDeson']"));
+        }
+        finally
+        {
+            if (arquivo != origem) File.Delete(arquivo);
+        }
+    }
+
+    /// <summary>
+    /// A omissao de campos vazios nao deve suprimir desoneracao informada no N09.
+    /// </summary>
+    [Fact]
+    public void ConverterDevePreservarDesoneracaoInformadaNoIcms70()
+    {
+        var arquivoTemporario = Path.GetTempFileName();
+        try
+        {
+            var linhas = File.ReadAllLines(CaminhoArquivo("001045277-icms70-sem-desoneracao-nfe.txt"));
+            var indice = Array.FindIndex(linhas, linha => linha.StartsWith("N09|", StringComparison.Ordinal));
+            var campos = linhas[indice].Split('|');
+            campos[20] = "5.00";
+            campos[21] = "3";
+            linhas[indice] = string.Join("|", campos);
+            File.WriteAllLines(arquivoTemporario, linhas);
+
+            var resultado = new NFeTxtConverter().Converter(arquivoTemporario);
+
+            Assert.True(resultado.Sucesso, resultado.MensagemErro);
+            var xml = new XmlDocument();
+            xml.LoadXml(Assert.Single(resultado.Documentos).Xml);
+            var icms70 = xml.SelectSingleNode("//*[local-name()='ICMS70']");
+            Assert.NotNull(icms70);
+            Assert.Equal("5.00", icms70.SelectSingleNode("*[local-name()='vICMSDeson']")?.InnerText);
+            Assert.Equal("3", icms70.SelectSingleNode("*[local-name()='motDesICMS']")?.InnerText);
+        }
+        finally
+        {
+            File.Delete(arquivoTemporario);
+        }
+    }
+
+    /// <summary>
     /// Deve usar PISOutr e COFINSOutr quando Q02 e S02 informarem CST 49, preservando base, alíquota e valor.
     /// </summary>
     [Fact]
