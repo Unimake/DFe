@@ -100,7 +100,34 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             }
             return R(documento);
         }
-        internal static TxtConversaoResultado Distribuicao(string a, TxtConversaoContexto c, string ns, bool chave) { var f = TxtCampos.Ler(a); var d = Novo("distDFeInt", ns, f.Get("versao", "1.01")); Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente))); Add(d, "cUFAutor", f.Get("cUFAutor", N(c.CodigoUF))); Primeiro(d, d.DocumentElement, f, "CNPJ", "CPF"); if (chave && !string.IsNullOrWhiteSpace(f.Get("chNFe"))) Grupo(d, "consChNFe", "chNFe", f.Get("chNFe")); else if (!string.IsNullOrWhiteSpace(f.Get("NSU"))) Grupo(d, "consNSU", "NSU", f.Get("NSU")); else Grupo(d, "distNSU", "ultNSU", f.Get("ultNSU", "000000000000000")); return R(d); }
+        internal static TxtConversaoResultado Distribuicao(string a, TxtConversaoContexto c, string ns, bool chave)
+        {
+            var f = TxtCampos.Ler(a);
+            var d = Novo("distDFeInt", ns, f.Get("versao", "1.01"));
+            Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente)));
+            Add(d, "cUFAutor", f.Get("cUFAutor", N(c.CodigoUF)));
+            Primeiro(d, d.DocumentElement, f, "CNPJ", "CPF");
+            if (chave)
+            {
+                // O leitor legado preserva cada modalidade informada. A validação
+                // existente deve recusar os grupos simultâneos, sem escolher um.
+                var possuiChave = f.Count("chNFe") > 0;
+                var possuiNsu = f.Count("NSU") > 0;
+                if (possuiChave) Grupo(d, "consChNFe", "chNFe", f.Get("chNFe"));
+                if (possuiNsu) Grupo(d, "consNSU", "NSU", f.Get("NSU"));
+                if (f.Count("ultNSU") > 0 || (!possuiChave && !possuiNsu))
+                    Grupo(d, "distNSU", "ultNSU", f.Get("ultNSU", "000000000000000"));
+            }
+            else if (!string.IsNullOrWhiteSpace(f.Get("NSU")))
+            {
+                Grupo(d, "consNSU", "NSU", f.Get("NSU"));
+            }
+            else
+            {
+                Grupo(d, "distNSU", "ultNSU", f.Get("ultNSU", "000000000000000"));
+            }
+            return R(d);
+        }
         internal static TxtConversaoResultado Inutilizacao(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a); var uf = f.Get("cUF", N(c.CodigoUF)); var ano = Req(f, "ano").PadLeft(2, '0'); var cnpj = Req(f, "CNPJ"); var mod = f.Get("mod", N(c.Modelo)); var ser = Req(f, "serie"); var ini = Req(f, "nNFIni"); var fim = Req(f, "nNFFin"); var d = Novo("inutNFe", NFeNs, f.Get("versao", "4.00")); var inf = E(d, "infInut"); inf.SetAttribute("Id", "ID" + uf.PadLeft(2, '0') + ano + cnpj + mod.PadLeft(2, '0') + ser.PadLeft(3, '0') + ini.PadLeft(9, '0') + fim.PadLeft(9, '0')); d.DocumentElement.AppendChild(inf); foreach (var p in new[] { new[] { "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente)) }, new[] { "xServ", "INUTILIZAR" }, new[] { "cUF", uf }, new[] { "ano", ano }, new[] { "CNPJ", cnpj }, new[] { "mod", mod }, new[] { "serie", ser }, new[] { "nNFIni", ini }, new[] { "nNFFin", fim }, new[] { "xJust", Req(f, "xJust") } }) Add(d, inf, p[0], p[1]); return R(d); }
         internal static TxtConversaoResultado Evento(string arquivo, TxtConversaoContexto contexto)
         {
