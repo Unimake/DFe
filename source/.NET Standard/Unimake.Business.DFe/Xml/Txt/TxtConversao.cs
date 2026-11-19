@@ -359,7 +359,51 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             retorno.Append(V(origem, "tpAmb")).Append(V(origem, "cStat")).Append(V(origem, "xMotivo"))
                 .Append(V(origem, "cUF")).Append(V(origem, "dhRecbto")).Append(Z(origem, "nProt")).Append("\r\n");
         }
-        internal static string Evento(string x) { var d = L(x); var b = new StringBuilder(); foreach (XmlElement ret in d.GetElementsByTagName("retEvento")) { var e = F(ret, "infEvento", false); if (e == null) continue; var tipo = T(e, "tpEvento"); b.Append(V(e, "tpAmb")).Append(V(e, "cOrgao")).Append(V(e, "cStat")).Append(V(e, "xMotivo")).Append(V(e, "chNFe")).Append(V(e, "tpEvento")).Append(V(e, "xEvento")).Append(V(e, "nSeqEvento")); var doc = T(e, "CNPJDest"); if (string.IsNullOrEmpty(doc)) doc = T(e, "CPFDest"); b.Append(doc).Append(';').Append(V(e, "dhRegEvento")).Append(V(e, "nProt")); if (tipo == "110140") { b.Append(V(e, "cOrgaoAutor")); foreach (XmlElement pendente in e.GetElementsByTagName("chNFePend")) b.Append(pendente.InnerText).Append(';'); } else if (EhProrrogacao(tipo)) b.Append(V(e, "emailDest")); b.Append("\r\n"); } return b.ToString(); }
+        internal static string Evento(string x)
+        {
+            var d = L(x);
+            var b = new StringBuilder();
+            foreach (XmlElement ret in d.GetElementsByTagName("retEvento"))
+            {
+                var e = F(ret, "infEvento", false);
+                if (e == null)
+                    continue;
+
+                var tipo = T(e, "tpEvento");
+                b.Append(CampoRetornoEvento(e, "tpAmb")).Append(CampoRetornoEvento(e, "cOrgao"))
+                    .Append(CampoRetornoEvento(e, "cStat")).Append(CampoRetornoEvento(e, "xMotivo"))
+                    .Append(CampoRetornoEvento(e, "chNFe")).Append(CampoRetornoEvento(e, "tpEvento"))
+                    .Append(CampoRetornoEvento(e, "xEvento")).Append(CampoRetornoEvento(e, "nSeqEvento"));
+
+                // O legado reserva a coluna de destinatário mesmo quando ambos os documentos faltam.
+                var doc = T(e, "CNPJDest");
+                if (string.IsNullOrEmpty(doc))
+                    doc = T(e, "CPFDest");
+                b.Append(doc).Append(';').Append(CampoRetornoEvento(e, "dhRegEvento"))
+                    .Append(CampoRetornoEvento(e, "nProt"));
+
+                if (tipo == "110140")
+                {
+                    b.Append(CampoRetornoEvento(e, "cOrgaoAutor"));
+                    foreach (XmlElement pendente in e.GetElementsByTagName("chNFePend"))
+                        b.Append(pendente.InnerText).Append(';');
+                }
+                else if (EhProrrogacao(tipo))
+                {
+                    b.Append(CampoRetornoEvento(e, "emailDest"));
+                }
+
+                b.Append("\r\n");
+            }
+
+            return b.ToString();
+        }
+
+        private static string CampoRetornoEvento(XmlElement evento, string nome)
+        {
+            var campo = F(evento, nome, false);
+            return campo == null ? string.Empty : campo.InnerText.Replace(';', ' ') + ";";
+        }
         internal static string Distribuicao(string x) { var d = L(x); var r = F(d, "retDistDFeInt"); var b = new StringBuilder().Append(V(r, "tpAmb")).Append(V(r, "verAplic")).Append(V(r, "cStat")).Append(V(r, "xMotivo")).Append(V(r, "dhResp")).Append(V(r, "ultNSU")).Append(V(r, "maxNSU")).Append("\r\n"); foreach (XmlElement z in d.GetElementsByTagName("docZip")) { var nsu = z.GetAttribute("NSU"); if (string.IsNullOrEmpty(nsu)) nsu = "000000000000000"; var schema = z.GetAttribute("schema"); var i = L(Compress.GZIPDecompress(z.InnerText)); string tipo = null, ch = null, extra = ""; if (schema.StartsWith("resEvento")) { tipo = "resEvento"; ch = T(i, "chNFe"); extra = Ev(i, 2); } else if (schema.StartsWith("procEventoNFe")) { tipo = "procEventoNFe"; ch = T(i, "chNFe"); extra = Ev(i, 2); } else if (schema.StartsWith("procNFe")) { tipo = "procNFe"; ch = T(i, "chNFe"); } else if (schema.StartsWith("resNFe")) { tipo = "resNFe"; ch = T(i, "chNFe"); } else if (schema.StartsWith("procEventoCTe")) { tipo = "procEventoCTe"; ch = T(i, "chCTe"); extra = Ev(i, schema.Contains("3.00") ? 2 : 3); } else if (schema.StartsWith("procCTe")) { tipo = "procCTe"; ch = T(i, "chCTe"); } if (tipo != null) b.Append(tipo).Append(';').Append(nsu).Append(';').Append(ch).Append(';').Append(extra).Append("\r\n"); } return b.ToString(); }
         internal static string Cadastro(string x) { var d = L(x); var r = F(d, "retConsCad"); var b = new StringBuilder().Append(P(T(r, "cStat"), 3)).Append(';').Append(S(T(r, "xMotivo"))).Append(';').Append(V(r, "UF")).Append(V(r, "IE")).Append(V(r, "CNPJ")).Append(V(r, "CPF")).Append(V(r, "dhCons")).Append(P(T(r, "cUF"), 2)).Append(";\r\r"); foreach (XmlElement e in d.GetElementsByTagName("infCad")) { foreach (var n in new[] { "IE", "CNPJ", "CPF", "UF", "cSit" }) b.Append(V(e, n)); b.Append(S(T(e, "xNome"))).Append(';').Append(S(T(e, "xFant"))).Append(';').Append(S(T(e, "xRegApur"))).Append(';').Append(V(e, "CNAE")).Append(V(e, "dIniAtiv")).Append(V(e, "dUltSit")).Append(S(T(e, "IEUnica"))).Append(';').Append(S(T(e, "IEAtual"))).Append(';'); var end = F(e, "ender", false); if (end != null) b.Append(S(T(end, "xLgr"))).Append(';').Append(S(T(end, "nro"))).Append(';').Append(S(T(end, "xCpl"))).Append(';').Append(S(T(end, "xBairro"))).Append(';').Append(P(T(end, "cMun"), 7)).Append(';').Append(S(T(end, "xMun"))).Append(';').Append(P(T(end, "CEP"), 8)).Append(';'); b.Append("\r\r"); } return b.ToString(); }
         internal static string Gtin(string x) { var d = L(x); var b = new StringBuilder(); foreach (var n in new[] { "cStat", "xMotivo", "GTIN", "tpGTIN", "xProd", "NCM" }) b.Append(n == "cStat" ? "CStat" : n == "xMotivo" ? "XMotivo" : n).Append('|').Append(T(d, n)).Append("\r\n"); foreach (XmlElement e in d.GetElementsByTagName("CEST")) b.Append("CEST|").Append(e.InnerText).Append("\r\n"); return b.ToString(); }
