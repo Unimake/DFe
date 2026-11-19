@@ -311,7 +311,18 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
     {
         internal static string Autorizacao(string x) { var d = L(x); var r = F(d, "retEnviNFe"); var s = ";" + V(r, "cStat") + V(r, "xMotivo"); var p = F(r, "infProt", false); if (p != null) { var ch = T(p, "chNFe"); s += "\r\n" + Sub(ch, 6, 14) + ";" + Sub(ch, 25, 9) + ";" + V(p, "chNFe") + V(p, "dhRecbto") + Z(p, "nProt") + V(p, "digVal") + V(p, "cStat") + V(p, "xMotivo"); } return s; }
         internal static string Status(string x) { var e = F(L(x), "retConsStatServ"); return V(e, "tpAmb") + V(e, "cStat") + V(e, "xMotivo") + V(e, "cUF") + V(e, "dhRecbto") + V(e, "tMed") + "\r\n"; }
-        internal static string Inutilizacao(string x) { var d = L(x); var b = new StringBuilder(); foreach (XmlElement e in d.GetElementsByTagName("infInut")) b.Append(V(e, "tpAmb")).Append(V(e, "cStat")).Append(V(e, "xMotivo")).Append(V(e, "cUF")).Append("\r\n"); return b.ToString(); }
+        internal static string Inutilizacao(string x)
+        {
+            var documento = L(x);
+            var retorno = new StringBuilder();
+            foreach (XmlElement infInut in documento.GetElementsByTagName("infInut"))
+            {
+                retorno.Append(V(infInut, "tpAmb")).Append(V(infInut, "cStat"))
+                    .Append(S(T(infInut, "xMotivo"))).Append(';')
+                    .Append(V(infInut, "cUF")).Append("\r\n");
+            }
+            return retorno.ToString();
+        }
         internal static string Situacao(string x)
         {
             var d = L(x);
