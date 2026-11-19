@@ -34,7 +34,7 @@ public class ConsultaSituacaoTxtRetornoTest
         var status = temEvento ? "101" : temProtocolo ? "100" : "526";
         var raiz = new XElement(Ns + "retConsSitNFe", new XAttribute("versao", "4.00"),
             new XElement(Ns + "tpAmb", "2"), new XElement(Ns + "verAplic", "TESTE"),
-            new XElement(Ns + "cStat", status), new XElement(Ns + "xMotivo", "Situação sintética"),
+            new XElement(Ns + "cStat", status), new XElement(Ns + "xMotivo", "Situação sintética; motivo da raiz"),
             new XElement(Ns + "cUF", "41"), new XElement(Ns + "dhRecbto", Data),
             new XElement(Ns + "chNFe", chave));
 
@@ -44,7 +44,7 @@ public class ConsultaSituacaoTxtRetornoTest
                 new XElement(Ns + "infProt", new XElement(Ns + "tpAmb", "2"),
                     new XElement(Ns + "verAplic", "TESTE"), new XElement(Ns + "chNFe", chave),
                     new XElement(Ns + "dhRecbto", Data), new XElement(Ns + "nProt", ProtocoloNota),
-                    new XElement(Ns + "cStat", "100"), new XElement(Ns + "xMotivo", "Autorização sintética"))));
+                    new XElement(Ns + "cStat", "100"), new XElement(Ns + "xMotivo", "Autorização sintética; protocolo localizado"))));
         }
 
         if (temEvento)
@@ -67,8 +67,8 @@ public class ConsultaSituacaoTxtRetornoTest
         Assert.True(schema.Success, schema.ErrorMessage);
 
         var esperado = temProtocolo
-            ? $"2;100;Autorização sintética;{Data};{ProtocoloNota};\r\n"
-            : temEvento ? "" : $"2;526;Situação sintética;41;{Data};0;\r\n";
+            ? $"2;100;Autorização sintética  protocolo localizado;{Data};{ProtocoloNota};\r\n"
+            : temEvento ? "" : $"2;526;Situação sintética  motivo da raiz;41;{Data};0;\r\n";
         if (temEvento)
         {
             esperado += $"[evento]\r\n41;2;99999999000191;{chave};{Data};110111;1;1.00;Cancelamento;{ProtocoloNota};Cancelamento  pedido em duplicidade;\r\n"
