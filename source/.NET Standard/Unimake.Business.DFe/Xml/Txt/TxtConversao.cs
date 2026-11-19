@@ -356,7 +356,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
         private static void AdicionarResumoSituacao(StringBuilder retorno, XmlElement origem, bool preservarColunaUf)
         {
-            retorno.Append(V(origem, "tpAmb")).Append(V(origem, "cStat")).Append(V(origem, "xMotivo"))
+            retorno.Append(V(origem, "tpAmb")).Append(V(origem, "cStat")).Append(CampoDelimitadoPresente(origem, "xMotivo"))
                 .Append(preservarColunaUf ? V(origem, "cUF") : CampoDelimitadoPresente(origem, "cUF")).Append(V(origem, "dhRecbto")).Append(Z(origem, "nProt")).Append("\r\n");
         }
         internal static string Evento(string x)
