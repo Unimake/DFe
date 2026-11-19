@@ -45,11 +45,11 @@ public class ConversoresTxtLegadoTest
     [Fact]
     public void ConverteRetornoSituacaoComProtocoloSemDuplicarDadosDaRaiz()
     {
-        const string xml = "<retConsSitNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><tpAmb>2</tpAmb><cStat>100</cStat><xMotivo>Consulta processada</xMotivo><cUF>41</cUF><dhRecbto>2026-08-22T22:57:16-03:00</dhRecbto><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo><cUF>41</cUF><dhRecbto>2026-08-22T22:57:16-03:00</dhRecbto><nProt>141260000000001</nProt></infProt></protNFe></retConsSitNFe>";
+        const string xml = """<retConsSitNFe versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe"><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cStat>100</cStat><xMotivo>Consulta processada</xMotivo><cUF>41</cUF><dhRecbto>2026-08-22T22:57:16-03:00</dhRecbto><chNFe>41170712345678000123550010000000011000000010</chNFe><protNFe versao="4.00"><infProt><tpAmb>2</tpAmb><verAplic>TESTE</verAplic><chNFe>41170712345678000123550010000000011000000010</chNFe><dhRecbto>2026-08-22T22:57:16-03:00</dhRecbto><nProt>141260000000001</nProt><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></retConsSitNFe>""";
 
         var retorno = new ConsultaSituacaoTxtConverter().ConverterRetorno(xml);
 
-        Assert.Equal("2;100;Autorizado o uso da NF-e;41;2026-08-22T22:57:16-03:00;141260000000001;\r\n", retorno);
+        Assert.Equal("2;100;Autorizado o uso da NF-e;2026-08-22T22:57:16-03:00;141260000000001;\r\n", retorno);
     }
 
     [Fact]
