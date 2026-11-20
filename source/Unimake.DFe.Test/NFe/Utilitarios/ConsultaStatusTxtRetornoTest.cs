@@ -96,4 +96,30 @@ public class ConsultaStatusTxtRetornoTest
             File.Delete(arquivo);
         }
     }
+
+    [Theory]
+    [InlineData("tpEmis|6x", "6x")]
+    [InlineData("tpEmis|", "")]
+    [InlineData("tpEmis|2147483648", "2147483648")]
+    [InlineData("tpEmis|6\r\ntpEmis|7x", "7x")]
+    [InlineData("tpEmis|6x\r\ntpEmis|7", "6x")]
+    public void PedidoParaEnvio_RecusaEmissaoPresenteInvalidaEPreservaConversaoAtual(string campos, string valorInvalido)
+    {
+        var arquivo = Path.GetTempFileName();
+        try
+        {
+            File.WriteAllText(arquivo, "tpAmb|2\r\ncUF|41\r\n" + campos);
+            var conversor = new ConsultaStatusTxtConverter();
+            var contexto = new TxtConversaoContexto();
+
+            Assert.True(conversor.Converter(arquivo, contexto).Sucesso);
+            var erro = Assert.Throws<FormatException>(() => conversor.ConverterParaEnvio(arquivo, contexto, out _));
+            Assert.Contains("tpEmis", erro.Message);
+            Assert.Contains($"'{valorInvalido}'", erro.Message);
+        }
+        finally
+        {
+            File.Delete(arquivo);
+        }
+    }
 }
