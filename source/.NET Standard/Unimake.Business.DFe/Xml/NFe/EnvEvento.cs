@@ -1218,7 +1218,6 @@ namespace Unimake.Business.DFe.Xml.NFe
             xcorrecao = xcorrecao.Replace("<", "&lt;");
             xcorrecao = xcorrecao.Replace(">", "&gt;");
             xcorrecao = xcorrecao.Replace("\"", "&quot;");
-            xcorrecao = xcorrecao.Replace("\\", "&quot;");
             xcorrecao = xcorrecao.Replace("'", "&#39;");
 
             writer.WriteRaw($@"<descEvento>{DescEvento}</descEvento><xCorrecao>{xcorrecao}</xCorrecao><xCondUso>{XCondUso}</xCondUso>");
