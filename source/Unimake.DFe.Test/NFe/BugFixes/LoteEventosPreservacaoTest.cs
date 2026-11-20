@@ -117,6 +117,83 @@ namespace Unimake.DFe.Test.NFe.BugFixes
             }
         }
 
+        [Theory]
+        [InlineData(@"A\B", @"A\B")]
+        [InlineData(@"A\\B", @"A\\B")]
+        [InlineData("A\"B <C> & 'D'", "A\"B &lt;C&gt; &amp; 'D'")]
+        [InlineData("&quot; e &amp; literais", "&amp;quot; e &amp;amp; literais")]
+        public void CartaCorrecao_DevePreservarTextoNoRoundTrip(string trecho, string trechoXml)
+        {
+            const string prefixo = "CORRECAO SINTETICA DO ITEM ";
+            var lote = CriarLote(1, false);
+            ((DetEventoCCE)lote.Evento[0].InfEvento.DetEvento).XCorrecao = prefixo + trecho;
+
+            var xml = lote.GerarXML();
+            Assert.Equal(prefixo + trechoXml, SelecionarCorrecao(xml).InnerXml);
+            var relido = XMLUtility.Deserializar<EnvEvento>(xml);
+            Assert.Equal(prefixo + trecho, ((DetEventoCCE)relido.Evento[0].InfEvento.DetEvento).XCorrecao);
+            Assert.Equal(xml.OuterXml, relido.GerarXML().OuterXml);
+        }
+
+        [Theory]
+        [InlineData(@"CORRECAO SINTETICA DO ITEM A\B e C\\D", false)]
+        [InlineData(@"CORRECAO SINTETICA DO ITEM A\B e C\\D", true)]
+        [InlineData("CORRECAO SINTETICA DO ITEM A\"B <C> & 'D' e &quot; literal", false)]
+        [InlineData("CORRECAO SINTETICA DO ITEM A\"B <C> & 'D' e &quot; literal", true)]
+        public void CartaCorrecao_DeveAssinarTextoInformadoEmModeloEEmXml(string correcao, bool entradaTextual)
+        {
+            using var certificado = CriarCertificado();
+            var lote = CriarLote(1, false);
+            var xml = lote.GerarXML();
+            // O XML da sobrecarga textual deve chegar com o texto original, sem passar pelo serializador sob teste.
+            SelecionarCorrecao(xml).InnerText = correcao;
+            ((DetEventoCCE)lote.Evento[0].InfEvento.DetEvento).XCorrecao = correcao;
+
+            using var servico = entradaTextual
+                ? new Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(xml.OuterXml, ConfiguracaoCartaCorrecao(certificado))
+                : new Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(lote, ConfiguracaoCartaCorrecao(certificado));
+
+            ConferirCorrecaoAssinada(servico.ConteudoXMLAssinado, correcao);
+        }
+
+#if INTEROP
+        [Fact]
+        public void CartaCorrecao_DeveAssinarTextoInformadoNaPreparacaoInterop()
+        {
+            using var certificado = CriarCertificado();
+            const string correcao = @"CORRECAO SINTETICA DO ITEM A\B e C\\D";
+            var lote = CriarLote(1, false);
+            ((DetEventoCCE)lote.Evento[0].InfEvento.DetEvento).XCorrecao = correcao;
+            using var servico = new Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento();
+
+            servico.SetXMLConfiguracao(lote, ConfiguracaoCartaCorrecao(certificado));
+
+            var assinado = new XmlDocument { XmlResolver = null };
+            assinado.LoadXml(servico.GetConteudoXMLAssinado());
+            ConferirCorrecaoAssinada(assinado, correcao);
+        }
+#endif
+
+        private static XmlElement SelecionarCorrecao(XmlDocument xml)
+        {
+            var ns = new XmlNamespaceManager(xml.NameTable);
+            ns.AddNamespace("nfe", "http://www.portalfiscal.inf.br/nfe");
+            return Assert.IsType<XmlElement>(xml.SelectSingleNode("/nfe:envEvento/nfe:evento/nfe:infEvento/nfe:detEvento/nfe:xCorrecao", ns));
+        }
+
+        private static Configuracao ConfiguracaoCartaCorrecao(X509Certificate2 certificado) => new Configuracao
+        {
+            TipoDFe = TipoDFe.NFe,
+            TipoEmissao = TipoEmissao.Normal,
+            CertificadoDigital = certificado
+        };
+
+        private static void ConferirCorrecaoAssinada(XmlDocument xml, string correcao)
+        {
+            Assert.Equal(correcao, SelecionarCorrecao(xml).InnerText);
+            ConferirAssinaturas(xml, 1);
+        }
+
         private static void ConferirEventos(EnvEvento lote, int quantidade)
         {
             Assert.Equal(quantidade, lote.Evento.Count);
