@@ -82,7 +82,33 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
     {
         internal const string NFeNs = "http://www.portalfiscal.inf.br/nfe";
         internal const string CTeNs = "http://www.portalfiscal.inf.br/cte";
-        internal static TxtConversaoResultado Status(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a, c?.CodificacaoWindows1252); var d = Novo("consStatServ", NFeNs, f.Get("versao", "4.00")); Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente))); Add(d, "cUF", f.Get("cUF", N(c.CodigoUF))); Add(d, "xServ", "STATUS"); return R(d); }
+        internal static TxtConversaoResultado Status(string arquivo, TxtConversaoContexto contexto) =>
+            Status(arquivo, contexto, false, out _);
+
+        internal static TxtConversaoResultado Status(string arquivo, TxtConversaoContexto contexto, bool selecionarEmissao, out TipoEmissao tipoEmissao)
+        {
+            var campos = TxtCampos.Ler(arquivo, contexto?.CodificacaoWindows1252);
+            tipoEmissao = TipoEmissao.Normal;
+            if (selecionarEmissao && int.TryParse(campos.Get("tpEmis"), NumberStyles.Integer, CultureInfo.InvariantCulture, out var codigo))
+            {
+                switch ((TipoEmissao)codigo)
+                {
+                    case TipoEmissao.ContingenciaSVCAN:
+                    case TipoEmissao.ContingenciaSVCRS:
+                        tipoEmissao = (TipoEmissao)codigo;
+                        break;
+
+                    case TipoEmissao.ContingenciaSVCSP:
+                        throw new FormatException("tpEmis 8 (SVC-SP) não possui rota configurada para a consulta de status da NF-e por TXT.");
+                }
+            }
+
+            var documento = Novo("consStatServ", NFeNs, campos.Get("versao", "4.00"));
+            Add(documento, "tpAmb", campos.Get("tpAmb", N(contexto.TipoAmbiente)));
+            Add(documento, "cUF", campos.Get("cUF", N(contexto.CodigoUF)));
+            Add(documento, "xServ", "STATUS");
+            return R(documento);
+        }
         internal static TxtConversaoResultado Situacao(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a, c?.CodificacaoWindows1252); var d = Novo("consSitNFe", NFeNs, f.Get("versao", "4.00")); Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente))); Add(d, "xServ", "CONSULTAR"); Add(d, "chNFe", Req(f, "chNFe")); return R(d); }
         internal static TxtConversaoResultado Cadastro(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a, c?.CodificacaoWindows1252); var d = Novo("ConsCad", NFeNs, f.Get("versao", "2.00")); var inf = E(d, "infCons"); d.DocumentElement.AppendChild(inf); Add(d, inf, "xServ", "CONS-CAD"); Add(d, inf, "UF", f.Get("UF", c.CodigoUF.ToString())); Primeiro(d, inf, f, "IE", "CNPJ", "CPF"); return R(d); }
         internal static TxtConversaoResultado Gtin(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a, c?.CodificacaoWindows1252); var d = Novo("consGTIN", NFeNs, f.Get("versao", "1.00")); Add(d, "GTIN", Req(f, "GTIN")); return R(d); }
@@ -502,6 +528,21 @@ namespace Unimake.Business.DFe.Xml.NFe
         { 
             return Txt.LegacyTxtXml.Status(a, c); 
         } 
+        /// <summary>
+        /// Converte um pedido TXT de status da NF-e para envio e seleciona a emissão a partir do pedido.
+        /// O XML fiscal permanece no leiaute do serviço, sem a tag auxiliar tpEmis.
+        /// </summary>
+        /// <param name="arquivo">Caminho do pedido TXT.</param>
+        /// <param name="contexto">Valores padrão do XML e política de leitura do arquivo.</param>
+        /// <param name="tipoEmissao">Emissão normal, SVC-AN ou SVC-RS selecionada para o pedido.</param>
+        /// <returns>Resultado da conversão no leiaute fiscal.</returns>
+        /// <exception cref="FormatException">Pedido TXT inválido ou emissão 8 (SVC-SP) solicitada.</exception>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public Txt.TxtConversaoResultado ConverterParaEnvio(string arquivo, Txt.TxtConversaoContexto contexto, out TipoEmissao tipoEmissao) =>
+            Txt.LegacyTxtXml.Status(arquivo, contexto, true, out tipoEmissao);
+
         public string ConverterRetorno(string x) 
         { 
             return Txt.LegacyTxtRetornoConverter.Status(x); 
