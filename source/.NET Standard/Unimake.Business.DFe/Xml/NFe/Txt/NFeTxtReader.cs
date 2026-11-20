@@ -10,7 +10,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
     /// </summary>
     internal sealed class NFeTxtReader
     {
-        internal Dictionary<int, List<string>> Carregar(string arquivo, string prefixo, out string mensagemErro, out bool possuiCabecalho)
+        internal Dictionary<int, List<string>> Carregar(string arquivo, string prefixo, Encoding codificacaoWindows1252, out string mensagemErro, out bool possuiCabecalho)
         {
             mensagemErro = string.Empty;
             possuiCabecalho = false;
@@ -24,7 +24,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
 
             try
             {
-                using (var leitor = new StreamReader(arquivo, Encoding.Default, true))
+                using (var leitor = TxtLeituraArquivo.Abrir(arquivo, codificacaoWindows1252))
                 {
                     var numeroNota = -1;
                     var linha = leitor.ReadLine();

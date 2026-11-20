@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -36,12 +37,37 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Resultado com os XMLs produzidos ou a mensagem de erro de compatibilidade.</returns>
         public NFeTxtConversaoResultado Converter(string caminhoArquivo, VersaoLeiauteMonofasia versaoLeiauteMonofasia)
         {
+            return ConverterInterno(caminhoArquivo, versaoLeiauteMonofasia, null);
+        }
+
+        /// <summary>
+        /// Converte o TXT respeitando o BOM e priorizando UTF-8 estrito antes de usar Windows-1252.
+        /// </summary>
+        /// <param name="caminhoArquivo">Caminho completo do arquivo TXT de origem.</param>
+        /// <param name="codificacaoWindows1252">Codificação explícita de fallback para arquivos sem BOM.</param>
+        /// <param name="versaoLeiauteMonofasia">Versão do leiaute dos grupos de tributação monofásica.</param>
+        /// <returns>Resultado da conversão de NFe ou NFCe.</returns>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public NFeTxtConversaoResultado ConverterComDeteccaoCodificacao(string caminhoArquivo, Encoding codificacaoWindows1252,
+            VersaoLeiauteMonofasia versaoLeiauteMonofasia = VersaoLeiauteMonofasia.Legado)
+        {
+            if (codificacaoWindows1252 == null)
+                throw new ArgumentNullException(nameof(codificacaoWindows1252));
+
+            return ConverterInterno(caminhoArquivo, versaoLeiauteMonofasia, codificacaoWindows1252);
+        }
+
+        private static NFeTxtConversaoResultado ConverterInterno(string caminhoArquivo,
+            VersaoLeiauteMonofasia versaoLeiauteMonofasia, Encoding codificacaoWindows1252)
+        {
             if (string.IsNullOrWhiteSpace(caminhoArquivo))
             {
                 throw new ArgumentException("O caminho do arquivo TXT deve ser informado.", nameof(caminhoArquivo));
             }
 
-            return new NFeTxtConversionEngine(versaoLeiauteMonofasia).Converter(caminhoArquivo);
+            return new NFeTxtConversionEngine(versaoLeiauteMonofasia).Converter(caminhoArquivo, codificacaoWindows1252);
         }
 
         /// <summary>

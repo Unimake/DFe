@@ -308,11 +308,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         /// <summary>
         /// CarregarArquivo
         /// </summary>
-        private bool CarregarArquivo(string cArquivo)
+        private bool CarregarArquivo(string cArquivo, Encoding codificacaoWindows1252)
         {
             bool possuiCabecalho;
             string mensagemErro;
-            this.context.ConteudoPorNota = new NFeTxtReader().Carregar(cArquivo, prefix, out mensagemErro, out possuiCabecalho);
+            this.context.ConteudoPorNota = new NFeTxtReader().Carregar(cArquivo, prefix, codificacaoWindows1252, out mensagemErro, out possuiCabecalho);
             this.cMensagemErro = mensagemErro;
             if (possuiCabecalho) this.context.LinhaLida = 1;
             return this.context.ConteudoPorNota.Count > 0 && string.IsNullOrEmpty(this.cMensagemErro);
@@ -331,11 +331,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         /// <summary>
         /// Converter
         /// </summary>
-        internal NFeTxtConversaoResultado Converter(string cArquivo)
+        internal NFeTxtConversaoResultado Converter(string cArquivo, Encoding codificacaoWindows1252)
         {
             this.ReiniciarConversao();
 
-            if (!this.CarregarArquivo(cArquivo)) return CriarResultado();
+            if (!this.CarregarArquivo(cArquivo, codificacaoWindows1252)) return CriarResultado();
 
             this.context.LinhaLida = 0;
 

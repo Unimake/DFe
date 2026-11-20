@@ -26,6 +26,15 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         public UFBrasil CodigoUF { get; set; }
         public ModeloDFe Modelo { get; set; }
         public TipoEmissao TipoEmissao { get; set; }
+
+        /// <summary>
+        /// Quando preenchida, respeita o BOM, prioriza UTF-8 estrito e usa esta codificação Windows-1252
+        /// como fallback somente para um arquivo sem BOM. O valor nulo mantém a leitura histórica.
+        /// </summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public Encoding CodificacaoWindows1252 { get; set; }
     }
 
     /// <summary>In-memory result of a legacy UniNFe TXT request conversion.</summary>
@@ -45,11 +54,11 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
     {
         private readonly List<KeyValuePair<string, string>> itens;
         private TxtCampos(List<KeyValuePair<string, string>> valores) { itens = valores; }
-        internal static TxtCampos Ler(string arquivo)
+        internal static TxtCampos Ler(string arquivo, Encoding codificacaoWindows1252)
         {
             if (string.IsNullOrWhiteSpace(arquivo)) throw new ArgumentException("O caminho do TXT deve ser informado.", "arquivo");
             var valores = new List<KeyValuePair<string, string>>();
-            using (var leitor = new StreamReader(arquivo, Encoding.Default, true))
+            using (var leitor = TxtLeituraArquivo.Abrir(arquivo, codificacaoWindows1252))
             {
                 string linha;
                 while ((linha = leitor.ReadLine()) != null)
@@ -73,13 +82,13 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
     {
         internal const string NFeNs = "http://www.portalfiscal.inf.br/nfe";
         internal const string CTeNs = "http://www.portalfiscal.inf.br/cte";
-        internal static TxtConversaoResultado Status(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a); var d = Novo("consStatServ", NFeNs, f.Get("versao", "4.00")); Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente))); Add(d, "cUF", f.Get("cUF", N(c.CodigoUF))); Add(d, "xServ", "STATUS"); return R(d); }
-        internal static TxtConversaoResultado Situacao(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a); var d = Novo("consSitNFe", NFeNs, f.Get("versao", "4.00")); Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente))); Add(d, "xServ", "CONSULTAR"); Add(d, "chNFe", Req(f, "chNFe")); return R(d); }
-        internal static TxtConversaoResultado Cadastro(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a); var d = Novo("ConsCad", NFeNs, f.Get("versao", "2.00")); var inf = E(d, "infCons"); d.DocumentElement.AppendChild(inf); Add(d, inf, "xServ", "CONS-CAD"); Add(d, inf, "UF", f.Get("UF", c.CodigoUF.ToString())); Primeiro(d, inf, f, "IE", "CNPJ", "CPF"); return R(d); }
-        internal static TxtConversaoResultado Gtin(string a) { var f = TxtCampos.Ler(a); var d = Novo("consGTIN", NFeNs, f.Get("versao", "1.00")); Add(d, "GTIN", Req(f, "GTIN")); return R(d); }
+        internal static TxtConversaoResultado Status(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a, c?.CodificacaoWindows1252); var d = Novo("consStatServ", NFeNs, f.Get("versao", "4.00")); Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente))); Add(d, "cUF", f.Get("cUF", N(c.CodigoUF))); Add(d, "xServ", "STATUS"); return R(d); }
+        internal static TxtConversaoResultado Situacao(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a, c?.CodificacaoWindows1252); var d = Novo("consSitNFe", NFeNs, f.Get("versao", "4.00")); Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente))); Add(d, "xServ", "CONSULTAR"); Add(d, "chNFe", Req(f, "chNFe")); return R(d); }
+        internal static TxtConversaoResultado Cadastro(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a, c?.CodificacaoWindows1252); var d = Novo("ConsCad", NFeNs, f.Get("versao", "2.00")); var inf = E(d, "infCons"); d.DocumentElement.AppendChild(inf); Add(d, inf, "xServ", "CONS-CAD"); Add(d, inf, "UF", f.Get("UF", c.CodigoUF.ToString())); Primeiro(d, inf, f, "IE", "CNPJ", "CPF"); return R(d); }
+        internal static TxtConversaoResultado Gtin(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a, c?.CodificacaoWindows1252); var d = Novo("consGTIN", NFeNs, f.Get("versao", "1.00")); Add(d, "GTIN", Req(f, "GTIN")); return R(d); }
         internal static TxtConversaoResultado GerarChave(string arquivo, TxtConversaoContexto contexto)
         {
-            var campos = TxtCampos.Ler(arquivo);
+            var campos = TxtCampos.Ler(arquivo, contexto?.CodificacaoWindows1252);
             var documento = new XmlDocument { XmlResolver = null };
             documento.AppendChild(documento.CreateElement("gerarChave"));
             foreach (var campo in new[]
@@ -102,7 +111,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
         }
         internal static TxtConversaoResultado Distribuicao(string a, TxtConversaoContexto c, string ns, bool chave)
         {
-            var f = TxtCampos.Ler(a);
+            var f = TxtCampos.Ler(a, c?.CodificacaoWindows1252);
             var d = Novo("distDFeInt", ns, f.Get("versao", "1.01"));
             Add(d, "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente)));
             Add(d, "cUFAutor", f.Get("cUFAutor", N(c.CodigoUF)));
@@ -128,10 +137,10 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             }
             return R(d);
         }
-        internal static TxtConversaoResultado Inutilizacao(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a); var uf = f.Get("cUF", N(c.CodigoUF)); var ano = Req(f, "ano").PadLeft(2, '0'); var cnpj = Req(f, "CNPJ"); var mod = f.Get("mod", N(c.Modelo)); var ser = Req(f, "serie"); var ini = Req(f, "nNFIni"); var fim = Req(f, "nNFFin"); var d = Novo("inutNFe", NFeNs, f.Get("versao", "4.00")); var inf = E(d, "infInut"); inf.SetAttribute("Id", "ID" + uf.PadLeft(2, '0') + ano + cnpj + mod.PadLeft(2, '0') + ser.PadLeft(3, '0') + ini.PadLeft(9, '0') + fim.PadLeft(9, '0')); d.DocumentElement.AppendChild(inf); foreach (var p in new[] { new[] { "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente)) }, new[] { "xServ", "INUTILIZAR" }, new[] { "cUF", uf }, new[] { "ano", ano }, new[] { "CNPJ", cnpj }, new[] { "mod", mod }, new[] { "serie", ser }, new[] { "nNFIni", ini }, new[] { "nNFFin", fim }, new[] { "xJust", Req(f, "xJust") } }) Add(d, inf, p[0], p[1]); return R(d); }
+        internal static TxtConversaoResultado Inutilizacao(string a, TxtConversaoContexto c) { var f = TxtCampos.Ler(a, c?.CodificacaoWindows1252); var uf = f.Get("cUF", N(c.CodigoUF)); var ano = Req(f, "ano").PadLeft(2, '0'); var cnpj = Req(f, "CNPJ"); var mod = f.Get("mod", N(c.Modelo)); var ser = Req(f, "serie"); var ini = Req(f, "nNFIni"); var fim = Req(f, "nNFFin"); var d = Novo("inutNFe", NFeNs, f.Get("versao", "4.00")); var inf = E(d, "infInut"); inf.SetAttribute("Id", "ID" + uf.PadLeft(2, '0') + ano + cnpj + mod.PadLeft(2, '0') + ser.PadLeft(3, '0') + ini.PadLeft(9, '0') + fim.PadLeft(9, '0')); d.DocumentElement.AppendChild(inf); foreach (var p in new[] { new[] { "tpAmb", f.Get("tpAmb", N(c.TipoAmbiente)) }, new[] { "xServ", "INUTILIZAR" }, new[] { "cUF", uf }, new[] { "ano", ano }, new[] { "CNPJ", cnpj }, new[] { "mod", mod }, new[] { "serie", ser }, new[] { "nNFIni", ini }, new[] { "nNFFin", fim }, new[] { "xJust", Req(f, "xJust") } }) Add(d, inf, p[0], p[1]); return R(d); }
         internal static TxtConversaoResultado Evento(string arquivo, TxtConversaoContexto contexto)
         {
-            var todos = TxtCampos.Ler(arquivo);
+            var todos = TxtCampos.Ler(arquivo, contexto?.CodificacaoWindows1252);
             var grupos = new List<List<KeyValuePair<string, string>>>();
             List<KeyValuePair<string, string>> atual = null;
             foreach (var campo in todos.Itens)
@@ -580,7 +589,7 @@ namespace Unimake.Business.DFe.Xml.CCG
     [ProgId("Unimake.Business.DFe.Xml.CCG.ConsultaGTINTxtConverter")]
     [ComVisible(true)]
 #endif
-    public sealed class ConsultaGTINTxtConverter { public NFe.Txt.TxtConversaoResultado Converter(string a, NFe.Txt.TxtConversaoContexto c) { return NFe.Txt.LegacyTxtXml.Gtin(a); } public string ConverterRetorno(string x) { return NFe.Txt.LegacyTxtRetornoConverter.Gtin(x); } }
+    public sealed class ConsultaGTINTxtConverter { public NFe.Txt.TxtConversaoResultado Converter(string a, NFe.Txt.TxtConversaoContexto c) { return NFe.Txt.LegacyTxtXml.Gtin(a, c); } public string ConverterRetorno(string x) { return NFe.Txt.LegacyTxtRetornoConverter.Gtin(x); } }
 }
 
 namespace Unimake.Business.DFe.Xml.DFe
