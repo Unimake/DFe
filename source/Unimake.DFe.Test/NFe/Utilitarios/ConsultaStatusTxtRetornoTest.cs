@@ -1,6 +1,10 @@
+using System;
+using System.IO;
 using System.Text;
 using System.Xml;
 using Unimake.Business.DFe;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.NFe.Txt;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
 
@@ -39,5 +43,57 @@ public class ConsultaStatusTxtRetornoTest
         var tempoEsperado = tMed == null ? "" : tMed + ";";
         Assert.Equal(Encoding.Default.GetBytes($"2;{codigo};{motivoEsperado};41;{data};{tempoEsperado}\r\n"),
             Encoding.Default.GetBytes(retorno));
+    }
+
+    [Theory]
+    [InlineData("", TipoEmissao.Normal)]
+    [InlineData("tpEmis|1", TipoEmissao.Normal)]
+    [InlineData("tpEmis|6", TipoEmissao.ContingenciaSVCAN)]
+    [InlineData("TPEMIS|07", TipoEmissao.ContingenciaSVCRS)]
+    [InlineData("tpEmis|6\r\ntpEmis|1", TipoEmissao.Normal)]
+    [InlineData("tpEmis|9", TipoEmissao.Normal)]
+    public void PedidoParaEnvio_SelecionaRotaSemAlterarXml(string campos, TipoEmissao esperado)
+    {
+        var arquivo = Path.GetTempFileName();
+        try
+        {
+            File.WriteAllText(arquivo, "tpAmb|2\r\ncUF|41\r\nversao|4.00\r\n" + campos);
+            var conversor = new ConsultaStatusTxtConverter();
+            var contexto = new TxtConversaoContexto { TipoEmissao = TipoEmissao.ContingenciaSVCAN };
+            var resultado = conversor.ConverterParaEnvio(arquivo, contexto, out var tipoEmissao);
+
+            Assert.Equal(esperado, tipoEmissao);
+            Assert.Equal(conversor.Converter(arquivo, contexto).Xml, resultado.Xml);
+            var documento = new XmlDocument { XmlResolver = null };
+            documento.LoadXml(resultado.Xml);
+            Assert.Empty(documento.GetElementsByTagName("tpEmis"));
+            var schema = new ValidarSchema();
+            schema.Validar(documento, "NFe.consStatServ_v4.00.xsd");
+            Assert.True(schema.Success, schema.ErrorMessage);
+        }
+        finally
+        {
+            File.Delete(arquivo);
+        }
+    }
+
+    [Fact]
+    public void PedidoParaEnvio_RecusaSvcSpEPreservaConversaoAtual()
+    {
+        var arquivo = Path.GetTempFileName();
+        try
+        {
+            File.WriteAllText(arquivo, "tpAmb|2\r\ncUF|41\r\ntpEmis|8\r\n");
+            var conversor = new ConsultaStatusTxtConverter();
+            var contexto = new TxtConversaoContexto();
+
+            Assert.True(conversor.Converter(arquivo, contexto).Sucesso);
+            var erro = Assert.Throws<FormatException>(() => conversor.ConverterParaEnvio(arquivo, contexto, out _));
+            Assert.Contains("SVC-SP", erro.Message);
+        }
+        finally
+        {
+            File.Delete(arquivo);
+        }
     }
 }
