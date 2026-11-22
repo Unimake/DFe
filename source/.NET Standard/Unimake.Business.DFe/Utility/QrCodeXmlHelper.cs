@@ -676,13 +676,13 @@ namespace Unimake.Business.DFe.Utility
                     paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(configuracoes.CertificadoDigital, chave);
                 }
 
-                var nodeDCe = conteudoXml.GetElementsByTagName("DCe")[0];
-                var nodeInfDCe = (XmlNode)elementInfDCe;
+                // A solicitação do Fisco, quando informada, precede o suplemento no leiaute da DC-e.
+                var referenciaSuplemento = elementDCe["infSolicDCe", elementDCe.NamespaceURI] ?? elementInfDCe;
 
                 AdicionarGrupoSuplementar(
                     conteudoXml,
-                    nodeDCe,
-                    nodeInfDCe,
+                    elementDCe,
+                    referenciaSuplemento,
                     "infDCeSupl",
                     new KeyValuePair<string, string>("qrCodDCe", paramLinkQRCode.Trim()),
                     new KeyValuePair<string, string>("urlChave", urlChave));

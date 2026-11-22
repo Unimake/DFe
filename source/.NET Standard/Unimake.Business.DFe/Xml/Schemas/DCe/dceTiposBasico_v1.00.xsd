@@ -729,6 +729,27 @@ Em caso de não contar CPF do assinante, informar o RG</xs:documentation>
 					<xs:field xpath="@nItem"/>
 				</xs:unique>
 			</xs:element>
+			<xs:element name="infSolicDCe" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Informações de solicitação da DCe pelo Fisco</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="xSolic">
+							<xs:annotation>
+								<xs:documentation>Solicitação do pedido de emissão da DCe</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:whiteSpace value="preserve"/>
+									<xs:minLength value="0"/>
+									<xs:maxLength value="2000"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="infDCeSupl">
 				<xs:annotation>
 					<xs:documentation>Informações suplementares da DCe</xs:documentation>

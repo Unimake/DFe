@@ -4,16 +4,23 @@ using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Validator.DCe
 {
-    // O tipo TDCe compartilhado com consulta/distribuição permite omitir o país.
-    // A entrada de emissão exige os dois campos, sem modificar esse contrato histórico.
+    // O tipo TDCe é compartilhado com consulta/distribuição. As exigências abaixo
+    // se aplicam à emissão, sem restringir o documento histórico distribuído.
     internal sealed class DCeEmissaoValidator : XmlValidatorBase
     {
         private static readonly XNamespace NamespaceDCe = "http://www.portalfiscal.inf.br/dce";
 
         internal DCeEmissaoValidator() => ValidateTag(CanValidate, documento =>
         {
-            var endereco = documento.Element(NamespaceDCe + "infDCe")?
-                .Element(NamespaceDCe + "dest")?.Element(NamespaceDCe + "enderDest");
+            var infDCe = documento.Element(NamespaceDCe + "infDCe");
+            var tipoEmitente = infDCe?.Element(NamespaceDCe + "ide")?.Element(NamespaceDCe + "tpEmit");
+            if (documento.Element(NamespaceDCe + "infSolicDCe") != null &&
+                tipoEmitente != null && tipoEmitente.Value != "0")
+            {
+                throw new ValidarXMLException("O grupo <infSolicDCe> é permitido somente na emissão da DC-e pelo Fisco (tpEmit=0).");
+            }
+
+            var endereco = infDCe?.Element(NamespaceDCe + "dest")?.Element(NamespaceDCe + "enderDest");
             // A ausência dos grupos estruturais continua sendo diagnosticada pelo XSD.
             if (endereco == null) return;
             foreach (var nome in new[] { "cPais", "xPais" })
