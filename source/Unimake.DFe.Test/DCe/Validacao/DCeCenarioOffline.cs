@@ -67,6 +67,10 @@ namespace Unimake.DFe.Test.DCe.Validacao
                     },
                     Fisco = tipo == TipoEmitenteDCe.AppFisco
                         ? new Fisco { CNPJ = "00000000000199", XOrgao = "FISCO SINTETICO", UF = UFBrasil.PR } : null,
+                    Marketplace = tipo == TipoEmitenteDCe.Marketplace
+                        ? new Marketplace { CNPJ = "00000000000199", XNome = "MARKETPLACE SINTETICO", Site = "https://example.invalid" } : null,
+                    Transportadora = tipo == TipoEmitenteDCe.Transportadora
+                        ? new Transportadora { CNPJ = "00000000000199", XNome = "TRANSPORTADORA SINTETICA" } : null,
                     Dest = new Dest
                     {
                         CPF = "12345678909", XNome = "DESTINATARIO SINTETICO",

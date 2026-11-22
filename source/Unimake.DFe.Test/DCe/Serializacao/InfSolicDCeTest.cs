@@ -42,7 +42,9 @@ namespace Unimake.DFe.Test.DCe.Serializacao
         /// <summary>Consumidores que não informam o grupo mantêm o XML e a validação anteriores.</summary>
         [Theory]
         [InlineData(TipoEmitenteDCe.AppFisco)]
+        [InlineData(TipoEmitenteDCe.Marketplace)]
         [InlineData(TipoEmitenteDCe.EmissorProprio)]
+        [InlineData(TipoEmitenteDCe.Transportadora)]
         public void AusenciaDoGrupoMantemContratoAnteriorSemPreenchimentoAutomatico(TipoEmitenteDCe tipo)
         {
             using var cenario = new DCeCenarioOffline();
@@ -91,6 +93,9 @@ namespace Unimake.DFe.Test.DCe.Serializacao
             var proc = DCeCenarioOffline.Ler(Encoding.UTF8.GetString(stream.ToArray()).TrimStart('\uFEFF'));
             Assert.Equal("dceProc", proc.DocumentElement.LocalName);
             Assert.Equal(chave + "-procDCe.xml", distribuicao.NomeArquivoDistribuicao);
+            var schema = new ValidarSchema();
+            schema.Validar(proc, "DCe.procDCe_v1.00.xsd");
+            Assert.True(schema.Success, schema.ErrorMessage);
             Assert.Equal(original.DocumentElement.OuterXml,
                 proc.GetElementsByTagName("DCe", DCeCenarioOffline.Namespace)[0].OuterXml);
             Assert.Equal(grupo ? 1 : 0, proc.GetElementsByTagName("infSolicDCe", DCeCenarioOffline.Namespace).Count);
@@ -101,27 +106,80 @@ namespace Unimake.DFe.Test.DCe.Serializacao
             DCeCenarioOffline.VerificarAssinatura(relido);
         }
 
-        /// <summary>O modelo não altera as recusas de schema nos construtores públicos.</summary>
+        /// <summary>Emissão pelo Fisco aceita e preserva a solicitação explícita nos caminhos públicos.</summary>
         [Theory]
-        [InlineData(TipoEmitenteDCe.AppFisco)]
+        [InlineData("")]
+        [InlineData("  {\"pedido\":\"AÇÃO SINTÉTICA <&>\"}  ")]
+        public void EmissaoDoFiscoAceitaSolicitacaoOpcional(string texto)
+        {
+            using var cenario = new DCeCenarioOffline();
+            var documento = DCeCenarioOffline.Documento(tipo: TipoEmitenteDCe.AppFisco);
+            documento.InfSolicDCe = new InfSolicDCe { XSolic = texto };
+            var original = cenario.Assinar(documento.GerarXML());
+            var anterior = original.OuterXml;
+            var infDCeOriginal = original.GetElementsByTagName("infDCe", DCeCenarioOffline.Namespace)[0].OuterXml;
+            var resultado = new ValidarEstruturaXML().ValidarServico(original, cenario.Configuracao());
+            Assert.True(resultado.Validado, resultado.MensagemRetorno);
+
+            using var tipado = new Unimake.Business.DFe.Servicos.DCe.AutorizacaoSinc(documento, cenario.Configuracao());
+            using var textual = new Unimake.Business.DFe.Servicos.DCe.AutorizacaoSinc(anterior, cenario.Configuracao());
+            foreach (var assinado in new[] { resultado.XmlAssinado, tipado.ConteudoXMLAssinado, textual.ConteudoXMLAssinado })
+            {
+                Assert.Equal(texto, XMLUtility.Deserializar<DocumentoDCe>(assinado).InfSolicDCe.XSolic);
+                Assert.Equal(infDCeOriginal, assinado.GetElementsByTagName("infDCe", DCeCenarioOffline.Namespace)[0].OuterXml);
+                Assert.Equal(new[] { "infDCe", "infSolicDCe", "infDCeSupl", "Signature" },
+                    assinado.DocumentElement.ChildNodes.Cast<XmlNode>().Select(x => x.LocalName));
+                DCeCenarioOffline.VerificarAssinatura(assinado);
+            }
+        }
+
+        /// <summary>A estrutura compartilhada admite o grupo, mas a emissão o reserva ao Fisco.</summary>
+        [Theory]
+        [InlineData(TipoEmitenteDCe.Marketplace)]
         [InlineData(TipoEmitenteDCe.EmissorProprio)]
-        public void SuporteAoModeloNaoAlteraDecisaoDoSchemaDeEmissao(TipoEmitenteDCe tipo)
+        [InlineData(TipoEmitenteDCe.Transportadora)]
+        public void EmissaoDeOutroEmitenteRecusaSolicitacaoSemAlterarOriginal(TipoEmitenteDCe tipo)
         {
             using var cenario = new DCeCenarioOffline();
             var documento = DCeCenarioOffline.Documento(tipo: tipo);
             documento.InfSolicDCe = new InfSolicDCe { XSolic = "{\"pedido\":\"SINTETICO_OFFLINE\"}" };
-            var original = documento.GerarXML();
+            var original = cenario.Assinar(documento.GerarXML());
             var anterior = original.OuterXml;
+            var schema = new ValidarSchema();
+            schema.Validar(original, "DCe.dce_v1.00.xsd");
+            Assert.True(schema.Success, schema.ErrorMessage);
+
             var resultado = new ValidarEstruturaXML().ValidarServico(original, cenario.Configuracao());
             Assert.False(resultado.Validado);
-            Assert.Contains("infSolicDCe", resultado.MensagemRetorno);
-            var entrada = DCeCenarioOffline.Ler(anterior);
-            Assert.Equal(entrada.GetElementsByTagName("infDCe")[0].OuterXml, original.GetElementsByTagName("infDCe")[0].OuterXml);
-            Assert.Equal(entrada.GetElementsByTagName("infSolicDCe")[0].OuterXml, original.GetElementsByTagName("infSolicDCe")[0].OuterXml);
-            Assert.Throws<Unimake.Exceptions.ValidarXMLException>(() =>
+            Assert.Contains("tpEmit=0", resultado.MensagemRetorno);
+            Assert.Equal(anterior, original.OuterXml);
+            DCeCenarioOffline.VerificarAssinatura(original);
+            var erroTipado = Assert.Throws<Unimake.Exceptions.ValidarXMLException>(() =>
                 new Unimake.Business.DFe.Servicos.DCe.AutorizacaoSinc(documento, cenario.Configuracao()));
-            Assert.Throws<Unimake.Exceptions.ValidarXMLException>(() =>
+            var erroTextual = Assert.Throws<Unimake.Exceptions.ValidarXMLException>(() =>
                 new Unimake.Business.DFe.Servicos.DCe.AutorizacaoSinc(anterior, cenario.Configuracao()));
+            Assert.Contains("tpEmit=0", erroTipado.Message);
+            Assert.Contains("tpEmit=0", erroTextual.Message);
+        }
+
+        /// <summary>Quando informado, xSolic segue o limite estrutural de 2.000 caracteres.</summary>
+        [Theory]
+        [InlineData(2000, true)]
+        [InlineData(2001, false)]
+        public void SchemaLimitaTamanhoDaSolicitacao(int tamanho, bool aceito)
+        {
+            using var cenario = new DCeCenarioOffline();
+            var documento = DCeCenarioOffline.Documento(tipo: TipoEmitenteDCe.AppFisco);
+            documento.InfSolicDCe = new InfSolicDCe { XSolic = new string('A', tamanho) };
+            var original = cenario.Assinar(documento.GerarXML());
+            var schema = new ValidarSchema();
+            schema.Validar(original, "DCe.dce_v1.00.xsd");
+            if (aceito) Assert.True(schema.Success, schema.ErrorMessage);
+            else
+            {
+                Assert.False(schema.Success);
+                Assert.Contains("xSolic", schema.ErrorMessage);
+            }
         }
     }
 }
