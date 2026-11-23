@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe;
+using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
@@ -18,26 +21,86 @@ namespace Unimake.DFe.Test.NFe.Serializacao
         private const string EventoRecurso = @"..\..\..\NFe\Resources\EventoVinculacaoPagamento.xml";
 
         [Fact]
-        public void Evento110300PreservaGrupoAtributoTextosEOrdem()
+        public void Evento110300LeGrupoDePagamentoDoXmlDeReferencia()
         {
-            var original = new XmlDocument();
-            original.Load(EventoRecurso);
-            var evento = XMLUtility.Deserializar<EnvEvento>(original);
-            var detalhe = Assert.IsType<DetEventoVinculacaoPagamento>(evento.Evento[0].InfEvento.DetEvento);
-            Assert.Equal(TipoEventoNFe.VinculacaoPagamento, evento.Evento[0].InfEvento.TpEvento);
+            var lote = XMLUtility.Deserializar<EnvEvento>(LerEvento110300DeReferencia());
+            var evento = Assert.Single(lote.Evento).InfEvento;
+            Assert.Equal(TipoEventoNFe.VinculacaoPagamento, evento.TpEvento);
+            var detalhe = Assert.IsType<DetEventoVinculacaoPagamento>(evento.DetEvento);
             Assert.Equal(TipoAutor.EmpresaEmitente, detalhe.TpAutor);
-            Assert.Equal("01", detalhe.GPgto.TpMeioPgto);
-            Assert.Equal("TESTE&TRANSACAO", detalhe.GPgto.IdTransacao);
-            Assert.Equal("00000000", detalhe.GPgto.CNPJBasePSP);
-            var gerado = evento.GerarXML();
-            Assert.Equal(original.InnerText, gerado.InnerText);
-            var det = gerado.GetElementsByTagName("detEvento")[0];
-            Assert.Equal(new[] { "descEvento", "cOrgaoAutor", "tpAutor", "verAplic", "nProt", "gPgto" },
-                det.ChildNodes.Cast<XmlNode>().Select(n => n.LocalName));
-            Assert.Null(det.LastChild.Attributes["nPag"]);
-            Validar(Documento(det), "e110300_v1.00.xsd");
-            var roundTrip = XMLUtility.Deserializar<EnvEvento>(gerado);
-            Assert.Equal("TESTE&TRANSACAO", Assert.IsType<DetEventoVinculacaoPagamento>(roundTrip.Evento[0].InfEvento.DetEvento).GPgto.IdTransacao);
+            Assert.Equal("TESTE & XML", detalhe.VerAplic);
+            ConferirPagamento(detalhe.GPgto);
+        }
+
+        [Fact]
+        public void Evento110300MantemLeitorNoFechamentoDoGrupo()
+        {
+            var original = LerEvento110300DeReferencia();
+            using var reader = new XmlNodeReader(original.GetElementsByTagName("detEvento", Ns)[0]);
+            Assert.True(reader.ReadToFollowing("gPgto", Ns));
+            var detalhe = new DetEventoVinculacaoPagamento { XmlReader = reader };
+            var propriedade = typeof(DetEventoVinculacaoPagamento).GetProperty(nameof(DetEventoVinculacaoPagamento.GPgto));
+
+            detalhe.SetValue(propriedade);
+
+            Assert.Equal(XmlNodeType.EndElement, reader.NodeType);
+            Assert.Equal("gPgto", reader.LocalName);
+            Assert.True(reader.Read());
+            Assert.Equal(XmlNodeType.EndElement, reader.NodeType);
+            Assert.Equal("detEvento", reader.LocalName);
+        }
+
+        [Fact]
+        public void Evento110300EscreveGrupoDePagamentoConformeXmlEsperado()
+        {
+            var esperado = LerEvento110300DeReferencia();
+            var lote = XMLUtility.Deserializar<EnvEvento>(esperado);
+            var detalhe = Assert.IsType<DetEventoVinculacaoPagamento>(Assert.Single(lote.Evento).InfEvento.DetEvento);
+            detalhe.GPgto = new EventoPgto
+            {
+                IdTransacao = "TESTE&TRANSACAO",
+                TpMeioPgto = "01",
+                CNPJReceb = "00000000000191",
+                CNPJBasePSP = "00000000"
+            };
+
+            var gerado = lote.GerarXML();
+            Assert.Equal(esperado.InnerText, gerado.InnerText);
+            var detalheGerado = Documento(gerado.GetElementsByTagName("detEvento", Ns)[0]);
+            Assert.Equal(Documento(esperado.GetElementsByTagName("detEvento", Ns)[0]).OuterXml, detalheGerado.OuterXml);
+            Validar(detalheGerado, "e110300_v1.00.xsd");
+
+            using var rsa = RSA.Create(2048);
+            var pedido = new CertificateRequest("CN=Evento110300Test", rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+            var agora = DateTimeOffset.UtcNow;
+            using var certificado = pedido.CreateSelfSigned(agora.AddDays(-1), agora.AddDays(1));
+            AssinaturaDigital.Assinar(gerado, "evento", "infEvento", certificado);
+            Validar(gerado, "envEvento_v1.00.xsd");
+        }
+
+        [Fact]
+        public void Evento110300PreservaPagamentoNaIdaEVoltaDoLote()
+        {
+            var original = LerEvento110300DeReferencia();
+            var lote = XMLUtility.Deserializar<EnvEvento>(original);
+            var roundTrip = XMLUtility.Deserializar<EnvEvento>(lote.GerarXML());
+            var detalhe = Assert.IsType<DetEventoVinculacaoPagamento>(Assert.Single(roundTrip.Evento).InfEvento.DetEvento);
+            ConferirPagamento(detalhe.GPgto);
+        }
+
+        [Fact]
+        public void Evento110300MantemGrupoDePagamentoAusente()
+        {
+            var original = LerEvento110300DeReferencia();
+            var grupo = original.GetElementsByTagName("gPgto", Ns)[0];
+            grupo.ParentNode.RemoveChild(grupo);
+            var lote = XMLUtility.Deserializar<EnvEvento>(original);
+            var detalhe = Assert.IsType<DetEventoVinculacaoPagamento>(Assert.Single(lote.Evento).InfEvento.DetEvento);
+            Assert.Null(detalhe.GPgto);
+
+            var gerado = lote.GerarXML();
+            Assert.Equal(Documento(original.GetElementsByTagName("detEvento", Ns)[0]).OuterXml,
+                Documento(gerado.GetElementsByTagName("detEvento", Ns)[0]).OuterXml);
         }
 
         [Fact]
@@ -260,6 +323,22 @@ namespace Unimake.DFe.Test.NFe.Serializacao
             var doc = new XmlDocument();
             doc.AppendChild(doc.ImportNode(node, true));
             return doc;
+        }
+
+        private static XmlDocument LerEvento110300DeReferencia()
+        {
+            var xml = new XmlDocument();
+            xml.Load(EventoRecurso);
+            return xml;
+        }
+
+        private static void ConferirPagamento(EventoPgto pagamento)
+        {
+            Assert.NotNull(pagamento);
+            Assert.Equal("TESTE&TRANSACAO", pagamento.IdTransacao);
+            Assert.Equal("01", pagamento.TpMeioPgto);
+            Assert.Equal("00000000000191", pagamento.CNPJReceb);
+            Assert.Equal("00000000", pagamento.CNPJBasePSP);
         }
 
         private static void Validar(XmlDocument xml, string schema)
