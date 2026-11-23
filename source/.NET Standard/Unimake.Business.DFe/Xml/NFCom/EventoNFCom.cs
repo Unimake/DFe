@@ -443,6 +443,16 @@ namespace Unimake.Business.DFe.Xml.NFCom
 #endif
     public class DetEventoTributacaoSN : EventoDetalhe
     {
+        private const string NamespaceNFCom = "http://www.portalfiscal.inf.br/nfcom";
+        private const string RaizTribItemSN = "gTribItemSN";
+        private const string RaizTotalSN = "gTotalSN";
+
+        private static readonly XmlSerializer SerializadorTribItemSN =
+            new XmlSerializer(typeof(GTribItemSN), new XmlRootAttribute(RaizTribItemSN) { Namespace = NamespaceNFCom });
+
+        private static readonly XmlSerializer SerializadorTotalSN =
+            new XmlSerializer(typeof(GTotalSN), new XmlRootAttribute(RaizTotalSN) { Namespace = NamespaceNFCom });
+
         /// <summary>Descrição do evento.</summary>
         public override string DescEvento { get; set; } = "Tributação do Simples Nacional";
 
@@ -451,11 +461,11 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public string NProt { get; set; }
 
         /// <summary>Tributação por item, até 990 ocorrências.</summary>
-        [XmlElement("gTribItemSN")]
+        [XmlElement(RaizTribItemSN)]
         public List<GTribItemSN> GTribItemSN { get; set; }
 
         /// <summary>Totais do Simples Nacional.</summary>
-        [XmlElement("gTotalSN")]
+        [XmlElement(RaizTotalSN)]
         public GTotalSN GTotalSN { get; set; }
 
 #if INTEROP
@@ -489,40 +499,34 @@ namespace Unimake.Business.DFe.Xml.NFCom
                 detalhe = XElement.Load(reader);
             }
             XmlReader.Read();
-            XNamespace ns = "http://www.portalfiscal.inf.br/nfcom";
+            XNamespace ns = NamespaceNFCom;
             var evento = detalhe.Element(ns + "evTributacaoSN");
             DescEvento = (string)evento.Element(ns + "descEvento");
             NProt = (string)evento.Element(ns + "nProt");
             GTribItemSN = new List<GTribItemSN>();
-            foreach (var item in evento.Elements(ns + "gTribItemSN"))
+            foreach (var item in evento.Elements(ns + RaizTribItemSN))
             {
-                GTribItemSN.Add(LerGrupo<GTribItemSN>(item));
+                GTribItemSN.Add(LerGrupo<GTribItemSN>(item, SerializadorTribItemSN));
             }
-            GTotalSN = LerGrupo<GTotalSN>(evento.Element(ns + "gTotalSN"));
+            GTotalSN = LerGrupo<GTotalSN>(evento.Element(ns + RaizTotalSN), SerializadorTotalSN);
         }
 
-        private static T LerGrupo<T>(XElement elemento)
+        private static T LerGrupo<T>(XElement elemento, XmlSerializer serializer)
         {
-            var serializer = new XmlSerializer(typeof(T), new XmlRootAttribute(elemento.Name.LocalName)
-            {
-                Namespace = elemento.Name.NamespaceName
-            });
             using (var reader = elemento.CreateReader())
             {
                 return (T)serializer.Deserialize(reader);
             }
         }
 
-        private static void EscreverGrupo<T>(XmlWriter writer, T grupo, string nome)
+        private static void EscreverGrupo<T>(XmlWriter writer, T grupo, XmlSerializer serializer)
         {
             if (grupo == null)
             {
                 return;
             }
-            const string ns = "http://www.portalfiscal.inf.br/nfcom";
-            var serializer = new XmlSerializer(typeof(T), new XmlRootAttribute(nome) { Namespace = ns });
             var namespaces = new XmlSerializerNamespaces();
-            namespaces.Add(string.Empty, ns);
+            namespaces.Add(string.Empty, NamespaceNFCom);
             serializer.Serialize(writer, grupo, namespaces);
         }
 
@@ -530,17 +534,17 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public override void WriteXml(XmlWriter writer)
         {
             base.WriteXml(writer);
-            writer.WriteStartElement("evTributacaoSN", "http://www.portalfiscal.inf.br/nfcom");
+            writer.WriteStartElement("evTributacaoSN", NamespaceNFCom);
             writer.WriteElementString("descEvento", DescEvento);
             writer.WriteElementString("nProt", NProt);
             if (GTribItemSN != null)
             {
                 foreach (var item in GTribItemSN)
                 {
-                    EscreverGrupo(writer, item, "gTribItemSN");
+                    EscreverGrupo(writer, item, SerializadorTribItemSN);
                 }
             }
-            EscreverGrupo(writer, GTotalSN, "gTotalSN");
+            EscreverGrupo(writer, GTotalSN, SerializadorTotalSN);
             writer.WriteEndElement();
         }
     }
