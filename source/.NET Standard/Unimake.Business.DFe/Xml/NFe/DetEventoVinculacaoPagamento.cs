@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -76,7 +77,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             if (pi?.Name == nameof(GPgto))
             {
-                var serializer = new XmlSerializer(typeof(EventoPgto),
+                var serializer = XMLUtility.ObterSerializador(typeof(EventoPgto),
                     new XmlRootAttribute("gPgto") { Namespace = "http://www.portalfiscal.inf.br/nfe" });
                 using (var subtree = XmlReader.ReadSubtree())
                 {
@@ -101,7 +102,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             writer.WriteElementString("nProt", ns, NProt);
             if (GPgto != null)
             {
-                var serializer = new XmlSerializer(typeof(EventoPgto), new XmlRootAttribute("gPgto") { Namespace = ns });
+                var serializer = XMLUtility.ObterSerializador(typeof(EventoPgto), new XmlRootAttribute("gPgto") { Namespace = ns });
                 var namespaces = new XmlSerializerNamespaces();
                 namespaces.Add(string.Empty, ns);
                 serializer.Serialize(writer, GPgto, namespaces);

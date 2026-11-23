@@ -503,7 +503,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         private static T LerGrupo<T>(XElement elemento)
         {
-            var serializer = new XmlSerializer(typeof(T), new XmlRootAttribute(elemento.Name.LocalName)
+            var serializer = XMLUtility.ObterSerializador(typeof(T), new XmlRootAttribute(elemento.Name.LocalName)
             {
                 Namespace = elemento.Name.NamespaceName
             });
@@ -520,7 +520,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
                 return;
             }
             const string ns = "http://www.portalfiscal.inf.br/nfcom";
-            var serializer = new XmlSerializer(typeof(T), new XmlRootAttribute(nome) { Namespace = ns });
+            var serializer = XMLUtility.ObterSerializador(typeof(T), new XmlRootAttribute(nome) { Namespace = ns });
             var namespaces = new XmlSerializerNamespaces();
             namespaces.Add(string.Empty, ns);
             serializer.Serialize(writer, grupo, namespaces);

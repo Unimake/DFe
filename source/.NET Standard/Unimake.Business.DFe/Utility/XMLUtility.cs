@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 #endif
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,6 +28,37 @@ namespace Unimake.Business.DFe.Utility
 #endif
     public static class XMLUtility
     {
+        /// <summary>
+        /// Serializadores criados com <see cref="XmlRootAttribute"/>, por tipo e raiz. O construtor
+        /// XmlSerializer(Type, XmlRootAttribute) gera e carrega um assembly novo a cada chamada, e o runtime nunca o descarrega
+        /// (o cache interno do .NET só cobre XmlSerializer(Type) e XmlSerializer(Type, string)). Sem este cache, cada
+        /// serialização com a raiz trocada aumenta a memória do processo até ele terminar.
+        /// </summary>
+        private static readonly ConcurrentDictionary<(Type Tipo, string Elemento, string Namespace, string DataType, bool IsNullable), XmlSerializer> SerializadoresComRaiz =
+            new ConcurrentDictionary<(Type Tipo, string Elemento, string Namespace, string DataType, bool IsNullable), XmlSerializer>();
+
+        /// <summary>
+        /// Retorna o serializador do tipo com a raiz informada, criado uma vez por tipo e raiz.
+        /// </summary>
+        /// <param name="tipo">Tipo a ser serializado</param>
+        /// <param name="xmlRootAttribute">Raiz do XML</param>
+        /// <returns>Serializador do tipo com a raiz informada</returns>
+        internal static XmlSerializer ObterSerializador(Type tipo, XmlRootAttribute xmlRootAttribute)
+        {
+            if (tipo == null)
+            {
+                throw new ArgumentNullException(nameof(tipo));
+            }
+
+            if (xmlRootAttribute == null)
+            {
+                throw new ArgumentNullException(nameof(xmlRootAttribute));
+            }
+
+            var chave = (tipo, xmlRootAttribute.ElementName, xmlRootAttribute.Namespace, xmlRootAttribute.DataType, xmlRootAttribute.IsNullable);
+            return SerializadoresComRaiz.GetOrAdd(chave, _ => new XmlSerializer(tipo, xmlRootAttribute));
+        }
+
         #region Public Structs
 
         /// <summary>
@@ -2170,7 +2202,7 @@ namespace Unimake.Business.DFe.Utility
             {
                 ns.Add(n.Prefix, n.Namespace);
             });
-            var xmlSerializer = new XmlSerializer(obj.GetType(), xmlRootAttribute);
+            var xmlSerializer = ObterSerializador(obj.GetType(), xmlRootAttribute);
             var xmlDocument = new XmlDocument();
             StringWriter stringWriter = new Utf8StringWriter();
             xmlSerializer.Serialize(stringWriter, obj, ns);
