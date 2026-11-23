@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -133,14 +135,106 @@ namespace Unimake.DFe.Test.NFCom.Serializacao
                 InfEvento = new InfEvento(detalhe) { TpEvento = TipoEventoNFCom.TributacaoSimplesNacional, TpAmb = TipoAmbiente.Homologacao }
             };
             var xml = modelo.GerarXML();
+            var esperado = XElement.Parse("""
+                <evTributacaoSN xmlns="http://www.portalfiscal.inf.br/nfcom">
+                  <descEvento>Tributação do Simples Nacional</descEvento>
+                  <nProt>1412600000000001</nProt>
+                  <gTribItemSN nItem="1">
+                    <vRBSNItem>100.00</vRBSNItem>
+                    <tpRBSN>1</tpRBSN>
+                    <pIBSSN>0.00</pIBSSN>
+                    <vIBSSN>0.00</vIBSSN>
+                  </gTribItemSN>
+                  <gTribItemSN nItem="2">
+                    <vRBSNItem>0.00</vRBSNItem>
+                    <tpRBSN>0</tpRBSN>
+                  </gTribItemSN>
+                  <gTotalSN>
+                    <vRBSNTot>100.00</vRBSNTot>
+                    <vIBSSNTot>0.00</vIBSSNTot>
+                  </gTotalSN>
+                </evTributacaoSN>
+                """);
+            var gerado = XElement.Parse(Extrair(xml, "evTributacaoSN").OuterXml);
+            Assert.True(XNode.DeepEquals(esperado, gerado), gerado.ToString());
             Validar(Extrair(xml, "evTributacaoSN"), "evTributacaoSN");
-            Assert.Equal(1, xml.GetElementsByTagName("pIBSSN", Ns).Count);
-            Assert.Equal("0.00", xml.GetElementsByTagName("pIBSSN", Ns)[0].InnerText);
-            Assert.Equal(0, xml.GetElementsByTagName("vCBSSNTot", Ns).Count);
-            var item = XElement.Parse(Extrair(xml, "gTribItemSN").OuterXml);
-            Assert.Equal(new[] { "vRBSNItem", "tpRBSN", "pIBSSN", "vIBSSN" }, item.Elements().Select(e => e.Name.LocalName));
             var lido = XMLUtility.Deserializar<EventoNFCom>(xml);
-            Assert.Equal(2, Assert.IsType<DetEventoTributacaoSN>(lido.InfEvento.DetEvento).GTribItemSN.Count);
+            var detalheLido = Assert.IsType<DetEventoTributacaoSN>(lido.InfEvento.DetEvento);
+            Assert.Collection(detalheLido.GTribItemSN,
+                item =>
+                {
+                    Assert.Equal("1", item.NItem);
+                    Assert.Equal(100, item.VRBSNItem);
+                    Assert.Equal(0, item.PIBSSN);
+                    Assert.Equal(0, item.VIBSSN);
+                },
+                item =>
+                {
+                    Assert.Equal("2", item.NItem);
+                    Assert.Equal(0, item.VRBSNItem);
+                    Assert.Null(item.PIBSSN);
+                    Assert.Null(item.VIBSSN);
+                });
+            Assert.Equal(100, detalheLido.GTotalSN.VRBSNTot);
+            Assert.Equal(0, detalheLido.GTotalSN.VIBSSNTot);
+            Assert.Null(detalheLido.GTotalSN.VCBSSNTot);
+        }
+
+        [Fact]
+        [Trait("DFe", "NFCom")]
+        public void LeituraSemItensIgnoraGruposDeOutroNamespaceEElementosDesconhecidos()
+        {
+            var xml = XDocument.Load(@"..\..\..\NFCom\Resources\eventoNFCom-412140.xml");
+            XNamespace ns = Ns;
+            XNamespace outroNs = "urn:teste";
+            var evento = xml.Descendants(ns + "evTributacaoSN").Single();
+            var total = evento.Element(ns + "gTotalSN");
+            evento.Elements(ns + "gTribItemSN").Remove();
+            total.AddBeforeSelf(new XElement(outroNs + "gTribItemSN"), new XElement(outroNs + "gTotalSN"),
+                new XElement(ns + "grupoDesconhecido"));
+            total.Add(new XElement(ns + "campoDesconhecido"));
+
+            var modelo = XMLUtility.Deserializar<EventoNFCom>(xml.ToString());
+            var detalhe = Assert.IsType<DetEventoTributacaoSN>(modelo.InfEvento.DetEvento);
+            Assert.Empty(detalhe.GTribItemSN);
+            Assert.Equal(100, detalhe.GTotalSN.VRBSNTot);
+        }
+
+        [Fact]
+        [Trait("DFe", "NFCom")]
+        public void LeituraSemTotalContinuaFalhando()
+        {
+            var xml = XDocument.Load(@"..\..\..\NFCom\Resources\eventoNFCom-412140.xml");
+            XNamespace ns = Ns;
+            xml.Descendants(ns + "gTotalSN").Remove();
+
+            using var reader = xml.CreateReader();
+            var serializer = new XmlSerializer(typeof(EventoNFCom));
+            var erro = Assert.Throws<InvalidOperationException>(() => serializer.Deserialize(reader));
+            Assert.IsType<NullReferenceException>(erro.GetBaseException());
+        }
+
+        [Theory]
+        [Trait("DFe", "NFCom")]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void EscritaOmiteGruposAusentes(bool listaVazia)
+        {
+            var detalhe = new DetEventoTributacaoSN
+            {
+                VersaoEvento = "1.00",
+                NProt = "1412600000000001",
+                GTribItemSN = listaVazia ? new List<GTribItemSN>() : null
+            };
+            var modelo = new EventoNFCom
+            {
+                Versao = "1.00",
+                InfEvento = new InfEvento(detalhe) { TpEvento = TipoEventoNFCom.TributacaoSimplesNacional, TpAmb = TipoAmbiente.Homologacao }
+            };
+
+            XNamespace ns = Ns;
+            var evento = XElement.Parse(Extrair(modelo.GerarXML(), "evTributacaoSN").OuterXml);
+            Assert.Equal(new[] { ns + "descEvento", ns + "nProt" }, evento.Elements().Select(e => e.Name));
         }
     }
 }
