@@ -2147,34 +2147,39 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="namespaces"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static XmlDocument Serializar(object obj, XmlRootAttribute xmlRootAttribute, List<TNameSpace> namespaces = null) => Serialize(obj, xmlRootAttribute, namespaces?.Select(s => (s.NS, s.Prefix)).ToList());
+        public static XmlDocument Serializar(object obj, XmlRootAttribute xmlRootAttribute, List<TNameSpace> namespaces = null) =>
+            Serialize(obj, xmlRootAttribute, namespaces?.Select(s => (s.NS, s.Prefix)).ToList());
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <param name="xmlRootAttribute"></param>
-        /// <param name="namespaces"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        private static XmlDocument Serialize<T>(T obj, XmlRootAttribute xmlRootAttribute, List<(string Namespace, string Prefix)> namespaces = null)
+        private static XmlDocument Serialize(object obj, XmlRootAttribute xmlRootAttribute, List<(string Namespace, string Prefix)> namespaces)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
 
-            var ns = new XmlSerializerNamespaces();
-            namespaces?.ForEach(delegate ((string Namespace, string Prefix) n)
-            {
-                ns.Add(n.Prefix, n.Namespace);
-            });
+            var ns = CriarNamespacesSerializacao(namespaces);
             var xmlSerializer = new XmlSerializer(obj.GetType(), xmlRootAttribute);
+            return EscreverXml(obj, xmlSerializer, ns);
+        }
+
+        internal static XmlDocument SerializarComSerializador(object obj, XmlSerializer xmlSerializer, List<TNameSpace> namespaces) =>
+            EscreverXml(obj, xmlSerializer, CriarNamespacesSerializacao(namespaces?.Select(s => (s.NS, s.Prefix)).ToList()));
+
+        private static XmlSerializerNamespaces CriarNamespacesSerializacao(List<(string Namespace, string Prefix)> namespaces)
+        {
+            var ns = new XmlSerializerNamespaces();
+            namespaces?.ForEach(n => ns.Add(n.Prefix, n.Namespace));
+            return ns;
+        }
+
+        private static XmlDocument EscreverXml(object obj, XmlSerializer xmlSerializer, XmlSerializerNamespaces ns)
+        {
             var xmlDocument = new XmlDocument();
-            StringWriter stringWriter = new Utf8StringWriter();
-            xmlSerializer.Serialize(stringWriter, obj, ns);
-            xmlDocument.LoadXml(stringWriter.ToString());
+            using (var stringWriter = new Utf8StringWriter())
+            {
+                xmlSerializer.Serialize(stringWriter, obj, ns);
+                xmlDocument.LoadXml(stringWriter.ToString());
+            }
 
             return xmlDocument;
         }

@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Threading;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
@@ -20,6 +21,16 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlRoot("consStatServCte", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class ConsStatServCte : XMLBase
     {
+        private static readonly Lazy<XmlSerializer> SerializadorRaizCustomizada = new Lazy<XmlSerializer>(
+            () => new XmlSerializer(typeof(ConsStatServCte), CriarRaizCustomizada()),
+            LazyThreadSafetyMode.ExecutionAndPublication);
+
+        private static XmlRootAttribute CriarRaizCustomizada() => new XmlRootAttribute("consStatServCTe")
+        {
+            Namespace = "http://www.portalfiscal.inf.br/cte",
+            IsNullable = false
+        };
+
         /// <summary>
         /// Versão do pacote de schema
         /// </summary>
@@ -70,25 +81,17 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do XML</returns>
         public override XmlDocument GerarXML()
         {
-            XmlDocument xml = null;
-
             if (Versao == "3.00")
             {
-                xml = XMLUtility.Serializar(this, NameSpaces);
+                return XMLUtility.Serializar(this, NameSpaces);
             }
-            else
+
+            if (GetType() == typeof(ConsStatServCte))
             {
-                // criar uma instância de XmlRootAttribute com o novo nome do elemento
-                var newRootAttribute = new XmlRootAttribute("consStatServCTe")
-                {
-                    Namespace = "http://www.portalfiscal.inf.br/cte",
-                    IsNullable = false
-                };
-
-                xml = XMLUtility.Serializar(this, newRootAttribute, NameSpaces);
+                return XMLUtility.SerializarComSerializador(this, SerializadorRaizCustomizada.Value, NameSpaces);
             }
 
-            return xml;
+            return XMLUtility.Serializar(this, CriarRaizCustomizada(), NameSpaces);
         }
 
         /// <summary>
