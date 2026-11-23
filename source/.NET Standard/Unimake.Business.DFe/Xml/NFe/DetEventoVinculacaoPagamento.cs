@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.Reflection;
+using System.Threading;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
@@ -22,6 +23,12 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class DetEventoVinculacaoPagamento : EventoDetalhe
     {
+        private const string NamespaceNFe = "http://www.portalfiscal.inf.br/nfe";
+
+        private static readonly Lazy<XmlSerializer> SerializadorGPgto = new Lazy<XmlSerializer>(
+            () => new XmlSerializer(typeof(EventoPgto), new XmlRootAttribute("gPgto") { Namespace = NamespaceNFe }),
+            LazyThreadSafetyMode.ExecutionAndPublication);
+
         /// <summary>
         /// Descrição do evento, conforme e110300_v1.00.xsd.
         /// </summary>
@@ -76,8 +83,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             if (pi?.Name == nameof(GPgto))
             {
-                var serializer = new XmlSerializer(typeof(EventoPgto),
-                    new XmlRootAttribute("gPgto") { Namespace = "http://www.portalfiscal.inf.br/nfe" });
+                var serializer = SerializadorGPgto.Value;
                 using (var subtree = XmlReader.ReadSubtree())
                 {
                     GPgto = (EventoPgto)serializer.Deserialize(subtree);
@@ -93,18 +99,16 @@ namespace Unimake.Business.DFe.Xml.NFe
         public override void WriteXml(XmlWriter writer)
         {
             base.WriteXml(writer);
-            const string ns = "http://www.portalfiscal.inf.br/nfe";
-            writer.WriteElementString("descEvento", ns, DescEvento);
-            writer.WriteElementString("cOrgaoAutor", ns, COrgaoAutorField);
-            writer.WriteElementString("tpAutor", ns, ((int)TpAutor).ToString(CultureInfo.InvariantCulture));
-            writer.WriteElementString("verAplic", ns, VerAplic);
-            writer.WriteElementString("nProt", ns, NProt);
+            writer.WriteElementString("descEvento", NamespaceNFe, DescEvento);
+            writer.WriteElementString("cOrgaoAutor", NamespaceNFe, COrgaoAutorField);
+            writer.WriteElementString("tpAutor", NamespaceNFe, ((int)TpAutor).ToString(CultureInfo.InvariantCulture));
+            writer.WriteElementString("verAplic", NamespaceNFe, VerAplic);
+            writer.WriteElementString("nProt", NamespaceNFe, NProt);
             if (GPgto != null)
             {
-                var serializer = new XmlSerializer(typeof(EventoPgto), new XmlRootAttribute("gPgto") { Namespace = ns });
                 var namespaces = new XmlSerializerNamespaces();
-                namespaces.Add(string.Empty, ns);
-                serializer.Serialize(writer, GPgto, namespaces);
+                namespaces.Add(string.Empty, NamespaceNFe);
+                SerializadorGPgto.Value.Serialize(writer, GPgto, namespaces);
             }
         }
     }
