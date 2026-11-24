@@ -33,9 +33,12 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
 
             var grupo = xml.GetElementsByTagName("infNFeSupl");
             Assert.Single(grupo);
-            Assert.Equal(UrlConsultaHomologacao + "?" + chave + "|1|2", ((XmlElement)grupo[0]).GetElementsByTagName("qrCode")[0].InnerText);
-            Assert.InRange(((XmlElement)grupo[0]).GetElementsByTagName("qrCode")[0].InnerText.Length, 100, 1000);
-            Assert.Equal(UrlConsultaHomologacao, ((XmlElement)grupo[0]).GetElementsByTagName("urlChave")[0].InnerText);
+            var suplemento = (XmlElement)grupo[0];
+            var qrCode = Assert.IsType<XmlCDataSection>(Assert.Single(suplemento.GetElementsByTagName("qrCode")[0].ChildNodes));
+            Assert.Equal(UrlConsultaHomologacao + "?" + chave + "|1|2", qrCode.Value);
+            Assert.InRange(qrCode.Value.Length, 100, 1000);
+            var urlChave = Assert.IsType<XmlText>(Assert.Single(suplemento.GetElementsByTagName("urlChave")[0].ChildNodes));
+            Assert.Equal(UrlConsultaHomologacao, urlChave.Value);
             Assert.Equal("Signature", grupo[0].NextSibling.LocalName);
         }
 
@@ -109,9 +112,11 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
         /// <summary>
         /// Garante que a autorização online gere um QR Code aceito pelo schema da NFeABI.
         /// </summary>
-        [Fact]
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
         [Trait("DFe", "NFeABI")]
-        public void AutorizacaoOnlineDeveGerarQRCodeValidoParaOSchema()
+        public void AutorizacaoOnlineDeveGerarQRCodeValidoParaOSchema(bool informarSuplemento)
         {
             using (var rsa = RSA.Create(2048))
             {
@@ -120,17 +125,22 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
                 {
                     var documento = new Business.DFe.Xml.NFeABI.NFeABI()
                         .LoadFromFile(@"..\..\..\NFeABI\Resources\NFeABI-minima.xml");
-                    documento.InfNFeSupl = null;
                     documento.Signature = null;
                     documento.InfNFeABI.Ide.TpEmis = TipoEmissaoNFeABI.Normal;
+                    var urlQrCode = UrlConsultaHomologacao + "?" + documento.InfNFeABI.Chave + "|1|2";
+                    documento.InfNFeSupl = informarSuplemento
+                        ? new Business.DFe.Xml.NFeABI.InfNFeSupl { QrCode = urlQrCode, UrlChave = UrlConsultaHomologacao }
+                        : null;
 
                     var servico = new NFeABIAutorizacaoSinc(
                         documento,
                         new Configuracao { CertificadoDigital = certificado });
-                    var qrCode = servico.ConteudoXMLAssinado.GetElementsByTagName("qrCode")[0].InnerText;
+                    var xml = new XmlDocument();
+                    xml.LoadXml(servico.ConteudoXMLAssinado.OuterXml);
+                    var qrCode = Assert.IsType<XmlCDataSection>(Assert.Single(xml.GetElementsByTagName("qrCode")[0].ChildNodes));
 
-                    Assert.InRange(qrCode.Length, 100, 1000);
-                    Assert.Equal(UrlConsultaHomologacao + "?" + documento.InfNFeABI.Chave + "|1|2", qrCode);
+                    Assert.InRange(qrCode.Value.Length, 100, 1000);
+                    Assert.Equal(urlQrCode, qrCode.Value);
                 }
             }
         }
